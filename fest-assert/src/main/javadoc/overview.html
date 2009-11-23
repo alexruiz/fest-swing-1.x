@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<p>
+This document is the API specification for the <a href="http://code.google.com/p/fest/" target="_blank">FEST</a> 
+&quot;Flexible Assertions&quot; Module.
+</p>
+<p>
+Currently, this module provides assertions that apply to the following data types:
+<ol>
+<li><code>{@link java.lang.Object Object}</code></li>
+<li><code>{@link java.lang.String String}</code></li>
+<li><code>{@link java.util.Collection Collection}</code></li>
+<li><code>{@link java.util.List List}</code></li>
+<li><code>{@link java.util.Map Map}</code></li>
+<li>Primitives (<code>boolean</code>, <code>int</code>, <code>char</code>, etc.)</li>
+<li><code>{@link java.lang.Object Object}</code> arrays</li>
+<li>Arrays of primitives</li>
+<li><code>{@link java.awt.image.BufferedImage BufferedImage}</code></li>
+<li><code>{@link java.lang.Throwable Throwable}</code></li>
+<li><code>{@link java.io.File File}</code></li>
+<li><code>{@link java.math.BigDecimal BigDecimal}</code></li>
+</ol>
+</p>
+<p>
+Quick example:
+<pre>
+int removed = employees.removeFired();
+{@link org.fest.assertions.Assertions#assertThat(int) assertThat}(removed).{@link org.fest.assertions.IntAssert#isZero isZero}();
+ 
+List&lt;Employee&gt; newEmployees = employees.hired(TODAY);
+{@link org.fest.assertions.Assertions#assertThat(java.util.Collection) assertThat}(newEmployees).{@link org.fest.assertions.CollectionAssert#hasSize(int) hasSize}(6);
+</pre>
+</p>
+<p>
+Assertions can also be extended by using custom <code>{@link org.fest.assertions.Condition}</code>s. The following 
+condition verifies that the characters in a <code>String</code> are in uppercase:
+<pre>
+class UpperCaseCondition extends {@link org.fest.assertions.Condition Condition}&lt;String&gt; {
+  public boolean matches(String value) {
+    if(isEmpty(value)) return false;
+    return value.equals(value.toUpperCase());
+  }
+
+  public static UpperCaseCondition isUpperCase() {
+    return new UpperCaseCondition(&quot;Uppercase&quot;);
+  }
+}
+</pre>
+This example shows how to use such condition:  
+<pre>
+{@link org.fest.assertions.Assertions#assertThat(java.lang.String) assertThat}(&quot;hello&quot;).as(&quot;Greeting&quot;).{@link org.fest.assertions.StringAssert#satisfies(org.fest.assertions.Condition) satisfies}(isUppercase());
+</pre>
+which will fail with the message &quot;<code>[Greeting] expected:Uppercase but was:&lt;'hello'&gt;</code>&quot;
+</p>
+</body>
+</html>
