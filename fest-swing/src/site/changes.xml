@@ -1,0 +1,1509 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+  <properties>
+    <title>Changelog</title>
+    <author email="alex.ruiz.05@gmail.com">Alex Ruiz</author>
+  </properties>
+  <body>
+    <release version="1.2a4" date="2010-03-01" description="Subsequent release">
+      <action dev="alexruiz" type="fix" issue="FEST-175" due-to="Jan Zuchhold">
+        Removed mappings for German umlauts in KeyStrokeMappingProvider_de.
+      </action>
+      <action dev="alexruiz" type="fix" issue="FEST-207" due-to="Daniel Dyer">
+        Removed dependency on debug.jar.
+      </action>
+      <action dev="alexruiz" type="fix" issue="FEST-207" due-to="Daniel Dyer">
+        Added own CheckThreadViolationRepaintManager, a copy of the original from debug.jar
+      </action>
+      <action dev="alexruiz" type="fix" issue="FEST-215" due-to="Ansgar Konermann">
+        Moved JDK-6 specific code to new module fest-swing-jdk6.
+      </action>
+      <action dev="alexruiz" type="fix" issue="FEST-227" due-to="Uli Schrempp">
+        Method 'matches(String, String)' does not require a valid regular expression if the given Strings are not equal.
+      </action>
+      <action dev="alexruiz" type="fix" issue="FEST-232" due-to="Florian SIMON">
+        Added KeyStrokeMappingProvider_fr to support French keyboards.
+      </action>
+      <action dev="alexruiz" type="fix" issue="FEST-244" due-to="Harry L">
+        Added method 'requireItemCount(int)' to ItemGroupFixture and its implementations JComboBoxFixture and 
+        JListFixture.
+      </action>
+      <action dev="alexruiz" type="fix" issue="FEST-251">
+        Updated FEST-Assert to version 1.2.
+      </action>
+    </release>
+    <release version="1.2a3" date="2009-08-31" description="Subsequent release">
+      <action dev="alexruiz" type="add" issue="FEST-7" due-to="Cephei">
+        Added method 'expandRow(int)' to JTreeFixture.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-7" due-to="Cephei">
+        Added method 'collapseRow(int)' to JTreeFixture.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-7" due-to="Cephei">
+        Added method 'expandPath(String)' to JTreeFixture.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-7" due-to="Cephei">
+        Added method 'collapsePath(String)' to JTreeFixture.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-43" due-to="Ken Geis">
+        Added method 'selectedRow' to JTableFixture.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-47" due-to="Andres Almiray">
+        Added method 'clientProperty(Object)' to all the fixtures that handle JComponents.
+      </action>
+      <action dev="alexruiz" type="fix" issue="FEST-122" due-to="Dario Consoli">
+        Added support for editable JComboBoxes as JTable editors.
+      </action>
+      <action dev="alexruiz" type="fix" issue="FEST-136" due-to="Steve (neals01)">
+        Updated Javadocs in methods 'pressModifiers' and 'releaseModifiers' in Robot, to indicate the valid values for
+        the modifiers.
+      </action>
+      <action dev="alexruiz" type="fix" issue="FEST-137" due-to="Woody Folsom">
+        Delay between events is set to zero, when clicking the mouse button more than once.
+      </action>
+      <action dev="alexruiz" type="fix" issue="FEST-138" due-to="Joel Shellman">
+        JTableCellFixture now returns the correct cell background when using table decorators.
+      </action>
+      <action dev="alexruiz" type="fix" issue="FEST-139" due-to="Woody Folsom">
+        Lookup methods in ComponentFinder use the ComponentLookupScope in the Settings of the Robot the finder is
+        attached to.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-142" due-to="Juhos Csaba-Zsolt">
+        Added support for regular expression matching to method 'requireText(String)' in JButtonFixture, where the 
+        given String can be a regular expression.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-142" due-to="Juhos Csaba-Zsolt">
+        Added overloaded method 'requireText(Pattern)' to JButtonFixture.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-143" due-to="Juhos Csaba-Zsolt">
+        Added support for regular expression matching to method 'requireText(String)' in JCheckBoxFixture, where the 
+        given String can be a regular expression.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-143" due-to="Juhos Csaba-Zsolt">
+        Added overloaded method 'requireText(Pattern)' to JCheckBoxFixture.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-144" due-to="Juhos Csaba-Zsolt">
+        Added support for regular expression matching to method 'selectItem(String)' in JComboBoxFixture, where the 
+        given String can be a regular expression.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-144" due-to="Juhos Csaba-Zsolt">
+        Added overloaded method 'selectItem(Pattern)' to JComboBoxFixture.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-144" due-to="Juhos Csaba-Zsolt">
+        Added support for regular expression matching to method 'requireSelection(String)' in JComboBoxFixture, 
+        where the given String can be a regular expression.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-144" due-to="Juhos Csaba-Zsolt">
+        Added overloaded method 'requireSelection(Pattern)' to JComboBoxFixture.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-145" due-to="Juhos Csaba-Zsolt">
+        Added support for regular expression matching to method 'requireText(String)' in JLabelFixture, where the 
+        given String can be a regular expression.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-145" due-to="Juhos Csaba-Zsolt">
+        Added overloaded method 'requireText(Pattern)' to JLabelFixture.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-146" due-to="Juhos Csaba-Zsolt">
+        Added support for regular expression matching to method 'item(String)' in JListFixture, where the given 
+        String can be a regular expression.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-146" due-to="Juhos Csaba-Zsolt">
+        Added overloaded method 'item(Pattern)' to JListFixture.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-146" due-to="Juhos Csaba-Zsolt">
+        Added support for regular expression matching to method 'selectItem(String)' in JListFixture, where the 
+        given String can be a regular expression.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-146" due-to="Juhos Csaba-Zsolt">
+        Added overloaded method 'selectItem(Pattern)'.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-146" due-to="Juhos Csaba-Zsolt">
+        Added support for regular expression matching to method 'selectItems(String[])' in JListFixture, where each 
+        String in the given array can be a regular expression.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-146" due-to="Juhos Csaba-Zsolt">
+        Added overloaded method 'selectItems(Pattern[])' to JListFixture.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-146" due-to="Juhos Csaba-Zsolt">
+        Added support for regular expression matching to method 'requireSelection(String)' in JListFixture, where 
+        the given String can be a regular expression.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-146" due-to="Juhos Csaba-Zsolt">
+        Added overloaded method 'requireSelection(Pattern)' to JListFixture.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-146" due-to="Juhos Csaba-Zsolt">
+        Added support for regular expression matching to method 'requireSelectedItems(String[])' in JListFixture, 
+        where each String in the given array can be a regular expression.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-146" due-to="Juhos Csaba-Zsolt">
+        Added overloaded method 'requireSelectedItems(Pattern[])' to JListFixture.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-146" due-to="Juhos Csaba-Zsolt">
+        Added overloaded method 'requireSelectedItems(int[])' to JListFixture.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-146" due-to="Juhos Csaba-Zsolt">
+        Added support for regular expression matching to method 'drag(String)' in JListFixture, where the given 
+        String can be a regular expression.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-146" due-to="Juhos Csaba-Zsolt">
+        Added overloaded method 'drag(Pattern)' to JListFixture.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-146" due-to="Juhos Csaba-Zsolt">
+        Added support for regular expression matching to method 'drop(String)' in JListFixture, where the given 
+        String can be a regular expression.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-146" due-to="Juhos Csaba-Zsolt">
+        Added overloaded method 'drop(Pattern)' to JListFixture.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-146" due-to="Juhos Csaba-Zsolt">
+        Added support for regular expression matching to method 'showPopupMenuAt(String)' in JListFixture, where the 
+        given String can be a regular expression.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-146" due-to="Juhos Csaba-Zsolt">
+        Added overloaded method 'showPopupMenuAt(Pattern)' to JListFixture.
+      </action>
+      <action dev="alexruiz" type="fix" issue="FEST-149" due-to="Kwen K. Liu">
+        Updated EDT-related threading rules in ComponentFixture's Javadocs.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-151" due-to="Juhos Csaba-Zsolt">
+        Added support for regular expression matching to method 'requireTitle(String)' in JOptionPaneFixture, where 
+        the given String can be a regular expression.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-151" due-to="Juhos Csaba-Zsolt">
+        Added overloaded method 'requireTitle(Pattern)' to JOptionPaneFixture.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-151" due-to="Juhos Csaba-Zsolt">
+        Added support for regular expression matching to method 'requireMessage(Object)' in JOptionPaneFixture, 
+        where the given Object can be a regular expression.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-151" due-to="Juhos Csaba-Zsolt">
+        Added overloaded method 'requireMessage(Pattern)' to JOptionPaneFixture.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-151" due-to="Juhos Csaba-Zsolt">
+        Added support for regular expression matching to method 'buttonWithText(String)' in JOptionPaneFixture, 
+        where the given String can be a regular expression.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-152" due-to="Morten Breum Mikkelsen">
+        Added methods 'requireToolTip(String)' and 'requireToolTip(Pattern)' to all the fixtures that handle 
+        JComponents.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-151" due-to="Juhos Csaba-Zsolt">
+        Added overloaded method 'buttonWithText(Pattern)' to JOptionPaneFixture.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-153" due-to="Juhos Csaba-Zsolt">
+        Added support for regular expression matching to method 'withText(String)' in JButtonMatcher, where the 
+        given String can be a regular expression.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-153" due-to="Juhos Csaba-Zsolt">
+        Added overloaded method 'withText(Pattern)' to JButtonMatcher.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-153" due-to="Juhos Csaba-Zsolt">
+        Added support for regular expression matching to method 'andText(String)' in JButtonMatcher, where the given
+        String can be a regular expression.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-153" due-to="Juhos Csaba-Zsolt">
+        Added overloaded method 'andText(Pattern)' to JButtonMatcher.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-154" due-to="Juhos Csaba-Zsolt">
+        Added support for regular expression matching to method 'requireText(String)' in JRadioButtonFixture, where 
+        the given String can be a regular expression.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-154" due-to="Juhos Csaba-Zsolt">
+        Added overloaded method 'requireText(Pattern)' to JRadioButtonFixture.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-155" due-to="Juhos Csaba-Zsolt">
+        Added overloaded method 'selectTab(Pattern)' to JTabbedPaneFixture.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-155" due-to="Juhos Csaba-Zsolt">
+        Added support for regular expression matching to method 'requireTitle(String, Index)' in JTabbedPaneFixture 
+        where the given String can be a regular expression.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-155" due-to="Juhos Csaba-Zsolt">
+        Added overloaded method 'requireTitle(Pattern, Index)' to JTabbedPaneFixture.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-156" due-to="Juhos Csaba-Zsolt">
+        Added support for regular expression matching to method 'cell(String)' in JTableFixture, where the given 
+        String can be a regular expression.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-156" due-to="Juhos Csaba-Zsolt">
+        Added overloaded method 'cell(Pattern)' to JTableFixture.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-156" due-to="Juhos Csaba-Zsolt">
+        Added support for regular expression matching to method 'requireCellValue(TableCell, String)' in 
+        JTableFixture, where the given String can be a regular expression.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-156" due-to="Juhos Csaba-Zsolt">
+        Added overloaded method 'requireCellValue(TableCell, Pattern)' to JTableFixture.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-158" due-to="Juhos Csaba-Zsolt">
+        Added support for regular expression matching to method 'requireValue(String)' in JTableCellFixture, where 
+        the given String can be a regular expression.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-158" due-to="Juhos Csaba-Zsolt">
+        Added overloaded method 'requireValue(Pattern)' to JTableCellFixture.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-159" due-to="Juhos Csaba-Zsolt">
+        Added support for regular expression matching to method 'showPopupMenuAt(String)' in JTableHeaderFixture, 
+        where the given String can be a regular expression.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-159" due-to="Juhos Csaba-Zsolt">
+        Added overloaded method 'showPopupMenuAt(Pattern)' to JTableHeaderFixture.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-159" due-to="Juhos Csaba-Zsolt">
+        Added support for regular expression matching to method 'clickColumn(String)' in JTableHeaderFixture, where 
+        the given String can be a regular expression.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-159" due-to="Juhos Csaba-Zsolt">
+        Added overloaded method 'clickColumn(Pattern)' to JTableHeaderFixture.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-159" due-to="Juhos Csaba-Zsolt">
+        Added support for regular expression matching to method 'clickColumn(String, MouseClickInfo)' in 
+        JTableHeaderFixture, where the given String can be a regular expression.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-159" due-to="Juhos Csaba-Zsolt">
+        Added overloaded method 'clickColumn(Pattern, MouseClickInfo)' to JTableHeaderFixture.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-160" due-to="Juhos Csaba-Zsolt">
+        Added support for regular expression matching to method 'requireText(String)' in JTextComponentFixture, 
+        where the given String can be a regular expression.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-160" due-to="Juhos Csaba-Zsolt">
+        Added overloaded method 'requireText(Pattern)' to JTextComponentFixture.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-161" due-to="Juhos Csaba-Zsolt">
+        Added support for regular expression matching to method 'requireText(String)' in JToggleButtonFixture, where 
+        the given String can be a regular expression.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-161" due-to="Juhos Csaba-Zsolt">
+        Added overloaded method 'requireText(Pattern)' to JToggleButtonFixture.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-162" due-to="Juhos Csaba-Zsolt">
+        Added overloaded method 'requireText(Pattern)' to the interface TextDisplayFixture.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-163" due-to="Juhos Csaba-Zsolt">
+        Added overloaded method 'selectItem(Pattern)' to the interface ItemGroupFixture.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-163" due-to="Juhos Csaba-Zsolt">
+        Added overloaded method 'requireSelection(Pattern)' to the interface ItemGroupFixture.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-164" due-to="Juhos Csaba-Zsolt">
+        Added support for regular expression matching to method 'withTitle(String)' in DialogMatcher, where the 
+        given String can be a regular expression.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-164" due-to="Juhos Csaba-Zsolt">
+        Added overloaded method 'withTitle(Pattern)' to DialogMatcher.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-164" due-to="Juhos Csaba-Zsolt">
+        Added support for regular expression matching to method 'andTitle(String)' in DialogMatcher, where the given
+        String can be a regular expression.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-164" due-to="Juhos Csaba-Zsolt">
+        Added overloaded method 'andTitle(Pattern)' to DialogMatcher.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-172" due-to="Juhos Csaba-Zsolt">
+        Added support for regular expression matching to method 'withTitle(String)' in FrameMatcher, where the 
+        given String can be a regular expression.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-172" due-to="Juhos Csaba-Zsolt">
+        Added overloaded method 'withTitle(Pattern)' to FrameMatcher.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-172" due-to="Juhos Csaba-Zsolt">
+        Added support for regular expression matching to method 'andTitle(String)' in FrameMatcher, where the given
+        String can be a regular expression.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-172" due-to="Juhos Csaba-Zsolt">
+        Added overloaded method 'andTitle(Pattern)' to FrameMatcher.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-173" due-to="Juhos Csaba-Zsolt">
+        Added support for regular expression matching to method 'withText(String)' in JLabelMatcher, where the 
+        given String can be a regular expression.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-173" due-to="Juhos Csaba-Zsolt">
+        Added overloaded method 'withText(Pattern)' to JLabelMatcher.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-173" due-to="Juhos Csaba-Zsolt">
+        Added support for regular expression matching to method 'andText(String)' in JLabelMatcher, where the given
+        String can be a regular expression.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-173" due-to="Juhos Csaba-Zsolt">
+        Added overloaded method 'andText(Pattern)' to JLabelMatcher.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-174" due-to="Juhos Csaba-Zsolt">
+        Added support for regular expression matching to method 'withText(String)' in JTextComponentMatcher, where 
+        the given String can be a regular expression.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-174" due-to="Juhos Csaba-Zsolt">
+        Added overloaded method 'withText(Pattern)' to JTextComponentMatcher.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-174" due-to="Juhos Csaba-Zsolt">
+        Added support for regular expression matching to method 'andText(String)' in JTextComponentMatcher, where 
+        the given String can be a regular expression.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-174" due-to="Juhos Csaba-Zsolt">
+        Added overloaded method 'andText(Pattern)' to JTextComponentMatcher.
+      </action>
+      <action dev="alexruiz" type="fix" issue="FEST-194" due-to="Andriy Tsykholyas">
+        Method 'clickColumn(int)' in JTableHeaderDriver now scrolls to the column to click.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-178" due-to="Ricky Clarkson">
+        Added method 'clickPath(String)' to JTreeFixture.
+      </action>
+      <action dev="alexruiz" type="fix" issue="FEST-195" due-to="Lalitha Chandra">
+        Added methods 'doubleClickRow(int)' and 'doubleClickPath(String)' to JTreeFixture.
+      </action>
+      <action dev="alexruiz" type="fix" issue="FEST-196" due-to="Kirill Grouchnikov">
+        Method 'click(Component, Point, MouseButton, int)' in BasicRobot no longer gives focus to target component 
+        before pressing the given mouse button.
+      </action>
+      <action>Migrated tests to JUnit.</action>
+    </release>
+    <release version="1.2a2" date="2009-05-26" description="Subsequent release">
+      <action dev="alexruiz" type="add" issue="FEST-32" due-to="Juhos Csaba-Zsolt">
+        Added method 'dialog(Timeout)' to ContainerFixture.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-32" due-to="Juhos Csaba-Zsolt">
+        Added method 'dialog(GenericTypeMatcher, Timeout)' to ContainerFixture.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-32" due-to="Juhos Csaba-Zsolt">
+        Added method 'dialog(String Timeout)' to ContainerFixture.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-32" due-to="Juhos Csaba-Zsolt">
+        Added method 'fileChooser(Timeout)' to ContainerFixture.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-32" due-to="Juhos Csaba-Zsolt">
+        Added method 'fileChooser(GenericTypeMatcher, Timeout)' to ContainerFixture.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-32" due-to="Juhos Csaba-Zsolt">
+        Added method 'fileChooser(String Timeout)' to ContainerFixture.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-32" due-to="Juhos Csaba-Zsolt">
+        Added method 'optionPane(Timeout)' to ContainerFixture.
+      </action>
+      <action dev="alexruiz" type="fix" issue="FEST-32" due-to="Juhos Csaba-Zsolt">
+        Original methods to look up Dialogs, JFileChoosers and JOptionPanes now delegate to the overloaded versions that
+        take a Timeout.
+      </action>
+      <action dev="alexruiz" type="fix" issue="FEST-32" due-to="Juhos Csaba-Zsolt">
+        Class org.fest.swing.timing.Timeout now throws NPE in constructor if the given TimeUnit is null.
+      </action>
+      <action dev="alexruiz" type="fix" issue="FEST-118" due-to="Olivier DOREMIEUX">
+        To activate a Window, org.fest.swing.core.ActivateWindowTask now calls 'toFront and 'requestFocusInWindow' 
+        instead of two calls to 'toFront'.
+      </action>
+      <action dev="alexruiz" type="fix" issue="FEST-119" due-to="Eric Kolotyluk">
+        Fixed implementation of 'requireSelection(String)' in JTreeDriver when a JTree has an invisible root.
+      </action>
+      <action dev="alexruiz" type="fix" issue="FEST-132">
+        KeyStrokeMap now uses the German keyboard mappings if the language of the default locale is German.
+      </action>
+    </release>
+    <release version="1.2a1" date="2009-05-04" description="Subsequent release">
+      <action dev="alexruiz" type="add" issue="FEST-29" due-to="Christian Dähn">
+        Deprecated org.fest.swing.junit.runner.GUITestRunner in module 'fest-swing-junit' and rewrote it as 
+        org.fest.junit.v_4_3_1.runner.GUITestRunner in module 'fest-swing-junit-4.3.1.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-29" due-to="Christian Dähn">
+        Create Runner for JUnit 4.5 as org.fest.swing.junit.v4_5.runner.GUITestRunner, in the project 
+        'fest-swing-junit-4.5'.
+      </action>
+      <action dev="alexruiz" type="fix" issue="FEST-37" due-to="Ondrej Medek">
+        Marked as 'final' all concrete classes in package org.fest.swing.core.finder. 
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-38" due-to="Ondrej Medek">
+        Added methods 'findAll(GenericTypeMatcher)' and 'findAll(Container, GenericTypeMatcher)' to 
+        class org.fest.swing.core.ComponentMatcher.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-46" due-to="Hayden Shorter">
+        Created class Containers, which allows to places a given container inside a JFrame.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-85" due-to="Andriy Tsykholyas">
+        Added protected final method 'driver' to all fixtures to allow replacement of component drivers.
+      </action>
+      <action dev="alexruiz" type="fix" issue="FEST-102" due-to="Stephen Neal">
+        JComboBoxDriver now sets the focus in the actual editor before entering text.
+      </action>
+      <action dev="alexruiz" type="fix" issue="FEST-104" due-to="Tony Eichelberger, Martin Bachmann">
+        JMenuItems no longer receive input focus when being clicked.
+      </action>
+      <action dev="alexruiz" type="fix" issue="FEST-106" due-to="Jean-Francois Poilpret">
+        Screenshots of desktop/GUI components are taken in the EDT, only when the EDT is idle.
+      </action>
+      <action dev="alexruiz" type="fix" issue="FEST-114" due-to="Eitan Suez">
+        Method 'setUpOnce' (marked with @BeforeClass) in class FestSwingJUnitTestCase is now static.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-115" due-to="Jeanette (Kleopatra)">
+        Added method 'requireSelection(int)' to ItemGroupFixture and its implementations (JComboBoxFixture and 
+        JListFixture.) 
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-117" due-to="Uli Schrempp">
+        Added class org.fest.swing.keystroke.KeyStrokeMappingProvider_de. KeyStrokeMapping now uses this provider if the 
+        language of the default Locale is German.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-120" due-to="Olivier DOREMIEUX">
+        Added method 'text' to JSpinnerFixture.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-121" due-to="Olivier DOREMIEUX">
+        Added method 'clearSelection' to JComboBoxFixture and JListFixture.      
+      </action>
+    </release>
+  
+    <release version="1.1" date="2009-02-23" description="Subsequent release">
+      <action dev="wanghy" type="fix" issue="FEST-3">
+        When cancelling or stopping cell editing, JTableTextComponentEditorCellWriter and JTableComboBoxEditorCellWriter
+        use the same TableCellEditor obtained when cell editing started.
+      </action>
+      <action dev="wanghy" type="add" issue="FEST-7" due-to="Michael Schnell">
+        Added methods "requireRowCount" and "requireColumnCount" to org.fest.swing.fixture.JTableFixture.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-8" due-to="Michael Schnell">
+        Added method "requireFocused" to all component fixtures in package org.fest.swing.fixture.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-9" due-to="Andres Almiray">
+        Added class org.fest.swing.testing.FestSwingTestCase.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-9" due-to="Andres Almiray">
+        Added class org.fest.swing.junit.testcase.FestSwingJUnitTestCase.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-9" due-to="Andres Almiray">
+        Added class org.fest.swing.testng.testcase.FestSwingTestngTestCase.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-10" due-to="Ken Geis">
+        Added method 'selectedComponent' to org.fest.swing.fixture.JTabbedPaneFixture.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-11" due-to="Michael Schnell">
+        Added method 'requireTabTitle(String, Index)' to org.fest.swing.fixture.JTabbedPaneFixture.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-11" due-to="Michael Schnell">
+        Added method 'requireTabTitles(String...)' to org.fest.swing.fixture.JTabbedPaneFixture.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-12">
+        Added methods moveMouse(Point), moveMouse(int, int) and pressMouse(Point, MouseButton) to 
+        org.fest.swing.core.Robot.  
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-13">
+        Replaced org.fest.swing.driver.DragAndDrop with org.fest.swing.core.ComponentDragAndDrop. 
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-13">
+        Class org.fest.swing.driver.DragAndDrop is now deprecated and will be removed in version 2.0. 
+      </action>
+      <action dev="alexruiz" type="fix" issue="FEST-14" due-to="Ken Geis">
+        Failure to activate cell editor in org.fest.swing.driver.AbstractJTableCellWriter now throw an 
+        ActionFailureException with the message "Unable to find or activate cell editor".
+      </action>
+      <action dev="alexruiz" type="fix" issue="FEST-15" due-to="Gino John">
+        org.fest.swing.driver.JTreeDriver now adds the root to the path to expand, if the JTree has its root invisible.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-16" due-to="Peter Hulst">
+        Added method 'selectFiles(File...)' to org.fest.swing.fixture.JFileChooserFixture.
+      </action>
+      <action dev="alexruiz" type="fix" issue="FEST-17" due-to="Sergey Parilin">
+        org.fest.swing.driver.JSpinnerDriver correctly selects the current text of a JSpinner before entering new text.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-18" due-to="Ian Henehan">
+        Added methods 'moveToFront' and 'moveToBack' to FrameFixture and DialogFixture.      
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-19" due-to="Juhos Csaba-Zsolt">
+        org.fest.swing.driver.JSpinnerDriver sets the focus on the editor and waits for the editor to be focused before
+        entering new text.
+      </action>
+      <action dev="alexruiz" type="fix" issue="FEST-20" due-to="Ken Geis">
+        org.fest.swing.driver.JTableTextComponentEditorCellWriter now correctly catches ActionFailedException when
+        the cell editor cannot be activated by pressing the key 'F2'.
+      </action>
+      <action dev="alexruiz" type="fix" issue="FEST-48" due-to="vnguyen.sqa">
+        Parameters values in TestNG test methods are now used to generate name of image file containing desktop 
+        screenshot.
+      </action>
+      <action dev="alexruiz" type="fix" issue="FEST-61">
+        Moved classes in package org.fest.swing.testng to the package org.fest.swing.testng.listener.
+      </action>
+      <action dev="alexruiz" type="fix" issue="FEST-61">
+        Deprecated org.fest.swing.testng.ScreenshotOnFailureListener. Users should use 
+        org.fest.swing.testng.listener.ScreenshotOnFailureListener instead.
+      </action>
+      <action dev="alexruiz" type="fix" issue="FEST-65" due-to="Cimballi">
+        org.fest.swing.driver.JListDriver now clicks in the middle of the visible rectangle of a cell, when selecting
+        an item in a JList.
+      </action>
+    </release>
+    <release version="1.0" date="2009-01-15" description="Subsequent release">
+      <action dev="alexruiz" type="add" issue="238" due-to="Juhos Csaba-Zsolt">
+        Added class org.fest.swing.driver.Scrolling.
+      </action>
+      <action dev="alexruiz" type="add" issue="277" due-to="Juhos Csaba-Zsolt">
+        Added methods 'check' and 'uncheck' to org.fest.swing.fixture.JRadioButtonFixture.
+      </action>
+      <action dev="alexruiz" type="fix" issue="280">
+        Matchers in org.fest.swing.core.matcher now more search options for component matching (by type, by name,
+        by text/title.)
+      </action>
+      <action dev="alexruiz" type="fix" issue="280">
+        Replaced DialogByTitleMatcher with DialogMatcher in package org.fest.swing.core.matcher.
+      </action>
+      <action dev="alexruiz" type="fix" issue="280">
+        Replaced FrameByTitleMatcher with FrameMatcher in package org.fest.swing.core.matcher.
+      </action>
+      <action dev="alexruiz" type="fix" issue="280">
+        Replaced JButtonByTextMatcher with JButtonMatcher in package org.fest.swing.core.matcher.
+      </action>
+      <action dev="alexruiz" type="fix" issue="280">
+        Replaced JLabelByTextMatcher with JLabelMatcher in package org.fest.swing.core.matcher.
+      </action>
+      <action dev="alexruiz" type="add" issue="281" due-to="Konrad Garus">
+        Class org.fest.swing.fixture.ContainerFixture implements interface org.fest.swing.fixture.ComponentContainerFixture.
+      </action>
+      <action dev="alexruiz" type="fix">
+        Moved SingleComponentHierarchy from package org.fest.swing.core to org.fest.swing.hierarchy.
+      </action>
+      <action dev="alexruiz" type="fix">
+        Made class org.fest.swing.hierarchySingleComponentHierarchy public.
+      </action>
+    </release>
+    <release version="1.0rc2" date="2009-01-05" description="Subsequent release">
+      <action dev="alexruiz" type="add" issue="139" due-to="Viet Nguyen">
+        Added method click(Point, MouseButton, int) to org.fest.swing.core.Robot.
+      </action>
+      <action dev="alexruiz" type="fix" issue="213" due-to="Jean-Francois Poilpret">
+        org.fest.swing.image.ScreenshotTaker hides the caret of a focused text component before taking a screenshot.
+      </action>
+      <action dev="alexruiz" type="fix" issue="247" due-to="Juhos Csaba-Zsolt">
+        org.fest.swing.edt.GuiActionRunner appends stack trace of current thread to an exception thrown in the event
+        dispatch thread.
+      </action>
+      <action dev="alexruiz" type="fix" issue="251" due-to="Juhos Csaba-Zsolt">
+        JTable cell editor lookup fixed in org.fest.swing.driver.JTableTextComponentEditorCellWriter and 
+        JTableComboBoxEditorCellWriter by looking up the editor after it has been activated.
+      </action>
+      <action dev="alexruiz" type="fix" issue="257" due-to="Juhos Csaba-Zsolt">
+        Constructors in org.fest.swing.core.GenericTypeMatcher now take the supported type as parameter to guarantee
+        correct casting in the 'isMatching' method.
+      </action>
+      <action dev="alexruiz" type="fix" issue="268" due-to="Jean-Francois Poilpret">
+        TestNG is a compile-scoped dependency of the fest-swing-testng module.
+      </action>
+      <action dev="alexruiz" type="add" issue="270" due-to="Slava Gurilev">
+        Added methods 'rotateMouseWheel(Component, int)' and 'rotateMouseWheel(int)' to org.fest.swing.core.Robot.
+      </action>
+      <action dev="alexruiz" type="fix" issue="271">
+        Renamed org.fest.swing.core.RobotFixture to BasicRobot.
+      </action>
+      <action dev="alexruiz" type="remove" issue="273">
+        Removed class org.fest.swing.core.AWTEventGenerator.
+      </action>
+      <action dev="alexruiz" type="remove" issue="273">
+        Removed class org.fest.swing.core.EventMode.
+      </action>
+      <action dev="alexruiz" type="remove" issue="273">
+        Removed class org.fest.swing.core.InputEventGenerators.
+      </action>
+      <action dev="alexruiz" type="remove" issue="274">
+        Removed methods 'invokeLater', 'invokeAndWait' and 'releaseLeftMouseButton' in org.fest.swing.core.Robot.
+      </action>
+    </release>
+    <release version="1.0rc" date="2008-12-08" description="Subsequent release">
+      <action dev="alexruiz" type="fix" issue="134" due-to="Woody Folsom">
+        org.fest.swing.core.RobotFixture now throws ActionFailedException if the component to click is out of the 
+        boundaries of the screen.
+      </action>
+      <action dev="alexruiz" type="fix" issue="177" due-to="Juhos Csaba-Zsolt">
+        Fixed JTable cell-editing actions.
+      </action>
+      <action dev="alexruiz" type="fix" issue="213" due-to="Jean-Francois Poilpret">
+        org.fest.swing.image.ScreenshotTaker now hides the cursor of the focused JTextComponent when taking a 
+        screenshot.
+      </action>
+      <action dev="alexruiz" type="fix" issue="214" due-to="Michael Hüttermann">
+        Fixed code snippet in Javadoc for class org.fest.swing.data.TableCell. 
+      </action>
+      <action dev="alexruiz, wanghy" type="fix" issue="216" due-to="Tarjei Skorgenes">
+        Replaced condition to verify a GuiAction is executed in the event dispatch thread with a 
+        java.util.concurrent.CountDownLatch in org.fest.swing.edt.GuiActionRunner
+      </action>
+      <action dev="alexruiz" type="fix" issue="216" due-to="Simeon Fitch, Michael Hüttermann, Jean-Francois Poilpret">
+        Consolidated fine-grained GUI tasks into new coarsed-grained ones.
+      </action>
+      <action dev="alexruiz" type="remove" issue="216">
+        Removed org.fest.swing.driver.JListLocation.
+      </action>
+      <action dev="alexruiz, wanghy" type="add" issue="216" 
+        due-to="Simeon Fitch, Michael Hüttermann, Jean-Francois Poilpret">
+        Added org.fest.swing.edt.GuiLazyLoadingDescription to lazy-load the description of a 
+        org.fest.swing.timing.Condition (which is executed in the event dispatch thread.)
+      </action>
+      <action dev="alexruiz" type="add" issue="216">
+        Added annotations RunsInCurrentThread and RunsInEDT in package org.fest.swing.annotations.
+      </action>
+      <action dev="alexruiz" type="add" issue="216">
+        Added annotations from "Java Concurrency in Practice" as dependency.
+      </action>
+      <action dev="alexruiz" type="fix" issue="219" due-to="Matthias Otterbach">
+        Fixed implementation of method 'enterValue(JTable, int, int, String)' in
+        org.fest.swing.driver.JTableTextComponentEditorCellWriter.
+      </action>
+      <action dev="alexruiz" type="fix" issue="222" due-to="Daniel F. Surdyk, III">
+        Fixed error message when the index of a JTable cell is out of bounds.
+      </action>
+      <action dev="alexruiz" type="fix" issue="225" due-to="Jan Zuchhold">
+        org.fest.swing.driver.JTableTextComponentEditorCellWriter now presses the 'F2' key to start editing a table cell
+        that uses a JTextComponent as editor.
+      </action>
+      <action dev="alexruiz" type="fix" issue="228" due-to="Ken Geis">
+        Modal dialogs do not blocks tests anymore (as long as tests use the event dispatch thread correctly.)
+      </action>
+      <action dev="alexruiz" type="fix" issue="229" due-to="Michael Schnell">
+        Fixed implementation of method 'click' in org.fest.swing.fixture.JTableCellFixture.
+      </action>
+      <action dev="alexruiz" type="fix" issue="231" due-to="Ken Geis">
+        Added method 'print(PrintStream, ComponentMatcher)' (and overloaded version) to 
+        org.fest.swing.core.ComponentPrinter.
+      </action>
+      <action dev="alexruiz" type="fix" issue="232" due-to="Ken Geis">
+        JTableFixture now correctly finds the index of a column given its identifier.
+      </action>
+      <action dev="alexruiz" type="fix" issue="235" due-to="Rick Juneson">
+        Method 'findAll' in org.fest.swing.core.BasicComponentMatcher now returns the found components in the same order
+        every time it is called.
+      </action>
+      <action dev="alexruiz" type="fix" issue="237" due-to="Simeon Fitch, Michael Hüttermann, vnguyen.sqa">
+        All actions performed on GUI components (e.g. click) now throw IllegalStateException if the GUI component is
+        not showing on the screen.
+      </action>
+      <action dev="alexruiz" type="fix" issue="239">
+        All Matchers in package org.fest.swing.core.matcher now implement 'toString' to make troubleshooting of failing
+        component lookups easier.
+      </action>
+      <action dev="alexruiz" type="fix" issue="240">
+        Moved class ScreenLock from package org.fest.swing.core to org.fest.swing.lock to remove circular dependency.
+      </action>
+      <action dev="alexruiz" type="fix" issue="241">
+        Renamed class TableCellByColumnName (in package org.fest.swing.data) to TableCellByColumnId.
+      </action>
+      <action dev="alexruiz" type="fix" issue="241">
+        Renamed class TableCellByColumnName (in package org.fest.swing.data) to TableCellByColumnId.
+      </action>
+      <action dev="alexruiz" type="add" issue="242">
+        Added SwingHelper project as a dependency.
+      </action>
+      <action dev="alexruiz" type="add" issue="242">
+        Added org.fest.swing.edt.FailOnThreadViolationRepaintManager to force tests that violate EDT access to fail.
+      </action>
+      <action dev="alexruiz" type="add" issue="244" due-to="Michel Lohr">
+        Added method 'findByLabel' (and overloaded versions) to ComponentFinder to look up components by the text of
+        thier associated JLabel.
+      </action>
+      <action dev="alexruiz" type="add" issue="244">
+        Consolidated org.fest.swing.core.NameMatcher and org.fest.swing.core.NameAndTypeMatcher into one matcher.
+      </action>
+      <action dev="alexruiz" type="fix" issue="246" due-to="Juhos Csaba-Zsolt">
+        Fixed NullPointerException thrown in org.fest.swing.driver.JListDriver when selecting an already selected item.
+      </action>
+      <action dev="alexruiz" type="fix" issue="246" due-to="Marc Johen">
+        By default org.fest.swing.keystroke.KeyStrokeMap uses an English keyboard mapping.
+      </action>
+      <action dev="alexruiz" type="fix" issue="248" due-to="Juhos Csaba-Zsolt">
+        Made methods/classes related to JTableCellWriter accessible for better code reuse.
+      </action>
+    </release>
+    <release version="1.0b2" date="2008-10-16" description="Subsequent release">
+      <action dev="alexruiz" type="add" issue="109">
+        Added class org.fest.swing.fixture.ComponentFixtureExtension to add extension methods to ContainerFixture.
+      </action>
+      <action dev="wanghy" type="fix" issue="161" due-to="filimono">
+        Method 'enterText(String)' in JSpinnerFixture no longer commits the value to the underlying JSpinner.
+      </action>
+      <action dev="wanghy" type="fix" issue="161" due-to="filimono">
+        Added method 'enterTextAndCommit(String)' in JSpinnerFixture to enter and commit a value in a JSpinner. 
+      </action>
+      <action dev="alexruiz" type="add" issue="170" due-to="Juhos Csaba-Zsolt">
+        Added method 'columnIndexFor(Object)' in org.fest.swing.fixture.JTableFixture.
+      </action>
+      <action dev="alexruiz" type="add" issue="170" due-to="Juhos Csaba-Zsolt">
+        Added method 'cell(TableCellByColumnName cell)' to org.fest.swing.fixture.JTableFixture that returns a 
+        JTableCellFixture from a row index and column name.
+      </action>
+      <action dev="alexruiz" type="add" issue="170" due-to="Juhos Csaba-Zsolt">
+        Replaced org.fest.swing.driver.JTableCell and org.fest.swing.fixture.TableCell with 
+        org.fest.swing.data.TableCell.      
+      </action>
+      <action dev="alexruiz" type="fix" issue="186" due-to="Michael Hüttermann">
+        BasicJTableCellReader obtains the value of a cell from a JTable, not from a TableModel.
+      </action>
+      <action dev="alexruiz, wanghy" type="fix" issue="187">
+        Introduced GuiActionRunner, GuiQuery and GuiTask in package org.fest.swing.edt to execute queries or tasks in 
+        the event dispatch thread. 
+      </action>
+      <action dev="alexruiz" type="fix" issue="187">
+        Moved class AWT from package org.fest.swing.util to org.fest.swing.awt.
+      </action>
+      <action dev="alexruiz, wanghy" type="fix" issue="187">
+        Removed method 'runInEventThreadAndWait' in org.fest.swing.awt.AWT. Replaced with 
+        org.fest.swing.edt.GuiActionRunner and org.fest.swing.edt.GuiTask.
+      </action>
+      <action dev="alexruiz" type="fix" issue="187">
+        Moved classes Condition, Pause and Timeout from package org.fest.swing.core to org.fest.swing.timing.
+      </action>
+      <action dev="alexruiz, wanghy" type="fix" issue="187">
+        Added methods 'pause(Condition[])' to org.fest.swing.timing.Pause.
+      </action>
+      <action dev="alexruiz, wanghy" type="fix" issue="187">
+        Added method 'done' to org.fest.swing.timing.Condition. This method is invoked by org.fest.swing.timing.Pause 
+        when a condition is evaluated (either the condition was satisfied or it timed-out.)
+      </action>
+      <action dev="alexruiz" type="add" issue="188" due-to="Jason Goodwin">
+        Added method 'cell(String)' to org.fest.swing.fixture.JTableFixture. This method returns a table cell which
+        value matches the given one.
+      </action>
+      <action dev="wanghy" type="fix" issue="191">
+        Methods 'increment' and 'decrement' in JSpinnerDriver now work in AWT event mode.
+      </action>
+      <action dev="wanghy" type="add" issue="196" due-to="Juhos Csaba-Zsolt">
+        Added method 'select(Object)' in org.fest.swing.fixture.JSpinnerFixture.
+      </action>
+      <action dev="alexruiz" type="fix" issue="197" due-to="filimono">
+        Methods 'click(Component)' in org.fest.swing.core.RobotFixture now click on the center of the visible area of 
+        the component, only if the component is an instance of javax.swing.JComponent.
+      </action>
+      <action dev="alexruiz" type="fix" issue="197" due-to="filimono">
+        Added method 'centerOfVisibleRect(JComponent)' to org.fest.swing.awt.AWT.
+      </action>
+      <action dev="alexruiz" type="fix" issue="197" due-to="filimono">
+        Added methods 'scrollToMaximum' and 'scrollToMinimum' to org.fest.swing.fixture.JScrollBarDriver.
+      </action>
+      <action dev="alexruiz" type="fix" issue="200" due-to="Juhos Csaba-Zsolt">
+        Method 'showPopupMenuAt(String)' in org.fest.swing.fixture.JTreeFixture now makes the last node in the given 
+        path visible before showing a JPopupMenu.
+      </action>
+      <action dev="wanghy" type="fix" issue="201" due-to="Juhos Csaba-Zsolt">
+        Method 'eventDispatched(AWTEvent)' in org.fest.swing.monitor.WindowAvailabilityMonitor now checks if the source 
+        of the event is a java.awt.Component before performing a cast.
+      </action>
+      <action dev="alexruiz" type="fix" issue="202" due-to="Juhos Csaba-Zsolt">
+        Class org.fest.swing.driver.DragAndDrop is now public.
+      </action>
+      <action dev="alexruiz, wanghy" type="add" issue="204" due-to="Juhos Csaba-Zsolt">
+        Added method 'rowCount' to org.fest.swing.fixture.JTableFixture.
+      </action>
+      <action dev="alexruiz" type="fix" issue="210" due-to="Ewan McDougall">
+        Method 'requireSelection(String)' in org.fest.swing.fixture.JComboBoxFixture now handles editable JComboBoxes
+        correctly.
+      </action>
+      <action dev="alexruiz" type="fix" issue="211" due-to="Simeon Fitch">
+        Added method 'setText(String)' in org.fest.swing.fixture.JTextComponentFixture.
+      </action>
+    </release>
+    <release version="1.0b1" date="2008-07-22" description="Subsequent release">
+      <action dev="alexruiz, wanghy" type="add" issue="11">
+        Added org.fest.swing.applet.AppletViewer and helper classes in package org.fest.swing.applet.
+      </action>
+      <action dev="wanghy" type="add" issue="14">
+        JFileChooserDriver checks that lookup of buttons search for visible (or 'showing') buttons.
+      </action>
+      <action dev="alexruiz, wanghy" type="fix" issue="146" due-to="Juhos Csaba-Zsolt">
+        Added method 'menuItemWithPath(String...)' to org.fest.swing.fixture.JPopupMenuFixture.
+      </action>
+      <action dev="alexruiz, wanghy" type="fix" issue="158" due-to="vnguyen.sqa">
+        Added component matchers using commonly used search criteria to package org.fest.swing.core.matchers.
+      </action>
+      <action dev="alexruiz, wanghy" type="fix" issue="165" due-to="Simeon Fitch">
+        Replaced method 'select(JMenuItem)' with 'click(JMenuItem)' in org.fest.swing.fixture.JMenuItemFixture.
+      </action>
+      <action dev="alexruiz, wanghy" type="remove" issue="165" due-to="Simeon Fitch">
+        Removed method 'doubleClick(JMenuItem)' in org.fest.swing.fixture.JMenuItemFixture.
+      </action>
+      <action dev="alexruiz, wanghy" type="remove" issue="165" due-to="Simeon Fitch">
+        Removed method 'rightClick(JMenuItem)' in org.fest.swing.fixture.JMenuItemFixture.
+      </action>
+      <action dev="alexruiz, wanghy" type="remove" issue="165" due-to="Simeon Fitch">
+        Removed method 'click(JMenuItem, MouseButton)' in org.fest.swing.fixture.JMenuItemFixture.
+      </action>
+      <action dev="alexruiz" type="remove" issue="166" due-to="Simeon Fitch">
+        Added class org.fest.swing.fixture.GenericComponentFixture.
+      </action>
+      <action dev="alexruiz" type="fix" issue="167" due-to="Juhos Csaba-Zsolt">
+        Method 'cellReader(JComboBoxCellReader)' in org.fest.swing.fixture.JComboBoxFixture now returns 'this'.
+      </action>
+      <action dev="alexruiz" type="fix" issue="167" due-to="Juhos Csaba-Zsolt">
+        Method 'cellReader(JListCellReader)' in org.fest.swing.fixture.JListFixture now returns 'this'.
+      </action>
+      <action dev="alexruiz" type="fix" issue="167" due-to="Juhos Csaba-Zsolt">
+        Method 'cellReader(JTableCellReader)' in org.fest.swing.fixture.JTableFixture now returns 'this'.
+      </action>
+      <action dev="alexruiz" type="fix" issue="167" due-to="Juhos Csaba-Zsolt">
+        Method 'cellWriter(JTableCellWriter)' in org.fest.swing.fixture.JTableFixture now returns 'this'.
+      </action>
+      <action dev="alexruiz" type="fix" issue="167" due-to="Juhos Csaba-Zsolt">
+        Method 'cellReader(JTreeCellReader)' in org.fest.swing.fixture.JTreeFixture now returns 'this'.
+      </action>
+      <action dev="alexruiz" type="fix" issue="173" due-to="fred76131">
+        Methods 'selectItem' ensure the drop-down list in a  JComboBox is hidden after a selection has been made.
+      </action>
+      <action dev="alexruiz" type="remove" issue="174" due-to="Simeon Fitch">
+        Added class org.fest.swing.core.EmergencyAbortListener to abort running FEST-Swing tests using a predefined key 
+        combination.
+      </action>
+      <action dev="wanghy" type="fix" issue="177" due-to="Juhos Csaba-Zsolt">
+        JTableCellWriters now wait for the editor to show on the screen before starting editing a JTable cell.
+      </action>
+      <action dev="alexruiz" type="fix" issue="179" due-to="Juhos Csaba-Zsolt">
+        Method 'separator(String)' in org.fest.swing.fixture.JTreeFixture now returns 'this'.
+      </action>
+      <action dev="alexruiz" type="fix">
+        Moved abstract methods in org.fest.swing.fixture.ComponentFixture to the interfaces FocusableComponentFixture, 
+        KeyboardInputSimulationFixture, MouseInputSimulationFixture and StateVerificationFixture.
+      </action>
+      <action dev="alexruiz" type="fix">
+        Moved classes KeyPressInfo and MouseClickInfo from package org.fest.swing.fixture to org.fest.swing.core.
+      </action>
+      <action dev="alexruiz" type="fix">
+        Replaced method 'pressAndReleaseKey(int keyCode, int modifiers)' with 
+        'pressAndReleaseKey(int keyCode, int... modifiers)' in org.fest.swing.core.RobotFixture.
+      </action>
+      <action dev="alexruiz" type="remove">
+        Removed all methods related to keyboard input simulation from JListItemFixture and JTableCellFixture.
+      </action>
+      <action dev="alexruiz" type="fix">
+        Replaced IllegalArgumentException with NullPointerException when a method argument has null as its value. 
+      </action>
+      <action dev="alexruiz" type="fix">
+        Replaced ActionFailedException and LocationUnavailableException with IndexOutOfBoundsException when an index is
+        out of bounds (e.g. the row index in a JTable.) 
+      </action>
+    </release>
+    <release version="1.0a3" date="2008-06-23" description="Subsequent release">
+      <action dev="wanghy" type="fix" issue="126" due-to="Manuel Kueblboeck">
+        Disabled components should not be modified by user-like actions.
+      </action>
+      <action dev="alexruiz, wanghy" type="add" issue="138" due-to="J. Simmons">
+        Added method 'cleanUpWithoutDisposingWindows' to Robot and RobotFixture in package 'org.fest.swing.core'.
+      </action>
+      <action dev="alexruiz" type="fix" issue="140" due-to="Wim Deblauwe">
+        Method 'selectItem(String)' in JComboBoxFixture now uses the specified cell reader to find a matching value in
+        the JComboBox.
+      </action>
+      <action dev="alexruiz" type="add" issue="141" due-to="BA">
+        Added methods 'showPopupMenuAt(int)' and 'showPopupMenuAt(String)' to JTableHeaderFixture.
+      </action>
+      <action dev="wanghy, alexruiz" type="add" issue="142" due-to="Simeon Fitch, Matthias Otterbach">
+        Added methods 'enterValue(TableCell, String)' to org.fest.swing.fixture.JTableFixture.
+      </action>
+      <action dev="alexruiz, wanghy" type="add" issue="142" due-to="Simeon Fitch, Matthias Otterbach">
+        Added methods 'requireEditable(TableCell)' and 'requireNotEditable(TableCell)' to 
+        org.fest.swing.fixture.JTableFixture.
+      </action>
+      <action dev="alexruiz, wanghy" type="add" issue="142" due-to="Simeon Fitch, Matthias Otterbach">
+        Added methods 'requireEditable()' and 'requireNotEditable()' to org.fest.swing.fixture.JTableCellFixture.
+      </action>
+      <action dev="wanghy, alexruiz" type="add" issue="142" due-to="Simeon Fitch, Matthias Otterbach">
+        Added methods 'startEditing(),' 'stopEditing(),' 'cancelEditing(),' 'editor(),' and 'enterValue(String)' to 
+        org.fest.swing.fixture.JTableCellFixture.
+      </action>
+      <action dev="alexruiz" type="add" issue="144" due-to="Simeon Fitch">
+        Added methods 'findAll(ComponentMatcher)' and 'findAll(Container, ComponentMatcher)' to 
+        org.fest.swing.core.ComponentFinder to look up all the components that match certain search criteria.
+      </action>
+      <action dev="alexruiz" type="fix" issue="145" due-to="Juhos Csaba-Zsolt">
+        Fixed mapping of character '+' to a key stroke in org.fest.swing.keystroke.KeyStrokeMappingProvider_en.
+      </action>
+      <action dev="alexruiz" type="fix" issue="147" due-to="Juhos Csaba-Zsolt">
+        Fixed multiple selection in JListDriver, JTableDriver and JTreeDriver.
+      </action>
+      <action dev="wanghy" type="fix" issue="152" due-to="Juhos Csaba-Zsolt">
+        Fixed implementation of 'selectItems(JList, int, int)' in org.fest.swing.driver.JListDriver.
+      </action>
+      <action dev="alexruiz, wanghy" type="fix" issue="153" due-to="Juhos Csaba-Zsolt">
+        All fixtures now throw IllegalArgumentException if any constructor argument is null (with the exception of
+        the name of the component to look up.)
+      </action>
+      <action dev="wanghy" type="fix" issue="157" due-to="Andriy Tsykholyas, Simeon Fitch">
+        JMenuItemFixture now supports the screen menu bar in Mac OS.
+      </action>
+      <action dev="wanghy" type="fix">
+        Fixed bug in org.fest.swing.core.RobotFixture. Closing a window that is not shown resulted in an 
+        ActionFailedException.
+      </action>
+      <action dev="wanghy" type="add">
+        Renamed methods 'slideToMax' and 'slideToMin' in JSliderFixture to 'slideToMaximum' and 'slideToMinimum'
+        respectively.
+      </action>
+      <action dev="wanghy" type="add">
+        Added class 'org.fest.swing.launcher.ApplicationLauncher' to start application from the 'main' method.
+      </action>
+      <action dev="wanghy" type="remove">
+        Removed methods 'increment' and 'decrement' in JSliderFixture. These methods were not communicating their
+        intention properly and are not needed since JSliderFixture has methods 'slideToMaximum' and 
+        'slideToMinimum'.
+      </action>
+      <action dev="alexruiz" type="add">
+        Added method 'controlOrCommandMask' to org.fest.swing.util.Platform.
+      </action>
+      <action dev="alexruiz" type="add">
+        Added method 'pressAndReleaseKey(KeyPressInfo)' to all component fixtures.
+      </action>
+    </release>
+    <release version="1.0a2" date="2008-05-19" description="Subsequent release">
+      <action dev="wanghy, alexruiz" type="add" issue="68">
+        Added method 'selectPaths(String...)' and 'selectRows(int...)' to JTreeFixture.
+      </action>
+      <action dev="wanghy, alexruiz" type="add" issue="68">
+        Method 'requireSelection(String)' and 'requireSelection(row)' in JTreeFixture now take an array as argument to
+        verify multi-selection in a JTree. The new signatures are 'requireSelection(String...)' and 
+        'requireSelection(int...)' respectively.
+      </action>
+      <action dev="alexruiz, wanghy" type="add" issue="99" due-to="J. Simmons">
+        Created JTableCellReader (with default implementation BasicJTableCellReader) which reads the value of a cell in 
+        a JTable. BasicJTableCellReader supports JLabels, JComboBoxes and JCheckBoxes as cell renderers of a JTable.
+      </action>
+      <action dev="alexruiz, wanghy" type="add" issue="99" due-to="J. Simmons">
+        Added methods 'fontAt(TableCell)', 'backgroundAt(TableCell)' and 'foregroundAt(TableCell)' to JTableFixture to
+        verify the font, background and foreground of an specific cell in a JTable.
+      </action>
+      <action dev="alexruiz, wanghy" type="add" issue="99" due-to="J. Simmons">
+        Added methods 'font()', 'background()' and 'foreground()' to JTableCellFixture to verify the font, background 
+        and foreground of an specific cell in a JTable.
+      </action>
+      <action dev="alexruiz" type="fix" issue="123" due-to="Manuel Kueblboeck">
+        Fixed NullPointerException in method 'enterText' in org.fest.core.RobotFixture.
+      </action>
+      <action dev="alexruiz" type="fix" issue="124" due-to="Woody Folsom">
+        Added method 'selection' to JListFixture. This method returns the String representation of the selection of a
+        JList.
+      </action>
+      <action dev="alexruiz" type="fix" issue="124" due-to="Woody Folsom">
+        Introduced 'JListCellReader' to read values from JLists. Users can implement their own JListCellReaders when
+        using custom cell renderers in JLists. After creating a JListCellRendering, users only need to pass an instance
+        to method 'cellReader(JListCellReader)' in JListFixture.
+      </action>
+      <action dev="alexruiz" type="fix" issue="125" due-to="Woody Folsom">
+        Fixed regression. JToolBarFixture extends ComponentFixture.
+      </action>
+      <action dev="alexruiz" type="add" issue="128">
+        Created JComboBoxCellReader and BasicJComboBoxReader to support custom cell renderers in JComboBoxFixture.
+      </action>
+      <action dev="alexruiz, wanghy" type="add" issue="130">
+        Created JTreeCellReader and BasicJTreeReader to support custom cell renderers in JTreeFixture.
+      </action>
+      <action dev="wanghy, alexruiz" type="add" issue="131">
+        Added method 'requireNoSelection' to JComboBoxFixture, JListFixture, JTableFixture and JTreeFixture.
+      </action>
+      <action dev="alexruiz" type="fix" issue="133">
+        JTreeFixture now scrolls (up or down) to the row or path to select, drag or drop.
+      </action>
+      <action dev="alexruiz" type="add" issue="135">
+        Added method 'contents' to JTableFixture. This method returns the String representation of the cell values of a
+        JTable.
+      </action>
+      <action dev="alexruiz" type="add" issue="135">
+        Added method 'requireContents(String[][])' to JTableFixture. 
+      </action>
+      <action dev="wanghy, alexruiz" type="add">
+        Component finders (WindowFinder, JFileChooserFinder and JOptionPaneFinder) can perform lookups using
+        GenericTypeMatchers. Many thanks to Mariusz Saternus.
+      </action>
+      <action dev="alexruiz" type="add">
+        Added method 'font' to all fixtures. This method returns a FontFixture.
+      </action>
+      <action dev="alexruiz" type="add">
+        Added method 'background' to all fixtures. This method returns a ColorFixture.
+      </action>
+      <action dev="alexruiz" type="add">
+        Added method 'foreground' to all fixtures. This method returns a ColorFixture.
+      </action>
+      <action dev="alexruiz" type="fix">
+        Renamed method 'selectionContents' to 'selectionValue' in JTableFixture.
+      </action>
+      <action dev="alexruiz" type="fix">
+        Renamed method 'contentAt' to 'valueAt' in JTableFixture. This change was made to keep name consistency between
+        JComboBoxFixture, JListFixture and JTableFixture.
+      </action>
+      <action dev="alexruiz" type="add">
+        Added method 'requireValue(String)' to JTableCellFixture. 
+      </action>
+      <action dev="alexruiz, wanghy" type="add">
+        Added method 'requireSelection(String)' to JTreeFixture. This method verifies that a JTree has the given path 
+        selected. The path is specified as a String, for example "root/node1/node1.1".
+      </action>
+      <action dev="alexruiz, wanghy" type="add">
+        Added method 'requireSelection(int)' to JTreeFixture. This method verifies that a JTree has the row selected.
+      </action>
+      <action dev="wanghy" type="add">
+        Added methods 'showPopupMenuAt(int)' and 'showPopupMenuAt(String)' to JTreeFixture. These methods show a 
+        JPopupMenu in a given row and node path respectively.
+      </action>
+      <action dev="alexruiz, wanghy" type="add">
+        Replaced TreePath as method parameter in JTreeFixture with a String specifying the path. For
+        example, now a path can be set as "root/node1/node1.1".
+      </action>
+    </release>
+    <release version="1.0a1" date="2008-04-07" description="Subsequent release">
+      <action dev="wanghy" type="add">
+        Added methods 'selectAllText' and 'replaceText(String)' to JComboBoxFixture. 
+      </action>
+      <action dev="alexruiz" type="fix">
+        Replaced constants that indicate the operating system with methods in org.fest.swing.util.Platform. 
+      </action>
+      <action dev="alexruiz, wanghy" type="remove">
+        Eliminated some project dependencies. FEST-Swing now depends on FEST-Assert, FEST-Reflect and FEST-Util only.
+      </action>
+      <action dev="alexruiz" type="fix" issue="121" due-to="Frederik Martens">
+        Fixed regression. JPanelFixture extends ComponentFixture.
+      </action>
+      <action dev="alexruiz" type="fix" issue="120" due-to="Manuel Kueblboeck">
+        Fixed regression. JInternalFrameFixture extends ComponentFixture.
+      </action>
+      <action dev="wanghy" type="add">
+        Renamed method names that start with 'mouse' in org.fest.swing.core.Robot. For example, method
+        'mouseMove' is now 'moveMouse'. This change was done to keep method naming consistency.
+      </action>
+      <action dev="wanghy, alexruiz" type="add">
+        Added method 'pressModifiers(int)' and 'releaseModifiers(int)' to org.fest.swing.core.Robot.
+      </action>
+      <action dev="alexruiz" type="add">
+        Added methods 'focus(Component)' and 'focusAndWaitForFocusGain(Component)' to org.fest.swing.core.Robot.
+      </action>
+    </release>
+    <release version="0.9" date="2008-03-21" description="Subsequent release">
+      <action dev="wanghy, alexruiz" type="fix">
+        Fixed JListDriver and JTableDriver to scroll to the item to select, drag or drop.
+      </action>
+      <action dev="wanghy, alexruiz" type="fix" issue="116" due-to="Rich Toulouse">
+        Selecting items in JComboBox now scroll drop-down list to get to the item to select.
+      </action>
+      <action dev="wanghy" type="add" issue="110" due-to="Dan Dyer">
+        Added method 'tableHeader' to JTableFixture. This method returns a JTableHeaderFixture.
+      </action>
+      <action dev="wanghy" type="add" issue="110" due-to="Dan Dyer">
+        Added JTableHeaderFixture to test instances of JTableHeader.
+      </action>
+      <action dev="wanghy" type="fix">
+        Made methods of class org.fest.core.Settings not static. To set a particular setting, an instance of Settings
+        should be retrieved from a Robot.
+      </action>
+      <action dev="alexruiz" type="add" issue="118" due-to="Lukasz Tutaj">
+        Added methods 'includeHierarchyIfComponentNotFound' and 
+        'includeHierarchyIfComponentNotFound(boolean)' to org.fest.swing.core.ComponentFinder to indicate if the
+        component hierarchy should be included in a ComponentLookupException thrown when a component cannot be found.
+      </action>
+      <action dev="alexruiz" type="add" issue="95" due-to="Fabien Barbero">
+        Added method 'component' to ComponentFixture. It returns the GUI component in a fixture.
+      </action>
+      <action dev="alexruiz" type="add" issue="95" due-to="Fabien Barbero">
+        Added methods 'requireEditable' and 'requireNotEditable' to JComboBoxFixture, JTextComponentFixture and
+        JTreeFixture.
+      </action>
+      <action dev="alexruiz, wanghy" type="add" issue="92" due-to="Wim Deblauwe">
+        Added method 'requireNoJOptionPaneIsShowing' to RobotFixture.
+      </action>
+      <action dev="alexruiz" type="add">
+        Renamed ComponentPrinter to BasicComponentPrinter (in package org.fest.swing.core). Introduced interface 
+        ComponentPrinter.
+      </action>
+      <action dev="alexruiz" type="add">
+        Renamed ComponentFinder to BasicComponentFinder (in package org.fest.swing.core). Introduced interface 
+        ComponentFinder.
+      </action>
+      <action dev="alexruiz" type="fix">
+        Moved methods from org.fest.swing.util.Swing to org.fest.swing.util.AWT. Deleted class 
+        org.fest.swing.util.Swing. 
+      </action>
+      <action dev="alexruiz" type="add">
+        Created interface org.fest.swing.core.Robot and made RobotFixture implement it, to facilitate unit testing.
+      </action>
+      <action dev="alexruiz" type="add">
+        Added method 'showPopupMenuAt(String)' to JListFixture.
+      </action>
+    </release>
+    <release version="0.8.1" date="2008-02-04" description="Subsequent release">
+      <action dev="alexruiz" type="add">
+        Updated dependency versions: fest-assert-0.9.1, fest-reflect-0.3, fest-util-0.3.
+      </action>
+      <action dev="alexruiz" type="add">
+        Due to the introduction of component drivers, fest-reflect is a required, compile-time dependency.
+      </action>
+      <action dev="alexruiz" type="add" due-to="Wim Deblauwe">
+        All component formatters in org.fest.swing.formatter display the properties 'visible' and 'showing'.
+      </action>
+      <action dev="alexruiz" type="fix" issue="108" due-to="Wim Boffe">
+        ComponentFinderTemplate uses the specified name to find a component.
+      </action>
+      <action dev="alexruiz" type="fix" issue="105" due-to="Woody Folsom">
+        Fixed constructors in ContainerFixture to use lookup scope from org.fest.swing.core.Settings.
+      </action>
+      <action dev="wanghy, alexruiz" type="add">
+        Added method 'click(TableCell, MouseButton)' to JTableFixture.
+      </action>
+      <action dev="wanghy, alexruiz" type="add">
+        Added method 'click(TableCell, MouseClickInfo)' to JTableFixture.
+      </action>
+      <action dev="wanghy, alexruiz" type="add">
+        Added method 'scrollTo(int)' to JScrollBarFixture.
+      </action>
+      <action dev="alexruiz" type="add">
+        Added method 'found' to ComponentLookupException. This method returns all the GUI components found when looking
+        up for a single component.
+      </action>
+      <action dev="alexruiz" type="add">
+        Moved methods 'showPopupMenu' and 'findActivePopupMenu' from org.fest.swing.core.RobotFixture to
+        org.fest.swing.driver.JPopupMenuDriver.
+      </action>
+      <action dev="alexruiz" type="add" issue="104" due-to="Fabien Barbero">
+        Added method 'pressAndReleaseKey(int keyCode, int modifiers)' to org.fest.swing.core.RobotFixture.
+      </action>
+      <action dev="alexruiz, wanghy" type="add">
+        Added the following component drivers to replace Abbot's testers: ComponentDriver, ContainerDriver,
+        FrameDriver, JComboBoxDriver, JComponentDriver, JInternalFrameDriver, JListDriver, JMenuItem, JPopupMenu, 
+        JScrollBarDriver, JSliderDriver, JSpinnerDriver, JTabbedPane, JTable, JTextComponentDriver, JToolBarDriver, 
+        JTreeDriver. Component drivers are intended for internal use only.
+      </action>
+      <action dev="alexruiz" type="add">
+        Added method 'enterText(String)' to class org.fest.swing.core.RobotFixture.
+      </action>
+      <action dev="alexruiz" type="add">
+        Added method 'timeoutToFindPopup' to class org.fest.swing.core.Settings. This method sets the number of 
+        milliseconds to wait before failing to find a pop-up menu that should appear.
+      </action>
+      <action dev="alexruiz" type="add">
+        Added method 'click(Component, Point)' to org.fest.swing.core.RobotFixture.
+      </action>
+      <action dev="alexruiz" type="add">
+        Added several constants to org.fest.swing.core.Settings that indicate the operating system the tests are running 
+        on (e.g. 'IS_WINDOWS', 'IS_OS_X', etc.) 
+      </action> 
+      <action dev="alexruiz" type="fix">
+        Renamed method 'robotAutoDelay' to 'delayBetweenEvents' in class org.fest.swing.core.Settings.
+      </action>
+      <action dev="alexruiz" type="add">
+        Added method 'timeoutToBeVisible' to class org.fest.swing.core.Settings. This method sets the the number of 
+        milliseconds to wait for a component to be visible. 
+      </action> 
+      <action dev="alexruiz" type="fix">
+        Fixed bug in which IntrospectionComponentFormatter could show the value of the property 'showing'. 
+      </action>
+    </release>
+    <release version="0.8" date="2008-01-09" description="Subsequent release">
+      <action dev="alexruiz" type="fix" issue="88" due-to="Rich Toulouse">
+        Renamed method 'menuItem(String...)' in ContainerFixture to 'menuItemWithPath(String...)'.
+      </action>
+      <action dev="alexruiz" type="fix" issue="80" due-to="Win Deblauwe, Volker Berlin">
+        Added global setting 'componentLookupScope' (in class Settings) to configure scope of component lookup
+        (in fixtures only.)
+      </action>
+      <action dev="alexruiz" type="fix" issue="80" due-to="Win Deblauwe, Volker Berlin">
+      	Added enum ComponentLookupScope to configure component lookup to consider showing components only.
+      </action>
+      <action dev="wanghy, alexruiz" type="add" issue="75" due-to="Fabien Barbero">
+      	Added JScrollBarFixture and JScrollPaneFixture.
+      </action>
+      <action dev="alexruiz, wanghy" type="fix" issue="81" due-to="Win Deblauwe">
+      	Component lookup using a org.fest.swing.core.ComponentFinder now throws ComponentLookupException if more than
+      	one component matching the given search criteria is found.
+      </action>
+      <action dev="alexruiz" type="fix" issue="81" due-to="Win Deblauwe">
+      	Moved 'print' methods from org.fest.swing.core.ComponentFinder to the new class
+      	org.fest.swing.core.ComponentPrinter.
+      </action>
+      <action dev="alexruiz" type="add">
+      	Added NameAndTypeMatcher to lookup GUI components by name and type.
+      </action>
+      <action dev="alexruiz" type="add">
+      	Added method 'printer()' to RobotFixture. This method returns a ComponentPrinter using the same component
+      	hierarchy as the RobotFixture.
+      </action>
+      <action dev="alexruiz" type="fix" issue="76" due-to="Win Deblauwe">
+      	ComponentFinders now match components if 'isShowing()' is true, instead of checking for 'isVisible()'.
+      </action>
+    	<action dev="alexruiz, wanghy" type="fix" issue="71" due-to="Win Deblauwe">
+    		When components are not found, the message in the thrown ComponentLookupException now includes list of
+    		Components in the hierarchy.
+    	</action>
+    	<action dev="wanghy" type="add" issue="71" due-to="Win Deblauwe">
+    		Added methods 'printComponents(PrintStream, Container)' and 
+    		'printComponents(PrintStream, Class, Container)' to ComponentFinder.
+    	</action>
+    	<action dev="alexruiz" type="fix" issue="71" due-to="Wim Deblauwe">
+    		Added 'toString' implementation to org.fest.swing.core.NameMatcher to facilitate debugging.
+    	</action>
+    	<action dev="alexruiz" type="fix" issue="71" due-to="Wim Deblauwe">
+    		Added 'toString' implementation to org.fest.swing.core.TypeMatcher to facilitate debugging.
+    	</action>
+    	<action dev="alexruiz" type="fix" issue="71" due-to="Wim Deblauwe">
+    		Added 'toString' implementation to org.fest.swing.fixture.JMenuItemMatcher to facilitate debugging.
+    	</action>
+    	<action dev="alexruiz" type="fix" issue="71" due-to="Wim Deblauwe">
+    		Added 'toString' implementation to org.fest.swing.fixture.JButtonMatcher to facilitate debugging.
+    	</action>
+			<action dev="alexruiz" type="add">
+				Renamed methods 'wait' and 'delay' in RobotFixture to 'pause'. Then moved methods 'pause' to the new class
+				Pause.
+			</action>
+      <action dev="wanghy, alexruiz" type="add" issue="69" due-to="Wim Deblauwe">
+				Added method 'robotAutoDelay' in class 'org.fest.swing.core.Settings' to configure test speed.
+			</action>      
+      <action dev="wanghy, alexruiz" type="add" issue="70" due-to="Ken Geis">
+				Added JInternalFrameFixture.
+			</action>      
+      <action dev="wanghy, alexruiz" type="add">
+				Added method 'moveTo(Point)' to FrameFixture and DialogFixture.
+			</action>      
+      <action dev="alexruiz" type="add" issue="73" due-to="Wim Deblauwe">
+				Added method 'requireValue(Object)' to JSpinnerFixture.
+			</action>      
+      <action dev="alexruiz" type="add" issue="74" due-to="Wim Deblauwe">
+				Added method 'increment(int)' to JSpinnerFixture.
+			</action>      
+      <action dev="alexruiz" type="add">
+				Added method 'decrement(int)' to JSpinnerFixture.
+			</action>      
+			<action dev="alexruiz, wanghy" type="add" issue="63" due-to="Fabien Barbero">
+				Added class JListItemFixture. that knows how to simulate user input on a specific item of a JList.
+			</action>
+			<action dev="alexruiz, wanghy" type="add" issue="63" due-to="Fabien Barbero">
+				Added method 'item(int)' and 'item(String)' to JListFixture. These methods return a JListItemFixture.
+			</action>
+			<action dev="alexruiz" type="add" issue="63" due-to="Fabien Barbero">
+			  Added method 'showPopupMenuAt(Point)' to ComponentFixture (and therefore to all fixtures).
+			</action>
+			<action dev="alexruiz, wanghy" type="remove">
+				Removed unnecessary generic types in ItemGroupFixture, TextInputFixture and TextDisplayFixture.
+			</action>
+      <action dev="alexruiz" type="add" issue="52" due-to="John Stephi">
+				Added method 'requireSelection(String)' to JComboBoxFixture.
+			</action>      
+      <action dev="alexruiz" type="add" issue="52" due-to="Wim Deblauwe">
+				Added method 'requireSelection(String)' to JListFixture.
+			</action>      
+      <action dev="alexruiz" type="add" issue="52" due-to="Wim Deblauwe">
+				Added method 'requireSelectedItems(String...)' to JListFixture.
+			</action>      
+      <action dev="alexruiz" type="add" issue="64" due-to="Fabien Barbero">
+				Added method 'selectItems(int...)' to allow multiple-selection a JListFixture.
+			</action>      
+      <action dev="alexruiz" type="add" issue="64" due-to="Fabien Barbero">
+				Added method 'selectItems(String...)' to allow multiple-selection a JListFixture.
+			</action>      
+      <action dev="alexruiz" type="add" issue="64" due-to="Wim Deblauwe">
+				Added method 'selectItems(Range.From, Range.To)' to allow selection of a range of items in a JListFixture.
+			</action>      
+      <action dev="alexruiz" type="add" issue="66" due-to="Wim Deblauwe, Volker Berlin">
+        Added methods 'okButton', 'cancelButton', 'yesButton' and 'noButton' to JOptionPaneFixture. These methods return 
+        a JButtonFixture wrapping the buttons in a JOptionPane
+      </action>
+			<action dev="alexruiz" type="fix" issue="67" due-to="Rich Toulouse">
+				Added method 'panel' to class ContainerFixture. FrameFixture and DialogFixture can now lookup a JPanel (or 
+				subclass by type (if only one JPanel in the container,) by name or by custom search criteria.
+			</action>
+			<action dev="alexruiz" type="add">
+			  Added method 'invokeAndWait(Runnable)' to RobotFixture.
+			</action>
+    </release>
+    <release version="0.7" date="2007-11-27" description="Subsequent release">
+			<action dev="wanghy, alexruiz" type="add" due-to="Steve Tom">
+				Added method 'takeScreenshotOf' to class ScreenshotTaker. This method takes screenshots of a particular GUI 
+				component.
+			</action>
+			<action dev="wanghy, alexruiz" type="add" due-to="Steve Tom">
+				Added method 'saveComponentAsPng' to class ScreenshotTaker. This method takes screenshots of a particular GUI 
+				component and saves it as PNG.
+			</action>
+			<action dev="alexruiz" type="add" issue="58" due-to="Volker Berlin">
+				Added method 'printComponents' (with overloaded version) to ComponentFinder.
+			</action>
+			<action dev="alexruiz" type="add" issue="60" due-to="Volker Berlin">
+				Added method 'toggleButton' (and overloaded versions) to org.fest.swing.fixture.ContainerFixture.
+			</action>
+			<action dev="alexruiz" type="add" issue="60" due-to="Volker Berlin">
+				Added org.fest.swing.fixture.JToggleButtonFixture to handle javax.swing.JToggleButton(s).
+			</action>
+			<action dev="alexruiz" type="remove" issue="60" due-to="Volker Berlin">
+				Renamed org.fest.swing.fixture.JToggleButtonFixture to org.fest.fixture.TwoStateButtonFixture.				
+			</action>
+      <action dev="alexruiz, wanghy" type="add" issue="55" due-to="Volker Berlin">
+        Moved Ant task-related classes from the package 'org.fest.swing.junit' to
+        'org.fest.swing.junit.ant'.
+      </action>
+      <action dev="alexruiz, wanghy" type="add" issue="55" due-to="Volker Berlin">
+        Added support for taking screenshots of failing tests with JUnit inside an IDE.
+      </action>
+			<action dev="alexruiz" type="fix" issue="59">
+				Moved org.swing.fest.GUITest and org.fest.swing.util.GUITestFinder to package org.fest.swing.annotation.
+			</action>
+			<action dev="alexruiz" type="fix" issue="59">
+				Moved exception classes in package org.fest.swing to org.fest.swing.exception.
+			</action>
+			<action dev="alexruiz" type="fix" issue="59">
+				Moved classes in package org.fest.swing to org.fest.swing.core.
+			</action>
+			<action dev="alexruiz" type="fix" issue="59">
+				Renamed package org.fest.swing.fixture.util to org.fest.swing.finder.			
+			</action>
+      <action dev="wanghy" type="add" issue="56" due-to="Volker Berlin">
+        Added method 'requireEnabled(Timeout)' to all component fixtures.
+      </action>
+      <action dev="wanghy" type="add" issue="56" due-to="Volker Berlin">
+        Added class JOptionPaneFinder to find a JOptionPane with timeout support.                
+      </action>
+      <action dev="wanghy, alexruiz" type="add">
+        Added factory method 'timeout(long, java.util.concurrent.TimeUnit)' to class org.fest.swing.core.Timeout.
+      </action>
+      <action dev="wanghy" type="fix">
+        Renamed method 'time' to 'duration' in class org.fest.swing.core.Timeout.
+      </action>
+      <action dev="wanghy" type="fix" due-to="John Stephi" issue="57">
+        Renamed method 'checkbox' to 'checkBox' in ContainerFixture.
+      </action>
+      <action dev="wanghy" type="add">
+        Added method 'click(Component, Point, MouseButton, int)' to RobotFixture. This method simulates a user clicking
+        on the given component, at the specific point, with the given mouse button, the given number of times.
+      </action>
+      <action dev="wanghy" type="add" due-to="Fabien Barbero" issue="40">
+        Added methods 'doubleClickItem(int)' and 'doubleClickItem(String)' to JListFixture.
+      </action>
+      <action dev="alexruiz" type="add">
+        Uploaded source attachments to Maven repository.
+      </action>
+      <action dev="wanghy" type="add" issue="42">
+        Added class JPanelFixture.        
+      </action>
+      <action dev="alexruiz" type="fix">
+        Moved ImageException and ScreenshotTaker from package org.fest.swing.util to package org.fest.swing.image.        
+      </action>
+      <action dev="alexruiz" type="fix">
+        Renamed org.fest.swing.util.GUITests to org.fest.swing.annotation.GUITestFinder.
+      </action>
+      <action dev="wanghy" type="add" issue="45">
+        Add timeout for RobotFixture.wait(Condition): RobotFixture.wait(Condition, Timeout).
+      </action>
+      <action dev="alexruiz" type="add" issue="44" due-to="Javier Sandino">
+        Added method 'close' to WindowFixture (superclass of FrameFixture and DialogFixture).
+      </action>
+      <action dev="alexruiz" type="fix" issue="50" due-to="Javier Sandino">
+        Created class JFileChooserFinder.
+      </action>
+    </release>
+    <release version="0.6.1" date="2007-09-26" description="Subsequent release">
+      <action dev="alexruiz" type="fix" due-to="Pavol Bernhauser">
+        Added methods 'radioButton' and 'table' to ContainerFixture (superclass of DialogFixture and FrameFixture).
+      </action>
+      <action dev="alexruiz" type="fix" due-to="Andres Almiray">
+        Added static methods 'leftButton', 'middleButton' and 'rightButton' to MouseClickInfo.
+      </action>
+    </release>
+    <release version="0.6" date="2007-09-25" description="Subsequent release">
+      <action dev="alexruiz" type="add" issue="27" due-to="Jesper Thaning">
+        Assertion failures in all fixtures now provide better feedback.
+      </action>
+      <action dev="wanghy" type="add" issue="34">
+        Added support for time delays in RobotFixture.
+      </action>
+      <action dev="wanghy" type="add">
+        Added method 'pressAndReleaseKeys(int...)', 'pressAndReleaseKey(int)', and 'releaseKey(int)' to all fixtures.
+      </action>
+      <action dev="alexruiz" type="add" issue="33">
+        Added method 'rightClick' to all fixtures.
+      </action>
+      <action dev="wanghy" type="add">
+        Added method 'doubleClick' to all fixtures.
+      </action>
+      <action dev="wanghy" type="add">
+        Added method 'click(MouseButton)' to all fixtures; this method simulates a user clicking the specified mouse
+        button.
+      </action>
+      <action dev="wanghy" type="add">
+        Added method 'click(MouseClickInfo)' to all fixtures; this method simulates a user clicking the specified mouse
+        button, the specified number of times.
+      </action>
+      <action dev="alexruiz" type="add">
+        Added method 'showPopupMenu' to all fixtures. This method shows a pop-up menu on a component and returns a
+        JPopupMenuFixture.
+      </action>
+      <action dev="alexruiz" type="remove">
+        Replaced class JTableFixture.Cell with TableCell.
+      </action>
+      <action dev="alexruiz" type="add">
+        In JTableFixture, methods that used to take two int values as the row and column indices as arguments, now
+        take a TableCell as argument.
+      </action>
+      <action dev="alexruiz" type="add">
+        Added method 'cell(TableCell)' to JTableFixture, which returns a fixture that can manage the specified table
+        cell.
+      </action>
+      <action dev="wanghy" type="add">
+        Added support for JPopupMenu, JRadioButton and JSplitPane.
+      </action>
+      <action dev="alexruiz" type="remove">
+        Renamed method 'contents' to 'selectionContents' in JTableFixture.
+      </action>
+      <action dev="alexruiz" type="remove">
+        Removed method testerCastedTo from ComponentFixture.
+      </action>
+    </release>
+    <release version="0.5" date="2007-08-30" description="Subsequent release">
+      <action dev="alexruiz" type="add" due-to="Fabien Barbero">
+        Added drag 'n drop support for JList, JTable and JTree.        
+      </action>
+      <action dev="wanghy" type="add">
+        Added support for custom matchers for component lookup. This feature is useful when testing GUI components that
+        don't have an associated name (e.g. testing legacy applications.)
+      </action>
+      <action dev="alexruiz" type="add">
+        Added utility class Platform, which contains platform-specific utility methods.
+      </action>
+      <action dev="alexruiz" type="add" due-to="Fabien Barbero">
+        ContainerFixture now recognizes JFileChooserFixture and JListFixture.
+      </action>
+    </release>
+    <release version="0.5-SNAPSHOT" date="2007-08-06" description="Subsequent release">
+      <action dev="alexruiz, wanghy" type="add" issue="15">
+        Support for testing time-consuming tasks
+      </action>
+      <action dev="alexruiz, wanghy" type="add">
+        Swing module and the extensions for TestNG and JUnit are included in one zip file.
+      </action>
+    </release>
+    <release version="0.4" date="2007-07-17" description="Subsequent release">
+      <action dev="alexruiz, wanghy" type="add" issue="3">
+        Now it is possible to embed screenshots of failing GUI tests in JUnit's HTML report.
+      </action>
+      <action dev="alexruiz, wanghy" type="add">
+        Added support for more Swing components: JTable, JSpinner, JSlider and JFileChooser.
+      </action>
+      <action dev="alexruiz, wanghy" type="add">
+        Separated the TestNG and JUnit extensions (screenshots of failing tests) into their own separate projects.
+      </action>
+    </release>
+    <release version="0.3" date="2007-06-04" description="First public release">
+      <action dev="alexruiz" type="fix" issue="1">
+        Added class ScreenLock to guarantee real sequential execution of GUI tests, regardless of the testing framework
+        being used (JUnit or TestNG.)
+      </action>
+      <action dev="alexruiz, wanghy" type="add">
+        Added capability to add a screenshot of the desktop to a TestNG HTML test report when a test fails.
+      </action>
+      <action dev="alexruiz" type="add" due-to="Keith Coughtrey">
+        Added support for testing JTrees.        
+      </action>
+      <action dev="alexruiz" type="add" due-to="Jeff Bay">
+        Replaced prefix 'should' with 'require' in fixture assertions to make API more concise (e.g. method
+        'shouldBeVisible' is now 'requireVisible.')        
+      </action>
+      <action dev="alexruiz" type="fix" due-to="Jeff Bay">
+        Renamed method 'shouldHaveThisText' to 'requireText' in interface TextDisplayFixture.
+      </action>
+      <action dev="alexruiz" type="fix" due-to="Jeff Bay">
+        Removed prefix 'find' from methods in ContainerFixture (e.g. method 'findLabel' is now 'label.')
+      </action>
+      <action dev="alexruiz, wanghy" type="add">
+        Added Maven 2 tasks for Ant for dependency management.
+      </action>
+      <action dev="alexruiz, wanghy" type="add">
+        Created a Maven 2 pom.xml file for Abbot.
+      </action>
+      <action dev="alexruiz" type="add">
+        Created a Maven 2 local repository containing all FEST dependencies. This way, it is not necessary to download
+        any dependency from a remote Maven repository when building FEST.
+      </action>
+      <action dev="alexruiz, wanghy" type="add">
+        Added module fest-reflect, which provides a 'fluent interface' that simplifies the usage of Java reflection.
+      </action>
+    </release>
+  </body>
+</document>

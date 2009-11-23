@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<p>
+This document is the API specification for the <a href="http://fest.easytesting.org/swing" target="_blank">FEST</a> Swing 
+Module.
+</p>
+<p>
+The FEST Swing module is an Open Source library 
+(<a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache 2.0 license</a>) that provides:
+<ul>
+<li>
+Simulation of user-generated events and reliable GUI component lookup
+</li>
+<li>
+Easy-to-use and powerful API that simplifies creation and maintenance of Swing GUI functional tests:
+<pre>
+<code>
+  dialog.comboBox(&quot;domain&quot;).select(&quot;Users&quot;);
+  dialog.textBox(&quot;username&quot;).enterText(&quot;alex.ruiz&quot;);
+  dialog.button(&quot;ok&quot;).click();
+  dialog.optionPane().requireErrorMessage()
+                     .requireMessage(&quot;Please enter your password&quot;);
+</code>
+</pre>
+</li>
+<li>
+Supports both <a href="http://www.junit.org" target="_blank">JUnit</a> and 
+<a href="http://testng.org" target="_blank">TestNG</a>
+</li>
+<li>
+Ability to take screenshots of failed GUI tests and embed them in a HTML report (<a href="http://www.junit.org" target="_blank">JUnit</a> and <a href="http://testng.org" target="_blank">TestNG</a>)
+</li>
+<li>
+Experimental <a href="http://groovy.codehaus.org/" target="_blank">Groovy</a> Builder support for creating GUI tests (coming soon!)
+</li>
+</ul> 
+</p>
+<p>
+For more information, please read more about <a href="org/fest/swing/fixture/package-summary.html">FEST-Swing fixtures</a> 
+ or the 
+<a href="http://docs.codehaus.org/display/FEST/Getting+Started" target="_blank">Getting Started</a> guide. 
+</p>
+</body>
+</html>

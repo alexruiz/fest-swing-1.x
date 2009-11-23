@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<faqs title="Frequently Asked Questions" toplink="false">
+  <part id="configuration">
+    <title>Configuration</title>
+    
+    <faq id="test-delay">
+      <question>
+        My GUI test runs too fast. Is there a way to set a delay between generated events?
+      </question>
+      <answer>
+        <p>
+          To set a delay between generated events, simply call the method '<code class="code">robotAutoDelay(int)</code>'
+          in <code class="code">org.fest.swing.core.Settings</code>. The parameter is the millisecond count in between 
+          generated events. Example:
+          <pre class="prettyprint">
+Settings.<span class="fnc">robotAutoDelay</span>(100);</pre>                  
+        </p>
+      </answer>
+    </faq>
+    <faq id="lookup-scope">
+      <question>
+        The fixtures in FEST-Swing are looking up components that are showing only. How can I change that?
+      </question>
+      <answer>
+        <p>  
+	        By default, the fixtures FEST-Swing look up components that are showing only. To change the scope of the
+	        lookup call the method '<code class="code">componentLookupScope(ComponentLookupScope)</code>' 
+	        in <code class="code">org.fest.swing.core.Settings</code> passing
+	        <code class="code">ComponentLookupScope.ALL</code> as parameter. Example:
+	          <pre class="prettyprint">
+Settings.<span class="fnc">componentLookupScope</span>(ComponentLookupScope.ALL);</pre>
+        </p>                  
+        <p>
+          Please note that this setting only affects FEST-Swing's fixtures only. Lookup methods in 
+          <code class="code">ComponentFinder</code> take a <code class="code">boolean</code> parameter that indicates
+          if the lookup should be limited to showing components or not.
+        </p>
+        <p>
+          For more information, please visit the section 
+          &quot;<a href="component-lookup.html">GUI component lookup</a>&quot;.
+        </p>
+      </answer>
+    </faq>
+  </part>
+
+  <part id="troubleshooting">
+    <title>Troubleshooting</title>
+
+    <faq id="irresponsive-tests">
+      <question>
+        My GUI test is frozen. It is not responding. What can I do?
+      </question>
+      <answer>
+        <p>
+          The following are the possible reasons for having a irresponsive GUI tests:
+          <ul>
+            <li>there is more than one active <code class="code">RobotFixture</code> in a test class</li>
+            <li>the method '<code class="code">cleanUp</code>' is never called after each test method</li>
+          </ul>
+        </p>
+        <p>
+          For more information please read the 
+          <a href="guidelines.html">guidelines for writing tests with FEST-Swing</a>.
+        </p>
+      </answer>      
+    </faq>
+    <faq id="lookup-failed">
+      <question>
+        Why FEST-Swing cannot find a component in my GUI?      
+      </question>
+      <answer>
+        <p>
+          A component lookup can fail for two reasons:
+          <ul>
+            <li>a GUI component matching the search criteria cannot be found</li>
+            <li>more than one matching component was found</li>
+          </ul>
+        </p>
+        <p>
+          In either case, the thrown <code class="code">ComponentLookupException</code> contains
+          helpful information (such as the component hierarchy) that can help you diagnose the problem.
+        </p>
+        <p>
+          For more information please read the section
+          &quot;<a href="lookup-troubleshoot.html">troubleshooting component lookups</a>.&quot;
+        </p>
+      </answer>    
+    </faq>
+    <faq id="test-fails-in-other-machine">
+      <question>
+        My GUI test passes on my machine but not in the Continuous Integration server. What's wrong?
+      </question>
+      <answer>
+        <p>
+          This type of failures are usually due to environmental conditions (e.g. operating system, JDK version, etc.) 
+          A good way to diagnose this type of problems is to take a screenshot of the desktop the moment a GUI test 
+          fails, just to confirm that nothing is preventing the <code class="code">RobotFixture</code> from accessing
+          the GUI under test. FEST-Swing can automatically take a screenshot of the desktop, or if you prefer, you can
+          take the screenshot yourself using FEST-Swing's API.
+        </p>
+        <p>
+          For more information, please read the section 
+          &quot;<a href="failure-screenshots">screenshots of failing tests</a>.&quot;
+        </p>
+      </answer>
+    </faq>
+    <faq id="printing-hierarchy">
+      <question>
+        I like the way a ComponentLookupException displays the AWT component hierarchy. How can I print the hierarchy myself?
+      </question>
+      <answer>
+        <p>
+          You can use a <code class="code">org.fest.swing.core.ComponentPrinter</code> to &quot;print&quot; the AWT
+          component hierarchy used in your GUI test. The following code listing shows how to print the component 
+          hierarchy to the &quot;stardard&quot; output stream:
+          <pre class="prettyprint">
+<span class="typ">RobotFixture</span> robot = RobotFixture.<span class="fnc">robotWithNewAwtHierarchy</span>();
+
+<span class="typ">ComponentPrinter</span> printer = robot.<span class="fnc">printer</span>();
+printer.<span class="fnc">printComponents</span>(System.out);</pre>          
+        </p>
+        <p>
+          <code class="code">ComponentPrinter</code> uses component formatters to display information relevant to
+          functional GUI testing. For more information about component formatters (including creating your own and/or
+          overriding existing ones) please visit the section 
+          &quot;<a href="component-formatter.html">component formatters</a>.&quot;
+        </p>      
+      </answer>
+    </faq>
+  </part>
+</faqs>
+
