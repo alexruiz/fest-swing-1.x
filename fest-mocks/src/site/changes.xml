@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+  <properties>
+    <title>Changelog</title>
+    <author email="alex.ruiz.05@gmail.com">Alex Ruiz</author>
+  </properties>
+  <body>
+    <release version="1.1" date="TBD" description="Subsequent release">
+      <action dev="alexruiz" type="fix" issue="FEST-130" due-to="Felipe Lemme">
+        Added support for EasyMock 2.4.
+      </action>
+      <action dev="alexruiz" type="fix">
+        Migrated tests to JUnit.
+      </action>
+    </release>
+    <release version="1.0" date="2008-12-10" description="Subsequent release">
+      <action dev="alexruiz" type="fix">
+        Methods 'expectations', 'codeToTest' and 'setUp' in EasyMockTemplate now throw Throwable.
+      </action>
+      <action dev="alexruiz" type="add">
+        Added method 'cleanUp' to EasyMockTemplate.
+      </action>
+      <action dev="alexruiz" type="add">
+        Added class UnexpectedError that wraps any checked exception thrown by EasyMockTemplate.
+      </action>
+    </release>
+    <release version="0.1" date="2007-04-28" description="First release">
+      <action dev="alexruiz" type="add">
+        Created EasyMockTemplate.
+      </action>
+    </release>
+  </body>
+</document>
