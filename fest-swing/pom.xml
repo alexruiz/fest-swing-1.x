@@ -64,12 +64,6 @@
 			</plugin>
 		</plugins>
 	</build>
-	<repositories>
-		<repository>
-			<id>fest</id>
-			<url>http://svn.codehaus.org/fest/m2/repo</url>
-		</repository>
-	</repositories>
 	<scm>
 		<developerConnection>scm:svn:https://svn.codehaus.org/fest/</developerConnection>
 		<connection>scm:svn:http://svn.codehaus.org/fest/</connection>
