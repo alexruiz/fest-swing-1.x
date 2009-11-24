@@ -9,6 +9,7 @@
     <fileSet>
       <includes>
         <include>pom.xml</include>
+        <include>LICENSE.txt</include>
       </includes>
     </fileSet>
     <fileSet>

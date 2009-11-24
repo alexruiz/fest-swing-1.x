@@ -11,7 +11,7 @@
   <licenses>
     <license>
       <name>Apache License, Version 2.0</name>
-      <url>http://www.apache.org/licenses/LICENSE-2.0</url>
+      <url>LICENSE.txt</url>
       <distribution>repo</distribution>
     </license>
   </licenses>
@@ -52,6 +52,7 @@
       </roles>
     </developer>
     <developer>
+      <id>steveonjava</id>
       <name>Stephen Chin</name>
       <url>http://steveonjava.com/</url>
       <roles>
@@ -59,12 +60,14 @@
       </roles>
     </developer>
     <developer>
+      <id>csaba.juhos</id>
       <name>Juhos Csaba-Zsolt</name>
       <roles>
         <role>Developer</role>
       </roles>
     </developer>
     <developer>
+      <id>csaba.juhos</id>
       <name>Szczepan Faber</name>
       <url>http://monkeyisland.pl/</url>
       <roles>
@@ -79,6 +82,7 @@
       </roles>
     </developer>
     <developer>
+      <id>michaelhuettermann</id>
       <name>Michael Huttermann</name>
       <url>http://michaelhuettermann.blogspot.com/</url>
       <roles>
@@ -399,7 +403,7 @@
       <plugin>
         <groupId>com.atlassian.maven.plugins</groupId>
         <artifactId>maven-clover2-plugin</artifactId>
-        <version>2.6.2</version>
+        <version>2.6.3</version>
         <configuration>
           <licenseLocation>../clover.license</licenseLocation>
           <includesTestSourceRoots>false</includesTestSourceRoots>
