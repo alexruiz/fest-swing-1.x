@@ -1,11 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd ">
-	<modelVersion>4.0.0</modelVersion>
-	<groupId>org.easytesting</groupId>
-	<artifactId>fest-site-skin</artifactId>
-	<version>1.0</version>
-	<name>Maven Site Skin</name>
-	<description>Maven Site Skin</description>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd ">
+
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.easytesting</groupId>
+  <artifactId>fest-site-skin</artifactId>
+  <version>1.0</version>
+  <name>Maven Site Skin</name>
+  <description>Maven Site Skin</description>
+  <distributionManagement>
+    <repository>
+      <id>codehaus</id>
+      <name>CodeHaus Maven Repository</name>
+      <url>dav:https://dav.codehaus.org/repository/fest/</url>
+    </repository>
+    <snapshotRepository>
+      <id>codehaus.snapshot</id>
+      <name>CodeHaus Maven Snapshot Repository</name>
+      <url>dav:https://dav.codehaus.org/snapshots.repository/fest/</url>
+    </snapshotRepository>
+  </distributionManagement>
 </project>
