@@ -17,10 +17,11 @@ package org.fest.swing.driver;
 import static javax.swing.JSplitPane.VERTICAL_SPLIT;
 import static org.fest.swing.core.MouseButton.LEFT_BUTTON;
 import static org.fest.swing.driver.ComponentStateValidator.validateIsEnabledAndShowing;
+import static org.fest.swing.driver.JSplitPaneLocationCalculator.calculateLocationToMoveDividerTo;
 import static org.fest.swing.driver.JSplitPaneSetDividerLocationTask.setDividerLocation;
 import static org.fest.swing.edt.GuiActionRunner.execute;
 
-import java.awt.Point;
+import java.awt.*;
 
 import javax.swing.JSplitPane;
 
@@ -57,8 +58,9 @@ public class JSplitPaneDriver extends JComponentDriver {
    */
   @RunsInEDT
   public void moveDividerTo(JSplitPane splitPane, int location) {
-    simulateMovingDivider(splitPane, location);
-    setDividerLocation(splitPane, location);
+    int newLocation = calculateLocationToMoveDividerTo(splitPane, location);
+    simulateMovingDivider(splitPane, newLocation);
+    setDividerLocation(splitPane, newLocation);
     robot.waitForIdle();
   }
 
@@ -78,7 +80,7 @@ public class JSplitPaneDriver extends JComponentDriver {
   }
 
   @RunsInEDT
-  private static GenericRange<Point> validateAndFindWhereToMoveDividerVertically(final JSplitPane splitPane, 
+  private static GenericRange<Point> validateAndFindWhereToMoveDividerVertically(final JSplitPane splitPane,
       final int location) {
     return execute(new GuiQuery<GenericRange<Point>>() {
       protected GenericRange<Point> executeInEDT() {
@@ -87,21 +89,21 @@ public class JSplitPaneDriver extends JComponentDriver {
       }
     });
   }
-  
+
   @RunsInCurrentThread
   private static GenericRange<Point> whereToMoveDividerVertically(JSplitPane splitPane, int location) {
       int x = splitPane.getWidth() / 2;
       int dividerLocation = splitPane.getDividerLocation();
       return new GenericRange<Point>(new Point(x, dividerLocation), new Point(x, location));
   }
-  
+
   private void simulateMovingDividerHorizontally(JSplitPane splitPane, int location) {
     GenericRange<Point> whereToMove = validateAndFindWhereToMoveDividerHorizontally(splitPane, location);
     simulateMovingDivider(splitPane, whereToMove);
   }
 
   @RunsInEDT
-  private static GenericRange<Point> validateAndFindWhereToMoveDividerHorizontally(final JSplitPane splitPane, 
+  private static GenericRange<Point> validateAndFindWhereToMoveDividerHorizontally(final JSplitPane splitPane,
       final int location) {
     return execute(new GuiQuery<GenericRange<Point>>() {
       protected GenericRange<Point> executeInEDT() {
