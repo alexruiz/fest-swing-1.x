@@ -6,8 +6,8 @@
 package org.fest.swing.driver;
 
 import static javax.swing.JSplitPane.VERTICAL_SPLIT;
-import static org.fest.swing.driver.HorizontalJSplitPaneLocationCalculator.calculateLocationToMoveDividerToHorizontally;
-import static org.fest.swing.driver.VerticalJSplitPaneLocationCalculator.calculateLocationToMoveDividerToVertically;
+import static org.fest.swing.driver.HorizontalJSplitPaneDividerLocation.locationToMoveDividerToHorizontally;
+import static org.fest.swing.driver.VerticalJSplitPaneDividerLocation.locationToMoveDividerToVertically;
 import static org.fest.swing.edt.GuiActionRunner.execute;
 
 import javax.swing.JSplitPane;
@@ -24,15 +24,15 @@ import org.fest.swing.edt.GuiQuery;
 final class JSplitPaneLocationCalculator {
 
   @RunsInEDT
-  static int calculateLocationToMoveDividerTo(final JSplitPane splitPane, final int desiredLocation) {
+  static int locationToMoveDividerTo(final JSplitPane splitPane, final int desiredLocation) {
     return execute(new GuiQuery<Integer>() {
       protected Integer executeInEDT() {
         switch (splitPane.getOrientation()) {
           case VERTICAL_SPLIT:
-            return calculateLocationToMoveDividerToVertically(splitPane, desiredLocation);
+            return locationToMoveDividerToVertically(splitPane, desiredLocation);
 
           default:
-            return calculateLocationToMoveDividerToHorizontally(splitPane, desiredLocation);
+            return locationToMoveDividerToHorizontally(splitPane, desiredLocation);
         }
       }
     });
