@@ -50,7 +50,11 @@ public class JSplitPaneDriver extends JComponentDriver {
   }
 
   /**
-   * Set the divider position to an absolute position.
+   * Sets the divider position to an absolute position.
+   * <p>
+   * Since 1.2, this method respects the minimum and maximum values of the left and right components inside the given
+   * <code>JSplitPane</code>.
+   * </p>
    * @param splitPane the target <code>JSplitPane</code>.
    * @param location the location to move the divider to.
    * @throws IllegalStateException if the <code>JSplitPane</code> is disabled.

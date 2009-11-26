@@ -15,6 +15,10 @@
       <action dev="alexruiz" type="fix" issue="FEST-207" due-to="Daniel Dyer">
         Added own CheckThreadViolationRepaintManager, a copy of the original from debug.jar
       </action>
+      <action dev="alexruiz" type="fix" issue="FEST-210" due-to="Martin Ginkel">
+        JSplitPaneDriver now respects the minimum sizes of the left and right components when moving the divider to
+        a given location.
+      </action>
       <action dev="alexruiz" type="fix" issue="FEST-215" due-to="Ansgar Konermann">
         Moved JDK-6 specific code to new module fest-swing-jdk6.
       </action>

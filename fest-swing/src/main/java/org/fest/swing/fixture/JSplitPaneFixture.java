@@ -33,7 +33,7 @@ import org.fest.swing.timing.Timeout;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class JSplitPaneFixture extends ComponentFixture<JSplitPane> implements CommonComponentFixture, 
+public class JSplitPaneFixture extends ComponentFixture<JSplitPane> implements CommonComponentFixture,
     JComponentFixture, JPopupMenuInvokerFixture {
 
   private JSplitPaneDriver driver;
@@ -78,6 +78,10 @@ public class JSplitPaneFixture extends ComponentFixture<JSplitPane> implements C
 
   /**
    * Simulates a user moving the divider of this fixture's <code>{@link JSplitPane}</code>.
+   * <p>
+   * Since 1.2, this method respects the minimum and maximum values of the left and right components inside this
+   * fixture's <code>JSplitPane</code>.
+   * </p>
    * @param location the location to move the divider to.
    * @return this fixture.
    * @throws IllegalStateException if this fixture's <code>JSplitPane</code> is disabled.
@@ -297,7 +301,7 @@ public class JSplitPaneFixture extends ComponentFixture<JSplitPane> implements C
    * @param pattern the regular expression pattern to match.
    * @return this fixture.
    * @throws NullPointerException if the given regular expression pattern is <code>null</code>.
-   * @throws AssertionError if the toolTip in this fixture's <code>JSplitPane</code> does not match the given regular 
+   * @throws AssertionError if the toolTip in this fixture's <code>JSplitPane</code> does not match the given regular
    * expression.
    * @since 1.2
    */
@@ -313,7 +317,7 @@ public class JSplitPaneFixture extends ComponentFixture<JSplitPane> implements C
    * not found.
    * @throws NullPointerException if the given key is <code>null</code>.
    * @since 1.2
-   */  
+   */
   public Object clientProperty(Object key) {
     return driver.clientProperty(target, key);
   }
