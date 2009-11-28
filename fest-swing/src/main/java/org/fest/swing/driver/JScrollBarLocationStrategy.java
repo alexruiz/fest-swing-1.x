@@ -40,5 +40,5 @@ abstract class JScrollBarLocationStrategy {
 
   abstract Point blockLocation(JScrollBar scrollBar, Point unitLocation, int offset);
 
-  abstract Point unitLocationToScrollUp(JScrollBar scrollBar);
+  abstract Point unitLocationToScrollDown(JScrollBar scrollBar);
 }

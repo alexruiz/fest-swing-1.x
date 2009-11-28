@@ -30,7 +30,7 @@ public class JScrollBarDriver_scrollUnitDown_Test extends JScrollBarDriver_TestC
   public void should_scroll_unit_down() {
     showWindow();
     driver.scrollUnitDown(scrollBar);
-    assertThatScrollBarValueIs(29);
+    assertThatScrollBarValueIs(31);
   }
 
   @Test

@@ -30,7 +30,7 @@ public class JScrollBarDriver_scrollUnitUp_Test extends JScrollBarDriver_TestCas
   public void should_scroll_unit_up() {
     showWindow();
     driver.scrollUnitUp(scrollBar);
-    assertThatScrollBarValueIs(31);
+    assertThatScrollBarValueIs(29);
   }
 
   @Test

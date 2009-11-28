@@ -25,6 +25,9 @@
       <action dev="alexruiz" type="fix" issue="FEST-227" due-to="Uli Schrempp">
         Method 'matches(String, String)' does not require a valid regular expression if the given Strings are not equal.
       </action>
+      <action dev="alexruiz" type="fix" issue="FEST-231" due-to="Florian SIMON">
+        JScrollBarDriver now properly scrolls up and down (up and down were inverted.)
+      </action>
       <action dev="alexruiz" type="fix" issue="FEST-232" due-to="Florian SIMON">
         Added KeyStrokeMappingProvider_fr to support French keyboards.
       </action>

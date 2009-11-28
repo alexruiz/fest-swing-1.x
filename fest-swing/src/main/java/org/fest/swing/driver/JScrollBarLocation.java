@@ -43,11 +43,11 @@ public final class JScrollBarLocation {
     LOCATIONS.put(HORIZONTAL, new HorizontalJScrollBarLocation());
     LOCATIONS.put(VERTICAL, new VerticalJScrollBarLocation());
   }
-  
+
   /**
    * Returns the location where to move the mouse pointer to scroll to the given position.
    * <p>
-   * <b>Note:</b> This method is <b>not</b> executed in the event dispatch thread (EDT.) Clients are responsible for 
+   * <b>Note:</b> This method is <b>not</b> executed in the event dispatch thread (EDT.) Clients are responsible for
    * invoking this method in the EDT.
    * </p>
    * @param scrollBar the target <code>JScrollBar</code>.
@@ -68,7 +68,7 @@ public final class JScrollBarLocation {
   /**
    * Returns the location where to move the mouse pointer to scroll one block up (or right.)
    * <p>
-   * <b>Note:</b> This method is <b>not</b> executed in the event dispatch thread (EDT.) Clients are responsible for 
+   * <b>Note:</b> This method is <b>not</b> executed in the event dispatch thread (EDT.) Clients are responsible for
    * invoking this method in the EDT.
    * </p>
    * @param scrollBar the target <code>JScrollBar</code>.
@@ -84,7 +84,7 @@ public final class JScrollBarLocation {
   /**
    * Returns the location where to move the mouse pointer to scroll one block down (or left.)
    * <p>
-   * <b>Note:</b> This method is <b>not</b> executed in the event dispatch thread (EDT.) Clients are responsible for 
+   * <b>Note:</b> This method is <b>not</b> executed in the event dispatch thread (EDT.) Clients are responsible for
    * invoking this method in the EDT.
    * </p>
    * @param scrollBar the target <code>JScrollBar</code>.
@@ -105,7 +105,7 @@ public final class JScrollBarLocation {
   /**
    * Returns the location where to move the mouse pointer to scroll one unit up (or right.)
    * <p>
-   * <b>Note:</b> This method is <b>not</b> executed in the event dispatch thread (EDT.) Clients are responsible for 
+   * <b>Note:</b> This method is <b>not</b> executed in the event dispatch thread (EDT.) Clients are responsible for
    * invoking this method in the EDT.
    * </p>
    * @param scrollBar the target <code>JScrollBar</code>.
@@ -113,13 +113,14 @@ public final class JScrollBarLocation {
    */
   @RunsInCurrentThread
   public Point unitLocationToScrollUp(JScrollBar scrollBar) {
-    return locationStrategyFor(scrollBar).unitLocationToScrollUp(scrollBar);
+    int arrow = locationStrategyFor(scrollBar).arrow(scrollBar);
+    return new Point(arrow / 2, arrow / 2);
   }
 
   /**
    * Returns the location where to move the mouse pointer to scroll one unit down (or left.)
    * <p>
-   * <b>Note:</b> This method is <b>not</b> executed in the event dispatch thread (EDT.) Clients are responsible for 
+   * <b>Note:</b> This method is <b>not</b> executed in the event dispatch thread (EDT.) Clients are responsible for
    * invoking this method in the EDT.
    * </p>
    * @param scrollBar the target <code>JScrollBar</code>.
@@ -127,8 +128,7 @@ public final class JScrollBarLocation {
    */
   @RunsInCurrentThread
   public Point unitLocationToScrollDown(JScrollBar scrollBar) {
-    int arrow = locationStrategyFor(scrollBar).arrow(scrollBar);
-    return new Point(arrow / 2, arrow / 2);
+    return locationStrategyFor(scrollBar).unitLocationToScrollDown(scrollBar);
   }
 
   @RunsInCurrentThread

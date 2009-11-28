@@ -55,7 +55,7 @@ public class JScrollBarDriver extends JComponentDriver {
   }
 
   /**
-   * Scrolls up (or right) one unit (usually a line).
+   * Scrolls up (or left) one unit (usually a line).
    * @param scrollBar the target <code>JScrollBar</code>.
    */
   public void scrollUnitUp(JScrollBar scrollBar) {
@@ -63,7 +63,7 @@ public class JScrollBarDriver extends JComponentDriver {
   }
 
   /**
-   * Scrolls up (or right) one unit (usually a line,) the given number of times.
+   * Scrolls up (or left) one unit (usually a line,) the given number of times.
    * @param scrollBar the target <code>JScrollBar</code>.
    * @param times the number of times to scroll up one unit.
    * @throws IllegalArgumentException if <code>times</code> is less than or equal to zero.
@@ -72,12 +72,12 @@ public class JScrollBarDriver extends JComponentDriver {
    */
   public void scrollUnitUp(JScrollBar scrollBar, int times) {
     validateTimes(times, "scroll up one unit");
-    Pair<Point, Integer> scrollInfo = validateAndFindScrollUnitInfo(scrollBar, location, times);
+    Pair<Point, Integer> scrollInfo = validateAndFindScrollUnitInfo(scrollBar, location, times * -1);
     scroll(scrollBar, scrollInfo);
   }
 
   /**
-   * Scroll down (or left) one unit (usually a line).
+   * Scrolls down (or right) one unit (usually a line).
    * @param scrollBar the target <code>JScrollBar</code>.
    */
   public void scrollUnitDown(JScrollBar scrollBar) {
@@ -85,7 +85,7 @@ public class JScrollBarDriver extends JComponentDriver {
   }
 
   /**
-   * Scrolls down one unit (usually a line,) the given number of times.
+   * Scrolls down (or right) one unit (usually a line,) the given number of times.
    * @param scrollBar the target <code>JScrollBar</code>.
    * @param times the number of times to scroll down one unit.
    * @throws IllegalArgumentException if <code>times</code> is less than or equal to zero.
@@ -94,7 +94,7 @@ public class JScrollBarDriver extends JComponentDriver {
    */
   public void scrollUnitDown(JScrollBar scrollBar, int times) {
     validateTimes(times, "scroll down one unit");
-    Pair<Point, Integer> scrollInfo = validateAndFindScrollUnitInfo(scrollBar, location, times * -1);
+    Pair<Point, Integer> scrollInfo = validateAndFindScrollUnitInfo(scrollBar, location, times);
     scroll(scrollBar, scrollInfo);
   }
 
@@ -111,13 +111,13 @@ public class JScrollBarDriver extends JComponentDriver {
 
   @RunsInCurrentThread
   private static Pair<Point, Integer> scrollUnitInfo(JScrollBar scrollBar, JScrollBarLocation location, int times) {
-    Point where = location.blockLocationToScrollDown(scrollBar);
+    Point where = blockLocation(scrollBar, location, times);
     int count = times * scrollBar.getUnitIncrement();
     return new Pair<Point, Integer>(where, scrollBar.getValue() + count);
   }
 
   /**
-   * Scrolls up (or right) one block (usually a page).
+   * Scrolls up (or left) one block (usually a page).
    * @param scrollBar the target <code>JScrollBar</code>.
    */
   @RunsInEDT
@@ -126,7 +126,7 @@ public class JScrollBarDriver extends JComponentDriver {
   }
 
   /**
-   * Scrolls up (or right) one block (usually a page,) the given number of times.
+   * Scrolls up (or left) one block (usually a page,) the given number of times.
    * @param scrollBar the target <code>JScrollBar</code>.
    * @param times the number of times to scroll up one block.
    * @throws IllegalArgumentException if <code>times</code> is less than or equal to zero.
@@ -136,12 +136,12 @@ public class JScrollBarDriver extends JComponentDriver {
   @RunsInEDT
   public void scrollBlockUp(JScrollBar scrollBar, int times) {
     validateTimes(times, "scroll up one block");
-    Pair<Point, Integer> scrollInfo = validateAndFindScrollBlockInfo(scrollBar, location, times);
+    Pair<Point, Integer> scrollInfo = validateAndFindScrollBlockInfo(scrollBar, location, times * -1);
     scroll(scrollBar, scrollInfo);
   }
 
   /**
-   * Scrolls down (or left) one block (usually a page).
+   * Scrolls down (or right) one block (usually a page).
    * @param scrollBar the target <code>JScrollBar</code>.
    */
   @RunsInEDT
@@ -150,7 +150,7 @@ public class JScrollBarDriver extends JComponentDriver {
   }
 
   /**
-   * Scrolls down (or left) one block (usually a page,) the given number of times.
+   * Scrolls down (or right) one block (usually a page,) the given number of times.
    * @param scrollBar the target <code>JScrollBar</code>.
    * @param times the number of times to scroll down one block.
    * @throws IllegalArgumentException if <code>times</code> is less than or equal to zero.
@@ -160,7 +160,7 @@ public class JScrollBarDriver extends JComponentDriver {
   @RunsInEDT
   public void scrollBlockDown(JScrollBar scrollBar, int times) {
     validateTimes(times, "scroll down one block");
-    Pair<Point, Integer> scrollInfo = validateAndFindScrollBlockInfo(scrollBar, location, times * -1);
+    Pair<Point, Integer> scrollInfo = validateAndFindScrollBlockInfo(scrollBar, location, times);
     scroll(scrollBar, scrollInfo);
   }
 
@@ -184,9 +184,15 @@ public class JScrollBarDriver extends JComponentDriver {
 
   @RunsInCurrentThread
   private static Pair<Point, Integer> scrollBlockInfo(JScrollBar scrollBar, JScrollBarLocation location, int times) {
-    Point where = location.blockLocationToScrollDown(scrollBar);
+    Point where = blockLocation(scrollBar, location, times);
     int count = times * scrollBar.getBlockIncrement();
     return new Pair<Point, Integer>(where, scrollBar.getValue() + count);
+  }
+
+  @RunsInCurrentThread
+  private static Point blockLocation(JScrollBar scrollBar, JScrollBarLocation location, int times) {
+    if (times > 0) return location.blockLocationToScrollDown(scrollBar);
+    return location.blockLocationToScrollUp(scrollBar);
   }
 
   @RunsInEDT

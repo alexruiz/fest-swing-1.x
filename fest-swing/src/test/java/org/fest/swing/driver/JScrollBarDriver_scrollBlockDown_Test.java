@@ -30,7 +30,7 @@ public class JScrollBarDriver_scrollBlockDown_Test extends JScrollBarDriver_Test
   public void should_scroll_block_down() {
     showWindow();
     driver.scrollBlockDown(scrollBar);
-    assertThatScrollBarValueIs(20);
+    assertThatScrollBarValueIs(40);
   }
 
   @Test

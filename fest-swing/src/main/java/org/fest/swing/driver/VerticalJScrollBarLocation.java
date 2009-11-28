@@ -47,7 +47,7 @@ class VerticalJScrollBarLocation extends JScrollBarLocationStrategy {
   }
 
   @RunsInCurrentThread
-  Point unitLocationToScrollUp(JScrollBar scrollBar) {
+  Point unitLocationToScrollDown(JScrollBar scrollBar) {
     int arrow = arrow(scrollBar);
     return new Point(arrow / 2, scrollBar.getHeight() - arrow / 2);
   }

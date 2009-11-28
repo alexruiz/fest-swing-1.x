@@ -30,7 +30,7 @@ public class JScrollBarDriver_scrollBlockUpWithTimes_Test extends JScrollBarDriv
   public void should_scroll_block_up() {
     showWindow();
     driver.scrollBlockUp(scrollBar, 2);
-    assertThatScrollBarValueIs(50);
+    assertThatScrollBarValueIs(10);
   }
 
   @Test

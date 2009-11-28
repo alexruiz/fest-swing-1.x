@@ -30,7 +30,7 @@ public class JScrollBarDriver_scrollBlockDownWithTimes_Test extends JScrollBarDr
   public void should_scroll_block_down() {
     showWindow();
     driver.scrollBlockDown(scrollBar, 2);
-    assertThatScrollBarValueIs(10);
+    assertThatScrollBarValueIs(50);
   }
 
   @Test
