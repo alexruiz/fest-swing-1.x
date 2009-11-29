@@ -28,6 +28,7 @@ import org.fest.swing.cell.JTableCellWriter;
 import org.fest.swing.core.MouseButton;
 import org.fest.swing.core.MouseClickInfo;
 import org.fest.swing.data.TableCell;
+import org.fest.swing.driver.JTableDriver;
 import org.fest.swing.exception.ActionFailedException;
 import org.fest.swing.exception.ComponentLookupException;
 
@@ -169,7 +170,7 @@ public class JTableCellFixture implements ItemFixture {
    * @see #editor()
    */
   public JTableCellFixture startEditing() {
-    table.driver().startCellEditing(table.target, cell);
+    driver().startCellEditing(target(), cell);
     return this;
   }
 
@@ -191,7 +192,7 @@ public class JTableCellFixture implements ItemFixture {
    * @see #editor()
    */
   public JTableCellFixture stopEditing() {
-    table.driver().stopCellEditing(table.target, cell);
+    driver().stopCellEditing(target(), cell);
     return this;
   }
 
@@ -227,7 +228,7 @@ public class JTableCellFixture implements ItemFixture {
    * @see #editor()
    */
   public JTableCellFixture cancelEditing() {
-    table.driver().cancelCellEditing(table.target, cell);
+    driver().cancelCellEditing(target(), cell);
     return this;
   }
 
@@ -256,7 +257,7 @@ public class JTableCellFixture implements ItemFixture {
    * @see JTableCellWriter
    */
   public Component editor() {
-    return table.driver().cellEditor(table.target, cell);
+    return driver().cellEditor(target(), cell);
   }
 
   /**
@@ -279,9 +280,12 @@ public class JTableCellFixture implements ItemFixture {
    * @see JTableCellWriter
    */
   public JTableCellFixture enterValue(String value) {
-    table.driver().enterValueInCell(table.target, cell, value);
+    driver().enterValueInCell(target(), cell, value);
     return this;
   }
+
+  private JTableDriver driver() { return table.driver(); }
+  private JTable target() { return table.target; }
 
   /**
    * Asserts that the value of this fixture's table cell matches the given value.
