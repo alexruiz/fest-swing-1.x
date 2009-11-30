@@ -16,6 +16,7 @@ package org.fest.swing.keystroke;
 
 import static java.awt.event.InputEvent.SHIFT_MASK;
 import static java.awt.event.KeyEvent.*;
+import static java.util.Collections.unmodifiableList;
 import static org.fest.swing.keystroke.KeyStrokeMapping.mapping;
 
 import java.util.*;
@@ -36,6 +37,15 @@ public class KeyStrokeMappingProvider_en implements KeyStrokeMappingProvider {
    * @return the mapping between characters and <code>KeyStroke</code>s for locale <code>ENGLISH</code>.
    */
   public Collection<KeyStrokeMapping> keyStrokeMappings() {
+    return SingletonHolder.instance;
+  }
+
+  // Thread-safe, lazy-loading singleton.
+  private static class SingletonHolder {
+    static List<KeyStrokeMapping> instance = createMappings();
+  }
+
+  private static List<KeyStrokeMapping> createMappings() {
     List<KeyStrokeMapping> mappings = new ArrayList<KeyStrokeMapping>(100);
     mappings.add(mapping('0', VK_0, NO_MASK));
     mappings.add(mapping(')', VK_0, SHIFT_MASK));
@@ -137,6 +147,6 @@ public class KeyStrokeMappingProvider_en implements KeyStrokeMappingProvider {
     mappings.add(mapping('Y', VK_Y, SHIFT_MASK));
     mappings.add(mapping('z', VK_Z, NO_MASK));
     mappings.add(mapping('Z', VK_Z, SHIFT_MASK));
-    return mappings;
+    return unmodifiableList(mappings);
   }
 }
