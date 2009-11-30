@@ -82,6 +82,23 @@ public class JTreeDriver extends JComponentDriver {
   }
 
   /**
+   * Clicks the given row.
+   * @param tree the target <code>JTree</code>.
+   * @param row the given row.
+   * @throws IllegalStateException if the <code>JTree</code> is disabled.
+   * @throws IllegalStateException if the <code>JTree</code> is not showing on the screen.
+   * @throws IndexOutOfBoundsException if the given row is less than zero or equal than or greater than the number of
+   * visible rows in the <code>JTree</code>.
+   * @throws LocationUnavailableException if a tree path for the given row cannot be found.
+   * @since 1.2
+   */
+  public void clickRow(JTree tree, int row) {
+    Point p = scrollToRow(tree, row, location).ii;
+    robot.waitForIdle();
+    robot.click(tree, p);
+  }
+
+  /**
    * Double-clicks the given row.
    * @param tree the target <code>JTree</code>.
    * @param row the given row.
@@ -94,6 +111,7 @@ public class JTreeDriver extends JComponentDriver {
    */
   public void doubleClickRow(JTree tree, int row) {
     Point p = scrollToRow(tree, row, location).ii;
+    robot.waitForIdle();
     doubleClick(tree, p);
   }
 

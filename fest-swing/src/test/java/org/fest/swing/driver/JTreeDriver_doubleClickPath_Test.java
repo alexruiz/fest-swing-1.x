@@ -29,7 +29,7 @@ import org.junit.Test;
  * 
  * @author Alex Ruiz
  */
-public class JTreeDriver_doubleClickPath_Test extends JTreeDriver_doubleClickCell_TestCase {
+public class JTreeDriver_doubleClickPath_Test extends JTreeDriver_clickCell_TestCase {
 
   @Test
   public void should_double_click_cell() {

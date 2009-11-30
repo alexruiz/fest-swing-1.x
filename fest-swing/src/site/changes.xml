@@ -19,7 +19,10 @@
         JSplitPaneDriver now respects the minimum sizes of the left and right components when moving the divider to
         a given location.
       </action>
-      <action dev="alexruiz" type="fix" issue="FEST-215" due-to="Ansgar Konermann">
+      <action dev="alexruiz" type="add" issue="FEST-213">
+        Added method 'clickRow(int)' to JTreeFixture.
+      </action>
+      <action dev="alexruiz" type="fix" issue="FEST-215">
         Moved JDK-6 specific code to new module fest-swing-jdk6.
       </action>
       <action dev="alexruiz" type="fix" issue="FEST-227" due-to="Uli Schrempp">

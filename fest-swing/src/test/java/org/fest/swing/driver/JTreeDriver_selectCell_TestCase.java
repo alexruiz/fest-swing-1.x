@@ -28,8 +28,7 @@ import org.fest.swing.edt.GuiQuery;
 import org.fest.swing.edt.GuiTask;
 
 /**
- * Base test case in <code>{@link JTreeDriver}</code> related to selecting cells in a
- * <code>{@link JTree}</code>.
+ * Test case for <code>{@link JTreeDriver}</code> that involves selecting cells in a <code>{@link JTree}</code>.
  *
  * @author Alex Ruiz
  */
