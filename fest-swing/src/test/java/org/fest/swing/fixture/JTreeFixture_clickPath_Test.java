@@ -28,7 +28,7 @@ import org.junit.Test;
 public class JTreeFixture_clickPath_Test extends JTreeFixture_TestCase {
 
   @Test
-  public void shouldClickPath() {
+  public void should_click_path() {
     final String path = "root/node1";
     new EasyMockTemplate(driver()) {
       protected void expectations() {

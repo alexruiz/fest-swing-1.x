@@ -19,6 +19,7 @@ import static java.util.Arrays.sort;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.assertions.Fail.fail;
 import static org.fest.swing.core.MouseButton.LEFT_BUTTON;
+import static org.fest.swing.core.MouseButton.RIGHT_BUTTON;
 import static org.fest.swing.driver.CommonValidations.validateCellReader;
 import static org.fest.swing.driver.ComponentStateValidator.validateIsEnabledAndShowing;
 import static org.fest.swing.driver.JTreeChildrenShowUpCondition.untilChildrenShowUp;
@@ -409,6 +410,22 @@ public class JTreeDriver extends JComponentDriver {
   @RunsInEDT
   public void selectPath(JTree tree, String path) {
     selectMatchingPath(tree, path);
+  }
+
+  /**
+   * Right-clicks the given path, expanding parent nodes if necessary.
+   * @param tree the target <code>JTree</code>.
+   * @param path the path to path.
+   * @throws IllegalStateException if the <code>JTree</code> is disabled.
+   * @throws IllegalStateException if the <code>JTree</code> is not showing on the screen.
+   * @throws LocationUnavailableException if the given path cannot be found.
+   * @since 1.2
+   */
+  @RunsInEDT
+  public void rightClickPath(JTree tree, String path) {
+    Triple<TreePath, Boolean, Point> info = scrollToMatchingPath(tree, path);
+    robot.waitForIdle();
+    robot.click(tree, info.iii, RIGHT_BUTTON, 1);
   }
 
   /**

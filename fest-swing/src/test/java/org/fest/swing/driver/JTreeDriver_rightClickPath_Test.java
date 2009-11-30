@@ -1,5 +1,5 @@
 /*
- * Created on Jul 16, 2009
+ * Created on Nov 30, 2009
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -16,6 +16,7 @@
 package org.fest.swing.driver;
 
 import static org.fest.assertions.Assertions.assertThat;
+import static org.fest.swing.core.MouseButton.RIGHT_BUTTON;
 import static org.fest.swing.test.core.CommonAssertions.*;
 
 import org.fest.swing.exception.LocationUnavailableException;
@@ -23,18 +24,18 @@ import org.fest.swing.test.recorder.ClickRecorder;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JTreeDriver#clickPath(javax.swing.JTree, String)}</code>.
+ * Tests for <code>{@link JTreeDriver#rightClickPath(javax.swing.JTree, String)}</code>.
  *
  * @author Alex Ruiz
  */
-public class JTreeDriver_clickPath_Test extends JTreeDriver_clickCell_TestCase {
+public class JTreeDriver_rightClickPath_Test extends JTreeDriver_clickCell_TestCase {
 
   @Test
-  public void should_click_path() {
+  public void should_right_click_path() {
     showWindow();
     ClickRecorder recorder = ClickRecorder.attachTo(tree);
-    driver.clickPath(tree, "root/branch1/branch1.1/branch1.1.1");
-    assertThat(recorder).wasClicked()
+    driver.rightClickPath(tree, "root/branch1/branch1.1/branch1.1.1");
+    assertThat(recorder).wasClickedWith(RIGHT_BUTTON)
                         .timesClicked(1);
     String clickedPath = pathAtPoint(tree, recorder.pointClicked(), driver.separator());
     assertThat(clickedPath).isEqualTo("root/branch1/branch1.1/branch1.1.1");
@@ -44,7 +45,7 @@ public class JTreeDriver_clickPath_Test extends JTreeDriver_clickCell_TestCase {
   public void should_throw_error_if_path_not_found() {
     showWindow();
     try {
-      driver.clickPath(tree, "another");
+      driver.rightClickPath(tree, "another");
       failWhenExpectingException();
     } catch (LocationUnavailableException e) {
       assertThat(e.getMessage()).isEqualTo("Unable to find path 'another'");
@@ -55,7 +56,7 @@ public class JTreeDriver_clickPath_Test extends JTreeDriver_clickCell_TestCase {
   public void should_throw_error_if_JTree_is_disabled() {
     disableTree();
     try {
-      driver.clickPath(tree, "root/branch1");
+      driver.rightClickPath(tree, "root/branch1");
       failWhenExpectingException();
     } catch (IllegalStateException e) {
       assertThatErrorCauseIsDisabledComponent(e);
@@ -65,7 +66,7 @@ public class JTreeDriver_clickPath_Test extends JTreeDriver_clickCell_TestCase {
   @Test
   public void should_throw_error_if_JTree_is_not_showing_on_the_screen() {
     try {
-      driver.clickPath(tree, "root/branch1");
+      driver.rightClickPath(tree, "root/branch1");
       failWhenExpectingException();
     } catch (IllegalStateException e) {
       assertThatErrorCauseIsNotShowingComponent(e);

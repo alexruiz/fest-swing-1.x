@@ -20,6 +20,7 @@ import static org.fest.swing.edt.GuiActionRunner.execute;
 import java.awt.Point;
 
 import javax.swing.JTree;
+import javax.swing.tree.TreePath;
 
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
@@ -41,6 +42,16 @@ public abstract class JTreeDriver_clickCell_TestCase extends JTreeDriver_TestCas
     return execute(new GuiQuery<Integer>() {
       protected Integer executeInEDT() {
         return tree.getRowForLocation(p.x, p.y);
+      }
+    });
+  }
+
+  @RunsInEDT
+  static String pathAtPoint(final JTree tree, final Point p, final String separator) {
+    return execute(new GuiQuery<String>() {
+      protected String executeInEDT() {
+        TreePath path = tree.getPathForLocation(p.x, p.y);
+        return pathText(path, separator);
       }
     });
   }

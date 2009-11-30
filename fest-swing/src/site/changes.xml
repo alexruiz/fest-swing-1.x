@@ -38,6 +38,9 @@
         Added method 'requireItemCount(int)' to ItemGroupFixture and its implementations JComboBoxFixture and 
         JListFixture.
       </action>
+      <action dev="alexruiz" type="add" issue="FEST-248" due-to="Huib">
+        Added method 'rightClickPath(String)' to JTreeFixture.
+      </action>
       <action dev="alexruiz" type="fix" issue="FEST-251">
         Updated FEST-Assert to version 1.2.
       </action>

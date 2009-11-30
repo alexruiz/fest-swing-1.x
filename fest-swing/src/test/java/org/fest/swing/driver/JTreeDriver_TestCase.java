@@ -72,18 +72,23 @@ public abstract class JTreeDriver_TestCase extends RobotBasedTestCase {
   private static String textOf(final TreePath path, final String separator) {
     return execute(new GuiQuery<String>() {
       protected String executeInEDT() {
-        if (path == null) return null;
-        Object[] values = path.getPath();
-        StringBuilder b = new StringBuilder();
-        for (int i = 0; i < values.length; i++) {
-          if (i != 0) b.append(separator);
-          Object value = values[i];
-          if (value instanceof DefaultMutableTreeNode)
-            b.append(((DefaultMutableTreeNode)value).getUserObject());
-        }
-        return b.toString();
+        return pathText(path, separator);
       }
     });
+  }
+
+  @RunsInCurrentThread
+  static String pathText(TreePath path, String separator) {
+    if (path == null) return null;
+    Object[] values = path.getPath();
+    StringBuilder b = new StringBuilder();
+    for (int i = 0; i < values.length; i++) {
+      if (i != 0) b.append(separator);
+      Object value = values[i];
+      if (value instanceof DefaultMutableTreeNode)
+        b.append(((DefaultMutableTreeNode)value).getUserObject());
+    }
+    return b.toString();
   }
 
   public static final Object[][] outOfBoundRowIndices() {

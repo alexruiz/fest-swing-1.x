@@ -1,5 +1,5 @@
 /*
- * Created on Nov 29, 2009
+ * Created on Nov 30, 2009
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -21,23 +21,23 @@ import org.fest.mocks.EasyMockTemplate;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JTreeFixture#clickRow(int)}</code>.
+ * Tests for <code>{@link JTreeFixture#rightClickPath(String)}</code>.
  *
  * @author Alex Ruiz
  */
-public class JTreeFixture_clickRow_Test extends JTreeFixture_TestCase {
+public class JTreeFixture_rightClickPath_Test extends JTreeFixture_TestCase {
 
   @Test
-  public void should_click_row() {
-    final int row = 6;
+  public void should_right_click_path() {
+    final String path = "root/node1";
     new EasyMockTemplate(driver()) {
       protected void expectations() {
-        driver().clickRow(target(), row);
+        driver().rightClickPath(target(), path);
         expectLastCall().once();
       }
 
       protected void codeToTest() {
-        assertThatReturnsSelf(fixture().clickRow(row));
+        assertThatReturnsSelf(fixture().rightClickPath(path));
       }
     }.run();
   }

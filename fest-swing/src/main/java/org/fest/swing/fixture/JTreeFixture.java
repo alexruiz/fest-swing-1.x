@@ -125,6 +125,19 @@ public class JTreeFixture extends ComponentFixture<JTree> implements CommonCompo
   }
 
   /**
+   * Clicks the given path, expanding parent nodes if necessary.
+   * @param path the path to click.
+   * @return this fixture.
+   * @throws IllegalStateException if this fixture's <code>JTree</code> is disabled.
+   * @throws IllegalStateException if this fixture's <code>JTree</code> is not showing on the screen.
+   * @throws LocationUnavailableException if the given path cannot be found.
+   */
+  public JTreeFixture clickPath(String path) {
+    driver.clickPath(target, path);
+    return this;
+  }
+
+  /**
    * Double-clicks the given row.
    * @param row the given row.
    * @return this fixture.
@@ -151,6 +164,21 @@ public class JTreeFixture extends ComponentFixture<JTree> implements CommonCompo
    */
   public JTreeFixture doubleClickPath(String path) {
     driver.doubleClickPath(target, path);
+    return this;
+  }
+
+
+  /**
+   * Right-clicks the given path, expanding parent nodes if necessary.
+   * @param path the path to right-click.
+   * @return this fixture.
+   * @throws IllegalStateException if this fixture's <code>JTree</code> is disabled.
+   * @throws IllegalStateException if this fixture's <code>JTree</code> is not showing on the screen.
+   * @throws LocationUnavailableException if the given path cannot be found.
+   * @since 1.2
+   */
+  public JTreeFixture rightClickPath(String path) {
+    driver.rightClickPath(target, path);
     return this;
   }
 
@@ -268,19 +296,6 @@ public class JTreeFixture extends ComponentFixture<JTree> implements CommonCompo
    */
   public JTreeFixture drop(String path) {
     driver.drop(target, path);
-    return this;
-  }
-
-  /**
-   * Clicks the given path, expanding parent nodes if necessary.
-   * @param path the path to click.
-   * @return this fixture.
-   * @throws IllegalStateException if this fixture's <code>JTree</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JTree</code> is not showing on the screen.
-   * @throws LocationUnavailableException if the given path cannot be found.
-   */
-  public JTreeFixture clickPath(String path) {
-    driver.clickPath(target, path);
     return this;
   }
 
