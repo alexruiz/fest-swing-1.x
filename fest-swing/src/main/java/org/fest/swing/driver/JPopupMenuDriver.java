@@ -27,9 +27,12 @@ import org.fest.swing.core.Robot;
 import org.fest.swing.exception.ComponentLookupException;
 
 /**
- * Understands simulation of user input on a <code>{@link JPopupMenu}</code>. Unlike <code>JPopupMenuFixture</code>,
- * this driver only focuses on behavior present only in <code>{@link JPopupMenu}</code>s. This class is intended for
- * internal use only.
+ * Understands:
+ * <ul>
+ * <li>simulation of user input on a <code>{@link JPopupMenu}</code> (if applicable)</li>
+ * <li>state verification of a <code>{@link JPopupMenu}</code></li>
+ * </ul>
+ * This class is intended for internal use only.
  *
  * @author Yvonne Wang
  * @author Alex Ruiz

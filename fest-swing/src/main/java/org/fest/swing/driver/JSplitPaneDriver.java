@@ -32,9 +32,12 @@ import org.fest.swing.edt.GuiQuery;
 import org.fest.swing.util.GenericRange;
 
 /**
- * Understands simulation of user input on a <code>{@link JSplitPane}</code>. Unlike <code>JSplitPaneFixture</code>,
- * this driver only focuses on behavior present only in <code>{@link JSplitPane}</code>s. This class is intended for
- * internal use only.
+ * Understands:
+ * <ul>
+ * <li>simulation of user input on a <code>{@link JSplitPane}</code> (if applicable)</li>
+ * <li>state verification of a <code>{@link JSplitPane}</code></li>
+ * </ul>
+ * This class is intended for internal use only.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang

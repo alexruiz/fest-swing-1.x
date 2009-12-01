@@ -27,9 +27,12 @@ import org.fest.swing.edt.GuiTask;
 import org.fest.swing.exception.ActionFailedException;
 
 /**
- * Understands simulation of user input on a <code>{@link Window}</code>. Unlike <code>WindowFixture</code>, this
- * driver only focuses on behavior present only in <code>{@link Window}</code>s. This class is intended for internal
- * use only.
+ * Understands:
+ * <ul>
+ * <li>simulation of user input on a <code>{@link Window}</code> (if applicable)</li>
+ * <li>state verification of a <code>{@link Window}</code></li>
+ * </ul>
+ * This class is intended for internal use only.
  *
  * @author Alex Ruiz
  */
@@ -115,7 +118,7 @@ public class WindowDriver extends ContainerDriver {
       }
     });
   }
- 
+
   /**
    * Shows the <code>{@link Window}</code>.
    * @param w the target <code>Window</code>.
@@ -155,13 +158,13 @@ public class WindowDriver extends ContainerDriver {
   }
 
   /**
-   * If the given <code>{@link Window}</code> is visible, sends it to the back and may cause it to lose focus or 
+   * If the given <code>{@link Window}</code> is visible, sends it to the back and may cause it to lose focus or
    * activation if it is the focused or active.
    * @param w the target <code>Window</code>.
    */
   @RunsInEDT
   public void moveToBack(Window w) {
-    doMoveToBack(w);    
+    doMoveToBack(w);
     robot.waitForIdle();
   }
 

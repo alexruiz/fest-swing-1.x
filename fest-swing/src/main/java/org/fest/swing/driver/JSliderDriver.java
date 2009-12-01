@@ -31,9 +31,12 @@ import org.fest.swing.util.GenericRange;
 import org.fest.swing.util.Pair;
 
 /**
- * Understands simulation of user input on a <code>{@link JSlider}</code>. Unlike <code>JSliderFixture</code>, this
- * driver only focuses on behavior present only in <code>{@link JSlider}</code>s. This class is intended for internal
- * use only.
+ * Understands:
+ * <ul>
+ * <li>simulation of user input on a <code>{@link JSlider}</code> (if applicable)</li>
+ * <li>state verification of a <code>{@link JSlider}</code></li>
+ * </ul>
+ * This class is intended for internal use only.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
@@ -63,7 +66,7 @@ public class JSliderDriver extends JComponentDriver {
   }
 
   @RunsInEDT
-  private static Pair<Integer, GenericRange<Point>> validateAndFindSlideToMaximumInfo(final JSlider slider, 
+  private static Pair<Integer, GenericRange<Point>> validateAndFindSlideToMaximumInfo(final JSlider slider,
       final JSliderLocation location) {
     return execute(new GuiQuery<Pair<Integer, GenericRange<Point>>>() {
       protected Pair<Integer, GenericRange<Point>> executeInEDT() {
@@ -87,7 +90,7 @@ public class JSliderDriver extends JComponentDriver {
   }
 
   @RunsInEDT
-  private static Pair<Integer, GenericRange<Point>> validateAndFindSlideToMinimumInfo(final JSlider slider, 
+  private static Pair<Integer, GenericRange<Point>> validateAndFindSlideToMinimumInfo(final JSlider slider,
       final JSliderLocation location) {
     return execute(new GuiQuery<Pair<Integer, GenericRange<Point>>>() {
       protected Pair<Integer, GenericRange<Point>> executeInEDT() {
@@ -125,9 +128,9 @@ public class JSliderDriver extends JComponentDriver {
     setValue(slider, value);
     robot.waitForIdle();
   }
-  
+
   @RunsInEDT
-  private static GenericRange<Point> validateAndFindSlideInfo(final JSlider slider, final JSliderLocation location, 
+  private static GenericRange<Point> validateAndFindSlideInfo(final JSlider slider, final JSliderLocation location,
       final int value) {
     return execute(new GuiQuery<GenericRange<Point>>() {
       protected GenericRange<Point> executeInEDT() {

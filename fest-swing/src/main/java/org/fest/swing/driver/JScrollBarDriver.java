@@ -33,9 +33,12 @@ import org.fest.swing.util.GenericRange;
 import org.fest.swing.util.Pair;
 
 /**
- * Understands simulation of user input on a <code>{@link JScrollBar}</code>. Unlike <code>JScrollBarFixture</code>,
- * this driver only focuses on behavior present only in <code>{@link JScrollBar}</code>s. This class is intended for
- * internal use only.
+ * Understands:
+ * <ul>
+ * <li>simulation of user input on a <code>{@link JScrollBar}</code> (if applicable)</li>
+ * <li>state verification of a <code>{@link JScrollBar}</code></li>
+ * </ul>
+ * This class is intended for internal use only.
  *
  * @author Yvonne Wang
  * @author Alex Ruiz

@@ -25,8 +25,12 @@ import org.fest.swing.core.Robot;
 import org.fest.swing.edt.GuiQuery;
 
 /**
- * Understands simulation of user input on a <code>{@link JScrollPane}</code>. This class is intended for internal use
- * only.
+ * Understands:
+ * <ul>
+ * <li>simulation of user input on a <code>{@link JScrollPane}</code> (if applicable)</li>
+ * <li>state verification of a <code>{@link JScrollPane}</code></li>
+ * </ul>
+ * This class is intended for internal use only.
  *
  * @author Yvonne Wang
  */

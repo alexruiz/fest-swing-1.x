@@ -54,9 +54,12 @@ import org.fest.swing.exception.*;
 import org.fest.swing.util.*;
 
 /**
- * Understands simulation of user input on a <code>{@link JComboBox}</code>. Unlike <code>JComboBoxFixture</code>, this
- * driver only focuses on behavior present only in <code>{@link JComboBox}</code>s. This class is intended for internal
- * use only.
+ * Understands:
+ * <ul>
+ * <li>simulation of user input on a <code>{@link JComboBox}</code> (if applicable)</li>
+ * <li>state verification of a <code>{@link JComboBox}</code></li>
+ * </ul>
+ * This class is intended for internal use only.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang

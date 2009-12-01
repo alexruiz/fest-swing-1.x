@@ -38,8 +38,12 @@ import org.fest.swing.edt.GuiQuery;
 import org.fest.swing.exception.ActionFailedException;
 
 /**
- * Understands simulation of user input on a <code>{@link JComponent}</code>. This class is intended for internal use
- * only.
+ * Understands:
+ * <ul>
+ * <li>simulation of user input on a <code>{@link JComponent}</code> (if applicable)</li>
+ * <li>state verification of a <code>{@link JComponent}</code></li>
+ * </ul>
+ * This class is intended for internal use only.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang

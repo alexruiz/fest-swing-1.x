@@ -52,8 +52,12 @@ import org.fest.swing.timing.Timeout;
 import org.fest.swing.util.TimeoutWatch;
 
 /**
- * Understands simulation of user input on a <code>{@link Component}</code>. This class is intended for internal use
- * only.
+ * Understands:
+ * <ul>
+ * <li>simulation of user input on a <code>{@link Component}</code> (if applicable)</li>
+ * <li>state verification of a <code>{@link Component}</code></li>
+ * </ul>
+ * This class is intended for internal use only.
  *
  * @author Alex Ruiz
  */
@@ -207,7 +211,7 @@ public class ComponentDriver {
   }
 
   /**
-   * Asserts that the <code>{@link Component}</code> has input focus. 
+   * Asserts that the <code>{@link Component}</code> has input focus.
    * @param c the target component.
    * @throws AssertionError if the <code>Component</code> does not have input focus.
    */
@@ -215,7 +219,7 @@ public class ComponentDriver {
   public void requireFocused(Component c) {
     assertThat(hasFocus(c)).as(requiredFocusedErrorMessage(c)).isTrue();
   }
-  
+
   private static Description requiredFocusedErrorMessage(final Component c) {
     return new GuiLazyLoadingDescription() {
       protected String loadDescription() {
@@ -223,7 +227,7 @@ public class ComponentDriver {
       }
     };
   }
-  
+
   /**
    * Asserts that the <code>{@link Component}</code> is enabled.
    * @param c the target component.
@@ -379,7 +383,7 @@ public class ComponentDriver {
   protected final void drag(Component c, Point where) {
     dragAndDrop.drag(c, where);
   }
-  
+
   /**
    * Ends a drag operation, releasing the mouse button over the given target location.
    * <p>
@@ -407,7 +411,7 @@ public class ComponentDriver {
   /**
    * Performs the <code>{@link AccessibleAction}</code> in the given <code>{@link Component}</code>'s event queue.
    * <p>
-   * <b>Note:</b> This method is <b>not</b> executed in the event dispatch thread (EDT.) Clients are responsible for 
+   * <b>Note:</b> This method is <b>not</b> executed in the event dispatch thread (EDT.) Clients are responsible for
    * invoking this method in the EDT.
    * </p>
    * @param c the given <code>Component</code>.
@@ -423,7 +427,7 @@ public class ComponentDriver {
    * Wait the given number of milliseconds for the <code>{@link Component}</code> to be showing and ready. Returns
    * <code>false</code> if the operation times out.
    * <p>
-   * <b>Note:</b> This method is <b>not</b> executed in the event dispatch thread (EDT.) Clients are responsible for 
+   * <b>Note:</b> This method is <b>not</b> executed in the event dispatch thread (EDT.) Clients are responsible for
    * invoking this method in the EDT.
    * </p>
    * @param c the given <code>Component</code>.
@@ -462,7 +466,7 @@ public class ComponentDriver {
   }
 
   /**
-   * Shows a pop-up menu at the given point using the given <code>{@link Component}</code> as the invoker of the pop-up 
+   * Shows a pop-up menu at the given point using the given <code>{@link Component}</code> as the invoker of the pop-up
    * menu.
    * @param c the invoker of the <code>JPopupMenu</code>.
    * @param p the given point where to show the pop-up menu.
@@ -478,7 +482,7 @@ public class ComponentDriver {
     assertIsEnabledAndShowing(c);
     return robot.showPopupMenu(c, p);
   }
-  
+
   /**
    * Validates that the given <code>{@link Component}</code> is enabled and showing on the screen. This method is
    * executed in the event dispatch thread.
@@ -494,7 +498,7 @@ public class ComponentDriver {
       }
     });
   }
-  
+
   /**
    * Formats the name of a property of the given <code>{@link Component}</code> by concatenating the value obtained
    * from <code>{@link Formatting#format(Component)}</code> with the given property name.

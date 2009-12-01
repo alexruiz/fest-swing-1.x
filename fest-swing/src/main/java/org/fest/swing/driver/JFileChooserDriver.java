@@ -34,9 +34,12 @@ import org.fest.swing.core.Robot;
 import org.fest.swing.exception.ComponentLookupException;
 
 /**
- * Understands simulation of user input on a <code>{@link JFileChooser}</code>. Unlike
- * <code>JFileChooserFixture</code>, this driver only focuses on behavior present only in
- * <code>{@link JFileChooser}</code>s. This class is intended for internal use only.
+ * Understands:
+ * <ul>
+ * <li>simulation of user input on a <code>{@link JFileChooser}</code> (if applicable)</li>
+ * <li>state verification of a <code>{@link JFileChooser}</code></li>
+ * </ul>
+ * This class is intended for internal use only.
  *
  * @author Yvonne Wang
  * @author Alex Ruiz
@@ -61,9 +64,9 @@ public class JFileChooserDriver extends JComponentDriver {
    * @throws NullPointerException if the given file is <code>null</code>.
    * @throws IllegalStateException if the <code>JFileChooser</code> is disabled.
    * @throws IllegalStateException if the <code>JFileChooser</code> is not showing on the screen.
-   * @throws IllegalArgumentException if the <code>JFileChooser</code> can select directories only and the file to 
+   * @throws IllegalArgumentException if the <code>JFileChooser</code> can select directories only and the file to
    * select is not a directory.
-   * @throws IllegalArgumentException if the <code>JFileChooser</code> cannot select directories and the file to select 
+   * @throws IllegalArgumentException if the <code>JFileChooser</code> cannot select directories and the file to select
    * is a directory.
    */
   @RunsInEDT
@@ -80,11 +83,11 @@ public class JFileChooserDriver extends JComponentDriver {
    * @throws IllegalArgumentException if the given array of files is empty.
    * @throws IllegalStateException if this fixture's <code>JFileChooser</code> is disabled.
    * @throws IllegalStateException if this fixture's <code>JFileChooser</code> is not showing on the screen.
-   * @throws IllegalStateException if this fixture's <code>JFileChooser</code> does not support multiple selection and 
+   * @throws IllegalStateException if this fixture's <code>JFileChooser</code> does not support multiple selection and
    * there is more than one file to select.
    * @throws IllegalArgumentException if this fixture's <code>JFileChooser</code> can select directories only and any of
    * the files to select is not a directory.
-   * @throws IllegalArgumentException if this fixture's <code>JFileChooser</code> cannot select directories and any of 
+   * @throws IllegalArgumentException if this fixture's <code>JFileChooser</code> cannot select directories and any of
    * the files to select is a directory.
    */
   public void selectFiles(JFileChooser fileChooser, File[] files) {

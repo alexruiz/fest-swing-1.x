@@ -62,9 +62,12 @@ import org.fest.swing.exception.ComponentLookupException;
 import org.fest.swing.util.*;
 
 /**
- * Understands simulation of user input on a <code>{@link JTable}</code>. Unlike <code>JTableFixture</code>, this
- * driver only focuses on behavior present only in <code>{@link JTable}</code>s. This class is intended for internal
- * use only.
+ * Understands:
+ * <ul>
+ * <li>simulation of user input on a <code>{@link JTable}</code> (if applicable)</li>
+ * <li>state verification of a <code>{@link JTable}</code></li>
+ * </ul>
+ * This class is intended for internal use only.
  *
  * @author Yvonne Wang
  * @author Alex Ruiz

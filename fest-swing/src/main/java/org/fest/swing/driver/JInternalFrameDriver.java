@@ -42,9 +42,12 @@ import org.fest.swing.util.Pair;
 import org.fest.swing.util.Triple;
 
 /**
- * Understands simulation of user input on a <code>{@link JInternalFrame}</code>. Unlike
- * <code>JInternalFrameFixture</code>, this driver only focuses on behavior present only in
- * <code>{@link JInternalFrame}</code>s. This class is intended for internal use only.
+ * Understands:
+ * <ul>
+ * <li>simulation of user input on a <code>{@link JInternalFrame}</code> (if applicable)</li>
+ * <li>state verification of a <code>{@link JInternalFrame}</code></li>
+ * </ul>
+ * This class is intended for internal use only.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
@@ -77,7 +80,7 @@ public class JInternalFrameDriver extends JComponentDriver {
       }
     });
   }
-  
+
   /**
    * Brings the given <code>{@link JInternalFrame}</code> to the back.
    * @param internalFrame the target <code>JInternalFrame</code>.
@@ -86,7 +89,7 @@ public class JInternalFrameDriver extends JComponentDriver {
   public void moveToBack(JInternalFrame internalFrame) {
     toBack(internalFrame);
   }
-  
+
   @RunsInEDT
   private static void toBack(final JInternalFrame internalFrame) {
     execute(new GuiTask() {
@@ -109,7 +112,7 @@ public class JInternalFrameDriver extends JComponentDriver {
     Pair<Container, Point> maximizeLocation = validateAndFindMaximizeLocation(internalFrame);
     maximizeOrNormalize(internalFrame, MAXIMIZE, maximizeLocation);
   }
-  
+
   @RunsInEDT
   private static Pair<Container, Point> validateAndFindMaximizeLocation(final JInternalFrame internalFrame) {
     return execute(new GuiQuery<Pair<Container, Point>>() {
@@ -119,14 +122,14 @@ public class JInternalFrameDriver extends JComponentDriver {
       }
     });
   }
-  
+
   @RunsInCurrentThread
   private static void validateCanMaximize(JInternalFrame internalFrame) {
     validateIsShowingOrIconified(internalFrame);
-    if (!internalFrame.isMaximizable()) 
+    if (!internalFrame.isMaximizable())
       throw new IllegalStateException(concat("The JInternalFrame <", format(internalFrame), "> is not maximizable"));
   }
-  
+
   /**
    * Normalizes the given <code>{@link JInternalFrame}</code>, deconifying it first if it is iconified.
    * @param internalFrame the target <code>JInternalFrame</code>.
@@ -148,12 +151,12 @@ public class JInternalFrameDriver extends JComponentDriver {
       }
     });
   }
-  
+
   @RunsInCurrentThread
   private static void validateIsShowingOrIconified(JInternalFrame internalFrame) {
     if (!internalFrame.isIcon()) validateIsShowing(internalFrame);
   }
-  
+
   @RunsInCurrentThread
   private static Pair<Container, Point> findMaximizeLocation(JInternalFrame internalFrame) {
     Container clickTarget = internalFrame.isIcon() ? internalFrame.getDesktopIcon() : internalFrame;
@@ -162,7 +165,7 @@ public class JInternalFrameDriver extends JComponentDriver {
   }
 
   @RunsInEDT
-  private void maximizeOrNormalize(JInternalFrame internalFrame, JInternalFrameAction action, 
+  private void maximizeOrNormalize(JInternalFrame internalFrame, JInternalFrameAction action,
       Pair<Container, Point> toMoveMouseTo) {
     moveMouseIgnoringAnyError(toMoveMouseTo.i, toMoveMouseTo.ii);
     setMaximumProperty(internalFrame, action);
@@ -204,7 +207,7 @@ public class JInternalFrameDriver extends JComponentDriver {
       }
     });
   }
-  
+
   @RunsInCurrentThread
   private static Pair<Boolean, Point> iconifyInfo(JInternalFrame internalFrame) {
     boolean iconified = isIconified(internalFrame);
@@ -225,7 +228,7 @@ public class JInternalFrameDriver extends JComponentDriver {
     moveMouseIgnoringAnyError(deiconifyInfo.ii, deiconifyInfo.iii);
     setIconProperty(internalFrame, DEICONIFY);
   }
-  
+
   @RunsInEDT
   private static Triple<Boolean, Container, Point> validateAndfindDeiconifyInfo(final JInternalFrame internalFrame) {
     return execute(new GuiQuery<Triple<Boolean, Container, Point>>() {
@@ -333,7 +336,7 @@ public class JInternalFrameDriver extends JComponentDriver {
     JInternalFrameCloseTask.close(internalFrame);
     robot.waitForIdle();
   }
- 
+
   @RunsInEDT
   private static Pair<Boolean, Point> validateAndFindCloseInfo(final JInternalFrame internalFrame) {
     return execute(new GuiQuery<Pair<Boolean, Point>>() {
@@ -343,18 +346,18 @@ public class JInternalFrameDriver extends JComponentDriver {
       }
     });
   }
-  
+
   @RunsInCurrentThread
   private static void validateCanClose(JInternalFrame internalFrame) {
     validateIsShowing(internalFrame);
     if (!internalFrame.isClosable())
       throw new IllegalStateException(concat("The JInternalFrame <", format(internalFrame), "> is not closable"));
   }
-  
+
   @RunsInCurrentThread
   private static Pair<Boolean, Point> closeInfo(JInternalFrame internalFrame) {
     if (internalFrame.isClosed()) return new Pair<Boolean, Point>(true, null);
     return new Pair<Boolean, Point>(false, closeLocationOf(internalFrame));
   }
-  
+
 }

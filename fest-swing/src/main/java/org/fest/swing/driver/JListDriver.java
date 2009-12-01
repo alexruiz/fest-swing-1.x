@@ -58,9 +58,12 @@ import org.fest.swing.util.Range.From;
 import org.fest.swing.util.Range.To;
 
 /**
- * Understands simulation of user input on a <code>{@link JList}</code>. Unlike <code>JListFixture</code>, this
- * driver only focuses on behavior present only in <code>{@link JList}</code>s. This class is intended for internal
- * use only.
+ * Understands:
+ * <ul>
+ * <li>simulation of user input on a <code>{@link JList}</code> (if applicable)</li>
+ * <li>state verification of a <code>{@link JList}</code></li>
+ * </ul>
+ * This class is intended for internal use only.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang

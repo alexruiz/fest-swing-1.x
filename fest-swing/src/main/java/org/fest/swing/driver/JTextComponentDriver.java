@@ -49,9 +49,12 @@ import org.fest.swing.exception.ActionFailedException;
 import org.fest.swing.util.Pair;
 
 /**
- * Understands simulation of user input on a <code>{@link JTextComponent}</code>. Unlike
- * <code>JTextComponentFixture</code>, this driver only focuses on behavior present only in
- * <code>{@link JTextComponent}</code>s. This class is intended for internal use only.
+ * Understands:
+ * <ul>
+ * <li>simulation of user input on a <code>{@link JTextComponent}</code> (if applicable)</li>
+ * <li>state verification of a <code>{@link JTextComponent}</code></li>
+ * </ul>
+ * This class is intended for internal use only.
  *
  * @author Alex Ruiz
  */
@@ -308,11 +311,11 @@ public class JTextComponentDriver extends JComponentDriver {
   }
 
   /**
-   * Asserts that the text in the given <code>{@link JTextComponent}</code> matches the given regular expression 
+   * Asserts that the text in the given <code>{@link JTextComponent}</code> matches the given regular expression
    * pattern.
    * @param textBox the given <code>JTextComponent</code>.
    * @param pattern the regular expression pattern to match.
-   * @throws NullPointerException if the given regular expression pattern is <code>null</code>. 
+   * @throws NullPointerException if the given regular expression pattern is <code>null</code>.
    * @throws AssertionError if the text of the <code>JTextComponent</code> is not equal to the given one.
    * @since 1.2
    */

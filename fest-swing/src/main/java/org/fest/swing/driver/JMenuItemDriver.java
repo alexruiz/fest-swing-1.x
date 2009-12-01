@@ -37,9 +37,12 @@ import org.fest.swing.edt.GuiTask;
 import org.fest.swing.exception.ActionFailedException;
 
 /**
- * Understands simulation of user input on a <code>{@link JMenuItem}</code>. Unlike <code>JMenuItemFixture</code>, this
- * driver only focuses on behavior present only in <code>{@link JMenuItem}</code>s. This class is intended for internal
- * use only.
+ * Understands:
+ * <ul>
+ * <li>simulation of user input on a <code>{@link JMenuItem}</code> (if applicable)</li>
+ * <li>state verification of a <code>{@link JMenuItem}</code></li>
+ * </ul>
+ * This class is intended for internal use only.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
@@ -73,7 +76,7 @@ public class JMenuItemDriver extends JComponentDriver {
       protected JMenuItemLocation executeInEDT() {
         return new JMenuItemLocation(menuItem);
       }
-      
+
     });
   }
 

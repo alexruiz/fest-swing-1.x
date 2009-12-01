@@ -34,9 +34,12 @@ import org.fest.swing.exception.LocationUnavailableException;
 import org.fest.swing.util.*;
 
 /**
- * Understands simulation of user input on a <code>{@link JTableHeader}</code>. Unlike
- * <code>JTableHeaderFixture</code>, this driver only focuses on behavior present only in
- * <code>{@link JTableHeader}</code>s. This class is intended for internal use only.
+ * Understands:
+ * <ul>
+ * <li>simulation of user input on a <code>{@link JTableHeader}</code> (if applicable)</li>
+ * <li>state verification of a <code>{@link JTableHeader}</code></li>
+ * </ul>
+ * This class is intended for internal use only.
  *
  * @author Yvonne Wang
  * @author Alex Ruiz

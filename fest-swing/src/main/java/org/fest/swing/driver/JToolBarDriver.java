@@ -38,9 +38,12 @@ import org.fest.swing.util.GenericRange;
 import org.fest.swing.util.Pair;
 
 /**
- * Understands simulation of user input on a <code>{@link JToolBar}</code>. Unlike <code>JToolBarFixture</code>, this
- * driver only focuses on behavior present only in <code>{@link JToolBar}</code>s. This class is intended for internal
- * use only.
+ * Understands:
+ * <ul>
+ * <li>simulation of user input on a <code>{@link JToolBar}</code> (if applicable)</li>
+ * <li>state verification of a <code>{@link JToolBar}</code></li>
+ * </ul>
+ * This class is intended for internal use only.
  *
  * @author Yvonne Wang
  * @author Alex Ruiz
@@ -74,7 +77,7 @@ public class JToolBarDriver extends JComponentDriver {
       }
     });
   }
-  
+
   /**
    * Makes the given <code>{@link JToolBar}</code> float.
    * @param toolBar the target <code>JToolBar</code>.
@@ -88,7 +91,7 @@ public class JToolBarDriver extends JComponentDriver {
     Point p = floatInfo.ii.ii; // ancestor location
     doFloat(toolBar, p.x, p.y, floatInfo);
   }
-    
+
   /**
    * Drags the <code>{@link JToolBar}</code> to the given location, causing it to float.
    * @param toolBar the target <code>JToolBar</code>.
@@ -115,13 +118,13 @@ public class JToolBarDriver extends JComponentDriver {
       }
     });
   }
-  
+
   @RunsInCurrentThread
   private static void validateIsFloatable(JToolBar toolBar) {
-    if (!toolBar.isFloatable()) 
+    if (!toolBar.isFloatable())
       throw new IllegalStateException(concat("JToolbar <", format(toolBar), "> is not floatable"));
   }
-  
+
   @RunsInCurrentThread
   private static Pair<Window, Point> ancestorAndLocation(final JToolBar toolBar) {
     Window window = getWindowAncestor(toolBar);
@@ -141,12 +144,12 @@ public class JToolBarDriver extends JComponentDriver {
   private static void validateFloated(final JToolBar toolBar) {
     execute(new GuiTask() {
       protected void executeInEDT() {
-        if (!isJToolBarFloating(toolBar)) 
+        if (!isJToolBarFloating(toolBar))
           throw actionFailure(concat("Unable to float JToolbar <", format(toolBar), ">"));
       }
     });
   }
-  
+
   /**
    * Drop the {@link JToolBar} to the requested constraint position. The constraint position must be one of the
    * constants <code>{@link BorderLayout#NORTH NORTH}</code>, <code>{@link BorderLayout#EAST EAST}</code>,
@@ -168,7 +171,7 @@ public class JToolBarDriver extends JComponentDriver {
   }
 
   @RunsInEDT
-  private static Pair<GenericRange<Point>, Container> unfloatInfo(final JToolBar toolBar, final String constraint, 
+  private static Pair<GenericRange<Point>, Container> unfloatInfo(final JToolBar toolBar, final String constraint,
       final JToolBarLocation location) {
     return execute(new GuiQuery<Pair<GenericRange<Point>, Container>>() {
       protected Pair<GenericRange<Point>, Container> executeInEDT() {
@@ -180,12 +183,12 @@ public class JToolBarDriver extends JComponentDriver {
       }
     });
   }
-  
+
   @RunsInEDT
   private static void validateIsNotFloating(final JToolBar toolBar, final String constraint) {
     execute(new GuiTask() {
       protected void executeInEDT() {
-        if (isJToolBarFloating(toolBar)) 
+        if (isJToolBarFloating(toolBar))
           throw actionFailure(concat("Failed to dock <", format(toolBar), "> using constraint ", quote(constraint)));
       }
     });
@@ -199,7 +202,7 @@ public class JToolBarDriver extends JComponentDriver {
       throw actionFailure("Unabled to determine dock for JToolBar");
     }
   }
-  
+
   /**
    * Closes a floating <code>{@link JToolBar}</code>, making it go back to its original container in its last known
    * location.
