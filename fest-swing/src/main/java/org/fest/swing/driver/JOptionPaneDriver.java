@@ -15,7 +15,6 @@
  */
 package org.fest.swing.driver;
 
-
 import static javax.swing.JOptionPane.*;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.driver.JOptionPaneMessageQuery.messageOf;
@@ -37,12 +36,14 @@ import org.fest.swing.core.matcher.JButtonMatcher;
 import org.fest.swing.exception.ComponentLookupException;
 
 /**
- * Understands:
+ * Understands functional testing of <code>{@link JOptionPane}</code>s including:
  * <ul>
- * <li>simulation of user input on a <code>{@link JOptionPane}</code> (if applicable)</li>
- * <li>state verification of a <code>{@link JOptionPane}</code></li>
+ * <li>user input simulation</li>
+ * <li>state verification</li>
+ * <li>property value query</li>
  * </ul>
- * This class is intended for internal use only.
+ * This class is intended for internal use only. Please use the classes in the package
+ * <code>{@link org.fest.swing.fixture}</code> in your tests.
  *
  * @author Alex Ruiz
  */

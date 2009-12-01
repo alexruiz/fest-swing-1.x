@@ -42,12 +42,14 @@ import org.fest.swing.edt.GuiTask;
 import org.fest.swing.exception.*;
 
 /**
- * Understands:
+ * Understands functional testing of <code>{@link JSpinner}</code>s including:
  * <ul>
- * <li>simulation of user input on a <code>{@link JSpinner}</code> (if applicable)</li>
- * <li>state verification of a <code>{@link JSpinner}</code></li>
+ * <li>user input simulation</li>
+ * <li>state verification</li>
+ * <li>property value query</li>
  * </ul>
- * This class is intended for internal use only.
+ * This class is intended for internal use only. Please use the classes in the package
+ * <code>{@link org.fest.swing.fixture}</code> in your tests.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang

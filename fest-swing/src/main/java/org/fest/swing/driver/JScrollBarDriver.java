@@ -33,12 +33,14 @@ import org.fest.swing.util.GenericRange;
 import org.fest.swing.util.Pair;
 
 /**
- * Understands:
+ * Understands functional testing of <code>{@link JScrollBar}</code>s including:
  * <ul>
- * <li>simulation of user input on a <code>{@link JScrollBar}</code> (if applicable)</li>
- * <li>state verification of a <code>{@link JScrollBar}</code></li>
+ * <li>user input simulation</li>
+ * <li>state verification</li>
+ * <li>property value query</li>
  * </ul>
- * This class is intended for internal use only.
+ * This class is intended for internal use only. Please use the classes in the package
+ * <code>{@link org.fest.swing.fixture}</code> in your tests.
  *
  * @author Yvonne Wang
  * @author Alex Ruiz
