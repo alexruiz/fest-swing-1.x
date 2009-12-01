@@ -32,7 +32,7 @@ import org.fest.swing.edt.GuiQuery;
 import org.fest.swing.util.GenericRange;
 
 /**
- * Understands functional testing of <code>{@link JSplitPane}</code>s including:
+ * Understands functional testing of <code>{@link JSplitPane}</code>s:
  * <ul>
  * <li>user input simulation</li>
  * <li>state verification</li>

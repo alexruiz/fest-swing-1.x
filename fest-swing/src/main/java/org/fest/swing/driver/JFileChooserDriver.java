@@ -34,7 +34,7 @@ import org.fest.swing.core.Robot;
 import org.fest.swing.exception.ComponentLookupException;
 
 /**
- * Understands functional testing of <code>{@link JFileChooser}</code>s including:
+ * Understands functional testing of <code>{@link JFileChooser}</code>s:
  * <ul>
  * <li>user input simulation</li>
  * <li>state verification</li>

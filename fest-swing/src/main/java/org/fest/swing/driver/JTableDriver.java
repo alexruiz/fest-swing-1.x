@@ -62,7 +62,7 @@ import org.fest.swing.exception.ComponentLookupException;
 import org.fest.swing.util.*;
 
 /**
- * Understands functional testing of <code>{@link JTable}</code>s including:
+ * Understands functional testing of <code>{@link JTable}</code>s:
  * <ul>
  * <li>user input simulation</li>
  * <li>state verification</li>

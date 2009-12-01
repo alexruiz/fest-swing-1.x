@@ -58,7 +58,7 @@ import org.fest.swing.util.Range.From;
 import org.fest.swing.util.Range.To;
 
 /**
- * Understands functional testing of <code>{@link JList}</code>s including:
+ * Understands functional testing of <code>{@link JList}</code>s:
  * <ul>
  * <li>user input simulation</li>
  * <li>state verification</li>

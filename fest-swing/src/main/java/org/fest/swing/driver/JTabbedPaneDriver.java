@@ -39,7 +39,7 @@ import org.fest.swing.exception.LocationUnavailableException;
 import org.fest.swing.util.*;
 
 /**
- * Understands functional testing of <code>{@link JTabbedPane}</code>s including:
+ * Understands functional testing of <code>{@link JTabbedPane}</code>s:
  * <ul>
  * <li>user input simulation</li>
  * <li>state verification</li>

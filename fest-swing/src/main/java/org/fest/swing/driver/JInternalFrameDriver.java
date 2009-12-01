@@ -42,7 +42,7 @@ import org.fest.swing.util.Pair;
 import org.fest.swing.util.Triple;
 
 /**
- * Understands functional testing of <code>{@link JInternalFrame}</code>s including:
+ * Understands functional testing of <code>{@link JInternalFrame}</code>s:
  * <ul>
  * <li>user input simulation</li>
  * <li>state verification</li>

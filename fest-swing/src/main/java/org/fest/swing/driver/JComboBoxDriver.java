@@ -54,7 +54,7 @@ import org.fest.swing.exception.*;
 import org.fest.swing.util.*;
 
 /**
- * Understands functional testing of <code>{@link JComboBox}</code>es including:
+ * Understands functional testing of <code>{@link JComboBox}</code>es:
  * <ul>
  * <li>user input simulation</li>
  * <li>state verification</li>

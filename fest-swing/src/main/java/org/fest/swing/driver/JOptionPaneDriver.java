@@ -36,7 +36,7 @@ import org.fest.swing.core.matcher.JButtonMatcher;
 import org.fest.swing.exception.ComponentLookupException;
 
 /**
- * Understands functional testing of <code>{@link JOptionPane}</code>s including:
+ * Understands functional testing of <code>{@link JOptionPane}</code>s:
  * <ul>
  * <li>user input simulation</li>
  * <li>state verification</li>

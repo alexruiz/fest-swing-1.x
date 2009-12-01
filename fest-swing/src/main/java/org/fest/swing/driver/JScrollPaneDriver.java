@@ -25,7 +25,7 @@ import org.fest.swing.core.Robot;
 import org.fest.swing.edt.GuiQuery;
 
 /**
- * Understands functional testing of <code>{@link JScrollPane}</code>s including:
+ * Understands functional testing of <code>{@link JScrollPane}</code>s:
  * <ul>
  * <li>user input simulation</li>
  * <li>state verification</li>

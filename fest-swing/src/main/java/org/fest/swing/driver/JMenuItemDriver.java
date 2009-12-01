@@ -37,7 +37,7 @@ import org.fest.swing.edt.GuiTask;
 import org.fest.swing.exception.ActionFailedException;
 
 /**
- * Understands functional testing of <code>{@link JMenuItem}</code>s including:
+ * Understands functional testing of <code>{@link JMenuItem}</code>s:
  * <ul>
  * <li>user input simulation</li>
  * <li>state verification</li>

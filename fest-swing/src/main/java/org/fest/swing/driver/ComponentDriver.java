@@ -52,7 +52,7 @@ import org.fest.swing.timing.Timeout;
 import org.fest.swing.util.TimeoutWatch;
 
 /**
- * Understands functional testing of <code>{@link Component}</code>s including:
+ * Understands functional testing of <code>{@link Component}</code>s:
  * <ul>
  * <li>user input simulation</li>
  * <li>state verification</li>

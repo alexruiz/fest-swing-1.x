@@ -27,7 +27,7 @@ import org.fest.swing.edt.GuiTask;
 import org.fest.swing.exception.ActionFailedException;
 
 /**
- * Understands functional testing of <code>{@link Window}</code>s including:
+ * Understands functional testing of <code>{@link Window}</code>s:
  * <ul>
  * <li>user input simulation</li>
  * <li>state verification</li>

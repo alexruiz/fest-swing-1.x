@@ -30,7 +30,7 @@ import org.fest.swing.edt.GuiQuery;
 import org.fest.swing.exception.ActionFailedException;
 
 /**
- * Understands functional testing of <code>{@link Frame}</code>s including:
+ * Understands functional testing of <code>{@link Frame}</code>s:
  * <ul>
  * <li>user input simulation</li>
  * <li>state verification</li>

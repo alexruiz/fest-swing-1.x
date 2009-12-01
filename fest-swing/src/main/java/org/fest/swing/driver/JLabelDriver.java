@@ -25,7 +25,7 @@ import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.core.Robot;
 
 /**
- * Understands functional testing of <code>{@link JLabel}</code>s including:
+ * Understands functional testing of <code>{@link JLabel}</code>s:
  * <ul>
  * <li>user input simulation</li>
  * <li>state verification</li>

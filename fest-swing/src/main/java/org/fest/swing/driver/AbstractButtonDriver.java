@@ -31,7 +31,7 @@ import org.fest.swing.core.Robot;
 import org.fest.swing.edt.GuiQuery;
 
 /**
- * Understands functional testing of <code>{@link AbstractButton}</code>s including:
+ * Understands functional testing of <code>{@link AbstractButton}</code>s:
  * <ul>
  * <li>user input simulation</li>
  * <li>state verification</li>

@@ -10,7 +10,7 @@ import javax.swing.JProgressBar;
 import org.fest.swing.core.Robot;
 
 /**
- * Understands functional testing of <code>{@link JProgressBar}</code>s including:
+ * Understands functional testing of <code>{@link JProgressBar}</code>s:
  * <ul>
  * <li>user input simulation</li>
  * <li>state verification</li>
@@ -20,6 +20,8 @@ import org.fest.swing.core.Robot;
  * <code>{@link org.fest.swing.fixture}</code> in your tests.
  *
  * @author Alex Ruiz
+ *
+ * @since 1.2
  */
 public class JProgressBarDriver extends JComponentDriver {
 

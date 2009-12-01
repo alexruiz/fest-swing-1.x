@@ -38,7 +38,7 @@ import org.fest.swing.util.GenericRange;
 import org.fest.swing.util.Pair;
 
 /**
- * Understands functional testing of <code>{@link JToolBar}</code>s including:
+ * Understands functional testing of <code>{@link JToolBar}</code>s:
  * <ul>
  * <li>user input simulation</li>
  * <li>state verification</li>
