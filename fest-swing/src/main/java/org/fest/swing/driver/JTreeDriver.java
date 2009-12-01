@@ -93,6 +93,7 @@ public class JTreeDriver extends JComponentDriver {
    * @throws LocationUnavailableException if a tree path for the given row cannot be found.
    * @since 1.2
    */
+  @RunsInEDT
   public void clickRow(JTree tree, int row) {
     Point p = scrollToRow(tree, row, location).ii;
     robot.waitForIdle();
@@ -110,10 +111,44 @@ public class JTreeDriver extends JComponentDriver {
    * @throws LocationUnavailableException if a tree path for the given row cannot be found.
    * @since 1.2
    */
+  @RunsInEDT
   public void doubleClickRow(JTree tree, int row) {
     Point p = scrollToRow(tree, row, location).ii;
     robot.waitForIdle();
     doubleClick(tree, p);
+  }
+
+  /**
+   * Right-clicks the given row.
+   * @param tree the target <code>JTree</code>.
+   * @param row the given row.
+   * @throws IllegalStateException if the <code>JTree</code> is disabled.
+   * @throws IllegalStateException if the <code>JTree</code> is not showing on the screen.
+   * @throws IndexOutOfBoundsException if the given row is less than zero or equal than or greater than the number of
+   * visible rows in the <code>JTree</code>.
+   * @throws LocationUnavailableException if a tree path for the given row cannot be found.
+   * @since 1.2
+   */
+  @RunsInEDT
+  public void rightClickRow(JTree tree, int row) {
+    Point p = scrollToRow(tree, row, location).ii;
+    robot.waitForIdle();
+    rightClick(tree, p);
+  }
+
+  /**
+   * Clicks the given path, expanding parent nodes if necessary.
+   * @param tree the target <code>JTree</code>.
+   * @param path the path to path.
+   * @throws IllegalStateException if the <code>JTree</code> is disabled.
+   * @throws IllegalStateException if the <code>JTree</code> is not showing on the screen.
+   * @throws LocationUnavailableException if the given path cannot be found.
+   */
+  @RunsInEDT
+  public void clickPath(JTree tree, String path) {
+    Point p = scrollToMatchingPath(tree, path).iii;
+    robot.waitForIdle();
+    robot.click(tree, p);
   }
 
   /**
@@ -125,13 +160,35 @@ public class JTreeDriver extends JComponentDriver {
    * @throws LocationUnavailableException if the given path cannot be found.
    * @since 1.2
    */
+  @RunsInEDT
   public void doubleClickPath(JTree tree, String path) {
-    Triple<TreePath, Boolean, Point> info = scrollToMatchingPath(tree, path);
-    doubleClick(tree, info.iii);
+    Point p = scrollToMatchingPath(tree, path).iii;
+    robot.waitForIdle();
+    doubleClick(tree, p);
   }
 
   private void doubleClick(JTree tree, Point p) {
     robot.click(tree, p, LEFT_BUTTON, 2);
+  }
+
+  /**
+   * Right-clicks the given path, expanding parent nodes if necessary.
+   * @param tree the target <code>JTree</code>.
+   * @param path the path to path.
+   * @throws IllegalStateException if the <code>JTree</code> is disabled.
+   * @throws IllegalStateException if the <code>JTree</code> is not showing on the screen.
+   * @throws LocationUnavailableException if the given path cannot be found.
+   * @since 1.2
+   */
+  @RunsInEDT
+  public void rightClickPath(JTree tree, String path) {
+    Point p = scrollToMatchingPath(tree, path).iii;
+    robot.waitForIdle();
+    rightClick(tree, p);
+  }
+
+  private void rightClick(JTree tree, Point p) {
+    robot.click(tree, p, RIGHT_BUTTON, 1);
   }
 
   /**
@@ -150,6 +207,7 @@ public class JTreeDriver extends JComponentDriver {
    * @throws ActionFailedException if this method fails to expand the row.
    * @since 1.2
    */
+  @RunsInEDT
   public void expandRow(JTree tree, int row) {
     Triple<Boolean, Point, Integer> info = scrollToRowAndGetToggleInfo(tree, row, location);
     robot.waitForIdle();
@@ -173,6 +231,7 @@ public class JTreeDriver extends JComponentDriver {
    * @throws ActionFailedException if this method fails to collapse the row.
    * @since 1.2
    */
+  @RunsInEDT
   public void collapseRow(JTree tree, int row) {
     Triple<Boolean, Point, Integer> info = scrollToRowAndGetToggleInfo(tree, row, location);
     robot.waitForIdle();
@@ -283,6 +342,7 @@ public class JTreeDriver extends JComponentDriver {
     });
   }
 
+  @RunsInEDT
   private void toggleCell(JTree tree, Point p, int toggleClickCount) {
     if (toggleClickCount == 0) {
       toggleRowThroughTreeUI(tree, p);
@@ -384,21 +444,6 @@ public class JTreeDriver extends JComponentDriver {
   }
 
   /**
-   * Clicks the given path, expanding parent nodes if necessary.
-   * @param tree the target <code>JTree</code>.
-   * @param path the path to path.
-   * @throws IllegalStateException if the <code>JTree</code> is disabled.
-   * @throws IllegalStateException if the <code>JTree</code> is not showing on the screen.
-   * @throws LocationUnavailableException if the given path cannot be found.
-   */
-  @RunsInEDT
-  public void clickPath(JTree tree, String path) {
-    Triple<TreePath, Boolean, Point> info = scrollToMatchingPath(tree, path);
-    robot.waitForIdle();
-    robot.click(tree, info.iii);
-  }
-
-  /**
    * Selects the given path, expanding parent nodes if necessary. Unlike <code>{@link #clickPath(JTree, String)}</code>,
    * this method will not click the path if it is already selected
    * @param tree the target <code>JTree</code>.
@@ -410,22 +455,6 @@ public class JTreeDriver extends JComponentDriver {
   @RunsInEDT
   public void selectPath(JTree tree, String path) {
     selectMatchingPath(tree, path);
-  }
-
-  /**
-   * Right-clicks the given path, expanding parent nodes if necessary.
-   * @param tree the target <code>JTree</code>.
-   * @param path the path to path.
-   * @throws IllegalStateException if the <code>JTree</code> is disabled.
-   * @throws IllegalStateException if the <code>JTree</code> is not showing on the screen.
-   * @throws LocationUnavailableException if the given path cannot be found.
-   * @since 1.2
-   */
-  @RunsInEDT
-  public void rightClickPath(JTree tree, String path) {
-    Triple<TreePath, Boolean, Point> info = scrollToMatchingPath(tree, path);
-    robot.waitForIdle();
-    robot.click(tree, info.iii, RIGHT_BUTTON, 1);
   }
 
   /**

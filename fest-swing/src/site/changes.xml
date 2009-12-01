@@ -47,6 +47,9 @@
       <action dev="alexruiz" type="fix" issue="FEST-254" due-to="Glen Schrader">
         Method 'requireSelection' in JComboBoxFixture now uses the fixture's cell reader in editable JComboBoxes.
       </action>
+      <action dev="alexruiz" type="add" issue="FEST-266">
+        Added method 'rightClickRow(int)' to JTreeFixture.
+      </action>
     </release>
     <release version="1.2a3" date="2009-08-31" description="Subsequent release">
       <action dev="alexruiz" type="add" issue="FEST-7" due-to="Cephei">

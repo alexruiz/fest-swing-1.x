@@ -1,5 +1,5 @@
 /*
- * Created on Nov 29, 2009
+ * Created on Dec 1, 2009
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -16,7 +16,7 @@
 package org.fest.swing.driver;
 
 import static org.fest.assertions.Assertions.assertThat;
-import static org.fest.swing.core.MouseButton.LEFT_BUTTON;
+import static org.fest.swing.core.MouseButton.RIGHT_BUTTON;
 import static org.fest.swing.test.core.CommonAssertions.*;
 
 import javax.swing.JTree;
@@ -25,19 +25,19 @@ import org.fest.swing.test.recorder.ClickRecorder;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JTreeDriver#clickRow(JTree, int)}</code>.
+ * Tests for <code>{@link JTreeDriver#rightClickRow(JTree, int)}</code>.
  *
  * @author Alex Ruiz
  */
-public class JTreeDriver_clickRow_Test extends JTreeDriver_clickCell_TestCase {
+public class JTreeDriver_rightClickRow_Test extends JTreeDriver_clickCell_TestCase {
 
   @Test
-  public void should_click_cell() {
+  public void should_right_click_cell() {
     showWindow();
     ClickRecorder recorder = ClickRecorder.attachTo(tree);
     int row = 5;
-    driver.clickRow(tree, row);
-    assertThat(recorder).clicked(LEFT_BUTTON)
+    driver.rightClickRow(tree, row);
+    assertThat(recorder).clicked(RIGHT_BUTTON)
                         .timesClicked(1);
     assertThat(rowAt(recorder.pointClicked())).isEqualTo(row);
   }
@@ -46,7 +46,7 @@ public class JTreeDriver_clickRow_Test extends JTreeDriver_clickCell_TestCase {
   public void should_throw_error_if_JTree_is_disabled() {
     disableTree();
     try {
-      driver.clickRow(tree, 0);
+      driver.rightClickRow(tree, 0);
       failWhenExpectingException();
     } catch (IllegalStateException e) {
       assertThatErrorCauseIsDisabledComponent(e);
@@ -56,7 +56,7 @@ public class JTreeDriver_clickRow_Test extends JTreeDriver_clickCell_TestCase {
   @Test
   public void should_throw_error_if_JTree_is_not_showing_on_the_screen() {
     try {
-      driver.clickRow(tree, 0);
+      driver.rightClickRow(tree, 0);
       failWhenExpectingException();
     } catch (IllegalStateException e) {
       assertThatErrorCauseIsNotShowingComponent(e);
