@@ -18,8 +18,7 @@ package org.fest.swing.fixture;
 import java.awt.Component;
 
 /**
- * Understands simulation of user events on a <code>{@link Component}</code> that accepts text input from the user, and 
- * verification of the state of such <code>{@link Component}</code>.
+ * Understands simulation of user events on GUI components that accept text input from the user.
  * 
  * @author Alex Ruiz
  */

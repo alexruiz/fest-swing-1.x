@@ -36,8 +36,12 @@ import org.fest.swing.exception.*;
 import org.fest.swing.timing.Timeout;
 
 /**
- * Understands simulation of user events on a <code>{@link JTable}</code> and verification of the state of such
- * <code>{@link JTable}</code>.
+ * Understands functional testing of <code>{@link JTable}</code>s:
+ * <ul>
+ * <li>user input simulation</li>
+ * <li>state verification</li>
+ * <li>property value query</li>
+ * </ul>
  * <p>
  * The conversion between the values given in tests and the values being displayed by a <code>{@link JTable}</code>
  * renderer is performed by a <code>{@link JTableCellReader}</code>. This fixture uses a
@@ -620,7 +624,7 @@ public class JTableFixture extends ComponentFixture<JTable> implements CommonCom
    * @param pattern the regular expression pattern to match.
    * @return this fixture.
    * @throws NullPointerException if the given regular expression pattern is <code>null</code>.
-   * @throws AssertionError if the toolTip in this fixture's <code>JTable</code> does not match the given regular 
+   * @throws AssertionError if the toolTip in this fixture's <code>JTable</code> does not match the given regular
    * expression pattern.
    * @since 1.2
    */
@@ -750,7 +754,7 @@ public class JTableFixture extends ComponentFixture<JTable> implements CommonCom
    * not found.
    * @throws NullPointerException if the given key is <code>null</code>.
    * @since 1.2
-   */  
+   */
   public Object clientProperty(Object key) {
     return driver.clientProperty(target, key);
   }

@@ -24,8 +24,12 @@ import org.fest.swing.exception.*;
 import org.fest.swing.timing.Timeout;
 
 /**
- * Understands simulation of user events on a <code>{@link Frame}</code> and verification of the state of such
- * <code>{@link Frame}</code>.
+ * Understands functional testing of <code>{@link Frame}</code>s:
+ * <ul>
+ * <li>user input simulation</li>
+ * <li>state verification</li>
+ * <li>property value query</li>
+ * </ul>
  *
  * @author Yvonne Wang
  * @author Alex Ruiz
@@ -415,7 +419,7 @@ public class FrameFixture extends WindowFixture<Frame> implements FrameLikeFixtu
   public JPopupMenuFixture showPopupMenuAt(Point p) {
     return new JPopupMenuFixture(robot, driver.invokePopupMenu(target, p));
   }
-  
+
   /**
    * Simulates a user closing this fixture's <code>{@link Frame}</code>.
    */

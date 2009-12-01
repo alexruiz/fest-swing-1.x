@@ -19,6 +19,12 @@ import java.awt.Component;
 import java.util.regex.Pattern;
 
 /**
+ * Understands functional testing of GUI components that contains or display a group of items:
+ * <ul>
+ * <li>user input simulation</li>
+ * <li>state verification</li>
+ * <li>property value query</li>
+ * </ul>
  * Understands simulation of user events on a <code>{@link Component}</code> that contains or displays a group of items,
  * and verification of the state of such <code>{@link Component}</code>.
  *

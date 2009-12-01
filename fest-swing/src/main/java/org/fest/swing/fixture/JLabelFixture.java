@@ -26,12 +26,16 @@ import org.fest.swing.exception.ComponentLookupException;
 import org.fest.swing.timing.Timeout;
 
 /**
- * Understands simulation of user events on a <code>{@link JLabel}</code> and verification of the state of such
- * <code>{@link JLabel}</code>.
+ * Understands functional testing of <code>{@link JLabel}</code>s:
+ * <ul>
+ * <li>user input simulation</li>
+ * <li>state verification</li>
+ * <li>property value query</li>
+ * </ul>
  *
  * @author Alex Ruiz
  */
-public class JLabelFixture extends ComponentFixture<JLabel> implements CommonComponentFixture, JComponentFixture, 
+public class JLabelFixture extends ComponentFixture<JLabel> implements CommonComponentFixture, JComponentFixture,
     JPopupMenuInvokerFixture, TextDisplayFixture {
 
   private JLabelDriver driver;
@@ -254,7 +258,7 @@ public class JLabelFixture extends ComponentFixture<JLabel> implements CommonCom
    * @param pattern the regular expression pattern to match.
    * @return this fixture.
    * @throws NullPointerException if the given regular expression pattern is <code>null</code>.
-   * @throws AssertionError if the toolTip in this fixture's <code>JLabel</code> does not match the given regular 
+   * @throws AssertionError if the toolTip in this fixture's <code>JLabel</code> does not match the given regular
    * expression pattern.
    * @since 1.2
    */
@@ -331,7 +335,7 @@ public class JLabelFixture extends ComponentFixture<JLabel> implements CommonCom
    * not found.
    * @throws NullPointerException if the given key is <code>null</code>.
    * @since 1.2
-   */  
+   */
   public Object clientProperty(Object key) {
     return driver.clientProperty(target, key);
   }

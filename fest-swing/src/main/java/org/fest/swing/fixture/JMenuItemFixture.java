@@ -25,8 +25,12 @@ import org.fest.swing.exception.ComponentLookupException;
 import org.fest.swing.timing.Timeout;
 
 /**
- * Understands simulation of user events on a <code>{@link JMenuItem}</code> and verification of the state of such
- * <code>{@link JMenuItem}</code>.
+ * Understands functional testing of <code>{@link JMenuItem}</code>s:
+ * <ul>
+ * <li>user input simulation</li>
+ * <li>state verification</li>
+ * <li>property value query</li>
+ * </ul>
  *
  * @author Alex Ruiz
  */

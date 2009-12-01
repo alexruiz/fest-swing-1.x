@@ -27,13 +27,17 @@ import org.fest.swing.exception.WaitTimedOutError;
 import org.fest.swing.timing.Timeout;
 
 /**
- * Understands simulation of user events on a <code>{@link JScrollPane}</code> and verification of the state of such
- * <code>{@link JScrollPane}</code>.
+ * Understands functional testing of <code>{@link JScrollPane}</code>s:
+ * <ul>
+ * <li>user input simulation</li>
+ * <li>state verification</li>
+ * <li>property value query</li>
+ * </ul>
  *
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class JScrollPaneFixture extends ComponentFixture<JScrollPane> implements CommonComponentFixture, 
+public class JScrollPaneFixture extends ComponentFixture<JScrollPane> implements CommonComponentFixture,
     JPopupMenuInvokerFixture, JComponentFixture {
 
   private JScrollPaneDriver driver;
@@ -308,7 +312,7 @@ public class JScrollPaneFixture extends ComponentFixture<JScrollPane> implements
    * @param pattern the regular expression pattern to match.
    * @return this fixture.
    * @throws NullPointerException if the given regular expression pattern is <code>null</code>.
-   * @throws AssertionError if the toolTip in this fixture's <code>JScrollPane</code> does not match the given regular 
+   * @throws AssertionError if the toolTip in this fixture's <code>JScrollPane</code> does not match the given regular
    * expression.
    * @since 1.2
    */
@@ -316,7 +320,7 @@ public class JScrollPaneFixture extends ComponentFixture<JScrollPane> implements
     driver.requireToolTip(target, pattern);
     return this;
   }
-  
+
   /**
    * Returns the client property stored in this fixture's <code>{@link JScrollPane}</code>, under the given key.
    * @param key the key to use to retrieve the client property.
@@ -324,7 +328,7 @@ public class JScrollPaneFixture extends ComponentFixture<JScrollPane> implements
    * not found.
    * @throws NullPointerException if the given key is <code>null</code>.
    * @since 1.2
-   */  
+   */
   public Object clientProperty(Object key) {
     return driver.clientProperty(target, key);
   }

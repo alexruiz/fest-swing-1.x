@@ -27,12 +27,16 @@ import org.fest.swing.exception.WaitTimedOutError;
 import org.fest.swing.timing.Timeout;
 
 /**
- * Understands simulation of user events on a <code>{@link JScrollBar}</code> and verification of the state of such
- * <code>{@link JScrollBar}</code>.
+ * Understands functional testing of <code>{@link JScrollBar}</code>s:
+ * <ul>
+ * <li>user input simulation</li>
+ * <li>state verification</li>
+ * <li>property value query</li>
+ * </ul>
  *
  * @author Alex Ruiz
  */
-public class JScrollBarFixture extends ComponentFixture<JScrollBar> implements CommonComponentFixture, 
+public class JScrollBarFixture extends ComponentFixture<JScrollBar> implements CommonComponentFixture,
     JComponentFixture, JPopupMenuInvokerFixture {
 
   private JScrollBarDriver driver;
@@ -408,7 +412,7 @@ public class JScrollBarFixture extends ComponentFixture<JScrollBar> implements C
     driver.requireNotVisible(target);
     return this;
   }
-  
+
   /**
    * Shows a pop-up menu using this fixture's <code>{@link JScrollBar}</code> as the invoker of the pop-up menu.
    * @return a fixture that manages the displayed pop-up menu.
@@ -419,7 +423,7 @@ public class JScrollBarFixture extends ComponentFixture<JScrollBar> implements C
   public JPopupMenuFixture showPopupMenu() {
     return new JPopupMenuFixture(robot, driver.invokePopupMenu(target));
   }
-  
+
   /**
    * Shows a pop-up menu at the given point using this fixture's <code>{@link JScrollBar}</code> as the invoker of the
    * pop-up menu.
@@ -432,7 +436,7 @@ public class JScrollBarFixture extends ComponentFixture<JScrollBar> implements C
   public JPopupMenuFixture showPopupMenuAt(Point p) {
     return new JPopupMenuFixture(robot, driver.invokePopupMenu(target, p));
   }
-  
+
   /**
    * Returns the client property stored in this fixture's <code>{@link JScrollBar}</code>, under the given key.
    * @param key the key to use to retrieve the client property.
@@ -440,7 +444,7 @@ public class JScrollBarFixture extends ComponentFixture<JScrollBar> implements C
    * not found.
    * @throws NullPointerException if the given key is <code>null</code>.
    * @since 1.2
-   */  
+   */
   public Object clientProperty(Object key) {
     return driver.clientProperty(target, key);
   }
@@ -456,14 +460,14 @@ public class JScrollBarFixture extends ComponentFixture<JScrollBar> implements C
     driver.requireToolTip(target, expected);
     return this;
   }
-  
+
   /**
    * Asserts that the toolTip in this fixture's <code>{@link JScrollBar}</code> matches the given regular expression
    * pattern.
    * @param pattern the regular expression pattern to match.
    * @return this fixture.
    * @throws NullPointerException if the given regular expression pattern is <code>null</code>.
-   * @throws AssertionError if the toolTip in this fixture's <code>JScrollBar</code> does not match the given regular 
+   * @throws AssertionError if the toolTip in this fixture's <code>JScrollBar</code> does not match the given regular
    * expression.
    * @since 1.2
    */

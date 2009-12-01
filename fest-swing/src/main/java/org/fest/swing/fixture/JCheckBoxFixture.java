@@ -26,12 +26,16 @@ import org.fest.swing.exception.ComponentLookupException;
 import org.fest.swing.timing.Timeout;
 
 /**
- * Understands simulation of user events on a <code>{@link JCheckBox}</code> and verification of the state of such
- * <code>{@link JCheckBox}</code>.
+ * Understands functional testing of <code>{@link JCheckBox}</code>es:
+ * <ul>
+ * <li>user input simulation</li>
+ * <li>state verification</li>
+ * <li>property value query</li>
+ * </ul>
  *
  * @author Alex Ruiz
  */
-public class JCheckBoxFixture extends ComponentFixture<JCheckBox> implements CommonComponentFixture, 
+public class JCheckBoxFixture extends ComponentFixture<JCheckBox> implements CommonComponentFixture,
     JComponentFixture, JPopupMenuInvokerFixture, TextDisplayFixture, TwoStateButtonFixture {
 
   private AbstractButtonDriver driver;
@@ -359,7 +363,7 @@ public class JCheckBoxFixture extends ComponentFixture<JCheckBox> implements Com
    * @param pattern the regular expression pattern to match.
    * @return this fixture.
    * @throws NullPointerException if the given regular expression pattern is <code>null</code>.
-   * @throws AssertionError if the toolTip in this fixture's <code>JCheckBox</code> does not match the given regular 
+   * @throws AssertionError if the toolTip in this fixture's <code>JCheckBox</code> does not match the given regular
    * expression.
    * @since 1.2
    */
@@ -375,11 +379,11 @@ public class JCheckBoxFixture extends ComponentFixture<JCheckBox> implements Com
    * not found.
    * @throws NullPointerException if the given key is <code>null</code>.
    * @since 1.2
-   */  
+   */
   public Object clientProperty(Object key) {
     return driver.clientProperty(target, key);
   }
-  
+
   /**
    * Shows a pop-up menu using this fixture's <code>{@link JCheckBox}</code> as the invoker of the pop-up menu.
    * @return a fixture that manages the displayed pop-up menu.

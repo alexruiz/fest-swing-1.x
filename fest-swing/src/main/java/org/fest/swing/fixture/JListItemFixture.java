@@ -27,8 +27,12 @@ import org.fest.swing.exception.ActionFailedException;
 import org.fest.swing.exception.ComponentLookupException;
 
 /**
- * Understands simulation of user events on an item in a <code>{@link JList}</code> and verification of the state of
- * such list item.
+ * Understands functional testing of single rows in <code>{@link JList}</code>s:
+ * <ul>
+ * <li>user input simulation</li>
+ * <li>state verification</li>
+ * <li>property value query</li>
+ * </ul>
  *
  * @author Yvonne Wang
  * @author Alex Ruiz

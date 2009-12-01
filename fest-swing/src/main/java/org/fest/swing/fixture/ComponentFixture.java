@@ -33,8 +33,13 @@ import org.fest.swing.edt.GuiActionRunner;
 import org.fest.swing.exception.ComponentLookupException;
 
 /**
- * Understands simulation of user events on a <code>{@link Component}</code> and verification of the state of such
- * <code>{@link Component}</code>.
+ * Understands functional testing of <code>{@link Component}</code>s:
+ * <ul>
+ * <li>user input simulation</li>
+ * <li>state verification</li>
+ * <li>property value query</li>
+ * </ul>
+ *
  * @param <T> the type of <code>Component</code> that this fixture can manage.
  *
  * @author Alex Ruiz

@@ -29,8 +29,12 @@ import org.fest.swing.exception.*;
 import org.fest.swing.timing.Timeout;
 
 /**
- * Understands simulation of user events on a <code>{@link JComboBox}</code> and verification of the state of such
- * <code>{@link JComboBox}</code>.
+ * Understands functional testing of <code>{@link JComboBox}</code>es:
+ * <ul>
+ * <li>user input simulation</li>
+ * <li>state verification</li>
+ * <li>property value query</li>
+ * </ul>
  * <p>
  * The conversion between the values given in tests and the values being displayed by a <code>{@link JComboBox}</code>
  * renderer is performed by a <code>{@link JComboBoxCellReader}</code>. This fixture uses a

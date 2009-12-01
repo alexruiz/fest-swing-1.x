@@ -26,8 +26,12 @@ import org.fest.swing.exception.WaitTimedOutError;
 import org.fest.swing.timing.Timeout;
 
 /**
- * Understands simulation of user events on a <code>{@link JFileChooser}</code> and verification of the state of such
- * <code>{@link JFileChooser}</code>.
+ * Understands functional testing of <code>{@link JFileChooser}</code>s:
+ * <ul>
+ * <li>user input simulation</li>
+ * <li>state verification</li>
+ * <li>property value query</li>
+ * </ul>
  *
  * @author Yvonne Wang
  * @author Alex Ruiz

@@ -26,8 +26,12 @@ import org.fest.swing.exception.ComponentLookupException;
 import org.fest.swing.lock.ScreenLock;
 
 /**
- * Understands simulation of user events on a <code>{@link Window}</code> and verification of the state of such
- * <code>{@link Window}</code>.
+ * Understands functional testing of <code>{@link Window}</code>s:
+ * <ul>
+ * <li>user input simulation</li>
+ * <li>state verification</li>
+ * <li>property value query</li>
+ * </ul>
  * @param <T> the type of window handled by this fixture.
  *
  * @author Alex Ruiz

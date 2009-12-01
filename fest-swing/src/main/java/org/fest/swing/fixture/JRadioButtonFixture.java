@@ -26,13 +26,17 @@ import org.fest.swing.exception.ComponentLookupException;
 import org.fest.swing.timing.Timeout;
 
 /**
- * Understands simulation of user events on a <code>{@link JRadioButton}</code> and verification of the state of such
- * <code>{@link JRadioButton}</code>.
+ * Understands functional testing of <code>{@link JRadioButton}</code>s:
+ * <ul>
+ * <li>user input simulation</li>
+ * <li>state verification</li>
+ * <li>property value query</li>
+ * </ul>
  *
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class JRadioButtonFixture extends ComponentFixture<JRadioButton> implements CommonComponentFixture, 
+public class JRadioButtonFixture extends ComponentFixture<JRadioButton> implements CommonComponentFixture,
     JComponentFixture, JPopupMenuInvokerFixture, TextDisplayFixture, TwoStateButtonFixture {
 
   private AbstractButtonDriver driver;
@@ -361,7 +365,7 @@ public class JRadioButtonFixture extends ComponentFixture<JRadioButton> implemen
    * @param pattern the regular expression pattern to match.
    * @return this fixture.
    * @throws NullPointerException if the given regular expression pattern is <code>null</code>.
-   * @throws AssertionError if the toolTip in this fixture's <code>JRadioButton</code> does not match the given regular 
+   * @throws AssertionError if the toolTip in this fixture's <code>JRadioButton</code> does not match the given regular
    * expression.
    * @since 1.2
    */
@@ -377,11 +381,11 @@ public class JRadioButtonFixture extends ComponentFixture<JRadioButton> implemen
    * not found.
    * @throws NullPointerException if the given key is <code>null</code>.
    * @since 1.2
-   */  
+   */
   public Object clientProperty(Object key) {
     return driver.clientProperty(target, key);
   }
-  
+
   /**
    * Shows a pop-up menu using this fixture's <code>{@link JRadioButton}</code> as the invoker of the pop-up menu.
    * @return a fixture that manages the displayed pop-up menu.

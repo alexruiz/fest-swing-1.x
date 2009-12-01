@@ -33,8 +33,12 @@ import org.fest.swing.exception.ActionFailedException;
 import org.fest.swing.exception.ComponentLookupException;
 
 /**
- * Understands simulation of user events on a cell in a <code>{@link JTable}</code> and verification of the state of
- * such table cell.
+ * Understands functional testing of single cells in <code>{@link JTable}</code>s:
+ * <ul>
+ * <li>user input simulation</li>
+ * <li>state verification</li>
+ * <li>property value query</li>
+ * </ul>
  * <p>
  * Example:
  * <pre>

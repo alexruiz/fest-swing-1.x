@@ -29,8 +29,12 @@ import org.fest.swing.exception.LocationUnavailableException;
 import org.fest.swing.timing.Timeout;
 
 /**
- * Understands simulation of user events on a <code>{@link JTabbedPane}</code> and verification of the state of such
- * <code>{@link JTabbedPane}</code>.
+ * Understands functional testing of <code>{@link JTabbedPane}</code>s:
+ * <ul>
+ * <li>user input simulation</li>
+ * <li>state verification</li>
+ * <li>property value query</li>
+ * </ul>
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
@@ -402,7 +406,7 @@ public class JTabbedPaneFixture extends ComponentFixture<JTabbedPane> implements
    * not found.
    * @throws NullPointerException if the given key is <code>null</code>.
    * @since 1.2
-   */  
+   */
   public Object clientProperty(Object key) {
     return driver.clientProperty(target, key);
   }

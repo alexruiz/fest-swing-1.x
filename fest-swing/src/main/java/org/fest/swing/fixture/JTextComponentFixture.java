@@ -26,8 +26,12 @@ import org.fest.swing.exception.*;
 import org.fest.swing.timing.Timeout;
 
 /**
- * Understands simulation of user events on a <code>{@link JTextComponent}</code> and verification of the state of such
- * <code>{@link JTextComponent}</code>.
+ * Understands functional testing of <code>{@link JTextComponent}</code>s:
+ * <ul>
+ * <li>user input simulation</li>
+ * <li>state verification</li>
+ * <li>property value query</li>
+ * </ul>
  *
  * @author Alex Ruiz
  */
@@ -305,9 +309,9 @@ public class JTextComponentFixture extends ComponentFixture<JTextComponent>
   }
 
   /**
-   * Asserts that the text of this fixture's <code>{@link JTextComponent}</code> matches the given regular expression 
+   * Asserts that the text of this fixture's <code>{@link JTextComponent}</code> matches the given regular expression
    * pattern.
-   * @param pattern the regular expression pattern to match. 
+   * @param pattern the regular expression pattern to match.
    * @return this fixture.
    * @throws NullPointerException if the given regular expression pattern is <code>null</code>.
    * @throws AssertionError if the text of this fixture's <code>JTextComponent</code> is not eual to the given one.
@@ -413,7 +417,7 @@ public class JTextComponentFixture extends ComponentFixture<JTextComponent>
    * Asserts that the toolTip in this fixture's <code>{@link JTextComponent}</code> matches the given value.
    * @param expected the given value. It can be a regular expression.
    * @return this fixture.
-   * @throws AssertionError if the toolTip in this fixture's <code>JTextComponent</code> does not match the given 
+   * @throws AssertionError if the toolTip in this fixture's <code>JTextComponent</code> does not match the given
    * value.
    * @since 1.2
    */
@@ -428,7 +432,7 @@ public class JTextComponentFixture extends ComponentFixture<JTextComponent>
    * @param pattern the regular expression pattern to match.
    * @return this fixture.
    * @throws NullPointerException if the given regular expression pattern is <code>null</code>.
-   * @throws AssertionError if the toolTip in this fixture's <code>JTextComponent</code> does not match the given 
+   * @throws AssertionError if the toolTip in this fixture's <code>JTextComponent</code> does not match the given
    * regular expression pattern.
    * @since 1.2
    */
@@ -445,7 +449,7 @@ public class JTextComponentFixture extends ComponentFixture<JTextComponent>
    * not found.
    * @throws NullPointerException if the given key is <code>null</code>.
    * @since 1.2
-   */  
+   */
   public Object clientProperty(Object key) {
     return driver.clientProperty(target, key);
   }
@@ -462,7 +466,7 @@ public class JTextComponentFixture extends ComponentFixture<JTextComponent>
   }
 
   /**
-   * Shows a pop-up menu at the given point using this fixture's <code>{@link JTextComponent}</code> as the invoker of 
+   * Shows a pop-up menu at the given point using this fixture's <code>{@link JTextComponent}</code> as the invoker of
    * the pop-up menu.
    * @param p the given point where to show the pop-up menu.
    * @return a fixture that manages the displayed pop-up menu.

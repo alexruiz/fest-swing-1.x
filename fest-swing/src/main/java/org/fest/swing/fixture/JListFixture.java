@@ -31,8 +31,12 @@ import org.fest.swing.timing.Timeout;
 import org.fest.swing.util.Range;
 
 /**
- * Understands simulation of user events on a <code>{@link JList}</code> and verification of the state of such
- * <code>{@link JList}</code>.
+ * Understands functional testing of <code>{@link JList}</code>s:
+ * <ul>
+ * <li>user input simulation</li>
+ * <li>state verification</li>
+ * <li>property value query</li>
+ * </ul>
  * <p>
  * The conversion between the values given in tests and the values being displayed by a <code>{@link JList}</code>
  * renderer is performed by a <code>{@link JListCellReader}</code>. This fixture uses a

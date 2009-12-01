@@ -27,12 +27,16 @@ import org.fest.swing.exception.*;
 import org.fest.swing.timing.Timeout;
 
 /**
- * Understands simulation of user events on a <code>{@link JToolBar}</code> and verification of the state of such
- * <code>{@link JToolBar}</code>.
+ * Understands functional testing of <code>{@link JToolBar}</code>s:
+ * <ul>
+ * <li>user input simulation</li>
+ * <li>state verification</li>
+ * <li>property value query</li>
+ * </ul>
  *
  * @author Alex Ruiz
  */
-public class JToolBarFixture extends ContainerFixture<JToolBar> implements CommonComponentFixture, 
+public class JToolBarFixture extends ContainerFixture<JToolBar> implements CommonComponentFixture,
   JComponentFixture {
 
   /**
@@ -313,7 +317,7 @@ public class JToolBarFixture extends ContainerFixture<JToolBar> implements Commo
    * @param pattern the regular expression pattern to match.
    * @return this fixture.
    * @throws NullPointerException if the given regular expression pattern is <code>null</code>.
-   * @throws AssertionError if the toolTip in this fixture's <code>JToolBar</code> does not match the given regular 
+   * @throws AssertionError if the toolTip in this fixture's <code>JToolBar</code> does not match the given regular
    * expression.
    * @since 1.2
    */
@@ -329,7 +333,7 @@ public class JToolBarFixture extends ContainerFixture<JToolBar> implements Commo
    * not found.
    * @throws NullPointerException if the given key is <code>null</code>.
    * @since 1.2
-   */  
+   */
   public Object clientProperty(Object key) {
     return driver.clientProperty(target, key);
   }

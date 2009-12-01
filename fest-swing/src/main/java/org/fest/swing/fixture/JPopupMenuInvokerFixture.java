@@ -23,7 +23,8 @@ import javax.swing.JPopupMenu;
 import org.fest.swing.exception.ComponentLookupException;
 
 /**
- * Understands a fixture that can invoke a <code>{@link JPopupMenu}</code> on the target <code>{@link Component}</code>.
+ * Understands input simulation on <code>{@link Component}</code>s capable of invoking
+ * <code>{@link JPopupMenu}</code>s.
  *
  * @author Alex Ruiz
  */

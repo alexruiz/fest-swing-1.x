@@ -26,8 +26,12 @@ import org.fest.swing.exception.WaitTimedOutError;
 import org.fest.swing.timing.Timeout;
 
 /**
- * Understands simulation of user events on a <code>{@link JPanel}</code> and verification of the state of such
- * <code>{@link JPanel}</code>.
+ * Understands functional testing of <code>{@link JPanel}</code>s:
+ * <ul>
+ * <li>user input simulation</li>
+ * <li>state verification</li>
+ * <li>property value query</li>
+ * </ul>
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
@@ -263,7 +267,7 @@ public class JPanelFixture extends ContainerFixture<JPanel> implements CommonCom
    * @param pattern the regular expression pattern to match.
    * @return this fixture.
    * @throws NullPointerException if the given regular expression pattern is <code>null</code>.
-   * @throws AssertionError if the toolTip in this fixture's <code>JPanel</code> does not match the given regular 
+   * @throws AssertionError if the toolTip in this fixture's <code>JPanel</code> does not match the given regular
    * expression.
    * @since 1.2
    */
@@ -279,7 +283,7 @@ public class JPanelFixture extends ContainerFixture<JPanel> implements CommonCom
    * not found.
    * @throws NullPointerException if the given key is <code>null</code>.
    * @since 1.2
-   */  
+   */
   public Object clientProperty(Object key) {
     return driver.clientProperty(target, key);
   }

@@ -19,21 +19,21 @@ import java.awt.Component;
 import java.util.regex.Pattern;
 
 /**
- * Understands verification of the state of a <code>{@link Component}</code> that displays text.
+ * Understands state verification and property value queries of GUI components that display text.
  *
  * @author Alex Ruiz
  */
 public interface TextDisplayFixture {
 
   /**
-   * Returns the text of the <code>{@link Component}</code> managed by this fixture.
+   * Returns the text of this fixture's <code>{@link Component}</code>.
    * @return the text of the managed <code>Component</code>.
    */
   String text();
 
   /**
-   * Asserts that the text of the <code>{@link Component}</code> managed by this fixture is equal to or matches the
-   * specified <code>String</code>.
+   * Asserts that the text of this fixture's <code>{@link Component}</code> is equal to or matches the specified
+   * <code>String</code>.
    * @param expected the text to match. It can be a regular expression.
    * @return this fixture.
    * @throws AssertionError if the text of the target component is not equal to or does not match the given one.
@@ -41,8 +41,8 @@ public interface TextDisplayFixture {
   TextDisplayFixture requireText(String expected);
 
   /**
-   * Asserts that the text of the <code>{@link Component}</code> managed by this fixture matches the given regular 
-   * expression pattern.
+   * Asserts that the text of this fixture's <code>{@link Component}</code> matches the given regular expression
+   * pattern.
    * @param pattern the regular expression pattern to match.
    * @return this fixture.
    * @throws NullPointerException if the given regular expression pattern is <code>null</code>.

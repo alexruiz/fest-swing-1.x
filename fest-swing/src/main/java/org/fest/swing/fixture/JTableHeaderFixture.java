@@ -27,7 +27,12 @@ import org.fest.swing.exception.ComponentLookupException;
 import org.fest.swing.exception.LocationUnavailableException;
 
 /**
- * Understands simulation of user events on a <code>{@link JTableHeader}</code>.
+ * Understands functional testing of <code>{@link JTableHeader}</code>s:
+ * <ul>
+ * <li>user input simulation</li>
+ * <li>state verification</li>
+ * <li>property value query</li>
+ * </ul>
  *
  * @author Yvonne Wang
  * @author Alex Ruiz
@@ -220,7 +225,7 @@ public class JTableHeaderFixture extends ComponentFixture<JTableHeader> implemen
    * @param pattern the regular expression pattern to match.
    * @return this fixture.
    * @throws NullPointerException if the given regular expression pattern is <code>null</code>.
-   * @throws AssertionError if the toolTip in this fixture's <code>JTableHeader</code> does not match the given regular 
+   * @throws AssertionError if the toolTip in this fixture's <code>JTableHeader</code> does not match the given regular
    * expression.
    * @since 1.2
    */
@@ -236,7 +241,7 @@ public class JTableHeaderFixture extends ComponentFixture<JTableHeader> implemen
    * not found.
    * @throws NullPointerException if the given key is <code>null</code>.
    * @since 1.2
-   */  
+   */
   public Object clientProperty(Object key) {
     return driver.clientProperty(target, key);
   }

@@ -27,14 +27,18 @@ import org.fest.swing.exception.*;
 import org.fest.swing.timing.Timeout;
 
 /**
- * Understands simulation of user events on a <code>{@link JInternalFrame}</code> and verification of the state of such
- * <code>{@link JInternalFrame}</code>.
+ * Understands functional testing of <code>{@link JInternalFrame}</code>s:
+ * <ul>
+ * <li>user input simulation</li>
+ * <li>state verification</li>
+ * <li>property value query</li>
+ * </ul>
  *
  * @author Alex Ruiz
  */
-public class JInternalFrameFixture extends ContainerFixture<JInternalFrame> implements CommonComponentFixture, 
+public class JInternalFrameFixture extends ContainerFixture<JInternalFrame> implements CommonComponentFixture,
     FrameLikeFixture, JComponentFixture {
-  
+
   private JInternalFrameDriver driver;
 
   /**
@@ -385,7 +389,7 @@ public class JInternalFrameFixture extends ContainerFixture<JInternalFrame> impl
    * @param pattern the regular expression pattern to match.
    * @return this fixture.
    * @throws NullPointerException if the given regular expression pattern is <code>null</code>.
-   * @throws AssertionError if the toolTip in this fixture's <code>JInternalFrame</code> does not match the given 
+   * @throws AssertionError if the toolTip in this fixture's <code>JInternalFrame</code> does not match the given
    * regular expression.
    * @since 1.2
    */
@@ -401,7 +405,7 @@ public class JInternalFrameFixture extends ContainerFixture<JInternalFrame> impl
    * not found.
    * @throws NullPointerException if the given key is <code>null</code>.
    * @since 1.2
-   */  
+   */
   public Object clientProperty(Object key) {
     return driver.clientProperty(target, key);
   }
@@ -418,7 +422,7 @@ public class JInternalFrameFixture extends ContainerFixture<JInternalFrame> impl
   }
 
   /**
-   * Shows a pop-up menu at the given point using this fixture's <code>{@link JInternalFrame}</code> as the invoker of 
+   * Shows a pop-up menu at the given point using this fixture's <code>{@link JInternalFrame}</code> as the invoker of
    * the pop-up menu.
    * @param p the given point where to show the pop-up menu.
    * @return a fixture that manages the displayed pop-up menu.

@@ -18,7 +18,7 @@ package org.fest.swing.fixture;
 import javax.swing.JToggleButton;
 
 /**
- * Understands simulation of user events on a two-state button and verification of the state of such button.
+ * Understands state verification of "two-state" buttons.
  *
  * @author Yvonne Wang
  * @author Alex Ruiz

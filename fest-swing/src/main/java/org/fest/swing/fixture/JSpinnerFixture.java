@@ -27,13 +27,17 @@ import org.fest.swing.exception.*;
 import org.fest.swing.timing.Timeout;
 
 /**
- * Understands simulation of user events on a <code>{@link JSpinner}</code> and verification of the state of such
- * <code>{@link JSpinner}</code>.
+ * Understands functional testing of <code>{@link JSpinner}</code>s:
+ * <ul>
+ * <li>user input simulation</li>
+ * <li>state verification</li>
+ * <li>property value query</li>
+ * </ul>
  *
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class JSpinnerFixture extends ComponentFixture<JSpinner> implements CommonComponentFixture, 
+public class JSpinnerFixture extends ComponentFixture<JSpinner> implements CommonComponentFixture,
     JComponentFixture, JPopupMenuInvokerFixture {
 
   private JSpinnerDriver driver;
@@ -383,7 +387,7 @@ public class JSpinnerFixture extends ComponentFixture<JSpinner> implements Commo
   public String text() {
     return driver.textOf(target);
   }
-  
+
 
   /**
    * Asserts that the toolTip in this fixture's <code>{@link JSpinner}</code> matches the given value.
@@ -403,14 +407,14 @@ public class JSpinnerFixture extends ComponentFixture<JSpinner> implements Commo
    * @param pattern the regular expression pattern to match.
    * @return this fixture.
    * @throws NullPointerException if the given regular expression pattern is <code>null</code>.
-   * @throws AssertionError if the toolTip in this fixture's <code>JSpinner</code> does not match the given regular 
+   * @throws AssertionError if the toolTip in this fixture's <code>JSpinner</code> does not match the given regular
    * expression.
    * @since 1.2
    */
   public JSpinnerFixture requireToolTip(Pattern pattern) {
     driver.requireToolTip(target, pattern);
     return this;
-  }  
+  }
 
   /**
    * Returns the client property stored in this fixture's <code>{@link JSpinner}</code>, under the given key.
@@ -419,7 +423,7 @@ public class JSpinnerFixture extends ComponentFixture<JSpinner> implements Commo
    * not found.
    * @throws NullPointerException if the given key is <code>null</code>.
    * @since 1.2
-   */  
+   */
   public Object clientProperty(Object key) {
     return driver.clientProperty(target, key);
   }

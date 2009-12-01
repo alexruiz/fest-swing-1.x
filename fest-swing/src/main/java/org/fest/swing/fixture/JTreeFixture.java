@@ -29,8 +29,12 @@ import org.fest.swing.exception.*;
 import org.fest.swing.timing.Timeout;
 
 /**
- * Understands simulation of user events on a <code>{@link JTree}</code> and verification of the state of such
- * <code>{@link JTree}</code>.
+ * Understands functional testing of <code>{@link JTree}</code>s:
+ * <ul>
+ * <li>user input simulation</li>
+ * <li>state verification</li>
+ * <li>property value query</li>
+ * </ul>
  * <p>
  * <code>{@link TreePath}</code>s can be specified using <code>String</code>s. For example, for the following
  * tree:

@@ -25,7 +25,12 @@ import org.fest.swing.exception.WaitTimedOutError;
 import org.fest.swing.timing.Timeout;
 
 /**
- * Understands lookup of <code>{@link JPopupMenu}</code>.
+ * Understands functional testing of <code>{@link JPopupMenu}</code>s:
+ * <ul>
+ * <li>user input simulation</li>
+ * <li>state verification</li>
+ * <li>property value query</li>
+ * </ul>
  *
  * @author Yvonne Wang
  */
