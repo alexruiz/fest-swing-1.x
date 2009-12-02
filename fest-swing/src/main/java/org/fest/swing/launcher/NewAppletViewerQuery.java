@@ -15,15 +15,10 @@
  */
 package org.fest.swing.launcher;
 
-import static org.fest.swing.edt.GuiActionRunner.execute;
-import static org.fest.swing.timing.Pause.pause;
-
 import java.applet.Applet;
 import java.util.Map;
 
 import org.fest.swing.applet.AppletViewer;
-import org.fest.swing.edt.GuiQuery;
-import org.fest.swing.timing.Condition;
 
 /**
  * Understands an action, executed in the event dispatch thread, that creates and shows a new
@@ -36,19 +31,8 @@ final class NewAppletViewerQuery {
 
   // TODO test
   static AppletViewer showAppletViewerWith(final Applet applet, final Map<String, String> parameters) {
-    final AppletViewer viewer = execute(new GuiQuery<AppletViewer>() {
-      protected AppletViewer executeInEDT() {
-        AppletViewer newViewer = new AppletViewer(applet, parameters);
-        newViewer.pack();
-        newViewer.setVisible(true);
-        return newViewer;
-      }
-    });
-    pause(new Condition("new AppletViewer to be showing") {
-      public boolean test() {
-        return viewer.isShowing();
-      }
-    });
+    AppletViewer viewer = new AppletViewer(applet, parameters);
+    viewer.display();
     return viewer;
   }
 

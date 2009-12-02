@@ -27,7 +27,7 @@ import org.fest.swing.test.swing.TestApplet;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link AppletViewer#load(java.applet.Applet, java.applet.AppletStub)}</code>.
+ * Tests for <code>{@link AppletViewer#display()}</code>.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
@@ -37,8 +37,8 @@ public class AppletViewer_loadApplet_Test extends AppletViewer_TestCase {
   @Test 
   public void should_load_applet_when_created() {
     assertThatAppletIsShowingAndViewerIsLoaded();
-    Container ancestor = getAncestorOfClass(AppletViewer.class, applet);
-    assertThat(ancestor).isSameAs(viewer);
+    Container ancestor = getAncestorOfClass(AppletViewer.Viewer.class, applet);
+    assertThat(ancestor).isSameAs(viewer.window());
     fixture.label("status").requireText("Applet loaded");
     assertThat(viewer.applet()).isSameAs(applet);
     assertThat(viewer.stub()).isInstanceOf(BasicAppletStub.class);

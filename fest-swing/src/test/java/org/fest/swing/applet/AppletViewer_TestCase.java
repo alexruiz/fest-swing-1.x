@@ -45,8 +45,8 @@ public abstract class AppletViewer_TestCase extends EDTSafeTestCase {
   public final void setUp() {
     applet = createApplet();
     viewer = createViewer();
-    fixture = new FrameFixture(viewer);
-    fixture.show();
+    fixture = new FrameFixture(viewer.window());
+    viewer.display();
     assertThatIsInitializedAndStarted(applet);
   }
 

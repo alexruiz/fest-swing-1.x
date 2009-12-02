@@ -15,6 +15,7 @@
  */
 package org.fest.swing.test.swing;
 
+import static javax.swing.SwingUtilities.invokeAndWait;
 import static org.fest.swing.edt.GuiActionRunner.execute;
 
 import java.awt.FlowLayout;
@@ -24,7 +25,6 @@ import javax.swing.JButton;
 
 import net.jcip.annotations.GuardedBy;
 
-import org.fest.swing.annotation.RunsInCurrentThread;
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
 
@@ -50,17 +50,23 @@ public class TestApplet extends JApplet {
     });
   }
 
-  @RunsInCurrentThread
-  public TestApplet() {
-    setLayout(new FlowLayout());
-    JButton button = new JButton("Click Me");
-    button.setName("clickMe");
-    add(button);
-  }
+  public TestApplet() {}
 
   @Override
   public synchronized void init() {
-    initialized = true;
+    try {
+      invokeAndWait(new Runnable() {
+        public void run() {
+          setLayout(new FlowLayout());
+          JButton button = new JButton("Click Me");
+          button.setName("clickMe");
+          add(button);
+          initialized = true;
+        }
+      });
+    } catch (Exception e) {
+      System.err.println("createGUI didn't successfully complete");
+    }
   }
 
   @Override

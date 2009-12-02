@@ -25,7 +25,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.fest.swing.annotation.RunsInEDT;
-import org.fest.swing.applet.*;
+import org.fest.swing.applet.AppletViewer;
+import org.fest.swing.applet.BasicAppletContext;
+import org.fest.swing.applet.BasicAppletStub;
 import org.fest.swing.edt.GuiQuery;
 import org.fest.swing.exception.UnexpectedException;
 import org.fest.swing.launcher.AppletParameter.AppletParameterBuilder;
@@ -102,22 +104,25 @@ public class AppletLauncher {
   public static AppletLauncher applet(String appletType) {
     if (appletType == null) throw new NullPointerException("The name of the applet type should not be null");
     if (isEmpty(appletType)) throw new IllegalArgumentException("The name of the applet type should not be empty");
-    Object o = load(appletType);
-    if (!(o instanceof Applet))
+    Class<?> type = load(appletType);
+    if (!(Applet.class.isAssignableFrom(type)))
       throw new IllegalArgumentException(concat("The given type is not a subclass of ", Applet.class.getName()));
-    return applet((Applet)o);
+    return instantiate(type);
   }
 
   @RunsInEDT
-  private static Object load(String typeName) {
+  private static Class<?> load(String typeName) {
     try {
-      Class<?> type = Class.forName(typeName);
-      return loadInEDT(type);
+      return Class.forName(typeName);
     } catch (ClassNotFoundException e) {
-      throw new UnexpectedException(concat("Unable to load class ", typeName), e);
+      throw cannotLoadType(typeName, e);
     } catch (Exception e) {
-      throw cannotInstantiateApplet(typeName, e);
+      throw cannotLoadType(typeName, e);
     }
+  }
+
+  private static UnexpectedException cannotLoadType(String typeName, Exception e) {
+    throw new UnexpectedException(concat("Unable to load class ", typeName), e);
   }
   
   /**
@@ -131,23 +136,22 @@ public class AppletLauncher {
   @RunsInEDT
   public static AppletLauncher applet(Class<? extends Applet> appletType) {
     if (appletType == null) throw new NullPointerException("The applet type should not be null");
+    return instantiate(appletType);
+  }
+
+  private static AppletLauncher instantiate(final Class<?> appletType) {
     try {
-      Object loadInEDT = loadInEDT(appletType);
-      return applet((Applet)loadInEDT);
+      Object applet = execute(new GuiQuery<Object>() {
+        protected Object executeInEDT() throws Exception {
+          return appletType.newInstance();
+        }
+      });
+      return applet((Applet)applet);
     } catch (Exception e) {
       throw cannotInstantiateApplet(appletType.getName(), e);
     }
   }
   
-  @RunsInEDT
-  private static Object loadInEDT(final Class<?> type) {
-    return execute(new GuiQuery<Object>() {
-      protected Object executeInEDT() throws Exception {
-        return type.newInstance();
-      }
-    });
-  }
-
   private static UnexpectedException cannotInstantiateApplet(String appletType, Exception cause) {
     throw new UnexpectedException(concat("Unable to create a new instance of ", appletType), cause);
   }

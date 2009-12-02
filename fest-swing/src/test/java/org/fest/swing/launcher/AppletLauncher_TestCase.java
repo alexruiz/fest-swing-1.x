@@ -16,7 +16,6 @@
 package org.fest.swing.launcher;
 
 import static org.fest.assertions.Assertions.assertThat;
-import static org.fest.swing.query.ComponentShowingQuery.isShowing;
 
 import java.applet.Applet;
 
@@ -44,7 +43,6 @@ public abstract class AppletLauncher_TestCase extends SequentialTestCase {
 
   private void disposeViewer() {
     if (viewer == null) return;
-    viewer.setVisible(false);
     viewer.dispose();
   }
 
@@ -60,7 +58,6 @@ public abstract class AppletLauncher_TestCase extends SequentialTestCase {
   }
 
   final void assertThatAppletWasLaunched() {
-    assertThat(isShowing(viewer)).isTrue();
     assertThat(viewer.applet()).isInstanceOf(TestApplet.class);
   }
 }
