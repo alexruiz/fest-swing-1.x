@@ -52,8 +52,7 @@ public class TestApplet extends JApplet {
 
   public TestApplet() {}
 
-  @Override
-  public synchronized void init() {
+  @Override public void init() {
     try {
       invokeAndWait(new Runnable() {
         public void run() {
@@ -61,27 +60,32 @@ public class TestApplet extends JApplet {
           JButton button = new JButton("Click Me");
           button.setName("clickMe");
           add(button);
-          initialized = true;
         }
       });
+      synchronized (this) {
+        initialized = true;
+      }
     } catch (Exception e) {
       System.err.println("createGUI didn't successfully complete");
     }
   }
 
-  @Override
-  public synchronized void start() {
-    started = true;
+  @Override public void start() {
+    synchronized (this) {
+      started = true;
+    }
   }
 
-  @Override
-  public synchronized void stop() {
-    stopped = true;
+  @Override public void stop() {
+    synchronized (this) {
+      stopped = true;
+    }
   }
 
-  @Override
-  public synchronized void destroy() {
-    destroyed = true;
+  @Override public void destroy() {
+    synchronized (this) {
+      destroyed = true;
+    }
   }
 
   public synchronized boolean initialized() {

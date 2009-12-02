@@ -15,24 +15,29 @@
  */
 package org.fest.swing.applet;
 
+import static org.easymock.classextension.EasyMock.createMock;
 import static org.fest.swing.edt.GuiActionRunner.execute;
+
+import java.applet.Applet;
+import java.util.Map;
 
 import org.fest.swing.edt.GuiTask;
 import org.fest.swing.test.core.EDTSafeTestCase;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link AppletViewer#AppletViewer(java.applet.Applet)}</code>.
+ * Tests for <code>{@link AppletViewer#newViewer(Applet, Map)}</code>
  *
  * @author Alex Ruiz
  */
-public class AppletViewer_constructorWithApplet_Test extends EDTSafeTestCase {
+public class AppletViewer_newViewerWithAppletAndMap_Test extends EDTSafeTestCase {
 
   @Test(expected = NullPointerException.class)
-  public void should_throw_error_if_Applet_is_null() {
+  public void should_throw_error_if_parameterMap_is_null() {
     execute(new GuiTask() {
       protected void executeInEDT() {
-        new AppletViewer(null);
+        Map<String, String> map = null;
+        AppletViewer.newViewer(createMock(Applet.class), map);
       }
     });
   }

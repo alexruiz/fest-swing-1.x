@@ -28,7 +28,6 @@ import java.applet.Applet;
 import java.applet.AppletStub;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.Frame;
 import java.util.Map;
 
 import javax.swing.JFrame;
@@ -36,15 +35,16 @@ import javax.swing.JLabel;
 
 import net.jcip.annotations.GuardedBy;
 
+import org.fest.swing.annotation.RunsInCurrentThread;
+import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
-import org.fest.swing.edt.GuiTask;
 
 /**
  * Understands a window that displays an <code>{@link Applet}</code>.
  * <p>
  * Typical usage:
  * <pre>
- * AppletViewer viewer = new AppletViewer(new MyApplet());
+ * AppletViewer viewer = AppletViewer.newViewer(new MyApplet());
  * 
  * // test the applet, viewer can be wrapped with a FrameFixture.
  * FrameFixture viewerFixture = new FrameFixture(viewer);
@@ -52,12 +52,18 @@ import org.fest.swing.edt.GuiTask;
  * viewer.unloadApplet() // stops and destroys the applet
  * viewerFixture.cleanUp();
  * </pre>
+ * <p>
+ * <b>Note:</b> In version 1.2, due to bug <a href="http://jira.codehaus.org/browse/FEST-219" target="_blank">FEST-219</a> 
+ * constructors in this class have been replaced with the static factory methods <code>newViewer</code>. It was not
+ * possible to just deprecate them. To ensure correct behavior of the applet viewer, they had to be made unaccessible to
+ * client code.
+ * </p>
  * </p>
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
-public class AppletViewer {
+public class AppletViewer extends JFrame implements StatusDisplay {
 
   private static final long serialVersionUID = 1L;
 
@@ -65,84 +71,109 @@ public class AppletViewer {
   private static final String APPLET_LOADED_MESSAGE = "Applet loaded";
   private static final Dimension DEFAULT_SIZE = new Dimension(100, 100);
 
-  private final Viewer viewer;
+  private final JLabel statusLabel = new JLabel();
+
   private final Applet applet;
-  private final AppletStub stub;
+  private AppletStub stub;
   @GuardedBy("this") private boolean loaded;
  
   /**
-   * Creates a new </code>{@link AppletViewer}</code>. This constructor creates new instances of
+   * Creates a new </code>{@link AppletViewer}</code>. This factory method creates new instances of
    * <code>{@link BasicAppletStub}</code> and <code>{@link BasicAppletContext}</code>.
+   * <p>
+   * <b>Note:</b> This method is executed in the event dispatch thread (EDT.)
+   * </p>
    * @param applet the applet to view.
+   * @return the created <code>AppletViewer</code>.
    * @throws NullPointerException if <code>applet</code> is <code>null</code>.
+   * @since 1.2
    */
-  public AppletViewer(Applet applet) {
-    this.applet = validateIsNotNull(applet);
-    viewer = Viewer.createNew(applet);
-    stub = new BasicAppletStub(viewer, new BasicAppletContext(viewer));
-    applet.setStub(stub);
+  @RunsInEDT
+  public static AppletViewer newViewer(Applet applet) {
+    AppletViewer viewer = createInEDT(applet);
+    viewer.appletStub(new BasicAppletStub(viewer, new BasicAppletContext(viewer)));
+    return viewer;
   }
 
   /**
-   * Creates a new </code>{@link AppletViewer}</code>. This constructor creates new instances of
+   * Creates a new </code>{@link AppletViewer}</code>. This factory method creates new instances of
    * <code>{@link BasicAppletStub}</code> and <code>{@link BasicAppletContext}</code>.
+   * <p>
+   * <b>Note:</b> This method is executed in the event dispatch thread (EDT.)
+   * </p>
    * @param applet the applet to view.
    * @param parameters the parameters included in an applet HTML tag.
+   * @return the created <code>AppletViewer</code>.
    * @throws NullPointerException if <code>applet</code> is <code>null</code>.
    * @throws NullPointerException if <code>parameters</code> is <code>null</code>.
+   * @since 1.2
    */
-  public AppletViewer(Applet applet, Map<String, String> parameters) {
-    this.applet = validateIsNotNull(applet);
-    viewer = Viewer.createNew(applet);
-    stub = new BasicAppletStub(viewer, new BasicAppletContext(viewer), parameters);
-    applet.setStub(stub);
+  @RunsInEDT
+  public static AppletViewer newViewer(Applet applet, Map<String, String> parameters) {
+    AppletViewer viewer = createInEDT(applet);
+    viewer.appletStub(new BasicAppletStub(viewer, new BasicAppletContext(viewer), parameters));
+    return viewer;
   }
+
 
   /**
    * Creates a new </code>{@link AppletViewer}</code>.
    * <p>
-   * <b>Note:</b> This constructor is <b>not</b> executed in the event dispatch thread (EDT.) Clients are responsible 
-   * for invoking this constructor in the EDT.
+   * <b>Note:</b> This method is executed in the event dispatch thread (EDT.)
    * </p>
    * @param applet the applet to view.
    * @param stub the applet's stub.
+   * @return the created <code>AppletViewer</code>.
    * @throws NullPointerException if <code>applet</code> is <code>null</code>.
    * @throws NullPointerException if <code>stub</code> is <code>null</code>.
+   * @since 1.2
    */
-  public AppletViewer(Applet applet, AppletStub stub) {
-    this.applet = validateIsNotNull(applet);
-    if (stub == null) throw new NullPointerException("The AppletStub should not be null");
-    viewer = Viewer.createNew(applet);
-    this.stub = stub;
-    applet.setStub(stub);
-  }
-  
-  private static Applet validateIsNotNull(Applet applet) {
-    if (applet == null) throw new NullPointerException("The applet to load should not be null");
-    return applet;
+  @RunsInEDT
+  public static AppletViewer newViewer(Applet applet, AppletStub stub) {
+    AppletViewer viewer = createInEDT(applet);
+    viewer.appletStub(stub);
+    return viewer;
   }
 
-  /**
-   * Loads the applet and shows it in this viewer.
-   */
-  public void display() {
-    reloadApplet();
-    execute(new GuiTask() {
-      protected void executeInEDT() {
-        viewer.showStatus(APPLET_LOADED_MESSAGE);
-        viewer.pack();
-        viewer.setVisible(true);
+  @RunsInEDT
+  private static AppletViewer createInEDT(final Applet applet) {
+    return execute(new GuiQuery<AppletViewer>() {
+      protected AppletViewer executeInEDT() {
+        return new AppletViewer(applet);
       }
     });
   }
   
-  public void dispose() {
-    execute(new GuiTask() {
-      protected void executeInEDT() {
-        viewer.setVisible(false);
-        viewer.dispose();
-      }
-    });
+  private AppletViewer(Applet applet) {
+    if (applet == null) throw new NullPointerException("The applet to load should not be null");
+    this.applet = applet;
+    setUpFrame();
+    addContent();
+  }
+
+  private void setUpFrame() {
+    setTitle(concat(APPLET_VIEWER_TITLE, applet.getClass().getName()));
+    setSize(DEFAULT_SIZE);
+    setLayout(new BorderLayout());
+  }
+
+  private void addContent() {
+    add(applet, CENTER);
+    statusLabel.setBorder(createCompoundBorder(createBevelBorder(LOWERED), createEmptyBorder(2, 5, 2, 5)));
+    statusLabel.setName("status");
+    add(statusLabel, SOUTH);
+  }
+  
+  private void appletStub(AppletStub newAppletStub) {
+    if (newAppletStub == null) throw new NullPointerException("The AppletStub should not be null");
+    stub = newAppletStub;
+    applet.setStub(stub);
+    setUpApplet();
+  }
+
+  private void setUpApplet() {
+    loadApplet();
+    showStatus(APPLET_LOADED_MESSAGE);
   }
 
   /**
@@ -150,6 +181,10 @@ public class AppletViewer {
    */
   public synchronized void reloadApplet() {
     if (loaded) unloadApplet();
+    loadApplet();
+  }
+
+  private synchronized void loadApplet() {
     applet.init();
     applet.start();
     loaded = true;
@@ -172,6 +207,28 @@ public class AppletViewer {
   public synchronized boolean appletLoaded() { return loaded; }
   
   /**
+   * Displays the given status message. This method is executed in the event dispatch thread (EDT.)
+   * @param status the status to display.
+   */
+  @RunsInEDT
+  public void showStatus(final String status) {
+    if (isEventDispatchThread()) {
+      setStatus(status);
+      return;
+    }
+    invokeLater(new Runnable() {
+      public void run() {
+        setStatus(status);
+      }
+    });
+  }
+
+  @RunsInCurrentThread
+  private void setStatus(String status) {
+    statusLabel.setText(status);
+  }
+
+  /**
    * Returns the applet displayed in this viewer.
    * @return the applet displayed in this viewer.
    */
@@ -185,53 +242,5 @@ public class AppletViewer {
    */
   public AppletStub stub() {
     return stub;
-  }
-  
-  /**
-   * Returns the <code>{@link Frame}</code> used to display an applet.
-   * @return the <code>{@link Frame}</code> used to display an applet.
-   */
-  public Frame window() {
-    return viewer;
-  }
-  
-  static class Viewer extends JFrame implements StatusDisplay {
-    private static final long serialVersionUID = 1L;
-    
-    private final JLabel statusLabel = new JLabel();
-
-    static Viewer createNew(final Applet applet) {
-      return execute(new GuiQuery<Viewer>() {
-        protected Viewer executeInEDT() {
-          return new Viewer(applet);
-        }
-      });
-    }
-    
-    private Viewer(Applet applet) {
-      setTitle(concat(APPLET_VIEWER_TITLE, applet.getClass().getName()));
-      setSize(DEFAULT_SIZE);
-      setLayout(new BorderLayout());
-      add(applet, CENTER);
-      statusLabel.setBorder(createCompoundBorder(createBevelBorder(LOWERED), createEmptyBorder(2, 5, 2, 5)));
-      statusLabel.setName("status");
-      add(statusLabel, SOUTH);
-    }
-
-    public void showStatus(final String status) {
-      if (isEventDispatchThread()) {
-        setStatus(status);
-        return;
-      }
-      invokeLater(new Runnable() {
-        public void run() {
-          setStatus(status);
-        }
-      });
-    }
-
-    void setStatus(String status) {
-      statusLabel.setText(status);
-    }
   }
 }
