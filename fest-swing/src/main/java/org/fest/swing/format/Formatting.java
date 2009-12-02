@@ -71,6 +71,7 @@ public class Formatting {
     register(new JOptionPaneFormatter());
     register(nameOnly(JPanel.class));
     register(instrospect(JPopupMenu.class, NAME, "label", ENABLED, VISIBLE, SHOWING));
+    register(instrospect(JProgressBar.class, NAME, VALUE, MINIMUM, MAXIMUM, "string", "stringPainted", ENABLED, VISIBLE, SHOWING));
     register(empty(JRootPane.class));
     register(instrospect(JScrollBar.class, NAME, VALUE, "blockIncrement", MINIMUM, MAXIMUM, ENABLED, VISIBLE, SHOWING));
     register(instrospect(JScrollPane.class, NAME, ENABLED, VISIBLE, SHOWING));
@@ -114,7 +115,7 @@ public class Formatting {
   }
 
   /**
-   * Returns a <code>String</code> representation of the given <code>{@link Component}</code>. This method is invoked in 
+   * Returns a <code>String</code> representation of the given <code>{@link Component}</code>. This method is invoked in
    * the event dispatch thread.
    * @param c the given <code>Component</code>.
    * @return a <code>String</code> representation of the given <code>Component</code>.
@@ -127,11 +128,11 @@ public class Formatting {
       }
     });
   }
-  
+
   /**
    * Returns a <code>String</code> representation of the given <code>{@link Component}</code>.
    * <p>
-   * <b>Note:</b> This method is <b>not</b> executed in the event dispatch thread (EDT.) Clients are responsible for 
+   * <b>Note:</b> This method is <b>not</b> executed in the event dispatch thread (EDT.) Clients are responsible for
    * invoking this method in the EDT.
    * </p>
    * @param c the given <code>Component</code>.

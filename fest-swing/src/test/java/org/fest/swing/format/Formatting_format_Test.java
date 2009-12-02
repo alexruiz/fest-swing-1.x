@@ -26,6 +26,7 @@ import static org.fest.swing.test.builder.JMenuBars.menuBar;
 import static org.fest.swing.test.builder.JMenuItems.menuItem;
 import static org.fest.swing.test.builder.JPanels.panel;
 import static org.fest.swing.test.builder.JPopupMenus.popupMenu;
+import static org.fest.swing.test.builder.JProgressBars.progressBar;
 import static org.fest.swing.test.builder.JScrollBars.scrollBar;
 import static org.fest.swing.test.builder.JScrollPanes.scrollPane;
 import static org.fest.swing.test.builder.JSliders.slider;
@@ -184,6 +185,22 @@ public class Formatting_format_Test extends EDTSafeTestCase {
                                     .contains("enabled=true")
                                     .contains("visible=false")
                                     .contains("showing=false");
+  }
+
+  @Test
+  public void should_format_JProgressBar() {
+    JProgressBar progressBar = progressBar().showingText().withMaximum(20).withMinimum(10)
+                                            .withName("progressBar").withText("15%").withValue(15).createNew();
+    assertThat(formatted(progressBar)).contains("javax.swing.JProgressBar")
+                                      .contains("name='progressBar'")
+                                      .contains("value=15")
+                                      .contains("minimum=10")
+                                      .contains("maximum=20")
+                                      .contains("string='15%'")
+                                      .contains("stringPainted=true")
+                                      .contains("enabled=true")
+                                      .contains("visible=true")
+                                      .contains("showing=false");
   }
 
   @Test

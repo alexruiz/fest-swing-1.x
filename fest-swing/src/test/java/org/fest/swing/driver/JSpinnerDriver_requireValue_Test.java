@@ -40,9 +40,8 @@ public class JSpinnerDriver_requireValue_Test extends JSpinnerDriver_TestCase {
       driver.requireValue(spinner, "Frodo");
       failWhenExpectingException();
     } catch (AssertionError e) {
-      assertThat(e.getMessage()).contains("property:'value'");
-                                // TODO fix assertion message when using JUnit
-                                // .contains("expected:<'Frodo'> but was:<'Gandalf'>");
+      assertThat(e.getMessage()).contains("property:'value'")
+                                .contains("expected:<'[Frodo]'> but was:<'[Gandalf]'>");
     }
   }
 }

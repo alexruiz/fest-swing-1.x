@@ -306,7 +306,7 @@ public class JSpinnerDriver extends JComponentDriver {
   /**
    * Verifies that the value of the <code>{@link JSpinner}</code> is equal to the given one.
    * @param spinner the target <code>JSpinner</code>.
-   * @param value the expected value of this fixture's <code>JSpinner</code>.
+   * @param value the expected value.
    * @throws AssertionError if the value of the <code>JSpinner</code> is not equal to the given one.
    */
   @RunsInEDT
