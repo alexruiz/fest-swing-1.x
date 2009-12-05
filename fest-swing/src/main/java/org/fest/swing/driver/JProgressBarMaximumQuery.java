@@ -19,24 +19,24 @@ import static org.fest.swing.edt.GuiActionRunner.execute;
 import javax.swing.JProgressBar;
 
 import org.fest.swing.annotation.RunsInEDT;
-import org.fest.swing.edt.GuiTask;
+import org.fest.swing.edt.GuiQuery;
 
 /**
- * Understands a task that sets value in a <code>{@link JProgressBar}</code>. This task is
- * executed in the event dispatch thread.
+ * Understands an action, executed in the event dispatch thread, that returns the  maximum value of a
+ * <code>{@link JProgressBar}</code>.
  *
  * @author Alex Ruiz
  */
-final class JProgressBarSetValueTask {
+final class JProgressBarMaximumQuery {
 
   @RunsInEDT
-  static void setValue(final JProgressBar progressBar, final int value) {
-    execute(new GuiTask() {
-      protected void executeInEDT() {
-        progressBar.setValue(value);
+  static int maximumOf(final JProgressBar progressBar) {
+    return execute(new GuiQuery<Integer>() {
+      protected Integer executeInEDT() {
+        return progressBar.getMaximum();
       }
     });
   }
 
-  private JProgressBarSetValueTask() {}
+  private JProgressBarMaximumQuery() {}
 }
