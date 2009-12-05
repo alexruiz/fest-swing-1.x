@@ -25,7 +25,7 @@
       <action dev="alexruiz" type="fix" issue="FEST-215">
         Moved JDK-6 specific code to new module fest-swing-jdk6.
       </action>
-      <action dev="alexruiz" type="fix" issue="FEST-219" due-to="Dominik Wild">
+      <action dev="alexruiz" type="fix" issue="FEST-219" due-to="Dominik Wild, Kyle Murphy">
         AppletLauncher does not call 'init' method of Applets in the Event Dispatch Thread.
       </action>
       <action dev="alexruiz" type="fix" issue="FEST-227" due-to="Uli Schrempp">

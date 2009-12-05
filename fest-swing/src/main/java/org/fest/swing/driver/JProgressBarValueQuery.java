@@ -15,6 +15,7 @@ import org.fest.swing.edt.GuiQuery;
 /**
  * Understands an action, executed in the event dispatch thread, that returns the value of a
  * <code>{@link JProgressBar}</code>.
+ * @see JProgressBar#getValue()
  *
  * @author Alex Ruiz
  */
