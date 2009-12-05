@@ -15,6 +15,7 @@
  */
 package org.fest.swing.driver;
 
+import static org.fest.swing.driver.JProgressBarSetValueTask.setValue;
 import static org.fest.swing.edt.GuiActionRunner.execute;
 
 import java.awt.Dimension;
@@ -40,6 +41,11 @@ public abstract class JProgressBarDriver_TestCase extends RobotBasedTestCase {
     driver = new JProgressBarDriver(robot);
     MyWindow window = MyWindow.createNew(getClass());
     progressBar = window.progressBar;
+  }
+
+  final void updateValueTo(int value) {
+    setValue(progressBar, value);
+    robot.waitForIdle();
   }
 
   static class MyWindow extends TestWindow {

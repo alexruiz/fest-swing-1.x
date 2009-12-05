@@ -15,6 +15,7 @@
  */
 package org.fest.swing.driver;
 
+import static java.util.concurrent.TimeUnit.MILLISECONDS;
 import static java.util.concurrent.TimeUnit.SECONDS;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.driver.JProgressBarValueQuery.valueOf;
@@ -29,36 +30,16 @@ import org.fest.swing.timing.Timeout;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JProgressBarDriver#waitUntilValueIs(JProgressBar, int, Timeout)}</code>.
+ * Tests for <code>{@link JProgressBarDriver#waitUntilIsComplete(JProgressBar, Timeout)}</code>.
  *
  * @author Alex Ruiz
  */
-public class JProgressBarDriver_waitUntilValueIs_withTimeout_Test extends JProgressBarDriver_TestCase {
-
-  @Test
-  public void should_throw_error_if_expected_value_is_less_than_minimum() {
-    try {
-      driver.waitUntilValueIs(progressBar, -1, timeout(2, SECONDS));
-      failWhenExpectingException();
-    } catch (IllegalArgumentException e) {
-      assertThat(e.getMessage()).contains("Value <-1> should be between <[0, 100]>");
-    }
-  }
-
-  @Test
-  public void should_throw_error_if_expected_value_is_greater_than_maximum() {
-    try {
-      driver.waitUntilValueIs(progressBar, 200, timeout(2, SECONDS));
-      failWhenExpectingException();
-    } catch (IllegalArgumentException e) {
-      assertThat(e.getMessage()).contains("Value <200> should be between <[0, 100]>");
-    }
-  }
+public class JProgressBarDriver_waitUntilIsComplete_withTimeout_Test extends JProgressBarDriver_TestCase {
 
   @Test
   public void should_throw_error_if_timeout_is_null() {
     try {
-      driver.waitUntilValueIs(progressBar, 10, null);
+      driver.waitUntilIsComplete(progressBar, null);
       failWhenExpectingException();
     } catch (NullPointerException e) {
       assertThat(e.getMessage()).contains("Timeout should not be null");
@@ -66,26 +47,26 @@ public class JProgressBarDriver_waitUntilValueIs_withTimeout_Test extends JProgr
   }
 
   @Test
-  public void should_wait_until_value_is_equal_to_expected() {
+  public void should_wait_until_value_is_equal_to_maximum() {
     Thread t = new Thread() {
       @Override public void run() {
         pause(1000);
         updateValueTo(10);
         pause(1000);
-        updateValueTo(20);
+        updateValueTo(60);
         pause(1000);
-        updateValueTo(30);
+        updateValueTo(100);
       }
     };
     t.start();
-    driver.waitUntilValueIs(progressBar, 30, timeout(5, SECONDS));
-    assertThat(valueOf(progressBar)).isEqualTo(30);
+    driver.waitUntilIsComplete(progressBar, timeout(5, SECONDS));
+    assertThat(valueOf(progressBar)).isEqualTo(100);
   }
 
   @Test
-  public void should_time_out_if_expected_value_never_reached() {
+  public void should_time_out_if_maximum_is_never_reached() {
     try {
-      driver.waitUntilValueIs(progressBar, 100, timeout(1, SECONDS));
+      driver.waitUntilIsComplete(progressBar, timeout(100, MILLISECONDS));
       failWhenExpectingException();
     } catch (WaitTimedOutError e) {
       assertThat(e.getMessage()).contains("Timed out waiting for value")

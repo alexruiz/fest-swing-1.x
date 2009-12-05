@@ -42,6 +42,7 @@ import org.fest.swing.util.Pair;
  */
 public class JProgressBarDriver extends JComponentDriver {
 
+  private static final Timeout DEFAULT_TIMEOUT = timeout(30, SECONDS);
   private static final String TEXT_PROPERTY = "string";
 
   /**
@@ -103,20 +104,22 @@ public class JProgressBarDriver extends JComponentDriver {
    * @param progressBar the target <code>JProgressBar</code>.
    * @param value the expected value.
    * @throws IllegalArgumentException if the given value is less than the <code>JProgressBar</code>'s minimum value.
+   * @throws IllegalArgumentException if the given value is greater than the <code>JProgressBar</code>'s maximum value.
    * @throws WaitTimedOutError if the value of the <code>JProgressBar</code> does not reach the expected value within
    * 30 seconds.
    */
   @RunsInEDT
   public void waitUntilValueIs(JProgressBar progressBar, int value) {
-    waitUntilValueIs(progressBar, value, timeout(30, SECONDS));
+    waitUntilValueIs(progressBar, value, DEFAULT_TIMEOUT);
   }
 
   /**
    * Waits until the value of the given <code>{@link JProgressBar}</code> is equal to the given value.
    * @param progressBar the target <code>JProgressBar</code>.
    * @param value the expected value.
-   * @param timeout the amout of time to wait.
+   * @param timeout the amount of time to wait.
    * @throws IllegalArgumentException if the given value is less than the <code>JProgressBar</code>'s minimum value.
+   * @throws IllegalArgumentException if the given value is greater than the <code>JProgressBar</code>'s maximum value.
    * @throws NullPointerException if the given timeout is <code>null</code>.
    * @throws WaitTimedOutError if the value of the <code>JProgressBar</code> does not reach the expected value within
    * the specified timeout.
@@ -124,8 +127,38 @@ public class JProgressBarDriver extends JComponentDriver {
   @RunsInEDT
   public void waitUntilValueIs(JProgressBar progressBar, int value, Timeout timeout) {
     assertIsInBetweenMinAndMax(progressBar, value);
-    if (timeout == null) throw new NullPointerException("Timeout should not be null");
+    validateIsNotNull(timeout);
     waitUntilValueIsEqualToExpected(progressBar, value, timeout);
+  }
+
+  /**
+   * Waits until the value of the given <code>{@link JProgressBar}</code> is equal to the its maximum.
+   * @param progressBar the target <code>JProgressBar</code>.
+   * @throws WaitTimedOutError if the value of the <code>JProgressBar</code> does not reach its maximum value within
+   * 30 seconds.
+   */
+  @RunsInEDT
+  public void waitUntilIsComplete(JProgressBar progressBar) {
+    waitUntilIsComplete(progressBar, DEFAULT_TIMEOUT);
+  }
+
+  /**
+   * Waits until the value of the given <code>{@link JProgressBar}</code> is equal to the its maximum.
+   * @param progressBar the target <code>JProgressBar</code>.
+   * @param timeout the amount of time to wait.
+   * @throws NullPointerException if the given timeout is <code>null</code>.
+   * @throws WaitTimedOutError if the value of the <code>JProgressBar</code> does not reach its maximum value within
+   * the specified timeout.
+   */
+  @RunsInEDT
+  public void waitUntilIsComplete(JProgressBar progressBar, Timeout timeout) {
+    validateIsNotNull(timeout);
+    Pair<Integer, Integer> minAndMax = minimumAndMaximumOf(progressBar);
+    waitUntilValueIs(progressBar, minAndMax.ii, timeout);
+  }
+
+  private void validateIsNotNull(Timeout timeout) {
+    if (timeout == null) throw new NullPointerException("Timeout should not be null");
   }
 
   @RunsInEDT
