@@ -15,6 +15,7 @@ import javax.swing.JProgressBar;
 import org.fest.assertions.Description;
 import org.fest.swing.edt.GuiLazyLoadingDescription;
 import org.fest.swing.timing.Condition;
+import org.fest.swing.timing.Timeout;
 
 /**
  * Understands an EDT-safe task that waits until the value of a <code>{@link JProgressBar}</code> is equal to the
@@ -24,12 +25,12 @@ import org.fest.swing.timing.Condition;
  */
 final class JProgressBarWaitUntilValueIsEqualToExpectedTask {
 
-  static void waitUntilValueIsEqualToExpected(final JProgressBar progressBar, final int expected) {
+  static void waitUntilValueIsEqualToExpected(final JProgressBar progressBar, final int expected, final Timeout timeout) {
     pause(new Condition(untilValueIsEqualTo(progressBar, expected)) {
       public boolean test() {
         return valueOf(progressBar) == expected;
       }
-    });
+    }, timeout);
   }
 
   private static Description untilValueIsEqualTo(final JProgressBar progressBar, final int expected) {

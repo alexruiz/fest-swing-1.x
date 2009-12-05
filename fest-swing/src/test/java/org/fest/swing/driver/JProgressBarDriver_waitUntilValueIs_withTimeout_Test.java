@@ -15,28 +15,31 @@
  */
 package org.fest.swing.driver;
 
+import static java.util.concurrent.TimeUnit.SECONDS;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.driver.JProgressBarSetValueTask.setValue;
 import static org.fest.swing.driver.JProgressBarValueQuery.valueOf;
 import static org.fest.swing.test.core.CommonAssertions.failWhenExpectingException;
 import static org.fest.swing.timing.Pause.pause;
+import static org.fest.swing.timing.Timeout.timeout;
 
 import javax.swing.JProgressBar;
 
 import org.fest.swing.exception.WaitTimedOutError;
+import org.fest.swing.timing.Timeout;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JProgressBarDriver#waitUntilValueIs(JProgressBar, int)}</code>.
+ * Tests for <code>{@link JProgressBarDriver#waitUntilValueIs(JProgressBar, int, Timeout)}</code>.
  *
  * @author Alex Ruiz
  */
-public class JProgressBarDriver_waitUntilValueIs_Test extends JProgressBarDriver_TestCase {
+public class JProgressBarDriver_waitUntilValueIs_withTimeout_Test extends JProgressBarDriver_TestCase {
 
   @Test
   public void should_throw_error_if_expected_value_is_less_than_minimum() {
     try {
-      driver.waitUntilValueIs(progressBar, -1);
+      driver.waitUntilValueIs(progressBar, -1, timeout(2, SECONDS));
       failWhenExpectingException();
     } catch (IllegalArgumentException e) {
       assertThat(e.getMessage()).contains("Value <-1> should be between <[0, 100]>");
@@ -46,7 +49,7 @@ public class JProgressBarDriver_waitUntilValueIs_Test extends JProgressBarDriver
   @Test
   public void should_throw_error_if_expected_value_is_greater_than_maximum() {
     try {
-      driver.waitUntilValueIs(progressBar, 200);
+      driver.waitUntilValueIs(progressBar, 200, timeout(2, SECONDS));
       failWhenExpectingException();
     } catch (IllegalArgumentException e) {
       assertThat(e.getMessage()).contains("Value <200> should be between <[0, 100]>");
@@ -54,10 +57,20 @@ public class JProgressBarDriver_waitUntilValueIs_Test extends JProgressBarDriver
   }
 
   @Test
+  public void should_throw_error_if_timeout_is_null() {
+    try {
+      driver.waitUntilValueIs(progressBar, 10, null);
+      failWhenExpectingException();
+    } catch (NullPointerException e) {
+      assertThat(e.getMessage()).contains("Timeout should not be null");
+    }
+  }
+
+  @Test
   public void should_wait_until_value_is_equal_to_expected() {
     Thread t = new Thread() {
       @Override public void run() {
-        pause(10000);
+        pause(1000);
         updateValueTo(10);
         pause(1000);
         updateValueTo(20);
@@ -66,7 +79,7 @@ public class JProgressBarDriver_waitUntilValueIs_Test extends JProgressBarDriver
       }
     };
     t.start();
-    driver.waitUntilValueIs(progressBar, 30);
+    driver.waitUntilValueIs(progressBar, 30, timeout(5, SECONDS));
     assertThat(valueOf(progressBar)).isEqualTo(30);
   }
 
@@ -78,7 +91,7 @@ public class JProgressBarDriver_waitUntilValueIs_Test extends JProgressBarDriver
   @Test
   public void should_time_out_if_expected_value_never_reached() {
     try {
-      driver.waitUntilValueIs(progressBar, 100);
+      driver.waitUntilValueIs(progressBar, 100, timeout(1, SECONDS));
       failWhenExpectingException();
     } catch (WaitTimedOutError e) {
       assertThat(e.getMessage()).contains("Timed out waiting for value")
