@@ -18,16 +18,15 @@ package org.fest.swing.core;
 import static org.easymock.EasyMock.expectLastCall;
 import static org.easymock.classextension.EasyMock.createMock;
 import static org.fest.swing.test.builder.JFrames.frame;
+import static org.fest.util.Collections.list;
 
 import java.awt.Container;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JFrame;
 
 import org.fest.mocks.EasyMockTemplate;
 import org.fest.swing.hierarchy.ComponentHierarchy;
-import org.fest.swing.lock.ScreenLock;
 import org.fest.swing.test.core.EDTSafeTestCase;
 import org.junit.*;
 
@@ -47,19 +46,10 @@ public class Bug138_disposeWindows_Test extends EDTSafeTestCase {
     robot = new TestRobotFixture(hierarchy);
   }
 
-  @After public void tearDown() {
-    ScreenLock screenLock = ScreenLock.instance();
-    if (!screenLock.acquiredBy(robot)) return;
-    try {
-      screenLock.release(robot);
-    } catch (Exception ignored) {}
-  }
-
   @Test
   public void should_dispose_windows() {
-    final List<Container> roots = new ArrayList<Container>();
     final JFrame frame = frame().withTitle("Hello").createNew();
-    roots.add(frame);
+    final List<Container> roots = rootsWith(frame);
     new EasyMockTemplate(hierarchy) {
       protected void expectations() {
         hierarchy.roots();
@@ -71,6 +61,10 @@ public class Bug138_disposeWindows_Test extends EDTSafeTestCase {
         robot.cleanUp();
       }
     }.run();
+  }
+
+  private static List<Container> rootsWith(Container c) {
+    return list(c);
   }
 
   @Test

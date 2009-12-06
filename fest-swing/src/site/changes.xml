@@ -6,6 +6,11 @@
   </properties>
   <body>
     <release version="1.2a4" date="2010-03-01" description="Subsequent release">
+      <action dev="alexruiz" type="fix" issue="FEST-98" due-to="Mihael Vrbanec, Julia Koep, Martin Ginkel, Martin Bachmann">
+        ScreenLock is acquired *before* creating an instance of BasicRobot. If the lock is not acquired (somebody else
+        has it,) the component hierarchy will not be created until the lock is released, preventing seeing a stale
+        component hierarchy.
+      </action>
       <action dev="alexruiz" type="fix" issue="FEST-175" due-to="Jan Zuchhold">
         Removed mappings for German umlauts in KeyStrokeMappingProvider_de.
       </action>

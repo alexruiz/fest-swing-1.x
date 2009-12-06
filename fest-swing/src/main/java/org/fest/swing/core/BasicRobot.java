@@ -94,6 +94,8 @@ public class BasicRobot implements Robot {
   /** Provides access to all the components in the hierarchy. */
   private final ComponentHierarchy hierarchy;
 
+  private final Object screenLockOwner;
+
   /** Looks up <code>{@link java.awt.Component}</code>s. */
   private final ComponentFinder finder;
 
@@ -109,7 +111,8 @@ public class BasicRobot implements Robot {
    * @return the created <code>Robot</code>.
    */
   public static Robot robotWithNewAwtHierarchy() {
-    return new BasicRobot(ignoreExistingComponents());
+    Object screenLockOwner = acquireScreenLock();
+    return new BasicRobot(screenLockOwner, ignoreExistingComponents());
   }
 
   /**
@@ -117,15 +120,19 @@ public class BasicRobot implements Robot {
    * @return the created <code>Robot</code>.
    */
   public static Robot robotWithCurrentAwtHierarchy() {
-    return new BasicRobot(new ExistingHierarchy());
+    Object screenLockOwner = acquireScreenLock();
+    return new BasicRobot(screenLockOwner, new ExistingHierarchy());
   }
 
-  /**
-   * Creates a new <code>{@link BasicRobot}</code>.
-   * @param hierarchy the component hierarchy to use.
-   */
-  protected BasicRobot(ComponentHierarchy hierarchy) {
-    ScreenLock.instance().acquire(this);
+  private static Object acquireScreenLock() {
+    Object screenLockOwner = new Object();
+    ScreenLock.instance().acquire(screenLockOwner);
+    return screenLockOwner;
+  }
+
+  // package-protected for testing only
+  BasicRobot(Object screenLockOwner, ComponentHierarchy hierarchy) {
+    this.screenLockOwner = screenLockOwner;
     this.hierarchy = hierarchy;
     settings = new Settings();
     eventGenerator = new RobotEventGenerator(settings);
@@ -299,8 +306,13 @@ public class BasicRobot implements Robot {
       releaseMouseButtons();
     } finally {
       active = false;
-      ScreenLock.instance().release(this);
+      releaseScreenLock();
     }
+  }
+
+  private void releaseScreenLock() {
+    ScreenLock screenLock = ScreenLock.instance();
+    if (screenLock.acquiredBy(screenLockOwner)) screenLock.release(screenLockOwner);
   }
 
   @RunsInEDT
@@ -755,4 +767,7 @@ public class BasicRobot implements Robot {
 
   /** {@inheritDoc} */
   public boolean isActive() { return active; }
+
+  // for testing only
+  final Object screenLockOwner() { return screenLockOwner; }
 }
