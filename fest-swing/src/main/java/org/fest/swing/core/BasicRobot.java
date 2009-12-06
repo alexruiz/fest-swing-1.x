@@ -52,6 +52,8 @@ import java.util.List;
 
 import javax.swing.*;
 
+import net.jcip.annotations.GuardedBy;
+
 import org.fest.swing.annotation.RunsInCurrentThread;
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
@@ -79,7 +81,7 @@ public class BasicRobot implements Robot {
 
   private static final ComponentMatcher POPUP_MATCHER = new TypeMatcher(JPopupMenu.class, true);
 
-  private volatile boolean active;
+  @GuardedBy("this") private volatile boolean active;
 
   private static final Runnable EMPTY_RUNNABLE = new Runnable() {
     public void run() {}
@@ -289,13 +291,13 @@ public class BasicRobot implements Robot {
 
   /** {@inheritDoc} */
   @RunsInEDT
-  public void cleanUp() {
+  public synchronized void cleanUp() {
     cleanUp(true);
   }
 
   /** {@inheritDoc} */
   @RunsInEDT
-  public void cleanUpWithoutDisposingWindows() {
+  public synchronized void cleanUpWithoutDisposingWindows() {
     cleanUp(false);
   }
 
@@ -766,7 +768,7 @@ public class BasicRobot implements Robot {
   }
 
   /** {@inheritDoc} */
-  public boolean isActive() { return active; }
+  public synchronized boolean isActive() { return active; }
 
   // for testing only
   final Object screenLockOwner() { return screenLockOwner; }
