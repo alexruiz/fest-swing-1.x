@@ -18,6 +18,7 @@ package org.fest.swing.core;
 import static org.easymock.EasyMock.expectLastCall;
 import static org.easymock.classextension.EasyMock.createMock;
 import static org.fest.swing.test.builder.JFrames.frame;
+import static org.fest.swing.test.task.WindowDestroyTask.hideAndDisposeInEDT;
 import static org.fest.util.Collections.list;
 
 import java.awt.Container;
@@ -40,15 +41,22 @@ public class Bug138_disposeWindows_Test extends EDTSafeTestCase {
 
   private ComponentHierarchy hierarchy;
   private BasicRobot robot;
+  private JFrame frame;
 
-  @Before public void setUp() {
+  @Before
+  public void setUp() {
     hierarchy = createMock(ComponentHierarchy.class);
     robot = new TestRobotFixture(hierarchy);
   }
 
+  @After
+  public void tearDown() {
+    if (frame != null) hideAndDisposeInEDT(frame);
+  }
+
   @Test
   public void should_dispose_windows() {
-    final JFrame frame = frame().withTitle("Hello").createNew();
+    frame = frame().withTitle("Hello").createNew();
     final List<Container> roots = rootsWith(frame);
     new EasyMockTemplate(hierarchy) {
       protected void expectations() {
