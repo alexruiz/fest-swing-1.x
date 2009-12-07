@@ -6,8 +6,7 @@
 package org.fest.swing.driver;
 
 import static java.util.concurrent.Executors.newSingleThreadExecutor;
-import static org.fest.swing.driver.JProgressBarSetValueTask.setValue;
-import static org.fest.swing.driver.JProgressBarValueQuery.valueOf;
+import static org.fest.swing.driver.JProgressBarIncrementValueTask.incrementValue;
 import static org.fest.util.Strings.concat;
 
 import java.util.concurrent.*;
@@ -52,12 +51,8 @@ class JProgressBarIncrementValueAsyncTask {
   private FutureTask<Void> createInnerTask() {
     return new FutureTask<Void>(new Callable<Void>() {
       public Void call() {
-        int value = valueOf(progressBar);
         try {
-          for (int i = 0; i < INCREMENT_COUNT; i++) {
-            value += increment;
-            updateValueTo(value);
-          }
+          for (int i = 0; i < INCREMENT_COUNT; i++) sleepAndIncrementValue();
         } catch (InterruptedException e) {
           logger.info("Task has been cancelled");
         }
@@ -66,11 +61,11 @@ class JProgressBarIncrementValueAsyncTask {
     });
   }
 
-  private void updateValueTo(int value) throws InterruptedException {
+  private void sleepAndIncrementValue() throws InterruptedException {
     logger.info(concat("Going to sleep for ", periodInMs, " ms"));
     Thread.sleep(periodInMs);
-    logger.info(concat("Updating JProgressBar value to ", value));
-    setValue(progressBar, value);
+    int newValue = incrementValue(progressBar, increment);
+    logger.info(concat("Incremented JProgressBar value to ", newValue));
     robot.waitForIdle();
   }
 
