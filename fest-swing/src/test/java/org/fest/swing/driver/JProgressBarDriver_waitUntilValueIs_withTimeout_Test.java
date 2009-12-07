@@ -17,9 +17,9 @@ package org.fest.swing.driver;
 
 import static java.util.concurrent.TimeUnit.SECONDS;
 import static org.fest.assertions.Assertions.assertThat;
+import static org.fest.swing.driver.JProgressBarIncrementValueAsyncTask.with;
 import static org.fest.swing.driver.JProgressBarValueQuery.valueOf;
 import static org.fest.swing.test.core.CommonAssertions.failWhenExpectingException;
-import static org.fest.swing.timing.Pause.pause;
 import static org.fest.swing.timing.Timeout.timeout;
 
 import javax.swing.JProgressBar;
@@ -67,19 +67,15 @@ public class JProgressBarDriver_waitUntilValueIs_withTimeout_Test extends JProgr
 
   @Test
   public void should_wait_until_value_is_equal_to_expected() {
-    Thread t = new Thread() {
-      @Override public void run() {
-        pause(1000);
-        updateValueTo(10);
-        pause(1000);
-        updateValueTo(20);
-        pause(1000);
-        updateValueTo(30);
-      }
-    };
-    t.start();
-    driver.waitUntilValueIs(progressBar, 30, timeout(5, SECONDS));
-    assertThat(valueOf(progressBar)).isEqualTo(30);
+    updateValueTo(10);
+    JProgressBarIncrementValueAsyncTask task = with(progressBar).increment(20).every(1, SECONDS).createTask(robot);
+    try {
+      task.runAsynchronously();
+      driver.waitUntilValueIs(progressBar, 70, timeout(5, SECONDS));
+      assertThat(valueOf(progressBar)).isEqualTo(70);
+    } finally {
+      task.cancelIfNotFinished();
+    }
   }
 
   @Test

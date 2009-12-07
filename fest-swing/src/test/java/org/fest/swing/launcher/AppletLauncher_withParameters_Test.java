@@ -16,6 +16,7 @@
 package org.fest.swing.launcher;
 
 import static org.fest.assertions.Assertions.assertThat;
+import static org.fest.swing.launcher.AppletParameter.name;
 
 import org.fest.swing.test.swing.TestApplet;
 import org.junit.Test;
@@ -36,7 +37,7 @@ public class AppletLauncher_withParameters_Test extends AppletLauncher_TestCase 
   @Test(expected = NullPointerException.class)
   public void should_throw_error_if_parameter__in_array_is_null() {
     AppletParameter[] parameters = new AppletParameter[2];
-    parameters[0] = AppletParameter.name("bgcolor").value("blue");
+    parameters[0] = name("bgcolor").value("blue");
     parameters[1] = null;
     AppletLauncher.applet(TestApplet.createNew()).withParameters(parameters);
   }
@@ -44,8 +45,7 @@ public class AppletLauncher_withParameters_Test extends AppletLauncher_TestCase 
   @Test public void should_set_given_parameters() {
     applet = TestApplet.createNew();
     viewer = AppletLauncher.applet(applet).withParameters(
-        AppletParameter.name("bgcolor").value("blue"),
-        AppletParameter.name("color").value("red")
+        name("bgcolor").value("blue"), name("color").value("red")
     ).start();
     assertThatAppletWasLaunched();
     assertThat(applet.getParameter("bgcolor")).isEqualTo("blue");

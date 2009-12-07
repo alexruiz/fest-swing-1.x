@@ -72,7 +72,7 @@ public final class Pause {
     while (!condition.test()) {
       if (watch.isTimeOut()) {
         condition.done();
-        throw new WaitTimedOutError((concat("Timed out waiting for ", condition)));
+        if (!condition.test()) throw new WaitTimedOutError((concat("Timed out waiting for ", condition)));
       }
       pause(SLEEP_INTERVAL);
     }

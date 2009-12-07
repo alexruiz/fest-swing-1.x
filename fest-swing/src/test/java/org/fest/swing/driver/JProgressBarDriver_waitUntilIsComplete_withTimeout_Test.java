@@ -18,9 +18,9 @@ package org.fest.swing.driver;
 import static java.util.concurrent.TimeUnit.MILLISECONDS;
 import static java.util.concurrent.TimeUnit.SECONDS;
 import static org.fest.assertions.Assertions.assertThat;
+import static org.fest.swing.driver.JProgressBarIncrementValueAsyncTask.with;
 import static org.fest.swing.driver.JProgressBarValueQuery.valueOf;
 import static org.fest.swing.test.core.CommonAssertions.failWhenExpectingException;
-import static org.fest.swing.timing.Pause.pause;
 import static org.fest.swing.timing.Timeout.timeout;
 
 import javax.swing.JProgressBar;
@@ -48,19 +48,15 @@ public class JProgressBarDriver_waitUntilIsComplete_withTimeout_Test extends JPr
 
   @Test
   public void should_wait_until_value_is_equal_to_maximum() {
-    Thread t = new Thread() {
-      @Override public void run() {
-        pause(1000);
-        updateValueTo(10);
-        pause(1000);
-        updateValueTo(60);
-        pause(1000);
-        updateValueTo(100);
-      }
-    };
-    t.start();
-    driver.waitUntilIsComplete(progressBar, timeout(5, SECONDS));
-    assertThat(valueOf(progressBar)).isEqualTo(100);
+    updateValueTo(10);
+    JProgressBarIncrementValueAsyncTask task = with(progressBar).increment(30).every(1, SECONDS).createTask(robot);
+    try {
+      task.runAsynchronously();
+      driver.waitUntilIsComplete(progressBar, timeout(5, SECONDS));
+      assertThat(valueOf(progressBar)).isEqualTo(100);
+    } finally {
+      task.cancelIfNotFinished();
+    }
   }
 
   @Test

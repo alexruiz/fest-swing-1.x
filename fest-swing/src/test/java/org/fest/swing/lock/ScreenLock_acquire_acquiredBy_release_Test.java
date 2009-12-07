@@ -20,6 +20,7 @@ import static org.fest.swing.test.core.CommonAssertions.failWhenExpectingExcepti
 import static org.fest.swing.timing.Pause.pause;
 
 import org.fest.swing.exception.ScreenLockException;
+import org.fest.swing.timing.Condition;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -34,13 +35,13 @@ public class ScreenLock_acquire_acquiredBy_release_Test {
   private Object owner;
   private ScreenLock lock;
 
-  @Before 
+  @Before
   public void setUp() {
     owner = new Object();
     lock = new ScreenLock();
   }
 
-  @Test 
+  @Test
   public void should_acquire_lock_and_queue_others_wanting_lock() {
     lock.acquire(owner);
     assertThat(lock.owner()).isSameAs(owner);
@@ -49,12 +50,15 @@ public class ScreenLock_acquire_acquiredBy_release_Test {
     new Thread() {
       @Override public void run() {
         lock.acquire(o);
-        assertThat(lock.owner()).isSameAs(owner);
       }
     }.start();
     lock.release(owner);
-    pause(200);
-    assertThat(lock.owner()).isSameAs(o);
+    pause(new Condition("ScreenLock to be obtained by waiting thread") {
+      @Override
+      public boolean test() {
+        return lock.owner() == o;
+      }
+    }, 1000);
     assertThat(lock.acquiredBy(o)).isTrue();
     assertThat(lock.acquiredBy(owner)).isFalse();
     lock.release(o);
@@ -66,7 +70,7 @@ public class ScreenLock_acquire_acquiredBy_release_Test {
     lock.release(owner);
   }
 
-  @Test 
+  @Test
   public void should_throw_error_if_releasing_lock_with_wrong_owner() {
     lock.acquire(owner);
     try {
