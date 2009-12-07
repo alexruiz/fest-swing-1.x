@@ -38,30 +38,26 @@ class JProgressBarIncrementValueAsyncTask {
 
   private final Robot robot;
   private final JProgressBar progressBar;
-  private final int[] newValues = new int[INCREMENT_COUNT];
+  private final int increment;
   private final long periodInMs;
 
   private JProgressBarIncrementValueAsyncTask(Robot robot, JProgressBar progressBar, int increment, long periodInMs) {
     this.robot = robot;
     this.progressBar = progressBar;
+    this.increment = increment;
     this.periodInMs = periodInMs;
-    calculateNewValuesBasedOn(increment);
     task = createInnerTask();
-  }
-
-  private void calculateNewValuesBasedOn(int increment) {
-    int value = valueOf(progressBar);
-    for (int i = 0; i < INCREMENT_COUNT; i++) {
-      value += increment;
-      newValues[i] = value;
-    }
   }
 
   private FutureTask<Void> createInnerTask() {
     return new FutureTask<Void>(new Callable<Void>() {
       public Void call() {
+        int value = valueOf(progressBar);
         try {
-          for (int i = 0; i < INCREMENT_COUNT; i++) updateValueTo(newValues[i]);
+          for (int i = 0; i < INCREMENT_COUNT; i++) {
+            value += increment;
+            updateValueTo(value);
+          }
         } catch (InterruptedException e) {
           logger.info("Task has been cancelled");
         }
