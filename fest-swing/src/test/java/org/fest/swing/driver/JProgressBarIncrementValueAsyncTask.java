@@ -32,8 +32,9 @@ class JProgressBarIncrementValueAsyncTask {
 
   private static final int INCREMENT_COUNT = 3;
 
-  private final Executor executor = newSingleThreadExecutor();
-  private final FutureTask<Void> task;
+  private final ExecutorService executor = newSingleThreadExecutor();
+  private final Runnable task;
+  private Future<?> future;
 
   private final Robot robot;
   private final JProgressBar progressBar;
@@ -48,17 +49,16 @@ class JProgressBarIncrementValueAsyncTask {
     task = createInnerTask();
   }
 
-  private FutureTask<Void> createInnerTask() {
-    return new FutureTask<Void>(new Callable<Void>() {
-      public Void call() {
+  private Runnable createInnerTask() {
+    return new Runnable() {
+      public void run() {
         try {
           for (int i = 0; i < INCREMENT_COUNT; i++) sleepAndIncrementValue();
         } catch (InterruptedException e) {
           logger.info("Task has been cancelled");
         }
-        return null;
       }
-    });
+    };
   }
 
   private void sleepAndIncrementValue() throws InterruptedException {
@@ -70,17 +70,16 @@ class JProgressBarIncrementValueAsyncTask {
   }
 
   synchronized void runAsynchronously() {
-    if (task.isDone()) throw new IllegalStateException("This task is already executed");
-    executor.execute(task);
+    future = executor.submit(task);
   }
 
   synchronized void cancelIfNotFinished() {
-    if (!task.isDone()) task.cancel(true);
+    if (future != null && !future.isDone()) future.cancel(true);
   }
 
   static class TaskBuilder {
     private final JProgressBar progressBar;
-    private int increment = 40;
+    private int increment = 10;
     private long periodInMs = 1000;
 
     TaskBuilder(JProgressBar progressBar) {
