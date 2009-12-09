@@ -1,0 +1,30 @@
+<pluginMetadata>
+  <mojos>
+    <mojo>
+      <goal>compile</goal>
+      <call>compile.target</call>
+      <description>Compiles JavaFX scripts</description>
+      <parameters>
+        <parameter>
+          <name>javafx.build.sourceDirectory</name>
+          <property>javafx.build.sourceDirectory</property>
+          <required>false</required>
+          <expression>${javafx.build.sourceDirectory}</expression>
+          <type>java.lang.String</type>
+          <defaultValue>${basedir}/src/main/javafx</defaultValue>
+          <description>Source folder for JavaFX scripts</description>
+        </parameter>
+        
+        <parameter>
+          <name>javafx.build.outputDirectory</name>
+          <property>javafx.build.outputDirectory</property>
+          <required>false</required>
+          <expression>${javafx.build.outputDirectory}</expression>
+          <type>java.lang.String</type>
+          <defaultValue>${project.build.outputDirectory}</defaultValue>
+          <description>Output directory for JavaFX scripts</description>
+        </parameter>
+      </parameters>
+    </mojo>
+  </mojos>
+</pluginMetadata>
