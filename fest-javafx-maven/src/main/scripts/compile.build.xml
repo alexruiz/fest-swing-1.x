@@ -1,5 +1,5 @@
 <project>
-  <target name="compile.target">
+  <target name="compile.desktop.target">
     <property environment="env" />
     <property name="javafx.home" value="${env.JAVAFX_HOME}" />
     <path id="javafxc.classpath">

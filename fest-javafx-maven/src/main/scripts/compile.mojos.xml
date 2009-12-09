@@ -1,9 +1,9 @@
 <pluginMetadata>
   <mojos>
     <mojo>
-      <goal>compile</goal>
-      <call>compile.target</call>
-      <description>Compiles JavaFX scripts</description>
+      <goal>desktopCompile</goal>
+      <call>compile.desktop.target</call>
+      <description>Compiles JavaFX scripts (desktop profile)</description>
       <parameters>
         <parameter>
           <name>javafx.build.sourceDirectory</name>
@@ -22,7 +22,7 @@
           <expression>${javafx.build.outputDirectory}</expression>
           <type>java.lang.String</type>
           <defaultValue>${project.build.outputDirectory}</defaultValue>
-          <description>Output directory for JavaFX scripts</description>
+          <description>Output directory for compiled JavaFX scripts</description>
         </parameter>
       </parameters>
     </mojo>
