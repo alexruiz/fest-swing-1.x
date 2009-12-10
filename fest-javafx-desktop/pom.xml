@@ -213,5 +213,12 @@
       <scope>system</scope>
       <systemPath>${env.JAVAFX_HOME}/lib/desktop/websvc.jar</systemPath>
     </dependency>  
+    <dependency>
+    	<groupId>junit</groupId>
+    	<artifactId>junit</artifactId>
+    	<version>4.7</version>
+    	<type>jar</type>
+    	<scope>test</scope>
+    </dependency>
   </dependencies>
 </project>
