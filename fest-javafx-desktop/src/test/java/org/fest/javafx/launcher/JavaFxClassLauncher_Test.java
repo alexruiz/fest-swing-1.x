@@ -11,6 +11,7 @@ import java.awt.Frame;
 
 import org.fest.javafx.scripts.dnd.ball.Main;
 import org.fest.swing.edt.FailOnThreadViolationRepaintManager;
+import org.fest.swing.timing.Pause;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -29,6 +30,7 @@ public class JavaFxClassLauncher_Test {
   @Test
   public void should_start_JavaFX_UI() {
     Frame frame = JavaFxClassLauncher.launch(Main.class);
+    Pause.pause(5000);
     assertThat(frame).isNotNull();
   }
 

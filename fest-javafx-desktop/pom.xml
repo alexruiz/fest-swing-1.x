@@ -4,8 +4,8 @@
 
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.easytesting</groupId>
-  <artifactId>fest-javafx</artifactId>
-  <version>0.1</version>
+  <artifactId>fest-javafx-desktop</artifactId>
+  <version>0.1-SNAPSHOT</version>
   <name>FEST JavaFX</name>
   <description>Functional Testing of JavaFX UIs</description>
   <inceptionYear>2008</inceptionYear>
@@ -15,12 +15,6 @@
     <artifactId>fest</artifactId>
     <version>1.0</version>
   </parent>
-  <licenses>
-    <license>
-      <name>The GNU General Public License, Version 2, with the Classpath Exception</name>
-      <url>http://www.gnu.org/licenses/gpl-2.0.txt</url>
-    </license>
-  </licenses>
   <mailingLists>
     <mailingList>
       <name>Easy Testing Group</name>
@@ -38,122 +32,180 @@
     <system>JIRA</system>
     <url>http://jira.codehaus.org/browse/FEST</url>
   </issueManagement>
-  <build>
-    <plugins>
-      <plugin>
-        <artifactId>maven-antrun-plugin</artifactId>
-        <executions>
-          <execution>
-            <phase>process-test-sources</phase>
-            <configuration>
-              <tasks>
-                <echo>Compiling JavaFX test sources</echo>
-                <property name="javafx.home" value="${env.JAVAFX_HOME}" />
-                <path id="javafxc.classpath">
-                  <fileset dir="${javafx.home}">
-                    <include name="**/javafxrt.jar" />
-                    <include name="**/javafxc.jar" />
-                    <include name="**/toolchain.jar" />
-                  </fileset>
-                </path>
-                <path id="javafx.classpath">
-                  <fileset dir="${javafx.home}">
-                    <include name="**/javafxrt.jar" />
-                    <include name="**/javafxc.jar" />
-                    <include name="**/toolchain.jar" />
-                    <include name="**/javafxgui.jar" />
-                    <include name="**/javafx-swing.jar" />
-                    <include name="**/Scenario.jar" />
-                    <include name="**/websvc.jar" />
-                  </fileset>
-                </path>
-                <taskdef classname="com.sun.tools.javafx.ant.JavaFxAntTask"
-                  classpathref="javafxc.classpath" name="javafxc" />
-                <mkdir dir="${project.build.testOutputDirectory}" />
-                <javafxc destdir="${project.build.testOutputDirectory}"
-                  compilerclasspathref="javafxc.classpath" debug="true"
-                  verbose="true">
-                  <src path="src/test/javafx" />
-                  <classpath refid="javafx.classpath" />
-                </javafxc>
-              </tasks>
-            </configuration>
-            <goals>
-              <goal>run</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-    </plugins>
-  </build>
   <dependencies>
     <dependency>
       <groupId>org.easytesting</groupId>
       <artifactId>fest-swing</artifactId>
-      <version>1.2a1-SNAPSHOT</version>
+      <version>1.2a4-SNAPSHOT</version>
       <scope>compile</scope>
     </dependency>
     <dependency>
-      <groupId>org.easytesting</groupId>
-      <artifactId>fest-mocks</artifactId>
-      <version>1.0</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.testng</groupId>
-      <artifactId>testng</artifactId>
-      <version>5.7</version>
-      <classifier>jdk15</classifier>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>net.java.dev.openjfx</groupId>
+      <groupId>javafx</groupId>
       <artifactId>javafxrt</artifactId>
-      <version>1.0</version>
+      <version>1.2.1</version>
       <scope>system</scope>
       <systemPath>${env.JAVAFX_HOME}/lib/shared/javafxrt.jar</systemPath>
+    </dependency>  
+    <dependency>
+      <groupId>javafx</groupId>
+      <artifactId>Decora-D3D</artifactId>
+      <version>1.2.1</version>
+      <scope>system</scope>
+      <systemPath>${env.JAVAFX_HOME}/lib/desktop/Decora-D3D.jar</systemPath>
+    </dependency>  
+    <dependency>
+      <groupId>javafx</groupId>
+      <artifactId>decora-j2d-rsl</artifactId>
+      <version>1.2.1</version>
+      <scope>system</scope>
+      <systemPath>${env.JAVAFX_HOME}/lib/desktop/decora-j2d-rsl.jar</systemPath>
     </dependency>
     <dependency>
       <groupId>javafx</groupId>
-      <artifactId>javafxc</artifactId>
+      <artifactId>Decora-OGL</artifactId>
       <version>1.2.1</version>
       <scope>system</scope>
-      <systemPath>${env.JAVAFX_HOME}/lib/shared/javafxc.jar</systemPath>
-    </dependency>
+      <systemPath>${env.JAVAFX_HOME}/lib/desktop/Decora-OGL.jar</systemPath>
+    </dependency>  
     <dependency>
-      <groupId>net.java.dev.openjfx</groupId>
-      <artifactId>toolchain</artifactId>
-      <version>1.0</version>
+      <groupId>javafx</groupId>
+      <artifactId>decora-runtime</artifactId>
+      <version>1.2.1</version>
       <scope>system</scope>
-      <systemPath>${env.JAVAFX_HOME}/lib/shared/toolchain.jar</systemPath>
-    </dependency>
+      <systemPath>${env.JAVAFX_HOME}/lib/desktop/decora-runtime.jar</systemPath>
+    </dependency>  
     <dependency>
-      <groupId>net.java.dev.openjfx</groupId>
-      <artifactId>javafxgui</artifactId>
-      <version>1.0</version>
+      <groupId>javafx</groupId>
+      <artifactId>Decora-SSE</artifactId>
+      <version>1.2.1</version>
       <scope>system</scope>
-      <systemPath>${env.JAVAFX_HOME}/lib/desktop/javafxgui.jar</systemPath>
-    </dependency>
+      <systemPath>${env.JAVAFX_HOME}/lib/desktop/Decora-SSE.jar</systemPath>
+    </dependency>  
     <dependency>
-      <groupId>net.java.dev.openjfx</groupId>
-      <artifactId>javafx-swing</artifactId>
-      <version>1.0</version>
+      <groupId>javafx</groupId>
+      <artifactId>eula</artifactId>
+      <version>1.2.1</version>
       <scope>system</scope>
-      <systemPath>${env.JAVAFX_HOME}/lib/desktop/javafx-swing.jar</systemPath>
-    </dependency>
+      <systemPath>${env.JAVAFX_HOME}/lib/desktop/eula.jar</systemPath>
+    </dependency>  
     <dependency>
-      <groupId>net.java.dev.openjfx</groupId>
-      <artifactId>Scenario</artifactId>
-      <version>1.0</version>
+      <groupId>javafx</groupId>
+      <artifactId>fxdloader</artifactId>
+      <version>1.2.1</version>
       <scope>system</scope>
-      <systemPath>${env.JAVAFX_HOME}/lib/desktop/Scenario.jar</systemPath>
-    </dependency>
+      <systemPath>${env.JAVAFX_HOME}/lib/desktop/fxdloader.jar</systemPath>
+    </dependency>  
     <dependency>
-      <groupId>net.java.dev.openjfx</groupId>
+      <groupId>javafx</groupId>
+      <artifactId>gluegen-rt</artifactId>
+      <version>1.2.1</version>
+      <scope>system</scope>
+      <systemPath>${env.JAVAFX_HOME}/lib/desktop/gluegen-rt.jar</systemPath>
+    </dependency>  
+    <dependency>
+      <groupId>javafx</groupId>
+      <artifactId>javafx-anim</artifactId>
+      <version>1.2.1</version>
+      <scope>system</scope>
+      <systemPath>${env.JAVAFX_HOME}/lib/desktop/javafx-anim.jar</systemPath>
+    </dependency>  
+    <dependency>
+      <groupId>javafx</groupId>
+      <artifactId>javafx-common</artifactId>
+      <version>1.2.1</version>
+      <scope>system</scope>
+      <systemPath>${env.JAVAFX_HOME}/lib/desktop/javafx-common.jar</systemPath>
+    </dependency>  
+    <dependency>
+      <groupId>javafx</groupId>
+      <artifactId>javafx-geom</artifactId>
+      <version>1.2.1</version>
+      <scope>system</scope>
+      <systemPath>${env.JAVAFX_HOME}/lib/desktop/javafx-geom.jar</systemPath>
+    </dependency>  
+    <dependency>
+      <groupId>javafx</groupId>
+      <artifactId>javafx-io</artifactId>
+      <version>1.2.1</version>
+      <scope>system</scope>
+      <systemPath>${env.JAVAFX_HOME}/lib/desktop/javafx-io.jar</systemPath>
+    </dependency>  
+    <dependency>
+      <groupId>javafx</groupId>
+      <artifactId>javafx-sg-common</artifactId>
+      <version>1.2.1</version>
+      <scope>system</scope>
+      <systemPath>${env.JAVAFX_HOME}/lib/desktop/javafx-sg-common.jar</systemPath>
+    </dependency>  
+    <dependency>
+      <groupId>javafx</groupId>
+      <artifactId>javafx-sg-swing</artifactId>
+      <version>1.2.1</version>
+      <scope>system</scope>
+      <systemPath>${env.JAVAFX_HOME}/lib/desktop/javafx-sg-swing.jar</systemPath>
+    </dependency>  
+    <dependency>
+      <groupId>javafx</groupId>
+      <artifactId>javafx-ui-charts</artifactId>
+      <version>1.2.1</version>
+      <scope>system</scope>
+      <systemPath>${env.JAVAFX_HOME}/lib/desktop/javafx-ui-charts.jar</systemPath>
+    </dependency>  
+    <dependency>
+      <groupId>javafx</groupId>
+      <artifactId>javafx-ui-common</artifactId>
+      <version>1.2.1</version>
+      <scope>system</scope>
+      <systemPath>${env.JAVAFX_HOME}/lib/desktop/javafx-ui-common.jar</systemPath>
+    </dependency>  
+    <dependency>
+      <groupId>javafx</groupId>
+      <artifactId>javafx-ui-controls</artifactId>
+      <version>1.2.1</version>
+      <scope>system</scope>
+      <systemPath>${env.JAVAFX_HOME}/lib/desktop/javafx-ui-controls.jar</systemPath>
+    </dependency>  
+    <dependency>
+      <groupId>javafx</groupId>
+      <artifactId>javafx-ui-desktop</artifactId>
+      <version>1.2.1</version>
+      <scope>system</scope>
+      <systemPath>${env.JAVAFX_HOME}/lib/desktop/javafx-ui-desktop.jar</systemPath>
+    </dependency>  
+    <dependency>
+      <groupId>javafx</groupId>
+      <artifactId>javafx-ui-swing</artifactId>
+      <version>1.2.1</version>
+      <scope>system</scope>
+      <systemPath>${env.JAVAFX_HOME}/lib/desktop/javafx-ui-swing.jar</systemPath>
+    </dependency>  
+    <dependency>
+      <groupId>javafx</groupId>
+      <artifactId>javafxrt-main</artifactId>
+      <version>1.2.1</version>
+      <scope>system</scope>
+      <systemPath>${env.JAVAFX_HOME}/lib/desktop/javafxrt-main.jar</systemPath>
+    </dependency>  
+    <dependency>
+      <groupId>javafx</groupId>
+      <artifactId>jogl</artifactId>
+      <version>1.2.1</version>
+      <scope>system</scope>
+      <systemPath>${env.JAVAFX_HOME}/lib/desktop/jogl.jar</systemPath>
+    </dependency>  
+    <dependency>
+      <groupId>javafx</groupId>
+      <artifactId>script-api</artifactId>
+      <version>1.2.1</version>
+      <scope>system</scope>
+      <systemPath>${env.JAVAFX_HOME}/lib/desktop/script-api.jar</systemPath>
+    </dependency>  
+    <dependency>
+      <groupId>javafx</groupId>
       <artifactId>websvc</artifactId>
-      <version>1.0</version>
+      <version>1.2.1</version>
       <scope>system</scope>
       <systemPath>${env.JAVAFX_HOME}/lib/desktop/websvc.jar</systemPath>
-    </dependency>
+    </dependency>  
   </dependencies>
 </project>

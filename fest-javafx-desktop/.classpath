@@ -32,6 +32,6 @@
 	<classpathentry kind="var" path="JAVAFX_HOME/lib/desktop/jogl.jar"/>
 	<classpathentry kind="var" path="JAVAFX_HOME/lib/desktop/script-api.jar"/>
 	<classpathentry kind="var" path="JAVAFX_HOME/lib/desktop/websvc.jar"/>
-	<classpathentry kind="lib" path="lib/javafx-scripts-classes.jar"/>
+	<classpathentry kind="var" path="M2_REPO/org/easytesting/fest-javafx-scripts/0.1-SNAPSHOT/fest-javafx-scripts-0.1-SNAPSHOT.jar"/>
 	<classpathentry kind="output" path="target"/>
 </classpath>
