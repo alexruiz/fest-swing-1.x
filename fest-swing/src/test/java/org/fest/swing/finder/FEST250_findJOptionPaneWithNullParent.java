@@ -13,7 +13,7 @@
  *
  * Copyright @2009 the original author or authors.
  */
-package org.fest.swing.test.swing;
+package org.fest.swing.finder;
 
 import static org.fest.swing.edt.GuiActionRunner.execute;
 import static org.fest.swing.finder.JOptionPaneFinder.findOptionPane;
@@ -30,6 +30,7 @@ import org.fest.swing.edt.GuiQuery;
 import org.fest.swing.fixture.FrameFixture;
 import org.fest.swing.fixture.JOptionPaneFixture;
 import org.fest.swing.test.core.EDTSafeTestCase;
+import org.fest.swing.test.swing.TestWindow;
 import org.junit.*;
 
 /**
