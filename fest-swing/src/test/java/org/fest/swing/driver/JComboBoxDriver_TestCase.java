@@ -19,6 +19,7 @@ import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.driver.JComboBoxSetEditableTask.setEditable;
 import static org.fest.swing.driver.JComboBoxSetSelectedIndexTask.setSelectedIndex;
 import static org.fest.swing.edt.GuiActionRunner.execute;
+import static org.fest.swing.test.query.JComboBoxSelectedItemQuery.selectedItemOf;
 import static org.fest.swing.test.task.ComponentSetEnabledTask.disable;
 import static org.fest.util.Arrays.array;
 
@@ -58,7 +59,7 @@ public abstract class JComboBoxDriver_TestCase extends RobotBasedTestCase {
   final void showWindow() {
     robot.showWindow(window);
   }
-  
+
   @RunsInEDT
   final void select(int index) {
     setSelectedIndex(comboBox, index);
@@ -68,15 +69,6 @@ public abstract class JComboBoxDriver_TestCase extends RobotBasedTestCase {
   @RunsInEDT
   final void assertThatSelectedItemIs(String expected) {
     assertThat(selectedItemOf(comboBox)).isEqualTo(expected);
-  }
-
-  @RunsInEDT
-  private static Object selectedItemOf(final JComboBox comboBox) {
-    return execute(new GuiQuery<Object>() {
-      protected Object executeInEDT() {
-        return comboBox.getSelectedItem();
-      }
-    });
   }
 
   @RunsInEDT
@@ -94,7 +86,7 @@ public abstract class JComboBoxDriver_TestCase extends RobotBasedTestCase {
       }
     });
   }
-  
+
   @RunsInEDT
   final void clearSelection() {
     setSelectedIndex(comboBox, (-1));
@@ -106,7 +98,7 @@ public abstract class JComboBoxDriver_TestCase extends RobotBasedTestCase {
     setSelectedIndex(comboBox, 0);
     robot.waitForIdle();
   }
-  
+
   @RunsInEDT
   final void disableComboBox() {
     disable(comboBox);
@@ -122,7 +114,7 @@ public abstract class JComboBoxDriver_TestCase extends RobotBasedTestCase {
     setEditableAndSelectFirstItem(comboBox, true);
     robot.waitForIdle();
   }
-  
+
   @RunsInEDT
   private static void setEditableAndSelectFirstItem(final JComboBox comboBox, final boolean editable) {
     execute(new GuiTask() {

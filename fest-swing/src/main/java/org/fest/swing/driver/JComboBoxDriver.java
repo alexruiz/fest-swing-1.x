@@ -156,7 +156,7 @@ public class JComboBoxDriver extends JComponentDriver {
    */
   @RunsInEDT
   public void requireSelection(JComboBox comboBox, String value) {
-    String selection = selectionRequiredOf(comboBox);
+    String selection = requiredSelectionOf(comboBox);
     verifyThat(selection).as(selectedIndexProperty(comboBox)).isEqualOrMatches(value);
   }
 
@@ -172,11 +172,11 @@ public class JComboBoxDriver extends JComponentDriver {
    */
   @RunsInEDT
   public void requireSelection(JComboBox comboBox, Pattern pattern) {
-    String selection = selectionRequiredOf(comboBox);
+    String selection = requiredSelectionOf(comboBox);
     verifyThat(selection).as(selectedIndexProperty(comboBox)).matches(pattern);
   }
 
-  private String selectionRequiredOf(JComboBox comboBox) throws AssertionError {
+  private String requiredSelectionOf(JComboBox comboBox) throws AssertionError {
     Object selection = selection(comboBox, cellReader);
     if (NO_SELECTION_VALUE == selection) throw failNoSelection(comboBox);
     return (String)selection;

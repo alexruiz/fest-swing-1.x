@@ -38,10 +38,18 @@ final class JComboBoxSelectionValueQuery {
     return execute(new GuiQuery<Object>() {
       protected Object executeInEDT() {
         int selectedIndex = comboBox.getSelectedIndex();
-        if (selectedIndex == -1) return NO_SELECTION_VALUE;
+        if (selectedIndex == -1) return valueForNoSelection(comboBox);
         return cellReader.valueAt(comboBox, selectedIndex);
       }
     });
+  }
+
+  private static Object valueForNoSelection(JComboBox comboBox) {
+    if (!comboBox.isEditable()) return NO_SELECTION_VALUE;
+    Object selectedItem = comboBox.getSelectedItem();
+    if (selectedItem instanceof String) return selectedItem;
+    if (selectedItem != null) return selectedItem.toString();
+    return NO_SELECTION_VALUE;
   }
 
   private JComboBoxSelectionValueQuery() {}
