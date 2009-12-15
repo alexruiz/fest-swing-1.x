@@ -15,6 +15,7 @@
 package org.fest.swing.awt;
 
 import static java.awt.event.InputEvent.BUTTON3_MASK;
+import static org.fest.reflect.core.Reflection.staticMethod;
 import static org.fest.swing.edt.GuiActionRunner.execute;
 import static org.fest.swing.util.Platform.isWindows;
 import static org.fest.util.Strings.concat;
@@ -37,6 +38,24 @@ public class AWT {
 
   private static final String APPLET_APPLET_VIEWER_CLASS = "sun.applet.AppletViewer";
   private static final String ROOT_FRAME_CLASSNAME = concat(SwingUtilities.class.getName(), "$");
+
+  /**
+   * Returns an array of all <code>{@link Window}</code>s that have no owner. They include <code>{@link Frame}</code>s
+   * and ownerless <code>{@link Dialog}</code>s and <code>{@link Window}</code>s.
+   * <p>
+   * This method only works when using JDK 1.6 or later. For JDK 1.5, this method returns an empty array.
+   * </p>
+   * @return an array of all <code>{@link Window}</code>s that have no owner.
+   * @since 1.2
+   */
+  public static Window[] ownerLessWindows() {
+    try {
+      // Java 1.6 code
+      return staticMethod("getOwnerlessWindows").withReturnType(Window[].class).in(Window.class).invoke();
+    } catch (RuntimeException e) {
+      return new Window[0];
+    }
+  }
 
   /**
    * Translates the given coordinates to the location on screen of the given <code>{@link Component}</code>.

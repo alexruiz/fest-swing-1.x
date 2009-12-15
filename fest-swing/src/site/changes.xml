@@ -49,6 +49,13 @@
       <action dev="alexruiz" type="add" issue="FEST-248" due-to="Huib">
         Added method 'rightClickPath(String)' to JTreeFixture.
       </action>
+      <action dev="alexruiz" type="fix" issue="FEST-250" due-to="Stephen Gade Esven, Morten Breum Mikkelsen">
+        Component hierarchies now contain in the collection of root windows all the ownerless windows.
+      </action>
+      <action dev="alexruiz" type="fix" issue="FEST-250" due-to="Stephen Gade Esven, Morten Breum Mikkelsen">
+        Added method 'ownerlessWindows' to class org.fest.awt.AWT that returns all ownerless windows. This method only
+        works with JDK 1.6.
+      </action>
       <action dev="alexruiz" type="fix" issue="FEST-251">
         Updated FEST-Assert to version 1.2.
       </action>

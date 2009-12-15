@@ -1,19 +1,20 @@
 /*
  * Created on Oct 14, 2007
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
- * 
+ *
  * Copyright @2007-2009 the original author or authors.
  */
 package org.fest.swing.monitor;
 
+import static org.fest.swing.awt.AWT.ownerLessWindows;
 import static org.fest.swing.edt.GuiActionRunner.execute;
 import static org.fest.util.Collections.list;
 
@@ -28,7 +29,7 @@ import org.fest.swing.edt.GuiQuery;
 
 /**
  * Understands a monitor that maps event queues to GUI components and GUI components to event event queues.
- * 
+ *
  * @author Alex Ruiz
  */
 @ThreadSafe
@@ -64,6 +65,7 @@ class Context {
       rootWindows.addAll(windowEventQueueMapping.windows());
     }
     rootWindows.addAll(list(Frame.getFrames()));
+    rootWindows.addAll(list(ownerLessWindows()));
     return rootWindows;
   }
 
@@ -113,7 +115,7 @@ class Context {
       }
     });
   }
-  
+
   /**
    * Returns all known event queues.
    * @return all known event queues.

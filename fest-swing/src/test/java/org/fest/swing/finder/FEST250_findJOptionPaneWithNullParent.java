@@ -18,19 +18,14 @@ package org.fest.swing.finder;
 import static org.fest.swing.edt.GuiActionRunner.execute;
 import static org.fest.swing.finder.JOptionPaneFinder.findOptionPane;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
 import org.fest.swing.core.BasicRobot;
 import org.fest.swing.core.Robot;
-import org.fest.swing.edt.GuiQuery;
-import org.fest.swing.fixture.FrameFixture;
+import org.fest.swing.edt.*;
 import org.fest.swing.fixture.JOptionPaneFixture;
 import org.fest.swing.test.core.EDTSafeTestCase;
-import org.fest.swing.test.swing.TestWindow;
+import org.fest.swing.test.swing.JOptionPaneLauncher;
 import org.junit.*;
 
 /**
@@ -41,14 +36,16 @@ import org.junit.*;
 public class FEST250_findJOptionPaneWithNullParent extends EDTSafeTestCase {
 
   private Robot robot;
-  private FrameFixture frame;
 
   @Before
   public void setUp() {
-    robot = BasicRobot.robotWithNewAwtHierarchy();
-    MyWindow window = MyWindow.createNew();
-    frame = new FrameFixture(robot, window);
-    frame.show();
+    JOptionPane optionPane = execute(new GuiQuery<JOptionPane>() {
+      protected JOptionPane executeInEDT() {
+        return new JOptionPane("Hello World!");
+      }
+    });
+    JOptionPaneLauncher.launch(optionPane);
+    robot = BasicRobot.robotWithCurrentAwtHierarchy();
   }
 
   @After
@@ -58,32 +55,7 @@ public class FEST250_findJOptionPaneWithNullParent extends EDTSafeTestCase {
 
   @Test
   public void should_find_JOptionPane() {
-    frame.button().click();
     JOptionPaneFixture optionPane = findOptionPane().using(robot);
     optionPane.requireMessage("Hello World!");
-  }
-
-  private static class MyWindow extends TestWindow {
-    private static final long serialVersionUID = 1L;
-
-    static MyWindow createNew() {
-      return execute(new GuiQuery<MyWindow>() {
-        protected MyWindow executeInEDT() {
-          return new MyWindow();
-        }
-      });
-    }
-
-    final JButton button = new JButton("Click Me");
-
-    private MyWindow() {
-      super(FEST250_findJOptionPaneWithNullParent.class);
-      addComponents(button);
-      button.addActionListener(new ActionListener() {
-        public void actionPerformed(ActionEvent e) {
-          JOptionPane.showMessageDialog(null, "Hello World!");
-        }
-      });
-    }
   }
 }
