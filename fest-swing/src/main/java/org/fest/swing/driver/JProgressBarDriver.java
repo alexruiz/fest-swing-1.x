@@ -17,10 +17,10 @@ package org.fest.swing.driver;
 import static java.util.concurrent.TimeUnit.SECONDS;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.driver.JProgressBarIndeterminateQuery.isIndeterminate;
-import static org.fest.swing.driver.JProgressBarMaximumQuery.maximumOf;
 import static org.fest.swing.driver.JProgressBarMinimumAndMaximumQuery.minimumAndMaximumOf;
 import static org.fest.swing.driver.JProgressBarStringQuery.stringOf;
 import static org.fest.swing.driver.JProgressBarValueQuery.valueOf;
+import static org.fest.swing.driver.JProgressBarWaitUntilIsDeterminate.waitUntilValueIsEqualToExpected;
 import static org.fest.swing.driver.JProgressBarWaitUntilValueIsEqualToExpectedTask.waitUntilValueIsEqualToExpected;
 import static org.fest.swing.driver.TextAssert.verifyThat;
 import static org.fest.swing.timing.Timeout.timeout;
@@ -105,7 +105,7 @@ public class JProgressBarDriver extends JComponentDriver {
    * @throws AssertionError if the given <code>JProgressBar</code> is not in indeterminate mode.
    */
   @RunsInEDT
-  public void requireInIndeterminateMode(JProgressBar progressBar) {
+  public void requireIndeterminateMode(JProgressBar progressBar) {
     assertThat(isIndeterminate(progressBar)).as(propertyName(progressBar, "indeterminate")).isTrue();
   }
 
@@ -141,31 +141,6 @@ public class JProgressBarDriver extends JComponentDriver {
     waitUntilValueIsEqualToExpected(progressBar, value, timeout);
   }
 
-  /**
-   * Waits until the value of the given <code>{@link JProgressBar}</code> is equal to the its maximum.
-   * @param progressBar the target <code>JProgressBar</code>.
-   * @throws WaitTimedOutError if the value of the <code>JProgressBar</code> does not reach its maximum value within
-   * 30 seconds.
-   */
-  @RunsInEDT
-  public void waitUntilIsComplete(JProgressBar progressBar) {
-    waitUntilIsComplete(progressBar, DEFAULT_TIMEOUT);
-  }
-
-  /**
-   * Waits until the value of the given <code>{@link JProgressBar}</code> is equal to the its maximum.
-   * @param progressBar the target <code>JProgressBar</code>.
-   * @param timeout the amount of time to wait.
-   * @throws NullPointerException if the given timeout is <code>null</code>.
-   * @throws WaitTimedOutError if the value of the <code>JProgressBar</code> does not reach its maximum value within
-   * the specified timeout.
-   */
-  @RunsInEDT
-  public void waitUntilIsComplete(JProgressBar progressBar, Timeout timeout) {
-    validateIsNotNull(timeout);
-    waitUntilValueIs(progressBar, maximumOf(progressBar), timeout);
-  }
-
   private void validateIsNotNull(Timeout timeout) {
     if (timeout == null) throw new NullPointerException("Timeout should not be null");
   }
@@ -179,5 +154,15 @@ public class JProgressBarDriver extends JComponentDriver {
   private void assertIsInBetweenMinAndMax(int value, int min, int max) {
     if (value >= min && value <= max) return;
     throw new IllegalArgumentException(concat("Value <", value, "> should be between <[", min, ", ", max, "]>"));
+  }
+
+  /**
+   * Waits until the value of the given <code>{@link JProgressBar}</code> is in determinate mode.
+   * @param progressBar the target <code>JProgressBar</code>.
+   * @throws WaitTimedOutError if the <code>JProgressBar</code> does not reach determinate mode within 30 seconds.
+   */
+  @RunsInEDT
+  public void waitUntilIsDeterminate(JProgressBar progressBar) {
+    waitUntilValueIsEqualToExpected(progressBar, DEFAULT_TIMEOUT);
   }
 }

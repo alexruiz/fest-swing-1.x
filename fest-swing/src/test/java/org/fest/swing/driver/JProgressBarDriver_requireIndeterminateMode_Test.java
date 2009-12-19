@@ -16,41 +16,33 @@
 package org.fest.swing.driver;
 
 import static org.fest.assertions.Assertions.assertThat;
-import static org.fest.swing.driver.JProgressBarSetIndetermintateTask.setIntedeterminate;
 import static org.fest.swing.test.core.CommonAssertions.failWhenExpectingException;
 
 import javax.swing.JProgressBar;
 
-import org.fest.swing.annotation.RunsInEDT;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JProgressBarDriver#requireInIndeterminateMode(JProgressBar)}</code>.
+ * Tests for <code>{@link JProgressBarDriver#requireIndeterminateMode(JProgressBar)}</code>.
  *
  * @author Alex Ruiz
  */
-public class JProgressBarDriver_requireIndeterminate_Test extends JProgressBarDriver_TestCase {
+public class JProgressBarDriver_requireIndeterminateMode_Test extends JProgressBarDriver_TestCase {
 
   @Test
   public void should_pass_if_JProgressBar_is_indeterminate() {
-    makeJProgressBarIndeterminate();
-    driver.requireInIndeterminateMode(progressBar);
+    makeIndeterminate();
+    driver.requireIndeterminateMode(progressBar);
   }
 
   @Test
   public void should_fail_if_JProgressBar_is_not_indeterminate() {
     try {
-      driver.requireInIndeterminateMode(progressBar);
+      driver.requireIndeterminateMode(progressBar);
       failWhenExpectingException();
     } catch (AssertionError e) {
       assertThat(e.getMessage()).contains("property:'indeterminate'")
                                 .contains("expected:<true> but was:<false>");
     }
-  }
-
-  @RunsInEDT
-  private void makeJProgressBarIndeterminate() {
-    setIntedeterminate(progressBar, true);
-    robot.waitForIdle();
   }
 }

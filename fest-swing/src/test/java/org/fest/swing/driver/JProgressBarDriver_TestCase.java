@@ -15,6 +15,7 @@
  */
 package org.fest.swing.driver;
 
+import static org.fest.swing.driver.JProgressBarSetIndetermintateTask.setIntedeterminate;
 import static org.fest.swing.driver.JProgressBarSetValueTask.setValue;
 import static org.fest.swing.edt.GuiActionRunner.execute;
 
@@ -43,8 +44,15 @@ public abstract class JProgressBarDriver_TestCase extends RobotBasedTestCase {
     progressBar = window.progressBar;
   }
 
+  @RunsInEDT
   final void updateValueTo(int value) {
     setValue(progressBar, value);
+    robot.waitForIdle();
+  }
+
+  @RunsInEDT
+  final void makeIndeterminate() {
+    setIntedeterminate(progressBar, true);
     robot.waitForIdle();
   }
 

@@ -1,5 +1,5 @@
 /*
- * Created on Dec 6, 2009
+ * Created on Dec 19, 2009
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -15,7 +15,7 @@
 package org.fest.swing.driver;
 
 import static java.util.concurrent.Executors.newSingleThreadExecutor;
-import static org.fest.swing.driver.JProgressBarIncrementValueTask.incrementValue;
+import static org.fest.swing.driver.JProgressBarSetIndetermintateTask.setIntedeterminate;
 import static org.fest.util.Strings.concat;
 
 import java.util.concurrent.*;
@@ -26,20 +26,18 @@ import javax.swing.JProgressBar;
 import org.fest.swing.core.Robot;
 
 /**
- * Understands a task that asynchronously increments the value of a <code>{@link JProgressBar}</code> 3 times, given an
+ * Understands a task that asynchronously moves a <code>{@link JProgressBar}</code> to a determinate state, given an
  * increment and a period of time in between increments.
  *
  * @author Alex Ruiz
  */
-class JProgressBarIncrementValueAsyncTask {
+class JProgressBarMakeDeterminateAsyncTask {
 
   private static Logger logger = Logger.getAnonymousLogger();
 
-  static TaskBuilder with(JProgressBar progressBar) {
+  static TaskBuilder makeDeterminate(JProgressBar progressBar) {
     return new TaskBuilder(progressBar);
   }
-
-  private static final int INCREMENT_COUNT = 3;
 
   private final ExecutorService executor = newSingleThreadExecutor();
   private final Runnable task;
@@ -47,13 +45,11 @@ class JProgressBarIncrementValueAsyncTask {
 
   private final Robot robot;
   private final JProgressBar progressBar;
-  private final int increment;
   private final long periodInMs;
 
-  private JProgressBarIncrementValueAsyncTask(Robot robot, JProgressBar progressBar, int increment, long periodInMs) {
+  private JProgressBarMakeDeterminateAsyncTask(Robot robot, JProgressBar progressBar, long periodInMs) {
     this.robot = robot;
     this.progressBar = progressBar;
-    this.increment = increment;
     this.periodInMs = periodInMs;
     task = createInnerTask();
   }
@@ -62,7 +58,7 @@ class JProgressBarIncrementValueAsyncTask {
     return new Runnable() {
       public void run() {
         try {
-          for (int i = 0; i < INCREMENT_COUNT; i++) sleepAndIncrementValue();
+          sleepAndMakeDeterminate();
         } catch (InterruptedException e) {
           logger.info("Task has been cancelled");
         }
@@ -70,11 +66,11 @@ class JProgressBarIncrementValueAsyncTask {
     };
   }
 
-  private void sleepAndIncrementValue() throws InterruptedException {
+  private void sleepAndMakeDeterminate() throws InterruptedException {
     logger.info(concat("Going to sleep for ", periodInMs, " ms"));
     Thread.sleep(periodInMs);
-    int newValue = incrementValue(progressBar, increment);
-    logger.info(concat("Incremented JProgressBar value to ", newValue));
+    setIntedeterminate(progressBar, false);
+    logger.info(concat("JProgressBar is in determinate state"));
     robot.waitForIdle();
   }
 
@@ -88,25 +84,19 @@ class JProgressBarIncrementValueAsyncTask {
 
   static class TaskBuilder {
     private final JProgressBar progressBar;
-    private int increment = 10;
     private long periodInMs = 1000;
 
     TaskBuilder(JProgressBar progressBar) {
       this.progressBar = progressBar;
     }
 
-    TaskBuilder increment(int value) {
-      increment = value;
-      return this;
-    }
-
-    TaskBuilder every(long duration, TimeUnit timeUnit) {
+    TaskBuilder after(long duration, TimeUnit timeUnit) {
       periodInMs = timeUnit.toMillis(duration);
       return this;
     }
 
-    JProgressBarIncrementValueAsyncTask createTask(Robot robot) {
-      return new JProgressBarIncrementValueAsyncTask(robot, progressBar, increment, periodInMs);
+    JProgressBarMakeDeterminateAsyncTask createTask(Robot robot) {
+      return new JProgressBarMakeDeterminateAsyncTask(robot, progressBar, periodInMs);
     }
   }
 }

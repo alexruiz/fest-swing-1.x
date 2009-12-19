@@ -1,5 +1,5 @@
 /*
- * Created on Dec 4, 2009
+ * Created on Dec 19, 2009
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -17,43 +17,42 @@ package org.fest.swing.driver;
 
 import static java.util.concurrent.TimeUnit.SECONDS;
 import static org.fest.assertions.Assertions.assertThat;
-import static org.fest.swing.driver.JProgressBarIncrementValueAsyncTask.with;
-import static org.fest.swing.driver.JProgressBarValueQuery.valueOf;
+import static org.fest.swing.driver.JProgressBarIndeterminateQuery.isIndeterminate;
+import static org.fest.swing.driver.JProgressBarMakeDeterminateAsyncTask.makeDeterminate;
 import static org.fest.swing.test.core.CommonAssertions.failWhenExpectingException;
-
-import javax.swing.JProgressBar;
 
 import org.fest.swing.exception.WaitTimedOutError;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JProgressBarDriver#waitUntilIsComplete(JProgressBar)}</code>.
+ * Tests for <code>{@link JProgressBarDriver#waitUntilIsDeterminate(javax.swing.JProgressBar)}</code>.
  *
  * @author Alex Ruiz
  */
-public class JProgressBarDriver_waitUntilIsComplete_Test extends JProgressBarDriver_TestCase {
+public class JProgressBarDriver_waitUntilIsDeterminate_Test extends JProgressBarDriver_TestCase {
 
   @Test
-  public void should_wait_until_value_is_equal_to_maximum() {
-    updateValueTo(10);
-    JProgressBarIncrementValueAsyncTask task = with(progressBar).increment(30).every(1, SECONDS).createTask(robot);
+  public void should_wait_until_is_determinate() {
+    makeIndeterminate();
+    JProgressBarMakeDeterminateAsyncTask task = makeDeterminate(progressBar).after(1, SECONDS).createTask(robot);
     try {
       task.runAsynchronously();
-      driver.waitUntilIsComplete(progressBar);
-      assertThat(valueOf(progressBar)).isEqualTo(100);
+      driver.waitUntilIsDeterminate(progressBar);
+      assertThat(isIndeterminate(progressBar)).isEqualTo(false);
     } finally {
       task.cancelIfNotFinished();
     }
   }
 
   @Test
-  public void should_time_out_if_maximum_is_never_reached() {
+  public void should_time_out_if_determinate_state_never_reached() {
+    makeIndeterminate();
     try {
-      driver.waitUntilIsComplete(progressBar);
+      driver.waitUntilIsDeterminate(progressBar);
       failWhenExpectingException();
     } catch (WaitTimedOutError e) {
-      assertThat(e.getMessage()).contains("Timed out waiting for value")
-                                .contains("to be equal to 100");
+      assertThat(e.getMessage()).contains("Timed out waiting for")
+                                .contains("to be in determinate mode");
     }
   }
 }

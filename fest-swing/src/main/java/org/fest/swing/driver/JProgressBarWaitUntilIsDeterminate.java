@@ -1,5 +1,5 @@
 /*
- * Created on Dec 4, 2009
+ * Created on Dec 19, 2009
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -14,7 +14,7 @@
  */
 package org.fest.swing.driver;
 
-import static org.fest.swing.driver.JProgressBarValueQuery.valueOf;
+import static org.fest.swing.driver.JProgressBarIndeterminateQuery.isIndeterminate;
 import static org.fest.swing.format.Formatting.format;
 import static org.fest.swing.timing.Pause.pause;
 import static org.fest.util.Strings.concat;
@@ -33,24 +33,24 @@ import org.fest.swing.timing.Timeout;
  *
  * @author Alex Ruiz
  */
-final class JProgressBarWaitUntilValueIsEqualToExpectedTask {
+final class JProgressBarWaitUntilIsDeterminate {
 
   @RunsInEDT
-  static void waitUntilValueIsEqualToExpected(final JProgressBar progressBar, final int expected, final Timeout timeout) {
-    pause(new Condition(untilValueIsEqualTo(progressBar, expected)) {
+  static void waitUntilValueIsEqualToExpected(final JProgressBar progressBar, final Timeout timeout) {
+    pause(new Condition(untilIsDeterminate(progressBar)) {
       public boolean test() {
-        return valueOf(progressBar) == expected;
+        return !isIndeterminate(progressBar);
       }
     }, timeout);
   }
 
-  private static Description untilValueIsEqualTo(final JProgressBar progressBar, final int expected) {
+  private static Description untilIsDeterminate(final JProgressBar progressBar) {
     return new GuiLazyLoadingDescription() {
       protected String loadDescription() {
-        return concat("value of ", format(progressBar), " to be equal to ", expected);
+        return concat(format(progressBar), " to be in determinate mode");
       }
     };
   }
 
-  private JProgressBarWaitUntilValueIsEqualToExpectedTask() {}
+  private JProgressBarWaitUntilIsDeterminate() {}
 }
