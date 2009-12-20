@@ -50,7 +50,7 @@ import org.fest.swing.util.Pair;
  *
  * @since 1.2
  */
-public class JProgressBarDriver extends JComponentDriver {
+public class JProgressBarDriver extends JComponentDriver implements TextDisplayDriver<JProgressBar> {
 
   private static final Timeout DEFAULT_TIMEOUT = timeout(30, SECONDS);
   private static final String TEXT_PROPERTY = "string";
@@ -164,5 +164,15 @@ public class JProgressBarDriver extends JComponentDriver {
   @RunsInEDT
   public void waitUntilIsDeterminate(JProgressBar progressBar) {
     waitUntilValueIsEqualToExpected(progressBar, DEFAULT_TIMEOUT);
+  }
+
+  /**
+   * Returns the text of the given <code>{@link JProgressBar}</code>.
+   * @param progressBar the target <code>JProgressBar</code>.
+   * @return the text of the given <code>{@link JProgressBar}</code>.
+   */
+  @RunsInEDT
+  public String textOf(JProgressBar progressBar) {
+    return stringOf(progressBar);
   }
 }

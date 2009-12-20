@@ -36,7 +36,7 @@ import org.fest.swing.core.Robot;
  *
  * @author Alex Ruiz
  */
-public class JLabelDriver extends JComponentDriver {
+public class JLabelDriver extends JComponentDriver implements TextDisplayDriver<JLabel> {
 
   private static final String TEXT_PROPERTY = "text";
 

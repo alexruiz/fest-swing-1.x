@@ -1,5 +1,5 @@
 /*
- * Created on Feb 9, 2007
+ * Created on Dec 20, 2009
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2007-2009 the original author or authors.
+ * Copyright @2009 the original author or authors.
  */
 package org.fest.swing.fixture;
 
@@ -20,55 +20,44 @@ import static org.easymock.EasyMock.expectLastCall;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.test.core.Regex.regex;
 
+import java.awt.Component;
 import java.util.regex.Pattern;
 
 import org.fest.mocks.EasyMockTemplate;
+import org.fest.swing.driver.ComponentDriver;
+import org.fest.swing.driver.TextDisplayDriver;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JLabelFixture}</code>.
+ * Understands test methods for implementations of <code>{@link TextDisplayFixture}</code>.
+ * @param <T> the type of component supported by the fixture to test.
  *
- * @author Yvonne Wang
  * @author Alex Ruiz
+ * @author Yvonne Wang
  */
-public class JLabelFixtureTest extends JLabelFixture_TestCase {
-
-  // TODO Reorganize into smaller units
-
-  @Test
-  public void shouldReturnText() {
-    final String text = "A Label";
-    new EasyMockTemplate(driver()) {
-      protected void expectations() {
-        expect(driver().textOf(target())).andReturn(text);
-      }
-
-      protected void codeToTest() {
-        assertThat(fixture().text()).isEqualTo(text);
-      }
-    }.run();
-  }
+public abstract class TextDisplayFixture_TestCase<T extends Component> extends
+    ComponentFixture_TestCase<T> {
 
   @Test
-  public void shouldRequireText() {
+  public void should_require_text() {
     new EasyMockTemplate(driver()) {
       protected void expectations() {
-        driver().requireText(target(), "A Label");
+        textDisplayDriver().requireText(target(), "Some Text");
         expectLastCall().once();
       }
 
       protected void codeToTest() {
-        assertThatReturnsSelf(fixture().requireText("A Label"));
+        assertThatReturnsSelf(fixture().requireText("Some Text"));
       }
     }.run();
   }
 
   @Test
-  public void shouldRequireTextToMatchPattern() {
+  public void should_require_text_matching_pattern() {
     final Pattern pattern = regex(".");
     new EasyMockTemplate(driver()) {
       protected void expectations() {
-        driver().requireText(target(), pattern);
+        textDisplayDriver().requireText(target(), pattern);
         expectLastCall().once();
       }
 
@@ -77,4 +66,27 @@ public class JLabelFixtureTest extends JLabelFixture_TestCase {
       }
     }.run();
   }
+
+  @Test
+  public void should_return_text() {
+    final String text = "Some Text";
+    new EasyMockTemplate(driver()) {
+      protected void expectations() {
+        expect(textDisplayDriver().textOf(target())).andReturn(text);
+      }
+
+      protected void codeToTest() {
+        assertThat(fixture().text()).isEqualTo(text);
+      }
+    }.run();
+  }
+
+  @SuppressWarnings("unchecked")
+  private TextDisplayDriver<T> textDisplayDriver() {
+    ComponentDriver driver = driver();
+    assertThat(driver).isInstanceOf(TextDisplayDriver.class);
+    return (TextDisplayDriver<T>)driver;
+  }
+
+  abstract TextDisplayFixture fixture();
 }

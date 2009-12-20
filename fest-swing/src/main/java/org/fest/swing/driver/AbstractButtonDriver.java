@@ -43,7 +43,7 @@ import org.fest.swing.edt.GuiQuery;
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
-public class AbstractButtonDriver extends JComponentDriver {
+public class AbstractButtonDriver extends JComponentDriver implements TextDisplayDriver<AbstractButton> {
 
   private static final String SELECTED_PROPERTY = "selected";
   private static final String TEXT_PROPERTY = "text";

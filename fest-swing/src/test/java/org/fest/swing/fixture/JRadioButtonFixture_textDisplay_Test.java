@@ -1,5 +1,5 @@
 /*
- * Created on Nov 17, 2009
+ * Created on Dec 20, 2009
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -16,38 +16,39 @@
 package org.fest.swing.fixture;
 
 import static org.easymock.classextension.EasyMock.createMock;
-import static org.fest.swing.test.builder.JButtons.button;
+import static org.fest.swing.test.builder.JRadioButtons.radioButton;
 
-import javax.swing.JButton;
+import javax.swing.JRadioButton;
 
 import org.fest.swing.driver.AbstractButtonDriver;
 import org.junit.BeforeClass;
 
 /**
- * Test cases for <code>{@link JButtonFixture}</code>.
+ * Tests for methods in <code>{@link JRadioButtonFixture}</code>  that are inherited from
+ * <code>{@link TextDisplayFixture}</code>.
  *
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public abstract class JButtonFixture_TestCase extends ComponentFixture_TestCase<JButton> {
+public class JRadioButtonFixture_textDisplay_Test extends TextDisplayFixture_TestCase<JRadioButton> {
 
-  private static JButton target;
+  private static JRadioButton target;
 
   private AbstractButtonDriver driver;
-  private JButtonFixture fixture;
+  private JRadioButtonFixture fixture;
 
   @BeforeClass
   public static void setUpTarget() {
-    target = button().createNew();
+    target = radioButton().createNew();
   }
 
-  final void onSetUp() {
+  void onSetUp() {
     driver = createMock(AbstractButtonDriver.class);
-    fixture = new JButtonFixture(robot(), target);
+    fixture = new JRadioButtonFixture(robot(), target);
     fixture.driver(driver);
   }
 
-  final AbstractButtonDriver driver() {  return driver; }
-  final JButton target() { return target; }
-  final JButtonFixture fixture() { return fixture; }
+  AbstractButtonDriver driver() {  return driver; }
+  JRadioButton target() { return target; }
+  JRadioButtonFixture fixture() { return fixture; }
 }

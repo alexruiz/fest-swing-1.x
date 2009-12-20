@@ -31,7 +31,7 @@ import org.junit.Test;
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
-public class JRadioButtonBoxFixture_driver_Test extends EDTSafeTestCase {
+public class JRadioButtonFixture_driver_Test extends EDTSafeTestCase {
 
   private JRadioButtonFixture fixture;
   private JRadioButton target;

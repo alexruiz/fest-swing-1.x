@@ -24,7 +24,6 @@ import static org.fest.swing.driver.ComponentStateValidator.validateIsEnabledAnd
 import static org.fest.swing.driver.JTextComponentEditableQuery.isEditable;
 import static org.fest.swing.driver.JTextComponentSelectTextTask.selectTextInRange;
 import static org.fest.swing.driver.JTextComponentSetTextTask.setTextIn;
-import static org.fest.swing.driver.JTextComponentTextQuery.textOf;
 import static org.fest.swing.driver.PointAndParentForScrollingJTextFieldQuery.pointAndParentForScrolling;
 import static org.fest.swing.driver.TextAssert.verifyThat;
 import static org.fest.swing.edt.GuiActionRunner.execute;
@@ -60,7 +59,7 @@ import org.fest.swing.util.Pair;
  *
  * @author Alex Ruiz
  */
-public class JTextComponentDriver extends JComponentDriver {
+public class JTextComponentDriver extends JComponentDriver implements TextDisplayDriver<JTextComponent> {
 
   private static final String EDITABLE_PROPERTY = "editable";
   private static final String TEXT_PROPERTY = "text";
@@ -370,4 +369,16 @@ public class JTextComponentDriver extends JComponentDriver {
   private static Description editableProperty(JTextComponent textBox) {
     return propertyName(textBox, EDITABLE_PROPERTY);
   }
+
+  /**
+   * Returns the text of the given <code>{@link JTextComponent}</code>.
+   * @param textBox the given <code>JTextComponent</code>.
+   * @return the text of the given <code>JTextComponent</code>.
+   * @since 1.2
+   */
+  @RunsInEDT
+  public String textOf(JTextComponent textBox) {
+    return JTextComponentTextQuery.textOf(textBox);
+  }
+
 }

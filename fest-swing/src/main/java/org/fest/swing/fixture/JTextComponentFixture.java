@@ -84,7 +84,7 @@ public class JTextComponentFixture extends ComponentFixture<JTextComponent>
    * @return the text of this fixture's <code>JTextComponent</code>.
    */
   public String text() {
-    return target.getText();
+    return driver.textOf(target);
   }
 
   /**

@@ -16,11 +16,6 @@
 package org.fest.swing.fixture;
 
 import static org.easymock.EasyMock.expectLastCall;
-import static org.fest.assertions.Assertions.assertThat;
-import static org.fest.swing.test.core.Regex.regex;
-
-import java.util.regex.Pattern;
-
 import org.fest.mocks.EasyMockTemplate;
 import org.junit.Test;
 
@@ -118,39 +113,6 @@ public class JTextComponentFixtureTest extends JTextComponentFixture_TestCase {
     }.run();
   }
 
-  @Test
-  public void shouldReturnText() {
-    assertThat(fixture().text()).isEqualTo(target().getText());
-  }
-
-  @Test
-  public void shouldRequireText() {
-    new EasyMockTemplate(driver()) {
-      protected void expectations() {
-        driver().requireText(target(), "A Label");
-        expectLastCall().once();
-      }
-
-      protected void codeToTest() {
-        assertThatReturnsSelf(fixture().requireText("A Label"));
-      }
-    }.run();
-  }
-
-  @Test
-  public void shouldRequireTextToMatchPattern() {
-    final Pattern pattern = regex(".");
-    new EasyMockTemplate(driver()) {
-      protected void expectations() {
-        driver().requireText(target(), pattern);
-        expectLastCall().once();
-      }
-
-      protected void codeToTest() {
-        assertThatReturnsSelf(fixture().requireText(pattern));
-      }
-    }.run();
-  }
 
   @Test
   public void shouldRequireEmpty() {

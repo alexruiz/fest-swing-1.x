@@ -1,5 +1,5 @@
 /*
- * Created on Nov 17, 2009
+ * Created on Dec 19, 2009
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -13,32 +13,22 @@
  *
  * Copyright @2009 the original author or authors.
  */
-package org.fest.swing.fixture;
+package org.fest.swing.driver;
 
-import static org.easymock.EasyMock.expectLastCall;
+import static org.fest.assertions.Assertions.assertThat;
+import javax.swing.JProgressBar;
 
-import org.fest.mocks.EasyMockTemplate;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JButtonFixture#requireText(String)}</code>.
+ * Tests for <code>{@link JProgressBarDriver#textOf(JProgressBar)}</code>.
  *
- * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class JButtonFixture_requireText_withString_Test extends JButtonFixture_TestCase {
+public class JProgressBarDriver_textOf_Test extends JProgressBarDriver_TestCase {
 
   @Test
-  public void should_require_text() {
-    new EasyMockTemplate(driver()) {
-      protected void expectations() {
-        driver().requireText(target(), "A Button");
-        expectLastCall().once();
-      }
-
-      protected void codeToTest() {
-        assertThatReturnsSelf(fixture().requireText("A Button"));
-      }
-    }.run();
+  public void should_return_text() {
+    assertThat(driver.textOf(progressBar)).isEqualTo("60%");
   }
 }
