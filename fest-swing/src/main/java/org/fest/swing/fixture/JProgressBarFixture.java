@@ -22,12 +22,12 @@ import javax.swing.JProgressBar;
 import org.fest.swing.core.*;
 import org.fest.swing.driver.JProgressBarDriver;
 import org.fest.swing.exception.ComponentLookupException;
+import org.fest.swing.exception.WaitTimedOutError;
 import org.fest.swing.timing.Timeout;
 
 /**
  * Understands functional testing of <code>{@link JProgressBar}</code>s:
  * <ul>
- * <li>user input simulation</li>
  * <li>state verification</li>
  * <li>property value query</li>
  * </ul>
@@ -81,6 +81,37 @@ public class JProgressBarFixture extends ComponentFixture<JProgressBar> implemen
   }
 
   /**
+   * Asserts that the value of this fixture's <code>{@link JProgressBar}</code> is equal to the given one.
+   * @param value the expected value.
+   * @return this fixture.
+   * @throws AssertionError if the value of this fixture's <code>JProgressBar</code> is not equal to the given one.
+   */
+  public JProgressBarFixture requireValue(int value) {
+    driver.requireValue(target, value);
+    return this;
+  }
+
+  /**
+   * Asserts that this fixture's <code>{@link JProgressBar}</code> is in determinate mode.
+   * @return this fixture.
+   * @throws AssertionError if this fixture's <code>JProgressBar</code> is not in determinate mode.
+   */
+  public JProgressBarFixture requireDeterminate() {
+    driver.requireDeterminate(target);
+    return this;
+  }
+
+  /**
+   * Asserts that this fixture's <code>{@link JProgressBar}</code> is in indeterminate mode.
+   * @return this fixture.
+   * @throws AssertionError if this fixture's <code>JProgressBar</code> is not in indeterminate mode.
+   */
+  public JProgressBarFixture requireIndeterminate() {
+    driver.requireIndeterminate(target);
+    return this;
+  }
+
+  /**
    * Returns the text of this fixture's <code>{@link JProgressBar}</code>.
    * @return the text of this fixture's <code>JProgressBar</code>.
    */
@@ -89,10 +120,11 @@ public class JProgressBarFixture extends ComponentFixture<JProgressBar> implemen
   }
 
   /**
-   * Asserts that the text of this fixture's <code>{@link JProgressBar}</code> is equal to the specified <code>String</code>.
+   * Asserts that the text of this fixture's <code>{@link JProgressBar}</code> is equal to the specified
+   * <code>String</code>.
    * @param expected the text to match.
    * @return this fixture.
-   * @throws AssertionError if the text of the target component is not equal to the given one.
+   * @throws AssertionError if the text of this fixture's <code>JProgressBar</code> is not equal to the given one.
    */
   public JProgressBarFixture requireText(String expected) {
     driver.requireText(target, expected);
@@ -100,10 +132,12 @@ public class JProgressBarFixture extends ComponentFixture<JProgressBar> implemen
   }
 
   /**
-   * Asserts that the text of this fixture's <code>{@link JProgressBar}</code> matches the given regular expression pattern.
+   * Asserts that the text of this fixture's <code>{@link JProgressBar}</code> matches the given regular expression
+   * pattern.
    * @param pattern the regular expression pattern to match.
    * @return this fixture.
-   * @throws AssertionError if the text of the target component does not match the given regular expression pattern.
+   * @throws AssertionError if the text of this fixture's <code>JProgressBar</code> does not match the given regular
+   * expression pattern.
    * @throws NullPointerException if the given regular expression pattern is <code>null</code>.
    */
   public JProgressBarFixture requireText(Pattern pattern) {
@@ -196,5 +230,58 @@ public class JProgressBarFixture extends ComponentFixture<JProgressBar> implemen
    */
   public Object clientProperty(Object key) {
     return driver.clientProperty(target, key);
+  }
+
+  /**
+   * Waits until the value of this fixture's <code>{@link JProgressBar}</code> is equal to the given value.
+   * @param value the expected value.
+   * @return this fixture.
+   * @throws IllegalArgumentException if the given value is less than the <code>JProgressBar</code>'s minimum value.
+   * @throws IllegalArgumentException if the given value is greater than the <code>JProgressBar</code>'s maximum value.
+   * @throws WaitTimedOutError if the value of the <code>JProgressBar</code> does not reach the expected value within
+   * 30 seconds.
+   */
+  public JProgressBarFixture waitUntilValueIs(int value) {
+    driver.waitUntilValueIs(target, value);
+    return this;
+  }
+
+  /**
+   * Waits until the value of this fixture's <code>{@link JProgressBar}</code> is equal to the given value.
+   * @param value the expected value.
+   * @param timeout the amount of time to wait.
+   * @return this fixture.
+   * @throws IllegalArgumentException if the given value is less than the <code>JProgressBar</code>'s minimum value.
+   * @throws IllegalArgumentException if the given value is greater than the <code>JProgressBar</code>'s maximum value.
+   * @throws NullPointerException if the given timeout is <code>null</code>.
+   * @throws WaitTimedOutError if the value of the <code>JProgressBar</code> does not reach the expected value within
+   * the specified timeout.
+   */
+  public JProgressBarFixture waitUntilValueIs(int value, Timeout timeout) {
+    driver.waitUntilValueIs(target, value, timeout);
+    return this;
+  }
+
+  /**
+   * Waits until the value of this fixture's <code>{@link JProgressBar}</code> is in determinate mode.
+   * @return this fixture.
+   * @throws WaitTimedOutError if the <code>JProgressBar</code> does not reach determinate mode within 30 seconds.
+   */
+  public JProgressBarFixture waitUntilIsDeterminate() {
+    driver.waitUntilIsDeterminate(target);
+    return this;
+  }
+
+  /**
+   * Waits until the value of this fixture's <code>{@link JProgressBar}</code> is in determinate mode.
+   * @param timeout the amount of time to wait.
+   * @return this fixture.
+   * @throws NullPointerException if the given timeout is <code>null</code>.
+   * @throws WaitTimedOutError if the <code>JProgressBar</code> does not reach determinate mode within the specified
+   * timeout.
+   */
+  public JProgressBarFixture waitUntilIsDeterminate(Timeout timeout) {
+    driver.waitUntilIsDeterminate(target, timeout);
+    return this;
   }
 }

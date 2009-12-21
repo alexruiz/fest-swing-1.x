@@ -220,7 +220,7 @@ public class JLabelFixture extends ComponentFixture<JLabel> implements CommonCom
    * Asserts that the text of this fixture's <code>{@link JLabel}</code> is equal to the specified <code>String</code>.
    * @param expected the text to match.
    * @return this fixture.
-   * @throws AssertionError if the text of the target component is not equal to the given one.
+   * @throws AssertionError if the text of this fixture's <code>JLabel</code> is not equal to the given one.
    */
   public JLabelFixture requireText(String expected) {
     driver.requireText(target, expected);
@@ -231,7 +231,8 @@ public class JLabelFixture extends ComponentFixture<JLabel> implements CommonCom
    * Asserts that the text of this fixture's <code>{@link JLabel}</code> matches the given regular expression pattern.
    * @param pattern the regular expression pattern to match.
    * @return this fixture.
-   * @throws AssertionError if the text of the target component does not match the given regular expression pattern.
+   * @throws AssertionError if the text of this fixture's <code>JLabel</code> does not match the given regular
+   * expression pattern.
    * @throws NullPointerException if the given regular expression pattern is <code>null</code>.
    * @since 1.2
    */

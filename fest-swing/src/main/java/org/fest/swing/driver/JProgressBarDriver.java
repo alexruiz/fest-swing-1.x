@@ -20,7 +20,7 @@ import static org.fest.swing.driver.JProgressBarIndeterminateQuery.isIndetermina
 import static org.fest.swing.driver.JProgressBarMinimumAndMaximumQuery.minimumAndMaximumOf;
 import static org.fest.swing.driver.JProgressBarStringQuery.stringOf;
 import static org.fest.swing.driver.JProgressBarValueQuery.valueOf;
-import static org.fest.swing.driver.JProgressBarWaitUntilIsDeterminate.waitUntilValueIsEqualToExpected;
+import static org.fest.swing.driver.JProgressBarWaitUntilIsDeterminate.waitUntilValueIsDeterminate;
 import static org.fest.swing.driver.JProgressBarWaitUntilValueIsEqualToExpectedTask.waitUntilValueIsEqualToExpected;
 import static org.fest.swing.driver.TextAssert.verifyThat;
 import static org.fest.swing.timing.Timeout.timeout;
@@ -39,7 +39,6 @@ import org.fest.swing.util.Pair;
 /**
  * Understands functional testing of <code>{@link JProgressBar}</code>s:
  * <ul>
- * <li>user input simulation</li>
  * <li>state verification</li>
  * <li>property value query</li>
  * </ul>
@@ -105,8 +104,23 @@ public class JProgressBarDriver extends JComponentDriver implements TextDisplayD
    * @throws AssertionError if the given <code>JProgressBar</code> is not in indeterminate mode.
    */
   @RunsInEDT
-  public void requireIndeterminateMode(JProgressBar progressBar) {
-    assertThat(isIndeterminate(progressBar)).as(propertyName(progressBar, "indeterminate")).isTrue();
+  public void requireIndeterminate(JProgressBar progressBar) {
+    requireIndeterminate(progressBar, true);
+  }
+
+  /**
+   * Verifies that the given <code>{@link JProgressBar}</code> is in determinate mode.
+   * @param progressBar the target <code>JProgressBar</code>.
+   * @throws AssertionError if the given <code>JProgressBar</code> is not in determinate mode.
+   */
+  @RunsInEDT
+  public void requireDeterminate(JProgressBar progressBar) {
+    requireIndeterminate(progressBar, false);
+  }
+
+  @RunsInEDT
+  private void requireIndeterminate(JProgressBar progressBar, boolean indeterminate) {
+    assertThat(isIndeterminate(progressBar)).as(propertyName(progressBar, "indeterminate")).isEqualTo(indeterminate);
   }
 
   /**
@@ -141,10 +155,6 @@ public class JProgressBarDriver extends JComponentDriver implements TextDisplayD
     waitUntilValueIsEqualToExpected(progressBar, value, timeout);
   }
 
-  private void validateIsNotNull(Timeout timeout) {
-    if (timeout == null) throw new NullPointerException("Timeout should not be null");
-  }
-
   @RunsInEDT
   private void assertIsInBetweenMinAndMax(JProgressBar progressBar, int value) {
     Pair<Integer, Integer> minAndMax = minimumAndMaximumOf(progressBar);
@@ -163,7 +173,25 @@ public class JProgressBarDriver extends JComponentDriver implements TextDisplayD
    */
   @RunsInEDT
   public void waitUntilIsDeterminate(JProgressBar progressBar) {
-    waitUntilValueIsEqualToExpected(progressBar, DEFAULT_TIMEOUT);
+    waitUntilIsDeterminate(progressBar, DEFAULT_TIMEOUT);
+  }
+
+  /**
+   * Waits until the value of the given <code>{@link JProgressBar}</code> is in determinate mode.
+   * @param progressBar the target <code>JProgressBar</code>.
+   * @param timeout the amount of time to wait.
+   * @throws NullPointerException if the given timeout is <code>null</code>.
+   * @throws WaitTimedOutError if the <code>JProgressBar</code> does not reach determinate mode within the specified
+   * timeout.
+   */
+  @RunsInEDT
+  public void waitUntilIsDeterminate(JProgressBar progressBar, Timeout timeout) {
+    validateIsNotNull(timeout);
+    waitUntilValueIsDeterminate(progressBar, timeout);
+  }
+
+  private void validateIsNotNull(Timeout timeout) {
+    if (timeout == null) throw new NullPointerException("Timeout should not be null");
   }
 
   /**

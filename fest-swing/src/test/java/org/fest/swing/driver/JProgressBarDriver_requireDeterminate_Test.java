@@ -1,5 +1,5 @@
 /*
- * Created on Dec 4, 2009
+ * Created on Dec 20, 2009
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -16,6 +16,7 @@
 package org.fest.swing.driver;
 
 import static org.fest.assertions.Assertions.assertThat;
+import static org.fest.swing.driver.JProgressBarSetIndetermintateTask.setIntedeterminate;
 import static org.fest.swing.test.core.CommonAssertions.failWhenExpectingException;
 
 import javax.swing.JProgressBar;
@@ -23,26 +24,28 @@ import javax.swing.JProgressBar;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JProgressBarDriver#requireIndeterminateMode(JProgressBar)}</code>.
+ * Tests for <code>{@link JProgressBarDriver#requireDeterminate(JProgressBar)}</code>.
  *
  * @author Alex Ruiz
  */
-public class JProgressBarDriver_requireIndeterminateMode_Test extends JProgressBarDriver_TestCase {
+public class JProgressBarDriver_requireDeterminate_Test extends JProgressBarDriver_TestCase {
 
   @Test
-  public void should_pass_if_JProgressBar_is_indeterminate() {
-    makeIndeterminate();
-    driver.requireIndeterminateMode(progressBar);
+  public void should_pass_if_JProgressBar_is_determinate() {
+    setIntedeterminate(progressBar, false);
+    robot.waitForIdle();
+    driver.requireDeterminate(progressBar);
   }
 
   @Test
-  public void should_fail_if_JProgressBar_is_not_indeterminate() {
+  public void should_fail_if_JProgressBar_is_not_determinate() {
+    makeIndeterminate();
     try {
-      driver.requireIndeterminateMode(progressBar);
+      driver.requireDeterminate(progressBar);
       failWhenExpectingException();
     } catch (AssertionError e) {
       assertThat(e.getMessage()).contains("property:'indeterminate'")
-                                .contains("expected:<true> but was:<false>");
+                                .contains("expected:<false> but was:<true>");
     }
   }
 }

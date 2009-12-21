@@ -33,6 +33,9 @@
       <action dev="alexruiz" type="fix" issue="FEST-219" due-to="Dominik Wild, Kyle Murphy">
         AppletLauncher does not call 'init' method of Applets in the Event Dispatch Thread.
       </action>
+      <action dev="alexruiz" type="add" issue="FEST-222" due-to="Jacob Qvortrup">
+        Added class org.fest.swing.fixture.JProgressBarFixture.
+      </action>
       <action dev="alexruiz" type="fix" issue="FEST-227" due-to="Uli Schrempp">
         Method 'matches(String, String)' does not require a valid regular expression if the given Strings are not equal.
       </action>
@@ -68,6 +71,12 @@
       <action dev="alexruiz" type="fix" issue="FEST-274">
         Method 'requireSelection' in JComboBoxFixture now uses the value in JComboBox#getSelectedItem if the
         JComboBox is editable and does not have any selected index.
+      </action>
+      <action dev="alexruiz" type="fix" issue="FEST-280">
+        Method 'text' in JTextComponentFixture now obtains the text of a JTextComponent in the EDT.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-280">
+        Added method 'textOf(JTextComponent)' to JTextComponentDriver.
       </action>
     </release>
     <release version="1.2a3" date="2009-08-31" description="Subsequent release">

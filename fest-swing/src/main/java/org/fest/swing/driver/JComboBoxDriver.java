@@ -371,7 +371,7 @@ public class JComboBoxDriver extends JComponentDriver {
 
   /**
    * Simulates a user pressing and releasing the given keys on the <code>{@link JComboBox}</code>.
-   * @param comboBox the target component.
+   * @param comboBox the target <code>JComboBox</code>.
    * @param keyCodes one or more codes of the keys to press.
    * @throws NullPointerException if the given array of codes is <code>null</code>.
    * @throws IllegalStateException if the <code>JComboBox</code> is disabled.

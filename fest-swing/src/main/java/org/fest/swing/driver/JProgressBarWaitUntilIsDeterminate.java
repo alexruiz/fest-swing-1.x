@@ -36,7 +36,7 @@ import org.fest.swing.timing.Timeout;
 final class JProgressBarWaitUntilIsDeterminate {
 
   @RunsInEDT
-  static void waitUntilValueIsEqualToExpected(final JProgressBar progressBar, final Timeout timeout) {
+  static void waitUntilValueIsDeterminate(final JProgressBar progressBar, final Timeout timeout) {
     pause(new Condition(untilIsDeterminate(progressBar)) {
       public boolean test() {
         return !isIndeterminate(progressBar);
