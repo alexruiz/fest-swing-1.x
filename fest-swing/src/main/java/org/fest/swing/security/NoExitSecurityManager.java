@@ -24,7 +24,27 @@ import java.security.Permission;
  *
  * @author Alex Ruiz
  */
-public class NoExitSecurityManager extends SecurityManager {
+public final class NoExitSecurityManager extends SecurityManager {
+
+  private static final ExitCallHook NULL_HOOK = new ExitCallHook() {
+    public void exitCalled(int status) {}
+  };
+  private final ExitCallHook hook;
+
+  /**
+   * Creates a new </code>{@link NoExitSecurityManager}</code>.
+   */
+  public NoExitSecurityManager() {
+    this(NULL_HOOK);
+  }
+
+  /**
+   * Creates a new </code>{@link NoExitSecurityManager}</code>.
+   * @param hook notified when an application tries to terminate the current JVM.
+   */
+  public NoExitSecurityManager(ExitCallHook hook) {
+    this.hook = hook;
+  }
 
   /**
    * Allows everything.
@@ -66,16 +86,8 @@ public class NoExitSecurityManager extends SecurityManager {
    */
   @Override public void checkExit(int status) {
     if (exitInvoked()) {
-      exitCalled(status);
+      hook.exitCalled(status);
       throw new ExitException(concat("Application tried to terminate current JVM with status ", status));
     }
   }
-
-  /**
-   * Implement this method to do any context-specific cleanup.This hook is provided since it may not always be possible
-   * to catch the <code>{@link ExitException}</code> explicitly (like when it's caught by someone else, or thrown from
-   * the event dispatch thread).
-   * @param status the status the exit status.
-   */
-  protected void exitCalled(int status) {}
 }
