@@ -52,6 +52,10 @@
       <action dev="alexruiz" type="add" issue="FEST-248" due-to="Huib">
         Added method 'rightClickPath(String)' to JTreeFixture.
       </action>
+      <action dev="alexruiz" type="add" issue="FEST-249" due-to="Brandon">
+        Added class org.fest.swing.security.NoExitSecurityManager to prevent applications under test from terminating
+        the current JVM.
+      </action>
       <action dev="alexruiz" type="fix" issue="FEST-250" due-to="Stephen Gade Esven, Morten Breum Mikkelsen">
         Component hierarchies now contain in the collection of root windows all the ownerless windows.
       </action>
