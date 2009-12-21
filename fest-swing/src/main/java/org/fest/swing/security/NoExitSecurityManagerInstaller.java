@@ -30,11 +30,28 @@ public class NoExitSecurityManagerInstaller {
     return new NoExitSecurityManagerInstaller();
   }
 
+  /**
+   * Installs a new <code>{@link NoExitSecurityManager}</code> in <code>System</code>.
+   * @param hook gets notified when an application tries to terminate the current JVM.
+   * @return this installer.
+   */
+  public static NoExitSecurityManagerInstaller installNoExitSecurityManager(ExitCallHook hook) {
+    return new NoExitSecurityManagerInstaller(hook);
+  }
+
   private final SecurityManager oldManager;
 
   private NoExitSecurityManagerInstaller() {
+    this(new NoExitSecurityManager());
+  }
+
+  private NoExitSecurityManagerInstaller(ExitCallHook hook) {
+    this(new NoExitSecurityManager(hook));
+  }
+
+  private NoExitSecurityManagerInstaller(NoExitSecurityManager newManager) {
     oldManager = System.getSecurityManager();
-    System.setSecurityManager(new NoExitSecurityManager());
+    System.setSecurityManager(newManager);
   }
 
   /**
