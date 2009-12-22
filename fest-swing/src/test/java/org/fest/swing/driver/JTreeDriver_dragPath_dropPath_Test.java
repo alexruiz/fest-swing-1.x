@@ -16,11 +16,16 @@
 package org.fest.swing.driver;
 
 import static org.fest.assertions.Assertions.assertThat;
-import static org.fest.swing.driver.JTreeSetRootVisibleTask.setRootVisible;
+import static org.fest.swing.edt.GuiActionRunner.execute;
+import static org.fest.swing.test.swing.TreeNodeFactory.node;
 
+import javax.swing.JTree;
 import javax.swing.tree.DefaultMutableTreeNode;
 
+import org.fest.swing.annotation.RunsInEDT;
+import org.fest.swing.edt.GuiTask;
 import org.junit.Test;
+
 
 /**
  * Tests for <code>{@link JTreeDriver#drag(javax.swing.JTree, String)}</code> and
@@ -47,11 +52,12 @@ public class JTreeDriver_dragPath_dropPath_Test extends JTreeDriver_dragAndDrop_
 
   @Test
   public void should_drag_and_drop_when_root_is_invisible() {
-    setRootVisible(tree, false);
+    // FEST-246
+    addNodeToRootAndHideRoot(dropTree);
     robot.waitForIdle();
     showWindow();
-    driver.drag(tree, "branch1/branch1.1");
-    driver.drop(dropTree, "root");
+    driver.drag(tree, "root/branch1/branch1.1");
+    driver.drop(dropTree, "child");
     // the first child in drag-source tree is no longer branch1.1 but branch1.2
     DefaultMutableTreeNode branch1 = firstChildInRoot();
     assertThat(childCountOf(branch1)).isEqualTo(1);
@@ -60,5 +66,17 @@ public class JTreeDriver_dragPath_dropPath_Test extends JTreeDriver_dragAndDrop_
     DefaultMutableTreeNode root = rootOf(dropTree);
     assertThat(childCountOf(root)).isEqualTo(1);
     assertThat(textOf(firstChildOf(root))).isEqualTo("branch1.1");
+  }
+  
+  @RunsInEDT
+  private static void addNodeToRootAndHideRoot(final JTree tree) {
+    execute(new GuiTask() {
+      protected void executeInEDT() {
+        Object root = tree.getModel().getRoot();
+        DefaultMutableTreeNode rootNode = (DefaultMutableTreeNode)root;
+        rootNode.add(node("child"));
+        tree.setRootVisible(false);
+      }
+    });
   }
 }
