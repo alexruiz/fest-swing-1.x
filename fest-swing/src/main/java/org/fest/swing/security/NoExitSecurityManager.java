@@ -18,18 +18,21 @@ import static org.fest.util.Strings.concat;
 
 import java.security.Permission;
 
+import org.fest.swing.util.StackTraces;
+
 /**
  * Understands a <code>{@link SecurityManager}</code> that does not allow an application under test to terminate the
  * current JVM. Adapted from Abbot's <code>NoExitSecurityManager</code>.
  *
  * @author Alex Ruiz
  */
-public final class NoExitSecurityManager extends SecurityManager {
+public class NoExitSecurityManager extends SecurityManager {
 
   private static final ExitCallHook NULL_HOOK = new ExitCallHook() {
     public void exitCalled(int status) {}
   };
   private final ExitCallHook hook;
+  private final StackTraces stackTraces;
 
   /**
    * Creates a new </code>{@link NoExitSecurityManager}</code>.
@@ -41,9 +44,17 @@ public final class NoExitSecurityManager extends SecurityManager {
   /**
    * Creates a new </code>{@link NoExitSecurityManager}</code>.
    * @param hook notified when an application tries to terminate the current JVM.
+   * @throws NullPointerException if the given hook is <code>null</code>.
    */
   public NoExitSecurityManager(ExitCallHook hook) {
+    this(hook, StackTraces.INSTANCE);
+  }
+
+  NoExitSecurityManager(ExitCallHook hook, StackTraces stackTraces) {
+    if (hook == null) throw new NullPointerException(
+        concat("The given ", ExitCallHook.class.getSimpleName(), " should not be null"));
     this.hook = hook;
+    this.stackTraces = stackTraces;
   }
 
   /**
@@ -60,25 +71,6 @@ public final class NoExitSecurityManager extends SecurityManager {
   @Override public void checkPermission(Permission permission) {}
 
   /**
-   * Indicates whether "exit" has been invoked through a call of <code>{@link Runtime#exit(int)}</code> or
-   * <code>{@link Runtime#halt(int)}</code>.
-   * @return <code>true</code> if an exit has been invoked through a call of <code>Runtime.exit</code> or
-   * <code>Runtime.halt</code>; <code>false</code> otherwise.
-   */
-  private boolean exitInvoked() {
-    StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
-    for (StackTraceElement e : stackTrace)
-      if (exitInvoked(e)) return true;
-    return false;
-  }
-
-  private boolean exitInvoked(StackTraceElement e) {
-    if (!"java.lang.Runtime".equals(e.getClassName())) return false;
-    final String method = e.getMethodName();
-    return "exit".equals(method) || "halt".equals(method);
-  }
-
-  /**
    * Throws an <code>{@link ExitException}</code> if an application tries to terminate the current JVM (through
    * <code>{@link Runtime#exit(int)}</code> or <code>{@link Runtime#halt(int)}</code>.)
    * @param status the exit status.
@@ -89,5 +81,23 @@ public final class NoExitSecurityManager extends SecurityManager {
       hook.exitCalled(status);
       throw new ExitException(concat("Application tried to terminate current JVM with status ", status));
     }
+  }
+
+  /**
+   * Indicates whether "exit" has been invoked through a call of <code>{@link Runtime#exit(int)}</code> or
+   * <code>{@link Runtime#halt(int)}</code>.
+   * @return <code>true</code> if an exit has been invoked through a call of <code>Runtime.exit</code> or
+   * <code>Runtime.halt</code>; <code>false</code> otherwise.
+   */
+  private boolean exitInvoked() {
+    for (StackTraceElement e : stackTraces.stackTraceInCurrentThread())
+      if (exitInvoked(e)) return true;
+    return false;
+  }
+
+  private boolean exitInvoked(StackTraceElement e) {
+    if (!Runtime.class.getName().equals(e.getClassName())) return false;
+    final String method = e.getMethodName();
+    return "exit".equals(method) || "halt".equals(method);
   }
 }

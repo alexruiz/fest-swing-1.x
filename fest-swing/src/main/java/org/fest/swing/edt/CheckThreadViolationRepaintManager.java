@@ -20,6 +20,8 @@ import java.lang.ref.WeakReference;
 
 import javax.swing.*;
 
+import org.fest.swing.util.StackTraces;
+
 /**
  * <p>
  * This class is used to detect Event Dispatch Thread rule violations<br>
@@ -39,6 +41,8 @@ abstract class CheckThreadViolationRepaintManager extends RepaintManager {
   // TODO test
 
   private final boolean completeCheck;
+  private final StackTraces stackTraces;
+
   private WeakReference<JComponent> lastComponent;
 
   CheckThreadViolationRepaintManager() {
@@ -47,7 +51,12 @@ abstract class CheckThreadViolationRepaintManager extends RepaintManager {
   }
 
   CheckThreadViolationRepaintManager(boolean completeCheck) {
+    this(completeCheck, StackTraces.INSTANCE);
+  }
+
+  CheckThreadViolationRepaintManager(boolean completeCheck, StackTraces stackTraces) {
     this.completeCheck = completeCheck;
+    this.stackTraces = stackTraces;
   }
 
   @Override public synchronized void addInvalidComponent(JComponent component) {
@@ -65,7 +74,7 @@ abstract class CheckThreadViolationRepaintManager extends RepaintManager {
       boolean imageUpdate = false;
       boolean repaint = false;
       boolean fromSwing = false;
-      StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
+      StackTraceElement[] stackTrace = stackTraces.stackTraceInCurrentThread();
       for (StackTraceElement st : stackTrace) {
         if (repaint && st.getClassName().startsWith("javax.swing.")) {
           fromSwing = true;

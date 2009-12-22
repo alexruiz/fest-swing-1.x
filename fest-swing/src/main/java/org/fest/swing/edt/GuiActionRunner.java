@@ -17,7 +17,7 @@ package org.fest.swing.edt;
 
 import static javax.swing.SwingUtilities.invokeLater;
 import static javax.swing.SwingUtilities.isEventDispatchThread;
-import static org.fest.swing.edt.StackTraces.appendCurrentThreadStackTraceToThrowable;
+import static org.fest.swing.edt.Throwables.appendCurrentThreadStackTraceToThrowable;
 import static org.fest.swing.exception.UnexpectedException.unexpected;
 
 import java.util.concurrent.CountDownLatch;

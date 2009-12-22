@@ -25,14 +25,11 @@ import java.util.concurrent.atomic.AtomicReference;
 import org.junit.*;
 
 /**
- * Tests for <code>{@link StackTraces#appendCurrentThreadStackTraceToThrowable(Throwable, String)}</code>.
+ * Tests for <code>{@link Throwables#appendCurrentThreadStackTraceToThrowable(Throwable, String)}</code>.
  *
  * @author Alex Ruiz
  */
-public class StackTraces_appendCurrentThreadStackTraceToThrowable_Test {
-
-  private static final String TEST_CLASS = StackTraces_appendCurrentThreadStackTraceToThrowable_Test.class.getName();
-  private static final String TEST_METHOD = "should_add_stack_trace_of_current_thread";
+public class Throwables_appendCurrentThreadStackTraceToThrowable_Test {
 
   private AtomicReference<RuntimeException> exceptionReference;
 
@@ -60,22 +57,16 @@ public class StackTraces_appendCurrentThreadStackTraceToThrowable_Test {
       currentThread().interrupt();
     }
     RuntimeException thrown = exceptionReference.get();
-    StackTraceElement[] originalExceptionStackTrace = thrown.getStackTrace();
-    assertThat(originalExceptionStackTrace).hasSize(1);
-    assertHasThreadStackTrace(originalExceptionStackTrace[0]);
-    StackTraces.appendCurrentThreadStackTraceToThrowable(thrown, TEST_METHOD);
-    StackTraceElement[] exceptionStackTrace = thrown.getStackTrace();
-    assertThat(exceptionStackTrace.length).isEqualTo(new RuntimeException().getStackTrace().length + 1);
-    assertHasThreadStackTrace(exceptionStackTrace[0]);
-    assertHasMethodSignature(exceptionStackTrace[1], TEST_CLASS, TEST_METHOD);
+    Throwables.appendCurrentThreadStackTraceToThrowable(thrown, "should_add_stack_trace_of_current_thread");
+    StackTraceElement[] stackTrace = thrown.getStackTrace();
+    assertThat(stackTrace.length).isGreaterThan(1);
+    assertThat(asString(stackTrace[0])).isEqualTo(
+        "org.fest.swing.edt.Throwables_appendCurrentThreadStackTraceToThrowable_Test$1.run");
+    assertThat(asString(stackTrace[1])).isEqualTo(
+        "org.fest.swing.edt.Throwables_appendCurrentThreadStackTraceToThrowable_Test.should_add_stack_trace_of_current_thread");
   }
 
-  private void assertHasThreadStackTrace(StackTraceElement e) {
-    assertHasMethodSignature(e, concat(TEST_CLASS, "$1"), "run");
-  }
-
-  private void assertHasMethodSignature(StackTraceElement e, String className, String methodName) {
-    assertThat(e.getClassName()).isEqualTo(className);
-    assertThat(e.getMethodName()).isEqualTo(methodName);
+  private String asString(StackTraceElement e) {
+    return concat(e.getClassName(), ".", e.getMethodName());
   }
 }
