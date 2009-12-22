@@ -53,7 +53,10 @@ import org.fest.swing.cell.JTreeCellReader;
 import org.fest.swing.core.Robot;
 import org.fest.swing.edt.GuiQuery;
 import org.fest.swing.edt.GuiTask;
-import org.fest.swing.exception.*;
+import org.fest.swing.exception.ActionFailedException;
+import org.fest.swing.exception.ComponentLookupException;
+import org.fest.swing.exception.LocationUnavailableException;
+import org.fest.swing.exception.WaitTimedOutError;
 import org.fest.swing.util.Pair;
 import org.fest.swing.util.Triple;
 
@@ -608,20 +611,6 @@ public class JTreeDriver extends JComponentDriver {
 
   /*
    * returns:
-   * 1. the found matching path
-   * 2. whether the path is already selected
-   * 3. the location where the path is in the JTree
-   */
-  @RunsInEDT
-  private Triple<TreePath, Boolean, Point> scrollToMatchingPath(JTree tree, String path) {
-    TreePath matchingPath = verifyJTreeIsReadyAndFindMatchingPath(tree, path, pathFinder);
-    makeVisible(tree, matchingPath, false);
-    Pair<Boolean, Point> info = scrollToPathToSelect(tree, matchingPath, location);
-    return new Triple<TreePath, Boolean, Point>(matchingPath, info.i, info.ii);
-  }
-
-  /*
-   * returns:
    * 1. whether the path is already selected
    * 2. the location where the path is in the JTree
    */
@@ -654,21 +643,22 @@ public class JTreeDriver extends JComponentDriver {
    */
   @RunsInEDT
   public void drop(JTree tree, String path) {
-    Point p = scrollToMatchingPath(tree, path, pathFinder, location);
+    Point p = scrollToMatchingPath(tree, path).iii;
     drop(tree, p);
   }
 
+  /*
+   * returns:
+   * 1. the found matching path
+   * 2. whether the path is already selected
+   * 3. the location where the path is in the JTree
+   */
   @RunsInEDT
-  private static Point scrollToMatchingPath(final JTree tree, final String path,
-      final JTreePathFinder pathFinder, final JTreeLocation location) {
-    return execute(new GuiQuery<Point>() {
-      protected Point executeInEDT() {
-        validateIsEnabledAndShowing(tree);
-        TreePath matchingPath = pathFinder.findMatchingPath(tree, path);
-        tree.scrollRectToVisible(tree.getPathBounds(matchingPath));
-        return location.pointAt(tree, matchingPath);
-      }
-    });
+  private Triple<TreePath, Boolean, Point> scrollToMatchingPath(JTree tree, String path) {
+    TreePath matchingPath = verifyJTreeIsReadyAndFindMatchingPath(tree, path, pathFinder);
+    makeVisible(tree, matchingPath, false);
+    Pair<Boolean, Point> info = scrollToPathToSelect(tree, matchingPath, location);
+    return new Triple<TreePath, Boolean, Point>(matchingPath, info.i, info.ii);
   }
 
   /**

@@ -63,9 +63,9 @@ public class JTreeDriver_dragPath_dropPath_Test extends JTreeDriver_dragAndDrop_
     assertThat(childCountOf(branch1)).isEqualTo(1);
     assertThat(textOf(firstChildOf(branch1))).isEqualTo("branch1.2");
     // the only child in the root of the drop-target tree is now branch1.1
-    DefaultMutableTreeNode root = rootOf(dropTree);
-    assertThat(childCountOf(root)).isEqualTo(1);
-    assertThat(textOf(firstChildOf(root))).isEqualTo("branch1.1");
+    DefaultMutableTreeNode rootChild = firstChildOfRootIn(dropTree);
+    assertThat(childCountOf(rootChild)).isEqualTo(1);
+    assertThat(textOf(firstChildOf(rootChild))).isEqualTo("branch1.1");
   }
   
   @RunsInEDT

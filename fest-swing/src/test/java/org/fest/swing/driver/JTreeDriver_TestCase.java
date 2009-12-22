@@ -131,6 +131,16 @@ public abstract class JTreeDriver_TestCase extends RobotBasedTestCase {
   }
 
   @RunsInEDT
+  static DefaultMutableTreeNode firstChildOfRootIn(final JTree tree) {
+    return execute(new GuiQuery<DefaultMutableTreeNode>() {
+      protected DefaultMutableTreeNode executeInEDT() {
+        TreeNode root = (TreeNode)tree.getModel().getRoot();
+        return (DefaultMutableTreeNode)root.getChildAt(0);
+      }
+    });
+  }
+
+  @RunsInEDT
   static String textOf(final DefaultMutableTreeNode node) {
     return execute(new GuiQuery<String>() {
       protected String executeInEDT() {
