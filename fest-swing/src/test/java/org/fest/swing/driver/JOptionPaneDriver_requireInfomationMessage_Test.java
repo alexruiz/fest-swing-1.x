@@ -44,9 +44,8 @@ public class JOptionPaneDriver_requireInfomationMessage_Test extends JOptionPane
       driver.requireInformationMessage(optionPane);
       failWhenExpectingException();
     } catch (AssertionError e) {
-      assertThat(e.getMessage()).contains("property:'messageType'");
-                                // TODO fix assertion message
-                                // .contains("expected:<'Information Message'> but was:<'Error Message'>");
+      assertThat(e.getMessage()).contains("property:'messageType'")
+                                .contains("expected:<'[Information] Message'> but was:<'[Error] Message'>");
     }
   }
 }

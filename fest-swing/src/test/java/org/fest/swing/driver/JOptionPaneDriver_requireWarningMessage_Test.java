@@ -51,9 +51,8 @@ public class JOptionPaneDriver_requireWarningMessage_Test extends JOptionPaneDri
       driver.requireWarningMessage(optionPane);
       failWhenExpectingException();
     } catch (AssertionError e) {
-      assertThat(e.getMessage()).contains("property:'messageType'");
-                                // TODO fix assertion message
-                                // .contains("expected:<'Warning Message'> but was:<'Error Message'>");
+      assertThat(e.getMessage()).contains("property:'messageType'")
+                                .contains("expected:<'[Warning] Message'> but was:<'[Error] Message'>");
     }
   }
 }
