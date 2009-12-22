@@ -49,6 +49,9 @@
         Added method 'requireItemCount(int)' to ItemGroupFixture and its implementations JComboBoxFixture and 
         JListFixture.
       </action>
+      <action dev="alexruiz" type="fix" issue="FEST-246" due-to="Pavol Marko">
+        Fixed NPE thrown by JTreeDriver#drop(JTree, String) when root node is not visible.
+      </action>
       <action dev="alexruiz" type="add" issue="FEST-248" due-to="Huib">
         Added method 'rightClickPath(String)' to JTreeFixture.
       </action>
