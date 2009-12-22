@@ -16,6 +16,7 @@
 package org.fest.swing.driver;
 
 import static org.fest.assertions.Assertions.assertThat;
+import static org.fest.swing.driver.JTreeSetRootVisibleTask.setRootVisible;
 
 import javax.swing.tree.DefaultMutableTreeNode;
 
@@ -33,6 +34,23 @@ public class JTreeDriver_dragPath_dropPath_Test extends JTreeDriver_dragAndDrop_
   public void should_drag_and_drop() {
     showWindow();
     driver.drag(tree, "root/branch1/branch1.1");
+    driver.drop(dropTree, "root");
+    // the first child in drag-source tree is no longer branch1.1 but branch1.2
+    DefaultMutableTreeNode branch1 = firstChildInRoot();
+    assertThat(childCountOf(branch1)).isEqualTo(1);
+    assertThat(textOf(firstChildOf(branch1))).isEqualTo("branch1.2");
+    // the only child in the root of the drop-target tree is now branch1.1
+    DefaultMutableTreeNode root = rootOf(dropTree);
+    assertThat(childCountOf(root)).isEqualTo(1);
+    assertThat(textOf(firstChildOf(root))).isEqualTo("branch1.1");
+  }
+
+  @Test
+  public void should_drag_and_drop_when_root_is_invisible() {
+    setRootVisible(tree, false);
+    robot.waitForIdle();
+    showWindow();
+    driver.drag(tree, "branch1/branch1.1");
     driver.drop(dropTree, "root");
     // the first child in drag-source tree is no longer branch1.1 but branch1.2
     DefaultMutableTreeNode branch1 = firstChildInRoot();
