@@ -26,11 +26,14 @@ import static org.fest.swing.driver.JTreeChildrenShowUpCondition.untilChildrenSh
 import static org.fest.swing.driver.JTreeClearSelectionTask.clearSelectionOf;
 import static org.fest.swing.driver.JTreeEditableQuery.isEditable;
 import static org.fest.swing.driver.JTreeExpandPathTask.expandTreePath;
-import static org.fest.swing.driver.JTreeMatchingPathQuery.*;
+import static org.fest.swing.driver.JTreeMatchingPathQuery.matchingPathFor;
+import static org.fest.swing.driver.JTreeMatchingPathQuery.matchingPathWithRootIfInvisible;
+import static org.fest.swing.driver.JTreeMatchingPathQuery.verifyJTreeIsReadyAndFindMatchingPath;
 import static org.fest.swing.driver.JTreeToggleExpandStateTask.toggleExpandState;
 import static org.fest.swing.edt.GuiActionRunner.execute;
 import static org.fest.swing.exception.ActionFailedException.actionFailure;
 import static org.fest.swing.timing.Pause.pause;
+import static org.fest.swing.util.Arrays.isEmptyIntArray;
 import static org.fest.util.Arrays.format;
 import static org.fest.util.Arrays.isEmpty;
 import static org.fest.util.Objects.areEqual;
@@ -399,7 +402,7 @@ public class JTreeDriver extends JComponentDriver {
 
   private void validateRows(final int[] rows) {
     if (rows == null) throw new NullPointerException("The array of rows should not be null");
-    if (isEmptyArray(rows)) throw new IllegalArgumentException("The array of rows should not be empty");
+    if (isEmptyIntArray(rows)) throw new IllegalArgumentException("The array of rows should not be empty");
   }
 
   @RunsInEDT
@@ -723,14 +726,12 @@ public class JTreeDriver extends JComponentDriver {
   private static void assertHasSelection(final JTree tree, final int[] rows, final JTreePathFinder pathFinder,
       final Description errorMessage) {
     int[] selectionRows = tree.getSelectionRows();
-    if (isEmptyArray(selectionRows)) failNoSelection(errorMessage);
+    if (isEmptyIntArray(selectionRows)) failNoSelection(errorMessage);
     sort(rows);
     if (Arrays.equals(selectionRows, rows)) return;
     fail(concat(
         "[", errorMessage.value(), "] expecting selection:<", format(rows), "> but was:<", format(selectionRows), ">"));
   }
-
-  private static boolean isEmptyArray(int[] array) { return array == null || array.length == 0; }
 
   /**
    * Asserts that the given <code>{@link JTree}</code>'s selected paths are equal to the given one.

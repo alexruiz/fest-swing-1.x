@@ -126,5 +126,14 @@ public final class Arrays {
     return copy;
   }
 
+  /**
+   * Indicates whether the given array is <code>null</code> or empty.
+   * @param array the array to check.
+   * @return <code>true</code> if the given array is <code>null</code> or empty; <code>false</code> otherwise.
+   */
+  public static boolean isEmptyIntArray(int[] array) {
+    return array == null || array.length == 0;
+  }
+
   private Arrays() {}
 }

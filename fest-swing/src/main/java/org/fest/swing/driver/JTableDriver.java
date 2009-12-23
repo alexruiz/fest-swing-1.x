@@ -22,7 +22,10 @@ import static org.fest.swing.driver.CommonValidations.validateCellReader;
 import static org.fest.swing.driver.CommonValidations.validateCellWriter;
 import static org.fest.swing.driver.ComponentStateValidator.validateIsEnabledAndShowing;
 import static org.fest.swing.driver.JTableCellEditableQuery.isCellEditable;
-import static org.fest.swing.driver.JTableCellValidator.*;
+import static org.fest.swing.driver.JTableCellValidator.validateCellIndices;
+import static org.fest.swing.driver.JTableCellValidator.validateIndices;
+import static org.fest.swing.driver.JTableCellValidator.validateNotNull;
+import static org.fest.swing.driver.JTableCellValidator.validateRowIndex;
 import static org.fest.swing.driver.JTableColumnByIdentifierQuery.columnIndexByIdentifier;
 import static org.fest.swing.driver.JTableColumnCountQuery.columnCountOf;
 import static org.fest.swing.driver.JTableContentsQuery.tableContents;
@@ -34,12 +37,16 @@ import static org.fest.swing.driver.TextAssert.verifyThat;
 import static org.fest.swing.edt.GuiActionRunner.execute;
 import static org.fest.swing.exception.ActionFailedException.actionFailure;
 import static org.fest.swing.util.Arrays.equal;
+import static org.fest.swing.util.Arrays.isEmptyIntArray;
 import static org.fest.util.Arrays.format;
 import static org.fest.util.Arrays.isEmpty;
 import static org.fest.util.Strings.concat;
 import static org.fest.util.Strings.quote;
 
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Font;
+import java.awt.Point;
 import java.util.regex.Pattern;
 
 import javax.swing.JPopupMenu;
@@ -59,7 +66,10 @@ import org.fest.swing.edt.GuiQuery;
 import org.fest.swing.edt.GuiTask;
 import org.fest.swing.exception.ActionFailedException;
 import org.fest.swing.exception.ComponentLookupException;
-import org.fest.swing.util.*;
+import org.fest.swing.util.Arrays;
+import org.fest.swing.util.Pair;
+import org.fest.swing.util.PatternTextMatcher;
+import org.fest.swing.util.StringTextMatcher;
 
 /**
  * Understands functional testing of <code>{@link JTable}</code>s:
@@ -370,24 +380,9 @@ public class JTableDriver extends JComponentDriver {
    */
   @RunsInEDT
   public void selectCell(JTable table, TableCell cell) {
-    Pair<Boolean, Point> cellSelectionInfo = cellSelectionInfo(table, cell, location);
-    if (cellSelectionInfo.i) return; // cell already selected
-    robot.click(table, cellSelectionInfo.ii, LEFT_BUTTON, 1);
-  }
-
-  @RunsInEDT
-  private static Pair<Boolean, Point> cellSelectionInfo(final JTable table, final TableCell cell, final JTableLocation location) {
     validateNotNull(cell);
-    return execute(new GuiQuery<Pair<Boolean, Point>>() {
-      protected Pair<Boolean, Point> executeInEDT() {
-        if (isCellSelected(table, cell.row, cell.column)) return new Pair<Boolean, Point>(true, null);
-        scrollToCell(table, cell, location);
-        Point pointAtCell = location.pointAt(table, cell.row, cell.column);
-        return new Pair<Boolean, Point>(false, pointAtCell);
-      }
-    });
+    selectCell(table, cell.row, cell.column);
   }
-
 
   /**
    * Clicks the given cell, using the specified mouse button, the given number of times.
@@ -816,7 +811,7 @@ public class JTableDriver extends JComponentDriver {
    */
   public int selectedRow(JTable table) {
     int[] selectedRows = selectedRowsOf(table);
-    if (selectedRows == null || selectedRows.length == 0)
+    if (isEmptyIntArray(selectedRows))
       throw new IllegalStateException("The JTable does not have any selected row(s)");
     if (selectedRows.length > 1)
       throw new IllegalStateException(concat(
@@ -831,5 +826,58 @@ public class JTableDriver extends JComponentDriver {
         return table.getSelectedRows();
       }
     });
+  }
+
+  /**
+   * Simulates a user selecting the given rows in the given <code>{@link JTable}</code>.
+   * @param table the target <code>JTable</code>.
+   * @param rows the indices of the row to select.
+   * @throws NullPointerException if the given array of indices is <code>null</code>.
+   * @throws IllegalArgumentException if the given array of indices is empty.
+   * @throws IllegalStateException if the <code>JTable</code> is disabled.
+   * @throws IllegalStateException if the <code>JTable</code> is not showing on the screen.
+   * @throws IndexOutOfBoundsException if any of the given indices is negative, or equal to or greater than the number
+   * of rows in the <code>JTable</code>.
+   * @since 1.2
+   */
+  public void selectRows(final JTable table, final int... rows) {
+    if (rows == null) throw new NullPointerException("The array of row indices should not be null");
+    if (isEmptyIntArray(rows)) throw new IllegalArgumentException("The array of row indices should not be empty");
+    new MultipleSelectionTemplate(robot) {
+      int elementCount() {
+        return rows.length;
+      }
+
+      void selectElement(int index) {
+        selectCell(table, rows[index], 0);
+      }
+    }.multiSelect();
+  }
+
+  @RunsInEDT
+  private void selectCell(JTable table, int row, int column) {
+    Pair<Boolean, Point> cellSelectionInfo = cellSelectionInfo(table, row, column, location);
+    if (cellSelectionInfo.i) return; // cell already selected
+    robot.click(table, cellSelectionInfo.ii, LEFT_BUTTON, 1);
+  }
+
+  @RunsInEDT
+  private static Pair<Boolean, Point> cellSelectionInfo(final JTable table, final int row, final int column,
+      final JTableLocation location) {
+    return execute(new GuiQuery<Pair<Boolean, Point>>() {
+      protected Pair<Boolean, Point> executeInEDT() {
+        if (isCellSelected(table, row, column)) return new Pair<Boolean, Point>(true, null);
+        scrollToCell(table, row, column, location);
+        Point pointAtCell = location.pointAt(table, row, column);
+        return new Pair<Boolean, Point>(false, pointAtCell);
+      }
+    });
+  }
+
+  @RunsInCurrentThread
+  private static void scrollToCell(final JTable table, final int row, final int column, final JTableLocation location) {
+    validateIsEnabledAndShowing(table);
+    validateIndices(table, row, column);
+    table.scrollRectToVisible(location.cellBounds(table, row, column));
   }
 }

@@ -18,7 +18,9 @@ import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.driver.ComponentDriver.propertyName;
 import static org.fest.util.Strings.concat;
 
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Point;
 import java.util.regex.Pattern;
 
 import javax.swing.JTable;
@@ -27,12 +29,18 @@ import javax.swing.table.JTableHeader;
 import org.fest.assertions.Description;
 import org.fest.swing.cell.JTableCellReader;
 import org.fest.swing.cell.JTableCellWriter;
-import org.fest.swing.core.*;
+import org.fest.swing.core.KeyPressInfo;
+import org.fest.swing.core.MouseButton;
+import org.fest.swing.core.MouseClickInfo;
 import org.fest.swing.core.Robot;
 import org.fest.swing.data.TableCell;
 import org.fest.swing.data.TableCellByColumnId;
-import org.fest.swing.driver.*;
-import org.fest.swing.exception.*;
+import org.fest.swing.driver.BasicJTableCellReader;
+import org.fest.swing.driver.BasicJTableCellWriter;
+import org.fest.swing.driver.JTableDriver;
+import org.fest.swing.exception.ActionFailedException;
+import org.fest.swing.exception.ComponentLookupException;
+import org.fest.swing.exception.WaitTimedOutError;
 import org.fest.swing.timing.Timeout;
 
 /**
@@ -285,6 +293,23 @@ public class JTableFixture extends ComponentFixture<JTable> implements CommonCom
    */
   public JTableFixture selectCells(TableCell... cells) {
     driver.selectCells(target, cells);
+    return this;
+  }
+
+
+  /**
+   * Simulates a user selecting the given rows in this fixture's <code>{@link JTable}</code>.
+   * @param rows the indices of the row to select.
+   * @return this fixture.
+   * @throws NullPointerException if the given array of indices is <code>null</code>.
+   * @throws IllegalArgumentException if the given array of indices is empty.
+   * @throws IllegalStateException if this fixture's <code>JTable</code> is disabled.
+   * @throws IllegalStateException if this fixture's <code>JTable</code> is not showing on the screen.
+   * @throws IndexOutOfBoundsException if any of the given indices is out of bounds.
+   * @since 1.2
+   */
+  public JTableFixture selectRows(int... rows) {
+    driver.selectRows(target, rows);
     return this;
   }
 

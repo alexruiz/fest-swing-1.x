@@ -26,8 +26,13 @@ import static org.fest.swing.driver.JListContentQuery.contents;
 import static org.fest.swing.driver.JListItemCountQuery.itemCountIn;
 import static org.fest.swing.driver.JListItemIndexValidator.validateIndices;
 import static org.fest.swing.driver.JListItemValueQuery.itemValue;
-import static org.fest.swing.driver.JListMatchingItemQuery.*;
-import static org.fest.swing.driver.JListScrollToItemTask.*;
+import static org.fest.swing.driver.JListMatchingItemQuery.centerOfMatchingItemCell;
+import static org.fest.swing.driver.JListMatchingItemQuery.matchingItemIndex;
+import static org.fest.swing.driver.JListMatchingItemQuery.matchingItemIndices;
+import static org.fest.swing.driver.JListMatchingItemQuery.matchingItemValues;
+import static org.fest.swing.driver.JListScrollToItemTask.ITEM_NOT_FOUND;
+import static org.fest.swing.driver.JListScrollToItemTask.scrollToItem;
+import static org.fest.swing.driver.JListScrollToItemTask.scrollToItemIfNotSelectedYet;
 import static org.fest.swing.driver.JListSelectedIndexQuery.selectedIndexOf;
 import static org.fest.swing.driver.JListSelectionIndicesQuery.selectedIndices;
 import static org.fest.swing.driver.JListSelectionValueQuery.NO_SELECTION_VALUE;
@@ -35,6 +40,7 @@ import static org.fest.swing.driver.JListSelectionValueQuery.singleSelectionValu
 import static org.fest.swing.driver.JListSelectionValuesQuery.selectionValues;
 import static org.fest.swing.driver.TextAssert.verifyThat;
 import static org.fest.swing.edt.GuiActionRunner.execute;
+import static org.fest.swing.util.Arrays.isEmptyIntArray;
 import static org.fest.util.Arrays.format;
 import static org.fest.util.Strings.concat;
 
@@ -52,8 +58,13 @@ import org.fest.swing.core.MouseButton;
 import org.fest.swing.core.Robot;
 import org.fest.swing.edt.GuiQuery;
 import org.fest.swing.edt.GuiTask;
-import org.fest.swing.exception.*;
-import org.fest.swing.util.*;
+import org.fest.swing.exception.ActionFailedException;
+import org.fest.swing.exception.ComponentLookupException;
+import org.fest.swing.exception.LocationUnavailableException;
+import org.fest.swing.util.Pair;
+import org.fest.swing.util.PatternTextMatcher;
+import org.fest.swing.util.StringTextMatcher;
+import org.fest.swing.util.TextMatcher;
 import org.fest.swing.util.Range.From;
 import org.fest.swing.util.Range.To;
 
@@ -452,10 +463,8 @@ public class JListDriver extends JComponentDriver {
 
   private void validateArrayOfIndices(int[] indices) {
     if (indices == null) throw new NullPointerException("The array of indices should not be null");
-    if (isEmptyArray(indices)) throw new IllegalArgumentException("The array of indices should not be empty");
+    if (isEmptyIntArray(indices)) throw new IllegalArgumentException("The array of indices should not be empty");
   }
-
-  private boolean isEmptyArray(int[] array) { return array == null || array.length == 0; }
 
   /**
    * Verifies that the <code>{@link JList}</code> does not have a selection.

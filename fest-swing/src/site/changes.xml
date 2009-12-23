@@ -75,6 +75,9 @@
       <action dev="alexruiz" type="add" issue="FEST-266">
         Added method 'rightClickRow(int)' to JTreeFixture.
       </action>
+      <action dev="alexruiz" type="add" issue="FEST-269" due-to="Florian SIMON">
+        Added method 'selectRows(int...)' to JTableFixture.
+      </action>
       <action dev="alexruiz" type="fix" issue="FEST-274">
         Method 'requireSelection' in JComboBoxFixture now uses the value in JComboBox#getSelectedItem if the
         JComboBox is editable and does not have any selected index.
