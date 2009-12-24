@@ -22,6 +22,7 @@ import static org.fest.util.Collections.list;
 
 import java.util.Collection;
 
+import org.fest.swing.driver.JTableColumnByIdentifierQuery;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;

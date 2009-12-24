@@ -21,6 +21,7 @@ import static org.fest.swing.test.core.MethodInvocations.Args.args;
 import javax.swing.table.TableColumn;
 
 import org.fest.swing.annotation.RunsInEDT;
+import org.fest.swing.driver.JTableColumnByIdentifierQuery;
 import org.fest.swing.edt.GuiQuery;
 import org.fest.swing.test.core.MethodInvocations;
 import org.fest.swing.test.core.RobotBasedTestCase;

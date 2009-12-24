@@ -18,6 +18,7 @@ package org.fest.swing.driver;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.test.core.MethodInvocations.Args.args;
 
+import org.fest.swing.driver.JTableColumnByIdentifierQuery;
 import org.junit.Test;
 
 /**

@@ -1,0 +1,40 @@
+/*
+ * Created on Dec 23, 2009
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
+ * the License.
+ *
+ * Copyright @2009 the original author or authors.
+ */
+package org.fest.swing.data;
+
+import javax.swing.JTable;
+
+import org.fest.swing.annotation.RunsInEDT;
+import org.fest.swing.exception.ActionFailedException;
+
+/**
+ * Understands finding a cell in a <code>{@link JTable}</code>.
+ *
+ * @author Alex Ruiz
+ */
+public interface TableCellFinder {
+
+  /**
+   * Finds a cell in the given <code>{@link JTable}</code> based on some search criteria specified by this finder.
+   * Implementations of this method <strong>should</strong> access the given <code>JTable</code> in the event dispatch
+   * thread.
+   * @param table the target <code>JTable</code>.
+   * @return the cell found, if any.
+   * @throws ActionFailedException if a matching cell could not be found.
+   */
+  @RunsInEDT
+  TableCell findCell(JTable table);
+}

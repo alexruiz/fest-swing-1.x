@@ -34,7 +34,7 @@ import org.fest.swing.core.MouseButton;
 import org.fest.swing.core.MouseClickInfo;
 import org.fest.swing.core.Robot;
 import org.fest.swing.data.TableCell;
-import org.fest.swing.data.TableCellByColumnId;
+import org.fest.swing.data.TableCellFinder;
 import org.fest.swing.driver.BasicJTableCellReader;
 import org.fest.swing.driver.BasicJTableCellWriter;
 import org.fest.swing.driver.JTableDriver;
@@ -176,15 +176,15 @@ public class JTableFixture extends ComponentFixture<JTable> implements CommonCom
   }
 
   /**
-   * Returns a fixture that manages the table cell specified by the given row index and column name.
-   * @param cell the cell of interest.
-   * @return a fixture that manages the table cell specified by the given row index and column name.
-   * @throws NullPointerException if the cell is <code>null</code>.
-   * @throws IndexOutOfBoundsException if the row index in the given cell is out of bounds.
-   * @throws ActionFailedException if a column with a matching name could not be found.
+   * Returns a fixture that manages the table cell found by the given <code>{@link TableCellFinder}</code>.
+   * @param cellFinder knows how to find a cell.
+   * @return a fixture that manages the found table cell.
+   * @throws NullPointerException if the <code>TableCellFinder</code> is <code>null</code>.
+   * @throws ActionFailedException if a matching cell could not be found.
+   * @throws IndexOutOfBoundsException if the row or column indices in the found cell are out of bounds.
    */
-  public JTableCellFixture cell(TableCellByColumnId cell) {
-    return new JTableCellFixture(this, driver.cell(target, cell));
+  public JTableCellFixture cell(TableCellFinder cellFinder) {
+    return new JTableCellFixture(this, driver.cell(target, cellFinder));
   }
 
   /**

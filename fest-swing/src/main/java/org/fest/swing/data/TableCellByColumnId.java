@@ -16,11 +16,19 @@
 package org.fest.swing.data;
 
 import static java.lang.String.valueOf;
-import static org.fest.util.Objects.*;
+import static org.fest.swing.edt.GuiActionRunner.execute;
+import static org.fest.swing.exception.ActionFailedException.actionFailure;
+import static org.fest.util.Objects.HASH_CODE_PRIME;
+import static org.fest.util.Objects.areEqual;
+import static org.fest.util.Objects.hashCodeFor;
 import static org.fest.util.Strings.concat;
 import static org.fest.util.Strings.quote;
 
 import javax.swing.JTable;
+
+import org.fest.swing.annotation.RunsInEDT;
+import org.fest.swing.edt.GuiQuery;
+import org.fest.swing.exception.ActionFailedException;
 
 /**
  * Understands a cell in a <code>{@link JTable}</code>.
@@ -34,7 +42,7 @@ import javax.swing.JTable;
  *
  * @author Alex Ruiz
  */
-public class TableCellByColumnId {
+public class TableCellByColumnId implements TableCellFinder {
 
   public final int row;
   public final Object columnId;
@@ -77,6 +85,35 @@ public class TableCellByColumnId {
   protected TableCellByColumnId(int row, Object columnId) {
     this.row = row;
     this.columnId = columnId;
+  }
+
+  /**
+   * Finds a cell in the given <code>{@link JTable}</code> that has a matching row index and column id.
+   * @param table the target <code>JTable</code>.
+   * @return the cell found, if any.
+   * @throws ActionFailedException if a matching cell could not be found.
+   */
+  @RunsInEDT
+  public TableCell findCell(JTable table) {
+    return findCell(table, row, columnId);
+  }
+
+  @RunsInEDT
+  private static TableCell findCell(final JTable table, final int row, final Object columnId) {
+    return execute(new GuiQuery<TableCell>() {
+      protected TableCell executeInEDT() {
+        try {
+          int column = table.convertColumnIndexToView(table.getColumn(columnId).getModelIndex());
+          return new TableCell(row, column);
+        } catch (IllegalArgumentException e) {
+          throw failColumnIndexNotFound(columnId);
+        }
+      }
+    });
+  }
+
+  private static ActionFailedException failColumnIndexNotFound(Object columnId) {
+    throw actionFailure(concat("Unable to find a column with id ", quote(columnId)));
   }
 
   /** ${@inheritDoc} */

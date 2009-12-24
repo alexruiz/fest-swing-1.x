@@ -17,7 +17,6 @@ package org.fest.swing.driver;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.assertions.Fail.fail;
 import static org.fest.swing.core.MouseButton.LEFT_BUTTON;
-import static org.fest.swing.data.TableCell.row;
 import static org.fest.swing.driver.CommonValidations.validateCellReader;
 import static org.fest.swing.driver.CommonValidations.validateCellWriter;
 import static org.fest.swing.driver.ComponentStateValidator.validateIsEnabledAndShowing;
@@ -25,7 +24,6 @@ import static org.fest.swing.driver.JTableCellEditableQuery.isCellEditable;
 import static org.fest.swing.driver.JTableCellValidator.validateCellIndices;
 import static org.fest.swing.driver.JTableCellValidator.validateIndices;
 import static org.fest.swing.driver.JTableCellValidator.validateNotNull;
-import static org.fest.swing.driver.JTableCellValidator.validateRowIndex;
 import static org.fest.swing.driver.JTableColumnByIdentifierQuery.columnIndexByIdentifier;
 import static org.fest.swing.driver.JTableColumnCountQuery.columnCountOf;
 import static org.fest.swing.driver.JTableContentsQuery.tableContents;
@@ -61,7 +59,7 @@ import org.fest.swing.cell.JTableCellWriter;
 import org.fest.swing.core.MouseButton;
 import org.fest.swing.core.Robot;
 import org.fest.swing.data.TableCell;
-import org.fest.swing.data.TableCellByColumnId;
+import org.fest.swing.data.TableCellFinder;
 import org.fest.swing.edt.GuiQuery;
 import org.fest.swing.edt.GuiTask;
 import org.fest.swing.exception.ActionFailedException;
@@ -138,33 +136,20 @@ public class JTableDriver extends JComponentDriver {
   }
 
   /**
-   * Returns a cell from the given <code>{@link JTable}</code> whose row index matches the given one and column id
-   * matches the given one.
+   * Returns a cell from the given <code>{@link JTable}</code> using the given cell finder.
    * @param table the target <code>JTable</code>.
-   * @param cell contains the given row index and column id to match.
-   * @return a cell from the given <code>JTable</code> whose row index matches the given one and column id
-   * matches the given one.
-   * @throws NullPointerException if <code>cell</code> is <code>null</code>.
-   * @throws IndexOutOfBoundsException if the row index in the given cell is out of bounds.
-   * @throws ActionFailedException if a column with a matching id could not be found.
+   * @param cellFinder knows how to find a cell.
+   * @return the found cell, if any.
+   * @throws NullPointerException if <code>cellFinder</code> is <code>null</code>.
+   * @throws IndexOutOfBoundsException if the row or column indices in the found cell are out of bounds.
+   * @throws ActionFailedException if a matching cell could not be found.
    */
   @RunsInEDT
-  public TableCell cell(JTable table, TableCellByColumnId cell) {
-    if (cell == null)
-      throw new NullPointerException("The instance of TableCellByColumnId should not be null");
-    return findCell(table, cell.row, cell.columnId);
-  }
-
-  @RunsInEDT
-  private static TableCell findCell(final JTable table, final int row, final Object columnId) {
-    return execute(new GuiQuery<TableCell>() {
-      protected TableCell executeInEDT() {
-        validateRowIndex(table, row);
-        int column = columnIndexByIdentifier(table, columnId);
-        if (column < 0) failColumnIndexNotFound(columnId);
-        return row(row).column(column);
-      }
-    });
+  public TableCell cell(JTable table, TableCellFinder cellFinder) {
+    if (cellFinder == null) throw new NullPointerException("The cell finder to use should not be null");
+    TableCell cell = cellFinder.findCell(table);
+    validateCellIndices(table, cell);
+    return cell;
   }
 
   /**
