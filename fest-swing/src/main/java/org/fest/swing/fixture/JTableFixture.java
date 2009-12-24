@@ -560,6 +560,19 @@ public class JTableFixture extends ComponentFixture<JTable> implements CommonCom
   }
 
   /**
+   * Asserts that the indices of the selected rows in fixture's <code>{@link JTable}</code> are equal to the given ones.
+   * @param rows the indices of the rows expected to be selected.
+   * @return this fixture.
+   * @throws AssertionError if the selected rows in this fixture's <code>JTable</code> (if any) are not equal to the
+   * given ones.
+   * @since 1.2
+   */
+  public JTableFixture requireSelectedRows(int[] rows) {
+    driver.requireSelectedRows(target, rows);
+    return this;
+  }
+
+  /**
    * Asserts that this fixture's <code>{@link JTable}</code> has the given number of columns.
    * @param expected the expected number of columns.
    * @return this fixture.
@@ -762,10 +775,9 @@ public class JTableFixture extends ComponentFixture<JTable> implements CommonCom
   }
 
   /**
-   * Returns the index of the selected row in this fixture's <code>{@link JTable}</code>.
-   * @return the index of the selected row in this fixture's <code>JTable</code>.
-   * @throws IllegalStateException if this fixture's <code>JTable</code> does not have a selected row, or if it has
-   * more than one selected rows.
+   * Returns the index of the first selected row in this fixture's <code>{@link JTable}</code>.
+   * @return the index of the first selected row in this fixture's <code>JTable</code>.
+   * @throws AssertionError if this fixture's <code>JTable</code> does not have any selected rows.
    * @since 1.2
    */
   public int selectedRow() {

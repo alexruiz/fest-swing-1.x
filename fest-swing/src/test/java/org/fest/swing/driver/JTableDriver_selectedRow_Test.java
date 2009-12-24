@@ -19,15 +19,11 @@ import static javax.swing.ListSelectionModel.MULTIPLE_INTERVAL_SELECTION;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.edt.GuiActionRunner.execute;
 import static org.fest.swing.test.core.CommonAssertions.failWhenExpectingException;
-import static org.fest.swing.util.Range.from;
-import static org.fest.swing.util.Range.to;
 
 import javax.swing.JTable;
 
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiTask;
-import org.fest.swing.util.Range.From;
-import org.fest.swing.util.Range.To;
 import org.junit.Test;
 
 /**
@@ -56,26 +52,10 @@ public class JTableDriver_selectedRow_Test extends JTableDriver_TestCase {
     try {
       driver.selectedRow(table);
       failWhenExpectingException();
-    } catch (IllegalStateException e) {
-      assertThat(e.getMessage()).isEqualTo("The JTable does not have any selected row(s)");
+    } catch (AssertionError e) {
+      assertThat(e.getMessage()).contains("property:'selectedRow'")
+                                .contains("actual value:<-1> should be greater than or equal to:<0>");
     }
-  }
-
-  @Test
-  public void should_throw_error_if_JTable_has_more_than_one_selected_row() {
-    selectRows(from(0), to(2));
-    try {
-      driver.selectedRow(table);
-      failWhenExpectingException();
-    } catch (IllegalStateException e) {
-      assertThat(e.getMessage()).isEqualTo("Expecting JTable to have only one selected row, but had:<[0, 1, 2]>");
-    }
-  }
-
-  @RunsInEDT
-  private void selectRows(From from, To to) {
-    selectRows(table, from.value, to.value);
-    robot.waitForIdle();
   }
 
   @RunsInEDT

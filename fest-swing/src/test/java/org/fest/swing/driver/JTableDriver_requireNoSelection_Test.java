@@ -26,7 +26,7 @@ import org.junit.Test;
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
-public class JTableDriver_requireSelection_Test extends JTableDriver_TestCase {
+public class JTableDriver_requireNoSelection_Test extends JTableDriver_TestCase {
 
   @Test
   public void should_pass_if_JTable_does_not_have_selection() {

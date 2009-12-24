@@ -802,21 +802,25 @@ public class JTableDriver extends JComponentDriver {
   }
 
   /**
-   * Returns the index of the selected row in the given <code>{@link JTable}</code>.
+   * Returns the index of the first selected row in the given <code>{@link JTable}</code>.
    * @param table the target <code>JTable</code>.
-   * @return the index of the selected row in the <code>JTable</code>.
-   * @throws IllegalStateException if the <code>JTable</code> does not have a selected row, or if it has more than one
-   * selected rows.
+   * @return the index of the first selected row in the <code>JTable</code>.
+   * @throws AssertionError if the <code>JTable</code> does not have any selection.
    * @since 1.2
    */
   public int selectedRow(JTable table) {
-    int[] selectedRows = selectedRowsOf(table);
-    if (isEmptyIntArray(selectedRows))
-      throw new IllegalStateException("The JTable does not have any selected row(s)");
-    if (selectedRows.length > 1)
-      throw new IllegalStateException(concat(
-          "Expecting JTable to have only one selected row, but had:<", format(selectedRows), ">"));
-    return selectedRows[0];
+    int selectedRow = selectedRowOf(table);
+    assertThat(selectedRow).as(propertyName(table, "selectedRow")).isGreaterThanOrEqualTo(0);
+    return selectedRow;
+  }
+
+  @RunsInEDT
+  private static int selectedRowOf(final JTable table) {
+    return execute(new GuiQuery<Integer>() {
+      protected Integer executeInEDT() {
+        return table.getSelectedRow();
+      }
+    });
   }
 
   @RunsInEDT
@@ -840,6 +844,7 @@ public class JTableDriver extends JComponentDriver {
    * of rows in the <code>JTable</code>.
    * @since 1.2
    */
+  @RunsInEDT
   public void selectRows(final JTable table, final int... rows) {
     if (rows == null) throw new NullPointerException("The array of row indices should not be null");
     if (isEmptyIntArray(rows)) throw new IllegalArgumentException("The array of row indices should not be empty");
@@ -879,5 +884,19 @@ public class JTableDriver extends JComponentDriver {
     validateIsEnabledAndShowing(table);
     validateIndices(table, row, column);
     table.scrollRectToVisible(location.cellBounds(table, row, column));
+  }
+
+  /**
+   * Asserts that the indices of the selected rows in the given <code>{@link JTable}</code> are equal to the given ones.
+   * @param table the target <code>JTable</code>.
+   * @param rows the indices of the rows expected to be selected.
+   * @throws AssertionError if the selected rows in the given <code>JTable</code> (if any) are not equal to the given
+   * ones.
+   * @since 1.2
+   */
+  @RunsInEDT
+  public void requireSelectedRows(JTable table, int[] rows) {
+    // TODO Auto-generated method stub
+
   }
 }
