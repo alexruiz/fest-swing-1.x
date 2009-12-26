@@ -57,6 +57,12 @@ public class JTableDriver_requireSelectedRows_Test extends JTableDriver_TestCase
     driver.requireSelectedRows(table, 8, 7, 6);
   }
 
+  @Test
+  public void should_pass_if_expected_selected_rows_are_subset_of_all_selected_rows() {
+    selectRows(6, 8);
+    driver.requireSelectedRows(table, 6, 7);
+  }
+
   @RunsInEDT
   private void selectRows(int from, int to) {
     selectRows(table, from, to);

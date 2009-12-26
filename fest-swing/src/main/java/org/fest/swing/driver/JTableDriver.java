@@ -842,17 +842,17 @@ public class JTableDriver extends JComponentDriver {
   }
 
   /**
-   * Asserts that the indices of the selected rows in the given <code>{@link JTable}</code> are equal to the given ones.
+   * Asserts that the set of selected rows in the given <code>{@link JTable}</code> contains to the given row indices.
    * @param table the target <code>JTable</code>.
    * @param rows the indices of the rows expected to be selected.
-   * @throws AssertionError if the selected rows in the given <code>JTable</code> (if any) are not equal to the given
-   * ones.
+   * @throws AssertionError if the sets of selected rows in the given <code>JTable</code> (if any) do not contain the
+   * given row indices.
    * @since 1.2
    */
   @RunsInEDT
   public void requireSelectedRows(JTable table, int... rows) {
     int[] selectedRows = selectedRowsOf(table);
-    assertThat(selectedRows).as(propertyName(table, SELECTED_ROWS_PROPERTY)).containsOnly(rows);
+    assertThat(selectedRows).as(propertyName(table, SELECTED_ROWS_PROPERTY)).contains(rows);
   }
 
   @RunsInEDT
