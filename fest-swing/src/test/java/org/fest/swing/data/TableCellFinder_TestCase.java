@@ -43,7 +43,10 @@ public abstract class TableCellFinder_TestCase extends RobotBasedTestCase {
   @Override protected final void onSetUp() {
     window = MyWindow.createNew(getClass());
     table = window.table;
+    extraSetUp();
   }
+
+  void extraSetUp() {}
 
   static class MyWindow extends TestWindow {
     private static final long serialVersionUID = 1L;

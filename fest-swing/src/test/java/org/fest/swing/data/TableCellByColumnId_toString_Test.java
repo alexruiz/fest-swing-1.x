@@ -27,14 +27,14 @@ import org.junit.Test;
  */
 public class TableCellByColumnId_toString_Test {
 
-  private TableCellByColumnId cell;
+  private TableCellByColumnId finder;
 
   @Before public void setUp() {
-    cell = TableCellByColumnId.row(6).columnId("id");
+    finder = TableCellByColumnId.row(6).columnId("id");
   }
 
   @Test
   public void should_implement_toString() {
-    assertThat(cell.toString()).isEqualTo("[row=6, columnId='id']");
+    assertThat(finder.toString()).isEqualTo("org.fest.swing.data.TableCellByColumnId[row=6, columnId='id']");
   }
 }

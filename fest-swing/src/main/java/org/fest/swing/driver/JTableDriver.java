@@ -24,7 +24,6 @@ import static org.fest.swing.driver.JTableCellEditableQuery.isCellEditable;
 import static org.fest.swing.driver.JTableCellValidator.validateCellIndices;
 import static org.fest.swing.driver.JTableCellValidator.validateIndices;
 import static org.fest.swing.driver.JTableCellValidator.validateNotNull;
-import static org.fest.swing.driver.JTableColumnByIdentifierQuery.columnIndexByIdentifier;
 import static org.fest.swing.driver.JTableColumnCountQuery.columnCountOf;
 import static org.fest.swing.driver.JTableContentsQuery.tableContents;
 import static org.fest.swing.driver.JTableHasSelectionQuery.hasSelection;
@@ -34,6 +33,7 @@ import static org.fest.swing.driver.JTableSingleRowCellSelectedQuery.isCellSelec
 import static org.fest.swing.driver.TextAssert.verifyThat;
 import static org.fest.swing.edt.GuiActionRunner.execute;
 import static org.fest.swing.exception.ActionFailedException.actionFailure;
+import static org.fest.swing.query.JTableColumnByIdentifierQuery.columnIndexByIdentifier;
 import static org.fest.swing.util.Arrays.equal;
 import static org.fest.swing.util.Arrays.isEmptyIntArray;
 import static org.fest.util.Arrays.format;
@@ -784,28 +784,6 @@ public class JTableDriver extends JComponentDriver {
   @RunsInEDT
   public void requireColumnCount(JTable table, int columnCount) {
     assertThat(columnCountOf(table)).as(propertyName(table, "columnCount")).isEqualTo(columnCount);
-  }
-
-  /**
-   * Returns the index of the first selected row in the given <code>{@link JTable}</code>.
-   * @param table the target <code>JTable</code>.
-   * @return the index of the first selected row in the <code>JTable</code>.
-   * @throws AssertionError if the <code>JTable</code> does not have any selection.
-   * @since 1.2
-   */
-  public int selectedRow(JTable table) {
-    int selectedRow = selectedRowOf(table);
-    assertThat(selectedRow).as(propertyName(table, "selectedRow")).isGreaterThanOrEqualTo(0);
-    return selectedRow;
-  }
-
-  @RunsInEDT
-  private static int selectedRowOf(final JTable table) {
-    return execute(new GuiQuery<Integer>() {
-      protected Integer executeInEDT() {
-        return table.getSelectedRow();
-      }
-    });
   }
 
   @RunsInEDT

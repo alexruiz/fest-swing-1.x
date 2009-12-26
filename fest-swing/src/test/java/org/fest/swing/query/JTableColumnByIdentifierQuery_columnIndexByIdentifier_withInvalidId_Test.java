@@ -13,12 +13,12 @@
  * 
  * Copyright @2008-2009 the original author or authors.
  */
-package org.fest.swing.driver;
+package org.fest.swing.query;
 
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.test.core.MethodInvocations.Args.args;
 
-import org.fest.swing.driver.JTableColumnByIdentifierQuery;
+import org.fest.swing.query.JTableColumnByIdentifierQuery;
 import org.junit.Test;
 
 /**

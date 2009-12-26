@@ -18,9 +18,7 @@ package org.fest.swing.data;
 import static java.lang.String.valueOf;
 import static org.fest.swing.edt.GuiActionRunner.execute;
 import static org.fest.swing.exception.ActionFailedException.actionFailure;
-import static org.fest.util.Objects.HASH_CODE_PRIME;
-import static org.fest.util.Objects.areEqual;
-import static org.fest.util.Objects.hashCodeFor;
+import static org.fest.swing.query.JTableColumnByIdentifierQuery.columnIndexByIdentifier;
 import static org.fest.util.Strings.concat;
 import static org.fest.util.Strings.quote;
 
@@ -31,11 +29,11 @@ import org.fest.swing.edt.GuiQuery;
 import org.fest.swing.exception.ActionFailedException;
 
 /**
- * Understands a cell in a <code>{@link JTable}</code>.
+ * Understands lookup of a cell in a <code>{@link JTable}</code> by column identifier.
  * <p>
  * Example:
  * <pre>
- * // import static org.fest.swing.fixture.TableCellByColumnId.row;
+ * // import static org.fest.swing.data.TableCellByColumnId.row;
  * JTableCellFixture cell = dialog.table("records").cell({@link TableCellByColumnId#row(int) row}(3).columnId("firstColumn"));
  * </pre>
  * </p>
@@ -52,11 +50,11 @@ public class TableCellByColumnId implements TableCellFinder {
    * <p>
    * Example:
    * <pre>
-   * // import static org.fest.swing.fixture.TableCellByColumnId.row;
+   * // import static org.fest.swing.data.TableCellByColumnId.row;
    * TableCellByColumnId cell = row(5).columnId("hobbyColumn");
    * </pre>
    * </p>
-   * @param row the row index of the table cell to create.
+   * @param row the row index of the table cell to find.
    * @return the created builder.
    */
   public static TableCellBuilder row(int row) { return new TableCellBuilder(row); }
@@ -72,10 +70,10 @@ public class TableCellByColumnId implements TableCellFinder {
     TableCellBuilder(int row) { this.row = row; }
 
     /**
-     * Creates a new table cell using the row index specified in <code>{@link TableCellBuilder#row(int)}</code> and the
-     * column index specified as the argument in this method.
-     * @param columnId the name of the column in the table cell to create.
-     * @return the created table cell.
+     * Creates a new table cell finder using the row index specified in <code>{@link TableCellBuilder#row(int)}</code>
+     * and the column index specified as the argument in this method.
+     * @param columnId the name of the column in the table cell to find.
+     * @return the created finder.
      */
     public TableCellByColumnId columnId(Object columnId) {
       return new TableCellByColumnId(row, columnId);
@@ -102,12 +100,10 @@ public class TableCellByColumnId implements TableCellFinder {
   private static TableCell findCell(final JTable table, final int row, final Object columnId) {
     return execute(new GuiQuery<TableCell>() {
       protected TableCell executeInEDT() {
-        try {
-          int column = table.convertColumnIndexToView(table.getColumn(columnId).getModelIndex());
-          return new TableCell(row, column);
-        } catch (IllegalArgumentException e) {
-          throw failColumnIndexNotFound(columnId);
-        }
+        int column = columnIndexByIdentifier(table, columnId);
+        if (column == -1) failColumnIndexNotFound(columnId);
+        table.convertColumnIndexToView(table.getColumn(columnId).getModelIndex());
+        return new TableCell(row, column);
       }
     });
   }
@@ -116,25 +112,7 @@ public class TableCellByColumnId implements TableCellFinder {
     throw actionFailure(concat("Unable to find a column with id ", quote(columnId)));
   }
 
-  /** ${@inheritDoc} */
-  @Override public int hashCode() {
-    int result = 1;
-    result = HASH_CODE_PRIME * result + hashCodeFor(columnId);
-    result = HASH_CODE_PRIME * result + row;
-    return result;
-  }
-
-  /** ${@inheritDoc} */
-  @Override public boolean equals(Object obj) {
-    if (this == obj) return true;
-    if (obj == null) return false;
-    if (!(obj instanceof TableCellByColumnId)) return false;
-    TableCellByColumnId other = (TableCellByColumnId) obj;
-    if (!areEqual(columnId, other.columnId)) return false;
-    return row == other.row;
-  }
-
   @Override public String toString() {
-    return concat("[row=", valueOf(row), ", columnId=", quote(columnId), "]");
+    return concat(getClass().getName(), "[row=", valueOf(row), ", columnId=", quote(columnId), "]");
   }
 }

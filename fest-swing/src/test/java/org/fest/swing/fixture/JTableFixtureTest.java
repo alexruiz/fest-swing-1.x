@@ -30,7 +30,9 @@ import static org.fest.swing.test.builder.JTableHeaders.tableHeader;
 import static org.fest.swing.test.core.CommonAssertions.failWhenExpectingException;
 import static org.fest.swing.test.core.Regex.regex;
 
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Point;
 import java.util.regex.Pattern;
 
 import javax.swing.JPopupMenu;
@@ -567,20 +569,6 @@ public class JTableFixtureTest extends JTableFixture_TestCase {
 
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().requireColumnCount(columnCount));
-      }
-    }.run();
-  }
-
-  @Test
-  public void shouldReturnSelectedRowIndex() {
-    final int rowIndex = 6;
-    new EasyMockTemplate(driver()) {
-      protected void expectations() {
-        expect(driver().selectedRow(target())).andReturn(rowIndex);
-      }
-
-      protected void codeToTest() {
-        assertThat(fixture().selectedRow()).isEqualTo(rowIndex);
       }
     }.run();
   }
