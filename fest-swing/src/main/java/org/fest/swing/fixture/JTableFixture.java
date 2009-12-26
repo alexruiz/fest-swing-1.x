@@ -561,7 +561,7 @@ public class JTableFixture extends ComponentFixture<JTable> implements CommonCom
 
   /**
    * Asserts that the set of selected rows in this fixture's <code>{@link JTable}</code> contains to the given row
-   * indices.
+   * indices. The given row indices can be a subset of all the selected rows in a <code>JTable</code>.
    * @param rows the indices of the rows expected to be selected.
    * @return this fixture.
    * @throws AssertionError if the set of selected rows in this fixture's <code>JTable</code> (if any) do not contain
