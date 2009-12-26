@@ -15,7 +15,6 @@
  */
 package org.fest.swing.data;
 
-import static javax.swing.ListSelectionModel.MULTIPLE_INTERVAL_SELECTION;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.edt.GuiActionRunner.execute;
 import static org.fest.swing.test.core.CommonAssertions.failWhenExpectingException;
@@ -51,16 +50,15 @@ public class TableCellInSelectedRow_findCell_Test extends TableCellFinder_TestCa
 
   @RunsInEDT
   private void selectRow(int row) {
-    selectRows(table, row, row);
+    selectRow(table, row);
     robot.waitForIdle();
   }
 
   @RunsInEDT
-  private static void selectRows(final JTable table, final int from, final int to) {
+  private static void selectRow(final JTable table, final int row) {
     execute(new GuiTask() {
       protected void executeInEDT() {
-        if (from != to) table.setSelectionMode(MULTIPLE_INTERVAL_SELECTION);
-        table.setRowSelectionInterval(from, to);
+        table.setRowSelectionInterval(row, row);
       }
     });
   }

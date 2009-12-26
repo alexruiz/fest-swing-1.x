@@ -86,6 +86,7 @@ public class JTableDriver extends JComponentDriver {
 
   private static final String CONTENTS_PROPERTY = "contents";
   private static final String EDITABLE_PROPERTY = "editable";
+  private static final String SELECTED_ROWS_PROPERTY = "selectedRows";
   private static final String SELECTION_PROPERTY = "selection";
   private static final String VALUE_PROPERTY = "value";
 
@@ -786,15 +787,6 @@ public class JTableDriver extends JComponentDriver {
     assertThat(columnCountOf(table)).as(propertyName(table, "columnCount")).isEqualTo(columnCount);
   }
 
-  @RunsInEDT
-  private static int[] selectedRowsOf(final JTable table) {
-    return execute(new GuiQuery<int[]>() {
-      protected int[] executeInEDT() {
-        return table.getSelectedRows();
-      }
-    });
-  }
-
   /**
    * Simulates a user selecting the given rows in the given <code>{@link JTable}</code>.
    * @param table the target <code>JTable</code>.
@@ -858,8 +850,17 @@ public class JTableDriver extends JComponentDriver {
    * @since 1.2
    */
   @RunsInEDT
-  public void requireSelectedRows(JTable table, int[] rows) {
-    // TODO Auto-generated method stub
+  public void requireSelectedRows(JTable table, int... rows) {
+    int[] selectedRows = selectedRowsOf(table);
+    assertThat(selectedRows).as(propertyName(table, SELECTED_ROWS_PROPERTY)).containsOnly(rows);
+  }
 
+  @RunsInEDT
+  private static int[] selectedRowsOf(final JTable table) {
+    return execute(new GuiQuery<int[]>() {
+      protected int[] executeInEDT() {
+        return table.getSelectedRows();
+      }
+    });
   }
 }
