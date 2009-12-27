@@ -42,7 +42,7 @@ import org.fest.swing.exception.ComponentLookupException;
  * <p>
  * Example:
  * <pre>
- * // import static org.fest.swing.fixture.TableCellBuilder.row;
+ * // import static org.fest.swing.data.TableCell.row;
  * {@link JTableCellFixture} cell = dialog.{@link JTableFixture table}("records").cell({@link TableCell#row(int) row}(3).column(0));
  * cell.select().showPopupMenu();
  * </pre>

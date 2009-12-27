@@ -704,7 +704,7 @@ public class JTreeDriver extends JComponentDriver {
    * @param tree the target <code>JTree</code>.
    * @param rows the indices of the rows, expected to be selected.
    * @throws NullPointerException if the array of row indices is <code>null</code>.
-   * @throws AssertionError if this fixture's <code>JTree</code> selection is not equal to the given rows.
+   * @throws AssertionError if the given <code>JTree</code> selection is not equal to the given rows.
    */
   @RunsInEDT
   public void requireSelection(JTree tree, int[] rows) {
@@ -739,7 +739,7 @@ public class JTreeDriver extends JComponentDriver {
    * @param paths the given paths, expected to be selected.
    * @throws NullPointerException if the array of paths is <code>null</code>.
    * @throws LocationUnavailableException if any of the given paths cannot be found.
-   * @throws AssertionError if this fixture's <code>JTree</code> selection is not equal to the given paths.
+   * @throws AssertionError if the given <code>JTree</code> selection is not equal to the given paths.
    * @see #separator(String)
    */
   @RunsInEDT
@@ -869,4 +869,27 @@ public class JTreeDriver extends JComponentDriver {
 
   // for testing only
   JTreeCellReader cellReader() { return pathFinder.cellReader(); }
+
+  /**
+   * Verifies that the given row index is valid.
+   * @param tree the given <code>JTree</code>.
+   * @param row the given index.
+   * @throws IndexOutOfBoundsException if the given index is less than zero or equal than or greater than the number of
+   * visible rows in the <code>JTree</code>.
+   * @since 1.2
+   */
+  public void validateRow(JTree tree, int row) {
+    location.validIndex(tree, row);
+  }
+
+  /**
+   * Verifies that the given node path exists.
+   * @param tree the given <code>JTree</code>.
+   * @param path the given path.
+   * @throws LocationUnavailableException if the given path cannot be found.
+   * @since 1.2
+   */
+  public void validatePath(JTree tree, String path) {
+    JTreeMatchingPathQuery.matchingPathFor(tree, path, pathFinder);
+  }
 }

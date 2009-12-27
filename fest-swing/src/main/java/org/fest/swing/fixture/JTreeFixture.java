@@ -774,4 +774,29 @@ public class JTreeFixture extends ComponentFixture<JTree> implements CommonCompo
     driver.cellReader(cellReader);
     return this;
   }
+
+  /**
+   * Returns a fixture that manages the node specified by the given row.
+   * @param row the given row.
+   * @return a fixture that manages the node specified by the given row.
+   * @throws IndexOutOfBoundsException if the given index is less than zero or equal than or greater than the number of
+   * visible rows in the <code>JTree</code>.
+   * @since 1.2
+   */
+  public JTreeNodeFixture node(int row) {
+    driver.validateRow(target, row);
+    return new JTreeRowFixture(row);
+  }
+
+  /**
+   * Returns a fixture that manages the node specified by the given path.
+   * @param path the given path.
+   * @return a fixture that manages the node specified by the given path.
+   * @throws LocationUnavailableException if the given path cannot be found.
+   * @since 1.2
+   */
+  public JTreeNodeFixture node(String path) {
+    driver.validatePath(target, path);
+    return new JTreePathFixture(path);
+  }
 }
