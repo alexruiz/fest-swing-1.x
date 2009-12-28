@@ -6,6 +6,23 @@
   </properties>
   <body>
     <release version="1.2a4" date="2010-03-01" description="Subsequent release">
+      <action dev="alexruiz" type="add" issue="FEST-8">
+        Added interface org.fest.swing.fixture.JTreeNodeFixture and implementations JTreePathFixture and 
+        JTreeRowFixture.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-8">
+        Added methods 'node(int)' and 'node(String)' to JTreeFixture. These methods return JTreeRowFixture and
+        JTreePathFixture respectively.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-8">
+        Added methods 'clickPath(String, MouseButton)' and 'clickPath(String, MouseClickInfo)' to JTreeFixture.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-8">
+        Added methods 'clickRow(int, MouseButton)' and 'clickRow(int, MouseClickInfo)' to JTreeFixture.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-8">
+        Added methods 'valueAt(int)' and 'valueAt(String)' to JTreeFixture.
+      </action>
       <action dev="alexruiz" type="add" issue="FEST-43" due-to="Ken Geis">
         Added interface org.fest.swing.data.TableCellFinder. Implementations understand lookup of a cell in a JTable
         based on some search criteria.

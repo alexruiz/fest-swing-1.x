@@ -128,6 +128,44 @@ public class JTreeFixture extends ComponentFixture<JTree> implements CommonCompo
     return this;
   }
 
+
+  /**
+   * Clicks the given row.
+   * @param row the given row.
+   * @param button the mouse button to use.
+   * @return this fixture.
+   * @throws NullPointerException if the button is <code>null</code>.
+   * @throws IllegalStateException if the <code>JTree</code> is disabled.
+   * @throws IllegalStateException if the <code>JTree</code> is not showing on the screen.
+   * @throws IndexOutOfBoundsException if the given row is less than zero or equal than or greater than the number of
+   * visible rows in the <code>JTree</code>.
+   * @throws LocationUnavailableException if a tree path for the given row cannot be found.
+   * @since 1.2
+   */
+  public JTreeFixture clickRow(int row, MouseButton button) {
+    driver.clickRow(target, row, button);
+    return this;
+  }
+
+
+  /**
+   * Clicks the given row.
+   * @param row the given row.
+   * @param mouseClickInfo specifies the mouse button to use and how many times to click.
+   * @return this fixture.
+   * @throws NullPointerException if the given <code>MouseClickInfo</code> is <code>null</code>.
+   * @throws IllegalStateException if the <code>JTree</code> is disabled.
+   * @throws IllegalStateException if the <code>JTree</code> is not showing on the screen.
+   * @throws IndexOutOfBoundsException if the given row is less than zero or equal than or greater than the number of
+   * visible rows in the <code>JTree</code>.
+   * @throws LocationUnavailableException if a tree path for the given row cannot be found.
+   * @since 1.2
+   */
+  public JTreeFixture clickRow(int row, MouseClickInfo mouseClickInfo) {
+    driver.clickRow(target, row, mouseClickInfo);
+    return this;
+  }
+
   /**
    * Clicks the given path, expanding parent nodes if necessary.
    * @param path the given path.
@@ -138,6 +176,38 @@ public class JTreeFixture extends ComponentFixture<JTree> implements CommonCompo
    */
   public JTreeFixture clickPath(String path) {
     driver.clickPath(target, path);
+    return this;
+  }
+
+  /**
+   * Clicks the given path, expanding parent nodes if necessary.
+   * @param path the given path.
+   * @param button the mouse button to use.
+   * @return this fixture.
+   * @throws NullPointerException if the button is <code>null</code>.
+   * @throws IllegalStateException if this fixture's <code>JTree</code> is disabled.
+   * @throws IllegalStateException if this fixture's <code>JTree</code> is not showing on the screen.
+   * @throws LocationUnavailableException if the given path cannot be found.
+   * @since 1.2
+   */
+  public JTreeFixture clickPath(String path, MouseButton button) {
+    driver.clickPath(target, path, button);
+    return this;
+  }
+
+  /**
+   * Clicks the given path, expanding parent nodes if necessary.
+   * @param path the given path.
+   * @param mouseClickInfo specifies the mouse button to use and how many times to click.
+   * @return this fixture.
+   * @throws NullPointerException if the given <code>MouseClickInfo</code> is <code>null</code>.
+   * @throws IllegalStateException if this fixture's <code>JTree</code> is disabled.
+   * @throws IllegalStateException if this fixture's <code>JTree</code> is not showing on the screen.
+   * @throws LocationUnavailableException if the given path cannot be found.
+   * @since 1.2
+   */
+  public JTreeFixture clickPath(String path, MouseClickInfo mouseClickInfo) {
+    driver.clickPath(target, path, mouseClickInfo);
     return this;
   }
 
@@ -305,8 +375,8 @@ public class JTreeFixture extends ComponentFixture<JTree> implements CommonCompo
   }
 
   /**
-   * Simulates a user dropping an item to this fixture's <code>{@link JTree}</code>.
-   * @param path the path corresponding to the item to drop.
+   * Simulates a user dropping an item into this fixture's <code>{@link JTree}</code>.
+   * @param path the path corresponding to the item relative to the drop point.
    * @return this fixture.
    * @throws IllegalStateException if this fixture's <code>JTree</code> is disabled.
    * @throws IllegalStateException if this fixture's <code>JTree</code> is not showing on the screen.
@@ -319,7 +389,7 @@ public class JTreeFixture extends ComponentFixture<JTree> implements CommonCompo
   }
 
   /**
-   * Select the given path, expanding parent nodes if necessary. Unlike <code>{@link #clickPath(String)}</code>,
+   * Selects the given path, expanding parent nodes if necessary. Unlike <code>{@link #clickPath(String)}</code>,
    * this method will not click the path if it is already selected.
    * @param path the path to select.
    * @return this fixture.
@@ -785,7 +855,7 @@ public class JTreeFixture extends ComponentFixture<JTree> implements CommonCompo
    */
   public JTreeNodeFixture node(int row) {
     driver.validateRow(target, row);
-    return new JTreeRowFixture(row);
+    return new JTreeRowFixture(this, row);
   }
 
   /**
@@ -797,6 +867,30 @@ public class JTreeFixture extends ComponentFixture<JTree> implements CommonCompo
    */
   public JTreeNodeFixture node(String path) {
     driver.validatePath(target, path);
-    return new JTreePathFixture(path);
+    return new JTreePathFixture(this, path);
+  }
+
+  /**
+   * Returns the <code>String</code> representation of the node at the given path.
+   * @param path the given path.
+   * @return the <code>String</code> representation of the node at the given path.
+   * @throws LocationUnavailableException if the given path cannot be found.
+   * @since 1.2
+   */
+  public String valueAt(String path) {
+    return driver.nodeValue(target, path);
+  }
+
+  /**
+   * Returns the <code>String</code> representation of the given row.
+   * @param row the given row.
+   * @return the <code>String</code> representation of the node at the given path.
+   * @throws IndexOutOfBoundsException if the given row is less than zero or equal than or greater than the number of
+   * visible rows in the <code>JTree</code>.
+   * @throws LocationUnavailableException if a tree path for the given row cannot be found.
+   * @since 1.2
+   */
+  public String valueAt(int row) {
+    return driver.nodeValue(target, row);
   }
 }

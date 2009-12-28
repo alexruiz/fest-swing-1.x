@@ -38,7 +38,7 @@ public class JTreeFixture_node_byPath_Test extends JTreeFixture_TestCase {
         JTreeNodeFixture nodeFixture = fixture().node(path);
         assertThat(nodeFixture).isInstanceOf(JTreePathFixture.class);
         JTreePathFixture pathFixture = (JTreePathFixture) nodeFixture;
-        assertThat(pathFixture.path).isEqualTo(path);
+        assertThat(pathFixture.path()).isEqualTo(path);
       }
     }.run();
   }

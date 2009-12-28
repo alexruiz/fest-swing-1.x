@@ -26,9 +26,7 @@ import static org.fest.swing.driver.JTreeChildrenShowUpCondition.untilChildrenSh
 import static org.fest.swing.driver.JTreeClearSelectionTask.clearSelectionOf;
 import static org.fest.swing.driver.JTreeEditableQuery.isEditable;
 import static org.fest.swing.driver.JTreeExpandPathTask.expandTreePath;
-import static org.fest.swing.driver.JTreeMatchingPathQuery.matchingPathFor;
-import static org.fest.swing.driver.JTreeMatchingPathQuery.matchingPathWithRootIfInvisible;
-import static org.fest.swing.driver.JTreeMatchingPathQuery.verifyJTreeIsReadyAndFindMatchingPath;
+import static org.fest.swing.driver.JTreeMatchingPathQuery.*;
 import static org.fest.swing.driver.JTreeToggleExpandStateTask.toggleExpandState;
 import static org.fest.swing.edt.GuiActionRunner.execute;
 import static org.fest.swing.exception.ActionFailedException.actionFailure;
@@ -53,13 +51,9 @@ import org.fest.assertions.Description;
 import org.fest.swing.annotation.RunsInCurrentThread;
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.cell.JTreeCellReader;
-import org.fest.swing.core.Robot;
-import org.fest.swing.edt.GuiQuery;
-import org.fest.swing.edt.GuiTask;
-import org.fest.swing.exception.ActionFailedException;
-import org.fest.swing.exception.ComponentLookupException;
-import org.fest.swing.exception.LocationUnavailableException;
-import org.fest.swing.exception.WaitTimedOutError;
+import org.fest.swing.core.*;
+import org.fest.swing.edt.*;
+import org.fest.swing.exception.*;
 import org.fest.swing.util.Pair;
 import org.fest.swing.util.Triple;
 
@@ -106,9 +100,52 @@ public class JTreeDriver extends JComponentDriver {
    */
   @RunsInEDT
   public void clickRow(JTree tree, int row) {
-    Point p = scrollToRow(tree, row, location).ii;
-    robot.waitForIdle();
+    Point p = scrollToRow(tree, row);
     robot.click(tree, p);
+  }
+
+  /**
+   * Clicks the given row.
+   * @param tree the target <code>JTree</code>.
+   * @param row the given row.
+   * @param button the mouse button to use.
+   * @throws NullPointerException if the given button is <code>null</code>.
+   * @throws IllegalStateException if the <code>JTree</code> is disabled.
+   * @throws IllegalStateException if the <code>JTree</code> is not showing on the screen.
+   * @throws IndexOutOfBoundsException if the given row is less than zero or equal than or greater than the number of
+   * visible rows in the <code>JTree</code>.
+   * @throws LocationUnavailableException if a tree path for the given row cannot be found.
+   * @since 1.2
+   */
+  @RunsInEDT
+  public void clickRow(JTree tree, int row, MouseButton button) {
+    validateIsNotNull(button);
+    clickRow(tree, row, button, 1);
+  }
+
+  /**
+   * Clicks the given row.
+   * @param tree the target <code>JTree</code>.
+   * @param row the given row.
+   * @param mouseClickInfo specifies the mouse button to use and how many times to click.
+   * @throws NullPointerException if the given <code>MouseClickInfo</code> is <code>null</code>.
+   * @throws IllegalStateException if the <code>JTree</code> is disabled.
+   * @throws IllegalStateException if the <code>JTree</code> is not showing on the screen.
+   * @throws IndexOutOfBoundsException if the given row is less than zero or equal than or greater than the number of
+   * visible rows in the <code>JTree</code>.
+   * @throws LocationUnavailableException if a tree path for the given row cannot be found.
+   * @since 1.2
+   */
+  @RunsInEDT
+  public void clickRow(JTree tree, int row, MouseClickInfo mouseClickInfo) {
+    validateIsNotNull(mouseClickInfo);
+    clickRow(tree, row, mouseClickInfo.button(), mouseClickInfo.times());
+  }
+
+  @RunsInEDT
+  private void clickRow(JTree tree, int row, MouseButton button, int times) {
+    Point p = scrollToRow(tree, row);
+    robot.click(tree, p, button, times);
   }
 
   /**
@@ -124,8 +161,7 @@ public class JTreeDriver extends JComponentDriver {
    */
   @RunsInEDT
   public void doubleClickRow(JTree tree, int row) {
-    Point p = scrollToRow(tree, row, location).ii;
-    robot.waitForIdle();
+    Point p = scrollToRow(tree, row);
     doubleClick(tree, p);
   }
 
@@ -142,9 +178,15 @@ public class JTreeDriver extends JComponentDriver {
    */
   @RunsInEDT
   public void rightClickRow(JTree tree, int row) {
+    Point p = scrollToRow(tree, row);
+    rightClick(tree, p);
+  }
+
+  @RunsInEDT
+  private Point scrollToRow(JTree tree, int row) {
     Point p = scrollToRow(tree, row, location).ii;
     robot.waitForIdle();
-    rightClick(tree, p);
+    return p;
   }
 
   /**
@@ -157,9 +199,55 @@ public class JTreeDriver extends JComponentDriver {
    */
   @RunsInEDT
   public void clickPath(JTree tree, String path) {
-    Point p = scrollToMatchingPath(tree, path).iii;
-    robot.waitForIdle();
+    Point p = scrollToPath(tree, path);
     robot.click(tree, p);
+  }
+
+  /**
+   * Clicks the given path, expanding parent nodes if necessary.
+   * @param tree the target <code>JTree</code>.
+   * @param path the path to path.
+   * @param button the mouse button to use.
+   * @throws NullPointerException if the given button is <code>null</code>.
+   * @throws IllegalStateException if the <code>JTree</code> is disabled.
+   * @throws IllegalStateException if the <code>JTree</code> is not showing on the screen.
+   * @throws LocationUnavailableException if the given path cannot be found.
+   * @since 1.2
+   */
+  @RunsInEDT
+  public void clickPath(JTree tree, String path, MouseButton button) {
+    validateIsNotNull(button);
+    clickPath(tree, path, button, 1);
+  }
+
+  private void validateIsNotNull(MouseButton button) {
+    if (button == null) throw new NullPointerException("The given MouseButton should not be null");
+  }
+
+  /**
+   * Clicks the given path, expanding parent nodes if necessary.
+   * @param tree the target <code>JTree</code>.
+   * @param path the path to path.
+   * @param mouseClickInfo specifies the mouse button to use and how many times to click.
+   * @throws NullPointerException if the given <code>MouseClickInfo</code> is <code>null</code>.
+   * @throws IllegalStateException if the <code>JTree</code> is disabled.
+   * @throws IllegalStateException if the <code>JTree</code> is not showing on the screen.
+   * @throws LocationUnavailableException if the given path cannot be found.
+   * @since 1.2
+   */
+  @RunsInEDT
+  public void clickPath(JTree tree, String path, MouseClickInfo mouseClickInfo) {
+    validateIsNotNull(mouseClickInfo);
+    clickPath(tree, path, mouseClickInfo.button(), mouseClickInfo.times());
+  }
+
+  private void validateIsNotNull(MouseClickInfo mouseClickInfo) {
+    if (mouseClickInfo == null) throw new NullPointerException("The given MouseClickInfo should not be null");
+  }
+
+  private void clickPath(JTree tree, String path, MouseButton button, int times) {
+    Point p = scrollToPath(tree, path);
+    robot.click(tree, p, button, times);
   }
 
   /**
@@ -173,9 +261,14 @@ public class JTreeDriver extends JComponentDriver {
    */
   @RunsInEDT
   public void doubleClickPath(JTree tree, String path) {
+    Point p = scrollToPath(tree, path);
+    doubleClick(tree, p);
+  }
+
+  private Point scrollToPath(JTree tree, String path) {
     Point p = scrollToMatchingPath(tree, path).iii;
     robot.waitForIdle();
-    doubleClick(tree, p);
+    return p;
   }
 
   private void doubleClick(JTree tree, Point p) {
@@ -193,8 +286,7 @@ public class JTreeDriver extends JComponentDriver {
    */
   @RunsInEDT
   public void rightClickPath(JTree tree, String path) {
-    Point p = scrollToMatchingPath(tree, path).iii;
-    robot.waitForIdle();
+    Point p = scrollToPath(tree, path);
     rightClick(tree, p);
   }
 
@@ -867,9 +959,6 @@ public class JTreeDriver extends JComponentDriver {
     pathFinder.cellReader(newCellReader);
   }
 
-  // for testing only
-  JTreeCellReader cellReader() { return pathFinder.cellReader(); }
-
   /**
    * Verifies that the given row index is valid.
    * @param tree the given <code>JTree</code>.
@@ -878,6 +967,7 @@ public class JTreeDriver extends JComponentDriver {
    * visible rows in the <code>JTree</code>.
    * @since 1.2
    */
+  @RunsInEDT
   public void validateRow(JTree tree, int row) {
     location.validIndex(tree, row);
   }
@@ -889,7 +979,58 @@ public class JTreeDriver extends JComponentDriver {
    * @throws LocationUnavailableException if the given path cannot be found.
    * @since 1.2
    */
+  @RunsInEDT
   public void validatePath(JTree tree, String path) {
-    JTreeMatchingPathQuery.matchingPathFor(tree, path, pathFinder);
+    matchingPathFor(tree, path, pathFinder);
   }
+
+  /**
+   * Returns the <code>String</code> representation of the node at the given path.
+   * @param tree the given <code>JTree</code>.
+   * @param path the given path.
+   * @return the <code>String</code> representation of the node at the given path.
+   * @throws LocationUnavailableException if the given path cannot be found.
+   * @since 1.2
+   */
+  @RunsInEDT
+  public String nodeValue(JTree tree, String path) {
+    return nodeText(tree, path, pathFinder);
+  }
+
+  @RunsInEDT
+  private static String nodeText(final JTree tree, final String path, final JTreePathFinder pathFinder) {
+    return execute(new GuiQuery<String>() {
+      protected String executeInEDT() {
+        TreePath matchingPath = matchingPathWithRootIfInvisible(tree, path, pathFinder);
+        return pathFinder.cellReader().valueAt(tree, matchingPath.getLastPathComponent());
+      }
+    });
+  }
+
+  /**
+   * Returns the <code>String</code> representation of the node at the given row index.
+   * @param tree the given <code>JTree</code>.
+   * @param row the given row.
+   * @return the <code>String</code> representation of the node at the given row index.
+   * @throws IndexOutOfBoundsException if the given row is less than zero or equal than or greater than the number of
+   * visible rows in the <code>JTree</code>.
+   * @throws LocationUnavailableException if a tree path for the given row cannot be found.
+   * @since 1.2
+   */
+  public String nodeValue(JTree tree, int row) {
+    return nodeText(tree, row, location, pathFinder);
+  }
+
+  @RunsInEDT
+  private static String nodeText(final JTree tree, final int path, final JTreeLocation location, final JTreePathFinder pathFinder) {
+    return execute(new GuiQuery<String>() {
+      protected String executeInEDT() {
+        TreePath matchingPath = location.pathFor(tree, path);
+        return pathFinder.cellReader().valueAt(tree, matchingPath.getLastPathComponent());
+      }
+    });
+  }
+
+  // for testing only
+  JTreeCellReader cellReader() { return pathFinder.cellReader(); }
 }

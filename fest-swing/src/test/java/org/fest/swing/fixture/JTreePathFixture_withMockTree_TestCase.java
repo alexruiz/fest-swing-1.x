@@ -1,5 +1,5 @@
 /*
- * Created on Dec 26, 2009
+ * Created on Dec 27, 2009
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -14,32 +14,30 @@
  */
 package org.fest.swing.fixture;
 
+import static org.easymock.classextension.EasyMock.createMock;
 import static org.fest.assertions.Assertions.assertThat;
-
-import org.fest.mocks.EasyMockTemplate;
-import org.junit.Test;
+import org.fest.swing.test.core.EDTSafeTestCase;
+import org.junit.Before;
 
 /**
- * Tests for <code>{@link JTreeFixture#node(int)}</code>.
+ * Base test case for <code>{@link JTreePathFixture}</code>.
  *
  * @author Alex Ruiz
  */
-public class JTreeFixture_node_byRow_Test extends JTreeFixture_TestCase {
+public class JTreePathFixture_withMockTree_TestCase extends EDTSafeTestCase {
 
-  @Test
-  public void should_return_row() {
-    final int row = 6;
-    new EasyMockTemplate(driver()) {
-      protected void expectations() {
-        driver().validateRow(target(), row);
-      }
+  JTreeFixture tree;
+  String path;
+  JTreePathFixture fixture;
 
-      protected void codeToTest() {
-        JTreeNodeFixture nodeFixture = fixture().node(row);
-        assertThat(nodeFixture).isInstanceOf(JTreeRowFixture.class);
-        JTreeRowFixture rowFixture = (JTreeRowFixture) nodeFixture;
-        assertThat(rowFixture.index()).isEqualTo(row);
-      }
-    }.run();
+  @Before
+  public final void setUp() {
+    tree = createMock(JTreeFixture.class);
+    path = "root/node1";
+    fixture = new JTreePathFixture(tree, path);
+  }
+
+  final void assertThatReturnsSelf(JTreePathFixture result) {
+    assertThat(result).isSameAs(fixture);
   }
 }

@@ -17,6 +17,7 @@ package org.fest.swing.fixture;
 
 import java.awt.Component;
 
+import org.fest.swing.exception.ActionFailedException;
 import org.fest.swing.exception.ComponentLookupException;
 
 /**
@@ -36,6 +37,8 @@ public interface ItemFixture extends MouseInputSimulationFixture {
   /**
    * Simulates a user selecting this fixture's item.
    * @return this fixture.
+   * @throws IllegalStateException if the component containing this fixture's item is disabled.
+   * @throws IllegalStateException if the component containing this fixture's item is not showing on the screen.
    */
   ItemFixture select();
 
@@ -49,18 +52,25 @@ public interface ItemFixture extends MouseInputSimulationFixture {
   /**
    * Simulates a user dragging this fixture's item.
    * @return this fixture.
+   * @throws IllegalStateException if the component containing this fixture's item is disabled.
+   * @throws IllegalStateException if the component containing this fixture's item is not showing on the screen.
    */
   ItemFixture drag();
 
   /**
    * Simulates a user dropping into this fixture's item.
    * @return this fixture.
+   * @throws IllegalStateException if the component containing this fixture's item is disabled.
+   * @throws IllegalStateException if the component containing this fixture's item is not showing on the screen.
+   * @throws ActionFailedException if there is no drag action in effect.
    */
   ItemFixture drop();
 
   /**
    * Shows a pop-up menu using this fixture's item as the invoker of the pop-up menu.
    * @return a fixture that handles functional testing of the displayed pop-up menu.
+   * @throws IllegalStateException if the component containing this fixture's item is disabled.
+   * @throws IllegalStateException if the component containing this fixture's item is not showing on the screen.
    * @throws ComponentLookupException if a pop-up menu cannot be found.
    */
   JPopupMenuFixture showPopupMenu();

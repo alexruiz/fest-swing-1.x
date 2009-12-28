@@ -60,7 +60,7 @@ public class JTableCellFixture implements ItemFixture {
 
   /**
    * Creates a new <code>{@link JTableCellFixture}</code>.
-   * @param table manages the <code>JTable</code> containing the table cell to be managed by this fixture.
+   * @param table handles the <code>JTable</code> containing the cell in this fixture.
    * @param cell row and column indices of the table cell to be managed by this fixture.
    * @throws NullPointerException if <code>table</code> is <code>null</code>.
    * @throws NullPointerException if <code>cell</code> is <code>null</code>.

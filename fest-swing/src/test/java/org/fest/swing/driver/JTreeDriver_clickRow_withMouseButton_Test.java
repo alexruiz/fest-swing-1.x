@@ -1,5 +1,5 @@
 /*
- * Created on Jul 16, 2009
+ * Created on Dec 27, 2009
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -16,38 +16,44 @@
 package org.fest.swing.driver;
 
 import static org.fest.assertions.Assertions.assertThat;
+import static org.fest.swing.core.MouseButton.RIGHT_BUTTON;
 import static org.fest.swing.test.core.CommonAssertions.*;
 
-import org.fest.swing.exception.LocationUnavailableException;
+import org.fest.swing.core.MouseButton;
 import org.fest.swing.test.recorder.ClickRecorder;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JTreeDriver#clickPath(javax.swing.JTree, String)}</code>.
+ * Tests for <code>{@link JTreeDriver#clickRow(javax.swing.JTree, int, org.fest.swing.core.MouseButton)}</code>.
  *
  * @author Alex Ruiz
  */
-public class JTreeDriver_clickPath_Test extends JTreeDriver_clickCell_TestCase {
+public class JTreeDriver_clickRow_withMouseButton_Test extends JTreeDriver_clickCell_TestCase {
 
-  @Test
-  public void should_click_path() {
-    showWindow();
-    ClickRecorder recorder = ClickRecorder.attachTo(tree);
-    driver.clickPath(tree, "root/branch1/branch1.1/branch1.1.1");
-    assertThat(recorder).wasClicked()
-                        .timesClicked(1);
-    String clickedPath = pathAtPoint(tree, recorder.pointClicked(), driver.separator());
-    assertThat(clickedPath).isEqualTo("root/branch1/branch1.1/branch1.1.1");
+  @Test(expected = NullPointerException.class)
+  public void should_throw_error_if_MouseButton_is_null() {
+    MouseButton button = null;
+    driver.clickRow(tree, 1, button);
   }
 
   @Test
-  public void should_throw_error_if_path_not_found() {
+  public void should_click_row() {
+    showWindow();
+    ClickRecorder recorder = ClickRecorder.attachTo(tree);
+    driver.clickRow(tree, 1, RIGHT_BUTTON);
+    assertThat(recorder).clicked(RIGHT_BUTTON)
+                        .timesClicked(1);
+    assertThat(rowAt(recorder.pointClicked())).isEqualTo(1);
+  }
+
+  @Test
+  public void should_throw_error_if_row_is_out_of_bounds() {
     showWindow();
     try {
-      driver.clickPath(tree, "another");
+      driver.clickRow(tree, 100, RIGHT_BUTTON);
       failWhenExpectingException();
-    } catch (LocationUnavailableException e) {
-      assertThat(e.getMessage()).isEqualTo("Unable to find path 'another'");
+    } catch (IndexOutOfBoundsException e) {
+      assertThat(e.getMessage()).isEqualTo("The given row (100) should be greater than or equal to 0 and less than 6");
     }
   }
 
@@ -55,7 +61,7 @@ public class JTreeDriver_clickPath_Test extends JTreeDriver_clickCell_TestCase {
   public void should_throw_error_if_JTree_is_disabled() {
     disableTree();
     try {
-      driver.clickPath(tree, "root/branch1");
+      driver.clickRow(tree, 1, RIGHT_BUTTON);
       failWhenExpectingException();
     } catch (IllegalStateException e) {
       assertThatErrorCauseIsDisabledComponent(e);
@@ -65,7 +71,7 @@ public class JTreeDriver_clickPath_Test extends JTreeDriver_clickCell_TestCase {
   @Test
   public void should_throw_error_if_JTree_is_not_showing_on_the_screen() {
     try {
-      driver.clickPath(tree, "root/branch1");
+      driver.clickRow(tree, 1, RIGHT_BUTTON);
       failWhenExpectingException();
     } catch (IllegalStateException e) {
       assertThatErrorCauseIsNotShowingComponent(e);

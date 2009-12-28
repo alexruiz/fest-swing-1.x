@@ -17,6 +17,8 @@ package org.fest.swing.fixture;
 
 import javax.swing.JTree;
 
+import org.fest.swing.exception.ActionFailedException;
+
 /**
  * Understands functional testing of single nodes in <code>{@link JTree}</code>s:
  * <ul>
@@ -29,6 +31,23 @@ import javax.swing.JTree;
  *
  * @since 1.2
  */
-public interface JTreeNodeFixture {
+public interface JTreeNodeFixture extends ItemFixture {
 
+  /**
+   * Simulates a user expanding this fixture's tree node.
+   * @return this fixture.
+   * @throws IllegalStateException if the <code>JTree</code> is disabled.
+   * @throws IllegalStateException if the <code>JTree</code> is not showing on the screen.
+   * @throws ActionFailedException if this method fails to expand the row.
+   */
+  JTreeNodeFixture expand();
+
+  /**
+   * Simulates a user collapsing this fixture's tree node.
+   * @return this fixture.
+   * @throws IllegalStateException if the <code>JTree</code> is disabled.
+   * @throws IllegalStateException if the <code>JTree</code> is not showing on the screen.
+   * @throws ActionFailedException if this method fails to collapse the row.
+   */
+  JTreeNodeFixture collapse();
 }
