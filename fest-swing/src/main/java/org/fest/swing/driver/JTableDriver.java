@@ -148,7 +148,7 @@ public class JTableDriver extends JComponentDriver {
   @RunsInEDT
   public TableCell cell(JTable table, TableCellFinder cellFinder) {
     if (cellFinder == null) throw new NullPointerException("The cell finder to use should not be null");
-    TableCell cell = cellFinder.findCell(table);
+    TableCell cell = cellFinder.findCell(table, cellReader);
     validateCellIndices(table, cell);
     return cell;
   }
@@ -863,4 +863,7 @@ public class JTableDriver extends JComponentDriver {
       }
     });
   }
+
+  // For testing only.
+  JTableCellReader cellReader() { return cellReader; }
 }

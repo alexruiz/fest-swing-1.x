@@ -44,7 +44,7 @@ public class JTableDriver_cellWithTableCellFinder_Test extends JTableDriver_Test
     final TableCell cell = row(0).column(0);
     new EasyMockTemplate(cellFinder) {
       protected void expectations() {
-        expect(cellFinder.findCell(table)).andReturn(cell);
+        expect(cellFinder.findCell(table, driver.cellReader())).andReturn(cell);
       }
 
       protected void codeToTest() {
@@ -59,7 +59,7 @@ public class JTableDriver_cellWithTableCellFinder_Test extends JTableDriver_Test
     final TableCell cell = row(-1).column(0);
     new EasyMockTemplate(cellFinder) {
       protected void expectations() {
-        expect(cellFinder.findCell(table)).andReturn(cell);
+        expect(cellFinder.findCell(table, driver.cellReader())).andReturn(cell);
       }
 
       protected void codeToTest() {

@@ -18,6 +18,7 @@ package org.fest.swing.data;
 import javax.swing.JTable;
 
 import org.fest.swing.annotation.RunsInEDT;
+import org.fest.swing.cell.JTableCellReader;
 import org.fest.swing.exception.ActionFailedException;
 
 /**
@@ -32,9 +33,10 @@ public interface TableCellFinder {
    * Implementations of this method <strong>should</strong> access the given <code>JTable</code> in the event dispatch
    * thread.
    * @param table the target <code>JTable</code>.
+   * @param cellReader knows how to read the contents of a cell in a <code>JTable</code>.
    * @return the cell found, if any.
    * @throws ActionFailedException if a matching cell could not be found.
    */
   @RunsInEDT
-  TableCell findCell(JTable table);
+  TableCell findCell(JTable table, JTableCellReader cellReader);
 }

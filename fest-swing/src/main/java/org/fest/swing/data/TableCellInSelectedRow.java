@@ -23,6 +23,7 @@ import static org.fest.util.Strings.concat;
 import javax.swing.JTable;
 
 import org.fest.swing.annotation.RunsInEDT;
+import org.fest.swing.cell.JTableCellReader;
 import org.fest.swing.edt.GuiQuery;
 import org.fest.swing.exception.ActionFailedException;
 
@@ -32,7 +33,7 @@ import org.fest.swing.exception.ActionFailedException;
  * Example:
  * <pre>
  * // import static org.fest.swing.data.TableCellInSelectedRow.row;
- * JTableCellFixture cell = dialog.table("records").cell({@link TableCellInSelectedRow#selectedRow() selectedRow}().column(2));
+ * <code>{@link TableCell}</code> cell = dialog.table("records").cell({@link TableCellInSelectedRow#selectedRow() selectedRow}().column(2));
  * </pre>
  * </p>
  *
@@ -81,10 +82,11 @@ public class TableCellInSelectedRow implements TableCellFinder {
    * Finds a cell in the given <code>{@link JTable}</code> that belongs to the first selected row and has a matching
    * column index.
    * @param table the target <code>JTable</code>.
+   * @param cellReader knows how to read the contents of a cell in a <code>JTable</code>.
    * @return the cell found, if any.
    * @throws ActionFailedException if a matching cell could not be found.
    */
-  public TableCell findCell(JTable table) {
+  public TableCell findCell(JTable table, JTableCellReader cellReader) {
     int selectedRow = selectedRowOf(table);
     if (selectedRow == -1) throw actionFailure("The given JTable does not have any selection");
     return new TableCell(selectedRow, column);

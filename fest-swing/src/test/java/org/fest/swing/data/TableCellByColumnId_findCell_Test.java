@@ -22,13 +22,14 @@ import static org.fest.util.Collections.list;
 
 import java.util.Collection;
 
+import org.fest.swing.cell.JTableCellReader;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
 /**
- * Tests for <code>{@link TableCellByColumnId#findCell(javax.swing.JTable)}</code>.
+ * Tests for <code>{@link TableCellByColumnId#findCell(javax.swing.JTable, JTableCellReader)}</code>.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
@@ -51,7 +52,7 @@ public class TableCellByColumnId_findCell_Test extends TableCellFinder_TestCase 
   @Test
   public void should_find_cell_by_column_id() {
     TableCellByColumnId finder = row(0).columnId(columnId);
-    TableCell cell = finder.findCell(table);
+    TableCell cell = finder.findCell(table, null);
     assertThat(cell.row).isEqualTo(0);
     assertThat(cell.column).isEqualTo(parseInt(columnId));
   }

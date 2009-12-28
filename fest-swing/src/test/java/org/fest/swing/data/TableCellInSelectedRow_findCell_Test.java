@@ -22,12 +22,13 @@ import static org.fest.swing.test.core.CommonAssertions.failWhenExpectingExcepti
 import javax.swing.JTable;
 
 import org.fest.swing.annotation.RunsInEDT;
+import org.fest.swing.cell.JTableCellReader;
 import org.fest.swing.edt.GuiTask;
 import org.fest.swing.exception.ActionFailedException;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link TableCellInSelectedRow#findCell(JTable)}</code>.
+ * Tests for <code>{@link TableCellInSelectedRow#findCell(JTable, JTableCellReader)}</code>.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
@@ -43,7 +44,7 @@ public class TableCellInSelectedRow_findCell_Test extends TableCellFinder_TestCa
   @Test
   public void should_find_cell_in_selected_row() {
     selectRow(1);
-    TableCell cell = finder.findCell(table);
+    TableCell cell = finder.findCell(table, null);
     assertThat(cell.row).isEqualTo(1);
     assertThat(cell.column).isEqualTo(2);
   }
@@ -66,7 +67,7 @@ public class TableCellInSelectedRow_findCell_Test extends TableCellFinder_TestCa
   @Test
   public void should_throw_error_if_JTable_does_not_have_selection() {
     try {
-      finder.findCell(table);
+      finder.findCell(table, null);
       failWhenExpectingException();
     } catch (ActionFailedException e) {
       assertThat(e.getMessage()).isEqualTo("The given JTable does not have any selection");

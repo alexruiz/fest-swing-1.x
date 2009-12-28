@@ -1,5 +1,5 @@
 /*
- * Created on Dec 24, 2009
+ * Created on Dec 28, 2009
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -15,23 +15,27 @@
  */
 package org.fest.swing.data;
 
-import static org.fest.swing.data.TableCellByColumnId.row;
+import static org.fest.assertions.Assertions.assertThat;
 
-import org.fest.swing.cell.JTableCellReader;
-import org.fest.swing.exception.ActionFailedException;
+import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link TableCellByColumnId#findCell(javax.swing.JTable, JTableCellReader)}</code>.
+ * Tests for <code>{@link TableCellInRowByValue#toString()}</code>.
  *
  * @author Alex Ruiz
- * @author Yvonne Wang
  */
-public class TableCellByColumnId_findCell_withInvalidInput_Test extends TableCellFinder_TestCase {
+public class TableCellInRowByValue_toString_Test {
 
-  @Test(expected = ActionFailedException.class)
-  public void should_throw_error_if_a_matching_column_was_not_found() {
-    TableCellByColumnId finder = row(0).columnId("Hello");
-    finder.findCell(table, null);
+  private TableCellInRowByValue finder;
+
+  @Before public void setUp() {
+    finder = TableCellInRowByValue.rowWithValue("one", "two").column(1);
+  }
+
+  @Test
+  public void should_implement_toString() {
+    assertThat(finder.toString()).isEqualTo(
+        "org.fest.swing.data.TableCellInRowByValue[values=['one', 'two'], column=1]");
   }
 }

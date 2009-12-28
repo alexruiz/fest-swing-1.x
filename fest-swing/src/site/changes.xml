@@ -69,6 +69,10 @@
       <action dev="alexruiz" type="add" issue="FEST-222" due-to="Jacob Qvortrup">
         Added class org.fest.swing.fixture.JProgressBarFixture.
       </action>
+      <action dev="alexruiz" type="add" isse="FEST-225" due-to="Morten Breum Mikkelsen">
+        Added class org.fest.swing.data.TableCellInRowByValue to lookup a JTable cell in a row whose values match the
+        given one.
+      </action>
       <action dev="alexruiz" type="fix" issue="FEST-227" due-to="Uli Schrempp">
         Method 'matches(String, String)' does not require a valid regular expression if the given Strings are not equal.
       </action>

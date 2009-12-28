@@ -25,6 +25,7 @@ import static org.fest.util.Strings.quote;
 import javax.swing.JTable;
 
 import org.fest.swing.annotation.RunsInEDT;
+import org.fest.swing.cell.JTableCellReader;
 import org.fest.swing.edt.GuiQuery;
 import org.fest.swing.exception.ActionFailedException;
 
@@ -34,7 +35,7 @@ import org.fest.swing.exception.ActionFailedException;
  * Example:
  * <pre>
  * // import static org.fest.swing.data.TableCellByColumnId.row;
- * JTableCellFixture cell = dialog.table("records").cell({@link TableCellByColumnId#row(int) row}(3).columnId("firstColumn"));
+ * <code>{@link TableCell}</code> cell = dialog.table("records").cell({@link TableCellByColumnId#row(int) row}(3).columnId("firstColumn"));
  * </pre>
  * </p>
  *
@@ -70,8 +71,8 @@ public class TableCellByColumnId implements TableCellFinder {
     TableCellBuilder(int row) { this.row = row; }
 
     /**
-     * Creates a new table cell finder using the row index specified in <code>{@link TableCellBuilder#row(int)}</code>
-     * and the column index specified as the argument in this method.
+     * Creates a new table cell finder using the row index specified in
+     * <code>{@link TableCellByColumnId#row(int)}</code> and the column id specified as the argument in this method.
      * @param columnId the name of the column in the table cell to find.
      * @return the created finder.
      */
@@ -88,11 +89,12 @@ public class TableCellByColumnId implements TableCellFinder {
   /**
    * Finds a cell in the given <code>{@link JTable}</code> that has a matching row index and column id.
    * @param table the target <code>JTable</code>.
+   * @param cellReader knows how to read the contents of a cell in a <code>JTable</code>.
    * @return the cell found, if any.
    * @throws ActionFailedException if a matching cell could not be found.
    */
   @RunsInEDT
-  public TableCell findCell(JTable table) {
+  public TableCell findCell(JTable table, JTableCellReader cellReader) {
     return findCell(table, row, columnId);
   }
 
