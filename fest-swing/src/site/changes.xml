@@ -108,6 +108,24 @@
       <action dev="alexruiz" type="add" issue="FEST-266">
         Added method 'rightClickRow(int)' to JTreeFixture.
       </action>
+      <action dev="alexruiz" type="add" issue="FEST-267" due-to="Morten Breum Mikkelsen">
+        JOptionFixture now extends ContainerFixture.
+      </action>
+      <action dev="alexruiz" type="remove" issue="FEST-267" due-to="Morten Breum Mikkelsen">
+        ContainerFixture no longer implements JPopupMenuInvokerFixture.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-267" due-to="Morten Breum Mikkelsen">
+        JInternalFrameFixture now implements JPopupMenuInvokerFixture.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-267" due-to="Morten Breum Mikkelsen">
+        JPanelFixture now implements JPopupMenuInvokerFixture.
+      </action>
+      <action dev="alexruiz" type="remove" issue="FEST-267" due-to="Morten Breum Mikkelsen">
+        JToolBarFixture now implements JPopupMenuInvokerFixture.
+      </action>
+      <action dev="alexruiz" type="remove" issue="FEST-267" due-to="Morten Breum Mikkelsen">
+        WindowFixture now implements JPopupMenuInvokerFixture.
+      </action>
       <action dev="alexruiz" type="add" issue="FEST-269" due-to="Florian SIMON">
         Added method 'selectRows(int...)' to JTableFixture.
       </action>

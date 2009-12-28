@@ -37,7 +37,7 @@ import org.fest.swing.timing.Timeout;
  * @author Alex Ruiz
  */
 public class JInternalFrameFixture extends ContainerFixture<JInternalFrame> implements CommonComponentFixture,
-    FrameLikeFixture, JComponentFixture {
+    FrameLikeFixture, JComponentFixture, JPopupMenuInvokerFixture {
 
   private JInternalFrameDriver driver;
 

@@ -28,10 +28,11 @@ import org.junit.Test;
  *
  * @author Alex Ruiz
  */
+@Deprecated
 public class JOptionPaneDriver_textBox_Test extends JOptionPaneDriver_TestCase {
 
   @Test
-  public void should_find_text_box() {
+  @Deprecated public void should_find_text_box() {
     JOptionPane optionPane = inputMessage();
     launch(optionPane, title());
     JTextComponent textBox = driver.textBox(optionPane);
@@ -39,7 +40,7 @@ public class JOptionPaneDriver_textBox_Test extends JOptionPaneDriver_TestCase {
   }
 
   @Test(expected = ComponentLookupException.class)
-  public void should_throw_error_if_text_box_not_found() {
+  @Deprecated public void should_throw_error_if_text_box_not_found() {
     JOptionPane optionPane = errorMessage();
     launch(optionPane, title());
     driver.textBox(optionPane);

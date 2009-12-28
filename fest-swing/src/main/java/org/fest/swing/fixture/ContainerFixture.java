@@ -35,7 +35,7 @@ import org.fest.swing.timing.Timeout;
  * @author Yvonne Wang
  */
 public abstract class ContainerFixture<T extends Container> extends ComponentFixture<T> implements
-    ComponentContainerFixture, JPopupMenuInvokerFixture {
+    ComponentContainerFixture {
 
   private final JMenuItemFinder menuItemFinder;
 

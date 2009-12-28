@@ -19,14 +19,11 @@ import static org.easymock.EasyMock.expect;
 import static org.easymock.EasyMock.expectLastCall;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.test.builder.JButtons.button;
-import static org.fest.swing.test.builder.JTextFields.textField;
 import static org.fest.swing.test.core.Regex.regex;
 
 import java.util.regex.Pattern;
 
 import javax.swing.JButton;
-import javax.swing.JTextField;
-
 import org.fest.mocks.EasyMockTemplate;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -201,35 +198,6 @@ public class JOptionPaneFixtureTest extends JOptionPaneFixture_TestCase {
       protected void codeToTest() {
         JButtonFixture result = fixture().buttonWithText(p);
         assertThat(result.component()).isSameAs(button);
-      }
-    }.run();
-  }
-
-  @Test
-  public void shouldReturnButton() {
-    new EasyMockTemplate(driver()) {
-      protected void expectations() {
-        expect(driver().button(target())).andReturn(button);
-      }
-
-      protected void codeToTest() {
-        JButtonFixture result = fixture().button();
-        assertThat(result.component()).isSameAs(button);
-      }
-    }.run();
-  }
-
-  @Test
-  public void shouldReturnTextBox() {
-    final JTextField textBox = textField().createNew();
-    new EasyMockTemplate(driver()) {
-      protected void expectations() {
-        expect(driver().textBox(target())).andReturn(textBox);
-      }
-
-      protected void codeToTest() {
-        JTextComponentFixture result = fixture().textBox();
-        assertThat(result.component()).isSameAs(textBox);
       }
     }.run();
   }

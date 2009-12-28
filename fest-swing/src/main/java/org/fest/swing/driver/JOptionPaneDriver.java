@@ -230,9 +230,10 @@ public class JOptionPaneDriver extends JComponentDriver {
    * @return the only <code>JButton</code> contained in the <code>JOptionPane</code>.
    * @throws ComponentLookupException if a matching component could not be found.
    * @throws ComponentLookupException if more than one matching component is found.
+   * @deprecated in 1.2
    */
   @RunsInEDT
-  public JButton button(JOptionPane optionPane) {
+  @Deprecated public JButton button(JOptionPane optionPane) {
     return robot.finder().findByType(optionPane, JButton.class);
   }
 
@@ -241,9 +242,10 @@ public class JOptionPaneDriver extends JComponentDriver {
    * @param optionPane the target <code>JOptionPane</code>.
    * @return the text component in the given message.
    * @throws ComponentLookupException if the message type is not input and therefore it does not contain a text component.
+   * @deprecated in 1.2
    */
   @RunsInEDT
-  public JTextComponent textBox(JOptionPane optionPane) {
+  @Deprecated public JTextComponent textBox(JOptionPane optionPane) {
     return robot.finder().findByType(optionPane, JTextComponent.class);
   }
 

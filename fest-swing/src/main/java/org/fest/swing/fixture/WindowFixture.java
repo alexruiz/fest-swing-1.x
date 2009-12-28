@@ -37,7 +37,7 @@ import org.fest.swing.lock.ScreenLock;
  * @author Alex Ruiz
  */
 public abstract class WindowFixture<T extends Window> extends ContainerFixture<T> implements CommonComponentFixture,
-    WindowLikeContainerFixture {
+    WindowLikeContainerFixture, JPopupMenuInvokerFixture {
 
   /**
    * Creates a new <code>{@link WindowFixture}</code>. This constructor creates a new <code>{@link Robot}</code>

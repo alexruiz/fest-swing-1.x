@@ -19,9 +19,7 @@ import static org.fest.swing.fixture.ComponentFixtureValidator.notNullRobot;
 
 import java.util.regex.Pattern;
 
-import javax.swing.JButton;
 import javax.swing.JOptionPane;
-import javax.swing.text.JTextComponent;
 
 import org.fest.swing.core.*;
 import org.fest.swing.driver.JOptionPaneDriver;
@@ -38,7 +36,7 @@ import org.fest.swing.timing.Timeout;
  *
  * @author Alex Ruiz
  */
-public class JOptionPaneFixture extends ComponentFixture<JOptionPane> implements CommonComponentFixture {
+public class JOptionPaneFixture extends ContainerFixture<JOptionPane> implements CommonComponentFixture {
 
   private JOptionPaneDriver driver;
 
@@ -142,23 +140,6 @@ public class JOptionPaneFixture extends ComponentFixture<JOptionPane> implements
    */
   public JButtonFixture buttonWithText(Pattern pattern) {
     return new JButtonFixture(robot, driver.buttonWithText(target, pattern));
-  }
-
-  /**
-   * Finds the first <code>{@link JButton}</code> in this fixture's <code>{@link JOptionPane}</code>.
-   * @return a fixture wrapping the first <code>JButton</code> contained in this fixture's <code>JOptionPane</code>.
-   */
-  public JButtonFixture button() {
-    return new JButtonFixture(robot, driver.button(target));
-  }
-
-  /**
-   * Returns the <code>{@link JTextComponent}</code> in the given message only if the message is of type input.
-   * @return the text component in the given message.
-   * @throws ComponentLookupException if the message type is not input and therefore it does not contain a text component.
-   */
-  public JTextComponentFixture textBox() {
-    return new JTextComponentFixture(robot, driver.textBox(target));
   }
 
   /**
