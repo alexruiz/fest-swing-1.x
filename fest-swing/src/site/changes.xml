@@ -44,6 +44,9 @@
         has it,) the component hierarchy will not be created until the lock is released, preventing seeing a stale
         component hierarchy.
       </action>
+      <action dev="alexruiz" type="fix" issue="FEST-123" due-to="Jeanette Winzenburg">
+        Added method 'clickItem' (with overloaded versions) to JListFixture.
+      </action>
       <action dev="alexruiz" type="fix" issue="FEST-175" due-to="Jan Zuchhold">
         Removed mappings for German umlauts in KeyStrokeMappingProvider_de.
       </action>

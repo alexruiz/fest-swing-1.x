@@ -63,7 +63,8 @@ public class JListItemFixture implements ItemFixture {
    * the <code>JList</code>.
    */
   public final JListItemFixture select() {
-    return click();
+    list.selectItem(index);
+    return this;
   }
 
   /**
@@ -75,7 +76,7 @@ public class JListItemFixture implements ItemFixture {
    * the <code>JList</code>.
    */
   public final JListItemFixture click() {
-    list.selectItem(index);
+    list.clickItem(index);
     return this;
   }
 

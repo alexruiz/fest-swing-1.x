@@ -199,20 +199,6 @@ public class JListFixture extends ComponentFixture<JList> implements CommonCompo
   }
 
   /**
-   * Simulates a user selecting an item in this fixture's <code>{@link JList}</code>.
-   * @param index the index of the item to select.
-   * @return this fixture.
-   * @throws IllegalStateException if this fixture's <code>JList</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JList</code> is not showing on the screen.
-   * @throws IndexOutOfBoundsException if the given index is negative or greater than the index of the last item in the
-   * <code>JList</code>.
-   */
-  public JListFixture selectItem(int index) {
-    driver.selectItem(target, index);
-    return this;
-  }
-
-  /**
    * Simulates a user selecting the specified items in this fixture's <code>{@link JList}</code>. The items to select
    * should match the given values.
    * @param items the text of the items to select. Each <code>String</code> can be a regular expression.
@@ -251,11 +237,29 @@ public class JListFixture extends ComponentFixture<JList> implements CommonCompo
 
   /**
    * Simulates a user selecting an item in this fixture's <code>{@link JList}</code>.
+   * @param index the index of the item to select.
+   * @return this fixture.
+   * @throws IllegalStateException if this fixture's <code>JList</code> is disabled.
+   * @throws IllegalStateException if this fixture's <code>JList</code> is not showing on the screen.
+   * @throws IndexOutOfBoundsException if the given index is negative or greater than the index of the last item in the
+   * <code>JList</code>.
+   * @see #item(int)
+   * @see JListItemFixture#select()
+   */
+  public JListFixture selectItem(int index) {
+    driver.selectItem(target, index);
+    return this;
+  }
+
+  /**
+   * Simulates a user selecting an item in this fixture's <code>{@link JList}</code>.
    * @param text the text of the item to select. It can be a regular expression.
    * @return this fixture.
    * @throws IllegalStateException if this fixture's <code>JList</code> is disabled.
    * @throws IllegalStateException if this fixture's <code>JList</code> is not showing on the screen.
    * @throws LocationUnavailableException if an element matching the given text cannot be found.
+   * @see #item(String)
+   * @see JListItemFixture#select()
    * @see #cellReader(JListCellReader)
    */
   public JListFixture selectItem(String text) {
@@ -272,11 +276,66 @@ public class JListFixture extends ComponentFixture<JList> implements CommonCompo
    * @throws IllegalStateException if this fixture's <code>JList</code> is not showing on the screen.
    * @throws LocationUnavailableException if an element matching the given text cannot be found.
    * @throws NullPointerException if the given regular expression pattern is <code>null</code>.
+   * @see #item(Pattern)
+   * @see JListItemFixture#select()
    * @see #cellReader(JListCellReader)
    * @since 1.2
    */
   public JListFixture selectItem(Pattern pattern) {
     driver.selectItem(target, pattern);
+    return this;
+  }
+
+  /**
+   * Simulates a user clicking an item in this fixture's <code>{@link JList}</code>.
+   * @param index the index of the item to clicking.
+   * @return this fixture.
+   * @throws IllegalStateException if this fixture's <code>JList</code> is disabled.
+   * @throws IllegalStateException if this fixture's <code>JList</code> is not showing on the screen.
+   * @throws IndexOutOfBoundsException if the given index is negative or greater than the index of the last item in the
+   * <code>JList</code>.
+   * @see #item(int)
+   * @see JListItemFixture#click()
+   * @since 1.2
+   */
+  public JListFixture clickItem(int index) {
+    driver.clickItem(target, index, LEFT_BUTTON, 1);
+    return this;
+  }
+
+  /**
+   * Simulates a user clicking an item in this fixture's <code>{@link JList}</code>.
+   * @param text the text of the item to select. It can be a regular expression.
+   * @return this fixture.
+   * @throws IllegalStateException if this fixture's <code>JList</code> is disabled.
+   * @throws IllegalStateException if this fixture's <code>JList</code> is not showing on the screen.
+   * @throws LocationUnavailableException if an element matching the given text cannot be found.
+   * @see #item(String)
+   * @see JListItemFixture#select()
+   * @see #cellReader(JListCellReader)
+   * @since 1.2
+   */
+  public JListFixture clickItem(String text) {
+    driver.clickItem(target, text, LEFT_BUTTON, 1);
+    return this;
+  }
+
+  /**
+   * Simulates a user clicking an item in this fixture's <code>{@link JList}</code>. The value of the item to select
+   * must match the given regular expression pattern.
+   * @param pattern the regular expression pattern to match.
+   * @return this fixture.
+   * @throws IllegalStateException if this fixture's <code>JList</code> is disabled.
+   * @throws IllegalStateException if this fixture's <code>JList</code> is not showing on the screen.
+   * @throws LocationUnavailableException if an element matching the given text cannot be found.
+   * @throws NullPointerException if the given regular expression pattern is <code>null</code>.
+   * @see #item(Pattern)
+   * @see JListItemFixture#select()
+   * @see #cellReader(JListCellReader)
+   * @since 1.2
+   */
+  public JListFixture clickItem(Pattern pattern) {
+    driver.clickItem(target, pattern, LEFT_BUTTON, 1);
     return this;
   }
 
