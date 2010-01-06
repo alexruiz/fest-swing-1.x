@@ -15,6 +15,8 @@
  */
 package org.fest.swing.util;
 
+import org.fest.reflect.core.Reflection;
+
 /**
  * Understands installation of AWT exception handlers.
  * <p>
@@ -35,6 +37,7 @@ public final class AWTExceptionHandlerInstaller {
   /**
    * Installs the given exception handler type.
    * @param exceptionHandlerType the type of exception handler to be installed in the current JVM.
+   * @throws IllegalArgumentException if the given type does not have a default constructor.
    */
   public static void installAWTExceptionHandler(Class<?> exceptionHandlerType) {
     installAWTExceptionHandler(exceptionHandlerType, WRITER);
@@ -42,6 +45,11 @@ public final class AWTExceptionHandlerInstaller {
 
   // package-protected for testing
   static void installAWTExceptionHandler(Class<?> exceptionHandlerType, SystemPropertyWriter writer) {
+    try {
+      Reflection.constructor().in(exceptionHandlerType).info();
+    } catch (RuntimeException e) {
+      throw new IllegalArgumentException("The exception handler type should have a default constructor");
+    }
     writer.updateSystemProperty("sun.awt.exception.handler", exceptionHandlerType.getName());
   }
 

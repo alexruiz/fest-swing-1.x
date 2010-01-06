@@ -149,6 +149,9 @@
       <action dev="alexruiz" type="add" issue="FEST-280">
         Added method 'textOf(JTextComponent)' to JTextComponentDriver.
       </action>
+      <action dev="alexruiz" type="add" issue="FEST-283">
+        Added class org.fest.swing.util.AWTExceptionHandler.
+      </action>
     </release>
     <release version="1.2a3" date="2009-08-31" description="Subsequent release">
       <action dev="alexruiz" type="add" issue="FEST-7" due-to="Cephei">
