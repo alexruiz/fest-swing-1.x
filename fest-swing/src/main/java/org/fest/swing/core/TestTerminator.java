@@ -11,9 +11,11 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2009 the original author or authors.
+ * Copyright @2008-2010 the original author or authors.
  */
 package org.fest.swing.core;
+
+import static org.fest.swing.util.AWTExceptionHandlerInstaller.installAWTExceptionHandler;
 
 /**
  * Understands terminating running FEST-Swing tests.
@@ -59,6 +61,6 @@ class TestTerminator {
 
   static {
     // Make sure there's an exception handler that will dump a stack trace on abort.
-    System.setProperty("sun.awt.exception.handler", SimpleFallbackExceptionHandler.class.getName());
+    installAWTExceptionHandler(SimpleFallbackExceptionHandler.class);
   }
 }

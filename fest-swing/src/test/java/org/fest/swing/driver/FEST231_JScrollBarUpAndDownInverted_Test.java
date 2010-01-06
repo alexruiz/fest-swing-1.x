@@ -1,7 +1,7 @@
 /*
  * Created on Nov 28, 2009
  *
- * Copyright @2009 the original author or authors.
+ * Copyright @2009-2010 the original author or authors.
  */
 package org.fest.swing.driver;
 
