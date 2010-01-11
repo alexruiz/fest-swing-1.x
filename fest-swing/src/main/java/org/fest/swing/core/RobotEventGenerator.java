@@ -24,8 +24,12 @@ import static org.fest.swing.util.Platform.isOSX;
 import static org.fest.swing.util.Platform.isWindows;
 import static org.fest.util.Strings.concat;
 
-import java.awt.*;
+import java.awt.AWTException;
+import java.awt.Component;
+import java.awt.Point;
+import java.awt.Rectangle;
 import java.awt.Robot;
+import java.awt.Toolkit;
 
 import org.fest.swing.util.RobotFactory;
 
@@ -44,7 +48,7 @@ class RobotEventGenerator implements InputEventGenerator {
   RobotEventGenerator() {
     this(new Settings());
   }
-  
+
   RobotEventGenerator(Settings settings) {
     this(new RobotFactory(), settings);
   }
@@ -68,7 +72,7 @@ class RobotEventGenerator implements InputEventGenerator {
     if (c != null) {
       p = translate(c, where.x, where.y);
       if (!isPointInScreenBoundaries(p))
-        throw actionFailure("The component to click is out of the boundaries of the screeen");
+        throw actionFailure("The component to click is out of the boundaries of the screen");
     }
     pressMouse(p, buttons);
   }

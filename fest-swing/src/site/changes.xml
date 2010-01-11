@@ -152,6 +152,9 @@
       <action dev="alexruiz" type="add" issue="FEST-283">
         Added class org.fest.swing.util.AWTExceptionHandler.
       </action>
+      <action dev="alexruiz" type="fix" isse="FEST-285" due-to="Steve Farrell">
+        Fixed typo in error message displayed when a component to click is out of screen bounds.
+      </action>
     </release>
     <release version="1.2a3" date="2009-08-31" description="Subsequent release">
       <action dev="alexruiz" type="add" issue="FEST-7" due-to="Cephei">
