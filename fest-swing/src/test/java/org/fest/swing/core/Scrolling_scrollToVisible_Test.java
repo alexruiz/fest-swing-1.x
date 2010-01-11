@@ -12,7 +12,7 @@
  * 
  * Copyright @2009-2010 the original author or authors.
  */
-package org.fest.swing.driver;
+package org.fest.swing.core;
 
 import static java.awt.BorderLayout.CENTER;
 import static javax.swing.Box.createVerticalStrut;
@@ -25,6 +25,7 @@ import java.awt.Component;
 import javax.swing.*;
 
 import org.fest.swing.core.Robot;
+import org.fest.swing.driver.Scrolling;
 import org.fest.swing.edt.GuiQuery;
 import org.fest.swing.fixture.JButtonFixture;
 import org.fest.swing.test.core.RobotBasedTestCase;

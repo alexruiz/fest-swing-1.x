@@ -16,6 +16,7 @@
 package org.fest.swing.core;
 
 import static java.lang.String.valueOf;
+import static org.fest.swing.awt.AWT.isPointInScreenBoundaries;
 import static org.fest.swing.awt.AWT.translate;
 import static org.fest.swing.exception.ActionFailedException.actionFailure;
 import static org.fest.swing.exception.UnexpectedException.unexpected;
@@ -27,9 +28,7 @@ import static org.fest.util.Strings.concat;
 import java.awt.AWTException;
 import java.awt.Component;
 import java.awt.Point;
-import java.awt.Rectangle;
 import java.awt.Robot;
-import java.awt.Toolkit;
 
 import org.fest.swing.util.RobotFactory;
 
@@ -75,11 +74,6 @@ class RobotEventGenerator implements InputEventGenerator {
         throw actionFailure("The component to click is out of the boundaries of the screen");
     }
     pressMouse(p, buttons);
-  }
-
-  private boolean isPointInScreenBoundaries(Point p) {
-    Rectangle screen = new Rectangle(Toolkit.getDefaultToolkit().getScreenSize());
-    return screen.contains(p);
   }
 
   /** {@inheritDoc} */

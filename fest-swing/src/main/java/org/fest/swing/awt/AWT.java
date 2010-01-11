@@ -20,10 +20,22 @@ import static org.fest.swing.edt.GuiActionRunner.execute;
 import static org.fest.swing.util.Platform.isWindows;
 import static org.fest.util.Strings.concat;
 
-import java.awt.*;
+import java.awt.Component;
+import java.awt.Container;
+import java.awt.Dialog;
+import java.awt.Dimension;
+import java.awt.Frame;
+import java.awt.Insets;
+import java.awt.Point;
+import java.awt.Rectangle;
+import java.awt.Toolkit;
+import java.awt.Window;
 import java.awt.event.InputEvent;
 
-import javax.swing.*;
+import javax.swing.JComponent;
+import javax.swing.JOptionPane;
+import javax.swing.JPopupMenu;
+import javax.swing.SwingUtilities;
 
 import org.fest.swing.annotation.RunsInCurrentThread;
 import org.fest.swing.annotation.RunsInEDT;
@@ -38,6 +50,30 @@ public class AWT {
 
   private static final String APPLET_APPLET_VIEWER_CLASS = "sun.applet.AppletViewer";
   private static final String ROOT_FRAME_CLASSNAME = concat(SwingUtilities.class.getName(), "$");
+
+  /**
+   * Indicates whether the given point, relative to the given <code>JComponent</code>, is inside the screen boundaries.
+   * @param c the given <code>JComponent</code>.
+   * @param p the point to verify.
+   * @return <code>true</code> if the point is inside the screen boundaries; <code>false</code> otherwise.
+   * @since 1.2
+   */
+  public static boolean isPointInScreenBoundaries(JComponent c, Point p) {
+    Point where = translate(c, p.x, p.y);
+    Rectangle screen = new Rectangle(Toolkit.getDefaultToolkit().getScreenSize());
+    return screen.contains(where);
+  }
+
+  /**
+   * Indicates whether the given point is inside the screen boundaries.
+   * @param p the point to verify.
+   * @return <code>true</code> if the point is inside the screen boundaries; <code>false</code> otherwise.
+   * @since 1.2
+   */
+  public static boolean isPointInScreenBoundaries(Point p) {
+    Rectangle screen = new Rectangle(Toolkit.getDefaultToolkit().getScreenSize());
+    return screen.contains(p);
+  }
 
   /**
    * Returns an array of all <code>{@link Window}</code>s that have no owner. They include <code>{@link Frame}</code>s

@@ -14,13 +14,18 @@
  */
 package org.fest.swing.core;
 
-import static java.awt.event.InputEvent.*;
-import static java.awt.event.KeyEvent.*;
+import static java.awt.event.InputEvent.BUTTON1_MASK;
+import static java.awt.event.InputEvent.BUTTON2_MASK;
+import static java.awt.event.InputEvent.BUTTON3_MASK;
+import static java.awt.event.KeyEvent.CHAR_UNDEFINED;
+import static java.awt.event.KeyEvent.KEY_TYPED;
+import static java.awt.event.KeyEvent.VK_UNDEFINED;
 import static java.awt.event.WindowEvent.WINDOW_CLOSING;
 import static java.lang.System.currentTimeMillis;
 import static javax.swing.SwingUtilities.getWindowAncestor;
 import static javax.swing.SwingUtilities.isEventDispatchThread;
 import static org.fest.swing.awt.AWT.centerOf;
+import static org.fest.swing.awt.AWT.isPointInScreenBoundaries;
 import static org.fest.swing.awt.AWT.visibleCenterOf;
 import static org.fest.swing.core.ActivateWindowTask.activateWindow;
 import static org.fest.swing.core.ComponentRequestFocusTask.giveFocusTo;
@@ -29,6 +34,7 @@ import static org.fest.swing.core.FocusOwnerFinder.inEdtFocusOwner;
 import static org.fest.swing.core.InputModifiers.unify;
 import static org.fest.swing.core.MouseButton.LEFT_BUTTON;
 import static org.fest.swing.core.MouseButton.RIGHT_BUTTON;
+import static org.fest.swing.core.Scrolling.scrollToVisible;
 import static org.fest.swing.core.WindowAncestorFinder.windowAncestorOf;
 import static org.fest.swing.edt.GuiActionRunner.execute;
 import static org.fest.swing.exception.ActionFailedException.actionFailure;
@@ -45,12 +51,24 @@ import static org.fest.util.Strings.concat;
 import static org.fest.util.Strings.isEmpty;
 
 import java.applet.Applet;
-import java.awt.*;
-import java.awt.event.*;
-import java.util.*;
+import java.awt.Component;
+import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.EventQueue;
+import java.awt.Point;
+import java.awt.Toolkit;
+import java.awt.Window;
+import java.awt.event.InvocationEvent;
+import java.awt.event.KeyEvent;
+import java.awt.event.WindowEvent;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
-import javax.swing.*;
+import javax.swing.JComponent;
+import javax.swing.JMenu;
+import javax.swing.JPopupMenu;
+import javax.swing.KeyStroke;
 
 import net.jcip.annotations.GuardedBy;
 
@@ -58,7 +76,9 @@ import org.fest.swing.annotation.RunsInCurrentThread;
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
 import org.fest.swing.edt.GuiTask;
-import org.fest.swing.exception.*;
+import org.fest.swing.exception.ActionFailedException;
+import org.fest.swing.exception.ComponentLookupException;
+import org.fest.swing.exception.WaitTimedOutError;
 import org.fest.swing.hierarchy.ComponentHierarchy;
 import org.fest.swing.hierarchy.ExistingHierarchy;
 import org.fest.swing.input.InputState;
@@ -360,7 +380,16 @@ public class BasicRobot implements Robot {
   /** {@inheritDoc} */
   @RunsInEDT
   public void click(Component c, MouseButton button, int times) {
-    click(c, visibleCenterOf(c), button, times);
+    Point where = visibleCenterOf(c);
+    if (c instanceof JComponent)
+      where = scrollIfNecessary((JComponent) c, where);
+    click(c, where, button, times);
+  }
+
+  private Point scrollIfNecessary(JComponent c, Point p) {
+    if (isPointInScreenBoundaries(c, p)) return p;
+    scrollToVisible(this, c);
+    return visibleCenterOf(c);
   }
 
   /** {@inheritDoc} */

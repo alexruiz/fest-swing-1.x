@@ -152,6 +152,15 @@
       <action dev="alexruiz" type="add" issue="FEST-283">
         Added class org.fest.swing.util.AWTExceptionHandler.
       </action>
+      <action dev="alexruiz" type="fix" isse="FEST-284" due-to="Steve Farrell">
+        Robot automatically performs any necessary scrolls to make a component visible before clicking it. 
+      </action>
+      <action dev="alexruiz" type="fix" isse="FEST-284" due-to="Steve Farrell">
+        Moved class Scrolling from package org.fest.swing.driver to org.fest.swing.core.
+      </action>
+      <action dev="alexruiz" type="fix" isse="FEST-284" due-to="Steve Farrell">
+        Deprecated class org.fest.swing.driver.Scrolling. Use org.fest.swing.core.Scrolling instead.
+      </action>
       <action dev="alexruiz" type="fix" isse="FEST-285" due-to="Steve Farrell">
         Fixed typo in error message displayed when a component to click is out of screen bounds.
       </action>
