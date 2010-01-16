@@ -70,7 +70,7 @@ public class JListItemFixtureTest {
   public void shouldClick() {
     new EasyMockTemplate(list) {
       protected void expectations() {
-        expect(list.selectItem(index)).andReturn(list);
+        expect(list.clickItem(index)).andReturn(list);
       }
 
       protected void codeToTest() {

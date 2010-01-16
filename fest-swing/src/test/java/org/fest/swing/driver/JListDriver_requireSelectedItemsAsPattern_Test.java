@@ -37,7 +37,7 @@ public class JListDriver_requireSelectedItemsAsPattern_Test extends JListDriver_
       failWhenExpectingException();
     } catch (AssertionError e) {
       assertThat(e.getMessage()).contains("property:'selectedIndices'")
-                                .contains("expected:<['one', 'two']> but was:<[]>");
+                                .contains("expected:<[['one', 'two']]> but was:<[[]]>");
     }
   }
 
@@ -49,7 +49,7 @@ public class JListDriver_requireSelectedItemsAsPattern_Test extends JListDriver_
       failWhenExpectingException();
     } catch (AssertionError e) {
       assertThat(e.getMessage()).contains("property:'selectedIndices'")
-                                .contains("expected:<['one']> but was:<['three']>");
+                                .contains("expected:<['[on]e']> but was:<['[thre]e']>");
     }
   }
 

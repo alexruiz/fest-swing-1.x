@@ -41,7 +41,7 @@ public class JProgressBarDriver_requireTextAsPattern_Test extends JProgressBarDr
       driver.requireText(progressBar, regex("50%"));
       failWhenExpectingException();
     } catch (AssertionError e) {
-      assertThat(e.getMessage()).contains("property:'text'")
+      assertThat(e.getMessage()).contains("property:'string'")
                                 .contains("actual value:<'60%'> does not match pattern:<'50%'>");
     }
   }

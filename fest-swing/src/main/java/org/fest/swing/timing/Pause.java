@@ -70,9 +70,9 @@ public final class Pause {
     if (condition == null) throw new NullPointerException("The condition to verify should not be null");
     TimeoutWatch watch = startWatchWithTimeoutOf(timeout);
     while (!condition.test()) {
-      if (watch.isTimeOut()) {
+      if (watch.isTimeOut() && !condition.test()) {
         condition.done();
-        if (!condition.test()) throw new WaitTimedOutError((concat("Timed out waiting for ", condition)));
+        throw new WaitTimedOutError((concat("Timed out waiting for ", condition)));
       }
       pause(SLEEP_INTERVAL);
     }

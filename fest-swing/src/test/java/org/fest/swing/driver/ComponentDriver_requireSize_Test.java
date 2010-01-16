@@ -45,7 +45,7 @@ public class ComponentDriver_requireSize_Test extends ComponentDriver_TestCase {
       failWhenExpectingException();
     } catch (AssertionError e) {
       assertThat(e.getMessage()).contains("property:'size'")
-                                .contains("expected:<(0, 0)>")
+                                .contains("expected:<([0, 0])>")
                                 .contains("but was:<");
     }
   }

@@ -17,35 +17,35 @@ package org.fest.swing.fixture;
 
 import static org.easymock.classextension.EasyMock.createMock;
 import static org.fest.assertions.Assertions.assertThat;
-import static org.fest.swing.test.builder.JLabels.label;
+import static org.fest.swing.test.builder.JPanels.panel;
 
-import javax.swing.JLabel;
+import javax.swing.JPanel;
 
-import org.fest.swing.driver.JLabelDriver;
+import org.fest.swing.driver.JComponentDriver;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
 /**
- * Tests that <code>{@link JLabelFixture}</code> is a <code>{@link ContainerFixture}</code>.
+ * Tests that <code>{@link JPanelFixture}</code> is a <code>{@link ContainerFixture}</code>.
  *
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class JPanelFixture_container_Test extends ComponentFixture_TestCase<JLabel> {
+public class JPanelFixture_container_Test extends ComponentFixture_TestCase<JPanel> {
 
-  private static JLabel target;
+  private static JPanel target;
 
-  private JLabelDriver driver;
-  private JLabelFixture fixture;
+  private JComponentDriver driver;
+  private JPanelFixture fixture;
 
   @BeforeClass
   public static void setUpTarget() {
-    target = label().createNew();
+    target = panel().createNew();
   }
 
   void onSetUp() {
-    driver = createMock(JLabelDriver.class);
-    fixture = new JLabelFixture(robot(), target);
+    driver = createMock(JComponentDriver.class);
+    fixture = new JPanelFixture(robot(), target);
     fixture.driver(driver);
   }
 
@@ -54,7 +54,7 @@ public class JPanelFixture_container_Test extends ComponentFixture_TestCase<JLab
     assertThat(fixture).isInstanceOf(ContainerFixture.class);
   }
 
-  JLabelDriver driver() {  return driver; }
-  JLabel target() { return target; }
-  JLabelFixture fixture() { return fixture; }
+  JComponentDriver driver() {  return driver; }
+  JPanel target() { return target; }
+  JPanelFixture fixture() { return fixture; }
 }
