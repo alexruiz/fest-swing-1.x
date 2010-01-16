@@ -1,16 +1,16 @@
 /*
  * Created on Nov 29, 2008
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License
  * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
- * 
+ *
  * Copyright @2008-2010 the original author or authors.
  */
 package org.fest.swing.fixture;
@@ -40,7 +40,7 @@ public class Bug134_clickComponentOutsideScreen_Test extends RobotBasedTestCase 
 
   private FrameFixture fixture;
   private MyWindow window;
-  
+
   @Override protected final void onSetUp() {
     window = MyWindow.createNew();
     fixture = new FrameFixture(robot, window);
@@ -54,7 +54,7 @@ public class Bug134_clickComponentOutsideScreen_Test extends RobotBasedTestCase 
       fixture.button().click();
       failWhenExpectingException();
     } catch (ActionFailedException e) {
-      assertThat(e.getMessage()).isEqualTo("The component to click is out of the boundaries of the screeen");
+      assertThat(e.getMessage()).isEqualTo("The component to click is out of the boundaries of the screen");
     }
   }
 
@@ -64,10 +64,10 @@ public class Bug134_clickComponentOutsideScreen_Test extends RobotBasedTestCase 
     int y = screen.height / 2;
     fixture.moveTo(new Point(x, y));
   }
-  
+
   private static class MyWindow extends TestWindow {
     private static final long serialVersionUID = 1L;
-    
+
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
@@ -76,10 +76,10 @@ public class Bug134_clickComponentOutsideScreen_Test extends RobotBasedTestCase 
         }
       });
     }
-    
+
     final JTextField textField = new JTextField(20);
     final JButton button = new JButton("Click Me");
-    
+
     private MyWindow() {
       super(Bug134_clickComponentOutsideScreen_Test.class);
       addComponents(textField, button);

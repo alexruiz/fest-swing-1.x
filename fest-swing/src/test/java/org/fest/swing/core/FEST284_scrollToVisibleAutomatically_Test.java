@@ -22,8 +22,7 @@ import static org.fest.swing.core.MouseButton.LEFT_BUTTON;
 import static org.fest.swing.edt.GuiActionRunner.execute;
 import static org.fest.swing.test.recorder.ClickRecorder.attachTo;
 
-import java.awt.BorderLayout;
-import java.awt.Component;
+import java.awt.*;
 
 import javax.swing.Box;
 import javax.swing.JButton;
@@ -67,7 +66,7 @@ public class FEST284_scrollToVisibleAutomatically_Test extends RobotBasedTestCas
           MyWindow w = new MyWindow();
           display(w);
           w.setLocation(0, 0);
-          w.setSize(w.getToolkit().getScreenSize());
+          w.setSize(new Dimension(800, 600));
           return w;
         }
       });
