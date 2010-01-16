@@ -72,6 +72,9 @@
       <action dev="alexruiz" type="add" issue="FEST-222" due-to="Jacob Qvortrup">
         Added class org.fest.swing.fixture.JProgressBarFixture.
       </action>
+      <action dev="alexruiz" type="add" issue="FEST-222" due-to="Jacob Qvortrup">
+        Added methods 'progressBar' to class org.fest.swing.fixture.ContainerFixture.
+      </action>
       <action dev="alexruiz" type="add" isse="FEST-225" due-to="Morten Breum Mikkelsen">
         Added class org.fest.swing.data.TableCellInRowByValue to lookup a JTable cell in a row whose values match the
         given one.

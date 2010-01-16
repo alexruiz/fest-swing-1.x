@@ -16,9 +16,31 @@ package org.fest.swing.fixture;
 
 import static org.fest.swing.timing.Timeout.timeout;
 
-import java.awt.*;
+import java.awt.Component;
+import java.awt.Container;
+import java.awt.Dialog;
 
-import javax.swing.*;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
+import javax.swing.JFileChooser;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JProgressBar;
+import javax.swing.JRadioButton;
+import javax.swing.JScrollBar;
+import javax.swing.JScrollPane;
+import javax.swing.JSlider;
+import javax.swing.JSpinner;
+import javax.swing.JSplitPane;
+import javax.swing.JTabbedPane;
+import javax.swing.JTable;
+import javax.swing.JToggleButton;
+import javax.swing.JToolBar;
+import javax.swing.JTree;
 import javax.swing.text.JTextComponent;
 
 import org.fest.swing.core.GenericTypeMatcher;
@@ -383,6 +405,35 @@ public interface ComponentContainerFixture {
    * @throws ComponentLookupException if a <code>JPanel</code> having a matching name could not be found.
    */
   JPanelFixture panel(String name);
+
+  /**
+   * Returns a <code>{@link JProgressBar}</code> found in this fixture's <code>{@link Container}</code>.
+   * @return a fixture that manages the <code>JProgressBar</code> found.
+   * @throws ComponentLookupException if a <code>JProgressBar</code> could not be found.
+   * @throws ComponentLookupException if more than one <code>JProgressBar</code> is found.
+   */
+  JProgressBarFixture progressBar();
+
+  /**
+   * Finds a <code>{@link JProgressBar}</code> in this fixture's <code>{@link Container}</code>, that matches the
+   * specified search criteria.
+   * @param matcher contains the search criteria for finding a <code>JProgressBar</code>.
+   * @return a fixture that manages the <code>JProgressBar</code> found.
+   * @throws ComponentLookupException if a <code>JProgressBar</code> that matches the given search criteria could not be
+   * found.
+   * @throws ComponentLookupException if more than one <code>JProgressBar</code> that matches the given search criteria
+   * is found.
+   */
+  JProgressBarFixture progressBar(GenericTypeMatcher<? extends JProgressBar> matcher);
+
+  /**
+   * Finds a <code>{@link JProgressBar}</code> in this fixture's <code>{@link Container}</code>, which name matches
+   * the specified one.
+   * @param name the name to match.
+   * @return a fixture that manages the <code>JProgressBar</code> found.
+   * @throws ComponentLookupException if a <code>JProgressBar</code> having a matching name could not be found.
+   */
+  JProgressBarFixture progressBar(String name);
 
   /**
    * Returns a <code>{@link JRadioButton}</code> found in this fixture's <code>{@link Container}</code>.
