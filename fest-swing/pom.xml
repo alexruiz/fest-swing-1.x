@@ -5,7 +5,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.easytesting</groupId>
   <artifactId>fest-swing</artifactId>
-  <version>1.2a4-SNAPSHOT</version>
+  <version>1.2a4</version>
   <name>FEST Swing</name>
   <description>Fluent interface for functional GUI testing</description>
   <inceptionYear>2007</inceptionYear>
@@ -35,7 +35,7 @@
             <include>**/*Test.java</include>
           </includes>
           <argLine>-Xms512m -Xmx512m</argLine>
-          <skipTests>true</skipTests>
+          <!--skipTests>true</skipTests-->
         </configuration>
       </plugin>
       <plugin>
