@@ -67,7 +67,7 @@
       </roles>
     </developer>
     <developer>
-      <id>csaba.juhos</id>
+      <id>szczepiq</id>
       <name>Szczepan Faber</name>
       <url>http://monkeyisland.pl/</url>
       <roles>
@@ -75,6 +75,7 @@
       </roles>
     </developer>
     <developer>
+      <id>&nbsp;</id>
       <name>Simeon Fitch</name>
       <url>http://www.mseedsoft.com/</url>
       <roles>
@@ -198,7 +199,13 @@
       <name>Jacob Fahrenkrug</name>
     </contributor>
     <contributor>
+      <name>Steve Farrell</name>
+    </contributor>
+    <contributor>
       <name>Woody Folsom</name>
+    </contributor>
+    <contributor>
+      <name>Stephen Gade Esven</name>
     </contributor>
     <contributor>
       <name>Konrad Garus</name>
@@ -208,6 +215,9 @@
     </contributor>
     <contributor>
       <name>Timmo Gierke</name>
+    </contributor>
+    <contributor>
+      <name>Martin Ginkel</name>
     </contributor>
     <contributor>
       <name>Jason Goodwin</name>
@@ -229,9 +239,6 @@
       <name>Leo Jay</name>
     </contributor>
     <contributor>
-      <name>Jeanette (Kleopatra)</name>
-    </contributor>
-    <contributor>
       <name>Marc Johen</name>
     </contributor>
     <contributor>
@@ -241,10 +248,16 @@
       <name>Rick Juneson</name>
     </contributor>
     <contributor>
+      <name>Julia Koep</name>
+    </contributor>
+    <contributor>
       <name>Eric Kolotyluk</name>
     </contributor>
     <contributor>
       <name>Manuel Kueblboeck</name>
+    </contributor>
+    <contributor>
+      <name>Harry L</name>
     </contributor>
     <contributor>
       <name>Felipe Leme</name>
@@ -254,6 +267,9 @@
     </contributor>
     <contributor>
       <name>Michel Lohr</name>
+    </contributor>
+    <contributor>
+      <name>Pavol Marko</name>
     </contributor>
     <contributor>
       <name>Frederik Martens</name>
@@ -269,6 +285,9 @@
       <organization>Oracle</organization>
       <organizationUrl>http://www.oracle.com/</organizationUrl>
       <url>http://www.groundside.com/blog/DuncanMills.php</url>
+    </contributor>
+    <contributor>
+      <name>Kyle Murphy</name>
     </contributor>
     <contributor>
       <name>Stephen Neal</name>
@@ -293,6 +312,9 @@
       <url>http://weblogs.java.net/blog/alexfromsun/</url>
     </contributor>
     <contributor>
+      <name>Jacob Qvortrup</name>
+    </contributor>
+    <contributor>
       <name>Javier Sandino</name>
     </contributor>
     <contributor>
@@ -306,6 +328,9 @@
     <contributor>
       <name>Michael Schnell</name>
       <url>http://www.future-invent.de/</url>
+    </contributor>
+    <contributor>
+      <name>Glen Schrader</name>
     </contributor>
     <contributor>
       <name>Uli Schrempp</name>
@@ -324,6 +349,9 @@
     </contributor>
     <contributor>
       <name>J. Simmons</name>
+    </contributor>
+    <contributor>
+      <name>Florian SIMON</name>
     </contributor>
     <contributor>
       <name>Tarjei Skorgenes</name>
@@ -356,10 +384,19 @@
       <name>Lukasz Tutaj</name>
     </contributor>
     <contributor>
+      <name>Mihael Vrbanec</name>
+    </contributor>
+    <contributor>
       <name>Geertjan Wielenga</name>
       <organization>Sun Microsystems</organization>
       <organizationUrl>http://www.sun.com/</organizationUrl>
       <url>http://blogs.sun.com/geertjan/</url>
+    </contributor>
+    <contributor>
+      <name>Dominik Wild</name>
+    </contributor>
+    <contributor>
+      <name>Jeanette Winzenburg</name>
     </contributor>
     <contributor>
       <name>Geoffrey Wiseman</name>
