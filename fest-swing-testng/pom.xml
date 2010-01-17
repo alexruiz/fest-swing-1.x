@@ -5,7 +5,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.easytesting</groupId>
   <artifactId>fest-swing-testng</artifactId>
-  <version>1.2a4-SNAPSHOT</version>
+  <version>1.2a4</version>
   <name>FEST Swing - TestNG Extension</name>
   <description>TestNG-specific extension for FEST-Swing</description>
   <inceptionYear>2007</inceptionYear>
@@ -23,12 +23,6 @@
       <unsubscribe>http://groups.google.com/group/easytesting</unsubscribe>
     </mailingList>
   </mailingLists>
-  <repositories>
-    <repository>
-      <id>fest</id>
-      <url>http://svn.codehaus.org/fest/m2/repo</url>
-    </repository>
-  </repositories>
   <scm>
     <developerConnection>scm:svn:https://svn.codehaus.org/fest/</developerConnection>
     <connection>scm:svn:http://svn.codehaus.org/fest/</connection>
@@ -49,7 +43,7 @@
     <dependency>
       <groupId>org.easytesting</groupId>
       <artifactId>fest-swing</artifactId>
-      <version>1.2a4-SNAPSHOT</version>
+      <version>1.2a4</version>
       <scope>compile</scope>
     </dependency>
     <dependency>
