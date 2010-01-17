@@ -5,7 +5,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.easytesting</groupId>
   <artifactId>fest-swing-junit-4.5</artifactId>
-  <version>1.2a3</version>
+  <version>1.2a4</version>
   <name>FEST Swing - JUnit 4.5 Extension</name>
   <description>JUnit 4.5-specific extension for FEST-Swing</description>
   <inceptionYear>2009</inceptionYear>
@@ -23,12 +23,6 @@
       <unsubscribe>http://groups.google.com/group/easytesting</unsubscribe>
     </mailingList>
   </mailingLists>
-  <repositories>
-    <repository>
-      <id>fest</id>
-      <url>http://svn.codehaus.org/fest/m2/repo</url>
-    </repository>
-  </repositories>
   <scm>
     <developerConnection>scm:svn:https://fest.googlecode.com/svn/trunk/</developerConnection>
     <connection>scm:svn:http://fest.googlecode.com/svn/trunk/</connection>
@@ -48,20 +42,14 @@
     <dependency>
       <groupId>org.easytesting</groupId>
       <artifactId>fest-swing</artifactId>
-      <version>1.2a3</version>
+      <version>1.2a4</version>
       <scope>compile</scope>
     </dependency>
     <dependency>
       <groupId>org.easytesting</groupId>
       <artifactId>fest-swing-junit</artifactId>
-      <version>1.2a3</version>
+      <version>1.2a4</version>
       <scope>compile</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.easytesting</groupId>
-      <artifactId>fest-assert</artifactId>
-      <version>1.1</version>
-      <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.easytesting</groupId>
