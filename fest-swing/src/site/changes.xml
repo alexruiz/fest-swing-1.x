@@ -5,7 +5,7 @@
     <author email="alex.ruiz.05@gmail.com">Alex Ruiz</author>
   </properties>
   <body>
-    <release version="1.2a4" date="2010-03-01" description="Subsequent release">
+    <release version="1.2a4" date="2010-01-19" description="Subsequent release">
       <action dev="alexruiz" type="add" issue="FEST-8">
         Added interface org.fest.swing.fixture.JTreeNodeFixture and implementations JTreePathFixture and 
         JTreeRowFixture.
