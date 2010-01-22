@@ -192,7 +192,6 @@ public class JavaFXCompilerMojo extends AbstractMojo {
     javafxc.setOptimize(optimize);
     javafxc.setSource(source);
     javafxc.setTarget(target);
-    System.out.println("verbose = " + verbose);
     javafxc.setVerbose(verbose);
   }
 
