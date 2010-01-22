@@ -37,7 +37,7 @@ class JavaFXCompilerAntTaskFactory {
 
   Javac createJavaFXCompilerAntTask(File javaFXHomeDirectory) throws MojoExecutionException {
     try {
-      Class<?> javafxc = Class.forName(JAVAFX_COMPILER_ANT_TASK_CLASS, true, classLoader(javaFXHomeDirectory));
+      Class<?> javafxc = Class.forName(JAVAFX_COMPILER_ANT_TASK_CLASS, true /*initialize*/, classLoader(javaFXHomeDirectory));
       return (Javac) javafxc.newInstance();
     } catch (Exception e) {
       throw loadingTaskFailed(e);
