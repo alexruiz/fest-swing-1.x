@@ -160,7 +160,9 @@ public class JavaFXCompilerMojo extends AbstractMojo {
   /** {@inheritDoc} */
   public void execute() throws MojoExecutionException, MojoFailureException {
     validateSourceDirectory();
-    File javaFXHomeDirectory = javaFXHomeDirectory(verifiedJavaFXHome(javaFXHome));
+    String verifiedJavaFXHome = verifiedJavaFXHome(javaFXHome);
+    getLog().info(concat("JavaFX home is ", quote(verifiedJavaFXHome)));
+    File javaFXHomeDirectory = javaFXHomeDirectory(verifiedJavaFXHome);
     Javac javafxc = taskFactory.createJavaFXCompilerAntTask(javaFXHomeDirectory);
     configureCompiler(javafxc, javaFXHomeDirectory);
     try {
