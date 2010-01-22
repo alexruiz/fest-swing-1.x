@@ -32,17 +32,21 @@ import org.apache.tools.ant.taskdefs.Javac;
  */
 class JavaFXCompilerAntTaskFactory {
 
+  private static final String COMPILER_CLASSPATH_JAR_FOLDER = concat("lib", separator, "shared", separator);
   private static final String JAVAFX_COMPILER_ANT_TASK_CLASS = "com.sun.tools.javafx.ant.JavaFxAntTask";
 
   Javac createJavaFXCompilerAntTask(File javaFXHomeDirectory) throws MojoExecutionException {
     try {
-      URL[] classpath = compilerClasspath(javaFXHomeDirectory, JAVAFX_COMPILER_CLASSPATH_FILE_NAMES);
-      URLClassLoader classLoader = new URLClassLoader(classpath, currentThread().getContextClassLoader());
-      Class<?> javafxc = Class.forName(JAVAFX_COMPILER_ANT_TASK_CLASS, true, classLoader);
+      Class<?> javafxc = Class.forName(JAVAFX_COMPILER_ANT_TASK_CLASS, true, classLoader(javaFXHomeDirectory));
       return (Javac) javafxc.newInstance();
     } catch (Exception e) {
       throw loadingTaskFailed(e);
     }
+  }
+
+  private ClassLoader classLoader(File javaFXHomeDirectory) throws MalformedURLException {
+    URL[] classpath = compilerClasspath(javaFXHomeDirectory, JAVAFX_COMPILER_CLASSPATH_FILE_NAMES);
+    return new URLClassLoader(classpath, currentThread().getContextClassLoader());
   }
 
   private static URL[] compilerClasspath(File javaFXHomeDirectory, String[] jarNames) throws MalformedURLException {
@@ -58,7 +62,7 @@ class JavaFXCompilerAntTaskFactory {
   }
 
   private static String buildCompilerJarPath(String jarName) {
-    return concat("lib", separator, "shared", separator, jarName);
+    return concat(COMPILER_CLASSPATH_JAR_FOLDER, jarName);
   }
 
   private static MojoExecutionException loadingTaskFailed(Exception cause) {
