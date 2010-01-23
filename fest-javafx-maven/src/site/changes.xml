@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+  <properties>
+    <title>Changelog</title>
+    <author email="alex.ruiz.05@gmail.com">Alex Ruiz</author>
+  </properties>
+  <body>
+    <release version="0.2" date="2010-01-26" description="Subsequent release">
+      <action dev="alexruiz" type="fix" issue="FEST-288" due-to="Viktor Hedefalk">
+        Rewrote plugin as a Java Mojo. Classworlds' exception is no longer thrown. 
+      </action>
+      <action dev="alexruiz" type="fix" issue="FEST-289" due-to="Johannes Schneider">
+        Output directory is now created if it doesn't exist. 
+      </action>
+      <action dev="alexruiz" type="fix" issue="FEST-290" due-to="William Billingsley">
+        Dependencies declared in POM are now present in the classpath.
+      </action>
+    </release>
+    <release version="0.1" date="2009-12-09" description="First public release">
+      <action dev="alexruiz" type="add" issue="FEST-8">
+        First version of JavaFX Maven plugin, written as an Ant script.
+      </action>
+    </release>
+  </body>
+</document>

@@ -14,8 +14,7 @@
  */
 package org.fest.javafx.maven;
 
-import static org.fest.javafx.maven.AntAdapter.createAntProject;
-import static org.fest.javafx.maven.AntAdapter.updatePathWithFiles;
+import static org.fest.javafx.maven.AntAdapter.*;
 import static org.fest.javafx.maven.JavaFXCompilerClasspath.JAVAFX_COMPILER_CLASSPATH_FILE_NAMES;
 import static org.fest.javafx.maven.JavaFXCompilerClasspath.JAVAFX_DESKTOP_CLASSPATH_FILE_PATTERNS;
 import static org.fest.javafx.maven.JavaFXHome.javaFXHomeDirectory;
@@ -181,8 +180,7 @@ public class JavaFXCompilerMojo extends AbstractMojo {
   private void configureCompiler(Javac javafxc, File javaFXHomeDirectory) throws MojoExecutionException {
     setProject(javafxc);
     setCompilerClasspath(javafxc, javaFXHomeDirectory);
-    setSourceDirectory(javafxc);
-    setSourcePath(javafxc);
+    setSource(javafxc);
     setClasspath(javafxc, javaFXHomeDirectory);
     setOutputDirectory(javafxc);
     javafxc.setDebug(debug);
@@ -221,11 +219,8 @@ public class JavaFXCompilerMojo extends AbstractMojo {
     return path;
   }
 
-  private void setSourceDirectory(Javac javafxc) {
+  private void setSource(Javac javafxc) {
     updatePathWithFiles(javafxc.createSrc(), sourceDirectory);
-  }
-
-  private void setSourcePath(Javac javafxc) {
     updatePathWithFiles(javafxc.createSourcepath(), sourceDirectory);
   }
 
@@ -236,7 +231,7 @@ public class JavaFXCompilerMojo extends AbstractMojo {
     for (String include : JAVAFX_DESKTOP_CLASSPATH_FILE_PATTERNS)
       javaFXFiles.createInclude().setName(include);
     classpath.addFileset(javaFXFiles);
-    AntAdapter.updatePathWithPaths(classpath, compileClasspathElements);
+    updatePathWithPaths(classpath, compileClasspathElements);
   }
 
   private void setOutputDirectory(Javac javafxc) {
