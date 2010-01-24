@@ -35,7 +35,7 @@ class JavaFXCompilerFactory {
   private static final String COMPILER_CLASSPATH_JAR_FOLDER = concat("lib", separator, "shared", separator);
   private static final String JAVAFX_COMPILER_ANT_TASK_CLASS = "com.sun.tools.javafx.ant.JavaFxAntTask";
 
-  Javac createJavaFXCompilerAntTask(File javaFXHomeDirectory) throws MojoExecutionException {
+  Javac createAntTask(File javaFXHomeDirectory) throws MojoExecutionException {
     try {
       Class<?> javafxc = Class.forName(JAVAFX_COMPILER_ANT_TASK_CLASS, true /*initialize*/, classLoader(javaFXHomeDirectory));
       return (Javac) javafxc.newInstance();

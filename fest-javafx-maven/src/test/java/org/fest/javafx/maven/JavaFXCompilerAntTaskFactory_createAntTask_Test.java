@@ -27,11 +27,11 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JavaFXCompilerFactory#createJavaFXCompilerAntTask(java.io.File)}</code>.
+ * Tests for <code>{@link JavaFXCompilerFactory#createAntTask(java.io.File)}</code>.
  *
  * @author Alex Ruiz
  */
-public class JavaFXCompilerAntTaskFactory_createJavaFXCompilerAntTask_Test {
+public class JavaFXCompilerAntTaskFactory_createAntTask_Test {
 
   private JavaFXCompilerFactory factory;
 
@@ -43,7 +43,7 @@ public class JavaFXCompilerAntTaskFactory_createJavaFXCompilerAntTask_Test {
   @Test
   public void should_create_JavaFX_compiler_Ant_task() throws MojoExecutionException {
     File javaFXHome = createJavaFXHomeDirectory();
-    Javac compilerTask = factory.createJavaFXCompilerAntTask(javaFXHome);
+    Javac compilerTask = factory.createAntTask(javaFXHome);
     assertThat(compilerTask).isNotNull();
     assertThat(compilerTask.getClass().getName()).isEqualTo("com.sun.tools.javafx.ant.JavaFxAntTask");
   }
@@ -51,6 +51,6 @@ public class JavaFXCompilerAntTaskFactory_createJavaFXCompilerAntTask_Test {
   @Test(expected = MojoExecutionException.class)
   public void should_throw_error_if_JavaFX_compiler_Ant_task_cannot_be_instantiated() throws MojoExecutionException {
     File wrongJavaFXHome = Files.temporaryFolder();
-    factory.createJavaFXCompilerAntTask(wrongJavaFXHome);
+    factory.createAntTask(wrongJavaFXHome);
   }
 }

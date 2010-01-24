@@ -52,7 +52,7 @@ final class JavaFXHome {
         JAVAFX_HOME_ENV_VAR));
   }
 
-  File createDirectory(String javaFXHome) throws MojoExecutionException {
+  File reference(String javaFXHome) throws MojoExecutionException {
     File home = new File(javaFXHome);
     if (home.isDirectory()) return home;
     throw new MojoExecutionException(concat(

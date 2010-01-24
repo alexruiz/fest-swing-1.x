@@ -63,7 +63,7 @@ public class JavaFXCompilerMojo extends AbstractMojo {
    * environment variable "JAVAFX_HOME".
    * @parameter expression="${javafx.home}"
    */
-  String javaFXHomeDirectory;
+  String JavaFXHome;
 
   /**
    * The source directory.
@@ -160,10 +160,10 @@ public class JavaFXCompilerMojo extends AbstractMojo {
   public void execute() throws MojoExecutionException {
     validateSourceDirectory();
     validateOutputDirectory();
-    String verifiedJavaFXHome = javaFXHome.verify(javaFXHomeDirectory);
+    String verifiedJavaFXHome = javaFXHome.verify(JavaFXHome);
     getLog().info(concat("JavaFX home is ", quote(verifiedJavaFXHome)));
-    File dir = javaFXHome.createDirectory(verifiedJavaFXHome);
-    Javac javafxc = compilerFactory.createJavaFXCompilerAntTask(dir);
+    File dir = javaFXHome.reference(verifiedJavaFXHome);
+    Javac javafxc = compilerFactory.createAntTask(dir);
     compilerSetup.configure(javafxc, this, dir);
     compilerExecutor.execute(javafxc);
   }
@@ -174,7 +174,7 @@ public class JavaFXCompilerMojo extends AbstractMojo {
   }
 
   private void validateOutputDirectory() throws MojoExecutionException {
-    if (outputDirectory.exists()) return;
+    if (outputDirectory.isDirectory()) return;
     boolean success = outputDirectory.mkdirs();
     if (!success) throw new MojoExecutionException("Unable to create output directory");
   }

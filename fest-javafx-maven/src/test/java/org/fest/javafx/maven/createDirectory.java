@@ -22,7 +22,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JavaFXHome#createDirectory(String)}</code>.
+ * Tests for <code>{@link JavaFXHome#reference(String)}</code>.
  *
  * @author Alex Ruiz
  */
@@ -38,11 +38,11 @@ public class createDirectory {
   @Test
   public void should_return_File_if_path_belongs_to_directory() throws MojoExecutionException {
     String path = new Environment().javaFXHome();
-    assertThat(javaFXHome.createDirectory(path)).isDirectory();
+    assertThat(javaFXHome.reference(path)).isDirectory();
   }
 
   @Test(expected = MojoExecutionException.class)
   public void should_throw_error_if_path_does_not_belong_to_directory() throws MojoExecutionException {
-    javaFXHome.createDirectory("");
+    javaFXHome.reference("");
   }
 }
