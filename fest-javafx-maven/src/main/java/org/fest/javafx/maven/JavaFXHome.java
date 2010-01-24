@@ -29,9 +29,20 @@ final class JavaFXHome {
 
   private static final String JAVAFX_HOME_ENV_VAR = "JAVAFX_HOME";
 
+  private static EnvironmentVariables environmentVariables = new EnvironmentVariables();
+  private static EnvironmentVariables original = environmentVariables;
+
+  static void replaceForTesting(EnvironmentVariables mock) {
+    environmentVariables = mock;
+  }
+
+  static void revertToOriginal() {
+    environmentVariables = original;
+  }
+
   static String verifiedJavaFXHome(String javaFXHome) throws MojoExecutionException {
     String verified = javaFXHome;
-    if (isEmpty(verified)) verified = System.getenv(JAVAFX_HOME_ENV_VAR);
+    if (isEmpty(verified)) verified = environmentVariables.javaFXHome();
     if (isEmpty(verified)) throw javaFXHomeNotSet();
     return verified;
   }
@@ -46,7 +57,7 @@ final class JavaFXHome {
     File home = new File(javaFXHome);
     if (home.isDirectory()) return home;
     throw new MojoExecutionException(concat(
-        "The JavaFX home directory location ", quote(home), " does not belong to an existing directory"));
+        "The JavaFX home directory location ", quote(javaFXHome), " does not belong to an existing directory"));
   }
 
   private JavaFXHome() {}

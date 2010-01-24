@@ -146,9 +146,13 @@ public class JavaFXCompilerMojo extends AbstractMojo {
 
   /**
    * Calls the JavaFX compiler Ant task to compile JavaFX sources.
+   * @throws MojoExecutionException if the specified source directory does not exist or it is not a directory.
    * @throws MojoExecutionException if the JavaFX compiler Ant task cannot be instantiated.
+   * @throws MojoExecutionException if the JavaFX home directory has not being set.
+   * @throws MojoExecutionException if the location specified by as the JavaFX home directory does not exist or it is
+   * not a directory.
    */
-  public void execute() throws MojoExecutionException, MojoFailureException {
+  public void execute() throws MojoExecutionException {
     validateSourceDirectory();
     String verifiedJavaFXHome = verifiedJavaFXHome(javaFXHome);
     getLog().info(concat("JavaFX home is ", quote(verifiedJavaFXHome)));
@@ -162,9 +166,9 @@ public class JavaFXCompilerMojo extends AbstractMojo {
     }
   }
 
-  private void validateSourceDirectory() throws MojoFailureException {
+  private void validateSourceDirectory() throws MojoExecutionException {
     if (sourceDirectory.isDirectory()) return;
-    throw new MojoFailureException(concat("Source directory ", quote(sourceDirectory.getAbsolutePath()),
+    throw new MojoExecutionException(concat("Source directory ", quote(sourceDirectory.getAbsolutePath()),
         " is not an existing directory."));
   }
 
