@@ -32,17 +32,18 @@ import org.junit.*;
  */
 public class JavaFXHome_verifiedJavaFXHome_Test {
 
-  private EnvironmentVariables environmentVariables;
+  private Environment mockEnvironment;
+  private Environment original;
 
   @Before
   public void setUp() {
-    environmentVariables = createMock(EnvironmentVariables.class);
-    JavaFXHome.replaceForTesting(environmentVariables);
+    mockEnvironment = createMock(Environment.class);
+    original = JavaFXHome.update(mockEnvironment);
   }
 
   @After
   public void tearDown() {
-    JavaFXHome.revertToOriginal();
+    JavaFXHome.update(original);
   }
 
   @Test
@@ -53,9 +54,9 @@ public class JavaFXHome_verifiedJavaFXHome_Test {
 
   @Test
   public void should_return_environment_variable_JAVAFXHOME_if_given_value_is_empty() {
-    new EasyMockTemplate(environmentVariables) {
+    new EasyMockTemplate(mockEnvironment) {
       protected void expectations() {
-        expect(environmentVariables.javaFXHome()).andReturn("c:\\javafx");
+        expect(mockEnvironment.javaFXHome()).andReturn("c:\\javafx");
       }
 
       protected void codeToTest() throws MojoExecutionException {
@@ -67,9 +68,9 @@ public class JavaFXHome_verifiedJavaFXHome_Test {
   @Test
   public void should_throw_error_if_JavaFX_home_cannot_be_obtained() {
     try {
-      new EasyMockTemplate(environmentVariables) {
+      new EasyMockTemplate(mockEnvironment) {
         protected void expectations() {
-          expect(environmentVariables.javaFXHome()).andReturn(null);
+          expect(mockEnvironment.javaFXHome()).andReturn(null);
         }
 
         protected void codeToTest() throws MojoExecutionException {

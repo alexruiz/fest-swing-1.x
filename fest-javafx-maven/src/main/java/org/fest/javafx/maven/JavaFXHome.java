@@ -29,20 +29,17 @@ final class JavaFXHome {
 
   private static final String JAVAFX_HOME_ENV_VAR = "JAVAFX_HOME";
 
-  private static EnvironmentVariables environmentVariables = new EnvironmentVariables();
-  private static EnvironmentVariables original = environmentVariables;
+  private static Environment environment = new Environment();
 
-  static void replaceForTesting(EnvironmentVariables mock) {
-    environmentVariables = mock;
-  }
-
-  static void revertToOriginal() {
-    environmentVariables = original;
+  static Environment update(Environment newEnvironment) {
+    Environment current = environment;
+    environment = newEnvironment;
+    return current;
   }
 
   static String verifiedJavaFXHome(String javaFXHome) throws MojoExecutionException {
     String verified = javaFXHome;
-    if (isEmpty(verified)) verified = environmentVariables.javaFXHome();
+    if (isEmpty(verified)) verified = environment.javaFXHome();
     if (isEmpty(verified)) throw javaFXHomeNotSet();
     return verified;
   }

@@ -27,10 +27,10 @@ import org.apache.tools.ant.*;
  */
 class LoggingBuildListener implements BuildListener {
 
-  private final Log log;
+  private final Log logger;
 
-  LoggingBuildListener(Log log) {
-    this.log = log;
+  LoggingBuildListener(Log logger) {
+    this.logger = logger;
   }
 
   public void buildStarted(BuildEvent event) {
@@ -58,7 +58,7 @@ class LoggingBuildListener implements BuildListener {
   }
 
   private void log(BuildEvent event) {
-    log.info(event.getMessage());
+    logger.info(event.getMessage());
   }
 
   public void messageLogged(BuildEvent event) {
@@ -73,19 +73,21 @@ class LoggingBuildListener implements BuildListener {
   private void log(String message, int priority) {
     switch(priority) {
       case MSG_ERR:
-        log.error(message);
+        logger.error(message);
         break;
 
       case MSG_WARN:
-        log.warn(message);
+        logger.warn(message);
         break;
 
       case MSG_INFO:
-        log.info(message);
+        logger.info(message);
         break;
 
       case MSG_DEBUG:
-        log.debug(message);
+        logger.debug(message);
     };
   }
+
+  Log logger() { return logger; }
 }

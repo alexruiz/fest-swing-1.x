@@ -21,7 +21,7 @@ package org.fest.javafx.maven;
  * @author Alex Ruiz
  *
  */
-class EnvironmentVariables {
+class Environment {
 
   private static final String JAVAFX_HOME_ENV_VAR = "JAVAFX_HOME";
 

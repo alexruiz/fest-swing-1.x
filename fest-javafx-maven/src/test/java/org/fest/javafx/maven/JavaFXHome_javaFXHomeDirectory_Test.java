@@ -29,7 +29,7 @@ public class JavaFXHome_javaFXHomeDirectory_Test {
 
   @Test
   public void should_return_File_if_path_belongs_to_directory() throws MojoExecutionException {
-    String path = new EnvironmentVariables().javaFXHome();
+    String path = new Environment().javaFXHome();
     assertThat(JavaFXHome.javaFXHomeDirectory(path)).isDirectory();
   }
 

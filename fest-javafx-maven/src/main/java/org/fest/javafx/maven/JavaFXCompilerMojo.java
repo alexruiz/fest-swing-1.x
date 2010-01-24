@@ -14,7 +14,7 @@
  */
 package org.fest.javafx.maven;
 
-import static org.fest.javafx.maven.AntAdapter.*;
+import static org.fest.javafx.maven.Ant.*;
 import static org.fest.javafx.maven.JavaFXCompilerAntTaskFactory.createJavaFXCompilerAntTask;
 import static org.fest.javafx.maven.JavaFXCompilerClasspath.JAVAFX_COMPILER_CLASSPATH_FILE_NAMES;
 import static org.fest.javafx.maven.JavaFXCompilerClasspath.JAVAFX_DESKTOP_CLASSPATH_FILE_PATTERNS;
@@ -190,7 +190,7 @@ public class JavaFXCompilerMojo extends AbstractMojo {
     javafxc.setVerbose(verbose);
   }
 
-  private void setProject(Javac javafxc) {
+  private void setProject(Javac javafxc) throws MojoExecutionException {
     Project antProject = createAntProject(project, getLog());
     javafxc.setProject(antProject);
   }
