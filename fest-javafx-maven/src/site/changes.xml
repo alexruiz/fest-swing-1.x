@@ -15,9 +15,12 @@
       <action dev="alexruiz" type="fix" issue="FEST-290" due-to="William Billingsley">
         Dependencies declared in POM are now present in the classpath.
       </action>
+      <action dev="alexruiz" type="fix" issue="FEST-294" due-to="nicerobot">
+        JavaFX home can be set in the POM or in an environment variable.
+      </action>
     </release>
     <release version="0.1" date="2009-12-09" description="First public release">
-      <action dev="alexruiz" type="add" issue="FEST-8">
+      <action dev="alexruiz" type="add">
         First version of JavaFX Maven plugin, written as an Ant script.
       </action>
     </release>

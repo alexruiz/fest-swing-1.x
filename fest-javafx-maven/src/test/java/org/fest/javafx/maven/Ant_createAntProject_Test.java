@@ -18,7 +18,6 @@ package org.fest.javafx.maven;
 import static org.easymock.EasyMock.expect;
 import static org.easymock.classextension.EasyMock.createMock;
 import static org.fest.assertions.Assertions.assertThat;
-import static org.fest.assertions.Fail.fail;
 import static org.fest.util.Files.temporaryFolder;
 
 import java.io.File;
@@ -26,82 +25,41 @@ import java.io.File;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.logging.Log;
 import org.apache.maven.project.MavenProject;
-import org.apache.tools.ant.BuildException;
 import org.apache.tools.ant.Project;
 import org.fest.mocks.EasyMockTemplate;
-import org.fest.mocks.UnexpectedError;
 import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link Ant#configureAntProject(Project, MavenProject, Log)}</code>.
+ * Tests for <code>{@link Ant#createAntProject(MavenProject, Log)}</code>.
  *
  * @author Alex Ruiz
  */
-public class Ant_configureAntProject {
+public class Ant_createAntProject_Test {
 
-  private File baseDirectory;
   private MavenProject mavenProject;
   private Log logger;
-  private CustomAntProject antProject;
 
   @Before
   public void setUp() {
-    baseDirectory = temporaryFolder();
     mavenProject = createMock(MavenProject.class);
     logger = createMock(Log.class);
-    antProject = new CustomAntProject();
   }
 
   @Test
-  public void should_configure_Ant_project() {
+  public void should_create_and_configure_Ant_project() {
+    final File basedir = temporaryFolder();
     new EasyMockTemplate(mavenProject) {
       protected void expectations() {
-        expect(mavenProject.getBasedir()).andReturn(baseDirectory);
+        expect(mavenProject.getBasedir()).andReturn(basedir);
       }
 
       protected void codeToTest() throws MojoExecutionException {
-        Ant.configureAntProject(antProject, mavenProject, logger);
-        assertThat(antProject.getBaseDir()).isEqualTo(baseDirectory);
+        Project antProject = Ant.createAntProject(mavenProject, logger);
+        assertThat(antProject.getBaseDir()).isEqualTo(basedir);
         LoggingBuildListener listener = (LoggingBuildListener)antProject.getBuildListeners().get(0);
         assertThat(listener.logger()).isSameAs(logger);
-        assertThat(antProject.wasInitialized()).isTrue();
       }
     }.run();
-  }
-
-  @Test
-  public void should_throw_error_if_configuration_fails() {
-    antProject.failOnInit();
-    try {
-      new EasyMockTemplate(mavenProject) {
-        protected void expectations() {
-          expect(mavenProject.getBasedir()).andReturn(baseDirectory);
-        }
-
-        protected void codeToTest() throws MojoExecutionException {
-          Ant.configureAntProject(antProject, mavenProject, logger);
-        }
-      }.run();
-      fail("Expecting exception");
-    } catch (UnexpectedError e) {
-      Throwable cause = e.getCause();
-      assertThat(cause).isInstanceOf(MojoExecutionException.class);
-    }
-  }
-
-  private static class CustomAntProject extends Project {
-    private boolean initialized;
-    private boolean failOnInit;
-
-    void failOnInit() { failOnInit = true; }
-
-    @Override public void init() throws BuildException {
-      if (failOnInit) throw new BuildException("Thrown on purpose");
-      super.init();
-      initialized = true;
-    }
-
-    boolean wasInitialized() { return initialized; }
   }
 }
