@@ -35,7 +35,7 @@ class JavaFXCompilerAntTaskFactory {
   private static final String COMPILER_CLASSPATH_JAR_FOLDER = concat("lib", separator, "shared", separator);
   private static final String JAVAFX_COMPILER_ANT_TASK_CLASS = "com.sun.tools.javafx.ant.JavaFxAntTask";
 
-  Javac createJavaFXCompilerAntTask(File javaFXHomeDirectory) throws MojoExecutionException {
+  static Javac createJavaFXCompilerAntTask(File javaFXHomeDirectory) throws MojoExecutionException {
     try {
       Class<?> javafxc = Class.forName(JAVAFX_COMPILER_ANT_TASK_CLASS, true /*initialize*/, classLoader(javaFXHomeDirectory));
       return (Javac) javafxc.newInstance();
@@ -44,7 +44,7 @@ class JavaFXCompilerAntTaskFactory {
     }
   }
 
-  private ClassLoader classLoader(File javaFXHomeDirectory) throws MalformedURLException {
+  private static ClassLoader classLoader(File javaFXHomeDirectory) throws MalformedURLException {
     URL[] classpath = compilerClasspath(javaFXHomeDirectory, JAVAFX_COMPILER_CLASSPATH_FILE_NAMES);
     return new URLClassLoader(classpath, currentThread().getContextClassLoader());
   }
@@ -69,4 +69,6 @@ class JavaFXCompilerAntTaskFactory {
     String msg = "Unable to load JavaFX compiler Ant task. Please make sure javafxc.jar is in the classpath";
     return new MojoExecutionException(msg, cause);
   }
+
+  private JavaFXCompilerAntTaskFactory() {}
 }

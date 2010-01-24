@@ -15,6 +15,7 @@
 package org.fest.javafx.maven;
 
 import static org.fest.javafx.maven.AntAdapter.*;
+import static org.fest.javafx.maven.JavaFXCompilerAntTaskFactory.createJavaFXCompilerAntTask;
 import static org.fest.javafx.maven.JavaFXCompilerClasspath.JAVAFX_COMPILER_CLASSPATH_FILE_NAMES;
 import static org.fest.javafx.maven.JavaFXCompilerClasspath.JAVAFX_DESKTOP_CLASSPATH_FILE_PATTERNS;
 import static org.fest.javafx.maven.JavaFXHome.javaFXHomeDirectory;
@@ -35,7 +36,7 @@ import org.apache.tools.ant.types.*;
 import org.fest.reflect.exception.ReflectionError;
 
 /**
- * Understands a Mojo that wraps JavaFX's Ant Task to be executed as a Maven plugin.
+ * Compiles JavaFX source code by delegating to JavaFX's own compiler Ant task.
  * @goal compile
  * @phase compile
  * @requiresDependencyResolution compile
@@ -43,8 +44,6 @@ import org.fest.reflect.exception.ReflectionError;
  * @author Alex Ruiz
  */
 public class JavaFXCompilerMojo extends AbstractMojo {
-
-  private final JavaFXCompilerAntTaskFactory taskFactory;
 
   /**
    * The current Maven project
@@ -71,7 +70,8 @@ public class JavaFXCompilerMojo extends AbstractMojo {
   private File outputDirectory;
 
   /**
-   * The location of the JavaFX home directory.
+   * The location of the JavaFX home directory. If a value is not set, this goal will try to obtained from the
+   * environment variable "JAVAFX_HOME".
    * @parameter expression="${javafx.home}"
    */
   private String javaFXHome;
@@ -145,24 +145,15 @@ public class JavaFXCompilerMojo extends AbstractMojo {
   private String target;
 
   /**
-   * Creates a new </code>{@link JavaFXCompilerMojo}</code>.
+   * Calls the JavaFX compiler Ant task to compile JavaFX sources.
+   * @throws MojoExecutionException if the JavaFX compiler Ant task cannot be instantiated.
    */
-  public JavaFXCompilerMojo() {
-    this(new JavaFXCompilerAntTaskFactory());
-  }
-
-  // package-protected for testing only
-  JavaFXCompilerMojo(JavaFXCompilerAntTaskFactory taskFactory) {
-    this.taskFactory = taskFactory;
-  }
-
-  /** {@inheritDoc} */
   public void execute() throws MojoExecutionException, MojoFailureException {
     validateSourceDirectory();
     String verifiedJavaFXHome = verifiedJavaFXHome(javaFXHome);
     getLog().info(concat("JavaFX home is ", quote(verifiedJavaFXHome)));
     File javaFXHomeDirectory = javaFXHomeDirectory(verifiedJavaFXHome);
-    Javac javafxc = taskFactory.createJavaFXCompilerAntTask(javaFXHomeDirectory);
+    Javac javafxc = createJavaFXCompilerAntTask(javaFXHomeDirectory);
     configureCompiler(javafxc, javaFXHomeDirectory);
     try {
       javafxc.execute();
