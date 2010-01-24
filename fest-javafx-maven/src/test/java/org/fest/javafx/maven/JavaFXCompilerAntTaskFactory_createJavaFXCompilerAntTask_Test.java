@@ -23,26 +23,34 @@ import java.io.File;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.tools.ant.taskdefs.Javac;
 import org.fest.util.Files;
+import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JavaFXCompilerAntTaskFactory#createJavaFXCompilerAntTask(java.io.File)}</code>.
+ * Tests for <code>{@link JavaFXCompilerFactory#createJavaFXCompilerAntTask(java.io.File)}</code>.
  *
  * @author Alex Ruiz
  */
 public class JavaFXCompilerAntTaskFactory_createJavaFXCompilerAntTask_Test {
 
+  private JavaFXCompilerFactory factory;
+
+  @Before
+  public void setUp() {
+    factory = new JavaFXCompilerFactory();
+  }
+
   @Test
   public void should_create_JavaFX_compiler_Ant_task() throws MojoExecutionException {
     File javaFXHome = createJavaFXHomeDirectory();
-    Javac compilerTask = JavaFXCompilerAntTaskFactory.createJavaFXCompilerAntTask(javaFXHome);
+    Javac compilerTask = factory.createJavaFXCompilerAntTask(javaFXHome);
     assertThat(compilerTask).isNotNull();
     assertThat(compilerTask.getClass().getName()).isEqualTo("com.sun.tools.javafx.ant.JavaFxAntTask");
   }
 
   @Test(expected = MojoExecutionException.class)
   public void should_throw_error_if_JavaFX_compiler_Ant_task_cannot_be_instantiated() throws MojoExecutionException {
-    File javaFXHome = Files.temporaryFolder();
-    JavaFXCompilerAntTaskFactory.createJavaFXCompilerAntTask(javaFXHome);
+    File wrongJavaFXHome = Files.temporaryFolder();
+    factory.createJavaFXCompilerAntTask(wrongJavaFXHome);
   }
 }

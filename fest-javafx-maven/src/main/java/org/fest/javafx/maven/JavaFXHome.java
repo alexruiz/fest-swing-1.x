@@ -29,15 +29,17 @@ final class JavaFXHome {
 
   private static final String JAVAFX_HOME_ENV_VAR = "JAVAFX_HOME";
 
-  private static Environment environment = new Environment();
+  private final Environment environment;
 
-  static Environment update(Environment newEnvironment) {
-    Environment current = environment;
-    environment = newEnvironment;
-    return current;
+  JavaFXHome() {
+    this(new Environment());
   }
 
-  static String verifiedJavaFXHome(String javaFXHome) throws MojoExecutionException {
+  JavaFXHome(Environment environment) {
+    this.environment = environment;
+  }
+
+  String verify(String javaFXHome) throws MojoExecutionException {
     String verified = javaFXHome;
     if (isEmpty(verified)) verified = environment.javaFXHome();
     if (isEmpty(verified)) throw javaFXHomeNotSet();
@@ -50,12 +52,10 @@ final class JavaFXHome {
         JAVAFX_HOME_ENV_VAR));
   }
 
-  static File javaFXHomeDirectory(String javaFXHome) throws MojoExecutionException {
+  File createDirectory(String javaFXHome) throws MojoExecutionException {
     File home = new File(javaFXHome);
     if (home.isDirectory()) return home;
     throw new MojoExecutionException(concat(
         "The JavaFX home directory location ", quote(javaFXHome), " does not belong to an existing directory"));
   }
-
-  private JavaFXHome() {}
 }

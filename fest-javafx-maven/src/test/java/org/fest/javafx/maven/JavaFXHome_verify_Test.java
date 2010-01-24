@@ -26,41 +26,35 @@ import org.fest.mocks.UnexpectedError;
 import org.junit.*;
 
 /**
- * Tests for <code>{@link JavaFXHome#verifiedJavaFXHome(String)}</code>.
+ * Tests for <code>{@link JavaFXHome#verify(String)}</code>.
  *
  * @author Alex Ruiz
  */
-public class JavaFXHome_verifiedJavaFXHome_Test {
+public class JavaFXHome_verify_Test {
 
-  private Environment mockEnvironment;
-  private Environment original;
+  private Environment environment;
+  private JavaFXHome javaFXHome;
 
   @Before
   public void setUp() {
-    mockEnvironment = createMock(Environment.class);
-    original = JavaFXHome.update(mockEnvironment);
-  }
-
-  @After
-  public void tearDown() {
-    JavaFXHome.update(original);
+    environment = createMock(Environment.class);
+    javaFXHome = new JavaFXHome(environment);
   }
 
   @Test
   public void should_return_given_JavaFX_home_if_it_is_not_empty() throws MojoExecutionException {
-    String javaFXHome = "c:\\javafx";
-    assertThat(JavaFXHome.verifiedJavaFXHome(javaFXHome)).isSameAs(javaFXHome);
+    assertThat(javaFXHome.verify("c:\\javafx")).isEqualTo("c:\\javafx");
   }
 
   @Test
   public void should_return_environment_variable_JAVAFXHOME_if_given_value_is_empty() {
-    new EasyMockTemplate(mockEnvironment) {
+    new EasyMockTemplate(environment) {
       protected void expectations() {
-        expect(mockEnvironment.javaFXHome()).andReturn("c:\\javafx");
+        expect(environment.javaFXHome()).andReturn("c:\\javafx");
       }
 
       protected void codeToTest() throws MojoExecutionException {
-        assertThat(JavaFXHome.verifiedJavaFXHome(null)).isEqualTo("c:\\javafx");
+        assertThat(javaFXHome.verify(null)).isEqualTo("c:\\javafx");
       }
     }.run();
   }
@@ -68,13 +62,13 @@ public class JavaFXHome_verifiedJavaFXHome_Test {
   @Test
   public void should_throw_error_if_JavaFX_home_cannot_be_obtained() {
     try {
-      new EasyMockTemplate(mockEnvironment) {
+      new EasyMockTemplate(environment) {
         protected void expectations() {
-          expect(mockEnvironment.javaFXHome()).andReturn(null);
+          expect(environment.javaFXHome()).andReturn(null);
         }
 
         protected void codeToTest() throws MojoExecutionException {
-          JavaFXHome.verifiedJavaFXHome(null);
+          javaFXHome.verify(null);
         }
       }.run();
       fail("Expecting exception");

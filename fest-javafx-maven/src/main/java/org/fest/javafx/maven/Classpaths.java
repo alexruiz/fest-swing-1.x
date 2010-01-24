@@ -16,15 +16,15 @@
 package org.fest.javafx.maven;
 
 /**
- * Understands constants used to set the classpath of the JavaFX compiler.
+ * Understands constants used to set the JavaFX classpath.
  *
  * @author Alex Ruiz
  */
-abstract class JavaFXCompilerClasspath {
+abstract class Classpaths {
 
   static final String[] JAVAFX_COMPILER_CLASSPATH_FILE_NAMES = { "javafxrt.jar", "javafxc.jar", "toolchain.jar" };
 
   static final String[] JAVAFX_DESKTOP_CLASSPATH_FILE_PATTERNS = { "**/javafxrt.jar", "**/lib/desktop/*.jar" };
 
-  private JavaFXCompilerClasspath() {}
+  private Classpaths() {}
 }

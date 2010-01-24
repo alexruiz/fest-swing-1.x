@@ -14,13 +14,6 @@
  */
 package org.fest.javafx.maven;
 
-import static org.fest.javafx.maven.Ant.*;
-import static org.fest.javafx.maven.JavaFXCompilerAntTaskFactory.createJavaFXCompilerAntTask;
-import static org.fest.javafx.maven.JavaFXCompilerClasspath.JAVAFX_COMPILER_CLASSPATH_FILE_NAMES;
-import static org.fest.javafx.maven.JavaFXCompilerClasspath.JAVAFX_DESKTOP_CLASSPATH_FILE_PATTERNS;
-import static org.fest.javafx.maven.JavaFXHome.javaFXHomeDirectory;
-import static org.fest.javafx.maven.JavaFXHome.verifiedJavaFXHome;
-import static org.fest.reflect.core.Reflection.method;
 import static org.fest.util.Strings.concat;
 import static org.fest.util.Strings.quote;
 
@@ -29,11 +22,7 @@ import java.util.List;
 
 import org.apache.maven.plugin.*;
 import org.apache.maven.project.MavenProject;
-import org.apache.tools.ant.BuildException;
-import org.apache.tools.ant.Project;
 import org.apache.tools.ant.taskdefs.Javac;
-import org.apache.tools.ant.types.*;
-import org.fest.reflect.exception.ReflectionError;
 
 /**
  * Compiles JavaFX source code by delegating to JavaFX's own compiler Ant task.
@@ -50,7 +39,7 @@ public class JavaFXCompilerMojo extends AbstractMojo {
    * @parameter expression="${project}"
    * @readonly
    */
-  private MavenProject project;
+  MavenProject project;
 
   /**
    * The list of compile classpath elements.
@@ -59,7 +48,7 @@ public class JavaFXCompilerMojo extends AbstractMojo {
    * @required
    * @readonly
    */
-  private List<String> compileClasspathElements;
+  List<String> compileClasspathElements;
 
   /**
    * The directory for compiled classes.
@@ -67,86 +56,102 @@ public class JavaFXCompilerMojo extends AbstractMojo {
    * @required
    * @readonly
    */
-  private File outputDirectory;
+  File outputDirectory;
 
   /**
    * The location of the JavaFX home directory. If a value is not set, this goal will try to obtained from the
    * environment variable "JAVAFX_HOME".
    * @parameter expression="${javafx.home}"
    */
-  private String javaFXHome;
+  String javaFXHomeDirectory;
 
   /**
    * The source directory.
    * @parameter expression="${javafx.compiler.sourceDirectory}" default-value="${basedir}/src/main/javafx"
    * @required
    */
-  private File sourceDirectory;
+  File sourceDirectory;
 
   /**
    * Sets to <code>true</code> to include debugging information in the compiled class files.
    * @parameter expression="${javafx.compiler.debug}" default-value="true"
    */
-  private boolean debug = true;
+  boolean debug = true;
 
   /**
    * Indicates whether the build will continue even if there are compilation errors; defaults to <code>true</code>.
    * @parameter expression="${javafx.compiler.failOnError}" default-value="true"
    */
-  private boolean failOnError = true;
+  boolean failOnError = true;
 
   /**
    * Allows running the compiler in a separate process. If <code>false</code> it uses the built in compiler, while if
    * <code>true</code> it will use an executable.
    * @parameter expression="${javafx.compiler.fork}" default-value="false"
    */
-  private boolean fork;
+  boolean fork;
 
   /**
    * Sets the executable of the compiler to use when fork is true.
    * @parameter expression="${javafx.compiler.executable}"
    */
-  private String forkExecutable;
+  String forkExecutable;
 
   /**
    * Sets to <code>true</code> to show messages about what the compiler is doing.
    * @parameter expression="${javafx.compiler.verbose}" default-value="false"
    */
-  private boolean verbose;
+  boolean verbose;
 
   /**
    * Sets whether to show source locations where deprecated APIs are used.
    * @parameter expression="${javafx.compiler.showDeprecation}" default-value="false"
    */
-  private boolean deprecation;
+  boolean deprecation;
 
   /**
    * The source files character encoding.
    * @parameter expression="${javafx.compiler.encoding}" default-value="UTF-8"
    */
-  private String encoding;
+  String encoding;
 
   /**
    * Sets to <code>true</code> to optimize the compiled code using the compiler's optimization methods.
    * @parameter expression="${javafx.compiler.optimize}" default-value="false"
    */
-  private boolean optimize;
+  boolean optimize;
 
   /**
    * The -source argument for the JavaFX compiler.
    * @parameter expression="${javafx.compiler.source}" default-value="1.6"
    */
-  private String source;
+  String source;
 
   /**
    * The -target argument for the JavaFX compiler.
    * @parameter expression="${javafx.compiler.target}" default-value="1.6"
    */
-  private String target;
+  String target;
+
+  private JavaFXHome javaFXHome;
+  private JavaFXCompilerFactory compilerFactory;
+  private JavaFXCompilerSetup compilerSetup;
+  private AntTaskExecutor compilerExecutor;
+
+  /**
+   * Creates a new </code>{@link JavaFXCompilerMojo}</code>.
+   */
+  public JavaFXCompilerMojo() {
+    javaFXHome = new JavaFXHome();
+    compilerFactory = new JavaFXCompilerFactory();
+    compilerSetup = new JavaFXCompilerSetup();
+    compilerExecutor = new AntTaskExecutor();
+  }
 
   /**
    * Calls the JavaFX compiler Ant task to compile JavaFX sources.
    * @throws MojoExecutionException if the specified source directory does not exist or it is not a directory.
+   * @throws MojoExecutionException if the output directory does not exist and cannot be created.
    * @throws MojoExecutionException if the JavaFX compiler Ant task cannot be instantiated.
    * @throws MojoExecutionException if the JavaFX home directory has not being set.
    * @throws MojoExecutionException if the location specified by as the JavaFX home directory does not exist or it is
@@ -154,83 +159,39 @@ public class JavaFXCompilerMojo extends AbstractMojo {
    */
   public void execute() throws MojoExecutionException {
     validateSourceDirectory();
-    String verifiedJavaFXHome = verifiedJavaFXHome(javaFXHome);
+    validateOutputDirectory();
+    String verifiedJavaFXHome = javaFXHome.verify(javaFXHomeDirectory);
     getLog().info(concat("JavaFX home is ", quote(verifiedJavaFXHome)));
-    File javaFXHomeDirectory = javaFXHomeDirectory(verifiedJavaFXHome);
-    Javac javafxc = createJavaFXCompilerAntTask(javaFXHomeDirectory);
-    configureCompiler(javafxc, javaFXHomeDirectory);
-    try {
-      javafxc.execute();
-    } catch (BuildException e) {
-      throw new MojoExecutionException(e.getMessage(), e);
-    }
+    File dir = javaFXHome.createDirectory(verifiedJavaFXHome);
+    Javac javafxc = compilerFactory.createJavaFXCompilerAntTask(dir);
+    compilerSetup.configure(javafxc, this, dir);
+    compilerExecutor.execute(javafxc);
   }
 
   private void validateSourceDirectory() throws MojoExecutionException {
     if (sourceDirectory.isDirectory()) return;
-    throw new MojoExecutionException(concat("Source directory ", quote(sourceDirectory.getAbsolutePath()),
-        " is not an existing directory."));
+    throw new MojoExecutionException("Source directory is not an existing directory.");
   }
 
-  private void configureCompiler(Javac javafxc, File javaFXHomeDirectory) throws MojoExecutionException {
-    setProject(javafxc);
-    setCompilerClasspath(javafxc, javaFXHomeDirectory);
-    setSource(javafxc);
-    setClasspath(javafxc, javaFXHomeDirectory);
-    setOutputDirectory(javafxc);
-    javafxc.setDebug(debug);
-    javafxc.setDeprecation(deprecation);
-    javafxc.setEncoding(encoding);
-    javafxc.setExecutable(forkExecutable);
-    javafxc.setFailonerror(failOnError);
-    javafxc.setFork(fork);
-    javafxc.setOptimize(optimize);
-    javafxc.setSource(source);
-    javafxc.setTarget(target);
-    javafxc.setVerbose(verbose);
+  private void validateOutputDirectory() throws MojoExecutionException {
+    if (outputDirectory.exists()) return;
+    boolean success = outputDirectory.mkdirs();
+    if (!success) throw new MojoExecutionException("Unable to create output directory");
   }
 
-  private void setProject(Javac javafxc) throws MojoExecutionException {
-    Project antProject = createAntProject(project, getLog());
-    javafxc.setProject(antProject);
+  void javaFXHome(JavaFXHome newJavaFXHome) {
+    javaFXHome = newJavaFXHome;
   }
 
-  private void setCompilerClasspath(Javac javafxc, File javaFXHomeDirectory) throws MojoExecutionException {
-    Path path = createCompilerClasspath(javafxc.getProject(), javaFXHomeDirectory);
-    try {
-      method("setCompilerClassPath").withParameterTypes(Path.class).in(javafxc).invoke(path);
-    } catch (ReflectionError e) {
-      throw new MojoExecutionException("Unable to set the compiler classpath", e);
-    }
+  void compilerFactory(JavaFXCompilerFactory newCompilerFactory) {
+    compilerFactory = newCompilerFactory;
   }
 
-  private static Path createCompilerClasspath(Project project, File javaFXHomeDirectory) {
-    FileSet files = new FileSet();
-    files.setDir(javaFXHomeDirectory);
-    for (String include : JAVAFX_COMPILER_CLASSPATH_FILE_NAMES)
-      files.createInclude().setName(concat("**/", include));
-    Path path = new Path(project);
-    path.addFileset(files);
-    return path;
+  void compilerSetup(JavaFXCompilerSetup newCompilerSetup) {
+    compilerSetup = newCompilerSetup;
   }
 
-  private void setSource(Javac javafxc) {
-    updatePathWithFiles(javafxc.createSrc(), sourceDirectory);
-    updatePathWithFiles(javafxc.createSourcepath(), sourceDirectory);
-  }
-
-  private void setClasspath(Javac javafxc, File javaFXHomeDirectory) {
-    Path classpath = javafxc.createClasspath();
-    FileSet javaFXFiles = new FileSet();
-    javaFXFiles.setDir(javaFXHomeDirectory);
-    for (String include : JAVAFX_DESKTOP_CLASSPATH_FILE_PATTERNS)
-      javaFXFiles.createInclude().setName(include);
-    classpath.addFileset(javaFXFiles);
-    updatePathWithPaths(classpath, compileClasspathElements);
-  }
-
-  private void setOutputDirectory(Javac javafxc) {
-    if (!outputDirectory.exists()) outputDirectory.mkdirs();
-    javafxc.setDestdir(outputDirectory);
+  void compilerExecutor(AntTaskExecutor newCompilerExecutor) {
+    compilerExecutor = newCompilerExecutor;
   }
 }

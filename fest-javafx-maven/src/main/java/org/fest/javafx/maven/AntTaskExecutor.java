@@ -1,5 +1,5 @@
 /*
- * Created on Jan 23, 2010
+ * Created on Jan 24, 2010
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -15,26 +15,22 @@
  */
 package org.fest.javafx.maven;
 
-import static org.fest.assertions.Assertions.assertThat;
-
 import org.apache.maven.plugin.MojoExecutionException;
-import org.junit.Test;
+import org.apache.tools.ant.BuildException;
+import org.apache.tools.ant.Task;
 
 /**
- * Tests for <code>{@link JavaFXHome#javaFXHomeDirectory(String)}</code>.
+ * Understands execution of Ant tasks.
  *
  * @author Alex Ruiz
  */
-public class JavaFXHome_javaFXHomeDirectory_Test {
+class AntTaskExecutor {
 
-  @Test
-  public void should_return_File_if_path_belongs_to_directory() throws MojoExecutionException {
-    String path = new Environment().javaFXHome();
-    assertThat(JavaFXHome.javaFXHomeDirectory(path)).isDirectory();
-  }
-
-  @Test(expected = MojoExecutionException.class)
-  public void should_throw_error_if_path_does_not_belong_to_directory() throws MojoExecutionException {
-    JavaFXHome.javaFXHomeDirectory("");
+  void execute(Task task) throws MojoExecutionException {
+    try {
+      task.execute();
+    } catch (BuildException e) {
+      throw new MojoExecutionException(e.getMessage(), e);
+    }
   }
 }

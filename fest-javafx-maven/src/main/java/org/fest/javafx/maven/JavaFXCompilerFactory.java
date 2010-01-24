@@ -16,7 +16,7 @@ package org.fest.javafx.maven;
 
 import static java.io.File.separator;
 import static java.lang.Thread.currentThread;
-import static org.fest.javafx.maven.JavaFXCompilerClasspath.JAVAFX_COMPILER_CLASSPATH_FILE_NAMES;
+import static org.fest.javafx.maven.Classpaths.JAVAFX_COMPILER_CLASSPATH_FILE_NAMES;
 import static org.fest.util.Strings.concat;
 
 import java.io.File;
@@ -30,12 +30,12 @@ import org.apache.tools.ant.taskdefs.Javac;
  *
  * @author Alex Ruiz
  */
-class JavaFXCompilerAntTaskFactory {
+class JavaFXCompilerFactory {
 
   private static final String COMPILER_CLASSPATH_JAR_FOLDER = concat("lib", separator, "shared", separator);
   private static final String JAVAFX_COMPILER_ANT_TASK_CLASS = "com.sun.tools.javafx.ant.JavaFxAntTask";
 
-  static Javac createJavaFXCompilerAntTask(File javaFXHomeDirectory) throws MojoExecutionException {
+  Javac createJavaFXCompilerAntTask(File javaFXHomeDirectory) throws MojoExecutionException {
     try {
       Class<?> javafxc = Class.forName(JAVAFX_COMPILER_ANT_TASK_CLASS, true /*initialize*/, classLoader(javaFXHomeDirectory));
       return (Javac) javafxc.newInstance();
@@ -69,6 +69,4 @@ class JavaFXCompilerAntTaskFactory {
     String msg = "Unable to load JavaFX compiler Ant task. Please make sure javafxc.jar is in the classpath";
     return new MojoExecutionException(msg, cause);
   }
-
-  private JavaFXCompilerAntTaskFactory() {}
 }
