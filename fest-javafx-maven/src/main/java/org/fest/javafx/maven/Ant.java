@@ -19,11 +19,6 @@ import static org.fest.util.Arrays.isEmpty;
 import java.io.File;
 import java.util.List;
 
-import org.apache.maven.plugin.MojoExecutionException;
-import org.apache.maven.plugin.logging.Log;
-import org.apache.maven.project.MavenProject;
-import org.apache.tools.ant.BuildException;
-import org.apache.tools.ant.Project;
 import org.apache.tools.ant.types.Path;
 import org.fest.util.Collections;
 
@@ -33,23 +28,6 @@ import org.fest.util.Collections;
  * @author Alex Ruiz
  */
 class Ant {
-
-  static Project createAntProject(MavenProject mavenProject, Log logger) throws MojoExecutionException {
-    Project antProject = new Project();
-    configureAntProject(antProject, mavenProject, logger);
-    return antProject;
-  }
-
-  static void configureAntProject(Project antProject, MavenProject mavenProject, Log logger)
-      throws MojoExecutionException {
-    try {
-      antProject.setBaseDir(mavenProject.getBasedir());
-      antProject.addBuildListener(new LoggingBuildListener(logger));
-      antProject.init();
-    } catch (BuildException e) {
-      throw new MojoExecutionException("Unable to configure Ant project", e);
-    }
-  }
 
   static void updatePathWithFiles(Path path, File... files) {
     if (isEmpty(files)) return;

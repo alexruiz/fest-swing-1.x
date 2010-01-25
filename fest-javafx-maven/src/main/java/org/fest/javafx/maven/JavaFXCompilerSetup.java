@@ -37,6 +37,16 @@ import org.fest.reflect.exception.ReflectionError;
  */
 class JavaFXCompilerSetup {
 
+  private final AntProjectFactory projectFactory;
+
+  JavaFXCompilerSetup() {
+    this(new AntProjectFactory());
+  }
+
+  JavaFXCompilerSetup(AntProjectFactory projectFactory) {
+    this.projectFactory = projectFactory;
+  }
+
   void configure(Javac javafxc, JavaFXCompilerMojo mojo, File javaFXHomeDirectory) throws MojoExecutionException {
     setProject(javafxc, mojo);
     setCompilerClasspath(javafxc, javaFXHomeDirectory);
@@ -55,8 +65,8 @@ class JavaFXCompilerSetup {
     javafxc.setVerbose(mojo.verbose);
   }
 
-  private static void setProject(Javac javafxc, JavaFXCompilerMojo mojo) throws MojoExecutionException {
-    Project antProject = createAntProject(mojo.project, mojo.getLog());
+  private void setProject(Javac javafxc, JavaFXCompilerMojo mojo) throws MojoExecutionException {
+    Project antProject = projectFactory.createAntProject(mojo.project, mojo.getLog());
     javafxc.setProject(antProject);
   }
 

@@ -32,7 +32,7 @@ import org.apache.tools.ant.taskdefs.Javac;
  *
  * @author Alex Ruiz
  */
-public class JavaFXCompilerMojo extends AbstractMojo {
+public final class JavaFXCompilerMojo extends AbstractMojo {
 
   /**
    * The current Maven project

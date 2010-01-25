@@ -34,16 +34,17 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link Ant#configureAntProject(Project, MavenProject, Log)}</code>.
+ * Tests for <code>{@link AntProjectFactory#configureAntProject(Project, MavenProject, Log)}</code>.
  *
  * @author Alex Ruiz
  */
-public class Ant_configureAntProject_Test {
+public class AntProjectFactory_configureAntProject_Test {
 
   private File baseDirectory;
   private MavenProject mavenProject;
   private Log logger;
   private CustomAntProject antProject;
+  private AntProjectFactory projectFactory;
 
   @Before
   public void setUp() {
@@ -51,6 +52,7 @@ public class Ant_configureAntProject_Test {
     mavenProject = createMock(MavenProject.class);
     logger = createMock(Log.class);
     antProject = new CustomAntProject();
+    projectFactory = new AntProjectFactory();
   }
 
   @Test
@@ -61,7 +63,7 @@ public class Ant_configureAntProject_Test {
       }
 
       protected void codeToTest() throws MojoExecutionException {
-        Ant.configureAntProject(antProject, mavenProject, logger);
+        projectFactory.configureAntProject(antProject, mavenProject, logger);
         assertThat(antProject.getBaseDir()).isEqualTo(baseDirectory);
         LoggingBuildListener listener = (LoggingBuildListener)antProject.getBuildListeners().get(0);
         assertThat(listener.logger()).isSameAs(logger);
@@ -80,7 +82,7 @@ public class Ant_configureAntProject_Test {
         }
 
         protected void codeToTest() throws MojoExecutionException {
-          Ant.configureAntProject(antProject, mavenProject, logger);
+          projectFactory.configureAntProject(antProject, mavenProject, logger);
         }
       }.run();
       failWhenExpectingUnexpectedError();

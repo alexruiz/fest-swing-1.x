@@ -31,19 +31,21 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link Ant#createAntProject(MavenProject, Log)}</code>.
+ * Tests for <code>{@link AntProjectFactory#createAntProject(MavenProject, Log)}</code>.
  *
  * @author Alex Ruiz
  */
-public class Ant_createAntProject_Test {
+public class AntProjectFactory_createAntProject_Test {
 
   private MavenProject mavenProject;
   private Log logger;
+  private AntProjectFactory projectFactory;
 
   @Before
   public void setUp() {
     mavenProject = createMock(MavenProject.class);
     logger = createMock(Log.class);
+    projectFactory = new AntProjectFactory();
   }
 
   @Test
@@ -55,7 +57,7 @@ public class Ant_createAntProject_Test {
       }
 
       protected void codeToTest() throws MojoExecutionException {
-        Project antProject = Ant.createAntProject(mavenProject, logger);
+        Project antProject = projectFactory.createAntProject(mavenProject, logger);
         assertThat(antProject.getBaseDir()).isEqualTo(basedir);
         LoggingBuildListener listener = (LoggingBuildListener)antProject.getBuildListeners().get(0);
         assertThat(listener.logger()).isSameAs(logger);
