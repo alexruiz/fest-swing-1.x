@@ -1,5 +1,5 @@
 /*
- * Created on Jan 24, 2010
+ * Created on Jan 23, 2010
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -19,47 +19,62 @@ import static org.easymock.EasyMock.expect;
 import static org.easymock.classextension.EasyMock.createMock;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.javafx.maven.CommonAssertions.failWhenExpectingUnexpectedError;
-import java.io.File;
 
 import org.apache.maven.plugin.MojoExecutionException;
 import org.fest.mocks.EasyMockTemplate;
 import org.fest.mocks.UnexpectedError;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 
 /**
- * Tests for <code>{@link JavaFXCMojo#validateSourceDirectory()}</code>.
+ * Tests for <code>{@link JavaFXoHome#verify(String)}</code>.
  *
  * @author Alex Ruiz
  */
-public class JavaFXCMojo_validateSourceDirectory_Test {
+public class JavaFXoHome_verify_Test {
 
-  private JavaFXCMojo mojo;
-  private File folder;
+  private Environment environment;
+  private JavaFXoHome javaFXHome;
 
   @Before
   public void setUp() {
-    mojo = new JavaFXCMojo();
-    mojo.setLog(new LogStub());
-    folder = createMock(File.class);
-    mojo.sourceDirectory = folder;
+    environment = createMock(Environment.class);
+    javaFXHome = new JavaFXoHome(environment);
   }
 
   @Test
-  public void should_throw_error_if_source_directory_is_not_existing_directory() {
+  public void should_return_given_JavaFX_home_if_it_is_not_empty() throws MojoExecutionException {
+    assertThat(javaFXHome.verify("c:\\javafx")).isEqualTo("c:\\javafx");
+  }
+
+  @Test
+  public void should_return_environment_variable_JAVAFXHOME_if_given_value_is_empty() {
+    new EasyMockTemplate(environment) {
+      protected void expectations() {
+        expect(environment.javaFXHome()).andReturn("c:\\javafx");
+      }
+
+      protected void codeToTest() throws MojoExecutionException {
+        assertThat(javaFXHome.verify(null)).isEqualTo("c:\\javafx");
+      }
+    }.run();
+  }
+
+  @Test
+  public void should_throw_error_if_JavaFX_home_cannot_be_obtained() {
     try {
-      new EasyMockTemplate(folder) {
-        protected void expectations() throws MojoExecutionException {
-          expect(folder.isDirectory()).andReturn(false);
+      new EasyMockTemplate(environment) {
+        protected void expectations() {
+          expect(environment.javaFXHome()).andReturn(null);
         }
 
         protected void codeToTest() throws MojoExecutionException {
-          mojo.validateSourceDirectory();
+          javaFXHome.verify(null);
         }
       }.run();
       failWhenExpectingUnexpectedError();
     } catch (UnexpectedError e) {
-      assertThat(e.getCause()).isInstanceOf(MojoExecutionException.class);
+      Throwable cause = e.getCause();
+      assertThat(cause).isInstanceOf(MojoExecutionException.class);
     }
   }
 }

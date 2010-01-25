@@ -25,15 +25,15 @@ import org.apache.maven.plugin.MojoExecutionException;
  *
  * @author Alex Ruiz
  */
-class JavaFXHome {
+class JavaFXoHome {
 
   private final Environment environment;
 
-  JavaFXHome() {
+  JavaFXoHome() {
     this(new Environment());
   }
 
-  JavaFXHome(Environment environment) {
+  JavaFXoHome(Environment environment) {
     this.environment = environment;
   }
 

@@ -29,25 +29,25 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JavaFXCMojo#execute()}</code>.
+ * Tests for <code>{@link JavaFXCoMojo#execute()}</code>.
  *
  * @author Alex Ruiz
  */
-public class JavaFXCMojo_execute_Test {
+public class JavaFXCoMojo_execute_Test {
 
-  private JavaFXHome javaFXHome;
-  private JavaFXCFactory javaFXCFactory;
-  private JavaFXCSetup javaFXCSetup;
+  private JavaFXoHome javaFXHome;
+  private JavaFXCoFactory javaFXCFactory;
+  private JavaFXCoSetup javaFXCSetup;
   private AntTaskExecutor javaFXCExecutor;
-  private JavaFXCMojo mojo;
+  private JavaFXCoMojo mojo;
 
   @Before
   public void setUp() {
-    javaFXHome = createMock(JavaFXHome.class);
-    javaFXCFactory = createMock(JavaFXCFactory.class);
-    javaFXCSetup = createMock(JavaFXCSetup.class);
+    javaFXHome = createMock(JavaFXoHome.class);
+    javaFXCFactory = createMock(JavaFXCoFactory.class);
+    javaFXCSetup = createMock(JavaFXCoSetup.class);
     javaFXCExecutor = createMock(AntTaskExecutor.class);
-    mojo = new JavaFXCMojo();
+    mojo = new JavaFXCoMojo();
     configureMojo();
   }
 

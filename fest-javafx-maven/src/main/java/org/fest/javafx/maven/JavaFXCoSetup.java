@@ -30,21 +30,21 @@ import org.fest.reflect.exception.ReflectionError;
  *
  * @author Alex Ruiz
  */
-class JavaFXCSetup {
+class JavaFXCoSetup {
 
   private final AntProjectFactory projectFactory;
-  private final JavaFXClasspathFactory classpathFactory;
+  private final JavaFXoClasspathFactory classpathFactory;
 
-  JavaFXCSetup() {
-    this(new AntProjectFactory(), new JavaFXClasspathFactory());
+  JavaFXCoSetup() {
+    this(new AntProjectFactory(), new JavaFXoClasspathFactory());
   }
 
-  JavaFXCSetup(AntProjectFactory projectFactory, JavaFXClasspathFactory classpathFactory) {
+  JavaFXCoSetup(AntProjectFactory projectFactory, JavaFXoClasspathFactory classpathFactory) {
     this.projectFactory = projectFactory;
     this.classpathFactory = classpathFactory;
   }
 
-  void configure(Javac javaFXC, JavaFXCMojo mojo, File javaFXHomeDirectory) throws MojoExecutionException {
+  void configure(Javac javaFXC, JavaFXCoMojo mojo, File javaFXHomeDirectory) throws MojoExecutionException {
     setProject(javaFXC, mojo);
     setCompilerClasspath(javaFXC, javaFXHomeDirectory);
     setSource(javaFXC, mojo);
@@ -62,7 +62,7 @@ class JavaFXCSetup {
     javaFXC.setVerbose(mojo.verbose);
   }
 
-  private void setProject(Javac javaFXC, JavaFXCMojo mojo) throws MojoExecutionException {
+  private void setProject(Javac javaFXC, JavaFXCoMojo mojo) throws MojoExecutionException {
     Project antProject = projectFactory.createAntProject(mojo.project, mojo.getLog());
     javaFXC.setProject(antProject);
   }
@@ -76,12 +76,12 @@ class JavaFXCSetup {
     }
   }
 
-  private void setSource(Javac javaFXC, JavaFXCMojo mojo) {
+  private void setSource(Javac javaFXC, JavaFXCoMojo mojo) {
     updatePathWithFiles(javaFXC.createSrc(), mojo.sourceDirectory);
     updatePathWithFiles(javaFXC.createSourcepath(), mojo.sourceDirectory);
   }
 
-  private void setClasspath(Javac javaFXC, JavaFXCMojo mojo, File javaFXHomeDirectory) {
+  private void setClasspath(Javac javaFXC, JavaFXCoMojo mojo, File javaFXHomeDirectory) {
     Path classpath = javaFXC.createClasspath();
     classpathFactory.setUpClasspath(classpath, mojo, javaFXHomeDirectory);
   }

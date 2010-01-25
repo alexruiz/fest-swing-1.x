@@ -32,7 +32,7 @@ import org.apache.tools.ant.taskdefs.Javac;
  *
  * @author Alex Ruiz
  */
-public final class JavaFXCMojo extends AbstractMojo {
+public final class JavaFXCoMojo extends AbstractMojo {
 
   /**
    * The current Maven project.
@@ -133,9 +133,9 @@ public final class JavaFXCMojo extends AbstractMojo {
    */
   String target;
 
-  JavaFXHome javaFXHome = new JavaFXHome();
-  JavaFXCFactory javaFXCFactory = new JavaFXCFactory();
-  JavaFXCSetup javaFXCSetup = new JavaFXCSetup();
+  JavaFXoHome javaFXHome = new JavaFXoHome();
+  JavaFXCoFactory javaFXCFactory = new JavaFXCoFactory();
+  JavaFXCoSetup javaFXCSetup = new JavaFXCoSetup();
   AntTaskExecutor javaFXCExecutor = new AntTaskExecutor();
 
   /**

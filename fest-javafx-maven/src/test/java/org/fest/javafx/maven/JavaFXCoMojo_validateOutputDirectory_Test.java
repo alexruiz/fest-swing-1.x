@@ -28,18 +28,18 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JavaFXCMojo#validateOutputDirectory()}</code>.
+ * Tests for <code>{@link JavaFXCoMojo#validateOutputDirectory()}</code>.
  *
  * @author Alex Ruiz
  */
-public class JavaFXCMojo_validateOutputDirectory_Test {
+public class JavaFXCoMojo_validateOutputDirectory_Test {
 
-  private JavaFXCMojo mojo;
+  private JavaFXCoMojo mojo;
   private File folder;
 
   @Before
   public void setUp() {
-    mojo = new JavaFXCMojo();
+    mojo = new JavaFXCoMojo();
     mojo.setLog(new LogStub());
     folder = createMock(File.class);
     mojo.outputDirectory = folder;
