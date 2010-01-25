@@ -52,14 +52,13 @@ public class JavaFXCompilerMojo_execute_Test {
   }
 
   private void configureMojo() {
-    mojo.javaFXHome(javaFXHome);
-    mojo.compilerFactory(compilerFactory);
-    mojo.compilerSetup(compilerSetup);
-    mojo.compilerExecutor(compilerExecutor);
+    mojo.javaFXHome = javaFXHome;
+    mojo.compilerFactory = compilerFactory;
+    mojo.compilerSetup = compilerSetup;
+    mojo.compilerExecutor = compilerExecutor;
     File temporaryFolder = temporaryFolder();
     mojo.sourceDirectory = temporaryFolder;
     mojo.outputDirectory = temporaryFolder;
-    mojo.JavaFXHome = "";
     mojo.setLog(new LogStub());
   }
 
@@ -69,7 +68,6 @@ public class JavaFXCompilerMojo_execute_Test {
     final File javaFXHomeDir = new File("mock");
     final Javac javafxc = new Javac();
     new EasyMockTemplate(javaFXHome, compilerFactory, compilerSetup, compilerExecutor) {
-
       protected void expectations() throws MojoExecutionException {
         expect(javaFXHome.verify(mojo.JavaFXHome)).andReturn(verifiedJavaFXHome);
         expect(javaFXHome.reference(verifiedJavaFXHome)).andReturn(javaFXHomeDir);

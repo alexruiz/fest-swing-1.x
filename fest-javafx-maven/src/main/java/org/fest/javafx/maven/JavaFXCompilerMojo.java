@@ -35,7 +35,7 @@ import org.apache.tools.ant.taskdefs.Javac;
 public final class JavaFXCompilerMojo extends AbstractMojo {
 
   /**
-   * The current Maven project
+   * The current Maven project.
    * @parameter expression="${project}"
    * @readonly
    */
@@ -133,23 +133,13 @@ public final class JavaFXCompilerMojo extends AbstractMojo {
    */
   String target;
 
-  private JavaFXHome javaFXHome;
-  private JavaFXCompilerFactory compilerFactory;
-  private JavaFXCompilerSetup compilerSetup;
-  private AntTaskExecutor compilerExecutor;
+  JavaFXHome javaFXHome = new JavaFXHome();
+  JavaFXCompilerFactory compilerFactory = new JavaFXCompilerFactory();
+  JavaFXCompilerSetup compilerSetup = new JavaFXCompilerSetup();
+  AntTaskExecutor compilerExecutor = new AntTaskExecutor();
 
   /**
-   * Creates a new </code>{@link JavaFXCompilerMojo}</code>.
-   */
-  public JavaFXCompilerMojo() {
-    javaFXHome(new JavaFXHome());
-    compilerFactory(new JavaFXCompilerFactory());
-    compilerSetup(new JavaFXCompilerSetup());
-    compilerExecutor(new AntTaskExecutor());
-  }
-
-  /**
-   * Calls the JavaFX compiler Ant task to compile JavaFX sources.
+   * Creates and executes a new instance of the JavaFX compiler Ant task to compile JavaFX sources.
    * @throws MojoExecutionException if the specified source directory does not exist or it is not a directory.
    * @throws MojoExecutionException if the output directory does not exist and cannot be created.
    * @throws MojoExecutionException if the JavaFX compiler Ant task cannot be instantiated.
@@ -179,21 +169,5 @@ public final class JavaFXCompilerMojo extends AbstractMojo {
     if (outputDirectory.isDirectory()) return;
     boolean success = outputDirectory.mkdirs();
     if (!success) throw new MojoExecutionException("Unable to create output directory");
-  }
-
-  void javaFXHome(JavaFXHome newJavaFXHome) {
-    javaFXHome = newJavaFXHome;
-  }
-
-  void compilerFactory(JavaFXCompilerFactory newCompilerFactory) {
-    compilerFactory = newCompilerFactory;
-  }
-
-  void compilerSetup(JavaFXCompilerSetup newCompilerSetup) {
-    compilerSetup = newCompilerSetup;
-  }
-
-  void compilerExecutor(AntTaskExecutor newCompilerExecutor) {
-    compilerExecutor = newCompilerExecutor;
   }
 }
