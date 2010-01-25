@@ -29,33 +29,33 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JavaFXCompilerMojo#execute()}</code>.
+ * Tests for <code>{@link JavaFXCMojo#execute()}</code>.
  *
  * @author Alex Ruiz
  */
-public class JavaFXCompilerMojo_execute_Test {
+public class JavaFXCMojo_execute_Test {
 
   private JavaFXHome javaFXHome;
-  private JavaFXCompilerFactory compilerFactory;
-  private JavaFXCompilerSetup compilerSetup;
-  private AntTaskExecutor compilerExecutor;
-  private JavaFXCompilerMojo mojo;
+  private JavaFXCFactory javaFXCFactory;
+  private JavaFXCSetup javaFXCSetup;
+  private AntTaskExecutor javaFXCExecutor;
+  private JavaFXCMojo mojo;
 
   @Before
   public void setUp() {
     javaFXHome = createMock(JavaFXHome.class);
-    compilerFactory = createMock(JavaFXCompilerFactory.class);
-    compilerSetup = createMock(JavaFXCompilerSetup.class);
-    compilerExecutor = createMock(AntTaskExecutor.class);
-    mojo = new JavaFXCompilerMojo();
+    javaFXCFactory = createMock(JavaFXCFactory.class);
+    javaFXCSetup = createMock(JavaFXCSetup.class);
+    javaFXCExecutor = createMock(AntTaskExecutor.class);
+    mojo = new JavaFXCMojo();
     configureMojo();
   }
 
   private void configureMojo() {
     mojo.javaFXHome = javaFXHome;
-    mojo.compilerFactory = compilerFactory;
-    mojo.compilerSetup = compilerSetup;
-    mojo.compilerExecutor = compilerExecutor;
+    mojo.javaFXCFactory = javaFXCFactory;
+    mojo.javaFXCSetup = javaFXCSetup;
+    mojo.javaFXCExecutor = javaFXCExecutor;
     File temporaryFolder = temporaryFolder();
     mojo.sourceDirectory = temporaryFolder;
     mojo.outputDirectory = temporaryFolder;
@@ -67,14 +67,14 @@ public class JavaFXCompilerMojo_execute_Test {
     final String verifiedJavaFXHome = "c:\\javafx";
     final File javaFXHomeDir = new File("mock");
     final Javac javafxc = new Javac();
-    new EasyMockTemplate(javaFXHome, compilerFactory, compilerSetup, compilerExecutor) {
+    new EasyMockTemplate(javaFXHome, javaFXCFactory, javaFXCSetup, javaFXCExecutor) {
       protected void expectations() throws MojoExecutionException {
         expect(javaFXHome.verify(mojo.JavaFXHome)).andReturn(verifiedJavaFXHome);
         expect(javaFXHome.reference(verifiedJavaFXHome)).andReturn(javaFXHomeDir);
-        expect(compilerFactory.createCompiler(javaFXHomeDir)).andReturn(javafxc);
-        compilerSetup.configure(javafxc, mojo, javaFXHomeDir);
+        expect(javaFXCFactory.createCompiler(javaFXHomeDir)).andReturn(javafxc);
+        javaFXCSetup.configure(javafxc, mojo, javaFXHomeDir);
         expectLastCall().once();
-        compilerExecutor.execute(javafxc);
+        javaFXCExecutor.execute(javafxc);
         expectLastCall().once();
       }
 

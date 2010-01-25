@@ -32,7 +32,7 @@ import org.apache.tools.ant.taskdefs.Javac;
  *
  * @author Alex Ruiz
  */
-public final class JavaFXCompilerMojo extends AbstractMojo {
+public final class JavaFXCMojo extends AbstractMojo {
 
   /**
    * The current Maven project.
@@ -134,9 +134,9 @@ public final class JavaFXCompilerMojo extends AbstractMojo {
   String target;
 
   JavaFXHome javaFXHome = new JavaFXHome();
-  JavaFXCompilerFactory compilerFactory = new JavaFXCompilerFactory();
-  JavaFXCompilerSetup compilerSetup = new JavaFXCompilerSetup();
-  AntTaskExecutor compilerExecutor = new AntTaskExecutor();
+  JavaFXCFactory javaFXCFactory = new JavaFXCFactory();
+  JavaFXCSetup javaFXCSetup = new JavaFXCSetup();
+  AntTaskExecutor javaFXCExecutor = new AntTaskExecutor();
 
   /**
    * Creates and executes a new instance of the JavaFX compiler Ant task to compile JavaFX sources.
@@ -153,9 +153,9 @@ public final class JavaFXCompilerMojo extends AbstractMojo {
     String verifiedJavaFXHome = javaFXHome.verify(JavaFXHome);
     getLog().info(concat("JavaFX home is ", quote(verifiedJavaFXHome)));
     File javaFXHomeDir = javaFXHome.reference(verifiedJavaFXHome);
-    Javac javafxc = compilerFactory.createCompiler(javaFXHomeDir);
-    compilerSetup.configure(javafxc, this, javaFXHomeDir);
-    compilerExecutor.execute(javafxc);
+    Javac javaFXC = javaFXCFactory.createCompiler(javaFXHomeDir);
+    javaFXCSetup.configure(javaFXC, this, javaFXHomeDir);
+    javaFXCExecutor.execute(javaFXC);
   }
 
   // package-protected for testing only

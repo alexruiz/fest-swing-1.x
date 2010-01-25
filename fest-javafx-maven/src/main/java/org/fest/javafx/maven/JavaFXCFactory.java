@@ -30,7 +30,7 @@ import org.apache.tools.ant.taskdefs.Javac;
  *
  * @author Alex Ruiz
  */
-class JavaFXCompilerFactory {
+class JavaFXCFactory {
 
   private static final String COMPILER_CLASSPATH_JAR_FOLDER = concat("lib", separator, "shared", separator);
   private static final String JAVAFX_COMPILER_ANT_TASK_CLASS = "com.sun.tools.javafx.ant.JavaFxAntTask";

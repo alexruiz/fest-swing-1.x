@@ -28,52 +28,38 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JavaFXCompilerMojo#validateOutputDirectory()}</code>.
+ * Tests for <code>{@link JavaFXCMojo#validateSourceDirectory()}</code>.
  *
  * @author Alex Ruiz
  */
-public class JavaFXCompilerMojo_validateOutputDirectory_Test {
+public class JavaFXCMojo_validateSourceDirectory_Test {
 
-  private JavaFXCompilerMojo mojo;
+  private JavaFXCMojo mojo;
   private File folder;
 
   @Before
   public void setUp() {
-    mojo = new JavaFXCompilerMojo();
+    mojo = new JavaFXCMojo();
     mojo.setLog(new LogStub());
     folder = createMock(File.class);
-    mojo.outputDirectory = folder;
+    mojo.sourceDirectory = folder;
   }
+
   @Test
-  public void should_throw_error_if_output_directory_is_not_existing_directory_and_cannot_be_created() {
+  public void should_throw_error_if_source_directory_is_not_existing_directory() {
     try {
       new EasyMockTemplate(folder) {
         protected void expectations() throws MojoExecutionException {
           expect(folder.isDirectory()).andReturn(false);
-          expect(folder.mkdirs()).andReturn(false);
         }
 
         protected void codeToTest() throws MojoExecutionException {
-          mojo.validateOutputDirectory();
+          mojo.validateSourceDirectory();
         }
       }.run();
       failWhenExpectingUnexpectedError();
     } catch (UnexpectedError e) {
       assertThat(e.getCause()).isInstanceOf(MojoExecutionException.class);
     }
-  }
-
-  @Test
-  public void should_not_throw_error_if_output_directory_is_not_existing_directory_but_can_be_created() {
-    new EasyMockTemplate(folder) {
-      protected void expectations() throws MojoExecutionException {
-        expect(folder.isDirectory()).andReturn(false);
-        expect(folder.mkdirs()).andReturn(true);
-      }
-
-      protected void codeToTest() throws MojoExecutionException {
-        mojo.validateOutputDirectory();
-      }
-    }.run();
   }
 }
