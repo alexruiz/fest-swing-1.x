@@ -28,21 +28,21 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JavaFXCoMojo#validateOutputDirectory()}</code>.
+ * Tests for <code>{@link JavaFxcMojo#validateOutputDirectory()}</code>.
  *
  * @author Alex Ruiz
  */
-public class JavaFXCoMojo_validateOutputDirectory_Test {
+public class JavaFxcMojo_validateOutputDirectory_Test {
 
-  private JavaFXCoMojo mojo;
+  private JavaFxcMojo javaFxcMojo;
   private File folder;
 
   @Before
   public void setUp() {
-    mojo = new JavaFXCoMojo();
-    mojo.setLog(new LogStub());
+    javaFxcMojo = new JavaFxcMojo();
+    javaFxcMojo.setLog(new LogStub());
     folder = createMock(File.class);
-    mojo.outputDirectory = folder;
+    javaFxcMojo.outputDirectory = folder;
   }
   @Test
   public void should_throw_error_if_output_directory_is_not_existing_directory_and_cannot_be_created() {
@@ -54,7 +54,7 @@ public class JavaFXCoMojo_validateOutputDirectory_Test {
         }
 
         protected void codeToTest() throws MojoExecutionException {
-          mojo.validateOutputDirectory();
+          javaFxcMojo.validateOutputDirectory();
         }
       }.run();
       failWhenExpectingUnexpectedError();
@@ -72,7 +72,7 @@ public class JavaFXCoMojo_validateOutputDirectory_Test {
       }
 
       protected void codeToTest() throws MojoExecutionException {
-        mojo.validateOutputDirectory();
+        javaFxcMojo.validateOutputDirectory();
       }
     }.run();
   }

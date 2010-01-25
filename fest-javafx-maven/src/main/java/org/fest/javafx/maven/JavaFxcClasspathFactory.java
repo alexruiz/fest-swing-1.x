@@ -31,7 +31,7 @@ import org.apache.tools.ant.types.Path;
  *
  * @author Alex Ruiz
  */
-class JavaFXoClasspathFactory {
+class JavaFxcClasspathFactory {
 
   Path createCompilerClasspath(Project project, File javaFXHomeDirectory) {
     FileSet files = new FileSet();
@@ -43,7 +43,7 @@ class JavaFXoClasspathFactory {
     return path;
   }
 
-  void setUpClasspath(Path classpath, JavaFXCoMojo mojo, File javaFXHomeDirectory) {
+  void setUpClasspath(Path classpath, JavaFxcMojo mojo, File javaFXHomeDirectory) {
     FileSet javaFXFiles = new FileSet();
     javaFXFiles.setDir(javaFXHomeDirectory);
     for (String include : JAVAFX_DESKTOP_CLASSPATH_FILE_PATTERNS)

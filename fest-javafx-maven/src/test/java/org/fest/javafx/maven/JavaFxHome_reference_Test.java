@@ -10,29 +10,39 @@
  * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
- * 
+ *
  * Copyright @2010 the original author or authors.
  */
 package org.fest.javafx.maven;
 
 import static org.fest.assertions.Assertions.assertThat;
 
-import java.io.File;
+import org.apache.maven.plugin.MojoExecutionException;
+import org.junit.Before;
+import org.junit.Test;
 
 /**
- * Understands utility methods related to the JavaFX home directory.
+ * Tests for <code>{@link JavaFxHome#reference(String)}</code>.
  *
  * @author Alex Ruiz
  */
-final class JavaFXoHomeDirectory {
+public class JavaFxHome_reference_Test {
 
-  static File createJavaFXHomeDirectory() {
-    String javaFXHome = System.getenv("JAVAFX_HOME");
-    assertThat(javaFXHome).isNotEmpty();
-    File javaFXHomeDirectory = new File(javaFXHome);
-    assertThat(javaFXHomeDirectory).isDirectory();
-    return javaFXHomeDirectory;
+  private JavaFxHome javaFxHome;
+
+  @Before
+  public void setUp() {
+    javaFxHome = new JavaFxHome();
   }
-  
-  private JavaFXoHomeDirectory() {}
+
+  @Test
+  public void should_return_File_if_path_belongs_to_directory() throws MojoExecutionException {
+    String path = new Environment().javaFXHome();
+    assertThat(javaFxHome.reference(path)).isDirectory();
+  }
+
+  @Test(expected = MojoExecutionException.class)
+  public void should_throw_error_if_path_does_not_belong_to_directory() throws MojoExecutionException {
+    javaFxHome.reference("");
+  }
 }

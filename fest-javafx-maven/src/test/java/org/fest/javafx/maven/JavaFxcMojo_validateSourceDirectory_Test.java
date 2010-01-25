@@ -28,21 +28,21 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JavaFXCoMojo#validateSourceDirectory()}</code>.
+ * Tests for <code>{@link JavaFxcMojo#validateSourceDirectory()}</code>.
  *
  * @author Alex Ruiz
  */
-public class JavaFXCoMojo_validateSourceDirectory_Test {
+public class JavaFxcMojo_validateSourceDirectory_Test {
 
-  private JavaFXCoMojo mojo;
+  private JavaFxcMojo javaFxcMojo;
   private File folder;
 
   @Before
   public void setUp() {
-    mojo = new JavaFXCoMojo();
-    mojo.setLog(new LogStub());
+    javaFxcMojo = new JavaFxcMojo();
+    javaFxcMojo.setLog(new LogStub());
     folder = createMock(File.class);
-    mojo.sourceDirectory = folder;
+    javaFxcMojo.sourceDirectory = folder;
   }
 
   @Test
@@ -54,7 +54,7 @@ public class JavaFXCoMojo_validateSourceDirectory_Test {
         }
 
         protected void codeToTest() throws MojoExecutionException {
-          mojo.validateSourceDirectory();
+          javaFxcMojo.validateSourceDirectory();
         }
       }.run();
       failWhenExpectingUnexpectedError();

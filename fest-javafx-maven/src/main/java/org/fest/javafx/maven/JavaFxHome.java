@@ -25,33 +25,33 @@ import org.apache.maven.plugin.MojoExecutionException;
  *
  * @author Alex Ruiz
  */
-class JavaFXoHome {
+class JavaFxHome {
 
   private final Environment environment;
 
-  JavaFXoHome() {
+  JavaFxHome() {
     this(new Environment());
   }
 
-  JavaFXoHome(Environment environment) {
+  JavaFxHome(Environment environment) {
     this.environment = environment;
   }
 
   String verify(String javaFXHome) throws MojoExecutionException {
     String verified = javaFXHome;
     if (isEmpty(verified)) verified = environment.javaFXHome();
-    if (isEmpty(verified)) throw javaFXHomeNotSet();
+    if (isEmpty(verified)) throw javaFxHomeNotSet();
     return verified;
   }
 
-  private static MojoExecutionException javaFXHomeNotSet() {
+  private static MojoExecutionException javaFxHomeNotSet() {
     return new MojoExecutionException("The path of the JavaFX home directory has not been set");
   }
 
-  File reference(String javaFXHome) throws MojoExecutionException {
-    File home = new File(javaFXHome);
+  File reference(String javaFxHome) throws MojoExecutionException {
+    File home = new File(javaFxHome);
     if (home.isDirectory()) return home;
     throw new MojoExecutionException(concat(
-        "The JavaFX home directory location ", quote(javaFXHome), " does not belong to an existing directory"));
+        "The JavaFX home directory location ", quote(javaFxHome), " does not belong to an existing directory"));
   }
 }

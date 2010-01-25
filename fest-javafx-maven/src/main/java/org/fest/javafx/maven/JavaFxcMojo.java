@@ -32,7 +32,7 @@ import org.apache.tools.ant.taskdefs.Javac;
  *
  * @author Alex Ruiz
  */
-public final class JavaFXCoMojo extends AbstractMojo {
+public final class JavaFxcMojo extends AbstractMojo {
 
   /**
    * The current Maven project.
@@ -63,7 +63,7 @@ public final class JavaFXCoMojo extends AbstractMojo {
    * environment variable "JAVAFX_HOME".
    * @parameter expression="${javafx.home}"
    */
-  String JavaFXHome;
+  String JavaFxHome;
 
   /**
    * The source directory.
@@ -133,10 +133,10 @@ public final class JavaFXCoMojo extends AbstractMojo {
    */
   String target;
 
-  JavaFXoHome javaFXHome = new JavaFXoHome();
-  JavaFXCoFactory javaFXCFactory = new JavaFXCoFactory();
-  JavaFXCoSetup javaFXCSetup = new JavaFXCoSetup();
-  AntTaskExecutor javaFXCExecutor = new AntTaskExecutor();
+  JavaFxHome javaFxHome = new JavaFxHome();
+  JavaFxcFactory javaFxcFactory = new JavaFxcFactory();
+  JavaFxcSetup javaFxcSetup = new JavaFxcSetup();
+  AntTaskExecutor javaFxcExecutor = new AntTaskExecutor();
 
   /**
    * Creates and executes a new instance of the JavaFX compiler Ant task to compile JavaFX sources.
@@ -150,12 +150,12 @@ public final class JavaFXCoMojo extends AbstractMojo {
   public void execute() throws MojoExecutionException {
     validateSourceDirectory();
     validateOutputDirectory();
-    String verifiedJavaFXHome = javaFXHome.verify(JavaFXHome);
-    getLog().info(concat("JavaFX home is ", quote(verifiedJavaFXHome)));
-    File javaFXHomeDir = javaFXHome.reference(verifiedJavaFXHome);
-    Javac javaFXC = javaFXCFactory.createCompiler(javaFXHomeDir);
-    javaFXCSetup.configure(javaFXC, this, javaFXHomeDir);
-    javaFXCExecutor.execute(javaFXC);
+    String verifiedJavaFxHome = javaFxHome.verify(JavaFxHome);
+    getLog().info(concat("JavaFX home is ", quote(verifiedJavaFxHome)));
+    File javaFXHomeDir = javaFxHome.reference(verifiedJavaFxHome);
+    Javac javaFXC = javaFxcFactory.createCompiler(javaFXHomeDir);
+    javaFxcSetup.configure(javaFXC, this, javaFXHomeDir);
+    javaFxcExecutor.execute(javaFXC);
   }
 
   // package-protected for testing only

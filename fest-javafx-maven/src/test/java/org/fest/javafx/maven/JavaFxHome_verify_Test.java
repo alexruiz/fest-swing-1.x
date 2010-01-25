@@ -26,24 +26,24 @@ import org.fest.mocks.UnexpectedError;
 import org.junit.*;
 
 /**
- * Tests for <code>{@link JavaFXoHome#verify(String)}</code>.
+ * Tests for <code>{@link JavaFxHome#verify(String)}</code>.
  *
  * @author Alex Ruiz
  */
-public class JavaFXoHome_verify_Test {
+public class JavaFxHome_verify_Test {
 
   private Environment environment;
-  private JavaFXoHome javaFXHome;
+  private JavaFxHome javaFxHome;
 
   @Before
   public void setUp() {
     environment = createMock(Environment.class);
-    javaFXHome = new JavaFXoHome(environment);
+    javaFxHome = new JavaFxHome(environment);
   }
 
   @Test
   public void should_return_given_JavaFX_home_if_it_is_not_empty() throws MojoExecutionException {
-    assertThat(javaFXHome.verify("c:\\javafx")).isEqualTo("c:\\javafx");
+    assertThat(javaFxHome.verify("c:\\javafx")).isEqualTo("c:\\javafx");
   }
 
   @Test
@@ -54,7 +54,7 @@ public class JavaFXoHome_verify_Test {
       }
 
       protected void codeToTest() throws MojoExecutionException {
-        assertThat(javaFXHome.verify(null)).isEqualTo("c:\\javafx");
+        assertThat(javaFxHome.verify(null)).isEqualTo("c:\\javafx");
       }
     }.run();
   }
@@ -68,7 +68,7 @@ public class JavaFXoHome_verify_Test {
         }
 
         protected void codeToTest() throws MojoExecutionException {
-          javaFXHome.verify(null);
+          javaFxHome.verify(null);
         }
       }.run();
       failWhenExpectingUnexpectedError();
