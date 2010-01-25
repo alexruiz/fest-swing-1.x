@@ -142,10 +142,10 @@ public class JavaFXCompilerMojo extends AbstractMojo {
    * Creates a new </code>{@link JavaFXCompilerMojo}</code>.
    */
   public JavaFXCompilerMojo() {
-    javaFXHome = new JavaFXHome();
-    compilerFactory = new JavaFXCompilerFactory();
-    compilerSetup = new JavaFXCompilerSetup();
-    compilerExecutor = new AntTaskExecutor();
+    javaFXHome(new JavaFXHome());
+    compilerFactory(new JavaFXCompilerFactory());
+    compilerSetup(new JavaFXCompilerSetup());
+    compilerExecutor(new AntTaskExecutor());
   }
 
   /**
@@ -168,12 +168,14 @@ public class JavaFXCompilerMojo extends AbstractMojo {
     compilerExecutor.execute(javafxc);
   }
 
-  private void validateSourceDirectory() throws MojoExecutionException {
+  // package-protected for testing only
+  void validateSourceDirectory() throws MojoExecutionException {
     if (sourceDirectory.isDirectory()) return;
     throw new MojoExecutionException("Source directory is not an existing directory.");
   }
 
-  private void validateOutputDirectory() throws MojoExecutionException {
+  // package-protected for testing only
+  void validateOutputDirectory() throws MojoExecutionException {
     if (outputDirectory.isDirectory()) return;
     boolean success = outputDirectory.mkdirs();
     if (!success) throw new MojoExecutionException("Unable to create output directory");

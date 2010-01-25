@@ -19,8 +19,6 @@ import static org.easymock.EasyMock.expect;
 import static org.easymock.classextension.EasyMock.createMock;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.javafx.maven.CommonAssertions.failWhenExpectingUnexpectedError;
-import static org.fest.util.Files.temporaryFolder;
-
 import java.io.File;
 
 import org.apache.maven.plugin.MojoExecutionException;
@@ -30,11 +28,11 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JavaFXCompilerMojo#execute()}</code>.
+ * Tests for <code>{@link JavaFXCompilerMojo#validateSourceDirectory()}</code>.
  *
  * @author Alex Ruiz
  */
-public class JavaFXCompilerMojo_execute_withInvalidInput_Test {
+public class JavaFXCompilerMojo_validateSourceDirectory_Test {
 
   private JavaFXCompilerMojo mojo;
   private File folder;
@@ -44,11 +42,11 @@ public class JavaFXCompilerMojo_execute_withInvalidInput_Test {
     mojo = new JavaFXCompilerMojo();
     mojo.setLog(new LogStub());
     folder = createMock(File.class);
+    mojo.sourceDirectory = folder;
   }
 
   @Test
   public void should_throw_error_if_source_directory_is_not_existing_directory() {
-    mojo.sourceDirectory = folder;
     try {
       new EasyMockTemplate(folder) {
         protected void expectations() throws MojoExecutionException {
@@ -56,28 +54,7 @@ public class JavaFXCompilerMojo_execute_withInvalidInput_Test {
         }
 
         protected void codeToTest() throws MojoExecutionException {
-          mojo.execute();
-        }
-      }.run();
-      failWhenExpectingUnexpectedError();
-    } catch (UnexpectedError e) {
-      assertThat(e.getCause()).isInstanceOf(MojoExecutionException.class);
-    }
-  }
-
-  @Test
-  public void should_throw_error_if_output_directory_is_not_existing_directory_and_cannot_be_created() {
-    mojo.sourceDirectory = temporaryFolder();
-    mojo.outputDirectory = folder;
-    try {
-      new EasyMockTemplate(folder) {
-        protected void expectations() throws MojoExecutionException {
-          expect(folder.isDirectory()).andReturn(false);
-          expect(folder.mkdirs()).andReturn(false);
-        }
-
-        protected void codeToTest() throws MojoExecutionException {
-          mojo.execute();
+          mojo.validateSourceDirectory();
         }
       }.run();
       failWhenExpectingUnexpectedError();

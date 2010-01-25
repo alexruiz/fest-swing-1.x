@@ -35,7 +35,7 @@ import org.fest.reflect.exception.ReflectionError;
  *
  * @author Alex Ruiz
  */
-public class JavaFXCompilerSetup {
+class JavaFXCompilerSetup {
 
   void configure(Javac javafxc, JavaFXCompilerMojo mojo, File javaFXHomeDirectory) throws MojoExecutionException {
     setProject(javafxc, mojo);

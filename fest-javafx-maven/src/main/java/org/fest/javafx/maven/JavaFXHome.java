@@ -21,13 +21,11 @@ import java.io.File;
 import org.apache.maven.plugin.MojoExecutionException;
 
 /**
- * Understands utility methods related to the location of the JavaFX home directory.
+ * Understands the location of the JavaFX home directory.
  *
  * @author Alex Ruiz
  */
 class JavaFXHome {
-
-  private static final String JAVAFX_HOME_ENV_VAR = "JAVAFX_HOME";
 
   private final Environment environment;
 
@@ -47,9 +45,7 @@ class JavaFXHome {
   }
 
   private static MojoExecutionException javaFXHomeNotSet() {
-    return new MojoExecutionException(concat(
-        "JavaFX home has not been set. Set it either as the property 'javafx.home' or as the environment variable ",
-        JAVAFX_HOME_ENV_VAR));
+    return new MojoExecutionException("The path of the JavaFX home directory has not been set");
   }
 
   File reference(String javaFXHome) throws MojoExecutionException {
