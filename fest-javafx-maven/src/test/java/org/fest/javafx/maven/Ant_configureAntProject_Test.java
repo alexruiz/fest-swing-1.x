@@ -18,7 +18,7 @@ package org.fest.javafx.maven;
 import static org.easymock.EasyMock.expect;
 import static org.easymock.classextension.EasyMock.createMock;
 import static org.fest.assertions.Assertions.assertThat;
-import static org.fest.assertions.Fail.fail;
+import static org.fest.javafx.maven.CommonAssertions.failWhenExpectingUnexpectedError;
 import static org.fest.util.Files.temporaryFolder;
 
 import java.io.File;
@@ -83,7 +83,7 @@ public class Ant_configureAntProject_Test {
           Ant.configureAntProject(antProject, mavenProject, logger);
         }
       }.run();
-      fail("Expecting exception");
+      failWhenExpectingUnexpectedError();
     } catch (UnexpectedError e) {
       Throwable cause = e.getCause();
       assertThat(cause).isInstanceOf(MojoExecutionException.class);

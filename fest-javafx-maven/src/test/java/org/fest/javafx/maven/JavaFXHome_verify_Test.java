@@ -18,7 +18,7 @@ package org.fest.javafx.maven;
 import static org.easymock.EasyMock.expect;
 import static org.easymock.classextension.EasyMock.createMock;
 import static org.fest.assertions.Assertions.assertThat;
-import static org.fest.assertions.Fail.fail;
+import static org.fest.javafx.maven.CommonAssertions.failWhenExpectingUnexpectedError;
 
 import org.apache.maven.plugin.MojoExecutionException;
 import org.fest.mocks.EasyMockTemplate;
@@ -71,7 +71,7 @@ public class JavaFXHome_verify_Test {
           javaFXHome.verify(null);
         }
       }.run();
-      fail("Expecting exception");
+      failWhenExpectingUnexpectedError();
     } catch (UnexpectedError e) {
       Throwable cause = e.getCause();
       assertThat(cause).isInstanceOf(MojoExecutionException.class);

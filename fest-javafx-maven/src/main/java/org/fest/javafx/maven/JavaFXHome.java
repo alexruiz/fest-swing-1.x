@@ -25,7 +25,7 @@ import org.apache.maven.plugin.MojoExecutionException;
  *
  * @author Alex Ruiz
  */
-final class JavaFXHome {
+class JavaFXHome {
 
   private static final String JAVAFX_HOME_ENV_VAR = "JAVAFX_HOME";
 

@@ -73,7 +73,7 @@ public class JavaFXCompilerMojo extends AbstractMojo {
   File sourceDirectory;
 
   /**
-   * Sets to <code>true</code> to include debugging information in the compiled class files.
+   * Set to <code>true</code> to include debugging information in the compiled class files.
    * @parameter expression="${javafx.compiler.debug}" default-value="true"
    */
   boolean debug = true;
@@ -98,7 +98,7 @@ public class JavaFXCompilerMojo extends AbstractMojo {
   String forkExecutable;
 
   /**
-   * Sets to <code>true</code> to show messages about what the compiler is doing.
+   * Set to <code>true</code> to show messages about what the compiler is doing.
    * @parameter expression="${javafx.compiler.verbose}" default-value="false"
    */
   boolean verbose;
@@ -116,7 +116,7 @@ public class JavaFXCompilerMojo extends AbstractMojo {
   String encoding;
 
   /**
-   * Sets to <code>true</code> to optimize the compiled code using the compiler's optimization methods.
+   * Set to <code>true</code> to optimize the compiled code using the compiler's optimization methods.
    * @parameter expression="${javafx.compiler.optimize}" default-value="false"
    */
   boolean optimize;
@@ -162,9 +162,9 @@ public class JavaFXCompilerMojo extends AbstractMojo {
     validateOutputDirectory();
     String verifiedJavaFXHome = javaFXHome.verify(JavaFXHome);
     getLog().info(concat("JavaFX home is ", quote(verifiedJavaFXHome)));
-    File dir = javaFXHome.reference(verifiedJavaFXHome);
-    Javac javafxc = compilerFactory.createAntTask(dir);
-    compilerSetup.configure(javafxc, this, dir);
+    File javaFXHomeDir = javaFXHome.reference(verifiedJavaFXHome);
+    Javac javafxc = compilerFactory.createCompiler(javaFXHomeDir);
+    compilerSetup.configure(javafxc, this, javaFXHomeDir);
     compilerExecutor.execute(javafxc);
   }
 
