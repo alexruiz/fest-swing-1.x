@@ -35,6 +35,7 @@ import org.junit.Test;
  */
 public class JavaFxcMojo_execute_Test {
 
+  private JavaFxcMojoValidator validator;
   private JavaFxHome javaFxHome;
   private JavaFxcFactory javaFxcFactory;
   private JavaFxcSetup javaFxcSetup;
@@ -43,6 +44,7 @@ public class JavaFxcMojo_execute_Test {
 
   @Before
   public void setUp() {
+    validator = createMock(JavaFxcMojoValidator.class);
     javaFxHome = createMock(JavaFxHome.class);
     javaFxcFactory = createMock(JavaFxcFactory.class);
     javaFxcSetup = createMock(JavaFxcSetup.class);
@@ -52,6 +54,7 @@ public class JavaFxcMojo_execute_Test {
   }
 
   private void configureMojo() {
+    javaFxcMojo.validator = validator;
     javaFxcMojo.javaFxHome = javaFxHome;
     javaFxcMojo.javaFxcFactory = javaFxcFactory;
     javaFxcMojo.javaFxcSetup = javaFxcSetup;
@@ -69,6 +72,8 @@ public class JavaFxcMojo_execute_Test {
     final Javac javaFxc = new Javac();
     new EasyMockTemplate(javaFxHome, javaFxcFactory, javaFxcSetup, javaFxcExecutor) {
       protected void expectations() throws MojoExecutionException {
+        validator.validate(javaFxcMojo);
+        expectLastCall().once();
         expect(javaFxHome.verify(javaFxcMojo.JavaFxHome)).andReturn(verifiedJavaFXHome);
         expect(javaFxHome.reference(verifiedJavaFXHome)).andReturn(javaFXHomeDir);
         expect(javaFxcFactory.createJavaFxc(javaFXHomeDir)).andReturn(javaFxc);

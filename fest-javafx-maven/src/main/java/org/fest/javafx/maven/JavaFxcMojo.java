@@ -79,6 +79,18 @@ public final class JavaFxcMojo extends AbstractMojo {
   boolean debug = true;
 
   /**
+   * Sets whether to show source locations where deprecated APIs are used.
+   * @parameter expression="${javafx.compiler.showDeprecation}" default-value="false"
+   */
+  boolean deprecation;
+
+  /**
+   * The source files character encoding.
+   * @parameter expression="${javafx.compiler.encoding}" default-value="UTF-8"
+   */
+  String encoding;
+
+  /**
    * Indicates whether the build will continue even if there are compilation errors; defaults to <code>true</code>.
    * @parameter expression="${javafx.compiler.failOnError}" default-value="true"
    */
@@ -98,24 +110,6 @@ public final class JavaFxcMojo extends AbstractMojo {
   String forkExecutable;
 
   /**
-   * Set to <code>true</code> to show messages about what the compiler is doing.
-   * @parameter expression="${javafx.compiler.verbose}" default-value="false"
-   */
-  boolean verbose;
-
-  /**
-   * Sets whether to show source locations where deprecated APIs are used.
-   * @parameter expression="${javafx.compiler.showDeprecation}" default-value="false"
-   */
-  boolean deprecation;
-
-  /**
-   * The source files character encoding.
-   * @parameter expression="${javafx.compiler.encoding}" default-value="UTF-8"
-   */
-  String encoding;
-
-  /**
    * Set to <code>true</code> to optimize the compiled code using the compiler's optimization methods.
    * @parameter expression="${javafx.compiler.optimize}" default-value="false"
    */
@@ -133,6 +127,13 @@ public final class JavaFxcMojo extends AbstractMojo {
    */
   String target;
 
+  /**
+   * Set to <code>true</code> to show messages about what the compiler is doing.
+   * @parameter expression="${javafx.compiler.verbose}" default-value="false"
+   */
+  boolean verbose;
+
+  JavaFxcMojoValidator validator = new JavaFxcMojoValidator();
   JavaFxHome javaFxHome = new JavaFxHome();
   JavaFxcFactory javaFxcFactory = new JavaFxcFactory();
   JavaFxcSetup javaFxcSetup = new JavaFxcSetup();
@@ -148,26 +149,12 @@ public final class JavaFxcMojo extends AbstractMojo {
    * not a directory.
    */
   public void execute() throws MojoExecutionException {
-    validateSourceDirectory();
-    validateOutputDirectory();
+    validator.validate(this);
     String verifiedJavaFxHome = javaFxHome.verify(JavaFxHome);
     getLog().info(concat("JavaFX home is ", quote(verifiedJavaFxHome)));
     File javaFXHomeDir = javaFxHome.reference(verifiedJavaFxHome);
     Javac javaFxc = javaFxcFactory.createJavaFxc(javaFXHomeDir);
     javaFxcSetup.setUpJavaFxc(javaFxc, this, javaFXHomeDir);
     javaFxcExecutor.execute(javaFxc);
-  }
-
-  // package-protected for testing only
-  void validateSourceDirectory() throws MojoExecutionException {
-    if (sourceDirectory.isDirectory()) return;
-    throw new MojoExecutionException("Source directory is not an existing directory.");
-  }
-
-  // package-protected for testing only
-  void validateOutputDirectory() throws MojoExecutionException {
-    if (outputDirectory.isDirectory()) return;
-    boolean success = outputDirectory.mkdirs();
-    if (!success) throw new MojoExecutionException("Unable to create output directory");
   }
 }

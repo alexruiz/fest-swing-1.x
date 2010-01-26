@@ -5,7 +5,7 @@
     <author email="alex.ruiz.05@gmail.com">Alex Ruiz</author>
   </properties>
   <body>
-    <release version="0.2" date="2010-01-26" description="Subsequent release">
+    <release version="0.2" date="2010-02-01" description="Subsequent release">
       <action dev="alexruiz" type="fix" issue="FEST-288" due-to="Viktor Hedefalk">
         Rewrote plugin as a Java Mojo. Classworlds' exception is no longer thrown. 
       </action>

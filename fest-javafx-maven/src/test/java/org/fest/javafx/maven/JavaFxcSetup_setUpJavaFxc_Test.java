@@ -1,0 +1,99 @@
+/*
+ * Created on Jan 25, 2010
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
+ * the License.
+ *
+ * Copyright @2010 the original author or authors.
+ */
+package org.fest.javafx.maven;
+
+import static org.easymock.EasyMock.expect;
+import static org.easymock.classextension.EasyMock.createMock;
+import static org.fest.assertions.Assertions.assertThat;
+import static org.fest.javafx.maven.JavaFxHomeDirectory.createJavaFxHomeDirectory;
+import static org.fest.util.Files.temporaryFolder;
+
+import java.io.File;
+
+import org.apache.maven.project.MavenProject;
+import org.apache.tools.ant.Project;
+import org.apache.tools.ant.taskdefs.Javac;
+import org.fest.mocks.EasyMockTemplate;
+import org.junit.Before;
+import org.junit.Test;
+
+/**
+ * Tests for <code>{@link JavaFxcSetup}</code>.
+ *
+ * @author Alex Ruiz
+ */
+public class JavaFxcSetup_setUpJavaFxc_Test {
+
+  private Javac javaFxc;
+  private JavaFxcMojo javaFxcMojo;
+  private MavenProject mavenProject;
+  private File javaFxcHome;
+  private File basedir;
+  private JavaFxcSetup javaFxcSetup;
+
+  @Before
+  public void setUp() {
+    javaFxc = new Javac();
+    javaFxc.setProject(new Project());
+    mavenProject = createMock(MavenProject.class);
+    javaFxcMojo = new JavaFxcMojo();
+    javaFxcHome = createJavaFxHomeDirectory();
+    basedir = temporaryFolder();
+    javaFxcSetup = new JavaFxcSetup();
+    configureJavaFxcMojo();
+  }
+
+  private void configureJavaFxcMojo() {
+    javaFxcMojo.debug = false;
+    javaFxcMojo.deprecation = true;
+    javaFxcMojo.encoding = "UTF-16";
+    javaFxcMojo.failOnError = false;
+    javaFxcMojo.fork = true;
+    javaFxcMojo.forkExecutable = "javafx.exe";
+    javaFxcMojo.optimize = true;
+    javaFxcMojo.outputDirectory = temporaryFolder();
+    javaFxcMojo.project = mavenProject;
+    javaFxcMojo.source = "1.5";
+    javaFxcMojo.sourceDirectory = temporaryFolder();
+    javaFxcMojo.target = "1.5";
+    javaFxcMojo.verbose = true;
+  }
+
+
+  @Test
+  public void should_configure_JavaFxc() {
+    new EasyMockTemplate(mavenProject) {
+      protected void expectations() {
+        expect(mavenProject.getBasedir()).andReturn(basedir);
+      }
+
+      protected void codeToTest() {
+        javaFxcSetup.setUpJavaFxc(javaFxc, javaFxcMojo, javaFxcHome);
+      }
+    }.run();
+    assertThat(javaFxc.getDebug()).isEqualTo(javaFxcMojo.debug);
+    assertThat(javaFxc.getDeprecation()).isEqualTo(javaFxcMojo.deprecation);
+    assertThat(javaFxc.getDestdir()).isEqualTo(javaFxcMojo.outputDirectory);
+    assertThat(javaFxc.getEncoding()).isEqualTo(javaFxcMojo.encoding);
+    assertThat(javaFxc.getFailonerror()).isEqualTo(javaFxcMojo.failOnError);
+    assertThat(javaFxc.isForkedJavac()).isEqualTo(javaFxcMojo.fork);
+    assertThat(javaFxc.getExecutable()).isEqualTo(javaFxcMojo.forkExecutable);
+    assertThat(javaFxc.getOptimize()).isEqualTo(javaFxcMojo.optimize);
+    assertThat(javaFxc.getSource()).isEqualTo(javaFxcMojo.source);
+    assertThat(javaFxc.getTarget()).isEqualTo(javaFxcMojo.target);
+    assertThat(javaFxc.getVerbose()).isEqualTo(javaFxcMojo.verbose);
+  }
+}

@@ -30,7 +30,7 @@ import org.junit.Test;
  *
  * @author Alex Ruiz
  */
-public class JavaFxcFactory_createCompiler_Test {
+public class JavaFxcFactory_createJavaFxc_Test {
 
   private JavaFxcFactory javaFxcFactory;
 
