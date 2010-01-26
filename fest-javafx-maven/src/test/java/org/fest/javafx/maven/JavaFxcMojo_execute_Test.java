@@ -55,7 +55,7 @@ public class JavaFxcMojo_execute_Test {
 
   private void configureMojo() {
     javaFxcMojo.validator = validator;
-    javaFxcMojo.javaFxHome = javaFxHome;
+    javaFxcMojo.javaFxHomeRef = javaFxHome;
     javaFxcMojo.javaFxcFactory = javaFxcFactory;
     javaFxcMojo.javaFxcSetup = javaFxcSetup;
     javaFxcMojo.javaFxcExecutor = javaFxcExecutor;
@@ -74,7 +74,7 @@ public class JavaFxcMojo_execute_Test {
       protected void expectations() throws MojoExecutionException {
         validator.validate(javaFxcMojo);
         expectLastCall().once();
-        expect(javaFxHome.verify(javaFxcMojo.JavaFxHome)).andReturn(verifiedJavaFXHome);
+        expect(javaFxHome.verify(javaFxcMojo.javaFxHome)).andReturn(verifiedJavaFXHome);
         expect(javaFxHome.reference(verifiedJavaFXHome)).andReturn(javaFXHomeDir);
         expect(javaFxcFactory.createJavaFxc(javaFXHomeDir)).andReturn(javaFxc);
         javaFxcSetup.setUpJavaFxc(javaFxc, javaFxcMojo, javaFXHomeDir);

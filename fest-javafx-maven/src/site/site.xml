@@ -16,9 +16,13 @@
   </poweredBy>
 
   <body>
+    <menu name="Overview">
+      <item name="Introduction" href="index.html"/>
+      <item name="Goals" href="plugin-info.html"/>
+    </menu>
     <breadcrumbs>
-      <item name="FEST" href="../index.php" />
-      <item name="JavaFX" href="index.php"/>
+      <item name="FEST" href="../../index.php" />
+      <item name="JavaFX" href="../index.php"/>
     </breadcrumbs>
 
     <menu ref="reports" />

@@ -63,7 +63,7 @@ public final class JavaFxcMojo extends AbstractMojo {
    * environment variable "JAVAFX_HOME".
    * @parameter expression="${javafx.home}"
    */
-  String JavaFxHome;
+  String javaFxHome;
 
   /**
    * The source directory.
@@ -134,7 +134,7 @@ public final class JavaFxcMojo extends AbstractMojo {
   boolean verbose;
 
   JavaFxcMojoValidator validator = new JavaFxcMojoValidator();
-  JavaFxHome javaFxHome = new JavaFxHome();
+  JavaFxHome javaFxHomeRef = new JavaFxHome();
   JavaFxcFactory javaFxcFactory = new JavaFxcFactory();
   JavaFxcSetup javaFxcSetup = new JavaFxcSetup();
   AntTaskExecutor javaFxcExecutor = new AntTaskExecutor();
@@ -150,9 +150,9 @@ public final class JavaFxcMojo extends AbstractMojo {
    */
   public void execute() throws MojoExecutionException {
     validator.validate(this);
-    String verifiedJavaFxHome = javaFxHome.verify(JavaFxHome);
+    String verifiedJavaFxHome = javaFxHomeRef.verify(javaFxHome);
     getLog().info(concat("JavaFX home is ", quote(verifiedJavaFxHome)));
-    File javaFXHomeDir = javaFxHome.reference(verifiedJavaFxHome);
+    File javaFXHomeDir = javaFxHomeRef.reference(verifiedJavaFxHome);
     Javac javaFxc = javaFxcFactory.createJavaFxc(javaFXHomeDir);
     javaFxcSetup.setUpJavaFxc(javaFxc, this, javaFXHomeDir);
     javaFxcExecutor.execute(javaFxc);

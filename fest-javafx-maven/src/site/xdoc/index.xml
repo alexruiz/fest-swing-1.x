@@ -6,7 +6,52 @@
 	</properties>
 
 	<body>
+    <h2>Welcome to FEST's JavaFX Maven Plugin Documentation</h2>
     <p>
+      This Maven plugin can be used to compile JavaFX source files.      
     </p>
+    
+    <div class="section"><h3>Features</h3>
+    <p>
+      <ul>
+        <li>Compiles JavaFX sources (currently supports desktop profile only)</li>
+        <li>Does not require JavaFX distribution to be in a Maven repository (according to its license, only Sun can 
+        distribute JavaFX)</li>
+        <li>Does not require to list the JavaFX libraries as dependencies in your pom.xml</li>
+      </ul>
+    </p></div>
+    
+    <div class="section"><h3>Configuration</h3>
+    <p>
+      <ol>
+        <li>The JavaFX Maven plugin needs to know the home directory where JavaFX is. The JavaFX home directory can be
+        set as part of the "<a href="compile-mojo.html">compile</a>" goal or as the environment variable <em>JAVAFX_HOME</em>.</li>
+        <li>Configure the plugin in your pom.xml file:
+        <div class="source"><pre>
+&lt;build&gt;
+  &lt;plugins&gt;
+    &lt;plugin&gt;
+      &lt;groupId&gt;org.easytesting&lt;/groupId&gt;
+      &lt;artifactId&gt;fest-javafx-maven&lt;/artifactId&gt;
+      &lt;version&gt;1.0a1&lt;/version&gt;
+      &lt;executions&gt;
+        &lt;execution&gt;
+          &lt;phase&gt;compile&lt;/phase&gt;
+          &lt;goals&gt;
+            &lt;goal&gt;compile&lt;/goal&gt;
+          &lt;/goals&gt;
+        &lt;/execution&gt;
+      &lt;/executions&gt;
+    &lt;/plugin&gt;
+  &lt;/plugins&gt;
+&lt;/build&gt;</pre></div>        
+        </li>
+      </ol>
+    </p>
+    <p>
+The example above will call the "<a href="compile-mojo.html">compile</a>" goal in the standard Maven "compile" phase. For more details about the build 
+lifecycle and phases please see 
+<a href="http://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html" target="_blank">Maven's documentation</a>.    
+    </p></div>
 	</body>
 </document>
