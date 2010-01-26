@@ -15,13 +15,8 @@
  */
 package org.fest.javafx.maven;
 
-import static org.fest.javafx.maven.Ant.updatePathWithPaths;
-import static org.fest.javafx.maven.Classpaths.JAVAFX_COMPILER_CLASSPATH_FILE_NAMES;
-import static org.fest.javafx.maven.Classpaths.JAVAFX_DESKTOP_CLASSPATH_FILE_PATTERNS;
-import static org.fest.util.Strings.concat;
-
+import static org.fest.javafx.maven.Classpaths.JAVAFX_COMPILER_CLASSPATH_FILES;
 import java.io.File;
-
 import org.apache.tools.ant.Project;
 import org.apache.tools.ant.types.FileSet;
 import org.apache.tools.ant.types.Path;
@@ -33,22 +28,13 @@ import org.apache.tools.ant.types.Path;
  */
 class JavaFxcClasspathFactory {
 
-  Path createCompilerClasspath(Project project, File javaFXHomeDirectory) {
+  Path createCompilerClasspath(Project project, File javaFxHomeDirectory) {
     FileSet files = new FileSet();
-    files.setDir(javaFXHomeDirectory);
-    for (String include : JAVAFX_COMPILER_CLASSPATH_FILE_NAMES)
-      files.createInclude().setName(concat("**/", include));
+    files.setDir(javaFxHomeDirectory);
+    for (String include : JAVAFX_COMPILER_CLASSPATH_FILES)
+      files.createInclude().setName(include);
     Path path = new Path(project);
     path.addFileset(files);
     return path;
-  }
-
-  void setUpClasspath(Path classpath, JavaFxcMojo mojo, File javaFXHomeDirectory) {
-    FileSet javaFXFiles = new FileSet();
-    javaFXFiles.setDir(javaFXHomeDirectory);
-    for (String include : JAVAFX_DESKTOP_CLASSPATH_FILE_PATTERNS)
-      javaFXFiles.createInclude().setName(include);
-    classpath.addFileset(javaFXFiles);
-    updatePathWithPaths(classpath, mojo.compileClasspathElements);
   }
 }

@@ -28,5 +28,9 @@ public final class CommonAssertions {
     fail("Expecting UnexpectedError");
   }
 
+  public static void failWhenExpectingMojoExecutionException() {
+    fail("Expecting MojoExecutionException");
+  }
+
   private CommonAssertions() {}
 }

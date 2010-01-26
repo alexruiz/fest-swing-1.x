@@ -15,15 +15,16 @@
  */
 package org.fest.javafx.maven;
 
-import static org.fest.javafx.maven.Ant.*;
-import static org.fest.reflect.core.Reflection.method;
-import java.io.File;
+import static org.fest.javafx.maven.Classpaths.JAVAFX_DESKTOP_CLASSPATH_FILES;
+import static org.fest.util.Collections.isEmpty;
 
-import org.apache.maven.plugin.MojoExecutionException;
+import java.io.File;
+import java.util.List;
+
 import org.apache.tools.ant.Project;
 import org.apache.tools.ant.taskdefs.Javac;
+import org.apache.tools.ant.types.FileSet;
 import org.apache.tools.ant.types.Path;
-import org.fest.reflect.exception.ReflectionError;
 
 /**
  * Understands configuration of an instance of the JavaFX compiler Ant task.
@@ -32,57 +33,55 @@ import org.fest.reflect.exception.ReflectionError;
  */
 class JavaFxcSetup {
 
-  private final AntProjectFactory projectFactory;
-  private final JavaFxcClasspathFactory classpathFactory;
-
-  JavaFxcSetup() {
-    this(new AntProjectFactory(), new JavaFxcClasspathFactory());
+  void setUpJavaFxc(Javac javaFxc, JavaFxcMojo javaFxcMojo, File javaFxcHome) {
+    configureProject(javaFxc, javaFxcMojo);
+    setSource(javaFxc, javaFxcMojo.sourceDirectory);
+    setClasspath(javaFxc, javaFxcMojo, javaFxcHome);
+    javaFxc.setDebug(javaFxcMojo.debug);
+    javaFxc.setDeprecation(javaFxcMojo.deprecation);
+    javaFxc.setDestdir(javaFxcMojo.outputDirectory);
+    javaFxc.setEncoding(javaFxcMojo.encoding);
+    javaFxc.setExecutable(javaFxcMojo.forkExecutable);
+    javaFxc.setFailonerror(javaFxcMojo.failOnError);
+    javaFxc.setFork(javaFxcMojo.fork);
+    javaFxc.setOptimize(javaFxcMojo.optimize);
+    javaFxc.setSource(javaFxcMojo.source);
+    javaFxc.setTarget(javaFxcMojo.target);
+    javaFxc.setVerbose(javaFxcMojo.verbose);
   }
 
-  JavaFxcSetup(AntProjectFactory projectFactory, JavaFxcClasspathFactory classpathFactory) {
-    this.projectFactory = projectFactory;
-    this.classpathFactory = classpathFactory;
+  private void configureProject(Javac javaFxc, JavaFxcMojo javaFxcMojo) {
+    Project antProject = javaFxc.getProject();
+    antProject.setBaseDir(javaFxcMojo.project.getBasedir());
+    antProject.addBuildListener(new LoggingBuildListener(javaFxcMojo.getLog()));
+    antProject.init();
   }
 
-  void configure(Javac javaFxc, JavaFxcMojo mojo, File javaFXHomeDirectory) throws MojoExecutionException {
-    setProject(javaFxc, mojo);
-    setCompilerClasspath(javaFxc, javaFXHomeDirectory);
-    setSource(javaFxc, mojo);
-    setClasspath(javaFxc, mojo, javaFXHomeDirectory);
-    javaFxc.setDebug(mojo.debug);
-    javaFxc.setDeprecation(mojo.deprecation);
-    javaFxc.setDestdir(mojo.outputDirectory);
-    javaFxc.setEncoding(mojo.encoding);
-    javaFxc.setExecutable(mojo.forkExecutable);
-    javaFxc.setFailonerror(mojo.failOnError);
-    javaFxc.setFork(mojo.fork);
-    javaFxc.setOptimize(mojo.optimize);
-    javaFxc.setSource(mojo.source);
-    javaFxc.setTarget(mojo.target);
-    javaFxc.setVerbose(mojo.verbose);
+  private void setSource(Javac javaFxc, File sourceDirectory) {
+    updatePathWithFile(javaFxc.createSrc(), sourceDirectory);
+    updatePathWithFile(javaFxc.createSourcepath(), sourceDirectory);
   }
 
-  private void setProject(Javac javaFxc, JavaFxcMojo mojo) throws MojoExecutionException {
-    Project antProject = projectFactory.createAntProject(mojo.project, mojo.getLog());
-    javaFxc.setProject(antProject);
+  private void updatePathWithFile(Path path, File file) {
+    path.createPathElement().setLocation(file);
   }
 
-  private void setCompilerClasspath(Javac javaFxc, File javaFXHomeDirectory) throws MojoExecutionException {
-    Path path = classpathFactory.createCompilerClasspath(javaFxc.getProject(), javaFXHomeDirectory);
-    try {
-      method("setCompilerClassPath").withParameterTypes(Path.class).in(javaFxc).invoke(path);
-    } catch (ReflectionError e) {
-      throw new MojoExecutionException("Unable to set the compiler classpath", e);
-    }
-  }
-
-  private void setSource(Javac javaFxc, JavaFxcMojo mojo) {
-    updatePathWithFiles(javaFxc.createSrc(), mojo.sourceDirectory);
-    updatePathWithFiles(javaFxc.createSourcepath(), mojo.sourceDirectory);
-  }
-
-  private void setClasspath(Javac javaFxc, JavaFxcMojo mojo, File javaFXHomeDirectory) {
+  private void setClasspath(Javac javaFxc, JavaFxcMojo javaFxMojo, File javaFxcHome) {
     Path classpath = javaFxc.createClasspath();
-    classpathFactory.setUpClasspath(classpath, mojo, javaFXHomeDirectory);
+    classpath.addFileset(javaFxFiles(javaFxcHome));
+    updatePathWithElements(classpath, javaFxMojo.compileClasspathElements);
+  }
+
+  private FileSet javaFxFiles(File javaFxcHome) {
+    FileSet javaFxFiles = new FileSet();
+    javaFxFiles.setDir(javaFxcHome);
+    for (String include : JAVAFX_DESKTOP_CLASSPATH_FILES)
+      javaFxFiles.createInclude().setName(include);
+    return javaFxFiles;
+  }
+
+  private static void updatePathWithElements(Path path, List<String> elements) {
+    if (isEmpty(elements)) return;
+    for (String element : elements) path.createPathElement().setPath(element);
   }
 }

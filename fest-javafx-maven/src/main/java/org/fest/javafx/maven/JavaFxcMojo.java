@@ -153,9 +153,9 @@ public final class JavaFxcMojo extends AbstractMojo {
     String verifiedJavaFxHome = javaFxHome.verify(JavaFxHome);
     getLog().info(concat("JavaFX home is ", quote(verifiedJavaFxHome)));
     File javaFXHomeDir = javaFxHome.reference(verifiedJavaFxHome);
-    Javac javaFXC = javaFxcFactory.createCompiler(javaFXHomeDir);
-    javaFxcSetup.configure(javaFXC, this, javaFXHomeDir);
-    javaFxcExecutor.execute(javaFXC);
+    Javac javaFxc = javaFxcFactory.createJavaFxc(javaFXHomeDir);
+    javaFxcSetup.setUpJavaFxc(javaFxc, this, javaFXHomeDir);
+    javaFxcExecutor.execute(javaFxc);
   }
 
   // package-protected for testing only

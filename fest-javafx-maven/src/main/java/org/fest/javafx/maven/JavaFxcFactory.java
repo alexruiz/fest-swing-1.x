@@ -14,16 +14,19 @@
  */
 package org.fest.javafx.maven;
 
-import static java.io.File.separator;
 import static java.lang.Thread.currentThread;
-import static org.fest.javafx.maven.Classpaths.JAVAFX_COMPILER_CLASSPATH_FILE_NAMES;
-import static org.fest.util.Strings.concat;
+import static org.fest.reflect.core.Reflection.method;
 
 import java.io.File;
 import java.net.*;
+import java.util.*;
 
 import org.apache.maven.plugin.MojoExecutionException;
+import org.apache.tools.ant.Project;
 import org.apache.tools.ant.taskdefs.Javac;
+import org.apache.tools.ant.types.Path;
+import org.apache.tools.ant.types.resources.FileResource;
+import org.fest.reflect.exception.ReflectionError;
 
 /**
  * Understands creation of new instances of the JavaFX compiler Ant task.
@@ -32,41 +35,52 @@ import org.apache.tools.ant.taskdefs.Javac;
  */
 class JavaFxcFactory {
 
-  private static final String COMPILER_CLASSPATH_JAR_FOLDER = concat("lib", separator, "shared", separator);
   private static final String JAVAFX_COMPILER_ANT_TASK_CLASS = "com.sun.tools.javafx.ant.JavaFxAntTask";
 
-  Javac createCompiler(File javaFXHomeDirectory) throws MojoExecutionException {
+  private final JavaFxcClasspathFactory classpathFactory = new JavaFxcClasspathFactory();
+
+  Javac createJavaFxc(File javaFxHome) throws MojoExecutionException {
     try {
-      Class<?> javafxc = Class.forName(JAVAFX_COMPILER_ANT_TASK_CLASS, true /*initialize*/, classLoader(javaFXHomeDirectory));
-      return (Javac) javafxc.newInstance();
+      Path compilerClasspath = classpathFactory.createCompilerClasspath(new Project(), javaFxHome);
+      Class<?> javaFxcType = Class.forName(JAVAFX_COMPILER_ANT_TASK_CLASS, true /*initialize*/, classLoader(compilerClasspath));
+      Javac javaFxc = (Javac) javaFxcType.newInstance();
+      configureCompiler(javaFxc, compilerClasspath);
+      return javaFxc;
     } catch (Exception e) {
+      if (e instanceof MojoExecutionException) throw (MojoExecutionException)e;
       throw loadingTaskFailed(e);
     }
   }
 
-  private static ClassLoader classLoader(File javaFXHomeDirectory) throws MalformedURLException {
-    URL[] classpath = compilerClasspath(javaFXHomeDirectory, JAVAFX_COMPILER_CLASSPATH_FILE_NAMES);
-    return new URLClassLoader(classpath, currentThread().getContextClassLoader());
+  private static ClassLoader classLoader(Path classpath) throws MalformedURLException {
+    URL[] urls = fileUrlsFrom(classpath);
+    return new URLClassLoader(urls, currentThread().getContextClassLoader());
   }
 
-  private static URL[] compilerClasspath(File javaFXHomeDirectory, String[] jarNames) throws MalformedURLException {
-    int size = jarNames.length;
-    URL[] urls = new URL[size];
-    for (int i = 0; i < size; i++)
-      urls[i] = jarURL(javaFXHomeDirectory, jarNames[i]);
-    return urls;
-  }
-
-  private static URL jarURL(File javaFXHomeDirectory, String jarName) throws MalformedURLException {
-    return new File(javaFXHomeDirectory, buildCompilerJarPath(jarName)).toURI().toURL();
-  }
-
-  private static String buildCompilerJarPath(String jarName) {
-    return concat(COMPILER_CLASSPATH_JAR_FOLDER, jarName);
+  @SuppressWarnings("unchecked")
+  private static URL[] fileUrlsFrom(Path classpath) throws MalformedURLException {
+    List<URL> urls = new ArrayList<URL>();
+    Iterator<FileResource> iterator = classpath.iterator();
+    while(iterator.hasNext())
+      urls.add(iterator.next().getFile().toURI().toURL());
+    return urls.toArray(new URL[urls.size()]);
   }
 
   private static MojoExecutionException loadingTaskFailed(Exception cause) {
     String msg = "Unable to load JavaFX compiler Ant task. Please make sure javafxc.jar is in the classpath";
     return new MojoExecutionException(msg, cause);
+  }
+
+  private void configureCompiler(Javac javaFxc, Path compilerClasspath) throws MojoExecutionException {
+    javaFxc.setProject(compilerClasspath.getProject());
+    setCompilerClasspath(javaFxc, compilerClasspath);
+  }
+
+  private void setCompilerClasspath(Javac javaFxc, Path compilerClasspath) throws MojoExecutionException {
+    try {
+      method("setCompilerClassPath").withParameterTypes(Path.class).in(javaFxc).invoke(compilerClasspath);
+    } catch (ReflectionError e) {
+      throw new MojoExecutionException("Unable to set the compiler classpath", e);
+    }
   }
 }

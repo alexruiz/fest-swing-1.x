@@ -22,9 +22,9 @@ package org.fest.javafx.maven;
  */
 abstract class Classpaths {
 
-  static final String[] JAVAFX_COMPILER_CLASSPATH_FILE_NAMES = { "javafxrt.jar", "javafxc.jar", "toolchain.jar" };
+  static final String[] JAVAFX_COMPILER_CLASSPATH_FILES = { "**/javafxrt.jar", "**/javafxc.jar", "**/toolchain.jar" };
 
-  static final String[] JAVAFX_DESKTOP_CLASSPATH_FILE_PATTERNS = { "**/javafxrt.jar", "**/lib/desktop/*.jar" };
+  static final String[] JAVAFX_DESKTOP_CLASSPATH_FILES = { "**/javafxrt.jar", "**/lib/desktop/*.jar" };
 
   private Classpaths() {}
 }
