@@ -35,7 +35,7 @@
             <include>**/*Test.java</include>
           </includes>
           <argLine>-Xms512m -Xmx512m</argLine>
-          <!--skipTests>true</skipTests-->
+          <skipTests>true</skipTests>
         </configuration>
       </plugin>
       <plugin>
