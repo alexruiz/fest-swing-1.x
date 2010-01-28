@@ -25,15 +25,16 @@ import org.apache.tools.ant.types.Path;
  * Understands creation of classpaths for the JavaFX compiler Ant task.
  *
  * @author Alex Ruiz
+ * @author Yvonne Wang
  */
 class JavaFxcClasspathFactory {
 
-  Path createCompilerClasspath(Project project, File javaFxHomeDirectory) {
+  Path createCompilerClasspath(File javaFxHomeDirectory) {
     FileSet files = new FileSet();
     files.setDir(javaFxHomeDirectory);
     for (String include : JAVAFX_COMPILER_CLASSPATH_FILES)
       files.createInclude().setName(include);
-    Path path = new Path(project);
+    Path path = new Path(new Project());
     path.addFileset(files);
     return path;
   }

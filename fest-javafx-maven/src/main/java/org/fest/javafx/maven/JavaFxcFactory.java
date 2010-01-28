@@ -14,18 +14,15 @@
  */
 package org.fest.javafx.maven;
 
-import static java.lang.Thread.currentThread;
 import static org.fest.reflect.core.Reflection.method;
 
 import java.io.File;
-import java.net.*;
-import java.util.*;
+import java.net.MalformedURLException;
 
 import org.apache.maven.plugin.MojoExecutionException;
-import org.apache.tools.ant.Project;
+import org.apache.tools.ant.BuildException;
 import org.apache.tools.ant.taskdefs.Javac;
 import org.apache.tools.ant.types.Path;
-import org.apache.tools.ant.types.resources.FileResource;
 import org.fest.reflect.exception.ReflectionError;
 
 /**
@@ -35,35 +32,35 @@ import org.fest.reflect.exception.ReflectionError;
  */
 class JavaFxcFactory {
 
-  private static final String JAVAFX_COMPILER_ANT_TASK_CLASS = "com.sun.tools.javafx.ant.JavaFxAntTask";
+  private final JavaFxcClasspathFactory classpathFactory;
+  private final JavaFxcInstantiator instantiator;
 
-  private final JavaFxcClasspathFactory classpathFactory = new JavaFxcClasspathFactory();
+  JavaFxcFactory() {
+    this(new JavaFxcClasspathFactory(), new JavaFxcInstantiator());
+  }
+
+  JavaFxcFactory(JavaFxcClasspathFactory classpathFactory, JavaFxcInstantiator instantiator) {
+    this.classpathFactory = classpathFactory;
+    this.instantiator = instantiator;
+  }
 
   Javac createJavaFxc(File javaFxHome) throws MojoExecutionException {
-    try {
-      Path compilerClasspath = classpathFactory.createCompilerClasspath(new Project(), javaFxHome);
-      Class<?> javaFxcType = Class.forName(JAVAFX_COMPILER_ANT_TASK_CLASS, true /*initialize*/, classLoader(compilerClasspath));
-      Javac javaFxc = (Javac) javaFxcType.newInstance();
-      configureCompiler(javaFxc, compilerClasspath);
-      return javaFxc;
-    } catch (Exception e) {
-      if (e instanceof MojoExecutionException) throw (MojoExecutionException)e;
-      throw loadingTaskFailed(e);
-    }
-  }
-
-  private static ClassLoader classLoader(Path classpath) throws MalformedURLException {
-    URL[] urls = fileUrlsFrom(classpath);
-    return new URLClassLoader(urls, currentThread().getContextClassLoader());
-  }
-
-  @SuppressWarnings("unchecked")
-  private static URL[] fileUrlsFrom(Path classpath) throws MalformedURLException {
-    List<URL> urls = new ArrayList<URL>();
-    Iterator<FileResource> iterator = classpath.iterator();
-    while(iterator.hasNext())
-      urls.add(iterator.next().getFile().toURI().toURL());
-    return urls.toArray(new URL[urls.size()]);
+      try {
+        Path compilerClasspath = classpathFactory.createCompilerClasspath(javaFxHome);
+        Javac javaFxc = instantiator.instantiateJavaFxc(compilerClasspath);
+        configureCompiler(javaFxc, compilerClasspath);
+        return javaFxc;
+      } catch (BuildException e) {
+        throw loadingTaskFailed(e);
+      } catch (MalformedURLException e) {
+        throw loadingTaskFailed(e);
+      } catch (ClassNotFoundException e) {
+        throw loadingTaskFailed(e);
+      } catch (InstantiationException e) {
+        throw loadingTaskFailed(e);
+      } catch (IllegalAccessException e) {
+        throw loadingTaskFailed(e);
+      }
   }
 
   private static MojoExecutionException loadingTaskFailed(Exception cause) {

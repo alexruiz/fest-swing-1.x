@@ -22,19 +22,17 @@ import static org.fest.javafx.maven.JavaFxHomeDirectory.createJavaFxHomeDirector
 import java.io.File;
 import java.util.*;
 
-import org.apache.tools.ant.Project;
 import org.apache.tools.ant.types.Path;
 import org.apache.tools.ant.types.resources.FileResource;
 import org.junit.*;
 
 /**
- * Tests for <code>{@link JavaFxcClasspathFactory#createCompilerClasspath(Project, File)}</code>.
+ * Tests for <code>{@link JavaFxcClasspathFactory#createCompilerClasspath(File)}</code>.
  *
  * @author Alex Ruiz
  */
 public class JavaFxcClasspathFactory_createCompilerClasspath_Test {
 
-  private Project project;
   private File javaFxHomeDirectory;
   private static JavaFxcClasspathFactory classpathFactory;
 
@@ -45,14 +43,13 @@ public class JavaFxcClasspathFactory_createCompilerClasspath_Test {
 
   @Before
   public void setUp() {
-    project = new Project();
     javaFxHomeDirectory = createJavaFxHomeDirectory();
   }
 
   @Test
   public void should_create_compiler_classpath() {
-    Path classpath = classpathFactory.createCompilerClasspath(project, javaFxHomeDirectory);
-    assertThat(classpath.getProject()).isSameAs(project);
+    Path classpath = classpathFactory.createCompilerClasspath(javaFxHomeDirectory);
+    assertThat(classpath.getProject()).isNotNull();
     List<String> fileNames = fileNamesFrom(classpath);
     assertThat(fileNames.get(0)).endsWith("javafxc.jar");
     assertThat(fileNames.get(1)).endsWith("javafxrt.jar");
