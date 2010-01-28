@@ -35,12 +35,8 @@ import org.apache.tools.ant.types.resources.FileResource;
 class JavaFxcClassLoaderFactory {
 
   ClassLoader createClassLoader(Path classpath) throws MalformedURLException {
-    final URL[] urls = fileUrlsFrom(classpath);
-    return AccessController.doPrivileged(new PrivilegedAction<ClassLoader>() {
-      public ClassLoader run() {
-        return new URLClassLoader(urls, currentThread().getContextClassLoader());
-      }
-    });
+    URL[] urls = fileUrlsFrom(classpath);
+    return AccessController.doPrivileged(new ClassLoaderCreationAction(urls));
   }
 
   @SuppressWarnings("unchecked")
@@ -50,5 +46,17 @@ class JavaFxcClassLoaderFactory {
     while(iterator.hasNext())
       urls.add(iterator.next().getFile().toURI().toURL());
     return urls.toArray(new URL[urls.size()]);
+  }
+
+  private static class ClassLoaderCreationAction implements PrivilegedAction<ClassLoader> {
+    private final URL[] urls;
+
+    ClassLoaderCreationAction(URL[] urls) {
+      this.urls = urls;
+    }
+
+    public ClassLoader run() {
+      return new URLClassLoader(urls, currentThread().getContextClassLoader());
+    }
   }
 }
