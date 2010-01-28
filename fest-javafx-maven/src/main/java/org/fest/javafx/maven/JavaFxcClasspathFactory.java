@@ -15,7 +15,6 @@
  */
 package org.fest.javafx.maven;
 
-import static org.fest.javafx.maven.Classpaths.JAVAFX_COMPILER_CLASSPATH_FILES;
 import java.io.File;
 import org.apache.tools.ant.Project;
 import org.apache.tools.ant.types.FileSet;
@@ -28,6 +27,8 @@ import org.apache.tools.ant.types.Path;
  * @author Yvonne Wang
  */
 class JavaFxcClasspathFactory {
+
+  private static final String[] JAVAFX_COMPILER_CLASSPATH_FILES = { "**/javafxrt.jar", "**/javafxc.jar", "**/toolchain.jar" };
 
   Path createCompilerClasspath(File javaFxHomeDirectory) {
     FileSet files = new FileSet();

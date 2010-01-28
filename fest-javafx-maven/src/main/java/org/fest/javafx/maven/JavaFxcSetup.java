@@ -15,7 +15,6 @@
  */
 package org.fest.javafx.maven;
 
-import static org.fest.javafx.maven.Classpaths.JAVAFX_DESKTOP_CLASSPATH_FILES;
 import static org.fest.util.Collections.isEmpty;
 
 import java.io.File;
@@ -32,6 +31,8 @@ import org.apache.tools.ant.types.Path;
  * @author Alex Ruiz
  */
 class JavaFxcSetup {
+
+  private static final String[] JAVAFX_DESKTOP_CLASSPATH_FILES = { "**/javafxrt.jar", "**/lib/desktop/*.jar" };
 
   void setUpJavaFxc(Javac javaFxc, JavaFxcMojo javaFxcMojo, File javaFxcHome) {
     configureProject(javaFxc, javaFxcMojo);
