@@ -18,8 +18,11 @@ package org.fest.javafx.maven;
 import static java.lang.Thread.currentThread;
 
 import java.net.*;
+import java.security.AccessController;
+import java.security.PrivilegedAction;
 import java.util.*;
 
+import org.apache.tools.ant.taskdefs.Classloader;
 import org.apache.tools.ant.types.Path;
 import org.apache.tools.ant.types.resources.FileResource;
 
@@ -32,8 +35,12 @@ import org.apache.tools.ant.types.resources.FileResource;
 class JavaFxcClassLoaderFactory {
 
   ClassLoader createClassLoader(Path classpath) throws MalformedURLException {
-    URL[] urls = fileUrlsFrom(classpath);
-    return new URLClassLoader(urls, currentThread().getContextClassLoader());
+    final URL[] urls = fileUrlsFrom(classpath);
+    return AccessController.doPrivileged(new PrivilegedAction<ClassLoader>() {
+      public ClassLoader run() {
+        return new URLClassLoader(urls, currentThread().getContextClassLoader());
+      }
+    });
   }
 
   @SuppressWarnings("unchecked")
