@@ -25,7 +25,9 @@
     <p>
       <ol>
         <li>The JavaFX Maven plugin needs to know the home directory where JavaFX is. The JavaFX home directory can be
-        set as part of the "<a href="compile-mojo.html">compile</a>" goal or as the environment variable <em>JAVAFX_HOME</em>.</li>
+        specified as the environment variable <em>JAVAFX_HOME</em>, in the "<a href="compile-mojo.html">compile</a>" 
+        goal, or as a property in the settings.xml file. For more details please read
+        <a href="javafx-home.html">Setting the JavaFX Home</a>.</li>
         <li>Configure the plugin in your pom.xml file:
         <div class="source"><pre>
 &lt;build&gt;

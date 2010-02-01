@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<project name="FEST-JavaFX-Maven">
+<project xmlns="http://maven.apache.org/DECORATION/1.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/DECORATION/1.0.0 http://maven.apache.org/xsd/decoration-1.0.0.xsd">
   <skin>
     <groupId>org.easytesting</groupId>
     <artifactId>fest-site-skin</artifactId>
@@ -16,15 +18,17 @@
   </poweredBy>
 
   <body>
-    <menu name="Overview">
-      <item name="Introduction" href="index.html"/>
-      <item name="Goals" href="plugin-info.html"/>
-    </menu>
     <breadcrumbs>
       <item name="FEST" href="../../index.php" />
       <item name="JavaFX" href="../index.php"/>
     </breadcrumbs>
-
+    <menu name="Overview">
+      <item name="Introduction" href="index.html"/>
+      <item name="Goals" href="plugin-info.html" collapse="false">
+        <item name="fest-javafx:compile" href="compile-mojo.html" />
+      </item>
+      <item name="Setting the JavaFX Home" href="javafx-home.html" />
+    </menu>
     <menu ref="reports" />
   </body>
 </project>

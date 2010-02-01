@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+	<properties>
+		<title>Welcome</title>
+	</properties>
+
+	<body>
+    <h2>Setting the JavaFX Home</h2>
+    <p>
+      In order for this plugin to work, it needs to know the path where JavaFX is installed in your system. We refer to
+      this path as the JavaFX home.      
+    </p>
+    
+    <div class="section"><h3>Why do I need to specify a JavaFX home?</h3>
+    <p>
+      The JavaFX plugin does not expect the JavaFX jar files specified in the &quot;dependencies&quot; of a POM file
+      for the following reasons:
+      <ul>
+        <li>Per JavaFX's license, only Sun/Oracle can distribute the JavaFX jars</li>
+        <li>Installing JavaFX jars in a local repository is easy, but time consuming: we can only install one at a
+        time</li>
+        <li>So far, with each release, the number or names of the JavaFX jars changed</li>
+      </ul>    
+    </p></div>
+    
+    <div class="section"><h3>Using an environment variable</h3>
+    <p>
+      This is the easiest way to specify the path of the JavaFX home directory. The JavaFX plugin will automatically
+      read this value and no further configuration is needed.
+    </p></div>
+
+    <div class="section"><h3>Specifying the &quot;javafxHome&quot; parameter in the &quot;compile&quot; goal</h3>
+    <p>
+      The following is a sample POM file that specifies the path of the JavaFX home directory in the configuration
+      of the &quot;compile&quot; goal:
+      <div class="source"><pre>
+&lt;build&gt;
+  &lt;plugins&gt;
+    &lt;plugin&gt;
+      &lt;groupId&gt;org.easytesting&lt;/groupId&gt;
+      &lt;artifactId&gt;fest-javafx-maven&lt;/artifactId&gt;
+      &lt;version&gt;1.0a1&lt;/version&gt;
+      &lt;executions&gt;
+        &lt;execution&gt;
+          &lt;phase&gt;compile&lt;/phase&gt;
+          &lt;goals&gt;
+            &lt;goal&gt;compile&lt;/goal&gt;
+          &lt;/goals&gt;
+        &lt;/execution&gt;
+      &lt;/executions&gt;
+      &lt;configuration&gt;
+        &lt;javaFxHome&gt;c:\JavaFX\javafx-sdk1.2&lt;/javaFxHome&gt;
+      &lt;/configuration&gt;
+    &lt;/plugin&gt;
+  &lt;/plugins&gt;
+&lt;/build&gt;    
+      </pre></div>
+    </p>
+    </div>
+	</body>
+</document>
