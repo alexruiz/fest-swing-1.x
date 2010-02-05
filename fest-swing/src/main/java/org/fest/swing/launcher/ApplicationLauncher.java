@@ -62,7 +62,7 @@ public class ApplicationLauncher {
    */
   public static ApplicationLauncher application(String applicationTypeName) {
     try {
-      Class<?> applicationType = ApplicationLauncher.class.getClassLoader().loadClass(applicationTypeName);
+      Class<?> applicationType = Thread.currentThread().getContextClassLoader().loadClass(applicationTypeName);
       return application(applicationType);
     } catch (ClassNotFoundException e) {
       throw new UnexpectedException(concat("Unable to load class ", quote(applicationTypeName)), e);
