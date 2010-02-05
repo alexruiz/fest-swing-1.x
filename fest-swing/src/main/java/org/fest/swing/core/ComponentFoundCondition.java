@@ -1,16 +1,16 @@
 /*
  * Created on Nov 15, 2007
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License
  * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
- * 
+ *
  * Copyright @2007-2010 the original author or authors.
  */
 package org.fest.swing.core;
@@ -35,7 +35,7 @@ public final class ComponentFoundCondition extends Condition {
   private final ComponentFinder finder;
   private final ComponentMatcher matcher;
   private final Container root;
-  
+
   private Component found;
 
   /**
@@ -89,10 +89,17 @@ public final class ComponentFoundCondition extends Condition {
    * @return <code>true</code> if a matching component can be found, <code>false</code> otherwise.
    */
   public boolean test() {
+    boolean matchFound = false;
     List<Component> allFound = new ArrayList<Component>(finder.findAll(root, matcher));
-    if (allFound.size() != 1) return false;
-    found = allFound.get(0);
-    return true;
+    matchFound = allFound.size() == 1;
+    if (matchFound) found = allFound.get(0);
+    resetMatcher(matchFound);
+    return matchFound;
+  }
+
+  private void resetMatcher(boolean matchFound) {
+    if (!(matcher instanceof ResettableComponentMatcher)) return;
+    ((ResettableComponentMatcher)matcher).reset(matchFound);
   }
 
   /**

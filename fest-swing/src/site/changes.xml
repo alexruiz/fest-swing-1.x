@@ -5,6 +5,18 @@
     <author email="alex.ruiz.05@gmail.com">Alex Ruiz</author>
   </properties>
   <body>
+    <release version="1.2b1" date="TBD" description="Subsequent release">
+      <action dev="alexruiz" type="add" issue="FEST-291" due-to="Henning">
+        Added interface org.fest.swing.core.ResettableComponentMatcher.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-291" due-to="Henning">
+        Class org.fest.swing.core.AbstractComponentMatcher now implements ResettableComponentMatcher.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-291" due-to="Henning">
+        org.fest.swing.core.ComponentFoundCondition now resets the given matcher in 'test' if the matcher is a 
+        ResettableComponentMatcher.
+      </action>
+    </release>
     <release version="1.2a4" date="2010-01-19" description="Subsequent release">
       <action dev="alexruiz" type="add" issue="FEST-8">
         Added interface org.fest.swing.fixture.JTreeNodeFixture and implementations JTreePathFixture and 
