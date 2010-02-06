@@ -18,6 +18,7 @@ package org.fest.swing.driver;
 import static org.fest.swing.core.MouseButton.LEFT_BUTTON;
 import static org.fest.swing.driver.ComponentStateValidator.validateIsEnabledAndShowing;
 import static org.fest.swing.edt.GuiActionRunner.execute;
+import static org.fest.swing.timing.Pause.pause;
 
 import java.awt.Point;
 import java.util.regex.Pattern;
@@ -85,6 +86,7 @@ public class JTableHeaderDriver extends JComponentDriver {
   public void clickColumn(JTableHeader tableHeader, int columnIndex, MouseButton button, int times) {
     Point p = pointAtIndex(tableHeader, columnIndex, location);
     robot.click(tableHeader, p, button, times);
+    pause(300); // needs more time when sorting a column (JDK 1.6)
   }
 
   /**
