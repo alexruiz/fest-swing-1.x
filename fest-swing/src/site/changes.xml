@@ -16,6 +16,9 @@
         org.fest.swing.core.ComponentFoundCondition now resets the given matcher in 'test' if the matcher is a 
         ResettableComponentMatcher.
       </action>
+      <action dev="alexruiz" type="add" issue="FEST-305">
+        Application launcher now uses the ClassLoader from the current thread to load a class given its name.
+      </action>
     </release>
     <release version="1.2a4" date="2010-01-19" description="Subsequent release">
       <action dev="alexruiz" type="add" issue="FEST-8">
