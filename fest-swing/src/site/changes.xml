@@ -6,6 +6,9 @@
   </properties>
   <body>
     <release version="1.2b1" date="TBD" description="Subsequent release">
+      <action dev="alexruiz" type="fix" issue="FEST-200">
+        Method 'showPopupMenuAt' in JTreeFixture now scrolls to the matching node before trying to display a pop-up menu.
+      </action>
       <action dev="alexruiz" type="add" issue="FEST-291" due-to="Henning">
         Added interface org.fest.swing.core.ResettableComponentMatcher.
       </action>

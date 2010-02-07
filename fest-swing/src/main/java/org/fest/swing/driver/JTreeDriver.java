@@ -574,17 +574,9 @@ public class JTreeDriver extends JComponentDriver {
    */
   @RunsInEDT
   public JPopupMenu showPopupMenu(JTree tree, int row) {
-    return robot.showPopupMenu(tree, validateAndFindPointAtRow(tree, row, location));
-  }
-
-  @RunsInEDT
-  private static Point validateAndFindPointAtRow(final JTree tree, final int row, final JTreeLocation location) {
-    return execute(new GuiQuery<Point>() {
-      protected Point executeInEDT() {
-        validateIsEnabledAndShowing(tree);
-        return location.pointAt(tree, location.validIndex(tree, row));
-      }
-    });
+    Pair<Boolean, Point> info = scrollToRow(tree, row, location);
+    Point p = info.ii;
+    return robot.showPopupMenu(tree, p);
   }
 
   /**
@@ -601,18 +593,10 @@ public class JTreeDriver extends JComponentDriver {
    */
   @RunsInEDT
   public JPopupMenu showPopupMenu(JTree tree, String path) {
-    TreePath matchingPath = verifyJTreeIsReadyAndFindMatchingPath(tree, path, pathFinder);
-    makeVisible(tree, matchingPath, false);
-    return robot.showPopupMenu(tree, pointAtPath(tree, matchingPath, location));
-  }
-
-  @RunsInEDT
-  private static Point pointAtPath(final JTree tree, final TreePath path, final JTreeLocation location) {
-    return execute(new GuiQuery<Point>() {
-      protected Point executeInEDT() {
-        return location.pointAt(tree, path);
-      }
-    });
+    Triple<TreePath, Boolean, Point> info = scrollToMatchingPath(tree, path);
+    robot.waitForIdle();
+    Point where = info.iii;
+    return robot.showPopupMenu(tree, where);
   }
 
   /**
@@ -704,28 +688,6 @@ public class JTreeDriver extends JComponentDriver {
     return where;
   }
 
-  /*
-   * returns:
-   * 1. whether the path is already selected
-   * 2. the location where the path is in the JTree
-   */
-  @RunsInEDT
-  private static Pair<Boolean, Point> scrollToPathToSelect(final JTree tree, final TreePath path, final JTreeLocation location) {
-    return execute(new GuiQuery<Pair<Boolean, Point>>() {
-      protected Pair<Boolean, Point> executeInEDT() {
-        boolean isSelected = tree.getSelectionCount() == 1 && tree.isPathSelected(path);
-        return new Pair<Boolean, Point>(isSelected, scrollToTreePath(tree, path));
-      }
-    });
-  }
-
-  @RunsInCurrentThread
-  private static Point scrollToTreePath(final JTree tree, final TreePath path) {
-    Rectangle pathBounds = tree.getPathBounds(path);
-    tree.scrollRectToVisible(pathBounds);
-    return new Point(pathBounds.x + 1, pathBounds.y + pathBounds.height / 2);
-  }
-
   /**
    * Ends a drag operation at the location of the given <code>{@link TreePath}</code>.
    * @param tree the target <code>JTree</code>.
@@ -754,6 +716,28 @@ public class JTreeDriver extends JComponentDriver {
     makeVisible(tree, matchingPath, false);
     Pair<Boolean, Point> info = scrollToPathToSelect(tree, matchingPath, location);
     return new Triple<TreePath, Boolean, Point>(matchingPath, info.i, info.ii);
+  }
+
+  /*
+   * returns:
+   * 1. whether the path is already selected
+   * 2. the location where the path is in the JTree
+   */
+  @RunsInEDT
+  private static Pair<Boolean, Point> scrollToPathToSelect(final JTree tree, final TreePath path, final JTreeLocation location) {
+    return execute(new GuiQuery<Pair<Boolean, Point>>() {
+      protected Pair<Boolean, Point> executeInEDT() {
+        boolean isSelected = tree.getSelectionCount() == 1 && tree.isPathSelected(path);
+        return new Pair<Boolean, Point>(isSelected, scrollToTreePath(tree, path));
+      }
+    });
+  }
+
+  @RunsInCurrentThread
+  private static Point scrollToTreePath(final JTree tree, final TreePath path) {
+    Rectangle pathBounds = tree.getPathBounds(path);
+    tree.scrollRectToVisible(pathBounds);
+    return new Point(pathBounds.x + 1, pathBounds.y + pathBounds.height / 2);
   }
 
   /**

@@ -37,6 +37,13 @@ public class JTreeDriver_showPopupMenuAtRow_Test extends JTreeDriver_showPopupMe
   }
 
   @Test
+  public void should_scroll_to_node_before_showing_popup_menu() {
+    showWindow();
+    JPopupMenu popupMenu = driver.showPopupMenu(tree, 5);
+    assertThat(popupMenu).isSameAs(popupMenu());
+  }
+
+  @Test
   public void should_throw_error_if_JTree_is_disabled() {
     disableTree();
     try {

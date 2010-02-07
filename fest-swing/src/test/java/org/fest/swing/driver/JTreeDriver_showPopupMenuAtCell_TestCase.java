@@ -64,7 +64,7 @@ public abstract class JTreeDriver_showPopupMenuAtCell_TestCase extends JTreeDriv
       int x = e.getX();
       int y = e.getY();
       int row = tree.getRowForLocation(x, y);
-      if (row == 0) popupMenu.show(tree, x, y);
+      if (row >= 0) popupMenu.show(tree, x, y);
     }
   }
 }
