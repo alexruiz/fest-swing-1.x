@@ -19,6 +19,9 @@
         org.fest.swing.core.ComponentFoundCondition now resets the given matcher in 'test' if the matcher is a 
         ResettableComponentMatcher.
       </action>
+      <action dev="alexruiz" type="fix" issue="FEST-293" due-to="Morten Breum Mikkelsen">
+        org.fest.swing.data.TableCellInRowByValue now correctly performs matching on a JTable row by value.
+      </action>
       <action dev="alexruiz" type="fix" issue="FEST-299" due-to="Rahel Lüthy">
         JTableHeaderFixture waits a little bit after clicking a table header, in case sorting is performed on a 
         JTable.

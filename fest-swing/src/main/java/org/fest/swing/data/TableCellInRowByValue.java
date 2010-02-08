@@ -150,9 +150,9 @@ public class TableCellInRowByValue implements TableCellFinder {
   private static boolean matchingRow(JTable table, JTableCellReader cellReader, String[] values, int row) {
     int columnCount = table.getColumnCount();
     for (int col = 0; col < columnCount; col++) {
-      if (areEqual(cellReader.valueAt(table, row, col), values[col])) return true;
+      if (!areEqual(cellReader.valueAt(table, row, col), values[col])) return false;
     }
-    return false;
+    return true;
   }
 
   @Override public String toString() {
