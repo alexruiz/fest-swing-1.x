@@ -9,6 +9,13 @@
       <action dev="alexruiz" type="fix" issue="FEST-200">
         Method 'showPopupMenuAt' in JTreeFixture now scrolls to the matching node before trying to display a pop-up menu.
       </action>
+      <action dev="alexruiz" type="add" issue="FEST-286" due-to="Morten Breum Mikkelsen">
+        Added method "descriptionAddendum" to class org.fest.swing.timing.Condition.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-286" due-to="Morten Breum Mikkelsen">
+        Class org.fest.swing.core.ComponentFoundCondition now appends the component hierarchy when a component lookup
+        fails.
+      </action>
       <action dev="alexruiz" type="add" issue="FEST-291" due-to="Henning">
         Added interface org.fest.swing.core.ResettableComponentMatcher.
       </action>

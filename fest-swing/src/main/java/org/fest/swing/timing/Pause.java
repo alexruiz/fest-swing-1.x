@@ -72,11 +72,15 @@ public final class Pause {
     while (!condition.test()) {
       if (watch.isTimeOut() && !condition.test()) {
         condition.done();
-        throw new WaitTimedOutError((concat("Timed out waiting for ", condition)));
+        throw timeoutExpired(condition);
       }
       pause(SLEEP_INTERVAL);
     }
     condition.done();
+  }
+
+  private static WaitTimedOutError timeoutExpired(Condition condition) {
+    return new WaitTimedOutError((concat("Timed out waiting for ", condition)));
   }
 
   /**
@@ -133,7 +137,8 @@ public final class Pause {
       throw new IllegalArgumentException("The array of conditions to verify should not be empty");
     for (Condition condition : conditions) {
       if (condition != null) continue;
-      throw new NullPointerException(concat("The array of conditions <", format(conditions), "> contains null value(s)"));
+      throw new NullPointerException(concat(
+          "The array of conditions <", format(conditions), "> contains one or more null values"));
     }
   }
 

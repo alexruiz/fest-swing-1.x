@@ -14,6 +14,8 @@
  */
 package org.fest.swing.timing;
 
+import static org.fest.util.Strings.concat;
+
 import org.fest.assertions.BasicDescription;
 import org.fest.assertions.Description;
 
@@ -25,8 +27,8 @@ import org.fest.assertions.Description;
  */
 public abstract class Condition {
 
-  private static final String NO_DESCRIPTION = "";
-  
+  private static final String EMPTY_TEXT = "";
+
   private final Description description;
 
   /**
@@ -56,7 +58,21 @@ public abstract class Condition {
    * @return the description of this condition.
    */
   @Override public final String toString() {
-    return description != null ? description.value() : NO_DESCRIPTION;
+    String descriptionText = description != null ? description.value() : defaultDescription();
+    String addendum = descriptionAddendum();
+    return concat(descriptionText, addendum != null ? addendum : EMPTY_TEXT);
+  }
+
+  private String defaultDescription() {
+    return concat("condition of type [", getClass().getName(), "]");
+  }
+
+  /**
+   * Returns any text to be added to this condition's description. The default value is an empty <code>String</code>.
+   * @return by default, an empty <code>String</code>.
+   */
+  protected String descriptionAddendum() {
+    return EMPTY_TEXT;
   }
 
   /**

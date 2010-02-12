@@ -16,6 +16,7 @@
 package org.fest.swing.timing;
 
 import static org.fest.assertions.Assertions.assertThat;
+import static org.fest.util.Strings.concat;
 
 import org.fest.assertions.Description;
 import org.junit.Test;
@@ -28,31 +29,38 @@ import org.junit.Test;
  */
 public class Condition_toString_Test {
 
-  private static final String DESCRIPTION = "Hello World!";
-
-
   @Test
   public void should_return_description_text() {
     Description description = new Description() {
       public String value() {
-        return DESCRIPTION;
+        return "Hello World!";
       }
     };
     MyCondition condition = new MyCondition(description);
-    assertThat(condition.toString()).isEqualTo(DESCRIPTION);
+    assertThat(condition.toString()).isEqualTo("Hello World!");
   }
 
   @Test
   public void should_return_description_text_set_as_String() {
-    MyCondition condition = new MyCondition(DESCRIPTION);
-    assertThat(condition.toString()).isEqualTo(DESCRIPTION);
+    MyCondition condition = new MyCondition("Hello World!");
+    assertThat(condition.toString()).isEqualTo("Hello World!");
   }
 
   @Test
-  public void should_return_empty_text_if_description_is_null() {
+  public void should_return_condition_type_if_description_is_null() {
     Description noDescription = null;
     MyCondition condition = new MyCondition(noDescription);
-    assertThat(condition.toString()).isEmpty();
+    assertThat(condition.toString()).isEqualTo(concat("condition of type [", MyCondition.class.getName(), "]"));
+  }
+
+  @Test
+  public void should_append_addendum() {
+    MyCondition condition = new MyCondition("Hello World!") {
+      @Override protected String descriptionAddendum() {
+        return " append this";
+      }
+    };
+    assertThat(condition.toString()).isEqualTo("Hello World! append this");
   }
 
   private static class MyCondition extends Condition {

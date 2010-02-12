@@ -15,6 +15,7 @@
 package org.fest.swing.core;
 
 import static org.fest.assertions.Assertions.assertThat;
+import static org.fest.swing.core.ComponentNotFoundErrors.appendComponentHierarchy;
 import static org.fest.swing.edt.GuiActionRunner.execute;
 import static org.fest.swing.format.Formatting.format;
 import static org.fest.swing.hierarchy.NewHierarchy.ignoreExistingComponents;
@@ -23,8 +24,6 @@ import static org.fest.util.Strings.concat;
 
 import java.awt.Component;
 import java.awt.Container;
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
 import java.util.Collection;
 
 import javax.swing.JLabel;
@@ -94,7 +93,7 @@ public final class BasicComponentFinder implements ComponentFinder {
 
   /** {@inheritDoc} */
   public <T extends Component> T findByType(Class<T> type) {
-    return findByType(type, requireShowingFromSettingsOrFalse());
+    return findByType(type, requireShowing());
   }
 
   /** {@inheritDoc} */
@@ -106,7 +105,7 @@ public final class BasicComponentFinder implements ComponentFinder {
   /** {@inheritDoc} */
   @RunsInEDT
   public <T extends Component> T findByType(Container root, Class<T> type) {
-    return findByType(root, type, requireShowingFromSettingsOrFalse());
+    return findByType(root, type, requireShowing());
   }
 
   /** {@inheritDoc} */
@@ -118,7 +117,7 @@ public final class BasicComponentFinder implements ComponentFinder {
   /** {@inheritDoc} */
   @RunsInEDT
   public <T extends Component> T findByName(String name, Class<T> type) {
-    return findByName(name, type, requireShowingFromSettingsOrFalse());
+    return findByName(name, type, requireShowing());
   }
 
   /** {@inheritDoc} */
@@ -131,7 +130,7 @@ public final class BasicComponentFinder implements ComponentFinder {
   /** {@inheritDoc} */
   @RunsInEDT
   public Component findByName(String name) {
-    return findByName(name, requireShowingFromSettingsOrFalse());
+    return findByName(name, requireShowing());
   }
 
   /** {@inheritDoc} */
@@ -143,7 +142,7 @@ public final class BasicComponentFinder implements ComponentFinder {
   /** {@inheritDoc} */
   @RunsInEDT
   public <T extends Component> T findByLabel(String label, Class<T> type) {
-    return findByLabel(label, type, requireShowingFromSettingsOrFalse());
+    return findByLabel(label, type, requireShowing());
   }
 
   /** {@inheritDoc} */
@@ -156,7 +155,7 @@ public final class BasicComponentFinder implements ComponentFinder {
   /** {@inheritDoc} */
   @RunsInEDT
   public Component findByLabel(String label) {
-    return findByLabel(label, requireShowingFromSettingsOrFalse());
+    return findByLabel(label, requireShowing());
   }
 
   /** {@inheritDoc} */
@@ -182,7 +181,7 @@ public final class BasicComponentFinder implements ComponentFinder {
   /** {@inheritDoc} */
   @RunsInEDT
   public <T extends Component> T findByName(Container root, String name, Class<T> type) {
-    return findByName(root, name, type, requireShowingFromSettingsOrFalse());
+    return findByName(root, name, type, requireShowing());
   }
 
   /** {@inheritDoc} */
@@ -195,7 +194,7 @@ public final class BasicComponentFinder implements ComponentFinder {
   /** {@inheritDoc} */
   @RunsInEDT
   public Component findByName(Container root, String name) {
-    return findByName(root, name, requireShowingFromSettingsOrFalse());
+    return findByName(root, name, requireShowing());
   }
 
   /** {@inheritDoc} */
@@ -207,7 +206,7 @@ public final class BasicComponentFinder implements ComponentFinder {
   /** {@inheritDoc} */
   @RunsInEDT
   public <T extends Component> T findByLabel(Container root, String label, Class<T> type) {
-    return findByLabel(root, label, type, requireShowingFromSettingsOrFalse());
+    return findByLabel(root, label, type, requireShowing());
   }
 
   /** {@inheritDoc} */
@@ -220,10 +219,10 @@ public final class BasicComponentFinder implements ComponentFinder {
   /** {@inheritDoc} */
   @RunsInEDT
   public Component findByLabel(Container root, String label) {
-    return findByLabel(root, label, requireShowingFromSettingsOrFalse());
+    return findByLabel(root, label, requireShowing());
   }
 
-  private boolean requireShowingFromSettingsOrFalse() {
+  private boolean requireShowing() {
     return requireShowingFromSettingsOr(false);
   }
 
@@ -249,10 +248,12 @@ public final class BasicComponentFinder implements ComponentFinder {
   }
 
   /** {@inheritDoc} */
+  @RunsInEDT
   public Component find(Container root, ComponentMatcher m) {
     return find(hierarchy(root), m);
   }
 
+  @RunsInEDT
   private Component find(ComponentHierarchy h, ComponentMatcher m)  {
     Collection<Component> found = finderDelegate.find(h, m);
     if (found.isEmpty()) throw componentNotFound(h, m);
@@ -263,24 +264,13 @@ public final class BasicComponentFinder implements ComponentFinder {
   @RunsInEDT
   private ComponentLookupException componentNotFound(ComponentHierarchy h, ComponentMatcher m) {
     String message = concat("Unable to find component using matcher ", m, ".");
-    if (includeHierarchyIfComponentNotFound())
-      message = concat(message,
-          LINE_SEPARATOR, LINE_SEPARATOR, "Component hierarchy:", LINE_SEPARATOR, formattedHierarchy(root(h)));
+    message = appendComponentHierarchy(message, root(h), this);
     throw new ComponentLookupException(message);
   }
 
   private static Container root(ComponentHierarchy h) {
     if (h instanceof SingleComponentHierarchy) return ((SingleComponentHierarchy)h).root();
     return null;
-  }
-
-  @RunsInEDT
-  private String formattedHierarchy(Container root) {
-    ByteArrayOutputStream out = new ByteArrayOutputStream();
-    PrintStream printStream = new PrintStream(out, true);
-    printer.printComponents(printStream, root);
-    printStream.flush();
-    return new String(out.toByteArray());
   }
 
   @RunsInEDT

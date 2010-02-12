@@ -15,6 +15,8 @@
  */
 package org.fest.swing.core;
 
+import static org.fest.swing.core.ComponentNotFoundErrors.appendComponentHierarchy;
+
 import java.awt.Component;
 import java.awt.Container;
 import java.util.ArrayList;
@@ -100,6 +102,14 @@ public final class ComponentFoundCondition extends Condition {
   private void resetMatcher(boolean matchFound) {
     if (!(matcher instanceof ResettableComponentMatcher)) return;
     ((ResettableComponentMatcher)matcher).reset(matchFound);
+  }
+
+  /**
+   * Returns the component hierarchy to be added to this condition's description in case of a component lookup failure.
+   * @return the component hierarchy to be added to this condition's description in case of a component lookup failure.
+   */
+  @Override protected String descriptionAddendum() {
+    return appendComponentHierarchy("", root, finder);
   }
 
   /**
