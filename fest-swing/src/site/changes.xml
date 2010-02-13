@@ -29,6 +29,10 @@
       <action dev="alexruiz" type="fix" issue="FEST-293" due-to="Morten Breum Mikkelsen">
         org.fest.swing.data.TableCellInRowByValue now correctly performs matching on a JTable row by value.
       </action>
+      <action dev="alexruiz" type="fix" issue="FEST-297" due-to="Nicolae Bucalaete">
+        Removed check 'scrollIfNecessary' when clicking a Component. Now BasicRobot always scrolls to make a component
+        visible.
+      </action>
       <action dev="alexruiz" type="fix" issue="FEST-299" due-to="Rahel Lüthy">
         JTableHeaderFixture waits a little bit after clicking a table header, in case sorting is performed on a 
         JTable.

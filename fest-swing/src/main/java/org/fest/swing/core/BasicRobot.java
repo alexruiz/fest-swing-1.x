@@ -25,7 +25,6 @@ import static java.lang.System.currentTimeMillis;
 import static javax.swing.SwingUtilities.getWindowAncestor;
 import static javax.swing.SwingUtilities.isEventDispatchThread;
 import static org.fest.swing.awt.AWT.centerOf;
-import static org.fest.swing.awt.AWT.isPointInScreenBoundaries;
 import static org.fest.swing.awt.AWT.visibleCenterOf;
 import static org.fest.swing.core.ActivateWindowTask.activateWindow;
 import static org.fest.swing.core.ComponentRequestFocusTask.giveFocusTo;
@@ -387,7 +386,6 @@ public class BasicRobot implements Robot {
   }
 
   private Point scrollIfNecessary(JComponent c, Point p) {
-    if (isPointInScreenBoundaries(c, p)) return p;
     scrollToVisible(this, c);
     return visibleCenterOf(c);
   }
