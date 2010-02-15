@@ -14,38 +14,35 @@
  */
 package org.fest.assertions;
 
-import java.math.BigDecimal;
-
 import org.fest.test.CodeToTest;
 import org.junit.Test;
 
+import static java.math.BigDecimal.ONE;
 import static java.math.BigDecimal.ZERO;
-import static org.fest.assertions.BigDecimals.eight;
-import static org.fest.assertions.BigDecimals.nine;
 import static org.fest.assertions.CommonFailures.expectErrorIfObjectIsNull;
 import static org.fest.assertions.CommonFailures.expectErrorWithDescriptionIfObjectIsNull;
 import static org.fest.test.ExpectedFailure.expectAssertionError;
 
 /**
- * Tests for <code>{@link BigDecimalAssert#isEqualByComparingTo(BigDecimal)}</code>.
+ * Tests for <code>{@link org.fest.assertions.BigDecimalAssert#isNotZero()}</code>.
  *
  * @author David DIDIER
  * @author Ted M. Young
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class BigDecimalAssert_isEqualByComparingTo_Test {
+public class BigDecimalAssert_isNotZero_Test implements NumberAssert_isNotZero_TestCase {
 
   @Test
-  public void should_pass_if_values_are_equal() {
-    new BigDecimalAssert(eight()).isEqualByComparingTo(eight());
+  public void should_pass_if_actual_is_not_zero() {
+    new BigDecimalAssert(ONE).isNotZero();
   }
 
   @Test
   public void should_fail_if_actual_is_null() {
     expectErrorIfObjectIsNull(new CodeToTest() {
       public void run() {
-        new BigDecimalAssert(null).isEqualByComparingTo(eight());
+        new BigDecimalAssert(null).isNotZero();
       }
     });
   }
@@ -55,36 +52,36 @@ public class BigDecimalAssert_isEqualByComparingTo_Test {
     expectErrorWithDescriptionIfObjectIsNull(new CodeToTest() {
       public void run() {
         new BigDecimalAssert(null).as("A Test")
-                                  .isEqualByComparingTo(eight());
+                                  .isNotZero();
       }
     });
   }
 
   @Test
-  public void should_fail_if_values_are_not_equal() {
-    expectAssertionError("expected:<9.0> but was:<8.0>").on(new CodeToTest() {
+  public void should_fail_if_actual_is_zero() {
+    expectAssertionError("actual value:<0> should not be equal to:<0>").on(new CodeToTest() {
       public void run() {
-        new BigDecimalAssert(eight()).isEqualByComparingTo(nine());
+        new BigDecimalAssert(ZERO).isNotZero();
       }
     });
   }
 
   @Test
-  public void should_fail_and_display_description_of_assertion_if_values_are_not_equal() {
-    expectAssertionError("[A Test] expected:<9.0> but was:<8.0>").on(new CodeToTest() {
+  public void should_fail_and_display_description_of_assertion_if_actual_is_zero() {
+    expectAssertionError("[A Test] actual value:<0> should not be equal to:<0>").on(new CodeToTest() {
       public void run() {
-        new BigDecimalAssert(eight()).as("A Test")
-                                     .isEqualByComparingTo(nine());
+        new BigDecimalAssert(ZERO).as("A Test")
+                                     .isNotZero();
       }
     });
   }
 
   @Test
-  public void should_fail_with_custom_message_if_values_are_not_equal() {
+  public void should_fail_with_custom_message_if_actual_is_zero() {
     expectAssertionError("My custom message").on(new CodeToTest() {
       public void run() {
         new BigDecimalAssert(ZERO).overridingErrorMessage("My custom message")
-                .isNotZero();
+                                     .isNotZero();
       }
     });
   }
@@ -94,8 +91,8 @@ public class BigDecimalAssert_isEqualByComparingTo_Test {
     expectAssertionError("My custom message").on(new CodeToTest() {
       public void run() {
         new BigDecimalAssert(ZERO).as("A Test")
-                .overridingErrorMessage("My custom message")
-                .isNotZero();
+                                     .overridingErrorMessage("My custom message")
+                                     .isNotZero();
       }
     });
   }

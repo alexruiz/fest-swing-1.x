@@ -15,9 +15,9 @@
  */
 package org.fest.assertions;
 
-import static java.math.BigDecimal.ZERO;
-
 import java.math.BigDecimal;
+
+import static java.math.BigDecimal.ZERO;
 
 /**
  * Understands assertion methods for <code>{@link BigDecimal}</code>. To create a new instance of this class use the
@@ -281,9 +281,22 @@ public class BigDecimalAssert extends ComparableAssert<BigDecimal> implements Nu
     return this;
   }
 
+  /**
+   * Verifies that the actual <code>{@link BigDecimal}</code> is not equal to zero, regardless of precision.
+   * Essentially, this is the same as
+   * <code>{@link #isEqualByComparingTo(BigDecimal) isNotEqualByComparingTo}</code>(<code>{@link BigDecimal#ZERO BigDecimal.ZERO}</code>).
+   * @return this assertion object.
+   * @throws AssertionError if the actual <code>BigDecimal</code> is <code>null</code>.
+   * @throws AssertionError if the actual <code>BigDecimal</code> is equal to zero.
+   */
+  public BigDecimalAssert isNotZero() {
+    return isNotEqualByComparingTo(ZERO);
+  }
+
   /** {@inheritDoc} */
   public BigDecimalAssert overridingErrorMessage(String message) {
     replaceDefaultErrorMessagesWith(message);
     return this;
   }
+
 }
