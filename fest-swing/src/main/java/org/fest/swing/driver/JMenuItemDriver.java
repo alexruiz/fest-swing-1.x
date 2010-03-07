@@ -52,40 +52,11 @@ import org.fest.swing.exception.ActionFailedException;
 public class JMenuItemDriver extends JComponentDriver {
 
   /**
-   * With decreased robot auto delay, OSX pop-up menus don't activate properly. Indicate the minimum delay for proper
-   * operation (determined experimentally.)
-   */
-  private static final int SUBMENU_DELAY = isOSX() ? 100 : 0;
-
-  /**
    * Creates a new </code>{@link JMenuItemDriver}</code>.
    * @param robot the robot to use to simulate user input.
    */
   public JMenuItemDriver(Robot robot) {
     super(robot);
-  }
-
-  @RunsInEDT
-  private void show(JMenuItem menuItem) {
-    JMenuItemLocation location = locationOf(menuItem);
-    activateParentIfIsAMenu(location);
-    moveParentWindowToFront(location);
-    if (menuItem instanceof JMenu && !location.inMenuBar()) waitForSubMenuToShow();
-  }
-
-  private static JMenuItemLocation locationOf(final JMenuItem menuItem) {
-    return execute(new GuiQuery<JMenuItemLocation>() {
-      protected JMenuItemLocation executeInEDT() {
-        return new JMenuItemLocation(menuItem);
-      }
-
-    });
-  }
-
-  @RunsInEDT
-  private void activateParentIfIsAMenu(JMenuItemLocation location) {
-    if (!location.isParentAMenu()) return;
-    click((JMenuItem)location.parentOrInvoker());
   }
 
   /**
@@ -103,13 +74,27 @@ public class JMenuItemDriver extends JComponentDriver {
   }
 
   @RunsInEDT
-  private void ensurePopupIsShowing(JMenuItem menuItem) {
-    if (!(menuItem instanceof JMenu)) return;
-    JPopupMenu popup = popupMenuOf((JMenu)menuItem);
-    // TODO review EDT access
-    if (!waitForShowing(popup, robot.settings().timeoutToFindPopup()))
-      throw actionFailure(concat("Clicking on menu item <", format(menuItem), "> never showed a pop-up menu"));
-    waitForSubMenuToShow();
+  private void show(JMenuItem menuItem) {
+    JMenuItemLocation location = locationOf(menuItem);
+    activateParentIfIsAMenu(location);
+    moveParentWindowToFront(location);
+    if (menuItem instanceof JMenu && !location.inMenuBar()) waitForSubMenuToShow();
+  }
+
+  @RunsInEDT
+  private static JMenuItemLocation locationOf(final JMenuItem menuItem) {
+    return execute(new GuiQuery<JMenuItemLocation>() {
+      protected JMenuItemLocation executeInEDT() {
+        return new JMenuItemLocation(menuItem);
+      }
+
+    });
+  }
+
+  @RunsInEDT
+  private void activateParentIfIsAMenu(JMenuItemLocation location) {
+    if (!location.isParentAMenu()) return;
+    click((JMenuItem)location.parentOrInvoker());
   }
 
   @RunsInEDT
@@ -117,20 +102,6 @@ public class JMenuItemDriver extends JComponentDriver {
     if (!location.inMenuBar()) return;
     // TODO windowAncestorOf is not being called in EDT
     moveToFront(windowAncestorOf(location.parentOrInvoker()));
-  }
-
-  @RunsInEDT
-  private void moveToFront(Window w) {
-    if (w == null) return;
-    // Make sure the window is in front, or its menus may be obscured by another window.
-    toFront(w);
-    robot.waitForIdle();
-    robot.moveMouse(w);
-  }
-
-  private void waitForSubMenuToShow() {
-    int delayBetweenEvents = robot.settings().delayBetweenEvents();
-    if (SUBMENU_DELAY > delayBetweenEvents) pause(SUBMENU_DELAY - delayBetweenEvents);
   }
 
   @RunsInEDT
@@ -155,5 +126,28 @@ public class JMenuItemDriver extends JComponentDriver {
         menuItem.doClick();
       }
     });
+  }
+
+  @RunsInEDT
+  private void ensurePopupIsShowing(JMenuItem menuItem) {
+    if (!(menuItem instanceof JMenu)) return;
+    JPopupMenu popup = popupMenuOf((JMenu)menuItem);
+    // TODO review EDT access
+    if (!waitForShowing(popup, robot.settings().timeoutToFindPopup()))
+      throw actionFailure(concat("Clicking on menu item <", format(menuItem), "> never showed a pop-up menu"));
+    waitForSubMenuToShow();
+  }
+
+  private void waitForSubMenuToShow() {
+    pause(robot.settings().timeoutToFindSubMenu());
+  }
+
+  @RunsInEDT
+  private void moveToFront(Window w) {
+    if (w == null) return;
+    // Make sure the window is in front, or its menus may be obscured by another window.
+    toFront(w);
+    robot.waitForIdle();
+    robot.moveMouse(w);
   }
 }

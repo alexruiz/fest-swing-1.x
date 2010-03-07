@@ -37,7 +37,11 @@
         JTableHeaderFixture waits a little bit after clicking a table header, in case sorting is performed on a 
         JTable.
       </action>
-      <action dev="alexruiz" type="add" issue="FEST-305">
+      <action dev="alexruiz" type="add" issue="FEST-302" due-to="Henning">
+        Added methods 'timeoutToFindSubMenu' to class org.fest.swing.core.Settings to control the time to wait for a
+        sub-menu to show up on the screen.
+      </action>
+      <action dev="alexruiz" type="fix" issue="FEST-305">
         org.fest.swing.launcher.ApplicationLauncher now uses the ClassLoader from the current thread to load a class 
         given its name.
       </action>
