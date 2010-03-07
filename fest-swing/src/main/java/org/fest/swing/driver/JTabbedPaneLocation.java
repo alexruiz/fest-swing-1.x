@@ -85,6 +85,7 @@ public class JTabbedPaneLocation {
    */
   @RunsInCurrentThread
   public Point pointAt(final JTabbedPane tabbedPane, final int index) {
+    validateIndex(tabbedPane, index);
     Rectangle rect = tabbedPane.getUI().getTabBounds(tabbedPane, index);
     // From Abbot: TODO figure out the effects of tab layout policy sometimes tabs are not directly visible
     if (rect == null || rect.x < 0)

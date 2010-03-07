@@ -97,7 +97,7 @@ public class JTabbedPaneFixture extends ComponentFixture<JTabbedPane> implements
    * @return this fixture.
    * @throws IllegalStateException if this fixture's <code>JTabbedPane</code> is disabled.
    * @throws IllegalStateException if this fixture's <code>JTabbedPane</code> is not showing on the screen.
-   * @throws IllegalArgumentException if the given index is not within the <code>JTabbedPane</code> bounds.
+   * @throws IndexOutOfBoundsException if the given index is not within the <code>JTabbedPane</code> bounds.
    */
   public JTabbedPaneFixture selectTab(int index) {
     driver.selectTab(target, index);
@@ -337,6 +337,7 @@ public class JTabbedPaneFixture extends ComponentFixture<JTabbedPane> implements
    * @param title the expected title. It can be a regular expression.
    * @param index the index of the tab.
    * @return this fixture.
+   * @throws IndexOutOfBoundsException if the given index is not within the <code>JTabbedPane</code> bounds.
    * @throws AssertionError if the title of the tab at the given index does not match the given one.
    */
   public JTabbedPaneFixture requireTitle(String title, Index index) {
@@ -397,7 +398,6 @@ public class JTabbedPaneFixture extends ComponentFixture<JTabbedPane> implements
     driver.requireToolTip(target, pattern);
     return this;
   }
-
 
   /**
    * Returns the client property stored in this fixture's <code>{@link JTabbedPane}</code>, under the given key.

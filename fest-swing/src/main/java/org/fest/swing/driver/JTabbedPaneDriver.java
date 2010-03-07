@@ -35,6 +35,7 @@ import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.core.Robot;
 import org.fest.swing.data.Index;
 import org.fest.swing.edt.GuiQuery;
+import org.fest.swing.exception.ActionFailedException;
 import org.fest.swing.exception.LocationUnavailableException;
 import org.fest.swing.util.*;
 
@@ -146,19 +147,21 @@ public class JTabbedPaneDriver extends JComponentDriver {
    * @param index the index of the tab to select.
    * @throws IllegalStateException if the <code>JTabbedPane</code> is disabled.
    * @throws IllegalStateException if the <code>JTabbedPane</code> is not showing on the screen.
-   * @throws IllegalArgumentException if the given index is not within the <code>JTabbedPane</code> bounds.
+   * @throws IndexOutOfBoundsException if the given index is not within the <code>JTabbedPane</code> bounds.
    */
   public void selectTab(JTabbedPane tabbedPane, int index) {
     try {
-      Point p = pointAt(location, tabbedPane, index);
+      Point p = validateAndGetPoint(location, tabbedPane, index);
       click(tabbedPane, p);
     } catch (LocationUnavailableException e) {
+      setTabDirectly(tabbedPane, index);
+    } catch (ActionFailedException e) {
       setTabDirectly(tabbedPane, index);
     }
   }
 
   @RunsInEDT
-  private static Point pointAt(final JTabbedPaneLocation location, final JTabbedPane tabbedPane, final int index) {
+  private static Point validateAndGetPoint(final JTabbedPaneLocation location, final JTabbedPane tabbedPane, final int index) {
     return execute(new GuiQuery<Point>() {
       protected Point executeInEDT() {
         location.validateIndex(tabbedPane, index);
@@ -172,6 +175,24 @@ public class JTabbedPaneDriver extends JComponentDriver {
   void setTabDirectly(JTabbedPane tabbedPane, int index) {
     setSelectedTab(tabbedPane, index);
     robot.waitForIdle();
+    moveMouseToTab(tabbedPane, index);
+  }
+
+  private void moveMouseToTab(JTabbedPane tabbedPane, int index) {
+    try {
+      Point p = pointAtTab(location, tabbedPane, index);
+      robot.moveMouse(tabbedPane, p);
+      robot.waitForIdle();
+    } catch (LocationUnavailableException ignored) {}
+  }
+
+  @RunsInEDT
+  private static Point pointAtTab(final JTabbedPaneLocation location, final JTabbedPane tabbedPane, final int index) {
+    return execute(new GuiQuery<Point>() {
+      protected Point executeInEDT() {
+        return location.pointAt(tabbedPane, index);
+      }
+    });
   }
 
   /**
@@ -198,6 +219,7 @@ public class JTabbedPaneDriver extends JComponentDriver {
    * @param tabbedPane the target <code>JTabbedPane</code>.
    * @param title the expected title. It can be a regular expression.
    * @param index the index of the tab.
+   * @throws IndexOutOfBoundsException if the given index is not within the <code>JTabbedPane</code> bounds.
    * @throws AssertionError if the title of the tab at the given index does not match the given one.
    */
   @RunsInEDT
@@ -212,6 +234,7 @@ public class JTabbedPaneDriver extends JComponentDriver {
    * @param pattern the regular expression pattern to match.
    * @param index the index of the tab.
    * @throws NullPointerException if the given regular expression pattern is <code>null</code>.
+   * @throws IndexOutOfBoundsException if the given index is not within the <code>JTabbedPane</code> bounds.
    * @throws AssertionError if the title of the tab at the given index does not match the given one.
    * @since 1.2
    */
