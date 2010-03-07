@@ -41,6 +41,10 @@
         Added methods 'timeoutToFindSubMenu' to class org.fest.swing.core.Settings to control the time to wait for a
         sub-menu to show up on the screen.
       </action>
+      <action dev="alexruiz" type="fix" issue="FEST-304" due-to="Peter Murray">
+        All classes in the org.fest.swing.finder package are now public. Any package-protected methods are now
+        protected.
+      </action>
       <action dev="alexruiz" type="fix" issue="FEST-305">
         org.fest.swing.launcher.ApplicationLauncher now uses the ClassLoader from the current thread to load a class 
         given its name.

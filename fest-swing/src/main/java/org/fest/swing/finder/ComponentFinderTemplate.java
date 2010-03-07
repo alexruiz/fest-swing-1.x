@@ -32,39 +32,66 @@ import org.fest.swing.fixture.ComponentFixture;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-abstract class ComponentFinderTemplate<T extends Component> {
+public abstract class ComponentFinderTemplate<T extends Component> {
 
   static final long TIMEOUT = 5000;
-  
+
   private long timeout = TIMEOUT;
 
   private final ComponentMatcher matcher;
   private final String searchDescription;
-  
-  ComponentFinderTemplate(String componentName, Class<? extends T> componentType) {
+
+  /**
+   * Creates a new </code>{@link ComponentFinderTemplate}</code>.
+   * @param componentName the name of the {@code Component} to find.
+   * @param componentType the type of the {@code Component} to find.
+   */
+  protected ComponentFinderTemplate(String componentName, Class<? extends T> componentType) {
     this(new NameMatcher(componentName, componentType, true));
   }
 
-  ComponentFinderTemplate(GenericTypeMatcher<? extends T> matcher) {
+  /**
+   * Creates a new </code>{@link ComponentFinderTemplate}</code>.
+   * @param matcher specifies the search criteria to use when looking up a {@code Component}.
+   */
+  protected ComponentFinderTemplate(GenericTypeMatcher<? extends T> matcher) {
     this((ComponentMatcher)matcher);
   }
-  
-  ComponentFinderTemplate(Class<? extends T> componentType) {
+
+  /**
+   * Creates a new </code>{@link ComponentFinderTemplate}</code>.
+   * @param componentType the type of the {@code Component} to find.
+   */
+  protected ComponentFinderTemplate(Class<? extends T> componentType) {
     this(new TypeMatcher(componentType, true));
   }
-  
+
   private ComponentFinderTemplate(ComponentMatcher matcher) {
     if (matcher == null) throw new NullPointerException("The matcher should not be null");
     this.matcher = matcher;
     searchDescription = concat("component to be found using matcher ", matcher);
   }
-  
-  ComponentFinderTemplate<T> withTimeout(long newTimeout, TimeUnit unit) {
+
+  /**
+   * Sets the timeout for this finder. The {@code Component} to find should be found within the given time period.
+   * @param newTimeout the period of time the search should be performed.
+   * @param unit the time unit for <code>timeout</code>.
+   * @return this finder.
+   * @throws NullPointerException if the time unit is <code>null</code>.
+   * @throws IllegalArgumentException if the timeout is a negative number.
+   */
+  protected ComponentFinderTemplate<T> withTimeout(long newTimeout, TimeUnit unit) {
     if (unit == null) throw new NullPointerException("Time unit cannot be null");
     return withTimeout(unit.toMillis(newTimeout));
   }
 
-  ComponentFinderTemplate<T> withTimeout(long newTimeout) {
+  /**
+   * Sets the timeout for this finder. The {@code Component} to find should be found within the given time period.
+   * @param newTimeout the number of milliseconds before stopping the search.
+   * @return this finder.
+   * @throws IllegalArgumentException if the timeout is a negative number.
+   */
+  protected ComponentFinderTemplate<T> withTimeout(long newTimeout) {
     if (newTimeout < 0) throw new IllegalArgumentException("Timeout cannot be a negative number");
     this.timeout = newTimeout;
     return this;
@@ -84,11 +111,16 @@ abstract class ComponentFinderTemplate<T extends Component> {
    * @return the found component.
    * @throws WaitTimedOutError if a component with the given name or of the given type could not be found.
    */
-  final T findComponentWith(Robot robot) {
+  protected final T findComponentWith(Robot robot) {
     ComponentFoundCondition condition = new ComponentFoundCondition(searchDescription, robot.finder(), matcher);
     pause(condition, timeout);
     return cast(condition.found());
   }
-  
-  abstract T cast(Component c);
+
+  /**
+   * Casts the given {@code Component} to the type supported by this finder.
+   * @param c the given {@code Component}.
+   * @return the given {@code Component} casted to the type supported by this finder.
+   */
+  protected abstract T cast(Component c);
 }

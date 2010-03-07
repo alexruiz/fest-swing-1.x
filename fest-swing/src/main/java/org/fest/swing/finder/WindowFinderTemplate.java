@@ -43,12 +43,12 @@ abstract class WindowFinderTemplate<T extends Window> extends ComponentFinderTem
     super(windowType);
   }
 
-  @Override WindowFinderTemplate<T> withTimeout(long timeout) {
+  @Override protected WindowFinderTemplate<T> withTimeout(long timeout) {
     super.withTimeout(timeout);
     return this;
   }
 
-  @Override WindowFinderTemplate<T> withTimeout(long timeout, TimeUnit unit) {
+  @Override protected WindowFinderTemplate<T> withTimeout(long timeout, TimeUnit unit) {
     super.withTimeout(timeout, unit);
     return this;
   }
@@ -57,7 +57,7 @@ abstract class WindowFinderTemplate<T extends Window> extends ComponentFinderTem
    * Finds a window by name or type using the given robot.
    * @param robot contains the underlying finding to delegate the search to.
    * @return a fixture capable of managing the found window.
-   * @throws org.fest.swing.exception.WaitTimedOutError if a window with the given name or of the given type could not 
+   * @throws org.fest.swing.exception.WaitTimedOutError if a window with the given name or of the given type could not
    * be found.
    */
   public abstract WindowFixture<T> using(Robot robot);
