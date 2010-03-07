@@ -124,7 +124,7 @@ public final class Pause {
     while (!areSatisfied(conditions)) {
       if (watch.isTimeOut()) {
         done(conditions);
-        throw new WaitTimedOutError((concat("Timed out waiting for ", format(conditions))));
+        throw timeoutExpired(conditions);
       }
       pause(SLEEP_INTERVAL);
     }
@@ -149,6 +149,10 @@ public final class Pause {
 
   private static void done(Condition[] conditions) {
     for (Condition condition : conditions) condition.done();
+  }
+
+  private static WaitTimedOutError timeoutExpired(Condition[] conditions) {
+    return new WaitTimedOutError((concat("Timed out waiting for ", format(conditions))));
   }
 
   /**

@@ -15,7 +15,6 @@
 package org.fest.swing.core;
 
 import static org.fest.assertions.Assertions.assertThat;
-import static org.fest.swing.core.ComponentNotFoundErrors.appendComponentHierarchy;
 import static org.fest.swing.edt.GuiActionRunner.execute;
 import static org.fest.swing.format.Formatting.format;
 import static org.fest.swing.hierarchy.NewHierarchy.ignoreExistingComponents;
@@ -24,6 +23,8 @@ import static org.fest.util.Strings.concat;
 
 import java.awt.Component;
 import java.awt.Container;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.util.Collection;
 
 import javax.swing.JLabel;
@@ -264,13 +265,24 @@ public final class BasicComponentFinder implements ComponentFinder {
   @RunsInEDT
   private ComponentLookupException componentNotFound(ComponentHierarchy h, ComponentMatcher m) {
     String message = concat("Unable to find component using matcher ", m, ".");
-    message = appendComponentHierarchy(message, root(h), this);
+    if (includeHierarchyIfComponentNotFound())
+      message = concat(message,
+          LINE_SEPARATOR, LINE_SEPARATOR, "Component hierarchy:", LINE_SEPARATOR, formattedHierarchy(root(h)));
     throw new ComponentLookupException(message);
   }
 
   private static Container root(ComponentHierarchy h) {
     if (h instanceof SingleComponentHierarchy) return ((SingleComponentHierarchy)h).root();
     return null;
+  }
+
+  @RunsInEDT
+  private String formattedHierarchy(Container root) {
+    ByteArrayOutputStream out = new ByteArrayOutputStream();
+    PrintStream printStream = new PrintStream(out, true);
+    printer.printComponents(printStream, root);
+    printStream.flush();
+    return new String(out.toByteArray());
   }
 
   @RunsInEDT

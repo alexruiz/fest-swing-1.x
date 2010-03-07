@@ -15,15 +15,18 @@
  */
 package org.fest.swing.core;
 
-import static org.fest.swing.core.ComponentNotFoundErrors.appendComponentHierarchy;
+import static java.util.Collections.emptyList;
+import static org.fest.swing.util.System.LINE_SEPARATOR;
+import static org.fest.util.Strings.concat;
 
 import java.awt.Component;
 import java.awt.Container;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
+import java.util.concurrent.atomic.AtomicReference;
 
 import org.fest.assertions.BasicDescription;
 import org.fest.assertions.Description;
+import org.fest.swing.exception.ComponentLookupException;
 import org.fest.swing.timing.Condition;
 
 /**
@@ -39,6 +42,8 @@ public final class ComponentFoundCondition extends Condition {
   private final Container root;
 
   private Component found;
+
+  private final AtomicReference<ComponentLookupException> notFoundError = new AtomicReference<ComponentLookupException>();
 
   /**
    * Creates a new <code>{@link ComponentFoundCondition}</code>
@@ -92,10 +97,14 @@ public final class ComponentFoundCondition extends Condition {
    */
   public boolean test() {
     boolean matchFound = false;
-    List<Component> allFound = new ArrayList<Component>(finder.findAll(root, matcher));
-    matchFound = allFound.size() == 1;
-    if (matchFound) found = allFound.get(0);
+    try {
+      found = finder.find(root, matcher);
+      matchFound = true;
+    } catch (ComponentLookupException e) {
+      notFoundError.set(e);
+    }
     resetMatcher(matchFound);
+    if (matchFound) notFoundError.set(null);
     return matchFound;
   }
 
@@ -109,7 +118,9 @@ public final class ComponentFoundCondition extends Condition {
    * @return the component hierarchy to be added to this condition's description in case of a component lookup failure.
    */
   @Override protected String descriptionAddendum() {
-    return appendComponentHierarchy("", root, finder);
+    ComponentLookupException error = notFoundError.get();
+    if (error == null) return EMPTY_TEXT;
+    return concat(LINE_SEPARATOR, error.getMessage());
   }
 
   /**
@@ -117,4 +128,16 @@ public final class ComponentFoundCondition extends Condition {
    * @return the component found.
    */
   public Component found() { return found; }
+
+  /**
+   * Returns all the components that satisfied the search criteria specified by this condition's
+   * <code>{@link ComponentMatcher}</code>.
+   * @return all the components that satisfied the search criteria specified by this condition's
+   * {@code ComponentMatcher}.
+   */
+  public Collection<? extends Component> duplicatesFound() {
+    ComponentLookupException error = notFoundError.get();
+    if (error == null) return emptyList();
+    return error.found();
+  }
 }

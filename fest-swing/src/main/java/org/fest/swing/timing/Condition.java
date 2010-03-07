@@ -27,7 +27,7 @@ import org.fest.assertions.Description;
  */
 public abstract class Condition {
 
-  private static final String EMPTY_TEXT = "";
+  protected static final String EMPTY_TEXT = "";
 
   private final Description description;
 

@@ -10,11 +10,11 @@
         Method 'showPopupMenuAt' in JTreeFixture now scrolls to the matching node before trying to display a pop-up menu.
       </action>
       <action dev="alexruiz" type="add" issue="FEST-286" due-to="Morten Breum Mikkelsen">
-        Added method "descriptionAddendum" to class org.fest.swing.timing.Condition.
+        Added method 'descriptionAddendum' to class org.fest.swing.timing.Condition.
       </action>
       <action dev="alexruiz" type="add" issue="FEST-286" due-to="Morten Breum Mikkelsen">
-        Class org.fest.swing.core.ComponentFoundCondition now appends the component hierarchy when a component lookup
-        fails.
+        Class org.fest.swing.core.ComponentFoundCondition now appends the component hierarchy to its description 
+        when a component cannot be found.
       </action>
       <action dev="alexruiz" type="add" issue="FEST-291" due-to="Henning">
         Added interface org.fest.swing.core.ResettableComponentMatcher.
@@ -40,6 +40,10 @@
       <action dev="alexruiz" type="add" issue="FEST-305">
         org.fest.swing.launcher.ApplicationLauncher now uses the ClassLoader from the current thread to load a class 
         given its name.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-312" due-to="Morten Breum Mikkelsen">
+        Class org.fest.swing.core.ComponentFoundCondition now appends the list of components found to its description 
+        when multiple components match the condition's search criteria.
       </action>
     </release>
     <release version="1.2a4" date="2010-01-19" description="Subsequent release">
