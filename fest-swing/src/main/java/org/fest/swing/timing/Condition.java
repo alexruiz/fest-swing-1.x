@@ -41,7 +41,7 @@ public abstract class Condition {
 
   /**
    * Creates a new </code>{@link Condition}</code>.
-   * @param description the description of this condition.
+   * @param description describes this condition.
    */
   public Condition(Description description) {
     this.description = description;

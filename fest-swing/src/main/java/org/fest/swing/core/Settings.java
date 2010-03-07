@@ -125,6 +125,7 @@ public class Settings {
   /**
    * Returns the number of milliseconds to wait for a sub-menu to appear. The default value is 100 milliseconds.
    * @return  the number of milliseconds to wait for a sub-menu to appear.
+   * @since 1.2
    */
   public int timeoutToFindSubMenu() {
     return timeoutToFindSubMenu;
@@ -133,6 +134,7 @@ public class Settings {
   /**
    * Updates the number of milliseconds to wait for a sub-menu to appear. The default value is 100 milliseconds.
    * @param ms the time in milliseconds. It should be between 0 and 10000.
+   * @since 1.2
    */
   public void timeoutToFindSubMenu(int ms) {
     timeoutToFindSubMenu = valueToUpdate(ms, 0, 10000);

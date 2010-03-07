@@ -49,6 +49,9 @@
         org.fest.swing.launcher.ApplicationLauncher now uses the ClassLoader from the current thread to load a class 
         given its name.
       </action>
+      <action dev="alexruiz" type="add" issue="FEST-311" due-to="Dan Peder Eriksen">
+        Added class org.fest.swing.core.EdtSafeCondition.
+      </action>
       <action dev="alexruiz" type="add" issue="FEST-312" due-to="Morten Breum Mikkelsen">
         Class org.fest.swing.core.ComponentFoundCondition now appends the list of components found to its description 
         when multiple components match the condition's search criteria.
