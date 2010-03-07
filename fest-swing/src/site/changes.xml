@@ -49,6 +49,9 @@
         org.fest.swing.launcher.ApplicationLauncher now uses the ClassLoader from the current thread to load a class 
         given its name.
       </action>
+      <action dev="alexruiz" type="fix" issue="FEST-306" due-to="dmas">
+        Method 'getApplet(String)' and 'getApplets()' now return a reference to the applet under test.
+      </action>
       <action dev="alexruiz" type="fix" issue="FEST-309" due-to="Nicolae Bucalaete">
         JTabbedPaneFixture now selects tabs that are not visible.
       </action>
