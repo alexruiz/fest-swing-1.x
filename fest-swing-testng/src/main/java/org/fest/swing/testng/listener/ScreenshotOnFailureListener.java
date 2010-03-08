@@ -1,19 +1,20 @@
 /*
  * Created on May 6, 2007
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
- * 
+ *
  * Copyright @2007-2009  the original author or authors.
  */
 package org.fest.swing.testng.listener;
 
+import java.io.File;
 import java.lang.reflect.Method;
 import java.util.logging.Logger;
 
@@ -32,7 +33,7 @@ import static org.fest.swing.testng.listener.ScreenshotFileNameGenerator.screens
 import static org.fest.util.Strings.*;
 
 /**
- * Understands a <a href="http://testng.org" target="_blank">TestNG</a> listener that takes a screenshot when a GUI test 
+ * Understands a <a href="http://testng.org" target="_blank">TestNG</a> listener that takes a screenshot when a GUI test
  * fails.
  * <p>
  * <strong>Note:</strong> A test is consider a GUI test if it is marked with the annotation
@@ -46,14 +47,14 @@ import static org.fest.util.Strings.*;
  *   &lt;classpath location=&quot;${target.test.classes.dir}&quot; /&gt;
  *   &lt;classpath location=&quot;${target.classes.dir}&quot; /&gt;
  *   &lt;classpath refid=&quot;test.classpath&quot; /&gt;
- * &lt;/testng&gt; 
+ * &lt;/testng&gt;
  * </pre>
  * </p>
  * <p>
- * You can find more information 
+ * You can find more information
  * <a href="http://www.jroller.com/page/alexRuiz?entry=screenshots_of_failures_in_test" target="_blank">here</a>.
  * </p>
- * 
+ *
  * @author Alex Ruiz
  */
 public class ScreenshotOnFailureListener extends AbstractTestListener {
@@ -63,7 +64,7 @@ public class ScreenshotOnFailureListener extends AbstractTestListener {
   private ScreenshotTaker screenshotTaker;
   private String output;
   private boolean ready;
-  
+
   /**
    * Creates a new <code>{@link ScreenshotOnFailureListener}</code>.
    */
@@ -77,9 +78,9 @@ public class ScreenshotOnFailureListener extends AbstractTestListener {
 
   // For testing only.
   String output() { return output; }
-  
+
   /**
-   * Gets the output directory from the given context after the test class is instantiated and before any configuration 
+   * Gets the output directory from the given context after the test class is instantiated and before any configuration
    * method is called.
    * @param context the given method context.
    */
@@ -90,12 +91,13 @@ public class ScreenshotOnFailureListener extends AbstractTestListener {
   }
 
   /**
-   * When a test fails, this method takes a screenshot of the desktop and adds an hyperlink to the screenshot it in the 
+   * When a test fails, this method takes a screenshot of the desktop and adds an hyperlink to the screenshot it in the
    * HTML test report.
    * @param result contains information about the failing test.
    */
   @Override public void onTestFailure(ITestResult result) {
     if (!ready || !isGUITest(result)) return;
+    createOutputDirectoryIfNecessary();
     String screenshotFileName = takeScreenshotAndReturnFileName(result);
     if (isEmpty(screenshotFileName)) return;
     logger.info(concat("Screenshot of desktop saved as: ", quote(screenshotFileName)));
@@ -103,18 +105,24 @@ public class ScreenshotOnFailureListener extends AbstractTestListener {
     Reporter.log(concat("<a href=\"", screenshotFileName, "\">Screenshot</a>"));
   }
 
+  private void createOutputDirectoryIfNecessary() {
+    File outputDirectory = new File(output);
+    if (outputDirectory.isDirectory()) return;
+    outputDirectory.mkdirs();
+  }
+
   private static boolean isGUITest(ITestResult testResult) {
     Class<?> realClass = testResult.getTestClass().getRealClass();
     Method testMethod = testResult.getMethod().getMethod();
     return GUITestFinder.isGUITest(realClass, testMethod);
   }
-  
+
   private String takeScreenshotAndReturnFileName(ITestResult result) {
     String imageName = screenshotFileNameFrom(result);
     String imagePath = concat(output, separator, imageName);
     try {
       screenshotTaker.saveDesktopAsPng(imagePath);
-    } catch (ImageException e) {
+    } catch (Exception e) {
       logger.log(SEVERE, e.getMessage(), e);
       return null;
     }
