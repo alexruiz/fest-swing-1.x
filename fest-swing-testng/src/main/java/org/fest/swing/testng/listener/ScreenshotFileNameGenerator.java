@@ -33,17 +33,17 @@ final class ScreenshotFileNameGenerator {
   private static final String NULL_PARAMETER_VALUE = "[null]";
 
   static String screenshotFileNameFrom(ITestResult result) {
-    List<String> parts = namePartsFrom(result);
-    return join(parts.toArray(new String[parts.size()])).with(".");
+    String[] parts = namePartsFrom(result);
+    return join(parts).with(".");
   }
 
-  private static List<String> namePartsFrom(ITestResult result) {
+  private static String[] namePartsFrom(ITestResult result) {
     List<String> parts = new ArrayList<String>();
     parts.add(result.getTestClass().getName());
     parts.add(result.getMethod().getMethodName());
     addParameters(result, parts);
     parts.add(PNG);
-    return parts;
+    return parts.toArray(new String[parts.size()]);
   }
 
   private static void addParameters(ITestResult result, List<String> parts) {
