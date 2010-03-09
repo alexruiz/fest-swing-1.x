@@ -14,7 +14,6 @@
  */
 package org.fest.swing.testng.listener;
 
-import java.io.File;
 import java.lang.reflect.Method;
 import java.util.logging.Logger;
 
@@ -62,7 +61,7 @@ public class ScreenshotOnFailureListener extends AbstractTestListener {
   private static Logger logger = Logger.getAnonymousLogger();
 
   private ScreenshotTaker screenshotTaker;
-  private String output;
+  private OutputDirectory output;
   private boolean ready;
 
   /**
@@ -77,7 +76,7 @@ public class ScreenshotOnFailureListener extends AbstractTestListener {
   }
 
   // For testing only.
-  String output() { return output; }
+  String output() { return output.path(); }
 
   /**
    * Gets the output directory from the given context after the test class is instantiated and before any configuration
@@ -85,9 +84,9 @@ public class ScreenshotOnFailureListener extends AbstractTestListener {
    * @param context the given method context.
    */
   @Override public void onStart(ITestContext context) {
-    output = context.getOutputDirectory();
+    output = new OutputDirectory(context);
     logger.info(concat("TestNG output directory: ", quote(output)));
-    ready = !isEmpty(output) && screenshotTaker != null;
+    ready = output.hasPath() && screenshotTaker != null;
   }
 
   /**
@@ -97,18 +96,11 @@ public class ScreenshotOnFailureListener extends AbstractTestListener {
    */
   @Override public void onTestFailure(ITestResult result) {
     if (!ready || !isGUITest(result)) return;
-    createOutputDirectoryIfNecessary();
     String screenshotFileName = takeScreenshotAndReturnFileName(result);
     if (isEmpty(screenshotFileName)) return;
     logger.info(concat("Screenshot of desktop saved as: ", quote(screenshotFileName)));
     Reporter.setCurrentTestResult(result);
     Reporter.log(concat("<a href=\"", screenshotFileName, "\">Screenshot</a>"));
-  }
-
-  private void createOutputDirectoryIfNecessary() {
-    File outputDirectory = new File(output);
-    if (outputDirectory.isDirectory()) return;
-    outputDirectory.mkdirs();
   }
 
   private static boolean isGUITest(ITestResult testResult) {
@@ -118,6 +110,7 @@ public class ScreenshotOnFailureListener extends AbstractTestListener {
   }
 
   private String takeScreenshotAndReturnFileName(ITestResult result) {
+    output.createIfNecessary();
     String imageName = screenshotFileNameFrom(result);
     String imagePath = concat(output, separator, imageName);
     try {
