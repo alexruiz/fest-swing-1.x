@@ -85,7 +85,7 @@ public class ScreenshotOnFailureListener extends AbstractTestListener {
    */
   @Override public void onStart(ITestContext context) {
     output = new OutputDirectory(context);
-    logger.info(concat("TestNG output directory: ", quote(output)));
+    logger.info(concat("TestNG output directory: ", quote(output.path())));
     ready = output.hasPath() && screenshotTaker != null;
   }
 
