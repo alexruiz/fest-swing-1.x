@@ -26,6 +26,7 @@ import javax.swing.tree.TreePath;
 
 import org.fest.swing.annotation.RunsInCurrentThread;
 import org.fest.swing.exception.LocationUnavailableException;
+import org.fest.swing.util.Pair;
 
 /**
  * Understands a visible location on a <code>{@link JTree}</code>. A row index or a <code>{@link String}</code>ified
@@ -39,29 +40,30 @@ import org.fest.swing.exception.LocationUnavailableException;
 public final class JTreeLocation {
 
   /**
-   * Converts the given row to an x, y coordinate.
+   * Returns the bounds and visible coordinates of the given row.
    * <p>
-   * <b>Note:</b> This method is <b>not</b> executed in the event dispatch thread (EDT.) Clients are responsible for 
+   * <b>Note:</b> This method is <b>not</b> executed in the event dispatch thread (EDT.) Clients are responsible for
    * invoking this method in the EDT.
    * </p>
    * @param tree the target <code>JTree</code>.
    * @param row the given row.
-   * @return the coordinates of the given row.
+   * @return the the bounds and visible coordinates of the given row.
    * @throws IndexOutOfBoundsException if the given row is less than zero or equal than or greater than the number of
    * visible rows in the <code>JTree</code>.
    * @throws LocationUnavailableException if a tree path for the given row cannot be found.
+   * @since 1.2
    */
   @RunsInCurrentThread
-  public Point pointAt(JTree tree, int row) {
+  public Pair<Rectangle, Point> rowBoundsAndCoordinates(JTree tree, int row) {
     Rectangle rowBounds = tree.getRowBounds(row);
-    if (rowBounds != null) return pointAt(rowBounds);
+    if (rowBounds != null) return new Pair<Rectangle, Point>(rowBounds, pointAt(rowBounds));
     throw new LocationUnavailableException(concat("The tree row ", row, " is not visible"));
   }
 
   /**
    * Returns the path for the given row.
    * <p>
-   * <b>Note:</b> This method is <b>not</b> executed in the event dispatch thread (EDT.) Clients are responsible for 
+   * <b>Note:</b> This method is <b>not</b> executed in the event dispatch thread (EDT.) Clients are responsible for
    * invoking this method in the EDT.
    * </p>
    * @param tree the target <code>JTree</code>.
@@ -95,20 +97,21 @@ public final class JTreeLocation {
   }
 
   /**
-   * Converts the given path to an x, y coordinate.
+   * Returns the bounds and visible coordinates of the given path.
    * <p>
-   * <b>Note:</b> This method is <b>not</b> executed in the event dispatch thread (EDT.) Clients are responsible for 
+   * <b>Note:</b> This method is <b>not</b> executed in the event dispatch thread (EDT.) Clients are responsible for
    * invoking this method in the EDT.
    * </p>
    * @param tree the target <code>JTree</code>.
    * @param path the given path.
-   * @return the coordinates of the given path.
+   * @return the bounds and visible coordinates of the given path.
    * @throws LocationUnavailableException if any part of the path is not visible.
+   * @since 1.2
    */
   @RunsInCurrentThread
-  public Point pointAt(JTree tree, TreePath path) {
+  public Pair<Rectangle, Point> pathBoundsAndCoordinates(JTree tree, TreePath path) {
     Rectangle pathBounds = tree.getPathBounds(path);
-    if (pathBounds != null) return pointAt(pathBounds);
+    if (pathBounds != null) return new Pair<Rectangle, Point>(pathBounds, pointAt(pathBounds));
     throw new LocationUnavailableException(concat("The tree path ", format(path.getPath()), " is not visible"));
   }
 

@@ -15,9 +15,7 @@
  */
 package org.fest.swing.driver;
 
-import static java.util.Arrays.sort;
 import static org.fest.assertions.Assertions.assertThat;
-import static org.fest.assertions.Fail.fail;
 import static org.fest.swing.core.MouseButton.LEFT_BUTTON;
 import static org.fest.swing.core.MouseButton.RIGHT_BUTTON;
 import static org.fest.swing.driver.CommonValidations.validateCellReader;
@@ -27,20 +25,19 @@ import static org.fest.swing.driver.JTreeClearSelectionTask.clearSelectionOf;
 import static org.fest.swing.driver.JTreeEditableQuery.isEditable;
 import static org.fest.swing.driver.JTreeExpandPathTask.expandTreePath;
 import static org.fest.swing.driver.JTreeMatchingPathQuery.*;
+import static org.fest.swing.driver.JTreeNodeTextQuery.nodeText;
 import static org.fest.swing.driver.JTreeToggleExpandStateTask.toggleExpandState;
+import static org.fest.swing.driver.JTreeVerifySelectionTask.verifyNoSelection;
+import static org.fest.swing.driver.JTreeVerifySelectionTask.verifySelection;
 import static org.fest.swing.edt.GuiActionRunner.execute;
 import static org.fest.swing.exception.ActionFailedException.actionFailure;
 import static org.fest.swing.timing.Pause.pause;
 import static org.fest.swing.util.Arrays.isEmptyIntArray;
-import static org.fest.util.Arrays.format;
 import static org.fest.util.Arrays.isEmpty;
-import static org.fest.util.Objects.areEqual;
 import static org.fest.util.Strings.concat;
 
 import java.awt.Point;
 import java.awt.Rectangle;
-import java.util.Arrays;
-
 import javax.swing.JPopupMenu;
 import javax.swing.JTree;
 import javax.swing.plaf.TreeUI;
@@ -376,8 +373,7 @@ public class JTreeDriver extends JComponentDriver {
     return execute(new GuiQuery<Triple<Boolean, Point, Integer>>() {
       protected Triple<Boolean, Point, Integer> executeInEDT() {
         validateIsEnabledAndShowing(tree);
-        scrollToVisible(tree, row, location);
-        Point p = location.pointAt(tree, row);
+        Point p = scrollToVisible(tree, row, location);
         return new Triple<Boolean, Point, Integer>(tree.isExpanded(row), p, tree.getToggleClickCount());
       }
     });
@@ -438,8 +434,7 @@ public class JTreeDriver extends JComponentDriver {
       protected Triple<Boolean, Point, Integer> executeInEDT() {
         validateIsEnabledAndShowing(tree);
         TreePath matchingPath = matchingPathFor(tree, path, pathFinder);
-        tree.scrollRectToVisible(tree.getPathBounds(matchingPath));
-        Point p = location.pointAt(tree, matchingPath);
+        Point p = scrollToTreePath(tree, matchingPath, location);
         return new Triple<Boolean, Point, Integer>(tree.isExpanded(matchingPath), p, tree.getToggleClickCount());
       }
     });
@@ -623,14 +618,6 @@ public class JTreeDriver extends JComponentDriver {
     return p;
   }
 
-  @RunsInCurrentThread
-  private static Rectangle scrollToVisible(final JTree tree, final int row,
-      final JTreeLocation location) {
-    Rectangle rowBounds = tree.getRowBounds(location.validIndex(tree, row));
-    tree.scrollRectToVisible(rowBounds);
-    return rowBounds;
-  }
-
   /**
    * Ends a drag operation at the location of the given row.
    * @param tree the target <code>JTree</code>.
@@ -657,11 +644,18 @@ public class JTreeDriver extends JComponentDriver {
     return execute(new GuiQuery<Pair<Boolean, Point>>() {
       protected Pair<Boolean, Point> executeInEDT() {
         validateIsEnabledAndShowing(tree);
-        scrollToVisible(tree, row, location);
+        Point p = scrollToVisible(tree, row, location);
         boolean selected = tree.getSelectionCount() == 1 && tree.isRowSelected(row);
-        return new Pair<Boolean, Point>(selected, location.pointAt(tree, row));
+        return new Pair<Boolean, Point>(selected, p);
       }
     });
+  }
+
+  @RunsInCurrentThread
+  private static Point scrollToVisible(JTree tree, int row, JTreeLocation location) {
+    Pair<Rectangle, Point> boundsAndCoordinates = location.rowBoundsAndCoordinates(tree, row);
+    tree.scrollRectToVisible(boundsAndCoordinates.i);
+    return boundsAndCoordinates.ii;
   }
 
   /**
@@ -728,16 +722,23 @@ public class JTreeDriver extends JComponentDriver {
     return execute(new GuiQuery<Pair<Boolean, Point>>() {
       protected Pair<Boolean, Point> executeInEDT() {
         boolean isSelected = tree.getSelectionCount() == 1 && tree.isPathSelected(path);
-        return new Pair<Boolean, Point>(isSelected, scrollToTreePath(tree, path));
+        return new Pair<Boolean, Point>(isSelected, scrollToTreePath(tree, path, location));
       }
     });
   }
 
   @RunsInCurrentThread
-  private static Point scrollToTreePath(final JTree tree, final TreePath path) {
-    Rectangle pathBounds = tree.getPathBounds(path);
-    tree.scrollRectToVisible(pathBounds);
-    return new Point(pathBounds.x + 1, pathBounds.y + pathBounds.height / 2);
+  private static Point scrollToTreePath(JTree tree, TreePath path, JTreeLocation location) {
+    Pair<Rectangle, Point> boundsAndCoordinates = location.pathBoundsAndCoordinates(tree, path);
+    tree.scrollRectToVisible(boundsAndCoordinates.i);
+    return boundsAndCoordinates.ii;
+  }
+
+  @RunsInEDT
+  private boolean makeParentVisible(JTree tree, TreePath path) {
+    boolean changed = makeVisible(tree, path.getParentPath(), true);
+    if (changed) robot.waitForIdle();
+    return changed;
   }
 
   /**
@@ -756,13 +757,6 @@ public class JTreeDriver extends JComponentDriver {
     expandTreePath(tree, path);
     waitForChildrenToShowUp(tree, path);
     return true;
-  }
-
-  @RunsInEDT
-  private boolean makeParentVisible(JTree tree, TreePath path) {
-    boolean changed = makeVisible(tree, path.getParentPath(), true);
-    if (changed) robot.waitForIdle();
-    return changed;
   }
 
   @RunsInEDT
@@ -785,28 +779,7 @@ public class JTreeDriver extends JComponentDriver {
   @RunsInEDT
   public void requireSelection(JTree tree, int[] rows) {
     if (rows == null) throw new NullPointerException("The array of row indices should not be null");
-    requireSelection(tree, rows, pathFinder, selectionProperty(tree));
-  }
-
-  @RunsInEDT
-  private static void requireSelection(final JTree tree, final int[] rows, final JTreePathFinder pathFinder,
-      final Description errorMessage) {
-    execute(new GuiTask() {
-      protected void executeInEDT() {
-        assertHasSelection(tree, rows, pathFinder, errorMessage);
-      }
-    });
-  }
-
-  @RunsInCurrentThread
-  private static void assertHasSelection(final JTree tree, final int[] rows, final JTreePathFinder pathFinder,
-      final Description errorMessage) {
-    int[] selectionRows = tree.getSelectionRows();
-    if (isEmptyIntArray(selectionRows)) failNoSelection(errorMessage);
-    sort(rows);
-    if (Arrays.equals(selectionRows, rows)) return;
-    fail(concat(
-        "[", errorMessage.value(), "] expecting selection:<", format(rows), "> but was:<", format(selectionRows), ">"));
+    verifySelection(tree, rows, selectionProperty(tree));
   }
 
   /**
@@ -821,40 +794,7 @@ public class JTreeDriver extends JComponentDriver {
   @RunsInEDT
   public void requireSelection(JTree tree, String[] paths) {
     if (paths == null) throw new NullPointerException("The array of paths should not be null");
-    requireSelection(tree, paths, pathFinder, selectionProperty(tree));
-  }
-
-  @RunsInEDT
-  private static void requireSelection(final JTree tree, final String[] paths, final JTreePathFinder pathFinder,
-      final Description errorMessage) {
-    execute(new GuiTask() {
-      protected void executeInEDT() {
-        assertHasSelection(tree, paths, pathFinder, errorMessage);
-      }
-    });
-  }
-
-  @RunsInCurrentThread
-  private static void assertHasSelection(final JTree tree, final String[] paths, final JTreePathFinder pathFinder,
-      final Description errorMessage) {
-    TreePath[] selectionPaths = tree.getSelectionPaths();
-    if (isEmpty(selectionPaths)) failNoSelection(errorMessage);
-    int selectionCount = paths.length;
-    if (selectionCount != selectionPaths.length) throw failNotEqualSelection(errorMessage, paths, selectionPaths);
-    for (int i = 0; i < selectionCount; i++) {
-      TreePath expected = matchingPathWithRootIfInvisible(tree, paths[i], pathFinder);
-      TreePath actual = selectionPaths[i];
-      if (!areEqual(expected, actual)) throw failNotEqualSelection(errorMessage, paths, selectionPaths);
-    }
-  }
-
-  private static AssertionError failNotEqualSelection(Description msg, String[] expected, TreePath[] actual) {
-    throw fail(concat(
-        "[", msg.value(), "] expecting selection:<", format(expected), "> but was:<", format(actual), ">"));
-  }
-
-  private static void failNoSelection(final Description errorMessage) {
-    fail(concat("[", errorMessage.value(), "] No selection"));
+    verifySelection(tree, paths, pathFinder, selectionProperty(tree));
   }
 
   /**
@@ -864,19 +804,7 @@ public class JTreeDriver extends JComponentDriver {
    */
   @RunsInEDT
   public void requireNoSelection(JTree tree) {
-    assertNoSelection(tree, selectionProperty(tree));
-  }
-
-  @RunsInEDT
-  private static void assertNoSelection(final JTree tree, final Description errorMessage) {
-    execute(new GuiTask() {
-      protected void executeInEDT() {
-        if (tree.getSelectionCount() == 0) return;
-        String message = concat(
-            "[", errorMessage.value(), "] expected no selection but was:<", format(tree.getSelectionPaths()), ">");
-        fail(message);
-      }
-    });
+    verifyNoSelection(tree, selectionProperty(tree));
   }
 
   @RunsInEDT
@@ -981,16 +909,6 @@ public class JTreeDriver extends JComponentDriver {
     return nodeText(tree, path, pathFinder);
   }
 
-  @RunsInEDT
-  private static String nodeText(final JTree tree, final String path, final JTreePathFinder pathFinder) {
-    return execute(new GuiQuery<String>() {
-      protected String executeInEDT() {
-        TreePath matchingPath = matchingPathWithRootIfInvisible(tree, path, pathFinder);
-        return pathFinder.cellReader().valueAt(tree, matchingPath.getLastPathComponent());
-      }
-    });
-  }
-
   /**
    * Returns the <code>String</code> representation of the node at the given row index.
    * @param tree the given <code>JTree</code>.
@@ -1003,16 +921,6 @@ public class JTreeDriver extends JComponentDriver {
    */
   public String nodeValue(JTree tree, int row) {
     return nodeText(tree, row, location, pathFinder);
-  }
-
-  @RunsInEDT
-  private static String nodeText(final JTree tree, final int path, final JTreeLocation location, final JTreePathFinder pathFinder) {
-    return execute(new GuiQuery<String>() {
-      protected String executeInEDT() {
-        TreePath matchingPath = location.pathFor(tree, path);
-        return pathFinder.cellReader().valueAt(tree, matchingPath.getLastPathComponent());
-      }
-    });
   }
 
   // for testing only
