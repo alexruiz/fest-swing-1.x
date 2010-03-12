@@ -41,7 +41,9 @@ public abstract class FestSwingTestngTestCase extends FestSwingTestCaseTemplate 
   }
 
   /**
-   * Creates a new <code>{@link Robot}</code>.
+   * Sets up this test's fixture, starting from creation of a new <code>{@link Robot}</code>.
+   * @see #setUpRobot()
+   * @see #onSetUp()
    */
   @BeforeMethod
   public final void setUp() {
@@ -56,7 +58,10 @@ public abstract class FestSwingTestngTestCase extends FestSwingTestCaseTemplate 
   protected abstract void onSetUp();
 
   /**
-   * Cleans up any resources used by this test case's <code>{@link Robot}</code>.
+   * Cleans up any resources used in this test. After calling <code>{@link #onTearDown()}</code>, this method cleans up
+   * resources used by this test's <code>{@link Robot}</code>.
+   * @see #cleanUp()
+   * @see #onTearDown()
    */
   @AfterMethod
   public final void tearDown() {
