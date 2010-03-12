@@ -14,20 +14,10 @@
  */
 package org.fest.swing.junit.v4_5.runner;
 
-import static org.fest.swing.annotation.GUITestFinder.isGUITest;
-import static org.fest.swing.junit.runner.Formatter.testNameFrom;
-
-import java.lang.reflect.Method;
-
 import org.fest.swing.junit.runner.FailureScreenshotTaker;
 import org.fest.swing.junit.runner.ImageFolderCreator;
-import org.junit.Ignore;
-import org.junit.internal.AssumptionViolatedException;
-import org.junit.internal.runners.model.EachTestNotifier;
-import org.junit.runner.notification.RunNotifier;
 import org.junit.runners.BlockJUnit4ClassRunner;
-import org.junit.runners.model.FrameworkMethod;
-import org.junit.runners.model.InitializationError;
+import org.junit.runners.model.*;
 
 /**
  * Understands a JUnit 4.5 test runner that takes a screenshot of a failed GUI test.
@@ -50,35 +40,11 @@ public class GUITestRunner extends BlockJUnit4ClassRunner {
   }
 
   /**
-   * Runs the given test, taking a screenshot of the desktop if the test fails and notifying that relevant events are
-   * reported through the given notifier.
-   * @param method the test to run.
-   * @param notifier the given notifier.
+   * Returns a <code>{@link Statement}</code> that invokes {@code method} on {@code test}. The created statement will
+   * take and save the screenshot of the desktop in case of a failure.
    */
   @Override
-  protected void runChild(FrameworkMethod method, RunNotifier notifier) {
-    EachTestNotifier eachNotifier = new EachTestNotifier(notifier, describeChild(method));
-    if (method.getAnnotation(Ignore.class) != null) {
-      eachNotifier.fireTestIgnored();
-      return;
-    }
-    eachNotifier.fireTestStarted();
-    try {
-      methodBlock(method).evaluate();
-    } catch (AssumptionViolatedException e) {
-      eachNotifier.addFailedAssumption(e);
-    } catch (Throwable e) {
-      takeScreenshot(method);
-      eachNotifier.addFailure(e);
-    } finally {
-      eachNotifier.fireTestFinished();
-    }
-  }
-
-  private void takeScreenshot(FrameworkMethod method) {
-    Method realMethod = method.getMethod();
-    final Class<?> testClass = realMethod.getDeclaringClass();
-    if (!(isGUITest(testClass, realMethod))) return;
-    screenshotTaker.saveScreenshot(testNameFrom(testClass, realMethod));
+  protected Statement methodInvoker(FrameworkMethod method, Object test) {
+    return new MethodInvoker(method, test, screenshotTaker);
   }
 }

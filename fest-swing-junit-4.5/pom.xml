@@ -5,7 +5,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.easytesting</groupId>
   <artifactId>fest-swing-junit-4.5</artifactId>
-  <version>1.2a4</version>
+  <version>1.2b1-SNAPSHOT</version>
   <name>FEST Swing - JUnit 4.5 Extension</name>
   <description>JUnit 4.5-specific extension for FEST-Swing</description>
   <inceptionYear>2009</inceptionYear>
@@ -42,13 +42,13 @@
     <dependency>
       <groupId>org.easytesting</groupId>
       <artifactId>fest-swing</artifactId>
-      <version>1.2a4</version>
+      <version>1.2b1-SNAPSHOT</version>
       <scope>compile</scope>
     </dependency>
     <dependency>
       <groupId>org.easytesting</groupId>
       <artifactId>fest-swing-junit</artifactId>
-      <version>1.2a4</version>
+      <version>1.2b1-SNAPSHOT</version>
       <scope>compile</scope>
     </dependency>
     <dependency>
@@ -60,10 +60,6 @@
   </dependencies>
   <reporting>
     <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-site-plugin</artifactId>
-      </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-javadoc-plugin</artifactId>

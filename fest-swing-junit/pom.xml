@@ -5,7 +5,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.easytesting</groupId>
   <artifactId>fest-swing-junit</artifactId>
-  <version>1.2a4</version>
+  <version>1.2b1-SNAPSHOT</version>
   <name>FEST Swing - JUnit Extension</name>
   <description>JUnit-specific extension for FEST-Swing</description>
   <inceptionYear>2007</inceptionYear>
@@ -54,7 +54,7 @@
     <dependency>
       <groupId>org.easytesting</groupId>
       <artifactId>fest-swing</artifactId>
-      <version>1.2a4</version>
+      <version>1.2b1-SNAPSHOT</version>
       <scope>compile</scope>
     </dependency>
     <dependency>

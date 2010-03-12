@@ -17,6 +17,7 @@ package org.fest.swing.junit.v4_5.runner;
 
 import org.fest.swing.annotation.GUITest;
 import org.fest.swing.junit.v4_5.runner.GUITestRunner;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -30,12 +31,14 @@ public class TestWithGUITestMethods {
 
   @GUITest @Test public void successfulGUITest() {}
 
+  @Ignore("enable for manual testing")
   @GUITest @Test public void failedGUITest() {
     throw new RuntimeException("Failed on purpose");
   }
 
   @Test public void successfulNonGUITest() {}
 
+  @Ignore("enable for manual testing")
   @Test public void failedNonGUITest() {
     throw new RuntimeException("Failed on purpose");
   }
