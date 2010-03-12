@@ -21,7 +21,7 @@ import org.junit.*;
 
 /**
  * Understands a template for test cases that use FEST-Swing and JUnit. This template installs a
- * <code>{@link FailOnThreadViolationRepaintManager}</code> to verify violations of Swing thread rules and manages both
+ * <code>{@link FailOnThreadViolationRepaintManager}</code> to catch violations of Swing thread rules and manages both
  * creation and clean up of a <code>{@link Robot}</code>.
  * @since 1.1
  *
