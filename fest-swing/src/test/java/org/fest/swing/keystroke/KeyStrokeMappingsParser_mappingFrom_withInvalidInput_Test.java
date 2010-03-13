@@ -49,7 +49,7 @@ public class KeyStrokeMappingsParser_mappingFrom_withInvalidInput_Test {
     try {
       parser.mappingFrom(", COMMA, NO_MASK");
     } catch (ParsingException e) {
-      assertThat(e.getMessage()).isEqualTo("Unable to retrieve character to map from text ''");
+      assertThat(e.getMessage()).isEqualTo("The text '' should have a single character");
     }
   }
 

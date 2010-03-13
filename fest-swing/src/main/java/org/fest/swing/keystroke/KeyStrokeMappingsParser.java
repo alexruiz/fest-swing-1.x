@@ -102,7 +102,7 @@ public class KeyStrokeMappingsParser {
   // package-protected for testing
   KeyStrokeMapping mappingFrom(String line) {
     String[] parts = split(line);
-    if (parts.length != 3) throw notConformingWithPattern(line);
+    if (parts.length != 3) throw notConformingWithPatternError(line);
     char character = characterFrom(parts[0].trim());
     int keyCode = keyCodeFrom(parts[1].trim());
     int modifiers = modifiersFrom(parts[2].trim());
@@ -113,18 +113,15 @@ public class KeyStrokeMappingsParser {
     return line.trim().split(",");
   }
 
-  private static ParsingException notConformingWithPattern(String line) {
+  private static ParsingException notConformingWithPatternError(String line) {
     return new ParsingException(concat(
         "Line ", quote(line), " does not conform with pattern '{char}, {keycode}, {modifiers}'"));
   }
 
   private static char characterFrom(String s) {
     if (SPECIAL_MAPPINGS.containsKey(s)) return SPECIAL_MAPPINGS.get(s);
-    try {
-      return s.charAt(0);
-    } catch (IndexOutOfBoundsException e) {
-      throw new ParsingException(concat("Unable to retrieve character to map from text ", quote(s)));
-    }
+    if (s.length() == 1) return s.charAt(0);
+    throw new ParsingException(concat("The text ", quote(s) , " should have a single character"));
   }
 
   private static int keyCodeFrom(String s) {
