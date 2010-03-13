@@ -14,31 +14,47 @@
  */
 package org.fest.swing.keystroke;
 
-import static java.util.Collections.unmodifiableList;
 import static org.fest.reflect.core.Reflection.staticField;
 import static org.fest.swing.keystroke.KeyStrokeMapping.mapping;
 import static org.fest.swing.keystroke.KeyStrokeMappingProvider.NO_MASK;
+import static org.fest.util.Strings.concat;
+import static org.fest.util.Strings.quote;
 
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 import java.io.*;
 import java.util.*;
 
+import org.fest.reflect.exception.ReflectionError;
+import org.fest.swing.exception.ParsingException;
+
 /**
  * Understands creation of <code>{@link KeyStrokeMapping}</code>s by parsing a text file.
  *
  * @author Olivier DOREMIEUX
  * @author Alex Ruiz
+ *
+ * @since 1.2
  */
 public class KeyStrokeMappingsParser {
 
-  public List<KeyStrokeMapping> parse(String file) throws IOException {
+  private static final Map<String, Character> SPECIAL_MAPPINGS = new HashMap<String, Character>();
+
+  static {
+    SPECIAL_MAPPINGS.put("COMMA", ',');
+  }
+
+  public KeyStrokeMappingProvider parse(String file) {
     List<KeyStrokeMapping> mappings = new ArrayList<KeyStrokeMapping>();
     BufferedReader reader = fileReader(file);
     String line = null;
-    while((line = reader.readLine()) != null)
-      mappings.add(mappingFrom(line));
-    return unmodifiableList(mappings);
+    try {
+      while((line = reader.readLine()) != null)
+        mappings.add(mappingFrom(line));
+    } catch (IOException e) {
+      throw new ParsingException(concat("An I/O error ocurred while parsing file ", file), e);
+    }
+    return new ParsedKeyStrokeMappingProvider(mappings);
   }
 
   private BufferedReader fileReader(String file) {
@@ -48,24 +64,46 @@ public class KeyStrokeMappingsParser {
 
   // package-protected for testing
   KeyStrokeMapping mappingFrom(String line) {
-    String[] parts = line.split(",");
-    if (parts.length != 3) return null;
+    String[] parts = split(line.trim());
+    if (parts.length != 3)
+      throw new ParsingException(concat("Unable to parse line ", quote(line)));
     char character = characterFrom(parts[0].trim());
     int keyCode = keyCodeFrom(parts[1].trim());
     int modifiers = modifiersFrom(parts[2].trim());
     return mapping(character, keyCode, modifiers);
   }
 
-  private char characterFrom(String character) {
-    return character.charAt(0);
+  private String[] split(String line) {
+    return line.split(",");
   }
 
-  private int keyCodeFrom(String keyCode) {
-    return staticField(keyCode).ofType(int.class).in(KeyEvent.class).get();
+  private char characterFrom(String s) {
+    if (SPECIAL_MAPPINGS.containsKey(s)) return SPECIAL_MAPPINGS.get(s);
+    try {
+      return s.charAt(0);
+    } catch (IndexOutOfBoundsException e) {
+      throw new ParsingException(concat("Unable to retrieve character to map from ", quote(s)));
+    }
   }
 
-  private int modifiersFrom(String modifiers) {
-    if ("NO_MASK".equals(modifiers)) return NO_MASK;
-    return staticField(modifiers).ofType(int.class).in(InputEvent.class).get();
+  private int keyCodeFrom(String s) {
+    try {
+      return staticField(keyCodeNameFrom(s)).ofType(int.class).in(KeyEvent.class).get();
+    } catch (ReflectionError e) {
+      throw new ParsingException(concat("Unable to retrieve key code from ", quote(s)));
+    }
+  }
+
+  private String keyCodeNameFrom(String s) {
+    return concat("VK_", s);
+  }
+
+  private int modifiersFrom(String s) {
+    if ("NO_MASK".equals(s)) return NO_MASK;
+    try {
+      return staticField(s).ofType(int.class).in(InputEvent.class).get();
+    } catch (ReflectionError e) {
+      throw new ParsingException(concat("Unable to retrieve modifiers from ", quote(s)));
+    }
   }
 }

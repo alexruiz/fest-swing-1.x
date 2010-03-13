@@ -18,6 +18,7 @@ package org.fest.swing.keystroke;
 import static java.awt.event.KeyEvent.*;
 import static java.util.Collections.unmodifiableList;
 import static org.fest.swing.keystroke.KeyStrokeMapping.mapping;
+import static org.fest.swing.util.Platform.isWindows;
 
 import java.util.*;
 
@@ -30,6 +31,21 @@ import javax.swing.KeyStroke;
  */
 public class DefaultKeyStrokeMappingProvider implements KeyStrokeMappingProvider {
 
+  private static final List<KeyStrokeMapping> MAPPINGS = new ArrayList<KeyStrokeMapping>();
+
+  static {
+    MAPPINGS.add(mapping('\b', VK_BACK_SPACE, NO_MASK));
+    MAPPINGS.add(mapping('', VK_DELETE, NO_MASK));
+    MAPPINGS.add(mapping('\n', VK_ENTER, NO_MASK));
+    if (isWindows()) MAPPINGS.add(mapping('\r', VK_ENTER, NO_MASK));
+    MAPPINGS.add(mapping('', VK_ESCAPE, NO_MASK));
+    MAPPINGS.add(mapping('\t', VK_TAB, NO_MASK));
+  }
+
+  void addMappings(List<KeyStrokeMapping> mappings) {
+    MAPPINGS.addAll(mappings);
+  }
+
   /**
    * Returns the default mapping of characters and <code>{@link KeyStroke}</code>s. This provider will only return
    * the mappings for following keys:
@@ -38,25 +54,11 @@ public class DefaultKeyStrokeMappingProvider implements KeyStrokeMappingProvider
    * <li>Backspace</li>
    * <li>Delete</li>
    * <li>Enter</li>
+   * <li>Tab</li>
    * </ul>
    * @return the default mapping of characters and <code>KeyStroke</code>s
    */
   public Collection<KeyStrokeMapping> keyStrokeMappings() {
-    return SingletonHolder.instance;
-  }
-
-  // Thread-safe, lazy-loading singleton.
-  private static class SingletonHolder {
-    static List<KeyStrokeMapping> instance = createMappings();
-  }
-
-  private static List<KeyStrokeMapping> createMappings() {
-    List<KeyStrokeMapping> mappings = new ArrayList<KeyStrokeMapping>();
-    mappings.add(mapping('\b', VK_BACK_SPACE, NO_MASK));
-    mappings.add(mapping('', VK_DELETE, NO_MASK));
-    mappings.add(mapping('', VK_ESCAPE, NO_MASK));
-    mappings.add(mapping('\n', VK_ENTER, NO_MASK));
-    mappings.add(mapping('\r', VK_ENTER, NO_MASK));
-    return unmodifiableList(mappings);
+    return unmodifiableList(MAPPINGS);
   }
 }

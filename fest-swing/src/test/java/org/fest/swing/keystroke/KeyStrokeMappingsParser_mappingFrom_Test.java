@@ -16,7 +16,7 @@
 package org.fest.swing.keystroke;
 
 import static java.awt.event.InputEvent.*;
-import static java.awt.event.KeyEvent.VK_A;
+import static java.awt.event.KeyEvent.*;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.keystroke.KeyStrokeMappingProvider.NO_MASK;
 import static org.fest.util.Collections.list;
@@ -48,10 +48,17 @@ public class KeyStrokeMappingsParser_mappingFrom_Test {
   public static Collection<Object[]> linesToParse() {
     return list(
         new Object[][] {
-            { "a, VK_A, NO_MASK", 'a', VK_A, NO_MASK },
-            { "A, VK_A, SHIFT_MASK", 'A', VK_A, SHIFT_MASK | SHIFT_DOWN_MASK },
+            { "a, A, NO_MASK", 'a', VK_A, NO_MASK },
+            { "A, A, SHIFT_MASK", 'A', VK_A, shift() },
+            { "COMMA,COMMA,NO_MASK", ',', VK_COMMA, NO_MASK },
+            { "COMMA, COMMA, NO_MASK", ',', VK_COMMA, NO_MASK },
+            { "  COMMA,  COMMA,  NO_MASK", ',', VK_COMMA, NO_MASK },
         }
     );
+  }
+
+  private static int shift() {
+    return SHIFT_MASK | SHIFT_DOWN_MASK;
   }
 
   public KeyStrokeMappingsParser_mappingFrom_Test(String lineToParse, char character, int keyCode, int modifiers) {
