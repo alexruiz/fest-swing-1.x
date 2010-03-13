@@ -44,6 +44,21 @@ public class KeyStrokeMappingsParser {
     SPECIAL_MAPPINGS.put("COMMA", ',');
   }
 
+  /**
+   * Creates a <code>{@link KeyStrokeMappingProvider}</code> containing all the character-keystroke mappings specified
+   * in the file with the given name. Mappings for the following characters:
+   * <ul>
+   * <li>Backspace</li>
+   * <li>Delete</li>
+   * <li>Enter</li>
+   * <li>Escape</li>
+   * <li>Tab</li>
+   * </ul>
+   * will be automatically added.
+   * @param file the path of the file to parse.
+   * @return the created {@code KeyStrokeMappingProvider}.
+   * @throws ParsingException if any error occurs during parsing.
+   */
   public KeyStrokeMappingProvider parse(String file) {
     List<KeyStrokeMapping> mappings = new ArrayList<KeyStrokeMapping>();
     BufferedReader reader = fileReader(file);
@@ -64,46 +79,50 @@ public class KeyStrokeMappingsParser {
 
   // package-protected for testing
   KeyStrokeMapping mappingFrom(String line) {
-    String[] parts = split(line.trim());
-    if (parts.length != 3)
-      throw new ParsingException(concat("Unable to parse line ", quote(line)));
+    String[] parts = split(line);
+    if (parts.length != 3) throw notConformingWithPattern(line);
     char character = characterFrom(parts[0].trim());
     int keyCode = keyCodeFrom(parts[1].trim());
     int modifiers = modifiersFrom(parts[2].trim());
     return mapping(character, keyCode, modifiers);
   }
 
-  private String[] split(String line) {
-    return line.split(",");
+  private static String[] split(String line) {
+    return line.trim().split(",");
   }
 
-  private char characterFrom(String s) {
+  private static ParsingException notConformingWithPattern(String line) {
+    return new ParsingException(concat(
+        "Line ", quote(line), " does not conform with pattern '{char}, {keycode}, {modifiers}'"));
+  }
+
+  private static char characterFrom(String s) {
     if (SPECIAL_MAPPINGS.containsKey(s)) return SPECIAL_MAPPINGS.get(s);
     try {
       return s.charAt(0);
     } catch (IndexOutOfBoundsException e) {
-      throw new ParsingException(concat("Unable to retrieve character to map from ", quote(s)));
+      throw new ParsingException(concat("Unable to retrieve character to map from text ", quote(s)));
     }
   }
 
-  private int keyCodeFrom(String s) {
+  private static int keyCodeFrom(String s) {
     try {
       return staticField(keyCodeNameFrom(s)).ofType(int.class).in(KeyEvent.class).get();
     } catch (ReflectionError e) {
-      throw new ParsingException(concat("Unable to retrieve key code from ", quote(s)));
+      throw new ParsingException(concat("Unable to retrieve key code from text ", quote(s)));
     }
   }
 
-  private String keyCodeNameFrom(String s) {
+  private static String keyCodeNameFrom(String s) {
     return concat("VK_", s);
   }
 
-  private int modifiersFrom(String s) {
+  private static int modifiersFrom(String s) {
     if ("NO_MASK".equals(s)) return NO_MASK;
     try {
       return staticField(s).ofType(int.class).in(InputEvent.class).get();
     } catch (ReflectionError e) {
-      throw new ParsingException(concat("Unable to retrieve modifiers from ", quote(s)));
+      throw new ParsingException(concat("Unable to retrieve modifiers from text ", quote(s)));
     }
   }
 }

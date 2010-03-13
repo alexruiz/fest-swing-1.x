@@ -39,10 +39,11 @@ class ParsedKeyStrokeMappingProvider extends DefaultKeyStrokeMappingProvider {
    * Returns the mapping of characters and <code>{@link KeyStroke}</code>s. The mappings are obtained from a text
    * file. In addition, this provider will automatically add mappings for following keys:
    * <ul>
-   * <li>Escape</li>
    * <li>Backspace</li>
    * <li>Delete</li>
    * <li>Enter</li>
+   * <li>Escape</li>
+   * <li>Tab</li>
    * </ul>
    * @return the mapping of characters and <code>KeyStroke</code>s.
    */
