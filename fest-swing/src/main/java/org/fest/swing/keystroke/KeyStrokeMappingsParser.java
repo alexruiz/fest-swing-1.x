@@ -17,6 +17,7 @@ package org.fest.swing.keystroke;
 import static org.fest.reflect.core.Reflection.staticField;
 import static org.fest.swing.keystroke.KeyStrokeMapping.mapping;
 import static org.fest.swing.keystroke.KeyStrokeMappingProvider.NO_MASK;
+import static org.fest.util.Closeables.close;
 import static org.fest.util.Strings.concat;
 import static org.fest.util.Strings.quote;
 
@@ -83,19 +84,25 @@ public class KeyStrokeMappingsParser {
    */
   public KeyStrokeMappingProvider parse(String file) {
     List<KeyStrokeMapping> mappings = new ArrayList<KeyStrokeMapping>();
-    BufferedReader reader = fileReader(file);
-    String line = null;
+    BufferedReader reader = null;
     try {
-      while((line = reader.readLine()) != null)
+      reader = fileReader(file);
+      String line = reader.readLine();
+      while(line != null) {
         mappings.add(mappingFrom(line));
+        line = reader.readLine();
+      }
+      return new ParsedKeyStrokeMappingProvider(mappings);
     } catch (IOException e) {
       throw new ParsingException(concat("An I/O error ocurred while parsing file ", file), e);
+    } finally {
+      close(reader);
     }
-    return new ParsedKeyStrokeMappingProvider(mappings);
   }
 
-  private BufferedReader fileReader(String file) {
-    InputStream fileAsStream = KeyStrokeMapping.class.getClassLoader().getResourceAsStream(file);
+  private BufferedReader fileReader(String file) throws FileNotFoundException {
+    File f = new File(file);
+    InputStream fileAsStream = new FileInputStream(f);
     return new BufferedReader(new InputStreamReader(fileAsStream));
   }
 
