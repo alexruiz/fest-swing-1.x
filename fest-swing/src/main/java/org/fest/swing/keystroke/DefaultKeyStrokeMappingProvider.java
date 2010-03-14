@@ -31,19 +31,27 @@ import javax.swing.KeyStroke;
  */
 public class DefaultKeyStrokeMappingProvider implements KeyStrokeMappingProvider {
 
-  private static final List<KeyStrokeMapping> MAPPINGS = new ArrayList<KeyStrokeMapping>();
+  private final List<KeyStrokeMapping> mappings = new ArrayList<KeyStrokeMapping>();
 
-  static {
-    MAPPINGS.add(mapping('\b', VK_BACK_SPACE, NO_MASK));
-    MAPPINGS.add(mapping('', VK_DELETE, NO_MASK));
-    MAPPINGS.add(mapping('\n', VK_ENTER, NO_MASK));
-    if (isWindows()) MAPPINGS.add(mapping('\r', VK_ENTER, NO_MASK));
-    MAPPINGS.add(mapping('', VK_ESCAPE, NO_MASK));
-    MAPPINGS.add(mapping('\t', VK_TAB, NO_MASK));
+  DefaultKeyStrokeMappingProvider(List<KeyStrokeMapping> mappings) {
+    this();
+    mappings.addAll(mappings);
   }
 
-  void addMappings(List<KeyStrokeMapping> mappings) {
-    MAPPINGS.addAll(mappings);
+  /**
+   * Creates a new </code>{@link DefaultKeyStrokeMappingProvider}</code>.
+   */
+  public DefaultKeyStrokeMappingProvider() {
+    populateDefaultMappings();
+  }
+
+  private void populateDefaultMappings() {
+    mappings.add(mapping('\b', VK_BACK_SPACE, NO_MASK));
+    mappings.add(mapping('', VK_DELETE, NO_MASK));
+    mappings.add(mapping('\n', VK_ENTER, NO_MASK));
+    if (isWindows()) mappings.add(mapping('\r', VK_ENTER, NO_MASK));
+    mappings.add(mapping('', VK_ESCAPE, NO_MASK));
+    mappings.add(mapping('\t', VK_TAB, NO_MASK));
   }
 
   /**
@@ -59,6 +67,6 @@ public class DefaultKeyStrokeMappingProvider implements KeyStrokeMappingProvider
    * @return the default mapping of characters and <code>KeyStroke</code>s
    */
   public Collection<KeyStrokeMapping> keyStrokeMappings() {
-    return unmodifiableList(MAPPINGS);
+    return unmodifiableList(mappings);
   }
 }

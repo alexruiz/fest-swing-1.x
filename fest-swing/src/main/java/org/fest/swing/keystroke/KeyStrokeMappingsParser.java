@@ -135,7 +135,7 @@ public class KeyStrokeMappingsParser {
     try {
       return staticField(keyCodeNameFrom(s)).ofType(int.class).in(KeyEvent.class).get();
     } catch (ReflectionError e) {
-      throw new ParsingException(concat("Unable to retrieve key code from text ", quote(s)));
+      throw new ParsingException(concat("Unable to retrieve key code from text ", quote(s)), e.getCause());
     }
   }
 
@@ -148,7 +148,7 @@ public class KeyStrokeMappingsParser {
     try {
       return staticField(s).ofType(int.class).in(InputEvent.class).get();
     } catch (ReflectionError e) {
-      throw new ParsingException(concat("Unable to retrieve modifiers from text ", quote(s)));
+      throw new ParsingException(concat("Unable to retrieve modifiers from text ", quote(s)), e.getCause());
     }
   }
 }

@@ -32,7 +32,7 @@ import javax.swing.KeyStroke;
 class ParsedKeyStrokeMappingProvider extends DefaultKeyStrokeMappingProvider {
 
   ParsedKeyStrokeMappingProvider(List<KeyStrokeMapping> mappings) {
-    addMappings(mappings);
+    super(mappings);
   }
 
   /**
