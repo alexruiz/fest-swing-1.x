@@ -83,11 +83,16 @@ public class KeyStrokeMappingsParser {
   /**
    * Creates a <code>{@link KeyStrokeMappingProvider}</code> containing all the character-keystroke mappings specified
    * in the file with the given name.
+   * <p>
+   * <strong>Note:</strong> This attempts to read the file using
+   * <code>{@link ClassLoader#getResourceAsStream(String)}</code>.
+   * </p>
    * @param file the name of the file to parse.
    * @return the created {@code KeyStrokeMappingProvider}.
    * @throws NullPointerException if the given name is <code>null</code>.
    * @throws IllegalArgumentException if the given name is empty.
    * @throws ParsingException if any error occurs during parsing.
+   * @see #parse(File)
    */
   public KeyStrokeMappingProvider parse(String file) {
     validate(file);

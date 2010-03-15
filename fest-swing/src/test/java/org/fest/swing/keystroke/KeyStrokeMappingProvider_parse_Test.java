@@ -1,15 +1,14 @@
 /*
  * Created on Mar 14, 2010
  *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
  *
  * http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+ * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations under the License.
  *
  * Copyright @2010 the original author or authors.
  */
@@ -22,8 +21,12 @@ import static org.fest.swing.keystroke.KeyStrokeMapping.mapping;
 import static org.fest.swing.keystroke.KeyStrokeMappingProvider.NO_MASK;
 import static org.fest.swing.test.core.CommonAssertions.failWhenExpectingException;
 import static org.fest.swing.util.Platform.isWindows;
+import static org.fest.swing.util.System.LINE_SEPARATOR;
+import static org.fest.util.Closeables.close;
+import static org.fest.util.Files.newTemporaryFile;
+import static org.fest.util.Flushables.flush;
 
-import java.io.File;
+import java.io.*;
 import java.util.Collection;
 
 import org.fest.swing.exception.ParsingException;
@@ -56,18 +59,13 @@ public class KeyStrokeMappingProvider_parse_Test {
   }
 
   @Test
-  public void should_parse_mapping_file() {
+  public void should_parse_file_in_classpath() {
     KeyStrokeMappingProvider mappingProvider = parser.parse("keyboard-mapping.txt");
+    assertThatContainsDefaultMappings(mappingProvider);
     Collection<KeyStrokeMapping> mappings = mappingProvider.keyStrokeMappings();
-    assertThat(mappings).contains(mapping('\b', VK_BACK_SPACE, NO_MASK),
-                                  mapping('', VK_DELETE, NO_MASK),
-                                  mapping('\n', VK_ENTER, NO_MASK),
-                                  mapping('', VK_ESCAPE, NO_MASK),
-                                  mapping('\t', VK_TAB, NO_MASK),
-                                  mapping('a', VK_A, NO_MASK),
+    assertThat(mappings).contains(mapping('a', VK_A, NO_MASK),
                                   mapping('A', VK_A, SHIFT_MASK),
                                   mapping(',', VK_COMMA, NO_MASK));
-    if (isWindows()) assertThat(mappings).contains(mapping('\r', VK_ENTER, NO_MASK));
   }
 
   @Test
@@ -89,5 +87,44 @@ public class KeyStrokeMappingProvider_parse_Test {
   @Test(expected = IllegalArgumentException.class)
   public void should_throw_error_if_file_does_not_exist() {
     parser.parse(new File("abc.xyz"));
+  }
+
+  @Test
+  public void should_parse_file() throws Exception {
+    File f = null;
+    try {
+      f = createMappingFile("a, A, NO_MASK");
+      KeyStrokeMappingProvider mappingProvider = parser.parse(f);
+      assertThatContainsDefaultMappings(mappingProvider);
+      Collection<KeyStrokeMapping> mappings = mappingProvider.keyStrokeMappings();
+      assertThat(mappings).contains(mapping('a', VK_A, NO_MASK));
+    } finally {
+      if (f != null) f.delete();
+    }
+  }
+
+  private static File createMappingFile(String...mappings) throws IOException {
+    File f = newTemporaryFile();
+    Writer output = new BufferedWriter(new FileWriter(f));
+    try {
+      for (String mapping : mappings) {
+        output.write(mapping);
+        output.write(LINE_SEPARATOR);
+      }
+    } finally {
+      flush(output);
+      close(output);
+    }
+    return f;
+  }
+
+  private static void assertThatContainsDefaultMappings(KeyStrokeMappingProvider mappingProvider) {
+    Collection<KeyStrokeMapping> mappings = mappingProvider.keyStrokeMappings();
+    assertThat(mappings).contains(mapping('\b', VK_BACK_SPACE, NO_MASK),
+                                  mapping('', VK_DELETE, NO_MASK),
+                                  mapping('\n', VK_ENTER, NO_MASK),
+                                  mapping('', VK_ESCAPE, NO_MASK),
+                                  mapping('\t', VK_TAB, NO_MASK));
+    if (isWindows()) assertThat(mappings).contains(mapping('\r', VK_ENTER, NO_MASK));
   }
 }
