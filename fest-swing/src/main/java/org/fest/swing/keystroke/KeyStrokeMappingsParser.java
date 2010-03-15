@@ -84,27 +84,32 @@ public class KeyStrokeMappingsParser {
    * @throws ParsingException if any error occurs during parsing.
    */
   public KeyStrokeMappingProvider parse(String file) {
-    List<KeyStrokeMapping> mappings = new ArrayList<KeyStrokeMapping>();
-    BufferedReader reader = null;
     try {
-      reader = fileReader(file);
+      return parse(fileReader(file));
+    } catch (IOException e) {
+      throw new ParsingException(concat("An I/O error ocurred while parsing file ", file), e);
+    }
+  }
+
+  private Reader fileReader(String file) {
+    InputStream stream = currentThread().getContextClassLoader().getResourceAsStream(file);
+    if (stream == null) throw new ParsingException(concat("Unable to open file ", file));
+    return new InputStreamReader(stream);
+  }
+
+  private KeyStrokeMappingProvider parse(Reader r) throws IOException {
+    List<KeyStrokeMapping> mappings = new ArrayList<KeyStrokeMapping>();
+    BufferedReader reader = new BufferedReader(r);
+    try {
       String line = reader.readLine();
       while(line != null) {
         mappings.add(mappingFrom(line));
         line = reader.readLine();
       }
       return new ParsedKeyStrokeMappingProvider(mappings);
-    } catch (IOException e) {
-      throw new ParsingException(concat("An I/O error ocurred while parsing file ", file), e);
     } finally {
       close(reader);
     }
-  }
-
-  private BufferedReader fileReader(String file) {
-    InputStream stream = currentThread().getContextClassLoader().getResourceAsStream(file);
-    if (stream == null) throw new ParsingException(concat("Unable to open file ", file));
-    return new BufferedReader(new InputStreamReader(stream));
   }
 
   // package-protected for testing
