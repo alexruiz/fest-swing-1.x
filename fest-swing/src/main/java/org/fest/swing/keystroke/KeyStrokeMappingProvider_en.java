@@ -18,6 +18,7 @@ import static java.awt.event.InputEvent.SHIFT_MASK;
 import static java.awt.event.KeyEvent.*;
 import static java.util.Collections.unmodifiableList;
 import static org.fest.swing.keystroke.KeyStrokeMapping.mapping;
+import static org.fest.swing.keystroke.KeyStrokeMappings.defaultMappings;
 
 import java.util.*;
 
@@ -47,6 +48,7 @@ public class KeyStrokeMappingProvider_en implements KeyStrokeMappingProvider {
 
   private static List<KeyStrokeMapping> createMappings() {
     List<KeyStrokeMapping> mappings = new ArrayList<KeyStrokeMapping>(100);
+    mappings.addAll(defaultMappings());
     mappings.add(mapping('0', VK_0, NO_MASK));
     mappings.add(mapping(')', VK_0, SHIFT_MASK));
     mappings.add(mapping('1', VK_1, NO_MASK));
@@ -75,7 +77,6 @@ public class KeyStrokeMappingProvider_en implements KeyStrokeMappingProvider {
     mappings.add(mapping('~', VK_BACK_QUOTE, SHIFT_MASK));
     mappings.add(mapping('\\', VK_BACK_SLASH, NO_MASK));
     mappings.add(mapping('|', VK_BACK_SLASH, SHIFT_MASK));
-    mappings.add(mapping('\b', VK_BACK_SPACE, NO_MASK));
     mappings.add(mapping('c', VK_C, NO_MASK));
     mappings.add(mapping('C', VK_C, SHIFT_MASK));
     mappings.add(mapping(']', VK_CLOSE_BRACKET, NO_MASK));
@@ -84,14 +85,10 @@ public class KeyStrokeMappingProvider_en implements KeyStrokeMappingProvider {
     mappings.add(mapping('<', VK_COMMA, SHIFT_MASK));
     mappings.add(mapping('d', VK_D, NO_MASK));
     mappings.add(mapping('D', VK_D, SHIFT_MASK));
-    mappings.add(mapping('', VK_DELETE, NO_MASK));
     mappings.add(mapping('e', VK_E, NO_MASK));
     mappings.add(mapping('E', VK_E, SHIFT_MASK));
-    mappings.add(mapping('\n', VK_ENTER, NO_MASK));
-    mappings.add(mapping('\r', VK_ENTER, NO_MASK));
     mappings.add(mapping('=', VK_EQUALS, NO_MASK));
     mappings.add(mapping('+', VK_EQUALS, SHIFT_MASK));
-    mappings.add(mapping('', VK_ESCAPE, NO_MASK));
     mappings.add(mapping('f', VK_F, NO_MASK));
     mappings.add(mapping('F', VK_F, SHIFT_MASK));
     mappings.add(mapping('g', VK_G, NO_MASK));

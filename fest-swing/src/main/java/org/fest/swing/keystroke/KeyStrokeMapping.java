@@ -15,6 +15,8 @@
  */
 package org.fest.swing.keystroke;
 
+import static org.fest.util.Objects.HASH_CODE_PRIME;
+
 import javax.swing.KeyStroke;
 
 /**
@@ -37,7 +39,7 @@ public class KeyStrokeMapping {
   public static KeyStrokeMapping mapping(char character, int keyCode, int modifiers) {
     return new KeyStrokeMapping(character, keyCode, modifiers);
   }
-  
+
   /**
    * Creates a new </code>{@link KeyStrokeMapping}</code>.
    * @param character the character corresponding to the intended <code>KeyStroke</code>.
@@ -47,7 +49,7 @@ public class KeyStrokeMapping {
   public KeyStrokeMapping(char character, int keyCode, int modifiers) {
     this(character, KeyStroke.getKeyStroke(keyCode, modifiers));
   }
-  
+
   /**
    * Creates a new </code>{@link KeyStrokeMapping}</code>.
    * @param character the character corresponding to the given <code>KeyStroke</code>.
@@ -73,11 +75,32 @@ public class KeyStrokeMapping {
   public KeyStroke keyStroke() {
     return keyStroke;
   }
-  
-  /**
-   * Returns the <code>String</code> representation of this class.
-   * @return the <code>String</code> representation of this class.
-   */
+
+  /** @see Object#equals(Object) */
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null) return false;
+    if (!(o instanceof KeyStrokeMapping)) return false;
+    KeyStrokeMapping other = (KeyStrokeMapping) o;
+    if (character != other.character) return false;
+    if (keyStroke == null) return other.keyStroke == null;
+    if (other.keyStroke == null) return false;
+    if (keyStroke.getKeyCode() != other.keyStroke.getKeyCode()) return false;
+    return keyStroke.getModifiers() == other.keyStroke.getModifiers();
+  }
+
+  /** @see Object#hashCode() */
+  @Override public int hashCode() {
+    int prime = HASH_CODE_PRIME;
+    int result = 1;
+    result = prime * result + character;
+    if (keyStroke == null) return result;
+    result = prime * result + keyStroke.getKeyCode();
+    result = prime * result + keyStroke.getModifiers();
+    return result;
+  }
+
+  /** @see Object#toString() */
   @Override public String toString() {
     StringBuilder b = new StringBuilder();
     b.append(getClass().getSimpleName()).append("[");

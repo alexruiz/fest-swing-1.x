@@ -14,6 +14,7 @@
  */
 package org.fest.swing.keystroke;
 
+import static java.lang.Thread.currentThread;
 import static org.fest.reflect.core.Reflection.staticField;
 import static org.fest.swing.keystroke.KeyStrokeMapping.mapping;
 import static org.fest.swing.keystroke.KeyStrokeMappingProvider.NO_MASK;
@@ -100,10 +101,10 @@ public class KeyStrokeMappingsParser {
     }
   }
 
-  private BufferedReader fileReader(String file) throws FileNotFoundException {
-    File f = new File(file);
-    InputStream fileAsStream = new FileInputStream(f);
-    return new BufferedReader(new InputStreamReader(fileAsStream));
+  private BufferedReader fileReader(String file) {
+    InputStream stream = currentThread().getContextClassLoader().getResourceAsStream(file);
+    if (stream == null) throw new ParsingException(concat("Unable to open file ", file));
+    return new BufferedReader(new InputStreamReader(stream));
   }
 
   // package-protected for testing

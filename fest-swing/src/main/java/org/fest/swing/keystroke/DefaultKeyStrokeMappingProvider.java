@@ -15,10 +15,7 @@
  */
 package org.fest.swing.keystroke;
 
-import static java.awt.event.KeyEvent.*;
-import static java.util.Collections.unmodifiableList;
-import static org.fest.swing.keystroke.KeyStrokeMapping.mapping;
-import static org.fest.swing.util.Platform.isWindows;
+import static org.fest.swing.keystroke.KeyStrokeMappings.defaultMappings;
 
 import java.util.*;
 
@@ -30,29 +27,6 @@ import javax.swing.KeyStroke;
  * @author Alex Ruiz
  */
 public class DefaultKeyStrokeMappingProvider implements KeyStrokeMappingProvider {
-
-  private final List<KeyStrokeMapping> mappings = new ArrayList<KeyStrokeMapping>();
-
-  DefaultKeyStrokeMappingProvider(List<KeyStrokeMapping> mappings) {
-    this();
-    mappings.addAll(mappings);
-  }
-
-  /**
-   * Creates a new </code>{@link DefaultKeyStrokeMappingProvider}</code>.
-   */
-  public DefaultKeyStrokeMappingProvider() {
-    populateDefaultMappings();
-  }
-
-  private void populateDefaultMappings() {
-    mappings.add(mapping('\b', VK_BACK_SPACE, NO_MASK));
-    mappings.add(mapping('', VK_DELETE, NO_MASK));
-    mappings.add(mapping('\n', VK_ENTER, NO_MASK));
-    if (isWindows()) mappings.add(mapping('\r', VK_ENTER, NO_MASK));
-    mappings.add(mapping('', VK_ESCAPE, NO_MASK));
-    mappings.add(mapping('\t', VK_TAB, NO_MASK));
-  }
 
   /**
    * Returns the default mapping of characters and <code>{@link KeyStroke}</code>s. This provider will only return
@@ -67,6 +41,10 @@ public class DefaultKeyStrokeMappingProvider implements KeyStrokeMappingProvider
    * @return the default mapping of characters and <code>KeyStroke</code>s
    */
   public Collection<KeyStrokeMapping> keyStrokeMappings() {
-    return unmodifiableList(mappings);
+    return LazyLoadingSingleton.instance;
+  }
+
+  private static class LazyLoadingSingleton {
+    static List<KeyStrokeMapping> instance = new ArrayList<KeyStrokeMapping>(defaultMappings());
   }
 }

@@ -15,8 +15,10 @@
  */
 package org.fest.swing.keystroke;
 
-import java.util.Collection;
-import java.util.List;
+import static java.util.Collections.unmodifiableList;
+import static org.fest.swing.keystroke.KeyStrokeMappings.defaultMappings;
+
+import java.util.*;
 
 import javax.swing.KeyStroke;
 
@@ -29,10 +31,13 @@ import javax.swing.KeyStroke;
  * @since 1.2
  * @see KeyStrokeMappingsParser
  */
-class ParsedKeyStrokeMappingProvider extends DefaultKeyStrokeMappingProvider {
+class ParsedKeyStrokeMappingProvider implements KeyStrokeMappingProvider {
+
+  private final List<KeyStrokeMapping> mappings = new ArrayList<KeyStrokeMapping>(100);
 
   ParsedKeyStrokeMappingProvider(List<KeyStrokeMapping> mappings) {
-    super(mappings);
+    this.mappings.addAll(defaultMappings());
+    this.mappings.addAll(mappings);
   }
 
   /**
@@ -47,7 +52,7 @@ class ParsedKeyStrokeMappingProvider extends DefaultKeyStrokeMappingProvider {
    * </ul>
    * @return the mapping of characters and <code>KeyStroke</code>s.
    */
-  @Override public Collection<KeyStrokeMapping> keyStrokeMappings() {
-    return super.keyStrokeMappings();
+  public Collection<KeyStrokeMapping> keyStrokeMappings() {
+    return unmodifiableList(mappings);
   }
 }
