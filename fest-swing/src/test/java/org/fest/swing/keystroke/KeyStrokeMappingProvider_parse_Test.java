@@ -20,12 +20,13 @@ import static java.awt.event.KeyEvent.*;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.keystroke.KeyStrokeMapping.mapping;
 import static org.fest.swing.keystroke.KeyStrokeMappingProvider.NO_MASK;
+import static org.fest.swing.test.core.CommonAssertions.failWhenExpectingException;
 import static org.fest.swing.util.Platform.isWindows;
 
+import java.io.File;
 import java.util.Collection;
 
 import org.fest.swing.exception.ParsingException;
-import org.fest.swing.test.core.CommonAssertions;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -41,6 +42,17 @@ public class KeyStrokeMappingProvider_parse_Test {
   @Before
   public void setUp() {
     parser = new KeyStrokeMappingsParser();
+  }
+
+  @Test(expected = NullPointerException.class)
+  public void should_throw_error_if_file_name_is_null() {
+    String file = null;
+    parser.parse(file);
+  }
+
+  @Test(expected = IllegalArgumentException.class)
+  public void should_throw_error_if_file_name_is_empty() {
+    parser.parse("");
   }
 
   @Test
@@ -62,9 +74,20 @@ public class KeyStrokeMappingProvider_parse_Test {
   public void should_throw_error_if_file_not_found() {
     try {
       parser.parse("abc.txt");
-      CommonAssertions.failWhenExpectingException();
+      failWhenExpectingException();
     } catch (ParsingException e) {
       assertThat(e.getMessage()).isEqualTo("Unable to open file abc.txt");
     }
+  }
+
+  @Test(expected = NullPointerException.class)
+  public void should_throw_error_if_file_is_null() {
+    File file = null;
+    parser.parse(file);
+  }
+
+  @Test(expected = IllegalArgumentException.class)
+  public void should_throw_error_if_file_does_not_exist() {
+    parser.parse(new File("abc.xyz"));
   }
 }

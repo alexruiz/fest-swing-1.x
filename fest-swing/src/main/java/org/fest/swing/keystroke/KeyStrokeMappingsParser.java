@@ -19,8 +19,7 @@ import static org.fest.reflect.core.Reflection.staticField;
 import static org.fest.swing.keystroke.KeyStrokeMapping.mapping;
 import static org.fest.swing.keystroke.KeyStrokeMappingProvider.NO_MASK;
 import static org.fest.util.Closeables.close;
-import static org.fest.util.Strings.concat;
-import static org.fest.util.Strings.quote;
+import static org.fest.util.Strings.*;
 
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
@@ -32,6 +31,41 @@ import org.fest.swing.exception.ParsingException;
 
 /**
  * Understands creation of <code>{@link KeyStrokeMapping}</code>s by parsing a text file.
+ * <p>
+ * Mappings for the following characters:
+ * <ul>
+ * <li>Backspace</li>
+ * <li>Delete</li>
+ * <li>Enter</li>
+ * <li>Escape</li>
+ * <li>Tab</li>
+ * </ul>
+ * will be automatically added and should <strong>not</strong> be included to the file to parse.
+ * </p>
+ * <p>
+ * The following is an example of a mapping file:
+ *
+ * <pre>
+ * a, A, NO_MASK
+ * A, A, SHIFT_MASK
+ * COMMA, COMMA, NO_MASK
+ * </pre>
+ *
+ * Each line represents a character-keystroke mapping where each value is separated by a comma.
+ * <p>
+ * The first value represents the character to map. For example 'a' or 'A'. Since each field is separated by a comma, to
+ * map the ',' character we need to specify the text "COMMA."
+ * </p>
+ * <p>
+ * The second value represents the key code, which should be the name of a key code from <code>{@link KeyEvent}</code>
+ * without the prefix "VK_". For example, if the key code is <code>{@link KeyEvent#VK_COMMA}</code> we just need to
+ * specify "COMMA".
+ * </p>
+ * <p>
+ * The third value represents any modifiers to use, which should be the name of a modifier from
+ * <code>{@link InputEvent}</code>. For example, if the modifier to use is <code>{@link InputEvent#SHIFT_MASK}</code> we
+ * need to specify "SHIFT_MASK". If no modifiers are necessary, we just specify "NO_MASK".
+ * </p>
  *
  * @author Olivier DOREMIEUX
  * @author Alex Ruiz
@@ -48,58 +82,71 @@ public class KeyStrokeMappingsParser {
 
   /**
    * Creates a <code>{@link KeyStrokeMappingProvider}</code> containing all the character-keystroke mappings specified
-   * in the file with the given name. Mappings for the following characters:
-   * <ul>
-   * <li>Backspace</li>
-   * <li>Delete</li>
-   * <li>Enter</li>
-   * <li>Escape</li>
-   * <li>Tab</li>
-   * </ul>
-   * will be automatically added.
-   * <p>
-   * The following is an example of a mapping file:
-   * <pre>
-   * a, A, NO_MASK
-   * A, A, SHIFT_MASK
-   * COMMA, COMMA, NO_MASK
-   * </pre>
-   * Each line represents a character-keystroke mapping where each value is separated by a comma.
-   * <p>
-   * The first value represents the character to map. For example 'a' or 'A'. Since each field is separated by a comma,
-   * to map the ',' character we need to specify the text "COMMA."
-   * </p>
-   * <p>
-   * The second value represents the key code, which should be the name of a key code from
-   * <code>{@link KeyEvent}</code> without the prefix "VK_". For example, if the key code is
-   * <code>{@link KeyEvent#VK_COMMA}</code> we just need to specify "COMMA".
-   * </p>
-   * <p>
-   * The third value represents any modifiers to use, which should be the name of a modifier from
-   * <code>{@link InputEvent}</code>. For example, if the modifier to use is <code>{@link InputEvent#SHIFT_MASK}</code>
-   * we need to specify "SHIFT_MASK". If no modifiers are necessary, we just specify "NO_MASK".
-   * </p>
-   * @param file the path of the file to parse.
+   * in the file with the given name.
+   * @param file the name of the file to parse.
    * @return the created {@code KeyStrokeMappingProvider}.
+   * @throws NullPointerException if the given name is <code>null</code>.
+   * @throws IllegalArgumentException if the given name is empty.
    * @throws ParsingException if any error occurs during parsing.
    */
   public KeyStrokeMappingProvider parse(String file) {
+    validate(file);
     try {
-      return parse(fileReader(file));
+      return parse(fileAsStream(file));
     } catch (IOException e) {
       throw new ParsingException(concat("An I/O error ocurred while parsing file ", file), e);
     }
   }
 
-  private Reader fileReader(String file) {
-    InputStream stream = currentThread().getContextClassLoader().getResourceAsStream(file);
-    if (stream == null) throw new ParsingException(concat("Unable to open file ", file));
-    return new InputStreamReader(stream);
+  private void validate(String file) {
+    if (file == null)
+      throw new NullPointerException("The name of the file to parse should not be null");
+    if (isEmpty(file))
+      throw new IllegalArgumentException("The name of the file to parse should not be an empty string");
   }
 
-  private KeyStrokeMappingProvider parse(Reader r) throws IOException {
+  private InputStream fileAsStream(String file) {
+    InputStream stream = currentThread().getContextClassLoader().getResourceAsStream(file);
+    if (stream == null) throw new ParsingException(concat("Unable to open file ", file));
+    return stream;
+  }
+
+  /**
+   * Creates a <code>{@link KeyStrokeMappingProvider}</code> containing all the character-keystroke mappings specified
+   * in the given file.
+   * @param file the file to parse.
+   * @return the created {@code KeyStrokeMappingProvider}.
+   * @throws NullPointerException if the given file is <code>null</code>.
+   * @throws IllegalArgumentException if the given file does not represent an existing file.
+   * @throws ParsingException if any error occurs during parsing.
+   */
+  public KeyStrokeMappingProvider parse(File file) {
+    validate(file);
+    try {
+      return parse(fileAsStream(file));
+    } catch (IOException e) {
+      throw new ParsingException(concat("An I/O error ocurred while parsing file ", file), e);
+    }
+  }
+
+  private void validate(File file) {
+    if (file == null)
+      throw new NullPointerException("The file to parse should not be null");
+    if (!file.isFile())
+      throw new IllegalArgumentException(concat("The file ", file.getPath(), " is not an existing file"));
+  }
+
+  private InputStream fileAsStream(File file) {
+    try {
+      return new FileInputStream(file);
+    } catch (FileNotFoundException e) {
+      throw new ParsingException(concat("The file ", file.getPath(), " was not found"), e);
+    }
+  }
+
+  private KeyStrokeMappingProvider parse(InputStream input) throws IOException {
     List<KeyStrokeMapping> mappings = new ArrayList<KeyStrokeMapping>();
-    BufferedReader reader = new BufferedReader(r);
+    BufferedReader reader = new BufferedReader(new InputStreamReader(input));
     try {
       String line = reader.readLine();
       while(line != null) {
