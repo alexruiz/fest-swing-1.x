@@ -18,6 +18,7 @@ import static java.awt.event.InputEvent.ALT_GRAPH_MASK;
 import static java.awt.event.InputEvent.SHIFT_MASK;
 import static java.awt.event.KeyEvent.*;
 import static org.fest.swing.keystroke.KeyStrokeMapping.mapping;
+import static org.fest.swing.keystroke.KeyStrokeMappings.defaultMappings;
 
 import java.util.*;
 
@@ -38,7 +39,8 @@ public class KeyStrokeMappingProvider_de implements KeyStrokeMappingProvider {
    * @return the mapping between characters and <code>KeyStroke</code>s for locale <code>GERMAN</code>.
    */
   public Collection<KeyStrokeMapping> keyStrokeMappings() {
-    List<KeyStrokeMapping> mappings = new ArrayList<KeyStrokeMapping>(111);
+    List<KeyStrokeMapping> mappings = new ArrayList<KeyStrokeMapping>(120);
+    mappings.addAll(defaultMappings());
     mappings.add(mapping('0', VK_0, NO_MASK));
     mappings.add(mapping('=', VK_0, SHIFT_MASK));
     mappings.add(mapping('}', VK_0, ALT_GRAPH_MASK));
@@ -74,7 +76,6 @@ public class KeyStrokeMappingProvider_de implements KeyStrokeMappingProvider {
     mappings.add(mapping('<', VK_BACK_SLASH, NO_MASK));
     mappings.add(mapping('>', VK_BACK_SLASH, SHIFT_MASK));
     mappings.add(mapping('|', VK_BACK_SLASH, ALT_GRAPH_MASK));
-    mappings.add(mapping('\b', VK_BACK_SPACE, NO_MASK));
     mappings.add(mapping('c', VK_C, NO_MASK));
     mappings.add(mapping('C', VK_C, SHIFT_MASK));
     mappings.add(mapping('+', VK_CLOSE_BRACKET, NO_MASK));
@@ -88,11 +89,8 @@ public class KeyStrokeMappingProvider_de implements KeyStrokeMappingProvider {
     mappings.add(mapping('e', VK_E, NO_MASK));
     mappings.add(mapping('E', VK_E, SHIFT_MASK));
     mappings.add(mapping('€', VK_E, ALT_GRAPH_MASK));
-    mappings.add(mapping('\n', VK_ENTER, NO_MASK));
-    mappings.add(mapping('\r', VK_ENTER, NO_MASK));
     mappings.add(mapping('´', VK_EQUALS, NO_MASK));
     mappings.add(mapping('`', VK_EQUALS, SHIFT_MASK));
-    mappings.add(mapping('', VK_ESCAPE, NO_MASK));
     mappings.add(mapping('f', VK_F, NO_MASK));
     mappings.add(mapping('F', VK_F, SHIFT_MASK));
     mappings.add(mapping('g', VK_G, NO_MASK));
@@ -110,8 +108,8 @@ public class KeyStrokeMappingProvider_de implements KeyStrokeMappingProvider {
     mappings.add(mapping('m', VK_M, NO_MASK));
     mappings.add(mapping('M', VK_M, SHIFT_MASK));
     mappings.add(mapping('µ', VK_M, ALT_GRAPH_MASK));
-    mappings.add(mapping('?', VK_MINUS, SHIFT_MASK));
-    mappings.add(mapping('\\', VK_MINUS, ALT_GRAPH_MASK));
+    mappings.add(mapping('?', VK_SLASH, SHIFT_MASK));
+    mappings.add(mapping('\\', VK_SLASH, ALT_GRAPH_MASK));
     mappings.add(mapping('n', VK_N, NO_MASK));
     mappings.add(mapping('N', VK_N, SHIFT_MASK));
     mappings.add(mapping('o', VK_O, NO_MASK));
@@ -127,8 +125,8 @@ public class KeyStrokeMappingProvider_de implements KeyStrokeMappingProvider {
     mappings.add(mapping('R', VK_R, SHIFT_MASK));
     mappings.add(mapping('s', VK_S, NO_MASK));
     mappings.add(mapping('S', VK_S, SHIFT_MASK));
-    mappings.add(mapping('-', VK_SLASH, NO_MASK));
-    mappings.add(mapping('_', VK_SLASH, SHIFT_MASK));
+    mappings.add(mapping('-', VK_MINUS, NO_MASK));
+    mappings.add(mapping('_', VK_MINUS, SHIFT_MASK));
     mappings.add(mapping(' ', VK_SPACE, NO_MASK));
     mappings.add(mapping('t', VK_T, NO_MASK));
     mappings.add(mapping('T', VK_T, SHIFT_MASK));
