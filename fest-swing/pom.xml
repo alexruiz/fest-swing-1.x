@@ -69,18 +69,6 @@
   </issueManagement>
   <dependencies>
     <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.5</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.easytesting</groupId>
-      <artifactId>fest-util</artifactId>
-      <version>1.1</version>
-      <scope>compile</scope>
-    </dependency>
-    <dependency>
       <groupId>org.easytesting</groupId>
       <artifactId>fest-assert</artifactId>
       <version>1.2</version>
@@ -94,9 +82,15 @@
     </dependency>
     <dependency>
       <groupId>org.easytesting</groupId>
-      <artifactId>fest-test</artifactId>
-      <version>1.2</version>
-      <scope>test</scope>
+      <artifactId>fest-util</artifactId>
+      <version>1.1</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>net.jcip</groupId>
+      <artifactId>jcip-annotations</artifactId>
+      <version>1.0</version>
+      <scope>compile</scope>
     </dependency>
     <dependency>
       <groupId>org.easytesting</groupId>
@@ -105,10 +99,22 @@
       <scope>test</scope>
     </dependency>
     <dependency>
-      <groupId>net.jcip</groupId>
-      <artifactId>jcip-annotations</artifactId>
-      <version>1.0</version>
-      <scope>compile</scope>
+      <groupId>org.easytesting</groupId>
+      <artifactId>fest-test</artifactId>
+      <version>1.2</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>multithreadedtc</groupId>
+      <artifactId>multithreadedtc</artifactId>
+      <version>1.01</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.5</version>
+      <scope>test</scope>
     </dependency>
   </dependencies>
 </project>

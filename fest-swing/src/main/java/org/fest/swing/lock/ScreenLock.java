@@ -16,6 +16,8 @@
 package org.fest.swing.lock;
 
 import static org.fest.util.Strings.concat;
+
+import java.util.concurrent.Semaphore;
 import net.jcip.annotations.GuardedBy;
 import net.jcip.annotations.ThreadSafe;
 
@@ -31,32 +33,22 @@ import org.fest.swing.exception.ScreenLockException;
 @ThreadSafe
 public final class ScreenLock {
 
-  @GuardedBy("this") 
-  private boolean locked;
-  
-  @GuardedBy("this") 
+  @GuardedBy("this")
   private Object owner;
 
-  synchronized Object owner() {
-    return owner;
-  }
+  private final Semaphore s = new Semaphore(1);
 
   /**
    * Acquires the lock.
    * @param newOwner the new owner of the lock.
    */
-  public synchronized void acquire(Object newOwner) {
-    while (locked) {
-      try {
-        wait();
-      } catch (InterruptedException e) {
-        break;
-      }
-      acquire(newOwner);
-      notifyAll();
+  public void acquire(Object newOwner) {
+    try {
+      s.acquire();
+    } catch (InterruptedException ignored) {
+      Thread.currentThread().interrupt();
     }
-    locked = true;
-    this.owner = newOwner;
+    owner(newOwner);
   }
 
   /**
@@ -65,7 +57,7 @@ public final class ScreenLock {
    * @return <code>true</code> if the given object is owning the lock; <code>false</code> otherwise.
    */
   public synchronized boolean acquiredBy(Object possibleOwner) {
-    if (!locked) return false;
+    if (!locked()) return false;
     return owner == possibleOwner;
   }
 
@@ -76,10 +68,18 @@ public final class ScreenLock {
    * @throws ScreenLockException if the given owner is not the same as the current owner of the lock.
    */
   public synchronized void release(Object currentOwner) {
-    if (!locked) throw new ScreenLockException("No lock to release");
-    if (this.owner != currentOwner) throw new ScreenLockException(concat(currentOwner, " is not the lock owner"));
-    locked = false;
-    this.owner = null;
+    if (!locked()) throw new ScreenLockException("No lock to release");
+    if (owner != currentOwner) throw new ScreenLockException(concat(currentOwner, " is not the lock owner"));
+    s.release();
+    owner = null;
+  }
+
+  private boolean locked() {
+    return s.availablePermits() == 0;
+  }
+
+  private synchronized void owner(Object newOwner) {
+    this.owner = newOwner;
   }
 
   /**
