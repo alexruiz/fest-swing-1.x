@@ -17,7 +17,8 @@ package org.fest.swing.lock;
 
 import static org.fest.util.Strings.concat;
 
-import java.util.concurrent.Semaphore;
+import java.util.concurrent.locks.*;
+
 import net.jcip.annotations.GuardedBy;
 import net.jcip.annotations.ThreadSafe;
 
@@ -33,32 +34,30 @@ import org.fest.swing.exception.ScreenLockException;
 @ThreadSafe
 public final class ScreenLock {
 
-  @GuardedBy("this")
+  private final Lock lock = new ReentrantLock();
+  private final Condition released = lock.newCondition();
+
+  @GuardedBy("lock")
   private Object owner;
 
-  private final Semaphore s = new Semaphore(1);
+  @GuardedBy("lock")
+  private boolean acquired;
 
   /**
    * Acquires the lock.
    * @param newOwner the new owner of the lock.
    */
   public void acquire(Object newOwner) {
+    lock.lock();
     try {
-      s.acquire();
+      while (acquired) released.await();
+      owner = newOwner;
+      acquired = true;
     } catch (InterruptedException ignored) {
       Thread.currentThread().interrupt();
+    } finally {
+      lock.unlock();
     }
-    owner(newOwner);
-  }
-
-  /**
-   * Indicates whether the lock was acquired by the given object.
-   * @param possibleOwner the given object, which could be owning the lock.
-   * @return <code>true</code> if the given object is owning the lock; <code>false</code> otherwise.
-   */
-  public synchronized boolean acquiredBy(Object possibleOwner) {
-    if (!locked()) return false;
-    return owner == possibleOwner;
   }
 
   /**
@@ -67,19 +66,32 @@ public final class ScreenLock {
    * @throws ScreenLockException if the lock has not been previously acquired.
    * @throws ScreenLockException if the given owner is not the same as the current owner of the lock.
    */
-  public synchronized void release(Object currentOwner) {
-    if (!locked()) throw new ScreenLockException("No lock to release");
-    if (owner != currentOwner) throw new ScreenLockException(concat(currentOwner, " is not the lock owner"));
-    s.release();
-    owner = null;
+  public void release(Object currentOwner) {
+    lock.lock();
+    try {
+      if (!acquired) throw new ScreenLockException("No lock to release");
+      if (owner != currentOwner) throw new ScreenLockException(concat(currentOwner, " is not the lock owner"));
+      acquired = false;
+      owner = null;
+      released.signal();
+    } finally {
+      lock.unlock();
+    }
   }
 
-  private boolean locked() {
-    return s.availablePermits() == 0;
-  }
-
-  private synchronized void owner(Object newOwner) {
-    this.owner = newOwner;
+  /**
+   * Indicates whether the lock was acquired by the given object.
+   * @param possibleOwner the given object, which could be owning the lock.
+   * @return <code>true</code> if the given object is owning the lock; <code>false</code> otherwise.
+   */
+  public boolean acquiredBy(Object possibleOwner) {
+    lock.lock();
+    try {
+      if (!acquired) return false;
+      return owner == possibleOwner;
+    } finally {
+      lock.unlock();
+    }
   }
 
   /**

@@ -6,7 +6,7 @@
   </properties>
   <body>
     <release version="1.2b1" date="TBD" description="Subsequent release">
-      <action dev="alexruiz" type="fix" issue="FEST-122" due-to="Dan Dyer">
+      <action dev="alexruiz" type="fix" issue="FEST-23" due-to="Dan Dyer">
         ScreenLock does not deadlocks in the presence of multiple threads.
       </action>
       <action dev="alexruiz" type="fix" issue="FEST-177">
