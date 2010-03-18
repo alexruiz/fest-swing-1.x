@@ -7,7 +7,13 @@
   <body>
     <release version="1.2b1" date="TBD" description="Subsequent release">
       <action dev="alexruiz" type="fix" issue="FEST-23" due-to="Dan Dyer">
-        ScreenLock does not deadlocks in the presence of multiple threads.
+        org.fest.swing.lock.ScreenLock does not deadlock in the presence of multiple threads.
+      </action>
+      <action dev="alexruiz" type="fix" issue="FEST-23" due-to="Dan Dyer">
+        org.fest.swing.lock.ScreenLock does not deadlock if current lock owner tries to re-acquire the lock.
+      </action>
+      <action dev="alexruiz" type="fix" issue="FEST-23" due-to="Dan Dyer">
+        Added method 'acquired' to org.fest.swing.lock.ScreenLock
       </action>
       <action dev="alexruiz" type="fix" issue="FEST-177">
         org.fest.swing.testng.listener.ScreenshotOnFailureListener creates the output directory if it does not exist

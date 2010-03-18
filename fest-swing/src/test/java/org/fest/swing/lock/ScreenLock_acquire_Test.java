@@ -14,39 +14,40 @@
  */
 package org.fest.swing.lock;
 
-import org.fest.swing.exception.ScreenLockException;
+import static edu.umd.cs.mtc.TestFramework.runOnce;
+import static org.fest.assertions.Assertions.assertThat;
+
 import org.junit.*;
 
+import edu.umd.cs.mtc.MultithreadedTestCase;
+
 /**
- * Tests for <code>{@link ScreenLock#release(Object)}</code>.
+ * Tests for <code>{@link ScreenLock#acquire(Object)}</code>.
  *
  * @author Alex Ruiz
  */
-public class ScreenLock_release_Test {
+public class ScreenLock_acquire_Test extends MultithreadedTestCase {
 
   private ScreenLock lock;
   private Object owner;
 
-  @Before
-  public void setUp() {
+  @Override public void initialize() {
     lock = new ScreenLock();
     owner = new Object();
   }
 
-  @After
-  public void tearDown() {
+  public void thread1() {
+    lock.acquire(owner);
+    lock.acquire(owner);
+    assertThat(lock.acquiredBy(owner));
+  }
+
+  @Override public void finish() {
     if (lock.acquiredBy(owner)) lock.release(owner);
   }
 
-  @Test(expected = ScreenLockException.class)
-  public void should_throw_error_if_trying_to_release_with_different_owner() {
-    lock.acquire(owner);
-    lock.release(new Object());
+  @Test
+  public void should_not_block_if_current_owner_tries_to_acquire_lock_again() throws Throwable {
+    runOnce(new ScreenLock_acquire_Test());
   }
-
-  @Test(expected = ScreenLockException.class)
-  public void should_throw_error_if_trying_to_release_without_being_locked() {
-    lock.release(owner);
-  }
-
 }

@@ -170,8 +170,8 @@ public final class Pause {
   /**
    * Sleeps for the specified time.
    * <p>
-   * To catch any <code>InterruptedException</code>s that occur,
-   * <code>{@link Thread#sleep(long)}()</code> may be used instead.
+   * To catch any <code>InterruptedException</code>s that occur, <code>{@link Thread#sleep(long)}()</code> may be used
+   * instead.
    * </p>
    * @param ms the time to sleep in milliseconds.
    */

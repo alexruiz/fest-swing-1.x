@@ -44,7 +44,7 @@ public final class ScreenLock {
   private boolean acquired;
 
   /**
-   * Acquires the lock. If the lock was already acquired by another object, this method will block until the lock is
+   * Acquires this lock. If this lock was already acquired by another object, this method will block until the lock is
    * released.
    * @param newOwner the new owner of the lock.
    */
@@ -63,7 +63,7 @@ public final class ScreenLock {
   }
 
   /**
-   * Releases the lock.
+   * Releases this lock.
    * @param currentOwner the current owner of the lock.
    * @throws ScreenLockException if the lock has not been previously acquired.
    * @throws ScreenLockException if the given owner is not the same as the current owner of the lock.
@@ -82,7 +82,7 @@ public final class ScreenLock {
   }
 
   /**
-   * Indicates whether the lock was acquired by the given object.
+   * Indicates whether this lock was acquired by the given object.
    * @param possibleOwner the given object, which could be owning the lock.
    * @return <code>true</code> if the given object is owning the lock; <code>false</code> otherwise.
    */
@@ -97,6 +97,21 @@ public final class ScreenLock {
 
   private boolean alreadyAcquiredBy(Object possibleOwner) {
     return acquired && owner == possibleOwner;
+  }
+
+  /**
+   * Indicates whether this lock is already acquired.
+   * @return <code>true</code> if the lock is already acquired; <code>false</code> otherwise.
+   * @see #acquiredBy(Object)
+   * @since 1.2
+   */
+  public boolean acquired() {
+    lock.lock();
+    try {
+      return acquired;
+    } finally {
+      lock.unlock();
+    }
   }
 
   /**

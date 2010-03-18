@@ -41,6 +41,7 @@ public class ScreenLock_acquire_acquiredBy_release_Test extends MultithreadedTes
 
   public void thread1() {
     lock.acquire(owner1);
+    assertThat(lock.acquired()).isTrue();
     assertThat(lock.acquiredBy(owner1)).isTrue();
     waitForTick(2);
     lock.release(owner1);
@@ -54,6 +55,7 @@ public class ScreenLock_acquire_acquiredBy_release_Test extends MultithreadedTes
   @Override public void finish() {
     assertThat(lock.acquiredBy(owner2)).isTrue();
     lock.release(owner2);
+    assertThat(lock.acquired()).isFalse();
   }
 
   @Test
