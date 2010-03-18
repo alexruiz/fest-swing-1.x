@@ -29,6 +29,7 @@ import org.fest.swing.annotation.RunsInCurrentThread;
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiActionRunner;
 import org.fest.swing.edt.GuiQuery;
+import org.fest.util.VisibleForTesting;
 
 /**
  * Understands utility methods related to formatting.
@@ -109,7 +110,7 @@ public class Formatting {
     FORMATTERS.put(key, formatter);
   }
 
-  // Used for testing only.
+  @VisibleForTesting
   static ComponentFormatter formatter(Class<?> type) {
     return FORMATTERS.get(type);
   }

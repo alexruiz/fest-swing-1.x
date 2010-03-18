@@ -23,6 +23,7 @@ import java.awt.Container;
 import java.util.*;
 
 import org.fest.swing.annotation.RunsInCurrentThread;
+import org.fest.util.VisibleForTesting;
 
 
 /**
@@ -58,7 +59,7 @@ class ChildrenFinder {
     return children;
   }
 
-  // For testing only
+  @VisibleForTesting
   static List<ChildrenFinderStrategy> strategies() { return new ArrayList<ChildrenFinderStrategy>(strategies); }
 
   static void replaceStrategiesWith(List<ChildrenFinderStrategy> newStrategies) {

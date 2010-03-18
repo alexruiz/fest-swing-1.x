@@ -40,6 +40,7 @@ import org.fest.swing.exception.ActionFailedException;
 import org.fest.swing.exception.UnexpectedException;
 import org.fest.swing.util.Pair;
 import org.fest.swing.util.Triple;
+import org.fest.util.VisibleForTesting;
 
 /**
  * Understands functional testing of <code>{@link JInternalFrame}</code>s:
@@ -264,7 +265,7 @@ public class JInternalFrameDriver extends JComponentDriver {
     }
   }
 
-  // made package-protected for testing purposes only
+  @VisibleForTesting
   void failIfVetoed(JInternalFrame internalFrame, JInternalFrameAction action, UnexpectedException unexpected) {
     PropertyVetoException vetoError = vetoFrom(unexpected);
     if (vetoError == null) return;

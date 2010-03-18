@@ -53,6 +53,7 @@ import org.fest.swing.edt.*;
 import org.fest.swing.exception.*;
 import org.fest.swing.util.Pair;
 import org.fest.swing.util.Triple;
+import org.fest.util.VisibleForTesting;
 
 /**
  * Understands functional testing of <code>{@link JTree}</code>s:
@@ -923,6 +924,6 @@ public class JTreeDriver extends JComponentDriver {
     return nodeText(tree, row, location, pathFinder);
   }
 
-  // for testing only
+  @VisibleForTesting
   JTreeCellReader cellReader() { return pathFinder.cellReader(); }
 }

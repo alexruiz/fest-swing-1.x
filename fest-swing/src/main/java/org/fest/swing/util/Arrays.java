@@ -15,7 +15,7 @@
  */
 package org.fest.swing.util;
 
-import static org.fest.swing.util.System.LINE_SEPARATOR;
+import static org.fest.swing.util.SystemProperties.lineSeparator;
 import static org.fest.util.Objects.areEqual;
 import static org.fest.util.Strings.quote;
 
@@ -78,7 +78,7 @@ public final class Arrays {
     StringBuilder b = new StringBuilder();
     b.append("[");
     for (int i = 0; i < size; i++) {
-      if (i != 0) b.append(LINE_SEPARATOR).append(" ");
+      if (i != 0) b.append(lineSeparator()).append(" ");
       addLine(array[i], b);
       if (i != size - 1) b.append(",");
     }

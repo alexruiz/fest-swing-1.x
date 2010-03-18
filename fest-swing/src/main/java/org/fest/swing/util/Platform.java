@@ -23,6 +23,8 @@ import java.awt.Event;
 import java.awt.HeadlessException;
 import java.awt.event.KeyEvent;
 
+import org.fest.util.VisibleForTesting;
+
 /**
  * Understands platform-specific functionality.
  *
@@ -37,10 +39,12 @@ public final class Platform {
     reload();
   }
 
+  @VisibleForTesting
   static void reload() {
     initialize(new OSIdentifier(), new ToolkitProvider());
   }
 
+  @VisibleForTesting
   static void initialize(OSIdentifier newOSIdentifier, ToolkitProvider newToolkitProvider) {
     osIdentifier = newOSIdentifier;
     toolkitProvider = newToolkitProvider;

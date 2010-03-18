@@ -23,15 +23,16 @@ import org.fest.mocks.EasyMockTemplate;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link System#lineSeparator(SystemPropertyReader)}</code>.
+ * Tests for <code>{@link SystemProperties#lineSeparator()}</code> and
+ * <code>{@link SystemProperties#lineSeparator(SystemPropertyReader)}</code>.
  *
  * @author Alex Ruiz
  */
-public class System_lineSeparator_Test {
+public class SystemProperties_lineSeparator_Test {
 
   @Test
   public void should_return_line_separator_from_system() {
-    assertThat(System.LINE_SEPARATOR).isEqualTo(java.lang.System.getProperty("line.separator"));
+    assertThat(SystemProperties.lineSeparator()).isEqualTo(java.lang.System.getProperty("line.separator"));
   }
 
   @Test
@@ -43,7 +44,7 @@ public class System_lineSeparator_Test {
       }
 
       protected void codeToTest() {
-        assertThat(System.lineSeparator(reader)).isEqualTo("\n");
+        assertThat(SystemProperties.lineSeparator(reader)).isEqualTo("\n");
       }
     }.run();
   }

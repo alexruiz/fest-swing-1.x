@@ -16,6 +16,8 @@ package org.fest.swing.util;
 
 import static java.util.Locale.ENGLISH;
 
+import org.fest.util.VisibleForTesting;
+
 /**
  * Understands identification of the current Operating System.
  *
@@ -37,6 +39,7 @@ class OSIdentifier {
     this(new SystemPropertyReader());
   }
 
+  @VisibleForTesting
   OSIdentifier(SystemPropertyReader r) {
     String osName = r.systemProperty("os.name").toLowerCase(ENGLISH);
     String mrjVersion = r.systemProperty("mrj.version");

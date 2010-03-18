@@ -79,6 +79,9 @@
         Added class org.fest.swing.keystroke.KeyStrokeMappingsParser to parses a text file containing the 
         character-keystroke mappings and creates a KeyStrokeMappingProvider from those mappings. 
       </action>
+      <action dev="alexruiz" type="fix">
+        Deprecated class org.fest.swing.util.System and replaced it with org.fest.swing.util.SystemProperties.
+      </action>
     </release>
     <release version="1.2a4" date="2010-01-19" description="Subsequent release">
       <action dev="alexruiz" type="add" issue="FEST-8">

@@ -21,6 +21,8 @@ import java.util.Locale;
 
 import javax.swing.KeyStroke;
 
+import org.fest.util.VisibleForTesting;
+
 /**
  * Understands a collection of <code>{@link KeyStrokeMapping}</code>.
  *
@@ -44,7 +46,7 @@ public class KeyStrokeMap {
     addKeyStrokesFrom(picker.providerFor(Locale.getDefault()));
   }
 
-  // for testing only
+  @VisibleForTesting
   static void updateKeyStrokeMapCollection(KeyStrokeMapCollection c) {
     maps = c;
   }

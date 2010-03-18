@@ -28,6 +28,7 @@ import java.util.*;
 
 import org.fest.reflect.exception.ReflectionError;
 import org.fest.swing.exception.ParsingException;
+import org.fest.util.VisibleForTesting;
 
 /**
  * Understands creation of <code>{@link KeyStrokeMapping}</code>s by parsing a text file.
@@ -164,7 +165,7 @@ public class KeyStrokeMappingsParser {
     }
   }
 
-  // package-protected for testing
+  @VisibleForTesting
   KeyStrokeMapping mappingFrom(String line) {
     String[] parts = split(line);
     if (parts.length != 3) throw notConformingWithPatternError(line);

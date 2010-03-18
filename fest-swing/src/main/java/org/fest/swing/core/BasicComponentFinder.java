@@ -18,7 +18,7 @@ import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.edt.GuiActionRunner.execute;
 import static org.fest.swing.format.Formatting.format;
 import static org.fest.swing.hierarchy.NewHierarchy.ignoreExistingComponents;
-import static org.fest.swing.util.System.LINE_SEPARATOR;
+import static org.fest.swing.util.SystemProperties.lineSeparator;
 import static org.fest.util.Strings.concat;
 
 import java.awt.Component;
@@ -267,7 +267,7 @@ public final class BasicComponentFinder implements ComponentFinder {
     String message = concat("Unable to find component using matcher ", m, ".");
     if (includeHierarchyIfComponentNotFound())
       message = concat(message,
-          LINE_SEPARATOR, LINE_SEPARATOR, "Component hierarchy:", LINE_SEPARATOR, formattedHierarchy(root(h)));
+          lineSeparator(), lineSeparator(), "Component hierarchy:", lineSeparator(), formattedHierarchy(root(h)));
     throw new ComponentLookupException(message);
   }
 
@@ -288,11 +288,11 @@ public final class BasicComponentFinder implements ComponentFinder {
   @RunsInEDT
   private static ComponentLookupException multipleComponentsFound(Collection<Component> found, ComponentMatcher m) {
     StringBuilder message = new StringBuilder();
-    message.append("Found more than one component using matcher ").append(m).append(".").append(LINE_SEPARATOR)
-           .append(LINE_SEPARATOR)
+    message.append("Found more than one component using matcher ").append(m).append(".").append(lineSeparator())
+           .append(lineSeparator())
            .append("Found:");
     appendComponents(message, found);
-    if (!found.isEmpty()) message.append(LINE_SEPARATOR);
+    if (!found.isEmpty()) message.append(lineSeparator());
     throw new ComponentLookupException(message.toString(), found);
   }
 
@@ -300,7 +300,7 @@ public final class BasicComponentFinder implements ComponentFinder {
   private static void appendComponents(final StringBuilder message, final Collection<Component> found) {
     execute(new GuiTask() {
       protected void executeInEDT() {
-        for (Component c : found) message.append(LINE_SEPARATOR).append(format(c));
+        for (Component c : found) message.append(lineSeparator()).append(format(c));
       }
     });
   }

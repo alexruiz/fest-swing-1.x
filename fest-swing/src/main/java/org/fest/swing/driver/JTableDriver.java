@@ -68,6 +68,7 @@ import org.fest.swing.util.Arrays;
 import org.fest.swing.util.Pair;
 import org.fest.swing.util.PatternTextMatcher;
 import org.fest.swing.util.StringTextMatcher;
+import org.fest.util.VisibleForTesting;
 
 /**
  * Understands functional testing of <code>{@link JTable}</code>s:
@@ -864,6 +865,6 @@ public class JTableDriver extends JComponentDriver {
     });
   }
 
-  // For testing only.
+  @VisibleForTesting
   JTableCellReader cellReader() { return cellReader; }
 }

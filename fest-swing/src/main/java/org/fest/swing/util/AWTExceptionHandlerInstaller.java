@@ -16,6 +16,7 @@
 package org.fest.swing.util;
 
 import org.fest.reflect.core.Reflection;
+import org.fest.util.VisibleForTesting;
 
 /**
  * Understands installation of AWT exception handlers.
@@ -43,7 +44,7 @@ public final class AWTExceptionHandlerInstaller {
     installAWTExceptionHandler(exceptionHandlerType, WRITER);
   }
 
-  // package-protected for testing
+  @VisibleForTesting
   static void installAWTExceptionHandler(Class<?> exceptionHandlerType, SystemPropertyWriter writer) {
     try {
       Reflection.constructor().in(exceptionHandlerType).info();

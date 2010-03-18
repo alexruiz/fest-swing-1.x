@@ -85,6 +85,7 @@ import org.fest.swing.lock.ScreenLock;
 import org.fest.swing.monitor.WindowMonitor;
 import org.fest.swing.util.Pair;
 import org.fest.swing.util.TimeoutWatch;
+import org.fest.util.VisibleForTesting;
 
 /**
  * Understands simulation of user events on a GUI <code>{@link Component}</code>.
@@ -151,7 +152,7 @@ public class BasicRobot implements Robot {
     return screenLockOwner;
   }
 
-  // package-protected for testing only
+  @VisibleForTesting
   BasicRobot(Object screenLockOwner, ComponentHierarchy hierarchy) {
     this.screenLockOwner = screenLockOwner;
     this.hierarchy = hierarchy;
@@ -797,6 +798,6 @@ public class BasicRobot implements Robot {
   /** {@inheritDoc} */
   public synchronized boolean isActive() { return active; }
 
-  // for testing only
+  @VisibleForTesting
   final Object screenLockOwner() { return screenLockOwner; }
 }

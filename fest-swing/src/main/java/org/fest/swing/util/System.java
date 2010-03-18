@@ -19,25 +19,13 @@ package org.fest.swing.util;
  * Understands system-related utility methods.
  *
  * @author Alex Ruiz
+ *
+ * @deprecated in 1.2. Use <code>{@link SystemProperties}</code> instead.
  */
+@Deprecated
 public final class System {
 
-  private static final SystemPropertyReader READER = new SystemPropertyReader();
-
-  public static final String LINE_SEPARATOR = lineSeparator();
-
-  private static String lineSeparator() {
-    return lineSeparator(READER);
-  }
-
-  // for testing
-  static String lineSeparator(SystemPropertyReader reader) {
-    try {
-      return reader.systemProperty("line.separator");
-    } catch (RuntimeException e) {
-      return "\n";
-    }
-  }
+  public static final String LINE_SEPARATOR = SystemProperties.lineSeparator();
 
   private System() {}
 }
