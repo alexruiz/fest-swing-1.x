@@ -44,12 +44,14 @@ public final class ScreenLock {
   private boolean acquired;
 
   /**
-   * Acquires the lock.
+   * Acquires the lock. If the lock was already acquired by another object, this method will block until the lock is
+   * released.
    * @param newOwner the new owner of the lock.
    */
   public void acquire(Object newOwner) {
     lock.lock();
     try {
+      if (alreadyAcquiredBy(newOwner)) return;
       while (acquired) released.await();
       owner = newOwner;
       acquired = true;
@@ -87,11 +89,14 @@ public final class ScreenLock {
   public boolean acquiredBy(Object possibleOwner) {
     lock.lock();
     try {
-      if (!acquired) return false;
-      return owner == possibleOwner;
+      return alreadyAcquiredBy(possibleOwner);
     } finally {
       lock.unlock();
     }
+  }
+
+  private boolean alreadyAcquiredBy(Object possibleOwner) {
+    return acquired && owner == possibleOwner;
   }
 
   /**
