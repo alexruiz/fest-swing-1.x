@@ -20,7 +20,7 @@ package org.fest.swing.core;
  *
  * @author Alex Ruiz
  */
-public class MainThreadIdentifier {
+class MainThreadIdentifier {
 
   Thread mainThreadIn(Thread[] threads) {
     for (Thread t : threads) if (isMain(t)) return t;

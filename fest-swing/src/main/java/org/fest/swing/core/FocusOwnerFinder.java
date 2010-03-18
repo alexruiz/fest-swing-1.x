@@ -25,6 +25,7 @@ import java.util.List;
 import org.fest.swing.annotation.RunsInCurrentThread;
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
+import org.fest.util.VisibleForTesting;
 
 /**
  * Understands lookup of a <code>{@link Component}</code> owning the input focus.
@@ -40,15 +41,18 @@ public final class FocusOwnerFinder {
     initializeStrategies();
   }
 
+  @VisibleForTesting
   static void initializeStrategies() {
     replaceStrategiesWith(new ReflectionBasedFocusOwnerFinder(), new HierarchyBasedFocusOwnerFinder());
   }
 
+  @VisibleForTesting
   static void replaceStrategiesWith(FocusOwnerFinderStrategy...strategies) {
     STRATEGIES.clear();
     STRATEGIES.addAll(list(strategies));
   }
 
+  @VisibleForTesting
   static List<FocusOwnerFinderStrategy> strategies() {
     return new ArrayList<FocusOwnerFinderStrategy>(STRATEGIES);
   }

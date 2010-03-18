@@ -20,6 +20,8 @@ import static java.lang.Math.min;
 import static org.fest.swing.core.ComponentLookupScope.DEFAULT;
 import static org.fest.swing.util.Platform.*;
 
+import org.fest.util.VisibleForTesting;
+
 /**
  * Understands configuration settings.
  *
@@ -59,6 +61,7 @@ public class Settings {
     else updateRobotAutoDelay();
   }
 
+  @VisibleForTesting
   java.awt.Robot robot() { return robot; }
 
   /**

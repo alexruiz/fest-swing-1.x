@@ -1,15 +1,15 @@
 /*
  * Created on Jul 19, 2008
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
- * 
+ *
  * Copyright @2008-2010 the original author or authors.
  */
 package org.fest.swing.core;
@@ -27,24 +27,26 @@ import java.awt.Toolkit;
 import java.awt.event.AWTEventListener;
 import java.awt.event.KeyEvent;
 
+import org.fest.util.VisibleForTesting;
+
 /**
  * Understands an escape valve for users to abort a running FEST-Swing test by pressing 'Ctrl + Shift + A'. The key
- * combination to use to abort test is configurable through the method 
+ * combination to use to abort test is configurable through the method
  * <code>{@link EmergencyAbortListener#keyCombination(KeyPressInfo)}</code>.
  * <p>
  * The following example shows to use this listener in a TestNG test:
  * <pre>
- * private EmergencyAbortListener listener;  
- * 
- * 
+ * private EmergencyAbortListener listener;
+ *
+ *
  * &#64;BeforeMethod public void setUp() {
  *   // set up your test fixture.
  *   listener = EmergencyAbortListener.registerInToolkit();
  * }
- * 
+ *
  * &#64;AfterMethod public void tearDown() {
  *   // clean up resources.
- *   listener.unregister();  
+ *   listener.unregister();
  * }
  * </pre>
  * </p>
@@ -52,9 +54,9 @@ import java.awt.event.KeyEvent;
  * Changing the default key combination for aborting test:
  * <pre>
  * listener = EmergencyAbortListener.registerInToolkit().{@link EmergencyAbortListener#keyCombination(KeyPressInfo) keyCombination}(key(VK_C).modifiers(SHIFT_MASK));
- * </pre> 
+ * </pre>
  * </p>
- * 
+ *
  * @author <a href="mailto:simeon.fitch@mseedsoft.com">Simeon H.K. Fitch</a>
  * @author Alex Ruiz
  */
@@ -70,7 +72,7 @@ public class EmergencyAbortListener implements AWTEventListener {
 
   /**
    * Attaches a new instance of <code>{@link EmergencyAbortListener}</code> in the given <code>{@link Toolkit}</code>.
-   * Any other instances of <code>EmergencyAbortListener</code> will be removed from the <code>Toolkit</code>. 
+   * Any other instances of <code>EmergencyAbortListener</code> will be removed from the <code>Toolkit</code>.
    * @return the created listener.
    */
   public static EmergencyAbortListener registerInToolkit() {
@@ -79,20 +81,23 @@ public class EmergencyAbortListener implements AWTEventListener {
     return listener;
   }
 
+  @VisibleForTesting
   EmergencyAbortListener(Toolkit toolkit) {
     this(toolkit, new TestTerminator());
   }
 
+  @VisibleForTesting
   EmergencyAbortListener(Toolkit toolkit, TestTerminator testTerminator) {
     this.testTerminator = testTerminator;
     this.toolkit = toolkit;
   }
 
+  @VisibleForTesting
   void register() {
     removePrevious();
     toolkit.addAWTEventListener(this, EVENT_MASK);
   }
-  
+
   private void removePrevious() {
     AWTEventListener[] listeners = toolkit.getAWTEventListeners(EVENT_MASK);
     for (AWTEventListener listener : listeners)
@@ -133,6 +138,9 @@ public class EmergencyAbortListener implements AWTEventListener {
     testTerminator.terminateTests();
   }
 
+  @VisibleForTesting
   int keyCode() { return keyCode; }
+
+  @VisibleForTesting
   int modifiers() { return modifiers; }
 }
