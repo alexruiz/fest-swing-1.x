@@ -139,7 +139,7 @@ public class JComponentDriver extends ContainerDriver {
   }
 
   @RunsInCurrentThread
-  static KeyStroke[] keyStrokesForAction(JComponent component, String actionName) {
+  private static KeyStroke[] keyStrokesForAction(JComponent component, String actionName) {
     Object key = findActionKey(actionName, component.getActionMap());
     return findKeyStrokesForAction(actionName, key, component.getInputMap());
   }

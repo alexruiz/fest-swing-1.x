@@ -22,6 +22,7 @@ import java.util.Collection;
 import org.fest.swing.annotation.RunsInCurrentThread;
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
+import org.fest.util.VisibleForTesting;
 
 /**
  * Understands a monitor that keeps track of all known root windows (showing, hidden, closed.)
@@ -50,6 +51,7 @@ public class WindowMonitor {
     this(toolkit, new Context(toolkit), new WindowStatus(new Windows()));
   }
 
+  @VisibleForTesting
   @RunsInCurrentThread
   WindowMonitor(Toolkit toolkit, Context context, WindowStatus windowStatus) {
     this.context = context;

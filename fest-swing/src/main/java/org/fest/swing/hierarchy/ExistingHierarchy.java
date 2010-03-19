@@ -23,6 +23,7 @@ import java.util.Collection;
 
 import org.fest.swing.annotation.RunsInCurrentThread;
 import org.fest.swing.monitor.WindowMonitor;
+import org.fest.util.VisibleForTesting;
 
 /**
  * Understands access to the current AWT hierarchy.
@@ -42,6 +43,7 @@ public class ExistingHierarchy implements ComponentHierarchy {
     this(new ParentFinder(), new ChildrenFinder());
   }
 
+  @VisibleForTesting
   ExistingHierarchy(ParentFinder parentFinder, ChildrenFinder childrenFinder) {
     this.parentFinder = parentFinder;
     this.childrenFinder = childrenFinder;

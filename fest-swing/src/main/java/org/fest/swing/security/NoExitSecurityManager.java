@@ -19,6 +19,7 @@ import static org.fest.util.Strings.concat;
 import java.security.Permission;
 
 import org.fest.swing.util.StackTraces;
+import org.fest.util.VisibleForTesting;
 
 /**
  * Understands a <code>{@link SecurityManager}</code> that does not allow an application under test to terminate the
@@ -50,6 +51,7 @@ public class NoExitSecurityManager extends SecurityManager {
     this(hook, StackTraces.INSTANCE);
   }
 
+  @VisibleForTesting
   NoExitSecurityManager(ExitCallHook hook, StackTraces stackTraces) {
     if (hook == null) throw new NullPointerException(
         concat("The given ", ExitCallHook.class.getSimpleName(), " should not be null"));

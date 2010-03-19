@@ -33,6 +33,7 @@ import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
 import org.fest.swing.edt.GuiTask;
 import org.fest.swing.util.RobotFactory;
+import org.fest.util.VisibleForTesting;
 
 /**
  * Understands taking screenshots of the desktop and GUI components.
@@ -59,6 +60,7 @@ public class ScreenshotTaker {
     this(new ImageFileWriter(), new RobotFactory());
   }
 
+  @VisibleForTesting
   ScreenshotTaker(ImageFileWriter writer, RobotFactory robotFactory) {
     this.writer = writer;
     try {

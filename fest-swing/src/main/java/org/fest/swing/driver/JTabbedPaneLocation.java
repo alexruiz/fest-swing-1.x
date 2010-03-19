@@ -27,6 +27,7 @@ import org.fest.swing.annotation.RunsInCurrentThread;
 import org.fest.swing.exception.LocationUnavailableException;
 import org.fest.swing.util.StringTextMatcher;
 import org.fest.swing.util.TextMatcher;
+import org.fest.util.VisibleForTesting;
 
 /**
  * Understands a location on a <code>{@link JTabbedPane}</code> (notably a tab).
@@ -93,6 +94,7 @@ public class JTabbedPaneLocation {
     return new Point(rect.x + rect.width / 2, rect.y + rect.height / 2);
   }
 
+  @VisibleForTesting
   @RunsInCurrentThread
   void validateIndex(JTabbedPane tabbedPane, int index) {
     int max = tabbedPane.getTabCount() - 1;

@@ -129,7 +129,7 @@ public class FrameDriver extends WindowDriver {
     frame.setExtendedState(state);
   }
 
-  static boolean supportsMaximize(Toolkit toolkit) {
+  private static boolean supportsMaximize(Toolkit toolkit) {
     return toolkit.isFrameStateSupported(MAXIMIZED_BOTH);
   }
 }

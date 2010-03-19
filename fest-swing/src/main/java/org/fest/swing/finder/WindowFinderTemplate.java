@@ -29,25 +29,54 @@ import org.fest.swing.fixture.WindowFixture;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-abstract class WindowFinderTemplate<T extends Window> extends ComponentFinderTemplate<T> {
+public abstract class WindowFinderTemplate<T extends Window> extends ComponentFinderTemplate<T> {
 
-  WindowFinderTemplate(String windowName, Class<? extends T> windowType) {
+  /**
+   * Creates a new </code>{@link WindowFinderTemplate}</code>.
+   * @param windowName the name of the {@code Window} to find.
+   * @param windowType the type of the {@code Window} to find.
+   */
+  protected WindowFinderTemplate(String windowName, Class<? extends T> windowType) {
     super(windowName, windowType);
   }
 
-  WindowFinderTemplate(GenericTypeMatcher<? extends T> matcher) {
+  /**
+   * Creates a new </code>{@link WindowFinderTemplate}</code>.
+   * @param matcher specifies the search criteria to use when looking up a {@code Window}.
+   */
+  protected WindowFinderTemplate(GenericTypeMatcher<? extends T> matcher) {
     super(matcher);
   }
 
-  WindowFinderTemplate(Class<? extends T> windowType) {
+  /**
+   * Creates a new </code>{@link WindowFinderTemplate}</code>.
+   * @param windowType the type of the {@code Window} to find.
+   */
+  protected WindowFinderTemplate(Class<? extends T> windowType) {
     super(windowType);
   }
 
+  /**
+   * Sets the timeout for this finder. The <code>{@link Window}</code> to find should be found within the given time
+   * period.
+   * @param timeout the number of milliseconds before stopping the search.
+   * @return this finder.
+   * @throws IllegalArgumentException if the timeout is a negative number.
+   */
   @Override protected WindowFinderTemplate<T> withTimeout(long timeout) {
     super.withTimeout(timeout);
     return this;
   }
 
+  /**
+   * Sets the timeout for this finder. The <code>{@link Window}</code> to find should be found within the given time
+   * period.
+   * @param timeout the period of time the search should be performed.
+   * @param unit the time unit for <code>timeout</code>.
+   * @return this finder.
+   * @throws NullPointerException if the time unit is <code>null</code>.
+   * @throws IllegalArgumentException if the timeout is a negative number.
+   */
   @Override protected WindowFinderTemplate<T> withTimeout(long timeout, TimeUnit unit) {
     super.withTimeout(timeout, unit);
     return this;

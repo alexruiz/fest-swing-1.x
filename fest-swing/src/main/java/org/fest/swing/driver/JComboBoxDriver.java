@@ -52,6 +52,7 @@ import org.fest.swing.edt.GuiQuery;
 import org.fest.swing.edt.GuiTask;
 import org.fest.swing.exception.*;
 import org.fest.swing.util.*;
+import org.fest.util.VisibleForTesting;
 
 /**
  * Understands functional testing of <code>{@link JComboBox}</code>es:
@@ -280,6 +281,7 @@ public class JComboBoxDriver extends JComponentDriver {
     });
   }
 
+  @VisibleForTesting
   @RunsInEDT
   void showDropDownList(JComboBox comboBox) {
     // Location of pop-up button activator is LAF-dependent

@@ -24,6 +24,7 @@ import java.awt.*;
 import java.util.Collection;
 
 import org.fest.swing.annotation.RunsInCurrentThread;
+import org.fest.util.VisibleForTesting;
 
 /**
  * Understands isolation of a component hierarchy to limit to only those components created during the lifetime of this
@@ -58,16 +59,17 @@ public class NewHierarchy extends ExistingHierarchy {
     return new NewHierarchy(false);
   }
 
-  NewHierarchy(boolean ignoreExisting) {
+  private NewHierarchy(boolean ignoreExisting) {
     this(Toolkit.getDefaultToolkit(), ignoreExisting);
   }
 
-  NewHierarchy(Toolkit toolkit, boolean ignoreExisting) {
+  private NewHierarchy(Toolkit toolkit, boolean ignoreExisting) {
     this.filter = new WindowFilter(parentFinder(), childrenFinder());
     transientWindowListener = new TransientWindowListener(filter);
     setUp(toolkit, ignoreExisting);
   }
 
+  @VisibleForTesting
   NewHierarchy(Toolkit toolkit, WindowFilter filter, boolean ignoreExisting) {
     this.filter = filter;
     transientWindowListener = new TransientWindowListener(filter);

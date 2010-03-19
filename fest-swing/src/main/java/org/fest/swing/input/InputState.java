@@ -43,7 +43,7 @@ public class InputState {
 
   @GuardedBy("this") private int modifiers;
   @GuardedBy("this") private long lastEventTime;
-  
+
   private EventNormalizer normalizer;
 
   public InputState(Toolkit toolkit) {
@@ -78,7 +78,7 @@ public class InputState {
     if (event instanceof MouseEvent) updateState((MouseEvent) event);
   }
 
-  void updateState(KeyEvent event) {
+  private void updateState(KeyEvent event) {
     if (isOld(event)) return;
     synchronized (this) {
       lastEventTime(event);
@@ -87,7 +87,7 @@ public class InputState {
     }
   }
 
-  void updateState(MouseEvent event) {
+  private void updateState(MouseEvent event) {
     if (isOld(event)) return;
     // childAt and locationOnScreenOf want the tree lock, so be careful not to use any additional locks at the same time
     // to avoid deadlock.

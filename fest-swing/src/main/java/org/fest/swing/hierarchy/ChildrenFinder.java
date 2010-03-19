@@ -62,6 +62,7 @@ class ChildrenFinder {
   @VisibleForTesting
   static List<ChildrenFinderStrategy> strategies() { return new ArrayList<ChildrenFinderStrategy>(strategies); }
 
+  @VisibleForTesting
   static void replaceStrategiesWith(List<ChildrenFinderStrategy> newStrategies) {
     strategies = new ArrayList<ChildrenFinderStrategy>(newStrategies);
   }

@@ -21,6 +21,7 @@ import java.awt.Toolkit;
 import java.awt.event.AWTEventListener;
 
 import org.fest.swing.listener.WeakEventListener;
+import org.fest.util.VisibleForTesting;
 
 /**
  * Understands an <code>{@link AWTEventListener}</code> which normalizes the event stream by sending a single
@@ -42,6 +43,7 @@ public class EventNormalizer implements AWTEventListener {
     this(new DisposedWindowMonitor());
   }
 
+  @VisibleForTesting
   EventNormalizer(DisposedWindowMonitor disposedWindowMonitor) {
     this.disposedWindowMonitor = disposedWindowMonitor;
   }

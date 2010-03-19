@@ -38,6 +38,7 @@ import org.fest.swing.edt.GuiQuery;
 import org.fest.swing.exception.ActionFailedException;
 import org.fest.swing.exception.LocationUnavailableException;
 import org.fest.swing.util.*;
+import org.fest.util.VisibleForTesting;
 
 /**
  * Understands functional testing of <code>{@link JTabbedPane}</code>s:
@@ -69,6 +70,7 @@ public class JTabbedPaneDriver extends JComponentDriver {
    * @param robot the robot to use to simulate user input.
    * @param location knows how to find the location of a tab.
    */
+  @VisibleForTesting
   JTabbedPaneDriver(Robot robot, JTabbedPaneLocation location) {
     super(robot);
     this.location = location;
@@ -171,6 +173,7 @@ public class JTabbedPaneDriver extends JComponentDriver {
     });
   }
 
+  @VisibleForTesting
   @RunsInEDT
   void setTabDirectly(JTabbedPane tabbedPane, int index) {
     setSelectedTab(tabbedPane, index);
