@@ -20,7 +20,7 @@ package org.fest.swing.util;
  *
  * @author Alex Ruiz
  *
- * @deprecated in 1.2. Use <code>{@link SystemProperties}</code> instead.
+ * @deprecated Use <code>{@link SystemProperties}</code> instead.
  */
 @Deprecated
 public final class System {
