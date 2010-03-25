@@ -42,10 +42,10 @@ public class JOptionPaneFixture extends ContainerFixture<JOptionPane> implements
 
   /**
    * Creates a new <code>{@link JOptionPaneFixture}</code>.
-   * @param robot finds a showing <code>JOptionPane</code>, which will be managed by this fixture.
+   * @param robot finds a showing {@code JOptionPane}, which will be managed by this fixture.
    * @throws NullPointerException if <code>robot</code> is <code>null</code>.
-   * @throws ComponentLookupException if a showing <code>JOptionPane</code> could not be found.
-   * @throws ComponentLookupException if more than one showing <code>JOptionPane</code> is found.
+   * @throws ComponentLookupException if a showing {@code JOptionPane} could not be found.
+   * @throws ComponentLookupException if more than one showing {@code JOptionPane} is found.
    */
   public JOptionPaneFixture(Robot robot) {
     this(robot, findShowingOptionPane(robot));
@@ -58,8 +58,8 @@ public class JOptionPaneFixture extends ContainerFixture<JOptionPane> implements
 
   /**
    * Creates a new <code>{@link JOptionPaneFixture}</code>.
-   * @param robot performs simulation of user events on the given <code>JOptionPane</code>.
-   * @param target the <code>JOptionPane</code> to be managed by this fixture.
+   * @param robot performs simulation of user events on the given {@code JOptionPane}.
+   * @param target the {@code JOptionPane} to be managed by this fixture.
    * @throws NullPointerException if <code>robot</code> is <code>null</code>.
    * @throws IllegalArgumentException if <code>target</code> is <code>null</code>.
    */
@@ -76,6 +76,15 @@ public class JOptionPaneFixture extends ContainerFixture<JOptionPane> implements
   protected final void driver(JOptionPaneDriver newDriver) {
     validateNotNull(newDriver);
     driver = newDriver;
+  }
+
+  /**
+   * Returns the title of this fixture's <code>{@link JOptionPane}</code>.
+   * @return the title of this fixture's {@code JOptionPane}.
+   * @since 1.2
+   */
+  public String title() {
+    return driver.title(target);
   }
 
   /**
@@ -145,8 +154,8 @@ public class JOptionPaneFixture extends ContainerFixture<JOptionPane> implements
   /**
    * Simulates a user clicking this fixture's <code>{@link JOptionPane}</code>.
    * @return this fixture.
-   * @throws IllegalStateException if this fixture's <code>JOptionPane</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JOptionPane</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JOptionPane} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JOptionPane} is not showing on the screen.
    */
   public JOptionPaneFixture click() {
     driver.click(target);
@@ -157,8 +166,8 @@ public class JOptionPaneFixture extends ContainerFixture<JOptionPane> implements
    * Simulates a user clicking this fixture's <code>{@link JOptionPane}</code>.
    * @param button the button to click.
    * @throws NullPointerException if the given <code>MouseButton</code> is <code>null</code>.
-   * @throws IllegalStateException if this fixture's <code>JOptionPane</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JOptionPane</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JOptionPane} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JOptionPane} is not showing on the screen.
    * @return this fixture.
    */
   public JOptionPaneFixture click(MouseButton button) {
@@ -171,8 +180,8 @@ public class JOptionPaneFixture extends ContainerFixture<JOptionPane> implements
    * @param mouseClickInfo specifies the button to click and the times the button should be clicked.
    * @return this fixture.
    * @throws NullPointerException if the given <code>MouseClickInfo</code> is <code>null</code>.
-   * @throws IllegalStateException if this fixture's <code>JOptionPane</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JOptionPane</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JOptionPane} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JOptionPane} is not showing on the screen.
    */
   public JOptionPaneFixture click(MouseClickInfo mouseClickInfo) {
     driver.click(target, mouseClickInfo);
@@ -182,8 +191,8 @@ public class JOptionPaneFixture extends ContainerFixture<JOptionPane> implements
   /**
    * Simulates a user right-clicking this fixture's <code>{@link JOptionPane}</code>.
    * @return this fixture.
-   * @throws IllegalStateException if this fixture's <code>JOptionPane</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JOptionPane</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JOptionPane} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JOptionPane} is not showing on the screen.
    */
   public JOptionPaneFixture rightClick() {
     driver.rightClick(target);
@@ -193,8 +202,8 @@ public class JOptionPaneFixture extends ContainerFixture<JOptionPane> implements
   /**
    * Simulates a user double-clicking this fixture's <code>{@link JOptionPane}</code>.
    * @return this fixture.
-   * @throws IllegalStateException if this fixture's <code>JOptionPane</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JOptionPane</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JOptionPane} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JOptionPane} is not showing on the screen.
    */
   public JOptionPaneFixture doubleClick() {
     driver.doubleClick(target);
@@ -204,8 +213,8 @@ public class JOptionPaneFixture extends ContainerFixture<JOptionPane> implements
   /**
    * Gives input focus to this fixture's <code>{@link JOptionPane}</code>.
    * @return this fixture.
-   * @throws IllegalStateException if this fixture's <code>JOptionPane</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JOptionPane</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JOptionPane} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JOptionPane} is not showing on the screen.
    */
   public JOptionPaneFixture focus() {
     driver.focus(target);
@@ -349,7 +358,7 @@ public class JOptionPaneFixture extends ContainerFixture<JOptionPane> implements
 
   /**
    * Asserts that the message of this fixture's <code>{@link JOptionPane}</code> matches the given regular expression
-   * pattern. If the message in the <code>JOptionPane</code> is not a <code>String</code>, this method will use the
+   * pattern. If the message in the {@code JOptionPane} is not a <code>String</code>, this method will use the
    * <code>toString</code> representation of such message.
    * @param pattern the regular expression to match.
    * @return this fixture.
@@ -377,7 +386,7 @@ public class JOptionPaneFixture extends ContainerFixture<JOptionPane> implements
   /**
    * Asserts that this fixture's <code>{@link JOptionPane}</code> has input focus.
    * @return this fixture.
-   * @throws AssertionError if this fixture's <code>JOptionPane</code> does not have input focus.
+   * @throws AssertionError if this fixture's {@code JOptionPane} does not have input focus.
    */
   public JOptionPaneFixture requireFocused() {
     driver.requireFocused(target);
@@ -387,7 +396,7 @@ public class JOptionPaneFixture extends ContainerFixture<JOptionPane> implements
   /**
    * Asserts that this fixture's <code>{@link JOptionPane}</code> is enabled.
    * @return this fixture.
-   * @throws AssertionError if this fixture's <code>JOptionPane</code> is disabled.
+   * @throws AssertionError if this fixture's {@code JOptionPane} is disabled.
    */
   public JOptionPaneFixture requireEnabled() {
     driver.requireEnabled(target);
@@ -398,7 +407,7 @@ public class JOptionPaneFixture extends ContainerFixture<JOptionPane> implements
    * Asserts that this fixture's <code>{@link JOptionPane}</code> is enabled.
    * @param timeout the time this fixture will wait for the component to be enabled.
    * @return this fixture.
-   * @throws org.fest.swing.exception.WaitTimedOutError if this fixture's <code>JOptionPane</code> is never enabled.
+   * @throws org.fest.swing.exception.WaitTimedOutError if this fixture's {@code JOptionPane} is never enabled.
    */
   public JOptionPaneFixture requireEnabled(Timeout timeout) {
     driver.requireEnabled(target, timeout);
@@ -408,7 +417,7 @@ public class JOptionPaneFixture extends ContainerFixture<JOptionPane> implements
   /**
    * Asserts that this fixture's <code>{@link JOptionPane}</code> is disabled.
    * @return this fixture.
-   * @throws AssertionError if this fixture's <code>JOptionPane</code> is enabled.
+   * @throws AssertionError if this fixture's {@code JOptionPane} is enabled.
    */
   public JOptionPaneFixture requireDisabled() {
     driver.requireDisabled(target);
@@ -418,7 +427,7 @@ public class JOptionPaneFixture extends ContainerFixture<JOptionPane> implements
   /**
    * Asserts that this fixture's <code>{@link JOptionPane}</code> is visible.
    * @return this fixture.
-   * @throws AssertionError if this fixture's <code>JOptionPane</code> is not visible.
+   * @throws AssertionError if this fixture's {@code JOptionPane} is not visible.
    */
   public JOptionPaneFixture requireVisible() {
     driver.requireVisible(target);
@@ -428,7 +437,7 @@ public class JOptionPaneFixture extends ContainerFixture<JOptionPane> implements
   /**
    * Asserts that this fixture's <code>{@link JOptionPane}</code> is not visible.
    * @return this fixture.
-   * @throws AssertionError if this fixture's <code>JOptionPane</code> is visible.
+   * @throws AssertionError if this fixture's {@code JOptionPane} is visible.
    */
   public JOptionPaneFixture requireNotVisible() {
     driver.requireNotVisible(target);

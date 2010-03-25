@@ -64,37 +64,49 @@ public class JOptionPaneDriver extends JComponentDriver {
 
   /**
    * Asserts that the title in the given <code>{@link JOptionPane}</code> matches the given value.
-   * @param optionPane the target <code>JOptionPane</code>.
+   * @param optionPane the target {@code JOptionPane}.
    * @param title the title to match. It can be a regular expression.
-   * @throws AssertionError if the <code>JOptionPane</code> does not have the given title.
+   * @throws AssertionError if the {@code JOptionPane} does not have the given title.
    */
   @RunsInEDT
   public void requireTitle(JOptionPane optionPane, String title) {
-    verifyThat(titleOf(optionPane)).as(propertyName(optionPane, TITLE_PROPERTY)).isEqualOrMatches(title);
+    verifyThat(title(optionPane)).as(propertyName(optionPane, TITLE_PROPERTY)).isEqualOrMatches(title);
   }
 
   /**
    * Asserts that the title in the given <code>{@link JOptionPane}</code> matches the given regular expression pattern.
-   * @param optionPane the target <code>JOptionPane</code>.
+   * @param optionPane the target {@code JOptionPane}.
    * @param pattern the regular expression pattern to match.
    * @throws NullPointerException if the given regular expression pattern is <code>null</code>.
-   * @throws AssertionError if the <code>JOptionPane</code> does not have the given title.
+   * @throws AssertionError if the {@code JOptionPane} does not have the given title.
    * @since 1.2
    */
   @RunsInEDT
   public void requireTitle(JOptionPane optionPane, Pattern pattern) {
-    verifyThat(titleOf(optionPane)).as(propertyName(optionPane, TITLE_PROPERTY)).matches(pattern);
+    verifyThat(title(optionPane)).as(propertyName(optionPane, TITLE_PROPERTY)).matches(pattern);
+  }
+
+
+  /**
+   * Returns the title of the given <code>{@link JOptionPane}</code>.
+   * @param optionPane the target {@code JOptionPane}.
+   * @return the title of the given {@code JOptionPane}.
+   * @since 1.2
+   */
+  @RunsInEDT
+  public String title(JOptionPane optionPane) {
+    return titleOf(optionPane);
   }
 
   /**
    * Asserts that the title of the <code>{@link JOptionPane}</code> matches the given value. If the given value is a
-   * regular expression and the message in the <code>JOptionPane</code> is not a <code>String</code>, this method will use the
+   * regular expression and the message in the {@code JOptionPane} is not a <code>String</code>, this method will use the
    * <code>toString</code> representation of such message.
-   * message in the <code>JOptionPane</code> is not a <code>String</code>, this method will use the
+   * message in the {@code JOptionPane} is not a <code>String</code>, this method will use the
    * <code>toString</code> representation of such message.
-   * @param optionPane the target <code>JOptionPane</code>.
+   * @param optionPane the target {@code JOptionPane}.
    * @param message the message to verify. If it is a <code>String</code>, it can be specified as a regular expression.
-   * @throws AssertionError if the message in the <code>JOptionPane</code> is not equal to or does not match the given
+   * @throws AssertionError if the message in the {@code JOptionPane} is not equal to or does not match the given
    * message.
    */
   @RunsInEDT
@@ -114,9 +126,9 @@ public class JOptionPaneDriver extends JComponentDriver {
 
   /**
    * Asserts that the title of the <code>{@link JOptionPane}</code> matches the given regular expression pattern. If the
-   * message in the <code>JOptionPane</code> is not a <code>String</code>, this method will use the
+   * message in the {@code JOptionPane} is not a <code>String</code>, this method will use the
    * <code>toString</code> representation of such message.
-   * @param optionPane the target <code>JOptionPane</code>.
+   * @param optionPane the target {@code JOptionPane}.
    * @param pattern the regular expression to match.
    * @throws NullPointerException if the given regular expression pattern is <code>null</code>.
    * @throws AssertionError if the message in the </code>JOptionPaneFixture</code> does not match the given regular
@@ -139,9 +151,9 @@ public class JOptionPaneDriver extends JComponentDriver {
 
   /**
    * Asserts that the <code>{@link JOptionPane}</code> has the given options.
-   * @param optionPane the target <code>JOptionPane</code>.
+   * @param optionPane the target {@code JOptionPane}.
    * @param options the options to verify.
-   * @throws AssertionError if the <code>JOptionPane</code> does not have the given options.
+   * @throws AssertionError if the {@code JOptionPane} does not have the given options.
    */
   @RunsInEDT
   public void requireOptions(JOptionPane optionPane, Object[] options) {
@@ -150,7 +162,7 @@ public class JOptionPaneDriver extends JComponentDriver {
 
   /**
    * Finds the "OK" button in the <code>{@link JOptionPane}</code>. This method is independent of locale and platform.
-   * @param optionPane the target <code>JOptionPane</code>.
+   * @param optionPane the target {@code JOptionPane}.
    * @return the "OK" button.
    * @throws ComponentLookupException if the a "OK" button cannot be found.
    */
@@ -162,7 +174,7 @@ public class JOptionPaneDriver extends JComponentDriver {
   /**
    * Finds the "Cancel" button in the <code>{@link JOptionPane}</code>. This method is independent of locale and
    * platform.
-   * @param optionPane the target <code>JOptionPane</code>.
+   * @param optionPane the target {@code JOptionPane}.
    * @return the "Cancel" button.
    * @throws ComponentLookupException if the a "Cancel" button cannot be found.
    */
@@ -173,7 +185,7 @@ public class JOptionPaneDriver extends JComponentDriver {
 
   /**
    * Finds the "Yes" button in the <code>{@link JOptionPane}</code>. This method is independent of locale and platform.
-   * @param optionPane the target <code>JOptionPane</code>.
+   * @param optionPane the target {@code JOptionPane}.
    * @return the "Yes" button.
    * @throws ComponentLookupException if the a "Yes" button cannot be found.
    */
@@ -184,7 +196,7 @@ public class JOptionPaneDriver extends JComponentDriver {
 
   /**
    * Finds the "No" button in the <code>{@link JOptionPane}</code>.  This method is independent of locale and platform.
-   * @param optionPane the target <code>JOptionPane</code>.
+   * @param optionPane the target {@code JOptionPane}.
    * @return the "No" button.
    * @throws ComponentLookupException if the a "No" button cannot be found.
    */
@@ -200,7 +212,7 @@ public class JOptionPaneDriver extends JComponentDriver {
 
   /**
    * Finds a button in the <code>{@link JOptionPane}</code> containing the given text.
-   * @param optionPane the target <code>JOptionPane</code>.
+   * @param optionPane the target {@code JOptionPane}.
    * @param text the text of the button to find and return. It can be a regular expression.
    * @return a button containing the given text.
    * @throws ComponentLookupException if the a button with the given text cannot be found.
@@ -212,7 +224,7 @@ public class JOptionPaneDriver extends JComponentDriver {
 
   /**
    * Finds a button in the <code>{@link JOptionPane}</code> whose text matches the given regular expression pattern.
-   * @param optionPane the target <code>JOptionPane</code>.
+   * @param optionPane the target {@code JOptionPane}.
    * @param pattern the regular expression pattern to match.
    * @return a button containing the given text.
    * @throws NullPointerException if the given regular expression pattern is <code>null</code>.
@@ -226,8 +238,8 @@ public class JOptionPaneDriver extends JComponentDriver {
 
   /**
    * Finds a <code>{@link JButton}</code> in the <code>{@link JOptionPane}</code> (assuming it has only one button.)
-   * @param optionPane the target <code>JOptionPane</code>.
-   * @return the only <code>JButton</code> contained in the <code>JOptionPane</code>.
+   * @param optionPane the target {@code JOptionPane}.
+   * @return the only <code>JButton</code> contained in the {@code JOptionPane}.
    * @throws ComponentLookupException if a matching component could not be found.
    * @throws ComponentLookupException if more than one matching component is found.
    * @deprecated in 1.2
@@ -239,7 +251,7 @@ public class JOptionPaneDriver extends JComponentDriver {
 
   /**
    * Returns the <code>{@link JTextComponent}</code> in the given message only if the message is of type input.
-   * @param optionPane the target <code>JOptionPane</code>.
+   * @param optionPane the target {@code JOptionPane}.
    * @return the text component in the given message.
    * @throws ComponentLookupException if the message type is not input and therefore it does not contain a text component.
    * @deprecated in 1.2
@@ -251,7 +263,7 @@ public class JOptionPaneDriver extends JComponentDriver {
 
   /**
    * Asserts that the <code>{@link JOptionPane}</code> is displaying an error message.
-   * @param optionPane the target <code>JOptionPane</code>.
+   * @param optionPane the target {@code JOptionPane}.
    */
   @RunsInEDT
   public void requireErrorMessage(JOptionPane optionPane) {
@@ -260,7 +272,7 @@ public class JOptionPaneDriver extends JComponentDriver {
 
   /**
    * Asserts that the <code>{@link JOptionPane}</code> is displaying an information message.
-   * @param optionPane the target <code>JOptionPane</code>.
+   * @param optionPane the target {@code JOptionPane}.
    */
   @RunsInEDT
   public void requireInformationMessage(JOptionPane optionPane) {
@@ -269,7 +281,7 @@ public class JOptionPaneDriver extends JComponentDriver {
 
   /**
    * Asserts that the <code>{@link JOptionPane}</code> is displaying a warning message.
-   * @param optionPane the target <code>JOptionPane</code>.
+   * @param optionPane the target {@code JOptionPane}.
    */
   @RunsInEDT
   public void requireWarningMessage(JOptionPane optionPane) {
@@ -278,7 +290,7 @@ public class JOptionPaneDriver extends JComponentDriver {
 
   /**
    * Asserts that the <code>{@link JOptionPane}</code> is displaying a question.
-   * @param optionPane the target <code>JOptionPane</code>.
+   * @param optionPane the target {@code JOptionPane}.
    */
   @RunsInEDT
   public void requireQuestionMessage(JOptionPane optionPane) {
@@ -287,7 +299,7 @@ public class JOptionPaneDriver extends JComponentDriver {
 
   /**
    * Asserts that the <code>{@link JOptionPane}</code> is displaying a plain message.
-   * @param optionPane the target <code>JOptionPane</code>.
+   * @param optionPane the target {@code JOptionPane}.
    */
   @RunsInEDT
   public void requirePlainMessage(JOptionPane optionPane) {

@@ -45,7 +45,7 @@ public class JOptionPaneFixtureTest extends JOptionPaneFixture_TestCase {
   }
 
   @Test
-  public void shouldRequireTitle() {
+  public void should_require_title() {
     new EasyMockTemplate(driver()) {
       protected void expectations() {
         driver().requireTitle(target(), "A Title");
@@ -59,7 +59,7 @@ public class JOptionPaneFixtureTest extends JOptionPaneFixture_TestCase {
   }
 
   @Test
-  public void shouldRequireTitleMatchingPattern() {
+  public void should_require_title_matching_pattern() {
     final Pattern p = regex("Title");
     new EasyMockTemplate(driver()) {
       protected void expectations() {
@@ -74,7 +74,7 @@ public class JOptionPaneFixtureTest extends JOptionPaneFixture_TestCase {
   }
 
   @Test
-  public void shouldRequireMessage() {
+  public void should_require_message() {
     new EasyMockTemplate(driver()) {
       protected void expectations() {
         driver().requireMessage(target(), "A Message");
@@ -88,7 +88,7 @@ public class JOptionPaneFixtureTest extends JOptionPaneFixture_TestCase {
   }
 
   @Test
-  public void shouldRequireMessageMatchingPattern() {
+  public void should_require_message_matching_pattern() {
     final Pattern p = regex("Message");
     new EasyMockTemplate(driver()) {
       protected void expectations() {
@@ -103,7 +103,7 @@ public class JOptionPaneFixtureTest extends JOptionPaneFixture_TestCase {
   }
 
   @Test
-  public void shouldRequireOptions() {
+  public void should_require_options() {
     final Object[] options = new Object[0];
     new EasyMockTemplate(driver()) {
       protected void expectations() {
@@ -118,7 +118,7 @@ public class JOptionPaneFixtureTest extends JOptionPaneFixture_TestCase {
   }
 
   @Test
-  public void shouldReturnOkButton() {
+  public void should_return_OK_button() {
     new EasyMockTemplate(driver()) {
       protected void expectations() {
         expect(driver().okButton(target())).andReturn(button);
@@ -132,7 +132,7 @@ public class JOptionPaneFixtureTest extends JOptionPaneFixture_TestCase {
   }
 
   @Test
-  public void shouldReturnCancelButton() {
+  public void should_return_Cancel_button() {
     new EasyMockTemplate(driver()) {
       protected void expectations() {
         expect(driver().cancelButton(target())).andReturn(button);
@@ -146,7 +146,7 @@ public class JOptionPaneFixtureTest extends JOptionPaneFixture_TestCase {
   }
 
   @Test
-  public void shouldReturnYesButton() {
+  public void should_return_Yes_button() {
     new EasyMockTemplate(driver()) {
       protected void expectations() {
         expect(driver().yesButton(target())).andReturn(button);
@@ -160,7 +160,7 @@ public class JOptionPaneFixtureTest extends JOptionPaneFixture_TestCase {
   }
 
   @Test
-  public void shouldReturnNoButton() {
+  public void should_return_No_button() {
     new EasyMockTemplate(driver()) {
       protected void expectations() {
         expect(driver().noButton(target())).andReturn(button);
@@ -174,7 +174,7 @@ public class JOptionPaneFixtureTest extends JOptionPaneFixture_TestCase {
   }
 
   @Test
-  public void shouldReturnButtonWithText() {
+  public void should_return_button_with_text() {
     new EasyMockTemplate(driver()) {
       protected void expectations() {
         expect(driver().buttonWithText(target(), "A Button")).andReturn(button);
@@ -188,7 +188,7 @@ public class JOptionPaneFixtureTest extends JOptionPaneFixture_TestCase {
   }
 
   @Test
-  public void shouldReturnButtonWithTextMatchingPattern() {
+  public void should_return_button_with_text_matching_pattern() {
     final Pattern p = regex("Butt.*");
     new EasyMockTemplate(driver()) {
       protected void expectations() {
@@ -203,7 +203,7 @@ public class JOptionPaneFixtureTest extends JOptionPaneFixture_TestCase {
   }
 
   @Test
-  public void shouldRequireErrorMessage() {
+  public void should_require_error_message() {
     new EasyMockTemplate(driver()) {
       protected void expectations() {
         driver().requireErrorMessage(target());
@@ -217,7 +217,7 @@ public class JOptionPaneFixtureTest extends JOptionPaneFixture_TestCase {
   }
 
   @Test
-  public void shouldRequireInformationMessage() {
+  public void should_require_information_message() {
     new EasyMockTemplate(driver()) {
       protected void expectations() {
         driver().requireInformationMessage(target());
@@ -231,7 +231,7 @@ public class JOptionPaneFixtureTest extends JOptionPaneFixture_TestCase {
   }
 
   @Test
-  public void shouldRequireWarningMessage() {
+  public void should_require_warning_message() {
     new EasyMockTemplate(driver()) {
       protected void expectations() {
         driver().requireWarningMessage(target());
@@ -245,7 +245,7 @@ public class JOptionPaneFixtureTest extends JOptionPaneFixture_TestCase {
   }
 
   @Test
-  public void shouldRequireQuestionMessage() {
+  public void should_require_question_message() {
     new EasyMockTemplate(driver()) {
       protected void expectations() {
         driver().requireQuestionMessage(target());
@@ -259,7 +259,7 @@ public class JOptionPaneFixtureTest extends JOptionPaneFixture_TestCase {
   }
 
   @Test
-  public void shouldRequirePlainMessage() {
+  public void should_require_plain_message() {
     new EasyMockTemplate(driver()) {
       protected void expectations() {
         driver().requirePlainMessage(target());
