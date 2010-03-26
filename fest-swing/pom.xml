@@ -105,7 +105,7 @@
       <scope>test</scope>
     </dependency>
     <dependency>
-      <groupId>multithreadedtc</groupId>
+      <groupId>com.googlecode.multithreadedtc</groupId>
       <artifactId>multithreadedtc</artifactId>
       <version>1.01</version>
       <scope>test</scope>
