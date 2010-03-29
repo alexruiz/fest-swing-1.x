@@ -22,7 +22,6 @@ import static org.fest.util.Strings.concat;
 import java.awt.Event;
 import java.awt.HeadlessException;
 import java.awt.event.KeyEvent;
-
 import org.fest.util.VisibleForTesting;
 
 /**
@@ -166,6 +165,15 @@ public final class Platform {
    */
   public static boolean isLinux() {
     return osIdentifier.isLinux();
+  }
+
+  /**
+   * Returns the current operating system family.
+   * @return the current operating system family.
+   * @since 1.2
+   */
+  public static OSFamily osFamily() {
+    return osIdentifier.osFamily();
   }
 
   private Platform() {}

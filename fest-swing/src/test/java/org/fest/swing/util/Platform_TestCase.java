@@ -39,12 +39,12 @@ public abstract class Platform_TestCase extends SequentialTestCase {
     Platform.reload();
   }
 
-  final Toolkit wireMockToolkit() {
+  protected final Toolkit wireMockToolkit() {
     Platform.initialize(windowsXP(), toolkitProvider);
     return toolkitProvider.toolkit(createMock(Toolkit.class));
   }
 
-  static class ToolkitProviderStub extends ToolkitProvider {
+  public static class ToolkitProviderStub extends ToolkitProvider {
     private Toolkit toolkit;
 
     @Override Toolkit toolkit() {

@@ -16,58 +16,60 @@
 package org.fest.swing.keystroke;
 
 import static java.util.Locale.*;
+import static org.easymock.EasyMock.expect;
+import static org.easymock.classextension.EasyMock.createMock;
 import static org.fest.assertions.Assertions.assertThat;
-import static org.fest.util.Collections.list;
-
-import java.util.Collection;
+import static org.fest.swing.keystroke.KeyStrokeMappingProviderNames.generateNamesFrom;
+import static org.fest.swing.util.OSFamily.WINDOWS;
 import java.util.Locale;
 
+import org.fest.mocks.EasyMockTemplate;
+import org.fest.swing.util.OSFamily;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
-import org.junit.runners.Parameterized.Parameters;
 
 /**
- * Tests for <code>{@link KeyStrokeMappingProviderPicker#providerFor(Locale)}</code>.
+ * Tests for <code>{@link KeyStrokeMappingProviderPicker#providerFor(OSFamily, Locale)}</code>.
  *
  * @author Alex Ruiz
  */
-@RunWith(Parameterized.class)
 public class KeyStrokeMappingProviderPicker_providerFor_Test {
 
+  private KeyStrokeMappingProviderFactory factory;
   private KeyStrokeMappingProviderPicker picker;
 
-  private final Locale locale;
-
-  @Parameters
-  public static Collection<Object[]> locales() {
-    return list(new Object[][] { { ENGLISH }, { CHINESE }, { ITALIAN }, { SIMPLIFIED_CHINESE } });
-  }
-
-  public KeyStrokeMappingProviderPicker_providerFor_Test(Locale locale) {
-    this.locale = locale;
-  }
-
   @Before public void setUp() {
-    picker = new KeyStrokeMappingProviderPicker();
+    factory = createMock(KeyStrokeMappingProviderFactory.class);
+    picker = new KeyStrokeMappingProviderPicker(factory);
   }
 
   @Test
-  public void should_pick_provider_for_German_if_locale_has_German_language() {
-    KeyStrokeMappingProvider provider = picker.providerFor(GERMAN);
-    assertThat(provider).isInstanceOf(KeyStrokeMappingProvider_de.class);
+  public void should_try_to_instantiate_provider_from_system_settings() {
+    KeyStrokeMappingProviderNames names = generateNamesFrom(WINDOWS, US);
+    final String firstName = names.iterator().next();
+    final KeyStrokeMappingProvider provider = createMock(KeyStrokeMappingProvider.class);
+    new EasyMockTemplate(factory) {
+      protected void expectations() {
+        expect(factory.createProvider(firstName)).andReturn(provider);
+      }
+
+      protected void codeToTest() {
+        assertThat(picker.providerFor(WINDOWS, US)).isSameAs(provider);
+      }
+    }.run();
   }
 
   @Test
-  public void should_pick_provider_for_German_if_locale_has_French_language() {
-    KeyStrokeMappingProvider provider = picker.providerFor(FRENCH);
-    assertThat(provider).isInstanceOf(KeyStrokeMappingProvider_fr.class);
-  }
+  public void should_return_default_provider_if_provider_from_system_settings_was_not_found() {
+    new EasyMockTemplate(factory) {
+      protected void expectations() {
+        for (String name : generateNamesFrom(WINDOWS, US))
+          expect(factory.createProvider(name)).andReturn(null);
+      }
 
-  @Test
-  public void should_pick_English_provider_as_default() {
-    KeyStrokeMappingProvider provider = picker.providerFor(locale);
-    assertThat(provider).isInstanceOf(KeyStrokeMappingProvider_en.class);
+      protected void codeToTest() {
+        assertThat(picker.providerFor(WINDOWS, US)).isInstanceOf(KeyStrokeMappingProvider_en.class);
+      }
+    }.run();
   }
 }

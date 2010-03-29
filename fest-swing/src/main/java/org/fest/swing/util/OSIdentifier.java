@@ -15,6 +15,9 @@
 package org.fest.swing.util;
 
 import static java.util.Locale.ENGLISH;
+import static org.fest.swing.util.OSFamily.*;
+import static org.fest.swing.util.OSFamily.LINUX;
+import static org.fest.swing.util.OSFamily.UNIX;
 
 import org.fest.util.VisibleForTesting;
 
@@ -34,6 +37,7 @@ class OSIdentifier {
   private final boolean isSolaris;
   private final boolean isHPUX;
   private final boolean isLinux;
+  private final OSFamily osFamily;
 
   OSIdentifier() {
     this(new SystemPropertyReader());
@@ -52,11 +56,19 @@ class OSIdentifier {
     isSolaris = osName.startsWith("sunos") || osName.startsWith("solaris");
     isHPUX = osName.equals("hp-ux");
     isLinux = osName.equals("linux");
+    osFamily = findOSFamily();
   }
 
   private static boolean containsAny(String s, String... subs) {
     for (String sub : subs) if (s.contains(sub)) return true;
     return false;
+  }
+
+  private OSFamily findOSFamily() {
+    if (isWindows()) return WINDOWS;
+    if (isMacintosh() || isOSX()) return MAC;
+    if (isLinux()) return LINUX;
+    return UNIX;
   }
 
   boolean isWindows() { return isWindows; }
@@ -68,4 +80,7 @@ class OSIdentifier {
   boolean isSolaris() { return isSolaris; }
   boolean isHPUX() { return isHPUX; }
   boolean isLinux() { return isLinux; }
+
+  /** @since 1.2 */
+  OSFamily osFamily() { return osFamily; }
 }

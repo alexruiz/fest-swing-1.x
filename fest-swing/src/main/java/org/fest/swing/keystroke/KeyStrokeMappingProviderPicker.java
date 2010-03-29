@@ -15,33 +15,36 @@
  */
 package org.fest.swing.keystroke;
 
+import static org.fest.swing.keystroke.KeyStrokeMappingProviderNames.generateNamesFrom;
+
 import java.util.Locale;
 
+import org.fest.swing.util.OSFamily;
+import org.fest.util.VisibleForTesting;
+
 /**
- * Understands how to choose a <code>{@link KeyStrokeMappingProvider}</code> based on a locale.
+ * Understands how to choose a <code>{@link KeyStrokeMappingProvider}</code> based on OS family and locale.
  *
  * @author Alex Ruiz
  */
 class KeyStrokeMappingProviderPicker {
 
-  private static final String FRENCH = "fr";
-  private static final String GERMAN = "de";
+  private final KeyStrokeMappingProviderFactory factory;
 
-  KeyStrokeMappingProvider providerFor(Locale locale) {
-    if (isFrench(locale)) return new KeyStrokeMappingProvider_fr();
-    if (isGerman(locale)) return new KeyStrokeMappingProvider_de();
+  KeyStrokeMappingProviderPicker() {
+    this(new KeyStrokeMappingProviderFactory());
+  }
+
+  @VisibleForTesting
+  KeyStrokeMappingProviderPicker(KeyStrokeMappingProviderFactory factory) {
+    this.factory = factory;
+  }
+
+  KeyStrokeMappingProvider providerFor(OSFamily osFamily, Locale locale) {
+    for (String name : generateNamesFrom(osFamily, locale)) {
+      KeyStrokeMappingProvider provider = factory.createProvider(name);
+      if (provider != null) return provider;
+    }
     return new KeyStrokeMappingProvider_en();
-  }
-
-  private boolean isFrench(Locale locale) {
-    return doesLocaleHaveLanguage(locale, FRENCH);
-  }
-
-  private boolean isGerman(Locale locale) {
-    return doesLocaleHaveLanguage(locale, GERMAN);
-  }
-
-  private boolean doesLocaleHaveLanguage(Locale locale, String language) {
-    return language.equalsIgnoreCase(locale.getDisplayLanguage()) || language.equalsIgnoreCase(locale.getLanguage());
   }
 }

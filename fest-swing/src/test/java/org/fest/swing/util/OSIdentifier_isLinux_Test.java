@@ -16,6 +16,7 @@
 package org.fest.swing.util;
 
 import static org.fest.assertions.Assertions.assertThat;
+import static org.fest.swing.util.OSFamily.LINUX;
 import static org.fest.util.Collections.list;
 
 import java.util.Collection;
@@ -40,7 +41,7 @@ public class OSIdentifier_isLinux_Test extends OSIdentifier_TestCase {
   public static Collection<Object[]> linux() {
     return list(new Object[][] { { "linux" }, { "Linux" }, { "LINUX" } });
   }
-  
+
   public OSIdentifier_isLinux_Test(String linux) {
     this.linux = linux;
   }
@@ -64,6 +65,7 @@ public class OSIdentifier_isLinux_Test extends OSIdentifier_TestCase {
         assertThat(osIdentifier.isWindows()).isFalse();
         assertThat(osIdentifier.isWindows9x()).isFalse();
         assertThat(osIdentifier.isWindowsXP()).isFalse();
+        assertThat(osIdentifier.osFamily()).isEqualTo(LINUX);
       }
     }.run();
   }

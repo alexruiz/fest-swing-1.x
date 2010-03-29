@@ -16,6 +16,7 @@ package org.fest.swing.keystroke;
 
 import static java.awt.event.InputEvent.SHIFT_MASK;
 import static java.awt.event.KeyEvent.CHAR_UNDEFINED;
+import static org.fest.swing.util.Platform.osFamily;
 
 import java.util.Locale;
 
@@ -34,16 +35,26 @@ public class KeyStrokeMap {
   private static KeyStrokeMapCollection maps = new KeyStrokeMapCollection();
 
   static {
-    reloadFromLocale();
+    reloadFromSystemSettings();
   }
 
   /**
    * Reloads the key stroke mappings for the language from the default locale.
+   * @deprecated use <code>{@link #reloadFromSystemSettings()}</code> instead.
    */
+  @Deprecated
   public static void reloadFromLocale() {
+    reloadFromSystemSettings();
+  }
+
+  /**
+   * Reloads the key stroke mappings for the language using the current system settings.
+   * @since 1.2
+   */
+  public static void reloadFromSystemSettings() {
     KeyStrokeMappingProviderPicker picker = new KeyStrokeMappingProviderPicker();
     maps.clear();
-    addKeyStrokesFrom(picker.providerFor(Locale.getDefault()));
+    addKeyStrokesFrom(picker.providerFor(osFamily(), Locale.getDefault()));
   }
 
   @VisibleForTesting

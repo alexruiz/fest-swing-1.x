@@ -52,6 +52,6 @@ public abstract class KeyStrokeMap_TestCase {
 
   @After public final void tearDown() {
     KeyStrokeMap.updateKeyStrokeMapCollection(new KeyStrokeMapCollection());
-    KeyStrokeMap.reloadFromLocale();
+    KeyStrokeMap.reloadFromSystemSettings();
   }
 }

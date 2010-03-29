@@ -79,6 +79,15 @@
         Added class org.fest.swing.keystroke.KeyStrokeMappingsParser to parses a text file containing the 
         character-keystroke mappings and creates a KeyStrokeMappingProvider from those mappings. 
       </action>
+      <action dev="alexruiz" type="fix" issue="FEST-318" due-to="Olivier DOREMIEUX">
+        org.fest.swing.keystroke.KeyStrokeMap now loads mappings based on Operating System and locale. 
+      </action>
+      <action dev="alexruiz" type="fix" issue="FEST-318" due-to="Olivier DOREMIEUX">
+        Replaced method 'reloadFromLocale' with 'reloadFromSystemSettings' in org.fest.swing.keystroke.KeyStrokeMap. 
+      </action>
+      <action dev="alexruiz" type="fix" issue="FEST-318" due-to="Olivier DOREMIEUX">
+        Deprecated method 'reloadFromLocale' in org.fest.swing.keystroke.KeyStrokeMap. 
+      </action>
       <action dev="alexruiz" type="add" issue="FEST-322" due-to="Morten Breum Mikkelsen">
         Added method 'title' to class org.fest.swing.fixture.JOptionPaneFixture.
       </action>
