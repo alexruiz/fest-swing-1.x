@@ -26,7 +26,7 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 
 /**
- * Test cases for <code>{@link FrameFixture}</code>.
+ * Base test class for <code>{@link FrameFixture}</code>.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang

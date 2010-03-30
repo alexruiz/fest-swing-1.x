@@ -37,7 +37,6 @@ public final class ComponentEnabledQuery {
    * @return <code>true</code> if the given <code>Component</code> is enabled, <code>false</code> otherwise.
    * @see Component#isEnabled()
    */
-  // TODO: move to 'driver' package after fixing JTreeDriver.
   public static boolean isEnabled(final Component component) {
     return execute(new GuiQuery<Boolean>() {
       protected Boolean executeInEDT() {
