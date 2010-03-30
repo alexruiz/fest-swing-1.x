@@ -1,15 +1,15 @@
 /*
  * Created on Jun 15, 2008
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
- * 
+ *
  * Copyright @2008-2010 the original author or authors.
  */
 package org.fest.swing.fixture;
@@ -32,23 +32,23 @@ import org.junit.Test;
 
 /**
  * Test for <a href="http://code.google.com/p/fest/issues/detail?id=157" target="_blank">issue 157</a>.
- * 
+ *
  * @author Andriy Tsykholyas
  * @author Yvonne Wang
  */
-public class MacOsxMenuBarTest extends RobotBasedTestCase {
-  
+public class Bug157_MacOsxMenuBar_Test extends RobotBasedTestCase {
+
   private JMenuItemFixture menuItemFixture;
-  
+
   @Override protected void onSetUp() {
     System.setProperty("apple.laf.useScreenMenuBar", "true");
     robot.showWindow(MyWindow.createNew());
     FrameFixture frameFixture = findFrame("myWindow").withTimeout(2000).using(robot);
     menuItemFixture = frameFixture.menuItem("menuItem");
   }
-  
-  @Test 
-  public void shouldSelectMenu() {
+
+  @Test
+  public void should_select_menu() {
     final boolean[] selected = new boolean[1];
     JMenuItem menu = menuItemFixture.target;
     menu.addActionListener(new ActionListener() {
@@ -62,7 +62,7 @@ public class MacOsxMenuBarTest extends RobotBasedTestCase {
 
   private static class MyWindow extends TestWindow {
     private static final long serialVersionUID = 1L;
-    
+
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
@@ -71,9 +71,9 @@ public class MacOsxMenuBarTest extends RobotBasedTestCase {
         }
       });
     }
- 
+
     private MyWindow() {
-      super(MacOsxMenuBarTest.class);
+      super(Bug157_MacOsxMenuBar_Test.class);
       setName("myWindow");
       setJMenuBar(menuBar(menu(menuItem())));
       setPreferredSize(new Dimension(200, 100));
@@ -84,7 +84,7 @@ public class MacOsxMenuBarTest extends RobotBasedTestCase {
       menuItem.setName("menuItem");
       return menuItem;
     }
-    
+
     private JMenu menu(JMenuItem menuItem) {
       JMenu menu = new JMenu("Menu");
       menu.setName("menu");

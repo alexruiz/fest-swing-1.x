@@ -44,6 +44,8 @@ import org.junit.Test;
  */
 public class JTableHeaderFixtureTest extends ComponentFixture_TestCase<JTableHeader> {
 
+  // TODO Reorganize into smaller units
+
   private JTableHeaderDriver driver;
   private JTableHeader target;
   private JTableHeaderFixture fixture;
@@ -53,21 +55,6 @@ public class JTableHeaderFixtureTest extends ComponentFixture_TestCase<JTableHea
     fixture = new JTableHeaderFixture(robot(), target);
     driver = createMock(JTableHeaderDriver.class);
     fixture.driver(driver);
-  }
-
-  @Test(expected = NullPointerException.class)
-  public void shouldThrowErrorIfDriverIsNull() {
-    fixture.driver(null);
-  }
-
-  @Test(expected = NullPointerException.class)
-  public void shouldThrowErrorIfRobotIsNull() {
-    new JTableHeaderFixture(null, target);
-  }
-
-  @Test(expected = NullPointerException.class)
-  public void shouldThrowErrorIfTargetIsNull() {
-    new JTableHeaderFixture(robot(), null);
   }
 
   @Test

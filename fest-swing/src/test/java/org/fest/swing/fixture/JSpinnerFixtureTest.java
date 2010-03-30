@@ -30,7 +30,7 @@ import org.junit.Test;
  */
 public class JSpinnerFixtureTest extends JSpinnerFixture_TestCase {
 
-  // TODO Reorganize into smaller unites
+  // TODO Reorganize into smaller units
 
   @Test
   public void shouldRequireValue() {
