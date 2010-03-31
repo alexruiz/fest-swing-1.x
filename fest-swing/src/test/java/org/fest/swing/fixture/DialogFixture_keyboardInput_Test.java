@@ -32,8 +32,7 @@ import org.junit.BeforeClass;
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
-public class DialogFixture_keyboardInput_Test extends
-KeyboardInputSimulationFixture_TestCase<Dialog> {
+public class DialogFixture_keyboardInput_Test extends KeyboardInputSimulationFixture_TestCase<Dialog> {
 
   private static Dialog target;
 

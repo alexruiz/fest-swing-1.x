@@ -154,7 +154,7 @@ public abstract class JComboBoxDriver_TestCase extends RobotBasedTestCase {
 
     @RunsInEDT
     static MyWindow createNew(final Class<?> testClass) {
-      return GuiActionRunner.execute(new GuiQuery<MyWindow>() {
+      return execute(new GuiQuery<MyWindow>() {
         protected MyWindow executeInEDT() {
           return new MyWindow(testClass);
         }

@@ -15,12 +15,11 @@
  */
 package org.fest.swing.fixture;
 
-import static org.easymock.classextension.EasyMock.createMock;
 import static org.fest.swing.test.builder.JSplitPanes.splitPane;
+import static org.fest.swing.test.core.Mocks.mockRobot;
 
 import javax.swing.JSplitPane;
 
-import org.fest.swing.core.Robot;
 import org.fest.swing.test.core.EDTSafeTestCase;
 import org.junit.Before;
 import org.junit.Test;
@@ -39,7 +38,7 @@ public class JSplitPaneFixture_driver_Test extends EDTSafeTestCase {
   @Before
   public void setUp() {
     target = splitPane().createNew();
-    fixture = new JSplitPaneFixture(createMock(Robot.class), target);
+    fixture = new JSplitPaneFixture(mockRobot(), target);
   }
 
   @Test(expected = NullPointerException.class)

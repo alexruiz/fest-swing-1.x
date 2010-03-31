@@ -14,7 +14,7 @@
  */
 package org.fest.swing.input;
 
-import static org.easymock.classextension.EasyMock.createMock;
+import static org.fest.swing.test.core.Mocks.mockAWTEventListener;
 
 import java.awt.AWTEvent;
 import java.awt.ActiveEvent;
@@ -39,7 +39,7 @@ public abstract class DragAwareEventQueue_TestCase {
   @Before
   public final void setUp() {
     toolkit = ToolkitStub.createNew();
-    listener = createMock(AWTEventListener.class);
+    listener = mockAWTEventListener();
     queue = new DragAwareEventQueue(toolkit, mask, listener);
     toolkit.eventQueue(queue);
   }

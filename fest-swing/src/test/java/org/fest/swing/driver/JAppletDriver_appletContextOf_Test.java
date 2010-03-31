@@ -1,5 +1,5 @@
 /*
- * Created on Feb 25, 2008
+ * Created on Mar 30, 2010
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -11,33 +11,26 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2010 the original author or authors.
  */
 package org.fest.swing.driver;
 
-import static org.fest.swing.test.core.Mocks.mockRobot;
+import static org.fest.assertions.Assertions.assertThat;
+import java.applet.AppletContext;
 
-import org.fest.swing.test.core.EDTSafeTestCase;
-import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JTableDriver#cellWriter(org.fest.swing.cell.JTableCellWriter)}</code>.
+ * Tests for <code>{@link JAppletDriver#appletContextOf(javax.swing.JApplet)}</code>.
  *
  * @author Alex Ruiz
- * @author Yvonne Wang
  */
-public class JTableDriver_cellWriter_Test extends EDTSafeTestCase {
+public class JAppletDriver_appletContextOf_Test extends JAppletDriver_TestCase {
 
-  private JTableDriver driver;
-
-  @Before
-  public void setUp() {
-    driver = new JTableDriver(mockRobot());
-  }
-
-  @Test(expected = NullPointerException.class)
-  public void should_throw_error_if_cellWriter_is_null() {
-    driver.cellWriter(null);
+  @Test
+  public void should_return_AppletContext() {
+    AppletContext context = driver().appletContextOf(applet());
+    assertThat(context).isSameAs(context());
+    assertThat(applet().wasMethodCalledInEDT("getAppletContext")).isTrue();
   }
 }

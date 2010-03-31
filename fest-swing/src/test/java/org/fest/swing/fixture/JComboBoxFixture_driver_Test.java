@@ -15,12 +15,11 @@
  */
 package org.fest.swing.fixture;
 
-import static org.easymock.classextension.EasyMock.createMock;
 import static org.fest.swing.test.builder.JComboBoxes.comboBox;
+import static org.fest.swing.test.core.Mocks.mockRobot;
 
 import javax.swing.JComboBox;
 
-import org.fest.swing.core.Robot;
 import org.fest.swing.test.core.EDTSafeTestCase;
 import org.junit.Before;
 import org.junit.Test;
@@ -39,7 +38,7 @@ public class JComboBoxFixture_driver_Test extends EDTSafeTestCase {
   @Before
   public void setUp() {
     target = comboBox().createNew();
-    fixture = new JComboBoxFixture(createMock(Robot.class), target);
+    fixture = new JComboBoxFixture(mockRobot(), target);
   }
 
   @Test(expected = NullPointerException.class)

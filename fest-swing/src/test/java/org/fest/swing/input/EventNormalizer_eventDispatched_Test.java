@@ -18,6 +18,7 @@ package org.fest.swing.input;
 import static org.easymock.EasyMock.expect;
 import static org.easymock.EasyMock.expectLastCall;
 import static org.easymock.classextension.EasyMock.createMock;
+import static org.fest.swing.test.core.Mocks.mockAWTEvent;
 
 import java.awt.AWTEvent;
 import java.awt.event.AWTEventListener;
@@ -43,7 +44,7 @@ public class EventNormalizer_eventDispatched_Test extends EventNormalizer_TestCa
   public void setUp() {
     disposedWindowMonitor = createMock(DisposedWindowMonitor.class);
     delegateEventListener = mockDelegateEventListener();
-    event = createMock(AWTEvent.class);
+    event = mockAWTEvent();
     eventNormalizer = new EventNormalizer(disposedWindowMonitor);
     eventNormalizer.startListening(ToolkitStub.createNew(), delegateEventListener, 8);
   }

@@ -15,10 +15,9 @@
  */
 package org.fest.swing.driver;
 
-import static org.easymock.classextension.EasyMock.createMock;
 import static org.fest.assertions.Assertions.assertThat;
+import static org.fest.swing.test.core.Mocks.mockRobot;
 
-import org.fest.swing.core.Robot;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -32,7 +31,7 @@ public class JTreeDriver_separator_Test {
   private JTreeDriver driver;
 
   @Before public void setUp() {
-    driver = new JTreeDriver(createMock(Robot.class));
+    driver = new JTreeDriver(mockRobot());
   }
 
   @Test(expected = NullPointerException.class)

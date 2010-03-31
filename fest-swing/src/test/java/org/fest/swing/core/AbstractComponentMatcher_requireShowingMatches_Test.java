@@ -16,8 +16,8 @@
 package org.fest.swing.core;
 
 import static org.easymock.EasyMock.expect;
-import static org.easymock.classextension.EasyMock.createMock;
 import static org.fest.assertions.Assertions.assertThat;
+import static org.fest.swing.test.core.Mocks.mockComponent;
 
 import java.awt.Component;
 
@@ -66,9 +66,5 @@ public class AbstractComponentMatcher_requireShowingMatches_Test {
         assertThat(matcher.requireShowingMatches(c)).isFalse();
       }
     }.run();
-  }
-
-  private static Component mockComponent() {
-    return createMock(Component.class);
   }
 }

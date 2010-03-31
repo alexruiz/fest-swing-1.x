@@ -15,9 +15,9 @@
  */
 package org.fest.swing.core;
 
-import static org.easymock.classextension.EasyMock.createMock;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.edt.GuiActionRunner.execute;
+import static org.fest.swing.test.core.Mocks.mockContainer;
 import static org.fest.swing.test.task.ComponentRequestFocusAndWaitForFocusGainTask.giveFocusAndWaitTillIsFocused;
 
 import java.awt.*;
@@ -53,7 +53,7 @@ public class ContainerFocusOwnerFinder_focusOwnerOf_Test extends SequentialTestC
 
   @Test
   public void should_return_null_if_Container_is_not_Window() {
-    Container c = createMock(Container.class);
+    Container c = mockContainer();
     assertThat(focusOwnerOf(c)).isNull();
   }
 

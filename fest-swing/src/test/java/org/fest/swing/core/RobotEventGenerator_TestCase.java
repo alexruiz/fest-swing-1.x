@@ -17,6 +17,7 @@ package org.fest.swing.core;
 
 import static org.easymock.EasyMock.expect;
 import static org.easymock.classextension.EasyMock.createMock;
+import static org.fest.swing.test.core.Mocks.mockRobotFactory;
 
 import java.awt.Robot;
 import java.lang.reflect.Method;
@@ -36,7 +37,7 @@ public abstract class RobotEventGenerator_TestCase {
   RobotEventGenerator eventGenerator;
 
   @Before public final void setUp() throws Exception {
-    final RobotFactory robotFactory = createMock(RobotFactory.class);
+    final RobotFactory robotFactory = mockRobotFactory();
     robot = createMock(Robot.class, methodsToMockInRobot());
     new EasyMockTemplate(robotFactory) {
       protected void expectations() throws Throwable {
@@ -48,10 +49,10 @@ public abstract class RobotEventGenerator_TestCase {
       }
     }.run();
   }
-  
+
   abstract Method[] methodsToMockInRobot() throws Exception;
 
   final Method methodFromAWTRobot(String name, Class<?>...parameterTypes) throws Exception {
     return Robot.class.getDeclaredMethod(name, parameterTypes);
-  }  
+  }
 }

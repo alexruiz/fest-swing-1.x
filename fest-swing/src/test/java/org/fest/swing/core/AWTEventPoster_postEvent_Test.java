@@ -19,6 +19,7 @@ import static org.easymock.EasyMock.expect;
 import static org.easymock.EasyMock.expectLastCall;
 import static org.easymock.classextension.EasyMock.createMock;
 import static org.fest.assertions.Assertions.assertThat;
+import static org.fest.swing.test.core.Mocks.*;
 import static org.fest.swing.test.util.StopWatch.startNewStopWatch;
 
 import java.awt.*;
@@ -47,20 +48,20 @@ public class AWTEventPoster_postEvent_Test extends EDTSafeTestCase {
   private AWTEvent event;
   private AWTEventPoster poster;
 
-  @Before 
+  @Before
   public void setUp() {
-    toolkit = createMock(Toolkit.class);
+    toolkit = mockToolkit();
     inputState = createMock(InputState.class);
     monitor = createMock(WindowMonitor.class);
     settings = createMock(Settings.class);
     eventQueue = createMock(EventQueue.class);
-    event = createMock(AWTEvent.class);
+    event = mockAWTEvent();
     poster = new AWTEventPoster(toolkit, inputState, monitor, settings);
   }
 
   @Test
   public void should_post_event_in_Component_EventQueue_if_Component_is_not_null() {
-    final Component c = createMock(Component.class);
+    final Component c = mockComponent();
     new EasyMockTemplate(toolkit, inputState, monitor, settings, eventQueue) {
       protected void expectations() {
         expectInputStateToBeUpdatedWithEvent();
@@ -100,7 +101,7 @@ public class AWTEventPoster_postEvent_Test extends EDTSafeTestCase {
     eventQueue.postEvent(event);
     expectLastCall().once();
   }
-  
+
   private void expectSettingsToReturnDelayBetweenEvents() {
     expect(settings.delayBetweenEvents()).andReturn(WAIT_DELAY);
   }

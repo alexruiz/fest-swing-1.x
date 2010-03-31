@@ -16,10 +16,11 @@
 package org.fest.swing.fixture;
 
 import static org.easymock.EasyMock.expect;
-import static org.easymock.classextension.EasyMock.createMock;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.edt.GuiActionRunner.execute;
 import static org.fest.swing.test.builder.JTextFields.textField;
+import static org.fest.swing.test.core.Mocks.mockComponentFinder;
+import static org.fest.swing.test.core.Mocks.mockRobot;
 
 import java.awt.*;
 
@@ -41,6 +42,8 @@ import org.junit.Test;
  */
 public class ComponentFixtureTest extends EDTSafeTestCase {
 
+  // TODO Reorganize into smaller units
+
   private Robot robot;
   private Settings settings;
   private Class<JTextField> type;
@@ -48,7 +51,7 @@ public class ComponentFixtureTest extends EDTSafeTestCase {
   private JTextField target;
 
   @Before public void setUp() {
-    robot = createMock(Robot.class);
+    robot = mockRobot();
     settings = new Settings();
     type = JTextField.class;
     name = "textBox";
@@ -67,7 +70,7 @@ public class ComponentFixtureTest extends EDTSafeTestCase {
 
   @Test
   public void shouldLookupComponentByType() {
-    final ComponentFinder finder = finder();
+    final ComponentFinder finder = mockComponentFinder();
     new EasyMockTemplate(robot, finder) {
       protected void expectations() {
         expect(robot.settings()).andReturn(settings);
@@ -93,7 +96,7 @@ public class ComponentFixtureTest extends EDTSafeTestCase {
 
   @Test
   public void shouldLookupComponentByName() {
-    final ComponentFinder finder = finder();
+    final ComponentFinder finder = mockComponentFinder();
     new EasyMockTemplate(robot, finder) {
       protected void expectations() {
         expect(robot.settings()).andReturn(settings);
@@ -105,10 +108,6 @@ public class ComponentFixtureTest extends EDTSafeTestCase {
         assertHasCorrectTarget(new ConcreteComponentFixture(robot, name, type));
       }
     }.run();
-  }
-
-  private ComponentFinder finder() {
-    return createMock(ComponentFinder.class);
   }
 
   private boolean requireShowing() {

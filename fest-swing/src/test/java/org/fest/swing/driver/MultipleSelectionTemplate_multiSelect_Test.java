@@ -16,8 +16,8 @@
 package org.fest.swing.driver;
 
 import static org.easymock.EasyMock.expectLastCall;
-import static org.easymock.classextension.EasyMock.createMock;
 import static org.fest.assertions.Assertions.assertThat;
+import static org.fest.swing.test.core.Mocks.mockRobot;
 import static org.fest.swing.util.Platform.controlOrCommandKey;
 
 import org.fest.mocks.EasyMockTemplate;
@@ -36,10 +36,10 @@ public class MultipleSelectionTemplate_multiSelect_Test {
   private MultipleSelection template;
 
   @Before public void setUp() {
-    robot = createMock(Robot.class);
+    robot = mockRobot();
   }
 
-  @Test 
+  @Test
   public void should_select_once_if_element_count_is_one() {
     template = new MultipleSelection(robot, 1);
     new EasyMockTemplate(robot) {
@@ -51,8 +51,8 @@ public class MultipleSelectionTemplate_multiSelect_Test {
       }
     }.run();
   }
-  
-  @Test 
+
+  @Test
   public void should_select_multiple_items() {
     template = new MultipleSelection(robot, 2);
     final int key = controlOrCommandKey();
@@ -73,9 +73,9 @@ public class MultipleSelectionTemplate_multiSelect_Test {
 
   private static class MultipleSelection extends MultipleSelectionTemplate {
     private final int elementCount;
-    
+
     int timesSelected;
-    
+
     MultipleSelection(Robot robot, int elementCount) {
       super(robot);
       this.elementCount = elementCount;

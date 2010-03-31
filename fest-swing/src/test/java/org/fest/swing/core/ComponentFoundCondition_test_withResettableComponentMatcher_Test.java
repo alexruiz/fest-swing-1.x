@@ -18,6 +18,7 @@ package org.fest.swing.core;
 import static java.util.Collections.emptyList;
 import static org.easymock.EasyMock.expect;
 import static org.easymock.classextension.EasyMock.createMock;
+import static org.fest.swing.test.core.Mocks.*;
 import static org.fest.util.Collections.list;
 
 import java.awt.Component;
@@ -45,9 +46,9 @@ public class ComponentFoundCondition_test_withResettableComponentMatcher_Test ex
 
   @Before
   public void setUp() {
-    finder = createMock(ComponentFinder.class);
+    finder = mockComponentFinder();
     matcher = createMock(ResettableComponentMatcher.class);
-    root = createMock(Container.class);
+    root = mockContainer();
     condition = new ComponentFoundCondition("",  finder, matcher, root);
   }
 
@@ -68,7 +69,7 @@ public class ComponentFoundCondition_test_withResettableComponentMatcher_Test ex
 
   @Test
   public void should_reset_matcher_when_match_found() {
-    final List<Component> found = list(createMock(Component.class));
+    final List<Component> found = list(mockComponent());
     new EasyMockTemplate(finder, matcher) {
       protected void expectations() {
         expect(finder.findAll(root, matcher)).andReturn(found);

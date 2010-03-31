@@ -15,12 +15,11 @@
  */
 package org.fest.swing.driver;
 
-import static org.easymock.EasyMock.createMock;
 import static org.fest.swing.test.builder.JTrees.tree;
+import static org.fest.swing.test.core.Mocks.mockRobot;
 
 import javax.swing.JTree;
 
-import org.fest.swing.core.Robot;
 import org.fest.swing.test.core.EDTSafeTestCase;
 import org.junit.Before;
 import org.junit.Test;
@@ -34,13 +33,13 @@ public class JTreeDriver_selectPaths_withInvalidInput_Test extends EDTSafeTestCa
 
   private JTree tree;
   private JTreeDriver driver;
-  
-  @Before 
+
+  @Before
   public void onSetUp() {
     tree = tree().createNew();
-    driver = new JTreeDriver(createMock(Robot.class));
+    driver = new JTreeDriver(mockRobot());
   }
-  
+
   @Test(expected = NullPointerException.class)
   public void should_throw_error_if_array_is_null() {
     String[] paths = null;

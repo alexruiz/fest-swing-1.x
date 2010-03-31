@@ -17,8 +17,8 @@ package org.fest.swing.keystroke;
 
 import static java.awt.event.InputEvent.CTRL_MASK;
 import static java.awt.event.KeyEvent.VK_A;
-import static org.easymock.classextension.EasyMock.createMock;
 import static org.fest.assertions.Assertions.assertThat;
+import static org.fest.swing.test.core.Mocks.mockKeyStrokeMappingProvider;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -41,7 +41,7 @@ public abstract class KeyStrokeMap_TestCase {
   Collection<KeyStrokeMapping> mappings;
 
   @Before public final void setUp() {
-    provider = createMock(KeyStrokeMappingProvider.class);
+    provider = mockKeyStrokeMappingProvider();
     keyStroke = KeyStroke.getKeyStroke(VK_A, CTRL_MASK);
     mapping = new KeyStrokeMapping('A', keyStroke);
     mappings = new ArrayList<KeyStrokeMapping>();

@@ -18,13 +18,13 @@ package org.fest.swing.driver;
 import static org.easymock.classextension.EasyMock.createMock;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.test.core.CommonAssertions.failWhenExpectingException;
+import static org.fest.swing.test.core.Mocks.mockRobot;
 import static org.fest.util.Arrays.array;
 
 import java.io.File;
 
 import javax.swing.JFileChooser;
 
-import org.fest.swing.core.Robot;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -41,7 +41,7 @@ public class JFileChooserDriver_selectFiles_withInvalidInput_Test {
 
   @Before public void setUp() {
     fileChooser = createMock(JFileChooser.class);
-    driver = new JFileChooserDriver(createMock(Robot.class));
+    driver = new JFileChooserDriver(mockRobot());
   }
 
   @Test

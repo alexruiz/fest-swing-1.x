@@ -15,12 +15,11 @@
  */
 package org.fest.swing.fixture;
 
-import static org.easymock.classextension.EasyMock.createMock;
 import static org.fest.swing.test.builder.JInternalFrames.internalFrame;
+import static org.fest.swing.test.core.Mocks.mockRobot;
 
 import javax.swing.JInternalFrame;
 
-import org.fest.swing.core.Robot;
 import org.fest.swing.test.core.EDTSafeTestCase;
 import org.junit.Before;
 import org.junit.Test;
@@ -39,7 +38,7 @@ public class JInternalFrameFixture_driver_Test extends EDTSafeTestCase {
   @Before
   public void setUp() {
     target = internalFrame().createNew();
-    fixture = new JInternalFrameFixture(createMock(Robot.class), target);
+    fixture = new JInternalFrameFixture(mockRobot(), target);
   }
 
   @Test(expected = NullPointerException.class)

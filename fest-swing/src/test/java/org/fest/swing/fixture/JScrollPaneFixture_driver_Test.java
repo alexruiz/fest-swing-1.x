@@ -15,12 +15,11 @@
  */
 package org.fest.swing.fixture;
 
-import static org.easymock.classextension.EasyMock.createMock;
 import static org.fest.swing.test.builder.JScrollPanes.scrollPane;
+import static org.fest.swing.test.core.Mocks.mockRobot;
 
 import javax.swing.JScrollPane;
 
-import org.fest.swing.core.Robot;
 import org.fest.swing.test.core.EDTSafeTestCase;
 import org.junit.Before;
 import org.junit.Test;
@@ -39,7 +38,7 @@ public class JScrollPaneFixture_driver_Test extends EDTSafeTestCase {
   @Before
   public void setUp() {
     target = scrollPane().createNew();
-    fixture = new JScrollPaneFixture(createMock(Robot.class), target);
+    fixture = new JScrollPaneFixture(mockRobot(), target);
   }
 
   @Test(expected = NullPointerException.class)

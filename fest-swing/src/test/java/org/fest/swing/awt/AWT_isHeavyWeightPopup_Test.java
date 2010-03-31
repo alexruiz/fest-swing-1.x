@@ -15,10 +15,10 @@
  */
 package org.fest.swing.awt;
 
-import static org.easymock.classextension.EasyMock.createMock;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.test.builder.JDialogs.dialog;
 import static org.fest.swing.test.builder.JFrames.frame;
+import static org.fest.swing.test.core.Mocks.mockWindow;
 
 import java.awt.Window;
 
@@ -37,7 +37,7 @@ public class AWT_isHeavyWeightPopup_Test extends EDTSafeTestCase {
 
   @Test
   public void should_return_false_if_Component_is_Window() {
-    Window w = createMock(Window.class);
+    Window w = mockWindow();
     assertThat(AWT.isHeavyWeightPopup(w)).isFalse();
   }
 

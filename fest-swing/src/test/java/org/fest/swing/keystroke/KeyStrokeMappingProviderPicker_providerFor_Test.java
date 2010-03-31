@@ -20,6 +20,7 @@ import static org.easymock.EasyMock.expect;
 import static org.easymock.classextension.EasyMock.createMock;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.keystroke.KeyStrokeMappingProviderNames.generateNamesFrom;
+import static org.fest.swing.test.core.Mocks.mockKeyStrokeMappingProvider;
 import static org.fest.swing.util.OSFamily.WINDOWS;
 import java.util.Locale;
 
@@ -47,7 +48,7 @@ public class KeyStrokeMappingProviderPicker_providerFor_Test {
   public void should_try_to_instantiate_provider_from_system_settings() {
     KeyStrokeMappingProviderNames names = generateNamesFrom(WINDOWS, US);
     final String firstName = names.iterator().next();
-    final KeyStrokeMappingProvider provider = createMock(KeyStrokeMappingProvider.class);
+    final KeyStrokeMappingProvider provider = mockKeyStrokeMappingProvider();
     new EasyMockTemplate(factory) {
       protected void expectations() {
         expect(factory.createProvider(firstName)).andReturn(provider);

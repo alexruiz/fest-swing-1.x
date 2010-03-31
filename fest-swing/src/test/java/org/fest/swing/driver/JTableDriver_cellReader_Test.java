@@ -15,9 +15,8 @@
  */
 package org.fest.swing.driver;
 
-import static org.easymock.classextension.EasyMock.createMock;
+import static org.fest.swing.test.core.Mocks.mockRobot;
 
-import org.fest.swing.core.Robot;
 import org.fest.swing.test.core.EDTSafeTestCase;
 import org.junit.Before;
 import org.junit.Test;
@@ -34,7 +33,7 @@ public class JTableDriver_cellReader_Test extends EDTSafeTestCase {
 
   @Before
   public void setUp() {
-    driver = new JTableDriver(createMock(Robot.class));
+    driver = new JTableDriver(mockRobot());
   }
 
   @Test(expected = NullPointerException.class)

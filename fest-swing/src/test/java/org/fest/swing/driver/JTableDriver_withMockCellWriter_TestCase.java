@@ -17,11 +17,11 @@ package org.fest.swing.driver;
 
 import static org.easymock.classextension.EasyMock.createMock;
 import static org.fest.swing.test.builder.JTables.table;
+import static org.fest.swing.test.core.Mocks.mockRobot;
 
 import javax.swing.JTable;
 
 import org.fest.swing.cell.JTableCellWriter;
-import org.fest.swing.core.Robot;
 import org.fest.swing.test.core.EDTSafeTestCase;
 import org.junit.Before;
 
@@ -39,7 +39,7 @@ public abstract class JTableDriver_withMockCellWriter_TestCase extends EDTSafeTe
 
   @Before
   public final void setUp() {
-    driver = new JTableDriver(createMock(Robot.class));
+    driver = new JTableDriver(mockRobot());
     cellWriter = createMock(JTableCellWriter.class);
     driver.cellWriter(cellWriter);
     table = table().withRowCount(1).withColumnCount(6).createNew();

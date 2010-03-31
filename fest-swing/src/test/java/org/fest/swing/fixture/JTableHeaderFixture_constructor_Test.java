@@ -15,11 +15,11 @@
  */
 package org.fest.swing.fixture;
 
-import static org.easymock.classextension.EasyMock.createMock;
 import static org.fest.swing.test.builder.JTableHeaders.tableHeader;
+import static org.fest.swing.test.core.Mocks.mockRobot;
+
 import javax.swing.table.JTableHeader;
 
-import org.fest.swing.core.Robot;
 import org.fest.swing.test.core.EDTSafeTestCase;
 import org.junit.Test;
 
@@ -38,6 +38,6 @@ public class JTableHeaderFixture_constructor_Test extends EDTSafeTestCase {
 
   @Test(expected = NullPointerException.class)
   public void should_throw_error_if_target_is_null() {
-    new JTableHeaderFixture(createMock(Robot.class), null);
+    new JTableHeaderFixture(mockRobot(), null);
   }
 }

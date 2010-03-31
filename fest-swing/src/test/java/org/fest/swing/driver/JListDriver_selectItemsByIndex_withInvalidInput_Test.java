@@ -16,10 +16,10 @@
 package org.fest.swing.driver;
 
 import static org.easymock.classextension.EasyMock.createMock;
+import static org.fest.swing.test.core.Mocks.mockRobot;
 
 import javax.swing.JList;
 
-import org.fest.swing.core.Robot;
 import org.fest.swing.test.core.EDTSafeTestCase;
 import org.junit.Before;
 import org.junit.Test;
@@ -36,7 +36,7 @@ public class JListDriver_selectItemsByIndex_withInvalidInput_Test extends EDTSaf
   private JList list;
 
   @Before public void setUp() {
-    driver = new JListDriver(createMock(Robot.class));
+    driver = new JListDriver(mockRobot());
     list = createMock(JList.class);
   }
 
@@ -51,6 +51,4 @@ public class JListDriver_selectItemsByIndex_withInvalidInput_Test extends EDTSaf
     int[] indices = new int[0];
     driver.selectItems(list, indices);
   }
-
-
 }

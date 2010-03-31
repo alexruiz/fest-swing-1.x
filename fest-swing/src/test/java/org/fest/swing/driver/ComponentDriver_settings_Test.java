@@ -16,8 +16,8 @@
 package org.fest.swing.driver;
 
 import static org.easymock.EasyMock.expect;
-import static org.easymock.classextension.EasyMock.createMock;
 import static org.fest.assertions.Assertions.assertThat;
+import static org.fest.swing.test.core.Mocks.mockRobot;
 
 import org.fest.mocks.EasyMockTemplate;
 import org.fest.swing.core.Robot;
@@ -36,9 +36,9 @@ public class ComponentDriver_settings_Test {
   private Robot robot;
   private ComponentDriver driver;
 
-  @Before 
+  @Before
   public void setUp() {
-    robot = createMock(Robot.class);
+    robot = mockRobot();
     driver = new ComponentDriver(robot);
   }
 

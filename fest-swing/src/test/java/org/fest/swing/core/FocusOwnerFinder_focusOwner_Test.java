@@ -36,11 +36,15 @@ public class FocusOwnerFinder_focusOwner_Test {
   private FocusOwnerFinderStrategy strategy1;
   private FocusOwnerFinderStrategy strategy2;
 
-  @Before 
+  @Before
   public void setUp() {
-    strategy1 = createMock(FocusOwnerFinderStrategy.class);
-    strategy2 = createMock(FocusOwnerFinderStrategy.class);
+    strategy1 = mockFocusOwnerFinderStrategy();
+    strategy2 = mockFocusOwnerFinderStrategy();
     FocusOwnerFinder.replaceStrategiesWith(strategy1, strategy2);
+  }
+
+  private static FocusOwnerFinderStrategy mockFocusOwnerFinderStrategy() {
+    return createMock(FocusOwnerFinderStrategy.class);
   }
 
   @After

@@ -15,13 +15,12 @@
  */
 package org.fest.swing.fixture;
 
-import static org.easymock.classextension.EasyMock.createMock;
 import static org.fest.swing.test.builder.JDialogs.dialog;
+import static org.fest.swing.test.core.Mocks.mockRobot;
 import static org.fest.swing.test.task.WindowDestroyTask.hideAndDisposeInEDT;
 
 import java.awt.Dialog;
 
-import org.fest.swing.core.Robot;
 import org.fest.swing.test.core.EDTSafeTestCase;
 import org.junit.*;
 
@@ -39,7 +38,7 @@ public class DialogFixture_driver_Test extends EDTSafeTestCase {
   @Before
   public void setUp() {
     target = dialog().createNew();
-    fixture = new DialogFixture(createMock(Robot.class), target);
+    fixture = new DialogFixture(mockRobot(), target);
   }
 
   @After

@@ -17,11 +17,10 @@ package org.fest.swing.core;
 
 import static java.awt.event.InputEvent.*;
 import static java.awt.event.KeyEvent.VK_A;
-import static org.easymock.classextension.EasyMock.createMock;
 import static org.fest.assertions.Assertions.assertThat;
+import static org.fest.swing.test.core.Mocks.mockComponent;
 import static org.fest.util.Collections.list;
 
-import java.awt.Component;
 import java.awt.event.KeyEvent;
 import java.util.Collection;
 
@@ -69,9 +68,5 @@ public class InputModifiers_modifiersMatch_Test {
 
   private static KeyEvent keyEventWithModifiers(int modifiers) {
     return new KeyEvent(mockComponent(), 0, 0, modifiers, VK_A, 'a');
-  }
-
-  private static Component mockComponent() {
-    return createMock(Component.class);
   }
 }

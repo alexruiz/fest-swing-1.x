@@ -51,7 +51,7 @@ public class KeyStrokeMap_charFor_Test extends KeyStrokeMap_TestCase {
   @Test
   public void should_strip_modifiers_except_Shift_if_char_for_KeyStroke_not_found() {
     final Character character = 'a';
-    final KeyStrokeMapCollection maps = createMock(KeyStrokeMapCollection.class);
+    final KeyStrokeMapCollection maps = mockKeyStrokeMapCollection();
     KeyStrokeMap.updateKeyStrokeMapCollection(maps);
     new EasyMockTemplate(maps) {
       protected void expectations() {
@@ -67,7 +67,7 @@ public class KeyStrokeMap_charFor_Test extends KeyStrokeMap_TestCase {
 
   @Test
   public void should_return_undefined_character_if_char_for_KeyStroke_not_found() {
-    final KeyStrokeMapCollection maps = createMock(KeyStrokeMapCollection.class);
+    final KeyStrokeMapCollection maps = mockKeyStrokeMapCollection();
     KeyStrokeMap.updateKeyStrokeMapCollection(maps);
     new EasyMockTemplate(maps) {
       protected void expectations() {
@@ -79,6 +79,10 @@ public class KeyStrokeMap_charFor_Test extends KeyStrokeMap_TestCase {
         assertThat(KeyStrokeMap.charFor(keyStroke)).isEqualTo(CHAR_UNDEFINED);
       }
     }.run();
+  }
+
+  private KeyStrokeMapCollection mockKeyStrokeMapCollection() {
+    return createMock(KeyStrokeMapCollection.class);
   }
 
   private static KeyStroke removeModifiersExceptShift(KeyStroke base) {

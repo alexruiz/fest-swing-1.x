@@ -15,13 +15,12 @@
  */
 package org.fest.swing.fixture;
 
-import static org.easymock.classextension.EasyMock.createMock;
 import static org.fest.swing.test.builder.JFrames.frame;
+import static org.fest.swing.test.core.Mocks.mockRobot;
 import static org.fest.swing.test.task.WindowDestroyTask.hideAndDisposeInEDT;
 
 import java.awt.Frame;
 
-import org.fest.swing.core.Robot;
 import org.fest.swing.test.core.EDTSafeTestCase;
 import org.junit.*;
 
@@ -39,7 +38,7 @@ public class FrameFixture_driver_Test extends EDTSafeTestCase {
   @Before
   public void setUp() {
     target = frame().createNew();
-    fixture = new FrameFixture(createMock(Robot.class), target);
+    fixture = new FrameFixture(mockRobot(), target);
   }
 
   @After

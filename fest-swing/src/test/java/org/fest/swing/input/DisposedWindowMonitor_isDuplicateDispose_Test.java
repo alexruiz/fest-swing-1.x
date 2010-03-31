@@ -16,10 +16,10 @@
 package org.fest.swing.input;
 
 import static java.awt.event.WindowEvent.*;
-import static org.easymock.classextension.EasyMock.createMock;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.assertions.MapAssert.entry;
 import static org.fest.swing.test.builder.JFrames.frame;
+import static org.fest.swing.test.core.Mocks.mockAWTEvent;
 
 import java.awt.AWTEvent;
 import java.awt.Window;
@@ -46,7 +46,7 @@ public class DisposedWindowMonitor_isDuplicateDispose_Test {
 
   @Test
   public void should_return_is_not_duplicate_if_event_is_not_WindowEvent() {
-    assertThat(monitor.isDuplicateDispose(createMock(AWTEvent.class))).isFalse();
+    assertThat(monitor.isDuplicateDispose(mockAWTEvent())).isFalse();
     assertThat(monitor.disposedWindows).isEmpty();
   }
 

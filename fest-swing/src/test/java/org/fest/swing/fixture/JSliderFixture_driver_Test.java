@@ -15,12 +15,11 @@
  */
 package org.fest.swing.fixture;
 
-import static org.easymock.classextension.EasyMock.createMock;
 import static org.fest.swing.test.builder.JSliders.slider;
+import static org.fest.swing.test.core.Mocks.mockRobot;
 
 import javax.swing.JSlider;
 
-import org.fest.swing.core.Robot;
 import org.fest.swing.test.core.EDTSafeTestCase;
 import org.junit.Before;
 import org.junit.Test;
@@ -39,7 +38,7 @@ public class JSliderFixture_driver_Test extends EDTSafeTestCase {
   @Before
   public void setUp() {
     target = slider().createNew();
-    fixture = new JSliderFixture(createMock(Robot.class), target);
+    fixture = new JSliderFixture(mockRobot(), target);
   }
 
   @Test(expected = NullPointerException.class)
