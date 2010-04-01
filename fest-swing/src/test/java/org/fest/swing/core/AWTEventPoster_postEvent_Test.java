@@ -21,7 +21,6 @@ import static org.easymock.classextension.EasyMock.createMock;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.test.awt.AWTEvents.singletonAWTEventMock;
 import static org.fest.swing.test.awt.Toolkits.newToolkitMock;
-import static org.fest.swing.test.core.Mocks.*;
 import static org.fest.swing.test.util.StopWatch.startNewStopWatch;
 
 import java.awt.*;
@@ -29,6 +28,7 @@ import java.awt.*;
 import org.fest.mocks.EasyMockTemplate;
 import org.fest.swing.input.InputState;
 import org.fest.swing.monitor.WindowMonitor;
+import org.fest.swing.test.awt.Components;
 import org.fest.swing.test.core.EDTSafeTestCase;
 import org.fest.swing.test.util.StopWatch;
 import org.junit.Before;
@@ -63,7 +63,7 @@ public class AWTEventPoster_postEvent_Test extends EDTSafeTestCase {
 
   @Test
   public void should_post_event_in_Component_EventQueue_if_Component_is_not_null() {
-    final Component c = mockComponent();
+    final Component c = Components.newComponentMock();
     new EasyMockTemplate(toolkit, inputState, monitor, settings, eventQueue) {
       protected void expectations() {
         expectInputStateToBeUpdatedWithEvent();

@@ -17,10 +17,10 @@ package org.fest.swing.core;
 
 import static org.easymock.EasyMock.expect;
 import static org.fest.assertions.Assertions.assertThat;
+import static org.fest.swing.core.ComponentFinders.newComponentFinderMock;
 import static org.fest.swing.core.UnexpectedJOptionPaneFinder.OPTION_PANE_MATCHER;
 import static org.fest.swing.test.builder.JOptionPanes.optionPane;
 import static org.fest.swing.test.core.CommonAssertions.failWhenExpectingException;
-import static org.fest.swing.test.core.Mocks.mockComponentFinder;
 
 import java.awt.Component;
 import java.util.ArrayList;
@@ -42,7 +42,7 @@ public class UnexpectedJOptionPaneFinder_requireNoJOptionPaneIsShowing_Test exte
   private UnexpectedJOptionPaneFinder finder;
 
   @Before public void setUp() {
-    delegate = mockComponentFinder();
+    delegate = newComponentFinderMock();
     finder = new UnexpectedJOptionPaneFinder(delegate);
   }
 

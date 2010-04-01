@@ -40,9 +40,9 @@ public class SingleComponentHierarchy_parentOf_Test extends SingleComponentHiera
   public void should_return_parent_of_Component() {
     final JFrame p = frame().createNew();
     final JLabel c = label().createNew();
-    new EasyMockTemplate(delegate) {
+    new EasyMockTemplate(hierarchyDelegate) {
       protected void expectations() {
-        expect(delegate.parentOf(c)).andReturn(p);
+        expect(hierarchyDelegate.parentOf(c)).andReturn(p);
       }
 
       protected void codeToTest() {

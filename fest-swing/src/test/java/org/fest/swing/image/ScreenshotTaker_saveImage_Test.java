@@ -18,8 +18,8 @@ package org.fest.swing.image;
 import static org.easymock.EasyMock.expect;
 import static org.easymock.classextension.EasyMock.createMock;
 import static org.fest.assertions.Assertions.assertThat;
+import static org.fest.swing.image.ImageFileWriters.newImageFileWriterMock;
 import static org.fest.swing.test.core.CommonAssertions.failWhenExpectingException;
-import static org.fest.swing.test.core.Mocks.mockImageFileWriter;
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -46,7 +46,7 @@ public class ScreenshotTaker_saveImage_Test {
   @Before public void setUp() {
     image = createMock(BufferedImage.class);
     path = "image.png";
-    writer = mockImageFileWriter();
+    writer = newImageFileWriterMock();
     error = new IOException("On Purpose");
     taker = new ScreenshotTaker(writer, new RobotFactory());
   }

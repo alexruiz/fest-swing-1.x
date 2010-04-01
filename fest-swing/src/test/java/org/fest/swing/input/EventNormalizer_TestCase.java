@@ -16,7 +16,7 @@
 package org.fest.swing.input;
 
 import static org.fest.assertions.Assertions.assertThat;
-import static org.fest.swing.test.core.Mocks.mockAWTEventListener;
+import static org.fest.swing.test.awt.AWTEventListeners.singletonAWTEventListenerMock;
 
 import java.awt.event.AWTEventListener;
 import java.util.List;
@@ -43,7 +43,7 @@ public abstract class EventNormalizer_TestCase {
     assertThat(listeners).isNullOrEmpty();
   }
 
-  final AWTEventListener mockDelegateEventListener() {
-    return mockAWTEventListener();
+  final AWTEventListener delegateEventListenerMock() {
+    return singletonAWTEventListenerMock();
   }
 }

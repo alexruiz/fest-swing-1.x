@@ -16,8 +16,8 @@
 package org.fest.swing.core;
 
 import static org.easymock.EasyMock.expectLastCall;
+import static org.fest.swing.core.ComponentHierarchies.newComponentHierarchyMock;
 import static org.fest.swing.test.builder.JFrames.frame;
-import static org.fest.swing.test.core.Mocks.mockComponentHierarchy;
 import static org.fest.swing.test.task.WindowDestroyTask.hideAndDisposeInEDT;
 import static org.fest.util.Collections.list;
 
@@ -45,7 +45,7 @@ public class Bug138_disposeWindows_Test extends EDTSafeTestCase {
 
   @Before
   public void setUp() {
-    hierarchy = mockComponentHierarchy();
+    hierarchy = newComponentHierarchyMock();
     robot = new TestRobotFixture(hierarchy);
   }
 

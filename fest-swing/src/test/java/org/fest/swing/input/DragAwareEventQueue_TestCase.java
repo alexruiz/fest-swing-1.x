@@ -14,13 +14,11 @@
  */
 package org.fest.swing.input;
 
+import static org.fest.swing.test.awt.AWTEventListeners.singletonAWTEventListenerMock;
 import static org.fest.swing.test.awt.Toolkits.newToolkitStub;
-import static org.fest.swing.test.core.Mocks.mockAWTEventListener;
 
 import java.awt.AWTEvent;
 import java.awt.ActiveEvent;
-import java.awt.event.AWTEventListener;
-
 import org.fest.swing.test.awt.ToolkitStub;
 import org.junit.Before;
 
@@ -34,14 +32,12 @@ public abstract class DragAwareEventQueue_TestCase {
   private long mask;
 
   ToolkitStub toolkit;
-  AWTEventListener listener;
   DragAwareEventQueue queue;
 
   @Before
   public final void setUp() {
     toolkit = newToolkitStub();
-    listener = mockAWTEventListener();
-    queue = new DragAwareEventQueue(toolkit, mask, listener);
+    queue = new DragAwareEventQueue(toolkit, mask, singletonAWTEventListenerMock());
     toolkit.eventQueue(queue);
   }
 

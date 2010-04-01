@@ -17,11 +17,12 @@ package org.fest.swing.core;
 
 import static org.easymock.EasyMock.expect;
 import static org.fest.assertions.Assertions.assertThat;
-import static org.fest.swing.test.core.Mocks.mockComponent;
+import static org.fest.swing.test.awt.Components.newComponentMock;
 
 import java.awt.Component;
 
 import org.fest.mocks.EasyMockTemplate;
+import org.junit.Before;
 import org.junit.Test;
 
 /**
@@ -31,24 +32,29 @@ import org.junit.Test;
  */
 public class AbstractComponentMatcher_requireShowingMatches_Test {
 
+  private Component component;
+
+  @Before
+  public void setUp() {
+    component = newComponentMock();
+  }
+
   @Test
   public void should_always_match_if_requireShowing_is_false() {
     AbstractComponentMatcher matcher = new ConcreteComponentMatcher(false);
-    Component c = mockComponent();
-    assertThat(matcher.requireShowingMatches(c)).isTrue();
+    assertThat(matcher.requireShowingMatches(component)).isTrue();
   }
 
   @Test
   public void should_match_if_requireShowing_is_true_and_Component_is_showing() {
     final AbstractComponentMatcher matcher = new ConcreteComponentMatcher(true);
-    final Component c = mockComponent();
-    new EasyMockTemplate(c) {
+    new EasyMockTemplate(component) {
       protected void expectations() {
-        expect(c.isShowing()).andReturn(true);
+        expect(component.isShowing()).andReturn(true);
       }
 
       protected void codeToTest() {
-        assertThat(matcher.requireShowingMatches(c)).isTrue();
+        assertThat(matcher.requireShowingMatches(component)).isTrue();
       }
     }.run();
   }
@@ -56,14 +62,13 @@ public class AbstractComponentMatcher_requireShowingMatches_Test {
   @Test
   public void should_not_match_if_requireShowing_is_true_and_Component_is_not_showing() {
     final AbstractComponentMatcher matcher = new ConcreteComponentMatcher(true);
-    final Component c = mockComponent();
-    new EasyMockTemplate(c) {
+    new EasyMockTemplate(component) {
       protected void expectations() {
-        expect(c.isShowing()).andReturn(false);
+        expect(component.isShowing()).andReturn(false);
       }
 
       protected void codeToTest() {
-        assertThat(matcher.requireShowingMatches(c)).isFalse();
+        assertThat(matcher.requireShowingMatches(component)).isFalse();
       }
     }.run();
   }

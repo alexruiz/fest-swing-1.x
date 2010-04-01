@@ -1,5 +1,5 @@
 /*
- * Created on Mar 30, 2010
+ * Created on Mar 31, 2010
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -12,28 +12,30 @@
  *
  * Copyright @2010 the original author or authors.
  */
-package org.fest.swing.test.core;
+package org.fest.swing.test.awt;
 
 import static org.easymock.classextension.EasyMock.createMock;
 
-
-import org.fest.swing.core.Robot;
-import org.fest.swing.util.RobotFactory;
+import java.awt.event.AWTEventListener;
 
 /**
- * Understands common mock objects.
+ * Understands <code>{@link AWTEventListener}</code>s to be used for testing purposes.
  *
  * @author Alex Ruiz
  */
-public final class Mocks {
+public final class AWTEventListeners {
 
-  public static Robot mockRobot() {
-    return createMock(Robot.class);
+  public static AWTEventListener singletonAWTEventListenerMock() {
+    return LazyLoadedSingleton.INSTANCE;
   }
 
-  public static RobotFactory mockRobotFactory() {
-    return createMock(RobotFactory.class);
+  private static class LazyLoadedSingleton {
+    static final AWTEventListener INSTANCE = newAWTEventListenerMock();
   }
 
-  private Mocks() {}
+  public static AWTEventListener newAWTEventListenerMock() {
+    return createMock(AWTEventListener.class);
+  }
+
+  private AWTEventListeners() {}
 }

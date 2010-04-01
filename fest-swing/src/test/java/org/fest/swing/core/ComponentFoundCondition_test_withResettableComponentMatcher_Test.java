@@ -17,10 +17,12 @@ package org.fest.swing.core;
 
 import static org.easymock.EasyMock.expect;
 import static org.easymock.classextension.EasyMock.createMock;
+import static org.fest.swing.core.ComponentFinders.newComponentFinderMock;
+import static org.fest.swing.test.awt.Components.singletonComponentMock;
 import static org.fest.swing.test.awt.Containers.singletonContainerMock;
-import static org.fest.swing.test.core.Mocks.mockComponent;
-import static org.fest.swing.test.core.Mocks.mockComponentFinder;
+
 import java.awt.Container;
+
 import org.fest.mocks.EasyMockTemplate;
 import org.fest.swing.exception.ComponentLookupException;
 import org.fest.swing.test.core.EDTSafeTestCase;
@@ -47,7 +49,7 @@ public class ComponentFoundCondition_test_withResettableComponentMatcher_Test ex
 
   @Before
   public void setUp() {
-    finder = mockComponentFinder();
+    finder = newComponentFinderMock();
     matcher = createMock(ResettableComponentMatcher.class);
     condition = new ComponentFoundCondition("",  finder, matcher, root);
   }
@@ -70,7 +72,7 @@ public class ComponentFoundCondition_test_withResettableComponentMatcher_Test ex
   public void should_reset_matcher_when_match_found() {
     new EasyMockTemplate(finder, matcher) {
       protected void expectations() {
-        expect(finder.find(root, matcher)).andReturn(mockComponent());
+        expect(finder.find(root, matcher)).andReturn(singletonComponentMock());
         matcher.reset(true);
       }
 

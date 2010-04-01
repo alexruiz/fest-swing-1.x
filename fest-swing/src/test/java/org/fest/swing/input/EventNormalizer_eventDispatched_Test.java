@@ -43,7 +43,7 @@ public class EventNormalizer_eventDispatched_Test extends EventNormalizer_TestCa
   @Before
   public void setUp() {
     disposedWindowMonitor = createMock(DisposedWindowMonitor.class);
-    delegateEventListener = mockDelegateEventListener();
+    delegateEventListener = delegateEventListenerMock();
     event = singletonAWTEventMock();
     eventNormalizer = new EventNormalizer(disposedWindowMonitor);
     eventNormalizer.startListening(newToolkitMock(), delegateEventListener, 8);

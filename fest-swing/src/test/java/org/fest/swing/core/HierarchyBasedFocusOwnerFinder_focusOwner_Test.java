@@ -18,8 +18,8 @@ package org.fest.swing.core;
 import static org.easymock.EasyMock.expect;
 import static org.easymock.classextension.EasyMock.createMock;
 import static org.fest.assertions.Assertions.assertThat;
+import static org.fest.swing.test.awt.Components.singletonComponentMock;
 import static org.fest.swing.test.awt.Containers.singletonContainerMock;
-import static org.fest.swing.test.core.Mocks.mockComponent;
 import static org.fest.util.Arrays.array;
 
 import java.awt.Component;
@@ -55,7 +55,7 @@ public class HierarchyBasedFocusOwnerFinder_focusOwner_Test {
 
   @Test
   public void should_return_focus_owner_from_delegate() {
-    final Component focusOwner = mockComponent();
+    final Component focusOwner = singletonComponentMock();
     new EasyMockTemplate(delegate, rootsSource) {
       protected void expectations() {
         expect(rootsSource.existingHierarchyRoots()).andReturn(array(container));

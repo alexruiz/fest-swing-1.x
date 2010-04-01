@@ -59,9 +59,9 @@ public class SingleComponentHierarchy_childrenOf_Test extends SingleComponentHie
   @Test
   public void should_return_children_of_Component() {
     final List<Component> children = list((Component)parent.button);
-    new EasyMockTemplate(delegate) {
+    new EasyMockTemplate(hierarchyDelegate) {
       protected void expectations() {
-        expect(delegate.childrenOf(parent)).andReturn(children);
+        expect(hierarchyDelegate.childrenOf(parent)).andReturn(children);
       }
 
       protected void codeToTest() {

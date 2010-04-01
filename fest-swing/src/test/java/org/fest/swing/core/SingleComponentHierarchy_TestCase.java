@@ -15,7 +15,7 @@
  */
 package org.fest.swing.core;
 
-import static org.fest.swing.test.core.Mocks.mockComponentHierarchy;
+import static org.fest.swing.core.ComponentHierarchies.newComponentHierarchyMock;
 
 import org.fest.swing.hierarchy.ComponentHierarchy;
 import org.fest.swing.hierarchy.SingleComponentHierarchy;
@@ -30,15 +30,15 @@ import org.junit.Before;
  */
 public abstract class SingleComponentHierarchy_TestCase extends EDTSafeTestCase {
 
-  ComponentHierarchy delegate;
+  ComponentHierarchy hierarchyDelegate;
   TestWindow root;
   SingleComponentHierarchy hierarchy;
 
   @Before
   public final void setUp() {
-    delegate = mockComponentHierarchy();
+    hierarchyDelegate = newComponentHierarchyMock();
     root = TestWindow.createNewWindow(getClass());
-    hierarchy = new SingleComponentHierarchy(root, delegate);
+    hierarchy = new SingleComponentHierarchy(root, hierarchyDelegate);
     onSetUp();
   }
 

@@ -36,9 +36,9 @@ public class SingleComponentHierarchy_contains_Test extends SingleComponentHiera
   public void should_return_true_if_delegate_contains_Component_and_root_contains_Component() {
     final JButton button = button().createNew();
     root.add(button);
-    new EasyMockTemplate(delegate) {
+    new EasyMockTemplate(hierarchyDelegate) {
       protected void expectations() {
-        expect(delegate.contains(button)).andReturn(true);
+        expect(hierarchyDelegate.contains(button)).andReturn(true);
       }
 
       protected void codeToTest() {
@@ -50,9 +50,9 @@ public class SingleComponentHierarchy_contains_Test extends SingleComponentHiera
   @Test
   public void should_return_false_if_delegate_contains_Component_and_root_does_not_contain_Component() {
     final JButton button = button().createNew();
-    new EasyMockTemplate(delegate) {
+    new EasyMockTemplate(hierarchyDelegate) {
       protected void expectations() {
-        expect(delegate.contains(button)).andReturn(true);
+        expect(hierarchyDelegate.contains(button)).andReturn(true);
       }
 
       protected void codeToTest() {
@@ -65,9 +65,9 @@ public class SingleComponentHierarchy_contains_Test extends SingleComponentHiera
   public void should_return_false_if_delegate_does_not_contain_Component_but_root_does() {
     final JButton button = button().createNew();
     root.add(button);
-    new EasyMockTemplate(delegate) {
+    new EasyMockTemplate(hierarchyDelegate) {
       protected void expectations() {
-        expect(delegate.contains(button)).andReturn(false);
+        expect(hierarchyDelegate.contains(button)).andReturn(false);
       }
 
       protected void codeToTest() {
@@ -79,9 +79,9 @@ public class SingleComponentHierarchy_contains_Test extends SingleComponentHiera
   @Test
   public void should_return_false_if_both_delegate_and_root_do_not_contain_Component() {
     final JButton button = button().createNew();
-    new EasyMockTemplate(delegate) {
+    new EasyMockTemplate(hierarchyDelegate) {
       protected void expectations() {
-        expect(delegate.contains(button)).andReturn(false);
+        expect(hierarchyDelegate.contains(button)).andReturn(false);
       }
 
       protected void codeToTest() {

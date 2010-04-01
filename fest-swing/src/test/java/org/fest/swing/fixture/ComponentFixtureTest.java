@@ -17,9 +17,9 @@ package org.fest.swing.fixture;
 
 import static org.easymock.EasyMock.expect;
 import static org.fest.assertions.Assertions.assertThat;
+import static org.fest.swing.core.ComponentFinders.newComponentFinderMock;
 import static org.fest.swing.edt.GuiActionRunner.execute;
 import static org.fest.swing.test.builder.JTextFields.textField;
-import static org.fest.swing.test.core.Mocks.mockComponentFinder;
 import static org.fest.swing.test.core.Mocks.mockRobot;
 
 import java.awt.*;
@@ -70,7 +70,7 @@ public class ComponentFixtureTest extends EDTSafeTestCase {
 
   @Test
   public void shouldLookupComponentByType() {
-    final ComponentFinder finder = mockComponentFinder();
+    final ComponentFinder finder = newComponentFinderMock();
     new EasyMockTemplate(robot, finder) {
       protected void expectations() {
         expect(robot.settings()).andReturn(settings);
@@ -96,7 +96,7 @@ public class ComponentFixtureTest extends EDTSafeTestCase {
 
   @Test
   public void shouldLookupComponentByName() {
-    final ComponentFinder finder = mockComponentFinder();
+    final ComponentFinder finder = ComponentFinders.newComponentFinderMock();
     new EasyMockTemplate(robot, finder) {
       protected void expectations() {
         expect(robot.settings()).andReturn(settings);

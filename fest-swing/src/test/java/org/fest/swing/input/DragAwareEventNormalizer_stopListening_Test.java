@@ -53,7 +53,7 @@ public class DragAwareEventNormalizer_stopListening_Test extends DragAwareEventN
         return dragAwareEventQueue;
       }
     };
-    eventNormalizer.startListening(toolkit, mockDelegateEventListener(), mask);
+    eventNormalizer.startListening(toolkit, delegateEventListenerMock(), mask);
     new EasyMockTemplate(dragAwareEventQueue) {
       protected void expectations() {
         dragAwareEventQueue.pop();
@@ -74,7 +74,7 @@ public class DragAwareEventNormalizer_stopListening_Test extends DragAwareEventN
         throw new RuntimeException("Thrown on purpose");
       }
     };
-    eventNormalizer.startListening(toolkit, mockDelegateEventListener(), mask);
+    eventNormalizer.startListening(toolkit, delegateEventListenerMock(), mask);
     eventNormalizer.stopListening();
     assertEventNormalizerIsNotInToolkit(toolkit, mask);
   }

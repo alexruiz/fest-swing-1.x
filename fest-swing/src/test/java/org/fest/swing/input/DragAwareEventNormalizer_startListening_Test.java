@@ -34,7 +34,7 @@ public class DragAwareEventNormalizer_startListening_Test extends DragAwareEvent
     EventQueueStub eventQueue = new EventQueueStub();
     toolkit.eventQueue(eventQueue);
     int mask = 8;
-    eventNormalizer.startListening(toolkit, mockDelegateEventListener(), mask);
+    eventNormalizer.startListening(toolkit, delegateEventListenerMock(), mask);
     assertEventNormalizerIsInToolkit(toolkit, eventNormalizer, mask);
     assertThat(eventQueue.pushedEventQueue).isInstanceOf(DragAwareEventQueue.class);
   }
