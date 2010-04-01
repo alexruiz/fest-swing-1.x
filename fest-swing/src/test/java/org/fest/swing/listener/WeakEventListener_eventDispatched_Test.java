@@ -17,6 +17,8 @@ package org.fest.swing.listener;
 
 import static java.awt.AWTEvent.WINDOW_EVENT_MASK;
 import static org.fest.assertions.Assertions.assertThat;
+import static org.fest.swing.test.awt.AWTEvents.singletonAWTEventMock;
+import static org.fest.swing.test.awt.Toolkits.newToolkitStub;
 
 import java.awt.AWTEvent;
 import java.awt.event.AWTEventListener;
@@ -39,7 +41,7 @@ public class WeakEventListener_eventDispatched_Test {
   private WeakEventListener listener;
 
   @Before public void setUp() {
-    toolkit = ToolkitStub.createNew();
+    toolkit = newToolkitStub();
     underlying = new UnderlyingEventListener();
     listener = WeakEventListener.attachAsWeakEventListener(toolkit, underlying, EVENT_MASK);
   }
@@ -52,7 +54,7 @@ public class WeakEventListener_eventDispatched_Test {
 
   @Test
   public void should_dispatch_events_to_wrapped_EventListener() {
-    AWTEvent event = awtEvent();
+    AWTEvent event = singletonAWTEventMock();
     listener.eventDispatched(event);
     assertThat(underlying.dispatchedEvent).isSameAs(event);
   }
@@ -60,14 +62,8 @@ public class WeakEventListener_eventDispatched_Test {
   @Test
   public void should_remove_itself_from_Toolkit_if_wrapped_EventListener_is_null() {
     listener.simulateUnderlyingListenerIsGarbageCollected();
-    listener.eventDispatched(awtEvent());
+    listener.eventDispatched(singletonAWTEventMock());
     assertThat(toolkit.contains(listener, EVENT_MASK)).isFalse();
-  }
-
-  private static AWTEvent awtEvent() {
-    return new AWTEvent(new Object(), 0) {
-      private static final long serialVersionUID = 1L;
-    };
   }
 
   private static class UnderlyingEventListener implements AWTEventListener {

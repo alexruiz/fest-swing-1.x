@@ -21,6 +21,7 @@ import static java.awt.event.WindowEvent.*;
 import static org.easymock.EasyMock.expect;
 import static org.easymock.classextension.EasyMock.createMock;
 import static org.fest.assertions.Assertions.assertThat;
+import static org.fest.swing.test.awt.Toolkits.newToolkitStub;
 import static org.fest.swing.test.builder.JTextFields.textField;
 
 import java.applet.Applet;
@@ -55,7 +56,7 @@ public class ContextMonitorTest extends EDTSafeTestCase {
   private Windows windows;
   private Context context;
   private TestWindow window;
-  
+
   private final int eventId;
 
   @Parameters
@@ -84,7 +85,7 @@ public class ContextMonitorTest extends EDTSafeTestCase {
   }
 
   @Test public void shouldAttachItSelfToToolkit() {
-    ToolkitStub toolkit = ToolkitStub.createNew();
+    ToolkitStub toolkit = newToolkitStub();
     monitor.attachTo(toolkit);
     List<WeakEventListener> eventListeners = toolkit.eventListenersUnderEventMask(EVENT_MASK, WeakEventListener.class);
     assertThat(eventListeners).hasSize(1);

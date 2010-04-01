@@ -19,8 +19,8 @@ import static java.awt.AWTEvent.KEY_EVENT_MASK;
 import static org.easymock.EasyMock.expect;
 import static org.easymock.EasyMock.expectLastCall;
 import static org.easymock.classextension.EasyMock.createMock;
+import static org.fest.swing.test.awt.Toolkits.newToolkitMock;
 import static org.fest.swing.test.core.Mocks.mockAWTEventListener;
-import static org.fest.swing.test.core.Mocks.mockToolkit;
 
 import java.awt.Toolkit;
 import java.awt.event.AWTEventListener;
@@ -41,7 +41,7 @@ public class EmergencyAbortListener_register_Test {
 
   @Before
   public void setUp() {
-    toolkit = mockToolkit();
+    toolkit = newToolkitMock();
     listener = new EmergencyAbortListener(toolkit);
   }
 

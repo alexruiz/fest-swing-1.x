@@ -15,6 +15,8 @@
  */
 package org.fest.swing.input;
 
+import static org.fest.swing.test.awt.Toolkits.newToolkitStub;
+
 import java.awt.event.AWTEventListener;
 
 import org.fest.swing.test.awt.ToolkitStub;
@@ -36,7 +38,7 @@ public class EventNormalizer_startListening_Test extends EventNormalizer_TestCas
 
   @Test
   public void should_attach_to_Toolkit_when_start_listening() {
-    ToolkitStub toolkit = ToolkitStub.createNew();
+    ToolkitStub toolkit = newToolkitStub();
     int mask = 8;
     eventNormalizer.startListening(toolkit, mockDelegateEventListener(), mask);
     assertEventNormalizerIsInToolkit(toolkit, eventNormalizer, mask);

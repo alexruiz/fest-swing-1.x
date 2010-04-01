@@ -15,12 +15,14 @@
  */
 package org.fest.swing.applet;
 
-import static org.fest.swing.test.core.Mocks.mockAppletContext;
-import static org.fest.swing.test.core.Mocks.mockWindow;
+import static org.fest.swing.test.awt.AppletContexts.singletonAppletContextMock;
+import static org.fest.swing.test.awt.Windows.singletonWindowMock;
 
+import java.applet.AppletContext;
 import java.awt.Window;
 import java.util.HashMap;
 
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 /**
@@ -31,14 +33,23 @@ import org.junit.Test;
  */
 public class BasicAppletStub_constructor_withViewerContextAndMap_Test {
 
+  private static AppletContext context;
+  private static Window viewer;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    context = singletonAppletContextMock();
+    viewer = singletonWindowMock();
+  }
+
   @Test(expected = NullPointerException.class)
   public void should_throw_error_if_viewer_is_null() {
-    new BasicAppletStub(null, mockAppletContext(), emptyMap());
+    new BasicAppletStub(null, context, emptyMap());
   }
 
   @Test(expected = NullPointerException.class)
   public void should_throw_error_if_context_is_null() {
-    new BasicAppletStub(mockViewer(), null, emptyMap());
+    new BasicAppletStub(viewer, null, emptyMap());
   }
 
   private static HashMap<String, String> emptyMap() {
@@ -47,10 +58,6 @@ public class BasicAppletStub_constructor_withViewerContextAndMap_Test {
 
   @Test(expected = NullPointerException.class)
   public void should_throw_error_if_parameterMap_is_null() {
-    new BasicAppletStub(mockViewer(), mockAppletContext(), null);
-  }
-
-  private static Window mockViewer() {
-    return mockWindow();
+    new BasicAppletStub(viewer, context, null);
   }
 }

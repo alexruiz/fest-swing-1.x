@@ -15,6 +15,8 @@
  */
 package org.fest.swing.monitor;
 
+import static org.fest.swing.test.awt.Toolkits.newToolkitStub;
+
 import java.awt.Component;
 import java.awt.EventQueue;
 import java.lang.ref.WeakReference;
@@ -41,7 +43,7 @@ public abstract class EventQueueMapping_TestCase extends EDTSafeTestCase {
 
   @Before public final void setUp() {
     eventQueue = new EventQueue();
-    toolkit = ToolkitStub.createNew(eventQueue);
+    toolkit = newToolkitStub(eventQueue);
     component = new ComponentWithCustomEventQueue(toolkit);
     mapping = new EventQueueMapping();
     queueMap = mapping.queueMap;

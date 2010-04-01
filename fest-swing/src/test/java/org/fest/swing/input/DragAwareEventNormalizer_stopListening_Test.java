@@ -17,11 +17,13 @@ package org.fest.swing.input;
 
 import static org.easymock.EasyMock.expectLastCall;
 import static org.easymock.classextension.EasyMock.createMock;
+import static org.fest.swing.test.awt.Toolkits.newToolkitStub;
 
 import java.awt.Toolkit;
 
 import org.fest.mocks.EasyMockTemplate;
 import org.fest.swing.test.awt.ToolkitStub;
+import org.junit.Before;
 import org.junit.Test;
 
 /**
@@ -31,18 +33,26 @@ import org.junit.Test;
  */
 public class DragAwareEventNormalizer_stopListening_Test extends DragAwareEventNormalizer_TestCase {
 
+  private ToolkitStub toolkit;
+  private EventQueueStub eventQueue;
+  private int mask;
+
+  @Before
+  public void setUp() {
+    eventQueue = new EventQueueStub();
+    toolkit = newToolkitStub();
+    toolkit.eventQueue(eventQueue);
+    mask = 8;
+  }
+
   @Test
   public void should_dispose_EventQueue_when_stops_listening() {
     final DragAwareEventQueue dragAwareEventQueue = createMock(DragAwareEventQueue.class);
     eventNormalizer = new DragAwareEventNormalizer() {
-      @Override DragAwareEventQueue newDragAwareEventQueue(Toolkit toolkit, long mask) {
+      @Override DragAwareEventQueue newDragAwareEventQueue(Toolkit t, long m) {
         return dragAwareEventQueue;
       }
     };
-    ToolkitStub toolkit = ToolkitStub.createNew();
-    EventQueueStub eventQueue = new EventQueueStub();
-    toolkit.eventQueue(eventQueue);
-    int mask = 8;
     eventNormalizer.startListening(toolkit, mockDelegateEventListener(), mask);
     new EasyMockTemplate(dragAwareEventQueue) {
       protected void expectations() {
@@ -60,14 +70,10 @@ public class DragAwareEventNormalizer_stopListening_Test extends DragAwareEventN
   @Test
   public void should_gracefully_stop_listening_if_DragAwareQueue_is_null() {
     eventNormalizer = new DragAwareEventNormalizer() {
-      @Override DragAwareEventQueue newDragAwareEventQueue(Toolkit toolkit, long mask) {
+      @Override DragAwareEventQueue newDragAwareEventQueue(Toolkit t, long m) {
         throw new RuntimeException("Thrown on purpose");
       }
     };
-    ToolkitStub toolkit = ToolkitStub.createNew();
-    EventQueueStub eventQueue = new EventQueueStub();
-    toolkit.eventQueue(eventQueue);
-    int mask = 8;
     eventNormalizer.startListening(toolkit, mockDelegateEventListener(), mask);
     eventNormalizer.stopListening();
     assertEventNormalizerIsNotInToolkit(toolkit, mask);

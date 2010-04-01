@@ -21,9 +21,7 @@ import static java.awt.event.KeyEvent.VK_C;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.core.InputModifiers.*;
 import static org.fest.swing.core.KeyPressInfo.keyCode;
-import static org.fest.swing.test.core.Mocks.mockToolkit;
-
-import java.awt.Toolkit;
+import static org.fest.swing.test.awt.Toolkits.singletonToolkitMock;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -35,13 +33,11 @@ import org.junit.Test;
  */
 public class EmergencyAbortListener_keyCombination_Test {
 
-  private Toolkit toolkit;
   private EmergencyAbortListener listener;
 
   @Before
   public void setUp() {
-    toolkit = mockToolkit();
-    listener = new EmergencyAbortListener(toolkit);
+    listener = new EmergencyAbortListener(singletonToolkitMock());
   }
 
   @Test(expected = NullPointerException.class)

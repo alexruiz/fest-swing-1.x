@@ -20,6 +20,7 @@ import static org.easymock.EasyMock.expectLastCall;
 import static org.easymock.classextension.EasyMock.createMock;
 import static org.easymock.classextension.EasyMock.reset;
 import static org.fest.swing.edt.GuiActionRunner.execute;
+import static org.fest.swing.test.awt.Toolkits.newToolkitStub;
 
 import java.awt.Frame;
 import java.awt.Window;
@@ -47,7 +48,7 @@ public abstract class WindowMonitor_TestCase extends SequentialTestCase {
   TestWindow frame;
 
   @Override protected final void onSetUp() {
-    toolkit = ToolkitStub.createNew();
+    toolkit = newToolkitStub();
     windows = createMock(Windows.class);
     context = createMock(Context.class);
     windowStatus = createMock(WindowStatus.class);

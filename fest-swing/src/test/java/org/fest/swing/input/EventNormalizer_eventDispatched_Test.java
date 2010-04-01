@@ -18,13 +18,13 @@ package org.fest.swing.input;
 import static org.easymock.EasyMock.expect;
 import static org.easymock.EasyMock.expectLastCall;
 import static org.easymock.classextension.EasyMock.createMock;
-import static org.fest.swing.test.core.Mocks.mockAWTEvent;
+import static org.fest.swing.test.awt.AWTEvents.singletonAWTEventMock;
+import static org.fest.swing.test.awt.Toolkits.newToolkitMock;
 
 import java.awt.AWTEvent;
 import java.awt.event.AWTEventListener;
 
 import org.fest.mocks.EasyMockTemplate;
-import org.fest.swing.test.awt.ToolkitStub;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -44,9 +44,9 @@ public class EventNormalizer_eventDispatched_Test extends EventNormalizer_TestCa
   public void setUp() {
     disposedWindowMonitor = createMock(DisposedWindowMonitor.class);
     delegateEventListener = mockDelegateEventListener();
-    event = mockAWTEvent();
+    event = singletonAWTEventMock();
     eventNormalizer = new EventNormalizer(disposedWindowMonitor);
-    eventNormalizer.startListening(ToolkitStub.createNew(), delegateEventListener, 8);
+    eventNormalizer.startListening(newToolkitMock(), delegateEventListener, 8);
   }
 
   @Test

@@ -17,6 +17,7 @@ package org.fest.swing.monitor;
 
 import static java.awt.AWTEvent.*;
 import static org.easymock.classextension.EasyMock.createMock;
+import static org.fest.swing.test.awt.Toolkits.newToolkitStub;
 
 import org.fest.swing.test.awt.ToolkitStub;
 import org.junit.Before;
@@ -36,7 +37,7 @@ public abstract class WindowAvailabilityMonitor_TestCase {
   Windows windows;
 
   @Before public final void setUp() {
-    toolkit = ToolkitStub.createNew();
+    toolkit = newToolkitStub();
     windows = createMock(Windows.class);
     monitor = new WindowAvailabilityMonitor(windows);
     onSetUp();

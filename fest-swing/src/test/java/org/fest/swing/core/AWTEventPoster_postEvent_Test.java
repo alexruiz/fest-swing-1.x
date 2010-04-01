@@ -19,6 +19,8 @@ import static org.easymock.EasyMock.expect;
 import static org.easymock.EasyMock.expectLastCall;
 import static org.easymock.classextension.EasyMock.createMock;
 import static org.fest.assertions.Assertions.assertThat;
+import static org.fest.swing.test.awt.AWTEvents.singletonAWTEventMock;
+import static org.fest.swing.test.awt.Toolkits.newToolkitMock;
 import static org.fest.swing.test.core.Mocks.*;
 import static org.fest.swing.test.util.StopWatch.startNewStopWatch;
 
@@ -50,12 +52,12 @@ public class AWTEventPoster_postEvent_Test extends EDTSafeTestCase {
 
   @Before
   public void setUp() {
-    toolkit = mockToolkit();
+    toolkit = newToolkitMock();
     inputState = createMock(InputState.class);
     monitor = createMock(WindowMonitor.class);
     settings = createMock(Settings.class);
     eventQueue = createMock(EventQueue.class);
-    event = mockAWTEvent();
+    event = singletonAWTEventMock();
     poster = new AWTEventPoster(toolkit, inputState, monitor, settings);
   }
 

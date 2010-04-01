@@ -15,6 +15,8 @@
  */
 package org.fest.swing.input;
 
+import static org.fest.swing.test.awt.Toolkits.newToolkitStub;
+
 import org.fest.swing.test.awt.ToolkitStub;
 import org.junit.Before;
 import org.junit.Test;
@@ -34,7 +36,7 @@ public class EventNormalizer_stopListening_Test extends EventNormalizer_TestCase
 
   @Test
   public void should_detach_from_Toolkit_when_stop_listening() {
-    ToolkitStub toolkit = ToolkitStub.createNew();
+    ToolkitStub toolkit = newToolkitStub();
     int mask = 8;
     eventNormalizer.startListening(toolkit, mockDelegateEventListener(), mask);
     eventNormalizer.stopListening();

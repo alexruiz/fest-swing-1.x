@@ -17,8 +17,6 @@ package org.fest.swing.test.core;
 
 import static org.easymock.classextension.EasyMock.createMock;
 
-import java.applet.Applet;
-import java.applet.AppletContext;
 import java.awt.*;
 import java.awt.event.AWTEventListener;
 
@@ -36,12 +34,6 @@ import org.fest.swing.util.RobotFactory;
  */
 public final class Mocks {
 
-  public static Applet mockApplet() { return mock(Applet.class); }
-
-  public static AppletContext mockAppletContext() { return mock(AppletContext.class); }
-
-  public static AWTEvent mockAWTEvent() { return mock(AWTEvent.class); }
-
   public static AWTEventListener mockAWTEventListener() { return mock(AWTEventListener.class); }
 
   public static Component mockComponent() { return mock(Component.class); }
@@ -50,8 +42,6 @@ public final class Mocks {
 
   public static ComponentHierarchy mockComponentHierarchy() { return mock(ComponentHierarchy.class); }
 
-  public static Container mockContainer() { return mock(Container.class); }
-
   public static ImageFileWriter mockImageFileWriter() { return mock(ImageFileWriter.class); }
 
   public static KeyStrokeMappingProvider mockKeyStrokeMappingProvider() { return mock(KeyStrokeMappingProvider.class); }
@@ -59,10 +49,6 @@ public final class Mocks {
   public static Robot mockRobot() { return mock(Robot.class); }
 
   public static RobotFactory mockRobotFactory() { return mock(RobotFactory.class); }
-
-  public static Toolkit mockToolkit() { return mock(Toolkit.class); }
-
-  public static Window mockWindow() { return mock(Window.class); }
 
   private static <T> T mock(Class<T> typeToMock) {
     return createMock(typeToMock);

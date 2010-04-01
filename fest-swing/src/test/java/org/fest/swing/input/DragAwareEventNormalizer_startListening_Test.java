@@ -16,6 +16,7 @@
 package org.fest.swing.input;
 
 import static org.fest.assertions.Assertions.assertThat;
+import static org.fest.swing.test.awt.Toolkits.newToolkitStub;
 
 import org.fest.swing.test.awt.ToolkitStub;
 import org.junit.Test;
@@ -29,7 +30,7 @@ public class DragAwareEventNormalizer_startListening_Test extends DragAwareEvent
 
   @Test
   public void should_replace_EventQueue_when_starts_listening() {
-    ToolkitStub toolkit = ToolkitStub.createNew();
+    ToolkitStub toolkit = newToolkitStub();
     EventQueueStub eventQueue = new EventQueueStub();
     toolkit.eventQueue(eventQueue);
     int mask = 8;

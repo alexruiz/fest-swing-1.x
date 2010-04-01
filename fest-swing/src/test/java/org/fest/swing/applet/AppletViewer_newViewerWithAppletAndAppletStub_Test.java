@@ -16,7 +16,7 @@
 package org.fest.swing.applet;
 
 import static org.fest.swing.edt.GuiActionRunner.execute;
-import static org.fest.swing.test.core.Mocks.mockApplet;
+import static org.fest.swing.test.awt.Applets.*;
 
 import java.applet.Applet;
 import java.applet.AppletStub;
@@ -37,7 +37,7 @@ public class AppletViewer_newViewerWithAppletAndAppletStub_Test extends EDTSafeT
     execute(new GuiTask() {
       protected void executeInEDT() {
         AppletStub appletStub = null;
-        AppletViewer.newViewer(mockApplet(), appletStub);
+        AppletViewer.newViewer(singletonAppletMock(), appletStub);
       }
     });
   }

@@ -16,7 +16,7 @@
 package org.fest.swing.applet;
 
 import static org.fest.swing.edt.GuiActionRunner.execute;
-import static org.fest.swing.test.core.Mocks.mockApplet;
+import static org.fest.swing.test.awt.Applets.singletonAppletMock;
 
 import java.applet.Applet;
 import java.util.Map;
@@ -37,7 +37,7 @@ public class AppletViewer_newViewerWithAppletAndMap_Test extends EDTSafeTestCase
     execute(new GuiTask() {
       protected void executeInEDT() {
         Map<String, String> map = null;
-        AppletViewer.newViewer(mockApplet(), map);
+        AppletViewer.newViewer(singletonAppletMock(), map);
       }
     });
   }

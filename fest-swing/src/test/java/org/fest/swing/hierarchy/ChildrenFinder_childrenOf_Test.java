@@ -18,8 +18,8 @@ package org.fest.swing.hierarchy;
 import static org.easymock.EasyMock.expect;
 import static org.easymock.classextension.EasyMock.createMock;
 import static org.fest.assertions.Assertions.assertThat;
+import static org.fest.swing.test.awt.Containers.newContainerMock;
 import static org.fest.swing.test.core.Mocks.mockComponent;
-import static org.fest.swing.test.core.Mocks.mockContainer;
 import static org.fest.util.Collections.list;
 
 import java.awt.Component;
@@ -53,7 +53,7 @@ public class ChildrenFinder_childrenOf_Test extends EDTSafeTestCase {
   private ChildrenFinder finder;
 
   @Before public void setUp() {
-    container = mockContainer();
+    container = newContainerMock();
     strategy1 = mockChildrenFinderStrategy();
     strategy2 = mockChildrenFinderStrategy();
     child1 = mockComponent();

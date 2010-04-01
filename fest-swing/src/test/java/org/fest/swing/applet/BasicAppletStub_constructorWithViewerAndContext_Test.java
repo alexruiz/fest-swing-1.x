@@ -15,8 +15,8 @@
  */
 package org.fest.swing.applet;
 
-import static org.fest.swing.test.core.Mocks.mockAppletContext;
-import static org.fest.swing.test.core.Mocks.mockWindow;
+import static org.fest.swing.test.awt.AppletContexts.singletonAppletContextMock;
+import static org.fest.swing.test.awt.Windows.singletonWindowMock;
 
 import org.junit.Test;
 
@@ -30,11 +30,11 @@ public class BasicAppletStub_constructorWithViewerAndContext_Test {
 
   @Test(expected = NullPointerException.class)
   public void should_throw_error_if_viewer_is_null() {
-    new BasicAppletStub(null, mockAppletContext());
+    new BasicAppletStub(null, singletonAppletContextMock());
   }
 
   @Test(expected = NullPointerException.class)
   public void should_throw_error_if_context_is_null() {
-    new BasicAppletStub(mockWindow(), null);
+    new BasicAppletStub(singletonWindowMock(), null);
   }
 }

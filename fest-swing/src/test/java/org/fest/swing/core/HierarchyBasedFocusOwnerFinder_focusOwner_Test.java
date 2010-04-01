@@ -18,16 +18,15 @@ package org.fest.swing.core;
 import static org.easymock.EasyMock.expect;
 import static org.easymock.classextension.EasyMock.createMock;
 import static org.fest.assertions.Assertions.assertThat;
+import static org.fest.swing.test.awt.Containers.singletonContainerMock;
 import static org.fest.swing.test.core.Mocks.mockComponent;
-import static org.fest.swing.test.core.Mocks.mockContainer;
 import static org.fest.util.Arrays.array;
 
 import java.awt.Component;
 import java.awt.Container;
 
 import org.fest.mocks.EasyMockTemplate;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Tests for <code>{@link HierarchyBasedFocusOwnerFinder#focusOwner()}</code>.
@@ -36,11 +35,19 @@ import org.junit.Test;
  */
 public class HierarchyBasedFocusOwnerFinder_focusOwner_Test {
 
+  private static Container container;
+
   private ContainerFocusOwnerFinder delegate;
   private HierarchyRootsSource rootsSource;
   private HierarchyBasedFocusOwnerFinder finder;
 
-  @Before public void setUp() {
+  @BeforeClass
+  public static void setUpOnce() {
+    container = singletonContainerMock();
+  }
+
+  @Before
+  public void setUp() {
     delegate = createMock(ContainerFocusOwnerFinder.class);
     rootsSource = createMock(HierarchyRootsSource.class);
     finder = new HierarchyBasedFocusOwnerFinder(delegate, rootsSource);
@@ -51,13 +58,13 @@ public class HierarchyBasedFocusOwnerFinder_focusOwner_Test {
     final Component focusOwner = mockComponent();
     new EasyMockTemplate(delegate, rootsSource) {
       protected void expectations() {
-        Container c = mockContainer();
-        expect(rootsSource.existingHierarchyRoots()).andReturn(array(c));
-        expect(delegate.focusOwnerOf(c)).andReturn(focusOwner);
+        expect(rootsSource.existingHierarchyRoots()).andReturn(array(container));
+        expect(delegate.focusOwnerOf(container)).andReturn(focusOwner);
       }
 
       protected void codeToTest() {
-        assertThat(finder.focusOwner()).isSameAs(focusOwner);
+        Component foundFocusOwner = finder.focusOwner();
+        assertThat(foundFocusOwner).isSameAs(focusOwner);
       }
     }.run();
   }
@@ -66,13 +73,13 @@ public class HierarchyBasedFocusOwnerFinder_focusOwner_Test {
   public void should_return_null_if_delegate_did_not_find_focus_owner() {
     new EasyMockTemplate(delegate, rootsSource) {
       protected void expectations() {
-        Container c = mockContainer();
-        expect(rootsSource.existingHierarchyRoots()).andReturn(array(c));
-        expect(delegate.focusOwnerOf(c)).andReturn(null);
+        expect(rootsSource.existingHierarchyRoots()).andReturn(array(container));
+        expect(delegate.focusOwnerOf(container)).andReturn(null);
       }
 
       protected void codeToTest() {
-        assertThat(finder.focusOwner()).isNull();
+        Component foundFocusOwner = finder.focusOwner();
+        assertThat(foundFocusOwner).isNull();
       }
     }.run();
   }
@@ -85,7 +92,8 @@ public class HierarchyBasedFocusOwnerFinder_focusOwner_Test {
       }
 
       protected void codeToTest() {
-        assertThat(finder.focusOwner()).isNull();
+        Component foundFocusOwner = finder.focusOwner();
+        assertThat(foundFocusOwner).isNull();
       }
     }.run();
   }

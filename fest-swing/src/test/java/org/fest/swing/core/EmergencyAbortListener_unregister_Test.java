@@ -16,7 +16,7 @@
 package org.fest.swing.core;
 
 import static org.easymock.EasyMock.expectLastCall;
-import static org.fest.swing.test.core.Mocks.mockToolkit;
+import static org.fest.swing.test.awt.Toolkits.singletonToolkitMock;
 
 import java.awt.Toolkit;
 
@@ -36,7 +36,7 @@ public class EmergencyAbortListener_unregister_Test {
 
   @Before
   public void setUp() {
-    toolkit = mockToolkit();
+    toolkit = singletonToolkitMock();
     listener = new EmergencyAbortListener(toolkit);
   }
 

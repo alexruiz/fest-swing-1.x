@@ -21,12 +21,11 @@ import static java.awt.event.KeyEvent.*;
 import static org.easymock.EasyMock.expect;
 import static org.easymock.EasyMock.expectLastCall;
 import static org.easymock.classextension.EasyMock.createMock;
+import static org.fest.swing.test.awt.AWTEvents.newAWTEventMock;
+import static org.fest.swing.test.awt.Toolkits.singletonToolkitMock;
 import static org.fest.swing.test.builder.JButtons.button;
-import static org.fest.swing.test.core.Mocks.mockAWTEvent;
-import static org.fest.swing.test.core.Mocks.mockToolkit;
 
 import java.awt.AWTEvent;
-import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 
 import org.fest.mocks.EasyMockTemplate;
@@ -41,20 +40,18 @@ import org.junit.Test;
  */
 public class EmergencyAbortListener_eventDispatched_Test extends EDTSafeTestCase {
 
-  private Toolkit toolkit;
   private TestTerminator terminator;
   private EmergencyAbortListener listener;
 
   @Before
   public void setUp() {
-    toolkit = mockToolkit();
     terminator = createMock(TestTerminator.class);
-    listener = new EmergencyAbortListener(toolkit, terminator);
+    listener = new EmergencyAbortListener(singletonToolkitMock(), terminator);
   }
 
   @Test
   public void should_not_terminate_tests_if_event_id_is_not_KeyPressed() {
-    final AWTEvent event = mockAWTEvent();
+    final AWTEvent event = newAWTEventMock();
     final int eventId = KEY_PRESSED + 1;
     new EasyMockTemplate(event, terminator) {
       protected void expectations() {
@@ -69,7 +66,7 @@ public class EmergencyAbortListener_eventDispatched_Test extends EDTSafeTestCase
 
   @Test
   public void should_not_terminate_tests_if_event_is_not_KeyEvent() {
-    final AWTEvent event = mockAWTEvent();
+    final AWTEvent event = newAWTEventMock();
     new EasyMockTemplate(event, terminator) {
       protected void expectations() {
         expect(event.getID()).andReturn(KEY_PRESSED);

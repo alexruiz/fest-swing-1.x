@@ -14,6 +14,7 @@
  */
 package org.fest.swing.input;
 
+import static org.fest.swing.test.awt.Toolkits.newToolkitStub;
 import static org.fest.swing.test.core.Mocks.mockAWTEventListener;
 
 import java.awt.AWTEvent;
@@ -38,7 +39,7 @@ public abstract class DragAwareEventQueue_TestCase {
 
   @Before
   public final void setUp() {
-    toolkit = ToolkitStub.createNew();
+    toolkit = newToolkitStub();
     listener = mockAWTEventListener();
     queue = new DragAwareEventQueue(toolkit, mask, listener);
     toolkit.eventQueue(queue);

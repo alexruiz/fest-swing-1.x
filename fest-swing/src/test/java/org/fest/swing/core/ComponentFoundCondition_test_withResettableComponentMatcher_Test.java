@@ -15,20 +15,16 @@
  */
 package org.fest.swing.core;
 
-import static java.util.Collections.emptyList;
 import static org.easymock.EasyMock.expect;
 import static org.easymock.classextension.EasyMock.createMock;
-import static org.fest.swing.test.core.Mocks.*;
-import static org.fest.util.Collections.list;
-
-import java.awt.Component;
+import static org.fest.swing.test.awt.Containers.singletonContainerMock;
+import static org.fest.swing.test.core.Mocks.mockComponent;
+import static org.fest.swing.test.core.Mocks.mockComponentFinder;
 import java.awt.Container;
-import java.util.List;
-
 import org.fest.mocks.EasyMockTemplate;
+import org.fest.swing.exception.ComponentLookupException;
 import org.fest.swing.test.core.EDTSafeTestCase;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Tests for <code>{@link ComponentFoundCondition#test()}</code>.
@@ -40,24 +36,27 @@ public class ComponentFoundCondition_test_withResettableComponentMatcher_Test ex
 
   private ComponentFinder finder;
   private ResettableComponentMatcher matcher;
-  private Container root;
+  private static Container root;
 
   private ComponentFoundCondition condition;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    root = singletonContainerMock();
+  }
 
   @Before
   public void setUp() {
     finder = mockComponentFinder();
     matcher = createMock(ResettableComponentMatcher.class);
-    root = mockContainer();
     condition = new ComponentFoundCondition("",  finder, matcher, root);
   }
 
   @Test
   public void should_reset_matcher_when_match_not_found() {
-    final List<Component> found = emptyList();
     new EasyMockTemplate(finder, matcher) {
       protected void expectations() {
-        expect(finder.findAll(root, matcher)).andReturn(found);
+        expect(finder.find(root, matcher)).andThrow(new ComponentLookupException("Thrown on purpose"));
         matcher.reset(false);
       }
 
@@ -69,10 +68,9 @@ public class ComponentFoundCondition_test_withResettableComponentMatcher_Test ex
 
   @Test
   public void should_reset_matcher_when_match_found() {
-    final List<Component> found = list(mockComponent());
     new EasyMockTemplate(finder, matcher) {
       protected void expectations() {
-        expect(finder.findAll(root, matcher)).andReturn(found);
+        expect(finder.find(root, matcher)).andReturn(mockComponent());
         matcher.reset(true);
       }
 

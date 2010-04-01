@@ -15,8 +15,8 @@
  */
 package org.fest.swing.applet;
 
-import static org.fest.swing.test.core.Mocks.mockAppletContext;
-import static org.fest.swing.test.core.Mocks.mockWindow;
+import static org.fest.swing.test.awt.AppletContexts.singletonAppletContextMock;
+import static org.fest.swing.test.awt.Windows.singletonWindowMock;
 
 import java.applet.AppletContext;
 import java.awt.Window;
@@ -35,9 +35,10 @@ public abstract class BasicAppletStub_TestCase {
   AppletContext context;
   BasicAppletStub stub;
 
-  @Before public final void setUp() {
-    viewer = mockWindow();
-    context = mockAppletContext();
+  @Before
+  public final void setUp() {
+    viewer = singletonWindowMock();
+    context = singletonAppletContextMock();
     stub = new BasicAppletStub(viewer, context);
   }
 }

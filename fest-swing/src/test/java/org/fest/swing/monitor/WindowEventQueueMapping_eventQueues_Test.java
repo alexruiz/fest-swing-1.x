@@ -16,6 +16,7 @@
 package org.fest.swing.monitor;
 
 import static org.fest.assertions.Assertions.assertThat;
+import static org.fest.swing.test.awt.Toolkits.newToolkitStub;
 
 import java.awt.EventQueue;
 import java.util.Collection;
@@ -33,7 +34,7 @@ public class WindowEventQueueMapping_eventQueues_Test extends WindowEventQueueMa
   @Test
   public void should_return_EventQueues() {
     EventQueue anotherEventQueue = new EventQueue();
-    ToolkitStub anotherToolkit = ToolkitStub.createNew(anotherEventQueue);
+    ToolkitStub anotherToolkit = newToolkitStub(anotherEventQueue);
     MyWindow anotherWindow = MyWindow.createNew(anotherToolkit, getClass());
     mapping.addQueueFor(window);
     mapping.addQueueFor(anotherWindow);

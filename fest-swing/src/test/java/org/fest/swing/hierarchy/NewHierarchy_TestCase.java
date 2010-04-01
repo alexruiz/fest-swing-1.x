@@ -18,6 +18,7 @@ package org.fest.swing.hierarchy;
 import static java.awt.AWTEvent.COMPONENT_EVENT_MASK;
 import static java.awt.AWTEvent.WINDOW_EVENT_MASK;
 import static org.fest.swing.edt.GuiActionRunner.execute;
+import static org.fest.swing.test.awt.Toolkits.newToolkitStub;
 import static org.fest.util.Arrays.array;
 
 import javax.swing.JComboBox;
@@ -44,7 +45,7 @@ public abstract class NewHierarchy_TestCase extends SequentialTestCase {
   MyWindow window;
 
   @Override protected final void onSetUp() {
-    toolkit = ToolkitStub.createNew();
+    toolkit = newToolkitStub();
     window = MyWindow.createNew(getClass());
     filter = new WindowFilter();
   }

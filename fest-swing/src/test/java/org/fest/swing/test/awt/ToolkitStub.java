@@ -31,10 +31,12 @@ import java.util.List;
 public abstract class ToolkitStub extends Toolkit {
 
   private static final Method[] METHODS_TO_MOCK = methodsToMock();
-  
+
   private Map<AWTEventListener, Long> eventListeners;
 
   private static Method[] methodsToMock() {
+    // mocks all methods except the ones defined in this class, to get away with not implementing every single abstract
+    // method in Toolkit.
     List<Method> methodsToMock = new ArrayList<Method>(list(ToolkitStub.class.getMethods()));
     for (Method m : ToolkitStub.class.getDeclaredMethods()) methodsToMock.remove(m);
     return methodsToMock.toArray(new Method[methodsToMock.size()]);
@@ -42,11 +44,11 @@ public abstract class ToolkitStub extends Toolkit {
 
   private EventQueue eventQueue;
 
-  public static ToolkitStub createNew() {
+  static ToolkitStub createNew() {
     return createNew(new EventQueue());
   }
 
-  public static ToolkitStub createNew(EventQueue eventQueue) {
+  static ToolkitStub createNew(EventQueue eventQueue) {
     ToolkitStub stub =  createMock(ToolkitStub.class, METHODS_TO_MOCK);
     stub.eventQueue(eventQueue);
     stub.eventListeners = new HashMap<AWTEventListener, Long>();
