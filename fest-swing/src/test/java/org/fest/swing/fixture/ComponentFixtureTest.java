@@ -18,9 +18,9 @@ package org.fest.swing.fixture;
 import static org.easymock.EasyMock.expect;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.core.ComponentFinders.newComponentFinderMock;
+import static org.fest.swing.core.Robots.newRobotMock;
 import static org.fest.swing.edt.GuiActionRunner.execute;
 import static org.fest.swing.test.builder.JTextFields.textField;
-import static org.fest.swing.test.core.Mocks.mockRobot;
 
 import java.awt.*;
 
@@ -51,7 +51,7 @@ public class ComponentFixtureTest extends EDTSafeTestCase {
   private JTextField target;
 
   @Before public void setUp() {
-    robot = mockRobot();
+    robot = newRobotMock();
     settings = new Settings();
     type = JTextField.class;
     name = "textBox";

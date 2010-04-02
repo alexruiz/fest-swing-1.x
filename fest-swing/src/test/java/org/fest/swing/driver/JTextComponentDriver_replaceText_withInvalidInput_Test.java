@@ -16,12 +16,11 @@
 package org.fest.swing.driver;
 
 import static org.easymock.classextension.EasyMock.createMock;
-import static org.fest.swing.test.core.Mocks.mockRobot;
+import static org.fest.swing.core.Robots.singletonRobotMock;
 
 import javax.swing.text.JTextComponent;
 
-import org.fest.swing.test.core.EDTSafeTestCase;
-import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 /**
@@ -30,13 +29,14 @@ import org.junit.Test;
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
-public class JTextComponentDriver_replaceText_withInvalidInput_Test extends EDTSafeTestCase {
+public class JTextComponentDriver_replaceText_withInvalidInput_Test {
 
-  private JTextComponentDriver driver;
-  private JTextComponent textField;
+  private static JTextComponentDriver driver;
+  private static JTextComponent textField;
 
-  @Before public void setUp() {
-    driver = new JTextComponentDriver(mockRobot());
+  @BeforeClass
+  public static void setUpOnce() {
+    driver = new JTextComponentDriver(singletonRobotMock());
     textField = createMock(JTextComponent.class);
   }
 

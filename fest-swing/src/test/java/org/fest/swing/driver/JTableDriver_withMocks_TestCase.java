@@ -1,5 +1,5 @@
 /*
- * Created on Mar 16, 2008
+ * Created on Apr 2, 2010
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -11,32 +11,30 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2010 the original author or authors.
  */
-package org.fest.swing.fixture;
+package org.fest.swing.driver;
 
 import static org.easymock.classextension.EasyMock.createMock;
 import static org.fest.swing.core.Robots.singletonRobotMock;
 
-import javax.swing.table.JTableHeader;
+import javax.swing.JTable;
 
-import org.junit.Test;
+import org.junit.BeforeClass;
 
 /**
- * Tests for <code>{@link JTableHeaderFixture#JTableHeaderFixture(org.fest.swing.core.Robot, JTableHeader)}</code>.
+ * Base test case for <code>{@link JTableDriver}</code> that uses mocks as part of its fixture.
  *
- * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class JTableHeaderFixture_constructor_Test {
+public class JTableDriver_withMocks_TestCase {
 
-  @Test(expected = NullPointerException.class)
-  public void should_throw_error_if_Robot_is_null() {
-    new JTableHeaderFixture(null, createMock(JTableHeader.class));
-  }
+  static JTableDriver driver;
+  static JTable table;
 
-  @Test(expected = NullPointerException.class)
-  public void should_throw_error_if_target_is_null() {
-    new JTableHeaderFixture(singletonRobotMock(), null);
+  @BeforeClass
+  public static void setUpOnce() {
+    driver = new JTableDriver(singletonRobotMock());
+    table = createMock(JTable.class);
   }
 }

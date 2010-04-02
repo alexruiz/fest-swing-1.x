@@ -1,5 +1,5 @@
 /*
- * Created on Feb 25, 2008
+ * Created on Apr 1, 2010
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -11,22 +11,30 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2010 the original author or authors.
  */
-package org.fest.swing.driver;
+package org.fest.swing.core;
 
-import org.junit.Test;
+import static org.easymock.classextension.EasyMock.createMock;
 
 /**
- * Tests for <code>{@link JTableDriver#validate(javax.swing.JTable, org.fest.swing.data.TableCell)}</code>.
+ * Understands <code>{@link Robot}</code>s to be used for testing purposes.
  *
  * @author Alex Ruiz
- * @author Yvonne Wang
  */
-public class JTableDriver_validate_Test extends JTableDriver_withMocks_TestCase {
+public final class Robots {
 
-  @Test(expected = NullPointerException.class)
-  public void shouldThrowErrorIfCellToValidateIsNull() {
-    driver.validate(table, null);
+  public static Robot singletonRobotMock() {
+    return LazyLoadedSingleton.INSTANCE;
   }
+
+  private static class LazyLoadedSingleton {
+    static final Robot INSTANCE = newRobotMock();
+  }
+
+  public static Robot newRobotMock() {
+    return createMock(Robot.class);
+  }
+
+  private Robots() {}
 }

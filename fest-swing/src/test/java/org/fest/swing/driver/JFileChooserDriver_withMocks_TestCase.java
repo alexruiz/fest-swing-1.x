@@ -1,5 +1,5 @@
 /*
- * Created on Mar 30, 2010
+ * Created on Apr 1, 2010
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -12,28 +12,28 @@
  *
  * Copyright @2010 the original author or authors.
  */
-package org.fest.swing.test.core;
+package org.fest.swing.driver;
 
 import static org.easymock.classextension.EasyMock.createMock;
+import static org.fest.swing.core.Robots.singletonRobotMock;
 
+import javax.swing.JFileChooser;
 
-import org.fest.swing.core.Robot;
-import org.fest.swing.util.RobotFactory;
+import org.junit.BeforeClass;
 
 /**
- * Understands common mock objects.
+ * Base test case for <code>{@link JFileChooserDriver}</code> that uses mocks as part of its fixture.
  *
  * @author Alex Ruiz
  */
-public final class Mocks {
+public class JFileChooserDriver_withMocks_TestCase {
 
-  public static Robot mockRobot() {
-    return createMock(Robot.class);
+  static JFileChooser fileChooser;
+  static JFileChooserDriver driver;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    fileChooser = createMock(JFileChooser.class);
+    driver = new JFileChooserDriver(singletonRobotMock());
   }
-
-  public static RobotFactory mockRobotFactory() {
-    return createMock(RobotFactory.class);
-  }
-
-  private Mocks() {}
 }

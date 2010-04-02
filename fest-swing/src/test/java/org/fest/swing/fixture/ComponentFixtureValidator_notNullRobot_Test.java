@@ -16,7 +16,7 @@
 package org.fest.swing.fixture;
 
 import static org.fest.assertions.Assertions.assertThat;
-import static org.fest.swing.test.core.Mocks.mockRobot;
+import static org.fest.swing.core.Robots.singletonRobotMock;
 
 import org.fest.swing.core.Robot;
 import org.junit.Test;
@@ -30,7 +30,7 @@ public class ComponentFixtureValidator_notNullRobot_Test {
 
   @Test
   public void should_return_Robot_if_Robot_is_not_null() {
-    Robot robot = mockRobot();
+    Robot robot = singletonRobotMock();
     assertThat(ComponentFixtureValidator.notNullRobot(robot)).isSameAs(robot);
   }
 

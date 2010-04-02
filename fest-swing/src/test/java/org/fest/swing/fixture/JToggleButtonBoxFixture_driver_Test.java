@@ -15,12 +15,11 @@
  */
 package org.fest.swing.fixture;
 
-import static org.fest.swing.test.builder.JToggleButtons.toggleButton;
-import static org.fest.swing.test.core.Mocks.mockRobot;
+import static org.easymock.classextension.EasyMock.createMock;
+import static org.fest.swing.core.Robots.singletonRobotMock;
 
 import javax.swing.JToggleButton;
 
-import org.fest.swing.test.core.EDTSafeTestCase;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -30,15 +29,15 @@ import org.junit.Test;
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
-public class JToggleButtonBoxFixture_driver_Test extends EDTSafeTestCase {
+public class JToggleButtonBoxFixture_driver_Test {
 
   private JToggleButtonFixture fixture;
   private JToggleButton target;
 
   @Before
   public void setUp() {
-    target = toggleButton().createNew();
-    fixture = new JToggleButtonFixture(mockRobot(), target);
+    target = createMock(JToggleButton.class);
+    fixture = new JToggleButtonFixture(singletonRobotMock(), target);
   }
 
   @Test(expected = NullPointerException.class)

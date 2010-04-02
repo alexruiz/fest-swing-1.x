@@ -15,12 +15,11 @@
  */
 package org.fest.swing.fixture;
 
-import static org.fest.swing.test.builder.JPopupMenus.popupMenu;
-import static org.fest.swing.test.core.Mocks.mockRobot;
+import static org.easymock.classextension.EasyMock.createMock;
+import static org.fest.swing.core.Robots.singletonRobotMock;
 
 import javax.swing.JPopupMenu;
 
-import org.fest.swing.test.core.EDTSafeTestCase;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -30,15 +29,15 @@ import org.junit.Test;
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
-public class JPopupMenuFixture_driver_Test extends EDTSafeTestCase {
+public class JPopupMenuFixture_driver_Test {
 
   private JPopupMenuFixture fixture;
   private JPopupMenu target;
 
   @Before
   public void setUp() {
-    target = popupMenu().createNew();
-    fixture = new JPopupMenuFixture(mockRobot(), target);
+    target = createMock(JPopupMenu.class);
+    fixture = new JPopupMenuFixture(singletonRobotMock(), target);
   }
 
   @Test(expected = NullPointerException.class)

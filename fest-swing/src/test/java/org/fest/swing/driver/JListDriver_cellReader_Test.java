@@ -15,10 +15,6 @@
  */
 package org.fest.swing.driver;
 
-import static org.fest.swing.test.core.Mocks.mockRobot;
-
-import org.fest.swing.test.core.EDTSafeTestCase;
-import org.junit.Before;
 import org.junit.Test;
 
 /**
@@ -27,13 +23,7 @@ import org.junit.Test;
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
-public class JListDriver_cellReader_Test extends EDTSafeTestCase {
-
-  private JListDriver driver;
-
-  @Before public void setUp() {
-    driver = new JListDriver(mockRobot());
-  }
+public class JListDriver_cellReader_Test extends JListDriver_withMocks_TestCase {
 
   @Test(expected = NullPointerException.class)
   public void should_throw_error_if_cellReader_is_null() {

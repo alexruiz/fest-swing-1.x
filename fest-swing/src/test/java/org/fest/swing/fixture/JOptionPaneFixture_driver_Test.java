@@ -15,12 +15,11 @@
  */
 package org.fest.swing.fixture;
 
-import static org.fest.swing.test.builder.JOptionPanes.optionPane;
-import static org.fest.swing.test.core.Mocks.mockRobot;
+import static org.easymock.classextension.EasyMock.createMock;
+import static org.fest.swing.core.Robots.singletonRobotMock;
 
 import javax.swing.JOptionPane;
 
-import org.fest.swing.test.core.EDTSafeTestCase;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -30,15 +29,15 @@ import org.junit.Test;
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
-public class JOptionPaneFixture_driver_Test extends EDTSafeTestCase {
+public class JOptionPaneFixture_driver_Test {
 
   private JOptionPaneFixture fixture;
   private JOptionPane target;
 
   @Before
   public void setUp() {
-    target = optionPane().createNew();
-    fixture = new JOptionPaneFixture(mockRobot(), target);
+    target = createMock(JOptionPane.class);
+    fixture = new JOptionPaneFixture(singletonRobotMock(), target);
   }
 
   @Test(expected = NullPointerException.class)

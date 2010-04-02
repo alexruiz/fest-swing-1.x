@@ -15,8 +15,8 @@
  */
 package org.fest.swing.fixture;
 
+import static org.fest.swing.core.Robots.singletonRobotMock;
 import static org.fest.swing.test.builder.JCheckBoxes.checkBox;
-import static org.fest.swing.test.core.Mocks.mockRobot;
 
 import javax.swing.JCheckBox;
 
@@ -37,7 +37,7 @@ public class JCheckBoxFixture_driver_Test extends EDTSafeTestCase {
   @Before
   public void setUp() {
     target = checkBox().createNew();
-    fixture = new JCheckBoxFixture(mockRobot(), target);
+    fixture = new JCheckBoxFixture(singletonRobotMock(), target);
   }
 
   @Test(expected = NullPointerException.class)

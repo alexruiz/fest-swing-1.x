@@ -15,12 +15,11 @@
  */
 package org.fest.swing.fixture;
 
-import static org.fest.swing.test.builder.JTabbedPanes.tabbedPane;
-import static org.fest.swing.test.core.Mocks.mockRobot;
+import static org.easymock.classextension.EasyMock.createMock;
+import static org.fest.swing.core.Robots.singletonRobotMock;
 
 import javax.swing.JTabbedPane;
 
-import org.fest.swing.test.core.EDTSafeTestCase;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -30,15 +29,15 @@ import org.junit.Test;
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
-public class JTabbedPaneFixture_driver_Test extends EDTSafeTestCase {
+public class JTabbedPaneFixture_driver_Test {
 
   private JTabbedPaneFixture fixture;
   private JTabbedPane target;
 
   @Before
   public void setUp() {
-    target = tabbedPane().createNew();
-    fixture = new JTabbedPaneFixture(mockRobot(), target);
+    target = createMock(JTabbedPane.class);
+    fixture = new JTabbedPaneFixture(singletonRobotMock(), target);
   }
 
   @Test(expected = NullPointerException.class)

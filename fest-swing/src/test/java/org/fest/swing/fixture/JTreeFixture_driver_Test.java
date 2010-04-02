@@ -15,12 +15,11 @@
  */
 package org.fest.swing.fixture;
 
+import static org.fest.swing.core.Robots.singletonRobotMock;
 import static org.fest.swing.test.builder.JTrees.tree;
-import static org.fest.swing.test.core.Mocks.mockRobot;
 
 import javax.swing.JTree;
 
-import org.fest.swing.test.core.EDTSafeTestCase;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -30,7 +29,7 @@ import org.junit.Test;
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
-public class JTreeFixture_driver_Test extends EDTSafeTestCase {
+public class JTreeFixture_driver_Test {
 
   private JTreeFixture fixture;
   private JTree target;
@@ -38,7 +37,7 @@ public class JTreeFixture_driver_Test extends EDTSafeTestCase {
   @Before
   public void setUp() {
     target = tree().createNew();
-    fixture = new JTreeFixture(mockRobot(), target);
+    fixture = new JTreeFixture(singletonRobotMock(), target);
   }
 
   @Test(expected = NullPointerException.class)

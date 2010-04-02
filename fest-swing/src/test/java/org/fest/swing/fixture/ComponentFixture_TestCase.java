@@ -15,7 +15,7 @@
 package org.fest.swing.fixture;
 
 import static org.fest.assertions.Assertions.assertThat;
-import static org.fest.swing.test.core.Mocks.mockRobot;
+import static org.fest.swing.core.Robots.newRobotMock;
 
 import java.awt.Component;
 
@@ -34,7 +34,7 @@ public abstract class ComponentFixture_TestCase<T extends Component> {
   private Robot robot;
 
   @Before public final void setUp() {
-    robot = mockRobot();
+    robot = newRobotMock();
     onSetUp();
   }
 

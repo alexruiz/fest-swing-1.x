@@ -17,7 +17,7 @@ package org.fest.swing.core;
 
 import static org.easymock.EasyMock.expect;
 import static org.easymock.classextension.EasyMock.createMock;
-import static org.fest.swing.test.core.Mocks.mockRobotFactory;
+import static org.fest.swing.util.RobotFactories.mockRobotFactory;
 
 import java.awt.Robot;
 import java.lang.reflect.Method;

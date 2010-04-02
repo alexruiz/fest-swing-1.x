@@ -17,10 +17,10 @@ package org.fest.swing.driver;
 
 import static org.easymock.classextension.EasyMock.createMock;
 import static org.fest.assertions.Assertions.assertThat;
-import static org.fest.swing.test.core.Mocks.mockRobot;
+import static org.fest.swing.core.Robots.singletonRobotMock;
 
 import org.fest.swing.cell.JTreeCellReader;
-import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 /**
@@ -30,10 +30,11 @@ import org.junit.Test;
  */
 public class JTreeDriver_cellReader_Test {
 
-  private JTreeDriver driver;
+  private static JTreeDriver driver;
 
-  @Before public void setUp() {
-    driver = new JTreeDriver(mockRobot());
+  @BeforeClass
+  public static void setUpOnce() {
+    driver = new JTreeDriver(singletonRobotMock());
   }
 
   @Test(expected = NullPointerException.class)

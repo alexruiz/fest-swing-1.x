@@ -15,8 +15,8 @@
  */
 package org.fest.swing.fixture;
 
+import static org.fest.swing.core.Robots.singletonRobotMock;
 import static org.fest.swing.test.builder.JLabels.label;
-import static org.fest.swing.test.core.Mocks.mockRobot;
 
 import javax.swing.JLabel;
 
@@ -38,7 +38,7 @@ public class JLabelFixture_driver_Test extends EDTSafeTestCase {
   @Before
   public void setUp() {
     target = label().createNew();
-    fixture = new JLabelFixture(mockRobot(), target);
+    fixture = new JLabelFixture(singletonRobotMock(), target);
   }
 
   @Test(expected = NullPointerException.class)

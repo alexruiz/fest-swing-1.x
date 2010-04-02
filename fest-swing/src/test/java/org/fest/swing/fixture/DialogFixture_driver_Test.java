@@ -15,8 +15,8 @@
  */
 package org.fest.swing.fixture;
 
+import static org.fest.swing.core.Robots.singletonRobotMock;
 import static org.fest.swing.test.builder.JDialogs.dialog;
-import static org.fest.swing.test.core.Mocks.mockRobot;
 import static org.fest.swing.test.task.WindowDestroyTask.hideAndDisposeInEDT;
 
 import java.awt.Dialog;
@@ -38,7 +38,7 @@ public class DialogFixture_driver_Test extends EDTSafeTestCase {
   @Before
   public void setUp() {
     target = dialog().createNew();
-    fixture = new DialogFixture(mockRobot(), target);
+    fixture = new DialogFixture(singletonRobotMock(), target);
   }
 
   @After

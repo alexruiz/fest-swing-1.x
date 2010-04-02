@@ -17,7 +17,7 @@ package org.fest.swing.driver;
 
 import static org.easymock.EasyMock.expectLastCall;
 import static org.fest.assertions.Assertions.assertThat;
-import static org.fest.swing.test.core.Mocks.mockRobot;
+import static org.fest.swing.core.Robots.newRobotMock;
 import static org.fest.swing.util.Platform.controlOrCommandKey;
 
 import org.fest.mocks.EasyMockTemplate;
@@ -36,7 +36,7 @@ public class MultipleSelectionTemplate_multiSelect_Test {
   private MultipleSelection template;
 
   @Before public void setUp() {
-    robot = mockRobot();
+    robot = newRobotMock();
   }
 
   @Test

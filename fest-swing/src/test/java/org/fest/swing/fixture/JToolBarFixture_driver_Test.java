@@ -15,12 +15,11 @@
  */
 package org.fest.swing.fixture;
 
-import static org.fest.swing.test.builder.JToolBars.toolBar;
-import static org.fest.swing.test.core.Mocks.mockRobot;
+import static org.easymock.classextension.EasyMock.createMock;
+import static org.fest.swing.core.Robots.singletonRobotMock;
 
 import javax.swing.JToolBar;
 
-import org.fest.swing.test.core.EDTSafeTestCase;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -30,15 +29,15 @@ import org.junit.Test;
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
-public class JToolBarFixture_driver_Test extends EDTSafeTestCase {
+public class JToolBarFixture_driver_Test {
 
   private JToolBarFixture fixture;
   private JToolBar target;
 
   @Before
   public void setUp() {
-    target = toolBar().createNew();
-    fixture = new JToolBarFixture(mockRobot(), target);
+    target = createMock(JToolBar.class);
+    fixture = new JToolBarFixture(singletonRobotMock(), target);
   }
 
   @Test(expected = NullPointerException.class)

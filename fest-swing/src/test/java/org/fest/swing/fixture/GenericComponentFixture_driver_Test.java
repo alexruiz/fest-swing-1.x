@@ -16,8 +16,8 @@
 package org.fest.swing.fixture;
 
 import static org.fest.assertions.Assertions.assertThat;
+import static org.fest.swing.core.Robots.singletonRobotMock;
 import static org.fest.swing.test.builder.JButtons.button;
-import static org.fest.swing.test.core.Mocks.mockRobot;
 
 import javax.swing.JButton;
 
@@ -39,7 +39,7 @@ public class GenericComponentFixture_driver_Test extends EDTSafeTestCase {
   @Before
   public void setUp() {
     JButton target = button().createNew();
-    fixture = new GenericComponentFixture<JButton>(mockRobot(), target) {};
+    fixture = new GenericComponentFixture<JButton>(singletonRobotMock(), target) {};
   }
 
   @Test

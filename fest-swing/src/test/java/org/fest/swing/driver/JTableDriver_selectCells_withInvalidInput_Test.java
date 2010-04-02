@@ -15,14 +15,9 @@
  */
 package org.fest.swing.driver;
 
-import static org.easymock.classextension.EasyMock.createMock;
-import static org.fest.swing.test.core.Mocks.mockRobot;
-
 import javax.swing.JTable;
 
 import org.fest.swing.data.TableCell;
-import org.fest.swing.test.core.EDTSafeTestCase;
-import org.junit.Before;
 import org.junit.Test;
 
 /**
@@ -31,16 +26,7 @@ import org.junit.Test;
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
-public class JTableDriver_selectCells_withInvalidInput_Test extends EDTSafeTestCase {
-
-  private JTableDriver driver;
-  private JTable table;
-
-  @Before
-  public void setUp() {
-    driver = new JTableDriver(mockRobot());
-    table = createMock(JTable.class);
-  }
+public class JTableDriver_selectCells_withInvalidInput_Test extends JTableDriver_withMocks_TestCase {
 
   @Test(expected = NullPointerException.class)
   public void shouldThrowErrorIfArrayOfCellsToSelectIsNull() {

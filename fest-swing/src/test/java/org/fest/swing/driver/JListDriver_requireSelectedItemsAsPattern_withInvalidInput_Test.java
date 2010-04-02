@@ -15,15 +15,8 @@
  */
 package org.fest.swing.driver;
 
-import static org.easymock.classextension.EasyMock.createMock;
-import static org.fest.swing.test.core.Mocks.mockRobot;
-
 import java.util.regex.Pattern;
 
-import javax.swing.JList;
-
-import org.fest.swing.test.core.EDTSafeTestCase;
-import org.junit.Before;
 import org.junit.Test;
 
 /**
@@ -32,15 +25,7 @@ import org.junit.Test;
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
-public class JListDriver_requireSelectedItemsAsPattern_withInvalidInput_Test extends EDTSafeTestCase {
-
-  private JListDriver driver;
-  private JList list;
-
-  @Before public void setUp() {
-    driver = new JListDriver(mockRobot());
-    list = createMock(JList.class);
-  }
+public class JListDriver_requireSelectedItemsAsPattern_withInvalidInput_Test extends JListDriver_withMocks_TestCase {
 
   @Test(expected = NullPointerException.class)
   public void should_throw_error_if_array_of_patterns_is_null() {

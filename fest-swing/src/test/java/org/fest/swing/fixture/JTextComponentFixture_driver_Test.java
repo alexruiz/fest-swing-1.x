@@ -15,12 +15,11 @@
  */
 package org.fest.swing.fixture;
 
-import static org.fest.swing.test.builder.JTextFields.textField;
-import static org.fest.swing.test.core.Mocks.mockRobot;
+import static org.easymock.classextension.EasyMock.createMock;
+import static org.fest.swing.core.Robots.singletonRobotMock;
 
 import javax.swing.text.JTextComponent;
 
-import org.fest.swing.test.core.EDTSafeTestCase;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -30,15 +29,15 @@ import org.junit.Test;
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
-public class JTextComponentFixture_driver_Test extends EDTSafeTestCase {
+public class JTextComponentFixture_driver_Test {
 
   private JTextComponentFixture fixture;
   private JTextComponent target;
 
   @Before
   public void setUp() {
-    target = textField().createNew();
-    fixture = new JTextComponentFixture(mockRobot(), target);
+    target = createMock(JTextComponent.class);
+    fixture = new JTextComponentFixture(singletonRobotMock(), target);
   }
 
   @Test(expected = NullPointerException.class)

@@ -15,8 +15,8 @@
  */
 package org.fest.swing.fixture;
 
+import static org.fest.swing.core.Robots.singletonRobotMock;
 import static org.fest.swing.test.builder.JComboBoxes.comboBox;
-import static org.fest.swing.test.core.Mocks.mockRobot;
 
 import javax.swing.JComboBox;
 
@@ -38,7 +38,7 @@ public class JComboBoxFixture_driver_Test extends EDTSafeTestCase {
   @Before
   public void setUp() {
     target = comboBox().createNew();
-    fixture = new JComboBoxFixture(mockRobot(), target);
+    fixture = new JComboBoxFixture(singletonRobotMock(), target);
   }
 
   @Test(expected = NullPointerException.class)

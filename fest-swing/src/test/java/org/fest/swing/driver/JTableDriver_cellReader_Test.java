@@ -15,9 +15,8 @@
  */
 package org.fest.swing.driver;
 
-import static org.fest.swing.test.core.Mocks.mockRobot;
+import static org.fest.swing.core.Robots.singletonRobotMock;
 
-import org.fest.swing.test.core.EDTSafeTestCase;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -27,13 +26,13 @@ import org.junit.Test;
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
-public class JTableDriver_cellReader_Test extends EDTSafeTestCase {
+public class JTableDriver_cellReader_Test {
 
   private JTableDriver driver;
 
   @Before
   public void setUp() {
-    driver = new JTableDriver(mockRobot());
+    driver = new JTableDriver(singletonRobotMock());
   }
 
   @Test(expected = NullPointerException.class)

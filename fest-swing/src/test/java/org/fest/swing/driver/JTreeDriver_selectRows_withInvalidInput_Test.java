@@ -15,13 +15,6 @@
  */
 package org.fest.swing.driver;
 
-import static org.fest.swing.test.builder.JTrees.tree;
-import static org.fest.swing.test.core.Mocks.mockRobot;
-
-import javax.swing.JTree;
-
-import org.fest.swing.test.core.EDTSafeTestCase;
-import org.junit.Before;
 import org.junit.Test;
 
 /**
@@ -29,16 +22,7 @@ import org.junit.Test;
  *
  * @author Alex Ruiz
  */
-public class JTreeDriver_selectRows_withInvalidInput_Test extends EDTSafeTestCase {
-
-  private JTree tree;
-  private JTreeDriver driver;
-
-  @Before
-  public void onSetUp() {
-    tree = tree().createNew();
-    driver = new JTreeDriver(mockRobot());
-  }
+public class JTreeDriver_selectRows_withInvalidInput_Test extends JTreeDriver_withMocks_TestCase {
 
   @Test(expected = NullPointerException.class)
   public void should_throw_error_if_array_is_null() {

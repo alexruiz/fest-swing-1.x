@@ -16,9 +16,9 @@
 package org.fest.swing.driver;
 
 import static javax.swing.SwingUtilities.isEventDispatchThread;
+import static org.fest.swing.core.Robots.singletonRobotMock;
 import static org.fest.swing.edt.GuiActionRunner.execute;
 import static org.fest.swing.test.awt.AppletContexts.singletonAppletContextMock;
-import static org.fest.swing.test.core.Mocks.mockRobot;
 
 import java.applet.AppletContext;
 import java.util.HashMap;
@@ -47,7 +47,7 @@ public class JAppletDriver_TestCase extends EDTSafeTestCase {
   public final void setUp() {
     context = singletonAppletContextMock();
     applet = JAppletStub.createNew(context);
-    driver = new JAppletDriver(mockRobot());
+    driver = new JAppletDriver(singletonRobotMock());
   }
 
   final AppletContext context() { return context; }

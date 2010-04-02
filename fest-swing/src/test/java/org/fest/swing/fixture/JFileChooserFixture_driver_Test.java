@@ -15,8 +15,8 @@
  */
 package org.fest.swing.fixture;
 
+import static org.fest.swing.core.Robots.singletonRobotMock;
 import static org.fest.swing.test.builder.JFileChoosers.fileChooser;
-import static org.fest.swing.test.core.Mocks.mockRobot;
 
 import javax.swing.JFileChooser;
 
@@ -38,7 +38,7 @@ public class JFileChooserFixture_driver_Test extends EDTSafeTestCase {
   @Before
   public void setUp() {
     target = fileChooser().createNew();
-    fixture = new JFileChooserFixture(mockRobot(), target);
+    fixture = new JFileChooserFixture(singletonRobotMock(), target);
   }
 
   @Test(expected = NullPointerException.class)

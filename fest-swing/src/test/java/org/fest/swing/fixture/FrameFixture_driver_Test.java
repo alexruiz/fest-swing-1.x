@@ -15,8 +15,8 @@
  */
 package org.fest.swing.fixture;
 
+import static org.fest.swing.core.Robots.singletonRobotMock;
 import static org.fest.swing.test.builder.JFrames.frame;
-import static org.fest.swing.test.core.Mocks.mockRobot;
 import static org.fest.swing.test.task.WindowDestroyTask.hideAndDisposeInEDT;
 
 import java.awt.Frame;
@@ -38,7 +38,7 @@ public class FrameFixture_driver_Test extends EDTSafeTestCase {
   @Before
   public void setUp() {
     target = frame().createNew();
-    fixture = new FrameFixture(mockRobot(), target);
+    fixture = new FrameFixture(singletonRobotMock(), target);
   }
 
   @After

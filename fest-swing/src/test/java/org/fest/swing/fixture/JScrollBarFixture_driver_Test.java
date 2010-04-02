@@ -15,12 +15,11 @@
  */
 package org.fest.swing.fixture;
 
-import static org.fest.swing.test.builder.JScrollBars.scrollBar;
-import static org.fest.swing.test.core.Mocks.mockRobot;
+import static org.easymock.classextension.EasyMock.createMock;
+import static org.fest.swing.core.Robots.singletonRobotMock;
 
 import javax.swing.JScrollBar;
 
-import org.fest.swing.test.core.EDTSafeTestCase;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -30,15 +29,15 @@ import org.junit.Test;
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
-public class JScrollBarFixture_driver_Test extends EDTSafeTestCase {
+public class JScrollBarFixture_driver_Test {
 
   private JScrollBarFixture fixture;
   private JScrollBar target;
 
   @Before
   public void setUp() {
-    target = scrollBar().createNew();
-    fixture = new JScrollBarFixture(mockRobot(), target);
+    target = createMock(JScrollBar.class);
+    fixture = new JScrollBarFixture(singletonRobotMock(), target);
   }
 
   @Test(expected = NullPointerException.class)

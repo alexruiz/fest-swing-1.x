@@ -16,13 +16,13 @@ package org.fest.swing.fixture;
 
 import static org.easymock.classextension.EasyMock.createMock;
 import static org.fest.assertions.Assertions.assertThat;
+import static org.fest.swing.core.Robots.singletonRobotMock;
 import static org.fest.swing.data.TableCell.row;
-import static org.fest.swing.test.builder.JTables.table;
-import static org.fest.swing.test.core.Mocks.mockRobot;
+
+import javax.swing.JTable;
 
 import org.fest.swing.data.TableCell;
 import org.fest.swing.driver.JTableDriver;
-import org.fest.swing.test.core.EDTSafeTestCase;
 import org.junit.Before;
 
 /**
@@ -30,7 +30,7 @@ import org.junit.Before;
  *
  * @author Alex Ruiz
  */
-public class JTableCellFixture_withMockDriver_TestCase extends EDTSafeTestCase {
+public class JTableCellFixture_withMockDriver_TestCase {
 
   JTableFixture table;
   JTableDriver driver;
@@ -39,7 +39,7 @@ public class JTableCellFixture_withMockDriver_TestCase extends EDTSafeTestCase {
 
   @Before
   public final void setUp() {
-    table = new JTableFixture(mockRobot(), table().createNew());
+    table = new JTableFixture(singletonRobotMock(), createMock(JTable.class));
     driver = createMock(JTableDriver.class);
     table.driver(driver);
     cell = row(8).column(6);

@@ -15,8 +15,8 @@
  */
 package org.fest.swing.fixture;
 
+import static org.fest.swing.core.Robots.singletonRobotMock;
 import static org.fest.swing.test.builder.JButtons.button;
-import static org.fest.swing.test.core.Mocks.mockRobot;
 
 import javax.swing.JButton;
 
@@ -38,7 +38,7 @@ public class JButtonFixture_driver_Test extends EDTSafeTestCase {
   @Before
   public void setUp() {
     target = button().createNew();
-    fixture = new JButtonFixture(mockRobot(), target);
+    fixture = new JButtonFixture(singletonRobotMock(), target);
   }
 
   @Test(expected = NullPointerException.class)

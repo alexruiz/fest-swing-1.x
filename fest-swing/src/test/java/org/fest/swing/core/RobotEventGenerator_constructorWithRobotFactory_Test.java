@@ -19,7 +19,7 @@ import static org.easymock.EasyMock.expect;
 import static org.easymock.classextension.EasyMock.createMock;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.test.core.CommonAssertions.failWhenExpectingException;
-import static org.fest.swing.test.core.Mocks.mockRobotFactory;
+import static org.fest.swing.util.RobotFactories.mockRobotFactory;
 
 import java.awt.AWTException;
 import java.awt.Robot;

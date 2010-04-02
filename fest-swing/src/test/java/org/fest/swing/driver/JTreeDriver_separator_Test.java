@@ -16,7 +16,7 @@
 package org.fest.swing.driver;
 
 import static org.fest.assertions.Assertions.assertThat;
-import static org.fest.swing.test.core.Mocks.mockRobot;
+import static org.fest.swing.core.Robots.singletonRobotMock;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -31,7 +31,7 @@ public class JTreeDriver_separator_Test {
   private JTreeDriver driver;
 
   @Before public void setUp() {
-    driver = new JTreeDriver(mockRobot());
+    driver = new JTreeDriver(singletonRobotMock());
   }
 
   @Test(expected = NullPointerException.class)

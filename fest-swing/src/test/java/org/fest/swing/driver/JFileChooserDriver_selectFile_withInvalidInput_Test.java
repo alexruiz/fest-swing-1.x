@@ -15,14 +15,11 @@
  */
 package org.fest.swing.driver;
 
-import static org.easymock.classextension.EasyMock.createMock;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.test.core.CommonAssertions.failWhenExpectingException;
-import static org.fest.swing.test.core.Mocks.mockRobot;
 
 import javax.swing.JFileChooser;
 
-import org.junit.Before;
 import org.junit.Test;
 
 /**
@@ -31,15 +28,7 @@ import org.junit.Test;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class JFileChooserDriver_selectFile_withInvalidInput_Test {
-
-  private JFileChooser fileChooser;
-  private JFileChooserDriver driver;
-
-  @Before public void setUp() {
-    fileChooser = createMock(JFileChooser.class);
-    driver = new JFileChooserDriver(mockRobot());
-  }
+public class JFileChooserDriver_selectFile_withInvalidInput_Test extends JFileChooserDriver_withMocks_TestCase {
 
   @Test
   public void should_throw_error_if_file_is_null() {

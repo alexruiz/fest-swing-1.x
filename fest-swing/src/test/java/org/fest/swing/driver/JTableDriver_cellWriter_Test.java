@@ -15,10 +15,6 @@
  */
 package org.fest.swing.driver;
 
-import static org.fest.swing.test.core.Mocks.mockRobot;
-
-import org.fest.swing.test.core.EDTSafeTestCase;
-import org.junit.Before;
 import org.junit.Test;
 
 /**
@@ -27,14 +23,7 @@ import org.junit.Test;
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
-public class JTableDriver_cellWriter_Test extends EDTSafeTestCase {
-
-  private JTableDriver driver;
-
-  @Before
-  public void setUp() {
-    driver = new JTableDriver(mockRobot());
-  }
+public class JTableDriver_cellWriter_Test extends JTableDriver_withMocks_TestCase {
 
   @Test(expected = NullPointerException.class)
   public void should_throw_error_if_cellWriter_is_null() {

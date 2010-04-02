@@ -16,14 +16,15 @@
 package org.fest.swing.driver;
 
 import static org.easymock.classextension.EasyMock.createMock;
+import static org.fest.swing.core.Robots.singletonRobotMock;
 import static org.fest.swing.test.builder.JTables.table;
-import static org.fest.swing.test.core.Mocks.mockRobot;
 
 import javax.swing.JTable;
 
 import org.fest.swing.cell.JTableCellReader;
 import org.fest.swing.test.core.EDTSafeTestCase;
 import org.junit.Before;
+import org.junit.BeforeClass;
 
 /**
  * Base test case that uses a mock implementation of <code>{@link JTableCellReader}</code>.
@@ -35,14 +36,18 @@ public abstract class JTableDriver_withMockCellReader_TestCase extends EDTSafeTe
 
   JTableDriver driver;
   JTableCellReader cellReader;
-  JTable table;
+  static JTable table;
+
+  @BeforeClass
+  public static void setUpTable() {
+    table = table().withRowCount(1).withColumnCount(6).createNew();
+  }
 
   @Before
   public final void setUp() {
-    driver = new JTableDriver(mockRobot());
+    driver = new JTableDriver(singletonRobotMock());
     cellReader = createMock(JTableCellReader.class);
     driver.cellReader(cellReader);
-    table = table().withRowCount(1).withColumnCount(6).createNew();
     onSetUp();
   }
 
