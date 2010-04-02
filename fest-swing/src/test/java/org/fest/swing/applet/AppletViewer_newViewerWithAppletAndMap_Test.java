@@ -16,7 +16,7 @@
 package org.fest.swing.applet;
 
 import static org.fest.swing.edt.GuiActionRunner.execute;
-import static org.fest.swing.test.awt.Applets.singletonAppletMock;
+import static org.fest.swing.test.awt.TestApplets.singletonAppletMock;
 
 import java.applet.Applet;
 import java.util.Map;

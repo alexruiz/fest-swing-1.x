@@ -24,11 +24,11 @@ import org.fest.swing.hierarchy.ComponentHierarchy;
  *
  * @author Alex Ruiz
  */
-public final class ComponentHierarchies {
+public final class TestComponentHierarchies {
 
   public static ComponentHierarchy newComponentHierarchyMock() {
     return createMock(ComponentHierarchy.class);
   }
 
-  private ComponentHierarchies() {}
+  private TestComponentHierarchies() {}
 }

@@ -18,7 +18,7 @@ package org.fest.swing.image;
 import static org.easymock.EasyMock.expect;
 import static org.easymock.classextension.EasyMock.createMock;
 import static org.fest.assertions.Assertions.assertThat;
-import static org.fest.swing.image.ImageFileWriters.newImageFileWriterMock;
+import static org.fest.swing.image.TestImageFileWriters.newImageFileWriterMock;
 import static org.fest.swing.test.core.CommonAssertions.failWhenExpectingException;
 
 import java.awt.image.BufferedImage;

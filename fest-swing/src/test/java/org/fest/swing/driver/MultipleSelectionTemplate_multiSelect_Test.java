@@ -17,7 +17,7 @@ package org.fest.swing.driver;
 
 import static org.easymock.EasyMock.expectLastCall;
 import static org.fest.assertions.Assertions.assertThat;
-import static org.fest.swing.core.Robots.newRobotMock;
+import static org.fest.swing.core.TestRobots.newRobotMock;
 import static org.fest.swing.util.Platform.controlOrCommandKey;
 
 import org.fest.mocks.EasyMockTemplate;

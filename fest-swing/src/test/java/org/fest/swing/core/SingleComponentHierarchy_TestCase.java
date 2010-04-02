@@ -15,7 +15,7 @@
  */
 package org.fest.swing.core;
 
-import static org.fest.swing.core.ComponentHierarchies.newComponentHierarchyMock;
+import static org.fest.swing.core.TestComponentHierarchies.newComponentHierarchyMock;
 
 import org.fest.swing.hierarchy.ComponentHierarchy;
 import org.fest.swing.hierarchy.SingleComponentHierarchy;

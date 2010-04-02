@@ -17,26 +17,26 @@ package org.fest.swing.test.awt;
 
 import static org.easymock.classextension.EasyMock.createMock;
 
-import java.applet.AppletContext;
+import java.applet.Applet;
 
 /**
- * Understands <code>{@link AppletContext}</code>s to be used for testing purposes.
+ * Understands <code>{@link Applet}</code>s to be used for testing purposes.
  *
  * @author Alex Ruiz
  */
-public final class AppletContexts {
+public final class TestApplets {
 
-  public static AppletContext singletonAppletContextMock() {
+  public static Applet singletonAppletMock() {
     return LazyLoadedSingleton.INSTANCE;
   }
 
   private static class LazyLoadedSingleton {
-    static final AppletContext INSTANCE = appletContextMock();
+    static final Applet INSTANCE = newAppletMock();
   }
 
-  public static AppletContext appletContextMock() {
-    return createMock(AppletContext.class);
+  public static Applet newAppletMock() {
+    return createMock(Applet.class);
   }
 
-  private AppletContexts() {}
+  private TestApplets() {}
 }

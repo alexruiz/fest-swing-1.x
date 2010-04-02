@@ -15,7 +15,7 @@
  */
 package org.fest.swing.fixture;
 
-import static org.fest.swing.core.Robots.singletonRobotMock;
+import static org.fest.swing.core.TestRobots.singletonRobotMock;
 import static org.fest.swing.test.builder.JDialogs.dialog;
 import static org.fest.swing.test.task.WindowDestroyTask.hideAndDisposeInEDT;
 

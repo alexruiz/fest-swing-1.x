@@ -22,7 +22,7 @@ import static org.easymock.classextension.EasyMock.createMock;
  *
  * @author Alex Ruiz
  */
-public final class Robots {
+public final class TestRobots {
 
   public static Robot singletonRobotMock() {
     return LazyLoadedSingleton.INSTANCE;
@@ -36,5 +36,5 @@ public final class Robots {
     return createMock(Robot.class);
   }
 
-  private Robots() {}
+  private TestRobots() {}
 }

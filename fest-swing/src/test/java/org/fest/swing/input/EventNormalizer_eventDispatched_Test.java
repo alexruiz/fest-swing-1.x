@@ -18,7 +18,7 @@ package org.fest.swing.input;
 import static org.easymock.EasyMock.expect;
 import static org.easymock.EasyMock.expectLastCall;
 import static org.easymock.classextension.EasyMock.createMock;
-import static org.fest.swing.test.awt.AWTEvents.singletonAWTEventMock;
+import static org.fest.swing.test.awt.TestAWTEvents.singletonAWTEventMock;
 import static org.fest.swing.test.awt.Toolkits.newToolkitMock;
 
 import java.awt.AWTEvent;

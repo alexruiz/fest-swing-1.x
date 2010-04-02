@@ -17,9 +17,9 @@ package org.fest.swing.core;
 
 import static org.easymock.EasyMock.expect;
 import static org.easymock.classextension.EasyMock.createMock;
-import static org.fest.swing.core.ComponentFinders.newComponentFinderMock;
-import static org.fest.swing.test.awt.Components.singletonComponentMock;
-import static org.fest.swing.test.awt.Containers.singletonContainerMock;
+import static org.fest.swing.core.TestComponentFinders.newComponentFinderMock;
+import static org.fest.swing.test.awt.TestComponents.singletonComponentMock;
+import static org.fest.swing.test.awt.TestContainers.singletonContainerMock;
 
 import java.awt.Container;
 

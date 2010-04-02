@@ -17,7 +17,7 @@ package org.fest.swing.core;
 
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.edt.GuiActionRunner.execute;
-import static org.fest.swing.test.awt.Containers.singletonContainerMock;
+import static org.fest.swing.test.awt.TestContainers.singletonContainerMock;
 import static org.fest.swing.test.task.ComponentRequestFocusAndWaitForFocusGainTask.giveFocusAndWaitTillIsFocused;
 
 import java.awt.*;

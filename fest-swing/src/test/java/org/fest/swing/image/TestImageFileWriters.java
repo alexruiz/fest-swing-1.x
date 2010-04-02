@@ -13,20 +13,28 @@
  *
  * Copyright @2010 the original author or authors.
  */
-package org.fest.swing.keystroke;
+package org.fest.swing.image;
 
 import static org.easymock.classextension.EasyMock.createMock;
 
 /**
- * Understands <code>{@link KeyStrokeMappingProvider}</code>s to be used for testing purposes.
+ * Understands <code>{@link ImageFileWriter}</code>s to be used for testing purposes.
  *
  * @author Alex Ruiz
  */
-public final class KeyStrokeMappingProviders {
+public final class TestImageFileWriters {
 
-  public static KeyStrokeMappingProvider newKeyStrokeMappingProviderMock() {
-    return createMock(KeyStrokeMappingProvider.class);
+  public static ImageFileWriter singletonImageFileWriterMock() {
+    return LazyLoadedSingleton.INSTANCE;
   }
 
-  private KeyStrokeMappingProviders() {}
+  private static class LazyLoadedSingleton {
+    static final ImageFileWriter INSTANCE = newImageFileWriterMock();
+  }
+
+  public static ImageFileWriter newImageFileWriterMock() {
+    return createMock(ImageFileWriter.class);
+  }
+
+  private TestImageFileWriters() {}
 }

@@ -18,7 +18,7 @@ package org.fest.swing.keystroke;
 import static java.awt.event.InputEvent.CTRL_MASK;
 import static java.awt.event.KeyEvent.VK_A;
 import static org.fest.assertions.Assertions.assertThat;
-import static org.fest.swing.keystroke.KeyStrokeMappingProviders.newKeyStrokeMappingProviderMock;
+import static org.fest.swing.keystroke.TestKeyStrokeMappingProviders.newKeyStrokeMappingProviderMock;
 
 import java.util.ArrayList;
 import java.util.Collection;

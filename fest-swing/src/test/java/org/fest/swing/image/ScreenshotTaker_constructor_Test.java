@@ -17,9 +17,9 @@ package org.fest.swing.image;
 
 import static org.easymock.EasyMock.expect;
 import static org.fest.assertions.Assertions.assertThat;
-import static org.fest.swing.image.ImageFileWriters.singletonImageFileWriterMock;
+import static org.fest.swing.image.TestImageFileWriters.singletonImageFileWriterMock;
 import static org.fest.swing.test.core.CommonAssertions.failWhenExpectingException;
-import static org.fest.swing.util.RobotFactories.newRobotFactoryMock;
+import static org.fest.swing.util.TestRobotFactories.newRobotFactoryMock;
 
 import java.awt.AWTException;
 

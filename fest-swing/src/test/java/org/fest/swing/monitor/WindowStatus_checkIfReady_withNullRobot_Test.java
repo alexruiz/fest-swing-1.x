@@ -16,9 +16,9 @@
 package org.fest.swing.monitor;
 
 import static org.easymock.EasyMock.expect;
-import static org.easymock.classextension.EasyMock.createMock;
 import static org.fest.assertions.Assertions.assertThat;
-import static org.fest.swing.util.RobotFactories.newRobotFactoryMock;
+import static org.fest.swing.monitor.TestWindows.singletonWindowsMock;
+import static org.fest.swing.util.TestRobotFactories.newRobotFactoryMock;
 
 import java.awt.*;
 
@@ -41,7 +41,7 @@ public class WindowStatus_checkIfReady_withNullRobot_Test extends SequentialTest
 
   @Override protected final void onSetUp() {
     window = TestWindow.createNewWindow(getClass());
-    windows = createMock(Windows.class);
+    windows = singletonWindowsMock();
     factory = newRobotFactoryMock();
   }
 

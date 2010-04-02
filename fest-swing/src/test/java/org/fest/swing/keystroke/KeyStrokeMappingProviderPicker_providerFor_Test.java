@@ -20,7 +20,7 @@ import static org.easymock.EasyMock.expect;
 import static org.easymock.classextension.EasyMock.createMock;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.keystroke.KeyStrokeMappingProviderNames.generateNamesFrom;
-import static org.fest.swing.keystroke.KeyStrokeMappingProviders.newKeyStrokeMappingProviderMock;
+import static org.fest.swing.keystroke.TestKeyStrokeMappingProviders.newKeyStrokeMappingProviderMock;
 import static org.fest.swing.util.OSFamily.WINDOWS;
 
 import java.util.Locale;

@@ -21,7 +21,7 @@ import static java.awt.event.KeyEvent.*;
 import static org.easymock.EasyMock.expect;
 import static org.easymock.EasyMock.expectLastCall;
 import static org.easymock.classextension.EasyMock.createMock;
-import static org.fest.swing.test.awt.AWTEvents.newAWTEventMock;
+import static org.fest.swing.test.awt.TestAWTEvents.newAWTEventMock;
 import static org.fest.swing.test.awt.Toolkits.singletonToolkitMock;
 import static org.fest.swing.test.builder.JButtons.button;
 

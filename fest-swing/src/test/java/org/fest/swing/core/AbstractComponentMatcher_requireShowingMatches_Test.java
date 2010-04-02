@@ -17,7 +17,7 @@ package org.fest.swing.core;
 
 import static org.easymock.EasyMock.expect;
 import static org.fest.assertions.Assertions.assertThat;
-import static org.fest.swing.test.awt.Components.newComponentMock;
+import static org.fest.swing.test.awt.TestComponents.newComponentMock;
 
 import java.awt.Component;
 

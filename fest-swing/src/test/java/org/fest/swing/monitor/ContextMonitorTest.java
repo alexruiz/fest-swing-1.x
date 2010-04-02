@@ -21,6 +21,7 @@ import static java.awt.event.WindowEvent.*;
 import static org.easymock.EasyMock.expect;
 import static org.easymock.classextension.EasyMock.createMock;
 import static org.fest.assertions.Assertions.assertThat;
+import static org.fest.swing.monitor.TestWindows.newWindowsMock;
 import static org.fest.swing.test.awt.Toolkits.newToolkitStub;
 import static org.fest.swing.test.builder.JTextFields.textField;
 
@@ -75,7 +76,7 @@ public class ContextMonitorTest extends EDTSafeTestCase {
 
   @Before public void setUp() {
     window = TestWindow.createNewWindow(getClass());
-    windows = createMock(Windows.class);
+    windows = newWindowsMock();
     context = createMock(Context.class);
     monitor = new ContextMonitor(context, windows);
   }

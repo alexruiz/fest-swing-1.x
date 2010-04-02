@@ -18,7 +18,7 @@ package org.fest.swing.input;
 import static java.awt.event.WindowEvent.*;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.assertions.MapAssert.entry;
-import static org.fest.swing.test.awt.AWTEvents.singletonAWTEventMock;
+import static org.fest.swing.test.awt.TestAWTEvents.singletonAWTEventMock;
 import static org.fest.swing.test.builder.JFrames.frame;
 
 import java.awt.AWTEvent;

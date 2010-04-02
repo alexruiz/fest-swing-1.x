@@ -16,7 +16,7 @@
 package org.fest.swing.core;
 
 import static org.easymock.EasyMock.expectLastCall;
-import static org.fest.swing.core.ComponentHierarchies.newComponentHierarchyMock;
+import static org.fest.swing.core.TestComponentHierarchies.newComponentHierarchyMock;
 import static org.fest.swing.test.builder.JFrames.frame;
 import static org.fest.swing.test.task.WindowDestroyTask.hideAndDisposeInEDT;
 import static org.fest.util.Collections.list;

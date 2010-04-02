@@ -17,26 +17,26 @@ package org.fest.swing.test.awt;
 
 import static org.easymock.classextension.EasyMock.createMock;
 
-import java.awt.Window;
+import java.awt.Container;
 
 /**
- * Understands <code>{@link Window}</code>s to be used for testing purposes.
+ * Understands <code>{@link Container}</code>s to be used for testing purposes.
  *
  * @author Alex Ruiz
  */
-public final class Windows {
+public final class TestContainers {
 
-  public static Window singletonWindowMock() {
+  public static Container singletonContainerMock() {
     return LazyLoadedSingleton.INSTANCE;
   }
 
   private static class LazyLoadedSingleton {
-    static final Window INSTANCE = newWindowMock();
+    static final Container INSTANCE = newContainerMock();
   }
 
-  public static Window newWindowMock() {
-    return createMock(Window.class);
+  public static Container newContainerMock() {
+    return createMock(Container.class);
   }
 
-  private Windows() {}
+  private TestContainers() {}
 }

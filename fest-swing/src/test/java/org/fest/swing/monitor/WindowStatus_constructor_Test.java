@@ -16,9 +16,9 @@
 package org.fest.swing.monitor;
 
 import static org.easymock.EasyMock.expect;
-import static org.easymock.classextension.EasyMock.createMock;
 import static org.fest.assertions.Assertions.assertThat;
-import static org.fest.swing.util.RobotFactories.newRobotFactoryMock;
+import static org.fest.swing.monitor.TestWindows.singletonWindowsMock;
+import static org.fest.swing.util.TestRobotFactories.newRobotFactoryMock;
 
 import java.awt.AWTException;
 
@@ -36,12 +36,10 @@ public class WindowStatus_constructor_Test {
 
   private RobotFactory factory;
   private Windows windows;
-  private WindowStatus status;
 
   @Before public void setUp() {
     factory = newRobotFactoryMock();
-    windows = createMock(Windows.class);
-    status = new WindowStatus(windows);
+    windows = singletonWindowsMock();
   }
 
   @Test
@@ -52,7 +50,7 @@ public class WindowStatus_constructor_Test {
       }
 
       protected void codeToTest() {
-        status = new WindowStatus(windows, factory);
+        WindowStatus status = new WindowStatus(windows, factory);
         assertThat(status.robot).isNull();
       }
     }.run();

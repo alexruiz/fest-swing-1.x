@@ -15,7 +15,7 @@
 package org.fest.swing.driver;
 
 import static org.easymock.classextension.EasyMock.createMock;
-import static org.fest.swing.core.Robots.singletonRobotMock;
+import static org.fest.swing.core.TestRobots.singletonRobotMock;
 
 import javax.swing.JFileChooser;
 

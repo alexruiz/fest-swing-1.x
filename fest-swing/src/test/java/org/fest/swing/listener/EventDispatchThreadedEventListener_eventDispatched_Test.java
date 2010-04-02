@@ -17,7 +17,7 @@ package org.fest.swing.listener;
 import static javax.swing.SwingUtilities.isEventDispatchThread;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.edt.GuiActionRunner.execute;
-import static org.fest.swing.test.awt.AWTEvents.singletonAWTEventMock;
+import static org.fest.swing.test.awt.TestAWTEvents.singletonAWTEventMock;
 import static org.fest.swing.timing.Pause.pause;
 
 import java.awt.AWTEvent;

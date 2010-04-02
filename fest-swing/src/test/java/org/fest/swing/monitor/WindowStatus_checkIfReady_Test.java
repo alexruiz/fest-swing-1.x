@@ -18,6 +18,7 @@ package org.fest.swing.monitor;
 import static org.easymock.EasyMock.expect;
 import static org.easymock.classextension.EasyMock.createMock;
 import static org.fest.assertions.Assertions.assertThat;
+import static org.fest.swing.monitor.TestWindows.newWindowsMock;
 import static org.fest.swing.query.ComponentSizeQuery.sizeOf;
 import static org.fest.swing.timing.Pause.pause;
 import static org.fest.swing.timing.Timeout.timeout;
@@ -44,7 +45,7 @@ public class WindowStatus_checkIfReady_Test extends SequentialTestCase {
 
   @Override protected final void onSetUp() {
     window = TestWindow.createNewWindow(getClass());
-    windows = createMock(Windows.class);
+    windows = newWindowsMock();
     status = new WindowStatus(windows);
   }
 

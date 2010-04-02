@@ -1,5 +1,5 @@
 /*
- * Created on Apr 1, 2010
+ * Created on Apr 2, 2010
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -13,20 +13,28 @@
  *
  * Copyright @2010 the original author or authors.
  */
-package org.fest.swing.core;
+package org.fest.swing.monitor;
 
 import static org.easymock.classextension.EasyMock.createMock;
 
 /**
- * Understands <code>{@link ComponentFinder}</code>s to be used for testing purposes.
+ * Understands implementations of <code>{@link Windows}</code> to be used for testing purposes.
  *
  * @author Alex Ruiz
  */
-public final class ComponentFinders {
+public final class TestWindows {
 
-  public static ComponentFinder newComponentFinderMock() {
-    return createMock(ComponentFinder.class);
+  public static Windows singletonWindowsMock() {
+    return LazyLoadedSingleton.INSTACE;
   }
 
-  private ComponentFinders() {}
+  private static class LazyLoadedSingleton {
+    static final Windows INSTACE = newWindowsMock();
+  }
+
+  public static Windows newWindowsMock() {
+    return createMock(Windows.class);
+  }
+
+  private TestWindows() {}
 }

@@ -16,7 +16,7 @@
 package org.fest.swing.awt;
 
 import static org.fest.assertions.Assertions.assertThat;
-import static org.fest.swing.test.awt.Windows.singletonWindowMock;
+import static org.fest.swing.test.awt.TestWindows.singletonWindowMock;
 import static org.fest.swing.test.builder.JDialogs.dialog;
 import static org.fest.swing.test.builder.JFrames.frame;
 

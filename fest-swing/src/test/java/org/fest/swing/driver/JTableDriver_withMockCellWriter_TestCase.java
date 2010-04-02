@@ -16,7 +16,7 @@
 package org.fest.swing.driver;
 
 import static org.easymock.classextension.EasyMock.createMock;
-import static org.fest.swing.core.Robots.singletonRobotMock;
+import static org.fest.swing.core.TestRobots.singletonRobotMock;
 import static org.fest.swing.test.builder.JTables.table;
 
 import javax.swing.JTable;

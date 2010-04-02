@@ -15,8 +15,8 @@
  */
 package org.fest.swing.applet;
 
-import static org.fest.swing.test.awt.AppletContexts.singletonAppletContextMock;
-import static org.fest.swing.test.awt.Windows.singletonWindowMock;
+import static org.fest.swing.test.awt.TestAppletContexts.singletonAppletContextMock;
+import static org.fest.swing.test.awt.TestWindows.singletonWindowMock;
 
 import org.junit.Test;
 

@@ -18,8 +18,8 @@ package org.fest.swing.core;
 import static org.easymock.EasyMock.expect;
 import static org.easymock.classextension.EasyMock.createMock;
 import static org.fest.assertions.Assertions.assertThat;
-import static org.fest.swing.test.awt.Components.singletonComponentMock;
-import static org.fest.swing.test.awt.Containers.singletonContainerMock;
+import static org.fest.swing.test.awt.TestComponents.singletonComponentMock;
+import static org.fest.swing.test.awt.TestContainers.singletonContainerMock;
 import static org.fest.util.Arrays.array;
 
 import java.awt.Component;

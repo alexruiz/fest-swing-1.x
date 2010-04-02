@@ -16,7 +16,7 @@
 package org.fest.swing.driver;
 
 import static org.fest.assertions.Assertions.assertThat;
-import static org.fest.swing.core.Robots.singletonRobotMock;
+import static org.fest.swing.core.TestRobots.singletonRobotMock;
 
 import org.junit.Before;
 import org.junit.Test;

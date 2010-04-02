@@ -17,7 +17,7 @@ package org.fest.swing.core;
 
 import static org.easymock.EasyMock.expect;
 import static org.fest.assertions.Assertions.assertThat;
-import static org.fest.swing.core.ComponentFinders.newComponentFinderMock;
+import static org.fest.swing.core.TestComponentFinders.newComponentFinderMock;
 import static org.fest.swing.core.UnexpectedJOptionPaneFinder.OPTION_PANE_MATCHER;
 import static org.fest.swing.test.builder.JOptionPanes.optionPane;
 import static org.fest.swing.test.core.CommonAssertions.failWhenExpectingException;

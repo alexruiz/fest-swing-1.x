@@ -18,8 +18,8 @@ package org.fest.swing.hierarchy;
 import static org.easymock.EasyMock.expect;
 import static org.easymock.classextension.EasyMock.createMock;
 import static org.fest.assertions.Assertions.assertThat;
-import static org.fest.swing.test.awt.Components.newComponentMock;
-import static org.fest.swing.test.awt.Containers.newContainerMock;
+import static org.fest.swing.test.awt.TestComponents.newComponentMock;
+import static org.fest.swing.test.awt.TestContainers.newContainerMock;
 import static org.fest.util.Collections.list;
 
 import java.awt.Component;

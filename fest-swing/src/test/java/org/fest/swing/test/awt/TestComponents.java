@@ -1,5 +1,5 @@
 /*
- * Created on Apr 1, 2010
+ * Created on Mar 31, 2010
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -13,28 +13,30 @@
  *
  * Copyright @2010 the original author or authors.
  */
-package org.fest.swing.image;
+package org.fest.swing.test.awt;
 
 import static org.easymock.classextension.EasyMock.createMock;
 
+import java.awt.Component;
+
 /**
- * Understands <code>{@link ImageFileWriter}</code>s to be used for testing purposes.
+ * Understands <code>{@link Component}</code>s to be used for testing purposes.
  *
  * @author Alex Ruiz
  */
-public final class ImageFileWriters {
+public class TestComponents {
 
-  public static ImageFileWriter singletonImageFileWriterMock() {
+  public static Component singletonComponentMock() {
     return LazyLoadedSingleton.INSTANCE;
   }
 
   private static class LazyLoadedSingleton {
-    static final ImageFileWriter INSTANCE = newImageFileWriterMock();
+    static final Component INSTANCE = newComponentMock();
   }
 
-  public static ImageFileWriter newImageFileWriterMock() {
-    return createMock(ImageFileWriter.class);
+  public static Component newComponentMock() {
+    return createMock(Component.class);
   }
 
-  private ImageFileWriters() {}
+  private TestComponents() {}
 }

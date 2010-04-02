@@ -16,7 +16,7 @@
 package org.fest.swing.fixture;
 
 import static org.fest.assertions.Assertions.assertThat;
-import static org.fest.swing.core.Robots.singletonRobotMock;
+import static org.fest.swing.core.TestRobots.singletonRobotMock;
 import static org.fest.swing.test.builder.JButtons.button;
 
 import javax.swing.JButton;

@@ -16,26 +16,26 @@ package org.fest.swing.test.awt;
 
 import static org.easymock.classextension.EasyMock.createMock;
 
-import java.awt.AWTEvent;
+import java.awt.event.AWTEventListener;
 
 /**
- * Understands <code>{@link AWTEvent}</code>s to be used for testing purposes.
+ * Understands <code>{@link AWTEventListener}</code>s to be used for testing purposes.
  *
  * @author Alex Ruiz
  */
-public final class AWTEvents {
+public final class TestAWTEventListeners {
 
-  public static AWTEvent singletonAWTEventMock() {
+  public static AWTEventListener singletonAWTEventListenerMock() {
     return LazyLoadedSingleton.INSTANCE;
   }
 
   private static class LazyLoadedSingleton {
-    static final AWTEvent INSTANCE = newAWTEventMock();
+    static final AWTEventListener INSTANCE = newAWTEventListenerMock();
   }
 
-  public static AWTEvent newAWTEventMock() {
-    return createMock(AWTEvent.class);
+  public static AWTEventListener newAWTEventListenerMock() {
+    return createMock(AWTEventListener.class);
   }
 
-  private AWTEvents() {}
+  private TestAWTEventListeners() {}
 }

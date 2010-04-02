@@ -18,7 +18,7 @@ import static org.easymock.classextension.EasyMock.createMock;
 
 import javax.swing.JTree;
 
-import org.fest.swing.core.Robots;
+import org.fest.swing.core.TestRobots;
 import org.junit.BeforeClass;
 
 /**
@@ -34,6 +34,6 @@ public class JTreeDriver_withMocks_TestCase {
   @BeforeClass
   public static void setUpOnce() {
     tree = createMock(JTree.class);
-    driver = new JTreeDriver(Robots.newRobotMock());
+    driver = new JTreeDriver(TestRobots.newRobotMock());
   }
 }

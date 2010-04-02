@@ -14,8 +14,8 @@
  */
 package org.fest.swing.monitor;
 
-import static org.easymock.classextension.EasyMock.createMock;
 import static org.fest.swing.edt.GuiActionRunner.execute;
+import static org.fest.swing.monitor.TestWindows.newWindowsMock;
 import static org.fest.swing.test.builder.JTextFields.textField;
 import static org.fest.swing.test.core.MethodInvocations.Args.args;
 
@@ -42,7 +42,7 @@ public abstract class WindowVisibilityMonitor_TestCase extends SequentialTestCas
 
   @Override protected final void onSetUp() {
     window = MyWindow.createNew();
-    windows = createMock(Windows.class);
+    windows = newWindowsMock();
     monitor = new WindowVisibilityMonitor(windows);
   }
 

@@ -14,7 +14,7 @@
  */
 package org.fest.swing.input;
 
-import static org.fest.swing.test.awt.AWTEventListeners.singletonAWTEventListenerMock;
+import static org.fest.swing.test.awt.TestAWTEventListeners.singletonAWTEventListenerMock;
 import static org.fest.swing.test.awt.Toolkits.newToolkitStub;
 
 import java.awt.AWTEvent;

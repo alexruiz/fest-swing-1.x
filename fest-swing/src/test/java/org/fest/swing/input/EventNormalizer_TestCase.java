@@ -16,7 +16,7 @@
 package org.fest.swing.input;
 
 import static org.fest.assertions.Assertions.assertThat;
-import static org.fest.swing.test.awt.AWTEventListeners.singletonAWTEventListenerMock;
+import static org.fest.swing.test.awt.TestAWTEventListeners.singletonAWTEventListenerMock;
 
 import java.awt.event.AWTEventListener;
 import java.util.List;

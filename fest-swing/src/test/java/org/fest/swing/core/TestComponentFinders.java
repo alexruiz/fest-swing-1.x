@@ -1,5 +1,5 @@
 /*
- * Created on Mar 31, 2010
+ * Created on Apr 1, 2010
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -13,30 +13,20 @@
  *
  * Copyright @2010 the original author or authors.
  */
-package org.fest.swing.test.awt;
+package org.fest.swing.core;
 
 import static org.easymock.classextension.EasyMock.createMock;
 
-import java.applet.Applet;
-
 /**
- * Understands <code>{@link Applet}</code>s to be used for testing purposes.
+ * Understands <code>{@link ComponentFinder}</code>s to be used for testing purposes.
  *
  * @author Alex Ruiz
  */
-public final class Applets {
+public final class TestComponentFinders {
 
-  public static Applet singletonAppletMock() {
-    return LazyLoadedSingleton.INSTANCE;
+  public static ComponentFinder newComponentFinderMock() {
+    return createMock(ComponentFinder.class);
   }
 
-  private static class LazyLoadedSingleton {
-    static final Applet INSTANCE = newAppletMock();
-  }
-
-  public static Applet newAppletMock() {
-    return createMock(Applet.class);
-  }
-
-  private Applets() {}
+  private TestComponentFinders() {}
 }

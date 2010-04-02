@@ -15,7 +15,7 @@
 package org.fest.swing.fixture;
 
 import static org.fest.assertions.Assertions.assertThat;
-import static org.fest.swing.core.Robots.newRobotMock;
+import static org.fest.swing.core.TestRobots.newRobotMock;
 
 import java.awt.Component;
 

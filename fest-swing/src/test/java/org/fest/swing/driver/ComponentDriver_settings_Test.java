@@ -17,7 +17,7 @@ package org.fest.swing.driver;
 
 import static org.easymock.EasyMock.expect;
 import static org.fest.assertions.Assertions.assertThat;
-import static org.fest.swing.core.Robots.newRobotMock;
+import static org.fest.swing.core.TestRobots.newRobotMock;
 
 import org.fest.mocks.EasyMockTemplate;
 import org.fest.swing.core.*;
