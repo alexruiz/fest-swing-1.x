@@ -26,7 +26,7 @@ import org.fest.swing.util.RobotFactory;
  */
 public final class RobotFactories {
 
-  public static RobotFactory mockRobotFactory() {
+  public static RobotFactory newRobotFactoryMock() {
     return createMock(RobotFactory.class);
   }
 

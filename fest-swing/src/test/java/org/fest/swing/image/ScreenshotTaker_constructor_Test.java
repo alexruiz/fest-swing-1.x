@@ -19,7 +19,7 @@ import static org.easymock.EasyMock.expect;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.image.ImageFileWriters.singletonImageFileWriterMock;
 import static org.fest.swing.test.core.CommonAssertions.failWhenExpectingException;
-import static org.fest.swing.util.RobotFactories.mockRobotFactory;
+import static org.fest.swing.util.RobotFactories.newRobotFactoryMock;
 
 import java.awt.AWTException;
 
@@ -42,7 +42,7 @@ public class ScreenshotTaker_constructor_Test {
 
   @Before public void setUp() {
     writer = singletonImageFileWriterMock();
-    robotFactory = mockRobotFactory();
+    robotFactory = newRobotFactoryMock();
     toThrow = new AWTException("Thrown on purpose");
   }
 
