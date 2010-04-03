@@ -1,5 +1,5 @@
 /*
- * Created on Mar 30, 2010
+ * Created on Apr 3, 2010
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -20,17 +20,17 @@ import static org.fest.assertions.Assertions.assertThat;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JAppletDriver#resize(javax.swing.JApplet, int, int)}</code>.
+ * Tests for <code>{@link JAppletDriver#parameterValue(javax.swing.JApplet, String)}</code>.
  *
  * @author Alex Ruiz
  */
-public class JAppletDriver_resize_Test extends JAppletDriver_TestCase {
+public class JAppletDriver_parameterValue_Test extends JAppletDriver_TestCase {
 
   @Test
-  public void should_resize_JApplet() {
-    int w = 10;
-    int h = 20;
-    driver().resize(applet(), w, h);
-    assertThat(applet().wasMethodCalledInEDT("resize(10, 20)")).isTrue();
+  public void should_retrieve_parameter_value() {
+    applet().addParameter("firstName", "Luke");
+    String value = driver().parameterValue(applet(), "firstName");
+    assertThat(value).isEqualTo("Luke");
+    assertThat(applet().wasMethodCalledInEDT("getParameter('firstName')")).isTrue();
   }
 }

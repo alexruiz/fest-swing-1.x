@@ -18,6 +18,9 @@ package org.fest.swing.driver;
 import static javax.swing.SwingUtilities.isEventDispatchThread;
 import static org.fest.swing.core.TestRobots.singletonRobotMock;
 import static org.fest.swing.edt.GuiActionRunner.execute;
+import static org.fest.util.Strings.concat;
+import static org.fest.util.Strings.quote;
+
 import java.applet.AppletContext;
 import java.net.URL;
 import java.util.HashMap;
@@ -55,6 +58,8 @@ public class JAppletDriver_TestCase extends EDTSafeTestCase {
 
     private final Map<String, Boolean> methodCallsInEDT = new HashMap<String, Boolean>();
 
+    private final Map<String, String> parameters = new HashMap<String, String>();
+
     private AppletContext context;
     private URL codeBase;
     private URL documentBase;
@@ -81,7 +86,7 @@ public class JAppletDriver_TestCase extends EDTSafeTestCase {
     }
 
     @Override public void resize(int width, int height) {
-      registerMethodCall("resize(int, int)");
+      registerMethodCall(concat("resize(", width, ", ", height, ")"));
     }
 
     void updateCodeBase(URL newCodeBase) {
@@ -97,10 +102,18 @@ public class JAppletDriver_TestCase extends EDTSafeTestCase {
       documentBase = newDocumentBase;
     }
 
-    @Override
-    public URL getDocumentBase() {
+    @Override public URL getDocumentBase() {
       registerMethodCall("getDocumentBase");
       return documentBase;
+    }
+
+    void addParameter(String name, String value) {
+      parameters.put(name, value);
+    }
+
+    @Override public String getParameter(String name) {
+      registerMethodCall(concat("getParameter(", quote(name), ")"));
+      return parameters.get(name);
     }
 
     private void registerMethodCall(String methodName) {
