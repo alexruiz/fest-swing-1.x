@@ -1,5 +1,5 @@
 /*
- * Created on Apr 2, 2010
+ * Created on Apr 3, 2010
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -15,26 +15,31 @@
  */
 package org.fest.swing.driver;
 
-import static org.fest.assertions.Assertions.assertThat;
-import static org.fest.swing.driver.TestURLs.singletonURL;
-
+import java.net.MalformedURLException;
 import java.net.URL;
 
-import org.junit.Test;
-
 /**
- * Tests for <code>{@link JAppletDriver#codeBaseOf(javax.swing.JApplet)}</code>.
+ * Understands <code>{@link URL}</code>s to be used for testing purposes.
  *
  * @author Alex Ruiz
  */
-public class JAppletDriver_codeBaseOf_Test extends JAppletDriver_TestCase {
+public class TestURLs {
 
-  @Test
-  public void should_return_code_base() throws Exception {
-    URL url = singletonURL();
-    applet().updateCodeBase(url);
-    URL result = driver().codeBaseOf(applet());
-    assertThat(result).isSameAs(url);
-    assertThat(applet().wasMethodCalledInEDT("getCodeBase")).isTrue();
+  public static URL singletonURL() {
+    return LazyLoadedSingleton.INSTANCE;
   }
+
+  private static class LazyLoadedSingleton {
+    static final URL INSTANCE = newURL();
+  }
+
+  private static URL newURL() {
+    try {
+      return new URL("http://fest.easytesting.org");
+    } catch (MalformedURLException e) {
+      throw new RuntimeException("Unable to create URL", e);
+    }
+  }
+
+  private TestURLs() {}
 }

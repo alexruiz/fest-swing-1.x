@@ -16,6 +16,7 @@
 package org.fest.swing.driver;
 
 import static org.fest.assertions.Assertions.assertThat;
+import static org.fest.swing.driver.TestURLs.singletonURL;
 
 import java.net.URL;
 
@@ -30,7 +31,7 @@ public class JAppletDriver_documentOf_Test extends JAppletDriver_TestCase {
 
   @Test
   public void should_return_document_base() throws Exception {
-    URL url = new URL("http://fest.easytesting.org");
+    URL url = singletonURL();
     applet().updateDocumentBase(url);
     URL result = driver().documentBaseOf(applet());
     assertThat(result).isSameAs(url);
