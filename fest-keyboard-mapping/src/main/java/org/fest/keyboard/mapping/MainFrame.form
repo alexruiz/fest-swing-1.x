@@ -62,6 +62,9 @@
       <Properties>
         <Property name="name" type="java.lang.String" value="charTextField" noResource="true"/>
       </Properties>
+      <Events>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="charEntered"/>
+      </Events>
     </Component>
     <Container class="javax.swing.JPanel" name="mappingPanel">
       <Properties>

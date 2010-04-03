@@ -15,6 +15,11 @@
  */
 package org.fest.keyboard.mapping;
 
+import static java.awt.event.KeyEvent.*;
+import javax.swing.table.DefaultTableModel;
+import static org.fest.keyboard.mapping.KeyCodes.*;
+import static org.fest.keyboard.mapping.CharMapping.*;
+
 /**
  * Understands the application's main window.
  * 
@@ -50,6 +55,11 @@ public class MainFrame extends javax.swing.JFrame {
     charLabel.setText("Enter the character to map:");
 
     charTextField.setName("charTextField"); // NOI18N
+    charTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+      public void keyPressed(java.awt.event.KeyEvent evt) {
+        charEntered(evt);
+      }
+    });
 
     mappingPanel.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.SystemColor.controlShadow));
 
@@ -131,6 +141,15 @@ public class MainFrame extends javax.swing.JFrame {
 
     pack();
   }// </editor-fold>//GEN-END:initComponents
+
+  private void charEntered(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_charEntered
+    int keyCode = evt.getKeyCode();
+    if (shouldIgnore(keyCode)) return;
+    CharMapping mapping = newCharMapping(evt.getKeyChar(), keyCode, evt.getModifiers());
+    if (mapping == null) return;
+    DefaultTableModel model = (DefaultTableModel) this.mappingTable.getModel();
+    model.addRow(new Object[] { mapping.character, mapping.keyCode, mapping.modifiers});
+  }//GEN-LAST:event_charEntered
 
   // Variables declaration - do not modify//GEN-BEGIN:variables
   private javax.swing.JLabel charLabel;
