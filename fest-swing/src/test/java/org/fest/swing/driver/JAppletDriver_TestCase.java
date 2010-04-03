@@ -18,9 +18,8 @@ package org.fest.swing.driver;
 import static javax.swing.SwingUtilities.isEventDispatchThread;
 import static org.fest.swing.core.TestRobots.singletonRobotMock;
 import static org.fest.swing.edt.GuiActionRunner.execute;
-import static org.fest.swing.test.awt.TestAppletContexts.singletonAppletContextMock;
-
 import java.applet.AppletContext;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -39,39 +38,41 @@ import org.junit.Before;
  */
 public class JAppletDriver_TestCase extends EDTSafeTestCase {
 
-  private AppletContext context;
   private JAppletStub applet;
   private JAppletDriver driver;
 
   @Before
   public final void setUp() {
-    context = singletonAppletContextMock();
-    applet = JAppletStub.createNew(context);
+    applet = JAppletStub.createNew();
     driver = new JAppletDriver(singletonRobotMock());
   }
 
-  final AppletContext context() { return context; }
   final JAppletStub applet() { return applet; }
   final JAppletDriver driver() { return driver; }
 
   static class JAppletStub extends JApplet {
     private static final long serialVersionUID = 1L;
 
-    private final AppletContext context;
     private final Map<String, Boolean> methodCallsInEDT = new HashMap<String, Boolean>();
 
+    private AppletContext context;
+    private URL codeBase;
+    private URL documentBase;
+
     @RunsInEDT
-    static JAppletStub createNew(final AppletContext context) {
+    static JAppletStub createNew() {
       return execute(new GuiQuery<JAppletStub>() {
         protected JAppletStub executeInEDT() {
-          return new JAppletStub(context);
+          return new JAppletStub();
         }
       });
     }
 
     @RunsInCurrentThread
-    private JAppletStub(AppletContext context) {
-      this.context = context;
+    private JAppletStub() {}
+
+    void updateAppletContext(AppletContext newContext) {
+      context = newContext;
     }
 
     @Override public AppletContext getAppletContext() {
@@ -79,9 +80,27 @@ public class JAppletDriver_TestCase extends EDTSafeTestCase {
       return context;
     }
 
-    @Override
-    public void resize(int width, int height) {
+    @Override public void resize(int width, int height) {
       registerMethodCall("resize(int, int)");
+    }
+
+    void updateCodeBase(URL newCodeBase) {
+      codeBase = newCodeBase;
+    }
+
+    @Override public URL getCodeBase() {
+      registerMethodCall("getCodeBase");
+      return codeBase;
+    }
+
+    void updateDocumentBase(URL newDocumentBase) {
+      documentBase = newDocumentBase;
+    }
+
+    @Override
+    public URL getDocumentBase() {
+      registerMethodCall("getDocumentBase");
+      return documentBase;
     }
 
     private void registerMethodCall(String methodName) {

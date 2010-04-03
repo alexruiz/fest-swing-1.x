@@ -1,5 +1,5 @@
 /*
- * Created on Mar 30, 2010
+ * Created on Apr 3, 2010
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -16,25 +16,24 @@
 package org.fest.swing.driver;
 
 import static org.fest.assertions.Assertions.assertThat;
-import static org.fest.swing.test.awt.TestAppletContexts.singletonAppletContextMock;
 
-import java.applet.AppletContext;
+import java.net.URL;
 
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JAppletDriver#appletContextOf(javax.swing.JApplet)}</code>.
+ * Tests for <code>{@link JAppletDriver#documentBaseOf(javax.swing.JApplet)}</code>.
  *
  * @author Alex Ruiz
  */
-public class JAppletDriver_appletContextOf_Test extends JAppletDriver_TestCase {
+public class JAppletDriver_documentOf_Test extends JAppletDriver_TestCase {
 
   @Test
-  public void should_return_AppletContext() {
-    AppletContext context = singletonAppletContextMock();
-    applet().updateAppletContext(context);
-    AppletContext result = driver().appletContextOf(applet());
-    assertThat(result).isSameAs(context);
-    assertThat(applet().wasMethodCalledInEDT("getAppletContext")).isTrue();
+  public void should_return_document_base() throws Exception {
+    URL url = new URL("http://fest.easytesting.org");
+    applet().updateDocumentBase(url);
+    URL result = driver().documentBaseOf(applet());
+    assertThat(result).isSameAs(url);
+    assertThat(applet().wasMethodCalledInEDT("getDocumentBase")).isTrue();
   }
 }
