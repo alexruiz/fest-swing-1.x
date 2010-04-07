@@ -15,12 +15,10 @@
  */
 package org.fest.keyboard.mapping;
 
-import java.awt.event.KeyEvent;
-import java.lang.reflect.Field;
-
 import static java.awt.event.KeyEvent.getKeyModifiersText;
 
-import static org.fest.keyboard.mapping.CharToText.toText;
+import static org.fest.keyboard.mapping.CharToText.charsToText;
+import static org.fest.keyboard.mapping.KeyCodeToText.keyCodeText;
 import static org.fest.util.Strings.isEmpty;
 
 /**
@@ -38,29 +36,16 @@ class CharMapping {
 
   static CharMapping newCharMapping(char character, int keyCode, int modifiers) {
     if (character == INVALID_CHAR) return null;
-    String characterText = toText(character);
-    if (isEmpty(characterText)) return null;
-    return new CharMapping(characterText, keyCode, modifiers);
+    String charText = charsToText(character);
+    if (isEmpty(charText)) return null;
+    String keyCodeText = keyCodeText(keyCode);
+    if (isEmpty(keyCodeText)) return null;
+    return new CharMapping(charText, keyCodeText, modifiers);
   }
 
-  private CharMapping(String character, int keyCode, int modifiers) {
+  private CharMapping(String character, String keyCode, int modifiers) {
     this.character = character;
-    this.keyCode = keyCodeText(keyCode);
+    this.keyCode = keyCode;
     this.modifiers = modifiers == 0 ? "NO_MASK" : getKeyModifiersText(modifiers);
-  }
-
-  private static String keyCodeText(int keyCode) {
-    for (Field field : KeyEvent.class.getDeclaredFields()) {
-      String name = field.getName();
-      if (!name.startsWith("VK_") || !field.getType().equals(int.class)) continue;
-      try {
-        Integer value = (Integer)field.get(KeyEvent.class);
-        if (keyCode != value) continue;
-        return name.substring(3);
-      } catch (Exception ex) {
-        // TODO rethrow;
-      }
-    }
-    return null;
   }
 }

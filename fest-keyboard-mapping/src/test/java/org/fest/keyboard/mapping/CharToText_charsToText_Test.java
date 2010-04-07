@@ -20,19 +20,19 @@ import org.junit.Test;
 import static org.fest.assertions.Assertions.assertThat;
 
 /**
- * Tests for <code>{@link CharToText#toText(char...)}</code>.
+ * Tests for <code>{@link CharToText#charsToText(char...)}</code>.
  *
  * @author Alex Ruiz
  */
-public class CharToText_toText_Test {
+public class CharToText_charsToText_Test {
 
   @Test
   public void should_return_text_from_single_char() {
-    assertThat(CharToText.toText('c')).isEqualTo("c");
+    assertThat(CharToText.charsToText('c')).isEqualTo("c");
   }
   
   @Test
   public void should_trim_generated_text() {
-    assertThat(CharToText.toText(' ', 'c', ' ', ' ')).isEqualTo("c");
+    assertThat(CharToText.charsToText(' ', 'c', ' ', ' ')).isEqualTo("c");
   }
 }

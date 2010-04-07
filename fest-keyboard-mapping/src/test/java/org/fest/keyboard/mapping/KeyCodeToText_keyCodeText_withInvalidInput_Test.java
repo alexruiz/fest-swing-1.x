@@ -15,16 +15,19 @@
  */
 package org.fest.keyboard.mapping;
 
+import org.junit.Test;
+
+import static org.fest.assertions.Assertions.assertThat;
+
 /**
- * Understands conversion of characters to text.
+ * Tests for <code>{@link KeyCodeToText#keyCodeText(int)}</code>.
  *
  * @author Alex Ruiz
  */
-final class CharToText {
+public class KeyCodeToText_keyCodeText_withInvalidInput_Test {
 
-  static String charsToText(char... characters) {
-    return new String(characters).trim();
+  @Test
+  public void should_return_null_if_value_is_not_key_code() {
+    assertThat(KeyCodeToText.keyCodeText(Integer.MIN_VALUE)).isNull();
   }
-
-  private CharToText() {}
 }

@@ -15,11 +15,11 @@
  */
 package org.fest.keyboard.mapping;
 
+import static javax.swing.SwingUtilities.invokeLater;
 import static javax.swing.UIManager.*;
-import static javax.swing.SwingUtilities.*;
 
 /**
- * Understands the application's starting point
+ * Understands the application's main class.
  *
  * @author Alex Ruiz
  */
@@ -27,7 +27,7 @@ public class Application {
 
   public static void main(String... args) {
     invokeLater(new Runnable() {
-      @Override public void run() {
+      public void run() {
         setLaF();
         new MainFrame().setVisible(true);
       }
