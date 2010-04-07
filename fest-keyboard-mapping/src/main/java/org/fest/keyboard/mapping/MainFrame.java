@@ -15,7 +15,6 @@
  */
 package org.fest.keyboard.mapping;
 
-import static java.awt.event.KeyEvent.*;
 import javax.swing.table.DefaultTableModel;
 import static org.fest.keyboard.mapping.KeyCodes.*;
 import static org.fest.keyboard.mapping.CharMapping.*;
@@ -26,6 +25,8 @@ import static org.fest.keyboard.mapping.CharMapping.*;
  * @author Alex Ruiz
  */
 public class MainFrame extends javax.swing.JFrame {
+
+  private static final long serialVersionUID = 1L;
 
   /** Creates new form MainFrame */
   public MainFrame() {
@@ -63,7 +64,6 @@ public class MainFrame extends javax.swing.JFrame {
 
     mappingPanel.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.SystemColor.controlShadow));
 
-    mappingTable.setAutoCreateRowSorter(true);
     mappingTable.setModel(new javax.swing.table.DefaultTableModel(
       new Object [][] {
 

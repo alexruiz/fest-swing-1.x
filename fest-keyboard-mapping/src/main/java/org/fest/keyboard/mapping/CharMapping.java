@@ -16,14 +16,17 @@
 package org.fest.keyboard.mapping;
 
 import java.awt.event.KeyEvent;
-import static java.awt.event.KeyEvent.*;
 import java.lang.reflect.Field;
-import static org.fest.util.Strings.*;
+
+import static java.awt.event.KeyEvent.getKeyModifiersText;
+
+import static org.fest.keyboard.mapping.CharToText.toText;
+import static org.fest.util.Strings.isEmpty;
 
 /**
- * Understands SOMETHING DUMMY
+ * Understands mappings of characters to key codes.
  *
- * @author alruiz
+ * @author Alex Ruiz
  */
 class CharMapping {
 
@@ -35,17 +38,9 @@ class CharMapping {
 
   static CharMapping newCharMapping(char character, int keyCode, int modifiers) {
     if (character == INVALID_CHAR) return null;
-    String characterText = asText(character);
+    String characterText = toText(character);
     if (isEmpty(characterText)) return null;
     return new CharMapping(characterText, keyCode, modifiers);
-  }
-
-  private static String asText(char character) {
-    return new String(chars(character)).trim();
-  }
-
-  private static char[] chars(char...chars) {
-    return chars;
   }
 
   private CharMapping(String character, int keyCode, int modifiers) {
