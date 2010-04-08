@@ -20,11 +20,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Understands SOMETHING DUMMY
+ * Understands key codes that need to be ignored by the character-keycode mapping.
  * 
  * @author alruiz
  */
-final class KeyCodes {
+final class IgnoredKeyCodes {
 
   private static final List<Integer> keyCodesToIgnore = new ArrayList<Integer>();
 

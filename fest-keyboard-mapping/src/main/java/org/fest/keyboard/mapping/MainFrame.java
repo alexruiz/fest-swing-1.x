@@ -16,7 +16,7 @@
 package org.fest.keyboard.mapping;
 
 import javax.swing.table.DefaultTableModel;
-import static org.fest.keyboard.mapping.KeyCodes.*;
+import static org.fest.keyboard.mapping.IgnoredKeyCodes.*;
 import static org.fest.keyboard.mapping.CharMapping.*;
 
 /**
