@@ -1,5 +1,5 @@
 /*
- * Created on Apr 1, 2010
+ * Created on Apr 8, 2010
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -15,30 +15,22 @@
  */
 package org.fest.keyboard.mapping;
 
-import static javax.swing.SwingUtilities.invokeLater;
-import static javax.swing.UIManager.*;
+import java.io.File;
+import javax.swing.filechooser.FileFilter;
 
 /**
- * Understands the application's main class.
+ * Understands a file filter for text files.
  *
- * @author Alex Ruiz
+ * @author alruiz
  */
-public class Application {
+class TextFileFilter extends FileFilter {
 
-  public static void main(String... args) {
-    invokeLater(new Runnable() {
-      public void run() {
-        setLaF();
-        MainFrame mainFrame = new MainFrame();
-        mainFrame.setVisible(true);
-        mainFrame.giveFocusToCharTextField();
-      }
-
-      private void setLaF() {
-        try {
-          setLookAndFeel(getSystemLookAndFeelClassName());
-        } catch (Exception ignored) {}
-      }
-    });
+  public boolean accept(File f) {
+    return f != null && f.getName().endsWith(".txt");
   }
+
+  public String getDescription() {
+    return ("Text Files (*.txt)");
+  }
+
 }

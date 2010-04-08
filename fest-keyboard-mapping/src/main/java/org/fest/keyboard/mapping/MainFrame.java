@@ -16,6 +16,7 @@
 package org.fest.keyboard.mapping;
 
 import java.awt.Rectangle;
+import javax.swing.JFileChooser;
 
 import javax.swing.table.DefaultTableModel;
 
@@ -46,12 +47,21 @@ public class MainFrame extends javax.swing.JFrame {
   // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
   private void initComponents() {
 
+    saveMappingFileChooser = new javax.swing.JFileChooser();
     charLabel = new javax.swing.JLabel();
     charTextField = new javax.swing.JTextField();
     mappingPanel = new javax.swing.JPanel();
     tableScrollPane = new javax.swing.JScrollPane();
     mappingTable = new javax.swing.JTable();
     deleteMappingButton = new javax.swing.JButton();
+    menuBar = new javax.swing.JMenuBar();
+    fileMenu = new javax.swing.JMenu();
+    createMappingFileMenu = new javax.swing.JMenuItem();
+
+    saveMappingFileChooser.setDialogTitle("Save As Mapping File");
+    saveMappingFileChooser.setDialogType(javax.swing.JFileChooser.SAVE_DIALOG);
+    saveMappingFileChooser.setFileFilter(new TextFileFilter());
+    saveMappingFileChooser.setName("saveMappingFileChooser"); // NOI18N
 
     setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
     setTitle("Keyboard Mappings");
@@ -122,11 +132,28 @@ public class MainFrame extends javax.swing.JFrame {
       mappingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
       .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mappingPanelLayout.createSequentialGroup()
         .addContainerGap()
-        .addComponent(tableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE)
+        .addComponent(tableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
         .addComponent(deleteMappingButton)
         .addContainerGap())
     );
+
+    fileMenu.setMnemonic('F');
+    fileMenu.setText("File");
+
+    createMappingFileMenu.setMnemonic('S');
+    createMappingFileMenu.setText("Save As Mapping File");
+    createMappingFileMenu.setEnabled(false);
+    createMappingFileMenu.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        saveAsMappingFile(evt);
+      }
+    });
+    fileMenu.add(createMappingFileMenu);
+
+    menuBar.add(fileMenu);
+
+    setJMenuBar(menuBar);
 
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
     getContentPane().setLayout(layout);
@@ -171,7 +198,12 @@ public class MainFrame extends javax.swing.JFrame {
       selectedRow = mappingTable.getSelectedRow();
     }
     selectAndScrollToLastRow();
+    updateUI();
   }//GEN-LAST:event_deleteMapping
+
+  private void saveAsMappingFile(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveAsMappingFile
+    saveMappingFileChooser.showSaveDialog(this);
+  }//GEN-LAST:event_saveAsMappingFile
 
   private void removeMappingIfPresent(CharMapping mapping) {
     int rowCount = mappingTable.getRowCount();
@@ -188,6 +220,7 @@ public class MainFrame extends javax.swing.JFrame {
   private void addMapping(CharMapping mapping) {
     mappingTableModel().addRow(new Object[] { mapping.character, mapping.keyCode, mapping.modifier });
     selectAndScrollToLastRow();
+    updateUI();
   }
 
   private void selectAndScrollToLastRow() {
@@ -196,7 +229,6 @@ public class MainFrame extends javax.swing.JFrame {
       scrollToRow(lastRowIndex);
       mappingTable.setRowSelectionInterval(lastRowIndex, lastRowIndex);
     }
-    updateMappingDeleteButton();
   }
 
   private void scrollToRow(int row) {
@@ -208,16 +240,25 @@ public class MainFrame extends javax.swing.JFrame {
     return (DefaultTableModel) mappingTable.getModel();
   }
 
-  private void updateMappingDeleteButton() {
+  private void updateUI() {
+    createMappingFileMenu.setEnabled(mappingTable.getRowCount() > 0);
     deleteMappingButton.setEnabled(mappingTable.getSelectedRowCount() > 0);
+  }
+
+  void giveFocusToCharTextField() {
+    charTextField.requestFocusInWindow();
   }
   
   // Variables declaration - do not modify//GEN-BEGIN:variables
   private javax.swing.JLabel charLabel;
   private javax.swing.JTextField charTextField;
+  private javax.swing.JMenuItem createMappingFileMenu;
   private javax.swing.JButton deleteMappingButton;
+  private javax.swing.JMenu fileMenu;
   private javax.swing.JPanel mappingPanel;
   private javax.swing.JTable mappingTable;
+  private javax.swing.JMenuBar menuBar;
+  private javax.swing.JFileChooser saveMappingFileChooser;
   private javax.swing.JScrollPane tableScrollPane;
   // End of variables declaration//GEN-END:variables
 }

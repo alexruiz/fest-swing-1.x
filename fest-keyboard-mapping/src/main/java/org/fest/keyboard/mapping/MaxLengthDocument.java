@@ -24,6 +24,7 @@ import javax.swing.text.*;
 class MaxLengthDocument extends PlainDocument {
 
   private static final long serialVersionUID = 1L;
+
   private final int maxLength;
 
   MaxLengthDocument() {
