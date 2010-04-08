@@ -15,9 +15,10 @@
  */
 package org.fest.keyboard.mapping;
 
-import static org.fest.keyboard.mapping.CharMapping.newCharMapping;
-
+import javax.swing.event.*;
 import javax.swing.table.DefaultTableModel;
+
+import static org.fest.keyboard.mapping.CharMapping.newCharMapping;
 
 /**
  * Understands the application's main window.
@@ -31,6 +32,19 @@ public class MainFrame extends javax.swing.JFrame {
   /** Creates new form MainFrame */
   public MainFrame() {
     initComponents();
+    mappingTableModel().addTableModelListener(new TableModelListener() {
+      public void tableChanged(TableModelEvent e) {
+        int lastRow = selectLastRow();
+        deleteMappingButton.setEnabled(lastRow >= 0);
+      }
+    });
+  }
+
+  private int selectLastRow() {
+    int rowCount = mappingTableModel().getRowCount();
+    int lastRowIndex = rowCount - 1;
+    if (lastRowIndex >= 0) mappingTable.getSelectionModel().setSelectionInterval(lastRowIndex, lastRowIndex);
+    return lastRowIndex;
   }
 
   @SuppressWarnings({ "serial", "unchecked" })
@@ -45,7 +59,7 @@ public class MainFrame extends javax.swing.JFrame {
     charLabel = new javax.swing.JLabel();
     charTextField = new javax.swing.JTextField();
     mappingPanel = new javax.swing.JPanel();
-    jScrollPane1 = new javax.swing.JScrollPane();
+    tableScrollPane = new javax.swing.JScrollPane();
     mappingTable = new javax.swing.JTable();
     deleteMappingButton = new javax.swing.JButton();
 
@@ -70,7 +84,7 @@ public class MainFrame extends javax.swing.JFrame {
 
       },
       new String [] {
-        "Character", "Key Code", "Modifiers"
+        "Character", "Key", "Modifiers"
       }
     ) {
       Class[] types = new Class [] {
@@ -88,7 +102,9 @@ public class MainFrame extends javax.swing.JFrame {
         return canEdit [columnIndex];
       }
     });
-    jScrollPane1.setViewportView(mappingTable);
+    mappingTable.setName("mappingTable"); // NOI18N
+    mappingTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+    tableScrollPane.setViewportView(mappingTable);
 
     deleteMappingButton.setMnemonic('D');
     deleteMappingButton.setText("Delete");
@@ -102,7 +118,7 @@ public class MainFrame extends javax.swing.JFrame {
       .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mappingPanelLayout.createSequentialGroup()
         .addContainerGap()
         .addGroup(mappingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-          .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 302, Short.MAX_VALUE)
+          .addComponent(tableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 302, Short.MAX_VALUE)
           .addComponent(deleteMappingButton))
         .addContainerGap())
     );
@@ -110,7 +126,7 @@ public class MainFrame extends javax.swing.JFrame {
       mappingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
       .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mappingPanelLayout.createSequentialGroup()
         .addContainerGap()
-        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE)
+        .addComponent(tableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE)
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
         .addComponent(deleteMappingButton)
         .addContainerGap())
@@ -150,16 +166,19 @@ public class MainFrame extends javax.swing.JFrame {
   }//GEN-LAST:event_charEntered
 
   private void addKeyEventMapping(CharMapping mapping) {
-    DefaultTableModel model = (DefaultTableModel) this.mappingTable.getModel();
-    model.addRow(new Object[] { mapping.character, mapping.keyCode, mapping.modifier });
+    mappingTableModel().addRow(new Object[] { mapping.character, mapping.keyCode, mapping.modifier });
   }
 
+  private DefaultTableModel mappingTableModel() {
+    return (DefaultTableModel) mappingTable.getModel();
+  }
+  
   // Variables declaration - do not modify//GEN-BEGIN:variables
   private javax.swing.JLabel charLabel;
   private javax.swing.JTextField charTextField;
   private javax.swing.JButton deleteMappingButton;
-  private javax.swing.JScrollPane jScrollPane1;
   private javax.swing.JPanel mappingPanel;
   private javax.swing.JTable mappingTable;
+  private javax.swing.JScrollPane tableScrollPane;
   // End of variables declaration//GEN-END:variables
 }
