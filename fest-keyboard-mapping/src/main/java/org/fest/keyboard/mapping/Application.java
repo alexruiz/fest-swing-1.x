@@ -35,9 +35,7 @@ public class Application {
       private void setLaF() {
         try {
           setLookAndFeel(getSystemLookAndFeelClassName());
-        } catch (Exception ignored) {
-          ignored.printStackTrace();
-        }
+        } catch (Exception ignored) {}
       }
     });
   }

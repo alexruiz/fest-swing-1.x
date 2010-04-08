@@ -22,6 +22,8 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 import static java.security.AccessController.doPrivileged;
+
+import static org.fest.keyboard.mapping.IgnoredKeyCodes.shouldIgnore;
 import static org.fest.keyboard.mapping.MappingNotFoundError.mappingNotFound;
 
 /**
@@ -34,6 +36,7 @@ final class KeyCodeToText {
   private static final Map<Integer, String> keyCodes = new ConcurrentHashMap<Integer, String>();
 
   static String keyCodeToText(int keyCode) throws MappingNotFoundError {
+    if (shouldIgnore(keyCode)) throw mappingNotFound();
     if (!keyCodes.containsKey(keyCode)) addToMap(keyCode);
     return keyCodes.get(keyCode);
   }

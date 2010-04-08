@@ -16,10 +16,7 @@
 package org.fest.keyboard.mapping;
 
 import java.awt.Rectangle;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentMap;
+
 import javax.swing.table.DefaultTableModel;
 
 import static org.fest.keyboard.mapping.CharMapping.newCharMapping;
@@ -33,7 +30,7 @@ public class MainFrame extends javax.swing.JFrame {
 
   private static final long serialVersionUID = 1L;
 
-  private final ConcurrentMap<String, Integer> mappings = new ConcurrentHashMap<String, Integer>();
+  private static final int CHARACTER_COLUMN_INDEX = 0;
 
   /** Creates new form MainFrame */
   public MainFrame() {
@@ -167,29 +164,39 @@ public class MainFrame extends javax.swing.JFrame {
   }//GEN-LAST:event_charEntered
 
   private void deleteMapping(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteMapping
-    // TODO add your handling code here:
+    int selectedRow = mappingTable.getSelectedRow();
+    DefaultTableModel model = mappingTableModel();
+    while (selectedRow != -1) {
+      model.removeRow(selectedRow);
+      selectedRow = mappingTable.getSelectedRow();
+    }
+    selectAndScrollToLastRow();
   }//GEN-LAST:event_deleteMapping
 
   private void removeMappingIfPresent(CharMapping mapping) {
-    String character = mapping.character;
-    if (!mappings.containsKey(character)) return;
-    int rowIndex = mappings.remove(character);
-    mappingTableModel().removeRow(rowIndex);
+    int rowCount = mappingTable.getRowCount();
+    DefaultTableModel model = mappingTableModel();
+    for (int row = 0; row < rowCount; row++) {
+      Object val = model.getValueAt(row, CHARACTER_COLUMN_INDEX);
+      if (mapping.character.equals(val)) {
+        model.removeRow(row);
+        break;
+      }
+    }
   }
 
   private void addMapping(CharMapping mapping) {
     mappingTableModel().addRow(new Object[] { mapping.character, mapping.keyCode, mapping.modifier });
-    int lastRow = selectAndScrollToLastRow();
-    updateMappingDeleteButton();
-    mappings.put(mapping.character, lastRow);
+    selectAndScrollToLastRow();
   }
 
-  private int selectAndScrollToLastRow() {
+  private void selectAndScrollToLastRow() {
     int lastRowIndex = mappingTableModel().getRowCount() - 1;
-    if (lastRowIndex < 0) return lastRowIndex;
-    scrollToRow(lastRowIndex);
-    mappingTable.setRowSelectionInterval(lastRowIndex, lastRowIndex);
-    return lastRowIndex;
+    if (lastRowIndex >= 0) {
+      scrollToRow(lastRowIndex);
+      mappingTable.setRowSelectionInterval(lastRowIndex, lastRowIndex);
+    }
+    updateMappingDeleteButton();
   }
 
   private void scrollToRow(int row) {
@@ -202,7 +209,7 @@ public class MainFrame extends javax.swing.JFrame {
   }
 
   private void updateMappingDeleteButton() {
-    deleteMappingButton.setEnabled(mappingTable.getRowCount() > 0);
+    deleteMappingButton.setEnabled(mappingTable.getSelectedRowCount() > 0);
   }
   
   // Variables declaration - do not modify//GEN-BEGIN:variables

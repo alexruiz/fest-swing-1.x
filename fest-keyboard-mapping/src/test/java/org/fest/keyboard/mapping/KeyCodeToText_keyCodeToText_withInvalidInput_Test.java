@@ -17,6 +17,8 @@ package org.fest.keyboard.mapping;
 
 import org.junit.Test;
 
+import static java.awt.event.KeyEvent.VK_DELETE;
+
 /**
  * Tests for <code>{@link KeyCodeToText#keyCodeToText(int)}</code>.
  *
@@ -27,5 +29,10 @@ public class KeyCodeToText_keyCodeToText_withInvalidInput_Test {
   @Test(expected = MappingNotFoundError.class)
   public void should_throw_error_if_value_is_not_key_code() throws MappingNotFoundError {
     KeyCodeToText.keyCodeToText(Integer.MIN_VALUE);
+  }
+
+  @Test(expected = MappingNotFoundError.class)
+  public void should_throw_error_if_key_code_should_be_ignored() throws MappingNotFoundError {
+    KeyCodeToText.keyCodeToText(VK_DELETE);
   }
 }
