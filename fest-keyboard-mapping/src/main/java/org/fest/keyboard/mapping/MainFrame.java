@@ -15,7 +15,11 @@
  */
 package org.fest.keyboard.mapping;
 
-import javax.swing.event.*;
+import java.awt.Rectangle;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
 import javax.swing.table.DefaultTableModel;
 
 import static org.fest.keyboard.mapping.CharMapping.newCharMapping;
@@ -29,22 +33,11 @@ public class MainFrame extends javax.swing.JFrame {
 
   private static final long serialVersionUID = 1L;
 
+  private final ConcurrentMap<String, Integer> mappings = new ConcurrentHashMap<String, Integer>();
+
   /** Creates new form MainFrame */
   public MainFrame() {
     initComponents();
-    mappingTableModel().addTableModelListener(new TableModelListener() {
-      public void tableChanged(TableModelEvent e) {
-        int lastRow = selectLastRow();
-        deleteMappingButton.setEnabled(lastRow >= 0);
-      }
-    });
-  }
-
-  private int selectLastRow() {
-    int rowCount = mappingTableModel().getRowCount();
-    int lastRowIndex = rowCount - 1;
-    if (lastRowIndex >= 0) mappingTable.getSelectionModel().setSelectionInterval(lastRowIndex, lastRowIndex);
-    return lastRowIndex;
   }
 
   @SuppressWarnings({ "serial", "unchecked" })
@@ -70,6 +63,7 @@ public class MainFrame extends javax.swing.JFrame {
 
     charLabel.setText("Enter the character to map:");
 
+    charTextField.setDocument(new MaxLengthDocument());
     charTextField.setName("charTextField"); // NOI18N
     charTextField.addKeyListener(new java.awt.event.KeyAdapter() {
       public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -110,6 +104,11 @@ public class MainFrame extends javax.swing.JFrame {
     deleteMappingButton.setText("Delete");
     deleteMappingButton.setEnabled(false);
     deleteMappingButton.setName("deleteMappingButton"); // NOI18N
+    deleteMappingButton.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        deleteMapping(evt);
+      }
+    });
 
     javax.swing.GroupLayout mappingPanelLayout = new javax.swing.GroupLayout(mappingPanel);
     mappingPanel.setLayout(mappingPanelLayout);
@@ -161,16 +160,49 @@ public class MainFrame extends javax.swing.JFrame {
 
   private void charEntered(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_charEntered
     try {
-      addKeyEventMapping(newCharMapping(evt));
+      CharMapping mapping = newCharMapping(evt);
+      removeMappingIfPresent(mapping);
+      addMapping(mapping);
     } catch (MappingNotFoundError ignored) {}
   }//GEN-LAST:event_charEntered
 
-  private void addKeyEventMapping(CharMapping mapping) {
+  private void deleteMapping(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteMapping
+    // TODO add your handling code here:
+  }//GEN-LAST:event_deleteMapping
+
+  private void removeMappingIfPresent(CharMapping mapping) {
+    String character = mapping.character;
+    if (!mappings.containsKey(character)) return;
+    int rowIndex = mappings.remove(character);
+    mappingTableModel().removeRow(rowIndex);
+  }
+
+  private void addMapping(CharMapping mapping) {
     mappingTableModel().addRow(new Object[] { mapping.character, mapping.keyCode, mapping.modifier });
+    int lastRow = selectAndScrollToLastRow();
+    updateMappingDeleteButton();
+    mappings.put(mapping.character, lastRow);
+  }
+
+  private int selectAndScrollToLastRow() {
+    int lastRowIndex = mappingTableModel().getRowCount() - 1;
+    if (lastRowIndex < 0) return lastRowIndex;
+    scrollToRow(lastRowIndex);
+    mappingTable.setRowSelectionInterval(lastRowIndex, lastRowIndex);
+    return lastRowIndex;
+  }
+
+  private void scrollToRow(int row) {
+    Rectangle rect = mappingTable.getCellRect(row, 0, true);
+    mappingTable.scrollRectToVisible(rect);
   }
 
   private DefaultTableModel mappingTableModel() {
     return (DefaultTableModel) mappingTable.getModel();
+  }
+
+  private void updateMappingDeleteButton() {
+    deleteMappingButton.setEnabled(mappingTable.getRowCount() > 0);
   }
   
   // Variables declaration - do not modify//GEN-BEGIN:variables

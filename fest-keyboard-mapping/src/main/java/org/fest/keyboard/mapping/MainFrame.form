@@ -60,6 +60,9 @@
     </Component>
     <Component class="javax.swing.JTextField" name="charTextField">
       <Properties>
+        <Property name="document" type="javax.swing.text.Document" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="new MaxLengthDocument()" type="code"/>
+        </Property>
         <Property name="name" type="java.lang.String" value="charTextField" noResource="true"/>
       </Properties>
       <Events>
@@ -134,6 +137,9 @@
             <Property name="enabled" type="boolean" value="false"/>
             <Property name="name" type="java.lang.String" value="deleteMappingButton" noResource="true"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="deleteMapping"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
