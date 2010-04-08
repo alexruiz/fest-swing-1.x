@@ -1,16 +1,16 @@
 /*
  * Created on Apr 7, 2010
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License
  * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
- * 
+ *
  * Copyright @2010 the original author or authors.
  */
 package org.fest.keyboard.mapping;
@@ -22,6 +22,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 import static java.security.AccessController.doPrivileged;
+import static org.fest.keyboard.mapping.MappingNotFoundException.mappingNotFound;
 
 /**
  * Understands conversion of a key code to text.
@@ -31,26 +32,24 @@ import static java.security.AccessController.doPrivileged;
 final class KeyCodeToText {
 
   private static final Map<Integer, String> keyCodes = new ConcurrentHashMap<Integer, String>();
-   
-  static String keyCodeText(int keyCode) {
+
+  static String keyCodeToText(int keyCode) throws MappingNotFoundException {
     if (!keyCodes.containsKey(keyCode)) addToMap(keyCode);
     return keyCodes.get(keyCode);
   }
 
-  private static void addToMap(int keyCode) {
-    String text = findTextOf(keyCode);
-    if (text == null) return;
-    keyCodes.put(keyCode, text);
+  private static void addToMap(int keyCode) throws MappingNotFoundException {
+    keyCodes.put(keyCode, findTextOf(keyCode));
   }
 
-  private static String findTextOf(int keyCode) {
+  private static String findTextOf(int keyCode) throws MappingNotFoundException {
     try {
       for (Field field : KeyEvent.class.getDeclaredFields()) {
         if (!isKeyCodeField(field) || keyCode != valueOf(field)) continue;
         return field.getName().substring(3);
       }
     } catch (Exception ignored) {}
-    return null;
+    throw mappingNotFound();
   }
 
   private static boolean isKeyCodeField(Field field) {
@@ -65,7 +64,7 @@ final class KeyCodeToText {
   }
 
   private static boolean makeAccessible(Field field, boolean accessible) {
-    return doPrivileged(new MakeAccessibleAction(field, accessible));    
+    return doPrivileged(new MakeAccessibleAction(field, accessible));
   }
 
   private static class MakeAccessibleAction implements PrivilegedAction<Boolean> {
@@ -76,13 +75,13 @@ final class KeyCodeToText {
       this.target = target;
       this.accessible = accessible;
     }
-    
+
     public Boolean run() {
       boolean current = target.isAccessible();
       target.setAccessible(accessible);
       return current;
     }
   }
-  
+
   private KeyCodeToText() {}
 }

@@ -15,11 +15,11 @@
  */
 package org.fest.keyboard.mapping;
 
-import static java.awt.event.KeyEvent.getKeyModifiersText;
+import static org.fest.keyboard.mapping.CharToText.charToText;
+import static org.fest.keyboard.mapping.KeyCodeToText.keyCodeToText;
+import static org.fest.keyboard.mapping.ModifierToText.modifierToText;
 
-import static org.fest.keyboard.mapping.CharToText.charsToText;
-import static org.fest.keyboard.mapping.KeyCodeToText.keyCodeText;
-import static org.fest.util.Strings.isEmpty;
+import java.awt.event.KeyEvent;
 
 /**
  * Understands mappings of characters to key codes.
@@ -28,24 +28,31 @@ import static org.fest.util.Strings.isEmpty;
  */
 class CharMapping {
 
-  private static final int INVALID_CHAR = 65535;
+  private static final CharMapping NO_MAPPING_FOUND = new CharMapping("", "", "");
 
   final String character;
   final String keyCode;
-  final String modifiers;
+  final String modifier;
 
-  static CharMapping newCharMapping(char character, int keyCode, int modifiers) {
-    if (character == INVALID_CHAR) return null;
-    String charText = charsToText(character);
-    if (isEmpty(charText)) return null;
-    String keyCodeText = keyCodeText(keyCode);
-    if (isEmpty(keyCodeText)) return null;
-    return new CharMapping(charText, keyCodeText, modifiers);
+  static CharMapping newCharMapping(KeyEvent event) {
+    return newCharMapping(event.getKeyChar(), event.getKeyCode(), event.getModifiers());
   }
 
-  private CharMapping(String character, String keyCode, int modifiers) {
+  private static CharMapping newCharMapping(char character, int keyCode, int modifiers) {
+    try {
+      return new CharMapping(charToText(character), keyCodeToText(keyCode), modifierToText(modifiers));
+    } catch (MappingNotFoundException e) {
+      return NO_MAPPING_FOUND;
+    }
+  }
+
+  static boolean mappingFound(CharMapping mapping) {
+    return mapping != null && mapping != NO_MAPPING_FOUND;
+  }
+
+  private CharMapping(String character, String keyCode, String modifier) {
     this.character = character;
     this.keyCode = keyCode;
-    this.modifiers = modifiers == 0 ? "NO_MASK" : getKeyModifiersText(modifiers);
+    this.modifier = modifier;
   }
 }

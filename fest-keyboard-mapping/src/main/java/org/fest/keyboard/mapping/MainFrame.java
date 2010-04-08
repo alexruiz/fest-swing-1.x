@@ -15,13 +15,14 @@
  */
 package org.fest.keyboard.mapping;
 
+import static org.fest.keyboard.mapping.CharMapping.mappingFound;
+import static org.fest.keyboard.mapping.CharMapping.newCharMapping;
+
 import javax.swing.table.DefaultTableModel;
-import static org.fest.keyboard.mapping.IgnoredKeyCodes.*;
-import static org.fest.keyboard.mapping.CharMapping.*;
 
 /**
  * Understands the application's main window.
- * 
+ *
  * @author Alex Ruiz
  */
 public class MainFrame extends javax.swing.JFrame {
@@ -144,13 +145,15 @@ public class MainFrame extends javax.swing.JFrame {
   }// </editor-fold>//GEN-END:initComponents
 
   private void charEntered(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_charEntered
-    int keyCode = evt.getKeyCode();
-    if (shouldIgnore(keyCode)) return;
-    CharMapping mapping = newCharMapping(evt.getKeyChar(), keyCode, evt.getModifiers());
-    if (mapping == null) return;
-    DefaultTableModel model = (DefaultTableModel) this.mappingTable.getModel();
-    model.addRow(new Object[] { mapping.character, mapping.keyCode, mapping.modifiers});
+    CharMapping mapping = newCharMapping(evt);
+    if (!mappingFound(mapping)) return;
+    addKeyEventMapping(mapping);
   }//GEN-LAST:event_charEntered
+
+  private void addKeyEventMapping(CharMapping mapping) {
+    DefaultTableModel model = (DefaultTableModel) this.mappingTable.getModel();
+    model.addRow(new Object[] { mapping.character, mapping.keyCode, mapping.modifier });
+  }
 
   // Variables declaration - do not modify//GEN-BEGIN:variables
   private javax.swing.JLabel charLabel;
