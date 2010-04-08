@@ -27,17 +27,17 @@ import static org.fest.assertions.Assertions.assertThat;
 public class CharToText_charToText_Test {
 
   @Test
-  public void should_return_text_from_single_char() throws MappingNotFoundException {
+  public void should_return_text_from_single_char() throws MappingNotFoundError {
     assertThat(CharToText.charToText('c')).isEqualTo("c");
   }
 
-  @Test(expected = MappingNotFoundException.class)
-  public void should_throw_error_if_generated_text_is_empty() throws MappingNotFoundException {
+  @Test(expected = MappingNotFoundError.class)
+  public void should_throw_error_if_generated_text_is_empty() throws MappingNotFoundError {
     CharToText.charToText(' ');
   }
 
-  @Test(expected = MappingNotFoundException.class)
-  public void should_throw_error_if_character_is_invalid() throws MappingNotFoundException {
+  @Test(expected = MappingNotFoundError.class)
+  public void should_throw_error_if_character_is_invalid() throws MappingNotFoundError {
     CharToText.charToText((char)65535);
   }
 

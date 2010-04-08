@@ -28,26 +28,16 @@ import java.awt.event.KeyEvent;
  */
 class CharMapping {
 
-  private static final CharMapping NO_MAPPING_FOUND = new CharMapping("", "", "");
-
   final String character;
   final String keyCode;
   final String modifier;
 
-  static CharMapping newCharMapping(KeyEvent event) {
+  static CharMapping newCharMapping(KeyEvent event) throws MappingNotFoundError {
     return newCharMapping(event.getKeyChar(), event.getKeyCode(), event.getModifiers());
   }
 
-  private static CharMapping newCharMapping(char character, int keyCode, int modifiers) {
-    try {
-      return new CharMapping(charToText(character), keyCodeToText(keyCode), modifierToText(modifiers));
-    } catch (MappingNotFoundException e) {
-      return NO_MAPPING_FOUND;
-    }
-  }
-
-  static boolean mappingFound(CharMapping mapping) {
-    return mapping != null && mapping != NO_MAPPING_FOUND;
+  private static CharMapping newCharMapping(char character, int keyCode, int modifiers) throws MappingNotFoundError {
+    return new CharMapping(charToText(character), keyCodeToText(keyCode), modifierToText(modifiers));
   }
 
   private CharMapping(String character, String keyCode, String modifier) {

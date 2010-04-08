@@ -54,7 +54,7 @@ public class KeyCodeToText_keyCodeToText_Test {
   }
 
   @Test
-  public void should_return_text_of_key_code() throws MappingNotFoundException {
+  public void should_return_text_of_key_code() throws MappingNotFoundError {
     assertThat(KeyCodeToText.keyCodeToText(keyCode)).isEqualTo(keyCodeText);
   }
 }

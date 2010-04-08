@@ -24,8 +24,8 @@ import org.junit.Test;
  */
 public class KeyCodeToText_keyCodeToText_withInvalidInput_Test {
 
-  @Test(expected = MappingNotFoundException.class)
-  public void should_throw_error_if_value_is_not_key_code() throws MappingNotFoundException {
+  @Test(expected = MappingNotFoundError.class)
+  public void should_throw_error_if_value_is_not_key_code() throws MappingNotFoundError {
     KeyCodeToText.keyCodeToText(Integer.MIN_VALUE);
   }
 }

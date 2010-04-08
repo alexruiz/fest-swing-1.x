@@ -22,7 +22,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 import static java.security.AccessController.doPrivileged;
-import static org.fest.keyboard.mapping.MappingNotFoundException.mappingNotFound;
+import static org.fest.keyboard.mapping.MappingNotFoundError.mappingNotFound;
 
 /**
  * Understands conversion of a key code to text.
@@ -33,16 +33,16 @@ final class KeyCodeToText {
 
   private static final Map<Integer, String> keyCodes = new ConcurrentHashMap<Integer, String>();
 
-  static String keyCodeToText(int keyCode) throws MappingNotFoundException {
+  static String keyCodeToText(int keyCode) throws MappingNotFoundError {
     if (!keyCodes.containsKey(keyCode)) addToMap(keyCode);
     return keyCodes.get(keyCode);
   }
 
-  private static void addToMap(int keyCode) throws MappingNotFoundException {
+  private static void addToMap(int keyCode) throws MappingNotFoundError {
     keyCodes.put(keyCode, findTextOf(keyCode));
   }
 
-  private static String findTextOf(int keyCode) throws MappingNotFoundException {
+  private static String findTextOf(int keyCode) throws MappingNotFoundError {
     try {
       for (Field field : KeyEvent.class.getDeclaredFields()) {
         if (!isKeyCodeField(field) || keyCode != valueOf(field)) continue;

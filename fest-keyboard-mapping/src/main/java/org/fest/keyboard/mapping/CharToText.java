@@ -15,7 +15,7 @@
  */
 package org.fest.keyboard.mapping;
 
-import static org.fest.keyboard.mapping.MappingNotFoundException.mappingNotFound;
+import static org.fest.keyboard.mapping.MappingNotFoundError.mappingNotFound;
 import static org.fest.util.Strings.isEmpty;
 
 /**
@@ -27,7 +27,7 @@ final class CharToText {
 
   private static final int INVALID_CHAR = 65535;
 
-  static String charToText(char character) throws MappingNotFoundException {
+  static String charToText(char character) throws MappingNotFoundError {
     if (character == INVALID_CHAR) throw mappingNotFound();
     String text = new String(new char[] { character }).trim();
     if (isEmpty(text)) throw mappingNotFound();

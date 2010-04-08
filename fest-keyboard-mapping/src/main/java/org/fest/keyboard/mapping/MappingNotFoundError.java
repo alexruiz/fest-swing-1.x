@@ -20,13 +20,13 @@ package org.fest.keyboard.mapping;
  *
  * @author Alex Ruiz
  */
-class MappingNotFoundException extends Exception {
+class MappingNotFoundError extends Exception {
 
   private static final long serialVersionUID = 1L;
 
-  static MappingNotFoundException mappingNotFound() {
-    return new MappingNotFoundException();
+  static MappingNotFoundError mappingNotFound() {
+    return new MappingNotFoundError();
   }
 
-  private MappingNotFoundException() {}
+  private MappingNotFoundError() {}
 }

@@ -15,7 +15,6 @@
  */
 package org.fest.keyboard.mapping;
 
-import static org.fest.keyboard.mapping.CharMapping.mappingFound;
 import static org.fest.keyboard.mapping.CharMapping.newCharMapping;
 
 import javax.swing.table.DefaultTableModel;
@@ -145,9 +144,9 @@ public class MainFrame extends javax.swing.JFrame {
   }// </editor-fold>//GEN-END:initComponents
 
   private void charEntered(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_charEntered
-    CharMapping mapping = newCharMapping(evt);
-    if (!mappingFound(mapping)) return;
-    addKeyEventMapping(mapping);
+    try {
+      addKeyEventMapping(newCharMapping(evt));
+    } catch (MappingNotFoundError ignored) {}
   }//GEN-LAST:event_charEntered
 
   private void addKeyEventMapping(CharMapping mapping) {
