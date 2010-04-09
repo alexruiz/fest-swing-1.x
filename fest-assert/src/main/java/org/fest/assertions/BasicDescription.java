@@ -21,7 +21,7 @@ package org.fest.assertions;
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
-public final class BasicDescription implements Description {
+public class BasicDescription implements Description {
 
   private final String description;
 

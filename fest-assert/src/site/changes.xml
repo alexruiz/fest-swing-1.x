@@ -5,6 +5,11 @@
     <author email="alex.ruiz.05@gmail.com">Alex Ruiz</author>
   </properties>
   <body>
+    <release version="1.3" date="TBD" description="Subsequent release">
+      <action dev="wanghy" type="fix" issue="FEST-261" due-to="Ed Bras">
+        Class BasicDescription is no longer final.
+      </action>
+    </release>
     <release version="1.2" date="2009-11-02" description="Subsequent release">
       <action dev="tedyoung" type="fix" issue="FEST-147">
         Class Formatting and its methods are now public.
