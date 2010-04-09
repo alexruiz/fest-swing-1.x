@@ -23,7 +23,7 @@ import static org.fest.util.Arrays.array;
  * 
  * @author Alex Ruiz
  */
-class BasicCharMappingTableModel extends DefaultTableModel {
+class BasicCharMappingTableModel extends DefaultTableModel implements CharMappingTableModel {
 
   private static final long serialVersionUID = 1L;
   
@@ -57,14 +57,17 @@ class BasicCharMappingTableModel extends DefaultTableModel {
     }
   }
   
+  /** {@inheritDoc} */
   public String characterInRow(int row) {
     return textInCell(row, CHARACTER_COLUMN_INDEX);
   }
   
+  /** {@inheritDoc} */
   public String keyCodeInRow(int row) {
     return textInCell(row, KEY_CODE_COLUMN_INDEX);
   }
   
+  /** {@inheritDoc} */
   public String modifierInRow(int row) {
     return textInCell(row, MODIFIER_COLUMN_INDEX);
   }
@@ -73,6 +76,7 @@ class BasicCharMappingTableModel extends DefaultTableModel {
     return (String)getValueAt(row, col);
   }
 
+  /** {@inheritDoc} */
   public int rowCount() {
     return getRowCount();
   }

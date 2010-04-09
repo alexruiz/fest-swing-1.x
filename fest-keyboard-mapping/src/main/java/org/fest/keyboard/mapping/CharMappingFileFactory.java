@@ -27,10 +27,10 @@ import static org.fest.util.Strings.join;
  */
 class CharMappingFileFactory {
 
-  void createMappingFile(String fileName, BasicCharMappingTableModel model) throws IOException {
+  void createMappingFile(File file, CharMappingTableModel model) throws IOException {
     PrintWriter writer = null;
     try {
-      writer = new PrintWriter(new FileWriter(fileName));
+      writer = new PrintWriter(new FileWriter(file));
       int mappingCount = model.rowCount();
       for (int row = 0; row < mappingCount; row++) 
         writer.println(mapping(model, row));
@@ -40,7 +40,7 @@ class CharMappingFileFactory {
     }
   }
   
-  private String mapping(BasicCharMappingTableModel model, int row) {
+  private String mapping(CharMappingTableModel model, int row) {
     String character = model.characterInRow(row);
     if (",".equals(character)) character = "COMMA";
     return join(character, model.keyCodeInRow(row), model.modifierInRow(row)).with(",");

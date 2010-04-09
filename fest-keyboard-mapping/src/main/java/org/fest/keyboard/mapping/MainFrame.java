@@ -16,8 +16,13 @@
 package org.fest.keyboard.mapping;
 
 import java.awt.Rectangle;
+import java.io.*;
+
+import static javax.swing.JFileChooser.APPROVE_OPTION;
+import static javax.swing.JOptionPane.*;
 
 import static org.fest.keyboard.mapping.CharMapping.newCharMapping;
+import static org.fest.util.Strings.*;
 
 /**
  * Understands the application's main window.
@@ -28,8 +33,21 @@ public class MainFrame extends javax.swing.JFrame {
 
   private static final long serialVersionUID = 1L;
 
-  /** Creates new form MainFrame */
+  private final CharMappingFileFactory fileFactory;
+
+  /**
+   * Creates a new </code>{@link MainFrame}</code>.
+   */
   public MainFrame() {
+    this(new CharMappingFileFactory());
+  }
+
+  /**
+   * Creates a new </code>{@link MainFrame}</code>.
+   * @param fileFactory the factory of mapping files to use.
+   */
+  public MainFrame(CharMappingFileFactory fileFactory) {
+    this.fileFactory = fileFactory;
     initComponents();
   }
 
@@ -167,9 +185,27 @@ public class MainFrame extends javax.swing.JFrame {
   }//GEN-LAST:event_deleteMapping
 
   private void saveAsMappingFile(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveAsMappingFile
-    saveMappingFileChooser.showSaveDialog(this);
+    int selection = saveMappingFileChooser.showSaveDialog(this);
+    if (selection != APPROVE_OPTION) return;
+    File toSave = saveMappingFileChooser.getSelectedFile();
+    try {
+      fileFactory.createMappingFile(toSave, mappingTableModel());
+      showFileSaveActionSuccessMessage(toSave);
+    } catch (IOException e) {
+      showSaveFileActionFailedMessage(e.getMessage());
+    }
   }//GEN-LAST:event_saveAsMappingFile
 
+  private void showFileSaveActionSuccessMessage(File file) {
+    String message = concat("File ", quote(file.getName()), " successfully saved.");
+    showMessageDialog(this, message, "Success", INFORMATION_MESSAGE);
+  }
+
+  private void showSaveFileActionFailedMessage(String cause) {
+    String message = concat("Unable to save file: [", cause, "]");
+    showMessageDialog(this, message, "Error", ERROR_MESSAGE);
+  }
+  
   private void addMapping(CharMapping mapping) {
     mappingTableModel().addOrReplace(mapping);
     selectAndScrollToLastRow();
