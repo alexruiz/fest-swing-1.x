@@ -4,6 +4,7 @@
   <NonVisualComponents>
     <Component class="javax.swing.JFileChooser" name="saveMappingFileChooser">
       <Properties>
+        <Property name="acceptAllFileFilterUsed" type="boolean" value="false"/>
         <Property name="dialogTitle" type="java.lang.String" value="Save As Mapping File"/>
         <Property name="dialogType" type="int" value="1"/>
         <Property name="fileFilter" type="javax.swing.filechooser.FileFilter" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
@@ -151,7 +152,7 @@
             <Component class="javax.swing.JTable" name="mappingTable">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                  <Connection code="new CharMappingTableModel()" type="code"/>
+                  <Connection code="new BasicCharMappingTableModel()" type="code"/>
                 </Property>
                 <Property name="name" type="java.lang.String" value="mappingTable" noResource="true"/>
                 <Property name="selectionModel" type="javax.swing.ListSelectionModel" editor="org.netbeans.modules.form.editors2.JTableSelectionModelEditor">

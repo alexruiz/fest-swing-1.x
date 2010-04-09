@@ -70,6 +70,7 @@ public class MainFrame extends javax.swing.JFrame {
     fileMenu = new javax.swing.JMenu();
     createMappingFileMenu = new javax.swing.JMenuItem();
 
+    saveMappingFileChooser.setAcceptAllFileFilterUsed(false);
     saveMappingFileChooser.setDialogTitle("Save As Mapping File");
     saveMappingFileChooser.setDialogType(javax.swing.JFileChooser.SAVE_DIALOG);
     saveMappingFileChooser.setFileFilter(new TextFileFilter());
