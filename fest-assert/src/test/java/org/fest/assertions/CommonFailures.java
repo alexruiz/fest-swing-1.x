@@ -91,7 +91,7 @@ public final class CommonFailures {
   }
 
   public static Message expectErrorIfConditionIsNull() {
-    return expectNullPointerException("Condition to check should be null");
+    return expectNullPointerException("Condition to check should not be null");
   }
 
   public static Message expectNullPointerException(String message) {

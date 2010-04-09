@@ -254,7 +254,7 @@ public abstract class GenericAssert<T> extends Assert {
   }
 
   private void validateIsNotNull(Condition<T> condition) {
-    if (condition == null) throw new NullPointerException("Condition to check should be null");
+    if (condition == null) throw new NullPointerException("Condition to check should not be null");
   }
 
   private String errorMessageIfIs(Condition<T> condition) {
