@@ -116,6 +116,15 @@ public abstract class Assert {
 
   /**
    * Fails by throwing an <code>{@link AssertionError}</code>.
+   * @param reason the reason for the failure, used as the message for the thrown exception.
+   * @param cause the root cause of the failure, included in the thrown exception.
+   */
+  protected final void fail(String reason, Throwable cause) {
+    Fail.fail(formattedErrorMessage(reason), cause);
+  }
+
+  /**
+   * Fails by throwing an <code>{@link AssertionError}</code>.
    * <p>
    * <strong>Note:</strong> This method appears to return <code>{@link AssertionError}</code>, but it is really not the
    * case, since the exception is thrown and not returned. In version 2.0 the return type of this method will change
@@ -139,15 +148,6 @@ public abstract class Assert {
    */
   protected final AssertionError failure(String reason) {
     return Fail.failure(formattedErrorMessage(reason));
-  }
-
-  /**
-   * Fails by throwing an <code>{@link AssertionError}</code>.
-   * @param reason the reason for the failure, used as the message for the thrown exception.
-   * @param cause the root cause of the failure, included in the thrown exception.
-   */
-  protected final void fail(String reason, Throwable cause) {
-    Fail.fail(formattedErrorMessage(reason), cause);
   }
 
   /**
