@@ -16,9 +16,6 @@
 package org.fest.keyboard.mapping;
 
 import java.awt.Rectangle;
-import javax.swing.JFileChooser;
-
-import javax.swing.table.DefaultTableModel;
 
 import static org.fest.keyboard.mapping.CharMapping.newCharMapping;
 
@@ -31,14 +28,11 @@ public class MainFrame extends javax.swing.JFrame {
 
   private static final long serialVersionUID = 1L;
 
-  private static final int CHARACTER_COLUMN_INDEX = 0;
-
   /** Creates new form MainFrame */
   public MainFrame() {
     initComponents();
   }
 
-  @SuppressWarnings({ "serial", "unchecked" })
   /** This method is called from within the constructor to
    * initialize the form.
    * WARNING: Do NOT modify this code. The content of this method is
@@ -80,29 +74,7 @@ public class MainFrame extends javax.swing.JFrame {
 
     mappingPanel.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.SystemColor.controlShadow));
 
-    mappingTable.setModel(new javax.swing.table.DefaultTableModel(
-      new Object [][] {
-
-      },
-      new String [] {
-        "Character", "Key", "Modifiers"
-      }
-    ) {
-      Class[] types = new Class [] {
-        java.lang.String.class, java.lang.String.class, java.lang.String.class
-      };
-      boolean[] canEdit = new boolean [] {
-        false, false, false
-      };
-
-      public Class getColumnClass(int columnIndex) {
-        return types [columnIndex];
-      }
-
-      public boolean isCellEditable(int rowIndex, int columnIndex) {
-        return canEdit [columnIndex];
-      }
-    });
+    mappingTable.setModel(new CharMappingTableModel());
     mappingTable.setName("mappingTable"); // NOI18N
     mappingTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
     tableScrollPane.setViewportView(mappingTable);
@@ -184,19 +156,12 @@ public class MainFrame extends javax.swing.JFrame {
 
   private void charEntered(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_charEntered
     try {
-      CharMapping mapping = newCharMapping(evt);
-      removeMappingIfPresent(mapping);
-      addMapping(mapping);
+      addMapping(newCharMapping(evt));
     } catch (MappingNotFoundError ignored) {}
   }//GEN-LAST:event_charEntered
 
   private void deleteMapping(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteMapping
-    int selectedRow = mappingTable.getSelectedRow();
-    DefaultTableModel model = mappingTableModel();
-    while (selectedRow != -1) {
-      model.removeRow(selectedRow);
-      selectedRow = mappingTable.getSelectedRow();
-    }
+    deleteSelectedRows();
     selectAndScrollToLastRow();
     updateUI();
   }//GEN-LAST:event_deleteMapping
@@ -205,26 +170,23 @@ public class MainFrame extends javax.swing.JFrame {
     saveMappingFileChooser.showSaveDialog(this);
   }//GEN-LAST:event_saveAsMappingFile
 
-  private void removeMappingIfPresent(CharMapping mapping) {
-    int rowCount = mappingTable.getRowCount();
-    DefaultTableModel model = mappingTableModel();
-    for (int row = 0; row < rowCount; row++) {
-      Object val = model.getValueAt(row, CHARACTER_COLUMN_INDEX);
-      if (mapping.character.equals(val)) {
-        model.removeRow(row);
-        break;
-      }
-    }
-  }
-
   private void addMapping(CharMapping mapping) {
-    mappingTableModel().addRow(new Object[] { mapping.character, mapping.keyCode, mapping.modifier });
+    mappingTableModel().addOrReplace(mapping);
     selectAndScrollToLastRow();
     updateUI();
   }
 
+  private void deleteSelectedRows() {
+    int selectedRow = mappingTable.getSelectedRow();
+    CharMappingTableModel model = mappingTableModel();
+    while (selectedRow != -1) {
+      model.removeRow(selectedRow);
+      selectedRow = mappingTable.getSelectedRow();
+    }
+  }
+
   private void selectAndScrollToLastRow() {
-    int lastRowIndex = mappingTableModel().getRowCount() - 1;
+    int lastRowIndex = mappingTableModel().lastRowIndex();
     if (lastRowIndex >= 0) {
       scrollToRow(lastRowIndex);
       mappingTable.setRowSelectionInterval(lastRowIndex, lastRowIndex);
@@ -236,8 +198,8 @@ public class MainFrame extends javax.swing.JFrame {
     mappingTable.scrollRectToVisible(rect);
   }
 
-  private DefaultTableModel mappingTableModel() {
-    return (DefaultTableModel) mappingTable.getModel();
+  private CharMappingTableModel mappingTableModel() {
+    return (CharMappingTableModel)mappingTable.getModel();
   }
 
   private void updateUI() {

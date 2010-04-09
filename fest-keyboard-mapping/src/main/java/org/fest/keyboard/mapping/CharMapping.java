@@ -15,11 +15,12 @@
  */
 package org.fest.keyboard.mapping;
 
+import java.awt.event.KeyEvent;
+
 import static org.fest.keyboard.mapping.CharToText.charToText;
 import static org.fest.keyboard.mapping.KeyCodeToText.keyCodeToText;
 import static org.fest.keyboard.mapping.ModifierToText.modifierToText;
-
-import java.awt.event.KeyEvent;
+import static org.fest.util.Objects.*;
 
 /**
  * Understands mappings of characters to key codes.
@@ -44,5 +45,24 @@ class CharMapping {
     this.character = character;
     this.keyCode = keyCode;
     this.modifier = modifier;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null) return false;
+    if (getClass() != o.getClass()) return false;
+    CharMapping other = (CharMapping)o;
+    if (!areEqual(character, other.character)) return false;
+    if (!areEqual(keyCode, other.keyCode)) return false;
+    return areEqual(modifier, other.modifier);
+  }
+
+  @Override public int hashCode() {
+    int prime = HASH_CODE_PRIME;
+    int result = 1;
+    result = prime * result + hashCodeFor(character);
+    result = prime * result + hashCodeFor(keyCode);
+    result = prime * result + hashCodeFor(modifier);
+    return result;
   }
 }
