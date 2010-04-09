@@ -74,7 +74,7 @@ public class MainFrame extends javax.swing.JFrame {
 
     mappingPanel.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.SystemColor.controlShadow));
 
-    mappingTable.setModel(new CharMappingTableModel());
+    mappingTable.setModel(new BasicCharMappingTableModel());
     mappingTable.setName("mappingTable"); // NOI18N
     mappingTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
     tableScrollPane.setViewportView(mappingTable);
@@ -178,7 +178,7 @@ public class MainFrame extends javax.swing.JFrame {
 
   private void deleteSelectedRows() {
     int selectedRow = mappingTable.getSelectedRow();
-    CharMappingTableModel model = mappingTableModel();
+    BasicCharMappingTableModel model = mappingTableModel();
     while (selectedRow != -1) {
       model.removeRow(selectedRow);
       selectedRow = mappingTable.getSelectedRow();
@@ -198,8 +198,8 @@ public class MainFrame extends javax.swing.JFrame {
     mappingTable.scrollRectToVisible(rect);
   }
 
-  private CharMappingTableModel mappingTableModel() {
-    return (CharMappingTableModel)mappingTable.getModel();
+  private BasicCharMappingTableModel mappingTableModel() {
+    return (BasicCharMappingTableModel)mappingTable.getModel();
   }
 
   private void updateUI() {

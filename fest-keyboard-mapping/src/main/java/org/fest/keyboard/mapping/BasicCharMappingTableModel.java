@@ -23,18 +23,24 @@ import static org.fest.util.Arrays.array;
  * 
  * @author Alex Ruiz
  */
-class CharMappingTableModel extends DefaultTableModel {
+class BasicCharMappingTableModel extends DefaultTableModel {
 
   private static final long serialVersionUID = 1L;
   
   private static final int CHARACTER_COLUMN_INDEX = 0;
+  private static final int KEY_CODE_COLUMN_INDEX = 1;
+  private static final int MODIFIER_COLUMN_INDEX = 2;
   
-  CharMappingTableModel() {
+  BasicCharMappingTableModel() {
     super(emptyTable(), array("Character", "Key", "Modifiers"));
   }
 
   private static Object[][] emptyTable() {
     return new Object[][] {};
+  }
+  
+  int lastRowIndex() {
+    return rowCount() - 1;
   }
   
   void addOrReplace(CharMapping mapping) {
@@ -43,17 +49,31 @@ class CharMappingTableModel extends DefaultTableModel {
   }
   
   private void remove(CharMapping mapping) {
-    int rowCount = getRowCount();
+    int rowCount = rowCount();
     for (int row = 0; row < rowCount; row++) {
-      Object val = getValueAt(row, CHARACTER_COLUMN_INDEX);
-      if (mapping.character.equals(val)) {
-        removeRow(row);
-        break;
-      }
+      if (!mapping.character.equals(characterInRow(row))) continue;
+      removeRow(row);
+      break;
     }
   }
   
-  int lastRowIndex() {
-    return getRowCount() - 1;
+  public String characterInRow(int row) {
+    return textInCell(row, CHARACTER_COLUMN_INDEX);
+  }
+  
+  public String keyCodeInRow(int row) {
+    return textInCell(row, KEY_CODE_COLUMN_INDEX);
+  }
+  
+  public String modifierInRow(int row) {
+    return textInCell(row, MODIFIER_COLUMN_INDEX);
+  }
+
+  private String textInCell(int row, int col) {
+    return (String)getValueAt(row, col);
+  }
+
+  public int rowCount() {
+    return getRowCount();
   }
 }
