@@ -51,7 +51,7 @@ public class CollectionAssert_contains_Test implements GroupAssert_contains_Test
 
   @Test
   public void should_fail_if_actual_is_null() {
-    expectErrorIfCollectionIsNull(new CodeToTest() {
+    expectErrorIfActualCollectionIsNull(new CodeToTest() {
       public void run() {
         new CollectionAssert(null).contains("Luke");
       }
@@ -60,7 +60,7 @@ public class CollectionAssert_contains_Test implements GroupAssert_contains_Test
 
   @Test
   public void should_fail_and_display_description_of_assertion_if_actual_is_null() {
-    expectErrorWithDescriptionIfCollectionIsNull(new CodeToTest() {
+    expectErrorWithDescriptionIfActualCollectionIsNull(new CodeToTest() {
       public void run() {
         new CollectionAssert(null).as("A Test")
                                   .contains("Luke");

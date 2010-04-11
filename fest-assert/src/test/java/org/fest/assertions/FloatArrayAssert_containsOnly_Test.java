@@ -51,7 +51,7 @@ public class FloatArrayAssert_containsOnly_Test implements GroupAssert_containsO
 
   @Test
   public void should_fail_if_actual_is_null() {
-    expectErrorIfArrayIsNull(new CodeToTest() {
+    expectErrorIfActualArrayIsNull(new CodeToTest() {
       public void run() {
         new FloatArrayAssert(null).containsOnly(floatArray(asByte(7)));
       }
@@ -60,7 +60,7 @@ public class FloatArrayAssert_containsOnly_Test implements GroupAssert_containsO
 
   @Test
   public void should_fail_and_display_description_of_assertion_if_actual_is_null() {
-    expectErrorWithDescriptionIfArrayIsNull(new CodeToTest() {
+    expectErrorWithDescriptionIfActualArrayIsNull(new CodeToTest() {
       public void run() {
         new FloatArrayAssert(null).as("A Test")
                                   .containsOnly(floatArray(7));

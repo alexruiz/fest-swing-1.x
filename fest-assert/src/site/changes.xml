@@ -9,6 +9,9 @@
       <action dev="wanghy" type="fix" issue="FEST-261" due-to="Ed Bras">
         Class BasicDescription is no longer final.
       </action>
+      <action dev="wanghy" type="fix" issue="FEST-326">
+        Improved error messages related to unexpected null objects.
+      </action>
     </release>
     <release version="1.2" date="2009-11-02" description="Subsequent release">
       <action dev="tedyoung" type="fix" issue="FEST-147">

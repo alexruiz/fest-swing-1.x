@@ -30,52 +30,52 @@ import org.junit.ComparisonFailure;
  */
 public final class CommonFailures {
 
-  public static void expectErrorIfObjectIsNull(CodeToTest codeToTest) {
-    expectAssertionError("expecting a non-null object, but it was null").on(codeToTest);
+  public static void expectErrorIfActualIsNull(CodeToTest codeToTest) {
+    expectAssertionError("expecting actual value not be null").on(codeToTest);
   }
 
-  public static void expectErrorWithDescriptionIfObjectIsNull(CodeToTest codeToTest) {
-    expectAssertionError("[A Test] expecting a non-null object, but it was null").on(codeToTest);
+  public static void expectErrorWithDescriptionIfActualIsNull(CodeToTest codeToTest) {
+    expectAssertionError("[A Test] expecting actual value not be null").on(codeToTest);
   }
 
   public static void expectErrorIfTypeIsNull(CodeToTest codeToTest) {
-    expectNullPointerException("expecting a non-null type, but it was null").on(codeToTest);
+    expectNullPointerException("expected type should not be null").on(codeToTest);
   }
 
   public static void expectErrorWithDescriptionIfTypeIsNull(CodeToTest codeToTest) {
-    expectNullPointerException("[A Test] expecting a non-null type, but it was null").on(codeToTest);
+    expectNullPointerException("[A Test] expected type should not be null").on(codeToTest);
   }
 
-  public static void expectErrorIfArrayIsNull(CodeToTest codeToTest) {
-    expectAssertionError("expecting a non-null array, but it was null").on(codeToTest);
+  public static void expectErrorIfActualArrayIsNull(CodeToTest codeToTest) {
+    expectAssertionError("expecting actual array not to be null").on(codeToTest);
   }
 
-  public static void expectErrorWithDescriptionIfArrayIsNull(CodeToTest codeToTest) {
-    expectAssertionError("[A Test] expecting a non-null array, but it was null").on(codeToTest);
+  public static void expectErrorWithDescriptionIfActualArrayIsNull(CodeToTest codeToTest) {
+    expectAssertionError("[A Test] expecting actual array not to be null").on(codeToTest);
   }
 
-  public static void expectErrorIfCollectionIsNull(CodeToTest codeToTest) {
-    expectAssertionError("expecting a non-null collection, but it was null").on(codeToTest);
+  public static void expectErrorIfActualCollectionIsNull(CodeToTest codeToTest) {
+    expectAssertionError("expecting actual collection not to be null").on(codeToTest);
   }
 
-  public static void expectErrorWithDescriptionIfCollectionIsNull(CodeToTest codeToTest) {
-    expectAssertionError("[A Test] expecting a non-null collection, but it was null").on(codeToTest);
+  public static void expectErrorWithDescriptionIfActualCollectionIsNull(CodeToTest codeToTest) {
+    expectAssertionError("[A Test] expecting actual collection not to be null").on(codeToTest);
   }
 
-  public static void expectErrorIfListIsNull(CodeToTest codeToTest) {
-    expectAssertionError("expecting a non-null list, but it was null").on(codeToTest);
+  public static void expectErrorIfActualListIsNull(CodeToTest codeToTest) {
+    expectAssertionError("expecting actual list not to be null").on(codeToTest);
   }
 
-  public static void expectErrorWithDescriptionIfListIsNull(CodeToTest codeToTest) {
-    expectAssertionError("[A Test] expecting a non-null list, but it was null").on(codeToTest);
+  public static void expectErrorWithDescriptionIfActualListIsNull(CodeToTest codeToTest) {
+    expectAssertionError("[A Test] expecting actual list not to be null").on(codeToTest);
   }
 
-  public static void expectErrorIfMapIsNull(CodeToTest codeToTest) {
-    expectAssertionError("expecting a non-null map, but it was null").on(codeToTest);
+  public static void expectErrorIfActualMapIsNull(CodeToTest codeToTest) {
+    expectAssertionError("expecting actual map not to be null").on(codeToTest);
   }
 
-  public static void expectErrorWithDescriptionIfMapIsNull(CodeToTest codeToTest) {
-    expectAssertionError("[A Test] expecting a non-null map, but it was null").on(codeToTest);
+  public static void expectErrorWithDescriptionIfActualMapIsNull(CodeToTest codeToTest) {
+    expectAssertionError("[A Test] expecting actual map not to be null").on(codeToTest);
   }
 
   public static Message expectComparisonFailure(String message) {

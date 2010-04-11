@@ -50,7 +50,7 @@ public class ByteArrayAssert_excludes_Test implements GroupAssert_excludes_TestC
 
   @Test
   public void should_fail_if_actual_is_null() {
-    expectErrorIfArrayIsNull(new CodeToTest() {
+    expectErrorIfActualArrayIsNull(new CodeToTest() {
       public void run() {
         new ByteArrayAssert(null).excludes(asByte(8), asByte(6));
       }
@@ -59,7 +59,7 @@ public class ByteArrayAssert_excludes_Test implements GroupAssert_excludes_TestC
 
   @Test
   public void should_fail_and_display_description_of_assertion_if_actual_is_null() {
-    expectErrorWithDescriptionIfArrayIsNull(new CodeToTest() {
+    expectErrorWithDescriptionIfActualArrayIsNull(new CodeToTest() {
       public void run() {
         new ByteArrayAssert(null).as("A Test")
                                  .excludes(asByte(8), asByte(6));

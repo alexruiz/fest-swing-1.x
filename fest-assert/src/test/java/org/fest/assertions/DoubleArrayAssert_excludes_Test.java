@@ -49,7 +49,7 @@ public class DoubleArrayAssert_excludes_Test implements GroupAssert_excludes_Tes
 
   @Test
   public void should_fail_if_actual_is_null() {
-    expectErrorIfArrayIsNull(new CodeToTest() {
+    expectErrorIfActualArrayIsNull(new CodeToTest() {
       public void run() {
         new DoubleArrayAssert(null).excludes(55.03, 4345.91);
       }
@@ -58,7 +58,7 @@ public class DoubleArrayAssert_excludes_Test implements GroupAssert_excludes_Tes
 
   @Test
   public void should_fail_and_display_description_of_assertion_if_actual_is_null() {
-    expectErrorWithDescriptionIfArrayIsNull(new CodeToTest() {
+    expectErrorWithDescriptionIfActualArrayIsNull(new CodeToTest() {
       public void run() {
         new DoubleArrayAssert(null).as("A Test")
                                    .excludes(55.03, 4345.91);

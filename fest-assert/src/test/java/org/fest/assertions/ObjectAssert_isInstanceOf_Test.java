@@ -34,7 +34,7 @@ public class ObjectAssert_isInstanceOf_Test implements Assert_isInstanceOf_TestC
 
   @Test
   public void should_fail_if_actual_is_null() {
-    expectErrorIfObjectIsNull(new CodeToTest() {
+    expectErrorIfActualIsNull(new CodeToTest() {
       public void run() {
         new ObjectAssert(null).isInstanceOf(String.class);
       }
@@ -43,7 +43,7 @@ public class ObjectAssert_isInstanceOf_Test implements Assert_isInstanceOf_TestC
 
   @Test
   public void should_fail_and_display_description_of_assertion_if_actual_is_null() {
-    expectErrorWithDescriptionIfObjectIsNull(new CodeToTest() {
+    expectErrorWithDescriptionIfActualIsNull(new CodeToTest() {
       public void run() {
         new ObjectAssert(null).as("A Test")
                               .isInstanceOf(String.class);

@@ -67,7 +67,7 @@ public class ListAssert_containsExactly_Test {
 
   @Test
   public void should_fail_if_actual_is_null() {
-    expectErrorIfListIsNull(new CodeToTest() {
+    expectErrorIfActualListIsNull(new CodeToTest() {
       public void run() {
         new ListAssert(null).containsExactly("Anakin");
       }
@@ -76,7 +76,7 @@ public class ListAssert_containsExactly_Test {
 
   @Test
   public void should_fail_and_display_description_of_assertion_if_actual_is_null() {
-    expectErrorWithDescriptionIfListIsNull(new CodeToTest() {
+    expectErrorWithDescriptionIfActualListIsNull(new CodeToTest() {
       public void run() {
         new ListAssert(null).as("A Test")
                             .containsExactly("Anakin");

@@ -15,8 +15,8 @@
 package org.fest.assertions;
 
 import static java.util.Collections.emptyList;
-import static org.fest.assertions.CommonFailures.expectErrorIfListIsNull;
-import static org.fest.assertions.CommonFailures.expectErrorWithDescriptionIfListIsNull;
+import static org.fest.assertions.CommonFailures.expectErrorIfActualListIsNull;
+import static org.fest.assertions.CommonFailures.expectErrorWithDescriptionIfActualListIsNull;
 import static org.fest.test.ExpectedFailure.expectAssertionError;
 
 import org.fest.test.CodeToTest;
@@ -36,7 +36,7 @@ public class ListAssert_isNotNull_Test implements GenericAssert_isNotNull_TestCa
 
   @Test
   public void should_fail_if_actual_is_null() {
-    expectErrorIfListIsNull(new CodeToTest() {
+    expectErrorIfActualListIsNull(new CodeToTest() {
       public void run() {
         new ListAssert(null).isNotNull();
       }
@@ -45,7 +45,7 @@ public class ListAssert_isNotNull_Test implements GenericAssert_isNotNull_TestCa
 
   @Test
   public void should_fail_and_display_description_of_assertion_if_actual_is_null() {
-    expectErrorWithDescriptionIfListIsNull(new CodeToTest() {
+    expectErrorWithDescriptionIfActualListIsNull(new CodeToTest() {
       public void run() {
         new ListAssert(null).as("A Test")
                             .isNotNull();

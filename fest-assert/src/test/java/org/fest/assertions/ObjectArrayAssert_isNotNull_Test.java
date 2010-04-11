@@ -14,8 +14,8 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.CommonFailures.expectErrorIfArrayIsNull;
-import static org.fest.assertions.CommonFailures.expectErrorWithDescriptionIfArrayIsNull;
+import static org.fest.assertions.CommonFailures.expectErrorIfActualArrayIsNull;
+import static org.fest.assertions.CommonFailures.expectErrorWithDescriptionIfActualArrayIsNull;
 import static org.fest.assertions.EmptyArrays.emptyObjectArray;
 import static org.fest.test.ExpectedFailure.expectAssertionError;
 
@@ -37,7 +37,7 @@ public class ObjectArrayAssert_isNotNull_Test implements GenericAssert_isNotNull
 
   @Test
   public void should_fail_if_actual_is_null() {
-    expectErrorIfArrayIsNull(new CodeToTest() {
+    expectErrorIfActualArrayIsNull(new CodeToTest() {
       public void run() {
         Object[] actual = null;
         new ObjectArrayAssert(actual).isNotNull();
@@ -47,7 +47,7 @@ public class ObjectArrayAssert_isNotNull_Test implements GenericAssert_isNotNull
 
   @Test
   public void should_fail_and_display_description_of_assertion_if_actual_is_null() {
-    expectErrorWithDescriptionIfArrayIsNull(new CodeToTest() {
+    expectErrorWithDescriptionIfActualArrayIsNull(new CodeToTest() {
       public void run() {
         Object[] actual = null;
         new ObjectArrayAssert(actual).as("A Test")

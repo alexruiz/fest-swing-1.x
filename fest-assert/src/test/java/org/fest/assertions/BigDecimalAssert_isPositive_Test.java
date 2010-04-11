@@ -17,8 +17,8 @@ package org.fest.assertions;
 import static java.math.BigDecimal.ZERO;
 import static org.fest.assertions.BigDecimals.eight;
 import static org.fest.assertions.BigDecimals.negativeEight;
-import static org.fest.assertions.CommonFailures.expectErrorIfObjectIsNull;
-import static org.fest.assertions.CommonFailures.expectErrorWithDescriptionIfObjectIsNull;
+import static org.fest.assertions.CommonFailures.expectErrorIfActualIsNull;
+import static org.fest.assertions.CommonFailures.expectErrorWithDescriptionIfActualIsNull;
 import static org.fest.test.ExpectedFailure.expectAssertionError;
 
 import org.fest.test.CodeToTest;
@@ -41,7 +41,7 @@ public class BigDecimalAssert_isPositive_Test implements NumberAssert_isPositive
 
   @Test
   public void should_fail_if_actual_is_null() {
-    expectErrorIfObjectIsNull(new CodeToTest() {
+    expectErrorIfActualIsNull(new CodeToTest() {
       public void run() {
         new BigDecimalAssert(null).isPositive();
       }
@@ -50,7 +50,7 @@ public class BigDecimalAssert_isPositive_Test implements NumberAssert_isPositive
 
   @Test
   public void should_fail_and_display_description_of_assertion_if_actual_is_null() {
-    expectErrorWithDescriptionIfObjectIsNull(new CodeToTest() {
+    expectErrorWithDescriptionIfActualIsNull(new CodeToTest() {
       public void run() {
         new BigDecimalAssert(null).as("A Test")
                                   .isPositive();

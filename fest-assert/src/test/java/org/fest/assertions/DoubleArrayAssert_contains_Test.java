@@ -49,7 +49,7 @@ public class DoubleArrayAssert_contains_Test implements GroupAssert_contains_Tes
 
   @Test
   public void should_fail_if_actual_is_null() {
-    expectErrorIfArrayIsNull(new CodeToTest() {
+    expectErrorIfActualArrayIsNull(new CodeToTest() {
       public void run() {
         new DoubleArrayAssert(null).contains(55.03, 4345.91);
       }
@@ -58,7 +58,7 @@ public class DoubleArrayAssert_contains_Test implements GroupAssert_contains_Tes
 
   @Test
   public void should_fail_and_display_description_of_assertion_if_actual_is_null() {
-    expectErrorWithDescriptionIfArrayIsNull(new CodeToTest() {
+    expectErrorWithDescriptionIfActualArrayIsNull(new CodeToTest() {
       public void run() {
         new DoubleArrayAssert(null).as("A Test")
                                    .contains(55.03, 4345.91);

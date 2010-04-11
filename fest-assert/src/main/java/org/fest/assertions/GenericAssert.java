@@ -285,7 +285,7 @@ public abstract class GenericAssert<T> extends Assert {
    * @throws AssertionError if the actual value is <code>null</code>.
    */
   protected final void assertNotNull() {
-    failIfNull(customErrorMessage(), rawDescription(), actual);
+    failIfActualIsNull(customErrorMessage(), rawDescription(), actual);
   }
 
   /**

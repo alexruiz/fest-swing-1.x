@@ -409,7 +409,7 @@ public class ListAssert extends GroupAssert<List<?>> {
   public ListAssert isNotNull() {
     if (actual != null) return this;
     failIfCustomMessageIsSet();
-    throw failure("expecting a non-null list, but it was null");
+    throw failure("expecting actual list not to be null");
   }
 
   /**

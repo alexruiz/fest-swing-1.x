@@ -44,7 +44,7 @@ public class ObjectArrayAssert_hasAllElementsOfType_Test {
 
   @Test
   public void should_fail_if_actual_is_null() {
-    expectErrorIfArrayIsNull(new CodeToTest() {
+    expectErrorIfActualArrayIsNull(new CodeToTest() {
       public void run() {
         Object[] actual = null;
         new ObjectArrayAssert(actual).hasAllElementsOfType(Integer.class);
@@ -54,7 +54,7 @@ public class ObjectArrayAssert_hasAllElementsOfType_Test {
 
   @Test
   public void should_fail_and_display_description_of_assertion_if_actual_is_null() {
-    expectErrorWithDescriptionIfArrayIsNull(new CodeToTest() {
+    expectErrorWithDescriptionIfActualArrayIsNull(new CodeToTest() {
       public void run() {
         Object[] actual = null;
         new ObjectArrayAssert(actual).as("A Test")

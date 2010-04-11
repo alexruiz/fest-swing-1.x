@@ -50,7 +50,7 @@ public class LongArrayAssert_containsOnly_Test implements GroupAssert_containsOn
 
   @Test
   public void should_fail_if_actual_is_null() {
-    expectErrorIfArrayIsNull(new CodeToTest() {
+    expectErrorIfActualArrayIsNull(new CodeToTest() {
       public void run() {
         new LongArrayAssert(null).containsOnly(longArray(10, 2));
       }
@@ -59,7 +59,7 @@ public class LongArrayAssert_containsOnly_Test implements GroupAssert_containsOn
 
   @Test
   public void should_fail_and_display_description_of_assertion_if_actual_is_null() {
-    expectErrorWithDescriptionIfArrayIsNull(new CodeToTest() {
+    expectErrorWithDescriptionIfActualArrayIsNull(new CodeToTest() {
       public void run() {
         new LongArrayAssert(null).as("A Test")
                                  .containsOnly(longArray(10, 2));

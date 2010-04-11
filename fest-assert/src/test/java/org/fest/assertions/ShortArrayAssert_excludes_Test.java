@@ -50,7 +50,7 @@ public class ShortArrayAssert_excludes_Test implements GroupAssert_excludes_Test
 
   @Test
   public void should_fail_if_actual_is_null() {
-    expectErrorIfArrayIsNull(new CodeToTest() {
+    expectErrorIfActualArrayIsNull(new CodeToTest() {
       public void run() {
         new ShortArrayAssert(null).excludes(asShort(8), asShort(6));
       }
@@ -59,7 +59,7 @@ public class ShortArrayAssert_excludes_Test implements GroupAssert_excludes_Test
 
   @Test
   public void should_fail_and_display_description_of_assertion_if_actual_is_null() {
-    expectErrorWithDescriptionIfArrayIsNull(new CodeToTest() {
+    expectErrorWithDescriptionIfActualArrayIsNull(new CodeToTest() {
       public void run() {
         new ShortArrayAssert(null).as("A Test")
                                   .excludes(asShort(8), asShort(6));

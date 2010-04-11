@@ -79,6 +79,21 @@ public final class Fail {
   }
 
   /**
+   * Throws an <code>{@link AssertionError}</code> if the actual value is <code>null</code>.
+   * @param customErrorMessage any custom error message. This message will replace the default one only if it (the
+   * custom message) is not <code>null</code>.
+   * @param description the description of the actual value.
+   * @param actual the actual value.
+   * @throws AssertionError if the actual value is <code>null</code>.
+   * @since 1.3
+   */
+  protected static void failIfActualIsNull(String customErrorMessage, Description description, Object actual) {
+    if (actual != null) return;
+    failWithMessage(customErrorMessage);
+    fail(description, array("expecting actual value not be null"));
+  }
+
+  /**
    * Throws an <code>{@link AssertionError}</code> if the given object is <code>null</code>.
    * @param customErrorMessage any custom error message. This message will replace the default one only if it (the
    * custom message) is not <code>null</code>.

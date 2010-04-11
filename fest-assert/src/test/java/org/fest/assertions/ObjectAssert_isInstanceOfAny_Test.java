@@ -92,7 +92,7 @@ public class ObjectAssert_isInstanceOfAny_Test {
 
   @Test
   public void should_fail_if_actual_is_null() {
-    expectErrorIfObjectIsNull(new CodeToTest() {
+    expectErrorIfActualIsNull(new CodeToTest() {
       public void run() {
         new ObjectAssert(null).isInstanceOfAny(String.class, Integer.class);
       }
@@ -101,7 +101,7 @@ public class ObjectAssert_isInstanceOfAny_Test {
 
   @Test
   public void should_fail_and_display_description_of_assertion_if_actual_is_null() {
-    expectErrorWithDescriptionIfObjectIsNull(new CodeToTest() {
+    expectErrorWithDescriptionIfActualIsNull(new CodeToTest() {
       public void run() {
         new ObjectAssert(null).as("A Test")
                               .isInstanceOfAny(String.class, Integer.class);

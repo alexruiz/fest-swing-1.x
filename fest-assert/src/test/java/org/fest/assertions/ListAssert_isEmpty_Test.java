@@ -16,8 +16,8 @@
 package org.fest.assertions;
 
 import static java.util.Collections.emptyList;
-import static org.fest.assertions.CommonFailures.expectErrorIfListIsNull;
-import static org.fest.assertions.CommonFailures.expectErrorWithDescriptionIfListIsNull;
+import static org.fest.assertions.CommonFailures.expectErrorIfActualListIsNull;
+import static org.fest.assertions.CommonFailures.expectErrorWithDescriptionIfActualListIsNull;
 import static org.fest.test.ExpectedFailure.expectAssertionError;
 import static org.fest.util.Collections.list;
 
@@ -48,7 +48,7 @@ public class ListAssert_isEmpty_Test implements GroupAssert_isEmpty_TestCase {
 
   @Test
   public void should_fail_if_actual_is_null() {
-    expectErrorIfListIsNull(new CodeToTest() {
+    expectErrorIfActualListIsNull(new CodeToTest() {
       public void run() {
         new ListAssert(null).isEmpty();
       }
@@ -57,7 +57,7 @@ public class ListAssert_isEmpty_Test implements GroupAssert_isEmpty_TestCase {
 
   @Test
   public void should_fail_and_display_description_of_assertion_if_actual_is_null() {
-    expectErrorWithDescriptionIfListIsNull(new CodeToTest() {
+    expectErrorWithDescriptionIfActualListIsNull(new CodeToTest() {
       public void run() {
         new ListAssert(null).as("A Test")
                             .isEmpty();

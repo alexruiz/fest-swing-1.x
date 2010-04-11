@@ -52,7 +52,7 @@ final class ErrorMessages {
   }
 
   static String unexpectedNullType(Description description) {
-    return createMessageFrom(description, array("expecting a non-null type, but it was null"));
+    return createMessageFrom(description, array("expected type should not be null"));
   }
 
   private static String assertionFailed(Object actual, String reason, Object expected) {

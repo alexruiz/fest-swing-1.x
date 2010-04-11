@@ -235,7 +235,7 @@ public class CollectionAssert extends GroupAssert<Collection<?>> {
   public CollectionAssert isNotNull() {
     if (actual != null) return this;
     failIfCustomMessageIsSet();
-    throw failure("expecting a non-null collection, but it was null");
+    throw failure("expecting actual collection not to be null");
   }
 
   /**

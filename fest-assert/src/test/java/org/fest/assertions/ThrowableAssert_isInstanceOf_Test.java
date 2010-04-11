@@ -42,7 +42,7 @@ public class ThrowableAssert_isInstanceOf_Test implements Assert_isInstanceOf_Te
 
   @Test
   public void should_fail_if_actual_is_null() {
-    expectErrorIfObjectIsNull(new CodeToTest() {
+    expectErrorIfActualIsNull(new CodeToTest() {
       public void run() {
         new ThrowableAssert(null).isInstanceOf(NullPointerException.class);
       }
@@ -51,7 +51,7 @@ public class ThrowableAssert_isInstanceOf_Test implements Assert_isInstanceOf_Te
 
   @Test
   public void should_fail_and_display_description_of_assertion_if_actual_is_null() {
-    expectErrorWithDescriptionIfObjectIsNull(new CodeToTest() {
+    expectErrorWithDescriptionIfActualIsNull(new CodeToTest() {
       public void run() {
         new ThrowableAssert(null).as("A Test")
                                  .isInstanceOf(NullPointerException.class);

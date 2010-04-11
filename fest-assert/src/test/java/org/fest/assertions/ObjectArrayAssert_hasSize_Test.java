@@ -15,8 +15,8 @@
 package org.fest.assertions;
 
 import static org.fest.assertions.ArrayFactory.objectArray;
-import static org.fest.assertions.CommonFailures.expectErrorIfArrayIsNull;
-import static org.fest.assertions.CommonFailures.expectErrorWithDescriptionIfArrayIsNull;
+import static org.fest.assertions.CommonFailures.expectErrorIfActualArrayIsNull;
+import static org.fest.assertions.CommonFailures.expectErrorWithDescriptionIfActualArrayIsNull;
 import static org.fest.test.ExpectedFailure.expectAssertionError;
 
 import org.fest.test.CodeToTest;
@@ -45,7 +45,7 @@ public class ObjectArrayAssert_hasSize_Test implements Assert_hasSize_TestCase {
 
   @Test
   public void should_fail_if_actual_is_null() {
-    expectErrorIfArrayIsNull(new CodeToTest() {
+    expectErrorIfActualArrayIsNull(new CodeToTest() {
       public void run() {
         Object[] actual = null;
         new ObjectArrayAssert(actual).hasSize(1);
@@ -55,7 +55,7 @@ public class ObjectArrayAssert_hasSize_Test implements Assert_hasSize_TestCase {
 
   @Test
   public void should_fail_and_display_description_of_assertion_if_actual_is_null() {
-    expectErrorWithDescriptionIfArrayIsNull(new CodeToTest() {
+    expectErrorWithDescriptionIfActualArrayIsNull(new CodeToTest() {
       public void run() {
         Object[] actual = null;
         new ObjectArrayAssert(actual).as("A Test")

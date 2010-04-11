@@ -15,8 +15,8 @@
 package org.fest.assertions;
 
 import static java.util.Collections.emptyMap;
-import static org.fest.assertions.CommonFailures.expectErrorIfMapIsNull;
-import static org.fest.assertions.CommonFailures.expectErrorWithDescriptionIfMapIsNull;
+import static org.fest.assertions.CommonFailures.expectErrorIfActualMapIsNull;
+import static org.fest.assertions.CommonFailures.expectErrorWithDescriptionIfActualMapIsNull;
 import static org.fest.assertions.MapAssert.entry;
 import static org.fest.assertions.MapFactory.map;
 import static org.fest.test.ExpectedFailure.expectAssertionError;
@@ -43,7 +43,7 @@ public class MapAssert_isNotEmpty_Test implements GroupAssert_isNotEmpty_TestCas
 
   @Test
   public void should_fail_if_actual_is_null() {
-    expectErrorIfMapIsNull(new CodeToTest() {
+    expectErrorIfActualMapIsNull(new CodeToTest() {
       public void run() {
         new MapAssert(null).isNotEmpty();
       }
@@ -52,7 +52,7 @@ public class MapAssert_isNotEmpty_Test implements GroupAssert_isNotEmpty_TestCas
 
   @Test
   public void should_fail_and_display_description_of_assertion_if_actual_is_null() {
-    expectErrorWithDescriptionIfMapIsNull(new CodeToTest() {
+    expectErrorWithDescriptionIfActualMapIsNull(new CodeToTest() {
       public void run() {
         new MapAssert(null).as("A Test")
                            .isNotEmpty();

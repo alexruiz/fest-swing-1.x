@@ -48,7 +48,7 @@ public class CharArrayAssert_contains_Test implements GroupAssert_contains_TestC
 
   @Test
   public void should_fail_if_actual_is_null() {
-    expectErrorIfArrayIsNull(new CodeToTest() {
+    expectErrorIfActualArrayIsNull(new CodeToTest() {
       public void run() {
         new CharArrayAssert(null).contains('a', 'b');
       }
@@ -57,7 +57,7 @@ public class CharArrayAssert_contains_Test implements GroupAssert_contains_TestC
 
   @Test
   public void should_fail_and_display_description_of_assertion_if_actual_is_null() {
-    expectErrorWithDescriptionIfArrayIsNull(new CodeToTest() {
+    expectErrorWithDescriptionIfActualArrayIsNull(new CodeToTest() {
       public void run() {
         new CharArrayAssert(null).as("A Test")
                                  .contains('a', 'b');

@@ -36,7 +36,7 @@ public class ImageAssert_isNotNull_Test implements GenericAssert_isNotNull_TestC
 
   @Test
   public void should_fail_if_actual_is_null() {
-    expectErrorIfObjectIsNull(new CodeToTest() {
+    expectErrorIfActualIsNull(new CodeToTest() {
       public void run() {
         new ImageAssert(null).isNotNull();
       }
@@ -45,7 +45,7 @@ public class ImageAssert_isNotNull_Test implements GenericAssert_isNotNull_TestC
 
   @Test
   public void should_fail_and_display_description_of_assertion_if_actual_is_null() {
-    expectErrorWithDescriptionIfObjectIsNull(new CodeToTest() {
+    expectErrorWithDescriptionIfActualIsNull(new CodeToTest() {
       public void run() {
         new ImageAssert(null).as("A Test").isNotNull();
       }

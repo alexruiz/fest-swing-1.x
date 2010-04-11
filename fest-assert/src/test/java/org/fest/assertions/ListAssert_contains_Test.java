@@ -50,7 +50,7 @@ public class ListAssert_contains_Test implements GroupAssert_contains_TestCase {
 
   @Test
   public void should_fail_if_actual_is_null() {
-    expectErrorIfListIsNull(new CodeToTest() {
+    expectErrorIfActualListIsNull(new CodeToTest() {
       public void run() {
         new ListAssert(null).contains("Leia", "Luke");
       }
@@ -59,7 +59,7 @@ public class ListAssert_contains_Test implements GroupAssert_contains_TestCase {
 
   @Test
   public void should_fail_and_display_description_of_assertion_if_actual_is_null() {
-    expectErrorWithDescriptionIfListIsNull(new CodeToTest() {
+    expectErrorWithDescriptionIfActualListIsNull(new CodeToTest() {
       public void run() {
         new ListAssert(null).as("A Test")
                             .contains("Leia", "Luke");

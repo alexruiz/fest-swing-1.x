@@ -92,7 +92,7 @@ public class ListAssert_contains_withIndex_Test {
 
   @Test
   public void should_fail_if_actual_is_null() {
-    expectErrorIfListIsNull(new CodeToTest() {
+    expectErrorIfActualListIsNull(new CodeToTest() {
       public void run() {
         new ListAssert(null).contains("Anakin", atIndex(0));
       }
@@ -101,7 +101,7 @@ public class ListAssert_contains_withIndex_Test {
 
   @Test
   public void should_fail_and_display_description_of_assertion_if_actual_is_null() {
-    expectErrorWithDescriptionIfListIsNull(new CodeToTest() {
+    expectErrorWithDescriptionIfActualListIsNull(new CodeToTest() {
       public void run() {
         new ListAssert(null).as("A Test")
                             .contains("Anakin", atIndex(0));

@@ -52,7 +52,7 @@ public class ListAssert_containsOnly_Test implements GroupAssert_containsOnly_Te
 
   @Test
   public void should_fail_if_actual_is_null() {
-    expectErrorIfListIsNull(new CodeToTest() {
+    expectErrorIfActualListIsNull(new CodeToTest() {
       public void run() {
         new ListAssert(null).containsOnly("Gandalf", "Frodo", "Sam");
       }
@@ -61,7 +61,7 @@ public class ListAssert_containsOnly_Test implements GroupAssert_containsOnly_Te
 
   @Test
   public void should_fail_and_display_description_of_assertion_if_actual_is_null() {
-    expectErrorWithDescriptionIfListIsNull(new CodeToTest() {
+    expectErrorWithDescriptionIfActualListIsNull(new CodeToTest() {
       public void run() {
         new ListAssert(null).as("A Test")
                             .containsOnly("Gandalf", "Frodo", "Sam");

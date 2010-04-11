@@ -138,7 +138,7 @@ public class ThrowableAssert_isExactlyInstanceOf_Test {
   
   @Test
   public void should_fail_if_actual_is_null() {
-    expectErrorIfObjectIsNull(new CodeToTest() {
+    expectErrorIfActualIsNull(new CodeToTest() {
       public void run() {
         new ThrowableAssert(null).isExactlyInstanceOf(NullPointerException.class);
       }
@@ -147,7 +147,7 @@ public class ThrowableAssert_isExactlyInstanceOf_Test {
 
   @Test
   public void should_fail_and_display_description_of_assertion_if_actual_is_null() {
-    expectErrorWithDescriptionIfObjectIsNull(new CodeToTest() {
+    expectErrorWithDescriptionIfActualIsNull(new CodeToTest() {
       public void run() {
         new ThrowableAssert(null).as("A Test")
                                  .isExactlyInstanceOf(NullPointerException.class);

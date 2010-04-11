@@ -15,8 +15,8 @@
 package org.fest.assertions;
 
 import static org.fest.assertions.ArrayFactory.byteArray;
-import static org.fest.assertions.CommonFailures.expectErrorIfArrayIsNull;
-import static org.fest.assertions.CommonFailures.expectErrorWithDescriptionIfArrayIsNull;
+import static org.fest.assertions.CommonFailures.expectErrorIfActualArrayIsNull;
+import static org.fest.assertions.CommonFailures.expectErrorWithDescriptionIfActualArrayIsNull;
 import static org.fest.assertions.EmptyArrays.emptyByteArray;
 import static org.fest.test.ExpectedFailure.expectAssertionError;
 
@@ -46,7 +46,7 @@ public class ByteArrayAssert_isEmpty_Test implements GroupAssert_isEmpty_TestCas
 
   @Test
   public void should_fail_if_actual_is_null() {
-    expectErrorIfArrayIsNull(new CodeToTest() {
+    expectErrorIfActualArrayIsNull(new CodeToTest() {
       public void run() {
         new ByteArrayAssert(null).isEmpty();
       }
@@ -55,7 +55,7 @@ public class ByteArrayAssert_isEmpty_Test implements GroupAssert_isEmpty_TestCas
 
   @Test
   public void should_fail_and_display_description_of_assertion_if_actual_is_null() {
-    expectErrorWithDescriptionIfArrayIsNull(new CodeToTest() {
+    expectErrorWithDescriptionIfActualArrayIsNull(new CodeToTest() {
       public void run() {
         new ByteArrayAssert(null).as("A Test")
                                  .isEmpty();
