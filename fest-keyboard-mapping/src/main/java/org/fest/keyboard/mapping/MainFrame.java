@@ -91,7 +91,7 @@ public class MainFrame extends javax.swing.JFrame {
       }
     });
 
-    mappingPanel.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.SystemColor.controlShadow));
+    mappingPanel.setBorder(new RoundedBorder());
 
     mappingTable.setModel(new BasicCharMappingTableModel());
     mappingTable.setName("mappingTable"); // NOI18N
@@ -112,18 +112,18 @@ public class MainFrame extends javax.swing.JFrame {
     mappingPanel.setLayout(mappingPanelLayout);
     mappingPanelLayout.setHorizontalGroup(
       mappingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-      .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mappingPanelLayout.createSequentialGroup()
+      .addGroup(mappingPanelLayout.createSequentialGroup()
         .addContainerGap()
-        .addGroup(mappingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-          .addComponent(tableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 302, Short.MAX_VALUE)
-          .addComponent(deleteMappingButton))
+        .addGroup(mappingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+          .addComponent(deleteMappingButton, javax.swing.GroupLayout.Alignment.TRAILING)
+          .addComponent(tableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 304, Short.MAX_VALUE))
         .addContainerGap())
     );
     mappingPanelLayout.setVerticalGroup(
       mappingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
       .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mappingPanelLayout.createSequentialGroup()
         .addContainerGap()
-        .addComponent(tableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
+        .addComponent(tableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
         .addComponent(deleteMappingButton)
         .addContainerGap())
@@ -183,6 +183,7 @@ public class MainFrame extends javax.swing.JFrame {
     deleteSelectedRows();
     selectAndScrollToLastRow();
     updateUI();
+    charTextField.setText("");
   }//GEN-LAST:event_deleteMapping
 
   private void saveAsMappingFile(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveAsMappingFile
