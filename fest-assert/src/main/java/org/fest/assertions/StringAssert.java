@@ -1,16 +1,15 @@
 /*
  * Created on Dec 26, 2006
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ * 
  * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
- *
+ * 
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+ * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations under the License.
+ * 
  * Copyright @2006-2009 the original author or authors.
  */
 package org.fest.assertions;
@@ -38,23 +37,27 @@ public class StringAssert extends GroupAssert<String> {
   }
 
   /** {@inheritDoc} */
+  @Override
   public StringAssert as(String description) {
     description(description);
     return this;
   }
 
   /** {@inheritDoc} */
+  @Override
   public StringAssert describedAs(String description) {
     return as(description);
   }
 
   /** {@inheritDoc} */
+  @Override
   public StringAssert as(Description description) {
     description(description);
     return this;
   }
 
   /** {@inheritDoc} */
+  @Override
   public StringAssert describedAs(Description description) {
     return as(description);
   }
@@ -67,6 +70,7 @@ public class StringAssert extends GroupAssert<String> {
    * @throws AssertionError if the actual <code>String</code> does not satisfy the given condition.
    * @see #is(Condition)
    */
+  @Override
   public StringAssert satisfies(Condition<String> condition) {
     assertSatisfies(condition);
     return this;
@@ -80,6 +84,7 @@ public class StringAssert extends GroupAssert<String> {
    * @throws AssertionError if the actual <code>String</code> satisfies the given condition.
    * @see #isNot(Condition)
    */
+  @Override
   public StringAssert doesNotSatisfy(Condition<String> condition) {
     assertDoesNotSatisfy(condition);
     return this;
@@ -93,6 +98,7 @@ public class StringAssert extends GroupAssert<String> {
    * @throws AssertionError if the actual <code>String</code> does not satisfy the given condition.
    * @since 1.2
    */
+  @Override
   public StringAssert is(Condition<String> condition) {
     assertIs(condition);
     return this;
@@ -106,6 +112,7 @@ public class StringAssert extends GroupAssert<String> {
    * @throws AssertionError if the actual <code>String</code> satisfies the given condition.
    * @since 1.2
    */
+  @Override
   public StringAssert isNot(Condition<String> condition) {
     assertIsNot(condition);
     return this;
@@ -116,6 +123,7 @@ public class StringAssert extends GroupAssert<String> {
    * @throws AssertionError if the actual <code>String</code> is <code>null</code>.
    * @throws AssertionError if the actual <code>String</code> is not empty.
    */
+  @Override
   public void isEmpty() {
     isNotNull();
     if (Strings.isEmpty(actual)) return;
@@ -127,6 +135,7 @@ public class StringAssert extends GroupAssert<String> {
    * Verifies that the actual <code>String</code> is <code>null</code> or empty.
    * @throws AssertionError if the actual <code>String</code> is not <code>null</code> or not empty.
    */
+  @Override
   public final void isNullOrEmpty() {
     if (Strings.isEmpty(actual)) return;
     failIfCustomMessageIsSet();
@@ -139,6 +148,7 @@ public class StringAssert extends GroupAssert<String> {
    * @throws AssertionError if the actual <code>String</code> is <code>null</code>.
    * @throws AssertionError if the actual <code>String</code> is <code>null</code> or empty.
    */
+  @Override
   public StringAssert isNotEmpty() {
     isNotNull();
     if (!Strings.isEmpty(actual)) return this;
@@ -152,9 +162,24 @@ public class StringAssert extends GroupAssert<String> {
    * @return this assertion object.
    * @throws AssertionError if the actual <code>String</code> is not equal to the given one.
    */
+  @Override
   public StringAssert isEqualTo(String expected) {
     assertEqualTo(expected);
     return this;
+  }
+
+  /**
+   * Verifies that the actual <code>String</code> is equal to the given one ignoring case.
+   * @param expected the given <code>String</code> to compare the actual <code>String</code> to.
+   * @return this assertion object.
+   * @throws AssertionError if the actual <code>String</code> is not equal to the given one ignoring case.
+   */
+  public StringAssert isEqualToIgnoringCase(String expected) {
+    if (actual == null && expected == null) return this;
+    isNotNull();
+    if (actual.equalsIgnoreCase(expected)) return this;
+    failIfCustomMessageIsSet();
+    throw failure(concat(actual(), " should be equal to :", inBrackets(expected), " ignoring case"));
   }
 
   /**
@@ -163,6 +188,7 @@ public class StringAssert extends GroupAssert<String> {
    * @return this assertion object.
    * @throws AssertionError if the actual <code>String</code> is equal to the given one.
    */
+  @Override
   public StringAssert isNotEqualTo(String other) {
     assertNotEqualTo(other);
     return this;
@@ -173,6 +199,7 @@ public class StringAssert extends GroupAssert<String> {
    * @return this assertion object.
    * @throws AssertionError if the actual <code>String</code> is <code>null</code>.
    */
+  @Override
   public StringAssert isNotNull() {
     assertNotNull();
     return this;
@@ -184,6 +211,7 @@ public class StringAssert extends GroupAssert<String> {
    * @return this assertion object.
    * @throws AssertionError if the actual <code>String</code> is the same as the given one.
    */
+  @Override
   public StringAssert isNotSameAs(String other) {
     assertNotSameAs(other);
     return this;
@@ -195,6 +223,7 @@ public class StringAssert extends GroupAssert<String> {
    * @return this assertion object.
    * @throws AssertionError if the actual <code>String</code> is not the same as the given one.
    */
+  @Override
   public StringAssert isSameAs(String expected) {
     assertSameAs(expected);
     return this;
@@ -204,20 +233,22 @@ public class StringAssert extends GroupAssert<String> {
    * Verifies that the number of characters in the actual <code>String</code> is equal to the given one.
    * @param expected the expected number of characters in the actual <code>String</code>.
    * @return this assertion object.
-   * @throws AssertionError if the number of characters of the actual <code>String</code> is not equal to the given
-   * one.
+   * @throws AssertionError if the number of characters of the actual <code>String</code> is not equal to the given one.
    */
+  @Override
   public StringAssert hasSize(int expected) {
     int actualSize = actualGroupSize();
     if (actualSize == expected) return this;
     failIfCustomMessageIsSet();
-    throw failure(concat("expected size:", inBrackets(expected)," but was:", inBrackets(actualSize), " for String:", actual()));
+    throw failure(concat("expected size:", inBrackets(expected), " but was:", inBrackets(actualSize), " for String:",
+        actual()));
   }
 
   /**
    * Returns the number of elements in the actual <code>String</code>.
    * @return the number of elements in the actual <code>String</code>.
    */
+  @Override
   protected int actualGroupSize() {
     isNotNull();
     return actual.length();
@@ -310,6 +341,7 @@ public class StringAssert extends GroupAssert<String> {
   }
 
   /** {@inheritDoc} */
+  @Override
   public StringAssert overridingErrorMessage(String message) {
     replaceDefaultErrorMessagesWith(message);
     return this;
