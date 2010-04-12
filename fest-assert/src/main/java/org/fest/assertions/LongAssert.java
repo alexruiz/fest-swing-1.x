@@ -27,13 +27,21 @@ public class LongAssert extends PrimitiveAssert implements NumberAssert {
 
   private static final long ZERO = 0L;
 
-  private final long actual;
+  private final Long actual;
 
   /**
-   * Creates a new </code>{@link LongAssert}</code>.
-   * @param actual the target to verify.
+   * Creates a new <code>{@link LongAssert}</code>.
+   * @param actual the actual value to verify.
    */
   protected LongAssert(long actual) {
+    this.actual = actual;
+  }
+
+  /**
+   * Creates a new <code>{@link LongAssert}</code>.
+   * @param actual the actual value to verify.
+   */
+  protected LongAssert(Long actual) {
     this.actual = actual;
   }
 

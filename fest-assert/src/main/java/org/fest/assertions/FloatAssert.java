@@ -31,13 +31,21 @@ public class FloatAssert extends PrimitiveAssert implements NumberAssert {
 
   private static final float ZERO = 0f;
 
-  private final float actual;
+  private final Float actual;
 
   /**
-   * Creates a new </code>{@link FloatAssert}</code>.
-   * @param actual the target to verify.
+   * Creates a new <code>{@link FloatAssert}</code>.
+   * @param actual the actual value to verify.
    */
   protected FloatAssert(float actual) {
+    this.actual = actual;
+  }
+
+  /**
+   * Creates a new <code>{@link FloatAssert}</code>.
+   * @param actual the actual value to verify.
+   */
+  protected FloatAssert(Float actual) {
     this.actual = actual;
   }
 

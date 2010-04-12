@@ -27,13 +27,21 @@ import static org.fest.util.Strings.concat;
  */
 public class CharAssert extends PrimitiveAssert {
 
-  private final char actual;
+  private final Character actual;
 
   /**
-   * Creates a new </code>{@link CharAssert}</code>.
-   * @param actual the target to verify.
+   * Creates a new <code>{@link CharAssert}</code>.
+   * @param actual the actual value to verify.
    */
   protected CharAssert(char actual) {
+    this.actual = actual;
+  }
+
+  /**
+   * Creates a new <code>{@link CharAssert}</code>.
+   * @param actual the actual value to verify.
+   */
+  protected CharAssert(Character actual) {
     this.actual = actual;
   }
 

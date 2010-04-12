@@ -28,13 +28,21 @@ import static org.fest.assertions.Fail.failIfEqual;
  */
 public class BooleanAssert extends PrimitiveAssert {
 
-  private final boolean actual;
+  private final Boolean actual;
 
   /**
-   * Creates a new </code>{@link BooleanAssert}</code>.
-   * @param actual the target to verify.
+   * Creates a new <code>{@link BooleanAssert}</code>.
+   * @param actual the actual value to verify.
    */
   protected BooleanAssert(boolean actual) {
+    this.actual = actual;
+  }
+
+  /**
+   * Creates a new <code>{@link BooleanAssert}</code>.
+   * @param actual the actual value to verify.
+   */
+  protected BooleanAssert(Boolean actual) {
     this.actual = actual;
   }
 

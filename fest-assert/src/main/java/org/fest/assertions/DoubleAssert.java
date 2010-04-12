@@ -18,13 +18,21 @@ public class DoubleAssert extends PrimitiveAssert implements NumberAssert {
 
   private static final double ZERO = 0.0;
 
-  private final double actual;
+  private final Double actual;
 
   /**
-   * Creates a new </code>{@link DoubleAssert}</code>.
-   * @param actual the target to verify.
+   * Creates a new <code>{@link DoubleAssert}</code>.
+   * @param actual the actual value to verify.
    */
   protected DoubleAssert(double actual) {
+    this.actual = actual;
+  }
+
+  /**
+   * Creates a new <code>{@link DoubleAssert}</code>.
+   * @param actual the actual value to verify.
+   */
+  protected DoubleAssert(Double actual) {
     this.actual = actual;
   }
 

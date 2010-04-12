@@ -27,13 +27,21 @@ public class ShortAssert extends PrimitiveAssert implements NumberAssert {
 
   private static final short ZERO = (short)0;
 
-  private final short actual;
+  private final Short actual;
 
   /**
-   * Creates a new </code>{@link ShortAssert}</code>.
-   * @param actual the target to verify.
+   * Creates a new <code>{@link ShortAssert}</code>.
+   * @param actual the actual value to verify.
    */
   protected ShortAssert(short actual) {
+    this.actual = actual;
+  }
+
+  /**
+   * Creates a new <code>{@link ShortAssert}</code>.
+   * @param actual the actual value to verify.
+   */
+  protected ShortAssert(Short actual) {
     this.actual = actual;
   }
 

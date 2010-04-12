@@ -28,13 +28,21 @@ public class IntAssert extends PrimitiveAssert implements NumberAssert {
 
   private static final int ZERO = 0;
 
-  private final int actual;
+  private final Integer actual;
 
   /**
    * Creates a new </code>{@link IntAssert}</code>.
-   * @param actual the target to verify.
+   * @param actual the actual value to verify.
    */
   protected IntAssert(int actual) {
+    this.actual = actual;
+  }
+
+  /**
+   * Creates a new <code>{@link IntAssert}</code>.
+   * @param actual the actual value to verify.
+   */
+  protected IntAssert(Integer actual) {
     this.actual = actual;
   }
 

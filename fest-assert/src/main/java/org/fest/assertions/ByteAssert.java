@@ -29,13 +29,21 @@ public class ByteAssert extends PrimitiveAssert implements NumberAssert {
 
   private static final byte ZERO = (byte)0;
 
-  private final byte actual;
+  private final Byte actual;
 
   /**
-   * Creates a new </code>{@link ByteAssert}</code>.
-   * @param actual the target to verify.
+   * Creates a new <code>{@link ByteAssert}</code>.
+   * @param actual the actual value to verify.
    */
   protected ByteAssert(byte actual) {
+    this.actual = actual;
+  }
+
+  /**
+   * Creates a new <code>{@link ByteAssert}</code>.
+   * @param actual the actual value to verify.
+   */
+  protected ByteAssert(Byte actual) {
     this.actual = actual;
   }
 
