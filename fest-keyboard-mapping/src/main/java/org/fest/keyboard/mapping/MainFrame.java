@@ -60,12 +60,11 @@ public class MainFrame extends javax.swing.JFrame {
   private void initComponents() {
 
     saveMappingFileChooser = new javax.swing.JFileChooser();
-    charLabel = new javax.swing.JLabel();
-    charTextField = new javax.swing.JTextField();
-    mappingPanel = new javax.swing.JPanel();
+    deleteMappingButton = new javax.swing.JButton();
     tableScrollPane = new javax.swing.JScrollPane();
     mappingTable = new javax.swing.JTable();
-    deleteMappingButton = new javax.swing.JButton();
+    charLabel = new javax.swing.JLabel();
+    charTextField = new javax.swing.JTextField();
     menuBar = new javax.swing.JMenuBar();
     fileMenu = new javax.swing.JMenu();
     createMappingFileMenu = new javax.swing.JMenuItem();
@@ -81,23 +80,6 @@ public class MainFrame extends javax.swing.JFrame {
     setMinimumSize(new java.awt.Dimension(260, 240));
     setName("mainFrame"); // NOI18N
 
-    charLabel.setText("Enter the character to map:");
-
-    charTextField.setDocument(new MaxLengthDocument());
-    charTextField.setName("charTextField"); // NOI18N
-    charTextField.addKeyListener(new java.awt.event.KeyAdapter() {
-      public void keyPressed(java.awt.event.KeyEvent evt) {
-        charEntered(evt);
-      }
-    });
-
-    mappingPanel.setBorder(new RoundedBorder());
-
-    mappingTable.setModel(new BasicCharMappingTableModel());
-    mappingTable.setName("mappingTable"); // NOI18N
-    mappingTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
-    tableScrollPane.setViewportView(mappingTable);
-
     deleteMappingButton.setMnemonic('D');
     deleteMappingButton.setText("Delete");
     deleteMappingButton.setEnabled(false);
@@ -108,26 +90,20 @@ public class MainFrame extends javax.swing.JFrame {
       }
     });
 
-    javax.swing.GroupLayout mappingPanelLayout = new javax.swing.GroupLayout(mappingPanel);
-    mappingPanel.setLayout(mappingPanelLayout);
-    mappingPanelLayout.setHorizontalGroup(
-      mappingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-      .addGroup(mappingPanelLayout.createSequentialGroup()
-        .addContainerGap()
-        .addGroup(mappingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-          .addComponent(deleteMappingButton, javax.swing.GroupLayout.Alignment.TRAILING)
-          .addComponent(tableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 304, Short.MAX_VALUE))
-        .addContainerGap())
-    );
-    mappingPanelLayout.setVerticalGroup(
-      mappingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-      .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mappingPanelLayout.createSequentialGroup()
-        .addContainerGap()
-        .addComponent(tableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
-        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-        .addComponent(deleteMappingButton)
-        .addContainerGap())
-    );
+    mappingTable.setModel(new BasicCharMappingTableModel());
+    mappingTable.setName("mappingTable"); // NOI18N
+    mappingTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+    tableScrollPane.setViewportView(mappingTable);
+
+    charLabel.setText("Enter the character to map:");
+
+    charTextField.setDocument(new MaxLengthDocument());
+    charTextField.setName("charTextField"); // NOI18N
+    charTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+      public void keyPressed(java.awt.event.KeyEvent evt) {
+        charEntered(evt);
+      }
+    });
 
     fileMenu.setMnemonic('F');
     fileMenu.setText("File");
@@ -150,19 +126,22 @@ public class MainFrame extends javax.swing.JFrame {
     getContentPane().setLayout(layout);
     layout.setHorizontalGroup(
       layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-      .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+      .addGroup(layout.createSequentialGroup()
         .addContainerGap()
-        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-          .addComponent(mappingPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-          .addComponent(charTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 324, Short.MAX_VALUE)
-          .addComponent(charLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 324, Short.MAX_VALUE))
+        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+          .addComponent(tableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 297, Short.MAX_VALUE)
+          .addComponent(charTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 297, Short.MAX_VALUE)
+          .addComponent(charLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 297, Short.MAX_VALUE)
+          .addComponent(deleteMappingButton, javax.swing.GroupLayout.Alignment.TRAILING))
         .addContainerGap())
     );
     layout.setVerticalGroup(
       layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
       .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
         .addContainerGap()
-        .addComponent(mappingPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        .addComponent(tableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE)
+        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+        .addComponent(deleteMappingButton)
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
         .addComponent(charLabel)
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -255,7 +234,6 @@ public class MainFrame extends javax.swing.JFrame {
   private javax.swing.JMenuItem createMappingFileMenu;
   private javax.swing.JButton deleteMappingButton;
   private javax.swing.JMenu fileMenu;
-  private javax.swing.JPanel mappingPanel;
   private javax.swing.JTable mappingTable;
   private javax.swing.JMenuBar menuBar;
   private javax.swing.JFileChooser saveMappingFileChooser;
