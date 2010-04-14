@@ -85,20 +85,13 @@ public class CharMappingFileFactory_createMappingFile_Test {
       data.add(array(character, keyCode, modifier));
     }
     
-    public String characterInRow(int row) {
-      return data.get(row)[0];
-    }
-
-    public String keyCodeInRow(int row) {
-      return data.get(row)[1];
-    }
-
-    public String modifierInRow(int row) {
-      return data.get(row)[2];
-    }
-
     public int rowCount() {
       return data.size();
+    }
+
+    public CharMapping mapping(int row) {
+      String[] rowData = data.get(row);
+      return new CharMapping(rowData[0], rowData[1], rowData[2]);
     }
   }
 }

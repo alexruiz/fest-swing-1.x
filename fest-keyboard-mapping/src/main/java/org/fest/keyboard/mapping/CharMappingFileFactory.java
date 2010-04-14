@@ -18,7 +18,6 @@ import java.io.*;
 
 import static org.fest.util.Closeables.close;
 import static org.fest.util.Flushables.flush;
-import static org.fest.util.Strings.join;
 
 /**
  * Understands creation of mapping files.
@@ -33,16 +32,10 @@ class CharMappingFileFactory {
       writer = new PrintWriter(new FileWriter(file));
       int mappingCount = model.rowCount();
       for (int row = 0; row < mappingCount; row++) 
-        writer.println(mapping(model, row));
+        writer.println(model.mapping(row));
     } finally {
       flush(writer);
       close(writer);
     }
-  }
-  
-  private String mapping(CharMappingTableModel model, int row) {
-    String character = model.characterInRow(row);
-    if (",".equals(character)) character = "COMMA";
-    return join(character, model.keyCodeInRow(row), model.modifierInRow(row)).with(", ");
   }
 }

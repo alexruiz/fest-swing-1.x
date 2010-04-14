@@ -21,11 +21,7 @@ package org.fest.keyboard.mapping;
  */
 interface CharMappingTableModel {
 
-  String characterInRow(int row);
-
-  String keyCodeInRow(int row);
-
-  String modifierInRow(int row);
-
+  CharMapping mapping(int row);
+  
   int rowCount();
 }

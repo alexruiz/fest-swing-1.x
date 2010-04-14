@@ -21,6 +21,7 @@ import static org.fest.keyboard.mapping.CharToText.charToText;
 import static org.fest.keyboard.mapping.KeyCodeToText.keyCodeToText;
 import static org.fest.keyboard.mapping.ModifierToText.modifierToText;
 import static org.fest.util.Objects.*;
+import static org.fest.util.Strings.join;
 
 /**
  * Understands mappings of characters to key codes.
@@ -41,7 +42,7 @@ class CharMapping {
     return new CharMapping(charToText(character), keyCodeToText(keyCode), modifierToText(modifiers));
   }
 
-  private CharMapping(String character, String keyCode, String modifier) {
+  CharMapping(String character, String keyCode, String modifier) {
     this.character = character;
     this.keyCode = keyCode;
     this.modifier = modifier;
@@ -64,5 +65,14 @@ class CharMapping {
     result = prime * result + hashCodeFor(keyCode);
     result = prime * result + hashCodeFor(modifier);
     return result;
+  }
+  
+  @Override public String toString() {
+    return join(formattedCharacter(), keyCode, modifier).with(", ");
+  };
+  
+  private String formattedCharacter() {
+    if (",".equals(character)) return "COMMA";
+    return character;
   }
 }

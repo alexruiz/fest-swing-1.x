@@ -27,10 +27,6 @@ class BasicCharMappingTableModel extends DefaultTableModel implements CharMappin
 
   private static final long serialVersionUID = 1L;
   
-  private static final int CHARACTER_COLUMN_INDEX = 0;
-  private static final int KEY_CODE_COLUMN_INDEX = 1;
-  private static final int MODIFIER_COLUMN_INDEX = 2;
-  
   BasicCharMappingTableModel() {
     super(emptyTable(), array("Character", "Key", "Modifier"));
   }
@@ -51,25 +47,21 @@ class BasicCharMappingTableModel extends DefaultTableModel implements CharMappin
   private void remove(CharMapping mapping) {
     int rowCount = rowCount();
     for (int row = 0; row < rowCount; row++) {
-      if (!mapping.character.equals(characterInRow(row))) continue;
+      if (!mapping.character.equals(character(row))) continue;
       removeRow(row);
       break;
     }
   }
-  
-  public String characterInRow(int row) {
-    return textInCell(row, CHARACTER_COLUMN_INDEX);
+
+  public CharMapping mapping(int row) {
+    return new CharMapping(character(row), cellVal(row, 1), cellVal(row, 2));
   }
   
-  public String keyCodeInRow(int row) {
-    return textInCell(row, KEY_CODE_COLUMN_INDEX);
-  }
-  
-  public String modifierInRow(int row) {
-    return textInCell(row, MODIFIER_COLUMN_INDEX);
+  private String character(int row) {
+    return cellVal(row, 0);
   }
 
-  private String textInCell(int row, int col) {
+  private String cellVal(int row, int col) {
     return (String)getValueAt(row, col);
   }
 
