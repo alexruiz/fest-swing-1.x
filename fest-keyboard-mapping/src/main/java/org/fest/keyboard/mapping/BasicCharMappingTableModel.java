@@ -16,6 +16,7 @@ package org.fest.keyboard.mapping;
 
 import javax.swing.table.*;
 
+import static org.fest.keyboard.mapping.CharMapping.newCharMapping;
 import static org.fest.util.Arrays.array;
 
 /**
@@ -54,7 +55,7 @@ class BasicCharMappingTableModel extends DefaultTableModel implements CharMappin
   }
 
   public CharMapping mapping(int row) {
-    return new CharMapping(character(row), cellVal(row, 1), cellVal(row, 2));
+    return newCharMapping(character(row), cellVal(row, 1), cellVal(row, 2));
   }
   
   private String character(int row) {

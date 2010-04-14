@@ -18,6 +18,7 @@ package org.fest.keyboard.mapping;
 import org.junit.*;
 
 import static org.fest.assertions.Assertions.assertThat;
+import static org.fest.keyboard.mapping.CharMapping.newCharMapping;
 
 /**
  * Tests for <code>{@link BasicCharMappingTableModel#addOrReplace(CharMapping)}</code>.
@@ -36,7 +37,7 @@ public class BasicCharMappingTableModel_addOrReplace_Test {
   
   @Test
   public void should_add_mapping() {
-    CharMapping mapping = new CharMapping("a", "A", "NO_MASK");
+    CharMapping mapping = newCharMapping("a", "A", "NO_MASK");
     model.addOrReplace(mapping);
     assertThatRowCountIs(1);
     assertThatContainsMappingInRow(mapping, 0);
@@ -44,8 +45,8 @@ public class BasicCharMappingTableModel_addOrReplace_Test {
 
   @Test
   public void should_replace_existing_mapping_with_same_character() {
-    model.addOrReplace(new CharMapping("a", "A", "NO_MASK"));
-    CharMapping mapping = new CharMapping("a", "Q", "SHIFT_MASK");
+    model.addOrReplace(newCharMapping("a", "A", "NO_MASK"));
+    CharMapping mapping = newCharMapping("a", "Q", "SHIFT_MASK");
     model.addOrReplace(mapping);
     assertThatRowCountIs(1);
     assertThatContainsMappingInRow(mapping, 0);

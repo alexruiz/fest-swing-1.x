@@ -39,10 +39,14 @@ class CharMapping {
   }
 
   private static CharMapping newCharMapping(char character, int keyCode, int modifiers) throws MappingNotFoundError {
-    return new CharMapping(charToText(character), keyCodeToText(keyCode), modifierToText(modifiers));
+    return newCharMapping(charToText(character), keyCodeToText(keyCode), modifierToText(modifiers));
   }
 
-  CharMapping(String character, String keyCode, String modifier) {
+  static CharMapping newCharMapping(String character, String keyCode, String modifier) {
+    return new CharMapping(character, keyCode, modifier);
+  }
+
+  private CharMapping(String character, String keyCode, String modifier) {
     this.character = character;
     this.keyCode = keyCode;
     this.modifier = modifier;

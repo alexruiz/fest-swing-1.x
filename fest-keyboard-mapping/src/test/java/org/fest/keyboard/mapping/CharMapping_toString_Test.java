@@ -15,30 +15,27 @@
  */
 package org.fest.keyboard.mapping;
 
-import org.junit.*;
+import org.junit.Test;
 
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.keyboard.mapping.CharMapping.newCharMapping;
-import static org.fest.util.Arrays.array;
 
 /**
- * Tests for <code>{@link BasicCharMappingTableModel#mapping(int)}</code>.
+ * Tests for <code>{@link CharMapping#toString()}</code>.
  *
  * @author Alex Ruiz
  */
-public class BasicCharMappingTableModel_mapping_Test {
-
-  private BasicCharMappingTableModel model;
-  
-  @Before
-  public void setUp() {
-    model = new BasicCharMappingTableModel();
-  }
+public class CharMapping_toString_Test {
 
   @Test
-  public void should_return_CharMapping_from_data_in_row() {
-    model.addRow(array("a", "A", "NO_MASK"));
-    CharMapping expected = newCharMapping("a", "A", "NO_MASK");
-    assertThat(model.mapping(0)).isEqualTo(expected);
+  public void should_join_fields_with_comma() {
+    CharMapping mapping = newCharMapping("a", "A", "NO_MASK");
+    assertThat(mapping.toString()).isEqualTo("a, A, NO_MASK");
+  }
+  
+  @Test
+  public void should_replace_comma_character_with_word_comma() {
+    CharMapping mapping = newCharMapping(",", "COMMA", "NO_MASK");
+    assertThat(mapping.toString()).isEqualTo("COMMA, COMMA, NO_MASK");
   }
 }

@@ -22,6 +22,7 @@ import java.util.*;
 import org.junit.*;
 
 import static org.fest.assertions.Assertions.assertThat;
+import static org.fest.keyboard.mapping.CharMapping.newCharMapping;
 import static org.fest.util.Arrays.array;
 import static org.fest.util.Closeables.close;
 import static org.fest.util.Files.newTemporaryFile;
@@ -91,7 +92,7 @@ public class CharMappingFileFactory_createMappingFile_Test {
 
     public CharMapping mapping(int row) {
       String[] rowData = data.get(row);
-      return new CharMapping(rowData[0], rowData[1], rowData[2]);
+      return newCharMapping(rowData[0], rowData[1], rowData[2]);
     }
   }
 }
