@@ -43,6 +43,6 @@ class CharMappingFileFactory {
   private String mapping(CharMappingTableModel model, int row) {
     String character = model.characterInRow(row);
     if (",".equals(character)) character = "COMMA";
-    return join(character, model.keyCodeInRow(row), model.modifierInRow(row)).with(",");
+    return join(character, model.keyCodeInRow(row), model.modifierInRow(row)).with(", ");
   }
 }

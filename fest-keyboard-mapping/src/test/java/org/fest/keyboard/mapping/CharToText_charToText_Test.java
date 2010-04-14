@@ -17,6 +17,8 @@ package org.fest.keyboard.mapping;
 
 import org.junit.Test;
 
+import static java.awt.event.KeyEvent.CHAR_UNDEFINED;
+
 import static org.fest.assertions.Assertions.assertThat;
 
 /**
@@ -38,7 +40,7 @@ public class CharToText_charToText_Test {
 
   @Test(expected = MappingNotFoundError.class)
   public void should_throw_error_if_character_is_invalid() throws MappingNotFoundError {
-    CharToText.charToText((char)65535);
+    CharToText.charToText(CHAR_UNDEFINED);
   }
 
 }
