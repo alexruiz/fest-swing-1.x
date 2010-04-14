@@ -18,8 +18,13 @@ package org.fest.keyboard.mapping;
 import java.awt.Rectangle;
 import java.io.*;
 
+import org.fest.util.VisibleForTesting;
+
+import static java.awt.event.KeyEvent.*;
+import static javax.swing.JComponent.WHEN_FOCUSED;
 import static javax.swing.JFileChooser.APPROVE_OPTION;
 import static javax.swing.JOptionPane.*;
+import static javax.swing.KeyStroke.getKeyStroke;
 
 import static org.fest.keyboard.mapping.CharMapping.newCharMapping;
 import static org.fest.util.Strings.*;
@@ -33,6 +38,8 @@ public class MainFrame extends javax.swing.JFrame {
 
   private static final long serialVersionUID = 1L;
 
+  private static final String TAB_OUT_ACTION_KEY = "tabOut";
+
   private final CharMappingFileFactory fileFactory;
 
   /**
@@ -42,13 +49,16 @@ public class MainFrame extends javax.swing.JFrame {
     this(new CharMappingFileFactory());
   }
 
-  /**
-   * Creates a new </code>{@link MainFrame}</code>.
-   * @param fileFactory the factory of mapping files to use.
-   */
-  public MainFrame(CharMappingFileFactory fileFactory) {
+  @VisibleForTesting
+  MainFrame(CharMappingFileFactory fileFactory) {
     this.fileFactory = fileFactory;
     initComponents();
+    addTabOutActionToMappingTable();
+  }
+
+  private void addTabOutActionToMappingTable() {
+    mappingTable.getInputMap(WHEN_FOCUSED).put(getKeyStroke(VK_TAB, 0), TAB_OUT_ACTION_KEY);
+    mappingTable.getActionMap().put(TAB_OUT_ACTION_KEY, new TabOutAction());
   }
 
   /** This method is called from within the constructor to
@@ -60,7 +70,6 @@ public class MainFrame extends javax.swing.JFrame {
   private void initComponents() {
 
     saveMappingFileChooser = new javax.swing.JFileChooser();
-    deleteMappingButton = new javax.swing.JButton();
     tableScrollPane = new javax.swing.JScrollPane();
     mappingTable = new javax.swing.JTable();
     charLabel = new javax.swing.JLabel();
@@ -80,21 +89,18 @@ public class MainFrame extends javax.swing.JFrame {
     setMinimumSize(new java.awt.Dimension(260, 240));
     setName("mainFrame"); // NOI18N
 
-    deleteMappingButton.setMnemonic('D');
-    deleteMappingButton.setText("Delete");
-    deleteMappingButton.setEnabled(false);
-    deleteMappingButton.setName("deleteMappingButton"); // NOI18N
-    deleteMappingButton.addActionListener(new java.awt.event.ActionListener() {
-      public void actionPerformed(java.awt.event.ActionEvent evt) {
-        deleteMapping(evt);
-      }
-    });
-
     mappingTable.setModel(new BasicCharMappingTableModel());
     mappingTable.setName("mappingTable"); // NOI18N
-    mappingTable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+    mappingTable.setSelectionMode(javax.swing.ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+    mappingTable.addKeyListener(new java.awt.event.KeyAdapter() {
+      public void keyPressed(java.awt.event.KeyEvent evt) {
+        keyPressedOnMappingTable(evt);
+      }
+    });
     tableScrollPane.setViewportView(mappingTable);
 
+    charLabel.setDisplayedMnemonic('E');
+    charLabel.setLabelFor(charTextField);
     charLabel.setText("Enter the character to map:");
 
     charTextField.setDocument(new MaxLengthDocument());
@@ -126,23 +132,20 @@ public class MainFrame extends javax.swing.JFrame {
     getContentPane().setLayout(layout);
     layout.setHorizontalGroup(
       layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-      .addGroup(layout.createSequentialGroup()
+      .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
         .addContainerGap()
-        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-          .addComponent(tableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 297, Short.MAX_VALUE)
-          .addComponent(charTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 297, Short.MAX_VALUE)
-          .addComponent(charLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 297, Short.MAX_VALUE)
-          .addComponent(deleteMappingButton, javax.swing.GroupLayout.Alignment.TRAILING))
+        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+          .addComponent(tableScrollPane, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 297, Short.MAX_VALUE)
+          .addComponent(charTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 297, Short.MAX_VALUE)
+          .addComponent(charLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 297, Short.MAX_VALUE))
         .addContainerGap())
     );
     layout.setVerticalGroup(
       layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
       .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
         .addContainerGap()
-        .addComponent(tableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE)
-        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-        .addComponent(deleteMappingButton)
-        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+        .addComponent(tableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
+        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
         .addComponent(charLabel)
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
         .addComponent(charTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -158,13 +161,6 @@ public class MainFrame extends javax.swing.JFrame {
     } catch (MappingNotFoundError ignored) {}
   }//GEN-LAST:event_charEntered
 
-  private void deleteMapping(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteMapping
-    deleteSelectedRows();
-    selectAndScrollToLastRow();
-    updateUI();
-    charTextField.setText("");
-  }//GEN-LAST:event_deleteMapping
-
   private void saveAsMappingFile(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveAsMappingFile
     int selection = saveMappingFileChooser.showSaveDialog(this);
     if (selection != APPROVE_OPTION) return;
@@ -176,6 +172,12 @@ public class MainFrame extends javax.swing.JFrame {
       showSaveFileActionFailedMessage(e.getMessage());
     }
   }//GEN-LAST:event_saveAsMappingFile
+
+  private void keyPressedOnMappingTable(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_keyPressedOnMappingTable
+    if (evt.getKeyCode() != VK_DELETE) return;
+    if (mappingTable.getSelectedRowCount() == 0) return;
+    deleteSelectedRows();
+  }//GEN-LAST:event_keyPressedOnMappingTable
 
   private void showFileSaveActionSuccessMessage(File file) {
     String message = concat("File ", quote(file.getName()), " successfully saved.");
@@ -221,7 +223,6 @@ public class MainFrame extends javax.swing.JFrame {
 
   private void updateUI() {
     createMappingFileMenu.setEnabled(mappingTable.getRowCount() > 0);
-    deleteMappingButton.setEnabled(mappingTable.getSelectedRowCount() > 0);
   }
 
   void giveFocusToCharTextField() {
@@ -232,7 +233,6 @@ public class MainFrame extends javax.swing.JFrame {
   private javax.swing.JLabel charLabel;
   private javax.swing.JTextField charTextField;
   private javax.swing.JMenuItem createMappingFileMenu;
-  private javax.swing.JButton deleteMappingButton;
   private javax.swing.JMenu fileMenu;
   private javax.swing.JTable mappingTable;
   private javax.swing.JMenuBar menuBar;
