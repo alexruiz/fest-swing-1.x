@@ -21,7 +21,7 @@ import javax.swing.filechooser.FileFilter;
 /**
  * Understands a file filter for text files.
  *
- * @author alruiz
+ * @author Alex Ruiz
  */
 class TextFileFilter extends FileFilter {
 
@@ -30,7 +30,7 @@ class TextFileFilter extends FileFilter {
   }
 
   public String getDescription() {
-    return ("Text Files (*.txt)");
+    return "Text Files (*.txt)";
   }
 
 }

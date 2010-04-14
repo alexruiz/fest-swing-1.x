@@ -32,7 +32,7 @@ class BasicCharMappingTableModel extends DefaultTableModel implements CharMappin
   private static final int MODIFIER_COLUMN_INDEX = 2;
   
   BasicCharMappingTableModel() {
-    super(emptyTable(), array("Character", "Key", "Modifiers"));
+    super(emptyTable(), array("Character", "Key", "Modifier"));
   }
 
   private static Object[][] emptyTable() {
@@ -57,17 +57,14 @@ class BasicCharMappingTableModel extends DefaultTableModel implements CharMappin
     }
   }
   
-  /** {@inheritDoc} */
   public String characterInRow(int row) {
     return textInCell(row, CHARACTER_COLUMN_INDEX);
   }
   
-  /** {@inheritDoc} */
   public String keyCodeInRow(int row) {
     return textInCell(row, KEY_CODE_COLUMN_INDEX);
   }
   
-  /** {@inheritDoc} */
   public String modifierInRow(int row) {
     return textInCell(row, MODIFIER_COLUMN_INDEX);
   }
@@ -76,7 +73,6 @@ class BasicCharMappingTableModel extends DefaultTableModel implements CharMappin
     return (String)getValueAt(row, col);
   }
 
-  /** {@inheritDoc} */
   public int rowCount() {
     return getRowCount();
   }
