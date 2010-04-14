@@ -77,7 +77,20 @@
     </dependency>
     <dependency>
       <groupId>org.easytesting</groupId>
-      <artifactId>fest-assert</artifactId>
+      <artifactId>fest-swing</artifactId>
+      <version>1.2b1-SNAPSHOT</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.easytesting</groupId>
+      <artifactId>fest-swing</artifactId>
+      <classifier>tests</classifier>
+      <version>1.2b1-SNAPSHOT</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.easytesting</groupId>
+      <artifactId>fest-test</artifactId>
       <version>1.2</version>
       <scope>test</scope>
     </dependency>
