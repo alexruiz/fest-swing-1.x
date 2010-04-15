@@ -8,7 +8,7 @@ public class CharAssert_providesConstructorsForPrimitiveAndWrapper_Test implemen
 
   private static final char primitiveActual = '?';
 
-  private static final Character wrapperActual = new Character(primitiveActual);
+  private static final Character wrappedActual = new Character(primitiveActual);
 
   @Test
   public void shouldConstructInstanceFromPrimitiveValue() {
@@ -18,7 +18,7 @@ public class CharAssert_providesConstructorsForPrimitiveAndWrapper_Test implemen
 
   @Test
   public void shouldConstructInstanceFromWrapperValue() {
-    CharAssert assertion = new CharAssert(wrapperActual);
+    CharAssert assertion = new CharAssert(wrappedActual);
     assertThat(assertion).isNotNull();
   }
 

@@ -7,7 +7,7 @@ import static org.fest.assertions.Assertions.assertThat;
 public class BooleanAssert_providesConstructorsForPrimitiveAndWrapper_Test implements PrimitiveAssert_providesConstructorsForPrimitiveAndWrapper_TestCase {
 
   private static final boolean primitiveActual = true;
-  private static final Boolean wrapperActual = new Boolean(primitiveActual);
+  private static final Boolean wrappedActual = new Boolean(primitiveActual);
 
   @Test
   public void shouldConstructInstanceFromPrimitiveValue() {
@@ -17,7 +17,7 @@ public class BooleanAssert_providesConstructorsForPrimitiveAndWrapper_Test imple
 
   @Test
   public void shouldConstructInstanceFromWrapperValue() {
-    BooleanAssert assertion = new BooleanAssert(wrapperActual);
+    BooleanAssert assertion = new BooleanAssert(wrappedActual);
     assertThat(assertion).isNotNull();
   }
 

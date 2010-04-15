@@ -9,7 +9,7 @@ public class DoubleAssert_providesConstructorsForPrimitiveAndWrapper_Test implem
   PrimitiveAssert_canBeConstructedFromPrimitiveInt_TestCase {
 
   private static final double primitiveActual = 8.0d;
-  private static final Double wrapperActual = new Double(primitiveActual);
+  private static final Double wrappedActual = primitiveActual;
 
   @Test
   public void shouldConstructInstanceFromPrimitiveValue() {
@@ -25,7 +25,7 @@ public class DoubleAssert_providesConstructorsForPrimitiveAndWrapper_Test implem
 
   @Test
   public void shouldConstructInstanceFromWrapperValue() {
-    DoubleAssert assertion = new DoubleAssert(wrapperActual);
+    DoubleAssert assertion = new DoubleAssert(wrappedActual);
     assertThat(assertion).isNotNull();
   }
 
