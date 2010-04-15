@@ -41,6 +41,7 @@ public class MainFrame extends javax.swing.JFrame {
   private static final String TAB_OUT_ACTION_KEY = "tabOut";
 
   private final CharMappingFileFactory fileFactory;
+  private AboutDialog aboutDialog;
 
   /**
    * Creates a new </code>{@link MainFrame}</code>.
@@ -77,6 +78,8 @@ public class MainFrame extends javax.swing.JFrame {
     menuBar = new javax.swing.JMenuBar();
     fileMenu = new javax.swing.JMenu();
     createMappingFileMenu = new javax.swing.JMenuItem();
+    helpMenu = new javax.swing.JMenu();
+    aboutMenuItem = new javax.swing.JMenuItem();
 
     saveMappingFileChooser.setAcceptAllFileFilterUsed(false);
     saveMappingFileChooser.setDialogTitle("Save As Mapping File");
@@ -125,6 +128,20 @@ public class MainFrame extends javax.swing.JFrame {
     fileMenu.add(createMappingFileMenu);
 
     menuBar.add(fileMenu);
+
+    helpMenu.setMnemonic('H');
+    helpMenu.setLabel("Help");
+
+    aboutMenuItem.setMnemonic('A');
+    aboutMenuItem.setText("About");
+    aboutMenuItem.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        showAboutWindow(evt);
+      }
+    });
+    helpMenu.add(aboutMenuItem);
+
+    menuBar.add(helpMenu);
 
     setJMenuBar(menuBar);
 
@@ -179,6 +196,12 @@ public class MainFrame extends javax.swing.JFrame {
     deleteSelectedRows();
   }//GEN-LAST:event_keyPressedOnMappingTable
 
+  private void showAboutWindow(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showAboutWindow
+    if (aboutDialog == null) aboutDialog = new AboutDialog(this, true);
+    aboutDialog.setLocationRelativeTo(this);
+    aboutDialog.setVisible(true);
+  }//GEN-LAST:event_showAboutWindow
+
   private void showFileSaveActionSuccessMessage(File file) {
     String message = concat("File ", quote(file.getName()), " successfully saved.");
     showMessageDialog(this, message, "Success", INFORMATION_MESSAGE);
@@ -202,6 +225,7 @@ public class MainFrame extends javax.swing.JFrame {
       model.removeRow(selectedRow);
       selectedRow = mappingTable.getSelectedRow();
     }
+    updateUI();
   }
 
   private void selectAndScrollToLastRow() {
@@ -230,10 +254,12 @@ public class MainFrame extends javax.swing.JFrame {
   }
   
   // Variables declaration - do not modify//GEN-BEGIN:variables
+  private javax.swing.JMenuItem aboutMenuItem;
   private javax.swing.JLabel charLabel;
   private javax.swing.JTextField charTextField;
   private javax.swing.JMenuItem createMappingFileMenu;
   private javax.swing.JMenu fileMenu;
+  private javax.swing.JMenu helpMenu;
   private javax.swing.JTable mappingTable;
   private javax.swing.JMenuBar menuBar;
   private javax.swing.JFileChooser saveMappingFileChooser;
