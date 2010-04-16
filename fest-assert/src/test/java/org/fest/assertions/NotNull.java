@@ -95,6 +95,10 @@ class NotNull<T> extends Condition<T> {
     return new NotNull<Throwable>();
   }
 
+  static <T> NotNull<T> instance() {
+    return new NotNull<T>();
+  }
+
   private NotNull() {}
 
   public boolean matches(T value) {

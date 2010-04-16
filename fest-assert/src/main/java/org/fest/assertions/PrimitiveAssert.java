@@ -20,7 +20,15 @@ package org.fest.assertions;
  *
  * @author Yvonne Wang
  */
-public abstract class PrimitiveAssert extends Assert {
+public abstract class PrimitiveAssert<T> extends GenericAssert<T> {
+
+  /**
+   * Creates a new <code>{@link PrimitiveAssert}</code>.
+   * @param actual the actual target to verify.
+   */
+  protected PrimitiveAssert(T actual) {
+    super(actual);
+  }
 
   /**
    * Sets the description of the actual value, to be used in as message of any <code>{@link AssertionError}</code>
@@ -35,7 +43,7 @@ public abstract class PrimitiveAssert extends Assert {
    * @param description the description of the actual value.
    * @return this assertion object.
    */
-  protected abstract PrimitiveAssert as(String description);
+  protected abstract PrimitiveAssert<T> as(String description);
 
   /**
    * Alias for <code>{@link #as(String)}</code>, since "as" is a keyword in
@@ -50,7 +58,7 @@ public abstract class PrimitiveAssert extends Assert {
    * @param description the description of the actual value.
    * @return this assertion object.
    */
-  protected abstract PrimitiveAssert describedAs(String description);
+  protected abstract PrimitiveAssert<T> describedAs(String description);
 
   /**
    * Sets the description of the actual value, to be used in as message of any <code>{@link AssertionError}</code>
@@ -65,7 +73,7 @@ public abstract class PrimitiveAssert extends Assert {
    * @param description the description of the actual value.
    * @return this assertion object.
    */
-  protected abstract PrimitiveAssert as(Description description);
+  protected abstract PrimitiveAssert<T> as(Description description);
 
   /**
    * Alias for <code>{@link #as(Description)}</code>, since "as" is a keyword in
@@ -80,7 +88,7 @@ public abstract class PrimitiveAssert extends Assert {
    * @param description the description of the actual value.
    * @return this assertion object.
    */
-  protected abstract PrimitiveAssert describedAs(Description description);
+  protected abstract PrimitiveAssert<T> describedAs(Description description);
 
   /**
    * Replaces the default message displayed in case of a failure with the given one.
@@ -102,5 +110,5 @@ public abstract class PrimitiveAssert extends Assert {
    * @return this assertion.
    * @since 1.2
    */
-  protected abstract PrimitiveAssert overridingErrorMessage(String message);
+  protected abstract PrimitiveAssert<T> overridingErrorMessage(String message);
 }

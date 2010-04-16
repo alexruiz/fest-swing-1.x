@@ -24,18 +24,16 @@ import static org.fest.assertions.ErrorMessages.*;
  * @author Yvonne Wang
  * @author David DIDIER
  */
-public class IntAssert extends PrimitiveAssert implements NumberAssert {
+public class IntAssert extends PrimitiveAssert<Integer> implements NumberAssert {
 
   private static final int ZERO = 0;
-
-  private final Integer actual;
 
   /**
    * Creates a new </code>{@link IntAssert}</code>.
    * @param actual the actual value to verify.
    */
   protected IntAssert(int actual) {
-    this.actual = actual;
+    super(actual);
   }
 
   /**
@@ -43,7 +41,7 @@ public class IntAssert extends PrimitiveAssert implements NumberAssert {
    * @param actual the actual value to verify.
    */
   protected IntAssert(Integer actual) {
-    this.actual = actual;
+    super(actual);
   }
 
   /**
@@ -220,5 +218,62 @@ public class IntAssert extends PrimitiveAssert implements NumberAssert {
   public IntAssert overridingErrorMessage(String message) {
     replaceDefaultErrorMessagesWith(message);
     return this;
+  }
+
+  /**
+   * ==== newly implemented methods for FEST-133 start here
+   */
+  @Override
+  protected GenericAssert<Integer> satisfies(Condition<Integer> integerCondition) {
+    assertSatisfies(integerCondition);
+    return this;
+  }
+
+  @Override
+  protected GenericAssert<Integer> doesNotSatisfy(Condition<Integer> integerCondition) {
+    //TODO
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  protected GenericAssert<Integer> is(Condition<Integer> integerCondition) {
+    //TODO
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  protected GenericAssert<Integer> isNot(Condition<Integer> integerCondition) {
+    //TODO
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  protected GenericAssert<Integer> isEqualTo(Integer expected) {
+    //TODO
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  protected GenericAssert<Integer> isNotEqualTo(Integer other) {
+    //TODO
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  protected GenericAssert<Integer> isNotNull() {
+    //TODO
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  protected GenericAssert<Integer> isSameAs(Integer expected) {
+    //TODO
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  protected GenericAssert<Integer> isNotSameAs(Integer other) {
+    //TODO
+    throw new UnsupportedOperationException();
   }
 }

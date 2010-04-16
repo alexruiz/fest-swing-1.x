@@ -21,20 +21,17 @@ import static org.fest.util.Strings.concat;
 /**
  * Understands assertion methods for <code>char</code>s. To create a new instance of this class use the
  * method <code>{@link Assertions#assertThat(char)}</code>.
- *
  * @author Yvonne Wang
  * @author David DIDIER
  */
-public class CharAssert extends PrimitiveAssert {
-
-  private final Character actual;
+public class CharAssert extends PrimitiveAssert<Character> {
 
   /**
    * Creates a new <code>{@link CharAssert}</code>.
    * @param actual the actual value to verify.
    */
   protected CharAssert(char actual) {
-    this.actual = actual;
+    super(actual);
   }
 
   /**
@@ -42,7 +39,7 @@ public class CharAssert extends PrimitiveAssert {
    * @param actual the actual value to verify.
    */
   protected CharAssert(Character actual) {
-    this.actual = actual;
+    super(actual);
   }
 
   /**
@@ -213,5 +210,63 @@ public class CharAssert extends PrimitiveAssert {
   public CharAssert overridingErrorMessage(String message) {
     replaceDefaultErrorMessagesWith(message);
     return this;
+  }
+
+  /**
+   * ===== Newly implemented methods for FEST-133 / from GenericAssert start here:
+   */
+
+  @Override
+  protected GenericAssert<Character> satisfies(Condition<Character> characterCondition) {
+    assertSatisfies(characterCondition);
+    return this;
+  }
+
+  @Override
+  protected GenericAssert<Character> doesNotSatisfy(Condition<Character> characterCondition) {
+    //TODO
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  protected GenericAssert<Character> is(Condition<Character> characterCondition) {
+    //TODO
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  protected GenericAssert<Character> isNot(Condition<Character> characterCondition) {
+    //TODO
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  protected GenericAssert<Character> isEqualTo(Character expected) {
+    //TODO
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  protected GenericAssert<Character> isNotEqualTo(Character other) {
+    //TODO
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  protected GenericAssert<Character> isNotNull() {
+    //TODO
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  protected GenericAssert<Character> isSameAs(Character expected) {
+    //TODO
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  protected GenericAssert<Character> isNotSameAs(Character other) {
+    //TODO
+    throw new UnsupportedOperationException();
   }
 }

@@ -23,18 +23,16 @@ import static org.fest.assertions.ErrorMessages.*;
  * @author Yvonne Wang
  * @author David DIDIER
  */
-public class LongAssert extends PrimitiveAssert implements NumberAssert {
+public class LongAssert extends PrimitiveAssert<Long> implements NumberAssert {
 
   private static final long ZERO = 0L;
-
-  private final Long actual;
 
   /**
    * Creates a new <code>{@link LongAssert}</code>.
    * @param actual the actual value to verify.
    */
   protected LongAssert(long actual) {
-    this.actual = actual;
+    super(actual);
   }
 
   /**
@@ -42,7 +40,7 @@ public class LongAssert extends PrimitiveAssert implements NumberAssert {
    * @param actual the actual value to verify.
    */
   protected LongAssert(Long actual) {
-    this.actual = actual;
+    super(actual);
   }
 
   /**
@@ -218,5 +216,63 @@ public class LongAssert extends PrimitiveAssert implements NumberAssert {
   public LongAssert overridingErrorMessage(String message) {
     replaceDefaultErrorMessagesWith(message);
     return this;
+  }
+
+  /**
+   * ===== Newly implemented methods for FEST-133 / from GenericAssert start here:
+   */
+
+  @Override
+  protected GenericAssert<Long> satisfies(Condition<Long> longCondition) {
+    assertSatisfies(longCondition);
+    return this;
+  }
+
+  @Override
+  protected GenericAssert<Long> doesNotSatisfy(Condition<Long> longCondition) {
+    //TODO
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  protected GenericAssert<Long> is(Condition<Long> longCondition) {
+    //TODO
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  protected GenericAssert<Long> isNot(Condition<Long> longCondition) {
+    //TODO
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  protected GenericAssert<Long> isEqualTo(Long expected) {
+    //TODO
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  protected GenericAssert<Long> isNotEqualTo(Long other) {
+    //TODO
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  protected GenericAssert<Long> isNotNull() {
+    //TODO
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  protected GenericAssert<Long> isSameAs(Long expected) {
+    //TODO
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  protected GenericAssert<Long> isNotSameAs(Long other) {
+    //TODO
+    throw new UnsupportedOperationException();
   }
 }

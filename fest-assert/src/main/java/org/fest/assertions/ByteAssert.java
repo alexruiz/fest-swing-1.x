@@ -19,24 +19,20 @@ import static org.fest.assertions.ErrorMessages.*;
 /**
  * Understands assertion methods for <code>byte</code>s. To create a new instance of this class use the
  * method <code>{@link Assertions#assertThat(byte)}</code>.
- *
  * @author Yvonne Wang
  * @author David DIDIER
- *
  * @since 1.2
  */
-public class ByteAssert extends PrimitiveAssert implements NumberAssert {
+public class ByteAssert extends PrimitiveAssert<Byte> implements NumberAssert {
 
   private static final byte ZERO = (byte)0;
-
-  private final Byte actual;
 
   /**
    * Creates a new <code>{@link ByteAssert}</code>.
    * @param actual the actual value to verify.
    */
   protected ByteAssert(byte actual) {
-    this.actual = actual;
+    super(actual);
   }
 
   /**
@@ -44,7 +40,7 @@ public class ByteAssert extends PrimitiveAssert implements NumberAssert {
    * @param actual the actual value to verify.
    */
   protected ByteAssert(Byte actual) {
-    this.actual = actual;
+    super(actual);
   }
 
   /**
@@ -220,5 +216,63 @@ public class ByteAssert extends PrimitiveAssert implements NumberAssert {
   public ByteAssert overridingErrorMessage(String message) {
     replaceDefaultErrorMessagesWith(message);
     return this;
+  }
+
+  /**
+   * ===== Newly implemented methods for FEST-133 / from GenericAssert start here:
+   */
+
+  @Override
+  protected GenericAssert<Byte> satisfies(Condition<Byte> byteCondition) {
+    assertSatisfies(byteCondition);
+    return this;
+  }
+
+  @Override
+  protected GenericAssert<Byte> doesNotSatisfy(Condition<Byte> byteCondition) {
+    //TODO
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  protected GenericAssert<Byte> is(Condition<Byte> byteCondition) {
+    //TODO
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  protected GenericAssert<Byte> isNot(Condition<Byte> byteCondition) {
+    //TODO
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  protected GenericAssert<Byte> isEqualTo(Byte expected) {
+    //TODO
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  protected GenericAssert<Byte> isNotEqualTo(Byte other) {
+    //TODO
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  protected GenericAssert<Byte> isNotNull() {
+    //TODO
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  protected GenericAssert<Byte> isSameAs(Byte expected) {
+    //TODO
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  protected GenericAssert<Byte> isNotSameAs(Byte other) {
+    //TODO
+    throw new UnsupportedOperationException();
   }
 }

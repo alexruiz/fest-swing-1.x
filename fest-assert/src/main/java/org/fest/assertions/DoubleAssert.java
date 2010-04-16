@@ -14,18 +14,16 @@ import static org.fest.util.Strings.concat;
  * @author David DIDIER
  * @author Alex Ruiz
  */
-public class DoubleAssert extends PrimitiveAssert implements NumberAssert {
+public class DoubleAssert extends PrimitiveAssert<Double> implements NumberAssert {
 
   private static final double ZERO = 0.0;
-
-  private final Double actual;
 
   /**
    * Creates a new <code>{@link DoubleAssert}</code>.
    * @param actual the actual value to verify.
    */
   protected DoubleAssert(double actual) {
-    this.actual = actual;
+    super(actual);
   }
 
   /**
@@ -33,7 +31,7 @@ public class DoubleAssert extends PrimitiveAssert implements NumberAssert {
    * @param actual the actual value to verify.
    */
   protected DoubleAssert(Double actual) {
-    this.actual = actual;
+    super(actual);
   }
 
   /**
@@ -283,5 +281,63 @@ public class DoubleAssert extends PrimitiveAssert implements NumberAssert {
   public DoubleAssert overridingErrorMessage(String message) {
     replaceDefaultErrorMessagesWith(message);
     return this;
+  }
+
+  /**
+   * ===== Newly implemented methods for FEST-133 / from GenericAssert start here:
+   */
+  
+  @Override
+  protected GenericAssert<Double> satisfies(Condition<Double> doubleCondition) {
+    assertSatisfies(doubleCondition);
+    return this;
+  }
+
+  @Override
+  protected GenericAssert<Double> doesNotSatisfy(Condition<Double> doubleCondition) {
+    //TODO
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  protected GenericAssert<Double> is(Condition<Double> doubleCondition) {
+    //TODO
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  protected GenericAssert<Double> isNot(Condition<Double> doubleCondition) {
+    //TODO
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  protected GenericAssert<Double> isEqualTo(Double expected) {
+    //TODO
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  protected GenericAssert<Double> isNotEqualTo(Double other) {
+    //TODO
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  protected GenericAssert<Double> isNotNull() {
+    //TODO
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  protected GenericAssert<Double> isSameAs(Double expected) {
+    //TODO
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  protected GenericAssert<Double> isNotSameAs(Double other) {
+    //TODO
+    throw new UnsupportedOperationException();
   }
 }

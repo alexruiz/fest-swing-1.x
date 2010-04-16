@@ -27,18 +27,16 @@ import static org.fest.util.Strings.concat;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class FloatAssert extends PrimitiveAssert implements NumberAssert {
+public class FloatAssert extends PrimitiveAssert<Float> implements NumberAssert {
 
   private static final float ZERO = 0f;
-
-  private final Float actual;
 
   /**
    * Creates a new <code>{@link FloatAssert}</code>.
    * @param actual the actual value to verify.
    */
   protected FloatAssert(float actual) {
-    this.actual = actual;
+    super(actual);
   }
 
   /**
@@ -46,7 +44,7 @@ public class FloatAssert extends PrimitiveAssert implements NumberAssert {
    * @param actual the actual value to verify.
    */
   protected FloatAssert(Float actual) {
-    this.actual = actual;
+    super(actual);
   }
 
   /**
@@ -296,6 +294,64 @@ public class FloatAssert extends PrimitiveAssert implements NumberAssert {
   public FloatAssert overridingErrorMessage(String message) {
     replaceDefaultErrorMessagesWith(message);
     return this;
+  }
+
+  /**
+   * ===== Newly implemented methods for FEST-133 / from GenericAssert start here:
+   */
+
+  @Override
+  protected GenericAssert<Float> satisfies(Condition<Float> floatCondition) {
+    assertSatisfies(floatCondition);
+    return this;
+  }
+
+  @Override
+  protected GenericAssert<Float> doesNotSatisfy(Condition<Float> floatCondition) {
+    //TODO
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  protected GenericAssert<Float> is(Condition<Float> floatCondition) {
+    //TODO
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  protected GenericAssert<Float> isNot(Condition<Float> floatCondition) {
+    //TODO
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  protected GenericAssert<Float> isEqualTo(Float expected) {
+    //TODO
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  protected GenericAssert<Float> isNotEqualTo(Float other) {
+    //TODO
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  protected GenericAssert<Float> isNotNull() {
+    //TODO
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  protected GenericAssert<Float> isSameAs(Float expected) {
+    //TODO
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  protected GenericAssert<Float> isNotSameAs(Float other) {
+    //TODO
+    throw new UnsupportedOperationException();
   }
 }
 

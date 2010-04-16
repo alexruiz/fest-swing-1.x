@@ -23,18 +23,16 @@ import static org.fest.assertions.ErrorMessages.*;
  * @author Yvonne Wang
  * @author David DIDIER
  */
-public class ShortAssert extends PrimitiveAssert implements NumberAssert {
+public class ShortAssert extends PrimitiveAssert<Short> implements NumberAssert {
 
   private static final short ZERO = (short)0;
-
-  private final Short actual;
 
   /**
    * Creates a new <code>{@link ShortAssert}</code>.
    * @param actual the actual value to verify.
    */
   protected ShortAssert(short actual) {
-    this.actual = actual;
+    super(actual);
   }
 
   /**
@@ -42,7 +40,7 @@ public class ShortAssert extends PrimitiveAssert implements NumberAssert {
    * @param actual the actual value to verify.
    */
   protected ShortAssert(Short actual) {
-    this.actual = actual;
+    super(actual);
   }
 
   /**
@@ -218,5 +216,62 @@ public class ShortAssert extends PrimitiveAssert implements NumberAssert {
   public ShortAssert overridingErrorMessage(String message) {
     replaceDefaultErrorMessagesWith(message);
     return this;
+  }
+
+  /**
+   * ===== Newly implemented methods for FEST-133 / from GenericAssert start here:
+   */
+  @Override
+  protected GenericAssert<Short> satisfies(Condition<Short> shortCondition) {
+    assertSatisfies(shortCondition);
+    return this;
+  }
+
+  @Override
+  protected GenericAssert<Short> doesNotSatisfy(Condition<Short> shortCondition) {
+    //TODO
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  protected GenericAssert<Short> is(Condition<Short> shortCondition) {
+    //TODO
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  protected GenericAssert<Short> isNot(Condition<Short> shortCondition) {
+    //TODO
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  protected GenericAssert<Short> isEqualTo(Short expected) {
+    //TODO
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  protected GenericAssert<Short> isNotEqualTo(Short other) {
+    //TODO
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  protected GenericAssert<Short> isNotNull() {
+    //TODO
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  protected GenericAssert<Short> isSameAs(Short expected) {
+    //TODO
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  protected GenericAssert<Short> isNotSameAs(Short other) {
+    //TODO
+    throw new UnsupportedOperationException();
   }
 }

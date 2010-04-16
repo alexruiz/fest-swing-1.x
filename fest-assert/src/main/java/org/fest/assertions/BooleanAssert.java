@@ -21,21 +21,18 @@ import static org.fest.assertions.Fail.failIfEqual;
 /**
  * Understands assertion methods for <code>boolean</code> values. To create a new instance of this class use the method
  * <code>{@link Assertions#assertThat(boolean)}</code>.
- *
  * @author Alex Ruiz
  * @author Yvonne Wang
  * @author David DIDIER
  */
-public class BooleanAssert extends PrimitiveAssert {
-
-  private final Boolean actual;
+public class BooleanAssert extends PrimitiveAssert<Boolean> {
 
   /**
    * Creates a new <code>{@link BooleanAssert}</code>.
    * @param actual the actual value to verify.
    */
   protected BooleanAssert(boolean actual) {
-    this.actual = actual;
+    super(actual);
   }
 
   /**
@@ -43,7 +40,7 @@ public class BooleanAssert extends PrimitiveAssert {
    * @param actual the actual value to verify.
    */
   protected BooleanAssert(Boolean actual) {
-    this.actual = actual;
+    super(actual);
   }
 
   /**
@@ -159,5 +156,63 @@ public class BooleanAssert extends PrimitiveAssert {
   public BooleanAssert overridingErrorMessage(String message) {
     replaceDefaultErrorMessagesWith(message);
     return this;
+  }
+
+  /**
+   * ===== Newly implemented methods for FEST-133 / from GenericAssert start here:
+   */
+
+  @Override
+  protected BooleanAssert satisfies(Condition<Boolean> booleanCondition) {
+    assertSatisfies(booleanCondition);
+    return this;
+  }
+
+  @Override
+  protected BooleanAssert doesNotSatisfy(Condition<Boolean> booleanCondition) {
+    //TODO
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  protected BooleanAssert is(Condition<Boolean> booleanCondition) {
+    //TODO
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  protected BooleanAssert isNot(Condition<Boolean> booleanCondition) {
+    //TODO
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  protected BooleanAssert isEqualTo(Boolean expected) {
+    //TODO
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  protected BooleanAssert isNotEqualTo(Boolean other) {
+    //TODO
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  protected BooleanAssert isNotNull() {
+    //TODO
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  protected BooleanAssert isSameAs(Boolean expected) {
+    //TODO
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  protected BooleanAssert isNotSameAs(Boolean other) {
+    //TODO
+    throw new UnsupportedOperationException();
   }
 }
