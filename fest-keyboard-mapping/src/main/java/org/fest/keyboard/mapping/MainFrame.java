@@ -88,7 +88,7 @@ public class MainFrame extends javax.swing.JFrame {
     saveMappingFileChooser.setName("saveMappingFileChooser"); // NOI18N
 
     setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-    setTitle("Keyboard Mappings");
+    setTitle("FEST Keyboard Mapping Tool");
     setMinimumSize(new java.awt.Dimension(260, 240));
     setName("mainFrame"); // NOI18N
 
@@ -130,7 +130,7 @@ public class MainFrame extends javax.swing.JFrame {
     menuBar.add(fileMenu);
 
     helpMenu.setMnemonic('H');
-    helpMenu.setText("Help");
+    helpMenu.setLabel("Help");
 
     aboutMenuItem.setMnemonic('A');
     aboutMenuItem.setText("About");
