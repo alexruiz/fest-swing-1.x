@@ -17,6 +17,7 @@ package org.fest.swing.test.swing;
 
 import static javax.swing.SwingUtilities.invokeLater;
 import static org.fest.swing.edt.GuiActionRunner.execute;
+import static org.fest.swing.test.swing.JOptionPaneHost.host;
 import static org.fest.swing.timing.Pause.pause;
 
 import javax.swing.JDialog;
@@ -79,7 +80,7 @@ public final class JOptionPaneLauncher {
   public static JDialog pack(final JOptionPane optionPane, final String title) {
     final JDialog dialog = execute(new GuiQuery<JDialog>() {
       protected JDialog executeInEDT() {
-        return optionPane.createDialog(title);
+        return host(optionPane, title);
       }
     });
     return dialog;
