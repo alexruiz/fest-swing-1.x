@@ -21,7 +21,6 @@ import java.io.*;
 import org.fest.util.VisibleForTesting;
 
 import static java.awt.event.KeyEvent.*;
-import static javax.swing.JComponent.WHEN_FOCUSED;
 import static javax.swing.JFileChooser.APPROVE_OPTION;
 import static javax.swing.JOptionPane.*;
 import static javax.swing.KeyStroke.getKeyStroke;
@@ -55,6 +54,7 @@ public class MainFrame extends javax.swing.JFrame {
     this.fileFactory = fileFactory;
     initComponents();
     addTabOutActionToMappingTable();
+    setIconImage(new javax.swing.ImageIcon(getClass().getResource("/fest16.png")).getImage()); // NOI18N
   }
 
   private void addTabOutActionToMappingTable() {
@@ -130,7 +130,7 @@ public class MainFrame extends javax.swing.JFrame {
     menuBar.add(fileMenu);
 
     helpMenu.setMnemonic('H');
-    helpMenu.setLabel("Help");
+    helpMenu.setText("Help");
 
     aboutMenuItem.setMnemonic('A');
     aboutMenuItem.setText("About");

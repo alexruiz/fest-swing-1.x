@@ -29,10 +29,12 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="aboutLabel" pref="298" max="32767" attributes="0"/>
+                      <Component id="logoLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="aboutLabel" pref="185" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="127" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="106" max="-2" attributes="0"/>
                       <Component id="closeButton" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -42,9 +44,12 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
+          <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="aboutLabel" min="-2" pref="47" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="aboutLabel" max="32767" attributes="1"/>
+                  <Component id="logoLabel" alignment="0" max="32767" attributes="1"/>
+              </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="closeButton" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
@@ -55,7 +60,7 @@
   <SubComponents>
     <Component class="javax.swing.JLabel" name="aboutLabel">
       <Properties>
-        <Property name="text" type="java.lang.String" value="&lt;html&gt;&#xa;&lt;strong&gt;FEST Keyboard Mapping Tool&lt;/strong&gt;&#xa;&lt;p&gt;&#xa;Copyright @2010 &lt;a href=&quot;http://fest.easytesting.org&quot;&gt;FEST&lt;/a&gt; (Fixtures for Easy Software Testing)&#xa;&lt;/p&gt;&#xa;&lt;/html&gt;"/>
+        <Property name="text" type="java.lang.String" value="&lt;html&gt; &lt;strong&gt;FEST Keyboard Mapping Tool&lt;/strong&gt; &lt;p&gt; Copyright @2010 FEST&lt;br/&gt; (Fixtures for Easy Software Testing)&lt;br/&gt;&lt;/p&gt; &lt;p&gt; http://fest.easytesting.org &lt;/p&gt; &lt;/html&gt;"/>
         <Property name="name" type="java.lang.String" value="aboutLabel" noResource="true"/>
       </Properties>
       <AccessibilityProperties>
@@ -71,6 +76,13 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="closeWindow"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="logoLabel">
+      <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/Image3.png"/>
+        </Property>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>
