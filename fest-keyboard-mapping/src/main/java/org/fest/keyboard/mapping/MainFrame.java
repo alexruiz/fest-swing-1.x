@@ -15,18 +15,24 @@
  */
 package org.fest.keyboard.mapping;
 
+import static java.awt.event.KeyEvent.VK_DELETE;
+import static java.awt.event.KeyEvent.VK_TAB;
+import static javax.swing.JComponent.WHEN_FOCUSED;
+import static javax.swing.JFileChooser.APPROVE_OPTION;
+import static javax.swing.JOptionPane.ERROR_MESSAGE;
+import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
+import static javax.swing.JOptionPane.showMessageDialog;
+import static javax.swing.KeyStroke.getKeyStroke;
+import static org.fest.keyboard.mapping.CharMapping.newCharMapping;
+import static org.fest.keyboard.mapping.MacOSSupport.isMacOS;
+import static org.fest.util.Strings.concat;
+import static org.fest.util.Strings.quote;
+
 import java.awt.Rectangle;
-import java.io.*;
+import java.io.File;
+import java.io.IOException;
 
 import org.fest.util.VisibleForTesting;
-
-import static java.awt.event.KeyEvent.*;
-import static javax.swing.JFileChooser.APPROVE_OPTION;
-import static javax.swing.JOptionPane.*;
-import static javax.swing.KeyStroke.getKeyStroke;
-
-import static org.fest.keyboard.mapping.CharMapping.newCharMapping;
-import static org.fest.util.Strings.*;
 
 /**
  * Understands the application's main window.
@@ -53,8 +59,14 @@ public class MainFrame extends javax.swing.JFrame {
   MainFrame(CharMappingFileFactory fileFactory) {
     this.fileFactory = fileFactory;
     initComponents();
+    setUpForMacOS();
     addTabOutActionToMappingTable();
     setIconImage(new javax.swing.ImageIcon(getClass().getResource("/fest16.png")).getImage()); // NOI18N
+  }
+
+  private void setUpForMacOS() {
+    if (!isMacOS()) return;
+    helpMenu.setVisible(false);
   }
 
   private void addTabOutActionToMappingTable() {
@@ -96,6 +108,7 @@ public class MainFrame extends javax.swing.JFrame {
     mappingTable.setName("mappingTable"); // NOI18N
     mappingTable.setSelectionMode(javax.swing.ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
     mappingTable.addKeyListener(new java.awt.event.KeyAdapter() {
+      @Override
       public void keyPressed(java.awt.event.KeyEvent evt) {
         keyPressedOnMappingTable(evt);
       }
@@ -109,6 +122,7 @@ public class MainFrame extends javax.swing.JFrame {
     charTextField.setDocument(new MaxLengthDocument());
     charTextField.setName("charTextField"); // NOI18N
     charTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+      @Override
       public void keyPressed(java.awt.event.KeyEvent evt) {
         charEntered(evt);
       }
@@ -197,10 +211,14 @@ public class MainFrame extends javax.swing.JFrame {
   }//GEN-LAST:event_keyPressedOnMappingTable
 
   private void showAboutWindow(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showAboutWindow
+    showAboutWindow();
+  }//GEN-LAST:event_showAboutWindow
+
+  void showAboutWindow() {
     if (aboutDialog == null) aboutDialog = new AboutDialog(this, true);
     aboutDialog.setLocationRelativeTo(this);
     aboutDialog.setVisible(true);
-  }//GEN-LAST:event_showAboutWindow
+  }
 
   private void showFileSaveActionSuccessMessage(File file) {
     String message = concat("File ", quote(file.getName()), " successfully saved.");
@@ -211,7 +229,7 @@ public class MainFrame extends javax.swing.JFrame {
     String message = concat("Unable to save file: [", cause, "]");
     showMessageDialog(this, message, "Error", ERROR_MESSAGE);
   }
-  
+
   private void addMapping(CharMapping mapping) {
     mappingTableModel().addOrReplace(mapping);
     selectAndScrollToLastRow();
@@ -252,7 +270,7 @@ public class MainFrame extends javax.swing.JFrame {
   void giveFocusToCharTextField() {
     charTextField.requestFocusInWindow();
   }
-  
+
   // Variables declaration - do not modify//GEN-BEGIN:variables
   private javax.swing.JMenuItem aboutMenuItem;
   private javax.swing.JLabel charLabel;

@@ -1,5 +1,5 @@
 /*
- * Created on Apr 1, 2010
+ * Created on Apr 17, 2010
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -15,34 +15,40 @@
  */
 package org.fest.keyboard.mapping;
 
+import static com.apple.mrj.MRJApplicationUtils.registerAboutHandler;
 import static javax.swing.SwingUtilities.invokeLater;
-import static javax.swing.UIManager.getSystemLookAndFeelClassName;
-import static javax.swing.UIManager.setLookAndFeel;
-import static org.fest.keyboard.mapping.MacAboutHandler.installMacAboutHandler;
-import static org.fest.keyboard.mapping.MacOSSupport.setUpForMacOS;
+import static javax.swing.SwingUtilities.isEventDispatchThread;
+import static org.fest.keyboard.mapping.MacOSSupport.isMacOS;
+
+import com.apple.mrj.MRJAboutHandler;
 
 /**
- * Understands the application's main class.
+ * Understands a Mac-only "About" handler.
  *
+ * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class Application {
+class MacAboutHandler implements MRJAboutHandler {
 
-  public static void main(String... args) {
-    setUpForMacOS();
+  private final MainFrame frame;
+
+  static void installMacAboutHandler(MainFrame frame) {
+    if (!isMacOS()) return;
+    registerAboutHandler(new MacAboutHandler(frame));
+  }
+
+  private MacAboutHandler(MainFrame frame) {
+    this.frame = frame;
+  }
+
+  public void handleAbout() {
+    if (isEventDispatchThread()) {
+      frame.showAboutWindow();
+      return;
+    }
     invokeLater(new Runnable() {
       public void run() {
-        setLaF();
-        MainFrame mainFrame = new MainFrame();
-        installMacAboutHandler(mainFrame);
-        mainFrame.setVisible(true);
-        mainFrame.giveFocusToCharTextField();
-      }
-
-      private void setLaF() {
-        try {
-          setLookAndFeel(getSystemLookAndFeelClassName());
-        } catch (Exception ignored) {}
+        frame.showAboutWindow();
       }
     });
   }
