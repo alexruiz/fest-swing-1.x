@@ -223,7 +223,7 @@ public class JButtonFixture extends ComponentFixture<JButton> implements CommonC
    * @return this fixture.
    * @throws AssertionError if this fixture's <code>JButton</code> does not have input focus.
    */
-  public FocusableComponentFixture requireFocused() {
+  public JButtonFixture requireFocused() {
     driver.requireFocused(target);
     return this;
   }
