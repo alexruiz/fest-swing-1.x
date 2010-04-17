@@ -26,6 +26,7 @@ import static javax.swing.UIManager.*;
 public class Application {
 
   public static void main(String... args) {
+    setUpForMac();
     invokeLater(new Runnable() {
       public void run() {
         setLaF();
@@ -40,5 +41,12 @@ public class Application {
         } catch (Exception ignored) {}
       }
     });
+  }
+
+  private static void setUpForMac() {
+    String osName = System.getProperty("os.name");
+    if (!osName.startsWith("Mac")) return;
+    System.setProperty("apple.laf.useScreenMenuBar", "true");
+    System.setProperty("com.apple.mrj.application.apple.menu.about.name", "FEST Keyboard Mapping Tool");
   }
 }
