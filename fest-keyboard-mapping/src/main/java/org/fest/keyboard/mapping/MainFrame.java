@@ -15,22 +15,18 @@
  */
 package org.fest.keyboard.mapping;
 
-import static java.awt.event.KeyEvent.VK_DELETE;
-import static java.awt.event.KeyEvent.VK_TAB;
-import static javax.swing.JComponent.WHEN_FOCUSED;
 import static javax.swing.JFileChooser.APPROVE_OPTION;
-import static javax.swing.JOptionPane.ERROR_MESSAGE;
-import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
-import static javax.swing.JOptionPane.showMessageDialog;
-import static javax.swing.KeyStroke.getKeyStroke;
+import static javax.swing.JOptionPane.*;
 import static org.fest.keyboard.mapping.CharMapping.newCharMapping;
 import static org.fest.keyboard.mapping.MacOSSupport.isMacOS;
 import static org.fest.util.Strings.concat;
 import static org.fest.util.Strings.quote;
 
-import java.awt.Rectangle;
 import java.io.File;
 import java.io.IOException;
+
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 import org.fest.util.VisibleForTesting;
 
@@ -43,9 +39,8 @@ public class MainFrame extends javax.swing.JFrame {
 
   private static final long serialVersionUID = 1L;
 
-  private static final String TAB_OUT_ACTION_KEY = "tabOut";
-
   private final CharMappingFileFactory fileFactory;
+  private final CharMappingTable mappingTable;
   private AboutDialog aboutDialog;
 
   /**
@@ -58,20 +53,22 @@ public class MainFrame extends javax.swing.JFrame {
   @VisibleForTesting
   MainFrame(CharMappingFileFactory fileFactory) {
     this.fileFactory = fileFactory;
+    mappingTable = new CharMappingTable();
     initComponents();
+    mappingScrollPane.setViewportView(mappingTable);
     setUpForMacOS();
-    addTabOutActionToMappingTable();
     setIconImage(new javax.swing.ImageIcon(getClass().getResource("/fest16.png")).getImage()); // NOI18N
+    mappingTable.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+      public void valueChanged(ListSelectionEvent e) {
+        if (e.getValueIsAdjusting()) return;
+        updateDeleteSelectedRowsMenu();
+      }
+    });
   }
 
   private void setUpForMacOS() {
     if (!isMacOS()) return;
     helpMenu.setVisible(false);
-  }
-
-  private void addTabOutActionToMappingTable() {
-    mappingTable.getInputMap(WHEN_FOCUSED).put(getKeyStroke(VK_TAB, 0), TAB_OUT_ACTION_KEY);
-    mappingTable.getActionMap().put(TAB_OUT_ACTION_KEY, new TabOutAction());
   }
 
   /** This method is called from within the constructor to
@@ -83,13 +80,14 @@ public class MainFrame extends javax.swing.JFrame {
   private void initComponents() {
 
     saveMappingFileChooser = new javax.swing.JFileChooser();
-    tableScrollPane = new javax.swing.JScrollPane();
-    mappingTable = new javax.swing.JTable();
     charLabel = new javax.swing.JLabel();
     charTextField = new javax.swing.JTextField();
+    mappingScrollPane = new javax.swing.JScrollPane();
     menuBar = new javax.swing.JMenuBar();
     fileMenu = new javax.swing.JMenu();
     createMappingFileMenu = new javax.swing.JMenuItem();
+    editMenu = new javax.swing.JMenu();
+    deleteSelectedRowsMenu = new javax.swing.JMenuItem();
     helpMenu = new javax.swing.JMenu();
     aboutMenuItem = new javax.swing.JMenuItem();
 
@@ -101,19 +99,9 @@ public class MainFrame extends javax.swing.JFrame {
 
     setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
     setTitle("FEST Keyboard Mapping Tool");
+    setLocationByPlatform(true);
     setMinimumSize(new java.awt.Dimension(260, 240));
     setName("mainFrame"); // NOI18N
-
-    mappingTable.setModel(new BasicCharMappingTableModel());
-    mappingTable.setName("mappingTable"); // NOI18N
-    mappingTable.setSelectionMode(javax.swing.ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
-    mappingTable.addKeyListener(new java.awt.event.KeyAdapter() {
-      @Override
-      public void keyPressed(java.awt.event.KeyEvent evt) {
-        keyPressedOnMappingTable(evt);
-      }
-    });
-    tableScrollPane.setViewportView(mappingTable);
 
     charLabel.setDisplayedMnemonic('E');
     charLabel.setLabelFor(charTextField);
@@ -122,7 +110,6 @@ public class MainFrame extends javax.swing.JFrame {
     charTextField.setDocument(new MaxLengthDocument());
     charTextField.setName("charTextField"); // NOI18N
     charTextField.addKeyListener(new java.awt.event.KeyAdapter() {
-      @Override
       public void keyPressed(java.awt.event.KeyEvent evt) {
         charEntered(evt);
       }
@@ -143,8 +130,25 @@ public class MainFrame extends javax.swing.JFrame {
 
     menuBar.add(fileMenu);
 
+    editMenu.setMnemonic('E');
+    editMenu.setText("Edit");
+    editMenu.setName(""); // NOI18N
+
+    deleteSelectedRowsMenu.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_DELETE, 0));
+    deleteSelectedRowsMenu.setMnemonic('D');
+    deleteSelectedRowsMenu.setText("Delete Selected Rows");
+    deleteSelectedRowsMenu.setEnabled(false);
+    deleteSelectedRowsMenu.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        deleteSelectedRows(evt);
+      }
+    });
+    editMenu.add(deleteSelectedRowsMenu);
+
+    menuBar.add(editMenu);
+
     helpMenu.setMnemonic('H');
-    helpMenu.setLabel("Help");
+    helpMenu.setText("Help");
 
     aboutMenuItem.setMnemonic('A');
     aboutMenuItem.setText("About");
@@ -166,7 +170,7 @@ public class MainFrame extends javax.swing.JFrame {
       .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
         .addContainerGap()
         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-          .addComponent(tableScrollPane, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 297, Short.MAX_VALUE)
+          .addComponent(mappingScrollPane, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 297, Short.MAX_VALUE)
           .addComponent(charTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 297, Short.MAX_VALUE)
           .addComponent(charLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 297, Short.MAX_VALUE))
         .addContainerGap())
@@ -175,8 +179,8 @@ public class MainFrame extends javax.swing.JFrame {
       layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
       .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
         .addContainerGap()
-        .addComponent(tableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
-        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+        .addComponent(mappingScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
+        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
         .addComponent(charLabel)
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
         .addComponent(charTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -197,22 +201,20 @@ public class MainFrame extends javax.swing.JFrame {
     if (selection != APPROVE_OPTION) return;
     File toSave = saveMappingFileChooser.getSelectedFile();
     try {
-      fileFactory.createMappingFile(toSave, mappingTableModel());
+      fileFactory.createMappingFile(toSave, mappingTable.getModel());
       showFileSaveActionSuccessMessage(toSave);
     } catch (IOException e) {
       showSaveFileActionFailedMessage(e.getMessage());
     }
   }//GEN-LAST:event_saveAsMappingFile
 
-  private void keyPressedOnMappingTable(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_keyPressedOnMappingTable
-    if (evt.getKeyCode() != VK_DELETE) return;
-    if (mappingTable.getSelectedRowCount() == 0) return;
-    deleteSelectedRows();
-  }//GEN-LAST:event_keyPressedOnMappingTable
-
   private void showAboutWindow(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showAboutWindow
     showAboutWindow();
   }//GEN-LAST:event_showAboutWindow
+
+  private void deleteSelectedRows(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteSelectedRows
+    mappingTable.deleteSelection();
+  }//GEN-LAST:event_deleteSelectedRows
 
   void showAboutWindow() {
     if (aboutDialog == null) aboutDialog = new AboutDialog(this, true);
@@ -231,40 +233,18 @@ public class MainFrame extends javax.swing.JFrame {
   }
 
   private void addMapping(CharMapping mapping) {
-    mappingTableModel().addOrReplace(mapping);
-    selectAndScrollToLastRow();
+    mappingTable.getModel().addOrReplace(mapping);
+    mappingTable.scrollAndSelectLastRow();
     updateUI();
-  }
-
-  private void deleteSelectedRows() {
-    int selectedRow = mappingTable.getSelectedRow();
-    BasicCharMappingTableModel model = mappingTableModel();
-    while (selectedRow != -1) {
-      model.removeRow(selectedRow);
-      selectedRow = mappingTable.getSelectedRow();
-    }
-    updateUI();
-  }
-
-  private void selectAndScrollToLastRow() {
-    int lastRowIndex = mappingTableModel().lastRowIndex();
-    if (lastRowIndex >= 0) {
-      scrollToRow(lastRowIndex);
-      mappingTable.setRowSelectionInterval(lastRowIndex, lastRowIndex);
-    }
-  }
-
-  private void scrollToRow(int row) {
-    Rectangle rect = mappingTable.getCellRect(row, 0, true);
-    mappingTable.scrollRectToVisible(rect);
-  }
-
-  private BasicCharMappingTableModel mappingTableModel() {
-    return (BasicCharMappingTableModel)mappingTable.getModel();
   }
 
   private void updateUI() {
     createMappingFileMenu.setEnabled(mappingTable.getRowCount() > 0);
+    updateDeleteSelectedRowsMenu();
+  }
+
+  private void updateDeleteSelectedRowsMenu() {
+    deleteSelectedRowsMenu.setEnabled(mappingTable.getSelectedRowCount() > 0);
   }
 
   void giveFocusToCharTextField() {
@@ -276,11 +256,12 @@ public class MainFrame extends javax.swing.JFrame {
   private javax.swing.JLabel charLabel;
   private javax.swing.JTextField charTextField;
   private javax.swing.JMenuItem createMappingFileMenu;
+  private javax.swing.JMenuItem deleteSelectedRowsMenu;
+  private javax.swing.JMenu editMenu;
   private javax.swing.JMenu fileMenu;
   private javax.swing.JMenu helpMenu;
-  private javax.swing.JTable mappingTable;
+  private javax.swing.JScrollPane mappingScrollPane;
   private javax.swing.JMenuBar menuBar;
   private javax.swing.JFileChooser saveMappingFileChooser;
-  private javax.swing.JScrollPane tableScrollPane;
   // End of variables declaration//GEN-END:variables
 }

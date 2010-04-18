@@ -69,4 +69,8 @@ class BasicCharMappingTableModel extends DefaultTableModel implements CharMappin
   public int rowCount() {
     return getRowCount();
   }
+
+  @Override public boolean isCellEditable(int row, int column) {
+    return false;
+  }
 }
