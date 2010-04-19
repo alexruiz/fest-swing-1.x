@@ -87,20 +87,21 @@ public class CharMappingFileChooser_filetoSave extends RobotBasedTestCase {
       });
     }
 
-    private final AtomicReference<File> fileRef = new AtomicReference<File>();
+    private final AtomicReference<File> fileReference = new AtomicReference<File>();
 
     private MyWindow() {
       super(CharMappingFileChooser_filetoSave.class);
+      final CharMappingFileChooser fileChooser = new CharMappingFileChooser(this);
       JButton button = new JButton("Click Me");
       button.addActionListener(new ActionListener() {
         public void actionPerformed(ActionEvent e) {
-          File file = new CharMappingFileChooser(MyWindow.this).fileToSave();
-          fileRef.set(file);
+          File fileToSave = fileChooser.fileToSave();
+          fileReference.set(fileToSave);
         }
       });
       addComponents(button);
     }
 
-    File selectedFile() { return fileRef.get(); }
+    File selectedFile() { return fileReference.get(); }
   }
 }
