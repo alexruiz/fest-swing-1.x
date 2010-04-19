@@ -301,55 +301,55 @@ public class FloatAssert extends PrimitiveAssert<Float> implements NumberAssert 
    */
 
   @Override
-  protected GenericAssert<Float> satisfies(Condition<Float> floatCondition) {
+  protected FloatAssert satisfies(Condition<Float> floatCondition) {
     assertSatisfies(floatCondition);
     return this;
   }
 
   @Override
-  protected GenericAssert<Float> doesNotSatisfy(Condition<Float> floatCondition) {
+  protected FloatAssert doesNotSatisfy(Condition<Float> floatCondition) {
+    assertDoesNotSatisfy(floatCondition);
+    return this;
+  }
+
+  @Override
+  protected FloatAssert is(Condition<Float> floatCondition) {
     //TODO
     throw new UnsupportedOperationException();
   }
 
   @Override
-  protected GenericAssert<Float> is(Condition<Float> floatCondition) {
+  protected FloatAssert isNot(Condition<Float> floatCondition) {
     //TODO
     throw new UnsupportedOperationException();
   }
 
   @Override
-  protected GenericAssert<Float> isNot(Condition<Float> floatCondition) {
+  protected FloatAssert isEqualTo(Float expected) {
     //TODO
     throw new UnsupportedOperationException();
   }
 
   @Override
-  protected GenericAssert<Float> isEqualTo(Float expected) {
+  protected FloatAssert isNotEqualTo(Float other) {
     //TODO
     throw new UnsupportedOperationException();
   }
 
   @Override
-  protected GenericAssert<Float> isNotEqualTo(Float other) {
+  protected FloatAssert isNotNull() {
     //TODO
     throw new UnsupportedOperationException();
   }
 
   @Override
-  protected GenericAssert<Float> isNotNull() {
+  protected FloatAssert isSameAs(Float expected) {
     //TODO
     throw new UnsupportedOperationException();
   }
 
   @Override
-  protected GenericAssert<Float> isSameAs(Float expected) {
-    //TODO
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
-  protected GenericAssert<Float> isNotSameAs(Float other) {
+  protected FloatAssert isNotSameAs(Float other) {
     //TODO
     throw new UnsupportedOperationException();
   }

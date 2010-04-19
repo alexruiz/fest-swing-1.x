@@ -223,55 +223,55 @@ public class ByteAssert extends PrimitiveAssert<Byte> implements NumberAssert {
    */
 
   @Override
-  protected GenericAssert<Byte> satisfies(Condition<Byte> byteCondition) {
+  protected ByteAssert satisfies(Condition<Byte> byteCondition) {
     assertSatisfies(byteCondition);
     return this;
   }
 
   @Override
-  protected GenericAssert<Byte> doesNotSatisfy(Condition<Byte> byteCondition) {
+  protected ByteAssert doesNotSatisfy(Condition<Byte> byteCondition) {
+    assertDoesNotSatisfy(byteCondition);
+    return this;
+  }
+
+  @Override
+  protected ByteAssert is(Condition<Byte> byteCondition) {
     //TODO
     throw new UnsupportedOperationException();
   }
 
   @Override
-  protected GenericAssert<Byte> is(Condition<Byte> byteCondition) {
+  protected ByteAssert isNot(Condition<Byte> byteCondition) {
     //TODO
     throw new UnsupportedOperationException();
   }
 
   @Override
-  protected GenericAssert<Byte> isNot(Condition<Byte> byteCondition) {
+  protected ByteAssert isEqualTo(Byte expected) {
     //TODO
     throw new UnsupportedOperationException();
   }
 
   @Override
-  protected GenericAssert<Byte> isEqualTo(Byte expected) {
+  protected ByteAssert isNotEqualTo(Byte other) {
     //TODO
     throw new UnsupportedOperationException();
   }
 
   @Override
-  protected GenericAssert<Byte> isNotEqualTo(Byte other) {
+  protected ByteAssert isNotNull() {
     //TODO
     throw new UnsupportedOperationException();
   }
 
   @Override
-  protected GenericAssert<Byte> isNotNull() {
+  protected ByteAssert isSameAs(Byte expected) {
     //TODO
     throw new UnsupportedOperationException();
   }
 
   @Override
-  protected GenericAssert<Byte> isSameAs(Byte expected) {
-    //TODO
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
-  protected GenericAssert<Byte> isNotSameAs(Byte other) {
+  protected ByteAssert isNotSameAs(Byte other) {
     //TODO
     throw new UnsupportedOperationException();
   }

@@ -224,55 +224,55 @@ public class IntAssert extends PrimitiveAssert<Integer> implements NumberAssert 
    * ==== newly implemented methods for FEST-133 start here
    */
   @Override
-  protected GenericAssert<Integer> satisfies(Condition<Integer> integerCondition) {
+  protected IntAssert satisfies(Condition<Integer> integerCondition) {
     assertSatisfies(integerCondition);
     return this;
   }
 
   @Override
-  protected GenericAssert<Integer> doesNotSatisfy(Condition<Integer> integerCondition) {
+  protected IntAssert doesNotSatisfy(Condition<Integer> integerCondition) {
+    assertDoesNotSatisfy(integerCondition);
+    return this;
+  }
+
+  @Override
+  protected IntAssert is(Condition<Integer> integerCondition) {
     //TODO
     throw new UnsupportedOperationException();
   }
 
   @Override
-  protected GenericAssert<Integer> is(Condition<Integer> integerCondition) {
+  protected IntAssert isNot(Condition<Integer> integerCondition) {
     //TODO
     throw new UnsupportedOperationException();
   }
 
   @Override
-  protected GenericAssert<Integer> isNot(Condition<Integer> integerCondition) {
+  protected IntAssert isEqualTo(Integer expected) {
     //TODO
     throw new UnsupportedOperationException();
   }
 
   @Override
-  protected GenericAssert<Integer> isEqualTo(Integer expected) {
+  protected IntAssert isNotEqualTo(Integer other) {
     //TODO
     throw new UnsupportedOperationException();
   }
 
   @Override
-  protected GenericAssert<Integer> isNotEqualTo(Integer other) {
+  protected IntAssert isNotNull() {
     //TODO
     throw new UnsupportedOperationException();
   }
 
   @Override
-  protected GenericAssert<Integer> isNotNull() {
+  protected IntAssert isSameAs(Integer expected) {
     //TODO
     throw new UnsupportedOperationException();
   }
 
   @Override
-  protected GenericAssert<Integer> isSameAs(Integer expected) {
-    //TODO
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
-  protected GenericAssert<Integer> isNotSameAs(Integer other) {
+  protected IntAssert isNotSameAs(Integer other) {
     //TODO
     throw new UnsupportedOperationException();
   }

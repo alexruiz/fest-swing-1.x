@@ -170,8 +170,8 @@ public class BooleanAssert extends PrimitiveAssert<Boolean> {
 
   @Override
   protected BooleanAssert doesNotSatisfy(Condition<Boolean> booleanCondition) {
-    //TODO
-    throw new UnsupportedOperationException();
+    assertDoesNotSatisfy(booleanCondition);
+    return this;
   }
 
   @Override

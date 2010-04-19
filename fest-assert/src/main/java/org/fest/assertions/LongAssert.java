@@ -223,55 +223,55 @@ public class LongAssert extends PrimitiveAssert<Long> implements NumberAssert {
    */
 
   @Override
-  protected GenericAssert<Long> satisfies(Condition<Long> longCondition) {
+  protected LongAssert satisfies(Condition<Long> longCondition) {
     assertSatisfies(longCondition);
     return this;
   }
 
   @Override
-  protected GenericAssert<Long> doesNotSatisfy(Condition<Long> longCondition) {
+  protected LongAssert doesNotSatisfy(Condition<Long> longCondition) {
+    assertDoesNotSatisfy(longCondition);
+    return this;
+  }
+
+  @Override
+  protected LongAssert is(Condition<Long> longCondition) {
     //TODO
     throw new UnsupportedOperationException();
   }
 
   @Override
-  protected GenericAssert<Long> is(Condition<Long> longCondition) {
+  protected LongAssert isNot(Condition<Long> longCondition) {
     //TODO
     throw new UnsupportedOperationException();
   }
 
   @Override
-  protected GenericAssert<Long> isNot(Condition<Long> longCondition) {
+  protected LongAssert isEqualTo(Long expected) {
     //TODO
     throw new UnsupportedOperationException();
   }
 
   @Override
-  protected GenericAssert<Long> isEqualTo(Long expected) {
+  protected LongAssert isNotEqualTo(Long other) {
     //TODO
     throw new UnsupportedOperationException();
   }
 
   @Override
-  protected GenericAssert<Long> isNotEqualTo(Long other) {
+  protected LongAssert isNotNull() {
     //TODO
     throw new UnsupportedOperationException();
   }
 
   @Override
-  protected GenericAssert<Long> isNotNull() {
+  protected LongAssert isSameAs(Long expected) {
     //TODO
     throw new UnsupportedOperationException();
   }
 
   @Override
-  protected GenericAssert<Long> isSameAs(Long expected) {
-    //TODO
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
-  protected GenericAssert<Long> isNotSameAs(Long other) {
+  protected LongAssert isNotSameAs(Long other) {
     //TODO
     throw new UnsupportedOperationException();
   }

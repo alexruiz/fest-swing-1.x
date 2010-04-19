@@ -222,55 +222,55 @@ public class ShortAssert extends PrimitiveAssert<Short> implements NumberAssert 
    * ===== Newly implemented methods for FEST-133 / from GenericAssert start here:
    */
   @Override
-  protected GenericAssert<Short> satisfies(Condition<Short> shortCondition) {
+  protected ShortAssert satisfies(Condition<Short> shortCondition) {
     assertSatisfies(shortCondition);
     return this;
   }
 
   @Override
-  protected GenericAssert<Short> doesNotSatisfy(Condition<Short> shortCondition) {
+  protected ShortAssert doesNotSatisfy(Condition<Short> shortCondition) {
+    assertDoesNotSatisfy(shortCondition);
+    return this;
+  }
+
+  @Override
+  protected ShortAssert is(Condition<Short> shortCondition) {
     //TODO
     throw new UnsupportedOperationException();
   }
 
   @Override
-  protected GenericAssert<Short> is(Condition<Short> shortCondition) {
+  protected ShortAssert isNot(Condition<Short> shortCondition) {
     //TODO
     throw new UnsupportedOperationException();
   }
 
   @Override
-  protected GenericAssert<Short> isNot(Condition<Short> shortCondition) {
+  protected ShortAssert isEqualTo(Short expected) {
     //TODO
     throw new UnsupportedOperationException();
   }
 
   @Override
-  protected GenericAssert<Short> isEqualTo(Short expected) {
+  protected ShortAssert isNotEqualTo(Short other) {
     //TODO
     throw new UnsupportedOperationException();
   }
 
   @Override
-  protected GenericAssert<Short> isNotEqualTo(Short other) {
+  protected ShortAssert isNotNull() {
     //TODO
     throw new UnsupportedOperationException();
   }
 
   @Override
-  protected GenericAssert<Short> isNotNull() {
+  protected ShortAssert isSameAs(Short expected) {
     //TODO
     throw new UnsupportedOperationException();
   }
 
   @Override
-  protected GenericAssert<Short> isSameAs(Short expected) {
-    //TODO
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
-  protected GenericAssert<Short> isNotSameAs(Short other) {
+  protected ShortAssert isNotSameAs(Short other) {
     //TODO
     throw new UnsupportedOperationException();
   }

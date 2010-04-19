@@ -288,55 +288,55 @@ public class DoubleAssert extends PrimitiveAssert<Double> implements NumberAsser
    */
   
   @Override
-  protected GenericAssert<Double> satisfies(Condition<Double> doubleCondition) {
+  protected DoubleAssert satisfies(Condition<Double> doubleCondition) {
     assertSatisfies(doubleCondition);
     return this;
   }
 
   @Override
-  protected GenericAssert<Double> doesNotSatisfy(Condition<Double> doubleCondition) {
+  protected DoubleAssert doesNotSatisfy(Condition<Double> doubleCondition) {
+    assertDoesNotSatisfy(doubleCondition);
+    return this;
+  }
+
+  @Override
+  protected DoubleAssert is(Condition<Double> doubleCondition) {
     //TODO
     throw new UnsupportedOperationException();
   }
 
   @Override
-  protected GenericAssert<Double> is(Condition<Double> doubleCondition) {
+  protected DoubleAssert isNot(Condition<Double> doubleCondition) {
     //TODO
     throw new UnsupportedOperationException();
   }
 
   @Override
-  protected GenericAssert<Double> isNot(Condition<Double> doubleCondition) {
+  protected DoubleAssert isEqualTo(Double expected) {
     //TODO
     throw new UnsupportedOperationException();
   }
 
   @Override
-  protected GenericAssert<Double> isEqualTo(Double expected) {
+  protected DoubleAssert isNotEqualTo(Double other) {
     //TODO
     throw new UnsupportedOperationException();
   }
 
   @Override
-  protected GenericAssert<Double> isNotEqualTo(Double other) {
+  protected DoubleAssert isNotNull() {
     //TODO
     throw new UnsupportedOperationException();
   }
 
   @Override
-  protected GenericAssert<Double> isNotNull() {
+  protected DoubleAssert isSameAs(Double expected) {
     //TODO
     throw new UnsupportedOperationException();
   }
 
   @Override
-  protected GenericAssert<Double> isSameAs(Double expected) {
-    //TODO
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
-  protected GenericAssert<Double> isNotSameAs(Double other) {
+  protected DoubleAssert isNotSameAs(Double other) {
     //TODO
     throw new UnsupportedOperationException();
   }

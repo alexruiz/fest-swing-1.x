@@ -217,55 +217,55 @@ public class CharAssert extends PrimitiveAssert<Character> {
    */
 
   @Override
-  protected GenericAssert<Character> satisfies(Condition<Character> characterCondition) {
+  protected CharAssert satisfies(Condition<Character> characterCondition) {
     assertSatisfies(characterCondition);
     return this;
   }
 
   @Override
-  protected GenericAssert<Character> doesNotSatisfy(Condition<Character> characterCondition) {
+  protected CharAssert doesNotSatisfy(Condition<Character> characterCondition) {
+    assertDoesNotSatisfy(characterCondition);
+    return this;
+  }
+
+  @Override
+  protected CharAssert is(Condition<Character> characterCondition) {
     //TODO
     throw new UnsupportedOperationException();
   }
 
   @Override
-  protected GenericAssert<Character> is(Condition<Character> characterCondition) {
+  protected CharAssert isNot(Condition<Character> characterCondition) {
     //TODO
     throw new UnsupportedOperationException();
   }
 
   @Override
-  protected GenericAssert<Character> isNot(Condition<Character> characterCondition) {
+  protected CharAssert isEqualTo(Character expected) {
     //TODO
     throw new UnsupportedOperationException();
   }
 
   @Override
-  protected GenericAssert<Character> isEqualTo(Character expected) {
+  protected CharAssert isNotEqualTo(Character other) {
     //TODO
     throw new UnsupportedOperationException();
   }
 
   @Override
-  protected GenericAssert<Character> isNotEqualTo(Character other) {
+  protected CharAssert isNotNull() {
     //TODO
     throw new UnsupportedOperationException();
   }
 
   @Override
-  protected GenericAssert<Character> isNotNull() {
+  protected CharAssert isSameAs(Character expected) {
     //TODO
     throw new UnsupportedOperationException();
   }
 
   @Override
-  protected GenericAssert<Character> isSameAs(Character expected) {
-    //TODO
-    throw new UnsupportedOperationException();
-  }
-
-  @Override
-  protected GenericAssert<Character> isNotSameAs(Character other) {
+  protected CharAssert isNotSameAs(Character other) {
     //TODO
     throw new UnsupportedOperationException();
   }
