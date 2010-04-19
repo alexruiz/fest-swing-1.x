@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jnlp spec="$jnlpspec" codebase="$project.Url/jnlp/$project.artifactId"
+  href="$outputFile">
+  <information>
+    <title>$project.Name</title>
+    <vendor>$project.Organization.Name</vendor>
+    <homepage href="$project.Url" />
+    <description>$project.Description</description>
+    <icon href="images/fest64.png" />
+    <shortcut online="false">
+      <desktop />
+    </shortcut>
+    <offline-allowed />
+  </information>
+  <security>
+    <all-permissions />
+  </security>
+  <resources>
+    <j2se version="1.6+" />
+    $dependencies
+  </resources>
+  <application-desc main-class="$mainClass" />
+</jnlp>
