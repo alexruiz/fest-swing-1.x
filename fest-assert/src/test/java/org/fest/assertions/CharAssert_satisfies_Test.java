@@ -19,7 +19,7 @@ package org.fest.assertions;
 public class CharAssert_satisfies_Test extends GenericAssert_satisfies_TestBase<Character> {
 
   @Override
-  protected GenericAssert<Character> createInstanceFromOne() {
+  protected GenericAssert<Character> createInstanceRepresentingOne() {
     return new CharAssert('1');
   }
 

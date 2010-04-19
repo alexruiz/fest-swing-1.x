@@ -19,7 +19,7 @@ package org.fest.assertions;
 public class IntAssert_satisfies_Test extends GenericAssert_satisfies_TestBase<Integer> {
 
   @Override
-  protected GenericAssert<Integer> createInstanceFromOne() {
+  protected GenericAssert<Integer> createInstanceRepresentingOne() {
     return new IntAssert(1);
   }
 

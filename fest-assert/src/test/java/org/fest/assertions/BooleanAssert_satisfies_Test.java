@@ -19,7 +19,7 @@ package org.fest.assertions;
 public class BooleanAssert_satisfies_Test extends GenericAssert_satisfies_TestBase<Boolean> {
 
   @Override
-  protected GenericAssert<Boolean> createInstanceFromOne() {
+  protected GenericAssert<Boolean> createInstanceRepresentingOne() {
     return new BooleanAssert(true);
   }
 

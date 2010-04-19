@@ -37,20 +37,20 @@ public abstract class GenericAssert_satisfies_TestBase<T> implements GenericAsse
     return NotNull.instance();
   }
 
-  protected abstract GenericAssert<T> createInstanceFromOne();
+  protected abstract GenericAssert<T> createInstanceRepresentingOne();
 
   protected abstract GenericAssert<T> createInstanceFromNullReference();
 
   @Test
   public void should_pass_if_condition_is_satisfied() {
-    createInstanceFromOne().satisfies(createNotNullCondition());
+    createInstanceRepresentingOne().satisfies(createNotNullCondition());
   }
 
   @Test
   public void should_throw_error_if_condition_is_null() {
     expectErrorIfConditionIsNull().on(new CodeToTest() {
       public void run() {
-        createInstanceFromOne().satisfies(null);
+        createInstanceRepresentingOne().satisfies(null);
       }
     });
   }
@@ -123,6 +123,4 @@ public abstract class GenericAssert_satisfies_TestBase<T> implements GenericAsse
       }
     });
   }
-
-
 }

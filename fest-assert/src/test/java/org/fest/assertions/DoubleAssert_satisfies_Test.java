@@ -19,7 +19,7 @@ package org.fest.assertions;
 public class DoubleAssert_satisfies_Test extends GenericAssert_satisfies_TestBase<Double> {
 
   @Override
-  protected GenericAssert<Double> createInstanceFromOne() {
+  protected GenericAssert<Double> createInstanceRepresentingOne() {
     return new DoubleAssert(1.0d);
   }
 
