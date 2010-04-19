@@ -20,6 +20,7 @@ import static javax.swing.KeyStroke.getKeyStroke;
 import static javax.swing.ListSelectionModel.MULTIPLE_INTERVAL_SELECTION;
 
 import javax.swing.JTable;
+import javax.swing.event.ListSelectionListener;
 
 /**
  * Understands a <code>{@link JTable}</code> that displays <code>{@link CharMapping}</code>s.
@@ -60,6 +61,10 @@ class CharMappingTable extends JTable {
     if (lastRowIndex < 0) return;
     scrollRectToVisible(getCellRect(lastRowIndex, 0, true));
     setRowSelectionInterval(lastRowIndex, lastRowIndex);
+  }
+
+  void addSelectionListener(ListSelectionListener l) {
+    getSelectionModel().addListSelectionListener(l);
   }
 }
 

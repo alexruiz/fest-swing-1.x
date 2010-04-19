@@ -2,17 +2,6 @@
 
 <Form version="1.6" maxVersion="1.7" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <NonVisualComponents>
-    <Component class="javax.swing.JFileChooser" name="saveMappingFileChooser">
-      <Properties>
-        <Property name="acceptAllFileFilterUsed" type="boolean" value="false"/>
-        <Property name="dialogTitle" type="java.lang.String" value="Save As Mapping File"/>
-        <Property name="dialogType" type="int" value="1"/>
-        <Property name="fileFilter" type="javax.swing.filechooser.FileFilter" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-          <Connection code="new TextFileFilter()" type="code"/>
-        </Property>
-        <Property name="name" type="java.lang.String" value="saveMappingFileChooser" noResource="true"/>
-      </Properties>
-    </Component>
     <Menu class="javax.swing.JMenuBar" name="menuBar">
       <SubComponents>
         <Menu class="javax.swing.JMenu" name="fileMenu">
@@ -21,15 +10,12 @@
             <Property name="text" type="java.lang.String" value="File"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="createMappingFileMenu">
+            <MenuItem class="javax.swing.JMenuItem" name="saveMappingFileMenu">
               <Properties>
                 <Property name="mnemonic" type="int" value="83"/>
                 <Property name="text" type="java.lang.String" value="Save As Mapping File"/>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="saveAsMappingFile"/>
-              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>

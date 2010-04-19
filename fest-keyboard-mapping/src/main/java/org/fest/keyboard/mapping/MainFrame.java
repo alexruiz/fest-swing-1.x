@@ -15,20 +15,11 @@
  */
 package org.fest.keyboard.mapping;
 
-import static javax.swing.JFileChooser.APPROVE_OPTION;
-import static javax.swing.JOptionPane.*;
 import static org.fest.keyboard.mapping.CharMapping.newCharMapping;
 import static org.fest.keyboard.mapping.MacOSSupport.isMacOS;
-import static org.fest.util.Strings.concat;
-import static org.fest.util.Strings.quote;
-
-import java.io.File;
-import java.io.IOException;
 
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-
-import org.fest.util.VisibleForTesting;
 
 /**
  * Understands the application's main window.
@@ -39,7 +30,6 @@ public class MainFrame extends javax.swing.JFrame {
 
   private static final long serialVersionUID = 1L;
 
-  private final CharMappingFileFactory fileFactory;
   private final CharMappingTable mappingTable;
   private AboutDialog aboutDialog;
 
@@ -47,23 +37,18 @@ public class MainFrame extends javax.swing.JFrame {
    * Creates a new </code>{@link MainFrame}</code>.
    */
   public MainFrame() {
-    this(new CharMappingFileFactory());
-  }
-
-  @VisibleForTesting
-  MainFrame(CharMappingFileFactory fileFactory) {
-    this.fileFactory = fileFactory;
     mappingTable = new CharMappingTable();
     initComponents();
     mappingScrollPane.setViewportView(mappingTable);
     setUpForMacOS();
     setIconImage(new javax.swing.ImageIcon(getClass().getResource("/fest16.png")).getImage()); // NOI18N
-    mappingTable.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+    mappingTable.addSelectionListener(new ListSelectionListener() {
       public void valueChanged(ListSelectionEvent e) {
         if (e.getValueIsAdjusting()) return;
         updateDeleteSelectedRowsMenu();
       }
     });
+    saveMappingFileMenu.addActionListener(new SaveMappingFileActionListener(this, mappingTable.getModel()));
   }
 
   private void setUpForMacOS() {
@@ -79,23 +64,16 @@ public class MainFrame extends javax.swing.JFrame {
   // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
   private void initComponents() {
 
-    saveMappingFileChooser = new javax.swing.JFileChooser();
     charLabel = new javax.swing.JLabel();
     charTextField = new javax.swing.JTextField();
     mappingScrollPane = new javax.swing.JScrollPane();
     menuBar = new javax.swing.JMenuBar();
     fileMenu = new javax.swing.JMenu();
-    createMappingFileMenu = new javax.swing.JMenuItem();
+    saveMappingFileMenu = new javax.swing.JMenuItem();
     editMenu = new javax.swing.JMenu();
     deleteSelectedRowsMenu = new javax.swing.JMenuItem();
     helpMenu = new javax.swing.JMenu();
     aboutMenuItem = new javax.swing.JMenuItem();
-
-    saveMappingFileChooser.setAcceptAllFileFilterUsed(false);
-    saveMappingFileChooser.setDialogTitle("Save As Mapping File");
-    saveMappingFileChooser.setDialogType(javax.swing.JFileChooser.SAVE_DIALOG);
-    saveMappingFileChooser.setFileFilter(new TextFileFilter());
-    saveMappingFileChooser.setName("saveMappingFileChooser"); // NOI18N
 
     setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
     setTitle("FEST Keyboard Mapping Tool");
@@ -118,15 +96,10 @@ public class MainFrame extends javax.swing.JFrame {
     fileMenu.setMnemonic('F');
     fileMenu.setText("File");
 
-    createMappingFileMenu.setMnemonic('S');
-    createMappingFileMenu.setText("Save As Mapping File");
-    createMappingFileMenu.setEnabled(false);
-    createMappingFileMenu.addActionListener(new java.awt.event.ActionListener() {
-      public void actionPerformed(java.awt.event.ActionEvent evt) {
-        saveAsMappingFile(evt);
-      }
-    });
-    fileMenu.add(createMappingFileMenu);
+    saveMappingFileMenu.setMnemonic('S');
+    saveMappingFileMenu.setText("Save As Mapping File");
+    saveMappingFileMenu.setEnabled(false);
+    fileMenu.add(saveMappingFileMenu);
 
     menuBar.add(fileMenu);
 
@@ -192,21 +165,11 @@ public class MainFrame extends javax.swing.JFrame {
 
   private void charEntered(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_charEntered
     try {
-      addMapping(newCharMapping(evt));
+      mappingTable.getModel().addOrReplace(newCharMapping(evt));
+      mappingTable.scrollAndSelectLastRow();
+      updateUI();
     } catch (MappingNotFoundError ignored) {}
   }//GEN-LAST:event_charEntered
-
-  private void saveAsMappingFile(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveAsMappingFile
-    int selection = saveMappingFileChooser.showSaveDialog(this);
-    if (selection != APPROVE_OPTION) return;
-    File toSave = saveMappingFileChooser.getSelectedFile();
-    try {
-      fileFactory.createMappingFile(toSave, mappingTable.getModel());
-      showFileSaveActionSuccessMessage(toSave);
-    } catch (IOException e) {
-      showSaveFileActionFailedMessage(e.getMessage());
-    }
-  }//GEN-LAST:event_saveAsMappingFile
 
   private void showAboutWindow(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showAboutWindow
     showAboutWindow();
@@ -214,7 +177,18 @@ public class MainFrame extends javax.swing.JFrame {
 
   private void deleteSelectedRows(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteSelectedRows
     mappingTable.deleteSelection();
+    updateUI();
+    if (mappingTable.getRowCount() == 0) clearAndGiveFocusToCharTextField();
   }//GEN-LAST:event_deleteSelectedRows
+
+  private void updateUI() {
+    saveMappingFileMenu.setEnabled(mappingTable.getRowCount() > 0);
+    updateDeleteSelectedRowsMenu();
+  }
+
+  private void updateDeleteSelectedRowsMenu() {
+    deleteSelectedRowsMenu.setEnabled(mappingTable.getSelectedRowCount() > 0);
+  }
 
   void showAboutWindow() {
     if (aboutDialog == null) aboutDialog = new AboutDialog(this, true);
@@ -222,29 +196,9 @@ public class MainFrame extends javax.swing.JFrame {
     aboutDialog.setVisible(true);
   }
 
-  private void showFileSaveActionSuccessMessage(File file) {
-    String message = concat("File ", quote(file.getName()), " successfully saved.");
-    showMessageDialog(this, message, "Success", INFORMATION_MESSAGE);
-  }
-
-  private void showSaveFileActionFailedMessage(String cause) {
-    String message = concat("Unable to save file: [", cause, "]");
-    showMessageDialog(this, message, "Error", ERROR_MESSAGE);
-  }
-
-  private void addMapping(CharMapping mapping) {
-    mappingTable.getModel().addOrReplace(mapping);
-    mappingTable.scrollAndSelectLastRow();
-    updateUI();
-  }
-
-  private void updateUI() {
-    createMappingFileMenu.setEnabled(mappingTable.getRowCount() > 0);
-    updateDeleteSelectedRowsMenu();
-  }
-
-  private void updateDeleteSelectedRowsMenu() {
-    deleteSelectedRowsMenu.setEnabled(mappingTable.getSelectedRowCount() > 0);
+  private void clearAndGiveFocusToCharTextField() {
+    charTextField.setText("");
+    giveFocusToCharTextField();
   }
 
   void giveFocusToCharTextField() {
@@ -255,13 +209,12 @@ public class MainFrame extends javax.swing.JFrame {
   private javax.swing.JMenuItem aboutMenuItem;
   private javax.swing.JLabel charLabel;
   private javax.swing.JTextField charTextField;
-  private javax.swing.JMenuItem createMappingFileMenu;
   private javax.swing.JMenuItem deleteSelectedRowsMenu;
   private javax.swing.JMenu editMenu;
   private javax.swing.JMenu fileMenu;
   private javax.swing.JMenu helpMenu;
   private javax.swing.JScrollPane mappingScrollPane;
   private javax.swing.JMenuBar menuBar;
-  private javax.swing.JFileChooser saveMappingFileChooser;
+  private javax.swing.JMenuItem saveMappingFileMenu;
   // End of variables declaration//GEN-END:variables
 }
