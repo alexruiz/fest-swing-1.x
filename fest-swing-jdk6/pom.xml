@@ -5,8 +5,8 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.easytesting</groupId>
   <artifactId>fest-swing-jdk6</artifactId>
-  <version>1.2a4-SNAPSHOT</version>
-  <name>FEST Swing - TestNG Extension</name>
+  <version>1.2rc</version>
+  <name>FEST Swing - Java 6 extension</name>
   <inceptionYear>2009</inceptionYear>
   <description>JDK 6-specific functionality</description>
   <url>http://fest.easytesting.org/swing</url>
@@ -54,13 +54,13 @@
     <dependency>
       <groupId>org.easytesting</groupId>
       <artifactId>fest-swing</artifactId>
-      <version>1.2a4-SNAPSHOT</version>
+      <version>1.2rc</version>
       <scope>compile</scope>
     </dependency>
     <dependency>
       <groupId>org.easytesting</groupId>
       <artifactId>fest-swing</artifactId>
-      <version>1.2a4-SNAPSHOT</version>
+      <version>1.2rc</version>
       <type>test-jar</type>
       <scope>test</scope>
     </dependency>
@@ -74,10 +74,6 @@
   </dependencies>
   <reporting>
     <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-site-plugin</artifactId>
-      </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-javadoc-plugin</artifactId>
