@@ -149,4 +149,23 @@ public class JAppletDriver extends ComponentDriver {
       }
     });
   }
+
+  /**
+   * Indicates whether the given <code>{@link JApplet}</code> is active or not.
+   * @param applet the given {@code JApplet}.
+   * @return <code>true</code> if the given {@code JApplet} is active; <code>false</code> otherwise.
+   */
+  @RunsInEDT
+  public boolean isActive(JApplet applet) {
+    return active(applet);
+  }
+
+  @RunsInEDT
+  private static boolean active(final JApplet applet) {
+    return execute(new GuiQuery<Boolean>() {
+      protected Boolean executeInEDT() {
+        return applet.isActive();
+      }
+    });
+  }
 }

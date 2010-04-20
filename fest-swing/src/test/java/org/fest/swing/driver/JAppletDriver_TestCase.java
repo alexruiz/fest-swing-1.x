@@ -64,6 +64,8 @@ public class JAppletDriver_TestCase extends EDTSafeTestCase {
     private URL codeBase;
     private URL documentBase;
 
+    private boolean active;
+
     @RunsInEDT
     static JAppletStub createNew() {
       return execute(new GuiQuery<JAppletStub>() {
@@ -114,6 +116,15 @@ public class JAppletDriver_TestCase extends EDTSafeTestCase {
     @Override public String getParameter(String name) {
       registerMethodCall(concat("getParameter(", quote(name), ")"));
       return parameters.get(name);
+    }
+
+    void setActive(boolean beActive) {
+      active = beActive;
+    }
+
+    @Override public boolean isActive() {
+      registerMethodCall("isActive");
+      return active;
     }
 
     private void registerMethodCall(String methodName) {

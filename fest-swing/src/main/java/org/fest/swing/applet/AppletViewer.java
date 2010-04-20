@@ -33,8 +33,6 @@ import java.util.Map;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-import net.jcip.annotations.GuardedBy;
-
 import org.fest.swing.annotation.RunsInCurrentThread;
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
@@ -45,15 +43,15 @@ import org.fest.swing.edt.GuiQuery;
  * Typical usage:
  * <pre>
  * AppletViewer viewer = AppletViewer.newViewer(new MyApplet());
- * 
+ *
  * // test the applet, viewer can be wrapped with a FrameFixture.
  * FrameFixture viewerFixture = new FrameFixture(viewer);
- * 
+ *
  * viewer.unloadApplet() // stops and destroys the applet
  * viewerFixture.cleanUp();
  * </pre>
  * <p>
- * <b>Note:</b> In version 1.2, due to bug <a href="http://jira.codehaus.org/browse/FEST-219" target="_blank">FEST-219</a> 
+ * <b>Note:</b> In version 1.2, due to bug <a href="http://jira.codehaus.org/browse/FEST-219" target="_blank">FEST-219</a>
  * constructors in this class have been replaced with the static factory methods <code>newViewer</code>. It was not
  * possible to just deprecate them. To ensure correct behavior of the applet viewer, they had to be made unaccessible to
  * client code.
@@ -75,8 +73,8 @@ public class AppletViewer extends JFrame implements StatusDisplay {
 
   private final Applet applet;
   private AppletStub stub;
-  @GuardedBy("this") private boolean loaded;
- 
+  private boolean loaded;
+
   /**
    * Creates a new </code>{@link AppletViewer}</code>. This factory method creates new instances of
    * <code>{@link BasicAppletStub}</code> and <code>{@link BasicAppletContext}</code>.
@@ -143,7 +141,7 @@ public class AppletViewer extends JFrame implements StatusDisplay {
       }
     });
   }
-  
+
   private AppletViewer(Applet applet) {
     if (applet == null) throw new NullPointerException("The applet to load should not be null");
     this.applet = applet;
@@ -163,7 +161,7 @@ public class AppletViewer extends JFrame implements StatusDisplay {
     statusLabel.setName("status");
     add(statusLabel, SOUTH);
   }
-  
+
   private void appletStub(AppletStub newAppletStub) {
     if (newAppletStub == null) throw new NullPointerException("The AppletStub should not be null");
     stub = newAppletStub;
@@ -179,12 +177,12 @@ public class AppletViewer extends JFrame implements StatusDisplay {
   /**
    * Initializes and starts the applet in this viewer.
    */
-  public synchronized void reloadApplet() {
+  public void reloadApplet() {
     if (loaded) unloadApplet();
     loadApplet();
   }
 
-  private synchronized void loadApplet() {
+  private void loadApplet() {
     applet.init();
     applet.start();
     loaded = true;
@@ -194,18 +192,18 @@ public class AppletViewer extends JFrame implements StatusDisplay {
    * Stops and destroys the applet loaded in this viewer. This method should be called before closing or disposing this
    * viewer.
    */
-  public synchronized void unloadApplet() {
+  public void unloadApplet() {
     applet.stop();
     applet.destroy();
     loaded = false;
   }
-  
+
   /**
    * Indicates whether the applet in this viewer is loaded or not.
    * @return <code>true</code> if this applet is loaded, <code>false</code> otherwise.
    */
-  public synchronized boolean appletLoaded() { return loaded; }
-  
+  public boolean appletLoaded() { return loaded; }
+
   /**
    * Displays the given status message. This method is executed in the event dispatch thread (EDT.)
    * @param status the status to display.
