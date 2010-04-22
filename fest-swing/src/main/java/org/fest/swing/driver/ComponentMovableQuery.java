@@ -20,7 +20,7 @@ import java.awt.*;
 import javax.swing.JInternalFrame;
 
 /**
- * Understands an action that indicates whether it is possible for the user to move the given component.
+ * Understands a query that indicates whether it is possible for the user to move the given component.
  *
  * @author Alex Ruiz 
  */
