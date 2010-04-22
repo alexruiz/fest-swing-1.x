@@ -66,8 +66,7 @@ public class ComponentIsFocusableQuery_isFocusable_Test extends EDTSafeTestCase 
       }
       
       protected void codeToTest() {
-        boolean b = ComponentIsFocusableQuery.isFocusable(component);
-        assertThat(b).isEqualTo(isFocusable);
+        assertThat(ComponentIsFocusableQuery.isFocusable(component)).isEqualTo(isFocusable);
       }
     }.run();
   }
