@@ -20,14 +20,14 @@ import static org.fest.swing.util.OSIdentifierStub.windowsXP;
 
 import java.awt.Toolkit;
 
-import org.fest.swing.test.core.SequentialTestCase;
+import org.fest.swing.test.core.SequentialEDTSafeTestCase;
 
 /**
  * Base test case for <code>{@link Platform}</code>
  *
  * @author Alex Ruiz
  */
-public abstract class Platform_TestCase extends SequentialTestCase {
+public abstract class Platform_TestCase extends SequentialEDTSafeTestCase {
 
   ToolkitProviderStub toolkitProvider;
 

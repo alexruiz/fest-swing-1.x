@@ -23,7 +23,7 @@ import static org.fest.swing.util.TestRobotFactories.newRobotFactoryMock;
 import java.awt.*;
 
 import org.fest.mocks.EasyMockTemplate;
-import org.fest.swing.test.core.SequentialTestCase;
+import org.fest.swing.test.core.SequentialEDTSafeTestCase;
 import org.fest.swing.test.swing.TestWindow;
 import org.fest.swing.util.RobotFactory;
 import org.junit.Test;
@@ -33,7 +33,7 @@ import org.junit.Test;
  *
  * @author Alex Ruiz
  */
-public class WindowStatus_checkIfReady_withNullRobot_Test extends SequentialTestCase {
+public class WindowStatus_checkIfReady_withNullRobot_Test extends SequentialEDTSafeTestCase {
 
   private TestWindow window;
   private Windows windows;

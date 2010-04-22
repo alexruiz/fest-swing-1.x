@@ -23,7 +23,7 @@ import static org.fest.swing.test.core.CommonAssertions.failWhenExpectingExcepti
 import org.fest.mocks.EasyMockTemplate;
 import org.fest.swing.exception.UnexpectedException;
 import org.fest.swing.test.core.MethodInvocations;
-import org.fest.swing.test.core.SequentialTestCase;
+import org.fest.swing.test.core.SequentialEDTSafeTestCase;
 import org.junit.Test;
 
 /**
@@ -31,7 +31,7 @@ import org.junit.Test;
  *
  * @author Alex Ruiz
  */
-public class GuiActionRunner_execute_queryNotInEDT_Test extends SequentialTestCase {
+public class GuiActionRunner_execute_queryNotInEDT_Test extends SequentialEDTSafeTestCase {
 
   @Override protected final void onSetUp() {
     GuiActionRunner.executeInEDT(true);

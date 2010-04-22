@@ -23,7 +23,7 @@ import javax.swing.JTextField;
 
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
-import org.fest.swing.test.core.SequentialTestCase;
+import org.fest.swing.test.core.SequentialEDTSafeTestCase;
 import org.fest.swing.test.swing.TestWindow;
 import org.junit.Test;
 
@@ -33,7 +33,7 @@ import org.junit.Test;
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
-public class JTextComponentMatcher_matches_byTextAndShowing_Test extends SequentialTestCase {
+public class JTextComponentMatcher_matches_byTextAndShowing_Test extends SequentialEDTSafeTestCase {
 
   @Test
   public void should_return_true_if_JTextComponent_is_showing_and_text_is_equal_to_expected() {

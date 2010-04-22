@@ -22,7 +22,7 @@ import javax.swing.JButton;
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
 import org.fest.swing.edt.GuiTask;
-import org.fest.swing.test.core.SequentialTestCase;
+import org.fest.swing.test.core.SequentialEDTSafeTestCase;
 import org.fest.swing.test.io.PrintStreamStub;
 import org.fest.swing.test.swing.TestWindow;
 
@@ -32,7 +32,7 @@ import org.fest.swing.test.swing.TestWindow;
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
-public abstract class BasicComponentPrinter_TestCase extends SequentialTestCase {
+public abstract class BasicComponentPrinter_TestCase extends SequentialEDTSafeTestCase {
 
   BasicComponentPrinter printer;
   MyWindow windowOne;

@@ -23,7 +23,7 @@ import static org.fest.swing.test.builder.JLabels.label;
 import java.awt.AWTEvent;
 import java.awt.event.ComponentEvent;
 
-import org.fest.swing.test.core.SequentialTestCase;
+import org.fest.swing.test.core.SequentialEDTSafeTestCase;
 import org.fest.swing.test.swing.TestWindow;
 import org.junit.Test;
 
@@ -32,7 +32,7 @@ import org.junit.Test;
  *
  * @author Alex Ruiz
  */
-public class AWTEvents_windowShown_Test extends SequentialTestCase {
+public class AWTEvents_windowShown_Test extends SequentialEDTSafeTestCase {
 
   private TestWindow source;
 

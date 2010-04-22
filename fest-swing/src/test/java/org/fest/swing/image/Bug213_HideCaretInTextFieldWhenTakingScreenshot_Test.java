@@ -25,7 +25,7 @@ import javax.swing.JTextField;
 
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
-import org.fest.swing.test.core.SequentialTestCase;
+import org.fest.swing.test.core.SequentialEDTSafeTestCase;
 import org.fest.swing.test.swing.TestWindow;
 import org.junit.Test;
 
@@ -34,7 +34,7 @@ import org.junit.Test;
  *
  * @author Alex Ruiz
  */
-public class Bug213_HideCaretInTextFieldWhenTakingScreenshot_Test extends SequentialTestCase {
+public class Bug213_HideCaretInTextFieldWhenTakingScreenshot_Test extends SequentialEDTSafeTestCase {
 
   private ScreenshotTaker screenshotTaker;
   private MyWindow window;

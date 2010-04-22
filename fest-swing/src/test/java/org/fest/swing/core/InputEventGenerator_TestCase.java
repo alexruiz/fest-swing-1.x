@@ -29,7 +29,7 @@ import javax.swing.JTextField;
 
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
-import org.fest.swing.test.core.SequentialTestCase;
+import org.fest.swing.test.core.SequentialEDTSafeTestCase;
 import org.fest.swing.test.swing.TestWindow;
 import org.junit.Ignore;
 
@@ -39,7 +39,7 @@ import org.junit.Ignore;
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
-public abstract class InputEventGenerator_TestCase extends SequentialTestCase {
+public abstract class InputEventGenerator_TestCase extends SequentialEDTSafeTestCase {
 
   static final int DELAY = 200;
   

@@ -88,8 +88,14 @@
       <action dev="alexruiz" type="fix" issue="FEST-318" due-to="Olivier DOREMIEUX">
         Deprecated method 'reloadFromLocale' in org.fest.swing.keystroke.KeyStrokeMap. 
       </action>
+      <action dev="alexruiz" type="fix" issue="FEST-319" due-to="Olivier DOREMIEUX">
+        Created new project (fest-keyboard-mapping) that hosts the code for the keyboard mapping tool.
+      </action>
       <action dev="alexruiz" type="add" issue="FEST-322" due-to="Morten Breum Mikkelsen">
         Added method 'title' to class org.fest.swing.fixture.JOptionPaneFixture.
+      </action>
+      <action dev="wanghy" type="add" issue="FEST-331" due-to="Ivan Malygin">
+        FEST displays JPopupMenu for non-focusable Components.
       </action>
       <action dev="alexruiz" type="fix">
         Deprecated class org.fest.swing.util.System and replaced it with org.fest.swing.util.SystemProperties.

@@ -1,5 +1,5 @@
 /*
- * Created on Aug 27, 2008
+ * Created on Apr 21, 2010
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -11,44 +11,40 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2010 the original author or authors.
  */
-package org.fest.swing.query;
+package org.fest.swing.core;
 
-import static java.awt.Font.PLAIN;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.edt.GuiActionRunner.execute;
 
-import java.awt.Font;
+import javax.swing.*;
 
+import org.fest.swing.annotation.RunsInCurrentThread;
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
-import org.fest.swing.test.core.MethodInvocations;
-import org.fest.swing.test.core.SequentialEDTSafeTestCase;
+import org.fest.swing.test.core.RobotBasedTestCase;
 import org.fest.swing.test.swing.TestWindow;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link ComponentFontQuery#fontOf(java.awt.Component)}</code>.
+ * Tests for bug <a href="http://jira.codehaus.org/browse/FEST-331" target="_blank">FEST_331</a>.
  *
- * @author Alex Ruiz
  * @author Yvonne Wang
  */
-public class ComponentFontQuery_fontOf_Test extends SequentialEDTSafeTestCase {
-
-  private static final Font FONT = new Font("SansSerif", PLAIN, 8);
+public class FEST331_ShowPopupForNonFocusableComponents_Test extends RobotBasedTestCase {
 
   private MyWindow window;
 
   @Override protected void onSetUp() {
     window = MyWindow.createNew();
+    robot.showWindow(window);
   }
 
   @Test
-  public void should_return_Component_font() {
-    window.startRecording();
-    assertThat(ComponentFontQuery.fontOf(window)).isEqualTo(FONT);
-    window.requireInvoked("getFont");
+  public void should_show_JPopupMenu_for_nonFocusable_Component() {
+    JPopupMenu popupMenu = robot.showPopupMenu(window.nonFocusableTextField);
+    assertThat(popupMenu).isEqualTo(window.popupMenu);
   }
 
   private static class MyWindow extends TestWindow {
@@ -63,23 +59,16 @@ public class ComponentFontQuery_fontOf_Test extends SequentialEDTSafeTestCase {
       });
     }
 
-    private boolean recording;
-    private final MethodInvocations methodInvocations = new MethodInvocations();
+    final JTextField nonFocusableTextField = new JTextField(20);
+    final JPopupMenu popupMenu = new JPopupMenu();
 
+    @RunsInCurrentThread
     private MyWindow() {
-      super(ComponentFontQuery_fontOf_Test.class);
-      setFont(FONT);
-    }
-
-    @Override public Font getFont() {
-      if (recording) methodInvocations.invoked("getFont");
-      return super.getFont();
-    }
-
-    void startRecording() { recording = true; }
-
-    MethodInvocations requireInvoked(String methodName) {
-      return methodInvocations.requireInvoked(methodName);
+      super(FEST331_ShowPopupForNonFocusableComponents_Test.class);
+      nonFocusableTextField.setFocusable(false);
+      popupMenu.add(new JMenuItem("Hello"));
+      nonFocusableTextField.setComponentPopupMenu(popupMenu);
+      addComponents(new JButton("Click Me"), nonFocusableTextField);
     }
   }
 }

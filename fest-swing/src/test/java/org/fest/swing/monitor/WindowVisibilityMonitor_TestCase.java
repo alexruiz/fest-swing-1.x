@@ -25,7 +25,7 @@ import java.awt.event.*;
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
 import org.fest.swing.test.core.MethodInvocations;
-import org.fest.swing.test.core.SequentialTestCase;
+import org.fest.swing.test.core.SequentialEDTSafeTestCase;
 import org.fest.swing.test.core.MethodInvocations.Args;
 import org.fest.swing.test.swing.TestWindow;
 
@@ -34,7 +34,7 @@ import org.fest.swing.test.swing.TestWindow;
  *
  * @author Alex Ruiz
  */
-public abstract class WindowVisibilityMonitor_TestCase extends SequentialTestCase {
+public abstract class WindowVisibilityMonitor_TestCase extends SequentialEDTSafeTestCase {
 
   MyWindow window;
   Windows windows;

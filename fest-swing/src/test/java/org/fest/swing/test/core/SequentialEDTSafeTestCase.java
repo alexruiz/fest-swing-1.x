@@ -24,7 +24,7 @@ import org.junit.Before;
  *
  * @author Alex Ruiz 
  */
-public abstract class SequentialTestCase extends EDTSafeTestCase {
+public abstract class SequentialEDTSafeTestCase extends EDTSafeTestCase {
 
   @Before public final void setUp() {
     ScreenLock.instance().acquire(this);

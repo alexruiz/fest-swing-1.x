@@ -15,7 +15,7 @@
  */
 package org.fest.swing.monitor;
 
-import org.fest.swing.test.core.SequentialTestCase;
+import org.fest.swing.test.core.SequentialEDTSafeTestCase;
 import org.fest.swing.test.swing.TestWindow;
 
 /**
@@ -23,7 +23,7 @@ import org.fest.swing.test.swing.TestWindow;
  *
  * @author Alex Ruiz
  */
-public abstract class Windows_TestCase extends SequentialTestCase {
+public abstract class Windows_TestCase extends SequentialEDTSafeTestCase {
 
   TestWindow window;
   Windows windows;

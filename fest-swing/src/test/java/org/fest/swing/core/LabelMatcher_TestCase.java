@@ -22,7 +22,7 @@ import javax.swing.JLabel;
 
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
-import org.fest.swing.test.core.SequentialTestCase;
+import org.fest.swing.test.core.SequentialEDTSafeTestCase;
 import org.fest.swing.test.swing.TestWindow;
 
 /**
@@ -30,7 +30,7 @@ import org.fest.swing.test.swing.TestWindow;
  *
  * @author Alex Ruiz
  */
-public abstract class LabelMatcher_TestCase extends SequentialTestCase {
+public abstract class LabelMatcher_TestCase extends SequentialEDTSafeTestCase {
   
   static final String LABEL_TEXT = "Hello";
 

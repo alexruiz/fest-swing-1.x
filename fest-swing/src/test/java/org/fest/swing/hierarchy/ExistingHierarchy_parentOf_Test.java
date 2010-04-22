@@ -22,7 +22,7 @@ import static org.fest.swing.test.builder.JTextFields.textField;
 import javax.swing.JTextField;
 
 import org.fest.mocks.EasyMockTemplate;
-import org.fest.swing.test.core.SequentialTestCase;
+import org.fest.swing.test.core.SequentialEDTSafeTestCase;
 import org.fest.swing.test.swing.TestWindow;
 import org.junit.Test;
 
@@ -32,7 +32,7 @@ import org.junit.Test;
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
-public class ExistingHierarchy_parentOf_Test extends SequentialTestCase {
+public class ExistingHierarchy_parentOf_Test extends SequentialEDTSafeTestCase {
 
   private ParentFinder parentFinder;
   private TestWindow window;

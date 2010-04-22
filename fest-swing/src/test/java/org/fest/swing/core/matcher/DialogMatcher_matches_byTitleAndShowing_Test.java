@@ -20,7 +20,7 @@ import static org.fest.swing.test.builder.JDialogs.dialog;
 
 import javax.swing.JDialog;
 
-import org.fest.swing.test.core.SequentialTestCase;
+import org.fest.swing.test.core.SequentialEDTSafeTestCase;
 import org.fest.swing.test.swing.TestDialog;
 import org.fest.swing.test.swing.TestWindow;
 import org.junit.Test;
@@ -31,7 +31,7 @@ import org.junit.Test;
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
-public class DialogMatcher_matches_byTitleAndShowing_Test extends SequentialTestCase {
+public class DialogMatcher_matches_byTitleAndShowing_Test extends SequentialEDTSafeTestCase {
 
   @Test
   public void should_return_true_if_Dialog_is_showing_and_title_is_equal_to_expected() {

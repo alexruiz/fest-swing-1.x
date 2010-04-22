@@ -26,7 +26,7 @@ import java.awt.Dimension;
 
 import javax.swing.JFrame;
 
-import org.fest.swing.test.core.SequentialTestCase;
+import org.fest.swing.test.core.SequentialEDTSafeTestCase;
 import org.fest.swing.timing.Condition;
 import org.junit.Test;
 
@@ -36,7 +36,7 @@ import org.junit.Test;
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
-public class ActivateWindowTask_activeWindow_Test extends SequentialTestCase {
+public class ActivateWindowTask_activeWindow_Test extends SequentialEDTSafeTestCase {
 
   private JFrame frameOne;
   private JFrame frameTwo;

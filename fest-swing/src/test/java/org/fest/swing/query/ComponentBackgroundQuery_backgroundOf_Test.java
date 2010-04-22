@@ -25,7 +25,7 @@ import java.awt.Dimension;
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
 import org.fest.swing.test.core.MethodInvocations;
-import org.fest.swing.test.core.SequentialTestCase;
+import org.fest.swing.test.core.SequentialEDTSafeTestCase;
 import org.fest.swing.test.swing.TestWindow;
 import org.junit.Test;
 
@@ -35,7 +35,7 @@ import org.junit.Test;
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
-public class ComponentBackgroundQuery_backgroundOf_Test extends SequentialTestCase {
+public class ComponentBackgroundQuery_backgroundOf_Test extends SequentialEDTSafeTestCase {
 
   private static final Color BACKGROUND = BLUE;
 

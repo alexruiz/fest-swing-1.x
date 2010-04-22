@@ -27,7 +27,7 @@ import javax.swing.JTextField;
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
 import org.fest.swing.test.awt.ToolkitStub;
-import org.fest.swing.test.core.SequentialTestCase;
+import org.fest.swing.test.core.SequentialEDTSafeTestCase;
 import org.fest.swing.test.swing.TestWindow;
 
 /**
@@ -36,7 +36,7 @@ import org.fest.swing.test.swing.TestWindow;
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
-public abstract class NewHierarchy_TestCase extends SequentialTestCase {
+public abstract class NewHierarchy_TestCase extends SequentialEDTSafeTestCase {
 
   static final long EVENT_MASK = WINDOW_EVENT_MASK | COMPONENT_EVENT_MASK;
 

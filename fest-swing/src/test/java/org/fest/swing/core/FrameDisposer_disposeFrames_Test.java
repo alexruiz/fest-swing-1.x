@@ -23,7 +23,7 @@ import java.util.List;
 
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiTask;
-import org.fest.swing.test.core.SequentialTestCase;
+import org.fest.swing.test.core.SequentialEDTSafeTestCase;
 import org.fest.swing.test.swing.TestWindow;
 import org.junit.Test;
 
@@ -32,7 +32,7 @@ import org.junit.Test;
  *
  * @author Alex Ruiz
  */
-public class FrameDisposer_disposeFrames_Test extends SequentialTestCase {
+public class FrameDisposer_disposeFrames_Test extends SequentialEDTSafeTestCase {
 
   private MyWindow[] windows;
   private FrameDisposer disposer;

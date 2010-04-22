@@ -22,7 +22,7 @@ import static org.fest.assertions.Assertions.assertThat;
 import java.awt.AWTEvent;
 import java.awt.event.WindowEvent;
 
-import org.fest.swing.test.core.SequentialTestCase;
+import org.fest.swing.test.core.SequentialEDTSafeTestCase;
 import org.fest.swing.test.swing.TestWindow;
 import org.junit.Test;
 
@@ -31,7 +31,7 @@ import org.junit.Test;
  *
  * @author Alex Ruiz
  */
-public abstract class AWTEvents_windowClosed_Test extends SequentialTestCase {
+public abstract class AWTEvents_windowClosed_Test extends SequentialEDTSafeTestCase {
 
   private TestWindow source;
 

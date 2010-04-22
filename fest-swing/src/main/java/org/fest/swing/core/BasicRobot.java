@@ -27,6 +27,7 @@ import static javax.swing.SwingUtilities.isEventDispatchThread;
 import static org.fest.swing.awt.AWT.centerOf;
 import static org.fest.swing.awt.AWT.visibleCenterOf;
 import static org.fest.swing.core.ActivateWindowTask.activateWindow;
+import static org.fest.swing.core.ComponentIsFocusableQuery.isFocusable;
 import static org.fest.swing.core.ComponentRequestFocusTask.giveFocusTo;
 import static org.fest.swing.core.FocusOwnerFinder.focusOwner;
 import static org.fest.swing.core.FocusOwnerFinder.inEdtFocusOwner;
@@ -722,7 +723,7 @@ public class BasicRobot implements Robot {
   /** {@inheritDoc} */
   @RunsInEDT
   public JPopupMenu showPopupMenu(Component invoker, Point location) {
-    focusAndWaitForFocusGain(invoker);
+    if (isFocusable(invoker)) focusAndWaitForFocusGain(invoker);
     click(invoker, location, RIGHT_BUTTON, 1);
     JPopupMenu popup = findActivePopupMenu();
     if (popup == null)

@@ -23,7 +23,7 @@ import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
 import org.fest.swing.hierarchy.ComponentHierarchy;
 import org.fest.swing.hierarchy.NewHierarchy;
-import org.fest.swing.test.core.SequentialTestCase;
+import org.fest.swing.test.core.SequentialEDTSafeTestCase;
 import org.fest.swing.test.swing.TestWindow;
 
 /**
@@ -31,7 +31,7 @@ import org.fest.swing.test.swing.TestWindow;
  *
  * @author Alex Ruiz
  */
-public abstract class FinderDelegate_TestCase extends SequentialTestCase {
+public abstract class FinderDelegate_TestCase extends SequentialEDTSafeTestCase {
 
   ComponentHierarchy hierarchy;
   MyWindow window;

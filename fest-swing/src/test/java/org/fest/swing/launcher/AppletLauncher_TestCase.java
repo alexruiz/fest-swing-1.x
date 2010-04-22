@@ -20,7 +20,7 @@ import static org.fest.assertions.Assertions.assertThat;
 import java.applet.Applet;
 
 import org.fest.swing.applet.AppletViewer;
-import org.fest.swing.test.core.SequentialTestCase;
+import org.fest.swing.test.core.SequentialEDTSafeTestCase;
 import org.fest.swing.test.swing.TestApplet;
 
 /**
@@ -28,7 +28,7 @@ import org.fest.swing.test.swing.TestApplet;
  *
  * @author Yvonne Wang
  */
-public abstract class AppletLauncher_TestCase extends SequentialTestCase {
+public abstract class AppletLauncher_TestCase extends SequentialEDTSafeTestCase {
 
   TestApplet applet;
   AppletViewer viewer;

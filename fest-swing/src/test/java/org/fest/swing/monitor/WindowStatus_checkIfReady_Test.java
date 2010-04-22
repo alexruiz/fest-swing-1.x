@@ -26,7 +26,7 @@ import static org.fest.swing.timing.Timeout.timeout;
 import java.awt.*;
 
 import org.fest.mocks.EasyMockTemplate;
-import org.fest.swing.test.core.SequentialTestCase;
+import org.fest.swing.test.core.SequentialEDTSafeTestCase;
 import org.fest.swing.test.swing.TestWindow;
 import org.fest.swing.timing.Condition;
 import org.fest.swing.util.RobotFactory;
@@ -37,7 +37,7 @@ import org.junit.Test;
  *
  * @author Alex Ruiz
  */
-public class WindowStatus_checkIfReady_Test extends SequentialTestCase {
+public class WindowStatus_checkIfReady_Test extends SequentialEDTSafeTestCase {
 
   private WindowStatus status;
   private TestWindow window;
