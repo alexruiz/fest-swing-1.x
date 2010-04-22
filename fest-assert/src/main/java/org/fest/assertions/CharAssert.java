@@ -230,8 +230,8 @@ public class CharAssert extends PrimitiveAssert<Character> {
 
   @Override
   protected CharAssert is(Condition<Character> characterCondition) {
-    //TODO
-    throw new UnsupportedOperationException();
+    assertIs(characterCondition);
+    return this;
   }
 
   @Override

@@ -301,8 +301,8 @@ public class DoubleAssert extends PrimitiveAssert<Double> implements NumberAsser
 
   @Override
   protected DoubleAssert is(Condition<Double> doubleCondition) {
-    //TODO
-    throw new UnsupportedOperationException();
+    assertIs(doubleCondition);
+    return this;
   }
 
   @Override

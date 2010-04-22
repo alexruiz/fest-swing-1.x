@@ -236,8 +236,8 @@ public class LongAssert extends PrimitiveAssert<Long> implements NumberAssert {
 
   @Override
   protected LongAssert is(Condition<Long> longCondition) {
-    //TODO
-    throw new UnsupportedOperationException();
+    assertIs(longCondition);
+    return this;
   }
 
   @Override

@@ -215,6 +215,7 @@ public class IntAssert extends PrimitiveAssert<Integer> implements NumberAssert 
   }
 
   /** {@inheritDoc} */
+  @Override
   public IntAssert overridingErrorMessage(String message) {
     replaceDefaultErrorMessagesWith(message);
     return this;
@@ -237,8 +238,8 @@ public class IntAssert extends PrimitiveAssert<Integer> implements NumberAssert 
 
   @Override
   protected IntAssert is(Condition<Integer> integerCondition) {
-    //TODO
-    throw new UnsupportedOperationException();
+    assertIs(integerCondition);
+    return this;
   }
 
   @Override

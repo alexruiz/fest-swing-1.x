@@ -236,8 +236,8 @@ public class ByteAssert extends PrimitiveAssert<Byte> implements NumberAssert {
 
   @Override
   protected ByteAssert is(Condition<Byte> byteCondition) {
-    //TODO
-    throw new UnsupportedOperationException();
+    assertIs(byteCondition);
+    return this;
   }
 
   @Override

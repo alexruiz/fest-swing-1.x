@@ -314,8 +314,8 @@ public class FloatAssert extends PrimitiveAssert<Float> implements NumberAssert 
 
   @Override
   protected FloatAssert is(Condition<Float> floatCondition) {
-    //TODO
-    throw new UnsupportedOperationException();
+    assertIs(floatCondition);
+    return this;
   }
 
   @Override

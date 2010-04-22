@@ -176,8 +176,8 @@ public class BooleanAssert extends PrimitiveAssert<Boolean> {
 
   @Override
   protected BooleanAssert is(Condition<Boolean> booleanCondition) {
-    //TODO
-    throw new UnsupportedOperationException();
+    assertIs(booleanCondition);
+    return this;
   }
 
   @Override

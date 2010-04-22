@@ -235,8 +235,8 @@ public class ShortAssert extends PrimitiveAssert<Short> implements NumberAssert 
 
   @Override
   protected ShortAssert is(Condition<Short> shortCondition) {
-    //TODO
-    throw new UnsupportedOperationException();
+    assertIs(shortCondition);
+    return this;
   }
 
   @Override
