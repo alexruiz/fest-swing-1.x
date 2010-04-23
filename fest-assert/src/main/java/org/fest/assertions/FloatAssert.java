@@ -302,55 +302,55 @@ public class FloatAssert extends PrimitiveAssert<Float> implements NumberAssert 
    */
 
   @Override
-  protected FloatAssert satisfies(Condition<Float> floatCondition) {
+  public FloatAssert satisfies(Condition<Float> floatCondition) {
     assertSatisfies(floatCondition);
     return this;
   }
 
   @Override
-  protected FloatAssert doesNotSatisfy(Condition<Float> floatCondition) {
+  public FloatAssert doesNotSatisfy(Condition<Float> floatCondition) {
     assertDoesNotSatisfy(floatCondition);
     return this;
   }
 
   @Override
-  protected FloatAssert is(Condition<Float> floatCondition) {
+  public FloatAssert is(Condition<Float> floatCondition) {
     assertIs(floatCondition);
     return this;
   }
 
   @Override
-  protected FloatAssert isNot(Condition<Float> floatCondition) {
+  public FloatAssert isNot(Condition<Float> floatCondition) {
     assertIsNot(floatCondition);
     return this;
   }
 
   @Override
-  protected FloatAssert isEqualTo(Float expected) {
+  public FloatAssert isEqualTo(Float expected) {
     //TODO
     throw new UnsupportedOperationException();
   }
 
   @Override
-  protected FloatAssert isNotEqualTo(Float other) {
+  public FloatAssert isNotEqualTo(Float other) {
     //TODO
     throw new UnsupportedOperationException();
   }
 
   @Override
-  protected FloatAssert isNotNull() {
+  public FloatAssert isNotNull() {
     //TODO
     throw new UnsupportedOperationException();
   }
 
   @Override
-  protected FloatAssert isSameAs(Float expected) {
+  public FloatAssert isSameAs(Float expected) {
     //TODO
     throw new UnsupportedOperationException();
   }
 
   @Override
-  protected FloatAssert isNotSameAs(Float other) {
+  public FloatAssert isNotSameAs(Float other) {
     //TODO
     throw new UnsupportedOperationException();
   }

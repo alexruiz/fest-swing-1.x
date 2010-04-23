@@ -224,55 +224,55 @@ public class LongAssert extends PrimitiveAssert<Long> implements NumberAssert {
    */
 
   @Override
-  protected LongAssert satisfies(Condition<Long> longCondition) {
+  public LongAssert satisfies(Condition<Long> longCondition) {
     assertSatisfies(longCondition);
     return this;
   }
 
   @Override
-  protected LongAssert doesNotSatisfy(Condition<Long> longCondition) {
+  public LongAssert doesNotSatisfy(Condition<Long> longCondition) {
     assertDoesNotSatisfy(longCondition);
     return this;
   }
 
   @Override
-  protected LongAssert is(Condition<Long> longCondition) {
+  public LongAssert is(Condition<Long> longCondition) {
     assertIs(longCondition);
     return this;
   }
 
   @Override
-  protected LongAssert isNot(Condition<Long> longCondition) {
+  public LongAssert isNot(Condition<Long> longCondition) {
     assertIsNot(longCondition);
     return this;
   }
 
   @Override
-  protected LongAssert isEqualTo(Long expected) {
+  public LongAssert isEqualTo(Long expected) {
     //TODO
     throw new UnsupportedOperationException();
   }
 
   @Override
-  protected LongAssert isNotEqualTo(Long other) {
+  public LongAssert isNotEqualTo(Long other) {
     //TODO
     throw new UnsupportedOperationException();
   }
 
   @Override
-  protected LongAssert isNotNull() {
+  public LongAssert isNotNull() {
     //TODO
     throw new UnsupportedOperationException();
   }
 
   @Override
-  protected LongAssert isSameAs(Long expected) {
+  public LongAssert isSameAs(Long expected) {
     //TODO
     throw new UnsupportedOperationException();
   }
 
   @Override
-  protected LongAssert isNotSameAs(Long other) {
+  public LongAssert isNotSameAs(Long other) {
     //TODO
     throw new UnsupportedOperationException();
   }

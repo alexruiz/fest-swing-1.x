@@ -289,55 +289,55 @@ public class DoubleAssert extends PrimitiveAssert<Double> implements NumberAsser
    */
   
   @Override
-  protected DoubleAssert satisfies(Condition<Double> doubleCondition) {
+  public DoubleAssert satisfies(Condition<Double> doubleCondition) {
     assertSatisfies(doubleCondition);
     return this;
   }
 
   @Override
-  protected DoubleAssert doesNotSatisfy(Condition<Double> doubleCondition) {
+  public DoubleAssert doesNotSatisfy(Condition<Double> doubleCondition) {
     assertDoesNotSatisfy(doubleCondition);
     return this;
   }
 
   @Override
-  protected DoubleAssert is(Condition<Double> doubleCondition) {
+  public DoubleAssert is(Condition<Double> doubleCondition) {
     assertIs(doubleCondition);
     return this;
   }
 
   @Override
-  protected DoubleAssert isNot(Condition<Double> doubleCondition) {
+  public DoubleAssert isNot(Condition<Double> doubleCondition) {
     assertIsNot(doubleCondition);
     return this;
   }
 
   @Override
-  protected DoubleAssert isEqualTo(Double expected) {
+  public DoubleAssert isEqualTo(Double expected) {
     //TODO
     throw new UnsupportedOperationException();
   }
 
   @Override
-  protected DoubleAssert isNotEqualTo(Double other) {
+  public DoubleAssert isNotEqualTo(Double other) {
     //TODO
     throw new UnsupportedOperationException();
   }
 
   @Override
-  protected DoubleAssert isNotNull() {
+  public DoubleAssert isNotNull() {
     //TODO
     throw new UnsupportedOperationException();
   }
 
   @Override
-  protected DoubleAssert isSameAs(Double expected) {
+  public DoubleAssert isSameAs(Double expected) {
     //TODO
     throw new UnsupportedOperationException();
   }
 
   @Override
-  protected DoubleAssert isNotSameAs(Double other) {
+  public DoubleAssert isNotSameAs(Double other) {
     //TODO
     throw new UnsupportedOperationException();
   }

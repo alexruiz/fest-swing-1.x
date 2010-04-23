@@ -164,55 +164,55 @@ public class BooleanAssert extends PrimitiveAssert<Boolean> {
    */
 
   @Override
-  protected BooleanAssert satisfies(Condition<Boolean> booleanCondition) {
+  public BooleanAssert satisfies(Condition<Boolean> booleanCondition) {
     assertSatisfies(booleanCondition);
     return this;
   }
 
   @Override
-  protected BooleanAssert doesNotSatisfy(Condition<Boolean> booleanCondition) {
+  public BooleanAssert doesNotSatisfy(Condition<Boolean> booleanCondition) {
     assertDoesNotSatisfy(booleanCondition);
     return this;
   }
 
   @Override
-  protected BooleanAssert is(Condition<Boolean> booleanCondition) {
+  public BooleanAssert is(Condition<Boolean> booleanCondition) {
     assertIs(booleanCondition);
     return this;
   }
 
   @Override
-  protected BooleanAssert isNot(Condition<Boolean> booleanCondition) {
+  public BooleanAssert isNot(Condition<Boolean> booleanCondition) {
     assertIsNot(booleanCondition);
     return this;
   }
 
   @Override
-  protected BooleanAssert isEqualTo(Boolean expected) {
+  public BooleanAssert isEqualTo(Boolean expected) {
     //TODO
     throw new UnsupportedOperationException();
   }
 
   @Override
-  protected BooleanAssert isNotEqualTo(Boolean other) {
+  public BooleanAssert isNotEqualTo(Boolean other) {
     //TODO
     throw new UnsupportedOperationException();
   }
 
   @Override
-  protected BooleanAssert isNotNull() {
+  public BooleanAssert isNotNull() {
     //TODO
     throw new UnsupportedOperationException();
   }
 
   @Override
-  protected BooleanAssert isSameAs(Boolean expected) {
+  public BooleanAssert isSameAs(Boolean expected) {
     //TODO
     throw new UnsupportedOperationException();
   }
 
   @Override
-  protected BooleanAssert isNotSameAs(Boolean other) {
+  public BooleanAssert isNotSameAs(Boolean other) {
     //TODO
     throw new UnsupportedOperationException();
   }

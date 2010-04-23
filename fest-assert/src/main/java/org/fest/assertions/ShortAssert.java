@@ -223,55 +223,55 @@ public class ShortAssert extends PrimitiveAssert<Short> implements NumberAssert 
    * ===== Newly implemented methods for FEST-133 / from GenericAssert start here:
    */
   @Override
-  protected ShortAssert satisfies(Condition<Short> shortCondition) {
+  public ShortAssert satisfies(Condition<Short> shortCondition) {
     assertSatisfies(shortCondition);
     return this;
   }
 
   @Override
-  protected ShortAssert doesNotSatisfy(Condition<Short> shortCondition) {
+  public ShortAssert doesNotSatisfy(Condition<Short> shortCondition) {
     assertDoesNotSatisfy(shortCondition);
     return this;
   }
 
   @Override
-  protected ShortAssert is(Condition<Short> shortCondition) {
+  public ShortAssert is(Condition<Short> shortCondition) {
     assertIs(shortCondition);
     return this;
   }
 
   @Override
-  protected ShortAssert isNot(Condition<Short> shortCondition) {
+  public ShortAssert isNot(Condition<Short> shortCondition) {
     assertIsNot(shortCondition);
     return this;
   }
 
   @Override
-  protected ShortAssert isEqualTo(Short expected) {
+  public ShortAssert isEqualTo(Short expected) {
     //TODO
     throw new UnsupportedOperationException();
   }
 
   @Override
-  protected ShortAssert isNotEqualTo(Short other) {
+  public ShortAssert isNotEqualTo(Short other) {
     //TODO
     throw new UnsupportedOperationException();
   }
 
   @Override
-  protected ShortAssert isNotNull() {
+  public ShortAssert isNotNull() {
     //TODO
     throw new UnsupportedOperationException();
   }
 
   @Override
-  protected ShortAssert isSameAs(Short expected) {
+  public ShortAssert isSameAs(Short expected) {
     //TODO
     throw new UnsupportedOperationException();
   }
 
   @Override
-  protected ShortAssert isNotSameAs(Short other) {
+  public ShortAssert isNotSameAs(Short other) {
     //TODO
     throw new UnsupportedOperationException();
   }

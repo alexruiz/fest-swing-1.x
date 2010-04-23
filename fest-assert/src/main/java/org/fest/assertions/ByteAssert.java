@@ -224,55 +224,55 @@ public class ByteAssert extends PrimitiveAssert<Byte> implements NumberAssert {
    */
 
   @Override
-  protected ByteAssert satisfies(Condition<Byte> byteCondition) {
+  public ByteAssert satisfies(Condition<Byte> byteCondition) {
     assertSatisfies(byteCondition);
     return this;
   }
 
   @Override
-  protected ByteAssert doesNotSatisfy(Condition<Byte> byteCondition) {
+  public ByteAssert doesNotSatisfy(Condition<Byte> byteCondition) {
     assertDoesNotSatisfy(byteCondition);
     return this;
   }
 
   @Override
-  protected ByteAssert is(Condition<Byte> byteCondition) {
+  public ByteAssert is(Condition<Byte> byteCondition) {
     assertIs(byteCondition);
     return this;
   }
 
   @Override
-  protected ByteAssert isNot(Condition<Byte> byteCondition) {
+  public ByteAssert isNot(Condition<Byte> byteCondition) {
     assertIsNot(byteCondition);
     return this;
   }
 
   @Override
-  protected ByteAssert isEqualTo(Byte expected) {
+  public ByteAssert isEqualTo(Byte expected) {
     //TODO
     throw new UnsupportedOperationException();
   }
 
   @Override
-  protected ByteAssert isNotEqualTo(Byte other) {
+  public ByteAssert isNotEqualTo(Byte other) {
     //TODO
     throw new UnsupportedOperationException();
   }
 
   @Override
-  protected ByteAssert isNotNull() {
+  public ByteAssert isNotNull() {
     //TODO
     throw new UnsupportedOperationException();
   }
 
   @Override
-  protected ByteAssert isSameAs(Byte expected) {
+  public ByteAssert isSameAs(Byte expected) {
     //TODO
     throw new UnsupportedOperationException();
   }
 
   @Override
-  protected ByteAssert isNotSameAs(Byte other) {
+  public ByteAssert isNotSameAs(Byte other) {
     //TODO
     throw new UnsupportedOperationException();
   }

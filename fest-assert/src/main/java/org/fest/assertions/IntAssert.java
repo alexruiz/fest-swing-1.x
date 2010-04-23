@@ -226,55 +226,55 @@ public class IntAssert extends PrimitiveAssert<Integer> implements NumberAssert 
    * ==== newly implemented methods for FEST-133 start here
    */
   @Override
-  protected IntAssert satisfies(Condition<Integer> integerCondition) {
+  public IntAssert satisfies(Condition<Integer> integerCondition) {
     assertSatisfies(integerCondition);
     return this;
   }
 
   @Override
-  protected IntAssert doesNotSatisfy(Condition<Integer> integerCondition) {
+  public IntAssert doesNotSatisfy(Condition<Integer> integerCondition) {
     assertDoesNotSatisfy(integerCondition);
     return this;
   }
 
   @Override
-  protected IntAssert is(Condition<Integer> integerCondition) {
+  public IntAssert is(Condition<Integer> integerCondition) {
     assertIs(integerCondition);
     return this;
   }
 
   @Override
-  protected IntAssert isNot(Condition<Integer> integerCondition) {
+  public IntAssert isNot(Condition<Integer> integerCondition) {
     assertIsNot(integerCondition);
     return this;
   }
 
   @Override
-  protected IntAssert isEqualTo(Integer expected) {
+  public IntAssert isEqualTo(Integer expected) {
     //TODO
     throw new UnsupportedOperationException();
   }
 
   @Override
-  protected IntAssert isNotEqualTo(Integer other) {
+  public IntAssert isNotEqualTo(Integer other) {
     //TODO
     throw new UnsupportedOperationException();
   }
 
   @Override
-  protected IntAssert isNotNull() {
+  public IntAssert isNotNull() {
     //TODO
     throw new UnsupportedOperationException();
   }
 
   @Override
-  protected IntAssert isSameAs(Integer expected) {
+  public IntAssert isSameAs(Integer expected) {
     //TODO
     throw new UnsupportedOperationException();
   }
 
   @Override
-  protected IntAssert isNotSameAs(Integer other) {
+  public IntAssert isNotSameAs(Integer other) {
     //TODO
     throw new UnsupportedOperationException();
   }

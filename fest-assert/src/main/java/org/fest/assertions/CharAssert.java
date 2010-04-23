@@ -218,55 +218,55 @@ public class CharAssert extends PrimitiveAssert<Character> {
    */
 
   @Override
-  protected CharAssert satisfies(Condition<Character> characterCondition) {
+  public CharAssert satisfies(Condition<Character> characterCondition) {
     assertSatisfies(characterCondition);
     return this;
   }
 
   @Override
-  protected CharAssert doesNotSatisfy(Condition<Character> characterCondition) {
+  public CharAssert doesNotSatisfy(Condition<Character> characterCondition) {
     assertDoesNotSatisfy(characterCondition);
     return this;
   }
 
   @Override
-  protected CharAssert is(Condition<Character> characterCondition) {
+  public CharAssert is(Condition<Character> characterCondition) {
     assertIs(characterCondition);
     return this;
   }
 
   @Override
-  protected CharAssert isNot(Condition<Character> characterCondition) {
+  public CharAssert isNot(Condition<Character> characterCondition) {
     assertIsNot(characterCondition);
     return this;
   }
 
   @Override
-  protected CharAssert isEqualTo(Character expected) {
+  public CharAssert isEqualTo(Character expected) {
     //TODO
     throw new UnsupportedOperationException();
   }
 
   @Override
-  protected CharAssert isNotEqualTo(Character other) {
+  public CharAssert isNotEqualTo(Character other) {
     //TODO
     throw new UnsupportedOperationException();
   }
 
   @Override
-  protected CharAssert isNotNull() {
+  public CharAssert isNotNull() {
     //TODO
     throw new UnsupportedOperationException();
   }
 
   @Override
-  protected CharAssert isSameAs(Character expected) {
+  public CharAssert isSameAs(Character expected) {
     //TODO
     throw new UnsupportedOperationException();
   }
 
   @Override
-  protected CharAssert isNotSameAs(Character other) {
+  public CharAssert isNotSameAs(Character other) {
     //TODO
     throw new UnsupportedOperationException();
   }
