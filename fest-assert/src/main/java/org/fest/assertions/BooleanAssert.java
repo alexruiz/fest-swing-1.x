@@ -159,6 +159,7 @@ public class BooleanAssert extends PrimitiveAssert<Boolean> {
   }
 
   /**
+   * TODO konermann: Remove this comment after FEST-133 is resolved:
    * ===== Newly implemented methods for FEST-133 / from GenericAssert start here:
    */
 
@@ -182,8 +183,8 @@ public class BooleanAssert extends PrimitiveAssert<Boolean> {
 
   @Override
   protected BooleanAssert isNot(Condition<Boolean> booleanCondition) {
-    //TODO
-    throw new UnsupportedOperationException();
+    assertIsNot(booleanCondition);
+    return this;
   }
 
   @Override

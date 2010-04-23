@@ -219,6 +219,7 @@ public class LongAssert extends PrimitiveAssert<Long> implements NumberAssert {
   }
 
   /**
+   * TODO konermann: Remove this comment after FEST-133 is resolved:
    * ===== Newly implemented methods for FEST-133 / from GenericAssert start here:
    */
 
@@ -242,8 +243,8 @@ public class LongAssert extends PrimitiveAssert<Long> implements NumberAssert {
 
   @Override
   protected LongAssert isNot(Condition<Long> longCondition) {
-    //TODO
-    throw new UnsupportedOperationException();
+    assertIsNot(longCondition);
+    return this;
   }
 
   @Override

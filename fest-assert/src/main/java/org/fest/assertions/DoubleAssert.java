@@ -284,6 +284,7 @@ public class DoubleAssert extends PrimitiveAssert<Double> implements NumberAsser
   }
 
   /**
+   * TODO konermann: Remove this comment after FEST-133 is resolved:
    * ===== Newly implemented methods for FEST-133 / from GenericAssert start here:
    */
   
@@ -307,8 +308,8 @@ public class DoubleAssert extends PrimitiveAssert<Double> implements NumberAsser
 
   @Override
   protected DoubleAssert isNot(Condition<Double> doubleCondition) {
-    //TODO
-    throw new UnsupportedOperationException();
+    assertIsNot(doubleCondition);
+    return this;
   }
 
   @Override

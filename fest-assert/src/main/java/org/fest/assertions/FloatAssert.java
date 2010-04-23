@@ -297,6 +297,7 @@ public class FloatAssert extends PrimitiveAssert<Float> implements NumberAssert 
   }
 
   /**
+   * TODO konermann: Remove this comment after FEST-133 is resolved:
    * ===== Newly implemented methods for FEST-133 / from GenericAssert start here:
    */
 
@@ -320,8 +321,8 @@ public class FloatAssert extends PrimitiveAssert<Float> implements NumberAssert 
 
   @Override
   protected FloatAssert isNot(Condition<Float> floatCondition) {
-    //TODO
-    throw new UnsupportedOperationException();
+    assertIsNot(floatCondition);
+    return this;
   }
 
   @Override

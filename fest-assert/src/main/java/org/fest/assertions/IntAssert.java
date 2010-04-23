@@ -222,6 +222,7 @@ public class IntAssert extends PrimitiveAssert<Integer> implements NumberAssert 
   }
 
   /**
+   * TODO konermann: Remove this comment after FEST-133 is resolved:
    * ==== newly implemented methods for FEST-133 start here
    */
   @Override
@@ -244,8 +245,8 @@ public class IntAssert extends PrimitiveAssert<Integer> implements NumberAssert 
 
   @Override
   protected IntAssert isNot(Condition<Integer> integerCondition) {
-    //TODO
-    throw new UnsupportedOperationException();
+    assertIsNot(integerCondition);
+    return this;
   }
 
   @Override

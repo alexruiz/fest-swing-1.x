@@ -219,6 +219,7 @@ public class ShortAssert extends PrimitiveAssert<Short> implements NumberAssert 
   }
 
   /**
+   * TODO konermann: Remove this comment after FEST-133 is resolved:
    * ===== Newly implemented methods for FEST-133 / from GenericAssert start here:
    */
   @Override
@@ -241,8 +242,8 @@ public class ShortAssert extends PrimitiveAssert<Short> implements NumberAssert 
 
   @Override
   protected ShortAssert isNot(Condition<Short> shortCondition) {
-    //TODO
-    throw new UnsupportedOperationException();
+    assertIsNot(shortCondition);
+    return this;
   }
 
   @Override

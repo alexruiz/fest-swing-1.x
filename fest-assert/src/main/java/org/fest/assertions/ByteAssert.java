@@ -219,6 +219,7 @@ public class ByteAssert extends PrimitiveAssert<Byte> implements NumberAssert {
   }
 
   /**
+   * TODO konermann: Remove this comment after FEST-133 is resolved:
    * ===== Newly implemented methods for FEST-133 / from GenericAssert start here:
    */
 
@@ -242,8 +243,8 @@ public class ByteAssert extends PrimitiveAssert<Byte> implements NumberAssert {
 
   @Override
   protected ByteAssert isNot(Condition<Byte> byteCondition) {
-    //TODO
-    throw new UnsupportedOperationException();
+    assertIsNot(byteCondition);
+    return this;
   }
 
   @Override

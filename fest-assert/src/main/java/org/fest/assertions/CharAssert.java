@@ -213,6 +213,7 @@ public class CharAssert extends PrimitiveAssert<Character> {
   }
 
   /**
+   * TODO konermann: Remove this comment after FEST-133 is resolved:
    * ===== Newly implemented methods for FEST-133 / from GenericAssert start here:
    */
 
@@ -236,8 +237,8 @@ public class CharAssert extends PrimitiveAssert<Character> {
 
   @Override
   protected CharAssert isNot(Condition<Character> characterCondition) {
-    //TODO
-    throw new UnsupportedOperationException();
+    assertIsNot(characterCondition);
+    return this;
   }
 
   @Override
