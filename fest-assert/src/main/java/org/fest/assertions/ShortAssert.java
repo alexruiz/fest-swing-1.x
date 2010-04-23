@@ -248,8 +248,8 @@ public class ShortAssert extends PrimitiveAssert<Short> implements NumberAssert 
 
   @Override
   public ShortAssert isEqualTo(Short expected) {
-    //TODO
-    throw new UnsupportedOperationException();
+    assertEqualTo(expected);
+    return this;
   }
 
   @Override

@@ -327,8 +327,8 @@ public class FloatAssert extends PrimitiveAssert<Float> implements NumberAssert 
 
   @Override
   public FloatAssert isEqualTo(Float expected) {
-    //TODO
-    throw new UnsupportedOperationException();
+    assertEqualTo(expected);
+    return this;
   }
 
   @Override

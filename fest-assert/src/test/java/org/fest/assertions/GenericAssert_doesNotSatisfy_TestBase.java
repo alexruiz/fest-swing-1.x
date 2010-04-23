@@ -22,6 +22,15 @@ import org.junit.Test;
 import static org.fest.assertions.CommonFailures.expectErrorIfConditionIsNull;
 import static org.fest.test.ExpectedFailure.expectAssertionError;
 
+/**
+ * Base class for testing {@link org.fest.assertions.GenericAssert#doesNotSatisfy(Condition)}.
+ *
+ * This class implements the algorithms which must be performed to test <code>doesNotSatisfy</code> as template methods
+ * and uses implementations of the abstract methods in subclasses to derive concrete tests.
+ *
+ * @author Ansgar Konermann
+ */
+
 public abstract class GenericAssert_doesNotSatisfy_TestBase<T> implements GenericAssert_doesNotSatisfy_TestCase {
 
   protected abstract NotNull<T> createNotNullCondition();

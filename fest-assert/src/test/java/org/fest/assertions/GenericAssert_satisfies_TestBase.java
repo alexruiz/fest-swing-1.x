@@ -24,12 +24,13 @@ import static org.fest.test.ExpectedFailure.expectAssertionError;
 
 /**
  * Base class for testing {@link org.fest.assertions.GenericAssert#satisfies(Condition)}.
- * This class implements the actual tests as template methods and uses concrete implementations
- * of the protected createXxx methods of subclasses to create concrete Assert class instances
- * to test.
+ *
+ * This class implements the algorithms which must be performed to test <code>satisfies</code> as template methods
+ * and uses implementations of the abstract methods in subclasses to derive concrete tests.
  *
  * @author Ansgar Konermann
  */
+
 
 public abstract class GenericAssert_satisfies_TestBase<T> implements GenericAssert_satisfies_TestCase {
 

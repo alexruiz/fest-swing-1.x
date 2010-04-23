@@ -189,8 +189,8 @@ public class BooleanAssert extends PrimitiveAssert<Boolean> {
 
   @Override
   public BooleanAssert isEqualTo(Boolean expected) {
-    //TODO
-    throw new UnsupportedOperationException();
+    assertEqualTo(expected);
+    return this;
   }
 
   @Override
