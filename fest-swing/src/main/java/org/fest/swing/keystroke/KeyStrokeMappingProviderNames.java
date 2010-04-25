@@ -42,7 +42,7 @@ class KeyStrokeMappingProviderNames implements Iterable<String> {
   private KeyStrokeMappingProviderNames(OSFamily osFamily, Locale locale) {
     this.osFamily = osFamily.key();
     language = locale.getLanguage();
-    country = locale.getCountry().toLowerCase();
+    country = locale.getCountry();
   }
 
   public Iterator<String> iterator() {

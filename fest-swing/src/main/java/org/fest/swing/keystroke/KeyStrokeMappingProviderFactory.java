@@ -25,13 +25,19 @@ package org.fest.swing.keystroke;
 class KeyStrokeMappingProviderFactory {
 
   KeyStrokeMappingProvider createProvider(String className) {
-    try {
-      Class<?> type = Class.forName(className);
-      if (!isKeyStrokeMappingProviderType(type)) return null;
-      return (KeyStrokeMappingProvider) type.newInstance();
-    } catch (Exception e) {
-      return null;
-    }
+      try {
+        Class<?> type = Class.forName(className);
+        if (!isKeyStrokeMappingProviderType(type)) return null;
+        return (KeyStrokeMappingProvider) type.newInstance();
+      } catch (ClassNotFoundException e) {
+        return null;
+      } catch (InstantiationException e) {
+        return null;
+      } catch (IllegalAccessException e) {
+        return null;
+      } catch (RuntimeException e) {
+        return null;
+      }
   }
 
   private boolean isKeyStrokeMappingProviderType(Class<?> type) {

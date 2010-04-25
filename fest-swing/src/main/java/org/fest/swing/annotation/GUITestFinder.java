@@ -48,11 +48,15 @@ public final class GUITestFinder {
   }
 
   private static Method method(Class<?> type, String methodName, Class<?>[] parameterTypes) {
-    try {
-      return type.getDeclaredMethod(methodName, parameterTypes);
-    } catch (Exception e) {
-      return null;
-    }
+      try {
+        return type.getDeclaredMethod(methodName, parameterTypes);
+      } catch (SecurityException e) {
+        return null;
+      } catch (NoSuchMethodException e) {
+        return null;
+      } catch (RuntimeException e) {
+        return null;
+      }
   }
 
   private static boolean isGUITest(AnnotatedElement annotatedElement) {
