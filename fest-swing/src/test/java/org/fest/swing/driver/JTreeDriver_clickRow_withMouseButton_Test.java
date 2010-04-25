@@ -50,10 +50,10 @@ public class JTreeDriver_clickRow_withMouseButton_Test extends JTreeDriver_click
   public void should_throw_error_if_row_is_out_of_bounds() {
     showWindow();
     try {
-      driver.clickRow(tree, 100, RIGHT_BUTTON);
+      driver.clickRow(tree, 1000, RIGHT_BUTTON);
       failWhenExpectingException();
     } catch (IndexOutOfBoundsException e) {
-      assertThat(e.getMessage()).isEqualTo("The given row (100) should be greater than or equal to 0 and less than 6");
+      assertThat(e.getMessage()).isEqualTo("The given row (1000) should be greater than or equal to 0 and less than 6");
     }
   }
 

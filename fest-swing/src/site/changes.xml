@@ -5,7 +5,7 @@
     <author email="alex.ruiz.05@gmail.com">Alex Ruiz</author>
   </properties>
   <body>
-    <release version="1.2b1" date="TBD" description="Subsequent release">
+    <release version="1.2rc" date="2010-04-26" description="Subsequent release">
       <action dev="alexruiz" type="fix" issue="FEST-23" due-to="Dan Dyer">
         org.fest.swing.lock.ScreenLock does not deadlock in the presence of multiple threads.
       </action>

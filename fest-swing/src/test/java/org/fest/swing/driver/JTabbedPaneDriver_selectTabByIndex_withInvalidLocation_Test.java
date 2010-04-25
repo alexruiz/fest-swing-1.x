@@ -19,6 +19,8 @@ import static org.easymock.EasyMock.expect;
 import static org.easymock.classextension.EasyMock.createMock;
 import static org.fest.swing.driver.JTabbedPaneSelectTabTask.setSelectedTab;
 
+import java.awt.Point;
+
 import org.fest.mocks.EasyMockTemplate;
 import org.fest.swing.exception.LocationUnavailableException;
 import org.junit.Test;
@@ -39,8 +41,13 @@ public class JTabbedPaneDriver_selectTabByIndex_withInvalidLocation_Test extends
     driver = new JTabbedPaneDriver(robot, location);
     new EasyMockTemplate(location) {
       protected void expectations() {
-        location.validateIndex(tabbedPane, index);
+        location.validateIndex(tabbedPane, index); // everything goes fine.
+        // location.pointAt is called twice.
+        // The first time to try to click the tab directly
         expect(location.pointAt(tabbedPane, index)).andThrow(new LocationUnavailableException("Thrown on purpose"));
+        // Because the first time it fails to get location, it sets the tab directly and then tries again to get the
+        // location, to move the mouse to that tab
+        expect(location.pointAt(tabbedPane, index)).andReturn(new Point(6, 8));
       }
 
       protected void codeToTest() {

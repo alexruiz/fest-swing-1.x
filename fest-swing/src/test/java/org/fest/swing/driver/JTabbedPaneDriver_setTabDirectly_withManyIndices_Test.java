@@ -46,6 +46,7 @@ public class JTabbedPaneDriver_setTabDirectly_withManyIndices_Test extends JTabb
 
   @Test
   public void should_select_tab() {
+    showWindow();
     driver.setTabDirectly(tabbedPane, index);
     assertThatSelectedTabIndexIs(index);
   }

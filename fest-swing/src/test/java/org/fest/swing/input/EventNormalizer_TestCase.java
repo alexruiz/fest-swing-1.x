@@ -16,7 +16,7 @@
 package org.fest.swing.input;
 
 import static org.fest.assertions.Assertions.assertThat;
-import static org.fest.swing.test.awt.TestAWTEventListeners.singletonAWTEventListenerMock;
+import static org.fest.swing.test.awt.TestAWTEventListeners.newAWTEventListenerMock;
 
 import java.awt.event.AWTEventListener;
 import java.util.List;
@@ -44,6 +44,6 @@ public abstract class EventNormalizer_TestCase {
   }
 
   final AWTEventListener delegateEventListenerMock() {
-    return singletonAWTEventListenerMock();
+    return newAWTEventListenerMock();
   }
 }

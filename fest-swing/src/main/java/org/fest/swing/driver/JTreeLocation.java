@@ -55,7 +55,7 @@ public final class JTreeLocation {
    */
   @RunsInCurrentThread
   public Pair<Rectangle, Point> rowBoundsAndCoordinates(JTree tree, int row) {
-    Rectangle rowBounds = tree.getRowBounds(row);
+    Rectangle rowBounds = tree.getRowBounds(validIndex(tree, row));
     if (rowBounds != null) return new Pair<Rectangle, Point>(rowBounds, pointAt(rowBounds));
     throw new LocationUnavailableException(concat("The tree row ", row, " is not visible"));
   }
