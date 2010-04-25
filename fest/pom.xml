@@ -44,7 +44,7 @@
     </developer>
     <developer>
       <id>wanghy</id>
-      <name>Yvonne Wang Price</name>
+      <name>Yvonne Wang</name>
       <email>wanghy1101 at gmail.com</email>
       <roles>
         <role>Owner</role>
@@ -55,6 +55,13 @@
       <id>steveonjava</id>
       <name>Stephen Chin</name>
       <url>http://steveonjava.com/</url>
+      <roles>
+        <role>Developer</role>
+      </roles>
+    </developer>
+    <developer>
+      <id>joel</id>
+      <name>Joel Costigliola</name>
       <roles>
         <role>Developer</role>
       </roles>
@@ -99,6 +106,21 @@
       </roles>
     </developer>
     <developer>
+      <id>mel.llaguno</id>
+      <name>Mel Llaguno</name>
+      <roles>
+        <role>Developer</role>
+      </roles>
+    </developer>
+    <developer>
+      <id>rrakic</id>
+      <name>Rémy Rakic</name>
+      <url>http://twitter.com/lqd</url>
+      <roles>
+        <role>Developer</role>
+      </roles>
+    </developer>
+    <developer>
       <id>tedyoung</id>
       <name>Ted Young</name>
       <url>http://tedyoung.blogsome.com/</url>
@@ -109,12 +131,11 @@
   </developers>
   <contributors>
     <contributor>
-      <name>Francis ANDRE</name>
+      <name>Andres Almiray</name>
+      <url>http://www.jroller.com/aalmiray/</url>
     </contributor>
     <contributor>
-      <name>Andres Almiray</name>
-      <email>aalmiray at users.sourceforge.net</email>
-      <url>http://www.jroller.com/aalmiray/</url>
+      <name>Francis ANDRE</name>
     </contributor>
     <contributor>
       <name>Martin Ankerl</name>
@@ -140,10 +161,16 @@
       <url>http://beust.com/weblog/</url>
     </contributor>
     <contributor>
+      <name>William Billingsley</name>
+    </contributor>
+    <contributor>
       <name>Wim Boffe</name>
     </contributor>
     <contributor>
       <name>Morten Breum Mikkelsen</name>
+    </contributor>
+    <contributor>
+      <name>Nicolae Bucalaete</name>
     </contributor>
     <contributor>
       <name>Lalitha Chandra</name>
@@ -237,6 +264,12 @@
       <name>Slava Gurilev</name>
     </contributor>
     <contributor>
+      <name>Viktor Hedefalk</name>
+    </contributor>
+    <contributor>
+      <name>Henning</name>
+    </contributor>
+    <contributor>
       <name>Leo Jay</name>
     </contributor>
     <contributor>
@@ -268,6 +301,12 @@
     </contributor>
     <contributor>
       <name>Michel Lohr</name>
+    </contributor>
+    <contributor>
+      <name>Rahel Lüthy</name>
+    </contributor>
+    <contributor>
+      <name>Ivan Malygin</name>
     </contributor>
     <contributor>
       <name>Pavol Marko</name>
@@ -307,6 +346,9 @@
       <name>Sergey Parilin</name>
     </contributor>
     <contributor>
+      <name>Dan Peder Eriksen</name>
+    </contributor>
+    <contributor>
       <name>Alexander Potochkin</name>
       <organization>Sun Microsystems</organization>
       <organizationUrl>http://www.sun.com/</organizationUrl>
@@ -325,6 +367,9 @@
     </contributor>
     <contributor>
       <name>Konstantin Scheglov</name>
+    </contributor>
+    <contributor>
+      <name>Johannes Schneider</name>
     </contributor>
     <contributor>
       <name>Michael Schnell</name>
