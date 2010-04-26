@@ -339,8 +339,8 @@ public class FloatAssert extends PrimitiveAssert<Float> implements NumberAssert 
 
   @Override
   public FloatAssert isNotNull() {
-    //TODO
-    throw new UnsupportedOperationException();
+    assertNotNull();
+    return this;
   }
 
   @Override

@@ -261,8 +261,8 @@ public class LongAssert extends PrimitiveAssert<Long> implements NumberAssert {
 
   @Override
   public LongAssert isNotNull() {
-    //TODO
-    throw new UnsupportedOperationException();
+    assertNotNull();
+    return this;
   }
 
   @Override

@@ -221,10 +221,15 @@ public class IntAssert extends PrimitiveAssert<Integer> implements NumberAssert 
     return this;
   }
 
-  /**
+  /*
    * TODO konermann: Remove this comment after FEST-133 is resolved:
    * ==== newly implemented methods for FEST-133 start here
    */
+
+  /*
+   * TODO konermann: Add specific javadoc to each method for each subclass of PrimitiveAssert. Use live template.
+   */
+
   @Override
   public IntAssert satisfies(Condition<Integer> integerCondition) {
     assertSatisfies(integerCondition);
@@ -263,8 +268,8 @@ public class IntAssert extends PrimitiveAssert<Integer> implements NumberAssert 
 
   @Override
   public IntAssert isNotNull() {
-    //TODO
-    throw new UnsupportedOperationException();
+    assertNotNull();
+    return this;
   }
 
   @Override

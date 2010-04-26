@@ -255,8 +255,8 @@ public class CharAssert extends PrimitiveAssert<Character> {
 
   @Override
   public CharAssert isNotNull() {
-    //TODO
-    throw new UnsupportedOperationException();
+    assertNotNull();
+    return this;
   }
 
   @Override

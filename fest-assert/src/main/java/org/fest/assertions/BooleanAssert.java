@@ -201,8 +201,8 @@ public class BooleanAssert extends PrimitiveAssert<Boolean> {
 
   @Override
   public BooleanAssert isNotNull() {
-    //TODO
-    throw new UnsupportedOperationException();
+    assertNotNull();
+    return this;
   }
 
   @Override

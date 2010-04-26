@@ -326,8 +326,8 @@ public class DoubleAssert extends PrimitiveAssert<Double> implements NumberAsser
 
   @Override
   public DoubleAssert isNotNull() {
-    //TODO
-    throw new UnsupportedOperationException();
+    assertNotNull();
+    return this;
   }
 
   @Override

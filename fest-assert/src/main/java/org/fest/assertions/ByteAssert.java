@@ -261,8 +261,8 @@ public class ByteAssert extends PrimitiveAssert<Byte> implements NumberAssert {
 
   @Override
   public ByteAssert isNotNull() {
-    //TODO
-    throw new UnsupportedOperationException();
+    assertNotNull();
+    return this;
   }
 
   @Override

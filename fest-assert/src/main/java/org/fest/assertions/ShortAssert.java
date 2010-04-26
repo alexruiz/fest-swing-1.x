@@ -260,8 +260,8 @@ public class ShortAssert extends PrimitiveAssert<Short> implements NumberAssert 
 
   @Override
   public ShortAssert isNotNull() {
-    //TODO
-    throw new UnsupportedOperationException();
+    assertNotNull();
+    return this;
   }
 
   @Override
