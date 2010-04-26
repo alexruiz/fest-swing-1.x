@@ -257,8 +257,8 @@ public class IntAssert extends PrimitiveAssert<Integer> implements NumberAssert 
 
   @Override
   public IntAssert isNotEqualTo(Integer other) {
-    //TODO
-    throw new UnsupportedOperationException();
+    assertNotEqualTo(other);
+    return this;
   }
 
   @Override

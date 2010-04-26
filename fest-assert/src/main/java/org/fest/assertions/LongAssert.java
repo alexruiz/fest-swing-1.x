@@ -255,8 +255,8 @@ public class LongAssert extends PrimitiveAssert<Long> implements NumberAssert {
 
   @Override
   public LongAssert isNotEqualTo(Long other) {
-    //TODO
-    throw new UnsupportedOperationException();
+    assertNotEqualTo(other);
+    return this;    
   }
 
   @Override
