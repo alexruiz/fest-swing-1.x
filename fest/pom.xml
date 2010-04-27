@@ -114,7 +114,7 @@
     </developer>
     <developer>
       <id>rrakic</id>
-      <name>Rémy Rakic</name>
+      <name>Remy Rakic</name>
       <url>http://twitter.com/lqd</url>
       <roles>
         <role>Developer</role>
@@ -201,7 +201,7 @@
       <url>http://www.talios.com/</url>
     </contributor>
     <contributor>
-      <name>Christian Dï¿½hn</name>
+      <name>Christian Dahn</name>
     </contributor>
     <contributor>
       <name>David DIDIER</name>
@@ -280,6 +280,9 @@
     </contributor>
     <contributor>
       <name>Rick Juneson</name>
+    </contributor>
+    <contributor>
+      <name>Bernd Kappler</name>
     </contributor>
     <contributor>
       <name>Julia Koep</name>
