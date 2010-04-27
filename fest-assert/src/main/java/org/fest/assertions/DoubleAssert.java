@@ -332,8 +332,8 @@ public class DoubleAssert extends PrimitiveAssert<Double> implements NumberAsser
 
   @Override
   public DoubleAssert isSameAs(Double expected) {
-    //TODO
-    throw new UnsupportedOperationException();
+    assertSameAs(expected);
+    return this;
   }
 
   @Override

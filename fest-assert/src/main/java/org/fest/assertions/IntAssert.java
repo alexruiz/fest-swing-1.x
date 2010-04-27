@@ -274,8 +274,8 @@ public class IntAssert extends PrimitiveAssert<Integer> implements NumberAssert 
 
   @Override
   public IntAssert isSameAs(Integer expected) {
-    //TODO
-    throw new UnsupportedOperationException();
+    assertSameAs(expected);
+    return this;    
   }
 
   @Override

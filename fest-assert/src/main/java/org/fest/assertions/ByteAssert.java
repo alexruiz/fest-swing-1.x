@@ -267,8 +267,8 @@ public class ByteAssert extends PrimitiveAssert<Byte> implements NumberAssert {
 
   @Override
   public ByteAssert isSameAs(Byte expected) {
-    //TODO
-    throw new UnsupportedOperationException();
+    assertSameAs(expected);
+    return this;
   }
 
   @Override
