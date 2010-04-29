@@ -273,7 +273,7 @@ public class ByteAssert extends PrimitiveAssert<Byte> implements NumberAssert {
 
   @Override
   public ByteAssert isNotSameAs(Byte other) {
-    //TODO
-    throw new UnsupportedOperationException();
+    assertNotSameAs(other);
+    return this;
   }
 }

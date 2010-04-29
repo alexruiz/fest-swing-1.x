@@ -1,5 +1,5 @@
 /*
- * Created on 2010-4-27
+ * Created on 2010-4-29
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -16,26 +16,24 @@
 
 package org.fest.assertions;
 
-/**
- * Test ensuring that {@link CharAssert} obeys the {@link org.fest.assertions.GenericAssert#isSameAs(Object)} contract for {@link Character}.
- */
-public class CharAssert_Generic_isSameAs_Test extends GenericAssert_isSameAs_TestBase<Character> {
 
-  private static final char ANY_FIXED_VALUE = 'X';
+/**
+ * Test ensuring that {@link LongAssert} obeys the {@link org.fest.assertions.GenericAssert#isNotSameAs(Object)} contract for {@link Long}.
+ */
+public class LongAssert_Generic_isNotSameAs_Test extends GenericAssert_isNotSameAs_TestBase<Long> {
 
   @Override
-  protected Character createNewEight() {
-    // explicitly allocate a new instance here, since we want to test instance equality!
-    return new Character(ANY_FIXED_VALUE);
+  protected Long createNewEight() {
+    return new Long(8l);
   }
 
   @Override
   protected String eightAsString() {
-    return "X";
+    return "8";
   }
 
   @Override
-  protected CharAssert createAssertInstance(Character actual) {
-    return new CharAssert(actual);
+  protected LongAssert newAssertion(Long actual) {
+    return new LongAssert(actual);
   }
 }

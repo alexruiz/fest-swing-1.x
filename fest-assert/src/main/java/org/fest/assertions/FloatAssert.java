@@ -351,8 +351,8 @@ public class FloatAssert extends PrimitiveAssert<Float> implements NumberAssert 
 
   @Override
   public FloatAssert isNotSameAs(Float other) {
-    //TODO
-    throw new UnsupportedOperationException();
+    assertNotSameAs(other);
+    return this;
   }
 }
 

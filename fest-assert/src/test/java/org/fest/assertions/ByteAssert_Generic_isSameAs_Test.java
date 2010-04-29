@@ -23,24 +23,13 @@ public class ByteAssert_Generic_isSameAs_Test extends GenericAssert_isSameAs_Tes
   private static final byte ANY_FIXED_VALUE = 8;
 
   @Override
-  protected Byte eight() {
-    // explicitly allocate a new instance here, since we want to test instance equality!
-    return new Byte(ANY_FIXED_VALUE);
-  }
-
-  @Override
-  protected Byte nine() {
+  protected Byte createNewEight() {
     // explicitly allocate a new instance here, since we want to test instance equality!
     return new Byte(ANY_FIXED_VALUE);
   }
 
   @Override
   protected String eightAsString() {
-    return "8";
-  }
-
-  @Override
-  protected String nineAsString() {
     return "8";
   }
 

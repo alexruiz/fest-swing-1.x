@@ -23,24 +23,13 @@ public class LongAssert_Generic_isSameAs_Test extends GenericAssert_isSameAs_Tes
   private static final long ANY_FIXED_VALUE = 8l;
 
   @Override
-  protected Long eight() {
-    // explicitly allocate a new instance here, since we want to test instance equality!
-    return new Long(ANY_FIXED_VALUE);
-  }
-
-  @Override
-  protected Long nine() {
+  protected Long createNewEight() {
     // explicitly allocate a new instance here, since we want to test instance equality!
     return new Long(ANY_FIXED_VALUE);
   }
 
   @Override
   protected String eightAsString() {
-    return "8";
-  }
-
-  @Override
-  protected String nineAsString() {
     return "8";
   }
 

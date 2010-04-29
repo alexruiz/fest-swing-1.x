@@ -23,24 +23,13 @@ public class DoubleAssert_Generic_isSameAs_Test extends GenericAssert_isSameAs_T
 
   private static final double ANY_FIXED_VALUE = 8.0d;
   @Override
-  protected Double eight() {
-    // explicitly allocate a new instance here, since we want to test instance equality!
-    return new Double(ANY_FIXED_VALUE);
-  }
-
-  @Override
-  protected Double nine() {
+  protected Double createNewEight() {
     // explicitly allocate a new instance here, since we want to test instance equality!
     return new Double(ANY_FIXED_VALUE);
   }
 
   @Override
   protected String eightAsString() {
-    return "8.0";
-  }
-
-  @Override
-  protected String nineAsString() {
     return "8.0";
   }
 

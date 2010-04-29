@@ -267,7 +267,7 @@ public class CharAssert extends PrimitiveAssert<Character> {
 
   @Override
   public CharAssert isNotSameAs(Character other) {
-    //TODO
-    throw new UnsupportedOperationException();
+    assertNotSameAs(other);
+    return this;
   }
 }

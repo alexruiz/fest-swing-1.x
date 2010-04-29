@@ -24,24 +24,13 @@ public class FloatAssert_Generic_isSameAs_Test extends GenericAssert_isSameAs_Te
   private static final float ANY_FIXED_VALUE = 8.0f;
 
   @Override
-  protected Float eight() {
-    // explicitly allocate a new instance here, since we want to test instance equality!
-    return new Float(ANY_FIXED_VALUE);
-  }
-
-  @Override
-  protected Float nine() {
+  protected Float createNewEight() {
     // explicitly allocate a new instance here, since we want to test instance equality!
     return new Float(ANY_FIXED_VALUE);
   }
 
   @Override
   protected String eightAsString() {
-    return "8.0";
-  }
-
-  @Override
-  protected String nineAsString() {
     return "8.0";
   }
 

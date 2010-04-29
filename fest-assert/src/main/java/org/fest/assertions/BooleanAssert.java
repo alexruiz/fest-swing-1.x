@@ -213,7 +213,7 @@ public class BooleanAssert extends PrimitiveAssert<Boolean> {
 
   @Override
   public BooleanAssert isNotSameAs(Boolean other) {
-    //TODO
-    throw new UnsupportedOperationException();
+    assertNotSameAs(other);
+    return this;
   }
 }

@@ -32,37 +32,35 @@ import static org.fest.test.ExpectedFailure.expectAssertionError;
 
 public abstract class GenericAssert_isSameAs_TestBase<VALUE_CLASS> implements GenericAssert_isSameAs_TestCase {
 
-  protected abstract VALUE_CLASS eight();
-  protected abstract VALUE_CLASS nine();
+  protected abstract VALUE_CLASS createNewEight();
 
   protected abstract String eightAsString();
-  protected abstract String nineAsString();
 
   protected abstract GenericAssert<VALUE_CLASS> createAssertInstance(VALUE_CLASS actual);
 
 
   @Test
   public void should_pass_if_actual_and_expected_are_same() {
-    final VALUE_CLASS eight = eight();
-    createAssertInstance(eight).isSameAs(eight);
+    final VALUE_CLASS myEight = createNewEight();
+    createAssertInstance(myEight).isSameAs(myEight);
   }
 
   @Test
   public void should_fail_if_actual_and_expected_are_not_same() {
-    expectAssertionError("expected same instance but found:<"+eightAsString()+"> and:<"+nineAsString()+">")
+    expectAssertionError("expected same instance but found:<"+eightAsString()+"> and:<"+eightAsString()+">")
       .on(new CodeToTest() {
       public void run() {
-        createAssertInstance(eight()).isSameAs(nine());
+        createAssertInstance(createNewEight()).isSameAs(createNewEight());
       }
     });
   }
 
   @Test
   public void should_fail_and_display_description_of_assertion_if_actual_and_expected_are_not_same() {
-    expectAssertionError("[A Test] expected same instance but found:<"+eightAsString()+"> and:<"+nineAsString()+">")
+    expectAssertionError("[A Test] expected same instance but found:<"+eightAsString()+"> and:<"+eightAsString()+">")
       .on(new CodeToTest() {
       public void run() {
-        createAssertInstance(eight()).as("A Test").isSameAs(nine());
+        createAssertInstance(createNewEight()).as("A Test").isSameAs(createNewEight());
       }
     });
   }
@@ -71,7 +69,7 @@ public abstract class GenericAssert_isSameAs_TestBase<VALUE_CLASS> implements Ge
   public void should_fail_with_custom_message_if_actual_and_expected_are_not_same() {
     expectAssertionError("My custom message").on(new CodeToTest() {
       public void run() {
-        createAssertInstance(eight()).overridingErrorMessage("My custom message").isSameAs(nine());
+        createAssertInstance(createNewEight()).overridingErrorMessage("My custom message").isSameAs(createNewEight());
       }
     });
   }
@@ -80,7 +78,7 @@ public abstract class GenericAssert_isSameAs_TestBase<VALUE_CLASS> implements Ge
   public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_and_expected_are_not_same() {
     expectAssertionError("My custom message").on(new CodeToTest() {
       public void run() {
-        createAssertInstance(eight()).as("A Test").overridingErrorMessage("My custom message").isSameAs(nine());
+        createAssertInstance(createNewEight()).as("A Test").overridingErrorMessage("My custom message").isSameAs(createNewEight());
       }
     });
   }

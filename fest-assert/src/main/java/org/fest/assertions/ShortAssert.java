@@ -272,7 +272,7 @@ public class ShortAssert extends PrimitiveAssert<Short> implements NumberAssert 
 
   @Override
   public ShortAssert isNotSameAs(Short other) {
-    //TODO
-    throw new UnsupportedOperationException();
+    assertNotSameAs(other);
+    return this;
   }
 }

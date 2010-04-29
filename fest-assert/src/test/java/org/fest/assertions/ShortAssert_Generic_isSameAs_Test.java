@@ -24,24 +24,13 @@ public class ShortAssert_Generic_isSameAs_Test extends GenericAssert_isSameAs_Te
   private static final short ANY_FIXED_VALUE = 8;
 
   @Override
-  protected Short eight() {
-    // explicitly allocate a new instance here, since we want to test instance equality!
-    return new Short(ANY_FIXED_VALUE);
-  }
-
-  @Override
-  protected Short nine() {
+  protected Short createNewEight() {
     // explicitly allocate a new instance here, since we want to test instance equality!
     return new Short(ANY_FIXED_VALUE);
   }
 
   @Override
   protected String eightAsString() {
-    return "8";
-  }
-
-  @Override
-  protected String nineAsString() {
     return "8";
   }
 

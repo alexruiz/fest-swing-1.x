@@ -23,24 +23,13 @@ public class BooleanAssert_Generic_isSameAs_Test extends GenericAssert_isSameAs_
   private static final boolean ANY_FIXED_VALUE = true;
 
   @Override
-  protected Boolean eight() {
-    // explicitly allocate a new instance here, since we want to test instance equality!
-    return new Boolean(ANY_FIXED_VALUE);
-  }
-
-  @Override
-  protected Boolean nine() {
+  protected Boolean createNewEight() {
     // explicitly allocate a new instance here, since we want to test instance equality!
     return new Boolean(ANY_FIXED_VALUE);
   }
 
   @Override
   protected String eightAsString() {
-    return "true";
-  }
-
-  @Override
-  protected String nineAsString() {
     return "true";
   }
 
