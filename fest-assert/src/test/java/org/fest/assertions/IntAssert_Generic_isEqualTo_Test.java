@@ -16,6 +16,12 @@
 
 package org.fest.assertions;
 
+/**
+ * Test ensuring that {@link IntAssert} obeys the {@link GenericAssert#isEqualTo(Object)} contract for {@link Integer}.
+ *
+ * @author Ansgar Konermann
+ */
+
 public class IntAssert_Generic_isEqualTo_Test extends GenericAssert_isEqualTo_TestBase<Integer, IntAssert> {
 
   protected Integer actualValueX() {

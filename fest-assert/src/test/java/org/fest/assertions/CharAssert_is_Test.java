@@ -16,6 +16,12 @@
 
 package org.fest.assertions;
 
+/**
+ * Test ensuring that {@link CharAssert} obeys the {@link GenericAssert#is(Condition)} contract for {@link Character}.
+ *
+ * @author Ansgar Konermann
+ */
+
 public class CharAssert_is_Test extends GenericAssert_is_TestBase<Character> {
 
   @Override

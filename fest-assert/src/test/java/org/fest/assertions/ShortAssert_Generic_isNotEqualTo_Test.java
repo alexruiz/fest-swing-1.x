@@ -17,7 +17,10 @@
 package org.fest.assertions;
 
 /**
- * Test ensuring that {@link ShortAssert} obeys the {@link GenericAssert#isNotEqualTo(Object)} contract for {@link Short}.
+ * Test ensuring that {@link ShortAssert} obeys the {@link GenericAssert#isNotEqualTo(Object)} contract for {@link
+ * Short}.
+ *
+ * @author Ansgar Konermann
  */
 public class ShortAssert_Generic_isNotEqualTo_Test extends GenericAssert_isNotEqualTo_TestBase<Short> {
 

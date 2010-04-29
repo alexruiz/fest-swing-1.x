@@ -16,6 +16,12 @@
 
 package org.fest.assertions;
 
+/**
+ * Test ensuring that {@link BooleanAssert} obeys the {@link GenericAssert#is(Condition)} contract for {@link Boolean}.
+ *
+ * @author Ansgar Konermann
+ */
+
 public class BooleanAssert_is_Test extends GenericAssert_is_TestBase<Boolean> {
 
   @Override

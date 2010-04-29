@@ -17,7 +17,10 @@
 package org.fest.assertions;
 
 /**
- * Test ensuring that {@link LongAssert} obeys the {@link GenericAssert#isNotEqualTo(Object)} contract for {@link Long}.
+ * Test ensuring that {@link LongAssert} obeys the {@link GenericAssert#isNotEqualTo(Object)} contract for {@link
+ * Long}.
+ *
+ * @author Ansgar Konermann
  */
 public class LongAssert_Generic_isNotEqualTo_Test extends GenericAssert_isNotEqualTo_TestBase<Long> {
 

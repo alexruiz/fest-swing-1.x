@@ -17,7 +17,10 @@
 package org.fest.assertions;
 
 /**
- * Test ensuring that {@link BooleanAssert} obeys the {@link GenericAssert#isNotEqualTo(Object)} contract for {@link Boolean}.
+ * Test ensuring that {@link BooleanAssert} obeys the {@link GenericAssert#isNotEqualTo(Object)} contract for {@link
+ * Boolean}.
+ *
+ * @author Ansgar Konermann
  */
 public class BooleanAssert_Generic_isNotEqualTo_Test extends GenericAssert_isNotEqualTo_TestBase<Boolean> {
 

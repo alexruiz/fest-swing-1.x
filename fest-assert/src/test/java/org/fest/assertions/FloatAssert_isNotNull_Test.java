@@ -17,7 +17,8 @@
 package org.fest.assertions;
 
 /**
- * Test ensuring that {@link org.fest.assertions.FloatAssert} obeys the {@link GenericAssert#isNotNull()} contract for {@link Float}.
+ * Test ensuring that {@link org.fest.assertions.FloatAssert} obeys the {@link GenericAssert#isNotNull()} contract for
+ * {@link Float}.
  *
  * @author Ansgar Konermann
  */

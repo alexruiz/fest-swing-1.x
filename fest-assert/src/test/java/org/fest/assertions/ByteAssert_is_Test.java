@@ -16,6 +16,12 @@
 
 package org.fest.assertions;
 
+/**
+ * Test ensuring that {@link ByteAssert} obeys the {@link GenericAssert#is(Condition)} contract for {@link Byte}.
+ *
+ * @author Ansgar Konermann
+ */
+
 public class ByteAssert_is_Test extends GenericAssert_is_TestBase<Byte> {
 
   @Override

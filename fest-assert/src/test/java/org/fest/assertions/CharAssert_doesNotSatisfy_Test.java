@@ -16,6 +16,12 @@
 
 package org.fest.assertions;
 
+/**
+ * Test ensuring that {@link org.fest.assertions.CharAssert} obeys the {@link org.fest.assertions.GenericAssert#doesNotSatisfy(Condition)}
+ * contract for {@link Character}.
+ *
+ * @author Ansgar Konermann
+ */
 public class CharAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSatisfy_TestBase<Character> {
 
   @Override

@@ -16,20 +16,22 @@
 
 package org.fest.assertions;
 
-import org.fest.test.CodeToTest;
-import org.junit.Test;
-
 import static org.fest.assertions.CommonFailures.expectErrorIfConditionIsNull;
 import static org.fest.test.ExpectedFailure.expectAssertionError;
 
+import org.junit.Test;
+import org.fest.test.CodeToTest;
+
 /**
  * Base class for testing {@link org.fest.assertions.GenericAssert#isNot(Condition)}.
- *
- * This class implements the algorithms which must be performed to test <code>isNot</code> as template methods
- * and uses implementations of the abstract methods in subclasses to derive concrete tests.
+ * <p/>
+ * This class implements the algorithms which must be performed to test <code>isNot</code> as template methods and uses
+ * implementations of the abstract methods in subclasses to derive concrete tests.
  *
  * @author Ansgar Konermann
  */
+// TODO konermann: refactor to a common naming scheme for all abstract methods
+// TODO konermann: review javadoc of all *_TestBase classes to match a common format and content.
 public abstract class GenericAssert_isNot_TestBase<T> implements GenericAssert_doesNotSatisfy_TestCase {
 
   protected abstract NotNull<T> createNotNullCondition();

@@ -17,7 +17,10 @@
 package org.fest.assertions;
 
 /**
- * Test ensuring that {@link IntAssert} obeys the {@link GenericAssert#isNotEqualTo(Object)} contract for {@link Integer}.
+ * Test ensuring that {@link IntAssert} obeys the {@link GenericAssert#isNotEqualTo(Object)} contract for {@link
+ * Integer}.
+ *
+ * @author Ansgar Konermann
  */
 public class IntAssert_Generic_isNotEqualTo_Test extends GenericAssert_isNotEqualTo_TestBase<Integer> {
 

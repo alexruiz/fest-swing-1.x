@@ -17,8 +17,10 @@
 package org.fest.assertions;
 
 /**
- * Test ensuring that {@link DoubleAssert} obeys the {@link GenericAssert#isNotEqualTo(Object)} contract
- * for {@link Double}.
+ * Test ensuring that {@link DoubleAssert} obeys the {@link GenericAssert#isNotEqualTo(Object)} contract for {@link
+ * Double}.
+ *
+ * @author Ansgar Konermann
  */
 public class DoubleAssert_Generic_isNotEqualTo_Test extends GenericAssert_isNotEqualTo_TestBase<Double> {
 

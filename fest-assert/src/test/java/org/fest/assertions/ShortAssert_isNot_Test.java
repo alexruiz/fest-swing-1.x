@@ -16,25 +16,30 @@
 
 package org.fest.assertions;
 
+/**
+ * Test ensuring that {@link ShortAssert} obeys the {@link GenericAssert#isNot(Condition)} contract for {@link Short}.
+ *
+ * @author Ansgar Konermann
+ */
 public class ShortAssert_isNot_Test extends GenericAssert_isNot_TestBase<Short> {
 
-    @Override
-    protected NotNull<Short> createNotNullCondition() {
-        return NotNull.instance();
-    }
+  @Override
+  protected NotNull<Short> createNotNullCondition() {
+    return NotNull.instance();
+  }
 
-    @Override
-    protected ShortAssert createInstanceFromNullReference() {
-        return new ShortAssert(null);
-    }
+  @Override
+  protected ShortAssert createInstanceFromNullReference() {
+    return new ShortAssert(null);
+  }
 
-    @Override
-    protected ShortAssert createInstanceRepresentingZero() {
-        return new ShortAssert((short) 1);
-    }
+  @Override
+  protected ShortAssert createInstanceRepresentingZero() {
+    return new ShortAssert((short) 1);
+  }
 
-    @Override
-    protected String createStringRepresentationOfZero() {
-        return "1";
-    }
+  @Override
+  protected String createStringRepresentationOfZero() {
+    return "1";
+  }
 }

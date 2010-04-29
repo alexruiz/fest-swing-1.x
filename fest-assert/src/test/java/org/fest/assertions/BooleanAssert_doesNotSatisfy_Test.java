@@ -15,6 +15,12 @@
  */
 package org.fest.assertions;
 
+/**
+ * Test ensuring that {@link org.fest.assertions.BooleanAssert} obeys the {@link org.fest.assertions.GenericAssert#doesNotSatisfy(Condition)}
+ * contract for {@link Boolean}.
+ *
+ * @author Ansgar Konermann
+ */
 public class BooleanAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSatisfy_TestBase<Boolean> {
 
   @Override

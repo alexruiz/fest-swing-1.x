@@ -17,7 +17,10 @@
 package org.fest.assertions;
 
 /**
- * Test ensuring that {@link ByteAssert} obeys the {@link GenericAssert#isNotEqualTo(Object)} contract for {@link Byte}.
+ * Test ensuring that {@link ByteAssert} obeys the {@link GenericAssert#isNotEqualTo(Object)} contract for {@link
+ * Byte}.
+ *
+ * @author Ansgar Konermann
  */
 public class ByteAssert_Generic_isNotEqualTo_Test extends GenericAssert_isNotEqualTo_TestBase<Byte> {
 

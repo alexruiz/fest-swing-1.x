@@ -16,6 +16,12 @@
 
 package org.fest.assertions;
 
+/**
+ * Test ensuring that {@link org.fest.assertions.IntAssert} obeys the {@link org.fest.assertions.GenericAssert#doesNotSatisfy(Condition)}
+ * contract for {@link Integer}.
+ *
+ * @author Ansgar Konermann
+ */
 public class IntAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSatisfy_TestBase<Integer> {
 
   @Override

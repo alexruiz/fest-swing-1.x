@@ -15,25 +15,31 @@
  */
 package org.fest.assertions;
 
+/**
+ * Test ensuring that {@link org.fest.assertions.FloatAssert} obeys the {@link org.fest.assertions.GenericAssert#doesNotSatisfy(Condition)}
+ * contract for {@link Float}.
+ *
+ * @author Ansgar Konermann
+ */
 public class FloatAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSatisfy_TestBase<Float> {
 
-    @Override
-    protected NotNull<Float> createNotNullCondition() {
-        return NotNull.instance();
-    }
+  @Override
+  protected NotNull<Float> createNotNullCondition() {
+    return NotNull.instance();
+  }
 
-    @Override
-    protected FloatAssert createInstanceFromNullReference() {
-        return new FloatAssert(null);
-    }
+  @Override
+  protected FloatAssert createInstanceFromNullReference() {
+    return new FloatAssert(null);
+  }
 
-    @Override
-    protected FloatAssert createInstanceRepresentingZero() {
-        return new FloatAssert(0.0f);
-    }
+  @Override
+  protected FloatAssert createInstanceRepresentingZero() {
+    return new FloatAssert(0.0f);
+  }
 
-    @Override
-    protected String createStringRepresentationOfZero() {
-        return "0.0";
-    }
+  @Override
+  protected String createStringRepresentationOfZero() {
+    return "0.0";
+  }
 }

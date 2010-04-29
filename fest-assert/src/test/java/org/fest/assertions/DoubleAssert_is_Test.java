@@ -16,6 +16,12 @@
 
 package org.fest.assertions;
 
+/**
+ * Test ensuring that {@link DoubleAssert} obeys the {@link GenericAssert#is(Condition)} contract for {@link Double}.
+ *
+ * @author Ansgar Konermann
+ */
+
 public class DoubleAssert_is_Test extends GenericAssert_is_TestBase<Double> {
 
   @Override

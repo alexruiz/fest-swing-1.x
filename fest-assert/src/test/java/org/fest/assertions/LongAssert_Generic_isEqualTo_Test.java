@@ -16,7 +16,13 @@
 
 package org.fest.assertions;
 
-public class LongAssert_Generic_isEqualTo_Test extends GenericAssert_isEqualTo_TestBase<Long, LongAssert>  {
+/**
+ * Test ensuring that {@link LongAssert} obeys the {@link GenericAssert#isEqualTo(Object)} contract for {@link Long}.
+ *
+ * @author Ansgar Konermann
+ */
+
+public class LongAssert_Generic_isEqualTo_Test extends GenericAssert_isEqualTo_TestBase<Long, LongAssert> {
 
   protected Long actualValueX() {
     return 123l;

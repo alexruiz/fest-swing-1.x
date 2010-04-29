@@ -16,6 +16,12 @@
 
 package org.fest.assertions;
 
+/**
+ * Test ensuring that {@link FloatAssert} obeys the {@link GenericAssert#isEqualTo(Object)} contract for {@link Float}.
+ *
+ * @author Ansgar Konermann
+ */
+
 public class FloatAssert_Generic_isEqualTo_Test extends GenericAssert_isEqualTo_TestBase<Float, FloatAssert> {
 
   protected Float actualValueX() {

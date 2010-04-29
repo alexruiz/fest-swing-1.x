@@ -16,25 +16,31 @@
 
 package org.fest.assertions;
 
+/**
+ * Test ensuring that {@link DoubleAssert} obeys the {@link GenericAssert#isNot(Condition)} contract for {@link
+ * Double}.
+ *
+ * @author Ansgar Konermann
+ */
 public class DoubleAssert_isNot_Test extends GenericAssert_isNot_TestBase<Double> {
 
-    @Override
-    protected NotNull<Double> createNotNullCondition() {
-        return NotNull.instance();
-    }
+  @Override
+  protected NotNull<Double> createNotNullCondition() {
+    return NotNull.instance();
+  }
 
-    @Override
-    protected DoubleAssert createInstanceFromNullReference() {
-        return new DoubleAssert(null);
-    }
+  @Override
+  protected DoubleAssert createInstanceFromNullReference() {
+    return new DoubleAssert(null);
+  }
 
-    @Override
-    protected DoubleAssert createInstanceRepresentingZero() {
-        return new DoubleAssert(0.0d);
-    }
+  @Override
+  protected DoubleAssert createInstanceRepresentingZero() {
+    return new DoubleAssert(0.0d);
+  }
 
-    @Override
-    protected String createStringRepresentationOfZero() {
-        return "0.0";
-    }
+  @Override
+  protected String createStringRepresentationOfZero() {
+    return "0.0";
+  }
 }

@@ -17,7 +17,8 @@
 package org.fest.assertions;
 
 /**
- * Test ensuring that {@link org.fest.assertions.ByteAssert} obeys the {@link GenericAssert#isNotNull()} contract for {@link Byte}.
+ * Test ensuring that {@link org.fest.assertions.ByteAssert} obeys the {@link GenericAssert#isNotNull()} contract for
+ * {@link Byte}.
  *
  * @author Ansgar Konermann
  */

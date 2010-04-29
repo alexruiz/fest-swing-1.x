@@ -15,6 +15,12 @@
  */
 package org.fest.assertions;
 
+/**
+ * Test ensuring that {@link org.fest.assertions.ShortAssert} obeys the {@link org.fest.assertions.GenericAssert#doesNotSatisfy(Condition)}
+ * contract for {@link Short}.
+ *
+ * @author Ansgar Konermann
+ */
 public class ShortAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSatisfy_TestBase<Short> {
 
   @Override

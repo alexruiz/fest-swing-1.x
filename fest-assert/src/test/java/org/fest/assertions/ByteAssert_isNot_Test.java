@@ -16,25 +16,30 @@
 
 package org.fest.assertions;
 
+/**
+ * Test ensuring that {@link ByteAssert} obeys the {@link GenericAssert#isNot(Condition)} contract for {@link Byte}.
+ *
+ * @author Ansgar Konermann
+ */
 public class ByteAssert_isNot_Test extends GenericAssert_isNot_TestBase<Byte> {
 
-    @Override
-    protected NotNull<Byte> createNotNullCondition() {
-        return NotNull.instance();
-    }
+  @Override
+  protected NotNull<Byte> createNotNullCondition() {
+    return NotNull.instance();
+  }
 
-    @Override
-    protected ByteAssert createInstanceFromNullReference() {
-        return new ByteAssert(null);
-    }
+  @Override
+  protected ByteAssert createInstanceFromNullReference() {
+    return new ByteAssert(null);
+  }
 
-    @Override
-    protected ByteAssert createInstanceRepresentingZero() {
-        return new ByteAssert((byte) 1);
-    }
+  @Override
+  protected ByteAssert createInstanceRepresentingZero() {
+    return new ByteAssert((byte) 1);
+  }
 
-    @Override
-    protected String createStringRepresentationOfZero() {
-        return "1";
-    }
+  @Override
+  protected String createStringRepresentationOfZero() {
+    return "1";
+  }
 }

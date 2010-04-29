@@ -16,6 +16,12 @@
 
 package org.fest.assertions;
 
+/**
+ * Test ensuring that {@link FloatAssert} obeys the {@link GenericAssert#is(Condition)} contract for {@link Float}.
+ *
+ * @author Ansgar Konermann
+ */
+
 public class FloatAssert_is_Test extends GenericAssert_is_TestBase<Float> {
 
   @Override

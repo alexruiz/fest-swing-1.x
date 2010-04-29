@@ -16,25 +16,31 @@
 
 package org.fest.assertions;
 
+/**
+ * Test ensuring that {@link CharAssert} obeys the {@link GenericAssert#isNot(Condition)} contract for {@link
+ * Character}.
+ *
+ * @author Ansgar Konermann
+ */
 public class CharAssert_isNot_Test extends GenericAssert_isNot_TestBase<Character> {
 
-    @Override
-    protected NotNull<Character> createNotNullCondition() {
-        return NotNull.instance();
-    }
+  @Override
+  protected NotNull<Character> createNotNullCondition() {
+    return NotNull.instance();
+  }
 
-    @Override
-    protected CharAssert createInstanceFromNullReference() {
-        return new CharAssert(null);
-    }
+  @Override
+  protected CharAssert createInstanceFromNullReference() {
+    return new CharAssert(null);
+  }
 
-    @Override
-    protected CharAssert createInstanceRepresentingZero() {
-        return new CharAssert('0');
-    }
+  @Override
+  protected CharAssert createInstanceRepresentingZero() {
+    return new CharAssert('0');
+  }
 
-    @Override
-    protected String createStringRepresentationOfZero() {
-        return "0";
-    }
+  @Override
+  protected String createStringRepresentationOfZero() {
+    return "0";
+  }
 }

@@ -17,7 +17,8 @@
 package org.fest.assertions;
 
 /**
- * Test ensuring that {@link org.fest.assertions.ShortAssert} obeys the {@link GenericAssert#isNotNull()} contract for {@link Short}.
+ * Test ensuring that {@link org.fest.assertions.ShortAssert} obeys the {@link GenericAssert#isNotNull()} contract for
+ * {@link Short}.
  *
  * @author Ansgar Konermann
  */

@@ -16,6 +16,13 @@
 
 package org.fest.assertions;
 
+/**
+ * Test ensuring that {@link CharAssert} obeys the {@link GenericAssert#isEqualTo(Object)} contract for {@link
+ * Character}.
+ *
+ * @author Ansgar Konermann
+ */
+
 public class CharAssert_Generic_isEqualTo_Test extends GenericAssert_isEqualTo_TestBase<Character, CharAssert> {
 
   protected Character actualValueX() {

@@ -16,6 +16,12 @@
 
 package org.fest.assertions;
 
+/**
+ * Test ensuring that {@link org.fest.assertions.LongAssert} obeys the {@link org.fest.assertions.GenericAssert#doesNotSatisfy(Condition)}
+ * contract for {@link Long}.
+ *
+ * @author Ansgar Konermann
+ */
 public class LongAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSatisfy_TestBase<Long> {
 
   @Override

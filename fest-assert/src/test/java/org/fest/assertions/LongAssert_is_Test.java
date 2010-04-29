@@ -16,6 +16,12 @@
 
 package org.fest.assertions;
 
+/**
+ * Test ensuring that {@link LongAssert} obeys the {@link GenericAssert#is(Condition)} contract for {@link Long}.
+ *
+ * @author Ansgar Konermann
+ */
+
 public class LongAssert_is_Test extends GenericAssert_is_TestBase<Long> {
 
   @Override

@@ -16,6 +16,12 @@
 
 package org.fest.assertions;
 
+/**
+ * Test ensuring that {@link ShortAssert} obeys the {@link GenericAssert#is(Condition)} contract for {@link Short}.
+ *
+ * @author Ansgar Konermann
+ */
+
 public class ShortAssert_is_Test extends GenericAssert_is_TestBase<Short> {
 
   @Override

@@ -16,6 +16,12 @@
 
 package org.fest.assertions;
 
+/**
+ * Test ensuring that {@link ByteAssert} obeys the {@link GenericAssert#isEqualTo(Object)} contract for {@link Byte}.
+ *
+ * @author Ansgar Konermann
+ */
+
 public class ByteAssert_Generic_isEqualTo_Test extends GenericAssert_isEqualTo_TestBase<Byte, ByteAssert> {
 
   protected Byte actualValueX() {

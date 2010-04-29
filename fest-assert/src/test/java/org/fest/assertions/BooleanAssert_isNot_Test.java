@@ -16,25 +16,31 @@
 
 package org.fest.assertions;
 
+/**
+ * Test ensuring that {@link BooleanAssert} obeys the {@link GenericAssert#isNot(Condition)} contract for {@link
+ * Boolean}.
+ *
+ * @author Ansgar Konermann
+ */
 public class BooleanAssert_isNot_Test extends GenericAssert_isNot_TestBase<Boolean> {
 
-    @Override
-    protected NotNull<Boolean> createNotNullCondition() {
-        return NotNull.instance();
-    }
+  @Override
+  protected NotNull<Boolean> createNotNullCondition() {
+    return NotNull.instance();
+  }
 
-    @Override
-    protected BooleanAssert createInstanceFromNullReference() {
-        return new BooleanAssert(null);
-    }
+  @Override
+  protected BooleanAssert createInstanceFromNullReference() {
+    return new BooleanAssert(null);
+  }
 
-    @Override
-    protected BooleanAssert createInstanceRepresentingZero() {
-        return new BooleanAssert(false);
-    }
+  @Override
+  protected BooleanAssert createInstanceRepresentingZero() {
+    return new BooleanAssert(false);
+  }
 
-    @Override
-    protected String createStringRepresentationOfZero() {
-        return "false";
-    }
+  @Override
+  protected String createStringRepresentationOfZero() {
+    return "false";
+  }
 }

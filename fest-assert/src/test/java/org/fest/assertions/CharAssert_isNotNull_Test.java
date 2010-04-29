@@ -17,7 +17,8 @@
 package org.fest.assertions;
 
 /**
- * Test ensuring that {@link org.fest.assertions.CharAssert} obeys the {@link GenericAssert#isNotNull()} contract for {@link Character}.
+ * Test ensuring that {@link org.fest.assertions.CharAssert} obeys the {@link GenericAssert#isNotNull()} contract for
+ * {@link Character}.
  *
  * @author Ansgar Konermann
  */

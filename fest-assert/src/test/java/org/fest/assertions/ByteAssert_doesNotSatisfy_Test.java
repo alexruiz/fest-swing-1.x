@@ -16,6 +16,13 @@
 
 package org.fest.assertions;
 
+
+/**
+ * Test ensuring that {@link org.fest.assertions.ByteAssert} obeys the {@link org.fest.assertions.GenericAssert#doesNotSatisfy(Condition)}
+ * contract for {@link Byte}.
+ *
+ * @author Ansgar Konermann
+ */
 public class ByteAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSatisfy_TestBase<Byte> {
 
   @Override

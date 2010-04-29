@@ -17,7 +17,8 @@
 package org.fest.assertions;
 
 /**
- * Test ensuring that {@link org.fest.assertions.LongAssert} obeys the {@link GenericAssert#isNotNull()} contract for {@link Long}.
+ * Test ensuring that {@link org.fest.assertions.LongAssert} obeys the {@link GenericAssert#isNotNull()} contract for
+ * {@link Long}.
  *
  * @author Ansgar Konermann
  */

@@ -17,7 +17,8 @@
 package org.fest.assertions;
 
 /**
- * Test ensuring that {@link org.fest.assertions.BooleanAssert} obeys the {@link GenericAssert#isNotNull()} contract for {@link Boolean}.
+ * Test ensuring that {@link org.fest.assertions.BooleanAssert} obeys the {@link GenericAssert#isNotNull()} contract for
+ * {@link Boolean}.
  *
  * @author Ansgar Konermann
  */

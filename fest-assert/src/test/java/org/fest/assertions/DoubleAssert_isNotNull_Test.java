@@ -17,7 +17,8 @@
 package org.fest.assertions;
 
 /**
- * Test ensuring that {@link org.fest.assertions.DoubleAssert} obeys the {@link GenericAssert#isNotNull()} contract for {@link Double}.
+ * Test ensuring that {@link org.fest.assertions.DoubleAssert} obeys the {@link GenericAssert#isNotNull()} contract for
+ * {@link Double}.
  *
  * @author Ansgar Konermann
  */
