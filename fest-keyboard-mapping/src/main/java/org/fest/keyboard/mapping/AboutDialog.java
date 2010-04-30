@@ -15,6 +15,12 @@
  */
 package org.fest.keyboard.mapping;
 
+import static java.awt.Desktop.isDesktopSupported;
+import static java.util.Calendar.YEAR;
+
+import java.awt.Font;
+import java.util.GregorianCalendar;
+
 /**
  * Understands an "About" dialog.
  *
@@ -32,6 +38,35 @@ public class AboutDialog extends javax.swing.JDialog {
   public AboutDialog(java.awt.Frame parent, boolean modal) {
     super(parent, modal);
     initComponents();
+    updateAboutText();
+    descriptionPane.addHyperlinkListener(new BrowseUrlHyperlinkListener());
+  }
+
+  private void updateAboutText() {
+    Font font = logoLabel.getFont();
+    StringBuilder b = new StringBuilder();
+    b.append("<html><head></head><body style=\"")
+     .append("font-family:'").append(font.getFamily()).append("';")
+     .append("font-size:").append(font.getSize()).append(";")
+     .append("\">")
+     .append("<strong>FEST Keyboard Mapping Tool</strong>")
+     .append("<p>Copyright @").append(copyrightYear()).append(" FEST<br/> (Fixtures for Easy Software Testing)<br/></p>")
+     .append("<p>").append(linkFor("http://fest.easytesting.org")).append("</p>")
+     .append("</body></html>");
+    descriptionPane.setText(b.toString());
+  }
+
+  private static String copyrightYear() {
+    StringBuilder b = new StringBuilder();
+    b.append(2007).append("-").append(new GregorianCalendar().get(YEAR));
+    return b.toString();
+  }
+
+  private static String linkFor(String url) {
+    if (!isDesktopSupported()) return url;
+    StringBuilder b = new StringBuilder();
+    b.append("<a href=\"").append(url).append("\">").append(url).append("</a>");
+    return b.toString();
   }
 
   /** This method is called from within the constructor to
@@ -42,17 +77,15 @@ public class AboutDialog extends javax.swing.JDialog {
   // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
   private void initComponents() {
 
-    aboutLabel = new javax.swing.JLabel();
     closeButton = new javax.swing.JButton();
     logoLabel = new javax.swing.JLabel();
+    descriptionScrollPane = new javax.swing.JScrollPane();
+    descriptionPane = new javax.swing.JEditorPane();
 
     setTitle("About");
     setModal(true);
     setName("aboutDialog"); // NOI18N
     setResizable(false);
-
-    aboutLabel.setText("<html> <strong>FEST Keyboard Mapping Tool</strong> <p> Copyright @2010 FEST<br/> (Fixtures for Easy Software Testing)<br/></p> <p> http://fest.easytesting.org </p> </html>");
-    aboutLabel.setName("aboutLabel"); // NOI18N
 
     closeButton.setMnemonic('C');
     closeButton.setText("Close");
@@ -65,35 +98,39 @@ public class AboutDialog extends javax.swing.JDialog {
 
     logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fest64.png"))); // NOI18N
 
+    descriptionScrollPane.setBorder(null);
+
+    descriptionPane.setBorder(null);
+    descriptionPane.setContentType("text/html");
+    descriptionPane.setEditable(false);
+    descriptionPane.setOpaque(false);
+    descriptionScrollPane.setViewportView(descriptionPane);
+
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
     getContentPane().setLayout(layout);
     layout.setHorizontalGroup(
       layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
       .addGroup(layout.createSequentialGroup()
+        .addContainerGap()
         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
           .addGroup(layout.createSequentialGroup()
-            .addContainerGap()
             .addComponent(logoLabel)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-            .addComponent(aboutLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE))
-          .addGroup(layout.createSequentialGroup()
-            .addGap(106, 106, 106)
-            .addComponent(closeButton)))
+            .addComponent(descriptionScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE))
+          .addComponent(closeButton, javax.swing.GroupLayout.Alignment.TRAILING))
         .addContainerGap())
     );
     layout.setVerticalGroup(
       layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
       .addGroup(layout.createSequentialGroup()
         .addContainerGap()
-        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-          .addComponent(aboutLabel)
-          .addComponent(logoLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+          .addComponent(logoLabel)
+          .addComponent(descriptionScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE))
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
         .addComponent(closeButton)
-        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        .addContainerGap())
     );
-
-    aboutLabel.getAccessibleContext().setAccessibleName("aboutLabel");
 
     pack();
   }// </editor-fold>//GEN-END:initComponents
@@ -103,8 +140,9 @@ public class AboutDialog extends javax.swing.JDialog {
   }//GEN-LAST:event_closeWindow
 
   // Variables declaration - do not modify//GEN-BEGIN:variables
-  private javax.swing.JLabel aboutLabel;
   private javax.swing.JButton closeButton;
+  private javax.swing.JEditorPane descriptionPane;
+  private javax.swing.JScrollPane descriptionScrollPane;
   private javax.swing.JLabel logoLabel;
   // End of variables declaration//GEN-END:variables
 
