@@ -100,8 +100,8 @@ public class CharAssert extends PrimitiveAssert<Character> {
    * target="_blank">Groovy</a>. This method should be called before any assertion method, otherwise any assertion
    * failure will not show the provided description. <p> For example:
    * <pre>
-   * assertThat(value).<strong>describedAs</strong>(new BasicDescription(&quot;Some
-   * value&quot;)).isEqualTo(otherValue);
+   * assertThat(value).<strong>describedAs</strong>(new BasicDescription(&quot;Some value&quot;))
+   *   .isEqualTo(otherValue);
    * </pre>
    * </p>
    *
@@ -287,12 +287,28 @@ public class CharAssert extends PrimitiveAssert<Character> {
     return this;
   }
 
+  /**
+   * Verifies that the actual <code>{@link Character}</code> value is equal to the given one.
+   *
+   * @param expected the given <code>Character</code> value to compare the actual <code>Character</code> to.
+   * @return this assertion object.
+   * @throws AssertionError if the actual <code>Character</code> value is not equal to the given one.
+   * @since 1.3
+   */
   @Override
   public CharAssert isEqualTo(Character expected) {
     assertEqualTo(expected);
     return this;
   }
 
+  /**
+   * Verifies that the actual <code>{@link Character}</code> is not equal to the given one.
+   *
+   * @param other the given <code>Character</code> to compare the actual <code>Character</code> to.
+   * @return this assertion object.
+   * @throws AssertionError if the actual <code>Character</code> value is equal to the given one.
+   * @since 1.3
+   */
   @Override
   public CharAssert isNotEqualTo(Character other) {
     assertNotEqualTo(other);

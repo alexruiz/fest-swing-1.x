@@ -101,8 +101,8 @@ public class ByteAssert extends PrimitiveAssert<Byte> implements NumberAssert {
    * target="_blank">Groovy</a>. This method should be called before any assertion method, otherwise any assertion
    * failure will not show the provided description. <p> For example:
    * <pre>
-   * assertThat(value).<strong>describedAs</strong>(new BasicDescription(&quot;Some
-   * value&quot;)).isEqualTo(otherValue);
+   * assertThat(value).<strong>describedAs</strong>(new BasicDescription(&quot;Some value&quot;))
+   *   .isEqualTo(otherValue);
    * </pre>
    * </p>
    *
@@ -294,12 +294,28 @@ public class ByteAssert extends PrimitiveAssert<Byte> implements NumberAssert {
     return this;
   }
 
+  /**
+   * Verifies that the actual <code>{@link Byte}</code> value is equal to the given one.
+   *
+   * @param expected the given <code>Byte</code> value to compare the actual <code>Byte</code> to.
+   * @return this assertion object.
+   * @throws AssertionError if the actual <code>Byte</code> value is not equal to the given one.
+   * @since 1.3
+   */
   @Override
   public ByteAssert isEqualTo(Byte expected) {
     assertEqualTo(expected);
     return this;
   }
 
+  /**
+   * Verifies that the actual <code>{@link Byte}</code> is not equal to the given one.
+   *
+   * @param other the given <code>Byte</code> to compare the actual <code>Byte</code> to.
+   * @return this assertion object.
+   * @throws AssertionError if the actual <code>Byte</code> value is equal to the given one.
+   * @since 1.3
+   */
   @Override
   public ByteAssert isNotEqualTo(Byte other) {
     assertNotEqualTo(other);

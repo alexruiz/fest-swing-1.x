@@ -100,8 +100,8 @@ public class LongAssert extends PrimitiveAssert<Long> implements NumberAssert {
    * target="_blank">Groovy</a>. This method should be called before any assertion method, otherwise any assertion
    * failure will not show the provided description. <p> For example:
    * <pre>
-   * assertThat(value).<strong>describedAs</strong>(new BasicDescription(&quot;Some
-   * value&quot;)).isEqualTo(otherValue);
+   * assertThat(value).<strong>describedAs</strong>(new BasicDescription(&quot;Some value&quot;))
+   *   .isEqualTo(otherValue);
    * </pre>
    * </p>
    *
@@ -294,12 +294,28 @@ public class LongAssert extends PrimitiveAssert<Long> implements NumberAssert {
     return this;
   }
 
+  /**
+   * Verifies that the actual <code>{@link Long}</code> value is equal to the given one.
+   *
+   * @param expected the given <code>Long</code> value to compare the actual <code>Long</code> to.
+   * @return this assertion object.
+   * @throws AssertionError if the actual <code>Long</code> value is not equal to the given one.
+   * @since 1.3
+   */
   @Override
   public LongAssert isEqualTo(Long expected) {
     assertEqualTo(expected);
     return this;
   }
 
+  /**
+   * Verifies that the actual <code>{@link Long}</code> is not equal to the given one.
+   *
+   * @param other the given <code>Long</code> to compare the actual <code>Long</code> to.
+   * @return this assertion object.
+   * @throws AssertionError if the actual <code>Long</code> value is equal to the given one.
+   * @since 1.3
+   */
   @Override
   public LongAssert isNotEqualTo(Long other) {
     assertNotEqualTo(other);

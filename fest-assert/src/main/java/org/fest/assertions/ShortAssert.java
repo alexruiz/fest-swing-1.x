@@ -100,8 +100,8 @@ public class ShortAssert extends PrimitiveAssert<Short> implements NumberAssert 
    * target="_blank">Groovy</a>. This method should be called before any assertion method, otherwise any assertion
    * failure will not show the provided description. <p> For example:
    * <pre>
-   * assertThat(value).<strong>describedAs</strong>(new BasicDescription(&quot;Some
-   * value&quot;)).isEqualTo(otherValue);
+   * assertThat(value).<strong>describedAs</strong>(new BasicDescription(&quot;Some value&quot;))
+   *   .isEqualTo(otherValue);
    * </pre>
    * </p>
    *
@@ -292,12 +292,28 @@ public class ShortAssert extends PrimitiveAssert<Short> implements NumberAssert 
     return this;
   }
 
+  /**
+   * Verifies that the actual <code>{@link Short}</code> value is equal to the given one.
+   *
+   * @param expected the given <code>Short</code> value to compare the actual <code>Short</code> to.
+   * @return this assertion object.
+   * @throws AssertionError if the actual <code>Short</code> value is not equal to the given one.
+   * @since 1.3
+   */
   @Override
   public ShortAssert isEqualTo(Short expected) {
     assertEqualTo(expected);
     return this;
   }
 
+  /**
+   * Verifies that the actual <code>{@link Short}</code> is not equal to the given one.
+   *
+   * @param other the given <code>Short</code> to compare the actual <code>Short</code> to.
+   * @return this assertion object.
+   * @throws AssertionError if the actual <code>Short</code> value is equal to the given one.
+   * @since 1.3
+   */
   @Override
   public ShortAssert isNotEqualTo(Short other) {
     assertNotEqualTo(other);

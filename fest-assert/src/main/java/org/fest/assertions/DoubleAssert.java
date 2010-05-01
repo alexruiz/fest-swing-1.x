@@ -91,8 +91,8 @@ public class DoubleAssert extends PrimitiveAssert<Double> implements NumberAsser
    * target="_blank">Groovy</a>. This method should be called before any assertion method, otherwise any assertion
    * failure will not show the provided description. <p> For example:
    * <pre>
-   * assertThat(value).<strong>describedAs</strong>(new BasicDescription(&quot;Some
-   * value&quot;)).isEqualTo(otherValue);
+   * assertThat(value).<strong>describedAs</strong>(new BasicDescription(&quot;Some value&quot;))
+   *   .isEqualTo(otherValue);
    * </pre>
    * </p>
    *
@@ -363,12 +363,28 @@ public class DoubleAssert extends PrimitiveAssert<Double> implements NumberAsser
     return this;
   }
 
+  /**
+   * Verifies that the actual <code>{@link Double}</code> value is equal to the given one.
+   *
+   * @param expected the given <code>Double</code> value to compare the actual <code>Double</code> to.
+   * @return this assertion object.
+   * @throws AssertionError if the actual <code>Double</code> value is not equal to the given one.
+   * @since 1.3
+   */
   @Override
   public DoubleAssert isEqualTo(Double expected) {
     assertEqualTo(expected);
     return this;
   }
 
+  /**
+   * Verifies that the actual <code>{@link Double}</code> is not equal to the given one.
+   *
+   * @param other the given <code>Double</code> to compare the actual <code>Double</code> to.
+   * @return this assertion object.
+   * @throws AssertionError if the actual <code>Double</code> value is equal to the given one.
+   * @since 1.3
+   */
   @Override
   public DoubleAssert isNotEqualTo(Double other) {
     assertNotEqualTo(other);
