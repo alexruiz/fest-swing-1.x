@@ -16,8 +16,6 @@
 package org.fest.keyboard.mapping;
 
 import static org.fest.keyboard.mapping.CharMapping.newCharMapping;
-import static org.fest.keyboard.mapping.MacOSSupport.isMacOS;
-
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
@@ -52,7 +50,7 @@ public class MainFrame extends javax.swing.JFrame {
   }
 
   private void setUpForMacOS() {
-    helpMenu.setVisible(!isMacOS());
+    helpMenu.setVisible(!MacSupport.instance().isMacOS());
   }
 
   /** This method is called from within the constructor to

@@ -49,10 +49,11 @@ class CharMappingTable extends JTable {
   }
 
   void deleteSelection() {
-    if (getSelectedRowCount() == 0) return;
-    int selectedRow = -1;
-    while ((selectedRow = getSelectedRow()) != -1)
+    int selectedRow = getSelectedRow();
+    while (selectedRow != -1) {
       model.removeRow(selectedRow);
+      selectedRow = getSelectedRow();
+    }
     scrollAndSelectLastRow();
   }
 

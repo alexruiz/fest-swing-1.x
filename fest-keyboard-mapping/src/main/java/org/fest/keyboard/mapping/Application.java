@@ -19,7 +19,6 @@ import static javax.swing.SwingUtilities.invokeLater;
 import static javax.swing.UIManager.getSystemLookAndFeelClassName;
 import static javax.swing.UIManager.setLookAndFeel;
 import static org.fest.keyboard.mapping.MacAboutHandler.installMacAboutHandler;
-import static org.fest.keyboard.mapping.MacOSSupport.setUpForMacOS;
 
 /**
  * Understands the application's main class.
@@ -29,12 +28,13 @@ import static org.fest.keyboard.mapping.MacOSSupport.setUpForMacOS;
 public class Application {
 
   public static void main(String... args) {
-    setUpForMacOS();
+    final MacSupport macSupport = MacSupport.instance();
+    macSupport.setUpForMacOS();
     invokeLater(new Runnable() {
       public void run() {
         setLaF();
         MainFrame mainFrame = new MainFrame();
-        installMacAboutHandler(mainFrame);
+        installMacAboutHandler(mainFrame, macSupport);
         mainFrame.setVisible(true);
         mainFrame.giveFocusToCharTextField();
       }

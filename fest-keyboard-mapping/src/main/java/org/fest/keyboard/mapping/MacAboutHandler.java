@@ -15,10 +15,8 @@
  */
 package org.fest.keyboard.mapping;
 
-import static com.apple.mrj.MRJApplicationUtils.registerAboutHandler;
 import static javax.swing.SwingUtilities.invokeLater;
-import static javax.swing.SwingUtilities.isEventDispatchThread;
-import static org.fest.keyboard.mapping.MacOSSupport.isMacOS;
+import org.fest.util.VisibleForTesting;
 
 import com.apple.mrj.MRJAboutHandler;
 
@@ -32,20 +30,17 @@ class MacAboutHandler implements MRJAboutHandler {
 
   private final MainFrame frame;
 
-  static void installMacAboutHandler(MainFrame frame) {
-    if (!isMacOS()) return;
-    registerAboutHandler(new MacAboutHandler(frame));
+  static void installMacAboutHandler(MainFrame frame, MacSupport macSupport) {
+    if (!macSupport.isMacOS()) return;
+    macSupport.register(new MacAboutHandler(frame));
   }
 
-  private MacAboutHandler(MainFrame frame) {
+  @VisibleForTesting
+  MacAboutHandler(MainFrame frame) {
     this.frame = frame;
   }
 
   public void handleAbout() {
-    if (isEventDispatchThread()) {
-      frame.showAboutWindow();
-      return;
-    }
     invokeLater(new Runnable() {
       public void run() {
         frame.showAboutWindow();
