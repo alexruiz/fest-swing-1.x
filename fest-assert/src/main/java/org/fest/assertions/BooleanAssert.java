@@ -21,6 +21,7 @@ import static org.fest.assertions.Fail.failIfEqual;
 /**
  * Understands assertion methods for <code>boolean</code> values. To create a new instance of this class use the method
  * <code>{@link Assertions#assertThat(boolean)}</code>.
+ *
  * @author Alex Ruiz
  * @author Yvonne Wang
  * @author David DIDIER
@@ -29,6 +30,7 @@ public class BooleanAssert extends PrimitiveAssert<Boolean> {
 
   /**
    * Creates a new <code>{@link BooleanAssert}</code>.
+   *
    * @param actual the actual value to verify.
    */
   protected BooleanAssert(boolean actual) {
@@ -37,6 +39,7 @@ public class BooleanAssert extends PrimitiveAssert<Boolean> {
 
   /**
    * Creates a new <code>{@link BooleanAssert}</code>.
+   *
    * @param actual the actual value to verify.
    */
   protected BooleanAssert(Boolean actual) {
@@ -46,13 +49,12 @@ public class BooleanAssert extends PrimitiveAssert<Boolean> {
   /**
    * Sets the description of the actual value, to be used in as message of any <code>{@link AssertionError}</code>
    * thrown when an assertion fails. This method should be called before any assertion method, otherwise any assertion
-   * failure will not show the provided description.
-   * <p>
-   * For example:
+   * failure will not show the provided description. <p> For example:
    * <pre>
    * assertThat(value).<strong>as</strong>(&quot;Some value&quot;).isEqualTo(otherValue);
    * </pre>
    * </p>
+   *
    * @param description the description of the actual value.
    * @return this assertion object.
    */
@@ -62,15 +64,14 @@ public class BooleanAssert extends PrimitiveAssert<Boolean> {
   }
 
   /**
-   * Alias for <code>{@link #as(String)}</code>, since "as" is a keyword in
-   * <a href="http://groovy.codehaus.org/" target="_blank">Groovy</a>. This method should be called before any assertion
-   * method, otherwise any assertion failure will not show the provided description.
-   * <p>
-   * For example:
+   * Alias for <code>{@link #as(String)}</code>, since "as" is a keyword in <a href="http://groovy.codehaus.org/"
+   * target="_blank">Groovy</a>. This method should be called before any assertion method, otherwise any assertion
+   * failure will not show the provided description. <p> For example:
    * <pre>
    * assertThat(value).<strong>describedAs</strong>(&quot;Some value&quot;).isEqualTo(otherValue);
    * </pre>
    * </p>
+   *
    * @param description the description of the actual value.
    * @return this assertion object.
    */
@@ -81,13 +82,12 @@ public class BooleanAssert extends PrimitiveAssert<Boolean> {
   /**
    * Sets the description of the actual value, to be used in as message of any <code>{@link AssertionError}</code>
    * thrown when an assertion fails. This method should be called before any assertion method, otherwise any assertion
-   * failure will not show the provided description.
-   * <p>
-   * For example:
+   * failure will not show the provided description. <p> For example:
    * <pre>
    * assertThat(value).<strong>as</strong>(new BasicDescription(&quot;Some value&quot;)).isEqualTo(otherValue);
    * </pre>
    * </p>
+   *
    * @param description the description of the actual value.
    * @return this assertion object.
    */
@@ -97,15 +97,15 @@ public class BooleanAssert extends PrimitiveAssert<Boolean> {
   }
 
   /**
-   * Alias for <code>{@link #as(Description)}</code>, since "as" is a keyword in
-   * <a href="http://groovy.codehaus.org/" target="_blank">Groovy</a>. This method should be called before any assertion
-   * method, otherwise any assertion failure will not show the provided description.
-   * <p>
-   * For example:
+   * Alias for <code>{@link #as(Description)}</code>, since "as" is a keyword in <a href="http://groovy.codehaus.org/"
+   * target="_blank">Groovy</a>. This method should be called before any assertion method, otherwise any assertion
+   * failure will not show the provided description. <p> For example:
    * <pre>
-   * assertThat(value).<strong>describedAs</strong>(new BasicDescription(&quot;Some value&quot;)).isEqualTo(otherValue);
+   * assertThat(value).<strong>describedAs</strong>(new BasicDescription(&quot;Some
+   * value&quot;)).isEqualTo(otherValue);
    * </pre>
    * </p>
+   *
    * @param description the description of the actual value.
    * @return this assertion object.
    */
@@ -115,6 +115,7 @@ public class BooleanAssert extends PrimitiveAssert<Boolean> {
 
   /**
    * Verifies that the actual <code>boolean</code> value is <code>true</code>.
+   *
    * @throws AssertionError if the actual <code>boolean</code> value is <code>false</code>.
    */
   public void isTrue() {
@@ -123,6 +124,7 @@ public class BooleanAssert extends PrimitiveAssert<Boolean> {
 
   /**
    * Verifies that the actual <code>boolean</code> value is <code>false</code>.
+   *
    * @throws AssertionError if the actual <code>boolean</code> value is <code>true</code>.
    */
   public void isFalse() {
@@ -131,6 +133,7 @@ public class BooleanAssert extends PrimitiveAssert<Boolean> {
 
   /**
    * Verifies that the actual <code>boolean</code> is equal to the given one.
+   *
    * @param expected the given <code>boolean</code> to compare the actual <code>boolean</code> to.
    * @return this assertion object.
    * @throws AssertionError if the actual <code>boolean</code> is not equal to the given one.
@@ -143,6 +146,7 @@ public class BooleanAssert extends PrimitiveAssert<Boolean> {
 
   /**
    * Verifies that the actual <code>boolean</code> is not equal to the given one.
+   *
    * @param other the given <code>boolean</code> to compare the actual <code>boolean</code> to.
    * @return this assertion object.
    * @throws AssertionError if the actual <code>boolean</code> is equal to the given one.
@@ -163,27 +167,65 @@ public class BooleanAssert extends PrimitiveAssert<Boolean> {
    * ===== Newly implemented methods for FEST-133 / from GenericAssert start here:
    */
 
+  /**
+   * Verifies that the actual <code>{@link Boolean}</code> satisfies the given condition.
+   *
+   * @param condition the given condition.
+   * @return this assertion object.
+   * @throws NullPointerException if the given condition is <code>null</code>.
+   * @throws AssertionError       if the actual <code>Boolean</code> does not satisfy the given condition.
+   * @see #is(Condition)
+   * @since 1.3
+   */
   @Override
-  public BooleanAssert satisfies(Condition<Boolean> booleanCondition) {
-    assertSatisfies(booleanCondition);
+  public BooleanAssert satisfies(Condition<Boolean> condition) {
+    assertSatisfies(condition);
     return this;
   }
 
+  /**
+   * Verifies that the actual <code>{@link Boolean}</code> does not satisfy the given condition.
+   *
+   * @param condition the given condition.
+   * @return this assertion object.
+   * @throws NullPointerException if the given condition is <code>null</code>.
+   * @throws AssertionError       if the actual value does satisfies the given condition.
+   * @see #isNot(Condition)
+   * @since 1.3
+   */
   @Override
-  public BooleanAssert doesNotSatisfy(Condition<Boolean> booleanCondition) {
-    assertDoesNotSatisfy(booleanCondition);
+  public BooleanAssert doesNotSatisfy(Condition<Boolean> condition) {
+    assertDoesNotSatisfy(condition);
     return this;
   }
 
+  /**
+   * Alias for <code>{@link #satisfies(Condition)}</code>.
+   *
+   * @param condition the given condition.
+   * @return this assertion object.
+   * @throws NullPointerException if the given condition is <code>null</code>.
+   * @throws AssertionError       if the actual <code>Boolean</code> does not satisfy the given condition.
+   * @since 1.3
+   */
   @Override
-  public BooleanAssert is(Condition<Boolean> booleanCondition) {
-    assertIs(booleanCondition);
+  public BooleanAssert is(Condition<Boolean> condition) {
+    assertIs(condition);
     return this;
   }
 
+  /**
+   * Alias for <code>{@link #doesNotSatisfy(Condition)}</code>.
+   *
+   * @param condition the given condition.
+   * @return this assertion object.
+   * @throws NullPointerException if the given condition is <code>null</code>.
+   * @throws AssertionError       if the actual <code>Boolean</code> does not satisfy the given condition.
+   * @since 1.3
+   */
   @Override
-  public BooleanAssert isNot(Condition<Boolean> booleanCondition) {
-    assertIsNot(booleanCondition);
+  public BooleanAssert isNot(Condition<Boolean> condition) {
+    assertIsNot(condition);
     return this;
   }
 

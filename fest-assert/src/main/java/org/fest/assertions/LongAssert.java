@@ -17,8 +17,8 @@ package org.fest.assertions;
 import static org.fest.assertions.ErrorMessages.*;
 
 /**
- * Understands assertion methods for <code>long</code>s. To create a new instance of this class use the
- * method <code>{@link Assertions#assertThat(long)}</code>.
+ * Understands assertion methods for <code>long</code>s. To create a new instance of this class use the method
+ * <code>{@link Assertions#assertThat(long)}</code>.
  *
  * @author Yvonne Wang
  * @author David DIDIER
@@ -29,6 +29,7 @@ public class LongAssert extends PrimitiveAssert<Long> implements NumberAssert {
 
   /**
    * Creates a new <code>{@link LongAssert}</code>.
+   *
    * @param actual the actual value to verify.
    */
   protected LongAssert(long actual) {
@@ -37,6 +38,7 @@ public class LongAssert extends PrimitiveAssert<Long> implements NumberAssert {
 
   /**
    * Creates a new <code>{@link LongAssert}</code>.
+   *
    * @param actual the actual value to verify.
    */
   protected LongAssert(Long actual) {
@@ -46,13 +48,12 @@ public class LongAssert extends PrimitiveAssert<Long> implements NumberAssert {
   /**
    * Sets the description of the actual value, to be used in as message of any <code>{@link AssertionError}</code>
    * thrown when an assertion fails. This method should be called before any assertion method, otherwise any assertion
-   * failure will not show the provided description.
-   * <p>
-   * For example:
+   * failure will not show the provided description. <p> For example:
    * <pre>
    * assertThat(value).<strong>as</strong>(&quot;Some value&quot;).isEqualTo(otherValue);
    * </pre>
    * </p>
+   *
    * @param description the description of the actual value.
    * @return this assertion object.
    */
@@ -62,15 +63,14 @@ public class LongAssert extends PrimitiveAssert<Long> implements NumberAssert {
   }
 
   /**
-   * Alias for <code>{@link #as(String)}</code>, since "as" is a keyword in
-   * <a href="http://groovy.codehaus.org/" target="_blank">Groovy</a>. This method should be called before any assertion
-   * method, otherwise any assertion failure will not show the provided description.
-   * <p>
-   * For example:
+   * Alias for <code>{@link #as(String)}</code>, since "as" is a keyword in <a href="http://groovy.codehaus.org/"
+   * target="_blank">Groovy</a>. This method should be called before any assertion method, otherwise any assertion
+   * failure will not show the provided description. <p> For example:
    * <pre>
    * assertThat(value).<strong>describedAs</strong>(&quot;Some value&quot;).isEqualTo(otherValue);
    * </pre>
    * </p>
+   *
    * @param description the description of the actual value.
    * @return this assertion object.
    */
@@ -81,13 +81,12 @@ public class LongAssert extends PrimitiveAssert<Long> implements NumberAssert {
   /**
    * Sets the description of the actual value, to be used in as message of any <code>{@link AssertionError}</code>
    * thrown when an assertion fails. This method should be called before any assertion method, otherwise any assertion
-   * failure will not show the provided description.
-   * <p>
-   * For example:
+   * failure will not show the provided description. <p> For example:
    * <pre>
    * assertThat(value).<strong>as</strong>(new BasicDescription(&quot;Some value&quot;)).isEqualTo(otherValue);
    * </pre>
    * </p>
+   *
    * @param description the description of the actual value.
    * @return this assertion object.
    */
@@ -97,15 +96,15 @@ public class LongAssert extends PrimitiveAssert<Long> implements NumberAssert {
   }
 
   /**
-   * Alias for <code>{@link #as(Description)}</code>, since "as" is a keyword in
-   * <a href="http://groovy.codehaus.org/" target="_blank">Groovy</a>. This method should be called before any assertion
-   * method, otherwise any assertion failure will not show the provided description.
-   * <p>
-   * For example:
+   * Alias for <code>{@link #as(Description)}</code>, since "as" is a keyword in <a href="http://groovy.codehaus.org/"
+   * target="_blank">Groovy</a>. This method should be called before any assertion method, otherwise any assertion
+   * failure will not show the provided description. <p> For example:
    * <pre>
-   * assertThat(value).<strong>describedAs</strong>(new BasicDescription(&quot;Some value&quot;)).isEqualTo(otherValue);
+   * assertThat(value).<strong>describedAs</strong>(new BasicDescription(&quot;Some
+   * value&quot;)).isEqualTo(otherValue);
    * </pre>
    * </p>
+   *
    * @param description the description of the actual value.
    * @return this assertion object.
    */
@@ -115,6 +114,7 @@ public class LongAssert extends PrimitiveAssert<Long> implements NumberAssert {
 
   /**
    * Verifies that the actual <code>long</code> value is equal to the given one.
+   *
    * @param expected the value to compare the actual one to.
    * @return this assertion object.
    * @throws AssertionError if the actual <code>long</code> value is not equal to the given one.
@@ -127,6 +127,7 @@ public class LongAssert extends PrimitiveAssert<Long> implements NumberAssert {
 
   /**
    * Verifies that the actual <code>long</code> value is not equal to the given one.
+   *
    * @param other the given value.
    * @return this assertion object.
    * @throws AssertionError if the actual <code>long</code> value is equal to the given one.
@@ -139,6 +140,7 @@ public class LongAssert extends PrimitiveAssert<Long> implements NumberAssert {
 
   /**
    * Verifies that the actual <code>long</code> value is greater than the given one.
+   *
    * @param other the given value.
    * @return this assertion object.
    * @throws AssertionError if the actual <code>long</code> value is not greater than the given one.
@@ -151,6 +153,7 @@ public class LongAssert extends PrimitiveAssert<Long> implements NumberAssert {
 
   /**
    * Verifies that the actual <code>long</code> value is less than the given one.
+   *
    * @param other the given value.
    * @return this assertion object.
    * @throws AssertionError if the actual <code>long</code> value is not less than the given one.
@@ -163,6 +166,7 @@ public class LongAssert extends PrimitiveAssert<Long> implements NumberAssert {
 
   /**
    * Verifies that the actual <code>long</code> value is greater or equal to the given one.
+   *
    * @param other the given value.
    * @return this assertion object.
    * @throws AssertionError if the actual <code>long</code> value is not greater than or equal to the given one.
@@ -175,6 +179,7 @@ public class LongAssert extends PrimitiveAssert<Long> implements NumberAssert {
 
   /**
    * Verifies that the actual <code>long</code> value is less or equal to the given one.
+   *
    * @param other the given value.
    * @return this assertion object.
    * @throws AssertionError if the actual <code>long</code> value is not less than or equal to the given one.
@@ -187,6 +192,7 @@ public class LongAssert extends PrimitiveAssert<Long> implements NumberAssert {
 
   /**
    * Verifies that the actual <code>long</code> value is equal to zero.
+   *
    * @return this assertion object.
    * @throws AssertionError if the actual <code>long</code> value is not equal to zero.
    */
@@ -196,6 +202,7 @@ public class LongAssert extends PrimitiveAssert<Long> implements NumberAssert {
 
   /**
    * Verifies that the actual <code>long</code> value is positive.
+   *
    * @return this assertion object.
    * @throws AssertionError if the actual <code>long</code> value is not positive.
    */
@@ -205,6 +212,7 @@ public class LongAssert extends PrimitiveAssert<Long> implements NumberAssert {
 
   /**
    * Verifies that the actual <code>long</code> value is negative.
+   *
    * @return this assertion object.
    * @throws AssertionError if the actual <code>long</code> value is not negative.
    */
@@ -223,27 +231,66 @@ public class LongAssert extends PrimitiveAssert<Long> implements NumberAssert {
    * ===== Newly implemented methods for FEST-133 / from GenericAssert start here:
    */
 
+  /**
+   * Verifies that the actual <code>{@link Long}</code> satisfies the given condition.
+   *
+   * @param condition the given condition.
+   * @return this assertion object.
+   * @throws NullPointerException if the given condition is <code>null</code>.
+   * @throws AssertionError       if the actual <code>Long</code> does not satisfy the given condition.
+   * @see #is(Condition)
+   * @since 1.3
+   */
   @Override
-  public LongAssert satisfies(Condition<Long> longCondition) {
-    assertSatisfies(longCondition);
+  public LongAssert satisfies(Condition<Long> condition) {
+    assertSatisfies(condition);
     return this;
   }
 
+  /**
+   * Verifies that the actual <code>{@link Long}</code> does not satisfy the given condition.
+   *
+   * @param condition the given condition.
+   * @return this assertion object.
+   * @throws NullPointerException if the given condition is <code>null</code>.
+   * @throws AssertionError       if the actual value does satisfies the given condition.
+   * @see #isNot(Condition)
+   * @since 1.3
+   */
   @Override
-  public LongAssert doesNotSatisfy(Condition<Long> longCondition) {
-    assertDoesNotSatisfy(longCondition);
+  public LongAssert doesNotSatisfy(Condition<Long> condition) {
+    assertDoesNotSatisfy(condition);
     return this;
   }
 
+  /**
+   * Alias for <code>{@link #satisfies(Condition)}</code>.
+   *
+   * @param condition the given condition.
+   * @return this assertion object.
+   * @throws NullPointerException if the given condition is <code>null</code>.
+   * @throws AssertionError       if the actual <code>Long</code> does not satisfy the given condition.
+   * @since 1.3
+   */
   @Override
-  public LongAssert is(Condition<Long> longCondition) {
-    assertIs(longCondition);
+  public LongAssert is(Condition<Long> condition) {
+    assertIs(condition);
     return this;
   }
 
+
+  /**
+   * Alias for <code>{@link #doesNotSatisfy(Condition)}</code>.
+   *
+   * @param condition the given condition.
+   * @return this assertion object.
+   * @throws NullPointerException if the given condition is <code>null</code>.
+   * @throws AssertionError       if the actual <code>Long</code> does not satisfy the given condition.
+   * @since 1.3
+   */
   @Override
-  public LongAssert isNot(Condition<Long> longCondition) {
-    assertIsNot(longCondition);
+  public LongAssert isNot(Condition<Long> condition) {
+    assertIsNot(condition);
     return this;
   }
 
@@ -256,7 +303,7 @@ public class LongAssert extends PrimitiveAssert<Long> implements NumberAssert {
   @Override
   public LongAssert isNotEqualTo(Long other) {
     assertNotEqualTo(other);
-    return this;    
+    return this;
   }
 
   @Override

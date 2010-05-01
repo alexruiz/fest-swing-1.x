@@ -17,18 +17,20 @@ package org.fest.assertions;
 import static org.fest.assertions.ErrorMessages.*;
 
 /**
- * Understands assertion methods for <code>byte</code>s. To create a new instance of this class use the
- * method <code>{@link Assertions#assertThat(byte)}</code>.
+ * Understands assertion methods for <code>byte</code>s. To create a new instance of this class use the method
+ * <code>{@link Assertions#assertThat(byte)}</code>.
+ *
  * @author Yvonne Wang
  * @author David DIDIER
  * @since 1.2
  */
 public class ByteAssert extends PrimitiveAssert<Byte> implements NumberAssert {
 
-  private static final byte ZERO = (byte)0;
+  private static final byte ZERO = (byte) 0;
 
   /**
    * Creates a new <code>{@link ByteAssert}</code>.
+   *
    * @param actual the actual value to verify.
    */
   protected ByteAssert(byte actual) {
@@ -37,6 +39,7 @@ public class ByteAssert extends PrimitiveAssert<Byte> implements NumberAssert {
 
   /**
    * Creates a new <code>{@link ByteAssert}</code>.
+   *
    * @param actual the actual value to verify.
    */
   protected ByteAssert(Byte actual) {
@@ -46,13 +49,12 @@ public class ByteAssert extends PrimitiveAssert<Byte> implements NumberAssert {
   /**
    * Sets the description of the actual value, to be used in as message of any <code>{@link AssertionError}</code>
    * thrown when an assertion fails. This method should be called before any assertion method, otherwise any assertion
-   * failure will not show the provided description.
-   * <p>
-   * For example:
+   * failure will not show the provided description. <p> For example:
    * <pre>
    * assertThat(value).<strong>as</strong>(&quot;Some value&quot;).isEqualTo(otherValue);
    * </pre>
    * </p>
+   *
    * @param description the description of the actual value.
    * @return this assertion object.
    */
@@ -62,15 +64,14 @@ public class ByteAssert extends PrimitiveAssert<Byte> implements NumberAssert {
   }
 
   /**
-   * Alias for <code>{@link #as(String)}</code>, since "as" is a keyword in
-   * <a href="http://groovy.codehaus.org/" target="_blank">Groovy</a>. This method should be called before any assertion
-   * method, otherwise any assertion failure will not show the provided description.
-   * <p>
-   * For example:
+   * Alias for <code>{@link #as(String)}</code>, since "as" is a keyword in <a href="http://groovy.codehaus.org/"
+   * target="_blank">Groovy</a>. This method should be called before any assertion method, otherwise any assertion
+   * failure will not show the provided description. <p> For example:
    * <pre>
    * assertThat(value).<strong>describedAs</strong>(&quot;Some value&quot;).isEqualTo(otherValue);
    * </pre>
    * </p>
+   *
    * @param description the description of the actual value.
    * @return this assertion object.
    */
@@ -81,13 +82,12 @@ public class ByteAssert extends PrimitiveAssert<Byte> implements NumberAssert {
   /**
    * Sets the description of the actual value, to be used in as message of any <code>{@link AssertionError}</code>
    * thrown when an assertion fails. This method should be called before any assertion method, otherwise any assertion
-   * failure will not show the provided description.
-   * <p>
-   * For example:
+   * failure will not show the provided description. <p> For example:
    * <pre>
    * assertThat(value).<strong>as</strong>(new BasicDescription(&quot;Some value&quot;)).isEqualTo(otherValue);
    * </pre>
    * </p>
+   *
    * @param description the description of the actual value.
    * @return this assertion object.
    */
@@ -97,15 +97,15 @@ public class ByteAssert extends PrimitiveAssert<Byte> implements NumberAssert {
   }
 
   /**
-   * Alias for <code>{@link #as(Description)}</code>, since "as" is a keyword in
-   * <a href="http://groovy.codehaus.org/" target="_blank">Groovy</a>. This method should be called before any assertion
-   * method, otherwise any assertion failure will not show the provided description.
-   * <p>
-   * For example:
+   * Alias for <code>{@link #as(Description)}</code>, since "as" is a keyword in <a href="http://groovy.codehaus.org/"
+   * target="_blank">Groovy</a>. This method should be called before any assertion method, otherwise any assertion
+   * failure will not show the provided description. <p> For example:
    * <pre>
-   * assertThat(value).<strong>describedAs</strong>(new BasicDescription(&quot;Some value&quot;)).isEqualTo(otherValue);
+   * assertThat(value).<strong>describedAs</strong>(new BasicDescription(&quot;Some
+   * value&quot;)).isEqualTo(otherValue);
    * </pre>
    * </p>
+   *
    * @param description the description of the actual value.
    * @return this assertion object.
    */
@@ -115,6 +115,7 @@ public class ByteAssert extends PrimitiveAssert<Byte> implements NumberAssert {
 
   /**
    * Verifies that the actual <code>byte</code> value is equal to the given one.
+   *
    * @param expected the value to compare the actual one to.
    * @return this assertion object.
    * @throws AssertionError if the actual <code>byte</code> value is not equal to the given one.
@@ -127,6 +128,7 @@ public class ByteAssert extends PrimitiveAssert<Byte> implements NumberAssert {
 
   /**
    * Verifies that the actual <code>byte</code> value is not equal to the given one.
+   *
    * @param other the given value.
    * @return this assertion object.
    * @throws AssertionError if the actual <code>byte</code> value is equal to the given one.
@@ -139,6 +141,7 @@ public class ByteAssert extends PrimitiveAssert<Byte> implements NumberAssert {
 
   /**
    * Verifies that the actual <code>byte</code> value is greater than the given one.
+   *
    * @param other the given value.
    * @return this assertion object.
    * @throws AssertionError if the actual <code>byte</code> value is not greater than the given one.
@@ -151,6 +154,7 @@ public class ByteAssert extends PrimitiveAssert<Byte> implements NumberAssert {
 
   /**
    * Verifies that the actual <code>byte</code> value is less than the given one.
+   *
    * @param other the given value.
    * @return this assertion object.
    * @throws AssertionError if the actual <code>byte</code> value is not less than the given one.
@@ -163,6 +167,7 @@ public class ByteAssert extends PrimitiveAssert<Byte> implements NumberAssert {
 
   /**
    * Verifies that the actual <code>byte</code> value is greater or equal to the given one.
+   *
    * @param other the given value.
    * @return this assertion object.
    * @throws AssertionError if the actual <code>byte</code> value is not greater than or equal to the given one.
@@ -175,6 +180,7 @@ public class ByteAssert extends PrimitiveAssert<Byte> implements NumberAssert {
 
   /**
    * Verifies that the actual <code>byte</code> value is less or equal to the given one.
+   *
    * @param other the given value.
    * @return this assertion object.
    * @throws AssertionError if the actual <code>byte</code> value is not less than or equal to the given one.
@@ -187,6 +193,7 @@ public class ByteAssert extends PrimitiveAssert<Byte> implements NumberAssert {
 
   /**
    * Verifies that the actual <code>byte</code> value is equal to zero.
+   *
    * @return this assertion object.
    * @throws AssertionError if the actual <code>byte</code> value is not equal to zero.
    */
@@ -196,6 +203,7 @@ public class ByteAssert extends PrimitiveAssert<Byte> implements NumberAssert {
 
   /**
    * Verifies that the actual <code>byte</code> value is positive.
+   *
    * @return this assertion object.
    * @throws AssertionError if the actual <code>byte</code> value is not positive.
    */
@@ -205,6 +213,7 @@ public class ByteAssert extends PrimitiveAssert<Byte> implements NumberAssert {
 
   /**
    * Verifies that the actual <code>byte</code> value is negative.
+   *
    * @return this assertion object.
    * @throws AssertionError if the actual <code>byte</code> value is not negative.
    */
@@ -223,27 +232,65 @@ public class ByteAssert extends PrimitiveAssert<Byte> implements NumberAssert {
    * ===== Newly implemented methods for FEST-133 / from GenericAssert start here:
    */
 
+  /**
+   * Verifies that the actual <code>{@link Byte}</code> satisfies the given condition.
+   *
+   * @param condition the given condition.
+   * @return this assertion object.
+   * @throws NullPointerException if the given condition is <code>null</code>.
+   * @throws AssertionError       if the actual <code>Byte</code> does not satisfy the given condition.
+   * @see #is(Condition)
+   * @since 1.3
+   */
   @Override
-  public ByteAssert satisfies(Condition<Byte> byteCondition) {
-    assertSatisfies(byteCondition);
+  public ByteAssert satisfies(Condition<Byte> condition) {
+    assertSatisfies(condition);
     return this;
   }
 
+  /**
+   * Verifies that the actual <code>{@link Byte}</code> does not satisfy the given condition.
+   *
+   * @param condition the given condition.
+   * @return this assertion object.
+   * @throws NullPointerException if the given condition is <code>null</code>.
+   * @throws AssertionError       if the actual value does satisfies the given condition.
+   * @see #isNot(Condition)
+   * @since 1.3
+   */
   @Override
-  public ByteAssert doesNotSatisfy(Condition<Byte> byteCondition) {
-    assertDoesNotSatisfy(byteCondition);
+  public ByteAssert doesNotSatisfy(Condition<Byte> condition) {
+    assertDoesNotSatisfy(condition);
     return this;
   }
 
+  /**
+   * Alias for <code>{@link #satisfies(Condition)}</code>.
+   *
+   * @param condition the given condition.
+   * @return this assertion object.
+   * @throws NullPointerException if the given condition is <code>null</code>.
+   * @throws AssertionError       if the actual <code>Byte</code> does not satisfy the given condition.
+   * @since 1.3
+   */
   @Override
-  public ByteAssert is(Condition<Byte> byteCondition) {
-    assertIs(byteCondition);
+  public ByteAssert is(Condition<Byte> condition) {
+    assertIs(condition);
     return this;
   }
 
+  /**
+   * Alias for <code>{@link #doesNotSatisfy(Condition)}</code>.
+   *
+   * @param condition the given condition.
+   * @return this assertion object.
+   * @throws NullPointerException if the given condition is <code>null</code>.
+   * @throws AssertionError       if the actual <code>Byte</code> does not satisfy the given condition.
+   * @since 1.3
+   */
   @Override
-  public ByteAssert isNot(Condition<Byte> byteCondition) {
-    assertIsNot(byteCondition);
+  public ByteAssert isNot(Condition<Byte> condition) {
+    assertIsNot(condition);
     return this;
   }
 

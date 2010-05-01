@@ -7,8 +7,8 @@ import static org.fest.assertions.Formatting.inBrackets;
 import static org.fest.util.Strings.concat;
 
 /**
- * Understands Assertion methods for <code>Double</code>. To create a new instance of this class use the
- * method <code>{@link Assertions#assertThat(double)}</code>.
+ * Understands Assertion methods for <code>Double</code>. To create a new instance of this class use the method
+ * <code>{@link Assertions#assertThat(double)}</code>.
  *
  * @author Yvonne Wang
  * @author David DIDIER
@@ -20,6 +20,7 @@ public class DoubleAssert extends PrimitiveAssert<Double> implements NumberAsser
 
   /**
    * Creates a new <code>{@link DoubleAssert}</code>.
+   *
    * @param actual the actual value to verify.
    */
   protected DoubleAssert(double actual) {
@@ -28,6 +29,7 @@ public class DoubleAssert extends PrimitiveAssert<Double> implements NumberAsser
 
   /**
    * Creates a new <code>{@link DoubleAssert}</code>.
+   *
    * @param actual the actual value to verify.
    */
   protected DoubleAssert(Double actual) {
@@ -37,13 +39,12 @@ public class DoubleAssert extends PrimitiveAssert<Double> implements NumberAsser
   /**
    * Sets the description of the actual value, to be used in as message of any <code>{@link AssertionError}</code>
    * thrown when an assertion fails. This method should be called before any assertion method, otherwise any assertion
-   * failure will not show the provided description.
-   * <p>
-   * For example:
+   * failure will not show the provided description. <p> For example:
    * <pre>
    * assertThat(value).<strong>as</strong>(&quot;Some value&quot;).isEqualTo(otherValue);
    * </pre>
    * </p>
+   *
    * @param description the description of the actual value.
    * @return this assertion object.
    */
@@ -53,15 +54,14 @@ public class DoubleAssert extends PrimitiveAssert<Double> implements NumberAsser
   }
 
   /**
-   * Alias for <code>{@link #as(String)}</code>, since "as" is a keyword in
-   * <a href="http://groovy.codehaus.org/" target="_blank">Groovy</a>. This method should be called before any assertion
-   * method, otherwise any assertion failure will not show the provided description.
-   * <p>
-   * For example:
+   * Alias for <code>{@link #as(String)}</code>, since "as" is a keyword in <a href="http://groovy.codehaus.org/"
+   * target="_blank">Groovy</a>. This method should be called before any assertion method, otherwise any assertion
+   * failure will not show the provided description. <p> For example:
    * <pre>
    * assertThat(value).<strong>describedAs</strong>(&quot;Some value&quot;).isEqualTo(otherValue);
    * </pre>
    * </p>
+   *
    * @param description the description of the actual value.
    * @return this assertion object.
    */
@@ -72,13 +72,12 @@ public class DoubleAssert extends PrimitiveAssert<Double> implements NumberAsser
   /**
    * Sets the description of the actual value, to be used in as message of any <code>{@link AssertionError}</code>
    * thrown when an assertion fails. This method should be called before any assertion method, otherwise any assertion
-   * failure will not show the provided description.
-   * <p>
-   * For example:
+   * failure will not show the provided description. <p> For example:
    * <pre>
    * assertThat(value).<strong>as</strong>(new BasicDescription(&quot;Some value&quot;)).isEqualTo(otherValue);
    * </pre>
    * </p>
+   *
    * @param description the description of the actual value.
    * @return this assertion object.
    */
@@ -88,15 +87,15 @@ public class DoubleAssert extends PrimitiveAssert<Double> implements NumberAsser
   }
 
   /**
-   * Alias for <code>{@link #as(Description)}</code>, since "as" is a keyword in
-   * <a href="http://groovy.codehaus.org/" target="_blank">Groovy</a>. This method should be called before any assertion
-   * method, otherwise any assertion failure will not show the provided description.
-   * <p>
-   * For example:
+   * Alias for <code>{@link #as(Description)}</code>, since "as" is a keyword in <a href="http://groovy.codehaus.org/"
+   * target="_blank">Groovy</a>. This method should be called before any assertion method, otherwise any assertion
+   * failure will not show the provided description. <p> For example:
    * <pre>
-   * assertThat(value).<strong>describedAs</strong>(new BasicDescription(&quot;Some value&quot;)).isEqualTo(otherValue);
+   * assertThat(value).<strong>describedAs</strong>(new BasicDescription(&quot;Some
+   * value&quot;)).isEqualTo(otherValue);
    * </pre>
    * </p>
+   *
    * @param description the description of the actual value.
    * @return this assertion object.
    */
@@ -106,6 +105,7 @@ public class DoubleAssert extends PrimitiveAssert<Double> implements NumberAsser
 
   /**
    * Verifies that the actual <code>double</code> value is equal to the given one.
+   *
    * @param expected the value to compare the actual one to.
    * @return this assertion object.
    * @throws AssertionError if the actual <code>double</code> value is not equal to the given one.
@@ -118,6 +118,7 @@ public class DoubleAssert extends PrimitiveAssert<Double> implements NumberAsser
 
   /**
    * Verifies that the actual <code>double</code> value is not equal to the given one.
+   *
    * @param other the given value.
    * @return this assertion object.
    * @throws AssertionError if the actual <code>double</code> value is equal to the given one.
@@ -130,6 +131,7 @@ public class DoubleAssert extends PrimitiveAssert<Double> implements NumberAsser
 
   /**
    * Verifies that the actual <code>double</code> value is greater than the given one.
+   *
    * @param other the given value.
    * @return this assertion object.
    * @throws AssertionError if the actual <code>double</code> value is not greater than the given one.
@@ -142,6 +144,7 @@ public class DoubleAssert extends PrimitiveAssert<Double> implements NumberAsser
 
   /**
    * Verifies that the actual <code>double</code> value is less than the given one.
+   *
    * @param other the given value.
    * @return this assertion object.
    * @throws AssertionError if the actual <code>double</code> value is not less than the given one.
@@ -154,6 +157,7 @@ public class DoubleAssert extends PrimitiveAssert<Double> implements NumberAsser
 
   /**
    * Verifies that the actual <code>double</code> value is greater or equal to the given one.
+   *
    * @param other the given value.
    * @return this assertion object.
    * @throws AssertionError if the actual <code>double</code> value is not greater than or equal to the given one.
@@ -166,6 +170,7 @@ public class DoubleAssert extends PrimitiveAssert<Double> implements NumberAsser
 
   /**
    * Verifies that the actual <code>double</code> value is less or equal to the given one.
+   *
    * @param other the given value.
    * @return this assertion object.
    * @throws AssertionError if the actual <code>double</code> value is not less than or equal to the given one.
@@ -178,6 +183,7 @@ public class DoubleAssert extends PrimitiveAssert<Double> implements NumberAsser
 
   /**
    * Verifies that the actual <code>double</code> value is equal to zero.
+   *
    * @return this assertion object.
    * @throws AssertionError if the actual <code>double</code> value is not equal to zero.
    */
@@ -187,6 +193,7 @@ public class DoubleAssert extends PrimitiveAssert<Double> implements NumberAsser
 
   /**
    * Verifies that the actual <code>double</code> value is positive.
+   *
    * @return this assertion object.
    * @throws AssertionError if the actual <code>double</code> value is not positive.
    */
@@ -196,6 +203,7 @@ public class DoubleAssert extends PrimitiveAssert<Double> implements NumberAsser
 
   /**
    * Verifies that the actual <code>double</code> value is negative.
+   *
    * @return this assertion object.
    * @throws AssertionError if the actual <code>double</code> value is not negative.
    */
@@ -205,6 +213,7 @@ public class DoubleAssert extends PrimitiveAssert<Double> implements NumberAsser
 
   /**
    * Verifies that the actual <code>double</code> value is equal to <code>{@link Double#NaN}</code>.
+   *
    * @return this assertion object.
    * @throws AssertionError if the actual <code>double</code> value is not equal to <code>NAN</code>.
    */
@@ -214,12 +223,13 @@ public class DoubleAssert extends PrimitiveAssert<Double> implements NumberAsser
 
   /**
    * Verifies that the actual <code>double</code> value is equal to the given one, within a positive delta.
+   *
    * @param expected the value to compare the actual one to.
-   * @param delta the given delta.
+   * @param delta    the given delta.
    * @return this assertion object.
    * @throws AssertionError if the actual <code>double</code> value is not equal to the given one.
    * @deprecated use method <code>{@link #isEqualTo(double, org.fest.assertions.Delta)}</code> instead. This method will
-   * be removed in version 2.0.
+   *             be removed in version 2.0.
    */
   @Deprecated
   public DoubleAssert isEqualTo(double expected, Delta delta) {
@@ -228,8 +238,9 @@ public class DoubleAssert extends PrimitiveAssert<Double> implements NumberAsser
 
   /**
    * Verifies that the actual <code>double</code> value is equal to the given one, within a positive delta.
+   *
    * @param expected the value to compare the actual one to.
-   * @param delta the given delta.
+   * @param delta    the given delta.
    * @return this assertion object.
    * @throws AssertionError if the actual <code>double</code> value is not equal to the given one.
    * @since 1.1
@@ -250,12 +261,13 @@ public class DoubleAssert extends PrimitiveAssert<Double> implements NumberAsser
   }
 
   /**
-   * Creates a new holder for a delta value to be used in
-   * <code>{@link DoubleAssert#isEqualTo(double, org.fest.assertions.DoubleAssert.Delta)}</code>.
+   * Creates a new holder for a delta value to be used in <code>{@link DoubleAssert#isEqualTo(double,
+   * org.fest.assertions.DoubleAssert.Delta)}</code>.
+   *
    * @param d the delta value.
    * @return a new delta value holder.
    * @deprecated use method <code>{@link org.fest.assertions.Delta#delta(double)}</code> instead. This method will be
-   * removed in version 2.0.
+   *             removed in version 2.0.
    */
   @Deprecated
   public static Delta delta(double d) {
@@ -263,10 +275,11 @@ public class DoubleAssert extends PrimitiveAssert<Double> implements NumberAsser
   }
 
   /**
-   * Holds a delta value to be used in
-   * <code>{@link DoubleAssert#isEqualTo(double, org.fest.assertions.DoubleAssert.Delta)}</code>.
+   * Holds a delta value to be used in <code>{@link DoubleAssert#isEqualTo(double,
+   * org.fest.assertions.DoubleAssert.Delta)}</code>.
+   *
    * @deprecated use top-level class <code>{@link org.fest.assertions.Delta}</code> instead. This class will be removed
-   * in version 2.0.
+   *             in version 2.0.
    */
   @Deprecated
   public static class Delta {
@@ -287,28 +300,66 @@ public class DoubleAssert extends PrimitiveAssert<Double> implements NumberAsser
    * TODO konermann: Remove this comment after FEST-133 is resolved:
    * ===== Newly implemented methods for FEST-133 / from GenericAssert start here:
    */
-  
+
+  /**
+   * Verifies that the actual <code>{@link Double}</code> satisfies the given condition.
+   *
+   * @param condition the given condition.
+   * @return this assertion object.
+   * @throws NullPointerException if the given condition is <code>null</code>.
+   * @throws AssertionError       if the actual <code>Double</code> does not satisfy the given condition.
+   * @see #is(Condition)
+   * @since 1.3
+   */
   @Override
-  public DoubleAssert satisfies(Condition<Double> doubleCondition) {
-    assertSatisfies(doubleCondition);
+  public DoubleAssert satisfies(Condition<Double> condition) {
+    assertSatisfies(condition);
     return this;
   }
 
+  /**
+   * Verifies that the actual <code>{@link Double}</code> does not satisfy the given condition.
+   *
+   * @param condition the given condition.
+   * @return this assertion object.
+   * @throws NullPointerException if the given condition is <code>null</code>.
+   * @throws AssertionError       if the actual value does satisfies the given condition.
+   * @see #isNot(Condition)
+   * @since 1.3
+   */
   @Override
-  public DoubleAssert doesNotSatisfy(Condition<Double> doubleCondition) {
-    assertDoesNotSatisfy(doubleCondition);
+  public DoubleAssert doesNotSatisfy(Condition<Double> condition) {
+    assertDoesNotSatisfy(condition);
     return this;
   }
 
+  /**
+   * Alias for <code>{@link #satisfies(Condition)}</code>.
+   *
+   * @param condition the given condition.
+   * @return this assertion object.
+   * @throws NullPointerException if the given condition is <code>null</code>.
+   * @throws AssertionError       if the actual <code>Double</code> does not satisfy the given condition.
+   * @since 1.3
+   */
   @Override
-  public DoubleAssert is(Condition<Double> doubleCondition) {
-    assertIs(doubleCondition);
+  public DoubleAssert is(Condition<Double> condition) {
+    assertIs(condition);
     return this;
   }
 
+  /**
+   * Alias for <code>{@link #doesNotSatisfy(Condition)}</code>.
+   *
+   * @param condition the given condition.
+   * @return this assertion object.
+   * @throws NullPointerException if the given condition is <code>null</code>.
+   * @throws AssertionError       if the actual <code>Double</code> does not satisfy the given condition.
+   * @since 1.3
+   */
   @Override
-  public DoubleAssert isNot(Condition<Double> doubleCondition) {
-    assertIsNot(doubleCondition);
+  public DoubleAssert isNot(Condition<Double> condition) {
+    assertIsNot(condition);
     return this;
   }
 
