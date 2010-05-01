@@ -32,6 +32,10 @@ public class MacSupport_setUpForMacOS_Test extends MacSupport_TestCase {
     new EasyMockTemplate(systemProperties) {
       @Override protected void expectations() {
         expect(systemProperties.get("os.name")).andReturn("Mac");
+        expectMacSetup();
+      }
+
+      private void expectMacSetup() {
         systemProperties.set("apple.laf.useScreenMenuBar", "true");
         expectLastCall();
         systemProperties.set("com.apple.mrj.application.apple.menu.about.name", "FEST Keyboard Mapping Tool");
@@ -41,19 +45,24 @@ public class MacSupport_setUpForMacOS_Test extends MacSupport_TestCase {
       @Override protected void codeToTest() {
         macSupport.setUpForMacOS();
       }
-    };
+    }.run();
   }
 
   @Test
   public void should_not_set_up_system_if_OS_is_not_Mac() {
     new EasyMockTemplate(systemProperties) {
       @Override protected void expectations() {
+        expectIsNotMacOS();
+      }
+
+      private void expectIsNotMacOS() {
         expect(systemProperties.get("os.name")).andReturn("Windows");
+        expect(systemProperties.get("mrj.version")).andReturn(null);
       }
 
       @Override protected void codeToTest() {
         macSupport.setUpForMacOS();
       }
-    };
+    }.run();
   }
 }

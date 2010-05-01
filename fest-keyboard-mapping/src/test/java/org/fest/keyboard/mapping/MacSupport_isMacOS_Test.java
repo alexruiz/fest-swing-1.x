@@ -38,7 +38,7 @@ public class MacSupport_isMacOS_Test extends MacSupport_TestCase {
       @Override protected void codeToTest() {
         assertThat(macSupport.isMacOS()).isTrue();
       }
-    };
+    }.run();
   }
 
   @Test
@@ -52,6 +52,6 @@ public class MacSupport_isMacOS_Test extends MacSupport_TestCase {
       @Override protected void codeToTest() {
         assertThat(macSupport.isMacOS()).isTrue();
       }
-    };
+    }.run();
   }
 }
