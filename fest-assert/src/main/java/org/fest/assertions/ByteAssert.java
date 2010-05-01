@@ -322,18 +322,38 @@ public class ByteAssert extends PrimitiveAssert<Byte> implements NumberAssert {
     return this;
   }
 
+  /**
+   * Verifies that the actual <code>{@link Byte}</code> is not <code>null</code>.
+   * @return this assertion object.
+   * @throws AssertionError if the actual <code>Byte</code> value is <code>null</code>.
+   * @since 1.3
+   */
   @Override
   public ByteAssert isNotNull() {
     assertNotNull();
     return this;
   }
 
+  /**
+   * Verifies that the actual <code>{@link Byte}</code> is the same object as the given one.
+   * @param expected the given <code>Byte</code> to compare the actual <code>Byte</code> to.
+   * @return this assertion object.
+   * @throws AssertionError if the actual <code>Byte</code> value is not the same as the given one.
+   * @since 1.3
+   */
   @Override
   public ByteAssert isSameAs(Byte expected) {
     assertSameAs(expected);
     return this;
   }
 
+  /**
+   * Verifies that the actual <code>{@link Byte}</code> is not the same object as the given one.
+   * @param other the given <code>Byte</code> to compare the actual <code>BigDecimal</code> to.
+   * @return this assertion object.
+   * @throws AssertionError if the actual <code>Byte</code> value is the same as the given one.
+   * @since 1.3
+   */
   @Override
   public ByteAssert isNotSameAs(Byte other) {
     assertNotSameAs(other);

@@ -391,18 +391,38 @@ public class DoubleAssert extends PrimitiveAssert<Double> implements NumberAsser
     return this;
   }
 
+  /**
+   * Verifies that the actual <code>{@link Double}</code> is not <code>null</code>.
+   * @return this assertion object.
+   * @throws AssertionError if the actual <code>Double</code> value is <code>null</code>.
+   * @since 1.3
+   */
   @Override
   public DoubleAssert isNotNull() {
     assertNotNull();
     return this;
   }
 
+  /**
+   * Verifies that the actual <code>{@link Double}</code> is the same object as the given one.
+   * @param expected the given <code>Double</code> to compare the actual <code>Double</code> to.
+   * @return this assertion object.
+   * @throws AssertionError if the actual <code>Double</code> value is not the same as the given one.
+   * @since 1.3
+   */
   @Override
   public DoubleAssert isSameAs(Double expected) {
     assertSameAs(expected);
     return this;
   }
 
+  /**
+   * Verifies that the actual <code>{@link Double}</code> is not the same object as the given one.
+   * @param other the given <code>Double</code> to compare the actual <code>BigDecimal</code> to.
+   * @return this assertion object.
+   * @throws AssertionError if the actual <code>Double</code> value is the same as the given one.
+   * @since 1.3
+   */
   @Override
   public DoubleAssert isNotSameAs(Double other) {
     assertNotSameAs(other);

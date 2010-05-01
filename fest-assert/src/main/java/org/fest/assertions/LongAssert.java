@@ -322,18 +322,38 @@ public class LongAssert extends PrimitiveAssert<Long> implements NumberAssert {
     return this;
   }
 
+  /**
+   * Verifies that the actual <code>{@link Long}</code> is not <code>null</code>.
+   * @return this assertion object.
+   * @throws AssertionError if the actual <code>Long</code> value is <code>null</code>.
+   * @since 1.3
+   */
   @Override
   public LongAssert isNotNull() {
     assertNotNull();
     return this;
   }
 
+  /**
+   * Verifies that the actual <code>{@link Long}</code> is the same object as the given one.
+   * @param expected the given <code>Long</code> to compare the actual <code>Long</code> to.
+   * @return this assertion object.
+   * @throws AssertionError if the actual <code>Long</code> value is not the same as the given one.
+   * @since 1.3
+   */
   @Override
   public LongAssert isSameAs(Long expected) {
     assertSameAs(expected);
     return this;
   }
 
+  /**
+   * Verifies that the actual <code>{@link Long}</code> is not the same object as the given one.
+   * @param other the given <code>Long</code> to compare the actual <code>BigDecimal</code> to.
+   * @return this assertion object.
+   * @throws AssertionError if the actual <code>Long</code> value is the same as the given one.
+   * @since 1.3
+   */
   @Override
   public LongAssert isNotSameAs(Long other) {
     assertNotSameAs(other);

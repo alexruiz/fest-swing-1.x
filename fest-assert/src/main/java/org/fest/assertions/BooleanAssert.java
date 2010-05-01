@@ -257,18 +257,38 @@ public class BooleanAssert extends PrimitiveAssert<Boolean> {
     return this;
   }
 
+  /**
+   * Verifies that the actual <code>{@link Boolean}</code> is not <code>null</code>.
+   * @return this assertion object.
+   * @throws AssertionError if the actual <code>Boolean</code> value is <code>null</code>.
+   * @since 1.3
+   */
   @Override
   public BooleanAssert isNotNull() {
     assertNotNull();
     return this;
   }
 
+  /**
+   * Verifies that the actual <code>{@link Boolean}</code> is the same object as the given one.
+   * @param expected the given <code>Boolean</code> to compare the actual <code>Boolean</code> to.
+   * @return this assertion object.
+   * @throws AssertionError if the actual <code>Boolean</code> value is not the same as the given one.
+   * @since 1.3
+   */
   @Override
   public BooleanAssert isSameAs(Boolean expected) {
     assertSameAs(expected);
     return this;
   }
 
+  /**
+   * Verifies that the actual <code>{@link Boolean}</code> is not the same object as the given one.
+   * @param other the given <code>Boolean</code> to compare the actual <code>BigDecimal</code> to.
+   * @return this assertion object.
+   * @throws AssertionError if the actual <code>Boolean</code> value is the same as the given one.
+   * @since 1.3
+   */
   @Override
   public BooleanAssert isNotSameAs(Boolean other) {
     assertNotSameAs(other);

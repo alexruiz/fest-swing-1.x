@@ -320,18 +320,38 @@ public class ShortAssert extends PrimitiveAssert<Short> implements NumberAssert 
     return this;
   }
 
+  /**
+   * Verifies that the actual <code>{@link Short}</code> is not <code>null</code>.
+   * @return this assertion object.
+   * @throws AssertionError if the actual <code>Short</code> value is <code>null</code>.
+   * @since 1.3
+   */
   @Override
   public ShortAssert isNotNull() {
     assertNotNull();
     return this;
   }
 
+  /**
+   * Verifies that the actual <code>{@link Short}</code> is the same object as the given one.
+   * @param expected the given <code>Short</code> to compare the actual <code>Short</code> to.
+   * @return this assertion object.
+   * @throws AssertionError if the actual <code>Short</code> value is not the same as the given one.
+   * @since 1.3
+   */
   @Override
   public ShortAssert isSameAs(Short expected) {
     assertSameAs(expected);
     return this;
   }
 
+  /**
+   * Verifies that the actual <code>{@link Short}</code> is not the same object as the given one.
+   * @param other the given <code>Short</code> to compare the actual <code>BigDecimal</code> to.
+   * @return this assertion object.
+   * @throws AssertionError if the actual <code>Short</code> value is the same as the given one.
+   * @since 1.3
+   */
   @Override
   public ShortAssert isNotSameAs(Short other) {
     assertNotSameAs(other);

@@ -403,18 +403,38 @@ public class FloatAssert extends PrimitiveAssert<Float> implements NumberAssert 
     return this;
   }
 
+  /**
+   * Verifies that the actual <code>{@link Float}</code> is not <code>null</code>.
+   * @return this assertion object.
+   * @throws AssertionError if the actual <code>Float</code> value is <code>null</code>.
+   * @since 1.3
+   */
   @Override
   public FloatAssert isNotNull() {
     assertNotNull();
     return this;
   }
 
+  /**
+   * Verifies that the actual <code>{@link Float}</code> is the same object as the given one.
+   * @param expected the given <code>Float</code> to compare the actual <code>Float</code> to.
+   * @return this assertion object.
+   * @throws AssertionError if the actual <code>Float</code> value is not the same as the given one.
+   * @since 1.3
+   */
   @Override
   public FloatAssert isSameAs(Float expected) {
     assertSameAs(expected);
     return this;
   }
 
+  /**
+   * Verifies that the actual <code>{@link Float}</code> is not the same object as the given one.
+   * @param other the given <code>Float</code> to compare the actual <code>BigDecimal</code> to.
+   * @return this assertion object.
+   * @throws AssertionError if the actual <code>Float</code> value is the same as the given one.
+   * @since 1.3
+   */
   @Override
   public FloatAssert isNotSameAs(Float other) {
     assertNotSameAs(other);

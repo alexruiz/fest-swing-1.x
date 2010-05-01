@@ -329,18 +329,38 @@ public class IntAssert extends PrimitiveAssert<Integer> implements NumberAssert 
     return this;
   }
 
+  /**
+   * Verifies that the actual <code>{@link Integer}</code> is not <code>null</code>.
+   * @return this assertion object.
+   * @throws AssertionError if the actual <code>Integer</code> value is <code>null</code>.
+   * @since 1.3
+   */
   @Override
   public IntAssert isNotNull() {
     assertNotNull();
     return this;
   }
 
+  /**
+   * Verifies that the actual <code>{@link Integer}</code> is the same object as the given one.
+   * @param expected the given <code>Integer</code> to compare the actual <code>Integer</code> to.
+   * @return this assertion object.
+   * @throws AssertionError if the actual <code>Integer</code> value is not the same as the given one.
+   * @since 1.3
+   */
   @Override
   public IntAssert isSameAs(Integer expected) {
     assertSameAs(expected);
     return this;
   }
 
+  /**
+   * Verifies that the actual <code>{@link Integer}</code> is not the same object as the given one.
+   * @param other the given <code>Integer</code> to compare the actual <code>BigDecimal</code> to.
+   * @return this assertion object.
+   * @throws AssertionError if the actual <code>Integer</code> value is the same as the given one.
+   * @since 1.3
+   */
   @Override
   public IntAssert isNotSameAs(Integer other) {
     assertNotSameAs(other);

@@ -315,18 +315,38 @@ public class CharAssert extends PrimitiveAssert<Character> {
     return this;
   }
 
+  /**
+   * Verifies that the actual <code>{@link Character}</code> is not <code>null</code>.
+   * @return this assertion object.
+   * @throws AssertionError if the actual <code>Character</code> value is <code>null</code>.
+   * @since 1.3
+   */
   @Override
   public CharAssert isNotNull() {
     assertNotNull();
     return this;
   }
 
+  /**
+   * Verifies that the actual <code>{@link Character}</code> is the same object as the given one.
+   * @param expected the given <code>Character</code> to compare the actual <code>Character</code> to.
+   * @return this assertion object.
+   * @throws AssertionError if the actual <code>Character</code> value is not the same as the given one.
+   * @since 1.3
+   */
   @Override
   public CharAssert isSameAs(Character expected) {
     assertSameAs(expected);
     return this;
   }
 
+  /**
+   * Verifies that the actual <code>{@link Character}</code> is not the same object as the given one.
+   * @param other the given <code>Character</code> to compare the actual <code>BigDecimal</code> to.
+   * @return this assertion object.
+   * @throws AssertionError if the actual <code>Character</code> value is the same as the given one.
+   * @since 1.3
+   */
   @Override
   public CharAssert isNotSameAs(Character other) {
     assertNotSameAs(other);
