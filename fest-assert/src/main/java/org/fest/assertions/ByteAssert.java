@@ -228,11 +228,6 @@ public class ByteAssert extends PrimitiveAssert<Byte> implements NumberAssert {
   }
 
   /**
-   * TODO konermann: Remove this comment after FEST-133 is resolved:
-   * ===== Newly implemented methods for FEST-133 / from GenericAssert start here:
-   */
-
-  /**
    * Verifies that the actual <code>{@link Byte}</code> satisfies the given condition.
    *
    * @param condition the given condition.
