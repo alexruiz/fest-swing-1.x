@@ -25,12 +25,12 @@ package org.fest.assertions;
 public class BooleanAssert_isNotNull_Test extends GenericAssert_isNotNull_TestBase<Boolean> {
 
   @Override
-  protected BooleanAssert createAssertInstanceForActual(Boolean actual) {
+  protected BooleanAssert assertionFor(Boolean actual) {
     return new BooleanAssert(actual);
   }
 
   @Override
-  protected Boolean createNonNullValue() {
+  protected Boolean one() {
     return true;
   }
 }

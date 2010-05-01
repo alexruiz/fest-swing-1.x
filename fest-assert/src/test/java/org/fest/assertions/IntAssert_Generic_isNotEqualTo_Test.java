@@ -25,22 +25,22 @@ package org.fest.assertions;
 public class IntAssert_Generic_isNotEqualTo_Test extends GenericAssert_isNotEqualTo_TestBase<Integer> {
 
   @Override
-  protected Integer createActualValueEight() {
+  protected Integer eight() {
     return 8;
   }
 
   @Override
-  protected Integer createActualValueZero() {
+  protected Integer zero() {
     return 0;
   }
 
   @Override
-  protected IntAssert createAssertionForActualValue(Integer actual) {
+  protected IntAssert assertionFor(Integer actual) {
     return new IntAssert(actual);
   }
 
   @Override
-  protected String messageStringRepresentingEight() {
+  protected String eightAsString() {
     return "8";
   }
 

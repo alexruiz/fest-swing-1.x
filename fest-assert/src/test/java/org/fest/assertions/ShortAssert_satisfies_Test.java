@@ -19,12 +19,12 @@ package org.fest.assertions;
 public class ShortAssert_satisfies_Test extends GenericAssert_satisfies_TestBase<Short> {
 
   @Override
-  protected GenericAssert<Short> createInstanceRepresentingOne() {
-    return new ShortAssert((short) 1);
+  protected Short one() {
+    return (short) 1;
   }
 
   @Override
-  protected GenericAssert<Short> createInstanceFromNullReference() {
-    return new ShortAssert(null);
+  protected ShortAssert assertionFor(Short actual) {
+    return new ShortAssert(actual);
   }
 }

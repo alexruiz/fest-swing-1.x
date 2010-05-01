@@ -24,22 +24,17 @@ package org.fest.assertions;
 public class LongAssert_isNot_Test extends GenericAssert_isNot_TestBase<Long> {
 
   @Override
-  protected NotNull<Long> createNotNullCondition() {
-    return NotNull.instance();
+  protected Long zero() {
+    return 1l;
   }
 
   @Override
-  protected LongAssert createInstanceFromNullReference() {
-    return new LongAssert(null);
-  }
-
-  @Override
-  protected LongAssert createInstanceRepresentingZero() {
-    return new LongAssert(1l);
-  }
-
-  @Override
-  protected String createStringRepresentationOfZero() {
+  protected String zeroAsString() {
     return "1";
+  }
+
+  @Override
+  protected LongAssert assertionFor(Long actual) {
+    return new LongAssert(actual);
   }
 }

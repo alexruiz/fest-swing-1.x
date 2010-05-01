@@ -25,22 +25,17 @@ package org.fest.assertions;
 public class DoubleAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSatisfy_TestBase<Double> {
 
   @Override
-  protected NotNull<Double> createNotNullCondition() {
-    return NotNull.instance();
-  }
-
-  @Override
-  protected DoubleAssert createInstanceFromNullReference() {
-    return new DoubleAssert(null);
-  }
-
-  @Override
-  protected DoubleAssert createInstanceRepresentingZero() {
-    return new DoubleAssert(0.0d);
-  }
-
-  @Override
-  protected String createStringRepresentationOfZero() {
+  protected String zeroAsString() {
     return "0.0";
+  }
+
+  @Override
+  protected Double zero() {
+    return 0.0d;
+  }
+
+  @Override
+  protected DoubleAssert assertionFor(Double actual) {
+    return new DoubleAssert(actual);
   }
 }

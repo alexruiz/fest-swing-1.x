@@ -22,25 +22,25 @@ package org.fest.assertions;
  * @author Ansgar Konermann
  */
 
-public class FloatAssert_Generic_isEqualTo_Test extends GenericAssert_isEqualTo_TestBase<Float, FloatAssert> {
+public class FloatAssert_Generic_isEqualTo_Test extends GenericAssert_isEqualTo_TestBase<Float> {
 
-  protected Float actualValueX() {
+  protected Float eight() {
     return 5.0f;
   }
 
-  protected Float actualValueY() {
+  protected Float nine() {
     return 8.0f;
   }
 
-  protected String messageStringRepresentingX() {
+  protected String eightAsString() {
     return "[5].0";
   }
 
-  protected String messageStringRepresentingY() {
+  protected String nineAsString() {
     return "[8].0";
   }
 
-  protected FloatAssert createAssertForActual(Float actual) {
+  protected FloatAssert assertionFor(Float actual) {
     return new FloatAssert(actual);
   }
 }

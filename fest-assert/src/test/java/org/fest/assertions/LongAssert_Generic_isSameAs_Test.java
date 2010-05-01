@@ -16,14 +16,12 @@
 
 package org.fest.assertions;
 
-/**
- * Test ensuring that {@link LongAssert} obeys the {@link GenericAssert#isSameAs(Object)} contract for {@link Long}.
- */
+/** Test ensuring that {@link LongAssert} obeys the {@link GenericAssert#isSameAs(Object)} contract for {@link Long}. */
 public class LongAssert_Generic_isSameAs_Test extends GenericAssert_isSameAs_TestBase<Long> {
   private static final long ANY_FIXED_VALUE = 8l;
 
   @Override
-  protected Long createNewEight() {
+  protected Long createEight() {
     // explicitly allocate a new instance here, since we want to test instance equality!
     return new Long(ANY_FIXED_VALUE);
   }
@@ -34,7 +32,7 @@ public class LongAssert_Generic_isSameAs_Test extends GenericAssert_isSameAs_Tes
   }
 
   @Override
-  protected LongAssert createAssertInstance(Long actual) {
+  protected LongAssert assertionFor(Long actual) {
     return new LongAssert(actual);
   }
 }

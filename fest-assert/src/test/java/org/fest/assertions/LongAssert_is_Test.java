@@ -25,13 +25,13 @@ package org.fest.assertions;
 public class LongAssert_is_Test extends GenericAssert_is_TestBase<Long> {
 
   @Override
-  protected LongAssert createInstanceRepresentingOne() {
-    return new LongAssert(1);
+  protected Long one() {
+    return 1l;
   }
 
   @Override
-  protected LongAssert createInstanceFromNullReference() {
-    return new LongAssert(null);
+  protected LongAssert assertionFor(Long actual) {
+    return new LongAssert(actual);
   }
 
 }

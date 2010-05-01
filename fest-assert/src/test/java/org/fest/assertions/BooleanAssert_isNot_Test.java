@@ -25,22 +25,17 @@ package org.fest.assertions;
 public class BooleanAssert_isNot_Test extends GenericAssert_isNot_TestBase<Boolean> {
 
   @Override
-  protected NotNull<Boolean> createNotNullCondition() {
-    return NotNull.instance();
+  protected Boolean zero() {
+    return false;
   }
 
   @Override
-  protected BooleanAssert createInstanceFromNullReference() {
-    return new BooleanAssert(null);
-  }
-
-  @Override
-  protected BooleanAssert createInstanceRepresentingZero() {
-    return new BooleanAssert(false);
-  }
-
-  @Override
-  protected String createStringRepresentationOfZero() {
+  protected String zeroAsString() {
     return "false";
+  }
+
+  @Override
+  protected BooleanAssert assertionFor(Boolean actual) {
+    return new BooleanAssert(actual);
   }
 }

@@ -22,25 +22,25 @@ package org.fest.assertions;
  * @author Ansgar Konermann
  */
 
-public class ShortAssert_Generic_isEqualTo_Test extends GenericAssert_isEqualTo_TestBase<Short, ShortAssert> {
+public class ShortAssert_Generic_isEqualTo_Test extends GenericAssert_isEqualTo_TestBase<Short> {
 
-  protected Short actualValueX() {
+  protected Short eight() {
     return (short) 8;
   }
 
-  protected Short actualValueY() {
+  protected Short nine() {
     return (short) -17;
   }
 
-  protected String messageStringRepresentingX() {
+  protected String eightAsString() {
     return "[8]";
   }
 
-  protected String messageStringRepresentingY() {
+  protected String nineAsString() {
     return "[-17]";
   }
 
-  protected ShortAssert createAssertForActual(Short actual) {
+  protected ShortAssert assertionFor(Short actual) {
     return new ShortAssert(actual);
   }
 }

@@ -17,13 +17,15 @@
 package org.fest.assertions;
 
 /**
- * Test ensuring that {@link org.fest.assertions.DoubleAssert} obeys the {@link GenericAssert#isSameAs(Object)} contract for {@link Double}.
+ * Test ensuring that {@link org.fest.assertions.DoubleAssert} obeys the {@link GenericAssert#isSameAs(Object)} contract
+ * for {@link Double}.
  */
 public class DoubleAssert_Generic_isSameAs_Test extends GenericAssert_isSameAs_TestBase<Double> {
 
   private static final double ANY_FIXED_VALUE = 8.0d;
+
   @Override
-  protected Double createNewEight() {
+  protected Double createEight() {
     // explicitly allocate a new instance here, since we want to test instance equality!
     return new Double(ANY_FIXED_VALUE);
   }
@@ -34,7 +36,7 @@ public class DoubleAssert_Generic_isSameAs_Test extends GenericAssert_isSameAs_T
   }
 
   @Override
-  protected DoubleAssert createAssertInstance(Double actual) {
+  protected DoubleAssert assertionFor(Double actual) {
     return new DoubleAssert(actual);
   }
 }

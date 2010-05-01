@@ -23,25 +23,25 @@ package org.fest.assertions;
  * @author Ansgar Konermann
  */
 
-public class BooleanAssert_Generic_isEqualTo_Test extends GenericAssert_isEqualTo_TestBase<Boolean, BooleanAssert> {
+public class BooleanAssert_Generic_isEqualTo_Test extends GenericAssert_isEqualTo_TestBase<Boolean> {
 
-  protected Boolean actualValueX() {
+  protected Boolean eight() {
     return true;
   }
 
-  protected Boolean actualValueY() {
+  protected Boolean nine() {
     return false;
   }
 
-  protected String messageStringRepresentingX() {
+  protected String eightAsString() {
     return "[tru]e";
   }
 
-  protected String messageStringRepresentingY() {
+  protected String nineAsString() {
     return "[fals]e";
   }
 
-  protected BooleanAssert createAssertForActual(Boolean actual) {
+  protected BooleanAssert assertionFor(Boolean actual) {
     return new BooleanAssert(actual);
   }
 }

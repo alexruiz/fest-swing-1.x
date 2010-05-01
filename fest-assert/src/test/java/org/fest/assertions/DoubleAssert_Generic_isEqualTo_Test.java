@@ -23,25 +23,25 @@ package org.fest.assertions;
  * @author Ansgar Konermann
  */
 
-public class DoubleAssert_Generic_isEqualTo_Test extends GenericAssert_isEqualTo_TestBase<Double, DoubleAssert> {
+public class DoubleAssert_Generic_isEqualTo_Test extends GenericAssert_isEqualTo_TestBase<Double> {
 
-  protected Double actualValueX() {
+  protected Double eight() {
     return 2.7183d;
   }
 
-  protected Double actualValueY() {
+  protected Double nine() {
     return 3.1415d;
   }
 
-  protected String messageStringRepresentingX() {
+  protected String eightAsString() {
     return "[2.7183]";
   }
 
-  protected String messageStringRepresentingY() {
+  protected String nineAsString() {
     return "[3.1415]";
   }
 
-  protected DoubleAssert createAssertForActual(Double actual) {
+  protected DoubleAssert assertionFor(Double actual) {
     return new DoubleAssert(actual);
   }
 }

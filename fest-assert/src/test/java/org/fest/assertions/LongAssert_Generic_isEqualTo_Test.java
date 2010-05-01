@@ -22,25 +22,25 @@ package org.fest.assertions;
  * @author Ansgar Konermann
  */
 
-public class LongAssert_Generic_isEqualTo_Test extends GenericAssert_isEqualTo_TestBase<Long, LongAssert> {
+public class LongAssert_Generic_isEqualTo_Test extends GenericAssert_isEqualTo_TestBase<Long> {
 
-  protected Long actualValueX() {
+  protected Long eight() {
     return 123l;
   }
 
-  protected Long actualValueY() {
+  protected Long nine() {
     return 456l;
   }
 
-  protected String messageStringRepresentingX() {
+  protected String eightAsString() {
     return "[123]";
   }
 
-  protected String messageStringRepresentingY() {
+  protected String nineAsString() {
     return "[456]";
   }
 
-  protected LongAssert createAssertForActual(Long actual) {
+  protected LongAssert assertionFor(Long actual) {
     return new LongAssert(actual);
   }
 }

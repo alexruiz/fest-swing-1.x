@@ -19,12 +19,12 @@ package org.fest.assertions;
 public class FloatAssert_satisfies_Test extends GenericAssert_satisfies_TestBase<Float> {
 
   @Override
-  protected GenericAssert<Float> createInstanceRepresentingOne() {
-    return new FloatAssert(1.0f);
+  protected Float one() {
+    return 1.0f;
   }
 
   @Override
-  protected GenericAssert<Float> createInstanceFromNullReference() {
-    return new FloatAssert(null);
+  protected FloatAssert assertionFor(Float actual) {
+    return new FloatAssert(actual);
   }
 }

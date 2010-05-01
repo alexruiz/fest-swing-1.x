@@ -17,14 +17,15 @@
 package org.fest.assertions;
 
 /**
- * Test ensuring that {@link CharAssert} obeys the {@link org.fest.assertions.GenericAssert#isSameAs(Object)} contract for {@link Character}.
+ * Test ensuring that {@link CharAssert} obeys the {@link org.fest.assertions.GenericAssert#isSameAs(Object)} contract
+ * for {@link Character}.
  */
 public class CharAssert_Generic_isSameAs_Test extends GenericAssert_isSameAs_TestBase<Character> {
 
   private static final char ANY_FIXED_VALUE = 'X';
 
   @Override
-  protected Character createNewEight() {
+  protected Character createEight() {
     // explicitly allocate a new instance here, since we want to test instance equality!
     return new Character(ANY_FIXED_VALUE);
   }
@@ -35,7 +36,7 @@ public class CharAssert_Generic_isSameAs_Test extends GenericAssert_isSameAs_Tes
   }
 
   @Override
-  protected CharAssert createAssertInstance(Character actual) {
+  protected CharAssert assertionFor(Character actual) {
     return new CharAssert(actual);
   }
 }

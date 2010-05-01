@@ -24,12 +24,12 @@ package org.fest.assertions;
 public class IntAssert_isNotNull_Test extends GenericAssert_isNotNull_TestBase<Integer> {
 
   @Override
-  protected IntAssert createAssertInstanceForActual(Integer actual) {
+  protected IntAssert assertionFor(Integer actual) {
     return new IntAssert(actual);
   }
 
   @Override
-  protected Integer createNonNullValue() {
+  protected Integer one() {
     return 1;
   }
 }

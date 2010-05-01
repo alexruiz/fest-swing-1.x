@@ -25,12 +25,12 @@ package org.fest.assertions;
 public class ShortAssert_isNotNull_Test extends GenericAssert_isNotNull_TestBase<Short> {
 
   @Override
-  protected ShortAssert createAssertInstanceForActual(Short actual) {
+  protected ShortAssert assertionFor(Short actual) {
     return new ShortAssert(actual);
   }
 
   @Override
-  protected Short createNonNullValue() {
+  protected Short one() {
     return (short) 1;
   }
 }

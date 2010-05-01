@@ -17,12 +17,13 @@
 package org.fest.assertions;
 
 /**
- * Test ensuring that {@link org.fest.assertions.CharAssert} obeys the {@link org.fest.assertions.GenericAssert#isNotSameAs(Object)} contract for {@link Character}.
+ * Test ensuring that {@link org.fest.assertions.CharAssert} obeys the {@link org.fest.assertions.GenericAssert#isNotSameAs(Object)}
+ * contract for {@link Character}.
  */
 public class CharAssert_Generic_isNotSameAs_Test extends GenericAssert_isNotSameAs_TestBase<Character> {
 
   @Override
-  protected Character createNewEight() {
+  protected Character createEight() {
     return new Character('8');
   }
 
@@ -32,7 +33,7 @@ public class CharAssert_Generic_isNotSameAs_Test extends GenericAssert_isNotSame
   }
 
   @Override
-  protected CharAssert newAssertion(Character actual) {
+  protected CharAssert assertionFor(Character actual) {
     return new CharAssert(actual);
   }
 }

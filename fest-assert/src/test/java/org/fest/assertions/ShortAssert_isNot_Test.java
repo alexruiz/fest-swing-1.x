@@ -24,22 +24,17 @@ package org.fest.assertions;
 public class ShortAssert_isNot_Test extends GenericAssert_isNot_TestBase<Short> {
 
   @Override
-  protected NotNull<Short> createNotNullCondition() {
-    return NotNull.instance();
+  protected Short zero() {
+    return (short) 1;
   }
 
   @Override
-  protected ShortAssert createInstanceFromNullReference() {
-    return new ShortAssert(null);
-  }
-
-  @Override
-  protected ShortAssert createInstanceRepresentingZero() {
-    return new ShortAssert((short) 1);
-  }
-
-  @Override
-  protected String createStringRepresentationOfZero() {
+  protected String zeroAsString() {
     return "1";
+  }
+
+  @Override
+  protected ShortAssert assertionFor(Short actual) {
+    return new ShortAssert(actual);
   }
 }

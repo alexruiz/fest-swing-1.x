@@ -22,25 +22,25 @@ package org.fest.assertions;
  * @author Ansgar Konermann
  */
 
-public class ByteAssert_Generic_isEqualTo_Test extends GenericAssert_isEqualTo_TestBase<Byte, ByteAssert> {
+public class ByteAssert_Generic_isEqualTo_Test extends GenericAssert_isEqualTo_TestBase<Byte> {
 
-  protected Byte actualValueX() {
+  protected Byte eight() {
     return (byte) 123;
   }
 
-  protected Byte actualValueY() {
+  protected Byte nine() {
     return (byte) 99;
   }
 
-  protected String messageStringRepresentingX() {
+  protected String eightAsString() {
     return "[123]";
   }
 
-  protected String messageStringRepresentingY() {
+  protected String nineAsString() {
     return "[99]";
   }
 
-  protected ByteAssert createAssertForActual(Byte actual) {
+  protected ByteAssert assertionFor(Byte actual) {
     return new ByteAssert(actual);
   }
 }

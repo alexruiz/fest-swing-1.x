@@ -25,12 +25,12 @@ package org.fest.assertions;
 public class CharAssert_isNotNull_Test extends GenericAssert_isNotNull_TestBase<Character> {
 
   @Override
-  protected CharAssert createAssertInstanceForActual(Character actual) {
+  protected CharAssert assertionFor(Character actual) {
     return new CharAssert(actual);
   }
 
   @Override
-  protected Character createNonNullValue() {
+  protected Character one() {
     return '1';
   }
 }

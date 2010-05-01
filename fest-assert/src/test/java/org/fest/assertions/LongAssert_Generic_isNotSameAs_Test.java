@@ -18,12 +18,13 @@ package org.fest.assertions;
 
 
 /**
- * Test ensuring that {@link LongAssert} obeys the {@link org.fest.assertions.GenericAssert#isNotSameAs(Object)} contract for {@link Long}.
+ * Test ensuring that {@link LongAssert} obeys the {@link org.fest.assertions.GenericAssert#isNotSameAs(Object)}
+ * contract for {@link Long}.
  */
 public class LongAssert_Generic_isNotSameAs_Test extends GenericAssert_isNotSameAs_TestBase<Long> {
 
   @Override
-  protected Long createNewEight() {
+  protected Long createEight() {
     return new Long(8l);
   }
 
@@ -33,7 +34,7 @@ public class LongAssert_Generic_isNotSameAs_Test extends GenericAssert_isNotSame
   }
 
   @Override
-  protected LongAssert newAssertion(Long actual) {
+  protected LongAssert assertionFor(Long actual) {
     return new LongAssert(actual);
   }
 }

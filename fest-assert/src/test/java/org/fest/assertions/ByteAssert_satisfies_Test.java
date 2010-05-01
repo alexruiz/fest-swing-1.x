@@ -19,12 +19,12 @@ package org.fest.assertions;
 public class ByteAssert_satisfies_Test extends GenericAssert_satisfies_TestBase<Byte> {
 
   @Override
-  protected ByteAssert createInstanceRepresentingOne() {
-    return new ByteAssert((byte) 1);
+  protected Byte one() {
+    return (byte) 1;
   }
 
   @Override
-  protected ByteAssert createInstanceFromNullReference() {
-    return new ByteAssert(null);
+  protected ByteAssert assertionFor(Byte actual) {
+    return new ByteAssert(actual);
   }
 }

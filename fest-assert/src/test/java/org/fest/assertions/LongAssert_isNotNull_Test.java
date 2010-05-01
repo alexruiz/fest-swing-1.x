@@ -25,12 +25,12 @@ package org.fest.assertions;
 public class LongAssert_isNotNull_Test extends GenericAssert_isNotNull_TestBase<Long> {
 
   @Override
-  protected LongAssert createAssertInstanceForActual(Long actual) {
+  protected LongAssert assertionFor(Long actual) {
     return new LongAssert(actual);
   }
 
   @Override
-  protected Long createNonNullValue() {
+  protected Long one() {
     return 1l;
   }
 }

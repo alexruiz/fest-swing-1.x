@@ -17,12 +17,13 @@
 package org.fest.assertions;
 
 /**
- * Test ensuring that {@link org.fest.assertions.IntAssert} obeys the {@link org.fest.assertions.GenericAssert#isNotSameAs(Object)} contract for {@link Integer}.
+ * Test ensuring that {@link org.fest.assertions.IntAssert} obeys the {@link org.fest.assertions.GenericAssert#isNotSameAs(Object)}
+ * contract for {@link Integer}.
  */
 public class IntAssert_Generic_isNotSameAs_Test extends GenericAssert_isNotSameAs_TestBase<Integer> {
 
   @Override
-  protected Integer createNewEight() {
+  protected Integer createEight() {
     return new Integer(8);
   }
 
@@ -32,7 +33,7 @@ public class IntAssert_Generic_isNotSameAs_Test extends GenericAssert_isNotSameA
   }
 
   @Override
-  protected IntAssert newAssertion(Integer actual) {
+  protected IntAssert assertionFor(Integer actual) {
     return new IntAssert(actual);
   }
 }

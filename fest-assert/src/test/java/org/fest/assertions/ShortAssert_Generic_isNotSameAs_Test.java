@@ -17,12 +17,13 @@
 package org.fest.assertions;
 
 /**
- * Test ensuring that {@link org.fest.assertions.ShortAssert} obeys the {@link org.fest.assertions.GenericAssert#isNotSameAs(Object)} contract for {@link Short}.
+ * Test ensuring that {@link org.fest.assertions.ShortAssert} obeys the {@link org.fest.assertions.GenericAssert#isNotSameAs(Object)}
+ * contract for {@link Short}.
  */
 public class ShortAssert_Generic_isNotSameAs_Test extends GenericAssert_isNotSameAs_TestBase<Short> {
 
   @Override
-  protected Short createNewEight() {
+  protected Short createEight() {
     return new Short((short) 8);
   }
 
@@ -32,7 +33,7 @@ public class ShortAssert_Generic_isNotSameAs_Test extends GenericAssert_isNotSam
   }
 
   @Override
-  protected ShortAssert newAssertion(Short actual) {
+  protected ShortAssert assertionFor(Short actual) {
     return new ShortAssert(actual);
   }
 }

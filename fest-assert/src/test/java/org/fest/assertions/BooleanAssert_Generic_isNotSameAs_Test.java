@@ -17,12 +17,13 @@
 package org.fest.assertions;
 
 /**
- * Test ensuring that {@link org.fest.assertions.BooleanAssert} obeys the {@link org.fest.assertions.GenericAssert#isNotSameAs(Object)} contract for {@link Boolean}.
+ * Test ensuring that {@link org.fest.assertions.BooleanAssert} obeys the {@link org.fest.assertions.GenericAssert#isNotSameAs(Object)}
+ * contract for {@link Boolean}.
  */
 public class BooleanAssert_Generic_isNotSameAs_Test extends GenericAssert_isNotSameAs_TestBase<Boolean> {
 
   @Override
-  protected Boolean createNewEight() {
+  protected Boolean createEight() {
     return new Boolean(true);
   }
 
@@ -32,7 +33,7 @@ public class BooleanAssert_Generic_isNotSameAs_Test extends GenericAssert_isNotS
   }
 
   @Override
-  protected BooleanAssert newAssertion(Boolean actual) {
+  protected BooleanAssert assertionFor(Boolean actual) {
     return new BooleanAssert(actual);
   }
 }

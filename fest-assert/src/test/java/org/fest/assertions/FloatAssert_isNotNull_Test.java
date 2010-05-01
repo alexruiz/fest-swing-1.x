@@ -25,12 +25,12 @@ package org.fest.assertions;
 public class FloatAssert_isNotNull_Test extends GenericAssert_isNotNull_TestBase<Float> {
 
   @Override
-  protected FloatAssert createAssertInstanceForActual(Float actual) {
+  protected FloatAssert assertionFor(Float actual) {
     return new FloatAssert(actual);
   }
 
   @Override
-  protected Float createNonNullValue() {
+  protected Float one() {
     return 123.456f;
   }
 }

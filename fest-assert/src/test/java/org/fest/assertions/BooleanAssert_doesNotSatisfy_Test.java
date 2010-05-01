@@ -24,22 +24,17 @@ package org.fest.assertions;
 public class BooleanAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSatisfy_TestBase<Boolean> {
 
   @Override
-  protected NotNull<Boolean> createNotNullCondition() {
-    return NotNull.instance();
-  }
-
-  @Override
-  protected BooleanAssert createInstanceFromNullReference() {
-    return new BooleanAssert(null);
-  }
-
-  @Override
-  protected BooleanAssert createInstanceRepresentingZero() {
-    return new BooleanAssert(false);
-  }
-
-  @Override
-  protected String createStringRepresentationOfZero() {
+  protected String zeroAsString() {
     return "false";
+  }
+
+  @Override
+  protected Boolean zero() {
+    return Boolean.FALSE;
+  }
+
+  @Override
+  protected BooleanAssert assertionFor(Boolean actual) {
+    return new BooleanAssert(actual);
   }
 }

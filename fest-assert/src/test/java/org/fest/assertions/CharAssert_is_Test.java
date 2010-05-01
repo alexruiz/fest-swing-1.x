@@ -25,13 +25,13 @@ package org.fest.assertions;
 public class CharAssert_is_Test extends GenericAssert_is_TestBase<Character> {
 
   @Override
-  protected CharAssert createInstanceRepresentingOne() {
-    return new CharAssert('1');
+  protected Character one() {
+    return '1';
   }
 
   @Override
-  protected CharAssert createInstanceFromNullReference() {
-    return new CharAssert(null);
+  protected CharAssert assertionFor(Character actual) {
+    return new CharAssert(actual);
   }
 
 }

@@ -22,25 +22,25 @@ package org.fest.assertions;
  * @author Ansgar Konermann
  */
 
-public class IntAssert_Generic_isEqualTo_Test extends GenericAssert_isEqualTo_TestBase<Integer, IntAssert> {
+public class IntAssert_Generic_isEqualTo_Test extends GenericAssert_isEqualTo_TestBase<Integer> {
 
-  protected Integer actualValueX() {
+  protected Integer eight() {
     return new Integer(8);
   }
 
-  protected Integer actualValueY() {
+  protected Integer nine() {
     return new Integer(9);
   }
 
-  protected String messageStringRepresentingX() {
+  protected String eightAsString() {
     return "[8]";
   }
 
-  protected String messageStringRepresentingY() {
+  protected String nineAsString() {
     return "[9]";
   }
 
-  protected IntAssert createAssertForActual(Integer actual) {
+  protected IntAssert assertionFor(Integer actual) {
     return new IntAssert(actual);
   }
 }

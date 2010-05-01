@@ -25,13 +25,13 @@ package org.fest.assertions;
 public class DoubleAssert_is_Test extends GenericAssert_is_TestBase<Double> {
 
   @Override
-  protected DoubleAssert createInstanceRepresentingOne() {
-    return new DoubleAssert(1.0d);
+  protected Double one() {
+    return 1.0d;
   }
 
   @Override
-  protected DoubleAssert createInstanceFromNullReference() {
-    return new DoubleAssert(null);
+  protected DoubleAssert assertionFor(Double actual) {
+    return new DoubleAssert(actual);
   }
 
 }

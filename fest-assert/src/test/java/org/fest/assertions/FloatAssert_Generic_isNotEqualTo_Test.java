@@ -25,22 +25,22 @@ package org.fest.assertions;
 public class FloatAssert_Generic_isNotEqualTo_Test extends GenericAssert_isNotEqualTo_TestBase<Float> {
 
   @Override
-  protected Float createActualValueEight() {
+  protected Float eight() {
     return 8.0f;
   }
 
   @Override
-  protected Float createActualValueZero() {
+  protected Float zero() {
     return 0.0f;
   }
 
   @Override
-  protected FloatAssert createAssertionForActualValue(Float actual) {
+  protected FloatAssert assertionFor(Float actual) {
     return new FloatAssert(actual);
   }
 
   @Override
-  protected String messageStringRepresentingEight() {
+  protected String eightAsString() {
     return "8.0";
   }
 

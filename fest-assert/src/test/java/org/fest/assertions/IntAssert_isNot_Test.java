@@ -24,22 +24,17 @@ package org.fest.assertions;
 public class IntAssert_isNot_Test extends GenericAssert_isNot_TestBase<Integer> {
 
   @Override
-  protected NotNull<Integer> createNotNullCondition() {
-    return NotNull.instance();
+  protected Integer zero() {
+    return 1;
   }
 
   @Override
-  protected IntAssert createInstanceFromNullReference() {
-    return new IntAssert(null);
-  }
-
-  @Override
-  protected IntAssert createInstanceRepresentingZero() {
-    return new IntAssert(1);
-  }
-
-  @Override
-  protected String createStringRepresentationOfZero() {
+  protected String zeroAsString() {
     return "1";
+  }
+
+  @Override
+  protected IntAssert assertionFor(Integer actual) {
+    return new IntAssert(actual);
   }
 }

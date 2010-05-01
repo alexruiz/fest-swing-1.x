@@ -17,13 +17,14 @@
 package org.fest.assertions;
 
 /**
- * Test ensuring that {@link ByteAssert} obeys the {@link org.fest.assertions.GenericAssert#isSameAs(Object)} contract for {@link Byte}.
+ * Test ensuring that {@link ByteAssert} obeys the {@link org.fest.assertions.GenericAssert#isSameAs(Object)} contract
+ * for {@link Byte}.
  */
 public class ByteAssert_Generic_isSameAs_Test extends GenericAssert_isSameAs_TestBase<Byte> {
   private static final byte ANY_FIXED_VALUE = 8;
 
   @Override
-  protected Byte createNewEight() {
+  protected Byte createEight() {
     // explicitly allocate a new instance here, since we want to test instance equality!
     return new Byte(ANY_FIXED_VALUE);
   }
@@ -34,7 +35,7 @@ public class ByteAssert_Generic_isSameAs_Test extends GenericAssert_isSameAs_Tes
   }
 
   @Override
-  protected ByteAssert createAssertInstance(Byte actual) {
+  protected ByteAssert assertionFor(Byte actual) {
     return new ByteAssert(actual);
   }
 }

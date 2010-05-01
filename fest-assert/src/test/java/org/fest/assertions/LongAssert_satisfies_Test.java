@@ -18,12 +18,12 @@ package org.fest.assertions;
 
 public class LongAssert_satisfies_Test extends GenericAssert_satisfies_TestBase<Long> {
   @Override
-  protected GenericAssert<Long> createInstanceRepresentingOne() {
-    return new LongAssert(1l);
+  protected Long one() {
+    return 1l;
   }
 
   @Override
-  protected GenericAssert<Long> createInstanceFromNullReference() {
-    return new LongAssert(null);
+  protected LongAssert assertionFor(Long actual) {
+    return new LongAssert(actual);
   }
 }

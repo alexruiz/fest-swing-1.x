@@ -25,13 +25,13 @@ package org.fest.assertions;
 public class IntAssert_is_Test extends GenericAssert_is_TestBase<Integer> {
 
   @Override
-  protected IntAssert createInstanceRepresentingOne() {
-    return new IntAssert(1);
+  protected Integer one() {
+    return 1;
   }
 
   @Override
-  protected IntAssert createInstanceFromNullReference() {
-    return new IntAssert(null);
+  protected IntAssert assertionFor(Integer actual) {
+    return new IntAssert(actual);
   }
 
 }

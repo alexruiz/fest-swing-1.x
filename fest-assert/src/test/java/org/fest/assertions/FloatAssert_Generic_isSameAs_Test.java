@@ -17,14 +17,15 @@
 package org.fest.assertions;
 
 /**
- * Test ensuring that {@link FloatAssert} obeys the {@link org.fest.assertions.GenericAssert#isSameAs(Object)} contract for {@link Float}.
+ * Test ensuring that {@link FloatAssert} obeys the {@link org.fest.assertions.GenericAssert#isSameAs(Object)} contract
+ * for {@link Float}.
  */
 public class FloatAssert_Generic_isSameAs_Test extends GenericAssert_isSameAs_TestBase<Float> {
 
   private static final float ANY_FIXED_VALUE = 8.0f;
 
   @Override
-  protected Float createNewEight() {
+  protected Float createEight() {
     // explicitly allocate a new instance here, since we want to test instance equality!
     return new Float(ANY_FIXED_VALUE);
   }
@@ -35,7 +36,7 @@ public class FloatAssert_Generic_isSameAs_Test extends GenericAssert_isSameAs_Te
   }
 
   @Override
-  protected FloatAssert createAssertInstance(Float actual) {
+  protected FloatAssert assertionFor(Float actual) {
     return new FloatAssert(actual);
   }
 }

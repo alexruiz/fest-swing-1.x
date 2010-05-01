@@ -25,22 +25,17 @@ package org.fest.assertions;
 public class FloatAssert_isNot_Test extends GenericAssert_isNot_TestBase<Float> {
 
   @Override
-  protected NotNull<Float> createNotNullCondition() {
-    return NotNull.instance();
+  protected Float zero() {
+    return 0.0f;
   }
 
   @Override
-  protected FloatAssert createInstanceFromNullReference() {
-    return new FloatAssert(null);
-  }
-
-  @Override
-  protected FloatAssert createInstanceRepresentingZero() {
-    return new FloatAssert(0.0f);
-  }
-
-  @Override
-  protected String createStringRepresentationOfZero() {
+  protected String zeroAsString() {
     return "0.0";
+  }
+
+  @Override
+  protected FloatAssert assertionFor(Float actual) {
+    return new FloatAssert(actual);
   }
 }

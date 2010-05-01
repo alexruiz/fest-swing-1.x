@@ -24,22 +24,17 @@ package org.fest.assertions;
 public class ByteAssert_isNot_Test extends GenericAssert_isNot_TestBase<Byte> {
 
   @Override
-  protected NotNull<Byte> createNotNullCondition() {
-    return NotNull.instance();
+  protected Byte zero() {
+    return (byte) 1;
   }
 
   @Override
-  protected ByteAssert createInstanceFromNullReference() {
-    return new ByteAssert(null);
-  }
-
-  @Override
-  protected ByteAssert createInstanceRepresentingZero() {
-    return new ByteAssert((byte) 1);
-  }
-
-  @Override
-  protected String createStringRepresentationOfZero() {
+  protected String zeroAsString() {
     return "1";
+  }
+
+  @Override
+  protected ByteAssert assertionFor(Byte actual) {
+    return new ByteAssert(actual);
   }
 }

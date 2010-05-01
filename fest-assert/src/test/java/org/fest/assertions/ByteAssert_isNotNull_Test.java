@@ -25,12 +25,12 @@ package org.fest.assertions;
 public class ByteAssert_isNotNull_Test extends GenericAssert_isNotNull_TestBase<Byte> {
 
   @Override
-  protected ByteAssert createAssertInstanceForActual(Byte actual) {
+  protected ByteAssert assertionFor(Byte actual) {
     return new ByteAssert(actual);
   }
 
   @Override
-  protected Byte createNonNullValue() {
+  protected Byte one() {
     return (byte) 1;
   }
 }

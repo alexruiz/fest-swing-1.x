@@ -17,13 +17,14 @@
 package org.fest.assertions;
 
 /**
- * Test ensuring that {@link BooleanAssert} obeys the {@link org.fest.assertions.GenericAssert#isSameAs(Object)} contract for {@link Booolean}.
+ * Test ensuring that {@link BooleanAssert} obeys the {@link org.fest.assertions.GenericAssert#isSameAs(Object)}
+ * contract for {@link Booolean}.
  */
 public class BooleanAssert_Generic_isSameAs_Test extends GenericAssert_isSameAs_TestBase<Boolean> {
   private static final boolean ANY_FIXED_VALUE = true;
 
   @Override
-  protected Boolean createNewEight() {
+  protected Boolean createEight() {
     // explicitly allocate a new instance here, since we want to test instance equality!
     return new Boolean(ANY_FIXED_VALUE);
   }
@@ -34,7 +35,7 @@ public class BooleanAssert_Generic_isSameAs_Test extends GenericAssert_isSameAs_
   }
 
   @Override
-  protected BooleanAssert createAssertInstance(Boolean actual) {
+  protected BooleanAssert assertionFor(Boolean actual) {
     return new BooleanAssert(actual);
   }
 }

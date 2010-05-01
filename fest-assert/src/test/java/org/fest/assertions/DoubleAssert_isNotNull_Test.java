@@ -25,12 +25,12 @@ package org.fest.assertions;
 public class DoubleAssert_isNotNull_Test extends GenericAssert_isNotNull_TestBase<Double> {
 
   @Override
-  protected DoubleAssert createAssertInstanceForActual(Double actual) {
+  protected DoubleAssert assertionFor(Double actual) {
     return new DoubleAssert(actual);
   }
 
   @Override
-  protected Double createNonNullValue() {
+  protected Double one() {
     return 1.0d;
   }
 }

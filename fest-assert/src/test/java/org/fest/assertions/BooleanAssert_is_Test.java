@@ -25,13 +25,13 @@ package org.fest.assertions;
 public class BooleanAssert_is_Test extends GenericAssert_is_TestBase<Boolean> {
 
   @Override
-  protected BooleanAssert createInstanceRepresentingOne() {
-    return new BooleanAssert(true);
+  protected Boolean one() {
+    return true;
   }
 
   @Override
-  protected BooleanAssert createInstanceFromNullReference() {
-    return new BooleanAssert(null);
+  protected BooleanAssert assertionFor(Boolean actual) {
+    return new BooleanAssert(actual);
   }
 
 }

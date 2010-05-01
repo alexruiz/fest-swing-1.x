@@ -25,22 +25,22 @@ package org.fest.assertions;
 public class LongAssert_Generic_isNotEqualTo_Test extends GenericAssert_isNotEqualTo_TestBase<Long> {
 
   @Override
-  protected Long createActualValueEight() {
+  protected Long eight() {
     return 8l;
   }
 
   @Override
-  protected Long createActualValueZero() {
+  protected Long zero() {
     return 0l;
   }
 
   @Override
-  protected LongAssert createAssertionForActualValue(Long actual) {
+  protected LongAssert assertionFor(Long actual) {
     return new LongAssert(actual);
   }
 
   @Override
-  protected String messageStringRepresentingEight() {
+  protected String eightAsString() {
     return "8";
   }
 

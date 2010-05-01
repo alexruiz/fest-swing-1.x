@@ -16,39 +16,39 @@
 
 package org.fest.assertions;
 
-import org.fest.test.CodeToTest;
-import org.junit.Test;
-
 import static org.fest.test.ExpectedFailure.expectAssertionError;
+
+import org.junit.Test;
+import org.fest.test.CodeToTest;
 
 /**
  * Base class for testing {@link org.fest.assertions.GenericAssert#isNotSameAs(Object)}.
  * <p/>
- * This class implements the algorithms which must be performed to test <code>isNotSameAs</code> as template methods
- * and uses implementations of the abstract methods in subclasses to derive concrete tests.
+ * This class implements the algorithms which must be performed to test <code>isNotSameAs</code> as template methods and
+ * uses implementations of the abstract methods in subclasses to derive concrete tests.
  *
  * @author Ansgar Konermann
  */
 
 public abstract class GenericAssert_isNotSameAs_TestBase<VALUE_TYPE> implements GenericAssert_isNotSameAs_TestCase {
 
-  protected abstract VALUE_TYPE createNewEight();
+  protected abstract VALUE_TYPE createEight();
 
   protected abstract String eightAsString();
 
-  protected abstract GenericAssert<VALUE_TYPE> newAssertion(VALUE_TYPE actual);
+  protected abstract GenericAssert<VALUE_TYPE> assertionFor(VALUE_TYPE actual);
 
   @Test
   public void should_pass_if_actual_and_expected_are_not_same() {
-    newAssertion(createNewEight()).isNotSameAs(createNewEight());
+    assertionFor(createEight()).isNotSameAs(createEight());
   }
 
   @Test
   public void should_fail_if_actual_and_expected_are_same() {
     expectAssertionError("given objects are same:<" + eightAsString() + ">").on(new CodeToTest() {
       public void run() {
-        final VALUE_TYPE myEight = createNewEight();
-        newAssertion(myEight).isNotSameAs(myEight);
+        final VALUE_TYPE myEight = createEight();
+        assertionFor(myEight).isNotSameAs(myEight);
       }
     });
   }
@@ -57,8 +57,8 @@ public abstract class GenericAssert_isNotSameAs_TestBase<VALUE_TYPE> implements 
   public void should_fail_and_display_description_of_assertion_if_actual_and_expected_are_same() {
     expectAssertionError("[A Test] given objects are same:<" + eightAsString() + ">").on(new CodeToTest() {
       public void run() {
-        final VALUE_TYPE myEight = createNewEight();
-        newAssertion(myEight).as("A Test").isNotSameAs(myEight);
+        final VALUE_TYPE myEight = createEight();
+        assertionFor(myEight).as("A Test").isNotSameAs(myEight);
       }
     });
   }
@@ -67,8 +67,8 @@ public abstract class GenericAssert_isNotSameAs_TestBase<VALUE_TYPE> implements 
   public void should_fail_with_custom_message_if_actual_and_expected_are_same() {
     expectAssertionError("My custom message").on(new CodeToTest() {
       public void run() {
-        final VALUE_TYPE myEight = createNewEight();
-        newAssertion(myEight).overridingErrorMessage("My custom message").isNotSameAs(myEight);
+        final VALUE_TYPE myEight = createEight();
+        assertionFor(myEight).overridingErrorMessage("My custom message").isNotSameAs(myEight);
       }
     });
   }
@@ -77,8 +77,8 @@ public abstract class GenericAssert_isNotSameAs_TestBase<VALUE_TYPE> implements 
   public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_and_expected_are_same() {
     expectAssertionError("My custom message").on(new CodeToTest() {
       public void run() {
-        final VALUE_TYPE myEight = createNewEight();
-        newAssertion(myEight).as("A Test").overridingErrorMessage("My custom message").isNotSameAs(myEight);
+        final VALUE_TYPE myEight = createEight();
+        assertionFor(myEight).as("A Test").overridingErrorMessage("My custom message").isNotSameAs(myEight);
       }
     });
   }

@@ -19,12 +19,12 @@ package org.fest.assertions;
 public class DoubleAssert_satisfies_Test extends GenericAssert_satisfies_TestBase<Double> {
 
   @Override
-  protected GenericAssert<Double> createInstanceRepresentingOne() {
-    return new DoubleAssert(1.0d);
+  protected Double one() {
+    return 1.0d;
   }
 
   @Override
-  protected GenericAssert<Double> createInstanceFromNullReference() {
-    return new DoubleAssert(null);
+  protected DoubleAssert assertionFor(Double actual) {
+    return new DoubleAssert(actual);
   }
 }

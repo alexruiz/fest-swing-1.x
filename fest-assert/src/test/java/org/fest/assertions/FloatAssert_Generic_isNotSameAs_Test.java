@@ -17,12 +17,13 @@
 package org.fest.assertions;
 
 /**
- * Test ensuring that {@link org.fest.assertions.FloatAssert} obeys the {@link org.fest.assertions.GenericAssert#isNotSameAs(Object)} contract for {@link Float}.
+ * Test ensuring that {@link org.fest.assertions.FloatAssert} obeys the {@link org.fest.assertions.GenericAssert#isNotSameAs(Object)}
+ * contract for {@link Float}.
  */
 public class FloatAssert_Generic_isNotSameAs_Test extends GenericAssert_isNotSameAs_TestBase<Float> {
 
   @Override
-  protected Float createNewEight() {
+  protected Float createEight() {
     return new Float(8.0f);
   }
 
@@ -32,7 +33,7 @@ public class FloatAssert_Generic_isNotSameAs_Test extends GenericAssert_isNotSam
   }
 
   @Override
-  protected FloatAssert newAssertion(Float actual) {
+  protected FloatAssert assertionFor(Float actual) {
     return new FloatAssert(actual);
   }
 }

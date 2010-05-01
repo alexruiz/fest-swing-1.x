@@ -17,14 +17,15 @@
 package org.fest.assertions;
 
 /**
- * Test ensuring that {@link ShortAssert} obeys the {@link org.fest.assertions.GenericAssert#isSameAs(Object)} contract for {@link Short}.
+ * Test ensuring that {@link ShortAssert} obeys the {@link org.fest.assertions.GenericAssert#isSameAs(Object)} contract
+ * for {@link Short}.
  */
 public class ShortAssert_Generic_isSameAs_Test extends GenericAssert_isSameAs_TestBase<Short> {
 
   private static final short ANY_FIXED_VALUE = 8;
 
   @Override
-  protected Short createNewEight() {
+  protected Short createEight() {
     // explicitly allocate a new instance here, since we want to test instance equality!
     return new Short(ANY_FIXED_VALUE);
   }
@@ -35,7 +36,7 @@ public class ShortAssert_Generic_isSameAs_Test extends GenericAssert_isSameAs_Te
   }
 
   @Override
-  protected ShortAssert createAssertInstance(Short actual) {
+  protected ShortAssert assertionFor(Short actual) {
     return new ShortAssert(actual);
   }
 }

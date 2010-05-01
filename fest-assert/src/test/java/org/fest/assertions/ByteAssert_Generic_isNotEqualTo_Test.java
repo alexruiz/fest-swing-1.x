@@ -25,22 +25,22 @@ package org.fest.assertions;
 public class ByteAssert_Generic_isNotEqualTo_Test extends GenericAssert_isNotEqualTo_TestBase<Byte> {
 
   @Override
-  protected Byte createActualValueEight() {
+  protected Byte eight() {
     return 8;
   }
 
   @Override
-  protected Byte createActualValueZero() {
+  protected Byte zero() {
     return 0;
   }
 
   @Override
-  protected ByteAssert createAssertionForActualValue(Byte actual) {
+  protected ByteAssert assertionFor(Byte actual) {
     return new ByteAssert(actual);
   }
 
   @Override
-  protected String messageStringRepresentingEight() {
+  protected String eightAsString() {
     return "8";
   }
 

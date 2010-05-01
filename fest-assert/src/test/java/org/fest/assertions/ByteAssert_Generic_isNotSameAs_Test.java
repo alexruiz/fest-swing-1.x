@@ -17,12 +17,13 @@
 package org.fest.assertions;
 
 /**
- * Test ensuring that {@link org.fest.assertions.ByteAssert} obeys the {@link org.fest.assertions.GenericAssert#isNotSameAs(Object)} contract for {@link Byte}.
+ * Test ensuring that {@link org.fest.assertions.ByteAssert} obeys the {@link org.fest.assertions.GenericAssert#isNotSameAs(Object)}
+ * contract for {@link Byte}.
  */
 public class ByteAssert_Generic_isNotSameAs_Test extends GenericAssert_isNotSameAs_TestBase<Byte> {
 
   @Override
-  protected Byte createNewEight() {
+  protected Byte createEight() {
     return new Byte((byte) 8);
   }
 
@@ -32,7 +33,7 @@ public class ByteAssert_Generic_isNotSameAs_Test extends GenericAssert_isNotSame
   }
 
   @Override
-  protected ByteAssert newAssertion(Byte actual) {
+  protected ByteAssert assertionFor(Byte actual) {
     return new ByteAssert(actual);
   }
 }

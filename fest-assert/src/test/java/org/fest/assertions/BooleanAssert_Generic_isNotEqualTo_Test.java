@@ -25,22 +25,22 @@ package org.fest.assertions;
 public class BooleanAssert_Generic_isNotEqualTo_Test extends GenericAssert_isNotEqualTo_TestBase<Boolean> {
 
   @Override
-  protected Boolean createActualValueEight() {
+  protected Boolean eight() {
     return true;
   }
 
   @Override
-  protected Boolean createActualValueZero() {
+  protected Boolean zero() {
     return false;
   }
 
   @Override
-  protected BooleanAssert createAssertionForActualValue(Boolean actual) {
+  protected BooleanAssert assertionFor(Boolean actual) {
     return new BooleanAssert(actual);
   }
 
   @Override
-  protected String messageStringRepresentingEight() {
+  protected String eightAsString() {
     return "true";
   }
 

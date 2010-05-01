@@ -25,22 +25,22 @@ package org.fest.assertions;
 public class CharAssert_Generic_isNotEqualTo_Test extends GenericAssert_isNotEqualTo_TestBase<Character> {
 
   @Override
-  protected Character createActualValueEight() {
+  protected Character eight() {
     return '8';
   }
 
   @Override
-  protected Character createActualValueZero() {
+  protected Character zero() {
     return '0';
   }
 
   @Override
-  protected CharAssert createAssertionForActualValue(Character actual) {
+  protected CharAssert assertionFor(Character actual) {
     return new CharAssert(actual);
   }
 
   @Override
-  protected String messageStringRepresentingEight() {
+  protected String eightAsString() {
     return "8";
   }
 

@@ -25,22 +25,17 @@ package org.fest.assertions;
 public class CharAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSatisfy_TestBase<Character> {
 
   @Override
-  protected NotNull<Character> createNotNullCondition() {
-    return NotNull.instance();
-  }
-
-  @Override
-  protected CharAssert createInstanceFromNullReference() {
-    return new CharAssert(null);
-  }
-
-  @Override
-  protected CharAssert createInstanceRepresentingZero() {
-    return new CharAssert('0');
-  }
-
-  @Override
-  protected String createStringRepresentationOfZero() {
+  protected String zeroAsString() {
     return "0";
+  }
+
+  @Override
+  protected Character zero() {
+    return '0';
+  }
+
+  @Override
+  protected CharAssert assertionFor(Character actual) {
+    return new CharAssert(actual);
   }
 }

@@ -16,41 +16,41 @@
 
 package org.fest.assertions;
 
-import org.fest.test.CodeToTest;
-import org.junit.Test;
-
 import static org.fest.assertions.CommonFailures.expectErrorIfConditionIsNull;
 import static org.fest.test.ExpectedFailure.expectAssertionError;
 
+import org.junit.Test;
+import org.fest.test.CodeToTest;
+
 /**
  * Base class for testing {@link org.fest.assertions.GenericAssert#is(Condition)}.
- *
- * This class implements the algorithms which must be performed to test <code>is</code> as template methods
- * and uses implementations of the abstract methods in subclasses to derive concrete tests.
+ * <p/>
+ * This class implements the algorithms which must be performed to test <code>is</code> as template methods and uses
+ * implementations of the abstract methods in subclasses to derive concrete tests.
  *
  * @author Ansgar Konermann
  */
 
-public abstract class GenericAssert_is_TestBase<T> implements GenericAssert_satisfies_TestCase {
+public abstract class GenericAssert_is_TestBase<VALUE_TYPE> implements GenericAssert_satisfies_TestCase {
 
-  protected NotNull<T> createNotNullCondition() {
+  protected abstract VALUE_TYPE one();
+
+  protected abstract GenericAssert<VALUE_TYPE> assertionFor(VALUE_TYPE actual);
+
+  protected NotNull<VALUE_TYPE> notNull() {
     return NotNull.instance();
   }
 
-  protected abstract GenericAssert<T> createInstanceRepresentingOne();
-
-  protected abstract GenericAssert<T> createInstanceFromNullReference();
-
   @Test
   public void should_pass_if_condition_is_satisfied() {
-    createInstanceRepresentingOne().is(createNotNullCondition());
+    assertionFor(one()).is(notNull());
   }
 
   @Test
   public void should_throw_error_if_condition_is_null() {
     expectErrorIfConditionIsNull().on(new CodeToTest() {
       public void run() {
-        createInstanceRepresentingOne().is(null);
+        assertionFor(one()).is(null);
       }
     });
   }
@@ -59,7 +59,7 @@ public abstract class GenericAssert_is_TestBase<T> implements GenericAssert_sati
   public void should_fail_if_condition_is_not_satisfied() {
     expectAssertionError("actual value:<null> should be:<NotNull>").on(new CodeToTest() {
       public void run() {
-        createInstanceFromNullReference().is(createNotNullCondition());
+        assertionFor(null).is(notNull());
       }
     });
   }
@@ -68,8 +68,8 @@ public abstract class GenericAssert_is_TestBase<T> implements GenericAssert_sati
   public void should_fail_and_display_description_of_assertion_if_condition_is_not_satisfied() {
     expectAssertionError("[A Test] actual value:<null> should be:<NotNull>").on(new CodeToTest() {
       public void run() {
-        createInstanceFromNullReference().as("A Test")
-          .is(createNotNullCondition());
+        assertionFor(null).as("A Test")
+          .is(notNull());
       }
     });
   }
@@ -78,7 +78,7 @@ public abstract class GenericAssert_is_TestBase<T> implements GenericAssert_sati
   public void should_fail_and_display_description_of_condition_if_condition_is_not_satisfied() {
     expectAssertionError("actual value:<null> should be:<non-null>").on(new CodeToTest() {
       public void run() {
-        createInstanceFromNullReference().is(createNotNullCondition().as("non-null"));
+        assertionFor(null).is(notNull().as("non-null"));
       }
     });
   }
@@ -87,8 +87,8 @@ public abstract class GenericAssert_is_TestBase<T> implements GenericAssert_sati
   public void should_fail_and_display_descriptions_of_assertion_and_condition_if_condition_is_not_satisfied() {
     expectAssertionError("[A Test] actual value:<null> should be:<non-null>").on(new CodeToTest() {
       public void run() {
-        createInstanceFromNullReference().as("A Test")
-          .is(createNotNullCondition().as("non-null"));
+        assertionFor(null).as("A Test")
+          .is(notNull().as("non-null"));
       }
     });
   }
@@ -97,8 +97,7 @@ public abstract class GenericAssert_is_TestBase<T> implements GenericAssert_sati
   public void should_fail_with_custom_message_if_condition_is_not_satisfied() {
     expectAssertionError("My custom message").on(new CodeToTest() {
       public void run() {
-        createInstanceFromNullReference().overridingErrorMessage("My custom message")
-          .is(createNotNullCondition());
+        assertionFor(null).overridingErrorMessage("My custom message").is(notNull());
       }
     });
   }
@@ -107,9 +106,7 @@ public abstract class GenericAssert_is_TestBase<T> implements GenericAssert_sati
   public void should_fail_with_custom_message_ignoring_description_of_assertion_if_condition_is_not_satisfied() {
     expectAssertionError("My custom message").on(new CodeToTest() {
       public void run() {
-        createInstanceFromNullReference().as("A Test")
-          .overridingErrorMessage("My custom message")
-          .is(createNotNullCondition());
+        assertionFor(null).as("A Test").overridingErrorMessage("My custom message").is(notNull());
       }
     });
   }
@@ -118,8 +115,7 @@ public abstract class GenericAssert_is_TestBase<T> implements GenericAssert_sati
   public void should_fail_with_custom_message_ignoring_description_of_condition_if_condition_is_not_satisfied() {
     expectAssertionError("My custom message").on(new CodeToTest() {
       public void run() {
-        createInstanceFromNullReference().overridingErrorMessage("My custom message")
-          .is(createNotNullCondition().as("non-null"));
+        assertionFor(null).overridingErrorMessage("My custom message").is(notNull().as("non-null"));
       }
     });
   }

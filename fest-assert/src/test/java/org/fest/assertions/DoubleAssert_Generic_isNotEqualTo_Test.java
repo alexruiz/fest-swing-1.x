@@ -25,22 +25,22 @@ package org.fest.assertions;
 public class DoubleAssert_Generic_isNotEqualTo_Test extends GenericAssert_isNotEqualTo_TestBase<Double> {
 
   @Override
-  protected Double createActualValueEight() {
+  protected Double eight() {
     return 8.0d;
   }
 
   @Override
-  protected Double createActualValueZero() {
+  protected Double zero() {
     return 0.0d;
   }
 
   @Override
-  protected DoubleAssert createAssertionForActualValue(Double actual) {
+  protected DoubleAssert assertionFor(Double actual) {
     return new DoubleAssert(actual);
   }
 
   @Override
-  protected String messageStringRepresentingEight() {
+  protected String eightAsString() {
     return "8.0";
   }
 

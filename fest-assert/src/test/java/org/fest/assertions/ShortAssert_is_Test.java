@@ -25,13 +25,13 @@ package org.fest.assertions;
 public class ShortAssert_is_Test extends GenericAssert_is_TestBase<Short> {
 
   @Override
-  protected ShortAssert createInstanceRepresentingOne() {
-    return new ShortAssert((short) 1);
+  protected Short one() {
+    return (short) 1;
   }
 
   @Override
-  protected ShortAssert createInstanceFromNullReference() {
-    return new ShortAssert(null);
+  protected ShortAssert assertionFor(Short actual) {
+    return new ShortAssert(actual);
   }
 
 }

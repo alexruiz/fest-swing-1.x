@@ -17,12 +17,13 @@
 package org.fest.assertions;
 
 /**
- * Test ensuring that {@link org.fest.assertions.DoubleAssert} obeys the {@link org.fest.assertions.GenericAssert#isNotSameAs(Object)} contract for {@link Double}.
+ * Test ensuring that {@link org.fest.assertions.DoubleAssert} obeys the {@link org.fest.assertions.GenericAssert#isNotSameAs(Object)}
+ * contract for {@link Double}.
  */
 public class DoubleAssert_Generic_isNotSameAs_Test extends GenericAssert_isNotSameAs_TestBase<Double> {
 
   @Override
-  protected Double createNewEight() {
+  protected Double createEight() {
     return new Double(8.0d);
   }
 
@@ -32,7 +33,7 @@ public class DoubleAssert_Generic_isNotSameAs_Test extends GenericAssert_isNotSa
   }
 
   @Override
-  protected DoubleAssert newAssertion(Double actual) {
+  protected DoubleAssert assertionFor(Double actual) {
     return new DoubleAssert(actual);
   }
 }

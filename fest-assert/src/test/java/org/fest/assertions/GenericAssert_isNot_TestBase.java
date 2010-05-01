@@ -30,68 +30,64 @@ import org.fest.test.CodeToTest;
  *
  * @author Ansgar Konermann
  */
-// TODO konermann: refactor to a common naming scheme for all abstract methods
-// TODO konermann: review javadoc of all *_TestBase classes to match a common format and content.
-public abstract class GenericAssert_isNot_TestBase<T> implements GenericAssert_doesNotSatisfy_TestCase {
+public abstract class GenericAssert_isNot_TestBase<VALUE_TYPE> implements GenericAssert_doesNotSatisfy_TestCase {
 
-  protected abstract NotNull<T> createNotNullCondition();
+  protected abstract VALUE_TYPE zero();
 
-  protected abstract GenericAssert<T> createInstanceFromNullReference();
+  protected abstract String zeroAsString();
 
-  protected abstract GenericAssert<T> createInstanceRepresentingZero();
+  protected abstract GenericAssert<VALUE_TYPE> assertionFor(VALUE_TYPE actual);
 
-  protected abstract String createStringRepresentationOfZero();
-
-  private String ZERO() { return createStringRepresentationOfZero(); }
+  protected NotNull<VALUE_TYPE> notNull() {
+    return NotNull.instance();
+  }
 
   @Test
   public void should_pass_if_condition_is_not_satisfied() {
-    createInstanceFromNullReference().isNot(createNotNullCondition());
+    assertionFor(null).isNot(notNull());
   }
 
   @Test
   public void should_throw_error_if_condition_is_null() {
     expectErrorIfConditionIsNull().on(new CodeToTest() {
       public void run() {
-        createInstanceRepresentingZero().isNot(null);
+        assertionFor(zero()).isNot(null);
       }
     });
   }
 
   @Test
   public void should_fail_if_condition_is_satisfied() {
-    expectAssertionError("actual value:<" + ZERO() + "> should not be:<NotNull>").on(new CodeToTest() {
+    expectAssertionError("actual value:<" + zeroAsString() + "> should not be:<NotNull>").on(new CodeToTest() {
       public void run() {
-        createInstanceRepresentingZero().isNot(createNotNullCondition());
+        assertionFor(zero()).isNot(notNull());
       }
     });
   }
 
   @Test
   public void should_fail_and_display_description_of_assertion_if_condition_is_satisfied() {
-    expectAssertionError("[A Test] actual value:<" + ZERO() + "> should not be:<NotNull>").on(new CodeToTest() {
+    expectAssertionError("[A Test] actual value:<" + zeroAsString() + "> should not be:<NotNull>").on(new CodeToTest() {
       public void run() {
-        createInstanceRepresentingZero().as("A Test")
-          .isNot(createNotNullCondition());
+        assertionFor(zero()).as("A Test").isNot(notNull());
       }
     });
   }
 
   @Test
   public void should_fail_and_display_description_of_condition_if_condition_is_satisfied() {
-    expectAssertionError("actual value:<" + ZERO() + "> should not be:<Not Null>").on(new CodeToTest() {
+    expectAssertionError("actual value:<" + zeroAsString() + "> should not be:<Not Null>").on(new CodeToTest() {
       public void run() {
-        createInstanceRepresentingZero().isNot(createNotNullCondition().as("Not Null"));
+        assertionFor(zero()).isNot(notNull().as("Not Null"));
       }
     });
   }
 
   @Test
   public void should_fail_and_display_descriptions_of_assertion_and_condition_if_condition_is_satisfied() {
-    expectAssertionError("[A Test] actual value:<" + ZERO() + "> should not be:<Not Null>").on(new CodeToTest() {
+    expectAssertionError("[A Test] actual value:<" + zeroAsString() + "> should not be:<Not Null>").on(new CodeToTest() {
       public void run() {
-        createInstanceRepresentingZero().as("A Test")
-          .isNot(createNotNullCondition().as("Not Null"));
+        assertionFor(zero()).as("A Test").isNot(notNull().as("Not Null"));
       }
     });
   }
@@ -100,8 +96,7 @@ public abstract class GenericAssert_isNot_TestBase<T> implements GenericAssert_d
   public void should_fail_with_custom_message_if_condition_is_satisfied() {
     expectAssertionError("My custom message").on(new CodeToTest() {
       public void run() {
-        createInstanceRepresentingZero().overridingErrorMessage("My custom message")
-          .isNot(createNotNullCondition());
+        assertionFor(zero()).overridingErrorMessage("My custom message").isNot(notNull());
       }
     });
   }
@@ -110,9 +105,7 @@ public abstract class GenericAssert_isNot_TestBase<T> implements GenericAssert_d
   public void should_fail_with_custom_message_ignoring_description_of_assertion_if_condition_is_satisfied() {
     expectAssertionError("My custom message").on(new CodeToTest() {
       public void run() {
-        createInstanceRepresentingZero().as("A Test")
-          .overridingErrorMessage("My custom message")
-          .isNot(createNotNullCondition());
+        assertionFor(zero()).as("A Test").overridingErrorMessage("My custom message").isNot(notNull());
       }
     });
   }
@@ -121,8 +114,7 @@ public abstract class GenericAssert_isNot_TestBase<T> implements GenericAssert_d
   public void should_fail_with_custom_message_ignoring_description_of_condition_if_condition_is_satisfied() {
     expectAssertionError("My custom message").on(new CodeToTest() {
       public void run() {
-        createInstanceRepresentingZero().overridingErrorMessage("My custom message")
-          .isNot(createNotNullCondition().as("Not Null"));
+        assertionFor(zero()).overridingErrorMessage("My custom message").isNot(notNull().as("Not Null"));
       }
     });
   }

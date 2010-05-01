@@ -23,25 +23,25 @@ package org.fest.assertions;
  * @author Ansgar Konermann
  */
 
-public class CharAssert_Generic_isEqualTo_Test extends GenericAssert_isEqualTo_TestBase<Character, CharAssert> {
+public class CharAssert_Generic_isEqualTo_Test extends GenericAssert_isEqualTo_TestBase<Character> {
 
-  protected Character actualValueX() {
+  protected Character eight() {
     return '1';
   }
 
-  protected Character actualValueY() {
+  protected Character nine() {
     return '2';
   }
 
-  protected String messageStringRepresentingX() {
+  protected String eightAsString() {
     return "[1]";
   }
 
-  protected String messageStringRepresentingY() {
+  protected String nineAsString() {
     return "[2]";
   }
 
-  protected CharAssert createAssertForActual(Character actual) {
+  protected CharAssert assertionFor(Character actual) {
     return new CharAssert(actual);
   }
 }

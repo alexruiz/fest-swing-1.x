@@ -25,22 +25,22 @@ package org.fest.assertions;
 public class ShortAssert_Generic_isNotEqualTo_Test extends GenericAssert_isNotEqualTo_TestBase<Short> {
 
   @Override
-  protected Short createActualValueEight() {
+  protected Short eight() {
     return (short) 8;
   }
 
   @Override
-  protected Short createActualValueZero() {
+  protected Short zero() {
     return 0;
   }
 
   @Override
-  protected ShortAssert createAssertionForActualValue(Short actual) {
+  protected ShortAssert assertionFor(Short actual) {
     return new ShortAssert(actual);
   }
 
   @Override
-  protected String messageStringRepresentingEight() {
+  protected String eightAsString() {
     return "8";
   }
 

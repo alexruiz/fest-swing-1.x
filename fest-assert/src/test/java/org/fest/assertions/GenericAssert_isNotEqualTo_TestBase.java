@@ -16,10 +16,10 @@
 
 package org.fest.assertions;
 
-import org.fest.test.CodeToTest;
-import org.junit.Test;
-
 import static org.fest.test.ExpectedFailure.expectAssertionError;
+
+import org.junit.Test;
+import org.fest.test.CodeToTest;
 
 /**
  * Base class for testing {@link org.fest.assertions.GenericAssert#isNotEqualTo(Object)}.
@@ -29,61 +29,46 @@ import static org.fest.test.ExpectedFailure.expectAssertionError;
  *
  * @author Ansgar Konermann
  */
-public abstract class GenericAssert_isNotEqualTo_TestBase<VALUE_CLASS> implements Assert_isNotEqualTo_TestCase {
+public abstract class GenericAssert_isNotEqualTo_TestBase<VALUE_TYPE> implements Assert_isNotEqualTo_TestCase {
 
-  protected abstract VALUE_CLASS createActualValueEight();
+  protected abstract VALUE_TYPE zero();
 
-  protected abstract VALUE_CLASS createActualValueZero();
+  protected abstract VALUE_TYPE eight();
 
-  protected abstract GenericAssert<VALUE_CLASS> createAssertionForActualValue(VALUE_CLASS actual);
+  protected abstract String eightAsString();
 
-  protected abstract String messageStringRepresentingEight();
-
-  private VALUE_CLASS eight() {
-    return createActualValueEight();
-  }
-
-  private VALUE_CLASS zero() {
-    return createActualValueZero();
-  }
-
-  private String EIGHT_STRING() {
-    return messageStringRepresentingEight();
-  }
-
-  private GenericAssert<VALUE_CLASS> createAssertion(VALUE_CLASS actual) {
-    return createAssertionForActualValue(actual);
-  }
-
+  protected abstract GenericAssert<VALUE_TYPE> assertionFor(VALUE_TYPE actual);
 
   @Test
   public void should_pass_if_actual_and_expected_are_not_equal() {
-    createAssertion(eight()).isNotEqualTo(zero());
+    assertionFor(eight()).isNotEqualTo(zero());
   }
 
   @Test
   public void should_fail_if_actual_and_expected_are_equal() {
-    expectAssertionError("actual value:<" + EIGHT_STRING() + "> should not be equal to:<" + EIGHT_STRING() + ">").on(new CodeToTest() {
+    expectAssertionError("actual value:<" + eightAsString() + "> should not be equal to:<" + eightAsString() + ">")
+      .on(new CodeToTest() {
         public void run() {
-          createAssertion(eight()).isNotEqualTo(eight());
+          assertionFor(eight()).isNotEqualTo(eight());
         }
       });
   }
 
   @Test
   public void should_fail_and_display_description_of_assertion_if_actual_and_expected_are_equal() {
-    expectAssertionError("[A Test] actual value:<"+EIGHT_STRING()+"> should not be equal to:<"+EIGHT_STRING()+">").on(new CodeToTest() {
-      public void run() {
-        createAssertion(eight()).as("A Test").isNotEqualTo(eight());
-      }
-    });
+    expectAssertionError("[A Test] actual value:<" + eightAsString() + "> should not be equal to:<" + eightAsString() + ">")
+      .on(new CodeToTest() {
+        public void run() {
+          assertionFor(eight()).as("A Test").isNotEqualTo(eight());
+        }
+      });
   }
 
   @Test
   public void should_fail_with_custom_message_if_actual_and_expected_are_equal() {
     expectAssertionError("My custom message").on(new CodeToTest() {
       public void run() {
-        createAssertion(eight()).overridingErrorMessage("My custom message").isNotEqualTo(eight());
+        assertionFor(eight()).overridingErrorMessage("My custom message").isNotEqualTo(eight());
       }
     });
   }
@@ -92,7 +77,7 @@ public abstract class GenericAssert_isNotEqualTo_TestBase<VALUE_CLASS> implement
   public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_and_expected_are_equal() {
     expectAssertionError("My custom message").on(new CodeToTest() {
       public void run() {
-        createAssertion(eight()).as("A Test").overridingErrorMessage("My custom message").isNotEqualTo(eight());
+        assertionFor(eight()).as("A Test").overridingErrorMessage("My custom message").isNotEqualTo(eight());
       }
     });
   }
