@@ -15,10 +15,8 @@
  */
 package org.fest.keyboard.mapping;
 
-import static java.awt.Desktop.isDesktopSupported;
 import static java.util.Calendar.YEAR;
 
-import java.awt.Font;
 import java.util.GregorianCalendar;
 
 /**
@@ -30,6 +28,9 @@ public class AboutDialog extends javax.swing.JDialog {
 
   private static final long serialVersionUID = 1L;
 
+  private final Platform platform = Platform.instance();
+  private final Messages messages = new Messages();
+
   /**
    * Creates a new </code>{@link AboutDialog}</code>.
    * @param parent the parent frame.
@@ -38,35 +39,35 @@ public class AboutDialog extends javax.swing.JDialog {
   public AboutDialog(java.awt.Frame parent, boolean modal) {
     super(parent, modal);
     initComponents();
+    updateDescriptionPane();
+  }
+
+  private void updateDescriptionPane() {
     updateAboutText();
-    descriptionPane.addHyperlinkListener(new BrowseUrlHyperlinkListener());
+    BrowseUrlHyperlinkListener.install(descriptionPane, platform);
   }
 
   private void updateAboutText() {
-    Font font = logoLabel.getFont();
     StringBuilder b = new StringBuilder();
-    b.append("<html><head></head><body style=\"")
-     .append("font-family:'").append(font.getFamily()).append("';")
-     .append("font-size:").append(font.getSize()).append(";")
-     .append("\">")
+    b.append("<html><head></head><body style=\"").append(fontStyle()).append("\">")
      .append("<strong>FEST Keyboard Mapping Tool</strong>")
-     .append("<p>Copyright @").append(copyrightYear()).append(" FEST<br/> (Fixtures for Easy Software Testing)<br/></p>")
-     .append("<p>").append(linkFor("http://fest.easytesting.org")).append("</p>")
+     .append("<p>Copyright @").append(copyrightYears()).append(" FEST<br/>")
+     .append("(Fixtures for Easy Software Testing)<br/></p>")
+     .append("<p>").append(hyperlinkFor("http://fest.easytesting.org")).append("</p>")
      .append("</body></html>");
     descriptionPane.setText(b.toString());
   }
 
-  private static String copyrightYear() {
-    StringBuilder b = new StringBuilder();
-    b.append(2007).append("-").append(new GregorianCalendar().get(YEAR));
-    return b.toString();
+  private String fontStyle() {
+    return messages.fontStyleAsCSS(logoLabel.getFont());
   }
 
-  private static String linkFor(String url) {
-    if (!isDesktopSupported()) return url;
-    StringBuilder b = new StringBuilder();
-    b.append("<a href=\"").append(url).append("\">").append(url).append("</a>");
-    return b.toString();
+  private String copyrightYears() {
+    return messages.copyrightYears(new GregorianCalendar().get(YEAR));
+  }
+
+  private String hyperlinkFor(String url) {
+    return messages.hyperlink(platform, url);
   }
 
   /** This method is called from within the constructor to

@@ -1,5 +1,5 @@
 /*
- * Created on Apr 8, 2010
+ * Created on May 1, 2010
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -15,22 +15,20 @@
  */
 package org.fest.keyboard.mapping;
 
-import java.io.File;
-import javax.swing.filechooser.FileFilter;
+import java.awt.Desktop;
 
 /**
- * Understands a file filter for text files.
+ * Understands a provider of <code>{@link Desktop}</code>s.
  *
  * @author Alex Ruiz
  */
-class TextFileFilter extends FileFilter {
+class DesktopProvider {
 
-  @Override public boolean accept(File f) {
-    return f != null && f.getName().endsWith(".txt");
+  boolean supportsDesktop() {
+    return Desktop.isDesktopSupported();
   }
 
-  @Override public String getDescription() {
-    return "Text Files (*.txt)";
+  Desktop desktop() {
+    return Desktop.getDesktop();
   }
-
 }

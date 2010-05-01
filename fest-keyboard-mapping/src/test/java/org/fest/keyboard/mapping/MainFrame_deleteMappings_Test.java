@@ -20,7 +20,6 @@ import static org.fest.swing.core.KeyPressInfo.keyCode;
 
 import org.fest.swing.annotation.GUITest;
 import org.fest.swing.fixture.JMenuItemFixture;
-import org.fest.swing.fixture.JTableFixture;
 import org.junit.Test;
 
 /**
@@ -37,10 +36,16 @@ public class MainFrame_deleteMappings_Test extends MainFrame_TestCase {
     frame.textBox().enterText("a")
                    .enterText("A")
                    .enterText("s");
-    JTableFixture table = frame.table();
-    table.pressAndReleaseKey(keyCode(VK_DELETE))
-         .requireRowCount(2)
-         .requireSelectedRows(1);
+    frame.table().pressAndReleaseKey(keyCode(VK_DELETE))
+                 .requireRowCount(2)
+                 .requireSelectedRows(1);
+    deleteSelectedRowsMenu().requireEnabled();
+  }
+
+  @Test
+  public void should_disable_delete_menu_if_no_rows_left() {
+    frame.textBox().enterText("a");
+    frame.table().pressAndReleaseKey(keyCode(VK_DELETE));
     deleteSelectedRowsMenu().requireDisabled();
   }
 

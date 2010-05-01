@@ -52,8 +52,7 @@ public class MainFrame extends javax.swing.JFrame {
   }
 
   private void setUpForMacOS() {
-    if (!isMacOS()) return;
-    helpMenu.setVisible(false);
+    helpMenu.setVisible(!isMacOS());
   }
 
   /** This method is called from within the constructor to

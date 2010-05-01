@@ -1,5 +1,5 @@
 /*
- * Created on Apr 8, 2010
+ * Created on May 1, 2010
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -15,22 +15,32 @@
  */
 package org.fest.keyboard.mapping;
 
-import java.io.File;
-import javax.swing.filechooser.FileFilter;
+import static java.awt.Font.PLAIN;
+import static org.fest.assertions.Assertions.assertThat;
+
+import java.awt.Font;
+
+import org.junit.BeforeClass;
+import org.junit.Test;
 
 /**
- * Understands a file filter for text files.
+ * Tests for <code>{@link Messages#fontStyleAsCSS(java.awt.Font)}</code>.
  *
  * @author Alex Ruiz
  */
-class TextFileFilter extends FileFilter {
+public class Messages_fontStyleAsCSS_Test {
 
-  @Override public boolean accept(File f) {
-    return f != null && f.getName().endsWith(".txt");
+  private static Messages messages;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    messages = new Messages();
   }
 
-  @Override public String getDescription() {
-    return "Text Files (*.txt)";
+  @Test
+  public void should_return_font_style_as_CSS() {
+    Font font = new Font("Courier New", PLAIN, 10);
+    String msg = messages.fontStyleAsCSS(font);
+    assertThat(msg).isEqualTo("font-family:'Courier New';font-size:10;");
   }
-
 }

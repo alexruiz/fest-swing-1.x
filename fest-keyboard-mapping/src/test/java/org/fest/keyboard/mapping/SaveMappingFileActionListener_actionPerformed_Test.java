@@ -59,14 +59,14 @@ public class SaveMappingFileActionListener_actionPerformed_Test extends RobotBas
   @Test
   public void should_save_mappings_as_file() {
     new EasyMockTemplate(fileChooser, fileFactory) {
-      protected void expectations() throws Exception {
+      @Override protected void expectations() throws Exception {
         File file = new File("New File.txt");
         expect(fileChooser.fileToSave()).andReturn(file);
         fileFactory.createMappingFile(file, mappings);
         expectLastCall();
       }
 
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         frameFixture.button().click();
         JOptionPaneFixture optionPane = findOptionPane().using(robot);
         optionPane.requireInformationMessage()
@@ -78,11 +78,11 @@ public class SaveMappingFileActionListener_actionPerformed_Test extends RobotBas
   @Test
   public void should_not_save_mappings_if_file_is_null() {
     new EasyMockTemplate(fileChooser, fileFactory) {
-      protected void expectations() throws Exception {
+      @Override protected void expectations() throws Exception {
         expect(fileChooser.fileToSave()).andReturn(null);
       }
 
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         frameFixture.button().click();
         robot.requireNoJOptionPaneIsShowing();
       }
@@ -92,14 +92,14 @@ public class SaveMappingFileActionListener_actionPerformed_Test extends RobotBas
   @Test
   public void should_show_error_message_in_case_of_failure() {
     new EasyMockTemplate(fileChooser, fileFactory) {
-      protected void expectations() throws Exception {
+      @Override protected void expectations() throws Exception {
         File file = new File("New File.txt");
         expect(fileChooser.fileToSave()).andReturn(file);
         fileFactory.createMappingFile(file, mappings);
         expectLastCall().andThrow(new IOException("Cannot save mock file"));
       }
 
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         frameFixture.button().click();
         JOptionPaneFixture optionPane = findOptionPane().using(robot);
         optionPane.requireErrorMessage()
@@ -114,7 +114,7 @@ public class SaveMappingFileActionListener_actionPerformed_Test extends RobotBas
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
-        protected MyWindow executeInEDT() {
+        @Override protected MyWindow executeInEDT() {
           return new MyWindow();
         }
       });

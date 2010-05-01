@@ -1,5 +1,5 @@
 /*
- * Created on Apr 8, 2010
+ * Created on May 1, 2010
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -15,22 +15,29 @@
  */
 package org.fest.keyboard.mapping;
 
-import java.io.File;
-import javax.swing.filechooser.FileFilter;
+import static org.fest.util.Strings.concat;
+import static org.fest.util.Strings.quote;
+
+import java.net.MalformedURLException;
+import java.net.URL;
+
+import org.fest.swing.exception.UnexpectedException;
 
 /**
- * Understands a file filter for text files.
+ * Understands URLs used for testing.
  *
  * @author Alex Ruiz
  */
-class TextFileFilter extends FileFilter {
+final class URLs {
 
-  @Override public boolean accept(File f) {
-    return f != null && f.getName().endsWith(".txt");
+  static URL FestURL() {
+    String spec = "http://fest.easytesting.org";
+    try {
+      return new URL(spec);
+    } catch (MalformedURLException e) {
+      throw new UnexpectedException(concat("Unable to create URL for ", quote(spec)), e);
+    }
   }
 
-  @Override public String getDescription() {
-    return "Text Files (*.txt)";
-  }
-
+  private URLs() {}
 }

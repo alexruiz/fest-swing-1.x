@@ -1,5 +1,5 @@
 /*
- * Created on Apr 19, 2010
+ * Created on May 1, 2010
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -14,29 +14,28 @@
  */
 package org.fest.keyboard.mapping;
 
-import static org.fest.swing.edt.GuiActionRunner.execute;
+import static org.easymock.classextension.EasyMock.createMock;
 
-import org.fest.swing.edt.GuiQuery;
-import org.fest.swing.fixture.FrameFixture;
-import org.fest.swing.test.core.RobotBasedTestCase;
+import java.awt.Desktop;
+
+import org.junit.Before;
 
 /**
- * Base class for tests for <code>{@link MainFrame}</code>.
+ * Base class for tests for <code>{@link Platform}</code>.
  *
- * @author Yvonne Wang
+ * @author Alex Ruiz
  */
-public class MainFrame_TestCase extends RobotBasedTestCase {
+public class Platform_TestCase {
 
-  protected FrameFixture frame;
+  DesktopProvider provider;
+  Desktop desktop;
+  Platform platform;
 
-  @Override protected void onSetUp() {
-    MainFrame mainFrame = execute(new GuiQuery<MainFrame>() {
-      @Override protected MainFrame executeInEDT() {
-        return new MainFrame();
-      }
-    });
-    frame = new FrameFixture(robot, mainFrame);
-    frame.show();
+  @Before
+  public void setUp() {
+    provider = createMock(DesktopProvider.class);
+    desktop = createMock(Desktop.class);
+    platform = new Platform(provider);
   }
 
 }

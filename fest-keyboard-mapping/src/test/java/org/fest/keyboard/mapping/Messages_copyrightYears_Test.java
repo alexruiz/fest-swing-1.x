@@ -1,5 +1,5 @@
 /*
- * Created on Apr 8, 2010
+ * Created on May 1, 2010
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -15,22 +15,28 @@
  */
 package org.fest.keyboard.mapping;
 
-import java.io.File;
-import javax.swing.filechooser.FileFilter;
+import static org.fest.assertions.Assertions.assertThat;
+
+import org.junit.BeforeClass;
+import org.junit.Test;
 
 /**
- * Understands a file filter for text files.
+ * Tests for <code>{@link Messages#copyrightYears(int)}</code>.
  *
  * @author Alex Ruiz
  */
-class TextFileFilter extends FileFilter {
+public class Messages_copyrightYears_Test {
 
-  @Override public boolean accept(File f) {
-    return f != null && f.getName().endsWith(".txt");
+  private static Messages messages;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    messages = new Messages();
   }
 
-  @Override public String getDescription() {
-    return "Text Files (*.txt)";
+  @Test
+  public void should_return_copyright_years() {
+    String msg = messages.copyrightYears(2010);
+    assertThat(msg).isEqualTo("2007-2010");
   }
-
 }
