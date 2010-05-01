@@ -29,14 +29,16 @@ import com.apple.mrj.MRJAboutHandler;
  */
 class MacSupport {
 
+  private final SystemProperties systemProperties;
+
   void setUpForMacOS() {
     if (!isMacOS()) return;
-    System.setProperty("apple.laf.useScreenMenuBar", "true");
-    System.setProperty("com.apple.mrj.application.apple.menu.about.name", "FEST Keyboard Mapping Tool");
+    systemProperties.set("apple.laf.useScreenMenuBar", "true");
+    systemProperties.set("com.apple.mrj.application.apple.menu.about.name", "FEST Keyboard Mapping Tool");
   }
 
   boolean isMacOS() {
-    return System.getProperty("os.name").startsWith("Mac") || System.getProperty("mrj.version") != null;
+    return systemProperties.get("os.name").startsWith("Mac") || systemProperties.get("mrj.version") != null;
   }
 
   void register(MRJAboutHandler h) {
@@ -52,5 +54,12 @@ class MacSupport {
   }
 
   @VisibleForTesting
-  MacSupport() {}
+  MacSupport() {
+    this(new SystemProperties());
+  }
+
+  @VisibleForTesting
+  MacSupport(SystemProperties systemProperties) {
+    this.systemProperties = systemProperties;
+  }
 }

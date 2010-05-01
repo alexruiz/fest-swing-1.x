@@ -25,14 +25,14 @@ import org.junit.Before;
  *
  * @author Alex Ruiz
  */
-public class Platform_TestCase {
+public abstract class Platform_TestCase {
 
   DesktopProvider provider;
   Desktop desktop;
   Platform platform;
 
   @Before
-  public void setUp() {
+  public final void setUp() {
     provider = createMock(DesktopProvider.class);
     desktop = createMock(Desktop.class);
     platform = new Platform(provider);
