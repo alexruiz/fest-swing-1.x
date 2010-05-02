@@ -15,6 +15,8 @@
  */
 package org.fest.keyboard.mapping;
 
+import static org.fest.util.Strings.concat;
+
 /**
  * Understands a panel that displays the progress made when saving a mapping file.
  *
@@ -42,6 +44,8 @@ public class CharMappingCreationProgressPanel extends javax.swing.JPanel {
 
     progressLabel.setText("Saving file");
 
+    progressBar.setStringPainted(true);
+
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
     this.setLayout(layout);
     layout.setHorizontalGroup(
@@ -68,12 +72,14 @@ public class CharMappingCreationProgressPanel extends javax.swing.JPanel {
   private javax.swing.JLabel progressLabel;
   // End of variables declaration//GEN-END:variables
 
-  void updateProgress(int progress) {
-    progressBar.setValue(progress);
+  void updateMappingCount(final int mappingCount) {
+    progressBar.setMaximum(mappingCount);
+    updateProgress(0);
   }
 
-  void updateMappingCount(int mappingCount) {
-    progressBar.setMaximum(mappingCount);
-    progressBar.setValue(0);
+  void updateProgress(int progress) {
+    progressBar.setValue(progress);
+    int percent = progress * 100 / progressBar.getMaximum();
+    progressBar.setString(concat(percent, "%"));
   }
 }

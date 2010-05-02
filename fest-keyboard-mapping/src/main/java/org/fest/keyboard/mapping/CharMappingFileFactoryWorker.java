@@ -20,13 +20,15 @@ import java.util.List;
 
 import javax.swing.SwingWorker;
 
+import static javax.swing.SwingUtilities.invokeLater;
+
 /**
- * Understands SOMETHING DUMMY.
- *
- * @author 
- *
+ * Understands a <code>{@link SwingWorker}</code> that displays the progress of saving a file using a
+ * <code>{@link CharMappingFileFactory}</code>.
+ * 
+ * @author Alex Ruiz
  */
-class CharMappingFileFactoryWorker extends SwingWorker<Void, Integer> implements FileCreationListener {
+class CharMappingFileFactoryWorker extends SwingWorker<Void, Integer> implements CharMappingFileCreationListener {
 
   private final File file;
   private final CharMappingTableModel model;
@@ -47,10 +49,6 @@ class CharMappingFileFactoryWorker extends SwingWorker<Void, Integer> implements
     return null;
   }
 
-  @Override protected void done() {
-    System.out.println("done");
-  }
-
   @Override
   protected void process(List<Integer> chunks) {
     if (chunks.isEmpty()) return;
@@ -58,13 +56,17 @@ class CharMappingFileFactoryWorker extends SwingWorker<Void, Integer> implements
     progressPanel.updateProgress(last);
   }
   
-  @Override public void creationStarted(int mappingCount) {
-    progressPanel.updateMappingCount(mappingCount);
+  @Override protected void done() {}
+  
+  @Override public void creationStarted(final int mappingCount) {
+    invokeLater(new Runnable() {
+      @Override public void run() {
+        progressPanel.updateMappingCount(mappingCount);
+      }
+    });
   }
 
   @Override public void charMappingsProcessed(int count) {
     publish(count);
   }
-
-  @Override public void creationFinished() {}
 }

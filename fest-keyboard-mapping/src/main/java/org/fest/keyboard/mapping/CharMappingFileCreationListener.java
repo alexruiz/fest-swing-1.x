@@ -20,11 +20,9 @@ package org.fest.keyboard.mapping;
  *
  * @author Alex Ruiz
  */
-interface FileCreationListener {
+interface CharMappingFileCreationListener {
 
   void creationStarted(int charMappingCount);
   
   void charMappingsProcessed(int count);
-  
-  void creationFinished();
 }

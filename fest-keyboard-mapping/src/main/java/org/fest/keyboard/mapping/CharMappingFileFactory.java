@@ -30,17 +30,17 @@ import static org.fest.util.Flushables.flush;
  */
 class CharMappingFileFactory {
 
-  private final List<FileCreationListener> fileCreationListeners;
+  private final List<CharMappingFileCreationListener> fileCreationListeners;
   
   CharMappingFileFactory() {
-    fileCreationListeners = new CopyOnWriteArrayList<FileCreationListener>();
+    fileCreationListeners = new CopyOnWriteArrayList<CharMappingFileCreationListener>();
   }
   
-  final void add(FileCreationListener l) {
+  final void add(CharMappingFileCreationListener l) {
     fileCreationListeners.add(l);
   }
   
-  final void remove(FileCreationListener l) {
+  final void remove(CharMappingFileCreationListener l) {
     fileCreationListeners.remove(l);
   }
   
@@ -63,13 +63,13 @@ class CharMappingFileFactory {
   
   @VisibleForTesting
   final void notifyCreationStarted(int mappingCount) {
-    for (FileCreationListener l : fileCreationListeners)
+    for (CharMappingFileCreationListener l : fileCreationListeners)
       l.creationStarted(mappingCount);
   }
   
   @VisibleForTesting
   final void notifyMappingsProcessed(int count) {
-    for (FileCreationListener l : fileCreationListeners)
+    for (CharMappingFileCreationListener l : fileCreationListeners)
       l.charMappingsProcessed(count);
   }
 }
