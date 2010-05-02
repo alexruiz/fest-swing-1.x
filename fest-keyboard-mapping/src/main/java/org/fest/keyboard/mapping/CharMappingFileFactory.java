@@ -15,6 +15,10 @@
 package org.fest.keyboard.mapping;
 
 import java.io.*;
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
+
+import org.fest.util.VisibleForTesting;
 
 import static org.fest.util.Closeables.close;
 import static org.fest.util.Flushables.flush;
@@ -26,16 +30,46 @@ import static org.fest.util.Flushables.flush;
  */
 class CharMappingFileFactory {
 
+  private final List<FileCreationListener> fileCreationListeners;
+  
+  CharMappingFileFactory() {
+    fileCreationListeners = new CopyOnWriteArrayList<FileCreationListener>();
+  }
+  
+  final void add(FileCreationListener l) {
+    fileCreationListeners.add(l);
+  }
+  
+  final void remove(FileCreationListener l) {
+    fileCreationListeners.remove(l);
+  }
+  
   void createMappingFile(File file, CharMappingTableModel model) throws IOException {
     PrintWriter writer = null;
     try {
       writer = new PrintWriter(new FileWriter(file));
       int mappingCount = model.rowCount();
-      for (int row = 0; row < mappingCount; row++) 
+      notifyCreationStarted(mappingCount);
+      int processed = 0;
+      for (int row = 0; row < mappingCount; row++) { 
         writer.println(model.mapping(row));
+        notifyMappingsProcessed(++processed);
+      }
     } finally {
       flush(writer);
       close(writer);
     }
+  }
+  
+  @VisibleForTesting
+  final void notifyCreationStarted(int mappingCount) {
+    for (FileCreationListener l : fileCreationListeners)
+      l.creationStarted(mappingCount);
+  }
+  
+  @VisibleForTesting
+  final void notifyMappingsProcessed(int count) {
+    for (FileCreationListener l : fileCreationListeners)
+      l.charMappingsProcessed(count);
   }
 }
