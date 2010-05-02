@@ -27,6 +27,7 @@ import java.awt.Dimension;
 import java.io.File;
 import java.util.concurrent.atomic.AtomicReference;
 
+import org.fest.swing.annotation.GUITest;
 import org.fest.swing.edt.GuiQuery;
 import org.fest.swing.fixture.JFileChooserFixture;
 import org.fest.swing.test.core.RobotBasedTestCase;
@@ -38,6 +39,7 @@ import org.junit.Test;
  *
  * @author Alex Ruiz
  */
+@GUITest
 public class CharMappingFileChooser_fileToSave_Test extends RobotBasedTestCase {
 
   private CharMappingFileChooser fileChooser;

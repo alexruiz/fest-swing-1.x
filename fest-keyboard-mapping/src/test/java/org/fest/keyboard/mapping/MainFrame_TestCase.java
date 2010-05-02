@@ -27,9 +27,9 @@ import org.fest.swing.test.core.RobotBasedTestCase;
  */
 public class MainFrame_TestCase extends RobotBasedTestCase {
 
-  protected FrameFixture frame;
+  FrameFixture frame;
 
-  @Override protected void onSetUp() {
+  @Override protected final void onSetUp() {
     MainFrame mainFrame = execute(new GuiQuery<MainFrame>() {
       @Override protected MainFrame executeInEDT() {
         return new MainFrame();
