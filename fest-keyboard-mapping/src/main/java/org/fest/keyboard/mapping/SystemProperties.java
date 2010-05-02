@@ -16,7 +16,7 @@
 package org.fest.keyboard.mapping;
 
 /**
- * Undestands system properties.
+ * Understands system properties.
  *
  * @author Alex Ruiz
  */

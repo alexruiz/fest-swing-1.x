@@ -23,6 +23,8 @@ import java.io.File;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 
+import org.fest.util.VisibleForTesting;
+
 /**
  * Understands selection of a file to save as mapping file using a <code>{@link JFileChooser}</code>.
  *
@@ -34,15 +36,20 @@ class CharMappingFileChooser implements FileChooser {
   private final JFrame parent;
 
   CharMappingFileChooser(JFrame parent) {
+    this(new JFileChooser(), parent);
+  }
+
+  @VisibleForTesting
+  CharMappingFileChooser(JFileChooser fileChooser, JFrame parent) {
     this.parent = parent;
-    fileChooser = new JFileChooser();
+    this.fileChooser = fileChooser;
     fileChooser.setAcceptAllFileFilterUsed(false);
     fileChooser.setDialogTitle("Save As Mapping File");
     fileChooser.setDialogType(SAVE_DIALOG);
     fileChooser.setFileFilter(new TextFileFilter());
   }
 
-  public File fileToSave() {
+  @Override public File fileToSave() {
     int selection = fileChooser.showSaveDialog(parent);
     if (selection != APPROVE_OPTION) return null;
     return fileChooser.getSelectedFile();
