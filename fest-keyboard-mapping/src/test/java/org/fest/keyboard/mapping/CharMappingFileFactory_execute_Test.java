@@ -58,15 +58,17 @@ public class CharMappingFileFactory_execute_Test extends RobotBasedTestCase {
       }
     });
     worker.get();
+    JLabelFixture label = frame.label();
     final JProgressBarFixture progressBar = frame.progressBar();
     pause(new EdtSafeCondition("file creation is finished") {
       @Override protected boolean testInEDT() {
         return progressBar.component().getValue() == MAPPING_COUNT;
       }
     });
+    label.requireText("Saving file 'temp.txt'");
     progressBar.requireValue(MAPPING_COUNT)
                .requireText("100%");
-    frame.label().requireText("Saving file 'temp.txt'");
+    frame.requireNotVisible();
   }
 
   private static class MyWindow extends TestWindow {
