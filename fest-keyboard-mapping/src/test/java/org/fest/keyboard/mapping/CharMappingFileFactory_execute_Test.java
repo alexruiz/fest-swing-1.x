@@ -20,7 +20,9 @@ import java.io.File;
 import org.junit.Test;
 
 import org.fest.swing.annotation.*;
+import org.fest.swing.core.EdtSafeCondition;
 import org.fest.swing.edt.*;
+import org.fest.swing.fixture.*;
 import org.fest.swing.test.core.RobotBasedTestCase;
 import org.fest.swing.test.swing.TestWindow;
 
@@ -34,29 +36,37 @@ import static org.fest.swing.timing.Pause.pause;
  */
 public class CharMappingFileFactory_execute_Test extends RobotBasedTestCase {
 
-  private MyWindow window;
+  private static final int MAPPING_COUNT = 10;
+  
+  private FrameFixture frame;
   private CharMappingFileFactoryStub fileFactory;
   private CharMappingFileFactoryWorker worker;
   
   @Override protected void onSetUp() {
-    fileFactory = new CharMappingFileFactoryStub(10);
-    window = MyWindow.createNew();
-    worker = execute(new GuiQuery<CharMappingFileFactoryWorker>() {
-      @Override protected CharMappingFileFactoryWorker executeInEDT() {
-        return new CharMappingFileFactoryWorker(null, null, fileFactory, window.progressPanel);
-      }
-    });
-    robot.showWindow(window);
+    fileFactory = new CharMappingFileFactoryStub(MAPPING_COUNT);
+    MyWindow window = MyWindow.createNew();
+    frame = new FrameFixture(robot, window);
+    worker = new CharMappingFileFactoryWorker(new File("temp.txt"), null, fileFactory, window.progressPanel);
+    frame.show();
   }
   
   @Test
   public void should_create_file_in_background() throws Exception {
     execute(new GuiTask() {
-      @Override protected void executeInEDT() {
+      @Override protected void executeInEDT() throws Exception {
         worker.execute();
       }
     });
     worker.get();
+    final JProgressBarFixture progressBar = frame.progressBar();
+    pause(new EdtSafeCondition("file creation is finished") {
+      @Override protected boolean testInEDT() {
+        return progressBar.component().getValue() == MAPPING_COUNT;
+      }
+    });
+    progressBar.requireValue(MAPPING_COUNT)
+               .requireText("100%");
+    frame.label().requireText("Saving file 'temp.txt'");
   }
 
   private static class MyWindow extends TestWindow {
@@ -89,10 +99,9 @@ public class CharMappingFileFactory_execute_Test extends RobotBasedTestCase {
     
     @Override void createMappingFile(File file, CharMappingTableModel model) {
       notifyCreationStarted(mappingCount);
-      int count = 0;
-      for (int i = 0; i < mappingCount; i++) {
-        pause(2000);
-        notifyMappingsProcessed(++count);
+      for (int i = 1; i <= mappingCount; i++) {
+        pause(100);
+        notifyMappingsProcessed(i);
       }
     }
   }

@@ -15,11 +15,15 @@
  */
 package org.fest.keyboard.mapping;
 
-
 import java.io.*;
 import java.util.*;
 
 import org.junit.*;
+
+import org.fest.mocks.EasyMockTemplate;
+
+import static org.easymock.EasyMock.expectLastCall;
+import static org.easymock.classextension.EasyMock.createMock;
 
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.keyboard.mapping.CharMapping.newCharMapping;
@@ -34,15 +38,9 @@ import static org.fest.util.Files.newTemporaryFile;
  */
 public class CharMappingFileFactory_createMappingFile_Test {
 
-  private static CharMappingFileFactory factory;
-  
   private File mappingFile;
   private ModelStub model;
-  
-  @BeforeClass
-  public static void setUpOnce() {
-    factory = new CharMappingFileFactory();
-  }
+  private CharMappingFileFactory factory;
   
   @Before
   public void setUp() {
@@ -50,6 +48,7 @@ public class CharMappingFileFactory_createMappingFile_Test {
     model = new ModelStub();
     model.add("a", "A", "NO_MASK");
     model.add("S", "S", "SHIFT_MASK");
+    factory = new CharMappingFileFactory();
   }
   
   @After
@@ -64,6 +63,28 @@ public class CharMappingFileFactory_createMappingFile_Test {
     assertThat(contents).containsOnly("a, A, NO_MASK", "S, S, SHIFT_MASK");
   }
   
+  @Test
+  public void should_notify_listeners_while_writing_file() {
+    final CharMappingFileCreationListener listener = createMock(CharMappingFileCreationListener.class);
+    factory.add(listener);
+    new EasyMockTemplate(listener) {
+      @Override protected void expectations() {
+        // verifies that the listener is called
+        int mappingCount = model.rowCount();
+        listener.creationStarted(mappingCount);
+        expectLastCall();
+        for (int i = 1; i <= mappingCount; i++) {
+          listener.charMappingsProcessed(i);
+          expectLastCall();
+        }
+      }
+      
+      @Override protected void codeToTest() throws IOException {
+        factory.createMappingFile(mappingFile, model);
+      }
+    }.run();
+  }
+
   private List<String> mappingFileContents() throws IOException {
     List<String> contents = new ArrayList<String>();
     BufferedReader input = null;

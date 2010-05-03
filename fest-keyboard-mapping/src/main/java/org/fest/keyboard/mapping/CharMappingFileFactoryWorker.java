@@ -44,9 +44,18 @@ class CharMappingFileFactoryWorker extends SwingWorker<Void, Integer> implements
   }
 
   @Override protected Void doInBackground() throws Exception {
+    updateFileNameInProgressPanel();
     fileFactory.add(this);
     fileFactory.createMappingFile(file, model);
     return null;
+  }
+
+  private void updateFileNameInProgressPanel() {
+    invokeLater(new Runnable() {
+      @Override public void run() {
+        progressPanel.updateFileName(file.getName());
+      }
+    });
   }
 
   @Override
@@ -56,7 +65,9 @@ class CharMappingFileFactoryWorker extends SwingWorker<Void, Integer> implements
     progressPanel.updateProgress(last);
   }
   
-  @Override protected void done() {}
+  @Override protected void done() {
+    fileFactory.remove(this);
+  }
   
   @Override public void creationStarted(final int mappingCount) {
     invokeLater(new Runnable() {
