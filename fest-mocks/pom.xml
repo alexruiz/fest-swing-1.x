@@ -5,7 +5,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.easytesting</groupId>
   <artifactId>fest-mocks</artifactId>
-  <version>1.1</version>
+  <version>1.1.1</version>
   <name>FEST Mocks</name>
   <description>Utilities that simplify usage of Mock Objects</description>
   <inceptionYear>2007</inceptionYear>
@@ -13,7 +13,7 @@
   <parent>
     <groupId>org.easytesting</groupId>
     <artifactId>fest</artifactId>
-    <version>1.0</version>
+    <version>1.0.1</version>
   </parent>
   <mailingLists>
     <mailingList>
@@ -36,22 +36,17 @@
     <dependency>
     	<groupId>junit</groupId>
     	<artifactId>junit</artifactId>
-    	<version>4.5</version>
-    	<type>jar</type>
-    	<scope>test</scope>
-    </dependency>
+      </dependency>
     <dependency>
     	<groupId>org.easymock</groupId>
     	<artifactId>easymockclassextension</artifactId>
     	<version>2.4</version>
-    	<type>jar</type>
     	<scope>compile</scope>
     </dependency>
     <dependency>
     	<groupId>org.easymock</groupId>
     	<artifactId>easymock</artifactId>
     	<version>2.4</version>
-    	<type>jar</type>
     	<scope>compile</scope>
     </dependency>
   </dependencies>
