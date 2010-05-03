@@ -5,7 +5,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.easytesting</groupId>
   <artifactId>fest-util</artifactId>
-  <version>1.1.1</version>
+  <version>1.1.2</version>
   <name>FEST Util</name>
   <description>Utility methods used by FEST modules</description>
   <inceptionYear>2007</inceptionYear>
@@ -13,7 +13,7 @@
   <parent>
     <groupId>org.easytesting</groupId>
     <artifactId>fest</artifactId>
-    <version>1.0</version>
+    <version>1.0.1</version>
   </parent>
   <mailingLists>
     <mailingList>
@@ -36,8 +36,6 @@
     <dependency>
     	<groupId>junit</groupId>
     	<artifactId>junit</artifactId>
-    	<version>4.5</version>
-    	<scope>test</scope>
     </dependency>
   </dependencies>
 </project>
