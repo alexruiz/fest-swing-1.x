@@ -45,13 +45,13 @@ class CharMappingFileFactoryWorker extends SwingWorker<Void, Integer> implements
   }
 
   @Override protected Void doInBackground() throws Exception {
-    updateAndShowProgressPanel();
+    updateAndShowProgressWindow();
     fileFactory.add(this);
-    fileFactory.createMappingFile(file, model);
+    fileFactory.createMappingFile(file, model); // TODO test what happens in case of failure
     return null;
   }
 
-  private void updateAndShowProgressPanel() {
+  private void updateAndShowProgressWindow() {
     invokeLater(new Runnable() {
       @Override public void run() {
         progressPanel.updateFileName(file.getName());
@@ -76,7 +76,7 @@ class CharMappingFileFactoryWorker extends SwingWorker<Void, Integer> implements
     });
   }
   
-  private void setProgressWindowVisible(final boolean visible) {
+  private void setProgressWindowVisible(boolean visible) {
     Window w = getWindowAncestor(progressPanel);
     if (w.isShowing() != visible) w.setVisible(visible);
   }
