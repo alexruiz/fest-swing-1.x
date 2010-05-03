@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd ">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd ">
 
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.easytesting</groupId>
   <artifactId>fest</artifactId>
-  <version>1.0</version>
+  <version>1.0.1</version>
   <packaging>pom</packaging>
   <name>FEST: Fixtures for Easy Software Testing</name>
   <licenses>
@@ -306,7 +306,7 @@
       <name>Michel Lohr</name>
     </contributor>
     <contributor>
-      <name>Rahel Lüthy</name>
+      <name>Rahel Lï¿½thy</name>
     </contributor>
     <contributor>
       <name>Ivan Malygin</name>
@@ -454,6 +454,18 @@
       <name>Jan Zuchhold</name>
     </contributor>
   </contributors>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>junit</groupId>
+        <artifactId>junit</artifactId>
+        <version>4.7</version>
+        <scope>test</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
   <build>
     <plugins>
       <plugin>
@@ -515,7 +527,7 @@
             <id>package-source</id>
             <phase>package</phase>
             <goals>
-             <goal>jar</goal>
+              <goal>jar</goal>
             </goals>
           </execution>
           <execution>
@@ -651,7 +663,7 @@
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
- 	      <artifactId>maven-surefire-report-plugin</artifactId>
+        <artifactId>maven-surefire-report-plugin</artifactId>
         <version>2.4.2</version>
       </plugin>
       <plugin>
