@@ -15,18 +15,17 @@
  */
 package org.fest.keyboard.mapping;
 
-import static javax.swing.JOptionPane.*;
-import static org.fest.util.Strings.concat;
-import static org.fest.util.Strings.quote;
-
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 import java.io.File;
-import java.io.IOException;
 
-import javax.swing.*;
+import javax.swing.JFrame;
 
 import org.fest.util.VisibleForTesting;
+
+import static javax.swing.JOptionPane.*;
+
+import static org.fest.keyboard.mapping.CharMappingFileCreationProgressDialog.createProgressDialog;
+import static org.fest.util.Strings.*;
 
 /**
  * Understands a UI action that prompts the user to save a group of <code>{@link CharMapping}</code>s as a text file.
@@ -39,7 +38,8 @@ class SaveMappingFileActionListener implements ActionListener {
   private final FileChooser fileChooser;
   private final CharMappingFileFactory fileFactory;
   private final CharMappingTableModel mappings;
-
+  private final CharMappingFileCreationProgressPanel progressPanel;
+  
   SaveMappingFileActionListener(JFrame parent, CharMappingTableModel mappings) {
     this(parent, new CharMappingFileChooser(parent), new CharMappingFileFactory(), mappings);
   }
@@ -51,15 +51,18 @@ class SaveMappingFileActionListener implements ActionListener {
     this.fileChooser = fileChooser;
     this.mappings = mappings;
     this.fileFactory = fileFactory;
+    progressPanel = new CharMappingFileCreationProgressPanel();
+    createProgressDialog(parent, progressPanel);
   }
 
   public void actionPerformed(ActionEvent event) {
     File toSave = fileChooser.fileToSave();
     if (toSave == null) return;
     try {
-      fileFactory.createMappingFile(toSave, mappings);
+      CharMappingFileFactoryWorker worker = new CharMappingFileFactoryWorker(toSave, mappings, fileFactory, progressPanel);
+      worker.execute();
       showSuccessMessage(toSave);
-    } catch (IOException e) {
+    } catch (Exception e) {
       showFailureMessage(e.getMessage());
     }
   }

@@ -22,12 +22,12 @@ import static org.fest.util.Strings.*;
  *
  * @author Alex Ruiz 
  */
-public class CharMappingCreationProgressPanel extends javax.swing.JPanel {
+public class CharMappingFileCreationProgressPanel extends javax.swing.JPanel {
 
   private static final long serialVersionUID = 1L;
 
   /** Creates new form CharMappingCreationProgressPanel */
-  public CharMappingCreationProgressPanel() {
+  public CharMappingFileCreationProgressPanel() {
     initComponents();
   }
 

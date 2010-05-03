@@ -81,7 +81,7 @@ public class CharMappingFileFactory_execute_Test extends RobotBasedTestCase {
       });
     }
     
-    final CharMappingCreationProgressPanel progressPanel = new CharMappingCreationProgressPanel();
+    final CharMappingFileCreationProgressPanel progressPanel = new CharMappingFileCreationProgressPanel();
     
     @RunsInCurrentThread
     private MyWindow() {

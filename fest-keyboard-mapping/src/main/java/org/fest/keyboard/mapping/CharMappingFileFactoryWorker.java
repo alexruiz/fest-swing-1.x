@@ -15,12 +15,13 @@
  */
 package org.fest.keyboard.mapping;
 
+import java.awt.Window;
 import java.io.File;
 import java.util.List;
 
-import javax.swing.SwingWorker;
+import javax.swing.*;
 
-import static javax.swing.SwingUtilities.invokeLater;
+import static javax.swing.SwingUtilities.*;
 
 /**
  * Understands a <code>{@link SwingWorker}</code> that displays the progress of saving a file using a
@@ -33,10 +34,10 @@ class CharMappingFileFactoryWorker extends SwingWorker<Void, Integer> implements
   private final File file;
   private final CharMappingTableModel model;
   private final CharMappingFileFactory fileFactory;
-  private final CharMappingCreationProgressPanel progressPanel;
+  private final CharMappingFileCreationProgressPanel progressPanel;
 
   CharMappingFileFactoryWorker(File file, CharMappingTableModel model, CharMappingFileFactory fileFactory,
-      CharMappingCreationProgressPanel progressPanel) {
+      CharMappingFileCreationProgressPanel progressPanel) {
     this.file = file;
     this.model = model;
     this.fileFactory = fileFactory;
@@ -44,16 +45,17 @@ class CharMappingFileFactoryWorker extends SwingWorker<Void, Integer> implements
   }
 
   @Override protected Void doInBackground() throws Exception {
-    updateFileNameInProgressPanel();
+    updateAndShowProgressPanel();
     fileFactory.add(this);
     fileFactory.createMappingFile(file, model);
     return null;
   }
 
-  private void updateFileNameInProgressPanel() {
+  private void updateAndShowProgressPanel() {
     invokeLater(new Runnable() {
       @Override public void run() {
         progressPanel.updateFileName(file.getName());
+        setProgressWindowVisible(true);
       }
     });
   }
@@ -67,6 +69,16 @@ class CharMappingFileFactoryWorker extends SwingWorker<Void, Integer> implements
   
   @Override protected void done() {
     fileFactory.remove(this);
+    invokeLater(new Runnable() {
+      @Override public void run() {
+        setProgressWindowVisible(false);
+      }
+    });
+  }
+  
+  private void setProgressWindowVisible(final boolean visible) {
+    Window w = getWindowAncestor(progressPanel);
+    if (w.isShowing() != visible) w.setVisible(visible);
   }
   
   @Override public void creationStarted(final int mappingCount) {
