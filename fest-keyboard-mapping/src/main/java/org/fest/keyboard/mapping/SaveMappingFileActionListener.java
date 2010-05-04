@@ -15,17 +15,21 @@
  */
 package org.fest.keyboard.mapping;
 
-import java.awt.event.*;
+import static javax.swing.JOptionPane.ERROR_MESSAGE;
+import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
+import static javax.swing.JOptionPane.showMessageDialog;
+import static org.fest.keyboard.mapping.CharMappingFileCreationProgressWindow.createProgressWindow;
+import static org.fest.util.Strings.concat;
+import static org.fest.util.Strings.quote;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
+import java.util.concurrent.ExecutionException;
 
 import javax.swing.JFrame;
 
 import org.fest.util.VisibleForTesting;
-
-import static javax.swing.JOptionPane.*;
-
-import static org.fest.keyboard.mapping.CharMappingFileCreationProgressDialog.createProgressDialog;
-import static org.fest.util.Strings.*;
 
 /**
  * Understands a UI action that prompts the user to save a group of <code>{@link CharMapping}</code>s as a text file.
@@ -39,7 +43,7 @@ class SaveMappingFileActionListener implements ActionListener {
   private final CharMappingFileFactory fileFactory;
   private final CharMappingTableModel mappings;
   private final CharMappingFileCreationProgressPanel progressPanel;
-  
+
   SaveMappingFileActionListener(JFrame parent, CharMappingTableModel mappings) {
     this(parent, new CharMappingFileChooser(parent), new CharMappingFileFactory(), mappings);
   }
@@ -52,7 +56,7 @@ class SaveMappingFileActionListener implements ActionListener {
     this.mappings = mappings;
     this.fileFactory = fileFactory;
     progressPanel = new CharMappingFileCreationProgressPanel();
-    createProgressDialog(parent, progressPanel);
+    createProgressWindow(parent, progressPanel);
   }
 
   public void actionPerformed(ActionEvent event) {
@@ -61,10 +65,16 @@ class SaveMappingFileActionListener implements ActionListener {
     try {
       CharMappingFileFactoryWorker worker = new CharMappingFileFactoryWorker(toSave, mappings, fileFactory, progressPanel);
       worker.execute();
+      worker.get();
       showSuccessMessage(toSave);
     } catch (Exception e) {
-      showFailureMessage(e.getMessage());
+      showFailureMessage(realCauseOf(e).getMessage());
     }
+  }
+
+  private Throwable realCauseOf(Exception e) {
+    if (!(e instanceof ExecutionException)) return e;
+    return e.getCause();
   }
 
   private void showSuccessMessage(File file) {
