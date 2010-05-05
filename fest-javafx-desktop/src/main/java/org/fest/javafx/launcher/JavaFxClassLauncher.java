@@ -5,42 +5,37 @@
  */
 package org.fest.javafx.launcher;
 
+import static org.fest.javafx.threading.GuiActionRunner.execute;
 import static org.fest.reflect.core.Reflection.staticMethod;
-import static org.fest.swing.edt.GuiActionRunner.execute;
-
-import java.awt.Frame;
 import javafx.stage.Stage;
 
-import org.fest.swing.edt.GuiQuery;
+import org.fest.javafx.threading.GuiQuery;
 
 import com.sun.javafx.runtime.TypeInfo;
 import com.sun.javafx.runtime.sequence.Sequence;
-import com.sun.javafx.tk.TKStage;
-import com.sun.javafx.tk.swing.FrameStage;
 
 /**
- * Understands SOMETHING DUMMY.
+ * Understands how to launch a JavaFX UI.
  *
  * @author Alex Ruiz
  */
 public final class JavaFxClassLauncher {
 
-  public static Frame launch(final Class<?> javaFxClass) {
+  /**
+   * Launches a JavaFX UI from the given type.
+   * @param javaFxClass the type of the JavaFX UI to launch.
+   * @return the {@code Stage} of the launched UI.
+   */
+  public static Stage launch(final Class<?> javaFxClass) {
     Stage stage = execute(new GuiQuery<Stage>() {
-      protected Stage executeInEDT() throws Throwable {
+      protected Stage executeInUIThread() {
         return (Stage) staticMethod("javafx$run$").withReturnType(Object.class)
                                                   .withParameterTypes(Sequence.class)
                                                   .in(javaFxClass)
                                                   .invoke(TypeInfo.String.emptySequence);
       }
     });
-    return frameFrom(stage);
-  }
-
-  private static Frame frameFrom(Stage stage) {
-    TKStage peer = stage.get$javafx$stage$Stage$impl_peer();
-    FrameStage frameStage = (FrameStage)peer;
-    return (Frame)frameStage.window;
+    return stage;
   }
 
   private JavaFxClassLauncher() {}
