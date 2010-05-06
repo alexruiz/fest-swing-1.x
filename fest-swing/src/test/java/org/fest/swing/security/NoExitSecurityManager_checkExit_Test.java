@@ -22,7 +22,7 @@ import static org.fest.swing.test.core.CommonAssertions.failWhenExpectingExcepti
 import static org.fest.util.Arrays.array;
 
 import org.fest.mocks.EasyMockTemplate;
-import org.fest.swing.util.StackTraces;
+import org.fest.util.StackTraces;
 import org.junit.Before;
 import org.junit.Test;
 

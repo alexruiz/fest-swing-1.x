@@ -17,7 +17,7 @@ package org.fest.swing.edt;
 
 import static javax.swing.SwingUtilities.invokeLater;
 import static javax.swing.SwingUtilities.isEventDispatchThread;
-import static org.fest.swing.edt.Throwables.appendCurrentThreadStackTraceToThrowable;
+import static org.fest.util.Throwables.appendCurrentThreadStackTraceToThrowable;
 import static org.fest.swing.exception.UnexpectedException.unexpected;
 
 import java.util.concurrent.CountDownLatch;
@@ -37,7 +37,7 @@ public class GuiActionRunner {
 
   @GuardedBy("this")
   private static boolean executeInEDT = true;
-  
+
   /**
    * Indicates <code>{@link GuiActionRunner}</code> if instances of <code>{@link GuiQuery}</code> and
    * <code>{@link GuiTask}</code> should be executed in the event dispatch thread or not.
@@ -47,23 +47,23 @@ public class GuiActionRunner {
   public static synchronized void executeInEDT(boolean b) {
     executeInEDT = b;
   }
-  
+
   /**
-   * Returns whether instances of <code>{@link GuiQuery}</code> and <code>{@link GuiTask}</code> should be executed in 
+   * Returns whether instances of <code>{@link GuiQuery}</code> and <code>{@link GuiTask}</code> should be executed in
    * the event dispatch thread or not.
    * @return <code>true</code> if GUI actions are executed in the event dispatch thread, <code>false</code> otherwise.
    */
   public static synchronized boolean executeInEDT() {
     return executeInEDT;
   }
-  
+
   /**
    * Executes the given query in the event dispatch thread. This method waits until the query has finished its
    * execution.
    * @param <T> the generic type of the return value.
    * @param query the query to execute.
    * @return the result of the query executed in the main thread.
-   * @throws UnexpectedException wrapping any <b>checked</b> exception thrown when executing the given query in the 
+   * @throws UnexpectedException wrapping any <b>checked</b> exception thrown when executing the given query in the
    * event dispatch thread. Unchecked exceptions are re-thrown without any wrapping.
    * @see #executeInEDT()
    */
@@ -84,7 +84,7 @@ public class GuiActionRunner {
   /**
    * Executes the given task in the event dispatch thread. This method waits until the task has finished its execution.
    * @param task the task to execute.
-   * @throws UnexpectedException wrapping any <b>checked</b> exception thrown when executing the given query in the 
+   * @throws UnexpectedException wrapping any <b>checked</b> exception thrown when executing the given query in the
    * event dispatch thread. Unchecked exceptions are re-thrown without any wrapping.
    * @see #executeInEDT()
    */
@@ -109,7 +109,7 @@ public class GuiActionRunner {
     if (isEventDispatchThread()) {
       action.run();
       return;
-    } 
+    }
     final CountDownLatch latch = new CountDownLatch(1);
     action.executionNotification(latch);
     invokeLater(action);
@@ -130,7 +130,7 @@ public class GuiActionRunner {
   /**
    * Wraps (with a <code>{@link UnexpectedException}</code>) and retrows any catched exception in the given action.
    * @param action the given action that may have a catched exception during its execution.
-   * @throws UnexpectedException wrapping any <b>checked</b> exception thrown when executing the given query in the 
+   * @throws UnexpectedException wrapping any <b>checked</b> exception thrown when executing the given query in the
    * event dispatch thread. Unchecked exceptions are rethrown without any wrapping.
    */
   private static void rethrowCatchedExceptionIn(GuiAction action) {

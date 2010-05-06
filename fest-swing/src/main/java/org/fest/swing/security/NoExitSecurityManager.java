@@ -18,7 +18,7 @@ import static org.fest.util.Strings.concat;
 
 import java.security.Permission;
 
-import org.fest.swing.util.StackTraces;
+import org.fest.util.StackTraces;
 import org.fest.util.VisibleForTesting;
 
 /**
@@ -48,7 +48,7 @@ public class NoExitSecurityManager extends SecurityManager {
    * @throws NullPointerException if the given hook is <code>null</code>.
    */
   public NoExitSecurityManager(ExitCallHook hook) {
-    this(hook, StackTraces.INSTANCE);
+    this(hook, StackTraces.instance());
   }
 
   @VisibleForTesting

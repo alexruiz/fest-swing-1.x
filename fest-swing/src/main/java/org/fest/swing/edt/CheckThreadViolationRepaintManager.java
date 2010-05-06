@@ -18,9 +18,10 @@ import static javax.swing.SwingUtilities.isEventDispatchThread;
 
 import java.lang.ref.WeakReference;
 
-import javax.swing.*;
+import javax.swing.JComponent;
+import javax.swing.RepaintManager;
 
-import org.fest.swing.util.StackTraces;
+import org.fest.util.StackTraces;
 
 /**
  * <p>
@@ -51,7 +52,7 @@ abstract class CheckThreadViolationRepaintManager extends RepaintManager {
   }
 
   CheckThreadViolationRepaintManager(boolean completeCheck) {
-    this(completeCheck, StackTraces.INSTANCE);
+    this(completeCheck, StackTraces.instance());
   }
 
   CheckThreadViolationRepaintManager(boolean completeCheck, StackTraces stackTraces) {

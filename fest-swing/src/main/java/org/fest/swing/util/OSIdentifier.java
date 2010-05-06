@@ -81,6 +81,6 @@ class OSIdentifier {
   boolean isHPUX() { return isHPUX; }
   boolean isLinux() { return isLinux; }
 
-  /** @since 1.2 */
+  /* Since 1.2 */
   OSFamily osFamily() { return osFamily; }
 }
