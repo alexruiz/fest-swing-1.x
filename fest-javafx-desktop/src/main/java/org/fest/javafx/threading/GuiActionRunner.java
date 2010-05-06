@@ -23,7 +23,7 @@ import java.util.concurrent.CountDownLatch;
 import net.jcip.annotations.GuardedBy;
 import net.jcip.annotations.ThreadSafe;
 
-import org.fest.swing.exception.UnexpectedException;
+import org.fest.javafx.exception.UnexpectedException;
 
 /**
  * Understands running instances of <code>{@link GuiQuery}</code> and <code>{@link GuiTask}</code>.

@@ -180,13 +180,6 @@
     </dependency>  
     <dependency>
       <groupId>javafx</groupId>
-      <artifactId>javafx-ui-swing</artifactId>
-      <version>1.2.1</version>
-      <scope>system</scope>
-      <systemPath>${env.JAVAFX_HOME}/lib/desktop/javafx-ui-swing.jar</systemPath>
-    </dependency>  
-    <dependency>
-      <groupId>javafx</groupId>
       <artifactId>javafxrt-main</artifactId>
       <version>1.2.1</version>
       <scope>system</scope>

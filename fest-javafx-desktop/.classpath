@@ -2,36 +2,13 @@
 <classpath>
 	<classpathentry kind="src" output="target/classes" path="src/main/java"/>
 	<classpathentry kind="src" output="target/test-classes" path="src/test/java"/>
-	<classpathentry kind="var" path="M2_REPO/org/easytesting/fest-swing/1.2a4-SNAPSHOT/fest-swing-1.2a4-20091206.162251-5.jar" sourcepath="/M2_REPO/org/easytesting/fest-swing/1.2a4-SNAPSHOT/fest-swing-1.2a4-20091206.162251-5-sources.jar"/>
 	<classpathentry kind="var" path="M2_REPO/org/easytesting/fest-assert/1.2/fest-assert-1.2.jar" sourcepath="/M2_REPO/org/easytesting/fest-assert/1.2/fest-assert-1.2-sources.jar"/>
 	<classpathentry kind="var" path="M2_REPO/org/easytesting/fest-reflect/1.2/fest-reflect-1.2.jar" sourcepath="/M2_REPO/org/easytesting/fest-reflect/1.2/fest-reflect-1.2-sources.jar"/>
-	<classpathentry kind="var" path="M2_REPO/org/easytesting/fest-util/1.1/fest-util-1.1.jar" sourcepath="/M2_REPO/org/easytesting/fest-util/1.1/fest-util-1.1-sources.jar"/>
+	<classpathentry kind="var" path="M2_REPO/org/easytesting/fest-util/1.1.1/fest-util-1.1.1.jar" sourcepath="/M2_REPO/org/easytesting/fest-util/1.1.1/fest-util-1.1.1-sources.jar"/>
 	<classpathentry kind="var" path="M2_REPO/junit/junit/4.7/junit-4.7.jar" sourcepath="/M2_REPO/junit/junit/4.7/junit-4.7-sources.jar"/>
-	<classpathentry kind="var" path="JAVAFX_HOME/lib/shared/javafxrt.jar" sourcepath="/JAVAFX_HOME/src.zip"/>
-	<classpathentry kind="var" path="JAVAFX_HOME/lib/desktop/Decora-D3D.jar"/>
-	<classpathentry kind="var" path="JAVAFX_HOME/lib/desktop/decora-j2d-rsl.jar"/>
-	<classpathentry kind="var" path="JAVAFX_HOME/lib/desktop/Decora-OGL.jar"/>
-	<classpathentry kind="var" path="JAVAFX_HOME/lib/desktop/decora-runtime.jar"/>
-	<classpathentry kind="var" path="JAVAFX_HOME/lib/desktop/Decora-SSE.jar"/>
-	<classpathentry kind="var" path="JAVAFX_HOME/lib/desktop/eula.jar"/>
-	<classpathentry kind="var" path="JAVAFX_HOME/lib/desktop/fxdloader.jar"/>
-	<classpathentry kind="var" path="JAVAFX_HOME/lib/desktop/gluegen-rt.jar"/>
-	<classpathentry kind="var" path="JAVAFX_HOME/lib/desktop/javafx-anim.jar"/>
-	<classpathentry kind="var" path="JAVAFX_HOME/lib/desktop/javafx-common.jar"/>
-	<classpathentry kind="var" path="JAVAFX_HOME/lib/desktop/javafx-geom.jar"/>
-	<classpathentry kind="var" path="JAVAFX_HOME/lib/desktop/javafx-io.jar"/>
-	<classpathentry kind="var" path="JAVAFX_HOME/lib/desktop/javafx-sg-common.jar"/>
-	<classpathentry kind="var" path="JAVAFX_HOME/lib/desktop/javafx-sg-swing.jar"/>
-	<classpathentry kind="var" path="JAVAFX_HOME/lib/desktop/javafx-ui-charts.jar"/>
-	<classpathentry kind="var" path="JAVAFX_HOME/lib/desktop/javafx-ui-common.jar"/>
-	<classpathentry kind="var" path="JAVAFX_HOME/lib/desktop/javafx-ui-controls.jar"/>
-	<classpathentry kind="var" path="JAVAFX_HOME/lib/desktop/javafx-ui-desktop.jar"/>
-	<classpathentry kind="var" path="JAVAFX_HOME/lib/desktop/javafx-ui-swing.jar"/>
-	<classpathentry kind="var" path="JAVAFX_HOME/lib/desktop/javafxrt-main.jar"/>
-	<classpathentry kind="var" path="JAVAFX_HOME/lib/desktop/jogl.jar"/>
-	<classpathentry kind="var" path="JAVAFX_HOME/lib/desktop/script-api.jar"/>
-	<classpathentry kind="var" path="JAVAFX_HOME/lib/desktop/websvc.jar"/>
 	<classpathentry kind="var" path="M2_REPO/org/easytesting/fest-javafx-scripts/0.1-SNAPSHOT/fest-javafx-scripts-0.1-SNAPSHOT.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/JavaFX 1.3"/>
+	<classpathentry kind="var" path="M2_REPO/net/jcip/jcip-annotations/1.0/jcip-annotations-1.0.jar" sourcepath="/M2_REPO/net/jcip/jcip-annotations/1.0/jcip-annotations-1.0-sources.jar"/>
 	<classpathentry kind="output" path="target"/>
 </classpath>

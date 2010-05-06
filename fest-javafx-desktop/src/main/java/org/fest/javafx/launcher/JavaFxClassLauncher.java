@@ -28,7 +28,7 @@ public final class JavaFxClassLauncher {
    */
   public static Stage launch(final Class<?> javaFxClass) {
     Stage stage = execute(new GuiQuery<Stage>() {
-      protected Stage executeInUIThread() {
+      @Override protected Stage executeInUIThread() {
         return (Stage) staticMethod("javafx$run$").withReturnType(Object.class)
                                                   .withParameterTypes(Sequence.class)
                                                   .in(javaFxClass)

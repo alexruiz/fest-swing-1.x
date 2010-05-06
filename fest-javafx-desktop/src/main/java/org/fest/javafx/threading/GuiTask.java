@@ -15,9 +15,11 @@
  */
 package org.fest.javafx.threading;
 
+import org.fest.javafx.exception.ActionFailedException;
+
 import static javax.swing.SwingUtilities.isEventDispatchThread;
 
-import org.fest.swing.exception.ActionFailedException;
+import static org.fest.javafx.exception.ActionFailedException.actionFailure;
 
 /**
  * Understands a task that should be executed in the UI thread.
@@ -32,7 +34,7 @@ public abstract class GuiTask extends GuiAction {
    */
   public final void run() {
     if (!isEventDispatchThread())
-      throw ActionFailedException.actionFailure("Task should be executed in the UI thread");
+      throw actionFailure("Task should be executed in the UI thread");
     try {
       executeInUIThread();
     } catch (Throwable t) {
