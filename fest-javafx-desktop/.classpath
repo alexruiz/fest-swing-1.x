@@ -4,7 +4,7 @@
 	<classpathentry kind="src" output="target/test-classes" path="src/test/java"/>
 	<classpathentry kind="var" path="M2_REPO/org/easytesting/fest-assert/1.2/fest-assert-1.2.jar" sourcepath="/M2_REPO/org/easytesting/fest-assert/1.2/fest-assert-1.2-sources.jar"/>
 	<classpathentry kind="var" path="M2_REPO/org/easytesting/fest-reflect/1.2/fest-reflect-1.2.jar" sourcepath="/M2_REPO/org/easytesting/fest-reflect/1.2/fest-reflect-1.2-sources.jar"/>
-	<classpathentry kind="var" path="M2_REPO/org/easytesting/fest-util/1.1.1/fest-util-1.1.1.jar" sourcepath="/M2_REPO/org/easytesting/fest-util/1.1.1/fest-util-1.1.1-sources.jar"/>
+	<classpathentry kind="var" path="M2_REPO/org/easytesting/fest-util/1.1.2/fest-util-1.1.2.jar" sourcepath="/M2_REPO/org/easytesting/fest-util/1.1.2/fest-util-1.1.2-sources.jar"/>
 	<classpathentry kind="var" path="M2_REPO/junit/junit/4.7/junit-4.7.jar" sourcepath="/M2_REPO/junit/junit/4.7/junit-4.7-sources.jar"/>
 	<classpathentry kind="var" path="M2_REPO/org/easytesting/fest-javafx-scripts/0.1-SNAPSHOT/fest-javafx-scripts-0.1-SNAPSHOT.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>

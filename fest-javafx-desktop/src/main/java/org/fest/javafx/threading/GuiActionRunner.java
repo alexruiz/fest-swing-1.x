@@ -16,7 +16,7 @@
 package org.fest.javafx.threading;
 
 import static org.fest.javafx.exception.UnexpectedException.unexpected;
-import static org.fest.javafx.threading.Throwables.appendCurrentThreadStackTraceToThrowable;
+import static org.fest.util.Throwables.appendCurrentThreadStackTraceToThrowable;
 
 import java.util.concurrent.CountDownLatch;
 

@@ -11,8 +11,6 @@ import javafx.stage.Stage;
 
 import org.fest.javafx.scripts.ButtonDemo;
 import org.fest.javafx.threading.GuiQuery;
-import org.fest.swing.edt.FailOnThreadViolationRepaintManager;
-import org.junit.Before;
 import org.junit.Test;
 
 /**
@@ -21,11 +19,6 @@ import org.junit.Test;
  * @author Alex Ruiz
  */
 public class JavaFxClassLauncher_launch_Test {
-
-  @Before
-  public void setUpOnce() {
-    FailOnThreadViolationRepaintManager.install();
-  }
 
   @Test
   public void should_start_JavaFX_UI() {
