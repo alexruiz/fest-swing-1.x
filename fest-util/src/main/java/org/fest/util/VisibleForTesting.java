@@ -20,6 +20,8 @@ package org.fest.util;
  * testable. Idea borrowed from Google Collections :)
  *
  * @author Alex Ruiz
+ *
+ * @since 1.1.1
  */
 public @interface VisibleForTesting {
 }
