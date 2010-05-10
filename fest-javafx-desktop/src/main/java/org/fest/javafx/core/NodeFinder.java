@@ -16,6 +16,7 @@
 package org.fest.javafx.core;
 
 import javafx.scene.Node;
+import javafx.scene.Scene;
 
 import org.fest.javafx.exception.NodeLookupException;
 
@@ -27,18 +28,37 @@ import org.fest.javafx.exception.NodeLookupException;
 public interface NodeFinder {
 
   /**
-   * Fins a <code>{@link Node}</code> by type.
+   * Finds a {@code Node} by type in the given {@code Scene}.
    * <p>
    * Example:
    * <pre>
-   * Button button = finder.findByType(Button.class);
+   * Button button = finder.findByType(scene, Button.class, {@link Visibility#REQUIRED_VISIBLE REQUIRED_VISIBLE});
    * </pre>
    * </p>
    * @param <T> the generic type of the node to find.
+   * @param root the scene that may contain the to find.
    * @param type the type of the node to find.
+   * @param visibility indicates whether the node should be showing on the screen or not.
    * @return the found node.
    * @throws NodeLookupException if a matching node could not be found.
    * @throws NodeLookupException if more than one matching node is found.
    */
-  <T extends Node> T findByType(Class<T> type);
+  <T extends Node> T findByType(Scene root, Class<T> type, Visibility visibility);
+
+  /**
+   * Finds a {@code Node} by id in the given {@code Scene}.
+   * <p>
+   * Example:
+   * <pre>
+   * Button button = finder.findById(scene, "myButton", {@link Visibility#REQUIRED_VISIBLE REQUIRED_VISIBLE});
+   * </pre>
+   * </p>
+   * @param root the scene that may contain the to find.
+   * @param id the id of the node to find.
+   * @param visibility indicates whether the node should be showing on the screen or not.
+   * @return the found node.
+   * @throws NodeLookupException if a matching node could not be found.
+   * @throws NodeLookupException if more than one matching node is found.
+   */
+  Node findById(Scene root, String id, Visibility visibility);
 }
