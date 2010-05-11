@@ -61,6 +61,5 @@ public abstract class AbstractNodeMatcher implements NodeMatcher {
   }
 
   /** {@inheritDoc} */
-  @Override
-  public void reset(boolean matchFound) {}
+  @Override public void reset(boolean matchFound) {}
 }
