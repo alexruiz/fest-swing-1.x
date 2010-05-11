@@ -746,8 +746,8 @@ public class BasicRobot implements Robot {
   /**
    * Indicates whether the given <code>{@link Component}</code> is ready for input.
    * <p>
-   * <b>Note:</b> This method is <b>not</b> executed in the event dispatch thread (EDT.) Clients are responsible for
-   * invoking this method in the EDT.
+   * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
+   * responsible for ensuring that this method is executed in the EDT.
    * </p>
    * @param c the given <code>Component</code>.
    * @return <code>true</code> if the given <code>Component</code> is ready for input, <code>false</code> otherwise.

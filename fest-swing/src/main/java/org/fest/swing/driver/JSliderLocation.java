@@ -41,12 +41,12 @@ public final class JSliderLocation {
     LOCATIONS.put(HORIZONTAL, new JSliderHorizontalLocation());
     LOCATIONS.put(VERTICAL, new JSliderVerticalLocation());
   }
-  
+
   /**
    * Returns the coordinates of the given value in the given <code>{@link JSlider}</code>.
    * <p>
-   * <b>Note:</b> This method is <b>not</b> executed in the event dispatch thread (EDT.) Clients are responsible for 
-   * invoking this method in the EDT.
+   * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
+   * responsible for ensuring that this method is executed in the EDT.
    * </p>
    * @param slider the given <code>JSlider</code>.
    * @param value the given value.
@@ -80,7 +80,7 @@ public final class JSliderLocation {
       return new Point(center.x, coordinate);
     }
   }
-  
+
   private static abstract class JSliderLocationStrategy {
     @RunsInCurrentThread
     final Point locationForValue(JSlider slider, int value) {

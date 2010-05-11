@@ -20,22 +20,8 @@ import java.lang.annotation.Documented;
 import java.lang.annotation.Target;
 
 /**
- * Understands an annotation that documents that a method is accessing GUI components in a thread other than the event
- * dispatch thread.
- * <p>
- * If this annotation is used at a type level:
- * <ol>
- * <li>
- * <b>class:</b> all methods in a class are accessing GUI components in a thread other than the event dispatch thread.
- * </li>
- * <li>
- * <b>interface:</b> methods in an interface that access GUI components should do it in a thread other than the event
- * dispatch thread.
- * </li>
- * </ol>
- * </p>
- * <p>
- * <b>Note:</b> Clients are responsible for calling methods marked with this annotation in the event dispatch thread.
+ * Understands an annotation that documents that a method is accessing GUI components in the current thread. The
+ * current thread may or may not be the event dispatch thread.
  *
  * @author Alex Ruiz
  */

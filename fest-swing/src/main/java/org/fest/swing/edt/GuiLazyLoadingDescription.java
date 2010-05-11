@@ -40,6 +40,14 @@ public abstract class GuiLazyLoadingDescription implements Description {
     });
   }
 
+  /**
+   * Returns the lazy-loaded text of this description.
+   * <p>
+   * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
+   * responsible for ensuring that this method is executed in the EDT.
+   * </p>
+   * @return the lazy-loaded text of this description.
+   */
   @RunsInCurrentThread
   protected abstract String loadDescription();
 }

@@ -22,10 +22,6 @@ import org.fest.swing.annotation.RunsInCurrentThread;
 /**
  * Understands an action that returns the index of a column in a <code>{@link JTable}</code> whose identifier matches
  * the given one.
- * <p>
- * <b>Note:</b> Methods in this class are <b>not</b> executed in the event dispatch thread (EDT.) Clients are
- * responsible for invoking them in the EDT.
- * </p>
  * @see JTable#getColumn(Object)
  * @see TableColumn#getModelIndex()
  *
@@ -35,6 +31,10 @@ public final class JTableColumnByIdentifierQuery {
 
   /**
    * Returns the index of a column in a <code>{@link JTable}</code> whose identifier matches the given one.
+   * <p>
+   * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
+   * responsible for ensuring that this method is executed in the EDT.
+   * </p>
    * @param table the given <code>JTable</code>.
    * @param identifier the column identifier.
    * @return the index of a column with a matching identifier. Otherwise it returns -1.

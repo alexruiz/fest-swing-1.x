@@ -40,8 +40,8 @@ public class JTabbedPaneLocation {
   /**
    * Returns the index of the first tab that matches the given <code>String</code>.
    * <p>
-   * <b>Note:</b> This method is <b>not</b> executed in the event dispatch thread (EDT.) Clients are responsible for
-   * invoking this method in the EDT.
+   * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
+   * responsible for ensuring that this method is executed in the EDT.
    * </p>
    * @param tabbedPane the target <code>JTabbedPane</code>.
    * @param title the title to match.
@@ -56,8 +56,8 @@ public class JTabbedPaneLocation {
   /**
    * Returns the index of the first tab whose title matches the value in the given <code>{@link TextMatcher}</code>.
    * <p>
-   * <b>Note:</b> This method is <b>not</b> executed in the event dispatch thread (EDT.) Clients are responsible for
-   * invoking this method in the EDT.
+   * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
+   * responsible for ensuring that this method is executed in the EDT.
    * </p>
    * @param tabbedPane the target <code>JTabbedPane</code>.
    * @param matcher indicates if the text of the <code>JTabbedPane</code> matches the value we are looking for.
@@ -75,8 +75,8 @@ public class JTabbedPaneLocation {
   /**
    * Returns the coordinates of the tab under the given index.
    * <p>
-   * <b>Note:</b> This method is <b>not</b> executed in the event dispatch thread (EDT.) Clients are responsible for
-   * invoking this method in the EDT.
+   * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
+   * responsible for ensuring that this method is executed in the EDT.
    * </p>
    * @param tabbedPane the target <code>JTabbedPane</code>.
    * @param index the given index.

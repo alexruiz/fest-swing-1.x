@@ -40,8 +40,8 @@ public final class JToolBarLocation {
   /**
    * Returns the point where to grab the given <code>{@link JToolBar}</code>.
    * <p>
-   * <b>Note:</b> This method is <b>not</b> executed in the event dispatch thread (EDT.) Clients are responsible for 
-   * invoking this method in the EDT.
+   * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
+   * responsible for ensuring that this method is executed in the EDT.
    * </p>
    * @param toolBar the target <code>JToolBar</code>.
    * @return the point where to grab the given <code>JToolBar</code>.
@@ -66,8 +66,8 @@ public final class JToolBarLocation {
    * <code>{@link BorderLayout#EAST EAST}</code>, <code>{@link BorderLayout#SOUTH SOUTH}</code>, or
    * <code>{@link BorderLayout#WEST WEST}</code>.
    * <p>
-   * <b>Note:</b> This method is <b>not</b> executed in the event dispatch thread (EDT.) Clients are responsible for 
-   * invoking this method in the EDT.
+   * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
+   * responsible for ensuring that this method is executed in the EDT.
    * </p>
    * @param toolBar the target <code>JToolBar</code>.
    * @param dock the container where to dock the <code>JToolBar</code> to.
@@ -102,7 +102,7 @@ public final class JToolBarLocation {
   private boolean isHorizontal(JToolBar toolBar) {
     return toolBar.getOrientation() == HORIZONTAL;
   }
-  
+
   private void validate(String constraint) {
     for (String validConstraint : VALID_CONSTRAINTS)
       if (validConstraint.equals(constraint)) return;

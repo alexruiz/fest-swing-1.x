@@ -157,8 +157,8 @@ public final class DialogMatcher extends NamedComponentMatcherTemplate<Dialog> {
    * <li>the title of the given <code>Dialog</code> matches the text (or pattern) in this matcher</li>
    * </ul>
    * <p>
-   * <b>Note:</b> This method is <b>not</b> executed in the event dispatch thread (EDT.) Clients are responsible for
-   * invoking this method in the EDT.
+   * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
+   * responsible for ensuring that this method is executed in the EDT.
    * </p>
    * @param dialog the <code>Dialog</code> to match.
    * @return <code>true</code> if the <code>Dialog</code> matches the search criteria in this matcher.

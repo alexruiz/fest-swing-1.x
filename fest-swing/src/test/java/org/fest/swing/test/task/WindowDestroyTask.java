@@ -45,8 +45,11 @@ public final class WindowDestroyTask {
   }
 
   /**
-   * Hides and disposes the given <code>{@link Window}</code>. This action is <b>not</b> executed in the event dispatch
-   * thread.
+   * Hides and disposes the given <code>{@link Window}</code>.
+   * <p>
+   * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
+   * responsible for ensuring that this method is executed in the EDT.
+   * </p>
    * @param w the <code>Window</code> to hide and dispose.
    */
   @RunsInCurrentThread

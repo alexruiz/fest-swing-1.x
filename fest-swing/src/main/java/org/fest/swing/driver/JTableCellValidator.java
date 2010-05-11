@@ -1,16 +1,16 @@
 /*
  * Created on Oct 13, 2008
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License
  * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
- * 
+ *
  * Copyright @2008-2010 the original author or authors.
  */
 package org.fest.swing.driver;
@@ -34,8 +34,8 @@ public final class JTableCellValidator {
   /**
    * Validates that the table cell in the given coordinates is editable.
    * <p>
-   * <b>Note:</b> This method is <b>not</b> executed in the event dispatch thread (EDT.) Clients are responsible for 
-   * invoking this method in the EDT.
+   * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
+   * responsible for ensuring that this method is executed in the EDT.
    * </p>
    * @param table the target <code>JTable</code>.
    * @param row the row index of the cell to validate.
@@ -44,16 +44,16 @@ public final class JTableCellValidator {
    */
   @RunsInCurrentThread
   public static void validateCellIsEditable(JTable table, int row, int column) {
-    if (!table.isCellEditable(row, column)) 
+    if (!table.isCellEditable(row, column))
       throw new IllegalStateException(
           concat("Expecting the cell [", valueOf(row), ",", valueOf(column), "] to be editable"));
   }
-  
+
   /**
    * Validates that the given table cell is non <code>null</code> and its indices are not out of bounds.
    * <p>
-   * <b>Note:</b> This method is <b>not</b> executed in the event dispatch thread (EDT.) Clients are responsible for 
-   * invoking this method in the EDT.
+   * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
+   * responsible for ensuring that this method is executed in the EDT.
    * </p>
    * @param table the target <code>JTable</code>.
    * @param cell the cell to validate.
@@ -78,8 +78,8 @@ public final class JTableCellValidator {
   /**
    * Validates the given indices regarding the given table.
    * <p>
-   * <b>Note:</b> This method is <b>not</b> executed in the event dispatch thread (EDT.) Clients are responsible for 
-   * invoking this method in the EDT.
+   * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
+   * responsible for ensuring that this method is executed in the EDT.
    * </p>
    * @param table the <code>JTable</code> to use to validate the given indices.
    * @param row the row index to validate.
@@ -97,8 +97,8 @@ public final class JTableCellValidator {
   /**
    * Validates that the given row index exists in the given table.
    * <p>
-   * <b>Note:</b> This method is <b>not</b> executed in the event dispatch thread (EDT.) Clients are responsible for 
-   * invoking this method in the EDT.
+   * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
+   * responsible for ensuring that this method is executed in the EDT.
    * </p>
    * @param table the table the given table.
    * @param row the row to validate.
@@ -112,8 +112,8 @@ public final class JTableCellValidator {
   /**
    * Validates that the given column index exists in the given table.
    * <p>
-   * <b>Note:</b> This method is <b>not</b> executed in the event dispatch thread (EDT.) Clients are responsible for 
-   * invoking this method in the EDT.
+   * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
+   * responsible for ensuring that this method is executed in the EDT.
    * </p>
    * @param table the table the given table.
    * @param column the column to validate.

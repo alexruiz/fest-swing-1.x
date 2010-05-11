@@ -123,8 +123,8 @@ public abstract class AbstractJTableCellWriter implements JTableCellWriter {
   /**
    * Scrolls the given <code>{@link JTable}</code> to the given cell.
    * <p>
-   * <b>Note:</b> This method is <b>not</b> executed in the event dispatch thread (EDT.) Clients are responsible for
-   * invoking this method in the EDT.
+   * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
+   * responsible for ensuring that this method is executed in the EDT.
    * </p>
    * @param table the target <code>JTable</code>.
    * @param row the row index of the cell.
@@ -155,8 +155,8 @@ public abstract class AbstractJTableCellWriter implements JTableCellWriter {
   /**
    * Finds the component used as editor for the given <code>{@link JTable}</code>.
    * <p>
-   * <b>Note:</b> This method is <b>not</b> executed in the event dispatch thread (EDT.) Clients are responsible for
-   * invoking this method in the EDT.
+   * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
+   * responsible for ensuring that this method is executed in the EDT.
    * </p>
    * @param <T> the generic type of the supported editor type.
    * @param table the target <code>JTable</code>.
@@ -213,8 +213,8 @@ public abstract class AbstractJTableCellWriter implements JTableCellWriter {
    * <li>the table cell at the given indices is editable</li>
    * </ol>
    * <p>
-   * <b>Note:</b> This method is <b>not</b> executed in the event dispatch thread (EDT.) Clients are responsible for
-   * invoking this method in the EDT.
+   * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
+   * responsible for ensuring that this method is executed in the EDT.
    * </p>
    * @param table the target <code>JTable</code>.
    * @param row the row index of the cell.

@@ -40,8 +40,8 @@ public final class WindowAncestorFinder {
    * <code>{@link Component}</code> itself if it is a <code>{@link Window}</code>, or the invoker's <code>Window</code>
    * if on a pop-up.
    * <p>
-   * <b>Note:</b> This method is <b>not</b> executed in the event dispatch thread (EDT.) Clients are responsible for 
-   * invoking this method in the EDT.
+   * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
+   * responsible for ensuring that this method is executed in the EDT.
    * </p>
    * @param c the <code>Component</code> to get the <code>Window</code> ancestor of.
    * @return the <code>Window</code> ancestor of the given <code>Component</code>, the <code>Component</code> itself if

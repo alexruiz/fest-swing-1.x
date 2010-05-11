@@ -39,8 +39,8 @@ public class JTableHeaderLocation {
    * Returns the index and the coordinates of the column which name matches the value in the given
    * <code>{@link TextMatcher}</code>.
    * <p>
-   * <b>Note:</b> This method is <b>not</b> executed in the event dispatch thread (EDT.) Clients are responsible for
-   * invoking this method in the EDT.
+   * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
+   * responsible for ensuring that this method is executed in the EDT.
    * </p>
    * @param tableHeader the target <code>JTableHeader</code>.
    * @param matcher indicates which is the matching column name.
@@ -64,8 +64,8 @@ public class JTableHeaderLocation {
   /**
    * Returns the coordinates of the column under the given index.
    * <p>
-   * <b>Note:</b> This method is <b>not</b> executed in the event dispatch thread (EDT.) Clients are responsible for
-   * invoking this method in the EDT.
+   * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
+   * responsible for ensuring that this method is executed in the EDT.
    * </p>
    * @param tableHeader the target <code>JTableHeader</code>.
    * @param index the given index.
@@ -96,8 +96,8 @@ public class JTableHeaderLocation {
    * Returns the index of the column which name matches the value in the given <code>{@link TextMatcher}</code>, or -1
    * if a matching column was not found.
    * <p>
-   * <b>Note:</b> This method is <b>not</b> executed in the event dispatch thread (EDT.) Clients are responsible for
-   * invoking this method in the EDT.
+   * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
+   * responsible for ensuring that this method is executed in the EDT.
    * </p>
    * @param tableHeader the target <code>JTableHeader</code>.
    * @param matcher indicates which is the matching column name.

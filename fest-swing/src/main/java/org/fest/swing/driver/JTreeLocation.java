@@ -42,8 +42,8 @@ public final class JTreeLocation {
   /**
    * Returns the bounds and visible coordinates of the given row.
    * <p>
-   * <b>Note:</b> This method is <b>not</b> executed in the event dispatch thread (EDT.) Clients are responsible for
-   * invoking this method in the EDT.
+   * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
+   * responsible for ensuring that this method is executed in the EDT.
    * </p>
    * @param tree the target <code>JTree</code>.
    * @param row the given row.
@@ -63,8 +63,8 @@ public final class JTreeLocation {
   /**
    * Returns the path for the given row.
    * <p>
-   * <b>Note:</b> This method is <b>not</b> executed in the event dispatch thread (EDT.) Clients are responsible for
-   * invoking this method in the EDT.
+   * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
+   * responsible for ensuring that this method is executed in the EDT.
    * </p>
    * @param tree the target <code>JTree</code>.
    * @param row the given row.
@@ -82,6 +82,10 @@ public final class JTreeLocation {
 
   /**
    * Validates that the given row index is valid.
+   * <p>
+   * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
+   * responsible for ensuring that this method is executed in the EDT.
+   * </p>
    * @param tree the target <code>JTree</code>.
    * @param row the row index to validate.
    * @return the validated row index.
@@ -99,8 +103,8 @@ public final class JTreeLocation {
   /**
    * Returns the bounds and visible coordinates of the given path.
    * <p>
-   * <b>Note:</b> This method is <b>not</b> executed in the event dispatch thread (EDT.) Clients are responsible for
-   * invoking this method in the EDT.
+   * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
+   * responsible for ensuring that this method is executed in the EDT.
    * </p>
    * @param tree the target <code>JTree</code>.
    * @param path the given path.

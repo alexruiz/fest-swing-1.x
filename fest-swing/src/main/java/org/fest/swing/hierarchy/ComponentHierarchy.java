@@ -23,8 +23,8 @@ import org.fest.swing.annotation.RunsInCurrentThread;
  * Understands access to all components in a hierarchy. <b>Note:</b> Methods in this class are <b>not</b> executed in
  * the event dispatch thread. Callers are responsible for calling them in the event dispatch thread.
  * <p>
- * <b>Note:</b> methods in this interface are <b>not</b> executed in the event dispatch thread (EDT.) Clients are 
- * responsible for invoking them in the EDT.
+ * <b>Note:</b> methods in this interface are <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.)
+ * Clients are responsible for invoking them in the EDT.
  * </p>
  *
  * @author Alex Ruiz

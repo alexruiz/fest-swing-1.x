@@ -27,12 +27,12 @@ import org.fest.swing.annotation.RunsInCurrentThread;
  * @author Alex Ruiz
  */
 public final class ComponentStateValidator {
-  
+
   /**
    * Asserts that the <code>{@link Component}</code> is enabled and showing.
    * <p>
-   * <b>Note:</b> This method is <b>not</b> executed in the event dispatch thread (EDT.) Clients are responsible for 
-   * invoking this method in the EDT.
+   * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
+   * responsible for ensuring that this method is executed in the EDT.
    * </p>
    * @param c the target component.
    * @throws IllegalStateException if the <code>Component</code> is disabled.
@@ -43,12 +43,12 @@ public final class ComponentStateValidator {
     validateIsEnabled(c);
     validateIsShowing(c);
   }
-  
+
   /**
    * Asserts that the <code>{@link Component}</code> is enabled.
    * <p>
-   * <b>Note:</b> This method is <b>not</b> executed in the event dispatch thread (EDT.) Clients are responsible for 
-   * invoking this method in the EDT.
+   * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
+   * responsible for ensuring that this method is executed in the EDT.
    * </p>
    * @param c the target component.
    * @throws IllegalStateException if the <code>Component</code> is disabled.
@@ -61,8 +61,8 @@ public final class ComponentStateValidator {
   /**
    * Asserts that the <code>{@link Component}</code> is showing on the screen.
    * <p>
-   * <b>Note:</b> This method is <b>not</b> executed in the event dispatch thread (EDT.) Clients are responsible for 
-   * invoking this method in the EDT.
+   * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
+   * responsible for ensuring that this method is executed in the EDT.
    * </p>
    * @param c the target component.
    * @throws IllegalStateException if the <code>Component</code> is not showing on the screen.
@@ -76,8 +76,8 @@ public final class ComponentStateValidator {
    * Throws a <code>{@link IllegalStateException}</code> when a <code>{@link Component}</code> is not showing on the
    * screen.
    * <p>
-   * <b>Note:</b> This method is <b>not</b> executed in the event dispatch thread (EDT.) Clients are responsible for 
-   * invoking this method in the EDT.
+   * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
+   * responsible for ensuring that this method is executed in the EDT.
    * </p>
    * @param c the target component.
    * @return the thrown exception.

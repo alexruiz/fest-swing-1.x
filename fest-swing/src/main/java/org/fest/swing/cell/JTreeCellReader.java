@@ -22,8 +22,8 @@ import org.fest.swing.annotation.RunsInCurrentThread;
 /**
  * Understands reading the internal value of a cell in a <code>{@link JTree}</code> as expected in a test.
  * <p>
- * <b>Note:</b> methods in this interface are <b>not</b> executed in the event dispatch thread (EDT.) Clients are 
- * responsible for invoking them in the EDT.
+ * <b>Note:</b> methods in this interface are <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.)
+ * Clients are responsible for invoking them in the EDT.
  * </p>
  *
  * @author Yvonne Wang
@@ -35,8 +35,8 @@ public interface JTreeCellReader {
   /**
    * Returns the internal value of a cell in a <code>{@link JTree}</code> as expected in a test.
    * <p>
-   * <b>Note:</b> Implementations of this method should <b>not</b> use the event dispatch thread (EDT.) Clients are
-   * responsible for invoking this method in the EDT.
+   * <b>Note:</b> Implementations of this method <b>may not</b> guaranteed to be executed in the event dispatch thread
+   * (EDT.) Clients are responsible for invoking this method in the EDT.
    * </p>
    * @param tree the given <code>JTree</code>.
    * @param modelValue the value of a cell, retrieved from the model.

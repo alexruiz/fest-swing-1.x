@@ -81,6 +81,10 @@ public class TestWindow extends JFrame {
 
   /**
    * Creates a new </code>{@link TestWindow}</code>.
+   * <p>
+   * <b>Note:</b> This constructor is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients
+   * are responsible for ensuring that this constructor is executed in the EDT.
+   * </p>
    * @param testClass the class of the test where the window to create will be used. The simple name of the given class
    * will be used as the title of the created window.
    */
@@ -92,7 +96,11 @@ public class TestWindow extends JFrame {
   }
 
   /**
-   * Adds the given GUI components to this window. This method is <b>not</b> executed in the event dispatch thread.
+   * Adds the given GUI components to this window.
+   * <p>
+   * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
+   * responsible for ensuring that this method is executed in the EDT.
+   * </p>
    * @param components the components to add.
    */
   @RunsInCurrentThread
@@ -114,7 +122,11 @@ public class TestWindow extends JFrame {
   }
 
   /**
-   * Displays the given window on the screen. This method is executed in the current thread where it is called.
+   * Displays the given window on the screen.
+   * <p>
+   * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
+   * responsible for ensuring that this method is executed in the EDT.
+   * </p>
    * @param <T> the type of window to display.
    * @param w the window to display on the screen.
    * @return the displayed window.
@@ -141,8 +153,11 @@ public class TestWindow extends JFrame {
   }
 
   /**
-   * Displays the given window on the screen using the given dimension as its preferred size. This method is executed in
-   * the current thread where it is called.
+   * Displays the given window on the screen using the given dimension as its preferred size.
+   * <p>
+   * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
+   * responsible for ensuring that this method is executed in the EDT.
+   * </p>
    * @param window the window to display on the screen.
    * @param preferredSize the preferred size to set to the given window before displaying it on the screen.
    */
@@ -154,6 +169,10 @@ public class TestWindow extends JFrame {
 
   /**
    * Chooses the look and feel.
+   * <p>
+   * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
+   * responsible for ensuring that this method is executed in the EDT.
+   * </p>
    */
   @RunsInCurrentThread
   protected void chooseLookAndFeel() {}
@@ -171,7 +190,11 @@ public class TestWindow extends JFrame {
   }
 
   /**
-   * Hides and disposes the given window. This method is executed in the current thread where it is called.
+   * Hides and disposes the given window.
+   * <p>
+   * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
+   * responsible for ensuring that this method is executed in the EDT.
+   * </p>
    * @param window the window to destroy.
    */
   @RunsInCurrentThread

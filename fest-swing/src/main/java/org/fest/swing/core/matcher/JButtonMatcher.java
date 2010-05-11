@@ -157,8 +157,8 @@ public final class JButtonMatcher extends NamedComponentMatcherTemplate<JButton>
    * <li>the text of the given <code>JButton</code> matches the text (or pattern) in this matcher</li>
    * </ul>
    * <p>
-   * <b>Note:</b> This method is <b>not</b> executed in the event dispatch thread (EDT.) Clients are responsible for
-   * invoking this method in the EDT.
+   * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
+   * responsible for ensuring that this method is executed in the EDT.
    * </p>
    * @param button the <code>JButton</code> to match.
    * @return <code>true</code> if the <code>JButton</code> matches the search criteria in this matcher.

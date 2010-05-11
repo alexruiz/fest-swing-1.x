@@ -133,8 +133,8 @@ public class Formatting {
   /**
    * Returns a <code>String</code> representation of the given <code>{@link Component}</code>.
    * <p>
-   * <b>Note:</b> This method is <b>not</b> executed in the event dispatch thread (EDT.) Clients are responsible for
-   * invoking this method in the EDT.
+   * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
+   * responsible for ensuring that this method is executed in the EDT.
    * </p>
    * @param c the given <code>Component</code>.
    * @return a <code>String</code> representation of the given <code>Component</code>.
