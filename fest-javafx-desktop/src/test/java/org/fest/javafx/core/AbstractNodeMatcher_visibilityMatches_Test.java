@@ -15,16 +15,12 @@
  */
 package org.fest.javafx.core;
 
-import static org.easymock.EasyMock.expect;
-import static org.easymock.classextension.EasyMock.createMock;
-import static org.fest.assertions.Assertions.assertThat;
-import static org.fest.javafx.core.Visibility.REQUIRE_VISIBLE;
-
 import javafx.scene.Node;
 
-import org.fest.mocks.EasyMockTemplate;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
+
+import static org.fest.assertions.Assertions.assertThat;
+import static org.fest.javafx.core.Visibility.REQUIRE_VISIBLE;
 
 /**
  * Tests for <code>{@link AbstractNodeMatcher#visibilityMatches(javafx.scene.Node)}</code>.
@@ -33,42 +29,38 @@ import org.junit.Test;
  */
 public class AbstractNodeMatcher_visibilityMatches_Test {
 
-  private Node node;
+  private static Node node;
 
-  @Before
-  public void setUp() {
-    node = createMock(Node.class);
+  @BeforeClass
+  public static void setUpOnce() {
+    node = new ConcreteNode();
   }
 
   @Test
-  public void should_always_match_if_visibility_is_not_required() {
-    assertThat(matchAnyNode().visibilityMatches(node)).isTrue();
+  public void should_match_if_visibility_is_not_required_and_Node_is_visible() {
+    node.set$visible(true);
+    ConcreteNodeMatcher matcher = matchAnyNode();
+    assertThat(matcher.visibilityMatches(node)).isTrue();
+  }
+
+  @Test
+  public void should_match_if_visibility_is_not_required_and_Node_is_not_visible() {
+    node.set$visible(false);
+    ConcreteNodeMatcher matcher = matchAnyNode();
+    assertThat(matcher.visibilityMatches(node)).isTrue();
   }
 
   @Test
   public void should_match_if_visibility_is_required_and_Node_is_visible() {
-    new EasyMockTemplate(node) {
-      @Override protected void expectations() {
-        expect(node.get$visible()).andReturn(true);
-      }
-
-      @Override protected void codeToTest() {
-        assertThat(matchVisibleNode().visibilityMatches(node)).isTrue();
-      }
-    }.run();
+    node.set$visible(true);
+    assertThat(matchVisibleNode().visibilityMatches(node)).isTrue();
   }
 
   @Test
   public void should_not_match_if_visibility_is_required_and_Node_is_not_visible() {
-    new EasyMockTemplate(node) {
-      @Override protected void expectations() {
-        expect(node.get$visible()).andReturn(false);
-      }
-
-      @Override protected void codeToTest() {
-        assertThat(matchVisibleNode().visibilityMatches(node)).isFalse();
-      }
-    }.run();
+    node.set$visible(false);
+    ConcreteNodeMatcher matcher = matchVisibleNode();
+    assertThat(matcher.visibilityMatches(node)).isFalse();
   }
 
   private static ConcreteNodeMatcher matchVisibleNode() {
@@ -77,7 +69,8 @@ public class AbstractNodeMatcher_visibilityMatches_Test {
   
   @Test
   public void should_not_match_if_Node_is_null() {
-    assertThat(matchAnyNode().visibilityMatches(null));
+    ConcreteNodeMatcher matcher = matchAnyNode();
+    assertThat(matcher.visibilityMatches(null));
   }
 
   private static ConcreteNodeMatcher matchAnyNode() {

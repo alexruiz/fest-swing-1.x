@@ -15,16 +15,10 @@
  */
 package org.fest.javafx.core;
 
-import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.text.Text;
 
 import org.junit.*;
-
-import org.fest.mocks.EasyMockTemplate;
-
-import static org.easymock.EasyMock.expect;
-import static org.easymock.classextension.EasyMock.createMock;
 
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.javafx.core.Visibility.REQUIRE_VISIBLE;
@@ -36,24 +30,18 @@ import static org.fest.javafx.core.Visibility.REQUIRE_VISIBLE;
  */
 public class NodeMatcherByType_matches_Test {
 
-  private Node node;
+  private Button node;
   
   @Before
   public void setUp() {
-    node = createMock(Button.class);
+    node = new Button();
   }
   
   @Test
   public void should_match_if_types_are_equal_and_visibility_matches() {
-    new EasyMockTemplate(node) {
-      @Override protected void expectations() {
-        expect(node.get$visible()).andReturn(true);
-      }
-      
-      @Override protected void codeToTest() {
-        assertThat(matchVisibleButton().matches(node)).isTrue();
-      }
-    }.run();
+    node.set$visible(true);
+    NodeMatcherByType matcher = matchVisibleButton();
+    assertThat(matcher.matches(node)).isTrue();
   }
   
   @Test
@@ -64,20 +52,15 @@ public class NodeMatcherByType_matches_Test {
   
   @Test
   public void should_not_match_if_visibility_does_not_match() {
-    new EasyMockTemplate(node) {
-      @Override protected void expectations() {
-        expect(node.get$visible()).andReturn(false);
-      }
-      
-      @Override protected void codeToTest() {
-        assertThat(matchVisibleButton().matches(node)).isFalse();
-      }
-    }.run();
+    node.set$visible(false);
+    NodeMatcherByType matcher = matchVisibleButton();
+    assertThat(matcher.matches(node)).isFalse();
   }
   
   @Test
   public void should_not_match_null_Node() {
-    assertThat(matchVisibleButton().matches(null)).isFalse();
+    NodeMatcherByType matcher = matchVisibleButton();
+    assertThat(matcher.matches(null)).isFalse();
   }
 
   private static NodeMatcherByType matchVisibleButton() {
