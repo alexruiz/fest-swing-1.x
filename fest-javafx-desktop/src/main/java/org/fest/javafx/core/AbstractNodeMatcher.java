@@ -31,8 +31,8 @@ public abstract class AbstractNodeMatcher implements NodeMatcher {
   private final Visibility visibility;
 
   /**
-   * Creates a new </code>{@link AbstractNodeMatcher}</code>. The node to match does not have to be showing on the
-   * screen.
+   * Creates a new </code>{@link AbstractNodeMatcher}</code>. The {@code Node} to match does not have to be showing on
+   * the screen.
    */
   public AbstractNodeMatcher() {
     this(MAY_BE_VISIBLE);
@@ -48,6 +48,10 @@ public abstract class AbstractNodeMatcher implements NodeMatcher {
 
   /**
    * Indicates if the given {@link Node}'s visibility matches the value specified in this matcher.
+   * <p>
+   * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the UI thread. Clients are responsible for
+   * calling this method from the UI thread.
+   * </p>
    * @param node the node to verify.
    * @return <code>true</code> if the {@code Node}s visibility matches the value specified in this matcher;
    * <code>false</code> otherwise.
