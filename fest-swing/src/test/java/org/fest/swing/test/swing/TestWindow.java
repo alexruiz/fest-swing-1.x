@@ -99,7 +99,7 @@ public class TestWindow extends JFrame {
    * Adds the given GUI components to this window.
    * <p>
    * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
-   * responsible for ensuring that this method is executed in the EDT.
+   * responsible for calling this method from the EDT.
    * </p>
    * @param components the components to add.
    */
@@ -125,7 +125,7 @@ public class TestWindow extends JFrame {
    * Displays the given window on the screen.
    * <p>
    * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
-   * responsible for ensuring that this method is executed in the EDT.
+   * responsible for calling this method from the EDT.
    * </p>
    * @param <T> the type of window to display.
    * @param w the window to display on the screen.
@@ -156,7 +156,7 @@ public class TestWindow extends JFrame {
    * Displays the given window on the screen using the given dimension as its preferred size.
    * <p>
    * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
-   * responsible for ensuring that this method is executed in the EDT.
+   * responsible for calling this method from the EDT.
    * </p>
    * @param window the window to display on the screen.
    * @param preferredSize the preferred size to set to the given window before displaying it on the screen.
@@ -171,7 +171,7 @@ public class TestWindow extends JFrame {
    * Chooses the look and feel.
    * <p>
    * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
-   * responsible for ensuring that this method is executed in the EDT.
+   * responsible for calling this method from the EDT.
    * </p>
    */
   @RunsInCurrentThread
@@ -193,7 +193,7 @@ public class TestWindow extends JFrame {
    * Hides and disposes the given window.
    * <p>
    * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
-   * responsible for ensuring that this method is executed in the EDT.
+   * responsible for calling this method from the EDT.
    * </p>
    * @param window the window to destroy.
    */

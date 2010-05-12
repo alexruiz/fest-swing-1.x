@@ -97,7 +97,7 @@ public class AWT {
    * Translates the given coordinates to the location on screen of the given <code>{@link Component}</code>.
    * <p>
    * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
-   * responsible for ensuring that this method is executed in the EDT.
+   * responsible for calling this method from the EDT.
    * </p>
    * @param c the given <code>Component</code>.
    * @param x X coordinate.
@@ -133,7 +133,7 @@ public class AWT {
    * Returns a point at the center of the given <code>{@link Component}</code>.
    * <p>
    * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
-   * responsible for ensuring that this method is executed in the EDT.
+   * responsible for calling this method from the EDT.
    * </p>
    * @param c the given <code>Component</code>.
    * @return a point at the center of the given <code>Component</code>.
@@ -148,7 +148,7 @@ public class AWT {
    * Returns a point at the center of the visible rectangle of the given <code>{@link JComponent}</code>.
    * <p>
    * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
-   * responsible for ensuring that this method is executed in the EDT.
+   * responsible for calling this method from the EDT.
    * </p>
    * @param c the given <code>JComponent</code>.
    * @return a point at the center of the visible rectangle of the given <code>JComponent</code>.
@@ -163,7 +163,7 @@ public class AWT {
    * Returns a point at the center of the given <code>{@link Rectangle}</code>.
    * <p>
    * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
-   * responsible for ensuring that this method is executed in the EDT.
+   * responsible for calling this method from the EDT.
    * </p>
    * @param r the given <code>Rectangle</code>.
    * @return a point at the center of the given <code>Rectangle</code>.
@@ -177,7 +177,7 @@ public class AWT {
    * Returns the insets of the given <code>{@link Container}</code>, or an empty one if no insets can be found.
    * <p>
    * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
-   * responsible for ensuring that this method is executed in the EDT.
+   * responsible for calling this method from the EDT.
    * </p>
    * @param c the given <code>Container</code>.
    * @return the insets of the given <code>Container</code>, or an empty one if no insets can be found.
@@ -217,7 +217,7 @@ public class AWT {
    * <code>JPopupMenu</code> that is implemented with a heavy-weight component (usually a <code>Window</code>).
    * <p>
    * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
-   * responsible for ensuring that this method is executed in the EDT.
+   * responsible for calling this method from the EDT.
    * </p>
    * @param c the given <code>Component</code>.
    * @return <code>true</code> if the given <code>Component</code> is a heavy-weight pop-up; <code>false</code>
@@ -248,7 +248,7 @@ public class AWT {
    * <code>Component</code> is not on a pop-up of any sort.
    * <p>
    * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
-   * responsible for ensuring that this method is executed in the EDT.
+   * responsible for calling this method from the EDT.
    * </p>
    * @param c the given <code>Component</code>.
    * @return the invoker, if any, of the given <code>Component</code>; or <code>null</code>, if the
@@ -267,7 +267,7 @@ public class AWT {
    * <code>getLocationOnScreen</code>.
    * <p>
    * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
-   * responsible for ensuring that this method is executed in the EDT.
+   * responsible for calling this method from the EDT.
    * </p>
    * @param c the given <code>Component</code>.
    * @return the a point specifying the <code>Component</code>'s top-left corner in the screen's coordinate space, or

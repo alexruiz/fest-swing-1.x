@@ -33,7 +33,7 @@ public class BasicCellRendererReader implements CellRendererReader {
    * instance of <code>{@link JLabel}</code></li>.
    * <p>
    * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
-   * responsible for ensuring that this method is executed in the EDT.
+   * responsible for calling this method from the EDT.
    * </p>
    * @param c the given cell renderer component.
    * @return the value of the given <code>Component</code>, or <code>null</code> if the renderer belongs to an unknown

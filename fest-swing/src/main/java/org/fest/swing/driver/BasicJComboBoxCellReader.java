@@ -71,7 +71,7 @@ public class BasicJComboBoxCellReader implements JComboBoxCellReader {
    * Returns the internal value of a cell in a <code>{@link JComboBox}</code> as expected in a test.
    * <p>
    * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
-   * responsible for ensuring that this method is executed in the EDT.
+   * responsible for calling this method from the EDT.
    * </p>
    * @param comboBox the given <code>JComboBox</code>.
    * @param index the index of the cell.

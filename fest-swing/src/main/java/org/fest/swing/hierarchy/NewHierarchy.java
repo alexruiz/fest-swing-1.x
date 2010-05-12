@@ -86,7 +86,7 @@ public class NewHierarchy extends ExistingHierarchy {
    * Make all currently existing components invisible to this hierarchy, without affecting their current state.
    * <p>
    * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
-   * responsible for ensuring that this method is executed in the EDT.
+   * responsible for calling this method from the EDT.
    * </p>
    */
   @RunsInCurrentThread
@@ -99,7 +99,7 @@ public class NewHierarchy extends ExistingHierarchy {
    * Make the given component visible to this hierarchy.
    * <p>
    * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
-   * responsible for ensuring that this method is executed in the EDT.
+   * responsible for calling this method from the EDT.
    * </p>
    * @param c the given component.
    */
@@ -112,7 +112,7 @@ public class NewHierarchy extends ExistingHierarchy {
    * Returns all sub-components of the given component, omitting those which are currently filtered.
    * <p>
    * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
-   * responsible for ensuring that this method is executed in the EDT.
+   * responsible for calling this method from the EDT.
    * </p>
    * @param c the given component.
    * @return all sub-components of the given component, omitting those which are currently filtered.
@@ -131,7 +131,7 @@ public class NewHierarchy extends ExistingHierarchy {
    * Returns <code>true</code> if the given component is not filtered.
    * <p>
    * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
-   * responsible for ensuring that this method is executed in the EDT.
+   * responsible for calling this method from the EDT.
    * </p>
    * @param c the given component.
    * @return <code>true</code> if the given component is not filtered, <code>false</code> otherwise.
@@ -145,7 +145,7 @@ public class NewHierarchy extends ExistingHierarchy {
    * Dispose of the given window, but only if it currently exists within the hierarchy.  It will no longer appear in
    * <p>
    * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
-   * responsible for ensuring that this method is executed in the EDT.
+   * responsible for calling this method from the EDT.
    * </p>
    * this hierarchy or be reachable in a hierarchy walk.
    * @param w the window to dispose.

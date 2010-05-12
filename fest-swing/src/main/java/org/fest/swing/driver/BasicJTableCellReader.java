@@ -70,7 +70,7 @@ public class BasicJTableCellReader implements JTableCellReader {
    * of the object stored in the <code>JTable</code>'s model at the specified indices.
    * <p>
    * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
-   * responsible for ensuring that this method is executed in the EDT.
+   * responsible for calling this method from the EDT.
    * </p>
    * @param table the given <code>JTable</code>.
    * @param row the row index of the cell.
@@ -98,7 +98,7 @@ public class BasicJTableCellReader implements JTableCellReader {
    * Returns the font of the cell renderer for the given table cell.
    * <p>
    * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
-   * responsible for ensuring that this method is executed in the EDT.
+   * responsible for calling this method from the EDT.
    * </p>
    * @param table the given <code>JTable</code>.
    * @param row the row index of the cell.
@@ -115,7 +115,7 @@ public class BasicJTableCellReader implements JTableCellReader {
    * Returns the background color of the cell renderer for the given table cell.
    * <p>
    * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
-   * responsible for ensuring that this method is executed in the EDT.
+   * responsible for calling this method from the EDT.
    * </p>
    * @param table the given <code>JTable</code>.
    * @param row the row index of the cell.
@@ -132,7 +132,7 @@ public class BasicJTableCellReader implements JTableCellReader {
    * Returns the foreground color of the cell renderer for the given table cell.
    * <p>
    * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
-   * responsible for ensuring that this method is executed in the EDT.
+   * responsible for calling this method from the EDT.
    * </p>
    * @param table the given <code>JTable</code>.
    * @param row the row index of the cell.

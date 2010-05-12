@@ -35,7 +35,7 @@ public final class JTableCellValidator {
    * Validates that the table cell in the given coordinates is editable.
    * <p>
    * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
-   * responsible for ensuring that this method is executed in the EDT.
+   * responsible for calling this method from the EDT.
    * </p>
    * @param table the target <code>JTable</code>.
    * @param row the row index of the cell to validate.
@@ -53,7 +53,7 @@ public final class JTableCellValidator {
    * Validates that the given table cell is non <code>null</code> and its indices are not out of bounds.
    * <p>
    * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
-   * responsible for ensuring that this method is executed in the EDT.
+   * responsible for calling this method from the EDT.
    * </p>
    * @param table the target <code>JTable</code>.
    * @param cell the cell to validate.
@@ -79,7 +79,7 @@ public final class JTableCellValidator {
    * Validates the given indices regarding the given table.
    * <p>
    * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
-   * responsible for ensuring that this method is executed in the EDT.
+   * responsible for calling this method from the EDT.
    * </p>
    * @param table the <code>JTable</code> to use to validate the given indices.
    * @param row the row index to validate.
@@ -98,7 +98,7 @@ public final class JTableCellValidator {
    * Validates that the given row index exists in the given table.
    * <p>
    * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
-   * responsible for ensuring that this method is executed in the EDT.
+   * responsible for calling this method from the EDT.
    * </p>
    * @param table the table the given table.
    * @param row the row to validate.
@@ -113,7 +113,7 @@ public final class JTableCellValidator {
    * Validates that the given column index exists in the given table.
    * <p>
    * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
-   * responsible for ensuring that this method is executed in the EDT.
+   * responsible for calling this method from the EDT.
    * </p>
    * @param table the table the given table.
    * @param column the column to validate.

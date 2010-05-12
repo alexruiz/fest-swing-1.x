@@ -33,7 +33,7 @@ interface ChildrenFinderStrategy {
    * the given container but cannot be obtained by calling <code>{@link Container#getComponents()}</code>.
    * <p>
    * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
-   * responsible for ensuring that this method is executed in the EDT.
+   * responsible for calling this method from the EDT.
    * </p>
    * @param c the container whose children we are looking for.
    * @return a collection containing the non-explicit children found.

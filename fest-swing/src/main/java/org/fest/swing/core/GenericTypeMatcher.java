@@ -60,7 +60,7 @@ public abstract class GenericTypeMatcher<T extends Component> extends AbstractCo
    * </ol>
    * <p>
    * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
-   * responsible for ensuring that this method is executed in the EDT.
+   * responsible for calling this method from the EDT.
    * </p>
    * @param c the <code>Component</code> to verify.
    * @return <code>true</code> if the given <code>Component</code> is an instance of the generic type of this matcher

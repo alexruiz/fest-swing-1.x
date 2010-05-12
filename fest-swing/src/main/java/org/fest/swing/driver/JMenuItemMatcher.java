@@ -52,7 +52,7 @@ public class JMenuItemMatcher implements ComponentMatcher {
    * in this matcher.
    * <p>
    * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
-   * responsible for ensuring that this method is executed in the EDT.
+   * responsible for calling this method from the EDT.
    * </p>
    * @param c the component to verify.
    * @return <code>true</code> if the component matches, <code>false</code> otherwise.

@@ -75,7 +75,7 @@ public final class FocusOwnerFinder {
    * responsible for calling this method in the event dispatch thread.
    * <p>
    * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
-   * responsible for ensuring that this method is executed in the EDT.
+   * responsible for calling this method from the EDT.
    * </p>
    * @return the focus owner.
    */

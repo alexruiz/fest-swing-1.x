@@ -58,7 +58,7 @@ public class ExistingHierarchy implements ComponentHierarchy {
    * Return the parent for the given component.
    * <p>
    * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
-   * responsible for ensuring that this method is executed in the EDT.
+   * responsible for calling this method from the EDT.
    * </p>
    * @param c the given component.
    * @return the parent for the given component.
@@ -82,7 +82,7 @@ public class ExistingHierarchy implements ComponentHierarchy {
    * Returns all descendants of interest of the given component.
    * <p>
    * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
-   * responsible for ensuring that this method is executed in the EDT.
+   * responsible for calling this method from the EDT.
    * </p>
    * @param c the given component.
    * @return all descendants of interest of the given component.
@@ -96,7 +96,7 @@ public class ExistingHierarchy implements ComponentHierarchy {
    * Properly dispose of the given window, making it and its native resources available for garbage collection.
    * <p>
    * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
-   * responsible for ensuring that this method is executed in the EDT.
+   * responsible for calling this method from the EDT.
    * </p>
    * @param w the window to dispose.
    */

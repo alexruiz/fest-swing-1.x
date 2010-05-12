@@ -153,7 +153,7 @@ public final class JLabelMatcher extends NamedComponentMatcherTemplate<JLabel> {
    * Indicates whether the text of the given <code>{@link JLabel}</code> is equal to the text in this matcher.
    * <p>
    * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
-   * responsible for ensuring that this method is executed in the EDT.
+   * responsible for calling this method from the EDT.
    * </p>
    * @param button the <code>JLabel</code> to match.
    * @return <code>true</code> if the text in the <code>JLabel</code> is equal to the text in this matcher,

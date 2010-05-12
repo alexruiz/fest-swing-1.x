@@ -66,7 +66,7 @@ public class JComponentDriver extends ContainerDriver {
    * Invoke <code>{@link JComponent#scrollRectToVisible(Rectangle)}</code> on the given <code>{@link JComponent}</code>.
    * <p>
    * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
-   * responsible for ensuring that this method is executed in the EDT.
+   * responsible for calling this method from the EDT.
    * </p>
    * @param c the given <code>JComponent</code>.
    * @param r the visible <code>Rectangle</code>.
@@ -86,7 +86,7 @@ public class JComponentDriver extends ContainerDriver {
    * given one.
    * <p>
    * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
-   * responsible for ensuring that this method is executed in the EDT.
+   * responsible for calling this method from the EDT.
    * </p>
    * @param c the given <code>JComponent</code>.
    * @param r the <code>Rectangle</code> to verify.
@@ -103,7 +103,7 @@ public class JComponentDriver extends ContainerDriver {
    * the given <code>{@link Point}</code>.
    * <p>
    * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
-   * responsible for ensuring that this method is executed in the EDT.
+   * responsible for calling this method from the EDT.
    * </p>
    * @param c the given <code>JComponent</code>.
    * @param p the <code>Point</code> to verify.

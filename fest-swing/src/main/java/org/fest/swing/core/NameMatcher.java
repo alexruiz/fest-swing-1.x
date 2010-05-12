@@ -89,7 +89,7 @@ public final class NameMatcher extends AbstractComponentMatcher {
    * specified in this matcher.
    * <p>
    * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
-   * responsible for ensuring that this method is executed in the EDT.
+   * responsible for calling this method from the EDT.
    * </p>
    * @return <code>true</code> if the name and visibility of the given <code>Component</code> matches the values
    * specified in this matcher, <code>false</code> otherwise.
