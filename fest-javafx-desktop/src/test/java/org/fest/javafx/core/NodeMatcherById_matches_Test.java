@@ -16,7 +16,6 @@
 package org.fest.javafx.core;
 
 import javafx.scene.control.Button;
-import javafx.scene.text.Text;
 
 import org.junit.*;
 
@@ -24,30 +23,31 @@ import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.javafx.core.Visibility.REQUIRE_VISIBLE;
 
 /**
- * Tests for <code>{@link NodeMatcherByType#matches(javafx.scene.Node)}</code>.
+ * Tests for <code>{@link NodeMatcherById#matches(javafx.scene.Node)}</code>.
  *
  * @author Alex Ruiz
  */
-public class NodeMatcherByType_matches_Test {
+public class NodeMatcherById_matches_Test {
 
   private Button node;
-  private NodeMatcherByType matcher;
+  private NodeMatcherById matcher;
   
   @Before
   public void setUp() {
     node = new Button();
-    matcher = new NodeMatcherByType(Button.class, REQUIRE_VISIBLE);
+    node.set$id("myButton");
+    matcher = new NodeMatcherById("myButton", REQUIRE_VISIBLE);
   }
   
   @Test
-  public void should_match_if_types_are_equal_and_visibility_matches() {
+  public void should_match_if_ids_are_equal_and_visibility_matches() {
     node.set$visible(true);
     assertThat(matcher.matches(node)).isTrue();
   }
   
   @Test
-  public void should_not_match_if_types_not_compatible() {
-    matcher = new NodeMatcherByType(Text.class);
+  public void should_not_match_if_ids_are_not_equal() {
+    matcher = new NodeMatcherById("hello");
     assertThat(matcher.matches(node)).isFalse();
   }
   

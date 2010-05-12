@@ -34,6 +34,7 @@ public class NodeMatcherByType extends AbstractNodeMatcher {
    * Creates a new </code>{@link NodeMatcherByType}</code>. The {@code Node} to match does not have to be showing on
    * the screen.
    * @param type the type of {@code Node} to look for.
+   * @throws NullPointerException if {@code type} is <code>null</code>.
    */
   public NodeMatcherByType(Class<? extends Node> type) {
     this(type, MAY_BE_VISIBLE);
@@ -43,15 +44,18 @@ public class NodeMatcherByType extends AbstractNodeMatcher {
    * Creates a new </code>{@link NodeMatcherByType}</code>.
    * @param type the type of {@code Node} to look for.
    * @param visibility indicates whether the node to match should be showing on the screen or not.
+   * @throws NullPointerException if {@code type} is <code>null</code>.
+   * @throws NullPointerException if {@code visibility} is <code>null</code>.
    */
   public NodeMatcherByType(Class<? extends Node> type, Visibility visibility) {
     super(visibility);
+    if (type == null) throw new NullPointerException("The type to match should not be null");
     this.type = type;
   }
 
   /**
-   * Indicates whether the type and visibility of the given <code>{@link Node}</code> matches the values in this
-   * matcher. This method returns <code>false</code> if the given {@code Node} is <code>null</code>.
+   * Indicates whether the type and visibility of the given <code>{@link Node}</code> match the values in this matcher. 
+   * This method returns <code>false</code> if the given {@code Node} is <code>null</code>.
    * <p>
    * <b>Note:</b> This method is <b>not</b> executed in the UI thread. Clients are responsible for invoking this method 
    * in the UI thread.

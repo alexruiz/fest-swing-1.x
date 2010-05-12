@@ -41,7 +41,7 @@ public abstract class AbstractNodeMatcher implements NodeMatcher {
   /**
    * Creates a new </code>{@link AbstractNodeMatcher}</code>.
    * @param visibility indicates whether the node to match should be showing on the screen or not.
-   * @throws NullPointerException if the {@code visibility} is <code>null</code>.
+   * @throws NullPointerException if {@code visibility} is <code>null</code>.
    */
   public AbstractNodeMatcher(Visibility visibility) {
     if (visibility == null) throw new NullPointerException("The required visibility should not be null");
