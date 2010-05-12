@@ -23,7 +23,7 @@ package org.fest.javafx.core;
 public enum Visibility {
 
   /** Indicates that a node should be showing on the screen. */
-  REQUIRED_VISIBLE,
+  REQUIRE_VISIBLE,
 
   /** Indicates that it does not matter if a node is showing on the screen or not. */
   MAY_BE_VISIBLE

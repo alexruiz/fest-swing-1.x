@@ -32,7 +32,7 @@ public interface NodeFinder {
    * <p>
    * Example:
    * <pre>
-   * Button button = finder.findByType(scene, Button.class, {@link Visibility#REQUIRED_VISIBLE REQUIRED_VISIBLE});
+   * Button button = finder.findByType(scene, Button.class, {@link Visibility#REQUIRE_VISIBLE REQUIRED_VISIBLE});
    * </pre>
    * </p>
    * @param <T> the generic type of the node to find.
@@ -50,7 +50,7 @@ public interface NodeFinder {
    * <p>
    * Example:
    * <pre>
-   * Button button = finder.findById(scene, "myButton", {@link Visibility#REQUIRED_VISIBLE REQUIRED_VISIBLE});
+   * Button button = finder.findById(scene, "myButton", {@link Visibility#REQUIRE_VISIBLE REQUIRED_VISIBLE});
    * </pre>
    * </p>
    * @param root the scene that may contain the to find.

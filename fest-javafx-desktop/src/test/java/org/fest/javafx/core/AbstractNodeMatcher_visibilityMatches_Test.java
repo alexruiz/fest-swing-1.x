@@ -18,6 +18,8 @@ package org.fest.javafx.core;
 import static org.easymock.EasyMock.expect;
 import static org.easymock.classextension.EasyMock.createMock;
 import static org.fest.assertions.Assertions.assertThat;
+import static org.fest.javafx.core.Visibility.REQUIRE_VISIBLE;
+
 import javafx.scene.Node;
 
 import org.fest.mocks.EasyMockTemplate;
@@ -39,22 +41,46 @@ public class AbstractNodeMatcher_visibilityMatches_Test {
   }
 
   @Test
-  public void should_return_true_if_visibility_not_required_and_node_is_visible() {
-    final AbstractNodeMatcher matcher = new ConcreteNodeMatcher();
+  public void should_always_match_if_visibility_is_not_required() {
+    assertThat(matchAnyNode().visibilityMatches(node)).isTrue();
+  }
+
+  @Test
+  public void should_match_if_visibility_is_required_and_Node_is_visible() {
     new EasyMockTemplate(node) {
       @Override protected void expectations() {
         expect(node.get$visible()).andReturn(true);
       }
 
       @Override protected void codeToTest() {
-        assertThat(matcher.visibilityMatches(node)).isEqualTo(true);
+        assertThat(matchVisibleNode().visibilityMatches(node)).isTrue();
       }
-    };
+    }.run();
   }
 
-  private static class ConcreteNodeMatcher extends AbstractNodeMatcher {
-    @Override public boolean matches(Node node) {
-      return false;
-    }
+  @Test
+  public void should_not_match_if_visibility_is_required_and_Node_is_not_visible() {
+    new EasyMockTemplate(node) {
+      @Override protected void expectations() {
+        expect(node.get$visible()).andReturn(false);
+      }
+
+      @Override protected void codeToTest() {
+        assertThat(matchVisibleNode().visibilityMatches(node)).isFalse();
+      }
+    }.run();
+  }
+
+  private static ConcreteNodeMatcher matchVisibleNode() {
+    return new ConcreteNodeMatcher(REQUIRE_VISIBLE);
+  }
+  
+  @Test
+  public void should_not_match_if_Node_is_null() {
+    assertThat(matchAnyNode().visibilityMatches(null));
+  }
+
+  private static ConcreteNodeMatcher matchAnyNode() {
+    return new ConcreteNodeMatcher();
   }
 }

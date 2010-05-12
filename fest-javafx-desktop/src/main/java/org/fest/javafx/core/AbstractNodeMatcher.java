@@ -41,13 +41,16 @@ public abstract class AbstractNodeMatcher implements NodeMatcher {
   /**
    * Creates a new </code>{@link AbstractNodeMatcher}</code>.
    * @param visibility indicates whether the node to match should be showing on the screen or not.
+   * @throws NullPointerException if the {@code visibility} is <code>null</code>.
    */
   public AbstractNodeMatcher(Visibility visibility) {
+    if (visibility == null) throw new NullPointerException("The required visibility should not be null");
     this.visibility = visibility;
   }
 
   /**
-   * Indicates if the given {@link Node}'s visibility matches the value specified in this matcher.
+   * Indicates if the given {@link Node}'s visibility matches the value specified in this matcher. This method returns
+   * <code>false</code> if the given {@code Node} is <code>null</code>.
    * <p>
    * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the UI thread. Clients are responsible for
    * calling this method from the UI thread.
@@ -60,6 +63,7 @@ public abstract class AbstractNodeMatcher implements NodeMatcher {
    */
   @RunsInCurrentThread
   protected final boolean visibilityMatches(Node node) {
+    if (node == null) return false;
     if (MAY_BE_VISIBLE.equals(visibility)) return true;
     return node.get$visible();
   }

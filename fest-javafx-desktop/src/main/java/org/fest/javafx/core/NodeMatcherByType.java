@@ -49,10 +49,21 @@ public class NodeMatcherByType extends AbstractNodeMatcher {
     this.type = type;
   }
 
-  /** {@inheritDoc} */
+  /**
+   * Indicates whether the type and visibility of the given <code>{@link Node}</code> matches the values in this
+   * matcher. This method returns <code>false</code> if the given {@code Node} is <code>null</code>.
+   * <p>
+   * <b>Note:</b> This method is <b>not</b> executed in the UI thread. Clients are responsible for invoking this method 
+   * in the UI thread.
+   * </p>
+   * @param node the {@code Node} to verify.
+   * @return <code>true</code> if the type and visibility of the given {@code Node} match the values in this matcher; 
+   * <code>false</code> otherwise.
+   */
   @RunsInCurrentThread
   @Override public boolean matches(Node node) {
-    return false;
+    if (node == null) return false;
+    return type.isAssignableFrom(node.getClass()) && visibilityMatches(node);
   }
 
 }
