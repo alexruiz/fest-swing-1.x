@@ -15,6 +15,7 @@
  */
 package org.fest.javafx.core;
 
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.text.Text;
 
@@ -46,7 +47,13 @@ public class NodeMatcherByType_matches_Test {
   }
   
   @Test
-  public void should_not_match_if_types_not_compatible() {
+  public void should_match_if_types_are_compatible() {
+    matcher = new NodeMatcherByType(Node.class);
+    assertThat(matcher.matches(node)).isTrue();
+  }
+
+  @Test
+  public void should_not_match_if_types_are_not_compatible() {
     matcher = new NodeMatcherByType(Text.class);
     assertThat(matcher.matches(node)).isFalse();
   }

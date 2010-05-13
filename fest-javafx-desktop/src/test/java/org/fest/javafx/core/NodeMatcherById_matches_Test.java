@@ -15,7 +15,7 @@
  */
 package org.fest.javafx.core;
 
-import javafx.scene.control.Button;
+import javafx.scene.Node;
 
 import org.junit.*;
 
@@ -29,14 +29,14 @@ import static org.fest.javafx.core.Visibility.REQUIRE_VISIBLE;
  */
 public class NodeMatcherById_matches_Test {
 
-  private Button node;
+  private Node node;
   private NodeMatcherById matcher;
   
   @Before
   public void setUp() {
-    node = new Button();
-    node.set$id("myButton");
-    matcher = new NodeMatcherById("myButton", REQUIRE_VISIBLE);
+    node = new ConcreteNode();
+    node.set$id("myNode");
+    matcher = new NodeMatcherById("myNode", REQUIRE_VISIBLE);
   }
   
   @Test
