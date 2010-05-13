@@ -15,11 +15,12 @@
  */
 package org.fest.javafx.core;
 
-import static org.fest.javafx.core.Visibility.MAY_BE_VISIBLE;
+import javafx.scene.Node;
 
 import org.fest.javafx.annotations.RunsInCurrentThread;
 
-import javafx.scene.Node;
+import static org.fest.javafx.core.Visibility.MAY_BE_VISIBLE;
+import static org.fest.util.Strings.*;
 
 /**
  * Understands how to match <code>{@link Node}</code>s by id.
@@ -71,4 +72,12 @@ public class NodeMatcherById extends AbstractNodeMatcher {
     return id.equals(node.get$id()) && visibilityMatches(node);
   }
 
+  @Override public String toString() {
+    return concat(
+        getClass().getName(), "[",
+        "id=", quote(id), ", ",
+        "visibility=", visibility(), 
+        "]"
+    );
+  }
 }

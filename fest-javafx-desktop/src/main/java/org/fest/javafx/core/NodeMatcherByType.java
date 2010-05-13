@@ -15,11 +15,12 @@
  */
 package org.fest.javafx.core;
 
-import static org.fest.javafx.core.Visibility.MAY_BE_VISIBLE;
+import javafx.scene.Node;
 
 import org.fest.javafx.annotations.RunsInCurrentThread;
 
-import javafx.scene.Node;
+import static org.fest.javafx.core.Visibility.MAY_BE_VISIBLE;
+import static org.fest.util.Strings.concat;
 
 /**
  * Understands how to match <code>{@link Node}</code>s by type.
@@ -70,4 +71,12 @@ public class NodeMatcherByType extends AbstractNodeMatcher {
     return type.isAssignableFrom(node.getClass()) && visibilityMatches(node);
   }
 
+  @Override public String toString() {
+    return concat(
+        getClass().getName(), "[",
+        "type=", type.getName(), ", ",
+        "visibility=", visibility(), 
+        "]"
+    );
+  }
 }

@@ -70,4 +70,8 @@ public abstract class AbstractNodeMatcher implements NodeMatcher {
 
   /** {@inheritDoc} */
   @Override public void reset(boolean matchFound) {}
+  
+  protected final Visibility visibility() {
+    return visibility;
+  }
 }
