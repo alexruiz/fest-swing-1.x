@@ -20,10 +20,8 @@ import static java.lang.annotation.ElementType.*;
 import java.lang.annotation.Documented;
 import java.lang.annotation.Target;
 
-import javafx.scene.Node;
-
 /**
- * Understands an annotation that documents that a method is accessing <code>{@link Node}</code>s in the UI thread.
+ * Understands an annotation that documents that a method is executed in the UI thread.
  *
  * @author Alex Ruiz
  */
