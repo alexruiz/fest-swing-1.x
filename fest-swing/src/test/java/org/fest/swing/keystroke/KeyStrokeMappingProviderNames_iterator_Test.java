@@ -47,9 +47,9 @@ public class KeyStrokeMappingProviderNames_iterator_Test {
 
   @Test
   public void should_return_iterate_through_all_names() {
-    assertThat(iterator).containsOnly("org.fest.swing.keystroke.KeyStrokeProvider_win_en_US",
-                                      "org.fest.swing.keystroke.KeyStrokeProvider_win_en",
-                                      "org.fest.swing.keystroke.KeyStrokeProvider_en");
+    assertThat(iterator).containsOnly("org.fest.swing.keystroke.KeyStrokeMappingProvider_win_en_US",
+                                      "org.fest.swing.keystroke.KeyStrokeMappingProvider_win_en",
+                                      "org.fest.swing.keystroke.KeyStrokeMappingProvider_en");
   }
 
   @Test

@@ -50,11 +50,7 @@ class KeyStrokeMappingProviderNames implements Iterable<String> {
   }
 
   private static class NameIterator implements Iterator<String> {
-    private static final String PREFIX = packageName() + ".KeyStrokeProvider";
-
-    private static String packageName() {
-      return KeyStrokeMappingProviderNames.class.getPackage().getName();
-    }
+    private static final String PREFIX = KeyStrokeMappingProvider.class.getName();
 
     private static final String DELIMETER = "_";
 
