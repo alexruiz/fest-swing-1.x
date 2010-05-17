@@ -34,13 +34,13 @@ class JavaFxcSetup {
 
   private static final String[] JAVAFX_DESKTOP_CLASSPATH_FILES = { "**/javafxrt.jar", "**/lib/desktop/*.jar" };
 
-  void setUpJavaFxc(Javac javaFxc, JavaFxcMojo javaFxcMojo, File javaFxcHome) {
+  void setUpJavaFxc(Javac javaFxc, AbstractJavaFxcMojo javaFxcMojo, File javaFxcHome) {
     configureProject(javaFxc, javaFxcMojo);
-    setSource(javaFxc, javaFxcMojo.sourceDirectory);
+    setSource(javaFxc, javaFxcMojo.sourceDirectory());
     setClasspath(javaFxc, javaFxcMojo, javaFxcHome);
     javaFxc.setDebug(javaFxcMojo.debug);
     javaFxc.setDeprecation(javaFxcMojo.deprecation);
-    javaFxc.setDestdir(javaFxcMojo.outputDirectory);
+    javaFxc.setDestdir(javaFxcMojo.outputDirectory());
     javaFxc.setEncoding(javaFxcMojo.encoding);
     javaFxc.setExecutable(javaFxcMojo.forkExecutable);
     javaFxc.setFailonerror(javaFxcMojo.failOnError);
@@ -51,7 +51,7 @@ class JavaFxcSetup {
     javaFxc.setVerbose(javaFxcMojo.verbose);
   }
 
-  private void configureProject(Javac javaFxc, JavaFxcMojo javaFxcMojo) {
+  private void configureProject(Javac javaFxc, AbstractJavaFxcMojo javaFxcMojo) {
     Project antProject = javaFxc.getProject();
     antProject.setBaseDir(javaFxcMojo.project.getBasedir());
     antProject.addBuildListener(new LoggingBuildListener(javaFxcMojo.getLog()));
@@ -67,10 +67,10 @@ class JavaFxcSetup {
     path.createPathElement().setLocation(file);
   }
 
-  private void setClasspath(Javac javaFxc, JavaFxcMojo javaFxMojo, File javaFxcHome) {
+  private void setClasspath(Javac javaFxc, AbstractJavaFxcMojo javaFxMojo, File javaFxcHome) {
     Path classpath = javaFxc.createClasspath();
     classpath.addFileset(javaFxFiles(javaFxcHome));
-    updatePathWithElements(classpath, javaFxMojo.compileClasspathElements);
+    updatePathWithElements(classpath, javaFxMojo.compileClasspathElements());
   }
 
   private FileSet javaFxFiles(File javaFxcHome) {

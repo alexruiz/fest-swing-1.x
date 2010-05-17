@@ -40,7 +40,7 @@ public class JavaFxcMojo_execute_Test {
   private JavaFxcFactory javaFxcFactory;
   private JavaFxcSetup javaFxcSetup;
   private AntTaskExecutor javaFxcExecutor;
-  private JavaFxcMojo javaFxcMojo;
+  private AbstractJavaFxcMojoStub javaFxcMojo;
 
   @Before
   public void setUp() {
@@ -49,7 +49,7 @@ public class JavaFxcMojo_execute_Test {
     javaFxcFactory = createMock(JavaFxcFactory.class);
     javaFxcSetup = createMock(JavaFxcSetup.class);
     javaFxcExecutor = createMock(AntTaskExecutor.class);
-    javaFxcMojo = new JavaFxcMojo();
+    javaFxcMojo = new AbstractJavaFxcMojoStub();
     configureMojo();
   }
 

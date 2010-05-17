@@ -26,21 +26,20 @@ import org.apache.maven.plugin.MojoExecutionException;
  */
 class JavaFxcMojoValidator {
 
-  void validate(JavaFxcMojo javaFxcMojo) throws MojoExecutionException {
+  void validate(AbstractJavaFxcMojo javaFxcMojo) throws MojoExecutionException {
     validateSourceDirectory(javaFxcMojo);
     validateOutputDirectory(javaFxcMojo);
   }
 
-  private void validateSourceDirectory(JavaFxcMojo javaFxcMojo) throws MojoExecutionException {
-    if (javaFxcMojo.sourceDirectory.isDirectory()) return;
+  private void validateSourceDirectory(AbstractJavaFxcMojo javaFxcMojo) throws MojoExecutionException {
+    if (javaFxcMojo.sourceDirectory().isDirectory()) return;
     throw new MojoExecutionException("Source directory is not an existing directory.");
   }
 
-  private void validateOutputDirectory(JavaFxcMojo javaFxcMojo) throws MojoExecutionException {
-    File output = javaFxcMojo.outputDirectory;
+  private void validateOutputDirectory(AbstractJavaFxcMojo javaFxcMojo) throws MojoExecutionException {
+    File output = javaFxcMojo.outputDirectory();
     if (output.isDirectory()) return;
     boolean success = output.mkdirs();
     if (!success) throw new MojoExecutionException("Unable to create output directory.");
   }
-
 }

@@ -43,7 +43,7 @@ import org.junit.Test;
 public class JavaFxcSetup_setUpJavaFxc_Test {
 
   private Javac javaFxc;
-  private JavaFxcMojo javaFxcMojo;
+  private AbstractJavaFxcMojoStub javaFxcMojo;
   private MavenProject mavenProject;
   private File javaFxcHome;
   private File basedir;
@@ -55,7 +55,7 @@ public class JavaFxcSetup_setUpJavaFxc_Test {
     javaFxc = new Javac();
     javaFxc.setProject(new Project());
     mavenProject = createMock(MavenProject.class);
-    javaFxcMojo = new JavaFxcMojo();
+    javaFxcMojo = new AbstractJavaFxcMojoStub();
     javaFxcHome = createJavaFxHomeDirectory();
     basedir = temporaryFolder();
     javaFxcSetup = new JavaFxcSetup();

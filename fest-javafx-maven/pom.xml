@@ -2,10 +2,10 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.easytesting</groupId>
-  <artifactId>fest-javafx-maven</artifactId>
+  <artifactId>fest-maven-javafx-compiler</artifactId>
   <packaging>maven-plugin</packaging>
-  <version>1.0a1</version>
-  <name>FEST JavaFX Maven Plugin</name>
+  <version>1.0b1-SNAPSHOT</version>
+  <name>Maven JavaFX Compiler Plugin</name>
   <description>Maven JavaFX Compiler Plugin</description>
   <inceptionYear>2009</inceptionYear>
   <url>http://fest.easytesting.org/javafx</url>
@@ -31,6 +31,19 @@
     <system>JIRA</system>
     <url>http://jira.codehaus.org/browse/FEST</url>
   </issueManagement>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>1.6</source>
+          <target>1.6</target>
+          <encoding>${project.build.sourceEncoding}</encoding>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
   <dependencies>
     <dependency>
       <groupId>org.apache.maven</groupId>
@@ -54,6 +67,12 @@
       <groupId>org.easytesting</groupId>
       <artifactId>fest-assert</artifactId>
       <version>1.2</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.easytesting</groupId>
+      <artifactId>fest-util</artifactId>
+      <version>1.1.2</version>
       <scope>compile</scope>
     </dependency>
     <dependency>

@@ -30,19 +30,19 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JavaFxcMojoValidator#validate(JavaFxcMojo)}</code>.
+ * Tests for <code>{@link JavaFxcMojoValidator#validate(AbstractJavaFxcMojo)}</code>.
  *
  * @author Alex Ruiz
  */
 public class JavaFxcMojoValidator_validate_Test {
 
   private File directory;
-  private JavaFxcMojo mojo;
+  private AbstractJavaFxcMojoStub mojo;
   private JavaFxcMojoValidator validator;
 
   @Before
   public void setUp() {
-    mojo = new JavaFxcMojo();
+    mojo = new AbstractJavaFxcMojoStub();
     directory = createMock(File.class);
     validator = new JavaFxcMojoValidator();
   }
