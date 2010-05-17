@@ -47,12 +47,12 @@ public class AntTaskExecutor_execute_Test {
   @Test
   public void should_execute_task() {
     new EasyMockTemplate(task) {
-      protected void expectations() {
+      @Override protected void expectations() {
         task.execute();
         expectLastCall().once();
       }
 
-      protected void codeToTest() throws MojoExecutionException {
+      @Override protected void codeToTest() throws MojoExecutionException {
         taskExecutor.execute(task);
       }
     }.run();
@@ -63,12 +63,12 @@ public class AntTaskExecutor_execute_Test {
     final BuildException error = new BuildException("Thrown on purpose");
     try {
       new EasyMockTemplate(task) {
-        protected void expectations() {
+        @Override protected void expectations() {
           task.execute();
           expectLastCall().andThrow(error);
         }
 
-        protected void codeToTest() throws MojoExecutionException {
+        @Override protected void codeToTest() throws MojoExecutionException {
             taskExecutor.execute(task);
         }
       }.run();

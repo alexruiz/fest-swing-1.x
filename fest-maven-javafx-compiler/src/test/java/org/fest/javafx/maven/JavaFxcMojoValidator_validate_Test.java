@@ -52,11 +52,11 @@ public class JavaFxcMojoValidator_validate_Test {
     mojo.sourceDirectory = directory;
     try {
       new EasyMockTemplate(directory) {
-        protected void expectations() throws MojoExecutionException {
+        @Override protected void expectations() throws MojoExecutionException {
           expect(directory.isDirectory()).andReturn(false);
         }
 
-        protected void codeToTest() throws MojoExecutionException {
+        @Override protected void codeToTest() throws MojoExecutionException {
           validator.validate(mojo);
         }
       }.run();
@@ -72,12 +72,12 @@ public class JavaFxcMojoValidator_validate_Test {
     mojo.outputDirectory = directory;
     try {
       new EasyMockTemplate(directory) {
-        protected void expectations() throws MojoExecutionException {
+        @Override protected void expectations() throws MojoExecutionException {
           expect(directory.isDirectory()).andReturn(false);
           expect(directory.mkdirs()).andReturn(false);
         }
 
-        protected void codeToTest() throws MojoExecutionException {
+        @Override protected void codeToTest() throws MojoExecutionException {
           validator.validate(mojo);
         }
       }.run();
@@ -92,12 +92,12 @@ public class JavaFxcMojoValidator_validate_Test {
     mojo.sourceDirectory = temporaryFolder();
     mojo.outputDirectory = directory;
     new EasyMockTemplate(directory) {
-      protected void expectations() throws MojoExecutionException {
+      @Override protected void expectations() throws MojoExecutionException {
         expect(directory.isDirectory()).andReturn(false);
         expect(directory.mkdirs()).andReturn(true);
       }
 
-      protected void codeToTest() throws MojoExecutionException {
+      @Override protected void codeToTest() throws MojoExecutionException {
         validator.validate(mojo);
       }
     }.run();

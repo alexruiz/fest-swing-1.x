@@ -49,11 +49,11 @@ public class JavaFxHome_verify_Test {
   @Test
   public void should_return_environment_variable_JAVAFXHOME_if_given_value_is_empty() {
     new EasyMockTemplate(environment) {
-      protected void expectations() {
+      @Override protected void expectations() {
         expect(environment.javaFXHome()).andReturn("c:\\javafx");
       }
 
-      protected void codeToTest() throws MojoExecutionException {
+      @Override protected void codeToTest() throws MojoExecutionException {
         assertThat(javaFxHome.verify(null)).isEqualTo("c:\\javafx");
       }
     }.run();
@@ -63,11 +63,11 @@ public class JavaFxHome_verify_Test {
   public void should_throw_error_if_JavaFX_home_cannot_be_obtained() {
     try {
       new EasyMockTemplate(environment) {
-        protected void expectations() {
+        @Override protected void expectations() {
           expect(environment.javaFXHome()).andReturn(null);
         }
 
-        protected void codeToTest() throws MojoExecutionException {
+        @Override protected void codeToTest() throws MojoExecutionException {
           javaFxHome.verify(null);
         }
       }.run();

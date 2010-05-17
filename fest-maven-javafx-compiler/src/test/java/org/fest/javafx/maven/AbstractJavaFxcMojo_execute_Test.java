@@ -29,11 +29,11 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JavaFxcMojo#execute()}</code>.
+ * Tests for <code>{@link AbstractJavaFxcMojo#execute()}</code>.
  *
  * @author Alex Ruiz
  */
-public class JavaFxcMojo_execute_Test {
+public class AbstractJavaFxcMojo_execute_Test {
 
   private JavaFxcMojoValidator validator;
   private JavaFxHome javaFxHome;
@@ -71,7 +71,7 @@ public class JavaFxcMojo_execute_Test {
     final File javaFXHomeDir = new File("mock");
     final Javac javaFxc = new Javac();
     new EasyMockTemplate(javaFxHome, javaFxcFactory, javaFxcSetup, javaFxcExecutor) {
-      protected void expectations() throws MojoExecutionException {
+      @Override protected void expectations() throws MojoExecutionException {
         validator.validate(javaFxcMojo);
         expectLastCall().once();
         expect(javaFxHome.verify(javaFxcMojo.javaFxHome)).andReturn(verifiedJavaFXHome);
@@ -83,7 +83,7 @@ public class JavaFxcMojo_execute_Test {
         expectLastCall().once();
       }
 
-      protected void codeToTest() throws MojoExecutionException {
+      @Override protected void codeToTest() throws MojoExecutionException {
         javaFxcMojo.execute();
       }
     }.run();

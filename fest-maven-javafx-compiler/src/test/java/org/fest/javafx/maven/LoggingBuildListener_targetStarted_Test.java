@@ -31,12 +31,12 @@ public class LoggingBuildListener_targetStarted_Test extends LoggingBuildListene
   @Test
   public void should_log_when_target_started() {
     new EasyMockTemplate(log) {
-      protected void expectations() {
+      @Override protected void expectations() {
         log.info(BUILD_EVENT_MESSAGE);
         expectLastCall().once();
       }
 
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         listener.targetStarted(buildEvent);
       }
     }.run();

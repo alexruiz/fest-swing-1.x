@@ -66,11 +66,11 @@ public class JavaFxcFactory_createJavaFxc_withMocks_Test {
     final BuildException cause = new BuildException();
     try {
       new EasyMockTemplate(classpathFactory, instantiator) {
-        protected void expectations() {
+        @Override protected void expectations() {
           expect(classpathFactory.createCompilerClasspath(javaFxcHome)).andThrow(cause);
         }
 
-        protected void codeToTest() throws MojoExecutionException {
+        @Override protected void codeToTest() throws MojoExecutionException {
           javaFxcFactory.createJavaFxc(javaFxcHome);
         }
       }.run();
@@ -84,13 +84,13 @@ public class JavaFxcFactory_createJavaFxc_withMocks_Test {
   public void should_wrap_thrown_ReflectionError() {
     try {
       new EasyMockTemplate(classpathFactory, instantiator) {
-        protected void expectations() throws Exception {
+        @Override protected void expectations() throws Exception {
           expect(classpathFactory.createCompilerClasspath(javaFxcHome)).andReturn(classpath);
           // plain Javac does not have method 'setCompilerClassPath'
           expect(instantiator.instantiateJavaFxc(classpath)).andReturn(new Javac());
         }
 
-        protected void codeToTest() throws MojoExecutionException {
+        @Override protected void codeToTest() throws MojoExecutionException {
           javaFxcFactory.createJavaFxc(javaFxcHome);
         }
       }.run();
@@ -124,12 +124,12 @@ public class JavaFxcFactory_createJavaFxc_withMocks_Test {
   private void should_wrap_thrown_Exception(final Exception cause) {
     try {
       new EasyMockTemplate(classpathFactory, instantiator) {
-        protected void expectations() throws Exception {
+        @Override protected void expectations() throws Exception {
           expect(classpathFactory.createCompilerClasspath(javaFxcHome)).andReturn(classpath);
           expect(instantiator.instantiateJavaFxc(classpath)).andThrow(cause);
         }
 
-        protected void codeToTest() throws MojoExecutionException {
+        @Override protected void codeToTest() throws MojoExecutionException {
           javaFxcFactory.createJavaFxc(javaFxcHome);
         }
       }.run();

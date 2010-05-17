@@ -31,12 +31,12 @@ public class LoggingBuildListener_taskFinished_Test extends LoggingBuildListener
   @Test
   public void should_log_when_task_finished() {
     new EasyMockTemplate(log) {
-      protected void expectations() {
+      @Override protected void expectations() {
         log.info(BUILD_EVENT_MESSAGE);
         expectLastCall().once();
       }
 
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         listener.taskFinished(buildEvent);
       }
     }.run();

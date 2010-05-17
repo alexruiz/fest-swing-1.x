@@ -33,12 +33,12 @@ public class LoggingBuildListener_messageLogged_Test extends LoggingBuildListene
   public void should_log_with_error_priority_when_BuildEvent_has_error_priority() {
     buildEvent.setMessage(BUILD_EVENT_MESSAGE, MSG_ERR);
     new EasyMockTemplate(log) {
-      protected void expectations() {
+      @Override protected void expectations() {
         log.error(BUILD_EVENT_MESSAGE);
         expectLastCall().once();
       }
 
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         listener.messageLogged(buildEvent);
       }
     }.run();
@@ -48,12 +48,12 @@ public class LoggingBuildListener_messageLogged_Test extends LoggingBuildListene
   public void should_log_with_warn_priority_when_BuildEvent_has_warn_priority() {
     buildEvent.setMessage(BUILD_EVENT_MESSAGE, MSG_WARN);
     new EasyMockTemplate(log) {
-      protected void expectations() {
+      @Override protected void expectations() {
         log.warn(BUILD_EVENT_MESSAGE);
         expectLastCall().once();
       }
 
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         listener.messageLogged(buildEvent);
       }
     }.run();
@@ -63,12 +63,12 @@ public class LoggingBuildListener_messageLogged_Test extends LoggingBuildListene
   public void should_log_with_info_priority_when_BuildEvent_has_info_priority() {
     buildEvent.setMessage(BUILD_EVENT_MESSAGE, MSG_INFO);
     new EasyMockTemplate(log) {
-      protected void expectations() {
+      @Override protected void expectations() {
         log.info(BUILD_EVENT_MESSAGE);
         expectLastCall().once();
       }
 
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         listener.messageLogged(buildEvent);
       }
     }.run();
@@ -79,12 +79,12 @@ public class LoggingBuildListener_messageLogged_Test extends LoggingBuildListene
   public void should_log_with_debug_priority_when_BuildEvent_has_debug_priority() {
     buildEvent.setMessage(BUILD_EVENT_MESSAGE, MSG_DEBUG);
     new EasyMockTemplate(log) {
-      protected void expectations() {
+      @Override protected void expectations() {
         log.debug(BUILD_EVENT_MESSAGE);
         expectLastCall().once();
       }
 
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         listener.messageLogged(buildEvent);
       }
     }.run();
@@ -94,11 +94,11 @@ public class LoggingBuildListener_messageLogged_Test extends LoggingBuildListene
   public void should_not_log_if_BuildEvent_has_verbose_priority() {
     buildEvent.setMessage(BUILD_EVENT_MESSAGE, MSG_VERBOSE);
     new EasyMockTemplate(log) {
-      protected void expectations() {
+      @Override protected void expectations() {
         // log should not be called.
       }
 
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         listener.messageLogged(buildEvent);
       }
     }.run();
@@ -108,12 +108,12 @@ public class LoggingBuildListener_messageLogged_Test extends LoggingBuildListene
   public void should_log_empty_message_if_BuildEvent_has_null_message() {
     buildEvent.setMessage(null, MSG_INFO);
     new EasyMockTemplate(log) {
-      protected void expectations() {
+      @Override protected void expectations() {
         log.info("");
         expectLastCall().once();
       }
 
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         listener.messageLogged(buildEvent);
       }
     }.run();
@@ -123,12 +123,12 @@ public class LoggingBuildListener_messageLogged_Test extends LoggingBuildListene
   public void should_trim_whitespaces_from_BuildEvent_message() {
     buildEvent.setMessage(" Hello World! ", MSG_INFO);
     new EasyMockTemplate(log) {
-      protected void expectations() {
+      @Override protected void expectations() {
         log.info("Hello World!");
         expectLastCall().once();
       }
 
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         listener.messageLogged(buildEvent);
       }
     }.run();

@@ -19,6 +19,8 @@ import static java.util.Collections.unmodifiableList;
 import java.io.File;
 import java.util.List;
 
+import org.fest.util.VisibleForTesting;
+
 /**
  * Compiles JavaFX source code by delegating to JavaFX's own compiler Ant task.
  * @goal compile
@@ -36,7 +38,7 @@ public final class JavaFxcMojo extends AbstractJavaFxcMojo {
    * @required
    * @readonly
    */
-  List<String> compileClasspathElements;
+  @VisibleForTesting List<String> compileClasspathElements;
 
   /**
    * The directory for compiled classes.
@@ -44,14 +46,14 @@ public final class JavaFxcMojo extends AbstractJavaFxcMojo {
    * @required
    * @readonly
    */
-  File outputDirectory;
+  @VisibleForTesting File outputDirectory;
 
   /**
    * The source directory.
    * @parameter expression="${javafx.compiler.sourceDirectory}" default-value="${basedir}/src/main/javafx"
    * @required
    */
-  File sourceDirectory;
+  @VisibleForTesting File sourceDirectory;
 
   @Override List<String> compileClasspathElements() {
     return unmodifiableList(compileClasspathElements);

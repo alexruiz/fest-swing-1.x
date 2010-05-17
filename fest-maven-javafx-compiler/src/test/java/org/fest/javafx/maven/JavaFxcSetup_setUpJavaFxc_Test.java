@@ -82,11 +82,11 @@ public class JavaFxcSetup_setUpJavaFxc_Test {
   @Test
   public void should_configure_JavaFxc() {
     new EasyMockTemplate(mavenProject) {
-      protected void expectations() {
+      @Override protected void expectations() {
         expect(mavenProject.getBasedir()).andReturn(basedir);
       }
 
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         javaFxcSetup.setUpJavaFxc(javaFxc, javaFxcMojo, javaFxcHome);
       }
     }.run();
@@ -107,11 +107,11 @@ public class JavaFxcSetup_setUpJavaFxc_Test {
   public void should_include_classpath_elements_from_Mojo() {
     javaFxcMojo.compileClasspathElements = list(extraClasspathElement);
     new EasyMockTemplate(mavenProject) {
-      protected void expectations() {
+      @Override protected void expectations() {
         expect(mavenProject.getBasedir()).andReturn(basedir);
       }
 
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         javaFxcSetup.setUpJavaFxc(javaFxc, javaFxcMojo, javaFxcHome);
       }
     }.run();
