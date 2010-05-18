@@ -115,20 +115,7 @@ public abstract class AbstractJavaFxcMojo extends AbstractMojo {
   @VisibleForTesting JavaFxcSetup javaFxcSetup = new JavaFxcSetup();
   @VisibleForTesting AntTaskExecutor javaFxcExecutor = new AntTaskExecutor();
 
-  /**
-   * Creates and executes a new instance of the JavaFX compiler Ant task to compile JavaFX sources.
-   * @throws MojoExecutionException if the specified source directory does not exist or it is not a directory.
-   * @throws MojoExecutionException if the output directory does not exist and cannot be created.
-   * @throws MojoExecutionException if the JavaFX compiler Ant task cannot be instantiated.
-   * @throws MojoExecutionException if the JavaFX home directory has not being set.
-   * @throws MojoExecutionException if the location specified by as the JavaFX home directory does not exist or it is
-   * not a directory.
-   */
-  public void execute() throws MojoExecutionException {
-    compile();
-  }
-
-  final void compile() throws MojoExecutionException {
+  void compile() throws MojoExecutionException {
     validator.validate(this);
     String verifiedJavaFxHome = javaFxHomeRef.verify(javaFxHome);
     getLog().info(concat("JavaFX home is ", quote(verifiedJavaFxHome)));

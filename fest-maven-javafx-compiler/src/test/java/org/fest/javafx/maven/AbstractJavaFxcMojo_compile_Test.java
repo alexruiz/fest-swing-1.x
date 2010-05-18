@@ -29,11 +29,11 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link AbstractJavaFxcMojo#execute()}</code>.
+ * Tests for <code>{@link AbstractJavaFxcMojo#compile()}</code>.
  *
  * @author Alex Ruiz
  */
-public class AbstractJavaFxcMojo_execute_Test {
+public class AbstractJavaFxcMojo_compile_Test {
 
   private JavaFxcMojoValidator validator;
   private JavaFxHome javaFxHome;
@@ -84,7 +84,7 @@ public class AbstractJavaFxcMojo_execute_Test {
       }
 
       @Override protected void codeToTest() throws MojoExecutionException {
-        javaFxcMojo.execute();
+        javaFxcMojo.compile();
       }
     }.run();
   }

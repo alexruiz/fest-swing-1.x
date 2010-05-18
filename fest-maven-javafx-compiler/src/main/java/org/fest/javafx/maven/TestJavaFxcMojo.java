@@ -31,7 +31,7 @@ import org.fest.util.VisibleForTesting;
  *
  * @author Alex Ruiz
  */
-public final class TestJavaFxcMojo extends AbstractJavaFxcMojo {
+public class TestJavaFxcMojo extends AbstractJavaFxcMojo {
 
   /**
    * Set this to 'true' to bypass unit tests entirely. Its use is NOT RECOMMENDED, but quite convenient on occasion.
