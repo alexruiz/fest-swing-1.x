@@ -30,7 +30,7 @@ public class AbstractJavaFxcMojoStub extends AbstractJavaFxcMojo {
   File sourceDirectory;
 
   @Override
-  List<String> compileClasspathElements() {
+  List<String> classpathElements() {
     return compileClasspathElements;
   }
 

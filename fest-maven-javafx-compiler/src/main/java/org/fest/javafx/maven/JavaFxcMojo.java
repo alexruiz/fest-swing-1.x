@@ -55,7 +55,7 @@ public final class JavaFxcMojo extends AbstractJavaFxcMojo {
    */
   @VisibleForTesting File sourceDirectory;
 
-  @Override List<String> compileClasspathElements() {
+  @Override List<String> classpathElements() {
     return unmodifiableList(compileClasspathElements);
   }
 

@@ -125,6 +125,10 @@ public abstract class AbstractJavaFxcMojo extends AbstractMojo {
    * not a directory.
    */
   public void execute() throws MojoExecutionException {
+    compile();
+  }
+
+  final void compile() throws MojoExecutionException {
     validator.validate(this);
     String verifiedJavaFxHome = javaFxHomeRef.verify(javaFxHome);
     getLog().info(concat("JavaFX home is ", quote(verifiedJavaFxHome)));
@@ -134,7 +138,7 @@ public abstract class AbstractJavaFxcMojo extends AbstractMojo {
     javaFxcExecutor.execute(javaFxc);
   }
 
-  abstract List<String> compileClasspathElements();
+  abstract List<String> classpathElements();
   abstract File outputDirectory();
   abstract File sourceDirectory();
 }

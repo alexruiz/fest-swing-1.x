@@ -70,7 +70,7 @@ class JavaFxcSetup {
   private void setClasspath(Javac javaFxc, AbstractJavaFxcMojo javaFxMojo, File javaFxcHome) {
     Path classpath = javaFxc.createClasspath();
     classpath.addFileset(javaFxFiles(javaFxcHome));
-    updatePathWithElements(classpath, javaFxMojo.compileClasspathElements());
+    updatePathWithElements(classpath, javaFxMojo.classpathElements());
   }
 
   private FileSet javaFxFiles(File javaFxcHome) {
