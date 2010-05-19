@@ -5,6 +5,17 @@
     <author email="alex.ruiz.05@gmail.com">Alex Ruiz</author>
   </properties>
   <body>
+    <release version="1.0b1" date="2010-05-19" description="Subsequent release">
+      <action dev="alexruiz" type="add" issue="FEST-314">
+        Added goal testCompile to compile JavaFX test sources.
+      </action>
+      <action dev="alexruiz" type="add">
+        Change JDK version to 1.6.
+      </action>
+      <action dev="alexruiz" type="fix">
+        Renamed artifactId to javafxc-maven-plugin. 
+      </action>
+    </release>
     <release version="1.0a1" date="2010-02-01" description="Subsequent release">
       <action dev="alexruiz" type="fix" issue="FEST-288" due-to="Viktor Hedefalk">
         Rewrote plugin as a Java Mojo. Classworlds' exception is no longer thrown. 
