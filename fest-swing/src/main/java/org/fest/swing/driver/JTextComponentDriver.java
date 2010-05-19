@@ -18,10 +18,10 @@ import static java.lang.Math.max;
 import static java.lang.Math.min;
 import static java.lang.String.valueOf;
 import static javax.swing.text.DefaultEditorKit.deletePrevCharAction;
-import static javax.swing.text.DefaultEditorKit.selectAllAction;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.driver.ComponentStateValidator.validateIsEnabledAndShowing;
 import static org.fest.swing.driver.JTextComponentEditableQuery.isEditable;
+import static org.fest.swing.driver.JTextComponentSelectAllTask.selectAllText;
 import static org.fest.swing.driver.JTextComponentSelectTextTask.selectTextInRange;
 import static org.fest.swing.driver.JTextComponentSetTextTask.setTextIn;
 import static org.fest.swing.driver.PointAndParentForScrollingJTextFieldQuery.pointAndParentForScrolling;
@@ -110,7 +110,7 @@ public class JTextComponentDriver extends JComponentDriver implements TextDispla
   @RunsInEDT
   public void selectAll(JTextComponent textBox) {
     validateAndScrollToPosition(textBox, 0);
-    invokeAction(textBox, selectAllAction);
+    selectAllText(textBox);
   }
 
   /**
