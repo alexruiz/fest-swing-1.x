@@ -24,6 +24,7 @@ import org.testng.Reporter;
 import org.fest.swing.annotation.GUITestFinder;
 import org.fest.swing.image.ImageException;
 import org.fest.swing.image.ScreenshotTaker;
+import org.fest.util.VisibleForTesting;
 
 import static java.io.File.separator;
 import static java.util.logging.Level.SEVERE;
@@ -75,7 +76,7 @@ public class ScreenshotOnFailureListener extends AbstractTestListener {
     }
   }
 
-  // For testing only.
+  @VisibleForTesting
   String output() { return output.path(); }
 
   /**
@@ -111,7 +112,7 @@ public class ScreenshotOnFailureListener extends AbstractTestListener {
 
   private String takeScreenshotAndReturnFileName(ITestResult result) {
     String imageName = screenshotFileNameFrom(result);
-    String imagePath = concat(output, separator, imageName);
+    String imagePath = concat(output(), separator, imageName);
     try {
       output.createIfNecessary();
       screenshotTaker.saveDesktopAsPng(imagePath);
