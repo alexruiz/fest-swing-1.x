@@ -25,8 +25,8 @@
     <menu name="Overview">
       <item name="Introduction" href="index.html"/>
       <item name="Goals" href="plugin-info.html" collapse="false">
-        <item name="fest-javafx:compile" href="compile-mojo.html" />
-        <item name="fest-javafx:testCompile" href="testCompile-mojo.html" />
+        <item name="javafxc:compile" href="compile-mojo.html" />
+        <item name="javafxc:testCompile" href="testCompile-mojo.html" />
       </item>
       <item name="Setting the JavaFX Home" href="javafx-home.html" />
     </menu>

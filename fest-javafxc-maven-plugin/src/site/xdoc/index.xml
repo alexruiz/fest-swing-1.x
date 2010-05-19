@@ -69,7 +69,7 @@ The listing above will:
      For example, if we execute &quot;<code>mvn test</code>&quot; both JavaFX sources and test sources will compiled
      automatically.  
     </p>
-    </p>
+    <p>
       For more details about the build lifecycle and phases please see 
       <a href="http://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html" target="_blank">Maven's documentation</a>.    
     </p>
