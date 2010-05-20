@@ -18,13 +18,15 @@ package org.fest.javafx.core;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 
+import org.fest.javafx.annotations.RunsInUIThread;
 import org.fest.javafx.exception.NodeLookupException;
 
 /**
- * Understands node lookups.
+ * Understands <code>{@link Node}</code> lookups.
  *
  * @author Alex Ruiz
  */
+@RunsInUIThread
 public interface NodeFinder {
 
   /**
