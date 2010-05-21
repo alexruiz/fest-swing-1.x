@@ -10,7 +10,10 @@ import static org.fest.javafx.threading.GuiActionRunner.execute;
 import javafx.stage.Stage;
 
 import org.fest.javafx.scripts.ButtonDemo;
+import org.fest.javafx.test.core.SequentialTestCase;
 import org.fest.javafx.threading.GuiQuery;
+import org.fest.ui.testing.annotation.GuiTest;
+
 import org.junit.Test;
 
 /**
@@ -18,7 +21,8 @@ import org.junit.Test;
  *
  * @author Alex Ruiz
  */
-public class JavaFxClassLauncher_launch_Test {
+@GuiTest
+public class JavaFxClassLauncher_launch_Test extends SequentialTestCase {
 
   @Test
   public void should_start_JavaFX_UI() {
@@ -30,5 +34,4 @@ public class JavaFxClassLauncher_launch_Test {
     });
     assertThat(visible).isTrue();
   }
-
 }

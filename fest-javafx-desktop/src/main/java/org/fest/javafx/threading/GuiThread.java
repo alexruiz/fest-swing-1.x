@@ -23,9 +23,9 @@ import static javax.swing.SwingUtilities.isEventDispatchThread;
  *
  * @author Alex Ruiz
  */
-class UIThread {
+class GuiThread {
 
-  boolean isThisUIThread() {
+  boolean isThisGuiThread() {
     return isEventDispatchThread();
   }
 
@@ -33,13 +33,13 @@ class UIThread {
     invokeLater(task);
   }
 
-  static UIThread instance() {
+  static GuiThread instance() {
     return LazyLoadedSingleton.INSTANCE;
   }
 
   private static class LazyLoadedSingleton {
-    static final UIThread INSTANCE = new UIThread();
+    static final GuiThread INSTANCE = new GuiThread();
   }
 
-  private UIThread() {}
+  private GuiThread() {}
 }

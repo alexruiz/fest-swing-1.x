@@ -19,36 +19,31 @@ import javafx.scene.*;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
-import org.junit.*;
+import org.junit.Test;
 
-import org.fest.javafx.launcher.JavaFxClassLauncher;
 import org.fest.javafx.scripts.ButtonDemo;
-import org.fest.ui.testing.lock.ScreenLock;
+import org.fest.javafx.test.core.SequentialTestCase;
+import org.fest.ui.testing.annotation.GuiTest;
 
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.javafx.core.SceneFromStageQuery.sceneIn;
 import static org.fest.javafx.core.Visibility.REQUIRE_VISIBLE;
+import static org.fest.javafx.launcher.JavaFxClassLauncher.launch;
 
 /**
  * Tests for <code>{@link BasicNodeFinder#findById(javafx.scene.Scene, String, Visibility)}</code>.
  *
  * @author Alex Ruiz
  */
-public class BasicNodeFinder_findById_Test {
+@GuiTest
+public class BasicNodeFinder_findById_Test extends SequentialTestCase {
 
   private Scene scene;
   private BasicNodeFinder finder = new BasicNodeFinder();
   
-  @Before
-  public void setUp() {
-    ScreenLock.instance().acquire(this);
-    Stage stage = JavaFxClassLauncher.launch(ButtonDemo.class);
+  @Override protected void onSetUp() {
+    Stage stage = launch(ButtonDemo.class);
     scene = sceneIn(stage);
-  }
-  
-  @After
-  public void tearDown() {
-    ScreenLock.instance().release(this);
   }
   
   @Test

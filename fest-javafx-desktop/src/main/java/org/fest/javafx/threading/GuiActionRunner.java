@@ -104,8 +104,8 @@ public class GuiActionRunner {
   }
 
   private static void run(final GuiAction action) {
-    UIThread uiThread = UIThread.instance();
-    if (uiThread.isThisUIThread()) {
+    GuiThread uiThread = GuiThread.instance();
+    if (uiThread.isThisGuiThread()) {
       action.run();
       return;
     }
