@@ -30,4 +30,4 @@ import java.lang.annotation.*;
 @Target({ METHOD, TYPE })
 @Documented
 @Inherited
-public @interface UiTest {}
+public @interface GuiTest {}

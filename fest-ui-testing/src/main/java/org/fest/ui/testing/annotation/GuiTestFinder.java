@@ -19,29 +19,29 @@ import java.lang.reflect.Method;
 
 /**
  * Understands utility methods related to GUI tests. A GUI test is a class or method annotated with
- * <code>{@link UiTest}</code>.
+ * <code>{@link GuiTest}</code>.
  *
  * @author Alex Ruiz
  */
-public final class UiTestFinder {
+public final class GuiTestFinder {
 
   /**
-   * Returns <code>true</code> if the given class and/or method are annotated with <code>{@link UiTest}</code>. This
+   * Returns <code>true</code> if the given class and/or method are annotated with <code>{@link GuiTest}</code>. This
    * method also searches in super-classes and overridden methods.
    * @param type the class to check.
    * @param method the method to check.
-   * @return <code>true</code> if the given class and/or method are annotated with <code>{@link UiTest}</code>.
+   * @return <code>true</code> if the given class and/or method are annotated with <code>{@link GuiTest}</code>.
    */
-  public static boolean isGUITest(Class<?> type, Method method) {
-    return isGUITest(type) || isGUITest(method) || isSuperClassGUITest(type, method);
+  public static boolean isGuiTest(Class<?> type, Method method) {
+    return isGuiTest(type) || isGuiTest(method) || isSuperClassGuiTest(type, method);
   }
 
-  private static boolean isSuperClassGUITest(Class<?> type, Method method) {
+  private static boolean isSuperClassGuiTest(Class<?> type, Method method) {
     Class<?> superclass = type.getSuperclass();
     while (superclass != null) {
-      if (isGUITest(superclass)) return true;
+      if (isGuiTest(superclass)) return true;
       Method overriden = method(superclass, method.getName(), method.getParameterTypes());
-      if (overriden != null && isGUITest(overriden)) return true;
+      if (overriden != null && isGuiTest(overriden)) return true;
       superclass = superclass.getSuperclass();
     }
     return false;
@@ -59,9 +59,9 @@ public final class UiTestFinder {
       }
   }
 
-  private static boolean isGUITest(AnnotatedElement annotatedElement) {
-    return annotatedElement.isAnnotationPresent(UiTest.class);
+  private static boolean isGuiTest(AnnotatedElement annotatedElement) {
+    return annotatedElement.isAnnotationPresent(GuiTest.class);
   }
 
-  private UiTestFinder() {}
+  private GuiTestFinder() {}
 }
