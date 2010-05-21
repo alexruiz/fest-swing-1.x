@@ -36,13 +36,21 @@
     <plugins>
       <plugin>
         <groupId>org.easytesting</groupId>
-        <artifactId>fest-javafx-maven</artifactId>
-        <version>0.1</version>
+        <artifactId>javafxc-maven-plugin</artifactId>
+        <version>1.0b1</version>
         <executions>
           <execution>
+            <id>compile</id>
             <phase>compile</phase>
             <goals>
-              <goal>desktopCompile</goal>
+              <goal>compile</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>test-compile</id>
+            <phase>test-compile</phase>
+            <goals>
+              <goal>testCompile</goal>
             </goals>
           </execution>
         </executions>

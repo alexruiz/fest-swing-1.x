@@ -31,7 +31,6 @@ Stage {
     height: 80
     content: [
       Button {
-        id: "button"
         text: "Click Me"
         action: function () {
 
