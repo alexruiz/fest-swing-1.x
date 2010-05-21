@@ -16,7 +16,6 @@
 package org.fest.javafx.hierarchy;
 
 import javafx.scene.*;
-import javafx.stage.Stage;
 
 import com.sun.javafx.runtime.sequence.*;
 
@@ -30,14 +29,6 @@ import static com.sun.javafx.runtime.TypeInfo.getTypeInfo;
 public class SingleSceneNodeHierarchy implements NodeHierarchy {
 
   private final Scene root;
-
-  /**
-   * Creates a new </code>{@link SingleSceneNodeHierarchy}</code>.
-   * @param stage the {@code Stage} containing the {@code Scene} for this hierarchy.
-   */
-  public SingleSceneNodeHierarchy(Stage stage) {
-    this(stage.get$scene());
-  }
 
   /**
    * Creates a new </code>{@link SingleSceneNodeHierarchy}</code>.

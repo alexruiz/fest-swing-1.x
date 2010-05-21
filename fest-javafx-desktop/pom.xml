@@ -41,6 +41,12 @@
     </dependency>
     <dependency>
       <groupId>org.easytesting</groupId>
+      <artifactId>fest-ui-testing</artifactId>
+      <version>1.0-SNAPSHOT</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.easytesting</groupId>
       <artifactId>fest-assert</artifactId>
       <version>1.2</version>
       <scope>compile</scope>

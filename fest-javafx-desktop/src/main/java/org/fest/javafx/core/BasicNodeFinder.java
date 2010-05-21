@@ -15,16 +15,15 @@
  */
 package org.fest.javafx.core;
 
-import static org.fest.javafx.threading.GuiActionRunner.execute;
-import static org.fest.util.Strings.concat;
+import java.util.Collection;
 
-import java.util.*;
+import javafx.scene.*;
 
 import org.fest.javafx.annotations.RunsInUIThread;
 import org.fest.javafx.exception.NodeLookupException;
-import org.fest.javafx.threading.GuiTask;
-import javafx.scene.Node;
-import javafx.scene.Scene;
+import org.fest.javafx.hierarchy.SingleSceneNodeHierarchy;
+
+import static org.fest.util.Strings.concat;
 
 /**
  * Understands <code>{@link Node}</code> lookups.
@@ -33,6 +32,8 @@ import javafx.scene.Scene;
  */
 public class BasicNodeFinder implements NodeFinder {
 
+  private final FinderDelegate finderDelegate = new FinderDelegate();
+  
   /** {@inheritDoc} */
   @Override public Node findById(Scene root, String id, Visibility visibility) {
     return find(root, new NodeMatcherById(id, visibility));
@@ -46,7 +47,7 @@ public class BasicNodeFinder implements NodeFinder {
 
   @RunsInUIThread
   private Node find(Scene root, NodeMatcher matcher) {
-    Collection<? extends Node> found = findAll(root, matcher);
+    Collection<Node> found = finderDelegate.find(new SingleSceneNodeHierarchy(root), matcher);
     if (found.isEmpty()) throw nodeNotFound(root, matcher);
     if (found.size() > 1) throw multipleNodesFound(found, matcher);
     return found.iterator().next();
@@ -58,25 +59,10 @@ public class BasicNodeFinder implements NodeFinder {
     throw new NodeLookupException(message);
   }
 
-  private NodeLookupException multipleNodesFound(Collection<? extends Node> found, NodeMatcher matcher) {
+  private NodeLookupException multipleNodesFound(Collection<Node> found, NodeMatcher matcher) {
     StringBuilder message = new StringBuilder();
     message.append("Found more than one node using matcher ").append(matcher);
     // TODO print found nodes
     throw new NodeLookupException(message.toString(), found);
-  }
-
-  @RunsInUIThread
-  private Collection<? extends Node> findAll(final Scene root, final NodeMatcher matcher) {
-    // TODO abstract Scene into a NodeHierarchy
-    final Set<Node> found = new LinkedHashSet<Node>();
-    execute(new GuiTask() {
-      @Override protected void executeInUIThread() {
-        for (Node node : root.get$content()) {
-          // TODO go deeper in the hierarchy
-          if (matcher.matches(node)) found.add(node);
-        }
-      }
-    });
-    return found;
   }
 }
