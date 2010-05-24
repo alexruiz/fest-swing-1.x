@@ -23,6 +23,9 @@ import org.junit.*;
 
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.javafx.core.Visibility.REQUIRE_VISIBLE;
+import static org.fest.javafx.test.node.Buttons.button;
+import static org.fest.javafx.test.query.NodeSetVisibleTask.makeNotVisible;
+import static org.fest.javafx.test.query.NodeSetVisibleTask.makeVisible;
 
 /**
  * Tests for <code>{@link NodeMatcherByType#matches(javafx.scene.Node)}</code>.
@@ -36,13 +39,13 @@ public class NodeMatcherByType_matches_Test {
 
   @Before
   public void setUp() {
-    node = new Button();
+    node = button().createNew();
     matcher = new NodeMatcherByType(Button.class, REQUIRE_VISIBLE);
   }
 
   @Test
   public void should_return_true_if_types_and_visibility_match() {
-    node.set$visible(true);
+    makeVisible(node);
     assertThat(matcher.matches(node)).isTrue();
   }
 
@@ -60,7 +63,7 @@ public class NodeMatcherByType_matches_Test {
 
   @Test
   public void should_return_false_if_visibility_does_not_match() {
-    node.set$visible(false);
+    makeNotVisible(node);
     assertThat(matcher.matches(node)).isFalse();
   }
 

@@ -15,13 +15,15 @@
  */
 package org.fest.javafx.core;
 
-import javafx.scene.Node;
-
-import org.junit.*;
-
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.javafx.core.Visibility.REQUIRE_VISIBLE;
-import static org.fest.javafx.test.core.ConcreteNode.createNode;
+import static org.fest.javafx.test.node.Nodes.node;
+import static org.fest.javafx.test.query.NodeSetVisibleTask.makeNotVisible;
+import static org.fest.javafx.test.query.NodeSetVisibleTask.makeVisible;
+import javafx.scene.Node;
+
+import org.junit.BeforeClass;
+import org.junit.Test;
 
 /**
  * Tests for <code>{@link AbstractNodeMatcher#visibilityMatches(javafx.scene.Node)}</code>.
@@ -34,32 +36,32 @@ public class AbstractNodeMatcher_visibilityMatches_Test {
 
   @BeforeClass
   public static void setUpOnce() {
-    node = createNode();
+    node = node().createNew();
   }
 
   @Test
   public void should_match_if_visibility_is_not_required_and_Node_is_visible() {
-    node.set$visible(true);
+    makeVisible(node);
     ConcreteNodeMatcher matcher = matchAnyNode();
     assertThat(matcher.visibilityMatches(node)).isTrue();
   }
 
   @Test
   public void should_match_if_visibility_is_not_required_and_Node_is_not_visible() {
-    node.set$visible(false);
+    makeNotVisible(node);
     ConcreteNodeMatcher matcher = matchAnyNode();
     assertThat(matcher.visibilityMatches(node)).isTrue();
   }
 
   @Test
   public void should_match_if_visibility_is_required_and_Node_is_visible() {
-    node.set$visible(true);
+    makeVisible(node);
     assertThat(matchVisibleNode().visibilityMatches(node)).isTrue();
   }
 
   @Test
   public void should_not_match_if_visibility_is_required_and_Node_is_not_visible() {
-    node.set$visible(false);
+    makeNotVisible(node);
     ConcreteNodeMatcher matcher = matchVisibleNode();
     assertThat(matcher.visibilityMatches(node)).isFalse();
   }

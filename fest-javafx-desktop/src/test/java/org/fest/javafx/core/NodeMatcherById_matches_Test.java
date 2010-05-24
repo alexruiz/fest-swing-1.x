@@ -21,7 +21,10 @@ import org.junit.*;
 
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.javafx.core.Visibility.REQUIRE_VISIBLE;
-import static org.fest.javafx.test.core.ConcreteNode.createNode;
+import static org.fest.javafx.test.node.Nodes.node;
+import static org.fest.javafx.test.query.NodeSetIdTask.updateId;
+import static org.fest.javafx.test.query.NodeSetVisibleTask.makeNotVisible;
+import static org.fest.javafx.test.query.NodeSetVisibleTask.makeVisible;
 
 /**
  * Tests for <code>{@link NodeMatcherById#matches(javafx.scene.Node)}</code>.
@@ -35,26 +38,25 @@ public class NodeMatcherById_matches_Test {
 
   @Before
   public void setUp() {
-    node = createNode();
-    node.set$id("myNode");
+    node = node().withId("myNode").createNew();
     matcher = new NodeMatcherById("myNode", REQUIRE_VISIBLE);
   }
 
   @Test
   public void should_return_true_if_ids_and_visibility_match() {
-    node.set$visible(true);
+    makeVisible(node);
     assertThat(matcher.matches(node)).isTrue();
   }
 
   @Test
   public void should_return_false_if_ids_are_not_equal() {
-    node.set$id("hello");
+    updateId(node, "hello");
     assertThat(matcher.matches(node)).isFalse();
   }
 
   @Test
   public void should_return_false_if_visibility_does_not_match() {
-    node.set$visible(false);
+    makeNotVisible(node);
     assertThat(matcher.matches(node)).isFalse();
   }
 

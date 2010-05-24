@@ -23,6 +23,10 @@ import org.junit.*;
 
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.javafx.core.Visibility.REQUIRE_VISIBLE;
+import static org.fest.javafx.test.node.Buttons.button;
+import static org.fest.javafx.test.query.NodeSetIdTask.updateId;
+import static org.fest.javafx.test.query.NodeSetVisibleTask.makeNotVisible;
+import static org.fest.javafx.test.query.NodeSetVisibleTask.makeVisible;
 
 /**
  * Tests for <code>{@link NodeMatcherByIdAndType#matches(Node)}</code>.
@@ -31,19 +35,18 @@ import static org.fest.javafx.core.Visibility.REQUIRE_VISIBLE;
  */
 public class NodeMatcherByIdAndType_matches_Test {
 
-  private Button node;
+  private Node node;
   private NodeMatcherByIdAndType matcher;
 
   @Before
   public void setUp() {
-    node = new Button();
-    node.set$id("myButton");
+    node = button().withId("myButton").createNew();
     matcher = new NodeMatcherByIdAndType("myButton", Button.class, REQUIRE_VISIBLE);
   }
 
   @Test
   public void should_return_true_if_ids_are_equal_and_types_and_visibility_match() {
-    node.set$visible(true);
+    makeVisible(node);
     assertThat(matcher.matches(node)).isTrue();
   }
 
@@ -55,7 +58,7 @@ public class NodeMatcherByIdAndType_matches_Test {
 
   @Test
   public void should_return_false_if_ids_are_not_equal() {
-    node.set$id("hello");
+    updateId(node, "hello");
     assertThat(matcher.matches(node)).isFalse();
   }
 
@@ -67,7 +70,7 @@ public class NodeMatcherByIdAndType_matches_Test {
 
   @Test
   public void should_return_false_if_visibility_does_not_match() {
-    node.set$visible(false);
+    makeNotVisible(node);
     assertThat(matcher.matches(node)).isFalse();
   }
 

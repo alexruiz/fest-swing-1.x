@@ -15,14 +15,13 @@
  */
 package org.fest.javafx.format;
 
+import static org.fest.assertions.Assertions.assertThat;
+import static org.fest.javafx.test.node.Nodes.node;
 import javafx.scene.Node;
 
-import org.junit.*;
-
 import org.fest.ui.testing.annotation.GuiTest;
-
-import static org.fest.assertions.Assertions.assertThat;
-import static org.fest.javafx.test.core.ConcreteNode.createNode;
+import org.junit.Before;
+import org.junit.Test;
 
 /**
  * Tests for <code>{@link BasicNodeFormatter#doFormat(javafx.scene.Node)}</code>.
@@ -37,13 +36,12 @@ public class BasicNodeFormatter_doFormat_Test {
 
   @Before
   public void setUp() {
-    node = createNode();
+    node = node().withId("MyNode").createNew();
     formatter = new BasicNodeFormatter();
   }
 
   @Test
   public void should_format_node() {
-    node.set$id("MyNode");
     String formatted = formatter.doFormat(node);
     assertThat(formatted).isEqualTo("org.fest.javafx.core.ConcreteNode[id='MyNode', disabled=false, visible=true]");
   }
