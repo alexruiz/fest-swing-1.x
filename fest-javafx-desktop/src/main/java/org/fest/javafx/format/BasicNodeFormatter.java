@@ -71,6 +71,7 @@ public class BasicNodeFormatter implements NodeFormatter {
    * <pre>
    * propertyName=propertyValue
    * </pre>
+   * This implementation returns an empty list.
    * @param n the given {@code Node}.
    * @return the formatted properties to be included in <code>{code format(Node)}</code>.
    */

@@ -19,6 +19,8 @@ import static org.fest.util.Strings.quote;
 
 import java.util.List;
 
+import net.jcip.annotations.NotThreadSafe;
+
 import javafx.scene.Node;
 
 /**
@@ -26,6 +28,7 @@ import javafx.scene.Node;
  *
  * @author Alex Ruiz
  */
+@NotThreadSafe
 class PropertyBuilder {
 
   private final StringBuilder buffer = new StringBuilder();
@@ -39,6 +42,11 @@ class PropertyBuilder {
   void add(String propertyName, Object propertyValue) {
     appendCommaIfNecessary();
     buffer.append(propertyName).append("=").append(quote(propertyValue));
+  }
+
+  void add(String propertyName, boolean propertyValue) {
+    appendCommaIfNecessary();
+    buffer.append(propertyName).append("=").append(propertyValue);
   }
 
   void add(List<String> properties) {
