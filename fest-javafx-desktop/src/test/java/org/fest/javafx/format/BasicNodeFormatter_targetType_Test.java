@@ -30,6 +30,6 @@ public class BasicNodeFormatter_targetType_Test {
 
   @Test
   public void should_have_Node_as_target_type() {
-    assertThat(new NodeFormatterTemplate().targetType()).isEqualTo(Node.class);
+    assertThat(new BasicNodeFormatter().targetType()).isEqualTo(Node.class);
   }
 }

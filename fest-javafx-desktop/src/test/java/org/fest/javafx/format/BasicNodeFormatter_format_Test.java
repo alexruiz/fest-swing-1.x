@@ -16,6 +16,7 @@
 package org.fest.javafx.format;
 
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.text.Text;
 
 import org.junit.*;
@@ -31,23 +32,23 @@ import static org.fest.test.ExpectedFailure.expect;
 import static org.fest.util.Strings.concat;
 
 /**
- * Tests for <code>{@link NodeFormatterTemplate#format(javafx.scene.Node)}</code>.
+ * Tests for <code>{@link BasicNodeFormatter#format(javafx.scene.Node)}</code>.
  *
  * @author Alex Ruiz
  */
-public class NodeFormatterTemplate_format_Test {
+public class BasicNodeFormatter_format_Test {
 
-  private NodeFormatterTemplate formatter;
+  private BasicNodeFormatter formatter;
 
   @Before
   public void setUp() {
-    formatter = new NodeFormatterTemplate();
+    formatter = new BasicNodeFormatter();
   }
 
   @Test
   public void should_format_node_only_if_node_type_is_supported() {
     String formatted = formatter.format(node().withId("MyNode").createNew());
-    assertThat(formatted).isEqualTo("org.fest.javafx.core.ConcreteNode[id='MyNode', disabled=false, visible=true]");
+    assertThat(formatted).isEqualTo("org.fest.javafx.test.node.TestNode[id='MyNode', disabled=false, visible=true]");
   }
 
   @Test(expected = NullPointerException.class)
@@ -57,7 +58,12 @@ public class NodeFormatterTemplate_format_Test {
 
   @Test
   public void should_throw_error_if_node_type_is_not_supported() {
-    String message = concat("This formatter only supports components of type ", Node.class.getName());
+    formatter = new BasicNodeFormatter() {
+      @Override public Class<? extends Node> targetType() {
+        return Button.class;
+      }
+    };
+    String message = concat("This formatter only supports components of type ", Button.class.getName());
     expect(IllegalArgumentException.class).withMessage(message).on(new CodeToTest() {
       @Override public void run() {
         formatter.format(createMock(Text.class));

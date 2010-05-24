@@ -37,7 +37,7 @@ public class Formatting {
 
   private static final String NULL_NODE = "Null Node";
   private static final ConcurrentMap<Class<?>, NodeFormatter> FORMATTERS = new ConcurrentHashMap<Class<?>, NodeFormatter>();
-  private static final NodeFormatter DEFAULT_FORMATTER = new NodeFormatterTemplate();
+  private static final NodeFormatter DEFAULT_FORMATTER = new BasicNodeFormatter();
 
   private static Logger logger = Logger.getAnonymousLogger();
 

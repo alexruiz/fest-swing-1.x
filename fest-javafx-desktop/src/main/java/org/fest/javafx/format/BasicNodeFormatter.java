@@ -30,7 +30,7 @@ import static org.fest.util.Strings.quote;
  *
  * @author Alex Ruiz
  */
-public class NodeFormatterTemplate implements NodeFormatter {
+public class BasicNodeFormatter implements NodeFormatter {
 
   /**
    * Returns the {@code String} representation of the given <code>{@link Node}</code>. This implementation only
@@ -46,6 +46,7 @@ public class NodeFormatterTemplate implements NodeFormatter {
    */
   @RunsInCurrentThread
   @Override public final String format(Node n) {
+    if (n == null) throw new NullPointerException("The node to format should not be null");
     validateTypeOf(n);
     return doFormat(n);
   }
@@ -97,7 +98,6 @@ public class NodeFormatterTemplate implements NodeFormatter {
   }
 
   private void validateTypeOf(Node n) {
-    if (n == null) throw new NullPointerException("The node to format should not be null");
     if (!targetType().isAssignableFrom(n.getClass()))
       throw new IllegalArgumentException(concat("This formatter only supports components of type ", targetType().getName()));
   }
