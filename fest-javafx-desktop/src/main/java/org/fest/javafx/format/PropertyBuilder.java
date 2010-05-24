@@ -15,6 +15,8 @@
  */
 package org.fest.javafx.format;
 
+import static java.lang.String.valueOf;
+
 import static org.fest.util.Strings.quote;
 
 import java.util.List;
@@ -36,33 +38,38 @@ class PropertyBuilder {
   private boolean hasProperties;
 
   PropertyBuilder(Node n) {
-    buffer.append(n.getClass().getName()).append("[");
+    String typeName = n.getClass().getName();
+    buffer.append(typeName).append("[");
+  }
+  
+  void add(String propertyName, boolean propertyValue) {
+    addProperty(propertyName, valueOf(propertyValue));
   }
 
   void add(String propertyName, Object propertyValue) {
-    appendCommaIfNecessary();
-    buffer.append(propertyName).append("=").append(quote(propertyValue));
+    addProperty(propertyName, quote(propertyValue));
   }
-
-  void add(String propertyName, boolean propertyValue) {
-    appendCommaIfNecessary();
-    buffer.append(propertyName).append("=").append(propertyValue);
+  
+  private void addProperty(String name, Object value) {
+    aboutToAddProperty();
+    buffer.append(name).append("=").append(value);
   }
-
+  
   void add(List<String> properties) {
-    appendCommaIfNecessary();
+    aboutToAddProperty();
     int propertyCount = properties.size();
     for (int i = 0; i < propertyCount; i++) {
       if (i > 0) appendComma();
       buffer.append(properties.get(i));
     }
   }
-
-  private void appendCommaIfNecessary() {
+  
+  private void aboutToAddProperty() {
     if (!hasProperties) {
       hasProperties = true;
       return;
     }
+    // we already have properties in this builder, append a comma to separate the property to add.
     appendComma();
   }
 
