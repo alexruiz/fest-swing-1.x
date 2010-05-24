@@ -17,7 +17,8 @@ package org.fest.javafx.format;
 
 import static org.fest.util.Strings.quote;
 
-import java.util.Collection;
+import java.util.List;
+
 import javafx.scene.Node;
 
 /**
@@ -29,18 +30,36 @@ class PropertyBuilder {
 
   private final StringBuilder buffer = new StringBuilder();
 
+  private boolean hasProperties;
+
   PropertyBuilder(Node n) {
     buffer.append(n.getClass().getName()).append("[");
   }
 
   void add(String propertyName, Object propertyValue) {
-    buffer.append(propertyName).append("=").append(quote(propertyValue)).append(", ");
+    appendCommaIfNecessary();
+    buffer.append(propertyName).append("=").append(quote(propertyValue));
   }
 
-  void add(Collection<String> properties) {
-    for(String property : properties) {
-      buffer.append(property).append(", ");
+  void add(List<String> properties) {
+    appendCommaIfNecessary();
+    int propertyCount = properties.size();
+    for (int i = 0; i < propertyCount; i++) {
+      if (i > 0) appendComma();
+      buffer.append(properties.get(i));
     }
+  }
+
+  private void appendCommaIfNecessary() {
+    if (!hasProperties) {
+      hasProperties = true;
+      return;
+    }
+    appendComma();
+  }
+
+  private StringBuilder appendComma() {
+    return buffer.append(", ");
   }
 
   String value() {

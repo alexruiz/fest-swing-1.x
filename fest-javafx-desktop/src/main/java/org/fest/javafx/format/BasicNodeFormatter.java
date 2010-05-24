@@ -15,13 +15,14 @@
  */
 package org.fest.javafx.format;
 
-import java.util.*;
-
-import org.fest.javafx.annotations.RunsInCurrentThread;
-import javafx.scene.Node;
-
 import static java.util.Collections.emptyList;
 import static org.fest.util.Strings.concat;
+
+import java.util.List;
+
+import javafx.scene.Node;
+
+import org.fest.javafx.annotations.RunsInCurrentThread;
 
 /**
  * Understands a basic implementation of <code>{@link NodeFormatter}</code>.
@@ -74,7 +75,7 @@ public class BasicNodeFormatter implements NodeFormatter {
    * @return the formatted properties to be included in <code>{code format(Node)}</code>.
    */
   @RunsInCurrentThread
-  protected Collection<String> formattedPropertiesOf(Node n) {
+  protected List<String> formattedPropertiesOf(Node n) {
     return emptyList();
   }
 
