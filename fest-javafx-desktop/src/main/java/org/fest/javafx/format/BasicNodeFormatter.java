@@ -20,10 +20,8 @@ import java.util.*;
 import org.fest.javafx.annotations.RunsInCurrentThread;
 import javafx.scene.Node;
 
-import static java.lang.String.valueOf;
 import static java.util.Collections.emptyList;
 import static org.fest.util.Strings.concat;
-import static org.fest.util.Strings.quote;
 
 /**
  * Understands a basic implementation of <code>{@link NodeFormatter}</code>.
@@ -51,36 +49,19 @@ public class BasicNodeFormatter implements NodeFormatter {
     return doFormat(n);
   }
 
+  private void validateTypeOf(Node n) {
+    if (!targetType().isAssignableFrom(n.getClass()))
+      throw new IllegalArgumentException(concat("This formatter only supports components of type ", targetType().getName()));
+  }
+
   @RunsInCurrentThread
   private String doFormat(Node n) {
-    StringBuilder b = new StringBuilder();
-    b.append(n.getClass().getName()).append("[");
-    String[] properties = propertiesOf(n);
-    int propertyCount = properties.length;
-    for (int i = 0; i < propertyCount; i++) {
-      b.append(properties[i]);
-      if (i != propertyCount - 1) b.append(", ");
-    }
-    b.append("]");
-    return b.toString();
-  }
-
-  @RunsInCurrentThread
-  private String[] propertiesOf(Node n) {
-    List<String> properties = new ArrayList<String>();
-    properties.add(property("id", n.get$id()));
-    properties.addAll(formattedPropertiesOf(n));
-    properties.add(property("disabled", n.get$disabled()));
-    properties.add(property("visible", n.get$visible()));
-    return properties.toArray(new String[properties.size()]);
-  }
-
-  private String property(String name, Object value) {
-    return concat(name, "=", quote(value));
-  }
-
-  private String property(String name, boolean value) {
-    return concat(name, "=", valueOf(value));
+    PropertyBuilder builder = new PropertyBuilder(n);
+    builder.add("id", n.get$id());
+    builder.add(formattedPropertiesOf(n));
+    builder.add("disabled", n.get$disabled());
+    builder.add("visible", n.get$visible());
+    return builder.value();
   }
 
   /**
@@ -95,11 +76,6 @@ public class BasicNodeFormatter implements NodeFormatter {
   @RunsInCurrentThread
   protected Collection<String> formattedPropertiesOf(Node n) {
     return emptyList();
-  }
-
-  private void validateTypeOf(Node n) {
-    if (!targetType().isAssignableFrom(n.getClass()))
-      throw new IllegalArgumentException(concat("This formatter only supports components of type ", targetType().getName()));
   }
 
   /**
