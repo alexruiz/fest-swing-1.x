@@ -21,6 +21,7 @@ import org.junit.*;
 
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.javafx.core.Visibility.REQUIRE_VISIBLE;
+import static org.fest.javafx.test.core.ConcreteNode.createNode;
 
 /**
  * Tests for <code>{@link AbstractNodeMatcher#visibilityMatches(javafx.scene.Node)}</code>.
@@ -33,7 +34,7 @@ public class AbstractNodeMatcher_visibilityMatches_Test {
 
   @BeforeClass
   public static void setUpOnce() {
-    node = new ConcreteNode();
+    node = createNode();
   }
 
   @Test
@@ -66,7 +67,7 @@ public class AbstractNodeMatcher_visibilityMatches_Test {
   private static ConcreteNodeMatcher matchVisibleNode() {
     return new ConcreteNodeMatcher(REQUIRE_VISIBLE);
   }
-  
+
   @Test
   public void should_not_match_if_Node_is_null() {
     ConcreteNodeMatcher matcher = matchAnyNode();

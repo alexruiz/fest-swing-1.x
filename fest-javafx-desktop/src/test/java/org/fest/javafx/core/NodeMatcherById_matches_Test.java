@@ -21,6 +21,7 @@ import org.junit.*;
 
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.javafx.core.Visibility.REQUIRE_VISIBLE;
+import static org.fest.javafx.test.core.ConcreteNode.createNode;
 
 /**
  * Tests for <code>{@link NodeMatcherById#matches(javafx.scene.Node)}</code>.
@@ -34,7 +35,7 @@ public class NodeMatcherById_matches_Test {
 
   @Before
   public void setUp() {
-    node = new ConcreteNode();
+    node = createNode();
     node.set$id("myNode");
     matcher = new NodeMatcherById("myNode", REQUIRE_VISIBLE);
   }
