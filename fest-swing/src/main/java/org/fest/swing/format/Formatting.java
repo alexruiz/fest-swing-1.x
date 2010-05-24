@@ -15,11 +15,12 @@
  */
 package org.fest.swing.format;
 
+import static org.fest.swing.edt.GuiActionRunner.execute;
 import static org.fest.util.Strings.*;
 
 import java.awt.*;
-import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
 import java.util.logging.Logger;
 
 import javax.swing.*;
@@ -27,7 +28,6 @@ import javax.swing.text.JTextComponent;
 
 import org.fest.swing.annotation.RunsInCurrentThread;
 import org.fest.swing.annotation.RunsInEDT;
-import org.fest.swing.edt.GuiActionRunner;
 import org.fest.swing.edt.GuiQuery;
 import org.fest.util.VisibleForTesting;
 
@@ -54,7 +54,7 @@ public class Formatting {
   private static final String VALUE = "value";
   private static final String VISIBLE = "visible";
 
-  private static final Map<Class<?>, ComponentFormatter> FORMATTERS = new ConcurrentHashMap<Class<?>, ComponentFormatter>();
+  private static final ConcurrentMap<Class<?>, ComponentFormatter> FORMATTERS = new ConcurrentHashMap<Class<?>, ComponentFormatter>();
 
   private static Logger logger = Logger.getLogger(Formatting.class.getName());
 
@@ -104,10 +104,10 @@ public class Formatting {
    */
   public static void register(ComponentFormatter formatter) {
     Class<?> key = formatter.targetType();
-    if (FORMATTERS.containsKey(key))
+    ComponentFormatter previous = FORMATTERS.putIfAbsent(key, formatter);
+    if (previous != null)
       logger.info(
-          concat("Replacing formatter ", FORMATTERS.get(key), " with ", formatter, " for the type ", key.getName()));
-    FORMATTERS.put(key, formatter);
+          concat("Replaced formatter ", previous, " with ", formatter, " for the type ", key.getName()));
   }
 
   @VisibleForTesting
@@ -123,7 +123,7 @@ public class Formatting {
    */
   @RunsInEDT
   public static String inEdtFormat(final Component c) {
-    return GuiActionRunner.execute(new GuiQuery<String>() {
+    return execute(new GuiQuery<String>() {
       protected String executeInEDT() {
         return format(c);
       }
@@ -150,7 +150,8 @@ public class Formatting {
   }
 
   private static ComponentFormatter formatterFor(Class<?> type) {
-    if (FORMATTERS.containsKey(type)) return FORMATTERS.get(type);
+    ComponentFormatter formatter = FORMATTERS.get(type);
+    if (formatter != null) return formatter;
     Class<?> superType = type.getSuperclass();
     if (superType != null) return formatterFor(superType);
     return null;
