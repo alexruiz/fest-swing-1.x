@@ -13,7 +13,7 @@
  *
  * Copyright @2010 the original author or authors.
  */
-package org.fest.javafx.test.node;
+package org.fest.javafx.test.builder;
 
 import com.sun.javafx.geom.Bounds2D;
 import com.sun.javafx.geom.transform.BaseTransform;

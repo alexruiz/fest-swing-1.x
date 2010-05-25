@@ -16,7 +16,7 @@
 package org.fest.javafx.format;
 
 import static org.fest.assertions.Assertions.assertThat;
-import static org.fest.javafx.test.node.Buttons.button;
+import static org.fest.javafx.test.builder.Buttons.button;
 
 import java.util.ArrayList;
 import java.util.List;

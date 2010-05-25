@@ -13,7 +13,7 @@
  *
  * Copyright @2010 the original author or authors.
  */
-package org.fest.javafx.test.node;
+package org.fest.javafx.test.builder;
 
 import static org.fest.javafx.threading.GuiActionRunner.execute;
 

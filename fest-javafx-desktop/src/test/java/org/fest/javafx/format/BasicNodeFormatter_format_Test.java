@@ -27,7 +27,7 @@ import static org.easymock.EasyMock.expect;
 import static org.easymock.classextension.EasyMock.createMock;
 
 import static org.fest.assertions.Assertions.assertThat;
-import static org.fest.javafx.test.node.Nodes.node;
+import static org.fest.javafx.test.builder.Nodes.node;
 import static org.fest.test.ExpectedFailure.expect;
 import static org.fest.util.Strings.concat;
 

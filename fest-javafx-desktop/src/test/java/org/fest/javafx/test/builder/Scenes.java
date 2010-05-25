@@ -13,43 +13,33 @@
  *
  * Copyright @2010 the original author or authors.
  */
-package org.fest.javafx.test.node;
+package org.fest.javafx.test.builder;
 
 import static org.fest.javafx.threading.GuiActionRunner.execute;
+import javafx.scene.Scene;
 
 import org.fest.javafx.annotations.RunsInUIThread;
 import org.fest.javafx.threading.GuiQuery;
 
-import javafx.scene.control.Button;
-
 /**
- * Understands a factory of <code>{@link Button}</code>s.
+ * Understands a factory of <code>{@link Scene}</code>s.
  *
  * @author Alex Ruiz
  */
-public class Buttons {
+public class Scenes {
 
-  private Buttons() {}
+  private Scenes() {}
 
-  public static ButtonFactory button() {
-    return new ButtonFactory();
+  public static SceneFactory scene() {
+    return new SceneFactory();
   }
 
-  public static class ButtonFactory {
-    String id;
-
-    public ButtonFactory withId(String newId) {
-      id = newId;
-      return this;
-    }
-
+  public static class SceneFactory {
     @RunsInUIThread
-    public Button createNew() {
-      return execute(new GuiQuery<Button>() {
-        @Override protected Button executeInUIThread() {
-          Button button = new Button();
-          button.set$id(id);
-          return button;
+    public Scene createNew() {
+      return execute(new GuiQuery<Scene>() {
+        @Override protected Scene executeInUIThread() {
+          return new Scene();
         }
       });
     }

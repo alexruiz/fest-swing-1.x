@@ -17,7 +17,7 @@ package org.fest.javafx.core;
 
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.javafx.core.Visibility.REQUIRE_VISIBLE;
-import static org.fest.javafx.test.node.Nodes.node;
+import static org.fest.javafx.test.builder.Nodes.node;
 import static org.fest.javafx.test.query.NodeSetVisibleTask.makeNotVisible;
 import static org.fest.javafx.test.query.NodeSetVisibleTask.makeVisible;
 import javafx.scene.Node;
