@@ -41,7 +41,7 @@ class PropertyBuilder {
     String typeName = n.getClass().getName();
     buffer.append(typeName).append("[");
   }
-  
+
   void add(String propertyName, boolean propertyValue) {
     addProperty(propertyName, valueOf(propertyValue));
   }
@@ -49,13 +49,14 @@ class PropertyBuilder {
   void add(String propertyName, Object propertyValue) {
     addProperty(propertyName, quote(propertyValue));
   }
-  
+
   private void addProperty(String name, Object value) {
     aboutToAddProperty();
     buffer.append(name).append("=").append(value);
   }
-  
+
   void add(List<String> properties) {
+    if (properties.isEmpty()) return;
     aboutToAddProperty();
     int propertyCount = properties.size();
     for (int i = 0; i < propertyCount; i++) {
@@ -63,7 +64,7 @@ class PropertyBuilder {
       buffer.append(properties.get(i));
     }
   }
-  
+
   private void aboutToAddProperty() {
     if (!hasProperties) {
       hasProperties = true;

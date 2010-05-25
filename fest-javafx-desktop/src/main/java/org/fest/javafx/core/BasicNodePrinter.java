@@ -28,6 +28,7 @@ import org.fest.javafx.annotations.RunsInUIThread;
 import org.fest.javafx.hierarchy.NodeHierarchy;
 import org.fest.javafx.hierarchy.SingleSceneNodeHierarchy;
 import org.fest.javafx.threading.GuiTask;
+import org.fest.util.VisibleForTesting;
 
 /**
  * Understands the default implementation of <code>{@link NodePrinter}</code>.
@@ -57,8 +58,9 @@ public class BasicNodePrinter implements NodePrinter {
     if (out == null) throw new NullPointerException("The output stream should not be null");
   }
 
+  @VisibleForTesting
   @RunsInUIThread
-  private void print(final NodeHierarchy hierarchy, final NodeMatcher matcher, final PrintStream out) {
+  void print(final NodeHierarchy hierarchy, final NodeMatcher matcher, final PrintStream out) {
     execute(new GuiTask() {
       @Override protected void executeInUIThread() {
         for (Node n : hierarchy.contents())
@@ -80,7 +82,8 @@ public class BasicNodePrinter implements NodePrinter {
     out.println(format(n));
   }
 
-  private static class AlwaysMatches implements NodeMatcher {
+  @VisibleForTesting
+  static class AlwaysMatches implements NodeMatcher {
     @Override public boolean matches(Node node) {
       return true;
     }

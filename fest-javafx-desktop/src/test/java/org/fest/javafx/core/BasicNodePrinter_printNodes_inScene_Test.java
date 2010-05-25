@@ -30,7 +30,7 @@ import org.junit.Test;
  *
  * @author Alex Ruiz
  */
-public class BasicNodePrinter_printNodesInScene_Test extends SequentialTestCase {
+public class BasicNodePrinter_printNodes_inScene_Test extends SequentialTestCase {
 
   private PrintStreamStub out;
   private Scene root;

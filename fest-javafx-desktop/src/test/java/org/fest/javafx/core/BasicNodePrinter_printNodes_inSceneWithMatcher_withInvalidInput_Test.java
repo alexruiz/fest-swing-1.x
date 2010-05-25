@@ -16,15 +16,17 @@
 package org.fest.javafx.core;
 
 import static org.fest.javafx.test.builder.Scenes.scene;
+
+import org.fest.javafx.test.io.PrintStreamStub;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link BasicNodePrinter#printNodes(java.io.PrintStream, javafx.scene.Scene)}</code>.
+ * Tests for <code>{@link BasicNodePrinter#printNodes(java.io.PrintStream, NodeMatcher, javafx.scene.Scene)}</code>.
  *
  * @author Alex Ruiz
  */
-public class BasicNodePrinter_printNodesInScene_withInvalidInput_Test {
+public class BasicNodePrinter_printNodes_inSceneWithMatcher_withInvalidInput_Test {
 
   private static BasicNodePrinter printer;
 
@@ -35,6 +37,11 @@ public class BasicNodePrinter_printNodesInScene_withInvalidInput_Test {
 
   @Test(expected = NullPointerException.class)
   public void should_throw_error_if_PrintStream_is_null() {
-    printer.printNodes(null, scene().createNew());
+    printer.printNodes(null, new NodeMatcherById("hello"), scene().createNew());
+  }
+
+  @Test(expected = NullPointerException.class)
+  public void should_throw_error_if_Matcher_is_null() {
+    printer.printNodes(new PrintStreamStub(), null, scene().createNew());
   }
 }

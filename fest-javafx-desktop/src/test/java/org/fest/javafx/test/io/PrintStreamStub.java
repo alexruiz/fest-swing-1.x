@@ -33,6 +33,10 @@ public class PrintStreamStub extends PrintStream {
     super(new ByteArrayOutputStream());
   }
 
+  @Override public void print(String s) {
+    System.out.print(s);
+  }
+
   @Override public void println(String s) {
     printed.add(s);
     System.out.println(s);
