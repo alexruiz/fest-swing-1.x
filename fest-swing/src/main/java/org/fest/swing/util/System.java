@@ -15,17 +15,19 @@
  */
 package org.fest.swing.util;
 
+import org.fest.util.Systems;
+
 /**
  * Understands system-related utility methods.
  *
  * @author Alex Ruiz
  *
- * @deprecated Use <code>{@link SystemProperties}</code> instead.
+ * @deprecated Use <code>{@link Systems}</code> instead.
  */
 @Deprecated
 public final class System {
 
-  public static final String LINE_SEPARATOR = SystemProperties.lineSeparator();
+  public static final String LINE_SEPARATOR = Systems.LINE_SEPARATOR;
 
   private System() {}
 }

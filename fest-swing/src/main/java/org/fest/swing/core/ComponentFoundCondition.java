@@ -16,8 +16,8 @@
 package org.fest.swing.core;
 
 import static java.util.Collections.emptyList;
-import static org.fest.swing.util.SystemProperties.lineSeparator;
 import static org.fest.util.Strings.concat;
+import static org.fest.util.Systems.LINE_SEPARATOR;
 
 import java.awt.Component;
 import java.awt.Container;
@@ -120,7 +120,7 @@ public final class ComponentFoundCondition extends Condition {
   @Override protected String descriptionAddendum() {
     ComponentLookupException error = notFoundError.get();
     if (error == null) return EMPTY_TEXT;
-    return concat(lineSeparator(), error.getMessage());
+    return concat(LINE_SEPARATOR, error.getMessage());
   }
 
   /**

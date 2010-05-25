@@ -21,10 +21,10 @@ import static org.fest.swing.keystroke.KeyStrokeMapping.mapping;
 import static org.fest.swing.keystroke.KeyStrokeMappingProvider.NO_MASK;
 import static org.fest.swing.test.core.CommonAssertions.failWhenExpectingException;
 import static org.fest.swing.util.Platform.isWindows;
-import static org.fest.swing.util.SystemProperties.lineSeparator;
 import static org.fest.util.Closeables.close;
 import static org.fest.util.Files.newTemporaryFile;
 import static org.fest.util.Flushables.flush;
+import static org.fest.util.Systems.LINE_SEPARATOR;
 
 import java.io.*;
 import java.util.Collection;
@@ -109,7 +109,7 @@ public class KeyStrokeMappingProvider_parse_Test {
     try {
       for (String mapping : mappings) {
         output.write(mapping);
-        output.write(lineSeparator());
+        output.write(LINE_SEPARATOR);
       }
     } finally {
       flush(output);
