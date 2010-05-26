@@ -18,7 +18,6 @@ package org.fest.javafx.core;
 import java.io.PrintStream;
 
 import org.fest.javafx.annotations.RunsInUIThread;
-
 import javafx.scene.Node;
 import javafx.scene.Scene;
 
@@ -31,7 +30,7 @@ public interface NodePrinter {
 
   /**
    * Prints all the nodes in the given root.
-   * @param out the output stream where to print the components to.
+   * @param out the output stream where to print the nodes to.
    * @param root the starting point.
    * @throws NullPointerException if {@code out} is <code>null</code>.
    */
@@ -40,7 +39,7 @@ public interface NodePrinter {
 
   /**
    * Prints all the nodes that match the given criteria under the given root.
-   * @param out the output stream where to print the components to.
+   * @param out the output stream where to print the nodes to.
    * @param matcher specifies which nodes should be printed.
    * @param root the starting point.
    * @throws NullPointerException if {@code out} is <code>null</code>.

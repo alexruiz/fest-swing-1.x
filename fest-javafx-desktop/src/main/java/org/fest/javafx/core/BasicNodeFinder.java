@@ -15,15 +15,22 @@
  */
 package org.fest.javafx.core;
 
+import static org.fest.javafx.format.Formatting.format;
+import static org.fest.javafx.threading.GuiActionRunner.execute;
+import static org.fest.util.Strings.concat;
+import static org.fest.util.Systems.LINE_SEPARATOR;
+
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.util.Collection;
 
-import javafx.scene.*;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 
 import org.fest.javafx.annotations.RunsInUIThread;
 import org.fest.javafx.exception.NodeLookupException;
 import org.fest.javafx.hierarchy.SingleSceneNodeHierarchy;
-
-import static org.fest.util.Strings.concat;
+import org.fest.javafx.threading.GuiTask;
 
 /**
  * Understands <code>{@link Node}</code> lookups.
@@ -32,8 +39,12 @@ import static org.fest.util.Strings.concat;
  */
 public class BasicNodeFinder implements NodeFinder {
 
+  private final NodePrinter printer = new BasicNodePrinter();
+
   private final FinderDelegate finderDelegate = new FinderDelegate();
-  
+
+  private boolean includeHierarchyInNodeLookupException;
+
   /** {@inheritDoc} */
   @Override public Node findById(Scene root, String id, Visibility visibility) {
     return find(root, new NodeMatcherById(id, visibility));
@@ -55,14 +66,47 @@ public class BasicNodeFinder implements NodeFinder {
 
   private NodeLookupException nodeNotFound(Scene root, NodeMatcher matcher) {
     String message = concat("Unable to find node using matcher ", matcher, ".");
-    // TODO print node hierarchy
+    if (includeHierarchyIfNodeNotFound())
+      message = concat(message,
+          LINE_SEPARATOR, LINE_SEPARATOR, "Component hierarchy:", LINE_SEPARATOR, formattedHierarchy(root));
     throw new NodeLookupException(message);
+  }
+
+  @RunsInUIThread
+  private String formattedHierarchy(Scene root) {
+    ByteArrayOutputStream out = new ByteArrayOutputStream();
+    PrintStream printStream = new PrintStream(out, true);
+    printer.printNodes(printStream, root);
+    printStream.flush();
+    return new String(out.toByteArray());
   }
 
   private NodeLookupException multipleNodesFound(Collection<Node> found, NodeMatcher matcher) {
     StringBuilder message = new StringBuilder();
-    message.append("Found more than one node using matcher ").append(matcher);
-    // TODO print found nodes
+    message.append("Found more than one node using matcher ").append(matcher).append(".").append(LINE_SEPARATOR)
+           .append(LINE_SEPARATOR)
+           .append("Found:");
+    appendNodes(message, found);
+    if (!found.isEmpty()) message.append(LINE_SEPARATOR);
     throw new NodeLookupException(message.toString(), found);
+  }
+
+  @RunsInUIThread
+  private static void appendNodes(final StringBuilder message, final Collection<Node> found) {
+    execute(new GuiTask() {
+      @Override protected void executeInUIThread() {
+        for (Node n : found) message.append(LINE_SEPARATOR).append(format(n));
+      }
+    });
+  }
+
+  /** {@inheritDoc} */
+  @Override public boolean includeHierarchyIfNodeNotFound() {
+    return includeHierarchyInNodeLookupException;
+  }
+
+  /** {@inheritDoc} */
+  @Override public void includeHierarchyIfNodeNotFound(boolean newValue) {
+    includeHierarchyInNodeLookupException = newValue;
   }
 }

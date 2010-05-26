@@ -114,7 +114,7 @@ public class BasicNodePrinter_print_inHierarchyWithMatcher_Test {
     }
 
     @Override public Sequence<? extends Node> get$children() {
-      if (isEmpty(children)) return super.get$children();
+      if (isEmpty(children)) return emptySequence(Node.class);
       return sequence(Node.class, children);
     }
   }

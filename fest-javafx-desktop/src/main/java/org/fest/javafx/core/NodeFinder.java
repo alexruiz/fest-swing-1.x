@@ -63,4 +63,20 @@ public interface NodeFinder {
    * @throws NodeLookupException if more than one matching node is found.
    */
   Node findById(Scene root, String id, Visibility visibility);
+
+
+  /**
+   * Returns whether the message in a <code>{@link NodeLookupException}</code> should include the current node
+   * hierarchy. The default value is <code>true</code>.
+   * @return <code>true</code> if the node hierarchy is included as part of the {@code NodeLookupException} message,
+   * <code>false</code> otherwise.
+   */
+  boolean includeHierarchyIfNodeNotFound();
+
+  /**
+   * Updates whether the message in a <code>{@link NodeLookupException}</code> should include the current node
+   * hierarchy. The default value is <code>true</code>.
+   * @param newValue the new value to set.
+   */
+  void includeHierarchyIfNodeNotFound(boolean newValue);
 }
