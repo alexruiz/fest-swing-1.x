@@ -15,9 +15,7 @@
  */
 package org.fest.javafx.util;
 
-import java.awt.Point;
 
-import javafx.geometry.Point2D;
 import javafx.scene.control.Control;
 import javafx.stage.Stage;
 
@@ -39,15 +37,10 @@ public final class Location {
    * @return the coordinates, relative to the screen, of the given control.
    */
   public static Point centerOf(Control control) {
-    Point center = pointFrom(control.localToScene(control.get$width() / 2, control.get$height() / 2));
+    Point center = new Point(control.localToScene(control.get$width() / 2, control.get$height() / 2));
     JFrame w = windowFrom(control.get$scene().get$stage());
-    Point screenLocation = w.getContentPane().getLocationOnScreen();
-    center.translate(screenLocation.x, screenLocation.y);
-    return center;
-  }
-
-  private static Point pointFrom(Point2D p) {
-    return new Point((int)p.$x, (int)p.$y);
+    java.awt.Point screenLocation = w.getContentPane().getLocationOnScreen();
+    return center.translate(screenLocation.x, screenLocation.y);
   }
 
   private static JFrame windowFrom(Stage stage) {
