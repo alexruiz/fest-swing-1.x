@@ -18,6 +18,8 @@ package org.fest.javafx.core;
 import javafx.scene.control.Control;
 import javafx.scene.input.MouseButton;
 
+import org.fest.javafx.util.Point;
+
 /**
  * Understands simulation of input events.
  *
@@ -25,17 +27,44 @@ import javafx.scene.input.MouseButton;
  */
 public interface InputEventGenerator {
 
+  /**
+   * Simulates a user pressing a mouse button.
+   * @param button the mouse button to press.
+   */
   void pressMouse(MouseButton button);
 
-  void pressMouse(MouseButton button, Control c, int x, int y);
+  /**
+   * Simulates a user pressing the given mouse buttons on the given <code>{@link Control}</code>.
+   * @param c the {@code Control} to click on.
+   * @param button the mouse button to press.
+   * @param where the given coordinates, relative to the given {@code Control}.
+   */
+  void pressMouse(MouseButton button, Control c, Point where);
 
-  void moveMouse(int x, int y);
+  /**
+   * Simulates a user moving the mouse pointer to the given point.
+   * @param where the point to move the mouse pointer to.
+   */
+  void moveMouse(Point where);
 
-  void moveMouse(Control c, int x, int y);
+  /**
+   * Simulates a user moving the mouse pointer to the given coordinates relative to the given
+   * <code>{@link Control}</code>.
+   * @param c the given {@code Control}.
+   * @param where the point, relative to the given {@code Control}.
+   */
+  void moveMouse(Control c, Point where);
 
+  /**
+   * Simulates a user releasing the given mouse button.
+   * @param button the mouse button to release.
+   */
   void releaseMouse(MouseButton button);
 
+  /**
+   * Simulates a user rotating the scroll wheel on wheel-equipped mice.
+   * @param amount number of "notches" to move the mouse wheel. Negative values indicate movement up/away from the user,
+   * while positive values indicate movement down/towards the user.
+   */
   void rotateMouseWheel(int amount);
-
-
 }
