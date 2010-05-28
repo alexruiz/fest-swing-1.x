@@ -25,6 +25,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Control;
 
 import org.fest.javafx.util.Point;
+import org.fest.ui.testing.annotation.GuiTest;
 import org.junit.Test;
 
 /**
@@ -32,6 +33,7 @@ import org.junit.Test;
  *
  * @author Alex Ruiz
  */
+@GuiTest
 public class AwtRobotInputEventGenerator_mouseMove_Test extends AwtRobotInputEventGenerator_TestCase {
 
   @Test
