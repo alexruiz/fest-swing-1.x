@@ -23,15 +23,15 @@ public final class JavaFxClassLauncher {
 
   /**
    * Launches a JavaFX UI from the given type.
-   * @param javaFxClass the type of the JavaFX UI to launch.
+   * @param guiSource the class defining the JavaFX UI to launch.
    * @return the {@code Stage} of the launched UI.
    */
-  public static Stage launch(final Class<?> javaFxClass) {
+  public static Stage launch(final Class<?> guiSource) {
     Stage stage = execute(new GuiQuery<Stage>() {
       @Override protected Stage executeInUIThread() {
         return (Stage) staticMethod("javafx$run$").withReturnType(Object.class)
                                                   .withParameterTypes(Sequence.class)
-                                                  .in(javaFxClass)
+                                                  .in(guiSource)
                                                   .invoke(TypeInfo.String.emptySequence);
       }
     });

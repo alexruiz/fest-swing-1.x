@@ -15,7 +15,7 @@
  */
 package org.fest.javafx.threading;
 
-import static org.fest.javafx.exception.UnexpectedException.unexpected;
+import static org.fest.ui.testing.exception.UnexpectedException.unexpected;
 import static org.fest.util.Throwables.appendCurrentThreadStackTraceToThrowable;
 
 import java.util.concurrent.CountDownLatch;
@@ -23,7 +23,7 @@ import java.util.concurrent.CountDownLatch;
 import net.jcip.annotations.GuardedBy;
 import net.jcip.annotations.ThreadSafe;
 
-import org.fest.javafx.exception.UnexpectedException;
+import org.fest.ui.testing.exception.UnexpectedException;
 
 /**
  * Understands running instances of <code>{@link GuiQuery}</code> and <code>{@link GuiTask}</code>.

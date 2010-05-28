@@ -15,11 +15,10 @@
  */
 package org.fest.javafx.threading;
 
-import org.fest.javafx.exception.ActionFailedException;
-
 import static javax.swing.SwingUtilities.isEventDispatchThread;
+import static org.fest.ui.testing.exception.ActionFailedException.actionFailure;
 
-import static org.fest.javafx.exception.ActionFailedException.actionFailure;
+import org.fest.ui.testing.exception.ActionFailedException;
 
 /**
  * Understands a task that should be executed in the UI thread.

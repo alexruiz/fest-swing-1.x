@@ -16,9 +16,9 @@
 package org.fest.javafx.threading;
 
 import static javax.swing.SwingUtilities.isEventDispatchThread;
-import static org.fest.javafx.exception.ActionFailedException.actionFailure;
+import static org.fest.ui.testing.exception.ActionFailedException.actionFailure;
 
-import org.fest.javafx.exception.ActionFailedException;
+import org.fest.ui.testing.exception.ActionFailedException;
 
 /**
  * Understands executing an action, in the UI thread, that returns a value.
