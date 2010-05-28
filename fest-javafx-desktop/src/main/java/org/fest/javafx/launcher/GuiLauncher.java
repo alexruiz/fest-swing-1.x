@@ -19,7 +19,7 @@ import com.sun.javafx.runtime.sequence.Sequence;
  *
  * @author Alex Ruiz
  */
-public final class JavaFxClassLauncher {
+public final class GuiLauncher {
 
   /**
    * Launches a JavaFX UI from the given type.
@@ -38,5 +38,5 @@ public final class JavaFxClassLauncher {
     return stage;
   }
 
-  private JavaFxClassLauncher() {}
+  private GuiLauncher() {}
 }

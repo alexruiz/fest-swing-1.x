@@ -30,34 +30,35 @@ public interface InputEventGenerator {
   /**
    * Simulates a user pressing a mouse button.
    * @param button the mouse button to press.
+   * @throws NullPointerException if the {@code button} is <code>null</code>.
    */
   void pressMouse(MouseButton button);
 
   /**
    * Simulates a user pressing the given mouse buttons on the given <code>{@link Control}</code>.
-   * @param c the {@code Control} to click on.
    * @param button the mouse button to press.
+   * @param control the {@code Control} to click on.
    * @param where the given coordinates, relative to the given {@code Control}.
+   * @throws NullPointerException if the {@code button} is <code>null</code>.
+   * @throws NullPointerException if the {@code control} is <code>null</code>.
+   * @throws NullPointerException if the {@code where} is <code>null</code>.
    */
-  void pressMouse(MouseButton button, Control c, Point where);
-
-  /**
-   * Simulates a user moving the mouse pointer to the given point.
-   * @param where the point to move the mouse pointer to.
-   */
-  void moveMouse(Point where);
+  void pressMouse(MouseButton button, Control control, Point where);
 
   /**
    * Simulates a user moving the mouse pointer to the given coordinates relative to the given
    * <code>{@link Control}</code>.
-   * @param c the given {@code Control}.
+   * @param control the given {@code Control}.
    * @param where the point, relative to the given {@code Control}.
+   * @throws NullPointerException if the {@code control} is <code>null</code>.
+   * @throws NullPointerException if the {@code where} is <code>null</code>.
    */
-  void moveMouse(Control c, Point where);
+  void moveMouse(Control control, Point where);
 
   /**
    * Simulates a user releasing the given mouse button.
    * @param button the mouse button to release.
+   * @throws NullPointerException if the {@code button} is <code>null</code>.
    */
   void releaseMouse(MouseButton button);
 

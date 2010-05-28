@@ -17,7 +17,8 @@ package org.fest.javafx.core;
 
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.javafx.core.SceneFromStageQuery.sceneIn;
-import static org.fest.javafx.launcher.JavaFxClassLauncher.launch;
+import static org.fest.javafx.launcher.GuiLauncher.launch;
+import static org.fest.javafx.util.Scenes.close;
 import javafx.scene.Scene;
 
 import org.fest.javafx.scripts.ButtonDemo;
@@ -33,18 +34,22 @@ import org.junit.Test;
 public class BasicNodePrinter_printNodes_inScene_Test extends SequentialTestCase {
 
   private PrintStreamStub out;
-  private Scene root;
+  private Scene scene;
   private BasicNodePrinter printer;
 
   @Override protected void onSetUp() {
-    root = sceneIn(launch(ButtonDemo.class));
+    scene = sceneIn(launch(ButtonDemo.class));
     out = new PrintStreamStub();
     printer = new BasicNodePrinter();
   }
 
+  @Override protected void onTearDown() {
+    close(scene);
+  }
+
   @Test
   public void should_print_all_nodes_in_Scene() {
-    printer.printNodes(out, root);
+    printer.printNodes(out, scene);
     String[] printed = out.printed();
     assertThat(printed).isNotEmpty();
     assertThat(printed[0]).contains("javafx.scene.control.Button");

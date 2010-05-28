@@ -51,6 +51,16 @@ public class Point {
   }
 
   /**
+   * Translates this point, at location {@code (x,y)}, by {@code other.x} along the {@code x} axis and {@code other.y}
+   * along the {@code y} axis so that it now represents the point {@code (x+other.x,y+other.y)}.
+   * @param other the distance to move this point along the X and Y axes.
+   * @return a new {@code Point} containing the new coordinates.
+   */
+  public Point translate(Point other) {
+    return translate(other.x, other.y);
+  }
+
+  /**
    * Translates this point, at location {@code (x,y)}, by {@code dx} along the {@code x} axis and {@code dy} along the
    * {@code y} axis so that it now represents the point {@code (x+dx,y+dy)}.
    * @param dx the distance to move this point along the X axis.

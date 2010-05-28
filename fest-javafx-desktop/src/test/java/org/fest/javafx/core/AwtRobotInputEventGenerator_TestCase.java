@@ -1,5 +1,5 @@
 /*
- * Created on May 24, 2010
+ * Created on May 27, 2010
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -15,44 +15,36 @@
  */
 package org.fest.javafx.core;
 
-import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.javafx.core.SceneFromStageQuery.sceneIn;
 import static org.fest.javafx.launcher.GuiLauncher.launch;
 import static org.fest.javafx.util.Scenes.close;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 
 import org.fest.javafx.scripts.ButtonDemo;
 import org.fest.javafx.test.core.SequentialTestCase;
-import org.fest.javafx.test.io.PrintStreamStub;
-import org.junit.Test;
 
 /**
- * Tests for <code>{@link BasicNodePrinter#printNodes(java.io.PrintStream, NodeMatcher, Scene)}</code>.
+ * Base test class for <code>{@link AwtRobotInputEventGenerator}</code>.
  *
  * @author Alex Ruiz
  */
-public class BasicNodePrinter_printNodes_inSceneWithMatcher_Test extends SequentialTestCase {
+public abstract class AwtRobotInputEventGenerator_TestCase extends SequentialTestCase {
 
-  private PrintStreamStub out;
+  private NodeFinder finder;
+  private AwtRobotInputEventGenerator inputEventGenerator;
   private Scene scene;
-  private BasicNodePrinter printer;
 
-  @Override protected void onSetUp() {
+  @Override protected final void onSetUp() {
+    finder = new BasicNodeFinder();
+    inputEventGenerator = new AwtRobotInputEventGenerator();
     scene = sceneIn(launch(ButtonDemo.class));
-    out = new PrintStreamStub();
-    printer = new BasicNodePrinter();
   }
 
   @Override protected void onTearDown() {
     close(scene);
   }
 
-  @Test
-  public void should_print_all_nodes_in_Scene() {
-    printer.printNodes(out, new NodeMatcherByType(Button.class), scene);
-    String[] printed = out.printed();
-    assertThat(printed).hasSize(1);
-    assertThat(printed[0]).contains("javafx.scene.control.Button");
-  }
+  final NodeFinder nodeFinder() { return finder; }
+  final AwtRobotInputEventGenerator inputEventGenerator() { return inputEventGenerator; }
+  final Scene scene() { return scene; }
 }
