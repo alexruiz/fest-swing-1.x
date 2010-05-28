@@ -28,21 +28,6 @@ import org.fest.javafx.annotations.RunsInCurrentThread;
 public final class ScreenLocations {
 
   /**
-   * Returns the coordinates of the center of the given control. The coordinates are relative to the screen.
-   * <p>
-   * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the UI thread. Clients are responsible for
-   * calling this method from the UI thread.
-   * </p>
-   * @param c the given {@code Control}.
-   * @return the coordinates, relative to the screen, of the given {@code Control}.
-   */
-  @RunsInCurrentThread
-  public static Point centerOf(Control c) {
-    Point center = new Point(c.localToScene(c.get$width() / 2, c.get$height() / 2));
-    return locationOnScreenOf(c, center);
-  }
-
-  /**
    * Translates the given coordinates to the location on screen of the given <code>{@link Control}</code>.
    * <p>
    * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the UI thread. Clients are responsible for
@@ -53,7 +38,7 @@ public final class ScreenLocations {
    * @return the translated coordinates.
    */
   @RunsInCurrentThread
-  public static Point translate(Control c, Point p) {
+  public static Point translateToScreenCoordinates(Control c, Point p) {
     return locationOnScreenOf(c, p);
   }
 

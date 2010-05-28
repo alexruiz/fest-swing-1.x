@@ -15,16 +15,11 @@
  */
 package org.fest.javafx.core;
 
-import static org.fest.assertions.Assertions.assertThat;
-import static org.fest.javafx.core.Visibility.REQUIRE_VISIBLE;
-import static org.fest.javafx.util.MousePointer.mousePointerOnScreen;
-import static org.fest.javafx.util.Nodes.centerOf;
-import static org.fest.javafx.util.ScreenLocations.translateToScreenCoordinates;
-
-import javafx.scene.control.Button;
+import static org.fest.javafx.test.builder.Buttons.button;
 import javafx.scene.control.Control;
 
 import org.fest.javafx.util.Point;
+import org.junit.Before;
 import org.junit.Test;
 
 /**
@@ -32,14 +27,22 @@ import org.junit.Test;
  *
  * @author Alex Ruiz
  */
-public class AwtRobotInputEventGenerator_mouseMove_Test extends AwtRobotInputEventGenerator_TestCase {
+public class AwtRobotInputEventGenerator_moveMouse_withInvalidInput_Test {
 
-  @Test
-  public void should_move_mouse() {
-    Button button = nodeFinder().findByType(scene(), Button.class, REQUIRE_VISIBLE);
-    Point centerOfButton = centerOf(button);
-    inputEventGenerator().moveMouse(button, centerOfButton);
-    Point expectedMousePointerLocation = translateToScreenCoordinates(button, centerOfButton);
-    assertThat(mousePointerOnScreen()).isEqualTo(expectedMousePointerLocation);
+  private AwtRobotInputEventGenerator inputEventGenerator;
+
+  @Before
+  public void setUp() {
+    inputEventGenerator = new AwtRobotInputEventGenerator();
+  }
+
+  @Test(expected = NullPointerException.class)
+  public void should_throw_error_if_Control_is_null() {
+    inputEventGenerator.moveMouse(null, new Point(0, 0));
+  }
+
+  @Test(expected = NullPointerException.class)
+  public void should_throw_error_if_Point_is_null() {
+    inputEventGenerator.moveMouse(button().createNew(), null);
   }
 }

@@ -17,6 +17,7 @@ package org.fest.javafx.core;
 
 import static java.awt.event.InputEvent.*;
 import static javafx.scene.input.MouseButton.*;
+import static org.fest.javafx.util.ScreenLocations.translateToScreenCoordinates;
 import static org.fest.ui.testing.exception.UnexpectedException.unexpected;
 
 import java.awt.AWTException;
@@ -28,6 +29,7 @@ import javafx.scene.control.Control;
 import javafx.scene.input.MouseButton;
 
 import org.fest.javafx.util.*;
+import org.fest.util.VisibleForTesting;
 
 /**
  * Understands an implementation of <code>{@link InputEventGenerator}</code> that uses a AWT <code>{@link Robot}</code>
@@ -51,6 +53,7 @@ class AwtRobotInputEventGenerator implements InputEventGenerator {
     this(new RobotFactory());
   }
 
+  @VisibleForTesting
   AwtRobotInputEventGenerator(RobotFactory robotFactory) {
     try {
       robot = robotFactory.createAwtRobot();
@@ -62,7 +65,7 @@ class AwtRobotInputEventGenerator implements InputEventGenerator {
   /** {@inheritDoc} */
   @Override public void moveMouse(Control control, Point where) {
     validateNotNull(control, where);
-    Point p = ScreenLocations.translate(control, where);
+    Point p = translateToScreenCoordinates(control, where);
     robot.mouseMove(p.x, p.y);
   }
 

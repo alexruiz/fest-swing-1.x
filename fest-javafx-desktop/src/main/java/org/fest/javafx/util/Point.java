@@ -22,7 +22,6 @@ import javafx.geometry.Point2D;
  * Understands a point.
  *
  * @author Alex Ruiz
- *
  */
 public class Point {
 
