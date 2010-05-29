@@ -18,24 +18,49 @@ package org.fest.javafx.scripts;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.layout.VBox;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.paint.Color;
+import javafx.scene.input.MouseButton;
+import java.util.HashMap;
 
 /**
  * Understands a simple UI with a button.
  *
  * @author Alex Ruiz
  */
+def rectangle = Rectangle {
+  id: "rectangle"
+  width: 20
+  height: 20
+  fill: Color.BLUE
+};
+
+def colorMapping = new HashMap();
+colorMapping.put(MouseButton.PRIMARY, Color.RED);
+colorMapping.put(MouseButton.MIDDLE, Color.GREEN);
+colorMapping.put(MouseButton.SECONDARY, Color.YELLOW);
+colorMapping.put(MouseButton.NONE, Color.PURPLE);
+
 Stage {
   title: "ButtonDemo.fx"
   scene: Scene {
     width: 250
     height: 80
     content: [
-      Button {
-        id: "button"
-        text: "Click Me"
-        action: function () {
-
-        }
+      VBox {
+        spacing: 10
+        content: [
+          Button {
+            id: "button"
+            text: "Click Me"
+            onMousePressed: function(evt: MouseEvent) {
+              rectangle.fill = (colorMapping.get(evt.button) as Color);
+            }
+          }
+          rectangle
+        ]
       }
     ]
   }
