@@ -30,42 +30,47 @@ public interface InputEventGenerator {
   /**
    * Simulates a user pressing a mouse button.
    * @param button the mouse button to press.
+   * @return {@code this}.
    * @throws NullPointerException if the {@code button} is <code>null</code>.
    */
-  void pressMouse(MouseButton button);
+  InputEventGenerator pressMouse(MouseButton button);
 
   /**
    * Simulates a user pressing the given mouse buttons on the given <code>{@link Control}</code>.
    * @param button the mouse button to press.
    * @param control the {@code Control} to click on.
    * @param where the given coordinates, relative to the given {@code Control}.
+   * @return {@code this}.
    * @throws NullPointerException if the {@code button} is <code>null</code>.
    * @throws NullPointerException if the {@code control} is <code>null</code>.
    * @throws NullPointerException if the {@code where} is <code>null</code>.
    */
-  void pressMouse(MouseButton button, Control control, Point where);
+  InputEventGenerator pressMouse(MouseButton button, Control control, Point where);
 
   /**
    * Simulates a user moving the mouse pointer to the given coordinates relative to the given
    * <code>{@link Control}</code>.
    * @param control the given {@code Control}.
    * @param where the point, relative to the given {@code Control}.
+   * @return {@code this}.
    * @throws NullPointerException if the {@code control} is <code>null</code>.
    * @throws NullPointerException if the {@code where} is <code>null</code>.
    */
-  void moveMouse(Control control, Point where);
+  InputEventGenerator moveMouse(Control control, Point where);
 
   /**
    * Simulates a user releasing the given mouse button.
    * @param button the mouse button to release.
+   * @return {@code this}.
    * @throws NullPointerException if the {@code button} is <code>null</code>.
    */
-  void releaseMouse(MouseButton button);
+  InputEventGenerator releaseMouse(MouseButton button);
 
   /**
    * Simulates a user rotating the scroll wheel on wheel-equipped mice.
    * @param amount number of "notches" to move the mouse wheel. Negative values indicate movement up/away from the user,
    * while positive values indicate movement down/towards the user.
+   * @return {@code this}.
    */
-  void rotateMouseWheel(int amount);
+  InputEventGenerator rotateMouseWheel(int amount);
 }

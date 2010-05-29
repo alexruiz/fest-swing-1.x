@@ -63,10 +63,11 @@ class AwtRobotInputEventGenerator implements InputEventGenerator {
   }
 
   /** {@inheritDoc} */
-  @Override public void moveMouse(Control control, Point where) {
+  @Override public AwtRobotInputEventGenerator moveMouse(Control control, Point where) {
     validateNotNull(control, where);
     Point p = translateToScreenCoordinates(control, where);
     robot.mouseMove(p.x, p.y);
+    return this;
   }
 
   private void validateNotNull(Control c, Point p) {
@@ -75,23 +76,25 @@ class AwtRobotInputEventGenerator implements InputEventGenerator {
   }
 
   /** {@inheritDoc} */
-  @Override public void pressMouse(MouseButton button) {
+  @Override
+  public AwtRobotInputEventGenerator pressMouse(MouseButton button, Control control, Point where) {
+    moveMouse(control, where);
+    pressMouse(button);
+    return this;
+  }
+
+  /** {@inheritDoc} */
+  @Override public AwtRobotInputEventGenerator pressMouse(MouseButton button) {
     if (button == null) throw new NullPointerException("The MouseButton to press should not be null");
     robot.mousePress(maskOf(button));
+    return this;
   }
 
   /** {@inheritDoc} */
-  @Override
-  public void pressMouse(MouseButton button, Control control, Point where) {
-    moveMouse(control, where);
-    if (button == null) throw new NullPointerException("The MouseButton to press should not be null");
-  }
-
-  /** {@inheritDoc} */
-  @Override
-  public void releaseMouse(MouseButton button) {
+  @Override public AwtRobotInputEventGenerator releaseMouse(MouseButton button) {
     if (button == null) throw new NullPointerException("The MouseButton to release should not be null");
     robot.mouseRelease(maskOf(button));
+    return this;
   }
 
   private static int maskOf(MouseButton button) {
@@ -99,8 +102,8 @@ class AwtRobotInputEventGenerator implements InputEventGenerator {
   }
 
   /** {@inheritDoc} */
-  @Override
-  public void rotateMouseWheel(int amount) {
+  @Override public AwtRobotInputEventGenerator rotateMouseWheel(int amount) {
     robot.mouseWheel(amount);
+    return this;
   }
 }

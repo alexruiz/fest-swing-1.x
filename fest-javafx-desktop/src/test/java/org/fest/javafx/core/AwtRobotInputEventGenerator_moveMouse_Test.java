@@ -15,13 +15,6 @@
  */
 package org.fest.javafx.core;
 
-import static org.fest.assertions.Assertions.assertThat;
-import static org.fest.javafx.core.Visibility.REQUIRE_VISIBLE;
-import static org.fest.javafx.util.MousePointer.mousePointerOnScreen;
-import static org.fest.javafx.util.Nodes.centerOf;
-import static org.fest.javafx.util.ScreenLocations.translateToScreenCoordinates;
-
-import javafx.scene.control.Button;
 import javafx.scene.control.Control;
 
 import org.fest.javafx.util.Point;
@@ -34,14 +27,11 @@ import org.junit.Test;
  * @author Alex Ruiz
  */
 @GuiTest
-public class AwtRobotInputEventGenerator_mouseMove_Test extends AwtRobotInputEventGenerator_TestCase {
+public class AwtRobotInputEventGenerator_moveMouse_Test extends AwtRobotInputEventGenerator_mouse_TestCase {
 
   @Test
   public void should_move_mouse() {
-    Button button = nodeFinder().findByType(scene(), Button.class, REQUIRE_VISIBLE);
-    Point centerOfButton = centerOf(button);
-    inputEventGenerator().moveMouse(button, centerOfButton);
-    Point expectedMousePointerLocation = translateToScreenCoordinates(button, centerOfButton);
-    assertThat(mousePointerOnScreen()).isEqualTo(expectedMousePointerLocation);
+    inputEventGenerator().moveMouse(button(), centerOfButton());
+    verifyMousePointerScreenLocation();
   }
 }
