@@ -62,58 +62,71 @@ abstract class InputEventGeneratorTemplate implements InputEventGenerator {
   }
 
   private void validateMouseButtonToPress(MouseButton button) {
-    validate(button, "press");
+    validate(button, Action.PRESS);
   }
 
   abstract void mousePress(MouseButton button);
 
   @Override public final InputEventGenerator releaseMouse(MouseButton button) {
-    validate(button, "release");
+    validate(button, Action.RELEASE);
     mouseRelease(button);
     waitForIdle();
     return this;
   }
 
-  private void validate(MouseButton button, String purpose) {
-    if (button == null) throw new NullPointerException(concat("The MouseButton to ", purpose, " should not be null"));
-    if (button.equals(NONE))
-      throw new IllegalArgumentException(concat("The MouseButton to ", purpose, " should not be NONE"));
+  private void validate(MouseButton button, Action action) {
+    validateNotNull(button, action);
+    validateNotNone(button, action);
+  }
+
+  private void validateNotNull(MouseButton button, Action action) {
+    if (button != null) return;
+    throw new NullPointerException(concat("The MouseButton to ", action.value(), " should not be null"));
+  }
+
+  private void validateNotNone(MouseButton button, Action action) {
+    if (!button.equals(NONE)) return;
+    throw new IllegalArgumentException(concat("The MouseButton to ", action.value(), " should not be equal to NONE"));
   }
 
   abstract void mouseRelease(MouseButton button);
 
   @Override public final InputEventGenerator rotateMouseWheel(int amount) {
     mouseWheel(amount);
+    waitForIdle();
     return this;
   }
 
   abstract void mouseWheel(int amount);
 
   @Override public final InputEventGenerator pressKey(KeyCode keyCode) {
-    try {
-      keyPress(keyCode);
-      waitForIdle();
-    } catch (IllegalArgumentException e) {
-      throw illegalKeyCode(keyCode);
-    }
+    validate(keyCode, Action.PRESS);
+    keyPress(keyCode);
+    waitForIdle();
     return this;
   }
 
   abstract void keyPress(KeyCode keyCode);
 
   @Override public final InputEventGenerator releaseKey(KeyCode keyCode) {
-    try {
-      keyRelease(keyCode);
-      waitForIdle();
-    } catch (IllegalArgumentException e) {
-      throw illegalKeyCode(keyCode);
-    }
+    validate(keyCode, Action.RELEASE);
+    keyRelease(keyCode);
+    waitForIdle();
     return this;
+  }
+
+  private void validate(KeyCode keyCode, Action action) {
+    if (keyCode != null) return;
+    throw new NullPointerException(concat("The KeyCode to ", action.value(), " should not be null"));
   }
 
   abstract void keyRelease(KeyCode keyCode);
 
-  private static IllegalArgumentException illegalKeyCode(KeyCode keyCode) {
-    throw new IllegalArgumentException(concat("Invalid key code '", keyCode.name(), "'"));
+  private static enum Action {
+    PRESS, RELEASE;
+
+    String value() {
+      return name().toLowerCase();
+    }
   }
 }

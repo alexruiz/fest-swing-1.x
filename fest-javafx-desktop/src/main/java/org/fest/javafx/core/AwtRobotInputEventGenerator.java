@@ -19,6 +19,7 @@ import static java.awt.event.InputEvent.*;
 import static javafx.scene.input.MouseButton.*;
 import static org.fest.javafx.util.ScreenLocations.translateToScreenCoordinates;
 import static org.fest.ui.testing.exception.UnexpectedException.unexpected;
+import static org.fest.util.Strings.concat;
 
 import java.awt.AWTException;
 import java.awt.Robot;
@@ -88,15 +89,27 @@ class AwtRobotInputEventGenerator extends InputEventGeneratorTemplate {
   }
 
   @Override void keyPress(KeyCode keyCode) {
-    robot.keyPress(codeFrom(keyCode));
+    try {
+      robot.keyPress(codeFrom(keyCode));
+    } catch (IllegalArgumentException e) {
+      throw illegalKeyCode(keyCode);
+    }
   }
 
   @Override void keyRelease(KeyCode keyCode) {
-    robot.keyRelease(codeFrom(keyCode));
+    try {
+      robot.keyRelease(codeFrom(keyCode));
+    } catch (IllegalArgumentException e) {
+      throw illegalKeyCode(keyCode);
+    }
   }
 
   private static int codeFrom(KeyCode keyCode) {
     return keyCode.impl_getCode();
+  }
+
+  private static IllegalArgumentException illegalKeyCode(KeyCode keyCode) {
+    throw new IllegalArgumentException(concat("Invalid key code '", keyCode.name(), "'"));
   }
 
   @Override public InputEventGenerator waitForIdle() {

@@ -59,7 +59,7 @@ public class InputEventGeneratorTemplate_pressMouse_withInvalidInput_Test {
 
   @Test
   public void should_throw_error_if_MouseButton_is_NONE() {
-    String msg = "The MouseButton to press should not be NONE";
+    String msg = "The MouseButton to press should not be equal to NONE";
     expect(IllegalArgumentException.class).withMessage(msg).on(new CodeToTest() {
       @Override public void run() {
         inputEventGenerator.pressMouse(NONE, button, where);
