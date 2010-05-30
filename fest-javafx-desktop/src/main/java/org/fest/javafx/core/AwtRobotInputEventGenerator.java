@@ -19,8 +19,6 @@ import static java.awt.event.InputEvent.*;
 import static javafx.scene.input.MouseButton.*;
 import static org.fest.javafx.util.ScreenLocations.translateToScreenCoordinates;
 import static org.fest.ui.testing.exception.UnexpectedException.unexpected;
-import static org.fest.util.Strings.concat;
-
 import java.awt.AWTException;
 import java.awt.Robot;
 import java.util.HashMap;
@@ -39,7 +37,7 @@ import org.fest.util.VisibleForTesting;
  *
  * @author Alex Ruiz
  */
-class AwtRobotInputEventGenerator implements InputEventGenerator {
+class AwtRobotInputEventGenerator extends InputEventGeneratorTemplate {
 
   private final Robot robot;
 
@@ -64,105 +62,41 @@ class AwtRobotInputEventGenerator implements InputEventGenerator {
     }
   }
 
-  /** {@inheritDoc} */
-  @Override public AwtRobotInputEventGenerator moveMouse(Control control, Point where) {
-    validate(control, where);
-    mouseMove(control, where);
-    return this;
-  }
-
-  /** {@inheritDoc} */
-  @Override
-  public AwtRobotInputEventGenerator pressMouse(MouseButton button, Control control, Point where) {
-    validate(control, where);
-    validateMouseButtonToPress(button);
-    mouseMove(control, where);
-    mousePress(button);
-    return this;
-  }
-
-  private void validate(Control c, Point p) {
-    if (c == null) throw new NullPointerException("The target Control should not be null");
-    if (p == null) throw new NullPointerException("The Point where to move the mouse pointer to should not be null");
-  }
-
-  private void mouseMove(Control control, Point where) {
+  @Override void mouseMove(Control control, Point where) {
     Point p = translateToScreenCoordinates(control, where);
     robot.mouseMove(p.x, p.y);
     waitForIdle();
   }
 
-  /** {@inheritDoc} */
-  @Override public AwtRobotInputEventGenerator pressMouse(MouseButton button) {
-    validateMouseButtonToPress(button);
-    mousePress(button);
-    return this;
-  }
-
-  private void validateMouseButtonToPress(MouseButton button) {
-    validate(button, "press");
-  }
-
-  private void mousePress(MouseButton button) {
+  @Override void mousePress(MouseButton button) {
     robot.mousePress(maskOf(button));
     waitForIdle();
   }
 
-  /** {@inheritDoc} */
-  @Override public AwtRobotInputEventGenerator releaseMouse(MouseButton button) {
-    validate(button, "release");
+  @Override void mouseRelease(MouseButton button) {
     robot.mouseRelease(maskOf(button));
-    waitForIdle();
-    return this;
-  }
-
-  private void validate(MouseButton button, String purpose) {
-    if (button == null) throw new NullPointerException(concat("The MouseButton to ", purpose, " should not be null"));
-    if (button.equals(NONE))
-      throw new IllegalArgumentException(concat("The MouseButton to ", purpose, " should not be NONE"));
   }
 
   private static int maskOf(MouseButton button) {
     return MOUSE_BUTTONS.get(button);
   }
 
-  /** {@inheritDoc} */
-  @Override public AwtRobotInputEventGenerator rotateMouseWheel(int amount) {
+  @Override void mouseWheel(int amount) {
     robot.mouseWheel(amount);
-    return this;
   }
 
-  /** {@inheritDoc} */
-  @Override public AwtRobotInputEventGenerator pressKey(KeyCode keyCode) {
-    try {
-      robot.keyPress(codeFrom(keyCode));
-      waitForIdle();
-    } catch (IllegalArgumentException e) {
-      throw illegalKeyCode(keyCode);
-    }
-    return this;
+  @Override void keyPress(KeyCode keyCode) {
+    robot.keyPress(codeFrom(keyCode));
   }
 
-  /** {@inheritDoc} */
-  @Override public InputEventGenerator releaseKey(KeyCode keyCode) {
-    try {
-      robot.keyRelease(codeFrom(keyCode));
-      waitForIdle();
-    } catch (IllegalArgumentException e) {
-      throw illegalKeyCode(keyCode);
-    }
-    return this;
+  @Override void keyRelease(KeyCode keyCode) {
+    robot.keyRelease(codeFrom(keyCode));
   }
 
   private static int codeFrom(KeyCode keyCode) {
     return keyCode.impl_getCode();
   }
 
-  private static IllegalArgumentException illegalKeyCode(KeyCode keyCode) {
-    throw new IllegalArgumentException(concat("Invalid key code '", keyCode.name(), "'"));
-  }
-
-  /** {@inheritDoc} */
   @Override public InputEventGenerator waitForIdle() {
     robot.waitForIdle();
     return this;

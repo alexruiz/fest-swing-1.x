@@ -83,4 +83,6 @@ public abstract class InputEventGenerator_pressKey_and_releaseKey_TestCase exten
       }
     });
   }
+
+  final Scene scene() { return scene; }
 }
