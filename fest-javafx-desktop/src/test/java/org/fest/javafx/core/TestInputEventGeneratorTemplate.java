@@ -1,5 +1,5 @@
 /*
- * Created on May 29, 2010
+ * Created on May 30, 2010
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -16,24 +16,31 @@
 package org.fest.javafx.core;
 
 import javafx.scene.Node;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseButton;
 
 import org.fest.javafx.util.Point;
 
 /**
- * Tests for <code>{@link AwtRobotInputEventGenerator#pressMouse(MouseButton, Node, Point)}</code> and
- * <code>{@link AwtRobotInputEventGenerator#releaseMouse(MouseButton)}</code>.
+ * Needed for testing <code>{@link InputEventGeneratorTemplate}</code>.
  *
  * @author Alex Ruiz
  */
-public class AwtRobotInputEventGenerator_pressMouse_and_releaseMouse_Test extends
-    InputEventGenerator_pressMouse_onControl_and_releaseMouse_TestCase {
+public class TestInputEventGeneratorTemplate extends InputEventGeneratorTemplate {
 
-  public AwtRobotInputEventGenerator_pressMouse_and_releaseMouse_Test(MouseButton mouseButton) {
-    super(mouseButton);
-  }
+  @Override void keyPress(KeyCode keyCode) {}
 
-  @Override InputEventGenerator createInputEventGenerator() {
-    return new AwtRobotInputEventGenerator();
+  @Override void keyRelease(KeyCode keyCode) {}
+
+  @Override void mouseMove(Node node, Point where) {}
+
+  @Override void mousePress(MouseButton button) {}
+
+  @Override void mouseRelease(MouseButton button) {}
+
+  @Override void mouseWheel(int amount) {}
+
+  @Override public InputEventGenerator waitForIdle() {
+    return null;
   }
 }

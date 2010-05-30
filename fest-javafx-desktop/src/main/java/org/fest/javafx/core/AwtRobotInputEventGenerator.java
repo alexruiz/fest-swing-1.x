@@ -19,16 +19,18 @@ import static java.awt.event.InputEvent.*;
 import static javafx.scene.input.MouseButton.*;
 import static org.fest.javafx.util.ScreenLocations.translateToScreenCoordinates;
 import static org.fest.ui.testing.exception.UnexpectedException.unexpected;
+
 import java.awt.AWTException;
 import java.awt.Robot;
 import java.util.HashMap;
 import java.util.Map;
 
-import javafx.scene.control.Control;
+import javafx.scene.Node;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseButton;
 
-import org.fest.javafx.util.*;
+import org.fest.javafx.util.Point;
+import org.fest.javafx.util.RobotFactory;
 import org.fest.util.VisibleForTesting;
 
 /**
@@ -62,8 +64,8 @@ class AwtRobotInputEventGenerator extends InputEventGeneratorTemplate {
     }
   }
 
-  @Override void mouseMove(Control control, Point where) {
-    Point p = translateToScreenCoordinates(control, where);
+  @Override void mouseMove(Node node, Point where) {
+    Point p = translateToScreenCoordinates(node, where);
     robot.mouseMove(p.x, p.y);
     waitForIdle();
   }

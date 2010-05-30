@@ -15,14 +15,13 @@
  */
 package org.fest.javafx.core;
 
-import static javafx.scene.input.MouseButton.*;
+import static javafx.scene.input.MouseButton.NONE;
 import static org.fest.util.Strings.concat;
-
-import javafx.scene.control.Control;
+import javafx.scene.Node;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseButton;
 
-import org.fest.javafx.util.*;
+import org.fest.javafx.util.Point;
 
 /**
  * Understands a template for implementations of <code>{@link InputEventGenerator}</code>.
@@ -31,30 +30,30 @@ import org.fest.javafx.util.*;
  */
 abstract class InputEventGeneratorTemplate implements InputEventGenerator {
 
-  @Override final public InputEventGenerator moveMouse(Control control, Point where) {
-    validate(control, where);
-    mouseMove(control, where);
+  @Override final public InputEventGenerator moveMouse(Node node, Point where) {
+    validate(node, where);
+    mouseMove(node, where);
     return this;
   }
 
-  @Override final public InputEventGenerator pressMouse(MouseButton button, Control control, Point where) {
-    validate(button, control, where);
-    mouseMove(control, where);
+  @Override final public InputEventGenerator pressMouse(MouseButton button, Node node, Point where) {
+    validate(button, node, where);
+    mouseMove(node, where);
     mousePress(button);
     return this;
   }
 
-  private void validate(MouseButton button, Control control, Point where) {
-    validate(control, where);
+  private void validate(MouseButton button, Node node, Point where) {
+    validate(node, where);
     validateMouseButtonToPress(button);
   }
 
-  private void validate(Control c, Point p) {
-    if (c == null) throw new NullPointerException("The target Control should not be null");
+  private void validate(Node n, Point p) {
+    if (n == null) throw new NullPointerException("The target Node should not be null");
     if (p == null) throw new NullPointerException("The Point where to move the mouse pointer to should not be null");
   }
 
-  abstract void mouseMove(Control control, Point where);
+  abstract void mouseMove(Node node, Point where);
 
   @Override public final InputEventGenerator pressMouse(MouseButton button) {
     validateMouseButtonToPress(button);

@@ -15,7 +15,8 @@
  */
 package org.fest.javafx.util;
 
-import javafx.scene.control.Control;
+import javafx.scene.Node;
+
 import javax.swing.JFrame;
 
 import org.fest.javafx.annotations.RunsInCurrentThread;
@@ -28,28 +29,28 @@ import org.fest.javafx.annotations.RunsInCurrentThread;
 public final class ScreenLocations {
 
   /**
-   * Translates the given coordinates to the location on screen of the given <code>{@link Control}</code>.
+   * Translates the given coordinates to the location on screen of the given <code>{@link Node}</code>.
    * <p>
    * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the UI thread. Clients are responsible for
    * calling this method from the UI thread.
    * </p>
-   * @param c the given {@code Control}.
+   * @param n the given {@code Node}.
    * @param p the given coordinates.
    * @return the translated coordinates.
    */
   @RunsInCurrentThread
-  public static Point translateToScreenCoordinates(Control c, Point p) {
-    return locationOnScreenOf(c, p);
+  public static Point translateToScreenCoordinates(Node n, Point p) {
+    return locationOnScreenOf(n, p);
   }
 
-  private static Point locationOnScreenOf(Control c, Point p) {
-    java.awt.Point screenLocation = windowScreenLocation(c);
+  private static Point locationOnScreenOf(Node n, Point p) {
+    java.awt.Point screenLocation = windowScreenLocation(n);
     return p.translate(screenLocation.x, screenLocation.y);
   }
 
   @RunsInCurrentThread
-  private static java.awt.Point windowScreenLocation(Control control) {
-    JFrame w = Scenes.windowFrom(control.get$scene());
+  private static java.awt.Point windowScreenLocation(Node n) {
+    JFrame w = Scenes.windowFrom(n.get$scene());
     return w.getContentPane().getLocationOnScreen();
   }
 

@@ -15,8 +15,9 @@
  */
 package org.fest.javafx.util;
 
+import javafx.geometry.Bounds;
 import javafx.scene.Node;
-import javafx.scene.control.Control;
+
 import org.fest.javafx.annotations.RunsInCurrentThread;
 
 /**
@@ -27,17 +28,18 @@ import org.fest.javafx.annotations.RunsInCurrentThread;
 public final class Nodes {
 
   /**
-   * Returns the coordinates of the center of the given <code>{@link Control}</code>.
+   * Returns the coordinates of the center of the given <code>{@link Node}</code>.
    * <p>
    * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the UI thread. Clients are responsible for
    * calling this method from the UI thread.
    * </p>
-   * @param c the given {@code Control}.
-   * @return the coordinates, relative to the screen, of the given {@code Control}.
+   * @param n the given {@code Node}.
+   * @return the coordinates, relative to the screen, of the given {@code Node}.
    */
   @RunsInCurrentThread
-  public static Point centerOf(Control c) {
-    return new Point(c.localToScene(c.get$width() / 2, c.get$height() / 2));
+  public static Point centerOf(Node n) {
+    Bounds bounds = n.get$boundsInLocal();
+    return new Point(n.localToScene(bounds.get$width() / 2, bounds.get$height() / 2));
   }
 
   private Nodes() {}

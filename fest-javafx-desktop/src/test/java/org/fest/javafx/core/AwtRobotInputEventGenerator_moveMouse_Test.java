@@ -15,12 +15,12 @@
  */
 package org.fest.javafx.core;
 
-import javafx.scene.control.Control;
+import javafx.scene.Node;
 
 import org.fest.javafx.util.Point;
 
 /**
- * Tests for <code>{@link AwtRobotInputEventGenerator#moveMouse(Control, Point)}</code>
+ * Tests for <code>{@link AwtRobotInputEventGenerator#moveMouse(Node, Point)}</code>
  *
  * @author Alex Ruiz
  */

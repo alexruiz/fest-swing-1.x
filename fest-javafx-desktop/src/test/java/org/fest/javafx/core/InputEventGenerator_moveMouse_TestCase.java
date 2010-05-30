@@ -15,13 +15,13 @@
  */
 package org.fest.javafx.core;
 
-import javafx.scene.control.Control;
+import javafx.scene.Node;
 
 import org.fest.javafx.util.Point;
 import org.junit.Test;
 
 /**
- * Tests for implementations of <code>{@link InputEventGenerator#moveMouse(Control, Point)}</code>.
+ * Tests for implementations of <code>{@link InputEventGenerator#moveMouse(Node, Point)}</code>.
  *
  * @author Alex Ruiz
  */

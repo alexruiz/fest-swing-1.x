@@ -1,5 +1,5 @@
 /*
- * Created on May 29, 2010
+ * Created on May 26, 2010
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -15,25 +15,35 @@
  */
 package org.fest.javafx.core;
 
+import org.fest.javafx.util.Point;
+
 import javafx.scene.Node;
 import javafx.scene.input.MouseButton;
 
-import org.fest.javafx.util.Point;
-
 /**
- * Tests for <code>{@link AwtRobotInputEventGenerator#pressMouse(MouseButton, Node, Point)}</code> and
- * <code>{@link AwtRobotInputEventGenerator#releaseMouse(MouseButton)}</code>.
+ * Understands simulation of user events on a JavaFX UI.
  *
  * @author Alex Ruiz
  */
-public class AwtRobotInputEventGenerator_pressMouse_and_releaseMouse_Test extends
-    InputEventGenerator_pressMouse_onControl_and_releaseMouse_TestCase {
+public interface Robot {
 
-  public AwtRobotInputEventGenerator_pressMouse_and_releaseMouse_Test(MouseButton mouseButton) {
-    super(mouseButton);
-  }
+  void launchGui(Class<?> guiSource);
 
-  @Override InputEventGenerator createInputEventGenerator() {
-    return new AwtRobotInputEventGenerator();
-  }
+  void click(Node n);
+
+  void rightClick(Node n);
+
+  void doubleClick(Node n);
+
+  void click(MouseButton button, Node n);
+
+  void click(MouseButton button, Node n, int times);
+
+  void click(MouseButton button, Node n, Point where, int times);
+
+  /**
+   * Cleans up any used resources (keyboard, mouse, open windows and the
+   * <code>{@link org.fest.ui.testing.lock.ScreenLock}</code>) used by this robot.
+   */
+  void cleanUp();
 }

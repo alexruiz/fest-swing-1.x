@@ -22,7 +22,7 @@ import static org.fest.javafx.threading.GuiActionRunner.execute;
 
 import java.util.*;
 
-import javafx.scene.control.Control;
+import javafx.scene.Node;
 import javafx.scene.input.MouseButton;
 import javafx.scene.text.Text;
 
@@ -35,7 +35,7 @@ import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
 /**
- * Tests for implementations of <code>{@link InputEventGenerator#pressMouse(MouseButton, Control, Point)}</code>
+ * Tests for implementations of <code>{@link InputEventGenerator#pressMouse(MouseButton, Node, Point)}</code>
  * and <code>{@link InputEventGenerator#releaseMouse(MouseButton)}</code>.
  *
  * @author Alex Ruiz

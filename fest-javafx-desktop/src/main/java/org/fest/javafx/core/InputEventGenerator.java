@@ -15,7 +15,7 @@
  */
 package org.fest.javafx.core;
 
-import javafx.scene.control.Control;
+import javafx.scene.Node;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseButton;
 
@@ -30,14 +30,14 @@ public interface InputEventGenerator {
 
   /**
    * Simulates a user moving the mouse pointer to the given coordinates relative to the given
-   * <code>{@link Control}</code>.
-   * @param control the given {@code Control}.
-   * @param where the point, relative to the given {@code Control}.
+   * <code>{@link Node}</code>.
+   * @param node the given {@code Node}.
+   * @param where the point, relative to the given {@code Node}.
    * @return {@code this}.
    * @throws NullPointerException if {@code control} is <code>null</code>.
    * @throws NullPointerException if {@code where} is <code>null</code>.
    */
-  InputEventGenerator moveMouse(Control control, Point where);
+  InputEventGenerator moveMouse(Node node, Point where);
 
   /**
    * Simulates a user pressing a mouse button.
@@ -49,17 +49,17 @@ public interface InputEventGenerator {
   InputEventGenerator pressMouse(MouseButton button);
 
   /**
-   * Simulates a user pressing the given mouse buttons on the given <code>{@link Control}</code>.
+   * Simulates a user pressing the given mouse buttons on the given <code>{@link Node}</code>.
    * @param button the mouse button to press.
-   * @param control the {@code Control} to click on.
-   * @param where the given coordinates, relative to the given {@code Control}.
+   * @param node the {@code Node} to click on.
+   * @param where the given coordinates, relative to the given {@code Node}.
    * @return {@code this}.
    * @throws NullPointerException if {@code button} is <code>null</code>.
    * @throws IllegalArgumentException if {@code button} is {@code NONE}.
-   * @throws NullPointerException if {@code control} is <code>null</code>.
+   * @throws NullPointerException if {@code node} is <code>null</code>.
    * @throws NullPointerException if {@code where} is <code>null</code>.
    */
-  InputEventGenerator pressMouse(MouseButton button, Control control, Point where);
+  InputEventGenerator pressMouse(MouseButton button, Node node, Point where);
 
   /**
    * Simulates a user releasing the given mouse button.
