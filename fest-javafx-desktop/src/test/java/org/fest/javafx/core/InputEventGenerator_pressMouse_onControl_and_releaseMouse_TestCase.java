@@ -29,22 +29,20 @@ import javafx.scene.text.Text;
 import org.fest.javafx.annotations.RunsInUIThread;
 import org.fest.javafx.threading.GuiQuery;
 import org.fest.javafx.util.Point;
-import org.fest.ui.testing.annotation.GuiTest;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
 /**
- * Tests for <code>{@link AwtRobotInputEventGenerator#pressMouse(javafx.scene.input.MouseButton, Control, Point)}</code>
- * and <code>{@link AwtRobotInputEventGenerator#releaseMouse(MouseButton)}</code>.
+ * Tests for implementations of <code>{@link InputEventGenerator#pressMouse(MouseButton, Control, Point)}</code>
+ * and <code>{@link InputEventGenerator#releaseMouse(MouseButton)}</code>.
  *
  * @author Alex Ruiz
  */
-@GuiTest
 @RunWith(Parameterized.class)
-public class AwtRobotInputEventGenerator_pressMouse_onControl_and_releaseMouse_Test extends
-    AwtRobotInputEventGenerator_mouse_TestCase {
+public abstract class InputEventGenerator_pressMouse_onControl_and_releaseMouse_TestCase extends
+    InputEventGenerator_mouse_TestCase {
 
   private final MouseButton mouseButton;
 
@@ -57,7 +55,7 @@ public class AwtRobotInputEventGenerator_pressMouse_onControl_and_releaseMouse_T
     return parameters;
   }
 
-  public AwtRobotInputEventGenerator_pressMouse_onControl_and_releaseMouse_Test(MouseButton mouseButton) {
+  public InputEventGenerator_pressMouse_onControl_and_releaseMouse_TestCase(MouseButton mouseButton) {
     this.mouseButton = mouseButton;
   }
 

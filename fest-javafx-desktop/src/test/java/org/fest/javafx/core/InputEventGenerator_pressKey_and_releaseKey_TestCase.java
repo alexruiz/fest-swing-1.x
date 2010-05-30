@@ -26,6 +26,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.TextBox;
 import javafx.scene.input.KeyCode;
 
+import org.fest.javafx.annotations.RunsInUIThread;
 import org.fest.javafx.scripts.TextBoxDemo;
 import org.fest.javafx.test.core.SequentialTestCase;
 import org.fest.javafx.threading.GuiQuery;
@@ -33,22 +34,24 @@ import org.fest.javafx.threading.GuiTask;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link AwtRobotInputEventGenerator#pressKey(KeyCode)}</code> and
- * <code>{@link AwtRobotInputEventGenerator#releaseKey(KeyCode)}</code>.
+ * Tests for implementations of <code>{@link InputEventGenerator#pressKey(KeyCode)}</code> and
+ * <code>{@link InputEventGenerator#releaseKey(KeyCode)}</code>.
  *
  * @author Alex Ruiz
  */
-public class AwtRobotInputEventGenerator_pressKey_and_releaseKey_Test extends SequentialTestCase {
+public abstract class InputEventGenerator_pressKey_and_releaseKey_TestCase extends SequentialTestCase {
 
   private NodeFinder finder;
   private Scene scene;
-  private AwtRobotInputEventGenerator inputEventGenerator;
+  private InputEventGenerator inputEventGenerator;
 
   @Override protected void onSetUp() {
     finder = new BasicNodeFinder();
     scene = sceneIn(launch(TextBoxDemo.class));
-    inputEventGenerator = new AwtRobotInputEventGenerator();
+    inputEventGenerator = createInputEventGenerator();
   }
+
+  abstract InputEventGenerator createInputEventGenerator();
 
   @Override protected void onTearDown() {
     close(scene);
@@ -63,6 +66,7 @@ public class AwtRobotInputEventGenerator_pressKey_and_releaseKey_Test extends Se
     assertThat(textOf(textBox)).isEqualTo("a");
   }
 
+  @RunsInUIThread
   private static void setFocusOn(final TextBox textBox) {
     execute(new GuiTask() {
       @Override protected void executeInUIThread() {
@@ -71,6 +75,7 @@ public class AwtRobotInputEventGenerator_pressKey_and_releaseKey_Test extends Se
     });
   }
 
+  @RunsInUIThread
   private static String textOf(final TextBox textBox) {
     return execute(new GuiQuery<String>() {
       @Override protected String executeInUIThread() {

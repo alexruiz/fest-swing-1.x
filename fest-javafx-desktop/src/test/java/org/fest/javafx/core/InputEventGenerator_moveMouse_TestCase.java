@@ -18,16 +18,14 @@ package org.fest.javafx.core;
 import javafx.scene.control.Control;
 
 import org.fest.javafx.util.Point;
-import org.fest.ui.testing.annotation.GuiTest;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link AwtRobotInputEventGenerator#moveMouse(Control, Point)}</code>.
+ * Tests for implementations of <code>{@link InputEventGenerator#moveMouse(Control, Point)}</code>.
  *
  * @author Alex Ruiz
  */
-@GuiTest
-public class AwtRobotInputEventGenerator_moveMouse_Test extends AwtRobotInputEventGenerator_mouse_TestCase {
+public abstract class InputEventGenerator_moveMouse_TestCase extends InputEventGenerator_mouse_TestCase {
 
   @Test
   public void should_move_mouse() {
