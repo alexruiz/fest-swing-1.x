@@ -17,7 +17,6 @@ package org.fest.javafx.core;
 
 import javafx.scene.Node;
 import javafx.scene.Scene;
-
 import org.fest.javafx.annotations.RunsInUIThread;
 import org.fest.javafx.exception.NodeLookupException;
 
@@ -37,13 +36,13 @@ public interface NodeFinder {
    * Button button = finder.findByType(scene, Button.class, {@link Visibility#REQUIRE_VISIBLE REQUIRED_VISIBLE});
    * </pre>
    * </p>
-   * @param <T> the generic type of the node to find.
-   * @param root the scene that may contain the to find.
-   * @param type the type of the node to find.
-   * @param visibility indicates whether the node should be showing on the screen or not.
-   * @return the found node.
-   * @throws NodeLookupException if a matching node could not be found.
-   * @throws NodeLookupException if more than one matching node is found.
+   * @param <T> the generic type of the {@code Node} to find.
+   * @param root the {@code Scene} that may contain the to find.
+   * @param type the type of the {@code Node} to find.
+   * @param visibility indicates whether the {@code Node} should be showing on the screen or not.
+   * @return the found {@code Node}.
+   * @throws NodeLookupException if a matching {@code Node} could not be found.
+   * @throws NodeLookupException if more than one matching {@code Node} is found.
    */
   <T extends Node> T findByType(Scene root, Class<T> type, Visibility visibility);
 
@@ -52,18 +51,27 @@ public interface NodeFinder {
    * <p>
    * Example:
    * <pre>
-   * Button button = finder.findById(scene, "myButton", {@link Visibility#REQUIRE_VISIBLE REQUIRED_VISIBLE});
+   * Node node = finder.findById(scene, "myNode", {@link Visibility#REQUIRE_VISIBLE REQUIRED_VISIBLE});
    * </pre>
    * </p>
-   * @param root the scene that may contain the to find.
+   * @param root the {@code Scene} that may contain the to find.
    * @param id the id of the node to find.
-   * @param visibility indicates whether the node should be showing on the screen or not.
-   * @return the found node.
-   * @throws NodeLookupException if a matching node could not be found.
-   * @throws NodeLookupException if more than one matching node is found.
+   * @param visibility indicates whether the {@code Node} should be showing on the screen or not.
+   * @return the found {@code Node}.
+   * @throws NodeLookupException if a matching {@code Node} could not be found.
+   * @throws NodeLookupException if more than one matching {@code Node} is found.
    */
   Node findById(Scene root, String id, Visibility visibility);
 
+  /**
+   * @param <T> the generic type of the node to find.
+   * @param root the {@code Scene} that may contain the to find.
+   * @param id the id of the node to find.
+   * @param type the type of the {@code Node} to find.
+   * @param visibility indicates whether the {@code Node} should be showing on the screen or not.
+   * @return the found {@code Node}.
+   */
+  <T extends Node> T findById(Scene root, String id, Class<T> type, Visibility visibility);
 
   /**
    * Returns whether the message in a <code>{@link NodeLookupException}</code> should include the current node

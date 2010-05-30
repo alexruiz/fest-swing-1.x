@@ -32,6 +32,6 @@ public class AwtRobotInputEventGenerator_moveMouse_Test extends AwtRobotInputEve
   @Test
   public void should_move_mouse() {
     inputEventGenerator().moveMouse(button(), centerOfButton());
-    verifyMousePointerScreenLocation();
+    verifyMousePointerIsOverCenterOfButton();
   }
 }

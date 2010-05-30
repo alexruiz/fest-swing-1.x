@@ -16,16 +16,18 @@
 package org.fest.javafx.core;
 
 import static javafx.scene.input.MouseButton.*;
-import static javafx.scene.paint.Color.*;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.javafx.core.Visibility.REQUIRE_VISIBLE;
+import static org.fest.javafx.threading.GuiActionRunner.execute;
+
 import java.util.*;
 
 import javafx.scene.control.Control;
 import javafx.scene.input.MouseButton;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Text;
 
+import org.fest.javafx.annotations.RunsInUIThread;
+import org.fest.javafx.threading.GuiQuery;
 import org.fest.javafx.util.Point;
 import org.fest.ui.testing.annotation.GuiTest;
 import org.junit.Test;
@@ -45,34 +47,38 @@ public class AwtRobotInputEventGenerator_pressMouse_onControl_and_releaseMouse_T
     AwtRobotInputEventGenerator_mouse_TestCase {
 
   private final MouseButton mouseButton;
-  private final Color rectangleColor;
 
   @Parameters
-  public static Collection<Object[]> parameters() {
+  public static Collection<Object[]> mouseButtons() {
     List<Object[]> parameters = new ArrayList<Object[]>();
-    // clicking using a MouseButton will change the rectangle color
-    parameters.add(new Object[] { PRIMARY, $RED });
-    parameters.add(new Object[] { MIDDLE, $GREEN });
-    parameters.add(new Object[] { SECONDARY, $YELLOW });
+    parameters.add(new Object[] { PRIMARY });
+    parameters.add(new Object[] { MIDDLE });
+    parameters.add(new Object[] { SECONDARY });
     return parameters;
   }
 
-  public AwtRobotInputEventGenerator_pressMouse_onControl_and_releaseMouse_Test(MouseButton mouseButton,
-      Color rectangleColor) {
+  public AwtRobotInputEventGenerator_pressMouse_onControl_and_releaseMouse_Test(MouseButton mouseButton) {
     this.mouseButton = mouseButton;
-    this.rectangleColor = rectangleColor;
   }
 
   @Test
   public void should_press_mouse() {
-    inputEventGenerator().pressMouse(mouseButton, button(), centerOfButton())
-                         .releaseMouse(mouseButton);
-    verifyRectangleColor();
-    verifyMousePointerScreenLocation();
+    inputEventGenerator().pressMouse(mouseButton, button(), centerOfButton()).releaseMouse(mouseButton);
+    verifyClickedButton();
+    verifyMousePointerIsOverCenterOfButton();
   }
 
-  private void verifyRectangleColor() {
-    Rectangle rectangle = nodeFinder().findByType(scene(), Rectangle.class, REQUIRE_VISIBLE);
-    assertThat(rectangle.get$fill()).isEqualTo(rectangleColor);
+  private void verifyClickedButton() {
+    Text text = nodeFinder().findById(scene(), "mouseButtonText", Text.class, REQUIRE_VISIBLE);
+    assertThat(contentsOf(text)).isEqualTo(mouseButton.name());
+  }
+
+  @RunsInUIThread
+  private static String contentsOf(final Text text) {
+    return execute(new GuiQuery<String>() {
+      @Override protected String executeInUIThread() {
+        return text.get$content();
+      }
+    });
   }
 }

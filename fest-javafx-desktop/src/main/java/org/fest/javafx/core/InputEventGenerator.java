@@ -16,6 +16,7 @@
 package org.fest.javafx.core;
 
 import javafx.scene.control.Control;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseButton;
 
 import org.fest.javafx.util.Point;
@@ -28,10 +29,22 @@ import org.fest.javafx.util.Point;
 public interface InputEventGenerator {
 
   /**
+   * Simulates a user moving the mouse pointer to the given coordinates relative to the given
+   * <code>{@link Control}</code>.
+   * @param control the given {@code Control}.
+   * @param where the point, relative to the given {@code Control}.
+   * @return {@code this}.
+   * @throws NullPointerException if {@code control} is <code>null</code>.
+   * @throws NullPointerException if {@code where} is <code>null</code>.
+   */
+  InputEventGenerator moveMouse(Control control, Point where);
+
+  /**
    * Simulates a user pressing a mouse button.
    * @param button the mouse button to press.
    * @return {@code this}.
-   * @throws NullPointerException if the {@code button} is <code>null</code>.
+   * @throws NullPointerException if {@code button} is <code>null</code>.
+   * @throws IllegalArgumentException if {@code button} is {@code NONE}.
    */
   InputEventGenerator pressMouse(MouseButton button);
 
@@ -41,28 +54,19 @@ public interface InputEventGenerator {
    * @param control the {@code Control} to click on.
    * @param where the given coordinates, relative to the given {@code Control}.
    * @return {@code this}.
-   * @throws NullPointerException if the {@code button} is <code>null</code>.
-   * @throws NullPointerException if the {@code control} is <code>null</code>.
-   * @throws NullPointerException if the {@code where} is <code>null</code>.
+   * @throws NullPointerException if {@code button} is <code>null</code>.
+   * @throws IllegalArgumentException if {@code button} is {@code NONE}.
+   * @throws NullPointerException if {@code control} is <code>null</code>.
+   * @throws NullPointerException if {@code where} is <code>null</code>.
    */
   InputEventGenerator pressMouse(MouseButton button, Control control, Point where);
-
-  /**
-   * Simulates a user moving the mouse pointer to the given coordinates relative to the given
-   * <code>{@link Control}</code>.
-   * @param control the given {@code Control}.
-   * @param where the point, relative to the given {@code Control}.
-   * @return {@code this}.
-   * @throws NullPointerException if the {@code control} is <code>null</code>.
-   * @throws NullPointerException if the {@code where} is <code>null</code>.
-   */
-  InputEventGenerator moveMouse(Control control, Point where);
 
   /**
    * Simulates a user releasing the given mouse button.
    * @param button the mouse button to release.
    * @return {@code this}.
-   * @throws NullPointerException if the {@code button} is <code>null</code>.
+   * @throws NullPointerException if {@code button} is <code>null</code>.
+   * @throws IllegalArgumentException if {@code button} is {@code NONE}.
    */
   InputEventGenerator releaseMouse(MouseButton button);
 
@@ -73,4 +77,26 @@ public interface InputEventGenerator {
    * @return {@code this}.
    */
   InputEventGenerator rotateMouseWheel(int amount);
+
+  /**
+   * Simulates a user pressing given key.
+   * @param keyCode the code of the key to press.
+   * @return {@code this}.
+   * @throws IllegalArgumentException if the key code is not valid.
+   */
+  InputEventGenerator pressKey(KeyCode keyCode);
+
+  /**
+   * Simulates a user releasing the given key.
+   * @param keyCode the code of the key to release.
+   * @return {@code this}.
+   * @throws IllegalArgumentException if the key code is not valid.
+   */
+  InputEventGenerator releaseKey(KeyCode keyCode);
+
+  /**
+   * Waits until all events currently on the event queue have been processed.
+   * @return {@code this}.
+   */
+  InputEventGenerator waitForIdle();
 }

@@ -75,7 +75,7 @@ public abstract class AwtRobotInputEventGenerator_mouse_TestCase extends Sequent
     return centerOfButton;
   }
 
-  final void verifyMousePointerScreenLocation() {
+  final void verifyMousePointerIsOverCenterOfButton() {
     Point expectedMousePointerLocation = translateToScreenCoordinates(button, centerOfButton);
     assertThat(mousePointerOnScreen()).isEqualTo(expectedMousePointerLocation);
   }

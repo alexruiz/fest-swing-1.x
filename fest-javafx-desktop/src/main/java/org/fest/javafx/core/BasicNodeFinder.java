@@ -56,6 +56,12 @@ public class BasicNodeFinder implements NodeFinder {
     return type.cast(found);
   }
 
+  /** {@inheritDoc} */
+  @Override public <T extends Node> T findById(Scene root, String id, Class<T> type, Visibility visibility) {
+    Node found = find(root, new NodeMatcherByIdAndType(id, type, visibility));
+    return type.cast(found);
+  }
+
   @RunsInUIThread
   private Node find(Scene root, NodeMatcher matcher) {
     Collection<Node> found = finderDelegate.find(new SingleSceneNodeHierarchy(root), matcher);
