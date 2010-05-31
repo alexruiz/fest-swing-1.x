@@ -7,7 +7,7 @@ package org.fest.javafx.launcher;
 
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.javafx.threading.GuiActionRunner.execute;
-import static org.fest.javafx.util.Scenes.close;
+import static org.fest.javafx.util.Scenes.closeInUIThread;
 import javafx.stage.Stage;
 
 import org.fest.javafx.annotations.RunsInCurrentThread;
@@ -34,7 +34,7 @@ public class GuiLauncher_launch_Test extends SequentialTestCase {
       boolean visible = isVisible(stage);
       assertThat(visible).isTrue();
     } finally {
-      if (stage != null) close(stage.get$scene());
+      if (stage != null) closeInUIThread(stage.get$scene());
     }
   }
 

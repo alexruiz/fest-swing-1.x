@@ -15,11 +15,13 @@
  */
 package org.fest.javafx.core;
 
+import static java.util.Collections.synchronizedList;
 import static java.util.Collections.unmodifiableCollection;
+import static org.fest.javafx.threading.GuiActionRunner.execute;
+import static org.fest.javafx.util.Scenes.close;
 
 import java.util.*;
-import java.util.concurrent.CopyOnWriteArrayList;
-
+import org.fest.javafx.threading.GuiTask;
 import javafx.scene.Scene;
 
 /**
@@ -29,10 +31,19 @@ import javafx.scene.Scene;
  */
 class BasicNodeHierarchy extends NodeHierarchyTemplate {
 
-  private final CopyOnWriteArrayList<Scene> roots = new CopyOnWriteArrayList<Scene>();
+  private final List<Scene> roots = synchronizedList(new ArrayList<Scene>());
 
   void addScene(Scene scene) {
-    roots.addIfAbsent(scene);
+    roots.add(scene);
+  }
+
+  void cleanUp() {
+    execute(new GuiTask() {
+      @Override protected void executeInUIThread() {
+        for (Scene scene : roots) close(scene);
+      }
+    });
+    roots.clear();
   }
 
   /** {@inheritDoc} */

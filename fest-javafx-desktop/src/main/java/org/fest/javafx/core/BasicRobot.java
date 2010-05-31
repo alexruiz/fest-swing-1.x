@@ -17,8 +17,6 @@ package org.fest.javafx.core;
 
 import static org.fest.javafx.core.SceneFromStageQuery.sceneIn;
 import static org.fest.javafx.launcher.GuiLauncher.launch;
-import static org.fest.javafx.util.Scenes.close;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import org.fest.ui.testing.lock.ScreenLock;
@@ -67,8 +65,7 @@ public class BasicRobot implements Robot {
   /** {@inheritDoc} */
   @Override public void cleanUp() {
     try {
-      for (Scene root : hierarchy.roots())
-        close(root);
+      hierarchy.cleanUp();
     } finally {
       ScreenLock.instance().release(screenLockOwner);
     }

@@ -21,7 +21,7 @@ import static org.fest.javafx.core.SceneFromStageQuery.sceneIn;
 import static org.fest.javafx.core.Visibility.REQUIRE_VISIBLE;
 import static org.fest.javafx.launcher.GuiLauncher.launch;
 import static org.fest.javafx.threading.GuiActionRunner.execute;
-import static org.fest.javafx.util.Scenes.close;
+import static org.fest.javafx.util.Scenes.closeInUIThread;
 import javafx.scene.Scene;
 import javafx.scene.control.TextBox;
 import javafx.scene.input.KeyCode;
@@ -54,7 +54,7 @@ public abstract class InputGenerator_pressKey_and_releaseKey_TestCase extends Se
   abstract InputGenerator createInputGenerator();
 
   @Override protected void onTearDown() {
-    close(scene);
+    closeInUIThread(scene);
   }
 
   @Test

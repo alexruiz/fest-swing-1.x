@@ -22,7 +22,7 @@ import static org.fest.javafx.launcher.GuiLauncher.launch;
 import static org.fest.javafx.threading.GuiActionRunner.execute;
 import static org.fest.javafx.util.MousePointer.mousePointerOnScreen;
 import static org.fest.javafx.util.Nodes.centerOf;
-import static org.fest.javafx.util.Scenes.close;
+import static org.fest.javafx.util.Scenes.closeInUIThread;
 import static org.fest.javafx.util.ScreenLocations.translateToScreenCoordinates;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -66,7 +66,7 @@ public abstract class InputGenerator_mouse_TestCase extends SequentialTestCase {
   }
 
   @Override protected void onTearDown() {
-    close(scene);
+    closeInUIThread(scene);
   }
 
   final Button button() {

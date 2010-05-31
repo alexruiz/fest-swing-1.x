@@ -29,7 +29,7 @@ import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.javafx.core.SceneFromStageQuery.sceneIn;
 import static org.fest.javafx.core.Visibility.REQUIRE_VISIBLE;
 import static org.fest.javafx.launcher.GuiLauncher.launch;
-import static org.fest.javafx.util.Scenes.close;
+import static org.fest.javafx.util.Scenes.closeInUIThread;
 
 /**
  * Tests for <code>{@link BasicNodeFinder#findById(javafx.scene.Scene, String, Visibility)}</code>.
@@ -48,7 +48,7 @@ public class BasicNodeFinder_findById_Test extends SequentialTestCase {
   }
 
   @Override protected void onTearDown() {
-    close(scene);
+    closeInUIThread(scene);
   }
 
   @Test

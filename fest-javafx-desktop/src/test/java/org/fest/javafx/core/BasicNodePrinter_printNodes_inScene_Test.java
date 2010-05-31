@@ -18,7 +18,7 @@ package org.fest.javafx.core;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.javafx.core.SceneFromStageQuery.sceneIn;
 import static org.fest.javafx.launcher.GuiLauncher.launch;
-import static org.fest.javafx.util.Scenes.close;
+import static org.fest.javafx.util.Scenes.closeInUIThread;
 import javafx.scene.Scene;
 
 import org.fest.javafx.scripts.ButtonDemo;
@@ -44,7 +44,7 @@ public class BasicNodePrinter_printNodes_inScene_Test extends SequentialTestCase
   }
 
   @Override protected void onTearDown() {
-    close(scene);
+    closeInUIThread(scene);
   }
 
   @Test

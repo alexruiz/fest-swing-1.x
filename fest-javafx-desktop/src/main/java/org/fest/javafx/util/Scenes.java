@@ -42,14 +42,27 @@ public final class Scenes {
    * @param scene the given {@code Scene}.
    */
   @RunsInUIThread
-  public static void close(final Scene scene) {
+  public static void closeInUIThread(final Scene scene) {
     execute(new GuiTask() {
       @Override protected void executeInUIThread() {
-        JFrame frame = windowFrom(scene);
-        frame.setVisible(true);
-        frame.dispose();
+        close(scene);
       }
     });
+  }
+
+  /**
+   * Closes the <code>{@link Stage}</code> of the given <code>{@link Scene}</code>.
+   * <p>
+   * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the UI thread. Clients are responsible for
+   * calling this method from the UI thread.
+   * </p>
+   * @param scene the given {@code Scene}.
+   */
+  @RunsInCurrentThread
+  public static void close(final Scene scene) {
+    JFrame frame = windowFrom(scene);
+    frame.setVisible(true);
+    frame.dispose();
   }
 
   @RunsInCurrentThread
