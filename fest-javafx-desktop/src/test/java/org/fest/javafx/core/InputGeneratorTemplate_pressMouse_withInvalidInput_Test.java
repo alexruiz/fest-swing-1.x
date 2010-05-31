@@ -15,34 +15,63 @@
  */
 package org.fest.javafx.core;
 
+import static javafx.scene.input.MouseButton.NONE;
+import static javafx.scene.input.MouseButton.PRIMARY;
 import static org.fest.javafx.test.builder.Buttons.button;
 import static org.fest.test.ExpectedFailure.expect;
 import javafx.scene.Node;
-
+import javafx.scene.control.Button;
 import org.fest.javafx.util.Point;
 import org.fest.test.CodeToTest;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 
 /**
- * Tests for <code>{@link InputEventGeneratorTemplate#moveMouse(Node, Point)}</code>.
+ * Tests for <code>{@link InputGeneratorTemplate#pressMouse(javafx.scene.input.MouseButton, Node, Point)}</code>.
  *
  * @author Alex Ruiz
  */
-public class InputEventGeneratorTemplate_moveMouse_withInvalidInput_Test {
+public class InputGeneratorTemplate_pressMouse_withInvalidInput_Test {
 
-  private InputEventGeneratorTemplate inputEventGenerator;
+  private static Button button;
+  private static Point where;
+
+  private InputGeneratorTemplate inputGenerator;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    button = button().createNew();
+    where = new Point(0, 0);
+  }
 
   @Before
   public void setUp() {
-    inputEventGenerator = new TestInputEventGeneratorTemplate();
+    inputGenerator = new TestInputGeneratorTemplate();
+  }
+
+  @Test
+  public void should_throw_error_if_MouseButton_is_null() {
+    expect(NullPointerException.class).withMessage("The MouseButton to press should not be null").on(new CodeToTest() {
+      @Override public void run() {
+        inputGenerator.pressMouse(null, button, where);
+      }
+    });
+  }
+
+  @Test
+  public void should_throw_error_if_MouseButton_is_NONE() {
+    String msg = "The MouseButton to press should not be equal to NONE";
+    expect(IllegalArgumentException.class).withMessage(msg).on(new CodeToTest() {
+      @Override public void run() {
+        inputGenerator.pressMouse(NONE, button, where);
+      }
+    });
   }
 
   @Test
   public void should_throw_error_if_Node_is_null() {
     expect(NullPointerException.class).withMessage("The target Node should not be null").on(new CodeToTest() {
       @Override public void run() {
-        inputEventGenerator.moveMouse(null, new Point(0, 0));
+        inputGenerator.pressMouse(PRIMARY, null, new Point(0, 0));
       }
     });
   }
@@ -52,7 +81,7 @@ public class InputEventGeneratorTemplate_moveMouse_withInvalidInput_Test {
     String msg = "The Point where to move the mouse pointer to should not be null";
     expect(NullPointerException.class).withMessage(msg).on(new CodeToTest() {
       @Override public void run() {
-        inputEventGenerator.moveMouse(button().createNew(), null);
+        inputGenerator.pressMouse(PRIMARY, button, null);
       }
     });
   }

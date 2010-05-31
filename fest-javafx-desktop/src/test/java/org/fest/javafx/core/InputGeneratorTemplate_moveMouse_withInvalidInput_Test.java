@@ -15,41 +15,44 @@
  */
 package org.fest.javafx.core;
 
-import static javafx.scene.input.MouseButton.NONE;
+import static org.fest.javafx.test.builder.Buttons.button;
 import static org.fest.test.ExpectedFailure.expect;
+import javafx.scene.Node;
+
+import org.fest.javafx.util.Point;
 import org.fest.test.CodeToTest;
-import org.junit.*;
+import org.junit.Before;
+import org.junit.Test;
 
 /**
- * Tests for <code>{@link InputEventGeneratorTemplate#releaseMouse(javafx.scene.input.MouseButton)}</code>.
+ * Tests for <code>{@link InputGeneratorTemplate#moveMouse(Node, Point)}</code>.
  *
  * @author Alex Ruiz
  */
-public class InputEventGeneratorTemplate_releaseMouse_withInvalidInput_Test {
+public class InputGeneratorTemplate_moveMouse_withInvalidInput_Test {
 
-  private InputEventGeneratorTemplate inputEventGenerator;
+  private InputGeneratorTemplate inputGenerator;
 
   @Before
   public void setUp() {
-    inputEventGenerator = new TestInputEventGeneratorTemplate();
+    inputGenerator = new TestInputGeneratorTemplate();
   }
 
   @Test
-  public void should_throw_error_if_MouseButton_is_null() {
-    String msg = "The MouseButton to release should not be null";
-    expect(NullPointerException.class).withMessage(msg).on(new CodeToTest() {
+  public void should_throw_error_if_Node_is_null() {
+    expect(NullPointerException.class).withMessage("The target Node should not be null").on(new CodeToTest() {
       @Override public void run() {
-        inputEventGenerator.releaseMouse(null);
+        inputGenerator.moveMouse(null, new Point(0, 0));
       }
     });
   }
 
   @Test
-  public void should_throw_error_if_MouseButton_is_NONE() {
-    String msg = "The MouseButton to release should not be NONE";
-    expect(IllegalArgumentException.class).withMessage(msg).on(new CodeToTest() {
+  public void should_throw_error_if_Point_is_null() {
+    String msg = "The Point where to move the mouse pointer to should not be null";
+    expect(NullPointerException.class).withMessage(msg).on(new CodeToTest() {
       @Override public void run() {
-        inputEventGenerator.releaseMouse(NONE);
+        inputGenerator.moveMouse(button().createNew(), null);
       }
     });
   }

@@ -26,7 +26,7 @@ import org.fest.javafx.util.Point;
  *
  * @author Alex Ruiz
  */
-public interface InputEventGenerator {
+public interface InputGenerator {
 
   /**
    * Simulates a user moving the mouse pointer to the given coordinates relative to the given
@@ -37,7 +37,7 @@ public interface InputEventGenerator {
    * @throws NullPointerException if {@code control} is <code>null</code>.
    * @throws NullPointerException if {@code where} is <code>null</code>.
    */
-  InputEventGenerator moveMouse(Node node, Point where);
+  InputGenerator moveMouse(Node node, Point where);
 
   /**
    * Simulates a user pressing a mouse button.
@@ -46,7 +46,7 @@ public interface InputEventGenerator {
    * @throws NullPointerException if {@code button} is <code>null</code>.
    * @throws IllegalArgumentException if {@code button} is {@code NONE}.
    */
-  InputEventGenerator pressMouse(MouseButton button);
+  InputGenerator pressMouse(MouseButton button);
 
   /**
    * Simulates a user pressing the given mouse buttons on the given <code>{@link Node}</code>.
@@ -59,7 +59,7 @@ public interface InputEventGenerator {
    * @throws NullPointerException if {@code node} is <code>null</code>.
    * @throws NullPointerException if {@code where} is <code>null</code>.
    */
-  InputEventGenerator pressMouse(MouseButton button, Node node, Point where);
+  InputGenerator pressMouse(MouseButton button, Node node, Point where);
 
   /**
    * Simulates a user releasing the given mouse button.
@@ -68,7 +68,7 @@ public interface InputEventGenerator {
    * @throws NullPointerException if {@code button} is <code>null</code>.
    * @throws IllegalArgumentException if {@code button} is {@code NONE}.
    */
-  InputEventGenerator releaseMouse(MouseButton button);
+  InputGenerator releaseMouse(MouseButton button);
 
   /**
    * Simulates a user rotating the scroll wheel on wheel-equipped mice.
@@ -76,7 +76,7 @@ public interface InputEventGenerator {
    * while positive values indicate movement down/towards the user.
    * @return {@code this}.
    */
-  InputEventGenerator rotateMouseWheel(int amount);
+  InputGenerator rotateMouseWheel(int amount);
 
   /**
    * Simulates a user pressing given key.
@@ -84,7 +84,7 @@ public interface InputEventGenerator {
    * @return {@code this}.
    * @throws IllegalArgumentException if the key code is not valid.
    */
-  InputEventGenerator pressKey(KeyCode keyCode);
+  InputGenerator pressKey(KeyCode keyCode);
 
   /**
    * Simulates a user releasing the given key.
@@ -92,11 +92,11 @@ public interface InputEventGenerator {
    * @return {@code this}.
    * @throws IllegalArgumentException if the key code is not valid.
    */
-  InputEventGenerator releaseKey(KeyCode keyCode);
+  InputGenerator releaseKey(KeyCode keyCode);
 
   /**
    * Waits until all events currently on the event queue have been processed.
    * @return {@code this}.
    */
-  InputEventGenerator waitForIdle();
+  InputGenerator waitForIdle();
 }

@@ -22,7 +22,6 @@ import javafx.scene.Node;
 import com.sun.javafx.runtime.sequence.Sequence;
 
 import org.fest.javafx.annotations.RunsInUIThread;
-import org.fest.javafx.hierarchy.NodeHierarchy;
 import org.fest.javafx.threading.GuiQuery;
 
 import static java.util.Collections.unmodifiableCollection;

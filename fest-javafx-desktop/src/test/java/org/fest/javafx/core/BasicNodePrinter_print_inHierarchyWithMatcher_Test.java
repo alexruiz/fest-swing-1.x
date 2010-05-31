@@ -15,6 +15,7 @@
  */
 package org.fest.javafx.core;
 
+import static java.util.Collections.emptyList;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.javafx.test.builder.Nodes.node;
 import static org.fest.javafx.threading.GuiActionRunner.execute;
@@ -22,14 +23,11 @@ import static org.fest.javafx.util.Sequences.emptySequence;
 import static org.fest.javafx.util.Sequences.sequence;
 import static org.fest.util.Collections.isEmpty;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
-import javafx.scene.Node;
-import javafx.scene.Parent;
+import javafx.scene.*;
 
 import org.fest.javafx.annotations.RunsInUIThread;
-import org.fest.javafx.hierarchy.NodeHierarchy;
 import org.fest.javafx.test.io.PrintStreamStub;
 import org.fest.javafx.threading.GuiQuery;
 import org.junit.Before;
@@ -83,6 +81,10 @@ public class BasicNodePrinter_print_inHierarchyWithMatcher_Test {
 
     NodeHierarchyStub(List<Node> contents) {
       this.contents.addAll(contents);
+    }
+
+    @Override public Collection<Scene> roots() {
+      return emptyList();
     }
 
     @Override public Sequence<? extends Node> contents() {

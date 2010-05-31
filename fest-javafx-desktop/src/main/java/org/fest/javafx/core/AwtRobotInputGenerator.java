@@ -35,12 +35,12 @@ import org.fest.javafx.util.RobotFactory;
 import org.fest.util.VisibleForTesting;
 
 /**
- * Understands an implementation of <code>{@link InputEventGenerator}</code> that uses a AWT <code>{@link Robot}</code>
+ * Understands an implementation of <code>{@link InputGenerator}</code> that uses a AWT <code>{@link Robot}</code>
  * to simulate user input.
  *
  * @author Alex Ruiz
  */
-class AwtRobotInputEventGenerator extends InputEventGeneratorTemplate {
+class AwtRobotInputGenerator extends InputGeneratorTemplate {
 
   private final Robot robot;
 
@@ -52,12 +52,12 @@ class AwtRobotInputEventGenerator extends InputEventGeneratorTemplate {
     MOUSE_BUTTONS.put(SECONDARY, BUTTON3_MASK);
   }
 
-  AwtRobotInputEventGenerator() {
+  AwtRobotInputGenerator() {
     this(new RobotFactory());
   }
 
   @VisibleForTesting
-  AwtRobotInputEventGenerator(RobotFactory robotFactory) {
+  AwtRobotInputGenerator(RobotFactory robotFactory) {
     try {
       robot = robotFactory.createAwtRobot();
     } catch (AWTException e) {
@@ -112,7 +112,7 @@ class AwtRobotInputEventGenerator extends InputEventGeneratorTemplate {
     throw new IllegalArgumentException(concat("Invalid key code '", keyCode.name(), "'"));
   }
 
-  @Override public InputEventGenerator waitForIdle() {
+  @Override public InputGenerator waitForIdle() {
     robot.waitForIdle();
     return this;
   }

@@ -13,19 +13,20 @@
  *
  * Copyright @2010 the original author or authors.
  */
-package org.fest.javafx.hierarchy;
+package org.fest.javafx.core;
 
-import static org.fest.javafx.util.Sequences.emptySequence;
+import static java.util.Collections.unmodifiableCollection;
+import static org.fest.util.Collections.list;
+
+import java.util.Collection;
 import javafx.scene.*;
-
-import com.sun.javafx.runtime.sequence.Sequence;
 
 /**
  * Understands a <code>{@link NodeHierarchy}</code> for a single <code>{@link Scene}</code>.
  *
  * @author Alex Ruiz
  */
-public class SingleSceneNodeHierarchy implements NodeHierarchy {
+class SingleSceneNodeHierarchy extends NodeHierarchyTemplate {
 
   private final Scene root;
 
@@ -33,18 +34,12 @@ public class SingleSceneNodeHierarchy implements NodeHierarchy {
    * Creates a new </code>{@link SingleSceneNodeHierarchy}</code>.
    * @param root the root {@code Scene} for this hierarchy.
    */
-  public SingleSceneNodeHierarchy(Scene root) {
+  SingleSceneNodeHierarchy(Scene root) {
     this.root = root;
   }
 
   /** {@inheritDoc} */
-  @Override public Sequence<? extends Node> contents() {
-    return root.get$content();
-  }
-
-  /** {@inheritDoc} */
-  @Override public Sequence<? extends Node> childrenOf(Node parent) {
-    if (!(parent instanceof Parent)) return emptySequence(Node.class);
-    return ((Parent)parent).get$children();
+  @Override public Collection<Scene> roots() {
+    return unmodifiableCollection(list(root));
   }
 }

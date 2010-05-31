@@ -1,5 +1,5 @@
 /*
- * Created on May 27, 2010
+ * Created on May 31, 2010
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -15,21 +15,28 @@
  */
 package org.fest.javafx.core;
 
-import javafx.scene.Node;
+import static java.util.Collections.unmodifiableCollection;
 
-import org.fest.javafx.util.Point;
-import org.junit.Test;
+import java.util.*;
+import java.util.concurrent.CopyOnWriteArrayList;
+
+import javafx.scene.Scene;
 
 /**
- * Tests for implementations of <code>{@link InputEventGenerator#moveMouse(Node, Point)}</code>.
+ * Understands the default implementation of <code>{@link NodeHierarchy}</code>.
  *
  * @author Alex Ruiz
  */
-public abstract class InputEventGenerator_moveMouse_TestCase extends InputEventGenerator_mouse_TestCase {
+class BasicNodeHierarchy extends NodeHierarchyTemplate {
 
-  @Test
-  public void should_move_mouse() {
-    inputEventGenerator().moveMouse(button(), centerOfButton());
-    verifyMousePointerIsOverCenterOfButton();
+  private final CopyOnWriteArrayList<Scene> roots = new CopyOnWriteArrayList<Scene>();
+
+  void addScene(Scene scene) {
+    roots.addIfAbsent(scene);
+  }
+
+  /** {@inheritDoc} */
+  @Override public Collection<Scene> roots() {
+    return unmodifiableCollection(roots);
   }
 }

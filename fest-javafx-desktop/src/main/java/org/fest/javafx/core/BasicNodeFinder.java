@@ -29,7 +29,6 @@ import javafx.scene.Scene;
 
 import org.fest.javafx.annotations.RunsInUIThread;
 import org.fest.javafx.exception.NodeLookupException;
-import org.fest.javafx.hierarchy.SingleSceneNodeHierarchy;
 import org.fest.javafx.threading.GuiTask;
 
 /**

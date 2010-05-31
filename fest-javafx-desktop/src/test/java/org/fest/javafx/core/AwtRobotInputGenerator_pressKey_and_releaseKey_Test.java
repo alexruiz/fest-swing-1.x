@@ -15,18 +15,18 @@
  */
 package org.fest.javafx.core;
 
-import javafx.scene.Node;
-
-import org.fest.javafx.util.Point;
+import javafx.scene.input.KeyCode;
 
 /**
- * Tests for <code>{@link AwtRobotInputEventGenerator#moveMouse(Node, Point)}</code>
+ * Tests for <code>{@link AwtRobotInputGenerator#pressKey(KeyCode)}</code> and
+ * <code>{@link AwtRobotInputGenerator#releaseKey(KeyCode)}</code>.
  *
  * @author Alex Ruiz
  */
-public class AwtRobotInputEventGenerator_moveMouse_Test extends InputEventGenerator_moveMouse_TestCase {
+public class AwtRobotInputGenerator_pressKey_and_releaseKey_Test extends
+    InputGenerator_pressKey_and_releaseKey_TestCase {
 
-  @Override InputEventGenerator createInputEventGenerator() {
-    return new AwtRobotInputEventGenerator();
+  @Override InputGenerator createInputGenerator() {
+    return new AwtRobotInputGenerator();
   }
 }

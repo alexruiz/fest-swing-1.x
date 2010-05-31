@@ -34,27 +34,27 @@ import org.fest.javafx.threading.GuiQuery;
 import org.fest.javafx.util.Point;
 
 /**
- * Base test class for implementations of <code>{@link InputEventGenerator}</code>.
+ * Base test class for implementations of <code>{@link InputGenerator}</code>.
  *
  * @author Alex Ruiz
  */
-public abstract class InputEventGenerator_mouse_TestCase extends SequentialTestCase {
+public abstract class InputGenerator_mouse_TestCase extends SequentialTestCase {
 
   private NodeFinder finder;
   private Scene scene;
   private Button button;
   private Point centerOfButton;
-  private InputEventGenerator inputEventGenerator;
+  private InputGenerator inputGenerator;
 
   @Override protected final void onSetUp() {
     finder = new BasicNodeFinder();
     scene = sceneIn(launch(ButtonDemo.class));
     button = nodeFinder().findByType(scene, Button.class, REQUIRE_VISIBLE);
     centerOfButton = calculateCenterOfButton();
-    inputEventGenerator = createInputEventGenerator();
+    inputGenerator = createInputGenerator();
   }
 
-  abstract InputEventGenerator createInputEventGenerator();
+  abstract InputGenerator createInputGenerator();
 
   @RunsInUIThread
   private Point calculateCenterOfButton() {
@@ -84,5 +84,5 @@ public abstract class InputEventGenerator_mouse_TestCase extends SequentialTestC
 
   final NodeFinder nodeFinder() { return finder; }
   final Scene scene() { return scene; }
-  final InputEventGenerator inputEventGenerator() { return inputEventGenerator; }
+  final InputGenerator inputGenerator() { return inputGenerator; }
 }

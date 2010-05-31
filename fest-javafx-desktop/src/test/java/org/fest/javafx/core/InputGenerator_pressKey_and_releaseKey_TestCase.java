@@ -34,24 +34,24 @@ import org.fest.javafx.threading.GuiTask;
 import org.junit.Test;
 
 /**
- * Tests for implementations of <code>{@link InputEventGenerator#pressKey(KeyCode)}</code> and
- * <code>{@link InputEventGenerator#releaseKey(KeyCode)}</code>.
+ * Tests for implementations of <code>{@link InputGenerator#pressKey(KeyCode)}</code> and
+ * <code>{@link InputGenerator#releaseKey(KeyCode)}</code>.
  *
  * @author Alex Ruiz
  */
-public abstract class InputEventGenerator_pressKey_and_releaseKey_TestCase extends SequentialTestCase {
+public abstract class InputGenerator_pressKey_and_releaseKey_TestCase extends SequentialTestCase {
 
   private NodeFinder finder;
   private Scene scene;
-  private InputEventGenerator inputEventGenerator;
+  private InputGenerator inputGenerator;
 
   @Override protected void onSetUp() {
     finder = new BasicNodeFinder();
     scene = sceneIn(launch(TextBoxDemo.class));
-    inputEventGenerator = createInputEventGenerator();
+    inputGenerator = createInputGenerator();
   }
 
-  abstract InputEventGenerator createInputEventGenerator();
+  abstract InputGenerator createInputGenerator();
 
   @Override protected void onTearDown() {
     close(scene);
@@ -61,8 +61,8 @@ public abstract class InputEventGenerator_pressKey_and_releaseKey_TestCase exten
   public void should_press_and_release_key() {
     TextBox textBox = finder.findById(scene, "textBox", TextBox.class, REQUIRE_VISIBLE);
     setFocusOn(textBox);
-    inputEventGenerator.waitForIdle();
-    inputEventGenerator.pressKey(VK_A).releaseKey(VK_A);
+    inputGenerator.waitForIdle();
+    inputGenerator.pressKey(VK_A).releaseKey(VK_A);
     assertThat(textOf(textBox)).isEqualTo("a");
   }
 

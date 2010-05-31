@@ -15,10 +15,7 @@
  */
 package org.fest.javafx.core;
 
-import org.fest.javafx.util.Point;
-
-import javafx.scene.Node;
-import javafx.scene.input.MouseButton;
+import javafx.stage.Stage;
 
 /**
  * Understands simulation of user events on a JavaFX UI.
@@ -27,19 +24,26 @@ import javafx.scene.input.MouseButton;
  */
 public interface Robot {
 
-  void launchGui(Class<?> guiSource);
+  /**
+   * Launches a JavaFX UI from the given type. All launches UIs are added to this <code>{@link Robot}</code>'s
+   * <code>{@link NodeHierarchy}</code> and they will be closed and disposed automatically when
+   * <code>{@link #cleanUp()}</code> is executed.
+   * @param guiSource the class defining the JavaFX UI to launch.
+   * @return the {@code Stage} of the launched UI.
+   */
+  Stage launchGui(Class<?> guiSource);
 
-  void click(Node n);
-
-  void rightClick(Node n);
-
-  void doubleClick(Node n);
-
-  void click(MouseButton button, Node n);
-
-  void click(MouseButton button, Node n, int times);
-
-  void click(MouseButton button, Node n, Point where, int times);
+//  void click(Node n);
+//
+//  void rightClick(Node n);
+//
+//  void doubleClick(Node n);
+//
+//  void click(MouseButton button, Node n);
+//
+//  void click(MouseButton button, Node n, int times);
+//
+//  void click(MouseButton button, Node n, Point where, int times);
 
   /**
    * Cleans up any used resources (keyboard, mouse, open windows and the

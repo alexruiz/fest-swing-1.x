@@ -25,8 +25,6 @@ import javafx.scene.Scene;
 
 import org.fest.javafx.annotations.RunsInCurrentThread;
 import org.fest.javafx.annotations.RunsInUIThread;
-import org.fest.javafx.hierarchy.NodeHierarchy;
-import org.fest.javafx.hierarchy.SingleSceneNodeHierarchy;
 import org.fest.javafx.threading.GuiTask;
 import org.fest.util.VisibleForTesting;
 

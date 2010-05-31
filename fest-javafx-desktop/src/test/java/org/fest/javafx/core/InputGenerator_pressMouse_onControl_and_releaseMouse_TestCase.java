@@ -35,14 +35,14 @@ import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
 /**
- * Tests for implementations of <code>{@link InputEventGenerator#pressMouse(MouseButton, Node, Point)}</code>
- * and <code>{@link InputEventGenerator#releaseMouse(MouseButton)}</code>.
+ * Tests for implementations of <code>{@link InputGenerator#pressMouse(MouseButton, Node, Point)}</code>
+ * and <code>{@link InputGenerator#releaseMouse(MouseButton)}</code>.
  *
  * @author Alex Ruiz
  */
 @RunWith(Parameterized.class)
-public abstract class InputEventGenerator_pressMouse_onControl_and_releaseMouse_TestCase extends
-    InputEventGenerator_mouse_TestCase {
+public abstract class InputGenerator_pressMouse_onControl_and_releaseMouse_TestCase extends
+    InputGenerator_mouse_TestCase {
 
   private final MouseButton mouseButton;
 
@@ -55,13 +55,13 @@ public abstract class InputEventGenerator_pressMouse_onControl_and_releaseMouse_
     return parameters;
   }
 
-  public InputEventGenerator_pressMouse_onControl_and_releaseMouse_TestCase(MouseButton mouseButton) {
+  public InputGenerator_pressMouse_onControl_and_releaseMouse_TestCase(MouseButton mouseButton) {
     this.mouseButton = mouseButton;
   }
 
   @Test
   public void should_press_mouse() {
-    inputEventGenerator().pressMouse(mouseButton, button(), centerOfButton()).releaseMouse(mouseButton);
+    inputGenerator().pressMouse(mouseButton, button(), centerOfButton()).releaseMouse(mouseButton);
     verifyClickedButton();
     verifyMousePointerIsOverCenterOfButton();
   }

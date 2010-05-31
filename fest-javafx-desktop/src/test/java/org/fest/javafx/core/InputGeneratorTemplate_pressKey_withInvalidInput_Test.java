@@ -22,25 +22,24 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link InputEventGeneratorTemplate#releaseMouse(javafx.scene.input.MouseButton)}</code>.
+ * Tests for <code>{@link InputGeneratorTemplate#pressKey(javafx.scene.input.KeyCode)}</code>.
  *
  * @author Alex Ruiz
  */
-public class InputEventGeneratorTemplate_releaseKey_withInvalidInput_Test {
+public class InputGeneratorTemplate_pressKey_withInvalidInput_Test {
 
-  private InputEventGeneratorTemplate inputEventGenerator;
+  private InputGeneratorTemplate inputGenerator;
 
   @Before
   public void setUp() {
-    inputEventGenerator = new TestInputEventGeneratorTemplate();
+    inputGenerator = new TestInputGeneratorTemplate();
   }
 
   @Test
   public void should_throw_error_if_KeyCode_is_null() {
-    String msg = "The KeyCode to release should not be null";
-    expect(NullPointerException.class).withMessage(msg).on(new CodeToTest() {
+    expect(NullPointerException.class).withMessage("The KeyCode to press should not be null").on(new CodeToTest() {
       @Override public void run() {
-        inputEventGenerator.releaseKey(null);
+        inputGenerator.pressKey(null);
       }
     });
   }

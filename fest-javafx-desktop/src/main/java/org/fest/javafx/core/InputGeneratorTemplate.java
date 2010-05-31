@@ -24,19 +24,19 @@ import javafx.scene.input.MouseButton;
 import org.fest.javafx.util.Point;
 
 /**
- * Understands a template for implementations of <code>{@link InputEventGenerator}</code>.
+ * Understands a template for implementations of <code>{@link InputGenerator}</code>.
  *
  * @author Alex Ruiz
  */
-abstract class InputEventGeneratorTemplate implements InputEventGenerator {
+abstract class InputGeneratorTemplate implements InputGenerator {
 
-  @Override final public InputEventGenerator moveMouse(Node node, Point where) {
+  @Override final public InputGenerator moveMouse(Node node, Point where) {
     validate(node, where);
     mouseMove(node, where);
     return this;
   }
 
-  @Override final public InputEventGenerator pressMouse(MouseButton button, Node node, Point where) {
+  @Override final public InputGenerator pressMouse(MouseButton button, Node node, Point where) {
     validate(button, node, where);
     mouseMove(node, where);
     mousePress(button);
@@ -55,7 +55,7 @@ abstract class InputEventGeneratorTemplate implements InputEventGenerator {
 
   abstract void mouseMove(Node node, Point where);
 
-  @Override public final InputEventGenerator pressMouse(MouseButton button) {
+  @Override public final InputGenerator pressMouse(MouseButton button) {
     validateMouseButtonToPress(button);
     mousePress(button);
     return this;
@@ -67,7 +67,7 @@ abstract class InputEventGeneratorTemplate implements InputEventGenerator {
 
   abstract void mousePress(MouseButton button);
 
-  @Override public final InputEventGenerator releaseMouse(MouseButton button) {
+  @Override public final InputGenerator releaseMouse(MouseButton button) {
     validate(button, Action.RELEASE);
     mouseRelease(button);
     waitForIdle();
@@ -91,7 +91,7 @@ abstract class InputEventGeneratorTemplate implements InputEventGenerator {
 
   abstract void mouseRelease(MouseButton button);
 
-  @Override public final InputEventGenerator rotateMouseWheel(int amount) {
+  @Override public final InputGenerator rotateMouseWheel(int amount) {
     mouseWheel(amount);
     waitForIdle();
     return this;
@@ -99,7 +99,7 @@ abstract class InputEventGeneratorTemplate implements InputEventGenerator {
 
   abstract void mouseWheel(int amount);
 
-  @Override public final InputEventGenerator pressKey(KeyCode keyCode) {
+  @Override public final InputGenerator pressKey(KeyCode keyCode) {
     validate(keyCode, Action.PRESS);
     keyPress(keyCode);
     waitForIdle();
@@ -108,7 +108,7 @@ abstract class InputEventGeneratorTemplate implements InputEventGenerator {
 
   abstract void keyPress(KeyCode keyCode);
 
-  @Override public final InputEventGenerator releaseKey(KeyCode keyCode) {
+  @Override public final InputGenerator releaseKey(KeyCode keyCode) {
     validate(keyCode, Action.RELEASE);
     keyRelease(keyCode);
     waitForIdle();
