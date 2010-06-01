@@ -29,6 +29,16 @@ import javafx.scene.Scene;
 public interface NodePrinter {
 
   /**
+   * Prints all the nodes in the given <code>{@link NodeHierarchy}</code>.
+   * @param out the output stream where to print the nodes to.
+   * @param hierarchy the given {@code NodeHierarchy}.
+   * @param root the starting point.
+   * @throws NullPointerException if {@code out} is <code>null</code>.
+   */
+  @RunsInUIThread
+  void printNodes(PrintStream out, NodeHierarchy hierarchy);
+
+  /**
    * Prints all the nodes in the given root.
    * @param out the output stream where to print the nodes to.
    * @param root the starting point.
@@ -38,7 +48,19 @@ public interface NodePrinter {
   void printNodes(PrintStream out, Scene root);
 
   /**
-   * Prints all the nodes that match the given criteria under the given root.
+   * Prints all the nodes that match the given criteria in the given <code>{@link NodeHierarchy}</code>.
+   * @param out the output stream where to print the nodes to.
+   * @param hierarchy the given {@code NodeHierarchy}.
+   * @param matcher specifies which nodes should be printed.
+   * @param root the starting point.
+   * @throws NullPointerException if {@code out} is <code>null</code>.
+   * @throws NullPointerException if {@code matcher} is <code>null</code>.
+   */
+  @RunsInUIThread
+  void printNodes(PrintStream out, NodeMatcher matcher, NodeHierarchy hierarchy);
+
+  /**
+   * Prints all the nodes that match the given criteria in the given root.
    * @param out the output stream where to print the nodes to.
    * @param matcher specifies which nodes should be printed.
    * @param root the starting point.

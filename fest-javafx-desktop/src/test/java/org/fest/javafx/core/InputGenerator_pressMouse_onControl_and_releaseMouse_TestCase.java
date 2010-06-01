@@ -67,7 +67,7 @@ public abstract class InputGenerator_pressMouse_onControl_and_releaseMouse_TestC
   }
 
   private void verifyClickedButton() {
-    Text text = nodeFinder().findById(scene(), "mouseButtonText", Text.class, REQUIRE_VISIBLE);
+    Text text = nodeFinder().findById("mouseButtonText", Text.class, REQUIRE_VISIBLE);
     assertThat(contentsOf(text)).isEqualTo(mouseButton.name());
   }
 

@@ -17,6 +17,7 @@ package org.fest.javafx.core;
 
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.javafx.core.SceneFromStageQuery.sceneIn;
+import static org.fest.javafx.core.SingleSceneNodeHierarchy.hierarchyFor;
 import static org.fest.javafx.core.Visibility.REQUIRE_VISIBLE;
 import static org.fest.javafx.launcher.GuiLauncher.launch;
 import static org.fest.javafx.threading.GuiActionRunner.execute;
@@ -47,9 +48,9 @@ public abstract class InputGenerator_mouse_TestCase extends SequentialTestCase {
   private InputGenerator inputGenerator;
 
   @Override protected final void onSetUp() {
-    finder = new BasicNodeFinder();
     scene = sceneIn(launch(ButtonDemo.class));
-    button = nodeFinder().findByType(scene, Button.class, REQUIRE_VISIBLE);
+    finder = new BasicNodeFinder(hierarchyFor(scene));
+    button = nodeFinder().findByType(Button.class, REQUIRE_VISIBLE);
     centerOfButton = calculateCenterOfButton();
     inputGenerator = createInputGenerator();
   }
@@ -65,7 +66,7 @@ public abstract class InputGenerator_mouse_TestCase extends SequentialTestCase {
     });
   }
 
-  @Override protected void onTearDown() {
+  @Override protected final void onTearDown() {
     closeInUIThread(scene);
   }
 
@@ -83,6 +84,5 @@ public abstract class InputGenerator_mouse_TestCase extends SequentialTestCase {
   }
 
   final NodeFinder nodeFinder() { return finder; }
-  final Scene scene() { return scene; }
   final InputGenerator inputGenerator() { return inputGenerator; }
 }

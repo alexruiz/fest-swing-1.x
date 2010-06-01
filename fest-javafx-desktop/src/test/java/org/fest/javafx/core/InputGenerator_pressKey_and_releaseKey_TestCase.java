@@ -18,6 +18,7 @@ package org.fest.javafx.core;
 import static javafx.scene.input.KeyCode.VK_A;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.javafx.core.SceneFromStageQuery.sceneIn;
+import static org.fest.javafx.core.SingleSceneNodeHierarchy.hierarchyFor;
 import static org.fest.javafx.core.Visibility.REQUIRE_VISIBLE;
 import static org.fest.javafx.launcher.GuiLauncher.launch;
 import static org.fest.javafx.threading.GuiActionRunner.execute;
@@ -46,8 +47,8 @@ public abstract class InputGenerator_pressKey_and_releaseKey_TestCase extends Se
   private InputGenerator inputGenerator;
 
   @Override protected void onSetUp() {
-    finder = new BasicNodeFinder();
     scene = sceneIn(launch(TextBoxDemo.class));
+    finder = new BasicNodeFinder(hierarchyFor(scene));
     inputGenerator = createInputGenerator();
   }
 
@@ -59,7 +60,7 @@ public abstract class InputGenerator_pressKey_and_releaseKey_TestCase extends Se
 
   @Test
   public void should_press_and_release_key() {
-    TextBox textBox = finder.findById(scene, "textBox", TextBox.class, REQUIRE_VISIBLE);
+    TextBox textBox = finder.findById("textBox", TextBox.class, REQUIRE_VISIBLE);
     setFocusOn(textBox);
     inputGenerator.waitForIdle();
     inputGenerator.pressKey(VK_A).releaseKey(VK_A);

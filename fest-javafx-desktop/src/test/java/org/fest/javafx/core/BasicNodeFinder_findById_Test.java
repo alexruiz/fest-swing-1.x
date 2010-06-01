@@ -15,21 +15,19 @@
  */
 package org.fest.javafx.core;
 
-import javafx.scene.*;
-import javafx.scene.control.Button;
-import javafx.stage.Stage;
-
-import org.junit.Test;
-
-import org.fest.javafx.scripts.ButtonDemo;
-import org.fest.javafx.test.core.SequentialTestCase;
-import org.fest.ui.testing.annotation.GuiTest;
-
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.javafx.core.SceneFromStageQuery.sceneIn;
 import static org.fest.javafx.core.Visibility.REQUIRE_VISIBLE;
 import static org.fest.javafx.launcher.GuiLauncher.launch;
 import static org.fest.javafx.util.Scenes.closeInUIThread;
+import javafx.scene.Node;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+
+import org.fest.javafx.scripts.ButtonDemo;
+import org.fest.javafx.test.core.SequentialTestCase;
+import org.fest.ui.testing.annotation.GuiTest;
+import org.junit.Test;
 
 /**
  * Tests for <code>{@link BasicNodeFinder#findById(javafx.scene.Scene, String, Visibility)}</code>.
@@ -40,11 +38,11 @@ import static org.fest.javafx.util.Scenes.closeInUIThread;
 public class BasicNodeFinder_findById_Test extends SequentialTestCase {
 
   private Scene scene;
-  private final BasicNodeFinder finder = new BasicNodeFinder();
+  private BasicNodeFinder finder;
 
   @Override protected void onSetUp() {
-    Stage stage = launch(ButtonDemo.class);
-    scene = sceneIn(stage);
+    scene = sceneIn(launch(ButtonDemo.class));
+    finder = new BasicNodeFinder();
   }
 
   @Override protected void onTearDown() {

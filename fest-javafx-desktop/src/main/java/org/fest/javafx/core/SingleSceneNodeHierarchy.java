@@ -30,11 +30,11 @@ class SingleSceneNodeHierarchy extends NodeHierarchyTemplate {
 
   private final Scene root;
 
-  /**
-   * Creates a new </code>{@link SingleSceneNodeHierarchy}</code>.
-   * @param root the root {@code Scene} for this hierarchy.
-   */
-  SingleSceneNodeHierarchy(Scene root) {
+  static NodeHierarchy hierarchyFor(Scene root) {
+    return new SingleSceneNodeHierarchy(root);
+  }
+
+  private SingleSceneNodeHierarchy(Scene root) {
     this.root = root;
   }
 

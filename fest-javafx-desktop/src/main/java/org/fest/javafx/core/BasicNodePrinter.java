@@ -15,6 +15,7 @@
  */
 package org.fest.javafx.core;
 
+import static org.fest.javafx.core.SingleSceneNodeHierarchy.hierarchyFor;
 import static org.fest.javafx.format.Formatting.format;
 import static org.fest.javafx.threading.GuiActionRunner.execute;
 
@@ -40,6 +41,12 @@ public class BasicNodePrinter implements NodePrinter {
 
   /** {@inheritDoc} */
   @RunsInUIThread
+  @Override public void printNodes(PrintStream out, NodeHierarchy hierarchy) {
+    printNodes(out, ALWAYS_MATCHES, hierarchy);
+  }
+
+  /** {@inheritDoc} */
+  @RunsInUIThread
   @Override public void printNodes(PrintStream out, Scene root) {
     printNodes(out, ALWAYS_MATCHES, root);
   }
@@ -47,13 +54,23 @@ public class BasicNodePrinter implements NodePrinter {
   /** {@inheritDoc} */
   @RunsInUIThread
   @Override public void printNodes(PrintStream out, NodeMatcher matcher, Scene root) {
+    printNodes(out, matcher, hierarchyFor(root));
+  }
+
+  /** {@inheritDoc} */
+  @RunsInUIThread
+  @Override public void printNodes(PrintStream out, NodeMatcher matcher, NodeHierarchy hierarchy) {
     validateNotNull(out);
-    if (matcher == null) throw new NullPointerException("The matcher to use as filter should not be null");
-    print(new SingleSceneNodeHierarchy(root), matcher, out);
+    validateNotNull(matcher);
+    print(hierarchy, matcher, out);
   }
 
   private void validateNotNull(PrintStream out) {
     if (out == null) throw new NullPointerException("The output stream should not be null");
+  }
+
+  private void validateNotNull(NodeMatcher matcher) {
+    if (matcher == null) throw new NullPointerException("The matcher to use as filter should not be null");
   }
 
   @VisibleForTesting

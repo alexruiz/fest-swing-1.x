@@ -15,6 +15,7 @@
  */
 package org.fest.javafx.core;
 
+import static org.fest.javafx.core.SingleSceneNodeHierarchy.hierarchyFor;
 import static org.fest.javafx.format.Formatting.format;
 import static org.fest.javafx.threading.GuiActionRunner.execute;
 import static org.fest.util.Strings.concat;
@@ -27,6 +28,7 @@ import java.util.Collection;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 
+import org.fest.javafx.annotations.RunsInCurrentThread;
 import org.fest.javafx.annotations.RunsInUIThread;
 import org.fest.javafx.exception.NodeLookupException;
 import org.fest.javafx.threading.GuiTask;
@@ -38,50 +40,98 @@ import org.fest.javafx.threading.GuiTask;
  */
 public class BasicNodeFinder implements NodeFinder {
 
-  private final NodePrinter printer = new BasicNodePrinter();
-
-  private final FinderDelegate finderDelegate = new FinderDelegate();
+  private final NodeHierarchy nodeHierarchy;
+  private final NodePrinter printer;
+  private final FinderDelegate finderDelegate;
 
   private boolean includeHierarchyInNodeLookupException;
 
+  /**
+   * Creates a new </code>{@link BasicNodeFinder}</code> with an empty <code>{@link NodeHierarchy}</code>.
+   */
+  public BasicNodeFinder() {
+    this(new EmptyNodeHierarchy());
+  }
+
+  /**
+   * Creates a new </code>{@link BasicNodeFinder}</code>.
+   * @param nodeHierarchy the {@code NodeHierarchy} for this finder.
+   */
+  public BasicNodeFinder(NodeHierarchy nodeHierarchy) {
+    this.nodeHierarchy = nodeHierarchy;
+    printer = new BasicNodePrinter();
+    finderDelegate = new FinderDelegate();
+  }
+
+  /** {@inheritDoc} */
+  @Override
+  public Node findById(String id, Visibility visibility) {
+    return findById(nodeHierarchy, id, visibility);
+  }
+
   /** {@inheritDoc} */
   @Override public Node findById(Scene root, String id, Visibility visibility) {
-    return find(root, new NodeMatcherById(id, visibility));
+    return findById(hierarchyFor(root), id, visibility);
+  }
+
+  @RunsInUIThread
+  private Node findById(NodeHierarchy h, String id, Visibility v) {
+    return find(h, new NodeMatcherById(id, v));
+  }
+
+  /** {@inheritDoc} */
+  @Override public <T extends Node> T findByType(Class<T> type, Visibility visibility) {
+    return findByType(nodeHierarchy, type, visibility);
   }
 
   /** {@inheritDoc} */
   @Override public <T extends Node> T findByType(Scene root, Class<T> type, Visibility visibility) {
-    Node found = find(root, new NodeMatcherByType(type, visibility));
-    return type.cast(found);
+    return findByType(hierarchyFor(root), type, visibility);
+  }
+
+  @RunsInUIThread
+  private <T extends Node> T findByType(NodeHierarchy h, Class<T> c, Visibility v) {
+    Node found = find(h, new NodeMatcherByType(c, v));
+    return c.cast(found);
+  }
+
+  /** {@inheritDoc} */
+  @Override public <T extends Node> T findById(String id, Class<T> type, Visibility visibility) {
+    return findById(nodeHierarchy, id, type, visibility);
   }
 
   /** {@inheritDoc} */
   @Override public <T extends Node> T findById(Scene root, String id, Class<T> type, Visibility visibility) {
-    Node found = find(root, new NodeMatcherByIdAndType(id, type, visibility));
-    return type.cast(found);
+    return findById(hierarchyFor(root), id, type, visibility);
   }
 
   @RunsInUIThread
-  private Node find(Scene root, NodeMatcher matcher) {
-    Collection<Node> found = finderDelegate.find(new SingleSceneNodeHierarchy(root), matcher);
-    if (found.isEmpty()) throw nodeNotFound(root, matcher);
-    if (found.size() > 1) throw multipleNodesFound(found, matcher);
+  private <T extends Node> T findById(NodeHierarchy h, String id, Class<T> c, Visibility v) {
+    Node found = find(h, new NodeMatcherByIdAndType(id, c, v));
+    return c.cast(found);
+  }
+
+  @RunsInCurrentThread
+  private Node find(NodeHierarchy h, NodeMatcher m) {
+    Collection<Node> found = finderDelegate.find(h, m);
+    if (found.isEmpty()) throw nodeNotFound(h, m);
+    if (found.size() > 1) throw multipleNodesFound(found, m);
     return found.iterator().next();
   }
 
-  private NodeLookupException nodeNotFound(Scene root, NodeMatcher matcher) {
-    String message = concat("Unable to find node using matcher ", matcher, ".");
+  private NodeLookupException nodeNotFound(NodeHierarchy h, NodeMatcher m) {
+    String message = concat("Unable to find node using matcher ", m, ".");
     if (includeHierarchyIfNodeNotFound())
       message = concat(message,
-          LINE_SEPARATOR, LINE_SEPARATOR, "Component hierarchy:", LINE_SEPARATOR, formattedHierarchy(root));
+          LINE_SEPARATOR, LINE_SEPARATOR, "Component hierarchy:", LINE_SEPARATOR, formattedHierarchy(h));
     throw new NodeLookupException(message);
   }
 
   @RunsInUIThread
-  private String formattedHierarchy(Scene root) {
+  private String formattedHierarchy(NodeHierarchy hierarchy) {
     ByteArrayOutputStream out = new ByteArrayOutputStream();
     PrintStream printStream = new PrintStream(out, true);
-    printer.printNodes(printStream, root);
+    printer.printNodes(printStream, hierarchy);
     printStream.flush();
     return new String(out.toByteArray());
   }
