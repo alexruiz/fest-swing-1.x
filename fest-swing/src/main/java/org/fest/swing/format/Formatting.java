@@ -104,7 +104,7 @@ public class Formatting {
    */
   public static void register(ComponentFormatter formatter) {
     Class<?> key = formatter.targetType();
-    ComponentFormatter previous = FORMATTERS.putIfAbsent(key, formatter);
+    ComponentFormatter previous = FORMATTERS.put(key, formatter);
     if (previous != null)
       logger.info(
           concat("Replaced formatter ", previous, " with ", formatter, " for the type ", key.getName()));

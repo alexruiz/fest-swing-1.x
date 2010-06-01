@@ -56,7 +56,9 @@ class WindowStatus {
     Robot r = null;
     try {
       r = robotFactory.newRobotInPrimaryScreen();
-    } catch (AWTException ignored) {}
+    } catch (AWTException ignored) {
+      LOGGER.log(WARNING, "Error ocurred when creating a new Robot", ignored);
+    }
     robot = r;
   }
 
