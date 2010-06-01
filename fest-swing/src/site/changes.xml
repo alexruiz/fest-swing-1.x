@@ -5,6 +5,37 @@
     <author email="alex.ruiz.05@gmail.com">Alex Ruiz</author>
   </properties>
   <body>
+    <release version="1.2" date="2010-06-02" description="Subsequent release">
+      <action dev="alexruiz" type="fix" issue="FEST-341" due-to="Grego">
+        org.fest.swing.testng.listner.ScreenshotOnFailureListener can once again take screenshots of the desktop when
+        a GUI test fails.
+      </action>
+      <action dev="wanghy" type="fix" issue="FEST-342">
+        Fixed Javadocs of methods annotated with @RunsInCurrentThread.
+      </action>
+      <action dev="wanghy" type="fix" issue="FEST-343">
+        Updated dependency to FEST-Reflect 1.2.
+      </action>
+      <action dev="wanghy" type="fix" issue="FEST-344">
+        Updated dependency to FEST-Util 1.1.2.
+      </action>
+      <action dev="alexruiz" type="fix" issue="FEST-345" due-to="Olivier DOREMIEUX">
+        Class KeyStrokeMappingProviderNames now uses the right prefix to load implementations of 
+        KeyStrokeMappingProvider.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-347" due-to="Olivier DOREMIEUX">
+        Added KeyStrokeMappingProvider for French MacOS.
+      </action>
+      <action dev="alexruiz" type="fix" issue="FEST-348" due-to="Olivier DOREMIEUX">
+        Fixed implementation of "selectAll" in class org.fest.swing.driver.JTextComponentDriver.
+      </action>
+      <action dev="wanghy" type="remove" issue="FEST-354">
+        Removed class org.fest.swing.util.SystemProperties.
+      </action>
+      <action dev="alexruiz" type="fix" issue="FEST-355" due-to="Peter Murray">
+        Method "validateNotNull(ComponentDriver)" in org.fest.swing.fixture.ComponentFixture is now protected.
+      </action>
+    </release>
     <release version="1.2rc" date="2010-04-26" description="Subsequent release">
       <action dev="alexruiz" type="fix" issue="FEST-23" due-to="Dan Dyer">
         org.fest.swing.lock.ScreenLock does not deadlock in the presence of multiple threads.

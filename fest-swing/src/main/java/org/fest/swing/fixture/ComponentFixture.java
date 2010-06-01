@@ -89,7 +89,12 @@ public abstract class ComponentFixture<T extends Component> {
     return robot.finder().findByType(type, requireShowing(robot));
   }
 
-  static void validateNotNull(ComponentDriver driver) {
+  /**
+   * Validates that the given <code>{@link ComponentDriver}</code> is not <code>null</code>.
+   * @param driver the {@code ComponentDriver} to validate.
+   * @throws NullPointerException if {@code driver} is <code>null</code>.
+   */
+  protected static void validateNotNull(ComponentDriver driver) {
     if (driver == null) throw new NullPointerException("The driver should not be null");
   }
 
