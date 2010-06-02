@@ -10,7 +10,7 @@
   </parent>
 
   <artifactId>fest-swing-jide</artifactId>
-  <version>1.2-SNAPSHOT</version>
+  <version>1.2b1-SNAPSHOT</version>
   <packaging>jar</packaging>
 
   <name>FEST Swing Jidesoft Component Library</name>
@@ -132,8 +132,8 @@
   </mailingLists>
 
   <scm>
-    <developerConnection>scm:svn:https://svn.codehaus.org/fest/</developerConnection>
-    <connection>scm:svn:http://svn.codehaus.org/fest/</connection>
+    <developerConnection>scm:svn:https://svn.codehaus.org/fest/trunk/fest-swing-jide</developerConnection>
+    <connection>scm:svn:http://svn.codehaus.org/fest/trunk/fest-swing-jide</connection>
     <url>http://fisheye.codehaus.org/browse/fest/</url>
   </scm>
 
