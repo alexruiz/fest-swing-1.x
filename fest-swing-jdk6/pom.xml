@@ -5,7 +5,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.easytesting</groupId>
   <artifactId>fest-swing-jdk6</artifactId>
-  <version>1.2rc</version>
+  <version>1.2</version>
   <name>FEST Swing - Java 6 extension</name>
   <inceptionYear>2009</inceptionYear>
   <description>JDK 6-specific functionality</description>
@@ -13,7 +13,7 @@
   <parent>
     <groupId>org.easytesting</groupId>
     <artifactId>fest</artifactId>
-    <version>1.0</version>
+    <version>1.0.1</version>
   </parent>
   <mailingLists>
     <mailingList>
@@ -43,9 +43,11 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
+        <version>2.3.1</version>
         <configuration>
           <source>1.6</source>
           <target>1.6</target>
+          <encoding>${project.build.sourceEncoding}</encoding>
         </configuration>
       </plugin>
     </plugins>
@@ -54,20 +56,20 @@
     <dependency>
       <groupId>org.easytesting</groupId>
       <artifactId>fest-swing</artifactId>
-      <version>1.2rc</version>
+      <version>1.2</version>
       <scope>compile</scope>
     </dependency>
     <dependency>
       <groupId>org.easytesting</groupId>
       <artifactId>fest-swing</artifactId>
-      <version>1.2rc</version>
+      <version>1.2</version>
       <type>test-jar</type>
       <scope>test</scope>
     </dependency>
     <dependency>
     	<groupId>junit</groupId>
     	<artifactId>junit</artifactId>
-    	<version>4.5</version>
+    	<version>4.7</version>
     	<type>jar</type>
     	<scope>test</scope>
     </dependency>
@@ -77,19 +79,20 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-javadoc-plugin</artifactId>
+        <version>2.7</version>
         <configuration>
           <aggregate>true</aggregate>
           <minmemory>128m</minmemory>
           <maxmemory>512m</maxmemory>
           <breakiterator>true</breakiterator>
           <quiet>true</quiet>
-          <source>1.5</source>
+          <source>1.6</source>
           <verbose>false</verbose>
           <linksource>true</linksource>
           <links>
-            <link>http://java.sun.com/j2se/1.5.0/docs/api/</link>
+            <link>http://java.sun.com/javase/6/docs/api/</link>
             <link>http://testng.org/javadocs</link>
-            <link>http://www.junit.org/junit/javadoc/4.3</link>
+            <link>http://junit.sourceforge.net/javadoc/</link>
             <link>http://fest.easytesting.org/swing/apidocs/</link>
           </links>
         </configuration>
