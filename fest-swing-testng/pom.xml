@@ -13,7 +13,7 @@
   <parent>
     <groupId>org.easytesting</groupId>
     <artifactId>fest</artifactId>
-    <version>1.0</version>
+    <version>1.0.1</version>
   </parent>
   <mailingLists>
     <mailingList>
@@ -49,7 +49,7 @@
     <dependency>
     	<groupId>junit</groupId>
     	<artifactId>junit</artifactId>
-    	<version>4.5</version>
+    	<version>4.7</version>
     	<type>jar</type>
     	<scope>test</scope>
     </dependency>
@@ -69,6 +69,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-javadoc-plugin</artifactId>
+        <version>2.7</version>
         <configuration>
           <aggregate>true</aggregate>
           <minmemory>128m</minmemory>
@@ -81,7 +82,6 @@
           <links>
             <link>http://java.sun.com/j2se/1.5.0/docs/api/</link>
             <link>http://testng.org/javadocs</link>
-            <link>http://www.junit.org/junit/javadoc/4.3</link>
             <link>http://fest.easytesting.org/swing/apidocs/</link>
           </links>
         </configuration>
