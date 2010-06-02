@@ -16,7 +16,7 @@
 package org.fest.swing.junit.ant;
 
 import static org.apache.tools.ant.util.FileUtils.close;
-import static org.fest.swing.util.SystemProperties.lineSeparator;
+import static org.fest.util.Systems.LINE_SEPARATOR;
 
 import java.io.*;
 
@@ -54,7 +54,7 @@ class XmlOutputWriter {
     try {
       writer = new BufferedWriter(new OutputStreamWriter(out, CHARSET));
       writer.write(XML_HEADER);
-      writer.write(lineSeparator());
+      writer.write(LINE_SEPARATOR);
       xmlWriter.write(xml.target(), writer, 0, INDENT);
       writer.flush();
     } catch (IOException ex) {

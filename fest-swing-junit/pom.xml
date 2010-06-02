@@ -5,7 +5,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.easytesting</groupId>
   <artifactId>fest-swing-junit</artifactId>
-  <version>1.2rc</version>
+  <version>1.2</version>
   <name>FEST Swing - JUnit Extension</name>
   <description>JUnit-specific extension for FEST-Swing</description>
   <inceptionYear>2007</inceptionYear>
@@ -13,7 +13,7 @@
   <parent>
     <groupId>org.easytesting</groupId>
     <artifactId>fest</artifactId>
-    <version>1.0</version>
+    <version>1.0.1</version>
   </parent>
   <mailingLists>
     <mailingList>
@@ -54,7 +54,7 @@
     <dependency>
       <groupId>org.easytesting</groupId>
       <artifactId>fest-swing</artifactId>
-      <version>1.2rc</version>
+      <version>1.2</version>
       <scope>compile</scope>
     </dependency>
     <dependency>
@@ -79,6 +79,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-javadoc-plugin</artifactId>
+        <version>2.7</version>
         <configuration>
           <aggregate>true</aggregate>
           <minmemory>128m</minmemory>
