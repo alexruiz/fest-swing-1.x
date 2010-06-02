@@ -22,7 +22,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 /**
- * Understands a JUnit test to be used to test the TestNG tests in this package.
+ * Understands a JUnit test to be used to manually test <code>{@link GUITestRunner}</code>.
  *
  * @author Alex Ruiz
  */
