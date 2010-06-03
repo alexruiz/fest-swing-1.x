@@ -1,25 +1,30 @@
 /*
  * Created on May 13, 2007
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
- * 
+ *
  * Copyright @2007 the original author or authors.
  */
 package org.fest.util;
 
+import static java.lang.System.arraycopy;
+
 import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Understands utility methods related to arrays.
- * 
+ *
  * @author Alex Ruiz
+ * @author Joel Costigliola
  */
 public class Arrays {
 
@@ -56,52 +61,40 @@ public class Arrays {
   }
 
   /**
-   * Returns a new array composed of the non null elements of the given array.<br>
-   * Returns an empty array if given array has only null elements or is empty.<br>
-   * Returns null if given array is null.
-   * 
-   * @param array the array we want to extract the non null elements.
-   * @return A new array composed of the non null elements of the given array.
+   * Returns a new array composed of the non-null elements of the given array. This method returns an empty array if the
+   * given array has only null elements or if it is empty. This method returns <code>null</code> if the given array is
+   * <code>null</code>.
+   * @param <T> the type of elements of the array.
+   * @param array the array we want to extract the non-null elements.
+   * @return a new array composed of the non-null elements of the given array, or <code>null</code> if the given array
+   * is <code>null</code>.
+   * @since 1.1.3
    */
   @SuppressWarnings("unchecked")
   public static <T> T[] nonNullElements(T[] array) {
-    if (array == null) { return null; }
-    // find resulting array size.
-    int numberOfNonNullElements = 0;
-    for (T object : array) {
-      if (object != null) {
-        numberOfNonNullElements++;
-      }
-    }
-    // infer array elements type T to build a new one of same type with non null elements.
-    // we can't do = new T[numberOfNonNullElements], that just does not compile.
-    Class<?> componentType = array.getClass().getComponentType();
-    // create resulting array, cast is safe since componentType is T
-    T[] arrayWithoutNullElements = (T[]) Array.newInstance(componentType, numberOfNonNullElements);
-    // copy non null elements
-    int j = 0;
-    for (int i = 0; i < array.length; i++) {
-      if (array[i] != null) {
-        arrayWithoutNullElements[j] = array[i];
-        j++;
-      }
-    }
-    return arrayWithoutNullElements;
+    if (array == null) return null;
+    List<T> nonNullElements = new ArrayList<T>();
+    for (T o : array) if (o != null) nonNullElements.add(o);
+    int elementCount = nonNullElements.size();
+    T[] newArray = (T[]) Array.newInstance(array.getClass().getComponentType(), elementCount);
+    arraycopy(nonNullElements.toArray(), 0, newArray, 0, elementCount);
+    return newArray;
   }
 
   /**
-   * Returns true if the given array has only null elements, false otherwise
-   * <p>
-   * If given array is empty, returns true.
-   * 
-   * @param array the given array, <b>must not be null</b>.
-   * @return True if the given array has only null elements or is empty, false otherwise
-   * @throws NullPointerException if the given array is null
+   * Returns <code>true</code> if the given array has only <code>null</code> elements, <code>false</code> otherwise.
+   * If given array is empty, this method returns <code>true</code>.
+   * @param <T> the type of elements of the array.
+   * @param array the given array. <b>It must not be null</b>.
+   * @return <code>true</code> if the given array has only <code>null</code> elements or is empty, <code>false</code>
+   * otherwise.
+   * @throws NullPointerException if the given array is <code>null</code>.
+   * @since 1.1.3
    */
   public static <T> boolean hasOnlyNullElements(T[] array) {
-    for (T element : array) {
-      if (element != null) { return false; }
-    }
+    // TODO return false if array is empty.
+    if (array == null) throw new NullPointerException("The array to check should not be null");
+    for (T o : array) if (o != null) return false;
     return true;
   }
 
