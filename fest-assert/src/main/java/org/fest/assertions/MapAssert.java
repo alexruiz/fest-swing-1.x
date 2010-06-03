@@ -127,7 +127,7 @@ public class MapAssert extends GroupAssert<Map<?, ?>> {
     if (e == null)
       throw new NullPointerException(formattedErrorMessage("Entries to check should not contain null"));
     if (!actual.containsKey(e.key)) return false;
-    return actual.containsValue(e.value);
+    return actual.get(e.key).equals(e.value);
   }
 
   private String entryOrEntries(List<Entry> found) {
