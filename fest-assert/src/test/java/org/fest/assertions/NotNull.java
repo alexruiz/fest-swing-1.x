@@ -39,6 +39,10 @@ class NotNull<T> extends Condition<T> {
     return new NotNull<BufferedImage>();
   }
 
+  static NotNull<Boolean> notNullBoolean() {
+    return new NotNull<Boolean>();
+  }
+
   static NotNull<boolean[]> notNullBooleanArray() {
     return new NotNull<boolean[]>();
   }

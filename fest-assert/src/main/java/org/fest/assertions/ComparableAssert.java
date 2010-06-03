@@ -21,6 +21,7 @@ import static org.fest.assertions.ErrorMessages.*;
  * @param <T> the type of <code>Comparable</code> this template can verify.
  *
  * @author Alex Ruiz
+ * @author Ted M. Young
  */
 public abstract class ComparableAssert<T extends Comparable<T>> extends GenericAssert<T> {
 

@@ -1,5 +1,5 @@
 /*
- * Created on 2010-4-19
+ * Created on Apr 19, 2010
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -11,30 +11,114 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2007-2010 the original author or authors.
+ * Copyright @2010 the original author or authors.
  */
 package org.fest.assertions;
 
+import static java.lang.Boolean.TRUE;
+import static org.fest.assertions.CommonFailures.expectErrorIfConditionIsNull;
+import static org.fest.assertions.NotNull.notNullBoolean;
+import static org.fest.test.ExpectedFailure.expectAssertionError;
+
+import org.fest.test.CodeToTest;
+import org.junit.BeforeClass;
+import org.junit.Test;
+
 /**
- * Test ensuring that {@link org.fest.assertions.BooleanAssert} obeys the {@link org.fest.assertions.GenericAssert#doesNotSatisfy(Condition)}
- * contract for {@link Boolean}.
+ * Tests for <code>{@link org.fest.assertions.GenericAssert#doesNotSatisfy(Condition)}</code>.
  *
  * @author Ansgar Konermann
+ * @author Alex Ruiz
  */
-public class BooleanAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSatisfy_TestBase<Boolean> {
+public class BooleanAssert_doesNotSatisfy_Test implements GenericAssert_doesNotSatisfy_TestCase {
 
-  @Override
-  protected String zeroAsString() {
-    return "false";
+  private static Boolean value;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    value = TRUE;
   }
 
-  @Override
-  protected Boolean zero() {
-    return Boolean.FALSE;
+  @Test
+  public void should_pass_if_condition_is_not_satisfied() {
+    new BooleanAssert(null).doesNotSatisfy(notNullBoolean());
   }
 
-  @Override
-  protected BooleanAssert assertionFor(Boolean actual) {
-    return new BooleanAssert(actual);
+  @Test
+  public void should_throw_error_if_condition_is_null() {
+    expectErrorIfConditionIsNull().on(new CodeToTest() {
+      public void run() {
+        new BooleanAssert(value).doesNotSatisfy(null);
+      }
+    });
+  }
+
+  @Test
+  public void should_fail_if_condition_is_satisfied() {
+    expectAssertionError("actual value:<true> should not satisfy condition:<NotNull>").on(new CodeToTest() {
+      public void run() {
+        new BooleanAssert(value).doesNotSatisfy(notNullBoolean());
+      }
+    });
+  }
+
+  @Test
+  public void should_fail_and_display_description_of_assertion_if_condition_is_satisfied() {
+    expectAssertionError("[A Test] actual value:<true> should not satisfy condition:<NotNull>").on(new CodeToTest() {
+      public void run() {
+        new BooleanAssert(value).as("A Test")
+                                .doesNotSatisfy(notNullBoolean());
+      }
+    });
+  }
+
+  @Test
+  public void should_fail_and_display_description_of_condition_if_condition_is_satisfied() {
+    expectAssertionError("actual value:<true> should not satisfy condition:<Not Null>").on(new CodeToTest() {
+      public void run() {
+        new BooleanAssert(value).doesNotSatisfy(notNullBoolean().as("Not Null"));
+      }
+    });
+  }
+
+  @Test
+  public void should_fail_and_display_descriptions_of_assertion_and_condition_if_condition_is_satisfied() {
+    expectAssertionError("[A Test] actual value:<true> should not satisfy condition:<Not Null>").on(new CodeToTest() {
+      public void run() {
+        new BooleanAssert(value).as("A Test")
+                                .doesNotSatisfy(notNullBoolean().as("Not Null"));
+      }
+    });
+  }
+
+  @Test
+  public void should_fail_with_custom_message_if_condition_is_satisfied() {
+    expectAssertionError("My custom message").on(new CodeToTest() {
+      public void run() {
+        new BooleanAssert(value).overridingErrorMessage("My custom message")
+                                .doesNotSatisfy(notNullBoolean());
+      }
+    });
+  }
+
+  @Test
+  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_condition_is_satisfied() {
+    expectAssertionError("My custom message").on(new CodeToTest() {
+      public void run() {
+        new BooleanAssert(value).as("A Test")
+                                .overridingErrorMessage("My custom message")
+                                .doesNotSatisfy(notNullBoolean());
+      }
+    });
+  }
+
+  @Test
+  public void should_fail_with_custom_message_ignoring_description_of_condition_if_condition_is_satisfied() {
+    expectAssertionError("My custom message").on(new CodeToTest() {
+      public void run() {
+        new BooleanAssert(value).overridingErrorMessage("My custom message")
+                                .doesNotSatisfy(notNullBoolean().as("Not Null"));
+      }
+    });
   }
 }

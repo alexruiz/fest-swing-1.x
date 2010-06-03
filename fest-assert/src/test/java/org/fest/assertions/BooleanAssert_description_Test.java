@@ -26,9 +26,9 @@ package org.fest.assertions;
  * @author Alex Ruiz
  * @author David DIDIER
  */
-public class BooleanAssert_description_Test extends PrimitiveAssert_description_TestCase {
+public class BooleanAssert_description_Test extends GenericAssert_description_TestCase<Boolean> {
 
-  protected PrimitiveAssert assertionToTest() {
+  protected BooleanAssert assertionToTest() {
     return new BooleanAssert(true);
   }
 }
