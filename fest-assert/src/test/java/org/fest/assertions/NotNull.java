@@ -27,16 +27,13 @@ import java.util.*;
  */
 class NotNull<T> extends Condition<T> {
 
+  // TODO REMOVE
+  static <T> NotNull<T> instance() {
+    return new NotNull<T>();
+  }
+
   static NotNull<BigDecimal> notNullBigDecimal() {
     return new NotNull<BigDecimal>();
-  }
-
-  static NotNull<File> notNullFile() {
-    return new NotNull<File>();
-  }
-
-  static NotNull<BufferedImage> notNullImage() {
-    return new NotNull<BufferedImage>();
   }
 
   static NotNull<Boolean> notNullBoolean() {
@@ -55,52 +52,56 @@ class NotNull<T> extends Condition<T> {
     return new NotNull<char[]>();
   }
 
+  static NotNull<Collection<?>> notNullCollection() {
+    return new NotNull<Collection<?>>();
+  }
+
   static NotNull<double[]> notNullDoubleArray() {
     return new NotNull<double[]>();
+  }
+
+  static NotNull<File> notNullFile() {
+    return new NotNull<File>();
   }
 
   static NotNull<float[]> notNullFloatArray() {
     return new NotNull<float[]>();
   }
 
+  static NotNull<BufferedImage> notNullImage() {
+    return new NotNull<BufferedImage>();
+  }
+
   static NotNull<int[]> notNullIntArray() {
     return new NotNull<int[]>();
-  }
-
-  static NotNull<long[]> notNullLongArray() {
-    return new NotNull<long[]>();
-  }
-
-  static NotNull<short[]> notNullShortArray() {
-    return new NotNull<short[]>();
-  }
-
-  static NotNull<Object[]> notNullObjectArray() {
-    return new NotNull<Object[]>();
-  }
-
-  static NotNull<Object> notNullObject() {
-    return new NotNull<Object>();
-  }
-
-  static NotNull<Collection<?>> notNullCollection() {
-    return new NotNull<Collection<?>>();
   }
 
   static NotNull<List<?>> notNullList() {
     return new NotNull<List<?>>();
   }
 
+  static NotNull<long[]> notNullLongArray() {
+    return new NotNull<long[]>();
+  }
+
   static NotNull<Map<?, ?>> notNullMap() {
     return new NotNull<Map<?, ?>>();
   }
 
-  static NotNull<Throwable> notNullThrowable() {
-    return new NotNull<Throwable>();
+  static NotNull<Object> notNullObject() {
+    return new NotNull<Object>();
   }
 
-  static <T> NotNull<T> instance() {
-    return new NotNull<T>();
+  static NotNull<Object[]> notNullObjectArray() {
+    return new NotNull<Object[]>();
+  }
+
+  static NotNull<short[]> notNullShortArray() {
+    return new NotNull<short[]>();
+  }
+
+  static NotNull<Throwable> notNullThrowable() {
+    return new NotNull<Throwable>();
   }
 
   private NotNull() {}
