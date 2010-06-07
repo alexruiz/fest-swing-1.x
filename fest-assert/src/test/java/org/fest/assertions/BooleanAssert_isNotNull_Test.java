@@ -1,5 +1,5 @@
 /*
- * Created on 2010-4-26
+ * Created on Apr 26, 2010
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -11,26 +11,68 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2007-2010 the original author or authors.
+ * Copyright @2010 the original author or authors.
  */
 
 package org.fest.assertions;
 
+import static org.fest.assertions.CommonFailures.*;
+import static org.fest.test.ExpectedFailure.expectAssertionError;
+
+import org.fest.test.CodeToTest;
+import org.junit.Test;
+
 /**
- * Test ensuring that {@link org.fest.assertions.BooleanAssert} obeys the {@link GenericAssert#isNotNull()} contract for
- * {@link Boolean}.
+ * Tests for <code>{@link BooleanAssert#isNotNull()}</code>.
  *
  * @author Ansgar Konermann
+ * @author Alex Ruiz
  */
-public class BooleanAssert_isNotNull_Test extends GenericAssert_isNotNull_TestBase<Boolean> {
+public class BooleanAssert_isNotNull_Test implements GenericAssert_isNotNull_TestCase {
 
-  @Override
-  protected BooleanAssert assertionFor(Boolean actual) {
-    return new BooleanAssert(actual);
+  @Test
+  public void should_pass_if_actual_is_not_null() {
+    new BooleanAssert(true).isNotNull();
   }
 
-  @Override
-  protected Boolean one() {
-    return true;
+  @Test
+  public void should_fail_if_actual_is_null() {
+    expectErrorIfActualIsNull(new CodeToTest() {
+      public void run() {
+        new BooleanAssert(null).isNotNull();
+      }
+    });
   }
+
+  @Test
+  public void should_fail_and_display_description_of_assertion_if_actual_is_null() {
+    expectErrorWithDescriptionIfActualIsNull(new CodeToTest() {
+      public void run() {
+        new BooleanAssert(null).as("A Test")
+                               .isNotNull();
+      }
+    });
+  }
+
+  @Test
+  public void should_fail_with_custom_message_if_actual_is_null() {
+    expectAssertionError("My custom message").on(new CodeToTest() {
+      public void run() {
+        new BooleanAssert(null).overridingErrorMessage("My custom message")
+                               .isNotNull();
+      }
+    });
+  }
+
+  @Test
+  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_is_null() {
+    expectAssertionError("My custom message").on(new CodeToTest() {
+      public void run() {
+        new BooleanAssert(null).as("A Test")
+                               .overridingErrorMessage("My custom message")
+                               .isNotNull();
+      }
+    });
+  }
+
 }
