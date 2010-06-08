@@ -342,4 +342,17 @@ public class StringAssert extends GroupAssert<String> {
     if (actual.toLowerCase().contains(text.toLowerCase())) return this;
     throw failure(concat(actual(), " does not contain ", inBrackets(text)));
   }
+
+  /**
+   * Verifies that the actual {@code String} does not contain the given text.
+   * @param text the given text.
+   * @return this assertion object.
+   * @throws AssertionError if the actual {@code String} contains the given text.
+   * @since 1.3
+   */
+  public StringAssert doesNotContain(String text) {
+    isNotNull();
+    if (!actual.contains(text)) return this;
+    throw failure(concat(actual(), " should not contain ", inBrackets(text)));
+  }
 }
