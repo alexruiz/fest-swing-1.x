@@ -1,15 +1,15 @@
 /*
  * Created on Dec 26, 2006
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
- * 
+ *
  * Copyright @2006-2009 the original author or authors.
  */
 package org.fest.assertions;
@@ -20,7 +20,7 @@ import static org.fest.util.Strings.concat;
 import org.fest.util.Strings;
 
 /**
- * Understands assertion methods for <code>String</code>s. To create a new instance of this class use the
+ * Understands assertion methods for {@code String}s. To create a new instance of this class use the
  * method <code>{@link Assertions#assertThat(String)}</code>.
  *
  * @author Yvonne Wang
@@ -37,54 +37,48 @@ public class StringAssert extends GroupAssert<String> {
   }
 
   /** {@inheritDoc} */
-  @Override
   public StringAssert as(String description) {
     description(description);
     return this;
   }
 
   /** {@inheritDoc} */
-  @Override
   public StringAssert describedAs(String description) {
     return as(description);
   }
 
   /** {@inheritDoc} */
-  @Override
   public StringAssert as(Description description) {
     description(description);
     return this;
   }
 
   /** {@inheritDoc} */
-  @Override
   public StringAssert describedAs(Description description) {
     return as(description);
   }
 
   /**
-   * Verifies that the actual <code>String</code> satisfies the given condition.
+   * Verifies that the actual {@code String} satisfies the given condition.
    * @param condition the given condition.
    * @return this assertion object.
    * @throws NullPointerException if the given condition is <code>null</code>.
-   * @throws AssertionError if the actual <code>String</code> does not satisfy the given condition.
+   * @throws AssertionError if the actual {@code String} does not satisfy the given condition.
    * @see #is(Condition)
    */
-  @Override
   public StringAssert satisfies(Condition<String> condition) {
     assertSatisfies(condition);
     return this;
   }
 
   /**
-   * Verifies that the actual <code>String</code> does not satisfy the given condition.
+   * Verifies that the actual {@code String} does not satisfy the given condition.
    * @param condition the given condition.
    * @return this assertion object.
    * @throws NullPointerException if the given condition is <code>null</code>.
-   * @throws AssertionError if the actual <code>String</code> satisfies the given condition.
+   * @throws AssertionError if the actual {@code String} satisfies the given condition.
    * @see #isNot(Condition)
    */
-  @Override
   public StringAssert doesNotSatisfy(Condition<String> condition) {
     assertDoesNotSatisfy(condition);
     return this;
@@ -95,10 +89,9 @@ public class StringAssert extends GroupAssert<String> {
    * @param condition the given condition.
    * @return this assertion object.
    * @throws NullPointerException if the given condition is <code>null</code>.
-   * @throws AssertionError if the actual <code>String</code> does not satisfy the given condition.
+   * @throws AssertionError if the actual {@code String} does not satisfy the given condition.
    * @since 1.2
    */
-  @Override
   public StringAssert is(Condition<String> condition) {
     assertIs(condition);
     return this;
@@ -109,21 +102,19 @@ public class StringAssert extends GroupAssert<String> {
    * @param condition the given condition.
    * @return this assertion object.
    * @throws NullPointerException if the given condition is <code>null</code>.
-   * @throws AssertionError if the actual <code>String</code> satisfies the given condition.
+   * @throws AssertionError if the actual {@code String} satisfies the given condition.
    * @since 1.2
    */
-  @Override
   public StringAssert isNot(Condition<String> condition) {
     assertIsNot(condition);
     return this;
   }
 
   /**
-   * Verifies that the actual <code>String</code> is empty (not <code>null</code> with zero characters.)
-   * @throws AssertionError if the actual <code>String</code> is <code>null</code>.
-   * @throws AssertionError if the actual <code>String</code> is not empty.
+   * Verifies that the actual {@code String} is empty (not <code>null</code> with zero characters.)
+   * @throws AssertionError if the actual {@code String} is <code>null</code>.
+   * @throws AssertionError if the actual {@code String} is not empty.
    */
-  @Override
   public void isEmpty() {
     isNotNull();
     if (Strings.isEmpty(actual)) return;
@@ -132,10 +123,9 @@ public class StringAssert extends GroupAssert<String> {
   }
 
   /**
-   * Verifies that the actual <code>String</code> is <code>null</code> or empty.
-   * @throws AssertionError if the actual <code>String</code> is not <code>null</code> or not empty.
+   * Verifies that the actual {@code String} is <code>null</code> or empty.
+   * @throws AssertionError if the actual {@code String} is not <code>null</code> or not empty.
    */
-  @Override
   public final void isNullOrEmpty() {
     if (Strings.isEmpty(actual)) return;
     failIfCustomMessageIsSet();
@@ -143,12 +133,11 @@ public class StringAssert extends GroupAssert<String> {
   }
 
   /**
-   * Verifies that the actual <code>String</code> contains at least on character.
+   * Verifies that the actual {@code String} contains at least on character.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>String</code> is <code>null</code>.
-   * @throws AssertionError if the actual <code>String</code> is <code>null</code> or empty.
+   * @throws AssertionError if the actual {@code String} is <code>null</code>.
+   * @throws AssertionError if the actual {@code String} is <code>null</code> or empty.
    */
-  @Override
   public StringAssert isNotEmpty() {
     isNotNull();
     if (!Strings.isEmpty(actual)) return this;
@@ -157,22 +146,21 @@ public class StringAssert extends GroupAssert<String> {
   }
 
   /**
-   * Verifies that the actual <code>String</code> is equal to the given one.
-   * @param expected the given <code>String</code> to compare the actual <code>String</code> to.
+   * Verifies that the actual {@code String} is equal to the given one.
+   * @param expected the given {@code String} to compare the actual {@code String} to.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>String</code> is not equal to the given one.
+   * @throws AssertionError if the actual {@code String} is not equal to the given one.
    */
-  @Override
   public StringAssert isEqualTo(String expected) {
     assertEqualTo(expected);
     return this;
   }
 
   /**
-   * Verifies that the actual <code>String</code> is equal to the given one ignoring case.
-   * @param expected the given <code>String</code> to compare the actual <code>String</code> to.
+   * Verifies that the actual {@code String} is equal to the given one ignoring case.
+   * @param expected the given {@code String} to compare the actual {@code String} to.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>String</code> is not equal to the given one ignoring case.
+   * @throws AssertionError if the actual {@code String} is not equal to the given one ignoring case.
    */
   public StringAssert isEqualToIgnoringCase(String expected) {
     if (actual == null && expected == null) return this;
@@ -183,59 +171,54 @@ public class StringAssert extends GroupAssert<String> {
   }
 
   /**
-   * Verifies that the actual <code>String</code> is not equal to the given one.
-   * @param other the given <code>String</code> to compare the actual <code>String</code> to.
+   * Verifies that the actual {@code String} is not equal to the given one.
+   * @param other the given {@code String} to compare the actual {@code String} to.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>String</code> is equal to the given one.
+   * @throws AssertionError if the actual {@code String} is equal to the given one.
    */
-  @Override
   public StringAssert isNotEqualTo(String other) {
     assertNotEqualTo(other);
     return this;
   }
 
   /**
-   * Verifies that the actual <code>String</code> is not <code>null</code>.
+   * Verifies that the actual {@code String} is not <code>null</code>.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>String</code> is <code>null</code>.
+   * @throws AssertionError if the actual {@code String} is <code>null</code>.
    */
-  @Override
   public StringAssert isNotNull() {
     assertNotNull();
     return this;
   }
 
   /**
-   * Verifies that the actual <code>String</code> is not the same as the given one.
-   * @param other the given <code>String</code> to compare the actual <code>String</code> to.
+   * Verifies that the actual {@code String} is not the same as the given one.
+   * @param other the given {@code String} to compare the actual {@code String} to.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>String</code> is the same as the given one.
+   * @throws AssertionError if the actual {@code String} is the same as the given one.
    */
-  @Override
   public StringAssert isNotSameAs(String other) {
     assertNotSameAs(other);
     return this;
   }
 
   /**
-   * Verifies that the actual <code>String</code> is the same as the given one.
-   * @param expected the given <code>String</code> to compare the actual <code>String</code> to.
+   * Verifies that the actual {@code String} is the same as the given one.
+   * @param expected the given {@code String} to compare the actual {@code String} to.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>String</code> is not the same as the given one.
+   * @throws AssertionError if the actual {@code String} is not the same as the given one.
    */
-  @Override
   public StringAssert isSameAs(String expected) {
     assertSameAs(expected);
     return this;
   }
 
   /**
-   * Verifies that the number of characters in the actual <code>String</code> is equal to the given one.
-   * @param expected the expected number of characters in the actual <code>String</code>.
+   * Verifies that the number of characters in the actual {@code String} is equal to the given one.
+   * @param expected the expected number of characters in the actual {@code String}.
    * @return this assertion object.
-   * @throws AssertionError if the number of characters of the actual <code>String</code> is not equal to the given one.
+   * @throws AssertionError if the number of characters of the actual {@code String} is not equal to the given one.
    */
-  @Override
   public StringAssert hasSize(int expected) {
     int actualSize = actualGroupSize();
     if (actualSize == expected) return this;
@@ -245,21 +228,20 @@ public class StringAssert extends GroupAssert<String> {
   }
 
   /**
-   * Returns the number of elements in the actual <code>String</code>.
-   * @return the number of elements in the actual <code>String</code>.
+   * Returns the number of elements in the actual {@code String}.
+   * @return the number of elements in the actual {@code String}.
    */
-  @Override
   protected int actualGroupSize() {
     isNotNull();
     return actual.length();
   }
 
   /**
-   * Verifies that the actual <code>String</code> contains the given one.
-   * @param expected the given <code>String</code> expected to be contained in the actual one.
+   * Verifies that the actual {@code String} contains the given one.
+   * @param expected the given {@code String} expected to be contained in the actual one.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>String</code> is <code>null</code>.
-   * @throws AssertionError if the actual <code>String</code> does not contain the given one.
+   * @throws AssertionError if the actual {@code String} is <code>null</code>.
+   * @throws AssertionError if the actual {@code String} does not contain the given one.
    */
   public StringAssert contains(String expected) {
     isNotNull();
@@ -269,11 +251,11 @@ public class StringAssert extends GroupAssert<String> {
   }
 
   /**
-   * Verifies that the actual <code>String</code> ends with the given one.
-   * @param expected the given <code>String</code> expected to be at the end of the actual one.
+   * Verifies that the actual {@code String} ends with the given one.
+   * @param expected the given {@code String} expected to be at the end of the actual one.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>String</code> is <code>null</code>.
-   * @throws AssertionError if the actual <code>String</code> does not end with the given one.
+   * @throws AssertionError if the actual {@code String} is <code>null</code>.
+   * @throws AssertionError if the actual {@code String} does not end with the given one.
    */
   public StringAssert endsWith(String expected) {
     isNotNull();
@@ -283,11 +265,11 @@ public class StringAssert extends GroupAssert<String> {
   }
 
   /**
-   * Verifies that the actual <code>String</code> starts with the given one.
-   * @param expected the given <code>String</code> expected to be at the beginning of the actual one.
+   * Verifies that the actual {@code String} starts with the given one.
+   * @param expected the given {@code String} expected to be at the beginning of the actual one.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>String</code> is <code>null</code>.
-   * @throws AssertionError if the actual <code>String</code> does not start with the given one.
+   * @throws AssertionError if the actual {@code String} is <code>null</code>.
+   * @throws AssertionError if the actual {@code String} does not start with the given one.
    */
   public StringAssert startsWith(String expected) {
     isNotNull();
@@ -297,11 +279,11 @@ public class StringAssert extends GroupAssert<String> {
   }
 
   /**
-   * Verifies that the actual <code>String</code> does not contains the given one.
-   * @param s the given <code>String</code> expected not to be contained in the actual one.
+   * Verifies that the actual {@code String} does not contains the given one.
+   * @param s the given {@code String} expected not to be contained in the actual one.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>String</code> is <code>null</code>.
-   * @throws AssertionError if the actual <code>String</code> does contain the given one.
+   * @throws AssertionError if the actual {@code String} is <code>null</code>.
+   * @throws AssertionError if the actual {@code String} does contain the given one.
    */
   public StringAssert excludes(String s) {
     isNotNull();
@@ -311,10 +293,10 @@ public class StringAssert extends GroupAssert<String> {
   }
 
   /**
-   * Verifies that the actual <code>String</code> matches the given one.
+   * Verifies that the actual {@code String} matches the given one.
    * @param regex the given regular expression expected to be matched by the actual one.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>String</code> does not match the given regular expression.
+   * @throws AssertionError if the actual {@code String} does not match the given regular expression.
    */
   public StringAssert matches(String regex) {
     isNotNull();
@@ -324,10 +306,10 @@ public class StringAssert extends GroupAssert<String> {
   }
 
   /**
-   * Verifies that the actual <code>String</code> does not match the given one.
+   * Verifies that the actual {@code String} does not match the given one.
    * @param regex the given regular expression expected not to be matched by the actual one.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>String</code> matches the given regular expression.
+   * @throws AssertionError if the actual {@code String} matches the given regular expression.
    */
   public StringAssert doesNotMatch(String regex) {
     isNotNull();
@@ -341,9 +323,23 @@ public class StringAssert extends GroupAssert<String> {
   }
 
   /** {@inheritDoc} */
-  @Override
   public StringAssert overridingErrorMessage(String message) {
     replaceDefaultErrorMessagesWith(message);
     return this;
+  }
+
+  /**
+   * Verifies that the actual {@code String} contains the given text regardless of the case.
+   * @param text the given text.
+   * @return this assertion object.
+   * @throws AssertionError if the actual {@code String} does not contain the given text.
+   * @throws NullPointerException if the given {@code String} is <code>null</code>.
+   * @since 1.3
+   */
+  public StringAssert containsIgnoringCase(String text) {
+    if (text == null) throw new NullPointerException("The given String should not be null");
+    isNotNull();
+    if (actual.toLowerCase().contains(text.toLowerCase())) return this;
+    throw failure(concat(actual(), " does not contain ", inBrackets(text)));
   }
 }
