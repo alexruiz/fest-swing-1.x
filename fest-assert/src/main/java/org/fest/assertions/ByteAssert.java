@@ -18,8 +18,8 @@ import static java.lang.Byte.valueOf;
 import static org.fest.assertions.ErrorMessages.*;
 
 /**
- * Understands assertion methods for {@code byte}s. To create a new instance of this class use the method
- * <code>{@link Assertions#assertThat(byte)}</code>.
+ * Understands assertion methods for {@code Byte}s. To create a new instance of this class use the methods
+ * <code>{@link Assertions#assertThat(byte)}</code> or <code>{@link Assertions#assertThat(Byte)}</code>.
  *
  * @author Yvonne Wang
  * @author David DIDIER

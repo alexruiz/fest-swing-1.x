@@ -18,8 +18,8 @@ package org.fest.assertions;
 import static java.lang.Boolean.valueOf;
 
 /**
- * Understands assertion methods for {@code Boolean} values. To create a new instance of this class use the method
- * <code>{@link Assertions#assertThat(boolean)}</code>.
+ * Understands assertion methods for {@code Boolean}s. To create a new instance of this class use the method
+ * <code>{@link Assertions#assertThat(boolean)}</code> or <code>{@link Assertions#assertThat(Boolean)}</code>.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
