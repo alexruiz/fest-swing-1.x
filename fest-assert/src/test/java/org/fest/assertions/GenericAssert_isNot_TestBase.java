@@ -30,7 +30,7 @@ import org.fest.test.CodeToTest;
  *
  * @author Ansgar Konermann
  */
-public abstract class GenericAssert_isNot_TestBase<VALUE_TYPE> implements GenericAssert_doesNotSatisfy_TestCase {
+public abstract class GenericAssert_isNot_TestBase<VALUE_TYPE> implements GenericAssert_doesNotSatisfy_orAlias_TestCase {
 
   protected abstract VALUE_TYPE zero();
 

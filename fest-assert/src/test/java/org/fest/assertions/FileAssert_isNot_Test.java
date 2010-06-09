@@ -25,7 +25,7 @@ import org.junit.Test;
  *
  * @author Alex Ruiz
  */
-public class FileAssert_isNot_Test extends FileAssert_TestCase implements GenericAssert_doesNotSatisfy_TestCase {
+public class FileAssert_isNot_Test extends FileAssert_TestCase implements GenericAssert_doesNotSatisfy_orAlias_TestCase {
 
   @Test
   public void should_pass_if_condition_is_not_satisfied() {

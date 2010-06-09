@@ -31,7 +31,7 @@ import org.junit.Test;
  *
  * @author Alex Ruiz
  */
-public class CollectionAssert_isNot_Test implements GenericAssert_doesNotSatisfy_TestCase {
+public class CollectionAssert_isNot_Test implements GenericAssert_doesNotSatisfy_orAlias_TestCase {
 
   private static List<Object> collection;
 

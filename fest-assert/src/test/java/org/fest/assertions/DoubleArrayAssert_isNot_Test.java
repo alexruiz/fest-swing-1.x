@@ -29,7 +29,7 @@ import org.junit.Test;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class DoubleArrayAssert_isNot_Test implements GenericAssert_doesNotSatisfy_TestCase {
+public class DoubleArrayAssert_isNot_Test implements GenericAssert_doesNotSatisfy_orAlias_TestCase {
 
   private static double[] array;
 

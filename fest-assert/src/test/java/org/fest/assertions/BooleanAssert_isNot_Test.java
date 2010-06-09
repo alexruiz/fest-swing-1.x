@@ -30,7 +30,7 @@ import org.junit.Test;
  * @author Ansgar Konermann
  * @author Alex Ruiz
  */
-public class BooleanAssert_isNot_Test implements GenericAssert_doesNotSatisfy_TestCase {
+public class BooleanAssert_isNot_Test implements GenericAssert_doesNotSatisfy_orAlias_TestCase {
 
   private static Boolean value;
 

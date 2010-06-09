@@ -29,7 +29,7 @@ import org.junit.Test;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class ByteArrayAssert_doesNotSatisfy_Test implements GenericAssert_doesNotSatisfy_TestCase {
+public class ByteArrayAssert_doesNotSatisfy_Test implements GenericAssert_doesNotSatisfy_orAlias_TestCase {
 
   private static byte[] array;
 
