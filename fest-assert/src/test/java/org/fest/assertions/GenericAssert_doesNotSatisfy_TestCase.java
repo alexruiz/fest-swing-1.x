@@ -26,7 +26,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Base class for testing {@link org.fest.assertions.GenericAssert#doesNotSatisfy(Condition)}.
+ * Base class for testing <code>{@link org.fest.assertions.GenericAssert#doesNotSatisfy(Condition)}</code>.
  * <p>
  * This class implements the algorithms which must be performed to test <code>doesNotSatisfy</code> as template methods
  * and uses implementations of the abstract methods in subclasses to derive concrete tests.
