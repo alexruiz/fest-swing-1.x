@@ -14,8 +14,7 @@
  */
 package org.fest.assertions;
 
-import static java.lang.Boolean.FALSE;
-import static java.lang.Boolean.TRUE;
+import static java.lang.Boolean.*;
 import static org.fest.test.ExpectedFailure.expectAssertionError;
 
 import org.fest.test.CodeToTest;
@@ -36,7 +35,7 @@ public class BooleanAssert_isEqualTo_Boolean_Test implements Assert_isEqualTo_Te
 
   @Test
   public void should_fail_if_actual_and_expected_are_not_equal() {
-    expectAssertionError("expected:<true> but was:<false>").on(new CodeToTest() {
+    expectAssertionError("expected:<[tru]e> but was:<[fals]e>").on(new CodeToTest() {
       public void run() {
         new BooleanAssert(false).isEqualTo(TRUE);
       }
@@ -45,7 +44,7 @@ public class BooleanAssert_isEqualTo_Boolean_Test implements Assert_isEqualTo_Te
 
   @Test
   public void should_fail_and_display_description_of_assertion_if_actual_and_expected_are_not_equal() {
-    expectAssertionError("[A Test] expected:<true> but was:<false>").on(new CodeToTest() {
+    expectAssertionError("[A Test] expected:<[tru]e> but was:<[fals]e>").on(new CodeToTest() {
       public void run() {
         new BooleanAssert(false).as("A Test")
                                 .isEqualTo(TRUE);

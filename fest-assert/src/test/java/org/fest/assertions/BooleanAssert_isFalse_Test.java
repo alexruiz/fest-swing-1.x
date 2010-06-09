@@ -34,7 +34,7 @@ public class BooleanAssert_isFalse_Test {
 
   @Test
   public void should_fail_if_actual_is_true() {
-    expectAssertionError("expected:<false> but was:<true>").on(new CodeToTest() {
+    expectAssertionError("expected:<[fals]e> but was:<[tru]e>").on(new CodeToTest() {
       public void run() {
         new BooleanAssert(true).isFalse();
       }
@@ -43,7 +43,7 @@ public class BooleanAssert_isFalse_Test {
 
   @Test
   public void should_fail_and_display_description_of_assertion_if_actual_is_true() {
-    expectAssertionError("[A Test] expected:<false> but was:<true>").on(new CodeToTest() {
+    expectAssertionError("[A Test] expected:<[fals]e> but was:<[tru]e>").on(new CodeToTest() {
       public void run() {
         new BooleanAssert(true).as("A Test")
                                .isFalse();
@@ -60,7 +60,7 @@ public class BooleanAssert_isFalse_Test {
       }
     });
   }
-  
+
   @Test
   public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_is_true() {
     expectAssertionError("My custom message").on(new CodeToTest() {

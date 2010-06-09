@@ -14,14 +14,7 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.CommonFailures.expectErrorIfConditionIsNull;
 import static org.fest.assertions.EmptyArrays.emptyFloatArray;
-import static org.fest.assertions.NotNull.notNullFloatArray;
-import static org.fest.test.ExpectedFailure.expectAssertionError;
-
-import org.fest.test.CodeToTest;
-import org.junit.BeforeClass;
-import org.junit.Test;
 
 /**
  * Tests for <code>{@link FloatArrayAssert#doesNotSatisfy(Condition)}</code>.
@@ -29,95 +22,13 @@ import org.junit.Test;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class FloatArrayAssert_doesNotSatisfy_Test implements GenericAssert_doesNotSatisfy_TestCase {
+public class FloatArrayAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSatisfy_TestTemplate<float[]> {
 
-  private static float[] array;
-
-  @BeforeClass
-  public static void setUpOnce() {
-    array = emptyFloatArray();
+  protected FloatArrayAssert assertObject() {
+    return new FloatArrayAssert(emptyFloatArray());
   }
 
-  @Test
-  public void should_pass_if_condition_is_not_satisfied() {
-    new FloatArrayAssert(null).doesNotSatisfy(notNullFloatArray());
-  }
-
-  @Test
-  public void should_throw_error_if_condition_is_null() {
-    expectErrorIfConditionIsNull().on(new CodeToTest() {
-      public void run() {
-        new FloatArrayAssert(array).doesNotSatisfy(null);
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_if_condition_is_satisfied() {
-    expectAssertionError("actual value:<[]> should not satisfy condition:<NotNull>").on(new CodeToTest() {
-      public void run() {
-        new FloatArrayAssert(array).doesNotSatisfy(notNullFloatArray());
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_condition_is_satisfied() {
-    expectAssertionError("[A Test] actual value:<[]> should not satisfy condition:<NotNull>").on(new CodeToTest() {
-      public void run() {
-        new FloatArrayAssert(array).as("A Test")
-                                   .doesNotSatisfy(notNullFloatArray());
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_and_display_description_of_condition_if_condition_is_satisfied() {
-    expectAssertionError("actual value:<[]> should not satisfy condition:<NotNull>").on(new CodeToTest() {
-      public void run() {
-        new FloatArrayAssert(array).doesNotSatisfy(notNullFloatArray().as("NotNull"));
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_and_display_descriptions_of_assertion_and_condition_if_condition_is_satisfied() {
-    expectAssertionError("[A Test] actual value:<[]> should not satisfy condition:<NotNull>").on(new CodeToTest() {
-      public void run() {
-        new FloatArrayAssert(array).as("A Test")
-                                   .doesNotSatisfy(notNullFloatArray().as("NotNull"));
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_if_condition_is_satisfied() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new FloatArrayAssert(array).overridingErrorMessage("My custom message")
-                                   .doesNotSatisfy(notNullFloatArray());
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_condition_is_satisfied() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new FloatArrayAssert(array).as("A Test")
-                                   .overridingErrorMessage("My custom message")
-                                   .doesNotSatisfy(notNullFloatArray());
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_condition_if_condition_is_satisfied() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new FloatArrayAssert(array).overridingErrorMessage("My custom message")
-                                   .doesNotSatisfy(notNullFloatArray().as("NotNull"));
-      }
-    });
+  protected FloatArrayAssert assertObjectWithNullTarget() {
+    return new FloatArrayAssert(null);
   }
 }

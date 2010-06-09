@@ -14,17 +14,9 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.CommonFailures.*;
-import static org.fest.assertions.Images.*;
-import static org.fest.assertions.NotNull.notNullImage;
-import static org.fest.test.ExpectedFailure.expectAssertionError;
-import static org.fest.util.Strings.concat;
+import static org.fest.assertions.Images.fivePixelBlueImage;
 
 import java.awt.image.BufferedImage;
-
-import org.fest.test.CodeToTest;
-import org.junit.BeforeClass;
-import org.junit.Test;
 
 /**
  * Tests for <code>{@link ImageAssert#doesNotSatisfy(Condition)}</code>.
@@ -32,99 +24,13 @@ import org.junit.Test;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class ImageAssert_doesNotSatisfy_Test implements GenericAssert_doesNotSatisfy_TestCase {
+public class ImageAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSatisfy_TestTemplate<BufferedImage> {
 
-  private static BufferedImage image;
-
-  @BeforeClass
-  public static void setUpOnce() {
-    image = fivePixelBlueImage();
+  protected ImageAssert assertObject() {
+    return new ImageAssert(fivePixelBlueImage());
   }
 
-  @Test
-  public void should_pass_if_condition_is_not_satisfied() {
-    new ImageAssert(null).doesNotSatisfy(notNullImage());
-  }
-
-  @Test
-  public void should_throw_error_if_condition_is_null() {
-    expectErrorIfConditionIsNull().on(new CodeToTest() {
-      public void run() {
-        new ImageAssert(image).doesNotSatisfy(null);
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_if_condition_is_satisfied() {
-    String message = concat("actual value:<", image, "> should not satisfy condition:<NotNull>");
-    expectAssertionError(message).on(new CodeToTest() {
-      public void run() {
-        new ImageAssert(image).doesNotSatisfy(notNullImage());
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_condition_is_satisfied() {
-    String message = concat("[A Test] actual value:<", image, "> should not satisfy condition:<NotNull>");
-    expectAssertionError(message).on(new CodeToTest() {
-      public void run() {
-        new ImageAssert(image).as("A Test")
-                              .doesNotSatisfy(notNullImage());
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_and_display_description_of_condition_if_condition_is_satisfied() {
-    String message = concat("actual value:<", image, "> should not satisfy condition:<Not Null>");
-    expectAssertionError(message).on(new CodeToTest() {
-      public void run() {
-        new ImageAssert(image).doesNotSatisfy(notNullImage().as("Not Null"));
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_and_display_descriptions_of_assertion_and_condition_if_condition_is_satisfied() {
-    String message = concat("[A Test] actual value:<", image, "> should not satisfy condition:<Not Null>");
-    expectAssertionError(message).on(new CodeToTest() {
-      public void run() {
-        new ImageAssert(image).as("A Test")
-                              .doesNotSatisfy(notNullImage().as("Not Null"));
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_if_condition_is_satisfied() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new ImageAssert(image).overridingErrorMessage("My custom message")
-                              .doesNotSatisfy(notNullImage());
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_condition_is_satisfied() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new ImageAssert(image).as("A Test")
-                              .overridingErrorMessage("My custom message")
-                              .doesNotSatisfy(notNullImage());
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_condition_if_condition_is_satisfied() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new ImageAssert(image).overridingErrorMessage("My custom message")
-                              .doesNotSatisfy(notNullImage().as("Not Null"));
-      }
-    });
+  protected ImageAssert assertObjectWithNullTarget() {
+    return new ImageAssert(null);
   }
 }

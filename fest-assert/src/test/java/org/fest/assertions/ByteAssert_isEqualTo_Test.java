@@ -35,7 +35,7 @@ public class ByteAssert_isEqualTo_Test implements Assert_isEqualTo_TestCase {
 
   @Test
   public void should_fail_if_actual_and_expected_are_not_equal() {
-    expectAssertionError("expected:<8> but was:<6>").on(new CodeToTest() {
+    expectAssertionError("expected:<[8]> but was:<[6]>").on(new CodeToTest() {
       public void run() {
         new ByteAssert(asByte(6)).isEqualTo(asByte(8));
       }
@@ -44,7 +44,7 @@ public class ByteAssert_isEqualTo_Test implements Assert_isEqualTo_TestCase {
 
   @Test
   public void should_fail_and_display_description_of_assertion_if_actual_and_expected_are_not_equal() {
-    expectAssertionError("[A Test] expected:<8> but was:<6>").on(new CodeToTest() {
+    expectAssertionError("[A Test] expected:<[8]> but was:<[6]>").on(new CodeToTest() {
       public void run() {
         new ByteAssert(asByte(6)).as("A Test")
                                  .isEqualTo(asByte(8));

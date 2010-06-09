@@ -18,7 +18,7 @@ package org.fest.assertions;
 import static org.fest.assertions.MapAssert.entry;
 import static org.fest.test.ExpectedFailure.expectAssertionError;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 import org.fest.test.CodeToTest;
@@ -37,7 +37,7 @@ public class FEST329_containsEntryFails_Test {
 
   @Before
   public void setUp() {
-    map = new HashMap<Integer, String>();
+    map = new LinkedHashMap<Integer, String>();
     map.put(1, "foo");
     map.put(2, "bar");
     mapAssert = new MapAssert(map);

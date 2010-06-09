@@ -25,7 +25,7 @@ import static org.fest.util.Strings.concat;
  * @author Yvonne Wang
  * @author David DIDIER
  */
-public class CharAssert extends PrimitiveAssert<Character> {
+public class CharAssert extends GenericAssert<Character> {
 
   /**
    * Creates a new <code>{@link CharAssert}</code>.

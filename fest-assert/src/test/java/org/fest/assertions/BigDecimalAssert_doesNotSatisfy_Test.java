@@ -15,12 +15,8 @@
 package org.fest.assertions;
 
 import static java.math.BigDecimal.ZERO;
-import static org.fest.assertions.CommonFailures.expectErrorIfConditionIsNull;
-import static org.fest.assertions.NotNull.notNullBigDecimal;
-import static org.fest.test.ExpectedFailure.expectAssertionError;
 
-import org.fest.test.CodeToTest;
-import org.junit.Test;
+import java.math.BigDecimal;
 
 /**
  * Tests for <code>{@link BigDecimalAssert#doesNotSatisfy(Condition)}</code>.
@@ -30,88 +26,13 @@ import org.junit.Test;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class BigDecimalAssert_doesNotSatisfy_Test implements GenericAssert_doesNotSatisfy_TestCase {
+public class BigDecimalAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSatisfy_TestTemplate<BigDecimal> {
 
-  @Test
-  public void should_pass_if_condition_is_not_satisfied() {
-    new BigDecimalAssert(null).doesNotSatisfy(notNullBigDecimal());
+  protected BigDecimalAssert assertObject() {
+    return new BigDecimalAssert(ZERO);
   }
 
-  @Test
-  public void should_throw_error_if_condition_is_null() {
-    expectErrorIfConditionIsNull().on(new CodeToTest() {
-      public void run() {
-        new BigDecimalAssert(ZERO).doesNotSatisfy(null);
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_if_condition_is_satisfied() {
-    expectAssertionError("actual value:<0> should not satisfy condition:<NotNull>").on(new CodeToTest() {
-      public void run() {
-        new BigDecimalAssert(ZERO).doesNotSatisfy(notNullBigDecimal());
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_condition_is_satisfied() {
-    expectAssertionError("[A Test] actual value:<0> should not satisfy condition:<NotNull>").on(new CodeToTest() {
-      public void run() {
-        new BigDecimalAssert(ZERO).as("A Test")
-                                  .doesNotSatisfy(notNullBigDecimal());
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_and_display_description_of_condition_if_condition_is_satisfied() {
-    expectAssertionError("actual value:<0> should not satisfy condition:<Not Null>").on(new CodeToTest() {
-      public void run() {
-        new BigDecimalAssert(ZERO).doesNotSatisfy(notNullBigDecimal().as("Not Null"));
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_and_display_descriptions_of_assertion_and_condition_if_condition_is_satisfied() {
-    expectAssertionError("[A Test] actual value:<0> should not satisfy condition:<Not Null>").on(new CodeToTest() {
-      public void run() {
-        new BigDecimalAssert(ZERO).as("A Test")
-                                  .doesNotSatisfy(notNullBigDecimal().as("Not Null"));
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_if_condition_is_satisfied() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new BigDecimalAssert(ZERO).overridingErrorMessage("My custom message")
-                                  .doesNotSatisfy(notNullBigDecimal());
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_condition_is_satisfied() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new BigDecimalAssert(ZERO).as("A Test")
-                                  .overridingErrorMessage("My custom message")
-                                  .doesNotSatisfy(notNullBigDecimal());
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_condition_if_condition_is_satisfied() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new BigDecimalAssert(ZERO).overridingErrorMessage("My custom message")
-                                  .doesNotSatisfy(notNullBigDecimal().as("Not Null"));
-      }
-    });
+  protected BigDecimalAssert assertObjectWithNullTarget() {
+    return new BigDecimalAssert(null);
   }
 }

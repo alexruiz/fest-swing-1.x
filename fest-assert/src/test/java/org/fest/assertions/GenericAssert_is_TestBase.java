@@ -38,7 +38,7 @@ public abstract class GenericAssert_is_TestBase<VALUE_TYPE> implements GenericAs
   protected abstract GenericAssert<VALUE_TYPE> assertionFor(VALUE_TYPE actual);
 
   protected NotNull<VALUE_TYPE> notNull() {
-    return NotNull.instance();
+    return NotNull.notNull();
   }
 
   @Test

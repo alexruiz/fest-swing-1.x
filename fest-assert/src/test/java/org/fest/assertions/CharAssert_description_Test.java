@@ -27,9 +27,9 @@ package org.fest.assertions;
  * @author David DIDIER
  * @author Alex Ruiz
  */
-public class CharAssert_description_Test extends PrimitiveAssert_description_TestCase {
+public class CharAssert_description_Test extends GenericAssert_description_TestCase<Character> {
 
-  protected PrimitiveAssert assertionToTest() {
+  protected CharAssert assertionToTest() {
     return new CharAssert('a');
   }
 }

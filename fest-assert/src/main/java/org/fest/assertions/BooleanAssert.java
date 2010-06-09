@@ -44,72 +44,24 @@ public class BooleanAssert extends GenericAssert<Boolean> {
     super(actual);
   }
 
-  /**
-   * Sets the description of the actual value, to be used in as message of any <code>{@link AssertionError}</code>
-   * thrown when an assertion fails. This method should be called before any assertion method, otherwise any assertion
-   * failure will not show the provided description.
-   * <p>
-   * For example:
-   * <pre>
-   * assertThat(value).<strong>as</strong>(&quot;Some value&quot;).isEqualTo(otherValue);
-   * </pre>
-   * </p>
-   * @param description the description of the actual value.
-   * @return this assertion object.
-   */
+  /** {@inheritDoc} */
   public BooleanAssert as(String description) {
     description(description);
     return this;
   }
 
-  /**
-   * Alias for <code>{@link #as(String)}</code>, since "as" is a keyword in
-   * <a href="http://groovy.codehaus.org/" target="_blank">Groovy</a>. This method should be called before any assertion
-   * method, otherwise any assertion failure will not show the provided description.
-   * <p>
-   * For example:
-   * <pre>
-   * assertThat(value).<strong>describedAs</strong>(&quot;Some value&quot;).isEqualTo(otherValue);
-   * </pre>
-   * </p>
-   * @param description the description of the actual value.
-   * @return this assertion object.
-   */
+  /** {@inheritDoc} */
   public BooleanAssert describedAs(String description) {
     return as(description);
   }
 
-  /**
-   * Sets the description of the actual value, to be used in as message of any <code>{@link AssertionError}</code>
-   * thrown when an assertion fails. This method should be called before any assertion method, otherwise any assertion
-   * failure will not show the provided description.
-   * <p>
-   * For example:
-   * <pre>
-   * assertThat(value).<strong>as</strong>(new BasicDescription(&quot;Some value&quot;)).isEqualTo(otherValue);
-   * </pre>
-   * </p>
-   * @param description the description of the actual value.
-   * @return this assertion object.
-   */
+  /** {@inheritDoc} */
   public BooleanAssert as(Description description) {
     description(description);
     return this;
   }
 
-  /**
-   * Alias for <code>{@link #as(Description)}</code>, since "as" is a keyword in
-   * <a href="http://groovy.codehaus.org/" target="_blank">Groovy</a>. This method should be called before any assertion
-   * method, otherwise any assertion failure will not show the provided description.
-   * <p>
-   * For example:
-   * <pre>
-   * assertThat(value).<strong>describedAs</strong>(new BasicDescription(&quot;Some value&quot;)).isEqualTo(otherValue);
-   * </pre>
-   * </p>
-   * @param description the description of the actual value.
-   * @return this assertion object.
-   */
+  /** {@inheritDoc} */
   public BooleanAssert describedAs(Description description) {
     return as(description);
   }
@@ -253,7 +205,7 @@ public class BooleanAssert extends GenericAssert<Boolean> {
 
   /**
    * Verifies that the actual {@code Boolean} is not the same object as the given one.
-   * @param other the given {@code Boolean} to compare the actual <code>BigDecimal</code> to.
+   * @param other the given {@code Boolean} to compare the actual {@code Boolean} to.
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Boolean} value is the same as the given one.
    * @since 1.3

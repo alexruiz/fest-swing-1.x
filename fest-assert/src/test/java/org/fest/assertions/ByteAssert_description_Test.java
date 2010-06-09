@@ -27,10 +27,11 @@ import static org.fest.assertions.Primitives.asByte;
  *
  * @author Yvonne Wang
  * @author David DIDIER
+ * @author Alex Ruiz
  */
-public class ByteAssert_description_Test extends PrimitiveAssert_description_TestCase {
+public class ByteAssert_description_Test extends GenericAssert_description_TestCase<Byte> {
 
-  protected PrimitiveAssert assertionToTest() {
+  protected ByteAssert assertionToTest() {
     return new ByteAssert(asByte(8));
   }
 }

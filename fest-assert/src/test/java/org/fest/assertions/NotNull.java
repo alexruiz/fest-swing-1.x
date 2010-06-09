@@ -27,8 +27,7 @@ import java.util.*;
  */
 class NotNull<T> extends Condition<T> {
 
-  // TODO REMOVE
-  static <T> NotNull<T> instance() {
+  static <T> NotNull<T> notNull() {
     return new NotNull<T>();
   }
 

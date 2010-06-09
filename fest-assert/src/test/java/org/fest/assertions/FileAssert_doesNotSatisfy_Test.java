@@ -14,11 +14,9 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.CommonFailures.*;
-import static org.fest.assertions.NotNull.notNullFile;
-import static org.fest.test.ExpectedFailure.expectAssertionError;
-import org.fest.test.CodeToTest;
-import org.junit.Test;
+import static org.fest.assertions.FileStubs.fileStub;
+
+import java.io.File;
 
 /**
  * Tests for <code>{@link FileAssert#doesNotSatisfy(Condition)}</code>.
@@ -27,91 +25,13 @@ import org.junit.Test;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class FileAssert_doesNotSatisfy_Test extends FileAssert_TestCase
-    implements GenericAssert_doesNotSatisfy_TestCase {
+public class FileAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSatisfy_TestTemplate<File> {
 
-  @Test
-  public void should_pass_if_condition_is_not_satisfied() {
-    new FileAssert(null).doesNotSatisfy(notNullFile());
+  protected FileAssert assertObject() {
+    return new FileAssert(fileStub());
   }
 
-  @Test
-  public void should_throw_error_if_condition_is_null() {
-    expectErrorIfConditionIsNull().on(new CodeToTest() {
-      public void run() {
-        new FileAssert(file).doesNotSatisfy(null);
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_if_condition_is_satisfied() {
-    expectAssertionError("actual value:<c:\\f.txt> should not satisfy condition:<NotNull>").on(new CodeToTest() {
-      public void run() {
-        new FileAssert(file).doesNotSatisfy(notNullFile());
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_condition_is_satisfied() {
-    String message = "[A Test] actual value:<c:\\f.txt> should not satisfy condition:<NotNull>";
-    expectAssertionError(message).on(new CodeToTest() {
-      public void run() {
-        new FileAssert(file).as("A Test")
-                            .doesNotSatisfy(notNullFile());
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_and_display_description_of_condition_if_condition_is_satisfied() {
-    expectAssertionError("actual value:<c:\\f.txt> should not satisfy condition:<Not Null>").on(new CodeToTest() {
-      public void run() {
-        new FileAssert(file).doesNotSatisfy(notNullFile().as("Not Null"));
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_and_display_descriptions_of_assertion_and_condition_if_condition_is_satisfied() {
-    expectAssertionError("[A Test] actual value:<c:\\f.txt> should not satisfy condition:<Not Null>").on(
-      new CodeToTest() {
-        public void run() {
-          new FileAssert(file).as("A Test")
-                              .doesNotSatisfy(notNullFile().as("Not Null"));
-        }
-      });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_if_condition_is_satisfied() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new FileAssert(file).overridingErrorMessage("My custom message")
-                            .doesNotSatisfy(notNullFile());
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_condition_is_satisfied() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new FileAssert(file).as("A Test")
-                            .overridingErrorMessage("My custom message")
-                            .doesNotSatisfy(notNullFile());
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_condition_if_condition_is_satisfied() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new FileAssert(file).overridingErrorMessage("My custom message")
-                            .doesNotSatisfy(notNullFile().as("Not Null"));
-      }
-    });
+  protected FileAssert assertObjectWithNullTarget() {
+    return new FileAssert(null);
   }
 }

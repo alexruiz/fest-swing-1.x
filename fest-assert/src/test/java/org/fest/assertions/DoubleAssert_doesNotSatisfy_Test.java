@@ -1,5 +1,5 @@
 /*
- * Created on 2010-4-19
+ * Created on Apr 19, 2010
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -11,31 +11,24 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2007-2010 the original author or authors.
+ * Copyright @2010 the original author or authors.
  */
 
 package org.fest.assertions;
 
 /**
- * Test ensuring that {@link org.fest.assertions.DoubleAssert} obeys the {@link org.fest.assertions.GenericAssert#doesNotSatisfy(Condition)}
- * contract for {@link Double}.
+ * Tests for <code>{@link DoubleAssert#doesNotSatisfy(Condition)}</code>
  *
  * @author Ansgar Konermann
+ * @author Alex Ruiz
  */
-public class DoubleAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSatisfy_TestBase<Double> {
+public class DoubleAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSatisfy_TestTemplate<Double> {
 
-  @Override
-  protected String zeroAsString() {
-    return "0.0";
+  protected DoubleAssert assertObject() {
+    return new DoubleAssert(0d);
   }
 
-  @Override
-  protected Double zero() {
-    return 0.0d;
-  }
-
-  @Override
-  protected DoubleAssert assertionFor(Double actual) {
-    return new DoubleAssert(actual);
+  protected DoubleAssert assertObjectWithNullTarget() {
+    return new DoubleAssert(null);
   }
 }
