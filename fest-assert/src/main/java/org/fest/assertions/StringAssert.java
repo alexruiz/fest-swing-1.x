@@ -160,6 +160,7 @@ public class StringAssert extends GroupAssert<String> {
    * Verifies that the actual {@code String} is equal to the given one ignoring case.
    * @param expected the given {@code String} to compare the actual {@code String} to.
    * @return this assertion object.
+   * @throws AssertionError if the actual {@code String} is <code>null</code>.
    * @throws AssertionError if the actual {@code String} is not equal to the given one ignoring case.
    */
   public StringAssert isEqualToIgnoringCase(String expected) {
@@ -296,6 +297,7 @@ public class StringAssert extends GroupAssert<String> {
    * Verifies that the actual {@code String} matches the given one.
    * @param regex the given regular expression expected to be matched by the actual one.
    * @return this assertion object.
+   * @throws AssertionError if the actual {@code String} is <code>null</code>.
    * @throws AssertionError if the actual {@code String} does not match the given regular expression.
    */
   public StringAssert matches(String regex) {
@@ -309,6 +311,7 @@ public class StringAssert extends GroupAssert<String> {
    * Verifies that the actual {@code String} does not match the given one.
    * @param regex the given regular expression expected not to be matched by the actual one.
    * @return this assertion object.
+   * @throws AssertionError if the actual {@code String} is <code>null</code>.
    * @throws AssertionError if the actual {@code String} matches the given regular expression.
    */
   public StringAssert doesNotMatch(String regex) {
@@ -332,12 +335,13 @@ public class StringAssert extends GroupAssert<String> {
    * Verifies that the actual {@code String} contains the given text regardless of the case.
    * @param text the given text.
    * @return this assertion object.
+   * @throws AssertionError if the actual {@code String} is <code>null</code>.
    * @throws AssertionError if the actual {@code String} does not contain the given text.
    * @throws NullPointerException if the given {@code String} is <code>null</code>.
    * @since 1.3
    */
   public StringAssert containsIgnoringCase(String text) {
-    if (text == null) throw new NullPointerException("The given String should not be null");
+    validateNotNull(text);
     isNotNull();
     if (actual.toLowerCase().contains(text.toLowerCase())) return this;
     throw failure(concat(actual(), " does not contain ", inBrackets(text)));
@@ -347,12 +351,20 @@ public class StringAssert extends GroupAssert<String> {
    * Verifies that the actual {@code String} does not contain the given text.
    * @param text the given text.
    * @return this assertion object.
+   * @throws AssertionError if the actual {@code String} is <code>null</code>.
    * @throws AssertionError if the actual {@code String} contains the given text.
+   * @throws NullPointerException if the given {@code String} is <code>null</code>.
    * @since 1.3
    */
   public StringAssert doesNotContain(String text) {
+    validateNotNull(text);
     isNotNull();
     if (!actual.contains(text)) return this;
+    failIfCustomMessageIsSet();
     throw failure(concat(actual(), " should not contain ", inBrackets(text)));
+  }
+
+  private static void validateNotNull(String text) {
+    if (text == null) throw new NullPointerException("The given String should not be null");
   }
 }
