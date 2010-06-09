@@ -22,7 +22,7 @@ package org.fest.assertions;
  * @author Ansgar Konermann
  * @author Alex Ruiz
  */
-public class DoubleAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSatisfy_TestTemplate<Double> {
+public class DoubleAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSatisfy_TestCase<Double> {
 
   protected DoubleAssert assertObject() {
     return new DoubleAssert(0d);

@@ -22,7 +22,7 @@ import static org.fest.assertions.EmptyArrays.emptyDoubleArray;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class DoubleArrayAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSatisfy_TestTemplate<double[]> {
+public class DoubleArrayAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSatisfy_TestCase<double[]> {
 
   protected DoubleArrayAssert assertObject() {
     return new DoubleArrayAssert(emptyDoubleArray());

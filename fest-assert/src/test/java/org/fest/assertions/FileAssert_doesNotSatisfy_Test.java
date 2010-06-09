@@ -25,7 +25,7 @@ import java.io.File;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class FileAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSatisfy_TestTemplate<File> {
+public class FileAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSatisfy_TestCase<File> {
 
   protected FileAssert assertObject() {
     return new FileAssert(fileStub());

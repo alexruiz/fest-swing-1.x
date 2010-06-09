@@ -20,7 +20,7 @@ package org.fest.assertions;
  * @author David DIDIER
  * @author Alex Ruiz
  */
-public class ThrowableAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSatisfy_TestTemplate<Throwable> {
+public class ThrowableAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSatisfy_TestCase<Throwable> {
 
   protected ThrowableAssert assertObject() {
     return new ThrowableAssert(new Exception());

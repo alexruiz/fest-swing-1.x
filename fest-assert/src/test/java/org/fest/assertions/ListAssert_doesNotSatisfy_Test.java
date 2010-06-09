@@ -24,7 +24,7 @@ import java.util.List;
  *
  * @author Alex Ruiz
  */
-public class ListAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSatisfy_TestTemplate<List<?>> {
+public class ListAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSatisfy_TestCase<List<?>> {
 
   protected ListAssert assertObject() {
     return new ListAssert(emptyList());

@@ -21,7 +21,7 @@ package org.fest.assertions;
  * @author Ansgar Konermann
  * @author Alex Ruiz
  */
-public class ByteAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSatisfy_TestTemplate<Byte> {
+public class ByteAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSatisfy_TestCase<Byte> {
 
   protected ByteAssert assertObject() {
     return new ByteAssert((byte)0);

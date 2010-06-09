@@ -36,7 +36,7 @@ import org.junit.Test;
  * @author Ansgar Konermann
  * @author Alex Ruiz
  */
-public abstract class GenericAssert_doesNotSatisfy_TestTemplate<T> {
+public abstract class GenericAssert_doesNotSatisfy_TestCase<T> {
 
   private GenericAssert<T> assertObject;
   private T actual;

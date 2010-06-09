@@ -22,7 +22,7 @@ import static org.fest.assertions.EmptyArrays.emptyLongArray;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class LongArrayAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSatisfy_TestTemplate<long[]> {
+public class LongArrayAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSatisfy_TestCase<long[]> {
 
   protected LongArrayAssert assertObject() {
     return new LongArrayAssert(emptyLongArray());

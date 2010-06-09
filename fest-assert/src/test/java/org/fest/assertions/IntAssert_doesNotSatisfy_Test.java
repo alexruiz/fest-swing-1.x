@@ -21,7 +21,7 @@ package org.fest.assertions;
  * @author Ansgar Konermann
  * @author Alex Ruiz
  */
-public class IntAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSatisfy_TestTemplate<Integer> {
+public class IntAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSatisfy_TestCase<Integer> {
 
   protected IntAssert assertObject() {
     return new IntAssert(0);

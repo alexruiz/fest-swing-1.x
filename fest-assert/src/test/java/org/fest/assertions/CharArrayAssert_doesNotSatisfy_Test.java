@@ -22,7 +22,7 @@ import static org.fest.assertions.EmptyArrays.emptyCharArray;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class CharArrayAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSatisfy_TestTemplate<char[]> {
+public class CharArrayAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSatisfy_TestCase<char[]> {
 
   protected CharArrayAssert assertObject() {
     return new CharArrayAssert(emptyCharArray());

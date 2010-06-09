@@ -24,7 +24,7 @@ import java.awt.image.BufferedImage;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class ImageAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSatisfy_TestTemplate<BufferedImage> {
+public class ImageAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSatisfy_TestCase<BufferedImage> {
 
   protected ImageAssert assertObject() {
     return new ImageAssert(fivePixelBlueImage());

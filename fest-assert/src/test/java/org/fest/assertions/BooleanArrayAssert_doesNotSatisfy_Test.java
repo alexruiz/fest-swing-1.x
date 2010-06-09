@@ -22,7 +22,7 @@ import static org.fest.assertions.EmptyArrays.emptyBooleanArray;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class BooleanArrayAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSatisfy_TestTemplate<boolean[]> {
+public class BooleanArrayAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSatisfy_TestCase<boolean[]> {
 
   protected BooleanArrayAssert assertObject() {
     return new BooleanArrayAssert(emptyBooleanArray());

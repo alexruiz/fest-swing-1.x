@@ -21,7 +21,7 @@ package org.fest.assertions;
  * @author Ansgar Konermann
  * @author Alex Ruiz
  */
-public class ShortAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSatisfy_TestTemplate<Short> {
+public class ShortAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSatisfy_TestCase<Short> {
 
   protected ShortAssert assertObject() {
     return new ShortAssert((short)0);

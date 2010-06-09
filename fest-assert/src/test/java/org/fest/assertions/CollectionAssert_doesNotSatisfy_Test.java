@@ -26,7 +26,7 @@ import java.util.Collection;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class CollectionAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSatisfy_TestTemplate<Collection<?>> {
+public class CollectionAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSatisfy_TestCase<Collection<?>> {
 
   protected CollectionAssert assertObject() {
     return new CollectionAssert(emptyList());

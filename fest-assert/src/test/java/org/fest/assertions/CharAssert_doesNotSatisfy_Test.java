@@ -22,7 +22,7 @@ package org.fest.assertions;
  * @author Ansgar Konermann
  * @author Alex Ruiz
  */
-public class CharAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSatisfy_TestTemplate<Character> {
+public class CharAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSatisfy_TestCase<Character> {
 
   protected CharAssert assertObject() {
     return new CharAssert('a');

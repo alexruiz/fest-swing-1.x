@@ -22,7 +22,7 @@ import static org.fest.assertions.EmptyArrays.emptyIntArray;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class IntArrayAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSatisfy_TestTemplate<int[]> {
+public class IntArrayAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSatisfy_TestCase<int[]> {
 
   protected IntArrayAssert assertObject() {
     return new IntArrayAssert(emptyIntArray());

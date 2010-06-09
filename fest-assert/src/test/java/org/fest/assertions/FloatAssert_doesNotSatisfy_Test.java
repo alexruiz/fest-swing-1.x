@@ -21,7 +21,7 @@ package org.fest.assertions;
  * @author Ansgar Konermann
  * @author Alex Ruiz
  */
-public class FloatAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSatisfy_TestTemplate<Float> {
+public class FloatAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSatisfy_TestCase<Float> {
 
   protected FloatAssert assertObject() {
     return new FloatAssert(0f);

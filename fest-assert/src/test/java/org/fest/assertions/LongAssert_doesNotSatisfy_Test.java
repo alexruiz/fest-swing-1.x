@@ -21,7 +21,7 @@ package org.fest.assertions;
  * @author Ansgar Konermann
  * @author Alex Ruiz
  */
-public class LongAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSatisfy_TestTemplate<Long> {
+public class LongAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSatisfy_TestCase<Long> {
 
   protected LongAssert assertObject() {
     return new LongAssert(0l);

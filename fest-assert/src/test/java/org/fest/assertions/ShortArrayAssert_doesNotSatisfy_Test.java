@@ -22,7 +22,7 @@ import static org.fest.assertions.EmptyArrays.emptyShortArray;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class ShortArrayAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSatisfy_TestTemplate<short[]> {
+public class ShortArrayAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSatisfy_TestCase<short[]> {
 
   protected ShortArrayAssert assertObject() {
     return new ShortArrayAssert(emptyShortArray());

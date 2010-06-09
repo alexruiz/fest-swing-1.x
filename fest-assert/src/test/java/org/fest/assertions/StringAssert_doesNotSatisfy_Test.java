@@ -21,7 +21,7 @@ package org.fest.assertions;
  * @author David DIDIER
  * @author Alex Ruiz
  */
-public class StringAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSatisfy_TestTemplate<String> {
+public class StringAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSatisfy_TestCase<String> {
 
   protected StringAssert assertObject() {
     return new StringAssert("a");

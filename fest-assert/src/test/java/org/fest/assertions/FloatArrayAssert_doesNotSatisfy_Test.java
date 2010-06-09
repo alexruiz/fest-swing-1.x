@@ -22,7 +22,7 @@ import static org.fest.assertions.EmptyArrays.emptyFloatArray;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class FloatArrayAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSatisfy_TestTemplate<float[]> {
+public class FloatArrayAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSatisfy_TestCase<float[]> {
 
   protected FloatArrayAssert assertObject() {
     return new FloatArrayAssert(emptyFloatArray());

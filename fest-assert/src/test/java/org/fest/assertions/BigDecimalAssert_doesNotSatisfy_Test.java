@@ -26,7 +26,7 @@ import java.math.BigDecimal;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class BigDecimalAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSatisfy_TestTemplate<BigDecimal> {
+public class BigDecimalAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSatisfy_TestCase<BigDecimal> {
 
   protected BigDecimalAssert assertObject() {
     return new BigDecimalAssert(ZERO);

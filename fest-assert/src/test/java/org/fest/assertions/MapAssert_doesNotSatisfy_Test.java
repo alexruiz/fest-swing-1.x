@@ -26,7 +26,7 @@ import java.util.Map;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class MapAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSatisfy_TestTemplate<Map<?, ?>> {
+public class MapAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSatisfy_TestCase<Map<?, ?>> {
 
   protected MapAssert assertObject() {
     return new MapAssert(emptyMap());
