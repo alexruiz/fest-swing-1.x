@@ -344,6 +344,7 @@ public class StringAssert extends GroupAssert<String> {
     validateNotNull(text);
     isNotNull();
     if (actual.toLowerCase().contains(text.toLowerCase())) return this;
+    failIfCustomMessageIsSet();
     throw failure(concat(actual(), " does not contain ", inBrackets(text)));
   }
 

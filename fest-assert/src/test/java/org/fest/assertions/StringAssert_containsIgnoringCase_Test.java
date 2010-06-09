@@ -37,6 +37,27 @@ public class StringAssert_containsIgnoringCase_Test {
   }
 
   @Test
+  public void should_fail_with_custom_message_if_actual_does_not_contain_given_String() {
+    expectAssertionError("My custom message").on(new CodeToTest() {
+      public void run() {
+        new StringAssert("hello").overridingErrorMessage("My custom message")
+                                 .containsIgnoringCase("world");
+      }
+    });
+  }
+
+  @Test
+  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_does_not_contain_given_String() {
+    expectAssertionError("My custom message").on(new CodeToTest() {
+      public void run() {
+        new StringAssert("hello").as("A Test")
+                                 .overridingErrorMessage("My custom message")
+                                 .containsIgnoringCase("world");
+      }
+    });
+  }
+
+  @Test
   public void should_throw_error_if_given_String_is_null() {
     expect(NullPointerException.class).withMessage("The given String should not be null").on(new CodeToTest() {
       public void run() {
