@@ -209,7 +209,6 @@ public class CharAssert extends GenericAssert<Character> {
 
   /**
    * Alias for <code>{@link #doesNotSatisfy(Condition)}</code>.
-   *
    * @param condition the given condition.
    * @return this assertion object.
    * @throws NullPointerException if the given condition is <code>null</code>.
