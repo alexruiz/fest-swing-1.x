@@ -1,5 +1,5 @@
 /*
- * Created on 2010-4-24
+ * Created on Apr 24, 2010
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -11,37 +11,27 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2007-2010 the original author or authors.
+ * Copyright @2010 the original author or authors.
  */
-
 package org.fest.assertions;
 
 /**
- * Test ensuring that {@link CharAssert} obeys the {@link GenericAssert#isEqualTo(Object)} contract for {@link
- * Character}.
+ * Tests for <code>{@link ShortAssert#isEqualTo(Short)}</code>
  *
  * @author Ansgar Konermann
+ * @author Alex Ruiz
  */
+public class ShortAssert_isEqualTo_Short_Test extends GenericAssert_isEqualTo_TestBase<Short> {
 
-public class CharAssert_Generic_isEqualTo_Test extends GenericAssert_isEqualTo_TestBase<Character> {
-
-  protected Character eight() {
-    return '1';
+  protected ShortAssert assertObject() {
+    return new ShortAssert((short)8);
   }
 
-  protected Character nine() {
-    return '2';
+  protected ShortAssert assertObjectWithNullTarget() {
+    return new ShortAssert(null);
   }
 
-  protected String eightAsString() {
-    return "[1]";
-  }
-
-  protected String nineAsString() {
-    return "[2]";
-  }
-
-  protected CharAssert assertionFor(Character actual) {
-    return new CharAssert(actual);
+  protected Short expected() {
+    return (short)-17;
   }
 }

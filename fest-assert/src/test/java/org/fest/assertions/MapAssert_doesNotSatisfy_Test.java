@@ -15,7 +15,6 @@
 package org.fest.assertions;
 
 import static java.util.Collections.emptyMap;
-import static org.fest.util.Maps.format;
 
 import java.util.Map;
 
@@ -34,9 +33,5 @@ public class MapAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSatisfy_
 
   protected MapAssert assertObjectWithNullTarget() {
     return new MapAssert(null);
-  }
-
-  @Override protected String actualAsString() {
-    return format(actual());
   }
 }

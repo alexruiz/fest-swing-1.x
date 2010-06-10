@@ -1,5 +1,5 @@
 /*
- * Created on 2010-4-24
+ * Created on Apr 24, 2010
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -11,36 +11,27 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2007-2010 the original author or authors.
+ * Copyright @2010 the original author or authors.
  */
-
 package org.fest.assertions;
 
 /**
- * Test ensuring that {@link LongAssert} obeys the {@link GenericAssert#isEqualTo(Object)} contract for {@link Long}.
+ * Tests for <code>{@link LongAssert#isEqualTo(Long)}</code>
  *
  * @author Ansgar Konermann
+ * @author Alex Ruiz
  */
+public class LongAssert_isEqualTo_Long_Test extends GenericAssert_isEqualTo_TestBase<Long> {
 
-public class LongAssert_Generic_isEqualTo_Test extends GenericAssert_isEqualTo_TestBase<Long> {
-
-  protected Long eight() {
-    return 123l;
+  protected LongAssert assertObject() {
+    return new LongAssert(123l);
   }
 
-  protected Long nine() {
+  protected LongAssert assertObjectWithNullTarget() {
+    return new LongAssert(null);
+  }
+
+  protected Long expected() {
     return 456l;
-  }
-
-  protected String eightAsString() {
-    return "[123]";
-  }
-
-  protected String nineAsString() {
-    return "[456]";
-  }
-
-  protected LongAssert assertionFor(Long actual) {
-    return new LongAssert(actual);
   }
 }

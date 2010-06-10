@@ -1,5 +1,5 @@
 /*
- * Created on 2010-4-24
+ * Created on Apr 24, 2010
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -11,36 +11,27 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2007-2010 the original author or authors.
+ * Copyright @2010 the original author or authors.
  */
-
 package org.fest.assertions;
 
 /**
- * Test ensuring that {@link ByteAssert} obeys the {@link GenericAssert#isEqualTo(Object)} contract for {@link Byte}.
+ * Tests for <code>{@link IntAssert#isEqualTo(Integer)}</code>
  *
  * @author Ansgar Konermann
+ * @author Alex Ruiz
  */
+public class IntAssert_isEqualTo_Integer_Test extends GenericAssert_isEqualTo_TestBase<Integer> {
 
-public class ByteAssert_Generic_isEqualTo_Test extends GenericAssert_isEqualTo_TestBase<Byte> {
-
-  protected Byte eight() {
-    return (byte) 123;
+  protected IntAssert assertObject() {
+    return new IntAssert(8);
   }
 
-  protected Byte nine() {
-    return (byte) 99;
+  protected IntAssert assertObjectWithNullTarget() {
+    return new IntAssert(null);
   }
 
-  protected String eightAsString() {
-    return "[123]";
-  }
-
-  protected String nineAsString() {
-    return "[99]";
-  }
-
-  protected ByteAssert assertionFor(Byte actual) {
-    return new ByteAssert(actual);
+  protected Integer expected() {
+    return new Integer(9);
   }
 }

@@ -16,7 +16,6 @@
 package org.fest.assertions;
 
 import static java.util.Collections.emptyList;
-import static org.fest.util.Collections.format;
 
 import java.util.Collection;
 
@@ -34,9 +33,5 @@ public class CollectionAssert_doesNotSatisfy_Test extends GenericAssert_doesNotS
 
   protected CollectionAssert assertObjectWithNullTarget() {
     return new CollectionAssert(null);
-  }
-
-  @Override protected String actualAsString() {
-    return format(actual());
   }
 }

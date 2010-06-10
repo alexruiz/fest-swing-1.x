@@ -16,8 +16,7 @@
 package org.fest.assertions;
 
 import static org.fest.assertions.ComparisonFailureFactory.comparisonFailure;
-import static org.fest.assertions.ErrorMessages.unexpectedEqual;
-import static org.fest.assertions.ErrorMessages.unexpectedNotEqual;
+import static org.fest.assertions.ErrorMessages.*;
 import static org.fest.assertions.Formatting.*;
 import static org.fest.util.Arrays.array;
 import static org.fest.util.Objects.areEqual;
@@ -69,13 +68,21 @@ public final class Fail {
   protected static void failIfNotEqual(String customErrorMessage, Description descriptionOfActual, Object actual, Object expected) {
     if (areEqual(actual, expected)) return;
     failWithMessage(customErrorMessage);
-    failWhenNotEqual(descriptionOfActual, actual, expected);
+    throw comparisonFailed(descriptionOfActual, actual, expected);
   }
 
-  private static void failWhenNotEqual(Description description, Object actual, Object expected) {
+  /**
+   * Returns a <code>{@link AssertionError}</code> describing a comparison failure.
+   * @param description the description of the comparison.
+   * @param actual the actual value.
+   * @param expected the expected value.
+   * @return a {@code AssertionError} describing the comparison failure.
+   * @since 1.3
+   */
+  protected static AssertionError comparisonFailed(Description description, Object actual, Object expected) {
     AssertionError comparisonFailure = comparisonFailure(valueOf(description), expected, actual);
-    if (comparisonFailure != null) throw comparisonFailure;
-    fail(format(description, unexpectedNotEqual(actual, expected)));
+    if (comparisonFailure != null) return comparisonFailure;
+    return failure(format(description, unexpectedNotEqual(actual, expected)));
   }
 
   /**
