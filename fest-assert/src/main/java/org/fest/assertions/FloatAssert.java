@@ -14,7 +14,7 @@
  */
 package org.fest.assertions;
 
-import static java.lang.Float.compare;
+import static java.lang.Float.*;
 import static java.lang.Math.abs;
 import static org.fest.assertions.ErrorMessages.*;
 import static org.fest.assertions.Fail.comparisonFailed;
@@ -78,9 +78,7 @@ public class FloatAssert extends PrimitiveAssert<Float> implements NumberAssert 
    * @throws AssertionError if the actual {@code Float} is not equal to the given one.
    */
   public FloatAssert isEqualTo(float expected) {
-    if (compareTo(expected) == 0) return this;
-    failIfCustomMessageIsSet();
-    throw failure(unexpectedNotEqual(actual, expected));
+    return isEqualTo(valueOf(expected));
   }
 
   /**
@@ -102,13 +100,12 @@ public class FloatAssert extends PrimitiveAssert<Float> implements NumberAssert 
 
   /**
    * Verifies that the actual {@code Float} is equal to the given one, within a positive delta.
-   *
    * @param expected the value to compare the actual one to.
-   * @param delta    the given delta.
+   * @param delta the given delta.
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Float} is not equal to the given one.
    * @deprecated use method <code>{@link #isEqualTo(float, org.fest.assertions.Delta)}</code> instead. This method will
-   *             be removed in version 2.0.
+   * be removed in version 2.0.
    */
   @Deprecated
   public FloatAssert isEqualTo(float expected, Delta delta) {
@@ -116,10 +113,9 @@ public class FloatAssert extends PrimitiveAssert<Float> implements NumberAssert 
   }
 
   /**
-   * Verifies that the actual {@code Float} is equal to tdelta.valuene, within a positive delta.
-   *
+   * Verifies that the actual {@code Float} is equal to the given one, within a positive delta.
    * @param expected the value to compare the actual one to.
-   * @param delta    the given delta.
+   * @param delta the given delta.
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Float} is not equal to the given one.
    * @since 1.2
@@ -129,6 +125,26 @@ public class FloatAssert extends PrimitiveAssert<Float> implements NumberAssert 
   }
 
   private FloatAssert isEqualTo(float expected, float deltaValue) {
+    return isEqualTo(valueOf(expected), deltaValue);
+  }
+
+  /**
+   * Verifies that the actual {@code Float} is equal to the given one, within a positive delta.
+   * @param expected the value to compare the actual one to.
+   * @param delta the given delta.
+   * @return this assertion object.
+   * @throws AssertionError if the actual {@code Float} is not equal to the given one.
+   * @since 1.2
+   */
+  public FloatAssert isEqualTo(Float expected, org.fest.assertions.Delta delta) {
+    return isEqualTo(expected, delta.floatValue());
+  }
+
+  private FloatAssert isEqualTo(Float expected, float deltaValue) {
+    if (actual == null || expected == null) {
+      assertEqualTo(expected);
+      return this;
+    }
     if (compareTo(expected) == 0) return this;
     if (abs(expected - actual) <= deltaValue) return this;
     failIfCustomMessageIsSet();
