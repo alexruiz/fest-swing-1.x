@@ -15,6 +15,7 @@
  */
 package org.fest.javafx.maven;
 
+import org.apache.maven.artifact.handler.ArtifactHandler;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.project.MavenProject;
@@ -135,6 +136,14 @@ public abstract class AbstractJavaFxcMojo extends AbstractMojo {
   @VisibleForTesting JavaFxcFactory javaFxcFactory = new JavaFxcFactory();
   @VisibleForTesting JavaFxcSetup javaFxcSetup = new JavaFxcSetup();
   @VisibleForTesting AntTaskExecutor javaFxcExecutor = new AntTaskExecutor();
+
+  protected boolean isJavaProject() {
+    if ( project == null ) {
+      return false;
+    }
+    ArtifactHandler artifactHandler = project.getArtifact().getArtifactHandler();
+    return "java".equals( artifactHandler.getLanguage() );
+  }
 
   void compile() throws MojoExecutionException {
     validator.validate(this);

@@ -14,14 +14,13 @@
  */
 package org.fest.javafx.maven;
 
-import static java.util.Collections.unmodifiableList;
+import org.apache.maven.plugin.MojoExecutionException;
+import org.fest.util.VisibleForTesting;
 
 import java.io.File;
 import java.util.List;
 
-import org.apache.maven.plugin.MojoExecutionException;
-
-import org.fest.util.VisibleForTesting;
+import static java.util.Collections.unmodifiableList;
 
 /**
  * Compiles JavaFX source code by delegating to JavaFX's own compiler Ant task.
@@ -67,6 +66,9 @@ public class JavaFxcMojo extends AbstractJavaFxcMojo {
    * not a directory.
    */
   public void execute() throws MojoExecutionException {
+    if (! isJavaProject() ) {
+      return;
+    }
     compile();
   }
 

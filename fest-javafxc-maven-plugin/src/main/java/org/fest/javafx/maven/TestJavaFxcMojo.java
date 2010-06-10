@@ -85,6 +85,10 @@ public class TestJavaFxcMojo extends AbstractJavaFxcMojo {
    * not a directory.
    */
   @Override public void execute() throws MojoExecutionException {
+    if (! isJavaProject() ) {
+      return;
+    }
+
     if (skip) {
       getLog().info("Not compiling test sources");
       return;

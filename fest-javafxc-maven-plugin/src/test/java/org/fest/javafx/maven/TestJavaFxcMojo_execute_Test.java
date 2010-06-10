@@ -15,13 +15,13 @@
  */
 package org.fest.javafx.maven;
 
-import java.lang.reflect.Method;
-
 import org.apache.maven.plugin.logging.Log;
+import org.fest.mocks.EasyMockTemplate;
 import org.junit.*;
 
-import org.fest.mocks.EasyMockTemplate;
+import java.lang.reflect.Method;
 
+import static org.easymock.EasyMock.expect;
 import static org.easymock.EasyMock.expectLastCall;
 import static org.easymock.classextension.EasyMock.createMock;
 
@@ -37,14 +37,30 @@ public class TestJavaFxcMojo_execute_Test {
   @Before
   public void setUp() throws Exception {
     Method compileMethod = AbstractJavaFxcMojo.class.getDeclaredMethod("compile");
-    mojo = createMock(TestJavaFxcMojo.class, compileMethod);
+    Method isJavaProjectMethod = AbstractJavaFxcMojo.class.getDeclaredMethod("isJavaProject");
+    mojo = createMock(TestJavaFxcMojo.class, compileMethod, isJavaProjectMethod);
   }
 
   @Test
   public void should_compile_sources() {
     new EasyMockTemplate(mojo) {
       @Override protected void expectations() throws Exception {
+        expect( mojo.isJavaProject() ).andReturn( true );
         mojo.compile();
+        expectLastCall();
+      }
+
+      @Override protected void codeToTest() throws Exception {
+        mojo.execute();
+      }
+    }.run();
+  }
+
+  @Test
+  public void should_not_compile_sources_on_non_java_project() {
+    new EasyMockTemplate(mojo) {
+      @Override protected void expectations() throws Exception {
+        expect( mojo.isJavaProject() ).andReturn( false );
         expectLastCall();
       }
 
@@ -60,6 +76,7 @@ public class TestJavaFxcMojo_execute_Test {
     mojo.skip = true;
     new EasyMockTemplate(mojo, log) {
       @Override protected void expectations() {
+        expect( mojo.isJavaProject() ).andReturn( true );
         log.info("Not compiling test sources");
         expectLastCall();
       }

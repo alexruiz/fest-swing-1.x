@@ -15,12 +15,12 @@
  */
 package org.fest.javafx.maven;
 
-import java.lang.reflect.Method;
-
+import org.fest.mocks.EasyMockTemplate;
 import org.junit.*;
 
-import org.fest.mocks.EasyMockTemplate;
+import java.lang.reflect.Method;
 
+import static org.easymock.EasyMock.expect;
 import static org.easymock.EasyMock.expectLastCall;
 import static org.easymock.classextension.EasyMock.createMock;
 
@@ -36,13 +36,15 @@ public class JavaFxcMojo_execute_Test {
   @Before
   public void setUp() throws Exception {
     Method compileMethod = AbstractJavaFxcMojo.class.getDeclaredMethod("compile");
-    mojo = createMock(JavaFxcMojo.class, compileMethod);
+    Method isJavaProjectMethod = AbstractJavaFxcMojo.class.getDeclaredMethod("isJavaProject");
+    mojo = createMock( JavaFxcMojo.class, compileMethod, isJavaProjectMethod );
   }
 
   @Test
   public void should_compile_sources() {
     new EasyMockTemplate(mojo) {
       @Override protected void expectations() throws Exception {
+        expect( mojo.isJavaProject() ).andReturn( true );
         mojo.compile();
         expectLastCall();
       }
