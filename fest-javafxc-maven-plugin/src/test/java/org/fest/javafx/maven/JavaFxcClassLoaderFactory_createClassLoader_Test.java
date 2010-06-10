@@ -15,20 +15,19 @@
  */
 package org.fest.javafx.maven;
 
-import static java.lang.Thread.currentThread;
-import static org.fest.assertions.Assertions.assertThat;
-import static org.fest.util.Files.newTemporaryFile;
-import static org.fest.util.Files.temporaryFolder;
-import static org.fest.util.Strings.concat;
+import org.apache.tools.ant.Project;
+import org.apache.tools.ant.types.FileSet;
+import org.apache.tools.ant.types.Path;
+import org.fest.util.Files;
+import org.junit.*;
 
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URLClassLoader;
 
-import org.apache.tools.ant.Project;
-import org.apache.tools.ant.types.FileSet;
-import org.apache.tools.ant.types.Path;
-import org.junit.*;
+import static java.lang.Thread.currentThread;
+import static org.fest.assertions.Assertions.assertThat;
+import static org.fest.util.Strings.concat;
 
 /**
  * Tests for <code>{@link JavaFxcClassLoaderFactory#createClassLoader(org.apache.tools.ant.types.Path)}</code>.
@@ -39,17 +38,26 @@ import org.junit.*;
 public class JavaFxcClassLoaderFactory_createClassLoader_Test {
 
   private JavaFxcClassLoaderFactory classLoaderFactory;
+  private File tempFileDir;
   private File tempFile;
 
   @Before
   public void setUp() {
     classLoaderFactory = new JavaFxcClassLoaderFactory();
-    tempFile = newTemporaryFile();
+    tempFileDir = Files.newTemporaryFolder();
+    tempFile = Files.newFile( concat( tempFileDir.getPath() + File.separator, System.currentTimeMillis() + ".txt" ) );
   }
 
   @After
   public void tearDown() {
     tempFile.delete();
+    Files.delete( tempFileDir );
+  }
+
+  @Test
+  public void testSetup() {
+    assertThat( tempFileDir.exists() ).isTrue();
+    assertThat( tempFile.getParentFile() ).isEqualTo( tempFileDir );
   }
 
   @Test
@@ -63,7 +71,7 @@ public class JavaFxcClassLoaderFactory_createClassLoader_Test {
 
   Path path() {
     FileSet files = new FileSet();
-    files.setDir(temporaryFolder());
+    files.setDir(tempFileDir );
     files.createInclude().setName(concat("**/", tempFile.getName()));
     Path path = new Path(new Project());
     path.addFileset(files);
