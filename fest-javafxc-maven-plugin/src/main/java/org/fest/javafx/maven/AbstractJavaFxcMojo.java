@@ -118,6 +118,12 @@ public abstract class AbstractJavaFxcMojo extends AbstractMojo {
   @VisibleForTesting boolean verbose;
 
   /**
+   * Set to <code>true</code> to show compiler warnings related to unchecked operations ("-Xlint:unchecked").
+   * @parameter expression="${javafx.compiler.unchecked}" default-value="true"
+   */
+  @VisibleForTesting boolean unchecked;
+
+  /**
    * The location of the JavaFX home directory. If a value is not set, this goal will try to obtained from the
    * environment variable "JAVAFX_HOME".
    * @parameter expression="${javafx.home}"

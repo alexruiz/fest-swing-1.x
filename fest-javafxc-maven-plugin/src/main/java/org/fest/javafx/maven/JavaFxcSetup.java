@@ -49,8 +49,9 @@ class JavaFxcSetup {
     javaFxc.setSource(javaFxcMojo.source);
     javaFxc.setTarget(javaFxcMojo.target);
     javaFxc.setVerbose(javaFxcMojo.verbose);
-
-    javaFxc.createCompilerArg().setLine( "-Xlint:unchecked" );
+    if ( javaFxcMojo.unchecked ) {
+      javaFxc.createCompilerArg().setLine( "-Xlint:unchecked" );
+    }
   }
 
   private void configureProject(Javac javaFxc, AbstractJavaFxcMojo javaFxcMojo) {
