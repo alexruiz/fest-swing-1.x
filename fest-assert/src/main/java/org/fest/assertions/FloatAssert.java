@@ -145,7 +145,7 @@ public class FloatAssert extends PrimitiveAssert<Float> implements NumberAssert 
       assertEqualTo(expected);
       return this;
     }
-    if (compareTo(expected) == 0) return this;
+    if (actual.compareTo(expected) == 0) return this;
     if (abs(expected - actual) <= deltaValue) return this;
     failIfCustomMessageIsSet();
     throw failure(concat(unexpectedNotEqual(actual, expected), " using delta:", inBrackets(deltaValue)));
