@@ -15,15 +15,16 @@
  */
 package org.fest.javafx.maven;
 
+import org.apache.maven.plugin.MojoExecutionException;
+import org.apache.tools.ant.taskdefs.Javac;
+import org.apache.tools.ant.types.Path;
+import org.fest.reflect.core.Reflection;
+import org.fest.util.Files;
+import org.junit.*;
+
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.javafx.maven.CommonAssertions.failWhenExpectingMojoExecutionException;
 import static org.fest.javafx.maven.JavaFxHomeDirectory.createJavaFxHomeDirectory;
-
-import org.apache.maven.plugin.MojoExecutionException;
-import org.apache.tools.ant.taskdefs.Javac;
-import org.fest.util.Files;
-import org.junit.Before;
-import org.junit.Test;
 
 /**
  * Tests for <code>{@link JavaFxcFactory#createJavaFxc(java.io.File)}</code>.
@@ -41,16 +42,30 @@ public class JavaFxcFactory_createJavaFxc_Test {
 
   @Test
   public void should_create_JavaFxc() throws MojoExecutionException {
-    Javac javaFxc = javaFxcFactory.createJavaFxc(createJavaFxHomeDirectory());
+    Javac javaFxc = javaFxcFactory.createJavaFxc(createJavaFxHomeDirectory(), true);
     assertThat(javaFxc).isNotNull();
     assertThat(javaFxc.getClass().getName()).isEqualTo("com.sun.tools.javafx.ant.JavaFxAntTask");
     assertThat(javaFxc.getProject()).isNotNull();
+
+    Path compilerClassPath = Reflection.field( "compilerClassPath" ).ofType( Path.class ).in( javaFxc ).get();
+    assertThat( compilerClassPath ).isNotNull();
+    assertThat(compilerClassPath.iterator().hasNext()).isTrue();
+    assertThat( compilerClassPath.iterator().next() ).toString().endsWith( "javafxc.jar" );
+  }
+
+  @Test
+  public void should_create_JavaFxc_no_cp() throws MojoExecutionException {
+    try {
+      javaFxcFactory.createJavaFxc(createJavaFxHomeDirectory(), false);
+    } catch ( MojoExecutionException e ) {
+      assertThat( e.getMessage() ).isEqualTo( "Unable to load JavaFX compiler Ant task. Please make sure javafxc.jar is in the classpath" );
+    }
   }
 
   @Test
   public void should_throw_error_if_JavaFX_compiler_Ant_task_cannot_be_instantiated() {
     try {
-      javaFxcFactory.createJavaFxc(Files.temporaryFolder());
+      javaFxcFactory.createJavaFxc(Files.temporaryFolder(), true);
       failWhenExpectingMojoExecutionException();
     } catch (MojoExecutionException e) {
       assertThat(e.getMessage()).contains("Unable to load JavaFX compiler Ant task.");

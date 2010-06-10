@@ -137,6 +137,8 @@ public abstract class AbstractJavaFxcMojo extends AbstractMojo {
   @VisibleForTesting JavaFxcSetup javaFxcSetup = new JavaFxcSetup();
   @VisibleForTesting AntTaskExecutor javaFxcExecutor = new AntTaskExecutor();
 
+
+
   protected boolean isJavaProject() {
     if ( project == null ) {
       return false;
@@ -147,13 +149,18 @@ public abstract class AbstractJavaFxcMojo extends AbstractMojo {
 
   void compile() throws MojoExecutionException {
     validator.validate(this);
-    String verifiedJavaFxHome = javaFxHomeRef.verify(javaFxHome);
-    getLog().info(concat("JavaFX home is ", quote(verifiedJavaFxHome)));
+
+    File javaFXHomeDir=null;
+    //Todo if the classpath problem is solved, add that condition
+//    if ( automaticallyAddFxJars ) {
+      String verifiedJavaFxHome = javaFxHomeRef.verify(javaFxHome);
+      getLog().info(concat("JavaFX home is ", quote(verifiedJavaFxHome)));
+      javaFXHomeDir = javaFxHomeRef.reference(verifiedJavaFxHome);
+//    }
 
     deleteOverwrites();
 
-    File javaFXHomeDir = javaFxHomeRef.reference(verifiedJavaFxHome);
-    Javac javaFxc = javaFxcFactory.createJavaFxc(javaFXHomeDir);
+    Javac javaFxc = javaFxcFactory.createJavaFxc(javaFXHomeDir, automaticallyAddFxJars);
     javaFxcSetup.setUpJavaFxc(javaFxc, this, javaFXHomeDir, automaticallyAddFxJars );
     javaFxcExecutor.execute(javaFxc);
   }

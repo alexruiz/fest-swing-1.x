@@ -71,7 +71,7 @@ public class JavaFxcFactory_createJavaFxc_withMocks_Test {
         }
 
         @Override protected void codeToTest() throws MojoExecutionException {
-          javaFxcFactory.createJavaFxc(javaFxcHome);
+          javaFxcFactory.createJavaFxc(javaFxcHome, true);
         }
       }.run();
       failWhenExpectingUnexpectedError();
@@ -91,7 +91,7 @@ public class JavaFxcFactory_createJavaFxc_withMocks_Test {
         }
 
         @Override protected void codeToTest() throws MojoExecutionException {
-          javaFxcFactory.createJavaFxc(javaFxcHome);
+          javaFxcFactory.createJavaFxc(javaFxcHome, true);
         }
       }.run();
       failWhenExpectingUnexpectedError();
@@ -130,7 +130,7 @@ public class JavaFxcFactory_createJavaFxc_withMocks_Test {
         }
 
         @Override protected void codeToTest() throws MojoExecutionException {
-          javaFxcFactory.createJavaFxc(javaFxcHome);
+          javaFxcFactory.createJavaFxc(javaFxcHome, true);
         }
       }.run();
       failWhenExpectingUnexpectedError();

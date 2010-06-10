@@ -75,7 +75,7 @@ public class AbstractJavaFxcMojo_compile_Test {
         expectLastCall().once();
         expect(javaFxHome.verify(javaFxcMojo.javaFxHome)).andReturn(verifiedJavaFXHome);
         expect(javaFxHome.reference(verifiedJavaFXHome)).andReturn(javaFXHomeDir);
-        expect(javaFxcFactory.createJavaFxc(javaFXHomeDir)).andReturn(javaFxc);
+        expect(javaFxcFactory.createJavaFxc(javaFXHomeDir, true)).andReturn(javaFxc);
         javaFxcSetup.setUpJavaFxc(javaFxc, javaFxcMojo, javaFXHomeDir, true);
         expectLastCall().once();
         javaFxcExecutor.execute(javaFxc);
