@@ -93,7 +93,7 @@ public class FloatAssert extends GenericAssert<Float> implements NumberAssert {
       assertEqualTo(expected);
       return this;
     }
-    if (compareTo(expected) == 0) return this;
+    if (actual.compareTo(expected) == 0) return this;
     failIfCustomMessageIsSet();
     throw comparisonFailed(rawDescription(), actual, expected);
   }
@@ -134,7 +134,7 @@ public class FloatAssert extends GenericAssert<Float> implements NumberAssert {
    * @param delta the given delta.
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Float} is not equal to the given one.
-   * @since 1.2
+   * @since 1.3
    */
   public FloatAssert isEqualTo(Float expected, org.fest.assertions.Delta delta) {
     return isEqualTo(expected, delta.floatValue());
