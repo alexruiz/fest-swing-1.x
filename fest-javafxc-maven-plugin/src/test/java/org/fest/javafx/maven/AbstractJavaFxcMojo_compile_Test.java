@@ -15,18 +15,17 @@
  */
 package org.fest.javafx.maven;
 
+import org.apache.maven.plugin.MojoExecutionException;
+import org.apache.tools.ant.taskdefs.Javac;
+import org.fest.mocks.EasyMockTemplate;
+import org.junit.*;
+
+import java.io.File;
+
 import static org.easymock.EasyMock.expect;
 import static org.easymock.EasyMock.expectLastCall;
 import static org.easymock.classextension.EasyMock.createMock;
 import static org.fest.util.Files.temporaryFolder;
-
-import java.io.File;
-
-import org.apache.maven.plugin.MojoExecutionException;
-import org.apache.tools.ant.taskdefs.Javac;
-import org.fest.mocks.EasyMockTemplate;
-import org.junit.Before;
-import org.junit.Test;
 
 /**
  * Tests for <code>{@link AbstractJavaFxcMojo#compile()}</code>.
@@ -77,7 +76,7 @@ public class AbstractJavaFxcMojo_compile_Test {
         expect(javaFxHome.verify(javaFxcMojo.javaFxHome)).andReturn(verifiedJavaFXHome);
         expect(javaFxHome.reference(verifiedJavaFXHome)).andReturn(javaFXHomeDir);
         expect(javaFxcFactory.createJavaFxc(javaFXHomeDir)).andReturn(javaFxc);
-        javaFxcSetup.setUpJavaFxc(javaFxc, javaFxcMojo, javaFXHomeDir);
+        javaFxcSetup.setUpJavaFxc(javaFxc, javaFxcMojo, javaFXHomeDir, true);
         expectLastCall().once();
         javaFxcExecutor.execute(javaFxc);
         expectLastCall().once();

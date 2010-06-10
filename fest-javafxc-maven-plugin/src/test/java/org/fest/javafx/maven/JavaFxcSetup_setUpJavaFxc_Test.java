@@ -15,6 +15,17 @@
  */
 package org.fest.javafx.maven;
 
+import org.apache.maven.project.MavenProject;
+import org.apache.tools.ant.Project;
+import org.apache.tools.ant.taskdefs.Javac;
+import org.apache.tools.ant.types.Path;
+import org.apache.tools.ant.types.resources.FileResource;
+import org.fest.mocks.EasyMockTemplate;
+import org.junit.*;
+
+import java.io.File;
+import java.util.Iterator;
+
 import static java.util.UUID.randomUUID;
 import static org.easymock.EasyMock.expect;
 import static org.easymock.classextension.EasyMock.createMock;
@@ -22,18 +33,6 @@ import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.javafx.maven.JavaFxHomeDirectory.createJavaFxHomeDirectory;
 import static org.fest.util.Collections.list;
 import static org.fest.util.Files.temporaryFolder;
-
-import java.io.File;
-import java.util.*;
-
-import org.apache.maven.project.MavenProject;
-import org.apache.tools.ant.Project;
-import org.apache.tools.ant.taskdefs.Javac;
-import org.apache.tools.ant.types.Path;
-import org.apache.tools.ant.types.resources.FileResource;
-import org.fest.mocks.EasyMockTemplate;
-import org.junit.Before;
-import org.junit.Test;
 
 /**
  * Tests for <code>{@link JavaFxcSetup}</code>.
@@ -87,7 +86,7 @@ public class JavaFxcSetup_setUpJavaFxc_Test {
       }
 
       @Override protected void codeToTest() {
-        javaFxcSetup.setUpJavaFxc(javaFxc, javaFxcMojo, javaFxcHome);
+        javaFxcSetup.setUpJavaFxc(javaFxc, javaFxcMojo, javaFxcHome, true);
       }
     }.run();
     assertThat(javaFxc.getDebug()).isEqualTo(javaFxcMojo.debug);
@@ -112,10 +111,29 @@ public class JavaFxcSetup_setUpJavaFxc_Test {
       }
 
       @Override protected void codeToTest() {
-        javaFxcSetup.setUpJavaFxc(javaFxc, javaFxcMojo, javaFxcHome);
+        javaFxcSetup.setUpJavaFxc(javaFxc, javaFxcMojo, javaFxcHome, true);
       }
     }.run();
     assertThat(containsExtraClasspathElement(javaFxc.getClasspath())).isTrue();
+  }
+
+  @Test
+  public void should_include_classpath_elements_from_Mojo_no_cp_magic() {
+    javaFxcMojo.compileClasspathElements = list(extraClasspathElement);
+    new EasyMockTemplate(mavenProject) {
+      @Override protected void expectations() {
+        expect(mavenProject.getBasedir()).andReturn(basedir);
+      }
+
+      @Override protected void codeToTest() {
+        javaFxcSetup.setUpJavaFxc(javaFxc, javaFxcMojo, javaFxcHome, false);
+      }
+    }.run();
+    assertThat(containsExtraClasspathElement(javaFxc.getClasspath())).isTrue();
+
+    Iterator<FileResource> iter = javaFxc.getClasspath().iterator();
+    assertThat( iter.next().getName() ).isEqualTo( extraClasspathElement );
+    assertThat( iter.hasNext() ).isFalse();
   }
 
   @SuppressWarnings("unchecked")

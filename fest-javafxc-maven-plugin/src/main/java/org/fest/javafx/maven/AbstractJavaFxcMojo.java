@@ -15,17 +15,17 @@
  */
 package org.fest.javafx.maven;
 
-import static org.fest.util.Strings.concat;
-import static org.fest.util.Strings.quote;
-
-import java.io.File;
-import java.util.List;
-
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.project.MavenProject;
 import org.apache.tools.ant.taskdefs.Javac;
 import org.fest.util.VisibleForTesting;
+
+import java.io.File;
+import java.util.List;
+
+import static org.fest.util.Strings.concat;
+import static org.fest.util.Strings.quote;
 
 /**
  * Understands the base class for the JavaFX compiler Mojos.
@@ -85,6 +85,12 @@ public abstract class AbstractJavaFxcMojo extends AbstractMojo {
   @VisibleForTesting boolean optimize;
 
   /**
+   * If set to <code>true</code> the JavaFX jars are automatically added to the classpath for compilation
+   * @parameter expression="${javafx.compiler.automatically.add.fx.jars}" default-value="true"
+   */
+  @VisibleForTesting boolean automaticallyAddFxJars = true;
+
+  /**
    * The -source argument for the JavaFX compiler.
    * @parameter expression="${javafx.compiler.source}" default-value="1.6"
    */
@@ -121,7 +127,7 @@ public abstract class AbstractJavaFxcMojo extends AbstractMojo {
     getLog().info(concat("JavaFX home is ", quote(verifiedJavaFxHome)));
     File javaFXHomeDir = javaFxHomeRef.reference(verifiedJavaFxHome);
     Javac javaFxc = javaFxcFactory.createJavaFxc(javaFXHomeDir);
-    javaFxcSetup.setUpJavaFxc(javaFxc, this, javaFXHomeDir);
+    javaFxcSetup.setUpJavaFxc(javaFxc, this, javaFXHomeDir, automaticallyAddFxJars );
     javaFxcExecutor.execute(javaFxc);
   }
 

@@ -15,15 +15,15 @@
  */
 package org.fest.javafx.maven;
 
-import static org.fest.util.Collections.isEmpty;
-
-import java.io.File;
-import java.util.List;
-
 import org.apache.tools.ant.Project;
 import org.apache.tools.ant.taskdefs.Javac;
 import org.apache.tools.ant.types.FileSet;
 import org.apache.tools.ant.types.Path;
+
+import java.io.File;
+import java.util.List;
+
+import static org.fest.util.Collections.isEmpty;
 
 /**
  * Understands configuration of an instance of the JavaFX compiler Ant task.
@@ -34,10 +34,10 @@ class JavaFxcSetup {
 
   private static final String[] JAVAFX_DESKTOP_CLASSPATH_FILES = { "**/javafxrt.jar", "**/lib/desktop/*.jar" };
 
-  void setUpJavaFxc(Javac javaFxc, AbstractJavaFxcMojo javaFxcMojo, File javaFxcHome) {
+  void setUpJavaFxc(Javac javaFxc, AbstractJavaFxcMojo javaFxcMojo, File javaFxcHome, boolean automaticallyAddFxJars) {
     configureProject(javaFxc, javaFxcMojo);
     setSource(javaFxc, javaFxcMojo.sourceDirectory());
-    setClasspath(javaFxc, javaFxcMojo, javaFxcHome);
+    setClasspath(javaFxc, javaFxcMojo, javaFxcHome,automaticallyAddFxJars);
     javaFxc.setDebug(javaFxcMojo.debug);
     javaFxc.setDeprecation(javaFxcMojo.deprecation);
     javaFxc.setDestdir(javaFxcMojo.outputDirectory());
@@ -67,9 +67,11 @@ class JavaFxcSetup {
     path.createPathElement().setLocation(file);
   }
 
-  private void setClasspath(Javac javaFxc, AbstractJavaFxcMojo javaFxMojo, File javaFxcHome) {
+  private void setClasspath(Javac javaFxc, AbstractJavaFxcMojo javaFxMojo, File javaFxcHome,boolean automaticallyAddFxJars) {
     Path classpath = javaFxc.createClasspath();
-    classpath.addFileset(javaFxFiles(javaFxcHome));
+    if ( automaticallyAddFxJars ) {
+      classpath.addFileset(javaFxFiles(javaFxcHome));
+    }
     updatePathWithElements(classpath, javaFxMojo.classpathElements());
   }
 
