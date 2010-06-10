@@ -19,10 +19,13 @@ import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.project.MavenProject;
 import org.apache.tools.ant.taskdefs.Javac;
+import org.codehaus.plexus.util.DirectoryScanner;
 import org.fest.util.VisibleForTesting;
 
 import java.io.File;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import static org.fest.util.Strings.concat;
 import static org.fest.util.Strings.quote;
@@ -33,6 +36,12 @@ import static org.fest.util.Strings.quote;
  * @author Alex Ruiz
  */
 public abstract class AbstractJavaFxcMojo extends AbstractMojo {
+  /**
+   * A list of exclusion filters for the compiler.
+   *
+   * @parameter
+   */
+  private Set<String> overwrites = new HashSet<String>();
 
   /**
    * The current Maven project.
@@ -125,10 +134,29 @@ public abstract class AbstractJavaFxcMojo extends AbstractMojo {
     validator.validate(this);
     String verifiedJavaFxHome = javaFxHomeRef.verify(javaFxHome);
     getLog().info(concat("JavaFX home is ", quote(verifiedJavaFxHome)));
+
+    deleteOverwrites();
+
     File javaFXHomeDir = javaFxHomeRef.reference(verifiedJavaFxHome);
     Javac javaFxc = javaFxcFactory.createJavaFxc(javaFXHomeDir);
     javaFxcSetup.setUpJavaFxc(javaFxc, this, javaFXHomeDir, automaticallyAddFxJars );
     javaFxcExecutor.execute(javaFxc);
+  }
+
+  private void deleteOverwrites() throws MojoExecutionException {
+    DirectoryScanner scanner = new DirectoryScanner();
+    scanner.setBasedir( outputDirectory() );
+    scanner.setIncludes( overwrites.toArray( new String[overwrites.size()] ) );
+
+    scanner.scan();
+    for ( String overwrite : scanner.getIncludedFiles() ) {
+      getLog().info( "Overwriting: " + overwrite );
+      File targetFile = new File( outputDirectory(), overwrite );
+      if (! targetFile.exists() ) {
+        throw new MojoExecutionException( "Overwrite not found <" + targetFile.getAbsolutePath() + ">" );
+      }
+      targetFile.delete();
+    }
   }
 
   abstract List<String> classpathElements();
