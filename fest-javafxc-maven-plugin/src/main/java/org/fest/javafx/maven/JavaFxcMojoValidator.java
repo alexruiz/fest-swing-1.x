@@ -15,9 +15,9 @@
  */
 package org.fest.javafx.maven;
 
-import java.io.File;
-
 import org.apache.maven.plugin.MojoExecutionException;
+
+import java.io.File;
 
 /**
  * Understands validation of the state of a <code>{@link JavaFxcMojo}</code>.
@@ -33,13 +33,13 @@ class JavaFxcMojoValidator {
 
   private void validateSourceDirectory(AbstractJavaFxcMojo javaFxcMojo) throws MojoExecutionException {
     if (javaFxcMojo.sourceDirectory().isDirectory()) return;
-    throw new MojoExecutionException("Source directory is not an existing directory.");
+    throw new MojoExecutionException( "Source directory <" + javaFxcMojo.sourceDirectory().getAbsolutePath() + "> is not an existing directory." );
   }
 
   private void validateOutputDirectory(AbstractJavaFxcMojo javaFxcMojo) throws MojoExecutionException {
     File output = javaFxcMojo.outputDirectory();
     if (output.isDirectory()) return;
     boolean success = output.mkdirs();
-    if (!success) throw new MojoExecutionException("Unable to create output directory.");
+    if (!success) throw new MojoExecutionException( "Unable to create output directory <" + output.getAbsolutePath() + ">." );
   }
 }

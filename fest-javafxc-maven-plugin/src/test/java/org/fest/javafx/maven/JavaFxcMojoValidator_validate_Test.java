@@ -15,19 +15,18 @@
  */
 package org.fest.javafx.maven;
 
+import org.apache.maven.plugin.MojoExecutionException;
+import org.fest.mocks.EasyMockTemplate;
+import org.fest.mocks.UnexpectedError;
+import org.junit.*;
+
+import java.io.File;
+
 import static org.easymock.EasyMock.expect;
 import static org.easymock.classextension.EasyMock.createMock;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.javafx.maven.CommonAssertions.failWhenExpectingUnexpectedError;
 import static org.fest.util.Files.temporaryFolder;
-
-import java.io.File;
-
-import org.apache.maven.plugin.MojoExecutionException;
-import org.fest.mocks.EasyMockTemplate;
-import org.fest.mocks.UnexpectedError;
-import org.junit.Before;
-import org.junit.Test;
 
 /**
  * Tests for <code>{@link JavaFxcMojoValidator#validate(AbstractJavaFxcMojo)}</code>.
@@ -54,6 +53,7 @@ public class JavaFxcMojoValidator_validate_Test {
       new EasyMockTemplate(directory) {
         @Override protected void expectations() throws MojoExecutionException {
           expect(directory.isDirectory()).andReturn(false);
+          expect(directory.getAbsolutePath()).andReturn("/the/abs/path");
         }
 
         @Override protected void codeToTest() throws MojoExecutionException {
@@ -75,6 +75,7 @@ public class JavaFxcMojoValidator_validate_Test {
         @Override protected void expectations() throws MojoExecutionException {
           expect(directory.isDirectory()).andReturn(false);
           expect(directory.mkdirs()).andReturn(false);
+          expect(directory.getAbsolutePath()).andReturn("/the/abs/path");
         }
 
         @Override protected void codeToTest() throws MojoExecutionException {
@@ -83,7 +84,7 @@ public class JavaFxcMojoValidator_validate_Test {
       }.run();
       failWhenExpectingUnexpectedError();
     } catch (UnexpectedError e) {
-      assertThat(e.getCause()).isInstanceOf(MojoExecutionException.class);
+      assertThat( e.getCause() ).isInstanceOf( MojoExecutionException.class );
     }
   }
 
