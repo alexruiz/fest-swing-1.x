@@ -25,6 +25,7 @@ import static org.fest.util.Strings.concat;
  * @author Yvonne Wang
  * @author David DIDIER
  * @author Ansgar Konermann
+ * @author Alex Ruiz
  */
 public class CharAssert extends GenericAssert<Character> {
 

@@ -27,9 +27,9 @@ package org.fest.assertions;
  * @author David DIDIER
  * @author Alex Ruiz
  */
-public class DoubleAssert_description_Test extends PrimitiveAssert_description_TestCase {
+public class DoubleAssert_description_Test extends GenericAssert_description_TestCase<Double> {
 
-  protected PrimitiveAssert assertionToTest() {
+  protected DoubleAssert assertionToTest() {
     return new DoubleAssert(6.8);
   }
 }

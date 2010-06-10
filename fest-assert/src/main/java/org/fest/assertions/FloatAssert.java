@@ -29,7 +29,7 @@ import static org.fest.util.Strings.concat;
  * @author Alex Ruiz
  * @author Ansgar Konermann
  */
-public class FloatAssert extends PrimitiveAssert<Float> implements NumberAssert {
+public class FloatAssert extends GenericAssert<Float> implements NumberAssert {
 
   private static final float ZERO = 0f;
 
@@ -153,7 +153,6 @@ public class FloatAssert extends PrimitiveAssert<Float> implements NumberAssert 
 
   /**
    * Verifies that the actual {@code Float} is not equal to the given one.
-   *
    * @param other the given value.
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Float} is equal to the given one.
@@ -166,7 +165,6 @@ public class FloatAssert extends PrimitiveAssert<Float> implements NumberAssert 
 
   /**
    * Verifies that the actual {@code Float} is greater than the given one.
-   *
    * @param other the given value.
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Float} is not greater than the given one.
@@ -179,7 +177,6 @@ public class FloatAssert extends PrimitiveAssert<Float> implements NumberAssert 
 
   /**
    * Verifies that the actual {@code Float} is less than the given one.
-   *
    * @param other the given value.
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Float} is not less than the given one.
@@ -192,7 +189,6 @@ public class FloatAssert extends PrimitiveAssert<Float> implements NumberAssert 
 
   /**
    * Verifies that the actual {@code Float} is greater or equal to the given one.
-   *
    * @param other the given value.
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Float} is not greater than or equal to the given one.
@@ -205,7 +201,6 @@ public class FloatAssert extends PrimitiveAssert<Float> implements NumberAssert 
 
   /**
    * Verifies that the actual {@code Float} is less or equal to the given one.
-   *
    * @param other the given value.
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Float} is not less than or equal to the given one.
@@ -222,7 +217,6 @@ public class FloatAssert extends PrimitiveAssert<Float> implements NumberAssert 
 
   /**
    * Verifies that the actual {@code Float} is equal to <code>{@link Float#NaN}</code>.
-   *
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Float} is not equal to <code>NaN</code>.
    */
@@ -232,7 +226,6 @@ public class FloatAssert extends PrimitiveAssert<Float> implements NumberAssert 
 
   /**
    * Verifies that the actual {@code Float} is equal to zero.
-   *
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Float} is not equal to zero.
    */
@@ -242,7 +235,6 @@ public class FloatAssert extends PrimitiveAssert<Float> implements NumberAssert 
 
   /**
    * Verifies that the actual {@code Float} is positive.
-   *
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Float} is not positive.
    */
@@ -252,7 +244,6 @@ public class FloatAssert extends PrimitiveAssert<Float> implements NumberAssert 
 
   /**
    * Verifies that the actual {@code Float} is negative.
-   *
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Float} is not negative.
    */
@@ -261,13 +252,12 @@ public class FloatAssert extends PrimitiveAssert<Float> implements NumberAssert 
   }
 
   /**
-   * Creates a new holder for a delta value to be used in <code>{@link FloatAssert#isEqualTo(float,
-   * org.fest.assertions.FloatAssert.Delta)}</code>.
-   *
+   * Creates a new holder for a delta value to be used in
+   * <code>{@link FloatAssert#isEqualTo(float, org.fest.assertions.FloatAssert.Delta)}</code>.
    * @param d the delta value.
    * @return a new delta value holder.
    * @deprecated use method <code>{@link org.fest.assertions.Delta#delta(double)}</code> instead. This method will be
-   *             removed in version 2.0.
+   * removed in version 2.0.
    */
   @Deprecated
   public static Delta delta(float d) {
@@ -275,10 +265,10 @@ public class FloatAssert extends PrimitiveAssert<Float> implements NumberAssert 
   }
 
   /**
-   * Holds a delta value to be used in <code>{@link FloatAssert#isEqualTo(float, org.fest.assertions.FloatAssert.Delta)}</code>.
-   *
+   * Holds a delta value to be used in
+   * <code>{@link FloatAssert#isEqualTo(float, org.fest.assertions.FloatAssert.Delta)}</code>.
    * @deprecated use top-level class <code>{@link org.fest.assertions.Delta}</code> instead. This class will be removed
-   *             in version 2.0.
+   * in version 2.0.
    */
   @Deprecated
   public static class Delta {
@@ -290,7 +280,6 @@ public class FloatAssert extends PrimitiveAssert<Float> implements NumberAssert 
   }
 
   /** {@inheritDoc} */
-  @Override
   public FloatAssert overridingErrorMessage(String message) {
     replaceDefaultErrorMessagesWith(message);
     return this;
@@ -298,15 +287,13 @@ public class FloatAssert extends PrimitiveAssert<Float> implements NumberAssert 
 
   /**
    * Verifies that the actual <code>{@link Float}</code> satisfies the given condition.
-   *
    * @param condition the given condition.
    * @return this assertion object.
    * @throws NullPointerException if the given condition is <code>null</code>.
-   * @throws AssertionError       if the actual {@code Float} does not satisfy the given condition.
+   * @throws AssertionError if the actual {@code Float} does not satisfy the given condition.
    * @see #is(Condition)
    * @since 1.3
    */
-  @Override
   public FloatAssert satisfies(Condition<Float> condition) {
     assertSatisfies(condition);
     return this;
@@ -314,15 +301,13 @@ public class FloatAssert extends PrimitiveAssert<Float> implements NumberAssert 
 
   /**
    * Verifies that the actual <code>{@link Float}</code> does not satisfy the given condition.
-   *
    * @param condition the given condition.
    * @return this assertion object.
    * @throws NullPointerException if the given condition is <code>null</code>.
-   * @throws AssertionError       if the actual value does satisfies the given condition.
+   * @throws AssertionError if the actual value does satisfies the given condition.
    * @see #isNot(Condition)
    * @since 1.3
    */
-  @Override
   public FloatAssert doesNotSatisfy(Condition<Float> condition) {
     assertDoesNotSatisfy(condition);
     return this;
@@ -330,14 +315,12 @@ public class FloatAssert extends PrimitiveAssert<Float> implements NumberAssert 
 
   /**
    * Alias for <code>{@link #satisfies(Condition)}</code>.
-   *
    * @param condition the given condition.
    * @return this assertion object.
    * @throws NullPointerException if the given condition is <code>null</code>.
-   * @throws AssertionError       if the actual {@code Float} does not satisfy the given condition.
+   * @throws AssertionError if the actual {@code Float} does not satisfy the given condition.
    * @since 1.3
    */
-  @Override
   public FloatAssert is(Condition<Float> condition) {
     assertIs(condition);
     return this;
@@ -345,14 +328,12 @@ public class FloatAssert extends PrimitiveAssert<Float> implements NumberAssert 
 
   /**
    * Alias for <code>{@link #doesNotSatisfy(Condition)}</code>.
-   *
    * @param condition the given condition.
    * @return this assertion object.
    * @throws NullPointerException if the given condition is <code>null</code>.
-   * @throws AssertionError       if the actual {@code Float} does not satisfy the given condition.
+   * @throws AssertionError if the actual {@code Float} does not satisfy the given condition.
    * @since 1.3
    */
-  @Override
   public FloatAssert isNot(Condition<Float> condition) {
     assertIsNot(condition);
     return this;
@@ -360,13 +341,11 @@ public class FloatAssert extends PrimitiveAssert<Float> implements NumberAssert 
 
   /**
    * Verifies that the actual <code>{@link Float}</code> is not equal to the given one.
-   *
    * @param other the given {@code Float} to compare the actual {@code Float} to.
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Float} is equal to the given one.
    * @since 1.3
    */
-  @Override
   public FloatAssert isNotEqualTo(Float other) {
     assertNotEqualTo(other);
     return this;
@@ -378,7 +357,6 @@ public class FloatAssert extends PrimitiveAssert<Float> implements NumberAssert 
    * @throws AssertionError if the actual {@code Float} is <code>null</code>.
    * @since 1.3
    */
-  @Override
   public FloatAssert isNotNull() {
     assertNotNull();
     return this;
@@ -391,7 +369,6 @@ public class FloatAssert extends PrimitiveAssert<Float> implements NumberAssert 
    * @throws AssertionError if the actual {@code Float} is not the same as the given one.
    * @since 1.3
    */
-  @Override
   public FloatAssert isSameAs(Float expected) {
     assertSameAs(expected);
     return this;
@@ -404,7 +381,6 @@ public class FloatAssert extends PrimitiveAssert<Float> implements NumberAssert 
    * @throws AssertionError if the actual {@code Float} is the same as the given one.
    * @since 1.3
    */
-  @Override
   public FloatAssert isNotSameAs(Float other) {
     assertNotSameAs(other);
     return this;

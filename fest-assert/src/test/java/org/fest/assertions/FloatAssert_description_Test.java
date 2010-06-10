@@ -26,9 +26,9 @@ package org.fest.assertions;
  * @author Yvonne Wang
  * @author David DIDIER
  */
-public class FloatAssert_description_Test extends PrimitiveAssert_description_TestCase {
+public class FloatAssert_description_Test extends GenericAssert_description_TestCase<Float> {
 
-  protected PrimitiveAssert assertionToTest() {
+  protected FloatAssert assertionToTest() {
     return new FloatAssert(6.8f);
   }
 }
