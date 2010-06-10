@@ -14,14 +14,13 @@
  */
 package org.fest.javafx.maven;
 
-import static java.util.Collections.unmodifiableList;
+import org.apache.maven.plugin.MojoExecutionException;
+import org.fest.util.VisibleForTesting;
 
 import java.io.File;
 import java.util.List;
 
-import org.apache.maven.plugin.MojoExecutionException;
-
-import org.fest.util.VisibleForTesting;
+import static java.util.Collections.unmodifiableList;
 
 /**
  * Compiles JavaFX test code by delegating to JavaFX's own compiler Ant task.
@@ -61,7 +60,7 @@ public class TestJavaFxcMojo extends AbstractJavaFxcMojo {
    * @parameter expression="${javafx.compiler.testSourceDirectory}" default-value="${basedir}/src/test/javafx"
    * @required
    */
-  @VisibleForTesting File sourceDirectory;
+  @VisibleForTesting File testSourceDirectory;
 
   @Override List<String> classpathElements() {
     return unmodifiableList(testClasspathElements);
@@ -72,7 +71,7 @@ public class TestJavaFxcMojo extends AbstractJavaFxcMojo {
   }
 
   @Override File sourceDirectory() {
-    return sourceDirectory;
+    return testSourceDirectory;
   }
 
   /**

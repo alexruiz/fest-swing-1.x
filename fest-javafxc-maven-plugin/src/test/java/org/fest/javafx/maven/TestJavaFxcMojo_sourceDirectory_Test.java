@@ -37,7 +37,7 @@ public class TestJavaFxcMojo_sourceDirectory_Test {
 
   @Test
   public void should_return_output_directory() {
-    mojo.sourceDirectory = new File("/test/javafx");
-    assertThat(mojo.sourceDirectory()).isSameAs(mojo.sourceDirectory);
+    mojo.testSourceDirectory = new File("/test/javafx");
+    assertThat(mojo.sourceDirectory()).isSameAs(mojo.testSourceDirectory );
   }
 }
