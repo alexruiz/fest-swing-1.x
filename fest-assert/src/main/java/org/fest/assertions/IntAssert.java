@@ -94,20 +94,28 @@ public class IntAssert extends GenericAssert<Integer> implements NumberAssert {
 
   /**
    * Verifies that the actual {@code Integer} is not equal to the given one.
-   *
    * @param other the given value.
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Integer} is equal to the given one.
    */
   public IntAssert isNotEqualTo(int other) {
-    if (actual != other) return this;
-    failIfCustomMessageIsSet();
-    throw failure(unexpectedEqual(actual, other));
+    return isNotEqualTo(valueOf(other));
+  }
+
+  /**
+   * Verifies that the actual <code>{@link Integer}</code> is not equal to the given one.
+   * @param other the given <code>Integer</code> to compare the actual <code>Integer</code> to.
+   * @return this assertion object.
+   * @throws AssertionError if the actual {@code Integer} is equal to the given one.
+   * @since 1.3
+   */
+  public IntAssert isNotEqualTo(Integer other) {
+    assertNotEqualTo(other);
+    return this;
   }
 
   /**
    * Verifies that the actual {@code Integer} is greater than the given one.
-   *
    * @param other the given value.
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Integer} is not greater than the given one.
@@ -120,7 +128,6 @@ public class IntAssert extends GenericAssert<Integer> implements NumberAssert {
 
   /**
    * Verifies that the actual {@code Integer} is less than the given one.
-   *
    * @param other the given value.
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Integer} is not less than the given one.
@@ -133,7 +140,6 @@ public class IntAssert extends GenericAssert<Integer> implements NumberAssert {
 
   /**
    * Verifies that the actual {@code Integer} is greater or equal to the given one.
-   *
    * @param other the given value.
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Integer} is not greater than or equal to the given one.
@@ -146,7 +152,6 @@ public class IntAssert extends GenericAssert<Integer> implements NumberAssert {
 
   /**
    * Verifies that the actual {@code Integer} is less or equal to the given one.
-   *
    * @param other the given value.
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Integer} is not less than or equal to the given one.
@@ -159,7 +164,6 @@ public class IntAssert extends GenericAssert<Integer> implements NumberAssert {
 
   /**
    * Verifies that the actual {@code Integer} is equal to zero.
-   *
    * @return this assertion object.
    * @throws AssertionError if the actual {@code Integer} is not equal to zero.
    */
@@ -188,7 +192,6 @@ public class IntAssert extends GenericAssert<Integer> implements NumberAssert {
   }
 
   /** {@inheritDoc} */
-  @Override
   public IntAssert overridingErrorMessage(String message) {
     replaceDefaultErrorMessagesWith(message);
     return this;
@@ -196,15 +199,13 @@ public class IntAssert extends GenericAssert<Integer> implements NumberAssert {
 
   /**
    * Verifies that the actual <code>{@link Integer}</code> satisfies the given condition.
-   *
    * @param condition the given condition.
    * @return this assertion object.
    * @throws NullPointerException if the given condition is <code>null</code>.
-   * @throws AssertionError       if the actual <code>Integer</code> does not satisfy the given condition.
+   * @throws AssertionError if the actual <code>Integer</code> does not satisfy the given condition.
    * @see #is(Condition)
    * @since 1.3
    */
-  @Override
   public IntAssert satisfies(Condition<Integer> condition) {
     assertSatisfies(condition);
     return this;
@@ -212,15 +213,13 @@ public class IntAssert extends GenericAssert<Integer> implements NumberAssert {
 
   /**
    * Verifies that the actual <code>{@link Integer}</code> does not satisfy the given condition.
-   *
    * @param condition the given condition.
    * @return this assertion object.
    * @throws NullPointerException if the given condition is <code>null</code>.
-   * @throws AssertionError       if the actual value does satisfies the given condition.
+   * @throws AssertionError if the actual value does satisfies the given condition.
    * @see #isNot(Condition)
    * @since 1.3
    */
-  @Override
   public IntAssert doesNotSatisfy(Condition<Integer> condition) {
     assertDoesNotSatisfy(condition);
     return this;
@@ -228,14 +227,12 @@ public class IntAssert extends GenericAssert<Integer> implements NumberAssert {
 
   /**
    * Alias for <code>{@link #satisfies(Condition)}</code>.
-   *
    * @param condition the given condition.
    * @return this assertion object.
    * @throws NullPointerException if the given condition is <code>null</code>.
-   * @throws AssertionError       if the actual <code>Integer</code> does not satisfy the given condition.
+   * @throws AssertionError if the actual <code>Integer</code> does not satisfy the given condition.
    * @since 1.3
    */
-  @Override
   public IntAssert is(Condition<Integer> condition) {
     assertIs(condition);
     return this;
@@ -243,30 +240,14 @@ public class IntAssert extends GenericAssert<Integer> implements NumberAssert {
 
   /**
    * Alias for <code>{@link #doesNotSatisfy(Condition)}</code>.
-   *
    * @param condition the given condition.
    * @return this assertion object.
    * @throws NullPointerException if the given condition is <code>null</code>.
-   * @throws AssertionError       if the actual <code>Integer</code> does not satisfy the given condition.
+   * @throws AssertionError if the actual <code>Integer</code> does not satisfy the given condition.
    * @since 1.3
    */
-  @Override
   public IntAssert isNot(Condition<Integer> condition) {
     assertIsNot(condition);
-    return this;
-  }
-
-  /**
-   * Verifies that the actual <code>{@link Integer}</code> is not equal to the given one.
-   *
-   * @param other the given <code>Integer</code> to compare the actual <code>Integer</code> to.
-   * @return this assertion object.
-   * @throws AssertionError if the actual {@code Integer} is equal to the given one.
-   * @since 1.3
-   */
-  @Override
-  public IntAssert isNotEqualTo(Integer other) {
-    assertNotEqualTo(other);
     return this;
   }
 
@@ -276,7 +257,6 @@ public class IntAssert extends GenericAssert<Integer> implements NumberAssert {
    * @throws AssertionError if the actual {@code Integer} is <code>null</code>.
    * @since 1.3
    */
-  @Override
   public IntAssert isNotNull() {
     assertNotNull();
     return this;
@@ -289,7 +269,6 @@ public class IntAssert extends GenericAssert<Integer> implements NumberAssert {
    * @throws AssertionError if the actual {@code Integer} is not the same as the given one.
    * @since 1.3
    */
-  @Override
   public IntAssert isSameAs(Integer expected) {
     assertSameAs(expected);
     return this;
@@ -302,7 +281,6 @@ public class IntAssert extends GenericAssert<Integer> implements NumberAssert {
    * @throws AssertionError if the actual {@code Integer} is the same as the given one.
    * @since 1.3
    */
-  @Override
   public IntAssert isNotSameAs(Integer other) {
     assertNotSameAs(other);
     return this;

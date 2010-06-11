@@ -32,6 +32,6 @@ public class IntAssert_isEqualTo_Integer_Test extends GenericAssert_isEqualTo_Te
   }
 
   protected Integer expected() {
-    return new Integer(9);
+    return 9;
   }
 }

@@ -26,9 +26,9 @@ package org.fest.assertions;
  * @author Yvonne Wang
  * @author David DIDIER
  */
-public class LongAssert_description_Test extends PrimitiveAssert_description_TestCase {
+public class LongAssert_description_Test extends GenericAssert_description_TestCase<Long> {
 
-  protected PrimitiveAssert assertionToTest() {
+  protected LongAssert assertionToTest() {
     return new LongAssert(8);
   }
 }

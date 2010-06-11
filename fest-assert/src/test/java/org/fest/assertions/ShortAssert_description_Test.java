@@ -28,9 +28,9 @@ import static org.fest.assertions.Primitives.asShort;
  * @author Yvonne Wang
  * @author David DIDIER
  */
-public class ShortAssert_description_Test extends PrimitiveAssert_description_TestCase {
+public class ShortAssert_description_Test extends GenericAssert_description_TestCase<Short> {
 
-  protected PrimitiveAssert assertionToTest() {
+  protected ShortAssert assertionToTest() {
     return new ShortAssert(asShort(8));
   }
 }

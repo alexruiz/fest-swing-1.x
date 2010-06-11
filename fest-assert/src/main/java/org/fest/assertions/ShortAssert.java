@@ -14,22 +14,24 @@
  */
 package org.fest.assertions;
 
+import static java.lang.Short.valueOf;
 import static org.fest.assertions.ErrorMessages.*;
 
 /**
- * Understands assertion methods for <code>short</code>s. To create a new instance of this class use the method
- * <code>{@link Assertions#assertThat(short)}</code>.
+ * Understands assertion methods for {@code Short}s and {@code short}s. To create a new instance of this class call
+ * <code>{@link Assertions#assertThat(Short)}</code> <code>{@link Assertions#assertThat(short)}</code>.
  *
  * @author Yvonne Wang
  * @author David DIDIER
+ * @author Ansgar Konermann
+ * @author Alex Ruiz
  */
-public class ShortAssert extends PrimitiveAssert<Short> implements NumberAssert {
+public class ShortAssert extends GenericAssert<Short> implements NumberAssert {
 
   private static final short ZERO = (short) 0;
 
   /**
    * Creates a new <code>{@link ShortAssert}</code>.
-   *
    * @param actual the actual value to verify.
    */
   protected ShortAssert(short actual) {
@@ -38,112 +40,83 @@ public class ShortAssert extends PrimitiveAssert<Short> implements NumberAssert 
 
   /**
    * Creates a new <code>{@link ShortAssert}</code>.
-   *
    * @param actual the actual value to verify.
    */
   protected ShortAssert(Short actual) {
     super(actual);
   }
 
-  /**
-   * Sets the description of the actual value, to be used in as message of any <code>{@link AssertionError}</code>
-   * thrown when an assertion fails. This method should be called before any assertion method, otherwise any assertion
-   * failure will not show the provided description. <p> For example:
-   * <pre>
-   * assertThat(value).<strong>as</strong>(&quot;Some value&quot;).isEqualTo(otherValue);
-   * </pre>
-   * </p>
-   *
-   * @param description the description of the actual value.
-   * @return this assertion object.
-   */
+  /** {@inheritDoc} */
   public ShortAssert as(String description) {
     description(description);
     return this;
   }
 
-  /**
-   * Alias for <code>{@link #as(String)}</code>, since "as" is a keyword in <a href="http://groovy.codehaus.org/"
-   * target="_blank">Groovy</a>. This method should be called before any assertion method, otherwise any assertion
-   * failure will not show the provided description. <p> For example:
-   * <pre>
-   * assertThat(value).<strong>describedAs</strong>(&quot;Some value&quot;).isEqualTo(otherValue);
-   * </pre>
-   * </p>
-   *
-   * @param description the description of the actual value.
-   * @return this assertion object.
-   */
+  /** {@inheritDoc} */
   public ShortAssert describedAs(String description) {
     return as(description);
   }
 
-  /**
-   * Sets the description of the actual value, to be used in as message of any <code>{@link AssertionError}</code>
-   * thrown when an assertion fails. This method should be called before any assertion method, otherwise any assertion
-   * failure will not show the provided description. <p> For example:
-   * <pre>
-   * assertThat(value).<strong>as</strong>(new BasicDescription(&quot;Some value&quot;)).isEqualTo(otherValue);
-   * </pre>
-   * </p>
-   *
-   * @param description the description of the actual value.
-   * @return this assertion object.
-   */
+  /** {@inheritDoc} */
   public ShortAssert as(Description description) {
     description(description);
     return this;
   }
 
-  /**
-   * Alias for <code>{@link #as(Description)}</code>, since "as" is a keyword in <a href="http://groovy.codehaus.org/"
-   * target="_blank">Groovy</a>. This method should be called before any assertion method, otherwise any assertion
-   * failure will not show the provided description. <p> For example:
-   * <pre>
-   * assertThat(value).<strong>describedAs</strong>(new BasicDescription(&quot;Some value&quot;))
-   *   .isEqualTo(otherValue);
-   * </pre>
-   * </p>
-   *
-   * @param description the description of the actual value.
-   * @return this assertion object.
-   */
+  /** {@inheritDoc} */
   public ShortAssert describedAs(Description description) {
     return as(description);
   }
 
   /**
-   * Verifies that the actual <code>short</code> value is equal to the given one.
-   *
+   * Verifies that the actual {@code Short} is equal to the given one.
    * @param expected the value to compare the actual one to.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>short</code> value is not equal to the given one.
+   * @throws AssertionError if the actual {@code Short} is not equal to the given one.
    */
   public ShortAssert isEqualTo(short expected) {
-    if (actual == expected) return this;
-    failIfCustomMessageIsSet();
-    throw failure(unexpectedNotEqual(actual, expected));
+    return isEqualTo(valueOf(expected));
   }
 
   /**
-   * Verifies that the actual <code>short</code> value is not equal to the given one.
-   *
+   * Verifies that the actual {@code Short} is equal to the given one.
+   * @param expected the given value to compare the actual {@code Short} to.
+   * @return this assertion object.
+   * @throws AssertionError if the actual {@code Short} is not equal to the given one.
+   * @since 1.3
+   */
+  public ShortAssert isEqualTo(Short expected) {
+    assertEqualTo(expected);
+    return this;
+  }
+
+  /**
+   * Verifies that the actual {@code Short} is not equal to the given one.
    * @param other the given value.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>short</code> value is equal to the given one.
+   * @throws AssertionError if the actual {@code Short} is equal to the given one.
    */
   public ShortAssert isNotEqualTo(short other) {
-    if (actual != other) return this;
-    failIfCustomMessageIsSet();
-    throw failure(unexpectedEqual(actual, other));
+    return isNotEqualTo(valueOf(other));
   }
 
   /**
-   * Verifies that the actual <code>short</code> value is greater than the given one.
-   *
+   * Verifies that the actual {@code Short} is not equal to the given one.
+   * @param other the given value to compare the actual {@code Short} to.
+   * @return this assertion object.
+   * @throws AssertionError if the actual {@code Short} is equal to the given one.
+   * @since 1.3
+   */
+  public ShortAssert isNotEqualTo(Short other) {
+    assertNotEqualTo(other);
+    return this;
+  }
+
+  /**
+   * Verifies that the actual {@code Short} is greater than the given one.
    * @param other the given value.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>short</code> value is not greater than the given one.
+   * @throws AssertionError if the actual {@code Short} is not greater than the given one.
    */
   public ShortAssert isGreaterThan(short other) {
     if (actual > other) return this;
@@ -152,11 +125,10 @@ public class ShortAssert extends PrimitiveAssert<Short> implements NumberAssert 
   }
 
   /**
-   * Verifies that the actual <code>short</code> value is less than the given one.
-   *
+   * Verifies that the actual {@code Short} is less than the given one.
    * @param other the given value.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>short</code> value is not less than the given one.
+   * @throws AssertionError if the actual {@code Short} is not less than the given one.
    */
   public ShortAssert isLessThan(short other) {
     if (actual < other) return this;
@@ -165,11 +137,10 @@ public class ShortAssert extends PrimitiveAssert<Short> implements NumberAssert 
   }
 
   /**
-   * Verifies that the actual <code>short</code> value is greater or equal to the given one.
-   *
+   * Verifies that the actual {@code Short} is greater or equal to the given one.
    * @param other the given value.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>short</code> value is not greater than or equal to the given one.
+   * @throws AssertionError if the actual {@code Short} is not greater than or equal to the given one.
    */
   public ShortAssert isGreaterThanOrEqualTo(short other) {
     if (actual >= other) return this;
@@ -178,11 +149,10 @@ public class ShortAssert extends PrimitiveAssert<Short> implements NumberAssert 
   }
 
   /**
-   * Verifies that the actual <code>short</code> value is less or equal to the given one.
-   *
+   * Verifies that the actual {@code Short} is less or equal to the given one.
    * @param other the given value.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>short</code> value is not less than or equal to the given one.
+   * @throws AssertionError if the actual {@code Short} is not less than or equal to the given one.
    */
   public ShortAssert isLessThanOrEqualTo(short other) {
     if (actual <= other) return this;
@@ -191,30 +161,27 @@ public class ShortAssert extends PrimitiveAssert<Short> implements NumberAssert 
   }
 
   /**
-   * Verifies that the actual <code>short</code> value is equal to zero.
-   *
+   * Verifies that the actual {@code Short} is equal to zero.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>short</code> value is not equal to zero.
+   * @throws AssertionError if the actual {@code Short} is not equal to zero.
    */
   public ShortAssert isZero() {
     return isEqualTo(ZERO);
   }
 
   /**
-   * Verifies that the actual <code>short</code> value is positive.
-   *
+   * Verifies that the actual {@code Short} is positive.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>short</code> value is not positive.
+   * @throws AssertionError if the actual {@code Short} is not positive.
    */
   public ShortAssert isPositive() {
     return isGreaterThan(ZERO);
   }
 
   /**
-   * Verifies that the actual <code>short</code> value is negative.
-   *
+   * Verifies that the actual {@code Short} is negative.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>short</code> value is not negative.
+   * @throws AssertionError if the actual {@code Short} is not negative.
    */
   public ShortAssert isNegative() {
     return isLessThan(ZERO);
@@ -227,32 +194,28 @@ public class ShortAssert extends PrimitiveAssert<Short> implements NumberAssert 
   }
 
   /**
-   * Verifies that the actual <code>{@link Short}</code> satisfies the given condition.
-   *
+   * Verifies that the actual {@code Short} satisfies the given condition.
    * @param condition the given condition.
    * @return this assertion object.
    * @throws NullPointerException if the given condition is <code>null</code>.
-   * @throws AssertionError       if the actual <code>Short</code> does not satisfy the given condition.
+   * @throws AssertionError if the actual {@code Short} does not satisfy the given condition.
    * @see #is(Condition)
    * @since 1.3
    */
-  @Override
   public ShortAssert satisfies(Condition<Short> condition) {
     assertSatisfies(condition);
     return this;
   }
 
   /**
-   * Verifies that the actual <code>{@link Short}</code> does not satisfy the given condition.
-   *
+   * Verifies that the actual {@code Short} does not satisfy the given condition.
    * @param condition the given condition.
    * @return this assertion object.
    * @throws NullPointerException if the given condition is <code>null</code>.
-   * @throws AssertionError       if the actual value does satisfies the given condition.
+   * @throws AssertionError if the actual value does satisfies the given condition.
    * @see #isNot(Condition)
    * @since 1.3
    */
-  @Override
   public ShortAssert doesNotSatisfy(Condition<Short> condition) {
     assertDoesNotSatisfy(condition);
     return this;
@@ -260,14 +223,12 @@ public class ShortAssert extends PrimitiveAssert<Short> implements NumberAssert 
 
   /**
    * Alias for <code>{@link #satisfies(Condition)}</code>.
-   *
    * @param condition the given condition.
    * @return this assertion object.
    * @throws NullPointerException if the given condition is <code>null</code>.
-   * @throws AssertionError       if the actual <code>Short</code> does not satisfy the given condition.
+   * @throws AssertionError if the actual {@code Short} does not satisfy the given condition.
    * @since 1.3
    */
-  @Override
   public ShortAssert is(Condition<Short> condition) {
     assertIs(condition);
     return this;
@@ -279,76 +240,44 @@ public class ShortAssert extends PrimitiveAssert<Short> implements NumberAssert 
    * @param condition the given condition.
    * @return this assertion object.
    * @throws NullPointerException if the given condition is <code>null</code>.
-   * @throws AssertionError       if the actual <code>Short</code> does not satisfy the given condition.
+   * @throws AssertionError if the actual {@code Short} does not satisfy the given condition.
    * @since 1.3
    */
-  @Override
   public ShortAssert isNot(Condition<Short> condition) {
     assertIsNot(condition);
     return this;
   }
 
   /**
-   * Verifies that the actual <code>{@link Short}</code> value is equal to the given one.
-   *
-   * @param expected the given <code>Short</code> value to compare the actual <code>Short</code> to.
+   * Verifies that the actual {@code Short} is not <code>null</code>.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>Short</code> value is not equal to the given one.
+   * @throws AssertionError if the actual {@code Short} is <code>null</code>.
    * @since 1.3
    */
-  @Override
-  public ShortAssert isEqualTo(Short expected) {
-    assertEqualTo(expected);
-    return this;
-  }
-
-  /**
-   * Verifies that the actual <code>{@link Short}</code> is not equal to the given one.
-   *
-   * @param other the given <code>Short</code> to compare the actual <code>Short</code> to.
-   * @return this assertion object.
-   * @throws AssertionError if the actual <code>Short</code> value is equal to the given one.
-   * @since 1.3
-   */
-  @Override
-  public ShortAssert isNotEqualTo(Short other) {
-    assertNotEqualTo(other);
-    return this;
-  }
-
-  /**
-   * Verifies that the actual <code>{@link Short}</code> is not <code>null</code>.
-   * @return this assertion object.
-   * @throws AssertionError if the actual <code>Short</code> value is <code>null</code>.
-   * @since 1.3
-   */
-  @Override
   public ShortAssert isNotNull() {
     assertNotNull();
     return this;
   }
 
   /**
-   * Verifies that the actual <code>{@link Short}</code> is the same object as the given one.
-   * @param expected the given <code>Short</code> to compare the actual <code>Short</code> to.
+   * Verifies that the actual {@code Short} is the same object as the given one.
+   * @param expected the given value to compare the actual {@code Short} to.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>Short</code> value is not the same as the given one.
+   * @throws AssertionError if the actual {@code Short} is not the same as the given one.
    * @since 1.3
    */
-  @Override
   public ShortAssert isSameAs(Short expected) {
     assertSameAs(expected);
     return this;
   }
 
   /**
-   * Verifies that the actual <code>{@link Short}</code> is not the same object as the given one.
-   * @param other the given <code>Short</code> to compare the actual <code>BigDecimal</code> to.
+   * Verifies that the actual {@code Short} is not the same object as the given one.
+   * @param other the given value to compare the actual <code>BigDecimal</code> to.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>Short</code> value is the same as the given one.
+   * @throws AssertionError if the actual {@code Short} is the same as the given one.
    * @since 1.3
    */
-  @Override
   public ShortAssert isNotSameAs(Short other) {
     assertNotSameAs(other);
     return this;
