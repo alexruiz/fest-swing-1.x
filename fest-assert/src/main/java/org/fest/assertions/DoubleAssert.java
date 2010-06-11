@@ -8,8 +8,8 @@ import static org.fest.assertions.Formatting.inBrackets;
 import static org.fest.util.Strings.concat;
 
 /**
- * Understands Assertion methods for {@code Double}. To create a new instance of this class use the method
- * <code>{@link Assertions#assertThat(double)}</code>.
+ * Understands Assertion methods for {@code Double}s and {@code double}s. To create a new instance of this class call
+ * <code>{@link Assertions#assertThat(Double)}</code> or <code>{@link Assertions#assertThat(double)}</code>.
  *
  * @author Yvonne Wang
  * @author David DIDIER

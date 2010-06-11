@@ -26,9 +26,9 @@ package org.fest.assertions;
  * @author Yvonne Wang
  * @author David DIDIER
  */
-public class IntAssert_description_Test extends PrimitiveAssert_description_TestCase {
+public class IntAssert_description_Test extends GenericAssert_description_TestCase<Integer> {
 
-  protected PrimitiveAssert assertionToTest() {
+  protected IntAssert assertionToTest() {
     return new IntAssert(8);
   }
 }

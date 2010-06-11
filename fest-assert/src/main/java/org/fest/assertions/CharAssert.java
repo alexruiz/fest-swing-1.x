@@ -19,8 +19,8 @@ import static org.fest.assertions.Formatting.inBrackets;
 import static org.fest.util.Strings.concat;
 
 /**
- * Understands assertion methods for {@code Character}s. To create a new instance of this class use the methods
- * <code>{@link Assertions#assertThat(char)}</code> or <code>{@link Assertions#assertThat(Character)}</code>.
+ * Understands assertion methods for {@code Character}s and {@code char}s. To create a new instance of this class call
+ * <code>{@link Assertions#assertThat(Character)}</code> or <code>{@link Assertions#assertThat(char)}</code>.
  *
  * @author Yvonne Wang
  * @author David DIDIER

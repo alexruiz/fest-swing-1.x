@@ -22,8 +22,8 @@ import static org.fest.assertions.Formatting.inBrackets;
 import static org.fest.util.Strings.concat;
 
 /**
- * Understands assertion methods for <code>float</code>s. To create a new instance of this class use the method
- * <code>{@link Assertions#assertThat(float)}</code>.
+ * Understands assertion methods for {@code Float}s and {@code float}s. To create a new instance of this class call
+ * <code>{@link Assertions#assertThat(Float)}</code> or <code>{@link Assertions#assertThat(float)}</code>.
  *
  * @author Yvonne Wang
  * @author Alex Ruiz
