@@ -27,7 +27,7 @@ import org.junit.Test;
  *
  * @author Alex Ruiz
  */
-public class ThrowableAssert_is_Test implements GenericAssert_satisfies_TestCase {
+public class ThrowableAssert_is_Test implements GenericAssert_satisfies_orAlias_TestCase {
 
   private static Exception exception;
 

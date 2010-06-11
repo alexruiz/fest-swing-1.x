@@ -32,7 +32,7 @@ import org.fest.test.CodeToTest;
  */
 
 
-public abstract class GenericAssert_satisfies_TestBase<VALUE_TYPE> implements GenericAssert_satisfies_TestCase {
+public abstract class GenericAssert_satisfies_TestBase<VALUE_TYPE> implements GenericAssert_satisfies_orAlias_TestCase {
 
   protected abstract VALUE_TYPE one();
 

@@ -1,5 +1,5 @@
 /*
- * Created on 2010-4-16
+ * Created on Apr 16, 2010
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -13,25 +13,21 @@
  *
  * Copyright @2007-2010 the original author or authors.
  */
-
 package org.fest.assertions;
 
 /**
- * Test ensuring that {@link ShortAssert} obeys the {@link GenericAssert#is(Condition)} contract for {@link Short}.
+ * Tests for <code>{@link ShortAssert#is(Condition)}</code>.
  *
  * @author Ansgar Konermann
+ * @author Alex Ruiz
  */
+public class ShortAssert_is_Test extends GenericAssert_is_TestCase<Short> {
 
-public class ShortAssert_is_Test extends GenericAssert_is_TestBase<Short> {
-
-  @Override
-  protected Short one() {
-    return (short) 1;
+  protected ShortAssert assertObject() {
+    return new ShortAssert((short)6);
   }
 
-  @Override
-  protected ShortAssert assertionFor(Short actual) {
-    return new ShortAssert(actual);
+  protected ShortAssert assertObjectWithNullTarget() {
+    return new ShortAssert(null);
   }
-
 }

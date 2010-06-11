@@ -27,7 +27,7 @@ import org.junit.Test;
  *
  * @author Alex Ruiz
  */
-public class ObjectAssert_is_Test implements GenericAssert_satisfies_TestCase {
+public class ObjectAssert_is_Test implements GenericAssert_satisfies_orAlias_TestCase {
 
   private static Object six;
 

@@ -26,7 +26,7 @@ import org.junit.*;
  *
  * @author Alex Ruiz
  */
-public class FileAssert_is_Test implements GenericAssert_satisfies_TestCase {
+public class FileAssert_is_Test implements GenericAssert_satisfies_orAlias_TestCase {
 
   private static FileStub file;
 

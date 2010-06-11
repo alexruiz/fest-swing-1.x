@@ -28,7 +28,7 @@ import org.junit.Test;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class DoubleArrayAssert_satisfies_Test implements GenericAssert_satisfies_TestCase {
+public class DoubleArrayAssert_satisfies_Test implements GenericAssert_satisfies_orAlias_TestCase {
 
   @Test
   public void should_pass_if_condition_is_satisfied() {

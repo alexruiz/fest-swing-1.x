@@ -28,7 +28,7 @@ import org.junit.Test;
  * @author Ansgar Konermann
  * @author Alex Ruiz
  */
-public class BooleanAssert_satisfies_Test implements GenericAssert_satisfies_TestCase {
+public class BooleanAssert_satisfies_Test implements GenericAssert_satisfies_orAlias_TestCase {
 
   @Test
   public void should_pass_if_condition_is_satisfied() {

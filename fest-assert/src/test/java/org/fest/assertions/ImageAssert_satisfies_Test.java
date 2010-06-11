@@ -31,7 +31,7 @@ import org.junit.Test;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class ImageAssert_satisfies_Test implements GenericAssert_satisfies_TestCase {
+public class ImageAssert_satisfies_Test implements GenericAssert_satisfies_orAlias_TestCase {
 
   private static BufferedImage image;
 

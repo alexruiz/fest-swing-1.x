@@ -15,11 +15,11 @@
 package org.fest.assertions;
 
 /**
- * Test case for implementations of <code>{@link GenericAssert#satisfies(Condition)}</code>.
+ * Test case for implementations of <code>{@link GenericAssert#satisfies(Condition)}</code> or any of its alias.
  *
  * @author Alex Ruiz
  */
-public interface GenericAssert_satisfies_TestCase {
+public interface GenericAssert_satisfies_orAlias_TestCase {
 
   void should_pass_if_condition_is_satisfied();
 
