@@ -14,13 +14,6 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.CommonFailures.expectErrorIfConditionIsNull;
-import static org.fest.assertions.UpperCase.upperCase;
-import static org.fest.test.ExpectedFailure.expectAssertionError;
-
-import org.fest.test.CodeToTest;
-import org.junit.Test;
-
 /**
  * Tests for <code>{@link StringAssert#satisfies(Condition)}</code>.
  *
@@ -28,88 +21,13 @@ import org.junit.Test;
  * @author David DIDIER
  * @author Alex Ruiz
  */
-public class StringAssert_satisfies_Test implements GenericAssert_satisfies_orAlias_TestCase {
+public class StringAssert_satisfies_Test extends GenericAssert_satisfies_TestCase<String> {
 
-  @Test
-  public void should_pass_if_condition_is_satisfied() {
-    new StringAssert("HELLO").satisfies(upperCase());
+  protected StringAssert assertObject() {
+    return new StringAssert("Hello");
   }
 
-  @Test
-  public void should_throw_error_if_condition_is_null() {
-    expectErrorIfConditionIsNull().on(new CodeToTest() {
-      public void run() {
-        new StringAssert("").satisfies(null);
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_if_condition_is_not_satisfied() {
-    expectAssertionError("actual value:<'hello'> should satisfy condition:<UpperCase>").on(new CodeToTest() {
-      public void run() {
-        new StringAssert("hello").satisfies(upperCase());
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_condition_is_not_satisfied() {
-    expectAssertionError("[Test] actual value:<'hello'> should satisfy condition:<UpperCase>").on(new CodeToTest() {
-      public void run() {
-        new StringAssert("hello").as("Test")
-                                 .satisfies(upperCase());
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_and_display_description_of_condition_if_condition_is_not_satisfied() {
-    expectAssertionError("actual value:<'hello'> should satisfy condition:<uppercase>").on(new CodeToTest() {
-      public void run() {
-        new StringAssert("hello").satisfies(upperCase().as("uppercase"));
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_and_display_descriptions_of_assertion_and_condition_if_condition_is_not_satisfied() {
-    expectAssertionError("[Test] actual value:<'hello'> should satisfy condition:<uppercase>").on(new CodeToTest() {
-      public void run() {
-        new StringAssert("hello").as("Test")
-                                 .satisfies(upperCase().as("uppercase"));
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_if_condition_is_not_satisfied() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new StringAssert("hello").overridingErrorMessage("My custom message")
-                                 .satisfies(upperCase());
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_condition_is_not_satisfied() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new StringAssert("hello").as("Test")
-                                 .overridingErrorMessage("My custom message")
-                                 .satisfies(upperCase());
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_condition_if_condition_is_not_satisfied() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new StringAssert("hello").overridingErrorMessage("My custom message")
-                                 .satisfies(upperCase().as("uppercase"));
-      }
-    });
+  protected StringAssert assertObjectWithNullTarget() {
+    return new StringAssert(null);
   }
 }

@@ -15,12 +15,8 @@
 package org.fest.assertions;
 
 import static java.util.Collections.emptyMap;
-import static org.fest.assertions.CommonFailures.*;
-import static org.fest.assertions.NotNull.notNullMap;
-import static org.fest.test.ExpectedFailure.expectAssertionError;
 
-import org.fest.test.CodeToTest;
-import org.junit.Test;
+import java.util.Map;
 
 /**
  * Tests for <code>{@link MapAssert#satisfies(Condition)}</code>.
@@ -29,88 +25,13 @@ import org.junit.Test;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class MapAssert_satisfies_Test implements GenericAssert_satisfies_orAlias_TestCase {
+public class MapAssert_satisfies_Test extends GenericAssert_satisfies_TestCase<Map<?, ?>> {
 
-  @Test
-  public void should_pass_if_condition_is_satisfied() {
-    new MapAssert(emptyMap()).satisfies(notNullMap());
+  protected MapAssert assertObject() {
+    return new MapAssert(emptyMap());
   }
 
-  @Test
-  public void should_throw_error_if_condition_is_null() {
-    expectErrorIfConditionIsNull().on(new CodeToTest() {
-      public void run() {
-        new MapAssert(emptyMap()).satisfies(null);
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_if_condition_is_not_satisfied() {
-    expectAssertionError("actual value:<null> should satisfy condition:<NotNull>").on(new CodeToTest() {
-      public void run() {
-        new MapAssert(null).satisfies(notNullMap());
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_condition_is_not_satisfied() {
-    expectAssertionError("[A Test] actual value:<null> should satisfy condition:<NotNull>").on(new CodeToTest() {
-      public void run() {
-        new MapAssert(null).as("A Test")
-                           .satisfies(notNullMap());
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_and_display_description_of_condition_if_condition_is_not_satisfied() {
-    expectAssertionError("actual value:<null> should satisfy condition:<Not Null>").on(new CodeToTest() {
-      public void run() {
-        new MapAssert(null).satisfies(notNullMap().as("Not Null"));
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_and_display_descriptions_of_assertion_and_condition_if_condition_is_not_satisfied() {
-    expectAssertionError("[A Test] actual value:<null> should satisfy condition:<Not Null>").on(new CodeToTest() {
-      public void run() {
-        new MapAssert(null).as("A Test")
-                           .satisfies(notNullMap().as("Not Null"));
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_if_condition_is_not_satisfied() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new MapAssert(null).overridingErrorMessage("My custom message")
-                           .satisfies(notNullMap());
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_condition_is_not_satisfied() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new MapAssert(null).as("A Test")
-                           .overridingErrorMessage("My custom message")
-                           .satisfies(notNullMap());
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_condition_if_condition_is_not_satisfied() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new MapAssert(null).overridingErrorMessage("My custom message")
-                           .satisfies(notNullMap().as("Not Null"));
-      }
-    });
+  protected MapAssert assertObjectWithNullTarget() {
+    return new MapAssert(null);
   }
 }
