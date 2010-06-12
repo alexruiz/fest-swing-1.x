@@ -15,99 +15,21 @@
 package org.fest.assertions;
 
 import static java.util.Collections.emptyList;
-import static org.fest.assertions.CommonFailures.*;
-import static org.fest.assertions.NotNull.notNullList;
-import static org.fest.test.ExpectedFailure.expectAssertionError;
-import org.fest.test.CodeToTest;
-import org.junit.Test;
+
+import java.util.List;
 
 /**
  * Tests for <code>{@link ListAssert#is(Condition)}</code>.
  *
  * @author Alex Ruiz
  */
-public class ListAssert_is_Test implements GenericAssert_satisfies_orAlias_TestCase {
+public class ListAssert_is_Test extends GenericAssert_is_TestCase<List<?>> {
 
-  @Test
-  public void should_pass_if_condition_is_satisfied() {
-    new ListAssert(emptyList()).is(notNullList());
+  protected ListAssert assertObject() {
+    return new ListAssert(emptyList());
   }
 
-  @Test
-  public void should_throw_error_if_condition_is_null() {
-    expectErrorIfConditionIsNull().on(new CodeToTest() {
-      public void run() {
-        new ListAssert(emptyList()).is(null);
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_if_condition_is_not_satisfied() {
-    expectAssertionError("actual value:<null> should be:<NotNull>").on(new CodeToTest() {
-      public void run() {
-        new ListAssert(null).is(notNullList());
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_condition_is_not_satisfied() {
-    expectAssertionError("[A Test] actual value:<null> should be:<NotNull>").on(new CodeToTest() {
-      public void run() {
-        new ListAssert(null).as("A Test")
-                            .is(notNullList());
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_and_display_description_of_condition_if_condition_is_not_satisfied() {
-    expectAssertionError("actual value:<null> should be:<Not Null>").on(new CodeToTest() {
-      public void run() {
-        new ListAssert(null).is(notNullList().as("Not Null"));
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_and_display_descriptions_of_assertion_and_condition_if_condition_is_not_satisfied() {
-    expectAssertionError("[A Test] actual value:<null> should be:<Not Null>").on(new CodeToTest() {
-      public void run() {
-        new ListAssert(null).as("A Test")
-                            .is(notNullList().as("Not Null"));
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_if_condition_is_not_satisfied() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new ListAssert(null).overridingErrorMessage("My custom message")
-                            .is(notNullList());
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_condition_is_not_satisfied() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new ListAssert(null).as("A Test")
-                            .overridingErrorMessage("My custom message")
-                            .is(notNullList());
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_condition_if_condition_is_not_satisfied() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new ListAssert(null).overridingErrorMessage("My custom message")
-                            .is(notNullList().as("Not Null"));
-      }
-    });
+  protected ListAssert assertObjectWithNullTarget() {
+    return new ListAssert(null);
   }
 }

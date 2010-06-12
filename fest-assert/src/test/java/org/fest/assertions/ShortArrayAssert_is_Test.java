@@ -14,102 +14,20 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.CommonFailures.expectErrorIfConditionIsNull;
 import static org.fest.assertions.EmptyArrays.emptyShortArray;
-import static org.fest.assertions.NotNull.notNullShortArray;
-import static org.fest.test.ExpectedFailure.expectAssertionError;
-
-import org.fest.test.CodeToTest;
-import org.junit.Test;
 
 /**
  * Tests for <code>{@link ShortArrayAssert#is(Condition)}</code>.
  *
  * @author Alex Ruiz
  */
-public class ShortArrayAssert_is_Test implements GenericAssert_satisfies_orAlias_TestCase {
+public class ShortArrayAssert_is_Test extends GenericAssert_is_TestCase<short[]> {
 
-  @Test
-  public void should_pass_if_condition_is_satisfied() {
-    new ShortArrayAssert(emptyShortArray()).is(notNullShortArray());
+  protected ShortArrayAssert assertObject() {
+    return new ShortArrayAssert(emptyShortArray());
   }
 
-  @Test
-  public void should_throw_error_if_condition_is_null() {
-    expectErrorIfConditionIsNull().on(new CodeToTest() {
-      public void run() {
-        new ShortArrayAssert(emptyShortArray()).is(null);
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_if_condition_is_not_satisfied() {
-    expectAssertionError("actual value:<null> should be:<NotNull>").on(new CodeToTest() {
-      public void run() {
-        new ShortArrayAssert(null).is(notNullShortArray());
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_condition_is_not_satisfied() {
-    expectAssertionError("[A Test] actual value:<null> should be:<NotNull>").on(
-      new CodeToTest() {
-        public void run() {
-          new ShortArrayAssert(null).as("A Test")
-                                    .is(notNullShortArray());
-        }
-      });
-  }
-
-  @Test
-  public void should_fail_and_display_description_of_condition_if_condition_is_not_satisfied() {
-    expectAssertionError("actual value:<null> should be:<Not Null>").on(new CodeToTest() {
-      public void run() {
-        new ShortArrayAssert(null).is(notNullShortArray().as("Not Null"));
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_and_display_descriptions_of_assertion_and_condition_if_condition_is_not_satisfied() {
-    expectAssertionError("[A Test] actual value:<null> should be:<Not Null>").on(new CodeToTest() {
-      public void run() {
-        new ShortArrayAssert(null).as("A Test")
-                                  .is(notNullShortArray().as("Not Null"));
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_if_condition_is_not_satisfied() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new ShortArrayAssert(null).overridingErrorMessage("My custom message")
-                                  .is(notNullShortArray());
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_condition_is_not_satisfied() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new ShortArrayAssert(null).as("A Test")
-                                  .overridingErrorMessage("My custom message")
-                                  .is(notNullShortArray());
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_condition_if_condition_is_not_satisfied() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new ShortArrayAssert(null).overridingErrorMessage("My custom message")
-                                  .is(notNullShortArray().as("Not Null"));
-      }
-    });
+  protected ShortArrayAssert assertObjectWithNullTarget() {
+    return new ShortArrayAssert(null);
   }
 }
