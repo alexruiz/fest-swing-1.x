@@ -14,13 +14,7 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.CommonFailures.expectErrorIfConditionIsNull;
 import static org.fest.assertions.EmptyArrays.emptyBooleanArray;
-import static org.fest.assertions.NotNull.notNullBooleanArray;
-import static org.fest.test.ExpectedFailure.expectAssertionError;
-
-import org.fest.test.CodeToTest;
-import org.junit.Test;
 
 /**
  * Tests for <code>{@link BooleanArrayAssert#satisfies(Condition)}</code>.
@@ -28,89 +22,13 @@ import org.junit.Test;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class BooleanArrayAssert_satisfies_Test implements GenericAssert_satisfies_orAlias_TestCase {
+public class BooleanArrayAssert_satisfies_Test extends GenericAssert_satisfies_TestCase<boolean[]> {
 
-  @Test
-  public void should_pass_if_condition_is_satisfied() {
-    new BooleanArrayAssert(emptyBooleanArray()).satisfies(notNullBooleanArray());
+  protected BooleanArrayAssert assertObject() {
+    return new BooleanArrayAssert(emptyBooleanArray());
   }
 
-  @Test
-  public void should_throw_error_if_condition_is_null() {
-    expectErrorIfConditionIsNull().on(new CodeToTest() {
-      public void run() {
-        new BooleanArrayAssert(emptyBooleanArray()).satisfies(null);
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_if_condition_is_not_satisfied() {
-    expectAssertionError("actual value:<null> should satisfy condition:<NotNull>").on(new CodeToTest() {
-      public void run() {
-        new BooleanArrayAssert(null).satisfies(notNullBooleanArray());
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_condition_is_not_satisfied() {
-    expectAssertionError("[A Test] actual value:<null> should satisfy condition:<NotNull>").on(
-      new CodeToTest() {
-        public void run() {
-          new BooleanArrayAssert(null).as("A Test")
-                                      .satisfies(notNullBooleanArray());
-        }
-      });
-  }
-
-  @Test
-  public void should_fail_and_display_description_of_condition_if_condition_is_not_satisfied() {
-    expectAssertionError("actual value:<null> should satisfy condition:<Not Null>").on(new CodeToTest() {
-      public void run() {
-        new BooleanArrayAssert(null).satisfies(notNullBooleanArray().as("Not Null"));
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_and_display_descriptions_of_assertion_and_condition_if_condition_is_not_satisfied() {
-    expectAssertionError("[A Test] actual value:<null> should satisfy condition:<Not Null>").on(new CodeToTest() {
-      public void run() {
-        new BooleanArrayAssert(null).as("A Test")
-                                    .satisfies(notNullBooleanArray().as("Not Null"));
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_if_condition_is_not_satisfied() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new BooleanArrayAssert(null).overridingErrorMessage("My custom message")
-                                    .satisfies(notNullBooleanArray());
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_condition_is_not_satisfied() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new BooleanArrayAssert(null).as("A Test")
-                                    .overridingErrorMessage("My custom message")
-                                    .satisfies(notNullBooleanArray());
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_condition_if_condition_is_not_satisfied() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new BooleanArrayAssert(null).overridingErrorMessage("My custom message")
-                                    .satisfies(notNullBooleanArray().as("Not Null"));
-      }
-    });
+  protected BooleanArrayAssert assertObjectWithNullTarget() {
+    return new BooleanArrayAssert(null);
   }
 }

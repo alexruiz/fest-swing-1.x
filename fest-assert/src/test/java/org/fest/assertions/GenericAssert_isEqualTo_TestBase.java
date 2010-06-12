@@ -23,7 +23,7 @@ import org.junit.*;
 
 
 /**
- * Base class for testing <code>{@link org.fest.assertions.GenericAssert#isEqualTo(Object)}.</code>
+ * Base class for testing <code>{@link GenericAssert#isEqualTo(Object)}.</code>
  * <p>
  * This class implements the algorithms which must be performed to test <code>isEqualTo</code> as template methods and
  * uses implementations of the abstract methods in subclasses to derive concrete tests.

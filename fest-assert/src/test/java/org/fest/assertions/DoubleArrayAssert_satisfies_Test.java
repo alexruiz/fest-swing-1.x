@@ -14,13 +14,7 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.CommonFailures.expectErrorIfConditionIsNull;
 import static org.fest.assertions.EmptyArrays.emptyDoubleArray;
-import static org.fest.assertions.NotNull.notNullDoubleArray;
-import static org.fest.test.ExpectedFailure.expectAssertionError;
-
-import org.fest.test.CodeToTest;
-import org.junit.Test;
 
 /**
  * Tests for <code>{@link DoubleArrayAssert#satisfies(Condition)}</code>.
@@ -28,88 +22,13 @@ import org.junit.Test;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class DoubleArrayAssert_satisfies_Test implements GenericAssert_satisfies_orAlias_TestCase {
+public class DoubleArrayAssert_satisfies_Test extends GenericAssert_satisfies_TestCase<double[]> {
 
-  @Test
-  public void should_pass_if_condition_is_satisfied() {
-    new DoubleArrayAssert(emptyDoubleArray()).satisfies(notNullDoubleArray());
+  protected DoubleArrayAssert assertObject() {
+    return new DoubleArrayAssert(emptyDoubleArray());
   }
 
-  @Test
-  public void should_throw_error_if_condition_is_null() {
-    expectErrorIfConditionIsNull().on(new CodeToTest() {
-      public void run() {
-        new DoubleArrayAssert(emptyDoubleArray()).satisfies(null);
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_if_condition_is_not_satisfied() {
-    expectAssertionError("actual value:<null> should satisfy condition:<NotNull>").on(new CodeToTest() {
-      public void run() {
-        new DoubleArrayAssert(null).satisfies(notNullDoubleArray());
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_condition_is_not_satisfied() {
-    expectAssertionError("[A Test] actual value:<null> should satisfy condition:<NotNull>").on(new CodeToTest() {
-      public void run() {
-        new DoubleArrayAssert(null).as("A Test")
-                                   .satisfies(notNullDoubleArray());
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_and_display_description_of_condition_if_condition_is_not_satisfied() {
-    expectAssertionError("actual value:<null> should satisfy condition:<Not Null>").on(new CodeToTest() {
-      public void run() {
-        new DoubleArrayAssert(null).satisfies(notNullDoubleArray().as("Not Null"));
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_and_display_descriptions_of_assertion_and_condition_if_condition_is_not_satisfied() {
-    expectAssertionError("[A Test] actual value:<null> should satisfy condition:<Not Null>").on(new CodeToTest() {
-      public void run() {
-        new DoubleArrayAssert(null).as("A Test")
-                                   .satisfies(notNullDoubleArray().as("Not Null"));
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_if_condition_is_not_satisfied() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new DoubleArrayAssert(null).overridingErrorMessage("My custom message")
-                                   .satisfies(notNullDoubleArray());
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_condition_is_not_satisfied() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new DoubleArrayAssert(null).as("A Test")
-                                   .overridingErrorMessage("My custom message")
-                                   .satisfies(notNullDoubleArray());
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_condition_if_condition_is_not_satisfied() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new DoubleArrayAssert(null).overridingErrorMessage("My custom message")
-                                   .satisfies(notNullDoubleArray().as("Not Null"));
-      }
-    });
+  protected DoubleArrayAssert assertObjectWithNullTarget() {
+    return new DoubleArrayAssert(null);
   }
 }
