@@ -23,7 +23,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Base class for testing {@link org.fest.assertions.GenericAssert#is(Condition)}.
+ * Base class for testing <code>{@link GenericAssert#is(Condition)}</code>.
  * <p>
  * This class implements the algorithms which must be performed to test <code>is</code> as template methods and uses
  * implementations of the abstract methods in subclasses to derive concrete tests.
@@ -47,14 +47,14 @@ public abstract class GenericAssert_is_TestCase<T> implements GenericAssert_sati
   protected abstract GenericAssert<T> assertObjectWithNullTarget();
 
   @Test
-  public void should_pass_if_condition_is_satisfied() {
+  public final void should_pass_if_condition_is_satisfied() {
     assertObject().is(notNull());
   }
 
   protected abstract GenericAssert<T> assertObject();
 
   @Test
-  public void should_throw_error_if_condition_is_null() {
+  public final void should_throw_error_if_condition_is_null() {
     expectErrorIfConditionIsNull().on(new CodeToTest() {
       public void run() {
         assertObject.is(null);
@@ -63,7 +63,7 @@ public abstract class GenericAssert_is_TestCase<T> implements GenericAssert_sati
   }
 
   @Test
-  public void should_fail_if_condition_is_not_satisfied() {
+  public final void should_fail_if_condition_is_not_satisfied() {
     expectAssertionError("actual value:<null> should be:<NotNull>").on(new CodeToTest() {
       public void run() {
         assertObject.is(notNull());
@@ -72,7 +72,7 @@ public abstract class GenericAssert_is_TestCase<T> implements GenericAssert_sati
   }
 
   @Test
-  public void should_fail_and_display_description_of_assertion_if_condition_is_not_satisfied() {
+  public final void should_fail_and_display_description_of_assertion_if_condition_is_not_satisfied() {
     expectAssertionError("[A Test] actual value:<null> should be:<NotNull>").on(new CodeToTest() {
       public void run() {
         assertObject.as("A Test")
@@ -82,7 +82,7 @@ public abstract class GenericAssert_is_TestCase<T> implements GenericAssert_sati
   }
 
   @Test
-  public void should_fail_and_display_description_of_condition_if_condition_is_not_satisfied() {
+  public final void should_fail_and_display_description_of_condition_if_condition_is_not_satisfied() {
     expectAssertionError("actual value:<null> should be:<non-null>").on(new CodeToTest() {
       public void run() {
         assertObject.is(notNull().as("non-null"));
@@ -91,7 +91,7 @@ public abstract class GenericAssert_is_TestCase<T> implements GenericAssert_sati
   }
 
   @Test
-  public void should_fail_and_display_descriptions_of_assertion_and_condition_if_condition_is_not_satisfied() {
+  public final void should_fail_and_display_descriptions_of_assertion_and_condition_if_condition_is_not_satisfied() {
     expectAssertionError("[A Test] actual value:<null> should be:<non-null>").on(new CodeToTest() {
       public void run() {
         assertObject.as("A Test")
@@ -101,7 +101,7 @@ public abstract class GenericAssert_is_TestCase<T> implements GenericAssert_sati
   }
 
   @Test
-  public void should_fail_with_custom_message_if_condition_is_not_satisfied() {
+  public final void should_fail_with_custom_message_if_condition_is_not_satisfied() {
     expectAssertionError("My custom message").on(new CodeToTest() {
       public void run() {
         assertObject.overridingErrorMessage("My custom message").is(notNull());
@@ -110,7 +110,7 @@ public abstract class GenericAssert_is_TestCase<T> implements GenericAssert_sati
   }
 
   @Test
-  public void should_fail_with_custom_message_ignoring_description_of_condition_if_condition_is_not_satisfied() {
+  public final void should_fail_with_custom_message_ignoring_description_of_condition_if_condition_is_not_satisfied() {
     expectAssertionError("My custom message").on(new CodeToTest() {
       public void run() {
         assertObject.overridingErrorMessage("My custom message")
@@ -120,7 +120,7 @@ public abstract class GenericAssert_is_TestCase<T> implements GenericAssert_sati
   }
 
   @Test
-  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_condition_is_not_satisfied() {
+  public final void should_fail_with_custom_message_ignoring_description_of_assertion_if_condition_is_not_satisfied() {
     expectAssertionError("My custom message").on(new CodeToTest() {
       public void run() {
         assertObject.as("A Test")

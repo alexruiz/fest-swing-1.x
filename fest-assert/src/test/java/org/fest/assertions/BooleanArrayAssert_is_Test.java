@@ -14,102 +14,20 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.CommonFailures.expectErrorIfConditionIsNull;
 import static org.fest.assertions.EmptyArrays.emptyBooleanArray;
-import static org.fest.assertions.NotNull.notNullBooleanArray;
-import static org.fest.test.ExpectedFailure.expectAssertionError;
-
-import org.fest.test.CodeToTest;
-import org.junit.Test;
 
 /**
  * Tests for <code>{@link BooleanArrayAssert#is(Condition)}</code>.
  *
  * @author Alex Ruiz
  */
-public class BooleanArrayAssert_is_Test implements GenericAssert_satisfies_orAlias_TestCase {
+public class BooleanArrayAssert_is_Test extends GenericAssert_is_TestCase<boolean[]> {
 
-  @Test
-  public void should_pass_if_condition_is_satisfied() {
-    new BooleanArrayAssert(emptyBooleanArray()).is(notNullBooleanArray());
+  protected BooleanArrayAssert assertObject() {
+    return new BooleanArrayAssert(emptyBooleanArray());
   }
 
-  @Test
-  public void should_throw_error_if_condition_is_null() {
-    expectErrorIfConditionIsNull().on(new CodeToTest() {
-      public void run() {
-        new BooleanArrayAssert(emptyBooleanArray()).is(null);
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_if_condition_is_not_satisfied() {
-    expectAssertionError("actual value:<null> should be:<NotNull>").on(new CodeToTest() {
-      public void run() {
-        new BooleanArrayAssert(null).is(notNullBooleanArray());
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_condition_is_not_satisfied() {
-    expectAssertionError("[A Test] actual value:<null> should be:<NotNull>").on(
-      new CodeToTest() {
-        public void run() {
-          new BooleanArrayAssert(null).as("A Test")
-                                      .is(notNullBooleanArray());
-        }
-      });
-  }
-
-  @Test
-  public void should_fail_and_display_description_of_condition_if_condition_is_not_satisfied() {
-    expectAssertionError("actual value:<null> should be:<Not Null>").on(new CodeToTest() {
-      public void run() {
-        new BooleanArrayAssert(null).is(notNullBooleanArray().as("Not Null"));
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_and_display_descriptions_of_assertion_and_condition_if_condition_is_not_satisfied() {
-    expectAssertionError("[A Test] actual value:<null> should be:<Not Null>").on(new CodeToTest() {
-      public void run() {
-        new BooleanArrayAssert(null).as("A Test")
-                                    .is(notNullBooleanArray().as("Not Null"));
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_if_condition_is_not_satisfied() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new BooleanArrayAssert(null).overridingErrorMessage("My custom message")
-                                    .is(notNullBooleanArray());
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_condition_is_not_satisfied() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new BooleanArrayAssert(null).as("A Test")
-                                    .overridingErrorMessage("My custom message")
-                                    .is(notNullBooleanArray());
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_condition_if_condition_is_not_satisfied() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new BooleanArrayAssert(null).overridingErrorMessage("My custom message")
-                                    .is(notNullBooleanArray().as("Not Null"));
-      }
-    });
+  protected BooleanArrayAssert assertObjectWithNullTarget() {
+    return new BooleanArrayAssert(null);
   }
 }
