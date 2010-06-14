@@ -15,11 +15,6 @@
 package org.fest.assertions;
 
 import static org.fest.assertions.ArrayFactory.byteArray;
-import static org.fest.test.ExpectedFailure.expectAssertionError;
-
-import org.fest.test.CodeToTest;
-import org.junit.BeforeClass;
-import org.junit.Test;
 
 /**
  * Tests for <code>{@link ByteArrayAssert#isEqualTo(byte[])}</code>.
@@ -27,62 +22,17 @@ import org.junit.Test;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class ByteArrayAssert_isEqualTo_Test implements GenericAssert_isEqualTo_TestCase {
+public class ByteArrayAssert_isEqualTo_Test extends GenericAssert_isEqualTo_TestBase<byte[]> {
 
-  private static byte[] array;
-
-  @BeforeClass
-  public static void setUpOnce() {
-    array = byteArray(8, 6);
+  protected ByteArrayAssert assertObject() {
+    return new ByteArrayAssert(byteArray(8, 6));
   }
 
-  @Test
-  public void should_pass_if_actual_and_expected_are_equal() {
-    new ByteArrayAssert(array).isEqualTo(byteArray(8, 6));
+  protected ByteArrayAssert assertObjectWithNullTarget() {
+    return new ByteArrayAssert(null);
   }
 
-  @Test
-  public void should_pass_if_both_actual_and_expected_are_null() {
-    new ByteArrayAssert(null).isEqualTo(null);
-  }
-
-  @Test
-  public void should_fail_if_actual_and_expected_are_not_equal() {
-    expectAssertionError("expected:<[7]> but was:<[8, 6]>").on(new CodeToTest() {
-      public void run() {
-        new ByteArrayAssert(array).isEqualTo(byteArray(7));
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_and_expected_are_not_equal() {
-    expectAssertionError("[A Test] expected:<[7]> but was:<[8, 6]>").on(new CodeToTest() {
-      public void run() {
-        new ByteArrayAssert(array).as("A Test")
-                                  .isEqualTo(byteArray(7));
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_if_actual_and_expected_are_not_equal() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new ByteArrayAssert(array).overridingErrorMessage("My custom message")
-                                  .isEqualTo(byteArray(7));
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_and_expected_are_not_equal() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new ByteArrayAssert(array).as("A Test")
-                                  .overridingErrorMessage("My custom message")
-                                  .isEqualTo(byteArray(7));
-      }
-    });
+  protected byte[] notEqualValue() {
+    return byteArray(7);
   }
 }

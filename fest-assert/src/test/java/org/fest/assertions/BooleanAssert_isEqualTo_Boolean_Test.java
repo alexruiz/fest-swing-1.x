@@ -14,62 +14,25 @@
  */
 package org.fest.assertions;
 
-import static java.lang.Boolean.*;
-import static org.fest.test.ExpectedFailure.expectAssertionError;
-
-import org.fest.test.CodeToTest;
-import org.junit.Test;
+import static java.lang.Boolean.TRUE;
 
 /**
- * Tests for <code>{@link BooleanAssert#isEqualTo(boolean)}</code>.
+ * Tests for <code>{@link BooleanAssert#isEqualTo(Boolean)}</code>.
  *
  * @author Ansgar Konermann
  * @author Alex Ruiz
  */
-public class BooleanAssert_isEqualTo_Boolean_Test implements Assert_isEqualTo_TestCase {
+public class BooleanAssert_isEqualTo_Boolean_Test extends GenericAssert_isEqualTo_TestBase<Boolean> {
 
-  @Test
-  public void should_pass_if_actual_and_expected_are_equal() {
-    new BooleanAssert(false).isEqualTo(FALSE);
+  protected BooleanAssert assertObject() {
+    return new BooleanAssert(false);
   }
 
-  @Test
-  public void should_fail_if_actual_and_expected_are_not_equal() {
-    expectAssertionError("expected:<[tru]e> but was:<[fals]e>").on(new CodeToTest() {
-      public void run() {
-        new BooleanAssert(false).isEqualTo(TRUE);
-      }
-    });
+  protected BooleanAssert assertObjectWithNullTarget() {
+    return new BooleanAssert(null);
   }
 
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_and_expected_are_not_equal() {
-    expectAssertionError("[A Test] expected:<[tru]e> but was:<[fals]e>").on(new CodeToTest() {
-      public void run() {
-        new BooleanAssert(false).as("A Test")
-                                .isEqualTo(TRUE);
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_if_actual_and_expected_are_not_equal() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new BooleanAssert(false).overridingErrorMessage("My custom message")
-                                .isEqualTo(TRUE);
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_and_expected_are_not_equal() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new BooleanAssert(false).as("A Test")
-                                .overridingErrorMessage("My custom message")
-                                .isEqualTo(TRUE);
-      }
-    });
+  protected Boolean notEqualValue() {
+    return TRUE;
   }
 }

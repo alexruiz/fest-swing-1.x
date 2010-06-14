@@ -35,13 +35,15 @@ final class ComparisonFailureMessages {
     String d = inBrackets(description);
     String a = format(actual);
     String e = format(expected);
-    if (isArray(actual) || isArray(expected)) return concat(d, "expected:<", e, "> but was:<", a, ">");
-    return new ComparisonFailure(d, e, a).getMessage();
+    boolean isArray = isArray(actual) || isArray(expected);
+    if (!isArray) return new ComparisonFailure(d, e, a).getMessage();
+    if (!isEmpty(d)) d = concat(d, " ");
+    return concat(d, "expected:<", e, "> but was:<", a, ">");
   }
 
   private static String inBrackets(String s) {
     if (isEmpty(s)) return "";
-    return concat("[", s, "] ");
+    return concat("[", s, "]");
   }
 
   private static boolean isArray(Object o) {
