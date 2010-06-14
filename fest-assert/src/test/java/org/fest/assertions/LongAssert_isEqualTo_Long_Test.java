@@ -31,7 +31,7 @@ public class LongAssert_isEqualTo_Long_Test extends GenericAssert_isEqualTo_Test
     return new LongAssert(null);
   }
 
-  protected Long expected() {
+  protected Long expectedValue() {
     return 456l;
   }
 }

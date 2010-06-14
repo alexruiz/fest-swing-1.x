@@ -14,6 +14,7 @@
  */
 package org.fest.assertions;
 
+import static org.fest.assertions.ComparisonFailureMessages.*;
 import static org.fest.test.ExpectedFailure.expectAssertionError;
 
 import org.fest.test.CodeToTest;
@@ -34,7 +35,7 @@ public class BooleanAssert_isEqualTo_Test implements Assert_isEqualTo_TestCase {
 
   @Test
   public void should_fail_if_actual_and_expected_are_not_equal() {
-    expectAssertionError("expected:<[tru]e> but was:<[fals]e>").on(new CodeToTest() {
+    expectAssertionError(comparisonFailureMessage(expected("true"), actual("false"))).on(new CodeToTest() {
       public void run() {
         new BooleanAssert(false).isEqualTo(true);
       }
@@ -43,7 +44,8 @@ public class BooleanAssert_isEqualTo_Test implements Assert_isEqualTo_TestCase {
 
   @Test
   public void should_fail_and_display_description_of_assertion_if_actual_and_expected_are_not_equal() {
-    expectAssertionError("[A Test] expected:<[tru]e> but was:<[fals]e>").on(new CodeToTest() {
+    String msg = comparisonFailureMessage(description("A Test"), expected("true"), actual("false"));
+    expectAssertionError(msg).on(new CodeToTest() {
       public void run() {
         new BooleanAssert(false).as("A Test")
                                 .isEqualTo(true);

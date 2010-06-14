@@ -32,7 +32,7 @@ public class ByteAssert_isEqualTo_Byte_Test extends GenericAssert_isEqualTo_Test
     return new ByteAssert(null);
   }
 
-  protected Byte expected() {
+  protected Byte expectedValue() {
     return (byte)99;
   }
 }

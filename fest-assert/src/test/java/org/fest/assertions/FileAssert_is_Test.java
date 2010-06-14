@@ -23,7 +23,7 @@ import java.io.File;
  *
  * @author Alex Ruiz
  */
-public class FileAssert_is_Test extends GenericAssert_satisfies_TestCase<File> {
+public class FileAssert_is_Test extends GenericAssert_is_TestCase<File> {
 
   protected FileAssert assertObject() {
     return new FileAssert(fileStub());

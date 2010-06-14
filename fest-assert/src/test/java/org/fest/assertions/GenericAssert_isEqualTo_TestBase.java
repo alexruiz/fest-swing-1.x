@@ -15,12 +15,12 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.Formatter.format;
+import static org.fest.assertions.ComparisonFailureMessages.*;
 import static org.fest.test.ExpectedFailure.expectAssertionError;
 
 import org.fest.test.CodeToTest;
-import org.junit.*;
-
+import org.junit.Before;
+import org.junit.Test;
 
 /**
  * Base class for testing <code>{@link GenericAssert#isEqualTo(Object)}.</code>
@@ -43,12 +43,12 @@ public abstract class GenericAssert_isEqualTo_TestBase<T> implements GenericAsse
   public final void setUp() {
     assertObject = assertObject();
     actual = assertObject.actual;
-    expected = expected();
+    expected = expectedValue();
   }
 
   protected abstract GenericAssert<T> assertObject();
 
-  protected abstract T expected();
+  protected abstract T expectedValue();
 
   @Test
   public void should_pass_if_actual_and_expected_are_equal() {
@@ -64,28 +64,21 @@ public abstract class GenericAssert_isEqualTo_TestBase<T> implements GenericAsse
 
   @Test
   public void should_fail_if_actual_and_expected_are_not_equal() {
-    expectAssertionError(errorMessage()).on(new CodeToTest() {
+    expectAssertionError(comparisonFailureMessage(expected(expected), actual(actual))).on(new CodeToTest() {
       public void run() {
         assertObject.isEqualTo(expected);
       }
     });
   }
 
-  private String errorMessage() {
-    return errorMessage("");
-  }
-
   @Test
   public void should_fail_and_display_description_of_assertion_if_actual_and_expected_are_not_equal() {
-    expectAssertionError(errorMessage("[A Test]")).on(new CodeToTest() {
+    String msg = comparisonFailureMessage(description("A Test"), expected(expected), actual(actual));
+    expectAssertionError(msg).on(new CodeToTest() {
       public void run() {
         assertObject.as("A Test").isEqualTo(expected);
       }
     });
-  }
-
-  private String errorMessage(String description) {
-    return new ComparisonFailure(description, format(expected), format(actual)).getMessage();
   }
 
   @Test

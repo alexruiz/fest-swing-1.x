@@ -31,7 +31,7 @@ public class DoubleAssert_isEqualTo_Double_Test extends GenericAssert_isEqualTo_
     return new DoubleAssert(null);
   }
 
-  protected Double expected() {
+  protected Double expectedValue() {
     return 3.1415d;
   }
 }

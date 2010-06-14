@@ -35,7 +35,7 @@ public class CharAssert_isLowerCase_Test {
 
   @Test
   public void should_fail_if_actual_is_not_lowercase() {
-    expectAssertionError("<A> should be a lowercase character").on(new CodeToTest() {
+    expectAssertionError("<A> should be a lower-case character").on(new CodeToTest() {
       public void run() {
         new CharAssert('A').isLowerCase();
       }
@@ -44,14 +44,14 @@ public class CharAssert_isLowerCase_Test {
 
   @Test
   public void should_fail_and_display_description_of_assertion_if_actual_is_not_lowercase() {
-    expectAssertionError("[A Test] <A> should be a lowercase character").on(new CodeToTest() {
+    expectAssertionError("[A Test] <A> should be a lower-case character").on(new CodeToTest() {
       public void run() {
         new CharAssert('A').as("A Test")
                            .isLowerCase();
       }
     });
   }
-  
+
   @Test
   public void should_fail_with_custom_message_if_actual_is_not_lowercase() {
     expectAssertionError("My custom message").on(new CodeToTest() {
@@ -61,7 +61,7 @@ public class CharAssert_isLowerCase_Test {
       }
     });
   }
-  
+
   @Test
   public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_is_not_lowercase() {
     expectAssertionError("My custom message").on(new CodeToTest() {
