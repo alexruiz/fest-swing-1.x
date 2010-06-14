@@ -14,74 +14,23 @@
  */
 package org.fest.assertions;
 
-import static org.fest.test.ExpectedFailure.expectAssertionError;
-
-import org.fest.test.CodeToTest;
-import org.junit.BeforeClass;
-import org.junit.Test;
-
 /**
  * Tests for <code>{@link ObjectAssert#isEqualTo(Object)}</code>.
  *
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class ObjectAssert_isEqualTo_Test implements GenericAssert_isEqualTo_TestCase {
+public class ObjectAssert_isEqualTo_Test extends GenericAssert_isEqualTo_TestBase<Object> {
 
-  private static Object six;
-
-  @BeforeClass
-  public static void setUpOnce() {
-    six = 6;
+  protected ObjectAssert assertObject() {
+    return new ObjectAssert(6);
   }
 
-  @Test
-  public void should_pass_if_actual_and_expected_are_equal() {
-    new ObjectAssert(six).isEqualTo(6);
+  protected ObjectAssert assertObjectWithNullTarget() {
+    return new ObjectAssert(null);
   }
 
-  @Test
-  public void should_pass_if_both_actual_and_expected_are_null() {
-    new ObjectAssert(null).isEqualTo(null);
-  }
-
-  @Test
-  public void should_fail_if_actual_and_expected_are_not_equal() {
-    expectAssertionError("expected:<[8]> but was:<[6]>").on(new CodeToTest() {
-      public void run() {
-        new ObjectAssert(six).isEqualTo(8);
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_and_expected_are_not_equal() {
-    expectAssertionError("[A Test] expected:<[8]> but was:<[6]>").on(new CodeToTest() {
-      public void run() {
-        new ObjectAssert(six).as("A Test")
-                             .isEqualTo(8);
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_if_actual_and_expected_are_not_equal() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new ObjectAssert(six).overridingErrorMessage("My custom message")
-                             .isEqualTo(8);
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_and_expected_are_not_equal() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new ObjectAssert(six).as("A Test")
-                             .overridingErrorMessage("My custom message")
-                             .isEqualTo(8);
-      }
-    });
+  protected Object notEqualValue() {
+    return 8;
   }
 }

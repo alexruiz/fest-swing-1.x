@@ -14,11 +14,6 @@
  */
 package org.fest.assertions;
 
-import static org.fest.test.ExpectedFailure.expectAssertionError;
-
-import org.fest.test.CodeToTest;
-import org.junit.BeforeClass;
-import org.junit.Test;
 
 /**
  * Tests for <code>{@link ThrowableAssert#isEqualTo(Throwable)}</code>.
@@ -26,64 +21,17 @@ import org.junit.Test;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class ThrowableAssert_isEqualTo_Test implements GenericAssert_isEqualTo_TestCase {
+public class ThrowableAssert_isEqualTo_Test extends GenericAssert_isEqualTo_TestBase<Throwable> {
 
-  private static Exception exception;
-
-  @BeforeClass
-  public static void setUpOnce() {
-    exception = new Exception();
+  protected ThrowableAssert assertObject() {
+    return new ThrowableAssert(new Exception());
   }
 
-  @Test
-  public void should_pass_if_actual_and_expected_are_equal() {
-    new ThrowableAssert(exception).isEqualTo(exception);
+  protected ThrowableAssert assertObjectWithNullTarget() {
+    return new ThrowableAssert(null);
   }
 
-  @Test
-  public void should_pass_if_both_actual_and_expected_are_null() {
-    new ThrowableAssert(null).isEqualTo(null);
-  }
-
-  @Test
-  public void should_fail_if_actual_and_expected_are_not_equal() {
-    String message = "expected:<java.lang.[IllegalArgument]Exception> but was:<java.lang.[]Exception>";
-    expectAssertionError(message).on(new CodeToTest() {
-      public void run() {
-        new ThrowableAssert(exception).isEqualTo(new IllegalArgumentException());
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_and_expected_are_not_equal() {
-    String message = "[A Test] expected:<java.lang.[IllegalArgument]Exception> but was:<java.lang.[]Exception>";
-    expectAssertionError(message).on(new CodeToTest() {
-      public void run() {
-        new ThrowableAssert(exception).as("A Test")
-                                      .isEqualTo(new IllegalArgumentException());
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_if_actual_and_expected_are_not_equal() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new ThrowableAssert(exception).overridingErrorMessage("My custom message")
-                                      .isEqualTo(new IllegalArgumentException());
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_and_expected_are_not_equal() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new ThrowableAssert(exception).as("A Test")
-                                      .overridingErrorMessage("My custom message")
-                                      .isEqualTo(new IllegalArgumentException());
-      }
-    });
+  protected Throwable notEqualValue() {
+    return new AssertionError();
   }
 }

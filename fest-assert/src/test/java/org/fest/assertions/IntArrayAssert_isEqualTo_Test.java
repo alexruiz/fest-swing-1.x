@@ -15,11 +15,6 @@
 package org.fest.assertions;
 
 import static org.fest.assertions.ArrayFactory.intArray;
-import static org.fest.test.ExpectedFailure.expectAssertionError;
-
-import org.fest.test.CodeToTest;
-import org.junit.BeforeClass;
-import org.junit.Test;
 
 /**
  * Tests for <code>{@link IntArrayAssert#isEqualTo(int[])}</code>.
@@ -27,62 +22,17 @@ import org.junit.Test;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class IntArrayAssert_isEqualTo_Test implements GenericAssert_isEqualTo_TestCase {
+public class IntArrayAssert_isEqualTo_Test extends GenericAssert_isEqualTo_TestBase<int[]> {
 
-  private static int[] array;
-
-  @BeforeClass
-  public static void setUpOnce() {
-    array = intArray(6, 8);
+  protected IntArrayAssert assertObject() {
+    return new IntArrayAssert(intArray(6, 8));
   }
 
-  @Test
-  public void should_pass_if_actual_and_expected_are_equal() {
-    new IntArrayAssert(array).isEqualTo(intArray(6, 8));
+  protected IntArrayAssert assertObjectWithNullTarget() {
+    return new IntArrayAssert(null);
   }
 
-  @Test
-  public void should_pass_if_both_actual_and_expected_are_null() {
-    new IntArrayAssert(null).isEqualTo(null);
-  }
-
-  @Test
-  public void should_fail_if_actual_and_expected_are_not_equal() {
-    expectAssertionError("expected:<[10, 2]> but was:<[6, 8]>").on(new CodeToTest() {
-      public void run() {
-        new IntArrayAssert(array).isEqualTo(intArray(10, 2));
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_and_expected_are_not_equal() {
-    expectAssertionError("[A Test] expected:<[10, 2]> but was:<[6, 8]>").on(new CodeToTest() {
-      public void run() {
-        new IntArrayAssert(array).as("A Test")
-                                 .isEqualTo(intArray(10, 2));
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_if_actual_and_expected_are_not_equal() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new IntArrayAssert(array).overridingErrorMessage("My custom message")
-                                 .isEqualTo(intArray(10, 2));
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_and_expected_are_not_equal() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new IntArrayAssert(array).as("A Test")
-                                 .overridingErrorMessage("My custom message")
-                                 .isEqualTo(intArray(10, 2));
-      }
-    });
+  protected int[] notEqualValue() {
+    return intArray(6);
   }
 }
