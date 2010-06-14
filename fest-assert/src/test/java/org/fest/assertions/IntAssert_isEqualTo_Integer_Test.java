@@ -21,7 +21,7 @@ package org.fest.assertions;
  * @author Ansgar Konermann
  * @author Alex Ruiz
  */
-public class IntAssert_isEqualTo_Integer_Test extends GenericAssert_isEqualTo_TestBase<Integer> {
+public class IntAssert_isEqualTo_Integer_Test extends GenericAssert_isEqualTo_TestCase<Integer> {
 
   protected IntAssert assertObject() {
     return new IntAssert(8);

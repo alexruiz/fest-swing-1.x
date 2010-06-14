@@ -21,7 +21,7 @@ package org.fest.assertions;
  * @author Ansgar Konermann
  * @author Alex Ruiz
  */
-public class CharAssert_isEqualTo_Character_Test extends GenericAssert_isEqualTo_TestBase<Character> {
+public class CharAssert_isEqualTo_Character_Test extends GenericAssert_isEqualTo_TestCase<Character> {
 
   protected CharAssert assertObject() {
     return new CharAssert('a');

@@ -25,7 +25,7 @@ import java.util.Collection;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class CollectionAssert_isEqualTo_Test extends GenericAssert_isEqualTo_TestBase<Collection<?>> {
+public class CollectionAssert_isEqualTo_Test extends GenericAssert_isEqualTo_TestCase<Collection<?>> {
 
   protected CollectionAssert assertObject() {
     return new CollectionAssert(list("Luke", "Leia"));

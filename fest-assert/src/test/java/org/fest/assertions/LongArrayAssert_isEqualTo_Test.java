@@ -22,7 +22,7 @@ import static org.fest.assertions.ArrayFactory.longArray;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class LongArrayAssert_isEqualTo_Test extends GenericAssert_isEqualTo_TestBase<long[]> {
+public class LongArrayAssert_isEqualTo_Test extends GenericAssert_isEqualTo_TestCase<long[]> {
 
   protected LongArrayAssert assertObject() {
     return new LongArrayAssert(longArray(6L, 8L));

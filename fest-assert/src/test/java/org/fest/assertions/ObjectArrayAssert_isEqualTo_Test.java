@@ -22,7 +22,7 @@ import static org.fest.assertions.ArrayFactory.objectArray;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class ObjectArrayAssert_isEqualTo_Test extends GenericAssert_isEqualTo_TestBase<Object[]> {
+public class ObjectArrayAssert_isEqualTo_Test extends GenericAssert_isEqualTo_TestCase<Object[]> {
 
   protected ObjectArrayAssert assertObject() {
     return new ObjectArrayAssert(objectArray(6, 8));

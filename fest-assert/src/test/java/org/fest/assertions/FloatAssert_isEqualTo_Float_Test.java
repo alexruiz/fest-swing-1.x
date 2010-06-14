@@ -21,7 +21,7 @@ package org.fest.assertions;
  * @author Ansgar Konermann
  * @author Alex Ruiz
  */
-public class FloatAssert_isEqualTo_Float_Test extends GenericAssert_isEqualTo_TestBase<Float> {
+public class FloatAssert_isEqualTo_Float_Test extends GenericAssert_isEqualTo_TestCase<Float> {
 
   protected FloatAssert assertObject() {
     return new FloatAssert(5f);

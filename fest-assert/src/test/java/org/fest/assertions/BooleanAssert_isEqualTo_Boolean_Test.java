@@ -22,7 +22,7 @@ import static java.lang.Boolean.TRUE;
  * @author Ansgar Konermann
  * @author Alex Ruiz
  */
-public class BooleanAssert_isEqualTo_Boolean_Test extends GenericAssert_isEqualTo_TestBase<Boolean> {
+public class BooleanAssert_isEqualTo_Boolean_Test extends GenericAssert_isEqualTo_TestCase<Boolean> {
 
   protected BooleanAssert assertObject() {
     return new BooleanAssert(false);

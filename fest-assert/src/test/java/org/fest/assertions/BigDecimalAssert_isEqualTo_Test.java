@@ -26,7 +26,7 @@ import java.math.BigDecimal;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class BigDecimalAssert_isEqualTo_Test extends GenericAssert_isEqualTo_TestBase<BigDecimal> {
+public class BigDecimalAssert_isEqualTo_Test extends GenericAssert_isEqualTo_TestCase<BigDecimal> {
 
   protected BigDecimalAssert assertObject() {
     return new BigDecimalAssert(eight());

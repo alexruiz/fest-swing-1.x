@@ -26,7 +26,7 @@ import java.io.File;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class FileAssert_isEqualTo_Test extends GenericAssert_isEqualTo_TestBase<File> {
+public class FileAssert_isEqualTo_Test extends GenericAssert_isEqualTo_TestCase<File> {
 
   protected FileAssert assertObject() {
     return new FileAssert(temporaryFolder());

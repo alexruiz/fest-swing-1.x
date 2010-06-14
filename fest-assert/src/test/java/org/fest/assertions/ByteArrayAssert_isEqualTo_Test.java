@@ -22,7 +22,7 @@ import static org.fest.assertions.ArrayFactory.byteArray;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class ByteArrayAssert_isEqualTo_Test extends GenericAssert_isEqualTo_TestBase<byte[]> {
+public class ByteArrayAssert_isEqualTo_Test extends GenericAssert_isEqualTo_TestCase<byte[]> {
 
   protected ByteArrayAssert assertObject() {
     return new ByteArrayAssert(byteArray(8, 6));

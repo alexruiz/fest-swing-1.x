@@ -21,7 +21,7 @@ package org.fest.assertions;
  * @author Ansgar Konermann
  * @author Alex Ruiz
  */
-public class LongAssert_isEqualTo_Long_Test extends GenericAssert_isEqualTo_TestBase<Long> {
+public class LongAssert_isEqualTo_Long_Test extends GenericAssert_isEqualTo_TestCase<Long> {
 
   protected LongAssert assertObject() {
     return new LongAssert(123l);

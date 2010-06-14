@@ -22,7 +22,7 @@ import static org.fest.assertions.ArrayFactory.doubleArray;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class DoubleArrayAssert_isEqualTo_Test extends GenericAssert_isEqualTo_TestBase<double[]> {
+public class DoubleArrayAssert_isEqualTo_Test extends GenericAssert_isEqualTo_TestCase<double[]> {
 
   protected DoubleArrayAssert assertObject() {
     return new DoubleArrayAssert(doubleArray(6d, 8d));

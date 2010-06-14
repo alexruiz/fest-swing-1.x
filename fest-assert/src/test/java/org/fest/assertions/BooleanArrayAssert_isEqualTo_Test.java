@@ -22,7 +22,7 @@ import static org.fest.assertions.ArrayFactory.booleanArray;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class BooleanArrayAssert_isEqualTo_Test extends GenericAssert_isEqualTo_TestBase<boolean[]> {
+public class BooleanArrayAssert_isEqualTo_Test extends GenericAssert_isEqualTo_TestCase<boolean[]> {
 
   protected BooleanArrayAssert assertObject() {
     return new BooleanArrayAssert(booleanArray(true));

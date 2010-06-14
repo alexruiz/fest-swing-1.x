@@ -24,7 +24,7 @@ import java.util.List;
  *
  * @author Alex Ruiz
  */
-public class ListAssert_isEqualTo_Test extends GenericAssert_isEqualTo_TestBase<List<?>> {
+public class ListAssert_isEqualTo_Test extends GenericAssert_isEqualTo_TestCase<List<?>> {
 
   protected ListAssert assertObject() {
     return new ListAssert(list("Luke", "Leia"));

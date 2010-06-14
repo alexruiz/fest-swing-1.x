@@ -21,7 +21,7 @@ package org.fest.assertions;
  * @author Ansgar Konermann
  * @author Alex Ruiz
  */
-public class DoubleAssert_isEqualTo_Double_Test extends GenericAssert_isEqualTo_TestBase<Double> {
+public class DoubleAssert_isEqualTo_Double_Test extends GenericAssert_isEqualTo_TestCase<Double> {
 
   protected DoubleAssert assertObject() {
     return new DoubleAssert(2.7183d);

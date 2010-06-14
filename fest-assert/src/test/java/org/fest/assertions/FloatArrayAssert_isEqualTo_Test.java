@@ -22,7 +22,7 @@ import static org.fest.assertions.ArrayFactory.floatArray;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class FloatArrayAssert_isEqualTo_Test extends GenericAssert_isEqualTo_TestBase<float[]> {
+public class FloatArrayAssert_isEqualTo_Test extends GenericAssert_isEqualTo_TestCase<float[]> {
 
   protected FloatArrayAssert assertObject() {
     return new FloatArrayAssert(floatArray(6f, 8f));

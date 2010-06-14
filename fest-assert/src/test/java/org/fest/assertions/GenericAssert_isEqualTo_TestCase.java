@@ -33,7 +33,7 @@ import org.junit.Test;
  * @author Ansgar Konermann
  * @author Alex Ruiz
  */
-public abstract class GenericAssert_isEqualTo_TestBase<T> {
+public abstract class GenericAssert_isEqualTo_TestCase<T> {
 
   private GenericAssert<T> assertObject;
   private T actual;

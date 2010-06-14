@@ -21,7 +21,7 @@ package org.fest.assertions;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class ThrowableAssert_isEqualTo_Test extends GenericAssert_isEqualTo_TestBase<Throwable> {
+public class ThrowableAssert_isEqualTo_Test extends GenericAssert_isEqualTo_TestCase<Throwable> {
 
   protected ThrowableAssert assertObject() {
     return new ThrowableAssert(new Exception());

@@ -22,7 +22,7 @@ import static org.fest.assertions.ArrayFactory.charArray;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class CharArrayAssert_isEqualTo_Test extends GenericAssert_isEqualTo_TestBase<char[]> {
+public class CharArrayAssert_isEqualTo_Test extends GenericAssert_isEqualTo_TestCase<char[]> {
 
   protected CharArrayAssert assertObject() {
     return new CharArrayAssert(charArray('a', 'b'));

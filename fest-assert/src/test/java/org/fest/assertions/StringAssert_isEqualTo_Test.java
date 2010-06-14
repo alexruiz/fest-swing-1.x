@@ -22,7 +22,7 @@ package org.fest.assertions;
  * @author David DIDIER
  * @author Alex Ruiz
  */
-public class StringAssert_isEqualTo_Test extends GenericAssert_isEqualTo_TestBase<String> {
+public class StringAssert_isEqualTo_Test extends GenericAssert_isEqualTo_TestCase<String> {
 
   protected StringAssert assertObject() {
     return new StringAssert("Luke");

@@ -20,7 +20,7 @@ package org.fest.assertions;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class ObjectAssert_isEqualTo_Test extends GenericAssert_isEqualTo_TestBase<Object> {
+public class ObjectAssert_isEqualTo_Test extends GenericAssert_isEqualTo_TestCase<Object> {
 
   protected ObjectAssert assertObject() {
     return new ObjectAssert(6);

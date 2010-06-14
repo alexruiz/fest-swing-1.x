@@ -22,7 +22,7 @@ package org.fest.assertions;
  * @author Ansgar Konermann
  * @author Alex Ruiz
  */
-public class ByteAssert_isEqualTo_Byte_Test extends GenericAssert_isEqualTo_TestBase<Byte> {
+public class ByteAssert_isEqualTo_Byte_Test extends GenericAssert_isEqualTo_TestCase<Byte> {
 
   protected ByteAssert assertObject() {
     return new ByteAssert((byte)123);

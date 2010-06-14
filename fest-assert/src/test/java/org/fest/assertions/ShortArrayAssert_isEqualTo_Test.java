@@ -22,7 +22,7 @@ import static org.fest.assertions.ArrayFactory.shortArray;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class ShortArrayAssert_isEqualTo_Test extends GenericAssert_isEqualTo_TestBase<short[]> {
+public class ShortArrayAssert_isEqualTo_Test extends GenericAssert_isEqualTo_TestCase<short[]> {
 
   protected ShortArrayAssert assertObject() {
     return new ShortArrayAssert(shortArray(6, 8));

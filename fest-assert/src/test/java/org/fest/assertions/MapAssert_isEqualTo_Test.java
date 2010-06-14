@@ -26,7 +26,7 @@ import java.util.Map;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class MapAssert_isEqualTo_Test extends GenericAssert_isEqualTo_TestBase<Map<?, ?>> {
+public class MapAssert_isEqualTo_Test extends GenericAssert_isEqualTo_TestCase<Map<?, ?>> {
 
   protected MapAssert assertObject() {
     return new MapAssert(map(entry("key1", 1), entry("key2", 2)));

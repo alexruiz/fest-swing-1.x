@@ -22,7 +22,7 @@ import static org.fest.assertions.ArrayFactory.intArray;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class IntArrayAssert_isEqualTo_Test extends GenericAssert_isEqualTo_TestBase<int[]> {
+public class IntArrayAssert_isEqualTo_Test extends GenericAssert_isEqualTo_TestCase<int[]> {
 
   protected IntArrayAssert assertObject() {
     return new IntArrayAssert(intArray(6, 8));
