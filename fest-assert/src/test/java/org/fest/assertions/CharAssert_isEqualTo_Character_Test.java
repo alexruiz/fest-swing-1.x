@@ -31,7 +31,7 @@ public class CharAssert_isEqualTo_Character_Test extends GenericAssert_isEqualTo
     return new CharAssert(null);
   }
 
-  protected Character expectedValue() {
+  protected Character notEqualValue() {
     return 'e';
   }
 }

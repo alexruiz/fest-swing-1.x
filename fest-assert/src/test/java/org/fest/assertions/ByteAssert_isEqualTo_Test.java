@@ -14,7 +14,7 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.ComparisonFailureMessages.*;
+import static org.fest.assertions.ComparisonFailureMessages.comparisonFailureMessage;
 import static org.fest.assertions.Primitives.asByte;
 import static org.fest.test.ExpectedFailure.expectAssertionError;
 
@@ -36,7 +36,7 @@ public class ByteAssert_isEqualTo_Test implements Assert_isEqualTo_TestCase {
 
   @Test
   public void should_fail_if_actual_and_expected_are_not_equal() {
-    expectAssertionError(comparisonFailureMessage(expected("8"), actual("6"))).on(new CodeToTest() {
+    expectAssertionError(comparisonFailureMessage(6, 8)).on(new CodeToTest() {
       public void run() {
         new ByteAssert(asByte(6)).isEqualTo(asByte(8));
       }
@@ -45,8 +45,7 @@ public class ByteAssert_isEqualTo_Test implements Assert_isEqualTo_TestCase {
 
   @Test
   public void should_fail_and_display_description_of_assertion_if_actual_and_expected_are_not_equal() {
-    String msg = comparisonFailureMessage(description("A Test"), expected("8"), actual("6"));
-    expectAssertionError(msg).on(new CodeToTest() {
+    expectAssertionError(comparisonFailureMessage("A Test", 6, 8)).on(new CodeToTest() {
       public void run() {
         new ByteAssert(asByte(6)).as("A Test")
                                  .isEqualTo(asByte(8));

@@ -31,7 +31,7 @@ public class ShortAssert_isEqualTo_Short_Test extends GenericAssert_isEqualTo_Te
     return new ShortAssert(null);
   }
 
-  protected Short expectedValue() {
+  protected Short notEqualValue() {
     return (short)-17;
   }
 }

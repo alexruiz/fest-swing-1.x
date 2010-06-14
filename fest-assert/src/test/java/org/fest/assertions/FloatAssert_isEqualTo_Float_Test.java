@@ -31,7 +31,7 @@ public class FloatAssert_isEqualTo_Float_Test extends GenericAssert_isEqualTo_Te
     return new FloatAssert(null);
   }
 
-  protected Float expectedValue() {
+  protected Float notEqualValue() {
     return 8f;
   }
 }

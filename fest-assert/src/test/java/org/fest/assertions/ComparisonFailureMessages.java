@@ -27,53 +27,24 @@ import org.junit.ComparisonFailure;
  */
 final class ComparisonFailureMessages {
 
-  private static final Description EMPTY_DESCRIPTION = description("");
-
-  static String comparisonFailureMessage(Expected expected, Actual actual) {
-    return comparisonFailureMessage(EMPTY_DESCRIPTION, expected, actual);
+  static String comparisonFailureMessage(Object actual, Object expected) {
+    return comparisonFailureMessage(null, actual, expected);
   }
 
-  static String comparisonFailureMessage(Description description, Expected expected, Actual actual) {
-    return new ComparisonFailure(description.value(), expected.value, actual.value).getMessage();
+  static String comparisonFailureMessage(String description, Object actual, Object expected) {
+    String d = inBrackets(description);
+    String a = format(actual);
+    String e = format(expected);
+    if (isArray(actual) || isArray(expected)) return concat(d, "expected:<", e, "> but was:<", a, ">");
+    return new ComparisonFailure(d, e, a).getMessage();
   }
 
-  static Description description(String value) {
-    String formatted = value;
-    if (!isEmpty(value)) formatted = concat("[", value, "]");
-    return new BasicDescription(formatted);
+  private static String inBrackets(String s) {
+    if (isEmpty(s)) return "";
+    return concat("[", s, "] ");
   }
 
-  static Expected expected(Object value) {
-    return expected(format(value));
-  }
-
-  static Expected expected(String value) {
-    return new Expected(value);
-  }
-
-  static Actual actual(Object value) {
-    return actual(format(value));
-  }
-
-  static Actual actual(String value) {
-    return new Actual(value);
-  }
-
-  private ComparisonFailureMessages() {}
-
-  static class Expected {
-    private final String value;
-
-    private Expected(String value) {
-      this.value = value;
-    }
-  }
-
-  static class Actual {
-    private final String value;
-
-    private Actual(String value) {
-      this.value = value;
-    }
+  private static boolean isArray(Object o) {
+    return o != null && o.getClass().isArray();
   }
 }
