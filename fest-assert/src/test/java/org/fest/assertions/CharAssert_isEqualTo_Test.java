@@ -14,9 +14,11 @@
  */
 package org.fest.assertions;
 
+import static org.fest.assertions.ComparisonFailureMessages.comparisonFailureMessage;
 import static org.fest.test.ExpectedFailure.expectAssertionError;
 
 import org.fest.test.CodeToTest;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 /**
@@ -28,26 +30,35 @@ import org.junit.Test;
  */
 public class CharAssert_isEqualTo_Test implements Assert_isEqualTo_TestCase {
 
+  private static char actual;
+  private static char notEqualValue;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    actual = 'a';
+    notEqualValue = 'b';
+  }
+
   @Test
   public void should_pass_if_actual_and_expected_are_equal() {
-    new CharAssert('a').isEqualTo('a');
+    new CharAssert(actual).isEqualTo('a');
   }
 
   @Test
   public void should_fail_if_actual_and_expected_are_not_equal() {
-    expectAssertionError("expected:<b> but was:<a>").on(new CodeToTest() {
+    expectAssertionError(comparisonFailureMessage(actual, notEqualValue)).on(new CodeToTest() {
       public void run() {
-        new CharAssert('a').isEqualTo('b');
+        new CharAssert(actual).isEqualTo(notEqualValue);
       }
     });
   }
 
   @Test
   public void should_fail_and_display_description_of_assertion_if_actual_and_expected_are_not_equal() {
-    expectAssertionError("[A Test] expected:<b> but was:<a>").on(new CodeToTest() {
+    expectAssertionError(comparisonFailureMessage("A Test", actual, notEqualValue)).on(new CodeToTest() {
       public void run() {
-        new CharAssert('a').as("A Test")
-                           .isEqualTo('b');
+        new CharAssert(actual).as("A Test")
+                              .isEqualTo(notEqualValue);
       }
     });
   }
@@ -56,8 +67,8 @@ public class CharAssert_isEqualTo_Test implements Assert_isEqualTo_TestCase {
   public void should_fail_with_custom_message_if_actual_and_expected_are_not_equal() {
     expectAssertionError("My custom message").on(new CodeToTest() {
       public void run() {
-        new CharAssert('a').overridingErrorMessage("My custom message")
-                           .isEqualTo('b');
+        new CharAssert(actual).overridingErrorMessage("My custom message")
+                              .isEqualTo(notEqualValue);
       }
     });
   }
@@ -66,9 +77,9 @@ public class CharAssert_isEqualTo_Test implements Assert_isEqualTo_TestCase {
   public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_and_expected_are_not_equal() {
     expectAssertionError("My custom message").on(new CodeToTest() {
       public void run() {
-        new CharAssert('a').as("A Test")
-                           .overridingErrorMessage("My custom message")
-                           .isEqualTo('b');
+        new CharAssert(actual).as("A Test")
+                              .overridingErrorMessage("My custom message")
+                              .isEqualTo(notEqualValue);
       }
     });
   }

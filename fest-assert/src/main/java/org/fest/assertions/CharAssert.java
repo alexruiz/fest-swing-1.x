@@ -14,6 +14,7 @@
  */
 package org.fest.assertions;
 
+import static java.lang.Character.valueOf;
 import static org.fest.assertions.ErrorMessages.*;
 import static org.fest.assertions.Formatting.inBrackets;
 import static org.fest.util.Strings.concat;
@@ -74,9 +75,19 @@ public class CharAssert extends GenericAssert<Character> {
    * @throws AssertionError if the {@code Character} value is not equal to the given one.
    */
   public CharAssert isEqualTo(char expected) {
-    if (actual == expected) return this;
-    failIfCustomMessageIsSet();
-    throw failure(unexpectedNotEqual(actual, expected));
+    return isEqualTo(valueOf(expected));
+  }
+
+  /**
+   * Verifies that the actual <code>{@link Character}</code> value is equal to the given one.
+   * @param expected the given {@code Character} value to compare the actual {@code Character} to.
+   * @return this assertion object.
+   * @throws AssertionError if the actual {@code Character} value is not equal to the given one.
+   * @since 1.3
+   */
+  public CharAssert isEqualTo(Character expected) {
+    assertEqualTo(expected);
+    return this;
   }
 
   /**
@@ -86,9 +97,19 @@ public class CharAssert extends GenericAssert<Character> {
    * @throws AssertionError if the {@code Character} value is equal to the given one.
    */
   public CharAssert isNotEqualTo(char other) {
-    if (actual != other) return this;
-    failIfCustomMessageIsSet();
-    throw failure(unexpectedEqual(actual, other));
+    return isNotEqualTo(valueOf(other));
+  }
+
+  /**
+   * Verifies that the actual <code>{@link Character}</code> is not equal to the given one.
+   * @param other the given {@code Character} to compare the actual {@code Character} to.
+   * @return this assertion object.
+   * @throws AssertionError if the actual {@code Character} value is equal to the given one.
+   * @since 1.3
+   */
+  public CharAssert isNotEqualTo(Character other) {
+    assertNotEqualTo(other);
+    return this;
   }
 
   /**
@@ -218,30 +239,6 @@ public class CharAssert extends GenericAssert<Character> {
    */
   public CharAssert isNot(Condition<Character> condition) {
     assertIsNot(condition);
-    return this;
-  }
-
-  /**
-   * Verifies that the actual <code>{@link Character}</code> value is equal to the given one.
-   * @param expected the given {@code Character} value to compare the actual {@code Character} to.
-   * @return this assertion object.
-   * @throws AssertionError if the actual {@code Character} value is not equal to the given one.
-   * @since 1.3
-   */
-  public CharAssert isEqualTo(Character expected) {
-    assertEqualTo(expected);
-    return this;
-  }
-
-  /**
-   * Verifies that the actual <code>{@link Character}</code> is not equal to the given one.
-   * @param other the given {@code Character} to compare the actual {@code Character} to.
-   * @return this assertion object.
-   * @throws AssertionError if the actual {@code Character} value is equal to the given one.
-   * @since 1.3
-   */
-  public CharAssert isNotEqualTo(Character other) {
-    assertNotEqualTo(other);
     return this;
   }
 

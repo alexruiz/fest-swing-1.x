@@ -20,6 +20,7 @@ package org.fest.assertions;
  *
  * @author Alex Ruiz
  */
+// TODO remove this class.
 final class Primitives {
 
   static byte asByte(int i) {

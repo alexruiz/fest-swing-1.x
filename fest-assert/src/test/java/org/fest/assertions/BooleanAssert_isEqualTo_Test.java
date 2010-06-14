@@ -18,6 +18,7 @@ import static org.fest.assertions.ComparisonFailureMessages.comparisonFailureMes
 import static org.fest.test.ExpectedFailure.expectAssertionError;
 
 import org.fest.test.CodeToTest;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 /**
@@ -28,26 +29,35 @@ import org.junit.Test;
  */
 public class BooleanAssert_isEqualTo_Test implements Assert_isEqualTo_TestCase {
 
+  private static boolean actual;
+  private static boolean notEqualValue;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    actual = false;
+    notEqualValue = true;
+  }
+
   @Test
   public void should_pass_if_actual_and_expected_are_equal() {
-    new BooleanAssert(false).isEqualTo(false);
+    new BooleanAssert(actual).isEqualTo(false);
   }
 
   @Test
   public void should_fail_if_actual_and_expected_are_not_equal() {
-    expectAssertionError(comparisonFailureMessage(false, true)).on(new CodeToTest() {
+    expectAssertionError(comparisonFailureMessage(actual, notEqualValue)).on(new CodeToTest() {
       public void run() {
-        new BooleanAssert(false).isEqualTo(true);
+        new BooleanAssert(actual).isEqualTo(notEqualValue);
       }
     });
   }
 
   @Test
   public void should_fail_and_display_description_of_assertion_if_actual_and_expected_are_not_equal() {
-    expectAssertionError(comparisonFailureMessage("A Test", false, true)).on(new CodeToTest() {
+    expectAssertionError(comparisonFailureMessage("A Test", actual, notEqualValue)).on(new CodeToTest() {
       public void run() {
-        new BooleanAssert(false).as("A Test")
-                                .isEqualTo(true);
+        new BooleanAssert(actual).as("A Test")
+                                 .isEqualTo(notEqualValue);
       }
     });
   }
@@ -56,8 +66,8 @@ public class BooleanAssert_isEqualTo_Test implements Assert_isEqualTo_TestCase {
   public void should_fail_with_custom_message_if_actual_and_expected_are_not_equal() {
     expectAssertionError("My custom message").on(new CodeToTest() {
       public void run() {
-        new BooleanAssert(false).overridingErrorMessage("My custom message")
-                                .isEqualTo(true);
+        new BooleanAssert(actual).overridingErrorMessage("My custom message")
+                                 .isEqualTo(notEqualValue);
       }
     });
   }
@@ -66,9 +76,9 @@ public class BooleanAssert_isEqualTo_Test implements Assert_isEqualTo_TestCase {
   public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_and_expected_are_not_equal() {
     expectAssertionError("My custom message").on(new CodeToTest() {
       public void run() {
-        new BooleanAssert(false).as("A Test")
-                                .overridingErrorMessage("My custom message")
-                                .isEqualTo(true);
+        new BooleanAssert(actual).as("A Test")
+                                 .overridingErrorMessage("My custom message")
+                                 .isEqualTo(notEqualValue);
       }
     });
   }
