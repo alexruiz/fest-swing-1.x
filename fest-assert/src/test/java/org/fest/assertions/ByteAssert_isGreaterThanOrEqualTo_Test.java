@@ -14,10 +14,10 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.Primitives.asByte;
 import static org.fest.test.ExpectedFailure.expectAssertionError;
 
 import org.fest.test.CodeToTest;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 /**
@@ -28,21 +28,30 @@ import org.junit.Test;
  */
 public class ByteAssert_isGreaterThanOrEqualTo_Test implements Assert_isGreaterThanOrEqualTo_TestCase {
 
+  private static byte actual;
+  private static byte greaterThanActual;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    actual = 6;
+    greaterThanActual = 8;
+  }
+
   @Test
   public void should_pass_if_actual_is_greater_than_expected() {
-    new ByteAssert(asByte(8)).isGreaterThanOrEqualTo(asByte(6));
+    new ByteAssert(actual).isGreaterThanOrEqualTo((byte)2);
   }
 
   @Test
   public void should_pass_if_actual_is_equal_to_expected() {
-    new ByteAssert(asByte(8)).isGreaterThanOrEqualTo(asByte(8));
+    new ByteAssert(actual).isGreaterThanOrEqualTo(actual);
   }
 
   @Test
   public void should_fail_if_actual_is_less_than_expected() {
     expectAssertionError("actual value:<6> should be greater than or equal to:<8>").on(new CodeToTest() {
       public void run() {
-        new ByteAssert(asByte(6)).isGreaterThanOrEqualTo(asByte(8));
+        new ByteAssert(actual).isGreaterThanOrEqualTo(greaterThanActual);
       }
     });
   }
@@ -51,8 +60,8 @@ public class ByteAssert_isGreaterThanOrEqualTo_Test implements Assert_isGreaterT
   public void should_fail_and_display_description_of_assertion_if_actual_is_less_than_expected() {
     expectAssertionError("[A Test] actual value:<6> should be greater than or equal to:<8>").on(new CodeToTest() {
       public void run() {
-        new ByteAssert(asByte(6)).as("A Test")
-                                 .isGreaterThanOrEqualTo(asByte(8));
+        new ByteAssert(actual).as("A Test")
+                              .isGreaterThanOrEqualTo(greaterThanActual);
       }
     });
   }
@@ -61,8 +70,8 @@ public class ByteAssert_isGreaterThanOrEqualTo_Test implements Assert_isGreaterT
   public void should_fail_with_custom_message_if_actual_is_less_than_expected() {
     expectAssertionError("My custom message").on(new CodeToTest() {
       public void run() {
-        new ByteAssert(asByte(6)).overridingErrorMessage("My custom message")
-                                 .isGreaterThanOrEqualTo(asByte(8));
+        new ByteAssert(actual).overridingErrorMessage("My custom message")
+                              .isGreaterThanOrEqualTo(greaterThanActual);
       }
     });
   }
@@ -71,9 +80,9 @@ public class ByteAssert_isGreaterThanOrEqualTo_Test implements Assert_isGreaterT
   public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_is_less_than_expected() {
     expectAssertionError("My custom message").on(new CodeToTest() {
       public void run() {
-        new ByteAssert(asByte(6)).as("A Test")
-                                 .overridingErrorMessage("My custom message")
-                                 .isGreaterThanOrEqualTo(asByte(8));
+        new ByteAssert(actual).as("A Test")
+                              .overridingErrorMessage("My custom message")
+                              .isGreaterThanOrEqualTo(greaterThanActual);
       }
     });
   }

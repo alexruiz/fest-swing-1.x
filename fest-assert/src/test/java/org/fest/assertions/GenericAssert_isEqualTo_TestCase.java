@@ -15,7 +15,7 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.ComparisonFailureMessages.comparisonFailureMessage;
+import static org.fest.assertions.ComparisonFailureMessages.unexpectedNotEqual;
 import static org.fest.test.ExpectedFailure.expectAssertionError;
 
 import org.fest.test.CodeToTest;
@@ -64,7 +64,7 @@ public abstract class GenericAssert_isEqualTo_TestCase<T> implements Assert_isEq
 
   @Test
   public final void should_fail_if_actual_and_expected_are_not_equal() {
-    expectAssertionError(comparisonFailureMessage(actual, notEqualValue)).on(new CodeToTest() {
+    expectAssertionError(unexpectedNotEqual(actual, notEqualValue)).on(new CodeToTest() {
       public void run() {
         assertObject.isEqualTo(notEqualValue);
       }
@@ -73,7 +73,7 @@ public abstract class GenericAssert_isEqualTo_TestCase<T> implements Assert_isEq
 
   @Test
   public final void should_fail_and_display_description_of_assertion_if_actual_and_expected_are_not_equal() {
-    expectAssertionError(comparisonFailureMessage("A Test", actual, notEqualValue)).on(new CodeToTest() {
+    expectAssertionError(unexpectedNotEqual("A Test", actual, notEqualValue)).on(new CodeToTest() {
       public void run() {
         assertObject.as("A Test").isEqualTo(notEqualValue);
       }

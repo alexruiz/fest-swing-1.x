@@ -16,11 +16,11 @@ package org.fest.assertions;
 
 import static org.fest.assertions.ArrayFactory.byteArray;
 import static org.fest.assertions.EmptyArrays.emptyByteArray;
-import static org.fest.assertions.Primitives.asByte;
 import static org.fest.test.ExpectedFailure.expectAssertionError;
 
 import org.fest.test.CodeToTest;
-import org.junit.*;
+import org.junit.BeforeClass;
+import org.junit.Test;
 
 /**
  * Tests for <code>{@link ByteArrayAssert#isNotSameAs(byte[])}</code>.
@@ -34,7 +34,7 @@ public class ByteArrayAssert_isNotSameAs_Test implements GenericAssert_isNotSame
 
   @BeforeClass
   public static void setUpOnce() {
-    array = byteArray(asByte(8), asByte(6));
+    array = byteArray(8, 6);
   }
 
   @Test

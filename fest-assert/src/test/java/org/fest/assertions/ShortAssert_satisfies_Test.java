@@ -24,7 +24,7 @@ package org.fest.assertions;
 public class ShortAssert_satisfies_Test extends GenericAssert_satisfies_TestCase<Short> {
 
   protected ShortAssert assertObject() {
-    return new ShortAssert((short)6);
+    return new ShortAssert(6);
   }
 
   protected ShortAssert assertObjectWithNullTarget() {

@@ -14,9 +14,8 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.EmptyArrays.emptyShortArray;
 import static org.fest.assertions.ArrayFactory.shortArray;
-import static org.fest.assertions.Primitives.asShort;
+import static org.fest.assertions.EmptyArrays.emptyShortArray;
 import static org.fest.test.ExpectedFailure.expectAssertionError;
 
 import org.fest.test.CodeToTest;
@@ -35,7 +34,7 @@ public class ShortArrayAssert_isNotSameAs_Test implements GenericAssert_isNotSam
 
   @BeforeClass
   public static void setUpOnce() {
-    array = shortArray(asShort(8), asShort(6));
+    array = shortArray(8, 6);
   }
 
   @Test

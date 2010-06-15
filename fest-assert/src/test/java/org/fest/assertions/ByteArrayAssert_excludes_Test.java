@@ -16,7 +16,6 @@ package org.fest.assertions;
 
 import static org.fest.assertions.ArrayFactory.byteArray;
 import static org.fest.assertions.CommonFailures.*;
-import static org.fest.assertions.Primitives.asByte;
 import static org.fest.test.ExpectedFailure.expectAssertionError;
 
 import org.fest.test.CodeToTest;
@@ -40,19 +39,19 @@ public class ByteArrayAssert_excludes_Test implements GroupAssert_excludes_TestC
 
   @Test
   public void should_pass_if_actual_excludes_given_value() {
-    new ByteArrayAssert(array).excludes(asByte(7));
+    new ByteArrayAssert(array).excludes((byte)7);
   }
 
   @Test
   public void should_pass_if_actual_excludes_given_values() {
-    new ByteArrayAssert(array).excludes(asByte(7), asByte(10));
+    new ByteArrayAssert(array).excludes((byte)7, (byte)10);
   }
 
   @Test
   public void should_fail_if_actual_is_null() {
     expectErrorIfActualArrayIsNull(new CodeToTest() {
       public void run() {
-        new ByteArrayAssert(null).excludes(asByte(8), asByte(6));
+        new ByteArrayAssert(null).excludes((byte)8, (byte)6);
       }
     });
   }
@@ -62,7 +61,7 @@ public class ByteArrayAssert_excludes_Test implements GroupAssert_excludes_TestC
     expectErrorWithDescriptionIfActualArrayIsNull(new CodeToTest() {
       public void run() {
         new ByteArrayAssert(null).as("A Test")
-                                 .excludes(asByte(8), asByte(6));
+                                 .excludes((byte)8, (byte)6);
       }
     });
   }
@@ -90,7 +89,7 @@ public class ByteArrayAssert_excludes_Test implements GroupAssert_excludes_TestC
   public void should_fail_if_actual_contains_given_values() {
     expectAssertionError("array:<[8, 6]> does not exclude element(s):<[8]>").on(new CodeToTest() {
       public void run() {
-        new ByteArrayAssert(array).excludes(asByte(8));
+        new ByteArrayAssert(array).excludes((byte)8);
       }
     });
   }
@@ -100,7 +99,7 @@ public class ByteArrayAssert_excludes_Test implements GroupAssert_excludes_TestC
     expectAssertionError("[A Test] array:<[8, 6]> does not exclude element(s):<[8]>").on(new CodeToTest() {
       public void run() {
         new ByteArrayAssert(array).as("A Test")
-                                  .excludes(asByte(8));
+                                  .excludes((byte)8);
       }
     });
   }
@@ -110,7 +109,7 @@ public class ByteArrayAssert_excludes_Test implements GroupAssert_excludes_TestC
     expectAssertionError("My custom message").on(new CodeToTest() {
       public void run() {
         new ByteArrayAssert(array).overridingErrorMessage("My custom message")
-                                  .excludes(asByte(8));
+                                  .excludes((byte)8);
       }
     });
   }
@@ -121,7 +120,7 @@ public class ByteArrayAssert_excludes_Test implements GroupAssert_excludes_TestC
       public void run() {
         new ByteArrayAssert(array).as("A Test")
                                   .overridingErrorMessage("My custom message")
-                                  .excludes(asByte(8));
+                                  .excludes((byte)8);
       }
     });
   }

@@ -14,10 +14,10 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.Primitives.asByte;
 import static org.fest.test.ExpectedFailure.expectAssertionError;
 
 import org.fest.test.CodeToTest;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 /**
@@ -25,19 +25,29 @@ import org.junit.Test;
  *
  * @author Yvonne Wang
  * @author David DIDIER
+ * @author Alex Ruiz
  */
 public class ByteAssert_isNegative_Test implements NumberAssert_isNegative_TestCase {
 
+  private static byte positive;
+  private static byte zero;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    positive = 6;
+    zero = 0;
+  }
+
   @Test
   public void should_pass_if_actual_is_negative() {
-    new ByteAssert(asByte(-2)).isNegative();
+    new ByteAssert(-6).isNegative();
   }
 
   @Test
   public void should_fail_if_actual_is_positive() {
     expectAssertionError("actual value:<6> should be less than:<0>").on(new CodeToTest() {
       public void run() {
-        new ByteAssert(asByte(6)).isNegative();
+        new ByteAssert(positive).isNegative();
       }
     });
   }
@@ -46,8 +56,8 @@ public class ByteAssert_isNegative_Test implements NumberAssert_isNegative_TestC
   public void should_fail_and_display_description_of_assertion_if_actual_is_positive() {
     expectAssertionError("[A Test] actual value:<6> should be less than:<0>").on(new CodeToTest() {
       public void run() {
-        new ByteAssert(asByte(6)).as("A Test")
-                                 .isNegative();
+        new ByteAssert(positive).as("A Test")
+                                .isNegative();
       }
     });
   }
@@ -56,8 +66,8 @@ public class ByteAssert_isNegative_Test implements NumberAssert_isNegative_TestC
   public void should_fail_with_custom_message_if_actual_is_positive() {
     expectAssertionError("My custom message").on(new CodeToTest() {
       public void run() {
-        new ByteAssert(asByte(6)).overridingErrorMessage("My custom message")
-                                 .isNegative();
+        new ByteAssert(positive).overridingErrorMessage("My custom message")
+                                .isNegative();
       }
     });
   }
@@ -66,9 +76,9 @@ public class ByteAssert_isNegative_Test implements NumberAssert_isNegative_TestC
   public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_is_positive() {
     expectAssertionError("My custom message").on(new CodeToTest() {
       public void run() {
-        new ByteAssert(asByte(6)).as("A Test")
-                                 .overridingErrorMessage("My custom message")
-                                 .isNegative();
+        new ByteAssert(positive).as("A Test")
+                                .overridingErrorMessage("My custom message")
+                                .isNegative();
       }
     });
   }
@@ -77,7 +87,7 @@ public class ByteAssert_isNegative_Test implements NumberAssert_isNegative_TestC
   public void should_fail_if_actual_is_zero() {
     expectAssertionError("actual value:<0> should be less than:<0>").on(new CodeToTest() {
       public void run() {
-        new ByteAssert(asByte(0)).isNegative();
+        new ByteAssert(zero).isNegative();
       }
     });
   }
@@ -86,8 +96,8 @@ public class ByteAssert_isNegative_Test implements NumberAssert_isNegative_TestC
   public void should_fail_and_display_description_of_assertion_if_actual_is_zero() {
     expectAssertionError("[A Test] actual value:<0> should be less than:<0>").on(new CodeToTest() {
       public void run() {
-        new ByteAssert(asByte(0)).as("A Test")
-                                 .isNegative();
+        new ByteAssert(zero).as("A Test")
+                            .isNegative();
       }
     });
   }
@@ -96,8 +106,8 @@ public class ByteAssert_isNegative_Test implements NumberAssert_isNegative_TestC
   public void should_fail_with_custom_message_if_actual_is_zero() {
     expectAssertionError("My custom message").on(new CodeToTest() {
       public void run() {
-        new ByteAssert(asByte(0)).overridingErrorMessage("My custom message")
-                                 .isNegative();
+        new ByteAssert(zero).overridingErrorMessage("My custom message")
+                            .isNegative();
       }
     });
   }
@@ -106,9 +116,9 @@ public class ByteAssert_isNegative_Test implements NumberAssert_isNegative_TestC
   public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_is_zero() {
     expectAssertionError("My custom message").on(new CodeToTest() {
       public void run() {
-        new ByteAssert(asByte(0)).as("A Test")
-                                 .overridingErrorMessage("My custom message")
-                                 .isNegative();
+        new ByteAssert(zero).as("A Test")
+                            .overridingErrorMessage("My custom message")
+                            .isNegative();
       }
     });
   }

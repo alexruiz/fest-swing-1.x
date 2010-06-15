@@ -16,7 +16,6 @@ package org.fest.assertions;
 
 import static org.fest.assertions.ArrayFactory.shortArray;
 import static org.fest.assertions.CommonFailures.*;
-import static org.fest.assertions.Primitives.asShort;
 import static org.fest.test.ExpectedFailure.expectAssertionError;
 
 import org.fest.test.CodeToTest;
@@ -40,19 +39,19 @@ public class ShortArrayAssert_excludes_Test implements GroupAssert_excludes_Test
 
   @Test
   public void should_pass_if_actual_excludes_given_value() {
-    new ShortArrayAssert(array).excludes(asShort(7));
+    new ShortArrayAssert(array).excludes(shortArray(7));
   }
 
   @Test
   public void should_pass_if_actual_excludes_given_values() {
-    new ShortArrayAssert(array).excludes(asShort(7), asShort(10));
+    new ShortArrayAssert(array).excludes(shortArray(7, 10));
   }
 
   @Test
   public void should_fail_if_actual_is_null() {
     expectErrorIfActualArrayIsNull(new CodeToTest() {
       public void run() {
-        new ShortArrayAssert(null).excludes(asShort(8), asShort(6));
+        new ShortArrayAssert(null).excludes(shortArray(8, 6));
       }
     });
   }
@@ -62,7 +61,7 @@ public class ShortArrayAssert_excludes_Test implements GroupAssert_excludes_Test
     expectErrorWithDescriptionIfActualArrayIsNull(new CodeToTest() {
       public void run() {
         new ShortArrayAssert(null).as("A Test")
-                                  .excludes(asShort(8), asShort(6));
+                                  .excludes(shortArray(8, 6));
       }
     });
   }
@@ -90,7 +89,7 @@ public class ShortArrayAssert_excludes_Test implements GroupAssert_excludes_Test
   public void should_fail_if_actual_contains_given_values() {
     expectAssertionError("array:<[8, 6]> does not exclude element(s):<[8]>").on(new CodeToTest() {
       public void run() {
-        new ShortArrayAssert(array).excludes(asShort(8));
+        new ShortArrayAssert(array).excludes(shortArray(8));
       }
     });
   }
@@ -100,7 +99,7 @@ public class ShortArrayAssert_excludes_Test implements GroupAssert_excludes_Test
     expectAssertionError("[A Test] array:<[8, 6]> does not exclude element(s):<[8]>").on(new CodeToTest() {
       public void run() {
         new ShortArrayAssert(array).as("A Test")
-                                   .excludes(asShort(8));
+                                   .excludes(shortArray(8));
       }
     });
   }
@@ -110,7 +109,7 @@ public class ShortArrayAssert_excludes_Test implements GroupAssert_excludes_Test
     expectAssertionError("My custom message").on(new CodeToTest() {
       public void run() {
         new ShortArrayAssert(array).overridingErrorMessage("My custom message")
-                                   .excludes(asShort(8));
+                                   .excludes(shortArray(8));
       }
     });
   }
@@ -121,7 +120,7 @@ public class ShortArrayAssert_excludes_Test implements GroupAssert_excludes_Test
       public void run() {
         new ShortArrayAssert(array).as("A Test")
                                    .overridingErrorMessage("My custom message")
-                                   .excludes(asShort(8));
+                                   .excludes(shortArray(8));
       }
     });
   }

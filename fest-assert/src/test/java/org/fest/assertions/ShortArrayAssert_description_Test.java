@@ -14,7 +14,7 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.Primitives.asShort;
+import static org.fest.assertions.ArrayFactory.shortArray;
 
 /**
  * Tests for:
@@ -31,6 +31,6 @@ import static org.fest.assertions.Primitives.asShort;
 public class ShortArrayAssert_description_Test extends GenericAssert_description_TestCase<short[]> {
 
   protected GenericAssert<short[]> assertionToTest() {
-    return new ShortArrayAssert(asShort(6));
+    return new ShortArrayAssert(shortArray(6));
   }
 }

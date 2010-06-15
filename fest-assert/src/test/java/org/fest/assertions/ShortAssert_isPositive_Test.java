@@ -14,10 +14,10 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.Primitives.asShort;
 import static org.fest.test.ExpectedFailure.expectAssertionError;
 
 import org.fest.test.CodeToTest;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 /**
@@ -25,29 +25,39 @@ import org.junit.Test;
  *
  * @author Yvonne Wang
  * @author David DIDIER
+ * @author Alex Ruiz
  */
 public class ShortAssert_isPositive_Test implements NumberAssert_isPositive_TestCase {
 
+  private static byte negative;
+  private static byte zero;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    negative = -6;
+    zero = 0;
+  }
+
   @Test
   public void should_pass_if_actual_is_positive() {
-    new ShortAssert(asShort(6)).isPositive();
+    new ShortAssert(6).isPositive();
   }
 
   @Test
   public void should_fail_if_actual_is_negative() {
-    expectAssertionError("actual value:<-2> should be greater than:<0>").on(new CodeToTest() {
+    expectAssertionError("actual value:<-6> should be greater than:<0>").on(new CodeToTest() {
       public void run() {
-        new ShortAssert(asShort(-2)).isPositive();
+        new ShortAssert(negative).isPositive();
       }
     });
   }
 
   @Test
   public void should_fail_and_display_description_of_assertion_if_actual_is_negative() {
-    expectAssertionError("[A Test] actual value:<-2> should be greater than:<0>").on(new CodeToTest() {
+    expectAssertionError("[A Test] actual value:<-6> should be greater than:<0>").on(new CodeToTest() {
       public void run() {
-        new ShortAssert(asShort(-2)).as("A Test")
-                                    .isPositive();
+        new ShortAssert(negative).as("A Test")
+                                 .isPositive();
       }
     });
   }
@@ -56,8 +66,8 @@ public class ShortAssert_isPositive_Test implements NumberAssert_isPositive_Test
   public void should_fail_with_custom_message_if_actual_is_negative() {
     expectAssertionError("My custom message").on(new CodeToTest() {
       public void run() {
-        new ShortAssert(asShort(-2)).overridingErrorMessage("My custom message")
-                                    .isPositive();
+        new ShortAssert(negative).overridingErrorMessage("My custom message")
+                                 .isPositive();
       }
     });
   }
@@ -66,7 +76,7 @@ public class ShortAssert_isPositive_Test implements NumberAssert_isPositive_Test
   public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_is_negative() {
     expectAssertionError("My custom message").on(new CodeToTest() {
       public void run() {
-        new ShortAssert(asShort(-2)).as("A Test")
+        new ShortAssert(negative).as("A Test")
                                     .overridingErrorMessage("My custom message")
                                     .isPositive();
       }
@@ -77,7 +87,7 @@ public class ShortAssert_isPositive_Test implements NumberAssert_isPositive_Test
   public void should_fail_if_actual_is_zero() {
     expectAssertionError("actual value:<0> should be greater than:<0>").on(new CodeToTest() {
       public void run() {
-        new ShortAssert(asShort(0)).isPositive();
+        new ShortAssert(zero).isPositive();
       }
     });
   }
@@ -86,8 +96,8 @@ public class ShortAssert_isPositive_Test implements NumberAssert_isPositive_Test
   public void should_fail_and_display_description_of_assertion_if_actual_is_zero() {
     expectAssertionError("[A Test] actual value:<0> should be greater than:<0>").on(new CodeToTest() {
       public void run() {
-        new ShortAssert(asShort(0)).as("A Test")
-                                   .isPositive();
+        new ShortAssert(zero).as("A Test")
+                             .isPositive();
       }
     });
   }
@@ -96,8 +106,8 @@ public class ShortAssert_isPositive_Test implements NumberAssert_isPositive_Test
   public void should_fail_with_custom_message_if_actual_is_zero() {
     expectAssertionError("My custom message").on(new CodeToTest() {
       public void run() {
-        new ShortAssert(asShort(0)).overridingErrorMessage("My custom message")
-                                   .isPositive();
+        new ShortAssert(zero).overridingErrorMessage("My custom message")
+                             .isPositive();
       }
     });
   }
@@ -106,9 +116,9 @@ public class ShortAssert_isPositive_Test implements NumberAssert_isPositive_Test
   public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_is_zero() {
     expectAssertionError("My custom message").on(new CodeToTest() {
       public void run() {
-        new ShortAssert(asShort(0)).as("A Test")
-                                   .overridingErrorMessage("My custom message")
-                                   .isPositive();
+        new ShortAssert(zero).as("A Test")
+                             .overridingErrorMessage("My custom message")
+                             .isPositive();
       }
     });
   }

@@ -14,7 +14,6 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.Primitives.asShort;
 
 /**
  * Tests for:
@@ -31,6 +30,6 @@ import static org.fest.assertions.Primitives.asShort;
 public class ShortAssert_description_Test extends GenericAssert_description_TestCase<Short> {
 
   protected ShortAssert assertionToTest() {
-    return new ShortAssert(asShort(8));
+    return new ShortAssert(8);
   }
 }

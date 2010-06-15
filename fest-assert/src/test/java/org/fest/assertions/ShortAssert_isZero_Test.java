@@ -14,10 +14,10 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.Primitives.asShort;
 import static org.fest.test.ExpectedFailure.expectAssertionError;
 
 import org.fest.test.CodeToTest;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 /**
@@ -25,19 +25,27 @@ import org.junit.Test;
  *
  * @author Yvonne Wang
  * @author David DIDIER
+ * @author Alex Ruiz
  */
 public class ShortAssert_isZero_Test implements NumberAssert_isZero_TestCase {
 
+  private static short notZero;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    notZero = 6;
+  }
+
   @Test
   public void should_pass_if_actual_is_zero() {
-    new ShortAssert(asShort(0)).isZero();
+    new ShortAssert(0).isZero();
   }
 
   @Test
   public void should_fail_if_actual_is_not_zero() {
     expectAssertionError("expected:<0> but was:<6>").on(new CodeToTest() {
       public void run() {
-        new ShortAssert(asShort(6)).isZero();
+        new ShortAssert(notZero).isZero();
       }
     });
   }
@@ -46,8 +54,8 @@ public class ShortAssert_isZero_Test implements NumberAssert_isZero_TestCase {
   public void should_fail_and_display_description_of_assertion_if_actual_is_not_zero() {
     expectAssertionError("[A Test] expected:<0> but was:<6>").on(new CodeToTest() {
       public void run() {
-        new ShortAssert(asShort(6)).as("A Test")
-                                   .isZero();
+        new ShortAssert(notZero).as("A Test")
+                                .isZero();
       }
     });
   }
@@ -56,8 +64,8 @@ public class ShortAssert_isZero_Test implements NumberAssert_isZero_TestCase {
   public void should_fail_with_custom_message_if_actual_is_not_zero() {
     expectAssertionError("My custom message").on(new CodeToTest() {
       public void run() {
-        new ShortAssert(asShort(6)).overridingErrorMessage("My custom message")
-                                   .isZero();
+        new ShortAssert(notZero).overridingErrorMessage("My custom message")
+                                .isZero();
       }
     });
   }
@@ -66,9 +74,9 @@ public class ShortAssert_isZero_Test implements NumberAssert_isZero_TestCase {
   public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_is_not_zero() {
     expectAssertionError("My custom message").on(new CodeToTest() {
       public void run() {
-        new ShortAssert(asShort(6)).as("A Test")
-                                   .overridingErrorMessage("My custom message")
-                                   .isZero();
+        new ShortAssert(notZero).as("A Test")
+                                .overridingErrorMessage("My custom message")
+                                .isZero();
       }
     });
   }

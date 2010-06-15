@@ -14,9 +14,11 @@
  */
 package org.fest.assertions;
 
+import static org.fest.assertions.ComparisonFailureMessages.unexpectedNotEqual;
 import static org.fest.test.ExpectedFailure.expectAssertionError;
 
 import org.fest.test.CodeToTest;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 /**
@@ -27,26 +29,35 @@ import org.junit.Test;
  */
 public class IntAssert_isEqualTo_Test implements Assert_isEqualTo_TestCase {
 
+  private static int actual;
+  private static int notEqualValue;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    actual = 6;
+    notEqualValue = 8;
+  }
+
   @Test
   public void should_pass_if_actual_and_expected_are_equal() {
-    new IntAssert(6).isEqualTo(6);
+    new IntAssert(actual).isEqualTo(6);
   }
 
   @Test
   public void should_fail_if_actual_and_expected_are_not_equal() {
-    expectAssertionError("expected:<8> but was:<6>").on(new CodeToTest() {
+    expectAssertionError(unexpectedNotEqual(actual, notEqualValue)).on(new CodeToTest() {
       public void run() {
-        new IntAssert(6).isEqualTo(8);
+        new IntAssert(actual).isEqualTo(notEqualValue);
       }
     });
   }
 
   @Test
   public void should_fail_and_display_description_of_assertion_if_actual_and_expected_are_not_equal() {
-    expectAssertionError("[A Test] expected:<8> but was:<6>").on(new CodeToTest() {
+    expectAssertionError(unexpectedNotEqual("A Test", actual, notEqualValue)).on(new CodeToTest() {
       public void run() {
-        new IntAssert(6).as("A Test")
-                        .isEqualTo(8);
+        new IntAssert(actual).as("A Test")
+                             .isEqualTo(notEqualValue);
       }
     });
   }
@@ -55,8 +66,8 @@ public class IntAssert_isEqualTo_Test implements Assert_isEqualTo_TestCase {
   public void should_fail_with_custom_message_if_actual_and_expected_are_not_equal() {
     expectAssertionError("My custom message").on(new CodeToTest() {
       public void run() {
-        new IntAssert(6).overridingErrorMessage("My custom message")
-                        .isEqualTo(8);
+        new IntAssert(actual).overridingErrorMessage("My custom message")
+                             .isEqualTo(notEqualValue);
       }
     });
   }
@@ -65,9 +76,9 @@ public class IntAssert_isEqualTo_Test implements Assert_isEqualTo_TestCase {
   public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_and_expected_are_not_equal() {
     expectAssertionError("My custom message").on(new CodeToTest() {
       public void run() {
-        new IntAssert(6).as("A Test")
-                        .overridingErrorMessage("My custom message")
-                        .isEqualTo(8);
+        new IntAssert(actual).as("A Test")
+                             .overridingErrorMessage("My custom message")
+                             .isEqualTo(notEqualValue);
       }
     });
   }

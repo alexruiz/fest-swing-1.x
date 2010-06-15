@@ -24,7 +24,7 @@ package org.fest.assertions;
 public class ByteAssert_is_Test extends GenericAssert_is_TestCase<Byte> {
 
   protected ByteAssert assertObject() {
-    return new ByteAssert((byte)1);
+    return new ByteAssert(6);
   }
 
   protected ByteAssert assertObjectWithNullTarget() {

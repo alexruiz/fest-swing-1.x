@@ -17,6 +17,8 @@ package org.fest.assertions;
 import static java.lang.Short.valueOf;
 import static org.fest.assertions.ErrorMessages.*;
 
+import org.fest.util.VisibleForTesting;
+
 /**
  * Understands assertion methods for {@code Short}s and {@code short}s. To create a new instance of this class call
  * <code>{@link Assertions#assertThat(Short)}</code> <code>{@link Assertions#assertThat(short)}</code>.
@@ -29,6 +31,11 @@ import static org.fest.assertions.ErrorMessages.*;
 public class ShortAssert extends GenericAssert<Short> implements NumberAssert {
 
   private static final short ZERO = (short) 0;
+
+  @VisibleForTesting
+  ShortAssert(int actual) {
+    this((short)actual);
+  }
 
   /**
    * Creates a new <code>{@link ShortAssert}</code>.

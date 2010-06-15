@@ -14,10 +14,10 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.Primitives.asShort;
 import static org.fest.test.ExpectedFailure.expectAssertionError;
 
 import org.fest.test.CodeToTest;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 /**
@@ -25,19 +25,27 @@ import org.junit.Test;
  *
  * @author Yvonne Wang
  * @author David DIDIER
+ * @author Alex Ruiz
  */
 public class ShortAssert_isNotEqualTo_Test implements Assert_isNotEqualTo_TestCase {
 
+  private static short actual;
+
+  @BeforeClass
+  public void setUpOnce() {
+    actual = 6;
+  }
+
   @Test
   public void should_pass_if_actual_and_expected_are_not_equal() {
-    new ShortAssert(asShort(6)).isNotEqualTo(asShort(8));
+    new ShortAssert(actual).isNotEqualTo((short)8);
   }
 
   @Test
   public void should_fail_if_actual_and_expected_are_equal() {
     expectAssertionError("actual value:<6> should not be equal to:<6>").on(new CodeToTest() {
       public void run() {
-        new ShortAssert(asShort(6)).isNotEqualTo(asShort(6));
+        new ShortAssert(actual).isNotEqualTo(actual);
       }
     });
   }
@@ -46,8 +54,8 @@ public class ShortAssert_isNotEqualTo_Test implements Assert_isNotEqualTo_TestCa
   public void should_fail_and_display_description_of_assertion_if_actual_and_expected_are_equal() {
     expectAssertionError("[A Test] actual value:<6> should not be equal to:<6>").on(new CodeToTest() {
       public void run() {
-        new ShortAssert(asShort(6)).as("A Test")
-                                   .isNotEqualTo(asShort(6));
+        new ShortAssert(actual).as("A Test")
+                               .isNotEqualTo(actual);
       }
     });
   }
@@ -56,8 +64,8 @@ public class ShortAssert_isNotEqualTo_Test implements Assert_isNotEqualTo_TestCa
   public void should_fail_with_custom_message_if_actual_and_expected_are_equal() {
     expectAssertionError("My custom message").on(new CodeToTest() {
       public void run() {
-        new ShortAssert(asShort(6)).overridingErrorMessage("My custom message")
-                                   .isNotEqualTo(asShort(6));
+        new ShortAssert(actual).overridingErrorMessage("My custom message")
+                               .isNotEqualTo(actual);
       }
     });
   }
@@ -66,9 +74,9 @@ public class ShortAssert_isNotEqualTo_Test implements Assert_isNotEqualTo_TestCa
   public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_and_expected_are_equal() {
     expectAssertionError("My custom message").on(new CodeToTest() {
       public void run() {
-        new ShortAssert(asShort(6)).as("A Test")
-                                   .overridingErrorMessage("My custom message")
-                                   .isNotEqualTo(asShort(6));
+        new ShortAssert(actual).as("A Test")
+                               .overridingErrorMessage("My custom message")
+                               .isNotEqualTo(actual);
       }
     });
   }

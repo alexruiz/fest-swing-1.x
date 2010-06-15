@@ -17,6 +17,8 @@ package org.fest.assertions;
 import static java.lang.Byte.valueOf;
 import static org.fest.assertions.ErrorMessages.*;
 
+import org.fest.util.VisibleForTesting;
+
 /**
  * Understands assertion methods for {@code Byte}s and {@code byte}s. To create a new instance of this class call
  * <code>{@link Assertions#assertThat(Byte)}</code> or <code>{@link Assertions#assertThat(byte)}</code>.
@@ -31,6 +33,11 @@ import static org.fest.assertions.ErrorMessages.*;
 public class ByteAssert extends GenericAssert<Byte> implements NumberAssert {
 
   private static final byte ZERO = (byte) 0;
+
+  @VisibleForTesting
+  ByteAssert(int actual) {
+    this((byte)actual);
+  }
 
   /**
    * Creates a new <code>{@link ByteAssert}</code>.

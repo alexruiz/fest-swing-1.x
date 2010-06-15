@@ -14,10 +14,11 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.Primitives.asShort;
+import static org.fest.assertions.ComparisonFailureMessages.unexpectedNotEqual;
 import static org.fest.test.ExpectedFailure.expectAssertionError;
 
 import org.fest.test.CodeToTest;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 /**
@@ -25,29 +26,39 @@ import org.junit.Test;
  *
  * @author Yvonne Wang
  * @author David DIDIER
+ * @author Alex Ruiz
  */
 public class ShortAssert_isEqualTo_Test implements Assert_isEqualTo_TestCase {
 
+  private static short actual;
+  private static short notEqualValue;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    actual = 6;
+    notEqualValue = 8;
+  }
+
   @Test
   public void should_pass_if_actual_and_expected_are_equal() {
-    new ShortAssert(asShort(6)).isEqualTo(asShort(6));
+    new ShortAssert(actual).isEqualTo((short)6);
   }
 
   @Test
   public void should_fail_if_actual_and_expected_are_not_equal() {
-    expectAssertionError("expected:<8> but was:<6>").on(new CodeToTest() {
+    expectAssertionError(unexpectedNotEqual(actual, notEqualValue)).on(new CodeToTest() {
       public void run() {
-        new ShortAssert(asShort(6)).isEqualTo(asShort(8));
+        new ShortAssert(actual).isEqualTo(notEqualValue);
       }
     });
   }
 
   @Test
   public void should_fail_and_display_description_of_assertion_if_actual_and_expected_are_not_equal() {
-    expectAssertionError("[A Test] expected:<8> but was:<6>").on(new CodeToTest() {
+    expectAssertionError(unexpectedNotEqual("A Test", actual, notEqualValue)).on(new CodeToTest() {
       public void run() {
-        new ShortAssert(asShort(6)).as("A Test")
-                                   .isEqualTo(asShort(8));
+        new ShortAssert(actual).as("A Test")
+                               .isEqualTo(notEqualValue);
       }
     });
   }
@@ -56,8 +67,8 @@ public class ShortAssert_isEqualTo_Test implements Assert_isEqualTo_TestCase {
   public void should_fail_with_custom_message_if_actual_and_expected_are_not_equal() {
     expectAssertionError("My custom message").on(new CodeToTest() {
       public void run() {
-        new ShortAssert(asShort(6)).overridingErrorMessage("My custom message")
-                                   .isEqualTo(asShort(8));
+        new ShortAssert(actual).overridingErrorMessage("My custom message")
+                               .isEqualTo(notEqualValue);
       }
     });
   }
@@ -66,9 +77,9 @@ public class ShortAssert_isEqualTo_Test implements Assert_isEqualTo_TestCase {
   public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_and_expected_are_not_equal() {
     expectAssertionError("My custom message").on(new CodeToTest() {
       public void run() {
-        new ShortAssert(asShort(6)).as("A Test")
-                                   .overridingErrorMessage("My custom message")
-                                   .isEqualTo(asShort(8));
+        new ShortAssert(actual).as("A Test")
+                               .overridingErrorMessage("My custom message")
+                               .isEqualTo(notEqualValue);
       }
     });
   }

@@ -14,10 +14,9 @@
  */
 package org.fest.assertions;
 
+import static org.fest.assertions.ArrayFactory.floatArray;
 import static org.fest.assertions.CommonFailures.*;
 import static org.fest.assertions.EmptyArrays.emptyFloatArray;
-import static org.fest.assertions.ArrayFactory.floatArray;
-import static org.fest.assertions.Primitives.asByte;
 import static org.fest.test.ExpectedFailure.expectAssertionError;
 
 import org.fest.test.CodeToTest;
@@ -53,7 +52,7 @@ public class FloatArrayAssert_containsOnly_Test implements GroupAssert_containsO
   public void should_fail_if_actual_is_null() {
     expectErrorIfActualArrayIsNull(new CodeToTest() {
       public void run() {
-        new FloatArrayAssert(null).containsOnly(floatArray(asByte(7)));
+        new FloatArrayAssert(null).containsOnly(7f);
       }
     });
   }
@@ -63,7 +62,7 @@ public class FloatArrayAssert_containsOnly_Test implements GroupAssert_containsO
     expectErrorWithDescriptionIfActualArrayIsNull(new CodeToTest() {
       public void run() {
         new FloatArrayAssert(null).as("A Test")
-                                  .containsOnly(floatArray(7));
+                                  .containsOnly(7f);
       }
     });
   }
@@ -91,7 +90,7 @@ public class FloatArrayAssert_containsOnly_Test implements GroupAssert_containsO
   public void should_fail_if_actual_is_empty_and_expecting_at_least_one_element() {
     expectAssertionError("array:<[]> does not contain element(s):<[7.0]>").on(new CodeToTest() {
       public void run() {
-        new FloatArrayAssert(emptyFloatArray()).containsOnly(floatArray(7));
+        new FloatArrayAssert(emptyFloatArray()).containsOnly(7f);
       }
     });
   }
@@ -101,7 +100,7 @@ public class FloatArrayAssert_containsOnly_Test implements GroupAssert_containsO
     expectAssertionError("[A Test] array:<[]> does not contain element(s):<[7.0]>").on(new CodeToTest() {
       public void run() {
         new FloatArrayAssert(emptyFloatArray()).as("A Test")
-                                               .containsOnly(floatArray(7));
+                                               .containsOnly(7f);
       }
     });
   }
@@ -111,7 +110,7 @@ public class FloatArrayAssert_containsOnly_Test implements GroupAssert_containsO
     expectAssertionError("My custom message").on(new CodeToTest() {
       public void run() {
         new FloatArrayAssert(emptyFloatArray()).overridingErrorMessage("My custom message")
-                                               .containsOnly(floatArray(7));
+                                               .containsOnly(7f);
       }
     });
   }
@@ -122,7 +121,7 @@ public class FloatArrayAssert_containsOnly_Test implements GroupAssert_containsO
       public void run() {
         new FloatArrayAssert(emptyFloatArray()).as("A Test")
                                                .overridingErrorMessage("My custom message")
-                                               .containsOnly(floatArray(7));
+                                               .containsOnly(7f);
       }
     });
   }
@@ -171,7 +170,7 @@ public class FloatArrayAssert_containsOnly_Test implements GroupAssert_containsO
   public void should_fail_if_actual_does_not_contain_all_the_expected_values() {
     expectAssertionError("array:<[8.0, 6.0]> does not contain element(s):<[7.0]>").on(new CodeToTest() {
       public void run() {
-        new FloatArrayAssert(array).containsOnly(floatArray(7));
+        new FloatArrayAssert(array).containsOnly(7f);
       }
     });
   }
@@ -181,7 +180,7 @@ public class FloatArrayAssert_containsOnly_Test implements GroupAssert_containsO
     expectAssertionError("[A Test] array:<[8.0, 6.0]> does not contain element(s):<[7.0]>").on(new CodeToTest() {
       public void run() {
         new FloatArrayAssert(array).as("A Test")
-                                   .containsOnly(floatArray(7));
+                                   .containsOnly(7f);
       }
     });
   }
@@ -191,7 +190,7 @@ public class FloatArrayAssert_containsOnly_Test implements GroupAssert_containsO
     expectAssertionError("My custom message").on(new CodeToTest() {
       public void run() {
         new FloatArrayAssert(array).overridingErrorMessage("My custom message")
-                                   .containsOnly(floatArray(7));
+                                   .containsOnly(7f);
       }
     });
   }
@@ -202,7 +201,7 @@ public class FloatArrayAssert_containsOnly_Test implements GroupAssert_containsO
       public void run() {
         new FloatArrayAssert(array).as("A Test")
                                    .overridingErrorMessage("My custom message")
-                                   .containsOnly(floatArray(7));
+                                   .containsOnly(7f);
       }
     });
   }

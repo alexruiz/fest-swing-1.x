@@ -14,8 +14,6 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.Primitives.asByte;
-
 /**
  * Tests for:
  * <ul>
@@ -31,6 +29,6 @@ import static org.fest.assertions.Primitives.asByte;
 public class ByteArrayAssert_description_Test extends GenericAssert_description_TestCase<byte[]> {
 
   protected GenericAssert<byte[]> assertionToTest() {
-    return new ByteArrayAssert(asByte(6));
+    return new ByteArrayAssert((byte)6);
   }
 }

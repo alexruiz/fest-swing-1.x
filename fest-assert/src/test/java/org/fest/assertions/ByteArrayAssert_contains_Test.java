@@ -16,7 +16,6 @@ package org.fest.assertions;
 
 import static org.fest.assertions.ArrayFactory.byteArray;
 import static org.fest.assertions.CommonFailures.*;
-import static org.fest.assertions.Primitives.asByte;
 import static org.fest.test.ExpectedFailure.expectAssertionError;
 
 import org.fest.test.CodeToTest;
@@ -40,19 +39,19 @@ public class ByteArrayAssert_contains_Test implements GroupAssert_contains_TestC
 
   @Test
   public void should_pass_if_actual_contains_given_value() {
-    new ByteArrayAssert(array).contains(asByte(8));
+    new ByteArrayAssert(array).contains((byte)8);
   }
 
   @Test
   public void should_pass_if_actual_contains_given_values() {
-    new ByteArrayAssert(array).contains(asByte(8), asByte(6));
+    new ByteArrayAssert(array).contains((byte)8, (byte)6);
   }
 
   @Test
   public void should_fail_if_actual_is_null() {
     expectErrorIfActualArrayIsNull(new CodeToTest() {
       public void run() {
-        new ByteArrayAssert(null).contains(asByte(8), asByte(6));
+        new ByteArrayAssert(null).contains((byte)8, (byte)6);
       }
     });
   }
@@ -62,7 +61,7 @@ public class ByteArrayAssert_contains_Test implements GroupAssert_contains_TestC
     expectErrorWithDescriptionIfActualArrayIsNull(new CodeToTest() {
       public void run() {
         new ByteArrayAssert(null).as("A Test")
-                                 .contains(asByte(8), asByte(6));
+                                 .contains((byte)8, (byte)6);
       }
     });
   }
@@ -90,7 +89,7 @@ public class ByteArrayAssert_contains_Test implements GroupAssert_contains_TestC
   public void should_fail_if_actual_does_not_contain_given_values() {
     expectAssertionError("array:<[8, 6]> does not contain element(s):<[10]>").on(new CodeToTest() {
       public void run() {
-        new ByteArrayAssert(array).contains(asByte(10));
+        new ByteArrayAssert(array).contains((byte)10);
       }
     });
   }
@@ -100,7 +99,7 @@ public class ByteArrayAssert_contains_Test implements GroupAssert_contains_TestC
     expectAssertionError("[A Test] array:<[8, 6]> does not contain element(s):<[10]>").on(new CodeToTest() {
       public void run() {
         new ByteArrayAssert(array).as("A Test")
-                                  .contains(asByte(10));
+                                  .contains((byte)10);
       }
     });
   }
@@ -110,7 +109,7 @@ public class ByteArrayAssert_contains_Test implements GroupAssert_contains_TestC
     expectAssertionError("My custom message").on(new CodeToTest() {
       public void run() {
         new ByteArrayAssert(array).overridingErrorMessage("My custom message")
-                                  .contains(asByte(10));
+                                  .contains((byte)10);
       }
     });
   }
@@ -121,7 +120,7 @@ public class ByteArrayAssert_contains_Test implements GroupAssert_contains_TestC
       public void run() {
         new ByteArrayAssert(array).as("A Test")
                                   .overridingErrorMessage("My custom message")
-                                  .contains(asByte(10));
+                                  .contains((byte)10);
       }
     });
   }

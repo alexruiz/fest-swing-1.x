@@ -14,10 +14,10 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.Primitives.asByte;
 import static org.fest.test.ExpectedFailure.expectAssertionError;
 
 import org.fest.test.CodeToTest;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 /**
@@ -25,19 +25,27 @@ import org.junit.Test;
  *
  * @author Yvonne Wang
  * @author David DIDIER
+ * @author Alex Ruiz
  */
 public class ByteAssert_isZero_Test implements NumberAssert_isZero_TestCase {
 
+  private static byte notZero;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    notZero = 6;
+  }
+
   @Test
   public void should_pass_if_actual_is_zero() {
-    new ByteAssert(asByte(0)).isZero();
+    new ByteAssert(0).isZero();
   }
 
   @Test
   public void should_fail_if_actual_is_not_zero() {
     expectAssertionError("expected:<[0]> but was:<[6]>").on(new CodeToTest() {
       public void run() {
-        new ByteAssert(asByte(6)).isZero();
+        new ByteAssert(notZero).isZero();
       }
     });
   }
@@ -46,8 +54,8 @@ public class ByteAssert_isZero_Test implements NumberAssert_isZero_TestCase {
   public void should_fail_and_display_description_of_assertion_if_actual_is_not_zero() {
     expectAssertionError("[A Test] expected:<[0]> but was:<[6]>").on(new CodeToTest() {
       public void run() {
-        new ByteAssert(asByte(6)).as("A Test")
-                                 .isZero();
+        new ByteAssert(notZero).as("A Test")
+                               .isZero();
       }
     });
   }
@@ -56,8 +64,8 @@ public class ByteAssert_isZero_Test implements NumberAssert_isZero_TestCase {
   public void should_fail_with_custom_message_if_actual_is_not_zero() {
     expectAssertionError("My custom message").on(new CodeToTest() {
       public void run() {
-        new ByteAssert(asByte(6)).overridingErrorMessage("My custom message")
-                                 .isZero();
+        new ByteAssert(notZero).overridingErrorMessage("My custom message")
+                               .isZero();
       }
     });
   }
@@ -66,9 +74,9 @@ public class ByteAssert_isZero_Test implements NumberAssert_isZero_TestCase {
   public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_is_not_zero() {
     expectAssertionError("My custom message").on(new CodeToTest() {
       public void run() {
-        new ByteAssert(asByte(6)).as("A Test")
-                                 .overridingErrorMessage("My custom message")
-                                 .isZero();
+        new ByteAssert(notZero).as("A Test")
+                               .overridingErrorMessage("My custom message")
+                               .isZero();
       }
     });
   }

@@ -14,10 +14,9 @@
  */
 package org.fest.assertions;
 
+import static org.fest.assertions.ArrayFactory.shortArray;
 import static org.fest.assertions.CommonFailures.*;
 import static org.fest.assertions.EmptyArrays.emptyShortArray;
-import static org.fest.assertions.ArrayFactory.shortArray;
-import static org.fest.assertions.Primitives.asShort;
 import static org.fest.test.ExpectedFailure.expectAssertionError;
 
 import org.fest.test.CodeToTest;
@@ -36,24 +35,24 @@ public class ShortArrayAssert_containsOnly_Test implements GroupAssert_containsO
 
   @BeforeClass
   public static void setUpOnce() {
-    array = ArrayFactory.shortArray(8, 6);
+    array = shortArray(8, 6);
   }
 
   @Test
   public void should_pass_if_actual_contains_only_given_values() {
-    new ShortArrayAssert(asShort(8)).containsOnly(asShort(8));
+    new ShortArrayAssert(shortArray(8)).containsOnly(shortArray(8));
   }
 
   @Test
   public void should_pass_if_actual_contains_only_given_values_in_different_order() {
-    new ShortArrayAssert(array).containsOnly(asShort(6), asShort(8));
+    new ShortArrayAssert(array).containsOnly(shortArray(6, 8));
   }
 
   @Test
   public void should_fail_if_actual_is_null() {
     expectErrorIfActualArrayIsNull(new CodeToTest() {
       public void run() {
-        new ShortArrayAssert(null).containsOnly(shortArray(asShort(7)));
+        new ShortArrayAssert(null).containsOnly(shortArray(7));
       }
     });
   }

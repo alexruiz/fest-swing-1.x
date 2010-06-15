@@ -27,23 +27,28 @@ import org.junit.ComparisonFailure;
  */
 final class ComparisonFailureMessages {
 
-  static String comparisonFailureMessage(Object actual, Object expected) {
-    return comparisonFailureMessage(null, actual, expected);
+  static String unexpectedNotEqual(Object actual, Object expected) {
+    return unexpectedNotEqual(null, actual, expected);
   }
 
-  static String comparisonFailureMessage(String description, Object actual, Object expected) {
+  static String unexpectedNotEqual(String description, Object actual, Object expected) {
     String d = inBrackets(description);
     String a = format(actual);
     String e = format(expected);
     boolean isArray = isArray(actual) || isArray(expected);
     if (!isArray) return new ComparisonFailure(d, e, a).getMessage();
-    if (!isEmpty(d)) d = concat(d, " ");
+    d = addSpaceIfNotEmpty(d);
     return concat(d, "expected:<", e, "> but was:<", a, ">");
   }
 
   private static String inBrackets(String s) {
     if (isEmpty(s)) return "";
     return concat("[", s, "]");
+  }
+
+  private static String addSpaceIfNotEmpty(String s) {
+    if (isEmpty(s)) return s;
+    return concat(s, " ");
   }
 
   private static boolean isArray(Object o) {

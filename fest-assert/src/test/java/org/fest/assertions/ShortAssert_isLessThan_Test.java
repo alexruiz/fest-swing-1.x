@@ -14,10 +14,10 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.Primitives.asShort;
 import static org.fest.test.ExpectedFailure.expectAssertionError;
 
 import org.fest.test.CodeToTest;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 /**
@@ -25,29 +25,39 @@ import org.junit.Test;
  *
  * @author Yvonne Wang
  * @author David DIDIER
+ * @author Alex Ruiz
  */
 public class ShortAssert_isLessThan_Test implements Assert_isLessThan_TestCase {
 
+  private static short actual;
+  private static short lessThanActual;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    actual = 8;
+    lessThanActual = 6;
+  }
+
   @Test
   public void should_pass_if_actual_is_less_than_expected() {
-    new ShortAssert(asShort(2)).isLessThan(asShort(6));
+    new ShortAssert(actual).isLessThan((short)10);
   }
 
   @Test
   public void should_fail_if_actual_is_equal_to_expected() {
-    expectAssertionError("actual value:<6> should be less than:<6>").on(new CodeToTest() {
+    expectAssertionError("actual value:<8> should be less than:<8>").on(new CodeToTest() {
       public void run() {
-        new ShortAssert(asShort(6)).isLessThan(asShort(6));
+        new ShortAssert(actual).isLessThan(actual);
       }
     });
   }
 
   @Test
   public void should_fail_and_display_description_of_assertion_if_actual_is_equal_to_expected() {
-    expectAssertionError("[A Test] actual value:<6> should be less than:<6>").on(new CodeToTest() {
+    expectAssertionError("[A Test] actual value:<8> should be less than:<8>").on(new CodeToTest() {
       public void run() {
-        new ShortAssert(asShort(6)).as("A Test")
-                                   .isLessThan(asShort(6));
+        new ShortAssert(actual).as("A Test")
+                               .isLessThan(actual);
       }
     });
   }
@@ -56,8 +66,8 @@ public class ShortAssert_isLessThan_Test implements Assert_isLessThan_TestCase {
   public void should_fail_with_custom_message_if_actual_is_equal_to_expected() {
     expectAssertionError("My custom message").on(new CodeToTest() {
       public void run() {
-        new ShortAssert(asShort(6)).overridingErrorMessage("My custom message")
-                                   .isLessThan(asShort(6));
+        new ShortAssert(actual).overridingErrorMessage("My custom message")
+                               .isLessThan(actual);
       }
     });
   }
@@ -66,28 +76,28 @@ public class ShortAssert_isLessThan_Test implements Assert_isLessThan_TestCase {
   public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_is_equal_to_expected() {
     expectAssertionError("My custom message").on(new CodeToTest() {
       public void run() {
-        new ShortAssert(asShort(6)).as("A Test")
-                                   .overridingErrorMessage("My custom message")
-                                   .isLessThan(asShort(6));
+        new ShortAssert(actual).as("A Test")
+                               .overridingErrorMessage("My custom message")
+                               .isLessThan(actual);
       }
     });
   }
 
   @Test
   public void should_fail_if_actual_is_greater_than_expected() {
-    expectAssertionError("actual value:<10> should be less than:<6>").on(new CodeToTest() {
+    expectAssertionError("actual value:<8> should be less than:<6>").on(new CodeToTest() {
       public void run() {
-        new ShortAssert(asShort(10)).isLessThan(asShort(6));
+        new ShortAssert(actual).isLessThan(lessThanActual);
       }
     });
   }
 
   @Test
   public void should_fail_and_display_description_of_assertion_if_actual_is_greater_than_expected() {
-    expectAssertionError("[A Test] actual value:<10> should be less than:<6>").on(new CodeToTest() {
+    expectAssertionError("[A Test] actual value:<8> should be less than:<6>").on(new CodeToTest() {
       public void run() {
-        new ShortAssert(asShort(10)).as("A Test")
-                                    .isLessThan(asShort(6));
+        new ShortAssert(actual).as("A Test")
+                               .isLessThan(lessThanActual);
       }
     });
   }
@@ -96,8 +106,8 @@ public class ShortAssert_isLessThan_Test implements Assert_isLessThan_TestCase {
   public void should_fail_with_custom_message_if_actual_is_greater_than_expected() {
     expectAssertionError("My custom message").on(new CodeToTest() {
       public void run() {
-        new ShortAssert(asShort(10)).overridingErrorMessage("My custom message")
-                                    .isLessThan(asShort(6));
+        new ShortAssert(actual).overridingErrorMessage("My custom message")
+                               .isLessThan(lessThanActual);
       }
     });
   }
@@ -106,9 +116,9 @@ public class ShortAssert_isLessThan_Test implements Assert_isLessThan_TestCase {
   public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_is_greater_than_expected() {
     expectAssertionError("My custom message").on(new CodeToTest() {
       public void run() {
-        new ShortAssert(asShort(10)).as("A Test")
-                                    .overridingErrorMessage("My custom message")
-                                    .isLessThan(asShort(6));
+        new ShortAssert(actual).as("A Test")
+                               .overridingErrorMessage("My custom message")
+                               .isLessThan(lessThanActual);
       }
     });
   }

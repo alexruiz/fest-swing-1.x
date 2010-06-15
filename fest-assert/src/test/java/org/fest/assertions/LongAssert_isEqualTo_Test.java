@@ -14,10 +14,11 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.ComparisonFailureMessages.comparisonFailureMessage;
+import static org.fest.assertions.ComparisonFailureMessages.unexpectedNotEqual;
 import static org.fest.test.ExpectedFailure.expectAssertionError;
 
 import org.fest.test.CodeToTest;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 /**
@@ -25,29 +26,39 @@ import org.junit.Test;
  *
  * @author Yvonne Wang
  * @author David DIDIER
+ * @author Alex Ruiz
  */
 public class LongAssert_isEqualTo_Test implements Assert_isEqualTo_TestCase {
 
+  private static long actual;
+  private static long notEqualValue;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    actual = 6L;
+    notEqualValue = 8L;
+  }
+
   @Test
   public void should_pass_if_actual_and_expected_are_equal() {
-    new LongAssert(6).isEqualTo(6);
+    new LongAssert(actual).isEqualTo(6);
   }
 
   @Test
   public void should_fail_if_actual_and_expected_are_not_equal() {
-    expectAssertionError(comparisonFailureMessage(6, 8)).on(new CodeToTest() {
+    expectAssertionError(unexpectedNotEqual(actual, notEqualValue)).on(new CodeToTest() {
       public void run() {
-        new LongAssert(6).isEqualTo(8);
+        new LongAssert(actual).isEqualTo(notEqualValue);
       }
     });
   }
 
   @Test
   public void should_fail_and_display_description_of_assertion_if_actual_and_expected_are_not_equal() {
-    expectAssertionError(comparisonFailureMessage("A Test", 6, 8)).on(new CodeToTest() {
+    expectAssertionError(unexpectedNotEqual("A Test", actual, notEqualValue)).on(new CodeToTest() {
       public void run() {
-        new LongAssert(6).as("A Test")
-                         .isEqualTo(8);
+        new LongAssert(actual).as("A Test")
+                              .isEqualTo(notEqualValue);
       }
     });
   }
@@ -56,8 +67,8 @@ public class LongAssert_isEqualTo_Test implements Assert_isEqualTo_TestCase {
   public void should_fail_with_custom_message_if_actual_and_expected_are_not_equal() {
     expectAssertionError("My custom message").on(new CodeToTest() {
       public void run() {
-        new LongAssert(6).overridingErrorMessage("My custom message")
-                         .isEqualTo(8);
+        new LongAssert(actual).overridingErrorMessage("My custom message")
+                              .isEqualTo(notEqualValue);
       }
     });
   }
@@ -66,9 +77,9 @@ public class LongAssert_isEqualTo_Test implements Assert_isEqualTo_TestCase {
   public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_and_expected_are_not_equal() {
     expectAssertionError("My custom message").on(new CodeToTest() {
       public void run() {
-        new LongAssert(6).as("A Test")
-                         .overridingErrorMessage("My custom message")
-                         .isEqualTo(8);
+        new LongAssert(actual).as("A Test")
+                              .overridingErrorMessage("My custom message")
+                              .isEqualTo(notEqualValue);
       }
     });
   }
