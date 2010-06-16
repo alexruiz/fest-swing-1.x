@@ -28,8 +28,11 @@ import java.io.File;
  */
 public class FileAssert_isEqualTo_Test extends GenericAssert_isEqualTo_TestCase<File> {
 
+  private static final File ACTUAL = temporaryFolder();
+  private static final File NOT_EQUAL = newFile("c:\\f.txt");
+
   protected FileAssert assertObject() {
-    return new FileAssert(temporaryFolder());
+    return new FileAssert(ACTUAL);
   }
 
   protected FileAssert assertObjectWithNullTarget() {
@@ -37,6 +40,6 @@ public class FileAssert_isEqualTo_Test extends GenericAssert_isEqualTo_TestCase<
   }
 
   protected File notEqualValue() {
-    return newFile("c:\\f.txt");
+    return NOT_EQUAL;
   }
 }

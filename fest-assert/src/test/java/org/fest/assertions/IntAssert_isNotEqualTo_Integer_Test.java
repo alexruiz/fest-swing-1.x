@@ -23,8 +23,10 @@ package org.fest.assertions;
  */
 public class IntAssert_isNotEqualTo_Integer_Test extends GenericAssert_isNotEqualTo_TestCase<Integer> {
 
+  private static final Integer ACTUAL = 6;
+
   protected IntAssert assertObject() {
-    return new IntAssert(6);
+    return new IntAssert(ACTUAL);
   }
 
   protected Integer notEqualValue() {

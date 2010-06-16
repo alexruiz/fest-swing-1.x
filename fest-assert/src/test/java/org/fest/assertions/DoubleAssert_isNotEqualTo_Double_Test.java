@@ -24,8 +24,10 @@ package org.fest.assertions;
  */
 public class DoubleAssert_isNotEqualTo_Double_Test extends GenericAssert_isNotEqualTo_TestCase<Double> {
 
+  private static final Double ACTUAL = 6d;
+
   protected DoubleAssert assertObject() {
-    return new DoubleAssert(6d);
+    return new DoubleAssert(ACTUAL);
   }
 
   protected Double notEqualValue() {

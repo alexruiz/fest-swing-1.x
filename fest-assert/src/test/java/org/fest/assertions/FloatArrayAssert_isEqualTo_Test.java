@@ -24,8 +24,11 @@ import static org.fest.assertions.ArrayFactory.floatArray;
  */
 public class FloatArrayAssert_isEqualTo_Test extends GenericAssert_isEqualTo_TestCase<float[]> {
 
+  private static final float[] ACTUAL =  { 6f, 8f };
+  private static final float[] NOT_EQUAL = { 6f };
+
   protected FloatArrayAssert assertObject() {
-    return new FloatArrayAssert(floatArray(6f, 8f));
+    return new FloatArrayAssert(ACTUAL);
   }
 
   protected FloatArrayAssert assertObjectWithNullTarget() {
@@ -33,6 +36,6 @@ public class FloatArrayAssert_isEqualTo_Test extends GenericAssert_isEqualTo_Tes
   }
 
   protected float[] notEqualValue() {
-    return floatArray(6f);
+    return floatArray(NOT_EQUAL);
   }
 }

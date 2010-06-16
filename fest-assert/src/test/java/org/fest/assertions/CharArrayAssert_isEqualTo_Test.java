@@ -14,7 +14,6 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.ArrayFactory.charArray;
 
 /**
  * Tests for <code>{@link CharArrayAssert#isEqualTo(char[])}</code>.
@@ -24,8 +23,11 @@ import static org.fest.assertions.ArrayFactory.charArray;
  */
 public class CharArrayAssert_isEqualTo_Test extends GenericAssert_isEqualTo_TestCase<char[]> {
 
+  private static final char[] ACTUAL = { 'a', 'b' };
+  private static final char[] NOT_EQUAL = { 'a' };
+
   protected CharArrayAssert assertObject() {
-    return new CharArrayAssert(charArray('a', 'b'));
+    return new CharArrayAssert(ACTUAL);
   }
 
   protected CharArrayAssert assertObjectWithNullTarget() {
@@ -33,6 +35,6 @@ public class CharArrayAssert_isEqualTo_Test extends GenericAssert_isEqualTo_Test
   }
 
   protected char[] notEqualValue() {
-    return charArray('c', 'd');
+    return NOT_EQUAL;
   }
 }

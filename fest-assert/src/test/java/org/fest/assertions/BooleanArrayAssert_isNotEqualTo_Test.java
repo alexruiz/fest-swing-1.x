@@ -15,10 +15,6 @@
 package org.fest.assertions;
 
 import static org.fest.assertions.ArrayFactory.booleanArray;
-import static org.fest.test.ExpectedFailure.expectAssertionError;
-
-import org.fest.test.CodeToTest;
-import org.junit.Test;
 
 /**
  * Tests for <code>{@link BooleanArrayAssert#isNotEqualTo(boolean[])}</code>.
@@ -26,50 +22,15 @@ import org.junit.Test;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class BooleanArrayAssert_isNotEqualTo_Test implements Assert_isNotEqualTo_TestCase {
+public class BooleanArrayAssert_isNotEqualTo_Test extends GenericAssert_isNotEqualTo_TestCase<boolean[]> {
 
-  @Test
-  public void should_pass_if_actual_and_expected_are_not_equal() {
-    new BooleanArrayAssert(true).isNotEqualTo(booleanArray(false));
+  private static final boolean[] ACTUAL = { true };
+
+  protected BooleanArrayAssert assertObject() {
+    return new BooleanArrayAssert(ACTUAL);
   }
 
-  @Test
-  public void should_fail_if_actual_and_expected_are_equal() {
-    expectAssertionError("actual value:<[true]> should not be equal to:<[true]>").on(new CodeToTest() {
-      public void run() {
-        new BooleanArrayAssert(true).isNotEqualTo(booleanArray(true));
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_and_expected_are_equal() {
-    expectAssertionError("[A Test] actual value:<[true]> should not be equal to:<[true]>").on(new CodeToTest() {
-      public void run() {
-        new BooleanArrayAssert(true).as("A Test")
-                                    .isNotEqualTo(booleanArray(true));
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_if_actual_and_expected_are_equal() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new BooleanArrayAssert(true).overridingErrorMessage("My custom message")
-                                    .isNotEqualTo(booleanArray(true));
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_and_expected_are_equal() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new BooleanArrayAssert(true).as("A Test")
-                                    .overridingErrorMessage("My custom message")
-                                    .isNotEqualTo(booleanArray(true));
-      }
-    });
+  protected boolean[] notEqualValue() {
+    return booleanArray(false);
   }
 }

@@ -16,13 +16,8 @@ package org.fest.assertions;
 
 import static java.math.BigDecimal.ZERO;
 import static org.fest.assertions.BigDecimals.eight;
-import static org.fest.test.ExpectedFailure.expectAssertionError;
 
 import java.math.BigDecimal;
-
-import org.fest.test.CodeToTest;
-import org.junit.BeforeClass;
-import org.junit.Test;
 
 /**
  * Tests for <code>{@link BigDecimalAssert#isNotEqualTo(BigDecimal)}</code>.
@@ -32,57 +27,13 @@ import org.junit.Test;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class BigDecimalAssert_isNotEqualTo_Test implements Assert_isNotEqualTo_TestCase {
+public class BigDecimalAssert_isNotEqualTo_Test extends GenericAssert_isNotEqualTo_TestCase<BigDecimal> {
 
-  private static BigDecimal eight;
-
-  @BeforeClass
-  public static void setUpOnce() {
-    eight = eight();
+  protected BigDecimalAssert assertObject() {
+    return new BigDecimalAssert(eight());
   }
 
-  @Test
-  public void should_pass_if_actual_and_expected_are_not_equal() {
-    new BigDecimalAssert(eight).isNotEqualTo(ZERO);
-  }
-
-  @Test
-  public void should_fail_if_actual_and_expected_are_equal() {
-    expectAssertionError("actual value:<8.0> should not be equal to:<8.0>").on(new CodeToTest() {
-      public void run() {
-        new BigDecimalAssert(eight).isNotEqualTo(eight);
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_and_expected_are_equal() {
-    expectAssertionError("[A Test] actual value:<8.0> should not be equal to:<8.0>").on(new CodeToTest() {
-      public void run() {
-        new BigDecimalAssert(eight).as("A Test")
-                                   .isNotEqualTo(eight);
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_if_actual_and_expected_are_equal() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new BigDecimalAssert(eight).overridingErrorMessage("My custom message")
-                                   .isNotEqualTo(eight);
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_and_expected_are_equal() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new BigDecimalAssert(eight).as("A Test")
-                                   .overridingErrorMessage("My custom message")
-                                   .isNotEqualTo(eight);
-      }
-    });
+  protected BigDecimal notEqualValue() {
+    return ZERO;
   }
 }

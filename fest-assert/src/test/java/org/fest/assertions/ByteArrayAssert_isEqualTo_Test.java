@@ -14,7 +14,6 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.ArrayFactory.byteArray;
 
 /**
  * Tests for <code>{@link ByteArrayAssert#isEqualTo(byte[])}</code>.
@@ -24,8 +23,11 @@ import static org.fest.assertions.ArrayFactory.byteArray;
  */
 public class ByteArrayAssert_isEqualTo_Test extends GenericAssert_isEqualTo_TestCase<byte[]> {
 
+  private static final byte[] ACTUAL = { 6, 8 };
+  private static final byte[] NOT_EQUAL = { 8 };
+
   protected ByteArrayAssert assertObject() {
-    return new ByteArrayAssert(byteArray(8, 6));
+    return new ByteArrayAssert(ACTUAL);
   }
 
   protected ByteArrayAssert assertObjectWithNullTarget() {
@@ -33,6 +35,6 @@ public class ByteArrayAssert_isEqualTo_Test extends GenericAssert_isEqualTo_Test
   }
 
   protected byte[] notEqualValue() {
-    return byteArray(7);
+    return NOT_EQUAL;
   }
 }

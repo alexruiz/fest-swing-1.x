@@ -14,7 +14,7 @@
  */
 package org.fest.assertions;
 
-import static java.lang.Boolean.TRUE;
+import static java.lang.Boolean.*;
 
 /**
  * Tests for <code>{@link BooleanAssert#isEqualTo(Boolean)}</code>.
@@ -25,7 +25,7 @@ import static java.lang.Boolean.TRUE;
 public class BooleanAssert_isEqualTo_Boolean_Test extends GenericAssert_isEqualTo_TestCase<Boolean> {
 
   protected BooleanAssert assertObject() {
-    return new BooleanAssert(false);
+    return new BooleanAssert(FALSE);
   }
 
   protected BooleanAssert assertObjectWithNullTarget() {

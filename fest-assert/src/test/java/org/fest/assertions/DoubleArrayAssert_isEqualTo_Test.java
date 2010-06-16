@@ -14,7 +14,6 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.ArrayFactory.doubleArray;
 
 /**
  * Tests for <code>{@link DoubleArrayAssert#isEqualTo(double[])}</code>.
@@ -24,8 +23,11 @@ import static org.fest.assertions.ArrayFactory.doubleArray;
  */
 public class DoubleArrayAssert_isEqualTo_Test extends GenericAssert_isEqualTo_TestCase<double[]> {
 
+  private static final double[] ACTUAL = { 6d, 8d };
+  private static final double[] NOT_EQUAL = { 6d };
+
   protected DoubleArrayAssert assertObject() {
-    return new DoubleArrayAssert(doubleArray(6d, 8d));
+    return new DoubleArrayAssert(ACTUAL);
   }
 
   protected DoubleArrayAssert assertObjectWithNullTarget() {
@@ -33,6 +35,6 @@ public class DoubleArrayAssert_isEqualTo_Test extends GenericAssert_isEqualTo_Te
   }
 
   protected double[] notEqualValue() {
-    return doubleArray(6d);
+    return NOT_EQUAL;
   }
 }

@@ -23,8 +23,11 @@ package org.fest.assertions;
  */
 public class CharAssert_isEqualTo_Character_Test extends GenericAssert_isEqualTo_TestCase<Character> {
 
+  private static final Character ACTUAL = 'a';
+  private static final Character NOT_EQUAL = 'e';
+
   protected CharAssert assertObject() {
-    return new CharAssert('a');
+    return new CharAssert(ACTUAL);
   }
 
   protected CharAssert assertObjectWithNullTarget() {
@@ -32,6 +35,6 @@ public class CharAssert_isEqualTo_Character_Test extends GenericAssert_isEqualTo
   }
 
   protected Character notEqualValue() {
-    return 'e';
+    return NOT_EQUAL;
   }
 }

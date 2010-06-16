@@ -27,8 +27,11 @@ import java.util.Collection;
  */
 public class CollectionAssert_isEqualTo_Test extends GenericAssert_isEqualTo_TestCase<Collection<?>> {
 
+  private static final Collection<String> ACTUAL = list("Luke", "Leia");
+  private static final Collection<String> NOT_EQUAL = list("Anakin");
+
   protected CollectionAssert assertObject() {
-    return new CollectionAssert(list("Luke", "Leia"));
+    return new CollectionAssert(ACTUAL);
   }
 
   protected CollectionAssert assertObjectWithNullTarget() {
@@ -36,6 +39,6 @@ public class CollectionAssert_isEqualTo_Test extends GenericAssert_isEqualTo_Tes
   }
 
   protected Collection<?> notEqualValue() {
-    return list("Anakin");
+    return NOT_EQUAL;
   }
 }

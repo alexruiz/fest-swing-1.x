@@ -24,8 +24,11 @@ package org.fest.assertions;
  */
 public class ByteAssert_isEqualTo_Byte_Test extends GenericAssert_isEqualTo_TestCase<Byte> {
 
+  private static final Byte ACTUAL = 6;
+  private static final Byte NOT_EQUAL = 8;
+
   protected ByteAssert assertObject() {
-    return new ByteAssert(6);
+    return new ByteAssert(ACTUAL);
   }
 
   protected ByteAssert assertObjectWithNullTarget() {
@@ -33,6 +36,6 @@ public class ByteAssert_isEqualTo_Byte_Test extends GenericAssert_isEqualTo_Test
   }
 
   protected Byte notEqualValue() {
-    return 8;
+    return NOT_EQUAL;
   }
 }

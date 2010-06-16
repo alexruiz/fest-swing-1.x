@@ -23,8 +23,10 @@ package org.fest.assertions;
  */
 public class ShortAssert_isNotEqualTo_Short_Test extends GenericAssert_isNotEqualTo_TestCase<Short> {
 
+  private static final Short ACTUAL = 6;
+
   protected ShortAssert assertObject() {
-    return new ShortAssert(6);
+    return new ShortAssert(ACTUAL);
   }
 
   protected Short notEqualValue() {

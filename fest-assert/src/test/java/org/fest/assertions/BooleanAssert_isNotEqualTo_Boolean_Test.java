@@ -15,10 +15,6 @@
 package org.fest.assertions;
 
 import static java.lang.Boolean.*;
-import static org.fest.test.ExpectedFailure.expectAssertionError;
-
-import org.fest.test.CodeToTest;
-import org.junit.Test;
 
 /**
  * Tests for <code>{@link BooleanAssert#isNotEqualTo(Boolean)}</code>.
@@ -26,50 +22,13 @@ import org.junit.Test;
  * @author Ansgar Konermann
  * @author Alex Ruiz
  */
-public class BooleanAssert_isNotEqualTo_Boolean_Test implements Assert_isNotEqualTo_TestCase {
+public class BooleanAssert_isNotEqualTo_Boolean_Test extends GenericAssert_isNotEqualTo_TestCase<Boolean> {
 
-  @Test
-  public void should_fail_if_actual_and_expected_are_equal() {
-    expectAssertionError("actual value:<false> should not be equal to:<false>").on(new CodeToTest() {
-      public void run() {
-        new BooleanAssert(false).isNotEqualTo(FALSE);
-      }
-    });
+  protected BooleanAssert assertObject() {
+    return new BooleanAssert(TRUE);
   }
 
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_and_expected_are_equal() {
-    expectAssertionError("[A Test] actual value:<false> should not be equal to:<false>").on(new CodeToTest() {
-      public void run() {
-        new BooleanAssert(false).as("A Test")
-                                .isNotEqualTo(FALSE);
-      }
-    });
-  }
-
-  @Test
-  public void should_pass_if_actual_and_expected_are_not_equal() {
-    new BooleanAssert(false).isNotEqualTo(TRUE);
-  }
-
-  @Test
-  public void should_fail_with_custom_message_if_actual_and_expected_are_equal() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new BooleanAssert(false).overridingErrorMessage("My custom message")
-                                .isNotEqualTo(FALSE);
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_and_expected_are_equal() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new BooleanAssert(false).as("A Test")
-                                .overridingErrorMessage("My custom message")
-                                .isNotEqualTo(FALSE);
-      }
-    });
+  protected Boolean notEqualValue() {
+    return FALSE;
   }
 }

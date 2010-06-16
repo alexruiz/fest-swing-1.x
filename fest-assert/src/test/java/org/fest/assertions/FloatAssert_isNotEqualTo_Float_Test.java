@@ -23,8 +23,10 @@ package org.fest.assertions;
  */
 public class FloatAssert_isNotEqualTo_Float_Test extends GenericAssert_isNotEqualTo_TestCase<Float> {
 
+  private static final Float ACTUAL = 6f;
+
   protected FloatAssert assertObject() {
-    return new FloatAssert(6f);
+    return new FloatAssert(ACTUAL);
   }
 
   protected Float notEqualValue() {

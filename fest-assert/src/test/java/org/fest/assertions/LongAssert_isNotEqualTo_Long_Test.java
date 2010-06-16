@@ -23,8 +23,10 @@ package org.fest.assertions;
  */
 public class LongAssert_isNotEqualTo_Long_Test extends GenericAssert_isNotEqualTo_TestCase<Long> {
 
+  private static final Long ACTUAL = 6L;
+
   protected LongAssert assertObject() {
-    return new LongAssert(6L);
+    return new LongAssert(ACTUAL);
   }
 
   protected Long notEqualValue() {

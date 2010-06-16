@@ -15,13 +15,9 @@
  */
 package org.fest.assertions;
 
-import static org.fest.test.ExpectedFailure.expectAssertionError;
 import static org.fest.util.Collections.list;
 
 import java.util.Collection;
-import org.fest.test.CodeToTest;
-import org.junit.BeforeClass;
-import org.junit.Test;
 
 /**
  * Tests for <code>{@link CollectionAssert#isNotEqualTo(Collection)}</code>.
@@ -29,59 +25,15 @@ import org.junit.Test;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class CollectionAssert_isNotEqualTo_Test implements Assert_isNotEqualTo_TestCase {
+public class CollectionAssert_isNotEqualTo_Test extends GenericAssert_isNotEqualTo_TestCase<Collection<?>> {
 
-  private static Collection<String> collection;
+  private static final Collection<String> ACTUAL = list("Luke", "Leia");
 
-  @BeforeClass
-  public static void setUpOnce() {
-    collection = list("Luke", "Leia");
+  protected CollectionAssert assertObject() {
+    return new CollectionAssert(ACTUAL);
   }
 
-  @Test
-  public void should_pass_if_actual_and_expected_are_not_equal() {
-    new CollectionAssert(collection).isNotEqualTo(list("Yoda"));
-  }
-
-  @Test
-  public void should_fail_if_actual_and_expected_are_equal() {
-    expectAssertionError("actual value:<['Luke', 'Leia']> should not be equal to:<['Luke', 'Leia']>").on(
-      new CodeToTest() {
-        public void run() {
-          new CollectionAssert(collection).isNotEqualTo(list("Luke", "Leia"));
-        }
-      });
-  }
-
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_and_expected_are_equal() {
-    String message = "[A Test] actual value:<['Luke', 'Leia']> should not be equal to:<['Luke', 'Leia']>";
-    expectAssertionError(message).on(new CodeToTest() {
-      public void run() {
-        new CollectionAssert(collection).as("A Test")
-                                        .isNotEqualTo(list("Luke", "Leia"));
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_if_actual_and_expected_are_equal() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new CollectionAssert(collection).overridingErrorMessage("My custom message")
-                                        .isNotEqualTo(list("Luke", "Leia"));
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_and_expected_are_equal() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new CollectionAssert(collection).as("A Test")
-                                        .overridingErrorMessage("My custom message")
-                                        .isNotEqualTo(list("Luke", "Leia"));
-      }
-    });
+  protected Collection<?> notEqualValue() {
+    return list("Yoda");
   }
 }
