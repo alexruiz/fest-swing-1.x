@@ -15,6 +15,8 @@
  */
 package org.fest.assertions;
 
+import org.junit.BeforeClass;
+
 /**
  * Tests for <code>{@link DoubleAssert#isEqualTo(Double)}</code>
  *
@@ -23,11 +25,17 @@ package org.fest.assertions;
  */
 public class DoubleAssert_isEqualTo_Double_Test extends GenericAssert_isEqualTo_TestCase<Double> {
 
-  private static final Double ACTUAL = 6d;
-  private static final Double NOT_EQUAL = 8d;
+  private static Double actual;
+  private static Double notEqualValue;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    actual = 6d;
+    notEqualValue = 8d;
+  }
 
   protected DoubleAssert assertObject() {
-    return new DoubleAssert(ACTUAL);
+    return new DoubleAssert(actual);
   }
 
   protected DoubleAssert assertObjectWithNullTarget() {
@@ -35,6 +43,6 @@ public class DoubleAssert_isEqualTo_Double_Test extends GenericAssert_isEqualTo_
   }
 
   protected Double notEqualValue() {
-    return NOT_EQUAL;
+    return notEqualValue;
   }
 }

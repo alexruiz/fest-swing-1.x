@@ -19,6 +19,8 @@ import static org.fest.assertions.MapFactory.map;
 
 import java.util.Map;
 
+import org.junit.BeforeClass;
+
 /**
  * Tests for <code>{@link MapAssert#isEqualTo(Map)}</code>.
  *
@@ -28,8 +30,17 @@ import java.util.Map;
  */
 public class MapAssert_isEqualTo_Test extends GenericAssert_isEqualTo_TestCase<Map<?, ?>> {
 
+  private static Map<?, ?> actual;
+  private static Map<?, ?> notEqualValue;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    actual = map(entry("key1", 1), entry("key2", 2));
+    notEqualValue = map(entry("key6", 6), entry("key8", 8));
+  }
+
   protected MapAssert assertObject() {
-    return new MapAssert(map(entry("key1", 1), entry("key2", 2)));
+    return new MapAssert(actual);
   }
 
   protected MapAssert assertObjectWithNullTarget() {
@@ -37,6 +48,6 @@ public class MapAssert_isEqualTo_Test extends GenericAssert_isEqualTo_TestCase<M
   }
 
   protected Map<?, ?> notEqualValue() {
-    return map(entry("key6", 6), entry("key8", 8));
+    return notEqualValue;
   }
 }

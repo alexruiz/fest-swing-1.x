@@ -18,6 +18,8 @@ import static org.fest.assertions.BigDecimals.*;
 
 import java.math.BigDecimal;
 
+import org.junit.BeforeClass;
+
 /**
  * Tests for <code>{@link BigDecimalAssert#isEqualTo(BigDecimal)}</code>.
  *
@@ -28,8 +30,17 @@ import java.math.BigDecimal;
  */
 public class BigDecimalAssert_isEqualTo_Test extends GenericAssert_isEqualTo_TestCase<BigDecimal> {
 
+  private static BigDecimal actual;
+  private static BigDecimal notEqualValue;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    actual = eight();
+    notEqualValue = nine();
+  }
+
   protected BigDecimalAssert assertObject() {
-    return new BigDecimalAssert(eight());
+    return new BigDecimalAssert(actual);
   }
 
   protected BigDecimalAssert assertObjectWithNullTarget() {
@@ -37,6 +48,6 @@ public class BigDecimalAssert_isEqualTo_Test extends GenericAssert_isEqualTo_Tes
   }
 
   protected BigDecimal notEqualValue() {
-    return nine();
+    return notEqualValue;
   }
 }

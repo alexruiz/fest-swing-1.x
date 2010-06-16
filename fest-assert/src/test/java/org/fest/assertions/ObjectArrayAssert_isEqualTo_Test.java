@@ -16,6 +16,8 @@ package org.fest.assertions;
 
 import static org.fest.assertions.ArrayFactory.objectArray;
 
+import org.junit.BeforeClass;
+
 /**
  * Tests for <code>{@link ObjectArrayAssert#isEqualTo(Object[])}</code>.
  *
@@ -24,8 +26,17 @@ import static org.fest.assertions.ArrayFactory.objectArray;
  */
 public class ObjectArrayAssert_isEqualTo_Test extends GenericAssert_isEqualTo_TestCase<Object[]> {
 
+  private static Object[] actual;
+  private static Object[] notEqualValue;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    actual = objectArray(6, 8);
+    notEqualValue = objectArray(6);
+  }
+
   protected ObjectArrayAssert assertObject() {
-    return new ObjectArrayAssert(objectArray(6, 8));
+    return new ObjectArrayAssert(actual);
   }
 
   protected ObjectArrayAssert assertObjectWithNullTarget() {
@@ -34,6 +45,6 @@ public class ObjectArrayAssert_isEqualTo_Test extends GenericAssert_isEqualTo_Te
   }
 
   protected Object[] notEqualValue() {
-    return objectArray(6);
+    return notEqualValue;
   }
 }

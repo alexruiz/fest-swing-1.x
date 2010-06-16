@@ -14,6 +14,8 @@
  */
 package org.fest.assertions;
 
+import org.junit.BeforeClass;
+
 /**
  * Tests for <code>{@link ObjectAssert#isEqualTo(Object)}</code>.
  *
@@ -22,8 +24,17 @@ package org.fest.assertions;
  */
 public class ObjectAssert_isEqualTo_Test extends GenericAssert_isEqualTo_TestCase<Object> {
 
+  private static Object actual;
+  private static Object notEqualValue;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    actual = 6;
+    notEqualValue = 8;
+  }
+
   protected ObjectAssert assertObject() {
-    return new ObjectAssert(6);
+    return new ObjectAssert(actual);
   }
 
   protected ObjectAssert assertObjectWithNullTarget() {
@@ -31,6 +42,6 @@ public class ObjectAssert_isEqualTo_Test extends GenericAssert_isEqualTo_TestCas
   }
 
   protected Object notEqualValue() {
-    return 8;
+    return notEqualValue;
   }
 }

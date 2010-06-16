@@ -19,6 +19,8 @@ import static org.fest.util.Collections.list;
 
 import java.util.Collection;
 
+import org.junit.BeforeClass;
+
 /**
  * Tests for <code>{@link CollectionAssert#isEqualTo(java.util.Collection)}</code>.
  *
@@ -27,11 +29,17 @@ import java.util.Collection;
  */
 public class CollectionAssert_isEqualTo_Test extends GenericAssert_isEqualTo_TestCase<Collection<?>> {
 
-  private static final Collection<String> ACTUAL = list("Luke", "Leia");
-  private static final Collection<String> NOT_EQUAL = list("Anakin");
+  private static Collection<?> actual;
+  private static Collection<?> notEqualValue;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    actual = list("Luke", "Leia");
+    notEqualValue = list("Anakin");
+  }
 
   protected CollectionAssert assertObject() {
-    return new CollectionAssert(ACTUAL);
+    return new CollectionAssert(actual);
   }
 
   protected CollectionAssert assertObjectWithNullTarget() {
@@ -39,6 +47,6 @@ public class CollectionAssert_isEqualTo_Test extends GenericAssert_isEqualTo_Tes
   }
 
   protected Collection<?> notEqualValue() {
-    return NOT_EQUAL;
+    return notEqualValue;
   }
 }

@@ -19,6 +19,8 @@ import static org.fest.util.Files.temporaryFolder;
 
 import java.io.File;
 
+import org.junit.BeforeClass;
+
 /**
  * Tests for <code>{@link FileAssert#isEqualTo(java.io.File)}</code>.
  *
@@ -28,11 +30,17 @@ import java.io.File;
  */
 public class FileAssert_isEqualTo_Test extends GenericAssert_isEqualTo_TestCase<File> {
 
-  private static final File ACTUAL = temporaryFolder();
-  private static final File NOT_EQUAL = newFile("c:\\f.txt");
+  private static File actual;
+  private static File notEqualValue;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    actual = temporaryFolder();
+    notEqualValue = newFile("c:\\f.txt");
+  }
 
   protected FileAssert assertObject() {
-    return new FileAssert(ACTUAL);
+    return new FileAssert(actual);
   }
 
   protected FileAssert assertObjectWithNullTarget() {
@@ -40,6 +48,6 @@ public class FileAssert_isEqualTo_Test extends GenericAssert_isEqualTo_TestCase<
   }
 
   protected File notEqualValue() {
-    return NOT_EQUAL;
+    return notEqualValue;
   }
 }

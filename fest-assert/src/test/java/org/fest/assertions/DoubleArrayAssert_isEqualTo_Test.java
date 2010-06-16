@@ -14,6 +14,9 @@
  */
 package org.fest.assertions;
 
+import static org.fest.assertions.ArrayFactory.doubleArray;
+
+import org.junit.BeforeClass;
 
 /**
  * Tests for <code>{@link DoubleArrayAssert#isEqualTo(double[])}</code>.
@@ -23,11 +26,17 @@ package org.fest.assertions;
  */
 public class DoubleArrayAssert_isEqualTo_Test extends GenericAssert_isEqualTo_TestCase<double[]> {
 
-  private static final double[] ACTUAL = { 6d, 8d };
-  private static final double[] NOT_EQUAL = { 6d };
+  private static double[] actual;
+  private static double[] notEqualValue;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    actual = doubleArray(6d, 8d);
+    notEqualValue = doubleArray(6d);
+  }
 
   protected DoubleArrayAssert assertObject() {
-    return new DoubleArrayAssert(ACTUAL);
+    return new DoubleArrayAssert(actual);
   }
 
   protected DoubleArrayAssert assertObjectWithNullTarget() {
@@ -35,6 +44,6 @@ public class DoubleArrayAssert_isEqualTo_Test extends GenericAssert_isEqualTo_Te
   }
 
   protected double[] notEqualValue() {
-    return NOT_EQUAL;
+    return notEqualValue;
   }
 }

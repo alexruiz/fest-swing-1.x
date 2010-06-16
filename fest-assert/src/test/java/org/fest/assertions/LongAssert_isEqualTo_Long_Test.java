@@ -15,6 +15,8 @@
  */
 package org.fest.assertions;
 
+import org.junit.BeforeClass;
+
 /**
  * Tests for <code>{@link LongAssert#isEqualTo(Long)}</code>
  *
@@ -23,8 +25,17 @@ package org.fest.assertions;
  */
 public class LongAssert_isEqualTo_Long_Test extends GenericAssert_isEqualTo_TestCase<Long> {
 
+  private static Long actual;
+  private static Long notEqualValue;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    actual = 6L;
+    notEqualValue = 8L;
+  }
+
   protected LongAssert assertObject() {
-    return new LongAssert(123l);
+    return new LongAssert(actual);
   }
 
   protected LongAssert assertObjectWithNullTarget() {
@@ -32,6 +43,6 @@ public class LongAssert_isEqualTo_Long_Test extends GenericAssert_isEqualTo_Test
   }
 
   protected Long notEqualValue() {
-    return 456l;
+    return notEqualValue;
   }
 }

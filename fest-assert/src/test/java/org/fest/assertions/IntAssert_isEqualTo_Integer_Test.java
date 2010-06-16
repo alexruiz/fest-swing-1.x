@@ -15,6 +15,8 @@
  */
 package org.fest.assertions;
 
+import org.junit.BeforeClass;
+
 /**
  * Tests for <code>{@link IntAssert#isEqualTo(Integer)}</code>
  *
@@ -23,8 +25,17 @@ package org.fest.assertions;
  */
 public class IntAssert_isEqualTo_Integer_Test extends GenericAssert_isEqualTo_TestCase<Integer> {
 
+  private static Integer actual;
+  private static Integer notEqualValue;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    actual = 8;
+    notEqualValue = 9;
+  }
+
   protected IntAssert assertObject() {
-    return new IntAssert(8);
+    return new IntAssert(actual);
   }
 
   protected IntAssert assertObjectWithNullTarget() {
@@ -32,6 +43,6 @@ public class IntAssert_isEqualTo_Integer_Test extends GenericAssert_isEqualTo_Te
   }
 
   protected Integer notEqualValue() {
-    return 9;
+    return notEqualValue;
   }
 }

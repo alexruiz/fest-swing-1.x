@@ -14,6 +14,7 @@
  */
 package org.fest.assertions;
 
+import org.junit.BeforeClass;
 
 /**
  * Tests for <code>{@link StringAssert#isEqualTo(String)}</code>.
@@ -24,8 +25,17 @@ package org.fest.assertions;
  */
 public class StringAssert_isEqualTo_Test extends GenericAssert_isEqualTo_TestCase<String> {
 
+  private static String actual;
+  private static String notEqualValue;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    actual = "Luke";
+    notEqualValue = "Yoda";
+  }
+
   protected StringAssert assertObject() {
-    return new StringAssert("Luke");
+    return new StringAssert(actual);
   }
 
   protected StringAssert assertObjectWithNullTarget() {
@@ -33,6 +43,6 @@ public class StringAssert_isEqualTo_Test extends GenericAssert_isEqualTo_TestCas
   }
 
   protected String notEqualValue() {
-    return "Yoda";
+    return notEqualValue;
   }
 }

@@ -19,6 +19,8 @@ import static org.fest.util.Collections.list;
 
 import java.util.List;
 
+import org.junit.BeforeClass;
+
 /**
  * Tests for <code>{@link ListAssert#isEqualTo(java.util.List)}</code>.
  *
@@ -26,8 +28,17 @@ import java.util.List;
  */
 public class ListAssert_isEqualTo_Test extends GenericAssert_isEqualTo_TestCase<List<?>> {
 
+  private static List<?> actual;
+  private static List<?> notEqualValue;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    actual = list("Luke", "Leia");
+    notEqualValue = list("Anakin");
+  }
+
   protected ListAssert assertObject() {
-    return new ListAssert(list("Luke", "Leia"));
+    return new ListAssert(actual);
   }
 
   protected ListAssert assertObjectWithNullTarget() {
@@ -35,6 +46,6 @@ public class ListAssert_isEqualTo_Test extends GenericAssert_isEqualTo_TestCase<
   }
 
   protected List<?> notEqualValue() {
-    return list("Anakin");
+    return notEqualValue;
   }
 }

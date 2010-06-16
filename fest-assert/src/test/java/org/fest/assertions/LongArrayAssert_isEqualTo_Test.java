@@ -16,6 +16,8 @@ package org.fest.assertions;
 
 import static org.fest.assertions.ArrayFactory.longArray;
 
+import org.junit.BeforeClass;
+
 /**
  * Tests for <code>{@link LongArrayAssert#isEqualTo(long[])}</code>.
  *
@@ -24,8 +26,17 @@ import static org.fest.assertions.ArrayFactory.longArray;
  */
 public class LongArrayAssert_isEqualTo_Test extends GenericAssert_isEqualTo_TestCase<long[]> {
 
+  private static long[] actual;
+  private static long[] notEqualValue;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    actual = longArray(6L, 8L);
+    notEqualValue = longArray(6L);
+  }
+
   protected LongArrayAssert assertObject() {
-    return new LongArrayAssert(longArray(6L, 8L));
+    return new LongArrayAssert(actual);
   }
 
   protected LongArrayAssert assertObjectWithNullTarget() {
@@ -33,6 +44,6 @@ public class LongArrayAssert_isEqualTo_Test extends GenericAssert_isEqualTo_Test
   }
 
   protected long[] notEqualValue() {
-    return longArray(6L);
+    return notEqualValue;
   }
 }

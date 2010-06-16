@@ -16,6 +16,8 @@ package org.fest.assertions;
 
 import static org.fest.assertions.ArrayFactory.shortArray;
 
+import org.junit.BeforeClass;
+
 /**
  * Tests for <code>{@link ShortArrayAssert#isEqualTo(short[])}</code>.
  *
@@ -24,8 +26,17 @@ import static org.fest.assertions.ArrayFactory.shortArray;
  */
 public class ShortArrayAssert_isEqualTo_Test extends GenericAssert_isEqualTo_TestCase<short[]> {
 
+  private static short[] actual;
+  private static short[] notEqualValue;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    actual = shortArray(6, 8);
+    notEqualValue = shortArray(6);
+  }
+
   protected ShortArrayAssert assertObject() {
-    return new ShortArrayAssert(shortArray(6, 8));
+    return new ShortArrayAssert(actual);
   }
 
   protected ShortArrayAssert assertObjectWithNullTarget() {
@@ -33,6 +44,6 @@ public class ShortArrayAssert_isEqualTo_Test extends GenericAssert_isEqualTo_Tes
   }
 
   protected short[] notEqualValue() {
-    return shortArray(6);
+    return notEqualValue;
   }
 }

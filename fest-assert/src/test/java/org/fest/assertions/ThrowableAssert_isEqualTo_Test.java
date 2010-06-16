@@ -14,6 +14,7 @@
  */
 package org.fest.assertions;
 
+import org.junit.BeforeClass;
 
 /**
  * Tests for <code>{@link ThrowableAssert#isEqualTo(Throwable)}</code>.
@@ -23,8 +24,17 @@ package org.fest.assertions;
  */
 public class ThrowableAssert_isEqualTo_Test extends GenericAssert_isEqualTo_TestCase<Throwable> {
 
+  private static Throwable actual;
+  private static Throwable notEqualValue;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    actual = new Exception();
+    notEqualValue = new AssertionError();
+  }
+
   protected ThrowableAssert assertObject() {
-    return new ThrowableAssert(new Exception());
+    return new ThrowableAssert(actual);
   }
 
   protected ThrowableAssert assertObjectWithNullTarget() {
@@ -32,6 +42,6 @@ public class ThrowableAssert_isEqualTo_Test extends GenericAssert_isEqualTo_Test
   }
 
   protected Throwable notEqualValue() {
-    return new AssertionError();
+    return notEqualValue;
   }
 }

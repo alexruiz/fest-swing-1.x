@@ -16,6 +16,8 @@ package org.fest.assertions;
 
 import static java.lang.Boolean.*;
 
+import org.junit.BeforeClass;
+
 /**
  * Tests for <code>{@link BooleanAssert#isEqualTo(Boolean)}</code>.
  *
@@ -24,8 +26,17 @@ import static java.lang.Boolean.*;
  */
 public class BooleanAssert_isEqualTo_Boolean_Test extends GenericAssert_isEqualTo_TestCase<Boolean> {
 
+  private static Boolean actual;
+  private static Boolean notEqualValue;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    actual = FALSE;
+    notEqualValue = TRUE;
+  }
+
   protected BooleanAssert assertObject() {
-    return new BooleanAssert(FALSE);
+    return new BooleanAssert(actual);
   }
 
   protected BooleanAssert assertObjectWithNullTarget() {
@@ -33,6 +44,6 @@ public class BooleanAssert_isEqualTo_Boolean_Test extends GenericAssert_isEqualT
   }
 
   protected Boolean notEqualValue() {
-    return TRUE;
+    return notEqualValue;
   }
 }

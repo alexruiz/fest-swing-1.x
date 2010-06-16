@@ -16,6 +16,8 @@ package org.fest.assertions;
 
 import static org.fest.assertions.ArrayFactory.intArray;
 
+import org.junit.BeforeClass;
+
 /**
  * Tests for <code>{@link IntArrayAssert#isEqualTo(int[])}</code>.
  *
@@ -24,8 +26,17 @@ import static org.fest.assertions.ArrayFactory.intArray;
  */
 public class IntArrayAssert_isEqualTo_Test extends GenericAssert_isEqualTo_TestCase<int[]> {
 
+  private static int[] actual;
+  private static int[] notEqualValue;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    actual = intArray(6, 8);
+    notEqualValue = intArray(6);
+  }
+
   protected IntArrayAssert assertObject() {
-    return new IntArrayAssert(intArray(6, 8));
+    return new IntArrayAssert(actual);
   }
 
   protected IntArrayAssert assertObjectWithNullTarget() {
@@ -33,6 +44,6 @@ public class IntArrayAssert_isEqualTo_Test extends GenericAssert_isEqualTo_TestC
   }
 
   protected int[] notEqualValue() {
-    return intArray(6);
+    return notEqualValue;
   }
 }

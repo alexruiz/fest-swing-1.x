@@ -16,6 +16,8 @@ package org.fest.assertions;
 
 import static org.fest.assertions.ArrayFactory.floatArray;
 
+import org.junit.BeforeClass;
+
 /**
  * Tests for <code>{@link FloatArrayAssert#isEqualTo(float[])}</code>.
  *
@@ -24,11 +26,17 @@ import static org.fest.assertions.ArrayFactory.floatArray;
  */
 public class FloatArrayAssert_isEqualTo_Test extends GenericAssert_isEqualTo_TestCase<float[]> {
 
-  private static final float[] ACTUAL =  { 6f, 8f };
-  private static final float[] NOT_EQUAL = { 6f };
+  private static float[] actual;
+  private static float[] notEqualValue;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    actual = floatArray(6f, 8f);
+    notEqualValue = floatArray(6f);
+  }
 
   protected FloatArrayAssert assertObject() {
-    return new FloatArrayAssert(ACTUAL);
+    return new FloatArrayAssert(actual);
   }
 
   protected FloatArrayAssert assertObjectWithNullTarget() {
@@ -36,6 +44,6 @@ public class FloatArrayAssert_isEqualTo_Test extends GenericAssert_isEqualTo_Tes
   }
 
   protected float[] notEqualValue() {
-    return floatArray(NOT_EQUAL);
+    return notEqualValue;
   }
 }

@@ -16,6 +16,8 @@
 
 package org.fest.assertions;
 
+import org.junit.BeforeClass;
+
 /**
  * Tests for <code>{@link ByteAssert#isEqualTo(Byte)}</code>.
  *
@@ -24,11 +26,17 @@ package org.fest.assertions;
  */
 public class ByteAssert_isEqualTo_Byte_Test extends GenericAssert_isEqualTo_TestCase<Byte> {
 
-  private static final Byte ACTUAL = 6;
-  private static final Byte NOT_EQUAL = 8;
+  private static Byte actual;
+  private static Byte notEqualValue;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    actual = 6;
+    notEqualValue = 8;
+  }
 
   protected ByteAssert assertObject() {
-    return new ByteAssert(ACTUAL);
+    return new ByteAssert(actual);
   }
 
   protected ByteAssert assertObjectWithNullTarget() {
@@ -36,6 +44,6 @@ public class ByteAssert_isEqualTo_Byte_Test extends GenericAssert_isEqualTo_Test
   }
 
   protected Byte notEqualValue() {
-    return NOT_EQUAL;
+    return notEqualValue;
   }
 }
