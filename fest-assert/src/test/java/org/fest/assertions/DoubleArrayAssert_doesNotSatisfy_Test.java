@@ -16,6 +16,8 @@ package org.fest.assertions;
 
 import static org.fest.assertions.EmptyArrays.emptyDoubleArray;
 
+import org.junit.BeforeClass;
+
 /**
  * Tests for <code>{@link DoubleArrayAssert#doesNotSatisfy(Condition)}</code>.
  *
@@ -24,8 +26,15 @@ import static org.fest.assertions.EmptyArrays.emptyDoubleArray;
  */
 public class DoubleArrayAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSatisfy_TestCase<double[]> {
 
+  private static double[] actual;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    actual = emptyDoubleArray();
+  }
+
   protected DoubleArrayAssert assertObject() {
-    return new DoubleArrayAssert(emptyDoubleArray());
+    return new DoubleArrayAssert(actual);
   }
 
   protected DoubleArrayAssert assertObjectWithNullTarget() {

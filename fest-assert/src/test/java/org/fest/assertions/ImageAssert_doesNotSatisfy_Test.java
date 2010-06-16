@@ -18,6 +18,8 @@ import static org.fest.assertions.Images.fivePixelBlueImage;
 
 import java.awt.image.BufferedImage;
 
+import org.junit.BeforeClass;
+
 /**
  * Tests for <code>{@link ImageAssert#doesNotSatisfy(Condition)}</code>.
  *
@@ -26,8 +28,15 @@ import java.awt.image.BufferedImage;
  */
 public class ImageAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSatisfy_TestCase<BufferedImage> {
 
+  private static BufferedImage actual;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    actual = fivePixelBlueImage();
+  }
+
   protected ImageAssert assertObject() {
-    return new ImageAssert(fivePixelBlueImage());
+    return new ImageAssert(actual);
   }
 
   protected ImageAssert assertObjectWithNullTarget() {

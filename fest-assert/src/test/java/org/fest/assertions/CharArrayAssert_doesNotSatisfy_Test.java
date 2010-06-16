@@ -16,6 +16,8 @@ package org.fest.assertions;
 
 import static org.fest.assertions.EmptyArrays.emptyCharArray;
 
+import org.junit.BeforeClass;
+
 /**
  * Tests for <code>{@link CharArrayAssert#doesNotSatisfy(Condition)}</code>.
  *
@@ -24,8 +26,15 @@ import static org.fest.assertions.EmptyArrays.emptyCharArray;
  */
 public class CharArrayAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSatisfy_TestCase<char[]> {
 
+  private static char[] actual;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    actual = emptyCharArray();
+  }
+
   protected CharArrayAssert assertObject() {
-    return new CharArrayAssert(emptyCharArray());
+    return new CharArrayAssert(actual);
   }
 
   protected CharArrayAssert assertObjectWithNullTarget() {

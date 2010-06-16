@@ -19,6 +19,8 @@ import static java.util.Collections.emptyList;
 
 import java.util.Collection;
 
+import org.junit.BeforeClass;
+
 /**
  * Tests for <code>{@link CollectionAssert#doesNotSatisfy(Condition)}</code>.
  *
@@ -27,8 +29,15 @@ import java.util.Collection;
  */
 public class CollectionAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSatisfy_TestCase<Collection<?>> {
 
+  private static Collection<?> actual;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    actual = emptyList();
+  }
+
   protected CollectionAssert assertObject() {
-    return new CollectionAssert(emptyList());
+    return new CollectionAssert(actual);
   }
 
   protected CollectionAssert assertObjectWithNullTarget() {

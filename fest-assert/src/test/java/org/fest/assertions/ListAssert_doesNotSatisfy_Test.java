@@ -18,6 +18,8 @@ import static java.util.Collections.emptyList;
 
 import java.util.List;
 
+import org.junit.BeforeClass;
+
 /**
  * Tests for <code>{@link ListAssert#doesNotSatisfy(Condition)}</code>.
  *
@@ -25,8 +27,15 @@ import java.util.List;
  */
 public class ListAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSatisfy_TestCase<List<?>> {
 
+  private static List<?> actual;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    actual = emptyList();
+  }
+
   protected ListAssert assertObject() {
-    return new ListAssert(emptyList());
+    return new ListAssert(actual);
   }
 
   protected ListAssert assertObjectWithNullTarget() {

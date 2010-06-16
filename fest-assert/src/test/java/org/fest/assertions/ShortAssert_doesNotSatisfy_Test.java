@@ -15,6 +15,8 @@
  */
 package org.fest.assertions;
 
+import org.junit.BeforeClass;
+
 /**
  * Tests for <code>{@link ShortAssert#doesNotSatisfy(Condition)}</code>.
  *
@@ -23,8 +25,15 @@ package org.fest.assertions;
  */
 public class ShortAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSatisfy_TestCase<Short> {
 
+  private static Short actual;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    actual = 6;
+  }
+
   protected ShortAssert assertObject() {
-    return new ShortAssert(0);
+    return new ShortAssert(actual);
   }
 
   protected ShortAssert assertObjectWithNullTarget() {

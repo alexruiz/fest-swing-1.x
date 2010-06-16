@@ -15,6 +15,8 @@
  */
 package org.fest.assertions;
 
+import org.junit.BeforeClass;
+
 /**
  * Tests for <code>{@link LongAssert#doesNotSatisfy(Condition)}</code>.
  *
@@ -23,8 +25,15 @@ package org.fest.assertions;
  */
 public class LongAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSatisfy_TestCase<Long> {
 
+  private static Long actual;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    actual = 6L;
+  }
+
   protected LongAssert assertObject() {
-    return new LongAssert(0l);
+    return new LongAssert(actual);
   }
 
   protected LongAssert assertObjectWithNullTarget() {

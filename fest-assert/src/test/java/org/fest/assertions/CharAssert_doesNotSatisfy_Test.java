@@ -16,6 +16,8 @@
 
 package org.fest.assertions;
 
+import org.junit.BeforeClass;
+
 /**
  * Tests for <code>{@link CharAssert#doesNotSatisfy(Condition)}</code>.
  *
@@ -24,8 +26,15 @@ package org.fest.assertions;
  */
 public class CharAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSatisfy_TestCase<Character> {
 
+  private static Character actual;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    actual = 'a';
+  }
+
   protected CharAssert assertObject() {
-    return new CharAssert('a');
+    return new CharAssert(actual);
   }
 
   protected CharAssert assertObjectWithNullTarget() {

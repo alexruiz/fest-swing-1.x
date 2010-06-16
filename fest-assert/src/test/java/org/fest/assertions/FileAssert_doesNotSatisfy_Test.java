@@ -18,6 +18,8 @@ import static org.fest.assertions.FileStubs.fileStub;
 
 import java.io.File;
 
+import org.junit.BeforeClass;
+
 /**
  * Tests for <code>{@link FileAssert#doesNotSatisfy(Condition)}</code>.
  *
@@ -27,8 +29,15 @@ import java.io.File;
  */
 public class FileAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSatisfy_TestCase<File> {
 
+  private static File actual;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    actual = fileStub();
+  }
+
   protected FileAssert assertObject() {
-    return new FileAssert(fileStub());
+    return new FileAssert(actual);
   }
 
   protected FileAssert assertObjectWithNullTarget() {

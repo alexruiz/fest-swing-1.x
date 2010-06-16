@@ -16,6 +16,8 @@ package org.fest.assertions;
 
 import static org.fest.assertions.EmptyArrays.emptyBooleanArray;
 
+import org.junit.BeforeClass;
+
 /**
  * Tests for <code>{@link BooleanArrayAssert#doesNotSatisfy(Condition)}</code>.
  *
@@ -24,8 +26,15 @@ import static org.fest.assertions.EmptyArrays.emptyBooleanArray;
  */
 public class BooleanArrayAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSatisfy_TestCase<boolean[]> {
 
+  private static boolean[] actual;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    actual = emptyBooleanArray();
+  }
+
   protected BooleanArrayAssert assertObject() {
-    return new BooleanArrayAssert(emptyBooleanArray());
+    return new BooleanArrayAssert(actual);
   }
 
   protected BooleanArrayAssert assertObjectWithNullTarget() {

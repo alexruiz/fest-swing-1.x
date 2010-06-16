@@ -16,6 +16,8 @@
 
 package org.fest.assertions;
 
+import org.junit.BeforeClass;
+
 /**
  * Tests for <code>{@link DoubleAssert#doesNotSatisfy(Condition)}</code>
  *
@@ -24,8 +26,15 @@ package org.fest.assertions;
  */
 public class DoubleAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSatisfy_TestCase<Double> {
 
+  private static Double actual;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    actual = 6d;
+  }
+
   protected DoubleAssert assertObject() {
-    return new DoubleAssert(0d);
+    return new DoubleAssert(actual);
   }
 
   protected DoubleAssert assertObjectWithNullTarget() {

@@ -16,6 +16,8 @@ package org.fest.assertions;
 
 import static org.fest.assertions.EmptyArrays.emptyIntArray;
 
+import org.junit.BeforeClass;
+
 /**
  * Tests for <code>{@link IntArrayAssert#doesNotSatisfy(Condition)}</code>.
  *
@@ -24,8 +26,15 @@ import static org.fest.assertions.EmptyArrays.emptyIntArray;
  */
 public class IntArrayAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSatisfy_TestCase<int[]> {
 
+  private static int[] actual;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    actual = emptyIntArray();
+  }
+
   protected IntArrayAssert assertObject() {
-    return new IntArrayAssert(emptyIntArray());
+    return new IntArrayAssert(actual);
   }
 
   protected IntArrayAssert assertObjectWithNullTarget() {

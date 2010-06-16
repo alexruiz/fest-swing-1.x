@@ -15,6 +15,8 @@
  */
 package org.fest.assertions;
 
+import org.junit.BeforeClass;
+
 /**
  * Tests for <code>{@link FloatAssert#doesNotSatisfy(Condition)}</code>.
  *
@@ -23,8 +25,15 @@ package org.fest.assertions;
  */
 public class FloatAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSatisfy_TestCase<Float> {
 
+  private static Float actual;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    actual = 6f;
+  }
+
   protected FloatAssert assertObject() {
-    return new FloatAssert(0f);
+    return new FloatAssert(actual);
   }
 
   protected FloatAssert assertObjectWithNullTarget() {

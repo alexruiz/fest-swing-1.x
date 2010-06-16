@@ -15,6 +15,8 @@
  */
 package org.fest.assertions;
 
+import org.junit.BeforeClass;
+
 /**
  * Tests for <code>{@link IntAssert#doesNotSatisfy(Condition)}</code>.
  *
@@ -23,8 +25,15 @@ package org.fest.assertions;
  */
 public class IntAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSatisfy_TestCase<Integer> {
 
+  private static Integer actual;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    actual = 6;
+  }
+
   protected IntAssert assertObject() {
-    return new IntAssert(0);
+    return new IntAssert(actual);
   }
 
   protected IntAssert assertObjectWithNullTarget() {

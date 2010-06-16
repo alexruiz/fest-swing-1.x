@@ -14,6 +14,8 @@
  */
 package org.fest.assertions;
 
+import org.junit.BeforeClass;
+
 /**
  * Tests for <code>{@link ThrowableAssert#doesNotSatisfy(Condition)}</code>.
  *
@@ -22,8 +24,15 @@ package org.fest.assertions;
  */
 public class ThrowableAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSatisfy_TestCase<Throwable> {
 
+  private static Throwable actual;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    actual = new Exception();
+  }
+
   protected ThrowableAssert assertObject() {
-    return new ThrowableAssert(new Exception());
+    return new ThrowableAssert(actual);
   }
 
   protected ThrowableAssert assertObjectWithNullTarget() {
