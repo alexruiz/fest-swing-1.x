@@ -1,5 +1,5 @@
 /*
- * Created on 2010-4-26
+ * Created on Apr 26, 2010
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -13,35 +13,21 @@
  *
  * Copyright @2010 the original author or authors.
  */
-
 package org.fest.assertions;
 
 /**
- * Test ensuring that {@link FloatAssert} obeys the {@link GenericAssert#isNotEqualTo(Object)} contract for {@link
- * Float}.
+ * Tests for <code>{@link IntAssert#isNotEqualTo(Integer)}</code>.
  *
  * @author Ansgar Konermann
+ * @author Alex Ruiz
  */
-public class FloatAssert_Generic_isNotEqualTo_Test extends GenericAssert_isNotEqualTo_TestBase<Float> {
+public class IntAssert_isNotEqualTo_Integer_Test extends GenericAssert_isNotEqualTo_TestCase<Integer> {
 
-  @Override
-  protected Float eight() {
-    return 8.0f;
+  protected IntAssert assertObject() {
+    return new IntAssert(6);
   }
 
-  @Override
-  protected Float zero() {
-    return 0.0f;
+  protected Integer notEqualValue() {
+    return 8;
   }
-
-  @Override
-  protected FloatAssert assertionFor(Float actual) {
-    return new FloatAssert(actual);
-  }
-
-  @Override
-  protected String eightAsString() {
-    return "8.0";
-  }
-
 }

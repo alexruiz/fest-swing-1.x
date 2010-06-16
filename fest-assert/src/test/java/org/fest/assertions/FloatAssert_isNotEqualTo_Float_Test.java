@@ -1,5 +1,5 @@
 /*
- * Created on 2010-4-26
+ * Created on Apr 26, 2010
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -13,35 +13,21 @@
  *
  * Copyright @2010 the original author or authors.
  */
-
 package org.fest.assertions;
 
 /**
- * Test ensuring that {@link ByteAssert} obeys the {@link GenericAssert#isNotEqualTo(Object)} contract for {@link
- * Byte}.
+ * Tests for <code>{@link FloatAssert#isNotEqualTo(Float)}</code>.
  *
  * @author Ansgar Konermann
+ * @author Alex Ruiz
  */
-public class ByteAssert_Generic_isNotEqualTo_Test extends GenericAssert_isNotEqualTo_TestBase<Byte> {
+public class FloatAssert_isNotEqualTo_Float_Test extends GenericAssert_isNotEqualTo_TestCase<Float> {
 
-  @Override
-  protected Byte eight() {
-    return 8;
+  protected FloatAssert assertObject() {
+    return new FloatAssert(6f);
   }
 
-  @Override
-  protected Byte zero() {
-    return 0;
+  protected Float notEqualValue() {
+    return 8f;
   }
-
-  @Override
-  protected ByteAssert assertionFor(Byte actual) {
-    return new ByteAssert(actual);
-  }
-
-  @Override
-  protected String eightAsString() {
-    return "8";
-  }
-
 }

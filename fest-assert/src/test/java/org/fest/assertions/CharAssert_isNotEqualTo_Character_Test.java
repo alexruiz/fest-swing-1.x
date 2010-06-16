@@ -1,5 +1,5 @@
 /*
- * Created on 2010-4-26
+ * Created on Apr 26, 2010
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -13,35 +13,21 @@
  *
  * Copyright @2010 the original author or authors.
  */
-
 package org.fest.assertions;
 
 /**
- * Test ensuring that {@link IntAssert} obeys the {@link GenericAssert#isNotEqualTo(Object)} contract for {@link
- * Integer}.
+ * Tests for <code>{@link CharAssert#isNotEqualTo(Character)}</code>.
  *
  * @author Ansgar Konermann
+ * @author Alex Ruiz
  */
-public class IntAssert_Generic_isNotEqualTo_Test extends GenericAssert_isNotEqualTo_TestBase<Integer> {
+public class CharAssert_isNotEqualTo_Character_Test extends GenericAssert_isNotEqualTo_TestCase<Character> {
 
-  @Override
-  protected Integer eight() {
-    return 8;
+  protected CharAssert assertObject() {
+    return new CharAssert('a');
   }
 
-  @Override
-  protected Integer zero() {
-    return 0;
+  protected Character notEqualValue() {
+    return 'b';
   }
-
-  @Override
-  protected IntAssert assertionFor(Integer actual) {
-    return new IntAssert(actual);
-  }
-
-  @Override
-  protected String eightAsString() {
-    return "8";
-  }
-
 }

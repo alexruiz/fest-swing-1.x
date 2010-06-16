@@ -14,7 +14,7 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.ComparisonFailureMessages.unexpectedNotEqual;
+import static org.fest.assertions.FailureMessages.unexpectedNotEqual;
 import static org.fest.test.ExpectedFailure.expectAssertionError;
 
 import org.fest.test.CodeToTest;
@@ -26,28 +26,31 @@ import org.junit.Test;
  *
  * @author Yvonne Wang
  * @author David DIDIER
+ * @author Alex Ruiz
  */
 public class ByteAssert_isEqualTo_Test implements Assert_isEqualTo_TestCase {
 
   private static byte actual;
+  private static ByteAssert assertObject;
   private static byte notEqualValue;
 
   @BeforeClass
   public static void setUpOnce() {
     actual = 6;
+    assertObject = new ByteAssert(actual);
     notEqualValue = 8;
   }
 
   @Test
   public void should_pass_if_actual_and_expected_are_equal() {
-    new ByteAssert(actual).isEqualTo(actual);
+    assertObject.isEqualTo(actual);
   }
 
   @Test
   public void should_fail_if_actual_and_expected_are_not_equal() {
     expectAssertionError(unexpectedNotEqual(actual, notEqualValue)).on(new CodeToTest() {
       public void run() {
-        new ByteAssert(actual).isEqualTo(notEqualValue);
+        assertObject.isEqualTo(notEqualValue);
       }
     });
   }
@@ -56,8 +59,8 @@ public class ByteAssert_isEqualTo_Test implements Assert_isEqualTo_TestCase {
   public void should_fail_and_display_description_of_assertion_if_actual_and_expected_are_not_equal() {
     expectAssertionError(unexpectedNotEqual("A Test", actual, notEqualValue)).on(new CodeToTest() {
       public void run() {
-        new ByteAssert(actual).as("A Test")
-                              .isEqualTo(notEqualValue);
+        assertObject.as("A Test")
+                    .isEqualTo(notEqualValue);
       }
     });
   }
@@ -66,8 +69,8 @@ public class ByteAssert_isEqualTo_Test implements Assert_isEqualTo_TestCase {
   public void should_fail_with_custom_message_if_actual_and_expected_are_not_equal() {
     expectAssertionError("My custom message").on(new CodeToTest() {
       public void run() {
-        new ByteAssert(actual).overridingErrorMessage("My custom message")
-                              .isEqualTo(notEqualValue);
+        assertObject.overridingErrorMessage("My custom message")
+                    .isEqualTo(notEqualValue);
       }
     });
   }
@@ -76,9 +79,9 @@ public class ByteAssert_isEqualTo_Test implements Assert_isEqualTo_TestCase {
   public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_and_expected_are_not_equal() {
     expectAssertionError("My custom message").on(new CodeToTest() {
       public void run() {
-        new ByteAssert(actual).as("A Test")
-                              .overridingErrorMessage("My custom message")
-                              .isEqualTo(notEqualValue);
+        assertObject.as("A Test")
+                    .overridingErrorMessage("My custom message")
+                    .isEqualTo(notEqualValue);
       }
     });
   }

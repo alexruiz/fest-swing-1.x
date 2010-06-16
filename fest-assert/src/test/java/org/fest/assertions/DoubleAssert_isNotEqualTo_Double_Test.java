@@ -1,5 +1,5 @@
 /*
- * Created on 2010-4-26
+ * Created on Apr 26, 2010
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -17,31 +17,18 @@
 package org.fest.assertions;
 
 /**
- * Test ensuring that {@link CharAssert} obeys the {@link GenericAssert#isNotEqualTo(Object)} contract for {@link
- * Character}.
+ * Tests for <code>{@link DoubleAssert#isNotEqualTo(Double)}</code>.
  *
  * @author Ansgar Konermann
+ * @author Alex Ruiz
  */
-public class CharAssert_Generic_isNotEqualTo_Test extends GenericAssert_isNotEqualTo_TestBase<Character> {
+public class DoubleAssert_isNotEqualTo_Double_Test extends GenericAssert_isNotEqualTo_TestCase<Double> {
 
-  @Override
-  protected Character eight() {
-    return '8';
+  protected DoubleAssert assertObject() {
+    return new DoubleAssert(6d);
   }
 
-  @Override
-  protected Character zero() {
-    return '0';
+  protected Double notEqualValue() {
+    return 8d;
   }
-
-  @Override
-  protected CharAssert assertionFor(Character actual) {
-    return new CharAssert(actual);
-  }
-
-  @Override
-  protected String eightAsString() {
-    return "8";
-  }
-
 }

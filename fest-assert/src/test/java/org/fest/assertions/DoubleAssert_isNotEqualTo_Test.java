@@ -14,9 +14,11 @@
  */
 package org.fest.assertions;
 
+import static org.fest.assertions.FailureMessages.unexpectedEqual;
 import static org.fest.test.ExpectedFailure.expectAssertionError;
 
 import org.fest.test.CodeToTest;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 /**
@@ -28,26 +30,35 @@ import org.junit.Test;
  */
 public class DoubleAssert_isNotEqualTo_Test implements Assert_isNotEqualTo_TestCase {
 
+  private static DoubleAssert assertObject;
+  private static double actual;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    actual = 6d;
+    assertObject = new DoubleAssert(actual);
+  }
+
   @Test
   public void should_pass_if_actual_and_expected_are_not_equal() {
-    new DoubleAssert(8.88).isNotEqualTo(8.68);
+    assertObject.isNotEqualTo(8d);
   }
 
   @Test
   public void should_fail_if_actual_and_expected_are_equal() {
-    expectAssertionError("actual value:<8.88> should not be equal to:<8.88>").on(new CodeToTest() {
+    expectAssertionError(unexpectedEqual(actual, actual)).on(new CodeToTest() {
       public void run() {
-        new DoubleAssert(8.88).isNotEqualTo(8.88);
+        assertObject.isNotEqualTo(actual);
       }
     });
   }
 
   @Test
   public void should_fail_and_display_description_of_assertion_if_actual_and_expected_are_equal() {
-    expectAssertionError("[A Test] actual value:<8.88> should not be equal to:<8.88>").on(new CodeToTest() {
+    expectAssertionError(unexpectedEqual("A Test", actual, actual)).on(new CodeToTest() {
       public void run() {
-        new DoubleAssert(8.88).as("A Test")
-                              .isNotEqualTo(8.88);
+        assertObject.as("A Test")
+                    .isNotEqualTo(actual);
       }
     });
   }
@@ -56,8 +67,8 @@ public class DoubleAssert_isNotEqualTo_Test implements Assert_isNotEqualTo_TestC
   public void should_fail_with_custom_message_if_actual_and_expected_are_equal() {
     expectAssertionError("My custom message").on(new CodeToTest() {
       public void run() {
-        new DoubleAssert(8.88).overridingErrorMessage("My custom message")
-                              .isNotEqualTo(8.88);
+        assertObject.overridingErrorMessage("My custom message")
+                    .isNotEqualTo(actual);
       }
     });
   }
@@ -66,9 +77,9 @@ public class DoubleAssert_isNotEqualTo_Test implements Assert_isNotEqualTo_TestC
   public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_and_expected_are_equal() {
     expectAssertionError("My custom message").on(new CodeToTest() {
       public void run() {
-        new DoubleAssert(8.88).as("A Test")
-                              .overridingErrorMessage("My custom message")
-                              .isNotEqualTo(8.88);
+        assertObject.as("A Test")
+                    .overridingErrorMessage("My custom message")
+                    .isNotEqualTo(actual);
       }
     });
   }

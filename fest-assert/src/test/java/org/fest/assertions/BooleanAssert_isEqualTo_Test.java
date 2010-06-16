@@ -14,7 +14,7 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.ComparisonFailureMessages.unexpectedNotEqual;
+import static org.fest.assertions.FailureMessages.unexpectedNotEqual;
 import static org.fest.test.ExpectedFailure.expectAssertionError;
 
 import org.fest.test.CodeToTest;

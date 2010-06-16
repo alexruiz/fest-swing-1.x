@@ -1,5 +1,5 @@
 /*
- * Created on 2010-4-26
+ * Created on Apr 26, 2010
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -13,35 +13,21 @@
  *
  * Copyright @2010 the original author or authors.
  */
-
 package org.fest.assertions;
 
 /**
- * Test ensuring that {@link LongAssert} obeys the {@link GenericAssert#isNotEqualTo(Object)} contract for {@link
- * Long}.
+ * Tests for <code>{@link ShortAssert#isNotEqualTo(Short)}</code>.
  *
  * @author Ansgar Konermann
+ * @author Alex Ruiz
  */
-public class LongAssert_Generic_isNotEqualTo_Test extends GenericAssert_isNotEqualTo_TestBase<Long> {
+public class ShortAssert_isNotEqualTo_Short_Test extends GenericAssert_isNotEqualTo_TestCase<Short> {
 
-  @Override
-  protected Long eight() {
-    return 8l;
+  protected ShortAssert assertObject() {
+    return new ShortAssert(6);
   }
 
-  @Override
-  protected Long zero() {
-    return 0l;
+  protected Short notEqualValue() {
+    return 8;
   }
-
-  @Override
-  protected LongAssert assertionFor(Long actual) {
-    return new LongAssert(actual);
-  }
-
-  @Override
-  protected String eightAsString() {
-    return "8";
-  }
-
 }

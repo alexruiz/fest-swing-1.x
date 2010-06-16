@@ -1,5 +1,5 @@
 /*
- * Created on 2010-4-26
+ * Created on Apr 26, 2010
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -13,35 +13,21 @@
  *
  * Copyright @2010 the original author or authors.
  */
-
 package org.fest.assertions;
 
 /**
- * Test ensuring that {@link DoubleAssert} obeys the {@link GenericAssert#isNotEqualTo(Object)} contract for {@link
- * Double}.
+ * Tests for <code>{@link LongAssert#isNotEqualTo(Long)}</code>.
  *
  * @author Ansgar Konermann
+ * @author Alex Ruiz
  */
-public class DoubleAssert_Generic_isNotEqualTo_Test extends GenericAssert_isNotEqualTo_TestBase<Double> {
+public class LongAssert_isNotEqualTo_Long_Test extends GenericAssert_isNotEqualTo_TestCase<Long> {
 
-  @Override
-  protected Double eight() {
-    return 8.0d;
+  protected LongAssert assertObject() {
+    return new LongAssert(6L);
   }
 
-  @Override
-  protected Double zero() {
-    return 0.0d;
+  protected Long notEqualValue() {
+    return 8L;
   }
-
-  @Override
-  protected DoubleAssert assertionFor(Double actual) {
-    return new DoubleAssert(actual);
-  }
-
-  @Override
-  protected String eightAsString() {
-    return "8.0";
-  }
-
 }

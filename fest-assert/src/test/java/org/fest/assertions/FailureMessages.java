@@ -25,7 +25,7 @@ import org.junit.ComparisonFailure;
  *
  * @author Alex Ruiz
  */
-final class ComparisonFailureMessages {
+final class FailureMessages {
 
   static String unexpectedNotEqual(Object actual, Object expected) {
     return unexpectedNotEqual(null, actual, expected);
@@ -39,6 +39,15 @@ final class ComparisonFailureMessages {
     if (!isArray) return new ComparisonFailure(d, e, a).getMessage();
     d = addSpaceIfNotEmpty(d);
     return concat(d, "expected:<", e, "> but was:<", a, ">");
+  }
+
+  static String unexpectedEqual(Object actual, Object other) {
+    return unexpectedEqual(null, actual, other);
+  }
+
+  static String unexpectedEqual(String description, Object actual, Object other) {
+    String d = addSpaceIfNotEmpty(inBrackets(description));
+    return concat(d, "actual value:<", format(actual), "> should not be equal to:<", format(other), ">");
   }
 
   private static String inBrackets(String s) {

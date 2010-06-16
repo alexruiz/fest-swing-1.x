@@ -1,5 +1,5 @@
 /*
- * Created on 2010-4-26
+ * Created on Apr 26, 2010
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -13,35 +13,21 @@
  *
  * Copyright @2010 the original author or authors.
  */
-
 package org.fest.assertions;
 
 /**
- * Test ensuring that {@link ShortAssert} obeys the {@link GenericAssert#isNotEqualTo(Object)} contract for {@link
- * Short}.
+ * Tests for <code>{@link ByteAssert#isNotEqualTo(Byte)}</code>.
  *
  * @author Ansgar Konermann
+ * @author Alex Ruiz
  */
-public class ShortAssert_Generic_isNotEqualTo_Test extends GenericAssert_isNotEqualTo_TestBase<Short> {
+public class ByteAssert_isNotEqualTo_Byte_Test extends GenericAssert_isNotEqualTo_TestCase<Byte> {
 
-  @Override
-  protected Short eight() {
-    return (short) 8;
+  protected ByteAssert assertObject() {
+    return new ByteAssert(6);
   }
 
-  @Override
-  protected Short zero() {
-    return 0;
+  protected Byte notEqualValue() {
+    return 8;
   }
-
-  @Override
-  protected ShortAssert assertionFor(Short actual) {
-    return new ShortAssert(actual);
-  }
-
-  @Override
-  protected String eightAsString() {
-    return "8";
-  }
-
 }
