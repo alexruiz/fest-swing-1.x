@@ -1,43 +1,35 @@
 /*
  * Created on Mar 3, 2007
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
- * 
+ *
  * Copyright @2007-2009 the original author or authors.
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.ErrorMessages.unexpectedEqual;
-import static org.fest.assertions.ErrorMessages.unexpectedNotEqual;
-import static org.fest.assertions.ErrorMessages.unexpectedNullType;
+import static org.fest.assertions.ErrorMessages.*;
 import static org.fest.assertions.Formatting.inBrackets;
 import static org.fest.reflect.core.Reflection.property;
-import static org.fest.reflect.util.PropertiesUtils.extractFirstSubProperty;
-import static org.fest.reflect.util.PropertiesUtils.isNestedProperty;
-import static org.fest.reflect.util.PropertiesUtils.substractFirstSubProperty;
-import static org.fest.util.Arrays.hasOnlyNullElements;
-import static org.fest.util.Arrays.nonNullElements;
-import static org.fest.util.Collections.duplicatesFrom;
-import static org.fest.util.Collections.list;
+import static org.fest.reflect.util.PropertiesUtils.*;
+import static org.fest.util.Arrays.*;
+import static org.fest.util.Collections.*;
 import static org.fest.util.Strings.concat;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
+import java.util.*;
 
 import org.fest.reflect.beanproperty.Invoker;
 
 /**
  * Understands assertions for <code>Object</code> arrays. To create a new instance of this class use the method
  * <code>{@link Assertions#assertThat(Object[])}</code>.
- * 
+ *
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
@@ -82,7 +74,7 @@ public class ObjectArrayAssert extends ArrayAssert<Object[]> {
    * includes subclasses of the given type.
    * <p>
    * For example, consider the following code listing:
-   * 
+   *
    * <pre>
    * Number[] numbers = { 2, 6 ,8 };
    * assertThat(numbers).hasComponentType(Integer.class);
@@ -361,7 +353,7 @@ public class ObjectArrayAssert extends ArrayAssert<Object[]> {
    * <p>
    * Note that null array elements are ignored and an assertion error is thrown when an element doesn't have the
    * requested property.
-   * 
+   *
    * @param propertyName the property we want to extract values from actual array to build a new <code>
    *          {@link ObjectArrayAssert}</code>.
    * @return a new instance of <code>{@link ObjectArrayAssert}</code> composed of actual array
@@ -380,15 +372,15 @@ public class ObjectArrayAssert extends ArrayAssert<Object[]> {
   private Object[] extractValuesOfGivenPropertyFromNonNullCollectionElements(String propertyToExtract,
       Object[] collection) {
     // if collection contains only null elements, just return an empty collection.
-    if (hasOnlyNullElements(collection)) { return new Object[0]; }
+    if (org.fest.util.Arrays.isEmpty(collection) || hasOnlyNullElements(collection)) { return new Object[0]; }
     // ignore null elements, we can't extract a property from a null object
     Object[] nonNullElements = nonNullElements(collection);
     if (isNestedProperty(propertyToExtract)) {
       // property is a nested property, like 'adress.street.number', extract sub properties until reaching a simple
       // property, on our example :
-      // - extract a collection of 'adress' from collection elements -> adresses collection
+      // - extract a collection of 'address' from collection elements -> addresses collection
       // remaining property is 'street.number'
-      // - extract a collection of 'street' from adresses collection -> streets collection
+      // - extract a collection of 'street' from addresses collection -> streets collection
       // remaining property is 'number'
       // - extract a collection of 'number' from streets collection -> numbers collection
       String firstProperty = extractFirstSubProperty(propertyToExtract);

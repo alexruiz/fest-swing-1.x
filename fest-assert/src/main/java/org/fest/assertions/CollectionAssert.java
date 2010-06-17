@@ -1,40 +1,35 @@
 /*
  * Created on Dec 27, 2006
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
- * 
+ *
  * Copyright @2006-2009 the original author or authors.
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.Collections.found;
-import static org.fest.assertions.Collections.notFound;
+import static org.fest.assertions.Collections.*;
 import static org.fest.assertions.Formatting.inBrackets;
 import static org.fest.reflect.beanproperty.Invoker.descriptorForProperty;
 import static org.fest.reflect.core.Reflection.property;
-import static org.fest.reflect.util.PropertiesUtils.extractFirstSubProperty;
-import static org.fest.reflect.util.PropertiesUtils.isNestedProperty;
-import static org.fest.reflect.util.PropertiesUtils.substractFirstSubProperty;
+import static org.fest.reflect.util.PropertiesUtils.*;
 import static org.fest.util.Collections.duplicatesFrom;
 import static org.fest.util.Strings.concat;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 
 import org.fest.util.Collections;
 
 /**
  * Understands assertions for collections. To create a new instance of this class use the method
  * <code>{@link Assertions#assertThat(Collection)}</code>.
- * 
+ *
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
@@ -374,7 +369,7 @@ public class CollectionAssert extends GroupAssert<Collection<?>> {
    * <p>
    * Note that null collection elements are ignored and an assertion error is thrown when an element doesn't have the
    * requested property.
-   * 
+   *
    * @param propertyName the property we want to extract values from actual collection to build a new <code>
    *          {@link CollectionAssert}</code>.
    * @return a new instance of <code>{@link CollectionAssert}</code> composed of actual collection
@@ -394,9 +389,9 @@ public class CollectionAssert extends GroupAssert<Collection<?>> {
   private Collection<Object> extractValuesOfGivenPropertyFromNonNullCollectionElements(String propertyToExtract,
       Collection<?> collection) {
     // if collection contains only null elements, just return an empty collection.
-    if (Collections.hasOnlyNullElements(collection)) { return new ArrayList<Object>(); }
+    if (Collections.isEmpty(collection) || Collections.hasOnlyNullElements(collection)) { return new ArrayList<Object>(); }
     // ignore null elements as we can't extract a property from a null object
-    Collection<Object> nonNullElements = Collections.nonNullElements(collection);
+    Collection<?> nonNullElements = Collections.nonNullElements(collection);
     if (isNestedProperty(propertyToExtract)) {
       // property is a nested property, like 'adress.street.number', extract sub properties until reaching a simple
       // property, on our example :

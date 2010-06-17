@@ -1,31 +1,27 @@
 /*
  * Created on Mar 29, 2009
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
- * 
+ *
  * Copyright @2009 the original author or authors.
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.Collections.found;
-import static org.fest.assertions.Collections.notFound;
+import static org.fest.assertions.Collections.*;
 import static org.fest.assertions.Formatting.inBrackets;
 import static org.fest.reflect.core.Reflection.property;
-import static org.fest.util.Collections.duplicatesFrom;
-import static org.fest.util.Collections.list;
+import static org.fest.util.Collections.*;
 import static org.fest.util.Objects.areEqual;
 import static org.fest.util.Strings.concat;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 
 import org.fest.reflect.beanproperty.Invoker;
 import org.fest.reflect.util.PropertiesUtils;
@@ -35,7 +31,7 @@ import org.fest.util.Collections;
  * Understands assertions for <code>{@link List}</code>s. To create a new instance of this class use the method
  * <code>{@link Assertions#assertThat(List)}</code>.
  * @since 1.1
- * 
+ *
  * @author Alex Ruiz
  */
 public class ListAssert extends GroupAssert<List<?>> {
@@ -509,7 +505,7 @@ public class ListAssert extends GroupAssert<List<?>> {
    * <p>
    * Note that null list elements are ignored and an assertion error is thrown when an element doesn't have the
    * requested property.
-   * 
+   *
    * @param propertyName the property we want to extract values from actual list to build a new <code>{@link ListAssert}
    *          </code>.
    * @return a new instance of <code>{@link ListAssert}</code> composed of actual list <i>element.propertyName</i>
@@ -527,9 +523,9 @@ public class ListAssert extends GroupAssert<List<?>> {
   // TODO : to be replaced by fest reflect nested property support when available
   private List<Object> extractValuesOfGivenPropertyFromNonNullListElements(String propertyToExtract, List<?> collection) {
     // if collection contains only null elements, just return an empty collection.
-    if (Collections.hasOnlyNullElements(collection)) { return new ArrayList<Object>(); }
+    if (Collections.isEmpty(collection) || Collections.hasOnlyNullElements(collection)) { return new ArrayList<Object>(); }
     // ignore null elements, we can't extract a property from a null object
-    List<Object> nonNullElements = Collections.nonNullElements(collection);
+    List<?> nonNullElements = Collections.nonNullElements(collection);
     if (PropertiesUtils.isNestedProperty(propertyToExtract)) {
       // property is a nested property, like 'adress.street.number', extract sub properties until reaching a simple
       // property, on our example :
