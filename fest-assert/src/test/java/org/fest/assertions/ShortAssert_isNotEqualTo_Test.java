@@ -17,8 +17,7 @@ package org.fest.assertions;
 import static org.fest.test.ExpectedFailure.expectAssertionError;
 
 import org.fest.test.CodeToTest;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Tests for <code>{@link ShortAssert#isNotEqualTo(short)}</code>.
@@ -29,12 +28,17 @@ import org.junit.Test;
  */
 public class ShortAssert_isNotEqualTo_Test implements Assert_isNotEqualTo_TestCase {
 
-  private static short actual;
-  private static ShortAssert assertObject;
+  private static Short actual;
+
+  private ShortAssert assertObject;
 
   @BeforeClass
-  public void setUpOnce() {
+  public static void setUpOnce() {
     actual = 6;
+  }
+
+  @Before
+  public void setUp() {
     assertObject = new ShortAssert(actual);
   }
 

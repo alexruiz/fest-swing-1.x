@@ -18,8 +18,7 @@ import static org.fest.assertions.FailureMessages.unexpectedEqual;
 import static org.fest.test.ExpectedFailure.expectAssertionError;
 
 import org.fest.test.CodeToTest;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Tests for <code>{@link CharAssert#isNotEqualTo(char)}</code>.
@@ -30,12 +29,17 @@ import org.junit.Test;
  */
 public class CharAssert_isNotEqualTo_Test implements Assert_isNotEqualTo_TestCase {
 
-  private static char actual;
-  private static CharAssert assertObject;
+  private static Character actual;
+
+  private CharAssert assertObject;
 
   @BeforeClass
   public static void setUpOnce() {
     actual = 'a';
+  }
+
+  @Before
+  public void setUp() {
     assertObject = new CharAssert(actual);
   }
 

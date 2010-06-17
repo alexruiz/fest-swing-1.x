@@ -18,8 +18,7 @@ import static org.fest.assertions.FailureMessages.unexpectedEqual;
 import static org.fest.test.ExpectedFailure.expectAssertionError;
 
 import org.fest.test.CodeToTest;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Tests for <code>{@link LongAssert#isNotEqualTo(long)}</code>.
@@ -30,12 +29,17 @@ import org.junit.Test;
  */
 public class LongAssert_isNotEqualTo_Test implements Assert_isNotEqualTo_TestCase {
 
-  private static long actual;
-  private static LongAssert assertObject;
+  private static Long actual;
+
+  private LongAssert assertObject;
 
   @BeforeClass
   public static void setUpOnce() {
-    actual = 6;
+    actual = 6L;
+  }
+
+  @Before
+  public void setUp() {
     assertObject = new LongAssert(actual);
   }
 

@@ -18,8 +18,7 @@ import static org.fest.assertions.FailureMessages.unexpectedEqual;
 import static org.fest.test.ExpectedFailure.expectAssertionError;
 
 import org.fest.test.CodeToTest;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Test for <code>{@link DoubleAssert#isNotEqualTo(double)}</code>.
@@ -30,12 +29,17 @@ import org.junit.Test;
  */
 public class DoubleAssert_isNotEqualTo_Test implements Assert_isNotEqualTo_TestCase {
 
-  private static DoubleAssert assertObject;
-  private static double actual;
+  private static Double actual;
+
+  private DoubleAssert assertObject;
 
   @BeforeClass
   public static void setUpOnce() {
     actual = 6d;
+  }
+
+  @Before
+  public void setUp() {
     assertObject = new DoubleAssert(actual);
   }
 

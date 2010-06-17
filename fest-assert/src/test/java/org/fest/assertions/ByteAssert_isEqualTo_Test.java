@@ -18,8 +18,7 @@ import static org.fest.assertions.FailureMessages.unexpectedNotEqual;
 import static org.fest.test.ExpectedFailure.expectAssertionError;
 
 import org.fest.test.CodeToTest;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Tests for <code>{@link ByteAssert#isEqualTo(byte)}</code>.
@@ -30,20 +29,25 @@ import org.junit.Test;
  */
 public class ByteAssert_isEqualTo_Test implements Assert_isEqualTo_TestCase {
 
-  private static byte actual;
-  private static ByteAssert assertObject;
+  private static Byte actual;
   private static byte notEqualValue;
+
+  private ByteAssert assertObject;
 
   @BeforeClass
   public static void setUpOnce() {
     actual = 6;
-    assertObject = new ByteAssert(actual);
     notEqualValue = 8;
+  }
+
+  @Before
+  public void setUp() {
+    assertObject = new ByteAssert(actual);
   }
 
   @Test
   public void should_pass_if_actual_and_expected_are_equal() {
-    assertObject.isEqualTo(actual);
+    assertObject.isEqualTo(actual.byteValue());
   }
 
   @Test

@@ -18,8 +18,7 @@ import static org.fest.assertions.FailureMessages.unexpectedEqual;
 import static org.fest.test.ExpectedFailure.expectAssertionError;
 
 import org.fest.test.CodeToTest;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Tests for <code>{@link BooleanAssert#isNotEqualTo(boolean)}</code>.
@@ -29,12 +28,17 @@ import org.junit.Test;
  */
 public class BooleanAssert_isNotEqualTo_Test implements Assert_isNotEqualTo_TestCase {
 
-  private static boolean actual;
-  private static BooleanAssert assertObject;
+  private static Boolean actual;
+
+  private BooleanAssert assertObject;
 
   @BeforeClass
   public static void setUpOnce() {
     actual = false;
+  }
+
+  @Before
+  public void setUp() {
     assertObject = new BooleanAssert(actual);
   }
 
