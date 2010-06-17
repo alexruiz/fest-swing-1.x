@@ -24,7 +24,12 @@ import java.io.File;
  * @author Yvonne Wang
  */
 class FileStub extends File {
+
   private static final long serialVersionUID = 1L;
+
+  static FileStub aFile() {
+    return newFile("c:\\f.txt");
+  }
 
   private boolean absolute;
   private String absolutePath;
@@ -33,7 +38,7 @@ class FileStub extends File {
   private boolean file;
   private long length;
 
-  public static FileStub newFile(String absolutePath) {
+  static FileStub newFile(String absolutePath) {
     return new FileStub(absolutePath);
   }
 

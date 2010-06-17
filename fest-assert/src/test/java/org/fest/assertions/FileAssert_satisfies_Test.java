@@ -14,7 +14,7 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.FileStubs.fileStub;
+import static org.fest.assertions.FileStub.aFile;
 
 import java.io.File;
 
@@ -28,7 +28,7 @@ import java.io.File;
 public class FileAssert_satisfies_Test extends GenericAssert_satisfies_TestCase<File> {
 
   protected FileAssert assertObject() {
-    return new FileAssert(fileStub());
+    return new FileAssert(aFile());
   }
 
   protected FileAssert assertObjectWithNullTarget() {

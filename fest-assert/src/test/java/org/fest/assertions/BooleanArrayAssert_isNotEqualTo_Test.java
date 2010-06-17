@@ -16,6 +16,8 @@ package org.fest.assertions;
 
 import static org.fest.assertions.ArrayFactory.booleanArray;
 
+import org.junit.BeforeClass;
+
 /**
  * Tests for <code>{@link BooleanArrayAssert#isNotEqualTo(boolean[])}</code>.
  *
@@ -24,13 +26,20 @@ import static org.fest.assertions.ArrayFactory.booleanArray;
  */
 public class BooleanArrayAssert_isNotEqualTo_Test extends GenericAssert_isNotEqualTo_TestCase<boolean[]> {
 
-  private static final boolean[] ACTUAL = { true };
+  private static boolean[] actual;
+  private static boolean[] notEqualValue;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    actual = booleanArray(true);
+    notEqualValue = booleanArray(false);
+  }
 
   protected BooleanArrayAssert assertObject() {
-    return new BooleanArrayAssert(ACTUAL);
+    return new BooleanArrayAssert(actual);
   }
 
   protected boolean[] notEqualValue() {
-    return booleanArray(false);
+    return notEqualValue;
   }
 }

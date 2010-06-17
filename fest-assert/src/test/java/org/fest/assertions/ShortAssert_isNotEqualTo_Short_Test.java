@@ -15,6 +15,8 @@
  */
 package org.fest.assertions;
 
+import org.junit.BeforeClass;
+
 /**
  * Tests for <code>{@link ShortAssert#isNotEqualTo(Short)}</code>.
  *
@@ -23,13 +25,20 @@ package org.fest.assertions;
  */
 public class ShortAssert_isNotEqualTo_Short_Test extends GenericAssert_isNotEqualTo_TestCase<Short> {
 
-  private static final Short ACTUAL = 6;
+  private static Short actual;
+  private static Short notEqualValue;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    actual = 6;
+    notEqualValue = 8;
+  }
 
   protected ShortAssert assertObject() {
-    return new ShortAssert(ACTUAL);
+    return new ShortAssert(actual);
   }
 
   protected Short notEqualValue() {
-    return 8;
+    return notEqualValue;
   }
 }

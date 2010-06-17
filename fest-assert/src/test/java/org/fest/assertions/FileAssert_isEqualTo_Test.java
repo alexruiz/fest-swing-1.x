@@ -14,7 +14,7 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.FileStub.newFile;
+import static org.fest.assertions.FileStub.aFile;
 import static org.fest.util.Files.temporaryFolder;
 
 import java.io.File;
@@ -36,7 +36,7 @@ public class FileAssert_isEqualTo_Test extends GenericAssert_isEqualTo_TestCase<
   @BeforeClass
   public static void setUpOnce() {
     actual = temporaryFolder();
-    notEqualValue = newFile("c:\\f.txt");
+    notEqualValue = aFile();
   }
 
   protected FileAssert assertObject() {

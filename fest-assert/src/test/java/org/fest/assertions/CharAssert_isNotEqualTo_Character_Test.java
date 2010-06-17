@@ -15,6 +15,8 @@
  */
 package org.fest.assertions;
 
+import org.junit.BeforeClass;
+
 /**
  * Tests for <code>{@link CharAssert#isNotEqualTo(Character)}</code>.
  *
@@ -23,13 +25,20 @@ package org.fest.assertions;
  */
 public class CharAssert_isNotEqualTo_Character_Test extends GenericAssert_isNotEqualTo_TestCase<Character> {
 
-  private static final Character ACTUAL = 'a';
+  private static Character actual;
+  private static Character notEqualValue;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    actual = 'a';
+    notEqualValue = 'b';
+  }
 
   protected CharAssert assertObject() {
-    return new CharAssert(ACTUAL);
+    return new CharAssert(actual);
   }
 
   protected Character notEqualValue() {
-    return 'b';
+    return notEqualValue;
   }
 }

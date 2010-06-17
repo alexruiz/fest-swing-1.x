@@ -14,13 +14,13 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.CommonFailures.expectErrorIfActualIsNull;
-import static org.fest.assertions.CommonFailures.expectErrorWithDescriptionIfActualIsNull;
-import static org.fest.assertions.FileStub.newFile;
+import static org.fest.assertions.CommonFailures.*;
+import static org.fest.assertions.FileStub.aFile;
 import static org.fest.test.ExpectedFailure.expectAssertionError;
 
 import org.fest.test.CodeToTest;
-import org.junit.*;
+import org.junit.BeforeClass;
+import org.junit.Test;
 
 /**
  * Tests for <code>{@link FileAssert}</code>.
@@ -35,7 +35,7 @@ public class FileAssert_hasSize_Test implements Assert_hasSize_TestCase {
 
   @BeforeClass
   public static void setUpOnce() {
-    file = newFile("c:\\f.txt");
+    file = aFile();
     file.length(8);
   }
 

@@ -15,6 +15,8 @@
  */
 package org.fest.assertions;
 
+import org.junit.BeforeClass;
+
 /**
  * Tests for <code>{@link FloatAssert#isNotEqualTo(Float)}</code>.
  *
@@ -23,13 +25,20 @@ package org.fest.assertions;
  */
 public class FloatAssert_isNotEqualTo_Float_Test extends GenericAssert_isNotEqualTo_TestCase<Float> {
 
-  private static final Float ACTUAL = 6f;
+  private static Float actual;
+  private static Float notEqualValue;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    actual = 6f;
+    notEqualValue = 8f;
+  }
 
   protected FloatAssert assertObject() {
-    return new FloatAssert(ACTUAL);
+    return new FloatAssert(actual);
   }
 
   protected Float notEqualValue() {
-    return 8f;
+    return notEqualValue;
   }
 }

@@ -14,7 +14,7 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.FileStubs.fileStub;
+import static org.fest.assertions.FileStub.aFile;
 
 import java.io.File;
 
@@ -33,7 +33,7 @@ public class FileAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSatisfy
 
   @BeforeClass
   public static void setUpOnce() {
-    actual = fileStub();
+    actual = aFile();
   }
 
   protected FileAssert assertObject() {

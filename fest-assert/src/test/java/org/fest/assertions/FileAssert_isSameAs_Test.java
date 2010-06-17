@@ -14,10 +14,12 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.FileStub.newFile;
+import static org.fest.assertions.FileStub.*;
 import static org.fest.test.ExpectedFailure.expectAssertionError;
+
 import org.fest.test.CodeToTest;
-import org.junit.*;
+import org.junit.BeforeClass;
+import org.junit.Test;
 
 /**
  * Tests for <code>{@link FileAssert#isSameAs(java.io.File)}</code>.
@@ -32,7 +34,7 @@ public class FileAssert_isSameAs_Test implements GenericAssert_isSameAs_TestCase
 
   @BeforeClass
   public static void setUp() {
-    file = newFile("c:\\f.txt");
+    file = aFile();
   }
 
   @Test

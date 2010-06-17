@@ -15,11 +15,8 @@
 package org.fest.assertions;
 
 import static org.fest.assertions.ArrayFactory.doubleArray;
-import static org.fest.test.ExpectedFailure.expectAssertionError;
 
-import org.fest.test.CodeToTest;
 import org.junit.BeforeClass;
-import org.junit.Test;
 
 /**
  * Tests for <code>{@link DoubleArrayAssert#isNotEqualTo(double[])}</code>.
@@ -27,59 +24,22 @@ import org.junit.Test;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class DoubleArrayAssert_isNotEqualTo_Test implements Assert_isNotEqualTo_TestCase {
+public class DoubleArrayAssert_isNotEqualTo_Test extends GenericAssert_isNotEqualTo_TestCase<double[]> {
 
-  private static double[] array;
+  private static double[] actual;
+  private static double[] notEqualValue;
 
   @BeforeClass
   public static void setUpOnce() {
-    array = doubleArray(55.03, 4345.91);
+    actual = doubleArray(6d, 8d);
+    notEqualValue = doubleArray(8d);
   }
 
-  @Test
-  public void should_pass_if_actual_and_expected_are_not_equal() {
-    new DoubleArrayAssert(array).isNotEqualTo(doubleArray(0.0));
+  protected DoubleArrayAssert assertObject() {
+    return new DoubleArrayAssert(actual);
   }
 
-  @Test
-  public void should_fail_if_actual_and_expected_are_equal() {
-    expectAssertionError("actual value:<[55.03, 4345.91]> should not be equal to:<[55.03, 4345.91]>").on(
-      new CodeToTest() {
-        public void run() {
-          new DoubleArrayAssert(array).isNotEqualTo(doubleArray(55.03, 4345.91));
-        }
-      });
-  }
-
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_and_expected_are_equal() {
-    String message = "[A Test] actual value:<[55.03, 4345.91]> should not be equal to:<[55.03, 4345.91]>";
-    expectAssertionError(message).on(new CodeToTest() {
-      public void run() {
-        new DoubleArrayAssert(array).as("A Test")
-                                    .isNotEqualTo(doubleArray(55.03, 4345.91));
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_if_actual_and_expected_are_equal() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new DoubleArrayAssert(array).overridingErrorMessage("My custom message")
-                                    .isNotEqualTo(doubleArray(55.03, 4345.91));
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_and_expected_are_equal() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new DoubleArrayAssert(array).as("A Test")
-                                    .overridingErrorMessage("My custom message")
-                                    .isNotEqualTo(doubleArray(55.03, 4345.91));
-      }
-    });
+  protected double[] notEqualValue() {
+    return notEqualValue;
   }
 }
