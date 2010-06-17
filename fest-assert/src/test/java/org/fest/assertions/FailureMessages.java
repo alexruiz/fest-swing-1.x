@@ -50,6 +50,15 @@ final class FailureMessages {
     return concat(d, "actual value:<", format(actual), "> should not be equal to:<", format(other), ">");
   }
 
+  static String unexpectedEqualOrLess(Object actual, Object other) {
+    return unexpectedEqualOrLess(null, actual, other);
+  }
+
+  static String unexpectedEqualOrLess(String description, Object actual, Object other) {
+    String d = addSpaceIfNotEmpty(inBrackets(description));
+    return concat(d, "actual value:<", format(actual), "> should be greater than:<", format(other), ">");
+  }
+
   private static String inBrackets(String s) {
     if (isEmpty(s)) return "";
     return concat("[", s, "]");
