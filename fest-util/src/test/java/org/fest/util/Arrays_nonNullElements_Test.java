@@ -16,6 +16,7 @@ package org.fest.util;
 
 import static org.fest.util.Arrays.nonNullElements;
 import static org.junit.Assert.*;
+
 import org.junit.Test;
 
 /**
@@ -27,9 +28,8 @@ import org.junit.Test;
 public class Arrays_nonNullElements_Test {
 
   @Test
-  public void should_return_null_if_array_is_null() {
-    String[] array = null;
-    assertNull(Arrays.nonNullElements(array));
+  public void should_return_null_if_given_array_is_null() {
+    assertNull(Arrays.nonNullElements(null));
   }
 
   @Test

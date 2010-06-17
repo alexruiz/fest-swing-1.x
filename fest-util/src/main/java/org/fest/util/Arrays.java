@@ -37,7 +37,7 @@ public class Arrays {
    * @return <code>true</code> if the given array is <code>null</code> or empty, otherwise <code>false</code>.
    */
   public static <T> boolean isEmpty(T[] array) {
-    return array == null || array.length == 0;
+    return array == null || !hasElements(array);
   }
 
   /**
@@ -61,13 +61,13 @@ public class Arrays {
   }
 
   /**
-   * Returns a new array composed of the non-null elements of the given array. This method returns an empty array if the
-   * given array has only null elements or if it is empty. This method returns <code>null</code> if the given array is
-   * <code>null</code>.
+   * Returns a new array containing the non-null elements of the given array. This method returns an empty array if the
+   * given array has only <code>null</code> elements or if it is empty. This method returns <code>null</code> if the
+   * given array is <code>null</code>.
    * @param <T> the type of elements of the array.
-   * @param array the array we want to extract the non-null elements.
-   * @return a new array composed of the non-null elements of the given array, or <code>null</code> if the given array
-   * is <code>null</code>.
+   * @param array the array we want to extract the non-null elements from.
+   * @return a new array containing the non-null elements of the given array, or <code>null</code> if the given array is
+   * <code>null</code>.
    * @since 1.1.3
    */
   @SuppressWarnings("unchecked")
@@ -92,10 +92,14 @@ public class Arrays {
    * @since 1.1.3
    */
   public static <T> boolean hasOnlyNullElements(T[] array) {
-    // TODO return false if array is empty.
     if (array == null) throw new NullPointerException("The array to check should not be null");
+    if (!hasElements(array)) return false;
     for (T o : array) if (o != null) return false;
     return true;
+  }
+
+  private static <T> boolean hasElements(T[] array) {
+    return array.length > 0;
   }
 
   private Arrays() {}
