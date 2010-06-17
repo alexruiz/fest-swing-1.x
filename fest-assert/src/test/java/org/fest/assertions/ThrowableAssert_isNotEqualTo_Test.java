@@ -14,11 +14,7 @@
  */
 package org.fest.assertions;
 
-import static org.fest.test.ExpectedFailure.expectAssertionError;
-
-import org.fest.test.CodeToTest;
 import org.junit.BeforeClass;
-import org.junit.Test;
 
 /**
  * Tests for <code>{@link ThrowableAssert#isNotEqualTo(Throwable)}</code>.
@@ -26,59 +22,22 @@ import org.junit.Test;
  * @author David DIDIER
  * @author Alex Ruiz
  */
-public class ThrowableAssert_isNotEqualTo_Test implements Assert_isNotEqualTo_TestCase {
+public class ThrowableAssert_isNotEqualTo_Test extends GenericAssert_isNotEqualTo_TestCase<Throwable> {
 
-  private static Exception exception;
+  private static Exception actual;
+  private static NullPointerException notEqualValue;
 
   @BeforeClass
   public static void setUpOnce() {
-    exception = new Exception();
+    actual = new Exception();
+    notEqualValue = new NullPointerException();
   }
 
-  @Test
-  public void should_pass_if_actual_and_expected_are_not_equal() {
-    new ThrowableAssert(exception).isNotEqualTo(new NullPointerException());
+  protected ThrowableAssert assertObject() {
+    return new ThrowableAssert(actual);
   }
 
-  @Test
-  public void should_fail_if_actual_and_expected_are_equal() {
-    String message = "actual value:<java.lang.Exception> should not be equal to:<java.lang.Exception>";
-    expectAssertionError(message).on(new CodeToTest() {
-      public void run() {
-        new ThrowableAssert(exception).isNotEqualTo(exception);
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_and_expected_are_equal() {
-    String message = "[A Test] actual value:<java.lang.Exception> should not be equal to:<java.lang.Exception>";
-    expectAssertionError(message).on(new CodeToTest() {
-      public void run() {
-        new ThrowableAssert(exception).as("A Test")
-                                      .isNotEqualTo(exception);
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_if_actual_and_expected_are_equal() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new ThrowableAssert(exception).overridingErrorMessage("My custom message")
-                                      .isNotEqualTo(exception);
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_and_expected_are_equal() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new ThrowableAssert(exception).as("A Test")
-                                      .overridingErrorMessage("My custom message")
-                                      .isNotEqualTo(exception);
-      }
-    });
+  protected Throwable notEqualValue() {
+    return notEqualValue;
   }
 }

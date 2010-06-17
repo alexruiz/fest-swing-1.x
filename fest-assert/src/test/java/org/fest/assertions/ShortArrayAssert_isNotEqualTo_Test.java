@@ -15,11 +15,8 @@
 package org.fest.assertions;
 
 import static org.fest.assertions.ArrayFactory.shortArray;
-import static org.fest.test.ExpectedFailure.expectAssertionError;
 
-import org.fest.test.CodeToTest;
 import org.junit.BeforeClass;
-import org.junit.Test;
 
 /**
  * Tests for <code>{@link ShortArrayAssert#isNotEqualTo(short[])}</code>.
@@ -27,57 +24,22 @@ import org.junit.Test;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class ShortArrayAssert_isNotEqualTo_Test implements Assert_isNotEqualTo_TestCase {
+public class ShortArrayAssert_isNotEqualTo_Test extends GenericAssert_isNotEqualTo_TestCase<short[]> {
 
-  private static short[] array;
+  private static short[] actual;
+  private static short[] notEqualValue;
 
   @BeforeClass
   public static void setUpOnce() {
-    array = shortArray(8, 6);
+    actual = shortArray(8, 6);
+    notEqualValue = shortArray(8);
   }
 
-  @Test
-  public void should_pass_if_actual_and_expected_are_not_equal() {
-    new ShortArrayAssert(array).isNotEqualTo(shortArray(8));
+  protected ShortArrayAssert assertObject() {
+    return new ShortArrayAssert(actual);
   }
 
-  @Test
-  public void should_fail_if_actual_and_expected_are_equal() {
-    expectAssertionError("actual value:<[8, 6]> should not be equal to:<[8, 6]>").on(new CodeToTest() {
-      public void run() {
-        new ShortArrayAssert(array).isNotEqualTo(shortArray(8, 6));
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_and_expected_are_equal() {
-    expectAssertionError("[A Test] actual value:<[8, 6]> should not be equal to:<[8, 6]>").on(new CodeToTest() {
-      public void run() {
-        new ShortArrayAssert(array).as("A Test")
-                                   .isNotEqualTo(shortArray(8, 6));
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_if_actual_and_expected_are_equal() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new ShortArrayAssert(array).overridingErrorMessage("My custom message")
-                                   .isNotEqualTo(shortArray(8, 6));
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_and_expected_are_equal() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new ShortArrayAssert(array).as("A Test")
-                                   .overridingErrorMessage("My custom message")
-                                   .isNotEqualTo(shortArray(8, 6));
-      }
-    });
+  protected short[] notEqualValue() {
+    return notEqualValue;
   }
 }

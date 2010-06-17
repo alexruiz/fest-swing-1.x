@@ -15,73 +15,33 @@
  */
 package org.fest.assertions;
 
-import static org.fest.test.ExpectedFailure.expectAssertionError;
 import static org.fest.util.Collections.list;
 
 import java.util.List;
 
-import org.fest.test.CodeToTest;
 import org.junit.BeforeClass;
-import org.junit.Test;
 
 /**
  * Tests for <code>{@link ListAssert#isNotEqualTo(List)}</code>.
  *
  * @author Alex Ruiz
  */
-public class ListAssert_isNotEqualTo_Test implements Assert_isNotEqualTo_TestCase {
+public class ListAssert_isNotEqualTo_Test extends GenericAssert_isNotEqualTo_TestCase<List<?>> {
 
-  private static List<String> list;
+  private static List<?> actual;
+  private static List<?> notEqualValue;
 
   @BeforeClass
   public static void setUpOnce() {
-    list = list("Luke", "Leia");
+    actual = list("Luke", "Leia");
+    notEqualValue = list("Yoda");
   }
 
-  @Test
-  public void should_pass_if_actual_and_expected_are_not_equal() {
-    new ListAssert(list).isNotEqualTo(list("Yoda"));
+  protected ListAssert assertObject() {
+    return new ListAssert(actual);
   }
 
-  @Test
-  public void should_fail_if_actual_and_expected_are_equal() {
-    String message = "actual value:<['Luke', 'Leia']> should not be equal to:<['Luke', 'Leia']>";
-    expectAssertionError(message).on(new CodeToTest() {
-      public void run() {
-        new ListAssert(list).isNotEqualTo(list("Luke", "Leia"));
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_and_expected_are_equal() {
-    String message = "[A Test] actual value:<['Luke', 'Leia']> should not be equal to:<['Luke', 'Leia']>";
-    expectAssertionError(message).on(new CodeToTest() {
-      public void run() {
-        new ListAssert(list).as("A Test")
-                            .isNotEqualTo(list("Luke", "Leia"));
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_if_actual_and_expected_are_equal() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new ListAssert(list).overridingErrorMessage("My custom message")
-                            .isNotEqualTo(list("Luke", "Leia"));
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_and_expected_are_equal() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new ListAssert(list).as("A Test")
-                            .overridingErrorMessage("My custom message")
-                            .isNotEqualTo(list("Luke", "Leia"));
-      }
-    });
+  protected List<?> notEqualValue() {
+    return notEqualValue;
   }
 }

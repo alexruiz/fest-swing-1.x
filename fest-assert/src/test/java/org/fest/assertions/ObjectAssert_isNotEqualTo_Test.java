@@ -14,10 +14,7 @@
  */
 package org.fest.assertions;
 
-import static org.fest.test.ExpectedFailure.expectAssertionError;
-
-import org.fest.test.CodeToTest;
-import org.junit.Test;
+import org.junit.BeforeClass;
 
 /**
  * Tests for <code>{@link ObjectAssert#isNotEqualTo(Object)}</code>.
@@ -25,50 +22,22 @@ import org.junit.Test;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class ObjectAssert_isNotEqualTo_Test implements Assert_isNotEqualTo_TestCase {
+public class ObjectAssert_isNotEqualTo_Test extends GenericAssert_isNotEqualTo_TestCase<Object> {
 
-  @Test
-  public void should_pass_if_actual_and_expected_are_not_equal() {
-    new ObjectAssert(6).isNotEqualTo(8);
+  private static Object actual;
+  private static Object notEqualValue;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    actual = 6;
+    notEqualValue = 8;
   }
 
-  @Test
-  public void should_fail_if_actual_and_expected_are_equal() {
-    expectAssertionError("actual value:<6> should not be equal to:<6>").on(new CodeToTest() {
-      public void run() {
-        new ObjectAssert(6).isNotEqualTo(6);
-      }
-    });
+  protected ObjectAssert assertObject() {
+    return new ObjectAssert(actual);
   }
 
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_and_expected_are_equal() {
-    expectAssertionError("[A Test] actual value:<6> should not be equal to:<6>").on(new CodeToTest() {
-      public void run() {
-        new ObjectAssert(6).as("A Test")
-                           .isNotEqualTo(6);
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_if_actual_and_expected_are_equal() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new ObjectAssert(6).overridingErrorMessage("My custom message")
-                           .isNotEqualTo(6);
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_and_expected_are_equal() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new ObjectAssert(6).as("A Test")
-                           .overridingErrorMessage("My custom message")
-                           .isNotEqualTo(6);
-      }
-    });
+  protected Object notEqualValue() {
+    return notEqualValue;
   }
 }

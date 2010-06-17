@@ -14,10 +14,7 @@
  */
 package org.fest.assertions;
 
-import static org.fest.test.ExpectedFailure.expectAssertionError;
-
-import org.fest.test.CodeToTest;
-import org.junit.Test;
+import org.junit.BeforeClass;
 
 /**
  * Tests for <code>{@link StringAssert#isNotEqualTo(String)}</code>.
@@ -26,50 +23,22 @@ import org.junit.Test;
  * @author David DIDIER
  * @author Alex Ruiz
  */
-public class StringAssert_isNotEqualTo_Test implements Assert_isNotEqualTo_TestCase {
+public class StringAssert_isNotEqualTo_Test extends GenericAssert_isNotEqualTo_TestCase<String> {
 
-  @Test
-  public void should_pass_if_actual_and_expected_are_not_equal() {
-    new StringAssert("Anakin").isNotEqualTo("Vader");
+  private static String actual;
+  private static String notEqualValue;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    actual = "Anakin";
+    notEqualValue = "Vader";
   }
 
-  @Test
-  public void should_fail_if_actual_and_expected_are_equal() {
-    expectAssertionError("actual value:<'Luke'> should not be equal to:<'Luke'>").on(new CodeToTest() {
-      public void run() {
-        new StringAssert("Luke").isNotEqualTo("Luke");
-      }
-    });
+  protected StringAssert assertObject() {
+    return new StringAssert(actual);
   }
 
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_and_expected_are_equal() {
-    expectAssertionError("[A Test] actual value:<'Luke'> should not be equal to:<'Luke'>").on(new CodeToTest() {
-      public void run() {
-        new StringAssert("Luke").as("A Test")
-                                .isNotEqualTo("Luke");
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_if_actual_and_expected_are_equal() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new StringAssert("Luke").overridingErrorMessage("My custom message")
-                                .isNotEqualTo("Luke");
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_and_expected_are_equal() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new StringAssert("Luke").as("A Test")
-                                .overridingErrorMessage("My custom message")
-                                .isNotEqualTo("Luke");
-      }
-    });
+  protected String notEqualValue() {
+    return notEqualValue;
   }
 }
