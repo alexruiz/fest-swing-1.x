@@ -25,24 +25,24 @@ import org.junit.BeforeClass;
  */
 public class LongAssert_isEqualTo_Long_Test extends GenericAssert_isEqualTo_TestCase<Long> {
 
-  private static Long actual;
-  private static Long notEqualValue;
+  private static Long notNullValue;
+  private static Long unequalValue;
 
   @BeforeClass
   public static void setUpOnce() {
-    actual = 6L;
-    notEqualValue = 8L;
+    notNullValue = 6L;
+    unequalValue = 8L;
   }
 
-  protected LongAssert assertObject() {
+  protected LongAssert assertionsFor(Long actual) {
     return new LongAssert(actual);
   }
 
-  protected LongAssert assertObjectWithNullTarget() {
-    return new LongAssert(null);
+  protected Long notNullValue() {
+    return notNullValue;
   }
 
-  protected Long notEqualValue() {
-    return notEqualValue;
+  protected Long unequalValue() {
+    return unequalValue;
   }
 }

@@ -26,24 +26,24 @@ import org.junit.BeforeClass;
  */
 public class ByteArrayAssert_isEqualTo_Test extends GenericAssert_isEqualTo_TestCase<byte[]> {
 
-  private static byte[] actual;
-  private static byte[] notEqualValue;
+  private static byte[] notNullValue;
+  private static byte[] unequalValue;
 
   @BeforeClass
   public static void setUpOnce() {
-    actual = byteArray(6, 8);
-    notEqualValue = byteArray(8);
+    notNullValue = byteArray(6, 8);
+    unequalValue = byteArray(8);
   }
 
-  protected ByteArrayAssert assertObject() {
+  protected ByteArrayAssert assertionsFor(byte[] actual) {
     return new ByteArrayAssert(actual);
   }
 
-  protected ByteArrayAssert assertObjectWithNullTarget() {
-    return new ByteArrayAssert(null);
+  protected byte[] notNullValue() {
+    return notNullValue;
   }
 
-  protected byte[] notEqualValue() {
-    return notEqualValue;
+  protected byte[] unequalValue() {
+    return unequalValue;
   }
 }

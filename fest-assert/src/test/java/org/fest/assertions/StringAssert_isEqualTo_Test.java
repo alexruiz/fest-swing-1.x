@@ -25,24 +25,24 @@ import org.junit.BeforeClass;
  */
 public class StringAssert_isEqualTo_Test extends GenericAssert_isEqualTo_TestCase<String> {
 
-  private static String actual;
-  private static String notEqualValue;
+  private static String notNullValue;
+  private static String unequalValue;
 
   @BeforeClass
   public static void setUpOnce() {
-    actual = "Luke";
-    notEqualValue = "Yoda";
+    notNullValue = "Luke";
+    unequalValue = "Yoda";
   }
 
-  protected StringAssert assertObject() {
+  protected StringAssert assertionsFor(String actual) {
     return new StringAssert(actual);
   }
 
-  protected StringAssert assertObjectWithNullTarget() {
-    return new StringAssert(null);
+  protected String notNullValue() {
+    return notNullValue;
   }
 
-  protected String notEqualValue() {
-    return notEqualValue;
+  protected String unequalValue() {
+    return unequalValue;
   }
 }

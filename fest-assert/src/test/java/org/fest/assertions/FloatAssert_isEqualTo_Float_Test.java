@@ -25,24 +25,24 @@ import org.junit.BeforeClass;
  */
 public class FloatAssert_isEqualTo_Float_Test extends GenericAssert_isEqualTo_TestCase<Float> {
 
-  private static Float actual;
-  private static Float notEqualValue;
+  private static Float notNullValue;
+  private static Float unequalValue;
 
   @BeforeClass
   public static void setUpOnce() {
-    actual = 6f;
-    notEqualValue = 8f;
+    notNullValue = 6f;
+    unequalValue = 8f;
   }
 
-  protected FloatAssert assertObject() {
+  protected FloatAssert assertionsFor(Float actual) {
     return new FloatAssert(actual);
   }
 
-  protected FloatAssert assertObjectWithNullTarget() {
-    return new FloatAssert(null);
+  protected Float notNullValue() {
+    return notNullValue;
   }
 
-  protected Float notEqualValue() {
-    return notEqualValue;
+  protected Float unequalValue() {
+    return unequalValue;
   }
 }

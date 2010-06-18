@@ -26,24 +26,24 @@ import org.junit.BeforeClass;
  */
 public class CharArrayAssert_isEqualTo_Test extends GenericAssert_isEqualTo_TestCase<char[]> {
 
-  private static char[] actual;
-  private static char[] notEqualValue;
+  private static char[] notNullValue;
+  private static char[] unequalValue;
 
   @BeforeClass
   public static void setUpOnce() {
-    actual = charArray('a', 'b');
-    notEqualValue = charArray('a');
+    notNullValue = charArray('a', 'b');
+    unequalValue = charArray('a');
   }
 
-  protected CharArrayAssert assertObject() {
+  protected CharArrayAssert assertionsFor(char[] actual) {
     return new CharArrayAssert(actual);
   }
 
-  protected CharArrayAssert assertObjectWithNullTarget() {
-    return new CharArrayAssert(null);
+  protected char[] notNullValue() {
+    return notNullValue;
   }
 
-  protected char[] notEqualValue() {
-    return notEqualValue;
+  protected char[] unequalValue() {
+    return unequalValue;
   }
 }

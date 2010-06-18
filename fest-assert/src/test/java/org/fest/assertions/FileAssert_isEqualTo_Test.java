@@ -30,24 +30,24 @@ import org.junit.BeforeClass;
  */
 public class FileAssert_isEqualTo_Test extends GenericAssert_isEqualTo_TestCase<File> {
 
-  private static File actual;
-  private static File notEqualValue;
+  private static File notNullValue;
+  private static File unequalValue;
 
   @BeforeClass
   public static void setUpOnce() {
-    actual = temporaryFolder();
-    notEqualValue = aFile();
+    notNullValue = temporaryFolder();
+    unequalValue = aFile();
   }
 
-  protected FileAssert assertObject() {
+  protected FileAssert assertionsFor(File actual) {
     return new FileAssert(actual);
   }
 
-  protected FileAssert assertObjectWithNullTarget() {
-    return new FileAssert(null);
+  protected File notNullValue() {
+    return notNullValue;
   }
 
-  protected File notEqualValue() {
-    return notEqualValue;
+  protected File unequalValue() {
+    return unequalValue;
   }
 }

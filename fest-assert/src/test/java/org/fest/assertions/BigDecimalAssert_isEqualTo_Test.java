@@ -30,24 +30,24 @@ import org.junit.BeforeClass;
  */
 public class BigDecimalAssert_isEqualTo_Test extends GenericAssert_isEqualTo_TestCase<BigDecimal> {
 
-  private static BigDecimal actual;
-  private static BigDecimal notEqualValue;
+  private static BigDecimal notNullValue;
+  private static BigDecimal unequalValue;
 
   @BeforeClass
   public static void setUpOnce() {
-    actual = eight();
-    notEqualValue = nine();
+    notNullValue = eight();
+    unequalValue = seven();
   }
 
-  protected BigDecimalAssert assertObject() {
+  protected BigDecimalAssert assertionsFor(BigDecimal actual) {
     return new BigDecimalAssert(actual);
   }
 
-  protected BigDecimalAssert assertObjectWithNullTarget() {
-    return new BigDecimalAssert(null);
+  protected BigDecimal notNullValue() {
+    return notNullValue;
   }
 
-  protected BigDecimal notEqualValue() {
-    return notEqualValue;
+  protected BigDecimal unequalValue() {
+    return unequalValue;
   }
 }

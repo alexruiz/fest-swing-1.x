@@ -26,24 +26,24 @@ import org.junit.BeforeClass;
  */
 public class FloatArrayAssert_isEqualTo_Test extends GenericAssert_isEqualTo_TestCase<float[]> {
 
-  private static float[] actual;
-  private static float[] notEqualValue;
+  private static float[] notNullValue;
+  private static float[] unequalValue;
 
   @BeforeClass
   public static void setUpOnce() {
-    actual = floatArray(6f, 8f);
-    notEqualValue = floatArray(6f);
+    notNullValue = floatArray(6f, 8f);
+    unequalValue = floatArray(6f);
   }
 
-  protected FloatArrayAssert assertObject() {
+  protected FloatArrayAssert assertionsFor(float[] actual) {
     return new FloatArrayAssert(actual);
   }
 
-  protected FloatArrayAssert assertObjectWithNullTarget() {
-    return new FloatArrayAssert(null);
+  protected float[] notNullValue() {
+    return notNullValue;
   }
 
-  protected float[] notEqualValue() {
-    return notEqualValue;
+  protected float[] unequalValue() {
+    return unequalValue;
   }
 }

@@ -33,49 +33,46 @@ import org.junit.Test;
  * @author Ansgar Konermann
  * @author Alex Ruiz
  */
-public abstract class GenericAssert_isEqualTo_TestCase<T> implements Assert_isEqualTo_TestCase {
+public abstract class GenericAssert_isEqualTo_TestCase<T> extends GenericAssert_TestCase<T> implements
+    Assert_isEqualTo_TestCase {
 
-  private GenericAssert<T> assertObject;
   private T actual;
-  private T notEqualValue;
+  private GenericAssert<T> assertions;
+  private T unequalValue;
 
   @Before
   public final void setUp() {
-    assertObject = assertObject();
-    actual = assertObject.actual;
-    notEqualValue = notEqualValue();
+    actual = notNullValue();
+    assertions = assertionsFor(actual);
+    unequalValue = unequalValue();
   }
 
-  protected abstract GenericAssert<T> assertObject();
-
-  protected abstract T notEqualValue();
+  protected abstract T unequalValue();
 
   @Test
   public final void should_pass_if_actual_and_expected_are_equal() {
-    assertObject.isEqualTo(actual);
+    assertions.isEqualTo(actual);
   }
 
   @Test
   public final void should_pass_if_both_actual_and_expected_are_null() {
-    assertObjectWithNullTarget().isEqualTo(null);
+    assertionsFor(null).isEqualTo(null);
   }
-
-  protected abstract GenericAssert<T> assertObjectWithNullTarget();
 
   @Test
   public final void should_fail_if_actual_and_expected_are_not_equal() {
-    expectAssertionError(unexpectedNotEqual(actual, notEqualValue)).on(new CodeToTest() {
+    expectAssertionError(unexpectedNotEqual(actual, unequalValue)).on(new CodeToTest() {
       public void run() {
-        assertObject.isEqualTo(notEqualValue);
+        assertions.isEqualTo(unequalValue);
       }
     });
   }
 
   @Test
   public final void should_fail_and_display_description_of_assertion_if_actual_and_expected_are_not_equal() {
-    expectAssertionError(unexpectedNotEqual("A Test", actual, notEqualValue)).on(new CodeToTest() {
+    expectAssertionError(unexpectedNotEqual("A Test", actual, unequalValue)).on(new CodeToTest() {
       public void run() {
-        assertObject.as("A Test").isEqualTo(notEqualValue);
+        assertions.as("A Test").isEqualTo(unequalValue);
       }
     });
   }
@@ -84,8 +81,8 @@ public abstract class GenericAssert_isEqualTo_TestCase<T> implements Assert_isEq
   public final void should_fail_with_custom_message_if_actual_and_expected_are_not_equal() {
     expectAssertionError("My custom message").on(new CodeToTest() {
       public void run() {
-        assertObject.overridingErrorMessage("My custom message")
-                    .isEqualTo(notEqualValue);
+        assertions.overridingErrorMessage("My custom message")
+                  .isEqualTo(unequalValue);
       }
     });
   }
@@ -94,9 +91,9 @@ public abstract class GenericAssert_isEqualTo_TestCase<T> implements Assert_isEq
   public final void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_and_expected_are_not_equal() {
     expectAssertionError("My custom message").on(new CodeToTest() {
       public void run() {
-        assertObject.as("A Test")
-                    .overridingErrorMessage("My custom message")
-                    .isEqualTo(notEqualValue);
+        assertions.as("A Test")
+                  .overridingErrorMessage("My custom message")
+                  .isEqualTo(unequalValue);
       }
     });
   }

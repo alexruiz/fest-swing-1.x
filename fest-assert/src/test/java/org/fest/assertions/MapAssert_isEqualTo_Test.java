@@ -30,24 +30,24 @@ import org.junit.BeforeClass;
  */
 public class MapAssert_isEqualTo_Test extends GenericAssert_isEqualTo_TestCase<Map<?, ?>> {
 
-  private static Map<?, ?> actual;
-  private static Map<?, ?> notEqualValue;
+  private static Map<?, ?> notNullValue;
+  private static Map<?, ?> unequalValue;
 
   @BeforeClass
   public static void setUpOnce() {
-    actual = map(entry("key1", 1), entry("key2", 2));
-    notEqualValue = map(entry("key6", 6), entry("key8", 8));
+    notNullValue = map(entry("key1", 1), entry("key2", 2));
+    unequalValue = map(entry("key6", 6), entry("key8", 8));
   }
 
-  protected MapAssert assertObject() {
+  protected MapAssert assertionsFor(Map<?, ?> actual) {
     return new MapAssert(actual);
   }
 
-  protected MapAssert assertObjectWithNullTarget() {
-    return new MapAssert(null);
+  protected Map<?, ?> notNullValue() {
+    return notNullValue;
   }
 
-  protected Map<?, ?> notEqualValue() {
-    return notEqualValue;
+  protected Map<?, ?> unequalValue() {
+    return unequalValue;
   }
 }

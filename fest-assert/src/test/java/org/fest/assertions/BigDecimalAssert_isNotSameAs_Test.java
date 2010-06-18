@@ -15,7 +15,7 @@
 package org.fest.assertions;
 
 import static org.fest.assertions.BigDecimals.eight;
-import static org.fest.assertions.BigDecimals.nine;
+import static org.fest.assertions.BigDecimals.seven;
 import static org.fest.test.ExpectedFailure.expectAssertionError;
 
 import java.math.BigDecimal;
@@ -43,7 +43,7 @@ public class BigDecimalAssert_isNotSameAs_Test implements GenericAssert_isNotSam
 
   @Test
   public void should_pass_if_actual_and_expected_are_not_same() {
-    new BigDecimalAssert(eight).isNotSameAs(nine());
+    new BigDecimalAssert(eight).isNotSameAs(seven());
   }
 
   @Test

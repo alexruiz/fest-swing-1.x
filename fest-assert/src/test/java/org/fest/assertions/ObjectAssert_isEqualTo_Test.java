@@ -24,24 +24,24 @@ import org.junit.BeforeClass;
  */
 public class ObjectAssert_isEqualTo_Test extends GenericAssert_isEqualTo_TestCase<Object> {
 
-  private static Object actual;
-  private static Object notEqualValue;
+  private static Object notNullValue;
+  private static Object unequalValue;
 
   @BeforeClass
   public static void setUpOnce() {
-    actual = 6;
-    notEqualValue = 8;
+    notNullValue = 6;
+    unequalValue = 8;
   }
 
-  protected ObjectAssert assertObject() {
+  protected ObjectAssert assertionsFor(Object actual) {
     return new ObjectAssert(actual);
   }
 
-  protected ObjectAssert assertObjectWithNullTarget() {
-    return new ObjectAssert(null);
+  protected Object notNullValue() {
+    return notNullValue;
   }
 
-  protected Object notEqualValue() {
-    return notEqualValue;
+  protected Object unequalValue() {
+    return unequalValue;
   }
 }

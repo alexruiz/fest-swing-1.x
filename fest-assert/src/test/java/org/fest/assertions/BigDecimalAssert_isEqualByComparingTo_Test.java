@@ -21,7 +21,7 @@ import org.junit.Test;
 
 import static java.math.BigDecimal.ZERO;
 import static org.fest.assertions.BigDecimals.eight;
-import static org.fest.assertions.BigDecimals.nine;
+import static org.fest.assertions.BigDecimals.seven;
 import static org.fest.assertions.CommonFailures.expectErrorIfActualIsNull;
 import static org.fest.assertions.CommonFailures.expectErrorWithDescriptionIfActualIsNull;
 import static org.fest.test.ExpectedFailure.expectAssertionError;
@@ -64,7 +64,7 @@ public class BigDecimalAssert_isEqualByComparingTo_Test {
   public void should_fail_if_values_are_not_equal() {
     expectAssertionError("expected:<9.0> but was:<8.0>").on(new CodeToTest() {
       public void run() {
-        new BigDecimalAssert(eight()).isEqualByComparingTo(nine());
+        new BigDecimalAssert(eight()).isEqualByComparingTo(seven());
       }
     });
   }
@@ -74,7 +74,7 @@ public class BigDecimalAssert_isEqualByComparingTo_Test {
     expectAssertionError("[A Test] expected:<9.0> but was:<8.0>").on(new CodeToTest() {
       public void run() {
         new BigDecimalAssert(eight()).as("A Test")
-                                     .isEqualByComparingTo(nine());
+                                     .isEqualByComparingTo(seven());
       }
     });
   }

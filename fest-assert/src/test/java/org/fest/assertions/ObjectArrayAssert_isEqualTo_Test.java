@@ -26,25 +26,24 @@ import org.junit.BeforeClass;
  */
 public class ObjectArrayAssert_isEqualTo_Test extends GenericAssert_isEqualTo_TestCase<Object[]> {
 
-  private static Object[] actual;
-  private static Object[] notEqualValue;
+  private static Object[] notNullValue;
+  private static Object[] unequalValue;
 
   @BeforeClass
   public static void setUpOnce() {
-    actual = objectArray(6, 8);
-    notEqualValue = objectArray(6);
+    notNullValue = objectArray(6, 8);
+    unequalValue = objectArray(6);
   }
 
-  protected ObjectArrayAssert assertObject() {
+  protected ObjectArrayAssert assertionsFor(Object[] actual) {
     return new ObjectArrayAssert(actual);
   }
 
-  protected ObjectArrayAssert assertObjectWithNullTarget() {
-    Object[] actual = null;
-    return new ObjectArrayAssert(actual);
+  protected Object[] notNullValue() {
+    return notNullValue;
   }
 
-  protected Object[] notEqualValue() {
-    return notEqualValue;
+  protected Object[] unequalValue() {
+    return unequalValue;
   }
 }

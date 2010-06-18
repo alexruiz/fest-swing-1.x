@@ -15,7 +15,7 @@
 package org.fest.assertions;
 
 import static org.fest.assertions.BigDecimals.eight;
-import static org.fest.assertions.BigDecimals.nine;
+import static org.fest.assertions.BigDecimals.seven;
 import static org.fest.assertions.CommonFailures.expectErrorIfActualIsNull;
 import static org.fest.assertions.CommonFailures.expectErrorWithDescriptionIfActualIsNull;
 import static org.fest.test.ExpectedFailure.expectAssertionError;
@@ -37,7 +37,7 @@ public class BigDecimalAssert_isNotEqualByComparingTo_Test {
 
   @Test
   public void should_pass_if_values_are_not_equal() {
-    new BigDecimalAssert(eight()).isNotEqualByComparingTo(nine());
+    new BigDecimalAssert(eight()).isNotEqualByComparingTo(seven());
   }
 
   @Test

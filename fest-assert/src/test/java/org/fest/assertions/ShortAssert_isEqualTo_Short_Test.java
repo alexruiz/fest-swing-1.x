@@ -25,24 +25,24 @@ import org.junit.BeforeClass;
  */
 public class ShortAssert_isEqualTo_Short_Test extends GenericAssert_isEqualTo_TestCase<Short> {
 
-  private static Short actual;
-  private static Short notEqualValue;
+  private static Short notNullValue;
+  private static Short unequalValue;
 
   @BeforeClass
   public static void setUpOnce() {
-    actual = 6;
-    notEqualValue = 8;
+    notNullValue = 6;
+    unequalValue = 8;
   }
 
-  protected ShortAssert assertObject() {
+  protected ShortAssert assertionsFor(Short actual) {
     return new ShortAssert(actual);
   }
 
-  protected ShortAssert assertObjectWithNullTarget() {
-    return new ShortAssert(null);
+  protected Short notNullValue() {
+    return notNullValue;
   }
 
-  protected Short notEqualValue() {
-    return notEqualValue;
+  protected Short unequalValue() {
+    return unequalValue;
   }
 }

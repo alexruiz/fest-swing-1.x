@@ -26,24 +26,24 @@ import org.junit.BeforeClass;
  */
 public class ShortArrayAssert_isEqualTo_Test extends GenericAssert_isEqualTo_TestCase<short[]> {
 
-  private static short[] actual;
-  private static short[] notEqualValue;
+  private static short[] notNullValue;
+  private static short[] unequalValue;
 
   @BeforeClass
   public static void setUpOnce() {
-    actual = shortArray(6, 8);
-    notEqualValue = shortArray(6);
+    notNullValue = shortArray(6, 8);
+    unequalValue = shortArray(6);
   }
 
-  protected ShortArrayAssert assertObject() {
+  protected ShortArrayAssert assertionsFor(short[] actual) {
     return new ShortArrayAssert(actual);
   }
 
-  protected ShortArrayAssert assertObjectWithNullTarget() {
-    return new ShortArrayAssert(null);
+  protected short[] notNullValue() {
+    return notNullValue;
   }
 
-  protected short[] notEqualValue() {
-    return notEqualValue;
+  protected short[] unequalValue() {
+    return unequalValue;
   }
 }
