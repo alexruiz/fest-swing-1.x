@@ -18,6 +18,8 @@ import static org.fest.assertions.FileStub.aFile;
 
 import java.io.File;
 
+import org.junit.BeforeClass;
+
 /**
  * Tests for <code>{@link FileAssert#is(Condition)}</code>.
  *
@@ -25,11 +27,18 @@ import java.io.File;
  */
 public class FileAssert_is_Test extends GenericAssert_is_TestCase<File> {
 
-  protected FileAssert assertObject() {
-    return new FileAssert(aFile());
+  private static File notNullValue;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    notNullValue = aFile();
   }
 
-  protected FileAssert assertObjectWithNullTarget() {
-    return new FileAssert(null);
+  protected FileAssert assertionsFor(File actual) {
+    return new FileAssert(actual);
+  }
+
+  protected File notNullValue() {
+    return notNullValue;
   }
 }

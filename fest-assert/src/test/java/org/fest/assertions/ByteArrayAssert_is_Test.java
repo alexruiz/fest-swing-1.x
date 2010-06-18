@@ -16,6 +16,8 @@ package org.fest.assertions;
 
 import static org.fest.assertions.EmptyArrays.emptyByteArray;
 
+import org.junit.BeforeClass;
+
 /**
  * Tests for <code>{@link ByteArrayAssert#is(Condition)}</code>.
  *
@@ -23,11 +25,18 @@ import static org.fest.assertions.EmptyArrays.emptyByteArray;
  */
 public class ByteArrayAssert_is_Test extends GenericAssert_is_TestCase<byte[]> {
 
-  protected ByteArrayAssert assertObject() {
-    return new ByteArrayAssert(emptyByteArray());
+  private static byte[] notNullValue;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    notNullValue = emptyByteArray();
   }
 
-  protected ByteArrayAssert assertObjectWithNullTarget() {
-    return new ByteArrayAssert(null);
+  protected ByteArrayAssert assertionsFor(byte[] actual) {
+    return new ByteArrayAssert(actual);
+  }
+
+  protected byte[] notNullValue() {
+    return notNullValue;
   }
 }

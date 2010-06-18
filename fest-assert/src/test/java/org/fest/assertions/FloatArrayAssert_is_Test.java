@@ -16,6 +16,8 @@ package org.fest.assertions;
 
 import static org.fest.assertions.EmptyArrays.emptyFloatArray;
 
+import org.junit.BeforeClass;
+
 /**
  * Tests for <code>{@link FloatArrayAssert#is(Condition)}</code>.
  *
@@ -23,11 +25,18 @@ import static org.fest.assertions.EmptyArrays.emptyFloatArray;
  */
 public class FloatArrayAssert_is_Test extends GenericAssert_is_TestCase<float[]> {
 
-  protected FloatArrayAssert assertObject() {
-    return new FloatArrayAssert(emptyFloatArray());
+  private static float[] notNullValue;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    notNullValue = emptyFloatArray();
   }
 
-  protected FloatArrayAssert assertObjectWithNullTarget() {
-    return new FloatArrayAssert(null);
+  protected FloatArrayAssert assertionsFor(float[] actual) {
+    return new FloatArrayAssert(actual);
+  }
+
+  protected float[] notNullValue() {
+    return notNullValue;
   }
 }

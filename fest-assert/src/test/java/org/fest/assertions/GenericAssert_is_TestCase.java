@@ -33,31 +33,26 @@ import org.junit.Test;
  * @author Ansgar Konermann
  * @author Alex Ruiz
  */
-public abstract class GenericAssert_is_TestCase<T> implements GenericAssert_satisfies_orAlias_TestCase {
+public abstract class GenericAssert_is_TestCase<T> extends GenericAssert_TestCase<T> implements
+    GenericAssert_satisfies_orAlias_TestCase {
 
-  private GenericAssert<T> assertObject;
-  private T actual;
+  private GenericAssert<T> assertions;
 
   @Before
   public final void setUp() {
-    assertObject = assertObjectWithNullTarget();
-    actual = assertObject.actual;
+    assertions = assertionsFor(null);
   }
-
-  protected abstract GenericAssert<T> assertObjectWithNullTarget();
 
   @Test
   public final void should_pass_if_condition_is_satisfied() {
-    assertObject().is(notNull());
+    assertionsFor(notNullValue()).is(notNull());
   }
-
-  protected abstract GenericAssert<T> assertObject();
 
   @Test
   public final void should_throw_error_if_condition_is_null() {
     expectErrorIfConditionIsNull().on(new CodeToTest() {
       public void run() {
-        assertObject.is(null);
+        assertions.is(null);
       }
     });
   }
@@ -66,7 +61,7 @@ public abstract class GenericAssert_is_TestCase<T> implements GenericAssert_sati
   public final void should_fail_if_condition_is_not_satisfied() {
     expectAssertionError("actual value:<null> should be:<NotNull>").on(new CodeToTest() {
       public void run() {
-        assertObject.is(notNull());
+        assertions.is(notNull());
       }
     });
   }
@@ -75,8 +70,8 @@ public abstract class GenericAssert_is_TestCase<T> implements GenericAssert_sati
   public final void should_fail_and_display_description_of_assertion_if_condition_is_not_satisfied() {
     expectAssertionError("[A Test] actual value:<null> should be:<NotNull>").on(new CodeToTest() {
       public void run() {
-        assertObject.as("A Test")
-                    .is(notNull());
+        assertions.as("A Test")
+                  .is(notNull());
       }
     });
   }
@@ -85,7 +80,7 @@ public abstract class GenericAssert_is_TestCase<T> implements GenericAssert_sati
   public final void should_fail_and_display_description_of_condition_if_condition_is_not_satisfied() {
     expectAssertionError("actual value:<null> should be:<non-null>").on(new CodeToTest() {
       public void run() {
-        assertObject.is(notNull().as("non-null"));
+        assertions.is(notNull().as("non-null"));
       }
     });
   }
@@ -94,8 +89,8 @@ public abstract class GenericAssert_is_TestCase<T> implements GenericAssert_sati
   public final void should_fail_and_display_descriptions_of_assertion_and_condition_if_condition_is_not_satisfied() {
     expectAssertionError("[A Test] actual value:<null> should be:<non-null>").on(new CodeToTest() {
       public void run() {
-        assertObject.as("A Test")
-          .is(notNull().as("non-null"));
+        assertions.as("A Test")
+                  .is(notNull().as("non-null"));
       }
     });
   }
@@ -104,7 +99,8 @@ public abstract class GenericAssert_is_TestCase<T> implements GenericAssert_sati
   public final void should_fail_with_custom_message_if_condition_is_not_satisfied() {
     expectAssertionError("My custom message").on(new CodeToTest() {
       public void run() {
-        assertObject.overridingErrorMessage("My custom message").is(notNull());
+        assertions.overridingErrorMessage("My custom message")
+                  .is(notNull());
       }
     });
   }
@@ -113,8 +109,8 @@ public abstract class GenericAssert_is_TestCase<T> implements GenericAssert_sati
   public final void should_fail_with_custom_message_ignoring_description_of_condition_if_condition_is_not_satisfied() {
     expectAssertionError("My custom message").on(new CodeToTest() {
       public void run() {
-        assertObject.overridingErrorMessage("My custom message")
-                    .is(notNull().as("non-null"));
+        assertions.overridingErrorMessage("My custom message")
+                  .is(notNull().as("non-null"));
       }
     });
   }
@@ -123,16 +119,14 @@ public abstract class GenericAssert_is_TestCase<T> implements GenericAssert_sati
   public final void should_fail_with_custom_message_ignoring_description_of_assertion_if_condition_is_not_satisfied() {
     expectAssertionError("My custom message").on(new CodeToTest() {
       public void run() {
-        assertObject.as("A Test")
-                    .overridingErrorMessage("My custom message")
-                    .is(notNull());
+        assertions.as("A Test")
+                  .overridingErrorMessage("My custom message")
+                  .is(notNull());
       }
     });
   }
 
-  protected final NotNull<T> notNull() {
+  private NotNull<T> notNull() {
     return NotNull.notNull();
   }
-
-  protected final T actual() { return actual; }
 }

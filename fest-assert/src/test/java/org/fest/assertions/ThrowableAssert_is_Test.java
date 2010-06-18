@@ -14,6 +14,8 @@
  */
 package org.fest.assertions;
 
+import org.junit.BeforeClass;
+
 /**
  * Tests for <code>{@link ThrowableAssert#is(Condition)}</code>.
  *
@@ -21,11 +23,18 @@ package org.fest.assertions;
  */
 public class ThrowableAssert_is_Test extends GenericAssert_is_TestCase<Throwable> {
 
-  protected ThrowableAssert assertObject() {
-    return new ThrowableAssert(new Exception());
+  private static Throwable notNullValue;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    notNullValue = new Exception();
   }
 
-  protected ThrowableAssert assertObjectWithNullTarget() {
-    return new ThrowableAssert(null);
+  protected ThrowableAssert assertionsFor(Throwable actual) {
+    return new ThrowableAssert(actual);
+  }
+
+  protected Throwable notNullValue() {
+    return notNullValue;
   }
 }

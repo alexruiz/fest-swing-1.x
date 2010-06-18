@@ -16,6 +16,8 @@ package org.fest.assertions;
 
 import static org.fest.assertions.EmptyArrays.emptyIntArray;
 
+import org.junit.BeforeClass;
+
 /**
  * Tests for <code>{@link IntArrayAssert#is(Condition)}</code>.
  *
@@ -23,11 +25,18 @@ import static org.fest.assertions.EmptyArrays.emptyIntArray;
  */
 public class IntArrayAssert_is_Test extends GenericAssert_is_TestCase<int[]> {
 
-  protected IntArrayAssert assertObject() {
-    return new IntArrayAssert(emptyIntArray());
+  private static int[] notNullValue;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    notNullValue = emptyIntArray();
   }
 
-  protected IntArrayAssert assertObjectWithNullTarget() {
-    return new IntArrayAssert(null);
+  protected IntArrayAssert assertionsFor(int[] actual) {
+    return new IntArrayAssert(actual);
+  }
+
+  protected int[] notNullValue() {
+    return notNullValue;
   }
 }

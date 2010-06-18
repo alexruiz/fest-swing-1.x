@@ -15,6 +15,8 @@
  */
 package org.fest.assertions;
 
+import org.junit.BeforeClass;
+
 /**
  * Tests for <code>{@link ShortAssert#is(Condition)}</code>.
  *
@@ -23,11 +25,18 @@ package org.fest.assertions;
  */
 public class ShortAssert_is_Test extends GenericAssert_is_TestCase<Short> {
 
-  protected ShortAssert assertObject() {
-    return new ShortAssert(6);
+  private static Short notNullValue;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    notNullValue = 6;
   }
 
-  protected ShortAssert assertObjectWithNullTarget() {
-    return new ShortAssert(null);
+  protected ShortAssert assertionsFor(Short actual) {
+    return new ShortAssert(actual);
+  }
+
+  protected Short notNullValue() {
+    return notNullValue;
   }
 }

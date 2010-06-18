@@ -18,6 +18,8 @@ import static org.fest.assertions.Images.fivePixelBlueImage;
 
 import java.awt.image.BufferedImage;
 
+import org.junit.BeforeClass;
+
 /**
  * Tests for <code>{@link ImageAssert#is(Condition)}</code>.
  *
@@ -25,11 +27,18 @@ import java.awt.image.BufferedImage;
  */
 public class ImageAssert_is_Test extends GenericAssert_is_TestCase<BufferedImage> {
 
-  protected ImageAssert assertObject() {
-    return new ImageAssert(fivePixelBlueImage());
+  private static BufferedImage notNullValue;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    notNullValue = fivePixelBlueImage();
   }
 
-  protected ImageAssert assertObjectWithNullTarget() {
-    return new ImageAssert(null);
+  protected ImageAssert assertionsFor(BufferedImage actual) {
+    return new ImageAssert(actual);
+  }
+
+  protected BufferedImage notNullValue() {
+    return notNullValue;
   }
 }

@@ -15,6 +15,8 @@
  */
 package org.fest.assertions;
 
+import org.junit.BeforeClass;
+
 /**
  * Tests for <code>{@link IntAssert#is(Condition)}</code>.
  *
@@ -23,11 +25,18 @@ package org.fest.assertions;
  */
 public class IntAssert_is_Test extends GenericAssert_is_TestCase<Integer> {
 
-  protected IntAssert assertObject() {
-    return new IntAssert(6);
+  private static Integer notNullValue;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    notNullValue = 6;
   }
 
-  protected IntAssert assertObjectWithNullTarget() {
-    return new IntAssert(null);
+  protected IntAssert assertionsFor(Integer actual) {
+    return new IntAssert(actual);
+  }
+
+  protected Integer notNullValue() {
+    return notNullValue;
   }
 }

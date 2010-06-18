@@ -14,6 +14,8 @@
  */
 package org.fest.assertions;
 
+import org.junit.BeforeClass;
+
 /**
  * Tests for <code>{@link ObjectAssert#is(Condition)}</code>.
  *
@@ -21,11 +23,18 @@ package org.fest.assertions;
  */
 public class ObjectAssert_is_Test extends GenericAssert_is_TestCase<Object> {
 
-  protected ObjectAssert assertObject() {
-    return new ObjectAssert(6);
+  private static Object notNullValue;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    notNullValue = 6;
   }
 
-  protected ObjectAssert assertObjectWithNullTarget() {
-    return new ObjectAssert(null);
+  protected ObjectAssert assertionsFor(Object actual) {
+    return new ObjectAssert(actual);
+  }
+
+  protected Object notNullValue() {
+    return notNullValue;
   }
 }

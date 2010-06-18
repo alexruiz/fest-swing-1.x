@@ -19,6 +19,8 @@ import static java.util.Collections.emptyList;
 
 import java.util.Collection;
 
+import org.junit.BeforeClass;
+
 /**
  * Tests for <code>{@link CollectionAssert#is(Condition)}</code>.
  *
@@ -27,11 +29,18 @@ import java.util.Collection;
  */
 public class CollectionAssert_is_Test extends GenericAssert_is_TestCase<Collection<?>> {
 
-  protected CollectionAssert assertObject() {
-    return new CollectionAssert(emptyList());
+  private static Collection<?> notNullValue;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    notNullValue = emptyList();
   }
 
-  protected CollectionAssert assertObjectWithNullTarget() {
-    return new CollectionAssert(null);
+  protected CollectionAssert assertionsFor(Collection<?> actual) {
+    return new CollectionAssert(actual);
+  }
+
+  protected Collection<?> notNullValue() {
+    return notNullValue;
   }
 }
