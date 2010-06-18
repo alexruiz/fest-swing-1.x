@@ -29,18 +29,18 @@ import org.junit.BeforeClass;
  */
 public class CollectionAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSatisfy_TestCase<Collection<?>> {
 
-  private static Collection<?> actual;
+  private static Collection<?> notNullValue;
 
   @BeforeClass
   public static void setUpOnce() {
-    actual = emptyList();
+    notNullValue = emptyList();
   }
 
-  protected CollectionAssert assertObject() {
+  protected Collection<?> notNullValue() {
+    return notNullValue;
+  }
+
+  protected CollectionAssert assertionsFor(Collection<?> actual) {
     return new CollectionAssert(actual);
-  }
-
-  protected CollectionAssert assertObjectWithNullTarget() {
-    return new CollectionAssert(null);
   }
 }

@@ -26,18 +26,18 @@ import org.junit.BeforeClass;
  */
 public class CharArrayAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSatisfy_TestCase<char[]> {
 
-  private static char[] actual;
+  private static char[] notNullValue;
 
   @BeforeClass
   public static void setUpOnce() {
-    actual = emptyCharArray();
+    notNullValue = emptyCharArray();
   }
 
-  protected CharArrayAssert assertObject() {
+  protected char[] notNullValue() {
+    return notNullValue;
+  }
+
+  protected CharArrayAssert assertionsFor(char[] actual) {
     return new CharArrayAssert(actual);
-  }
-
-  protected CharArrayAssert assertObjectWithNullTarget() {
-    return new CharArrayAssert(null);
   }
 }

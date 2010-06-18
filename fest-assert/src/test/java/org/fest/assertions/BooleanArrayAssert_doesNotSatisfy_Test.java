@@ -26,18 +26,18 @@ import org.junit.BeforeClass;
  */
 public class BooleanArrayAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSatisfy_TestCase<boolean[]> {
 
-  private static boolean[] actual;
+  private static boolean[] notNullValue;
 
   @BeforeClass
   public static void setUpOnce() {
-    actual = emptyBooleanArray();
+    notNullValue = emptyBooleanArray();
   }
 
-  protected BooleanArrayAssert assertObject() {
+  protected boolean[] notNullValue() {
+    return notNullValue;
+  }
+
+  protected BooleanArrayAssert assertionsFor(boolean[] actual) {
     return new BooleanArrayAssert(actual);
-  }
-
-  protected BooleanArrayAssert assertObjectWithNullTarget() {
-    return new BooleanArrayAssert(null);
   }
 }

@@ -25,7 +25,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Base class for testing <code>{@link org.fest.assertions.GenericAssert#doesNotSatisfy(Condition)}</code>.
+ * Base class for testing <code>{@link GenericAssert#doesNotSatisfy(Condition)}</code>.
  * <p>
  * This class implements the algorithms which must be performed to test <code>doesNotSatisfy</code> as template methods
  * and uses implementations of the abstract methods in subclasses to derive concrete tests.
@@ -35,31 +35,28 @@ import org.junit.Test;
  * @author Ansgar Konermann
  * @author Alex Ruiz
  */
-public abstract class GenericAssert_doesNotSatisfy_TestCase<T> implements GenericAssert_doesNotSatisfy_orAlias_TestCase {
+public abstract class GenericAssert_doesNotSatisfy_TestCase<T> extends GenericAssert_TestCase<T> implements
+    GenericAssert_doesNotSatisfy_orAlias_TestCase {
 
-  private GenericAssert<T> assertObject;
+  private GenericAssert<T> assertions;
   private T actual;
 
   @Before
   public final void setUp() {
-    assertObject = assertObject();
-    actual = assertObject.actual;
+    actual = notNullValue();
+    assertions = assertionsFor(actual);
   }
-
-  protected abstract GenericAssert<T> assertObject();
 
   @Test
   public final void should_pass_if_condition_is_not_satisfied() {
-    assertObjectWithNullTarget().doesNotSatisfy(notNull());
+    assertionsFor(null).doesNotSatisfy(notNull());
   }
-
-  protected abstract GenericAssert<T> assertObjectWithNullTarget();
 
   @Test
   public final void should_throw_error_if_condition_is_null() {
     expectErrorIfConditionIsNull().on(new CodeToTest() {
       public void run() {
-        assertObject.doesNotSatisfy(null);
+        assertions.doesNotSatisfy(null);
       }
     });
   }
@@ -69,7 +66,7 @@ public abstract class GenericAssert_doesNotSatisfy_TestCase<T> implements Generi
     String msg = concat("actual value:<", format(actual), "> should not satisfy condition:<NotNull>");
     expectAssertionError(msg).on(new CodeToTest() {
       public void run() {
-        assertObject.doesNotSatisfy(notNull());
+        assertions.doesNotSatisfy(notNull());
       }
     });
   }
@@ -79,8 +76,8 @@ public abstract class GenericAssert_doesNotSatisfy_TestCase<T> implements Generi
     String msg = concat("[A Test] actual value:<", format(actual), "> should not satisfy condition:<NotNull>");
     expectAssertionError(msg).on(new CodeToTest() {
       public void run() {
-        assertObject.as("A Test")
-                    .doesNotSatisfy(notNull());
+        assertions.as("A Test")
+                  .doesNotSatisfy(notNull());
       }
     });
   }
@@ -90,7 +87,7 @@ public abstract class GenericAssert_doesNotSatisfy_TestCase<T> implements Generi
     String msg = concat("actual value:<", format(actual), "> should not satisfy condition:<Not Null>");
     expectAssertionError(msg).on(new CodeToTest() {
       public void run() {
-        assertObject.doesNotSatisfy(notNull().as("Not Null"));
+        assertions.doesNotSatisfy(notNull().as("Not Null"));
       }
     });
   }
@@ -100,8 +97,8 @@ public abstract class GenericAssert_doesNotSatisfy_TestCase<T> implements Generi
     String msg = concat("[A Test] actual value:<", format(actual), "> should not satisfy condition:<Not Null>");
     expectAssertionError(msg).on(new CodeToTest() {
       public void run() {
-        assertObject.as("A Test")
-                    .doesNotSatisfy(notNull().as("Not Null"));
+        assertions.as("A Test")
+                  .doesNotSatisfy(notNull().as("Not Null"));
       }
     });
   }
@@ -110,8 +107,8 @@ public abstract class GenericAssert_doesNotSatisfy_TestCase<T> implements Generi
   public final void should_fail_with_custom_message_if_condition_is_satisfied() {
     expectAssertionError("My custom message").on(new CodeToTest() {
       public void run() {
-        assertObject.overridingErrorMessage("My custom message")
-                    .doesNotSatisfy(notNull());
+        assertions.overridingErrorMessage("My custom message")
+                  .doesNotSatisfy(notNull());
       }
     });
   }
@@ -120,8 +117,8 @@ public abstract class GenericAssert_doesNotSatisfy_TestCase<T> implements Generi
   public final void should_fail_with_custom_message_ignoring_description_of_assertion_if_condition_is_satisfied() {
     expectAssertionError("My custom message").on(new CodeToTest() {
       public void run() {
-        assertObject.as("A Test").overridingErrorMessage("My custom message")
-                    .doesNotSatisfy(notNull());
+        assertions.as("A Test").overridingErrorMessage("My custom message")
+                  .doesNotSatisfy(notNull());
       }
     });
   }
@@ -130,15 +127,13 @@ public abstract class GenericAssert_doesNotSatisfy_TestCase<T> implements Generi
   public final void should_fail_with_custom_message_ignoring_description_of_condition_if_condition_is_satisfied() {
     expectAssertionError("My custom message").on(new CodeToTest() {
       public void run() {
-        assertObject.overridingErrorMessage("My custom message")
-                    .doesNotSatisfy(notNull().as("Not Null"));
+        assertions.overridingErrorMessage("My custom message")
+                  .doesNotSatisfy(notNull().as("Not Null"));
       }
     });
   }
 
-  protected final NotNull<T> notNull() {
+  private NotNull<T> notNull() {
     return NotNull.notNull();
   }
-
-  protected final T actual() { return actual; }
 }

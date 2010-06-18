@@ -26,18 +26,18 @@ import org.junit.BeforeClass;
  */
 public class DoubleAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSatisfy_TestCase<Double> {
 
-  private static Double actual;
+  private static Double notNullValue;
 
   @BeforeClass
   public static void setUpOnce() {
-    actual = 6d;
+    notNullValue = 6d;
   }
 
-  protected DoubleAssert assertObject() {
+  protected Double notNullValue() {
+    return notNullValue;
+  }
+
+  protected DoubleAssert assertionsFor(Double actual) {
     return new DoubleAssert(actual);
-  }
-
-  protected DoubleAssert assertObjectWithNullTarget() {
-    return new DoubleAssert(null);
   }
 }

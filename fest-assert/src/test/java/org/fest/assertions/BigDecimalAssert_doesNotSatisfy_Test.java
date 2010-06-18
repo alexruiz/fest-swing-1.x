@@ -30,18 +30,18 @@ import org.junit.BeforeClass;
  */
 public class BigDecimalAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSatisfy_TestCase<BigDecimal> {
 
-  private static BigDecimal actual;
+  private static BigDecimal notNullValue;
 
   @BeforeClass
   public static void setUpOnce() {
-    actual = ZERO;
+    notNullValue = ZERO;
   }
 
-  protected BigDecimalAssert assertObject() {
+  protected BigDecimal notNullValue() {
+    return notNullValue;
+  }
+
+  protected BigDecimalAssert assertionsFor(BigDecimal actual) {
     return new BigDecimalAssert(actual);
-  }
-
-  protected BigDecimalAssert assertObjectWithNullTarget() {
-    return new BigDecimalAssert(null);
   }
 }

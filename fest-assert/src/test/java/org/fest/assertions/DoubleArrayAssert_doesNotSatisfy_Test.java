@@ -26,18 +26,18 @@ import org.junit.BeforeClass;
  */
 public class DoubleArrayAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSatisfy_TestCase<double[]> {
 
-  private static double[] actual;
+  private static double[] notNullValue;
 
   @BeforeClass
   public static void setUpOnce() {
-    actual = emptyDoubleArray();
+    notNullValue = emptyDoubleArray();
   }
 
-  protected DoubleArrayAssert assertObject() {
+  protected double[] notNullValue() {
+    return notNullValue;
+  }
+
+  protected DoubleArrayAssert assertionsFor(double[] actual) {
     return new DoubleArrayAssert(actual);
-  }
-
-  protected DoubleArrayAssert assertObjectWithNullTarget() {
-    return new DoubleArrayAssert(null);
   }
 }

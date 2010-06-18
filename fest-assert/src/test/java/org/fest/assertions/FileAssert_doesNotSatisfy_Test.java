@@ -29,18 +29,18 @@ import org.junit.BeforeClass;
  */
 public class FileAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSatisfy_TestCase<File> {
 
-  private static File actual;
+  private static File notNullValue;
 
   @BeforeClass
   public static void setUpOnce() {
-    actual = aFile();
+    notNullValue = aFile();
   }
 
-  protected FileAssert assertObject() {
+  protected File notNullValue() {
+    return notNullValue;
+  }
+
+  protected FileAssert assertionsFor(File actual) {
     return new FileAssert(actual);
-  }
-
-  protected FileAssert assertObjectWithNullTarget() {
-    return new FileAssert(null);
   }
 }

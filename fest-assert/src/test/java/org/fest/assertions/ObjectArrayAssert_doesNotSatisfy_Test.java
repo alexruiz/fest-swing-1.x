@@ -26,19 +26,18 @@ import org.junit.BeforeClass;
  */
 public class ObjectArrayAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSatisfy_TestCase<Object[]> {
 
-  private static Object[] actual;
+  private static Object[] notNullValue;
 
   @BeforeClass
   public static void setUpOnce() {
-    actual = emptyObjectArray();
+    notNullValue = emptyObjectArray();
   }
 
-  protected ObjectArrayAssert assertObject() {
+  protected Object[] notNullValue() {
+    return notNullValue;
+  }
+
+  protected ObjectArrayAssert assertionsFor(Object[] actual) {
     return new ObjectArrayAssert(actual);
-  }
-
-  protected ObjectArrayAssert assertObjectWithNullTarget() {
-    Object[] array = null;
-    return new ObjectArrayAssert(array);
   }
 }

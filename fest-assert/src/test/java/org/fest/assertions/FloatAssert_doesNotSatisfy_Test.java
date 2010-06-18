@@ -25,18 +25,18 @@ import org.junit.BeforeClass;
  */
 public class FloatAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSatisfy_TestCase<Float> {
 
-  private static Float actual;
+  private static Float notNullValue;
 
   @BeforeClass
   public static void setUpOnce() {
-    actual = 6f;
+    notNullValue = 6f;
   }
 
-  protected FloatAssert assertObject() {
+  protected Float notNullValue() {
+    return notNullValue;
+  }
+
+  protected FloatAssert assertionsFor(Float actual) {
     return new FloatAssert(actual);
-  }
-
-  protected FloatAssert assertObjectWithNullTarget() {
-    return new FloatAssert(null);
   }
 }

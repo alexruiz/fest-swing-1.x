@@ -28,18 +28,18 @@ import org.junit.BeforeClass;
  */
 public class ImageAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSatisfy_TestCase<BufferedImage> {
 
-  private static BufferedImage actual;
+  private static BufferedImage notNullValue;
 
   @BeforeClass
   public static void setUpOnce() {
-    actual = fivePixelBlueImage();
+    notNullValue = fivePixelBlueImage();
   }
 
-  protected ImageAssert assertObject() {
+  protected BufferedImage notNullValue() {
+    return notNullValue;
+  }
+
+  protected ImageAssert assertionsFor(BufferedImage actual) {
     return new ImageAssert(actual);
-  }
-
-  protected ImageAssert assertObjectWithNullTarget() {
-    return new ImageAssert(null);
   }
 }

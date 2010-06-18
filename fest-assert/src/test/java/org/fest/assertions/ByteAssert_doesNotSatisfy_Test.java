@@ -25,18 +25,18 @@ import org.junit.BeforeClass;
  */
 public class ByteAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSatisfy_TestCase<Byte> {
 
-  private static Byte actual;
+  private static Byte notNullValue;
 
   @BeforeClass
   public static void setUpOnce() {
-    actual = 6;
+    notNullValue = 6;
   }
 
-  protected ByteAssert assertObject() {
+  protected Byte notNullValue() {
+    return notNullValue;
+  }
+
+  protected ByteAssert assertionsFor(Byte actual) {
     return new ByteAssert(actual);
-  }
-
-  protected ByteAssert assertObjectWithNullTarget() {
-    return new ByteAssert(null);
   }
 }

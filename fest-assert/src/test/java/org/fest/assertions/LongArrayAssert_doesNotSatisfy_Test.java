@@ -26,18 +26,18 @@ import org.junit.BeforeClass;
  */
 public class LongArrayAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSatisfy_TestCase<long[]> {
 
-  private static long[] actual;
+  private static long[] notNullValue;
 
   @BeforeClass
   public static void setUpOnce() {
-    actual = emptyLongArray();
+    notNullValue = emptyLongArray();
   }
 
-  protected LongArrayAssert assertObject() {
+  protected long[] notNullValue() {
+    return notNullValue;
+  }
+
+  protected LongArrayAssert assertionsFor(long[] actual) {
     return new LongArrayAssert(actual);
-  }
-
-  protected LongArrayAssert assertObjectWithNullTarget() {
-    return new LongArrayAssert(null);
   }
 }

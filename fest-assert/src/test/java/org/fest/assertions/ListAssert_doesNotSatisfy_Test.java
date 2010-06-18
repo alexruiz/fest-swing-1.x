@@ -27,18 +27,18 @@ import org.junit.BeforeClass;
  */
 public class ListAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSatisfy_TestCase<List<?>> {
 
-  private static List<?> actual;
+  private static List<?> notNullValue;
 
   @BeforeClass
   public static void setUpOnce() {
-    actual = emptyList();
+    notNullValue = emptyList();
   }
 
-  protected ListAssert assertObject() {
+  protected List<?> notNullValue() {
+    return notNullValue;
+  }
+
+  protected ListAssert assertionsFor(List<?> actual) {
     return new ListAssert(actual);
-  }
-
-  protected ListAssert assertObjectWithNullTarget() {
-    return new ListAssert(null);
   }
 }

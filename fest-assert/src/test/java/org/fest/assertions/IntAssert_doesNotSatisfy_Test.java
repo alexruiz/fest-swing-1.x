@@ -25,20 +25,18 @@ import org.junit.BeforeClass;
  */
 public class IntAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSatisfy_TestCase<Integer> {
 
-  private static Integer actual;
+  private static Integer notNullValue;
 
   @BeforeClass
   public static void setUpOnce() {
-    actual = 6;
+    notNullValue = 6;
   }
 
-  protected IntAssert assertObject() {
+  protected Integer notNullValue() {
+    return notNullValue;
+  }
+
+  protected IntAssert assertionsFor(Integer actual) {
     return new IntAssert(actual);
   }
-
-  protected IntAssert assertObjectWithNullTarget() {
-    return new IntAssert(null);
-  }
-
-
 }

@@ -25,18 +25,18 @@ import org.junit.BeforeClass;
  */
 public class LongAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSatisfy_TestCase<Long> {
 
-  private static Long actual;
+  private static Long notNullValue;
 
   @BeforeClass
   public static void setUpOnce() {
-    actual = 6L;
+    notNullValue = 6L;
   }
 
-  protected LongAssert assertObject() {
+  protected Long notNullValue() {
+    return notNullValue;
+  }
+
+  protected LongAssert assertionsFor(Long actual) {
     return new LongAssert(actual);
-  }
-
-  protected LongAssert assertObjectWithNullTarget() {
-    return new LongAssert(null);
   }
 }

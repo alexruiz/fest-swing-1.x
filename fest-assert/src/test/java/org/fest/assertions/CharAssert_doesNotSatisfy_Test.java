@@ -26,18 +26,18 @@ import org.junit.BeforeClass;
  */
 public class CharAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSatisfy_TestCase<Character> {
 
-  private static Character actual;
+  private static Character notNullValue;
 
   @BeforeClass
   public static void setUpOnce() {
-    actual = 'a';
+    notNullValue = 'a';
   }
 
-  protected CharAssert assertObject() {
+  protected Character notNullValue() {
+    return notNullValue;
+  }
+
+  protected CharAssert assertionsFor(Character actual) {
     return new CharAssert(actual);
-  }
-
-  protected CharAssert assertObjectWithNullTarget() {
-    return new CharAssert(null);
   }
 }

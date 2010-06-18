@@ -29,18 +29,18 @@ import org.junit.BeforeClass;
  */
 public class MapAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSatisfy_TestCase<Map<?, ?>> {
 
-  private static Map<?, ?> actual;
+  private static Map<?, ?> notNullValue;
 
   @BeforeClass
   public static void setUpOnce() {
-    actual = emptyMap();
+    notNullValue = emptyMap();
   }
 
-  protected MapAssert assertObject() {
+  protected Map<?, ?> notNullValue() {
+    return notNullValue;
+  }
+
+  protected MapAssert assertionsFor(Map<?, ?> actual) {
     return new MapAssert(actual);
-  }
-
-  protected MapAssert assertObjectWithNullTarget() {
-    return new MapAssert(null);
   }
 }

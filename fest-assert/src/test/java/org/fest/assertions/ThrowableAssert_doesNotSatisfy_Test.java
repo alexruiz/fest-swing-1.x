@@ -24,18 +24,18 @@ import org.junit.BeforeClass;
  */
 public class ThrowableAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSatisfy_TestCase<Throwable> {
 
-  private static Throwable actual;
+  private static Throwable notNullValue;
 
   @BeforeClass
   public static void setUpOnce() {
-    actual = new Exception();
+    notNullValue = new Exception();
   }
 
-  protected ThrowableAssert assertObject() {
+  protected Throwable notNullValue() {
+    return notNullValue;
+  }
+
+  protected ThrowableAssert assertionsFor(Throwable actual) {
     return new ThrowableAssert(actual);
-  }
-
-  protected ThrowableAssert assertObjectWithNullTarget() {
-    return new ThrowableAssert(null);
   }
 }

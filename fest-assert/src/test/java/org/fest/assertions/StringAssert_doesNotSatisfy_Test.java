@@ -25,18 +25,18 @@ import org.junit.BeforeClass;
  */
 public class StringAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSatisfy_TestCase<String> {
 
-  private static String actual;
+  private static String notNullValue;
 
   @BeforeClass
   public static void setUpOnce() {
-    actual = "a";
+    notNullValue = "a";
   }
 
-  protected StringAssert assertObject() {
+  protected String notNullValue() {
+    return notNullValue;
+  }
+
+  protected StringAssert assertionsFor(String actual) {
     return new StringAssert(actual);
-  }
-
-  protected StringAssert assertObjectWithNullTarget() {
-    return new StringAssert(null);
   }
 }

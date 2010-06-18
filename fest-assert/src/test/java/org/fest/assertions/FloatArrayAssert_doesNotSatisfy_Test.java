@@ -26,18 +26,18 @@ import org.junit.BeforeClass;
  */
 public class FloatArrayAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSatisfy_TestCase<float[]> {
 
-  private static float[] actual;
+  private static float[] notNullValue;
 
   @BeforeClass
   public static void setUpOnce() {
-    actual = emptyFloatArray();
+    notNullValue = emptyFloatArray();
   }
 
-  protected FloatArrayAssert assertObject() {
+  protected float[] notNullValue() {
+    return notNullValue;
+  }
+
+  protected FloatArrayAssert assertionsFor(float[] actual) {
     return new FloatArrayAssert(actual);
-  }
-
-  protected FloatArrayAssert assertObjectWithNullTarget() {
-    return new FloatArrayAssert(null);
   }
 }

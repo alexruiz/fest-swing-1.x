@@ -25,18 +25,18 @@ import org.junit.BeforeClass;
  */
 public class ShortAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSatisfy_TestCase<Short> {
 
-  private static Short actual;
+  private static Short notNullValue;
 
   @BeforeClass
   public static void setUpOnce() {
-    actual = 6;
+    notNullValue = 6;
   }
 
-  protected ShortAssert assertObject() {
+  protected Short notNullValue() {
+    return notNullValue;
+  }
+
+  protected ShortAssert assertionsFor(Short actual) {
     return new ShortAssert(actual);
-  }
-
-  protected ShortAssert assertObjectWithNullTarget() {
-    return new ShortAssert(null);
   }
 }
