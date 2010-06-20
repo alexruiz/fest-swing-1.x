@@ -15,6 +15,8 @@
  */
 package org.fest.assertions;
 
+import org.junit.BeforeClass;
+
 /**
  * Tests for <code>{@link FloatAssert#satisfies(Condition)}</code>
  *
@@ -23,11 +25,18 @@ package org.fest.assertions;
  */
 public class FloatAssert_satisfies_Test extends GenericAssert_satisfies_TestCase<Float> {
 
-  protected FloatAssert assertObject() {
-    return new FloatAssert(6f);
+  private static Float notNullValue;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    notNullValue = 6f;
   }
 
-  protected FloatAssert assertObjectWithNullTarget() {
-    return new FloatAssert(null);
+  protected FloatAssert assertionsFor(Float actual) {
+    return new FloatAssert(actual);
+  }
+
+  protected Float notNullValue() {
+    return notNullValue;
   }
 }

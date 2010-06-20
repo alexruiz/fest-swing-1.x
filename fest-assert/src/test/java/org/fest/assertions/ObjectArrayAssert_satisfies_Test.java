@@ -16,6 +16,8 @@ package org.fest.assertions;
 
 import static org.fest.assertions.EmptyArrays.emptyObjectArray;
 
+import org.junit.BeforeClass;
+
 /**
  * Tests for <code>{@link ObjectArrayAssert#satisfies(Condition)}</code>.
  *
@@ -24,12 +26,18 @@ import static org.fest.assertions.EmptyArrays.emptyObjectArray;
  */
 public class ObjectArrayAssert_satisfies_Test extends GenericAssert_satisfies_TestCase<Object[]> {
 
-  protected ObjectArrayAssert assertObject() {
-    return new ObjectArrayAssert(emptyObjectArray());
+  private static Object[] notNullValue;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    notNullValue = emptyObjectArray();
   }
 
-  protected ObjectArrayAssert assertObjectWithNullTarget() {
-    Object[] actual = null;
+  protected ObjectArrayAssert assertionsFor(Object[] actual) {
     return new ObjectArrayAssert(actual);
+  }
+
+  protected Object[] notNullValue() {
+    return notNullValue;
   }
 }

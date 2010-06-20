@@ -18,6 +18,8 @@ import static java.util.Collections.emptyList;
 
 import java.util.List;
 
+import org.junit.BeforeClass;
+
 /**
  * Tests for <code>{@link ListAssert#satisfies(Condition)}</code>.
  *
@@ -25,11 +27,18 @@ import java.util.List;
  */
 public class ListAssert_satisfies_Test extends GenericAssert_satisfies_TestCase<List<?>> {
 
-  protected ListAssert assertObject() {
-    return new ListAssert(emptyList());
+  private static List<?> notNullValue;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    notNullValue = emptyList();
   }
 
-  protected ListAssert assertObjectWithNullTarget() {
-    return new ListAssert(null);
+  protected ListAssert assertionsFor(List<?> actual) {
+    return new ListAssert(actual);
+  }
+
+  protected List<?> notNullValue() {
+    return notNullValue;
   }
 }

@@ -14,6 +14,8 @@
  */
 package org.fest.assertions;
 
+import org.junit.BeforeClass;
+
 /**
  * Tests for <code>{@link StringAssert#satisfies(Condition)}</code>.
  *
@@ -23,11 +25,18 @@ package org.fest.assertions;
  */
 public class StringAssert_satisfies_Test extends GenericAssert_satisfies_TestCase<String> {
 
-  protected StringAssert assertObject() {
-    return new StringAssert("Hello");
+  private static String notNullValue;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    notNullValue = "Hello";
   }
 
-  protected StringAssert assertObjectWithNullTarget() {
-    return new StringAssert(null);
+  protected StringAssert assertionsFor(String actual) {
+    return new StringAssert(actual);
+  }
+
+  protected String notNullValue() {
+    return notNullValue;
   }
 }

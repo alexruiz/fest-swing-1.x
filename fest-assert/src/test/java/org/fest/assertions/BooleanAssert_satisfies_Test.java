@@ -15,6 +15,10 @@
  */
 package org.fest.assertions;
 
+import static java.lang.Boolean.TRUE;
+
+import org.junit.BeforeClass;
+
 /**
  * Tests for <code>{@link BooleanAssert#satisfies(Condition)}</code>
  *
@@ -23,12 +27,19 @@ package org.fest.assertions;
  */
 public class BooleanAssert_satisfies_Test extends GenericAssert_satisfies_TestCase<Boolean> {
 
-  protected BooleanAssert assertObject() {
-    return new BooleanAssert(true);
+  private static Boolean notNullValue;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    notNullValue = TRUE;
   }
 
-  protected BooleanAssert assertObjectWithNullTarget() {
-    return new BooleanAssert(null);
+  protected BooleanAssert assertionsFor(Boolean actual) {
+    return new BooleanAssert(actual);
+  }
+
+  protected Boolean notNullValue() {
+    return notNullValue;
   }
 }
 

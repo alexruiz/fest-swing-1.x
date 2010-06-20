@@ -15,6 +15,8 @@
  */
 package org.fest.assertions;
 
+import org.junit.BeforeClass;
+
 /**
  * Tests for <code>{@link DoubleAssert#satisfies(Condition)}</code>
  *
@@ -23,11 +25,18 @@ package org.fest.assertions;
  */
 public class DoubleAssert_satisfies_Test extends GenericAssert_satisfies_TestCase<Double> {
 
-  protected DoubleAssert assertObject() {
-    return new DoubleAssert(6d);
+  private static Double notNullValue;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    notNullValue = 6d;
   }
 
-  protected DoubleAssert assertObjectWithNullTarget() {
-    return new DoubleAssert(null);
+  protected DoubleAssert assertionsFor(Double actual) {
+    return new DoubleAssert(actual);
+  }
+
+  protected Double notNullValue() {
+    return notNullValue;
   }
 }

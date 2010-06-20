@@ -18,6 +18,8 @@ import static java.math.BigDecimal.ZERO;
 
 import java.math.BigDecimal;
 
+import org.junit.BeforeClass;
+
 /**
  * Tests for <code>{@link BigDecimalAssert#satisfies(Condition)}</code>.
  *
@@ -28,11 +30,18 @@ import java.math.BigDecimal;
  */
 public class BigDecimalAssert_satisfies_Test extends GenericAssert_satisfies_TestCase<BigDecimal> {
 
-  protected BigDecimalAssert assertObject() {
-    return new BigDecimalAssert(ZERO);
+  private static BigDecimal notNullValue;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    notNullValue = ZERO;
   }
 
-  protected BigDecimalAssert assertObjectWithNullTarget() {
-    return new BigDecimalAssert(null);
+  protected BigDecimalAssert assertionsFor(BigDecimal actual) {
+    return new BigDecimalAssert(actual);
+  }
+
+  protected BigDecimal notNullValue() {
+    return notNullValue;
   }
 }

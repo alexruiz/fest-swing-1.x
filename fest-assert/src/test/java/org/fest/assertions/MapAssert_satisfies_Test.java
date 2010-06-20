@@ -18,6 +18,8 @@ import static java.util.Collections.emptyMap;
 
 import java.util.Map;
 
+import org.junit.BeforeClass;
+
 /**
  * Tests for <code>{@link MapAssert#satisfies(Condition)}</code>.
  *
@@ -27,11 +29,18 @@ import java.util.Map;
  */
 public class MapAssert_satisfies_Test extends GenericAssert_satisfies_TestCase<Map<?, ?>> {
 
-  protected MapAssert assertObject() {
-    return new MapAssert(emptyMap());
+  private static Map<?, ?> notNullValue;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    notNullValue = emptyMap();
   }
 
-  protected MapAssert assertObjectWithNullTarget() {
-    return new MapAssert(null);
+  protected MapAssert assertionsFor(Map<?, ?> actual) {
+    return new MapAssert(actual);
+  }
+
+  protected Map<?, ?> notNullValue() {
+    return notNullValue;
   }
 }

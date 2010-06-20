@@ -16,6 +16,8 @@ package org.fest.assertions;
 
 import static org.fest.assertions.EmptyArrays.emptyLongArray;
 
+import org.junit.BeforeClass;
+
 /**
  * Tests for <code>{@link LongArrayAssert#satisfies(Condition)}</code>.
  *
@@ -24,11 +26,18 @@ import static org.fest.assertions.EmptyArrays.emptyLongArray;
  */
 public class LongArrayAssert_satisfies_Test extends GenericAssert_satisfies_TestCase<long[]> {
 
-  protected LongArrayAssert assertObject() {
-    return new LongArrayAssert(emptyLongArray());
+  private static long[] notNullValue;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    notNullValue = emptyLongArray();
   }
 
-  protected LongArrayAssert assertObjectWithNullTarget() {
-    return new LongArrayAssert(null);
+  protected LongArrayAssert assertionsFor(long[] actual) {
+    return new LongArrayAssert(actual);
+  }
+
+  protected long[] notNullValue() {
+    return notNullValue;
   }
 }

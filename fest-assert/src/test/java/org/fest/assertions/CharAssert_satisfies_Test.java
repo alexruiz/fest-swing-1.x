@@ -15,6 +15,8 @@
  */
 package org.fest.assertions;
 
+import org.junit.BeforeClass;
+
 /**
  * Tests for <code>{@link CharAssert#satisfies(Condition)}</code>
  *
@@ -23,12 +25,19 @@ package org.fest.assertions;
  */
 public class CharAssert_satisfies_Test extends GenericAssert_satisfies_TestCase<Character> {
 
-  protected CharAssert assertObject() {
-    return new CharAssert('a');
+  private static Character notNullValue;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    notNullValue = 'a';
   }
 
-  protected CharAssert assertObjectWithNullTarget() {
-    return new CharAssert(null);
+  protected CharAssert assertionsFor(Character actual) {
+    return new CharAssert(actual);
+  }
+
+  protected Character notNullValue() {
+    return notNullValue;
   }
 }
 

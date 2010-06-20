@@ -16,6 +16,8 @@ package org.fest.assertions;
 
 import static org.fest.assertions.EmptyArrays.emptyShortArray;
 
+import org.junit.BeforeClass;
+
 /**
  * Tests for <code>{@link ShortArrayAssert#satisfies(Condition)}</code>.
  *
@@ -24,11 +26,18 @@ import static org.fest.assertions.EmptyArrays.emptyShortArray;
  */
 public class ShortArrayAssert_satisfies_Test extends GenericAssert_satisfies_TestCase<short[]> {
 
-  protected ShortArrayAssert assertObject() {
-    return new ShortArrayAssert(emptyShortArray());
+  private static short[] notNullValue;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    notNullValue = emptyShortArray();
   }
 
-  protected ShortArrayAssert assertObjectWithNullTarget() {
-    return new ShortArrayAssert(null);
+  protected ShortArrayAssert assertionsFor(short[] actual) {
+    return new ShortArrayAssert(actual);
+  }
+
+  protected short[] notNullValue() {
+    return notNullValue;
   }
 }

@@ -15,6 +15,8 @@
  */
 package org.fest.assertions;
 
+import org.junit.BeforeClass;
+
 /**
  * Tests for <code>{@link ByteAssert#satisfies(Condition)}</code>
  *
@@ -23,11 +25,18 @@ package org.fest.assertions;
  */
 public class ByteAssert_satisfies_Test extends GenericAssert_satisfies_TestCase<Byte> {
 
-  protected ByteAssert assertObject() {
-    return new ByteAssert(6);
+  private static Byte notNullValue;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    notNullValue = 6;
   }
 
-  protected ByteAssert assertObjectWithNullTarget() {
-    return new ByteAssert(null);
+  protected ByteAssert assertionsFor(Byte actual) {
+    return new ByteAssert(actual);
+  }
+
+  protected Byte notNullValue() {
+    return notNullValue;
   }
 }
