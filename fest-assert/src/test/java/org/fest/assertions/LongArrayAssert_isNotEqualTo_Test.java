@@ -26,20 +26,24 @@ import org.junit.BeforeClass;
  */
 public class LongArrayAssert_isNotEqualTo_Test extends GenericAssert_isNotEqualTo_TestCase<long[]> {
 
-  private static long[] actual;
-  private static long[] notEqualValue;
+  private static long[] notNullValue;
+  private static long[] unequalValue;
 
   @BeforeClass
   public static void setUpOnce() {
-    actual = longArray(6, 8);
-    notEqualValue = longArray(6);
+    notNullValue = longArray(6, 8);
+    unequalValue = longArray(6);
   }
 
-  protected LongArrayAssert assertObject() {
+  protected LongArrayAssert assertionsFor(long[] actual) {
     return new LongArrayAssert(actual);
   }
 
-  protected long[] notEqualValue() {
-    return notEqualValue;
+  protected long[] notNullValue() {
+    return notNullValue;
+  }
+
+  protected long[] unequalValue() {
+    return unequalValue;
   }
 }

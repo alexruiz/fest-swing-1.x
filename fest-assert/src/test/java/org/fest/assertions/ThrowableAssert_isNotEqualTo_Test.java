@@ -24,20 +24,24 @@ import org.junit.BeforeClass;
  */
 public class ThrowableAssert_isNotEqualTo_Test extends GenericAssert_isNotEqualTo_TestCase<Throwable> {
 
-  private static Exception actual;
-  private static NullPointerException notEqualValue;
+  private static Throwable notNullValue;
+  private static Throwable unequalValue;
 
   @BeforeClass
   public static void setUpOnce() {
-    actual = new Exception();
-    notEqualValue = new NullPointerException();
+    notNullValue = new Exception();
+    unequalValue = new NullPointerException();
   }
 
-  protected ThrowableAssert assertObject() {
+  protected ThrowableAssert assertionsFor(Throwable actual) {
     return new ThrowableAssert(actual);
   }
 
-  protected Throwable notEqualValue() {
-    return notEqualValue;
+  protected Throwable notNullValue() {
+    return notNullValue;
+  }
+
+  protected Throwable unequalValue() {
+    return unequalValue;
   }
 }

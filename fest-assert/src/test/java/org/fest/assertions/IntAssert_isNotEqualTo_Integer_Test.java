@@ -25,20 +25,24 @@ import org.junit.BeforeClass;
  */
 public class IntAssert_isNotEqualTo_Integer_Test extends GenericAssert_isNotEqualTo_TestCase<Integer> {
 
-  private static Integer actual;
-  private static Integer notEqualValue;
+  private static Integer notNullValue;
+  private static Integer unequalValue;
 
   @BeforeClass
   public static void setUpOnce() {
-    actual = 6;
-    notEqualValue = 8;
+    notNullValue = 6;
+    unequalValue = 8;
   }
 
-  protected IntAssert assertObject() {
+  protected IntAssert assertionsFor(Integer actual) {
     return new IntAssert(actual);
   }
 
-  protected Integer notEqualValue() {
-    return notEqualValue;
+  protected Integer notNullValue() {
+    return notNullValue;
+  }
+
+  protected Integer unequalValue() {
+    return unequalValue;
   }
 }

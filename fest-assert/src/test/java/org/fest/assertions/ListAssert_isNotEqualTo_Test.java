@@ -28,20 +28,24 @@ import org.junit.BeforeClass;
  */
 public class ListAssert_isNotEqualTo_Test extends GenericAssert_isNotEqualTo_TestCase<List<?>> {
 
-  private static List<?> actual;
-  private static List<?> notEqualValue;
+  private static List<?> notNullValue;
+  private static List<?> unequalValue;
 
   @BeforeClass
   public static void setUpOnce() {
-    actual = list("Luke", "Leia");
-    notEqualValue = list("Yoda");
+    notNullValue = list("Luke", "Leia");
+    unequalValue = list("Yoda");
   }
 
-  protected ListAssert assertObject() {
+  protected ListAssert assertionsFor(List<?> actual) {
     return new ListAssert(actual);
   }
 
-  protected List<?> notEqualValue() {
-    return notEqualValue;
+  protected List<?> notNullValue() {
+    return notNullValue;
+  }
+
+  protected List<?> unequalValue() {
+    return unequalValue;
   }
 }

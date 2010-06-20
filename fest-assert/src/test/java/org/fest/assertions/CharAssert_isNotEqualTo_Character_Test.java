@@ -25,20 +25,24 @@ import org.junit.BeforeClass;
  */
 public class CharAssert_isNotEqualTo_Character_Test extends GenericAssert_isNotEqualTo_TestCase<Character> {
 
-  private static Character actual;
-  private static Character notEqualValue;
+  private static Character notNullValue;
+  private static Character unequalValue;
 
   @BeforeClass
   public static void setUpOnce() {
-    actual = 'a';
-    notEqualValue = 'b';
+    notNullValue = 'a';
+    unequalValue = 'b';
   }
 
-  protected CharAssert assertObject() {
+  protected CharAssert assertionsFor(Character actual) {
     return new CharAssert(actual);
   }
 
-  protected Character notEqualValue() {
-    return notEqualValue;
+  protected Character notNullValue() {
+    return notNullValue;
+  }
+
+  protected Character unequalValue() {
+    return unequalValue;
   }
 }

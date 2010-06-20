@@ -26,20 +26,24 @@ import org.junit.BeforeClass;
  */
 public class BooleanAssert_isNotEqualTo_Boolean_Test extends GenericAssert_isNotEqualTo_TestCase<Boolean> {
 
-  private static Boolean actual;
-  private static Boolean notEqualValue;
+  private static Boolean notNullValue;
+  private static Boolean unequalValue;
 
   @BeforeClass
   public static void setUpOnce() {
-    actual = TRUE;
-    notEqualValue = FALSE;
+    notNullValue = TRUE;
+    unequalValue = FALSE;
   }
 
-  protected BooleanAssert assertObject() {
+  protected BooleanAssert assertionsFor(Boolean actual) {
     return new BooleanAssert(actual);
   }
 
-  protected Boolean notEqualValue() {
-    return notEqualValue;
+  protected Boolean notNullValue() {
+    return notNullValue;
+  }
+
+  protected Boolean unequalValue() {
+    return unequalValue;
   }
 }

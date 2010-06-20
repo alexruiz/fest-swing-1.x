@@ -26,20 +26,24 @@ import org.junit.BeforeClass;
  */
 public class DoubleAssert_isNotEqualTo_Double_Test extends GenericAssert_isNotEqualTo_TestCase<Double> {
 
-  private static Double actual;
-  private static Double notEqualValue;
+  private static Double notNullValue;
+  private static Double unequalValue;
 
   @BeforeClass
   public static void setUpOnce() {
-    actual = 6d;
-    notEqualValue = 8d;
+    notNullValue = 6d;
+    unequalValue = 8d;
   }
 
-  protected DoubleAssert assertObject() {
+  protected DoubleAssert assertionsFor(Double actual) {
     return new DoubleAssert(actual);
   }
 
-  protected Double notEqualValue() {
-    return notEqualValue;
+  protected Double notNullValue() {
+    return notNullValue;
+  }
+
+  protected Double unequalValue() {
+    return unequalValue;
   }
 }

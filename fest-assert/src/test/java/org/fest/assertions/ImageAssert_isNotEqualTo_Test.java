@@ -29,20 +29,24 @@ import org.junit.BeforeClass;
  */
 public class ImageAssert_isNotEqualTo_Test extends GenericAssert_isNotEqualTo_TestCase<BufferedImage> {
 
-  private static BufferedImage actual;
-  private static BufferedImage notEqualValue;
+  private static BufferedImage notNullValue;
+  private static BufferedImage unequalValue;
 
   @BeforeClass
   public static void setUpOnce() {
-    actual = fivePixelBlueImage();
-    notEqualValue = image(3, 5, BLUE);
+    notNullValue = fivePixelBlueImage();
+    unequalValue = image(3, 5, BLUE);
   }
 
-  protected ImageAssert assertObject() {
+  protected ImageAssert assertionsFor(BufferedImage actual) {
     return new ImageAssert(actual);
   }
 
-  protected BufferedImage notEqualValue() {
-    return notEqualValue;
+  protected BufferedImage notNullValue() {
+    return notNullValue;
+  }
+
+  protected BufferedImage unequalValue() {
+    return unequalValue;
   }
 }

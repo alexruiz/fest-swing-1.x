@@ -25,20 +25,24 @@ import org.junit.BeforeClass;
  */
 public class ByteAssert_isNotEqualTo_Byte_Test extends GenericAssert_isNotEqualTo_TestCase<Byte> {
 
-  private static Byte actual;
-  private static Byte notEqualValue;
+  private static Byte notNullValue;
+  private static Byte unequalValue;
 
   @BeforeClass
   public static void setUpOnce() {
-    actual = 6;
-    notEqualValue = 8;
+    notNullValue = 6;
+    unequalValue = 8;
   }
 
-  protected ByteAssert assertObject() {
+  protected ByteAssert assertionsFor(Byte actual) {
     return new ByteAssert(actual);
   }
 
-  protected Byte notEqualValue() {
-    return notEqualValue;
+  protected Byte notNullValue() {
+    return notNullValue;
+  }
+
+  protected Byte unequalValue() {
+    return unequalValue;
   }
 }

@@ -29,20 +29,24 @@ import org.junit.BeforeClass;
  */
 public class CollectionAssert_isNotEqualTo_Test extends GenericAssert_isNotEqualTo_TestCase<Collection<?>> {
 
-  private static Collection<?> actual;
-  private static Collection<?> notEqualValue;
+  private static Collection<?> notNullValue;
+  private static Collection<?> unequalValue;
 
   @BeforeClass
   public static void setUpOnce() {
-    actual = list("Luke", "Leia");
-    notEqualValue = list("Yoda");
+    notNullValue = list("Luke", "Leia");
+    unequalValue = list("Yoda");
   }
 
-  protected CollectionAssert assertObject() {
+  protected CollectionAssert assertionsFor(Collection<?> actual) {
     return new CollectionAssert(actual);
   }
 
-  protected Collection<?> notEqualValue() {
-    return notEqualValue;
+  protected Collection<?> notNullValue() {
+    return notNullValue;
+  }
+
+  protected Collection<?> unequalValue() {
+    return unequalValue;
   }
 }

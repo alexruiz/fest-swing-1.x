@@ -29,20 +29,24 @@ import org.junit.BeforeClass;
  */
 public class FileAssert_isNotEqualTo_Test extends GenericAssert_isNotEqualTo_TestCase<File> {
 
-  private static File actual;
-  private static File notEqualValue;
+  private static File notNullValue;
+  private static File unequalValue;
 
   @BeforeClass
   public static void setUpOnce() {
-    actual = aFile();
-    notEqualValue = newFile("c:\\");
+    notNullValue = aFile();
+    unequalValue = newFile("c:\\");
   }
 
-  protected FileAssert assertObject() {
+  protected FileAssert assertionsFor(File actual) {
     return new FileAssert(actual);
   }
 
-  protected File notEqualValue() {
-    return notEqualValue;
+  protected File notNullValue() {
+    return notNullValue;
+  }
+
+  protected File unequalValue() {
+    return unequalValue;
   }
 }
