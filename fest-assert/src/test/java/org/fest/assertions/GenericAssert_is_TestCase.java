@@ -38,7 +38,7 @@ public abstract class GenericAssert_is_TestCase<T> extends GenericAssert_TestCas
     GenericAssert_satisfies_orAlias_TestCase {
 
   private GenericAssert<T> assertions;
-  private NotNull<T> notNull;
+  private Condition<T> notNull;
 
   @Before
   public final void setUp() {
