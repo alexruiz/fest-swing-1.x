@@ -1,5 +1,5 @@
 /*
- * Created on 2010-4-22
+ * Created on Apr 22, 2010
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -13,29 +13,30 @@
  *
  * Copyright @2010 the original author or authors.
  */
-
 package org.fest.assertions;
 
+import org.junit.BeforeClass;
+
 /**
- * Test ensuring that {@link DoubleAssert} obeys the {@link GenericAssert#isNot(Condition)} contract for {@link
- * Double}.
+ * Tests for <code>{@link DoubleAssert#isNot(Condition)}</code>.
  *
  * @author Ansgar Konermann
+ * @author Alex Ruiz
  */
 public class DoubleAssert_isNot_Test extends GenericAssert_isNot_TestBase<Double> {
 
-  @Override
-  protected Double zero() {
-    return 0.0d;
+  private static Double notNullValue;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    notNullValue = 6d;
   }
 
-  @Override
-  protected String zeroAsString() {
-    return "0.0";
-  }
-
-  @Override
-  protected DoubleAssert assertionFor(Double actual) {
+  protected DoubleAssert assertionsFor(Double actual) {
     return new DoubleAssert(actual);
+  }
+
+  protected Double notNullValue() {
+    return notNullValue;
   }
 }

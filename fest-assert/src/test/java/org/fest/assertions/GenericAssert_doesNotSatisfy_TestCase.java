@@ -17,6 +17,7 @@ package org.fest.assertions;
 
 import static org.fest.assertions.CommonFailures.expectErrorIfConditionIsNull;
 import static org.fest.assertions.Formatter.format;
+import static org.fest.assertions.NotNull.notNull;
 import static org.fest.test.ExpectedFailure.expectAssertionError;
 import static org.fest.util.Strings.concat;
 
@@ -40,16 +41,18 @@ public abstract class GenericAssert_doesNotSatisfy_TestCase<T> extends GenericAs
 
   private GenericAssert<T> assertions;
   private T actual;
+  private Condition<T> notNull;
 
   @Before
   public final void setUp() {
     actual = notNullValue();
     assertions = assertionsFor(actual);
+    notNull = notNull();
   }
 
   @Test
   public final void should_pass_if_condition_is_not_satisfied() {
-    assertionsFor(null).doesNotSatisfy(notNull());
+    assertionsFor(null).doesNotSatisfy(notNull);
   }
 
   @Test
@@ -66,7 +69,7 @@ public abstract class GenericAssert_doesNotSatisfy_TestCase<T> extends GenericAs
     String msg = concat("actual value:<", format(actual), "> should not satisfy condition:<NotNull>");
     expectAssertionError(msg).on(new CodeToTest() {
       public void run() {
-        assertions.doesNotSatisfy(notNull());
+        assertions.doesNotSatisfy(notNull);
       }
     });
   }
@@ -77,7 +80,7 @@ public abstract class GenericAssert_doesNotSatisfy_TestCase<T> extends GenericAs
     expectAssertionError(msg).on(new CodeToTest() {
       public void run() {
         assertions.as("A Test")
-                  .doesNotSatisfy(notNull());
+                  .doesNotSatisfy(notNull);
       }
     });
   }
@@ -87,7 +90,7 @@ public abstract class GenericAssert_doesNotSatisfy_TestCase<T> extends GenericAs
     String msg = concat("actual value:<", format(actual), "> should not satisfy condition:<Not Null>");
     expectAssertionError(msg).on(new CodeToTest() {
       public void run() {
-        assertions.doesNotSatisfy(notNull().as("Not Null"));
+        assertions.doesNotSatisfy(notNull.as("Not Null"));
       }
     });
   }
@@ -98,7 +101,7 @@ public abstract class GenericAssert_doesNotSatisfy_TestCase<T> extends GenericAs
     expectAssertionError(msg).on(new CodeToTest() {
       public void run() {
         assertions.as("A Test")
-                  .doesNotSatisfy(notNull().as("Not Null"));
+                  .doesNotSatisfy(notNull.as("Not Null"));
       }
     });
   }
@@ -108,7 +111,7 @@ public abstract class GenericAssert_doesNotSatisfy_TestCase<T> extends GenericAs
     expectAssertionError("My custom message").on(new CodeToTest() {
       public void run() {
         assertions.overridingErrorMessage("My custom message")
-                  .doesNotSatisfy(notNull());
+                  .doesNotSatisfy(notNull);
       }
     });
   }
@@ -118,7 +121,7 @@ public abstract class GenericAssert_doesNotSatisfy_TestCase<T> extends GenericAs
     expectAssertionError("My custom message").on(new CodeToTest() {
       public void run() {
         assertions.as("A Test").overridingErrorMessage("My custom message")
-                  .doesNotSatisfy(notNull());
+                  .doesNotSatisfy(notNull);
       }
     });
   }
@@ -128,12 +131,8 @@ public abstract class GenericAssert_doesNotSatisfy_TestCase<T> extends GenericAs
     expectAssertionError("My custom message").on(new CodeToTest() {
       public void run() {
         assertions.overridingErrorMessage("My custom message")
-                  .doesNotSatisfy(notNull().as("Not Null"));
+                  .doesNotSatisfy(notNull.as("Not Null"));
       }
     });
-  }
-
-  private NotNull<T> notNull() {
-    return NotNull.notNull();
   }
 }

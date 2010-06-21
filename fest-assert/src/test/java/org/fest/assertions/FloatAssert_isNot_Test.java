@@ -1,5 +1,5 @@
 /*
- * Created on 2010-4-22
+ * Created on Apr 22, 2010
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -13,29 +13,30 @@
  *
  * Copyright @2010 the original author or authors.
  */
-
 package org.fest.assertions;
 
+import org.junit.BeforeClass;
+
 /**
- * Test ensuring that {@link FloatAssert} obeys the {@link GenericAssert#isNot(Condition)} contract for {@link Float}.
+ * Tests for <code>{@link FloatAssert#isNot(Condition)}</code>.
  *
  * @author Ansgar Konermann
+ * @author Alex Ruiz
  */
-
 public class FloatAssert_isNot_Test extends GenericAssert_isNot_TestBase<Float> {
 
-  @Override
-  protected Float zero() {
-    return 0.0f;
+  private static Float notNullValue;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    notNullValue = 6f;
   }
 
-  @Override
-  protected String zeroAsString() {
-    return "0.0";
-  }
-
-  @Override
-  protected FloatAssert assertionFor(Float actual) {
+  protected FloatAssert assertionsFor(Float actual) {
     return new FloatAssert(actual);
+  }
+
+  protected Float notNullValue() {
+    return notNullValue;
   }
 }

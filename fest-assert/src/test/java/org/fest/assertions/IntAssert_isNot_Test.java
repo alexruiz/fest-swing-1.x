@@ -1,5 +1,5 @@
 /*
- * Created on 2010-4-22
+ * Created on Apr 22, 2010
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -13,28 +13,30 @@
  *
  * Copyright @2010 the original author or authors.
  */
-
 package org.fest.assertions;
 
+import org.junit.BeforeClass;
+
 /**
- * Test ensuring that {@link IntAssert} obeys the {@link GenericAssert#isNot(Condition)} contract for {@link Integer}.
+ * Tests for <code>{@link IntAssert#isNot(Condition)}</code>.
  *
  * @author Ansgar Konermann
+ * @author Alex Ruiz
  */
 public class IntAssert_isNot_Test extends GenericAssert_isNot_TestBase<Integer> {
 
-  @Override
-  protected Integer zero() {
-    return 1;
+  private static Integer notNullValue;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    notNullValue = 6;
   }
 
-  @Override
-  protected String zeroAsString() {
-    return "1";
-  }
-
-  @Override
-  protected IntAssert assertionFor(Integer actual) {
+  protected IntAssert assertionsFor(Integer actual) {
     return new IntAssert(actual);
+  }
+
+  protected Integer notNullValue() {
+    return notNullValue;
   }
 }

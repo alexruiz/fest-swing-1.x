@@ -1,5 +1,5 @@
 /*
- * Created on 2010-4-22
+ * Created on Apr 22, 2010
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -13,28 +13,30 @@
  *
  * Copyright @2010 the original author or authors.
  */
-
 package org.fest.assertions;
 
+import org.junit.BeforeClass;
+
 /**
- * Test ensuring that {@link ByteAssert} obeys the {@link GenericAssert#isNot(Condition)} contract for {@link Byte}.
+ * Tests for <code>{@link ByteAssert#isNot(Condition)}</code>.
  *
  * @author Ansgar Konermann
+ * @author Alex Ruiz
  */
 public class ByteAssert_isNot_Test extends GenericAssert_isNot_TestBase<Byte> {
 
-  @Override
-  protected Byte zero() {
-    return (byte) 1;
+  private static Byte notNullValue;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    notNullValue = 6;
   }
 
-  @Override
-  protected String zeroAsString() {
-    return "1";
-  }
-
-  @Override
-  protected ByteAssert assertionFor(Byte actual) {
+  protected ByteAssert assertionsFor(Byte actual) {
     return new ByteAssert(actual);
+  }
+
+  protected Byte notNullValue() {
+    return notNullValue;
   }
 }

@@ -1,5 +1,5 @@
 /*
- * Created on 2010-4-22
+ * Created on Apr 22, 2010
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -13,28 +13,30 @@
  *
  * Copyright @2010 the original author or authors.
  */
-
 package org.fest.assertions;
 
+import org.junit.BeforeClass;
+
 /**
- * Test ensuring that {@link ShortAssert} obeys the {@link GenericAssert#isNot(Condition)} contract for {@link Short}.
+ * Tests for <code>{@link ShortAssert#isNot(Condition)}</code>.
  *
  * @author Ansgar Konermann
+ * @author Alex Ruiz
  */
 public class ShortAssert_isNot_Test extends GenericAssert_isNot_TestBase<Short> {
 
-  @Override
-  protected Short zero() {
-    return (short) 1;
+  private static Short notNullValue;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    notNullValue = 6;
   }
 
-  @Override
-  protected String zeroAsString() {
-    return "1";
-  }
-
-  @Override
-  protected ShortAssert assertionFor(Short actual) {
+  protected ShortAssert assertionsFor(Short actual) {
     return new ShortAssert(actual);
+  }
+
+  protected Short notNullValue() {
+    return notNullValue;
   }
 }

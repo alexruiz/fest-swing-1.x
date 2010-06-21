@@ -1,5 +1,5 @@
 /*
- * Created on 2010-4-22
+ * Created on Apr 22, 2010
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -13,28 +13,30 @@
  *
  * Copyright @2010 the original author or authors.
  */
-
 package org.fest.assertions;
 
+import org.junit.BeforeClass;
+
 /**
- * Test ensuring that {@link LongAssert} obeys the {@link GenericAssert#isNot(Condition)} contract for {@link Long}.
+ * Tests for <code>{@link LongAssert#isNot(Condition)}</code>.
  *
  * @author Ansgar Konermann
+ * @author Alex Ruiz
  */
 public class LongAssert_isNot_Test extends GenericAssert_isNot_TestBase<Long> {
 
-  @Override
-  protected Long zero() {
-    return 1l;
+  private static Long notNullValue;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    notNullValue = 6L;
   }
 
-  @Override
-  protected String zeroAsString() {
-    return "1";
-  }
-
-  @Override
-  protected LongAssert assertionFor(Long actual) {
+  protected LongAssert assertionsFor(Long actual) {
     return new LongAssert(actual);
+  }
+
+  protected Long notNullValue() {
+    return notNullValue;
   }
 }

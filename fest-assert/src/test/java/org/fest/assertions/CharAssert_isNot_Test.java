@@ -1,5 +1,5 @@
 /*
- * Created on 2010-4-22
+ * Created on Apr 22, 2010
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -13,29 +13,30 @@
  *
  * Copyright @2010 the original author or authors.
  */
-
 package org.fest.assertions;
 
+import org.junit.BeforeClass;
+
 /**
- * Test ensuring that {@link CharAssert} obeys the {@link GenericAssert#isNot(Condition)} contract for {@link
- * Character}.
+ * Tests for <code>{@link CharAssert#isNot(Condition)}</code>.
  *
  * @author Ansgar Konermann
+ * @author Alex Ruiz
  */
 public class CharAssert_isNot_Test extends GenericAssert_isNot_TestBase<Character> {
 
-  @Override
-  protected Character zero() {
-    return '0';
+  private static Character notNullValue;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    notNullValue = 'a';
   }
 
-  @Override
-  protected String zeroAsString() {
-    return "0";
-  }
-
-  @Override
-  protected CharAssert assertionFor(Character actual) {
+  protected CharAssert assertionsFor(Character actual) {
     return new CharAssert(actual);
+  }
+
+  protected Character notNullValue() {
+    return notNullValue;
   }
 }
