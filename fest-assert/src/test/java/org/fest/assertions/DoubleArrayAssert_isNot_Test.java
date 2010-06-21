@@ -14,14 +14,9 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.CommonFailures.*;
 import static org.fest.assertions.EmptyArrays.emptyDoubleArray;
-import static org.fest.assertions.NotNull.notNullDoubleArray;
-import static org.fest.test.ExpectedFailure.expectAssertionError;
 
-import org.fest.test.CodeToTest;
 import org.junit.BeforeClass;
-import org.junit.Test;
 
 /**
  * Tests for <code>{@link DoubleArrayAssert#isNot(Condition)}</code>.
@@ -29,95 +24,20 @@ import org.junit.Test;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class DoubleArrayAssert_isNot_Test implements GenericAssert_doesNotSatisfy_orAlias_TestCase {
+public class DoubleArrayAssert_isNot_Test extends GenericAssert_isNot_TestCase<double[]> {
 
-  private static double[] array;
+  private static double[] notNullValue;
 
   @BeforeClass
   public static void setUpOnce() {
-    array = emptyDoubleArray();
+    notNullValue = emptyDoubleArray();
   }
 
-  @Test
-  public void should_pass_if_condition_is_not_satisfied() {
-    new DoubleArrayAssert(null).isNot(notNullDoubleArray());
+  protected DoubleArrayAssert assertionsFor(double[] actual) {
+    return new DoubleArrayAssert(actual);
   }
 
-  @Test
-  public void should_throw_error_if_condition_is_null() {
-    expectErrorIfConditionIsNull().on(new CodeToTest() {
-      public void run() {
-        new DoubleArrayAssert(array).isNot(null);
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_if_condition_is_satisfied() {
-    expectAssertionError("actual value:<[]> should not be:<NotNull>").on(new CodeToTest() {
-      public void run() {
-        new DoubleArrayAssert(array).isNot(notNullDoubleArray());
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_condition_is_satisfied() {
-    expectAssertionError("[A Test] actual value:<[]> should not be:<NotNull>").on(new CodeToTest() {
-      public void run() {
-        new DoubleArrayAssert(array).as("A Test")
-                                    .isNot(notNullDoubleArray());
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_and_display_description_of_condition_if_condition_is_satisfied() {
-    expectAssertionError("actual value:<[]> should not be:<Not Null>").on(new CodeToTest() {
-      public void run() {
-        new DoubleArrayAssert(array).isNot(notNullDoubleArray().as("Not Null"));
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_and_display_descriptions_of_assertion_and_condition_if_condition_is_satisfied() {
-    expectAssertionError("[A Test] actual value:<[]> should not be:<Not Null>").on(new CodeToTest() {
-      public void run() {
-        new DoubleArrayAssert(array).as("A Test")
-                                    .isNot(notNullDoubleArray().as("Not Null"));
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_if_condition_is_satisfied() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new DoubleArrayAssert(array).overridingErrorMessage("My custom message")
-                                    .isNot(notNullDoubleArray());
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_condition_is_satisfied() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new DoubleArrayAssert(array).as("A Test")
-                                    .overridingErrorMessage("My custom message")
-                                    .isNot(notNullDoubleArray());
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_condition_if_condition_is_satisfied() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new DoubleArrayAssert(array).overridingErrorMessage("My custom message")
-                                    .isNot(notNullDoubleArray().as("Not Null"));
-      }
-    });
+  protected double[] notNullValue() {
+    return notNullValue;
   }
 }

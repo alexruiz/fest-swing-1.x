@@ -15,9 +15,8 @@
  */
 package org.fest.assertions;
 
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.util.*;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Understands a <code>{@link Condition}</code> that verifies that a value is not <code>null</code>.
@@ -28,34 +27,6 @@ class NotNull<T> extends Condition<T> {
 
   static <T> NotNull<T> notNull() {
     return new NotNull<T>();
-  }
-
-  static NotNull<byte[]> notNullByteArray() {
-    return new NotNull<byte[]>();
-  }
-
-  static NotNull<char[]> notNullCharArray() {
-    return new NotNull<char[]>();
-  }
-
-  static NotNull<Collection<?>> notNullCollection() {
-    return new NotNull<Collection<?>>();
-  }
-
-  static NotNull<double[]> notNullDoubleArray() {
-    return new NotNull<double[]>();
-  }
-
-  static NotNull<File> notNullFile() {
-    return new NotNull<File>();
-  }
-
-  static NotNull<float[]> notNullFloatArray() {
-    return new NotNull<float[]>();
-  }
-
-  static NotNull<BufferedImage> notNullImage() {
-    return new NotNull<BufferedImage>();
   }
 
   static NotNull<int[]> notNullIntArray() {
