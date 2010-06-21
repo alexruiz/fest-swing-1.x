@@ -36,7 +36,7 @@ import org.junit.Test;
  * @author Ansgar Konermann
  * @author Alex Ruiz
  */
-public abstract class GenericAssert_isNot_TestBase<T> extends GenericAssert_TestCase<T> implements
+public abstract class GenericAssert_isNot_TestCase<T> extends GenericAssert_TestCase<T> implements
     GenericAssert_doesNotSatisfy_orAlias_TestCase {
 
   private T actual;
@@ -51,12 +51,12 @@ public abstract class GenericAssert_isNot_TestBase<T> extends GenericAssert_Test
   }
 
   @Test
-  public void should_pass_if_condition_is_not_satisfied() {
+  public final void should_pass_if_condition_is_not_satisfied() {
     assertionsFor(null).isNot(notNull);
   }
 
   @Test
-  public void should_throw_error_if_condition_is_null() {
+  public final void should_throw_error_if_condition_is_null() {
     expectErrorIfConditionIsNull().on(new CodeToTest() {
       public void run() {
         assertions.isNot(null);
@@ -65,7 +65,7 @@ public abstract class GenericAssert_isNot_TestBase<T> extends GenericAssert_Test
   }
 
   @Test
-  public void should_fail_if_condition_is_satisfied() {
+  public final void should_fail_if_condition_is_satisfied() {
     expectAssertionError(concat("actual value:<", format(actual), "> should not be:<NotNull>")).on(new CodeToTest() {
       public void run() {
         assertions.isNot(notNull);
@@ -74,7 +74,7 @@ public abstract class GenericAssert_isNot_TestBase<T> extends GenericAssert_Test
   }
 
   @Test
-  public void should_fail_and_display_description_of_assertion_if_condition_is_satisfied() {
+  public final void should_fail_and_display_description_of_assertion_if_condition_is_satisfied() {
     String msg = concat("[A Test] actual value:<", format(actual), "> should not be:<NotNull>");
     expectAssertionError(msg).on(new CodeToTest() {
       public void run() {
@@ -85,7 +85,7 @@ public abstract class GenericAssert_isNot_TestBase<T> extends GenericAssert_Test
   }
 
   @Test
-  public void should_fail_and_display_description_of_condition_if_condition_is_satisfied() {
+  public final void should_fail_and_display_description_of_condition_if_condition_is_satisfied() {
     expectAssertionError(concat("actual value:<", format(actual), "> should not be:<Not Null>")).on(new CodeToTest() {
       public void run() {
         assertions.isNot(notNull.as("Not Null"));
@@ -94,7 +94,7 @@ public abstract class GenericAssert_isNot_TestBase<T> extends GenericAssert_Test
   }
 
   @Test
-  public void should_fail_and_display_descriptions_of_assertion_and_condition_if_condition_is_satisfied() {
+  public final void should_fail_and_display_descriptions_of_assertion_and_condition_if_condition_is_satisfied() {
     String msg = concat("[A Test] actual value:<", format(actual), "> should not be:<Not Null>");
     expectAssertionError(msg).on(new CodeToTest() {
       public void run() {
@@ -115,7 +115,7 @@ public abstract class GenericAssert_isNot_TestBase<T> extends GenericAssert_Test
   }
 
   @Test
-  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_condition_is_satisfied() {
+  public final void should_fail_with_custom_message_ignoring_description_of_assertion_if_condition_is_satisfied() {
     expectAssertionError("My custom message").on(new CodeToTest() {
       public void run() {
         assertions.as("A Test")
@@ -125,7 +125,7 @@ public abstract class GenericAssert_isNot_TestBase<T> extends GenericAssert_Test
   }
 
   @Test
-  public void should_fail_with_custom_message_ignoring_description_of_condition_if_condition_is_satisfied() {
+  public final void should_fail_with_custom_message_ignoring_description_of_condition_if_condition_is_satisfied() {
     expectAssertionError("My custom message").on(new CodeToTest() {
       public void run() {
         assertions.overridingErrorMessage("My custom message")

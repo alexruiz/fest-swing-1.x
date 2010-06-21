@@ -14,109 +14,29 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.CommonFailures.expectErrorIfConditionIsNull;
 import static org.fest.assertions.EmptyArrays.emptyBooleanArray;
-import static org.fest.assertions.NotNull.notNullBooleanArray;
-import static org.fest.test.ExpectedFailure.expectAssertionError;
 
-import org.fest.test.CodeToTest;
 import org.junit.BeforeClass;
-import org.junit.Test;
 
 /**
  * Tests for <code>{@link BooleanArrayAssert#isNot(Condition)}</code>.
  *
  * @author Alex Ruiz
  */
-public class BooleanArrayAssert_isNot_Test implements GenericAssert_doesNotSatisfy_orAlias_TestCase {
+public class BooleanArrayAssert_isNot_Test extends GenericAssert_isNot_TestCase<boolean[]> {
 
-  private static boolean[] array;
+  private static boolean[] notNullValue;
 
   @BeforeClass
   public static void setUpOnce() {
-    array = emptyBooleanArray();
+    notNullValue = emptyBooleanArray();
   }
 
-  @Test
-  public void should_pass_if_condition_is_not_satisfied() {
-    new BooleanArrayAssert(null).isNot(notNullBooleanArray());
+  protected BooleanArrayAssert assertionsFor(boolean[] actual) {
+    return new BooleanArrayAssert(actual);
   }
 
-  @Test
-  public void should_throw_error_if_condition_is_null() {
-    expectErrorIfConditionIsNull().on(new CodeToTest() {
-      public void run() {
-        new BooleanArrayAssert(array).isNot(null);
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_if_condition_is_satisfied() {
-    expectAssertionError("actual value:<[]> should not be:<NotNull>").on(new CodeToTest() {
-      public void run() {
-        new BooleanArrayAssert(array).isNot(notNullBooleanArray());
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_condition_is_satisfied() {
-    expectAssertionError("[A Test] actual value:<[]> should not be:<NotNull>").on(new CodeToTest() {
-      public void run() {
-        new BooleanArrayAssert(array).as("A Test")
-                                     .isNot(notNullBooleanArray());
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_and_display_description_of_condition_if_condition_is_satisfied() {
-    expectAssertionError("actual value:<[]> should not be:<Not Null>").on(new CodeToTest() {
-      public void run() {
-        new BooleanArrayAssert(array).isNot(notNullBooleanArray().as("Not Null"));
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_and_display_descriptions_of_assertion_and_condition_if_condition_is_satisfied() {
-    expectAssertionError("[A Test] actual value:<[]> should not be:<Not Null>").on(new CodeToTest() {
-      public void run() {
-        new BooleanArrayAssert(array).as("A Test")
-                                     .isNot(notNullBooleanArray().as("Not Null"));
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_if_condition_is_satisfied() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new BooleanArrayAssert(array).overridingErrorMessage("My custom message")
-                                     .isNot(notNullBooleanArray());
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_condition_is_satisfied() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new BooleanArrayAssert(array).as("A Test")
-                                     .overridingErrorMessage("My custom message")
-                                     .isNot(notNullBooleanArray());
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_condition_if_condition_is_satisfied() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new BooleanArrayAssert(array).overridingErrorMessage("My custom message")
-                                     .isNot(notNullBooleanArray().as("Not Null"));
-      }
-    });
+  protected boolean[] notNullValue() {
+    return notNullValue;
   }
 }

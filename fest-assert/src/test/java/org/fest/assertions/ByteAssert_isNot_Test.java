@@ -23,7 +23,7 @@ import org.junit.BeforeClass;
  * @author Ansgar Konermann
  * @author Alex Ruiz
  */
-public class ByteAssert_isNot_Test extends GenericAssert_isNot_TestBase<Byte> {
+public class ByteAssert_isNot_Test extends GenericAssert_isNot_TestCase<Byte> {
 
   private static Byte notNullValue;
 

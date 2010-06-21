@@ -17,7 +17,6 @@ package org.fest.assertions;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.math.BigDecimal;
 import java.util.*;
 
 /**
@@ -29,18 +28,6 @@ class NotNull<T> extends Condition<T> {
 
   static <T> NotNull<T> notNull() {
     return new NotNull<T>();
-  }
-
-  static NotNull<BigDecimal> notNullBigDecimal() {
-    return new NotNull<BigDecimal>();
-  }
-
-  static NotNull<Boolean> notNullBoolean() {
-    return new NotNull<Boolean>();
-  }
-
-  static NotNull<boolean[]> notNullBooleanArray() {
-    return new NotNull<boolean[]>();
   }
 
   static NotNull<byte[]> notNullByteArray() {

@@ -23,7 +23,7 @@ import org.junit.BeforeClass;
  * @author Ansgar Konermann
  * @author Alex Ruiz
  */
-public class ShortAssert_isNot_Test extends GenericAssert_isNot_TestBase<Short> {
+public class ShortAssert_isNot_Test extends GenericAssert_isNot_TestCase<Short> {
 
   private static Short notNullValue;
 
