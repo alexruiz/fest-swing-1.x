@@ -1,5 +1,5 @@
 /*
- * Created on 2010-4-29
+ * Created on Apr 29, 2010
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -13,27 +13,36 @@
  *
  * Copyright @2010 the original author or authors.
  */
-
 package org.fest.assertions;
 
+import org.junit.BeforeClass;
+
 /**
- * Test ensuring that {@link org.fest.assertions.FloatAssert} obeys the {@link org.fest.assertions.GenericAssert#isNotSameAs(Object)}
- * contract for {@link Float}.
+ * Tests for <code>{@link FloatAssert#isNotSameAs(Float)}</code>.
+ *
+ * @author Ansgar Konermann
+ * @author Alex Ruiz
  */
 public class FloatAssert_Generic_isNotSameAs_Test extends GenericAssert_isNotSameAs_TestBase<Float> {
 
-  @Override
-  protected Float createEight() {
-    return new Float(8.0f);
+  private static Float notNullValue;
+  private static Float notSameValue;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    notNullValue = 6f;
+    notSameValue = 8f;
   }
 
-  @Override
-  protected String eightAsString() {
-    return "8.0";
-  }
-
-  @Override
-  protected FloatAssert assertionFor(Float actual) {
+  protected FloatAssert assertionsFor(Float actual) {
     return new FloatAssert(actual);
+  }
+
+  protected Float notNullValue() {
+    return notNullValue;
+  }
+
+  protected Float notSameValue() {
+    return notSameValue;
   }
 }

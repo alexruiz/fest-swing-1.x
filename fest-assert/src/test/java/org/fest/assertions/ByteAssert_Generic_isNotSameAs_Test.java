@@ -1,5 +1,5 @@
 /*
- * Created on 2010-4-29
+ * Created on Apr 29, 2010
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -13,27 +13,36 @@
  *
  * Copyright @2010 the original author or authors.
  */
-
 package org.fest.assertions;
 
+import org.junit.BeforeClass;
+
 /**
- * Test ensuring that {@link org.fest.assertions.ByteAssert} obeys the {@link org.fest.assertions.GenericAssert#isNotSameAs(Object)}
- * contract for {@link Byte}.
+ * Tests for <code>{@link ByteAssert#isNotSameAs(Byte)}</code>.
+ *
+ * @author Ansgar Konermann
+ * @author Alex Ruiz
  */
 public class ByteAssert_Generic_isNotSameAs_Test extends GenericAssert_isNotSameAs_TestBase<Byte> {
 
-  @Override
-  protected Byte createEight() {
-    return new Byte((byte) 8);
+  private static Byte notNullValue;
+  private static Byte notSameValue;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    notNullValue = 6;
+    notSameValue = 8;
   }
 
-  @Override
-  protected String eightAsString() {
-    return "8";
-  }
-
-  @Override
-  protected ByteAssert assertionFor(Byte actual) {
+  protected ByteAssert assertionsFor(Byte actual) {
     return new ByteAssert(actual);
+  }
+
+  protected Byte notNullValue() {
+    return notNullValue;
+  }
+
+  protected Byte notSameValue() {
+    return notSameValue;
   }
 }

@@ -1,5 +1,5 @@
 /*
- * Created on 2010-4-29
+ * Created on Apr 29, 2010
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -13,27 +13,36 @@
  *
  * Copyright @2010 the original author or authors.
  */
-
 package org.fest.assertions;
 
+import org.junit.BeforeClass;
+
 /**
- * Test ensuring that {@link org.fest.assertions.DoubleAssert} obeys the {@link org.fest.assertions.GenericAssert#isNotSameAs(Object)}
- * contract for {@link Double}.
+ * Tests for <code>{@link DoubleAssert#isNotSameAs(Double)}</code>.
+ *
+ * @author Ansgar Konermann
+ * @author Alex Ruiz
  */
 public class DoubleAssert_Generic_isNotSameAs_Test extends GenericAssert_isNotSameAs_TestBase<Double> {
 
-  @Override
-  protected Double createEight() {
-    return new Double(8.0d);
+  private static Double notNullValue;
+  private static Double notSameValue;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    notNullValue = 6d;
+    notSameValue = 8d;
   }
 
-  @Override
-  protected String eightAsString() {
-    return "8.0";
-  }
-
-  @Override
-  protected DoubleAssert assertionFor(Double actual) {
+  protected DoubleAssert assertionsFor(Double actual) {
     return new DoubleAssert(actual);
+  }
+
+  protected Double notNullValue() {
+    return notNullValue;
+  }
+
+  protected Double notSameValue() {
+    return notSameValue;
   }
 }

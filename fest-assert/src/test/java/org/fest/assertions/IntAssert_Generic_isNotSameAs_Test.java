@@ -1,5 +1,5 @@
 /*
- * Created on 2010-4-29
+ * Created on Apr 29, 2010
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -13,27 +13,36 @@
  *
  * Copyright @2010 the original author or authors.
  */
-
 package org.fest.assertions;
 
+import org.junit.BeforeClass;
+
 /**
- * Test ensuring that {@link org.fest.assertions.IntAssert} obeys the {@link org.fest.assertions.GenericAssert#isNotSameAs(Object)}
- * contract for {@link Integer}.
+ * Tests for <code>{@link IntAssert#isNotSameAs(Integer)}</code>.
+ *
+ * @author Ansgar Konermann
+ * @author Alex Ruiz
  */
 public class IntAssert_Generic_isNotSameAs_Test extends GenericAssert_isNotSameAs_TestBase<Integer> {
 
-  @Override
-  protected Integer createEight() {
-    return new Integer(8);
+  private static Integer notNullValue;
+  private static Integer notSameValue;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    notNullValue = 6;
+    notSameValue = 8;
   }
 
-  @Override
-  protected String eightAsString() {
-    return "8";
-  }
-
-  @Override
-  protected IntAssert assertionFor(Integer actual) {
+  protected IntAssert assertionsFor(Integer actual) {
     return new IntAssert(actual);
+  }
+
+  protected Integer notNullValue() {
+    return notNullValue;
+  }
+
+  protected Integer notSameValue() {
+    return notSameValue;
   }
 }
