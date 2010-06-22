@@ -1,5 +1,5 @@
 /*
- * Created on 2010-4-26
+ * Created on Apr 26, 2010
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -13,24 +13,30 @@
  *
  * Copyright @2010 the original author or authors.
  */
-
 package org.fest.assertions;
 
+import org.junit.BeforeClass;
+
 /**
- * Test ensuring that {@link org.fest.assertions.ByteAssert} obeys the {@link GenericAssert#isNotNull()} contract for
- * {@link Byte}.
+ * Tests for <code>{@link ByteAssert#isNotNull()}</code>.
  *
  * @author Ansgar Konermann
+ * @author Alex Ruiz
  */
 public class ByteAssert_isNotNull_Test extends GenericAssert_isNotNull_TestBase<Byte> {
 
-  @Override
-  protected ByteAssert assertionFor(Byte actual) {
+  private static Byte notNullValue;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    notNullValue = 6;
+  }
+
+  protected ByteAssert assertionsFor(Byte actual) {
     return new ByteAssert(actual);
   }
 
-  @Override
-  protected Byte one() {
-    return (byte) 1;
+  protected Byte notNullValue() {
+    return notNullValue;
   }
 }

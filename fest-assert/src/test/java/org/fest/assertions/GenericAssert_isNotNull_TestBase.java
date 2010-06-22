@@ -1,5 +1,5 @@
 /*
- * Created on 2010-4-26
+ * Created on Apr 26, 2010
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -13,68 +13,75 @@
  *
  * Copyright @2010 the original author or authors.
  */
-
 package org.fest.assertions;
 
-import static org.fest.assertions.CommonFailures.expectErrorIfActualIsNull;
-import static org.fest.assertions.CommonFailures.expectErrorWithDescriptionIfActualIsNull;
+import static org.fest.assertions.CommonFailures.*;
 import static org.fest.test.ExpectedFailure.expectAssertionError;
 
-import org.junit.Test;
 import org.fest.test.CodeToTest;
+import org.junit.Before;
+import org.junit.Test;
 
 /**
- * Base class for testing {@link GenericAssert#isNotNull()}.
- * <p/>
+ * Base class for testing <code>{@link GenericAssert#isNotNull()}</code>.
+ * <p>
  * This class implements the algorithms which must be performed to test <code>isNotNull</code> as template methods and
  * uses implementations of the abstract methods in subclasses to derive concrete tests.
+ * </p>
+ * @param <T> The type supported by the implementation of the {@code GenericAssert} to test.
  *
  * @author Ansgar Konermann
+ * @author Alex Ruiz
  */
+public abstract class GenericAssert_isNotNull_TestBase<T> extends GenericAssert_TestCase<T> implements
+    GenericAssert_isNotNull_TestCase {
 
-public abstract class GenericAssert_isNotNull_TestBase<VALUE_TYPE> implements GenericAssert_isNotNull_TestCase {
+  private GenericAssert<T> assertions;
 
-  protected abstract VALUE_TYPE one();
-
-  protected abstract GenericAssert<VALUE_TYPE> assertionFor(VALUE_TYPE actual);
-
-  @Test
-  public void should_pass_if_actual_is_not_null() {
-    assertionFor(one()).isNotNull();
+  @Before
+  public final void setUp() {
+    assertions = assertionsFor(null);
   }
 
   @Test
-  public void should_fail_if_actual_is_null() {
+  public final void should_pass_if_actual_is_not_null() {
+    assertionsFor(notNullValue()).isNotNull();
+  }
+
+  @Test
+  public final void should_fail_if_actual_is_null() {
     expectErrorIfActualIsNull(new CodeToTest() {
       public void run() {
-        assertionFor(null).isNotNull();
+        assertions.isNotNull();
       }
     });
   }
 
   @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_is_null() {
+  public final void should_fail_and_display_description_of_assertion_if_actual_is_null() {
     expectErrorWithDescriptionIfActualIsNull(new CodeToTest() {
       public void run() {
-        assertionFor(null).as("A Test").isNotNull();
+        assertions.as("A Test")
+                  .isNotNull();
       }
     });
   }
 
   @Test
-  public void should_fail_with_custom_message_if_actual_is_null() {
+  public final void should_fail_with_custom_message_if_actual_is_null() {
     expectAssertionError("My custom message").on(new CodeToTest() {
       public void run() {
-        assertionFor(null).overridingErrorMessage("My custom message").isNotNull();
+        assertions.overridingErrorMessage("My custom message").isNotNull();
       }
     });
   }
 
   @Test
-  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_is_null() {
+  public final void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_is_null() {
     expectAssertionError("My custom message").on(new CodeToTest() {
       public void run() {
-        assertionFor(null).as("A Test").overridingErrorMessage("My custom message").isNotNull();
+        assertions.as("A Test")
+                  .overridingErrorMessage("My custom message").isNotNull();
       }
     });
   }

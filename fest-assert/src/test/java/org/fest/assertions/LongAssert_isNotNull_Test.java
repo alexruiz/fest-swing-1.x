@@ -1,5 +1,5 @@
 /*
- * Created on 2010-4-26
+ * Created on Apr 26, 2010
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -13,24 +13,30 @@
  *
  * Copyright @2010 the original author or authors.
  */
-
 package org.fest.assertions;
 
+import org.junit.BeforeClass;
+
 /**
- * Test ensuring that {@link org.fest.assertions.LongAssert} obeys the {@link GenericAssert#isNotNull()} contract for
- * {@link Long}.
+ * Tests for <code>{@link LongAssert#isNotNull()}</code>.
  *
  * @author Ansgar Konermann
+ * @author Alex Ruiz
  */
 public class LongAssert_isNotNull_Test extends GenericAssert_isNotNull_TestBase<Long> {
 
-  @Override
-  protected LongAssert assertionFor(Long actual) {
+  private static Long notNullValue;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    notNullValue = 6L;
+  }
+
+  protected LongAssert assertionsFor(Long actual) {
     return new LongAssert(actual);
   }
 
-  @Override
-  protected Long one() {
-    return 1l;
+  protected Long notNullValue() {
+    return notNullValue;
   }
 }
