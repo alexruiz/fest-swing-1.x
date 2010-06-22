@@ -15,9 +15,6 @@
  */
 package org.fest.assertions;
 
-import java.util.List;
-import java.util.Map;
-
 /**
  * Understands a <code>{@link Condition}</code> that verifies that a value is not <code>null</code>.
  *
@@ -27,38 +24,6 @@ class NotNull<T> extends Condition<T> {
 
   static <T> NotNull<T> notNull() {
     return new NotNull<T>();
-  }
-
-  static NotNull<int[]> notNullIntArray() {
-    return new NotNull<int[]>();
-  }
-
-  static NotNull<List<?>> notNullList() {
-    return new NotNull<List<?>>();
-  }
-
-  static NotNull<long[]> notNullLongArray() {
-    return new NotNull<long[]>();
-  }
-
-  static NotNull<Map<?, ?>> notNullMap() {
-    return new NotNull<Map<?, ?>>();
-  }
-
-  static NotNull<Object> notNullObject() {
-    return new NotNull<Object>();
-  }
-
-  static NotNull<Object[]> notNullObjectArray() {
-    return new NotNull<Object[]>();
-  }
-
-  static NotNull<short[]> notNullShortArray() {
-    return new NotNull<short[]>();
-  }
-
-  static NotNull<Throwable> notNullThrowable() {
-    return new NotNull<Throwable>();
   }
 
   private NotNull() {}

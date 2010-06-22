@@ -14,100 +14,27 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.CommonFailures.expectErrorIfConditionIsNull;
-import static org.fest.assertions.UpperCase.upperCase;
-import static org.fest.test.ExpectedFailure.expectAssertionError;
-
-import org.fest.test.CodeToTest;
-import org.junit.Test;
+import org.junit.BeforeClass;
 
 /**
  * Tests for <code>{@link StringAssert#isNot(Condition)}</code>.
  *
  * @author Alex Ruiz
  */
-public class StringAssert_isNot_Test implements GenericAssert_doesNotSatisfy_orAlias_TestCase {
+public class StringAssert_isNot_Test extends GenericAssert_isNot_TestCase<String> {
 
-  @Test
-  public void should_pass_if_condition_is_not_satisfied() {
-    new StringAssert("a").isNot(upperCase());
+  private static String notNullValue;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    notNullValue = "Hello";
   }
 
-  @Test
-  public void should_throw_error_if_condition_is_null() {
-    expectErrorIfConditionIsNull().on(new CodeToTest() {
-      public void run() {
-        new StringAssert("a").isNot(null);
-      }
-    });
+  protected StringAssert assertionsFor(String actual) {
+    return new StringAssert(actual);
   }
 
-  @Test
-  public void should_fail_if_condition_is_satisfied() {
-    expectAssertionError("actual value:<'A'> should not be:<UpperCase>").on(new CodeToTest() {
-      public void run() {
-        new StringAssert("A").isNot(upperCase());
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_condition_is_satisfied() {
-    expectAssertionError("[Test] actual value:<'A'> should not be:<UpperCase>").on(new CodeToTest() {
-      public void run() {
-        new StringAssert("A").as("Test")
-                             .isNot(upperCase());
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_and_display_description_of_condition_if_condition_is_satisfied() {
-    expectAssertionError("actual value:<'A'> should not be:<uppercase>").on(new CodeToTest() {
-      public void run() {
-        new StringAssert("A").isNot(upperCase().as("uppercase"));
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_and_display_descriptions_of_assertion_and_condition_if_condition_is_satisfied() {
-    expectAssertionError("[Test] actual value:<'A'> should not be:<uppercase>").on(new CodeToTest() {
-      public void run() {
-        new StringAssert("A").as("Test")
-                             .isNot(upperCase().as("uppercase"));
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_if_condition_is_satisfied() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new StringAssert("A").overridingErrorMessage("My custom message")
-                             .isNot(upperCase());
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_condition_is_satisfied() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new StringAssert("A").as("Test")
-                             .overridingErrorMessage("My custom message")
-                             .isNot(upperCase());
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_condition_if_condition_is_satisfied() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new StringAssert("A").overridingErrorMessage("My custom message")
-                             .isNot(upperCase().as("uppercase"));
-      }
-    });
+  protected String notNullValue() {
+    return notNullValue;
   }
 }
