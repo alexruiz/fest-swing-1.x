@@ -23,7 +23,7 @@ import org.junit.BeforeClass;
  * @author Ansgar Konermann
  * @author Alex Ruiz
  */
-public class FloatAssert_isNotNull_Test extends GenericAssert_isNotNull_TestBase<Float> {
+public class FloatAssert_isNotNull_Test extends GenericAssert_isNotNull_TestCase<Float> {
 
   private static Float notNullValue;
 

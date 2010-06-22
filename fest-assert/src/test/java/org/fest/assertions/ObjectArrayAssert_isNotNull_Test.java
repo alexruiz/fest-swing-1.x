@@ -24,7 +24,7 @@ import org.junit.BeforeClass;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class ObjectArrayAssert_isNotNull_Test extends GenericAssert_isNotNull_TestBase<Object[]> {
+public class ObjectArrayAssert_isNotNull_Test extends GenericAssert_isNotNull_TestCase<Object[]> {
 
   private static Object[] notNullValue;
 

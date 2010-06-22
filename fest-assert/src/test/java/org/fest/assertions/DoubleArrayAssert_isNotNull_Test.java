@@ -24,7 +24,7 @@ import org.junit.BeforeClass;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class DoubleArrayAssert_isNotNull_Test extends GenericAssert_isNotNull_TestBase<double[]> {
+public class DoubleArrayAssert_isNotNull_Test extends GenericAssert_isNotNull_TestCase<double[]> {
 
   private static double[] notNullValue;
 

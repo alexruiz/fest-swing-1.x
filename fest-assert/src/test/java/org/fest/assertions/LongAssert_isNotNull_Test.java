@@ -23,7 +23,7 @@ import org.junit.BeforeClass;
  * @author Ansgar Konermann
  * @author Alex Ruiz
  */
-public class LongAssert_isNotNull_Test extends GenericAssert_isNotNull_TestBase<Long> {
+public class LongAssert_isNotNull_Test extends GenericAssert_isNotNull_TestCase<Long> {
 
   private static Long notNullValue;
 

@@ -23,7 +23,7 @@ import org.junit.BeforeClass;
  * @author Ansgar Konermann
  * @author Alex Ruiz
  */
-public class CharAssert_isNotNull_Test extends GenericAssert_isNotNull_TestBase<Character> {
+public class CharAssert_isNotNull_Test extends GenericAssert_isNotNull_TestCase<Character> {
 
   private static Character notNullValue;
 

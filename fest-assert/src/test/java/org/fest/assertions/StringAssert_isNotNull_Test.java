@@ -23,7 +23,7 @@ import org.junit.BeforeClass;
  * @author David DIDIER
  * @author Alex Ruiz
  */
-public class StringAssert_isNotNull_Test extends GenericAssert_isNotNull_TestBase<String> {
+public class StringAssert_isNotNull_Test extends GenericAssert_isNotNull_TestCase<String> {
 
   private static String notNullValue;
 

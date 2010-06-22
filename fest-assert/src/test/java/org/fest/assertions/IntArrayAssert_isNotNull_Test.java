@@ -24,7 +24,7 @@ import org.junit.BeforeClass;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class IntArrayAssert_isNotNull_Test extends GenericAssert_isNotNull_TestBase<int[]> {
+public class IntArrayAssert_isNotNull_Test extends GenericAssert_isNotNull_TestCase<int[]> {
 
   private static int[] notNullValue;
 

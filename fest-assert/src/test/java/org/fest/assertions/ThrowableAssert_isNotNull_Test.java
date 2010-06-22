@@ -22,7 +22,7 @@ import org.junit.BeforeClass;
  * @author David DIDIER
  * @author Alex Ruiz
  */
-public class ThrowableAssert_isNotNull_Test extends GenericAssert_isNotNull_TestBase<Throwable> {
+public class ThrowableAssert_isNotNull_Test extends GenericAssert_isNotNull_TestCase<Throwable> {
 
   private static Throwable notNullValue;
 

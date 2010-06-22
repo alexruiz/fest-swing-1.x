@@ -24,7 +24,7 @@ import org.junit.BeforeClass;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class ByteArrayAssert_isNotNull_Test extends GenericAssert_isNotNull_TestBase<byte[]> {
+public class ByteArrayAssert_isNotNull_Test extends GenericAssert_isNotNull_TestCase<byte[]> {
 
   private static byte[] notNullValue;
 

@@ -27,7 +27,7 @@ import org.junit.BeforeClass;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class CollectionAssert_isNotNull_Test extends GenericAssert_isNotNull_TestBase<Collection<?>> {
+public class CollectionAssert_isNotNull_Test extends GenericAssert_isNotNull_TestCase<Collection<?>> {
 
   private static Collection<?> notNullValue;
 

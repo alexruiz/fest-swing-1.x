@@ -23,7 +23,7 @@ import org.junit.BeforeClass;
  * @author Ansgar Konermann
  * @author Alex Ruiz
  */
-public class IntAssert_isNotNull_Test extends GenericAssert_isNotNull_TestBase<Integer> {
+public class IntAssert_isNotNull_Test extends GenericAssert_isNotNull_TestCase<Integer> {
 
   private static Integer notNullValue;
 

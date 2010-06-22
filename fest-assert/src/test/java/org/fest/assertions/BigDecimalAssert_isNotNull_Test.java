@@ -28,7 +28,7 @@ import org.junit.BeforeClass;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class BigDecimalAssert_isNotNull_Test extends GenericAssert_isNotNull_TestBase<BigDecimal> {
+public class BigDecimalAssert_isNotNull_Test extends GenericAssert_isNotNull_TestCase<BigDecimal> {
 
   private static BigDecimal notNullValue;
 

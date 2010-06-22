@@ -26,7 +26,7 @@ import org.junit.BeforeClass;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class ImageAssert_isNotNull_Test extends GenericAssert_isNotNull_TestBase<BufferedImage> {
+public class ImageAssert_isNotNull_Test extends GenericAssert_isNotNull_TestCase<BufferedImage> {
 
   private static BufferedImage notNullValue;
 

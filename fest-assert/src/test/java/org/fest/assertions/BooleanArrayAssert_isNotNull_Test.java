@@ -24,7 +24,7 @@ import org.junit.BeforeClass;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class BooleanArrayAssert_isNotNull_Test extends GenericAssert_isNotNull_TestBase<boolean[]> {
+public class BooleanArrayAssert_isNotNull_Test extends GenericAssert_isNotNull_TestCase<boolean[]> {
 
   private static boolean[] notNullValue;
 

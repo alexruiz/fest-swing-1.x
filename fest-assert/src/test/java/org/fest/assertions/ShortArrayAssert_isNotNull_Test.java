@@ -24,7 +24,7 @@ import org.junit.BeforeClass;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class ShortArrayAssert_isNotNull_Test extends GenericAssert_isNotNull_TestBase<short[]> {
+public class ShortArrayAssert_isNotNull_Test extends GenericAssert_isNotNull_TestCase<short[]> {
 
   private static short[] notNullValue;
 

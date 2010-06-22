@@ -25,7 +25,7 @@ import org.junit.BeforeClass;
  *
  * @author Alex Ruiz
  */
-public class ListAssert_isNotNull_Test extends GenericAssert_isNotNull_TestBase<List<?>> {
+public class ListAssert_isNotNull_Test extends GenericAssert_isNotNull_TestCase<List<?>> {
 
   private static List<?> notNullValue;
 

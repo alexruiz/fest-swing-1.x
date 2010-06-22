@@ -24,7 +24,7 @@ import org.junit.BeforeClass;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class FloatArrayAssert_isNotNull_Test extends GenericAssert_isNotNull_TestBase<float[]> {
+public class FloatArrayAssert_isNotNull_Test extends GenericAssert_isNotNull_TestCase<float[]> {
 
   private static float[] notNullValue;
 

@@ -24,7 +24,7 @@ import org.junit.BeforeClass;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class CharArrayAssert_isNotNull_Test extends GenericAssert_isNotNull_TestBase<char[]> {
+public class CharArrayAssert_isNotNull_Test extends GenericAssert_isNotNull_TestCase<char[]> {
 
   private static char[] notNullValue;
 

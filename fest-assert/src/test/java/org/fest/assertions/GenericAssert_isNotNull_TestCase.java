@@ -33,7 +33,7 @@ import org.junit.Test;
  * @author Ansgar Konermann
  * @author Alex Ruiz
  */
-public abstract class GenericAssert_isNotNull_TestBase<T> extends GenericAssert_TestCase<T> {
+public abstract class GenericAssert_isNotNull_TestCase<T> extends GenericAssert_TestCase<T> {
 
   private GenericAssert<T> assertions;
 
@@ -70,7 +70,8 @@ public abstract class GenericAssert_isNotNull_TestBase<T> extends GenericAssert_
   public final void should_fail_with_custom_message_if_actual_is_null() {
     expectAssertionError("My custom message").on(new CodeToTest() {
       public void run() {
-        assertions.overridingErrorMessage("My custom message").isNotNull();
+        assertions.overridingErrorMessage("My custom message")
+                  .isNotNull();
       }
     });
   }
@@ -80,7 +81,8 @@ public abstract class GenericAssert_isNotNull_TestBase<T> extends GenericAssert_
     expectAssertionError("My custom message").on(new CodeToTest() {
       public void run() {
         assertions.as("A Test")
-                  .overridingErrorMessage("My custom message").isNotNull();
+                  .overridingErrorMessage("My custom message")
+                  .isNotNull();
       }
     });
   }
