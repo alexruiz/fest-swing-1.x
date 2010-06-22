@@ -14,13 +14,9 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.CommonFailures.expectErrorIfActualArrayIsNull;
-import static org.fest.assertions.CommonFailures.expectErrorWithDescriptionIfActualArrayIsNull;
-import static org.fest.assertions.EmptyArrays.emptyFloatArray;
-import static org.fest.test.ExpectedFailure.expectAssertionError;
+import static org.fest.assertions.ArrayFactory.floatArray;
 
-import org.fest.test.CodeToTest;
-import org.junit.Test;
+import org.junit.BeforeClass;
 
 /**
  * Tests for <code>{@link FloatArrayAssert#isNotNull()}</code>.
@@ -28,50 +24,20 @@ import org.junit.Test;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class FloatArrayAssert_isNotNull_Test implements GenericAssert_isNotNull_TestCase {
+public class FloatArrayAssert_isNotNull_Test extends GenericAssert_isNotNull_TestBase<float[]> {
 
-  @Test
-  public void should_pass_if_actual_is_not_null() {
-    new FloatArrayAssert(emptyFloatArray()).isNotNull();
+  private static float[] notNullValue;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    notNullValue = floatArray(6f);
   }
 
-  @Test
-  public void should_fail_if_actual_is_null() {
-    expectErrorIfActualArrayIsNull(new CodeToTest() {
-      public void run() {
-        new FloatArrayAssert(null).isNotNull();
-      }
-    });
+  protected FloatArrayAssert assertionsFor(float[] actual) {
+    return new FloatArrayAssert(actual);
   }
 
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_is_null() {
-    expectErrorWithDescriptionIfActualArrayIsNull(new CodeToTest() {
-      public void run() {
-        new FloatArrayAssert(null).as("A Test")
-                                  .isNotNull();
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_if_actual_is_null() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new FloatArrayAssert(null).overridingErrorMessage("My custom message")
-                                  .isNotNull();
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_is_null() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new FloatArrayAssert(null).as("A Test")
-                                  .overridingErrorMessage("My custom message")
-                                  .isNotNull();
-      }
-    });
+  protected float[] notNullValue() {
+    return notNullValue;
   }
 }

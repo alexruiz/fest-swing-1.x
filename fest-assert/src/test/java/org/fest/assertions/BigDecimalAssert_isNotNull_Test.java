@@ -14,13 +14,11 @@
  */
 package org.fest.assertions;
 
-import static java.math.BigDecimal.ZERO;
-import static org.fest.assertions.CommonFailures.expectErrorIfActualIsNull;
-import static org.fest.assertions.CommonFailures.expectErrorWithDescriptionIfActualIsNull;
-import static org.fest.test.ExpectedFailure.expectAssertionError;
+import static org.fest.assertions.BigDecimals.eight;
 
-import org.fest.test.CodeToTest;
-import org.junit.Test;
+import java.math.BigDecimal;
+
+import org.junit.BeforeClass;
 
 /**
  * Tests for <code>{@link BigDecimalAssert#isNotNull()}</code>.
@@ -30,50 +28,20 @@ import org.junit.Test;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class BigDecimalAssert_isNotNull_Test implements GenericAssert_isNotNull_TestCase {
+public class BigDecimalAssert_isNotNull_Test extends GenericAssert_isNotNull_TestBase<BigDecimal> {
 
-  @Test
-  public void should_pass_if_actual_is_not_null() {
-    new BigDecimalAssert(ZERO).isNotNull();
+  private static BigDecimal notNullValue;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    notNullValue = eight();
   }
 
-  @Test
-  public void should_fail_if_actual_is_null() {
-    expectErrorIfActualIsNull(new CodeToTest() {
-      public void run() {
-        new BigDecimalAssert(null).isNotNull();
-      }
-    });
+  protected BigDecimalAssert assertionsFor(BigDecimal actual) {
+    return new BigDecimalAssert(actual);
   }
 
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_is_null() {
-    expectErrorWithDescriptionIfActualIsNull(new CodeToTest() {
-      public void run() {
-        new BigDecimalAssert(null).as("A Test")
-                                  .isNotNull();
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_if_actual_is_null() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new BigDecimalAssert(null).overridingErrorMessage("My custom message")
-                                  .isNotNull();
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_is_null() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new BigDecimalAssert(null).as("A Test")
-                                  .overridingErrorMessage("My custom message")
-                                  .isNotNull();
-      }
-    });
+  protected BigDecimal notNullValue() {
+    return notNullValue;
   }
 }

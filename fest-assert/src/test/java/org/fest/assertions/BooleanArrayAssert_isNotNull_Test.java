@@ -14,13 +14,9 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.CommonFailures.expectErrorIfActualArrayIsNull;
-import static org.fest.assertions.CommonFailures.expectErrorWithDescriptionIfActualArrayIsNull;
-import static org.fest.assertions.EmptyArrays.emptyBooleanArray;
-import static org.fest.test.ExpectedFailure.expectAssertionError;
+import static org.fest.assertions.ArrayFactory.booleanArray;
 
-import org.fest.test.CodeToTest;
-import org.junit.Test;
+import org.junit.BeforeClass;
 
 /**
  * Tests for <code>{@link BooleanArrayAssert#isNotNull()}</code>.
@@ -28,51 +24,20 @@ import org.junit.Test;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class BooleanArrayAssert_isNotNull_Test implements GenericAssert_isNotNull_TestCase {
+public class BooleanArrayAssert_isNotNull_Test extends GenericAssert_isNotNull_TestBase<boolean[]> {
 
-  @Test
-  public void should_pass_if_actual_is_not_null() {
-    new BooleanArrayAssert(emptyBooleanArray()).isNotNull();
+  private static boolean[] notNullValue;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    notNullValue = booleanArray(true);
   }
 
-  @Test
-  public void should_fail_if_actual_is_null() {
-    expectErrorIfActualArrayIsNull(new CodeToTest() {
-      public void run() {
-        new BooleanArrayAssert(null).isNotNull();
-      }
-    });
+  protected BooleanArrayAssert assertionsFor(boolean[] actual) {
+    return new BooleanArrayAssert(actual);
   }
 
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_is_null() {
-    expectErrorWithDescriptionIfActualArrayIsNull(new CodeToTest() {
-      public void run() {
-        new BooleanArrayAssert(null).as("A Test")
-                                    .isNotNull();
-      }
-    });
+  protected boolean[] notNullValue() {
+    return notNullValue;
   }
-
-  @Test
-  public void should_fail_with_custom_message_if_actual_is_null() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new BooleanArrayAssert(null).overridingErrorMessage("My custom message")
-                                    .isNotNull();
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_is_null() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new BooleanArrayAssert(null).as("A Test")
-                                    .overridingErrorMessage("My custom message")
-                                    .isNotNull();
-      }
-    });
-  }
-
 }

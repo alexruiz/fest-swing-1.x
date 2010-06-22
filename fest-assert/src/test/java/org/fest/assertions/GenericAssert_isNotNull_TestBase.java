@@ -33,8 +33,7 @@ import org.junit.Test;
  * @author Ansgar Konermann
  * @author Alex Ruiz
  */
-public abstract class GenericAssert_isNotNull_TestBase<T> extends GenericAssert_TestCase<T> implements
-    GenericAssert_isNotNull_TestCase {
+public abstract class GenericAssert_isNotNull_TestBase<T> extends GenericAssert_TestCase<T> {
 
   private GenericAssert<T> assertions;
 

@@ -15,62 +15,30 @@
 package org.fest.assertions;
 
 import static java.util.Collections.emptyList;
-import static org.fest.assertions.CommonFailures.expectErrorIfActualListIsNull;
-import static org.fest.assertions.CommonFailures.expectErrorWithDescriptionIfActualListIsNull;
-import static org.fest.test.ExpectedFailure.expectAssertionError;
 
-import org.fest.test.CodeToTest;
-import org.junit.Test;
+import java.util.List;
+
+import org.junit.BeforeClass;
 
 /**
  * Tests for <code>{@link ListAssert#isNotNull()}</code>.
  *
  * @author Alex Ruiz
  */
-public class ListAssert_isNotNull_Test implements GenericAssert_isNotNull_TestCase {
+public class ListAssert_isNotNull_Test extends GenericAssert_isNotNull_TestBase<List<?>> {
 
-  @Test
-  public void should_pass_if_actual_is_not_null() {
-    new ListAssert(emptyList()).isNotNull();
+  private static List<?> notNullValue;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    notNullValue = emptyList();
   }
 
-  @Test
-  public void should_fail_if_actual_is_null() {
-    expectErrorIfActualListIsNull(new CodeToTest() {
-      public void run() {
-        new ListAssert(null).isNotNull();
-      }
-    });
+  protected ListAssert assertionsFor(List<?> actual) {
+    return new ListAssert(actual);
   }
 
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_is_null() {
-    expectErrorWithDescriptionIfActualListIsNull(new CodeToTest() {
-      public void run() {
-        new ListAssert(null).as("A Test")
-                            .isNotNull();
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_if_actual_is_null() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new ListAssert(null).overridingErrorMessage("My custom message")
-                            .isNotNull();
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_is_null() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new ListAssert(null).as("A Test")
-                            .overridingErrorMessage("My custom message")
-                            .isNotNull();
-      }
-    });
+  protected List<?> notNullValue() {
+    return notNullValue;
   }
 }

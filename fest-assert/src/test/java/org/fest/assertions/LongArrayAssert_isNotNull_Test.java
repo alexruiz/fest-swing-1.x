@@ -14,13 +14,9 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.CommonFailures.expectErrorIfActualArrayIsNull;
-import static org.fest.assertions.CommonFailures.expectErrorWithDescriptionIfActualArrayIsNull;
-import static org.fest.assertions.EmptyArrays.emptyLongArray;
-import static org.fest.test.ExpectedFailure.expectAssertionError;
+import static org.fest.assertions.ArrayFactory.longArray;
 
-import org.fest.test.CodeToTest;
-import org.junit.Test;
+import org.junit.BeforeClass;
 
 /**
  * Tests for <code>{@link LongArrayAssert#isNotNull()}</code>.
@@ -28,50 +24,20 @@ import org.junit.Test;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class LongArrayAssert_isNotNull_Test implements GenericAssert_isNotNull_TestCase {
+public class LongArrayAssert_isNotNull_Test extends GenericAssert_isNotNull_TestBase<long[]> {
 
-  @Test
-  public void should_pass_if_actual_is_not_null() {
-    new LongArrayAssert(emptyLongArray()).isNotNull();
+  private static long[] notNullValue;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    notNullValue = longArray(6, 8);
   }
 
-  @Test
-  public void should_fail_if_actual_is_null() {
-    expectErrorIfActualArrayIsNull(new CodeToTest() {
-      public void run() {
-        new LongArrayAssert(null).isNotNull();
-      }
-    });
+  protected LongArrayAssert assertionsFor(long[] actual) {
+    return new LongArrayAssert(actual);
   }
 
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_is_null() {
-    expectErrorWithDescriptionIfActualArrayIsNull(new CodeToTest() {
-      public void run() {
-        new LongArrayAssert(null).as("A Test")
-                                 .isNotNull();
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_if_actual_is_null() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new LongArrayAssert(null).overridingErrorMessage("My custom message")
-                                 .isNotNull();
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_is_null() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new LongArrayAssert(null).as("A Test")
-                                 .overridingErrorMessage("My custom message")
-                                 .isNotNull();
-      }
-    });
+  protected long[] notNullValue() {
+    return notNullValue;
   }
 }

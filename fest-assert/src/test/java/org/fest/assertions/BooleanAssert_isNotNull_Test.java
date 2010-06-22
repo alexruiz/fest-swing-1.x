@@ -16,11 +16,9 @@
 
 package org.fest.assertions;
 
-import static org.fest.assertions.CommonFailures.*;
-import static org.fest.test.ExpectedFailure.expectAssertionError;
+import static java.lang.Boolean.TRUE;
 
-import org.fest.test.CodeToTest;
-import org.junit.Test;
+import org.junit.BeforeClass;
 
 /**
  * Tests for <code>{@link BooleanAssert#isNotNull()}</code>.
@@ -28,51 +26,20 @@ import org.junit.Test;
  * @author Ansgar Konermann
  * @author Alex Ruiz
  */
-public class BooleanAssert_isNotNull_Test implements GenericAssert_isNotNull_TestCase {
+public class BooleanAssert_isNotNull_Test extends GenericAssert_isNotNull_TestBase<Boolean> {
 
-  @Test
-  public void should_pass_if_actual_is_not_null() {
-    new BooleanAssert(true).isNotNull();
+  private static Boolean notNullValue;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    notNullValue = TRUE;
   }
 
-  @Test
-  public void should_fail_if_actual_is_null() {
-    expectErrorIfActualIsNull(new CodeToTest() {
-      public void run() {
-        new BooleanAssert(null).isNotNull();
-      }
-    });
+  protected BooleanAssert assertionsFor(Boolean actual) {
+    return new BooleanAssert(actual);
   }
 
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_is_null() {
-    expectErrorWithDescriptionIfActualIsNull(new CodeToTest() {
-      public void run() {
-        new BooleanAssert(null).as("A Test")
-                               .isNotNull();
-      }
-    });
+  protected Boolean notNullValue() {
+    return notNullValue;
   }
-
-  @Test
-  public void should_fail_with_custom_message_if_actual_is_null() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new BooleanAssert(null).overridingErrorMessage("My custom message")
-                               .isNotNull();
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_is_null() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new BooleanAssert(null).as("A Test")
-                               .overridingErrorMessage("My custom message")
-                               .isNotNull();
-      }
-    });
-  }
-
 }

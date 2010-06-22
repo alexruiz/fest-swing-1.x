@@ -14,13 +14,9 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.CommonFailures.expectErrorIfActualArrayIsNull;
-import static org.fest.assertions.CommonFailures.expectErrorWithDescriptionIfActualArrayIsNull;
-import static org.fest.assertions.EmptyArrays.emptyShortArray;
-import static org.fest.test.ExpectedFailure.expectAssertionError;
+import static org.fest.assertions.ArrayFactory.shortArray;
 
-import org.fest.test.CodeToTest;
-import org.junit.Test;
+import org.junit.BeforeClass;
 
 /**
  * Tests for <code>{@link ShortArrayAssert#isNotNull()}</code>.
@@ -28,50 +24,20 @@ import org.junit.Test;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class ShortArrayAssert_isNotNull_Test implements GenericAssert_isNotNull_TestCase {
+public class ShortArrayAssert_isNotNull_Test extends GenericAssert_isNotNull_TestBase<short[]> {
 
-  @Test
-  public void should_pass_if_actual_is_not_null() {
-    new ShortArrayAssert(emptyShortArray()).isNotNull();
+  private static short[] notNullValue;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    notNullValue = shortArray(8, 6);
   }
 
-  @Test
-  public void should_fail_if_actual_is_null() {
-    expectErrorIfActualArrayIsNull(new CodeToTest() {
-      public void run() {
-        new ShortArrayAssert(null).isNotNull();
-      }
-    });
+  protected ShortArrayAssert assertionsFor(short[] actual) {
+    return new ShortArrayAssert(actual);
   }
 
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_is_null() {
-    expectErrorWithDescriptionIfActualArrayIsNull(new CodeToTest() {
-      public void run() {
-        new ShortArrayAssert(null).as("A Test")
-                                  .isNotNull();
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_if_actual_is_null() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new ShortArrayAssert(null).overridingErrorMessage("My custom message")
-                                  .isNotNull();
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_is_null() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new ShortArrayAssert(null).as("A Test")
-                                  .overridingErrorMessage("My custom message")
-                                  .isNotNull();
-      }
-    });
+  protected short[] notNullValue() {
+    return notNullValue;
   }
 }

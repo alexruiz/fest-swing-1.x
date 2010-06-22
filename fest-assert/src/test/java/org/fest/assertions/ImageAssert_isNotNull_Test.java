@@ -14,12 +14,11 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.CommonFailures.*;
 import static org.fest.assertions.Images.fivePixelBlueImage;
-import static org.fest.test.ExpectedFailure.expectAssertionError;
 
-import org.fest.test.CodeToTest;
-import org.junit.Test;
+import java.awt.image.BufferedImage;
+
+import org.junit.BeforeClass;
 
 /**
  * Tests for <code>{@link ImageAssert#isNotNull()}</code>.
@@ -27,49 +26,20 @@ import org.junit.Test;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class ImageAssert_isNotNull_Test implements GenericAssert_isNotNull_TestCase {
+public class ImageAssert_isNotNull_Test extends GenericAssert_isNotNull_TestBase<BufferedImage> {
 
-  @Test
-  public void should_pass_if_actual_is_not_null() {
-    new ImageAssert(fivePixelBlueImage()).isNotNull();
+  private static BufferedImage notNullValue;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    notNullValue = fivePixelBlueImage();
   }
 
-  @Test
-  public void should_fail_if_actual_is_null() {
-    expectErrorIfActualIsNull(new CodeToTest() {
-      public void run() {
-        new ImageAssert(null).isNotNull();
-      }
-    });
+  protected ImageAssert assertionsFor(BufferedImage actual) {
+    return new ImageAssert(actual);
   }
 
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_is_null() {
-    expectErrorWithDescriptionIfActualIsNull(new CodeToTest() {
-      public void run() {
-        new ImageAssert(null).as("A Test").isNotNull();
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_if_actual_is_null() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new ImageAssert(null).overridingErrorMessage("My custom message")
-                             .isNotNull();
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_is_null() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new ImageAssert(null).as("A Test")
-                             .overridingErrorMessage("My custom message")
-                             .isNotNull();
-      }
-    });
+  protected BufferedImage notNullValue() {
+    return notNullValue;
   }
 }
