@@ -16,11 +16,8 @@
 package org.fest.assertions;
 
 import static java.lang.Boolean.*;
-import static org.fest.test.ExpectedFailure.expectAssertionError;
 
-import org.fest.test.CodeToTest;
 import org.junit.BeforeClass;
-import org.junit.Test;
 
 /**
  * Tests for <code>{@link BooleanAssert#isSameAs(Boolean)}</code>.
@@ -28,57 +25,26 @@ import org.junit.Test;
  * @author Ansgar Konermann
  * @author Alex Ruiz
  */
-public class BooleanAssert_isSameAs_Test implements GenericAssert_isSameAs_TestCase {
+public class BooleanAssert_isSameAs_Test extends GenericAssert_isSameAs_TestBase<Boolean> {
 
-  private static Boolean value;
+  private static Boolean notNullValue;
+  private static Boolean notSameValue;
 
   @BeforeClass
   public static void setUpOnce() {
-    value = TRUE;
+    notNullValue = TRUE;
+    notSameValue = FALSE;
   }
 
-  @Test
-  public void should_pass_if_actual_and_expected_are_same() {
-    new BooleanAssert(value).isSameAs(value);
+  protected BooleanAssert assertionsFor(Boolean actual) {
+    return new BooleanAssert(actual);
   }
 
-  @Test
-  public void should_fail_if_actual_and_expected_are_not_same() {
-    expectAssertionError("expected same instance but found:<true> and:<false>").on(new CodeToTest() {
-      public void run() {
-        new BooleanAssert(value).isSameAs(FALSE);
-      }
-    });
+  protected Boolean notNullValue() {
+    return notNullValue;
   }
 
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_and_expected_are_not_same() {
-    expectAssertionError("[A Test] expected same instance but found:<true> and:<false>").on(new CodeToTest() {
-      public void run() {
-        new BooleanAssert(value).as("A Test")
-                                .isSameAs(FALSE);
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_if_actual_and_expected_are_not_same() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new BooleanAssert(value).overridingErrorMessage("My custom message")
-                                .isSameAs(FALSE);
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_and_expected_are_not_same() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new BooleanAssert(value).as("A Test")
-                                .overridingErrorMessage("My custom message")
-                                .isSameAs(FALSE);
-      }
-    });
+  protected Boolean notSameValue() {
+    return notSameValue;
   }
 }

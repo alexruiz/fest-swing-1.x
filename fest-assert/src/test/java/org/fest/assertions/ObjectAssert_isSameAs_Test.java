@@ -14,11 +14,7 @@
  */
 package org.fest.assertions;
 
-import static org.fest.test.ExpectedFailure.expectAssertionError;
-
-import org.fest.test.CodeToTest;
 import org.junit.BeforeClass;
-import org.junit.Test;
 
 /**
  * Tests for <code>{@link ObjectAssert#isSameAs(Object)}</code>.
@@ -26,57 +22,26 @@ import org.junit.Test;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class ObjectAssert_isSameAs_Test implements GenericAssert_isSameAs_TestCase {
+public class ObjectAssert_isSameAs_Test extends GenericAssert_isSameAs_TestBase<Object> {
 
-  private static Object actual;
+  private static Object notNullValue;
+  private static Object notSameValue;
 
   @BeforeClass
   public static void setUpOnce() {
-    actual = "Leia";
+    notNullValue = 6;
+    notSameValue = 8;
   }
 
-  @Test
-  public void should_pass_if_actual_and_expected_are_same() {
-    new ObjectAssert(actual).isSameAs(actual);
+  protected ObjectAssert assertionsFor(Object actual) {
+    return new ObjectAssert(actual);
   }
 
-  @Test
-  public void should_fail_if_actual_and_expected_are_not_same() {
-    expectAssertionError("expected same instance but found:<'Leia'> and:<8>").on(new CodeToTest() {
-      public void run() {
-        new ObjectAssert(actual).isSameAs(8);
-      }
-    });
+  protected Object notNullValue() {
+    return notNullValue;
   }
 
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_and_expected_are_not_same() {
-    expectAssertionError("[A Test] expected same instance but found:<'Leia'> and:<8>").on(new CodeToTest() {
-      public void run() {
-        new ObjectAssert(actual).as("A Test")
-                                .isSameAs(8);
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_if_actual_and_expected_are_not_same() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new ObjectAssert(actual).overridingErrorMessage("My custom message")
-                                .isSameAs(8);
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_and_expected_are_not_same() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new ObjectAssert(actual).as("A Test")
-                                .overridingErrorMessage("My custom message")
-                                .isSameAs(8);
-      }
-    });
+  protected Object notSameValue() {
+    return notSameValue;
   }
 }

@@ -14,13 +14,9 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.EmptyArrays.emptyByteArray;
 import static org.fest.assertions.ArrayFactory.byteArray;
-import static org.fest.test.ExpectedFailure.expectAssertionError;
 
-import org.fest.test.CodeToTest;
 import org.junit.BeforeClass;
-import org.junit.Test;
 
 /**
  * Tests for <code>{@link ByteArrayAssert#isSameAs(byte[])}</code>.
@@ -28,57 +24,26 @@ import org.junit.Test;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class ByteArrayAssert_isSameAs_Test implements GenericAssert_isSameAs_TestCase {
+public class ByteArrayAssert_isSameAs_Test extends GenericAssert_isSameAs_TestBase<byte[]> {
 
-  private static byte[] array;
+  private static byte[] notNullValue;
+  private static byte[] notSameValue;
 
   @BeforeClass
   public static void setUpOnce() {
-    array = byteArray(8, 6);
+    notNullValue = byteArray(6, 8);
+    notSameValue = byteArray(6);
   }
 
-  @Test
-  public void should_pass_if_actual_and_expected_are_same() {
-    new ByteArrayAssert(array).isSameAs(array);
+  protected ByteArrayAssert assertionsFor(byte[] actual) {
+    return new ByteArrayAssert(actual);
   }
 
-  @Test
-  public void should_fail_if_actual_and_expected_are_not_same() {
-    expectAssertionError("expected same instance but found:<[8, 6]> and:<[]>").on(new CodeToTest() {
-      public void run() {
-        new ByteArrayAssert(array).isSameAs(emptyByteArray());
-      }
-    });
+  protected byte[] notNullValue() {
+    return notNullValue;
   }
 
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_and_expected_are_not_same() {
-    expectAssertionError("[A Test] expected same instance but found:<[8, 6]> and:<[]>").on(new CodeToTest() {
-      public void run() {
-        new ByteArrayAssert(array).as("A Test")
-                                  .isSameAs(emptyByteArray());
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_if_actual_and_expected_are_not_same() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new ByteArrayAssert(array).overridingErrorMessage("My custom message")
-                                  .isSameAs(emptyByteArray());
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_and_expected_are_not_same() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new ByteArrayAssert(array).as("A Test")
-                                  .overridingErrorMessage("My custom message")
-                                  .isSameAs(emptyByteArray());
-      }
-    });
+  protected byte[] notSameValue() {
+    return notSameValue;
   }
 }

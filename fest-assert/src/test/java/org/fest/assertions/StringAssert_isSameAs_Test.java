@@ -14,10 +14,7 @@
  */
 package org.fest.assertions;
 
-import static org.fest.test.ExpectedFailure.expectAssertionError;
-
-import org.fest.test.CodeToTest;
-import org.junit.Test;
+import org.junit.BeforeClass;
 
 /**
  * Tests for <code>{@link StringAssert#isSameAs(String)}</code>.
@@ -26,51 +23,26 @@ import org.junit.Test;
  * @author David DIDIER
  * @author Alex Ruiz
  */
-public class StringAssert_isSameAs_Test implements GenericAssert_isSameAs_TestCase {
+public class StringAssert_isSameAs_Test extends GenericAssert_isSameAs_TestBase<String> {
 
-  @Test
-  public void should_pass_if_actual_and_expected_are_same() {
-    String jedi = "Yoda";
-    new StringAssert(jedi).isSameAs(jedi);
+  private static String notNullValue;
+  private static String notSameValue;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    notNullValue = "Leia";
+    notSameValue = "Luke";
   }
 
-  @Test
-  public void should_fail_if_actual_and_expected_are_not_same() {
-    expectAssertionError("expected same instance but found:<'Leia'> and:<''>").on(new CodeToTest() {
-      public void run() {
-        new StringAssert("Leia").isSameAs("");
-      }
-    });
+  protected StringAssert assertionsFor(String actual) {
+    return new StringAssert(actual);
   }
 
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_and_expected_are_not_same() {
-    expectAssertionError("[A Test] expected same instance but found:<'Leia'> and:<''>").on(new CodeToTest() {
-      public void run() {
-        new StringAssert("Leia").as("A Test")
-                                .isSameAs("");
-      }
-    });
+  protected String notNullValue() {
+    return notNullValue;
   }
 
-  @Test
-  public void should_fail_with_custom_message_if_actual_and_expected_are_not_same() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new StringAssert("Leia").overridingErrorMessage("My custom message")
-                                .isSameAs("");
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_and_expected_are_not_same() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new StringAssert("Leia").as("A Test")
-                                .overridingErrorMessage("My custom message")
-                                .isSameAs("");
-      }
-    });
+  protected String notSameValue() {
+    return notSameValue;
   }
 }

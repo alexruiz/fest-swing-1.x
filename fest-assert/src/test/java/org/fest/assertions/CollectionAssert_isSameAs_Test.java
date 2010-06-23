@@ -15,14 +15,11 @@
  */
 package org.fest.assertions;
 
-import static java.util.Collections.emptyList;
-import static org.fest.test.ExpectedFailure.expectAssertionError;
 import static org.fest.util.Collections.list;
 
 import java.util.Collection;
-import org.fest.test.CodeToTest;
+
 import org.junit.BeforeClass;
-import org.junit.Test;
 
 /**
  * Tests for <code>{@link CollectionAssert#isSameAs(Collection)}</code>.
@@ -30,57 +27,26 @@ import org.junit.Test;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class CollectionAssert_isSameAs_Test implements GenericAssert_isSameAs_TestCase {
+public class CollectionAssert_isSameAs_Test extends GenericAssert_isSameAs_TestBase<Collection<?>> {
 
-  private static Collection<String> collection;
+  private static Collection<?> notNullValue;
+  private static Collection<?> notSameValue;
 
   @BeforeClass
   public static void setUpOnce() {
-    collection = list("Leia");
+    notNullValue = list("Leia");
+    notSameValue = list("Luke");
   }
 
-  @Test
-  public void should_pass_if_actual_and_expected_are_same() {
-    new CollectionAssert(collection).isSameAs(collection);
+  protected CollectionAssert assertionsFor(Collection<?> actual) {
+    return new CollectionAssert(actual);
   }
 
-  @Test
-  public void should_fail_if_actual_and_expected_are_not_same() {
-    expectAssertionError("expected same instance but found:<['Leia']> and:<[]>").on(new CodeToTest() {
-      public void run() {
-        new CollectionAssert(collection).isSameAs(emptyList());
-      }
-    });
+  protected Collection<?> notNullValue() {
+    return notNullValue;
   }
 
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_and_expected_are_not_same() {
-    expectAssertionError("[A Test] expected same instance but found:<['Leia']> and:<[]>").on(new CodeToTest() {
-      public void run() {
-        new CollectionAssert(collection).as("A Test")
-                                        .isSameAs(emptyList());
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_if_actual_and_expected_are_not_same() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new CollectionAssert(collection).overridingErrorMessage("My custom message")
-                                        .isSameAs(emptyList());
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_and_expected_are_not_same() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new CollectionAssert(collection).as("A Test")
-                                        .overridingErrorMessage("My custom message")
-                                        .isSameAs(emptyList());
-      }
-    });
+  protected Collection<?> notSameValue() {
+    return notSameValue;
   }
 }

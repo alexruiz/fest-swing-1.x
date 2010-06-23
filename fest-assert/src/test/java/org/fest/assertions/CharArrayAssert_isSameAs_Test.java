@@ -14,13 +14,9 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.EmptyArrays.emptyCharArray;
 import static org.fest.assertions.ArrayFactory.charArray;
-import static org.fest.test.ExpectedFailure.expectAssertionError;
 
-import org.fest.test.CodeToTest;
 import org.junit.BeforeClass;
-import org.junit.Test;
 
 /**
  * Tests for <code>{@link CharArrayAssert#isSameAs(char[])}</code>.
@@ -28,57 +24,26 @@ import org.junit.Test;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class CharArrayAssert_isSameAs_Test implements GenericAssert_isSameAs_TestCase {
+public class CharArrayAssert_isSameAs_Test extends GenericAssert_isSameAs_TestBase<char[]> {
 
-  private static char[] array;
+  private static char[] notNullValue;
+  private static char[] notSameValue;
 
   @BeforeClass
   public static void setUpOnce() {
-    array = charArray('a', 'b');
+    notNullValue = charArray('a', 'b');
+    notSameValue = charArray('c');
   }
 
-  @Test
-  public void should_pass_if_actual_and_expected_are_same() {
-    new CharArrayAssert(array).isSameAs(array);
+  protected CharArrayAssert assertionsFor(char[] actual) {
+    return new CharArrayAssert(actual);
   }
 
-  @Test
-  public void should_fail_if_actual_and_expected_are_not_same() {
-    expectAssertionError("expected same instance but found:<[a, b]> and:<[]>").on(new CodeToTest() {
-      public void run() {
-        new CharArrayAssert(array).isSameAs(emptyCharArray());
-      }
-    });
+  protected char[] notNullValue() {
+    return notNullValue;
   }
 
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_and_expected_are_not_same() {
-    expectAssertionError("[A Test] expected same instance but found:<[a, b]> and:<[]>").on(new CodeToTest() {
-      public void run() {
-        new CharArrayAssert(array).as("A Test")
-                                  .isSameAs(emptyCharArray());
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_if_actual_and_expected_are_not_same() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new CharArrayAssert(array).overridingErrorMessage("My custom message")
-                                  .isSameAs(emptyCharArray());
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_and_expected_are_not_same() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new CharArrayAssert(array).as("A Test")
-                                  .overridingErrorMessage("My custom message")
-                                  .isSameAs(emptyCharArray());
-      }
-    });
+  protected char[] notSameValue() {
+    return notSameValue;
   }
 }

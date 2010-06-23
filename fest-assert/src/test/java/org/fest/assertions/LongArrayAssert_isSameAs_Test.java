@@ -14,13 +14,9 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.EmptyArrays.emptyLongArray;
 import static org.fest.assertions.ArrayFactory.longArray;
-import static org.fest.test.ExpectedFailure.expectAssertionError;
 
-import org.fest.test.CodeToTest;
 import org.junit.BeforeClass;
-import org.junit.Test;
 
 /**
  * Tests for <code>{@link LongArrayAssert#isSameAs(long[])}</code>.
@@ -28,57 +24,26 @@ import org.junit.Test;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class LongArrayAssert_isSameAs_Test implements GenericAssert_isSameAs_TestCase {
+public class LongArrayAssert_isSameAs_Test extends GenericAssert_isSameAs_TestBase<long[]> {
 
-  private static long[] array;
+  private static long[] notNullValue;
+  private static long[] notSameValue;
 
   @BeforeClass
   public static void setUpOnce() {
-    array = longArray(6, 8);
+    notNullValue = longArray(6, 8);
+    notSameValue = longArray(8);
   }
 
-  @Test
-  public void should_pass_if_actual_and_expected_are_same() {
-    new LongArrayAssert(array).isSameAs(array);
+  protected LongArrayAssert assertionsFor(long[] actual) {
+    return new LongArrayAssert(actual);
   }
 
-  @Test
-  public void should_fail_if_actual_and_expected_are_not_same() {
-    expectAssertionError("expected same instance but found:<[6, 8]> and:<[]>").on(new CodeToTest() {
-      public void run() {
-        new LongArrayAssert(array).isSameAs(emptyLongArray());
-      }
-    });
+  protected long[] notNullValue() {
+    return notNullValue;
   }
 
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_and_expected_are_not_same() {
-    expectAssertionError("[A Test] expected same instance but found:<[6, 8]> and:<[]>").on(new CodeToTest() {
-      public void run() {
-        new LongArrayAssert(array).as("A Test")
-                                  .isSameAs(emptyLongArray());
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_if_actual_and_expected_are_not_same() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new LongArrayAssert(array).overridingErrorMessage("My custom message")
-                                  .isSameAs(emptyLongArray());
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_and_expected_are_not_same() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new LongArrayAssert(array).as("A Test")
-                                  .overridingErrorMessage("My custom message")
-                                  .isSameAs(emptyLongArray());
-      }
-    });
+  protected long[] notSameValue() {
+    return notSameValue;
   }
 }

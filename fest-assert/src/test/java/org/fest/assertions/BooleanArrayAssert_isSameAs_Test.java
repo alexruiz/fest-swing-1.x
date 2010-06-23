@@ -14,13 +14,9 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.EmptyArrays.emptyBooleanArray;
 import static org.fest.assertions.ArrayFactory.booleanArray;
-import static org.fest.test.ExpectedFailure.expectAssertionError;
 
-import org.fest.test.CodeToTest;
 import org.junit.BeforeClass;
-import org.junit.Test;
 
 /**
  * Tests for <code>{@link BooleanArrayAssert#isSameAs(boolean[])}</code>.
@@ -28,57 +24,27 @@ import org.junit.Test;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class BooleanArrayAssert_isSameAs_Test implements GenericAssert_isSameAs_TestCase {
+public class BooleanArrayAssert_isSameAs_Test extends GenericAssert_isSameAs_TestBase<boolean[]> {
 
-  private static boolean[] array;
+  private static boolean[] notNullValue;
+  private static boolean[] notSameValue;
 
   @BeforeClass
   public static void setUpOnce() {
-    array = booleanArray(true);
+    notNullValue = booleanArray(true);
+    notSameValue = new boolean[0];
   }
 
-  @Test
-  public void should_pass_if_actual_and_expected_are_same() {
-    new BooleanArrayAssert(array).isSameAs(array);
+  protected BooleanArrayAssert assertionsFor(boolean[] actual) {
+    return new BooleanArrayAssert(actual);
   }
 
-  @Test
-  public void should_fail_if_actual_and_expected_are_not_same() {
-    expectAssertionError("expected same instance but found:<[true]> and:<[]>").on(new CodeToTest() {
-      public void run() {
-        new BooleanArrayAssert(array).isSameAs(emptyBooleanArray());
-      }
-    });
+  @Override
+  protected boolean[] notNullValue() {
+    return notNullValue;
   }
 
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_and_expected_are_not_same() {
-    expectAssertionError("[A Test] expected same instance but found:<[true]> and:<[]>").on(new CodeToTest() {
-      public void run() {
-        new BooleanArrayAssert(array).as("A Test")
-                                     .isSameAs(emptyBooleanArray());
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_if_actual_and_expected_are_not_same() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new BooleanArrayAssert(array).overridingErrorMessage("My custom message")
-                                     .isSameAs(emptyBooleanArray());
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_and_expected_are_not_same() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new BooleanArrayAssert(array).as("A Test")
-                                     .overridingErrorMessage("My custom message")
-                                     .isSameAs(emptyBooleanArray());
-      }
-    });
+  protected boolean[] notSameValue() {
+    return notSameValue;
   }
 }

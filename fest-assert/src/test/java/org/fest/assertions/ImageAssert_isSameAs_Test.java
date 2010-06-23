@@ -14,15 +14,11 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.Images.fivePixelBlueImage;
-import static org.fest.test.ExpectedFailure.expectAssertionError;
-import static org.fest.util.Strings.concat;
+import static org.fest.assertions.Images.*;
 
 import java.awt.image.BufferedImage;
 
-import org.fest.test.CodeToTest;
 import org.junit.BeforeClass;
-import org.junit.Test;
 
 /**
  * Tests for <code>{@link ImageAssert#isSameAs(BufferedImage)}</code>.
@@ -30,60 +26,26 @@ import org.junit.Test;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class ImageAssert_isSameAs_Test implements GenericAssert_isSameAs_TestCase {
+public class ImageAssert_isSameAs_Test extends GenericAssert_isSameAs_TestBase<BufferedImage> {
 
-  private static BufferedImage image;
+  private static BufferedImage notNullValue;
+  private static BufferedImage notSameValue;
 
   @BeforeClass
   public static void setUpOnce() {
-    image = fivePixelBlueImage();
+    notNullValue = fivePixelYellowImage();
+    notSameValue = fivePixelBlueImage();
   }
 
-  @Test
-  public void should_pass_if_actual_and_expected_are_same() {
-    new ImageAssert(image).isSameAs(image);
+  protected ImageAssert assertionsFor(BufferedImage actual) {
+    return new ImageAssert(actual);
   }
 
-  @Test
-  public void should_fail_if_actual_and_expected_are_not_same() {
-    final BufferedImage e = fivePixelBlueImage();
-    expectAssertionError(concat("expected same instance but found:<", image, "> and:<", e, ">")).on(new CodeToTest() {
-      public void run() {
-        new ImageAssert(image).isSameAs(e);
-      }
-    });
+  protected BufferedImage notNullValue() {
+    return notNullValue;
   }
 
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_and_expected_are_not_same() {
-    final BufferedImage e = fivePixelBlueImage();
-    String message = concat("[A Test] expected same instance but found:<", image, "> and:<", e, ">");
-    expectAssertionError(message).on(new CodeToTest() {
-      public void run() {
-        new ImageAssert(image).as("A Test")
-                              .isSameAs(e);
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_if_actual_and_expected_are_not_same() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new ImageAssert(image).overridingErrorMessage("My custom message")
-                              .isSameAs(fivePixelBlueImage());
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_and_expected_are_not_same() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new ImageAssert(image).as("A Test")
-                              .overridingErrorMessage("My custom message")
-                              .isSameAs(fivePixelBlueImage());
-      }
-    });
+  protected BufferedImage notSameValue() {
+    return notSameValue;
   }
 }
