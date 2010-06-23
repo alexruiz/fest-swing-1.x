@@ -25,7 +25,7 @@ import org.junit.BeforeClass;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class FloatArrayAssert_isNotSameAs_Test extends GenericAssert_isNotSameAs_TestBase<float[]> {
+public class FloatArrayAssert_isNotSameAs_Test extends GenericAssert_isNotSameAs_TestCase<float[]> {
 
   private static float[] notNullValue;
   private static float[] notSameValue;

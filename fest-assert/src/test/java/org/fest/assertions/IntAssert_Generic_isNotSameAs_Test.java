@@ -23,7 +23,7 @@ import org.junit.BeforeClass;
  * @author Ansgar Konermann
  * @author Alex Ruiz
  */
-public class IntAssert_Generic_isNotSameAs_Test extends GenericAssert_isNotSameAs_TestBase<Integer> {
+public class IntAssert_Generic_isNotSameAs_Test extends GenericAssert_isNotSameAs_TestCase<Integer> {
 
   private static Integer notNullValue;
   private static Integer notSameValue;

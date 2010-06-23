@@ -28,7 +28,7 @@ import org.junit.BeforeClass;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class FileAssert_isNotSameAs_Test extends GenericAssert_isNotSameAs_TestBase<File> {
+public class FileAssert_isNotSameAs_Test extends GenericAssert_isNotSameAs_TestCase<File> {
 
   private static File notNullValue;
   private static File notSameValue;

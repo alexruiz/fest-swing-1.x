@@ -14,7 +14,7 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.EmptyArrays.emptyBooleanArray;
+import static org.fest.assertions.ArrayFactory.booleanArray;
 import static org.fest.test.ExpectedFailure.expectAssertionError;
 
 import org.fest.test.CodeToTest;
@@ -33,7 +33,7 @@ public class BooleanArrayAssert_isNull_Test implements GenericAssert_isNull_Test
 
   @BeforeClass
   public static void setUpOnce() {
-    array = emptyBooleanArray();
+    array = booleanArray(true);
   }
 
   @Test

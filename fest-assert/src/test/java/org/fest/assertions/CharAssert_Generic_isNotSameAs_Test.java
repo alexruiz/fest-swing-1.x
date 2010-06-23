@@ -23,7 +23,7 @@ import org.junit.BeforeClass;
  * @author Ansgar Konermann
  * @author Alex Ruiz
  */
-public class CharAssert_Generic_isNotSameAs_Test extends GenericAssert_isNotSameAs_TestBase<Character> {
+public class CharAssert_Generic_isNotSameAs_Test extends GenericAssert_isNotSameAs_TestCase<Character> {
 
   private static Character notNullValue;
   private static Character notSameValue;

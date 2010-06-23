@@ -14,7 +14,7 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.EmptyArrays.emptyBooleanArray;
+import static org.fest.assertions.ArrayFactory.booleanArray;
 
 import org.junit.BeforeClass;
 
@@ -29,7 +29,7 @@ public class BooleanArrayAssert_is_Test extends GenericAssert_is_TestCase<boolea
 
   @BeforeClass
   public static void setUpOnce() {
-    notNullValue = emptyBooleanArray();
+    notNullValue = booleanArray(true);
   }
 
   protected BooleanArrayAssert assertionsFor(boolean[] actual) {

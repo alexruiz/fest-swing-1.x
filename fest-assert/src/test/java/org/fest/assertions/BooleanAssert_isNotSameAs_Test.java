@@ -25,7 +25,7 @@ import org.junit.BeforeClass;
  * @author Ansgar Konermann
  * @author Alex Ruiz
  */
-public class BooleanAssert_isNotSameAs_Test extends GenericAssert_isNotSameAs_TestBase<Boolean> {
+public class BooleanAssert_isNotSameAs_Test extends GenericAssert_isNotSameAs_TestCase<Boolean> {
 
   private static Boolean notNullValue;
   private static Boolean notSameValue;

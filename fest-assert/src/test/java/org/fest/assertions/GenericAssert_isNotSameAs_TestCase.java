@@ -34,7 +34,7 @@ import org.junit.Test;
  * @author Ansgar Konermann
  * @author Alex Ruiz
  */
-public abstract class GenericAssert_isNotSameAs_TestBase<T> extends GenericAssert_TestCase<T> {
+public abstract class GenericAssert_isNotSameAs_TestCase<T> extends GenericAssert_TestCase<T> {
 
   private T actual;
   private GenericAssert<T> assertions;

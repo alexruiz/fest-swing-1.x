@@ -27,7 +27,7 @@ import org.junit.BeforeClass;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class CollectionAssert_isNotSameAs_Test extends GenericAssert_isNotSameAs_TestBase<Collection<?>> {
+public class CollectionAssert_isNotSameAs_Test extends GenericAssert_isNotSameAs_TestCase<Collection<?>> {
 
   private static Collection<?> notNullValue;
   private static Collection<?> notSameValue;

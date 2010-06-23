@@ -23,7 +23,7 @@ import org.junit.BeforeClass;
  * @author Ansgar Konermann
  * @author Alex Ruiz
  */
-public class DoubleAssert_Generic_isNotSameAs_Test extends GenericAssert_isNotSameAs_TestBase<Double> {
+public class DoubleAssert_Generic_isNotSameAs_Test extends GenericAssert_isNotSameAs_TestCase<Double> {
 
   private static Double notNullValue;
   private static Double notSameValue;

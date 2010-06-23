@@ -26,7 +26,7 @@ import org.junit.BeforeClass;
  *
  * @author Alex Ruiz
  */
-public class ListAssert_isNotSameAs_Test extends GenericAssert_isNotSameAs_TestBase<List<?>> {
+public class ListAssert_isNotSameAs_Test extends GenericAssert_isNotSameAs_TestCase<List<?>> {
 
   private static List<?> notNullValue;
   private static List<?> notSameValue;

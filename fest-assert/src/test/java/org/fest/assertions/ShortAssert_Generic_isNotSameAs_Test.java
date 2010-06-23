@@ -23,7 +23,7 @@ import org.junit.BeforeClass;
  * @author Ansgar Konermann
  * @author Alex Ruiz
  */
-public class ShortAssert_Generic_isNotSameAs_Test extends GenericAssert_isNotSameAs_TestBase<Short> {
+public class ShortAssert_Generic_isNotSameAs_Test extends GenericAssert_isNotSameAs_TestCase<Short> {
 
   private static Short notNullValue;
   private static Short notSameValue;
