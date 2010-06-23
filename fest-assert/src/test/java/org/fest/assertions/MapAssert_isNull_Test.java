@@ -15,13 +15,10 @@
 package org.fest.assertions;
 
 import static java.util.Collections.emptyMap;
-import static org.fest.test.ExpectedFailure.expectAssertionError;
 
 import java.util.Map;
 
-import org.fest.test.CodeToTest;
 import org.junit.BeforeClass;
-import org.junit.Test;
 
 /**
  * Tests for <code>{@link MapAssert#isNull()}</code>.
@@ -30,57 +27,20 @@ import org.junit.Test;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class MapAssert_isNull_Test implements GenericAssert_isNull_TestCase {
+public class MapAssert_isNull_Test extends GenericAssert_isNull_TestCase<Map<?, ?>> {
 
-  private static Map<Object, Object> map;
+  private static Map<?, ?> notNullValue;
 
   @BeforeClass
   public static void setUpOnce() {
-    map = emptyMap();
+    notNullValue = emptyMap();
   }
 
-  @Test
-  public void should_pass_if_actual_is_null() {
-    new MapAssert(null).isNull();
+  protected MapAssert assertionsFor(Map<?, ?> actual) {
+    return new MapAssert(actual);
   }
 
-  @Test
-  public void should_fail_if_actual_is_not_null() {
-    expectAssertionError("<{}> should be null").on(new CodeToTest() {
-      public void run() {
-        new MapAssert(map).isNull();
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_is_not_null() {
-    expectAssertionError("[A Test] <{}> should be null").on(new CodeToTest() {
-      public void run() {
-        new MapAssert(map).as("A Test")
-                          .isNull();
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_if_actual_is_not_null() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new MapAssert(map).overridingErrorMessage("My custom message")
-                          .isNull();
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_is_not_null() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new MapAssert(map).as("A Test")
-                          .overridingErrorMessage("My custom message")
-                          .isNull();
-      }
-    });
+  protected Map<?, ?> notNullValue() {
+    return notNullValue;
   }
 }

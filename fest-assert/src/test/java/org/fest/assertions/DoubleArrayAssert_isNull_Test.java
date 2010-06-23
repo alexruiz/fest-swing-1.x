@@ -14,12 +14,9 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.EmptyArrays.emptyDoubleArray;
-import static org.fest.test.ExpectedFailure.expectAssertionError;
+import static org.fest.assertions.ArrayFactory.doubleArray;
 
-import org.fest.test.CodeToTest;
 import org.junit.BeforeClass;
-import org.junit.Test;
 
 /**
  * Tests for <code>{@link DoubleArrayAssert#isNull()}</code>.
@@ -27,57 +24,20 @@ import org.junit.Test;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class DoubleArrayAssert_isNull_Test implements GenericAssert_isNull_TestCase {
+public class DoubleArrayAssert_isNull_Test extends GenericAssert_isNull_TestCase<double[]> {
 
-  private static double[] array;
+  private static double[] notNullValue;
 
   @BeforeClass
   public static void setUpOnce() {
-    array = emptyDoubleArray();
+    notNullValue = doubleArray(6d, 8d);
   }
 
-  @Test
-  public void should_pass_if_actual_is_null() {
-    new DoubleArrayAssert(null).isNull();
+  protected DoubleArrayAssert assertionsFor(double[] actual) {
+    return new DoubleArrayAssert(actual);
   }
 
-  @Test
-  public void should_fail_if_actual_is_not_null() {
-    expectAssertionError("<[]> should be null").on(new CodeToTest() {
-      public void run() {
-        new DoubleArrayAssert(array).isNull();
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_is_not_null() {
-    expectAssertionError("[A Test] <[]> should be null").on(new CodeToTest() {
-      public void run() {
-        new DoubleArrayAssert(array).as("A Test")
-                                    .isNull();
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_if_actual_is_not_null() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new DoubleArrayAssert(array).overridingErrorMessage("My custom message")
-                                    .isNull();
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_is_not_null() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new DoubleArrayAssert(array).as("A Test")
-                                    .overridingErrorMessage("My custom message")
-                                    .isNull();
-      }
-    });
+  protected double[] notNullValue() {
+    return notNullValue;
   }
 }

@@ -15,11 +15,8 @@
 package org.fest.assertions;
 
 import static org.fest.assertions.EmptyArrays.emptyLongArray;
-import static org.fest.test.ExpectedFailure.expectAssertionError;
 
-import org.fest.test.CodeToTest;
 import org.junit.BeforeClass;
-import org.junit.Test;
 
 /**
  * Tests for <code>{@link LongArrayAssert#isNull()}</code>.
@@ -27,57 +24,20 @@ import org.junit.Test;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class LongArrayAssert_isNull_Test implements GenericAssert_isNull_TestCase {
+public class LongArrayAssert_isNull_Test extends GenericAssert_isNull_TestCase<long[]> {
 
-  private static long[] array;
+  private static long[] notNullValue;
 
   @BeforeClass
   public static void setUpOnce() {
-    array = emptyLongArray();
+    notNullValue = emptyLongArray();
   }
 
-  @Test
-  public void should_pass_if_actual_is_null() {
-    new LongArrayAssert(null).isNull();
+  protected LongArrayAssert assertionsFor(long[] actual) {
+    return new LongArrayAssert(actual);
   }
 
-  @Test
-  public void should_fail_if_actual_is_not_null() {
-    expectAssertionError("<[]> should be null").on(new CodeToTest() {
-      public void run() {
-        new LongArrayAssert(array).isNull();
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_is_not_null() {
-    expectAssertionError("[A Test] <[]> should be null").on(new CodeToTest() {
-      public void run() {
-        new LongArrayAssert(array).as("A Test")
-                                  .isNull();
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_if_actual_is_not_null() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new LongArrayAssert(array).overridingErrorMessage("My custom message")
-                                  .isNull();
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_is_not_null() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new LongArrayAssert(array).as("A Test")
-                                  .overridingErrorMessage("My custom message")
-                                  .isNull();
-      }
-    });
+  protected long[] notNullValue() {
+    return notNullValue;
   }
 }

@@ -14,10 +14,7 @@
  */
 package org.fest.assertions;
 
-import static org.fest.test.ExpectedFailure.expectAssertionError;
-
-import org.fest.test.CodeToTest;
-import org.junit.Test;
+import org.junit.BeforeClass;
 
 /**
  * Tests for <code>{@link StringAssert#isNull()}</code>.
@@ -26,50 +23,20 @@ import org.junit.Test;
  * @author David DIDIER
  * @author Alex Ruiz
  */
-public class StringAssert_isNull_Test implements GenericAssert_isNull_TestCase {
+public class StringAssert_isNull_Test extends GenericAssert_isNull_TestCase<String> {
 
-  @Test
-  public void should_pass_if_actual_is_null() {
-    new StringAssert(null).isNull();
+  private static String notNullValue;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    notNullValue = "hello";
   }
 
-  @Test
-  public void should_fail_if_actual_is_not_null() {
-    expectAssertionError("<''> should be null").on(new CodeToTest() {
-      public void run() {
-        new StringAssert("").isNull();
-      }
-    });
+  protected StringAssert assertionsFor(String actual) {
+    return new StringAssert(actual);
   }
 
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_is_not_null() {
-    expectAssertionError("[A Test] <''> should be null").on(new CodeToTest() {
-      public void run() {
-        new StringAssert("").as("A Test")
-                            .isNull();
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_if_actual_is_not_null() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new StringAssert("").overridingErrorMessage("My custom message")
-                            .isNull();
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_is_not_null() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new StringAssert("").as("A Test")
-                            .overridingErrorMessage("My custom message")
-                            .isNull();
-      }
-    });
+  protected String notNullValue() {
+    return notNullValue;
   }
 }

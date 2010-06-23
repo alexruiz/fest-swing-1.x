@@ -14,11 +14,7 @@
  */
 package org.fest.assertions;
 
-import static org.fest.test.ExpectedFailure.expectAssertionError;
-
-import org.fest.test.CodeToTest;
 import org.junit.BeforeClass;
-import org.junit.Test;
 
 /**
  * Tests for <code>{@link ThrowableAssert#isNull()}</code>.
@@ -26,57 +22,20 @@ import org.junit.Test;
  * @author David DIDIER
  * @author Alex Ruiz
  */
-public class ThrowableAssert_isNull_Test implements GenericAssert_isNull_TestCase {
+public class ThrowableAssert_isNull_Test extends GenericAssert_isNull_TestCase<Throwable> {
 
-  private static Exception exception;
+  private static Throwable notNullValue;
 
   @BeforeClass
   public static void setUpOnce() {
-    exception = new Exception();
+    notNullValue = new Exception();
   }
 
-  @Test
-  public void should_pass_if_actual_is_null() {
-    new ThrowableAssert(null).isNull();
+  protected ThrowableAssert assertionsFor(Throwable actual) {
+    return new ThrowableAssert(actual);
   }
 
-  @Test
-  public void should_fail_if_actual_is_not_null() {
-    expectAssertionError("<java.lang.Exception> should be null").on(new CodeToTest() {
-      public void run() {
-        new ThrowableAssert(exception).isNull();
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_is_not_null() {
-    expectAssertionError("[A Test] <java.lang.Exception> should be null").on(new CodeToTest() {
-      public void run() {
-        new ThrowableAssert(exception).as("A Test")
-                                      .isNull();
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_if_actual_is_not_null() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new ThrowableAssert(exception).overridingErrorMessage("My custom message")
-                                      .isNull();
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_is_not_null() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new ThrowableAssert(exception).as("A Test")
-                                      .overridingErrorMessage("My custom message")
-                                      .isNull();
-      }
-    });
+  protected Throwable notNullValue() {
+    return notNullValue;
   }
 }

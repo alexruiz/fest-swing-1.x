@@ -16,70 +16,30 @@
 package org.fest.assertions;
 
 import static java.util.Collections.emptyList;
-import static org.fest.test.ExpectedFailure.expectAssertionError;
 
 import java.util.List;
 
-import org.fest.test.CodeToTest;
 import org.junit.BeforeClass;
-import org.junit.Test;
 
 /**
  * Tests for <code>{@link ListAssert#isNull()}</code>.
  *
  * @author Alex Ruiz
  */
-public class ListAssert_isNull_Test implements GenericAssert_isNull_TestCase {
+public class ListAssert_isNull_Test extends GenericAssert_isNull_TestCase<List<?>> {
 
-  private static List<Object> list;
+  private static List<?> notNullValue;
 
   @BeforeClass
   public static void setUpOnce() {
-    list = emptyList();
+    notNullValue = emptyList();
   }
 
-  @Test
-  public void should_pass_if_actual_is_null() {
-    new ListAssert(null).isNull();
+  protected ListAssert assertionsFor(List<?> actual) {
+    return new ListAssert(actual);
   }
 
-  @Test
-  public void should_fail_if_actual_is_not_null() {
-    expectAssertionError("<[]> should be null").on(new CodeToTest() {
-      public void run() {
-        new ListAssert(list).isNull();
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_is_not_null() {
-    expectAssertionError("[A Test] <[]> should be null").on(new CodeToTest() {
-      public void run() {
-        new ListAssert(list).as("A Test")
-                            .isNull();
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_if_actual_is_not_null() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new ListAssert(list).overridingErrorMessage("My custom message")
-                            .isNull();
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_is_not_null() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new ListAssert(list).as("A Test")
-                            .overridingErrorMessage("My custom message")
-                            .isNull();
-      }
-    });
+  protected List<?> notNullValue() {
+    return notNullValue;
   }
 }
