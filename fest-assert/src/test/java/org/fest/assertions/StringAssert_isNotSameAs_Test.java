@@ -14,11 +14,7 @@
  */
 package org.fest.assertions;
 
-import static org.fest.test.ExpectedFailure.expectAssertionError;
-
-import org.fest.test.CodeToTest;
 import org.junit.BeforeClass;
-import org.junit.Test;
 
 /**
  * Tests for <code>{@link StringAssert#isNotSameAs(String)}</code>.
@@ -27,57 +23,26 @@ import org.junit.Test;
  * @author David DIDIER
  * @author Alex Ruiz
  */
-public class StringAssert_isNotSameAs_Test implements GenericAssert_isNotSameAs_TestCase {
+public class StringAssert_isNotSameAs_Test extends GenericAssert_isNotSameAs_TestBase<String> {
 
-  private static String jedi;
+  private static String notNullValue;
+  private static String notSameValue;
 
   @BeforeClass
   public static void setUpOnce() {
-    jedi = "Yoda";
+    notNullValue = "Yoda";
+    notSameValue = "Luke";
   }
 
-  @Test
-  public void should_pass_if_actual_and_expected_are_not_same() {
-    new StringAssert(jedi).isNotSameAs("");
+  protected StringAssert assertionsFor(String actual) {
+    return new StringAssert(actual);
   }
 
-  @Test
-  public void should_fail_if_actual_and_expected_are_same() {
-    expectAssertionError("given objects are same:<'Yoda'>").on(new CodeToTest() {
-      public void run() {
-        new StringAssert(jedi).isNotSameAs(jedi);
-      }
-    });
+  protected String notNullValue() {
+    return notNullValue;
   }
 
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_and_expected_are_same() {
-    expectAssertionError("[A Test] given objects are same:<'Yoda'>").on(new CodeToTest() {
-      public void run() {
-        new StringAssert(jedi).as("A Test")
-                              .isNotSameAs(jedi);
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_if_actual_and_expected_are_same() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new StringAssert(jedi).overridingErrorMessage("My custom message")
-                              .isNotSameAs(jedi);
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_and_expected_are_same() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new StringAssert(jedi).as("A Test")
-                              .overridingErrorMessage("My custom message")
-                              .isNotSameAs(jedi);
-      }
-    });
+  protected String notSameValue() {
+    return notSameValue;
   }
 }

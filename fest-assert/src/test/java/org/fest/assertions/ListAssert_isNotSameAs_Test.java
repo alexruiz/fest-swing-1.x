@@ -15,71 +15,37 @@
  */
 package org.fest.assertions;
 
-import static java.util.Collections.emptyList;
-import static org.fest.test.ExpectedFailure.expectAssertionError;
 import static org.fest.util.Collections.list;
 
 import java.util.List;
 
-import org.fest.test.CodeToTest;
-import org.junit.*;
+import org.junit.BeforeClass;
 
 /**
  * Tests for <code>{@link ListAssert#isNotSameAs(List)}</code>.
  *
  * @author Alex Ruiz
  */
-public class ListAssert_isNotSameAs_Test implements GenericAssert_isNotSameAs_TestCase {
+public class ListAssert_isNotSameAs_Test extends GenericAssert_isNotSameAs_TestBase<List<?>> {
 
-  private static List<String> list;
+  private static List<?> notNullValue;
+  private static List<?> notSameValue;
 
   @BeforeClass
   public static void setUpOnce() {
-    list = list("Leia");
+    notNullValue = list("Leia");
+    notSameValue = list("Luke");
   }
 
-  @Test
-  public void should_pass_if_actual_and_expected_are_not_same() {
-    new ListAssert(list).isNotSameAs(emptyList());
+  protected ListAssert assertionsFor(List<?> actual) {
+    return new ListAssert(actual);
   }
 
-  @Test
-  public void should_fail_if_actual_and_expected_are_same() {
-    expectAssertionError("given objects are same:<['Leia']>").on(new CodeToTest() {
-      public void run() {
-        new ListAssert(list).isNotSameAs(list);
-      }
-    });
+  protected List<?> notNullValue() {
+    return notNullValue;
   }
 
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_and_expected_are_same() {
-    expectAssertionError("[A Test] given objects are same:<['Leia']>").on(new CodeToTest() {
-      public void run() {
-        new ListAssert(list).as("A Test")
-                            .isNotSameAs(list);
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_if_actual_and_expected_are_same() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new ListAssert(list).overridingErrorMessage("My custom message")
-                            .isNotSameAs(list);
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_and_expected_are_same() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new ListAssert(list).as("A Test")
-                            .overridingErrorMessage("My custom message")
-                            .isNotSameAs(list);
-      }
-    });
+  protected List<?> notSameValue() {
+    return notSameValue;
   }
 }

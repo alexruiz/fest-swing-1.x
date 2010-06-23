@@ -17,13 +17,10 @@ package org.fest.assertions;
 import static java.util.Collections.emptyMap;
 import static org.fest.assertions.MapAssert.entry;
 import static org.fest.assertions.MapFactory.map;
-import static org.fest.test.ExpectedFailure.expectAssertionError;
 
-import java.util.*;
+import java.util.Map;
 
-import org.fest.test.CodeToTest;
 import org.junit.BeforeClass;
-import org.junit.Test;
 
 /**
  * Tests for <code>{@link MapAssert#isNotSameAs(Map)}</code>.
@@ -32,57 +29,26 @@ import org.junit.Test;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class MapAssert_isNotSameAs_Test implements GenericAssert_isNotSameAs_TestCase {
+public class MapAssert_isNotSameAs_Test extends GenericAssert_isNotSameAs_TestBase<Map<?, ?>> {
 
-  private static Map<Object, Object> map;
+  private static Map<?, ?> notNullValue;
+  private static Map<?, ?> notSameValue;
 
   @BeforeClass
   public static void setUpOnce() {
-    map = map(entry("key1", 1));
+    notNullValue = map(entry("key1", 1));
+    notSameValue = emptyMap();
   }
 
-  @Test
-  public void should_pass_if_actual_and_expected_are_not_same() {
-    new MapAssert(map).isNotSameAs(emptyMap());
+  protected MapAssert assertionsFor(Map<?, ?> actual) {
+    return new MapAssert(actual);
   }
 
-  @Test
-  public void should_fail_if_actual_and_expected_are_same() {
-    expectAssertionError("given objects are same:<{'key1'=1}>").on(new CodeToTest() {
-      public void run() {
-        new MapAssert(map).isNotSameAs(map);
-      }
-    });
+  protected Map<?, ?> notNullValue() {
+    return notNullValue;
   }
 
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_and_expected_are_same() {
-    expectAssertionError("[A Test] given objects are same:<{'key1'=1}>").on(new CodeToTest() {
-      public void run() {
-        new MapAssert(map).as("A Test")
-                          .isNotSameAs(map);
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_if_actual_and_expected_are_same() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new MapAssert(map).overridingErrorMessage("My custom message")
-                          .isNotSameAs(map);
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_and_expected_are_same() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new MapAssert(map).as("A Test")
-                          .overridingErrorMessage("My custom message")
-                          .isNotSameAs(map);
-      }
-    });
+  protected Map<?, ?> notSameValue() {
+    return notSameValue;
   }
 }

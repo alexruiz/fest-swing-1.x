@@ -14,12 +14,10 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.EmptyArrays.emptyDoubleArray;
 import static org.fest.assertions.ArrayFactory.doubleArray;
-import static org.fest.test.ExpectedFailure.expectAssertionError;
+import static org.fest.assertions.EmptyArrays.emptyDoubleArray;
 
-import org.fest.test.CodeToTest;
-import org.junit.*;
+import org.junit.BeforeClass;
 
 /**
  * Tests for <code>{@link DoubleArrayAssert#isNotSameAs(double[])}</code>.
@@ -27,57 +25,26 @@ import org.junit.*;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class DoubleArrayAssert_isNotSameAs_Test implements GenericAssert_isNotSameAs_TestCase {
+public class DoubleArrayAssert_isNotSameAs_Test extends GenericAssert_isNotSameAs_TestBase<double[]> {
 
-  private static double[] array;
+  private static double[] notNullValue;
+  private static double[] notSameValue;
 
   @BeforeClass
   public static void setUpOnce() {
-    array = doubleArray(55.03, 4345.91);
+    notNullValue = doubleArray(6d, 8d);
+    notSameValue = emptyDoubleArray();
   }
 
-  @Test
-  public void should_pass_if_actual_and_expected_are_not_same() {
-    new DoubleArrayAssert(array).isNotSameAs(emptyDoubleArray());
+  protected DoubleArrayAssert assertionsFor(double[] actual) {
+    return new DoubleArrayAssert(actual);
   }
 
-  @Test
-  public void should_fail_if_actual_and_expected_are_same() {
-    expectAssertionError("given objects are same:<[55.03, 4345.91]>").on(new CodeToTest() {
-      public void run() {
-        new DoubleArrayAssert(array).isNotSameAs(array);
-      }
-    });
+  protected double[] notNullValue() {
+    return notNullValue;
   }
 
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_and_expected_are_same() {
-    expectAssertionError("[A Test] given objects are same:<[55.03, 4345.91]>").on(new CodeToTest() {
-      public void run() {
-        new DoubleArrayAssert(array).as("A Test")
-                                    .isNotSameAs(array);
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_if_actual_and_expected_are_same() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new DoubleArrayAssert(array).overridingErrorMessage("My custom message")
-                                    .isNotSameAs(array);
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_and_expected_are_same() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new DoubleArrayAssert(array).as("A Test")
-                                    .overridingErrorMessage("My custom message")
-                                    .isNotSameAs(array);
-      }
-    });
+  protected double[] notSameValue() {
+    return notSameValue;
   }
 }

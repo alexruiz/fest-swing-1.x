@@ -14,10 +14,12 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.FileStub.newFile;
-import static org.fest.test.ExpectedFailure.expectAssertionError;
-import org.fest.test.CodeToTest;
-import org.junit.Test;
+import static org.fest.assertions.FileStub.aFile;
+import static org.fest.util.Files.temporaryFolder;
+
+import java.io.File;
+
+import org.junit.BeforeClass;
 
 /**
  * Tests for <code>{@link FileAssert#isNotSameAs(java.io.File)}</code>.
@@ -26,50 +28,26 @@ import org.junit.Test;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class FileAssert_isNotSameAs_Test extends FileAssert_TestCase implements GenericAssert_isNotSameAs_TestCase {
+public class FileAssert_isNotSameAs_Test extends GenericAssert_isNotSameAs_TestBase<File> {
 
-  @Test
-  public void should_pass_if_actual_and_expected_are_not_same() {
-    new FileAssert(file).isNotSameAs(newFile("c:\\"));
+  private static File notNullValue;
+  private static File notSameValue;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    notNullValue = temporaryFolder();
+    notSameValue = aFile();
   }
 
-  @Test
-  public void should_fail_if_actual_and_expected_are_same() {
-    expectAssertionError("given objects are same:<c:\\f.txt>").on(new CodeToTest() {
-      public void run() {
-        new FileAssert(file).isNotSameAs(file);
-      }
-    });
+  protected FileAssert assertionsFor(File actual) {
+    return new FileAssert(actual);
   }
 
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_and_expected_are_same() {
-    expectAssertionError("[A Test] given objects are same:<c:\\f.txt>").on(new CodeToTest() {
-      public void run() {
-        new FileAssert(file).as("A Test")
-                            .isNotSameAs(file);
-      }
-    });
+  protected File notNullValue() {
+    return notNullValue;
   }
 
-  @Test
-  public void should_fail_with_custom_message_if_actual_and_expected_are_same() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new FileAssert(file).overridingErrorMessage("My custom message")
-                            .isNotSameAs(file);
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_and_expected_are_same() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new FileAssert(file).as("A Test")
-                            .overridingErrorMessage("My custom message")
-                            .isNotSameAs(file);
-      }
-    });
+  protected File notSameValue() {
+    return notSameValue;
   }
 }
