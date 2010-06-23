@@ -23,7 +23,7 @@ import org.junit.BeforeClass;
  * @author David DIDIER
  * @author Alex Ruiz
  */
-public class StringAssert_isSameAs_Test extends GenericAssert_isSameAs_TestBase<String> {
+public class StringAssert_isSameAs_Test extends GenericAssert_isSameAs_TestCase<String> {
 
   private static String notNullValue;
   private static String notSameValue;

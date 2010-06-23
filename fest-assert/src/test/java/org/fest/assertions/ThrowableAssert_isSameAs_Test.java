@@ -22,7 +22,7 @@ import org.junit.BeforeClass;
  * @author David DIDIER
  * @author Alex Ruiz
  */
-public class ThrowableAssert_isSameAs_Test extends GenericAssert_isSameAs_TestBase<Throwable> {
+public class ThrowableAssert_isSameAs_Test extends GenericAssert_isSameAs_TestCase<Throwable> {
 
   private static Throwable notNullValue;
   private static Throwable notSameValue;

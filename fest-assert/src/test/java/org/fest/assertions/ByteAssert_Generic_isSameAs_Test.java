@@ -23,7 +23,7 @@ import org.junit.BeforeClass;
  * @author Ansgar Konermann
  * @author Alex Ruiz
  */
-public class ByteAssert_Generic_isSameAs_Test extends GenericAssert_isSameAs_TestBase<Byte> {
+public class ByteAssert_Generic_isSameAs_Test extends GenericAssert_isSameAs_TestCase<Byte> {
 
   private static Byte notNullValue;
   private static Byte notSameValue;

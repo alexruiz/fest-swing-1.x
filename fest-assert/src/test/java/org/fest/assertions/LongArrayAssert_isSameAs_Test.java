@@ -24,7 +24,7 @@ import org.junit.BeforeClass;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class LongArrayAssert_isSameAs_Test extends GenericAssert_isSameAs_TestBase<long[]> {
+public class LongArrayAssert_isSameAs_Test extends GenericAssert_isSameAs_TestCase<long[]> {
 
   private static long[] notNullValue;
   private static long[] notSameValue;

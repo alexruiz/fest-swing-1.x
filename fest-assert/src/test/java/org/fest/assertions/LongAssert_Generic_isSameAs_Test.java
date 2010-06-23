@@ -23,7 +23,7 @@ import org.junit.BeforeClass;
  * @author Ansgar Konermann
  * @author Alex Ruiz
  */
-public class LongAssert_Generic_isSameAs_Test extends GenericAssert_isSameAs_TestBase<Long> {
+public class LongAssert_Generic_isSameAs_Test extends GenericAssert_isSameAs_TestCase<Long> {
 
   private static Long notNullValue;
   private static Long notSameValue;

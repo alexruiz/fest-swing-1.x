@@ -28,7 +28,7 @@ import org.junit.BeforeClass;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class BigDecimalAssert_isSameAs_Test extends GenericAssert_isSameAs_TestBase<BigDecimal> {
+public class BigDecimalAssert_isSameAs_Test extends GenericAssert_isSameAs_TestCase<BigDecimal> {
 
   private static BigDecimal notNullValue;
   private static BigDecimal notSameValue;

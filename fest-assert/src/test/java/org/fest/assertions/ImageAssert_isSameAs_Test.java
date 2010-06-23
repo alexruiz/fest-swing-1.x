@@ -26,7 +26,7 @@ import org.junit.BeforeClass;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class ImageAssert_isSameAs_Test extends GenericAssert_isSameAs_TestBase<BufferedImage> {
+public class ImageAssert_isSameAs_Test extends GenericAssert_isSameAs_TestCase<BufferedImage> {
 
   private static BufferedImage notNullValue;
   private static BufferedImage notSameValue;

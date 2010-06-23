@@ -22,7 +22,7 @@ import org.junit.BeforeClass;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class ObjectAssert_isSameAs_Test extends GenericAssert_isSameAs_TestBase<Object> {
+public class ObjectAssert_isSameAs_Test extends GenericAssert_isSameAs_TestCase<Object> {
 
   private static Object notNullValue;
   private static Object notSameValue;

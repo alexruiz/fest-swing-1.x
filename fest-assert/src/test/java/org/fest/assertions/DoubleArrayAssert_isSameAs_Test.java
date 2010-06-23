@@ -24,7 +24,7 @@ import org.junit.BeforeClass;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class DoubleArrayAssert_isSameAs_Test extends GenericAssert_isSameAs_TestBase<double[]> {
+public class DoubleArrayAssert_isSameAs_Test extends GenericAssert_isSameAs_TestCase<double[]> {
 
   private static double[] notNullValue;
   private static double[] notSameValue;

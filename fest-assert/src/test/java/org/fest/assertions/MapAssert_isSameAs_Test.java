@@ -29,7 +29,7 @@ import org.junit.BeforeClass;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class MapAssert_isSameAs_Test extends GenericAssert_isSameAs_TestBase<Map<?, ?>> {
+public class MapAssert_isSameAs_Test extends GenericAssert_isSameAs_TestCase<Map<?, ?>> {
 
   private static Map<?, ?> notNullValue;
   private static Map<?, ?> notSameValue;

@@ -23,7 +23,7 @@ import org.junit.BeforeClass;
  * @author Ansgar Konermann
  * @author Alex Ruiz
  */
-public class FloatAssert_Generic_isSameAs_Test extends GenericAssert_isSameAs_TestBase<Float> {
+public class FloatAssert_Generic_isSameAs_Test extends GenericAssert_isSameAs_TestCase<Float> {
 
   private static Float notNullValue;
   private static Float notSameValue;
