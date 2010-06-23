@@ -1,5 +1,5 @@
 /*
- * Created on 2010-4-27
+ * Created on Apr 27, 2010
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -13,30 +13,36 @@
  *
  * Copyright @2010 the original author or authors.
  */
-
 package org.fest.assertions;
 
+import org.junit.BeforeClass;
+
 /**
- * Test ensuring that {@link ShortAssert} obeys the {@link org.fest.assertions.GenericAssert#isSameAs(Object)} contract
- * for {@link Short}.
+ * Tests for <code>{@link ShortAssert#isSameAs(Short)}</code>.
+ *
+ * @author Ansgar Konermann
+ * @author Alex Ruiz
  */
 public class ShortAssert_Generic_isSameAs_Test extends GenericAssert_isSameAs_TestBase<Short> {
 
-  private static final short ANY_FIXED_VALUE = 8;
+  private static Short notNullValue;
+  private static Short notSameValue;
 
-  @Override
-  protected Short createEight() {
-    // explicitly allocate a new instance here, since we want to test instance equality!
-    return new Short(ANY_FIXED_VALUE);
+  @BeforeClass
+  public static void setUpOnce() {
+    notNullValue = 6;
+    notSameValue = 8;
   }
 
-  @Override
-  protected String eightAsString() {
-    return "8";
-  }
-
-  @Override
-  protected ShortAssert assertionFor(Short actual) {
+  protected ShortAssert assertionsFor(Short actual) {
     return new ShortAssert(actual);
+  }
+
+  protected Short notNullValue() {
+    return notNullValue;
+  }
+
+  protected Short notSameValue() {
+    return notSameValue;
   }
 }

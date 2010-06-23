@@ -1,5 +1,5 @@
 /*
- * Created on 2010-4-27
+ * Created on Apr 27, 2010
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -13,30 +13,36 @@
  *
  * Copyright @2010 the original author or authors.
  */
-
 package org.fest.assertions;
 
+import org.junit.BeforeClass;
+
 /**
- * Test ensuring that {@link CharAssert} obeys the {@link org.fest.assertions.GenericAssert#isSameAs(Object)} contract
- * for {@link Character}.
+ * Tests for <code>{@link CharAssert#isSameAs(Character)}</code>.
+ *
+ * @author Ansgar Konermann
+ * @author Alex Ruiz
  */
 public class CharAssert_Generic_isSameAs_Test extends GenericAssert_isSameAs_TestBase<Character> {
 
-  private static final char ANY_FIXED_VALUE = 'X';
+  private static Character notNullValue;
+  private static Character notSameValue;
 
-  @Override
-  protected Character createEight() {
-    // explicitly allocate a new instance here, since we want to test instance equality!
-    return new Character(ANY_FIXED_VALUE);
+  @BeforeClass
+  public static void setUpOnce() {
+    notNullValue = 'a';
+    notSameValue = 'b';
   }
 
-  @Override
-  protected String eightAsString() {
-    return "X";
-  }
-
-  @Override
-  protected CharAssert assertionFor(Character actual) {
+  protected CharAssert assertionsFor(Character actual) {
     return new CharAssert(actual);
+  }
+
+  protected Character notNullValue() {
+    return notNullValue;
+  }
+
+  protected Character notSameValue() {
+    return notSameValue;
   }
 }

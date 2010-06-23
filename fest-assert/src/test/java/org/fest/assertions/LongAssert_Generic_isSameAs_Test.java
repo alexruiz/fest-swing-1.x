@@ -1,5 +1,5 @@
 /*
- * Created on 2010-4-27
+ * Created on Apr 27, 2010
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -13,26 +13,36 @@
  *
  * Copyright @2010 the original author or authors.
  */
-
 package org.fest.assertions;
 
-/** Test ensuring that {@link LongAssert} obeys the {@link GenericAssert#isSameAs(Object)} contract for {@link Long}. */
+import org.junit.BeforeClass;
+
+/**
+ * Tests for <code>{@link LongAssert#isSameAs(Long)}</code>.
+ *
+ * @author Ansgar Konermann
+ * @author Alex Ruiz
+ */
 public class LongAssert_Generic_isSameAs_Test extends GenericAssert_isSameAs_TestBase<Long> {
-  private static final long ANY_FIXED_VALUE = 8l;
 
-  @Override
-  protected Long createEight() {
-    // explicitly allocate a new instance here, since we want to test instance equality!
-    return new Long(ANY_FIXED_VALUE);
+  private static Long notNullValue;
+  private static Long notSameValue;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    notNullValue = 6L;
+    notSameValue = 8L;
   }
 
-  @Override
-  protected String eightAsString() {
-    return "8";
-  }
-
-  @Override
-  protected LongAssert assertionFor(Long actual) {
+  protected LongAssert assertionsFor(Long actual) {
     return new LongAssert(actual);
+  }
+
+  protected Long notNullValue() {
+    return notNullValue;
+  }
+
+  protected Long notSameValue() {
+    return notSameValue;
   }
 }

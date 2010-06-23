@@ -1,5 +1,5 @@
 /*
- * Created on 2010-4-27
+ * Created on Apr 27, 2010
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -13,72 +13,85 @@
  *
  * Copyright @2010 the original author or authors.
  */
-
 package org.fest.assertions;
 
+import static org.fest.assertions.Formatter.format;
 import static org.fest.test.ExpectedFailure.expectAssertionError;
+import static org.fest.util.Strings.concat;
 
-import org.junit.Test;
 import org.fest.test.CodeToTest;
+import org.junit.Before;
+import org.junit.Test;
 
 /**
- * Base class for testing {@link org.fest.assertions.GenericAssert#isSameAs(Object)}.
- * <p/>
+ * Base class for testing <code>{@link GenericAssert#isSameAs(Object)}</code>.
+ * <p>
  * This class implements the algorithms which must be performed to test <code>isSameAs</code> as template methods and
  * uses implementations of the abstract methods in subclasses to derive concrete tests.
+ * </p>
+ * @param <T> The type supported by the implementation of the {@code GenericAssert} to test.
  *
  * @author Ansgar Konermann
+ * @author Alex Ruiz
  */
+public abstract class GenericAssert_isSameAs_TestBase<T> extends GenericAssert_TestCase<T> {
 
-public abstract class GenericAssert_isSameAs_TestBase<VALUE_TYPE> implements GenericAssert_isSameAs_TestCase {
+  private T actual;
+  private GenericAssert<T> assertions;
+  private T notSameValue;
 
-  protected abstract VALUE_TYPE createEight();
+  @Before
+  public void setUp() {
+    actual = notNullValue();
+    assertions = assertionsFor(actual);
+    notSameValue = notSameValue();
+  }
 
-  protected abstract String eightAsString();
-
-  protected abstract GenericAssert<VALUE_TYPE> assertionFor(VALUE_TYPE actual);
-
+  protected abstract T notSameValue();
 
   @Test
-  public void should_pass_if_actual_and_expected_are_same() {
-    final VALUE_TYPE myEight = createEight();
-    assertionFor(myEight).isSameAs(myEight);
+  public final void should_pass_if_actual_and_expected_are_same() {
+    assertions.isSameAs(actual);
   }
 
   @Test
-  public void should_fail_if_actual_and_expected_are_not_same() {
-    expectAssertionError("expected same instance but found:<" + eightAsString() + "> and:<" + eightAsString() + ">")
-      .on(new CodeToTest() {
-        public void run() {
-          assertionFor(createEight()).isSameAs(createEight());
-        }
-      });
-  }
-
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_and_expected_are_not_same() {
-    expectAssertionError("[A Test] expected same instance but found:<" + eightAsString() + "> and:<" + eightAsString() + ">")
-      .on(new CodeToTest() {
-        public void run() {
-          assertionFor(createEight()).as("A Test").isSameAs(createEight());
-        }
-      });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_if_actual_and_expected_are_not_same() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
+  public final void should_fail_if_actual_and_expected_are_not_same() {
+    String msg = concat("expected same instance but found:<", format(actual), "> and:<", format(notSameValue), ">");
+    expectAssertionError(msg).on(new CodeToTest() {
       public void run() {
-        assertionFor(createEight()).overridingErrorMessage("My custom message").isSameAs(createEight());
+        assertions.isSameAs(notSameValue);
       }
     });
   }
 
   @Test
-  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_and_expected_are_not_same() {
+  public final void should_fail_and_display_description_of_assertion_if_actual_and_expected_are_not_same() {
+    String msg = concat("[A Test] expected same instance but found:<", format(actual), "> and:<", format(notSameValue), ">");
+    expectAssertionError(msg).on(new CodeToTest() {
+      public void run() {
+        assertions.as("A Test")
+                  .isSameAs(notSameValue);
+      }
+    });
+  }
+
+  @Test
+  public final void should_fail_with_custom_message_if_actual_and_expected_are_not_same() {
     expectAssertionError("My custom message").on(new CodeToTest() {
       public void run() {
-        assertionFor(createEight()).as("A Test").overridingErrorMessage("My custom message").isSameAs(createEight());
+        assertions.overridingErrorMessage("My custom message")
+                  .isSameAs(notSameValue);
+      }
+    });
+  }
+
+  @Test
+  public final void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_and_expected_are_not_same() {
+    expectAssertionError("My custom message").on(new CodeToTest() {
+      public void run() {
+        assertions.as("A Test")
+                  .overridingErrorMessage("My custom message")
+                  .isSameAs(notSameValue);
       }
     });
   }
