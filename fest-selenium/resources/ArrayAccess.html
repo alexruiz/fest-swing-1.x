@@ -1,0 +1,68 @@
+<html>
+<head>
+<title>JavaScript-to-Java Array Access and Passing</title>
+<script language="javascript">
+function arrayToString(arr) {
+    var ret = "[ ";
+    for (i = 0; i < arr.length; i++) {
+        if (i > 0) {
+            ret += ", ";
+        }
+        ret += arr[i];
+    }
+    ret += " ]";
+    return ret;
+}
+
+function swapElements0And2(arr) {
+    var t = arr[0];
+    arr[0] = arr[2];
+    arr[2] = t;
+}
+
+function swapColumns0And2(arr) {
+    for (i = 0; i < arr.length; i++) {
+        var row = arr[i];
+        var t = row[0];
+        row[0] = row[2];
+        row[2] = t;
+    }
+}
+
+var testVar;
+
+function runTest() {
+    var arr = app.returns123();
+    outputDiv.innerHTML += "<br>app.returns123() returned: " + arrayToString(arr);
+    swapElements0And2(arr);
+    outputDiv.innerHTML += "<br>changed to: " + arrayToString(arr);
+    var res = app.expects321(arr);
+    outputDiv.innerHTML += "<br>app.expects321() with modified Java array: " + (res ? "Passed" : "FAILED");
+    res = app.expects321([ 3, 2, 1 ]);
+    outputDiv.innerHTML += "<br>app.expects321() with JavaScript array: " + (res ? "Passed" : "FAILED");
+    // Returns 2-dimensional Java array
+    arr = app.returns1Through9();
+    // Transform this into 9..1
+    swapElements0And2(arr);
+    swapColumns0And2(arr);
+    res = app.expects9Through1(arr);
+    outputDiv.innerHTML += "<br>app.expects9Through1() with modified Java array: " + (res ? "Passed" : "FAILED");
+    res = app.expects9Through1([[9, 8, 7], [6, 5, 4], [3, 2, 1]]);
+    outputDiv.innerHTML += "<br>app.expects9Through1() with JavaScript array: " + (res ? "Passed" : "FAILED");
+    app.expectsString(testVar);
+    app.expectsString([1, 2, 3]);
+}
+</script>
+</head>
+<body onload="runTest()">
+<applet id="app" archive="examples.jar" code="ArrayAccess" width="1" height="1">
+</applet>
+<div>
+<p>
+See below for JavaScript output:
+</p>
+</div>
+<div id="outputDiv">
+</div>
+</body>
+</html>

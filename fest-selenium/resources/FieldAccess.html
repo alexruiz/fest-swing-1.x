@@ -1,0 +1,36 @@
+<html>
+<head>
+<title>JavaScript-to-Java Field Access</title>
+<script language="javascript">
+function runTest() {
+    var val = app.intField;
+    outputDiv.innerHTML += "<br>app.intField = " + val;
+    app.intField = 6;
+    outputDiv.innerHTML += "<br>after set to 6: app.intField = " + app.intField;
+    val = app.stringField;
+    outputDiv.innerHTML += "<br>app.stringField = " + val;
+    app.stringField = "Goodbye";
+    outputDiv.innerHTML += "<br>after set to \"Goodbye\": app.stringField = " + app.stringField;
+    val = app.otherField.intField;
+    outputDiv.innerHTML += "<br>app.otherField.intField = " + val;
+    app.otherField.intField = 7;
+    outputDiv.innerHTML += "<br>after set to 7: app.otherField.intField = " + app.otherField.intField;
+    val = app.otherField.stringField;
+    outputDiv.innerHTML += "<br>app.otherField.stringField = " + val;
+    app.otherField.stringField = "1, 2, 3";
+    outputDiv.innerHTML += "<br>after set to \"1, 2, 3\": app.otherField.stringField = " + app.otherField.stringField;
+}
+</script>
+</head>
+<body onload="runTest()">
+<applet id="app" archive="examples.jar" code="FieldAccess" width="1" height="1">
+</applet>
+<div>
+<p>
+See below for JavaScript output:
+</p>
+</div>
+<div id="outputDiv">
+</div>
+</body>
+</html>

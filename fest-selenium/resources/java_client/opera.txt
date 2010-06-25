@@ -1,0 +1,3 @@
+Opera has it's own policy file : C:\Program Files\Opera\classes\Opera.policy. 
+Place the contents of the java.policy in this file if you want to test against
+Opera.

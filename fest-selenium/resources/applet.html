@@ -1,0 +1,149 @@
+<html>
+
+<head>
+<title>Applet Object Element Test</title>
+
+<script>
+
+function waitForNotBusy() {
+
+	// browser javascript to manage busy state
+
+}
+
+</script>
+
+</head>
+
+<body>
+
+
+<!-- The follow variations show the combinations for valid object element usages with applets -->
+
+<!-- Use of Attributes only. This is similar to the usage of the deprecated Applet element
+     and is not supported by the 'official' specifications. IE however, still honors this
+     convention. Should probably test this against other browsers as well. -->
+
+<!--object id="applet" archive="TestApplet.jar" width="500" height="500" code="TestApplet">
+</object-->
+
+
+<!-- Use of code param with bare class files. Although the archive attribute is valid for the object
+     element, it is ignored and the "code" parameter's value MUST BE AN UNCOMPRESSED CLASS FILE.
+     For example, the bare class file for TestApplet is TestApplet.class.
+
+     The type attribute is REQUIRED.-->
+
+<!--object id="applet" archive="TestApplet.jar" type="application/x-java-applet" width="500" height="500">
+	<param name="code" value="TestApplet">
+</object-->
+
+
+<!-- Use of params to specify java archive parameters. This is the CANONICAL way to specify applet
+	 parameters. The use of "java_archive" is not well documented however.
+
+	 As above, the type attribute is REQUIRED. -->
+
+<!--object id="applet" width="500" height="500" type="application/x-java-applet">
+    <param name="code" value="TestApplet">
+    <param name="java_archive" value="TestApplet.jar">
+</object-->
+
+<!-- The param "java_type" does NOT WORK ; type object attribute is REQUIRED. -->
+<!-- The param "java_code" and "code" are interchangable -->
+<!-- For browsers that support it; class names can have package prefixes. Please
+     refer to the BrowserIntegration tests to see which current browsers are supported -->
+
+<div>
+<object id="test_applet" width="100" height="100" type="application/x-java-applet">
+	<!--param name="type" value="application/x-java-applet"-->
+    <param name="java_code" value="com.aclaro.test.applets.TestApplet" />
+    <param name="java_archive" value="applet.jar,fest-swing-1.2a3.jar,fest-assert-1.1.jar,fest-util-1.1.jar,fest-reflect-1.2-SNAPSHOT.jar" />
+</object>
+</div>
+<br />
+
+<div>
+<object id="table_applet" width="600" height="100" type="application/x-java-applet">
+	<!--param name="type" value="application/x-java-applet"-->
+    <param name="java_code" value="com.aclaro.test.applets.TableApplet" />
+    <param name="java_archive" value="applet.jar,fest-swing-1.2a3.jar,fest-assert-1.1.jar,fest-util-1.1.jar,fest-reflect-1.2-SNAPSHOT.jar" />
+</object>
+</div>
+<br />
+
+<div>
+<object id="tree_applet" width="200" height="200" type="application/x-java-applet">
+	<!--param name="type" value="application/x-java-applet"-->
+    <param name="java_code" value="com.aclaro.test.applets.TreeApplet" />
+    <param name="java_archive" value="applet.jar,fest-swing-1.2a3.jar,fest-assert-1.1.jar,fest-util-1.1.jar,fest-reflect-1.2-SNAPSHOT.jar" />
+</object>
+</div>
+<br />
+
+<div>
+<object id="combo_applet" width="300" height="150" type="application/x-java-applet">
+	<!--param name="type" value="application/x-java-applet"-->
+    <param name="java_code" value="com.aclaro.test.applets.ComboBoxApplet" />
+    <param name="java_archive" value="applet.jar,fest-swing-1.2a3.jar,fest-assert-1.1.jar,fest-util-1.1.jar,fest-reflect-1.2-SNAPSHOT.jar" />
+</object>
+</div>
+<br />
+
+<div>
+<object id="tab_applet" width="500" height="100" type="application/x-java-applet">
+	<!--param name="type" value="application/x-java-applet"-->
+    <param name="java_code" value="com.aclaro.test.applets.TabApplet" />
+    <param name="java_archive" value="applet.jar,fest-swing-1.2a3.jar,fest-assert-1.1.jar,fest-util-1.1.jar,fest-reflect-1.2-SNAPSHOT.jar" />
+</object>
+</div>
+<br />
+
+<div>
+<object id="spinner_applet" width="300" height="100" type="application/x-java-applet">
+	<!--param name="type" value="application/x-java-applet" /-->
+    <param name="java_code" value="com.aclaro.test.applets.SpinnerApplet" />
+    <param name="java_archive" value="applet.jar,fest-swing-1.2a3.jar,fest-assert-1.1.jar,fest-util-1.1.jar,fest-reflect-1.2-SNAPSHOT.jar" />
+</object>
+</div>
+<br />
+
+<div>
+<object id="list_applet" width="300" height="150" type="application/x-java-applet">
+	<!--param name="type" value="application/x-java-applet" /-->
+    <param name="java_code" value="com.aclaro.test.applets.ListApplet" />
+    <param name="java_archive" value="applet.jar,fest-swing-1.2a3.jar,fest-assert-1.1.jar,fest-util-1.1.jar,fest-reflect-1.2-SNAPSHOT.jar" />
+</object>
+</div>
+<br />
+
+<div>
+<object id="checkbox_applet" width="300" height="150" type="application/x-java-applet">
+	<!--param name="type" value="application/x-java-applet" /-->
+    <param name="java_code" value="com.aclaro.test.applets.CheckBoxApplet" />
+    <param name="java_archive" value="applet.jar,fest-swing-1.2a3.jar,fest-assert-1.1.jar,fest-util-1.1.jar,fest-reflect-1.2-SNAPSHOT.jar" />
+</object>
+</div>
+<br />
+
+<div>
+<object id="popup_applet" width="300" height="150" type="application/x-java-applet">
+	<!--param name="type" value="application/x-java-applet" /-->
+    <param name="java_code" value="com.aclaro.test.applets.PopupApplet" />
+    <param name="java_archive" value="applet.jar,fest-swing-1.2a3.jar,fest-assert-1.1.jar,fest-util-1.1.jar,fest-reflect-1.2-SNAPSHOT.jar" />
+</object>
+</div>
+<br />
+
+<div>
+	<p>
+		See Java Console for Java output and below for JavaScript output:
+	</p>
+</div>
+
+<div id="outputDiv">
+</div>
+
+</body>
+
+</html>

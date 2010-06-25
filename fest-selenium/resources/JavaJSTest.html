@@ -1,0 +1,34 @@
+<HTML>
+<script>
+// For testFunctionCall
+// Return a string value to Java
+function getString() {
+  return "Hello, world!";
+}
+
+function getNumber() {
+  return 5;
+}
+
+// For testFieldAccess
+// Make an object with city names and an index letter.
+function cities() {
+  this.a = "Athens";
+  this.b = "Belgrade";
+  this.c = "Cairo";
+}
+
+// For testArrayAccess
+function getTestArray() {
+  return [ "foo", "bar" ];
+}
+
+</script>
+<body>
+<applet name="JavaJSTest" archive="examples.jar" code="JavaJSTest" width=200 height=200 MAYSCRIPT>
+    alt="Your browser understands the &lt;APPLET&gt; tag but isn't running the applet, for some reason."
+    Your browser is completely ignoring the &lt;APPLET&gt; tag!
+</applet>
+Test. (See Java Console for output)
+</body>
+</HTML>

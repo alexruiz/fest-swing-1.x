@@ -1,0 +1,29 @@
+<html>
+<head>
+<title>JavaScript-to-Java Method Invocation</title>
+<script language="javascript">
+function runTest() {
+    app.noArgMethod();
+    app.someMethod("Hello");
+    app.someMethod(5);
+    var five = app.methodReturningInt();
+    outputDiv.innerHTML += "<br>app.methodReturningInt() = " + five;
+    var hello = app.methodReturningString();
+    outputDiv.innerHTML += "<br>app.methodReturningString() = " + hello;
+    app.methodReturningObject().anotherMethod();
+}
+</script>
+</head>
+<body onload="runTest()">
+<applet id="app" archive="examples.jar" code="MethodInvocation" width="1" height="1">
+</applet>
+<div>
+<p>
+See Java Console for Java output and below for JavaScript output:
+</p>
+</div>
+<div id="outputDiv">
+</div>
+
+</body>
+</html>

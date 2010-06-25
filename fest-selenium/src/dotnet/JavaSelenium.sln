@@ -1,0 +1,37 @@
+
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JavaSelenium", "JavaSelenium\JavaSelenium.csproj", "{FA8E9BC3-45A5-4015-A4DD-D536D1769A92}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{864C8A81-744B-47FB-AE61-8B808AE78251}"
+	ProjectSection(SolutionItems) = preProject
+		JavaSelenium.build = JavaSelenium.build
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntegrationTests", "IntegrationTests\IntegrationTests.csproj", "{2E7D5E8B-3AF1-4B0C-A08B-2C387789D4C6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "UnitTests\UnitTests.csproj", "{EEF9B84C-7B48-41B1-82BE-7990EDAF4027}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FA8E9BC3-45A5-4015-A4DD-D536D1769A92}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA8E9BC3-45A5-4015-A4DD-D536D1769A92}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA8E9BC3-45A5-4015-A4DD-D536D1769A92}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA8E9BC3-45A5-4015-A4DD-D536D1769A92}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E7D5E8B-3AF1-4B0C-A08B-2C387789D4C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E7D5E8B-3AF1-4B0C-A08B-2C387789D4C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E7D5E8B-3AF1-4B0C-A08B-2C387789D4C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E7D5E8B-3AF1-4B0C-A08B-2C387789D4C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EEF9B84C-7B48-41B1-82BE-7990EDAF4027}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EEF9B84C-7B48-41B1-82BE-7990EDAF4027}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EEF9B84C-7B48-41B1-82BE-7990EDAF4027}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EEF9B84C-7B48-41B1-82BE-7990EDAF4027}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

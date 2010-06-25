@@ -1,0 +1,88 @@
+<html>
+<head>
+<title>LiveConnect JavaScript to Java Tests</title>
+<script language="javascript">
+
+//////////////////////////////////////
+// Support Functions for Array Testing
+//////////////////////////////////////
+
+function arrayToString(arr) {
+    var ret = "[ ";
+    for (i = 0; i < arr.length; i++) {
+        if (i > 0) {
+            ret += ", ";
+        }
+        ret += arr[i];
+    }
+    ret += " ]";
+    return ret;
+}
+
+function swapElements0And2(arr) {
+    var t = arr[0];
+    arr[0] = arr[2];
+    arr[2] = t;
+}
+
+function swapColumns0And2(arr) {
+    for (i = 0; i < arr.length; i++) {
+        var row = arr[i];
+        var t = row[0];
+        row[0] = row[2];
+        row[2] = t;
+    }
+}
+
+//////////////////////////////////////
+// JavaJSTest Support Functions
+//////////////////////////////////////
+
+// For testFunctionCall
+// Return a string value to Java
+function getString() {
+  return "Hello, world!";
+}
+
+function getNumber() {
+  return 5;
+}
+
+// For testFieldAccess
+// Make an object with city names and an index letter.
+function cities() {
+  this.a = "Athens";
+  this.b = "Belgrade";
+  this.c = "Cairo";
+}
+
+// For testArrayAccess
+function getTestArray() {
+  return [ "foo", "bar" ];
+}
+
+</script>
+</head>
+<body>
+<applet id="method" archive="examples.jar" code="MethodInvocation" width="1" height="1">
+</applet>
+<applet id="array" archive="examples.jar" code="ArrayAccess" width="1" height="1">
+</applet>
+<applet id="field" archive="examples.jar" code="FieldAccess" width="1" height="1">
+</applet>
+<applet id="package" archive="examples.jar" code="com.mycompany.PackageAccess" width="1" height="1">
+</applet>
+<applet name="JavaJSTest" archive="examples.jar" code="JavaJSTest" width=200 height=200 MAYSCRIPT>
+    alt="Your browser understands the &lt;APPLET&gt; tag but isn't running the applet, for some reason."
+    Your browser is completely ignoring the &lt;APPLET&gt; tag!
+</applet>
+<div>
+<p>
+See Java Console for Java output and below for JavaScript output:
+</p>
+</div>
+<div id="outputDiv">
+</div>
+
+</body>
+</html>

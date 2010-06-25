@@ -1,0 +1,6 @@
+<project name="JavaSelenium" default="build" >
+  <property name="msbuild" value="C:\Windows\Microsoft.NET\Framework\v3.5\MSBuild.exe"/>
+  <target name="build">
+    <exec program="${msbuild}" commandline="JavaSelenium.sln" />
+  </target>
+</project>

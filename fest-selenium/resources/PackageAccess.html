@@ -1,0 +1,24 @@
+<html>
+<head>
+<title>JavaScript-to-Java Package Access</title>
+<script language="javascript">
+function runTest() {
+    app.Packages.java.lang.System.out.println("Testing printing to System.out");
+    var val = app.Packages.com.mycompany.MyClass.staticField;
+    app.Packages.com.mycompany.MyClass.staticField = 6;
+    app.Packages.com.mycompany.MyClass.staticMethod();
+    val = new app.Packages.com.mycompany.MyClass();
+    val.instanceMethod();
+}
+</script>
+</head>
+<body onload="runTest()">
+<applet id="app" archive="examples.jar" code="com.mycompany.PackageAccess" width="1" height="1">
+</applet>
+<div>
+<p>
+See Java Console for output.
+</p>
+</div>
+</body>
+</html>

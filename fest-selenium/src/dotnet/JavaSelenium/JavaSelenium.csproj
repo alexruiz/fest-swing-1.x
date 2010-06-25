@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{FA8E9BC3-45A5-4015-A4DD-D536D1769A92}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>JavaSelenium</RootNamespace>
+    <AssemblyName>JavaSelenium</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\..\..\..\..\libs\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="ThoughtWorks.Selenium.Core, Version=0.0.0.0, Culture=neutral">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\ThoughtWorks.Selenium.Core.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Browser.cs" />
+    <Compile Include="Components\Button.cs" />
+    <Compile Include="Components\CheckBox.cs" />
+    <Compile Include="Components\ComboBox.cs" />
+    <Compile Include="Components\Component.cs" />
+    <Compile Include="Components\Dialog.cs" />
+    <Compile Include="Components\FileChooser.cs" />
+    <Compile Include="Components\Interfaces\IHasMultipleSelectionValues.cs" />
+    <Compile Include="Components\Interfaces\IHasRowSelection.cs" />
+    <Compile Include="Components\Interfaces\IHasSelectionValue.cs" />
+    <Compile Include="Components\Interfaces\IRequiresJavaObjectCreation.cs" />
+    <Compile Include="Components\Interfaces\IRootComponent.cs" />
+    <Compile Include="Components\Label.cs" />
+    <Compile Include="Components\MenuItem.cs" />
+    <Compile Include="Components\NullComponent.cs" />
+    <Compile Include="Components\Panel.cs" />
+    <Compile Include="Components\RadioButton.cs" />
+    <Compile Include="Components\ScrollBar.cs" />
+    <Compile Include="Components\ScrollPane.cs" />
+    <Compile Include="Components\Slider.cs" />
+    <Compile Include="Components\Spinner.cs" />
+    <Compile Include="Components\SplitPane.cs" />
+    <Compile Include="Components\TabbedPane.cs" />
+    <Compile Include="Components\Table.cs" />
+    <Compile Include="Components\Interfaces\IHasSelection.cs" />
+    <Compile Include="Components\Interfaces\IHasCoordinates.cs" />
+    <Compile Include="Components\Interfaces\IHasTimeOut.cs" />
+    <Compile Include="Components\Interfaces\IHasInputValue.cs" />
+    <Compile Include="Components\Tab.cs" />
+    <Compile Include="Components\TextBox.cs" />
+    <Compile Include="Components\ToggleButton.cs" />
+    <Compile Include="Components\ToolBar.cs" />
+    <Compile Include="Components\Tree.cs" />
+    <Compile Include="Coordinates\Cell.cs" />
+    <Compile Include="Coordinates\Coordinates.cs" />
+    <Compile Include="IJavaAction.cs" />
+    <Compile Include="IJavaSelenium.cs" />
+    <Compile Include="IRootComponentAware.cs" />
+    <Compile Include="ISeleniumOverrides.cs" />
+    <Compile Include="JavaAction.cs" />
+    <Compile Include="JavaSelenium.cs" />
+    <Compile Include="Components\List.cs" />
+    <Compile Include="KeyStroke\IKeyStrokeMappingProvider.cs" />
+    <Compile Include="KeyStroke\KeyConstants.cs" />
+    <Compile Include="KeyStroke\KeyStrokeMapping.cs" />
+    <Compile Include="KeyStroke\KeyStrokeMappingProvider.cs" />
+    <Compile Include="KeyStroke\KeyStrokeMappingProvider_EN.cs" />
+    <Compile Include="Mouse\ButtonConstants.cs" />
+    <Compile Include="Mouse\Click.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
