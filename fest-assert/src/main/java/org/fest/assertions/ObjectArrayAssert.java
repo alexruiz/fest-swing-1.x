@@ -17,7 +17,7 @@ package org.fest.assertions;
 import static org.fest.assertions.ErrorMessages.*;
 import static org.fest.assertions.Formatting.inBrackets;
 import static org.fest.reflect.core.Reflection.property;
-import static org.fest.reflect.util.PropertiesUtils.*;
+import static org.fest.reflect.util.Properties.*;
 import static org.fest.util.Arrays.*;
 import static org.fest.util.Collections.*;
 import static org.fest.util.Strings.concat;
@@ -383,8 +383,8 @@ public class ObjectArrayAssert extends ArrayAssert<Object[]> {
       // - extract a collection of 'street' from addresses collection -> streets collection
       // remaining property is 'number'
       // - extract a collection of 'number' from streets collection -> numbers collection
-      String firstProperty = extractFirstSubProperty(propertyToExtract);
-      String nestedPropertyWithoutFirstProperty = substractFirstSubProperty(propertyToExtract);
+      String firstProperty = firstPropertyIfNested(propertyToExtract);
+      String nestedPropertyWithoutFirstProperty = removeFirstPropertyIfNested(propertyToExtract);
       Object[] firstPropertyValues = extractValuesOfGivenPropertyFromNonNullCollectionElements(firstProperty,
           nonNullElements);
       // extract next sub property values until reaching a last sub property

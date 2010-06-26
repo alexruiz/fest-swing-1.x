@@ -18,7 +18,7 @@ import static org.fest.assertions.Collections.*;
 import static org.fest.assertions.Formatting.inBrackets;
 import static org.fest.reflect.beanproperty.Invoker.descriptorForProperty;
 import static org.fest.reflect.core.Reflection.property;
-import static org.fest.reflect.util.PropertiesUtils.*;
+import static org.fest.reflect.util.Properties.*;
 import static org.fest.util.Collections.duplicatesFrom;
 import static org.fest.util.Strings.concat;
 
@@ -145,27 +145,23 @@ public class CollectionAssert extends GroupAssert<Collection<?>> {
   }
 
   /** {@inheritDoc} */
-  @Override
   public CollectionAssert as(String description) {
     description(description);
     return this;
   }
 
   /** {@inheritDoc} */
-  @Override
   public CollectionAssert describedAs(String description) {
     return as(description);
   }
 
   /** {@inheritDoc} */
-  @Override
   public CollectionAssert as(Description description) {
     description(description);
     return this;
   }
 
   /** {@inheritDoc} */
-  @Override
   public CollectionAssert describedAs(Description description) {
     return as(description);
   }
@@ -178,7 +174,6 @@ public class CollectionAssert extends GroupAssert<Collection<?>> {
    * @throws AssertionError if the actual collection does not satisfy the given condition.
    * @see #is(Condition)
    */
-  @Override
   public CollectionAssert satisfies(Condition<Collection<?>> condition) {
     assertSatisfies(condition);
     return this;
@@ -192,7 +187,6 @@ public class CollectionAssert extends GroupAssert<Collection<?>> {
    * @throws AssertionError if the actual collection satisfies the given condition.
    * @see #isNot(Condition)
    */
-  @Override
   public CollectionAssert doesNotSatisfy(Condition<Collection<?>> condition) {
     assertDoesNotSatisfy(condition);
     return this;
@@ -206,7 +200,6 @@ public class CollectionAssert extends GroupAssert<Collection<?>> {
    * @throws AssertionError if the actual collection does not satisfy the given condition.
    * @since 1.2
    */
-  @Override
   public CollectionAssert is(Condition<Collection<?>> condition) {
     assertIs(condition);
     return this;
@@ -220,7 +213,6 @@ public class CollectionAssert extends GroupAssert<Collection<?>> {
    * @throws AssertionError if the actual collection satisfies the given condition.
    * @since 1.2
    */
-  @Override
   public CollectionAssert isNot(Condition<Collection<?>> condition) {
     assertIsNot(condition);
     return this;
@@ -230,7 +222,6 @@ public class CollectionAssert extends GroupAssert<Collection<?>> {
    * Verifies that the actual collection is <code>null</code> or empty.
    * @throws AssertionError if the actual collection is not <code>null</code> or not empty.
    */
-  @Override
   public void isNullOrEmpty() {
     if (Collections.isEmpty(actual)) return;
     failIfCustomMessageIsSet();
@@ -242,7 +233,6 @@ public class CollectionAssert extends GroupAssert<Collection<?>> {
    * @return this assertion object.
    * @throws AssertionError if the actual collection is <code>null</code>.
    */
-  @Override
   public CollectionAssert isNotNull() {
     if (actual != null) return this;
     failIfCustomMessageIsSet();
@@ -254,7 +244,6 @@ public class CollectionAssert extends GroupAssert<Collection<?>> {
    * @throws AssertionError if the actual collection is <code>null</code>.
    * @throws AssertionError if the actual collection is not empty.
    */
-  @Override
   public void isEmpty() {
     isNotNull();
     if (Collections.isEmpty(actual)) return;
@@ -268,7 +257,6 @@ public class CollectionAssert extends GroupAssert<Collection<?>> {
    * @throws AssertionError if the actual collection is <code>null</code>.
    * @throws AssertionError if the actual collection is empty.
    */
-  @Override
   public CollectionAssert isNotEmpty() {
     isNotNull();
     if (!actual.isEmpty()) return this;
@@ -283,7 +271,6 @@ public class CollectionAssert extends GroupAssert<Collection<?>> {
    * @throws AssertionError if the actual collection is <code>null</code>.
    * @throws AssertionError if the number of elements of the actual collection is not equal to the given one.
    */
-  @Override
   public CollectionAssert hasSize(int expected) {
     int actualSize = actualGroupSize();
     if (actualSize == expected) return this;
@@ -296,7 +283,6 @@ public class CollectionAssert extends GroupAssert<Collection<?>> {
    * Returns the number of elements in the actual collection.
    * @return the number of elements in the actual collection.
    */
-  @Override
   protected int actualGroupSize() {
     isNotNull();
     return actual.size();
@@ -308,7 +294,6 @@ public class CollectionAssert extends GroupAssert<Collection<?>> {
    * @return this assertion object.
    * @throws AssertionError if the actual collection is not equal to the given one.
    */
-  @Override
   public CollectionAssert isEqualTo(Collection<?> expected) {
     assertEqualTo(expected);
     return this;
@@ -320,7 +305,6 @@ public class CollectionAssert extends GroupAssert<Collection<?>> {
    * @return this assertion object.
    * @throws AssertionError if the actual collection is equal to the given one.
    */
-  @Override
   public CollectionAssert isNotEqualTo(Collection<?> other) {
     assertNotEqualTo(other);
     return this;
@@ -332,7 +316,6 @@ public class CollectionAssert extends GroupAssert<Collection<?>> {
    * @return this assertion object.
    * @throws AssertionError if the actual collection is not the same as the given one.
    */
-  @Override
   public CollectionAssert isSameAs(Collection<?> expected) {
     assertSameAs(expected);
     return this;
@@ -344,14 +327,12 @@ public class CollectionAssert extends GroupAssert<Collection<?>> {
    * @return this assertion object.
    * @throws AssertionError if the actual collection is the same as the given one.
    */
-  @Override
   public CollectionAssert isNotSameAs(Collection<?> other) {
     assertNotSameAs(other);
     return this;
   }
 
   /** {@inheritDoc} */
-  @Override
   public CollectionAssert overridingErrorMessage(String message) {
     replaceDefaultErrorMessagesWith(message);
     return this;
@@ -400,8 +381,8 @@ public class CollectionAssert extends GroupAssert<Collection<?>> {
       // - extract a collection of 'street' from adresses collection -> streets collection
       // remaining property is 'number'
       // - extract a collection of 'number' from streets collection -> numbers collection
-      String firstProperty = extractFirstSubProperty(propertyToExtract);
-      String nestedPropertyWithoutFirstProperty = substractFirstSubProperty(propertyToExtract);
+      String firstProperty = firstPropertyIfNested(propertyToExtract);
+      String nestedPropertyWithoutFirstProperty = removeFirstPropertyIfNested(propertyToExtract);
       Collection<Object> firstPropertyValues = extractValuesOfGivenPropertyFromNonNullCollectionElements(firstProperty,
           nonNullElements);
       // extract next sub property values until reaching a last sub property

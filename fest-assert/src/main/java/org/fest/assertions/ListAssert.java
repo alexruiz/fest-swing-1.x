@@ -24,7 +24,7 @@ import static org.fest.util.Strings.concat;
 import java.util.*;
 
 import org.fest.reflect.beanproperty.Invoker;
-import org.fest.reflect.util.PropertiesUtils;
+import org.fest.reflect.util.Properties;
 import org.fest.util.Collections;
 
 /**
@@ -526,7 +526,7 @@ public class ListAssert extends GroupAssert<List<?>> {
     if (Collections.isEmpty(collection) || Collections.hasOnlyNullElements(collection)) { return new ArrayList<Object>(); }
     // ignore null elements, we can't extract a property from a null object
     List<?> nonNullElements = Collections.nonNullElements(collection);
-    if (PropertiesUtils.isNestedProperty(propertyToExtract)) {
+    if (Properties.isNestedProperty(propertyToExtract)) {
       // property is a nested property, like 'adress.street.number', extract sub properties until reaching a simple
       // property, on our example :
       // - extract a collection of 'adress' from collection elements -> adresses collection
@@ -534,8 +534,8 @@ public class ListAssert extends GroupAssert<List<?>> {
       // - extract a collection of 'street' from adresses collection -> streets collection
       // remaining property is 'number'
       // - extract a collection of 'number' from streets collection -> numbers collection
-      String firstProperty = PropertiesUtils.extractFirstSubProperty(propertyToExtract);
-      String nestedPropertyWithoutFirstProperty = PropertiesUtils.substractFirstSubProperty(propertyToExtract);
+      String firstProperty = Properties.firstPropertyIfNested(propertyToExtract);
+      String nestedPropertyWithoutFirstProperty = Properties.removeFirstPropertyIfNested(propertyToExtract);
       List<Object> firstPropertyValues = extractValuesOfGivenPropertyFromNonNullListElements(firstProperty,
           nonNullElements);
       // extract next sub property values until reaching a last sub property
