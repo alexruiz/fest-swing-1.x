@@ -13,9 +13,8 @@
  *
  * Copyright @2010 the original author or authors.
  */
-package org.fest.reflect.util;
+package org.fest.assertions;
 
-import static org.fest.reflect.util.Properties.firstPropertyIfNested;
 import static org.fest.util.Collections.list;
 import static org.junit.Assert.assertEquals;
 
@@ -27,13 +26,13 @@ import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
 /**
- * Tests for <code>{@link Properties#firstPropertyIfNested(String)}</code>.
+ * Tests for <code>{@link PropertySupport#firstPropertyIfNested(String)}</code>.
  *
  * @author Joel Costigliola
  * @author Alex Ruiz
  */
 @RunWith(Parameterized.class)
-public class Properties_firstPropertyIfNested_withNestedProperties_Test {
+public class PropertySupport_firstPropertyIfNested_withNestedProperties_Test {
 
   @Parameters
   public static Collection<Object[]> propertyNames() {
@@ -46,13 +45,13 @@ public class Properties_firstPropertyIfNested_withNestedProperties_Test {
   private final String nestedPropertyName;
   private final String firstProperty;
 
-  public Properties_firstPropertyIfNested_withNestedProperties_Test(String nestedPropertyName, String firstProperty) {
+  public PropertySupport_firstPropertyIfNested_withNestedProperties_Test(String nestedPropertyName, String firstProperty) {
     this.nestedPropertyName = nestedPropertyName;
     this.firstProperty = firstProperty;
   }
 
   @Test
   public void should_return_first_property_name() {
-    assertEquals(firstProperty, firstPropertyIfNested(nestedPropertyName));
+    assertEquals(firstProperty, PropertySupport.firstPropertyIfNested(nestedPropertyName));
   }
 }

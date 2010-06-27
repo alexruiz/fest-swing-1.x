@@ -50,7 +50,7 @@ public class ListAssert extends GroupAssert<List<?>> {
    * @return this assertion object.
    * @throws NullPointerException if the given <code>Index</code> is <code>null</code>.
    * @throws IndexOutOfBoundsException if the value of the given <code>Index</code> is negative, or equal to or greater
-   *           than the size of the actual <code>List</code>.
+   * than the size of the actual <code>List</code>.
    * @throws AssertionError if the given <code>List</code> does not contain the given object at the given index.
    */
   public ListAssert contains(Object o, Index index) {
@@ -113,7 +113,7 @@ public class ListAssert extends GroupAssert<List<?>> {
    * @throws AssertionError if the actual <code>List</code> is <code>null</code>.
    * @throws AssertionError if the given array is <code>null</code>.
    * @throws AssertionError if the actual <code>List</code> is not empty and with the given sequence of objects is
-   *           empty.
+   * empty.
    * @throws AssertionError if the actual <code>List</code> does not start with the given sequence of objects.
    */
   public ListAssert startsWith(Object... sequence) {
@@ -143,7 +143,7 @@ public class ListAssert extends GroupAssert<List<?>> {
    * @throws AssertionError if the actual <code>List</code> is <code>null</code>.
    * @throws AssertionError if the given array is <code>null</code>.
    * @throws AssertionError if the actual <code>List</code> is not empty and with the given sequence of objects is
-   *           empty.
+   * empty.
    * @throws AssertionError if the actual <code>List</code> does not end with the given sequence of objects.
    */
   public ListAssert endsWith(Object... sequence) {
@@ -194,7 +194,7 @@ public class ListAssert extends GroupAssert<List<?>> {
    * @throws AssertionError if the actual <code>List</code> is <code>null</code>.
    * @throws NullPointerException if the given array is <code>null</code>.
    * @throws AssertionError if the actual <code>List</code> does not contain the given objects, or if the actual
-   *           <code>List</code> contains elements other than the ones specified.
+   * <code>List</code> contains elements other than the ones specified.
    */
   public ListAssert containsOnly(Object... objects) {
     isNotNull();

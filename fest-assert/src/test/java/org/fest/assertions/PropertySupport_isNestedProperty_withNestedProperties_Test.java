@@ -13,14 +13,12 @@
  *
  * Copyright @2010 the original author or authors.
  */
-package org.fest.reflect.util;
+package org.fest.assertions;
 
-import static org.fest.reflect.util.Properties.isNestedProperty;
 import static org.fest.util.Collections.list;
+import static org.junit.Assert.assertTrue;
 
 import java.util.Collection;
-
-import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -28,13 +26,13 @@ import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
 /**
- * Tests for <code>{@link Properties#isNestedProperty(String)}</code>
+ * Tests for <code>{@link PropertySupport#isNestedProperty(String)}</code>
  *
  * @author Joel Costigliola
  * @author Alex Ruiz
  */
 @RunWith(Parameterized.class)
-public class Properties_isNestedProperty_withNestedProperties_Test {
+public class PropertySupport_isNestedProperty_withNestedProperties_Test {
 
   @Parameters
   public static Collection<Object[]> propertyNames() {
@@ -46,12 +44,12 @@ public class Properties_isNestedProperty_withNestedProperties_Test {
 
   private final String propertyName;
 
-  public Properties_isNestedProperty_withNestedProperties_Test(String propertyName) {
+  public PropertySupport_isNestedProperty_withNestedProperties_Test(String propertyName) {
     this.propertyName = propertyName;
   }
 
   @Test
   public void should_return_true_if_property_is_nested() {
-    assertTrue(isNestedProperty(propertyName));
+    assertTrue(PropertySupport.isNestedProperty(propertyName));
   }
 }

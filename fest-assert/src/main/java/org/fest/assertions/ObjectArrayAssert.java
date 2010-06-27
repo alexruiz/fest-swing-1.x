@@ -285,7 +285,7 @@ public class ObjectArrayAssert extends ArrayAssert<Object[]> {
    * @return this assertion object.
    * @throws AssertionError if the actual <code>Object</code> array is <code>null</code>.
    * @throws AssertionError if the number of elements in the actual <code>Object</code> array is not equal to the given
-   *           one.
+   * one.
    */
   public ObjectArrayAssert hasSize(int expected) {
     assertThatActualHasSize(expected);

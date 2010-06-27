@@ -13,9 +13,7 @@
  *
  * Copyright @2010 the original author or authors.
  */
-package org.fest.reflect.util;
-
-import static org.fest.reflect.util.Properties.isNestedProperty;
+package org.fest.assertions;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -23,46 +21,46 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link Properties#isNestedProperty(String)}</code>
+ * Tests for <code>{@link PropertySupport#isNestedProperty(String)}</code>
  *
  * @author Joel Costigliola
  * @author Alex Ruiz
  */
-public class Properties_isNestedProperty_withInvalidInput_Test {
+public class PropertySupport_isNestedProperty_withInvalidInput_Test {
 
   @Test
   public void should_return_true_if_property_is_nested() {
-    assertTrue(isNestedProperty("person.name"));
-    assertTrue(isNestedProperty("adress.street.name"));
+    assertTrue(PropertySupport.isNestedProperty("person.name"));
+    assertTrue(PropertySupport.isNestedProperty("adress.street.name"));
   }
 
   @Test
   public void should_return_false_if_property_name_does_not_contain_separator() {
-    assertFalse(isNestedProperty("person"));
+    assertFalse(PropertySupport.isNestedProperty("person"));
   }
 
   @Test
   public void should_return_false_if_property_name_starts_with_separator() {
-    assertFalse(isNestedProperty(".name"));
+    assertFalse(PropertySupport.isNestedProperty(".name"));
   }
 
   @Test
   public void should_return_false_if_property_name_ends_with_separator() {
-    assertFalse(isNestedProperty("person."));
+    assertFalse(PropertySupport.isNestedProperty("person."));
   }
 
   @Test
   public void should_return_false_if_property_name_contains_separator_only() {
-    assertFalse(isNestedProperty("."));
+    assertFalse(PropertySupport.isNestedProperty("."));
   }
 
   @Test
   public void should_return_false_if_property_name_is_empty() {
-    assertFalse(isNestedProperty(""));
+    assertFalse(PropertySupport.isNestedProperty(""));
   }
 
   @Test(expected = NullPointerException.class)
   public void should_throw_error_if_property_is_null() {
-    isNestedProperty(null);
+    PropertySupport.isNestedProperty(null);
   }
 }

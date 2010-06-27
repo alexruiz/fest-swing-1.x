@@ -13,7 +13,7 @@
  *
  * Copyright @2010 the original author or authors.
  */
-package org.fest.reflect.util;
+package org.fest.assertions;
 
 import static org.fest.util.Collections.list;
 import static org.junit.Assert.assertEquals;
@@ -26,13 +26,13 @@ import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
 /**
- * Tests for <code>{@link Properties#removeFirstPropertyIfNested(String)}</code>
+ * Tests for <code>{@link PropertySupport#removeFirstPropertyIfNested(String)}</code>
  *
  * @author Joel Costigliola
  * @author Alex Ruiz
  */
 @RunWith(Parameterized.class)
-public class Properties_removeFirstPropertyIfNested_withNestedProperties_Test {
+public class PropertySupport_removeFirstPropertyIfNested_withNestedProperties_Test {
 
   @Parameters
   public static Collection<Object[]> propertyNames() {
@@ -45,7 +45,7 @@ public class Properties_removeFirstPropertyIfNested_withNestedProperties_Test {
   private final String propertyName;
   private final String withoutFirstProperty;
 
-  public Properties_removeFirstPropertyIfNested_withNestedProperties_Test(String propertyName,
+  public PropertySupport_removeFirstPropertyIfNested_withNestedProperties_Test(String propertyName,
       String withoutFirstProperty) {
     this.propertyName = propertyName;
     this.withoutFirstProperty = withoutFirstProperty;
@@ -53,6 +53,6 @@ public class Properties_removeFirstPropertyIfNested_withNestedProperties_Test {
 
   @Test
   public void should_remove_first_property() {
-    assertEquals(withoutFirstProperty, Properties.removeFirstPropertyIfNested(propertyName));
+    assertEquals(withoutFirstProperty, PropertySupport.removeFirstPropertyIfNested(propertyName));
   }
 }

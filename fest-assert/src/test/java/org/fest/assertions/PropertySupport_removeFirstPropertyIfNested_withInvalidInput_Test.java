@@ -13,27 +13,27 @@
  *
  * Copyright @2010 the original author or authors.
  */
-package org.fest.reflect.util;
+package org.fest.assertions;
 
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link Properties#removeFirstPropertyIfNested(String)}</code>
+ * Tests for <code>{@link PropertySupport#removeFirstPropertyIfNested(String)}</code>
  *
  * @author Joel Costigliola
  * @author Alex Ruiz
  */
-public class Properties_removeFirstPropertyIfNested_withInvalidInput_Test {
+public class PropertySupport_removeFirstPropertyIfNested_withInvalidInput_Test {
 
   @Test
   public void should_return_empty_string_if_given_property_is_not_nested() {
-    assertEquals("", Properties.removeFirstPropertyIfNested("address"));
+    assertEquals("", PropertySupport.removeFirstPropertyIfNested("address"));
   }
 
   @Test(expected = NullPointerException.class)
   public void should_throw_error_if_property_is_null() {
-    Properties.removeFirstPropertyIfNested(null);
+    PropertySupport.removeFirstPropertyIfNested(null);
   }
 }

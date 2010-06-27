@@ -17,7 +17,6 @@ package org.fest.assertions;
 import static java.util.Collections.emptyList;
 import static org.fest.reflect.beanproperty.Invoker.descriptorForProperty;
 import static org.fest.reflect.core.Reflection.property;
-import static org.fest.reflect.util.Properties.*;
 import static org.fest.util.Collections.*;
 
 import java.util.*;
@@ -27,8 +26,12 @@ import java.util.*;
  *
  * @author Joel Costigliola
  * @author Alex Ruiz
+ *
+ * @since 1.3
  */
 final class PropertySupport {
+
+  private static final String SEPARATOR = ".";
 
   /*
    * if property is nested, like 'address.street.number', extract sub-properties until reaching a simple property,
@@ -61,6 +64,59 @@ final class PropertySupport {
       propertyValues.add(propertyValue);
     }
     return propertyValues;
+  }
+
+  /**
+   * Returns <code>true</code> if property is nested, <code>false</code> otherwise.
+   * <p>
+   * Examples:
+   * <pre>
+   * isNestedProperty("address.street"); // true
+   * isNestedProperty("address.street.name"); // true
+   *
+   * isNestedProperty("person"); // false
+   * isNestedProperty(".name"); // false
+   * isNestedProperty("person."); // false
+   * isNestedProperty("person.name."); // false
+   * isNestedProperty(".person.name"); // false
+   * isNestedProperty("."); // false
+   * isNestedProperty(""); // false
+   * </pre>
+   * @param propertyName the given property name.
+   * @return <code>true</code> if property is nested, <code>false</code> otherwise.
+   * @throws NullPointerException if given property name is <code>null</code>.
+   */
+  static boolean isNestedProperty(String propertyName) {
+    if (propertyName == null) throw new NullPointerException("The property name to verify should not be null");
+    return propertyName.contains(SEPARATOR) && !propertyName.startsWith(SEPARATOR) && !propertyName.endsWith(SEPARATOR);
+  }
+
+  /**
+   * Removes the first property from the given property name only if the given property name belongs to a nested
+   * property. For example, given the nested property "address.street.name", this method will return "street.name". This
+   * method returns an empty {@code String} if the given property name does not belong to a nested property.
+   * @param propertyName the given property name.
+   * @return the given property name without its first property, if the property name belongs to a nested property;
+   * otherwise, it will return an empty {@code String}.
+   * @throws NullPointerException if given property name is <code>null</code>.
+   */
+  static String removeFirstPropertyIfNested(String propertyName) {
+    if (!isNestedProperty(propertyName)) return "";
+    return propertyName.substring(propertyName.indexOf(SEPARATOR) + 1);
+  }
+
+  /**
+   * Returns the first property from the given property name only if the given property name belongs to a nested
+   * property. For example, given the nested property "address.street.name", this method will return "address". This
+   * method returns the given property name unchanged if it does not belong to a nested property.
+   * @param propertyName the given property name.
+   * @return the first property from the given property name, if the property name belongs to a nested property;
+   * otherwise, it will return the given property name unchanged.
+   * @throws NullPointerException if given property name is <code>null</code>.
+   */
+  static String firstPropertyIfNested(String propertyName) {
+    if (!isNestedProperty(propertyName)) return propertyName;
+    return propertyName.substring(0, propertyName.indexOf(SEPARATOR));
   }
 
   private PropertySupport() {}

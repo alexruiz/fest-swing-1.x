@@ -13,27 +13,27 @@
  *
  * Copyright @2010 the original author or authors.
  */
-package org.fest.reflect.util;
+package org.fest.assertions;
 
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link Properties#firstPropertyIfNested(String)}</code>.
+ * Tests for <code>{@link PropertySupport#firstPropertyIfNested(String)}</code>.
  *
  * @author Joel Costigliola
  * @author Alex Ruiz
  */
-public class Properties_firstPropertyIfNested_withInvalidInput_Test {
+public class PropertySupport_firstPropertyIfNested_withInvalidInput_Test {
 
   @Test
   public void should_return_given_property_if_not_a_nested_property() {
-    assertEquals("name", Properties.firstPropertyIfNested("name"));
+    assertEquals("name", PropertySupport.firstPropertyIfNested("name"));
   }
 
   @Test(expected = NullPointerException.class)
   public void should_throw_error_if_property_is_null() {
-    Properties.firstPropertyIfNested(null);
+    PropertySupport.firstPropertyIfNested(null);
   }
 }
