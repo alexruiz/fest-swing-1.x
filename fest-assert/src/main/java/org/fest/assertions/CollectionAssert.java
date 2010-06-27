@@ -14,11 +14,10 @@
  */
 package org.fest.assertions;
 
+import static java.util.Collections.emptyList;
 import static org.fest.assertions.Collections.*;
 import static org.fest.assertions.Formatting.inBrackets;
-import static org.fest.reflect.beanproperty.Invoker.descriptorForProperty;
-import static org.fest.reflect.core.Reflection.property;
-import static org.fest.reflect.util.Properties.*;
+import static org.fest.assertions.PropertySupport.propertyValues;
 import static org.fest.util.Collections.duplicatesFrom;
 import static org.fest.util.Strings.concat;
 
@@ -339,72 +338,27 @@ public class CollectionAssert extends GroupAssert<Collection<?>> {
   }
 
   /**
-   * Creates a new instance of <code>{@link CollectionAssert}</code> composed of actual collection
-   * <i>element.propertyName</i> values.<br>
-   * You can then apply all collection assertions on that new collection, it works with simple properties like
-   * <i>Person.age</i> and nested properties <i>Person.father.age</i>.
+   * Creates a new instance of <code>{@link CollectionAssert}</code> whose target collection contains the values of the
+   * given property name from the elements of this {@code CollectionAssert}'s collection. Property access works with
+   * both simple properties like {@code Person.age} and nested properties {@code Person.father.age}.
+   * </p>
    * <p>
-   * For example, let's say you have a collection of Person objects and you want to verify their age, you can write :<br>
-   * <code>- assertThat(persons).onProperty("age").containsOnly(25, 16, 44, 37); // simple property</code><br>
-   * <code>- assertThat(persons).onProperty("father.age").containsOnly(55, 46, 74, 62); // nested property</code>
-   * <p>
-   * Note that null collection elements are ignored and an assertion error is thrown when an element doesn't have the
-   * requested property.
-   *
-   * @param propertyName the property we want to extract values from actual collection to build a new <code>
-   *          {@link CollectionAssert}</code>.
-   * @return a new instance of <code>{@link CollectionAssert}</code> composed of actual collection
-   *         <i>element.propertyName</i> values.
+   * For example, let's say we have a collection of {@code Person} objects and you want to verify their age:
+   * <pre>
+   * assertThat(persons).onProperty("age").containsOnly(25, 16, 44, 37); // simple property
+   * assertThat(persons).onProperty("father.age").containsOnly(55, 46, 74, 62); // nested property
+   * </p>
+   * @param propertyName the name of the property to extract values from the actual collection to build a new
+   * {@code CollectionAssert}.
+   * @return a new {@code CollectionAssert} containing the values of the given property name from the elements of this
+   * {@code CollectionAssert}'s collection.
+   * @throws AssertionError if the actual collection is <code>null</code>.
    * @throws AssertionError if an element of actual collection doesn't have the requested property.
+   * @since 1.3
    */
   public CollectionAssert onProperty(String propertyName) {
-    // if actual list is null or empty, no need to select elements property values
-    if (Collections.isEmpty(actual)) { return Assertions.assertThat(actual); }
-    Collection<Object> extractedPropertyValues = extractValuesOfGivenPropertyFromNonNullCollectionElements(
-        propertyName, actual);
-    // back to collection assert on the property values of actual elements
-    return Assertions.assertThat(extractedPropertyValues);
+    isNotNull();
+    if (actual.isEmpty()) return new CollectionAssert(emptyList());
+    return new CollectionAssert(propertyValues(propertyName, actual));
   }
-
-  // TODO : to be replaced by fest reflect nested property support when available
-  private Collection<Object> extractValuesOfGivenPropertyFromNonNullCollectionElements(String propertyToExtract,
-      Collection<?> collection) {
-    // if collection contains only null elements, just return an empty collection.
-    if (Collections.isEmpty(collection) || Collections.hasOnlyNullElements(collection)) { return new ArrayList<Object>(); }
-    // ignore null elements as we can't extract a property from a null object
-    Collection<?> nonNullElements = Collections.nonNullElements(collection);
-    if (isNestedProperty(propertyToExtract)) {
-      // property is a nested property, like 'adress.street.number', extract sub properties until reaching a simple
-      // property, on our example :
-      // - extract a collection of 'adress' from collection elements -> adresses collection
-      // remaining property is 'street.number'
-      // - extract a collection of 'street' from adresses collection -> streets collection
-      // remaining property is 'number'
-      // - extract a collection of 'number' from streets collection -> numbers collection
-      String firstProperty = firstPropertyIfNested(propertyToExtract);
-      String nestedPropertyWithoutFirstProperty = removeFirstPropertyIfNested(propertyToExtract);
-      Collection<Object> firstPropertyValues = extractValuesOfGivenPropertyFromNonNullCollectionElements(firstProperty,
-          nonNullElements);
-      // extract next sub property values until reaching a last sub property
-      return extractValuesOfGivenPropertyFromNonNullCollectionElements(nestedPropertyWithoutFirstProperty,
-          firstPropertyValues);
-    } else {
-      // Property is a simple property, like 'name'
-      // To extract property values, we must figure out the type of actual collection elements (can't simply use Object
-      // since actual collection may contain primitive elements)
-      // We take the first element type as reference assuming that all remaining elements have the same type.
-      // We are sure that there is at least one non null element (check done with the call to hasOnlyNullElements)
-      Class<?> propertyType = descriptorForProperty(propertyToExtract, nonNullElements.iterator().next())
-          .getPropertyType();
-      // fill list with property values of actual elements
-      List<Object> extractedPropertyValues = new ArrayList<Object>();
-      for (Object nonNullElement : nonNullElements) {
-        // extract the awaited property value of current element list
-        Object propertyValueOfElement = property(propertyToExtract).ofType(propertyType).in(nonNullElement).get();
-        extractedPropertyValues.add(propertyValueOfElement);
-      }
-      return extractedPropertyValues;
-    }
-  }
-
 }

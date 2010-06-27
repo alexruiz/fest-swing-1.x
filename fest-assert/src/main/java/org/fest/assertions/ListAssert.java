@@ -14,17 +14,16 @@
  */
 package org.fest.assertions;
 
+import static java.util.Collections.emptyList;
 import static org.fest.assertions.Collections.*;
 import static org.fest.assertions.Formatting.inBrackets;
-import static org.fest.reflect.core.Reflection.property;
+import static org.fest.assertions.PropertySupport.propertyValues;
 import static org.fest.util.Collections.*;
 import static org.fest.util.Objects.areEqual;
 import static org.fest.util.Strings.concat;
 
 import java.util.*;
 
-import org.fest.reflect.beanproperty.Invoker;
-import org.fest.reflect.util.Properties;
 import org.fest.util.Collections;
 
 /**
@@ -266,27 +265,23 @@ public class ListAssert extends GroupAssert<List<?>> {
   }
 
   /** {@inheritDoc} */
-  @Override
   public ListAssert as(String description) {
     description(description);
     return this;
   }
 
   /** {@inheritDoc} */
-  @Override
   public ListAssert describedAs(String description) {
     return as(description);
   }
 
   /** {@inheritDoc} */
-  @Override
   public ListAssert as(Description description) {
     description(description);
     return this;
   }
 
   /** {@inheritDoc} */
-  @Override
   public ListAssert describedAs(Description description) {
     return as(description);
   }
@@ -299,7 +294,6 @@ public class ListAssert extends GroupAssert<List<?>> {
    * @throws AssertionError if the actual <code>List</code> does not satisfy the given condition.
    * @see #is(Condition)
    */
-  @Override
   public ListAssert satisfies(Condition<List<?>> condition) {
     assertSatisfies(condition);
     return this;
@@ -313,7 +307,6 @@ public class ListAssert extends GroupAssert<List<?>> {
    * @throws AssertionError if the actual <code>List</code> satisfies the given condition.
    * @see #isNot(Condition)
    */
-  @Override
   public ListAssert doesNotSatisfy(Condition<List<?>> condition) {
     assertDoesNotSatisfy(condition);
     return this;
@@ -327,7 +320,6 @@ public class ListAssert extends GroupAssert<List<?>> {
    * @throws AssertionError if the actual <code>List</code> does not satisfy the given condition.
    * @since 1.2
    */
-  @Override
   public ListAssert is(Condition<List<?>> condition) {
     assertIs(condition);
     return this;
@@ -378,7 +370,6 @@ public class ListAssert extends GroupAssert<List<?>> {
    * @throws AssertionError if the actual <code>List</code> is <code>null</code>.
    * @throws AssertionError if the actual <code>List</code> is not empty.
    */
-  @Override
   public void isEmpty() {
     isNotNull();
     if (Collections.isEmpty(actual)) return;
@@ -392,7 +383,6 @@ public class ListAssert extends GroupAssert<List<?>> {
    * @throws AssertionError if the actual <code>List</code> is <code>null</code>.
    * @throws AssertionError if the actual <code>List</code> is empty.
    */
-  @Override
   public ListAssert isNotEmpty() {
     isNotNull();
     if (!actual.isEmpty()) return this;
@@ -404,7 +394,6 @@ public class ListAssert extends GroupAssert<List<?>> {
    * Verifies that the actual <code>{@link List}</code> is <code>null</code> or empty.
    * @throws AssertionError if the actual <code>List</code> is not <code>null</code> or not empty.
    */
-  @Override
   public void isNullOrEmpty() {
     if (Collections.isEmpty(actual)) return;
     failIfCustomMessageIsSet();
@@ -416,7 +405,6 @@ public class ListAssert extends GroupAssert<List<?>> {
    * @return this assertion object.
    * @throws AssertionError if the actual <code>List</code> is <code>null</code>.
    */
-  @Override
   public ListAssert isNotNull() {
     if (actual != null) return this;
     failIfCustomMessageIsSet();
@@ -444,7 +432,6 @@ public class ListAssert extends GroupAssert<List<?>> {
    * @return this assertion object.
    * @throws AssertionError if the actual <code>List</code> is not equal to the given one.
    */
-  @Override
   public ListAssert isEqualTo(List<?> expected) {
     assertEqualTo(expected);
     return this;
@@ -456,7 +443,6 @@ public class ListAssert extends GroupAssert<List<?>> {
    * @return this assertion object.
    * @throws AssertionError if the actual <code>List</code> is equal to the given one.
    */
-  @Override
   public ListAssert isNotEqualTo(List<?> other) {
     assertNotEqualTo(other);
     return this;
@@ -468,7 +454,6 @@ public class ListAssert extends GroupAssert<List<?>> {
    * @return this assertion object.
    * @throws AssertionError if the actual <code>List</code> is not the same as the given one.
    */
-  @Override
   public ListAssert isSameAs(List<?> expected) {
     assertSameAs(expected);
     return this;
@@ -480,84 +465,39 @@ public class ListAssert extends GroupAssert<List<?>> {
    * @return this assertion object.
    * @throws AssertionError if the actual <code>List</code> is the same as the given one.
    */
-  @Override
   public ListAssert isNotSameAs(List<?> other) {
     assertNotSameAs(other);
     return this;
   }
 
   /** {@inheritDoc} */
-  @Override
   public ListAssert overridingErrorMessage(String message) {
     replaceDefaultErrorMessagesWith(message);
     return this;
   }
 
   /**
-   * Creates a new instance of <code>{@link ListAssert}</code> composed of actual list <i>element.propertyName</i>
-   * values.<br>
-   * You can then apply all list assertions on that new list, it works with simple properties like <i>Person.age</i> and
-   * nested properties <i>Person.father.age</i>.
+   * Creates a new instance of <code>{@link ListAssert}</code> whose target list contains the values of the given
+   * property name from the elements of this {@code ListAssert}'s list. Property access works with both simple
+   * properties like {@code Person.age} and nested properties {@code Person.father.age}.
+   * </p>
    * <p>
-   * For example, let's say you have a list of Person objects and you want to verify their age, you can write :<br>
-   * <code>- assertThat(persons).onProperty("age").containsOnly(25, 16, 44, 37); // simple property</code><br>
-   * <code>- assertThat(persons).onProperty("father.age").containsOnly(55, 46, 74, 62); // nested property</code>
-   * <p>
-   * Note that null list elements are ignored and an assertion error is thrown when an element doesn't have the
-   * requested property.
-   *
-   * @param propertyName the property we want to extract values from actual list to build a new <code>{@link ListAssert}
-   *          </code>.
-   * @return a new instance of <code>{@link ListAssert}</code> composed of actual list <i>element.propertyName</i>
-   *         values.
+   * For example, let's say we have a list of {@code Person} objects and you want to verify their age:
+   * <pre>
+   * assertThat(persons).onProperty("age").containsOnly(25, 16, 44, 37); // simple property
+   * assertThat(persons).onProperty("father.age").containsOnly(55, 46, 74, 62); // nested property
+   * </p>
+   * @param propertyName the name of the property to extract values from the actual list to build a new
+   * {@code ListAssert}.
+   * @return a new {@code ListAssert} containing the values of the given property name from the elements of this
+   * {@code ListAssert}'s list.
+   * @throws AssertionError if the actual list is <code>null</code>.
    * @throws AssertionError if an element of actual list doesn't have the requested property.
+   * @since 1.3
    */
   public ListAssert onProperty(String propertyName) {
-    // if actual list is null or empty, no need to select elements property values
-    if (Collections.isEmpty(actual)) { return Assertions.assertThat(actual); }
-    List<Object> extractedPropertyValues = extractValuesOfGivenPropertyFromNonNullListElements(propertyName, actual);
-    // back to list assert on the property values of actual elements
-    return Assertions.assertThat(extractedPropertyValues);
+    isNotNull();
+    if (actual.isEmpty()) return new ListAssert(emptyList());
+    return new ListAssert(propertyValues(propertyName, actual));
   }
-
-  // TODO : to be replaced by fest reflect nested property support when available
-  private List<Object> extractValuesOfGivenPropertyFromNonNullListElements(String propertyToExtract, List<?> collection) {
-    // if collection contains only null elements, just return an empty collection.
-    if (Collections.isEmpty(collection) || Collections.hasOnlyNullElements(collection)) { return new ArrayList<Object>(); }
-    // ignore null elements, we can't extract a property from a null object
-    List<?> nonNullElements = Collections.nonNullElements(collection);
-    if (Properties.isNestedProperty(propertyToExtract)) {
-      // property is a nested property, like 'adress.street.number', extract sub properties until reaching a simple
-      // property, on our example :
-      // - extract a collection of 'adress' from collection elements -> adresses collection
-      // remaining property is 'street.number'
-      // - extract a collection of 'street' from adresses collection -> streets collection
-      // remaining property is 'number'
-      // - extract a collection of 'number' from streets collection -> numbers collection
-      String firstProperty = Properties.firstPropertyIfNested(propertyToExtract);
-      String nestedPropertyWithoutFirstProperty = Properties.removeFirstPropertyIfNested(propertyToExtract);
-      List<Object> firstPropertyValues = extractValuesOfGivenPropertyFromNonNullListElements(firstProperty,
-          nonNullElements);
-      // extract next sub property values until reaching a last sub property
-      return extractValuesOfGivenPropertyFromNonNullListElements(nestedPropertyWithoutFirstProperty,
-          firstPropertyValues);
-    } else {
-      // Property is a simple property, like 'name'
-      // To extract property values, we must figure out the type of actual collection elements (can't simply use Object
-      // since actual collection may contain primitive elements)
-      // We take the first element type as reference assuming that all remaining elements have the same type.
-      // We are sure that there is at least one non null element (check done with the call to hasOnlyNullElements)
-      Class<?> propertyType = Invoker.descriptorForProperty(propertyToExtract, nonNullElements.iterator().next())
-          .getPropertyType();
-      // fill list with property values of actual elements
-      List<Object> extractedPropertyValues = new ArrayList<Object>();
-      for (Object nonNullElement : nonNullElements) {
-        // extract the awaited property value of current element list
-        Object propertyValueOfElement = property(propertyToExtract).ofType(propertyType).in(nonNullElement).get();
-        extractedPropertyValues.add(propertyValueOfElement);
-      }
-      return extractedPropertyValues;
-    }
-  }
-
 }
