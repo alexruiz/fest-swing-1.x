@@ -333,7 +333,6 @@ public class ListAssert extends GroupAssert<List<?>> {
    * @throws AssertionError if the actual <code>List</code> satisfies the given condition.
    * @since 1.2
    */
-  @Override
   public ListAssert isNot(Condition<List<?>> condition) {
     assertIsNot(condition);
     return this;
@@ -346,7 +345,6 @@ public class ListAssert extends GroupAssert<List<?>> {
    * @throws AssertionError if the actual <code>List</code> is <code>null</code>.
    * @throws AssertionError if the number of elements of the actual <code>List</code> is not equal to the given one.
    */
-  @Override
   public ListAssert hasSize(int expected) {
     int actualSize = actualGroupSize();
     if (actualSize == expected) return this;
@@ -359,7 +357,6 @@ public class ListAssert extends GroupAssert<List<?>> {
    * Returns the number of elements in the actual <code>{@link List}</code>.
    * @return the number of elements in the actual <code>List</code>.
    */
-  @Override
   protected int actualGroupSize() {
     isNotNull();
     return actual.size();

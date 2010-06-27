@@ -309,7 +309,6 @@ public class ObjectArrayAssert extends ArrayAssert<Object[]> {
    * @return this assertion object.
    * @throws AssertionError if the actual <code>Object</code> array is the same as the given one.
    */
-  @Override
   public ObjectArrayAssert isNotSameAs(Object[] expected) {
     assertNotSameAs(expected);
     return this;

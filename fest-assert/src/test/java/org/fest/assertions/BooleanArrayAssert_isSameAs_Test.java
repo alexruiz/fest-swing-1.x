@@ -39,7 +39,6 @@ public class BooleanArrayAssert_isSameAs_Test extends GenericAssert_isSameAs_Tes
     return new BooleanArrayAssert(actual);
   }
 
-  @Override
   protected boolean[] notNullValue() {
     return notNullValue;
   }
