@@ -15,14 +15,20 @@
 package org.fest.assertions;
 
 import static java.util.Collections.emptyList;
-import static org.fest.assertions.Collections.*;
+import static org.fest.assertions.Collections.found;
+import static org.fest.assertions.Collections.notFound;
 import static org.fest.assertions.Formatting.inBrackets;
 import static org.fest.assertions.PropertySupport.propertyValues;
-import static org.fest.util.Collections.*;
+import static org.fest.util.Collections.duplicatesFrom;
+import static org.fest.util.Collections.list;
 import static org.fest.util.Objects.areEqual;
 import static org.fest.util.Strings.concat;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 import org.fest.util.Collections;
 
@@ -199,14 +205,20 @@ public class ListAssert extends GroupAssert<List<?>> {
   public ListAssert containsOnly(Object... objects) {
     isNotNull();
     validateIsNotNull(objects);
-    List<Object> copy = new ArrayList<Object>(actual);
-    List<Object> notFound = notFoundInCopy(copy, objects);
+    Set<Object> copy = new HashSet<Object>(actual);
+    List<Object> notFound = notFoundInCopy(copy, asSet(objects));
     if (!notFound.isEmpty()) throw failureIfExpectedElementsNotFound(notFound);
     if (copy.isEmpty()) return this;
     throw failureIfUnexpectedElementsFound(copy);
   }
 
-  private List<Object> notFoundInCopy(List<Object> copy, Object... objects) {
+  private Set<Object> asSet(Object[] objects) {
+    Set<Object> s = new HashSet<Object>();
+    for (Object o : objects) s.add(o);
+    return s;
+  }
+
+  private List<Object> notFoundInCopy(Set<Object> copy, Set<Object> objects) {
     List<Object> notFound = new ArrayList<Object>();
     for (Object o : objects) {
       if (!copy.contains(o)) {
@@ -223,7 +235,7 @@ public class ListAssert extends GroupAssert<List<?>> {
     return failure(concat("list:", inBrackets(actual), " does not contain element(s):", inBrackets(notFound)));
   }
 
-  private AssertionError failureIfUnexpectedElementsFound(List<Object> unexpected) {
+  private AssertionError failureIfUnexpectedElementsFound(Collection<Object> unexpected) {
     failIfCustomMessageIsSet();
     return failure(concat("unexpected element(s):", inBrackets(unexpected), " in list:", inBrackets(actual)));
   }
