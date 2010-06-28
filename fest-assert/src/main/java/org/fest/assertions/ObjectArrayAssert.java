@@ -20,7 +20,8 @@ import static org.fest.assertions.PropertySupport.propertyValues;
 import static org.fest.util.Collections.*;
 import static org.fest.util.Strings.concat;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Collection;
 
 /**
  * Understands assertions for <code>Object</code> arrays. To create a new instance of this class use the method
@@ -336,7 +337,7 @@ public class ObjectArrayAssert extends ArrayAssert<Object[]> {
    * @return a new {@code ObjectArrayAssert} containing the values of the given property name from the elements of this
    * {@code ObjectArrayAssert}'s array.
    * @throws AssertionError if the actual array is <code>null</code>.
-   * @throws AssertionError if an element of actual array doesn't have the requested property.
+   * @throws InstrospectionError if an element in the given array does not have a matching property.
    * @since 1.3
    */
   public ObjectArrayAssert onProperty(String propertyName) {

@@ -15,20 +15,14 @@
 package org.fest.assertions;
 
 import static java.util.Collections.emptyList;
-import static org.fest.assertions.Collections.found;
-import static org.fest.assertions.Collections.notFound;
+import static org.fest.assertions.Collections.*;
 import static org.fest.assertions.Formatting.inBrackets;
 import static org.fest.assertions.PropertySupport.propertyValues;
-import static org.fest.util.Collections.duplicatesFrom;
-import static org.fest.util.Collections.list;
+import static org.fest.util.Collections.*;
 import static org.fest.util.Objects.areEqual;
 import static org.fest.util.Strings.concat;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 import org.fest.util.Collections;
 
@@ -501,7 +495,7 @@ public class ListAssert extends GroupAssert<List<?>> {
    * @return a new {@code ListAssert} containing the values of the given property name from the elements of this
    * {@code ListAssert}'s list.
    * @throws AssertionError if the actual list is <code>null</code>.
-   * @throws AssertionError if an element of actual list doesn't have the requested property.
+   * @throws InstrospectionError if an element in the given list does not have a matching property.
    * @since 1.3
    */
   public ListAssert onProperty(String propertyName) {

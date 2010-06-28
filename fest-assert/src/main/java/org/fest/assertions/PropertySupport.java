@@ -15,10 +15,10 @@
 package org.fest.assertions;
 
 import static java.util.Collections.emptyList;
-import static org.fest.reflect.beanproperty.Invoker.descriptorForProperty;
-import static org.fest.reflect.core.Reflection.property;
 import static org.fest.util.Collections.*;
+import static org.fest.util.Strings.*;
 
+import java.beans.*;
 import java.util.*;
 
 /**
@@ -33,19 +33,27 @@ final class PropertySupport {
 
   private static final String SEPARATOR = ".";
 
-  /*
-   * if property is nested, like 'address.street.number', extract sub-properties until reaching a simple property,
-   * on our example :
-   * 1. extract a collection of 'address' from collection elements (remaining property is 'street.number')
-   * 2. extract a collection of 'street' from address collection (remaining property is 'number')
-   * 3. extract a collection of 'number' from street collection
-   *
-   * TODO : to be replaced by fest reflect nested property support when available
+  /**
+   * Returns a list containing the values of the given property name, from the elements of the given collection. If the
+   * given collection is empty or <code>null</code>, this method will return an empty collection.
+   * <p>
+   * For example, given the nested property "address.street.number", this method will:
+   * <ol>
+   * <li>extract a collection of "address" from the given collection (remaining property is 'street.number')</li>
+   * <li>extract a collection of "street" from the "address" collection (remaining property is 'number')</li>
+   * <li>extract a collection of "number" from the "street" collection</li>
+   * </ol>
+   * </p>
+   * @param propertyName the name of the property. It may be a nested property.
+   * @param target the given collection.
+   * @return a list containing the values of the given property name, from the elements of the given collection.
+   * @throws NullPointerException if given property name is <code>null</code>.
+   * @throws InstrospectionError if an element in the given collection does not have a matching property.
    */
-  static List<Object> propertyValues(String propertyName, Collection<?> collection) {
-    if (isEmpty(collection) || hasOnlyNullElements(collection)) return emptyList();
+  static List<Object> propertyValues(String propertyName, Collection<?> target) {
+    if (isEmpty(target) || hasOnlyNullElements(target)) return emptyList();
     // ignore null elements as we can't extract a property from a null object
-    Collection<?> nonNullElements = nonNullElements(collection);
+    Collection<?> nonNullElements = nonNullElements(target);
     if (isNestedProperty(propertyName)) {
       String firstProperty = firstPropertyIfNested(propertyName);
       List<Object> firstPropertyValues = propertyValues(firstProperty, nonNullElements);
@@ -55,17 +63,6 @@ final class PropertySupport {
     return simplePropertyValues(propertyName, nonNullElements);
   }
 
-  private static List<Object> simplePropertyValues(String propertyName, Collection<?> target) {
-    Class<?> propertyType = null;
-    List<Object> propertyValues = new ArrayList<Object>();
-    for (Object e : target) {
-      if (propertyType == null) propertyType = descriptorForProperty(propertyName, e).getPropertyType();
-      Object propertyValue = property(propertyName).ofType(propertyType).in(e).get();
-      propertyValues.add(propertyValue);
-    }
-    return propertyValues;
-  }
-
   /**
    * Returns <code>true</code> if property is nested, <code>false</code> otherwise.
    * <p>
@@ -73,7 +70,6 @@ final class PropertySupport {
    * <pre>
    * isNestedProperty("address.street"); // true
    * isNestedProperty("address.street.name"); // true
-   *
    * isNestedProperty("person"); // false
    * isNestedProperty(".name"); // false
    * isNestedProperty("person."); // false
@@ -117,6 +113,35 @@ final class PropertySupport {
   static String firstPropertyIfNested(String propertyName) {
     if (!isNestedProperty(propertyName)) return propertyName;
     return propertyName.substring(0, propertyName.indexOf(SEPARATOR));
+  }
+
+  private static List<Object> simplePropertyValues(String propertyName, Collection<?> target) {
+    List<Object> propertyValues = new ArrayList<Object>();
+    for (Object e : target)
+      propertyValues.add(propertyValue(propertyName, e));
+    return propertyValues;
+  }
+
+  private static Object propertyValue(String propertyName, Object target) {
+    PropertyDescriptor descriptor = descriptorForProperty(propertyName, target);
+    try {
+      return descriptor.getReadMethod().invoke(target);
+    } catch (Exception e) {
+      throw new InstrospectionError(concat("Unable to obtain the value in property " + quote(propertyName)), e);
+    }
+  }
+
+  private static PropertyDescriptor descriptorForProperty(String propertyName, Object target) {
+    BeanInfo beanInfo = null;
+    Class<?> type = target.getClass();
+    try {
+      beanInfo = Introspector.getBeanInfo(type, Object.class);
+    } catch (Exception e) {
+      throw new InstrospectionError(concat("Unable to get BeanInfo for type ", type.getName()), e);
+    }
+    for (PropertyDescriptor d : beanInfo.getPropertyDescriptors())
+      if (propertyName.equals(d.getName())) return d;
+    throw new InstrospectionError(concat("Unable to find property ", quote(propertyName), " in ", type.getName()));
   }
 
   private PropertySupport() {}
