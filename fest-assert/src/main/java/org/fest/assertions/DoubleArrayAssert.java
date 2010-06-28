@@ -209,17 +209,17 @@ public class DoubleArrayAssert extends ArrayAssert<double[]> {
    */
   public DoubleArrayAssert isEqualTo(double[] expected, Delta delta) {
     if (actual == expected) return this;
-    if (actual == null || expected == null) failNotEquals(expected, delta);
+    if (actual == null || expected == null) throw failureWhenNotEqual(expected, delta);
     int length = expected.length;
-    if (actual.length != length) failNotEquals(expected, delta);
+    if (actual.length != length) failureWhenNotEqual(expected, delta);
     for (int i = 0; i < length; i++)
-      if (!equals(expected[i], actual[i], delta)) failNotEquals(expected, delta);
+      if (!equals(expected[i], actual[i], delta)) failureWhenNotEqual(expected, delta);
     return this;
   }
 
-  private void failNotEquals(double[] expected, Delta delta) {
+  private AssertionError failureWhenNotEqual(double[] expected, Delta delta) {
     failIfCustomMessageIsSet();
-    fail(concat(unexpectedNotEqual(actual, expected), " using delta:", inBrackets(delta.doubleValue())));
+    throw failure(concat(unexpectedNotEqual(actual, expected), " using delta:", inBrackets(delta.doubleValue())));
   }
 
   private boolean equals(double e, double a, Delta delta) {
