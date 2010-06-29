@@ -17,7 +17,8 @@ package org.fest.util;
 import static java.util.Arrays.asList;
 import static junit.framework.Assert.assertEquals;
 import static org.fest.util.Collections.nonNullElements;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,6 +56,8 @@ public class Collections_nonNullElements_List_Test {
   public void should_return_a_list_without_null_elements() {
     List<String> c = asList("Frodo", null, "Sam", null);
     List<String> expected = asList("Frodo", "Sam");
-    assertEquals(expected, nonNullElements(c));
+    List<String> nonNullElements = nonNullElements(c);
+    System.out.println(nonNullElements);
+    assertEquals(expected, nonNullElements);
   }
 }
