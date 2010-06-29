@@ -14,11 +14,17 @@
  */
 package org.fest.util;
 
-import static java.util.Collections.*;
+import static java.util.Collections.unmodifiableCollection;
+import static java.util.Collections.unmodifiableList;
 import static org.fest.util.Strings.quote;
 
-import java.util.*;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
 
 /**
  * Understands utility methods related to collections.
@@ -110,7 +116,7 @@ public final class Collections {
     if (c == null) return null;
     Collection<T> nonNullElements = new ArrayList<T>();
     for (T o : c) if (o != null) nonNullElements.add(o);
-    return unmodifiableCollection(c);
+    return unmodifiableCollection(nonNullElements);
   }
 
   /**
@@ -125,7 +131,7 @@ public final class Collections {
    */
   public static <T> List<T> nonNullElements(List<T> l) {
     Collection<T> nonNullElements = nonNullElements((Collection<T>)l);
-    if (nonNullElements == null)  return null;
+    if (nonNullElements == null) return null;
     return unmodifiableList(new ArrayList<T>(nonNullElements));
   }
 
