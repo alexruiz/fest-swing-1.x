@@ -24,6 +24,7 @@ import static org.fest.util.Strings.concat;
 import java.util.*;
 
 import org.fest.util.Collections;
+import org.fest.util.IntrospectionError;
 
 /**
  * Understands assertions for collections. To create a new instance of this class use the method
@@ -353,7 +354,7 @@ public class CollectionAssert extends GroupAssert<Collection<?>> {
    * @return a new {@code CollectionAssert} containing the values of the given property name from the elements of this
    * {@code CollectionAssert}'s collection.
    * @throws AssertionError if the actual collection is <code>null</code>.
-   * @throws InstrospectionError if an element in the given collection does not have a matching property.
+   * @throws IntrospectionError if an element in the given collection does not have a matching property.
    * @since 1.3
    */
   public CollectionAssert onProperty(String propertyName) {

@@ -13,32 +13,32 @@
  *
  * Copyright @2010 the original author or authors.
  */
-package org.fest.assertions;
+package org.fest.util;
 
 /**
- * Understands an error related to
+ * Understands an error that occurred when using
  * <a href="http://java.sun.com/docs/books/tutorial/javabeans/introspection/index.html">JavaBeans Instrospection</a>.
  *
  * @author Alex Ruiz
  */
-public class InstrospectionError extends RuntimeException {
+public class IntrospectionError extends RuntimeException {
 
   private static final long serialVersionUID = 1L;
 
   /**
-   * Creates a new </code>{@link InstrospectionError}</code>.
+   * Creates a new </code>{@link IntrospectionError}</code>.
    * @param message the detail message.
    */
-  public InstrospectionError(String message) {
+  public IntrospectionError(String message) {
     super(message);
   }
 
   /**
-   * Creates a new </code>{@link InstrospectionError}</code>.
+   * Creates a new </code>{@link IntrospectionError}</code>.
    * @param message the detail message.
    * @param cause the original cause.
    */
-  public InstrospectionError(String message, Throwable cause) {
+  public IntrospectionError(String message, Throwable cause) {
     super(message, cause);
   }
 }

@@ -5,7 +5,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.easytesting</groupId>
   <artifactId>fest-util</artifactId>
-  <version>1.1.3</version>
+  <version>1.1.4-SNAPSHOT</version>
   <name>FEST Util</name>
   <description>Utility methods used by FEST modules</description>
   <inceptionYear>2007</inceptionYear>

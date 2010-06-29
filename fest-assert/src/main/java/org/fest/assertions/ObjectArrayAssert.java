@@ -23,6 +23,8 @@ import static org.fest.util.Strings.concat;
 import java.util.Arrays;
 import java.util.Collection;
 
+import org.fest.util.IntrospectionError;
+
 /**
  * Understands assertions for <code>Object</code> arrays. To create a new instance of this class use the method
  * <code>{@link Assertions#assertThat(Object[])}</code>.
@@ -337,7 +339,7 @@ public class ObjectArrayAssert extends ArrayAssert<Object[]> {
    * @return a new {@code ObjectArrayAssert} containing the values of the given property name from the elements of this
    * {@code ObjectArrayAssert}'s array.
    * @throws AssertionError if the actual array is <code>null</code>.
-   * @throws InstrospectionError if an element in the given array does not have a matching property.
+   * @throws IntrospectionError if an element in the given array does not have a matching property.
    * @since 1.3
    */
   public ObjectArrayAssert onProperty(String propertyName) {

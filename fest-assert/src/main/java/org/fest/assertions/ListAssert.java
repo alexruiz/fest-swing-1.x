@@ -25,6 +25,7 @@ import static org.fest.util.Strings.concat;
 import java.util.*;
 
 import org.fest.util.Collections;
+import org.fest.util.IntrospectionError;
 
 /**
  * Understands assertions for <code>{@link List}</code>s. To create a new instance of this class use the method
@@ -495,7 +496,7 @@ public class ListAssert extends GroupAssert<List<?>> {
    * @return a new {@code ListAssert} containing the values of the given property name from the elements of this
    * {@code ListAssert}'s list.
    * @throws AssertionError if the actual list is <code>null</code>.
-   * @throws InstrospectionError if an element in the given list does not have a matching property.
+   * @throws IntrospectionError if an element in the given list does not have a matching property.
    * @since 1.3
    */
   public ListAssert onProperty(String propertyName) {

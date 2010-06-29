@@ -16,10 +16,13 @@ package org.fest.assertions;
 
 import static java.util.Collections.emptyList;
 import static org.fest.util.Collections.*;
+import static org.fest.util.Introspection.descriptorForProperty;
 import static org.fest.util.Strings.*;
 
-import java.beans.*;
+import java.beans.PropertyDescriptor;
 import java.util.*;
+
+import org.fest.util.IntrospectionError;
 
 /**
  * Understands utility methods related to properties.
@@ -48,7 +51,7 @@ final class PropertySupport {
    * @param target the given collection.
    * @return a list containing the values of the given property name, from the elements of the given collection.
    * @throws NullPointerException if given property name is <code>null</code>.
-   * @throws InstrospectionError if an element in the given collection does not have a matching property.
+   * @throws IntrospectionError if an element in the given collection does not have a matching property.
    */
   static List<Object> propertyValues(String propertyName, Collection<?> target) {
     if (isEmpty(target) || hasOnlyNullElements(target)) return emptyList();
@@ -127,21 +130,8 @@ final class PropertySupport {
     try {
       return descriptor.getReadMethod().invoke(target);
     } catch (Exception e) {
-      throw new InstrospectionError(concat("Unable to obtain the value in property " + quote(propertyName)), e);
+      throw new IntrospectionError(concat("Unable to obtain the value in property " + quote(propertyName)), e);
     }
-  }
-
-  private static PropertyDescriptor descriptorForProperty(String propertyName, Object target) {
-    BeanInfo beanInfo = null;
-    Class<?> type = target.getClass();
-    try {
-      beanInfo = Introspector.getBeanInfo(type, Object.class);
-    } catch (Exception e) {
-      throw new InstrospectionError(concat("Unable to get BeanInfo for type ", type.getName()), e);
-    }
-    for (PropertyDescriptor d : beanInfo.getPropertyDescriptors())
-      if (propertyName.equals(d.getName())) return d;
-    throw new InstrospectionError(concat("Unable to find property ", quote(propertyName), " in ", type.getName()));
   }
 
   private PropertySupport() {}
