@@ -16,7 +16,7 @@
 package org.fest.assertions;
 
 /**
- * Understands a template for assertion methods related to arrays or collections.
+ * Understands a template for assertion methods related to classes representing groups of values.
  * @param <T> the type of object implementations of this template can verify.
  *
  * @author Yvonne Wang

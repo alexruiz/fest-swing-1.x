@@ -97,7 +97,7 @@ public final class Fail {
   protected static void failIfActualIsNull(String customErrorMessage, Description description, Object actual) {
     if (actual != null) return;
     failWithMessage(customErrorMessage);
-    fail(description, array("expecting actual value not be null"));
+    fail(description, array("expecting actual value not to be null"));
   }
 
   /**

@@ -15,10 +15,9 @@
  */
 package org.fest.assertions;
 
-import static org.fest.test.ExpectedFailure.expect;
-import static org.fest.test.ExpectedFailure.expectAssertionError;
+import static org.fest.test.ExpectedFailure.*;
 
-import org.fest.test.CodeToTest;
+import org.fest.test.*;
 import org.fest.test.ExpectedFailure.Message;
 import org.junit.ComparisonFailure;
 
@@ -31,11 +30,11 @@ import org.junit.ComparisonFailure;
 public final class CommonFailures {
 
   public static void expectErrorIfActualIsNull(CodeToTest codeToTest) {
-    expectAssertionError("expecting actual value not be null").on(codeToTest);
+    expectAssertionError("expecting actual value not to be null").on(codeToTest);
   }
 
   public static void expectErrorWithDescriptionIfActualIsNull(CodeToTest codeToTest) {
-    expectAssertionError("[A Test] expecting actual value not be null").on(codeToTest);
+    expectAssertionError("[A Test] expecting actual value not to be null").on(codeToTest);
   }
 
   public static void expectErrorIfTypeIsNull(CodeToTest codeToTest) {

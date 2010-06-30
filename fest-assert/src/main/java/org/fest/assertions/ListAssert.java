@@ -24,8 +24,8 @@ import static org.fest.util.Strings.concat;
 
 import java.util.*;
 
+import org.fest.util.*;
 import org.fest.util.Collections;
-import org.fest.util.IntrospectionError;
 
 /**
  * Understands assertions for <code>{@link List}</code>s. To create a new instance of this class use the method
@@ -33,8 +33,9 @@ import org.fest.util.IntrospectionError;
  * @since 1.1
  *
  * @author Alex Ruiz
+ * @author Yvonne Wang
  */
-public class ListAssert extends GroupAssert<List<?>> {
+public class ListAssert extends ObjectGroupAssert<List<?>> {
 
   /**
    * Creates a new </code>{@link ListAssert}</code>.
@@ -47,12 +48,12 @@ public class ListAssert extends GroupAssert<List<?>> {
   /**
    * Verifies that the actual <code>{@link List}</code> contains the given object at the given index.
    * @param o the object to look for.
-   * @param index the index where the object should be stored in the actual <code>List</code>.
+   * @param index the index where the object should be stored in the actual {@code List}.
    * @return this assertion object.
    * @throws NullPointerException if the given <code>Index</code> is <code>null</code>.
    * @throws IndexOutOfBoundsException if the value of the given <code>Index</code> is negative, or equal to or greater
-   * than the size of the actual <code>List</code>.
-   * @throws AssertionError if the given <code>List</code> does not contain the given object at the given index.
+   * than the size of the actual {@code List}.
+   * @throws AssertionError if the given {@code List} does not contain the given object at the given index.
    */
   public ListAssert contains(Object o, Index index) {
     if (index == null) throw new NullPointerException(formattedErrorMessage("The given index should not be null"));
@@ -80,9 +81,9 @@ public class ListAssert extends GroupAssert<List<?>> {
    * objects between them.
    * @param sequence the sequence of objects to look for.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>List</code> is <code>null</code>.
+   * @throws AssertionError if the actual {@code List} is <code>null</code>.
    * @throws AssertionError if the given array is <code>null</code>.
-   * @throws AssertionError if the actual <code>List</code> does not contain the given sequence of objects.
+   * @throws AssertionError if the actual {@code List} does not contain the given sequence of objects.
    */
   public ListAssert containsSequence(Object... sequence) {
     isNotNull();
@@ -108,14 +109,14 @@ public class ListAssert extends GroupAssert<List<?>> {
   /**
    * Verifies that the actual <code>{@link List}</code> starts with the given sequence of objects, without any other
    * objects between them. Same as <code>{@link #containsSequence}</code>, but verifies also that first given object is
-   * also first element of <code>List</code>.
+   * also first element of {@code List}.
    * @param sequence the sequence of objects to look for.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>List</code> is <code>null</code>.
+   * @throws AssertionError if the actual {@code List} is <code>null</code>.
    * @throws AssertionError if the given array is <code>null</code>.
-   * @throws AssertionError if the actual <code>List</code> is not empty and with the given sequence of objects is
+   * @throws AssertionError if the actual {@code List} is not empty and with the given sequence of objects is
    * empty.
-   * @throws AssertionError if the actual <code>List</code> does not start with the given sequence of objects.
+   * @throws AssertionError if the actual {@code List} does not start with the given sequence of objects.
    */
   public ListAssert startsWith(Object... sequence) {
     isNotNull();
@@ -138,14 +139,14 @@ public class ListAssert extends GroupAssert<List<?>> {
   /**
    * Verifies that the actual <code>{@link List}</code> ends with the given sequence of objects, without any other
    * objects between them. Same as <code>{@link #containsSequence}</code>, but verifies also that last given object is
-   * also last element of <code>List</code>.
+   * also last element of {@code List}.
    * @param sequence the sequence of objects to look for.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>List</code> is <code>null</code>.
+   * @throws AssertionError if the actual {@code List} is <code>null</code>.
    * @throws AssertionError if the given array is <code>null</code>.
-   * @throws AssertionError if the actual <code>List</code> is not empty and with the given sequence of objects is
+   * @throws AssertionError if the actual {@code List} is not empty and with the given sequence of objects is
    * empty.
-   * @throws AssertionError if the actual <code>List</code> does not end with the given sequence of objects.
+   * @throws AssertionError if the actual {@code List} does not end with the given sequence of objects.
    */
   public ListAssert endsWith(Object... sequence) {
     isNotNull();
@@ -172,9 +173,9 @@ public class ListAssert extends GroupAssert<List<?>> {
    * Verifies that the actual <code>{@link List}</code> contains the given objects, in any order.
    * @param objects the objects to look for.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>List</code> is <code>null</code>.
+   * @throws AssertionError if the actual {@code List} is <code>null</code>.
    * @throws NullPointerException if the given array is <code>null</code>.
-   * @throws AssertionError if the actual <code>List</code> does not contain the given objects.
+   * @throws AssertionError if the actual {@code List} does not contain the given objects.
    */
   public ListAssert contains(Object... objects) {
     isNotNull();
@@ -192,37 +193,14 @@ public class ListAssert extends GroupAssert<List<?>> {
    * Verifies that the actual <code>{@link List}</code> contains the given objects <strong>only</strong>, in any order.
    * @param objects the objects to look for.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>List</code> is <code>null</code>.
+   * @throws AssertionError if the actual {@code List} is <code>null</code>.
    * @throws NullPointerException if the given array is <code>null</code>.
-   * @throws AssertionError if the actual <code>List</code> does not contain the given objects, or if the actual
-   * <code>List</code> contains elements other than the ones specified.
+   * @throws AssertionError if the actual {@code List} does not contain the given objects, or if the actual
+   * {@code List} contains elements other than the ones specified.
    */
   public ListAssert containsOnly(Object... objects) {
-    isNotNull();
-    validateIsNotNull(objects);
-    Set<Object> copy = new HashSet<Object>(actual);
-    List<Object> notFound = notFoundInCopy(copy, asSet(objects));
-    if (!notFound.isEmpty()) throw failureIfExpectedElementsNotFound(notFound);
-    if (copy.isEmpty()) return this;
-    throw failureIfUnexpectedElementsFound(copy);
-  }
-
-  private Set<Object> asSet(Object[] objects) {
-    Set<Object> s = new HashSet<Object>();
-    for (Object o : objects) s.add(o);
-    return s;
-  }
-
-  private List<Object> notFoundInCopy(Set<Object> copy, Set<Object> objects) {
-    List<Object> notFound = new ArrayList<Object>();
-    for (Object o : objects) {
-      if (!copy.contains(o)) {
-        notFound.add(o);
-        continue;
-      }
-      copy.remove(o);
-    }
-    return notFound;
+    assertContainsOnly(objects);
+    return this;
   }
 
   private AssertionError failureIfExpectedElementsNotFound(Collection<Object> notFound) {
@@ -230,18 +208,13 @@ public class ListAssert extends GroupAssert<List<?>> {
     return failure(concat("list:", inBrackets(actual), " does not contain element(s):", inBrackets(notFound)));
   }
 
-  private AssertionError failureIfUnexpectedElementsFound(Collection<Object> unexpected) {
-    failIfCustomMessageIsSet();
-    return failure(concat("unexpected element(s):", inBrackets(unexpected), " in list:", inBrackets(actual)));
-  }
-
   /**
    * Verifies that the actual <code>{@link List}</code> does not contain the given objects.
-   * @param objects the objects that the <code>List</code> should exclude.
+   * @param objects the objects that the {@code List} should exclude.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>List</code> is <code>null</code>.
+   * @throws AssertionError if the actual {@code List} is <code>null</code>.
    * @throws NullPointerException if the given array is <code>null</code>.
-   * @throws AssertionError if the actual <code>List</code> contains any of the given objects.
+   * @throws AssertionError if the actual {@code List} contains any of the given objects.
    */
   public ListAssert excludes(Object... objects) {
     isNotNull();
@@ -260,8 +233,8 @@ public class ListAssert extends GroupAssert<List<?>> {
   /**
    * Verifies that the actual <code>{@link List}</code> does not have duplicates.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>List</code> is <code>null</code>.
-   * @throws AssertionError if the actual <code>List</code> has duplicates.
+   * @throws AssertionError if the actual {@code List} is <code>null</code>.
+   * @throws AssertionError if the actual {@code List} has duplicates.
    */
   public ListAssert doesNotHaveDuplicates() {
     isNotNull();
@@ -298,7 +271,7 @@ public class ListAssert extends GroupAssert<List<?>> {
    * @param condition the given condition.
    * @return this assertion object.
    * @throws NullPointerException if the given condition is <code>null</code>.
-   * @throws AssertionError if the actual <code>List</code> does not satisfy the given condition.
+   * @throws AssertionError if the actual {@code List} does not satisfy the given condition.
    * @see #is(Condition)
    */
   public ListAssert satisfies(Condition<List<?>> condition) {
@@ -311,7 +284,7 @@ public class ListAssert extends GroupAssert<List<?>> {
    * @param condition the given condition.
    * @return this assertion object.
    * @throws NullPointerException if the given condition is <code>null</code>.
-   * @throws AssertionError if the actual <code>List</code> satisfies the given condition.
+   * @throws AssertionError if the actual {@code List} satisfies the given condition.
    * @see #isNot(Condition)
    */
   public ListAssert doesNotSatisfy(Condition<List<?>> condition) {
@@ -324,7 +297,7 @@ public class ListAssert extends GroupAssert<List<?>> {
    * @param condition the given condition.
    * @return this assertion object.
    * @throws NullPointerException if the given condition is <code>null</code>.
-   * @throws AssertionError if the actual <code>List</code> does not satisfy the given condition.
+   * @throws AssertionError if the actual {@code List} does not satisfy the given condition.
    * @since 1.2
    */
   public ListAssert is(Condition<List<?>> condition) {
@@ -337,7 +310,7 @@ public class ListAssert extends GroupAssert<List<?>> {
    * @param condition the given condition.
    * @return this assertion object.
    * @throws NullPointerException if the given condition is <code>null</code>.
-   * @throws AssertionError if the actual <code>List</code> satisfies the given condition.
+   * @throws AssertionError if the actual {@code List} satisfies the given condition.
    * @since 1.2
    */
   public ListAssert isNot(Condition<List<?>> condition) {
@@ -347,10 +320,10 @@ public class ListAssert extends GroupAssert<List<?>> {
 
   /**
    * Verifies that the number of elements in the actual <code>{@link List}</code> is equal to the given one.
-   * @param expected the expected number of elements in the actual <code>List</code>.
+   * @param expected the expected number of elements in the actual {@code List}.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>List</code> is <code>null</code>.
-   * @throws AssertionError if the number of elements of the actual <code>List</code> is not equal to the given one.
+   * @throws AssertionError if the actual {@code List} is <code>null</code>.
+   * @throws AssertionError if the number of elements of the actual {@code List} is not equal to the given one.
    */
   public ListAssert hasSize(int expected) {
     int actualSize = actualGroupSize();
@@ -362,7 +335,7 @@ public class ListAssert extends GroupAssert<List<?>> {
 
   /**
    * Returns the number of elements in the actual <code>{@link List}</code>.
-   * @return the number of elements in the actual <code>List</code>.
+   * @return the number of elements in the actual {@code List}.
    */
   protected int actualGroupSize() {
     isNotNull();
@@ -371,8 +344,8 @@ public class ListAssert extends GroupAssert<List<?>> {
 
   /**
    * Verifies that the actual <code>{@link List}</code> is empty (not <code>null</code> with zero elements.)
-   * @throws AssertionError if the actual <code>List</code> is <code>null</code>.
-   * @throws AssertionError if the actual <code>List</code> is not empty.
+   * @throws AssertionError if the actual {@code List} is <code>null</code>.
+   * @throws AssertionError if the actual {@code List} is not empty.
    */
   public void isEmpty() {
     isNotNull();
@@ -384,8 +357,8 @@ public class ListAssert extends GroupAssert<List<?>> {
   /**
    * Verifies that the actual <code>{@link List}</code> contains at least on element.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>List</code> is <code>null</code>.
-   * @throws AssertionError if the actual <code>List</code> is empty.
+   * @throws AssertionError if the actual {@code List} is <code>null</code>.
+   * @throws AssertionError if the actual {@code List} is empty.
    */
   public ListAssert isNotEmpty() {
     isNotNull();
@@ -396,7 +369,7 @@ public class ListAssert extends GroupAssert<List<?>> {
 
   /**
    * Verifies that the actual <code>{@link List}</code> is <code>null</code> or empty.
-   * @throws AssertionError if the actual <code>List</code> is not <code>null</code> or not empty.
+   * @throws AssertionError if the actual {@code List} is not <code>null</code> or not empty.
    */
   public void isNullOrEmpty() {
     if (Collections.isEmpty(actual)) return;
@@ -407,23 +380,22 @@ public class ListAssert extends GroupAssert<List<?>> {
   /**
    * Verifies that the actual <code>{@link List}</code> is not <code>null</code>.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>List</code> is <code>null</code>.
+   * @throws AssertionError if the actual {@code List} is <code>null</code>.
    */
   public ListAssert isNotNull() {
-    if (actual != null) return this;
-    failIfCustomMessageIsSet();
-    throw failure("expecting actual list not to be null");
+    assertNotNull();
+    return this;
   }
 
   /**
    * Verifies that the actual <code>{@link List}</code> contains the given objects, in the same order. This method works
    * just like <code>{@link #isEqualTo(List)}</code>, with the difference that internally the given array is converted
-   * to a <code>List</code>.
+   * to a {@code List}.
    * @param objects the objects to look for.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>List</code> is <code>null</code>.
+   * @throws AssertionError if the actual {@code List} is <code>null</code>.
    * @throws NullPointerException if the given array is <code>null</code>.
-   * @throws AssertionError if the actual <code>List</code> does not contain the given objects.
+   * @throws AssertionError if the actual {@code List} does not contain the given objects.
    */
   public ListAssert containsExactly(Object... objects) {
     validateIsNotNull(objects);
@@ -432,9 +404,9 @@ public class ListAssert extends GroupAssert<List<?>> {
 
   /**
    * Verifies that the actual <code>{@link List}</code> is equal to the given one.
-   * @param expected the given <code>List</code> to compare the actual <code>List</code> to.
+   * @param expected the given {@code List} to compare the actual {@code List} to.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>List</code> is not equal to the given one.
+   * @throws AssertionError if the actual {@code List} is not equal to the given one.
    */
   public ListAssert isEqualTo(List<?> expected) {
     assertEqualTo(expected);
@@ -443,9 +415,9 @@ public class ListAssert extends GroupAssert<List<?>> {
 
   /**
    * Verifies that the actual <code>{@link List}</code> is not equal to the given one.
-   * @param other the given <code>List</code> to compare the actual <code>List</code> to.
+   * @param other the given {@code List} to compare the actual {@code List} to.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>List</code> is equal to the given one.
+   * @throws AssertionError if the actual {@code List} is equal to the given one.
    */
   public ListAssert isNotEqualTo(List<?> other) {
     assertNotEqualTo(other);
@@ -454,9 +426,9 @@ public class ListAssert extends GroupAssert<List<?>> {
 
   /**
    * Verifies that the actual <code>{@link List}</code> is the same as the given one.
-   * @param expected the given <code>List</code> to compare the actual <code>List</code> to.
+   * @param expected the given {@code List} to compare the actual {@code List} to.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>List</code> is not the same as the given one.
+   * @throws AssertionError if the actual {@code List} is not the same as the given one.
    */
   public ListAssert isSameAs(List<?> expected) {
     assertSameAs(expected);
@@ -465,9 +437,9 @@ public class ListAssert extends GroupAssert<List<?>> {
 
   /**
    * Verifies that the actual <code>{@link List}</code> is not the same as the given one.
-   * @param other the given <code>List</code> to compare the actual <code>List</code> to.
+   * @param other the given {@code List} to compare the actual {@code List} to.
    * @return this assertion object.
-   * @throws AssertionError if the actual <code>List</code> is the same as the given one.
+   * @throws AssertionError if the actual {@code List} is the same as the given one.
    */
   public ListAssert isNotSameAs(List<?> other) {
     assertNotSameAs(other);
@@ -503,5 +475,9 @@ public class ListAssert extends GroupAssert<List<?>> {
     isNotNull();
     if (actual.isEmpty()) return new ListAssert(emptyList());
     return new ListAssert(propertyValues(propertyName, actual));
+  }
+
+  protected Set<Object> actualAsSet() {
+    return new HashSet<Object>(actual);
   }
 }

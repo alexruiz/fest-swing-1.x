@@ -15,13 +15,16 @@
 package org.fest.assertions;
 
 import static java.util.Collections.emptyList;
-import static org.fest.assertions.Collections.*;
+import static org.fest.assertions.Collections.found;
+import static org.fest.assertions.Collections.notFound;
 import static org.fest.assertions.Formatting.inBrackets;
 import static org.fest.assertions.PropertySupport.propertyValues;
 import static org.fest.util.Collections.duplicatesFrom;
 import static org.fest.util.Strings.concat;
 
-import java.util.*;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.fest.util.Collections;
 import org.fest.util.IntrospectionError;
@@ -33,7 +36,7 @@ import org.fest.util.IntrospectionError;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class CollectionAssert extends GroupAssert<Collection<?>> {
+public class CollectionAssert extends ObjectGroupAssert<Collection<?>> {
 
   /**
    * Creates a new </code>{@link CollectionAssert}</code>.
@@ -73,35 +76,13 @@ public class CollectionAssert extends GroupAssert<Collection<?>> {
    *           contains elements other than the ones specified.
    */
   public CollectionAssert containsOnly(Object... objects) {
-    isNotNull();
-    validateIsNotNull(objects);
-    List<Object> copy = new ArrayList<Object>(actual);
-    List<Object> notFound = notFoundInCopy(copy, objects);
-    if (!notFound.isEmpty()) throw failureIfExpectedElementsNotFound(notFound);
-    if (copy.isEmpty()) return this;
-    throw failureIfUnexpectedElementsFound(copy);
-  }
-
-  private List<Object> notFoundInCopy(List<Object> copy, Object... objects) {
-    List<Object> notFound = new ArrayList<Object>();
-    for (Object o : objects) {
-      if (!copy.contains(o)) {
-        notFound.add(o);
-        continue;
-      }
-      copy.remove(o);
-    }
-    return notFound;
+    assertContainsOnly(objects);
+    return this;
   }
 
   private AssertionError failureIfExpectedElementsNotFound(Collection<Object> notFound) {
     failIfCustomMessageIsSet();
     return failure(concat("collection:", format(actual), " does not contain element(s):", format(notFound)));
-  }
-
-  private AssertionError failureIfUnexpectedElementsFound(List<Object> unexpected) {
-    failIfCustomMessageIsSet();
-    return failure(concat("unexpected element(s):", format(unexpected), " in collection:", format(actual)));
   }
 
   /**
@@ -234,9 +215,8 @@ public class CollectionAssert extends GroupAssert<Collection<?>> {
    * @throws AssertionError if the actual collection is <code>null</code>.
    */
   public CollectionAssert isNotNull() {
-    if (actual != null) return this;
-    failIfCustomMessageIsSet();
-    throw failure("expecting actual collection not to be null");
+    assertNotNull();
+    return this;
   }
 
   /**
@@ -361,5 +341,9 @@ public class CollectionAssert extends GroupAssert<Collection<?>> {
     isNotNull();
     if (actual.isEmpty()) return new CollectionAssert(emptyList());
     return new CollectionAssert(propertyValues(propertyName, actual));
+  }
+
+  protected Set<Object> actualAsSet() {
+    return new HashSet<Object>(actual);
   }
 }

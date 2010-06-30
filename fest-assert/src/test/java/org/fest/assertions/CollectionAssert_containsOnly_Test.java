@@ -16,14 +16,9 @@
 package org.fest.assertions;
 
 import static java.util.Collections.emptyList;
-import static org.fest.assertions.CommonFailures.*;
-import static org.fest.test.ExpectedFailure.expectAssertionError;
 import static org.fest.util.Collections.list;
 
 import java.util.Collection;
-import org.fest.test.CodeToTest;
-import org.junit.BeforeClass;
-import org.junit.Test;
 
 /**
  * Tests for <code>{@link CollectionAssert#containsOnly(Object...)}</code>.
@@ -31,189 +26,17 @@ import org.junit.Test;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class CollectionAssert_containsOnly_Test implements GroupAssert_containsOnly_TestCase {
+public class CollectionAssert_containsOnly_Test extends ObjectGroupAssert_containsOnly_TestCase<Collection<?>> {
 
-  private static Collection<String> collection;
-
-  @BeforeClass
-  public static void setUpOnce() {
-    collection = list("Gandalf", "Frodo", "Sam");
+  protected Collection<?> actualFrom(Object... values) {
+    return list(values);
   }
 
-  @Test
-  public void should_pass_if_actual_contains_only_given_values() {
-    new CollectionAssert(collection).containsOnly("Gandalf", "Frodo", "Sam");
+  protected CollectionAssert assertionsFor(Collection<?> actual) {
+    return new CollectionAssert(actual);
   }
 
-  @Test
-  public void should_pass_if_actual_contains_only_given_values_in_different_order() {
-    new CollectionAssert(collection).containsOnly("Sam", "Frodo", "Gandalf");
+  protected Collection<?> emptyActual() {
+    return emptyList();
   }
-
-  @Test
-  public void should_fail_if_actual_is_null() {
-    expectErrorIfActualCollectionIsNull(new CodeToTest() {
-      public void run() {
-        new CollectionAssert(null).containsOnly("Gandalf", "Frodo", "Sam");
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_is_null() {
-    expectErrorWithDescriptionIfActualCollectionIsNull(new CodeToTest() {
-      public void run() {
-        new CollectionAssert(null).as("A Test")
-                                  .containsOnly("Gandalf", "Frodo", "Sam");
-      }
-    });
-  }
-
-
-  @Test
-  public void should_throw_error_if_expected_is_null() {
-    expectNullPointerException("the given array of objects should not be null").on(new CodeToTest() {
-      public void run() {
-        Object[] objects = null;
-        new CollectionAssert(emptyList()).containsOnly(objects);
-      }
-    });
-  }
-
-  @Test
-  public void should_throw_error_and_display_description_of_assertion_if_expected_is_null() {
-    expectNullPointerException("[A Test] the given array of objects should not be null").on(new CodeToTest() {
-      public void run() {
-        Object[] objects = null;
-        new CollectionAssert(emptyList()).as("A Test")
-                                         .containsOnly(objects);
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_if_actual_is_empty_and_expecting_at_least_one_element() {
-    expectAssertionError("collection:<[]> does not contain element(s):<['Sam']>").on(new CodeToTest() {
-      public void run() {
-        new CollectionAssert(emptyList()).containsOnly("Sam");
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_is_empty_and_expecting_at_least_one_element() {
-    expectAssertionError("[A Test] collection:<[]> does not contain element(s):<['Sam']>").on(new CodeToTest() {
-      public void run() {
-        new CollectionAssert(emptyList()).as("A Test")
-                                         .containsOnly("Sam");
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_if_actual_is_empty_and_expecting_at_least_one_element() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new CollectionAssert(emptyList()).overridingErrorMessage("My custom message")
-                                         .containsOnly("Sam");
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_is_empty_and_expecting_at_least_one_element() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new CollectionAssert(emptyList()).as("A Test")
-                                         .overridingErrorMessage("My custom message")
-                                         .containsOnly("Sam");
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_if_actual_contains_unexpected_values() {
-    String message = "unexpected element(s):<['Sam']> in collection:<['Gandalf', 'Frodo', 'Sam']>";
-    expectAssertionError(message).on(new CodeToTest() {
-      public void run() {
-        new CollectionAssert(collection).containsOnly("Gandalf", "Frodo");
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_contains_unexpected_values() {
-    String message = "[A Test] unexpected element(s):<['Sam']> in collection:<['Gandalf', 'Frodo', 'Sam']>";
-    expectAssertionError(message).on(new CodeToTest() {
-      public void run() {
-        new CollectionAssert(collection).as("A Test")
-                                        .containsOnly("Gandalf", "Frodo");
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_if_actual_contains_unexpected_values() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new CollectionAssert(collection).overridingErrorMessage("My custom message")
-                                        .containsOnly("Gandalf", "Frodo");
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_contains_unexpected_values() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new CollectionAssert(collection).as("A Test")
-                                        .overridingErrorMessage("My custom message")
-                                        .containsOnly("Gandalf", "Frodo");
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_if_actual_does_not_contain_all_the_expected_values() {
-    String message = "collection:<['Gandalf', 'Frodo', 'Sam']> does not contain element(s):<['Meriadoc']>";
-    expectAssertionError(message).on(new CodeToTest() {
-      public void run() {
-        new CollectionAssert(collection).containsOnly("Gandalf", "Frodo", "Sam", "Meriadoc");
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_does_not_contain_all_the_expected_values() {
-    String message = "[A Test] collection:<['Gandalf', 'Frodo', 'Sam']> does not contain element(s):<['Meriadoc']>";
-    expectAssertionError(message).on(new CodeToTest() {
-      public void run() {
-        new CollectionAssert(collection).as("A Test")
-                                        .containsOnly("Gandalf", "Frodo", "Sam", "Meriadoc");
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_if_actual_does_not_contain_all_the_expected_values() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new CollectionAssert(collection).overridingErrorMessage("My custom message")
-                                        .containsOnly("Gandalf", "Frodo", "Sam", "Meriadoc");
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_does_not_contain_all_the_expected_values() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new CollectionAssert(collection).as("A Test")
-                                        .overridingErrorMessage("My custom message")
-                                        .containsOnly("Gandalf", "Frodo", "Sam", "Meriadoc");
-      }
-    });
-  }
-
-
 }
