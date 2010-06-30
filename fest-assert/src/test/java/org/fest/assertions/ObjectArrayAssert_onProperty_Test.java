@@ -3,11 +3,11 @@ package org.fest.assertions;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.assertions.CommonFailures.expectErrorIfActualArrayIsNull;
 
-import org.junit.Before;
-import org.junit.Test;
-
 import org.fest.reflect.exception.ReflectionError;
 import org.fest.test.CodeToTest;
+import org.fest.util.IntrospectionError;
+import org.junit.Before;
+import org.junit.Test;
 
 public class ObjectArrayAssert_onProperty_Test implements Assert_onProperty_Test {
 
@@ -188,7 +188,7 @@ public class ObjectArrayAssert_onProperty_Test implements Assert_onProperty_Test
   public void should_fail_on_primitive_type_nested_property() {
     try {
       assertThat(friends).onProperty("father.age").contains(888);
-    } catch (AssertionError e) {
+    } catch (IntrospectionError e) {
       assertThat(e).hasMessage("array:<[55, 62, 46, 74]> does not contain element(s):<[888]>");
     }
   }

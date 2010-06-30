@@ -6,11 +6,10 @@ import static org.fest.assertions.CommonFailures.expectErrorIfActualListIsNull;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.fest.test.CodeToTest;
+import org.fest.util.IntrospectionError;
 import org.junit.Before;
 import org.junit.Test;
-
-import org.fest.reflect.exception.ReflectionError;
-import org.fest.test.CodeToTest;
 
 public class ListAssert_onProperty_Test implements Assert_onProperty_Test {
 
@@ -203,7 +202,7 @@ public class ListAssert_onProperty_Test implements Assert_onProperty_Test {
     try {
       // PersonName does not have a 'nickname' property => failure
       assertThat(friends).onProperty("name.nickname").containsOnly("PaulaFather", "JackFather", "JackFather2");
-    } catch (ReflectionError e) {
+    } catch (IntrospectionError e) {
       assertThat(e).hasMessage("Unable to find property 'nickname' in org.fest.assertions.Name");
     }
   }

@@ -43,7 +43,7 @@ public class ShortAssert_isZero_Test implements NumberAssert_isZero_TestCase {
 
   @Test
   public void should_fail_if_actual_is_not_zero() {
-    expectAssertionError("expected:<0> but was:<6>").on(new CodeToTest() {
+    expectAssertionError("expected:<[0]> but was:<[6]>").on(new CodeToTest() {
       public void run() {
         new ShortAssert(notZero).isZero();
       }
@@ -52,7 +52,7 @@ public class ShortAssert_isZero_Test implements NumberAssert_isZero_TestCase {
 
   @Test
   public void should_fail_and_display_description_of_assertion_if_actual_is_not_zero() {
-    expectAssertionError("[A Test] expected:<0> but was:<6>").on(new CodeToTest() {
+    expectAssertionError("[A Test] expected:<[0]> but was:<[6]>").on(new CodeToTest() {
       public void run() {
         new ShortAssert(notZero).as("A Test")
                                 .isZero();

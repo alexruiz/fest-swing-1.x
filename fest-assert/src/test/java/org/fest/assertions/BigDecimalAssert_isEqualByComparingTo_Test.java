@@ -14,17 +14,17 @@
  */
 package org.fest.assertions;
 
-import java.math.BigDecimal;
-
-import org.fest.test.CodeToTest;
-import org.junit.Test;
-
 import static java.math.BigDecimal.ZERO;
 import static org.fest.assertions.BigDecimals.eight;
 import static org.fest.assertions.BigDecimals.seven;
 import static org.fest.assertions.CommonFailures.expectErrorIfActualIsNull;
 import static org.fest.assertions.CommonFailures.expectErrorWithDescriptionIfActualIsNull;
 import static org.fest.test.ExpectedFailure.expectAssertionError;
+
+import java.math.BigDecimal;
+
+import org.fest.test.CodeToTest;
+import org.junit.Test;
 
 /**
  * Tests for <code>{@link BigDecimalAssert#isEqualByComparingTo(BigDecimal)}</code>.
@@ -62,7 +62,7 @@ public class BigDecimalAssert_isEqualByComparingTo_Test {
 
   @Test
   public void should_fail_if_values_are_not_equal() {
-    expectAssertionError("expected:<9.0> but was:<8.0>").on(new CodeToTest() {
+    expectAssertionError("expected:<7.0> but was:<8.0>").on(new CodeToTest() {
       public void run() {
         new BigDecimalAssert(eight()).isEqualByComparingTo(seven());
       }
@@ -71,7 +71,7 @@ public class BigDecimalAssert_isEqualByComparingTo_Test {
 
   @Test
   public void should_fail_and_display_description_of_assertion_if_values_are_not_equal() {
-    expectAssertionError("[A Test] expected:<9.0> but was:<8.0>").on(new CodeToTest() {
+    expectAssertionError("[A Test] expected:<7.0> but was:<8.0>").on(new CodeToTest() {
       public void run() {
         new BigDecimalAssert(eight()).as("A Test")
                                      .isEqualByComparingTo(seven());
@@ -84,7 +84,7 @@ public class BigDecimalAssert_isEqualByComparingTo_Test {
     expectAssertionError("My custom message").on(new CodeToTest() {
       public void run() {
         new BigDecimalAssert(ZERO).overridingErrorMessage("My custom message")
-                .isNotZero();
+                                  .isNotZero();
       }
     });
   }
@@ -94,8 +94,8 @@ public class BigDecimalAssert_isEqualByComparingTo_Test {
     expectAssertionError("My custom message").on(new CodeToTest() {
       public void run() {
         new BigDecimalAssert(ZERO).as("A Test")
-                .overridingErrorMessage("My custom message")
-                .isNotZero();
+                                  .overridingErrorMessage("My custom message")
+                                  .isNotZero();
       }
     });
   }

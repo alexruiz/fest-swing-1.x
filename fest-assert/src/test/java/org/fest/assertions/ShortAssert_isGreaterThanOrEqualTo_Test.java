@@ -45,7 +45,7 @@ public class ShortAssert_isGreaterThanOrEqualTo_Test implements Assert_isGreater
 
   @Test
   public void should_pass_if_actual_is_equal_to_expected() {
-    new ShortAssert(actual).isGreaterThanOrEqualTo(greaterThanActual);
+    new ShortAssert(actual).isGreaterThanOrEqualTo(actual);
   }
 
   @Test

@@ -14,8 +14,8 @@
  */
 package org.fest.assertions;
 
+import static java.math.BigDecimal.ZERO;
 import static org.fest.assertions.BigDecimals.eight;
-import static org.fest.assertions.BigDecimals.seven;
 import static org.fest.assertions.CommonFailures.expectErrorIfActualIsNull;
 import static org.fest.assertions.CommonFailures.expectErrorWithDescriptionIfActualIsNull;
 import static org.fest.test.ExpectedFailure.expectAssertionError;
@@ -35,12 +35,12 @@ public class BigDecimalAssert_isLessThanOrEqualTo_Test implements Assert_isLessT
 
   @Test
   public void should_pass_if_actual_is_less_than_expected() {
-    new BigDecimalAssert(eight()).isLessThanOrEqualTo(seven());
+    new BigDecimalAssert(ZERO).isLessThanOrEqualTo(eight());
   }
 
   @Test
   public void should_pass_if_actual_is_equal_to_expected() {
-    new BigDecimalAssert(eight()).isLessThanOrEqualTo(eight());
+    new BigDecimalAssert(ZERO).isLessThanOrEqualTo(ZERO);
   }
 
   @Test
@@ -64,19 +64,19 @@ public class BigDecimalAssert_isLessThanOrEqualTo_Test implements Assert_isLessT
 
   @Test
   public void should_fail_if_actual_is_greater_than_expected() {
-    expectAssertionError("actual value:<9.0> should be less than or equal to:<8.0>").on(new CodeToTest() {
+    expectAssertionError("actual value:<8.0> should be less than or equal to:<0>").on(new CodeToTest() {
       public void run() {
-        new BigDecimalAssert(seven()).isLessThanOrEqualTo(eight());
+        new BigDecimalAssert(eight()).isLessThanOrEqualTo(ZERO);
       }
     });
   }
 
   @Test
   public void should_fail_and_display_description_of_assertion_if_actual_is_greater_than_expected() {
-    expectAssertionError("[A Test] actual value:<9.0> should be less than or equal to:<8.0>").on(new CodeToTest() {
+    expectAssertionError("[A Test] actual value:<8.0> should be less than or equal to:<0>").on(new CodeToTest() {
       public void run() {
-        new BigDecimalAssert(seven()).as("A Test")
-                                    .isLessThanOrEqualTo(eight());
+        new BigDecimalAssert(eight()).as("A Test")
+                                     .isLessThanOrEqualTo(ZERO);
       }
     });
   }
@@ -85,8 +85,8 @@ public class BigDecimalAssert_isLessThanOrEqualTo_Test implements Assert_isLessT
   public void should_fail_with_custom_message_if_actual_is_greater_than_expected() {
     expectAssertionError("My custom message").on(new CodeToTest() {
       public void run() {
-        new BigDecimalAssert(seven()).overridingErrorMessage("My custom message")
-                                    .isLessThanOrEqualTo(eight());
+        new BigDecimalAssert(eight()).overridingErrorMessage("My custom message")
+                                     .isLessThanOrEqualTo(ZERO);
       }
     });
   }
@@ -95,9 +95,9 @@ public class BigDecimalAssert_isLessThanOrEqualTo_Test implements Assert_isLessT
   public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_is_greater_than_expected() {
     expectAssertionError("My custom message").on(new CodeToTest() {
       public void run() {
-        new BigDecimalAssert(seven()).as("A Test")
-                                    .overridingErrorMessage("My custom message")
-                                    .isLessThanOrEqualTo(eight());
+        new BigDecimalAssert(eight()).as("A Test")
+                                     .overridingErrorMessage("My custom message")
+                                     .isLessThanOrEqualTo(ZERO);
       }
     });
   }

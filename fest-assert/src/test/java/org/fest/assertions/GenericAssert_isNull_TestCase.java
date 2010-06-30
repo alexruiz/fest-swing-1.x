@@ -50,7 +50,7 @@ public abstract class GenericAssert_isNull_TestCase<T> extends GenericAssert_Tes
 
   @Test
   public final void should_fail_if_actual_is_not_null() {
-    expectAssertionError(concat(format(actual), " should be null")).on(new CodeToTest() {
+    expectAssertionError(concat("<", format(actual), "> should be null")).on(new CodeToTest() {
       public void run() {
         assertions.isNull();
       }
@@ -59,7 +59,7 @@ public abstract class GenericAssert_isNull_TestCase<T> extends GenericAssert_Tes
 
   @Test
   public final void should_fail_and_display_description_of_assertion_if_actual_is_not_null() {
-    expectAssertionError(concat("[A Test] ", format(actual), " should be null")).on(new CodeToTest() {
+    expectAssertionError(concat("[A Test] <", format(actual), "> should be null")).on(new CodeToTest() {
       public void run() {
         assertions.as("A Test")
                   .isNull();
