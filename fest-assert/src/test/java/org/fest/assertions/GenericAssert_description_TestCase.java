@@ -28,7 +28,7 @@ import org.junit.Test;
  * <li><code>{@link GenericAssert#describedAs(Description)}</code></li>
  * <li><code>{@link GenericAssert#describedAs(String)}</code></li>
  * </ul>
- * @param <T> the generic type of the <code>GenericAssert</code> to test.
+ * @param <T> The type supported by the implementation of the {@code GenericAssert} to test.
  *
  * @author Alex Ruiz
  */

@@ -14,7 +14,12 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.ErrorMessages.*;
+import static org.fest.assertions.ErrorMessages.unexpectedEqual;
+import static org.fest.assertions.ErrorMessages.unexpectedGreaterThan;
+import static org.fest.assertions.ErrorMessages.unexpectedGreaterThanOrEqualTo;
+import static org.fest.assertions.ErrorMessages.unexpectedLessThan;
+import static org.fest.assertions.ErrorMessages.unexpectedLessThanOrEqualTo;
+import static org.fest.assertions.Fail.comparisonFailed;
 
 /**
  * Understands a template for assertion methods, applicable to <code>{@link Comparable}</code>s.
@@ -97,7 +102,7 @@ public abstract class ComparableAssert<T extends Comparable<T>> extends GenericA
     isNotNull();
     if (actual.compareTo(expected) == 0) return;
     failIfCustomMessageIsSet();
-    fail(unexpectedNotEqual(actual, expected));
+    throw comparisonFailed(rawDescription(), actual, expected);
   }
 
   /**

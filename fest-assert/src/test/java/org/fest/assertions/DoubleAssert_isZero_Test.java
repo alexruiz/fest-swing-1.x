@@ -14,10 +14,7 @@
  */
 package org.fest.assertions;
 
-import static org.fest.test.ExpectedFailure.expectAssertionError;
-
-import org.fest.test.CodeToTest;
-import org.junit.Test;
+import org.junit.BeforeClass;
 
 /**
  * Test for <code>{@link DoubleAssert#isZero()}</code>.
@@ -26,50 +23,26 @@ import org.junit.Test;
  * @author David DIDIER
  * @author Alex Ruiz
  */
-public class DoubleAssert_isZero_Test implements NumberAssert_isZero_TestCase {
+public class DoubleAssert_isZero_Test extends NumberAssert_isZero_TestCase<Double> {
 
-  @Test
-  public void should_pass_if_actual_is_zero() {
-    new DoubleAssert(0).isZero();
+  private static Double notZero;
+  private static Double zero;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    notZero = 6d;
+    zero = 0d;
   }
 
-  @Test
-  public void should_fail_if_actual_is_not_zero() {
-    expectAssertionError("expected:<0.0> but was:<9.0>").on(new CodeToTest() {
-      public void run() {
-        new DoubleAssert(9).isZero();
-      }
-    });
+  protected Double notZero() {
+    return notZero;
   }
 
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_is_not_zero() {
-    expectAssertionError("[A Test] expected:<0.0> but was:<9.0>").on(new CodeToTest() {
-      public void run() {
-        new DoubleAssert(9).as("A Test")
-                           .isZero();
-      }
-    });
+  protected Double zero() {
+    return zero;
   }
 
-  @Test
-  public void should_fail_with_custom_message_if_actual_is_not_zero() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new DoubleAssert(9).overridingErrorMessage("My custom message")
-                           .isZero();
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_is_not_zero() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new DoubleAssert(9).as("A Test")
-                           .overridingErrorMessage("My custom message")
-                           .isZero();
-      }
-    });
+  protected DoubleAssert assertionsFor(Double actual) {
+    return new DoubleAssert(actual);
   }
 }

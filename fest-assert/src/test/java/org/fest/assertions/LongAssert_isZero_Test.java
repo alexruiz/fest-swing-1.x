@@ -14,61 +14,35 @@
  */
 package org.fest.assertions;
 
-import static org.fest.test.ExpectedFailure.expectAssertionError;
-
-import org.fest.test.CodeToTest;
-import org.junit.Test;
+import org.junit.BeforeClass;
 
 /**
  * Tests for <code>{@link LongAssert#isZero()}</code>.
  *
  * @author Yvonne Wang
  * @author David DIDIER
+ * @author Alex Ruiz
  */
-public class LongAssert_isZero_Test implements NumberAssert_isZero_TestCase {
+public class LongAssert_isZero_Test extends NumberAssert_isZero_TestCase<Long> {
 
-  @Test
-  public void should_pass_if_actual_is_zero() {
-    new LongAssert(0).isZero();
+  private static Long notZero;
+  private static Long zero;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    notZero = 6L;
+    zero = 0L;
   }
 
-  @Test
-  public void should_fail_if_actual_is_not_zero() {
-    expectAssertionError("expected:<[0]> but was:<[6]>").on(new CodeToTest() {
-      public void run() {
-        new LongAssert(6).isZero();
-      }
-    });
+  protected Long notZero() {
+    return notZero;
   }
 
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_is_not_zero() {
-    expectAssertionError("[A Test] expected:<[0]> but was:<[6]>").on(new CodeToTest() {
-      public void run() {
-        new LongAssert(6).as("A Test")
-                         .isZero();
-      }
-    });
+  protected Long zero() {
+    return zero;
   }
 
-  @Test
-  public void should_fail_with_custom_message_if_actual_is_not_zero() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new LongAssert(6).overridingErrorMessage("My custom message")
-                         .isZero();
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_is_not_zero() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new LongAssert(6).as("A Test")
-                         .overridingErrorMessage("My custom message")
-                         .isZero();
-      }
-    });
+  protected LongAssert assertionsFor(Long actual) {
+    return new LongAssert(actual);
   }
 }

@@ -16,12 +16,10 @@ package org.fest.assertions;
 
 import static java.math.BigDecimal.ZERO;
 import static org.fest.assertions.BigDecimals.eight;
-import static org.fest.assertions.CommonFailures.expectErrorIfActualIsNull;
-import static org.fest.assertions.CommonFailures.expectErrorWithDescriptionIfActualIsNull;
-import static org.fest.test.ExpectedFailure.expectAssertionError;
 
-import org.fest.test.CodeToTest;
-import org.junit.Test;
+import java.math.BigDecimal;
+
+import org.junit.BeforeClass;
 
 /**
  * Tests for <code>{@link BigDecimalAssert#isZero()}</code>.
@@ -31,69 +29,26 @@ import org.junit.Test;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class BigDecimalAssert_isZero_Test implements NumberAssert_isZero_TestCase {
+public class BigDecimalAssert_isZero_Test extends NumberAssert_isZero_TestCase<BigDecimal> {
 
-  @Test
-  public void should_pass_if_actual_is_zero() {
-    new BigDecimalAssert(ZERO).isZero();
+  private static BigDecimal notZero;
+  private static BigDecimal zero;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    notZero = eight();
+    zero = ZERO;
   }
 
-  @Test
-  public void should_fail_if_actual_is_null() {
-    expectErrorIfActualIsNull(new CodeToTest() {
-      public void run() {
-        new BigDecimalAssert(null).isZero();
-      }
-    });
+  protected BigDecimal notZero() {
+    return notZero;
   }
 
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_is_null() {
-    expectErrorWithDescriptionIfActualIsNull(new CodeToTest() {
-      public void run() {
-        new BigDecimalAssert(null).as("A Test")
-                                  .isZero();
-      }
-    });
+  protected BigDecimal zero() {
+    return zero;
   }
 
-  @Test
-  public void should_fail_if_actual_is_not_zero() {
-    expectAssertionError("expected:<0> but was:<8.0>").on(new CodeToTest() {
-      public void run() {
-        new BigDecimalAssert(eight()).isZero();
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_is_not_zero() {
-    expectAssertionError("[A Test] expected:<0> but was:<8.0>").on(new CodeToTest() {
-      public void run() {
-        new BigDecimalAssert(eight()).as("A Test")
-                                     .isZero();
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_if_actual_is_not_zero() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new BigDecimalAssert(eight()).overridingErrorMessage("My custom message")
-                                     .isZero();
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_is_not_zero() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new BigDecimalAssert(eight()).as("A Test")
-                                     .overridingErrorMessage("My custom message")
-                                     .isZero();
-      }
-    });
+  protected BigDecimalAssert assertionsFor(BigDecimal actual) {
+    return new BigDecimalAssert(actual);
   }
 }

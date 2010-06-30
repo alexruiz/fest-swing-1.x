@@ -24,10 +24,6 @@ import org.junit.Test;
 
 /**
  * Base class for testing <code>{@link GenericAssert#isNotEqualTo(Object)}</code>.
- * <p>
- * This class implements the algorithms which must be performed to test <code>isNotEqualTo</code> as template methods
- * and uses implementations of the abstract methods in subclasses to derive concrete tests.
- * </p>
  * @param <T> The type supported by the implementation of the {@code GenericAssert} to test.
  *
  * @author Ansgar Konermann

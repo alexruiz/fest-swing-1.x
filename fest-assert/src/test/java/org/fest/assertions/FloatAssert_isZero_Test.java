@@ -14,10 +14,7 @@
  */
 package org.fest.assertions;
 
-import static org.fest.test.ExpectedFailure.expectAssertionError;
-
-import org.fest.test.CodeToTest;
-import org.junit.Test;
+import org.junit.BeforeClass;
 
 /**
  * Test for <code>{@link FloatAssert#isZero()}</code>.
@@ -26,50 +23,26 @@ import org.junit.Test;
  * @author David DIDIER
  * @author Alex Ruiz
  */
-public class FloatAssert_isZero_Test implements NumberAssert_isZero_TestCase {
+public class FloatAssert_isZero_Test extends NumberAssert_isZero_TestCase<Float> {
 
-  @Test
-  public void should_pass_if_actual_is_zero() {
-    new FloatAssert(0f).isZero();
+  private static Float notZero;
+  private static Float zero;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    notZero = 6f;
+    zero = 0f;
   }
 
-  @Test
-  public void should_fail_if_actual_is_not_zero() {
-    expectAssertionError("expected:<[0].0> but was:<[9].0>").on(new CodeToTest() {
-      public void run() {
-        new FloatAssert(9f).isZero();
-      }
-    });
+  protected Float notZero() {
+    return notZero;
   }
 
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_is_not_zero() {
-    expectAssertionError("[A Test] expected:<[0].0> but was:<[9].0>").on(new CodeToTest() {
-      public void run() {
-        new FloatAssert(9f).as("A Test")
-                           .isZero();
-      }
-    });
+  protected Float zero() {
+    return zero;
   }
 
-  @Test
-  public void should_fail_with_custom_message_if_actual_is_not_zero() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new FloatAssert(9f).overridingErrorMessage("My custom message")
-                           .isZero();
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_is_not_zero() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new FloatAssert(9f).as("A Test")
-                           .overridingErrorMessage("My custom message")
-                           .isZero();
-      }
-    });
+  protected FloatAssert assertionsFor(Float actual) {
+    return new FloatAssert(actual);
   }
 }

@@ -15,7 +15,8 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.CommonFailures.*;
+import static org.fest.assertions.CommonFailures.expectErrorIfActualIsNull;
+import static org.fest.assertions.CommonFailures.expectErrorWithDescriptionIfActualIsNull;
 import static org.fest.test.ExpectedFailure.expectAssertionError;
 
 import org.fest.test.CodeToTest;
@@ -24,10 +25,6 @@ import org.junit.Test;
 
 /**
  * Base class for testing <code>{@link GenericAssert#isNotNull()}</code>.
- * <p>
- * This class implements the algorithms which must be performed to test <code>isNotNull</code> as template methods and
- * uses implementations of the abstract methods in subclasses to derive concrete tests.
- * </p>
  * @param <T> The type supported by the implementation of the {@code GenericAssert} to test.
  *
  * @author Ansgar Konermann
