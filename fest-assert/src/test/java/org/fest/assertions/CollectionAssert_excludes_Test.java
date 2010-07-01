@@ -15,14 +15,9 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.CommonFailures.*;
-import static org.fest.test.ExpectedFailure.expectAssertionError;
 import static org.fest.util.Collections.list;
 
 import java.util.Collection;
-import org.fest.test.CodeToTest;
-import org.junit.BeforeClass;
-import org.junit.Test;
 
 /**
  * Tests for <code>{@link CollectionAssert#excludes(Object...)}</code>.
@@ -30,103 +25,13 @@ import org.junit.Test;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class CollectionAssert_excludes_Test implements GroupAssert_excludes_TestCase {
+public class CollectionAssert_excludes_Test extends ObjectGroupAssert_excludes_TestCase<Collection<?>> {
 
-  private static Collection<String> collection;
-
-  @BeforeClass
-  public static void setUpOnce() {
-    collection = list("Luke", "Leia");
+  protected Collection<?> actualFrom(Object... values) {
+    return list(values);
   }
 
-  @Test
-  public void should_pass_if_actual_excludes_given_value() {
-    new CollectionAssert(collection).excludes("Anakin");
-  }
-
-  @Test
-  public void should_pass_if_actual_excludes_given_values() {
-    new CollectionAssert(collection).excludes("Han", "Yoda");
-  }
-
-  @Test
-  public void should_fail_if_actual_is_null() {
-    expectErrorIfActualCollectionIsNull(new CodeToTest() {
-      public void run() {
-        new CollectionAssert(null).excludes("Luke");
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_is_null() {
-    expectErrorWithDescriptionIfActualCollectionIsNull(new CodeToTest() {
-      public void run() {
-        new CollectionAssert(null).as("A Test")
-                                  .excludes("Luke");
-      }
-    });
-  }
-
-  @Test
-  public void should_throw_error_if_expected_is_null() {
-    expectNullPointerException("the given array of objects should not be null").on(new CodeToTest() {
-      public void run() {
-        Object[] objects = null;
-        new CollectionAssert(collection).excludes(objects);
-      }
-    });
-  }
-
-  @Test
-  public void should_throw_error_and_display_description_of_assertion_if_expected_is_null() {
-    expectNullPointerException("[A Test] the given array of objects should not be null").on(new CodeToTest() {
-      public void run() {
-        Object[] objects = null;
-        new CollectionAssert(collection).as("A Test")
-                                        .excludes(objects);
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_if_actual_contains_given_values() {
-    expectAssertionError("collection:<['Luke', 'Leia']> does not exclude element(s):<['Luke']>").on(new CodeToTest() {
-      public void run() {
-        new CollectionAssert(collection).excludes("Luke");
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_contains_given_values() {
-    String message = "[A Test] collection:<['Luke', 'Leia']> does not exclude element(s):<['Luke']>";
-    expectAssertionError(message).on(new CodeToTest() {
-      public void run() {
-        new CollectionAssert(collection).as("A Test")
-                                        .excludes("Luke");
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_if_actual_contains_given_values() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new CollectionAssert(collection).overridingErrorMessage("My custom message")
-                                        .excludes("Luke");
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_contains_given_values() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new CollectionAssert(collection).as("A Test")
-                                        .overridingErrorMessage("My custom message")
-                                        .excludes("Luke");
-      }
-    });
+  protected CollectionAssert assertionsFor(Collection<?> actual) {
+    return new CollectionAssert(actual);
   }
 }

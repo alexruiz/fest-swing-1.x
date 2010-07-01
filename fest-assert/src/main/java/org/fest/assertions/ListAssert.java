@@ -15,7 +15,6 @@
 package org.fest.assertions;
 
 import static java.util.Collections.emptyList;
-import static org.fest.assertions.Collections.found;
 import static org.fest.assertions.Formatting.inBrackets;
 import static org.fest.assertions.PropertySupport.propertyValues;
 import static org.fest.util.Collections.*;
@@ -205,17 +204,8 @@ public class ListAssert extends ObjectGroupAssert<List<?>> {
    * @throws AssertionError if the actual {@code List} contains any of the given objects.
    */
   public ListAssert excludes(Object... objects) {
-    isNotNull();
-    validateIsNotNull(objects);
-    Collection<Object> found = found(actual, objects);
-    if (found.isEmpty()) return this;
-    failIfCustomMessageIsSet();
-    throw failure(concat("list:", inBrackets(actual), " does not exclude element(s):", inBrackets(found)));
-  }
-
-  private void validateIsNotNull(Object[] objects) {
-    if (objects == null)
-      throw new NullPointerException(formattedErrorMessage("the given array of objects should not be null"));
+    assertExcludes(objects);
+    return this;
   }
 
   /**

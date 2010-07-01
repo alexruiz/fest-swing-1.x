@@ -15,7 +15,7 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.Collections.notFound;
+import static org.fest.assertions.Collections.*;
 import static org.fest.assertions.Formatting.inBrackets;
 import static org.fest.util.Strings.concat;
 
@@ -158,11 +158,6 @@ public abstract class ObjectGroupAssert<T> extends GroupAssert<T> {
     throw failureIfUnexpectedElementsFound(copy);
   }
 
-  private void validateIsNotNull(Object[] objects) {
-    if (objects == null)
-      throw new NullPointerException(formattedErrorMessage("the given array of objects should not be null"));
-  }
-
   /**
    * Returns the actual value as a {@code Set}.
    * @return the actual value as a {@code Set}.
@@ -195,5 +190,41 @@ public abstract class ObjectGroupAssert<T> extends GroupAssert<T> {
   private AssertionError failureIfUnexpectedElementsFound(Collection<Object> unexpected) {
     failIfCustomMessageIsSet();
     return failure(concat("unexpected element(s):", inBrackets(unexpected), " in:", inBrackets(actual)));
+  }
+
+  /**
+   * Verifies that the actual group of objects does not contain the given objects.
+   * @param objects the objects that the group of objects should exclude.
+   * @return this assertion object.
+   * @throws AssertionError if the actual group of objects is <code>null</code>.
+   * @throws NullPointerException if the given array is <code>null</code>.
+   * @throws AssertionError if the actual group of objects contains any of the given objects.
+   */
+  public abstract ObjectGroupAssert<T> excludes(Object... objects);
+
+  /**
+   * Verifies that the actual group of objects does not contain the given objects.
+   * @param objects the objects that the group of objects should exclude.
+   * @throws AssertionError if the actual group of objects is <code>null</code>.
+   * @throws NullPointerException if the given array is <code>null</code>.
+   * @throws AssertionError if the actual group of objects contains any of the given objects.
+   */
+  protected final void assertExcludes(Object... objects) {
+    isNotNull();
+    validateIsNotNull(objects);
+    Collection<Object> found = found(actualAsSet(), objects);
+    if (found.isEmpty()) return;
+    failIfCustomMessageIsSet();
+    throw failure(concat(inBrackets(actual), " does not exclude element(s):", inBrackets(found)));
+  }
+
+  /**
+   * Validates that the given array of objects is not <code>null</code>.
+   * @param objects the array of objects to verify.
+   * @throws NullPointerException if the given array of objects is <code>null</code>.
+   */
+  protected final void validateIsNotNull(Object[] objects) {
+    if (objects == null)
+      throw new NullPointerException(formattedErrorMessage("the given array of objects should not be null"));
   }
 }
