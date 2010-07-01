@@ -17,6 +17,7 @@ package org.fest.assertions;
 
 import static org.fest.assertions.Collections.*;
 import static org.fest.assertions.Formatting.inBrackets;
+import static org.fest.util.Collections.duplicatesFrom;
 import static org.fest.util.Strings.concat;
 
 import java.util.*;
@@ -38,69 +39,6 @@ public abstract class ObjectGroupAssert<T> extends GroupAssert<T> {
   }
 
   /**
-   * Sets the description of the actual value, to be used in as message of any <code>{@link AssertionError}</code>
-   * thrown when an assertion fails. This method should be called before any assertion method, otherwise any assertion
-   * failure will not show the provided description.
-   * <p>
-   * For example:
-   * <pre>
-   * assertThat(val).<strong>as</strong>(&quot;name&quot;).isEqualTo(&quot;Frodo&quot;);
-   * </pre>
-   * </p>
-   * @param description the description of the actual value.
-   * @return this assertion object.
-   */
-  protected abstract ObjectGroupAssert<T> as(String description);
-
-  /**
-   * Alias for <code>{@link #as(String)}</code>, since "as" is a keyword in
-   * <a href="http://groovy.codehaus.org/" target="_blank">Groovy</a>. This method should be called before any assertion
-   * method, otherwise any assertion failure will not show the provided description.
-   * <p>
-   * For example:
-   * <pre>
-   * assertThat(val).<strong>describedAs</strong>(&quot;name&quot;).isEqualTo(&quot;Frodo&quot;);
-   * </pre>
-   * </p>
-   * @param description the description of the actual value.
-   * @return this assertion object.
-   */
-  protected abstract ObjectGroupAssert<T> describedAs(String description);
-
-  /**
-   * Sets the description of the actual value, to be used in as message of any <code>{@link AssertionError}</code>
-   * thrown when an assertion fails. This method should be called before any assertion method, otherwise any assertion
-   * failure will not show the provided description.
-   * <p>
-   * For example:
-   * <pre>
-   * assertThat(val).<strong>as</strong>(new BasicDescription(&quot;name&quot;)).isEqualTo(&quot;Frodo&quot;);
-   * </pre>
-   * </p>
-   * @param description the description of the actual value.
-   * @return this assertion object.
-   */
-  protected abstract ObjectGroupAssert<T> as(Description description);
-
-  /**
-   * Alias for <code>{@link #as(Description)}</code>, since "as" is a keyword in
-   * <a href="http://groovy.codehaus.org/" target="_blank">Groovy</a>. This method should be called before any assertion
-   * method, otherwise any assertion failure will not show the provided description.
-   * <p>
-   * For example:
-   * <pre>
-   * assertThat(val).<strong>describedAs</strong>(new BasicDescription(&quot;name&quot;)).isEqualTo(&quot;Frodo&quot;);
-   * </pre>
-   * </p>
-   * @param description the description of the actual value.
-   * @return this assertion object.
-   */
-  protected abstract ObjectGroupAssert<T> describedAs(Description description);
-
-  /** {@inheritDoc} */
-  protected abstract ObjectGroupAssert<T> overridingErrorMessage(String message);
-
-  /**
    * Verifies that the actual group of objects contains the given objects.
    * @param objects the objects to look for.
    * @return this assertion object.
@@ -108,7 +46,7 @@ public abstract class ObjectGroupAssert<T> extends GroupAssert<T> {
    * @throws NullPointerException if the given array is <code>null</code>.
    * @throws AssertionError if the actual group of objects does not contain the given objects.
    */
-  public abstract ObjectGroupAssert<T> contains(Object... objects);
+  protected abstract ObjectGroupAssert<T> contains(Object... objects);
 
   /**
    * Verifies that the actual actual group of objects contains the given objects, in any order.
@@ -138,7 +76,7 @@ public abstract class ObjectGroupAssert<T> extends GroupAssert<T> {
    * @throws AssertionError if the actual group of objects does not contain the given objects, or if the actual group of
    * objects contains elements other than the ones specified.
    */
-  public abstract ObjectGroupAssert<T> containsOnly(Object... objects);
+  protected abstract ObjectGroupAssert<T> containsOnly(Object... objects);
 
   /**
    * Verifies that the actual group of objects contains the given objects <strong>only</strong>, in any order.
@@ -200,7 +138,7 @@ public abstract class ObjectGroupAssert<T> extends GroupAssert<T> {
    * @throws NullPointerException if the given array is <code>null</code>.
    * @throws AssertionError if the actual group of objects contains any of the given objects.
    */
-  public abstract ObjectGroupAssert<T> excludes(Object... objects);
+  protected abstract ObjectGroupAssert<T> excludes(Object... objects);
 
   /**
    * Verifies that the actual group of objects does not contain the given objects.
@@ -227,4 +165,46 @@ public abstract class ObjectGroupAssert<T> extends GroupAssert<T> {
     if (objects == null)
       throw new NullPointerException(formattedErrorMessage("the given array of objects should not be null"));
   }
+
+  /**
+   * Verifies that the actual group of objects does not have duplicates.
+   * @return this assertion object.
+   * @throws AssertionError if the actual group of objects is <code>null</code>.
+   * @throws AssertionError if the actual group of objects has duplicates.
+   */
+  protected abstract ObjectGroupAssert<T> doesNotHaveDuplicates();
+
+  /**
+   * Verifies that the actual group of objects does not have duplicates.
+   * @throws AssertionError if the actual group of objects is <code>null</code>.
+   * @throws AssertionError if the actual group of objects has duplicates.
+   */
+  protected final void assertDoesNotHaveDuplicates() {
+    isNotNull();
+    Collection<?> duplicates = duplicatesFrom(actualAsList());
+    if (duplicates.isEmpty()) return;
+    failIfCustomMessageIsSet();
+    throw failure(concat(inBrackets(actual), " contains duplicate(s):", inBrackets(duplicates)));
+  }
+
+  /**
+   * Returns the actual value as a {@code List}.
+   * @return the actual value as a {@code List}.
+   */
+  protected abstract List<Object> actualAsList();
+
+  /** {@inheritDoc} */
+  protected abstract ObjectGroupAssert<T> as(String description);
+
+  /** {@inheritDoc} */
+  protected abstract ObjectGroupAssert<T> describedAs(String description);
+
+  /** {@inheritDoc} */
+  protected abstract ObjectGroupAssert<T> as(Description description);
+
+  /** {@inheritDoc} */
+  protected abstract ObjectGroupAssert<T> describedAs(Description description);
+
+  /** {@inheritDoc} */
+  protected abstract ObjectGroupAssert<T> overridingErrorMessage(String message);
 }

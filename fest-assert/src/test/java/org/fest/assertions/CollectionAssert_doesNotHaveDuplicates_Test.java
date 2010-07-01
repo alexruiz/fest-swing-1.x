@@ -15,16 +15,9 @@
  */
 package org.fest.assertions;
 
-import static java.util.Collections.emptyList;
-import static org.fest.assertions.CommonFailures.expectErrorIfActualCollectionIsNull;
-import static org.fest.assertions.CommonFailures.expectErrorWithDescriptionIfActualCollectionIsNull;
-import static org.fest.test.ExpectedFailure.expectAssertionError;
 import static org.fest.util.Collections.list;
 
 import java.util.Collection;
-import org.fest.test.CodeToTest;
-import org.junit.BeforeClass;
-import org.junit.Test;
 
 /**
  * Tests for <code>{@link CollectionAssert#doesNotHaveDuplicates()}</code>.
@@ -32,82 +25,13 @@ import org.junit.Test;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class CollectionAssert_doesNotHaveDuplicates_Test implements GroupAssert_doesNotHaveDuplicates_TestCase {
+public class CollectionAssert_doesNotHaveDuplicates_Test extends ObjectGroupAssert_doesNotHaveDuplicates_TestCase<Collection<?>> {
 
-  private static Collection<String> withDuplicates;
-
-  @BeforeClass
-  public static void setUpOnce() {
-    withDuplicates = list("Luke", "Yoda", "Luke");
+  protected Collection<?> actualFrom(Object... values) {
+    return list(values);
   }
 
-  @Test
-  public void should_pass_if_actual_does_not_contain_duplicates() {
-    new CollectionAssert(list("Luke", "Yoda")).doesNotHaveDuplicates();
-  }
-
-  @Test
-  public void should_pass_if_actual_is_empty() {
-    new CollectionAssert(emptyList()).doesNotHaveDuplicates();
-  }
-
-  @Test
-  public void should_fail_if_actual_is_null() {
-    expectErrorIfActualCollectionIsNull(new CodeToTest() {
-      public void run() {
-        new CollectionAssert(null).doesNotHaveDuplicates();
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_is_null() {
-    expectErrorWithDescriptionIfActualCollectionIsNull(new CodeToTest() {
-      public void run() {
-        new CollectionAssert(null).as("A Test")
-                                  .doesNotHaveDuplicates();
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_if_actual_has_duplicates() {
-    expectAssertionError("collection:<['Luke', 'Yoda', 'Luke']> contains duplicate(s):<['Luke']>").on(new CodeToTest() {
-      public void run() {
-        new CollectionAssert(withDuplicates).doesNotHaveDuplicates();
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_has_duplicates() {
-    String message = "[A Test] collection:<['Luke', 'Yoda', 'Luke']> contains duplicate(s):<['Luke']>";
-    expectAssertionError(message).on(new CodeToTest() {
-      public void run() {
-        new CollectionAssert(withDuplicates).as("A Test")
-                                            .doesNotHaveDuplicates();
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_if_actual_has_duplicates() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new CollectionAssert(withDuplicates).overridingErrorMessage("My custom message")
-                                            .doesNotHaveDuplicates();
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_has_duplicates() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new CollectionAssert(withDuplicates).as("A Test")
-                                            .overridingErrorMessage("My custom message")
-                                            .doesNotHaveDuplicates();
-      }
-    });
+  protected CollectionAssert assertionsFor(Collection<?> actual) {
+    return new CollectionAssert(actual);
   }
 }

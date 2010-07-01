@@ -15,7 +15,6 @@
  */
 package org.fest.assertions;
 
-import static java.util.Collections.emptyList;
 import static org.fest.util.Collections.list;
 
 import java.util.Collection;
@@ -34,9 +33,5 @@ public class CollectionAssert_containsOnly_Test extends ObjectGroupAssert_contai
 
   protected CollectionAssert assertionsFor(Collection<?> actual) {
     return new CollectionAssert(actual);
-  }
-
-  protected Collection<?> emptyActual() {
-    return emptyList();
   }
 }

@@ -15,6 +15,9 @@
  */
 package org.fest.assertions;
 
+import static org.fest.assertions.Formatting.inBrackets;
+import static org.fest.util.Strings.concat;
+
 /**
  * Understands a template for assertion methods related to classes representing groups of values.
  * @param <T> the type of object implementations of this template can verify.
@@ -33,16 +36,29 @@ public abstract class GroupAssert<T> extends GenericAssert<T> {
   }
 
   /**
-   * Verifies that the actual group is <code>null</code> or empty.
-   * @throws AssertionError if the actual group is not <code>null</code> or not empty.
+   * Verifies that the actual group of values is <code>null</code> or empty.
+   * @throws AssertionError if the actual group of values is not <code>null</code> or not empty.
    */
-  protected abstract void isNullOrEmpty();
+  public void isNullOrEmpty() {
+    if (actual == null || !hasElements()) return;
+    failIfCustomMessageIsSet();
+    fail(concat("expecting null or empty, but was:", inBrackets(actual)));
+  }
 
   /**
-   * Verifies that the actual group is empty.
-   * @throws AssertionError if the actual group is <code>null</code> or not empty.
+   * Verifies that the actual group of values is empty.
+   * @throws AssertionError if the actual group of values is <code>null</code> or not empty.
    */
-  protected abstract void isEmpty();
+  public void isEmpty() {
+    isNotNull();
+    if (!hasElements()) return;
+    failIfCustomMessageIsSet();
+    fail(concat("expecting empty, but was:", inBrackets(actual)));
+  }
+
+  private boolean hasElements() {
+    return actualGroupSize() > 0;
+  }
 
   /**
    * Verifies that the actual group contains at least on value.
@@ -60,8 +76,36 @@ public abstract class GroupAssert<T> extends GenericAssert<T> {
   protected abstract GroupAssert<T> hasSize(int expected);
 
   /**
-   * Returns the size of the actual group (array, collection, etc.)
-   * @return the size of the actual group.
+   * Verifies that the number of elements in the actual group of values is equal to the given one.
+   * @param expected the expected number of elements in the actual group of values.
+   * @throws AssertionError if the actual group of values is <code>null</code>.
+   * @throws AssertionError if the number of elements of the actual group of values is not equal to the given one.
+   */
+  protected final void assertHasSize(int expected) {
+    int size = actualGroupSize();
+    if (size == expected) return;
+    failIfCustomMessageIsSet();
+    throw failure(concat("expected size:", inBrackets(expected), " but was:", inBrackets(size), " for ", inBrackets(actual)));
+  }
+
+  /**
+   * Returns the size of the actual group of values (array, collection, etc.)
+   * @return the size of the actual group of values.
    */
   protected abstract int actualGroupSize();
+
+  /** {@inheritDoc} */
+  protected abstract GroupAssert<T> as(String description);
+
+  /** {@inheritDoc} */
+  protected abstract GroupAssert<T> describedAs(String description);
+
+  /** {@inheritDoc} */
+  protected abstract GroupAssert<T> as(Description description);
+
+  /** {@inheritDoc} */
+  protected abstract GroupAssert<T> describedAs(Description description);
+
+  /** {@inheritDoc} */
+  protected abstract GroupAssert<T> overridingErrorMessage(String message);
 }

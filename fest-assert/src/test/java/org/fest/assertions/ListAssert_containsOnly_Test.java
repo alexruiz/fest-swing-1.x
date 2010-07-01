@@ -15,7 +15,6 @@
  */
 package org.fest.assertions;
 
-import static java.util.Collections.emptyList;
 import static org.fest.util.Collections.list;
 
 import java.util.List;
@@ -34,9 +33,4 @@ public class ListAssert_containsOnly_Test extends ObjectGroupAssert_containsOnly
   protected ListAssert assertionsFor(List<?> actual) {
     return new ListAssert(actual);
   }
-
-  protected List<?> emptyActual() {
-    return emptyList();
-  }
-
 }

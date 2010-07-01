@@ -27,7 +27,8 @@ import org.junit.*;
  *
  * @author Yvonne Wang
  */
-public abstract class ObjectGroupAssert_contains_TestCase<T> implements GroupAssert_contains_TestCase {
+public abstract class ObjectGroupAssert_contains_TestCase<T> extends ObjectGroupAssert_TestCase<T> implements
+    GroupAssert_contains_TestCase {
 
   private static Object[] actualValues;
 
@@ -44,10 +45,6 @@ public abstract class ObjectGroupAssert_contains_TestCase<T> implements GroupAss
     actual = actualFrom(actualValues);
     assertions = assertionsFor(actual);
   }
-
-  protected abstract T actualFrom(Object...values);
-
-  protected abstract ObjectGroupAssert<T> assertionsFor(T a);
 
   @Test
   public final void should_pass_if_actual_contains_given_value() {

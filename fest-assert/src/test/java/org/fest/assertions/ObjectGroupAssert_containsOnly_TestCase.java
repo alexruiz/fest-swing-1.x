@@ -15,7 +15,6 @@
  */
 package org.fest.assertions;
 
-import static java.util.Collections.emptyList;
 import static org.fest.assertions.ArrayFactory.objectArray;
 import static org.fest.assertions.CommonFailures.*;
 import static org.fest.test.ExpectedFailure.expectAssertionError;
@@ -29,31 +28,28 @@ import org.junit.*;
  *
  * @author Yvonne Wang
  */
-public abstract class ObjectGroupAssert_containsOnly_TestCase<T> implements GroupAssert_containsOnly_TestCase {
+public abstract class ObjectGroupAssert_containsOnly_TestCase<T> extends ObjectGroupAssert_TestCase<T> implements
+    GroupAssert_containsOnly_TestCase {
 
   private static Object[] actualValues;
+  private static Object[] emptyValues;
 
   @BeforeClass
   public static void setUpOnce() {
     actualValues = objectArray("Gandalf", "Frodo", "Sam");
+    emptyValues = new Object[0];
   }
 
   private T actual;
   private ObjectGroupAssert<T> assertions;
-  private T emptyActual;
+  private T empty;
 
   @Before
   public final void setUp() {
     actual = actualFrom(actualValues);
     assertions = assertionsFor(actual);
-    emptyActual = emptyActual();
+    empty = actualFrom(emptyValues);
   }
-
-  protected abstract T actualFrom(Object...values);
-
-  protected abstract ObjectGroupAssert<T> assertionsFor(T a);
-
-  protected abstract T emptyActual();
 
   @Test
   public final void should_pass_if_actual_contains_only_given_values() {
@@ -89,7 +85,7 @@ public abstract class ObjectGroupAssert_containsOnly_TestCase<T> implements Grou
     expectNullPointerException("the given array of objects should not be null").on(new CodeToTest() {
       public void run() {
         Object[] objects = null;
-        new ListAssert(emptyList()).containsOnly(objects);
+        assertions.containsOnly(objects);
       }
     });
   }
@@ -109,7 +105,7 @@ public abstract class ObjectGroupAssert_containsOnly_TestCase<T> implements Grou
   public final void should_fail_if_actual_is_empty_and_expecting_at_least_one_element() {
     expectAssertionError("<[]> does not contain element(s):<['Sam']>").on(new CodeToTest() {
       public void run() {
-        assertionsFor(emptyActual).containsOnly("Sam");
+        assertionsFor(empty).containsOnly("Sam");
       }
     });
   }
@@ -118,7 +114,7 @@ public abstract class ObjectGroupAssert_containsOnly_TestCase<T> implements Grou
   public final void should_fail_and_display_description_of_assertion_if_actual_is_empty_and_expecting_at_least_one_element() {
     expectAssertionError("[A Test] <[]> does not contain element(s):<['Sam']>").on(new CodeToTest() {
       public void run() {
-        assertionsFor(emptyActual).as("A Test")
+        assertionsFor(empty).as("A Test")
                                   .containsOnly("Sam");
       }
     });

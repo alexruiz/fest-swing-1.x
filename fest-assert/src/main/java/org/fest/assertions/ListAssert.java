@@ -17,14 +17,13 @@ package org.fest.assertions;
 import static java.util.Collections.emptyList;
 import static org.fest.assertions.Formatting.inBrackets;
 import static org.fest.assertions.PropertySupport.propertyValues;
-import static org.fest.util.Collections.*;
+import static org.fest.util.Collections.list;
 import static org.fest.util.Objects.areEqual;
 import static org.fest.util.Strings.concat;
 
 import java.util.*;
 
-import org.fest.util.*;
-import org.fest.util.Collections;
+import org.fest.util.IntrospectionError;
 
 /**
  * Understands assertions for <code>{@link List}</code>s. To create a new instance of this class use the method
@@ -215,11 +214,8 @@ public class ListAssert extends ObjectGroupAssert<List<?>> {
    * @throws AssertionError if the actual {@code List} has duplicates.
    */
   public ListAssert doesNotHaveDuplicates() {
-    isNotNull();
-    Collection<?> duplicates = duplicatesFrom(actual);
-    if (duplicates.isEmpty()) return this;
-    failIfCustomMessageIsSet();
-    throw failure(concat("list:", inBrackets(actual), " contains duplicate(s):", inBrackets(duplicates)));
+    assertDoesNotHaveDuplicates();
+    return this;
   }
 
   /** {@inheritDoc} */
@@ -304,32 +300,8 @@ public class ListAssert extends ObjectGroupAssert<List<?>> {
    * @throws AssertionError if the number of elements of the actual {@code List} is not equal to the given one.
    */
   public ListAssert hasSize(int expected) {
-    int actualSize = actualGroupSize();
-    if (actualSize == expected) return this;
-    failIfCustomMessageIsSet();
-    throw failure(concat("expected size:", inBrackets(expected), " but was:", inBrackets(actualSize), " for list:",
-        inBrackets(actual)));
-  }
-
-  /**
-   * Returns the number of elements in the actual <code>{@link List}</code>.
-   * @return the number of elements in the actual {@code List}.
-   */
-  protected int actualGroupSize() {
-    isNotNull();
-    return actual.size();
-  }
-
-  /**
-   * Verifies that the actual <code>{@link List}</code> is empty (not <code>null</code> with zero elements.)
-   * @throws AssertionError if the actual {@code List} is <code>null</code>.
-   * @throws AssertionError if the actual {@code List} is not empty.
-   */
-  public void isEmpty() {
-    isNotNull();
-    if (Collections.isEmpty(actual)) return;
-    failIfCustomMessageIsSet();
-    fail(concat("expecting empty list, but was:", inBrackets(actual)));
+    assertHasSize(expected);
+    return this;
   }
 
   /**
@@ -346,13 +318,13 @@ public class ListAssert extends ObjectGroupAssert<List<?>> {
   }
 
   /**
-   * Verifies that the actual <code>{@link List}</code> is <code>null</code> or empty.
-   * @throws AssertionError if the actual {@code List} is not <code>null</code> or not empty.
+   * Returns the number of elements in the actual <code>{@link List}</code>.
+   * @return the number of elements in the actual {@code List}.
+   * @throws AssertionError if the actual {@code List} is <code>null</code>.
    */
-  public void isNullOrEmpty() {
-    if (Collections.isEmpty(actual)) return;
-    failIfCustomMessageIsSet();
-    fail(concat("expecting a null or empty list, but was:", inBrackets(actual)));
+  protected int actualGroupSize() {
+    isNotNull();
+    return actual.size();
   }
 
   /**
@@ -455,7 +427,13 @@ public class ListAssert extends ObjectGroupAssert<List<?>> {
     return new ListAssert(propertyValues(propertyName, actual));
   }
 
+  /** {@inheritDoc} */
   protected Set<Object> actualAsSet() {
     return new HashSet<Object>(actual);
+  }
+
+  /** {@inheritDoc} */
+  protected List<Object> actualAsList() {
+    return new ArrayList<Object>(actual);
   }
 }

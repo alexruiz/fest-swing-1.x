@@ -15,15 +15,11 @@
 package org.fest.assertions;
 
 import static java.util.Collections.emptyList;
-import static org.fest.assertions.Formatting.inBrackets;
 import static org.fest.assertions.PropertySupport.propertyValues;
-import static org.fest.util.Collections.duplicatesFrom;
-import static org.fest.util.Strings.concat;
 
 import java.util.*;
 
-import org.fest.util.*;
-import org.fest.util.Collections;
+import org.fest.util.IntrospectionError;
 
 /**
  * Understands assertions for collections. To create a new instance of this class use the method
@@ -89,15 +85,8 @@ public class CollectionAssert extends ObjectGroupAssert<Collection<?>> {
    * @throws AssertionError if the actual collection has duplicates.
    */
   public CollectionAssert doesNotHaveDuplicates() {
-    isNotNull();
-    Collection<?> duplicates = duplicatesFrom(actual);
-    if (duplicates.isEmpty()) return this;
-    failIfCustomMessageIsSet();
-    throw failure(concat("collection:", format(actual), " contains duplicate(s):", format(duplicates)));
-  }
-
-  private String format(Collection<?> c) {
-    return inBrackets(c);
+    assertDoesNotHaveDuplicates();
+    return this;
   }
 
   /** {@inheritDoc} */
@@ -175,16 +164,6 @@ public class CollectionAssert extends ObjectGroupAssert<Collection<?>> {
   }
 
   /**
-   * Verifies that the actual collection is <code>null</code> or empty.
-   * @throws AssertionError if the actual collection is not <code>null</code> or not empty.
-   */
-  public void isNullOrEmpty() {
-    if (Collections.isEmpty(actual)) return;
-    failIfCustomMessageIsSet();
-    fail(concat("expecting a null or empty collection, but was:", format(actual)));
-  }
-
-  /**
    * Verifies that the actual collection is not <code>null</code>.
    * @return this assertion object.
    * @throws AssertionError if the actual collection is <code>null</code>.
@@ -192,18 +171,6 @@ public class CollectionAssert extends ObjectGroupAssert<Collection<?>> {
   public CollectionAssert isNotNull() {
     assertNotNull();
     return this;
-  }
-
-  /**
-   * Verifies that the actual collection is empty (not <code>null</code> with zero elements.)
-   * @throws AssertionError if the actual collection is <code>null</code>.
-   * @throws AssertionError if the actual collection is not empty.
-   */
-  public void isEmpty() {
-    isNotNull();
-    if (Collections.isEmpty(actual)) return;
-    failIfCustomMessageIsSet();
-    fail(concat("expecting empty collection, but was:", format(actual)));
   }
 
   /**
@@ -227,16 +194,14 @@ public class CollectionAssert extends ObjectGroupAssert<Collection<?>> {
    * @throws AssertionError if the number of elements of the actual collection is not equal to the given one.
    */
   public CollectionAssert hasSize(int expected) {
-    int actualSize = actualGroupSize();
-    if (actualSize == expected) return this;
-    failIfCustomMessageIsSet();
-    throw failure(concat("expected size:", inBrackets(expected), " but was:", inBrackets(actualSize),
-        " for collection:", format(actual)));
+    assertHasSize(expected);
+    return this;
   }
 
   /**
    * Returns the number of elements in the actual collection.
    * @return the number of elements in the actual collection.
+   * @throws AssertionError if the actual collection is <code>null</code>.
    */
   protected int actualGroupSize() {
     isNotNull();
@@ -318,7 +283,13 @@ public class CollectionAssert extends ObjectGroupAssert<Collection<?>> {
     return new CollectionAssert(propertyValues(propertyName, actual));
   }
 
+  /** {@inheritDoc} */
   protected Set<Object> actualAsSet() {
     return new HashSet<Object>(actual);
+  }
+
+  /** {@inheritDoc} */
+  protected List<Object> actualAsList() {
+    return new ArrayList<Object>(actual);
   }
 }

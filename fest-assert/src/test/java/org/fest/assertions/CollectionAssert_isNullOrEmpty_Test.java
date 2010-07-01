@@ -14,15 +14,9 @@
  */
 package org.fest.assertions;
 
-import static java.util.Collections.emptyList;
-import static org.fest.test.ExpectedFailure.expectAssertionError;
 import static org.fest.util.Collections.list;
 
 import java.util.Collection;
-
-import org.fest.test.CodeToTest;
-import org.junit.BeforeClass;
-import org.junit.Test;
 
 /**
  * Tests for <code>{@link CollectionAssert#isNullOrEmpty()}</code>.
@@ -30,62 +24,13 @@ import org.junit.Test;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class CollectionAssert_isNullOrEmpty_Test implements GroupAssert_isNullOrEmpty_TestCase {
+public class CollectionAssert_isNullOrEmpty_Test extends ObjectGroupAssert_isNullOrEmpty_TestCase<Collection<?>> {
 
-  private static Collection<Integer> collection;
-
-  @BeforeClass
-  public static void setUpOnce() {
-    collection = list(8);
+  protected Collection<?> actualFrom(Object... values) {
+    return list(values);
   }
 
-  @Test
-  public void should_pass_if_actual_is_null() {
-    new CollectionAssert(null).isNullOrEmpty();
-  }
-
-  @Test
-  public void should_pass_if_actual_is_empty() {
-    new CollectionAssert(emptyList()).isNullOrEmpty();
-  }
-
-  @Test
-  public void should_fail_if_actual_has_content() {
-    expectAssertionError("expecting a null or empty collection, but was:<[8]>").on(new CodeToTest() {
-      public void run() {
-        new CollectionAssert(collection).isNullOrEmpty();
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_has_content() {
-    expectAssertionError("[A Test] expecting a null or empty collection, but was:<[8]>").on(new CodeToTest() {
-      public void run() {
-        new CollectionAssert(collection).as("A Test")
-                                        .isNullOrEmpty();
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_if_actual_has_content() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new CollectionAssert(collection).overridingErrorMessage("My custom message")
-                                        .isNullOrEmpty();
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_has_content() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new CollectionAssert(collection).as("A Test")
-                                        .overridingErrorMessage("My custom message")
-                                        .isNullOrEmpty();
-      }
-    });
+  protected CollectionAssert assertionsFor(Collection<?> actual) {
+    return new CollectionAssert(actual);
   }
 }

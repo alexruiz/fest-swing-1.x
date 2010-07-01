@@ -15,93 +15,23 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.CommonFailures.expectErrorIfActualListIsNull;
-import static org.fest.assertions.CommonFailures.expectErrorWithDescriptionIfActualListIsNull;
-import static org.fest.test.ExpectedFailure.expectAssertionError;
 import static org.fest.util.Collections.list;
 
 import java.util.List;
-
-import org.fest.test.CodeToTest;
-import org.junit.BeforeClass;
-import org.junit.Test;
 
 /**
  * Tests for <code>{@link ListAssert#hasSize(int)}</code>.
  *
  * @author Alex Ruiz
+ * @author Yvonne Wang
  */
-public class ListAssert_hasSize_Test implements Assert_hasSize_TestCase {
+public class ListAssert_hasSize_Test extends ObjectGroupAssert_hasSize_TestCase<List<?>> {
 
-  private static List<String> list;
-
-  @BeforeClass
-  public static void setUpOnce() {
-    list = list("Gandalf", "Frodo", "Sam");
+  protected List<?> actualFrom(Object... values) {
+    return list(values);
   }
 
-  @Test
-  public void should_fail_if_actual_is_null() {
-    expectErrorIfActualListIsNull(new CodeToTest() {
-      public void run() {
-        new ListAssert(null).hasSize(0);
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_is_null() {
-    expectErrorWithDescriptionIfActualListIsNull(new CodeToTest() {
-      public void run() {
-        new ListAssert(null).as("A Test")
-                            .hasSize(0);
-      }
-    });
-  }
-
-  @Test
-  public void should_pass_if_actual_has_expected_size() {
-    new ListAssert(list).hasSize(3);
-  }
-
-  @Test
-  public void should_fail_if_actual_does_not_have_expected_size() {
-    expectAssertionError("expected size:<2> but was:<3> for list:<['Gandalf', 'Frodo', 'Sam']>").on(new CodeToTest() {
-      public void run() {
-        new ListAssert(list).hasSize(2);
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_does_not_have_expected_size() {
-    String message = "[A Test] expected size:<2> but was:<3> for list:<['Gandalf', 'Frodo', 'Sam']>";
-    expectAssertionError(message).on(new CodeToTest() {
-      public void run() {
-        new ListAssert(list).as("A Test")
-                            .hasSize(2);
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_if_actual_does_not_have_expected_size() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new ListAssert(list).overridingErrorMessage("My custom message")
-                            .hasSize(2);
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_does_not_have_expected_size() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new ListAssert(list).as("A Test")
-                            .overridingErrorMessage("My custom message")
-                            .hasSize(2);
-      }
-    });
+  protected ListAssert assertionsFor(List<?> actual) {
+    return new ListAssert(actual);
   }
 }
