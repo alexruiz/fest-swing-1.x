@@ -15,14 +15,9 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.CommonFailures.*;
-import static org.fest.test.ExpectedFailure.expectAssertionError;
 import static org.fest.util.Collections.list;
 
 import java.util.Collection;
-import org.fest.test.CodeToTest;
-import org.junit.BeforeClass;
-import org.junit.Test;
 
 /**
  * Tests for <code>{@link CollectionAssert#contains(Object...)}</code>.
@@ -30,104 +25,13 @@ import org.junit.Test;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class CollectionAssert_contains_Test implements GroupAssert_contains_TestCase {
+public class CollectionAssert_contains_Test extends ObjectGroupAssert_contains_TestCase<Collection<?>> {
 
-  private static Collection<String> collection;
-
-  @BeforeClass
-  public static void setUpOnce() {
-    collection = list("Luke", "Leia", "Anakin");
+  protected Collection<?> actualFrom(Object... values) {
+    return list(values);
   }
 
-  @Test
-  public void should_pass_if_actual_contains_given_value() {
-    new CollectionAssert(collection).contains("Luke");
-  }
-
-  @Test
-  public void should_pass_if_actual_contains_given_values() {
-    new CollectionAssert(collection).contains("Luke", "Leia");
-  }
-
-  @Test
-  public void should_fail_if_actual_is_null() {
-    expectErrorIfActualCollectionIsNull(new CodeToTest() {
-      public void run() {
-        new CollectionAssert(null).contains("Luke");
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_is_null() {
-    expectErrorWithDescriptionIfActualCollectionIsNull(new CodeToTest() {
-      public void run() {
-        new CollectionAssert(null).as("A Test")
-                                  .contains("Luke");
-      }
-    });
-  }
-
-  @Test
-  public void should_throw_error_if_expected_is_null() {
-    expectNullPointerException("the given array of objects should not be null").on(new CodeToTest() {
-      public void run() {
-        Object[] objects = null;
-        new CollectionAssert(collection).contains(objects);
-      }
-    });
-  }
-
-  @Test
-  public void should_throw_error_and_display_description_of_assertion_if_expected_is_null() {
-    expectNullPointerException("[A Test] the given array of objects should not be null").on(new CodeToTest() {
-      public void run() {
-        Object[] objects = null;
-        new CollectionAssert(collection).as("A Test")
-                                        .contains(objects);
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_if_actual_does_not_contain_given_values() {
-    String message = "collection:<['Luke', 'Leia', 'Anakin']> does not contain element(s):<['Han']>";
-    expectAssertionError(message).on(new CodeToTest() {
-      public void run() {
-        new CollectionAssert(collection).contains("Han");
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_does_not_contain_given_values() {
-    String message = "[A Test] collection:<['Luke', 'Leia', 'Anakin']> does not contain element(s):<['Han']>";
-    expectAssertionError(message).on(new CodeToTest() {
-      public void run() {
-        new CollectionAssert(collection).as("A Test")
-                                        .contains("Han");
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_if_actual_does_not_contain_given_values() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new CollectionAssert(collection).overridingErrorMessage("My custom message")
-                                        .contains("Han");
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_does_not_contain_given_values() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new CollectionAssert(collection).as("A Test")
-                                        .overridingErrorMessage("My custom message")
-                                        .contains("Han");
-      }
-    });
+  protected CollectionAssert assertionsFor(Collection<?> actual) {
+    return new CollectionAssert(actual);
   }
 }

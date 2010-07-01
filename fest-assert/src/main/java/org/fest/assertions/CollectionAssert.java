@@ -16,18 +16,15 @@ package org.fest.assertions;
 
 import static java.util.Collections.emptyList;
 import static org.fest.assertions.Collections.found;
-import static org.fest.assertions.Collections.notFound;
 import static org.fest.assertions.Formatting.inBrackets;
 import static org.fest.assertions.PropertySupport.propertyValues;
 import static org.fest.util.Collections.duplicatesFrom;
 import static org.fest.util.Strings.concat;
 
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
+import org.fest.util.*;
 import org.fest.util.Collections;
-import org.fest.util.IntrospectionError;
 
 /**
  * Understands assertions for collections. To create a new instance of this class use the method
@@ -55,15 +52,8 @@ public class CollectionAssert extends ObjectGroupAssert<Collection<?>> {
    * @throws AssertionError if the actual collection does not contain the given objects.
    */
   public CollectionAssert contains(Object... objects) {
-    isNotNull();
-    validateIsNotNull(objects);
-    Collection<Object> notFound = notFoundInActual(objects);
-    if (notFound.isEmpty()) return this;
-    throw failureIfExpectedElementsNotFound(notFound);
-  }
-
-  private Collection<Object> notFoundInActual(Object... objects) {
-    return notFound(actual, objects);
+    assertContains(objects);
+    return this;
   }
 
   /**
@@ -78,11 +68,6 @@ public class CollectionAssert extends ObjectGroupAssert<Collection<?>> {
   public CollectionAssert containsOnly(Object... objects) {
     assertContainsOnly(objects);
     return this;
-  }
-
-  private AssertionError failureIfExpectedElementsNotFound(Collection<Object> notFound) {
-    failIfCustomMessageIsSet();
-    return failure(concat("collection:", format(actual), " does not contain element(s):", format(notFound)));
   }
 
   /**

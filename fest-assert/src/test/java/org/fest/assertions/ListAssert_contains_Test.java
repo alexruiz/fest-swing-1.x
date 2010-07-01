@@ -14,119 +14,23 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.CommonFailures.*;
-import static org.fest.test.ExpectedFailure.expectAssertionError;
 import static org.fest.util.Collections.list;
 
 import java.util.List;
-
-import org.fest.test.CodeToTest;
-import org.junit.BeforeClass;
-import org.junit.Test;
 
 /**
  * Tests for <code>{@link ListAssert#contains(Object...)}</code>.
  *
  * @author Alex Ruiz
+ * @author Yvonne Wang
  */
-public class ListAssert_contains_Test implements GroupAssert_contains_TestCase {
+public class ListAssert_contains_Test extends ObjectGroupAssert_contains_TestCase<List<?>> {
 
-  private static List<String> list;
-
-  @BeforeClass
-  public static void setUpOnce() {
-    list = list("Leia", "Luke");
+  protected List<?> actualFrom(Object... values) {
+    return list(values);
   }
 
-  @Test
-  public void should_pass_if_actual_contains_given_value() {
-    new ListAssert(list).contains("Leia");
+  protected ListAssert assertionsFor(List<?> actual) {
+    return new ListAssert(actual);
   }
-
-  @Test
-  public void should_pass_if_actual_contains_given_values() {
-    new ListAssert(list).contains("Leia", "Luke");
-  }
-
-  @Test
-  public void should_fail_if_actual_is_null() {
-    expectErrorIfActualListIsNull(new CodeToTest() {
-      public void run() {
-        new ListAssert(null).contains("Leia", "Luke");
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_is_null() {
-    expectErrorWithDescriptionIfActualListIsNull(new CodeToTest() {
-      public void run() {
-        new ListAssert(null).as("A Test")
-                            .contains("Leia", "Luke");
-      }
-    });
-  }
-
-  @Test
-  public void should_throw_error_if_expected_is_null() {
-    expectNullPointerException("the given array of objects should not be null").on(new CodeToTest() {
-      public void run() {
-        Object[] expected = null;
-        new ListAssert(list).contains(expected);
-      }
-    });
-  }
-
-  @Test
-  public void should_throw_error_and_display_description_of_assertion_if_expected_is_null() {
-    expectNullPointerException("[A Test] the given array of objects should not be null").on(new CodeToTest() {
-      public void run() {
-        Object[] expected = null;
-        new ListAssert(list).as("A Test")
-                            .contains(expected);
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_if_actual_does_not_contain_given_values() {
-    expectAssertionError("list:<['Leia', 'Luke']> does not contain element(s):<['Han']>").on(new CodeToTest() {
-      public void run() {
-        new ListAssert(list).contains("Han");
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_does_not_contain_given_values() {
-    expectAssertionError("[A Test] list:<['Leia', 'Luke']> does not contain element(s):<['Han']>").on(new CodeToTest() {
-      public void run() {
-        new ListAssert(list).as("A Test")
-                            .contains("Han");
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_if_actual_does_not_contain_given_values() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new ListAssert(list).overridingErrorMessage("My custom message")
-                            .contains("Han");
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_does_not_contain_given_values() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new ListAssert(list).as("A Test")
-                            .overridingErrorMessage("My custom message")
-                            .contains("Han");
-      }
-    });
-  }
-
-
 }

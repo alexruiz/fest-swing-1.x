@@ -15,14 +15,11 @@
  */
 package org.fest.assertions;
 
+import static org.fest.assertions.Collections.notFound;
 import static org.fest.assertions.Formatting.inBrackets;
 import static org.fest.util.Strings.concat;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Understands a template for assertion methods related to arrays or collections.
@@ -102,6 +99,35 @@ public abstract class ObjectGroupAssert<T> extends GroupAssert<T> {
 
   /** {@inheritDoc} */
   protected abstract ObjectGroupAssert<T> overridingErrorMessage(String message);
+
+  /**
+   * Verifies that the actual group of objects contains the given objects.
+   * @param objects the objects to look for.
+   * @return this assertion object.
+   * @throws AssertionError if the actual group of objects is <code>null</code>.
+   * @throws NullPointerException if the given array is <code>null</code>.
+   * @throws AssertionError if the actual group of objects does not contain the given objects.
+   */
+  public abstract ObjectGroupAssert<T> contains(Object... objects);
+
+  /**
+   * Verifies that the actual actual group of objects contains the given objects, in any order.
+   * @param objects the objects to look for.
+   * @throws AssertionError if the actual actual group of objects is <code>null</code>.
+   * @throws NullPointerException if the given array is <code>null</code>.
+   * @throws AssertionError if the actual actual group of objects does not contain the given objects.
+   */
+  protected final void assertContains(Object... objects) {
+    isNotNull();
+    validateIsNotNull(objects);
+    Collection<Object> notFound = notFoundInActual(objects);
+    if (notFound.isEmpty()) return;
+    throw failureIfExpectedElementsNotFound(notFound);
+  }
+
+  private Collection<Object> notFoundInActual(Object... objects) {
+    return notFound(actualAsSet(), objects);
+  }
 
   /**
    * Verifies that the actual group of objects contains the given objects <strong>only</strong>, in any order.
