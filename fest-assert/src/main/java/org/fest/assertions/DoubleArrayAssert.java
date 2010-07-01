@@ -16,8 +16,7 @@ package org.fest.assertions;
 
 import static java.lang.Math.abs;
 import static org.fest.assertions.ArrayInspection.copy;
-import static org.fest.assertions.ErrorMessages.unexpectedEqual;
-import static org.fest.assertions.ErrorMessages.unexpectedNotEqual;
+import static org.fest.assertions.ErrorMessages.*;
 import static org.fest.assertions.Formatting.inBrackets;
 import static org.fest.util.Strings.concat;
 
@@ -171,7 +170,7 @@ public class DoubleArrayAssert extends ArrayAssert<double[]> {
    * @throws AssertionError if the actual <code>double</code> array is <code>null</code>.
    */
   public DoubleArrayAssert isNotNull() {
-    assertThatActualIsNotNull();
+    assertNotNull();
     return this;
   }
 
@@ -182,7 +181,7 @@ public class DoubleArrayAssert extends ArrayAssert<double[]> {
    * @throws AssertionError if the actual <code>double</code> array is empty.
    */
   public DoubleArrayAssert isNotEmpty() {
-    assertThatActualIsNotEmpty();
+    assertIsNotEmpty();
     return this;
   }
 
@@ -249,7 +248,7 @@ public class DoubleArrayAssert extends ArrayAssert<double[]> {
    * one.
    */
   public DoubleArrayAssert hasSize(int expected) {
-    assertThatActualHasSize(expected);
+    assertHasSize(expected);
     return this;
   }
 

@@ -15,13 +15,11 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.ArrayInspection.copy;
-import static org.fest.assertions.ArrayInspection.sizeOf;
+import static org.fest.assertions.ArrayInspection.*;
 import static org.fest.assertions.Formatting.inBrackets;
 import static org.fest.util.Strings.concat;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * Understands assertions for arrays.
@@ -126,60 +124,5 @@ public abstract class ArrayAssert<T> extends GroupAssert<T> {
    */
   protected final String actualInBrackets() {
     return inBrackets(actual);
-  }
-
-  /**
-   * Verifies that the actual array is not <code>null</code>.
-   * @throws AssertionError if the actual array is <code>null</code>.
-   */
-  protected final void assertThatActualIsNotNull() {
-    if (actual != null) return;
-    failIfCustomMessageIsSet();
-    fail("expecting actual array not to be null");
-  }
-
-  /**
-   * Verifies that the actual array is empty (not <code>null</code> with zero elements.)
-   * @throws AssertionError if the actual array is <code>null</code> or not empty.
-   */
-  public final void isEmpty() {
-    if (actualGroupSize() == 0) return;
-    failIfCustomMessageIsSet();
-    fail(concat("expecting empty array, but was:", actualInBrackets()));
-  }
-
-  /**
-   * Verifies that the actual array is <code>null</code> or empty.
-   * @throws AssertionError if the actual array is not <code>null</code> or not empty.
-   */
-  public final void isNullOrEmpty() {
-    if (actual == null || actualGroupSize() == 0) return;
-    failIfCustomMessageIsSet();
-    fail(concat("expecting a null or empty array, but was:", actualInBrackets()));
-  }
-
-  /**
-   * Verifies that the actual array contains at least on element.
-   * @throws AssertionError if the actual array is <code>null</code>.
-   * @throws AssertionError if the actual array is empty.
-   */
-  protected final void assertThatActualIsNotEmpty() {
-    if (actualGroupSize() > 0) return;
-    failIfCustomMessageIsSet();
-    fail("expecting a non-empty array, but it was empty");
-  }
-
-  /**
-   * Verifies that the number of elements in the actual array is equal to the given one.
-   * @param expected the expected number of elements in the actual array.
-   * @throws AssertionError if the actual array is <code>null</code>.
-   * @throws AssertionError if the number of elements in the actual array is not equal to the given one.
-   */
-  protected final void assertThatActualHasSize(int expected) {
-    int actualSize = actualGroupSize();
-    if (actualSize == expected) return;
-    failIfCustomMessageIsSet();
-    fail(concat(
-        "expected size:", inBrackets(expected)," but was:", inBrackets(actualSize), " for array:", actualInBrackets()));
   }
 }

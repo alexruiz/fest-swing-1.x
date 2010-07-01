@@ -15,83 +15,23 @@
  */
 package org.fest.assertions;
 
-import static java.util.Collections.emptyList;
-import static org.fest.assertions.CommonFailures.expectErrorIfActualListIsNull;
-import static org.fest.assertions.CommonFailures.expectErrorWithDescriptionIfActualListIsNull;
-import static org.fest.test.ExpectedFailure.expectAssertionError;
 import static org.fest.util.Collections.list;
 
-import org.fest.test.CodeToTest;
-import org.junit.Test;
+import java.util.List;
 
 /**
  * Tests for <code>{@link ListAssert#isNotEmpty()}</code>.
  *
  * @author Alex Ruiz
+ * @author Yvonne Wang
  */
-public class ListAssert_isNotEmpty_Test implements GroupAssert_isNotEmpty_TestCase {
+public class ListAssert_isNotEmpty_Test extends ObjectGroupAssert_isNotEmpty_TestCase<List<?>> {
 
-  @Test
-  public void should_pass_if_actual_is_not_empty() {
-    new ListAssert(list("Frodo", "Sam")).isNotEmpty();
+  protected List<?> actualFrom(Object... values) {
+    return list(values);
   }
 
-  @Test
-  public void should_fail_if_actual_is_null() {
-    expectErrorIfActualListIsNull(new CodeToTest() {
-      public void run() {
-        new ListAssert(null).isNotEmpty();
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_is_null() {
-    expectErrorWithDescriptionIfActualListIsNull(new CodeToTest() {
-      public void run() {
-        new ListAssert(null).as("A Test")
-                            .isNotEmpty();
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_if_actual_is_empty() {
-    expectAssertionError("expecting a non-empty list, but it was empty").on(new CodeToTest() {
-      public void run() {
-        new ListAssert(emptyList()).isNotEmpty();
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_is_empty() {
-    expectAssertionError("[A Test] expecting a non-empty list, but it was empty").on(new CodeToTest() {
-      public void run() {
-        new ListAssert(emptyList()).as("A Test")
-                                   .isNotEmpty();
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_if_actual_is_empty() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new ListAssert(emptyList()).overridingErrorMessage("My custom message")
-                                   .isNotEmpty();
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_is_empty() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new ListAssert(emptyList()).as("A Test")
-                                   .overridingErrorMessage("My custom message")
-                                   .isNotEmpty();
-      }
-    });
+  protected ListAssert assertionsFor(List<?> actual) {
+    return new ListAssert(actual);
   }
 }

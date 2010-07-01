@@ -16,8 +16,7 @@
 package org.fest.assertions;
 
 import static org.fest.assertions.ArrayInspection.copy;
-import static org.fest.assertions.ErrorMessages.unexpectedEqual;
-import static org.fest.assertions.ErrorMessages.unexpectedNotEqual;
+import static org.fest.assertions.ErrorMessages.*;
 
 import java.util.Arrays;
 
@@ -217,7 +216,7 @@ public class CharArrayAssert extends ArrayAssert<char[]> {
    * @throws AssertionError if the actual <code>char</code> array is <code>null</code>.
    */
   public CharArrayAssert isNotNull() {
-    assertThatActualIsNotNull();
+    assertNotNull();
     return this;
   }
 
@@ -228,7 +227,7 @@ public class CharArrayAssert extends ArrayAssert<char[]> {
    * @throws AssertionError if the actual <code>char</code> array is empty.
    */
   public CharArrayAssert isNotEmpty() {
-    assertThatActualIsNotEmpty();
+    assertIsNotEmpty();
     return this;
   }
 
@@ -267,7 +266,7 @@ public class CharArrayAssert extends ArrayAssert<char[]> {
    * one.
    */
   public CharArrayAssert hasSize(int expected) {
-    assertThatActualHasSize(expected);
+    assertHasSize(expected);
     return this;
   }
 

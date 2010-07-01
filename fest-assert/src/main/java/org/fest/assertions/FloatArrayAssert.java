@@ -16,8 +16,7 @@
 package org.fest.assertions;
 
 import static org.fest.assertions.ArrayInspection.copy;
-import static org.fest.assertions.ErrorMessages.unexpectedEqual;
-import static org.fest.assertions.ErrorMessages.unexpectedNotEqual;
+import static org.fest.assertions.ErrorMessages.*;
 
 import java.util.Arrays;
 
@@ -170,7 +169,7 @@ public class FloatArrayAssert extends ArrayAssert<float[]> {
    * @throws AssertionError if the actual <code>float</code> array is <code>null</code>.
    */
   public FloatArrayAssert isNotNull() {
-    assertThatActualIsNotNull();
+    assertNotNull();
     return this;
   }
 
@@ -181,7 +180,7 @@ public class FloatArrayAssert extends ArrayAssert<float[]> {
    * @throws AssertionError if the actual <code>float</code> array is empty.
    */
   public FloatArrayAssert isNotEmpty() {
-    assertThatActualIsNotEmpty();
+    assertIsNotEmpty();
     return this;
   }
 
@@ -220,7 +219,7 @@ public class FloatArrayAssert extends ArrayAssert<float[]> {
    * one.
    */
   public FloatArrayAssert hasSize(int expected) {
-    assertThatActualHasSize(expected);
+    assertHasSize(expected);
     return this;
   }
 

@@ -311,10 +311,8 @@ public class ListAssert extends ObjectGroupAssert<List<?>> {
    * @throws AssertionError if the actual {@code List} is empty.
    */
   public ListAssert isNotEmpty() {
-    isNotNull();
-    if (!actual.isEmpty()) return this;
-    failIfCustomMessageIsSet();
-    throw failure("expecting a non-empty list, but it was empty");
+    assertIsNotEmpty();
+    return this;
   }
 
   /**

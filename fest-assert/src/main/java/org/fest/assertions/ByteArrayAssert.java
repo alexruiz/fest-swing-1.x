@@ -16,8 +16,7 @@
 package org.fest.assertions;
 
 import static org.fest.assertions.ArrayInspection.copy;
-import static org.fest.assertions.ErrorMessages.unexpectedEqual;
-import static org.fest.assertions.ErrorMessages.unexpectedNotEqual;
+import static org.fest.assertions.ErrorMessages.*;
 
 import java.util.Arrays;
 
@@ -169,7 +168,7 @@ public class ByteArrayAssert extends ArrayAssert<byte[]> {
    * @throws AssertionError if the actual <code>byte</code> array is <code>null</code>.
    */
   public ByteArrayAssert isNotNull() {
-    assertThatActualIsNotNull();
+    assertNotNull();
     return this;
   }
 
@@ -180,7 +179,7 @@ public class ByteArrayAssert extends ArrayAssert<byte[]> {
    * @throws AssertionError if the actual <code>byte</code> array is empty.
    */
   public ByteArrayAssert isNotEmpty() {
-    assertThatActualIsNotEmpty();
+    assertIsNotEmpty();
     return this;
   }
 
@@ -219,7 +218,7 @@ public class ByteArrayAssert extends ArrayAssert<byte[]> {
    * one.
    */
   public ByteArrayAssert hasSize(int expected) {
-    assertThatActualHasSize(expected);
+    assertHasSize(expected);
     return this;
   }
 

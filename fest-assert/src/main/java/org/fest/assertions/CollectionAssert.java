@@ -180,10 +180,8 @@ public class CollectionAssert extends ObjectGroupAssert<Collection<?>> {
    * @throws AssertionError if the actual collection is empty.
    */
   public CollectionAssert isNotEmpty() {
-    isNotNull();
-    if (!actual.isEmpty()) return this;
-    failIfCustomMessageIsSet();
-    throw failure("expecting a non-empty collection, but it was empty");
+    assertIsNotEmpty();
+    return this;
   }
 
   /**

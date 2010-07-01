@@ -15,14 +15,9 @@
  */
 package org.fest.assertions;
 
-import static java.util.Collections.emptyList;
-import static org.fest.assertions.CommonFailures.expectErrorIfActualCollectionIsNull;
-import static org.fest.assertions.CommonFailures.expectErrorWithDescriptionIfActualCollectionIsNull;
-import static org.fest.test.ExpectedFailure.expectAssertionError;
 import static org.fest.util.Collections.list;
 
-import org.fest.test.CodeToTest;
-import org.junit.Test;
+import java.util.Collection;
 
 /**
  * Tests for <code>{@link CollectionAssert#isNotEmpty()}</code>.
@@ -30,69 +25,13 @@ import org.junit.Test;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class CollectionAssert_isNotEmpty_Test implements GroupAssert_isNotEmpty_TestCase {
+public class CollectionAssert_isNotEmpty_Test extends ObjectGroupAssert_isNotEmpty_TestCase<Collection<?>> {
 
-  @Test
-  public void should_pass_if_actual_is_not_empty() {
-    new CollectionAssert(list("Frodo", "Sam")).isNotEmpty();
+  protected Collection<?> actualFrom(Object... values) {
+    return list(values);
   }
 
-  @Test
-  public void should_fail_if_actual_is_null() {
-    expectErrorIfActualCollectionIsNull(new CodeToTest() {
-      public void run() {
-        new CollectionAssert(null).isNotEmpty();
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_is_null() {
-    expectErrorWithDescriptionIfActualCollectionIsNull(new CodeToTest() {
-      public void run() {
-        new CollectionAssert(null).as("A Test")
-                                  .isNotEmpty();
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_if_actual_is_empty() {
-    expectAssertionError("expecting a non-empty collection, but it was empty").on(new CodeToTest() {
-      public void run() {
-        new CollectionAssert(emptyList()).isNotEmpty();
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_is_empty() {
-    expectAssertionError("[A Test] expecting a non-empty collection, but it was empty").on(new CodeToTest() {
-      public void run() {
-        new CollectionAssert(emptyList()).as("A Test")
-                                         .isNotEmpty();
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_if_actual_is_empty() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new CollectionAssert(emptyList()).overridingErrorMessage("My custom message")
-                                         .isNotEmpty();
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_is_empty() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new CollectionAssert(emptyList()).as("A Test")
-                                         .overridingErrorMessage("My custom message")
-                                         .isNotEmpty();
-      }
-    });
+  protected CollectionAssert assertionsFor(Collection<?> actual) {
+    return new CollectionAssert(actual);
   }
 }

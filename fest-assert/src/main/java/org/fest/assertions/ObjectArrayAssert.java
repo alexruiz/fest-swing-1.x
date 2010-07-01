@@ -20,8 +20,7 @@ import static org.fest.assertions.PropertySupport.propertyValues;
 import static org.fest.util.Collections.*;
 import static org.fest.util.Strings.concat;
 
-import java.util.Arrays;
-import java.util.Collection;
+import java.util.*;
 
 import org.fest.util.IntrospectionError;
 
@@ -241,7 +240,7 @@ public class ObjectArrayAssert extends ArrayAssert<Object[]> {
    * @throws AssertionError if the actual <code>Object</code> array is <code>null</code>.
    */
   public ObjectArrayAssert isNotNull() {
-    assertThatActualIsNotNull();
+    assertNotNull();
     return this;
   }
 
@@ -252,7 +251,7 @@ public class ObjectArrayAssert extends ArrayAssert<Object[]> {
    * @throws AssertionError if the actual <code>Object</code> array is empty.
    */
   public ObjectArrayAssert isNotEmpty() {
-    assertThatActualIsNotEmpty();
+    assertIsNotEmpty();
     return this;
   }
 
@@ -291,7 +290,7 @@ public class ObjectArrayAssert extends ArrayAssert<Object[]> {
    * one.
    */
   public ObjectArrayAssert hasSize(int expected) {
-    assertThatActualHasSize(expected);
+    assertHasSize(expected);
     return this;
   }
 

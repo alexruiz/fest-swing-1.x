@@ -16,8 +16,7 @@
 package org.fest.assertions;
 
 import static org.fest.assertions.ArrayInspection.copy;
-import static org.fest.assertions.ErrorMessages.unexpectedEqual;
-import static org.fest.assertions.ErrorMessages.unexpectedNotEqual;
+import static org.fest.assertions.ErrorMessages.*;
 
 import java.util.Arrays;
 
@@ -169,7 +168,7 @@ public class ShortArrayAssert extends ArrayAssert<short[]> {
    * @throws AssertionError if the actual <code>short</code> array is <code>null</code>.
    */
   public ShortArrayAssert isNotNull() {
-    assertThatActualIsNotNull();
+    assertNotNull();
     return this;
   }
 
@@ -180,7 +179,7 @@ public class ShortArrayAssert extends ArrayAssert<short[]> {
    * @throws AssertionError if the actual <code>short</code> array is empty.
    */
   public ShortArrayAssert isNotEmpty() {
-    assertThatActualIsNotEmpty();
+    assertIsNotEmpty();
     return this;
   }
 
@@ -219,7 +218,7 @@ public class ShortArrayAssert extends ArrayAssert<short[]> {
    * one.
    */
   public ShortArrayAssert hasSize(int expected) {
-    assertThatActualHasSize(expected);
+    assertHasSize(expected);
     return this;
   }
 

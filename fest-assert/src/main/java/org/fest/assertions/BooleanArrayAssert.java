@@ -16,8 +16,7 @@
 package org.fest.assertions;
 
 import static org.fest.assertions.ArrayInspection.copy;
-import static org.fest.assertions.ErrorMessages.unexpectedEqual;
-import static org.fest.assertions.ErrorMessages.unexpectedNotEqual;
+import static org.fest.assertions.ErrorMessages.*;
 
 import java.util.Arrays;
 
@@ -169,7 +168,7 @@ public class BooleanArrayAssert extends ArrayAssert<boolean[]> {
    * @throws AssertionError if the actual <code>boolean</code> array is <code>null</code>.
    */
   public BooleanArrayAssert isNotNull() {
-    assertThatActualIsNotNull();
+    assertNotNull();
     return this;
   }
 
@@ -180,7 +179,7 @@ public class BooleanArrayAssert extends ArrayAssert<boolean[]> {
    * @throws AssertionError if the actual <code>boolean</code> array is empty.
    */
   public BooleanArrayAssert isNotEmpty() {
-    assertThatActualIsNotEmpty();
+    assertIsNotEmpty();
     return this;
   }
 
@@ -219,7 +218,7 @@ public class BooleanArrayAssert extends ArrayAssert<boolean[]> {
    * one.
    */
   public BooleanArrayAssert hasSize(int expected) {
-    assertThatActualHasSize(expected);
+    assertHasSize(expected);
     return this;
   }
 
