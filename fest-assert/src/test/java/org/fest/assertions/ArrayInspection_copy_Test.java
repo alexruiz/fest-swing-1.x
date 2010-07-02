@@ -15,11 +15,7 @@
  */
 package org.fest.assertions;
 
-import static java.util.Arrays.asList;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
-
-import java.util.List;
+import static org.junit.Assert.*;
 
 import org.junit.Test;
 
@@ -53,20 +49,16 @@ public class ArrayInspection_copy_Test {
   @Test
   public void should_copy_boolean_array() {
     boolean[] array = { true, false };
-    List<Object> a = ArrayInspection.copy(array);
-    List<Object> e = list(true, false);
-    assertEquals(e, a);
+    Object[] a = ArrayInspection.copy(array);
+    Object[] e = { true, false };
+    assertArrayEquals(e, a);
   }
 
   @Test
   public void should_copy_int_array() {
     int[] array = { 6, 8, 10, 12 };
-    List<Object> a = ArrayInspection.copy(array);
-    List<Object> e = list(6, 8, 10, 12);
-    assertEquals(e, a);
-  }
-
-  private static List<Object> list(Object... values) {
-    return asList(values);
+    Object[] a = ArrayInspection.copy(array);
+    Object[] e = { 6, 8, 10, 12 };
+    assertArrayEquals(e, a);
   }
 }

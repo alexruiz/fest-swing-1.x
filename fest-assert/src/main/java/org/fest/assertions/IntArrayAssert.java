@@ -68,8 +68,6 @@ public class IntArrayAssert extends ArrayAssert<int[]> {
    * @throws AssertionError if the actual <code>int</code> array does not contain the given values.
    */
   public IntArrayAssert contains(int...values) {
-    isNotNull();
-    validateIsNotNull(values);
     assertContains(copy(values));
     return this;
   }
@@ -84,8 +82,6 @@ public class IntArrayAssert extends ArrayAssert<int[]> {
    * <code>int</code> array contains elements other than the ones specified.
    */
   public IntArrayAssert containsOnly(int...values) {
-    isNotNull();
-    validateIsNotNull(values);
     assertContainsOnly(copy(values));
     return this;
   }
@@ -99,15 +95,8 @@ public class IntArrayAssert extends ArrayAssert<int[]> {
    * @throws AssertionError if the actual <code>int</code> array contains any of the given values.
    */
   public IntArrayAssert excludes(int...values) {
-    isNotNull();
-    validateIsNotNull(values);
     assertExcludes(copy(values));
     return this;
-  }
-
-  private void validateIsNotNull(int[] values) {
-    if (values == null)
-      throw new NullPointerException(formattedErrorMessage("the given array of ints should not be null"));
   }
 
   /**

@@ -68,8 +68,6 @@ public class BooleanArrayAssert extends ArrayAssert<boolean[]> {
    * @throws AssertionError if the actual <code>boolean</code> array does not contain the given values.
    */
   public BooleanArrayAssert contains(boolean...values) {
-    isNotNull();
-    validateIsNotNull(values);
     assertContains(copy(values));
     return this;
   }
@@ -84,8 +82,6 @@ public class BooleanArrayAssert extends ArrayAssert<boolean[]> {
    * actual <code>boolean</code> array contains elements other than the ones specified.
    */
   public BooleanArrayAssert containsOnly(boolean...values) {
-    isNotNull();
-    validateIsNotNull(values);
     assertContainsOnly(copy(values));
     return this;
   }
@@ -99,15 +95,8 @@ public class BooleanArrayAssert extends ArrayAssert<boolean[]> {
    * @throws AssertionError if the actual <code>boolean</code> array contains any of the given values.
    */
   public BooleanArrayAssert excludes(boolean...values) {
-    isNotNull();
-    validateIsNotNull(values);
     assertExcludes(copy(values));
     return this;
-  }
-
-  private void validateIsNotNull(boolean[] values) {
-    if (values == null)
-      throw new NullPointerException(formattedErrorMessage("the given array of booleans should not be null"));
   }
 
   /**

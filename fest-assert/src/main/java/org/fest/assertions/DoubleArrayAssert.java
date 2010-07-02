@@ -70,8 +70,6 @@ public class DoubleArrayAssert extends ArrayAssert<double[]> {
    * @throws AssertionError if the actual <code>double</code> array does not contain the given values.
    */
   public DoubleArrayAssert contains(double... values) {
-    isNotNull();
-    validateIsNotNull(values);
     assertContains(copy(values));
     return this;
   }
@@ -86,8 +84,6 @@ public class DoubleArrayAssert extends ArrayAssert<double[]> {
    * <code>double</code> array contains elements other than the ones specified.
    */
   public DoubleArrayAssert containsOnly(double... values) {
-    isNotNull();
-    validateIsNotNull(values);
     assertContainsOnly(copy(values));
     return this;
   }
@@ -101,15 +97,8 @@ public class DoubleArrayAssert extends ArrayAssert<double[]> {
    * @throws AssertionError if the actual <code>double</code> array contains any of the given values.
    */
   public DoubleArrayAssert excludes(double... values) {
-    isNotNull();
-    validateIsNotNull(values);
     assertExcludes(copy(values));
     return this;
-  }
-
-  private void validateIsNotNull(double[] values) {
-    if (values == null)
-      throw new NullPointerException(formattedErrorMessage("the given array of doubles should not be null"));
   }
 
   /**

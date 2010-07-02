@@ -68,8 +68,6 @@ public class FloatArrayAssert extends ArrayAssert<float[]> {
    * @throws AssertionError if the actual <code>float</code> array does not contain the given values.
    */
   public FloatArrayAssert contains(float...values) {
-    isNotNull();
-    validateIsNotNull(values);
     assertContains(copy(values));
     return this;
   }
@@ -84,8 +82,6 @@ public class FloatArrayAssert extends ArrayAssert<float[]> {
    * <code>float</code> array contains elements other than the ones specified.
    */
   public FloatArrayAssert containsOnly(float...values) {
-    isNotNull();
-    validateIsNotNull(values);
     assertContainsOnly(copy(values));
     return this;
   }
@@ -99,15 +95,8 @@ public class FloatArrayAssert extends ArrayAssert<float[]> {
    * @throws AssertionError if the actual <code>Object</code> array contains any of the given values.
    */
   public FloatArrayAssert excludes(float...values) {
-    isNotNull();
-    validateIsNotNull(values);
     assertExcludes(copy(values));
     return this;
-  }
-
-  private void validateIsNotNull(float[] values) {
-    if (values == null)
-      throw new NullPointerException(formattedErrorMessage("the given array of floats should not be null"));
   }
 
   /**

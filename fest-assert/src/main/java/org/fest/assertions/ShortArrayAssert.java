@@ -68,8 +68,6 @@ public class ShortArrayAssert extends ArrayAssert<short[]> {
    * @throws AssertionError if the actual <code>short</code> array does not contain the given values.
    */
   public ShortArrayAssert contains(short...values) {
-    isNotNull();
-    validateIsNotNull(values);
     assertContains(copy(values));
     return this;
   }
@@ -84,8 +82,6 @@ public class ShortArrayAssert extends ArrayAssert<short[]> {
    * <code>short</code> array contains elements other than the ones specified.
    */
   public ShortArrayAssert containsOnly(short...values) {
-    isNotNull();
-    validateIsNotNull(values);
     assertContainsOnly(copy(values));
     return this;
   }
@@ -99,15 +95,8 @@ public class ShortArrayAssert extends ArrayAssert<short[]> {
    * @throws AssertionError if the actual <code>Object</code> array contains any of the given values.
    */
   public ShortArrayAssert excludes(short...values) {
-    isNotNull();
-    validateIsNotNull(values);
     assertExcludes(copy(values));
     return this;
-  }
-
-  private void validateIsNotNull(short[] values) {
-    if (values == null)
-      throw new NullPointerException(formattedErrorMessage("the given array of shorts should not be null"));
   }
 
   /**

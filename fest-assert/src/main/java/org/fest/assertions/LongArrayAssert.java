@@ -68,8 +68,6 @@ public class LongArrayAssert extends ArrayAssert<long[]> {
    * @throws AssertionError if the actual <code>long</code> array does not contain the given values.
    */
   public LongArrayAssert contains(long...values) {
-    isNotNull();
-    validateIsNotNull(values);
     assertContains(copy(values));
     return this;
   }
@@ -84,8 +82,6 @@ public class LongArrayAssert extends ArrayAssert<long[]> {
    * <code>long</code> array contains elements other than the ones specified.
    */
   public LongArrayAssert containsOnly(long...values) {
-    isNotNull();
-    validateIsNotNull(values);
     assertContainsOnly(copy(values));
     return this;
   }
@@ -99,15 +95,8 @@ public class LongArrayAssert extends ArrayAssert<long[]> {
    * @throws AssertionError if the actual <code>long</code> array contains any of the given values.
    */
   public LongArrayAssert excludes(long...values) {
-    isNotNull();
-    validateIsNotNull(values);
     assertExcludes(copy(values));
     return this;
-  }
-
-  private void validateIsNotNull(long[] values) {
-    if (values == null)
-      throw new NullPointerException(formattedErrorMessage("the given array of longs should not be null"));
   }
 
   /**

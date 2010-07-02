@@ -116,8 +116,6 @@ public class CharArrayAssert extends ArrayAssert<char[]> {
    * @throws AssertionError if the actual <code>char</code> array does not contain the given values.
    */
   public CharArrayAssert contains(char...values) {
-    isNotNull();
-    validateIsNotNull(values);
     assertContains(copy(values));
     return this;
   }
@@ -132,8 +130,6 @@ public class CharArrayAssert extends ArrayAssert<char[]> {
    * <code>char</code> array contains elements other than the ones specified.
    */
   public CharArrayAssert containsOnly(char...values) {
-    isNotNull();
-    validateIsNotNull(values);
     assertContainsOnly(copy(values));
     return this;
   }
@@ -147,15 +143,8 @@ public class CharArrayAssert extends ArrayAssert<char[]> {
    * @throws AssertionError if the actual <code>char</code> array contains any of the given values.
    */
   public CharArrayAssert excludes(char...values) {
-    isNotNull();
-    validateIsNotNull(values);
     assertExcludes(copy(values));
     return this;
-  }
-
-  private void validateIsNotNull(char[] values) {
-    if (values == null)
-      throw new NullPointerException(formattedErrorMessage("the given array of chars should not be null"));
   }
 
   /**

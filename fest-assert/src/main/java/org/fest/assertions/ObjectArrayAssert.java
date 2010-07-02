@@ -17,7 +17,7 @@ package org.fest.assertions;
 import static org.fest.assertions.ErrorMessages.*;
 import static org.fest.assertions.Formatting.inBrackets;
 import static org.fest.assertions.PropertySupport.propertyValues;
-import static org.fest.util.Collections.*;
+import static org.fest.util.Collections.list;
 import static org.fest.util.Strings.concat;
 
 import java.util.*;
@@ -31,7 +31,7 @@ import org.fest.util.IntrospectionError;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class ObjectArrayAssert extends ArrayAssert<Object[]> {
+public class ObjectArrayAssert extends ObjectGroupAssert<Object[]> {
 
   /**
    * Creates a new </code>{@link ObjectArrayAssert}</code>.
@@ -86,7 +86,7 @@ public class ObjectArrayAssert extends ArrayAssert<Object[]> {
     for (Object o : actual) {
       if (type.isInstance(o)) continue;
       failIfCustomMessageIsSet();
-      fail(concat("not all elements in array:", actualInBrackets(), " belong to the type:", inBrackets(type)));
+      fail(concat("not all elements in array:", inBrackets(actual), " belong to the type:", inBrackets(type)));
     }
     return this;
   }
@@ -109,7 +109,7 @@ public class ObjectArrayAssert extends ArrayAssert<Object[]> {
     }
     if (found) return this;
     failIfCustomMessageIsSet();
-    throw failure(concat("array:", actualInBrackets(), " does not have any elements of type:", inBrackets(type)));
+    throw failure(concat("array:", inBrackets(actual), " does not have any elements of type:", inBrackets(type)));
   }
 
   private void validateIsNotNull(Class<?> type) {
@@ -125,9 +125,7 @@ public class ObjectArrayAssert extends ArrayAssert<Object[]> {
    * @throws AssertionError if the actual <code>Object</code> array does not contain the given objects.
    */
   public ObjectArrayAssert contains(Object... objects) {
-    isNotNull();
-    validateIsNotNull(objects);
-    assertContains(list(objects));
+    assertContains(objects);
     return this;
   }
 
@@ -141,9 +139,7 @@ public class ObjectArrayAssert extends ArrayAssert<Object[]> {
    * <code>Object</code> array contains elements other than the ones specified.
    */
   public ObjectArrayAssert containsOnly(Object... objects) {
-    isNotNull();
-    validateIsNotNull(objects);
-    assertContainsOnly(list(objects));
+    assertContainsOnly(objects);
     return this;
   }
 
@@ -156,15 +152,8 @@ public class ObjectArrayAssert extends ArrayAssert<Object[]> {
    * @throws AssertionError if the actual <code>Object</code> array contains any of the given objects.
    */
   public ObjectArrayAssert excludes(Object... objects) {
-    isNotNull();
-    validateIsNotNull(objects);
-    assertExcludes(list(objects));
+    assertExcludes(objects);
     return this;
-  }
-
-  private void validateIsNotNull(Object[] objects) {
-    if (objects == null)
-      throw new NullPointerException(formattedErrorMessage("the given array of objects should not be null"));
   }
 
   /**
@@ -174,12 +163,8 @@ public class ObjectArrayAssert extends ArrayAssert<Object[]> {
    * @throws AssertionError if the actual <code>Object</code> array has duplicates.
    */
   public ObjectArrayAssert doesNotHaveDuplicates() {
-    isNotNull();
-    Collection<?> actualAsList = list(actual);
-    Collection<?> duplicates = duplicatesFrom(actualAsList);
-    if (duplicates.isEmpty()) return this;
-    failIfCustomMessageIsSet();
-    throw failure(concat("array:", actualInBrackets(), " contains duplicate(s):", inBrackets(duplicates)));
+    assertDoesNotHaveDuplicates();
+    return this;
   }
 
   /**
@@ -345,5 +330,20 @@ public class ObjectArrayAssert extends ArrayAssert<Object[]> {
     isNotNull();
     if (actual.length == 0) return new ObjectArrayAssert(new Object[0]);
     return new ObjectArrayAssert(propertyValues(propertyName, list(actual)).toArray());
+  }
+
+  /** {@inheritDoc} */
+  protected Set<Object> actualAsSet() {
+    return asSet(actual);
+  }
+
+  /** {@inheritDoc} */
+  protected List<Object> actualAsList() {
+    return list(actual);
+  }
+
+  /** {@inheritDoc} */
+  protected int actualGroupSize() {
+    return actual.length;
   }
 }

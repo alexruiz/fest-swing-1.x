@@ -68,8 +68,6 @@ public class ByteArrayAssert extends ArrayAssert<byte[]> {
    * @throws AssertionError if the actual <code>byte</code> array does not contain the given values.
    */
   public ByteArrayAssert contains(byte...values) {
-    isNotNull();
-    validateIsNotNull(values);
     assertContains(copy(values));
     return this;
   }
@@ -84,8 +82,6 @@ public class ByteArrayAssert extends ArrayAssert<byte[]> {
    * <code>byte</code> array contains elements other than the ones specified.
    */
   public ByteArrayAssert containsOnly(byte...values) {
-    isNotNull();
-    validateIsNotNull(values);
     assertContainsOnly(copy(values));
     return this;
   }
@@ -99,15 +95,8 @@ public class ByteArrayAssert extends ArrayAssert<byte[]> {
    * @throws AssertionError if the actual <code>byte</code> array contains any of the given values.
    */
   public ByteArrayAssert excludes(byte...values) {
-    isNotNull();
-    validateIsNotNull(values);
     assertExcludes(copy(values));
     return this;
-  }
-
-  private void validateIsNotNull(byte[] values) {
-    if (values == null)
-      throw new NullPointerException(formattedErrorMessage("the given array of bytes should not be null"));
   }
 
   /**
