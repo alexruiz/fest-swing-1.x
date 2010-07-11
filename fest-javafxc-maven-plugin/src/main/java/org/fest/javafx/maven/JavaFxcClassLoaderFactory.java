@@ -55,7 +55,7 @@ class JavaFxcClassLoaderFactory {
       this.urls = urls;
     }
 
-    public ClassLoader run() {
+    @Override public ClassLoader run() {
       return new URLClassLoader(urls, currentThread().getContextClassLoader());
     }
   }

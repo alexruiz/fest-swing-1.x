@@ -20,7 +20,6 @@ import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.project.MavenProject;
 import org.apache.tools.ant.taskdefs.Javac;
-import org.codehaus.plexus.util.DirectoryScanner;
 import org.fest.util.VisibleForTesting;
 
 import java.io.File;
@@ -35,14 +34,17 @@ import static org.fest.util.Strings.quote;
  * Understands the base class for the JavaFX compiler Mojos.
  *
  * @author Alex Ruiz
+ * @author Johannes Schneider
  */
 public abstract class AbstractJavaFxcMojo extends AbstractMojo {
+
+  private final Overwrites overwriteUtilities = new Overwrites(getLog());
+
   /**
    * A list of exclusion filters for the compiler.
-   *
    * @parameter
    */
-  private Set<String> overwrites = new HashSet<String>();
+  @VisibleForTesting Set<String> overwrites = new HashSet<String>();
 
   /**
    * The current Maven project.
@@ -137,48 +139,25 @@ public abstract class AbstractJavaFxcMojo extends AbstractMojo {
   @VisibleForTesting JavaFxcSetup javaFxcSetup = new JavaFxcSetup();
   @VisibleForTesting AntTaskExecutor javaFxcExecutor = new AntTaskExecutor();
 
-
-
   protected boolean isJavaProject() {
-    if ( project == null ) {
-      return false;
-    }
+    if ( project == null ) return false;
     ArtifactHandler artifactHandler = project.getArtifact().getArtifactHandler();
-    return "java".equals( artifactHandler.getLanguage() );
+    return "java".equals(artifactHandler.getLanguage());
   }
 
   void compile() throws MojoExecutionException {
     validator.validate(this);
-
-    File javaFXHomeDir=null;
-    //Todo if the classpath problem is solved, add that condition
-//    if ( automaticallyAddFxJars ) {
+    File javaFXHomeFolder = null;
+    // TODO if the classpath problem is solved, add that condition
+    // if ( automaticallyAddFxJars ) {
       String verifiedJavaFxHome = javaFxHomeRef.verify(javaFxHome);
       getLog().info(concat("JavaFX home is ", quote(verifiedJavaFxHome)));
-      javaFXHomeDir = javaFxHomeRef.reference(verifiedJavaFxHome);
-//    }
-
-    deleteOverwrites();
-
-    Javac javaFxc = javaFxcFactory.createJavaFxc(javaFXHomeDir, automaticallyAddFxJars);
-    javaFxcSetup.setUpJavaFxc(javaFxc, this, javaFXHomeDir, automaticallyAddFxJars );
+      javaFXHomeFolder = javaFxHomeRef.reference(verifiedJavaFxHome);
+    // }
+    overwriteUtilities.deleteOverwrites(outputDirectory(), overwrites.toArray(new String[overwrites.size()]));
+    Javac javaFxc = javaFxcFactory.createJavaFxc(javaFXHomeFolder, automaticallyAddFxJars);
+    javaFxcSetup.setUpJavaFxc(javaFxc, this, javaFXHomeFolder, automaticallyAddFxJars );
     javaFxcExecutor.execute(javaFxc);
-  }
-
-  private void deleteOverwrites() throws MojoExecutionException {
-    DirectoryScanner scanner = new DirectoryScanner();
-    scanner.setBasedir( outputDirectory() );
-    scanner.setIncludes( overwrites.toArray( new String[overwrites.size()] ) );
-
-    scanner.scan();
-    for ( String overwrite : scanner.getIncludedFiles() ) {
-      getLog().info( "Overwriting: " + overwrite );
-      File targetFile = new File( outputDirectory(), overwrite );
-      if (! targetFile.exists() ) {
-        throw new MojoExecutionException( "Overwrite not found <" + targetFile.getAbsolutePath() + ">" );
-      }
-      targetFile.delete();
-    }
   }
 
   abstract List<String> classpathElements();

@@ -29,6 +29,7 @@ import static org.fest.util.Collections.isEmpty;
  * Understands configuration of an instance of the JavaFX compiler Ant task.
  *
  * @author Alex Ruiz
+ * @author Johannes Schneider
  */
 class JavaFxcSetup {
 
@@ -49,9 +50,7 @@ class JavaFxcSetup {
     javaFxc.setSource(javaFxcMojo.source);
     javaFxc.setTarget(javaFxcMojo.target);
     javaFxc.setVerbose(javaFxcMojo.verbose);
-    if ( javaFxcMojo.unchecked ) {
-      javaFxc.createCompilerArg().setLine( "-Xlint:unchecked" );
-    }
+    if (javaFxcMojo.unchecked) javaFxc.createCompilerArg().setLine( "-Xlint:unchecked" );
   }
 
   private void configureProject(Javac javaFxc, AbstractJavaFxcMojo javaFxcMojo) {

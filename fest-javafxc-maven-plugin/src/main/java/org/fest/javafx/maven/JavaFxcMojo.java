@@ -29,6 +29,7 @@ import static java.util.Collections.unmodifiableList;
  * @requiresDependencyResolution compile
  *
  * @author Alex Ruiz
+ * @author Johannes Schneider
  */
 public class JavaFxcMojo extends AbstractJavaFxcMojo {
 
@@ -65,10 +66,8 @@ public class JavaFxcMojo extends AbstractJavaFxcMojo {
    * @throws MojoExecutionException if the location specified by as the JavaFX home directory does not exist or it is
    * not a directory.
    */
-  public void execute() throws MojoExecutionException {
-    if (! isJavaProject() ) {
-      return;
-    }
+  @Override public void execute() throws MojoExecutionException {
+    if (!isJavaProject()) return;
     compile();
   }
 

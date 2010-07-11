@@ -29,6 +29,7 @@ import static org.easymock.classextension.EasyMock.createMock;
  * Tests for <code>{@link JavaFxcMojo#execute()}</code>.
  *
  * @author Alex Ruiz
+ * @author Johannes Schneider
  */
 public class TestJavaFxcMojo_execute_Test {
 

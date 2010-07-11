@@ -14,22 +14,22 @@
  */
 package org.fest.javafx.maven;
 
-import org.apache.maven.plugin.MojoExecutionException;
-import org.apache.tools.ant.BuildException;
-import org.apache.tools.ant.Project;
-import org.apache.tools.ant.taskdefs.Javac;
-import org.apache.tools.ant.types.Path;
-import org.fest.reflect.exception.ReflectionError;
+import static org.fest.reflect.core.Reflection.method;
 
 import java.io.File;
 import java.net.MalformedURLException;
 
-import static org.fest.reflect.core.Reflection.method;
+import org.apache.maven.plugin.MojoExecutionException;
+import org.apache.tools.ant.BuildException;
+import org.apache.tools.ant.taskdefs.Javac;
+import org.apache.tools.ant.types.Path;
+import org.fest.reflect.exception.ReflectionError;
 
 /**
  * Understands creation of new instances of the JavaFX compiler Ant task.
  *
  * @author Alex Ruiz
+ * @author Johannes Schneider
  */
 class JavaFxcFactory {
 
@@ -49,11 +49,11 @@ class JavaFxcFactory {
       try {
         Path compilerClasspath;
         if ( automaticallyAddFxJars ) {
-          compilerClasspath = classpathFactory.createCompilerClasspath( javaFxHome );
-        }else {
-          //TODO This does not work! There are some class not found exceptions then!
-          //It is necessary to add the dependencies to the JavaFX toolchain in some other way...
-//          compilerClasspath = new Path( new Project() ); //Empty
+          compilerClasspath = classpathFactory.createCompilerClasspath(javaFxHome);
+        } else {
+          // TODO This does not work! There are some class not found exceptions then!
+          // It is necessary to add the dependencies to the JavaFX toolchain in some other way...
+          // compilerClasspath = new Path( new Project() ); //Empty
           compilerClasspath = classpathFactory.createCompilerClasspath( javaFxHome );
         }
         Javac javaFxc = instantiator.instantiateJavaFxc( compilerClasspath );

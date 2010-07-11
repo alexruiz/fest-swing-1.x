@@ -38,6 +38,7 @@ import static org.fest.util.Files.temporaryFolder;
  * Tests for <code>{@link JavaFxcSetup}</code>.
  *
  * @author Alex Ruiz
+ * @author Johannes Schneider
  */
 public class JavaFxcSetup_setUpJavaFxc_Test {
 
@@ -117,6 +118,15 @@ public class JavaFxcSetup_setUpJavaFxc_Test {
     assertThat(containsExtraClasspathElement(javaFxc.getClasspath())).isTrue();
   }
 
+  private boolean containsExtraClasspathElement(Path classpath) {
+    Iterator<FileResource> iterator = iteratorOf(classpath);
+    while(iterator.hasNext()) {
+      String name = iterator.next().getName();
+      if (name.contains(extraClasspathElement)) return true;
+    }
+    return false;
+  }
+
   @Test
   public void should_include_classpath_elements_from_Mojo_no_cp_magic() {
     javaFxcMojo.compileClasspathElements = list(extraClasspathElement);
@@ -129,20 +139,24 @@ public class JavaFxcSetup_setUpJavaFxc_Test {
         javaFxcSetup.setUpJavaFxc(javaFxc, javaFxcMojo, javaFxcHome, false);
       }
     }.run();
-    assertThat(containsExtraClasspathElement(javaFxc.getClasspath())).isTrue();
+    assertThat(containsExtraClasspathElementOnly(javaFxc.getClasspath())).isTrue();
+  }
 
-    Iterator<FileResource> iter = javaFxc.getClasspath().iterator();
-    assertThat( iter.next().getName() ).isEqualTo( extraClasspathElement );
-    assertThat( iter.hasNext() ).isFalse();
+  private boolean containsExtraClasspathElementOnly(Path classpath) {
+    int counter = 0;
+    boolean found = false;
+    Iterator<FileResource> iterator = iteratorOf(classpath);
+    while(iterator.hasNext()) {
+      String name = iterator.next().getName();
+      if (name.contains(extraClasspathElement)) found = true;
+      counter++;
+    }
+    return found == true && counter == 1;
   }
 
   @SuppressWarnings("unchecked")
-  private boolean containsExtraClasspathElement(Path classpath) {
+  private Iterator<FileResource> iteratorOf(Path classpath) {
     Iterator<FileResource> iterator = classpath.iterator();
-    while(iterator.hasNext()) {
-      String name = iterator.next().getName();
-      if (name.contains(extraClasspathElement)) return true;
-    }
-    return false;
+    return iterator;
   }
 }

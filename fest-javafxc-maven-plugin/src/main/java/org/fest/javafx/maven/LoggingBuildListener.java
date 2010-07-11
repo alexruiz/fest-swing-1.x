@@ -33,27 +33,27 @@ class LoggingBuildListener implements BuildListener {
     this.logger = logger;
   }
 
-  public void buildStarted(BuildEvent event) {
+  @Override public void buildStarted(BuildEvent event) {
     log(event);
   }
 
-  public void buildFinished(BuildEvent event) {
+  @Override public void buildFinished(BuildEvent event) {
     log(event);
   }
 
-  public void targetStarted(BuildEvent event) {
+  @Override public void targetStarted(BuildEvent event) {
     log(event);
   }
 
-  public void targetFinished(BuildEvent event) {
+  @Override public void targetFinished(BuildEvent event) {
     log(event);
   }
 
-  public void taskStarted(BuildEvent event) {
+  @Override public void taskStarted(BuildEvent event) {
     log(event);
   }
 
-  public void taskFinished(BuildEvent event) {
+  @Override public void taskFinished(BuildEvent event) {
     log(event);
   }
 
@@ -61,7 +61,7 @@ class LoggingBuildListener implements BuildListener {
     logger.info(event.getMessage());
   }
 
-  public void messageLogged(BuildEvent event) {
+  @Override public void messageLogged(BuildEvent event) {
     log(formattedMessageFrom(event), event.getPriority());
   }
 
