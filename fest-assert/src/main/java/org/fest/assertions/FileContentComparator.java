@@ -14,10 +14,11 @@
  */
 package org.fest.assertions;
 
+import static java.lang.String.valueOf;
 import static org.fest.assertions.FileContentComparator.LineDiff.lineDiff;
 import static org.fest.util.Closeables.close;
 import static org.fest.util.Objects.*;
-import static org.fest.util.Strings.quote;
+import static org.fest.util.Strings.*;
 
 import java.io.*;
 import java.util.*;
@@ -111,11 +112,9 @@ class FileContentComparator {
     }
 
     @Override public String toString() {
-      StringBuilder b = new StringBuilder();
-      b.append("LineDiff [actual=").append(quote(actual))
-       .append(", expected=").append(quote(expected))
-       .append(", lineNumber=").append(lineNumber).append("]");
-      return b.toString();
+      return concat("LineDiff [actual=", quote(actual),
+                    ", expected=", quote(expected),
+                    ", lineNumber=", valueOf(lineNumber), "]");
     }
   }
 }
