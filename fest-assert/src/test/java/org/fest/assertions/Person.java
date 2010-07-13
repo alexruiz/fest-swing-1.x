@@ -14,6 +14,8 @@
  */
 package org.fest.assertions;
 
+import static org.fest.assertions.Title.Mr;
+
 /**
  *
  * A simple class to test "onProperty" collection/list/array assertions.
@@ -30,7 +32,7 @@ public class Person {
   private final Name name;
   private final int age;
   private final long ssn;
-  private Title title = Title.Mr;
+  private Title title = Mr;
   private final boolean male;
   private final char favoriteAlphabetLetter;
   private final byte favoriteByte;
