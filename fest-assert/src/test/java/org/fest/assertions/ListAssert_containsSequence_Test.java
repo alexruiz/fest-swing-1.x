@@ -23,8 +23,7 @@ import static org.fest.util.Collections.list;
 import java.util.List;
 
 import org.fest.test.CodeToTest;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Tests for <code>{@link ListAssert#containsSequence(Object...)}</code>.
@@ -39,7 +38,7 @@ public class ListAssert_containsSequence_Test {
   public static void setUpOnce() {
     list = list("Anakin", "Leia", "Han");
   }
-  
+
   @Test
   public void should_pass_if_actual_contains_sequence() {
     new ListAssert(list).containsSequence("Anakin", "Leia")
@@ -104,7 +103,7 @@ public class ListAssert_containsSequence_Test {
       }
     });
   }
-  
+
   @Test
   public void should_fail_if_actual_does_not_contain_some_elements_in_the_sequence() {
     String message = "list:<['Anakin', 'Leia', 'Han']> does not contain the sequence:<['Anakin', 'Ben']>";
@@ -146,10 +145,10 @@ public class ListAssert_containsSequence_Test {
       }
     });
   }
-  
+
   @Test
   public void should_fail_if_actual_is_null() {
-    expectErrorIfActualListIsNull(new CodeToTest() {
+    expectErrorIfActualIsNull(new CodeToTest() {
       public void run() {
         new ListAssert(null).containsSequence("Gandalf", "Frodo", "Sam");
       }
@@ -158,7 +157,7 @@ public class ListAssert_containsSequence_Test {
 
   @Test
   public void should_fail_and_display_description_of_assertion_if_actual_is_null() {
-    expectErrorWithDescriptionIfActualListIsNull(new CodeToTest() {
+    expectErrorWithDescriptionIfActualIsNull(new CodeToTest() {
       public void run() {
         new ListAssert(null).as("A Test")
                             .containsSequence("Gandalf", "Frodo", "Sam");
@@ -168,7 +167,7 @@ public class ListAssert_containsSequence_Test {
 
   @Test
   public void should_throw_error_if_expected_is_null() {
-    expectNullPointerException("the given array of objects should not be null").on(new CodeToTest() {
+    expectNullPointerException("The given array should not be null").on(new CodeToTest() {
       public void run() {
         Object[] objects = null;
         new ListAssert(emptyList()).containsSequence(objects);
@@ -178,7 +177,7 @@ public class ListAssert_containsSequence_Test {
 
   @Test
   public void should_throw_error_and_display_description_of_assertion_if_expected_is_null() {
-    expectNullPointerException("[A Test] the given array of objects should not be null").on(new CodeToTest() {
+    expectNullPointerException("[A Test] The given array should not be null").on(new CodeToTest() {
       public void run() {
         Object[] objects = null;
         new ListAssert(emptyList()).as("A Test")

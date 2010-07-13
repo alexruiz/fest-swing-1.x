@@ -16,13 +16,11 @@
 package org.fest.assertions;
 
 import static org.fest.test.EqualsHashCodeContractAssert.*;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.*;
 
 import org.fest.assertions.FileContentComparator.LineDiff;
 import org.fest.test.EqualsHashCodeContractTestCase;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Tests for <code>{@link LineDiff#equals(Object)}</code> and <code>{@link LineDiff#hashCode()}</code>.

@@ -16,8 +16,7 @@
 package org.fest.assertions;
 
 import static org.fest.assertions.Fail.failWithMessage;
-import static org.fest.assertions.Formatting.format;
-import static org.fest.assertions.Formatting.valueOf;
+import static org.fest.assertions.Formatting.*;
 
 /**
  * Understands the base class for all assertion methods for objects and primitives.

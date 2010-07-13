@@ -15,13 +15,11 @@
 package org.fest.assertions;
 
 import static org.fest.assertions.ArrayFactory.intArray;
-import static org.fest.assertions.CommonFailures.expectErrorIfActualArrayIsNull;
-import static org.fest.assertions.CommonFailures.expectErrorWithDescriptionIfActualArrayIsNull;
+import static org.fest.assertions.CommonFailures.*;
 import static org.fest.test.ExpectedFailure.expectAssertionError;
 
 import org.fest.test.CodeToTest;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Tests for <code>{@link IntArrayAssert#hasSize(int)}</code>.
@@ -45,7 +43,7 @@ public class IntArrayAssert_hasSize_Test implements Assert_hasSize_TestCase {
 
   @Test
   public void should_fail_if_actual_is_null() {
-    expectErrorIfActualArrayIsNull(new CodeToTest() {
+    expectErrorIfActualIsNull(new CodeToTest() {
       public void run() {
         new IntArrayAssert(null).hasSize(1);
       }
@@ -54,7 +52,7 @@ public class IntArrayAssert_hasSize_Test implements Assert_hasSize_TestCase {
 
   @Test
   public void should_fail_and_display_description_of_assertion_if_actual_is_null() {
-    expectErrorWithDescriptionIfActualArrayIsNull(new CodeToTest() {
+    expectErrorWithDescriptionIfActualIsNull(new CodeToTest() {
       public void run() {
         new IntArrayAssert(null).as("A Test")
                                 .hasSize(1);
@@ -64,7 +62,7 @@ public class IntArrayAssert_hasSize_Test implements Assert_hasSize_TestCase {
 
   @Test
   public void should_fail_if_actual_does_not_have_expected_size() {
-    expectAssertionError("expected size:<2> but was:<3> for array:<[6, 8, 10]>").on(new CodeToTest() {
+    expectAssertionError("expected size:<2> but was:<3> for <[6, 8, 10]>").on(new CodeToTest() {
       public void run() {
         new IntArrayAssert(array).hasSize(2);
       }
@@ -73,7 +71,7 @@ public class IntArrayAssert_hasSize_Test implements Assert_hasSize_TestCase {
 
   @Test
   public void should_fail_and_display_description_of_assertion_if_actual_does_not_have_expected_size() {
-    expectAssertionError("[A Test] expected size:<2> but was:<3> for array:<[6, 8, 10]>").on(new CodeToTest() {
+    expectAssertionError("[A Test] expected size:<2> but was:<3> for <[6, 8, 10]>").on(new CodeToTest() {
       public void run() {
         new IntArrayAssert(array).as("A Test")
                                  .hasSize(2);

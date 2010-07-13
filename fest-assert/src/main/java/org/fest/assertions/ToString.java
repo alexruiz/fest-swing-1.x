@@ -15,15 +15,14 @@
  */
 package org.fest.assertions;
 
-import static org.fest.util.Strings.concat;
-import static org.fest.util.Strings.quote;
+import static org.fest.util.Strings.*;
 
 import java.awt.Dimension;
 import java.io.File;
-import java.util.Collection;
-import java.util.Map;
+import java.util.*;
 
 import org.fest.util.*;
+import org.fest.util.Arrays;
 import org.fest.util.Collections;
 
 /**

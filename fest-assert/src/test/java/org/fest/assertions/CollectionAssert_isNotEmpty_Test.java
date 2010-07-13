@@ -15,9 +15,12 @@
  */
 package org.fest.assertions;
 
+import static java.util.Collections.emptyList;
 import static org.fest.util.Collections.list;
 
-import java.util.Collection;
+import java.util.*;
+
+import org.junit.BeforeClass;
 
 /**
  * Tests for <code>{@link CollectionAssert#isNotEmpty()}</code>.
@@ -25,13 +28,24 @@ import java.util.Collection;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class CollectionAssert_isNotEmpty_Test extends ObjectGroupAssert_isNotEmpty_TestCase<Collection<?>> {
+public class CollectionAssert_isNotEmpty_Test extends GroupAssert_isNotEmpty_TestCase<Collection<?>> {
 
-  protected Collection<?> actualFrom(Object... values) {
-    return list(values);
+  private static List<String> notEmpty;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    notEmpty = list("Luke", "Leia");
   }
 
   protected CollectionAssert assertionsFor(Collection<?> actual) {
     return new CollectionAssert(actual);
+  }
+
+  protected Collection<?> emptyGroup() {
+    return emptyList();
+  }
+
+  protected Collection<?> notEmptyGroup() {
+    return notEmpty;
   }
 }

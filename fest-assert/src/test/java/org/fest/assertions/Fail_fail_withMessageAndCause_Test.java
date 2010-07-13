@@ -15,6 +15,7 @@
 package org.fest.assertions;
 
 import static org.junit.Assert.*;
+
 import org.junit.Test;
 
 /**

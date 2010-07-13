@@ -14,8 +14,7 @@
  */
 package org.fest.assertions;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * Tests for:

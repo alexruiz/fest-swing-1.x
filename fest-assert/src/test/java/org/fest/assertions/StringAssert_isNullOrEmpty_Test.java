@@ -40,7 +40,7 @@ public class StringAssert_isNullOrEmpty_Test implements GroupAssert_isNullOrEmpt
 
   @Test
   public void should_fail_if_actual_has_content() {
-    expectAssertionError("expecting a null or empty String, but was:<'Yoda'>").on(new CodeToTest() {
+    expectAssertionError("expecting null or empty, but was:<'Yoda'>").on(new CodeToTest() {
       public void run() {
         new StringAssert("Yoda").isNullOrEmpty();
       }
@@ -49,7 +49,7 @@ public class StringAssert_isNullOrEmpty_Test implements GroupAssert_isNullOrEmpt
 
   @Test
   public void should_fail_and_display_description_of_assertion_if_actual_has_content() {
-    expectAssertionError("[A Test] expecting a null or empty String, but was:<'Yoda'>").on(new CodeToTest() {
+    expectAssertionError("[A Test] expecting null or empty, but was:<'Yoda'>").on(new CodeToTest() {
       public void run() {
         new StringAssert("Yoda").as("A Test")
                                 .isNullOrEmpty();

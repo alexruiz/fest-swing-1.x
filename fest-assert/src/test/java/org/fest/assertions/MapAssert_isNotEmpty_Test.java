@@ -15,16 +15,12 @@
 package org.fest.assertions;
 
 import static java.util.Collections.emptyMap;
-import static org.fest.assertions.CommonFailures.expectErrorIfActualMapIsNull;
-import static org.fest.assertions.CommonFailures.expectErrorWithDescriptionIfActualMapIsNull;
 import static org.fest.assertions.MapAssert.entry;
 import static org.fest.assertions.MapFactory.map;
-import static org.fest.test.ExpectedFailure.expectAssertionError;
 
-import java.util.*;
+import java.util.Map;
 
-import org.fest.test.CodeToTest;
-import org.junit.Test;
+import org.junit.BeforeClass;
 
 /**
  * Tests for <code>{@link MapAssert#isNotEmpty()}</code>.
@@ -33,70 +29,24 @@ import org.junit.Test;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class MapAssert_isNotEmpty_Test implements GroupAssert_isNotEmpty_TestCase {
+public class MapAssert_isNotEmpty_Test extends GroupAssert_isNotEmpty_TestCase<Map<?, ?>> {
 
-  @Test
-  public void should_pass_if_actual_is_not_empty() {
-    Map<Object, Object> map = map(entry("key1", 1));
-    new MapAssert(map).isNotEmpty();
+  private static Map<?, ?> notEmpty;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    notEmpty = map(entry("key1", 1));
   }
 
-  @Test
-  public void should_fail_if_actual_is_null() {
-    expectErrorIfActualMapIsNull(new CodeToTest() {
-      public void run() {
-        new MapAssert(null).isNotEmpty();
-      }
-    });
+  protected MapAssert assertionsFor(Map<?, ?> actual) {
+    return new MapAssert(actual);
   }
 
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_is_null() {
-    expectErrorWithDescriptionIfActualMapIsNull(new CodeToTest() {
-      public void run() {
-        new MapAssert(null).as("A Test")
-                           .isNotEmpty();
-      }
-    });
+  protected Map<?, ?> emptyGroup() {
+    return emptyMap();
   }
 
-  @Test
-  public void should_fail_if_actual_is_empty() {
-    expectAssertionError("expecting non-empty map, but it was empty").on(new CodeToTest() {
-      public void run() {
-        new MapAssert(emptyMap()).isNotEmpty();
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_is_empty() {
-    expectAssertionError("[A Test] expecting non-empty map, but it was empty").on(new CodeToTest() {
-      public void run() {
-        new MapAssert(emptyMap()).as("A Test")
-                                 .isNotEmpty();
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_if_actual_is_empty() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new MapAssert(emptyMap()).overridingErrorMessage("My custom message")
-                                 .isNotEmpty();
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_is_empty() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new MapAssert(emptyMap()).as("A Test")
-                                 .overridingErrorMessage("My custom message")
-                                 .isNotEmpty();
-      }
-    });
+  protected Map<?, ?> notEmptyGroup() {
+    return notEmpty;
   }
 }

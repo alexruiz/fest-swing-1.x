@@ -35,7 +35,7 @@ public class ObjectArrayAssert_doesNotHaveDuplicates_Test {
 
   @Test
   public void should_fail_if_actual_is_null() {
-    expectErrorIfActualArrayIsNull(new CodeToTest() {
+    expectErrorIfActualIsNull(new CodeToTest() {
       public void run() {
         Object[] actual = null;
         new ObjectArrayAssert(actual).doesNotHaveDuplicates();
@@ -45,7 +45,7 @@ public class ObjectArrayAssert_doesNotHaveDuplicates_Test {
 
   @Test
   public void should_fail_and_display_description_of_assertion_if_actual_is_null() {
-    expectErrorWithDescriptionIfActualArrayIsNull(new CodeToTest() {
+    expectErrorWithDescriptionIfActualIsNull(new CodeToTest() {
       public void run() {
         Object[] actual = null;
         new ObjectArrayAssert(actual).as("A Test")
@@ -56,7 +56,7 @@ public class ObjectArrayAssert_doesNotHaveDuplicates_Test {
 
   @Test
   public void should_fail_if_actual_has_duplicates() {
-    String message = "array:<['A', 'A']> contains duplicate(s):<['A']>";
+    String message = "<['A', 'A']> contains duplicate(s):<['A']>";
     expectAssertionError(message).on(new CodeToTest() {
       public void run() {
         new ObjectArrayAssert("A", "A").doesNotHaveDuplicates();
@@ -66,7 +66,7 @@ public class ObjectArrayAssert_doesNotHaveDuplicates_Test {
 
   @Test
   public void should_fail_and_display_description_of_assertion_if_actual_has_duplicates() {
-    String message = "[A Test] array:<['A', 'A']> contains duplicate(s):<['A']>";
+    String message = "[A Test] <['A', 'A']> contains duplicate(s):<['A']>";
     expectAssertionError(message).on(new CodeToTest() {
       public void run() {
         new ObjectArrayAssert("A", "A").as("A Test")

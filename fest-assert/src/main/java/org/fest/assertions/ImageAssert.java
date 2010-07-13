@@ -15,18 +15,15 @@
 package org.fest.assertions;
 
 import static java.lang.String.valueOf;
-import static org.fest.assertions.ErrorMessages.unexpectedEqual;
-import static org.fest.assertions.ErrorMessages.unexpectedNotEqual;
+import static org.fest.assertions.ErrorMessages.*;
 import static org.fest.assertions.Formatting.inBrackets;
 import static org.fest.assertions.Threshold.threshold;
 import static org.fest.util.Objects.areEqual;
-import static org.fest.util.Strings.concat;
-import static org.fest.util.Strings.quote;
+import static org.fest.util.Strings.*;
 
 import java.awt.Dimension;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 
 /**
  * Understands assertion methods for images. To create a new instance of this class use the method

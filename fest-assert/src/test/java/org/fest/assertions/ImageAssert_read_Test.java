@@ -17,16 +17,13 @@ package org.fest.assertions;
 import static org.fest.assertions.CommonFailures.*;
 import static org.fest.assertions.Images.fivePixelBlueImage;
 import static org.fest.assertions.Resources.file;
-import static org.junit.Assert.assertSame;
-import static org.junit.Assert.fail;
+import static org.junit.Assert.*;
 
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 
 import org.fest.test.CodeToTest;
-import org.junit.After;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Tests for <code>{@link ImageAssert#read(String)}</code>.

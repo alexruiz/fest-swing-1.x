@@ -15,9 +15,9 @@
  */
 package org.fest.assertions;
 
-import java.math.BigDecimal;
-
 import static java.math.BigDecimal.ZERO;
+
+import java.math.BigDecimal;
 
 /**
  * Understands assertion methods for <code>{@link BigDecimal}</code>. To create a new instance of this class use the

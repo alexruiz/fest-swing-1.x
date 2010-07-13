@@ -78,7 +78,7 @@ public abstract class ObjectGroupAssert_excludes_TestCase<T> extends ObjectGroup
 
   @Test
   public final void should_throw_error_if_expected_is_null() {
-    expectNullPointerException("the given array of objects should not be null").on(new CodeToTest() {
+    expectNullPointerException("The given array should not be null").on(new CodeToTest() {
       public void run() {
         Object[] objects = null;
         assertions.excludes(objects);
@@ -88,7 +88,7 @@ public abstract class ObjectGroupAssert_excludes_TestCase<T> extends ObjectGroup
 
   @Test
   public final void should_throw_error_and_display_description_of_assertion_if_expected_is_null() {
-    expectNullPointerException("[A Test] the given array of objects should not be null").on(new CodeToTest() {
+    expectNullPointerException("[A Test] The given array should not be null").on(new CodeToTest() {
       public void run() {
         Object[] objects = null;
         assertions.as("A Test")

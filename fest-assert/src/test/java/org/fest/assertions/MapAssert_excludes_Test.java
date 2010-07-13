@@ -23,8 +23,7 @@ import java.util.Map;
 
 import org.fest.assertions.MapAssert.Entry;
 import org.fest.test.CodeToTest;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Tests for <code>{@link MapAssert#excludes(Entry...)}</code>.
@@ -41,7 +40,7 @@ public class MapAssert_excludes_Test {
   public static void setUpOnce() {
     map = map(entry("key1", 1), entry("key2", 2));
   }
-  
+
   @Test
   public void should_pass_if_actual_excludes_entries() {
     new MapAssert(map).excludes(entry("key6", 6), entry("key8", 8));
@@ -70,7 +69,7 @@ public class MapAssert_excludes_Test {
 
   @Test
   public void should_fail_if_actual_is_null() {
-    expectErrorIfActualMapIsNull(new CodeToTest() {
+    expectErrorIfActualIsNull(new CodeToTest() {
       public void run() {
         new MapAssert(null).excludes(entry("key6", 6));
       }
@@ -79,7 +78,7 @@ public class MapAssert_excludes_Test {
 
   @Test
   public void should_fail_and_display_description_of_assertion_if_actual_is_null() {
-    expectErrorWithDescriptionIfActualMapIsNull(new CodeToTest() {
+    expectErrorWithDescriptionIfActualIsNull(new CodeToTest() {
       public void run() {
         new MapAssert(null).as("A Test")
                            .excludes(entry("key6", 6));
@@ -137,7 +136,7 @@ public class MapAssert_excludes_Test {
       }
     });
   }
-  
+
   @Test
   public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_contains_entry() {
     expectAssertionError("My custom message").on(new CodeToTest() {
@@ -179,7 +178,7 @@ public class MapAssert_excludes_Test {
       }
     });
   }
-  
+
   @Test
   public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_contains_entries() {
     expectAssertionError("My custom message").on(new CodeToTest() {

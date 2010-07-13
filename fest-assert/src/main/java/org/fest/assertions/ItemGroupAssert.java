@@ -88,7 +88,7 @@ public abstract class ItemGroupAssert<T> extends GroupAssert<T> {
    * @return a set containing all the elements in the given array.
    */
   protected static Set<Object> asSet(Object[] objects) {
-    Set<Object> s = new HashSet<Object>();
+    Set<Object> s = new LinkedHashSet<Object>();
     for (Object o : objects) s.add(o);
     return s;
   }
@@ -112,7 +112,7 @@ public abstract class ItemGroupAssert<T> extends GroupAssert<T> {
 
   private AssertionError failureIfUnexpectedElementsFound(Collection<Object> unexpected) {
     failIfCustomMessageIsSet();
-    return failure(concat("unexpected element(s):", inBrackets(unexpected), " in:", inBrackets(actual)));
+    return failure(concat("unexpected element(s):", inBrackets(unexpected), " in ", inBrackets(actual)));
   }
 
   /**
@@ -138,7 +138,7 @@ public abstract class ItemGroupAssert<T> extends GroupAssert<T> {
    */
   protected final void validateIsNotNull(Object[] objects) {
     if (objects == null)
-      throw new NullPointerException(formattedErrorMessage("the given array of objects should not be null"));
+      throw new NullPointerException(formattedErrorMessage("The given array should not be null"));
   }
 
   /**

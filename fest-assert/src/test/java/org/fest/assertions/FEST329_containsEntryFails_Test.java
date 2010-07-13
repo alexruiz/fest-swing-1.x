@@ -18,12 +18,10 @@ package org.fest.assertions;
 import static org.fest.assertions.MapAssert.entry;
 import static org.fest.test.ExpectedFailure.expectAssertionError;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.*;
 
 import org.fest.test.CodeToTest;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Tests for bug <a href="http://jira.codehaus.org/browse/FEST-329" target="_blank">FEST-329</a>.

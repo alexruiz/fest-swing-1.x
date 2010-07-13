@@ -14,10 +14,8 @@
  */
 package org.fest.assertions;
 
-import java.lang.reflect.AccessibleObject;
-import java.lang.reflect.Constructor;
-import java.security.AccessController;
-import java.security.PrivilegedAction;
+import java.lang.reflect.*;
+import java.security.*;
 
 /**
  * Understands access to constructors using Java reflection.

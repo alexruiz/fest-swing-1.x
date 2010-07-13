@@ -16,8 +16,9 @@ package org.fest.assertions;
 
 import static org.fest.assertions.CommonFailures.expectComparisonFailure;
 import static org.fest.test.ExpectedFailure.expectAssertionError;
+
 import org.fest.test.CodeToTest;
-import org.junit.*;
+import org.junit.Test;
 
 /**
  * Tests for <code>{@link Fail#failIfNotEqual(String, Description, Object, Object)}</code>.

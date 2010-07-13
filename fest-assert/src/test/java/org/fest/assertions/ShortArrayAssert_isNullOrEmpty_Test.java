@@ -18,8 +18,7 @@ import static org.fest.assertions.EmptyArrays.emptyShortArray;
 import static org.fest.test.ExpectedFailure.expectAssertionError;
 
 import org.fest.test.CodeToTest;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Tests for <code>{@link ShortArrayAssert#isNullOrEmpty()}</code>.
@@ -48,7 +47,7 @@ public class ShortArrayAssert_isNullOrEmpty_Test implements GroupAssert_isNullOr
 
   @Test
   public void should_fail_if_actual_has_content() {
-    expectAssertionError("expecting a null or empty array, but was:<[6]>").on(new CodeToTest() {
+    expectAssertionError("expecting null or empty, but was:<[6]>").on(new CodeToTest() {
       public void run() {
         new ShortArrayAssert(array).isNullOrEmpty();
       }
@@ -57,7 +56,7 @@ public class ShortArrayAssert_isNullOrEmpty_Test implements GroupAssert_isNullOr
 
   @Test
   public void should_fail_and_display_description_of_assertion_if_actual_has_content() {
-    expectAssertionError("[A Test] expecting a null or empty array, but was:<[6]>").on(new CodeToTest() {
+    expectAssertionError("[A Test] expecting null or empty, but was:<[6]>").on(new CodeToTest() {
       public void run() {
         new ShortArrayAssert(array).as("A Test")
                                    .isNullOrEmpty();

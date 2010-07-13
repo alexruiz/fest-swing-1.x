@@ -1,13 +1,12 @@
 package org.fest.assertions;
 
 import static org.fest.assertions.Assertions.assertThat;
-import static org.fest.assertions.CommonFailures.expectErrorIfActualArrayIsNull;
+import static org.fest.assertions.CommonFailures.expectErrorIfActualIsNull;
+import static org.fest.test.ExpectedFailure.expectAssertionError;
 
-import org.fest.reflect.exception.ReflectionError;
 import org.fest.test.CodeToTest;
 import org.fest.util.IntrospectionError;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 
 public class ObjectArrayAssert_onProperty_Test implements Assert_onProperty_Test {
 
@@ -140,7 +139,7 @@ public class ObjectArrayAssert_onProperty_Test implements Assert_onProperty_Test
       assertThat(friends).onProperty("homeTown").contains("Paris", "Rome", "Londres", "Madrid");
     } catch (AssertionError e) {
       assertThat(e).hasMessage(
-          "array:<['Paris', 'Madrid', 'London', 'Roma']> does not contain element(s):<['Rome', 'Londres']>");
+          "<['Paris', 'Madrid', 'London', 'Roma']> does not contain element(s):<['Rome', 'Londres']>");
     }
   }
 
@@ -150,7 +149,7 @@ public class ObjectArrayAssert_onProperty_Test implements Assert_onProperty_Test
     try {
       assertThat(friends).onProperty("name.firstName").contains("Jack", "Pier", "TOTO", "Paula");
     } catch (AssertionError e) {
-      assertThat(e).hasMessage("array:<['Pier', 'Paula', 'Jack', 'Jack']> does not contain element(s):<['TOTO']>");
+      assertThat(e).hasMessage("<['Pier', 'Paula', 'Jack', 'Jack']> does not contain element(s):<['TOTO']>");
     }
   }
 
@@ -159,7 +158,7 @@ public class ObjectArrayAssert_onProperty_Test implements Assert_onProperty_Test
     try {
       assertThat(friends).onProperty("title").contains(Title.Mr, Title.Ms);
     } catch (AssertionError e) {
-      assertThat(e).hasMessage("array:<[Mr, Miss, Mr, Mr]> does not contain element(s):<[Ms]>");
+      assertThat(e).hasMessage("<[Mr, Miss, Mr, Mr]> does not contain element(s):<[Ms]>");
     }
   }
 
@@ -169,7 +168,7 @@ public class ObjectArrayAssert_onProperty_Test implements Assert_onProperty_Test
     try {
       assertThat(friends).onProperty("father.title").contains(Title.Miss);
     } catch (AssertionError e) {
-      assertThat(e).hasMessage("array:<[Mr, Mr, Mr, Mr]> does not contain element(s):<[Miss]>");
+      assertThat(e).hasMessage("<[Mr, Mr, Mr, Mr]> does not contain element(s):<[Miss]>");
     }
   }
 
@@ -179,18 +178,18 @@ public class ObjectArrayAssert_onProperty_Test implements Assert_onProperty_Test
     try {
       assertThat(friends).onProperty("age").contains(777);
     } catch (AssertionError e) {
-      assertThat(e).hasMessage("array:<[25, 32, 16, 44]> does not contain element(s):<[777]>");
+      assertThat(e).hasMessage("<[25, 32, 16, 44]> does not contain element(s):<[777]>");
     }
   }
 
   /** {@inheritDoc} */
   @Test
   public void should_fail_on_primitive_type_nested_property() {
-    try {
-      assertThat(friends).onProperty("father.age").contains(888);
-    } catch (IntrospectionError e) {
-      assertThat(e).hasMessage("array:<[55, 62, 46, 74]> does not contain element(s):<[888]>");
-    }
+    expectAssertionError("<[55, 62, 46, 74]> does not contain element(s):<[888]>").on(new CodeToTest() {
+      public void run() throws Throwable {
+        assertThat(friends).onProperty("father.age").contains(888);
+      }
+    });
   }
 
   /** {@inheritDoc} */
@@ -199,7 +198,7 @@ public class ObjectArrayAssert_onProperty_Test implements Assert_onProperty_Test
     try {
       // PersonName does not have a 'nickname' property => failure
       assertThat(friends).onProperty("name.nickname").containsOnly("PaulaFather", "JackFather", "JackFather2");
-    } catch (ReflectionError e) {
+    } catch (IntrospectionError e) {
       assertThat(e).hasMessage("Unable to find property 'nickname' in org.fest.assertions.Name");
     }
   }
@@ -236,7 +235,7 @@ public class ObjectArrayAssert_onProperty_Test implements Assert_onProperty_Test
 
   @Test
   public void should_fail_if_actual_is_null() {
-    expectErrorIfActualArrayIsNull(new CodeToTest() {
+    expectErrorIfActualIsNull(new CodeToTest() {
       public void run() {
         Object[] nullArray = null;
         new ObjectArrayAssert(nullArray).onProperty("homeTown").contains("Paris", "Roma", "London", "Madrid");

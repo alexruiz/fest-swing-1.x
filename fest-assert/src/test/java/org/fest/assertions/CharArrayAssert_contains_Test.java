@@ -18,8 +18,7 @@ import static org.fest.assertions.CommonFailures.*;
 import static org.fest.test.ExpectedFailure.expectAssertionError;
 
 import org.fest.test.CodeToTest;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Tests for <code>{@link CharArrayAssert#contains(char...)}</code>.
@@ -48,7 +47,7 @@ public class CharArrayAssert_contains_Test implements GroupAssert_contains_TestC
 
   @Test
   public void should_fail_if_actual_is_null() {
-    expectErrorIfActualArrayIsNull(new CodeToTest() {
+    expectErrorIfActualIsNull(new CodeToTest() {
       public void run() {
         new CharArrayAssert(null).contains('a', 'b');
       }
@@ -57,7 +56,7 @@ public class CharArrayAssert_contains_Test implements GroupAssert_contains_TestC
 
   @Test
   public void should_fail_and_display_description_of_assertion_if_actual_is_null() {
-    expectErrorWithDescriptionIfActualArrayIsNull(new CodeToTest() {
+    expectErrorWithDescriptionIfActualIsNull(new CodeToTest() {
       public void run() {
         new CharArrayAssert(null).as("A Test")
                                  .contains('a', 'b');
@@ -67,7 +66,7 @@ public class CharArrayAssert_contains_Test implements GroupAssert_contains_TestC
 
   @Test
   public void should_throw_error_if_expected_is_null() {
-    expectNullPointerException("the given array of chars should not be null").on(new CodeToTest() {
+    expectNullPointerException("The given array should not be null").on(new CodeToTest() {
       public void run() {
         new CharArrayAssert(array).contains(null);
       }
@@ -76,7 +75,7 @@ public class CharArrayAssert_contains_Test implements GroupAssert_contains_TestC
 
   @Test
   public void should_throw_error_and_display_description_of_assertion_if_expected_is_null() {
-    expectNullPointerException("[A Test] the given array of chars should not be null").on(new CodeToTest() {
+    expectNullPointerException("[A Test] The given array should not be null").on(new CodeToTest() {
       public void run() {
         new CharArrayAssert(array).as("A Test")
                                   .contains(null);
@@ -86,7 +85,7 @@ public class CharArrayAssert_contains_Test implements GroupAssert_contains_TestC
 
   @Test
   public void should_fail_if_actual_does_not_contain_given_values() {
-    expectAssertionError("array:<[a, b]> does not contain element(s):<[c, d]>").on(new CodeToTest() {
+    expectAssertionError("<[a, b]> does not contain element(s):<[c, d]>").on(new CodeToTest() {
       public void run() {
         new CharArrayAssert(array).contains('c', 'd');
       }
@@ -95,7 +94,7 @@ public class CharArrayAssert_contains_Test implements GroupAssert_contains_TestC
 
   @Test
   public void should_fail_and_display_description_of_assertion_if_actual_does_not_contain_given_values() {
-    expectAssertionError("[A Test] array:<[a, b]> does not contain element(s):<[c, d]>").on(new CodeToTest() {
+    expectAssertionError("[A Test] <[a, b]> does not contain element(s):<[c, d]>").on(new CodeToTest() {
       public void run() {
         new CharArrayAssert(array).as("A Test")
                                   .contains('c', 'd');
@@ -123,6 +122,4 @@ public class CharArrayAssert_contains_Test implements GroupAssert_contains_TestC
       }
     });
   }
-
-
 }

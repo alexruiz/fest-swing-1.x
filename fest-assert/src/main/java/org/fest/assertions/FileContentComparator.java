@@ -20,8 +20,7 @@ import static org.fest.util.Objects.*;
 import static org.fest.util.Strings.quote;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * Compares the contents of two files.

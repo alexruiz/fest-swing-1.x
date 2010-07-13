@@ -15,8 +15,8 @@
  */
 package org.fest.assertions;
 
+import org.junit.*;
 import org.junit.Assert;
-import org.junit.Test;
 
 /**
  * Tests for <code>{@link Condition#Condition(String)}</code>.

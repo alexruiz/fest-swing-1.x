@@ -2,7 +2,7 @@ package org.fest.assertions;
 
 public interface Assert_onProperty_Test {
 
-  // test success usage of onProperty
+  // TODO class-level comments and file header
 
   void should_pass_on_non_primitive_type_property();
 
@@ -37,8 +37,6 @@ public interface Assert_onProperty_Test {
   void should_pass_with_null_property_in_actual_elements();
 
   void should_pass_if_actual_is_empty();
-
-  // test erroneous usage of onProperty
 
   void should_fail_on_non_primitive_type_property();
 

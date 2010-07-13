@@ -20,8 +20,7 @@ import static org.fest.assertions.CommonFailures.*;
 import static org.fest.test.ExpectedFailure.expectAssertionError;
 
 import org.fest.test.CodeToTest;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Tests for <code>{@link ObjectArrayAssert#hasAtLeastOneElementOfType(Class)}</code>.
@@ -46,7 +45,7 @@ public class ObjectArrayAssert_hasAtLeastOneElementOfType_Test {
 
   @Test
   public void should_fail_if_actual_is_null() {
-    expectErrorIfActualArrayIsNull(new CodeToTest() {
+    expectErrorIfActualIsNull(new CodeToTest() {
       public void run() {
         Object[] actual = null;
         new ObjectArrayAssert(actual).hasAtLeastOneElementOfType(Integer.class);
@@ -56,7 +55,7 @@ public class ObjectArrayAssert_hasAtLeastOneElementOfType_Test {
 
   @Test
   public void should_fail_and_display_description_of_assertion_if_actual_is_null() {
-    expectErrorWithDescriptionIfActualArrayIsNull(new CodeToTest() {
+    expectErrorWithDescriptionIfActualIsNull(new CodeToTest() {
       public void run() {
         Object[] actual = null;
         new ObjectArrayAssert(actual).as("A Test")

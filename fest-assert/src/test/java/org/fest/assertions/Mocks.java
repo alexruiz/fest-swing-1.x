@@ -15,8 +15,7 @@
  */
 package org.fest.assertions;
 
-import static org.easymock.EasyMock.aryEq;
-import static org.easymock.EasyMock.eq;
+import static org.easymock.EasyMock.*;
 
 /**
  * Understands utility methods related to mocks.

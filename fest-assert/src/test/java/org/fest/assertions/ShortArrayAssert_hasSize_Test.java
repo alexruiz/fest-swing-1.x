@@ -14,9 +14,8 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.CommonFailures.expectErrorIfActualArrayIsNull;
-import static org.fest.assertions.CommonFailures.expectErrorWithDescriptionIfActualArrayIsNull;
 import static org.fest.assertions.ArrayFactory.shortArray;
+import static org.fest.assertions.CommonFailures.*;
 import static org.fest.test.ExpectedFailure.expectAssertionError;
 
 import org.fest.test.CodeToTest;
@@ -37,7 +36,7 @@ public class ShortArrayAssert_hasSize_Test {
 
   @Test
   public void should_fail_if_actual_is_null() {
-    expectErrorIfActualArrayIsNull(new CodeToTest() {
+    expectErrorIfActualIsNull(new CodeToTest() {
       public void run() {
         new ShortArrayAssert(null).hasSize(2);
       }
@@ -46,7 +45,7 @@ public class ShortArrayAssert_hasSize_Test {
 
   @Test
   public void should_fail_and_display_description_of_assertion_if_actual_is_null() {
-    expectErrorWithDescriptionIfActualArrayIsNull(new CodeToTest() {
+    expectErrorWithDescriptionIfActualIsNull(new CodeToTest() {
       public void run() {
         new ShortArrayAssert(null).as("A Test")
                                   .hasSize(2);
@@ -56,7 +55,7 @@ public class ShortArrayAssert_hasSize_Test {
 
   @Test
   public void should_fail_if_actual_does_not_have_expected_size() {
-    expectAssertionError("expected size:<2> but was:<1> for array:<[8]>").on(new CodeToTest() {
+    expectAssertionError("expected size:<2> but was:<1> for <[8]>").on(new CodeToTest() {
       public void run() {
         new ShortArrayAssert(shortArray(8)).hasSize(2);
       }
@@ -65,7 +64,7 @@ public class ShortArrayAssert_hasSize_Test {
 
   @Test
   public void should_fail_and_display_description_of_assertion_if_actual_does_not_have_expected_size() {
-    expectAssertionError("[A Test] expected size:<2> but was:<1> for array:<[8]>").on(new CodeToTest() {
+    expectAssertionError("[A Test] expected size:<2> but was:<1> for <[8]>").on(new CodeToTest() {
       public void run() {
         new ShortArrayAssert(shortArray(8)).as("A Test")
                                            .hasSize(2);

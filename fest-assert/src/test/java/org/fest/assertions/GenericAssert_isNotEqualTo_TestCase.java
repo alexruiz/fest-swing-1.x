@@ -19,8 +19,7 @@ import static org.fest.assertions.FailureMessages.unexpectedEqual;
 import static org.fest.test.ExpectedFailure.expectAssertionError;
 
 import org.fest.test.CodeToTest;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Base class for testing <code>{@link GenericAssert#isNotEqualTo(Object)}</code>.

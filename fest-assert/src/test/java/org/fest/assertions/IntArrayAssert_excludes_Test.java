@@ -19,8 +19,7 @@ import static org.fest.assertions.CommonFailures.*;
 import static org.fest.test.ExpectedFailure.expectAssertionError;
 
 import org.fest.test.CodeToTest;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Tests for <code>{@link IntArrayAssert#excludes(int...)}</code>.
@@ -49,7 +48,7 @@ public class IntArrayAssert_excludes_Test implements GroupAssert_excludes_TestCa
 
   @Test
   public void should_fail_if_actual_is_null() {
-    expectErrorIfActualArrayIsNull(new CodeToTest() {
+    expectErrorIfActualIsNull(new CodeToTest() {
       public void run() {
         new IntArrayAssert(null).excludes(6, 8);
       }
@@ -58,7 +57,7 @@ public class IntArrayAssert_excludes_Test implements GroupAssert_excludes_TestCa
 
   @Test
   public void should_fail_and_display_description_of_assertion_if_actual_is_null() {
-    expectErrorWithDescriptionIfActualArrayIsNull(new CodeToTest() {
+    expectErrorWithDescriptionIfActualIsNull(new CodeToTest() {
       public void run() {
         new IntArrayAssert(null).as("A Test")
                                 .excludes(6, 8);
@@ -68,7 +67,7 @@ public class IntArrayAssert_excludes_Test implements GroupAssert_excludes_TestCa
 
   @Test
   public void should_throw_error_if_expected_is_null() {
-    expectNullPointerException("the given array of ints should not be null").on(new CodeToTest() {
+    expectNullPointerException("The given array should not be null").on(new CodeToTest() {
       public void run() {
         new IntArrayAssert(array).excludes(null);
       }
@@ -77,7 +76,7 @@ public class IntArrayAssert_excludes_Test implements GroupAssert_excludes_TestCa
 
   @Test
   public void should_throw_error_and_display_description_of_assertion_if_expected_is_null() {
-    expectNullPointerException("[A Test] the given array of ints should not be null").on(new CodeToTest() {
+    expectNullPointerException("[A Test] The given array should not be null").on(new CodeToTest() {
       public void run() {
         new IntArrayAssert(array).as("A Test")
                                  .excludes(null);
@@ -87,7 +86,7 @@ public class IntArrayAssert_excludes_Test implements GroupAssert_excludes_TestCa
 
   @Test
   public void should_fail_if_actual_contains_given_values() {
-    expectAssertionError("array:<[6, 8]> does not exclude element(s):<[6]>").on(new CodeToTest() {
+    expectAssertionError("<[6, 8]> does not exclude element(s):<[6]>").on(new CodeToTest() {
       public void run() {
         new IntArrayAssert(array).excludes(6);
       }
@@ -96,7 +95,7 @@ public class IntArrayAssert_excludes_Test implements GroupAssert_excludes_TestCa
 
   @Test
   public void should_fail_and_display_description_of_assertion_if_actual_contains_given_values() {
-    expectAssertionError("[A Test] array:<[6, 8]> does not exclude element(s):<[6]>").on(new CodeToTest() {
+    expectAssertionError("[A Test] <[6, 8]> does not exclude element(s):<[6]>").on(new CodeToTest() {
       public void run() {
         new IntArrayAssert(array).as("A Test")
                                  .excludes(6);

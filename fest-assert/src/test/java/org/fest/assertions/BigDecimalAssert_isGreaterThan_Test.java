@@ -16,8 +16,7 @@ package org.fest.assertions;
 
 import static java.math.BigDecimal.ZERO;
 import static org.fest.assertions.BigDecimals.eight;
-import static org.fest.assertions.CommonFailures.expectErrorIfActualIsNull;
-import static org.fest.assertions.CommonFailures.expectErrorWithDescriptionIfActualIsNull;
+import static org.fest.assertions.CommonFailures.*;
 import static org.fest.test.ExpectedFailure.expectAssertionError;
 
 import java.math.BigDecimal;
@@ -101,7 +100,7 @@ public class BigDecimalAssert_isGreaterThan_Test implements Assert_isGreaterThan
 
   @Test
   public void should_fail_if_actual_is_less_than_expected() {
-    expectAssertionError("actual value:<0> should be greater than:<8>").on(new CodeToTest() {
+    expectAssertionError("actual value:<0> should be greater than:<8.0>").on(new CodeToTest() {
       public void run() {
         new BigDecimalAssert(ZERO).isGreaterThan(eight());
       }

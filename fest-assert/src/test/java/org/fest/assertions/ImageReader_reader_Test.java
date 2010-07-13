@@ -16,15 +16,12 @@ package org.fest.assertions;
 
 import static java.awt.Color.RED;
 import static org.fest.assertions.Resources.file;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.*;
 
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Tests for <code>{@link ImageReader#read(File)}</code>.

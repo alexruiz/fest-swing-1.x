@@ -15,6 +15,7 @@
 package org.fest.assertions;
 
 import static org.fest.test.ExpectedFailure.expectAssertionError;
+
 import org.fest.test.CodeToTest;
 import org.junit.Test;
 

@@ -19,8 +19,7 @@ import static org.fest.util.Arrays.isEmpty;
 import static org.fest.util.Strings.concat;
 import static org.fest.util.Systems.LINE_SEPARATOR;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 
 import org.fest.assertions.FileContentComparator.LineDiff;
 

@@ -18,10 +18,10 @@ package org.fest.assertions;
 import static java.lang.String.valueOf;
 import static org.fest.util.Strings.quote;
 
-import java.util.Collection;
-import java.util.Map;
+import java.util.*;
 
 import org.fest.util.*;
+import org.fest.util.Arrays;
 import org.fest.util.Collections;
 
 /**

@@ -20,8 +20,7 @@ import static org.fest.assertions.EmptyArrays.emptyBooleanArray;
 import static org.fest.test.ExpectedFailure.expectAssertionError;
 
 import org.fest.test.CodeToTest;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Tests for <code>{@link BooleanArrayAssert#excludes(boolean...)}</code>.
@@ -31,27 +30,33 @@ import org.junit.Test;
  */
 public class BooleanArrayAssert_excludes_Test implements GroupAssert_excludes_TestCase {
 
-  private static boolean[] array;
+  private static boolean[] actual;
 
   @BeforeClass
   public static void setUpOnce() {
-    array = booleanArray(true);
+    actual = booleanArray(true);
+  }
+
+  private BooleanArrayAssert assertions;
+
+  @Before
+  public void setUp() {
+    assertions = new BooleanArrayAssert(actual);
   }
 
   @Test
   public void should_pass_if_actual_excludes_given_value() {
-    new BooleanArrayAssert(array).excludes(false);
+    assertions.excludes(false);
   }
 
   @Test
   public void should_pass_if_actual_excludes_given_values() {
     new BooleanArrayAssert(emptyBooleanArray()).excludes(true, false);
-
   }
 
   @Test
   public void should_fail_if_actual_is_null() {
-    expectErrorIfActualArrayIsNull(new CodeToTest() {
+    expectErrorIfActualIsNull(new CodeToTest() {
       public void run() {
         new BooleanArrayAssert(null).excludes(true);
       }
@@ -60,7 +65,7 @@ public class BooleanArrayAssert_excludes_Test implements GroupAssert_excludes_Te
 
   @Test
   public void should_fail_and_display_description_of_assertion_if_actual_is_null() {
-    expectErrorWithDescriptionIfActualArrayIsNull(new CodeToTest() {
+    expectErrorWithDescriptionIfActualIsNull(new CodeToTest() {
       public void run() {
         new BooleanArrayAssert(null).as("A Test")
                                     .excludes(true);
@@ -70,38 +75,38 @@ public class BooleanArrayAssert_excludes_Test implements GroupAssert_excludes_Te
 
   @Test
   public void should_throw_error_if_expected_is_null() {
-    expectNullPointerException("the given array of booleans should not be null").on(new CodeToTest() {
+    expectNullPointerException("The given array should not be null").on(new CodeToTest() {
       public void run() {
-        new BooleanArrayAssert(array).excludes(null);
+        assertions.excludes(null);
       }
     });
   }
 
   @Test
   public void should_throw_error_and_display_description_of_assertion_if_expected_is_null() {
-    expectNullPointerException("[A Test] the given array of booleans should not be null").on(new CodeToTest() {
+    expectNullPointerException("[A Test] The given array should not be null").on(new CodeToTest() {
       public void run() {
-        new BooleanArrayAssert(array).as("A Test")
-                                     .excludes(null);
+        assertions.as("A Test")
+                  .excludes(null);
       }
     });
   }
 
   @Test
   public void should_fail_if_actual_contains_given_values() {
-    expectAssertionError("array:<[true]> does not exclude element(s):<[true]>").on(new CodeToTest() {
+    expectAssertionError("<[true]> does not exclude element(s):<[true]>").on(new CodeToTest() {
       public void run() {
-        new BooleanArrayAssert(array).excludes(true);
+        assertions.excludes(true);
       }
     });
   }
 
   @Test
   public void should_fail_and_display_description_of_assertion_if_actual_contains_given_values() {
-    expectAssertionError("[A Test] array:<[true]> does not exclude element(s):<[true]>").on(new CodeToTest() {
+    expectAssertionError("[A Test] <[true]> does not exclude element(s):<[true]>").on(new CodeToTest() {
       public void run() {
-        new BooleanArrayAssert(array).as("A Test")
-                                     .excludes(true);
+        assertions.as("A Test")
+                  .excludes(true);
       }
     });
   }
@@ -110,8 +115,8 @@ public class BooleanArrayAssert_excludes_Test implements GroupAssert_excludes_Te
   public void should_fail_with_custom_message_if_actual_contains_given_values() {
     expectAssertionError("My custom message").on(new CodeToTest() {
       public void run() {
-        new BooleanArrayAssert(array).overridingErrorMessage("My custom message")
-                                     .excludes(true);
+        assertions.overridingErrorMessage("My custom message")
+                  .excludes(true);
       }
     });
   }
@@ -120,9 +125,9 @@ public class BooleanArrayAssert_excludes_Test implements GroupAssert_excludes_Te
   public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_contains_given_values() {
     expectAssertionError("My custom message").on(new CodeToTest() {
       public void run() {
-        new BooleanArrayAssert(array).as("A Test")
-                                     .overridingErrorMessage("My custom message")
-                                     .excludes(true);
+        assertions.as("A Test")
+                  .overridingErrorMessage("My custom message")
+                  .excludes(true);
       }
     });
   }

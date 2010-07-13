@@ -82,7 +82,7 @@ public abstract class ObjectGroupAssert_containsOnly_TestCase<T> extends ObjectG
 
   @Test
   public final void should_throw_error_if_expected_is_null() {
-    expectNullPointerException("the given array of objects should not be null").on(new CodeToTest() {
+    expectNullPointerException("The given array should not be null").on(new CodeToTest() {
       public void run() {
         Object[] objects = null;
         assertions.containsOnly(objects);
@@ -92,7 +92,7 @@ public abstract class ObjectGroupAssert_containsOnly_TestCase<T> extends ObjectG
 
   @Test
   public final void should_throw_error_and_display_description_of_assertion_if_expected_is_null() {
-    expectNullPointerException("[A Test] the given array of objects should not be null").on(new CodeToTest() {
+    expectNullPointerException("[A Test] The given array should not be null").on(new CodeToTest() {
       public void run() {
         Object[] objects = null;
         assertions.as("A Test")
@@ -143,7 +143,7 @@ public abstract class ObjectGroupAssert_containsOnly_TestCase<T> extends ObjectG
 
   @Test
   public final void should_fail_if_actual_contains_unexpected_values() {
-    String message = "unexpected element(s):<['Sam']> in:<['Gandalf', 'Frodo', 'Sam']>";
+    String message = "unexpected element(s):<['Sam']> in <['Gandalf', 'Frodo', 'Sam']>";
     expectAssertionError(message).on(new CodeToTest() {
       public void run() {
         assertions.containsOnly("Gandalf", "Frodo");
@@ -153,7 +153,7 @@ public abstract class ObjectGroupAssert_containsOnly_TestCase<T> extends ObjectG
 
   @Test
   public final void should_fail_and_display_description_of_assertion_if_actual_contains_unexpected_values() {
-    String message = "[A Test] unexpected element(s):<['Sam']> in:<['Gandalf', 'Frodo', 'Sam']>";
+    String message = "[A Test] unexpected element(s):<['Sam']> in <['Gandalf', 'Frodo', 'Sam']>";
     expectAssertionError(message).on(new CodeToTest() {
       public void run() {
         assertions.as("A Test")

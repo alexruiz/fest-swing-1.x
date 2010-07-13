@@ -22,8 +22,7 @@ import static org.fest.assertions.Threshold.threshold;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Tests for bug <a href="http://jira.codehaus.org/browse/FEST-107" target="_blank">FEST-107</a>.

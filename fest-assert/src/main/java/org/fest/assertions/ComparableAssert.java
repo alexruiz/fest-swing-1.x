@@ -14,11 +14,7 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.ErrorMessages.unexpectedEqual;
-import static org.fest.assertions.ErrorMessages.unexpectedGreaterThan;
-import static org.fest.assertions.ErrorMessages.unexpectedGreaterThanOrEqualTo;
-import static org.fest.assertions.ErrorMessages.unexpectedLessThan;
-import static org.fest.assertions.ErrorMessages.unexpectedLessThanOrEqualTo;
+import static org.fest.assertions.ErrorMessages.*;
 import static org.fest.assertions.Fail.comparisonFailed;
 
 /**

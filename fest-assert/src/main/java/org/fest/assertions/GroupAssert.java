@@ -94,6 +94,7 @@ public abstract class GroupAssert<T> extends GenericAssert<T> {
    * @throws AssertionError if the number of elements of the actual group of values is not equal to the given one.
    */
   protected final void assertHasSize(int expected) {
+    isNotNull();
     int size = actualGroupSize();
     if (size == expected) return;
     failIfCustomMessageIsSet();

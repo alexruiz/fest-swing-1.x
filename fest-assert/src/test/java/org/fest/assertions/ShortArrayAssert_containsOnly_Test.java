@@ -20,8 +20,7 @@ import static org.fest.assertions.EmptyArrays.emptyShortArray;
 import static org.fest.test.ExpectedFailure.expectAssertionError;
 
 import org.fest.test.CodeToTest;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Tests for <code>{@link ShortArrayAssert#containsOnly(short...)}</code>.
@@ -50,7 +49,7 @@ public class ShortArrayAssert_containsOnly_Test implements GroupAssert_containsO
 
   @Test
   public void should_fail_if_actual_is_null() {
-    expectErrorIfActualArrayIsNull(new CodeToTest() {
+    expectErrorIfActualIsNull(new CodeToTest() {
       public void run() {
         new ShortArrayAssert(null).containsOnly(shortArray(7));
       }
@@ -59,7 +58,7 @@ public class ShortArrayAssert_containsOnly_Test implements GroupAssert_containsO
 
   @Test
   public void should_fail_and_display_description_of_assertion_if_actual_is_null() {
-    expectErrorWithDescriptionIfActualArrayIsNull(new CodeToTest() {
+    expectErrorWithDescriptionIfActualIsNull(new CodeToTest() {
       public void run() {
         new ShortArrayAssert(null).as("A Test")
                                   .containsOnly(shortArray(7));
@@ -69,7 +68,7 @@ public class ShortArrayAssert_containsOnly_Test implements GroupAssert_containsO
 
   @Test
   public void should_throw_error_if_expected_is_null() {
-    expectNullPointerException("the given array of shorts should not be null").on(new CodeToTest() {
+    expectNullPointerException("The given array should not be null").on(new CodeToTest() {
       public void run() {
         new ShortArrayAssert(emptyShortArray()).containsOnly(null);
       }
@@ -78,7 +77,7 @@ public class ShortArrayAssert_containsOnly_Test implements GroupAssert_containsO
 
   @Test
   public void should_throw_error_and_display_description_of_assertion_if_expected_is_null() {
-    expectNullPointerException("[A Test] the given array of shorts should not be null").on(new CodeToTest() {
+    expectNullPointerException("[A Test] The given array should not be null").on(new CodeToTest() {
       public void run() {
         new ShortArrayAssert(emptyShortArray()).as("A Test")
                                                .containsOnly(null);
@@ -88,7 +87,7 @@ public class ShortArrayAssert_containsOnly_Test implements GroupAssert_containsO
 
   @Test
   public void should_fail_if_actual_is_empty_and_expecting_at_least_one_element() {
-    expectAssertionError("array:<[]> does not contain element(s):<[7]>").on(new CodeToTest() {
+    expectAssertionError("<[]> does not contain element(s):<[7]>").on(new CodeToTest() {
       public void run() {
         new ShortArrayAssert(emptyShortArray()).containsOnly(shortArray(7));
       }
@@ -97,7 +96,7 @@ public class ShortArrayAssert_containsOnly_Test implements GroupAssert_containsO
 
   @Test
   public void should_fail_and_display_description_of_assertion_if_actual_is_empty_and_expecting_at_least_one_element() {
-    expectAssertionError("[A Test] array:<[]> does not contain element(s):<[7]>").on(new CodeToTest() {
+    expectAssertionError("[A Test] <[]> does not contain element(s):<[7]>").on(new CodeToTest() {
       public void run() {
         new ShortArrayAssert(emptyShortArray()).as("A Test")
                                                .containsOnly(shortArray(7));
@@ -128,7 +127,7 @@ public class ShortArrayAssert_containsOnly_Test implements GroupAssert_containsO
 
   @Test
   public void should_fail_if_actual_contains_unexpected_values() {
-    expectAssertionError("unexpected element(s):<[6]> in array:<[8, 6]>").on(new CodeToTest() {
+    expectAssertionError("unexpected element(s):<[6]> in <[8, 6]>").on(new CodeToTest() {
       public void run() {
         new ShortArrayAssert(array).containsOnly(shortArray(8));
       }
@@ -137,7 +136,7 @@ public class ShortArrayAssert_containsOnly_Test implements GroupAssert_containsO
 
   @Test
   public void should_fail_and_display_description_of_assertion_if_actual_contains_unexpected_values() {
-    expectAssertionError("[A Test] unexpected element(s):<[6]> in array:<[8, 6]>").on(new CodeToTest() {
+    expectAssertionError("[A Test] unexpected element(s):<[6]> in <[8, 6]>").on(new CodeToTest() {
       public void run() {
         new ShortArrayAssert(array).as("A Test")
                                    .containsOnly(shortArray(8));
@@ -168,7 +167,7 @@ public class ShortArrayAssert_containsOnly_Test implements GroupAssert_containsO
 
   @Test
   public void should_fail_if_actual_does_not_contain_all_the_expected_values() {
-    expectAssertionError("array:<[8, 6]> does not contain element(s):<[7]>").on(new CodeToTest() {
+    expectAssertionError("<[8, 6]> does not contain element(s):<[7]>").on(new CodeToTest() {
       public void run() {
         new ShortArrayAssert(array).containsOnly(shortArray(7));
       }
@@ -177,7 +176,7 @@ public class ShortArrayAssert_containsOnly_Test implements GroupAssert_containsO
 
   @Test
   public void should_fail_and_display_description_of_assertion_if_actual_does_not_contain_all_the_expected_values() {
-    expectAssertionError("[A Test] array:<[8, 6]> does not contain element(s):<[7]>").on(new CodeToTest() {
+    expectAssertionError("[A Test] <[8, 6]> does not contain element(s):<[7]>").on(new CodeToTest() {
       public void run() {
         new ShortArrayAssert(array).as("A Test")
                                    .containsOnly(shortArray(7));

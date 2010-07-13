@@ -18,8 +18,8 @@ package org.fest.assertions;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.junit.Assert.fail;
 
+import org.junit.*;
 import org.junit.Assert;
-import org.junit.Test;
 
 /**
  * Tests for bug <a href="http://jira.codehaus.org/browse/FEST-234" target="_blank">FEST-234</a>.

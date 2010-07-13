@@ -15,13 +15,8 @@
 package org.fest.assertions;
 
 import static org.fest.assertions.ArrayFactory.charArray;
-import static org.fest.assertions.CommonFailures.*;
-import static org.fest.assertions.EmptyArrays.emptyCharArray;
-import static org.fest.test.ExpectedFailure.expectAssertionError;
 
-import org.fest.test.CodeToTest;
 import org.junit.BeforeClass;
-import org.junit.Test;
 
 /**
  * Tests for <code>{@link CharArrayAssert#isEmpty()}</code>.
@@ -29,76 +24,26 @@ import org.junit.Test;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class CharArrayAssert_isEmpty_Test implements GroupAssert_isEmpty_TestCase {
+public class CharArrayAssert_isEmpty_Test extends GroupAssert_isEmpty_TestCase<char[]> {
 
-  private static char[] array;
+  private static char[] notEmpty;
+  private static char[] empty;
 
   @BeforeClass
   public static void setUpOnce() {
-    array = charArray('a', 'b');
+    notEmpty = charArray('a', 'b');
+    empty = new char[0];
   }
 
-  @Test
-  public void should_pass_if_actual_is_empty() {
-    new CharArrayAssert(emptyCharArray()).isEmpty();
+  protected CharArrayAssert assertionsFor(char[] actual) {
+    return new CharArrayAssert(actual);
   }
 
-  @Test
-  public void should_fail_if_actual_is_null() {
-    expectErrorIfActualArrayIsNull(new CodeToTest() {
-      public void run() {
-        new CharArrayAssert(null).isEmpty();
-      }
-    });
+  protected char[] emptyGroup() {
+    return empty;
   }
 
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_is_null() {
-    expectErrorWithDescriptionIfActualArrayIsNull(new CodeToTest() {
-      public void run() {
-        new CharArrayAssert(null).as("A Test")
-                                 .isEmpty();
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_if_actual_is_not_empty() {
-    expectAssertionError("expecting empty array, but was:<[a, b]>").on(new CodeToTest() {
-      public void run() {
-        new CharArrayAssert(array).isEmpty();
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_is_not_empty() {
-    expectAssertionError("[A Test] expecting empty array, but was:<[a, b]>").on(new CodeToTest() {
-      public void run() {
-        new CharArrayAssert(array).as("A Test")
-                                  .isEmpty();
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_if_actual_is_not_empty() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new CharArrayAssert(array).overridingErrorMessage("My custom message")
-                                  .isEmpty();
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_is_not_empty() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new CharArrayAssert(array).as("A Test")
-                                  .overridingErrorMessage("My custom message")
-                                  .isEmpty();
-      }
-    });
+  protected char[] notEmptyGroup() {
+    return notEmpty;
   }
 }

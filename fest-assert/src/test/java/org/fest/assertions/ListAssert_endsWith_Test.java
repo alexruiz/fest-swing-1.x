@@ -23,8 +23,7 @@ import static org.fest.util.Collections.list;
 import java.util.List;
 
 import org.fest.test.CodeToTest;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Tests for <code>{@link ListAssert#endsWith(Object...)}</code>.
@@ -34,14 +33,14 @@ import org.junit.Test;
 public class ListAssert_endsWith_Test {
 
   private static Object[] EMPTY_SEQUENCE = new Object[0];
-  
+
   private static List<String> list;
 
   @BeforeClass
   public static void setUpOnce() {
     list = list("Anakin", "Leia");
   }
-  
+
   @Test
   public void should_pass_if_actual_ends_with_sequence() {
     new ListAssert(list).endsWith("Leia");
@@ -87,7 +86,7 @@ public class ListAssert_endsWith_Test {
       }
     });
   }
-  
+
   @Test
   public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_is_smaller_than_sequence() {
     expectAssertionError("My custom message").on(new CodeToTest() {
@@ -98,7 +97,7 @@ public class ListAssert_endsWith_Test {
       }
     });
   }
-  
+
   @Test
   public void should_fail_if_actual_is_not_empty_and_sequence_is_empty() {
     expectAssertionError("list:<['Anakin', 'Leia']> does not end with the sequence:<[]>").on(new CodeToTest() {
@@ -122,23 +121,23 @@ public class ListAssert_endsWith_Test {
   public void should_fail_with_custom_message_if_actual_is_not_empty_and_sequence_is_empty() {
     expectAssertionError("My custom message").on(new CodeToTest() {
       public void run() {
-        new ListAssert(list).overridingErrorMessage("My custom message") 
+        new ListAssert(list).overridingErrorMessage("My custom message")
                             .endsWith(EMPTY_SEQUENCE);
       }
     });
   }
-  
+
   @Test
   public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_is_not_empty_and_sequence_is_empty() {
     expectAssertionError("My custom message").on(new CodeToTest() {
       public void run() {
         new ListAssert(list).as("A Test")
-                            .overridingErrorMessage("My custom message") 
+                            .overridingErrorMessage("My custom message")
                             .endsWith(EMPTY_SEQUENCE);
       }
     });
   }
-  
+
   @Test
   public void should_fail_if_actual_does_not_end_with_sequence() {
     String message = "list:<['Anakin', 'Leia']> does not end with the sequence:<['Leia', 'Anakin']>";
@@ -180,10 +179,10 @@ public class ListAssert_endsWith_Test {
       }
     });
   }
-  
+
   @Test
   public void should_fail_if_actual_is_null() {
-    expectErrorIfActualListIsNull(new CodeToTest() {
+    expectErrorIfActualIsNull(new CodeToTest() {
       public void run() {
         new ListAssert(null).endsWith("Gandalf", "Frodo", "Sam");
       }
@@ -192,7 +191,7 @@ public class ListAssert_endsWith_Test {
 
   @Test
   public void should_fail_and_display_description_of_assertion_if_actual_is_null() {
-    expectErrorWithDescriptionIfActualListIsNull(new CodeToTest() {
+    expectErrorWithDescriptionIfActualIsNull(new CodeToTest() {
       public void run() {
         new ListAssert(null).as("A Test")
                             .endsWith("Gandalf", "Frodo", "Sam");
@@ -202,7 +201,7 @@ public class ListAssert_endsWith_Test {
 
   @Test
   public void should_throw_error_if_expected_is_null() {
-    expectNullPointerException("the given array of objects should not be null").on(new CodeToTest() {
+    expectNullPointerException("The given array should not be null").on(new CodeToTest() {
       public void run() {
         Object[] objects = null;
         new ListAssert(emptyList()).endsWith(objects);
@@ -212,7 +211,7 @@ public class ListAssert_endsWith_Test {
 
   @Test
   public void should_throw_error_and_display_description_of_assertion_if_expected_is_null() {
-    expectNullPointerException("[A Test] the given array of objects should not be null").on(new CodeToTest() {
+    expectNullPointerException("[A Test] The given array should not be null").on(new CodeToTest() {
       public void run() {
         Object[] objects = null;
         new ListAssert(emptyList()).as("A Test")

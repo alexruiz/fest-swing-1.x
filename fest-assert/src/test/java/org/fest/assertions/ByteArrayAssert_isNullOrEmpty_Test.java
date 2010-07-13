@@ -19,8 +19,7 @@ import static org.fest.assertions.EmptyArrays.emptyByteArray;
 import static org.fest.test.ExpectedFailure.expectAssertionError;
 
 import org.fest.test.CodeToTest;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Tests for <code>{@link ByteArrayAssert#isNullOrEmpty()}</code>.
@@ -49,7 +48,7 @@ public class ByteArrayAssert_isNullOrEmpty_Test implements GroupAssert_isNullOrE
 
   @Test
   public void should_fail_if_actual_has_content() {
-    expectAssertionError("expecting a null or empty array, but was:<[6]>").on(new CodeToTest() {
+    expectAssertionError("expecting null or empty, but was:<[6]>").on(new CodeToTest() {
       public void run() {
         new ByteArrayAssert(array).isNullOrEmpty();
       }
@@ -58,7 +57,7 @@ public class ByteArrayAssert_isNullOrEmpty_Test implements GroupAssert_isNullOrE
 
   @Test
   public void should_fail_and_display_description_of_assertion_if_actual_has_content() {
-    expectAssertionError("[A Test] expecting a null or empty array, but was:<[6]>").on(new CodeToTest() {
+    expectAssertionError("[A Test] expecting null or empty, but was:<[6]>").on(new CodeToTest() {
       public void run() {
         new ByteArrayAssert(array).as("A Test")
                                   .isNullOrEmpty();

@@ -15,13 +15,8 @@
 package org.fest.assertions;
 
 import static org.fest.assertions.ArrayFactory.longArray;
-import static org.fest.assertions.CommonFailures.*;
-import static org.fest.assertions.EmptyArrays.emptyLongArray;
-import static org.fest.test.ExpectedFailure.expectAssertionError;
 
-import org.fest.test.CodeToTest;
 import org.junit.BeforeClass;
-import org.junit.Test;
 
 /**
  * Tests for <code>{@link LongArrayAssert#isEmpty()}</code>.
@@ -29,76 +24,26 @@ import org.junit.Test;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class LongArrayAssert_isEmpty_Test implements GroupAssert_isEmpty_TestCase {
+public class LongArrayAssert_isEmpty_Test extends GroupAssert_isEmpty_TestCase<long[]> {
 
-  private static long[] array;
+  private static long[] empty;
+  private static long[] notEmpty;
 
   @BeforeClass
   public static void setUpOnce() {
-    array = longArray(6, 8);
+    empty = new long[0];
+    notEmpty = longArray(6, 8);
   }
 
-  @Test
-  public void should_pass_if_actual_is_empty() {
-    new LongArrayAssert(emptyLongArray()).isEmpty();
+  protected LongArrayAssert assertionsFor(long[] actual) {
+    return new LongArrayAssert(actual);
   }
 
-  @Test
-  public void should_fail_if_actual_is_null() {
-    expectErrorIfActualArrayIsNull(new CodeToTest() {
-      public void run() {
-        new LongArrayAssert(null).isEmpty();
-      }
-    });
+  protected long[] emptyGroup() {
+    return empty;
   }
 
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_is_null() {
-    expectErrorWithDescriptionIfActualArrayIsNull(new CodeToTest() {
-      public void run() {
-        new LongArrayAssert(null).as("A Test")
-                                 .isEmpty();
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_if_actual_is_not_empty() {
-    expectAssertionError("expecting empty array, but was:<[6, 8]>").on(new CodeToTest() {
-      public void run() {
-        new LongArrayAssert(array).isEmpty();
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_is_not_empty() {
-    expectAssertionError("[A Test] expecting empty array, but was:<[6, 8]>").on(new CodeToTest() {
-      public void run() {
-        new LongArrayAssert(array).as("A Test")
-                                  .isEmpty();
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_if_actual_is_not_empty() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new LongArrayAssert(array).overridingErrorMessage("My custom message")
-                                  .isEmpty();
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_is_not_empty() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new LongArrayAssert(array).as("A Test")
-                                  .overridingErrorMessage("My custom message")
-                                  .isEmpty();
-      }
-    });
+  protected long[] notEmptyGroup() {
+    return notEmpty;
   }
 }

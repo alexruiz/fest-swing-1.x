@@ -1,15 +1,13 @@
 package org.fest.assertions;
 
 import static org.fest.assertions.Assertions.assertThat;
-import static org.fest.assertions.CommonFailures.expectErrorIfActualListIsNull;
+import static org.fest.assertions.CommonFailures.expectErrorIfActualIsNull;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 import org.fest.test.CodeToTest;
 import org.fest.util.IntrospectionError;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 
 public class ListAssert_onProperty_Test implements Assert_onProperty_Test {
 
@@ -143,7 +141,7 @@ public class ListAssert_onProperty_Test implements Assert_onProperty_Test {
       assertThat(friends).onProperty("homeTown").contains("Paris", "Rome", "Londres", "Madrid");
     } catch (AssertionError e) {
       assertThat(e).hasMessage(
-          "list:<['Paris', 'Madrid', 'London', 'Roma']> does not contain element(s):<['Rome', 'Londres']>");
+          "<['Paris', 'Madrid', 'London', 'Roma']> does not contain element(s):<['Rome', 'Londres']>");
     }
   }
 
@@ -153,7 +151,7 @@ public class ListAssert_onProperty_Test implements Assert_onProperty_Test {
     try {
       assertThat(friends).onProperty("name.firstName").contains("Jack", "Pier", "TOTO", "Paula");
     } catch (AssertionError e) {
-      assertThat(e).hasMessage("list:<['Pier', 'Paula', 'Jack', 'Jack']> does not contain element(s):<['TOTO']>");
+      assertThat(e).hasMessage("<['Pier', 'Paula', 'Jack', 'Jack']> does not contain element(s):<['TOTO']>");
     }
   }
 
@@ -162,7 +160,7 @@ public class ListAssert_onProperty_Test implements Assert_onProperty_Test {
     try {
       assertThat(friends).onProperty("title").contains(Title.Mr, Title.Ms);
     } catch (AssertionError e) {
-      assertThat(e).hasMessage("list:<[Mr, Miss, Mr, Mr]> does not contain element(s):<[Ms]>");
+      assertThat(e).hasMessage("<[Mr, Miss, Mr, Mr]> does not contain element(s):<[Ms]>");
     }
   }
 
@@ -172,7 +170,7 @@ public class ListAssert_onProperty_Test implements Assert_onProperty_Test {
     try {
       assertThat(friends).onProperty("father.title").contains(Title.Miss);
     } catch (AssertionError e) {
-      assertThat(e).hasMessage("list:<[Mr, Mr, Mr, Mr]> does not contain element(s):<[Miss]>");
+      assertThat(e).hasMessage("<[Mr, Mr, Mr, Mr]> does not contain element(s):<[Miss]>");
     }
   }
 
@@ -182,7 +180,7 @@ public class ListAssert_onProperty_Test implements Assert_onProperty_Test {
     try {
       assertThat(friends).onProperty("age").contains(777);
     } catch (AssertionError e) {
-      assertThat(e).hasMessage("list:<[25, 32, 16, 44]> does not contain element(s):<[777]>");
+      assertThat(e).hasMessage("<[25, 32, 16, 44]> does not contain element(s):<[777]>");
     }
   }
 
@@ -192,7 +190,7 @@ public class ListAssert_onProperty_Test implements Assert_onProperty_Test {
     try {
       assertThat(friends).onProperty("father.age").contains(888);
     } catch (AssertionError e) {
-      assertThat(e).hasMessage("list:<[55, 62, 46, 74]> does not contain element(s):<[888]>");
+      assertThat(e).hasMessage("<[55, 62, 46, 74]> does not contain element(s):<[888]>");
     }
   }
 
@@ -240,7 +238,7 @@ public class ListAssert_onProperty_Test implements Assert_onProperty_Test {
 
   @Test
   public void should_fail_if_actual_is_null() {
-    expectErrorIfActualListIsNull(new CodeToTest() {
+    expectErrorIfActualIsNull(new CodeToTest() {
       public void run() {
         new ListAssert(null).onProperty("homeTown").contains("Paris", "Roma", "London", "Madrid");
       }

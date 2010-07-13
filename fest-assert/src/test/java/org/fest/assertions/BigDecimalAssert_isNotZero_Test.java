@@ -14,14 +14,12 @@
  */
 package org.fest.assertions;
 
+import static java.math.BigDecimal.*;
+import static org.fest.assertions.CommonFailures.*;
+import static org.fest.test.ExpectedFailure.expectAssertionError;
+
 import org.fest.test.CodeToTest;
 import org.junit.Test;
-
-import static java.math.BigDecimal.ONE;
-import static java.math.BigDecimal.ZERO;
-import static org.fest.assertions.CommonFailures.expectErrorIfActualIsNull;
-import static org.fest.assertions.CommonFailures.expectErrorWithDescriptionIfActualIsNull;
-import static org.fest.test.ExpectedFailure.expectAssertionError;
 
 /**
  * Tests for <code>{@link org.fest.assertions.BigDecimalAssert#isNotZero()}</code>.

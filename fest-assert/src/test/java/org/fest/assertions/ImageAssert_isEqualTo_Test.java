@@ -14,8 +14,7 @@
  */
 package org.fest.assertions;
 
-import static java.awt.Color.BLUE;
-import static java.awt.Color.YELLOW;
+import static java.awt.Color.*;
 import static org.fest.assertions.Images.*;
 import static org.fest.test.ExpectedFailure.expectAssertionError;
 import static org.fest.util.Strings.concat;

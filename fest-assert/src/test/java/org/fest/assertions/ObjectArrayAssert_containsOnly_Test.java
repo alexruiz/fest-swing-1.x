@@ -14,13 +14,13 @@
  */
 package org.fest.assertions;
 
+import static org.fest.assertions.ArrayFactory.objectArray;
 import static org.fest.assertions.CommonFailures.*;
 import static org.fest.assertions.EmptyArrays.emptyObjectArray;
-import static org.fest.assertions.ArrayFactory.objectArray;
 import static org.fest.test.ExpectedFailure.expectAssertionError;
+
 import org.fest.test.CodeToTest;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Tests for <code>{@link ObjectArrayAssert#containsOnly(Object...)}</code>.
@@ -49,7 +49,7 @@ public class ObjectArrayAssert_containsOnly_Test implements GroupAssert_contains
 
   @Test
   public void should_fail_if_actual_is_null() {
-    expectErrorIfActualArrayIsNull(new CodeToTest() {
+    expectErrorIfActualIsNull(new CodeToTest() {
       public void run() {
         Object[] actual = null;
         new ObjectArrayAssert(actual).containsOnly(objectArray(10, 2));
@@ -59,7 +59,7 @@ public class ObjectArrayAssert_containsOnly_Test implements GroupAssert_contains
 
   @Test
   public void should_fail_and_display_description_of_assertion_if_actual_is_null() {
-    expectErrorWithDescriptionIfActualArrayIsNull(new CodeToTest() {
+    expectErrorWithDescriptionIfActualIsNull(new CodeToTest() {
       public void run() {
         Object[] actual = null;
         new ObjectArrayAssert(actual).as("A Test")
@@ -71,7 +71,7 @@ public class ObjectArrayAssert_containsOnly_Test implements GroupAssert_contains
 
   @Test
   public void should_throw_error_if_expected_is_null() {
-    expectNullPointerException("the given array of objects should not be null").on(new CodeToTest() {
+    expectNullPointerException("The given array should not be null").on(new CodeToTest() {
       public void run() {
         Object[] expected = null;
         new ObjectArrayAssert(emptyObjectArray()).containsOnly(expected);
@@ -81,7 +81,7 @@ public class ObjectArrayAssert_containsOnly_Test implements GroupAssert_contains
 
   @Test
   public void should_throw_error_and_display_description_of_assertion_if_expected_is_null() {
-    expectNullPointerException("[A Test] the given array of objects should not be null").on(new CodeToTest() {
+    expectNullPointerException("[A Test] The given array should not be null").on(new CodeToTest() {
       public void run() {
         Object[] expected = null;
         new ObjectArrayAssert(emptyObjectArray()).as("A Test")
@@ -92,7 +92,7 @@ public class ObjectArrayAssert_containsOnly_Test implements GroupAssert_contains
 
   @Test
   public void should_fail_if_actual_is_empty_and_expecting_at_least_one_element() {
-    expectAssertionError("array:<[]> does not contain element(s):<[10, 2]>").on(new CodeToTest() {
+    expectAssertionError("<[]> does not contain element(s):<[10, 2]>").on(new CodeToTest() {
       public void run() {
         new ObjectArrayAssert(emptyObjectArray()).containsOnly(objectArray(10, 2));
       }
@@ -101,7 +101,7 @@ public class ObjectArrayAssert_containsOnly_Test implements GroupAssert_contains
 
   @Test
   public void should_fail_and_display_description_of_assertion_if_actual_is_empty_and_expecting_at_least_one_element() {
-    expectAssertionError("[A Test] array:<[]> does not contain element(s):<[10, 2]>").on(new CodeToTest() {
+    expectAssertionError("[A Test] <[]> does not contain element(s):<[10, 2]>").on(new CodeToTest() {
       public void run() {
         new ObjectArrayAssert(emptyObjectArray()).as("A Test")
                                                  .containsOnly(objectArray(10, 2));
@@ -132,7 +132,7 @@ public class ObjectArrayAssert_containsOnly_Test implements GroupAssert_contains
 
   @Test
   public void should_fail_if_actual_contains_unexpected_values() {
-    expectAssertionError("unexpected element(s):<[8]> in array:<[6, 8]>").on(new CodeToTest() {
+    expectAssertionError("unexpected element(s):<[8]> in <[6, 8]>").on(new CodeToTest() {
       public void run() {
         new ObjectArrayAssert(array).containsOnly(objectArray(6));
       }
@@ -141,7 +141,7 @@ public class ObjectArrayAssert_containsOnly_Test implements GroupAssert_contains
 
   @Test
   public void should_fail_and_display_description_of_assertion_if_actual_contains_unexpected_values() {
-    expectAssertionError("[A Test] unexpected element(s):<[8]> in array:<[6, 8]>").on(new CodeToTest() {
+    expectAssertionError("[A Test] unexpected element(s):<[8]> in <[6, 8]>").on(new CodeToTest() {
       public void run() {
         new ObjectArrayAssert(array).as("A Test")
                                     .containsOnly(objectArray(6));
@@ -172,7 +172,7 @@ public class ObjectArrayAssert_containsOnly_Test implements GroupAssert_contains
 
   @Test
   public void should_fail_if_actual_does_not_contain_all_the_expected_values() {
-    expectAssertionError("array:<[6, 8]> does not contain element(s):<[10]>").on(new CodeToTest() {
+    expectAssertionError("<[6, 8]> does not contain element(s):<[10]>").on(new CodeToTest() {
       public void run() {
         new ObjectArrayAssert(array).containsOnly(objectArray(10));
       }
@@ -181,7 +181,7 @@ public class ObjectArrayAssert_containsOnly_Test implements GroupAssert_contains
 
   @Test
   public void should_fail_and_display_description_of_assertion_if_actual_does_not_contain_all_the_expected_values() {
-    expectAssertionError("[A Test] array:<[6, 8]> does not contain element(s):<[10]>").on(new CodeToTest() {
+    expectAssertionError("[A Test] <[6, 8]> does not contain element(s):<[10]>").on(new CodeToTest() {
       public void run() {
         new ObjectArrayAssert(array).as("A Test")
                                     .containsOnly(objectArray(10));

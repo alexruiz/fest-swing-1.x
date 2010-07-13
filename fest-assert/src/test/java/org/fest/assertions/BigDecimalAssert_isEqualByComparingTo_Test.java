@@ -16,15 +16,14 @@ package org.fest.assertions;
 
 import static java.math.BigDecimal.ZERO;
 import static org.fest.assertions.BigDecimals.eight;
-import static org.fest.assertions.BigDecimals.seven;
-import static org.fest.assertions.CommonFailures.expectErrorIfActualIsNull;
-import static org.fest.assertions.CommonFailures.expectErrorWithDescriptionIfActualIsNull;
+import static org.fest.assertions.CommonFailures.*;
+import static org.fest.assertions.FailureMessages.unexpectedNotEqual;
 import static org.fest.test.ExpectedFailure.expectAssertionError;
 
 import java.math.BigDecimal;
 
 import org.fest.test.CodeToTest;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Tests for <code>{@link BigDecimalAssert#isEqualByComparingTo(BigDecimal)}</code>.
@@ -36,16 +35,25 @@ import org.junit.Test;
  */
 public class BigDecimalAssert_isEqualByComparingTo_Test {
 
+  private static BigDecimal actual;
+  private static BigDecimal other;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    actual = eight();
+    other = ZERO;
+  }
+
   @Test
   public void should_pass_if_values_are_equal() {
-    new BigDecimalAssert(eight()).isEqualByComparingTo(eight());
+    new BigDecimalAssert(actual).isEqualByComparingTo(actual);
   }
 
   @Test
   public void should_fail_if_actual_is_null() {
     expectErrorIfActualIsNull(new CodeToTest() {
       public void run() {
-        new BigDecimalAssert(null).isEqualByComparingTo(eight());
+        new BigDecimalAssert(null).isEqualByComparingTo(actual);
       }
     });
   }
@@ -55,26 +63,26 @@ public class BigDecimalAssert_isEqualByComparingTo_Test {
     expectErrorWithDescriptionIfActualIsNull(new CodeToTest() {
       public void run() {
         new BigDecimalAssert(null).as("A Test")
-                                  .isEqualByComparingTo(eight());
+                                  .isEqualByComparingTo(actual);
       }
     });
   }
 
   @Test
   public void should_fail_if_values_are_not_equal() {
-    expectAssertionError("expected:<7.0> but was:<8.0>").on(new CodeToTest() {
+    expectAssertionError(unexpectedNotEqual(actual, other)).on(new CodeToTest() {
       public void run() {
-        new BigDecimalAssert(eight()).isEqualByComparingTo(seven());
+        new BigDecimalAssert(actual).isEqualByComparingTo(other);
       }
     });
   }
 
   @Test
   public void should_fail_and_display_description_of_assertion_if_values_are_not_equal() {
-    expectAssertionError("[A Test] expected:<7.0> but was:<8.0>").on(new CodeToTest() {
+    expectAssertionError(unexpectedNotEqual("A Test", actual, other)).on(new CodeToTest() {
       public void run() {
-        new BigDecimalAssert(eight()).as("A Test")
-                                     .isEqualByComparingTo(seven());
+        new BigDecimalAssert(actual).as("A Test")
+                                    .isEqualByComparingTo(other);
       }
     });
   }
@@ -83,8 +91,8 @@ public class BigDecimalAssert_isEqualByComparingTo_Test {
   public void should_fail_with_custom_message_if_values_are_not_equal() {
     expectAssertionError("My custom message").on(new CodeToTest() {
       public void run() {
-        new BigDecimalAssert(ZERO).overridingErrorMessage("My custom message")
-                                  .isNotZero();
+        new BigDecimalAssert(actual).overridingErrorMessage("My custom message")
+                                    .isEqualByComparingTo(other);
       }
     });
   }
@@ -93,9 +101,9 @@ public class BigDecimalAssert_isEqualByComparingTo_Test {
   public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_is_zero() {
     expectAssertionError("My custom message").on(new CodeToTest() {
       public void run() {
-        new BigDecimalAssert(ZERO).as("A Test")
-                                  .overridingErrorMessage("My custom message")
-                                  .isNotZero();
+        new BigDecimalAssert(actual).as("A Test")
+                                    .overridingErrorMessage("My custom message")
+                                    .isEqualByComparingTo(other);
       }
     });
   }

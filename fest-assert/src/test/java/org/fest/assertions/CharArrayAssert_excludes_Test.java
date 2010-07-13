@@ -14,12 +14,10 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.ArrayFactory.charArray;
 import static org.fest.assertions.CommonFailures.*;
 import static org.fest.test.ExpectedFailure.expectAssertionError;
 
 import org.fest.test.CodeToTest;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 /**
@@ -30,26 +28,19 @@ import org.junit.Test;
  */
 public class CharArrayAssert_excludes_Test implements GroupAssert_excludes_TestCase {
 
-  private static char[] array;
-
-  @BeforeClass
-  public static void setUpOnce() {
-    array = charArray('a', 'b');
-  }
-
   @Test
   public void should_pass_if_actual_excludes_given_value() {
-    new CharArrayAssert(array).excludes('c');
+    new CharArrayAssert('a', 'b').excludes('c');
   }
 
   @Test
   public void should_pass_if_actual_excludes_given_values() {
-    new CharArrayAssert(array).excludes('c', 'd');
+    new CharArrayAssert('a', 'b').excludes('c', 'd');
   }
 
   @Test
   public void should_fail_if_actual_is_null() {
-    expectErrorIfActualArrayIsNull(new CodeToTest() {
+    expectErrorIfActualIsNull(new CodeToTest() {
       public void run() {
         new CharArrayAssert(null).excludes('a', 'b');
       }
@@ -58,7 +49,7 @@ public class CharArrayAssert_excludes_Test implements GroupAssert_excludes_TestC
 
   @Test
   public void should_fail_and_display_description_of_assertion_if_actual_is_null() {
-    expectErrorWithDescriptionIfActualArrayIsNull(new CodeToTest() {
+    expectErrorWithDescriptionIfActualIsNull(new CodeToTest() {
       public void run() {
         new CharArrayAssert(null).as("A Test")
                                  .excludes('a', 'b');
@@ -68,38 +59,38 @@ public class CharArrayAssert_excludes_Test implements GroupAssert_excludes_TestC
 
   @Test
   public void should_throw_error_if_expected_is_null() {
-    expectNullPointerException("the given array of chars should not be null").on(new CodeToTest() {
+    expectNullPointerException("The given array should not be null").on(new CodeToTest() {
       public void run() {
-        new CharArrayAssert(array).excludes(null);
+        new CharArrayAssert('a', 'b').excludes(null);
       }
     });
   }
 
   @Test
   public void should_throw_error_and_display_description_of_assertion_if_expected_is_null() {
-    expectNullPointerException("[A Test] the given array of chars should not be null").on(new CodeToTest() {
+    expectNullPointerException("[A Test] The given array should not be null").on(new CodeToTest() {
       public void run() {
-        new CharArrayAssert(array).as("A Test")
-                                  .excludes(null);
+        new CharArrayAssert('a', 'b').as("A Test")
+                                     .excludes(null);
       }
     });
   }
 
   @Test
   public void should_fail_if_actual_contains_given_values() {
-    expectAssertionError("array:<[a, b]> does not exclude element(s):<[a]>").on(new CodeToTest() {
+    expectAssertionError("<[a, b]> does not exclude element(s):<[a]>").on(new CodeToTest() {
       public void run() {
-        new CharArrayAssert(array).excludes('a');
+        new CharArrayAssert('a', 'b').excludes('a');
       }
     });
   }
 
   @Test
   public void should_fail_and_display_description_of_assertion_if_actual_contains_given_values() {
-    expectAssertionError("[A Test] array:<[a, b]> does not exclude element(s):<[a]>").on(new CodeToTest() {
+    expectAssertionError("[A Test] <[a, b]> does not exclude element(s):<[a]>").on(new CodeToTest() {
       public void run() {
-        new CharArrayAssert(array).as("A Test")
-                                  .excludes('a');
+        new CharArrayAssert('a', 'b').as("A Test")
+                                     .excludes('a');
       }
     });
   }
@@ -108,8 +99,8 @@ public class CharArrayAssert_excludes_Test implements GroupAssert_excludes_TestC
   public void should_fail_with_custom_message_if_actual_contains_given_values() {
     expectAssertionError("My custom message").on(new CodeToTest() {
       public void run() {
-        new CharArrayAssert(array).overridingErrorMessage("My custom message")
-                                  .excludes('a');
+        new CharArrayAssert('a', 'b').overridingErrorMessage("My custom message")
+                                     .excludes('a');
       }
     });
   }
@@ -118,9 +109,9 @@ public class CharArrayAssert_excludes_Test implements GroupAssert_excludes_TestC
   public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_contains_given_values() {
     expectAssertionError("My custom message").on(new CodeToTest() {
       public void run() {
-        new CharArrayAssert(array).as("A Test")
-                                  .overridingErrorMessage("My custom message")
-                                  .excludes('a');
+        new CharArrayAssert('a', 'b').as("A Test")
+                                     .overridingErrorMessage("My custom message")
+                                     .excludes('a');
       }
     });
   }

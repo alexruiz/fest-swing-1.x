@@ -23,8 +23,7 @@ import java.util.Map;
 
 import org.fest.assertions.MapAssert.Entry;
 import org.fest.test.CodeToTest;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Tests for <code>{@link MapAssert#includes(Entry...)}</code>.
@@ -41,7 +40,7 @@ public class MapAssert_includes_Test {
   public static void setUpOnce() {
     map = map(entry("key1", 1), entry("key2", 2));
   }
-  
+
   @Test
   public void should_pass_if_actual_contains_entry() {
     new MapAssert(map).includes(entry("key1", 1));
@@ -75,7 +74,7 @@ public class MapAssert_includes_Test {
 
   @Test
   public void should_fail_if_actual_is_null() {
-    expectErrorIfActualMapIsNull(new CodeToTest() {
+    expectErrorIfActualIsNull(new CodeToTest() {
       public void run() {
         new MapAssert(null).includes(entry("key6", 6));
       }
@@ -84,7 +83,7 @@ public class MapAssert_includes_Test {
 
   @Test
   public void should_fail_and_display_description_of_assertion_if_actual_is_null() {
-    expectErrorWithDescriptionIfActualMapIsNull(new CodeToTest() {
+    expectErrorWithDescriptionIfActualIsNull(new CodeToTest() {
       public void run() {
         new MapAssert(null).as("A Test")
                            .includes(entry("key6", 6));
@@ -142,7 +141,7 @@ public class MapAssert_includes_Test {
       }
     });
   }
-  
+
   @Test
   public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_does_not_include_entry() {
     expectAssertionError("My custom message").on(new CodeToTest() {
@@ -153,7 +152,7 @@ public class MapAssert_includes_Test {
       }
     });
   }
-  
+
   @Test
   public void should_fail_if_actual_does_not_include_entries() {
     String message = "the map:<{'key1'=1, 'key2'=2}> does not contain the entries:<['key6'=6, 'key8'=8]>";
@@ -184,7 +183,7 @@ public class MapAssert_includes_Test {
       }
     });
   }
-  
+
   @Test
   public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_does_not_include_entries() {
     expectAssertionError("My custom message").on(new CodeToTest() {
@@ -195,7 +194,7 @@ public class MapAssert_includes_Test {
       }
     });
   }
-  
+
   @Test
   public void should_fail_if_entry_contains_existing_value_but_not_existing_key() {
     expectAssertionError("the map:<{'key1'=1, 'key2'=2}> does not contain the entry:<['key1'=6]>").on(new CodeToTest() {

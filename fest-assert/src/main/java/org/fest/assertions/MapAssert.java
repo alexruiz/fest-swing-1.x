@@ -15,15 +15,9 @@
 package org.fest.assertions;
 
 import static org.fest.assertions.Formatting.inBrackets;
-import static org.fest.util.Strings.concat;
-import static org.fest.util.Strings.quote;
+import static org.fest.util.Strings.*;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-
-import org.fest.util.Maps;
+import java.util.*;
 
 /**
  * Understands assertions for <code>{@link Map}</code>s. To create a new instance of this class use the method
@@ -197,27 +191,6 @@ public class MapAssert extends GroupAssert<Map<?, ?>> {
           "expected size:", inBrackets(expected)," but was:", inBrackets(actualSize), " for map:", inBrackets(actual)));
   }
 
-  /**
-   * Verifies that the actual <code>{@link Map}</code> is <code>null</code> or empty.
-   * @throws AssertionError if the actual <code>Map</code> is not <code>null</code> or not empty.
-   */
-  public final void isNullOrEmpty() {
-    if (Maps.isEmpty(actual)) return;
-    failIfCustomMessageIsSet();
-    fail(concat("expecting a null or empty map, but was:", formattedActual()));
-  }
-
-  /**
-   * Verifies that the actual <code>{@link Map}</code> is empty.
-   * @throws AssertionError if the actual <code>Map</code> is <code>null</code> or not empty.
-   */
-  public void isEmpty() {
-    isNotNull();
-    if (actual.isEmpty()) return;
-    failIfCustomMessageIsSet();
-    fail(concat("expecting empty map, but was:", formattedActual()));
-  }
-
   private String formattedActual() {
     return inBrackets(actual);
   }
@@ -239,10 +212,8 @@ public class MapAssert extends GroupAssert<Map<?, ?>> {
    * @throws AssertionError if the actual <code>Map</code> is empty.
    */
   public MapAssert isNotEmpty() {
-    isNotNull();
-    if (!actual.isEmpty()) return this;
-    failIfCustomMessageIsSet();
-    throw failure("expecting non-empty map, but it was empty");
+    assertIsNotEmpty();
+    return this;
   }
 
   /**
@@ -262,7 +233,7 @@ public class MapAssert extends GroupAssert<Map<?, ?>> {
    * @throws AssertionError if the actual <code>Map</code> is <code>null</code>.
    */
   public MapAssert isNotNull() {
-    if (actual == null) fail("expecting actual map not to be null");
+    assertNotNull();
     return this;
   }
 

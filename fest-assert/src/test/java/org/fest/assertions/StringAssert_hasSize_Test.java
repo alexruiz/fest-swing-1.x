@@ -14,8 +14,7 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.CommonFailures.expectErrorIfActualIsNull;
-import static org.fest.assertions.CommonFailures.expectErrorWithDescriptionIfActualIsNull;
+import static org.fest.assertions.CommonFailures.*;
 import static org.fest.test.ExpectedFailure.expectAssertionError;
 
 import org.fest.test.CodeToTest;
@@ -56,7 +55,7 @@ public class StringAssert_hasSize_Test implements Assert_hasSize_TestCase {
 
   @Test
   public void should_fail_if_actual_does_not_have_expected_size() {
-    expectAssertionError("expected size:<2> but was:<5> for String:<'Vader'>").on(new CodeToTest() {
+    expectAssertionError("expected size:<2> but was:<5> for <'Vader'>").on(new CodeToTest() {
       public void run() {
         new StringAssert("Vader").hasSize(2);
       }
@@ -65,7 +64,7 @@ public class StringAssert_hasSize_Test implements Assert_hasSize_TestCase {
 
   @Test
   public void should_fail_and_display_description_of_assertion_if_actual_does_not_have_expected_size() {
-    expectAssertionError("[A Test] expected size:<2> but was:<5> for String:<'Vader'>").on(new CodeToTest() {
+    expectAssertionError("[A Test] expected size:<2> but was:<5> for <'Vader'>").on(new CodeToTest() {
       public void run() {
         new StringAssert("Vader").as("A Test")
                                  .hasSize(2);

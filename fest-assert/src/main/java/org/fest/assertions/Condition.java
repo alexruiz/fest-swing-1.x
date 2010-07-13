@@ -15,8 +15,7 @@
  */
 package org.fest.assertions;
 
-import static org.fest.util.Strings.concat;
-import static org.fest.util.Strings.isEmpty;
+import static org.fest.util.Strings.*;
 
 /**
  * Understands a condition to be met by a given <code>{@link Object}</code>.

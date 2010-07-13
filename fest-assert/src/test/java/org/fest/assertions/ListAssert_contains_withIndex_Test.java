@@ -24,8 +24,7 @@ import static org.fest.util.Collections.list;
 import java.util.List;
 
 import org.fest.test.CodeToTest;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Tests for <code>{@link ListAssert#contains(Object, Index)}</code>.
@@ -40,7 +39,7 @@ public class ListAssert_contains_withIndex_Test {
   public static void setUpOnce() {
     list = list("Anakin", "Leia");
   }
-  
+
   @Test
   public void should_pass_if_actual_contains_Object_at_index() {
     new ListAssert(list).contains("Anakin", atIndex(0))
@@ -92,7 +91,7 @@ public class ListAssert_contains_withIndex_Test {
 
   @Test
   public void should_fail_if_actual_is_null() {
-    expectErrorIfActualListIsNull(new CodeToTest() {
+    expectErrorIfActualIsNull(new CodeToTest() {
       public void run() {
         new ListAssert(null).contains("Anakin", atIndex(0));
       }
@@ -101,7 +100,7 @@ public class ListAssert_contains_withIndex_Test {
 
   @Test
   public void should_fail_and_display_description_of_assertion_if_actual_is_null() {
-    expectErrorWithDescriptionIfActualListIsNull(new CodeToTest() {
+    expectErrorWithDescriptionIfActualIsNull(new CodeToTest() {
       public void run() {
         new ListAssert(null).as("A Test")
                             .contains("Anakin", atIndex(0));
@@ -111,7 +110,7 @@ public class ListAssert_contains_withIndex_Test {
 
   @Test
   public void should_fail_if_actual_is_empty() {
-    expectAssertionError("expecting a non-empty list, but it was empty").on(new CodeToTest() {
+    expectAssertionError("expecting non-empty, but it was empty").on(new CodeToTest() {
       public void run() {
         new ListAssert(emptyList()).contains("Anakin", atIndex(3));
       }
@@ -120,7 +119,7 @@ public class ListAssert_contains_withIndex_Test {
 
   @Test
   public void should_fail_and_display_description_of_assertion_if_actual_is_empty() {
-    expectAssertionError("[A Test] expecting a non-empty list, but it was empty").on(new CodeToTest() {
+    expectAssertionError("[A Test] expecting non-empty, but it was empty").on(new CodeToTest() {
       public void run() {
         new ListAssert(emptyList()).as("A Test")
                                    .contains("Anakin", atIndex(3));
@@ -137,7 +136,7 @@ public class ListAssert_contains_withIndex_Test {
       }
     });
   }
-  
+
   @Test
   public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_is_empty() {
     expectAssertionError("My custom message").on(new CodeToTest() {
@@ -148,7 +147,7 @@ public class ListAssert_contains_withIndex_Test {
       }
     });
   }
-  
+
   @Test
   public void should_throw_error_if_index_value_is_equal_to_size_of_actual() {
     String message = "The index <2> should be greater than or equal to zero and less than 2";

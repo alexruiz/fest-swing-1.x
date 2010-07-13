@@ -15,8 +15,7 @@
  */
 package org.fest.assertions;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
+import static org.junit.Assert.*;
 
 import org.junit.Test;
 
@@ -30,17 +29,17 @@ public class ArrayInspection_sizeOf_Test {
   @Test
   public void should_throw_error_if_array_is_null() {
     try {
-      ArrayInspection.copy(null);
+      ArrayInspection.sizeOf(null);
       fail("Expecting NullPointerException");
     } catch (NullPointerException e) {
-      assertEquals("The array should not be null", e.getMessage());
+      assertEquals("The given array should not be null", e.getMessage());
     }
   }
 
   @Test
   public void should_throw_error_if_object_is_not_array() {
     try {
-      ArrayInspection.copy("Hello");
+      ArrayInspection.sizeOf("Hello");
       fail("Expecting IllegalArgumentException");
     } catch (IllegalArgumentException e) {
       assertEquals("The given object is not an array", e.getMessage());

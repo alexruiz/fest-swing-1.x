@@ -17,8 +17,6 @@ package org.fest.assertions;
 import static org.fest.assertions.Formatting.inBrackets;
 import static org.fest.util.Strings.concat;
 
-import org.fest.util.Strings;
-
 /**
  * Understands assertion methods for {@code String}s. To create a new instance of this class use the
  * method <code>{@link Assertions#assertThat(String)}</code>.
@@ -111,38 +109,13 @@ public class StringAssert extends GroupAssert<String> {
   }
 
   /**
-   * Verifies that the actual {@code String} is empty (not <code>null</code> with zero characters.)
-   * @throws AssertionError if the actual {@code String} is <code>null</code>.
-   * @throws AssertionError if the actual {@code String} is not empty.
-   */
-  public void isEmpty() {
-    isNotNull();
-    if (Strings.isEmpty(actual)) return;
-    failIfCustomMessageIsSet();
-    fail(concat("expecting empty String but was:", inBrackets(actual)));
-  }
-
-  /**
-   * Verifies that the actual {@code String} is <code>null</code> or empty.
-   * @throws AssertionError if the actual {@code String} is not <code>null</code> or not empty.
-   */
-  public final void isNullOrEmpty() {
-    if (Strings.isEmpty(actual)) return;
-    failIfCustomMessageIsSet();
-    fail(concat("expecting a null or empty String, but was:", inBrackets(actual)));
-  }
-
-  /**
    * Verifies that the actual {@code String} contains at least on character.
    * @return this assertion object.
-   * @throws AssertionError if the actual {@code String} is <code>null</code>.
    * @throws AssertionError if the actual {@code String} is <code>null</code> or empty.
    */
   public StringAssert isNotEmpty() {
-    isNotNull();
-    if (!Strings.isEmpty(actual)) return this;
-    failIfCustomMessageIsSet();
-    throw failure(concat("expecting a non-empty String, but it was empty"));
+    assertIsNotEmpty();
+    return this;
   }
 
   /**
@@ -221,11 +194,8 @@ public class StringAssert extends GroupAssert<String> {
    * @throws AssertionError if the number of characters of the actual {@code String} is not equal to the given one.
    */
   public StringAssert hasSize(int expected) {
-    int actualSize = actualGroupSize();
-    if (actualSize == expected) return this;
-    failIfCustomMessageIsSet();
-    throw failure(concat("expected size:", inBrackets(expected), " but was:", inBrackets(actualSize), " for String:",
-        actual()));
+    assertHasSize(expected);
+    return this;
   }
 
   /**

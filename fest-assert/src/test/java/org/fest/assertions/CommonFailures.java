@@ -45,38 +45,6 @@ public final class CommonFailures {
     expectNullPointerException("[A Test] expected type should not be null").on(codeToTest);
   }
 
-  public static void expectErrorIfActualArrayIsNull(CodeToTest codeToTest) {
-    expectAssertionError("expecting actual array not to be null").on(codeToTest);
-  }
-
-  public static void expectErrorWithDescriptionIfActualArrayIsNull(CodeToTest codeToTest) {
-    expectAssertionError("[A Test] expecting actual array not to be null").on(codeToTest);
-  }
-
-  public static void expectErrorIfActualCollectionIsNull(CodeToTest codeToTest) {
-    expectAssertionError("expecting actual collection not to be null").on(codeToTest);
-  }
-
-  public static void expectErrorWithDescriptionIfActualCollectionIsNull(CodeToTest codeToTest) {
-    expectAssertionError("[A Test] expecting actual collection not to be null").on(codeToTest);
-  }
-
-  public static void expectErrorIfActualListIsNull(CodeToTest codeToTest) {
-    expectAssertionError("expecting actual list not to be null").on(codeToTest);
-  }
-
-  public static void expectErrorWithDescriptionIfActualListIsNull(CodeToTest codeToTest) {
-    expectAssertionError("[A Test] expecting actual list not to be null").on(codeToTest);
-  }
-
-  public static void expectErrorIfActualMapIsNull(CodeToTest codeToTest) {
-    expectAssertionError("expecting actual map not to be null").on(codeToTest);
-  }
-
-  public static void expectErrorWithDescriptionIfActualMapIsNull(CodeToTest codeToTest) {
-    expectAssertionError("[A Test] expecting actual map not to be null").on(codeToTest);
-  }
-
   public static Message expectComparisonFailure(String message) {
     return expect(ComparisonFailure.class).withMessage(message);
   }

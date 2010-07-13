@@ -14,12 +14,10 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.CommonFailures.*;
+import static org.fest.assertions.ArrayFactory.objectArray;
 import static org.fest.assertions.EmptyArrays.emptyObjectArray;
-import static org.fest.test.ExpectedFailure.expectAssertionError;
 
-import org.fest.test.CodeToTest;
-import org.junit.Test;
+import org.junit.BeforeClass;
 
 /**
  * Tests for <code>{@link ObjectArrayAssert#isNotEmpty()}</code>.
@@ -27,71 +25,24 @@ import org.junit.Test;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class ObjectArrayAssert_isNotEmpty_Test implements GroupAssert_isNotEmpty_TestCase {
+public class ObjectArrayAssert_isNotEmpty_Test extends GroupAssert_isNotEmpty_TestCase<Object[]> {
 
-  @Test
-  public void should_pass_if_actual_is_not_empty() {
-    new ObjectArrayAssert(6, 8).isNotEmpty();
+  private static Object[] notEmpty;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    notEmpty = objectArray(6, 8);
   }
 
-  @Test
-  public void should_fail_if_actual_is_null() {
-    expectErrorIfActualArrayIsNull(new CodeToTest() {
-      public void run() {
-        Object[] actual = null;
-        new ObjectArrayAssert(actual).isNotEmpty();
-      }
-    });
+  protected ObjectArrayAssert assertionsFor(Object[] actual) {
+    return new ObjectArrayAssert(actual);
   }
 
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_is_null() {
-    expectErrorWithDescriptionIfActualArrayIsNull(new CodeToTest() {
-      public void run() {
-        Object[] actual = null;
-        new ObjectArrayAssert(actual).as("A Test")
-                                     .isNotEmpty();
-      }
-    });
+  protected Object[] emptyGroup() {
+    return emptyObjectArray();
   }
 
-  @Test
-  public void should_fail_if_actual_is_empty() {
-    expectAssertionError("expecting a non-empty array, but it was empty").on(new CodeToTest() {
-      public void run() {
-        new ObjectArrayAssert(emptyObjectArray()).isNotEmpty();
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_is_empty() {
-    expectAssertionError("[A Test] expecting a non-empty array, but it was empty").on(new CodeToTest() {
-      public void run() {
-        new ObjectArrayAssert(emptyObjectArray()).as("A Test")
-                                                 .isNotEmpty();
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_if_actual_is_empty() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new ObjectArrayAssert(emptyObjectArray()).overridingErrorMessage("My custom message")
-                                                 .isNotEmpty();
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_is_empty() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new ObjectArrayAssert(emptyObjectArray()).as("A Test")
-                                                 .overridingErrorMessage("My custom message")
-                                                 .isNotEmpty();
-      }
-    });
+  protected Object[] notEmptyGroup() {
+    return notEmpty;
   }
 }

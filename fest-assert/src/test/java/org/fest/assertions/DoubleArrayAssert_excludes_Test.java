@@ -19,8 +19,7 @@ import static org.fest.assertions.CommonFailures.*;
 import static org.fest.test.ExpectedFailure.expectAssertionError;
 
 import org.fest.test.CodeToTest;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Tests for <code>{@link DoubleArrayAssert#excludes(double...)}</code>.
@@ -49,7 +48,7 @@ public class DoubleArrayAssert_excludes_Test implements GroupAssert_excludes_Tes
 
   @Test
   public void should_fail_if_actual_is_null() {
-    expectErrorIfActualArrayIsNull(new CodeToTest() {
+    expectErrorIfActualIsNull(new CodeToTest() {
       public void run() {
         new DoubleArrayAssert(null).excludes(55.03, 4345.91);
       }
@@ -58,7 +57,7 @@ public class DoubleArrayAssert_excludes_Test implements GroupAssert_excludes_Tes
 
   @Test
   public void should_fail_and_display_description_of_assertion_if_actual_is_null() {
-    expectErrorWithDescriptionIfActualArrayIsNull(new CodeToTest() {
+    expectErrorWithDescriptionIfActualIsNull(new CodeToTest() {
       public void run() {
         new DoubleArrayAssert(null).as("A Test")
                                    .excludes(55.03, 4345.91);
@@ -68,7 +67,7 @@ public class DoubleArrayAssert_excludes_Test implements GroupAssert_excludes_Tes
 
   @Test
   public void should_throw_error_if_expected_is_null() {
-    expectNullPointerException("the given array of doubles should not be null").on(new CodeToTest() {
+    expectNullPointerException("The given array should not be null").on(new CodeToTest() {
       public void run() {
         new DoubleArrayAssert(array).excludes(null);
       }
@@ -77,7 +76,7 @@ public class DoubleArrayAssert_excludes_Test implements GroupAssert_excludes_Tes
 
   @Test
   public void should_throw_error_and_display_description_of_assertion_if_expected_is_null() {
-    expectNullPointerException("[A Test] the given array of doubles should not be null").on(new CodeToTest() {
+    expectNullPointerException("[A Test] The given array should not be null").on(new CodeToTest() {
       public void run() {
         new DoubleArrayAssert(array).as("A Test")
                                     .excludes(null);
@@ -87,7 +86,7 @@ public class DoubleArrayAssert_excludes_Test implements GroupAssert_excludes_Tes
 
   @Test
   public void should_fail_if_actual_contains_given_values() {
-    expectAssertionError("array:<[55.03, 4345.91]> does not exclude element(s):<[55.03]>").on(new CodeToTest() {
+    expectAssertionError("<[55.03, 4345.91]> does not exclude element(s):<[55.03]>").on(new CodeToTest() {
       public void run() {
         new DoubleArrayAssert(array).excludes(55.03);
       }
@@ -96,7 +95,7 @@ public class DoubleArrayAssert_excludes_Test implements GroupAssert_excludes_Tes
 
   @Test
   public void should_fail_and_display_description_of_assertion_if_actual_contains_given_values() {
-    String message = "[A Test] array:<[55.03, 4345.91]> does not exclude element(s):<[55.03]>";
+    String message = "[A Test] <[55.03, 4345.91]> does not exclude element(s):<[55.03]>";
     expectAssertionError(message).on(new CodeToTest() {
       public void run() {
         new DoubleArrayAssert(array).as("A Test")

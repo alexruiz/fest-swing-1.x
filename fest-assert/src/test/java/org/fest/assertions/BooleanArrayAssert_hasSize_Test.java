@@ -15,13 +15,11 @@
 package org.fest.assertions;
 
 import static org.fest.assertions.ArrayFactory.booleanArray;
-import static org.fest.assertions.CommonFailures.expectErrorIfActualArrayIsNull;
-import static org.fest.assertions.CommonFailures.expectErrorWithDescriptionIfActualArrayIsNull;
+import static org.fest.assertions.CommonFailures.*;
 import static org.fest.test.ExpectedFailure.expectAssertionError;
 
 import org.fest.test.CodeToTest;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Tests for <code>{@link BooleanArrayAssert#hasSize(int)}</code>.
@@ -31,21 +29,28 @@ import org.junit.Test;
  */
 public class BooleanArrayAssert_hasSize_Test implements Assert_hasSize_TestCase {
 
-  private static boolean[] array;
+  private static boolean[] actual;
 
   @BeforeClass
   public static void setUpOnce() {
-    array = booleanArray(true, false, true);
+    actual = booleanArray(true, false, true);
+  }
+
+  private BooleanArrayAssert assertions;
+
+  @Before
+  public void setUp() {
+    assertions = new BooleanArrayAssert(actual);
   }
 
   @Test
   public void should_pass_if_actual_has_expected_size() {
-    new BooleanArrayAssert(array).hasSize(3);
+    assertions.hasSize(3);
   }
 
   @Test
   public void should_fail_if_actual_is_null() {
-    expectErrorIfActualArrayIsNull(new CodeToTest() {
+    expectErrorIfActualIsNull(new CodeToTest() {
       public void run() {
         new BooleanArrayAssert(null).hasSize(2);
       }
@@ -54,28 +59,29 @@ public class BooleanArrayAssert_hasSize_Test implements Assert_hasSize_TestCase 
 
   @Test
   public void should_fail_and_display_description_of_assertion_if_actual_is_null() {
-    expectErrorWithDescriptionIfActualArrayIsNull(new CodeToTest() {
+    expectErrorWithDescriptionIfActualIsNull(new CodeToTest() {
       public void run() {
-        new BooleanArrayAssert(null).as("A Test").hasSize(2);
+        new BooleanArrayAssert(null).as("A Test")
+                                    .hasSize(2);
       }
     });
   }
 
   @Test
   public void should_fail_if_actual_does_not_have_expected_size() {
-    expectAssertionError("expected size:<2> but was:<3> for array:<[true, false, true]>").on(new CodeToTest() {
+    expectAssertionError("expected size:<2> but was:<3> for <[true, false, true]>").on(new CodeToTest() {
       public void run() {
-        new BooleanArrayAssert(array).hasSize(2);
+        assertions.hasSize(2);
       }
     });
   }
 
   @Test
   public void should_fail_and_display_description_of_assertion_if_actual_does_not_have_expected_size() {
-    expectAssertionError("[A Test] expected size:<2> but was:<3> for array:<[true, false, true]>").on(new CodeToTest() {
+    expectAssertionError("[A Test] expected size:<2> but was:<3> for <[true, false, true]>").on(new CodeToTest() {
       public void run() {
-        new BooleanArrayAssert(array).as("A Test")
-                                     .hasSize(2);
+        assertions.as("A Test")
+                  .hasSize(2);
       }
     });
   }
@@ -84,8 +90,8 @@ public class BooleanArrayAssert_hasSize_Test implements Assert_hasSize_TestCase 
   public void should_fail_with_custom_message_if_actual_does_not_have_expected_size() {
     expectAssertionError("My custom message").on(new CodeToTest() {
       public void run() {
-        new BooleanArrayAssert(array).overridingErrorMessage("My custom message")
-                                     .hasSize(2);
+        assertions.overridingErrorMessage("My custom message")
+                  .hasSize(2);
       }
     });
   }
@@ -94,9 +100,9 @@ public class BooleanArrayAssert_hasSize_Test implements Assert_hasSize_TestCase 
   public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_does_not_have_expected_size() {
     expectAssertionError("My custom message").on(new CodeToTest() {
       public void run() {
-        new BooleanArrayAssert(array).as("A Test")
-                                     .overridingErrorMessage("My custom message")
-                                     .hasSize(2);
+        assertions.as("A Test")
+                  .overridingErrorMessage("My custom message")
+                  .hasSize(2);
       }
     });
   }

@@ -15,8 +15,7 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.Formatting.createMessageFrom;
-import static org.fest.assertions.Formatting.inBrackets;
+import static org.fest.assertions.Formatting.*;
 import static org.fest.util.Arrays.array;
 import static org.fest.util.Strings.concat;
 

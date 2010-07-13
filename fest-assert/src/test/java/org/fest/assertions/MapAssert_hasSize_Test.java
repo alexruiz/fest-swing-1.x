@@ -14,17 +14,15 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.CommonFailures.expectErrorIfActualMapIsNull;
-import static org.fest.assertions.CommonFailures.expectErrorWithDescriptionIfActualMapIsNull;
+import static org.fest.assertions.CommonFailures.*;
 import static org.fest.assertions.MapAssert.entry;
 import static org.fest.assertions.MapFactory.map;
 import static org.fest.test.ExpectedFailure.expectAssertionError;
 
-import java.util.*;
+import java.util.Map;
 
 import org.fest.test.CodeToTest;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Tests for <code>{@link MapAssert#hasSize(int)}</code>.
@@ -49,7 +47,7 @@ public class MapAssert_hasSize_Test implements Assert_hasSize_TestCase {
 
   @Test
   public void should_fail_if_actual_is_null() {
-    expectErrorIfActualMapIsNull(new CodeToTest() {
+    expectErrorIfActualIsNull(new CodeToTest() {
       public void run() {
         new MapAssert(null).hasSize(2);
       }
@@ -58,7 +56,7 @@ public class MapAssert_hasSize_Test implements Assert_hasSize_TestCase {
 
   @Test
   public void should_fail_and_display_description_of_assertion_if_actual_is_null() {
-    expectErrorWithDescriptionIfActualMapIsNull(new CodeToTest() {
+    expectErrorWithDescriptionIfActualIsNull(new CodeToTest() {
       public void run() {
         new MapAssert(null).as("A Test")
                            .hasSize(2);

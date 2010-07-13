@@ -14,10 +14,8 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.BigDecimals.eight;
-import static org.fest.assertions.BigDecimals.seven;
-import static org.fest.assertions.CommonFailures.expectErrorIfActualIsNull;
-import static org.fest.assertions.CommonFailures.expectErrorWithDescriptionIfActualIsNull;
+import static org.fest.assertions.BigDecimals.*;
+import static org.fest.assertions.CommonFailures.*;
 import static org.fest.test.ExpectedFailure.expectAssertionError;
 
 import java.math.BigDecimal;

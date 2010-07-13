@@ -14,12 +14,7 @@
  */
 package org.fest.assertions;
 
-import static org.fest.assertions.CommonFailures.expectErrorIfActualIsNull;
-import static org.fest.assertions.CommonFailures.expectErrorWithDescriptionIfActualIsNull;
-import static org.fest.test.ExpectedFailure.expectAssertionError;
-
-import org.fest.test.CodeToTest;
-import org.junit.Test;
+import org.junit.BeforeClass;
 
 /**
  * Tests for <code>{@link StringAssert#isNotEmpty()}</code>.
@@ -28,69 +23,26 @@ import org.junit.Test;
  * @author David DIDIER
  * @author Alex Ruiz
  */
-public class StringAssert_isNotEmpty_Test implements GroupAssert_isNotEmpty_TestCase {
+public class StringAssert_isNotEmpty_Test extends GroupAssert_isNotEmpty_TestCase<String> {
 
-  @Test
-  public void should_pass_if_actual_is_not_empty() {
-    new StringAssert("Hello").isNotEmpty();
+  private static String empty;
+  private static String notEmpty;
+
+  @BeforeClass
+  public static void setUpOnce() {
+    empty = "";
+    notEmpty = "Leia";
   }
 
-  @Test
-  public void should_fail_if_actual_is_null() {
-    expectErrorIfActualIsNull(new CodeToTest() {
-      public void run() {
-        new StringAssert(null).isNotEmpty();
-      }
-    });
+  protected StringAssert assertionsFor(String actual) {
+    return new StringAssert(actual);
   }
 
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_is_null() {
-    expectErrorWithDescriptionIfActualIsNull(new CodeToTest() {
-      public void run() {
-        new StringAssert(null).as("A Test")
-                              .isNotEmpty();
-      }
-    });
+  protected String emptyGroup() {
+    return empty;
   }
 
-  @Test
-  public void should_fail_if_actual_is_empty() {
-    expectAssertionError("expecting a non-empty String, but it was empty").on(new CodeToTest() {
-      public void run() {
-        new StringAssert("").isNotEmpty();
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_is_empty() {
-    expectAssertionError("[A Test] expecting a non-empty String, but it was empty").on(new CodeToTest() {
-      public void run() {
-        new StringAssert("").as("A Test")
-                            .isNotEmpty();
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_if_actual_is_empty() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new StringAssert("").overridingErrorMessage("My custom message")
-                            .isNotEmpty();
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_is_empty() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new StringAssert("").as("A Test")
-                            .overridingErrorMessage("My custom message")
-                            .isNotEmpty();
-      }
-    });
+  protected String notEmptyGroup() {
+    return notEmpty;
   }
 }

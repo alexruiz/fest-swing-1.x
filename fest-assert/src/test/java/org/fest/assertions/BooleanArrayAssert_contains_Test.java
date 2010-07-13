@@ -19,8 +19,7 @@ import static org.fest.assertions.CommonFailures.*;
 import static org.fest.test.ExpectedFailure.expectAssertionError;
 
 import org.fest.test.CodeToTest;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Tests for <code>{@link BooleanArrayAssert#contains(boolean...)}</code>.
@@ -30,26 +29,33 @@ import org.junit.Test;
  */
 public class BooleanArrayAssert_contains_Test implements GroupAssert_contains_TestCase {
 
-  private static boolean[] array;
+  private static boolean[] actual;
 
   @BeforeClass
   public static void setUpOnce() {
-    array = booleanArray(true, true);
+    actual = booleanArray(true, true);
+  }
+
+  private BooleanArrayAssert assertions;
+
+  @Before
+  public void setUp() {
+    assertions = new BooleanArrayAssert(actual);
   }
 
   @Test
   public void should_pass_if_actual_contains_given_value() {
-    new BooleanArrayAssert(array).contains(true);
+    assertions.contains(true);
   }
 
   @Test
   public void should_pass_if_actual_contains_given_values() {
-    new BooleanArrayAssert(array).contains(true, true);
+    assertions.contains(true, true);
   }
 
   @Test
   public void should_fail_if_actual_is_null() {
-    expectErrorIfActualArrayIsNull(new CodeToTest() {
+    expectErrorIfActualIsNull(new CodeToTest() {
       public void run() {
         new BooleanArrayAssert(null).contains(true);
       }
@@ -58,48 +64,48 @@ public class BooleanArrayAssert_contains_Test implements GroupAssert_contains_Te
 
   @Test
   public void should_fail_and_display_description_of_assertion_if_actual_is_null() {
-    expectErrorWithDescriptionIfActualArrayIsNull(new CodeToTest() {
+    expectErrorWithDescriptionIfActualIsNull(new CodeToTest() {
       public void run() {
         new BooleanArrayAssert(null).as("A Test")
-                                  .contains(true);
+                                    .contains(true);
       }
     });
   }
 
   @Test
   public void should_throw_error_if_expected_is_null() {
-    expectNullPointerException("the given array of booleans should not be null").on(new CodeToTest() {
+    expectNullPointerException("The given array should not be null").on(new CodeToTest() {
       public void run() {
-        new BooleanArrayAssert(array).contains(null);
+        assertions.contains(null);
       }
     });
   }
 
   @Test
   public void should_throw_error_and_display_description_of_assertion_if_expected_is_null() {
-    expectNullPointerException("[A Test] the given array of booleans should not be null").on(new CodeToTest() {
+    expectNullPointerException("[A Test] The given array should not be null").on(new CodeToTest() {
       public void run() {
-        new BooleanArrayAssert(array).as("A Test")
-                                    .contains(null);
+        assertions.as("A Test")
+                  .contains(null);
       }
     });
   }
 
   @Test
   public void should_fail_if_actual_does_not_contain_given_values() {
-    expectAssertionError("array:<[true, true]> does not contain element(s):<[false]>").on(new CodeToTest() {
+    expectAssertionError("<[true, true]> does not contain element(s):<[false]>").on(new CodeToTest() {
       public void run() {
-        new BooleanArrayAssert(array).contains(false);
+        assertions.contains(false);
       }
     });
   }
 
   @Test
   public void should_fail_and_display_description_of_assertion_if_actual_does_not_contain_given_values() {
-    expectAssertionError("[A Test] array:<[true, true]> does not contain element(s):<[false]>").on(new CodeToTest() {
+    expectAssertionError("[A Test] <[true, true]> does not contain element(s):<[false]>").on(new CodeToTest() {
       public void run() {
-        new BooleanArrayAssert(array).as("A Test")
-                                     .contains(false);
+        assertions.as("A Test")
+                  .contains(false);
       }
     });
   }
@@ -108,8 +114,8 @@ public class BooleanArrayAssert_contains_Test implements GroupAssert_contains_Te
   public void should_fail_with_custom_message_if_actual_does_not_contain_given_values() {
     expectAssertionError("My custom message").on(new CodeToTest() {
       public void run() {
-        new BooleanArrayAssert(array).overridingErrorMessage("My custom message")
-                                     .contains(false);
+        assertions.overridingErrorMessage("My custom message")
+                  .contains(false);
       }
     });
   }
@@ -118,9 +124,9 @@ public class BooleanArrayAssert_contains_Test implements GroupAssert_contains_Te
   public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_does_not_contain_given_values() {
     expectAssertionError("My custom message").on(new CodeToTest() {
       public void run() {
-        new BooleanArrayAssert(array).as("A Test")
-                                     .overridingErrorMessage("My custom message")
-                                     .contains(false);
+        assertions.as("A Test")
+                  .overridingErrorMessage("My custom message")
+                  .contains(false);
       }
     });
   }

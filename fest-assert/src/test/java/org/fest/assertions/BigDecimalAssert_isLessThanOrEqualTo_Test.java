@@ -16,8 +16,7 @@ package org.fest.assertions;
 
 import static java.math.BigDecimal.ZERO;
 import static org.fest.assertions.BigDecimals.eight;
-import static org.fest.assertions.CommonFailures.expectErrorIfActualIsNull;
-import static org.fest.assertions.CommonFailures.expectErrorWithDescriptionIfActualIsNull;
+import static org.fest.assertions.CommonFailures.*;
 import static org.fest.test.ExpectedFailure.expectAssertionError;
 
 import org.fest.test.CodeToTest;

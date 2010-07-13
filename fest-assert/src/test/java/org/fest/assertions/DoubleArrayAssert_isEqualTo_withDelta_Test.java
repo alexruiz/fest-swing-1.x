@@ -19,8 +19,7 @@ import static org.fest.assertions.Delta.delta;
 import static org.fest.test.ExpectedFailure.expectAssertionError;
 
 import org.fest.test.CodeToTest;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Tests for <code>{@link DoubleArrayAssert#isEqualTo(double[], Delta)}</code>.

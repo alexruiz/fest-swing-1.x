@@ -15,14 +15,9 @@
 package org.fest.assertions;
 
 import static org.fest.assertions.ArrayFactory.booleanArray;
-import static org.fest.assertions.CommonFailures.expectErrorIfActualArrayIsNull;
-import static org.fest.assertions.CommonFailures.expectErrorWithDescriptionIfActualArrayIsNull;
 import static org.fest.assertions.EmptyArrays.emptyBooleanArray;
-import static org.fest.test.ExpectedFailure.expectAssertionError;
 
-import org.fest.test.CodeToTest;
 import org.junit.BeforeClass;
-import org.junit.Test;
 
 /**
  * Tests for <code>{@link BooleanArrayAssert#isEmpty()}</code>.
@@ -30,76 +25,24 @@ import org.junit.Test;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class BooleanArrayAssert_isEmpty_Test implements GroupAssert_isEmpty_TestCase {
+public class BooleanArrayAssert_isEmpty_Test extends GroupAssert_isEmpty_TestCase<boolean[]> {
 
-  private static boolean[] array;
+  private static boolean[] notEmpty;
 
   @BeforeClass
   public static void setUpOnce() {
-    array = booleanArray(true);
+    notEmpty = booleanArray(true);
   }
 
-  @Test
-  public void should_pass_if_actual_is_empty() {
-    new BooleanArrayAssert(emptyBooleanArray()).isEmpty();
+  protected BooleanArrayAssert assertionsFor(boolean[] actual) {
+    return new BooleanArrayAssert(actual);
   }
 
-  @Test
-  public void should_fail_if_actual_is_null() {
-    expectErrorIfActualArrayIsNull(new CodeToTest() {
-      public void run() {
-        new BooleanArrayAssert(null).isEmpty();
-      }
-    });
+  protected boolean[] emptyGroup() {
+    return emptyBooleanArray();
   }
 
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_is_null() {
-    expectErrorWithDescriptionIfActualArrayIsNull(new CodeToTest() {
-      public void run() {
-        new BooleanArrayAssert(null).as("A Test")
-                                    .isEmpty();
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_if_actual_is_not_empty() {
-    expectAssertionError("expecting empty array, but was:<[true]>").on(new CodeToTest() {
-      public void run() {
-        new BooleanArrayAssert(array).isEmpty();
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_and_display_description_of_assertion_if_actual_is_not_empty() {
-    expectAssertionError("[A Test] expecting empty array, but was:<[true]>").on(new CodeToTest() {
-      public void run() {
-        new BooleanArrayAssert(array).as("A Test")
-                                     .isEmpty();
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_if_actual_is_not_empty() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new BooleanArrayAssert(array).overridingErrorMessage("My custom message")
-                                     .isEmpty();
-      }
-    });
-  }
-
-  @Test
-  public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_is_not_empty() {
-    expectAssertionError("My custom message").on(new CodeToTest() {
-      public void run() {
-        new BooleanArrayAssert(array).as("A Test")
-                                     .overridingErrorMessage("My custom message")
-                                     .isEmpty();
-      }
-    });
+  protected boolean[] notEmptyGroup() {
+    return notEmpty;
   }
 }

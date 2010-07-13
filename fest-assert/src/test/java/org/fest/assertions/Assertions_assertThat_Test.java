@@ -17,8 +17,7 @@ package org.fest.assertions;
 
 import static java.awt.image.BufferedImage.TYPE_INT_RGB;
 import static java.lang.Boolean.FALSE;
-import static junit.framework.Assert.assertEquals;
-import static junit.framework.Assert.assertSame;
+import static junit.framework.Assert.*;
 
 import java.awt.image.BufferedImage;
 import java.math.BigDecimal;

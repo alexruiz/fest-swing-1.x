@@ -14,10 +14,11 @@
  */
 package org.fest.assertions;
 
-import static org.easymock.EasyMock.*;
+import static org.easymock.EasyMock.expect;
 import static org.easymock.classextension.EasyMock.createMock;
 import static org.fest.assertions.Mocks.createComparisonFailureFrom;
 import static org.junit.Assert.assertNull;
+
 import org.fest.mocks.EasyMockTemplate;
 import org.junit.*;
 
