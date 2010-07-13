@@ -15,6 +15,8 @@
  */
 package org.fest.assertions;
 
+import org.fest.util.IntrospectionError;
+
 /**
  * Understands a template for assertion methods related to arrays or collections.
  * @param <T> the type of object implementations of this template can verify.
@@ -71,6 +73,26 @@ public abstract class ObjectGroupAssert<T> extends ItemGroupAssert<T> {
    * @throws AssertionError if the actual group of objects has duplicates.
    */
   protected abstract ObjectGroupAssert<T> doesNotHaveDuplicates();
+
+  /**
+   * Creates a new group of objects whose target collection contains the values of the given property name from the 
+   * elements of the actual group of objects. Property access works with both simple properties like {@code Person.age} 
+   * and nested properties {@code Person.father.age}.
+   * <p>
+   * For example, let's say we have a collection of {@code Person} objects and you want to verify their age:
+   * <pre>
+   * assertThat(persons).onProperty("age").containsOnly(25, 16, 44, 37); // simple property
+   * assertThat(persons).onProperty("father.age").containsOnly(55, 46, 74, 62); // nested property
+   * </p>
+   * @param propertyName the name of the property to extract values from the actual collection to build a new group of 
+   * objects.
+   * @return a new group of objects containing the values of the given property name from the elements of the actual
+   * group of objects.
+   * @throws AssertionError if the actual group of objects is <code>null</code>.
+   * @throws IntrospectionError if an element in the given collection does not have a matching property.
+   * @since 1.3
+   */
+  protected abstract ObjectGroupAssert<T> onProperty(String propertyName);
 
   /** {@inheritDoc} */
   protected abstract ObjectGroupAssert<T> as(String description);

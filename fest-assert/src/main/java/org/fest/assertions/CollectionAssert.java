@@ -260,7 +260,6 @@ public class CollectionAssert extends ObjectGroupAssert<Collection<?>> {
    * Creates a new instance of <code>{@link CollectionAssert}</code> whose target collection contains the values of the
    * given property name from the elements of this {@code CollectionAssert}'s collection. Property access works with
    * both simple properties like {@code Person.age} and nested properties {@code Person.father.age}.
-   * </p>
    * <p>
    * For example, let's say we have a collection of {@code Person} objects and you want to verify their age:
    * <pre>
