@@ -5,7 +5,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.easytesting</groupId>
   <artifactId>fest</artifactId>
-  <version>1.0.1</version>
+  <version>1.0.2</version>
   <packaging>pom</packaging>
   <name>FEST: Fixtures for Easy Software Testing</name>
   <licenses>
@@ -116,6 +116,14 @@
       <id>rrakic</id>
       <name>Remy Rakic</name>
       <url>http://twitter.com/lqd</url>
+      <roles>
+        <role>Developer</role>
+      </roles>
+    </developer>
+    <developer>
+      <id>cedarsoft</id>
+      <name>Johannes Schneider</name>
+      <url>http://blog.cedarsoft.com/</url>
       <roles>
         <role>Developer</role>
       </roles>
