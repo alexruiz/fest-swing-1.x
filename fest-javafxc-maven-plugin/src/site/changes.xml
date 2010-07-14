@@ -5,6 +5,29 @@
     <author email="alex.ruiz.05@gmail.com">Alex Ruiz</author>
   </properties>
   <body>
+    <release version="1.0b2" date="2010-07-14" description="Subsequent release">
+      <action dev="cedarsoft" type="add">
+				Added 'testSourceDirectory' option
+      </action>
+      <action dev="cedarsoft" type="add">
+				Magic classpath extension (with JavaFX jars) made optional
+      </action>
+      <action dev="cedarsoft" type="fix">
+				Improved error messages for paths
+      </action>
+      <action dev="cedarsoft" type="add">
+				Compiler argument added: -Xlint:unchecked
+      </action>
+      <action dev="cedarsoft" type="add">
+				Skipping compilation for non-java projects (e.g. pom)
+      </action>
+      <action dev="cedarsoft" type="add">
+				Added possibility to "override" Java class with JavaFX classes      
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-369" due-to="Thomas Butter">
+        Allow setting of 'memoryMaxSize'.
+      </action>
+    </release>
     <release version="1.0b1" date="2010-05-19" description="Subsequent release">
       <action dev="alexruiz" type="add" issue="FEST-314">
         Added goal testCompile to compile JavaFX test sources.
