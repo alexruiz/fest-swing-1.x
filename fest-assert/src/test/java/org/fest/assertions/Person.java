@@ -41,16 +41,16 @@ public class Person {
   private final double weight;
   private Person father;
 
-  public Person(Long id, String name, int age, long ssn, boolean male, char favoriteAlphabetLetter, byte favoriteByte,
-      short yearOfBirth, float height, double weight, String homeTown) {
+  public Person(Long id, String name, int age, long ssn, boolean male, char favoriteAlphabetLetter, int favoriteByte,
+      int yearOfBirth, float height, double weight, String homeTown) {
     this.id = id;
     this.name = new Name(name, "");
     this.age = age;
     this.ssn = ssn;
     this.male = male;
     this.favoriteAlphabetLetter = favoriteAlphabetLetter;
-    this.favoriteByte = favoriteByte;
-    this.yearOfBirth = yearOfBirth;
+    this.favoriteByte = (byte)favoriteByte;
+    this.yearOfBirth = (short)yearOfBirth;
     this.height = height;
     this.weight = weight;
     this.homeTown = homeTown;

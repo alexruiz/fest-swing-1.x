@@ -14,7 +14,7 @@
  */
 package org.fest.assertions;
 
-import static java.util.Collections.*;
+import static java.util.Collections.emptyList;
 import static org.fest.assertions.CommonFailures.expectErrorIfActualIsNull;
 import static org.fest.assertions.Title.*;
 import static org.fest.test.ExpectedFailure.expectAssertionError;
@@ -22,7 +22,7 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.*;
 
-import org.fest.test.*;
+import org.fest.test.CodeToTest;
 import org.fest.util.IntrospectionError;
 import org.junit.*;
 
@@ -34,9 +34,9 @@ import org.junit.*;
  * @author Alex Ruiz
  */
 public abstract class ObjectGroupAssert_onProperty_Test<T> {
-  
+
   private List<Person> persons;
-  
+
   @Before
   public void setUp() {
     persons = new ArrayList<Person>(populateData());
@@ -57,22 +57,22 @@ public abstract class ObjectGroupAssert_onProperty_Test<T> {
     // - double weight;
     // - String homeTown;
     List<Person> persons = new ArrayList<Person>();
-    Person pier = new Person(1L, "Pier", 25, 6L, true, 'P', (byte) 1, (short) 1974, 1.90f, 80.1, "Paris");
-    pier.setFather(new Person(11L, "PierFather", 55, 6L, true, 'P', (byte) 1, (short) 1974, 1.90f, 80.1, "Paris"));
+    Person pier = new Person(1L, "Pier", 25, 6L, true, 'P', 1, 1974, 1.90f, 80.1, "Paris");
+    pier.setFather(new Person(11L, "PierFather", 55, 6L, true, 'P', 1, 1974, 1.90f, 80.1, "Paris"));
     persons.add(pier);
-    Person paula = new Person(2L, "Paula", 32, 67L, false, 'O', (byte) 2, (short) 1975, 1.80f, 90.2, "Madrid");
-    paula.setFather(new Person(22L, "PaulaFather", 62, 67L, false, 'O', (byte) 2, (short) 1975, 1.80f, 90.2, "Madrid"));
+    Person paula = new Person(2L, "Paula", 32, 67L, false, 'O', 2, 1975, 1.80f, 90.2, "Madrid");
+    paula.setFather(new Person(22L, "PaulaFather", 62, 67L, false, 'O', 2, 1975, 1.80f, 90.2, "Madrid"));
     paula.setTitle(Miss);
     persons.add(paula);
-    Person jack = new Person(3L, "Jack", 16, 678L, false, 'J', (byte) 4, (short) 1976, 1.70f, 100.3, "London");
-    jack.setFather(new Person(33L, "JackFather", 46, 678L, false, 'J', (byte) 4, (short) 1976, 1.70f, 100.3, "London"));
+    Person jack = new Person(3L, "Jack", 16, 678L, false, 'J', 4, 1976, 1.70f, 100.3, "London");
+    jack.setFather(new Person(33L, "JackFather", 46, 678L, false, 'J', 4, 1976, 1.70f, 100.3, "London"));
     persons.add(jack);
-    Person otherJack = new Person(4L, "Jack", 44, 6789L, true, 'K', (byte) 8, (short) 1977, 1.60f, 110.4, "Roma");
-    otherJack.setFather(new Person(44L, "JackFather2", 74, 678L, false, 'J', (byte) 4, (short) 1976, 1.70f, 100.3, "Roma"));
+    Person otherJack = new Person(4L, "Jack", 44, 6789L, true, 'K', 8, 1977, 1.60f, 110.4, "Roma");
+    otherJack.setFather(new Person(44L, "OtherJackFather", 74, 678L, false, 'J', 4, 1976, 1.70f, 100.3, "Roma"));
     persons.add(otherJack);
     return persons;
   }
-  
+
   @Test
   public final void should_pass_on_non_primitive_type_property() {
     assertions(persons).onProperty("id").contains(1L, 2L, 4L);
@@ -131,7 +131,7 @@ public abstract class ObjectGroupAssert_onProperty_Test<T> {
     ObjectGroupAssert<T> assertions = assertions(persons);
     assertions.onProperty("name.firstName").contains("Pier", "Paula", "Jack");
     assertions.onProperty("father.name.firstName")
-              .containsOnly("PierFather", "PaulaFather", "JackFather", "JackFather2");
+              .containsOnly("PierFather", "PaulaFather", "JackFather", "OtherJackFather");
   }
 
   @Test
@@ -208,7 +208,7 @@ public abstract class ObjectGroupAssert_onProperty_Test<T> {
   public final void should_fail_because_of_unknown_property() {
     try {
       // PersonName does not have a 'nickname' property => failure
-      assertions(persons).onProperty("name.nickname").containsOnly("PaulaFather", "JackFather", "JackFather2");
+      assertions(persons).onProperty("name.nickname").containsOnly("PaulaFather", "JackFather", "OtherJackFather");
     } catch (IntrospectionError e) {
       assertEquals("Unable to find property 'nickname' in org.fest.assertions.Name", e.getMessage());
     }
@@ -218,14 +218,14 @@ public abstract class ObjectGroupAssert_onProperty_Test<T> {
   public final void should_pass_even_if_actual_contains_null_elements() {
     persons.add(null);
     assertions(persons).onProperty("father.name.firstName")
-                       .containsOnly("PierFather", "PaulaFather", "JackFather", "JackFather2");
+                       .containsOnly("PierFather", "PaulaFather", "JackFather", "OtherJackFather");
   }
 
   @Test
   public final void should_pass_with_null_nested_property_in_actual_elements() {
     persons.iterator().next().setFather(null);
     assertions(persons).onProperty("father.name.firstName")
-                       .containsOnly("PaulaFather", "JackFather", "JackFather2");
+                       .containsOnly("PaulaFather", "JackFather", "OtherJackFather");
   }
 
   @Test
@@ -258,7 +258,7 @@ public abstract class ObjectGroupAssert_onProperty_Test<T> {
       }
     });
   }
-  
+
   protected abstract ObjectGroupAssert<T> assertions(Collection<?> data);
 }
 
