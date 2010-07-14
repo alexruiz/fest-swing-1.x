@@ -25,6 +25,7 @@ import java.io.File;
 import static org.easymock.EasyMock.expect;
 import static org.easymock.EasyMock.expectLastCall;
 import static org.easymock.classextension.EasyMock.createMock;
+import static org.fest.javafx.maven.JavaFxJarsInclusion.AUTOMATIC;
 import static org.fest.util.Files.temporaryFolder;
 
 /**
@@ -75,8 +76,8 @@ public class AbstractJavaFxcMojo_compile_Test {
         expectLastCall().once();
         expect(javaFxHome.verify(javaFxcMojo.javaFxHome)).andReturn(verifiedJavaFXHome);
         expect(javaFxHome.reference(verifiedJavaFXHome)).andReturn(javaFXHomeDir);
-        expect(javaFxcFactory.createJavaFxc(javaFXHomeDir, true)).andReturn(javaFxc);
-        javaFxcSetup.setUpJavaFxc(javaFxc, javaFxcMojo, javaFXHomeDir, true);
+        expect(javaFxcFactory.createJavaFxc(javaFXHomeDir, AUTOMATIC)).andReturn(javaFxc);
+        javaFxcSetup.setUpJavaFxc(javaFxc, javaFxcMojo, javaFXHomeDir, AUTOMATIC);
         expectLastCall().once();
         javaFxcExecutor.execute(javaFxc);
         expectLastCall().once();

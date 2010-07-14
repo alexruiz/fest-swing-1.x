@@ -27,6 +27,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import static org.fest.javafx.maven.JavaFxJarsInclusion.javaFxJarsInclusion;
 import static org.fest.util.Strings.concat;
 import static org.fest.util.Strings.quote;
 
@@ -98,9 +99,9 @@ public abstract class AbstractJavaFxcMojo extends AbstractMojo {
 
   /**
    * If set to <code>true</code> the JavaFX jars are automatically added to the classpath for compilation
-   * @parameter expression="${javafx.compiler.automatically.add.fx.jars}" default-value="true"
+   * @parameter expression="${javafx.compiler.automatically.add.javafx.jars}" default-value="true"
    */
-  @VisibleForTesting boolean automaticallyAddFxJars = true;
+  @VisibleForTesting boolean automaticallyAddJfxJars = true;
 
   /**
    * The -source argument for the JavaFX compiler.
@@ -127,6 +128,12 @@ public abstract class AbstractJavaFxcMojo extends AbstractMojo {
   @VisibleForTesting boolean unchecked;
 
   /**
+   * The maximum memory size.
+   * @parameter expression="${javafx.compiler.memorymaximumsize}" default-value="256m"
+   */
+  @VisibleForTesting String memoryMaximumSize;
+
+  /**
    * The location of the JavaFX home directory. If a value is not set, this goal will try to obtained from the
    * environment variable "JAVAFX_HOME".
    * @parameter expression="${javafx.home}"
@@ -149,15 +156,20 @@ public abstract class AbstractJavaFxcMojo extends AbstractMojo {
     validator.validate(this);
     File javaFXHomeFolder = null;
     // TODO if the classpath problem is solved, add that condition
-    // if ( automaticallyAddFxJars ) {
+    // if (automaticallyAddFxJars) {
       String verifiedJavaFxHome = javaFxHomeRef.verify(javaFxHome);
       getLog().info(concat("JavaFX home is ", quote(verifiedJavaFxHome)));
       javaFXHomeFolder = javaFxHomeRef.reference(verifiedJavaFxHome);
     // }
-    overwriteUtilities.deleteOverwrites(outputDirectory(), overwrites.toArray(new String[overwrites.size()]));
-    Javac javaFxc = javaFxcFactory.createJavaFxc(javaFXHomeFolder, automaticallyAddFxJars);
-    javaFxcSetup.setUpJavaFxc(javaFxc, this, javaFXHomeFolder, automaticallyAddFxJars );
+    overwriteUtilities.deleteOverwrites(outputDirectory(), overwritesAsArray());
+    JavaFxJarsInclusion javaFxJarsInclusion = javaFxJarsInclusion(automaticallyAddJfxJars);
+    Javac javaFxc = javaFxcFactory.createJavaFxc(javaFXHomeFolder, javaFxJarsInclusion);
+    javaFxcSetup.setUpJavaFxc(javaFxc, this, javaFXHomeFolder, javaFxJarsInclusion);
     javaFxcExecutor.execute(javaFxc);
+  }
+
+  private String[] overwritesAsArray() {
+    return overwrites.toArray(new String[overwrites.size()]);
   }
 
   abstract List<String> classpathElements();

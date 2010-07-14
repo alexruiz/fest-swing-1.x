@@ -45,19 +45,11 @@ class JavaFxcFactory {
     this.instantiator = instantiator;
   }
 
-  Javac createJavaFxc(File javaFxHome,boolean automaticallyAddFxJars) throws MojoExecutionException {
+  Javac createJavaFxc(File javaFxHome, JavaFxJarsInclusion javaFxJarsInclusion) throws MojoExecutionException {
       try {
-        Path compilerClasspath;
-        if ( automaticallyAddFxJars ) {
-          compilerClasspath = classpathFactory.createCompilerClasspath(javaFxHome);
-        } else {
-          // TODO This does not work! There are some class not found exceptions then!
-          // It is necessary to add the dependencies to the JavaFX toolchain in some other way...
-          // compilerClasspath = new Path( new Project() ); //Empty
-          compilerClasspath = classpathFactory.createCompilerClasspath( javaFxHome );
-        }
-        Javac javaFxc = instantiator.instantiateJavaFxc( compilerClasspath );
-        configureCompiler( javaFxc, compilerClasspath );
+        Path compilerClasspath = createCompilerClasspath(javaFxHome, javaFxJarsInclusion);
+        Javac javaFxc = instantiator.instantiateJavaFxc(compilerClasspath);
+        configureCompiler(javaFxc, compilerClasspath);
         return javaFxc;
       } catch (BuildException e) {
         throw loadingTaskFailed(e);
@@ -70,6 +62,15 @@ class JavaFxcFactory {
       } catch (IllegalAccessException e) {
         throw loadingTaskFailed(e);
       }
+  }
+
+  private Path createCompilerClasspath(File javaFxHome, JavaFxJarsInclusion javaFxJarsInclusion) {
+    if (javaFxJarsInclusion.isAutomatic())
+      return classpathFactory.createCompilerClasspath(javaFxHome);
+    // TODO This does not work! There are some class not found exceptions then!
+    // It is necessary to add the dependencies to the JavaFX toolchain in some other way...
+    // compilerClasspath = new Path( new Project() ); //Empty
+    return classpathFactory.createCompilerClasspath( javaFxHome );
   }
 
   private static MojoExecutionException loadingTaskFailed(Exception cause) {

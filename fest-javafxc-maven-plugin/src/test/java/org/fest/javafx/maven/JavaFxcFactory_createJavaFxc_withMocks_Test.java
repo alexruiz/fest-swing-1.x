@@ -19,6 +19,7 @@ import static org.easymock.EasyMock.expect;
 import static org.easymock.classextension.EasyMock.createMock;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.javafx.maven.CommonAssertions.failWhenExpectingUnexpectedError;
+import static org.fest.javafx.maven.JavaFxJarsInclusion.AUTOMATIC;
 import static org.fest.util.Files.temporaryFolder;
 
 import java.io.File;
@@ -71,7 +72,7 @@ public class JavaFxcFactory_createJavaFxc_withMocks_Test {
         }
 
         @Override protected void codeToTest() throws MojoExecutionException {
-          javaFxcFactory.createJavaFxc(javaFxcHome, true);
+          javaFxcFactory.createJavaFxc(javaFxcHome, AUTOMATIC);
         }
       }.run();
       failWhenExpectingUnexpectedError();
@@ -91,7 +92,7 @@ public class JavaFxcFactory_createJavaFxc_withMocks_Test {
         }
 
         @Override protected void codeToTest() throws MojoExecutionException {
-          javaFxcFactory.createJavaFxc(javaFxcHome, true);
+          javaFxcFactory.createJavaFxc(javaFxcHome, AUTOMATIC);
         }
       }.run();
       failWhenExpectingUnexpectedError();
@@ -130,7 +131,7 @@ public class JavaFxcFactory_createJavaFxc_withMocks_Test {
         }
 
         @Override protected void codeToTest() throws MojoExecutionException {
-          javaFxcFactory.createJavaFxc(javaFxcHome, true);
+          javaFxcFactory.createJavaFxc(javaFxcHome, AUTOMATIC);
         }
       }.run();
       failWhenExpectingUnexpectedError();

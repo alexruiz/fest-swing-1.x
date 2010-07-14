@@ -35,10 +35,10 @@ class JavaFxcSetup {
 
   private static final String[] JAVAFX_DESKTOP_CLASSPATH_FILES = { "**/javafxrt.jar", "**/lib/desktop/*.jar" };
 
-  void setUpJavaFxc(Javac javaFxc, AbstractJavaFxcMojo javaFxcMojo, File javaFxcHome, boolean automaticallyAddFxJars) {
+  void setUpJavaFxc(Javac javaFxc, AbstractJavaFxcMojo javaFxcMojo, File javaFxcHome, JavaFxJarsInclusion javaFxJarsInclusion) {
     configureProject(javaFxc, javaFxcMojo);
     setSource(javaFxc, javaFxcMojo.sourceDirectory());
-    setClasspath(javaFxc, javaFxcMojo, javaFxcHome,automaticallyAddFxJars);
+    setClasspath(javaFxc, javaFxcMojo, javaFxcHome, javaFxJarsInclusion);
     javaFxc.setDebug(javaFxcMojo.debug);
     javaFxc.setDeprecation(javaFxcMojo.deprecation);
     javaFxc.setDestdir(javaFxcMojo.outputDirectory());
@@ -50,7 +50,8 @@ class JavaFxcSetup {
     javaFxc.setSource(javaFxcMojo.source);
     javaFxc.setTarget(javaFxcMojo.target);
     javaFxc.setVerbose(javaFxcMojo.verbose);
-    if (javaFxcMojo.unchecked) javaFxc.createCompilerArg().setLine( "-Xlint:unchecked" );
+    javaFxc.setMemoryMaximumSize(javaFxcMojo.memoryMaximumSize);
+    if (javaFxcMojo.unchecked) javaFxc.createCompilerArg().setLine("-Xlint:unchecked");
   }
 
   private void configureProject(Javac javaFxc, AbstractJavaFxcMojo javaFxcMojo) {
@@ -69,11 +70,9 @@ class JavaFxcSetup {
     path.createPathElement().setLocation(file);
   }
 
-  private void setClasspath(Javac javaFxc, AbstractJavaFxcMojo javaFxMojo, File javaFxcHome,boolean automaticallyAddFxJars) {
+  private void setClasspath(Javac javaFxc, AbstractJavaFxcMojo javaFxMojo, File javaFxcHome, JavaFxJarsInclusion javaFxJarsInclusion) {
     Path classpath = javaFxc.createClasspath();
-    if ( automaticallyAddFxJars ) {
-      classpath.addFileset(javaFxFiles(javaFxcHome));
-    }
+    if (javaFxJarsInclusion.isAutomatic()) classpath.addFileset(javaFxFiles(javaFxcHome));
     updatePathWithElements(classpath, javaFxMojo.classpathElements());
   }
 

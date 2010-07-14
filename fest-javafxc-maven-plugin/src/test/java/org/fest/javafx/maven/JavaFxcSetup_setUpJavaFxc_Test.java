@@ -31,11 +31,12 @@ import static org.easymock.EasyMock.expect;
 import static org.easymock.classextension.EasyMock.createMock;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.javafx.maven.JavaFxHomeDirectory.createJavaFxHomeDirectory;
+import static org.fest.javafx.maven.JavaFxJarsInclusion.*;
 import static org.fest.util.Collections.list;
 import static org.fest.util.Files.temporaryFolder;
 
 /**
- * Tests for <code>{@link JavaFxcSetup}</code>.
+ * Tests for <code>{@link JavaFxcSetup#setUpJavaFxc(Javac, AbstractJavaFxcMojo, File, boolean)}</code>.
  *
  * @author Alex Ruiz
  * @author Johannes Schneider
@@ -77,6 +78,7 @@ public class JavaFxcSetup_setUpJavaFxc_Test {
     javaFxcMojo.sourceDirectory = temporaryFolder();
     javaFxcMojo.target = "1.5";
     javaFxcMojo.verbose = true;
+    javaFxcMojo.memoryMaximumSize = "256m";
   }
 
   @Test
@@ -87,7 +89,7 @@ public class JavaFxcSetup_setUpJavaFxc_Test {
       }
 
       @Override protected void codeToTest() {
-        javaFxcSetup.setUpJavaFxc(javaFxc, javaFxcMojo, javaFxcHome, true);
+        javaFxcSetup.setUpJavaFxc(javaFxc, javaFxcMojo, javaFxcHome, AUTOMATIC);
       }
     }.run();
     assertThat(javaFxc.getDebug()).isEqualTo(javaFxcMojo.debug);
@@ -101,6 +103,7 @@ public class JavaFxcSetup_setUpJavaFxc_Test {
     assertThat(javaFxc.getSource()).isEqualTo(javaFxcMojo.source);
     assertThat(javaFxc.getTarget()).isEqualTo(javaFxcMojo.target);
     assertThat(javaFxc.getVerbose()).isEqualTo(javaFxcMojo.verbose);
+    assertThat(javaFxc.getMemoryMaximumSize()).isEqualTo(javaFxcMojo.memoryMaximumSize);
   }
 
   @Test
@@ -112,7 +115,7 @@ public class JavaFxcSetup_setUpJavaFxc_Test {
       }
 
       @Override protected void codeToTest() {
-        javaFxcSetup.setUpJavaFxc(javaFxc, javaFxcMojo, javaFxcHome, true);
+        javaFxcSetup.setUpJavaFxc(javaFxc, javaFxcMojo, javaFxcHome, AUTOMATIC);
       }
     }.run();
     assertThat(containsExtraClasspathElement(javaFxc.getClasspath())).isTrue();
@@ -136,7 +139,7 @@ public class JavaFxcSetup_setUpJavaFxc_Test {
       }
 
       @Override protected void codeToTest() {
-        javaFxcSetup.setUpJavaFxc(javaFxc, javaFxcMojo, javaFxcHome, false);
+        javaFxcSetup.setUpJavaFxc(javaFxc, javaFxcMojo, javaFxcHome, MANUAL);
       }
     }.run();
     assertThat(containsExtraClasspathElementOnly(javaFxc.getClasspath())).isTrue();
