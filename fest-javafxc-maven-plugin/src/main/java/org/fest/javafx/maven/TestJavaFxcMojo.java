@@ -29,6 +29,7 @@ import static java.util.Collections.unmodifiableList;
  * @requiresDependencyResolution test
  *
  * @author Alex Ruiz
+ * @author Johannes Schneider
  */
 public class TestJavaFxcMojo extends AbstractJavaFxcMojo {
 
@@ -85,10 +86,7 @@ public class TestJavaFxcMojo extends AbstractJavaFxcMojo {
    * not a directory.
    */
   @Override public void execute() throws MojoExecutionException {
-    if (! isJavaProject() ) {
-      return;
-    }
-
+    if (!isJavaProject()) return;
     if (skip) {
       getLog().info("Not compiling test sources");
       return;
