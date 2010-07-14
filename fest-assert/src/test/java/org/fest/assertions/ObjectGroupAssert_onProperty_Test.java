@@ -43,19 +43,21 @@ public abstract class ObjectGroupAssert_onProperty_Test<T> {
   }
 
   private static Collection<Person> populateData() {
-    // Person properties :
-    // - Long id;
-    // - Name name;
-    // - Person father;
-    // - int age;
-    // - long socialSecurityNumber;
-    // - boolean male;
-    // - char favoriteAlphabetLetter;
-    // - byte favoriteByte;
-    // - short yearOfBirth;
-    // - float height;
-    // - double weight;
-    // - String homeTown;
+    /*
+     *  Person properties :
+     *  - Long id;
+     *  - Name name;
+     *  - Person father;
+     *  - int age;
+     *  - long socialSecurityNumber;
+     *  - boolean male;
+     *  - char favoriteAlphabetLetter;
+     *  - byte favoriteByte;
+     *  - short yearOfBirth;
+     *  - float height;
+     *  - double weight;
+     *  - String homeTown;
+     */
     List<Person> persons = new ArrayList<Person>();
     Person pier = new Person(1L, "Pier", 25, 6L, true, 'P', 1, 1974, 1.90f, 80.1, "Paris");
     pier.setFather(new Person(11L, "PierFather", 55, 6L, true, 'P', 1, 1974, 1.90f, 80.1, "Paris"));
@@ -207,7 +209,7 @@ public abstract class ObjectGroupAssert_onProperty_Test<T> {
   @Test
   public final void should_fail_because_of_unknown_property() {
     try {
-      // PersonName does not have a 'nickname' property => failure
+      // expected failure: Person.name does not have a 'nickname' property
       assertions(persons).onProperty("name.nickname").containsOnly("PaulaFather", "JackFather", "OtherJackFather");
     } catch (IntrospectionError e) {
       assertEquals("Unable to find property 'nickname' in org.fest.assertions.Name", e.getMessage());
