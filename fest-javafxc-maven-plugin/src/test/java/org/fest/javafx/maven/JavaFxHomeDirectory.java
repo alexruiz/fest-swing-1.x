@@ -10,7 +10,7 @@
  * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
- * 
+ *
  * Copyright @2010 the original author or authors.
  */
 package org.fest.javafx.maven;
@@ -28,11 +28,11 @@ final class JavaFxHomeDirectory {
 
   static File createJavaFxHomeDirectory() {
     String javaFXHome = System.getenv("JAVAFX_HOME");
-    assertThat(javaFXHome).isNotEmpty();
+    assertThat(javaFXHome).as("'JAVAFX_HOME' system variable").isNotEmpty();
     File javaFXHomeDirectory = new File(javaFXHome);
     assertThat(javaFXHomeDirectory).isDirectory();
     return javaFXHomeDirectory;
   }
-  
+
   private JavaFxHomeDirectory() {}
 }
