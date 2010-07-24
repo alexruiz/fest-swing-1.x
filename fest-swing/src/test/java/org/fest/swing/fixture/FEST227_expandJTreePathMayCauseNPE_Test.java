@@ -1,5 +1,5 @@
 /*
- * Created on May 19, 2009
+ * Created on Jul 23, 2010
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2010 the original author or authors.
  */
 package org.fest.swing.fixture;
 
@@ -33,11 +33,12 @@ import org.fest.swing.test.swing.TestWindow;
 import org.junit.Test;
 
 /**
- * Test case for bug <a href="http://jira.codehaus.org/browse/FEST-119" target="_blank">FEST-119</a>.
+ * Test case for bug <a href="http://jira.codehaus.org/browse/FEST-277" target="_blank">FEST-277</a>.
  *
+ * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class FEST119_cannotSelectCellInJTreeIfRootIsInvisible_Test extends RobotBasedTestCase {
+public class FEST227_expandJTreePathMayCauseNPE_Test extends RobotBasedTestCase {
 
   private MyWindow window;
   private FrameFixture frameFixture;
@@ -49,22 +50,15 @@ public class FEST119_cannotSelectCellInJTreeIfRootIsInvisible_Test extends Robot
   }
 
   @Test
-  public void should_select_cell_when_root_in_JTree_is_invisible() {
-    JTreeFixture treeFixture = frameFixture.tree();
-    treeFixture.selectPath("branch1");
-    treeFixture.requireSelection(0);
-    treeFixture.selectPath("branch1/branch1.1");
-    treeFixture.requireSelection(1);
-    treeFixture.selectRow(0);
-    treeFixture.requireSelection("branch1");
-    treeFixture.selectRow(1);
-    treeFixture.requireSelection("branch1/branch1.1");
+  public void should_expanding_nodes_should_not_cause_NPE() {
+    frameFixture.tree().expandPath("root");
+    frameFixture.tree().expandPath("root/a");
+    frameFixture.tree().expandPath("root/a/b");
+    frameFixture.tree().expandPath("root/a/b/c");
   }
 
   private static class MyWindow extends TestWindow {
     private static final long serialVersionUID = 1L;
-
-    private static final Dimension TREE_SIZE = new Dimension(200, 100);
 
     @RunsInEDT
     static MyWindow createNew() {
@@ -80,29 +74,27 @@ public class FEST119_cannotSelectCellInJTreeIfRootIsInvisible_Test extends Robot
     private static TreeModel nodes() {
       MutableTreeNode root =
         node("root",
-            node("branch1",
-                node("branch1.1",
-                    node("branch1.1.1"),
-                    node("branch1.1.2")
-                ),
-                node("branch1.2")
-            ),
-            node("branch2")
+            node("a",
+                node("b",
+                    node("c")
+                )
+            )
         );
       return new DefaultTreeModel(root);
     }
 
     private MyWindow() {
-      super(FEST119_cannotSelectCellInJTreeIfRootIsInvisible_Test.class);
-      tree.setRootVisible(false);
+      super(FEST227_expandJTreePathMayCauseNPE_Test.class);
       add(decorate(tree));
+      tree.collapseRow(0);
       setPreferredSize(new Dimension(600, 400));
     }
 
     private static Component decorate(JTree tree) {
       JScrollPane scrollPane = new JScrollPane(tree);
-      scrollPane.setPreferredSize(TREE_SIZE);
+      scrollPane.setPreferredSize(new Dimension(200, 100));
       return scrollPane;
     }
   }
+
 }
