@@ -21,13 +21,25 @@ package org.fest.swing.driver;
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
-final class CommonValidations {
+public final class CommonValidations {
 
-  static void validateCellReader(Object cellReader) {
+  /**
+   * Validates that the given cell reader is not {@code null}. Since cell readers do not have a common interface, the
+   * passed argument is {@code Object}.
+   * @param cellReader the cell reader to validate.
+   * @throws NullPointerException if the given cell reader is {@code null}.
+   */
+  public static void validateCellReader(Object cellReader) {
     if (cellReader == null) throw new NullPointerException("Cell reader should not be null");
   }
 
-  static void validateCellWriter(Object cellWriter) {
+  /**
+   * Validates that the given cell writer is not {@code null}. Since cell writers do not have a common interface, the
+   * passed argument is {@code Object}.
+   * @param cellWriter the cell writer to validate.
+   * @throws NullPointerException if the given cell writer is {@code null}.
+   */
+  public static void validateCellWriter(Object cellWriter) {
     if (cellWriter == null) throw new NullPointerException("Cell writer should not be null");
   }
 
