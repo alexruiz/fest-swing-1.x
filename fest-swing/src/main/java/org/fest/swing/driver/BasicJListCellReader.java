@@ -47,7 +47,7 @@ public class BasicJListCellReader implements JListCellReader {
    * Creates a new </code>{@link BasicJListCellReader}</code>.
    * @param rendererReader knows how to read values from the cell renderer component in a
    * <code>JList</code>.
-   * @throws NullPointerException if <code>rendererReader</code> is <code>null</code>.
+   * @throws NullPointerException if <code>rendererReader</code> is {@code null}.
    */
   public BasicJListCellReader(CellRendererReader rendererReader) {
     if (rendererReader == null)

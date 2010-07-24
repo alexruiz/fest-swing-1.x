@@ -25,7 +25,7 @@ import net.jcip.annotations.ThreadSafe;
 
 /**
  * Understands an annotation that documents that a method is thread-safe. To document that a class is thread-safe,
- * use <code>{@link ThreadSafe}</code>
+ * use <code>{@link ThreadSafe}</code>.
  *
  * @author Alex Ruiz
  */

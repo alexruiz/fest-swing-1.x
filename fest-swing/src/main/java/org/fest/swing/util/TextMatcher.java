@@ -25,7 +25,7 @@ public interface TextMatcher {
   /**
    * Indicates whether the given text matches some value(s).
    * @param text the text to verify.
-   * @return <code>true</code> if the given text matches some value(s), <code>false</code> otherwise.
+   * @return {@code true} if the given text matches some value(s), {@code false} otherwise.
    */
   boolean isMatching(String text);
 

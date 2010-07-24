@@ -47,7 +47,7 @@ final class JComboBoxDropDownListFinder {
   /**
    * Finds the <code>{@link JList}</code> in the pop-up raised by a <code>{@link JComboBox}</code>, if the LAF actually
    * uses one.
-   * @return the found <code>JList</code>, or <code>null</code> if a drop-down list cannot be found.
+   * @return the found <code>JList</code>, or {@code null} if a drop-down list cannot be found.
    */
   @RunsInEDT
   JList findDropDownList() {

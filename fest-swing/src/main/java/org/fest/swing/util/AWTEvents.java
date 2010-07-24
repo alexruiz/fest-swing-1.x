@@ -30,10 +30,10 @@ import java.awt.Window;
 public final class AWTEvents {
 
   /**
-   * Returns <code>true</code> if the id of the given event is equal to
+   * Returns {@code true} if the id of the given event is equal to
    * <code>{@link java.awt.event.WindowEvent#WINDOW_OPENED WINDOW_OPENED}</code>
    * @param e the given event.
-   * @return <code>true</code> if the id of the given event is equal to <code>WINDOW_OPENED</code>; <code>false</code>
+   * @return {@code true} if the id of the given event is equal to <code>WINDOW_OPENED</code>; {@code false}
    * otherwise.
    */
   public static boolean windowOpened(AWTEvent e) {
@@ -41,22 +41,22 @@ public final class AWTEvents {
   }
 
   /**
-   * Returns <code>true</code> if the id of the given event is equal to
+   * Returns {@code true} if the id of the given event is equal to
    * <code>{@link java.awt.event.WindowEvent#COMPONENT_SHOWN COMPONENT_SHOWN}</code> and the source of the event is a
    * <code>{@link Window}</code>.
    * @param e the given event.
-   * @return <code>true</code> if the id of the given event is equal to <code>COMPONENT_SHOWN</code> and the source of
-   * the event is a window; <code>false</code> otherwise.
+   * @return {@code true} if the id of the given event is equal to <code>COMPONENT_SHOWN</code> and the source of
+   * the event is a window; {@code false} otherwise.
    */
   public static boolean windowShown(AWTEvent e) {
     return idEquals(e, COMPONENT_SHOWN)  && e.getSource() instanceof Window;
   }
 
   /**
-   * Returns <code>true</code> if the id of the given event is equal to
+   * Returns {@code true} if the id of the given event is equal to
    * <code>{@link java.awt.event.WindowEvent#WINDOW_CLOSED WINDOW_CLOSED}</code>
    * @param e the given event.
-   * @return <code>true</code> if the id of the given event is equal to <code>WINDOW_CLOSED</code>; <code>false</code>
+   * @return {@code true} if the id of the given event is equal to <code>WINDOW_CLOSED</code>; {@code false}
    * otherwise.
    */
   public static boolean windowClosed(AWTEvent e) {

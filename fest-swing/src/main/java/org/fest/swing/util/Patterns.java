@@ -40,8 +40,8 @@ public final class Patterns {
    * </p>
    * @param patterns the array of patterns to format.
    * @return the <code>String</code> containing the formatted array.
-   * @throws NullPointerException if the given array of patterns is <code>null</code>.
-   * @throws NullPointerException if any of the patterns in the given array is <code>null</code>.
+   * @throws NullPointerException if the given array of patterns is {@code null}.
+   * @throws NullPointerException if any of the patterns in the given array is {@code null}.
    */
   public static String format(Pattern[] patterns) {
     if (patterns == null) throw new NullPointerException("The array of patterns should not be null");

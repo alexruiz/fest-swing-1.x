@@ -45,8 +45,8 @@ public class JTableHeaderFixture extends ComponentFixture<JTableHeader> implemen
    * Creates a new </code>{@link JTableHeaderFixture}</code>.
    * @param robot performs simulation of user events on the given <code>JTableHeader</code>.
    * @param target the <code>JTableHeader</code> to be managed by this fixture.
-   * @throws NullPointerException if <code>robot</code> is <code>null</code>.
-   * @throws NullPointerException if <code>target</code> is <code>null</code>.
+   * @throws NullPointerException if <code>robot</code> is {@code null}.
+   * @throws NullPointerException if <code>target</code> is {@code null}.
    */
   public JTableHeaderFixture(Robot robot, JTableHeader target) {
     super(robot, target);
@@ -56,7 +56,7 @@ public class JTableHeaderFixture extends ComponentFixture<JTableHeader> implemen
   /**
    * Sets the <code>{@link JTableHeaderDriver}</code> to be used by this fixture.
    * @param newDriver the new <code>JTableHeaderDriver</code>.
-   * @throws NullPointerException if the given driver is <code>null</code>.
+   * @throws NullPointerException if the given driver is {@code null}.
    */
   protected final void driver(JTableHeaderDriver newDriver) {
     validateNotNull(newDriver);
@@ -110,7 +110,7 @@ public class JTableHeaderFixture extends ComponentFixture<JTableHeader> implemen
    * @return a fixture that manages the displayed pop-up menu.
    * @throws IllegalStateException if this fixture's <code>JTableHeader</code> is disabled.
    * @throws IllegalStateException if this fixture's <code>JTableHeader</code> is not showing on the screen.
-   * @throws NullPointerException if the given regular expression pattern is <code>null</code>.
+   * @throws NullPointerException if the given regular expression pattern is {@code null}.
    * @throws ComponentLookupException if a pop-up menu cannot be found.
    * @since 1.2
    */
@@ -125,7 +125,7 @@ public class JTableHeaderFixture extends ComponentFixture<JTableHeader> implemen
    * @param index the index of the column to click.
    * @param mouseClickInfo specifies the mouse button to use and the number of times to click.
    * @return this fixture.
-   * @throws NullPointerException if the given <code>MouseClickInfo</code> is <code>null</code>.
+   * @throws NullPointerException if the given <code>MouseClickInfo</code> is {@code null}.
    * @throws IllegalStateException if this fixture's <code>JTableHeader</code> is disabled.
    * @throws IllegalStateException if this fixture's <code>JTableHeader</code> is not showing on the screen.
    * @throws IndexOutOfBoundsException if the index is out of bounds.
@@ -157,7 +157,7 @@ public class JTableHeaderFixture extends ComponentFixture<JTableHeader> implemen
    * @return this fixture.
    * @throws IllegalStateException if this fixture's <code>JTableHeader</code> is disabled.
    * @throws IllegalStateException if this fixture's <code>JTableHeader</code> is not showing on the screen.
-   * @throws NullPointerException if the given regular expression is <code>null</code>.
+   * @throws NullPointerException if the given regular expression is {@code null}.
    * @throws LocationUnavailableException if a column with a matching name cannot be found.
    * @since 1.2
    */
@@ -172,7 +172,7 @@ public class JTableHeaderFixture extends ComponentFixture<JTableHeader> implemen
    * @param columnName the column name to match. It can be a regular expression.
    * @param mouseClickInfo specifies the mouse button to use and the number of times to click.
    * @return this fixture.
-   * @throws NullPointerException if the given <code>MouseClickInfo</code> is <code>null</code>.
+   * @throws NullPointerException if the given <code>MouseClickInfo</code> is {@code null}.
    * @throws IllegalStateException if this fixture's <code>JTableHeader</code> is disabled.
    * @throws IllegalStateException if this fixture's <code>JTableHeader</code> is not showing on the screen.
    * @throws LocationUnavailableException if a column with a matching name cannot be found.
@@ -189,10 +189,10 @@ public class JTableHeaderFixture extends ComponentFixture<JTableHeader> implemen
    * @param columnNamePattern the regular expression pattern to match.
    * @param mouseClickInfo specifies the mouse button to use and the number of times to click.
    * @return this fixture.
-   * @throws NullPointerException if the given <code>MouseClickInfo</code> is <code>null</code>.
+   * @throws NullPointerException if the given <code>MouseClickInfo</code> is {@code null}.
    * @throws IllegalStateException if this fixture's <code>JTableHeader</code> is disabled.
    * @throws IllegalStateException if this fixture's <code>JTableHeader</code> is not showing on the screen.
-   * @throws NullPointerException if the given regular expression pattern is <code>null</code>.
+   * @throws NullPointerException if the given regular expression pattern is {@code null}.
    * @throws LocationUnavailableException if a column with a matching name cannot be found.
    * @since 1.2
    */
@@ -224,7 +224,7 @@ public class JTableHeaderFixture extends ComponentFixture<JTableHeader> implemen
    * pattern.
    * @param pattern the regular expression pattern to match.
    * @return this fixture.
-   * @throws NullPointerException if the given regular expression pattern is <code>null</code>.
+   * @throws NullPointerException if the given regular expression pattern is {@code null}.
    * @throws AssertionError if the toolTip in this fixture's <code>JTableHeader</code> does not match the given regular
    * expression.
    * @since 1.2
@@ -237,9 +237,9 @@ public class JTableHeaderFixture extends ComponentFixture<JTableHeader> implemen
   /**
    * Returns the client property stored in this fixture's <code>{@link JTableHeader}</code>, under the given key.
    * @param key the key to use to retrieve the client property.
-   * @return the value of the client property stored under the given key, or <code>null</code> if the property was
+   * @return the value of the client property stored under the given key, or {@code null} if the property was
    * not found.
-   * @throws NullPointerException if the given key is <code>null</code>.
+   * @throws NullPointerException if the given key is {@code null}.
    * @since 1.2
    */
   public Object clientProperty(Object key) {

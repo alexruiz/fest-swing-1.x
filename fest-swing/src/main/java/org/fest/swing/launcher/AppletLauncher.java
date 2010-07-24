@@ -94,7 +94,7 @@ public class AppletLauncher {
    * given type has a default constructor.
    * @param appletType the type of applet to instantiate.
    * @return the created applet launcher.
-   * @throws NullPointerException if the given type name is <code>null</code>.
+   * @throws NullPointerException if the given type name is {@code null}.
    * @throws IllegalArgumentException if the given type name is empty.
    * @throws IllegalArgumentException if the given type is not a subclass of <code>java.applet.Applet</code>.
    * @throws UnexpectedException if the given type cannot be loaded.
@@ -130,7 +130,7 @@ public class AppletLauncher {
    * given type has a default constructor.
    * @param appletType the type of applet to instantiate.
    * @return the created applet launcher.
-   * @throws NullPointerException if the given type is <code>null</code>.
+   * @throws NullPointerException if the given type is {@code null}.
    * @throws UnexpectedException if a new instance of the given type cannot be instantiated.
    */
   @RunsInEDT
@@ -160,7 +160,7 @@ public class AppletLauncher {
    * Creates a new applet launcher.
    * @param applet the applet to launch.
    * @return the created applet launcher.
-   * @throws NullPointerException if the given applet is <code>null</code>.
+   * @throws NullPointerException if the given applet is {@code null}.
    */
   public static AppletLauncher applet(Applet applet) {
     return new AppletLauncher(applet);
@@ -176,7 +176,7 @@ public class AppletLauncher {
    * <code>{@link #withParameters(AppletParameter...)}</code>.
    * @param newParameters the parameters for the applet to launch.
    * @return this launcher.
-   * @throws NullPointerException if <code>newParameters</code> is <code>null</code>.
+   * @throws NullPointerException if <code>newParameters</code> is {@code null}.
    */
   public AppletLauncher withParameters(Map<String, String> newParameters) {
     if (newParameters == null) throw new NullPointerException("The map of parameters should not be null");
@@ -189,8 +189,8 @@ public class AppletLauncher {
    * Sets the parameters for the applet to launch, as an alternative to <code>{@link #withParameters(Map)}</code>.
    * @param newParameters the parameters for the applet to launch.
    * @return this launcher.
-   * @throws NullPointerException if <code>newParameters</code> is <code>null</code>.
-   * @throws NullPointerException if any parameter is <code>null</code>.
+   * @throws NullPointerException if <code>newParameters</code> is {@code null}.
+   * @throws NullPointerException if any parameter is {@code null}.
    */
   public AppletLauncher withParameters(AppletParameter... newParameters) {
     if (newParameters == null) throw new NullPointerException("The array of parameters should not be null");

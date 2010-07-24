@@ -49,7 +49,7 @@ public class BasicJTableCellReader implements JTableCellReader {
    * Creates a new </code>{@link BasicJTableCellReader}</code>.
    * @param reader knows how to read values from the cell renderer component in a
    * <code>JTable</code>.
-   * @throws NullPointerException if <code>reader</code> is <code>null</code>.
+   * @throws NullPointerException if <code>reader</code> is {@code null}.
    */
   public BasicJTableCellReader(CellRendererReader reader) {
     if (reader == null)

@@ -43,7 +43,7 @@ public interface ItemFixture extends MouseInputSimulationFixture {
   ItemFixture select();
 
   /**
-   * Returns the <code>String</code> representation of this fixture's item, or <code>null</code> if one can not be
+   * Returns the <code>String</code> representation of this fixture's item, or {@code null} if one can not be
    * obtained.
    * @return the <code>String</code> representation of this fixture's item.
    */

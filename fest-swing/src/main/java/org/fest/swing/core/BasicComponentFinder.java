@@ -80,7 +80,7 @@ public final class BasicComponentFinder implements ComponentFinder {
   /**
    * Creates a new <code>{@link BasicComponentFinder}</code>.
    * @param hierarchy the component hierarchy to use.
-   * @param settings the configuration settings to use. It can be <code>null</code>.
+   * @param settings the configuration settings to use. It can be {@code null}.
    */
   protected BasicComponentFinder(ComponentHierarchy hierarchy, Settings settings) {
     this.hierarchy = hierarchy;
@@ -337,7 +337,7 @@ public final class BasicComponentFinder implements ComponentFinder {
 
   /**
    * Returns the value of the flag "requireShowing" in the <code>{@link ComponentLookupScope}</code> this finder's
-   * <code>{@link Settings}</code>. If the settings object is <code>null</code>, this method will return the provided
+   * <code>{@link Settings}</code>. If the settings object is {@code null}, this method will return the provided
    * default value.
    * @param defaultValue the value to return if this matcher does not have any configuration settings.
    * @return the value of the flag "requireShowing" in this finder's settings, or the provided default value if this

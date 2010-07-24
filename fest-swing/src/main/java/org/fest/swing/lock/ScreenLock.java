@@ -84,7 +84,7 @@ public final class ScreenLock {
   /**
    * Indicates whether this lock was acquired by the given object.
    * @param possibleOwner the given object, which could be owning the lock.
-   * @return <code>true</code> if the given object is owning the lock; <code>false</code> otherwise.
+   * @return {@code true} if the given object is owning the lock; {@code false} otherwise.
    */
   public boolean acquiredBy(Object possibleOwner) {
     lock.lock();
@@ -101,7 +101,7 @@ public final class ScreenLock {
 
   /**
    * Indicates whether this lock is already acquired.
-   * @return <code>true</code> if the lock is already acquired; <code>false</code> otherwise.
+   * @return {@code true} if the lock is already acquired; {@code false} otherwise.
    * @see #acquiredBy(Object)
    * @since 1.2
    */

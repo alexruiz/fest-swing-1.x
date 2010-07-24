@@ -43,7 +43,7 @@ public enum ComponentLookupScope {
   
   /**
    * Returns whether showing components are the only ones participating in component lookups.
-   * @return <code>true</code> if only showing components participate in component lookups; <code>false</code> if
+   * @return {@code true} if only showing components participate in component lookups; {@code false} if
    * any component (showing or not showing) can participate in component lookup.
    */
   public boolean requireShowing() { return requireShowing; }

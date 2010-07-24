@@ -33,7 +33,7 @@ public class StringTextMatcher implements TextMatcher {
   /**
    * Creates a new </code>{@link StringTextMatcher}</code>.
    * @param values the <code>String</code> values to match. Each value can be a regular expression.
-   * @throws NullPointerException if the array of values is <code>null</code>.
+   * @throws NullPointerException if the array of values is {@code null}.
    * @throws IllegalArgumentException if the array of values is empty.
    */
   public StringTextMatcher(String...values) {
@@ -46,8 +46,8 @@ public class StringTextMatcher implements TextMatcher {
    * Indicates whether the given text matches the <code>String</code> values in this matcher. Each value can be a
    * regular expression.
    * @param text the text to verify.
-   * @return <code>true</code> if the given text matches the <code>String</code> values in this matcher,
-   * <code>false</code> otherwise.
+   * @return {@code true} if the given text matches the <code>String</code> values in this matcher,
+   * {@code false} otherwise.
    */
   public boolean isMatching(String text) {
     for (String value : values)

@@ -42,7 +42,7 @@ public class DialogFixture extends WindowFixture<Dialog> {
    * Creates a new <code>{@link DialogFixture}</code>. This constructor creates a new <code>{@link Robot}</code>
    * containing the current AWT hierarchy.
    * @param target the <code>Dialog</code> to be managed by this fixture.
-   * @throws NullPointerException if <code>target</code> is <code>null</code>.
+   * @throws NullPointerException if <code>target</code> is {@code null}.
    * @see BasicRobot#robotWithCurrentAwtHierarchy()
    */
   public DialogFixture(Dialog target) {
@@ -54,8 +54,8 @@ public class DialogFixture extends WindowFixture<Dialog> {
    * Creates a new <code>{@link DialogFixture}</code>.
    * @param robot performs simulation of user events on the given <code>Dialog</code>.
    * @param target the <code>Dialog</code> to be managed by this fixture.
-   * @throws NullPointerException if <code>robot</code> is <code>null</code>.
-   * @throws NullPointerException if <code>target</code> is <code>null</code>.
+   * @throws NullPointerException if <code>robot</code> is {@code null}.
+   * @throws NullPointerException if <code>target</code> is {@code null}.
    */
   public DialogFixture(Robot robot, Dialog target) {
     super(robot, target);
@@ -66,7 +66,7 @@ public class DialogFixture extends WindowFixture<Dialog> {
    * Creates a new <code>{@link DialogFixture}</code>.
    * @param robot performs simulation of user events on a <code>Dialog</code>.
    * @param dialogName the name of the <code>Dialog</code> to find using the given <code>Robot</code>.
-   * @throws NullPointerException if <code>robot</code> is <code>null</code>.
+   * @throws NullPointerException if <code>robot</code> is {@code null}.
    * @throws ComponentLookupException if a <code>Dialog</code> having a matching name could not be found.
    * @throws ComponentLookupException if more than one <code>Dialog</code> having a matching name is found.
    */
@@ -95,7 +95,7 @@ public class DialogFixture extends WindowFixture<Dialog> {
   /**
    * Sets the <code>{@link DialogDriver}</code> to be used by this fixture.
    * @param newDriver the new <code>DialogDriver</code>.
-   * @throws NullPointerException if the given driver is <code>null</code>.
+   * @throws NullPointerException if the given driver is {@code null}.
    */
   protected final void driver(DialogDriver newDriver) {
     validateNotNull(newDriver);
@@ -125,7 +125,7 @@ public class DialogFixture extends WindowFixture<Dialog> {
    * Simulates a user clicking this fixture's <code>{@link Dialog}</code>.
    * @param mouseClickInfo specifies the button to click and the times the button should be clicked.
    * @return this fixture.
-   * @throws NullPointerException if the given <code>MouseClickInfo</code> is <code>null</code>.
+   * @throws NullPointerException if the given <code>MouseClickInfo</code> is {@code null}.
    */
   public DialogFixture click(MouseClickInfo mouseClickInfo) {
     driver.click(target, mouseClickInfo);
@@ -154,8 +154,8 @@ public class DialogFixture extends WindowFixture<Dialog> {
    * Simulates a user moving this fixture's <code>{@link Dialog}</code> to the given point.
    * @param p the point to move this fixture's <code>Dialog</code> to.
    * @return this fixture.
-   * @throws ActionFailedException if the <code>Window</code> is not movable.
-   * @throws ActionFailedException if the given <code>Window</code> is not showing on the screen.
+   * @throws ActionFailedException if the {@code Window} is not movable.
+   * @throws ActionFailedException if the given {@code Window} is not showing on the screen.
    */
   public DialogFixture moveTo(Point p) {
     driver.moveTo(target, p);
@@ -187,7 +187,7 @@ public class DialogFixture extends WindowFixture<Dialog> {
    * Modifiers is a mask from the available <code>{@link java.awt.event.InputEvent}</code> masks.
    * @param keyPressInfo specifies the key and modifiers to press.
    * @return this fixture.
-   * @throws NullPointerException if the given <code>KeyPressInfo</code> is <code>null</code>.
+   * @throws NullPointerException if the given <code>KeyPressInfo</code> is {@code null}.
    * @throws IllegalArgumentException if the given code is not a valid key code.
    * @see KeyPressInfo
    */
@@ -200,7 +200,7 @@ public class DialogFixture extends WindowFixture<Dialog> {
    * Simulates a user pressing and releasing the given keys on this fixture's <code>{@link Dialog}</code>.
    * @param keyCodes one or more codes of the keys to press.
    * @return this fixture.
-   * @throws NullPointerException if the given array of codes is <code>null</code>.
+   * @throws NullPointerException if the given array of codes is {@code null}.
    * @throws IllegalArgumentException if any of the given code is not a valid key code.
    * @see java.awt.event.KeyEvent
    */
@@ -319,7 +319,7 @@ public class DialogFixture extends WindowFixture<Dialog> {
    * Simulates a user resizing vertically this fixture's <code>{@link Dialog}</code>.
    * @param height the height that this fixture's <code>Dialog</code> should have after being resized.
    * @return this fixture.
-   * @throws ActionFailedException if the <code>Window</code> is not resizable.
+   * @throws ActionFailedException if the {@code Window} is not resizable.
    */
   public DialogFixture resizeHeightTo(int height) {
     driver.resizeHeightTo(target, height);
@@ -330,7 +330,7 @@ public class DialogFixture extends WindowFixture<Dialog> {
    * Simulates a user resizing this fixture's <code>{@link Dialog}</code>.
    * @param size the size that the target window should have after being resized.
    * @return this fixture.
-   * @throws ActionFailedException if the <code>Window</code> is not resizable.
+   * @throws ActionFailedException if the {@code Window} is not resizable.
    */
   public DialogFixture resizeTo(Dimension size) {
     driver.resizeTo(target, size);
@@ -341,7 +341,7 @@ public class DialogFixture extends WindowFixture<Dialog> {
    * Simulates a user resizing horizontally this fixture's <code>{@link Dialog}</code>.
    * @param width the width that this fixture's <code>Dialog</code> should have after being resized.
    * @return this fixture.
-   * @throws ActionFailedException if the <code>Window</code> is not resizable.
+   * @throws ActionFailedException if the {@code Window} is not resizable.
    */
   public DialogFixture resizeWidthTo(int width) {
     driver.resizeWidthTo(target, width);

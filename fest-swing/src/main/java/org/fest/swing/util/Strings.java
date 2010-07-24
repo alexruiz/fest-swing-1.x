@@ -33,8 +33,8 @@ public final class Strings {
    * Returns whether the given <code>String</code> is the default <code>toString()</code> implementation of an
    * <code>Object</code>.
    * @param s the given <code>String</code>.
-   * @return <code>true</code> if the given <code>String</code> is the default <code>toString()</code> implementation,
-   * <code>false</code> otherwise.
+   * @return {@code true} if the given <code>String</code> is the default <code>toString()</code> implementation,
+   * {@code false} otherwise.
    */
   public static boolean isDefaultToString(String s) {
     if (isEmpty(s)) return false;
@@ -57,7 +57,7 @@ public final class Strings {
    * </ul>
    * @param pattern a <code>String</code> to match (it can be a regular expression.)
    * @param s the <code>String</code> to verify.
-   * @return <code>true</code> if the given <code>String</code>s match, <code>false</code> otherwise.
+   * @return {@code true} if the given <code>String</code>s match, {@code false} otherwise.
    */
   public static boolean areEqualOrMatch(String pattern, String s) {
     if (areEqual(pattern, s)) return true;
@@ -75,10 +75,10 @@ public final class Strings {
    * Indicates if the given <code>String</code> matches the given regular expression pattern.
    * @param p the given regular expression pattern.
    * @param s the <code>String</code> to evaluate.
-   * @return <code>true</code> if the given <code>String</code> matches the given regular expression pattern,
-   * <code>false</code> otherwise. It also returns <code>false</code> if the given <code>String</code> is
-   * <code>null</code>.
-   * @throws NullPointerException if the given regular expression pattern is <code>null</code>.
+   * @return {@code true} if the given <code>String</code> matches the given regular expression pattern,
+   * {@code false} otherwise. It also returns {@code false} if the given <code>String</code> is
+   * {@code null}.
+   * @throws NullPointerException if the given regular expression pattern is {@code null}.
    */
   public static boolean match(Pattern p, String s) {
     return match(p, (CharSequence)s);
@@ -88,10 +88,10 @@ public final class Strings {
    * Indicates if the given <code>CharSequence</code> matches the given regular expression pattern.
    * @param p the given regular expression pattern.
    * @param s the <code>CharSequence</code> to evaluate.
-   * @return <code>true</code> if the given <code>CharSequence</code> matches the given regular expression pattern,
-   * <code>false</code> otherwise. It also returns <code>false</code> if the given <code>CharSequence</code> is
-   * <code>null</code>.
-   * @throws NullPointerException if the given regular expression pattern is <code>null</code>.
+   * @return {@code true} if the given <code>CharSequence</code> matches the given regular expression pattern,
+   * {@code false} otherwise. It also returns {@code false} if the given <code>CharSequence</code> is
+   * {@code null}.
+   * @throws NullPointerException if the given regular expression pattern is {@code null}.
    */
   public static boolean match(Pattern p, CharSequence s) {
     if (p == null) throw new NullPointerException("The pattern to match should not be null");

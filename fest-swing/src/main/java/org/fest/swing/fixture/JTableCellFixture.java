@@ -62,8 +62,8 @@ public class JTableCellFixture implements ItemFixture {
    * Creates a new <code>{@link JTableCellFixture}</code>.
    * @param table handles the <code>JTable</code> containing the cell in this fixture.
    * @param cell row and column indices of the table cell to be managed by this fixture.
-   * @throws NullPointerException if <code>table</code> is <code>null</code>.
-   * @throws NullPointerException if <code>cell</code> is <code>null</code>.
+   * @throws NullPointerException if <code>table</code> is {@code null}.
+   * @throws NullPointerException if <code>cell</code> is {@code null}.
    */
   protected JTableCellFixture(JTableFixture table, TableCell cell) {
     validateNotNull(table);
@@ -109,7 +109,7 @@ public class JTableCellFixture implements ItemFixture {
    * Simulates a user clicking this fixture's table cell.
    * @param mouseClickInfo specifies the button to click and the times the button should be clicked.
    * @return this fixture.
-   * @throws NullPointerException if the given <code>MouseClickInfo</code> is <code>null</code>.
+   * @throws NullPointerException if the given <code>MouseClickInfo</code> is {@code null}.
    * @throws IllegalStateException if this fixture's <code>JTable</code> is disabled.
    * @throws IllegalStateException if this fixture's <code>JTable</code> is not showing on the screen.
    */
@@ -142,7 +142,7 @@ public class JTableCellFixture implements ItemFixture {
    * Simulates a user clicking a cell in this fixture's table cell once, using the specified mouse button.
    * @param button the mouse button to use.
    * @return this fixture.
-   * @throws NullPointerException if the given <code>MouseButton</code> is <code>null</code>.
+   * @throws NullPointerException if the given <code>MouseButton</code> is {@code null}.
    * @throws IllegalStateException if this fixture's <code>JTable</code> is disabled.
    * @throws IllegalStateException if this fixture's <code>JTable</code> is not showing on the screen.
    */
@@ -306,7 +306,7 @@ public class JTableCellFixture implements ItemFixture {
    * Asserts that the value of this fixture's table cell matches the given regular expression pattern.
    * @param pattern the regular expression pattern to match.
    * @return this fixture.
-   * @throws NullPointerException if the given regular expression pattern is <code>null</code>.
+   * @throws NullPointerException if the given regular expression pattern is {@code null}.
    * @throws AssertionError if the value of this fixture's table cell does not match the expected the given regular
    * expression pattern.
    * @since 1.2

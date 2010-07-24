@@ -285,9 +285,9 @@ public abstract class AbstractJTableCellWriter implements JTableCellWriter {
 
 
   /**
-   * Returns the cell editor being currently used. This method will return <code>null</code> if no table cell is being
+   * Returns the cell editor being currently used. This method will return {@code null} if no table cell is being
    * currently edited.
-   * @return the cell editor being currently used, or <code>null</code> if no table cell is being currently edited.
+   * @return the cell editor being currently used, or {@code null} if no table cell is being currently edited.
    */
   protected final TableCellEditor cellEditor() { return cellEditor; }
 

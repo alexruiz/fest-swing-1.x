@@ -23,7 +23,7 @@ import org.junit.Test;
  * Tests for <code>{@link NameMatcher#matches(java.awt.Component)}</code>.
  * <p>
  * The <code>{@link NameMatcher}</code> is created through 
- * <code>{@link NameMatcher#NameMatcher(String, boolean)}</code>, passing <code>true</code> to indicate that the 
+ * <code>{@link NameMatcher#NameMatcher(String, boolean)}</code>, passing {@code true} to indicate that the 
  * <code>{@link java.awt.Component}</code> to match must be showing on the screen.
  * </p>
  * 

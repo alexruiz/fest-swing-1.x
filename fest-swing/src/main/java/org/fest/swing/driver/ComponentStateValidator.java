@@ -35,8 +35,8 @@ public final class ComponentStateValidator {
    * responsible for calling this method from the EDT.
    * </p>
    * @param c the target component.
-   * @throws IllegalStateException if the <code>Component</code> is disabled.
-   * @throws IllegalStateException if the <code>Component</code> is not showing on the screen.
+   * @throws IllegalStateException if the {@code Component} is disabled.
+   * @throws IllegalStateException if the {@code Component} is not showing on the screen.
    */
   @RunsInCurrentThread
   public static void validateIsEnabledAndShowing(Component c) {
@@ -51,7 +51,7 @@ public final class ComponentStateValidator {
    * responsible for calling this method from the EDT.
    * </p>
    * @param c the target component.
-   * @throws IllegalStateException if the <code>Component</code> is disabled.
+   * @throws IllegalStateException if the {@code Component} is disabled.
    */
   @RunsInCurrentThread
   public static void validateIsEnabled(Component c) {
@@ -65,7 +65,7 @@ public final class ComponentStateValidator {
    * responsible for calling this method from the EDT.
    * </p>
    * @param c the target component.
-   * @throws IllegalStateException if the <code>Component</code> is not showing on the screen.
+   * @throws IllegalStateException if the {@code Component} is not showing on the screen.
    */
   @RunsInCurrentThread
   public static void validateIsShowing(Component c) {

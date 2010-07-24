@@ -496,7 +496,7 @@ public interface ComponentFinder {
    * Returns all the <code>{@link Component}</code>s that match the search criteria specified in the given
    * <code>{@link ComponentMatcher}</code>.
    * @param m the matcher to use to find the component.
-   * @return all the <code>Component</code>s that match the search criteria specified in the given
+   * @return all the {@code Component}s that match the search criteria specified in the given
    * <code>ComponentMatcher</code>; or an empty collection, if there are no matching components.
    */
   Collection<Component> findAll(ComponentMatcher m);
@@ -506,7 +506,7 @@ public interface ComponentFinder {
    * the given <code>{@link ComponentMatcher}</code>.
    * @param root the root used as the starting point of the search.
    * @param m the matcher to use to find the component.
-   * @return all the <code>Component</code>s under the given root that match the search criteria specified in the given
+   * @return all the {@code Component}s under the given root that match the search criteria specified in the given
    * <code>ComponentMatcher</code>; or an empty collection, if there are no matching components.
    */
   Collection<Component> findAll(Container root, ComponentMatcher m);
@@ -516,7 +516,7 @@ public interface ComponentFinder {
    * <code>{@link GenericTypeMatcher}</code>.
    * @param <T> the generic type of component that this search supports.
    * @param m the matcher to use to find the component.
-   * @return all the <code>Component</code>s that match the search criteria specified in the given
+   * @return all the {@code Component}s that match the search criteria specified in the given
    * <code>GenericTypeMatcher</code>; or an empty collection, if there are no matching components.
    */
   <T extends Component> Collection<T> findAll(GenericTypeMatcher<T> m);
@@ -527,22 +527,22 @@ public interface ComponentFinder {
    * @param <T> the generic type of component that this search supports.
    * @param root the root used as the starting point of the search.
    * @param m the matcher to use to find the component.
-   * @return all the <code>Component</code>s under the given root that match the search criteria specified in the given
+   * @return all the {@code Component}s under the given root that match the search criteria specified in the given
    * <code>GenericTypeMatcher</code>; or an empty collection, if there are no matching components.
    */
   <T extends Component> Collection<T> findAll(Container root, GenericTypeMatcher<T> m);
 
   /**
    * Returns whether the message in a <code>{@link ComponentLookupException}</code> should include the current component
-   * hierarchy. The default value is <code>true</code>.
-   * @return <code>true</code> if the component hierarchy is included as part of the
-   * <code>ComponentLookupException</code> message, <code>false</code> otherwise.
+   * hierarchy. The default value is {@code true}.
+   * @return {@code true} if the component hierarchy is included as part of the
+   * <code>ComponentLookupException</code> message, {@code false} otherwise.
    */
   boolean includeHierarchyIfComponentNotFound();
 
   /**
    * Updates whether the message in a <code>{@link ComponentLookupException}</code> should include the current component
-   * hierarchy. The default value is <code>true</code>.
+   * hierarchy. The default value is {@code true}.
    * @param newValue the new value to set.
    */
   void includeHierarchyIfComponentNotFound(boolean newValue);

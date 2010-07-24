@@ -65,7 +65,7 @@ public class JToolBarDriver extends JComponentDriver {
   /**
    * Indicates whether the given <code>{@link JToolBar}</code> is floating or not.
    * @param toolBar the target <code>JToolBar</code>.
-   * @return <code>true</code> if the <code>JToolBar</code> is floating, <code>false</code> otherwise.
+   * @return {@code true} if the <code>JToolBar</code> is floating, {@code false} otherwise.
    */
   @RunsInEDT
   public boolean isFloating(JToolBar toolBar) {

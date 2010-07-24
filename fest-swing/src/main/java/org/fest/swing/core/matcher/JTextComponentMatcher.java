@@ -158,8 +158,8 @@ public final class JTextComponentMatcher extends NamedComponentMatcherTemplate<J
    * responsible for calling this method from the EDT.
    * </p>
    * @param button the <code>JTextComponent</code> to match.
-   * @return <code>true</code> if the text in the <code>JTextComponent</code> is equal to the text in this matcher,
-   * <code>false</code> otherwise.
+   * @return {@code true} if the text in the <code>JTextComponent</code> is equal to the text in this matcher,
+   * {@code false} otherwise.
    */
   @RunsInCurrentThread
   protected boolean isMatching(JTextComponent button) {

@@ -34,8 +34,8 @@ final class JComboBoxSelectedIndexQuery {
   /**
    * Returns the selected index in the given <code>{@link JComboBox}</code>. This action is executed in the event
    * dispatch thread.
-   * @param comboBox the given <code>JComboBox</code>.
-   * @return the selected index in the given <code>JComboBox</code>.
+   * @param comboBox the given {@code JComboBox}.
+   * @return the selected index in the given {@code JComboBox}.
    * @see JComboBox#getSelectedIndex()
    */
   @RunsInEDT

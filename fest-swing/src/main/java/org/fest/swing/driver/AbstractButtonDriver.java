@@ -71,7 +71,7 @@ public class AbstractButtonDriver extends JComponentDriver implements TextDispla
    * Asserts that the text in the given button matches the given regular expression pattern.
    * @param button the given button.
    * @param pattern the regular expression pattern to match.
-   * @throws NullPointerException if the given regular expression pattern is <code>null</code>.
+   * @throws NullPointerException if the given regular expression pattern is {@code null}.
    * @throws AssertionError if the text of the button does not match the given regular expression pattern.
    * @since 1.2
    */

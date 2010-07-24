@@ -47,7 +47,7 @@ public class FontFixture {
   /**
    * Creates a new </code>{@link FontFixture}</code>.
    * @param target the font to manage.
-   * @throws NullPointerException if <code>target</code> is <code>null</code>.
+   * @throws NullPointerException if <code>target</code> is {@code null}.
    */
   public FontFixture(Font target) {
     this(target, (Description)null);
@@ -57,7 +57,7 @@ public class FontFixture {
    * Creates a new </code>{@link FontFixture}</code>.
    * @param target the font to manage.
    * @param description this fixture's description.
-   * @throws NullPointerException if <code>target</code> is <code>null</code>.
+   * @throws NullPointerException if <code>target</code> is {@code null}.
    */
   public FontFixture(Font target, String description) {
     this(target, new BasicDescription(description));
@@ -67,7 +67,7 @@ public class FontFixture {
    * Creates a new </code>{@link FontFixture}</code>.
    * @param target the font to manage.
    * @param description this fixture's description.
-   * @throws NullPointerException if <code>target</code> is <code>null</code>.
+   * @throws NullPointerException if <code>target</code> is {@code null}.
    */
   public FontFixture(Font target, Description description) {
     if (target == null) throw new NullPointerException("The given font should not be null");

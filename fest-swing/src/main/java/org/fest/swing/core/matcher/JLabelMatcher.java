@@ -156,8 +156,8 @@ public final class JLabelMatcher extends NamedComponentMatcherTemplate<JLabel> {
    * responsible for calling this method from the EDT.
    * </p>
    * @param button the <code>JLabel</code> to match.
-   * @return <code>true</code> if the text in the <code>JLabel</code> is equal to the text in this matcher,
-   * <code>false</code> otherwise.
+   * @return {@code true} if the text in the <code>JLabel</code> is equal to the text in this matcher,
+   * {@code false} otherwise.
    */
   @RunsInCurrentThread
   protected boolean isMatching(JLabel button) {

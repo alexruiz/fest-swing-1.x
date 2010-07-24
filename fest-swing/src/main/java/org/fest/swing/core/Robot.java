@@ -70,7 +70,7 @@ public interface Robot {
    * <p>
    * Safely display a window with proper EDT synchronization. This method blocks until the window is showing. This
    * method will return even when the window is a modal dialog, since the show method is called on the event dispatch
-   * thread. The window will be packed if the pack flag is set, and set to the given size if it is non-<code>null</code>.
+   * thread. The window will be packed if the pack flag is set, and set to the given size if it is non-{@code null}.
    * </p>
    * Modal dialogs may be shown with this method without blocking.
    * @param w the window to display.
@@ -120,21 +120,21 @@ public interface Robot {
 
   /**
    * Simulates a user clicking once the given <code>{@link Component}</code> using the left mouse button.
-   * @param c the <code>Component</code> to click on.
+   * @param c the {@code Component} to click on.
    * @throws ActionFailedException if the component to click is out of the boundaries of the screen.
    */
   void click(Component c);
 
   /**
    * Simulates a user right-clicking the given <code>{@link Component}</code>.
-   * @param c the <code>Component</code> to click on.
+   * @param c the {@code Component} to click on.
    * @throws ActionFailedException if the component to click is out of the boundaries of the screen.
    */
   void rightClick(Component c);
 
   /**
    * Simulates a user clicking once the given <code>{@link Component}</code> using the given mouse button.
-   * @param c the <code>Component</code> to click on.
+   * @param c the {@code Component} to click on.
    * @param button the mouse button to use.
    * @throws ActionFailedException if the component to click is out of the boundaries of the screen.
    */
@@ -142,14 +142,14 @@ public interface Robot {
 
   /**
    * Simulates a user double-clicking the given <code>{@link Component}</code>.
-   * @param c the <code>Component</code> to click on.
+   * @param c the {@code Component} to click on.
    * @throws ActionFailedException if the component to click is out of the boundaries of the screen.
    */
   void doubleClick(Component c);
 
   /**
    * Simulates a user clicking the given mouse button, the given times on the given <code>{@link Component}</code>.
-   * @param c the <code>Component</code> to click on.
+   * @param c the {@code Component} to click on.
    * @param button the mouse button to click.
    * @param times the number of times to click the given mouse button.
    * @throws ActionFailedException if the component to click is out of the boundaries of the screen.
@@ -158,8 +158,8 @@ public interface Robot {
 
   /**
    * Simulates a user clicking at the given position on the given <code>{@link Component}</code>.
-   * @param c the <code>Component</code> to click on.
-   * @param where the given coordinates, relative to the given <code>Component</code>.
+   * @param c the {@code Component} to click on.
+   * @param where the given coordinates, relative to the given {@code Component}.
    * @throws ActionFailedException if the component to click is out of the boundaries of the screen.
    */
   void click(Component c, Point where);
@@ -167,8 +167,8 @@ public interface Robot {
   /**
    * Simulates a user clicking the given mouse button, the given times at the given position on the given
    * <code>{@link Component}</code>.
-   * @param c the <code>Component</code> to click on.
-   * @param where the given coordinates, relative to the given <code>Component</code>.
+   * @param c the {@code Component} to click on.
+   * @param where the given coordinates, relative to the given {@code Component}.
    * @param button the mouse button to click.
    * @param times the number of times to click the given mouse button.
    * @throws ActionFailedException if the component to click is out of the boundaries of the screen.
@@ -191,15 +191,15 @@ public interface Robot {
 
   /**
    * Simulates a user pressing the left mouse button on the given <code>{@link Component}</code>.
-   * @param c the <code>Component</code> to click on.
-   * @param where the given coordinates, relative to the given <code>Component</code>.
+   * @param c the {@code Component} to click on.
+   * @param where the given coordinates, relative to the given {@code Component}.
    */
   void pressMouse(Component c, Point where);
 
   /**
    * Simulates a user pressing the given mouse button on the given <code>{@link Component}</code>.
-   * @param c the <code>Component</code> to click on.
-   * @param where the given coordinates, relative to the given <code>Component</code>.
+   * @param c the {@code Component} to click on.
+   * @param where the given coordinates, relative to the given {@code Component}.
    * @param button the mouse button to press.
    */
   void pressMouse(Component c, Point where, MouseButton button);
@@ -214,15 +214,15 @@ public interface Robot {
 
   /**
    * Simulates a user moving the mouse pointer to the center of the given <code>{@link Component}</code>.
-   * @param c the given <code>Component</code>.
+   * @param c the given {@code Component}.
    */
   void moveMouse(Component c);
 
   /**
    * Simulates a user moving the mouse pointer to the given coordinates relative to the given
    * <code>{@link Component}</code>.
-   * @param c the given <code>Component</code>.
-   * @param p the given coordinates, relative to the given <code>Component</code>.
+   * @param c the given {@code Component}.
+   * @param p the given coordinates, relative to the given {@code Component}.
    * @throws ActionFailedException if the given component is not showing and ready for input.
    */
   void moveMouse(Component c, Point p);
@@ -230,9 +230,9 @@ public interface Robot {
   /**
    * Simulates a user moving the mouse pointer to the given coordinates relative to the given
    * <code>{@link Component}</code>.
-   * @param c the given <code>Component</code>.
-   * @param x X coordinate, relative to the given <code>Component</code>.
-   * @param y Y coordinate, relative to the given <code>Component</code>.
+   * @param c the given {@code Component}.
+   * @param x X coordinate, relative to the given {@code Component}.
+   * @param y Y coordinate, relative to the given {@code Component}.
    * @throws ActionFailedException if the given component is not showing and ready for input.
    */
   void moveMouse(Component c, int x, int y);
@@ -266,7 +266,7 @@ public interface Robot {
   /**
    * Moves the mouse pointer over to the given <code>{@link Component}</code> and rotates the scroll wheel on
    * wheel-equipped mice.
-   * @param c the given <code>Component</code>.
+   * @param c the given {@code Component}.
    * @param amount number of "notches" to move the mouse wheel. Negative values indicate movement up/away from the user,
    * while positive values indicate movement down/towards the user.
    */
@@ -281,14 +281,14 @@ public interface Robot {
 
   /**
    * Makes the mouse pointer show small quick jumpy movements on the given <code>{@link Component}</code>.
-   * @param c the given <code>Component</code>.
+   * @param c the given {@code Component}.
    */
   void jitter(Component c);
 
   /**
    * Makes the mouse pointer show small quick jumpy movements on the given <code>{@link Component}</code> at the given
    * point.
-   * @param c the given <code>Component</code>.
+   * @param c the given {@code Component}.
    * @param where the given point.
    */
   void jitter(Component c, Point where);
@@ -366,15 +366,15 @@ public interface Robot {
 
   /**
    * Indicates whether the robot is currently in a dragging operation.
-   * @return <code>true</code> if the robot is currently in a dragging operation, <code>false</code> otherwise.
+   * @return {@code true} if the robot is currently in a dragging operation, {@code false} otherwise.
    */
   boolean isDragging();
 
   /**
    * Indicates whether the given <code>{@link Component}</code> is ready for input.
-   * @param c the given <code>Component</code>.
-   * @return <code>true</code> if the given <code>Component</code> is ready for input, <code>false</code> otherwise.
-   * @throws ActionFailedException if the given <code>Component</code> does not have a <code>Window</code> ancestor.
+   * @param c the given {@code Component}.
+   * @return {@code true} if the given {@code Component} is ready for input, {@code false} otherwise.
+   * @throws ActionFailedException if the given {@code Component} does not have a {@code Window} ancestor.
    */
   boolean isReadyForInput(Component c);
 
@@ -396,8 +396,8 @@ public interface Robot {
   JPopupMenu showPopupMenu(Component invoker, Point location);
 
   /**
-   * Returns the currently active pop-up menu, if any. If no pop-up is currently showing, returns <code>null</code>.
-   * @return the currently active pop-up menu or <code>null</code>, if no pop-up is currently showing.
+   * Returns the currently active pop-up menu, if any. If no pop-up is currently showing, returns {@code null}.
+   * @return the currently active pop-up menu or {@code null}, if no pop-up is currently showing.
    */
   JPopupMenu findActivePopupMenu();
 
@@ -416,7 +416,7 @@ public interface Robot {
   /**
    * Indicates whether this <code>Robot</code> is active. Being "active" means that <code>{@link #cleanUp()}</code> has
    * not been called yet.
-   * @return <code>true</code> if this <code>Robot</code> is active, <code>false</code> otherwise.
+   * @return {@code true} if this <code>Robot</code> is active, {@code false} otherwise.
    */
   boolean isActive();
 }

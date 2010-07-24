@@ -46,7 +46,7 @@ public abstract class AbstractComponentMatcher implements ResettableComponentMat
 
   /**
    * Indicates whether the component to match has to be showing.
-   * @return <code>true</code> if the component to find has to be showing, <code>false</code> otherwise.
+   * @return {@code true} if the component to find has to be showing, {@code false} otherwise.
    */
   protected final boolean requireShowing() { return requireShowing; }
 
@@ -66,8 +66,8 @@ public abstract class AbstractComponentMatcher implements ResettableComponentMat
    * responsible for calling this method from the EDT.
    * </p>
    * @param c the component to verify.
-   * @return <code>true</code> if the value of the "isShowing" property of the given component matches the value
-   * specified in this matcher, <code>false</code> otherwise.
+   * @return {@code true} if the value of the "isShowing" property of the given component matches the value
+   * specified in this matcher, {@code false} otherwise.
    */
   @RunsInCurrentThread
   protected final boolean requireShowingMatches(Component c) {

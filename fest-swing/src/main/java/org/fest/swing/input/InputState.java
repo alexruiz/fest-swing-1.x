@@ -132,9 +132,9 @@ public class InputState {
   }
 
   /**
-   * Returns the last known Component to contain the pointer, or <code>null</code> if none. Note that this may not
+   * Returns the last known Component to contain the pointer, or {@code null} if none. Note that this may not
    * correspond to the component that actually shows up in AWTEvents.
-   * @return the last known Component to contain the pointer, or <code>null</code> if none.
+   * @return the last known Component to contain the pointer, or {@code null} if none.
    */
   public synchronized Component mouseComponent() {
     return mouseInfo.component();
@@ -162,7 +162,7 @@ public class InputState {
 
   /**
    * Indicates there is a drag operation in progress.
-   * @return <code>true</code> if there is a drag operation in progress, <code>false</code> otherwise.
+   * @return {@code true} if there is a drag operation in progress, {@code false} otherwise.
    */
   public synchronized boolean dragInProgress() {
     return dragDropInfo.isDragging();
@@ -170,7 +170,7 @@ public class InputState {
 
   /**
    * Returns the <code>{@link Component}</code> where a drag operation started.
-   * @return the <code>Component</code> where a drag operation started.
+   * @return the {@code Component} where a drag operation started.
    */
   public synchronized Component dragSource() {
     return dragDropInfo.source();
@@ -225,9 +225,9 @@ public class InputState {
   }
 
   /**
-   * Returns the mouse location relative to the component that currently contains the pointer, or <code>null</code> if
+   * Returns the mouse location relative to the component that currently contains the pointer, or {@code null} if
    * outside all components.
-   * @return the mouse location relative to the component that currently contains the pointer, or <code>null</code> if
+   * @return the mouse location relative to the component that currently contains the pointer, or {@code null} if
    *         outside all components.
    */
   public synchronized Point mouseLocation() {
@@ -244,7 +244,7 @@ public class InputState {
 
   /**
    * Indicates whether there is a native drag/drop operation in progress.
-   * @return <code>true</code> if there is a native drag/drop operation in progress, <code>false</code> otherwise.
+   * @return {@code true} if there is a native drag/drop operation in progress, {@code false} otherwise.
    */
   public boolean isNativeDragActive() {
     return dragDropInfo.isNativeDragActive();

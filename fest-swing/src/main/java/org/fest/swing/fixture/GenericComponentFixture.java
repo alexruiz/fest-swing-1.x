@@ -50,7 +50,7 @@ import org.fest.swing.timing.Timeout;
  * </pre>
  *
  * </p>
- * @param <T> the type of <code>Component</code> that this fixture can manage.
+ * @param <T> the type of {@code Component} that this fixture can manage.
  *
  * @author <a href="mailto:simeon.fitch@mseedsoft.com">Simeon H.K. Fitch</a>
  */
@@ -63,9 +63,9 @@ public abstract class GenericComponentFixture<T extends Component> extends Compo
   /**
    * Creates a new <code>{@link GenericComponentFixture}</code>.
    * @param robot performs simulation of user events on the given target component.
-   * @param target the target <code>Component</code> to be managed by this fixture.
-   * @throws NullPointerException if <code>robot</code> is <code>null</code>.
-   * @throws NullPointerException if <code>target</code> is <code>null</code>.
+   * @param target the target {@code Component} to be managed by this fixture.
+   * @throws NullPointerException if <code>robot</code> is {@code null}.
+   * @throws NullPointerException if <code>target</code> is {@code null}.
    */
   public GenericComponentFixture(Robot robot, T target) {
     this(robot, new ComponentDriver(robot), target);
@@ -75,10 +75,10 @@ public abstract class GenericComponentFixture<T extends Component> extends Compo
    * Creates a new <code>{@link GenericComponentFixture}</code> using a provided driver.
    * @param robot performs simulation of user events on the given target component.
    * @param driver provided driver to handle input requests.
-   * @param target the target <code>Component</code> to be managed by this fixture.
-   * @throws NullPointerException if <code>robot</code> is <code>null</code>.
-   * @throws NullPointerException if <code>driver</code> is <code>null</code>.
-   * @throws NullPointerException if <code>target</code> is <code>null</code>.
+   * @param target the target {@code Component} to be managed by this fixture.
+   * @throws NullPointerException if <code>robot</code> is {@code null}.
+   * @throws NullPointerException if <code>driver</code> is {@code null}.
+   * @throws NullPointerException if <code>target</code> is {@code null}.
    */
   public GenericComponentFixture(Robot robot, ComponentDriver driver, T target) {
     super(robot, target);
@@ -88,7 +88,7 @@ public abstract class GenericComponentFixture<T extends Component> extends Compo
   /**
    * Sets the <code>{@link ComponentDriver}</code> to be used by this fixture.
    * @param newDriver the new <code>ComponentDriver</code>.
-   * @throws NullPointerException if the given driver is <code>null</code>.
+   * @throws NullPointerException if the given driver is {@code null}.
    */
   protected final void driver(ComponentDriver newDriver) {
     validateNotNull(newDriver);

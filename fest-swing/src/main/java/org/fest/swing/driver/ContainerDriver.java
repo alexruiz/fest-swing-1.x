@@ -58,11 +58,11 @@ public abstract class ContainerDriver extends ComponentDriver {
 
   /**
    * Resizes the <code>{@link Container}</code> horizontally.
-   * @param c the target <code>Container</code>.
-   * @param width the width that the <code>Container</code> should have after being resized.
-   * @throws IllegalStateException if the <code>Container</code> is not enabled.
-   * @throws IllegalStateException if the <code>Container</code> is not resizable by the user.
-   * @throws IllegalStateException if the <code>Container</code> is not showing on the screen.
+   * @param c the target {@code Container}.
+   * @param width the width that the {@code Container} should have after being resized.
+   * @throws IllegalStateException if the {@code Container} is not enabled.
+   * @throws IllegalStateException if the {@code Container} is not resizable by the user.
+   * @throws IllegalStateException if the {@code Container} is not showing on the screen.
    */
   @RunsInEDT
   protected final void resizeWidth(Container c, int width) {
@@ -73,11 +73,11 @@ public abstract class ContainerDriver extends ComponentDriver {
 
   /**
    * Resizes the <code>{@link Container}</code> vertically.
-   * @param c the target <code>Container</code>.
-   * @param height the height that the <code>Container</code> should have after being resized.
-   * @throws IllegalStateException if the <code>Container</code> is not enabled.
-   * @throws IllegalStateException if the <code>Container</code> is not resizable by the user.
-   * @throws IllegalStateException if the <code>Container</code> is not showing on the screen.
+   * @param c the target {@code Container}.
+   * @param height the height that the {@code Container} should have after being resized.
+   * @throws IllegalStateException if the {@code Container} is not enabled.
+   * @throws IllegalStateException if the {@code Container} is not resizable by the user.
+   * @throws IllegalStateException if the {@code Container} is not showing on the screen.
    */
   @RunsInEDT
   protected final void resizeHeight(Container c, int height) {
@@ -88,12 +88,12 @@ public abstract class ContainerDriver extends ComponentDriver {
 
   /**
    * Resizes the <code>{@link Container}</code> to the given size.
-   * @param c the target <code>Container</code>.
-   * @param width the width to resize the <code>Container</code> to.
-   * @param height the height to resize the <code>Container</code> to.
-   * @throws IllegalStateException if the <code>Container</code> is not enabled.
-   * @throws IllegalStateException if the <code>Container</code> is not resizable by the user.
-   * @throws IllegalStateException if the <code>Container</code> is not showing on the screen.
+   * @param c the target {@code Container}.
+   * @param width the width to resize the {@code Container} to.
+   * @param height the height to resize the {@code Container} to.
+   * @throws IllegalStateException if the {@code Container} is not enabled.
+   * @throws IllegalStateException if the {@code Container} is not resizable by the user.
+   * @throws IllegalStateException if the {@code Container} is not showing on the screen.
    */
   @RunsInEDT
   protected final void resize(Container c, int width, int height) {
@@ -141,12 +141,12 @@ public abstract class ContainerDriver extends ComponentDriver {
 
   /**
    * Move the given <code>{@link Container}</code> to the requested location.
-   * @param c the target <code>Container</code>.
+   * @param c the target {@code Container}.
    * @param x the horizontal coordinate.
    * @param y the vertical coordinate.
-   * @throws IllegalStateException if the <code>Container</code> is not enabled.
-   * @throws IllegalStateException if the <code>Container</code> is not movable by the user.
-   * @throws IllegalStateException if the <code>Container</code> is not showing on the screen.
+   * @throws IllegalStateException if the {@code Container} is not enabled.
+   * @throws IllegalStateException if the {@code Container} is not movable by the user.
+   * @throws IllegalStateException if the {@code Container} is not showing on the screen.
    */
   @RunsInEDT
   public void move(Container c, int x, int y) {

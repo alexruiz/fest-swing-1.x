@@ -34,7 +34,7 @@ public class ImageFileWriter {
    * If there is already a <code>File</code> present, its contents are discarded.
    * @param image a <code>BufferedImage</code> to be written.
    * @param filePath the path of the image file to create.
-   * @return <code>false</code> if the image could not be saved.
+   * @return {@code false} if the image could not be saved.
    * @exception IOException if an error occurs during writing.
    */
   public boolean writeAsPng(BufferedImage image, String filePath) throws IOException {

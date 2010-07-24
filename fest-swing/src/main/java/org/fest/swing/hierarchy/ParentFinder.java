@@ -25,7 +25,7 @@ import org.fest.swing.annotation.RunsInCurrentThread;
 
 /**
  * Understands how to find the parent of a <code>{@link Component}</code>. This method returns the most likely parent 
- * based on the type of a given <code>Component</code>.
+ * based on the type of a given {@code Component}.
  * <p>
  * <b>Note:</b> Methods in this class are <b>not</b> executed in the event dispatch thread (EDT.) Clients are
  * responsible for invoking them in the EDT.
@@ -72,10 +72,10 @@ class ParentFinder {
   }
 
   /**
-   * Returns the invoker, if any, of the given component. Returns <code>null</code> if the component is not on a pop-up
+   * Returns the invoker, if any, of the given component. Returns {@code null} if the component is not on a pop-up
    * of any sort.
    * @param c the given component.
-   * @return the invoker of the given component if found. Otherwise, <code>null</code>.
+   * @return the invoker of the given component if found. Otherwise, {@code null}.
    */
   @RunsInCurrentThread
   Component invokerFor(Component c) {

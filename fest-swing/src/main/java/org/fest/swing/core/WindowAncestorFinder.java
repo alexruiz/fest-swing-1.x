@@ -37,15 +37,15 @@ public final class WindowAncestorFinder {
 
   /**
    * Similar to <code>{@link javax.swing.SwingUtilities#getWindowAncestor(Component)}</code>, but returns the
-   * <code>{@link Component}</code> itself if it is a <code>{@link Window}</code>, or the invoker's <code>Window</code>
+   * <code>{@link Component}</code> itself if it is a <code>{@link Window}</code>, or the invoker's {@code Window}
    * if on a pop-up.
    * <p>
    * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
    * responsible for calling this method from the EDT.
    * </p>
-   * @param c the <code>Component</code> to get the <code>Window</code> ancestor of.
-   * @return the <code>Window</code> ancestor of the given <code>Component</code>, the <code>Component</code> itself if
-   * it is a <code>Window</code>, or the invoker's <code>Window</code> if on a pop-up.
+   * @param c the {@code Component} to get the {@code Window} ancestor of.
+   * @return the {@code Window} ancestor of the given {@code Component}, the {@code Component} itself if
+   * it is a {@code Window}, or the invoker's {@code Window} if on a pop-up.
    */
   @RunsInCurrentThread
   public static Window windowAncestorOf(Component c) {

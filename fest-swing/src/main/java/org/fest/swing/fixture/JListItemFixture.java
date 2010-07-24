@@ -46,7 +46,7 @@ public class JListItemFixture implements ItemFixture {
    * Creates a new </code>{@link JListItemFixture}</code>.
    * @param list manages the <code>JList</code> containing the list item to be managed by this fixture.
    * @param index index of the list item to be managed by this fixture.
-   * @throws NullPointerException if <code>list</code> is <code>null</code>.
+   * @throws NullPointerException if <code>list</code> is {@code null}.
    */
   public JListItemFixture(JListFixture list, int index) {
     if (list == null) throw new NullPointerException("The given JListFixture should not be null");
@@ -84,7 +84,7 @@ public class JListItemFixture implements ItemFixture {
    * Simulates a user clicking this fixture's list item.
    * @param button the button to click.
    * @return this fixture.
-   * @throws NullPointerException if the given <code>MouseButton</code> is <code>null</code>.
+   * @throws NullPointerException if the given <code>MouseButton</code> is {@code null}.
    * @throws IllegalStateException if this fixture's <code>JList</code> is disabled.
    * @throws IllegalStateException if this fixture's <code>JList</code> is not showing on the screen.
    * @throws IndexOutOfBoundsException if this item's index is negative or greater than the index of the last item in
@@ -99,7 +99,7 @@ public class JListItemFixture implements ItemFixture {
    * Simulates a user clicking this fixture's list item.
    * @param mouseClickInfo specifies the button to click and the times the button should be clicked.
    * @return this fixture.
-   * @throws NullPointerException if the given <code>MouseClickInfo</code> is <code>null</code>.
+   * @throws NullPointerException if the given <code>MouseClickInfo</code> is {@code null}.
    * @throws IllegalStateException if this fixture's <code>JList</code> is disabled.
    * @throws IllegalStateException if this fixture's <code>JList</code> is not showing on the screen.
    * @throws IndexOutOfBoundsException if this item's index is negative or greater than the index of the last item in

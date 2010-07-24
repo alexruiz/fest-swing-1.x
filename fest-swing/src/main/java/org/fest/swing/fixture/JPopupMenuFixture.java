@@ -41,10 +41,10 @@ public class JPopupMenuFixture extends ComponentFixture<JPopupMenu> implements C
 
   /**
    * Creates a new <code>{@link JPopupMenuFixture}</code>.
-   * @param robot performs simulation of user events on the given <code>JPopupMenu</code>.
-   * @param target the <code>JPopupMenu</code> to be managed by this fixture.
-   * @throws NullPointerException if <code>robot</code> is <code>null</code>.
-   * @throws NullPointerException if <code>target</code> is <code>null</code>.
+   * @param robot performs simulation of user events on the given {@code JPopupMenu}.
+   * @param target the {@code JPopupMenu} to be managed by this fixture.
+   * @throws NullPointerException if <code>robot</code> is {@code null}.
+   * @throws NullPointerException if <code>target</code> is {@code null}.
    */
   public JPopupMenuFixture(Robot robot, JPopupMenu target) {
     super(robot, target);
@@ -55,7 +55,7 @@ public class JPopupMenuFixture extends ComponentFixture<JPopupMenu> implements C
   /**
    * Sets the <code>{@link JPopupMenuDriver}</code> to be used by this fixture.
    * @param newDriver the new <code>JPopupMenuDriver</code>.
-   * @throws NullPointerException if the given driver is <code>null</code>.
+   * @throws NullPointerException if the given driver is {@code null}.
    */
   protected final void driver(JPopupMenuDriver newDriver) {
     validateNotNull(newDriver);
@@ -104,7 +104,7 @@ public class JPopupMenuFixture extends ComponentFixture<JPopupMenu> implements C
    * @param path the path of the menu to find.
    * @return a fixture that manages the <code>JMenuItem</code> found.
    * @throws ComponentLookupException if a <code>JMenuItem</code> under the given path could not be found.
-   * @throws AssertionError if the <code>Component</code> found under the given path is not a <code>JMenuItem</code>.
+   * @throws AssertionError if the {@code Component} found under the given path is not a <code>JMenuItem</code>.
    */
   public JMenuItemFixture menuItemWithPath(String... path) {
     return new JMenuItemFixture(robot, menuItemFinder.menuItemWithPath(path));
@@ -112,7 +112,7 @@ public class JPopupMenuFixture extends ComponentFixture<JPopupMenu> implements C
 
   /**
    * Returns the contents of this fixture's <code>{@link JPopupMenu}</code>.
-   * @return a <code>String</code> array representing the contents of this fixture's <code>JPopupMenu</code>.
+   * @return a <code>String</code> array representing the contents of this fixture's {@code JPopupMenu}.
    */
   public String[] menuLabels() {
     return driver.menuLabelsOf(target);
@@ -121,8 +121,8 @@ public class JPopupMenuFixture extends ComponentFixture<JPopupMenu> implements C
   /**
    * Simulates a user clicking this fixture's <code>{@link JPopupMenu}</code>.
    * @return this fixture.
-   * @throws IllegalStateException if this fixture's <code>JPopupMenu</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JPopupMenu</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JPopupMenu} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JPopupMenu} is not showing on the screen.
    */
   public JPopupMenuFixture click() {
     driver.click(target);
@@ -133,9 +133,9 @@ public class JPopupMenuFixture extends ComponentFixture<JPopupMenu> implements C
    * Simulates a user clicking this fixture's <code>{@link JPopupMenu}</code>.
    * @param button the button to click.
    * @return this fixture.
-   * @throws NullPointerException if the given <code>MouseButton</code> is <code>null</code>.
-   * @throws IllegalStateException if this fixture's <code>JPopupMenu</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JPopupMenu</code> is not showing on the screen.
+   * @throws NullPointerException if the given <code>MouseButton</code> is {@code null}.
+   * @throws IllegalStateException if this fixture's {@code JPopupMenu} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JPopupMenu} is not showing on the screen.
    */
   public JPopupMenuFixture click(MouseButton button) {
     driver.click(target, button);
@@ -146,9 +146,9 @@ public class JPopupMenuFixture extends ComponentFixture<JPopupMenu> implements C
    * Simulates a user clicking this fixture's <code>{@link JPopupMenu}</code>.
    * @param mouseClickInfo specifies the button to click and the times the button should be clicked.
    * @return this fixture.
-   * @throws NullPointerException if the given <code>MouseClickInfo</code> is <code>null</code>.
-   * @throws IllegalStateException if this fixture's <code>JPopupMenu</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JPopupMenu</code> is not showing on the screen.
+   * @throws NullPointerException if the given <code>MouseClickInfo</code> is {@code null}.
+   * @throws IllegalStateException if this fixture's {@code JPopupMenu} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JPopupMenu} is not showing on the screen.
    */
   public JPopupMenuFixture click(MouseClickInfo mouseClickInfo) {
     driver.click(target, mouseClickInfo);
@@ -158,8 +158,8 @@ public class JPopupMenuFixture extends ComponentFixture<JPopupMenu> implements C
   /**
    * Simulates a user right-clicking this fixture's <code>{@link JPopupMenu}</code>.
    * @return this fixture.
-   * @throws IllegalStateException if this fixture's <code>JPopupMenu</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JPopupMenu</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JPopupMenu} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JPopupMenu} is not showing on the screen.
    */
   public JPopupMenuFixture rightClick() {
     driver.rightClick(target);
@@ -169,8 +169,8 @@ public class JPopupMenuFixture extends ComponentFixture<JPopupMenu> implements C
   /**
    * Simulates a user double-clicking this fixture's <code>{@link JPopupMenu}</code>.
    * @return this fixture.
-   * @throws IllegalStateException if this fixture's <code>JPopupMenu</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JPopupMenu</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JPopupMenu} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JPopupMenu} is not showing on the screen.
    */
   public JPopupMenuFixture doubleClick() {
     driver.doubleClick(target);
@@ -180,8 +180,8 @@ public class JPopupMenuFixture extends ComponentFixture<JPopupMenu> implements C
   /**
    * Gives input focus to this fixture's <code>{@link JPopupMenu}</code>.
    * @return this fixture.
-   * @throws IllegalStateException if this fixture's <code>JPopupMenu</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JPopupMenu</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JPopupMenu} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JPopupMenu} is not showing on the screen.
    */
   public JPopupMenuFixture focus() {
     driver.focus(target);
@@ -193,10 +193,10 @@ public class JPopupMenuFixture extends ComponentFixture<JPopupMenu> implements C
    * Modifiers is a mask from the available <code>{@link java.awt.event.InputEvent}</code> masks.
    * @param keyPressInfo specifies the key and modifiers to press.
    * @return this fixture.
-   * @throws NullPointerException if the given <code>KeyPressInfo</code> is <code>null</code>.
+   * @throws NullPointerException if the given <code>KeyPressInfo</code> is {@code null}.
    * @throws IllegalArgumentException if the given code is not a valid key code.
-   * @throws IllegalStateException if this fixture's <code>JPopupMenu</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JPopupMenu</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JPopupMenu} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JPopupMenu} is not showing on the screen.
    * @see KeyPressInfo
    */
   public JPopupMenuFixture pressAndReleaseKey(KeyPressInfo keyPressInfo) {
@@ -209,10 +209,10 @@ public class JPopupMenuFixture extends ComponentFixture<JPopupMenu> implements C
    * method does not affect the current focus.
    * @param keyCodes one or more codes of the keys to press.
    * @return this fixture.
-   * @throws NullPointerException if the given array of codes is <code>null</code>.
+   * @throws NullPointerException if the given array of codes is {@code null}.
    * @throws IllegalArgumentException if any of the given code is not a valid key code.
-   * @throws IllegalStateException if this fixture's <code>JPopupMenu</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JPopupMenu</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JPopupMenu} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JPopupMenu} is not showing on the screen.
    * @see java.awt.event.KeyEvent
    */
   public JPopupMenuFixture pressAndReleaseKeys(int... keyCodes) {
@@ -225,8 +225,8 @@ public class JPopupMenuFixture extends ComponentFixture<JPopupMenu> implements C
    * @param keyCode the code of the key to press.
    * @return this fixture.
    * @throws IllegalArgumentException if any of the given code is not a valid key code.
-   * @throws IllegalStateException if this fixture's <code>JPopupMenu</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JPopupMenu</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JPopupMenu} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JPopupMenu} is not showing on the screen.
    * @see java.awt.event.KeyEvent
    */
   public JPopupMenuFixture pressKey(int keyCode) {
@@ -239,8 +239,8 @@ public class JPopupMenuFixture extends ComponentFixture<JPopupMenu> implements C
    * @param keyCode the code of the key to release.
    * @return this fixture.
    * @throws IllegalArgumentException if any of the given code is not a valid key code.
-   * @throws IllegalStateException if this fixture's <code>JPopupMenu</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JPopupMenu</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JPopupMenu} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JPopupMenu} is not showing on the screen.
    * @see java.awt.event.KeyEvent
    */
   public JPopupMenuFixture releaseKey(int keyCode) {
@@ -251,7 +251,7 @@ public class JPopupMenuFixture extends ComponentFixture<JPopupMenu> implements C
   /**
    * Asserts that this fixture's <code>{@link JPopupMenu}</code> has input focus.
    * @return this fixture.
-   * @throws AssertionError if this fixture's <code>JPopupMenu</code> does not have input focus.
+   * @throws AssertionError if this fixture's {@code JPopupMenu} does not have input focus.
    */
   public JPopupMenuFixture requireFocused() {
     driver.requireFocused(target);
@@ -261,7 +261,7 @@ public class JPopupMenuFixture extends ComponentFixture<JPopupMenu> implements C
   /**
    * Asserts that this fixture's <code>{@link JPopupMenu}</code> is enabled.
    * @return this fixture.
-   * @throws AssertionError if this fixture's <code>JPopupMenu</code> is disabled.
+   * @throws AssertionError if this fixture's {@code JPopupMenu} is disabled.
    */
   public JPopupMenuFixture requireEnabled() {
     driver.requireEnabled(target);
@@ -272,7 +272,7 @@ public class JPopupMenuFixture extends ComponentFixture<JPopupMenu> implements C
    * Asserts that this fixture's <code>{@link JPopupMenu}</code> is enabled.
    * @param timeout the time this fixture will wait for the component to be enabled.
    * @return this fixture.
-   * @throws WaitTimedOutError if this fixture's <code>JPopupMenu</code> is never enabled.
+   * @throws WaitTimedOutError if this fixture's {@code JPopupMenu} is never enabled.
    */
   public JPopupMenuFixture requireEnabled(Timeout timeout) {
     driver.requireEnabled(target, timeout);
@@ -282,7 +282,7 @@ public class JPopupMenuFixture extends ComponentFixture<JPopupMenu> implements C
   /**
    * Asserts that this fixture's <code>{@link JPopupMenu}</code> is disabled.
    * @return this fixture.
-   * @throws AssertionError if this fixture's <code>JPopupMenu</code> is enabled.
+   * @throws AssertionError if this fixture's {@code JPopupMenu} is enabled.
    */
   public JPopupMenuFixture requireDisabled() {
     driver.requireDisabled(target);
@@ -292,7 +292,7 @@ public class JPopupMenuFixture extends ComponentFixture<JPopupMenu> implements C
   /**
    * Asserts that this fixture's <code>{@link JPopupMenu}</code> is visible.
    * @return this fixture.
-   * @throws AssertionError if this fixture's <code>JPopupMenu</code> is not visible.
+   * @throws AssertionError if this fixture's {@code JPopupMenu} is not visible.
    */
   public JPopupMenuFixture requireVisible() {
     driver.requireVisible(target);
@@ -302,7 +302,7 @@ public class JPopupMenuFixture extends ComponentFixture<JPopupMenu> implements C
   /**
    * Asserts that this fixture's <code>{@link JPopupMenu}</code> is not visible.
    * @return this fixture.
-   * @throws AssertionError if this fixture's <code>JPopupMenu</code> is visible.
+   * @throws AssertionError if this fixture's {@code JPopupMenu} is visible.
    */
   public JPopupMenuFixture requireNotVisible() {
     driver.requireNotVisible(target);

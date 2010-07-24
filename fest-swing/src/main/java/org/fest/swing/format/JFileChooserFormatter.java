@@ -41,7 +41,7 @@ public class JFileChooserFormatter extends ComponentFormatterTemplate {
   /**
    * Returns the <code>String</code> representation of the given <code>{@link Component}</code>, which should be a
    * <code>{@link JFileChooser}</code> (or subclass.)
-   * @param c the given <code>Component</code>.
+   * @param c the given {@code Component}.
    * @return the <code>String</code> representation of the given <code>JFileChooser</code>.
    */
   protected String doFormat(Component c) {

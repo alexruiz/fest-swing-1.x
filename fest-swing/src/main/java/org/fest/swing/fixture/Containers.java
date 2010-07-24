@@ -44,7 +44,7 @@ public final class Containers {
    * create any additional instances of <code>Robot</code>. Only one instance of <code>Robot</code> can exist per
    * test class.
    * </p>
-   * @param contentPane the <code>Container</code> to use as content pane for the <code>JFrame</code> to create.
+   * @param contentPane the {@code Container} to use as content pane for the <code>JFrame</code> to create.
    * @return the created <code>FrameFixture</code>.
    * @see #frameFor(Container)
    */
@@ -65,7 +65,7 @@ public final class Containers {
    * create any additional instances of <code>Robot</code>. Only one instance of <code>Robot</code> can exist per
    * test class.
    * </p>
-   * @param contentPane the <code>Container</code> to use as content pane for the <code>JFrame</code> to create.
+   * @param contentPane the {@code Container} to use as content pane for the <code>JFrame</code> to create.
    * @return the created <code>FrameFixture</code>.
    * @see #frameFor(Container)
    */
@@ -78,7 +78,7 @@ public final class Containers {
    * Creates a new <code>{@link JFrame}</code> and uses the given <code>{@link Container}</code> as its content pane.
    * The created <code>JFrame</code> has the name specified by <code>{@link #CREATED_FRAME_NAME}</code>. This method
    * is executed in the Event Dispatch Thread (EDT.)
-   * @param contentPane the <code>Container</code> to use as content pane for the <code>JFrame</code> to create.
+   * @param contentPane the {@code Container} to use as content pane for the <code>JFrame</code> to create.
    * @return the created <code>JFrame</code>.
    */
   @RunsInEDT

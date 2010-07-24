@@ -29,7 +29,7 @@ import org.junit.Test;
 /**
  * Tests for <a href="http://code.google.com/p/fest/issues/detail?id=209" target="_blank">Bug 209</a>.
  * <p>
- * Demonstrate bug when testing <code>JComboBox</code>es. If a custom model is used the <code>JComboBox</code> must be
+ * Demonstrate bug when testing {@code JComboBox}es. If a custom model is used the {@code JComboBox} must be
  * click before <code>JComboBoxDriver</code> can find the pop-up list for it. (FEST 1.0b1, Java 1.5)
  * </p>
  * 

@@ -106,7 +106,7 @@ public class JTabbedPaneDriver extends JComponentDriver {
    * @param pattern the regular expression pattern to match.
    * @throws IllegalStateException if the <code>JTabbedPane</code> is disabled.
    * @throws IllegalStateException if the <code>JTabbedPane</code> is not showing on the screen.
-   * @throws NullPointerException if the given regular expression pattern is <code>null</code>.
+   * @throws NullPointerException if the given regular expression pattern is {@code null}.
    * @throws LocationUnavailableException if a tab matching the given regular expression pattern could not be found.
    * @since 1.2
    */
@@ -236,7 +236,7 @@ public class JTabbedPaneDriver extends JComponentDriver {
    * @param tabbedPane the target <code>JTabbedPane</code>.
    * @param pattern the regular expression pattern to match.
    * @param index the index of the tab.
-   * @throws NullPointerException if the given regular expression pattern is <code>null</code>.
+   * @throws NullPointerException if the given regular expression pattern is {@code null}.
    * @throws IndexOutOfBoundsException if the given index is not within the <code>JTabbedPane</code> bounds.
    * @throws AssertionError if the title of the tab at the given index does not match the given one.
    * @since 1.2

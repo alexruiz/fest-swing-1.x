@@ -51,10 +51,10 @@ import org.fest.swing.edt.GuiQuery;
  * viewerFixture.cleanUp();
  * </pre>
  * <p>
- * <b>Note:</b> In version 1.2, due to bug <a href="http://jira.codehaus.org/browse/FEST-219" target="_blank">FEST-219</a>
- * constructors in this class have been replaced with the static factory methods <code>newViewer</code>. It was not
- * possible to just deprecate them. To ensure correct behavior of the applet viewer, they had to be made unaccessible to
- * client code.
+ * <b>Note:</b> In version 1.2, due to bug 
+ * <a href="http://jira.codehaus.org/browse/FEST-219" target="_blank">FEST-219</a> constructors in this class have been 
+ * replaced with the static factory methods {@code newViewer}. It was not possible to just deprecate them. To ensure 
+ * correct behavior of the applet viewer, they had to be made unaccessible to client code.
  * </p>
  * </p>
  *
@@ -82,8 +82,8 @@ public class AppletViewer extends JFrame implements StatusDisplay {
    * <b>Note:</b> This method is executed in the event dispatch thread (EDT.)
    * </p>
    * @param applet the applet to view.
-   * @return the created <code>AppletViewer</code>.
-   * @throws NullPointerException if <code>applet</code> is <code>null</code>.
+   * @return the created {@code AppletViewer}.
+   * @throws NullPointerException if {@code applet} is {@code null}.
    * @since 1.2
    */
   @RunsInEDT
@@ -101,9 +101,9 @@ public class AppletViewer extends JFrame implements StatusDisplay {
    * </p>
    * @param applet the applet to view.
    * @param parameters the parameters included in an applet HTML tag.
-   * @return the created <code>AppletViewer</code>.
-   * @throws NullPointerException if <code>applet</code> is <code>null</code>.
-   * @throws NullPointerException if <code>parameters</code> is <code>null</code>.
+   * @return the created {@code AppletViewer}.
+   * @throws NullPointerException if {@code applet} is {@code null}.
+   * @throws NullPointerException if {@code parameters} is {@code null}.
    * @since 1.2
    */
   @RunsInEDT
@@ -121,9 +121,9 @@ public class AppletViewer extends JFrame implements StatusDisplay {
    * </p>
    * @param applet the applet to view.
    * @param stub the applet's stub.
-   * @return the created <code>AppletViewer</code>.
-   * @throws NullPointerException if <code>applet</code> is <code>null</code>.
-   * @throws NullPointerException if <code>stub</code> is <code>null</code>.
+   * @return the created {@code AppletViewer}.
+   * @throws NullPointerException if {@code applet} is {@code null}.
+   * @throws NullPointerException if {@code stub} is {@code null}.
    * @since 1.2
    */
   @RunsInEDT
@@ -200,7 +200,7 @@ public class AppletViewer extends JFrame implements StatusDisplay {
 
   /**
    * Indicates whether the applet in this viewer is loaded or not.
-   * @return <code>true</code> if this applet is loaded, <code>false</code> otherwise.
+   * @return {@code true} if this applet is loaded, {@code false} otherwise.
    */
   public boolean appletLoaded() { return loaded; }
 
@@ -236,7 +236,7 @@ public class AppletViewer extends JFrame implements StatusDisplay {
 
   /**
    * Returns the <code>{@link AppletStub}</code> in this viewer.
-   * @return the <code>AppletStub</code> in this viewer.
+   * @return the {@code AppletStub} in this viewer.
    */
   public AppletStub stub() {
     return stub;

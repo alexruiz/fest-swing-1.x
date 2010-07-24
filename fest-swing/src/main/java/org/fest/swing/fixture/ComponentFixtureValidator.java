@@ -27,10 +27,10 @@ import org.fest.swing.core.Robot;
 public final class ComponentFixtureValidator {
 
   /**
-   * Verifies that the given <code>{@link Robot}</code> is not <code>null</code>.
+   * Verifies that the given <code>{@link Robot}</code> is not {@code null}.
    * @param robot the <code>Robot</code> to verify.
    * @return the given <code>Robot</code>.
-   * @throws NullPointerException if <code>robot</code> is <code>null</code>.
+   * @throws NullPointerException if <code>robot</code> is {@code null}.
    */
   public static Robot notNullRobot(Robot robot) {
     if (robot == null) throw new NullPointerException("Robot should not be null");
@@ -38,11 +38,11 @@ public final class ComponentFixtureValidator {
   }
   
   /**
-   * Verifies that the given <code>{@link Component}</code> is not <code>null</code>.
-   * @param <T> specifies the type of <code>Component</code> to return.
-   * @param target the <code>Component</code> to verify.
-   * @return the given target <code>Component</code>.
-   * @throws NullPointerException if <code>target</code> is <code>null</code>.
+   * Verifies that the given <code>{@link Component}</code> is not {@code null}.
+   * @param <T> specifies the type of {@code Component} to return.
+   * @param target the {@code Component} to verify.
+   * @return the given target {@code Component}.
+   * @throws NullPointerException if <code>target</code> is {@code null}.
    */
   public static <T extends Component> T notNullTarget(T target) {
     if (target == null) throw new NullPointerException("Target component should not be null");

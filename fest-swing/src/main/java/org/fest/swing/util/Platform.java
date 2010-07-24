@@ -77,8 +77,8 @@ public final class Platform {
    * Indicates whether it is possible to resize windows that are not an instance of <code>{@link java.awt.Frame}</code>
    * or <code>{@link java.awt.Dialog}</code>. Most X11 window managers will allow this, but stock Macintosh and Windows
    * do not.
-   * @return <code>true</code> if it is possible to resize windows other than <code>Frame</code>s or
-   * <code>Dialog</code>s, <code>false</code> otherwise.
+   * @return {@code true} if it is possible to resize windows other than <code>Frame</code>s or
+   * <code>Dialog</code>s, {@code false} otherwise.
    */
   public static boolean canResizeWindows() {
     return !isWindows() && !isMacintosh();
@@ -88,8 +88,8 @@ public final class Platform {
    * Indicates whether it is possible to move windows that are not an instance of <code>{@link java.awt.Frame}</code> or
    * <code>{@link java.awt.Dialog}</code>. Most X11 window managers will allow this, but stock Macintosh and Windows do
    * not.
-   * @return <code>true</code> if it is possible to move windows other than <code>Frame</code>s or <code>Dialog</code>s,
-   * <code>false</code> otherwise.
+   * @return {@code true} if it is possible to move windows other than <code>Frame</code>s or <code>Dialog</code>s,
+   * {@code false} otherwise.
    */
   public static boolean canMoveWindows() {
     return !isWindows() && !isMacintosh();
@@ -97,7 +97,7 @@ public final class Platform {
 
   /**
    * Indicates whether the operating system is Windows.
-   * @return <code>true</code> if the operation system is Windows, <code>false</code> otherwise.
+   * @return {@code true} if the operation system is Windows, {@code false} otherwise.
    */
   public static boolean isWindows() {
     return osIdentifier.isWindows();
@@ -105,7 +105,7 @@ public final class Platform {
 
   /**
    * Indicates whether the operating system is Windows 9x (95, 98 or ME.)
-   * @return <code>true</code> if the operating system is Windows 9x (95, 98 or ME,) <code>false</code> otherwise.
+   * @return {@code true} if the operating system is Windows 9x (95, 98 or ME,) {@code false} otherwise.
    */
   public static boolean isWindows9x() {
     return osIdentifier.isWindows9x();
@@ -113,7 +113,7 @@ public final class Platform {
 
   /**
    * Indicates whether the operating system is Windows XP.
-   * @return <code>true</code> if the operating system is Windows XP, <code>false</code> otherwise.
+   * @return {@code true} if the operating system is Windows XP, {@code false} otherwise.
    */
   public static boolean isWindowsXP() {
     return osIdentifier.isWindowsXP();
@@ -121,7 +121,7 @@ public final class Platform {
 
   /**
    * Indicates whether the operating system is a Macintosh OS.
-   * @return <code>true</code> is the operating system is a Macintosh OS, <code>false</code> otherwise.
+   * @return {@code true} is the operating system is a Macintosh OS, {@code false} otherwise.
    */
   public static boolean isMacintosh() {
     return osIdentifier.isMacintosh();
@@ -129,7 +129,7 @@ public final class Platform {
 
   /**
    * Indicates whether the operating system is Mac OS X.
-   * @return <code>true</code> if the operating system is Mac OS X, <code>false</code> otherwise.
+   * @return {@code true} if the operating system is Mac OS X, {@code false} otherwise.
    */
   public static boolean isOSX() {
     return osIdentifier.isOSX();
@@ -137,7 +137,7 @@ public final class Platform {
 
   /**
    * Indicates whether the operating system is using the X11 Windowing system.
-   * @return <code>true</code> if the operating system is using the X11 Windowing system, <code>false</code> otherwise.
+   * @return {@code true} if the operating system is using the X11 Windowing system, {@code false} otherwise.
    */
   public static boolean isX11() {
     return osIdentifier.isX11();
@@ -145,7 +145,7 @@ public final class Platform {
 
   /**
    * Indicates whether the operating system is Solaris.
-   * @return <code>true</code> if the operating system is Solaris, <code>false</code> otherwise.
+   * @return {@code true} if the operating system is Solaris, {@code false} otherwise.
    */
   public static boolean isSolaris() {
     return osIdentifier.isSolaris();
@@ -153,7 +153,7 @@ public final class Platform {
 
   /**
    * Indicates whether the operating system is HP-UX.
-   * @return <code>true</code> if the operating system is HP-UX, <code>false</code> otherwise.
+   * @return {@code true} if the operating system is HP-UX, {@code false} otherwise.
    */
   public static boolean isHPUX() {
     return osIdentifier.isHPUX();
@@ -161,7 +161,7 @@ public final class Platform {
 
   /**
    * Indicates whether the operating system is Linux.
-   * @return <code>true</code> if the operating system is Linux, <code>false</code> otherwise.
+   * @return {@code true} if the operating system is Linux, {@code false} otherwise.
    */
   public static boolean isLinux() {
     return osIdentifier.isLinux();

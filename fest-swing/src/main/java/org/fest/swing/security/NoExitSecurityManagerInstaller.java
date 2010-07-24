@@ -34,7 +34,7 @@ public class NoExitSecurityManagerInstaller {
    * Installs a new <code>{@link NoExitSecurityManager}</code> in <code>System</code>.
    * @param hook gets notified when an application tries to terminate the current JVM.
    * @return this installer.
-   * @throws NullPointerException if the given hook is <code>null</code>.
+   * @throws NullPointerException if the given hook is {@code null}.
    */
   public static NoExitSecurityManagerInstaller installNoExitSecurityManager(ExitCallHook hook) {
     return new NoExitSecurityManagerInstaller(hook);

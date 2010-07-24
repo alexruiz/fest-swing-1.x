@@ -56,7 +56,7 @@ public class TableCellInRowByValue implements TableCellFinder {
    * </p>
    * @param values the values in the cells of the row we are looking for.
    * @return the created builder.
-   * @throws NullPointerException if the given array of values is <code>null</code>.
+   * @throws NullPointerException if the given array of values is {@code null}.
    */
   public static TableCellBuilder rowWithValue(String...values) {
     if (values == null) throw new NullPointerException("The array of values should not be null");

@@ -54,7 +54,7 @@ class Context {
   }
 
   /**
-   * Return all available root windows. A root window is one that has a <code>null</code> parent. Nominally this means
+   * Return all available root windows. A root window is one that has a {@code null} parent. Nominally this means
    * a list similar to that returned by <code>{@link Frame#getFrames() Frame.getFrames()}</code>, but in the case of
    * an <code>{@link java.applet.Applet}</code> may return a few dialogs as well.
    * @return all available root windows.

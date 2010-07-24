@@ -40,7 +40,7 @@ import org.fest.swing.exception.ComponentLookupException;
  * <li>property value query</li>
  * </ul>
  *
- * @param <T> the type of <code>Component</code> that this fixture can manage.
+ * @param <T> the type of {@code Component} that this fixture can manage.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
@@ -73,10 +73,10 @@ public abstract class ComponentFixture<T extends Component> {
 
   /**
    * Creates a new <code>{@link ComponentFixture}</code>.
-   * @param robot performs simulation of user events on a <code>Component</code>.
-   * @param type the type of the <code>Component</code> to find using the given <code>RobotFixture</code>.
-   * @throws NullPointerException if <code>robot</code> is <code>null</code>.
-   * @throws NullPointerException if <code>type</code> is <code>null</code>.
+   * @param robot performs simulation of user events on a {@code Component}.
+   * @param type the type of the {@code Component} to find using the given <code>RobotFixture</code>.
+   * @throws NullPointerException if <code>robot</code> is {@code null}.
+   * @throws NullPointerException if <code>type</code> is {@code null}.
    * @throws ComponentLookupException if a matching component could not be found.
    * @throws ComponentLookupException if more than one matching component is found.
    */
@@ -90,9 +90,9 @@ public abstract class ComponentFixture<T extends Component> {
   }
 
   /**
-   * Validates that the given <code>{@link ComponentDriver}</code> is not <code>null</code>.
+   * Validates that the given <code>{@link ComponentDriver}</code> is not {@code null}.
    * @param driver the {@code ComponentDriver} to validate.
-   * @throws NullPointerException if {@code driver} is <code>null</code>.
+   * @throws NullPointerException if {@code driver} is {@code null}.
    */
   protected static void validateNotNull(ComponentDriver driver) {
     if (driver == null) throw new NullPointerException("The driver should not be null");
@@ -100,11 +100,11 @@ public abstract class ComponentFixture<T extends Component> {
 
   /**
    * Creates a new <code>{@link ComponentFixture}</code>.
-   * @param robot performs simulation of user events on a <code>Component</code>.
-   * @param name the name of the <code>Component</code> to find using the given <code>RobotFixture</code>.
-   * @param type the type of the <code>Component</code> to find using the given <code>RobotFixture</code>.
-   * @throws NullPointerException if <code>robot</code> is <code>null</code>.
-   * @throws NullPointerException if <code>type</code> is <code>null</code>.
+   * @param robot performs simulation of user events on a {@code Component}.
+   * @param name the name of the {@code Component} to find using the given <code>RobotFixture</code>.
+   * @param type the type of the {@code Component} to find using the given <code>RobotFixture</code>.
+   * @throws NullPointerException if <code>robot</code> is {@code null}.
+   * @throws NullPointerException if <code>type</code> is {@code null}.
    * @throws ComponentLookupException if a matching component could not be found.
    * @throws ComponentLookupException if more than one matching component is found.
    */
@@ -126,7 +126,7 @@ public abstract class ComponentFixture<T extends Component> {
    * Returns whether showing components are the only ones participating in a component lookup. The returned value is
    * obtained from the <code>{@link Settings#componentLookupScope() component lookup scope}</code> stored in this
    * fixture's <code>{@link Robot}</code>.
-   * @return <code>true</code> if only showing components can participate in a component lookup, <code>false</code>
+   * @return {@code true} if only showing components can participate in a component lookup, {@code false}
    * otherwise.
    */
   protected boolean requireShowing() {
@@ -139,10 +139,10 @@ public abstract class ComponentFixture<T extends Component> {
 
   /**
    * Creates a new <code>{@link ComponentFixture}</code>.
-   * @param robot performs simulation of user events on the given <code>Component</code>.
-   * @param target the <code>Component</code> to be managed by this fixture.
-   * @throws NullPointerException if <code>robot</code> is <code>null</code>.
-   * @throws NullPointerException if <code>target</code> is <code>null</code>.
+   * @param robot performs simulation of user events on the given {@code Component}.
+   * @param target the {@code Component} to be managed by this fixture.
+   * @throws NullPointerException if <code>robot</code> is {@code null}.
+   * @throws NullPointerException if <code>target</code> is {@code null}.
    */
   public ComponentFixture(Robot robot, T target) {
     this.robot = notNullRobot(robot);
@@ -151,7 +151,7 @@ public abstract class ComponentFixture<T extends Component> {
 
   /**
    * Returns a fixture that verifies the font of this fixture's <code>{@link Component}</code>.
-   * @return a fixture that verifies the font of this fixture's <code>Component</code>.
+   * @return a fixture that verifies the font of this fixture's {@code Component}.
    */
   public final FontFixture font() {
     return new FontFixture(fontOf(target), propertyName(target, FONT_PROPERTY));
@@ -159,7 +159,7 @@ public abstract class ComponentFixture<T extends Component> {
 
   /**
    * Returns a fixture that verifies the background color of this fixture's <code>{@link Component}</code>.
-   * @return a fixture that verifies the background color of this fixture's <code>Component</code>.
+   * @return a fixture that verifies the background color of this fixture's {@code Component}.
    */
   public final ColorFixture background() {
     return new ColorFixture(backgroundOf(target), propertyName(target, BACKGROUND_PROPERTY));
@@ -167,7 +167,7 @@ public abstract class ComponentFixture<T extends Component> {
 
   /**
    * Returns a fixture that verifies the foreground color of this fixture's <code>{@link Component}</code>.
-   * @return a fixture that verifies the foreground color of this fixture's <code>Component</code>.
+   * @return a fixture that verifies the foreground color of this fixture's {@code Component}.
    */
   public final ColorFixture foreground() {
     return new ColorFixture(foregroundOf(target), propertyName(target, FOREGROUND_PROPERTY));
@@ -175,10 +175,10 @@ public abstract class ComponentFixture<T extends Component> {
 
   /**
    * Returns this fixture's <code>{@link Component}</code> casted to the given sub-type.
-   * @param <C> enforces that the given type is a sub-type of the managed <code>Component</code>.
-   * @param type the type that the managed <code>Component</code> will be casted to.
-   * @return this fixture's <code>Component</code> casted to the given sub-type.
-   * @throws AssertionError if this fixture's <code>Component</code> is not an instance of the given type.
+   * @param <C> enforces that the given type is a sub-type of the managed {@code Component}.
+   * @param type the type that the managed {@code Component} will be casted to.
+   * @return this fixture's {@code Component} casted to the given sub-type.
+   * @throws AssertionError if this fixture's {@code Component} is not an instance of the given type.
    */
   public final <C extends T> C targetCastedTo(Class<C> type) {
     assertThat(target).as(format(target)).isInstanceOf(type);

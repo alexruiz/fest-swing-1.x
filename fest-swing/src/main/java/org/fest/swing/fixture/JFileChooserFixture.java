@@ -43,7 +43,7 @@ public class JFileChooserFixture extends ComponentFixture<JFileChooser> implemen
   /**
    * Creates a new <code>{@link JFileChooserFixture}</code>.
    * @param robot performs simulation of user events on a <code>JFileChooser</code>.
-   * @throws NullPointerException if <code>robot</code> is <code>null</code>.
+   * @throws NullPointerException if <code>robot</code> is {@code null}.
    * @throws ComponentLookupException if a matching <code>JFileChooser</code> could not be found.
    * @throws ComponentLookupException if more than one matching <code>JFileChooser</code> is found.
    */
@@ -56,8 +56,8 @@ public class JFileChooserFixture extends ComponentFixture<JFileChooser> implemen
    * Creates a new <code>{@link JFileChooserFixture}</code>.
    * @param robot performs simulation of user events on the given <code>JFileChooser</code>.
    * @param target the <code>JFileChooser</code> to be managed by this fixture.
-   * @throws NullPointerException if <code>robot</code> is <code>null</code>.
-   * @throws NullPointerException if <code>target</code> is <code>null</code>.
+   * @throws NullPointerException if <code>robot</code> is {@code null}.
+   * @throws NullPointerException if <code>target</code> is {@code null}.
    */
   public JFileChooserFixture(Robot robot, JFileChooser target) {
     super(robot, target);
@@ -68,7 +68,7 @@ public class JFileChooserFixture extends ComponentFixture<JFileChooser> implemen
    * Creates a new <code>{@link JFileChooserFixture}</code>.
    * @param robot performs simulation of user events on a <code>JFileChooser</code>.
    * @param fileChooserName the name of the <code>JFileChooser</code> to find using the given <code>RobotFixture</code>.
-   * @throws NullPointerException if <code>robot</code> is <code>null</code>.
+   * @throws NullPointerException if <code>robot</code> is {@code null}.
    * @throws ComponentLookupException if a matching <code>JFileChooser</code> could not be found.
    * @throws ComponentLookupException if more than one matching <code>JFileChooser</code> is found.
    */
@@ -84,7 +84,7 @@ public class JFileChooserFixture extends ComponentFixture<JFileChooser> implemen
   /**
    * Sets the <code>{@link JFileChooserDriver}</code> to be used by this fixture.
    * @param newDriver the new <code>JFileChooserDriver</code>.
-   * @throws NullPointerException if the given driver is <code>null</code>.
+   * @throws NullPointerException if the given driver is {@code null}.
    */
   protected final void driver(JFileChooserDriver newDriver) {
     validateNotNull(newDriver);
@@ -144,7 +144,7 @@ public class JFileChooserFixture extends ComponentFixture<JFileChooser> implemen
    * Selects the given file in this fixture's <code>{@link JFileChooser}</code>.
    * @param file the file to select.
    * @return this fixture.
-   * @throws NullPointerException if the given file is <code>null</code>.
+   * @throws NullPointerException if the given file is {@code null}.
    * @throws IllegalStateException if this fixture's <code>JFileChooser</code> is disabled.
    * @throws IllegalStateException if this fixture's <code>JFileChooser</code> is not showing on the screen.
    * @throws IllegalArgumentException if this fixture's <code>JFileChooser</code> can select directories only and the
@@ -162,7 +162,7 @@ public class JFileChooserFixture extends ComponentFixture<JFileChooser> implemen
    * Selects the given files in this fixture's <code>{@link JFileChooser}</code>.
    * @param files the files to select.
    * @return this fixture.
-   * @throws NullPointerException if the given array of files is <code>null</code>.
+   * @throws NullPointerException if the given array of files is {@code null}.
    * @throws IllegalArgumentException if the given array of files is empty.
    * @throws IllegalStateException if this fixture's <code>JFileChooser</code> is disabled.
    * @throws IllegalStateException if this fixture's <code>JFileChooser</code> is not showing on the screen.
@@ -205,7 +205,7 @@ public class JFileChooserFixture extends ComponentFixture<JFileChooser> implemen
    * Simulates a user clicking this fixture's <code>{@link JFileChooser}</code>.
    * @param button the button to click.
    * @return this fixture.
-   * @throws NullPointerException if the given <code>MouseButton</code> is <code>null</code>.
+   * @throws NullPointerException if the given <code>MouseButton</code> is {@code null}.
    * @throws IllegalStateException if this fixture's <code>JFileChooser</code> is disabled.
    * @throws IllegalStateException if this fixture's <code>JFileChooser</code> is not showing on the screen.
    */
@@ -218,7 +218,7 @@ public class JFileChooserFixture extends ComponentFixture<JFileChooser> implemen
    * Simulates a user clicking this fixture's <code>{@link JFileChooser}</code>.
    * @param mouseClickInfo specifies the button to click and the times the button should be clicked.
    * @return this fixture.
-   * @throws NullPointerException if the given <code>MouseClickInfo</code> is <code>null</code>.
+   * @throws NullPointerException if the given <code>MouseClickInfo</code> is {@code null}.
    * @throws IllegalStateException if this fixture's <code>JFileChooser</code> is disabled.
    * @throws IllegalStateException if this fixture's <code>JFileChooser</code> is not showing on the screen.
    */
@@ -265,7 +265,7 @@ public class JFileChooserFixture extends ComponentFixture<JFileChooser> implemen
    * Modifiers is a mask from the available <code>{@link java.awt.event.InputEvent}</code> masks.
    * @param keyPressInfo specifies the key and modifiers to press.
    * @return this fixture.
-   * @throws NullPointerException if the given <code>KeyPressInfo</code> is <code>null</code>.
+   * @throws NullPointerException if the given <code>KeyPressInfo</code> is {@code null}.
    * @throws IllegalArgumentException if the given code is not a valid key code.
    * @throws IllegalStateException if this fixture's <code>JFileChooser</code> is disabled.
    * @throws IllegalStateException if this fixture's <code>JFileChooser</code> is not showing on the screen.
@@ -281,7 +281,7 @@ public class JFileChooserFixture extends ComponentFixture<JFileChooser> implemen
    * fixture.
    * @param keyCodes one or more codes of the keys to press.
    * @return this fixture.
-   * @throws NullPointerException if the given array of codes is <code>null</code>.
+   * @throws NullPointerException if the given array of codes is {@code null}.
    * @throws IllegalArgumentException if any of the given code is not a valid key code.
    * @throws IllegalStateException if this fixture's <code>JFileChooser</code> is disabled.
    * @throws IllegalStateException if this fixture's <code>JFileChooser</code> is not showing on the screen.

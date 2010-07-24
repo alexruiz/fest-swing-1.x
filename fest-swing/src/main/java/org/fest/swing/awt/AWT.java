@@ -52,10 +52,10 @@ public class AWT {
   private static final String ROOT_FRAME_CLASSNAME = concat(SwingUtilities.class.getName(), "$");
 
   /**
-   * Indicates whether the given point, relative to the given <code>JComponent</code>, is inside the screen boundaries.
-   * @param c the given <code>JComponent</code>.
+   * Indicates whether the given point, relative to the given {@code JComponent}, is inside the screen boundaries.
+   * @param c the given {@code JComponent}.
    * @param p the point to verify.
-   * @return <code>true</code> if the point is inside the screen boundaries; <code>false</code> otherwise.
+   * @return {@code true} if the point is inside the screen boundaries; {@code false} otherwise.
    * @since 1.2
    */
   public static boolean isPointInScreenBoundaries(JComponent c, Point p) {
@@ -67,7 +67,7 @@ public class AWT {
   /**
    * Indicates whether the given point is inside the screen boundaries.
    * @param p the point to verify.
-   * @return <code>true</code> if the point is inside the screen boundaries; <code>false</code> otherwise.
+   * @return {@code true} if the point is inside the screen boundaries; {@code false} otherwise.
    * @since 1.2
    */
   public static boolean isPointInScreenBoundaries(Point p) {
@@ -81,7 +81,7 @@ public class AWT {
    * <p>
    * This method only works when using JDK 1.6 or later. For JDK 1.5, this method returns an empty array.
    * </p>
-   * @return an array of all <code>{@link Window}</code>s that have no owner.
+   * @return an array of all {code Window}s that have no owner.
    * @since 1.2
    */
   public static Window[] ownerLessWindows() {
@@ -99,7 +99,7 @@ public class AWT {
    * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
    * responsible for calling this method from the EDT.
    * </p>
-   * @param c the given <code>Component</code>.
+   * @param c the given {@code Component}.
    * @param x X coordinate.
    * @param y Y coordinate.
    * @return the translated coordinates.
@@ -116,8 +116,8 @@ public class AWT {
 
   /**
    * Returns a point at the center of the visible area of the given <code>{@link Component}</code>.
-   * @param c the given <code>Component</code>.
-   * @return a point at the center of the visible area of the given <code>Component</code>.
+   * @param c the given {@code Component}.
+   * @return a point at the center of the visible area of the given {@code Component}.
    */
   @RunsInEDT
   public static Point visibleCenterOf(final Component c) {
@@ -135,8 +135,8 @@ public class AWT {
    * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
    * responsible for calling this method from the EDT.
    * </p>
-   * @param c the given <code>Component</code>.
-   * @return a point at the center of the given <code>Component</code>.
+   * @param c the given {@code Component}.
+   * @return a point at the center of the given {@code Component}.
    */
   @RunsInCurrentThread
   public static Point centerOf(Component c) {
@@ -150,8 +150,8 @@ public class AWT {
    * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
    * responsible for calling this method from the EDT.
    * </p>
-   * @param c the given <code>JComponent</code>.
-   * @return a point at the center of the visible rectangle of the given <code>JComponent</code>.
+   * @param c the given {@code JComponent}.
+   * @return a point at the center of the visible rectangle of the given {@code JComponent}.
    */
   @RunsInCurrentThread
   public static Point centerOfVisibleRect(JComponent c) {
@@ -165,8 +165,8 @@ public class AWT {
    * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
    * responsible for calling this method from the EDT.
    * </p>
-   * @param r the given <code>Rectangle</code>.
-   * @return a point at the center of the given <code>Rectangle</code>.
+   * @param r the given {@code Rectangle}.
+   * @return a point at the center of the given {@code Rectangle}.
    */
   @RunsInCurrentThread
   public static Point centerOf(Rectangle r) {
@@ -179,8 +179,8 @@ public class AWT {
    * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
    * responsible for calling this method from the EDT.
    * </p>
-   * @param c the given <code>Container</code>.
-   * @return the insets of the given <code>Container</code>, or an empty one if no insets can be found.
+   * @param c the given {@code Container}.
+   * @return the insets of the given {@code Container}, or an empty one if no insets can be found.
    */
   @RunsInCurrentThread
   public static Insets insetsFrom(Container c) {
@@ -192,9 +192,9 @@ public class AWT {
   }
 
   /**
-   * Returns <code>true</code> if the given component is an Applet viewer.
+   * Returns {@code true} if the given component is an Applet viewer.
    * @param c the component to check.
-   * @return <code>true</code> if the given component is an Applet viewer, <code>false</code> otherwise.
+   * @return {@code true} if the given component is an Applet viewer, {@code false} otherwise.
    */
   public static boolean isAppletViewer(Component c) {
     return c != null && APPLET_APPLET_VIEWER_CLASS.equals(c.getClass().getName());
@@ -203,7 +203,7 @@ public class AWT {
   /**
    * Returns whether the given component is the default Swing hidden frame.
    * @param c the component to check.
-   * @return <code>true</code> if the given component is the default hidden frame, <code>false</code> otherwise.
+   * @return {@code true} if the given component is the default hidden frame, {@code false} otherwise.
    */
   public static boolean isSharedInvisibleFrame(Component c) {
     if (c == null) return false;
@@ -213,14 +213,14 @@ public class AWT {
   }
 
   /**
-   * Returns whether the given <code>Component</code> is a heavy-weight pop-up, that is, a container for a
-   * <code>JPopupMenu</code> that is implemented with a heavy-weight component (usually a <code>Window</code>).
+   * Returns whether the given {@code Component} is a heavy-weight pop-up, that is, a container for a
+   * {@code JPopupMenu} that is implemented with a heavy-weight component (usually a {@code Window}).
    * <p>
    * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
    * responsible for calling this method from the EDT.
    * </p>
-   * @param c the given <code>Component</code>.
-   * @return <code>true</code> if the given <code>Component</code> is a heavy-weight pop-up; <code>false</code>
+   * @param c the given {@code Component}.
+   * @return {@code true} if the given {@code Component} is a heavy-weight pop-up; {@code false}
    * otherwise.
    * @since 1.2
    */
@@ -244,15 +244,15 @@ public class AWT {
   }
 
   /**
-   * Returns the invoker, if any, of the given <code>{@link Component}</code>; or <code>null</code>, if the
-   * <code>Component</code> is not on a pop-up of any sort.
+   * Returns the invoker, if any, of the given <code>{@link Component}</code>; or {@code null}, if the
+   * {@code Component} is not on a pop-up of any sort.
    * <p>
    * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
    * responsible for calling this method from the EDT.
    * </p>
-   * @param c the given <code>Component</code>.
-   * @return the invoker, if any, of the given <code>Component</code>; or <code>null</code>, if the
-   *         <code>Component</code> is not on a pop-up of any sort.
+   * @param c the given {@code Component}.
+   * @return the invoker, if any, of the given {@code Component}; or {@code null}, if the
+   *         {@code Component} is not on a pop-up of any sort.
    */
   @RunsInCurrentThread
   public static Component invokerOf(final Component c) {
@@ -264,14 +264,14 @@ public class AWT {
   /**
    * Safe version of <code>{@link Component#getLocationOnScreen}</code>, which avoids lockup if an AWT pop-up menu is
    * showing. The AWT pop-up holds the AWT tree lock when showing, which lock is required by
-   * <code>getLocationOnScreen</code>.
+   * {@code getLocationOnScreen}.
    * <p>
    * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
    * responsible for calling this method from the EDT.
    * </p>
-   * @param c the given <code>Component</code>.
-   * @return the a point specifying the <code>Component</code>'s top-left corner in the screen's coordinate space, or
-   * <code>null</code>, if the <code>Component</code> is not showing on the screen.
+   * @param c the given {@code Component}.
+   * @return the a point specifying the {@code Component}'s top-left corner in the screen's coordinate space, or
+   * {@code null}, if the {@code Component} is not showing on the screen.
    */
   @RunsInCurrentThread
   public static Point locationOnScreenOf(Component c) {
@@ -288,7 +288,7 @@ public class AWT {
 
   /**
    * Returns whether the platform registers a pop-up on mouse press.
-   * @return <code>true</code> if the platform registers a pop-up on mouse press, <code>false</code> otherwise.
+   * @return {@code true} if the platform registers a pop-up on mouse press, {@code false} otherwise.
    */
   public static boolean popupOnPress() {
     // Only w32 is pop-up on release
@@ -297,7 +297,7 @@ public class AWT {
 
   /**
    * Returns the <code>{@link InputEvent}</code> mask for the pop-up trigger button.
-   * @return the <code>InputEvent</code> mask for the pop-up trigger button.
+   * @return the {@code InputEvent} mask for the pop-up trigger button.
    */
   public static int popupMask() {
     return BUTTON3_MASK;
@@ -305,7 +305,7 @@ public class AWT {
 
   /**
    * Indicates whether the AWT Tree Lock is currently held.
-   * @return <code>true</code> if the AWT Tree Lock is currently held, <code>false</code> otherwise.
+   * @return {@code true} if the AWT Tree Lock is currently held, {@code false} otherwise.
    */
   public static boolean isAWTTreeLockHeld() {
     Frame[] frames = Frame.getFrames();

@@ -84,9 +84,9 @@ public class ComponentDriver {
 
   /**
    * Simulates a user clicking once the given <code>{@link Component}</code> using the left mouse button.
-   * @param c the <code>Component</code> to click on.
-   * @throws IllegalStateException if the <code>Component</code> is disabled.
-   * @throws IllegalStateException if the <code>Component</code> is not showing on the screen.
+   * @param c the {@code Component} to click on.
+   * @throws IllegalStateException if the {@code Component} is disabled.
+   * @throws IllegalStateException if the {@code Component} is not showing on the screen.
    */
   @RunsInEDT
   public void click(Component c) {
@@ -96,11 +96,11 @@ public class ComponentDriver {
 
   /**
    * Simulates a user clicking once the given <code>{@link Component}</code> using the given mouse button.
-   * @param c the <code>Component</code> to click on.
+   * @param c the {@code Component} to click on.
    * @param button the mouse button to use.
-   * @throws NullPointerException if the given <code>MouseButton</code> is <code>null</code>.
-   * @throws IllegalStateException if the <code>Component</code> is disabled.
-   * @throws IllegalStateException if the <code>Component</code> is not showing on the screen.
+   * @throws NullPointerException if the given <code>MouseButton</code> is {@code null}.
+   * @throws IllegalStateException if the {@code Component} is disabled.
+   * @throws IllegalStateException if the {@code Component} is not showing on the screen.
    */
   @RunsInEDT
   public void click(Component c, MouseButton button) {
@@ -109,11 +109,11 @@ public class ComponentDriver {
 
   /**
    * Simulates a user clicking the given mouse button, the given times on the given <code>{@link Component}</code>.
-   * @param c the <code>Component</code> to click on.
+   * @param c the {@code Component} to click on.
    * @param mouseClickInfo specifies the button to click and the times the button should be clicked.
-   * @throws NullPointerException if the given <code>MouseClickInfo</code> is <code>null</code>.
-   * @throws IllegalStateException if the <code>Component</code> is disabled.
-   * @throws IllegalStateException if the <code>Component</code> is not showing on the screen.
+   * @throws NullPointerException if the given <code>MouseClickInfo</code> is {@code null}.
+   * @throws IllegalStateException if the {@code Component} is disabled.
+   * @throws IllegalStateException if the {@code Component} is not showing on the screen.
    */
   @RunsInEDT
   public void click(Component c, MouseClickInfo mouseClickInfo) {
@@ -123,9 +123,9 @@ public class ComponentDriver {
 
   /**
    * Simulates a user double-clicking the given <code>{@link Component}</code>.
-   * @param c the <code>Component</code> to click on.
-   * @throws IllegalStateException if the <code>Component</code> is disabled.
-   * @throws IllegalStateException if the <code>Component</code> is not showing on the screen.
+   * @param c the {@code Component} to click on.
+   * @throws IllegalStateException if the {@code Component} is disabled.
+   * @throws IllegalStateException if the {@code Component} is not showing on the screen.
    */
   @RunsInEDT
   public void doubleClick(Component c) {
@@ -134,9 +134,9 @@ public class ComponentDriver {
 
   /**
    * Simulates a user right-clicking the given <code>{@link Component}</code>.
-   * @param c the <code>Component</code> to click on.
-   * @throws IllegalStateException if the <code>Component</code> is disabled.
-   * @throws IllegalStateException if the <code>Component</code> is not showing on the screen.
+   * @param c the {@code Component} to click on.
+   * @throws IllegalStateException if the {@code Component} is disabled.
+   * @throws IllegalStateException if the {@code Component} is not showing on the screen.
    */
   @RunsInEDT
   public void rightClick(Component c) {
@@ -145,12 +145,12 @@ public class ComponentDriver {
 
   /**
    * Simulates a user clicking the given mouse button, the given times on the given <code>{@link Component}</code>.
-   * @param c the <code>Component</code> to click on.
+   * @param c the {@code Component} to click on.
    * @param button the mouse button to click.
    * @param times the number of times to click the given mouse button.
-   * @throws NullPointerException if the given <code>MouseButton</code> is <code>null</code>.
-   * @throws IllegalStateException if the <code>Component</code> is disabled.
-   * @throws IllegalStateException if the <code>Component</code> is not showing on the screen.
+   * @throws NullPointerException if the given <code>MouseButton</code> is {@code null}.
+   * @throws IllegalStateException if the {@code Component} is disabled.
+   * @throws IllegalStateException if the {@code Component} is not showing on the screen.
    */
   @RunsInEDT
   public void click(Component c, MouseButton button, int times) {
@@ -161,10 +161,10 @@ public class ComponentDriver {
 
   /**
    * Simulates a user clicking at the given position on the given <code>{@link Component}</code>.
-   * @param c the <code>Component</code> to click on.
+   * @param c the {@code Component} to click on.
    * @param where the position where to click.
-   * @throws IllegalStateException if the <code>Component</code> is disabled.
-   * @throws IllegalStateException if the <code>Component</code> is not showing on the screen.
+   * @throws IllegalStateException if the {@code Component} is disabled.
+   * @throws IllegalStateException if the {@code Component} is not showing on the screen.
    */
   @RunsInEDT
   public void click(Component c, Point where) {
@@ -180,7 +180,7 @@ public class ComponentDriver {
    * Asserts that the size of the <code>{@link Component}</code> is equal to given one.
    * @param c the target component.
    * @param size the given size to match.
-   * @throws AssertionError if the size of the <code>Window</code> is not equal to the given size.
+   * @throws AssertionError if the size of the {@code Window} is not equal to the given size.
    */
   @RunsInEDT
   public void requireSize(Component c, Dimension size) {
@@ -190,7 +190,7 @@ public class ComponentDriver {
   /**
    * Asserts that the <code>{@link Component}</code> is visible.
    * @param c the target component.
-   * @throws AssertionError if the <code>Component</code> is not visible.
+   * @throws AssertionError if the {@code Component} is not visible.
    */
   @RunsInEDT
   public void requireVisible(Component c) {
@@ -200,7 +200,7 @@ public class ComponentDriver {
   /**
    * Asserts that the <code>{@link Component}</code> is not visible.
    * @param c the target component.
-   * @throws AssertionError if the <code>Component</code> is visible.
+   * @throws AssertionError if the {@code Component} is visible.
    */
   @RunsInEDT
   public void requireNotVisible(Component c) {
@@ -215,7 +215,7 @@ public class ComponentDriver {
   /**
    * Asserts that the <code>{@link Component}</code> has input focus.
    * @param c the target component.
-   * @throws AssertionError if the <code>Component</code> does not have input focus.
+   * @throws AssertionError if the {@code Component} does not have input focus.
    */
   @RunsInEDT
   public void requireFocused(Component c) {
@@ -233,7 +233,7 @@ public class ComponentDriver {
   /**
    * Asserts that the <code>{@link Component}</code> is enabled.
    * @param c the target component.
-   * @throws AssertionError if the <code>Component</code> is disabled.
+   * @throws AssertionError if the {@code Component} is disabled.
    */
   @RunsInEDT
   public void requireEnabled(Component c) {
@@ -244,7 +244,7 @@ public class ComponentDriver {
    * Asserts that the <code>{@link Component}</code> is enabled.
    * @param c the target component.
    * @param timeout the time this fixture will wait for the component to be enabled.
-   * @throws WaitTimedOutError if the <code>Component</code> is never enabled.
+   * @throws WaitTimedOutError if the {@code Component} is never enabled.
    */
   @RunsInEDT
   public void requireEnabled(Component c, Timeout timeout) {
@@ -254,7 +254,7 @@ public class ComponentDriver {
   /**
    * Asserts that the <code>{@link Component}</code> is disabled.
    * @param c the target component.
-   * @throws AssertionError if the <code>Component</code> is enabled.
+   * @throws AssertionError if the {@code Component} is enabled.
    */
   @RunsInEDT
   public void requireDisabled(Component c) {
@@ -270,9 +270,9 @@ public class ComponentDriver {
    * Simulates a user pressing and releasing the given keys on the <code>{@link Component}</code>.
    * @param c the target component.
    * @param keyCodes one or more codes of the keys to press.
-   * @throws NullPointerException if the given array of codes is <code>null</code>.
-   * @throws IllegalStateException if the <code>Component</code> is disabled.
-   * @throws IllegalStateException if the <code>Component</code> is not showing on the screen.
+   * @throws NullPointerException if the given array of codes is {@code null}.
+   * @throws IllegalStateException if the {@code Component} is disabled.
+   * @throws IllegalStateException if the {@code Component} is not showing on the screen.
    * @throws IllegalArgumentException if the given code is not a valid key code.
    * @see java.awt.event.KeyEvent
    */
@@ -289,10 +289,10 @@ public class ComponentDriver {
    * mask from the available <code>{@link java.awt.event.InputEvent}</code> masks.
    * @param c the target component.
    * @param keyPressInfo specifies the key and modifiers to press.
-   * @throws NullPointerException if the given <code>KeyPressInfo</code> is <code>null</code>.
+   * @throws NullPointerException if the given <code>KeyPressInfo</code> is {@code null}.
    * @throws IllegalArgumentException if the given code is not a valid key code.
-   * @throws IllegalStateException if the <code>Component</code> is disabled.
-   * @throws IllegalStateException if the <code>Component</code> is not showing on the screen.
+   * @throws IllegalStateException if the {@code Component} is disabled.
+   * @throws IllegalStateException if the {@code Component} is not showing on the screen.
    * @see java.awt.event.KeyEvent
    * @see java.awt.event.InputEvent
    */
@@ -309,8 +309,8 @@ public class ComponentDriver {
    * @param keyCode the code of the key to press.
    * @param modifiers the given modifiers.
    * @throws IllegalArgumentException if the given code is not a valid key code. *
-   * @throws IllegalStateException if the <code>Component</code> is disabled.
-   * @throws IllegalStateException if the <code>Component</code> is not showing on the screen.
+   * @throws IllegalStateException if the {@code Component} is disabled.
+   * @throws IllegalStateException if the {@code Component} is not showing on the screen.
    * @see java.awt.event.KeyEvent
    * @see java.awt.event.InputEvent
    */
@@ -325,8 +325,8 @@ public class ComponentDriver {
    * @param c the target component.
    * @param keyCode the code of the key to press.
    * @throws IllegalArgumentException if the given code is not a valid key code.
-   * @throws IllegalStateException if the <code>Component</code> is disabled.
-   * @throws IllegalStateException if the <code>Component</code> is not showing on the screen.
+   * @throws IllegalStateException if the {@code Component} is disabled.
+   * @throws IllegalStateException if the {@code Component} is not showing on the screen.
    * @see java.awt.event.KeyEvent
    */
   @RunsInEDT
@@ -340,8 +340,8 @@ public class ComponentDriver {
    * @param c the target component.
    * @param keyCode the code of the key to release.
    * @throws IllegalArgumentException if the given code is not a valid key code.
-   * @throws IllegalStateException if the <code>Component</code> is disabled.
-   * @throws IllegalStateException if the <code>Component</code> is not showing on the screen.
+   * @throws IllegalStateException if the {@code Component} is disabled.
+   * @throws IllegalStateException if the {@code Component} is not showing on the screen.
    * @see java.awt.event.KeyEvent
    */
   @RunsInEDT
@@ -354,8 +354,8 @@ public class ComponentDriver {
    * Gives input focus to the given <code>{@link Component}</code> and waits until the <code>{@link Component}</code>
    * has focus.
    * @param c the component to give focus to.
-   * @throws IllegalStateException if the <code>Component</code> is disabled.
-   * @throws IllegalStateException if the <code>Component</code> is not showing on the screen.
+   * @throws IllegalStateException if the {@code Component} is disabled.
+   * @throws IllegalStateException if the {@code Component} is not showing on the screen.
    */
   @RunsInEDT
   public void focusAndWaitForFocusGain(Component c) {
@@ -367,8 +367,8 @@ public class ComponentDriver {
    * Gives input focus to the given <code>{@link Component}</code>. Note that the component may not yet have focus when
    * this method returns.
    * @param c the component to give focus to.
-   * @throws IllegalStateException if the <code>Component</code> is disabled.
-   * @throws IllegalStateException if the <code>Component</code> is not showing on the screen.
+   * @throws IllegalStateException if the {@code Component} is disabled.
+   * @throws IllegalStateException if the {@code Component} is not showing on the screen.
    */
   @RunsInEDT
   public void focus(Component c) {
@@ -416,8 +416,8 @@ public class ComponentDriver {
    * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
    * responsible for calling this method from the EDT.
    * </p>
-   * @param c the given <code>Component</code>.
-   * @throws ActionFailedException if <code>action</code> is <code>null</code> or empty.
+   * @param c the given {@code Component}.
+   * @throws ActionFailedException if <code>action</code> is {@code null} or empty.
    */
   @RunsInCurrentThread
   protected final void performAccessibleActionOf(Component c) {
@@ -427,14 +427,14 @@ public class ComponentDriver {
 
   /**
    * Wait the given number of milliseconds for the <code>{@link Component}</code> to be showing and ready. Returns
-   * <code>false</code> if the operation times out.
+   * {@code false} if the operation times out.
    * <p>
    * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
    * responsible for calling this method from the EDT.
    * </p>
-   * @param c the given <code>Component</code>.
-   * @param timeout the time in milliseconds to wait for the <code>Component</code> to be showing and ready.
-   * @return <code>true</code> if the <code>Component</code> is showing and ready, <code>false</code> otherwise.
+   * @param c the given {@code Component}.
+   * @param timeout the time in milliseconds to wait for the {@code Component} to be showing and ready.
+   * @return {@code true} if the {@code Component} is showing and ready, {@code false} otherwise.
    */
   @RunsInCurrentThread
   protected final boolean waitForShowing(Component c, long timeout) {
@@ -455,10 +455,10 @@ public class ComponentDriver {
 
   /**
    * Shows a pop-up menu using the given <code>{@link Component}</code> as the invoker of the pop-up menu.
-   * @param c the invoker of the <code>JPopupMenu</code>.
+   * @param c the invoker of the {@code JPopupMenu}.
    * @return the displayed pop-up menu.
-   * @throws IllegalStateException if the given <code>Component</code> is disabled.
-   * @throws IllegalStateException if the given <code>Component</code> is not showing on the screen.
+   * @throws IllegalStateException if the given {@code Component} is disabled.
+   * @throws IllegalStateException if the given {@code Component} is not showing on the screen.
    * @throws ComponentLookupException if a pop-up menu cannot be found.
    */
   @RunsInEDT
@@ -470,12 +470,12 @@ public class ComponentDriver {
   /**
    * Shows a pop-up menu at the given point using the given <code>{@link Component}</code> as the invoker of the pop-up
    * menu.
-   * @param c the invoker of the <code>JPopupMenu</code>.
+   * @param c the invoker of the {@code JPopupMenu}.
    * @param p the given point where to show the pop-up menu.
    * @return the displayed pop-up menu.
-   * @throws NullPointerException if the given point is <code>null</code>.
-   * @throws IllegalStateException if the given <code>Component</code> is disabled.
-   * @throws IllegalStateException if the given <code>Component</code> is not showing on the screen.
+   * @throws NullPointerException if the given point is {@code null}.
+   * @throws IllegalStateException if the given {@code Component} is disabled.
+   * @throws IllegalStateException if the given {@code Component} is not showing on the screen.
    * @throws ComponentLookupException if a pop-up menu cannot be found.
    */
   @RunsInEDT
@@ -488,9 +488,9 @@ public class ComponentDriver {
   /**
    * Validates that the given <code>{@link Component}</code> is enabled and showing on the screen. This method is
    * executed in the event dispatch thread.
-   * @param c the <code>Component</code> to check.
-   * @throws IllegalStateException if the <code>Component</code> is disabled.
-   * @throws IllegalStateException if the <code>Component</code> is not showing on the screen.
+   * @param c the {@code Component} to check.
+   * @throws IllegalStateException if the {@code Component} is disabled.
+   * @throws IllegalStateException if the {@code Component} is not showing on the screen.
    */
   @RunsInEDT
   protected static void assertIsEnabledAndShowing(final Component c) {
@@ -504,9 +504,9 @@ public class ComponentDriver {
   /**
    * Formats the name of a property of the given <code>{@link Component}</code> by concatenating the value obtained
    * from <code>{@link Formatting#format(Component)}</code> with the given property name.
-   * @param c the given <code>Component</code>.
+   * @param c the given {@code Component}.
    * @param propertyName the name of the property.
-   * @return the description of a property belonging to a <code>Component</code>.
+   * @return the description of a property belonging to a {@code Component}.
    * @see ComponentFormatter
    * @see Formatting#format(Component)
    */
@@ -523,8 +523,8 @@ public class ComponentDriver {
    * Simulates a user moving the mouse pointer to the given coordinates relative to the given
    * <code>{@link Component}</code>. This method will <b>not</b> throw any exceptions if the it was not possible to
    * move the mouse pointer.
-   * @param c the given <code>Component</code>.
-   * @param p coordinates relative to the given <code>Component</code>.
+   * @param c the given {@code Component}.
+   * @param p coordinates relative to the given {@code Component}.
    */
   @RunsInEDT
   protected final void moveMouseIgnoringAnyError(Component c, Point p) {
@@ -535,9 +535,9 @@ public class ComponentDriver {
    * Simulates a user moving the mouse pointer to the given coordinates relative to the given
    * <code>{@link Component}</code>. This method will <b>not</b> throw any exceptions if the it was not possible to
    * move the mouse pointer.
-   * @param c the given <code>Component</code>.
-   * @param x horizontal coordinate relative to the given <code>Component</code>.
-   * @param y vertical coordinate relative to the given <code>Component</code>.
+   * @param c the given {@code Component}.
+   * @param x horizontal coordinate relative to the given {@code Component}.
+   * @param y vertical coordinate relative to the given {@code Component}.
    */
   @RunsInEDT
   protected final void moveMouseIgnoringAnyError(Component c, int x, int y) {

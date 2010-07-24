@@ -41,7 +41,7 @@ public final class Timeout {
    * @param duration the duration of the timeout.
    * @param timeUnit the unit of time of the timeout.
    * @return the created <code>Timeout</code>.
-   * @throws NullPointerException if the given time unit is <code>null</code>.
+   * @throws NullPointerException if the given time unit is {@code null}.
    */
   public static Timeout timeout(long duration, TimeUnit timeUnit) {
     if (timeUnit == null) throw new NullPointerException("Time unit should not be null");

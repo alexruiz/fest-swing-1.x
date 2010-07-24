@@ -142,7 +142,7 @@ public class JTableDriver extends JComponentDriver {
    * @param table the target <code>JTable</code>.
    * @param cellFinder knows how to find a cell.
    * @return the found cell, if any.
-   * @throws NullPointerException if <code>cellFinder</code> is <code>null</code>.
+   * @throws NullPointerException if <code>cellFinder</code> is {@code null}.
    * @throws IndexOutOfBoundsException if the row or column indices in the found cell are out of bounds.
    * @throws ActionFailedException if a matching cell could not be found.
    */
@@ -171,7 +171,7 @@ public class JTableDriver extends JComponentDriver {
    * @param table the target <code>JTable</code>.
    * @param pattern the regular expression pattern to match
    * @return a cell from the given <code>JTable</code> whose value matches the given one.
-   * @throws NullPointerException if the given regular expression is <code>null</code>.
+   * @throws NullPointerException if the given regular expression is {@code null}.
    * @throws ActionFailedException if a cell with a matching value cannot be found.
    * @since 1.2
    */
@@ -186,7 +186,7 @@ public class JTableDriver extends JComponentDriver {
    * @param table the target <code>JTable</code>.
    * @param cell the table cell.
    * @return the <code>String</code> representation of the value at the given cell.
-   * @throws NullPointerException if the cell is <code>null</code>.
+   * @throws NullPointerException if the cell is {@code null}.
    * @throws IndexOutOfBoundsException if any of the indices (row and column) is out of bounds.
    * @see #cellReader(JTableCellReader)
    */
@@ -237,7 +237,7 @@ public class JTableDriver extends JComponentDriver {
    * @param table the target <code>JTable</code>.
    * @param cell the table cell.
    * @return the font of the given table cell.
-   * @throws NullPointerException if the cell is <code>null</code>.
+   * @throws NullPointerException if the cell is {@code null}.
    * @throws IndexOutOfBoundsException if any of the indices (row and column) is out of bounds.
    */
   @RunsInEDT
@@ -261,7 +261,7 @@ public class JTableDriver extends JComponentDriver {
    * @param table the target <code>JTable</code>.
    * @param cell the table cell.
    * @return the background color of the given table cell.
-   * @throws ActionFailedException if the cell is <code>null</code>.
+   * @throws ActionFailedException if the cell is {@code null}.
    * @throws ActionFailedException if any of the indices (row and column) is out of bounds.
    */
   @RunsInEDT
@@ -285,7 +285,7 @@ public class JTableDriver extends JComponentDriver {
    * @param table the target <code>JTable</code>.
    * @param cell the table cell.
    * @return the foreground color of the given table cell.
-   * @throws NullPointerException if the cell is <code>null</code>.
+   * @throws NullPointerException if the cell is {@code null}.
    * @throws IndexOutOfBoundsException if any of the indices (row and column) is out of bounds.
    */
   @RunsInEDT
@@ -308,11 +308,11 @@ public class JTableDriver extends JComponentDriver {
    * Selects the given cells of the <code>{@link JTable}</code>.
    * @param table the target <code>JTable</code>.
    * @param cells the cells to select.
-   * @throws NullPointerException if <code>cells</code> is <code>null</code> or empty.
-   * @throws IllegalArgumentException if <code>cells</code> is <code>null</code> or empty.
+   * @throws NullPointerException if <code>cells</code> is {@code null} or empty.
+   * @throws IllegalArgumentException if <code>cells</code> is {@code null} or empty.
    * @throws IllegalStateException if the <code>JTable</code> is disabled.
    * @throws IllegalStateException if the <code>JTable</code> is not showing on the screen.
-   * @throws NullPointerException if any element in <code>cells</code> is <code>null</code>.
+   * @throws NullPointerException if any element in <code>cells</code> is {@code null}.
    * @throws IndexOutOfBoundsException if any of the indices of any of the <code>cells</code> are out of bounds.
    */
   public void selectCells(final JTable table, final TableCell[] cells) {
@@ -360,7 +360,7 @@ public class JTableDriver extends JComponentDriver {
    * Selects the given cell, if it is not selected already.
    * @param table the target <code>JTable</code>.
    * @param cell the cell to select.
-   * @throws NullPointerException if the cell is <code>null</code>.
+   * @throws NullPointerException if the cell is {@code null}.
    * @throws IllegalStateException if the <code>JTable</code> is disabled.
    * @throws IllegalStateException if the <code>JTable</code> is not showing on the screen.
    * @throws IndexOutOfBoundsException if any of the indices (row and column) is out of bounds.
@@ -377,7 +377,7 @@ public class JTableDriver extends JComponentDriver {
    * @param cell the table cell.
    * @param mouseButton the mouse button to use.
    * @param times the number of times to click the cell.
-   * @throws NullPointerException if the cell is <code>null</code>.
+   * @throws NullPointerException if the cell is {@code null}.
    * @throws IllegalStateException if the <code>JTable</code> is disabled.
    * @throws IllegalStateException if the <code>JTable</code> is not showing on the screen.
    * @throws IndexOutOfBoundsException if any of the indices (row and column) is out of bounds.
@@ -394,7 +394,7 @@ public class JTableDriver extends JComponentDriver {
    * Starts a drag operation at the location of the given table cell.
    * @param table the target <code>JTable</code>.
    * @param cell the table cell.
-   * @throws NullPointerException if the cell is <code>null</code>.
+   * @throws NullPointerException if the cell is {@code null}.
    * @throws IllegalStateException if the <code>JTable</code> is disabled.
    * @throws IllegalStateException if the <code>JTable</code> is not showing on the screen.
    * @throws IndexOutOfBoundsException if any of the indices (row and column) is out of bounds.
@@ -409,7 +409,7 @@ public class JTableDriver extends JComponentDriver {
    * Starts a drop operation at the location of the given table cell.
    * @param table the target <code>JTable</code>.
    * @param cell the table cell.
-   * @throws NullPointerException if the cell is <code>null</code>.
+   * @throws NullPointerException if the cell is {@code null}.
    * @throws IllegalStateException if the <code>JTable</code> is disabled.
    * @throws IllegalStateException if the <code>JTable</code> is not showing on the screen.
    * @throws IndexOutOfBoundsException if any of the indices (row and column) is out of bounds.
@@ -425,7 +425,7 @@ public class JTableDriver extends JComponentDriver {
    * @param table the target <code>JTable</code>.
    * @param cell the table cell.
    * @return the displayed pop-up menu.
-   * @throws NullPointerException if the cell is <code>null</code>.
+   * @throws NullPointerException if the cell is {@code null}.
    * @throws IllegalStateException if the <code>JTable</code> is disabled.
    * @throws IllegalStateException if the <code>JTable</code> is not showing on the screen.
    * @throws ComponentLookupException if a pop-up menu cannot be found.
@@ -459,7 +459,7 @@ public class JTableDriver extends JComponentDriver {
    * @param table the target <code>JTable</code>.
    * @param cell the table cell.
    * @return the coordinates of the given row and column.
-   * @throws NullPointerException if the cell is <code>null</code>.
+   * @throws NullPointerException if the cell is {@code null}.
    * @throws IndexOutOfBoundsException if any of the indices (row and column) is out of bounds.
    */
   @RunsInEDT
@@ -516,7 +516,7 @@ public class JTableDriver extends JComponentDriver {
    * @param table the target <code>JTable</code>.
    * @param cell the given table cell.
    * @param value the expected value. It can be a regular expression.
-   * @throws NullPointerException if the cell is <code>null</code>.
+   * @throws NullPointerException if the cell is {@code null}.
    * @throws IndexOutOfBoundsException if any of the indices (row and column) is out of bounds.
    * @throws AssertionError if the value of the given cell does not match the given value.
    */
@@ -530,9 +530,9 @@ public class JTableDriver extends JComponentDriver {
    * @param table the target <code>JTable</code>.
    * @param cell the given table cell.
    * @param pattern the regular expression pattern to match.
-   * @throws NullPointerException if the cell is <code>null</code>.
+   * @throws NullPointerException if the cell is {@code null}.
    * @throws IndexOutOfBoundsException if any of the indices (row and column) is out of bounds.
-   * @throws NullPointerException if the given regular expression pattern is <code>null</code>.
+   * @throws NullPointerException if the given regular expression pattern is {@code null}.
    * @throws AssertionError if the value of the given cell does not match the given regular expression pattern.
    * @since 1.2
    */
@@ -552,7 +552,7 @@ public class JTableDriver extends JComponentDriver {
    * @param table the target <code>JTable</code>.
    * @param cell the given cell.
    * @param value the given value.
-   * @throws NullPointerException if the cell is <code>null</code>.
+   * @throws NullPointerException if the cell is {@code null}.
    * @throws IllegalStateException if the <code>JTable</code> is disabled.
    * @throws IllegalStateException if the <code>JTable</code> is not showing on the screen.
    * @throws IllegalStateException if the <code>JTable</code> cell is not editable.
@@ -571,7 +571,7 @@ public class JTableDriver extends JComponentDriver {
    * Asserts that the given table cell is editable.
    * @param table the target <code>JTable</code>.
    * @param cell the given table cell.
-   * @throws NullPointerException if the cell is <code>null</code>.
+   * @throws NullPointerException if the cell is {@code null}.
    * @throws IndexOutOfBoundsException if any of the indices (row and column) is out of bounds.
    * @throws AssertionError if the given table cell is not editable.
    */
@@ -584,7 +584,7 @@ public class JTableDriver extends JComponentDriver {
    * Asserts that the given table cell is not editable.
    * @param table the target <code>JTable</code>.
    * @param cell the given table cell.
-   * @throws NullPointerException if the cell is <code>null</code>.
+   * @throws NullPointerException if the cell is {@code null}.
    * @throws IndexOutOfBoundsException if any of the indices (row and column) is out of bounds.
    * @throws AssertionError if the given table cell is editable.
    */
@@ -615,7 +615,7 @@ public class JTableDriver extends JComponentDriver {
    * @param table the target <code>JTable</code>.
    * @param cell the given cell.
    * @return the editor in the given cell of the <code>JTable</code>.
-   * @throws NullPointerException if the cell is <code>null</code>.
+   * @throws NullPointerException if the cell is {@code null}.
    * @throws IllegalStateException if the <code>JTable</code> cell is not editable.
    * @throws IndexOutOfBoundsException if any of the indices (row and column) is out of bounds.
    * @see #cellWriter(JTableCellWriter)
@@ -632,7 +632,7 @@ public class JTableDriver extends JComponentDriver {
    * <code>{@link Component}</code> returned by <code>{@link #cellEditor(JTable, TableCell)}</code>.
    * @param table the target <code>JTable</code>.
    * @param cell the given cell.
-   * @throws NullPointerException if the cell is <code>null</code>.
+   * @throws NullPointerException if the cell is {@code null}.
    * @throws IllegalStateException if the <code>JTable</code> is disabled.
    * @throws IllegalStateException if the <code>JTable</code> is not showing on the screen.
    * @throws IllegalStateException if the <code>JTable</code> cell is not editable.
@@ -652,7 +652,7 @@ public class JTableDriver extends JComponentDriver {
    * <code>{@link Component}</code> returned by <code>{@link #cellEditor(JTable, TableCell)}</code>.
    * @param table the target <code>JTable</code>.
    * @param cell the given cell.
-   * @throws NullPointerException if the cell is <code>null</code>.
+   * @throws NullPointerException if the cell is {@code null}.
    * @throws IllegalStateException if the <code>JTable</code> is disabled.
    * @throws IllegalStateException if the <code>JTable</code> is not showing on the screen.
    * @throws IllegalStateException if the <code>JTable</code> cell is not editable.
@@ -672,7 +672,7 @@ public class JTableDriver extends JComponentDriver {
    * <code>{@link Component}</code> returned by <code>{@link #cellEditor(JTable, TableCell)}</code>.
    * @param table the target <code>JTable</code>.
    * @param cell the given cell.
-   * @throws NullPointerException if the cell is <code>null</code>.
+   * @throws NullPointerException if the cell is {@code null}.
    * @throws IllegalStateException if the <code>JTable</code> is disabled.
    * @throws IllegalStateException if the <code>JTable</code> is not showing on the screen.
    * @throws IllegalStateException if the <code>JTable</code> cell is not editable.
@@ -687,10 +687,10 @@ public class JTableDriver extends JComponentDriver {
   }
 
   /**
-   * Validates that the given table cell is non <code>null</code> and its indices are not out of bounds.
+   * Validates that the given table cell is non {@code null} and its indices are not out of bounds.
    * @param table the target <code>JTable</code>.
    * @param cell to validate.
-   * @throws NullPointerException if the cell is <code>null</code>.
+   * @throws NullPointerException if the cell is {@code null}.
    * @throws IndexOutOfBoundsException if any of the indices (row and column) is out of bounds.
    */
   @RunsInEDT
@@ -710,7 +710,7 @@ public class JTableDriver extends JComponentDriver {
    * Updates the implementation of <code>{@link JTableCellReader}</code> to use when comparing internal values of a
    * <code>{@link JTable}</code> and the values expected in a test.
    * @param newCellReader the new <code>JTableCellValueReader</code> to use.
-   * @throws NullPointerException if <code>newCellReader</code> is <code>null</code>.
+   * @throws NullPointerException if <code>newCellReader</code> is {@code null}.
    */
   public void cellReader(JTableCellReader newCellReader) {
     validateCellReader(newCellReader);
@@ -721,7 +721,7 @@ public class JTableDriver extends JComponentDriver {
    * Updates the implementation of <code>{@link JTableCellWriter}</code> to use to edit cell values in a
    * <code>{@link JTable}</code>.
    * @param newCellWriter the new <code>JTableCellWriter</code> to use.
-   * @throws NullPointerException if <code>newCellWriter</code> is <code>null</code>.
+   * @throws NullPointerException if <code>newCellWriter</code> is {@code null}.
    */
   public void cellWriter(JTableCellWriter newCellWriter) {
     validateCellWriter(newCellWriter);
@@ -792,7 +792,7 @@ public class JTableDriver extends JComponentDriver {
    * Simulates a user selecting the given rows in the given <code>{@link JTable}</code>.
    * @param table the target <code>JTable</code>.
    * @param rows the indices of the row to select.
-   * @throws NullPointerException if the given array of indices is <code>null</code>.
+   * @throws NullPointerException if the given array of indices is {@code null}.
    * @throws IllegalArgumentException if the given array of indices is empty.
    * @throws IllegalStateException if the <code>JTable</code> is disabled.
    * @throws IllegalStateException if the <code>JTable</code> is not showing on the screen.

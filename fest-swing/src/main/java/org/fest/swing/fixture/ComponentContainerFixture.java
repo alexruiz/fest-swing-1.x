@@ -119,20 +119,20 @@ public interface ComponentContainerFixture {
 
   /**
    * Returns a <code>{@link JComboBox}</code> found in this fixture's <code>{@link Container}</code>.
-   * @return a fixture that manages the <code>JComboBox</code> found.
-   * @throws ComponentLookupException if a <code>JComboBox</code> could not be found.
-   * @throws ComponentLookupException if more than one <code>JComboBox</code> is found.
+   * @return a fixture that manages the {@code JComboBox} found.
+   * @throws ComponentLookupException if a {@code JComboBox} could not be found.
+   * @throws ComponentLookupException if more than one {@code JComboBox} is found.
    */
   JComboBoxFixture comboBox();
 
   /**
    * Finds a <code>{@link JComboBox}</code> in this fixture's <code>{@link Container}</code>, that matches the
    * specified search criteria.
-   * @param matcher contains the search criteria for finding a <code>JComboBox</code>.
-   * @return a fixture that manages the <code>JComboBox</code> found.
-   * @throws ComponentLookupException if a <code>JComboBox</code> that matches the given search criteria could not be
+   * @param matcher contains the search criteria for finding a {@code JComboBox}.
+   * @return a fixture that manages the {@code JComboBox} found.
+   * @throws ComponentLookupException if a {@code JComboBox} that matches the given search criteria could not be
    * found.
-   * @throws ComponentLookupException if more than one <code>JComboBox</code> that matches the given search criteria is
+   * @throws ComponentLookupException if more than one {@code JComboBox} that matches the given search criteria is
    * found.
    */
   JComboBoxFixture comboBox(GenericTypeMatcher<? extends JComboBox> matcher);
@@ -141,9 +141,9 @@ public interface ComponentContainerFixture {
    * Finds a <code>{@link JComboBox}</code> in this fixture's <code>{@link Container}</code>, which name matches
    * the specified one.
    * @param name the name to match.
-   * @return a fixture that manages the <code>JComboBox</code> found.
-   * @throws ComponentLookupException if a <code>JComboBox</code> having a matching name could not be found.
-   * @throws ComponentLookupException if more than one <code>JComboBox</code> having a matching name is found.
+   * @return a fixture that manages the {@code JComboBox} found.
+   * @throws ComponentLookupException if a {@code JComboBox} having a matching name could not be found.
+   * @throws ComponentLookupException if more than one {@code JComboBox} having a matching name is found.
    */
   JComboBoxFixture comboBox(String name);
 
@@ -334,7 +334,7 @@ public interface ComponentContainerFixture {
    * @param path the path of the menu to find.
    * @return a fixture that manages the <code>JMenuItem</code> found.
    * @throws ComponentLookupException if a <code>JMenuItem</code> under the given path could not be found.
-   * @throws AssertionError if the <code>Component</code> found under the given path is not a <code>JMenuItem</code>.
+   * @throws AssertionError if the {@code Component} found under the given path is not a <code>JMenuItem</code>.
    */
   JMenuItemFixture menuItemWithPath(String... path);
 
@@ -798,11 +798,11 @@ public interface ComponentContainerFixture {
    * Returns a <code>{@link ComponentFixture}</code> managing a component inside this fixture's
    * <code>{@link Container}</code>. This is an extension method, to allow implementations of
    * <code>{@link ContainerFixture}</code> handle custom GUI components.
-   * @param <C> the type of <code>Component</code> the fixture to return can handle.
+   * @param <C> the type of {@code Component} the fixture to return can handle.
    * @param <F> the type of <code>ComponentFixture</code> to return.
    * @param extension the <code>ComponentFixtureExtension</code> that creates the <code>ComponentFixture</code> to
    * return.
-   * @return a <code>ComponentFixture</code> managing a component inside this fixture's <code>Container</code>.
+   * @return a <code>ComponentFixture</code> managing a component inside this fixture's {@code Container}.
    */
   <C extends Component, F extends ComponentFixture<C>> F with(ComponentFixtureExtension<C, F> extension);
 }

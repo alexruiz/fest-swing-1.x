@@ -26,14 +26,14 @@ public interface ComponentFormatter {
 
   /**
    * Returns a <code>String</code> representation of the given <code>{@link Component}</code>.
-   * @param c the given <code>Component</code>.
-   * @return a <code>String</code> representation of the given <code>Component</code>.
+   * @param c the given {@code Component}.
+   * @return a <code>String</code> representation of the given {@code Component}.
    */
   String format(Component c);
 
   /**
    * Returns the type of <code>{@link Component}</code> this formatter supports.
-   * @return the type of <code>Component</code> this formatter supports.
+   * @return the type of {@code Component} this formatter supports.
    */
   Class<? extends Component> targetType();
 }

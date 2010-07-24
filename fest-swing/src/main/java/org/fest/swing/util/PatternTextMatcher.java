@@ -35,7 +35,7 @@ public class PatternTextMatcher implements TextMatcher {
   /**
    * Creates a new </code>{@link PatternTextMatcher}</code>.
    * @param patterns the regular expression patterns to match.
-   * @throws NullPointerException if the array of patterns is <code>null</code>.
+   * @throws NullPointerException if the array of patterns is {@code null}.
    * @throws IllegalArgumentException if the array of patterns is empty.
    */
   public PatternTextMatcher(Pattern...patterns) {
@@ -47,9 +47,9 @@ public class PatternTextMatcher implements TextMatcher {
   /**
    * Indicates whether the given text matches the regular expression patterns in this matcher.
    * @param text the text to verify.
-   * @return <code>true</code> if the given text matches the <code>Pattern</code> values in this matcher,
-   * <code>false</code> otherwise.
-   * @throws NullPointerException if any of the regular expressions is <code>null</code>.
+   * @return {@code true} if the given text matches the <code>Pattern</code> values in this matcher,
+   * {@code false} otherwise.
+   * @throws NullPointerException if any of the regular expressions is {@code null}.
    */
   public boolean isMatching(String text) {
     for (Pattern pattern : patterns)

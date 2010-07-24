@@ -42,7 +42,7 @@ public class FrameFixture extends WindowFixture<Frame> implements FrameLikeFixtu
    * Creates a new <code>{@link FrameFixture}</code>. This constructor creates a new <code>{@link Robot}</code>
    * containing the current AWT hierarchy.
    * @param target the <code>Frame</code> to be managed by this fixture.
-   * @throws NullPointerException if the given frame is <code>null</code>.
+   * @throws NullPointerException if the given frame is {@code null}.
    * @see BasicRobot#robotWithCurrentAwtHierarchy()
    */
   public FrameFixture(Frame target) {
@@ -54,8 +54,8 @@ public class FrameFixture extends WindowFixture<Frame> implements FrameLikeFixtu
    * Creates a new <code>{@link FrameFixture}</code>.
    * @param robot performs user events on the given window and verifies expected output.
    * @param target the <code>Frame</code> to be managed by this fixture.
-   * @throws NullPointerException if the given robot is <code>null</code>.
-   * @throws NullPointerException if the given frame is <code>null</code>.
+   * @throws NullPointerException if the given robot is {@code null}.
+   * @throws NullPointerException if the given frame is {@code null}.
    */
   public FrameFixture(Robot robot, Frame target) {
     super(robot, target);
@@ -66,7 +66,7 @@ public class FrameFixture extends WindowFixture<Frame> implements FrameLikeFixtu
    * Creates a new <code>{@link FrameFixture}</code>.
    * @param robot performs user events on the given window and verifies expected output.
    * @param name the name of the <code>Frame</code> to find using the given <code>Robot</code>.
-   * @throws NullPointerException if the given robot is <code>null</code>.
+   * @throws NullPointerException if the given robot is {@code null}.
    * @throws ComponentLookupException if a <code>Frame</code> having a matching name could not be found.
    * @throws ComponentLookupException if more than one <code>Frame</code> having a matching name is found.
    */
@@ -94,7 +94,7 @@ public class FrameFixture extends WindowFixture<Frame> implements FrameLikeFixtu
   /**
    * Sets the <code>{@link FrameDriver}</code> to be used by this fixture.
    * @param newDriver the new <code>FrameDriver</code>.
-   * @throws NullPointerException if the given driver is <code>null</code>.
+   * @throws NullPointerException if the given driver is {@code null}.
    */
   protected final void driver(FrameDriver newDriver) {
     validateNotNull(newDriver);
@@ -124,7 +124,7 @@ public class FrameFixture extends WindowFixture<Frame> implements FrameLikeFixtu
    * Simulates a user clicking this fixture's <code>{@link Frame}</code>.
    * @param mouseClickInfo specifies the button to click and the times the button should be clicked.
    * @return this fixture.
-   * @throws NullPointerException if the given <code>MouseClickInfo</code> is <code>null</code>.
+   * @throws NullPointerException if the given <code>MouseClickInfo</code> is {@code null}.
    */
   public FrameFixture click(MouseClickInfo mouseClickInfo) {
     driver.click(target, mouseClickInfo);
@@ -210,7 +210,7 @@ public class FrameFixture extends WindowFixture<Frame> implements FrameLikeFixtu
    * Modifiers is a mask from the available <code>{@link java.awt.event.InputEvent}</code> masks.
    * @param keyPressInfo specifies the key and modifiers to press.
    * @return this fixture.
-   * @throws NullPointerException if the given <code>KeyPressInfo</code> is <code>null</code>.
+   * @throws NullPointerException if the given <code>KeyPressInfo</code> is {@code null}.
    * @throws IllegalArgumentException if the given code is not a valid key code.
    * @see KeyPressInfo
    */
@@ -223,7 +223,7 @@ public class FrameFixture extends WindowFixture<Frame> implements FrameLikeFixtu
    * Simulates a user pressing and releasing the given keys on this fixture's <code>{@link Frame}</code>.
    * @param keyCodes one or more codes of the keys to press.
    * @return this fixture.
-   * @throws NullPointerException if the given array of codes is <code>null</code>.
+   * @throws NullPointerException if the given array of codes is {@code null}.
    * @throws IllegalArgumentException if any of the given code is not a valid key code.
    * @see java.awt.event.KeyEvent
    */

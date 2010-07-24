@@ -85,7 +85,7 @@ public class KeyStrokeMap {
 
   /**
    * Indicates whether <code>{@link KeyStrokeMap}</code> has mappings or not.
-   * @return <code>true</code> if it has mappings, <code>false</code> otherwise.
+   * @return {@code true} if it has mappings, {@code false} otherwise.
    */
   public static boolean hasKeyStrokes() {
     return !maps.isEmpty();
@@ -93,9 +93,9 @@ public class KeyStrokeMap {
 
   /**
    * Returns the <code>{@link KeyStroke}</code> corresponding to the given character, as best we can guess it, or
-   * <code>null</code> if we don't know how to generate it.
+   * {@code null} if we don't know how to generate it.
    * @param character the given character.
-   * @return the key code-based <code>KeyStroke</code> corresponding to the given character, or <code>null</code> if
+   * @return the key code-based <code>KeyStroke</code> corresponding to the given character, or {@code null} if
    * we cannot generate it.
    */
   public static KeyStroke keyStrokeFor(char character) {

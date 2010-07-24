@@ -45,7 +45,7 @@ public class JPanelFixture extends ContainerFixture<JPanel> implements CommonCom
    * Creates a new <code>{@link JPanelFixture}</code>.
    * @param robot performs simulation of user events on a <code>JPanel</code>.
    * @param panelName the name of the <code>JPanel</code> to find using the given <code>Robot</code>.
-   * @throws NullPointerException if <code>robot</code> is <code>null</code>.
+   * @throws NullPointerException if <code>robot</code> is {@code null}.
    * @throws ComponentLookupException if a matching <code>JPanel</code> could not be found.
    * @throws ComponentLookupException if more than one matching <code>JPanel</code> is found.
    */
@@ -58,8 +58,8 @@ public class JPanelFixture extends ContainerFixture<JPanel> implements CommonCom
    * Creates a new <code>{@link JPanelFixture}</code>.
    * @param robot performs simulation of user events on the given <code>JPanel</code>.
    * @param target the <code>JPanel</code> to be managed by this fixture.
-   * @throws NullPointerException if <code>robot</code> is <code>null</code>.
-   * @throws NullPointerException if <code>target</code> is <code>null</code>.
+   * @throws NullPointerException if <code>robot</code> is {@code null}.
+   * @throws NullPointerException if <code>target</code> is {@code null}.
    */
   public JPanelFixture(Robot robot, JPanel target) {
     super(robot, target);
@@ -73,7 +73,7 @@ public class JPanelFixture extends ContainerFixture<JPanel> implements CommonCom
   /**
    * Sets the <code>{@link JComponentDriver}</code> to be used by this fixture.
    * @param newDriver the new <code>JComponentDriver</code>.
-   * @throws NullPointerException if the given driver is <code>null</code>.
+   * @throws NullPointerException if the given driver is {@code null}.
    */
   protected final void driver(JComponentDriver newDriver) {
     validateNotNull(newDriver);
@@ -103,7 +103,7 @@ public class JPanelFixture extends ContainerFixture<JPanel> implements CommonCom
    * Simulates a user clicking this fixture's <code>{@link JPanel}</code>.
    * @param mouseClickInfo specifies the button to click and the times the button should be clicked.
    * @return this fixture.
-   * @throws NullPointerException if the given <code>MouseClickInfo</code> is <code>null</code>.
+   * @throws NullPointerException if the given <code>MouseClickInfo</code> is {@code null}.
    */
   public JPanelFixture click(MouseClickInfo mouseClickInfo) {
     driver.click(target, mouseClickInfo);
@@ -142,7 +142,7 @@ public class JPanelFixture extends ContainerFixture<JPanel> implements CommonCom
    * Modifiers is a mask from the available <code>{@link java.awt.event.InputEvent}</code> masks.
    * @param keyPressInfo specifies the key and modifiers to press.
    * @return this fixture.
-   * @throws NullPointerException if the given <code>KeyPressInfo</code> is <code>null</code>.
+   * @throws NullPointerException if the given <code>KeyPressInfo</code> is {@code null}.
    * @throws IllegalArgumentException if the given code is not a valid key code.
    * @see KeyPressInfo
    */
@@ -156,7 +156,7 @@ public class JPanelFixture extends ContainerFixture<JPanel> implements CommonCom
    * fixture.
    * @param keyCodes one or more codes of the keys to press.
    * @return this fixture.
-   * @throws NullPointerException if the given array of codes is <code>null</code>.
+   * @throws NullPointerException if the given array of codes is {@code null}.
    * @throws IllegalArgumentException if any of the given code is not a valid key code.
    * @see java.awt.event.KeyEvent
    */
@@ -267,7 +267,7 @@ public class JPanelFixture extends ContainerFixture<JPanel> implements CommonCom
    * pattern.
    * @param pattern the regular expression pattern to match.
    * @return this fixture.
-   * @throws NullPointerException if the given regular expression pattern is <code>null</code>.
+   * @throws NullPointerException if the given regular expression pattern is {@code null}.
    * @throws AssertionError if the toolTip in this fixture's <code>JPanel</code> does not match the given regular
    * expression.
    * @since 1.2
@@ -280,9 +280,9 @@ public class JPanelFixture extends ContainerFixture<JPanel> implements CommonCom
   /**
    * Returns the client property stored in this fixture's <code>{@link JPanel}</code>, under the given key.
    * @param key the key to use to retrieve the client property.
-   * @return the value of the client property stored under the given key, or <code>null</code> if the property was
+   * @return the value of the client property stored under the given key, or {@code null} if the property was
    * not found.
-   * @throws NullPointerException if the given key is <code>null</code>.
+   * @throws NullPointerException if the given key is {@code null}.
    * @since 1.2
    */
   public Object clientProperty(Object key) {

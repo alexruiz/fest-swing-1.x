@@ -72,7 +72,7 @@ public class ExistingHierarchy implements ComponentHierarchy {
    * Returns whether the given component is reachable from any of the root windows. The default is to consider all
    * components to be contained in the hierarchy, whether they are reachable or not.
    * @param c the given component.
-   * @return <code>true</code>.
+   * @return {@code true}.
    */
   public boolean contains(Component c) {
     return true;

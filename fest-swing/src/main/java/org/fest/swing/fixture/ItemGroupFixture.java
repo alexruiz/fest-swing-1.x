@@ -35,7 +35,7 @@ public interface ItemGroupFixture {
 
   /**
    * Returns the <code>String</code> representation of the elements in this fixture's <code>{@link Component}</code>.
-   * @return the <code>String</code> representation of the elements in this fixture's <code>Component</code>.
+   * @return the <code>String</code> representation of the elements in this fixture's {@code Component}.
    */
   String[] contents();
 
@@ -65,16 +65,16 @@ public interface ItemGroupFixture {
    * select must match the given regular expression pattern.
    * @param pattern the regular expression pattern to match.
    * @return this fixture.
-   * @throws NullPointerException if the given regular expression pattern is <code>null</code>.
+   * @throws NullPointerException if the given regular expression pattern is {@code null}.
    * @since 1.2
    */
   ItemGroupFixture selectItem(Pattern pattern);
 
   /**
    * Returns the value of an item in the <code>{@link Component}</code> managed by this fixture. If the value is not
-   * meaningful, this method will return <code>null</code>.
+   * meaningful, this method will return {@code null}.
    * @param index the index of the item to return.
-   * @return the value of the item under the given index, or <code>null</code> if nothing meaningful.
+   * @return the value of the item under the given index, or {@code null} if nothing meaningful.
    */
   Object valueAt(int index);
 
@@ -92,7 +92,7 @@ public interface ItemGroupFixture {
    * regular expression pattern.
    * @param pattern the regular expression pattern to match.
    * @return this fixture.
-   * @throws NullPointerException if the given regular expression pattern is <code>null</code>.
+   * @throws NullPointerException if the given regular expression pattern is {@code null}.
    * @throws AssertionError if the selected item does not match the given regular expression pattern.
    * @since 1.2
    */
@@ -111,7 +111,7 @@ public interface ItemGroupFixture {
   /**
    * Verifies that this fixture's <code>{@link Component}</code> does not have a selection.
    * @return this fixture.
-   * @throws AssertionError if this fixture's <code>Component</code> has a selection.
+   * @throws AssertionError if this fixture's {@code Component} has a selection.
    */
   ItemGroupFixture requireNoSelection();
 
@@ -119,7 +119,7 @@ public interface ItemGroupFixture {
    * Verifies that this fixture's <code>{@link Component}</code> has the expected number of items
    * @param expected the expected number of items.
    * @return this fixture.
-   * @throws AssertionError if the number of items in this fixture's <code>Component</code> is not equal to the expected
+   * @throws AssertionError if the number of items in this fixture's {@code Component} is not equal to the expected
    * one.
    * @since 1.2
    */

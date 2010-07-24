@@ -37,8 +37,8 @@ public class JComboBoxFormatter extends ComponentFormatterTemplate {
   /**
    * Returns the <code>String</code> representation of the given <code>{@link Component}</code>, which should be a
    * <code>{@link JComboBox}</code> (or subclass.)
-   * @param c the given <code>Component</code>.
-   * @return the <code>String</code> representation of the given <code>JComboBox</code>.
+   * @param c the given {@code Component}.
+   * @return the <code>String</code> representation of the given {@code JComboBox}.
    */
   protected String doFormat(Component c) {
     JComboBox comboBox = (JComboBox)c;

@@ -32,7 +32,7 @@ public class ComponentLookupException extends RuntimeException {
   /**
    * Creates a new </code>{@link ComponentLookupException}</code>.
    * @param message the detail message.
-   * @param found the <code>Component</code>s found by the lookup (if any.)
+   * @param found the {@code Component}s found by the lookup (if any.)
    */
   public ComponentLookupException(String message, Collection<? extends Component> found) {
     this(message);
@@ -48,8 +48,8 @@ public class ComponentLookupException extends RuntimeException {
   }
 
   /**
-   * Returns the <code>Component</code>s found by the lookup (if any.)
-   * @return the <code>Component</code>s found by the lookup (if any.)
+   * Returns the {@code Component}s found by the lookup (if any.)
+   * @return the {@code Component}s found by the lookup (if any.)
    */
   public final Collection<? extends Component> found() {
     return Collections.<Component>unmodifiableCollection(found);

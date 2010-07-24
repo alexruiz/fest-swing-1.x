@@ -39,7 +39,7 @@ public class JListFormatter extends ComponentFormatterTemplate {
   /**
    * Returns the <code>String</code> representation of the given <code>{@link Component}</code>, which should be a
    * <code>{@link JList}</code> (or subclass.)
-   * @param c the given <code>Component</code>.
+   * @param c the given {@code Component}.
    * @return the <code>String</code> representation of the given <code>JList</code>.
    */
   protected String doFormat(Component c) {

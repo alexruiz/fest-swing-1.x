@@ -34,7 +34,7 @@ public class JTableFormatter extends ComponentFormatterTemplate {
   /**
    * Returns the <code>String</code> representation of the given <code>{@link Component}</code>, which should be a
    * <code>{@link JTable}</code> (or subclass.)
-   * @param c the given <code>Component</code>.
+   * @param c the given {@code Component}.
    * @return the <code>String</code> representation of the given <code>JTable</code>.
    */
   protected String doFormat(Component c) {

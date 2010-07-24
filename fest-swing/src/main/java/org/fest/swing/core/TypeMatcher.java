@@ -34,7 +34,7 @@ public final class TypeMatcher extends AbstractComponentMatcher {
   /**
    * Creates a new <code>{@link TypeMatcher}</code>. The component to match does not have to be showing.
    * @param type the type of the component we are looking for.
-   * @throws NullPointerException if the given type is <code>null</code>.
+   * @throws NullPointerException if the given type is {@code null}.
    */
   public TypeMatcher(Class<? extends Component> type) {
     this(type, false);
@@ -44,7 +44,7 @@ public final class TypeMatcher extends AbstractComponentMatcher {
    * Creates a new <code>{@link TypeMatcher}</code>.
    * @param type the type of the component we are looking for.
    * @param requireShowing indicates if the component to match should be showing or not.
-   * @throws NullPointerException if the given type is <code>null</code>.
+   * @throws NullPointerException if the given type is {@code null}.
    */
   public TypeMatcher(Class<? extends Component> type, boolean requireShowing) {
     super(requireShowing);
@@ -60,8 +60,8 @@ public final class TypeMatcher extends AbstractComponentMatcher {
    * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
    * responsible for calling this method from the EDT.
    * </p>
-   * @return <code>true</code> if the type and visibility of the given <code>Component</code> matches the values
-   * specified in this matcher, <code>false</code> otherwise.
+   * @return {@code true} if the type and visibility of the given {@code Component} matches the values
+   * specified in this matcher, {@code false} otherwise.
    */
   @RunsInCurrentThread
   public boolean matches(Component c) {

@@ -42,10 +42,10 @@ public final class IntrospectionComponentFormatter extends ComponentFormatterTem
 
   /**
    * Creates a new </code>{@link IntrospectionComponentFormatter}</code>.
-   * @param targetType the type of <code>Component</code> that this formatter supports.
+   * @param targetType the type of {@code Component} that this formatter supports.
    * @param propertyNames the property names to show as the <code>String</code> representation of a given
-   * <code>Component</code>.
-   * @throws NullPointerException if <code>targetType</code> is <code>null</code>.
+   * {@code Component}.
+   * @throws NullPointerException if <code>targetType</code> is {@code null}.
    */
   public IntrospectionComponentFormatter(Class<? extends Component> targetType, String...propertyNames) {
     if (targetType == null) throw new NullPointerException("targetType should not be null");
@@ -74,10 +74,10 @@ public final class IntrospectionComponentFormatter extends ComponentFormatterTem
    * Returns a <code>String</code> representation of the given <code>{@link Component}</code>, showing only the
    * properties specified in this formatter's
    * <code>{@link #IntrospectionComponentFormatter(Class, String...) constructor}</code>.
-   * @param c the given <code>Component</code>.
-   * @return a <code>String</code> representation of the given <code>Component</code>.
-   * @throws NullPointerException if the given <code>Component</code> is <code>null</code>.
-   * @throws IllegalArgumentException if the type of the given <code>Component</code> is not supported by this 
+   * @param c the given {@code Component}.
+   * @return a <code>String</code> representation of the given {@code Component}.
+   * @throws NullPointerException if the given {@code Component} is {@code null}.
+   * @throws IllegalArgumentException if the type of the given {@code Component} is not supported by this 
    * formatter.
    * @see #targetType()
    */
@@ -116,7 +116,7 @@ public final class IntrospectionComponentFormatter extends ComponentFormatterTem
 
   /**
    * Returns the type of <code>{@link Component}</code> this formatter supports.
-   * @return the type of <code>Component</code> this formatter supports.
+   * @return the type of {@code Component} this formatter supports.
    */
   public Class<? extends Component> targetType() { return targetType; }
 

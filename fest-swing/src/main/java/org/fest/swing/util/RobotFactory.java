@@ -28,7 +28,7 @@ public class RobotFactory {
    * Constructs a <code>{@link Robot}</code> object in the coordinate system of the primary screen.
    * @return the created <code>Robot</code>.
    * @throws AWTException if the platform configuration does not allow low-level input control. This exception is always
-   * thrown when <code>GraphicsEnvironment.isHeadless()</code> returns <code>true</code>.
+   * thrown when <code>GraphicsEnvironment.isHeadless()</code> returns {@code true}.
    * @throws SecurityException if <code>createRobot</code> permission is not granted.
    */
   public Robot newRobotInPrimaryScreen() throws AWTException {

@@ -31,14 +31,14 @@ import org.fest.swing.annotation.RunsInCurrentThread;
 public interface CellRendererReader {
 
   /**
-   * Reads the value in the given cell renderer component, or returns <code>null</code> if the component is not
+   * Reads the value in the given cell renderer component, or returns {@code null} if the component is not
    * recognized by this reader.
    * <p>
    * <b>Note:</b> Implementations of this method <b>may not</b> guaranteed to be executed in the event dispatch thread
    * (EDT.) Clients are responsible for invoking this method in the EDT.
    * </p>
    * @param c the given cell renderer component.
-   * @return the value of the given <code>Component</code>, or <code>null</code> if the renderer belongs to an unknown
+   * @return the value of the given {@code Component}, or {@code null} if the renderer belongs to an unknown
    * component type.
    */
   String valueFrom(Component c);

@@ -49,7 +49,7 @@ public abstract class Condition {
 
   /**
    * Checks if the condition has been satisfied.
-   * @return <code>true</code> if the condition has been satisfied, otherwise <code>false</code>.
+   * @return {@code true} if the condition has been satisfied, otherwise {@code false}.
    */
   public abstract boolean test();
 

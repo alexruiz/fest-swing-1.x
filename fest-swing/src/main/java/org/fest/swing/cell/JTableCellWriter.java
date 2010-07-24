@@ -94,7 +94,7 @@ public interface JTableCellWriter {
 
   /**
    * Returns the <code>{@link Component}</code> used as editor of the given cell. To manipulate the returned
-   * <code>Component</code>, <code>{@link #startCellEditing(JTable, int, int)}</code> should be called first.
+   * {@code Component}, <code>{@link #startCellEditing(JTable, int, int)}</code> should be called first.
    * <p>
    * Example:
    *
@@ -111,7 +111,7 @@ public interface JTableCellWriter {
    * @param table the target <code>JTable</code>.
    * @param row the row index of the cell.
    * @param column the column index of the cell.
-   * @return the <code>Component</code> used as editor of the given cell.
+   * @return the {@code Component} used as editor of the given cell.
    * @throws IllegalStateException if the <code>JTable</code> cell is not editable.
    * @throws IndexOutOfBoundsException if any of the indices (row and column) is out of bounds.
    * @throws IllegalStateException if the <code>JTable</code> cell is not editable.

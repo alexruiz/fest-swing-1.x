@@ -51,7 +51,7 @@ public class JPopupMenuDriver extends JComponentDriver {
 
   /**
    * Returns the contents of the pop-up menu as a <code>String</code> array.
-   * @param popupMenu the target <code>JPopupMenu</code>.
+   * @param popupMenu the target {@code JPopupMenu}.
    * @return the contents of the pop-up menu as a <code>String</code> array.
    */
   @RunsInEDT
@@ -62,7 +62,7 @@ public class JPopupMenuDriver extends JComponentDriver {
   /**
    * Finds a <code>{@link JMenuItem}</code>, contained in the <code>{@link Container}</code>, which name matches
    * the specified one.
-   * @param popupMenu the target <code>JPopupMenu</code>.
+   * @param popupMenu the target {@code JPopupMenu}.
    * @param name the name to match.
    * @return the <code>JMenuItem</code> found.
    * @throws ComponentLookupException if a <code>JMenuItem</code> having a matching name could not be found.
@@ -76,7 +76,7 @@ public class JPopupMenuDriver extends JComponentDriver {
   /**
    * Finds a <code>{@link JMenuItem}</code>, contained in the <code>{@link Container}</code>, that matches the
    * specified search criteria.
-   * @param popupMenu the target <code>JPopupMenu</code>.
+   * @param popupMenu the target {@code JPopupMenu}.
    * @param matcher contains the search criteria for finding a <code>JMenuItem</code>.
    * @return the <code>JMenuItem</code> found.
    * @throws ComponentLookupException if a <code>JMenuItem</code> that matches the given search criteria could not be

@@ -54,7 +54,7 @@ public final class Scrolling {
   /**
    * Returns a component's closest validating root ancestor in the AWT containment hierarchy.
    * @param c the given component.
-   * @return the found ancestor or <code>null</code> if there isn't one.
+   * @return the found ancestor or {@code null} if there isn't one.
    */
   private static JComponent findClosestValidatingRootAncestor(JComponent c) {
     // the candidate validating root at every iteration (candidate = not necessarily a root)

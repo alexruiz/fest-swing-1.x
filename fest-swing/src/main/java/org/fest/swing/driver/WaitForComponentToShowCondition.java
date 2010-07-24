@@ -34,9 +34,9 @@ public class WaitForComponentToShowCondition extends Condition {
 
   /**
    * Creates a new </code>{@link WaitForComponentToShowCondition}</code>.
-   * @param c the <code>Component</code> to verify.
+   * @param c the {@code Component} to verify.
    * @return the created condition.
-   * @throws NullPointerException if the <code>Component</code> is <code>null</code>.
+   * @throws NullPointerException if the {@code Component} is {@code null}.
    */
   public static WaitForComponentToShowCondition untilIsShowing(Component c) {
     return new WaitForComponentToShowCondition(c);
@@ -50,8 +50,8 @@ public class WaitForComponentToShowCondition extends Condition {
 
   /**
    * Indicates whether the <code>{@link Component}</code> in this condition is showing on the screen or not.
-   * @return <code>true</code> if the <code>Component</code> in this condition is showing on the screen,
-   * <code>false</code> otherwise
+   * @return {@code true} if the {@code Component} in this condition is showing on the screen,
+   * {@code false} otherwise
    */
   public boolean test() {
     return isShowing(c);

@@ -130,10 +130,10 @@ public class JAppletDriver extends ComponentDriver {
 
   /**
    * Returns the value of the named parameter in the given <code>{@link JApplet}</code> in the HTML tag, or
-   * <code>null</code> if not set.
+   * {@code null} if not set.
    * @param applet the given {@code JApplet}.
    * @param parameterName a parameter name.
-   * @return the value of the named parameter in the given {code JApplet} in the HTML tag, or <code>null</code> if not
+   * @return the value of the named parameter in the given {code JApplet} in the HTML tag, or {@code null} if not
    * set.
    */
   @RunsInEDT
@@ -153,7 +153,7 @@ public class JAppletDriver extends ComponentDriver {
   /**
    * Indicates whether the given <code>{@link JApplet}</code> is active or not.
    * @param applet the given {@code JApplet}.
-   * @return <code>true</code> if the given {@code JApplet} is active; <code>false</code> otherwise.
+   * @return {@code true} if the given {@code JApplet} is active; {@code false} otherwise.
    */
   @RunsInEDT
   public boolean isActive(JApplet applet) {

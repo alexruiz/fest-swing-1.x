@@ -37,7 +37,7 @@ public interface ToolTipDisplayFixture {
    * Asserts that the toolTip in this fixture's GUI component matches the given regular expression pattern.
    * @param pattern the regular expression pattern to match.
    * @return this fixture.
-   * @throws NullPointerException if the given regular expression pattern is <code>null</code>.
+   * @throws NullPointerException if the given regular expression pattern is {@code null}.
    * @throws AssertionError if the toolTip in this fixture's GUI component does not match the given value.
    */
   ToolTipDisplayFixture requireToolTip(Pattern pattern);

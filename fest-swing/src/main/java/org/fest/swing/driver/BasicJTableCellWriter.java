@@ -48,7 +48,7 @@ public class BasicJTableCellWriter extends AbstractJTableCellWriter {
    * components as cell editors:
    * <ul>
    * <li><code>{@link JCheckBox}</code>: valid values for the property "selected" (a boolean) are "true" and "yes",
-   * other values are considered <code>false</code>.</li>
+   * other values are considered {@code false}.</li>
    * <li><code>{@link JComboBox}</code>: this writer will select the element which <code>String</code> representation
    * matches the given value.</li>
    * <li><code>{@link JTextComponent}</code>: any value will be entered in the cell.</li>

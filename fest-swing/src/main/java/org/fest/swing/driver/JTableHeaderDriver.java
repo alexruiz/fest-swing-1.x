@@ -108,7 +108,7 @@ public class JTableHeaderDriver extends JComponentDriver {
    * @param columnNamePattern the the regular expression pattern to match.
    * @throws IllegalStateException if the <code>JTableHeader</code> is disabled.
    * @throws IllegalStateException if the <code>JTableHeader</code> is not showing on the screen.
-   * @throws NullPointerException if the given regular expression pattern is <code>null</code>.
+   * @throws NullPointerException if the given regular expression pattern is {@code null}.
    * @throws LocationUnavailableException if a column with a matching name cannot be found.
    * @since 1.2
    */
@@ -141,7 +141,7 @@ public class JTableHeaderDriver extends JComponentDriver {
    * @param times the number of times to click.
    * @throws IllegalStateException if the <code>JTableHeader</code> is disabled.
    * @throws IllegalStateException if the <code>JTableHeader</code> is not showing on the screen.
-   * @throws NullPointerException if the given regular expression pattern is <code>null</code>.
+   * @throws NullPointerException if the given regular expression pattern is {@code null}.
    * @throws LocationUnavailableException if a column with a matching name cannot be found.
    * @since 1.2
    */
@@ -205,7 +205,7 @@ public class JTableHeaderDriver extends JComponentDriver {
    * @return the displayed pop-up menu.
    * @throws IllegalStateException if the <code>JTableHeader</code> is disabled.
    * @throws IllegalStateException if the <code>JTableHeader</code> is not showing on the screen.
-   * @throws NullPointerException if the given regular expression pattern is <code>null</code>.
+   * @throws NullPointerException if the given regular expression pattern is {@code null}.
    * @throws ComponentLookupException if a pop-up menu cannot be found.
    * @since 1.2
    */

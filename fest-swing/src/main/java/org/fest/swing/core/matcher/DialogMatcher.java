@@ -161,7 +161,7 @@ public final class DialogMatcher extends NamedComponentMatcherTemplate<Dialog> {
    * responsible for calling this method from the EDT.
    * </p>
    * @param dialog the <code>Dialog</code> to match.
-   * @return <code>true</code> if the <code>Dialog</code> matches the search criteria in this matcher.
+   * @return {@code true} if the <code>Dialog</code> matches the search criteria in this matcher.
    */
   @RunsInCurrentThread
   protected boolean isMatching(Dialog dialog) {

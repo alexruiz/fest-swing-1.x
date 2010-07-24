@@ -49,7 +49,7 @@ public class BasicJComboBoxCellReader implements JComboBoxCellReader {
   /**
    * Creates a new </code>{@link BasicJComboBoxCellReader}</code> that uses a
    * <code>{@link BasicCellRendererReader}</code> to read the value from the cell renderer component in a
-   * <code>JComboBox</code>.
+   * {@code JComboBox}.
    */
   public BasicJComboBoxCellReader() {
     this(new BasicCellRendererReader());
@@ -58,8 +58,8 @@ public class BasicJComboBoxCellReader implements JComboBoxCellReader {
   /**
    * Creates a new </code>{@link BasicJComboBoxCellReader}</code>.
    * @param rendererReader knows how to read values from the cell renderer component in a
-   * <code>JComboBox</code>.
-   * @throws NullPointerException if <code>r</code> is <code>null</code>.
+   * {@code JComboBox}.
+   * @throws NullPointerException if <code>r</code> is {@code null}.
    */
   public BasicJComboBoxCellReader(CellRendererReader rendererReader) {
     if (rendererReader == null)
@@ -73,9 +73,9 @@ public class BasicJComboBoxCellReader implements JComboBoxCellReader {
    * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
    * responsible for calling this method from the EDT.
    * </p>
-   * @param comboBox the given <code>JComboBox</code>.
+   * @param comboBox the given {@code JComboBox}.
    * @param index the index of the cell.
-   * @return the internal value of a cell in a <code>JComboBox</code> as expected in a test.
+   * @return the internal value of a cell in a {@code JComboBox} as expected in a test.
    * @see CellRendererReader#valueFrom(Component)
    */
   @RunsInCurrentThread

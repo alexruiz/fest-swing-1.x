@@ -73,7 +73,7 @@ public class ScreenshotTaker {
   /**
    * Takes a screenshot of the desktop and saves it as a PNG file.
    * @param imageFilePath the path of the file to save the screenshot to.
-   * @throws ImageException if the given file path is <code>null</code> or empty.
+   * @throws ImageException if the given file path is {@code null} or empty.
    * @throws ImageException if the given file path does not end with ".png".
    * @throws ImageException if the given file path belongs to a non-empty directory.
    * @throws ImageException if an I/O error prevents the image from being saved as a file.
@@ -96,7 +96,7 @@ public class ScreenshotTaker {
    * Takes a screenshot of the given <code>{@link java.awt.Component}</code> and saves it as a PNG file.
    * @param c the given component.
    * @param imageFilePath the path of the file to save the screenshot to.
-   * @throws ImageException if the given file path is <code>null</code> or empty.
+   * @throws ImageException if the given file path is {@code null} or empty.
    * @throws ImageException if the given file path does not end with ".png".
    * @throws ImageException if the given file path belongs to a non-empty directory.
    * @throws ImageException if an I/O error prevents the image from being saved as a file.
@@ -171,7 +171,7 @@ public class ScreenshotTaker {
    * Save the given image as a PNG file.
    * @param image the image to save.
    * @param filePath the path of the file to save the image to.
-   * @throws ImageException if the given file path is <code>null</code> or empty.
+   * @throws ImageException if the given file path is {@code null} or empty.
    * @throws ImageException if the given file path does not end with ".png".
    * @throws ImageException if the given file path belongs to a non-empty directory.
    * @throws ImageException if an I/O error prevents the image from being saved as a file.

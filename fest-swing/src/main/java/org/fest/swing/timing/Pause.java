@@ -39,7 +39,7 @@ public final class Pause {
   /**
    * Waits until the given condition is satisfied.
    * @param condition the condition to verify.
-   * @throws NullPointerException if the given condition is <code>null</code>.
+   * @throws NullPointerException if the given condition is {@code null}.
    * @throws WaitTimedOutError if the wait times out (more than 30 seconds).
    */
   public static void pause(Condition condition) {
@@ -50,8 +50,8 @@ public final class Pause {
    * Waits until the given condition is satisfied.
    * @param condition the condition to verify.
    * @param timeout the timeout.
-   * @throws NullPointerException if the given timeout is <code>null</code>.
-   * @throws NullPointerException if the given condition is <code>null</code>.
+   * @throws NullPointerException if the given timeout is {@code null}.
+   * @throws NullPointerException if the given condition is {@code null}.
    * @throws WaitTimedOutError if the wait times out.
    */
   public static void pause(Condition condition, Timeout timeout) {
@@ -63,7 +63,7 @@ public final class Pause {
    * Waits until the given condition is satisfied.
    * @param condition the condition to verify.
    * @param timeout the timeout (in milliseconds.)
-   * @throws NullPointerException if the given condition is <code>null</code>.
+   * @throws NullPointerException if the given condition is {@code null}.
    * @throws WaitTimedOutError if the wait times out.
    */
   public static void pause(Condition condition, long timeout) {
@@ -86,9 +86,9 @@ public final class Pause {
   /**
    * Waits until the given conditions are satisfied.
    * @param conditions the conditions to verify.
-   * @throws NullPointerException if the array of conditions is <code>null</code>.
+   * @throws NullPointerException if the array of conditions is {@code null}.
    * @throws IllegalArgumentException if the array of conditions is empty.
-   * @throws NullPointerException if the array of conditions has one or more <code>null</code> values.
+   * @throws NullPointerException if the array of conditions has one or more {@code null} values.
    * @throws WaitTimedOutError if the wait times out (more than 30 seconds).
    */
   public static void pause(Condition[] conditions) {
@@ -99,10 +99,10 @@ public final class Pause {
    * Waits until the given conditions are satisfied.
    * @param conditions the conditions to verify.
    * @param timeout the timeout.
-   * @throws NullPointerException if the given timeout is <code>null</code>.
-   * @throws NullPointerException if the array of conditions is <code>null</code>.
+   * @throws NullPointerException if the given timeout is {@code null}.
+   * @throws NullPointerException if the array of conditions is {@code null}.
    * @throws IllegalArgumentException if the array of conditions is empty.
-   * @throws NullPointerException if the array of conditions has one or more <code>null</code> values.
+   * @throws NullPointerException if the array of conditions has one or more {@code null} values.
    * @throws WaitTimedOutError if the wait times out.
    */
   public static void pause(Condition[] conditions, Timeout timeout) {
@@ -113,9 +113,9 @@ public final class Pause {
    * Waits until the given conditions are satisfied.
    * @param conditions the conditions to verify.
    * @param timeout the timeout (in milliseconds.)
-   * @throws NullPointerException if the array of conditions is <code>null</code>.
+   * @throws NullPointerException if the array of conditions is {@code null}.
    * @throws IllegalArgumentException if the array of conditions is empty.
-   * @throws NullPointerException if the array of conditions has one or more <code>null</code> values.
+   * @throws NullPointerException if the array of conditions has one or more {@code null} values.
    * @throws WaitTimedOutError if the wait times out.
    */
   public static void pause(Condition[] conditions, long timeout) {
@@ -160,7 +160,7 @@ public final class Pause {
    * @param timeout the quantity of time units to sleep.
    * @param unit the time units.
    * @see #pause(long)
-   * @throws NullPointerException if <code>unit</code> is <code>null</code>.
+   * @throws NullPointerException if <code>unit</code> is {@code null}.
    */
   public static void pause(long timeout, TimeUnit unit) {
     if (unit == null) throw new NullPointerException("Time unit cannot be null");

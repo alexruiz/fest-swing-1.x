@@ -90,7 +90,7 @@ public class ApplicationLauncher {
    * application. JVM-specific arguments are ignored (e.g. -Xms, -Xmx)
    * @param newArgs the arguments to pass to the "main" method.
    * @return this <code>ApplicationStarter</code>.
-   * @throws NullPointerException if <code>newArgs</code> is <code>null</code>.
+   * @throws NullPointerException if <code>newArgs</code> is {@code null}.
    */
   public ApplicationLauncher withArgs(String...newArgs) {
     if (newArgs == null) throw new NullPointerException("The array of arguments should not be null");

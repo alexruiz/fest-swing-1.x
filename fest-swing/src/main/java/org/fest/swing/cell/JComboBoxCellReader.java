@@ -36,9 +36,9 @@ public interface JComboBoxCellReader {
    * <b>Note:</b> Implementations of this method <b>may not</b> guaranteed to be executed in the event dispatch thread
    * (EDT.) Clients are responsible for invoking this method in the EDT.
    * </p>
-   * @param comboBox the given <code>JComboBox</code>.
+   * @param comboBox the given {@code JComboBox}.
    * @param index the index of the cell.
-   * @return the internal value of a cell in a <code>JComboBox</code> as expected in a test.
+   * @return the internal value of a cell in a {@code JComboBox} as expected in a test.
    */
   String valueAt(JComboBox comboBox, int index);
 }

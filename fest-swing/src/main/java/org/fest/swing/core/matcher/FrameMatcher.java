@@ -156,8 +156,8 @@ public final class FrameMatcher extends NamedComponentMatcherTemplate<Frame> {
    * responsible for calling this method from the EDT.
    * </p>
    * @param frame the <code>Frame</code> to match.
-   * @return <code>true</code> if the title in the <code>Frame</code> is equal to the title in this matcher,
-   * <code>false</code> otherwise.
+   * @return {@code true} if the title in the <code>Frame</code> is equal to the title in this matcher,
+   * {@code false} otherwise.
    */
   @RunsInCurrentThread
   protected boolean isMatching(Frame frame) {

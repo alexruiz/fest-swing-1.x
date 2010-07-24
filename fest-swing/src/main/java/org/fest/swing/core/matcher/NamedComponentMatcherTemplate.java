@@ -28,7 +28,7 @@ import org.fest.swing.core.GenericTypeMatcher;
 /**
  * Understands a template for matching components by name. Subclasses are free to add other properties to use as search
  * criteria.
- * @param <T> the type of <code>Component</code> supported by this matcher.
+ * @param <T> the type of {@code Component} supported by this matcher.
  *
  * @author Alex Ruiz
  */
@@ -47,7 +47,7 @@ public abstract class NamedComponentMatcherTemplate<T extends Component> extends
   /**
    * Creates a new </code>{@link NamedComponentMatcherTemplate}</code>.
    * @param supportedType the type supported by this matcher.
-   * @throws NullPointerException if the given type is <code>null</code>.
+   * @throws NullPointerException if the given type is {@code null}.
    */
   protected NamedComponentMatcherTemplate(Class<T> supportedType) {
     super(supportedType);
@@ -58,7 +58,7 @@ public abstract class NamedComponentMatcherTemplate<T extends Component> extends
    * Creates a new </code>{@link NamedComponentMatcherTemplate}</code>.
    * @param supportedType the type supported by this matcher.
    * @param name the component name to match.
-   * @throws NullPointerException if the given type is <code>null</code>.
+   * @throws NullPointerException if the given type is {@code null}.
    */
   protected NamedComponentMatcherTemplate(Class<T> supportedType, Object name) {
     super(supportedType);
@@ -89,11 +89,11 @@ public abstract class NamedComponentMatcherTemplate<T extends Component> extends
   }
 
   /**
-   * Indicates whether the given value matches the name in this matcher. It always returns <code>true</code> if this
+   * Indicates whether the given value matches the name in this matcher. It always returns {@code true} if this
    * matcher's name is <code>{@link #ANY}</code>.
    * @param actual the actual component name.
-   * @return <code>true</code> if this matcher's name is <code>ANY</code> or if both the actual name is equal to the one
-   * in this matcher. Otherwise <code>false</code>.
+   * @return {@code true} if this matcher's name is <code>ANY</code> or if both the actual name is equal to the one
+   * in this matcher. Otherwise {@code false}.
    */
   protected final boolean isNameMatching(String actual) {
     if (ANY.equals(name)) return true;
@@ -103,7 +103,7 @@ public abstract class NamedComponentMatcherTemplate<T extends Component> extends
   /**
    * Indicates whether the given value matches the expected value in this matcher. Matching is performed as follows:
    * <ol>
-   * <li>it always returns <code>true</code> if the expected value is <code>{@link #ANY}</code></li>
+   * <li>it always returns {@code true} if the expected value is <code>{@link #ANY}</code></li>
    * <li>if both the expected and actual values are <code>String</code>s, it checks for equality first. If this fails,
    * it tries to match the values assuming the expected value can be a regular expression</li>
    * <li>if the expected value is a <code>{@link Pattern}</code> and the actual value is a
@@ -112,7 +112,7 @@ public abstract class NamedComponentMatcherTemplate<T extends Component> extends
    * </ol>
    * @param expected the expected value in this matcher.
    * @param actual the actual property value.
-   * @return <code>true</code> if the values match, otherwise <code>false</code>.
+   * @return {@code true} if the values match, otherwise {@code false}.
    */
   protected final boolean arePropertyValuesMatching(Object expected, Object actual) {
     if (ANY.equals(expected)) return true;

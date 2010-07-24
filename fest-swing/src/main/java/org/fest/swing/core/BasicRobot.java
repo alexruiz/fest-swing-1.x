@@ -231,8 +231,8 @@ public class BasicRobot implements Robot {
 
   /**
    * Returns the <code>{@link Applet}</code> descendant of the given <code>{@link Container}</code>, if any.
-   * @param c the given <code>Container</code>.
-   * @return the <code>Applet</code> descendant of the given <code>Container</code>, or <code>null</code> if none
+   * @param c the given {@code Container}.
+   * @return the <code>Applet</code> descendant of the given {@code Container}, or {@code null} if none
    * is found.
    */
   @RunsInEDT
@@ -749,9 +749,9 @@ public class BasicRobot implements Robot {
    * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
    * responsible for calling this method from the EDT.
    * </p>
-   * @param c the given <code>Component</code>.
-   * @return <code>true</code> if the given <code>Component</code> is ready for input, <code>false</code> otherwise.
-   * @throws ActionFailedException if the given <code>Component</code> does not have a <code>Window</code> ancestor.
+   * @param c the given {@code Component}.
+   * @return {@code true} if the given {@code Component} is ready for input, {@code false} otherwise.
+   * @throws ActionFailedException if the given {@code Component} does not have a {@code Window} ancestor.
    */
   @RunsInCurrentThread
   public boolean isReadyForInput(Component c) {

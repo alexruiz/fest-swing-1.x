@@ -68,8 +68,8 @@ public class JComponentDriver extends ContainerDriver {
    * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
    * responsible for calling this method from the EDT.
    * </p>
-   * @param c the given <code>JComponent</code>.
-   * @param r the visible <code>Rectangle</code>.
+   * @param c the given {@code JComponent}.
+   * @param r the visible {@code Rectangle}.
    */
   @RunsInCurrentThread
   protected final void scrollToVisible(JComponent c, Rectangle r) {
@@ -88,10 +88,10 @@ public class JComponentDriver extends ContainerDriver {
    * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
    * responsible for calling this method from the EDT.
    * </p>
-   * @param c the given <code>JComponent</code>.
-   * @param r the <code>Rectangle</code> to verify.
-   * @return <code>true</code> if the given <code>Rectangle</code> is contained in the given <code>JComponent</code>'s
-   *         visible <code>Rectangle</code>.
+   * @param c the given {@code JComponent}.
+   * @param r the {@code Rectangle} to verify.
+   * @return {@code true} if the given {@code Rectangle} is contained in the given {@code JComponent}'s
+   *         visible {@code Rectangle}.
    */
   @RunsInCurrentThread
   protected static boolean isVisible(JComponent c, Rectangle r) {
@@ -105,10 +105,10 @@ public class JComponentDriver extends ContainerDriver {
    * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
    * responsible for calling this method from the EDT.
    * </p>
-   * @param c the given <code>JComponent</code>.
+   * @param c the given {@code JComponent}.
    * @param p the <code>Point</code> to verify.
-   * @return <code>true</code> if the given <code>Point</code> is contained in the given <code>JComponent</code>'s
-   * visible <code>Rectangle</code>.
+   * @return {@code true} if the given <code>Point</code> is contained in the given {@code JComponent}'s
+   * visible {@code Rectangle}.
    */
   @RunsInCurrentThread
   protected final boolean isVisible(JComponent c, Point p) {
@@ -118,7 +118,7 @@ public class JComponentDriver extends ContainerDriver {
   /**
    * Invoke an <code>{@link javax.swing.Action}</code> from the <code>{@link JComponent}</code>'s
    * <code>{@link javax.swing.ActionMap}</code>.
-   * @param c the given <code>JComponent</code>.
+   * @param c the given {@code JComponent}.
    * @param name the name of the <code>Action</code> to invoke.
    * @throws ActionFailedException if an <code>Action</code> cannot be found under the given name.
    * @throws ActionFailedException if a <code>KeyStroke</code> cannot be found for the <code>Action</code> under the
@@ -154,9 +154,9 @@ public class JComponentDriver extends ContainerDriver {
 
   /**
    * Asserts that the toolTip in the given <code>{@link JComponent}</code> matches the given value.
-   * @param c the given <code>JComponent</code>.
+   * @param c the given {@code JComponent}.
    * @param expected the expected toolTip. It can be a regular expression.
-   * @throws AssertionError if the toolTip of the given <code>JComponent</code> does not match the given value.
+   * @throws AssertionError if the toolTip of the given {@code JComponent} does not match the given value.
    * @since 1.2
    */
   @RunsInEDT
@@ -166,10 +166,10 @@ public class JComponentDriver extends ContainerDriver {
 
   /**
    * Asserts that the toolTip in the given <code>{@link JComponent}</code> matches the given regular expression pattern.
-   * @param c the given <code>JComponent</code>.
+   * @param c the given {@code JComponent}.
    * @param pattern the regular expression pattern to match.
-   * @throws NullPointerException if the given regular expression pattern is <code>null</code>.
-   * @throws AssertionError if the toolTip of the given <code>JComponent</code> does not match the given value.
+   * @throws NullPointerException if the given regular expression pattern is {@code null}.
+   * @throws AssertionError if the toolTip of the given {@code JComponent} does not match the given value.
    * @since 1.2
    */
   @RunsInEDT
@@ -179,11 +179,11 @@ public class JComponentDriver extends ContainerDriver {
 
   /**
    * Returns the client property stored in the given <code>{@link JComponent}</code>, under the given key.
-   * @param c the given <code>JComponent</code>.
+   * @param c the given {@code JComponent}.
    * @param key the key to use to retrieve the client property.
-   * @return the value of the client property stored under the given key, or <code>null</code> if the property was
+   * @return the value of the client property stored under the given key, or {@code null} if the property was
    * not found.
-   * @throws NullPointerException if the given key is <code>null</code>.
+   * @throws NullPointerException if the given key is {@code null}.
    * @since 1.2
    */
   @RunsInEDT

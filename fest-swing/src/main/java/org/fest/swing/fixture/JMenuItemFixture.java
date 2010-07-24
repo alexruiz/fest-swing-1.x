@@ -43,7 +43,7 @@ public class JMenuItemFixture extends ComponentFixture<JMenuItem> implements Key
    * Creates a new <code>{@link JMenuItemFixture}</code>.
    * @param robot performs simulation of user events on a <code>JMenuItem</code>.
    * @param menuItemName the name of the <code>JMenuItem</code> to find using the given <code>Robot</code>.
-   * @throws NullPointerException if <code>robot</code> is <code>null</code>.
+   * @throws NullPointerException if <code>robot</code> is {@code null}.
    * @throws ComponentLookupException if a matching <code>JMenuItem</code> could not be found.
    * @throws ComponentLookupException if more than one matching <code>JMenuItem</code> is found.
    */
@@ -55,8 +55,8 @@ public class JMenuItemFixture extends ComponentFixture<JMenuItem> implements Key
    * Creates a new <code>{@link JMenuItemFixture}</code>.
    * @param robot performs simulation of user events on the given <code>JMenuItem</code>.
    * @param target the <code>JMenuItem</code> to be managed by this fixture.
-   * @throws NullPointerException if <code>robot</code> is <code>null</code>.
-   * @throws NullPointerException if <code>target</code> is <code>null</code>.
+   * @throws NullPointerException if <code>robot</code> is {@code null}.
+   * @throws NullPointerException if <code>target</code> is {@code null}.
    */
   public JMenuItemFixture(Robot robot, JMenuItem target) {
     super(robot, target);
@@ -66,7 +66,7 @@ public class JMenuItemFixture extends ComponentFixture<JMenuItem> implements Key
   /**
    * Sets the <code>{@link JMenuItemDriver}</code> to be used by this fixture.
    * @param newDriver the new <code>JMenuItemDriver</code>.
-   * @throws NullPointerException if the given driver is <code>null</code>.
+   * @throws NullPointerException if the given driver is {@code null}.
    */
   protected final void driver(JMenuItemDriver newDriver) {
     validateNotNull(newDriver);
@@ -101,7 +101,7 @@ public class JMenuItemFixture extends ComponentFixture<JMenuItem> implements Key
    * Modifiers is a mask from the available <code>{@link java.awt.event.InputEvent}</code> masks.
    * @param keyPressInfo specifies the key and modifiers to press.
    * @return this fixture.
-   * @throws NullPointerException if the given <code>KeyPressInfo</code> is <code>null</code>.
+   * @throws NullPointerException if the given <code>KeyPressInfo</code> is {@code null}.
    * @throws IllegalArgumentException if the given code is not a valid key code.
    * @throws IllegalStateException if this fixture's <code>JMenuItem</code> is disabled.
    * @throws IllegalStateException if this fixture's <code>JMenuItem</code> is not showing on the screen.

@@ -107,7 +107,7 @@ public class JTreeDriver extends JComponentDriver {
    * @param tree the target <code>JTree</code>.
    * @param row the given row.
    * @param button the mouse button to use.
-   * @throws NullPointerException if the given button is <code>null</code>.
+   * @throws NullPointerException if the given button is {@code null}.
    * @throws IllegalStateException if the <code>JTree</code> is disabled.
    * @throws IllegalStateException if the <code>JTree</code> is not showing on the screen.
    * @throws IndexOutOfBoundsException if the given row is less than zero or equal than or greater than the number of
@@ -126,7 +126,7 @@ public class JTreeDriver extends JComponentDriver {
    * @param tree the target <code>JTree</code>.
    * @param row the given row.
    * @param mouseClickInfo specifies the mouse button to use and how many times to click.
-   * @throws NullPointerException if the given <code>MouseClickInfo</code> is <code>null</code>.
+   * @throws NullPointerException if the given <code>MouseClickInfo</code> is {@code null}.
    * @throws IllegalStateException if the <code>JTree</code> is disabled.
    * @throws IllegalStateException if the <code>JTree</code> is not showing on the screen.
    * @throws IndexOutOfBoundsException if the given row is less than zero or equal than or greater than the number of
@@ -206,7 +206,7 @@ public class JTreeDriver extends JComponentDriver {
    * @param tree the target <code>JTree</code>.
    * @param path the path to path.
    * @param button the mouse button to use.
-   * @throws NullPointerException if the given button is <code>null</code>.
+   * @throws NullPointerException if the given button is {@code null}.
    * @throws IllegalStateException if the <code>JTree</code> is disabled.
    * @throws IllegalStateException if the <code>JTree</code> is not showing on the screen.
    * @throws LocationUnavailableException if the given path cannot be found.
@@ -227,7 +227,7 @@ public class JTreeDriver extends JComponentDriver {
    * @param tree the target <code>JTree</code>.
    * @param path the path to path.
    * @param mouseClickInfo specifies the mouse button to use and how many times to click.
-   * @throws NullPointerException if the given <code>MouseClickInfo</code> is <code>null</code>.
+   * @throws NullPointerException if the given <code>MouseClickInfo</code> is {@code null}.
    * @throws IllegalStateException if the <code>JTree</code> is disabled.
    * @throws IllegalStateException if the <code>JTree</code> is not showing on the screen.
    * @throws LocationUnavailableException if the given path cannot be found.
@@ -466,7 +466,7 @@ public class JTreeDriver extends JComponentDriver {
    * Selects the given rows.
    * @param tree the target <code>JTree</code>.
    * @param rows the rows to select.
-   * @throws NullPointerException if the array of rows is <code>null</code>.
+   * @throws NullPointerException if the array of rows is {@code null}.
    * @throws IllegalArgumentException if the array of rows is empty.
    * @throws IllegalStateException if the <code>JTree</code> is disabled.
    * @throws IllegalStateException if the <code>JTree</code> is not showing on the screen.
@@ -517,7 +517,7 @@ public class JTreeDriver extends JComponentDriver {
    * Selects the given paths, expanding parent nodes if necessary.
    * @param tree the target <code>JTree</code>.
    * @param paths the paths to select.
-   * @throws NullPointerException if the array of rows is <code>null</code>.
+   * @throws NullPointerException if the array of rows is {@code null}.
    * @throws IllegalArgumentException if the array of rows is empty.
    * @throws IllegalStateException if the <code>JTree</code> is disabled.
    * @throws IllegalStateException if the <code>JTree</code> is not showing on the screen.
@@ -774,7 +774,7 @@ public class JTreeDriver extends JComponentDriver {
    * Asserts that the given <code>{@link JTree}</code>'s selected rows are equal to the given one.
    * @param tree the target <code>JTree</code>.
    * @param rows the indices of the rows, expected to be selected.
-   * @throws NullPointerException if the array of row indices is <code>null</code>.
+   * @throws NullPointerException if the array of row indices is {@code null}.
    * @throws AssertionError if the given <code>JTree</code> selection is not equal to the given rows.
    */
   @RunsInEDT
@@ -787,7 +787,7 @@ public class JTreeDriver extends JComponentDriver {
    * Asserts that the given <code>{@link JTree}</code>'s selected paths are equal to the given one.
    * @param tree the target <code>JTree</code>.
    * @param paths the given paths, expected to be selected.
-   * @throws NullPointerException if the array of paths is <code>null</code>.
+   * @throws NullPointerException if the array of paths is {@code null}.
    * @throws LocationUnavailableException if any of the given paths cannot be found.
    * @throws AssertionError if the given <code>JTree</code> selection is not equal to the given paths.
    * @see #separator(String)
@@ -854,7 +854,7 @@ public class JTreeDriver extends JComponentDriver {
   /**
    * Updates the separator to use when converting <code>{@link TreePath}</code>s to <code>String</code>s.
    * @param newSeparator the new separator.
-   * @throws NullPointerException if the given separator is <code>null</code>.
+   * @throws NullPointerException if the given separator is {@code null}.
    */
   public void separator(String newSeparator) {
     if (newSeparator == null) throw new NullPointerException("The path separator should not be null");
@@ -865,7 +865,7 @@ public class JTreeDriver extends JComponentDriver {
    * Updates the implementation of <code>{@link JTreeCellReader}</code> to use when comparing internal values of a
    * <code>{@link JTree}</code> and the values expected in a test.
    * @param newCellReader the new <code>JTreeCellValueReader</code> to use.
-   * @throws NullPointerException if <code>newCellReader</code> is <code>null</code>.
+   * @throws NullPointerException if <code>newCellReader</code> is {@code null}.
    */
   public void cellReader(JTreeCellReader newCellReader) {
     validateCellReader(newCellReader);

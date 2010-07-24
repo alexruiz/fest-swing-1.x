@@ -48,7 +48,7 @@ public class BasicJTreeCellReader implements JTreeCellReader {
    * Creates a new </code>{@link BasicJTreeCellReader}</code>.
    * @param rendererReader knows how to read values from the cell renderer component in a
    * <code>JTree</code>.
-   * @throws NullPointerException if <code>rendererReader</code> is <code>null</code>.
+   * @throws NullPointerException if <code>rendererReader</code> is {@code null}.
    */
   public BasicJTreeCellReader(CellRendererReader rendererReader) {
     if (rendererReader == null)

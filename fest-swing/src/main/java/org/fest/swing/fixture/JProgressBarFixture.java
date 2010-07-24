@@ -45,8 +45,8 @@ public class JProgressBarFixture extends ComponentFixture<JProgressBar> implemen
    * Creates a new <code>{@link JProgressBarFixture}</code>.
    * @param robot performs simulation of user events on the given <code>JProgressBar</code>.
    * @param target the <code>JProgressBar</code> to be managed by this fixture.
-   * @throws NullPointerException if <code>robot</code> is <code>null</code>.
-   * @throws NullPointerException if <code>target</code> is <code>null</code>.
+   * @throws NullPointerException if <code>robot</code> is {@code null}.
+   * @throws NullPointerException if <code>target</code> is {@code null}.
    */
   public JProgressBarFixture(Robot robot, JProgressBar target) {
     super(robot, target);
@@ -57,7 +57,7 @@ public class JProgressBarFixture extends ComponentFixture<JProgressBar> implemen
    * Creates a new <code>{@link JProgressBarFixture}</code>.
    * @param robot performs simulation of user events on a <code>JProgressBar</code>.
    * @param labelName the name of the <code>JProgressBar</code> to find using the given <code>Robot</code>.
-   * @throws NullPointerException if <code>robot</code> is <code>null</code>.
+   * @throws NullPointerException if <code>robot</code> is {@code null}.
    * @throws ComponentLookupException if a matching <code>JProgressBar</code> could not be found.
    * @throws ComponentLookupException if more than one matching <code>JProgressBar</code> is found.
    */
@@ -73,7 +73,7 @@ public class JProgressBarFixture extends ComponentFixture<JProgressBar> implemen
   /**
    * Sets the <code>{@link JProgressBarDriver}</code> to be used by this fixture.
    * @param newDriver the new <code>JProgressBarDriver</code>.
-   * @throws NullPointerException if the given driver is <code>null</code>.
+   * @throws NullPointerException if the given driver is {@code null}.
    */
   protected final void driver(JProgressBarDriver newDriver) {
     validateNotNull(newDriver);
@@ -138,7 +138,7 @@ public class JProgressBarFixture extends ComponentFixture<JProgressBar> implemen
    * @return this fixture.
    * @throws AssertionError if the text of this fixture's <code>JProgressBar</code> does not match the given regular
    * expression pattern.
-   * @throws NullPointerException if the given regular expression pattern is <code>null</code>.
+   * @throws NullPointerException if the given regular expression pattern is {@code null}.
    */
   public JProgressBarFixture requireText(Pattern pattern) {
     driver.requireText(target, pattern);
@@ -161,7 +161,7 @@ public class JProgressBarFixture extends ComponentFixture<JProgressBar> implemen
    * pattern.
    * @param pattern the regular expression pattern to match.
    * @return this fixture.
-   * @throws NullPointerException if the given regular expression pattern is <code>null</code>.
+   * @throws NullPointerException if the given regular expression pattern is {@code null}.
    * @throws AssertionError if the toolTip in this fixture's <code>JProgressBar</code> does not match the given regular
    * expression pattern.
    */
@@ -224,9 +224,9 @@ public class JProgressBarFixture extends ComponentFixture<JProgressBar> implemen
   /**
    * Returns the client property stored in this fixture's <code>{@link JProgressBar}</code>, under the given key.
    * @param key the key to use to retrieve the client property.
-   * @return the value of the client property stored under the given key, or <code>null</code> if the property was
+   * @return the value of the client property stored under the given key, or {@code null} if the property was
    * not found.
-   * @throws NullPointerException if the given key is <code>null</code>.
+   * @throws NullPointerException if the given key is {@code null}.
    */
   public Object clientProperty(Object key) {
     return driver.clientProperty(target, key);
@@ -253,7 +253,7 @@ public class JProgressBarFixture extends ComponentFixture<JProgressBar> implemen
    * @return this fixture.
    * @throws IllegalArgumentException if the given value is less than the <code>JProgressBar</code>'s minimum value.
    * @throws IllegalArgumentException if the given value is greater than the <code>JProgressBar</code>'s maximum value.
-   * @throws NullPointerException if the given timeout is <code>null</code>.
+   * @throws NullPointerException if the given timeout is {@code null}.
    * @throws WaitTimedOutError if the value of the <code>JProgressBar</code> does not reach the expected value within
    * the specified timeout.
    */
@@ -276,7 +276,7 @@ public class JProgressBarFixture extends ComponentFixture<JProgressBar> implemen
    * Waits until the value of this fixture's <code>{@link JProgressBar}</code> is in determinate mode.
    * @param timeout the amount of time to wait.
    * @return this fixture.
-   * @throws NullPointerException if the given timeout is <code>null</code>.
+   * @throws NullPointerException if the given timeout is {@code null}.
    * @throws WaitTimedOutError if the <code>JProgressBar</code> does not reach determinate mode within the specified
    * timeout.
    */

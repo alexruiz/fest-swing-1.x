@@ -36,8 +36,8 @@ public final class ContainerInsetsQuery {
   /**
    * Returns the insets of the given <code>{@link Container}</code>. This action is executed in the event dispatch
    * thread.
-   * @param container the given <code>Container</code>.
-   * @return the insets of the given <code>Container</code>.
+   * @param container the given {@code Container}.
+   * @return the insets of the given {@code Container}.
    * @see Container#getInsets()
    */
   @RunsInEDT

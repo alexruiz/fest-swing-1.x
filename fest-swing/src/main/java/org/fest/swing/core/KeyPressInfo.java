@@ -92,7 +92,7 @@ public final class KeyPressInfo {
    * </p>
    * @param newModifiers the new modifiers to use.
    * @return this object.
-   * @throws NullPointerException if <code>newModifiers</code> is <code>null</code>.
+   * @throws NullPointerException if <code>newModifiers</code> is {@code null}.
    */
   public KeyPressInfo modifiers(int... newModifiers) {
     if (newModifiers == null) throw new NullPointerException("The array of modifiers should not be null");

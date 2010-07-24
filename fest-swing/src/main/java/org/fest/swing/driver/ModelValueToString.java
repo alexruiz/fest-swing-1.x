@@ -27,9 +27,9 @@ final class ModelValueToString {
 
   /**
    * Returns the <code>toString</code> value from the given object. If the given object does not implement 
-   * <code>toString</code>, this method will return <code>null</code>.
+   * <code>toString</code>, this method will return {@code null}.
    * @param o the given object.
-   * @return the <code>toString</code> value from the given object, or <code>null</code> if the given object does not
+   * @return the <code>toString</code> value from the given object, or {@code null} if the given object does not
    * implement <code>toString</code>.
    */
   static String asText(Object o) {

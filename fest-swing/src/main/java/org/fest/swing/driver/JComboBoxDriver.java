@@ -92,8 +92,8 @@ public class JComboBoxDriver extends JComponentDriver {
    * Returns an array of <code>String</code>s that represents the contents of the given <code>{@link JComboBox}</code>
    * list. The <code>String</code> representation of each element is performed using this driver's
    * <code>{@link JComboBoxCellReader}</code>.
-   * @param comboBox the target <code>JComboBox</code>.
-   * @return an array of <code>String</code>s that represent the contents of the given <code>JComboBox</code> list.
+   * @param comboBox the target {@code JComboBox}.
+   * @return an array of <code>String</code>s that represent the contents of the given {@code JComboBox} list.
    * @see #value(JComboBox, int)
    * @see #cellReader(JComboBoxCellReader)
    */
@@ -104,12 +104,12 @@ public class JComboBoxDriver extends JComponentDriver {
 
   /**
    * Selects the first item matching the given text in the <code>{@link JComboBox}</code>. The text of the
-   * <code>JComboBox</code> items is obtained by this fixture's <code>{@link JComboBoxCellReader}</code>.
-   * @param comboBox the target <code>JComboBox</code>.
+   * {@code JComboBox} items is obtained by this fixture's <code>{@link JComboBoxCellReader}</code>.
+   * @param comboBox the target {@code JComboBox}.
    * @param value the value to match. It can be a regular expression.
    * @throws LocationUnavailableException if an element matching the given value cannot be found.
-   * @throws IllegalStateException if the <code>JComboBox</code> is disabled.
-   * @throws IllegalStateException if the <code>JComboBox</code> is not showing on the screen.
+   * @throws IllegalStateException if the {@code JComboBox} is disabled.
+   * @throws IllegalStateException if the {@code JComboBox} is not showing on the screen.
    * @see #cellReader(JComboBoxCellReader)
    */
   @RunsInEDT
@@ -119,13 +119,13 @@ public class JComboBoxDriver extends JComponentDriver {
 
   /**
    * Selects the first item matching the given regular expression pattern in the <code>{@link JComboBox}</code>. The
-   * text of the <code>JComboBox</code> items is obtained by this fixture's <code>{@link JComboBoxCellReader}</code>.
-   * @param comboBox the target <code>JComboBox</code>.
+   * text of the {@code JComboBox} items is obtained by this fixture's <code>{@link JComboBoxCellReader}</code>.
+   * @param comboBox the target {@code JComboBox}.
    * @param pattern the regular expression pattern to match.
    * @throws LocationUnavailableException if an element matching the given pattern cannot be found.
-   * @throws IllegalStateException if the <code>JComboBox</code> is disabled.
-   * @throws IllegalStateException if the <code>JComboBox</code> is not showing on the screen.
-   * @throws NullPointerException if the given regular expression pattern is <code>null</code>.
+   * @throws IllegalStateException if the {@code JComboBox} is disabled.
+   * @throws IllegalStateException if the {@code JComboBox} is not showing on the screen.
+   * @throws NullPointerException if the given regular expression pattern is {@code null}.
    * @see #cellReader(JComboBoxCellReader)
    * @since 1.2
    */
@@ -150,7 +150,7 @@ public class JComboBoxDriver extends JComponentDriver {
   /**
    * Verifies that the <code>String</code> representation of the selected item in the <code>{@link JComboBox}</code>
    * matches the given text.
-   * @param comboBox the target <code>JComboBox</code>.
+   * @param comboBox the target {@code JComboBox}.
    * @param value the text to match. It can be a regular expression.
    * @throws AssertionError if the selected item does not match the given value.
    * @see #cellReader(JComboBoxCellReader)
@@ -164,10 +164,10 @@ public class JComboBoxDriver extends JComponentDriver {
   /**
    * Verifies that the <code>String</code> representation of the selected item in the <code>{@link JComboBox}</code>
    * matches the given regular expression pattern.
-   * @param comboBox the target <code>JComboBox</code>.
+   * @param comboBox the target {@code JComboBox}.
    * @param pattern the regular expression pattern to match.
    * @throws AssertionError if the selected item does not match the given regular expression pattern.
-   * @throws NullPointerException if the given regular expression pattern is <code>null</code>.
+   * @throws NullPointerException if the given regular expression pattern is {@code null}.
    * @see #cellReader(JComboBoxCellReader)
    * @since 1.2
    */
@@ -185,7 +185,7 @@ public class JComboBoxDriver extends JComponentDriver {
 
    /**
     * Verifies that the index of the selected item in the <code>{@link JComboBox}</code> is equal to the given value.
-    * @param comboBox the target <code>JComboBox</code>.
+    * @param comboBox the target {@code JComboBox}.
     * @param index the expected selection index.
     * @throws AssertionError if the selection index is not equal to the given value.
     * @since 1.2
@@ -203,8 +203,8 @@ public class JComboBoxDriver extends JComponentDriver {
 
   /**
    * Verifies that the <code>{@link JComboBox}</code> does not have any selection.
-   * @param comboBox the target <code>JComboBox</code>.
-   * @throws AssertionError if the <code>JComboBox</code> has a selection.
+   * @param comboBox the target {@code JComboBox}.
+   * @throws AssertionError if the {@code JComboBox} has a selection.
    */
   @RunsInEDT
   public void requireNoSelection(JComboBox comboBox) {
@@ -217,11 +217,11 @@ public class JComboBoxDriver extends JComponentDriver {
   /**
    * Returns the <code>String</code> representation of the element under the given index, using this driver's
    * <code>{@link JComboBoxCellReader}</code>.
-   * @param comboBox the target <code>JComboBox</code>.
+   * @param comboBox the target {@code JComboBox}.
    * @param index the given index.
    * @return the value of the element under the given index.
    * @throws IndexOutOfBoundsException if the given index is negative or greater than the index of the last item in the
-   * <code>JComboBox</code>.
+   * {@code JComboBox}.
    * @see #cellReader(JComboBoxCellReader)
    */
   public String value(JComboBox comboBox, int index) {
@@ -245,8 +245,8 @@ public class JComboBoxDriver extends JComponentDriver {
 
   /**
    * Clears the selection in the given <code>{@link JComboBox}</code>. Since this method does not simulate user input,
-   * it does not verifies that the <code>JComboBox</code> is enabled and showing.
-   * @param comboBox the target <code>JComboBox</code>.
+   * it does not verifies that the {@code JComboBox} is enabled and showing.
+   * @param comboBox the target {@code JComboBox}.
    * @since 1.2
    */
   public void clearSelection(JComboBox comboBox) {
@@ -256,12 +256,12 @@ public class JComboBoxDriver extends JComponentDriver {
 
   /**
    * Selects the item under the given index in the <code>{@link JComboBox}</code>.
-   * @param comboBox the target <code>JComboBox</code>.
+   * @param comboBox the target {@code JComboBox}.
    * @param index the given index.
-   * @throws IllegalStateException if the <code>JComboBox</code> is disabled.
-   * @throws IllegalStateException if the <code>JComboBox</code> is not showing on the screen.
+   * @throws IllegalStateException if the {@code JComboBox} is disabled.
+   * @throws IllegalStateException if the {@code JComboBox} is not showing on the screen.
    * @throws IndexOutOfBoundsException if the given index is negative or greater than the index of the last item in the
-   * <code>JComboBox</code>.
+   * {@code JComboBox}.
    */
   @RunsInEDT
   public void selectItem(final JComboBox comboBox, int index) {
@@ -313,11 +313,11 @@ public class JComboBoxDriver extends JComponentDriver {
   /**
    * Simulates a user entering the specified text in the <code>{@link JComboBox}</code>, replacing any text. This action
    * is executed only if the <code>{@link JComboBox}</code> is editable.
-   * @param comboBox the target <code>JComboBox</code>.
+   * @param comboBox the target {@code JComboBox}.
    * @param text the text to enter.
-   * @throws IllegalStateException if the <code>JComboBox</code> is disabled.
-   * @throws IllegalStateException if the <code>JComboBox</code> is not showing on the screen.
-   * @throws IllegalStateException if the <code>JComboBox</code> is not editable.
+   * @throws IllegalStateException if the {@code JComboBox} is disabled.
+   * @throws IllegalStateException if the {@code JComboBox} is not showing on the screen.
+   * @throws IllegalStateException if the {@code JComboBox} is not editable.
    */
   @RunsInEDT
   public void replaceText(JComboBox comboBox, String text) {
@@ -328,10 +328,10 @@ public class JComboBoxDriver extends JComponentDriver {
   /**
    * Simulates a user selecting the text in the <code>{@link JComboBox}</code>. This action is executed only if the
    * <code>{@link JComboBox}</code> is editable.
-   * @param comboBox the target <code>JComboBox</code>.
-   * @throws IllegalStateException if the <code>JComboBox</code> is disabled.
-   * @throws IllegalStateException if the <code>JComboBox</code> is not showing on the screen.
-   * @throws IllegalStateException if the <code>JComboBox</code> is not editable.
+   * @param comboBox the target {@code JComboBox}.
+   * @throws IllegalStateException if the {@code JComboBox} is disabled.
+   * @throws IllegalStateException if the {@code JComboBox} is not showing on the screen.
+   * @throws IllegalStateException if the {@code JComboBox} is not editable.
    */
   @RunsInEDT
   public void selectAllText(JComboBox comboBox) {
@@ -354,12 +354,12 @@ public class JComboBoxDriver extends JComponentDriver {
   /**
    * Simulates a user entering the specified text in the <code>{@link JComboBox}</code>. This action is executed only
    * if the <code>{@link JComboBox}</code> is editable.
-   * @param comboBox the target <code>JComboBox</code>.
+   * @param comboBox the target {@code JComboBox}.
    * @param text the text to enter.
-   * @throws IllegalStateException if the <code>JComboBox</code> is disabled.
-   * @throws IllegalStateException if the <code>JComboBox</code> is not showing on the screen.
-   * @throws IllegalStateException if the <code>JComboBox</code> is not editable.
-   * @throws ActionFailedException if the <code>JComboBox</code> does not have an editor.
+   * @throws IllegalStateException if the {@code JComboBox} is disabled.
+   * @throws IllegalStateException if the {@code JComboBox} is not showing on the screen.
+   * @throws IllegalStateException if the {@code JComboBox} is not editable.
+   * @throws ActionFailedException if the {@code JComboBox} does not have an editor.
    */
   @RunsInEDT
   public void enterText(JComboBox comboBox, String text) {
@@ -373,11 +373,11 @@ public class JComboBoxDriver extends JComponentDriver {
 
   /**
    * Simulates a user pressing and releasing the given keys on the <code>{@link JComboBox}</code>.
-   * @param comboBox the target <code>JComboBox</code>.
+   * @param comboBox the target {@code JComboBox}.
    * @param keyCodes one or more codes of the keys to press.
-   * @throws NullPointerException if the given array of codes is <code>null</code>.
-   * @throws IllegalStateException if the <code>JComboBox</code> is disabled.
-   * @throws IllegalStateException if the <code>JComboBox</code> is not showing on the screen.
+   * @throws NullPointerException if the given array of codes is {@code null}.
+   * @throws IllegalStateException if the {@code JComboBox} is disabled.
+   * @throws IllegalStateException if the {@code JComboBox} is not showing on the screen.
    * @throws IllegalArgumentException if the given code is not a valid key code.
    * @see java.awt.event.KeyEvent
    */
@@ -445,8 +445,8 @@ public class JComboBoxDriver extends JComponentDriver {
 
   /**
    * Asserts that the given <code>{@link JComboBox}</code> is editable.
-   * @param comboBox the target <code>JComboBox</code>.
-   * @throws AssertionError if the <code>JComboBox</code> is not editable.
+   * @param comboBox the target {@code JComboBox}.
+   * @throws AssertionError if the {@code JComboBox} is not editable.
    */
   @RunsInEDT
   public void requireEditable(final JComboBox comboBox) {
@@ -455,8 +455,8 @@ public class JComboBoxDriver extends JComponentDriver {
 
   /**
    * Asserts that the given <code>{@link JComboBox}</code> is not editable.
-   * @param comboBox the given <code>JComboBox</code>.
-   * @throws AssertionError if the <code>JComboBox</code> is editable.
+   * @param comboBox the given {@code JComboBox}.
+   * @throws AssertionError if the {@code JComboBox} is editable.
    */
   @RunsInEDT
   public void requireNotEditable(JComboBox comboBox) {
@@ -477,7 +477,7 @@ public class JComboBoxDriver extends JComponentDriver {
    * Updates the implementation of <code>{@link JComboBoxCellReader}</code> to use when comparing internal values
    * of a <code>{@link JComboBox}</code> and the values expected in a test.
    * @param newCellReader the new <code>JComboBoxCellValueReader</code> to use.
-   * @throws NullPointerException if <code>newCellReader</code> is <code>null</code>.
+   * @throws NullPointerException if <code>newCellReader</code> is {@code null}.
    */
   public void cellReader(JComboBoxCellReader newCellReader) {
     validateCellReader(newCellReader);
@@ -486,7 +486,7 @@ public class JComboBoxDriver extends JComponentDriver {
 
   /**
    * Verifies that number of items in the given <code>{@link JComboBox}</code> is equal to the expected one.
-   * @param comboBox the target <code>JComboBox</code>.
+   * @param comboBox the target {@code JComboBox}.
    * @param expected the expected number of items.
    * @throws AssertionError if the number of items in the given <code>{@link JComboBox}</code> is not equal to the
    * expected one.

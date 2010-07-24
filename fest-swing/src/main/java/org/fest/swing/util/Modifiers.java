@@ -72,7 +72,7 @@ public final class Modifiers {
   /**
    * Indicates whether the given key code is a modifier.
    * @param keyCode the given key code.
-   * @return <code>true</code> if the given key code is a modifier, <code>false</code> otherwise.
+   * @return {@code true} if the given key code is a modifier, {@code false} otherwise.
    */
   public static boolean isModifier(int keyCode) {
     return KEY_TO_MODIFIER.containsKey(keyCode);

@@ -19,18 +19,18 @@ import java.lang.reflect.Method;
 
 /**
  * Understands utility methods related to GUI tests. A GUI test is a class or method annotated with
- * <code>{@link org.fest.swing.annotation.GUITest}</code>.
+ * <code>{@link GUITest}</code>.
  *
  * @author Alex Ruiz
  */
 public final class GUITestFinder {
 
   /**
-   * Returns <code>true</code> if the given class and/or method are annotated with <code>{@link GUITest}</code>. This
-   * method also searches in super-classes and overridden methods.
+   * Returns {@code true} if the given class and/or method are annotated with <code>{@link GUITest}</code>. This method 
+   * also searches in super-classes and overridden methods.
    * @param type the class to check.
    * @param method the method to check.
-   * @return <code>true</code> if the given class and/or method are annotated with <code>{@link GUITest}</code>.
+   * @return {@code true} if the given class and/or method are annotated with {@code GUITest}.
    */
   public static boolean isGUITest(Class<?> type, Method method) {
     return isGUITest(type) || isGUITest(method) || isSuperClassGUITest(type, method);

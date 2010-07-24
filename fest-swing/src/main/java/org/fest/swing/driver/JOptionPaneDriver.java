@@ -77,7 +77,7 @@ public class JOptionPaneDriver extends JComponentDriver {
    * Asserts that the title in the given <code>{@link JOptionPane}</code> matches the given regular expression pattern.
    * @param optionPane the target {@code JOptionPane}.
    * @param pattern the regular expression pattern to match.
-   * @throws NullPointerException if the given regular expression pattern is <code>null</code>.
+   * @throws NullPointerException if the given regular expression pattern is {@code null}.
    * @throws AssertionError if the {@code JOptionPane} does not have the given title.
    * @since 1.2
    */
@@ -130,7 +130,7 @@ public class JOptionPaneDriver extends JComponentDriver {
    * <code>toString</code> representation of such message.
    * @param optionPane the target {@code JOptionPane}.
    * @param pattern the regular expression to match.
-   * @throws NullPointerException if the given regular expression pattern is <code>null</code>.
+   * @throws NullPointerException if the given regular expression pattern is {@code null}.
    * @throws AssertionError if the message in the </code>JOptionPaneFixture</code> does not match the given regular
    * expression pattern.
    * @since 1.2
@@ -227,7 +227,7 @@ public class JOptionPaneDriver extends JComponentDriver {
    * @param optionPane the target {@code JOptionPane}.
    * @param pattern the regular expression pattern to match.
    * @return a button containing the given text.
-   * @throws NullPointerException if the given regular expression pattern is <code>null</code>.
+   * @throws NullPointerException if the given regular expression pattern is {@code null}.
    * @throws ComponentLookupException if the a button with the given text cannot be found.
    * @since 1.2
    */

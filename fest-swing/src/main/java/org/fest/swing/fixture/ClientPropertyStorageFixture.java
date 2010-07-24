@@ -26,9 +26,9 @@ public interface ClientPropertyStorageFixture {
   /**
    * Returns the client property stored in this fixture's GUI component, under the given key.
    * @param key the key to use to retrieve the client property.
-   * @return the value of the client property stored under the given key, or <code>null</code> if the property was
+   * @return the value of the client property stored under the given key, or {@code null} if the property was
    * not found.
-   * @throws NullPointerException if the given key is <code>null</code>.
+   * @throws NullPointerException if the given key is {@code null}.
    * @since 1.2
    */
   Object clientProperty(Object key);

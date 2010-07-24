@@ -43,7 +43,7 @@ public class JOptionPaneFixture extends ContainerFixture<JOptionPane> implements
   /**
    * Creates a new <code>{@link JOptionPaneFixture}</code>.
    * @param robot finds a showing {@code JOptionPane}, which will be managed by this fixture.
-   * @throws NullPointerException if <code>robot</code> is <code>null</code>.
+   * @throws NullPointerException if <code>robot</code> is {@code null}.
    * @throws ComponentLookupException if a showing {@code JOptionPane} could not be found.
    * @throws ComponentLookupException if more than one showing {@code JOptionPane} is found.
    */
@@ -60,8 +60,8 @@ public class JOptionPaneFixture extends ContainerFixture<JOptionPane> implements
    * Creates a new <code>{@link JOptionPaneFixture}</code>.
    * @param robot performs simulation of user events on the given {@code JOptionPane}.
    * @param target the {@code JOptionPane} to be managed by this fixture.
-   * @throws NullPointerException if <code>robot</code> is <code>null</code>.
-   * @throws IllegalArgumentException if <code>target</code> is <code>null</code>.
+   * @throws NullPointerException if <code>robot</code> is {@code null}.
+   * @throws IllegalArgumentException if <code>target</code> is {@code null}.
    */
   public JOptionPaneFixture(Robot robot, JOptionPane target) {
     super(robot, target);
@@ -71,7 +71,7 @@ public class JOptionPaneFixture extends ContainerFixture<JOptionPane> implements
   /**
    * Sets the <code>{@link JOptionPaneDriver}</code> to be used by this fixture.
    * @param newDriver the new <code>JOptionPaneDriver</code>.
-   * @throws NullPointerException if the given driver is <code>null</code>.
+   * @throws NullPointerException if the given driver is {@code null}.
    */
   protected final void driver(JOptionPaneDriver newDriver) {
     validateNotNull(newDriver);
@@ -143,7 +143,7 @@ public class JOptionPaneFixture extends ContainerFixture<JOptionPane> implements
    * given text.
    * @param pattern the regular expression pattern to match.
    * @return a fixture wrapping a button matching the given regular expression pattern.
-   * @throws NullPointerException if the given regular expression pattern is <code>null</code>.
+   * @throws NullPointerException if the given regular expression pattern is {@code null}.
    * @throws ComponentLookupException if the a button with the given text cannot be found.
    * @since 1.2
    */
@@ -165,7 +165,7 @@ public class JOptionPaneFixture extends ContainerFixture<JOptionPane> implements
   /**
    * Simulates a user clicking this fixture's <code>{@link JOptionPane}</code>.
    * @param button the button to click.
-   * @throws NullPointerException if the given <code>MouseButton</code> is <code>null</code>.
+   * @throws NullPointerException if the given <code>MouseButton</code> is {@code null}.
    * @throws IllegalStateException if this fixture's {@code JOptionPane} is disabled.
    * @throws IllegalStateException if this fixture's {@code JOptionPane} is not showing on the screen.
    * @return this fixture.
@@ -179,7 +179,7 @@ public class JOptionPaneFixture extends ContainerFixture<JOptionPane> implements
    * Simulates a user clicking this fixture's <code>{@link JOptionPane}</code>.
    * @param mouseClickInfo specifies the button to click and the times the button should be clicked.
    * @return this fixture.
-   * @throws NullPointerException if the given <code>MouseClickInfo</code> is <code>null</code>.
+   * @throws NullPointerException if the given <code>MouseClickInfo</code> is {@code null}.
    * @throws IllegalStateException if this fixture's {@code JOptionPane} is disabled.
    * @throws IllegalStateException if this fixture's {@code JOptionPane} is not showing on the screen.
    */
@@ -272,7 +272,7 @@ public class JOptionPaneFixture extends ContainerFixture<JOptionPane> implements
    * Modifiers is a mask from the available <code>{@link java.awt.event.InputEvent}</code> masks.
    * @param keyPressInfo specifies the key and modifiers to press.
    * @return this fixture.
-   * @throws NullPointerException if the given <code>KeyPressInfo</code> is <code>null</code>.
+   * @throws NullPointerException if the given <code>KeyPressInfo</code> is {@code null}.
    * @throws IllegalArgumentException if the given code is not a valid key code.
    * @see KeyPressInfo
    */
@@ -286,7 +286,7 @@ public class JOptionPaneFixture extends ContainerFixture<JOptionPane> implements
    * does not affect the current focus.
    * @param keyCodes one or more codes of the keys to press.
    * @return this fixture.
-   * @throws NullPointerException if the given array of codes is <code>null</code>.
+   * @throws NullPointerException if the given array of codes is {@code null}.
    * @throws IllegalArgumentException if any of the given code is not a valid key code.
    * @see java.awt.event.KeyEvent
    */
@@ -335,7 +335,7 @@ public class JOptionPaneFixture extends ContainerFixture<JOptionPane> implements
    * pattern.
    * @param pattern the regular expression pattern to match.
    * @return this fixture.
-   * @throws NullPointerException if the given regular expression is <code>null</code>.
+   * @throws NullPointerException if the given regular expression is {@code null}.
    * @throws AssertionError if this fixture's </code>JOptionPaneFixture</code> does not have the given title.
    * @since 1.2
    */
@@ -362,7 +362,7 @@ public class JOptionPaneFixture extends ContainerFixture<JOptionPane> implements
    * <code>toString</code> representation of such message.
    * @param pattern the regular expression to match.
    * @return this fixture.
-   * @throws NullPointerException if the given regular expression pattern is <code>null</code>.
+   * @throws NullPointerException if the given regular expression pattern is {@code null}.
    * @throws AssertionError if the message in this fixture's </code>JOptionPaneFixture</code> does not match the given
    * regular expression pattern.
    * @since 1.2

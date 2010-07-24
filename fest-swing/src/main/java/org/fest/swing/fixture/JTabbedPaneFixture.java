@@ -48,8 +48,8 @@ public class JTabbedPaneFixture extends ComponentFixture<JTabbedPane> implements
    * Creates a new <code>{@link JTabbedPaneFixture}</code>.
    * @param robot performs simulation of user events on the given <code>JTabbedPane</code>.
    * @param target the <code>JTabbedPane</code> to be managed by this fixture.
-   * @throws NullPointerException if <code>robot</code> is <code>null</code>.
-   * @throws NullPointerException if <code>target</code> is <code>null</code>.
+   * @throws NullPointerException if <code>robot</code> is {@code null}.
+   * @throws NullPointerException if <code>target</code> is {@code null}.
    */
   public JTabbedPaneFixture(Robot robot, JTabbedPane target) {
     super(robot, target);
@@ -60,7 +60,7 @@ public class JTabbedPaneFixture extends ComponentFixture<JTabbedPane> implements
    * Creates a new <code>{@link JTabbedPaneFixture}</code>.
    * @param robot performs simulation of user events on a <code>JTabbedPane</code>.
    * @param tabbedPaneName the name of the <code>JTabbedPane</code> to find using the given <code>Robot</code>.
-   * @throws NullPointerException if <code>robot</code> is <code>null</code>.
+   * @throws NullPointerException if <code>robot</code> is {@code null}.
    * @throws ComponentLookupException if a matching <code>JTabbedPane</code> could not be found.
    * @throws ComponentLookupException if more than one matching <code>JTabbedPane</code> is found.
    */
@@ -76,7 +76,7 @@ public class JTabbedPaneFixture extends ComponentFixture<JTabbedPane> implements
   /**
    * Sets the <code>{@link JTabbedPaneDriver}</code> to be used by this fixture.
    * @param newDriver the new <code>JTabbedPaneDriver</code>.
-   * @throws NullPointerException if the given driver is <code>null</code>.
+   * @throws NullPointerException if the given driver is {@code null}.
    */
   protected final void driver(JTabbedPaneDriver newDriver) {
     validateNotNull(newDriver);
@@ -124,7 +124,7 @@ public class JTabbedPaneFixture extends ComponentFixture<JTabbedPane> implements
    * @return this fixture.
    * @throws IllegalStateException if this fixture's <code>JTabbedPane</code> is disabled.
    * @throws IllegalStateException if this fixture's <code>JTabbedPane</code> is not showing on the screen.
-   * @throws NullPointerException if the given regular expression pattern is <code>null</code>.
+   * @throws NullPointerException if the given regular expression pattern is {@code null}.
    * @throws LocationUnavailableException if a tab matching the given regular expression pattern could not be found.
    * @since 1.2
    */
@@ -156,7 +156,7 @@ public class JTabbedPaneFixture extends ComponentFixture<JTabbedPane> implements
    * Simulates a user clicking this fixture's <code>{@link JTabbedPane}</code>.
    * @param button the button to click.
    * @return this fixture.
-   * @throws NullPointerException if the given <code>MouseButton</code> is <code>null</code>.
+   * @throws NullPointerException if the given <code>MouseButton</code> is {@code null}.
    * @throws IllegalStateException if this fixture's <code>JTabbedPane</code> is disabled.
    * @throws IllegalStateException if this fixture's <code>JTabbedPane</code> is not showing on the screen.
    */
@@ -169,7 +169,7 @@ public class JTabbedPaneFixture extends ComponentFixture<JTabbedPane> implements
    * Simulates a user clicking this fixture's <code>{@link JTabbedPane}</code>.
    * @param mouseClickInfo specifies the button to click and the times the button should be clicked.
    * @return this fixture.
-   * @throws NullPointerException if the given <code>MouseClickInfo</code> is <code>null</code>.
+   * @throws NullPointerException if the given <code>MouseClickInfo</code> is {@code null}.
    * @throws IllegalStateException if this fixture's <code>JTabbedPane</code> is disabled.
    * @throws IllegalStateException if this fixture's <code>JTabbedPane</code> is not showing on the screen.
    */
@@ -216,7 +216,7 @@ public class JTabbedPaneFixture extends ComponentFixture<JTabbedPane> implements
    * Modifiers is a mask from the available <code>{@link java.awt.event.InputEvent}</code> masks.
    * @param keyPressInfo specifies the key and modifiers to press.
    * @return this fixture.
-   * @throws NullPointerException if the given <code>KeyPressInfo</code> is <code>null</code>.
+   * @throws NullPointerException if the given <code>KeyPressInfo</code> is {@code null}.
    * @throws IllegalArgumentException if the given code is not a valid key code.
    * @throws IllegalStateException if this fixture's <code>JTabbedPane</code> is disabled.
    * @throws IllegalStateException if this fixture's <code>JTabbedPane</code> is not showing on the screen.
@@ -232,7 +232,7 @@ public class JTabbedPaneFixture extends ComponentFixture<JTabbedPane> implements
    * method does not affect the current focus.
    * @param keyCodes one or more codes of the keys to press.
    * @return this fixture.
-   * @throws NullPointerException if the given array of codes is <code>null</code>.
+   * @throws NullPointerException if the given array of codes is {@code null}.
    * @throws IllegalArgumentException if any of the given code is not a valid key code.
    * @throws IllegalStateException if this fixture's <code>JTabbedPane</code> is disabled.
    * @throws IllegalStateException if this fixture's <code>JTabbedPane</code> is not showing on the screen.
@@ -350,7 +350,7 @@ public class JTabbedPaneFixture extends ComponentFixture<JTabbedPane> implements
    * @param pattern the regular expression pattern to match.
    * @param index the index of the tab.
    * @return this fixture.
-   * @throws NullPointerException if the given regular expression pattern is <code>null</code>.
+   * @throws NullPointerException if the given regular expression pattern is {@code null}.
    * @throws AssertionError if the title of the tab at the given index does not match the given regular expression
    * pattern.
    */
@@ -389,7 +389,7 @@ public class JTabbedPaneFixture extends ComponentFixture<JTabbedPane> implements
    * pattern.
    * @param pattern the regular expression pattern to match.
    * @return this fixture.
-   * @throws NullPointerException if the given regular expression pattern is <code>null</code>.
+   * @throws NullPointerException if the given regular expression pattern is {@code null}.
    * @throws AssertionError if the toolTip in this fixture's <code>JTabbedPane</code> does not match the given regular
    * expression pattern.
    * @since 1.2
@@ -402,9 +402,9 @@ public class JTabbedPaneFixture extends ComponentFixture<JTabbedPane> implements
   /**
    * Returns the client property stored in this fixture's <code>{@link JTabbedPane}</code>, under the given key.
    * @param key the key to use to retrieve the client property.
-   * @return the value of the client property stored under the given key, or <code>null</code> if the property was
+   * @return the value of the client property stored under the given key, or {@code null} if the property was
    * not found.
-   * @throws NullPointerException if the given key is <code>null</code>.
+   * @throws NullPointerException if the given key is {@code null}.
    * @since 1.2
    */
   public Object clientProperty(Object key) {

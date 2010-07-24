@@ -31,7 +31,7 @@ public interface KeyboardInputSimulationFixture {
    * Simulates a user pressing and releasing the given keys on this fixture's GUI component.
    * @param keyCodes one or more codes of the keys to press.
    * @return this fixture.
-   * @throws NullPointerException if the given array of codes is <code>null</code>.
+   * @throws NullPointerException if the given array of codes is {@code null}.
    * @throws IllegalArgumentException if any of the given code is not a valid key code.
    * @throws IllegalStateException if the component is disabled.
    * @throws IllegalStateException if the component is not showing on the screen.
@@ -63,7 +63,7 @@ public interface KeyboardInputSimulationFixture {
    * </p>
    * @param keyPressInfo specifies the key and modifiers to press.
    * @return this fixture.
-   * @throws NullPointerException if the given <code>KeyPressInfo</code> is <code>null</code>.
+   * @throws NullPointerException if the given <code>KeyPressInfo</code> is {@code null}.
    * @throws IllegalArgumentException if the given code is not a valid key code.
    * @throws IllegalStateException if the component is disabled.
    * @throws IllegalStateException if the component is not showing on the screen.

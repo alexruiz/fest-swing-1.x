@@ -77,7 +77,7 @@ public abstract class ComponentFinderTemplate<T extends Component> {
    * @param newTimeout the period of time the search should be performed.
    * @param unit the time unit for <code>timeout</code>.
    * @return this finder.
-   * @throws NullPointerException if the time unit is <code>null</code>.
+   * @throws NullPointerException if the time unit is {@code null}.
    * @throws IllegalArgumentException if the timeout is a negative number.
    */
   protected ComponentFinderTemplate<T> withTimeout(long newTimeout, TimeUnit unit) {

@@ -55,7 +55,7 @@ public class JMenuItemMatcher implements ComponentMatcher {
    * responsible for calling this method from the EDT.
    * </p>
    * @param c the component to verify.
-   * @return <code>true</code> if the component matches, <code>false</code> otherwise.
+   * @return {@code true} if the component matches, {@code false} otherwise.
    */
   @RunsInCurrentThread
   public boolean matches(Component c) {

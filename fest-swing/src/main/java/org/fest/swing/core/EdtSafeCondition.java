@@ -48,7 +48,7 @@ public abstract class EdtSafeCondition extends Condition {
 
   /**
    * Checks if the condition has been satisfied.
-   * @return <code>true</code> if the condition has been satisfied, otherwise <code>false</code>.
+   * @return {@code true} if the condition has been satisfied, otherwise {@code false}.
    */
   public final boolean test() {
     boolean result = execute(new GuiQuery<Boolean>() {
@@ -61,7 +61,7 @@ public abstract class EdtSafeCondition extends Condition {
 
   /**
    * Checks if the condition has been satisfied. This method is guaranteed to be executed in the event dispatch thread.
-   * @return <code>true</code> if the condition has been satisfied, otherwise <code>false</code>.
+   * @return {@code true} if the condition has been satisfied, otherwise {@code false}.
    */
   protected abstract boolean testInEDT();
 }

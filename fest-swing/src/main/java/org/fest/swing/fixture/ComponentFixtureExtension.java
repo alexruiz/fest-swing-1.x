@@ -24,7 +24,7 @@ import org.fest.swing.core.Robot;
  * Understands an "extension method" for implementations of <code>{@link ContainerFixture}</code>. This extension 
  * creates new <code>{@link ComponentFixture}</code>s managing components inside a 
  * <code>{@link ContainerFixture}</code>'s <code>{@link Container}</code>.
- * @param <C> the type of <code>Component</code> the <code>ComponentFixture</code> to create can handle.
+ * @param <C> the type of {@code Component} the <code>ComponentFixture</code> to create can handle.
  * @param <F> the type of <code>ComponentFixture</code> this extension can create.
  *
  * @author Alex Ruiz

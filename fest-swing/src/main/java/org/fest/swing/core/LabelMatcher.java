@@ -41,7 +41,7 @@ public class LabelMatcher extends AbstractComponentMatcher {
   /**
    * Creates a new <code>{@link LabelMatcher}</code>. The component to match does not have to be showing.
    * @param label the text of the label associated to the component we are looking for.
-   * @throws NullPointerException if the given label is <code>null</code>.
+   * @throws NullPointerException if the given label is {@code null}.
    * @throws IllegalArgumentException if the given label is empty.
    */
   public LabelMatcher(String label) {
@@ -52,7 +52,7 @@ public class LabelMatcher extends AbstractComponentMatcher {
    * Creates a new <code>{@link LabelMatcher}</code>.
    * @param label the text of the label associated to the component we are looking for.
    * @param requireShowing indicates if the component to match should be showing or not.
-   * @throws NullPointerException if the given label is <code>null</code>.
+   * @throws NullPointerException if the given label is {@code null}.
    * @throws IllegalArgumentException if the given label is empty.
    */
   public LabelMatcher(String label, boolean requireShowing) {
@@ -63,9 +63,9 @@ public class LabelMatcher extends AbstractComponentMatcher {
    * Creates a new <code>{@link LabelMatcher}</code>. The component to match does not have to be showing.
    * @param label the text of the label associated to the component we are looking for.
    * @param type the type of the component we are looking for.
-   * @throws NullPointerException if the given label is <code>null</code>.
+   * @throws NullPointerException if the given label is {@code null}.
    * @throws IllegalArgumentException if the given label is empty.
-   * @throws NullPointerException if the given type is <code>null</code>.
+   * @throws NullPointerException if the given type is {@code null}.
    */
   public LabelMatcher(String label, Class<? extends Component> type) {
     this(label, type, false);
@@ -76,9 +76,9 @@ public class LabelMatcher extends AbstractComponentMatcher {
    * @param label the text of the label associated to the component we are looking for.
    * @param type the type of the component we are looking for.
    * @param requireShowing indicates if the component to match should be showing or not.
-   * @throws NullPointerException if the given label is <code>null</code>.
+   * @throws NullPointerException if the given label is {@code null}.
    * @throws IllegalArgumentException if the given label is empty.
-   * @throws NullPointerException if the given type is <code>null</code>.
+   * @throws NullPointerException if the given type is {@code null}.
    */
   public LabelMatcher(String label, Class<? extends Component> type, boolean requireShowing) {
     super(requireShowing);
@@ -105,8 +105,8 @@ public class LabelMatcher extends AbstractComponentMatcher {
    * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
    * responsible for calling this method from the EDT.
    * </p>
-   * @return <code>true</code> if the name and visibility of the given <code>Component</code> matches the values
-   * specified in this matcher, <code>false</code> otherwise.
+   * @return {@code true} if the name and visibility of the given {@code Component} matches the values
+   * specified in this matcher, {@code false} otherwise.
    */
   @RunsInCurrentThread
   public boolean matches(Component c) {

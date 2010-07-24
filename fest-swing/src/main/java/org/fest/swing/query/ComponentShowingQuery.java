@@ -34,8 +34,8 @@ public final class ComponentShowingQuery {
   /**
    * Indicates whether the given <code>{@link Component}</code> is showing or not. This action is executed in the event
    * dispatch thread.
-   * @param component the given <code>Component</code>.
-   * @return <code>true</code> if the given <code>Component</code> is showing, <code>false</code> otherwise.
+   * @param component the given {@code Component}.
+   * @return {@code true} if the given {@code Component} is showing, {@code false} otherwise.
    * @see Component#isShowing()
    */
   @RunsInEDT

@@ -45,7 +45,7 @@ public class NoExitSecurityManager extends SecurityManager {
   /**
    * Creates a new </code>{@link NoExitSecurityManager}</code>.
    * @param hook notified when an application tries to terminate the current JVM.
-   * @throws NullPointerException if the given hook is <code>null</code>.
+   * @throws NullPointerException if the given hook is {@code null}.
    */
   public NoExitSecurityManager(ExitCallHook hook) {
     this(hook, StackTraces.instance());
@@ -88,8 +88,8 @@ public class NoExitSecurityManager extends SecurityManager {
   /**
    * Indicates whether "exit" has been invoked through a call of <code>{@link Runtime#exit(int)}</code> or
    * <code>{@link Runtime#halt(int)}</code>.
-   * @return <code>true</code> if an exit has been invoked through a call of <code>Runtime.exit</code> or
-   * <code>Runtime.halt</code>; <code>false</code> otherwise.
+   * @return {@code true} if an exit has been invoked through a call of <code>Runtime.exit</code> or
+   * <code>Runtime.halt</code>; {@code false} otherwise.
    */
   private boolean exitInvoked() {
     for (StackTraceElement e : stackTraces.stackTraceInCurrentThread())

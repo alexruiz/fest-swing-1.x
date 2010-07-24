@@ -46,8 +46,8 @@ public class JScrollPaneFixture extends ComponentFixture<JScrollPane> implements
    * Creates a new <code>{@link JScrollPaneFixture}</code>.
    * @param robot performs simulation of user events on the given <code>JScrollPane</code>.
    * @param target the <code>JScrollPane</code> to be managed by this fixture.
-   * @throws NullPointerException if <code>robot</code> is <code>null</code>.
-   * @throws IllegalArgumentException if <code>target</code> is <code>null</code>.
+   * @throws NullPointerException if <code>robot</code> is {@code null}.
+   * @throws IllegalArgumentException if <code>target</code> is {@code null}.
    */
   public JScrollPaneFixture(Robot robot, JScrollPane target) {
     super(robot, target);
@@ -57,7 +57,7 @@ public class JScrollPaneFixture extends ComponentFixture<JScrollPane> implements
   /**
    * Sets the <code>{@link JScrollPaneDriver}</code> to be used by this fixture.
    * @param newDriver the new <code>JScrollPaneDriver</code>.
-   * @throws NullPointerException if the given driver is <code>null</code>.
+   * @throws NullPointerException if the given driver is {@code null}.
    */
   protected final void driver(JScrollPaneDriver newDriver) {
     validateNotNull(newDriver);
@@ -68,7 +68,7 @@ public class JScrollPaneFixture extends ComponentFixture<JScrollPane> implements
    * Creates a new <code>{@link JScrollPaneFixture}</code>.
    * @param robot performs simulation of user events on a <code>JScrollPane</code>.
    * @param panelName the name of the <code>JScrollPane</code> to find using the given <code>Robot</code>.
-   * @throws NullPointerException if <code>robot</code> is <code>null</code>.
+   * @throws NullPointerException if <code>robot</code> is {@code null}.
    * @throws ComponentLookupException if a matching <code>JScrollPane</code> could not be found.
    * @throws ComponentLookupException if more than one matching <code>JScrollPane</code> is found.
    */
@@ -118,7 +118,7 @@ public class JScrollPaneFixture extends ComponentFixture<JScrollPane> implements
    * Simulates a user clicking this fixture's <code>{@link JScrollPane}</code>.
    * @param button the button to click.
    * @return this fixture.
-   * @throws NullPointerException if the given <code>MouseButton</code> is <code>null</code>.
+   * @throws NullPointerException if the given <code>MouseButton</code> is {@code null}.
    * @throws IllegalStateException if this fixture's <code>JScrollPane</code> is disabled.
    * @throws IllegalStateException if this fixture's <code>JScrollPane</code> is not showing on the screen.
    */
@@ -131,7 +131,7 @@ public class JScrollPaneFixture extends ComponentFixture<JScrollPane> implements
    * Simulates a user clicking this fixture's <code>{@link JScrollPane}</code>.
    * @param mouseClickInfo specifies the button to click and the times the button should be clicked.
    * @return this fixture.
-   * @throws NullPointerException if the given <code>MouseClickInfo</code> is <code>null</code>.
+   * @throws NullPointerException if the given <code>MouseClickInfo</code> is {@code null}.
    * @throws IllegalStateException if this fixture's <code>JScrollPane</code> is disabled.
    * @throws IllegalStateException if this fixture's <code>JScrollPane</code> is not showing on the screen.
    */
@@ -178,7 +178,7 @@ public class JScrollPaneFixture extends ComponentFixture<JScrollPane> implements
    * Modifiers is a mask from the available <code>{@link java.awt.event.InputEvent}</code> masks.
    * @param keyPressInfo specifies the key and modifiers to press.
    * @return this fixture.
-   * @throws NullPointerException if the given <code>KeyPressInfo</code> is <code>null</code>.
+   * @throws NullPointerException if the given <code>KeyPressInfo</code> is {@code null}.
    * @throws IllegalArgumentException if the given code is not a valid key code.
    * @throws IllegalStateException if this fixture's <code>JScrollPane</code> is disabled.
    * @throws IllegalStateException if this fixture's <code>JScrollPane</code> is not showing on the screen.
@@ -194,7 +194,7 @@ public class JScrollPaneFixture extends ComponentFixture<JScrollPane> implements
    * fixture.
    * @param keyCodes one or more codes of the keys to press.
    * @return this fixture.
-   * @throws NullPointerException if the given array of codes is <code>null</code>.
+   * @throws NullPointerException if the given array of codes is {@code null}.
    * @throws IllegalArgumentException if any of the given code is not a valid key code.
    * @throws IllegalStateException if this fixture's <code>JScrollPane</code> is disabled.
    * @throws IllegalStateException if this fixture's <code>JScrollPane</code> is not showing on the screen.
@@ -311,7 +311,7 @@ public class JScrollPaneFixture extends ComponentFixture<JScrollPane> implements
    * pattern.
    * @param pattern the regular expression pattern to match.
    * @return this fixture.
-   * @throws NullPointerException if the given regular expression pattern is <code>null</code>.
+   * @throws NullPointerException if the given regular expression pattern is {@code null}.
    * @throws AssertionError if the toolTip in this fixture's <code>JScrollPane</code> does not match the given regular
    * expression.
    * @since 1.2
@@ -324,9 +324,9 @@ public class JScrollPaneFixture extends ComponentFixture<JScrollPane> implements
   /**
    * Returns the client property stored in this fixture's <code>{@link JScrollPane}</code>, under the given key.
    * @param key the key to use to retrieve the client property.
-   * @return the value of the client property stored under the given key, or <code>null</code> if the property was
+   * @return the value of the client property stored under the given key, or {@code null} if the property was
    * not found.
-   * @throws NullPointerException if the given key is <code>null</code>.
+   * @throws NullPointerException if the given key is {@code null}.
    * @since 1.2
    */
   public Object clientProperty(Object key) {

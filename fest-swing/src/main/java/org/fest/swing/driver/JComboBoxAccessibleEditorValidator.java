@@ -27,7 +27,7 @@ import org.fest.swing.annotation.RunsInCurrentThread;
 
 /**
  * Understands an action that validates that the editor of a <code>{@link JComboBox}</code> is accessible or not. To be
- * accessible, a <code>JComboBox</code> needs to be enabled and editable.
+ * accessible, a {@code JComboBox} needs to be enabled and editable.
  * <p>
  * <b>Note:</b> Methods in this class are <b>not</b> executed in the event dispatch thread (EDT.) Clients are
  * responsible for invoking them in the EDT.

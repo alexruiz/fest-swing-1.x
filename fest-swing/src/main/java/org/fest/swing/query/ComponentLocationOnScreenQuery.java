@@ -35,8 +35,8 @@ public final class ComponentLocationOnScreenQuery {
   /**
    * Returns the location of the given <code>{@link Component}</code> on screen. This action is executed in the event
    * dispatch thread.
-   * @param component the given <code>Component</code>.
-   * @return the location of the given <code>Component</code> on screen.
+   * @param component the given {@code Component}.
+   * @return the location of the given {@code Component} on screen.
    * @see Component#getLocationOnScreen()
    */
   @RunsInEDT

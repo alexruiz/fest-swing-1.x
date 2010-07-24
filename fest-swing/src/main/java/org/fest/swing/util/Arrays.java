@@ -36,7 +36,7 @@ public final class Arrays {
    * Verifies that the given <code>String</code> arrays are equal.
    * @param one the first array.
    * @param two the second array.
-   * @return <code>true</code> if the arrays are equal, <code>false</code> otherwise.
+   * @return {@code true} if the arrays are equal, {@code false} otherwise.
    */
   public static boolean equal(String[][] one, String[][] two) {
     if (one == null && two == null) return true;
@@ -100,7 +100,7 @@ public final class Arrays {
    * Creates and returns a copy of the given array.
    * @param array the array to copy.
    * @return the created copy.
-   * @throws NullPointerException if the array to copy is <code>null</code>.
+   * @throws NullPointerException if the array to copy is {@code null}.
    */
   public static int[] copyOf(int[] array) {
     if (array == null) throw new NullPointerException("The array to copy should not be null");
@@ -116,7 +116,7 @@ public final class Arrays {
    * @param <T> the generic type of the array.
    * @param array the array to copy.
    * @return the created copy.
-   * @throws NullPointerException if the array to copy is <code>null</code>.
+   * @throws NullPointerException if the array to copy is {@code null}.
    */
   @SuppressWarnings("unchecked") public static <T> T[] copyOf(T[] array) {
     if (array == null) throw new NullPointerException("The array to copy should not be null");
@@ -127,9 +127,9 @@ public final class Arrays {
   }
 
   /**
-   * Indicates whether the given array is <code>null</code> or empty.
+   * Indicates whether the given array is {@code null} or empty.
    * @param array the array to check.
-   * @return <code>true</code> if the given array is <code>null</code> or empty; <code>false</code> otherwise.
+   * @return {@code true} if the given array is {@code null} or empty; {@code false} otherwise.
    */
   public static boolean isEmptyIntArray(int[] array) {
     return array == null || array.length == 0;

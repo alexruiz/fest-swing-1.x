@@ -26,7 +26,7 @@ import org.junit.Test;
  * Tests for <code>{@link LabelMatcher#matches(java.awt.Component)}</code>.
  * <p>
  * The <code>{@link LabelMatcher}</code> is created through 
- * <code>{@link LabelMatcher#LabelMatcher(String, Class, boolean)}</code>, passing <code>true</code> to indicate that 
+ * <code>{@link LabelMatcher#LabelMatcher(String, Class, boolean)}</code>, passing {@code true} to indicate that 
  * the <code>{@link java.awt.Component}</code> to match must be showing on the screen.
  * </p>
  * 

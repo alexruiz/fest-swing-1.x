@@ -113,7 +113,7 @@ public class JListDriver extends JComponentDriver {
    * Selects the items matching the given values.
    * @param list the target <code>JList</code>.
    * @param values the values to match. Each <code>String</code> can be a regular expression.
-   * @throws NullPointerException if the given array is <code>null</code>.
+   * @throws NullPointerException if the given array is {@code null}.
    * @throws IllegalArgumentException if the given array is empty.
    * @throws IllegalStateException if the <code>JList</code> is disabled.
    * @throws IllegalStateException if the <code>JList</code> is not showing on the screen.
@@ -128,8 +128,8 @@ public class JListDriver extends JComponentDriver {
    * Selects the items matching the given regular expression patterns.
    * @param list the target <code>JList</code>.
    * @param patterns the regular expression patterns to match.
-   * @throws NullPointerException if the given array is <code>null</code>.
-   * @throws NullPointerException if any of the regular expression patterns is <code>null</code>.
+   * @throws NullPointerException if the given array is {@code null}.
+   * @throws NullPointerException if any of the regular expression patterns is {@code null}.
    * @throws IllegalArgumentException if the given array is empty.
    * @throws IllegalStateException if the <code>JList</code> is disabled.
    * @throws IllegalStateException if the <code>JList</code> is not showing on the screen.
@@ -173,7 +173,7 @@ public class JListDriver extends JComponentDriver {
    * @throws IllegalStateException if the <code>JList</code> is disabled.
    * @throws IllegalStateException if the <code>JList</code> is not showing on the screen.
    * @throws LocationUnavailableException if an element matching the given value cannot be found.
-   * @throws NullPointerException if the given regular expression pattern is <code>null</code>.
+   * @throws NullPointerException if the given regular expression pattern is {@code null}.
    * @since 1.2
    */
   @RunsInEDT
@@ -213,7 +213,7 @@ public class JListDriver extends JComponentDriver {
    * @param times the number of times to click.
    * @throws IllegalStateException if the <code>JList</code> is disabled.
    * @throws IllegalStateException if the <code>JList</code> is not showing on the screen.
-   * @throws NullPointerException if the given regular expression pattern is <code>null</code>.
+   * @throws NullPointerException if the given regular expression pattern is {@code null}.
    * @throws LocationUnavailableException if an element matching the given regular expression pattern cannot be found.
    * @since 1.2
    */
@@ -232,7 +232,7 @@ public class JListDriver extends JComponentDriver {
    * Selects the items under the given indices.
    * @param list the target <code>JList</code>.
    * @param indices the indices of the items to select.
-   * @throws NullPointerException if the given array is <code>null</code>.
+   * @throws NullPointerException if the given array is {@code null}.
    * @throws IllegalArgumentException if the given array is empty.
    * @throws IllegalStateException if the <code>JList</code> is disabled.
    * @throws IllegalStateException if the <code>JList</code> is not showing on the screen.
@@ -368,7 +368,7 @@ public class JListDriver extends JComponentDriver {
    * @param list the target <code>JList</code>.
    * @param pattern the regular expression pattern to match.
    * @throws AssertionError if the selected item does not match the given regular expression pattern.
-   * @throws NullPointerException if the given regular expression pattern is <code>null</code>.
+   * @throws NullPointerException if the given regular expression pattern is {@code null}.
    * @see #cellReader(JListCellReader)
    * @since 1.2
    */
@@ -415,7 +415,7 @@ public class JListDriver extends JComponentDriver {
    * Verifies that the selected items in the <code>{@link JList}</code> match the given values.
    * @param list the target <code>JList</code>.
    * @param items the values to match. Each value can be a regular expression pattern.
-   * @throws NullPointerException if the given array is <code>null</code>.
+   * @throws NullPointerException if the given array is {@code null}.
    * @throws IllegalArgumentException if the given array is empty.
    * @throws AssertionError if the selected items do not match the given values.
    */
@@ -428,9 +428,9 @@ public class JListDriver extends JComponentDriver {
    * Verifies that the selected items in the <code>{@link JList}</code> match the given regular expression patterns.
    * @param list the target <code>JList</code>.
    * @param patterns the regular expression patterns to match.
-   * @throws NullPointerException if the given array is <code>null</code>.
+   * @throws NullPointerException if the given array is {@code null}.
    * @throws IllegalArgumentException if the given array is empty.
-   * @throws NullPointerException if any of the patterns in the array is <code>null</code>.
+   * @throws NullPointerException if any of the patterns in the array is {@code null}.
    * @throws AssertionError if the selected items do not match the given values.
    * @see #cellReader(JListCellReader)
    * @since 1.2
@@ -450,7 +450,7 @@ public class JListDriver extends JComponentDriver {
    * Verifies that the given item indices are selected in the <code>{@link JList}</code>.
    * @param list the target <code>JList</code>.
    * @param indices the expected indices of the selected items.
-   * @throws NullPointerException if the given array is <code>null</code>.
+   * @throws NullPointerException if the given array is {@code null}.
    * @throws IllegalArgumentException if the given array is empty.
    * @throws AssertionError if the selection in the <code>JList</code> does not match the given one.
    */
@@ -506,7 +506,7 @@ public class JListDriver extends JComponentDriver {
    * @param pattern the regular expression pattern to match.
    * @throws IllegalStateException if the <code>JList</code> is disabled.
    * @throws IllegalStateException if the <code>JList</code> is not showing on the screen.
-   * @throws NullPointerException if the regular expression pattern is <code>null</code>.
+   * @throws NullPointerException if the regular expression pattern is {@code null}.
    * @throws LocationUnavailableException if an element matching the given regular expression pattern cannot be found.
    * @see #cellReader(JListCellReader)
    * @since 1.2
@@ -543,7 +543,7 @@ public class JListDriver extends JComponentDriver {
    * @param pattern the regular expression pattern to match.
    * @throws IllegalStateException if the <code>JList</code> is disabled.
    * @throws IllegalStateException if the <code>JList</code> is not showing on the screen.
-   * @throws NullPointerException if the given regular expression pattern is <code>null</code>.
+   * @throws NullPointerException if the given regular expression pattern is {@code null}.
    * @throws LocationUnavailableException if an element matching the given value cannot be found.
    * @throws ActionFailedException if there is no drag action in effect.
    * @since 1.2
@@ -632,7 +632,7 @@ public class JListDriver extends JComponentDriver {
    * @return a fixture that manages the displayed pop-up menu.
    * @throws IllegalStateException if the <code>JList</code> is disabled.
    * @throws IllegalStateException if the <code>JList</code> is not showing on the screen.
-   * @throws NullPointerException if the regular expression pattern is <code>null</code>.
+   * @throws NullPointerException if the regular expression pattern is {@code null}.
    * @throws ComponentLookupException if a pop-up menu cannot be found.
    * @throws LocationUnavailableException if an element matching the given value cannot be found.
    * @since 1.2
@@ -702,7 +702,7 @@ public class JListDriver extends JComponentDriver {
    * @param pattern the regular expression pattern to match.
    * @return the index of the first item matching the given regular expression pattern.
    * @throws LocationUnavailableException if an element matching the given value cannot be found.
-   * @throws NullPointerException if the given regular expression pattern is <code>null</code>.
+   * @throws NullPointerException if the given regular expression pattern is {@code null}.
    * @since 1.2
    */
   @RunsInEDT
@@ -751,7 +751,7 @@ public class JListDriver extends JComponentDriver {
    * Updates the implementation of <code>{@link JListCellReader}</code> to use when comparing internal values of a
    * <code>{@link JList}</code> and the values expected in a test.
    * @param newCellReader the new <code>JListCellValueReader</code> to use.
-   * @throws NullPointerException if <code>newCellReader</code> is <code>null</code>.
+   * @throws NullPointerException if <code>newCellReader</code> is {@code null}.
    */
   public void cellReader(JListCellReader newCellReader) {
     validateCellReader(newCellReader);

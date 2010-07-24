@@ -161,7 +161,7 @@ public final class JButtonMatcher extends NamedComponentMatcherTemplate<JButton>
    * responsible for calling this method from the EDT.
    * </p>
    * @param button the <code>JButton</code> to match.
-   * @return <code>true</code> if the <code>JButton</code> matches the search criteria in this matcher.
+   * @return {@code true} if the <code>JButton</code> matches the search criteria in this matcher.
    */
   @RunsInCurrentThread
   protected boolean isMatching(JButton button) {

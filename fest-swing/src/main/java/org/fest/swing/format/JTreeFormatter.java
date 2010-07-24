@@ -47,7 +47,7 @@ public class JTreeFormatter extends ComponentFormatterTemplate {
   /**
    * Returns the <code>String</code> representation of the given <code>{@link Component}</code>, which should be a
    * <code>{@link JTree}</code> (or subclass.)
-   * @param c the given <code>Component</code>.
+   * @param c the given {@code Component}.
    * @return the <code>String</code> representation of the given <code>JTree</code>.
    */
   protected String doFormat(Component c) {

@@ -40,7 +40,7 @@ public interface TextDisplayDriver<T extends Component> {
    * Asserts that the text in the given component matches the given regular expression pattern.
    * @param component the given component.
    * @param pattern the regular expression pattern to match.
-   * @throws NullPointerException if the given regular expression pattern is <code>null</code>.
+   * @throws NullPointerException if the given regular expression pattern is {@code null}.
    * @throws AssertionError if the text of the component does not match the given regular expression pattern.
    * @since 1.2
    */

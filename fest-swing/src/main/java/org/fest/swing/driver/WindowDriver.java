@@ -50,11 +50,11 @@ public class WindowDriver extends ContainerDriver {
 
   /**
    * Resizes the <code>{@link Window}</code> horizontally.
-   * @param w the target <code>Window</code>.
-   * @param width the width that the <code>Window</code> should have after being resized.
-   * @throws ActionFailedException if the <code>Window</code> is not enabled.
-   * @throws ActionFailedException if the <code>Window</code> is not resizable by the user.
-   * @throws ActionFailedException if the <code>Window</code> is not showing on the screen.
+   * @param w the target {@code Window}.
+   * @param width the width that the {@code Window} should have after being resized.
+   * @throws ActionFailedException if the {@code Window} is not enabled.
+   * @throws ActionFailedException if the {@code Window} is not resizable by the user.
+   * @throws ActionFailedException if the {@code Window} is not showing on the screen.
    */
   @RunsInEDT
   public void resizeWidthTo(Window w, int width) {
@@ -63,11 +63,11 @@ public class WindowDriver extends ContainerDriver {
 
   /**
    * Resizes the <code>{@link Window}</code> vertically.
-   * @param w the target <code>Window</code>.
-   * @param height the height that the <code>Window</code> should have after being resized.
-   * @throws ActionFailedException if the <code>Window</code> is not enabled.
-   * @throws ActionFailedException if the <code>Window</code> is not resizable by the user.
-   * @throws ActionFailedException if the <code>Window</code> is not showing on the screen.
+   * @param w the target {@code Window}.
+   * @param height the height that the {@code Window} should have after being resized.
+   * @throws ActionFailedException if the {@code Window} is not enabled.
+   * @throws ActionFailedException if the {@code Window} is not resizable by the user.
+   * @throws ActionFailedException if the {@code Window} is not showing on the screen.
    */
   @RunsInEDT
   public void resizeHeightTo(Window w, int height) {
@@ -76,11 +76,11 @@ public class WindowDriver extends ContainerDriver {
 
   /**
    * Resizes the <code>{@link Window}</code> to the given size.
-   * @param w the target <code>Window</code>.
-   * @param size the size to resize the <code>Window</code> to.
-   * @throws ActionFailedException if the <code>Window</code> is not enabled.
-   * @throws ActionFailedException if the <code>Window</code> is not resizable by the user.
-   * @throws ActionFailedException if the <code>Window</code> is not showing on the screen.
+   * @param w the target {@code Window}.
+   * @param size the size to resize the {@code Window} to.
+   * @throws ActionFailedException if the {@code Window} is not enabled.
+   * @throws ActionFailedException if the {@code Window} is not resizable by the user.
+   * @throws ActionFailedException if the {@code Window} is not showing on the screen.
    */
   @RunsInEDT
   public void resizeTo(Window w, Dimension size) {
@@ -89,11 +89,11 @@ public class WindowDriver extends ContainerDriver {
 
   /**
    * Moves the <code>{@link Window}</code> to the given location.
-   * @param w the target <code>Window</code>.
-   * @param where the location to move the <code>Window</code> to.
-   * @throws ActionFailedException if the <code>Window</code> is not enabled.
-   * @throws ActionFailedException if the <code>Window</code> is not movable by the user.
-   * @throws ActionFailedException if the <code>Window</code> is not showing on the screen.
+   * @param w the target {@code Window}.
+   * @param where the location to move the {@code Window} to.
+   * @throws ActionFailedException if the {@code Window} is not enabled.
+   * @throws ActionFailedException if the {@code Window} is not movable by the user.
+   * @throws ActionFailedException if the {@code Window} is not showing on the screen.
    */
   public void moveTo(Window w, Point where) {
     move(w, where.x, where.y);
@@ -101,9 +101,9 @@ public class WindowDriver extends ContainerDriver {
 
   /**
    * Closing the <code>{@link Window}</code>.
-   * @param w the target <code>Window</code>.
-   * @throws ActionFailedException if the <code>Window</code> is not enabled.
-   * @throws ActionFailedException if the <code>Window</code> is not showing on the screen.
+   * @param w the target {@code Window}.
+   * @throws ActionFailedException if the {@code Window} is not enabled.
+   * @throws ActionFailedException if the {@code Window} is not showing on the screen.
    */
   @RunsInEDT
   public void close(Window w) {
@@ -123,7 +123,7 @@ public class WindowDriver extends ContainerDriver {
 
   /**
    * Shows the <code>{@link Window}</code>.
-   * @param w the target <code>Window</code>.
+   * @param w the target {@code Window}.
    */
   @RunsInEDT
   public void show(Window w) {
@@ -132,8 +132,8 @@ public class WindowDriver extends ContainerDriver {
 
   /**
    * Shows the <code>{@link Window}</code>, resized to the given size.
-   * @param w the target <code>Window</code>.
-   * @param size the size to resize the <code>Window</code> to.
+   * @param w the target {@code Window}.
+   * @param size the size to resize the {@code Window} to.
    */
   @RunsInEDT
   public void show(Window w, Dimension size) {
@@ -142,7 +142,7 @@ public class WindowDriver extends ContainerDriver {
 
   /**
    * If the given <code>{@link Window}</code> is visible, brings it to the front and may make it the focused one.
-   * @param w the target <code>Window</code>.
+   * @param w the target {@code Window}.
    */
   @RunsInEDT
   public void moveToFront(Window w) {
@@ -162,7 +162,7 @@ public class WindowDriver extends ContainerDriver {
   /**
    * If the given <code>{@link Window}</code> is visible, sends it to the back and may cause it to lose focus or
    * activation if it is the focused or active.
-   * @param w the target <code>Window</code>.
+   * @param w the target {@code Window}.
    */
   @RunsInEDT
   public void moveToBack(Window w) {

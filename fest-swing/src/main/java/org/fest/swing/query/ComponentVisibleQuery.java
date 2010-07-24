@@ -34,8 +34,8 @@ public final class ComponentVisibleQuery {
   /**
    * Indicates whether the given <code>{@link Component}</code> is visible or not. This action is executed in the event
    * dispatch thread.
-   * @param component the given <code>Component</code>.
-   * @return <code>true</code> if the given <code>Component</code> is visible, <code>false</code> otherwise.
+   * @param component the given {@code Component}.
+   * @return {@code true} if the given {@code Component} is visible, {@code false} otherwise.
    * @see Component#isVisible()
    */
   @RunsInEDT

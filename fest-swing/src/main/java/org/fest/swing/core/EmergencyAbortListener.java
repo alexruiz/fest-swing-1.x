@@ -108,7 +108,7 @@ public class EmergencyAbortListener implements AWTEventListener {
    * Sets the key combination that will terminate any FEST-Swing test. The default combination is 'Ctrl + Shift + A'.
    * @param keyPressInfo contains information about the key code and modifiers.
    * @return this listener.
-   * @throws NullPointerException if the <code>KeyPressInfo</code> is <code>null</code>.
+   * @throws NullPointerException if the <code>KeyPressInfo</code> is {@code null}.
    */
   public EmergencyAbortListener keyCombination(KeyPressInfo keyPressInfo) {
     if (keyPressInfo == null) throw new NullPointerException("KeyPressInfo should not be null");

@@ -56,7 +56,7 @@ public final class JMenuItemLocation {
 
   /**
    * Indicates whether the <code>{@link JMenuItem}</code> is in a <code>{@link JMenuBar}</code>.
-   * @return <code>true</code> if the <code>JMenuItem</code> is in a <code>JMenuBar</code>, <code>false</code>
+   * @return {@code true} if the <code>JMenuItem</code> is in a <code>JMenuBar</code>, {@code false}
    * otherwise.
    */
   public boolean inMenuBar() {
@@ -65,7 +65,7 @@ public final class JMenuItemLocation {
 
   /**
    * Indicates whether the parent of the <code>{@link JMenuItem}</code> is another menu.
-   * @return <code>true</code> if the parent of the <code>JMenuItem</code> is another menu, <code>false</code>
+   * @return {@code true} if the parent of the <code>JMenuItem</code> is another menu, {@code false}
    * otherwise.
    */
   @RunsInEDT
@@ -83,8 +83,8 @@ public final class JMenuItemLocation {
   }
 
   /**
-   * Returns the parent pop-up menu, or <code>null</code> if the <code>{@link JMenuItem}</code> is not in a pop-up.
-   * @return the parent pop-up menu, or <code>null</code> if the <code>JMenuItem</code> is not in a pop-up.
+   * Returns the parent pop-up menu, or {@code null} if the <code>{@link JMenuItem}</code> is not in a pop-up.
+   * @return the parent pop-up menu, or {@code null} if the <code>JMenuItem</code> is not in a pop-up.
    */
   public JPopupMenu parentPopup() {
     return parentPopup;

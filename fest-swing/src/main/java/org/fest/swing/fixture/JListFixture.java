@@ -56,7 +56,7 @@ public class JListFixture extends ComponentFixture<JList> implements CommonCompo
    * Creates a new <code>{@link JListFixture}</code>.
    * @param robot performs simulation of user events on a <code>JList</code>.
    * @param listName the name of the <code>JList</code> to find using the given <code>Robot</code>.
-   * @throws NullPointerException if <code>robot</code> is <code>null</code>.
+   * @throws NullPointerException if <code>robot</code> is {@code null}.
    * @throws ComponentLookupException if a matching <code>JList</code> could not be found.
    * @throws ComponentLookupException if more than one matching <code>JList</code> is found.
    */
@@ -69,8 +69,8 @@ public class JListFixture extends ComponentFixture<JList> implements CommonCompo
    * Creates a new <code>{@link JListFixture}</code>.
    * @param robot performs simulation of user events on the given <code>JList</code>.
    * @param target the <code>JList</code> to be managed by this fixture.
-   * @throws NullPointerException if <code>robot</code> is <code>null</code>.
-   * @throws NullPointerException if <code>target</code> is <code>null</code>.
+   * @throws NullPointerException if <code>robot</code> is {@code null}.
+   * @throws NullPointerException if <code>target</code> is {@code null}.
    */
   public JListFixture(Robot robot, JList target) {
     super(robot, target);
@@ -84,7 +84,7 @@ public class JListFixture extends ComponentFixture<JList> implements CommonCompo
   /**
    * Sets the <code>{@link JListDriver}</code> to be used by this fixture.
    * @param newDriver the new <code>JListDriver</code>.
-   * @throws NullPointerException if the given driver is <code>null</code>.
+   * @throws NullPointerException if the given driver is {@code null}.
    */
   protected final void driver(JListDriver newDriver) {
     validateNotNull(newDriver);
@@ -149,7 +149,7 @@ public class JListFixture extends ComponentFixture<JList> implements CommonCompo
    * @param pattern the regular expression pattern to match.
    * @return a fixture that manages the list item whose text matches the given regular expression pattern.
    * @throws LocationUnavailableException if an element matching the given text cannot be found.
-   * @throws NullPointerException if the given regular expression pattern is <code>null</code>.
+   * @throws NullPointerException if the given regular expression pattern is {@code null}.
    * @since 1.2
    */
   public JListItemFixture item(Pattern pattern) {
@@ -186,7 +186,7 @@ public class JListFixture extends ComponentFixture<JList> implements CommonCompo
    * Simulates a user selecting the specified items in this fixture's <code>{@link JList}</code>.
    * @param indices the indices of the items to select.
    * @return this fixture.
-   * @throws NullPointerException if the given array is <code>null</code>.
+   * @throws NullPointerException if the given array is {@code null}.
    * @throws IllegalArgumentException if the given array is empty.
    * @throws IndexOutOfBoundsException if any of the indices is negative or greater than the index of the last item in
    * the <code>JList</code>.
@@ -203,7 +203,7 @@ public class JListFixture extends ComponentFixture<JList> implements CommonCompo
    * should match the given values.
    * @param items the text of the items to select. Each <code>String</code> can be a regular expression.
    * @return this fixture.
-   * @throws NullPointerException if the given array is <code>null</code>.
+   * @throws NullPointerException if the given array is {@code null}.
    * @throws IllegalArgumentException if the given array is empty.
    * @throws IllegalStateException if this fixture's <code>JList</code> is disabled.
    * @throws IllegalStateException if this fixture's <code>JList</code> is not showing on the screen.
@@ -220,8 +220,8 @@ public class JListFixture extends ComponentFixture<JList> implements CommonCompo
    * should select the given regular expression patterns.
    * @param patterns the regular expression patterns to match.
    * @return this fixture.
-   * @throws NullPointerException if the given array is <code>null</code>.
-   * @throws NullPointerException if any of the regular expression patterns is <code>null</code>.
+   * @throws NullPointerException if the given array is {@code null}.
+   * @throws NullPointerException if any of the regular expression patterns is {@code null}.
    * @throws IllegalArgumentException if the given array is empty.
    * @throws IllegalStateException if this fixture's <code>JList</code> is disabled.
    * @throws IllegalStateException if this fixture's <code>JList</code> is not showing on the screen.
@@ -275,7 +275,7 @@ public class JListFixture extends ComponentFixture<JList> implements CommonCompo
    * @throws IllegalStateException if this fixture's <code>JList</code> is disabled.
    * @throws IllegalStateException if this fixture's <code>JList</code> is not showing on the screen.
    * @throws LocationUnavailableException if an element matching the given text cannot be found.
-   * @throws NullPointerException if the given regular expression pattern is <code>null</code>.
+   * @throws NullPointerException if the given regular expression pattern is {@code null}.
    * @see #item(Pattern)
    * @see JListItemFixture#select()
    * @see #cellReader(JListCellReader)
@@ -328,7 +328,7 @@ public class JListFixture extends ComponentFixture<JList> implements CommonCompo
    * @throws IllegalStateException if this fixture's <code>JList</code> is disabled.
    * @throws IllegalStateException if this fixture's <code>JList</code> is not showing on the screen.
    * @throws LocationUnavailableException if an element matching the given text cannot be found.
-   * @throws NullPointerException if the given regular expression pattern is <code>null</code>.
+   * @throws NullPointerException if the given regular expression pattern is {@code null}.
    * @see #item(Pattern)
    * @see JListItemFixture#select()
    * @see #cellReader(JListCellReader)
@@ -391,7 +391,7 @@ public class JListFixture extends ComponentFixture<JList> implements CommonCompo
    * Simulates a user clicking this fixture's <code>{@link JList}</code>.
    * @param button the button to click.
    * @return this fixture.
-   * @throws NullPointerException if the given <code>MouseButton</code> is <code>null</code>.
+   * @throws NullPointerException if the given <code>MouseButton</code> is {@code null}.
    * @throws IllegalStateException if this fixture's <code>JList</code> is disabled.
    * @throws IllegalStateException if this fixture's <code>JList</code> is not showing on the screen.
    */
@@ -404,7 +404,7 @@ public class JListFixture extends ComponentFixture<JList> implements CommonCompo
    * Simulates a user clicking this fixture's <code>{@link JList}</code>.
    * @param mouseClickInfo specifies the button to click and the times the button should be clicked.
    * @return this fixture.
-   * @throws NullPointerException if the given <code>MouseClickInfo</code> is <code>null</code>.
+   * @throws NullPointerException if the given <code>MouseClickInfo</code> is {@code null}.
    * @throws IllegalStateException if this fixture's <code>JList</code> is disabled.
    * @throws IllegalStateException if this fixture's <code>JList</code> is not showing on the screen.
    */
@@ -451,7 +451,7 @@ public class JListFixture extends ComponentFixture<JList> implements CommonCompo
    * Modifiers is a mask from the available <code>{@link java.awt.event.InputEvent}</code> masks.
    * @param keyPressInfo specifies the key and modifiers to press.
    * @return this fixture.
-   * @throws NullPointerException if the given <code>KeyPressInfo</code> is <code>null</code>.
+   * @throws NullPointerException if the given <code>KeyPressInfo</code> is {@code null}.
    * @throws IllegalArgumentException if the given code is not a valid key code.
    * @throws IllegalStateException if this fixture's <code>JList</code> is disabled.
    * @throws IllegalStateException if this fixture's <code>JList</code> is not showing on the screen.
@@ -466,7 +466,7 @@ public class JListFixture extends ComponentFixture<JList> implements CommonCompo
    * Simulates a user pressing and releasing the given keys on this fixture's <code>{@link JList}</code>.
    * @param keyCodes one or more codes of the keys to press.
    * @return this fixture.
-   * @throws NullPointerException if the given array of codes is <code>null</code>.
+   * @throws NullPointerException if the given array of codes is {@code null}.
    * @throws IllegalStateException if this fixture's <code>JList</code> is disabled.
    * @throws IllegalStateException if this fixture's <code>JList</code> is not showing on the screen.
    * @see java.awt.event.KeyEvent
@@ -538,7 +538,7 @@ public class JListFixture extends ComponentFixture<JList> implements CommonCompo
    * @return this fixture.
    * @throws IllegalStateException if this fixture's <code>JList</code> is disabled.
    * @throws IllegalStateException if this fixture's <code>JList</code> is not showing on the screen.
-   * @throws NullPointerException if the given regular expression pattern in <code>null</code>.
+   * @throws NullPointerException if the given regular expression pattern in {@code null}.
    * @throws LocationUnavailableException if an element matching the given regular expression pattern cannot be found.
    * @see #cellReader(JListCellReader)
    * @since 1.2
@@ -554,7 +554,7 @@ public class JListFixture extends ComponentFixture<JList> implements CommonCompo
    * @return this fixture.
    * @throws IllegalStateException if this fixture's <code>JList</code> is disabled.
    * @throws IllegalStateException if this fixture's <code>JList</code> is not showing on the screen.
-   * @throws NullPointerException if the given regular expression pattern in <code>null</code>.
+   * @throws NullPointerException if the given regular expression pattern in {@code null}.
    * @throws LocationUnavailableException if an element matching the given text cannot be found.
    * @throws ActionFailedException if there is no drag action in effect.
    * @see #cellReader(JListCellReader)
@@ -641,7 +641,7 @@ public class JListFixture extends ComponentFixture<JList> implements CommonCompo
    * @return a fixture that manages the displayed pop-up menu.
    * @throws IllegalStateException if this fixture's <code>JList</code> is disabled.
    * @throws IllegalStateException if this fixture's <code>JList</code> is not showing on the screen.
-   * @throws NullPointerException if the given regular expression pattern is <code>null</code>.
+   * @throws NullPointerException if the given regular expression pattern is {@code null}.
    * @throws ComponentLookupException if a pop-up menu cannot be found.
    * @throws LocationUnavailableException if an element matching the given value cannot be found.
    * @since 1.2
@@ -730,7 +730,7 @@ public class JListFixture extends ComponentFixture<JList> implements CommonCompo
    * @param pattern the regular expression pattern to match.
    * @return this fixture.
    * @throws AssertionError if the selected item does not match the given regular expression pattern.
-   * @throws NullPointerException if the given regular expression pattern is <code>null</code>.
+   * @throws NullPointerException if the given regular expression pattern is {@code null}.
    * @see #cellReader(JListCellReader)
    * @since 1.2
    */
@@ -757,7 +757,7 @@ public class JListFixture extends ComponentFixture<JList> implements CommonCompo
    * <code>{@link JList}</code> match the given text items.
    * @param items text items to match. Each <code>String</code> can be a regular expression.
    * @return this fixture.
-   * @throws NullPointerException if the given array is <code>null</code>.
+   * @throws NullPointerException if the given array is {@code null}.
    * @throws IllegalArgumentException if the given array is empty.
    * @throws AssertionError if the selected items do not match the given text items.
    * @see #cellReader(JListCellReader)
@@ -772,9 +772,9 @@ public class JListFixture extends ComponentFixture<JList> implements CommonCompo
    * <code>{@link JList}</code> match the given regular expression patterns.
    * @param patterns the regular expression patterns to match.
    * @return this fixture.
-   * @throws NullPointerException if the given array is <code>null</code>.
+   * @throws NullPointerException if the given array is {@code null}.
    * @throws IllegalArgumentException if the given array is empty.
-   * @throws NullPointerException if any of the patterns in the given array is <code>null</code>.
+   * @throws NullPointerException if any of the patterns in the given array is {@code null}.
    * @throws AssertionError if the selected items do not match the given regular expression patterns.
    * @see #cellReader(JListCellReader)
    * @since 1.2
@@ -788,7 +788,7 @@ public class JListFixture extends ComponentFixture<JList> implements CommonCompo
    * Verifies that the given item indices are selected in this fixture's <code>{@link JList}</code>.
    * @param indices the expected indices of the selected items.
    * @return this fixture.
-   * @throws NullPointerException if the given array is <code>null</code>.
+   * @throws NullPointerException if the given array is {@code null}.
    * @throws IllegalArgumentException if the given array is empty.
    * @throws AssertionError if the selection in this fixture's <code>JList</code> does not match the given one.
    * @since 1.2
@@ -838,7 +838,7 @@ public class JListFixture extends ComponentFixture<JList> implements CommonCompo
    * pattern.
    * @param pattern the regular expression pattern to match.
    * @return this fixture.
-   * @throws NullPointerException if the given regular expression pattern is <code>null</code>.
+   * @throws NullPointerException if the given regular expression pattern is {@code null}.
    * @throws AssertionError if the toolTip in this fixture's <code>JList</code> does not match the given regular
    * expression pattern.
    * @since 1.2
@@ -851,9 +851,9 @@ public class JListFixture extends ComponentFixture<JList> implements CommonCompo
   /**
    * Returns the client property stored in this fixture's <code>{@link JList}</code>, under the given key.
    * @param key the key to use to retrieve the client property.
-   * @return the value of the client property stored under the given key, or <code>null</code> if the property was
+   * @return the value of the client property stored under the given key, or {@code null} if the property was
    * not found.
-   * @throws NullPointerException if the given key is <code>null</code>.
+   * @throws NullPointerException if the given key is {@code null}.
    * @since 1.2
    */
   public Object clientProperty(Object key) {
@@ -890,7 +890,7 @@ public class JListFixture extends ComponentFixture<JList> implements CommonCompo
    * is <code>{@link BasicJListCellReader}</code>.
    * @param cellReader the new <code>JListCellValueReader</code> to use.
    * @return this fixture.
-   * @throws NullPointerException if <code>cellReader</code> is <code>null</code>.
+   * @throws NullPointerException if <code>cellReader</code> is {@code null}.
    */
   public JListFixture cellReader(JListCellReader cellReader) {
     driver.cellReader(cellReader);

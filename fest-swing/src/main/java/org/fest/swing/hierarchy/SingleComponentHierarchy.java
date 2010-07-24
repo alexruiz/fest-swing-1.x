@@ -50,7 +50,7 @@ public final class SingleComponentHierarchy implements ComponentHierarchy {
   
   /** 
    * Returns the parent component for the given <code>{@link Component}</code>.
-   * @param c the given <code>Component</code>.
+   * @param c the given {@code Component}.
    * @return the parent component for the given <code>{@link Component}</code>.  
    */
   public Container parentOf(Component c) {

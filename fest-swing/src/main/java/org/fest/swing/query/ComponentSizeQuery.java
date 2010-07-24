@@ -34,8 +34,8 @@ public final class ComponentSizeQuery {
 
   /**
    * Returns the size of the given <code>{@link Component}</code>. This action is executed in the event dispatch thread.
-   * @param component the given <code>Component</code>.
-   * @return the size of the given <code>Component</code>.
+   * @param component the given {@code Component}.
+   * @return the size of the given {@code Component}.
    * @see Component#getSize()
    */
   @RunsInEDT

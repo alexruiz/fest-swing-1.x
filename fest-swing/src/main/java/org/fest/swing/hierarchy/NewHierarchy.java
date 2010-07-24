@@ -128,13 +128,13 @@ public class NewHierarchy extends ExistingHierarchy {
   }
 
   /**
-   * Returns <code>true</code> if the given component is not filtered.
+   * Returns {@code true} if the given component is not filtered.
    * <p>
    * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
    * responsible for calling this method from the EDT.
    * </p>
    * @param c the given component.
-   * @return <code>true</code> if the given component is not filtered, <code>false</code> otherwise.
+   * @return {@code true} if the given component is not filtered, {@code false} otherwise.
    */
   @RunsInCurrentThread
   @Override public boolean contains(Component c) {

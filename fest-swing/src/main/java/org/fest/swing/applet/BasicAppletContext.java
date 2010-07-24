@@ -52,7 +52,7 @@ public class BasicAppletContext implements AppletContext {
   /**
    * Creates a new </code>{@link BasicAppletContext}</code>.
    * @param statusDisplay where the application can inform users of its current state.
-   * @throws NullPointerException if <code>statusDisplay</code> is <code>null</code>.
+   * @throws NullPointerException if {@code statusDisplay} is {@code null}.
    */
   public BasicAppletContext(StatusDisplay statusDisplay) {
     if (statusDisplay == null) throw new NullPointerException("Instance of StatusDisplay should not be null");
@@ -62,7 +62,7 @@ public class BasicAppletContext implements AppletContext {
   /**
    * If the <code>{@link StatusDisplay}</code> passed to this context is an instance of
    * <code>{@link AppletViewer}</code>, this method will return the {@code Applet} of such {@code AppletViewer}.
-   * Otherwise this method returns <code>null</code>.
+   * Otherwise this method returns {@code null}.
    * @return the {@code Applet} in this context's {@link StatusDisplay} (if any.)
    * @see AppletContext#getApplet(String)
    */
@@ -72,8 +72,8 @@ public class BasicAppletContext implements AppletContext {
 
   /**
    * Returns an enumeration containing the {@code Applet} returned by <code>{@link #getApplet(String)}</code>. If
-   * <code>{@link #getApplet(String)}</code> returns <code>null</code>, this method will return an empty enumeration.
-   * @return an enumeration containing the {@code Applet} in this context's {@link StatusDisplay} (if any.)
+   * <code>{@link #getApplet(String)}</code> returns {@code null}, this method will return an empty enumeration.
+   * @return an enumeration containing the {@code Applet} in this context's {@code StatusDisplay} (if any.)
    * @see #getApplet(String)
    * @see AppletContext#getApplets()
    */
@@ -90,19 +90,19 @@ public class BasicAppletContext implements AppletContext {
   }
 
   /**
-   * Not implemented. Returns <code>null</code>.
+   * Not implemented. Returns {@code null}.
    * @see AppletContext#getAudioClip(URL)
    */
   public AudioClip getAudioClip(URL url) { return null; }
 
   /**
-   * Not implemented. Returns <code>null</code>.
+   * Not implemented. Returns {@code null}.
    * @see AppletContext#getImage(URL)
    */
   public Image getImage(URL url) { return null; }
 
   /**
-   * Returns the stream to which specified key is associated within this applet context. Returns <code>null</code> if
+   * Returns the stream to which specified key is associated within this applet context. Returns {@code null} if
    * the applet context contains no stream for this key.
    * @return the stream to which this applet context maps the key.
    * @param key key whose associated stream is to be returned.
@@ -122,7 +122,7 @@ public class BasicAppletContext implements AppletContext {
   /**
    * Associates the specified stream with the specified key in this applet context.
    * @param key key with which the specified value is to be associated.
-   * @param stream stream to be associated with the specified key. If this parameter is <code>null</code>, the specified
+   * @param stream stream to be associated with the specified key. If this parameter is {@code null}, the specified
    * key is removed in this applet context.
    */
   public void setStream(String key, InputStream stream) {

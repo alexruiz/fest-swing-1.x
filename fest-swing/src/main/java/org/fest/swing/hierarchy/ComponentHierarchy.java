@@ -55,7 +55,7 @@ public interface ComponentHierarchy {
   /**
    * Returns whether this hierarchy contains the given component.
    * @param c the given component.
-   * @return <code>true</code> if this hierarchy contains the given component, <code>false</code> otherwise.
+   * @return {@code true} if this hierarchy contains the given component, {@code false} otherwise.
    */
   boolean contains(Component c);
 

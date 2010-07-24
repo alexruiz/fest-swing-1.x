@@ -50,14 +50,14 @@ public final class JTableCellValidator {
   }
 
   /**
-   * Validates that the given table cell is non <code>null</code> and its indices are not out of bounds.
+   * Validates that the given table cell is non {@code null} and its indices are not out of bounds.
    * <p>
    * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
    * responsible for calling this method from the EDT.
    * </p>
    * @param table the target <code>JTable</code>.
    * @param cell the cell to validate.
-   * @throws NullPointerException if the cell is <code>null</code>.
+   * @throws NullPointerException if the cell is {@code null}.
    * @throws IndexOutOfBoundsException if any of the indices (row and column) is out of bounds.
    */
   @RunsInCurrentThread
@@ -67,9 +67,9 @@ public final class JTableCellValidator {
   }
 
   /**
-   * Validates that the given table cell is not <code>null</code>.
+   * Validates that the given table cell is not {@code null}.
    * @param cell the cell to validate.
-   * @throws NullPointerException if the cell is <code>null</code>.
+   * @throws NullPointerException if the cell is {@code null}.
    */
   public static void validateNotNull(TableCell cell) {
     if (cell == null) throw new NullPointerException("Table cell cannot be null");

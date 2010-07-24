@@ -90,7 +90,7 @@ public class KeyStrokeMappingsParser {
    * </p>
    * @param file the name of the file to parse.
    * @return the created {@code KeyStrokeMappingProvider}.
-   * @throws NullPointerException if the given name is <code>null</code>.
+   * @throws NullPointerException if the given name is {@code null}.
    * @throws IllegalArgumentException if the given name is empty.
    * @throws ParsingException if any error occurs during parsing.
    * @see #parse(File)
@@ -122,7 +122,7 @@ public class KeyStrokeMappingsParser {
    * in the given file.
    * @param file the file to parse.
    * @return the created {@code KeyStrokeMappingProvider}.
-   * @throws NullPointerException if the given file is <code>null</code>.
+   * @throws NullPointerException if the given file is {@code null}.
    * @throws IllegalArgumentException if the given file does not represent an existing file.
    * @throws ParsingException if any error occurs during parsing.
    */

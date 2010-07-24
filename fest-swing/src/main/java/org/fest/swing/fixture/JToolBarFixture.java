@@ -60,8 +60,8 @@ public class JToolBarFixture extends ContainerFixture<JToolBar> implements Commo
    * Creates a new <code>{@link JToolBarFixture}</code>.
    * @param robot performs simulation of user events on the given <code>JToolBar</code>.
    * @param target the <code>JToolBar</code> to be managed by this fixture.
-   * @throws NullPointerException if <code>robot</code> is <code>null</code>.
-   * @throws NullPointerException if <code>target</code> is <code>null</code>.
+   * @throws NullPointerException if <code>robot</code> is {@code null}.
+   * @throws NullPointerException if <code>target</code> is {@code null}.
    */
   public JToolBarFixture(Robot robot, JToolBar target) {
     super(robot, target);
@@ -72,7 +72,7 @@ public class JToolBarFixture extends ContainerFixture<JToolBar> implements Commo
    * Creates a new <code>{@link JToolBarFixture}</code>.
    * @param robot performs simulation of user events on a <code>JToolBar</code>.
    * @param toolbarName the name of the <code>JToolBar</code> to find using the given <code>Robot</code>.
-   * @throws NullPointerException if <code>robot</code> is <code>null</code>.
+   * @throws NullPointerException if <code>robot</code> is {@code null}.
    * @throws ComponentLookupException if a matching <code>JToolBar</code> could not be found.
    * @throws ComponentLookupException if more than one matching <code>JToolBar</code> is found.
    */
@@ -88,7 +88,7 @@ public class JToolBarFixture extends ContainerFixture<JToolBar> implements Commo
   /**
    * Sets the <code>{@link JToolBarDriver}</code> to be used by this fixture.
    * @param newDriver the new <code>JToolBarDriver</code>.
-   * @throws NullPointerException if the given driver is <code>null</code>.
+   * @throws NullPointerException if the given driver is {@code null}.
    */
   protected final void driver(JToolBarDriver newDriver) {
     validateNotNull(newDriver);
@@ -151,7 +151,7 @@ public class JToolBarFixture extends ContainerFixture<JToolBar> implements Commo
    * Simulates a user clicking this fixture's <code>{@link JToolBar}</code>.
    * @param mouseClickInfo specifies the button to click and the times the button should be clicked.
    * @return this fixture.
-   * @throws NullPointerException if the given <code>MouseClickInfo</code> is <code>null</code>.
+   * @throws NullPointerException if the given <code>MouseClickInfo</code> is {@code null}.
    */
   public JToolBarFixture click(MouseClickInfo mouseClickInfo) {
     driver.click(target, mouseClickInfo);
@@ -190,7 +190,7 @@ public class JToolBarFixture extends ContainerFixture<JToolBar> implements Commo
    * Modifiers is a mask from the available <code>{@link java.awt.event.InputEvent}</code> masks.
    * @param keyPressInfo specifies the key and modifiers to press.
    * @return this fixture.
-   * @throws NullPointerException if the given <code>KeyPressInfo</code> is <code>null</code>.
+   * @throws NullPointerException if the given <code>KeyPressInfo</code> is {@code null}.
    * @throws IllegalArgumentException if the given code is not a valid key code.
    * @see KeyPressInfo
    */
@@ -204,7 +204,7 @@ public class JToolBarFixture extends ContainerFixture<JToolBar> implements Commo
    * does not affect the current focus.
    * @param keyCodes the codes of the keys to press.
    * @return this fixture.
-   * @throws NullPointerException if the given array of codes is <code>null</code>.
+   * @throws NullPointerException if the given array of codes is {@code null}.
    * @throws IllegalArgumentException if any of the given code is not a valid key code.
    * @see java.awt.event.KeyEvent
    */
@@ -316,7 +316,7 @@ public class JToolBarFixture extends ContainerFixture<JToolBar> implements Commo
    * pattern.
    * @param pattern the regular expression pattern to match.
    * @return this fixture.
-   * @throws NullPointerException if the given regular expression pattern is <code>null</code>.
+   * @throws NullPointerException if the given regular expression pattern is {@code null}.
    * @throws AssertionError if the toolTip in this fixture's <code>JToolBar</code> does not match the given regular
    * expression.
    * @since 1.2
@@ -329,9 +329,9 @@ public class JToolBarFixture extends ContainerFixture<JToolBar> implements Commo
   /**
    * Returns the client property stored in this fixture's <code>{@link JToolBarFixture}</code>, under the given key.
    * @param key the key to use to retrieve the client property.
-   * @return the value of the client property stored under the given key, or <code>null</code> if the property was
+   * @return the value of the client property stored under the given key, or {@code null} if the property was
    * not found.
-   * @throws NullPointerException if the given key is <code>null</code>.
+   * @throws NullPointerException if the given key is {@code null}.
    * @since 1.2
    */
   public Object clientProperty(Object key) {

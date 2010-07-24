@@ -39,9 +39,9 @@ public class BasicAppletStub implements AppletStub {
    * @param viewer the window to host the applet.
    * @param context the applet context.
    * @param parameters the parameters included in an applet HTML tag.
-   * @throws NullPointerException if <code>viewer</code> is <code>null</code>.
-   * @throws NullPointerException if <code>context</code> is <code>null</code>.
-   * @throws NullPointerException if <code>parameters</code> is <code>null</code>.
+   * @throws NullPointerException if {@code viewer} is {@code null}.
+   * @throws NullPointerException if {@code context} is {@code null}.
+   * @throws NullPointerException if {@code parameters} is {@code null}.
    */
   public BasicAppletStub(Window viewer, AppletContext context, Map<String, String> parameters) {
     this(viewer, context);
@@ -53,8 +53,8 @@ public class BasicAppletStub implements AppletStub {
    * Creates a new </code>{@link BasicAppletStub}</code>.
    * @param viewer the window to host the applet.
    * @param context the applet context.
-   * @throws NullPointerException if <code>viewer</code> is <code>null</code>.
-   * @throws NullPointerException if <code>context</code> is <code>null</code>.
+   * @throws NullPointerException if {@code viewer} is {@code null}.
+   * @throws NullPointerException if {@code context} is {@code null}.
    */
   public BasicAppletStub(Window viewer, AppletContext context) {
     if (viewer == null) throw new NullPointerException("The apple viewer should not be null");
@@ -64,7 +64,7 @@ public class BasicAppletStub implements AppletStub {
   }
 
   /**
-   * Not implemented. Returns <code>true</code>.
+   * Not implemented. Returns {@code true}.
    * @see AppletStub#isActive()
    */
   public boolean isActive() {
@@ -89,7 +89,7 @@ public class BasicAppletStub implements AppletStub {
   }
 
   /**
-   * Not implemented. Returns <code>getClass().getResource(".")</code>.
+   * Not implemented. Returns {@code getClass().getResource(".")}.
    * @see AppletStub#getCodeBase()
    */
   public URL getCodeBase() {
@@ -97,7 +97,7 @@ public class BasicAppletStub implements AppletStub {
   }
 
   /**
-   * Not implemented. Returns <code>getClass().getResource(".")</code>.
+   * Not implemented. Returns {@code getClass().getResource(".")}.
    * @see AppletStub#getDocumentBase()
    */
   public URL getDocumentBase() {
@@ -107,7 +107,7 @@ public class BasicAppletStub implements AppletStub {
   /**
    * Returns the value of the named parameter in the HTML tag.
    * @param name a parameter name.
-   * @return the value of the named parameter, or <code>null</code> if not set.
+   * @return the value of the named parameter, or {@code null} if not set.
    */
   public String getParameter(String name) {
     return parameters.get(name);

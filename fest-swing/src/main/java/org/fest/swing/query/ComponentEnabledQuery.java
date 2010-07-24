@@ -33,8 +33,8 @@ public final class ComponentEnabledQuery {
   /**
    * Indicates whether the given <code>{@link Component}</code> is enabled or not. This action is executed in the event
    * dispatch thread.
-   * @param component the given <code>Component</code>.
-   * @return <code>true</code> if the given <code>Component</code> is enabled, <code>false</code> otherwise.
+   * @param component the given {@code Component}.
+   * @return {@code true} if the given {@code Component} is enabled, {@code false} otherwise.
    * @see Component#isEnabled()
    */
   public static boolean isEnabled(final Component component) {

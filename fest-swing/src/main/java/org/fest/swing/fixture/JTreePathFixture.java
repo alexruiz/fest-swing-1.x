@@ -101,7 +101,7 @@ public class JTreePathFixture implements JTreeNodeFixture {
    * Simulates a user clicking this fixture's tree node.
    * @param button the button to click.
    * @return this fixture.
-   * @throws NullPointerException if the given button is <code>null</code>.
+   * @throws NullPointerException if the given button is {@code null}.
    * @throws IllegalStateException if the <code>JTree</code> is disabled.
    * @throws IllegalStateException if the <code>JTree</code> is not showing on the screen.
    */
@@ -114,7 +114,7 @@ public class JTreePathFixture implements JTreeNodeFixture {
    * Simulates a user clicking this fixture's tree node.
    * @param mouseClickInfo specifies the button to click and the times the button should be clicked.
    * @return this fixture.
-   * @throws NullPointerException if the given <code>MouseClickInfo</code> is <code>null</code>.
+   * @throws NullPointerException if the given <code>MouseClickInfo</code> is {@code null}.
    * @throws IllegalStateException if the <code>JTree</code> is disabled.
    * @throws IllegalStateException if the <code>JTree</code> is not showing on the screen.
    */

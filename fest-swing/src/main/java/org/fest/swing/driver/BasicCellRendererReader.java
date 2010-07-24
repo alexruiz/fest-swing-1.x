@@ -28,7 +28,7 @@ import org.fest.swing.annotation.RunsInCurrentThread;
 public class BasicCellRendererReader implements CellRendererReader {
 
   /**
-   * Reads the value in the given cell renderer component, or returns <code>null</code> if the renderer belongs to an
+   * Reads the value in the given cell renderer component, or returns {@code null} if the renderer belongs to an
    * unknown component type. Internally, this method will call <code>getText()</code> if the given renderer is an
    * instance of <code>{@link JLabel}</code></li>.
    * <p>
@@ -36,7 +36,7 @@ public class BasicCellRendererReader implements CellRendererReader {
    * responsible for calling this method from the EDT.
    * </p>
    * @param c the given cell renderer component.
-   * @return the value of the given <code>Component</code>, or <code>null</code> if the renderer belongs to an unknown
+   * @return the value of the given {@code Component}, or {@code null} if the renderer belongs to an unknown
    * component type.
    */
   @RunsInCurrentThread

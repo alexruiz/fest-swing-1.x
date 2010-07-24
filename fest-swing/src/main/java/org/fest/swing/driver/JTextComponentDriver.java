@@ -88,7 +88,7 @@ public class JTextComponentDriver extends JComponentDriver implements TextDispla
    * Types the given text into the <code>{@link JTextComponent}</code>, replacing any existing text already there.
    * @param textBox the target <code>JTextComponent</code>.
    * @param text the text to enter.
-   * @throws NullPointerException if the text to enter is <code>null</code>.
+   * @throws NullPointerException if the text to enter is {@code null}.
    * @throws IllegalArgumentException if the text to enter is empty.
    * @throws IllegalStateException if the <code>JTextComponent</code> is disabled.
    * @throws IllegalStateException if the <code>JTextComponent</code> is not showing on the screen.
@@ -316,7 +316,7 @@ public class JTextComponentDriver extends JComponentDriver implements TextDispla
    * pattern.
    * @param textBox the given <code>JTextComponent</code>.
    * @param pattern the regular expression pattern to match.
-   * @throws NullPointerException if the given regular expression pattern is <code>null</code>.
+   * @throws NullPointerException if the given regular expression pattern is {@code null}.
    * @throws AssertionError if the text of the <code>JTextComponent</code> is not equal to the given one.
    * @since 1.2
    */

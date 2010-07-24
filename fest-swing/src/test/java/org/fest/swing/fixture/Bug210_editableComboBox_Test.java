@@ -31,7 +31,7 @@ import org.junit.Test;
 /**
  * Tests for <a href="http://code.google.com/p/fest/issues/detail?id=210" target="_blank">Bug 210</a>.
  * <p>
- * Demonstrate bug when testing <code>JComboBox</code>es. If value programmatically added to <code>JComboBox</code>
+ * Demonstrate bug when testing {@code JComboBox}es. If value programmatically added to {@code JComboBox}
  * using <code>setSelectedItem</code> then FEST assertion <code>requireSelection</code> fails while JUnit
  * <code>assertEqual</code> passes. (FEST 1.0b1, Java 1.5)
  * </p>

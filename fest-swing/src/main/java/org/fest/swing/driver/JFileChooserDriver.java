@@ -63,7 +63,7 @@ public class JFileChooserDriver extends JComponentDriver {
    * Selects the given file in the <code>{@link JFileChooser}</code>.
    * @param fileChooser the target <code>JFileChooser</code>.
    * @param file the file to select.
-   * @throws NullPointerException if the given file is <code>null</code>.
+   * @throws NullPointerException if the given file is {@code null}.
    * @throws IllegalStateException if the <code>JFileChooser</code> is disabled.
    * @throws IllegalStateException if the <code>JFileChooser</code> is not showing on the screen.
    * @throws IllegalArgumentException if the <code>JFileChooser</code> can select directories only and the file to
@@ -81,7 +81,7 @@ public class JFileChooserDriver extends JComponentDriver {
    * Selects the given file in the <code>{@link JFileChooser}</code>.
    * @param fileChooser the target <code>JFileChooser</code>.
    * @param files the files to select.
-   * @throws NullPointerException if the given array of files is <code>null</code>.
+   * @throws NullPointerException if the given array of files is {@code null}.
    * @throws IllegalArgumentException if the given array of files is empty.
    * @throws IllegalStateException if this fixture's <code>JFileChooser</code> is disabled.
    * @throws IllegalStateException if this fixture's <code>JFileChooser</code> is not showing on the screen.

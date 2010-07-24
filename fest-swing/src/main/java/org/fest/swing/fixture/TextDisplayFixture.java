@@ -27,7 +27,7 @@ public interface TextDisplayFixture {
 
   /**
    * Returns the text of this fixture's <code>{@link Component}</code>.
-   * @return the text of the managed <code>Component</code>.
+   * @return the text of the managed {@code Component}.
    */
   String text();
 
@@ -45,7 +45,7 @@ public interface TextDisplayFixture {
    * pattern.
    * @param pattern the regular expression pattern to match.
    * @return this fixture.
-   * @throws NullPointerException if the given regular expression pattern is <code>null</code>.
+   * @throws NullPointerException if the given regular expression pattern is {@code null}.
    * @throws AssertionError if the text of the target component does not match the given regular expression pattern.
    * @since 1.2
    */

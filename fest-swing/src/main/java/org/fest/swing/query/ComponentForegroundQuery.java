@@ -35,8 +35,8 @@ public final class ComponentForegroundQuery {
   /**
    * Returns the foreground color of the given <code>{@link Component}</code>. This action is executed in the event
    * dispatch thread.
-   * @param component the given <code>Component</code>.
-   * @return the foreground color of the given <code>Component</code>.
+   * @param component the given {@code Component}.
+   * @return the foreground color of the given {@code Component}.
    * @see Component#getForeground()
    */
   @RunsInEDT

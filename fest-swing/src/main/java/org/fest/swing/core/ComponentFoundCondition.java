@@ -91,9 +91,9 @@ public final class ComponentFoundCondition extends Condition {
   }
 
   /**
-   * Returns <code>true</code> if a component that matches the search criteria in this condition's
-   * <code>{@link ComponentMatcher}</code> can be found. Otherwise, this method returns <code>false</code>.
-   * @return <code>true</code> if a matching component can be found, <code>false</code> otherwise.
+   * Returns {@code true} if a component that matches the search criteria in this condition's
+   * <code>{@link ComponentMatcher}</code> can be found. Otherwise, this method returns {@code false}.
+   * @return {@code true} if a matching component can be found, {@code false} otherwise.
    */
   public boolean test() {
     boolean matchFound = false;

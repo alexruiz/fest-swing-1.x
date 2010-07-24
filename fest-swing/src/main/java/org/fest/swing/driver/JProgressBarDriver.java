@@ -79,7 +79,7 @@ public class JProgressBarDriver extends JComponentDriver implements TextDisplayD
    * @param progressBar the target <code>JProgressBar</code>.
    * @param pattern the regular expression pattern to match.
    * @throws AssertionError if the text of the <code>JProgressBar</code> does not match the given regular expression pattern.
-   * @throws NullPointerException if the given regular expression pattern is <code>null</code>.
+   * @throws NullPointerException if the given regular expression pattern is {@code null}.
    * @see JProgressBar#getString()
    */
   @RunsInEDT
@@ -144,7 +144,7 @@ public class JProgressBarDriver extends JComponentDriver implements TextDisplayD
    * @param timeout the amount of time to wait.
    * @throws IllegalArgumentException if the given value is less than the <code>JProgressBar</code>'s minimum value.
    * @throws IllegalArgumentException if the given value is greater than the <code>JProgressBar</code>'s maximum value.
-   * @throws NullPointerException if the given timeout is <code>null</code>.
+   * @throws NullPointerException if the given timeout is {@code null}.
    * @throws WaitTimedOutError if the value of the <code>JProgressBar</code> does not reach the expected value within
    * the specified timeout.
    */
@@ -180,7 +180,7 @@ public class JProgressBarDriver extends JComponentDriver implements TextDisplayD
    * Waits until the value of the given <code>{@link JProgressBar}</code> is in determinate mode.
    * @param progressBar the target <code>JProgressBar</code>.
    * @param timeout the amount of time to wait.
-   * @throws NullPointerException if the given timeout is <code>null</code>.
+   * @throws NullPointerException if the given timeout is {@code null}.
    * @throws WaitTimedOutError if the <code>JProgressBar</code> does not reach determinate mode within the specified
    * timeout.
    */

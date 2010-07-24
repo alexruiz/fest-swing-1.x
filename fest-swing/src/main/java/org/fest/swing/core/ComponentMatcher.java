@@ -26,9 +26,9 @@ public interface ComponentMatcher {
   
   /**
    * Verifies that the given <code>{@link Component}</code> matches some lookup criteria.
-   * @param c the <code>Component</code> to verify. 
-   * @return <code>true</code> if the given <code>Component</code> matches some lookup criteria, otherwise 
-   * <code>false</code>. 
+   * @param c the {@code Component} to verify. 
+   * @return {@code true} if the given {@code Component} matches some lookup criteria, otherwise 
+   * {@code false}. 
    */
   boolean matches(Component c);
 }

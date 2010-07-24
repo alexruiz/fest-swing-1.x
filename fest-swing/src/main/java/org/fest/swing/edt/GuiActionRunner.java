@@ -41,7 +41,7 @@ public class GuiActionRunner {
   /**
    * Indicates <code>{@link GuiActionRunner}</code> if instances of <code>{@link GuiQuery}</code> and
    * <code>{@link GuiTask}</code> should be executed in the event dispatch thread or not.
-   * @param b if <code>true</code>, GUI actions are executed in the event dispatch thread. If <code>false</code>,
+   * @param b if {@code true}, GUI actions are executed in the event dispatch thread. If {@code false},
    * GUI actions are executed in the current thread.
    */
   public static synchronized void executeInEDT(boolean b) {
@@ -51,7 +51,7 @@ public class GuiActionRunner {
   /**
    * Returns whether instances of <code>{@link GuiQuery}</code> and <code>{@link GuiTask}</code> should be executed in
    * the event dispatch thread or not.
-   * @return <code>true</code> if GUI actions are executed in the event dispatch thread, <code>false</code> otherwise.
+   * @return {@code true} if GUI actions are executed in the event dispatch thread, {@code false} otherwise.
    */
   public static synchronized boolean executeInEDT() {
     return executeInEDT;

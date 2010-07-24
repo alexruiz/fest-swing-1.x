@@ -44,8 +44,8 @@ public class JCheckBoxFixture extends ComponentFixture<JCheckBox> implements Com
    * Creates a new <code>{@link JCheckBoxFixture}</code>.
    * @param robot performs simulation of user events on the given <code>JCheckBox</code>.
    * @param target the <code>JCheckBox</code> to be managed by this fixture.
-   * @throws NullPointerException if <code>robot</code> is <code>null</code>.
-   * @throws NullPointerException if <code>target</code> is <code>null</code>.
+   * @throws NullPointerException if <code>robot</code> is {@code null}.
+   * @throws NullPointerException if <code>target</code> is {@code null}.
    */
   public JCheckBoxFixture(Robot robot, JCheckBox target) {
     super(robot, target);
@@ -56,7 +56,7 @@ public class JCheckBoxFixture extends ComponentFixture<JCheckBox> implements Com
    * Creates a new <code>{@link JCheckBoxFixture}</code>.
    * @param robot performs simulation of user events on a <code>JCheckBox</code>.
    * @param checkBoxName the name of the <code>JCheckBox</code> to find using the given <code>Robot</code>.
-   * @throws NullPointerException if <code>robot</code> is <code>null</code>.
+   * @throws NullPointerException if <code>robot</code> is {@code null}.
    * @throws ComponentLookupException if a matching <code>JCheckBox</code> could not be found.
    * @throws ComponentLookupException if more than one matching <code>JCheckBox</code> is found.
    */
@@ -72,7 +72,7 @@ public class JCheckBoxFixture extends ComponentFixture<JCheckBox> implements Com
   /**
    * Sets the <code>{@link AbstractButtonDriver}</code> to be used by this fixture.
    * @param newDriver the new <code>AbstractButtonDriver</code>.
-   * @throws NullPointerException if the given driver is <code>null</code>.
+   * @throws NullPointerException if the given driver is {@code null}.
    */
   protected final void driver(AbstractButtonDriver newDriver) {
     validateNotNull(newDriver);
@@ -124,7 +124,7 @@ public class JCheckBoxFixture extends ComponentFixture<JCheckBox> implements Com
    * Simulates a user clicking this fixture's <code>{@link JCheckBox}</code>.
    * @param button the button to click.
    * @return this fixture.
-   * @throws NullPointerException if the given <code>MouseButton</code> is <code>null</code>.
+   * @throws NullPointerException if the given <code>MouseButton</code> is {@code null}.
    * @throws IllegalStateException if this fixture's <code>JCheckBox</code> is disabled.
    * @throws IllegalStateException if this fixture's <code>JCheckBox</code> is not showing on the screen.
    */
@@ -137,7 +137,7 @@ public class JCheckBoxFixture extends ComponentFixture<JCheckBox> implements Com
    * Simulates a user clicking this fixture's <code>{@link JCheckBox}</code>.
    * @param mouseClickInfo specifies the button to click and the times the button should be clicked.
    * @return this fixture.
-   * @throws NullPointerException if the given <code>MouseClickInfo</code> is <code>null</code>.
+   * @throws NullPointerException if the given <code>MouseClickInfo</code> is {@code null}.
    * @throws IllegalStateException if this fixture's <code>JCheckBox</code> is disabled.
    * @throws IllegalStateException if this fixture's <code>JCheckBox</code> is not showing on the screen.
    */
@@ -184,7 +184,7 @@ public class JCheckBoxFixture extends ComponentFixture<JCheckBox> implements Com
    * Modifiers is a mask from the available <code>{@link java.awt.event.InputEvent}</code> masks.
    * @param keyPressInfo specifies the key and modifiers to press.
    * @return this fixture.
-   * @throws NullPointerException if the given <code>KeyPressInfo</code> is <code>null</code>.
+   * @throws NullPointerException if the given <code>KeyPressInfo</code> is {@code null}.
    * @throws IllegalArgumentException if the given code is not a valid key code.
    * @throws IllegalStateException if this fixture's <code>JCheckBox</code> is disabled.
    * @throws IllegalStateException if this fixture's <code>JCheckBox</code> is not showing on the screen.
@@ -199,7 +199,7 @@ public class JCheckBoxFixture extends ComponentFixture<JCheckBox> implements Com
    * Simulates a user pressing and releasing the given keys on this fixture's <code>{@link JCheckBox}</code>.
    * @param keyCodes one or more codes of the keys to press.
    * @return this fixture.
-   * @throws NullPointerException if the given array of codes is <code>null</code>.
+   * @throws NullPointerException if the given array of codes is {@code null}.
    * @throws IllegalArgumentException if any of the given code is not a valid key code.
    * @throws IllegalStateException if this fixture's <code>JCheckBox</code> is disabled.
    * @throws IllegalStateException if this fixture's <code>JCheckBox</code> is not showing on the screen.
@@ -335,7 +335,7 @@ public class JCheckBoxFixture extends ComponentFixture<JCheckBox> implements Com
    * Asserts that the text of this fixture's <code>{@link JCheckBox}</code> matches the given regular expression pattern.
    * @param pattern the regular expression pattern to match.
    * @return this fixture.
-   * @throws NullPointerException if the given regular expression pattern is <code>null</code>.
+   * @throws NullPointerException if the given regular expression pattern is {@code null}.
    * @throws AssertionError if the text of the target <code>JCheckBox</code> does not match the given regular expression
    * pattern.
    * @since 1.2
@@ -362,7 +362,7 @@ public class JCheckBoxFixture extends ComponentFixture<JCheckBox> implements Com
    * pattern.
    * @param pattern the regular expression pattern to match.
    * @return this fixture.
-   * @throws NullPointerException if the given regular expression pattern is <code>null</code>.
+   * @throws NullPointerException if the given regular expression pattern is {@code null}.
    * @throws AssertionError if the toolTip in this fixture's <code>JCheckBox</code> does not match the given regular
    * expression.
    * @since 1.2
@@ -375,9 +375,9 @@ public class JCheckBoxFixture extends ComponentFixture<JCheckBox> implements Com
   /**
    * Returns the client property stored in this fixture's <code>{@link JCheckBox}</code>, under the given key.
    * @param key the key to use to retrieve the client property.
-   * @return the value of the client property stored under the given key, or <code>null</code> if the property was
+   * @return the value of the client property stored under the given key, or {@code null} if the property was
    * not found.
-   * @throws NullPointerException if the given key is <code>null</code>.
+   * @throws NullPointerException if the given key is {@code null}.
    * @since 1.2
    */
   public Object clientProperty(Object key) {

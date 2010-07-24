@@ -57,7 +57,7 @@ class Windows {
   /**
    * Creates a new <code>{@link WindowVisibilityMonitor}</code> and attaches it to the given
    * <code>{@link Window}</code>.
-   * @param target the <code>Window</code> to attach the new monitor to.
+   * @param target the {@code Window} to attach the new monitor to.
    */
   void attachNewWindowVisibilityMonitor(Window target) {
     WindowVisibilityMonitor monitor = new WindowVisibilityMonitor(this);
@@ -134,9 +134,9 @@ class Windows {
   }
 
   /**
-   * Returns <code>true</code> if the given component is a closed window.
+   * Returns {@code true} if the given component is a closed window.
    * @param c the given component.
-   * @return <code>true</code> if the given component is a closed window, <code>false</code> otherwise.
+   * @return {@code true} if the given component is a closed window, {@code false} otherwise.
    */
   boolean isClosed(Component c) {
     synchronized(lock) {
@@ -145,9 +145,9 @@ class Windows {
   }
 
   /**
-   * Returns <code>true</code> if the given window is ready to receive OS-level event input.
+   * Returns {@code true} if the given window is ready to receive OS-level event input.
    * @param w the given window.
-   * @return <code>true</code> if the given window is ready to receive OS-level event input, <code>false</code>
+   * @return {@code true} if the given window is ready to receive OS-level event input, {@code false}
    *         otherwise.
    */
   boolean isReady(Window w) {
@@ -157,9 +157,9 @@ class Windows {
   }
 
   /**
-   * Returns <code>true</code> if the given window is hidden.
+   * Returns {@code true} if the given window is hidden.
    * @param w the given window.
-   * @return <code>true</code> if the given window is hidden, <code>false</code> otherwise.
+   * @return {@code true} if the given window is hidden, {@code false} otherwise.
    */
   boolean isHidden(Window w) {
     synchronized(lock) {
@@ -168,10 +168,10 @@ class Windows {
   }
 
   /**
-   * Returns <code>true</code> if the given window is showing but not ready to receive OS-level event input.
+   * Returns {@code true} if the given window is showing but not ready to receive OS-level event input.
    * @param w the given window.
-   * @return <code>true</code> if the given window is showing but not not ready to receive OS-level event input,
-   *         <code>false</code> otherwise.
+   * @return {@code true} if the given window is showing but not not ready to receive OS-level event input,
+   *         {@code false} otherwise.
    */
   boolean isShowingButNotReady(Window w) {
     synchronized(lock) {
