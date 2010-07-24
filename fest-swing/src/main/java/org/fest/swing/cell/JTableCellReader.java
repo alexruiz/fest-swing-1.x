@@ -36,8 +36,8 @@ public interface JTableCellReader {
   /**
    * Returns the internal value of a cell in a <code>{@link JTable}</code> as expected in a test.
    * <p>
-   * <b>Note:</b> Implementations of this method <b>may not</b> guaranteed to be executed in the event dispatch thread
-   * (EDT.) Clients are responsible for invoking this method in the EDT.
+   * <b>Note:</b> Implementations of this method <b>may not</b> be guaranteed to be executed in the event dispatch 
+   * thread (EDT.) Clients are responsible for invoking this method in the EDT.
    * </p>
    * @param table the given <code>JTable</code>.
    * @param row the row index of the cell.
@@ -49,8 +49,8 @@ public interface JTableCellReader {
   /**
    * Returns the font of the cell renderer for the given table cell.
    * <p>
-   * <b>Note:</b> Implementations of this method <b>may not</b> guaranteed to be executed in the event dispatch thread
-   * (EDT.) Clients are responsible for invoking this method in the EDT.
+   * <b>Note:</b> Implementations of this method <b>may not</b> be guaranteed to be executed in the event dispatch 
+   * thread (EDT.) Clients are responsible for invoking this method in the EDT.
    * </p>
    * @param table the given <code>JTable</code>.
    * @param row the row index of the cell.
@@ -62,8 +62,8 @@ public interface JTableCellReader {
   /**
    * Returns the background color of the cell renderer for the given table cell.
    * <p>
-   * <b>Note:</b> Implementations of this method <b>may not</b> guaranteed to be executed in the event dispatch thread
-   * (EDT.) Clients are responsible for invoking this method in the EDT.
+   * <b>Note:</b> Implementations of this method <b>may not</b> be guaranteed to be executed in the event dispatch 
+   * thread (EDT.) Clients are responsible for invoking this method in the EDT.
    * </p>
    * @param table the given <code>JTable</code>.
    * @param row the row index of the cell.
@@ -75,8 +75,8 @@ public interface JTableCellReader {
   /**
    * Returns the foreground color of the cell renderer for the given table cell.
    * <p>
-   * <b>Note:</b> Implementations of this method <b>may not</b> guaranteed to be executed in the event dispatch thread
-   * (EDT.) Clients are responsible for invoking this method in the EDT.
+   * <b>Note:</b> Implementations of this method <b>may not</b> be guaranteed to be executed in the event dispatch 
+   * thread (EDT.) Clients are responsible for invoking this method in the EDT.
    * </p>
    * @param table the given <code>JTable</code>.
    * @param row the row index of the cell.
