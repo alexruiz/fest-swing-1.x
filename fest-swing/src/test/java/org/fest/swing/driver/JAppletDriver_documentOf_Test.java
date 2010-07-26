@@ -33,7 +33,7 @@ public class JAppletDriver_documentOf_Test extends JAppletDriver_TestCase {
   public void should_return_document_base() throws Exception {
     URL url = singletonURL();
     applet().updateDocumentBase(url);
-    URL result = driver().documentBaseOf(applet());
+    URL result = driver().getDocumentBase(applet());
     assertThat(result).isSameAs(url);
     assertThat(applet().wasMethodCalledInEDT("getDocumentBase")).isTrue();
   }

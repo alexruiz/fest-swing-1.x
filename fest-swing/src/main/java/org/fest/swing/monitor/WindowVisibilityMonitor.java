@@ -37,7 +37,7 @@ class WindowVisibilityMonitor extends WindowAdapter implements ComponentListener
   public void componentShown(ComponentEvent e) {
     Object source = e.getSource();
     if (!(source instanceof Window)) return;
-    windows.markAsShowing((Window)source);
+    windows.markAsShowingInEDT((Window)source);
   }
 
   public void componentHidden(ComponentEvent e) {

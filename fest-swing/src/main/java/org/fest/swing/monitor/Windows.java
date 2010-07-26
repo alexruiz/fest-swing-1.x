@@ -17,12 +17,14 @@ package org.fest.swing.monitor;
 
 import java.awt.Component;
 import java.awt.Window;
-import java.util.*;
+//import java.util.*;
+import java.swing.Timer;
 
 import net.jcip.annotations.GuardedBy;
 import net.jcip.annotations.ThreadSafe;
 
 import org.fest.swing.annotation.RunsInCurrentThread;
+import org.fest.swing.annotation.RunsInEDT;
 
 /**
  * Understands the information collected by the monitors in this package.
@@ -51,7 +53,9 @@ class Windows {
   private final Object lock = new Object();
 
   Windows() {
-    windowReadyTimer = new Timer("Window Ready Timer", true);
+	  
+    //windowReadyTimer = new Timer("Window Ready Timer", true);
+	  windowReadyTimer = new Timer(WINDOW_READY_DELAY, null);
   }
 
   /**
@@ -92,7 +96,7 @@ class Windows {
    * Marks the given window as "showing."
    * @param w the given window.
    */
-  void markAsShowing(final Window w) {
+/*  void markAsShowing(final Window w) {
     synchronized(lock) {
       TimerTask task = new TimerTask() {
         public void run() { markAsReady(w); }
@@ -100,6 +104,24 @@ class Windows {
       windowReadyTimer.schedule(new ProtectingTimerTask(task), WINDOW_READY_DELAY);
       pending.put(w, task);
     }
+  }*/
+
+  @RunsInEDT
+  void markAsShowingInEDT(final Window w) {
+	  synchronized(lock) {
+		  final TimerTask task = new TimerTask() {
+			public void run() {	markAsReady(w); }
+		  };
+		  
+		  windowReadyTimer.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					task.run();
+				}}); 
+				  
+		  windowReadyTimer.setCoalesce(false);
+		  windowReadyTimer.setRepeats(false);
+		  pending.put(w, task);
+	  }
   }
 
   /**

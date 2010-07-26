@@ -29,7 +29,7 @@ public class JAppletDriver_parameterValue_Test extends JAppletDriver_TestCase {
   @Test
   public void should_retrieve_parameter_value() {
     applet().addParameter("firstName", "Luke");
-    String value = driver().parameterValue(applet(), "firstName");
+    String value = driver().getParameter(applet(), "firstName");
     assertThat(value).isEqualTo("Luke");
     assertThat(applet().wasMethodCalledInEDT("getParameter('firstName')")).isTrue();
   }

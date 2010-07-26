@@ -33,7 +33,7 @@ public class JAppletDriver_appletContextOf_Test extends JAppletDriver_TestCase {
   public void should_return_AppletContext() {
     AppletContext context = singletonAppletContextMock();
     applet().updateAppletContext(context);
-    AppletContext result = driver().appletContextOf(applet());
+    AppletContext result = driver().getAppletContext(applet());
     assertThat(result).isSameAs(context);
     assertThat(applet().wasMethodCalledInEDT("getAppletContext")).isTrue();
   }

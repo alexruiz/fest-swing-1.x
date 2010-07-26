@@ -33,7 +33,7 @@ public class JAppletDriver_codeBaseOf_Test extends JAppletDriver_TestCase {
   public void should_return_code_base() throws Exception {
     URL url = singletonURL();
     applet().updateCodeBase(url);
-    URL result = driver().codeBaseOf(applet());
+    URL result = driver().getCodeBase(applet());
     assertThat(result).isSameAs(url);
     assertThat(applet().wasMethodCalledInEDT("getCodeBase")).isTrue();
   }

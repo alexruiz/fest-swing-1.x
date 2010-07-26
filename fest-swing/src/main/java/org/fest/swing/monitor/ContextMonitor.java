@@ -89,7 +89,8 @@ final class ContextMonitor implements AWTEventListener {
     // There is no Java API for this, so we institute an empirically tested delay.
     if (!(component instanceof Window)) return;
     windows.attachNewWindowVisibilityMonitor((Window)component);
-    windows.markAsShowing((Window) component);
+   	windows.markAsShowingInEDT((Window) component);
+    
     // Native components don't receive events anyway...
     if (component instanceof FileDialog) windows.markAsReady((Window) component);
   }

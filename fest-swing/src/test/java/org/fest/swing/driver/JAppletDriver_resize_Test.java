@@ -30,7 +30,7 @@ public class JAppletDriver_resize_Test extends JAppletDriver_TestCase {
   public void should_resize_JApplet() {
     int w = 10;
     int h = 20;
-    driver().resize(applet(), w, h);
+    driver().appletResize(applet(), w, h);
     assertThat(applet().wasMethodCalledInEDT("resize(10, 20)")).isTrue();
   }
 }
