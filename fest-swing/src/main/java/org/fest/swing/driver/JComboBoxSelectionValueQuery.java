@@ -22,6 +22,7 @@ import javax.swing.JComboBox;
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.cell.JComboBoxCellReader;
 import org.fest.swing.edt.GuiQuery;
+import org.fest.swing.util.Pair;
 
 /**
  * Understands an action, executed in the event dispatch thread, that returns the selected value of a
@@ -31,25 +32,29 @@ import org.fest.swing.edt.GuiQuery;
  */
 final class JComboBoxSelectionValueQuery {
 
-  static final Object NO_SELECTION_VALUE = new Object();
+  private static final Pair<Boolean, String> NO_SELECTION = new Pair<Boolean, String>(false, null);
 
   @RunsInEDT
-  static Object selection(final JComboBox comboBox, final JComboBoxCellReader cellReader) {
-    return execute(new GuiQuery<Object>() {
-      protected Object executeInEDT() {
+  static Pair<Boolean, String> selection(final JComboBox comboBox, final JComboBoxCellReader cellReader) {
+    return execute(new GuiQuery<Pair<Boolean, String>>() {
+      protected Pair<Boolean, String> executeInEDT() {
         int selectedIndex = comboBox.getSelectedIndex();
         if (selectedIndex == -1) return valueForNoSelection(comboBox);
-        return cellReader.valueAt(comboBox, selectedIndex);
+        return selection(cellReader.valueAt(comboBox, selectedIndex));
       }
     });
   }
 
-  private static Object valueForNoSelection(JComboBox comboBox) {
-    if (!comboBox.isEditable()) return NO_SELECTION_VALUE;
+  private static Pair<Boolean, String> valueForNoSelection(JComboBox comboBox) {
+    if (!comboBox.isEditable()) return NO_SELECTION;
     Object selectedItem = comboBox.getSelectedItem();
-    if (selectedItem instanceof String) return selectedItem;
-    if (selectedItem != null) return selectedItem.toString();
-    return NO_SELECTION_VALUE;
+    if (selectedItem instanceof String) return selection((String)selectedItem);
+    if (selectedItem != null) return selection(selectedItem.toString());
+    return NO_SELECTION;
+  }
+
+  private static Pair<Boolean, String> selection(String selection) {
+    return new Pair<Boolean, String>(true, selection);
   }
 
   private JComboBoxSelectionValueQuery() {}

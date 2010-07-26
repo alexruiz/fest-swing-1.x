@@ -27,7 +27,6 @@ import static org.fest.swing.driver.JComboBoxItemCountQuery.itemCountIn;
 import static org.fest.swing.driver.JComboBoxItemIndexValidator.validateIndex;
 import static org.fest.swing.driver.JComboBoxMatchingItemQuery.matchingItemIndex;
 import static org.fest.swing.driver.JComboBoxSelectedIndexQuery.selectedIndexOf;
-import static org.fest.swing.driver.JComboBoxSelectionValueQuery.NO_SELECTION_VALUE;
 import static org.fest.swing.driver.JComboBoxSelectionValueQuery.selection;
 import static org.fest.swing.driver.JComboBoxSetPopupVisibleTask.setPopupVisible;
 import static org.fest.swing.driver.JComboBoxSetSelectedIndexTask.setSelectedIndex;
@@ -35,8 +34,7 @@ import static org.fest.swing.driver.TextAssert.verifyThat;
 import static org.fest.swing.edt.GuiActionRunner.execute;
 import static org.fest.swing.exception.ActionFailedException.actionFailure;
 import static org.fest.util.Arrays.format;
-import static org.fest.util.Strings.concat;
-import static org.fest.util.Strings.quote;
+import static org.fest.util.Strings.*;
 
 import java.awt.Component;
 import java.util.regex.Pattern;
@@ -178,19 +176,20 @@ public class JComboBoxDriver extends JComponentDriver {
   }
 
   private String requiredSelectionOf(JComboBox comboBox) throws AssertionError {
-    Object selection = selection(comboBox, cellReader);
-    if (NO_SELECTION_VALUE == selection) throw failNoSelection(comboBox);
-    return (String)selection;
+    Pair<Boolean, String> selection = selection(comboBox, cellReader);
+    boolean hasSelection = selection.i;
+    if (!hasSelection) throw failNoSelection(comboBox);
+    return selection.ii;
   }
 
-   /**
-    * Verifies that the index of the selected item in the <code>{@link JComboBox}</code> is equal to the given value.
-    * @param comboBox the target {@code JComboBox}.
-    * @param index the expected selection index.
-    * @throws AssertionError if the selection index is not equal to the given value.
-    * @since 1.2
-    */
-   @RunsInEDT
+  /**
+   * Verifies that the index of the selected item in the <code>{@link JComboBox}</code> is equal to the given value.
+   * @param comboBox the target {@code JComboBox}.
+   * @param index the expected selection index.
+   * @throws AssertionError if the selection index is not equal to the given value.
+   * @since 1.2
+   */
+  @RunsInEDT
   public void requireSelection(JComboBox comboBox, int index) {
      int selectedIndex = selectedIndexOf(comboBox);
      if (selectedIndex == -1) failNoSelection(comboBox);
@@ -208,10 +207,11 @@ public class JComboBoxDriver extends JComponentDriver {
    */
   @RunsInEDT
   public void requireNoSelection(JComboBox comboBox) {
-    Object selection = selection(comboBox, cellReader);
-    if (NO_SELECTION_VALUE == selection) return;
+    Pair<Boolean, String> selection = selection(comboBox, cellReader);
+    boolean hasSelection = selection.i;
+    if (!hasSelection) return;
     fail(concat(
-        "[", selectedIndexProperty(comboBox).value(), "] Expecting no selection, but found:<", quote(selection), ">"));
+        "[", selectedIndexProperty(comboBox).value(), "] Expecting no selection, but found:<", quote(selection.ii), ">"));
   }
 
   /**
