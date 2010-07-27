@@ -5,7 +5,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.easytesting</groupId>
   <artifactId>fest-swing-testng</artifactId>
-  <version>1.2</version>
+  <version>1.3a1-SNAPSHOT</version>
   <name>FEST Swing - TestNG Extension</name>
   <description>TestNG-specific extension for FEST-Swing</description>
   <inceptionYear>2007</inceptionYear>
@@ -43,7 +43,7 @@
     <dependency>
       <groupId>org.easytesting</groupId>
       <artifactId>fest-swing</artifactId>
-      <version>1.2</version>
+      <version>1.3a1-SNAPSHOT</version>
       <scope>compile</scope>
     </dependency>
     <dependency>

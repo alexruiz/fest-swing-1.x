@@ -18,7 +18,7 @@ package org.fest.swing.junit.ant;
 import static org.easymock.EasyMock.expect;
 import static org.easymock.classextension.EasyMock.createMock;
 import static org.fest.assertions.Assertions.assertThat;
-import static org.fest.swing.util.System.LINE_SEPARATOR;
+import static org.fest.util.Systems.LINE_SEPARATOR;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
