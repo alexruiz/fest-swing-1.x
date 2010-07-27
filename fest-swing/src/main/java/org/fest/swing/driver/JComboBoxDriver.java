@@ -497,4 +497,16 @@ public class JComboBoxDriver extends JComponentDriver {
     int actual = itemCountIn(comboBox);
     assertThat(actual).as(propertyName(comboBox, "itemCount")).isEqualTo(expected);
   }
+
+  /**
+   * Returns the selected value of the given <code>{@link JComboBox}</code> as plain text. This method returns
+   * {@code null} if the {code JComboBox} does not have any selection.
+   * @param comboBox the target {@code JComboBox}.
+   * @return the selected value of the given {code JComboBox} as plain text, or {@code null} if the {code JComboBox}
+   * does not have any selection.
+   * @since 1.3
+   */
+  public String selectedItemOf(JComboBox comboBox) {
+    return selection(comboBox, cellReader).ii;
+  }
 }

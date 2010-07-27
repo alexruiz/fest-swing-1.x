@@ -16,6 +16,7 @@
 package org.fest.swing.driver;
 
 import static org.fest.assertions.Assertions.assertThat;
+import static org.fest.swing.driver.JComboBoxMakeEditableAndSelectItemTask.*;
 import static org.fest.swing.driver.JComboBoxSetSelectedIndexTask.setSelectedIndex;
 import static org.fest.swing.edt.GuiActionRunner.execute;
 import static org.fest.util.Arrays.array;
@@ -25,7 +26,6 @@ import javax.swing.JComboBox;
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.cell.JComboBoxCellReader;
 import org.fest.swing.edt.GuiQuery;
-import org.fest.swing.edt.GuiTask;
 import org.fest.swing.test.core.RobotBasedTestCase;
 import org.fest.swing.test.swing.TestWindow;
 import org.fest.swing.util.Pair;
@@ -70,19 +70,9 @@ public class JComboBoxSelectionValueQuery_selection_Test extends RobotBasedTestC
     assertThatSelectionIsEqual(selection, "first");
   }
 
-  @RunsInEDT
-  private static void makeEditableAndSelectIndex(final JComboBox comboBox, final int index) {
-    execute(new GuiTask() {
-      protected void executeInEDT() {
-        comboBox.setEditable(true);
-        comboBox.setSelectedIndex(index);
-      }
-    });
-  }
-
   @Test
   public void should_return_text_of_entered_item_in_editable_JComboBox() {
-    makeEditableAndSelectValue(comboBox, "Hello");
+    makeEditableAndSelectItem(comboBox, "Hello");
     robot.waitForIdle();
     Pair<Boolean, String> selection = JComboBoxSelectionValueQuery.selection(comboBox, cellReader);
     assertThatSelectionIsEqual(selection, "Hello");
@@ -91,16 +81,6 @@ public class JComboBoxSelectionValueQuery_selection_Test extends RobotBasedTestC
   private void assertThatSelectionIsEqual(Pair<Boolean, String> selection, String expected) {
     assertThat(selection.i).isTrue();
     assertThat(selection.ii).isEqualTo(expected);
-  }
-
-  @RunsInEDT
-  private static void makeEditableAndSelectValue(final JComboBox comboBox, final String value) {
-    execute(new GuiTask() {
-      protected void executeInEDT() {
-        comboBox.setEditable(true);
-        comboBox.setSelectedItem(value);
-      }
-    });
   }
 
   private static class MyWindow extends TestWindow {

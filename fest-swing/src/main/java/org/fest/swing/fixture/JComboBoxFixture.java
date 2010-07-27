@@ -570,4 +570,15 @@ public class JComboBoxFixture extends ComponentFixture<JComboBox> implements Com
     driver.cellReader(cellReader);
     return this;
   }
+
+  /**
+   * Returns the selected value of this fixture's <code>{@link JComboBox}</code> as plain text. This method returns
+   * {@code null} if the {code JComboBox} does not have any selection.
+   * @return the selected value of this fixture's {code JComboBox} as plain text, or {@code null} if the
+   * {code JComboBox} does not have any selection.
+   * @since 1.3
+   */
+  public String selectedItem() {
+    return driver.selectedItemOf(target);
+  }
 }

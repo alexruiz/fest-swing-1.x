@@ -16,6 +16,7 @@
 package org.fest.swing.driver;
 
 import static org.fest.assertions.Assertions.assertThat;
+import static org.fest.swing.driver.JComboBoxMakeEditableAndSelectItemTask.makeEditableAndSelectItem;
 import static org.fest.swing.driver.JComboBoxSetEditableTask.setEditable;
 import static org.fest.swing.driver.JComboBoxSetSelectedIndexTask.setSelectedIndex;
 import static org.fest.swing.edt.GuiActionRunner.execute;
@@ -30,7 +31,8 @@ import javax.swing.JLabel;
 import javax.swing.text.JTextComponent;
 
 import org.fest.swing.annotation.RunsInEDT;
-import org.fest.swing.edt.*;
+import org.fest.swing.edt.GuiQuery;
+import org.fest.swing.edt.GuiTask;
 import org.fest.swing.test.core.MethodInvocations;
 import org.fest.swing.test.core.RobotBasedTestCase;
 import org.fest.swing.test.swing.TestWindow;
@@ -73,18 +75,8 @@ public abstract class JComboBoxDriver_TestCase extends RobotBasedTestCase {
 
   @RunsInEDT
   final void makeEditableAndSelect(Object itemToSelect) {
-    setEditableAndSetSelectedItem(comboBox, itemToSelect);
+    makeEditableAndSelectItem(comboBox, itemToSelect);
     robot.waitForIdle();
-  }
-
-  @RunsInEDT
-  private static void setEditableAndSetSelectedItem(final JComboBox comboBox, final Object itemToSelect) {
-    execute(new GuiTask() {
-      protected void executeInEDT() {
-        comboBox.setEditable(true);
-        comboBox.setSelectedItem(itemToSelect);
-      }
-    });
   }
 
   @RunsInEDT
