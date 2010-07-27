@@ -15,10 +15,11 @@
  */
 package org.fest.swing.driver;
 
-import static org.fest.test.ExpectedFailure.expectAssertionError;
+import static org.junit.rules.ExpectedException.none;
 
-import org.fest.test.CodeToTest;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 /**
  * Tests for <code>{@link TextAssert#isEqualOrMatches(String)}</code>.
@@ -27,24 +28,21 @@ import org.junit.Test;
  */
 public class TextAssert_isEqualOrMatches_Test {
 
+  @Rule
+  public ExpectedException thrown = none();
+
   @Test
   public void should_fail_if_actual_is_not_equal_to_expected() {
-    expectAssertionError("actual value:<'hello'> is not equal to or does not match pattern:<'bye'>")
-      .on(new CodeToTest() {
-        public void run() throws Throwable {
-          new TextAssert("hello").isEqualOrMatches("bye");
-        }
-      });
+    thrown.expect(AssertionError.class);
+    thrown.expectMessage("actual value:<'hello'> is not equal to or does not match pattern:<'bye'>");
+    new TextAssert("hello").isEqualOrMatches("bye");
   }
 
   @Test
   public void should_fail_showing_description_if_actual_is_not_equal_to_expected() {
-    expectAssertionError("[A Test] actual value:<'hello'> is not equal to or does not match pattern:<'bye'>")
-      .on(new CodeToTest() {
-        public void run() throws Throwable {
-          new TextAssert("hello").as("A Test").isEqualOrMatches("bye");
-        }
-      });
+    thrown.expect(AssertionError.class);
+    thrown.expectMessage("[A Test] actual value:<'hello'> is not equal to or does not match pattern:<'bye'>");
+    new TextAssert("hello").as("A Test").isEqualOrMatches("bye");
   }
 
   @Test

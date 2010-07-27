@@ -15,13 +15,12 @@
  */
 package org.fest.swing.driver;
 
-import static org.fest.swing.test.core.CommonAssertions.assertThatErrorCauseIsDisabledComponent;
-import static org.fest.swing.test.core.CommonAssertions.assertThatErrorCauseIsNotShowingComponent;
-import static org.fest.swing.test.core.CommonAssertions.failWhenExpectingException;
-import static org.fest.test.ExpectedFailure.expect;
+import static org.fest.swing.test.core.CommonAssertions.*;
+import static org.junit.rules.ExpectedException.none;
 
-import org.fest.test.CodeToTest;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 /**
  * Tests for <code>{@link JTableDriver#selectRows(javax.swing.JTable, int...)}</code>.
@@ -30,24 +29,23 @@ import org.junit.Test;
  */
 public class JTableDriver_selectRows_Test extends JTableDriver_TestCase {
 
+  @Rule
+  public ExpectedException thrown = none();
+
   @Test
   public void should_throw_error_if_index_is_negative() {
     showWindow();
-    expect(IndexOutOfBoundsException.class).withMessage("row '-1' should be between <0> and <9>").on(new CodeToTest() {
-      public void run() {
-        driver.selectRows(table, -1);
-      }
-    });
+    thrown.expect(IndexOutOfBoundsException.class);
+    thrown.expectMessage("row '-1' should be between <0> and <9>");
+    driver.selectRows(table, -1);
   }
 
   @Test
   public void should_throw_error_if_index_is_equal_to_the_number_of_rows() {
     showWindow();
-    expect(IndexOutOfBoundsException.class).withMessage("row '10' should be between <0> and <9>").on(new CodeToTest() {
-      public void run() {
-        driver.selectRows(table, 10);
-      }
-    });
+    thrown.expect(IndexOutOfBoundsException.class);
+    thrown.expectMessage("row '10' should be between <0> and <9>");
+    driver.selectRows(table, 10);
   }
 
   @Test

@@ -15,10 +15,11 @@
  */
 package org.fest.swing.fixture;
 
-import static org.fest.test.ExpectedFailure.expectAssertionError;
+import static org.junit.rules.ExpectedException.none;
 
-import org.fest.test.CodeToTest;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 /**
  * Tests for <code>{@link FontFixture#requireSize(int)}</code>.
@@ -28,6 +29,9 @@ import org.junit.Test;
  */
 public class FontFixture_requireSize_Test extends FontFixture_TestCase {
 
+  @Rule
+  public ExpectedException thrown = none();
+
   @Test
   public void should_pass_if_size_is_equal_to_expected() {
     fixture().requireSize(8);
@@ -35,20 +39,16 @@ public class FontFixture_requireSize_Test extends FontFixture_TestCase {
 
   @Test
   public void should_fail_if_size_is_not_equal_to_expected() {
-    expectAssertionError("[size] expected:<6> but was:<8>").on(new CodeToTest() {
-      public void run() {
-        fixture().requireSize(6);
-      }
-    });
+    thrown.expect(AssertionError.class);
+    thrown.expectMessage("[size] expected:<6> but was:<8>");
+    fixture().requireSize(6);
   }
 
   @Test
   public void should_fail_showing_description_if_size_is_not_equal_to_expected() {
-    expectAssertionError("[test - size] expected:<6> but was:<8>").on(new CodeToTest() {
-      public void run() {
-        FontFixture fixture = new FontFixture(font(), "test");
-        fixture.requireSize(6);
-      }
-    });
+    thrown.expect(AssertionError.class);
+    thrown.expectMessage("[test - size] expected:<6> but was:<8>");
+    FontFixture fixture = new FontFixture(font(), "test");
+    fixture.requireSize(6);
   }
 }

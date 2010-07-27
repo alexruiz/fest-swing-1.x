@@ -15,10 +15,11 @@
  */
 package org.fest.swing.security;
 
-import static org.fest.test.ExpectedFailure.expect;
+import static org.junit.rules.ExpectedException.none;
 
-import org.fest.test.CodeToTest;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 /**
  * Tests for <code>{@link NoExitSecurityManager#NoExitSecurityManager(ExitCallHook)}</code>.
@@ -27,12 +28,13 @@ import org.junit.Test;
  */
 public class NoExitSecurityManager_constructor_withHook_Test {
 
+  @Rule
+  public ExpectedException thrown = none();
+
   @Test
   public void should_throw_error_if_hook_is_null() {
-    expect(NullPointerException.class).withMessage("The given ExitCallHook should not be null").on(new CodeToTest() {
-      public void run() {
-        new NoExitSecurityManager(null);
-      }
-    });
+    thrown.expect(NullPointerException.class);
+    thrown.expectMessage("The given ExitCallHook should not be null");
+    new NoExitSecurityManager(null);
   }
 }

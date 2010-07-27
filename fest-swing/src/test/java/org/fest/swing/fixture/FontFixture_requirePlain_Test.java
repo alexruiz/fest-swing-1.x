@@ -15,10 +15,11 @@
  */
 package org.fest.swing.fixture;
 
-import static org.fest.test.ExpectedFailure.expectAssertionError;
+import static org.junit.rules.ExpectedException.none;
 
-import org.fest.test.CodeToTest;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 /**
  * Tests for <code>{@link FontFixture#requirePlain()}</code>.
@@ -28,6 +29,9 @@ import org.junit.Test;
  */
 public class FontFixture_requirePlain_Test extends FontFixture_TestCase {
 
+  @Rule
+  public ExpectedException thrown = none();
+
   @Test
   public void should_pass_if_font_is_plain() {
     FontFixture fixture = new FontFixture(boldFont());
@@ -36,20 +40,16 @@ public class FontFixture_requirePlain_Test extends FontFixture_TestCase {
 
   @Test
   public void should_fail_if_font_is_not_plain() {
-    expectAssertionError("[plain] expected:<true> but was:<false>").on(new CodeToTest() {
-      public void run() {
-        fixture().requirePlain();
-      }
-    });
+    thrown.expect(AssertionError.class);
+    thrown.expectMessage("[plain] expected:<true> but was:<false>");
+    fixture().requirePlain();
   }
 
   @Test
   public void should_fail_showing_description_if_font_is_not_plain() {
-    expectAssertionError("[test - plain] expected:<true> but was:<false>").on(new CodeToTest() {
-      public void run() {
-        FontFixture fixture = new FontFixture(font(), "test");
-        fixture.requirePlain();
-      }
-    });
+    thrown.expect(AssertionError.class);
+    thrown.expectMessage("[test - plain] expected:<true> but was:<false>");
+    FontFixture fixture = new FontFixture(font(), "test");
+    fixture.requirePlain();
   }
 }

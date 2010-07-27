@@ -15,10 +15,11 @@
  */
 package org.fest.swing.fixture;
 
-import static org.fest.test.ExpectedFailure.expectAssertionError;
+import static org.junit.rules.ExpectedException.none;
 
-import org.fest.test.CodeToTest;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 /**
  * Tests for <code>{@link FontFixture#requireNotItalic()}</code>.
@@ -28,6 +29,9 @@ import org.junit.Test;
  */
 public class FontFixture_requireNotItalic_Test extends FontFixture_TestCase {
 
+  @Rule
+  public ExpectedException thrown = none();
+
   @Test
   public void should_pass_if_font_is_not_italic() {
     fixture().requireNotItalic();
@@ -35,21 +39,17 @@ public class FontFixture_requireNotItalic_Test extends FontFixture_TestCase {
 
   @Test
   public void should_fail_if_font_is_italic() {
-    expectAssertionError("[italic] expected:<false> but was:<true>").on(new CodeToTest() {
-      public void run() {
-        FontFixture fixture = new FontFixture(italicFont());
-        fixture.requireNotItalic();
-      }
-    });
+    thrown.expect(AssertionError.class);
+    thrown.expectMessage("[italic] expected:<false> but was:<true>");
+    FontFixture fixture = new FontFixture(italicFont());
+    fixture.requireNotItalic();
   }
 
   @Test
   public void should_fail_showing_description_if_font_is_italic() {
-    expectAssertionError("[test - italic] expected:<false> but was:<true>").on(new CodeToTest() {
-      public void run() {
-        FontFixture fixture = new FontFixture(italicFont(), "test");
-        fixture.requireNotItalic();
-      }
-    });
+    thrown.expect(AssertionError.class);
+    thrown.expectMessage("[test - italic] expected:<false> but was:<true>");
+    FontFixture fixture = new FontFixture(italicFont(), "test");
+    fixture.requireNotItalic();
   }
 }

@@ -16,10 +16,11 @@
 package org.fest.swing.driver;
 
 import static org.fest.swing.test.core.Regex.regex;
-import static org.fest.test.ExpectedFailure.expectAssertionError;
+import static org.junit.rules.ExpectedException.none;
 
-import org.fest.test.CodeToTest;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 /**
  * Tests for <code>{@link TextAssert#matches(java.util.regex.Pattern)}</code>.
@@ -28,24 +29,21 @@ import org.junit.Test;
  */
 public class TextAssert_matches_Test {
 
+  @Rule
+  public ExpectedException thrown = none();
+
   @Test
   public void should_fail_if_actual_does_not_match_regex_pattern() {
-    expectAssertionError("actual value:<'hello'> does not match pattern:<'bye'>")
-      .on(new CodeToTest() {
-        public void run() throws Throwable {
-          new TextAssert("hello").matches(regex("bye"));
-        }
-      });
+    thrown.expect(AssertionError.class);
+    thrown.expectMessage("actual value:<'hello'> does not match pattern:<'bye'>");
+    new TextAssert("hello").matches(regex("bye"));
   }
 
   @Test
   public void should_fail_showing_description_if_actual_does_not_match_regex_pattern() {
-    expectAssertionError("[A Test] actual value:<'hello'> does not match pattern:<'bye'>")
-      .on(new CodeToTest() {
-        public void run() throws Throwable {
-          new TextAssert("hello").as("A Test").matches(regex("bye"));
-        }
-      });
+    thrown.expect(AssertionError.class);
+    thrown.expectMessage("[A Test] actual value:<'hello'> does not match pattern:<'bye'>");
+    new TextAssert("hello").as("A Test").matches(regex("bye"));
   }
 
   @Test

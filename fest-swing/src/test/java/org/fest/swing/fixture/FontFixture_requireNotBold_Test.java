@@ -15,10 +15,11 @@
  */
 package org.fest.swing.fixture;
 
-import static org.fest.test.ExpectedFailure.expectAssertionError;
+import static org.junit.rules.ExpectedException.none;
 
-import org.fest.test.CodeToTest;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 /**
  * Tests for <code>{@link FontFixture#requireNotBold()}</code>.
@@ -28,6 +29,9 @@ import org.junit.Test;
  */
 public class FontFixture_requireNotBold_Test extends FontFixture_TestCase {
 
+  @Rule
+  public ExpectedException thrown = none();
+
   @Test
   public void should_pass_if_font_is_not_bold() {
     fixture().requireNotBold();
@@ -35,21 +39,17 @@ public class FontFixture_requireNotBold_Test extends FontFixture_TestCase {
 
   @Test
   public void should_fail_if_font_is_bold() {
-    expectAssertionError("[bold] expected:<false> but was:<true>").on(new CodeToTest() {
-      public void run() {
-        FontFixture fixture = new FontFixture(boldFont());
-        fixture.requireNotBold();
-      }
-    });
+    thrown.expect(AssertionError.class);
+    thrown.expectMessage("[bold] expected:<false> but was:<true>");
+    FontFixture fixture = new FontFixture(boldFont());
+    fixture.requireNotBold();
   }
 
   @Test
   public void should_fail_showing_description_if_font_is_bold() {
-    expectAssertionError("[test - bold] expected:<false> but was:<true>").on(new CodeToTest() {
-      public void run() {
-        FontFixture fixture = new FontFixture(boldFont(), "test");
-        fixture.requireNotBold();
-      }
-    });
+    thrown.expect(AssertionError.class);
+    thrown.expectMessage("[test - bold] expected:<false> but was:<true>");
+    FontFixture fixture = new FontFixture(boldFont(), "test");
+    fixture.requireNotBold();
   }
 }

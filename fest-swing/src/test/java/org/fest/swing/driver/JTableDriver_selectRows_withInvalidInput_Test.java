@@ -16,14 +16,13 @@
 package org.fest.swing.driver;
 
 import static org.fest.swing.test.builder.JTables.table;
-import static org.fest.test.ExpectedFailure.expect;
+import static org.junit.rules.ExpectedException.none;
 
 import javax.swing.JTable;
 
 import org.fest.swing.test.core.RobotBasedTestCase;
-import org.fest.test.CodeToTest;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.*;
+import org.junit.rules.ExpectedException;
 
 /**
  * Tests for <code>{@link JTableDriver#selectRows(javax.swing.JTable, int...)}</code> using invalid input.
@@ -31,6 +30,9 @@ import org.junit.Test;
  * @author Alex Ruiz
  */
 public class JTableDriver_selectRows_withInvalidInput_Test extends RobotBasedTestCase {
+
+  @Rule
+  public ExpectedException thrown = none();
 
   private static JTable table;
   private JTableDriver driver;
@@ -46,20 +48,15 @@ public class JTableDriver_selectRows_withInvalidInput_Test extends RobotBasedTes
 
   @Test
   public void should_throw_error_if_array_of_indices_is_null() {
-    expect(NullPointerException.class).withMessage("The array of row indices should not be null").on(new CodeToTest() {
-      public void run() {
-        driver.selectRows(table, null);
-      }
-    });
+    thrown.expect(NullPointerException.class);
+    thrown.expectMessage("The array of row indices should not be null");
+    driver.selectRows(table, null);
   }
 
   @Test
   public void should_throw_error_if_array_of_indices_is_empty() {
-    String msg = "The array of row indices should not be empty";
-    expect(IllegalArgumentException.class).withMessage(msg).on(new CodeToTest() {
-      public void run() {
-        driver.selectRows(table, new int[0]);
-      }
-    });
+    thrown.expect(IllegalArgumentException.class);
+    thrown.expectMessage("The array of row indices should not be empty");
+    driver.selectRows(table, new int[0]);
   }
 }

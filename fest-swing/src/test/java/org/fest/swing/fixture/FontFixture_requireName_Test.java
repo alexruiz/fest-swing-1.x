@@ -15,10 +15,11 @@
  */
 package org.fest.swing.fixture;
 
-import static org.fest.test.ExpectedFailure.expectAssertionError;
+import static org.junit.rules.ExpectedException.none;
 
-import org.fest.test.CodeToTest;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 /**
  * Tests for <code>{@link FontFixture#requireName(String)}</code>.
@@ -28,6 +29,9 @@ import org.junit.Test;
  */
 public class FontFixture_requireName_Test extends FontFixture_TestCase {
 
+  @Rule
+  public ExpectedException thrown = none();
+
   @Test
   public void should_pass_if_name_is_equal_to_expected() {
     fixture().requireName("SansSerif");
@@ -35,22 +39,16 @@ public class FontFixture_requireName_Test extends FontFixture_TestCase {
 
   @Test
   public void should_fail_if_name_is_not_equal_to_expected() {
-    String message = "[name] expected:<'[Monospace]'> but was:<'[SansSerif]'>";
-    expectAssertionError(message).on(new CodeToTest() {
-      public void run() {
-        fixture().requireName("Monospace");
-      }
-    });
+    thrown.expect(AssertionError.class);
+    thrown.expectMessage("[name] expected:<'[Monospace]'> but was:<'[SansSerif]'>");
+    fixture().requireName("Monospace");
   }
 
   @Test
   public void should_fail_showing_description_if_name_is_not_equal_to_expected() {
-    String message = "[test - name] expected:<'[Monospace]'> but was:<'[SansSerif]'>";
-    expectAssertionError(message).on(new CodeToTest() {
-      public void run() {
-        FontFixture fixture = new FontFixture(font(), "test");
-        fixture.requireName("Monospace");
-      }
-    });
+    thrown.expect(AssertionError.class);
+    thrown.expectMessage("[test - name] expected:<'[Monospace]'> but was:<'[SansSerif]'>");
+    FontFixture fixture = new FontFixture(font(), "test");
+    fixture.requireName("Monospace");
   }
 }
