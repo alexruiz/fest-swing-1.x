@@ -257,7 +257,16 @@ public class Assertions {
 
   /**
    * Creates a new instance of <code>{@link CollectionAssert}</code>.
-   * @param actual the value an <code>Iterator</code> that which contents will be added to a new <code>Collection</code>.
+   * @param actual an <code>Iterable</code> whose contents will be added to a new <code>Collection</code>.
+   * @return the created assertion object.
+   */
+  public static CollectionAssert assertThat(Iterable<?> actual) {
+    return assertThat(asCollection(actual.iterator()));
+  }
+
+  /**
+   * Creates a new instance of <code>{@link CollectionAssert}</code>.
+   * @param actual an <code>Iterator</code> whose contents will be added to a new <code>Collection</code>.
    * @return the created assertion object.
    */
   public static CollectionAssert assertThat(Iterator<?> actual) {
