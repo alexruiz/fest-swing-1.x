@@ -17,8 +17,7 @@ package org.fest.swing.fixture;
 
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.driver.ComponentDriver.propertyName;
-import static org.fest.swing.fixture.ComponentFixtureValidator.notNullRobot;
-import static org.fest.swing.fixture.ComponentFixtureValidator.notNullTarget;
+import static org.fest.swing.fixture.ComponentFixtureValidator.*;
 import static org.fest.swing.format.Formatting.format;
 import static org.fest.swing.query.ComponentBackgroundQuery.backgroundOf;
 import static org.fest.swing.query.ComponentFontQuery.fontOf;
@@ -31,6 +30,7 @@ import org.fest.swing.core.Settings;
 import org.fest.swing.driver.ComponentDriver;
 import org.fest.swing.edt.GuiActionRunner;
 import org.fest.swing.exception.ComponentLookupException;
+import org.fest.swing.query.ComponentEnabledQuery;
 
 /**
  * Understands functional testing of <code>{@link Component}</code>s:
@@ -74,9 +74,9 @@ public abstract class ComponentFixture<T extends Component> {
   /**
    * Creates a new <code>{@link ComponentFixture}</code>.
    * @param robot performs simulation of user events on a {@code Component}.
-   * @param type the type of the {@code Component} to find using the given <code>RobotFixture</code>.
-   * @throws NullPointerException if <code>robot</code> is {@code null}.
-   * @throws NullPointerException if <code>type</code> is {@code null}.
+   * @param type the type of the {@code Component} to find using the given {@code Robot}.
+   * @throws NullPointerException if {@code robot} is {@code null}.
+   * @throws NullPointerException if {@code type} is {@code null}.
    * @throws ComponentLookupException if a matching component could not be found.
    * @throws ComponentLookupException if more than one matching component is found.
    */
@@ -101,10 +101,10 @@ public abstract class ComponentFixture<T extends Component> {
   /**
    * Creates a new <code>{@link ComponentFixture}</code>.
    * @param robot performs simulation of user events on a {@code Component}.
-   * @param name the name of the {@code Component} to find using the given <code>RobotFixture</code>.
-   * @param type the type of the {@code Component} to find using the given <code>RobotFixture</code>.
-   * @throws NullPointerException if <code>robot</code> is {@code null}.
-   * @throws NullPointerException if <code>type</code> is {@code null}.
+   * @param name the name of the {@code Component} to find using the given {@code Robot}.
+   * @param type the type of the {@code Component} to find using the given {@code Robot}.
+   * @throws NullPointerException if {@code robot} is {@code null}.
+   * @throws NullPointerException if {@code type} is {@code null}.
    * @throws ComponentLookupException if a matching component could not be found.
    * @throws ComponentLookupException if more than one matching component is found.
    */
@@ -141,8 +141,8 @@ public abstract class ComponentFixture<T extends Component> {
    * Creates a new <code>{@link ComponentFixture}</code>.
    * @param robot performs simulation of user events on the given {@code Component}.
    * @param target the {@code Component} to be managed by this fixture.
-   * @throws NullPointerException if <code>robot</code> is {@code null}.
-   * @throws NullPointerException if <code>target</code> is {@code null}.
+   * @throws NullPointerException if {@code robot} is {@code null}.
+   * @throws NullPointerException if {@code target} is {@code null}.
    */
   public ComponentFixture(Robot robot, T target) {
     this.robot = notNullRobot(robot);
@@ -171,6 +171,15 @@ public abstract class ComponentFixture<T extends Component> {
    */
   public final ColorFixture foreground() {
     return new ColorFixture(foregroundOf(target), propertyName(target, FOREGROUND_PROPERTY));
+  }
+
+  /**
+   * Indicates whether this fixture's <code>{@link Component}</code> is enabled or not.
+   * @return {@code true} if this fixture's {@code Component} is enabled; {@code false} otherwise.
+   * @since 1.3
+   */
+  public final boolean isEnabled() {
+    return ComponentEnabledQuery.isEnabled(target);
   }
 
   /**
