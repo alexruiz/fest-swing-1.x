@@ -68,7 +68,7 @@ public abstract class GroupAssert<T> extends GenericAssert<T> {
   protected abstract GroupAssert<T> isNotEmpty();
 
   /**
-   * Verifies that the actual group of values contains at least on element.
+   * Verifies that the actual group of values contains at least one element.
    * @throws AssertionError if the actual group of values is <code>null</code>.
    * @throws AssertionError if the actual group of values is empty.
    */

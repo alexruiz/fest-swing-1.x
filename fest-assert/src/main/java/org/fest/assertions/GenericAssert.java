@@ -61,7 +61,7 @@ public abstract class GenericAssert<T> extends Assert {
    * @param condition the given condition.
    * @return this assertion object.
    * @throws NullPointerException if the given condition is <code>null</code>.
-   * @throws AssertionError if the actual value does satisfies the given condition.
+   * @throws AssertionError if the actual value satisfies the given condition.
    * @see #isNot(Condition)
    */
   protected abstract GenericAssert<T> doesNotSatisfy(Condition<T> condition);
@@ -81,7 +81,7 @@ public abstract class GenericAssert<T> extends Assert {
    * @param condition the given condition.
    * @return this assertion object.
    * @throws NullPointerException if the given condition is <code>null</code>.
-   * @throws AssertionError if the actual value does satisfies the given condition.
+   * @throws AssertionError if the actual value satisfies the given condition.
    * @since 1.2
    */
   protected abstract GenericAssert<T> isNot(Condition<T> condition);
