@@ -29,7 +29,7 @@ import org.junit.BeforeClass;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public abstract class JToolBarFixture_TestCase extends ComponentFixture_TestCase<JToolBar> {
+public abstract class JToolBarFixture_TestCase extends ComponentFixture_Implementations_TestCase<JToolBar> {
 
   private static JToolBar target;
 

@@ -29,7 +29,7 @@ import org.junit.Before;
  *
  * @author Alex Ruiz
  */
-public abstract class ComponentFixture_TestCase<T extends Component> {
+public abstract class ComponentFixture_Implementations_TestCase<T extends Component> {
 
   private Robot robot;
 

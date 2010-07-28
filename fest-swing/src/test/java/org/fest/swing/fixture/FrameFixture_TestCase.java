@@ -31,7 +31,7 @@ import org.junit.BeforeClass;
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
-public abstract class FrameFixture_TestCase extends ComponentFixture_TestCase<Frame> {
+public abstract class FrameFixture_TestCase extends ComponentFixture_Implementations_TestCase<Frame> {
 
   private static Frame target;
 

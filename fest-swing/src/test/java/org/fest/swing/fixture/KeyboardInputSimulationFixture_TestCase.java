@@ -32,7 +32,7 @@ import org.junit.Test;
  * @author Alex Ruiz
  */
 public abstract class KeyboardInputSimulationFixture_TestCase<T extends Component> extends
-    ComponentFixture_TestCase<T> {
+    ComponentFixture_Implementations_TestCase<T> {
 
   @Test
   public final void should_press_and_release_key() {

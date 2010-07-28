@@ -29,7 +29,7 @@ import org.junit.BeforeClass;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public abstract class JScrollPaneFixture_TestCase extends ComponentFixture_TestCase<JScrollPane> {
+public abstract class JScrollPaneFixture_TestCase extends ComponentFixture_Implementations_TestCase<JScrollPane> {
 
   private static JScrollPane target;
 

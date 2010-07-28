@@ -29,7 +29,7 @@ import org.junit.BeforeClass;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public abstract class JTableFixture_TestCase extends ComponentFixture_TestCase<JTable> {
+public abstract class JTableFixture_TestCase extends ComponentFixture_Implementations_TestCase<JTable> {
 
   private static JTable target;
 

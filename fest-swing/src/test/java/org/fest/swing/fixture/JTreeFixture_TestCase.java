@@ -30,7 +30,7 @@ import org.junit.BeforeClass;
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
-public class JTreeFixture_TestCase extends ComponentFixture_TestCase<JTree> {
+public class JTreeFixture_TestCase extends ComponentFixture_Implementations_TestCase<JTree> {
 
   private static JTree target;
 

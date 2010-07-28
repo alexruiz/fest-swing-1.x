@@ -32,7 +32,7 @@ import org.junit.Test;
  * @author Yvonne Wang
  */
 public abstract class ClientPropertyStorageFixture_TestCase<T extends JComponent> extends
-    ComponentFixture_TestCase<T> {
+    ComponentFixture_Implementations_TestCase<T> {
 
   abstract JComponentDriver driver();
 

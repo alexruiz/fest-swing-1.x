@@ -29,7 +29,7 @@ import org.junit.BeforeClass;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public abstract class JInternalFrameFixture_TestCase extends ComponentFixture_TestCase<JInternalFrame> {
+public abstract class JInternalFrameFixture_TestCase extends ComponentFixture_Implementations_TestCase<JInternalFrame> {
 
   private static JInternalFrame target;
 

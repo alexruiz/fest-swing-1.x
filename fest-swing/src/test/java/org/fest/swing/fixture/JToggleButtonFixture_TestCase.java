@@ -29,7 +29,7 @@ import org.junit.BeforeClass;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public abstract class JToggleButtonFixture_TestCase extends ComponentFixture_TestCase<JToggleButton> {
+public abstract class JToggleButtonFixture_TestCase extends ComponentFixture_Implementations_TestCase<JToggleButton> {
 
   private static JToggleButton target;
 

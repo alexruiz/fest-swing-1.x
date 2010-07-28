@@ -29,7 +29,7 @@ import org.junit.BeforeClass;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public abstract class JProgressBarFixture_TestCase extends ComponentFixture_TestCase<JProgressBar> {
+public abstract class JProgressBarFixture_TestCase extends ComponentFixture_Implementations_TestCase<JProgressBar> {
 
   private static JProgressBar target;
 

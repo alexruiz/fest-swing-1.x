@@ -29,7 +29,7 @@ import org.junit.BeforeClass;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public abstract class JListFixture_TestCase extends ComponentFixture_TestCase<JList> {
+public abstract class JListFixture_TestCase extends ComponentFixture_Implementations_TestCase<JList> {
 
   private static JList target;
 

@@ -31,7 +31,7 @@ import org.junit.Test;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class JPanelFixture_container_Test extends ComponentFixture_TestCase<JPanel> {
+public class JPanelFixture_container_Test extends ComponentFixture_Implementations_TestCase<JPanel> {
 
   private static JPanel target;
 

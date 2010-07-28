@@ -34,7 +34,7 @@ import org.junit.Test;
  * @author Yvonne Wang
  */
 public abstract class ToolTipDisplayFixture_TestCase<T extends JComponent> extends
-    ComponentFixture_TestCase<T> {
+    ComponentFixture_Implementations_TestCase<T> {
 
   abstract JComponentDriver driver();
 

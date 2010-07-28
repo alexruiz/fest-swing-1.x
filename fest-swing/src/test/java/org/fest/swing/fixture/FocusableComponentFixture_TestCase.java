@@ -29,7 +29,7 @@ import org.junit.Test;
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
-public abstract class FocusableComponentFixture_TestCase<T extends Component> extends ComponentFixture_TestCase<T> {
+public abstract class FocusableComponentFixture_TestCase<T extends Component> extends ComponentFixture_Implementations_TestCase<T> {
 
   @Test
   public final void should_give_focus() {

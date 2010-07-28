@@ -29,7 +29,7 @@ import org.junit.BeforeClass;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public abstract class JOptionPaneFixture_TestCase extends ComponentFixture_TestCase<JOptionPane> {
+public abstract class JOptionPaneFixture_TestCase extends ComponentFixture_Implementations_TestCase<JOptionPane> {
 
   private static JOptionPane target;
 

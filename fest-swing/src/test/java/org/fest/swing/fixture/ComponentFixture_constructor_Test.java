@@ -36,13 +36,13 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link ComponentFixture}</code>.
+ * Tests for <code>{@link ComponentFixture#ComponentFixture(Robot, Class)}</code>,
+ * <code>{@link ComponentFixture#ComponentFixture(Robot, Component)}</code> and
+ * <code>{@link ComponentFixture#ComponentFixture(Robot, String, Class)}</code>.
  *
  * @author Alex Ruiz
  */
-public class ComponentFixtureTest extends EDTSafeTestCase {
-
-  // TODO Reorganize into smaller units
+public class ComponentFixture_constructor_Test extends EDTSafeTestCase {
 
   private Robot robot;
   private Settings settings;
@@ -59,17 +59,17 @@ public class ComponentFixtureTest extends EDTSafeTestCase {
   }
 
   @Test(expected = NullPointerException.class)
-  public void shouldThrowErrorIfRobotIsNullWhenLookingUpComponentByType() {
+  public void should_throw_error_if_Robot_is_null_when_looking_up_Component_by_type() {
     new ConcreteComponentFixture(null, type);
   }
 
   @Test(expected = NullPointerException.class)
-  public void shouldThrowErrorIfTypeIsNullWhenLookingUpComponentByType() {
+  public void should_throw_error_if_class_is_null_when_looking_up_Component_by_type() {
     new ConcreteComponentFixture(robot, (Class<? extends JTextField>)null);
   }
 
   @Test
-  public void shouldLookupComponentByType() {
+  public void should_lookup_Component_by_type() {
     final ComponentFinder finder = newComponentFinderMock();
     new EasyMockTemplate(robot, finder) {
       protected void expectations() {
@@ -85,18 +85,18 @@ public class ComponentFixtureTest extends EDTSafeTestCase {
   }
 
   @Test(expected = NullPointerException.class)
-  public void shouldThrowErrorIfRobotIsNullWhenLookingUpComponentByName() {
+  public void should_throw_error_if_Robot_is_null_when_looking_up_Component_by_name() {
     new ConcreteComponentFixture(null, name, type);
   }
 
   @Test(expected = NullPointerException.class)
-  public void shouldThrowErrorIfTypeIsNullWhenLookingUpComponentByName() {
+  public void should_throw_error_if_class_is_null_when_looking_up_Component_by_name() {
     new ConcreteComponentFixture(robot, name, null);
   }
 
   @Test
-  public void shouldLookupComponentByName() {
-    final ComponentFinder finder = TestComponentFinders.newComponentFinderMock();
+  public void should_lookup_Component_by_name() {
+    final ComponentFinder finder = newComponentFinderMock();
     new EasyMockTemplate(robot, finder) {
       protected void expectations() {
         expect(robot.settings()).andReturn(settings);
@@ -119,17 +119,17 @@ public class ComponentFixtureTest extends EDTSafeTestCase {
   }
 
   @Test(expected = NullPointerException.class)
-  public void shouldThrowErrorIfRobotIsNullWhenPassingTarget() {
+  public void should_throw_error_IfRobotIsNullWhenPassingTarget() {
     new ConcreteComponentFixture(null, target);
   }
 
   @Test(expected = NullPointerException.class)
-  public void shouldThrowErrorIfTargetIsNullWhenPassingTarget() {
+  public void should_throw_error_if_target_Component_is_null() {
     new ConcreteComponentFixture(robot, (JTextField)null);
   }
 
   @Test
-  public void shouldReturnFontFixtureWithFontFromTarget() {
+  public void should_return_FontFixture() {
     FontFixture fontFixture = fixture().font();
     assertThat(fontFixture.target()).isSameAs(fontOf(target));
     assertThat(fontFixture.description()).contains("javax.swing.JTextField")
@@ -146,7 +146,7 @@ public class ComponentFixtureTest extends EDTSafeTestCase {
   }
 
   @Test
-  public void shouldReturnColorFixtureWithBackgroundFromTarget() {
+  public void should_return_ColorFixture_for_Component_background() {
     ColorFixture colorFixture = fixture().background();
     Component component = target;
     assertThat(colorFixture.target()).isSameAs(backgroundOf(component));
@@ -164,7 +164,7 @@ public class ComponentFixtureTest extends EDTSafeTestCase {
   }
 
   @Test
-  public void shouldReturnColorFixtureWithForegroundFromTarget() {
+  public void should_return_ColorFixture_for_Component_foreground() {
     ColorFixture colorFixture = fixture().foreground();
     assertThat(colorFixture.target()).isSameAs(foregroundOf(target));
     assertThat(colorFixture.description()).contains("javax.swing.JTextField")
@@ -181,27 +181,13 @@ public class ComponentFixtureTest extends EDTSafeTestCase {
   }
 
   @Test
-  public void shouldCastTarget() {
+  public void should_cast_target_Component() {
     JTextField castedTarget = fixture().targetCastedTo(JTextField.class);
     assertThat(castedTarget).isSameAs(target);
   }
 
   private ComponentFixture<JTextField> fixture() {
     return new ConcreteComponentFixture(robot, target);
-  }
-
-  private static class ConcreteComponentFixture extends ComponentFixture<JTextField> {
-    public ConcreteComponentFixture(Robot robot, Class<? extends JTextField> type) {
-      super(robot, type);
-    }
-
-    public ConcreteComponentFixture(Robot robot, JTextField target) {
-      super(robot, target);
-    }
-
-    public ConcreteComponentFixture(Robot robot, String name, Class<? extends JTextField> type) {
-      super(robot, name, type);
-    }
   }
 }
 

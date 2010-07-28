@@ -34,7 +34,7 @@ import org.junit.Test;
  * @author Yvonne Wang
  */
 public abstract class MouseInputSimulationFixture_TestCase<T extends Component> extends
-    ComponentFixture_TestCase<T> {
+    ComponentFixture_Implementations_TestCase<T> {
 
   @Test
   public final void should_click() {

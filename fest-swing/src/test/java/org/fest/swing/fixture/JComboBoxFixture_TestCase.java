@@ -29,7 +29,7 @@ import org.junit.BeforeClass;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public abstract class JComboBoxFixture_TestCase extends ComponentFixture_TestCase<JComboBox> {
+public abstract class JComboBoxFixture_TestCase extends ComponentFixture_Implementations_TestCase<JComboBox> {
 
   private static JComboBox target;
 

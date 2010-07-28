@@ -29,7 +29,7 @@ import org.junit.BeforeClass;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public abstract class JCheckBoxFixture_TestCase extends ComponentFixture_TestCase<JCheckBox> {
+public abstract class JCheckBoxFixture_TestCase extends ComponentFixture_Implementations_TestCase<JCheckBox> {
 
   private static JCheckBox target;
 

@@ -29,7 +29,7 @@ import org.junit.Test;
  *
  * @author Alex Ruiz
  */
-public abstract class StateVerificationFixture_TestCase<T extends Component> extends ComponentFixture_TestCase<T> {
+public abstract class StateVerificationFixture_TestCase<T extends Component> extends ComponentFixture_Implementations_TestCase<T> {
 
   @Test
   public final void should_require_disabled() {

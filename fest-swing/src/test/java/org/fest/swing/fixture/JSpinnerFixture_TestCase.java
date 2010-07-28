@@ -29,7 +29,7 @@ import org.junit.BeforeClass;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public abstract class JSpinnerFixture_TestCase extends ComponentFixture_TestCase<JSpinner> {
+public abstract class JSpinnerFixture_TestCase extends ComponentFixture_Implementations_TestCase<JSpinner> {
 
   private static JSpinner target;
 

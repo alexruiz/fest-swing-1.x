@@ -36,7 +36,7 @@ import org.junit.Test;
  * @author Yvonne Wang
  */
 public abstract class TextDisplayFixture_TestCase<T extends Component> extends
-    ComponentFixture_TestCase<T> {
+    ComponentFixture_Implementations_TestCase<T> {
 
   @Test
   public void should_require_text() {

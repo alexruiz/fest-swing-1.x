@@ -30,7 +30,7 @@ import org.junit.Test;
  * @author Alex Ruiz
  */
 public abstract class TwoStateButtonFixture_TestCase<T extends AbstractButton> extends
-    ComponentFixture_TestCase<T> {
+    ComponentFixture_Implementations_TestCase<T> {
 
   abstract AbstractButtonDriver driver();
 
