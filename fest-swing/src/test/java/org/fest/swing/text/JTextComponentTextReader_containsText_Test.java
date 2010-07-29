@@ -19,7 +19,7 @@ import static org.easymock.EasyMock.expect;
 import static org.easymock.classextension.EasyMock.createMock;
 import static org.fest.assertions.Assertions.assertThat;
 
-import javax.swing.JLabel;
+import javax.swing.text.JTextComponent;
 
 import org.fest.mocks.EasyMockTemplate;
 import org.fest.swing.test.core.EDTSafeTestCase;
@@ -27,56 +27,56 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JLabelTextReader#containsText(JLabel, String)}</code>.
+ * Tests for <code>{@link JTextComponentTextReader#containsText(JTextComponent, String)}</code>.
  *
  * @author Alex Ruiz
  */
-public class JLabelTextReader_containsText_Test extends EDTSafeTestCase {
+public class JTextComponentTextReader_containsText_Test extends EDTSafeTestCase {
 
-  private JLabel label;
-  private JLabelTextReader reader;
+  private JTextComponent textComponent;
+  private JTextComponentTextReader reader;
 
   @Before
   public void setUp() {
-    label = createMock(JLabel.class);
-    reader = new JLabelTextReader();
+    textComponent = createMock(JTextComponent.class);
+    reader = new JTextComponentTextReader();
   }
 
   @Test
-  public void should_return_false_if_text_in_JLabel_is_null() {
-    new EasyMockTemplate(label) {
+  public void should_return_false_if_text_in_JTextComponent_is_null() {
+    new EasyMockTemplate(textComponent) {
       @Override protected void expectations() {
-        expect(label.getText()).andReturn(null);
+        expect(textComponent.getText()).andReturn(null);
       }
 
       @Override protected void codeToTest() {
-        assertThat(reader.containsText(label, "Yoda")).isFalse();
+        assertThat(reader.containsText(textComponent, "Yoda")).isFalse();
       }
     }.run();
   }
 
   @Test
-  public void should_return_false_if_text_in_JLabel_does_not_contain_given_String() {
-    new EasyMockTemplate(label) {
+  public void should_return_false_if_text_in_JTextComponent_does_not_contain_given_String() {
+    new EasyMockTemplate(textComponent) {
       @Override protected void expectations() {
-        expect(label.getText()).andReturn("Leia");
+        expect(textComponent.getText()).andReturn("Leia");
       }
 
       @Override protected void codeToTest() {
-        assertThat(reader.containsText(label, "Yoda")).isFalse();
+        assertThat(reader.containsText(textComponent, "Yoda")).isFalse();
       }
     }.run();
   }
 
   @Test
-  public void should_return_true_if_text_in_JLabel_contains_given_String() {
-    new EasyMockTemplate(label) {
+  public void should_return_true_if_text_in_JTextComponent_contains_given_String() {
+    new EasyMockTemplate(textComponent) {
       @Override protected void expectations() {
-        expect(label.getText()).andReturn("Yoda");
+        expect(textComponent.getText()).andReturn("Yoda");
       }
 
       @Override protected void codeToTest() {
-        assertThat(reader.containsText(label, "Yo")).isTrue();
+        assertThat(reader.containsText(textComponent, "Yo")).isTrue();
       }
     }.run();
   }
