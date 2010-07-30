@@ -28,7 +28,7 @@ public class WindowVisibilityMonitor_componentShown_Test extends WindowVisibilit
   public void should_mark_Window_as_showing_when_Window_is_shown() {
     new EasyMockTemplate(windows) {
       protected void expectations() {
-        windows.markAsShowing(window);
+        windows.markAsShowingInEDT(window);
       }
 
       protected void codeToTest() {

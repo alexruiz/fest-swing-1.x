@@ -17,9 +17,11 @@ package org.fest.swing.driver;
 
 import static org.fest.swing.edt.GuiActionRunner.execute;
 
+import java.applet.Applet;
 import java.applet.AppletContext;
 import java.applet.AppletStub;
 import java.net.URL;
+import java.util.Enumeration;
 
 import javax.swing.JApplet;
 
@@ -279,5 +281,27 @@ public class JAppletDriver extends ComponentDriver implements AppletStub {
 	@RunsInEDT
 	public boolean isActive(JApplet applet){
 		return active(applet);
+	}
+	
+	/**
+	 * Returns the Applet of the given its name in the AppletContext
+	 * 
+	 * @param name
+	 *            the name of the {@code JApplet}.
+	 * @return the {@code Applet} with the given name
+	 */
+	@RunsInEDT
+	public Applet getApplet(String name) {
+				return _applet.getAppletContext().getApplet(name);
+	}
+	
+	/**
+	 * Returns the collection Applets in the AppletContext
+	 * 
+	 * @return the collection of {@code Applet}s within the AppletContext
+	 */
+	@RunsInEDT
+	public Enumeration<Applet> getApplets() {
+				return _applet.getAppletContext().getApplets();
 	}
 }

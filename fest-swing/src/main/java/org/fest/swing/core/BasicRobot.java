@@ -138,6 +138,10 @@ public class BasicRobot implements Robot {
     return new BasicRobot(screenLockOwner, ignoreExistingComponents());
   }
 
+  public static Robot robotWithNewAwtHierarchyWithoutScreenLock() {
+	return new BasicRobot(null, ignoreExistingComponents());	
+  }
+  
   /**
    * Creates a new <code>{@link Robot}</code> that has access to all the GUI components in the AWT hierarchy.
    * @return the created <code>Robot</code>.
@@ -147,6 +151,10 @@ public class BasicRobot implements Robot {
     return new BasicRobot(screenLockOwner, new ExistingHierarchy());
   }
 
+  public static Robot robotWithCurrentAwtHierarchyWithoutScreenLock() {
+	  return new BasicRobot(null, new ExistingHierarchy());
+  }
+  
   private static Object acquireScreenLock() {
     Object screenLockOwner = new Object();
     ScreenLock.instance().acquire(screenLockOwner);
@@ -801,4 +809,6 @@ public class BasicRobot implements Robot {
 
   @VisibleForTesting
   final Object screenLockOwner() { return screenLockOwner; }
+
+
 }

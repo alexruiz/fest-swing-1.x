@@ -36,7 +36,7 @@ import org.fest.swing.driver.JAppletDriver;
 import org.junit.Test;
 
 public class JAppletFixtureTest extends
-		CommonComponentFixture_TestCase<JApplet> {
+		ComponentFixture_TestCase<JApplet> {
 	
 	private JAppletDriver driver;
 	private JApplet target;
@@ -66,12 +66,12 @@ public class JAppletFixtureTest extends
 		fixture.driver(null);
 	}
 
-	@Test
+	/*@Test
 	public void should_create_fixture_with_given_component_name() {
 		String name = "applet";
 		expectLookupByName(name, JApplet.class);
 		verifyLookup(new JAppletFixture(robot, name));
-	}
+	}*/
 	
 	@Test
 	public void should_create_keyPressInfo(){

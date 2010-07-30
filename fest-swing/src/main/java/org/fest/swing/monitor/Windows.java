@@ -20,7 +20,6 @@ import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.*;
-
 import javax.swing.Timer;
 
 import net.jcip.annotations.GuardedBy;
@@ -56,7 +55,7 @@ class Windows {
   private final Object lock = new Object();
 
   Windows() {
-
+	  
     //windowReadyTimer = new Timer("Window Ready Timer", true);
 	  windowReadyTimer = new Timer(WINDOW_READY_DELAY, null);
   }
@@ -110,18 +109,17 @@ class Windows {
   }*/
 
   @RunsInEDT
-  void markAsShowing(final Window w) {
+  void markAsShowingInEDT(final Window w) {
 	  synchronized(lock) {
-      final TimerTask task = new TimerTask() {
-        public void run() {
-          markAsReady(w);
-        }
-      };
-      windowReadyTimer.addActionListener(new ActionListener() {
-        public void actionPerformed(ActionEvent e) {
-          task.run();
-        }
-      });
+		  final TimerTask task = new TimerTask() {
+			public void run() {	markAsReady(w); }
+		  };
+		  
+		  windowReadyTimer.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					task.run();
+				}}); 
+				  
 		  windowReadyTimer.setCoalesce(false);
 		  windowReadyTimer.setRepeats(false);
 		  pending.put(w, task);
