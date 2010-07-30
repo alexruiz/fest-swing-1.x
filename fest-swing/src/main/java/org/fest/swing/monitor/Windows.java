@@ -110,17 +110,18 @@ class Windows {
   }*/
 
   @RunsInEDT
-  void markAsShowingInEDT(final Window w) {
+  void markAsShowing(final Window w) {
 	  synchronized(lock) {
-		  final TimerTask task = new TimerTask() {
-			public void run() {	markAsReady(w); }
-		  };
-
-		  windowReadyTimer.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					task.run();
-				}});
-
+      final TimerTask task = new TimerTask() {
+        public void run() {
+          markAsReady(w);
+        }
+      };
+      windowReadyTimer.addActionListener(new ActionListener() {
+        public void actionPerformed(ActionEvent e) {
+          task.run();
+        }
+      });
 		  windowReadyTimer.setCoalesce(false);
 		  windowReadyTimer.setRepeats(false);
 		  pending.put(w, task);
