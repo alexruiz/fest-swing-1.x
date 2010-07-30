@@ -26,7 +26,7 @@ import org.fest.swing.annotation.RunsInCurrentThread;
  *
  * @since 1.3
  */
-public class AbstractButtonTextReader implements TextReader<AbstractButton> {
+public class AbstractButtonTextReader extends TextReader<AbstractButton> {
 
   /**
    * Indicates that this reader supports {@code AbstractButton}s.
@@ -43,10 +43,9 @@ public class AbstractButtonTextReader implements TextReader<AbstractButton> {
    * @return {@code true} if the given {@code AbstractButton} displays the given text; {@code false} otherwise.
    */
   @RunsInCurrentThread
-  public boolean containsText(AbstractButton button, String text) {
+  @Override protected boolean checkContainsText(AbstractButton button, String text) {
     String labelText = button.getText();
     if (labelText == null) return false;
     return labelText.contains(text);
   }
-
 }

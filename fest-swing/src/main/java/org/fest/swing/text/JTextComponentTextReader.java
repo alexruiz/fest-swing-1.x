@@ -26,7 +26,7 @@ import org.fest.swing.annotation.RunsInCurrentThread;
  *
  * @since 1.3
  */
-public class JTextComponentTextReader implements TextReader<JTextComponent> {
+public class JTextComponentTextReader extends TextReader<JTextComponent> {
 
   /**
    * Indicates that this reader supports {@code JTextComponent}s.
@@ -43,7 +43,7 @@ public class JTextComponentTextReader implements TextReader<JTextComponent> {
    * @return {@code true} if the given {@code JTextComponent} displays the given text; {@code false} otherwise.
    */
   @RunsInCurrentThread
-  public boolean containsText(JTextComponent textComponent, String text) {
+  @Override protected boolean checkContainsText(JTextComponent textComponent, String text) {
     String labelText = textComponent.getText();
     if (labelText == null) return false;
     return labelText.contains(text);

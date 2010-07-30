@@ -19,65 +19,63 @@ import static org.easymock.EasyMock.expect;
 import static org.easymock.classextension.EasyMock.createMock;
 import static org.fest.assertions.Assertions.assertThat;
 
-import javax.swing.text.JTextComponent;
+import javax.swing.JList;
 
 import org.fest.mocks.EasyMockTemplate;
+import org.fest.swing.cell.JListCellReader;
 import org.fest.swing.test.core.EDTSafeTestCase;
+import org.fest.swing.test.swing.TestListModel;
 import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JTextComponentTextReader#containsText(JTextComponent, String)}</code>.
+ * Tests for <code>{@link JListTextReader#checkContainsText(JList, String)}</code>.
  *
  * @author Alex Ruiz
  */
-public class JTextComponentTextReader_containsText_Test extends EDTSafeTestCase {
+public class JListTextReader_checkContainsText_Test extends EDTSafeTestCase {
 
-  private JTextComponent textComponent;
-  private JTextComponentTextReader reader;
+  private JList list;
+  private TestListModel listModel;
+  private JListTextReader reader;
 
   @Before
   public void setUp() {
-    textComponent = createMock(JTextComponent.class);
-    reader = new JTextComponentTextReader();
+    list = createMock(JList.class);
+    listModel = new TestListModel(null, "Yoda", "Luke", "Leia");
+    reader = new JListTextReader(new TestJListCellReader());
   }
 
   @Test
-  public void should_return_false_if_text_in_JTextComponent_is_null() {
-    new EasyMockTemplate(textComponent) {
+  public void should_return_false_if_text_in_JList_does_not_contain_given_String() {
+    new EasyMockTemplate(list) {
       @Override protected void expectations() {
-        expect(textComponent.getText()).andReturn(null);
+        expect(list.getModel()).andReturn(listModel).atLeastOnce();
       }
 
       @Override protected void codeToTest() {
-        assertThat(reader.containsText(textComponent, "Yoda")).isFalse();
+        assertThat(reader.checkContainsText(list, "Han")).isFalse();
       }
     }.run();
   }
 
   @Test
-  public void should_return_false_if_text_in_JTextComponent_does_not_contain_given_String() {
-    new EasyMockTemplate(textComponent) {
+  public void should_return_true_if_text_in_JList_contains_given_String() {
+    new EasyMockTemplate(list) {
       @Override protected void expectations() {
-        expect(textComponent.getText()).andReturn("Leia");
+        expect(list.getModel()).andReturn(listModel).atLeastOnce();
       }
 
       @Override protected void codeToTest() {
-        assertThat(reader.containsText(textComponent, "Yoda")).isFalse();
+        assertThat(reader.checkContainsText(list, "Yo")).isTrue();
       }
     }.run();
   }
 
-  @Test
-  public void should_return_true_if_text_in_JTextComponent_contains_given_String() {
-    new EasyMockTemplate(textComponent) {
-      @Override protected void expectations() {
-        expect(textComponent.getText()).andReturn("Yoda");
-      }
-
-      @Override protected void codeToTest() {
-        assertThat(reader.containsText(textComponent, "Yo")).isTrue();
-      }
-    }.run();
+  private static class TestJListCellReader implements JListCellReader {
+    public String valueAt(JList list, int index) {
+      Object element = list.getModel().getElementAt(index);
+      return element != null ? element.toString() : null;
+    }
   }
 }

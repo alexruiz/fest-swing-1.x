@@ -15,6 +15,8 @@
  */
 package org.fest.swing.text;
 
+import static org.fest.util.Strings.concat;
+
 import java.awt.Component;
 
 import org.fest.swing.annotation.RunsInCurrentThread;
@@ -27,13 +29,34 @@ import org.fest.swing.annotation.RunsInCurrentThread;
  *
  * @since 1.3
  */
-public interface TextReader<T extends Component> {
+public abstract class TextReader<T extends Component> {
 
   /**
    * Returns the type of component this reader supports.
    * @return the type of component this reader supports.
    */
-  Class<T> supportedComponent();
+  public abstract Class<T> supportedComponent();
+
+  /**
+   * Indicates whether the given component contains or displays the given text.  Implementations must ensure that they
+   * are executed in the current thread.
+   * @param c the given component.
+   * @param text the given text.
+   * @return {@code true} if the given component contains or displays the given text; {@code false} otherwise.
+   */
+  @RunsInCurrentThread
+  public final boolean containsText(Component c, String text) {
+    validateCorrectType(c);
+    T casted = supportedComponent().cast(c);
+    return checkContainsText(casted, text);
+  }
+
+  private void validateCorrectType(Component c) {
+    Class<T> type = supportedComponent();
+    if (type.isAssignableFrom(c.getClass())) return;
+    throw new IllegalArgumentException(concat(
+        "Expecting component of type ", type.getName(), " but got ", c.getClass().getName()));
+  }
 
   /**
    * Indicates whether the given component contains or displays the given text.  Implementations must ensure that they
@@ -43,5 +66,5 @@ public interface TextReader<T extends Component> {
    * @return {@code true} if the given component contains or displays the given text; {@code false} otherwise.
    */
   @RunsInCurrentThread
-  boolean containsText(T component, String text);
+  protected abstract boolean checkContainsText(T component, String text);
 }

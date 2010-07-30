@@ -26,7 +26,7 @@ import org.fest.swing.annotation.RunsInCurrentThread;
  *
  * @since 1.3
  */
-public class JLabelTextReader implements TextReader<JLabel> {
+public class JLabelTextReader extends TextReader<JLabel> {
 
   /**
    * Indicates that this reader supports {@code JLabel}s.
@@ -43,7 +43,7 @@ public class JLabelTextReader implements TextReader<JLabel> {
    * @return {@code true} if the given {@code JLabel} displays the given text; {@code false} otherwise.
    */
   @RunsInCurrentThread
-  public boolean containsText(JLabel label, String text) {
+  @Override protected boolean checkContainsText(JLabel label, String text) {
     String labelText = label.getText();
     if (labelText == null) return false;
     return labelText.contains(text);

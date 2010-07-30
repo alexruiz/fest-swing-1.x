@@ -19,63 +19,65 @@ import static org.easymock.EasyMock.expect;
 import static org.easymock.classextension.EasyMock.createMock;
 import static org.fest.assertions.Assertions.assertThat;
 
-import javax.swing.JList;
+import javax.swing.JLabel;
 
 import org.fest.mocks.EasyMockTemplate;
-import org.fest.swing.cell.JListCellReader;
 import org.fest.swing.test.core.EDTSafeTestCase;
-import org.fest.swing.test.swing.TestListModel;
 import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JListTextReader#containsText(JList, String)}</code>.
+ * Tests for <code>{@link JLabelTextReader#checkContainsText(JLabel, String)}</code>.
  *
  * @author Alex Ruiz
  */
-public class JListTextReader_containsText_Test extends EDTSafeTestCase {
+public class JLabelTextReader_checkContainsText_Test extends EDTSafeTestCase {
 
-  private JList list;
-  private TestListModel listModel;
-  private JListTextReader reader;
+  private JLabel label;
+  private JLabelTextReader reader;
 
   @Before
   public void setUp() {
-    list = createMock(JList.class);
-    listModel = new TestListModel(null, "Yoda", "Luke", "Leia");
-    reader = new JListTextReader(new TestJListCellReader());
+    label = createMock(JLabel.class);
+    reader = new JLabelTextReader();
   }
 
   @Test
-  public void should_return_false_if_text_in_JList_does_not_contain_given_String() {
-    new EasyMockTemplate(list) {
+  public void should_return_false_if_text_in_JLabel_is_null() {
+    new EasyMockTemplate(label) {
       @Override protected void expectations() {
-        expect(list.getModel()).andReturn(listModel).atLeastOnce();
+        expect(label.getText()).andReturn(null);
       }
 
       @Override protected void codeToTest() {
-        assertThat(reader.containsText(list, "Han")).isFalse();
+        assertThat(reader.checkContainsText(label, "Yoda")).isFalse();
       }
     }.run();
   }
 
   @Test
-  public void should_return_true_if_text_in_JList_contains_given_String() {
-    new EasyMockTemplate(list) {
+  public void should_return_false_if_text_in_JLabel_does_not_contain_given_String() {
+    new EasyMockTemplate(label) {
       @Override protected void expectations() {
-        expect(list.getModel()).andReturn(listModel).atLeastOnce();
+        expect(label.getText()).andReturn("Leia");
       }
 
       @Override protected void codeToTest() {
-        assertThat(reader.containsText(list, "Yo")).isTrue();
+        assertThat(reader.checkContainsText(label, "Yoda")).isFalse();
       }
     }.run();
   }
 
-  private static class TestJListCellReader implements JListCellReader {
-    public String valueAt(JList list, int index) {
-      Object element = list.getModel().getElementAt(index);
-      return element != null ? element.toString() : null;
-    }
+  @Test
+  public void should_return_true_if_text_in_JLabel_contains_given_String() {
+    new EasyMockTemplate(label) {
+      @Override protected void expectations() {
+        expect(label.getText()).andReturn("Yoda");
+      }
+
+      @Override protected void codeToTest() {
+        assertThat(reader.checkContainsText(label, "Yo")).isTrue();
+      }
+    }.run();
   }
 }

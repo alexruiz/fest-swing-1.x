@@ -30,7 +30,7 @@ import org.fest.util.VisibleForTesting;
  *
  * @since 1.3
  */
-public class JListTextReader implements TextReader<JList> {
+public class JListTextReader extends TextReader<JList> {
 
   private final JListCellReader cellReader;
 
@@ -63,7 +63,7 @@ public class JListTextReader implements TextReader<JList> {
    * text; {@code false} otherwise.
    */
   @RunsInCurrentThread
-  public boolean containsText(JList list, String text) {
+  @Override protected boolean checkContainsText(JList list, String text) {
     ListModel model = list.getModel();
     int elementCount = model.getSize();
     for (int i = 0; i < elementCount; i++) {

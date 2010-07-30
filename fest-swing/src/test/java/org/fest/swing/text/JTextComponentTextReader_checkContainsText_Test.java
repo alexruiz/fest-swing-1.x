@@ -19,7 +19,7 @@ import static org.easymock.EasyMock.expect;
 import static org.easymock.classextension.EasyMock.createMock;
 import static org.fest.assertions.Assertions.assertThat;
 
-import javax.swing.AbstractButton;
+import javax.swing.text.JTextComponent;
 
 import org.fest.mocks.EasyMockTemplate;
 import org.fest.swing.test.core.EDTSafeTestCase;
@@ -27,56 +27,56 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link AbstractButtonTextReader#containsText(AbstractButton, String)}</code>.
+ * Tests for <code>{@link JTextComponentTextReader#checkContainsText(JTextComponent, String)}</code>.
  *
  * @author Alex Ruiz
  */
-public class AbstractButtonTextReader_containsText_Test extends EDTSafeTestCase {
+public class JTextComponentTextReader_checkContainsText_Test extends EDTSafeTestCase {
 
-  private AbstractButton button;
-  private AbstractButtonTextReader reader;
+  private JTextComponent textComponent;
+  private JTextComponentTextReader reader;
 
   @Before
   public void setUp() {
-    button = createMock(AbstractButton.class);
-    reader = new AbstractButtonTextReader();
+    textComponent = createMock(JTextComponent.class);
+    reader = new JTextComponentTextReader();
   }
 
   @Test
-  public void should_return_false_if_text_in_AbstractButton_is_null() {
-    new EasyMockTemplate(button) {
+  public void should_return_false_if_text_in_JTextComponent_is_null() {
+    new EasyMockTemplate(textComponent) {
       @Override protected void expectations() {
-        expect(button.getText()).andReturn(null);
+        expect(textComponent.getText()).andReturn(null);
       }
 
       @Override protected void codeToTest() {
-        assertThat(reader.containsText(button, "Yoda")).isFalse();
+        assertThat(reader.checkContainsText(textComponent, "Yoda")).isFalse();
       }
     }.run();
   }
 
   @Test
-  public void should_return_false_if_text_in_AbstractButton_does_not_contain_given_String() {
-    new EasyMockTemplate(button) {
+  public void should_return_false_if_text_in_JTextComponent_does_not_contain_given_String() {
+    new EasyMockTemplate(textComponent) {
       @Override protected void expectations() {
-        expect(button.getText()).andReturn("Leia");
+        expect(textComponent.getText()).andReturn("Leia");
       }
 
       @Override protected void codeToTest() {
-        assertThat(reader.containsText(button, "Yoda")).isFalse();
+        assertThat(reader.checkContainsText(textComponent, "Yoda")).isFalse();
       }
     }.run();
   }
 
   @Test
-  public void should_return_true_if_text_in_AbstractButton_contains_given_String() {
-    new EasyMockTemplate(button) {
+  public void should_return_true_if_text_in_JTextComponent_contains_given_String() {
+    new EasyMockTemplate(textComponent) {
       @Override protected void expectations() {
-        expect(button.getText()).andReturn("Yoda");
+        expect(textComponent.getText()).andReturn("Yoda");
       }
 
       @Override protected void codeToTest() {
-        assertThat(reader.containsText(button, "Yo")).isTrue();
+        assertThat(reader.checkContainsText(textComponent, "Yo")).isTrue();
       }
     }.run();
   }

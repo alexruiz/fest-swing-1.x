@@ -19,7 +19,7 @@ import static org.easymock.EasyMock.expect;
 import static org.easymock.classextension.EasyMock.createMock;
 import static org.fest.assertions.Assertions.assertThat;
 
-import javax.swing.JLabel;
+import javax.swing.AbstractButton;
 
 import org.fest.mocks.EasyMockTemplate;
 import org.fest.swing.test.core.EDTSafeTestCase;
@@ -27,56 +27,56 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JLabelTextReader#containsText(JLabel, String)}</code>.
+ * Tests for <code>{@link AbstractButtonTextReader#checkContainsText(AbstractButton, String)}</code>.
  *
  * @author Alex Ruiz
  */
-public class JLabelTextReader_containsText_Test extends EDTSafeTestCase {
+public class AbstractButtonTextReader_checkContainsText_Test extends EDTSafeTestCase {
 
-  private JLabel label;
-  private JLabelTextReader reader;
+  private AbstractButton button;
+  private AbstractButtonTextReader reader;
 
   @Before
   public void setUp() {
-    label = createMock(JLabel.class);
-    reader = new JLabelTextReader();
+    button = createMock(AbstractButton.class);
+    reader = new AbstractButtonTextReader();
   }
 
   @Test
-  public void should_return_false_if_text_in_JLabel_is_null() {
-    new EasyMockTemplate(label) {
+  public void should_return_false_if_text_in_AbstractButton_is_null() {
+    new EasyMockTemplate(button) {
       @Override protected void expectations() {
-        expect(label.getText()).andReturn(null);
+        expect(button.getText()).andReturn(null);
       }
 
       @Override protected void codeToTest() {
-        assertThat(reader.containsText(label, "Yoda")).isFalse();
+        assertThat(reader.checkContainsText(button, "Yoda")).isFalse();
       }
     }.run();
   }
 
   @Test
-  public void should_return_false_if_text_in_JLabel_does_not_contain_given_String() {
-    new EasyMockTemplate(label) {
+  public void should_return_false_if_text_in_AbstractButton_does_not_contain_given_String() {
+    new EasyMockTemplate(button) {
       @Override protected void expectations() {
-        expect(label.getText()).andReturn("Leia");
+        expect(button.getText()).andReturn("Leia");
       }
 
       @Override protected void codeToTest() {
-        assertThat(reader.containsText(label, "Yoda")).isFalse();
+        assertThat(reader.checkContainsText(button, "Yoda")).isFalse();
       }
     }.run();
   }
 
   @Test
-  public void should_return_true_if_text_in_JLabel_contains_given_String() {
-    new EasyMockTemplate(label) {
+  public void should_return_true_if_text_in_AbstractButton_contains_given_String() {
+    new EasyMockTemplate(button) {
       @Override protected void expectations() {
-        expect(label.getText()).andReturn("Yoda");
+        expect(button.getText()).andReturn("Yoda");
       }
 
       @Override protected void codeToTest() {
-        assertThat(reader.containsText(label, "Yo")).isTrue();
+        assertThat(reader.checkContainsText(button, "Yo")).isTrue();
       }
     }.run();
   }
