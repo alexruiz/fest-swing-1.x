@@ -32,7 +32,7 @@ public class JLabelTextReader extends TextReader<JLabel> {
    * Indicates that this reader supports {@code JLabel}s.
    * @return {@code JLabel.class}.
    */
-  public Class<JLabel> supportedComponent() {
+  @Override public Class<JLabel> supportedComponent() {
     return JLabel.class;
   }
 

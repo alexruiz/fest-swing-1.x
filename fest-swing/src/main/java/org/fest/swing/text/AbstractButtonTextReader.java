@@ -32,7 +32,7 @@ public class AbstractButtonTextReader extends TextReader<AbstractButton> {
    * Indicates that this reader supports {@code AbstractButton}s.
    * @return {@code AbstractButton.class}.
    */
-  public Class<AbstractButton> supportedComponent() {
+  @Override public Class<AbstractButton> supportedComponent() {
     return AbstractButton.class;
   }
 

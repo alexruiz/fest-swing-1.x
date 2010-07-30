@@ -32,7 +32,7 @@ public class JTextComponentTextReader extends TextReader<JTextComponent> {
    * Indicates that this reader supports {@code JTextComponent}s.
    * @return {@code JTextComponent.class}.
    */
-  public Class<JTextComponent> supportedComponent() {
+  @Override public Class<JTextComponent> supportedComponent() {
     return JTextComponent.class;
   }
 

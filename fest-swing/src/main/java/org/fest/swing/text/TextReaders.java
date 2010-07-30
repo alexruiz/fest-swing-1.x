@@ -16,6 +16,7 @@
 package org.fest.swing.text;
 
 import static java.util.logging.Logger.getAnonymousLogger;
+import static org.fest.swing.edt.GuiActionRunner.execute;
 import static org.fest.util.Strings.concat;
 
 import java.awt.Component;
@@ -23,6 +24,10 @@ import java.awt.Container;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 import java.util.logging.Logger;
+
+import org.fest.swing.annotation.RunsInEDT;
+import org.fest.swing.edt.GuiQuery;
+import org.fest.util.VisibleForTesting;
 
 /**
  * Understands a registry of <code>{@link TextReader}</code>s.
@@ -33,12 +38,21 @@ import java.util.logging.Logger;
  */
 public class TextReaders {
 
-  private final ConcurrentMap<Class<?>, TextReader<?>> readers = new ConcurrentHashMap<Class<?>, TextReader<?>>();
   private static Logger logger = getAnonymousLogger();
+
+  @VisibleForTesting
+  final ConcurrentMap<Class<?>, TextReader<?>> readers = new ConcurrentHashMap<Class<?>, TextReader<?>>();
+
+  @VisibleForTesting TextReaders() {
+    register(new AbstractButtonTextReader());
+    register(new JLabelTextReader());
+    register(new JListTextReader());
+    register(new JTextComponentTextReader());
+  }
 
   /**
    * Adds the given {@code TextReader} to this registry.
-   * @param reader the reader to add.
+   * @param reader the {@code TextReader} to add.
    * @throws NullPointerException if the given {@code TextReader} is {@code null}.
    * @throws NullPointerException if the supported component type in the given {@code TextReader} is {@code null}.
    */
@@ -55,19 +69,44 @@ public class TextReaders {
     throw new NullPointerException("The type of Component that the TextReader supports should not be null");
   }
 
-  public boolean containsText(Container container, String text) {
+  /**
+   * Indicates whether the given <code>{@link Container}</code> or any of its subcomponents contains the given text.
+   * @param container the given {@code Container}. This method is executed in the event dispatch thread (EDT.)
+   * @param text the text to look for.
+   * @return {@code true} if the given {@code Container} or any of its subcomponents contains the given text;
+   * {@code false} otherwise.
+   * @throws NullPointerException if the given {@code Container} is {@code null}.
+   * @throws NullPointerException if the given text is {@code null}.
+   */
+  @RunsInEDT
+  public boolean containsText(final Container container, final String text) {
     notNull(container, text);
-    Container parent = container;
-    for (Component c : parent.getComponents()) {
-      TextReader<? extends Component> reader = readerFor(c);
-      if (reader.containsText(c, text)) return true;
-    }
-    return false;
+    return execute(new GuiQuery<Boolean>() {
+      @Override protected Boolean executeInEDT() {
+        if (componentContainsText(container, text)) return true;
+        return anyComponentContainsText(container.getComponents(), text);
+      }
+    });
   }
 
   private void notNull(Container c, String text) {
     if (c == null) throw new NullPointerException("The container to check should not be null");
     if (text == null) throw new NullPointerException("The text to look for should not be null");
+  }
+
+  private boolean anyComponentContainsText(Component[] components, String text) {
+    for (Component c : components) {
+      if (componentContainsText(c, text)) return true;
+      if (c instanceof Container)
+        return anyComponentContainsText(((Container)c).getComponents(), text);
+    }
+    return false;
+  }
+
+  private boolean componentContainsText(Component c, String text) {
+    TextReader<?> reader = readerFor(c);
+    if (reader == null) return false;
+    return reader.containsText(c, text);
   }
 
   private TextReader<?> readerFor(Component c) {
@@ -79,5 +118,17 @@ public class TextReaders {
       type = type.getSuperclass();
     }
     return null;
+  }
+
+  /**
+   * Returns the singleton instance of this class.
+   * @return the singleton instance of this class.
+   */
+  public static TextReaders instance() {
+    return SingletonHolder.INSTANCE;
+  }
+
+  private static class SingletonHolder {
+    static final TextReaders INSTANCE = new TextReaders();
   }
 }

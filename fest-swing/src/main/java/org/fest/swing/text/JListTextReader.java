@@ -50,7 +50,7 @@ public class JListTextReader extends TextReader<JList> {
    * Indicates that this reader supports {@code JList}s.
    * @return {@code JList.class}.
    */
-  public Class<JList> supportedComponent() {
+  @Override public Class<JList> supportedComponent() {
     return JList.class;
   }
 

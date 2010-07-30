@@ -23,9 +23,9 @@ import org.fest.swing.annotation.RunsInCurrentThread;
 
 /**
  * Understands reading the text of a <code>{@link Component}</code>.
+ * @param <T> the type of component this reader supports.
  *
  * @author Alex Ruiz
- * @param <T>
  *
  * @since 1.3
  */
@@ -38,11 +38,13 @@ public abstract class TextReader<T extends Component> {
   public abstract Class<T> supportedComponent();
 
   /**
-   * Indicates whether the given component contains or displays the given text.  Implementations must ensure that they
-   * are executed in the current thread.
+   * Indicates whether the given component contains or displays the given text.
    * @param c the given component.
    * @param text the given text.
    * @return {@code true} if the given component contains or displays the given text; {@code false} otherwise.
+   * @throws IllegalArgumentException if this reader does not support the type of the given component (e.g. this
+   * reader supports {@code JButton}s and a {@code JLabel} is passed.)
+   * @see #supportedComponent()
    */
   @RunsInCurrentThread
   public final boolean containsText(Component c, String text) {
@@ -59,7 +61,7 @@ public abstract class TextReader<T extends Component> {
   }
 
   /**
-   * Indicates whether the given component contains or displays the given text.  Implementations must ensure that they
+   * Indicates whether the given component contains or displays the given text. Implementations must ensure that they
    * are executed in the current thread.
    * @param component the given component.
    * @param text the given text.
