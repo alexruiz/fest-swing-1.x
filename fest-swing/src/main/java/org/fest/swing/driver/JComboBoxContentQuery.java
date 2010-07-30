@@ -33,6 +33,7 @@ final class JComboBoxContentQuery {
   @RunsInEDT
   static String[] contents(final JComboBox comboBox, final JComboBoxCellReader cellReader) {
     return execute(new GuiQuery<String[]>() {
+      @Override
       protected String[] executeInEDT() {
         String[] values = new String[comboBox.getItemCount()];
         for (int i = 0; i < values.length; i++)

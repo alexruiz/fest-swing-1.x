@@ -18,8 +18,7 @@ package org.fest.swing.driver;
 import static java.lang.String.valueOf;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.test.core.CommonAssertions.failWhenExpectingException;
-import static org.fest.swing.util.Range.from;
-import static org.fest.swing.util.Range.to;
+import static org.fest.swing.util.Range.*;
 import static org.fest.util.Collections.list;
 import static org.fest.util.Strings.concat;
 
@@ -27,7 +26,7 @@ import java.util.Collection;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
+import org.junit.runners.*;
 import org.junit.runners.Parameterized.Parameters;
 
 /**

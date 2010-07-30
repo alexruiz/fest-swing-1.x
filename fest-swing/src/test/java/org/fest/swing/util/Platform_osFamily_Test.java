@@ -19,6 +19,7 @@ import static org.easymock.EasyMock.expect;
 import static org.easymock.classextension.EasyMock.createMock;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.util.OSFamily.WINDOWS;
+
 import org.fest.mocks.EasyMockTemplate;
 import org.junit.Test;
 
@@ -34,10 +35,12 @@ public class Platform_osFamily_Test extends Platform_TestCase {
     final OSIdentifier osIdentifier = createMock(OSIdentifier.class);
     Platform.initialize(osIdentifier, toolkitProvider);
     new EasyMockTemplate(osIdentifier) {
+      @Override
       protected void expectations() {
         expect(osIdentifier.osFamily()).andReturn(WINDOWS);
       }
 
+      @Override
       protected void codeToTest() {
         assertThat(Platform.osFamily()).isEqualTo(WINDOWS);
       }

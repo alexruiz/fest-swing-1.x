@@ -27,7 +27,7 @@ import org.fest.swing.edt.GuiTask;
 import org.fest.swing.test.swing.TestTree;
 
 /**
- * Base test case related to drag and drop in a <code>{@link JTree}</code> using 
+ * Base test case related to drag and drop in a <code>{@link JTree}</code> using
  * <code>{@link JTreeDriver}</code>.
  *
  * @author Alex Ruiz
@@ -39,6 +39,7 @@ public abstract class JTreeDriver_dragAndDrop_TestCase extends JTreeDriver_TestC
   @RunsInEDT
   @Override final void extraSetUp() {
     execute(new GuiTask() {
+      @Override
       protected void executeInEDT() {
         dropTree = new TestTree(new DefaultTreeModel(node("root")));
         window.add(decorate(dropTree));

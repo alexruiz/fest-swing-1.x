@@ -15,8 +15,7 @@
  */
 package org.fest.swing.hierarchy;
 
-import static org.fest.swing.awt.AWT.isAppletViewer;
-import static org.fest.swing.awt.AWT.isSharedInvisibleFrame;
+import static org.fest.swing.awt.AWT.*;
 
 import java.awt.*;
 import java.util.Collection;

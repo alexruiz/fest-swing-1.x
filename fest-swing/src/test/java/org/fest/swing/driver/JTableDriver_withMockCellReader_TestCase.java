@@ -23,8 +23,7 @@ import javax.swing.JTable;
 
 import org.fest.swing.cell.JTableCellReader;
 import org.fest.swing.test.core.EDTSafeTestCase;
-import org.junit.Before;
-import org.junit.BeforeClass;
+import org.junit.*;
 
 /**
  * Base test case that uses a mock implementation of <code>{@link JTableCellReader}</code>.

@@ -15,8 +15,7 @@
  */
 package org.fest.swing.driver;
 
-import java.net.MalformedURLException;
-import java.net.URL;
+import java.net.*;
 
 /**
  * Understands <code>{@link URL}</code>s to be used for testing purposes.

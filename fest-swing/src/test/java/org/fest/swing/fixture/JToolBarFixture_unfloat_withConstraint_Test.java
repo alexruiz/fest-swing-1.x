@@ -25,7 +25,7 @@ import org.fest.mocks.EasyMockTemplate;
 import org.fest.swing.fixture.JToolBarFixture.UnfloatConstraint;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
+import org.junit.runners.*;
 import org.junit.runners.Parameterized.Parameters;
 
 /**
@@ -51,11 +51,13 @@ public class JToolBarFixture_unfloat_withConstraint_Test extends JToolBarFixture
   @Test
   public void should_unfloat_using_giving_constraint() {
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().unfloat(target(), constraint.value);
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().unfloat(constraint));
       }

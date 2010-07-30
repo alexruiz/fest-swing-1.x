@@ -16,9 +16,6 @@ package org.fest.swing.util;
 
 import static org.easymock.classextension.EasyMock.createMock;
 
-
-import org.fest.swing.util.RobotFactory;
-
 /**
  * Understands instances of <code>{@link RobotFactory}</code> to be used for testing purposes.
  *

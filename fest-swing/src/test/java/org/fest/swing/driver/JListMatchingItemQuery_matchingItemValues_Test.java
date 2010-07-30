@@ -38,11 +38,13 @@ public class JListMatchingItemQuery_matchingItemValues_Test extends JListMatchin
   public void should_return_values_of_matching_items() {
     final TextMatcher matcher = mockTextMatcher();
     new EasyMockTemplate(matcher) {
+      @Override
       protected void expectations() {
         expect(matcher.isMatching("Yoda")).andReturn(false);
         expect(matcher.isMatching("Luke")).andReturn(true);
       }
 
+      @Override
       protected void codeToTest() {
         List<String> values = JListMatchingItemQuery.matchingItemValues(list, matcher, cellReader);
         assertThat(values).hasSize(1).containsOnly("Luke");
@@ -54,11 +56,13 @@ public class JListMatchingItemQuery_matchingItemValues_Test extends JListMatchin
   public void should_return_empty_list_if_matching_values_not_found() {
     final TextMatcher matcher = mockTextMatcher();
     new EasyMockTemplate(matcher) {
+      @Override
       protected void expectations() {
         expect(matcher.isMatching("Yoda")).andReturn(false);
         expect(matcher.isMatching("Luke")).andReturn(false);
       }
 
+      @Override
       protected void codeToTest() {
         List<String> values = JListMatchingItemQuery.matchingItemValues(list, matcher, cellReader);
         assertThat(values).isEmpty();

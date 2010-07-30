@@ -19,8 +19,7 @@ import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.edt.GuiActionRunner.execute;
 import static org.fest.swing.test.builder.JTextFields.textField;
 
-import java.awt.Component;
-import java.awt.Container;
+import java.awt.*;
 import java.util.Collection;
 
 import javax.swing.*;
@@ -30,8 +29,7 @@ import org.fest.swing.edt.GuiQuery;
 import org.fest.swing.lock.ScreenLock;
 import org.fest.swing.test.core.EDTSafeTestCase;
 import org.fest.swing.test.swing.TestWindow;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Tests for <code>{@link JMenuChildrenFinder#nonExplicitChildrenOf(Container)}</code>.
@@ -63,6 +61,7 @@ public class JMenuChildrenFinder_nonExplicitChildrenOf_Test extends EDTSafeTestC
     ScreenLock.instance().acquire(this);
     final MyWindow window = MyWindow.createNew();
     Collection<Component> children = execute(new GuiQuery<Collection<Component>>() {
+      @Override
       protected Collection<Component> executeInEDT() {
         return finder.nonExplicitChildrenOf(window.menu);
       }
@@ -81,6 +80,7 @@ public class JMenuChildrenFinder_nonExplicitChildrenOf_Test extends EDTSafeTestC
   @RunsInEDT
   private static JPopupMenu popupMenuOf(final JMenu menu) {
     return execute(new GuiQuery<JPopupMenu>() {
+      @Override
       protected JPopupMenu executeInEDT() {
         return menu.getPopupMenu();
       }
@@ -93,6 +93,7 @@ public class JMenuChildrenFinder_nonExplicitChildrenOf_Test extends EDTSafeTestC
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
+        @Override
         protected MyWindow executeInEDT() {
           return new MyWindow();
         }

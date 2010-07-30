@@ -23,7 +23,7 @@ import java.io.File;
 
 import javax.swing.JFileChooser;
 
-import org.junit.*;
+import org.junit.Test;
 
 /**
  * Tests for <code>{@link JFileChooserDriver#selectFiles(JFileChooser, java.io.File[])}</code>.

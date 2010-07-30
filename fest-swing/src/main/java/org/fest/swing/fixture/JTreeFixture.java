@@ -23,8 +23,7 @@ import javax.swing.tree.TreePath;
 
 import org.fest.swing.cell.JTreeCellReader;
 import org.fest.swing.core.*;
-import org.fest.swing.driver.BasicJTreeCellReader;
-import org.fest.swing.driver.JTreeDriver;
+import org.fest.swing.driver.*;
 import org.fest.swing.exception.*;
 import org.fest.swing.timing.Timeout;
 

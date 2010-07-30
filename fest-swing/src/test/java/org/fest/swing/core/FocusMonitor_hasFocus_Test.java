@@ -19,8 +19,7 @@ import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.edt.GuiActionRunner.execute;
 import static org.fest.swing.test.task.ComponentRequestFocusAndWaitForFocusGainTask.giveFocusAndWaitTillIsFocused;
 
-import javax.swing.JButton;
-import javax.swing.JTextField;
+import javax.swing.*;
 
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
@@ -45,7 +44,7 @@ public class FocusMonitor_hasFocus_Test extends SequentialEDTSafeTestCase {
   @Override protected void onTearDown() {
     window.destroy();
   }
-  
+
   @Test
   public void should_return_true_if_Component_gains_focus() {
     FocusMonitor monitor = FocusMonitor.attachTo(window.textBox);
@@ -76,6 +75,7 @@ public class FocusMonitor_hasFocus_Test extends SequentialEDTSafeTestCase {
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
+        @Override
         protected MyWindow executeInEDT() {
           return new MyWindow();
         }

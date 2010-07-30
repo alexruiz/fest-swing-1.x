@@ -21,21 +21,17 @@ import static org.fest.swing.driver.JToolBarIsFloatingQuery.isJToolBarFloating;
 import static org.fest.swing.edt.GuiActionRunner.execute;
 import static org.fest.swing.exception.ActionFailedException.actionFailure;
 import static org.fest.swing.format.Formatting.format;
-import static org.fest.util.Strings.concat;
-import static org.fest.util.Strings.quote;
+import static org.fest.util.Strings.*;
 
 import java.awt.*;
 
 import javax.swing.JToolBar;
 
-import org.fest.swing.annotation.RunsInCurrentThread;
-import org.fest.swing.annotation.RunsInEDT;
+import org.fest.swing.annotation.*;
 import org.fest.swing.core.Robot;
-import org.fest.swing.edt.GuiQuery;
-import org.fest.swing.edt.GuiTask;
+import org.fest.swing.edt.*;
 import org.fest.swing.exception.ActionFailedException;
-import org.fest.swing.util.GenericRange;
-import org.fest.swing.util.Pair;
+import org.fest.swing.util.*;
 
 /**
  * Understands functional testing of <code>{@link JToolBar}</code>s:
@@ -74,6 +70,7 @@ public class JToolBarDriver extends JComponentDriver {
 
   private static boolean floating(final JToolBar toolBar) {
     return execute(new GuiQuery<Boolean>() {
+      @Override
       protected Boolean executeInEDT() {
         return isJToolBarFloating(toolBar);
       }
@@ -112,6 +109,7 @@ public class JToolBarDriver extends JComponentDriver {
   @RunsInEDT
   private static Pair<Point, Pair<Window, Point>> floatInfo(final JToolBar toolBar, final JToolBarLocation location) {
     return execute(new GuiQuery<Pair<Point, Pair<Window, Point>>>() {
+      @Override
       protected Pair<Point, Pair<Window, Point>> executeInEDT() {
         validateIsEnabledAndShowing(toolBar);
         validateIsFloatable(toolBar);
@@ -145,6 +143,7 @@ public class JToolBarDriver extends JComponentDriver {
   @RunsInEDT
   private static void validateFloated(final JToolBar toolBar) {
     execute(new GuiTask() {
+      @Override
       protected void executeInEDT() {
         if (!isJToolBarFloating(toolBar))
           throw actionFailure(concat("Unable to float JToolbar <", format(toolBar), ">"));
@@ -176,6 +175,7 @@ public class JToolBarDriver extends JComponentDriver {
   private static Pair<GenericRange<Point>, Container> unfloatInfo(final JToolBar toolBar, final String constraint,
       final JToolBarLocation location) {
     return execute(new GuiQuery<Pair<GenericRange<Point>, Container>>() {
+      @Override
       protected Pair<GenericRange<Point>, Container> executeInEDT() {
         validateIsEnabledAndShowing(toolBar);
         Container dock = dockFor(toolBar);
@@ -189,6 +189,7 @@ public class JToolBarDriver extends JComponentDriver {
   @RunsInEDT
   private static void validateIsNotFloating(final JToolBar toolBar, final String constraint) {
     execute(new GuiTask() {
+      @Override
       protected void executeInEDT() {
         if (isJToolBarFloating(toolBar))
           throw actionFailure(concat("Failed to dock <", format(toolBar), "> using constraint ", quote(constraint)));
@@ -221,6 +222,7 @@ public class JToolBarDriver extends JComponentDriver {
   @RunsInEDT
   private static Window windowAncestorOf(final JToolBar toolBar) {
     return execute(new GuiQuery<Window>() {
+      @Override
       protected Window executeInEDT() {
         validateIsEnabledAndShowing(toolBar);
         return getWindowAncestor(toolBar);

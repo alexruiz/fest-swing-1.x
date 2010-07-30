@@ -37,6 +37,7 @@ final class JFrameContentPaneQuery  {
 
   static Container contentPaneOf(final JFrame frame) {
     return execute(new GuiQuery<Container>() {
+      @Override
       protected Container executeInEDT() {
         return frame.getContentPane();
       }

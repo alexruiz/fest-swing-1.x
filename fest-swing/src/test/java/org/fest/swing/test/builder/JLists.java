@@ -65,6 +65,7 @@ public final class JLists {
     @RunsInEDT
     public JList createNew() {
       return execute(new GuiQuery<JList>() {
+        @Override
         protected JList executeInEDT() {
           JList list = new JList();
           if (!isEmpty(items)) list.setModel(modelWith(items));

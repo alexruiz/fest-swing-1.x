@@ -33,10 +33,12 @@ public class JTreeFixture_valueAtRow_Test extends JTreeFixture_TestCase {
     final String nodeText = "hello";
     final int row = 6;
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         expect(driver().nodeValue(target(), row)).andReturn(nodeText);
       }
 
+      @Override
       protected void codeToTest() {
         String value = fixture().valueAt(row);
         assertThat(value).isEqualTo(nodeText);

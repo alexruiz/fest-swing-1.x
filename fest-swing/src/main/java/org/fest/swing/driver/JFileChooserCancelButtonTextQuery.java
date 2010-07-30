@@ -15,8 +15,7 @@
  */
 package org.fest.swing.driver;
 
-import javax.swing.JFileChooser;
-import javax.swing.UIManager;
+import javax.swing.*;
 
 /**
  * Understands an action that returns the text used in the "cancel" button of a <code>{@link JFileChooser}</code>.

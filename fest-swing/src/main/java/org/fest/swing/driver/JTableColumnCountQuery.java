@@ -35,6 +35,7 @@ final class JTableColumnCountQuery {
   @RunsInEDT
   static int columnCountOf(final JTable table) {
     return execute(new GuiQuery<Integer>() {
+      @Override
       protected Integer executeInEDT() {
         return table.getColumnCount();
       }

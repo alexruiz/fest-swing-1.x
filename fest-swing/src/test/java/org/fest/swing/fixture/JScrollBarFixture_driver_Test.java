@@ -20,8 +20,7 @@ import static org.fest.swing.core.TestRobots.singletonRobotMock;
 
 import javax.swing.JScrollBar;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Tests for <code>{@link JScrollBarFixture#driver(org.fest.swing.driver.JScrollBarDriver)}</code>.

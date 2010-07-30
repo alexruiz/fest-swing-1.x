@@ -42,13 +42,17 @@ public class JInternalFrameFixture_focusable_Test extends FocusableComponentFixt
     target = internalFrame().createNew();
   }
 
+  @Override
   void onSetUp() {
     driver = createMock(JInternalFrameDriver.class);
     fixture = new JInternalFrameFixture(robot(), target);
     fixture.driver(driver);
   }
 
+  @Override
   JInternalFrameDriver driver() {  return driver; }
+  @Override
   JInternalFrame target() { return target; }
+  @Override
   JInternalFrameFixture fixture() { return fixture; }
 }

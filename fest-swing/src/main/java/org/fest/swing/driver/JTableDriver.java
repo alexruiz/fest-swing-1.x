@@ -17,13 +17,10 @@ package org.fest.swing.driver;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.assertions.Fail.fail;
 import static org.fest.swing.core.MouseButton.LEFT_BUTTON;
-import static org.fest.swing.driver.CommonValidations.validateCellReader;
-import static org.fest.swing.driver.CommonValidations.validateCellWriter;
+import static org.fest.swing.driver.CommonValidations.*;
 import static org.fest.swing.driver.ComponentStateValidator.validateIsEnabledAndShowing;
 import static org.fest.swing.driver.JTableCellEditableQuery.isCellEditable;
-import static org.fest.swing.driver.JTableCellValidator.validateCellIndices;
-import static org.fest.swing.driver.JTableCellValidator.validateIndices;
-import static org.fest.swing.driver.JTableCellValidator.validateNotNull;
+import static org.fest.swing.driver.JTableCellValidator.*;
 import static org.fest.swing.driver.JTableColumnCountQuery.columnCountOf;
 import static org.fest.swing.driver.JTableContentsQuery.tableContents;
 import static org.fest.swing.driver.JTableHasSelectionQuery.hasSelection;
@@ -34,40 +31,25 @@ import static org.fest.swing.driver.TextAssert.verifyThat;
 import static org.fest.swing.edt.GuiActionRunner.execute;
 import static org.fest.swing.exception.ActionFailedException.actionFailure;
 import static org.fest.swing.query.JTableColumnByIdentifierQuery.columnIndexByIdentifier;
-import static org.fest.swing.util.Arrays.equal;
-import static org.fest.swing.util.Arrays.isEmptyIntArray;
-import static org.fest.util.Arrays.format;
-import static org.fest.util.Arrays.isEmpty;
-import static org.fest.util.Strings.concat;
-import static org.fest.util.Strings.quote;
+import static org.fest.swing.util.Arrays.*;
+import static org.fest.util.Arrays.*;
+import static org.fest.util.Strings.*;
 
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Font;
-import java.awt.Point;
+import java.awt.*;
 import java.util.regex.Pattern;
 
-import javax.swing.JPopupMenu;
-import javax.swing.JTable;
+import javax.swing.*;
 import javax.swing.table.JTableHeader;
 
 import org.fest.assertions.Description;
-import org.fest.swing.annotation.RunsInCurrentThread;
-import org.fest.swing.annotation.RunsInEDT;
-import org.fest.swing.cell.JTableCellReader;
-import org.fest.swing.cell.JTableCellWriter;
-import org.fest.swing.core.MouseButton;
+import org.fest.swing.annotation.*;
+import org.fest.swing.cell.*;
+import org.fest.swing.core.*;
 import org.fest.swing.core.Robot;
-import org.fest.swing.data.TableCell;
-import org.fest.swing.data.TableCellFinder;
-import org.fest.swing.edt.GuiQuery;
-import org.fest.swing.edt.GuiTask;
-import org.fest.swing.exception.ActionFailedException;
-import org.fest.swing.exception.ComponentLookupException;
-import org.fest.swing.util.Arrays;
-import org.fest.swing.util.Pair;
-import org.fest.swing.util.PatternTextMatcher;
-import org.fest.swing.util.StringTextMatcher;
+import org.fest.swing.data.*;
+import org.fest.swing.edt.*;
+import org.fest.swing.exception.*;
+import org.fest.swing.util.*;
 import org.fest.util.VisibleForTesting;
 
 /**
@@ -130,6 +112,7 @@ public class JTableDriver extends JComponentDriver {
   @RunsInEDT
   private static String selectionValue(final JTable table, final JTableCellReader cellReader) {
     return execute(new GuiQuery<String>() {
+      @Override
       protected String executeInEDT() {
         if (table.getSelectedRowCount() == 0) return null;
         return cellReader.valueAt(table, table.getSelectedRow(), table.getSelectedColumn());
@@ -199,6 +182,7 @@ public class JTableDriver extends JComponentDriver {
   @RunsInEDT
   private static String cellValue(final JTable table, final TableCell cell, final JTableCellReader cellReader) {
     return execute(new GuiQuery<String>() {
+      @Override
       protected String executeInEDT() {
         validateCellIndices(table, cell);
         return cellReader.valueAt(table, cell.row, cell.column);
@@ -225,6 +209,7 @@ public class JTableDriver extends JComponentDriver {
   private static String cellValue(final JTable table, final int row, final int column,
       final JTableCellReader cellReader) {
     return execute(new GuiQuery<String>() {
+      @Override
       protected String executeInEDT() {
         validateIndices(table, row, column);
         return cellReader.valueAt(table, row, column);
@@ -249,6 +234,7 @@ public class JTableDriver extends JComponentDriver {
   @RunsInEDT
   private static Font cellFont(final JTable table, final TableCell cell, final JTableCellReader cellReader) {
     return execute(new GuiQuery<Font>() {
+      @Override
       protected Font executeInEDT() {
         validateCellIndices(table, cell);
         return cellReader.fontAt(table, cell.row, cell.column);
@@ -273,6 +259,7 @@ public class JTableDriver extends JComponentDriver {
   @RunsInEDT
   private static Color cellBackground(final JTable table, final TableCell cell, final JTableCellReader cellReader) {
     return execute(new GuiQuery<Color>() {
+      @Override
       protected Color executeInEDT() {
         validateCellIndices(table, cell);
         return cellReader.backgroundAt(table, cell.row, cell.column);
@@ -297,6 +284,7 @@ public class JTableDriver extends JComponentDriver {
   @RunsInEDT
   private static Color cellForeground(final JTable table, final TableCell cell, final JTableCellReader cellReader) {
     return execute(new GuiQuery<Color>() {
+      @Override
       protected Color executeInEDT() {
         validateCellIndices(table, cell);
         return cellReader.foregroundAt(table, cell.row, cell.column);
@@ -318,10 +306,12 @@ public class JTableDriver extends JComponentDriver {
   public void selectCells(final JTable table, final TableCell[] cells) {
     validateCellsToSelect(cells);
     new MultipleSelectionTemplate(robot) {
+      @Override
       int elementCount() {
         return cells.length;
       }
 
+      @Override
       void selectElement(int index) {
         selectCell(table, cells[index]);
       }
@@ -346,6 +336,7 @@ public class JTableDriver extends JComponentDriver {
   @RunsInEDT
   private static void assertNoSelection(final JTable table) {
     execute(new GuiTask() {
+      @Override
       protected void executeInEDT() {
         if (!hasSelection(table)) return;
         String message = concat("[", propertyName(table, SELECTION_PROPERTY).value(),
@@ -440,6 +431,7 @@ public class JTableDriver extends JComponentDriver {
   private static Point scrollToPointAtCell(final JTable table, final TableCell cell, final JTableLocation location) {
     validateNotNull(cell);
     return execute(new GuiQuery<Point>() {
+      @Override
       protected Point executeInEDT() {
         scrollToCell(table, cell, location);
         return location.pointAt(table, cell.row, cell.column);
@@ -470,6 +462,7 @@ public class JTableDriver extends JComponentDriver {
   @RunsInEDT
   private static Point pointAtCell(final JTable table, final TableCell cell, final JTableLocation location) {
     return execute(new GuiQuery<Point>() {
+      @Override
       protected Point executeInEDT() {
         validateCellIndices(table, cell);
         return location.pointAt(table, cell.row, cell.column);
@@ -597,6 +590,7 @@ public class JTableDriver extends JComponentDriver {
   private static void requireEditableEqualTo(final JTable table, final TableCell cell, boolean editable) {
     validateNotNull(cell);
     boolean cellEditable = execute(new GuiQuery<Boolean>() {
+      @Override
       protected Boolean executeInEDT() {
         return isCellEditable(table, cell);
       }
@@ -700,6 +694,7 @@ public class JTableDriver extends JComponentDriver {
 
   private static void validateCellIndexBounds(final JTable table, final TableCell cell) {
     execute(new GuiTask() {
+      @Override
       protected void executeInEDT() {
         validateCellIndices(table, cell);
       }
@@ -754,6 +749,7 @@ public class JTableDriver extends JComponentDriver {
   @RunsInEDT
   private static int findColumnIndex(final JTable table, final Object columnId) {
     return execute(new GuiQuery<Integer>() {
+      @Override
       protected Integer executeInEDT() {
         int index = columnIndexByIdentifier(table, columnId);
         if (index < 0) failColumnIndexNotFound(columnId);
@@ -805,10 +801,12 @@ public class JTableDriver extends JComponentDriver {
     if (rows == null) throw new NullPointerException("The array of row indices should not be null");
     if (isEmptyIntArray(rows)) throw new IllegalArgumentException("The array of row indices should not be empty");
     new MultipleSelectionTemplate(robot) {
+      @Override
       int elementCount() {
         return rows.length;
       }
 
+      @Override
       void selectElement(int index) {
         selectCell(table, rows[index], 0);
       }
@@ -826,6 +824,7 @@ public class JTableDriver extends JComponentDriver {
   private static Pair<Boolean, Point> cellSelectionInfo(final JTable table, final int row, final int column,
       final JTableLocation location) {
     return execute(new GuiQuery<Pair<Boolean, Point>>() {
+      @Override
       protected Pair<Boolean, Point> executeInEDT() {
         if (isCellSelected(table, row, column)) return new Pair<Boolean, Point>(true, null);
         scrollToCell(table, row, column, location);
@@ -859,6 +858,7 @@ public class JTableDriver extends JComponentDriver {
   @RunsInEDT
   private static int[] selectedRowsOf(final JTable table) {
     return execute(new GuiQuery<int[]>() {
+      @Override
       protected int[] executeInEDT() {
         return table.getSelectedRows();
       }

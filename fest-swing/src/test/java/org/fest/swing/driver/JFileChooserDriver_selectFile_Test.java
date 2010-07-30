@@ -18,8 +18,7 @@ package org.fest.swing.driver;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.edt.GuiActionRunner.execute;
 import static org.fest.swing.test.core.CommonAssertions.*;
-import static org.fest.util.Files.newTemporaryFile;
-import static org.fest.util.Files.newTemporaryFolder;
+import static org.fest.util.Files.*;
 
 import java.io.File;
 
@@ -53,6 +52,7 @@ public class JFileChooserDriver_selectFile_Test extends JFileChooserDriver_TestC
   @RunsInEDT
   private static File selectedFileIn(final JFileChooser fileChooser) {
     return execute(new GuiQuery<File>() {
+      @Override
       protected File executeInEDT() {
         return fileChooser.getSelectedFile();
       }

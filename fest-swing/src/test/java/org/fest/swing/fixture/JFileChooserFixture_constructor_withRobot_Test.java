@@ -58,6 +58,7 @@ public class JFileChooserFixture_constructor_withRobot_Test extends RobotBasedTe
 
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
+        @Override
         protected MyWindow executeInEDT() {
           return new MyWindow();
         }

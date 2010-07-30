@@ -17,8 +17,7 @@ package org.fest.swing.driver;
 
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.test.core.CommonAssertions.*;
-import static org.fest.swing.util.Range.from;
-import static org.fest.swing.util.Range.to;
+import static org.fest.swing.util.Range.*;
 import static org.fest.util.Arrays.array;
 
 import org.junit.Test;

@@ -47,14 +47,14 @@ public class ComponentFoundCondition_TestAndFound_Test extends RobotBasedTestCas
     toFind = createNewWindow(getClass());
   }
 
-  @Test 
+  @Test
   public void should_return_true_in_test_and_reference_found_Component() {
     matcher.typeToMatch(TestWindow.class);
     assertThat(condition.test()).isTrue();
     assertThat(condition.found()).isSameAs(toFind);
   }
 
-  @Test 
+  @Test
   public void should_return_false_ff_Component_not_found() {
     matcher.typeToMatch(JTextField.class);
     assertThat(condition.test()).isFalse();

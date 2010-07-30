@@ -24,9 +24,7 @@ import static org.fest.swing.test.recorder.ClickRecorder.attachTo;
 
 import java.awt.*;
 
-import javax.swing.Box;
-import javax.swing.JButton;
-import javax.swing.JScrollPane;
+import javax.swing.*;
 
 import org.fest.swing.edt.GuiQuery;
 import org.fest.swing.test.core.RobotBasedTestCase;
@@ -62,6 +60,7 @@ public class FEST284_scrollToVisibleAutomatically_Test extends RobotBasedTestCas
 
     static MyWindow createAndShow() {
       return execute(new GuiQuery<MyWindow>() {
+        @Override
         protected MyWindow executeInEDT() {
           MyWindow w = new MyWindow();
           display(w);

@@ -17,13 +17,11 @@ package org.fest.swing.security;
 
 import static org.fest.swing.security.NoExitSecurityManagerInstaller.installNoExitSecurityManager;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 
 import javax.swing.JButton;
 
-import org.fest.swing.edt.GuiActionRunner;
-import org.fest.swing.edt.GuiQuery;
+import org.fest.swing.edt.*;
 import org.fest.swing.fixture.FrameFixture;
 import org.fest.swing.test.core.RobotBasedTestCase;
 import org.fest.swing.test.swing.TestWindow;
@@ -62,6 +60,7 @@ public class FEST249_shouldNotAllowExit extends RobotBasedTestCase {
 
     static MyWindow createNew() {
       return GuiActionRunner.execute(new GuiQuery<MyWindow>() {
+        @Override
         protected MyWindow executeInEDT() {
           return new MyWindow();
         }

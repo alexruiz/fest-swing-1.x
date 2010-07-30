@@ -19,13 +19,11 @@ import static java.util.Collections.emptyList;
 import static org.fest.util.Strings.concat;
 import static org.fest.util.Systems.LINE_SEPARATOR;
 
-import java.awt.Component;
-import java.awt.Container;
+import java.awt.*;
 import java.util.Collection;
 import java.util.concurrent.atomic.AtomicReference;
 
-import org.fest.assertions.BasicDescription;
-import org.fest.assertions.Description;
+import org.fest.assertions.*;
 import org.fest.swing.exception.ComponentLookupException;
 import org.fest.swing.timing.Condition;
 
@@ -95,6 +93,7 @@ public final class ComponentFoundCondition extends Condition {
    * <code>{@link ComponentMatcher}</code> can be found. Otherwise, this method returns {@code false}.
    * @return {@code true} if a matching component can be found, {@code false} otherwise.
    */
+  @Override
   public boolean test() {
     boolean matchFound = false;
     try {

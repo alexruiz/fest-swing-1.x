@@ -22,12 +22,10 @@ import static org.fest.swing.test.core.CommonAssertions.failWhenExpectingExcepti
 
 import java.awt.BorderLayout;
 
-import javax.swing.JLabel;
-import javax.swing.JToolBar;
+import javax.swing.*;
 
 import org.fest.swing.core.GenericTypeMatcher;
-import org.fest.swing.edt.GuiQuery;
-import org.fest.swing.edt.GuiTask;
+import org.fest.swing.edt.*;
 import org.fest.swing.exception.ComponentLookupException;
 import org.fest.swing.test.core.RobotBasedTestCase;
 import org.fest.swing.test.swing.TestWindow;
@@ -58,6 +56,7 @@ public class ContainerFixtureJToolBarLookupTest extends RobotBasedTestCase {
   @Test
   public void shouldFailIfJToolBarCannotBeFoundByType() {
     execute(new GuiTask() {
+      @Override
       protected void executeInEDT() {
         window.remove(window.toolBar);
       }
@@ -92,6 +91,7 @@ public class ContainerFixtureJToolBarLookupTest extends RobotBasedTestCase {
   @Test
   public void shouldFindJToolBarWithCustomMatcher() {
     JToolBarFixture toolBar = fixture.toolBar(new GenericTypeMatcher<JToolBar>(JToolBar.class) {
+      @Override
       protected boolean isMatching(JToolBar t) {
         return "myToolBar".equals(t.getName());
       }
@@ -107,6 +107,7 @@ public class ContainerFixtureJToolBarLookupTest extends RobotBasedTestCase {
   public void shouldFailIfJToolBarCannotBeFoundWithCustomMatcher() {
     try {
       fixture.toolBar(new GenericTypeMatcher<JToolBar>(JToolBar.class) {
+        @Override
         protected boolean isMatching(JToolBar t) {
           return false;
         }
@@ -124,6 +125,7 @@ public class ContainerFixtureJToolBarLookupTest extends RobotBasedTestCase {
 
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
+        @Override
         protected MyWindow executeInEDT() {
           return new MyWindow();
         }

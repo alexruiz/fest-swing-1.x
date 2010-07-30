@@ -24,18 +24,14 @@ import static org.fest.swing.test.task.ComponentSetEnabledTask.disable;
 
 import java.awt.*;
 
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
+import javax.swing.*;
 import javax.swing.table.JTableHeader;
 
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.data.TableCell;
-import org.fest.swing.edt.GuiQuery;
-import org.fest.swing.edt.GuiTask;
-import org.fest.swing.test.core.MethodInvocations;
-import org.fest.swing.test.core.RobotBasedTestCase;
-import org.fest.swing.test.swing.TestTable;
-import org.fest.swing.test.swing.TestWindow;
+import org.fest.swing.edt.*;
+import org.fest.swing.test.core.*;
+import org.fest.swing.test.swing.*;
 
 /**
  * Base test case for <code>{@link JTableDriver}</code>.
@@ -100,6 +96,7 @@ public abstract class JTableDriver_TestCase extends RobotBasedTestCase {
   @RunsInEDT
   private static boolean isCellSelected(final JTable table, final int row, final int column) {
     return execute(new GuiQuery<Boolean>() {
+      @Override
       protected Boolean executeInEDT() {
         return table.isCellSelected(row, column);
       }
@@ -115,6 +112,7 @@ public abstract class JTableDriver_TestCase extends RobotBasedTestCase {
   @RunsInEDT
   private static void setMultipleIntervalSelectionTo(final JTable table) {
     execute(new GuiTask() {
+      @Override
       protected void executeInEDT() {
         table.setSelectionMode(MULTIPLE_INTERVAL_SELECTION);
       }
@@ -130,6 +128,7 @@ public abstract class JTableDriver_TestCase extends RobotBasedTestCase {
   @RunsInEDT
   private static void selectCell(final JTable table, final int row, final int column) {
     execute(new GuiTask() {
+      @Override
       protected void executeInEDT() {
         table.changeSelection(row, column, false, false);
       }
@@ -178,6 +177,7 @@ public abstract class JTableDriver_TestCase extends RobotBasedTestCase {
     @RunsInEDT
     static MyWindow createNew(final Class<?> testClass) {
       return execute(new GuiQuery<MyWindow>() {
+        @Override
         protected MyWindow executeInEDT() {
           return new MyWindow(testClass);
         }

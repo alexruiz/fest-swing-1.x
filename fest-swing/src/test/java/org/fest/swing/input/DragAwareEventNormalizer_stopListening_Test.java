@@ -23,8 +23,7 @@ import java.awt.Toolkit;
 
 import org.fest.mocks.EasyMockTemplate;
 import org.fest.swing.test.awt.ToolkitStub;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Tests for <code>{@link DragAwareEventNormalizer#stopListening()}</code>.
@@ -37,6 +36,7 @@ public class DragAwareEventNormalizer_stopListening_Test extends DragAwareEventN
   private EventQueueStub eventQueue;
   private int mask;
 
+  @Override
   @Before
   public void setUp() {
     eventQueue = new EventQueueStub();
@@ -55,11 +55,13 @@ public class DragAwareEventNormalizer_stopListening_Test extends DragAwareEventN
     };
     eventNormalizer.startListening(toolkit, delegateEventListenerMock(), mask);
     new EasyMockTemplate(dragAwareEventQueue) {
+      @Override
       protected void expectations() {
         dragAwareEventQueue.pop();
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         eventNormalizer.stopListening();
       }

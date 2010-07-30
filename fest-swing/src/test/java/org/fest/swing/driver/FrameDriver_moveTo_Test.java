@@ -37,7 +37,7 @@ public class FrameDriver_moveTo_Test extends FrameDriver_TestCase {
     driver.moveTo(window, newLocation);
     assertThat(windowLocationOnScreen()).isEqualTo(newLocation);
   }
-  
+
   @Test
   public void should_throw_error_if_Frame_is_disabled() {
     disableWindow();

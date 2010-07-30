@@ -68,6 +68,7 @@ public class JLabelMatcher_matches_byTextAndShowing_Test extends SequentialEDTSa
     @RunsInEDT
     static MyWindow createAndShow() {
       return execute(new GuiQuery<MyWindow>() {
+        @Override
         protected MyWindow executeInEDT() {
           return display(new MyWindow());
         }

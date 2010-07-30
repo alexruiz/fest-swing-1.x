@@ -14,78 +14,49 @@
  */
 package org.fest.swing.core;
 
-import static java.awt.event.InputEvent.BUTTON1_MASK;
-import static java.awt.event.InputEvent.BUTTON2_MASK;
-import static java.awt.event.InputEvent.BUTTON3_MASK;
-import static java.awt.event.KeyEvent.CHAR_UNDEFINED;
-import static java.awt.event.KeyEvent.KEY_TYPED;
-import static java.awt.event.KeyEvent.VK_UNDEFINED;
+import static java.awt.event.InputEvent.*;
+import static java.awt.event.KeyEvent.*;
 import static java.awt.event.WindowEvent.WINDOW_CLOSING;
 import static java.lang.System.currentTimeMillis;
-import static javax.swing.SwingUtilities.getWindowAncestor;
-import static javax.swing.SwingUtilities.isEventDispatchThread;
-import static org.fest.swing.awt.AWT.centerOf;
-import static org.fest.swing.awt.AWT.visibleCenterOf;
+import static javax.swing.SwingUtilities.*;
+import static org.fest.swing.awt.AWT.*;
 import static org.fest.swing.core.ActivateWindowTask.activateWindow;
 import static org.fest.swing.core.ComponentIsFocusableQuery.isFocusable;
 import static org.fest.swing.core.ComponentRequestFocusTask.giveFocusTo;
-import static org.fest.swing.core.FocusOwnerFinder.focusOwner;
-import static org.fest.swing.core.FocusOwnerFinder.inEdtFocusOwner;
+import static org.fest.swing.core.FocusOwnerFinder.*;
 import static org.fest.swing.core.InputModifiers.unify;
-import static org.fest.swing.core.MouseButton.LEFT_BUTTON;
-import static org.fest.swing.core.MouseButton.RIGHT_BUTTON;
+import static org.fest.swing.core.MouseButton.*;
 import static org.fest.swing.core.Scrolling.scrollToVisible;
 import static org.fest.swing.core.WindowAncestorFinder.windowAncestorOf;
 import static org.fest.swing.edt.GuiActionRunner.execute;
 import static org.fest.swing.exception.ActionFailedException.actionFailure;
-import static org.fest.swing.format.Formatting.format;
-import static org.fest.swing.format.Formatting.inEdtFormat;
+import static org.fest.swing.format.Formatting.*;
 import static org.fest.swing.hierarchy.NewHierarchy.ignoreExistingComponents;
 import static org.fest.swing.keystroke.KeyStrokeMap.keyStrokeFor;
 import static org.fest.swing.query.ComponentShowingQuery.isShowing;
 import static org.fest.swing.timing.Pause.pause;
-import static org.fest.swing.util.Modifiers.keysFor;
-import static org.fest.swing.util.Modifiers.updateModifierWithKeyCode;
+import static org.fest.swing.util.Modifiers.*;
 import static org.fest.swing.util.TimeoutWatch.startWatchWithTimeoutOf;
-import static org.fest.util.Strings.concat;
-import static org.fest.util.Strings.isEmpty;
+import static org.fest.util.Strings.*;
 
 import java.applet.Applet;
-import java.awt.Component;
-import java.awt.Container;
-import java.awt.Dimension;
-import java.awt.EventQueue;
-import java.awt.Point;
-import java.awt.Toolkit;
-import java.awt.Window;
-import java.awt.event.InvocationEvent;
-import java.awt.event.KeyEvent;
-import java.awt.event.WindowEvent;
-import java.util.ArrayList;
-import java.util.Collection;
+import java.awt.*;
+import java.awt.event.*;
+import java.util.*;
 import java.util.List;
 
-import javax.swing.JComponent;
-import javax.swing.JMenu;
-import javax.swing.JPopupMenu;
-import javax.swing.KeyStroke;
+import javax.swing.*;
 
 import net.jcip.annotations.GuardedBy;
 
-import org.fest.swing.annotation.RunsInCurrentThread;
-import org.fest.swing.annotation.RunsInEDT;
-import org.fest.swing.edt.GuiQuery;
-import org.fest.swing.edt.GuiTask;
-import org.fest.swing.exception.ActionFailedException;
-import org.fest.swing.exception.ComponentLookupException;
-import org.fest.swing.exception.WaitTimedOutError;
-import org.fest.swing.hierarchy.ComponentHierarchy;
-import org.fest.swing.hierarchy.ExistingHierarchy;
+import org.fest.swing.annotation.*;
+import org.fest.swing.edt.*;
+import org.fest.swing.exception.*;
+import org.fest.swing.hierarchy.*;
 import org.fest.swing.input.InputState;
 import org.fest.swing.lock.ScreenLock;
 import org.fest.swing.monitor.WindowMonitor;
-import org.fest.swing.util.Pair;
-import org.fest.swing.util.TimeoutWatch;
+import org.fest.swing.util.*;
 import org.fest.util.VisibleForTesting;
 
 /**
@@ -139,9 +110,9 @@ public class BasicRobot implements Robot {
   }
 
   public static Robot robotWithNewAwtHierarchyWithoutScreenLock() {
-	return new BasicRobot(null, ignoreExistingComponents());	
+	return new BasicRobot(null, ignoreExistingComponents());
   }
-  
+
   /**
    * Creates a new <code>{@link Robot}</code> that has access to all the GUI components in the AWT hierarchy.
    * @return the created <code>Robot</code>.
@@ -151,10 +122,11 @@ public class BasicRobot implements Robot {
     return new BasicRobot(screenLockOwner, new ExistingHierarchy());
   }
 
+  // TODO document
   public static Robot robotWithCurrentAwtHierarchyWithoutScreenLock() {
 	  return new BasicRobot(null, new ExistingHierarchy());
   }
-  
+
   private static Object acquireScreenLock() {
     Object screenLockOwner = new Object();
     ScreenLock.instance().acquire(screenLockOwner);
@@ -298,6 +270,7 @@ public class BasicRobot implements Robot {
   @RunsInEDT
   private static Pair<Window, Window> windowAncestorsOf(final Component one, final Component two) {
     return execute(new GuiQuery<Pair<Window, Window>>() {
+      @Override
       protected Pair<Window, Window> executeInEDT() throws Throwable {
         return new Pair<Window, Window>(windowAncestor(one), windowAncestor(two));
       }
@@ -349,6 +322,7 @@ public class BasicRobot implements Robot {
   @RunsInEDT
   private static void disposeWindows(final ComponentHierarchy hierarchy) {
     execute(new GuiTask() {
+      @Override
       protected void executeInEDT() {
         for (Container c : hierarchy.roots()) if (c instanceof Window) dispose(hierarchy, (Window)c);
       }
@@ -391,11 +365,11 @@ public class BasicRobot implements Robot {
   public void click(Component c, MouseButton button, int times) {
     Point where = visibleCenterOf(c);
     if (c instanceof JComponent)
-      where = scrollIfNecessary((JComponent) c, where);
+      where = scrollIfNecessary((JComponent) c);
     click(c, where, button, times);
   }
 
-  private Point scrollIfNecessary(JComponent c, Point p) {
+  private Point scrollIfNecessary(JComponent c) {
     scrollToVisible(this, c);
     return visibleCenterOf(c);
   }
@@ -566,6 +540,7 @@ public class BasicRobot implements Robot {
   @RunsInEDT
   private static Pair<Component, Point> invokerAndCenterOfInvoker(final JPopupMenu popupMenu) {
     return execute(new GuiQuery<Pair<Component, Point>>() {
+      @Override
       protected Pair<Component, Point> executeInEDT() {
         Component invoker = popupMenu.getInvoker();
         return new Pair<Component, Point>(invoker, centerOf(invoker));
@@ -598,7 +573,7 @@ public class BasicRobot implements Robot {
   }
 
   private KeyEvent keyEventFor(Component c, char character) {
-    return new KeyEvent(c, KEY_TYPED, System.currentTimeMillis(), 0, VK_UNDEFINED, character);
+    return new KeyEvent(c, KEY_TYPED, currentTimeMillis(), 0, VK_UNDEFINED, character);
   }
 
   /** {@inheritDoc} */
@@ -745,6 +720,7 @@ public class BasicRobot implements Robot {
   @RunsInEDT
   private boolean isWindowAncestorReadyForInput(final JPopupMenu popup) {
     return execute(new GuiQuery<Boolean>() {
+      @Override
       protected Boolean executeInEDT() {
         return isReadyForInput(getWindowAncestor(popup));
       }

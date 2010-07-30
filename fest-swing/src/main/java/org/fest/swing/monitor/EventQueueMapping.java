@@ -15,8 +15,7 @@
  */
 package org.fest.swing.monitor;
 
-import java.awt.Component;
-import java.awt.EventQueue;
+import java.awt.*;
 import java.lang.ref.WeakReference;
 import java.util.*;
 

@@ -24,15 +24,13 @@ import java.util.Collection;
 import javax.swing.JCheckBox;
 
 import org.fest.swing.annotation.RunsInEDT;
-import org.fest.swing.edt.GuiActionRunner;
-import org.fest.swing.edt.GuiQuery;
-import org.fest.swing.test.core.MethodInvocations;
-import org.fest.swing.test.core.RobotBasedTestCase;
+import org.fest.swing.edt.*;
+import org.fest.swing.test.core.*;
 import org.fest.swing.test.data.BooleanProvider;
 import org.fest.swing.test.swing.TestWindow;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
+import org.junit.runners.*;
 import org.junit.runners.Parameterized.Parameters;
 
 /**
@@ -46,12 +44,12 @@ public class AbstractButtonSelectedQuery_isSelected_Test extends RobotBasedTestC
   private MyCheckBox checkBox;
 
   private final boolean selected;
-  
+
   @Parameters
   public static Collection<Object[]> booleans() {
     return list(BooleanProvider.booleans());
   }
-  
+
   public AbstractButtonSelectedQuery_isSelected_Test(boolean selected) {
     this.selected = selected;
   }
@@ -77,6 +75,7 @@ public class AbstractButtonSelectedQuery_isSelected_Test extends RobotBasedTestC
     @RunsInEDT
     static MyWindow createNew() {
       return GuiActionRunner.execute(new GuiQuery<MyWindow>() {
+        @Override
         protected MyWindow executeInEDT() {
           return new MyWindow();
         }

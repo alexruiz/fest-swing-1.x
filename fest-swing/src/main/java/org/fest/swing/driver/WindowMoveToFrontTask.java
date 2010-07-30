@@ -33,6 +33,7 @@ final class WindowMoveToFrontTask {
   @RunsInEDT
   static void toFront(final Window w) {
     execute(new GuiTask() {
+      @Override
       protected void executeInEDT() {
         w.toFront();
       }

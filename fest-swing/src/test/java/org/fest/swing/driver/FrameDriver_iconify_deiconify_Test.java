@@ -15,14 +15,13 @@
  */
 package org.fest.swing.driver;
 
-import static java.awt.Frame.ICONIFIED;
-import static java.awt.Frame.NORMAL;
+import static java.awt.Frame.*;
 import static org.fest.assertions.Assertions.assertThat;
 
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link FrameDriver#iconify(java.awt.Frame)}</code> and 
+ * Tests for <code>{@link FrameDriver#iconify(java.awt.Frame)}</code> and
  * <code>{@link FrameDriver#deiconify(java.awt.Frame)}</code>.
  *
  * @author Alex Ruiz

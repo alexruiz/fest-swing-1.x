@@ -20,8 +20,7 @@ import static org.fest.util.Collections.list;
 
 import java.util.Vector;
 
-import javax.swing.JComboBox;
-import javax.swing.JTextField;
+import javax.swing.*;
 
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
@@ -65,6 +64,7 @@ public class FEST102_enteringTextInJComboBoxIgnoresFirstCharacter_Test extends R
   private static String textOf(JComboBoxFixture comboBox) {
     final JComboBox c = comboBox.component();
     return execute(new GuiQuery<String>() {
+      @Override
       protected String executeInEDT() {
         JTextField editor = (JTextField)c.getEditor().getEditorComponent();
         return editor.getText();
@@ -80,6 +80,7 @@ public class FEST102_enteringTextInJComboBoxIgnoresFirstCharacter_Test extends R
     @RunsInEDT
     static MyWindow createNew(final Vector<?> comboBoxItems) {
       return execute(new GuiQuery<MyWindow>() {
+        @Override
         protected MyWindow executeInEDT() {
           return new MyWindow(comboBoxItems);
         }

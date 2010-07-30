@@ -20,11 +20,9 @@ import static org.fest.util.Strings.concat;
 
 import java.awt.Dimension;
 
-import javax.swing.JDesktopPane;
-import javax.swing.JInternalFrame;
+import javax.swing.*;
 
-import org.fest.swing.annotation.RunsInCurrentThread;
-import org.fest.swing.annotation.RunsInEDT;
+import org.fest.swing.annotation.*;
 import org.fest.swing.edt.GuiQuery;
 
 /**
@@ -48,6 +46,7 @@ public class TestMdiWindow extends TestWindow {
   @RunsInEDT
   public static TestMdiWindow createAndShowNewWindow(final Class<?> testClass) {
     return execute(new GuiQuery<TestMdiWindow>() {
+      @Override
       protected TestMdiWindow executeInEDT() {
         TestMdiWindow window = createInCurrentThread(testClass);
         TestWindow.display(window, new Dimension(500, 300));
@@ -65,6 +64,7 @@ public class TestMdiWindow extends TestWindow {
   @RunsInEDT
   public static TestMdiWindow createNewWindow(final Class<?> testClass) {
     return execute(new GuiQuery<TestMdiWindow>() {
+      @Override
       protected TestMdiWindow executeInEDT() {
         return createInCurrentThread(testClass);
       }

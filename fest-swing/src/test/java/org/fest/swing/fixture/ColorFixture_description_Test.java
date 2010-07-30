@@ -20,8 +20,7 @@ import static org.fest.assertions.Assertions.assertThat;
 
 import java.awt.Color;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Tests for <code>{@link ColorFixture#description()}</code>.

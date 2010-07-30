@@ -33,6 +33,7 @@ final class JListSelectionIndicesQuery {
   @RunsInEDT
   static int[] selectedIndices(final JList list) {
     return execute(new GuiQuery<int[]>() {
+      @Override
       protected int[] executeInEDT() {
         return list.getSelectedIndices();
       }

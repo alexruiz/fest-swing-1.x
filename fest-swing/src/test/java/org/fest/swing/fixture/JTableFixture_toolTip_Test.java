@@ -42,13 +42,17 @@ public class JTableFixture_toolTip_Test extends ToolTipDisplayFixture_TestCase<J
     target = table().createNew();
   }
 
+  @Override
   void onSetUp() {
     driver = createMock(JTableDriver.class);
     fixture = new JTableFixture(robot(), target);
     fixture.driver(driver);
   }
 
+  @Override
   JTableDriver driver() {  return driver; }
+  @Override
   JTable target() { return target; }
+  @Override
   JTableFixture fixture() { return fixture; }
 }

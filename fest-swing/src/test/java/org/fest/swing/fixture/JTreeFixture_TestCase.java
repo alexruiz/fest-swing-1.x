@@ -42,13 +42,17 @@ public class JTreeFixture_TestCase extends ComponentFixture_Implementations_Test
     target = tree().createNew();
   }
 
+  @Override
   final void onSetUp() {
     driver = createMock(JTreeDriver.class);
     fixture = new JTreeFixture(robot(), target);
     fixture.driver(driver);
   }
 
+  @Override
   final JTreeDriver driver() { return driver; }
+  @Override
   final JTree target() { return target; }
+  @Override
   final JTreeFixture fixture() { return fixture; }
 }

@@ -21,8 +21,7 @@ import static org.fest.swing.query.ComponentForegroundQuery.foregroundOf;
 
 import java.awt.Color;
 
-import javax.swing.JLabel;
-import javax.swing.JTable;
+import javax.swing.*;
 
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
@@ -48,6 +47,7 @@ public class BasicJTableCellReader_foregroundAt_Test extends BasicJTableCellRead
   private static Color foregroundAt(final BasicJTableCellReader reader, final JTable table, final int row,
       final int column) {
     return execute(new GuiQuery<Color>() {
+      @Override
       protected Color executeInEDT() {
         return reader.foregroundAt(table, row, column);
       }

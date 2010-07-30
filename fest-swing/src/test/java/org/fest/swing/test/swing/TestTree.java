@@ -53,6 +53,7 @@ public final class TestTree extends JTree {
       super(JTree.class);
     }
 
+    @Override
     protected String exportString(JTree tree) {
       rows = tree.getSelectionRows();
       StringBuilder b = new StringBuilder();
@@ -65,6 +66,7 @@ public final class TestTree extends JTree {
       return b.toString();
     }
 
+    @Override
     protected void importString(JTree target, String s) {
       DefaultTreeModel model = (DefaultTreeModel) target.getModel();
       int index = target.getRowForPath(target.getSelectionPath());
@@ -86,6 +88,7 @@ public final class TestTree extends JTree {
     }
 
     // not working perfectly right, but good enough for testing.
+    @Override
     protected void cleanup(JTree source, boolean remove) {
       if (remove && rows != null) {
         DefaultTreeModel model = (DefaultTreeModel) source.getModel();

@@ -38,11 +38,13 @@ public class JListMatchingItemQuery_matchingItemIndices_Test extends JListMatchi
   public void should_return_indices_of_matching_items() {
     final TextMatcher matcher = mockTextMatcher();
     new EasyMockTemplate(matcher) {
+      @Override
       protected void expectations() {
         expect(matcher.isMatching("Yoda")).andReturn(false);
         expect(matcher.isMatching("Luke")).andReturn(true);
       }
 
+      @Override
       protected void codeToTest() {
         List<Integer> indices = JListMatchingItemQuery.matchingItemIndices(list, matcher, cellReader);
         assertThat(indices).hasSize(1).containsOnly(1);
@@ -54,11 +56,13 @@ public class JListMatchingItemQuery_matchingItemIndices_Test extends JListMatchi
   public void should_return_empty_list_if_matching_indices_not_found() {
     final TextMatcher matcher = mockTextMatcher();
     new EasyMockTemplate(matcher) {
+      @Override
       protected void expectations() {
         expect(matcher.isMatching("Yoda")).andReturn(false);
         expect(matcher.isMatching("Luke")).andReturn(false);
       }
 
+      @Override
       protected void codeToTest() {
         List<Integer> indices = JListMatchingItemQuery.matchingItemIndices(list, matcher, cellReader);
         assertThat(indices).isEmpty();

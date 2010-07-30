@@ -18,8 +18,7 @@
  */
 package org.fest.swing.test.swing;
 
-import static java.awt.Color.PINK;
-import static java.awt.Color.RED;
+import static java.awt.Color.*;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 import static javax.swing.SwingUtilities.invokeLater;
 

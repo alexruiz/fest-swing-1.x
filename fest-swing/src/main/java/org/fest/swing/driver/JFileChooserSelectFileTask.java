@@ -15,8 +15,7 @@
  */
 package org.fest.swing.driver;
 
-import static javax.swing.JFileChooser.DIRECTORIES_ONLY;
-import static javax.swing.JFileChooser.FILES_ONLY;
+import static javax.swing.JFileChooser.*;
 import static org.fest.swing.driver.ComponentStateValidator.validateIsEnabledAndShowing;
 import static org.fest.swing.edt.GuiActionRunner.execute;
 import static org.fest.swing.format.Formatting.format;
@@ -26,14 +25,13 @@ import java.io.File;
 
 import javax.swing.JFileChooser;
 
-import org.fest.swing.annotation.RunsInCurrentThread;
-import org.fest.swing.annotation.RunsInEDT;
+import org.fest.swing.annotation.*;
 import org.fest.swing.edt.GuiTask;
 
 /**
  * Understands a task that selects a file in a <code>{@link JFileChooser}</code>. This task is executed in the event
  * dispatch thread.
- * 
+ *
  * @author Alex Ruiz
  */
 final class JFileChooserSelectFileTask {
@@ -41,6 +39,7 @@ final class JFileChooserSelectFileTask {
   @RunsInEDT
   static void validateAndSelectFile(final JFileChooser fileChooser, final File file) {
     execute(new GuiTask() {
+      @Override
       protected void executeInEDT() {
         validateIsEnabledAndShowing(fileChooser);
         validateFileToChoose(fileChooser, file);
@@ -52,6 +51,7 @@ final class JFileChooserSelectFileTask {
   @RunsInEDT
   static void validateAndSelectFiles(final JFileChooser fileChooser, final File[] files) {
     execute(new GuiTask() {
+      @Override
       protected void executeInEDT() {
         validateIsEnabledAndShowing(fileChooser);
         if (files.length > 1 && !fileChooser.isMultiSelectionEnabled())

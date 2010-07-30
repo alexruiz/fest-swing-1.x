@@ -21,18 +21,14 @@ import static org.fest.swing.driver.KeyStrokes.findKeyStrokesForAction;
 import static org.fest.swing.driver.TextAssert.verifyThat;
 import static org.fest.swing.edt.GuiActionRunner.execute;
 import static org.fest.swing.exception.ActionFailedException.actionFailure;
-import static org.fest.util.Strings.concat;
-import static org.fest.util.Strings.quote;
+import static org.fest.util.Strings.*;
 
-import java.awt.Point;
-import java.awt.Rectangle;
+import java.awt.*;
 import java.util.regex.Pattern;
 
-import javax.swing.JComponent;
-import javax.swing.KeyStroke;
+import javax.swing.*;
 
-import org.fest.swing.annotation.RunsInCurrentThread;
-import org.fest.swing.annotation.RunsInEDT;
+import org.fest.swing.annotation.*;
 import org.fest.swing.core.Robot;
 import org.fest.swing.edt.GuiQuery;
 import org.fest.swing.exception.ActionFailedException;
@@ -194,6 +190,7 @@ public class JComponentDriver extends ContainerDriver {
 
   private static Object clientPropertyIn(final JComponent c, final Object key) {
     return execute(new GuiQuery<Object>() {
+      @Override
       protected Object executeInEDT() {
         return c.getClientProperty(key);
       }

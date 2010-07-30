@@ -19,33 +19,34 @@
 
 package org.fest.swing.test.builder;
 
+import static org.fest.swing.edt.GuiActionRunner.execute;
+
 import javax.swing.JApplet;
 
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
 
-import static org.fest.swing.edt.GuiActionRunner.execute;
-
 public final class JApplets {
-	
+
 	private JApplets() {}
-	
+
 	public static JAppletFactory applet() {
 		return new JAppletFactory();
 	}
 
 	public static class JAppletFactory {
 		String name;
-		
+
 		public JAppletFactory withName(String newName) {
 			name = newName;
 			return this;
 		}
-		
+
 		@RunsInEDT
 		public JApplet createNew() {
 			return execute( new GuiQuery<JApplet>() {
-				protected JApplet executeInEDT() {
+				@Override
+        protected JApplet executeInEDT() {
 					JApplet applet = new JApplet();
 					applet.setName(name);
 					return applet;

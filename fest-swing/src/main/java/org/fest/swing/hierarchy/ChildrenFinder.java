@@ -18,9 +18,9 @@ package org.fest.swing.hierarchy;
 import static java.util.Collections.emptyList;
 import static org.fest.swing.hierarchy.ContainerComponentsQuery.componentsOf;
 
-import java.awt.Component;
-import java.awt.Container;
+import java.awt.*;
 import java.util.*;
+import java.util.List;
 
 import org.fest.swing.annotation.RunsInCurrentThread;
 import org.fest.util.VisibleForTesting;

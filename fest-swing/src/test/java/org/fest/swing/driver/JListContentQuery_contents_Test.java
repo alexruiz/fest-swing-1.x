@@ -21,8 +21,7 @@ import static org.fest.util.Arrays.array;
 
 import java.awt.Dimension;
 
-import javax.swing.JList;
-import javax.swing.JScrollPane;
+import javax.swing.*;
 
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.cell.JListCellReader;
@@ -62,6 +61,7 @@ public class JListContentQuery_contents_Test extends RobotBasedTestCase {
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
+        @Override
         protected MyWindow executeInEDT() {
           return new MyWindow();
         }

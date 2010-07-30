@@ -19,16 +19,14 @@ import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.edt.GuiActionRunner.execute;
 import static org.fest.swing.hierarchy.JFrameContentPaneQuery.contentPaneOf;
 
-import java.awt.Component;
-import java.awt.Container;
+import java.awt.*;
 
 import javax.swing.*;
 
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
 import org.fest.swing.test.core.SequentialEDTSafeTestCase;
-import org.fest.swing.test.swing.TestMdiWindow;
-import org.fest.swing.test.swing.TestWindow;
+import org.fest.swing.test.swing.*;
 import org.junit.Test;
 
 /**
@@ -62,6 +60,7 @@ public class ParentFinder_parentOf_Test extends SequentialEDTSafeTestCase {
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
+        @Override
         protected MyWindow executeInEDT() {
           return new MyWindow();
         }
@@ -91,6 +90,7 @@ public class ParentFinder_parentOf_Test extends SequentialEDTSafeTestCase {
   @RunsInEDT
   private static Container findParent(final ParentFinder finder, final Component c) {
     return execute(new GuiQuery<Container>() {
+      @Override
       protected Container executeInEDT() {
         return finder.parentOf(c);
       }
@@ -100,6 +100,7 @@ public class ParentFinder_parentOf_Test extends SequentialEDTSafeTestCase {
   @RunsInEDT
   private static JDesktopPane desktopPaneOf(final JInternalFrame internalFrame) {
     return execute(new GuiQuery<JDesktopPane>() {
+      @Override
       protected JDesktopPane executeInEDT() {
         return internalFrame.getDesktopIcon().getDesktopPane();
       }

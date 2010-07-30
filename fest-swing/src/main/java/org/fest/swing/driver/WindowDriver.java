@@ -22,8 +22,7 @@ import java.awt.*;
 
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.core.Robot;
-import org.fest.swing.edt.GuiQuery;
-import org.fest.swing.edt.GuiTask;
+import org.fest.swing.edt.*;
 import org.fest.swing.exception.ActionFailedException;
 
 /**
@@ -114,6 +113,7 @@ public class WindowDriver extends ContainerDriver {
   @RunsInEDT
   private static Point closeInfo(final Window w) {
     return execute(new GuiQuery<Point>() {
+      @Override
       protected Point executeInEDT() {
         validateIsEnabledAndShowing(w);
         return closeLocationOf(w);
@@ -153,6 +153,7 @@ public class WindowDriver extends ContainerDriver {
   @RunsInEDT
   private static void doMoveToFront(final Window w) {
     execute(new GuiTask() {
+      @Override
       protected void executeInEDT() {
         w.toFront();
       }
@@ -173,6 +174,7 @@ public class WindowDriver extends ContainerDriver {
   @RunsInEDT
   private static void doMoveToBack(final Window w) {
     execute(new GuiTask() {
+      @Override
       protected void executeInEDT() {
         w.toBack();
       }

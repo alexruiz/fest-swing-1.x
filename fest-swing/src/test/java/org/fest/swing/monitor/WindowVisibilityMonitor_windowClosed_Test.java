@@ -33,8 +33,10 @@ public class WindowVisibilityMonitor_windowClosed_Test extends WindowVisibilityM
   public void should_remove_itself_when_Window_is_closed() {
     window.startRecording();
     new EasyMockTemplate(windows) {
+      @Override
       protected void expectations() {}
 
+      @Override
       protected void codeToTest() {
         monitor.windowClosed(new WindowEvent(window, 8));
         assertThat(window.requireInvoked("removeWindowListener", args(monitor)));

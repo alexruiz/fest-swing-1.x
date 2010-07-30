@@ -25,8 +25,7 @@ import static org.fest.util.Strings.concat;
 
 import java.io.File;
 
-import javax.swing.JButton;
-import javax.swing.JTextField;
+import javax.swing.*;
 
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
@@ -80,6 +79,7 @@ public class ScreenshotTaker_saveComponentAsPng_Test extends SequentialEDTSafeTe
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
+        @Override
         protected MyWindow executeInEDT() {
           return new MyWindow();
         }

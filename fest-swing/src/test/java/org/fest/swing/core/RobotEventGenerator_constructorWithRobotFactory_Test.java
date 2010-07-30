@@ -21,14 +21,13 @@ import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.test.core.CommonAssertions.failWhenExpectingException;
 import static org.fest.swing.util.TestRobotFactories.newRobotFactoryMock;
 
-import java.awt.AWTException;
+import java.awt.*;
 import java.awt.Robot;
 
 import org.fest.mocks.EasyMockTemplate;
 import org.fest.swing.exception.UnexpectedException;
 import org.fest.swing.util.RobotFactory;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Tests for <code>{@link RobotEventGenerator#RobotEventGenerator(org.fest.swing.util.RobotFactory, Settings)}</code>.
@@ -48,10 +47,12 @@ public class RobotEventGenerator_constructorWithRobotFactory_Test {
   public void should_use_RobotFactory_to_create_AWTRobot() {
     final Robot robot = createMock(Robot.class);
     new EasyMockTemplate(robotFactory) {
+      @Override
       protected void expectations() throws Throwable {
         expect(robotFactory.newRobotInPrimaryScreen()).andReturn(robot);
       }
 
+      @Override
       protected void codeToTest() {
         RobotEventGenerator eventGenerator = new RobotEventGenerator(robotFactory, new Settings());
         assertThat(eventGenerator.robot()).isSameAs(robot);
@@ -63,10 +64,12 @@ public class RobotEventGenerator_constructorWithRobotFactory_Test {
   public void should_rethrow_any_error_from_RobotFactory()  {
     final AWTException toThrow = new AWTException("Thrown on purpose");
     new EasyMockTemplate(robotFactory) {
+      @Override
       protected void expectations() throws Throwable {
         expect(robotFactory.newRobotInPrimaryScreen()).andThrow(toThrow);
       }
 
+      @Override
       protected void codeToTest() {
         try {
           new RobotEventGenerator(robotFactory, new Settings());

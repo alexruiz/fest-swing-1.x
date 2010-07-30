@@ -28,11 +28,10 @@ import javax.swing.text.JTextComponent;
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
 import org.fest.swing.test.core.RobotBasedTestCase;
-import org.fest.swing.test.swing.TableRenderDemo;
-import org.fest.swing.test.swing.TestWindow;
+import org.fest.swing.test.swing.*;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
+import org.junit.runners.*;
 import org.junit.runners.Parameterized.Parameters;
 
 /**
@@ -45,7 +44,7 @@ import org.junit.runners.Parameterized.Parameters;
 public class JTableCellEditorQuery_cellEditorIn_Test extends RobotBasedTestCase {
 
   private JTable table;
-  
+
   private final int column;
   private final Class<?> editorType;
 
@@ -62,7 +61,7 @@ public class JTableCellEditorQuery_cellEditorIn_Test extends RobotBasedTestCase 
     this.column = column;
     this.editorType = editorType;
   }
-  
+
   @Override protected void onSetUp() {
     MyWindow window = MyWindow.createNew();
     table = window.table;
@@ -78,12 +77,13 @@ public class JTableCellEditorQuery_cellEditorIn_Test extends RobotBasedTestCase 
   @RunsInEDT
   private static Component cellEditorIn(final JTable table, final int row, final int column) {
     return execute(new GuiQuery<Component>() {
+      @Override
       protected Component executeInEDT() {
         return JTableCellEditorQuery.cellEditorIn(table, row, column);
       }
     });
   }
-  
+
   private static class MyWindow extends TestWindow {
     private static final long serialVersionUID = 1L;
 
@@ -92,6 +92,7 @@ public class JTableCellEditorQuery_cellEditorIn_Test extends RobotBasedTestCase 
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
+        @Override
         protected MyWindow executeInEDT() {
           return new MyWindow();
         }

@@ -35,6 +35,7 @@ final class AbstractButtonTextQuery {
   @RunsInEDT
   static String textOf(final AbstractButton button) {
     return execute(new GuiQuery<String>() {
+      @Override
       protected String executeInEDT() {
         return button.getText();
       }

@@ -18,8 +18,7 @@ package org.fest.swing.driver;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.driver.AbstractButtonTextQuery.textOf;
 
-import javax.swing.JButton;
-import javax.swing.UIManager;
+import javax.swing.*;
 
 import org.junit.Test;
 

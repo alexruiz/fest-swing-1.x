@@ -42,13 +42,17 @@ public class JTabbedPaneFixture_clientProperty_Test extends ClientPropertyStorag
     target = tabbedPane().createNew();
   }
 
+  @Override
   void onSetUp() {
     driver = createMock(JTabbedPaneDriver.class);
     fixture = new JTabbedPaneFixture(robot(), target);
     fixture.driver(driver);
   }
 
+  @Override
   JTabbedPaneDriver driver() {  return driver; }
+  @Override
   JTabbedPane target() { return target; }
+  @Override
   JTabbedPaneFixture fixture() { return fixture; }
 }

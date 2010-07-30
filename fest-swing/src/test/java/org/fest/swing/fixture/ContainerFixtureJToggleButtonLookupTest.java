@@ -22,8 +22,7 @@ import static org.fest.swing.test.core.CommonAssertions.failWhenExpectingExcepti
 import javax.swing.JToggleButton;
 
 import org.fest.swing.core.GenericTypeMatcher;
-import org.fest.swing.edt.GuiQuery;
-import org.fest.swing.edt.GuiTask;
+import org.fest.swing.edt.*;
 import org.fest.swing.exception.ComponentLookupException;
 import org.fest.swing.test.core.RobotBasedTestCase;
 import org.fest.swing.test.swing.TestWindow;
@@ -54,6 +53,7 @@ public class ContainerFixtureJToggleButtonLookupTest extends RobotBasedTestCase 
   @Test
   public void shouldFailIfJToggleButtonCannotBeFoundByType() {
     execute(new GuiTask() {
+      @Override
       protected void executeInEDT() {
         window.remove(window.toggleButton);
       }
@@ -88,6 +88,7 @@ public class ContainerFixtureJToggleButtonLookupTest extends RobotBasedTestCase 
   @Test
   public void shouldFindJToggleButtonWithCustomMatcher() {
     JToggleButtonFixture toggleButton = fixture.toggleButton(new GenericTypeMatcher<JToggleButton>(JToggleButton.class) {
+      @Override
       protected boolean isMatching(JToggleButton b) {
         return "Click Me".equals(b.getText());
       }
@@ -103,6 +104,7 @@ public class ContainerFixtureJToggleButtonLookupTest extends RobotBasedTestCase 
   public void shouldFailIfJToggleButtonCannotBeFoundWithCustomMatcher() {
     try {
       fixture.toggleButton(new GenericTypeMatcher<JToggleButton>(JToggleButton.class) {
+        @Override
         protected boolean isMatching(JToggleButton b) {
           return false;
         }
@@ -120,6 +122,7 @@ public class ContainerFixtureJToggleButtonLookupTest extends RobotBasedTestCase 
 
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
+        @Override
         protected MyWindow executeInEDT() {
           return new MyWindow();
         }

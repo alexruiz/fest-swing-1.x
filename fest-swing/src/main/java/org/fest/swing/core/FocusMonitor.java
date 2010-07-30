@@ -17,8 +17,7 @@ package org.fest.swing.core;
 import static org.fest.swing.core.FocusOwnerFinder.focusOwner;
 
 import java.awt.Component;
-import java.awt.event.FocusAdapter;
-import java.awt.event.FocusEvent;
+import java.awt.event.*;
 
 /**
  * Understands monitoring when a <code>{@link Component}</code> gets keyboard focus.
@@ -34,7 +33,7 @@ final class FocusMonitor extends FocusAdapter {
     c.addFocusListener(monitor);
     return monitor;
   }
-  
+
   private FocusMonitor(Component c) {
     focused = focusOwner() == c;
   }

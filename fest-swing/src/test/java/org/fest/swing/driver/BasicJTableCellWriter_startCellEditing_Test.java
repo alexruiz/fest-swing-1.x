@@ -24,7 +24,7 @@ import org.fest.swing.cell.JTableCellWriter;
  * @author Alex Ruiz
  */
 public class BasicJTableCellWriter_startCellEditing_Test extends JTableCellWriter_startCellEditing_TestCase {
-  
+
   @Override JTableCellWriter createWriter() {
     return new BasicJTableCellWriter(robot);
   }

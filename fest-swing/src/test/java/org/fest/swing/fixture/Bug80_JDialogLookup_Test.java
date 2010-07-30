@@ -17,8 +17,7 @@ package org.fest.swing.fixture;
 import static org.fest.swing.edt.GuiActionRunner.execute;
 
 import java.awt.Container;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 
 import javax.swing.*;
 
@@ -64,12 +63,13 @@ public class Bug80_JDialogLookup_Test extends RobotBasedTestCase {
 
     static JDialogStarter createNew() {
       return execute(new GuiQuery<JDialogStarter>() {
+        @Override
         protected JDialogStarter executeInEDT() {
           return new JDialogStarter();
         }
       });
     }
-    
+
     private JDialogStarter() {
       setTitle(Bug80_JDialogLookup_Test.class.getSimpleName());
       setContentPane(createContentPane());

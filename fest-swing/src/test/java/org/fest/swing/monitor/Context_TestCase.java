@@ -15,8 +15,7 @@
  */
 package org.fest.swing.monitor;
 
-import static org.easymock.classextension.EasyMock.createMock;
-import static org.easymock.classextension.EasyMock.reset;
+import static org.easymock.classextension.EasyMock.*;
 import static org.fest.swing.test.awt.Toolkits.newToolkitStub;
 
 import java.awt.EventQueue;
@@ -25,8 +24,7 @@ import org.fest.mocks.EasyMockTemplate;
 import org.fest.swing.test.awt.ToolkitStub;
 import org.fest.swing.test.core.EDTSafeTestCase;
 import org.fest.swing.test.swing.TestWindow;
-import org.junit.After;
-import org.junit.Before;
+import org.junit.*;
 
 /**
  * Base test case for <code>{@link Context}</code>.
@@ -54,10 +52,12 @@ public abstract class Context_TestCase extends EDTSafeTestCase {
 
   private void createContext() {
     new EasyMockTemplate(windowEventQueueMapping) {
+      @Override
       protected void expectations() {
         windowEventQueueMapping.addQueueFor(toolkit);
       }
 
+      @Override
       protected void codeToTest() {
         context = new Context(toolkit, windowEventQueueMapping, eventQueueMapping);
       }

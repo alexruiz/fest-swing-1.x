@@ -41,6 +41,7 @@ public class ComponentHasFocusCondition extends Condition {
     this.component = component;
   }
 
+  @Override
   public boolean test() {
     return hasFocus(component);
   }

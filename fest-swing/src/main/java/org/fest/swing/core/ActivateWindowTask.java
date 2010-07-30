@@ -34,6 +34,7 @@ class ActivateWindowTask {
   @RunsInEDT
   static void activateWindow(final Window w) {
     execute(new GuiTask() {
+      @Override
       protected void executeInEDT() {
         w.toFront();
         w.requestFocusInWindow();

@@ -15,8 +15,7 @@
  */
 package org.fest.swing.fixture;
 
-import static org.easymock.EasyMock.expect;
-import static org.easymock.EasyMock.expectLastCall;
+import static org.easymock.EasyMock.*;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.data.Index.atIndex;
 import static org.fest.swing.test.builder.JButtons.button;
@@ -42,11 +41,13 @@ public class JTabbedPaneFixtureTest extends JTabbedPaneFixture_TestCase {
   @Test
   public void shouldSelectTabWithIndex() {
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().selectTab(target(), 8);
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().selectTab(8));
       }
@@ -57,10 +58,12 @@ public class JTabbedPaneFixtureTest extends JTabbedPaneFixture_TestCase {
   public void shouldReturnSelectedComponent() {
     final Component selected = button().createNew();
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         expect(driver().selectedComponentOf(target())).andReturn(selected);
       }
 
+      @Override
       protected void codeToTest() {
         assertThat(fixture().selectedComponent()).isSameAs(selected);
       }
@@ -70,11 +73,13 @@ public class JTabbedPaneFixtureTest extends JTabbedPaneFixture_TestCase {
   @Test
   public void shouldRequireTitleAtTabIndex() {
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().requireTabTitle(target(), "Hello", atIndex(1));
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().requireTitle("Hello", atIndex(1)));
       }
@@ -85,11 +90,13 @@ public class JTabbedPaneFixtureTest extends JTabbedPaneFixture_TestCase {
   public void shouldRequireTitleMatchingPatternAtTabIndex() {
     final Pattern pattern = regex("hello");
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().requireTabTitle(target(), pattern, atIndex(1));
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().requireTitle(pattern, atIndex(1)));
       }
@@ -100,11 +107,13 @@ public class JTabbedPaneFixtureTest extends JTabbedPaneFixture_TestCase {
   public void shouldRequireTabTitles() {
     final String[] titles = array("One", "Two");
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().requireTabTitles(target(), titles);
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().requireTabTitles(titles));
       }
@@ -115,11 +124,13 @@ public class JTabbedPaneFixtureTest extends JTabbedPaneFixture_TestCase {
   @Test
   public void shouldSelectTabWithText() {
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().selectTab(target(), "A Tab");
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().selectTab("A Tab"));
       }
@@ -130,11 +141,13 @@ public class JTabbedPaneFixtureTest extends JTabbedPaneFixture_TestCase {
   public void shouldSelectTabMatchingPattern() {
     final Pattern pattern = regex("hello");
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().selectTab(target(), pattern);
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().selectTab(pattern));
       }
@@ -145,10 +158,12 @@ public class JTabbedPaneFixtureTest extends JTabbedPaneFixture_TestCase {
   public void shouldReturnTabTitles() {
     final String[] titles = array("One", "Two");
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         expect(driver().tabTitles(target())).andReturn(titles);
       }
 
+      @Override
       protected void codeToTest() {
         String[] result = fixture().tabTitles();
         assertThat(result).isSameAs(titles);

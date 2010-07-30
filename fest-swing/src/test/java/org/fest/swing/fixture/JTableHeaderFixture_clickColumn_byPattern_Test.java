@@ -35,11 +35,13 @@ public class JTableHeaderFixture_clickColumn_byPattern_Test extends JTableHeader
   public void should_click_column() {
     final Pattern pattern = regex("first");
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().clickColumn(target(), pattern);
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().clickColumn(pattern));
       }

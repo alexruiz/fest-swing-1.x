@@ -22,8 +22,7 @@ import static org.fest.swing.test.core.CommonAssertions.failWhenExpectingExcepti
 
 import org.fest.mocks.EasyMockTemplate;
 import org.fest.swing.exception.UnexpectedException;
-import org.fest.swing.test.core.MethodInvocations;
-import org.fest.swing.test.core.SequentialEDTSafeTestCase;
+import org.fest.swing.test.core.*;
 import org.junit.Test;
 
 /**
@@ -53,10 +52,12 @@ public class GuiActionRunner_execute_queryNotInEDT_Test extends SequentialEDTSaf
     final TestGuiQuery query = createMock(TestGuiQuery.class);
     final RuntimeException error = expectedError();
     new EasyMockTemplate(query) {
+      @Override
       protected void expectations() {
         expect(query.executeInEDT()).andThrow(error);
       }
 
+      @Override
       protected void codeToTest() {
         try {
           GuiActionRunner.executeInEDT(false);
@@ -81,6 +82,7 @@ public class GuiActionRunner_execute_queryNotInEDT_Test extends SequentialEDTSaf
       this.valueToReturnWhenExecuted = valueToReturnWhenExecuted;
     }
 
+    @Override
     protected String executeInEDT() {
       methodInvocations.invoked("executeInEDT");
       return valueToReturnWhenExecuted;

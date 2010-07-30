@@ -17,40 +17,13 @@ package org.fest.swing.fixture;
 import static org.fest.swing.core.ComponentLookupScope.SHOWING_ONLY;
 import static org.fest.swing.timing.Pause.pause;
 
-import java.awt.Component;
-import java.awt.Container;
-import java.awt.Dialog;
+import java.awt.*;
 
-import javax.swing.JButton;
-import javax.swing.JCheckBox;
-import javax.swing.JComboBox;
-import javax.swing.JFileChooser;
-import javax.swing.JLabel;
-import javax.swing.JList;
-import javax.swing.JMenuItem;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JProgressBar;
-import javax.swing.JRadioButton;
-import javax.swing.JScrollBar;
-import javax.swing.JScrollPane;
-import javax.swing.JSlider;
-import javax.swing.JSpinner;
-import javax.swing.JSplitPane;
-import javax.swing.JTabbedPane;
-import javax.swing.JTable;
-import javax.swing.JToggleButton;
-import javax.swing.JToolBar;
-import javax.swing.JTree;
+import javax.swing.*;
 import javax.swing.text.JTextComponent;
 
-import org.fest.swing.core.ComponentFinder;
-import org.fest.swing.core.ComponentFoundCondition;
-import org.fest.swing.core.ComponentMatcher;
-import org.fest.swing.core.GenericTypeMatcher;
-import org.fest.swing.core.NameMatcher;
+import org.fest.swing.core.*;
 import org.fest.swing.core.Robot;
-import org.fest.swing.core.TypeMatcher;
 import org.fest.swing.exception.ComponentLookupException;
 import org.fest.swing.timing.Timeout;
 

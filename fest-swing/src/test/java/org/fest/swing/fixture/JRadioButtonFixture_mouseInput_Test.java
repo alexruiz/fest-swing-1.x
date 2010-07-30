@@ -42,13 +42,17 @@ public class JRadioButtonFixture_mouseInput_Test extends MouseInputSimulationFix
     target = radioButton().createNew();
   }
 
+  @Override
   void onSetUp() {
     driver = createMock(AbstractButtonDriver.class);
     fixture = new JRadioButtonFixture(robot(), target);
     fixture.driver(driver);
   }
 
+  @Override
   AbstractButtonDriver driver() {  return driver; }
+  @Override
   JRadioButton target() { return target; }
+  @Override
   JRadioButtonFixture fixture() { return fixture; }
 }

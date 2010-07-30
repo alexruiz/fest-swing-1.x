@@ -24,8 +24,7 @@ import static org.fest.util.Arrays.array;
 import java.awt.Dimension;
 
 import javax.swing.JTree;
-import javax.swing.tree.DefaultMutableTreeNode;
-import javax.swing.tree.TreePath;
+import javax.swing.tree.*;
 
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
@@ -84,6 +83,7 @@ public class JTreeExpandPathTask_expandTreePath_Test extends RobotBasedTestCase 
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
+        @Override
         protected MyWindow executeInEDT() {
           return new MyWindow();
         }

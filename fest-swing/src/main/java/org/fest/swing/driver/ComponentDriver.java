@@ -16,8 +16,7 @@
 package org.fest.swing.driver;
 
 import static org.fest.assertions.Assertions.assertThat;
-import static org.fest.swing.core.MouseButton.LEFT_BUTTON;
-import static org.fest.swing.core.MouseButton.RIGHT_BUTTON;
+import static org.fest.swing.core.MouseButton.*;
 import static org.fest.swing.driver.ComponentEnabledCondition.untilIsEnabled;
 import static org.fest.swing.driver.ComponentPerformDefaultAccessibleActionTask.performDefaultAccessibleAction;
 import static org.fest.swing.driver.ComponentStateValidator.validateIsEnabledAndShowing;
@@ -29,25 +28,20 @@ import static org.fest.swing.query.ComponentSizeQuery.sizeOf;
 import static org.fest.swing.query.ComponentVisibleQuery.isVisible;
 import static org.fest.swing.timing.Pause.pause;
 import static org.fest.swing.util.TimeoutWatch.startWatchWithTimeoutOf;
-import static org.fest.util.Strings.concat;
-import static org.fest.util.Strings.quote;
+import static org.fest.util.Strings.*;
 
 import java.awt.*;
 
 import javax.accessibility.AccessibleAction;
-import javax.swing.JMenu;
-import javax.swing.JPopupMenu;
+import javax.swing.*;
 
 import org.fest.assertions.Description;
-import org.fest.swing.annotation.RunsInCurrentThread;
-import org.fest.swing.annotation.RunsInEDT;
+import org.fest.swing.annotation.*;
 import org.fest.swing.core.*;
 import org.fest.swing.core.Robot;
-import org.fest.swing.edt.GuiLazyLoadingDescription;
-import org.fest.swing.edt.GuiTask;
+import org.fest.swing.edt.*;
 import org.fest.swing.exception.*;
-import org.fest.swing.format.ComponentFormatter;
-import org.fest.swing.format.Formatting;
+import org.fest.swing.format.*;
 import org.fest.swing.timing.Timeout;
 import org.fest.swing.util.TimeoutWatch;
 
@@ -224,6 +218,7 @@ public class ComponentDriver {
 
   private static Description requiredFocusedErrorMessage(final Component c) {
     return new GuiLazyLoadingDescription() {
+      @Override
       protected String loadDescription() {
         return concat("Expected component ", format(c), " to have input focus");
       }
@@ -495,6 +490,7 @@ public class ComponentDriver {
   @RunsInEDT
   protected static void assertIsEnabledAndShowing(final Component c) {
     execute(new GuiTask() {
+      @Override
       protected void executeInEDT() {
         validateIsEnabledAndShowing(c);
       }
@@ -513,6 +509,7 @@ public class ComponentDriver {
   @RunsInEDT
   public static Description propertyName(final Component c, final String propertyName) {
     return new GuiLazyLoadingDescription() {
+      @Override
       protected String loadDescription() {
         return concat(format(c), " - property:", quote(propertyName));
       }

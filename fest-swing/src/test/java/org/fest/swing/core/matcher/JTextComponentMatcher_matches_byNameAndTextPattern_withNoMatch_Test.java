@@ -28,7 +28,7 @@ import javax.swing.JTextField;
 import org.fest.swing.test.core.EDTSafeTestCase;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
+import org.junit.runners.*;
 import org.junit.runners.Parameterized.Parameters;
 
 /**

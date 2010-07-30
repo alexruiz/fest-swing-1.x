@@ -15,18 +15,15 @@
  */
 package org.fest.swing.monitor;
 
-import java.awt.Component;
-import java.awt.Window;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.*;
+import java.awt.event.*;
 import java.util.*;
+
 import javax.swing.Timer;
 
-import net.jcip.annotations.GuardedBy;
-import net.jcip.annotations.ThreadSafe;
+import net.jcip.annotations.*;
 
-import org.fest.swing.annotation.RunsInCurrentThread;
-import org.fest.swing.annotation.RunsInEDT;
+import org.fest.swing.annotation.*;
 
 /**
  * Understands the information collected by the monitors in this package.
@@ -55,7 +52,7 @@ class Windows {
   private final Object lock = new Object();
 
   Windows() {
-	  
+
     //windowReadyTimer = new Timer("Window Ready Timer", true);
 	  windowReadyTimer = new Timer(WINDOW_READY_DELAY, null);
   }
@@ -112,14 +109,15 @@ class Windows {
   void markAsShowingInEDT(final Window w) {
 	  synchronized(lock) {
 		  final TimerTask task = new TimerTask() {
-			public void run() {	markAsReady(w); }
+			@Override
+      public void run() {	markAsReady(w); }
 		  };
-		  
+
 		  windowReadyTimer.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					task.run();
-				}}); 
-				  
+				}});
+
 		  windowReadyTimer.setCoalesce(false);
 		  windowReadyTimer.setRepeats(false);
 		  pending.put(w, task);

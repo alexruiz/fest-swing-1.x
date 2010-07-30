@@ -33,10 +33,12 @@ public class WindowMonitor_eventQueueFor_Test extends WindowMonitor_TestCase {
   public void should_return_EventQueue_for_Component() {
     final EventQueue queue = new EventQueue();
     new EasyMockTemplate(context) {
+      @Override
       protected void expectations() {
         expect(context.eventQueueFor(frame)).andReturn(queue);
       }
 
+      @Override
       protected void codeToTest() {
         assertThat(monitor.eventQueueFor(frame)).isSameAs(queue);
       }

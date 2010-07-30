@@ -59,6 +59,7 @@ public class JInternalFrameDriver_normalize_Test extends JInternalFrameDriver_Te
   @RunsInEDT
   private void assertThatIsNormalized() {
     boolean normalized = execute(new GuiQuery<Boolean>() {
+      @Override
       protected Boolean executeInEDT() {
         return !isIconified(internalFrame) && !internalFrame.isMaximum();
       }

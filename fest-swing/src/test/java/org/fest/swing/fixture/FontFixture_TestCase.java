@@ -19,7 +19,7 @@ import static java.awt.Font.*;
 
 import java.awt.Font;
 
-import org.junit.*;
+import org.junit.BeforeClass;
 
 /**
  * Base test class for <code>{@link FontFixture}</code>.

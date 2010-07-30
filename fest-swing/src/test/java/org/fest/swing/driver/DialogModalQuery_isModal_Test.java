@@ -25,14 +25,12 @@ import java.util.Collection;
 
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
-import org.fest.swing.test.core.MethodInvocations;
-import org.fest.swing.test.core.RobotBasedTestCase;
+import org.fest.swing.test.core.*;
 import org.fest.swing.test.data.BooleanProvider;
-import org.fest.swing.test.swing.TestDialog;
-import org.fest.swing.test.swing.TestWindow;
+import org.fest.swing.test.swing.*;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
+import org.junit.runners.*;
 import org.junit.runners.Parameterized.Parameters;
 
 /**
@@ -45,18 +43,18 @@ import org.junit.runners.Parameterized.Parameters;
 public class DialogModalQuery_isModal_Test extends RobotBasedTestCase {
 
   private MyDialog dialog;
-  
+
   private final boolean modal;
 
   @Parameters
   public static Collection<Object[]> booleans() {
     return list(BooleanProvider.booleans());
   }
-  
+
   public DialogModalQuery_isModal_Test(boolean modal) {
     this.modal = modal;
   }
-  
+
   @Override protected void onSetUp() {
     dialog = MyDialog.createNew();
   }
@@ -79,6 +77,7 @@ public class DialogModalQuery_isModal_Test extends RobotBasedTestCase {
     @RunsInEDT
     static MyDialog createNew() {
       return execute(new GuiQuery<MyDialog>() {
+        @Override
         protected MyDialog executeInEDT() {
           return new MyDialog();
         }

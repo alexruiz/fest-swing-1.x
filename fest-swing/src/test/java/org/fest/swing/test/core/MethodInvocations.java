@@ -15,14 +15,13 @@
  */
 package org.fest.swing.test.core;
 
-import java.util.*;
-
 import static java.util.Arrays.deepEquals;
-
 import static org.fest.assertions.Fail.fail;
 import static org.fest.swing.util.Arrays.copyOf;
 import static org.fest.util.Arrays.format;
 import static org.fest.util.Strings.*;
+
+import java.util.*;
 
 /**
  * Understands a mechanism to record and verify expected method invocations.

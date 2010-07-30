@@ -22,8 +22,7 @@ import javax.swing.JFileChooser;
 
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
-import org.fest.swing.test.core.MethodInvocations;
-import org.fest.swing.test.core.RobotBasedTestCase;
+import org.fest.swing.test.core.*;
 import org.fest.swing.test.swing.TestWindow;
 import org.junit.Test;
 
@@ -67,6 +66,7 @@ public class JFileChooserApproveButtonTextQuery_approveButtonTextFrom_Test exten
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
+        @Override
         protected MyWindow executeInEDT() {
           return new MyWindow();
         }
@@ -86,13 +86,13 @@ public class JFileChooserApproveButtonTextQuery_approveButtonTextFrom_Test exten
     private final MethodInvocations methodInvocations = new MethodInvocations();
 
     private boolean returnNullAsApproveButtonText;
-    
+
     void startRecording() { recording = true; }
 
     void shouldReturnNullAsApproveButtonText(boolean b) {
       returnNullAsApproveButtonText = b;
     }
-    
+
     @Override public String getApproveButtonText() {
       if (recording) methodInvocations.invoked("getApproveButtonText");
       if (returnNullAsApproveButtonText) return null;

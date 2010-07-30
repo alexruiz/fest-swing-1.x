@@ -58,6 +58,7 @@ public final class JTextFields {
     @RunsInEDT
     public JTextField createNew() {
       return execute(new GuiQuery<JTextField>() {
+        @Override
         protected JTextField executeInEDT() {
           JTextField textField = new JTextField();
           textField.setColumns(columns);

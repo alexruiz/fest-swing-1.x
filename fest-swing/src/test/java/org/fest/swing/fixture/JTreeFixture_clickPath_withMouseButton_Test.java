@@ -34,11 +34,13 @@ public class JTreeFixture_clickPath_withMouseButton_Test extends JTreeFixture_Te
     final String path = "root/node1";
     final MouseButton button = MIDDLE_BUTTON;
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().clickPath(target(), path, button);
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().clickPath(path, button));
       }

@@ -18,8 +18,7 @@ import static org.fest.util.Strings.concat;
 
 import java.security.Permission;
 
-import org.fest.util.StackTraces;
-import org.fest.util.VisibleForTesting;
+import org.fest.util.*;
 
 /**
  * Understands a <code>{@link SecurityManager}</code> that does not allow an application under test to terminate the

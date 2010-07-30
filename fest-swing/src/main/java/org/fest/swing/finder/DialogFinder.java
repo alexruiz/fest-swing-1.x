@@ -15,11 +15,10 @@
  */
 package org.fest.swing.finder;
 
-import java.awt.Component;
-import java.awt.Dialog;
+import java.awt.*;
 import java.util.concurrent.TimeUnit;
 
-import org.fest.swing.core.GenericTypeMatcher;
+import org.fest.swing.core.*;
 import org.fest.swing.core.Robot;
 import org.fest.swing.fixture.DialogFixture;
 
@@ -83,6 +82,7 @@ public class DialogFinder extends WindowFinderTemplate<Dialog> {
    * @return a <code>DialogFixture</code> managing the found <code>Dialog</code>.
    * @throws org.fest.swing.exception.WaitTimedOutError if a <code>Dialog</code> could not be found.
    */
+  @Override
   public DialogFixture using(Robot robot) {
     return new DialogFixture(robot, findComponentWith(robot));
   }
@@ -91,5 +91,6 @@ public class DialogFinder extends WindowFinderTemplate<Dialog> {
    * Casts the given {@code Component} to <code>{@link Dialog}</code>.
    * @return the given {@code Component}, casted to {@code Dialog}.
    */
+  @Override
   protected Dialog cast(Component c) { return (Dialog)c; }
 }

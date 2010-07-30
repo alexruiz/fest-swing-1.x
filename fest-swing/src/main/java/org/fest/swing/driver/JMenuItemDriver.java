@@ -32,8 +32,7 @@ import javax.swing.*;
 
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.core.Robot;
-import org.fest.swing.edt.GuiQuery;
-import org.fest.swing.edt.GuiTask;
+import org.fest.swing.edt.*;
 import org.fest.swing.exception.ActionFailedException;
 
 /**
@@ -84,6 +83,7 @@ public class JMenuItemDriver extends JComponentDriver {
   @RunsInEDT
   private static JMenuItemLocation locationOf(final JMenuItem menuItem) {
     return execute(new GuiQuery<JMenuItemLocation>() {
+      @Override
       protected JMenuItemLocation executeInEDT() {
         return new JMenuItemLocation(menuItem);
       }
@@ -121,6 +121,7 @@ public class JMenuItemDriver extends JComponentDriver {
   @RunsInEDT
   private static void validateAndDoClick(final JMenuItem menuItem) {
     execute(new GuiTask() {
+      @Override
       protected void executeInEDT() {
         validateIsEnabledAndShowing(menuItem);
         menuItem.doClick();

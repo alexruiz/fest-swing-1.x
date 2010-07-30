@@ -20,8 +20,7 @@ import static org.fest.swing.edt.GuiActionRunner.execute;
 
 import java.awt.Point;
 
-import javax.swing.JCheckBox;
-import javax.swing.JTable;
+import javax.swing.*;
 import javax.swing.text.JTextComponent;
 
 import org.fest.swing.annotation.RunsInEDT;
@@ -59,9 +58,10 @@ public class JTableCheckBoxEditorCellWriter extends AbstractJTableCellWriter  {
   }
 
   @RunsInEDT
-  private static Pair<Boolean, Point> doStartCellEditing(final JTable table, final int row, final int column, 
+  private static Pair<Boolean, Point> doStartCellEditing(final JTable table, final int row, final int column,
       final JTableLocation location) {
     return execute(new GuiQuery<Pair<Boolean, Point>>() {
+      @Override
       protected Pair<Boolean, Point> executeInEDT() {
         JCheckBox editor = editor(table, row, column, JCheckBox.class);
         scrollToCell(table, row, column, location);

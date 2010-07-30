@@ -20,8 +20,7 @@ import static org.fest.util.Strings.*;
 
 import java.awt.Component;
 
-import javax.swing.JMenuItem;
-import javax.swing.JPopupMenu;
+import javax.swing.*;
 
 import org.fest.swing.annotation.RunsInCurrentThread;
 import org.fest.swing.core.ComponentMatcher;

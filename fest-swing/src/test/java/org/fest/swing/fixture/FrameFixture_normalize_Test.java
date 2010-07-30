@@ -31,11 +31,13 @@ public class FrameFixture_normalize_Test extends FrameFixture_TestCase {
   @Test
   public void should_normalize() {
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().normalize(target());
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().normalize());
       }

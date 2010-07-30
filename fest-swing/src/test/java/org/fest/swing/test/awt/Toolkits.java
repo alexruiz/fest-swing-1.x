@@ -17,8 +17,7 @@ package org.fest.swing.test.awt;
 
 import static org.easymock.classextension.EasyMock.createMock;
 
-import java.awt.EventQueue;
-import java.awt.Toolkit;
+import java.awt.*;
 
 /**
  * Understands <code>{@link Toolkit}</code>s to be used for testing purposed.

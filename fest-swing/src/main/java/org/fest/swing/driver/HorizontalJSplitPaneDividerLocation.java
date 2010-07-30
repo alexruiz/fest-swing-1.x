@@ -5,13 +5,12 @@
  */
 package org.fest.swing.driver;
 
-import static java.lang.Math.max;
-import static java.lang.Math.min;
+import static java.lang.Math.*;
 
-import java.awt.Component;
-import java.awt.Insets;
+import java.awt.*;
 
 import javax.swing.JSplitPane;
+
 import org.fest.swing.annotation.RunsInCurrentThread;
 
 /**

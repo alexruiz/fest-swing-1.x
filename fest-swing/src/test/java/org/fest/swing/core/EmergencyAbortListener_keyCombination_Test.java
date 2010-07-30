@@ -15,16 +15,14 @@
  */
 package org.fest.swing.core;
 
-import static java.awt.event.InputEvent.ALT_MASK;
-import static java.awt.event.InputEvent.META_MASK;
+import static java.awt.event.InputEvent.*;
 import static java.awt.event.KeyEvent.VK_C;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.core.InputModifiers.*;
 import static org.fest.swing.core.KeyPressInfo.keyCode;
 import static org.fest.swing.test.awt.Toolkits.singletonToolkitMock;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Tests for <code>{@link EmergencyAbortListener#keyCombination(KeyPressInfo)}</code>.

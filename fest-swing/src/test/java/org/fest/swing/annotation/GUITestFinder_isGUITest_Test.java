@@ -20,8 +20,7 @@ import static org.fest.reflect.core.Reflection.method;
 
 import java.lang.reflect.Method;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Tests for <code>{@link GUITestFinder#isGUITest(Class, Method)}</code>.

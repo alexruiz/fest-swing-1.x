@@ -16,10 +16,9 @@
 package org.fest.swing.applet;
 
 import static org.fest.swing.edt.GuiActionRunner.execute;
-import static org.fest.swing.test.awt.TestApplets.*;
+import static org.fest.swing.test.awt.TestApplets.singletonAppletMock;
 
-import java.applet.Applet;
-import java.applet.AppletStub;
+import java.applet.*;
 
 import org.fest.swing.edt.GuiTask;
 import org.fest.swing.test.core.EDTSafeTestCase;
@@ -35,6 +34,7 @@ public class AppletViewer_newViewerWithAppletAndAppletStub_Test extends EDTSafeT
   @Test(expected = NullPointerException.class)
   public void should_throw_error_if_AppletStub_is_null() {
     execute(new GuiTask() {
+      @Override
       protected void executeInEDT() {
         AppletStub appletStub = null;
         AppletViewer.newViewer(singletonAppletMock(), appletStub);

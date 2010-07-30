@@ -41,13 +41,17 @@ public abstract class JTableFixture_TestCase extends ComponentFixture_Implementa
     target = table().createNew();
   }
 
+  @Override
   final void onSetUp() {
     driver = createMock(JTableDriver.class);
     fixture = new JTableFixture(robot(), target);
     fixture.driver(driver);
   }
 
+  @Override
   final JTableDriver driver() {  return driver; }
+  @Override
   final JTable target() { return target; }
+  @Override
   final JTableFixture fixture() { return fixture; }
 }

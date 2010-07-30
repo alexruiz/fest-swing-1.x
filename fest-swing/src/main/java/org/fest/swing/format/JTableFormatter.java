@@ -16,8 +16,7 @@
 package org.fest.swing.format;
 
 import static java.lang.String.valueOf;
-import static org.fest.util.Strings.concat;
-import static org.fest.util.Strings.quote;
+import static org.fest.util.Strings.*;
 
 import java.awt.Component;
 
@@ -37,6 +36,7 @@ public class JTableFormatter extends ComponentFormatterTemplate {
    * @param c the given {@code Component}.
    * @return the <code>String</code> representation of the given <code>JTable</code>.
    */
+  @Override
   protected String doFormat(Component c) {
     JTable table = (JTable)c;
     return concat(

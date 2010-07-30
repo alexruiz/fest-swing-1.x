@@ -2,8 +2,7 @@ package org.fest.swing.query;
 
 import static org.fest.swing.edt.GuiActionRunner.execute;
 
-import java.awt.Component;
-import java.awt.Font;
+import java.awt.*;
 
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
@@ -28,6 +27,7 @@ final public class ComponentFontQuery {
   @RunsInEDT
   public static Font fontOf(final Component component) {
     return execute(new GuiQuery<Font>() {
+      @Override
       protected Font executeInEDT() {
         return component.getFont();
       }

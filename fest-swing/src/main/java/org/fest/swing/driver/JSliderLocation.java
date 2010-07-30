@@ -15,13 +15,10 @@
  */
 package org.fest.swing.driver;
 
-import static javax.swing.SwingConstants.HORIZONTAL;
-import static javax.swing.SwingConstants.VERTICAL;
+import static javax.swing.SwingConstants.*;
 
-import java.awt.Insets;
-import java.awt.Point;
-import java.util.HashMap;
-import java.util.Map;
+import java.awt.*;
+import java.util.*;
 
 import javax.swing.JSlider;
 
@@ -58,11 +55,13 @@ public final class JSliderLocation {
   }
 
   private static class JSliderHorizontalLocation extends JSliderLocationStrategy {
+    @Override
     @RunsInCurrentThread
     int max(JSlider slider, Insets insets) {
       return slider.getWidth() - insets.left - insets.right - 1;
     }
 
+    @Override
     @RunsInCurrentThread
     Point update(Point center, int coordinate) {
       return new Point(coordinate, center.y);
@@ -70,11 +69,13 @@ public final class JSliderLocation {
   }
 
   private static class JSliderVerticalLocation extends JSliderLocationStrategy {
+    @Override
     @RunsInCurrentThread
     int max(JSlider slider, Insets insets) {
       return slider.getHeight() - insets.top - insets.bottom - 1;
     }
 
+    @Override
     @RunsInCurrentThread
     Point update(Point center, int coordinate) {
       return new Point(center.x, coordinate);

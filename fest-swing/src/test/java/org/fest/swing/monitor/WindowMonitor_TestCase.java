@@ -15,17 +15,14 @@
  */
 package org.fest.swing.monitor;
 
-import static org.easymock.EasyMock.expect;
-import static org.easymock.EasyMock.expectLastCall;
-import static org.easymock.classextension.EasyMock.createMock;
-import static org.easymock.classextension.EasyMock.reset;
+import static org.easymock.EasyMock.*;
+import static org.easymock.classextension.EasyMock.*;
 import static org.fest.swing.edt.GuiActionRunner.execute;
 import static org.fest.swing.monitor.TestContexts.newMockContext;
 import static org.fest.swing.monitor.TestWindows.newWindowsMock;
 import static org.fest.swing.test.awt.Toolkits.newToolkitStub;
 
-import java.awt.Frame;
-import java.awt.Window;
+import java.awt.*;
 
 import org.fest.mocks.EasyMockTemplate;
 import org.fest.swing.annotation.RunsInEDT;
@@ -60,6 +57,7 @@ public abstract class WindowMonitor_TestCase extends SequentialEDTSafeTestCase {
 
   private void createWindowMonitor() {
     new EasyMockTemplate(context, windows, windowStatus) {
+      @Override
       protected final void expectations() {
         expect(windowStatus.windows()).andReturn(windows);
         for (Frame f : Frame.getFrames()) expectToExamine(f);
@@ -82,8 +80,10 @@ public abstract class WindowMonitor_TestCase extends SequentialEDTSafeTestCase {
         expectLastCall().once();
       }
 
+      @Override
       protected final void codeToTest() {
         monitor = execute(new GuiQuery<WindowMonitor>() {
+          @Override
           protected WindowMonitor executeInEDT() {
             return new WindowMonitor(toolkit, context, windowStatus);
           }
@@ -96,6 +96,7 @@ public abstract class WindowMonitor_TestCase extends SequentialEDTSafeTestCase {
   @RunsInEDT
   private static Window[] ownedWindowsOf(final Window w) {
     return execute(new GuiQuery<Window[]>() {
+      @Override
       protected Window[] executeInEDT() {
         return w.getOwnedWindows();
       }

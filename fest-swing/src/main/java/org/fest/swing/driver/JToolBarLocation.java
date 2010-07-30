@@ -18,8 +18,7 @@ import static java.awt.BorderLayout.*;
 import static java.lang.Math.max;
 import static javax.swing.SwingConstants.HORIZONTAL;
 import static org.fest.util.Arrays.format;
-import static org.fest.util.Strings.concat;
-import static org.fest.util.Strings.quote;
+import static org.fest.util.Strings.*;
 
 import java.awt.*;
 

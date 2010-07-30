@@ -42,13 +42,17 @@ public class JComboBoxFixture_focusable_Test extends FocusableComponentFixture_T
     target = comboBox().createNew();
   }
 
+  @Override
   void onSetUp() {
     driver = createMock(JComboBoxDriver.class);
     fixture = new JComboBoxFixture(robot(), target);
     fixture.driver(driver);
   }
 
+  @Override
   JComboBoxDriver driver() {  return driver; }
+  @Override
   JComboBox target() { return target; }
+  @Override
   JComboBoxFixture fixture() { return fixture; }
 }

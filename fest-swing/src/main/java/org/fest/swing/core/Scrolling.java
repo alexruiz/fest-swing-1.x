@@ -17,13 +17,9 @@ package org.fest.swing.core;
 import static javax.swing.SwingUtilities.convertRectangle;
 import static org.fest.swing.edt.GuiActionRunner.execute;
 
-import java.awt.Component;
-import java.awt.Container;
-import java.awt.Rectangle;
+import java.awt.*;
 
-import javax.swing.JComponent;
-import javax.swing.JInternalFrame;
-import javax.swing.JViewport;
+import javax.swing.*;
 
 import org.fest.swing.edt.GuiTask;
 
@@ -91,6 +87,7 @@ public final class Scrolling {
    */
   private static void scrollToVisible(Robot robot, final JComponent c, final Rectangle rectangle) {
     execute(new GuiTask() {
+      @Override
       protected void executeInEDT() {
         c.scrollRectToVisible(rectangle);
       }

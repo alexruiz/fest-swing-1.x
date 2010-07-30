@@ -20,8 +20,7 @@ import static javax.swing.SwingUtilities.getWindowAncestor;
 import static org.fest.swing.listener.WeakEventListener.attachAsWeakEventListener;
 
 import java.awt.*;
-import java.awt.event.AWTEventListener;
-import java.awt.event.MouseEvent;
+import java.awt.event.*;
 
 import org.fest.swing.annotation.RunsInEDT;
 

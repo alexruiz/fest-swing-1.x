@@ -19,14 +19,12 @@ import static org.fest.assertions.Assertions.assertThat;
 
 import java.awt.Window;
 import java.awt.event.ComponentEvent;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 import javax.swing.JFrame;
 
 import org.fest.swing.test.swing.TestWindow;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Tests for <code>{@link DisposalMonitor#componentShown(ComponentEvent)}</code>.

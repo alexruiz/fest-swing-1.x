@@ -37,7 +37,7 @@ public class FrameDriver_resizeWidthTo_Test extends FrameDriver_TestCase {
     driver.resizeWidthTo(window, newSize.width);
     assertThat(windowSize()).isEqualTo(newSize);
   }
-  
+
   @Test
   public void should_throw_error_if_Frame_is_disabled() {
     disableWindow();

@@ -21,12 +21,10 @@ import static org.fest.swing.test.core.CommonAssertions.failWhenExpectingExcepti
 
 import java.awt.Dimension;
 
-import javax.swing.JPanel;
-import javax.swing.JTabbedPane;
+import javax.swing.*;
 
 import org.fest.swing.core.GenericTypeMatcher;
-import org.fest.swing.edt.GuiQuery;
-import org.fest.swing.edt.GuiTask;
+import org.fest.swing.edt.*;
 import org.fest.swing.exception.ComponentLookupException;
 import org.fest.swing.test.core.RobotBasedTestCase;
 import org.fest.swing.test.swing.TestWindow;
@@ -57,6 +55,7 @@ public class ContainerFixtureJTabbedPaneLookupTest extends RobotBasedTestCase {
   @Test
   public void shouldFailIfJTabbedPaneCannotBeFoundByType() {
     execute(new GuiTask() {
+      @Override
       protected void executeInEDT() {
         window.remove(window.tabbedPane);
       }
@@ -91,6 +90,7 @@ public class ContainerFixtureJTabbedPaneLookupTest extends RobotBasedTestCase {
   @Test
   public void shouldFindJTabbedPaneWithCustomMatcher() {
     JTabbedPaneFixture tabbedPane = fixture.tabbedPane(new GenericTypeMatcher<JTabbedPane>(JTabbedPane.class) {
+      @Override
       protected boolean isMatching(JTabbedPane t) {
         return t.getTabCount() == 1;
       }
@@ -106,6 +106,7 @@ public class ContainerFixtureJTabbedPaneLookupTest extends RobotBasedTestCase {
   public void shouldFailIfJTabbedPaneCannotBeFoundWithCustomMatcher() {
     try {
       fixture.tabbedPane(new GenericTypeMatcher<JTabbedPane>(JTabbedPane.class) {
+        @Override
         protected boolean isMatching(JTabbedPane t) {
           return false;
         }
@@ -123,6 +124,7 @@ public class ContainerFixtureJTabbedPaneLookupTest extends RobotBasedTestCase {
 
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
+        @Override
         protected MyWindow executeInEDT() {
           return new MyWindow();
         }

@@ -25,8 +25,7 @@ import javax.swing.JTree;
 import javax.swing.tree.*;
 
 import org.fest.swing.annotation.RunsInEDT;
-import org.fest.swing.edt.GuiQuery;
-import org.fest.swing.edt.GuiTask;
+import org.fest.swing.edt.*;
 import org.fest.swing.test.core.RobotBasedTestCase;
 import org.fest.swing.test.swing.TestWindow;
 import org.junit.Test;
@@ -58,6 +57,7 @@ public class JTreeToggleExpandStateTask_toggleExpandState_Test extends RobotBase
   @RunsInEDT
   private static void toggleExpandState(final JTree tree, final TreePath rootPath) {
     execute(new GuiTask() {
+      @Override
       protected void executeInEDT() {
         Rectangle pathBounds = tree.getPathBounds(rootPath);
         Point p = new Point(pathBounds.x + pathBounds.width / 2, pathBounds.y + pathBounds.height / 2);
@@ -65,7 +65,7 @@ public class JTreeToggleExpandStateTask_toggleExpandState_Test extends RobotBase
       }
     });
   }
-  
+
   @RunsInEDT
   private boolean isRootExpanded() {
     return isExpanded(tree, rootPath);
@@ -80,6 +80,7 @@ public class JTreeToggleExpandStateTask_toggleExpandState_Test extends RobotBase
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
+        @Override
         protected MyWindow executeInEDT() {
           return new MyWindow();
         }

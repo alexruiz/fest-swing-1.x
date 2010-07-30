@@ -22,8 +22,7 @@ import static org.fest.swing.test.awt.TestComponents.newComponentMock;
 import java.awt.Component;
 
 import org.fest.mocks.EasyMockTemplate;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Tests for <code>{@link AbstractComponentMatcher#requireShowingMatches(Component)}</code>.
@@ -49,10 +48,12 @@ public class AbstractComponentMatcher_requireShowingMatches_Test {
   public void should_match_if_requireShowing_is_true_and_Component_is_showing() {
     final AbstractComponentMatcher matcher = new ConcreteComponentMatcher(true);
     new EasyMockTemplate(component) {
+      @Override
       protected void expectations() {
         expect(component.isShowing()).andReturn(true);
       }
 
+      @Override
       protected void codeToTest() {
         assertThat(matcher.requireShowingMatches(component)).isTrue();
       }
@@ -63,10 +64,12 @@ public class AbstractComponentMatcher_requireShowingMatches_Test {
   public void should_not_match_if_requireShowing_is_true_and_Component_is_not_showing() {
     final AbstractComponentMatcher matcher = new ConcreteComponentMatcher(true);
     new EasyMockTemplate(component) {
+      @Override
       protected void expectations() {
         expect(component.isShowing()).andReturn(false);
       }
 
+      @Override
       protected void codeToTest() {
         assertThat(matcher.requireShowingMatches(component)).isFalse();
       }

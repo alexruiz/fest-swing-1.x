@@ -41,13 +41,17 @@ public abstract class JScrollPaneFixture_TestCase extends ComponentFixture_Imple
     target = scrollPane().createNew();
   }
 
+  @Override
   final void onSetUp() {
     driver = createMock(JScrollPaneDriver.class);
     fixture = new JScrollPaneFixture(robot(), target);
     fixture.driver(driver);
   }
 
+  @Override
   final JScrollPaneDriver driver() {  return driver; }
+  @Override
   final JScrollPane target() { return target; }
+  @Override
   final JScrollPaneFixture fixture() { return fixture; }
 }

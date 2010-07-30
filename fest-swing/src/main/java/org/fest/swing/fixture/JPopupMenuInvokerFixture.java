@@ -15,8 +15,7 @@
  */
 package org.fest.swing.fixture;
 
-import java.awt.Component;
-import java.awt.Point;
+import java.awt.*;
 
 import javax.swing.JPopupMenu;
 

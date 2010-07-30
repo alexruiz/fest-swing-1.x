@@ -19,14 +19,11 @@ import static java.util.Collections.sort;
 import static javax.swing.Action.NAME;
 import static org.fest.swing.exception.ActionFailedException.actionFailure;
 import static org.fest.util.Collections.isEmpty;
-import static org.fest.util.Strings.concat;
-import static org.fest.util.Strings.quote;
+import static org.fest.util.Strings.*;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
-import javax.swing.Action;
-import javax.swing.ActionMap;
+import javax.swing.*;
 
 /**
  * Understands utility methods related to <code>{@link Action}</code>s.

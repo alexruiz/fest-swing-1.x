@@ -17,8 +17,7 @@ package org.fest.swing.driver;
 
 import static org.fest.swing.edt.GuiActionRunner.execute;
 
-import java.awt.Component;
-import java.awt.Point;
+import java.awt.*;
 
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiTask;
@@ -26,16 +25,17 @@ import org.fest.swing.edt.GuiTask;
 /**
  * Understands a task that sets the location of a <code>{@link Component}</code>. This task is executed in the event
  * dispatch thread.
- * 
+ *
  * @author Alex Ruiz
  */
 final class ComponentMoveTask {
 
   private ComponentMoveTask() {}
-  
+
   @RunsInEDT
   static void moveComponent(final Component c, final Point location) {
     execute(new GuiTask( ) {
+      @Override
       protected void executeInEDT() {
         c.setLocation(location);
       }

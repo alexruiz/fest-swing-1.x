@@ -16,8 +16,7 @@
 package org.fest.swing.driver;
 
 import static org.fest.assertions.Assertions.assertThat;
-import static org.fest.swing.driver.JInternalFrameAction.MAXIMIZE;
-import static org.fest.swing.driver.JInternalFrameAction.NORMALIZE;
+import static org.fest.swing.driver.JInternalFrameAction.*;
 import static org.fest.swing.edt.GuiActionRunner.execute;
 
 import javax.swing.JInternalFrame;
@@ -55,7 +54,7 @@ public class JInternalFrameSetMaximumTask_setMaximum_Test extends RobotBasedTest
     JInternalFrameSetMaximumTask.setMaximum(internalFrame, MAXIMIZE);
     robot.waitForIdle();
   }
-  
+
   private void normalize() {
     JInternalFrameSetMaximumTask.setMaximum(internalFrame, NORMALIZE);
     robot.waitForIdle();
@@ -64,6 +63,7 @@ public class JInternalFrameSetMaximumTask_setMaximum_Test extends RobotBasedTest
   @RunsInEDT
   private static boolean isMaximum(final JInternalFrame internalFrame) {
     return execute(new GuiQuery<Boolean>() {
+      @Override
       protected Boolean executeInEDT() {
         return internalFrame.isMaximum() && !internalFrame.isIcon();
       }

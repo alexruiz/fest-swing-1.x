@@ -40,10 +40,12 @@ public abstract class RobotEventGenerator_TestCase {
     final RobotFactory robotFactory = newRobotFactoryMock();
     robot = createMock(Robot.class, methodsToMockInRobot());
     new EasyMockTemplate(robotFactory) {
+      @Override
       protected void expectations() throws Throwable {
         expect(robotFactory.newRobotInPrimaryScreen()).andReturn(robot);
       }
 
+      @Override
       protected void codeToTest() {
         eventGenerator = new RobotEventGenerator(robotFactory, new Settings());
       }

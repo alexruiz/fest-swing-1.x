@@ -16,8 +16,7 @@
 package org.fest.swing.core;
 
 import static java.awt.AWTEvent.KEY_EVENT_MASK;
-import static org.easymock.EasyMock.expect;
-import static org.easymock.EasyMock.expectLastCall;
+import static org.easymock.EasyMock.*;
 import static org.easymock.classextension.EasyMock.createMock;
 import static org.fest.swing.test.awt.TestAWTEventListeners.singletonAWTEventListenerMock;
 import static org.fest.swing.test.awt.Toolkits.newToolkitMock;
@@ -26,8 +25,7 @@ import java.awt.Toolkit;
 import java.awt.event.AWTEventListener;
 
 import org.fest.mocks.EasyMockTemplate;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Tests for <code>{@link EmergencyAbortListener#register()}</code>.
@@ -50,6 +48,7 @@ public class EmergencyAbortListener_register_Test {
     final EmergencyAbortListener previous = createMock(EmergencyAbortListener.class);
     final AWTEventListener[] allPrevious = { previous, singletonAWTEventListenerMock() };
     new EasyMockTemplate(toolkit) {
+      @Override
       protected void expectations() {
         expect(toolkit.getAWTEventListeners(KEY_EVENT_MASK)).andReturn(allPrevious);
         toolkit.removeAWTEventListener(previous);
@@ -58,6 +57,7 @@ public class EmergencyAbortListener_register_Test {
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         listener.register();
       }

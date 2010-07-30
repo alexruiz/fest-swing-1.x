@@ -20,25 +20,12 @@ import static org.fest.swing.edt.GuiActionRunner.execute;
 import static org.fest.swing.util.Platform.isWindows;
 import static org.fest.util.Strings.concat;
 
-import java.awt.Component;
-import java.awt.Container;
-import java.awt.Dialog;
-import java.awt.Dimension;
-import java.awt.Frame;
-import java.awt.Insets;
-import java.awt.Point;
-import java.awt.Rectangle;
-import java.awt.Toolkit;
-import java.awt.Window;
+import java.awt.*;
 import java.awt.event.InputEvent;
 
-import javax.swing.JComponent;
-import javax.swing.JOptionPane;
-import javax.swing.JPopupMenu;
-import javax.swing.SwingUtilities;
+import javax.swing.*;
 
-import org.fest.swing.annotation.RunsInCurrentThread;
-import org.fest.swing.annotation.RunsInEDT;
+import org.fest.swing.annotation.*;
 import org.fest.swing.edt.GuiQuery;
 
 /**
@@ -122,6 +109,7 @@ public class AWT {
   @RunsInEDT
   public static Point visibleCenterOf(final Component c) {
     return execute(new GuiQuery<Point>() {
+      @Override
       protected Point executeInEDT() {
         if (c instanceof JComponent) return centerOfVisibleRect((JComponent)c);
         return centerOf(c);

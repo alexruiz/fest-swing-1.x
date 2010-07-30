@@ -17,8 +17,7 @@ package org.fest.swing.monitor;
 
 import static org.fest.swing.test.awt.Toolkits.newToolkitStub;
 
-import java.awt.Component;
-import java.awt.EventQueue;
+import java.awt.*;
 import java.lang.ref.WeakReference;
 import java.util.Map;
 

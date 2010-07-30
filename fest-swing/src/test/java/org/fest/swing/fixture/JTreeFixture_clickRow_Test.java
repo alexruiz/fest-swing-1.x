@@ -31,11 +31,13 @@ public class JTreeFixture_clickRow_Test extends JTreeFixture_TestCase {
   public void should_click_row() {
     final int row = 6;
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().clickRow(target(), row);
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().clickRow(row));
       }

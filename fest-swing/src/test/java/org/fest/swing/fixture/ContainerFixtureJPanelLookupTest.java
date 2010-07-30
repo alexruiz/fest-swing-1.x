@@ -25,8 +25,7 @@ import java.awt.Container;
 import javax.swing.JPanel;
 
 import org.fest.swing.core.GenericTypeMatcher;
-import org.fest.swing.edt.GuiQuery;
-import org.fest.swing.edt.GuiTask;
+import org.fest.swing.edt.*;
 import org.fest.swing.exception.ComponentLookupException;
 import org.fest.swing.test.core.RobotBasedTestCase;
 import org.fest.swing.test.swing.TestWindow;
@@ -57,6 +56,7 @@ public class ContainerFixtureJPanelLookupTest extends RobotBasedTestCase {
   @Test
   public void shouldFailIfJPanelCannotBeFoundByType() {
     execute(new GuiTask() {
+      @Override
       protected void executeInEDT() {
         window.setContentPane(new Container());
       }
@@ -91,6 +91,7 @@ public class ContainerFixtureJPanelLookupTest extends RobotBasedTestCase {
   @Test
   public void shouldFindJPanelWithCustomMatcher() {
     JPanelFixture panel = fixture.panel(new GenericTypeMatcher<JPanel>(JPanel.class) {
+      @Override
       protected boolean isMatching(JPanel p) {
         return RED.equals(p.getBackground());
       }
@@ -106,6 +107,7 @@ public class ContainerFixtureJPanelLookupTest extends RobotBasedTestCase {
   public void shouldFailIfJPanelCannotBeFoundWithCustomMatcher() {
     try {
       fixture.panel(new GenericTypeMatcher<JPanel>(JPanel.class) {
+        @Override
         protected boolean isMatching(JPanel p) {
           return false;
         }
@@ -123,6 +125,7 @@ public class ContainerFixtureJPanelLookupTest extends RobotBasedTestCase {
 
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
+        @Override
         protected MyWindow executeInEDT() {
           return new MyWindow();
         }

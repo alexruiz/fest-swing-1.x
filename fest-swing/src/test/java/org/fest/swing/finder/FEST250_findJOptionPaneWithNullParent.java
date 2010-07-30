@@ -20,9 +20,8 @@ import static org.fest.swing.finder.JOptionPaneFinder.findOptionPane;
 
 import javax.swing.JOptionPane;
 
-import org.fest.swing.core.BasicRobot;
-import org.fest.swing.core.Robot;
-import org.fest.swing.edt.*;
+import org.fest.swing.core.*;
+import org.fest.swing.edt.GuiQuery;
 import org.fest.swing.fixture.JOptionPaneFixture;
 import org.fest.swing.test.core.EDTSafeTestCase;
 import org.fest.swing.test.swing.JOptionPaneLauncher;
@@ -40,6 +39,7 @@ public class FEST250_findJOptionPaneWithNullParent extends EDTSafeTestCase {
   @Before
   public void setUp() {
     JOptionPane optionPane = execute(new GuiQuery<JOptionPane>() {
+      @Override
       protected JOptionPane executeInEDT() {
         return new JOptionPane("Hello World!");
       }

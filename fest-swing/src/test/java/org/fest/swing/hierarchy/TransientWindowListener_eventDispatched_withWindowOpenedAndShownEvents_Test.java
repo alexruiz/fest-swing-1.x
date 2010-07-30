@@ -17,19 +17,17 @@ package org.fest.swing.hierarchy;
 
 import static java.awt.event.ComponentEvent.COMPONENT_SHOWN;
 import static java.awt.event.WindowEvent.WINDOW_OPENED;
-import static org.easymock.EasyMock.expect;
-import static org.easymock.EasyMock.expectLastCall;
+import static org.easymock.EasyMock.*;
 import static org.fest.util.Collections.list;
 
 import java.awt.AWTEvent;
-import java.awt.event.ComponentEvent;
-import java.awt.event.WindowEvent;
+import java.awt.event.*;
 import java.util.Collection;
 
 import org.fest.mocks.EasyMockTemplate;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
+import org.junit.runners.*;
 import org.junit.runners.Parameterized.Parameters;
 
 /**
@@ -58,12 +56,14 @@ public class TransientWindowListener_eventDispatched_withWindowOpenedAndShownEve
   @Test
   public void should_recognize_Window_if_it_is_implicitly_ignored() {
     new EasyMockTemplate(mockWindowFilter) {
+      @Override
       protected void expectations() {
         expect(mockWindowFilter.isImplicitlyIgnored(eventSource)).andReturn(true);
         mockWindowFilter.recognize(eventSource);
         expectLastCall();
       }
 
+      @Override
       protected void codeToTest() {
         listener.eventDispatched(event());
       }
@@ -72,6 +72,7 @@ public class TransientWindowListener_eventDispatched_withWindowOpenedAndShownEve
 
   @Test public void should_ignore_Window_if_parent_is_ignored() {
     new EasyMockTemplate(mockWindowFilter) {
+      @Override
       protected void expectations() {
         expect(mockWindowFilter.isImplicitlyIgnored(eventSource)).andReturn(false);
         expect(mockWindowFilter.isIgnored(parent)).andReturn(true);
@@ -79,6 +80,7 @@ public class TransientWindowListener_eventDispatched_withWindowOpenedAndShownEve
         expectLastCall();
       }
 
+      @Override
       protected void codeToTest() {
         listener.eventDispatched(event());
       }

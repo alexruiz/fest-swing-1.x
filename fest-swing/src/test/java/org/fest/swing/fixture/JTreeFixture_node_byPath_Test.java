@@ -30,10 +30,12 @@ public class JTreeFixture_node_byPath_Test extends JTreeFixture_TestCase {
   public void should_return_row() {
     final String path = "root";
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().validatePath(target(), path);
       }
 
+      @Override
       protected void codeToTest() {
         JTreeNodeFixture nodeFixture = fixture().node(path);
         assertThat(nodeFixture).isInstanceOf(JTreePathFixture.class);

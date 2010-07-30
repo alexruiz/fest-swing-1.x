@@ -24,8 +24,8 @@ import javax.swing.JApplet;
 
 import org.fest.swing.test.data.BooleanProvider;
 import org.junit.Test;
-import org.junit.runners.Parameterized;
 import org.junit.runner.RunWith;
+import org.junit.runners.*;
 import org.junit.runners.Parameterized.Parameters;
 
 /**

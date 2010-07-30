@@ -29,7 +29,7 @@ import org.junit.Test;
 
 /**
  * Test case for <a href="http://code.google.com/p/fest/issues/detail?id=108">Bug 108</a>.
- * 
+ *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
@@ -53,6 +53,7 @@ public class Bug108_findFrameByNameAndType_Test extends RobotBasedTestCase {
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
+        @Override
         protected MyWindow executeInEDT() {
           return new MyWindow();
         }

@@ -19,8 +19,7 @@ import static org.fest.swing.edt.GuiActionRunner.execute;
 
 import javax.swing.JFrame;
 
-import org.fest.swing.annotation.RunsInCurrentThread;
-import org.fest.swing.annotation.RunsInEDT;
+import org.fest.swing.annotation.*;
 import org.fest.swing.edt.GuiQuery;
 
 /**
@@ -60,6 +59,7 @@ public final class JFrames {
     @RunsInEDT
     public JFrame createAndShow() {
       return execute(new GuiQuery<JFrame>() {
+        @Override
         protected JFrame executeInEDT() {
           JFrame frame = create();
           frame.pack();
@@ -72,6 +72,7 @@ public final class JFrames {
     @RunsInEDT
     public JFrame createNew() {
       return execute(new GuiQuery<JFrame>() {
+        @Override
         protected JFrame executeInEDT() {
           return create();
         }

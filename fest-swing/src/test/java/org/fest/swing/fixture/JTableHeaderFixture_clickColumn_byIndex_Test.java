@@ -16,6 +16,7 @@
 package org.fest.swing.fixture;
 
 import static org.easymock.EasyMock.expectLastCall;
+
 import org.fest.mocks.EasyMockTemplate;
 import org.junit.Test;
 
@@ -31,11 +32,13 @@ public class JTableHeaderFixture_clickColumn_byIndex_Test extends JTableHeaderFi
   public void should_click_column() {
     final int index = 0;
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().clickColumn(target(), index);
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().clickColumn(index));
       }

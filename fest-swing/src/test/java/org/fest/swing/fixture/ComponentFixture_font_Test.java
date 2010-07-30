@@ -18,8 +18,7 @@ package org.fest.swing.fixture;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.edt.GuiActionRunner.execute;
 
-import java.awt.Component;
-import java.awt.Font;
+import java.awt.*;
 
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
@@ -43,6 +42,7 @@ public class ComponentFixture_font_Test extends ComponentFixture_TestCase {
   @RunsInEDT
   private static Font fontOf(final Component c) {
     return execute(new GuiQuery<Font>() {
+      @Override
       protected Font executeInEDT() {
         return c.getFont();
       }

@@ -16,8 +16,7 @@
 package org.fest.swing.timing;
 
 import static org.fest.swing.util.TimeoutWatch.startWatchWithTimeoutOf;
-import static org.fest.util.Arrays.format;
-import static org.fest.util.Arrays.isEmpty;
+import static org.fest.util.Arrays.*;
 import static org.fest.util.Strings.concat;
 
 import java.util.concurrent.TimeUnit;

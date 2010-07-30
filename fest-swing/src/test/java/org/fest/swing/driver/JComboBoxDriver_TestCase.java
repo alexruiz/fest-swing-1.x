@@ -26,15 +26,12 @@ import static org.fest.util.Arrays.array;
 
 import java.awt.Component;
 
-import javax.swing.JComboBox;
-import javax.swing.JLabel;
+import javax.swing.*;
 import javax.swing.text.JTextComponent;
 
 import org.fest.swing.annotation.RunsInEDT;
-import org.fest.swing.edt.GuiQuery;
-import org.fest.swing.edt.GuiTask;
-import org.fest.swing.test.core.MethodInvocations;
-import org.fest.swing.test.core.RobotBasedTestCase;
+import org.fest.swing.edt.*;
+import org.fest.swing.test.core.*;
 import org.fest.swing.test.swing.TestWindow;
 
 /**
@@ -110,6 +107,7 @@ public abstract class JComboBoxDriver_TestCase extends RobotBasedTestCase {
   @RunsInEDT
   private static void setEditableAndSelectFirstItem(final JComboBox comboBox, final boolean editable) {
     execute(new GuiTask() {
+      @Override
       protected void executeInEDT() {
         comboBox.setSelectedIndex(0);
         comboBox.setEditable(editable);
@@ -120,6 +118,7 @@ public abstract class JComboBoxDriver_TestCase extends RobotBasedTestCase {
   @RunsInEDT
   final static String textIn(final JComboBox comboBox) {
     return execute(new GuiQuery<String>() {
+      @Override
       protected String executeInEDT()  {
         Component editor = comboBox.getEditor().getEditorComponent();
         if (editor instanceof JLabel) return ((JLabel)editor).getText();
@@ -147,6 +146,7 @@ public abstract class JComboBoxDriver_TestCase extends RobotBasedTestCase {
     @RunsInEDT
     static MyWindow createNew(final Class<?> testClass) {
       return execute(new GuiQuery<MyWindow>() {
+        @Override
         protected MyWindow executeInEDT() {
           return new MyWindow(testClass);
         }

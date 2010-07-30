@@ -33,10 +33,12 @@ public class JTreeFixture_valueAtPath_Test extends JTreeFixture_TestCase {
     final String nodeText = "hello";
     final String path = "root/hello";
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         expect(driver().nodeValue(target(), path)).andReturn(nodeText);
       }
 
+      @Override
       protected void codeToTest() {
         String value = fixture().valueAt(path);
         assertThat(value).isEqualTo(nodeText);

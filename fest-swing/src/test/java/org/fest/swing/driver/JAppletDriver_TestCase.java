@@ -18,18 +18,15 @@ package org.fest.swing.driver;
 import static javax.swing.SwingUtilities.isEventDispatchThread;
 import static org.fest.swing.core.TestRobots.singletonRobotMock;
 import static org.fest.swing.edt.GuiActionRunner.execute;
-import static org.fest.util.Strings.concat;
-import static org.fest.util.Strings.quote;
+import static org.fest.util.Strings.*;
 
 import java.applet.AppletContext;
 import java.net.URL;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 import javax.swing.JApplet;
 
-import org.fest.swing.annotation.RunsInCurrentThread;
-import org.fest.swing.annotation.RunsInEDT;
+import org.fest.swing.annotation.*;
 import org.fest.swing.edt.GuiQuery;
 import org.fest.swing.test.core.EDTSafeTestCase;
 import org.junit.Before;
@@ -69,6 +66,7 @@ public class JAppletDriver_TestCase extends EDTSafeTestCase {
     @RunsInEDT
     static JAppletStub createNew() {
       return execute(new GuiQuery<JAppletStub>() {
+        @Override
         protected JAppletStub executeInEDT() {
           return new JAppletStub();
         }

@@ -17,8 +17,7 @@ package org.fest.swing.driver;
 
 import static org.fest.assertions.Assertions.assertThat;
 
-import java.awt.Point;
-import java.awt.Window;
+import java.awt.*;
 
 import javax.swing.JToolBar;
 

@@ -22,8 +22,7 @@ import static org.fest.swing.test.swing.TreeNodeFactory.node;
 import java.awt.Dimension;
 
 import javax.swing.JTree;
-import javax.swing.tree.DefaultTreeModel;
-import javax.swing.tree.MutableTreeNode;
+import javax.swing.tree.*;
 
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
@@ -62,6 +61,7 @@ public class Bug263_separatorNotRespectedInJTree_Test extends RobotBasedTestCase
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
+        @Override
         protected MyWindow executeInEDT() {
           return new MyWindow();
         }

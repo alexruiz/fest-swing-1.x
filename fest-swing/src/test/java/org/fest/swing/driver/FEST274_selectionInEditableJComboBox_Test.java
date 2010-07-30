@@ -59,6 +59,7 @@ public class FEST274_selectionInEditableJComboBox_Test extends RobotBasedTestCas
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
+        @Override
         protected MyWindow executeInEDT() {
           return new MyWindow();
         }

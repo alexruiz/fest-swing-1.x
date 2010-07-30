@@ -21,8 +21,7 @@ import static org.fest.swing.exception.UnexpectedException.unexpected;
 import static org.fest.swing.test.query.JFileChooserCurrentDirectoryQuery.currentDirectoryOf;
 import static org.fest.util.Files.temporaryFolder;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 
 import javax.swing.JFileChooser;
 
@@ -78,6 +77,7 @@ public class JFileChooserSetCurrentDirectoryTask_validateAndSetCurrentDirectory_
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
+        @Override
         protected MyWindow executeInEDT() {
           return new MyWindow();
         }

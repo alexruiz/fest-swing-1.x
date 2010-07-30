@@ -33,15 +33,16 @@ public final class ComponentSetVisibleTask {
   public static void show(Component c) {
     setVisible(c, true);
   }
-  
+
   @RunsInEDT
   public static void hide(Component c) {
     setVisible(c, false);
   }
-  
+
   @RunsInEDT
   public static void setVisible(final Component c, final boolean visible) {
     execute(new GuiTask() {
+      @Override
       protected void executeInEDT() {
         c.setVisible(visible);
       }

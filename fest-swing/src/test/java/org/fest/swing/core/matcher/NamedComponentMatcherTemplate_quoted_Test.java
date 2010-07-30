@@ -20,8 +20,7 @@ import static org.fest.swing.test.core.Regex.regex;
 
 import javax.swing.JLabel;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Tests for <code>{@link NamedComponentMatcherTemplate#quoted(Object)}</code>.

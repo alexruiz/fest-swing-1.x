@@ -15,8 +15,7 @@
  */
 package org.fest.swing.driver;
 
-import static javax.swing.SwingConstants.HORIZONTAL;
-import static javax.swing.SwingConstants.VERTICAL;
+import static javax.swing.SwingConstants.*;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.driver.JSliderValueQuery.valueOf;
 import static org.fest.swing.edt.GuiActionRunner.execute;
@@ -85,6 +84,7 @@ public abstract class JSliderDriver_TestCase extends RobotBasedTestCase {
     @RunsInEDT
     static MyWindow createNew(final Class<? extends JSliderDriver_TestCase> testClass, final int orientation) {
       return execute(new GuiQuery<MyWindow>() {
+        @Override
         protected MyWindow executeInEDT() {
           return new MyWindow(testClass, orientation);
         }

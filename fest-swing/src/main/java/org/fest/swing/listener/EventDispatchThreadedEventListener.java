@@ -14,16 +14,13 @@
  */
 package org.fest.swing.listener;
 
-import static javax.swing.SwingUtilities.invokeLater;
-import static javax.swing.SwingUtilities.isEventDispatchThread;
+import static javax.swing.SwingUtilities.*;
 
 import java.awt.AWTEvent;
 import java.awt.event.AWTEventListener;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
-import net.jcip.annotations.GuardedBy;
-import net.jcip.annotations.ThreadSafe;
+import net.jcip.annotations.*;
 
 /**
  * Understands a <code>{@link AWTEventListener}</code> that ensures all events are handled on the event dispatch

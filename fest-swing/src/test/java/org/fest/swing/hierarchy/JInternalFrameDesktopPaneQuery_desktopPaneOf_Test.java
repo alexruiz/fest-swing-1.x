@@ -18,8 +18,7 @@ package org.fest.swing.hierarchy;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.edt.GuiActionRunner.execute;
 
-import javax.swing.JDesktopPane;
-import javax.swing.JInternalFrame;
+import javax.swing.*;
 
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
@@ -56,6 +55,7 @@ public class JInternalFrameDesktopPaneQuery_desktopPaneOf_Test extends Sequentia
   @RunsInEDT
   private static JDesktopPane setNullIconAndReturnDesktopPane(final JInternalFrame internalFrame) {
     JDesktopPane desktopPane = execute(new GuiQuery<JDesktopPane>() {
+      @Override
       protected JDesktopPane executeInEDT() {
         internalFrame.setDesktopIcon(null);
         return JInternalFrameDesktopPaneQuery.desktopPaneOf(internalFrame);
@@ -73,6 +73,7 @@ public class JInternalFrameDesktopPaneQuery_desktopPaneOf_Test extends Sequentia
   @RunsInEDT
   private static JDesktopPane desktopPaneOf(final JInternalFrame internalFrame) {
     return execute(new GuiQuery<JDesktopPane>() {
+      @Override
       protected JDesktopPane executeInEDT() {
         return JInternalFrameDesktopPaneQuery.desktopPaneOf(internalFrame);
       }

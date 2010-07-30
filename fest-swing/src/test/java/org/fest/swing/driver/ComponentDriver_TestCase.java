@@ -24,8 +24,7 @@ import static org.fest.swing.timing.Pause.pause;
 
 import java.awt.Component;
 
-import javax.swing.JButton;
-import javax.swing.JTextField;
+import javax.swing.*;
 
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
@@ -50,7 +49,7 @@ public abstract class ComponentDriver_TestCase extends RobotBasedTestCase {
     driver = new ComponentDriver(robot);
     extraSetUp();
   }
-  
+
   void extraSetUp() {}
 
   final void showWindow() {
@@ -109,6 +108,7 @@ public abstract class ComponentDriver_TestCase extends RobotBasedTestCase {
     @RunsInEDT
     static MyWindow createNew(final Class<?> testClass) {
       return execute(new GuiQuery<MyWindow>() {
+        @Override
         protected MyWindow executeInEDT() {
           return new MyWindow(testClass);
         }

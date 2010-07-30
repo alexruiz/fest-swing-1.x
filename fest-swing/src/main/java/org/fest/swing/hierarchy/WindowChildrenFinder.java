@@ -16,8 +16,7 @@
 package org.fest.swing.hierarchy;
 
 import static java.util.Collections.emptyList;
-import static org.fest.util.Collections.isEmpty;
-import static org.fest.util.Collections.list;
+import static org.fest.util.Collections.*;
 
 import java.awt.*;
 import java.util.*;

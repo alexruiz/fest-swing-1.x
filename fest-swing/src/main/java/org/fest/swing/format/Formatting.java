@@ -19,15 +19,13 @@ import static org.fest.swing.edt.GuiActionRunner.execute;
 import static org.fest.util.Strings.*;
 
 import java.awt.*;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentMap;
+import java.util.concurrent.*;
 import java.util.logging.Logger;
 
 import javax.swing.*;
 import javax.swing.text.JTextComponent;
 
-import org.fest.swing.annotation.RunsInCurrentThread;
-import org.fest.swing.annotation.RunsInEDT;
+import org.fest.swing.annotation.*;
 import org.fest.swing.edt.GuiQuery;
 import org.fest.util.VisibleForTesting;
 
@@ -124,6 +122,7 @@ public class Formatting {
   @RunsInEDT
   public static String inEdtFormat(final Component c) {
     return execute(new GuiQuery<String>() {
+      @Override
       protected String executeInEDT() {
         return format(c);
       }

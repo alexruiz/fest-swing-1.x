@@ -31,11 +31,13 @@ public class JTreeFixture_clickPath_Test extends JTreeFixture_TestCase {
   public void should_click_path() {
     final String path = "root/node1";
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().clickPath(target(), path);
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().clickPath(path));
       }

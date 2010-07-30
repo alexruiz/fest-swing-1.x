@@ -20,8 +20,7 @@ import static org.fest.swing.core.TestRobots.singletonRobotMock;
 
 import javax.swing.JTable;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Tests for <code>{@link JTableFixture#driver(org.fest.swing.driver.JTableDriver)}</code>.

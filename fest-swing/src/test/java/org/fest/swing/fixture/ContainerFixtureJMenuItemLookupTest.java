@@ -84,6 +84,7 @@ public class ContainerFixtureJMenuItemLookupTest extends RobotBasedTestCase {
   @Test
   public void shouldFindJMenuItemWithCustomMatcher() {
     JMenuItemFixture menuItem = fixture.menuItem(new GenericTypeMatcher<JMenuItem>(JMenuItem.class) {
+      @Override
       protected boolean isMatching(JMenuItem m) {
         return "New".equals(m.getText());
       }
@@ -95,6 +96,7 @@ public class ContainerFixtureJMenuItemLookupTest extends RobotBasedTestCase {
   public void shouldFailIfJMenuItemCannotBeFoundWithCustomMatcher() {
     try {
       fixture.menuItem(new GenericTypeMatcher<JMenuItem>(JMenuItem.class) {
+        @Override
         protected boolean isMatching(JMenuItem m) {
           return false;
         }
@@ -114,6 +116,7 @@ public class ContainerFixtureJMenuItemLookupTest extends RobotBasedTestCase {
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
+        @Override
         protected MyWindow executeInEDT() {
           return new MyWindow();
         }

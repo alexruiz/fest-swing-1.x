@@ -19,11 +19,9 @@ import static java.awt.BorderLayout.NORTH;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.edt.GuiActionRunner.execute;
 
-import java.awt.BorderLayout;
-import java.awt.Dimension;
+import java.awt.*;
 
-import javax.swing.JLabel;
-import javax.swing.JToolBar;
+import javax.swing.*;
 
 import org.fest.swing.edt.GuiQuery;
 import org.fest.swing.exception.ComponentLookupException;
@@ -68,6 +66,7 @@ public class JToolBarFixture_constructor_withRobotAndName_Test extends RobotBase
 
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
+        @Override
         protected MyWindow executeInEDT() {
           return new MyWindow();
         }

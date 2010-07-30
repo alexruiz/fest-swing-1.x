@@ -33,6 +33,7 @@ public final class FrameSetResizableTask {
   @RunsInEDT
   public static void setResizable(final Frame frame, final boolean resizable) {
     execute(new GuiTask() {
+      @Override
       protected void executeInEDT() {
         frame.setResizable(resizable);
       }

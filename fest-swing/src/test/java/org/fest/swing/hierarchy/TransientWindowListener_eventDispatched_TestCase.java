@@ -15,14 +15,11 @@
  */
 package org.fest.swing.hierarchy;
 
-import static org.easymock.classextension.EasyMock.createMock;
-import static org.easymock.classextension.EasyMock.makeThreadSafe;
+import static org.easymock.classextension.EasyMock.*;
 
 import org.fest.swing.test.core.EDTSafeTestCase;
-import org.fest.swing.test.swing.TestDialog;
-import org.fest.swing.test.swing.TestWindow;
-import org.junit.After;
-import org.junit.Before;
+import org.fest.swing.test.swing.*;
+import org.junit.*;
 
 /**
  * Base test case for <code>{@link TransientWindowListener}</code>.

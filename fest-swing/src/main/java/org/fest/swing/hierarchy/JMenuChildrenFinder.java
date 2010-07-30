@@ -18,8 +18,7 @@ package org.fest.swing.hierarchy;
 import static java.util.Collections.emptyList;
 import static org.fest.util.Collections.list;
 
-import java.awt.Component;
-import java.awt.Container;
+import java.awt.*;
 import java.util.Collection;
 
 import javax.swing.JMenu;

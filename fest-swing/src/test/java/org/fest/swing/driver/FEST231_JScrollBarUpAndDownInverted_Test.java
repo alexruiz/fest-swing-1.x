@@ -5,12 +5,12 @@
  */
 package org.fest.swing.driver;
 
-import static javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS;
-import static javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS;
+import static javax.swing.ScrollPaneConstants.*;
 import static org.fest.swing.edt.GuiActionRunner.execute;
 import static org.fest.util.Arrays.array;
 
 import java.awt.Dimension;
+
 import javax.swing.*;
 
 import org.fest.swing.annotation.RunsInEDT;
@@ -80,6 +80,7 @@ public class FEST231_JScrollBarUpAndDownInverted_Test extends RobotBasedTestCase
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
+        @Override
         protected MyWindow executeInEDT() {
           return new MyWindow();
         }

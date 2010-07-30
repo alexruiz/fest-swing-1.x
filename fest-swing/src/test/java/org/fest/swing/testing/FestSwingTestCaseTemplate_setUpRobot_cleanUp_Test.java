@@ -17,14 +17,12 @@ package org.fest.swing.testing;
 
 import static org.fest.assertions.Assertions.assertThat;
 
-import org.fest.swing.core.BasicRobot;
-import org.fest.swing.core.Robot;
+import org.fest.swing.core.*;
 import org.fest.swing.hierarchy.ExistingHierarchy;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 
 /**
- * Tests for <code>{@link FestSwingTestCaseTemplate#setUpRobot()}</code> and 
+ * Tests for <code>{@link FestSwingTestCaseTemplate#setUpRobot()}</code> and
  * <code>{@link FestSwingTestCaseTemplate#cleanUp()}</code>.
  *
  * @author Alex Ruiz

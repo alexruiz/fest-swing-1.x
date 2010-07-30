@@ -31,11 +31,13 @@ public class JRadioButtonFixture_uncheck_Test extends JRadioButtonFixture_TestCa
   @Test
   public void should_uncheck_JRadioButton() {
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().unselect(target());
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().uncheck());
       }

@@ -36,6 +36,7 @@ final class JTreeNodeTextQuery {
   @RunsInEDT
   static String nodeText(final JTree tree, final int row, final JTreeLocation location, final JTreePathFinder pathFinder) {
     return execute(new GuiQuery<String>() {
+      @Override
       protected String executeInEDT() {
         TreePath matchingPath = location.pathFor(tree, row);
         return pathFinder.cellReader().valueAt(tree, matchingPath.getLastPathComponent());
@@ -46,6 +47,7 @@ final class JTreeNodeTextQuery {
   @RunsInEDT
   static String nodeText(final JTree tree, final String path, final JTreePathFinder pathFinder) {
     return execute(new GuiQuery<String>() {
+      @Override
       protected String executeInEDT() {
         TreePath matchingPath = matchingPathWithRootIfInvisible(tree, path, pathFinder);
         return pathFinder.cellReader().valueAt(tree, matchingPath.getLastPathComponent());

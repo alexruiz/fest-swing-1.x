@@ -22,11 +22,9 @@ import static org.fest.util.Arrays.array;
 import javax.swing.*;
 
 import org.fest.swing.annotation.RunsInEDT;
-import org.fest.swing.edt.GuiQuery;
-import org.fest.swing.edt.GuiTask;
+import org.fest.swing.edt.*;
 import org.fest.swing.test.core.RobotBasedTestCase;
-import org.fest.swing.test.swing.CustomCellRenderer;
-import org.fest.swing.test.swing.TestWindow;
+import org.fest.swing.test.swing.*;
 import org.junit.Test;
 
 /**
@@ -73,6 +71,7 @@ public class BasicJComboBoxCellReader_valueAt_Test extends RobotBasedTestCase {
   @RunsInEDT
   private static void setModelValues(final JComboBox comboBox, final Object[] values) {
     execute(new GuiTask() {
+      @Override
       protected void executeInEDT() {
         comboBox.setModel(new DefaultComboBoxModel(values));
       }
@@ -82,6 +81,7 @@ public class BasicJComboBoxCellReader_valueAt_Test extends RobotBasedTestCase {
   @RunsInEDT
   private static void setNotRecognizedRendererComponent(final JComboBox comboBox) {
     execute(new GuiTask() {
+      @Override
       protected void executeInEDT() {
         comboBox.setRenderer(new CustomCellRenderer(new JToolBar()));
       }
@@ -91,12 +91,13 @@ public class BasicJComboBoxCellReader_valueAt_Test extends RobotBasedTestCase {
   @RunsInEDT
   private static String firstItemValue(final BasicJComboBoxCellReader reader, final JComboBox comboBox) {
     return execute(new GuiQuery<String>() {
+      @Override
       protected String executeInEDT() {
         return reader.valueAt(comboBox, 0);
       }
     });
   }
-  
+
   private static class MyWindow extends TestWindow {
     private static final long serialVersionUID = 1L;
 
@@ -105,6 +106,7 @@ public class BasicJComboBoxCellReader_valueAt_Test extends RobotBasedTestCase {
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
+        @Override
         protected MyWindow executeInEDT() {
           return new MyWindow();
         }

@@ -34,7 +34,7 @@ public interface CellRendererReader {
    * Reads the value in the given cell renderer component, or returns {@code null} if the component is not
    * recognized by this reader.
    * <p>
-   * <b>Note:</b> Implementations of this method <b>may not</b> be guaranteed to be executed in the event dispatch 
+   * <b>Note:</b> Implementations of this method <b>may not</b> be guaranteed to be executed in the event dispatch
    * thread (EDT.) Clients are responsible for invoking this method in the EDT.
    * </p>
    * @param c the given cell renderer component.

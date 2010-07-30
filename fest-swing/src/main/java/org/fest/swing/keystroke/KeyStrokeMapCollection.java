@@ -15,8 +15,7 @@
  */
 package org.fest.swing.keystroke;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 import javax.swing.KeyStroke;
 

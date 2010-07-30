@@ -17,8 +17,7 @@ package org.fest.swing.driver;
 
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.edt.GuiActionRunner.execute;
-import static org.fest.util.Files.newTemporaryFile;
-import static org.fest.util.Files.temporaryFolder;
+import static org.fest.util.Files.*;
 
 import java.io.File;
 
@@ -66,6 +65,7 @@ public class JFileChooserSelectFileTask_validateAndSelectFile_Test extends Robot
   @RunsInEDT
   private static File selectedFileOf(final JFileChooser fileChooser) {
     return execute(new GuiQuery<File>() {
+      @Override
       protected File executeInEDT() {
         return fileChooser.getSelectedFile();
       }
@@ -78,6 +78,7 @@ public class JFileChooserSelectFileTask_validateAndSelectFile_Test extends Robot
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
+        @Override
         protected MyWindow executeInEDT() {
           return new MyWindow();
         }

@@ -17,6 +17,7 @@ package org.fest.swing.fixture;
 
 import static org.easymock.EasyMock.expect;
 import static org.fest.assertions.Assertions.assertThat;
+
 import org.fest.mocks.EasyMockTemplate;
 import org.junit.Test;
 
@@ -30,10 +31,12 @@ public class JOptionPaneFixture_title_Test extends JOptionPaneFixture_TestCase {
   @Test
   public void should_return_title() {
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         expect(driver().title(target())).andReturn("A Title");
       }
 
+      @Override
       protected void codeToTest() {
         assertThat(fixture().title()).isEqualTo("A Title");
       }

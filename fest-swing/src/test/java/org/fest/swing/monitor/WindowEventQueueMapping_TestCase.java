@@ -17,8 +17,7 @@ package org.fest.swing.monitor;
 
 import static org.fest.swing.test.awt.Toolkits.newToolkitStub;
 
-import java.awt.EventQueue;
-import java.awt.Window;
+import java.awt.*;
 import java.util.Map;
 
 import org.fest.swing.test.awt.ToolkitStub;

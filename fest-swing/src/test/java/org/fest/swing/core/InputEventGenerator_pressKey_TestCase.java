@@ -1,16 +1,16 @@
 /*
  * Created on Aug 6, 2009
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License
  * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
- * 
+ *
  * Copyright @2009-2010 the original author or authors.
  */
 package org.fest.swing.core;
@@ -30,14 +30,14 @@ import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
+import org.junit.runners.*;
 import org.junit.runners.Parameterized.Parameters;
 
 /**
  * Base test case for implementations of <code>{@link InputEventGenerator#pressKey(int, char)}</code> and
- * <code>{@link InputEventGenerator#releaseKey(int)}</code>. 
+ * <code>{@link InputEventGenerator#releaseKey(int)}</code>.
  *
- * @author Alex Ruiz 
+ * @author Alex Ruiz
  */
 @RunWith(Parameterized.class)
 public abstract class InputEventGenerator_pressKey_TestCase extends InputEventGenerator_TestCase {
@@ -49,13 +49,13 @@ public abstract class InputEventGenerator_pressKey_TestCase extends InputEventGe
   public static Collection<Object[]> keys() {
     return list(new Object[][] { { VK_A , "a" }, { VK_S, "s" }, { VK_D, "d" } });
   }
-  
+
   public InputEventGenerator_pressKey_TestCase(int keyToPress, String expectedText) {
     this.keyToPress = keyToPress;
     this.expectedText = expectedText;
-    
+
   }
-  
+
   @Test
   public void should_type_key() {
     giveFocusAndWaitTillIsFocused(window.textBox);
@@ -69,6 +69,7 @@ public abstract class InputEventGenerator_pressKey_TestCase extends InputEventGe
   @RunsInEDT
   private static String textOf(final JTextComponent textComponent) {
     return execute(new GuiQuery<String>() {
+      @Override
       protected String executeInEDT() {
         return textComponent.getText();
       }

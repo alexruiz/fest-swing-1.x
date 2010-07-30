@@ -18,8 +18,7 @@ import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.driver.AbstractButtonTextQuery.textOf;
 import static org.fest.swing.test.swing.JOptionPaneLauncher.launch;
 
-import javax.swing.JButton;
-import javax.swing.JOptionPane;
+import javax.swing.*;
 
 import org.junit.Test;
 

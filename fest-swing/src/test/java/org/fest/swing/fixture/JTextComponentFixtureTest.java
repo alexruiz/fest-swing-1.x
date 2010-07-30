@@ -16,6 +16,7 @@
 package org.fest.swing.fixture;
 
 import static org.easymock.EasyMock.expectLastCall;
+
 import org.fest.mocks.EasyMockTemplate;
 import org.junit.Test;
 
@@ -32,11 +33,13 @@ public class JTextComponentFixtureTest extends JTextComponentFixture_TestCase {
   @Test
   public void shouldDeleteText() {
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().deleteText(target());
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().deleteText());
       }
@@ -46,11 +49,13 @@ public class JTextComponentFixtureTest extends JTextComponentFixture_TestCase {
   @Test
   public void shouldEnterText() {
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().enterText(target(), "Some Text");
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().enterText("Some Text"));
       }
@@ -60,11 +65,13 @@ public class JTextComponentFixtureTest extends JTextComponentFixture_TestCase {
   @Test
   public void shouldSetText() {
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().setText(target(), "Some Text");
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().setText("Some Text"));
       }
@@ -74,11 +81,13 @@ public class JTextComponentFixtureTest extends JTextComponentFixture_TestCase {
   @Test
   public void shouldSelectText() {
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().selectText(target(), "Some Text");
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().select("Some Text"));
       }
@@ -88,11 +97,13 @@ public class JTextComponentFixtureTest extends JTextComponentFixture_TestCase {
   @Test
   public void shouldSelectTextInRange() {
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().selectText(target(), 6, 8);
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().selectText(6, 8));
       }
@@ -102,11 +113,13 @@ public class JTextComponentFixtureTest extends JTextComponentFixture_TestCase {
   @Test
   public void shouldSelectAll() {
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().selectAll(target());
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().selectAll());
       }
@@ -117,11 +130,13 @@ public class JTextComponentFixtureTest extends JTextComponentFixture_TestCase {
   @Test
   public void shouldRequireEmpty() {
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().requireEmpty(target());
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().requireEmpty());
       }
@@ -131,11 +146,13 @@ public class JTextComponentFixtureTest extends JTextComponentFixture_TestCase {
   @Test
   public void shouldRequireEditable() {
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().requireEditable(target());
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().requireEditable());
       }
@@ -145,11 +162,13 @@ public class JTextComponentFixtureTest extends JTextComponentFixture_TestCase {
   @Test
   public void shouldRequireNotEditable() {
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().requireNotEditable(target());
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().requireNotEditable());
       }

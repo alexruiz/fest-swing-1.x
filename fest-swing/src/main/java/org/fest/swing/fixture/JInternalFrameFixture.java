@@ -15,13 +15,13 @@
  */
 package org.fest.swing.fixture;
 
-import java.awt.Dimension;
-import java.awt.Point;
+import java.awt.*;
 import java.util.regex.Pattern;
 
 import javax.swing.JInternalFrame;
 
 import org.fest.swing.core.*;
+import org.fest.swing.core.Robot;
 import org.fest.swing.driver.JInternalFrameDriver;
 import org.fest.swing.exception.*;
 import org.fest.swing.timing.Timeout;

@@ -24,7 +24,7 @@ import java.util.Collection;
 import org.fest.mocks.EasyMockTemplate;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
+import org.junit.runners.*;
 import org.junit.runners.Parameterized.Parameters;
 
 /**
@@ -49,11 +49,13 @@ public class OSIdentifier_isLinux_Test extends OSIdentifier_TestCase {
   @Test
   public void shouldReturnLinuxIfOSNameIsEqualToLinux() {
     new EasyMockTemplate(propertyReader) {
+      @Override
       protected void expectations() {
         expectOSName(linux);
         expectNoMRJVersion();
       }
 
+      @Override
       protected void codeToTest() {
         OSIdentifier osIdentifier = new OSIdentifier(propertyReader);
         assertThat(osIdentifier.isLinux()).isTrue();

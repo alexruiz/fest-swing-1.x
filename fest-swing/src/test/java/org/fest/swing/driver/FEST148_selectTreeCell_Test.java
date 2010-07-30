@@ -22,8 +22,7 @@ import static org.fest.util.Arrays.array;
 
 import java.awt.*;
 
-import javax.swing.JScrollPane;
-import javax.swing.JTree;
+import javax.swing.*;
 import javax.swing.tree.*;
 
 import org.fest.swing.annotation.RunsInEDT;
@@ -63,6 +62,7 @@ public class FEST148_selectTreeCell_Test extends RobotBasedTestCase {
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
+        @Override
         protected MyWindow executeInEDT() {
           return new MyWindow();
         }

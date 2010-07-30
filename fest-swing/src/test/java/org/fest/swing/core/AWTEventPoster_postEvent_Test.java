@@ -15,8 +15,7 @@
  */
 package org.fest.swing.core;
 
-import static org.easymock.EasyMock.expect;
-import static org.easymock.EasyMock.expectLastCall;
+import static org.easymock.EasyMock.*;
 import static org.easymock.classextension.EasyMock.createMock;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.test.awt.TestAWTEvents.singletonAWTEventMock;
@@ -31,8 +30,7 @@ import org.fest.swing.monitor.WindowMonitor;
 import org.fest.swing.test.awt.TestComponents;
 import org.fest.swing.test.core.EDTSafeTestCase;
 import org.fest.swing.test.util.StopWatch;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Tests for <code>{@link AWTEventPoster#postEvent(Component, AWTEvent)}</code>.
@@ -65,6 +63,7 @@ public class AWTEventPoster_postEvent_Test extends EDTSafeTestCase {
   public void should_post_event_in_Component_EventQueue_if_Component_is_not_null() {
     final Component c = TestComponents.newComponentMock();
     new EasyMockTemplate(toolkit, inputState, monitor, settings, eventQueue) {
+      @Override
       protected void expectations() {
         expectInputStateToBeUpdatedWithEvent();
         expect(monitor.eventQueueFor(c)).andReturn(eventQueue);
@@ -72,6 +71,7 @@ public class AWTEventPoster_postEvent_Test extends EDTSafeTestCase {
         expectSettingsToReturnDelayBetweenEvents();
       }
 
+      @Override
       protected void codeToTest() {
         postEventAndAssertItWaited(c);
       }
@@ -81,6 +81,7 @@ public class AWTEventPoster_postEvent_Test extends EDTSafeTestCase {
   @Test
   public void should_post_event_in_System_EventQueue_ff_Component_is_null() {
     new EasyMockTemplate(toolkit, inputState, monitor, settings, eventQueue) {
+      @Override
       protected void expectations() {
         expectInputStateToBeUpdatedWithEvent();
         expect(toolkit.getSystemEventQueue()).andReturn(eventQueue);
@@ -88,6 +89,7 @@ public class AWTEventPoster_postEvent_Test extends EDTSafeTestCase {
         expectSettingsToReturnDelayBetweenEvents();
       }
 
+      @Override
       protected void codeToTest() {
         postEventAndAssertItWaited(null);
       }

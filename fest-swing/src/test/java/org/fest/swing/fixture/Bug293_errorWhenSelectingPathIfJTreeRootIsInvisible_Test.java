@@ -22,8 +22,7 @@ import static org.fest.swing.test.swing.TreeNodeFactory.node;
 import java.awt.Dimension;
 
 import javax.swing.JTree;
-import javax.swing.tree.DefaultTreeModel;
-import javax.swing.tree.MutableTreeNode;
+import javax.swing.tree.*;
 
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
@@ -65,7 +64,7 @@ public class Bug293_errorWhenSelectingPathIfJTreeRootIsInvisible_Test extends Ro
     static MyWindow createNewWithTreeRootVisible() {
       return createNew(true);
     }
-    
+
     @RunsInEDT
     static MyWindow createNewWithTreeRootInvisible() {
       return createNew(false);
@@ -74,6 +73,7 @@ public class Bug293_errorWhenSelectingPathIfJTreeRootIsInvisible_Test extends Ro
     @RunsInEDT
     private static MyWindow createNew(final boolean treeRootVisible) {
       return execute(new GuiQuery<MyWindow>() {
+        @Override
         protected MyWindow executeInEDT() {
           return new MyWindow(treeRootVisible);
         }

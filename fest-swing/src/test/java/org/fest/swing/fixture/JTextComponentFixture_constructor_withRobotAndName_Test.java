@@ -64,6 +64,7 @@ public class JTextComponentFixture_constructor_withRobotAndName_Test extends Rob
 
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
+        @Override
         protected MyWindow executeInEDT() {
           return new MyWindow();
         }

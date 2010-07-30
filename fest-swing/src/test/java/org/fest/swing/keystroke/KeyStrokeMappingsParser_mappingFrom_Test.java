@@ -15,7 +15,7 @@
  */
 package org.fest.swing.keystroke;
 
-import static java.awt.event.InputEvent.*;
+import static java.awt.event.InputEvent.SHIFT_MASK;
 import static java.awt.event.KeyEvent.*;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.keystroke.KeyStrokeMapping.mapping;
@@ -24,10 +24,9 @@ import static org.fest.util.Collections.list;
 
 import java.util.Collection;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
+import org.junit.runners.*;
 import org.junit.runners.Parameterized.Parameters;
 
 /**

@@ -92,6 +92,7 @@ public class TestTable extends JTable {
   @RunsInEDT
   private static void cellEditable(final CustomModel model, final int row, final int column, final boolean editable) {
     execute(new GuiTask() {
+      @Override
       protected void executeInEDT() {
         model.cellEditable(row, column, editable);
       }
@@ -124,6 +125,7 @@ public class TestTable extends JTable {
       super(JTable.class);
     }
 
+    @Override
     protected String exportString(JTable table) {
       rows = table.getSelectedRows();
       int colCount = table.getColumnCount();
@@ -139,6 +141,7 @@ public class TestTable extends JTable {
       return b.toString();
     }
 
+    @Override
     protected void importString(JTable target, String s) {
       DefaultTableModel model = (DefaultTableModel) target.getModel();
       int index = target.getSelectedRow();
@@ -161,6 +164,7 @@ public class TestTable extends JTable {
         model.insertRow(index++, values[i].split(","));
     }
 
+    @Override
     protected void cleanup(JTable source, boolean remove) {
       if (remove && rows != null) {
         DefaultTableModel model = (DefaultTableModel) source.getModel();

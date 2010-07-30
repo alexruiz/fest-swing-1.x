@@ -20,8 +20,7 @@ import static org.fest.swing.test.builder.JComboBoxes.comboBox;
 import javax.swing.JComboBox;
 
 import org.fest.swing.test.core.EDTSafeTestCase;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Tests for <code>{@link JComboBoxFormatter#format(java.awt.Component)}</code>.

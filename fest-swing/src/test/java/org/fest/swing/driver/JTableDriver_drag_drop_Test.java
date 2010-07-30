@@ -18,12 +18,10 @@ package org.fest.swing.driver;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.data.TableCell.row;
 import static org.fest.swing.driver.JTableCellValueQuery.cellValueOf;
-import static org.fest.swing.driver.JTableDriver_TestCase.MyWindow.COLUMN_COUNT;
-import static org.fest.swing.driver.JTableDriver_TestCase.MyWindow.ROW_COUNT;
+import static org.fest.swing.driver.JTableDriver_TestCase.MyWindow.*;
 import static org.fest.swing.driver.JTableRowCountQuery.rowCountOf;
 import static org.fest.swing.edt.GuiActionRunner.execute;
-import static org.fest.swing.test.swing.TestTable.columnNames;
-import static org.fest.swing.test.swing.TestTable.createCellValueFrom;
+import static org.fest.swing.test.swing.TestTable.*;
 
 import org.fest.swing.edt.GuiQuery;
 import org.fest.swing.test.swing.TestTable;
@@ -44,6 +42,7 @@ public class JTableDriver_drag_drop_Test extends JTableDriver_TestCase {
 
   @Override void extraSetUp() {
     dropTable = execute(new GuiQuery<TestTable>() {
+      @Override
       protected TestTable executeInEDT() {
         TestTable t = new TestTable(dropTableData(DROP_TABLE_ROW_COUNT, COLUMN_COUNT), columnNames(COLUMN_COUNT));
         window.addTable(t);

@@ -42,6 +42,7 @@ public abstract class WindowMetrics_TestCase extends SequentialEDTSafeTestCase {
   @RunsInEDT
   private static WindowMetrics newWindowMetricsFor(final Window window) {
     return execute(new GuiQuery<WindowMetrics>() {
+      @Override
       protected WindowMetrics executeInEDT() {
         return new WindowMetrics(window);
       }

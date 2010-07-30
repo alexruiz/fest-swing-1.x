@@ -20,8 +20,7 @@ import java.awt.event.InputEvent;
 
 import javax.swing.JPopupMenu;
 
-import org.fest.swing.exception.ActionFailedException;
-import org.fest.swing.exception.ComponentLookupException;
+import org.fest.swing.exception.*;
 import org.fest.swing.hierarchy.ComponentHierarchy;
 import org.fest.swing.lock.ScreenLock;
 

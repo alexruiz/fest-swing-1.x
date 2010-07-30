@@ -67,10 +67,11 @@ public class JTreeDriver_dragPath_dropPath_Test extends JTreeDriver_dragAndDrop_
     assertThat(childCountOf(rootChild)).isEqualTo(1);
     assertThat(textOf(firstChildOf(rootChild))).isEqualTo("branch1.1");
   }
-  
+
   @RunsInEDT
   private static void addNodeToRootAndHideRoot(final JTree tree) {
     execute(new GuiTask() {
+      @Override
       protected void executeInEDT() {
         Object root = tree.getModel().getRoot();
         DefaultMutableTreeNode rootNode = (DefaultMutableTreeNode)root;

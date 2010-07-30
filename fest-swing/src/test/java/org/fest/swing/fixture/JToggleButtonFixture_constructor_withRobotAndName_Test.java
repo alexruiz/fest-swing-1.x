@@ -63,6 +63,7 @@ public class JToggleButtonFixture_constructor_withRobotAndName_Test extends Robo
 
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
+        @Override
         protected MyWindow executeInEDT() {
           return new MyWindow();
         }

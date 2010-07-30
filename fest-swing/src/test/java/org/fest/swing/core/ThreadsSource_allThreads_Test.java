@@ -17,8 +17,7 @@ package org.fest.swing.core;
 
 import static org.fest.assertions.Assertions.assertThat;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Tests for <code>{@link ThreadsSource#allThreads}</code>.

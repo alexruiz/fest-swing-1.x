@@ -27,19 +27,20 @@ import org.fest.swing.edt.GuiTask;
 /**
  * Understands a task that sets the current directory in a <code>{@link JFileChooser}</code>. This task is executed in
  * the event dispatch thread.
- * 
+ *
  * @author Yvonne Wang
  */
 final class JFileChooserSetCurrentDirectoryTask {
 
   static void validateAndSetCurrentDirectory(final JFileChooser fileChooser, final File dir) {
     execute(new GuiTask() {
+      @Override
       protected void executeInEDT() {
         validateIsEnabledAndShowing(fileChooser);
         fileChooser.setCurrentDirectory(dir);
       }
     });
   }
-  
+
   private JFileChooserSetCurrentDirectoryTask() {}
 }

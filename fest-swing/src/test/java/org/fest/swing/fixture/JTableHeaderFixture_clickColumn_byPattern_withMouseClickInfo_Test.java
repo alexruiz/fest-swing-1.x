@@ -40,11 +40,13 @@ public class JTableHeaderFixture_clickColumn_byPattern_withMouseClickInfo_Test e
     final MouseButton mouseButton = LEFT_BUTTON;
     final int times = 2;
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().clickColumn(target(), pattern, mouseButton, times);
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().clickColumn(pattern, leftButton().times(2)));
       }

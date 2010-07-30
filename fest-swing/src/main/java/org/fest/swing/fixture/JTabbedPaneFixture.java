@@ -15,17 +15,16 @@
  */
 package org.fest.swing.fixture;
 
-import java.awt.Component;
-import java.awt.Point;
+import java.awt.*;
 import java.util.regex.Pattern;
 
 import javax.swing.JTabbedPane;
 
 import org.fest.swing.core.*;
+import org.fest.swing.core.Robot;
 import org.fest.swing.data.Index;
 import org.fest.swing.driver.JTabbedPaneDriver;
-import org.fest.swing.exception.ComponentLookupException;
-import org.fest.swing.exception.LocationUnavailableException;
+import org.fest.swing.exception.*;
 import org.fest.swing.timing.Timeout;
 
 /**

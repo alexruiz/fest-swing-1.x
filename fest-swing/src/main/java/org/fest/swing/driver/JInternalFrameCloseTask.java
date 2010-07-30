@@ -31,6 +31,7 @@ final class JInternalFrameCloseTask {
 
   static void close(final JInternalFrame internalFrame) {
     execute(new GuiTask() {
+      @Override
       protected void executeInEDT() {
         internalFrame.doDefaultCloseAction();
       }

@@ -23,8 +23,7 @@ import static org.fest.util.Arrays.array;
 import javax.swing.JList;
 
 import org.fest.swing.core.GenericTypeMatcher;
-import org.fest.swing.edt.GuiQuery;
-import org.fest.swing.edt.GuiTask;
+import org.fest.swing.edt.*;
 import org.fest.swing.exception.ComponentLookupException;
 import org.fest.swing.test.core.RobotBasedTestCase;
 import org.fest.swing.test.swing.TestWindow;
@@ -55,6 +54,7 @@ public class ContainerFixtureJListLookupTest extends RobotBasedTestCase {
   @Test
   public void shouldFailIfJListCannotBeFoundByType() {
     execute(new GuiTask() {
+      @Override
       protected void executeInEDT() {
         window.remove(window.list);
       }
@@ -89,6 +89,7 @@ public class ContainerFixtureJListLookupTest extends RobotBasedTestCase {
   @Test
   public void shouldFindJListWithCustomMatcher() {
     JListFixture list = fixture.list(new GenericTypeMatcher<JList>(JList.class) {
+      @Override
       protected boolean isMatching(JList l) {
         return l.getModel().getSize() == 3;
       }
@@ -104,6 +105,7 @@ public class ContainerFixtureJListLookupTest extends RobotBasedTestCase {
   public void shouldFailIfJListCannotBeFoundWithCustomMatcher() {
     try {
       fixture.list(new GenericTypeMatcher<JList>(JList.class) {
+        @Override
         protected boolean isMatching(JList l) {
           return false;
         }
@@ -121,6 +123,7 @@ public class ContainerFixtureJListLookupTest extends RobotBasedTestCase {
 
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
+        @Override
         protected MyWindow executeInEDT() {
           return new MyWindow();
         }

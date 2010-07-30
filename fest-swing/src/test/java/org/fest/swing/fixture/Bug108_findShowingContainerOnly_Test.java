@@ -22,8 +22,7 @@ import static org.fest.util.Strings.concat;
 
 import java.awt.Dimension;
 
-import javax.swing.JDesktopPane;
-import javax.swing.JInternalFrame;
+import javax.swing.*;
 
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
@@ -61,12 +60,13 @@ public class Bug108_findShowingContainerOnly_Test extends RobotBasedTestCase {
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
+        @Override
         protected MyWindow executeInEDT() {
           return new MyWindow();
         }
       });
     }
- 
+
     private MyWindow() {
       super(Bug108_findShowingContainerOnly_Test.class);
       JDesktopPane desktop = new JDesktopPane();
@@ -84,11 +84,11 @@ public class Bug108_findShowingContainerOnly_Test extends RobotBasedTestCase {
     static MyInternalFrame createVisible() {
       return new MyInternalFrame(true);
     }
-    
+
     static MyInternalFrame createInvisible() {
       return new MyInternalFrame(false);
     }
-    
+
     private MyInternalFrame(boolean visible) {
       super(concat("Internal Frame ", valueOf(instanceCounter++)), true, true, true, true);
       setName("target");

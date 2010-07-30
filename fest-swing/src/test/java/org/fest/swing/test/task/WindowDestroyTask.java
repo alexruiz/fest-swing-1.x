@@ -19,8 +19,7 @@ import static org.fest.swing.edt.GuiActionRunner.execute;
 
 import java.awt.Window;
 
-import org.fest.swing.annotation.RunsInCurrentThread;
-import org.fest.swing.annotation.RunsInEDT;
+import org.fest.swing.annotation.*;
 import org.fest.swing.edt.GuiTask;
 
 /**
@@ -38,6 +37,7 @@ public final class WindowDestroyTask {
   public static void hideAndDisposeInEDT(final Window w) {
     if (w == null) return;
     execute(new GuiTask() {
+      @Override
       protected void executeInEDT() {
         hideAndDispose(w);
       }

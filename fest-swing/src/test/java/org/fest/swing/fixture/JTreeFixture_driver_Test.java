@@ -20,8 +20,7 @@ import static org.fest.swing.test.builder.JTrees.tree;
 
 import javax.swing.JTree;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Tests for <code>{@link JTreeFixture#driver(org.fest.swing.driver.JTreeDriver)}</code>.

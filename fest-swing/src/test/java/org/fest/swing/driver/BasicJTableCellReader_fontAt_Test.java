@@ -21,8 +21,7 @@ import static org.fest.swing.query.ComponentFontQuery.fontOf;
 
 import java.awt.Font;
 
-import javax.swing.JLabel;
-import javax.swing.JTable;
+import javax.swing.*;
 
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
@@ -46,6 +45,7 @@ public class BasicJTableCellReader_fontAt_Test extends BasicJTableCellReader_Tes
   @RunsInEDT
   private static Font fontAt(final BasicJTableCellReader reader, final JTable table, final int row, final int column) {
     return execute(new GuiQuery<Font>() {
+      @Override
       protected Font executeInEDT() {
         return reader.fontAt(table, row, column);
       }

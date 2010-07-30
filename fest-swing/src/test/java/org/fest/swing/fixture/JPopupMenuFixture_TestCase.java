@@ -41,13 +41,17 @@ public abstract class JPopupMenuFixture_TestCase extends ComponentFixture_Implem
     target = popupMenu().createNew();
   }
 
+  @Override
   final void onSetUp() {
     driver = createMock(JPopupMenuDriver.class);
     fixture = new JPopupMenuFixture(robot(), target);
     fixture.driver(driver);
   }
 
+  @Override
   final JPopupMenuDriver driver() {  return driver; }
+  @Override
   final JPopupMenu target() { return target; }
+  @Override
   final JPopupMenuFixture fixture() { return fixture; }
 }

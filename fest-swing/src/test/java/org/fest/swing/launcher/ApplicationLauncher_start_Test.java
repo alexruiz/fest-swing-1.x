@@ -20,8 +20,7 @@ import static org.fest.swing.test.core.CommonAssertions.failWhenExpectingExcepti
 import static org.fest.util.Collections.list;
 
 import java.awt.Frame;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 import org.fest.swing.core.GenericTypeMatcher;
 import org.fest.swing.exception.UnexpectedException;
@@ -82,6 +81,7 @@ public class ApplicationLauncher_start_Test extends RobotBasedTestCase {
 
   private void assertFrameIsShowing() {
     FrameFixture frameFixture = WindowFinder.findFrame(new GenericTypeMatcher<Frame>(Frame.class) {
+      @Override
       protected boolean isMatching(Frame frame) {
         return "Java Application".equals(frame.getTitle()) && frame.isShowing();
       }

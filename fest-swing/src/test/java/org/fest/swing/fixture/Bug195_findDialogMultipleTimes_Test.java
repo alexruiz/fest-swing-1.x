@@ -14,14 +14,11 @@
  */
 package org.fest.swing.fixture;
 
-import static java.awt.BorderLayout.CENTER;
-import static java.awt.BorderLayout.SOUTH;
+import static java.awt.BorderLayout.*;
 import static org.fest.swing.edt.GuiActionRunner.execute;
-import static org.fest.util.Strings.concat;
-import static org.fest.util.Strings.quote;
+import static org.fest.util.Strings.*;
 
-import java.awt.BorderLayout;
-import java.awt.Dialog;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 
 import javax.swing.*;
@@ -62,6 +59,7 @@ public class Bug195_findDialogMultipleTimes_Test extends RobotBasedTestCase {
       this.matchString = s != null ? s.toUpperCase() : null;
     }
 
+    @Override
     protected boolean isMatching(Dialog dialog) {
       String title = dialog.getTitle();
       return title != null && title.toUpperCase().startsWith(matchString) && isShowing(dialog);
@@ -70,12 +68,14 @@ public class Bug195_findDialogMultipleTimes_Test extends RobotBasedTestCase {
     @RunsInEDT
     private static boolean isShowing(final Dialog dialog) {
       return execute(new GuiQuery<Boolean>() {
+        @Override
         protected Boolean executeInEDT() {
           return dialog.isShowing();
         }
       });
     }
 
+    @Override
     public String toString() {
       return concat(DialogTitleStartsWithMatcher.class.getSimpleName(), "(", quote(matchString), ")");
     }
@@ -89,12 +89,13 @@ public class Bug195_findDialogMultipleTimes_Test extends RobotBasedTestCase {
     @RunsInEDT
     static TestDialog createNew(final String title) {
       return execute(new GuiQuery<TestDialog>() {
+        @Override
         protected TestDialog executeInEDT() {
           return new TestDialog(title);
         }
       });
     }
-    
+
     private TestDialog(String title) {
       super();
       setName(title);

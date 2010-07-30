@@ -35,6 +35,7 @@ class JOptionPaneMessageTypeQuery {
   @RunsInEDT
   static int messageTypeOf(final JOptionPane optionPane) {
     return execute(new GuiQuery<Integer>() {
+      @Override
       protected Integer executeInEDT() throws Throwable {
         return optionPane.getMessageType();
       }

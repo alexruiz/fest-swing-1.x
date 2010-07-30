@@ -19,13 +19,12 @@ import static java.awt.BorderLayout.*;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.util.Collections.list;
 
-import java.awt.Point;
-import java.awt.Window;
+import java.awt.*;
 import java.util.Collection;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
+import org.junit.runners.*;
 import org.junit.runners.Parameterized.Parameters;
 
 /**

@@ -18,29 +18,23 @@
  */
 package org.fest.swing.driver;
 
-import java.applet.Applet;
-import java.applet.AppletContext;
-import java.net.MalformedURLException;
-import java.net.URL;
+import static org.easymock.EasyMock.*;
+import static org.easymock.classextension.EasyMock.*;
+import static org.fest.assertions.Assertions.assertThat;
+
+import java.applet.*;
+import java.net.*;
 import java.util.Enumeration;
 
 import javax.swing.JApplet;
 
 import org.fest.mocks.EasyMockTemplate;
-import org.fest.swing.test.core.EDTSafeTestCase;
 import org.fest.swing.core.Robot;
-import org.junit.Before;
-import org.junit.Test;
-
-import static org.fest.assertions.Assertions.assertThat;
-
-import static org.easymock.classextension.EasyMock.replay;
-import static org.easymock.classextension.EasyMock.createMock;
-import static org.easymock.EasyMock.expectLastCall;
-import static org.easymock.EasyMock.expect;
+import org.fest.swing.test.core.EDTSafeTestCase;
+import org.junit.*;
 
 public class JAppletDriver_Test extends EDTSafeTestCase {
-	
+
 	private JAppletDriver driver;
 	private JApplet target;
 	private Robot robot;
@@ -50,101 +44,113 @@ public class JAppletDriver_Test extends EDTSafeTestCase {
 		target = createMock(JApplet.class);
 		driver = new JAppletDriver(robot, target);
 	}
-	
+
 	@Test
 	public void should_get_applet_context()
 	{
 		final AppletContext context = createMock(AppletContext.class);
-		
+
 		new EasyMockTemplate(target()){
-			protected void expectations() {
+			@Override
+      protected void expectations() {
 				expect(target.getAppletContext()).andReturn(context);
 			}
-			
-			protected void codeToTest() {
+
+			@Override
+      protected void codeToTest() {
 				assertThat(driver.getAppletContext()).isSameAs(context);
 			}
 		}.run();
 	}
-	
+
 	@Test
 	public void should_applet_resize()
 	{
 		final int width = 10;
 		final int height = 10;
-		
+
 		new EasyMockTemplate(target()){
-			protected void expectations() {
+			@Override
+      protected void expectations() {
 				target.resize(10,10);
 				expectLastCall().once();
 			}
-			
-			protected void codeToTest() {
+
+			@Override
+      protected void codeToTest() {
 				driver.appletResize(width, height);
 			}
 		}.run();
 	}
-	
+
 	@Test
 	public void should_get_code_base() throws MalformedURLException
 	{
 		final URL url = new URL("http://localhost");
-		
+
 		new EasyMockTemplate(target()){
-			protected void expectations() {
+			@Override
+      protected void expectations() {
 				expect(target.getCodeBase()).andReturn(url);
 			}
-			
-			protected void codeToTest() {
+
+			@Override
+      protected void codeToTest() {
 				assertThat(driver.getCodeBase()).isSameAs(url);
 			}
 		}.run();
 	}
-	
+
 	@Test
 	public void should_get_document_base() throws MalformedURLException
 	{
 		final URL url = new URL("http://localhost");
-		
+
 		new EasyMockTemplate(target()){
-			protected void expectations() {
+			@Override
+      protected void expectations() {
 				expect(target.getDocumentBase()).andReturn(url);
 			}
-			
-			protected void codeToTest() {
+
+			@Override
+      protected void codeToTest() {
 				assertThat(driver.getDocumentBase()).isSameAs(url);
 			}
 		}.run();
 	}
-	
+
 	@Test
 	public void should_get_parameter()
 	{
 		final String parameter = "parameter";
 		final String name = "name";
-		
+
 		new EasyMockTemplate(target()){
-			protected void expectations() {
+			@Override
+      protected void expectations() {
 				expect(target.getParameter(name)).andReturn(parameter);
 			}
-			
-			protected void codeToTest() {
+
+			@Override
+      protected void codeToTest() {
 				assertThat(driver.getParameter(name)).isSameAs(parameter);
 			}
 		}.run();
 	}
-	
+
 	@Test
 	public void is_active()
 	{
 		final boolean active = true;
-		
+
 		new EasyMockTemplate(target()){
-			protected void expectations() {
+			@Override
+      protected void expectations() {
 				expect(target.isActive()).andReturn(active);
 			}
-			
-			protected void codeToTest() {
+
+			@Override
+      protected void codeToTest() {
 				assertThat(driver.isActive());
 			}
 		}.run();
@@ -156,41 +162,45 @@ public class JAppletDriver_Test extends EDTSafeTestCase {
 		final AppletContext context = createMock(AppletContext.class);
 		final Applet applet = createMock(Applet.class);
 		final String name = "applet";
-		
+
 		new EasyMockTemplate(target()){
-			protected void expectations() {
+			@Override
+      protected void expectations() {
 				expect(target.getAppletContext()).andReturn(context);
 				expect(context.getApplet(name)).andReturn(applet);
 			}
-			
-			protected void codeToTest() {
+
+			@Override
+      protected void codeToTest() {
 				replay(context);
 				replay(applet);
 				assertThat(driver.getApplet(name)).isSameAs(applet);
 			}
 		}.run();
 	}
-	
+
 	@Test
 	public void should_get_applets()
 	{
 		final AppletContext context = createMock(AppletContext.class);
 		final Enumeration<Applet> applets = createMock(Enumeration.class);
-		
+
 		new EasyMockTemplate(target()){
-			protected void expectations() {
+			@Override
+      protected void expectations() {
 				expect(target.getAppletContext()).andReturn(context);
 				expect(context.getApplets()).andReturn(applets);
 			}
-			
-			protected void codeToTest() {
+
+			@Override
+      protected void codeToTest() {
 				replay(context);
 				replay(applets);
 				assertThat(driver.getApplets()).isSameAs(applets);
-				
+
 			}
 		}.run();
 	}
-	
+
 	JApplet target() { return target; }
 }

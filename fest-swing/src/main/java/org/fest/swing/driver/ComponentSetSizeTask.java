@@ -33,11 +33,12 @@ final class ComponentSetSizeTask {
   @RunsInEDT
   static void setComponentSize(final Component c, final int width, final int height) {
     execute(new GuiTask() {
+      @Override
       protected void executeInEDT() {
         c.setSize(width, height);
       }
     });
   }
-  
+
   private ComponentSetSizeTask() {}
 }

@@ -30,7 +30,7 @@ import org.fest.swing.test.data.BooleanProvider;
 import org.fest.swing.test.swing.TestWindow;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
+import org.junit.runners.*;
 import org.junit.runners.Parameterized.Parameters;
 
 /**
@@ -71,6 +71,7 @@ public class ComponentFixture_isEnabled_Test extends RobotBasedTestCase {
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
+        @Override
         protected MyWindow executeInEDT() {
           return new MyWindow();
         }

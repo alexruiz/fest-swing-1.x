@@ -17,8 +17,7 @@ package org.fest.swing.core;
 
 import static org.fest.reflect.core.Reflection.staticField;
 
-import java.awt.Component;
-import java.awt.KeyboardFocusManager;
+import java.awt.*;
 
 /**
  * Understands how to find the current focus owner using Reflection.

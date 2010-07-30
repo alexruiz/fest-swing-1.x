@@ -31,11 +31,13 @@ public class FrameFixture_deiconify_Test extends FrameFixture_TestCase {
   @Test
   public void should_deiconify() {
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().deiconify(target());
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().deiconify());
       }

@@ -20,8 +20,7 @@ import java.awt.*;
 import org.fest.swing.core.*;
 import org.fest.swing.core.Robot;
 import org.fest.swing.driver.DialogDriver;
-import org.fest.swing.exception.ActionFailedException;
-import org.fest.swing.exception.ComponentLookupException;
+import org.fest.swing.exception.*;
 import org.fest.swing.timing.Timeout;
 
 /**
@@ -361,6 +360,7 @@ public class DialogFixture extends WindowFixture<Dialog> {
    * Shows this fixture's <code>{@link Dialog}</code>.
    * @return this fixture.
    */
+  @Override
   public DialogFixture show() {
     driver.show(target);
     return this;
@@ -371,6 +371,7 @@ public class DialogFixture extends WindowFixture<Dialog> {
    * @param size the size to resize this fixture's <code>Dialog</code> to.
    * @return this fixture.
    */
+  @Override
   public DialogFixture show(Dimension size) {
     driver.show(target, size);
     return this;

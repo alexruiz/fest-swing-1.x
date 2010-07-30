@@ -21,8 +21,7 @@ import static org.fest.swing.test.core.CommonAssertions.failWhenExpectingExcepti
 
 import java.awt.*;
 
-import javax.swing.JButton;
-import javax.swing.JTextField;
+import javax.swing.*;
 
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
@@ -71,6 +70,7 @@ public class Bug134_clickComponentOutsideScreen_Test extends RobotBasedTestCase 
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
+        @Override
         protected MyWindow executeInEDT() {
           return new MyWindow();
         }

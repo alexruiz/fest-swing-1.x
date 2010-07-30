@@ -32,6 +32,7 @@ final class JProgressBarSetIndetermintateTask {
   @RunsInEDT
   static void setIntedeterminate(final JProgressBar progressBar, final boolean indeterminate) {
     execute(new GuiTask() {
+      @Override
       protected void executeInEDT() {
         progressBar.setIndeterminate(indeterminate);
       }

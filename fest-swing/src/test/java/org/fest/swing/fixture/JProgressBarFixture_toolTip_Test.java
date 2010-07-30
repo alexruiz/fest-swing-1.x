@@ -41,13 +41,17 @@ public class JProgressBarFixture_toolTip_Test extends ToolTipDisplayFixture_Test
     target = progressBar().createNew();
   }
 
+  @Override
   void onSetUp() {
     driver = createMock(JProgressBarDriver.class);
     fixture = new JProgressBarFixture(robot(), target);
     fixture.driver(driver);
   }
 
+  @Override
   JProgressBarDriver driver() {  return driver; }
+  @Override
   JProgressBar target() { return target; }
+  @Override
   JProgressBarFixture fixture() { return fixture; }
 }

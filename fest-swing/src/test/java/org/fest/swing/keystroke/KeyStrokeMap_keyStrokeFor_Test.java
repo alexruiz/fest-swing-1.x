@@ -31,10 +31,12 @@ public class KeyStrokeMap_keyStrokeFor_Test extends KeyStrokeMap_TestCase {
   @Test
   public void should_return_KeyStroke_from_char() {
     new EasyMockTemplate(provider) {
+      @Override
       protected void expectations() {
         expect(provider.keyStrokeMappings()).andReturn(mappings);
       }
 
+      @Override
       protected void codeToTest() {
         KeyStrokeMap.addKeyStrokesFrom(provider);
         assertThat(KeyStrokeMap.keyStrokeFor('A')).isSameAs(keyStroke);

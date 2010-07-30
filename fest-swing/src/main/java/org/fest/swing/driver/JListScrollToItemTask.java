@@ -22,17 +22,14 @@ import static org.fest.swing.driver.JListItemIndexValidator.validateIndex;
 import static org.fest.swing.driver.JListMatchingItemQuery.matchingItemIndex;
 import static org.fest.swing.edt.GuiActionRunner.execute;
 
-import java.awt.Point;
-import java.awt.Rectangle;
+import java.awt.*;
 
 import javax.swing.JList;
 
-import org.fest.swing.annotation.RunsInCurrentThread;
-import org.fest.swing.annotation.RunsInEDT;
+import org.fest.swing.annotation.*;
 import org.fest.swing.cell.JListCellReader;
 import org.fest.swing.edt.GuiQuery;
-import org.fest.swing.util.Pair;
-import org.fest.swing.util.TextMatcher;
+import org.fest.swing.util.*;
 
 /**
  * Understands actions, executed in the event dispatch thread, that perform scrolling to an element in a
@@ -48,6 +45,7 @@ final class JListScrollToItemTask {
   // returns the point that the JList was scrolled to.
   static Point scrollToItem(final JList list, final int index) {
     return execute(new GuiQuery<Point>() {
+      @Override
       protected Point executeInEDT() {
         validateIsEnabledAndShowing(list);
         validateIndex(list, index);
@@ -60,6 +58,7 @@ final class JListScrollToItemTask {
   // returns the index of first matching element and the point that the JList was scrolled to.
   static Pair<Integer, Point> scrollToItem(final JList list, final TextMatcher matcher, final JListCellReader cellReader) {
     return execute(new GuiQuery<Pair<Integer, Point>>() {
+      @Override
       protected Pair<Integer, Point> executeInEDT() {
         validateIsEnabledAndShowing(list);
         int index = matchingItemIndex(list, matcher, cellReader);
@@ -74,6 +73,7 @@ final class JListScrollToItemTask {
   static Pair<Integer, Point> scrollToItemIfNotSelectedYet(final JList list, final TextMatcher matcher,
       final JListCellReader cellReader) {
     return execute(new GuiQuery<Pair<Integer, Point>>() {
+      @Override
       protected Pair<Integer, Point> executeInEDT() {
         validateIsEnabledAndShowing(list);
         int index = matchingItemIndex(list, matcher, cellReader);
@@ -87,6 +87,7 @@ final class JListScrollToItemTask {
   // returns the point that the JList was scrolled to.
   static Point scrollToItemIfNotSelectedYet(final JList list, final int index) {
     return execute(new GuiQuery<Point>() {
+      @Override
       protected Point executeInEDT() {
         validateIsEnabledAndShowing(list);
         validateIndex(list, index);

@@ -18,8 +18,7 @@ package org.fest.swing.driver;
 import static org.fest.swing.test.core.Regex.regex;
 import static org.junit.rules.ExpectedException.none;
 
-import org.junit.Rule;
-import org.junit.Test;
+import org.junit.*;
 import org.junit.rules.ExpectedException;
 
 /**

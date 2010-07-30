@@ -42,11 +42,11 @@ public abstract class WindowFixture_TestCase {
   }
 
   void extraSetUp() {}
-  
+
   static void assertThatContainsExistingHierarchy(WindowFixture<?> f) {
     assertThat(f.robot.hierarchy()).isInstanceOf(ExistingHierarchy.class);
   }
-  
+
   static void assertThatFixtureUsesRobot(WindowFixture<?> f, Robot r) {
     assertThat(f.robot).isSameAs(r);
   }
@@ -61,6 +61,7 @@ public abstract class WindowFixture_TestCase {
     @RunsInEDT
     static MyWindow createNew(final Class<?> testClass) {
       return execute(new GuiQuery<MyWindow>() {
+        @Override
         protected MyWindow executeInEDT() {
           return new MyWindow(testClass);
         }

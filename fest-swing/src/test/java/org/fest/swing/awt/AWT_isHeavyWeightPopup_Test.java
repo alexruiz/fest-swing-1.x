@@ -22,8 +22,7 @@ import static org.fest.swing.test.builder.JFrames.frame;
 
 import java.awt.Window;
 
-import javax.swing.JDialog;
-import javax.swing.JFrame;
+import javax.swing.*;
 
 import org.fest.swing.test.core.EDTSafeTestCase;
 import org.junit.Test;

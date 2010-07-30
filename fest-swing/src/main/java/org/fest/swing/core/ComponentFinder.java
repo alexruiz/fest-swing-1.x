@@ -15,8 +15,7 @@
  */
 package org.fest.swing.core;
 
-import java.awt.Component;
-import java.awt.Container;
+import java.awt.*;
 import java.util.Collection;
 
 import javax.swing.JLabel;

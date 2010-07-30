@@ -17,8 +17,7 @@ package org.fest.swing.driver;
 
 import static org.fest.swing.edt.GuiActionRunner.execute;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 import javax.swing.JList;
 
@@ -37,6 +36,7 @@ final class JListSelectionValuesQuery {
   @RunsInEDT
   static List<String> selectionValues(final JList list, final JListCellReader cellReader) {
     return execute(new GuiQuery<List<String>>() {
+      @Override
       protected List<String> executeInEDT() {
         List<String> values = new ArrayList<String>();
         int[] selectedIndices = list.getSelectedIndices();

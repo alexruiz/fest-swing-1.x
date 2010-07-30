@@ -21,17 +21,14 @@ import static org.fest.swing.edt.GuiActionRunner.execute;
 import static org.fest.util.Collections.list;
 
 import java.awt.Component;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
+import javax.swing.*;
 
 import org.fest.mocks.EasyMockTemplate;
 import org.fest.swing.edt.*;
 import org.fest.swing.hierarchy.SingleComponentHierarchy;
-import org.junit.After;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Tests for <code>{@link SingleComponentHierarchy#childrenOf(Component)}</code>.
@@ -49,6 +46,7 @@ public class SingleComponentHierarchy_childrenOf_Test extends SingleComponentHie
   @After
   public void tearDown() {
     GuiActionRunner.execute(new GuiTask() {
+      @Override
       protected void executeInEDT() {
         parent.setVisible(false);
         parent.dispose();
@@ -60,10 +58,12 @@ public class SingleComponentHierarchy_childrenOf_Test extends SingleComponentHie
   public void should_return_children_of_Component() {
     final List<Component> children = list((Component)parent.button);
     new EasyMockTemplate(hierarchyDelegate) {
+      @Override
       protected void expectations() {
         expect(hierarchyDelegate.childrenOf(parent)).andReturn(children);
       }
 
+      @Override
       protected void codeToTest() {
         Collection<Component> foundChildren = hierarchy.childrenOf(parent);
         assertThat(foundChildren).isSameAs(children);
@@ -78,6 +78,7 @@ public class SingleComponentHierarchy_childrenOf_Test extends SingleComponentHie
 
     static FrameWithButton createNew() {
       return execute(new GuiQuery<FrameWithButton>() {
+        @Override
         protected FrameWithButton executeInEDT() {
           return new FrameWithButton();
         }

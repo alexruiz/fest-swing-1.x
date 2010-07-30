@@ -29,10 +29,8 @@ import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
 import org.fest.swing.lock.ScreenLock;
 import org.fest.swing.test.core.EDTSafeTestCase;
-import org.fest.swing.test.swing.TestDialog;
-import org.fest.swing.test.swing.TestWindow;
-import org.junit.Before;
-import org.junit.Test;
+import org.fest.swing.test.swing.*;
+import org.junit.*;
 
 /**
  * Tests for <code>{@link WindowChildrenFinder#nonExplicitChildrenOf(Container)}</code>.
@@ -88,6 +86,7 @@ public class WindowChildrenFinder_nonExplicitChildrenOf_Test extends EDTSafeTest
   @RunsInEDT
   private static Collection<Component> findChildren(final WindowChildrenFinder finder, final Window w) {
     return execute(new GuiQuery<Collection<Component>>() {
+      @Override
       protected Collection<Component> executeInEDT() {
         return finder.nonExplicitChildrenOf(w);
       }

@@ -1,16 +1,16 @@
 /*
  * Created on Apr 29, 2008
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License
  * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
- * 
+ *
  * Copyright @2008-2010 the original author or authors.
  */
 package org.fest.swing.fixture;
@@ -23,17 +23,14 @@ import static org.fest.swing.timing.Pause.pause;
 
 import java.awt.Dimension;
 
-import javax.swing.JScrollPane;
-import javax.swing.JTree;
-import javax.swing.tree.DefaultMutableTreeNode;
-import javax.swing.tree.DefaultTreeModel;
+import javax.swing.*;
+import javax.swing.tree.*;
 
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
 import org.fest.swing.exception.LocationUnavailableException;
 import org.fest.swing.test.core.RobotBasedTestCase;
-import org.fest.swing.test.swing.TestTree;
-import org.fest.swing.test.swing.TestWindow;
+import org.fest.swing.test.swing.*;
 import org.junit.Test;
 
 /**
@@ -63,7 +60,7 @@ public class Bug133_scrollToItemToSelectInJTree_Test extends RobotBasedTestCase 
     frame.tree("drag").selectRow(99);
     assertThat(selectionOf(window.dragTree)).isEqualTo("99");
   }
-  
+
   @Test
   public void should_scroll_to_cells_when_dragging_and_dropping_by_path() {
     frame.tree("drag").drag("root/99");
@@ -94,6 +91,7 @@ public class Bug133_scrollToItemToSelectInJTree_Test extends RobotBasedTestCase 
   @RunsInEDT
   private static Object selectionOf(final JTree tree) {
     return execute(new GuiQuery<Object>() {
+      @Override
       protected Object executeInEDT() {
         Object lastPathComponent = tree.getSelectionPath().getLastPathComponent();
         DefaultMutableTreeNode node = (DefaultMutableTreeNode)lastPathComponent;
@@ -111,6 +109,7 @@ public class Bug133_scrollToItemToSelectInJTree_Test extends RobotBasedTestCase 
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
+        @Override
         protected MyWindow executeInEDT() {
           return new MyWindow();
         }
@@ -125,7 +124,7 @@ public class Bug133_scrollToItemToSelectInJTree_Test extends RobotBasedTestCase 
       add(scrollPaneFor(dropTree));
       setPreferredSize(new Dimension(300, 150));
     }
-    
+
     private static JScrollPane scrollPaneFor(JTree tree) {
       JScrollPane scrollPane = new JScrollPane(tree);
       scrollPane.setPreferredSize(new Dimension(100, 100));

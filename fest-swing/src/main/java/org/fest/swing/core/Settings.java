@@ -15,8 +15,7 @@
  */
 package org.fest.swing.core;
 
-import static java.lang.Math.max;
-import static java.lang.Math.min;
+import static java.lang.Math.*;
 import static org.fest.swing.core.ComponentLookupScope.DEFAULT;
 import static org.fest.swing.util.Platform.*;
 

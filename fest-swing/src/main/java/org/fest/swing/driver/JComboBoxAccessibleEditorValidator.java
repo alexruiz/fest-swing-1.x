@@ -34,7 +34,7 @@ import org.fest.swing.annotation.RunsInCurrentThread;
  * </p>
  * @see JComboBox#isEditable()
  * @see Component#isEnabled()
- * 
+ *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
@@ -43,7 +43,7 @@ final class JComboBoxAccessibleEditorValidator {
   @RunsInCurrentThread
   static void validateEditorIsAccessible(JComboBox comboBox) {
     validateIsEnabledAndShowing(comboBox);
-    if (!comboBox.isEditable()) 
+    if (!comboBox.isEditable())
       throw new IllegalStateException(concat("Expecting component ", format(comboBox), " to be editable"));
   }
 

@@ -17,10 +17,10 @@ package org.fest.swing.fixture;
 
 import static org.easymock.classextension.EasyMock.createMock;
 import static org.fest.swing.core.TestRobots.singletonRobotMock;
+
 import javax.swing.JInternalFrame;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Tests for <code>{@link JInternalFrameFixture#driver(org.fest.swing.driver.JInternalFrameDriver)}</code>.

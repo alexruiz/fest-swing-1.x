@@ -31,11 +31,13 @@ public class JTableFixture_selectRows_Test extends JTableFixture_TestCase {
   public void should_select_rows() {
     final int[] rows = { 6, 8 };
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().selectRows(target(), rows);
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().selectRows(rows));
       }

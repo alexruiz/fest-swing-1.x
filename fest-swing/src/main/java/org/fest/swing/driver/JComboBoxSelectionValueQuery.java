@@ -37,6 +37,7 @@ final class JComboBoxSelectionValueQuery {
   @RunsInEDT
   static Pair<Boolean, String> selection(final JComboBox comboBox, final JComboBoxCellReader cellReader) {
     return execute(new GuiQuery<Pair<Boolean, String>>() {
+      @Override
       protected Pair<Boolean, String> executeInEDT() {
         int selectedIndex = comboBox.getSelectedIndex();
         if (selectedIndex == -1) return valueForNoSelection(comboBox);

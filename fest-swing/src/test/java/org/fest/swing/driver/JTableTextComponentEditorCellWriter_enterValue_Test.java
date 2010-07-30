@@ -28,6 +28,7 @@ import org.junit.Test;
  */
 public class JTableTextComponentEditorCellWriter_enterValue_Test extends JTableCellWriter_enterValue_TestCase {
 
+  @Override
   protected JTableCellWriter createWriter() {
     return new JTableTextComponentEditorCellWriter(robot);
   }

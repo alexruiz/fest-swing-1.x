@@ -33,18 +33,22 @@ import org.junit.Test;
 public abstract class WindowFixture_implementation_TestCase<T extends Window> extends
     ComponentFixture_Implementations_TestCase<Window> {
 
+  @Override
   abstract WindowDriver driver();
 
+  @Override
   abstract WindowFixture<T> fixture();
 
   @Test
   public final void should_move_to_front() {
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().moveToFront(target());
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().moveToFront());
       }
@@ -54,11 +58,13 @@ public abstract class WindowFixture_implementation_TestCase<T extends Window> ex
   @Test
   public final void should_move_to_back() {
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().moveToBack(target());
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().moveToBack());
       }
@@ -69,11 +75,13 @@ public abstract class WindowFixture_implementation_TestCase<T extends Window> ex
   public final void should_require_size() {
     final Dimension size = new Dimension(800, 600);
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().requireSize(target(), size);
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().requireSize(size));
       }
@@ -84,11 +92,13 @@ public abstract class WindowFixture_implementation_TestCase<T extends Window> ex
   public final void should_move_to_point() {
     final Point p = new Point(6, 8);
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().moveTo(target(), p);
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().moveTo(p));
       }
@@ -99,11 +109,13 @@ public abstract class WindowFixture_implementation_TestCase<T extends Window> ex
   public final void should_resize_height() {
     final int height = 68;
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().resizeHeightTo(target(), height);
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().resizeHeightTo(height));
       }
@@ -114,11 +126,13 @@ public abstract class WindowFixture_implementation_TestCase<T extends Window> ex
   public final void should_resize_width() {
     final int width = 68;
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().resizeWidthTo(target(), width);
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().resizeWidthTo(width));
       }
@@ -129,11 +143,13 @@ public abstract class WindowFixture_implementation_TestCase<T extends Window> ex
   public final void should_resize_width_and_height() {
     final Dimension size = new Dimension(800, 600);
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().resizeTo(target(), size);
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().resizeTo(size));
       }
@@ -143,11 +159,13 @@ public abstract class WindowFixture_implementation_TestCase<T extends Window> ex
   @Test
   public final void should_show() {
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().show(target());
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().show());
       }
@@ -158,11 +176,13 @@ public abstract class WindowFixture_implementation_TestCase<T extends Window> ex
   public final void should_show_with_given_size() {
     final Dimension size = new Dimension(800, 600);
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().show(target(), size);
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().show(size));
       }
@@ -172,11 +192,13 @@ public abstract class WindowFixture_implementation_TestCase<T extends Window> ex
   @Test
   public final void should_close() {
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().close(target());
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         fixture().close();
       }

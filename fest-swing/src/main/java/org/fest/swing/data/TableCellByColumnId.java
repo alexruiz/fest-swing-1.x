@@ -19,8 +19,7 @@ import static java.lang.String.valueOf;
 import static org.fest.swing.edt.GuiActionRunner.execute;
 import static org.fest.swing.exception.ActionFailedException.actionFailure;
 import static org.fest.swing.query.JTableColumnByIdentifierQuery.columnIndexByIdentifier;
-import static org.fest.util.Strings.concat;
-import static org.fest.util.Strings.quote;
+import static org.fest.util.Strings.*;
 
 import javax.swing.JTable;
 
@@ -101,6 +100,7 @@ public class TableCellByColumnId implements TableCellFinder {
   @RunsInEDT
   private static TableCell findCell(final JTable table, final int row, final Object columnId) {
     return execute(new GuiQuery<TableCell>() {
+      @Override
       protected TableCell executeInEDT() {
         int column = columnIndexByIdentifier(table, columnId);
         if (column == -1) failColumnIndexNotFound(columnId);

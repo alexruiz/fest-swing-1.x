@@ -16,6 +16,7 @@
 package org.fest.swing.fixture;
 
 import static org.easymock.EasyMock.expect;
+
 import org.fest.mocks.EasyMockTemplate;
 import org.junit.Test;
 
@@ -30,10 +31,12 @@ public class JTableHeaderFixture_showPopupMenuAt_byIndex_Test extends JTableHead
   @Test
   public void should_show_JPopupMenu() {
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         expect(driver().showPopupMenu(target(), 1)).andReturn(popupMenu());
       }
 
+      @Override
       protected void codeToTest() {
         JPopupMenuFixture result = fixture().showPopupMenuAt(1);
         assertThatJPopupMenuWasShown(result);

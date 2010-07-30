@@ -16,8 +16,7 @@ package org.fest.swing.input;
 
 import static org.fest.swing.test.builder.JTextFields.textField;
 
-import java.awt.Component;
-import java.awt.Point;
+import java.awt.*;
 
 import org.fest.swing.test.core.EDTSafeTestCase;
 import org.junit.Before;

@@ -41,13 +41,17 @@ public abstract class JToolBarFixture_TestCase extends ComponentFixture_Implemen
     target = toolBar().createNew();
   }
 
+  @Override
   final void onSetUp() {
     driver = createMock(JToolBarDriver.class);
     fixture = new JToolBarFixture(robot(), target);
     fixture.driver(driver);
   }
 
+  @Override
   final JToolBarDriver driver() {  return driver; }
+  @Override
   final JToolBar target() { return target; }
+  @Override
   final JToolBarFixture fixture() { return fixture; }
 }

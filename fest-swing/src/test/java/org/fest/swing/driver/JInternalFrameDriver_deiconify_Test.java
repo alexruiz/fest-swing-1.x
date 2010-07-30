@@ -19,8 +19,7 @@ import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.driver.JInternalFrameAction.DEICONIFY;
 import static org.fest.swing.driver.JInternalFrameIconQuery.isIconified;
 import static org.fest.swing.driver.JInternalFrameSetIconTask.setIcon;
-import static org.fest.swing.test.core.CommonAssertions.assertThatErrorCauseIsNotShowingComponent;
-import static org.fest.swing.test.core.CommonAssertions.failWhenExpectingException;
+import static org.fest.swing.test.core.CommonAssertions.*;
 
 import javax.swing.JInternalFrame;
 

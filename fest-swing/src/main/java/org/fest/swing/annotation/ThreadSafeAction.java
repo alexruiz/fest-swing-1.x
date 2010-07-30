@@ -15,11 +15,9 @@
  */
 package org.fest.swing.annotation;
 
-import static java.lang.annotation.ElementType.CONSTRUCTOR;
-import static java.lang.annotation.ElementType.METHOD;
+import static java.lang.annotation.ElementType.*;
 
-import java.lang.annotation.Documented;
-import java.lang.annotation.Target;
+import java.lang.annotation.*;
 
 import net.jcip.annotations.ThreadSafe;
 

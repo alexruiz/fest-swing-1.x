@@ -21,8 +21,7 @@ import static org.fest.swing.test.builder.JLabels.label;
 import javax.swing.JLabel;
 
 import org.fest.swing.test.core.EDTSafeTestCase;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Tests for <code>{@link JLabelFixture#driver(org.fest.swing.driver.JLabelDriver)}</code>.

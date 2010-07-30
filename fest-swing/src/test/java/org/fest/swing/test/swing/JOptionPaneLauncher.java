@@ -20,8 +20,7 @@ import static org.fest.swing.edt.GuiActionRunner.execute;
 import static org.fest.swing.test.swing.JOptionPaneHost.host;
 import static org.fest.swing.timing.Pause.pause;
 
-import javax.swing.JDialog;
-import javax.swing.JOptionPane;
+import javax.swing.*;
 
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
@@ -63,6 +62,7 @@ public final class JOptionPaneLauncher {
       }
     });
     pause(new Condition("JOptionPane is showing") {
+      @Override
       public boolean test() {
         return dialog.isShowing();
       }
@@ -79,6 +79,7 @@ public final class JOptionPaneLauncher {
   @RunsInEDT
   public static JDialog pack(final JOptionPane optionPane, final String title) {
     final JDialog dialog = execute(new GuiQuery<JDialog>() {
+      @Override
       protected JDialog executeInEDT() {
         return host(optionPane, title);
       }

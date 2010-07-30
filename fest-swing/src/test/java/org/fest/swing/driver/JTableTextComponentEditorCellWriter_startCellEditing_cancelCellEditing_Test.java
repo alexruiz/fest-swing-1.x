@@ -27,9 +27,10 @@ import org.junit.Test;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class JTableTextComponentEditorCellWriter_startCellEditing_cancelCellEditing_Test 
+public class JTableTextComponentEditorCellWriter_startCellEditing_cancelCellEditing_Test
     extends JTableCellWriter_startCellEditing_TestCase {
 
+  @Override
   protected JTableCellWriter createWriter() {
     return new JTableTextComponentEditorCellWriter(robot);
   }

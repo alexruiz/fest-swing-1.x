@@ -23,12 +23,10 @@ import java.awt.Point;
 
 import javax.swing.JSlider;
 
-import org.fest.swing.annotation.RunsInCurrentThread;
-import org.fest.swing.annotation.RunsInEDT;
+import org.fest.swing.annotation.*;
 import org.fest.swing.core.Robot;
 import org.fest.swing.edt.GuiQuery;
-import org.fest.swing.util.GenericRange;
-import org.fest.swing.util.Pair;
+import org.fest.swing.util.*;
 
 /**
  * Understands functional testing of <code>{@link JSlider}</code>s:
@@ -71,6 +69,7 @@ public class JSliderDriver extends JComponentDriver {
   private static Pair<Integer, GenericRange<Point>> validateAndFindSlideToMaximumInfo(final JSlider slider,
       final JSliderLocation location) {
     return execute(new GuiQuery<Pair<Integer, GenericRange<Point>>>() {
+      @Override
       protected Pair<Integer, GenericRange<Point>> executeInEDT() {
         validateIsEnabledAndShowing(slider);
         int value = slider.getMaximum();
@@ -95,6 +94,7 @@ public class JSliderDriver extends JComponentDriver {
   private static Pair<Integer, GenericRange<Point>> validateAndFindSlideToMinimumInfo(final JSlider slider,
       final JSliderLocation location) {
     return execute(new GuiQuery<Pair<Integer, GenericRange<Point>>>() {
+      @Override
       protected Pair<Integer, GenericRange<Point>> executeInEDT() {
         validateIsEnabledAndShowing(slider);
         int value = slider.getMinimum();
@@ -135,6 +135,7 @@ public class JSliderDriver extends JComponentDriver {
   private static GenericRange<Point> validateAndFindSlideInfo(final JSlider slider, final JSliderLocation location,
       final int value) {
     return execute(new GuiQuery<GenericRange<Point>>() {
+      @Override
       protected GenericRange<Point> executeInEDT() {
         validateValue(slider, value);
         validateIsEnabledAndShowing(slider);

@@ -18,8 +18,7 @@ package org.fest.swing.fixture;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.test.core.CommonAssertions.failWhenExpectingException;
 import static org.fest.swing.timing.Timeout.timeout;
-import static org.fest.util.Strings.concat;
-import static org.fest.util.Strings.quote;
+import static org.fest.util.Strings.*;
 
 import javax.swing.JFileChooser;
 
@@ -139,6 +138,7 @@ public class ContainerFixtureJFileChooserLookupTest extends RobotBasedTestCase {
       super(JFileChooser.class);
     }
 
+    @Override
     protected boolean isMatching(JFileChooser fileChooser) {
       return TITLE.equals(fileChooser.getDialogTitle());
     }

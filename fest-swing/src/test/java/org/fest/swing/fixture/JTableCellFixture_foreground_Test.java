@@ -18,6 +18,7 @@ package org.fest.swing.fixture;
 import static java.awt.Color.BLUE;
 import static org.easymock.EasyMock.expect;
 import static org.fest.assertions.Assertions.assertThat;
+
 import org.fest.mocks.EasyMockTemplate;
 import org.junit.Test;
 
@@ -32,10 +33,12 @@ public class JTableCellFixture_foreground_Test extends JTableCellFixture_withMoc
   public void should_return_foreground_color() {
     final ColorFixture colorFixture = new ColorFixture(BLUE);
     new EasyMockTemplate(table) {
+      @Override
       protected void expectations() {
         expect(table.foregroundAt(cell)).andReturn(colorFixture);
       }
 
+      @Override
       protected void codeToTest() {
         ColorFixture result = fixture.foreground();
         assertThat(result).isSameAs(colorFixture);

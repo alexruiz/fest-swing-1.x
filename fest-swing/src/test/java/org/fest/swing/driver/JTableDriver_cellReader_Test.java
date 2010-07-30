@@ -17,8 +17,7 @@ package org.fest.swing.driver;
 
 import static org.fest.swing.core.TestRobots.singletonRobotMock;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Tests for <code>{@link JTableDriver#cellReader(org.fest.swing.cell.JTableCellReader)}</code>.

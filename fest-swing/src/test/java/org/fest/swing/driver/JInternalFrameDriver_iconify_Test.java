@@ -18,8 +18,7 @@ package org.fest.swing.driver;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.driver.JInternalFrameIconQuery.isIconified;
 import static org.fest.swing.edt.GuiActionRunner.execute;
-import static org.fest.swing.test.core.CommonAssertions.assertThatErrorCauseIsNotShowingComponent;
-import static org.fest.swing.test.core.CommonAssertions.failWhenExpectingException;
+import static org.fest.swing.test.core.CommonAssertions.*;
 
 import javax.swing.JInternalFrame;
 
@@ -75,6 +74,7 @@ public class JInternalFrameDriver_iconify_Test extends JInternalFrameDriver_Test
   @RunsInEDT
   private static void setIconifiable(final JInternalFrame internalFrame, final boolean iconfiable) {
     execute(new GuiTask() {
+      @Override
       protected void executeInEDT() {
         internalFrame.setIconifiable(iconfiable);
       }

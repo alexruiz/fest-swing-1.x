@@ -16,8 +16,7 @@
 package org.fest.swing.fixture;
 
 import static org.fest.assertions.Assertions.assertThat;
-import static org.fest.util.Strings.concat;
-import static org.fest.util.Strings.quote;
+import static org.fest.util.Strings.*;
 
 import java.awt.Dialog;
 
@@ -26,7 +25,7 @@ import javax.swing.JDialog;
 import org.fest.swing.core.GenericTypeMatcher;
 import org.fest.swing.exception.WaitTimedOutError;
 import org.fest.swing.test.core.RobotBasedTestCase;
-import org.fest.swing.test.swing.WindowLauncher;
+import org.fest.swing.test.swing.*;
 import org.fest.swing.test.swing.WindowLauncher.DialogToLaunch;
 
 /**
@@ -55,7 +54,7 @@ public class ContainerFixture_dialog_TestCase extends RobotBasedTestCase {
   final void launchDialogNow() {
     launchDialogAfterWaitingFor(0);
   }
-  
+
   final void launchDialogAfterWaitingFor(int delay) {
     robot.showWindow(window);
     window.dialogLaunchDelay(delay);
@@ -69,6 +68,7 @@ public class ContainerFixture_dialog_TestCase extends RobotBasedTestCase {
       super(JDialog.class);
     }
 
+    @Override
     protected boolean isMatching(JDialog dialog) {
       return TITLE.equals(dialog.getTitle());
     }

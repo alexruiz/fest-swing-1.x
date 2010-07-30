@@ -16,6 +16,7 @@
 package org.fest.swing.fixture;
 
 import static org.fest.assertions.Assertions.assertThat;
+
 import org.junit.Test;
 
 /**

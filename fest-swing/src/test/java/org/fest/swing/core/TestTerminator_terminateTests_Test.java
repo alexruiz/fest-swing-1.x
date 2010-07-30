@@ -15,16 +15,14 @@
  */
 package org.fest.swing.core;
 
-import static org.easymock.EasyMock.expect;
-import static org.easymock.EasyMock.expectLastCall;
+import static org.easymock.EasyMock.*;
 import static org.easymock.classextension.EasyMock.createMock;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.test.core.CommonAssertions.failWhenExpectingException;
 import static org.fest.util.Arrays.array;
 
 import org.fest.mocks.EasyMockTemplate;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Tests for <code>{@link TestTerminator#terminateTests()}</code>.
@@ -49,6 +47,7 @@ public class TestTerminator_terminateTests_Test {
   public void should_terminate_GUI_tests() {
     final Thread mainThread = createMock(Thread.class);
     new EasyMockTemplate(threadsSource, frameDisposer, mainThreadIdentifier, mainThread) {
+      @Override
       protected void expectations() {
         Thread[] allThreads = array(mainThread);
         expect(threadsSource.allThreads()).andReturn(allThreads);
@@ -62,6 +61,7 @@ public class TestTerminator_terminateTests_Test {
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         terminateTestsAndExpectException();
       }
@@ -71,6 +71,7 @@ public class TestTerminator_terminateTests_Test {
   @Test
   public void should_not_throw_error_if_main_thread_not_found() {
     new EasyMockTemplate(threadsSource, frameDisposer, mainThreadIdentifier) {
+      @Override
       protected void expectations() {
         Thread[] allThreads = new Thread[0];
         expect(threadsSource.allThreads()).andReturn(allThreads);
@@ -78,6 +79,7 @@ public class TestTerminator_terminateTests_Test {
         expectFramesDisposal();
       }
 
+      @Override
       protected void codeToTest() {
         terminateTestsAndExpectException();
       }

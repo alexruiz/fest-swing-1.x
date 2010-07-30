@@ -42,13 +42,17 @@ public class JTextComponentFixture_textDisplay_Test extends TextDisplayFixture_T
     target = textField().createNew();
   }
 
+  @Override
   void onSetUp() {
     driver = createMock(JTextComponentDriver.class);
     fixture = new JTextComponentFixture(robot(), target);
     fixture.driver(driver);
   }
 
+  @Override
   JTextComponentDriver driver() {  return driver; }
+  @Override
   JTextComponent target() { return target; }
+  @Override
   JTextComponentFixture fixture() { return fixture; }
 }

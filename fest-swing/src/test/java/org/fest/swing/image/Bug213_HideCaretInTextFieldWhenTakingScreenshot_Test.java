@@ -20,8 +20,7 @@ import static org.fest.swing.edt.GuiActionRunner.execute;
 
 import java.awt.image.BufferedImage;
 
-import javax.swing.JButton;
-import javax.swing.JTextField;
+import javax.swing.*;
 
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
@@ -63,6 +62,7 @@ public class Bug213_HideCaretInTextFieldWhenTakingScreenshot_Test extends Sequen
     @RunsInEDT
     static MyWindow createAndShow() {
       return execute(new GuiQuery<MyWindow>() {
+        @Override
         protected MyWindow executeInEDT() {
           return display(new MyWindow());
         }

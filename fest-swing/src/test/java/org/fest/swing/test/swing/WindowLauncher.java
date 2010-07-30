@@ -17,14 +17,12 @@ package org.fest.swing.test.swing;
 
 import static org.fest.swing.edt.GuiActionRunner.execute;
 
-import java.awt.Dimension;
-import java.awt.Window;
+import java.awt.*;
 import java.awt.event.*;
 
 import javax.swing.*;
 
-import org.fest.swing.annotation.RunsInCurrentThread;
-import org.fest.swing.annotation.RunsInEDT;
+import org.fest.swing.annotation.*;
 import org.fest.swing.edt.GuiQuery;
 
 /**
@@ -46,6 +44,7 @@ public class WindowLauncher extends TestWindow {
   @RunsInEDT
   public static WindowLauncher createNew(final Class<?> testClass) {
     return execute(new GuiQuery<WindowLauncher>() {
+      @Override
       protected WindowLauncher executeInEDT() {
         return new WindowLauncher(testClass);
       }

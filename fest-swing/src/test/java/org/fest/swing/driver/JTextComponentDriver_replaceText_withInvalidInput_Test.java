@@ -20,8 +20,7 @@ import static org.fest.swing.core.TestRobots.singletonRobotMock;
 
 import javax.swing.text.JTextComponent;
 
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Tests for <code>{@link JTextComponentDriver#replaceText(javax.swing.text.JTextComponent, String)}</code>.

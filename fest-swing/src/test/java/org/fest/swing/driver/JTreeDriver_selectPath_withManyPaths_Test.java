@@ -29,7 +29,7 @@ import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
+import org.junit.runners.*;
 import org.junit.runners.Parameterized.Parameters;
 
 /**
@@ -69,6 +69,7 @@ public class JTreeDriver_selectPath_withManyPaths_Test extends JTreeDriver_selec
   @RunsInEDT
   private static TreePath selectionPathOf(final JTree tree) {
     return execute(new GuiQuery<TreePath>() {
+      @Override
       protected TreePath executeInEDT() {
         return tree.getSelectionPath();
       }

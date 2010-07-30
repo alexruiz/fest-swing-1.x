@@ -24,8 +24,7 @@ import javax.swing.JList;
 
 import org.fest.swing.cell.JListCellReader;
 import org.fest.swing.core.*;
-import org.fest.swing.driver.BasicJListCellReader;
-import org.fest.swing.driver.JListDriver;
+import org.fest.swing.driver.*;
 import org.fest.swing.exception.*;
 import org.fest.swing.timing.Timeout;
 import org.fest.swing.util.Range;

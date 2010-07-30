@@ -66,7 +66,7 @@ public class WindowAncestorFinder_windowAncestorOf_Test extends EDTSafeTestCase 
 
   @Test
   public void should_return_invoker_as_ancestor_of_MenuElement() {
-    Robot robot = null; 
+    Robot robot = null;
     try {
       robot = BasicRobot.robotWithCurrentAwtHierarchy();
       robot.showWindow(frame);
@@ -90,12 +90,13 @@ public class WindowAncestorFinder_windowAncestorOf_Test extends EDTSafeTestCase 
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
+        @Override
         protected MyWindow executeInEDT() {
           return new MyWindow();
         }
       });
     }
- 
+
     final JButton button = new JButton("Click Me");
     final JTextField textField = new JTextField(20);
     final JPopupMenu popupMenu = new JPopupMenu();

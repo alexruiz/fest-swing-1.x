@@ -18,11 +18,9 @@ package org.fest.swing.fixture;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.edt.GuiActionRunner.execute;
 
-import java.awt.Component;
-import java.awt.Dimension;
+import java.awt.*;
 
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
+import javax.swing.*;
 
 import org.fest.swing.annotation.RunsInCurrentThread;
 import org.fest.swing.edt.GuiQuery;
@@ -68,6 +66,7 @@ public class JTableFixture_constructor_withRobotAndName_Test extends RobotBasedT
 
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
+        @Override
         protected MyWindow executeInEDT() {
           return new MyWindow();
         }

@@ -18,8 +18,7 @@ import static java.awt.datatransfer.DataFlavor.stringFlavor;
 
 import java.awt.datatransfer.*;
 
-import javax.swing.JComponent;
-import javax.swing.TransferHandler;
+import javax.swing.*;
 
 /**
  * Understands importing and exporting strings.

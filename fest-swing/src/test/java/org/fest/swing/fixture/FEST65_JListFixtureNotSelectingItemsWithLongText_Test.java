@@ -1,15 +1,15 @@
 /*
  * Created on Feb 17, 2009
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
- * 
+ *
  * Copyright @2009-2010 the original author or authors.
  */
 package org.fest.swing.fixture;
@@ -20,8 +20,7 @@ import static org.fest.util.Arrays.array;
 
 import java.awt.Dimension;
 
-import javax.swing.JList;
-import javax.swing.JScrollPane;
+import javax.swing.*;
 
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
@@ -31,7 +30,7 @@ import org.junit.Test;
 
 /**
  * Tests for issue <a href="https://kenai.com/jira/browse/FEST-65" target="_blank">FEST-65</a>.
- * 
+ *
  * @author Cimballi
  * @author Alex Ruiz
  */
@@ -58,6 +57,7 @@ public class FEST65_JListFixtureNotSelectingItemsWithLongText_Test extends Robot
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
+        @Override
         protected MyWindow executeInEDT() {
           return new MyWindow();
         }
@@ -65,8 +65,8 @@ public class FEST65_JListFixtureNotSelectingItemsWithLongText_Test extends Robot
     }
 
     final JList list = new JList(array(
-        "aaaaaaaaa0", "aaaaaaaaa1", "aaaaaaaaa2", "aaaaaaaaa3", "aaaaaaaaa4", "aaaaaaaaa5", "aaaaaaaaa6", 
-        "aaaaaaaaa7", "aaaaaaaaa8", "aaaaaaaaa9", "bbbbbbbbb0", "bbbbbbbbb1", "bbbbbbbbb2", "bbbbbbbbb3", 
+        "aaaaaaaaa0", "aaaaaaaaa1", "aaaaaaaaa2", "aaaaaaaaa3", "aaaaaaaaa4", "aaaaaaaaa5", "aaaaaaaaa6",
+        "aaaaaaaaa7", "aaaaaaaaa8", "aaaaaaaaa9", "bbbbbbbbb0", "bbbbbbbbb1", "bbbbbbbbb2", "bbbbbbbbb3",
         "bbbbbbbbb4", "bbbbbbbbb5", "bbbbbbbbb6", "bbbbbbbbb7", "bbbbbbbbb8", "bbbbbbbbb9", SUPER_LONG_TEXT));
 
     private MyWindow() {

@@ -19,14 +19,13 @@ import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.edt.GuiActionRunner.execute;
 import static org.fest.util.Arrays.array;
 
+import java.util.*;
 import java.util.Timer;
-import java.util.TimerTask;
 
 import javax.swing.*;
 
 import org.fest.swing.annotation.RunsInEDT;
-import org.fest.swing.edt.GuiQuery;
-import org.fest.swing.edt.GuiTask;
+import org.fest.swing.edt.*;
 import org.fest.swing.test.core.RobotBasedTestCase;
 import org.fest.swing.test.swing.TestWindow;
 import org.junit.Test;
@@ -66,6 +65,7 @@ public class JComboBoxDropDownListFinder_findDropDownList_Test extends RobotBase
   private void showDropDownListWithDelay() {
     java.util.Timer timer = new Timer("showJComboBoxDropDownList", false);
     timer.schedule(new TimerTask() {
+      @Override
       public void run() {
         showJComboBoxDropDownList();
       }
@@ -75,6 +75,7 @@ public class JComboBoxDropDownListFinder_findDropDownList_Test extends RobotBase
   @RunsInEDT
   private void showJComboBoxDropDownList() {
     execute(new GuiTask() {
+      @Override
       protected void executeInEDT() {
         window.comboBox.showPopup();
       }
@@ -84,6 +85,7 @@ public class JComboBoxDropDownListFinder_findDropDownList_Test extends RobotBase
 
   private void assertThatListContains(final JList list, final String...expectedElements) {
     execute(new GuiTask() {
+      @Override
       protected void executeInEDT() {
         ListModel model = list.getModel();
         int elementCount = model.getSize();
@@ -116,6 +118,7 @@ public class JComboBoxDropDownListFinder_findDropDownList_Test extends RobotBase
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
+        @Override
         protected MyWindow executeInEDT() {
           return new MyWindow();
         }

@@ -28,6 +28,7 @@ import org.junit.Test;
  */
 public class JTableCheckBoxEditorCellWriter_enterValue_Test extends JTableCellWriter_enterValue_TestCase {
 
+  @Override
   protected JTableCellWriter createWriter() {
     return new JTableCheckBoxEditorCellWriter(robot);
   }

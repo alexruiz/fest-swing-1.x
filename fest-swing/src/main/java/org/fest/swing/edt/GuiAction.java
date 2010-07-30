@@ -26,7 +26,7 @@ abstract class GuiAction implements Runnable {
   private boolean executedInEDT;
   private Throwable catchedException;
   private CountDownLatch executionNotification;
-  
+
   final Throwable catchedException() { return catchedException; }
 
   final void catchedException(Throwable catched) {
@@ -40,11 +40,11 @@ abstract class GuiAction implements Runnable {
   final void clearCatchedException() {
     catchedException = null;
   }
-  
+
   final void executionNotification(CountDownLatch c) {
     executionNotification = c;
   }
-  
+
   final void notifyExecutionCompleted() {
     executedInEDT();
     if (executionNotification == null) return;

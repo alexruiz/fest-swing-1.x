@@ -15,10 +15,8 @@
  */
 package org.fest.swing.test.core;
 
-import org.fest.swing.core.BasicRobot;
-import org.fest.swing.core.Robot;
-import org.junit.After;
-import org.junit.Before;
+import org.fest.swing.core.*;
+import org.junit.*;
 
 /**
  * Base test case that uses a <code>{@link Robot}</code>. It also ensures that Swing components are created and accessed

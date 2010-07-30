@@ -41,13 +41,17 @@ public abstract class JTextComponentFixture_TestCase extends ComponentFixture_Im
     target = textField().createNew();
   }
 
+  @Override
   final void onSetUp() {
     driver = createMock(JTextComponentDriver.class);
     fixture = new JTextComponentFixture(robot(), target);
     fixture.driver(driver);
   }
 
+  @Override
   final JTextComponentDriver driver() {  return driver; }
+  @Override
   final JTextComponent target() { return target; }
+  @Override
   final JTextComponentFixture fixture() { return fixture; }
 }

@@ -19,8 +19,7 @@ import static org.fest.swing.edt.GuiActionRunner.execute;
 
 import java.awt.Dimension;
 
-import javax.swing.JPanel;
-import javax.swing.JTabbedPane;
+import javax.swing.*;
 
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
@@ -51,6 +50,7 @@ public abstract class JTabbedPaneLocation_TestCase extends RobotBasedTestCase {
     @RunsInEDT
     static MyWindow createNew(final Class<?> testClass) {
       return execute(new GuiQuery<MyWindow>() {
+        @Override
         protected MyWindow executeInEDT() {
           return new MyWindow(testClass);
         }

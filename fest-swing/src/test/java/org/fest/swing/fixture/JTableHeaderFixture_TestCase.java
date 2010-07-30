@@ -17,6 +17,7 @@ package org.fest.swing.fixture;
 
 import static org.easymock.classextension.EasyMock.createMock;
 import static org.fest.swing.test.builder.JTableHeaders.tableHeader;
+
 import javax.swing.table.JTableHeader;
 
 import org.fest.swing.driver.JTableHeaderDriver;
@@ -33,6 +34,7 @@ public abstract class JTableHeaderFixture_TestCase extends ComponentFixture_Impl
   private JTableHeader target;
   private JTableHeaderFixture fixture;
 
+  @Override
   final void onSetUp() {
     target = tableHeader().createNew();
     fixture = new JTableHeaderFixture(robot(), target);
@@ -43,7 +45,10 @@ public abstract class JTableHeaderFixture_TestCase extends ComponentFixture_Impl
 
   void extraSetUp() {}
 
+  @Override
   final JTableHeaderDriver driver() { return driver; }
+  @Override
   final JTableHeader target() { return target; }
+  @Override
   final JTableHeaderFixture fixture() { return fixture; }
 }

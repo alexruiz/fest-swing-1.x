@@ -20,10 +20,8 @@ import static org.fest.swing.awt.AWT.centerOf;
 import static org.fest.swing.edt.GuiActionRunner.execute;
 import static org.fest.swing.timing.Pause.pause;
 
-import java.awt.Component;
-import java.awt.Point;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseMotionAdapter;
+import java.awt.*;
+import java.awt.event.*;
 
 import javax.swing.JTextField;
 
@@ -42,7 +40,7 @@ import org.junit.Ignore;
 public abstract class InputEventGenerator_TestCase extends SequentialEDTSafeTestCase {
 
   static final int DELAY = 200;
-  
+
   MyWindow window;
   InputEventGenerator eventGenerator;
 
@@ -99,6 +97,7 @@ public abstract class InputEventGenerator_TestCase extends SequentialEDTSafeTest
     @RunsInEDT
     static MyWindow createNew(final Class<?> testClass) {
       return execute(new GuiQuery<MyWindow>() {
+        @Override
         protected MyWindow executeInEDT() {
           return new MyWindow(testClass);
         }

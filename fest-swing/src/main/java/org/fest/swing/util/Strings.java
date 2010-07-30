@@ -18,8 +18,7 @@ package org.fest.swing.util;
 import static org.fest.util.Objects.areEqual;
 import static org.fest.util.Strings.isEmpty;
 
-import java.util.regex.Pattern;
-import java.util.regex.PatternSyntaxException;
+import java.util.regex.*;
 
 /**
  * Understands utility methods related to <code>String</code>s.

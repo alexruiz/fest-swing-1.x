@@ -24,10 +24,8 @@ import java.awt.*;
 
 import javax.swing.JDialog;
 
-import org.fest.swing.annotation.RunsInCurrentThread;
-import org.fest.swing.annotation.RunsInEDT;
-import org.fest.swing.edt.GuiQuery;
-import org.fest.swing.edt.GuiTask;
+import org.fest.swing.annotation.*;
+import org.fest.swing.edt.*;
 import org.fest.swing.test.task.FrameShowTask;
 
 /**
@@ -54,6 +52,7 @@ public class TestDialog extends JDialog {
   @RunsInEDT
   public static TestDialog createAndShowNewDialog(final Frame owner) {
     return execute(new GuiQuery<TestDialog>() {
+      @Override
       protected TestDialog executeInEDT() {
         TestDialog dialog = createInCurrentThread(owner);
         TestDialog.display(dialog, new Dimension(DEFAULT_PREFERRED_SIZE));
@@ -71,6 +70,7 @@ public class TestDialog extends JDialog {
   @RunsInEDT
   public static TestDialog createNewDialog(final Frame owner) {
     return execute(new GuiQuery<TestDialog>() {
+      @Override
       protected TestDialog executeInEDT() {
         return createInCurrentThread(owner);
       }
@@ -129,6 +129,7 @@ public class TestDialog extends JDialog {
   @RunsInEDT
   public void display(final Dimension preferredSize) {
     execute(new GuiTask() {
+      @Override
       protected void executeInEDT() {
         display(TestDialog.this, preferredSize);
       }
@@ -170,6 +171,7 @@ public class TestDialog extends JDialog {
   @RunsInEDT
   public void destroy() {
     execute(new GuiTask() {
+      @Override
       protected void executeInEDT() {
         destroy(TestDialog.this);
       }

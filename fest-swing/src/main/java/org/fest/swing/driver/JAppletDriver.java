@@ -17,9 +17,7 @@ package org.fest.swing.driver;
 
 import static org.fest.swing.edt.GuiActionRunner.execute;
 
-import java.applet.Applet;
-import java.applet.AppletContext;
-import java.applet.AppletStub;
+import java.applet.*;
 import java.net.URL;
 import java.util.Enumeration;
 
@@ -27,8 +25,7 @@ import javax.swing.JApplet;
 
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.core.Robot;
-import org.fest.swing.edt.GuiQuery;
-import org.fest.swing.edt.GuiTask;
+import org.fest.swing.edt.*;
 
 /**
  * Understands functional testing of <code>{@link JApplet}</code>s:
@@ -39,19 +36,19 @@ import org.fest.swing.edt.GuiTask;
  * </ul>
  * This class is intended for internal use only. Please use the classes in the
  * package <code>{@link org.fest.swing.fixture}</code> in your tests.
- * 
+ *
  * @author Mel Llaguno
  * @author Alex Ruiz
- * 
+ *
  * @since 1.2
  */
 public class JAppletDriver extends ComponentDriver implements AppletStub {
 
 	private JApplet _applet;
-	
+
 	/**
 	 * Creates a new </code>{@link JAppletDriver}</code>.
-	 * 
+	 *
 	 * @param robot the robot used to simulate user input.
 	 */
 	public JAppletDriver(Robot robot) {
@@ -60,7 +57,7 @@ public class JAppletDriver extends ComponentDriver implements AppletStub {
 
 	/**
 	 * Creates a new <code>{@link JAppletDriver}</code>.
-	 * 
+	 *
 	 * @param robot the robot used to simulate user input.
 	 * @param newApplet the applet to simulate user input against.
 	 */
@@ -68,39 +65,43 @@ public class JAppletDriver extends ComponentDriver implements AppletStub {
 		this(robot);
 		_applet = newApplet;
 	}
-	
+
 	@RunsInEDT
 	private static AppletContext appletContext(final JApplet applet) {
 		return execute(new GuiQuery<AppletContext>() {
-			protected AppletContext executeInEDT() {
+			@Override
+      protected AppletContext executeInEDT() {
 				return applet.getAppletContext();
 			}
 		});
 	}
-	
+
 	@RunsInEDT
 	private static void doResize(final JApplet applet, final int width,
 			final int height) {
 		execute(new GuiTask() {
-			protected void executeInEDT() {
+			@Override
+      protected void executeInEDT() {
 				applet.resize(width, height);
 			}
 		});
 	}
-	
+
 	@RunsInEDT
 	private static URL codeBase(final JApplet applet) {
 		return execute(new GuiQuery<URL>() {
-			protected URL executeInEDT() {
+			@Override
+      protected URL executeInEDT() {
 				return applet.getCodeBase();
 			}
 		});
 	}
-	
+
 	@RunsInEDT
 	private static URL documentBase(final JApplet applet) {
 		return execute(new GuiQuery<URL>() {
-			protected URL executeInEDT() {
+			@Override
+      protected URL executeInEDT() {
 				return applet.getDocumentBase();
 			}
 		});
@@ -110,7 +111,8 @@ public class JAppletDriver extends ComponentDriver implements AppletStub {
 	private static String parameter(final JApplet applet,
 			final String parameterName) {
 		return execute(new GuiQuery<String>() {
-			protected String executeInEDT() {
+			@Override
+      protected String executeInEDT() {
 				return applet.getParameter(parameterName);
 			}
 		});
@@ -119,7 +121,8 @@ public class JAppletDriver extends ComponentDriver implements AppletStub {
 	@RunsInEDT
 	private static boolean active(final JApplet applet) {
 		return execute(new GuiQuery<Boolean>() {
-			protected Boolean executeInEDT() {
+			@Override
+      protected Boolean executeInEDT() {
 				return applet.isActive();
 			}
 		});
@@ -127,7 +130,7 @@ public class JAppletDriver extends ComponentDriver implements AppletStub {
 
 	/**
 	 * Requests the default <code>{@link JApplet}</code> to be resized.
-	 * 
+	 *
 	 * @param width
 	 *            the new width.
 	 * @param height
@@ -137,10 +140,10 @@ public class JAppletDriver extends ComponentDriver implements AppletStub {
 	public void appletResize(int width, int height) {
 		appletResize(_applet, width, height);
 	}
-	
+
 	/**
 	 * Requests the given <code>{@link JApplet}</code> to be resized.
-	 * 
+	 *
 	 * @param applet
 	 *            the given {@code JApplet}.
 	 * @param width
@@ -156,18 +159,18 @@ public class JAppletDriver extends ComponentDriver implements AppletStub {
 	/**
 	 * Returns the <code>{@link AppletContext}</code> of the default
 	 * <code>{@link JApplet}</code>.
-	 * 
+	 *
 	 * @return the {@code AppletContext} of the given {@code JApplet}.
 	 */
 	@RunsInEDT
 	public AppletContext getAppletContext() {
 		return getAppletContext(_applet);
 	}
-	
+
 	/**
 	 * Returns the <code>{@link AppletContext}</code> of the given
 	 * <code>{@link JApplet}</code>.
-	 * 
+	 *
 	 * @param applet
 	 *            the given {@code JApplet}.
 	 * @return the {@code AppletContext} of the given {@code JApplet}.
@@ -180,7 +183,7 @@ public class JAppletDriver extends ComponentDriver implements AppletStub {
 	/**
 	 * Returns the URL of the directory that contains the default
 	 * <code>{@link JApplet}</code>.
-	 * 
+	 *
 	 * @return the URL of the directory that contains the given {@code JApplet}.
 	 */
 	@RunsInEDT
@@ -191,7 +194,7 @@ public class JAppletDriver extends ComponentDriver implements AppletStub {
 	/**
 	 * Returns the URL of the directory that contains the given
 	 * <code>{@link JApplet}</code>.
-	 * 
+	 *
 	 * @param applet
 	 *            the given {@code JApplet}.
 	 * @return the URL of the directory that contains the given {@code JApplet}.
@@ -200,11 +203,11 @@ public class JAppletDriver extends ComponentDriver implements AppletStub {
 	public URL getCodeBase(JApplet applet){
 		return codeBase(_applet);
 	}
-	
+
 	/**
 	 * Returns the URL of the document the default <code>{@link JApplet}</code>
 	 * is embedded.
-	 * 
+	 *
 	 * @return the URL of the document the given {@code JApplet} is embedded.
 	 */
 	@RunsInEDT
@@ -215,7 +218,7 @@ public class JAppletDriver extends ComponentDriver implements AppletStub {
 	/**
 	 * Returns the URL of the document the given <code>{@link JApplet}</code>
 	 * is embedded.
-	 * 
+	 *
 	 * @param applet
 	 *            the given {@code JApplet}.
 	 * @return the URL of the document the given {@code JApplet} is embedded.
@@ -224,12 +227,12 @@ public class JAppletDriver extends ComponentDriver implements AppletStub {
 	public URL getDocumentBase(JApplet applet){
 		return documentBase(applet);
 	}
-	
+
 	/**
 	 * Returns the value of the named parameter in the default
 	 * <code>{@link JApplet}</code> in the HTML tag, or <code>null</code> if
 	 * not set.
-	 * 
+	 *
 	 * @param name
 	 *            a parameter name.
 	 * @return the value of the named parameter in the given {code JApplet} in
@@ -244,7 +247,7 @@ public class JAppletDriver extends ComponentDriver implements AppletStub {
 	 * Returns the value of the named parameter in the given
 	 * <code>{@link JApplet}</code> in the HTML tag, or <code>null</code> if
 	 * not set.
-	 * 
+	 *
 	 * @param applet
 	 *            the given {@code JApplet}.
 	 * @param name
@@ -256,11 +259,11 @@ public class JAppletDriver extends ComponentDriver implements AppletStub {
 	public String getParameter(JApplet applet, String name){
 		return parameter(applet, name);
 	}
-	
+
 	/**
 	 * Indicates whether the default <code>{@link JApplet}</code> is active or
 	 * not.
-	 * 
+	 *
 	 * @return <code>true</code> if the default {@code JApplet} is active;
 	 * 		   <code>false</code> otherwise.
 	 */
@@ -268,11 +271,11 @@ public class JAppletDriver extends ComponentDriver implements AppletStub {
 	public boolean isActive() {
 		return isActive(_applet);
 	}
-	
+
 	/**
 	 * Indicates whether the given <code>{@link JApplet}</code> is active or
 	 * not.
-	 * 
+	 *
 	 * @param applet
 	 *            the given {@code JApplet}.
 	 * @return <code>true</code> if the given {@code JApplet} is active;
@@ -282,10 +285,10 @@ public class JAppletDriver extends ComponentDriver implements AppletStub {
 	public boolean isActive(JApplet applet){
 		return active(applet);
 	}
-	
+
 	/**
 	 * Returns the Applet of the given its name in the AppletContext
-	 * 
+	 *
 	 * @param name
 	 *            the name of the {@code JApplet}.
 	 * @return the {@code Applet} with the given name
@@ -294,10 +297,10 @@ public class JAppletDriver extends ComponentDriver implements AppletStub {
 	public Applet getApplet(String name) {
 				return _applet.getAppletContext().getApplet(name);
 	}
-	
+
 	/**
 	 * Returns the collection Applets in the AppletContext
-	 * 
+	 *
 	 * @return the collection of {@code Applet}s within the AppletContext
 	 */
 	@RunsInEDT

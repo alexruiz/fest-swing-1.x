@@ -18,8 +18,7 @@ package org.fest.swing.data;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.util.Strings.concat;
 
-import java.awt.Color;
-import java.awt.Font;
+import java.awt.*;
 
 import javax.swing.JTable;
 

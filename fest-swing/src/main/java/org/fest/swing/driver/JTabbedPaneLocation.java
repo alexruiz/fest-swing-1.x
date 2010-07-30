@@ -18,15 +18,13 @@ import static java.lang.String.valueOf;
 import static org.fest.swing.driver.JTabbedPaneTabIndexQuery.indexOfTab;
 import static org.fest.util.Strings.concat;
 
-import java.awt.Point;
-import java.awt.Rectangle;
+import java.awt.*;
 
 import javax.swing.JTabbedPane;
 
 import org.fest.swing.annotation.RunsInCurrentThread;
 import org.fest.swing.exception.LocationUnavailableException;
-import org.fest.swing.util.StringTextMatcher;
-import org.fest.swing.util.TextMatcher;
+import org.fest.swing.util.*;
 import org.fest.util.VisibleForTesting;
 
 /**

@@ -16,6 +16,7 @@ final class JTableClearSelectionTask {
 
   static void clearSelectionOf(final JTable table) {
     execute(new GuiTask() {
+      @Override
       protected void executeInEDT() {
         table.clearSelection();
       }

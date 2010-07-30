@@ -42,13 +42,17 @@ public class JSplitPaneFixture_mouseInput_Test extends MouseInputSimulationFixtu
     target = splitPane().createNew();
   }
 
+  @Override
   void onSetUp() {
     driver = createMock(JSplitPaneDriver.class);
     fixture = new JSplitPaneFixture(robot(), target);
     fixture.driver(driver);
   }
 
+  @Override
   JSplitPaneDriver driver() {  return driver; }
+  @Override
   JSplitPane target() { return target; }
+  @Override
   JSplitPaneFixture fixture() { return fixture; }
 }

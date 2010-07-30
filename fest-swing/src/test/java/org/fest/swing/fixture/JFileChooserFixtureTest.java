@@ -15,8 +15,7 @@
  */
 package org.fest.swing.fixture;
 
-import static org.easymock.EasyMock.expect;
-import static org.easymock.EasyMock.expectLastCall;
+import static org.easymock.EasyMock.*;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.test.builder.JButtons.button;
 import static org.fest.swing.test.builder.JTextFields.textField;
@@ -24,8 +23,7 @@ import static org.fest.util.Arrays.array;
 
 import java.io.File;
 
-import javax.swing.JButton;
-import javax.swing.JTextField;
+import javax.swing.*;
 
 import org.fest.mocks.EasyMockTemplate;
 import org.junit.Test;
@@ -44,10 +42,12 @@ public class JFileChooserFixtureTest extends JFileChooserFixture_TestCase {
   public void shouldReturnFileNameTextBox() {
     final JTextField fileNameTextBox = textField().createNew();
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         expect(driver().fileNameTextBox(target())).andReturn(fileNameTextBox);
       }
 
+      @Override
       protected void codeToTest() {
         JTextComponentFixture result = fixture().fileNameTextBox();
         assertThat(result.component()).isSameAs(fileNameTextBox);
@@ -58,11 +58,13 @@ public class JFileChooserFixtureTest extends JFileChooserFixture_TestCase {
   @Test
   public void shouldClickApproveButton() {
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().clickApproveButton(target());
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         fixture().approve();
       }
@@ -73,10 +75,12 @@ public class JFileChooserFixtureTest extends JFileChooserFixture_TestCase {
   public void shouldReturnApproveButton() {
     final JButton approveButton = button().createNew();
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         expect(driver().approveButton(target())).andReturn(approveButton);
       }
 
+      @Override
       protected void codeToTest() {
         JButtonFixture result = fixture().approveButton();
         assertThat(result.component()).isSameAs(approveButton);
@@ -87,11 +91,13 @@ public class JFileChooserFixtureTest extends JFileChooserFixture_TestCase {
   @Test
   public void shouldClickCancelButton() {
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().clickCancelButton(target());
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         fixture().cancel();
       }
@@ -102,10 +108,12 @@ public class JFileChooserFixtureTest extends JFileChooserFixture_TestCase {
   public void shouldReturnCancelButton() {
     final JButton cancelButton = button().createNew();
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         expect(driver().cancelButton(target())).andReturn(cancelButton);
       }
 
+      @Override
       protected void codeToTest() {
         JButtonFixture result = fixture().cancelButton();
         assertThat(result.component()).isSameAs(cancelButton);
@@ -117,11 +125,13 @@ public class JFileChooserFixtureTest extends JFileChooserFixture_TestCase {
   public void shouldSelectFile() {
     final File file = new File("fake");
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().selectFile(target(), file);
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().selectFile(file));
       }
@@ -132,11 +142,13 @@ public class JFileChooserFixtureTest extends JFileChooserFixture_TestCase {
   public void shouldSelectFiles() {
     final File[] files = array(new File("Fake1"), new File("Fake2"));
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().selectFiles(target(), files);
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().selectFiles(files));
       }
@@ -147,11 +159,13 @@ public class JFileChooserFixtureTest extends JFileChooserFixture_TestCase {
   public void shouldSetCurrentDirectory() {
     final File file = new File("fake");
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().setCurrentDirectory(target(), file);
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().setCurrentDirectory(file));
       }

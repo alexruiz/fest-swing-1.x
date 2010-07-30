@@ -163,6 +163,7 @@ public final class JButtonMatcher extends NamedComponentMatcherTemplate<JButton>
    * @param button the <code>JButton</code> to match.
    * @return {@code true} if the <code>JButton</code> matches the search criteria in this matcher.
    */
+  @Override
   @RunsInCurrentThread
   protected boolean isMatching(JButton button) {
     if (!isNameMatching(button.getName())) return false;

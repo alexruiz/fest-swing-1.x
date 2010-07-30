@@ -21,8 +21,7 @@ import static org.fest.swing.test.core.CommonAssertions.failWhenExpectingExcepti
 
 import java.beans.PropertyVetoException;
 
-import org.fest.swing.exception.ActionFailedException;
-import org.fest.swing.exception.UnexpectedException;
+import org.fest.swing.exception.*;
 import org.junit.Test;
 
 /**

@@ -26,17 +26,11 @@ import static org.fest.swing.driver.JListContentQuery.contents;
 import static org.fest.swing.driver.JListItemCountQuery.itemCountIn;
 import static org.fest.swing.driver.JListItemIndexValidator.validateIndices;
 import static org.fest.swing.driver.JListItemValueQuery.itemValue;
-import static org.fest.swing.driver.JListMatchingItemQuery.centerOfMatchingItemCell;
-import static org.fest.swing.driver.JListMatchingItemQuery.matchingItemIndex;
-import static org.fest.swing.driver.JListMatchingItemQuery.matchingItemIndices;
-import static org.fest.swing.driver.JListMatchingItemQuery.matchingItemValues;
-import static org.fest.swing.driver.JListScrollToItemTask.ITEM_NOT_FOUND;
-import static org.fest.swing.driver.JListScrollToItemTask.scrollToItem;
-import static org.fest.swing.driver.JListScrollToItemTask.scrollToItemIfNotSelectedYet;
+import static org.fest.swing.driver.JListMatchingItemQuery.*;
+import static org.fest.swing.driver.JListScrollToItemTask.*;
 import static org.fest.swing.driver.JListSelectedIndexQuery.selectedIndexOf;
 import static org.fest.swing.driver.JListSelectionIndicesQuery.selectedIndices;
-import static org.fest.swing.driver.JListSelectionValueQuery.NO_SELECTION_VALUE;
-import static org.fest.swing.driver.JListSelectionValueQuery.singleSelectionValue;
+import static org.fest.swing.driver.JListSelectionValueQuery.*;
 import static org.fest.swing.driver.JListSelectionValuesQuery.selectionValues;
 import static org.fest.swing.driver.TextAssert.verifyThat;
 import static org.fest.swing.edt.GuiActionRunner.execute;
@@ -48,23 +42,15 @@ import java.awt.Point;
 import java.util.List;
 import java.util.regex.Pattern;
 
-import javax.swing.JList;
-import javax.swing.JPopupMenu;
+import javax.swing.*;
 
 import org.fest.assertions.Description;
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.cell.JListCellReader;
-import org.fest.swing.core.MouseButton;
-import org.fest.swing.core.Robot;
-import org.fest.swing.edt.GuiQuery;
-import org.fest.swing.edt.GuiTask;
-import org.fest.swing.exception.ActionFailedException;
-import org.fest.swing.exception.ComponentLookupException;
-import org.fest.swing.exception.LocationUnavailableException;
-import org.fest.swing.util.Pair;
-import org.fest.swing.util.PatternTextMatcher;
-import org.fest.swing.util.StringTextMatcher;
-import org.fest.swing.util.TextMatcher;
+import org.fest.swing.core.*;
+import org.fest.swing.edt.*;
+import org.fest.swing.exception.*;
+import org.fest.swing.util.*;
 import org.fest.swing.util.Range.From;
 import org.fest.swing.util.Range.To;
 
@@ -148,7 +134,9 @@ public class JListDriver extends JComponentDriver {
     if (indices.isEmpty()) throw failMatchingNotFound(list, matcher);
     clearSelection(list);
     new MultipleSelectionTemplate(robot) {
+      @Override
       int elementCount() { return indices.size(); }
+      @Override
       void selectElement(int index) { selectItem(list, indices.get(index)); }
     }.multiSelect();
   }
@@ -243,7 +231,9 @@ public class JListDriver extends JComponentDriver {
     validateArrayOfIndices(indices);
     clearSelection(list);
     new MultipleSelectionTemplate(robot) {
+      @Override
       int elementCount() { return indices.length; }
+      @Override
       void selectElement(int index) { selectItem(list, indices[index]); }
     }.multiSelect();
   }
@@ -262,6 +252,7 @@ public class JListDriver extends JComponentDriver {
   @RunsInEDT
   private static void clearSelectionOf(final JList list) {
     execute(new GuiTask() {
+      @Override
       protected void executeInEDT() {
         list.clearSelection();
       }
@@ -308,6 +299,7 @@ public class JListDriver extends JComponentDriver {
   @RunsInEDT
   private static void validateIndicesAndClearSelection(final JList list, final int...indices) {
     execute(new GuiTask() {
+      @Override
       protected void executeInEDT() {
         validateIndices(list, indices);
         list.clearSelection();
@@ -720,6 +712,7 @@ public class JListDriver extends JComponentDriver {
   @RunsInEDT
   private static int itemIndex(final JList list, final TextMatcher matcher, final JListCellReader cellReader) {
     return execute(new GuiQuery<Integer>() {
+      @Override
       protected Integer executeInEDT() {
         return matchingItemIndex(list, matcher, cellReader);
       }

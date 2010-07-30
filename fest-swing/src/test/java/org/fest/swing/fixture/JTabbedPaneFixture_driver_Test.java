@@ -20,8 +20,7 @@ import static org.fest.swing.core.TestRobots.singletonRobotMock;
 
 import javax.swing.JTabbedPane;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Tests for <code>{@link JTabbedPaneFixture#driver(org.fest.swing.driver.JTabbedPaneDriver)}</code>.

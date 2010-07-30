@@ -17,13 +17,10 @@ package org.fest.swing.hierarchy;
 
 import static java.util.Collections.emptyList;
 
-import java.awt.Component;
-import java.awt.Container;
-import java.util.ArrayList;
-import java.util.Collection;
+import java.awt.*;
+import java.util.*;
 
-import javax.swing.JDesktopPane;
-import javax.swing.JInternalFrame;
+import javax.swing.*;
 import javax.swing.JInternalFrame.JDesktopIcon;
 
 import org.fest.swing.annotation.RunsInCurrentThread;

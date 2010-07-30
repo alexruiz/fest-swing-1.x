@@ -21,8 +21,7 @@ import static org.fest.util.Collections.list;
 import java.awt.*;
 import java.util.*;
 
-import net.jcip.annotations.GuardedBy;
-import net.jcip.annotations.ThreadSafe;
+import net.jcip.annotations.*;
 
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
@@ -106,6 +105,7 @@ class Context {
   @RunsInEDT
   private static Component topParentOf(final Component c) {
     return execute(new GuiQuery<Component>() {
+      @Override
       protected Component executeInEDT() {
         Component parent = c;
         // Components above the applet in the hierarchy may or may not share the same context with the applet itself.

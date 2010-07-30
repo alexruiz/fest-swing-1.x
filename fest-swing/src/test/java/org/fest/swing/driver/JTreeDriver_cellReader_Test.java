@@ -20,8 +20,7 @@ import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.core.TestRobots.singletonRobotMock;
 
 import org.fest.swing.cell.JTreeCellReader;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Tests for <code>{@link JTreeDriver#cellReader(JTreeCellReader)}</code>.

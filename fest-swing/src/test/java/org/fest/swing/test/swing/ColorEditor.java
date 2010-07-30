@@ -20,10 +20,8 @@
  */
 package org.fest.swing.test.swing;
 
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.*;
+import java.awt.event.*;
 
 import javax.swing.*;
 import javax.swing.table.TableCellEditor;

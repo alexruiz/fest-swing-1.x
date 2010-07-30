@@ -17,11 +17,9 @@ package org.fest.swing.util;
 
 import static org.fest.assertions.Assertions.assertThat;
 
-import java.awt.AWTException;
-import java.awt.Robot;
+import java.awt.*;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Tests for <code>{@link RobotFactory#newRobotInPrimaryScreen}</code>.

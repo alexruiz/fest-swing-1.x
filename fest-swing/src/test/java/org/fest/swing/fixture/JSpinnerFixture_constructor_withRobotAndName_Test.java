@@ -63,6 +63,7 @@ public class JSpinnerFixture_constructor_withRobotAndName_Test extends RobotBase
 
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
+        @Override
         protected MyWindow executeInEDT() {
           return new MyWindow();
         }

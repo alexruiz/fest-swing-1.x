@@ -23,21 +23,17 @@ import static org.fest.swing.driver.JSpinnerValueQuery.valueOf;
 import static org.fest.swing.edt.GuiActionRunner.execute;
 import static org.fest.swing.exception.ActionFailedException.actionFailure;
 import static org.fest.swing.format.Formatting.format;
-import static org.fest.util.Strings.concat;
-import static org.fest.util.Strings.quote;
+import static org.fest.util.Strings.*;
 
 import java.awt.Component;
 import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 import javax.swing.JSpinner;
 import javax.swing.text.JTextComponent;
 
-import org.fest.swing.annotation.RunsInCurrentThread;
-import org.fest.swing.annotation.RunsInEDT;
-import org.fest.swing.core.Robot;
-import org.fest.swing.core.TypeMatcher;
+import org.fest.swing.annotation.*;
+import org.fest.swing.core.*;
 import org.fest.swing.edt.GuiTask;
 import org.fest.swing.exception.*;
 
@@ -85,6 +81,7 @@ public class JSpinnerDriver extends JComponentDriver {
   @RunsInEDT
   private static void validateAndIncrementValue(final JSpinner spinner, final int times) {
     execute(new GuiTask() {
+      @Override
       protected void executeInEDT() {
         validateIsEnabledAndShowing(spinner);
         incrementValue(spinner, times);
@@ -116,6 +113,7 @@ public class JSpinnerDriver extends JComponentDriver {
   @RunsInEDT
   private static void validateAndIncrementValue(final JSpinner spinner) {
     execute(new GuiTask() {
+      @Override
       protected void executeInEDT() {
         validateIsEnabledAndShowing(spinner);
         Object newValue = spinner.getNextValue();
@@ -148,6 +146,7 @@ public class JSpinnerDriver extends JComponentDriver {
   @RunsInEDT
   private static void validateAndDecrementValue(final JSpinner spinner, final int times) {
     execute(new GuiTask() {
+      @Override
       protected void executeInEDT() {
         validateIsEnabledAndShowing(spinner);
         decrementValue(spinner, times);
@@ -179,6 +178,7 @@ public class JSpinnerDriver extends JComponentDriver {
   @RunsInEDT
   private static void validateAndDecrementValue(final JSpinner spinner) {
     execute(new GuiTask() {
+      @Override
       protected void executeInEDT() {
         validateIsEnabledAndShowing(spinner);
         Object newValue = spinner.getPreviousValue();
@@ -225,6 +225,7 @@ public class JSpinnerDriver extends JComponentDriver {
   @RunsInEDT
   private static void commit(final JSpinner spinner) {
     execute(new GuiTask() {
+      @Override
       protected void executeInEDT() throws ParseException {
         spinner.commitEdit();
       }
@@ -266,6 +267,7 @@ public class JSpinnerDriver extends JComponentDriver {
   @RunsInEDT
   private static void validate(final JSpinner spinner, final JTextComponent editor) {
     execute(new GuiTask() {
+      @Override
       protected void executeInEDT() {
         if (editor == null) throw actionFailure(concat("Unable to find editor for ", format(spinner)));
       }

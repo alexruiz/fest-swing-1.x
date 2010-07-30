@@ -21,8 +21,7 @@ import java.awt.Component;
 
 import javax.swing.*;
 
-import org.fest.swing.annotation.RunsInCurrentThread;
-import org.fest.swing.annotation.RunsInEDT;
+import org.fest.swing.annotation.*;
 
 /**
  * Understands the location of a <code>{@link JMenuItem}</code>.

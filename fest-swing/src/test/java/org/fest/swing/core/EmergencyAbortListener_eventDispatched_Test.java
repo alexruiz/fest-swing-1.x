@@ -15,11 +15,9 @@
  */
 package org.fest.swing.core;
 
-import static java.awt.event.InputEvent.CTRL_MASK;
-import static java.awt.event.InputEvent.SHIFT_MASK;
+import static java.awt.event.InputEvent.*;
 import static java.awt.event.KeyEvent.*;
-import static org.easymock.EasyMock.expect;
-import static org.easymock.EasyMock.expectLastCall;
+import static org.easymock.EasyMock.*;
 import static org.easymock.classextension.EasyMock.createMock;
 import static org.fest.swing.test.awt.TestAWTEvents.newAWTEventMock;
 import static org.fest.swing.test.awt.Toolkits.singletonToolkitMock;
@@ -30,8 +28,7 @@ import java.awt.event.KeyEvent;
 
 import org.fest.mocks.EasyMockTemplate;
 import org.fest.swing.test.core.EDTSafeTestCase;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Tests for <code>{@link EmergencyAbortListener#eventDispatched(AWTEvent)}</code>.
@@ -54,10 +51,12 @@ public class EmergencyAbortListener_eventDispatched_Test extends EDTSafeTestCase
     final AWTEvent event = newAWTEventMock();
     final int eventId = KEY_PRESSED + 1;
     new EasyMockTemplate(event, terminator) {
+      @Override
       protected void expectations() {
         expect(event.getID()).andReturn(eventId);
       }
 
+      @Override
       protected void codeToTest() {
         listener.eventDispatched(event);
       }
@@ -68,10 +67,12 @@ public class EmergencyAbortListener_eventDispatched_Test extends EDTSafeTestCase
   public void should_not_terminate_tests_if_event_is_not_KeyEvent() {
     final AWTEvent event = newAWTEventMock();
     new EasyMockTemplate(event, terminator) {
+      @Override
       protected void expectations() {
         expect(event.getID()).andReturn(KEY_PRESSED);
       }
 
+      @Override
       protected void codeToTest() {
         listener.eventDispatched(event);
       }
@@ -82,8 +83,10 @@ public class EmergencyAbortListener_eventDispatched_Test extends EDTSafeTestCase
   public void should_not_terminate_tests_if_key_code_does_not_match() {
     final KeyEvent event = new KeyEvent(button().createNew(), KEY_PRESSED, 0, 0, VK_Z, 'Z');
     new EasyMockTemplate(terminator) {
+      @Override
       protected void expectations() {}
 
+      @Override
       protected void codeToTest() {
         listener.eventDispatched(event);
       }
@@ -94,8 +97,10 @@ public class EmergencyAbortListener_eventDispatched_Test extends EDTSafeTestCase
   public void should_not_terminate_tests_if_modifiers_do_not_match() {
     final KeyEvent event = new KeyEvent(button().createNew(), KEY_PRESSED, 0, 0, VK_A, 'A');
     new EasyMockTemplate(terminator) {
+      @Override
       protected void expectations() {}
 
+      @Override
       protected void codeToTest() {
         listener.eventDispatched(event);
       }
@@ -106,11 +111,13 @@ public class EmergencyAbortListener_eventDispatched_Test extends EDTSafeTestCase
   public void should_terminate_tests_if_key_combination_matches() {
     final KeyEvent event = new KeyEvent(button().createNew(), KEY_PRESSED, 0, CTRL_MASK | SHIFT_MASK, VK_A, 'A');
     new EasyMockTemplate(terminator) {
+      @Override
       protected void expectations() {
         terminator.terminateTests();
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         listener.eventDispatched(event);
       }

@@ -105,6 +105,7 @@ public class JComboBoxDriver_requireSelectionByText_Test extends JComboBoxDriver
   @RunsInEDT
   private static void makeEditableAndClearSelection(final JComboBox comboBox) {
     execute(new GuiTask() {
+      @Override
       protected void executeInEDT() {
         comboBox.setSelectedIndex(-1);
         comboBox.setEditable(true);

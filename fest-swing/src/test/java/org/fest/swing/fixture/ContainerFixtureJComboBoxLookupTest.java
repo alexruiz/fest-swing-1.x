@@ -23,8 +23,7 @@ import static org.fest.util.Arrays.array;
 import javax.swing.JComboBox;
 
 import org.fest.swing.core.GenericTypeMatcher;
-import org.fest.swing.edt.GuiQuery;
-import org.fest.swing.edt.GuiTask;
+import org.fest.swing.edt.*;
 import org.fest.swing.exception.ComponentLookupException;
 import org.fest.swing.test.core.RobotBasedTestCase;
 import org.fest.swing.test.swing.TestWindow;
@@ -55,6 +54,7 @@ public class ContainerFixtureJComboBoxLookupTest extends RobotBasedTestCase {
   @Test
   public void shouldFailIfJComboBoxCannotBeFoundByType() {
     execute(new GuiTask() {
+      @Override
       protected void executeInEDT() {
         window.remove(window.comboBox);
       }
@@ -89,6 +89,7 @@ public class ContainerFixtureJComboBoxLookupTest extends RobotBasedTestCase {
   @Test
   public void shouldFindJComboBoxWithCustomMatcher() {
     JComboBoxFixture comboBox = fixture.comboBox(new GenericTypeMatcher<JComboBox>(JComboBox.class) {
+      @Override
       protected boolean isMatching(JComboBox c) {
         return c.getItemCount() == 3;
       }
@@ -104,6 +105,7 @@ public class ContainerFixtureJComboBoxLookupTest extends RobotBasedTestCase {
   public void shouldFailIfJComboBoxCannotBeFoundWithCustomMatcher() {
     try {
       fixture.comboBox(new GenericTypeMatcher<JComboBox>(JComboBox.class) {
+        @Override
         protected boolean isMatching(JComboBox c) {
           return false;
         }
@@ -121,6 +123,7 @@ public class ContainerFixtureJComboBoxLookupTest extends RobotBasedTestCase {
 
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
+        @Override
         protected MyWindow executeInEDT() {
           return new MyWindow();
         }

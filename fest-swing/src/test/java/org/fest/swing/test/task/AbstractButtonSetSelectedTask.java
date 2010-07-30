@@ -33,6 +33,7 @@ public final class AbstractButtonSetSelectedTask {
   @RunsInEDT
   public static void setSelected(final AbstractButton button, final boolean selected) {
     execute(new GuiTask() {
+      @Override
       protected void executeInEDT() {
         button.setSelected(selected);
       }

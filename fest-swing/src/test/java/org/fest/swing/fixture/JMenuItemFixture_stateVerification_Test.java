@@ -42,13 +42,17 @@ public class JMenuItemFixture_stateVerification_Test extends StateVerificationFi
     target = menuItem().createNew();
   }
 
+  @Override
   void onSetUp() {
     driver = createMock(JMenuItemDriver.class);
     fixture = new JMenuItemFixture(robot(), target);
     fixture.driver(driver);
   }
 
+  @Override
   JMenuItemDriver driver() { return driver; }
+  @Override
   JMenuItem target() { return target; }
+  @Override
   JMenuItemFixture fixture() { return fixture; }
 }

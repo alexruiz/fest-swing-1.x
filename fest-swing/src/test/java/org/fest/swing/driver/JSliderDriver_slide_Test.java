@@ -15,8 +15,7 @@
  */
 package org.fest.swing.driver;
 
-import static javax.swing.SwingConstants.HORIZONTAL;
-import static javax.swing.SwingConstants.VERTICAL;
+import static javax.swing.SwingConstants.*;
 
 import java.util.Collection;
 

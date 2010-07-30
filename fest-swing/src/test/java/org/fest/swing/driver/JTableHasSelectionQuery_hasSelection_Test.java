@@ -20,11 +20,9 @@ import static org.fest.swing.driver.JTableClearSelectionTask.clearSelectionOf;
 import static org.fest.swing.edt.GuiActionRunner.execute;
 
 import org.fest.swing.annotation.RunsInEDT;
-import org.fest.swing.edt.GuiQuery;
-import org.fest.swing.edt.GuiTask;
+import org.fest.swing.edt.*;
 import org.fest.swing.test.core.RobotBasedTestCase;
-import org.fest.swing.test.swing.TestTable;
-import org.fest.swing.test.swing.TestWindow;
+import org.fest.swing.test.swing.*;
 import org.junit.Test;
 
 /**
@@ -59,15 +57,17 @@ public class JTableHasSelectionQuery_hasSelection_Test extends RobotBasedTestCas
   @RunsInEDT
   private static void selectAllIn(final TestTable table) {
     execute(new GuiTask() {
+      @Override
       protected void executeInEDT() {
         table.selectAll();
       }
     });
   }
-  
+
   @RunsInEDT
   private static boolean hasSelection(final TestTable table) {
     return execute(new GuiQuery<Boolean>() {
+      @Override
       protected Boolean executeInEDT() {
         return JTableHasSelectionQuery.hasSelection(table);
       }
@@ -80,6 +80,7 @@ public class JTableHasSelectionQuery_hasSelection_Test extends RobotBasedTestCas
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
+        @Override
         protected MyWindow executeInEDT() {
           return new MyWindow();
         }

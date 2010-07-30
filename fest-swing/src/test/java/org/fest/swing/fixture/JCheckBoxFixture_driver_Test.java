@@ -21,8 +21,7 @@ import static org.fest.swing.test.builder.JCheckBoxes.checkBox;
 import javax.swing.JCheckBox;
 
 import org.fest.swing.test.core.EDTSafeTestCase;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Tests for <code>{@link JCheckBoxFixture#driver(org.fest.swing.driver.AbstractButtonDriver)}</code>.

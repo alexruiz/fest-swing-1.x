@@ -30,10 +30,12 @@ public class JTreeFixture_node_byRow_Test extends JTreeFixture_TestCase {
   public void should_return_row() {
     final int row = 6;
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().validateRow(target(), row);
       }
 
+      @Override
       protected void codeToTest() {
         JTreeNodeFixture nodeFixture = fixture().node(row);
         assertThat(nodeFixture).isInstanceOf(JTreeRowFixture.class);

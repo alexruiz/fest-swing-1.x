@@ -19,10 +19,8 @@ import static java.util.logging.Logger.getAnonymousLogger;
 import static org.fest.swing.edt.GuiActionRunner.execute;
 import static org.fest.util.Strings.concat;
 
-import java.awt.Component;
-import java.awt.Container;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentMap;
+import java.awt.*;
+import java.util.concurrent.*;
 import java.util.logging.Logger;
 
 import org.fest.swing.annotation.RunsInEDT;

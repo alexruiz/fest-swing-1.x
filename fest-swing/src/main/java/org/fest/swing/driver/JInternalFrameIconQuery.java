@@ -25,7 +25,7 @@ import org.fest.swing.annotation.RunsInCurrentThread;
  * responsible for invoking them in the EDT.
  * </p>
  * @see JInternalFrame#isIcon()
- * 
+ *
  * @author Yvonne Wang
  * @author Alex Ruiz
  */

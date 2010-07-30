@@ -19,14 +19,11 @@ import static org.fest.assertions.Assertions.assertThat;
 
 import java.awt.Container;
 
-import javax.swing.JButton;
-import javax.swing.JPanel;
+import javax.swing.*;
 
 import org.fest.swing.annotation.RunsInEDT;
-import org.fest.swing.edt.GuiActionRunner;
-import org.fest.swing.edt.GuiQuery;
-import org.fest.swing.test.core.MethodInvocations;
-import org.fest.swing.test.core.SequentialEDTSafeTestCase;
+import org.fest.swing.edt.*;
+import org.fest.swing.test.core.*;
 import org.fest.swing.test.swing.TestWindow;
 import org.junit.Test;
 
@@ -60,6 +57,7 @@ public class ComponentParentQuery_parentOf_Test extends SequentialEDTSafeTestCas
     @RunsInEDT
     static MyWindow createNew() {
       return GuiActionRunner.execute(new GuiQuery<MyWindow>() {
+        @Override
         protected MyWindow executeInEDT() {
           return new MyWindow();
         }

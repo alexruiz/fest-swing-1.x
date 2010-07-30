@@ -17,8 +17,7 @@ package org.fest.swing.format;
 
 import static java.lang.String.valueOf;
 import static javax.swing.JOptionPane.*;
-import static org.fest.util.Strings.concat;
-import static org.fest.util.Strings.quote;
+import static org.fest.util.Strings.*;
 
 import java.awt.Component;
 
@@ -55,6 +54,7 @@ public class JOptionPaneFormatter extends ComponentFormatterTemplate {
    * @param c the given {@code Component}.
    * @return the <code>String</code> representation of the given <code>JOptionPane</code>.
    */
+  @Override
   protected String doFormat(Component c) {
     JOptionPane optionPane = (JOptionPane)c;
     return concat(

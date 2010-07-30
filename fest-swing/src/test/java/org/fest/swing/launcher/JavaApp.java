@@ -18,8 +18,7 @@ package org.fest.swing.launcher;
 import static javax.swing.SwingUtilities.invokeLater;
 
 import java.awt.Dimension;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 import javax.swing.JFrame;
 

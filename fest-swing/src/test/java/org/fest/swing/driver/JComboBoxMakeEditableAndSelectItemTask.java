@@ -33,6 +33,7 @@ final class JComboBoxMakeEditableAndSelectItemTask {
   @RunsInEDT
    static void makeEditableAndSelectItem(final JComboBox comboBox, final Object itemToSelect) {
     execute(new GuiTask() {
+      @Override
       protected void executeInEDT() {
         comboBox.setEditable(true);
         comboBox.setSelectedItem(itemToSelect);
@@ -43,6 +44,7 @@ final class JComboBoxMakeEditableAndSelectItemTask {
   @RunsInEDT
   static void makeEditableAndSelectIndex(final JComboBox comboBox, final int index) {
     execute(new GuiTask() {
+      @Override
       protected void executeInEDT() {
         comboBox.setEditable(true);
         comboBox.setSelectedIndex(index);

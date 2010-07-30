@@ -38,6 +38,7 @@ final class JTreeExpandPathTask {
   @RunsInEDT
   static void expandTreePath(final JTree tree, final TreePath path) {
     execute(new GuiTask() {
+      @Override
       protected void executeInEDT() {
         TreePath realPath = addRootIfInvisible(tree, path);
         if (!tree.isExpanded(path)) tree.expandPath(realPath);

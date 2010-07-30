@@ -22,13 +22,11 @@ import static org.fest.util.Arrays.array;
 import java.awt.Dimension;
 import java.util.List;
 
-import javax.swing.JList;
-import javax.swing.JScrollPane;
+import javax.swing.*;
 
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.cell.JListCellReader;
-import org.fest.swing.edt.GuiQuery;
-import org.fest.swing.edt.GuiTask;
+import org.fest.swing.edt.*;
 import org.fest.swing.test.core.RobotBasedTestCase;
 import org.fest.swing.test.swing.TestWindow;
 import org.junit.Test;
@@ -69,6 +67,7 @@ public class JListSelectionValuesQuery_selectionValues_Test extends RobotBasedTe
     final int[] toSelect = new int[count];
     for (int i = 0; i < count; i++) toSelect[i] = indices[i];
     execute(new GuiTask() {
+      @Override
       protected void executeInEDT() {
         list.setSelectedIndices(toSelect);
       }
@@ -84,6 +83,7 @@ public class JListSelectionValuesQuery_selectionValues_Test extends RobotBasedTe
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
+        @Override
         protected MyWindow executeInEDT() {
           return new MyWindow();
         }

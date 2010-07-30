@@ -56,6 +56,7 @@ public class JToolBarDriver_makeFloat_Test extends JToolBarDriver_TestCase {
   @RunsInEDT
   private static void setFloatable(final JToolBar toolBar, boolean flotable) {
     execute(new GuiTask() {
+      @Override
       protected void executeInEDT() {
         toolBar.setFloatable(false);
       }

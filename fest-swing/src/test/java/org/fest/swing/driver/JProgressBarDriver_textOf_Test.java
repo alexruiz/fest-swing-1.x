@@ -16,6 +16,7 @@
 package org.fest.swing.driver;
 
 import static org.fest.assertions.Assertions.assertThat;
+
 import javax.swing.JProgressBar;
 
 import org.junit.Test;

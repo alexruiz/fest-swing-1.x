@@ -21,8 +21,7 @@ import static org.fest.util.Arrays.isEmpty;
 
 import java.awt.Component;
 
-import javax.swing.JPanel;
-import javax.swing.JTabbedPane;
+import javax.swing.*;
 
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
@@ -71,6 +70,7 @@ public final class JTabbedPanes {
     @RunsInEDT
     public JTabbedPane createNew() {
       return execute(new GuiQuery<JTabbedPane>() {
+        @Override
         protected JTabbedPane executeInEDT() {
           JTabbedPane tabbedPane = new JTabbedPane();
           tabbedPane.setName(name);
@@ -95,6 +95,7 @@ public final class JTabbedPanes {
     @RunsInEDT
     private static JPanel createPanel() {
       return execute(new GuiQuery<JPanel>() {
+        @Override
         protected JPanel executeInEDT() {
           return new JPanel();
         }

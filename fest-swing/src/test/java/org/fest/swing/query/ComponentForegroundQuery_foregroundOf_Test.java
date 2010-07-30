@@ -19,13 +19,11 @@ import static java.awt.Color.BLUE;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.edt.GuiActionRunner.execute;
 
-import java.awt.Color;
-import java.awt.Dimension;
+import java.awt.*;
 
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
-import org.fest.swing.test.core.MethodInvocations;
-import org.fest.swing.test.core.SequentialEDTSafeTestCase;
+import org.fest.swing.test.core.*;
 import org.fest.swing.test.swing.TestWindow;
 import org.junit.Test;
 
@@ -61,6 +59,7 @@ public class ComponentForegroundQuery_foregroundOf_Test extends SequentialEDTSaf
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
+        @Override
         protected MyWindow executeInEDT() {
           return new MyWindow();
         }

@@ -24,15 +24,13 @@ import static org.fest.swing.test.task.ComponentSetPopupMenuTask.createAndSetPop
 
 import java.awt.Point;
 
-import javax.swing.JPopupMenu;
-import javax.swing.JTextField;
+import javax.swing.*;
 
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
 import org.fest.swing.test.core.EDTSafeTestCase;
 import org.fest.swing.test.swing.TestWindow;
-import org.junit.After;
-import org.junit.Before;
+import org.junit.*;
 
 /**
  * Base case for tests for <code>{@link BasicRobot}</code>.
@@ -84,6 +82,7 @@ public abstract class BasicRobot_TestCase extends EDTSafeTestCase {
     @RunsInEDT
     static MyWindow createAndShow(final Class<?> testClass) {
       return execute(new GuiQuery<MyWindow>() {
+        @Override
         protected MyWindow executeInEDT() {
           return display(new MyWindow(testClass));
         }

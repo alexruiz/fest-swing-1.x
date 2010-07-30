@@ -26,13 +26,11 @@ import javax.swing.JList;
 
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
-import org.fest.swing.test.core.MethodInvocations;
-import org.fest.swing.test.core.RobotBasedTestCase;
-import org.fest.swing.test.swing.TestListModel;
-import org.fest.swing.test.swing.TestWindow;
+import org.fest.swing.test.core.*;
+import org.fest.swing.test.swing.*;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
+import org.junit.runners.*;
 import org.junit.runners.Parameterized.Parameters;
 
 /**
@@ -56,7 +54,7 @@ public class JListSelectedIndexQuery_selectedIndexOf_Test extends RobotBasedTest
   public JListSelectedIndexQuery_selectedIndexOf_Test(int selectedIndex) {
     this.selectedIndex = selectedIndex;
   }
-  
+
   @Override protected void onSetUp() {
     MyWindow window = MyWindow.createNew();
     list = window.list;
@@ -77,12 +75,13 @@ public class JListSelectedIndexQuery_selectedIndexOf_Test extends RobotBasedTest
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
+        @Override
         protected MyWindow executeInEDT() {
           return new MyWindow();
         }
       });
     }
-    
+
     final MyList list = new MyList("One", "Two", "Three");
 
     private MyWindow() {

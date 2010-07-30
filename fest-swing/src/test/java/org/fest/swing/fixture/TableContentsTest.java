@@ -26,8 +26,7 @@ import javax.swing.JTable;
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
 import org.fest.swing.test.core.RobotBasedTestCase;
-import org.fest.swing.test.swing.TableRenderDemo;
-import org.fest.swing.test.swing.TestWindow;
+import org.fest.swing.test.swing.*;
 import org.junit.Test;
 
 /**
@@ -109,12 +108,13 @@ public class TableContentsTest extends RobotBasedTestCase {
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
+        @Override
         protected MyWindow executeInEDT() {
           return new MyWindow();
         }
       });
     }
- 
+
     final JTable table;
 
     private MyWindow() {

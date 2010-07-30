@@ -28,14 +28,15 @@ import org.fest.swing.edt.GuiTask;
 /**
  * Understands a task that request input focus for a <code>{@link Component}</code>. This task is executed in the event
  * dispatch thread.
- * 
+ *
  * @author Alex Ruiz
  */
 public final class ComponentRequestFocusAndWaitForFocusGainTask {
-  
+
   @RunsInEDT
   public static void giveFocusAndWaitTillIsFocused(final Component c) {
     execute(new GuiTask() {
+      @Override
       protected void executeInEDT() {
         c.requestFocus();
       }

@@ -33,6 +33,7 @@ final class JListContentQuery {
   @RunsInEDT
   static String[] contents(final JList list, final JListCellReader cellReader) {
     return execute(new GuiQuery<String[]>() {
+      @Override
       protected String[] executeInEDT() {
         String[] values = new String[list.getModel().getSize()];
         for (int i = 0; i < values.length; i++)

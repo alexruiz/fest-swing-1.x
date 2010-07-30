@@ -30,11 +30,13 @@ public class JProgressBarFixture_requireDeterminate_Test extends JProgressBarFix
   @Test
   public void should_require_value() {
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().requireDeterminate(target());
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().requireDeterminate());
       }

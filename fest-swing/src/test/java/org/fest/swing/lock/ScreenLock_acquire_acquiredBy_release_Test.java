@@ -17,7 +17,7 @@ package org.fest.swing.lock;
 import static edu.umd.cs.mtc.TestFramework.runManyTimes;
 import static org.fest.assertions.Assertions.assertThat;
 
-import org.junit.*;
+import org.junit.Test;
 
 import edu.umd.cs.mtc.MultithreadedTestCase;
 

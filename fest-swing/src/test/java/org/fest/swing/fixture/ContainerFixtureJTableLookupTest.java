@@ -22,8 +22,7 @@ import static org.fest.swing.test.core.CommonAssertions.failWhenExpectingExcepti
 import javax.swing.JTable;
 
 import org.fest.swing.core.GenericTypeMatcher;
-import org.fest.swing.edt.GuiQuery;
-import org.fest.swing.edt.GuiTask;
+import org.fest.swing.edt.*;
 import org.fest.swing.exception.ComponentLookupException;
 import org.fest.swing.test.core.RobotBasedTestCase;
 import org.fest.swing.test.swing.TestWindow;
@@ -54,6 +53,7 @@ public class ContainerFixtureJTableLookupTest extends RobotBasedTestCase {
   @Test
   public void shouldFailIfJTableCannotBeFoundByType() {
     execute(new GuiTask() {
+      @Override
       protected void executeInEDT() {
         window.remove(window.table);
       }
@@ -88,6 +88,7 @@ public class ContainerFixtureJTableLookupTest extends RobotBasedTestCase {
   @Test
   public void shouldFindJTableWithCustomMatcher() {
     JTableFixture table = fixture.table(new GenericTypeMatcher<JTable>(JTable.class) {
+      @Override
       protected boolean isMatching(JTable t) {
         return t.getRowCount() == 8 && t.getColumnCount() == 6;
       }
@@ -103,6 +104,7 @@ public class ContainerFixtureJTableLookupTest extends RobotBasedTestCase {
   public void shouldFailIfJTableCannotBeFoundWithCustomMatcher() {
     try {
       fixture.table(new GenericTypeMatcher<JTable>(JTable.class) {
+        @Override
         protected boolean isMatching(JTable t) {
           return false;
         }
@@ -120,6 +122,7 @@ public class ContainerFixtureJTableLookupTest extends RobotBasedTestCase {
 
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
+        @Override
         protected MyWindow executeInEDT() {
           return new MyWindow();
         }

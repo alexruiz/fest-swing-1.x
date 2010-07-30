@@ -1,16 +1,16 @@
 /*
  * Created on Oct 29, 2007
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License
  * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
- * 
+ *
  * Copyright @2007-2010 the original author or authors.
  */
 package org.fest.swing.util;
@@ -26,7 +26,7 @@ public final class TimeoutWatch {
 
   private final long timeout;
   private long startTime;
-  
+
   /**
    * Creates and starts a new <code>{@link TimeoutWatch}</code> with the given timeout.
    * @param timeout the given timeout.
@@ -37,11 +37,11 @@ public final class TimeoutWatch {
     watch.start();
     return  watch;
   }
-  
+
   private TimeoutWatch(long timeout) {
     this.timeout = timeout;
   }
-  
+
   void start() {
     startTime = currentTimeMillis();
   }

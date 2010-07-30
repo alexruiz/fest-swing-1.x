@@ -17,15 +17,13 @@ package org.fest.swing.driver;
 import static java.lang.String.valueOf;
 import static org.fest.util.Strings.concat;
 
-import java.awt.Point;
-import java.awt.Rectangle;
+import java.awt.*;
 
 import javax.swing.table.JTableHeader;
 
 import org.fest.swing.annotation.RunsInCurrentThread;
 import org.fest.swing.exception.LocationUnavailableException;
-import org.fest.swing.util.Pair;
-import org.fest.swing.util.TextMatcher;
+import org.fest.swing.util.*;
 
 /**
  * Understands the location of a <code>{@link JTableHeader}</code> (a coordinate, column index or value.)

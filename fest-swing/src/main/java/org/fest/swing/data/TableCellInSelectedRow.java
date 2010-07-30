@@ -95,6 +95,7 @@ public class TableCellInSelectedRow implements TableCellFinder {
   @RunsInEDT
   private static int selectedRowOf(final JTable table) {
     return execute(new GuiQuery<Integer>() {
+      @Override
       protected Integer executeInEDT() {
         return table.getSelectedRow();
       }

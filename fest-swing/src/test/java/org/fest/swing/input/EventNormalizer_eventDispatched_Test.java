@@ -15,8 +15,7 @@
  */
 package org.fest.swing.input;
 
-import static org.easymock.EasyMock.expect;
-import static org.easymock.EasyMock.expectLastCall;
+import static org.easymock.EasyMock.*;
 import static org.easymock.classextension.EasyMock.createMock;
 import static org.fest.swing.test.awt.TestAWTEvents.singletonAWTEventMock;
 import static org.fest.swing.test.awt.Toolkits.newToolkitMock;
@@ -25,8 +24,7 @@ import java.awt.AWTEvent;
 import java.awt.event.AWTEventListener;
 
 import org.fest.mocks.EasyMockTemplate;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Tests for <code>{@link EventNormalizer#eventDispatched(AWTEvent)}</code>.
@@ -52,12 +50,14 @@ public class EventNormalizer_eventDispatched_Test extends EventNormalizer_TestCa
   @Test
   public void should_delegate_event_if_it_is_not_a_duplicate_dispose() {
     new EasyMockTemplate(disposedWindowMonitor, delegateEventListener) {
+      @Override
       protected void expectations() {
         expect(disposedWindowMonitor.isDuplicateDispose(event)).andReturn(false);
         delegateEventListener.eventDispatched(event);
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         eventNormalizer.eventDispatched(event);
       }
@@ -67,10 +67,12 @@ public class EventNormalizer_eventDispatched_Test extends EventNormalizer_TestCa
   @Test
   public void should_not_delegate_event_if_it_is_a_duplicate_dispose() {
     new EasyMockTemplate(disposedWindowMonitor, delegateEventListener) {
+      @Override
       protected void expectations() {
         expect(disposedWindowMonitor.isDuplicateDispose(event)).andReturn(true);
       }
 
+      @Override
       protected void codeToTest() {
         eventNormalizer.eventDispatched(event);
       }

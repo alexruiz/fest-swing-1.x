@@ -18,6 +18,7 @@ package org.fest.swing.fixture;
 import static org.easymock.EasyMock.expectLastCall;
 import static org.fest.swing.core.MouseButton.LEFT_BUTTON;
 import static org.fest.swing.core.MouseClickInfo.leftButton;
+
 import org.fest.mocks.EasyMockTemplate;
 import org.fest.swing.core.MouseButton;
 import org.junit.Test;
@@ -36,11 +37,13 @@ public class JTableHeaderFixture_clickColumn_byIndex_withMouseClickInfo_Test ext
     final MouseButton mouseButton = LEFT_BUTTON;
     final int times = 2;
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().clickColumn(target(), index, mouseButton, times);
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().clickColumn(index, leftButton().times(2)));
       }

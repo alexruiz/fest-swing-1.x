@@ -17,8 +17,7 @@ package org.fest.swing.image;
 
 import java.awt.image.BufferedImage;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Tests for <code>{@link ScreenshotTaker#saveImage(BufferedImage, String)}</code>.

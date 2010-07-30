@@ -17,8 +17,7 @@ package org.fest.swing.driver;
 
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.edt.GuiActionRunner.execute;
-import static org.fest.swing.test.core.CommonAssertions.assertThatErrorCauseIsNotShowingComponent;
-import static org.fest.swing.test.core.CommonAssertions.failWhenExpectingException;
+import static org.fest.swing.test.core.CommonAssertions.*;
 import static org.fest.swing.test.task.ComponentSetVisibleTask.hide;
 
 import javax.swing.JInternalFrame;
@@ -106,6 +105,7 @@ public class JInternalFrameDriver_maximize_Test extends JInternalFrameDriver_Tes
   @RunsInEDT
   private static void setMaximizable(final JInternalFrame internalFrame, final boolean maximizable) {
     execute(new GuiTask() {
+      @Override
       protected void executeInEDT() {
         internalFrame.setMaximizable(maximizable);
       }

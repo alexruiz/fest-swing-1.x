@@ -41,11 +41,13 @@ public class JTableDriver_enterValueInCell_Test extends JTableDriver_withMockCel
   @Test
   public void should_enter_value_in_cell() {
     new EasyMockTemplate(cellWriter) {
+      @Override
       protected void expectations() {
         cellWriter.enterValue(table, 0, 0, value);
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         driver.enterValueInCell(table, row(0).column(0), value);
       }

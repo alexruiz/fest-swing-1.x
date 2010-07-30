@@ -42,13 +42,17 @@ public class JPopupMenuFixture_stateVerification_Test extends StateVerificationF
     target = popupMenu().createNew();
   }
 
+  @Override
   void onSetUp() {
     driver = createMock(JPopupMenuDriver.class);
     fixture = new JPopupMenuFixture(robot(), target);
     fixture.driver(driver);
   }
 
+  @Override
   JPopupMenuDriver driver() {  return driver; }
+  @Override
   JPopupMenu target() { return target; }
+  @Override
   JPopupMenuFixture fixture() { return fixture; }
 }

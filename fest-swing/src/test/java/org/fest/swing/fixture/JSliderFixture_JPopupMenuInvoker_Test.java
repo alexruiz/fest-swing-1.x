@@ -42,13 +42,17 @@ public class JSliderFixture_JPopupMenuInvoker_Test extends JPopupMenuInvokerFixt
     target = slider().createNew();
   }
 
+  @Override
   void onSetUp() {
     driver = createMock(JSliderDriver.class);
     fixture = new JSliderFixture(robot(), target);
     fixture.driver(driver);
   }
 
+  @Override
   JSliderDriver driver() {  return driver; }
+  @Override
   JSlider target() { return target; }
+  @Override
   JSliderFixture fixture() { return fixture; }
 }

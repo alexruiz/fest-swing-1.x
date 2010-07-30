@@ -15,17 +15,12 @@
 package org.fest.swing.core;
 
 import static java.awt.AWTEvent.KEY_EVENT_MASK;
-import static java.awt.event.InputEvent.CTRL_MASK;
-import static java.awt.event.InputEvent.SHIFT_MASK;
-import static java.awt.event.KeyEvent.KEY_PRESSED;
-import static java.awt.event.KeyEvent.VK_A;
-import static org.fest.swing.core.InputModifiers.modifiersMatch;
-import static org.fest.swing.core.InputModifiers.unify;
+import static java.awt.event.InputEvent.*;
+import static java.awt.event.KeyEvent.*;
+import static org.fest.swing.core.InputModifiers.*;
 
-import java.awt.AWTEvent;
-import java.awt.Toolkit;
-import java.awt.event.AWTEventListener;
-import java.awt.event.KeyEvent;
+import java.awt.*;
+import java.awt.event.*;
 
 import org.fest.util.VisibleForTesting;
 

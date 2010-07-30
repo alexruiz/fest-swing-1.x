@@ -49,6 +49,7 @@ public abstract class JOptionPaneDriver_TestCase extends RobotBasedTestCase {
   @RunsInEDT
   static JOptionPane confirmMessage() {
     return execute(new GuiQuery<JOptionPane>() {
+      @Override
       protected JOptionPane executeInEDT() {
         return new JOptionPane(MESSAGE, QUESTION_MESSAGE, YES_NO_CANCEL_OPTION);
       }
@@ -64,6 +65,7 @@ public abstract class JOptionPaneDriver_TestCase extends RobotBasedTestCase {
   @RunsInEDT
   static JOptionPane inputMessage() {
     return execute(new GuiQuery<JOptionPane>() {
+      @Override
       protected JOptionPane executeInEDT() {
         JOptionPane optionPane = new JOptionPane(MESSAGE, QUESTION_MESSAGE, OK_CANCEL_OPTION);
         optionPane.setWantsInput(true);
@@ -75,6 +77,7 @@ public abstract class JOptionPaneDriver_TestCase extends RobotBasedTestCase {
   @RunsInEDT
   static JOptionPane messageWithOptions(final Object...options) {
     return execute(new GuiQuery<JOptionPane>() {
+      @Override
       protected JOptionPane executeInEDT() {
         Object initialValue = options[0];
         JOptionPane optionPane = new JOptionPane(MESSAGE, QUESTION_MESSAGE, YES_NO_OPTION, ICON, options, initialValue);
@@ -114,6 +117,7 @@ public abstract class JOptionPaneDriver_TestCase extends RobotBasedTestCase {
   @RunsInEDT
   static JOptionPane messageWithValue(final Object message) {
     return execute(new GuiQuery<JOptionPane>() {
+      @Override
       protected JOptionPane executeInEDT() {
         return new JOptionPane(message);
       }
@@ -133,6 +137,7 @@ public abstract class JOptionPaneDriver_TestCase extends RobotBasedTestCase {
   @RunsInEDT
   static JOptionPane messageOfType(final int type) {
     return execute(new GuiQuery<JOptionPane>() {
+      @Override
       protected JOptionPane executeInEDT() {
         return new JOptionPane(MESSAGE, type);
       }

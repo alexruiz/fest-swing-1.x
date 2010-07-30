@@ -27,10 +27,12 @@ public class WindowVisibilityMonitor_componentShown_Test extends WindowVisibilit
   @Test
   public void should_mark_Window_as_showing_when_Window_is_shown() {
     new EasyMockTemplate(windows) {
+      @Override
       protected void expectations() {
         windows.markAsShowingInEDT(window);
       }
 
+      @Override
       protected void codeToTest() {
         monitor.componentShown(componentEventWithWindowAsSource());
       }
@@ -40,8 +42,10 @@ public class WindowVisibilityMonitor_componentShown_Test extends WindowVisibilit
   @Test
   public void should_not_mark_Window_as_showing_if_Component_shown_is_not_Window() {
     new EasyMockTemplate(windows) {
+      @Override
       protected void expectations() {}
 
+      @Override
       protected void codeToTest() {
         monitor.componentShown(componentEventWithTextFieldAsSource());
       }

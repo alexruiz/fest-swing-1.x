@@ -22,12 +22,10 @@ import static org.fest.swing.test.core.CommonAssertions.failWhenExpectingExcepti
 
 import java.awt.Dimension;
 
-import javax.swing.JList;
-import javax.swing.JSplitPane;
+import javax.swing.*;
 
 import org.fest.swing.core.GenericTypeMatcher;
-import org.fest.swing.edt.GuiQuery;
-import org.fest.swing.edt.GuiTask;
+import org.fest.swing.edt.*;
 import org.fest.swing.exception.ComponentLookupException;
 import org.fest.swing.test.core.RobotBasedTestCase;
 import org.fest.swing.test.swing.TestWindow;
@@ -58,6 +56,7 @@ public class ContainerFixtureJSplitPaneLookupTest extends RobotBasedTestCase {
   @Test
   public void shouldFailIfJSplitPaneCannotBeFoundByType() {
     execute(new GuiTask() {
+      @Override
       protected void executeInEDT() {
         window.remove(window.splitPane);
       }
@@ -92,6 +91,7 @@ public class ContainerFixtureJSplitPaneLookupTest extends RobotBasedTestCase {
   @Test
   public void shouldFindJSplitPaneWithCustomMatcher() {
     JSplitPaneFixture splitPane = fixture.splitPane(new GenericTypeMatcher<JSplitPane>(JSplitPane.class) {
+      @Override
       protected boolean isMatching(JSplitPane s) {
         return s.getLeftComponent() instanceof JList;
       }
@@ -107,6 +107,7 @@ public class ContainerFixtureJSplitPaneLookupTest extends RobotBasedTestCase {
   public void shouldFailIfJSplitPaneCannotBeFoundWithCustomMatcher() {
     try {
       fixture.splitPane(new GenericTypeMatcher<JSplitPane>(JSplitPane.class) {
+        @Override
         protected boolean isMatching(JSplitPane s) {
           return false;
         }
@@ -124,6 +125,7 @@ public class ContainerFixtureJSplitPaneLookupTest extends RobotBasedTestCase {
 
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
+        @Override
         protected MyWindow executeInEDT() {
           return new MyWindow();
         }

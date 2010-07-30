@@ -16,8 +16,7 @@ package org.fest.swing.query;
 
 import static org.fest.swing.edt.GuiActionRunner.execute;
 
-import java.awt.Component;
-import java.awt.Point;
+import java.awt.*;
 
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
@@ -42,6 +41,7 @@ public final class ComponentLocationOnScreenQuery {
   @RunsInEDT
   public static Point locationOnScreen(final Component component) {
     return execute(new GuiQuery<Point>() {
+      @Override
       protected Point executeInEDT() {
         return component.getLocationOnScreen();
       }

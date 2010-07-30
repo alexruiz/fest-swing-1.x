@@ -34,6 +34,7 @@ final class JTableRowCountQuery {
   @RunsInEDT
   static int rowCountOf(final JTable table) {
     return execute(new GuiQuery<Integer>() {
+      @Override
       protected Integer executeInEDT() {
         return table.getRowCount();
       }

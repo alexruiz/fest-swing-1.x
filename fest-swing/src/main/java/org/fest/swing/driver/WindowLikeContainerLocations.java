@@ -33,7 +33,7 @@ final class WindowLikeContainerLocations {
   /**
    * Identifies the coordinates of the 'close' button.
    * <p>
-   * <b>Note:</b> This method is <b>not</b> executed in the event dispatch thread (EDT.) Clients are responsible for 
+   * <b>Note:</b> This method is <b>not</b> executed in the event dispatch thread (EDT.) Clients are responsible for
    * invoking this method in the EDT.
    * </p>
    * @param c the target window-like {@code Container}.
@@ -49,7 +49,7 @@ final class WindowLikeContainerLocations {
   /**
    * Identifies the coordinates of the 'maximize' button.
    * <p>
-   * <b>Note:</b> This method is <b>not</b> executed in the event dispatch thread (EDT.) Clients are responsible for 
+   * <b>Note:</b> This method is <b>not</b> executed in the event dispatch thread (EDT.) Clients are responsible for
    * invoking this method in the EDT.
    * </p>
    * @param c the target window-like {@code Container}.
@@ -65,7 +65,7 @@ final class WindowLikeContainerLocations {
   /**
    * Identifies the coordinates of the 'iconify' button, returning (0, 0) if not found.
    * <p>
-   * <b>Note:</b> This method is <b>not</b> executed in the event dispatch thread (EDT.) Clients are responsible for 
+   * <b>Note:</b> This method is <b>not</b> executed in the event dispatch thread (EDT.) Clients are responsible for
    * invoking this method in the EDT.
    * </p>
    * @param c the target window-like {@code Container}.

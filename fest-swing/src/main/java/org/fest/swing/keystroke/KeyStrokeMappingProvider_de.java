@@ -14,8 +14,7 @@
  */
 package org.fest.swing.keystroke;
 
-import static java.awt.event.InputEvent.ALT_GRAPH_MASK;
-import static java.awt.event.InputEvent.SHIFT_MASK;
+import static java.awt.event.InputEvent.*;
 import static java.awt.event.KeyEvent.*;
 import static org.fest.swing.keystroke.KeyStrokeMapping.mapping;
 import static org.fest.swing.keystroke.KeyStrokeMappings.defaultMappings;
@@ -48,10 +47,10 @@ public class KeyStrokeMappingProvider_de implements KeyStrokeMappingProvider {
     mappings.add(mapping('!', VK_1, SHIFT_MASK));
     mappings.add(mapping('2', VK_2, NO_MASK));
     mappings.add(mapping('"', VK_2, SHIFT_MASK));
-    mappings.add(mapping('²', VK_2, ALT_GRAPH_MASK));
+    mappings.add(mapping('ï¿½', VK_2, ALT_GRAPH_MASK));
     mappings.add(mapping('3', VK_3, NO_MASK));
-    mappings.add(mapping('§', VK_3, SHIFT_MASK));
-    mappings.add(mapping('³', VK_0, ALT_GRAPH_MASK));
+    mappings.add(mapping('ï¿½', VK_3, SHIFT_MASK));
+    mappings.add(mapping('ï¿½', VK_0, ALT_GRAPH_MASK));
     mappings.add(mapping('4', VK_4, NO_MASK));
     mappings.add(mapping('$', VK_4, SHIFT_MASK));
     mappings.add(mapping('5', VK_5, NO_MASK));
@@ -72,7 +71,7 @@ public class KeyStrokeMappingProvider_de implements KeyStrokeMappingProvider {
     mappings.add(mapping('b', VK_B, NO_MASK));
     mappings.add(mapping('B', VK_B, SHIFT_MASK));
     mappings.add(mapping('^', VK_BACK_QUOTE, NO_MASK));
-    mappings.add(mapping('°', VK_BACK_QUOTE, SHIFT_MASK));
+    mappings.add(mapping('ï¿½', VK_BACK_QUOTE, SHIFT_MASK));
     mappings.add(mapping('<', VK_BACK_SLASH, NO_MASK));
     mappings.add(mapping('>', VK_BACK_SLASH, SHIFT_MASK));
     mappings.add(mapping('|', VK_BACK_SLASH, ALT_GRAPH_MASK));
@@ -88,8 +87,8 @@ public class KeyStrokeMappingProvider_de implements KeyStrokeMappingProvider {
     mappings.add(mapping('', VK_DELETE, NO_MASK));
     mappings.add(mapping('e', VK_E, NO_MASK));
     mappings.add(mapping('E', VK_E, SHIFT_MASK));
-    mappings.add(mapping('€', VK_E, ALT_GRAPH_MASK));
-    mappings.add(mapping('´', VK_EQUALS, NO_MASK));
+    mappings.add(mapping('ï¿½', VK_E, ALT_GRAPH_MASK));
+    mappings.add(mapping('ï¿½', VK_EQUALS, NO_MASK));
     mappings.add(mapping('`', VK_EQUALS, SHIFT_MASK));
     mappings.add(mapping('f', VK_F, NO_MASK));
     mappings.add(mapping('F', VK_F, SHIFT_MASK));
@@ -107,7 +106,7 @@ public class KeyStrokeMappingProvider_de implements KeyStrokeMappingProvider {
     mappings.add(mapping('L', VK_L, SHIFT_MASK));
     mappings.add(mapping('m', VK_M, NO_MASK));
     mappings.add(mapping('M', VK_M, SHIFT_MASK));
-    mappings.add(mapping('µ', VK_M, ALT_GRAPH_MASK));
+    mappings.add(mapping('ï¿½', VK_M, ALT_GRAPH_MASK));
     mappings.add(mapping('?', VK_SLASH, SHIFT_MASK));
     mappings.add(mapping('\\', VK_SLASH, ALT_GRAPH_MASK));
     mappings.add(mapping('n', VK_N, NO_MASK));

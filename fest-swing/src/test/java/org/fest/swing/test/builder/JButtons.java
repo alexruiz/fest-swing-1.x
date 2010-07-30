@@ -67,6 +67,7 @@ public final class JButtons {
     @RunsInEDT
     public JButton createNew() {
       return execute(new GuiQuery<JButton>() {
+        @Override
         protected JButton executeInEDT() {
           JButton button = new JButton();
           if (!isEmpty(actionListeners))

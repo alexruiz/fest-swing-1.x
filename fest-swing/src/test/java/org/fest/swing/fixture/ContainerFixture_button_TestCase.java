@@ -38,11 +38,11 @@ public abstract class ContainerFixture_button_TestCase extends RobotBasedTestCas
     window = MyWindow.createNew(getClass());
     fixture = new ConcreteContainerFixture(robot, window);
   }
-  
+
   final void showWindow() {
     robot.showWindow(window);
   }
-  
+
   final void assertThatJButtonWasFound(JButtonFixture f) {
     assertThat(f.component()).isSameAs(window.button);
   }
@@ -54,6 +54,7 @@ public abstract class ContainerFixture_button_TestCase extends RobotBasedTestCas
 
     static MyWindow createNew(final Class<?> testClass) {
       return execute(new GuiQuery<MyWindow>() {
+        @Override
         protected MyWindow executeInEDT() {
           return new MyWindow(testClass);
         }

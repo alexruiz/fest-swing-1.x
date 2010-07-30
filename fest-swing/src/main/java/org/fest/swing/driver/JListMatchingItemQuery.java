@@ -25,12 +25,10 @@ import java.util.*;
 
 import javax.swing.JList;
 
-import org.fest.swing.annotation.RunsInCurrentThread;
-import org.fest.swing.annotation.RunsInEDT;
+import org.fest.swing.annotation.*;
 import org.fest.swing.cell.JListCellReader;
 import org.fest.swing.edt.GuiQuery;
-import org.fest.swing.util.StringTextMatcher;
-import org.fest.swing.util.TextMatcher;
+import org.fest.swing.util.*;
 
 /**
  * Understands lookup of the first item in a <code>{@link JList}</code> whose value matches a given one.
@@ -42,6 +40,7 @@ final class JListMatchingItemQuery {
   @RunsInEDT
   static Point centerOfMatchingItemCell(final JList list, final String value, final JListCellReader cellReader) {
     return execute(new GuiQuery<Point>() {
+      @Override
       protected Point executeInEDT() {
         int itemIndex = matchingItemIndex(list, new StringTextMatcher(value), cellReader);
         return cellCenter(list, cellBounds(list, itemIndex));
@@ -61,6 +60,7 @@ final class JListMatchingItemQuery {
   static List<Integer> matchingItemIndices(final JList list, final TextMatcher matcher,
       final JListCellReader cellReader) {
     return execute(new GuiQuery<List<Integer>>() {
+      @Override
       protected List<Integer> executeInEDT() {
         Set<Integer> indices = new HashSet<Integer>();
         int size = list.getModel().getSize();
@@ -77,6 +77,7 @@ final class JListMatchingItemQuery {
   static List<String> matchingItemValues(final JList list, final TextMatcher matcher,
       final JListCellReader cellReader) {
     return execute(new GuiQuery<List<String>>() {
+      @Override
       protected List<String> executeInEDT() {
         List<String> values = new ArrayList<String>();
         int size = list.getModel().getSize();

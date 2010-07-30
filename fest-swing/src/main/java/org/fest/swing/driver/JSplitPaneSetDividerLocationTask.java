@@ -34,6 +34,7 @@ final class JSplitPaneSetDividerLocationTask {
   @RunsInEDT
   static void setDividerLocation(final JSplitPane splitPane, final int location) {
     execute(new GuiTask() {
+      @Override
       protected void executeInEDT() {
         splitPane.setDividerLocation(location);
       }

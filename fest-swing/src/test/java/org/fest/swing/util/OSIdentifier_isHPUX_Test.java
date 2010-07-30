@@ -24,7 +24,7 @@ import java.util.Collection;
 import org.fest.mocks.EasyMockTemplate;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
+import org.junit.runners.*;
 import org.junit.runners.Parameterized.Parameters;
 
 /**
@@ -49,11 +49,13 @@ public class OSIdentifier_isHPUX_Test extends OSIdentifier_TestCase {
   @Test
   public void should_return_HPUX_if_OS_name_is_equal_to_HPUX() {
     new EasyMockTemplate(propertyReader) {
+      @Override
       protected void expectations() {
         expectOSName(hpUX);
         expectNoMRJVersion();
       }
 
+      @Override
       protected void codeToTest() {
         OSIdentifier osIdentifier = new OSIdentifier(propertyReader);
         assertThat(osIdentifier.isHPUX()).isTrue();

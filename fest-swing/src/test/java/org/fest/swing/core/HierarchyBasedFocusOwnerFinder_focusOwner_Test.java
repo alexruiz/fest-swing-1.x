@@ -22,8 +22,7 @@ import static org.fest.swing.test.awt.TestComponents.singletonComponentMock;
 import static org.fest.swing.test.awt.TestContainers.singletonContainerMock;
 import static org.fest.util.Arrays.array;
 
-import java.awt.Component;
-import java.awt.Container;
+import java.awt.*;
 
 import org.fest.mocks.EasyMockTemplate;
 import org.junit.*;
@@ -57,11 +56,13 @@ public class HierarchyBasedFocusOwnerFinder_focusOwner_Test {
   public void should_return_focus_owner_from_delegate() {
     final Component focusOwner = singletonComponentMock();
     new EasyMockTemplate(delegate, rootsSource) {
+      @Override
       protected void expectations() {
         expect(rootsSource.existingHierarchyRoots()).andReturn(array(container));
         expect(delegate.focusOwnerOf(container)).andReturn(focusOwner);
       }
 
+      @Override
       protected void codeToTest() {
         Component foundFocusOwner = finder.focusOwner();
         assertThat(foundFocusOwner).isSameAs(focusOwner);
@@ -72,11 +73,13 @@ public class HierarchyBasedFocusOwnerFinder_focusOwner_Test {
   @Test
   public void should_return_null_if_delegate_did_not_find_focus_owner() {
     new EasyMockTemplate(delegate, rootsSource) {
+      @Override
       protected void expectations() {
         expect(rootsSource.existingHierarchyRoots()).andReturn(array(container));
         expect(delegate.focusOwnerOf(container)).andReturn(null);
       }
 
+      @Override
       protected void codeToTest() {
         Component foundFocusOwner = finder.focusOwner();
         assertThat(foundFocusOwner).isNull();
@@ -87,10 +90,12 @@ public class HierarchyBasedFocusOwnerFinder_focusOwner_Test {
   @Test
   public void should_return_null_if_there_are_not_any_root_Containers() {
     new EasyMockTemplate(delegate, rootsSource) {
+      @Override
       protected void expectations() {
         expect(rootsSource.existingHierarchyRoots()).andReturn(new Container[0]);
       }
 
+      @Override
       protected void codeToTest() {
         Component foundFocusOwner = finder.focusOwner();
         assertThat(foundFocusOwner).isNull();

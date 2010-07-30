@@ -21,11 +21,9 @@ import static org.fest.util.Arrays.array;
 
 import javax.swing.JButton;
 
-import org.fest.swing.edt.GuiActionRunner;
-import org.fest.swing.edt.GuiQuery;
+import org.fest.swing.edt.*;
 import org.fest.swing.test.core.EDTSafeTestCase;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Tests for <code>{@link IntrospectionComponentFormatter#format(java.awt.Component)}</code>.
@@ -75,6 +73,7 @@ public class IntrospectionComponentFormatter_format_Test extends EDTSafeTestCase
 
     static MyButton newButton(final String[] names) {
       return GuiActionRunner.execute(new GuiQuery<MyButton>() {
+        @Override
         protected MyButton executeInEDT() {
           return new MyButton(names);
         }

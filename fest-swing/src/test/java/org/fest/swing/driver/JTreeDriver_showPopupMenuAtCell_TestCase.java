@@ -18,8 +18,7 @@ package org.fest.swing.driver;
 import static org.fest.swing.edt.GuiActionRunner.execute;
 
 import java.awt.Component;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.event.*;
 
 import javax.swing.*;
 
@@ -39,6 +38,7 @@ public abstract class JTreeDriver_showPopupMenuAtCell_TestCase extends JTreeDriv
   @RunsInEDT
   @Override void extraSetUp() {
     execute(new GuiTask() {
+      @Override
       protected void executeInEDT() {
         popupMenu = new JPopupMenu();
         popupMenu.add(new JMenuItem("Hello"));

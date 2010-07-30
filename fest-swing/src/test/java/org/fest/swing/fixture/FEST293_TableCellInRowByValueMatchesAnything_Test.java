@@ -21,11 +21,9 @@ import static org.fest.util.Arrays.array;
 
 import java.awt.Dimension;
 
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
+import javax.swing.*;
 
-import org.fest.swing.edt.GuiActionRunner;
-import org.fest.swing.edt.GuiQuery;
+import org.fest.swing.edt.*;
 import org.fest.swing.exception.ActionFailedException;
 import org.fest.swing.test.core.RobotBasedTestCase;
 import org.fest.swing.test.swing.TestWindow;
@@ -61,6 +59,7 @@ public class FEST293_TableCellInRowByValueMatchesAnything_Test extends RobotBase
 
     static MyWindow createNew() {
       return GuiActionRunner.execute(new GuiQuery<MyWindow>() {
+        @Override
         protected MyWindow executeInEDT() {
           return new MyWindow();
         }

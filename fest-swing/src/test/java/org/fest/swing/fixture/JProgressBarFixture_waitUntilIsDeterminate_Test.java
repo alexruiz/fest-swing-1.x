@@ -30,11 +30,13 @@ public class JProgressBarFixture_waitUntilIsDeterminate_Test extends JProgressBa
   @Test
   public void should_require_value() {
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().waitUntilIsDeterminate(target());
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().waitUntilIsDeterminate());
       }

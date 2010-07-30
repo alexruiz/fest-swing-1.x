@@ -26,8 +26,7 @@ import java.io.IOException;
 
 import org.fest.mocks.EasyMockTemplate;
 import org.fest.swing.util.RobotFactory;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Tests for <code>{@link ScreenshotTaker#saveImage(BufferedImage, String)}</code>.
@@ -54,10 +53,12 @@ public class ScreenshotTaker_saveImage_Test {
   @Test
   public void should_throw_wrapped_Exception_thrown_when_writing_image_to_file() {
     new EasyMockTemplate(writer) {
+      @Override
       protected void expectations() throws Throwable {
         expect(writer.writeAsPng(image, path)).andThrow(error);
       }
 
+      @Override
       protected void codeToTest() {
         try {
           taker.saveImage(image, path);

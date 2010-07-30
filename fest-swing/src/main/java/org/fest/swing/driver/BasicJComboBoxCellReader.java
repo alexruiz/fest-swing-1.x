@@ -38,6 +38,7 @@ public class BasicJComboBoxCellReader implements JComboBoxCellReader {
 
   private static JList newJList() {
     return execute(new GuiQuery<JList>() {
+      @Override
       protected JList executeInEDT() {
         return new JList();
       }

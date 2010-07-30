@@ -42,13 +42,17 @@ public class JTreeFixture_focusable_Test extends FocusableComponentFixture_TestC
     target = tree().createNew();
   }
 
+  @Override
   void onSetUp() {
     driver = createMock(JTreeDriver.class);
     fixture = new JTreeFixture(robot(), target);
     fixture.driver(driver);
   }
 
+  @Override
   JTreeDriver driver() {  return driver; }
+  @Override
   JTree target() { return target; }
+  @Override
   JTreeFixture fixture() { return fixture; }
 }

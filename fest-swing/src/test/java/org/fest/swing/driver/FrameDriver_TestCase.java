@@ -20,10 +20,8 @@ import static org.fest.swing.query.ComponentSizeQuery.sizeOf;
 import static org.fest.swing.test.task.ComponentSetEnabledTask.disable;
 import static org.fest.swing.test.task.FrameSetResizableTask.setResizable;
 
-import org.fest.swing.annotation.RunsInEDT;
-import org.fest.swing.annotation.ThreadSafeAction;
-import org.fest.swing.test.awt.FluentDimension;
-import org.fest.swing.test.awt.FluentPoint;
+import org.fest.swing.annotation.*;
+import org.fest.swing.test.awt.*;
 import org.fest.swing.test.core.RobotBasedTestCase;
 import org.fest.swing.test.swing.TestWindow;
 

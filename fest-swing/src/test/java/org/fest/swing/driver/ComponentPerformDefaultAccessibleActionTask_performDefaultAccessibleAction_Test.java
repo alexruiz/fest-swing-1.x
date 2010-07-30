@@ -37,7 +37,7 @@ import org.junit.Test;
 
 /**
  * Tests for <code>{@link ComponentPerformDefaultAccessibleActionTask#performDefaultAccessibleAction(Component)}</code>.
- * 
+ *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
@@ -57,11 +57,13 @@ public class ComponentPerformDefaultAccessibleActionTask_performDefaultAccessibl
   @Test
   public void should_execute_first_Action_in_AccessibleAction() {
     new EasyMockTemplate(accessibleAction) {
+      @Override
       protected void expectations() {
         expect(accessibleAction.getAccessibleActionCount()).andReturn(1);
         expect(accessibleAction.doAccessibleAction(0)).andReturn(true);
       }
 
+      @Override
       protected void codeToTest() {
         ComponentPerformDefaultAccessibleActionTask.performDefaultAccessibleAction(component);
         robot.waitForIdle();
@@ -74,9 +76,11 @@ public class ComponentPerformDefaultAccessibleActionTask_performDefaultAccessibl
     accessibleContext.accessibleAction(null);
     try {
       new EasyMockTemplate(accessibleAction) {
+        @Override
         protected void expectations() {
         }
 
+        @Override
         protected void codeToTest() {
           ComponentPerformDefaultAccessibleActionTask.performDefaultAccessibleAction(component);
           robot.waitForIdle();
@@ -92,10 +96,12 @@ public class ComponentPerformDefaultAccessibleActionTask_performDefaultAccessibl
   public void should_throw_error_if_AccessibleAction_is_empty() {
     try {
       new EasyMockTemplate(accessibleAction) {
+        @Override
         protected void expectations() {
           expect(accessibleAction.getAccessibleActionCount()).andReturn(0);
         }
 
+        @Override
         protected void codeToTest() {
           ComponentPerformDefaultAccessibleActionTask.performDefaultAccessibleAction(component);
           robot.waitForIdle();
@@ -119,6 +125,7 @@ public class ComponentPerformDefaultAccessibleActionTask_performDefaultAccessibl
     @RunsInEDT
     static MyWindow createNew(final AccessibleContext accessibleContext) {
       return execute(new GuiQuery<MyWindow>() {
+        @Override
         protected MyWindow executeInEDT() {
           return new MyWindow(accessibleContext);
         }
@@ -164,26 +171,32 @@ public class ComponentPerformDefaultAccessibleActionTask_performDefaultAccessibl
       return accessibleAction;
     }
 
+    @Override
     public Accessible getAccessibleChild(int i) {
       return null;
     }
 
+    @Override
     public int getAccessibleChildrenCount() {
       return 0;
     }
 
+    @Override
     public int getAccessibleIndexInParent() {
       return 0;
     }
 
+    @Override
     public AccessibleRole getAccessibleRole() {
       return null;
     }
 
+    @Override
     public AccessibleStateSet getAccessibleStateSet() {
       return null;
     }
 
+    @Override
     public Locale getLocale() {
       return null;
     }

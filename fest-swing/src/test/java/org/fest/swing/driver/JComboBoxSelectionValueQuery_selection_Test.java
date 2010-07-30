@@ -91,6 +91,7 @@ public class JComboBoxSelectionValueQuery_selection_Test extends RobotBasedTestC
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
+        @Override
         protected MyWindow executeInEDT() {
           return new MyWindow();
         }

@@ -32,6 +32,7 @@ final class JProgressBarMaximumQuery {
   @RunsInEDT
   static int maximumOf(final JProgressBar progressBar) {
     return execute(new GuiQuery<Integer>() {
+      @Override
       protected Integer executeInEDT() {
         return progressBar.getMaximum();
       }

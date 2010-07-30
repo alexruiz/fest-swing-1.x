@@ -30,7 +30,7 @@ import org.fest.swing.test.core.RobotBasedTestCase;
 import org.fest.swing.test.swing.TestWindow;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
+import org.junit.runners.*;
 import org.junit.runners.Parameterized.Parameters;
 
 /**
@@ -42,7 +42,7 @@ import org.junit.runners.Parameterized.Parameters;
 public class JSliderSetValueTask_setValue_Test extends RobotBasedTestCase {
 
   private JSlider slider;
-  
+
   private final int value;
 
   @Parameters
@@ -53,7 +53,7 @@ public class JSliderSetValueTask_setValue_Test extends RobotBasedTestCase {
   public JSliderSetValueTask_setValue_Test(int value) {
     this.value = value;
   }
-  
+
   @Override protected void onSetUp() {
     MyWindow window = MyWindow.createNew();
     slider = window.slider;
@@ -74,6 +74,7 @@ public class JSliderSetValueTask_setValue_Test extends RobotBasedTestCase {
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
+        @Override
         protected MyWindow executeInEDT() {
           return new MyWindow();
         }

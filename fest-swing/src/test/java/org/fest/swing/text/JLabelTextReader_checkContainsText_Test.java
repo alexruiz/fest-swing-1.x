@@ -23,8 +23,7 @@ import javax.swing.JLabel;
 
 import org.fest.mocks.EasyMockTemplate;
 import org.fest.swing.test.core.EDTSafeTestCase;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Tests for <code>{@link JLabelTextReader#checkContainsText(JLabel, String)}</code>.

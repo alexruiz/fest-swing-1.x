@@ -15,15 +15,13 @@
  */
 package org.fest.swing.fixture;
 
-import static org.easymock.EasyMock.expect;
-import static org.easymock.EasyMock.expectLastCall;
+import static org.easymock.EasyMock.*;
 import static org.easymock.classextension.EasyMock.createMock;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.core.MouseButton.LEFT_BUTTON;
 import static org.fest.swing.test.builder.JPopupMenus.popupMenu;
 import static org.fest.swing.test.core.Regex.regex;
-import static org.fest.swing.util.Range.from;
-import static org.fest.swing.util.Range.to;
+import static org.fest.swing.util.Range.*;
 import static org.fest.util.Arrays.array;
 
 import java.util.regex.Pattern;
@@ -50,10 +48,12 @@ public class JListFixtureTest extends JListFixture_TestCase {
   public void shouldReturnContents() {
     final String[] contents = array("Luke", "Leia");
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         expect(driver().contentsOf(target())).andReturn(contents);
       }
 
+      @Override
       protected void codeToTest() {
         Object[] result = fixture().contents();
         assertThat(result).isSameAs(contents);
@@ -65,10 +65,12 @@ public class JListFixtureTest extends JListFixture_TestCase {
   public void shouldReturnSelection() {
     final String[] selection = array("Luke", "Leia");
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         expect(driver().selectionOf(target())).andReturn(selection);
       }
 
+      @Override
       protected void codeToTest() {
         Object[] result = fixture().selection();
         assertThat(result).isSameAs(selection);
@@ -79,11 +81,13 @@ public class JListFixtureTest extends JListFixture_TestCase {
   @Test
   public void shouldClearSelection() {
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().clearSelection(target());
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().clearSelection());
       }
@@ -95,11 +99,13 @@ public class JListFixtureTest extends JListFixture_TestCase {
     final From from = from(6);
     final To to = to(8);
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().selectItems(target(), from, to);
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().selectItems(from, to));
       }
@@ -110,11 +116,13 @@ public class JListFixtureTest extends JListFixture_TestCase {
   public void shouldSelectItemsUnderIndices() {
     final int[] indices = new int[] { 6, 8 };
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().selectItems(target(), indices);
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().selectItems(indices));
       }
@@ -124,11 +132,13 @@ public class JListFixtureTest extends JListFixture_TestCase {
   @Test
   public void shouldSelectItemUnderIndex() {
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().selectItem(target(), 6);
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().selectItem(6));
       }
@@ -139,11 +149,13 @@ public class JListFixtureTest extends JListFixture_TestCase {
   public void shouldSelectItemsWithValues() {
     final String[] values = array("Frodo", "Sam");
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().selectItems(target(), values);
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().selectItems(values));
       }
@@ -154,11 +166,13 @@ public class JListFixtureTest extends JListFixture_TestCase {
   public void shouldSelectItemsMatchingPatterns() {
     final Pattern[] patterns = array(regex("Frodo"), regex("Sam"));
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().selectItems(target(), patterns);
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().selectItems(patterns));
       }
@@ -168,11 +182,13 @@ public class JListFixtureTest extends JListFixture_TestCase {
   @Test
   public void shouldSelectItemWithValue() {
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().selectItem(target(), "Frodo");
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().selectItem("Frodo"));
       }
@@ -183,11 +199,13 @@ public class JListFixtureTest extends JListFixture_TestCase {
   public void shouldSelectItemMatchingPattern() {
     final Pattern pattern = regex("Hello");
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().selectItem(target(), pattern);
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().selectItem(pattern));
       }
@@ -197,11 +215,13 @@ public class JListFixtureTest extends JListFixture_TestCase {
   @Deprecated
   public void shouldDoubleClickItemUnderIndex() {
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().clickItem(target(), 6, LEFT_BUTTON, 2);
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().doubleClickItem(6));
       }
@@ -211,11 +231,13 @@ public class JListFixtureTest extends JListFixture_TestCase {
   @Deprecated
   public void shouldDoubleClickItemWithValue() {
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().clickItem(target(), "Frodo", LEFT_BUTTON, 2);
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().doubleClickItem("Frodo"));
       }
@@ -225,11 +247,13 @@ public class JListFixtureTest extends JListFixture_TestCase {
   @Test
   public void shouldRequireSelectionValue() {
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().requireSelection(target(), "Frodo");
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().requireSelection("Frodo"));
       }
@@ -240,11 +264,13 @@ public class JListFixtureTest extends JListFixture_TestCase {
   public void shouldRequireSelectionMatchingPattern() {
     final Pattern p = regex("hello");
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().requireSelection(target(), p);
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().requireSelection(p));
       }
@@ -254,11 +280,13 @@ public class JListFixtureTest extends JListFixture_TestCase {
   @Test
   public void shouldRequireSelectionIndex() {
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().requireSelection(target(), 6);
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().requireSelection(6));
       }
@@ -269,11 +297,13 @@ public class JListFixtureTest extends JListFixture_TestCase {
   public void shouldRequireSelectedItems() {
     final String[] items = array("Frodo", "Sam");
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().requireSelectedItems(target(), items);
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().requireSelectedItems(items));
       }
@@ -284,11 +314,13 @@ public class JListFixtureTest extends JListFixture_TestCase {
   public void shouldRequireSelectedItemsToMatchPatterns() {
     final Pattern[] patterns = array(regex("Frodo"), regex("Sam"));
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().requireSelectedItems(target(), patterns);
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().requireSelectedItems(patterns));
       }
@@ -299,11 +331,13 @@ public class JListFixtureTest extends JListFixture_TestCase {
   public void shouldRequireSelectedIndices() {
     final int[] items = { 0, 1 };
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().requireSelectedItems(target(), items);
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().requireSelectedItems(items));
       }
@@ -313,11 +347,13 @@ public class JListFixtureTest extends JListFixture_TestCase {
   @Test
   public void shouldRequireNoSelection() {
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().requireNoSelection(target());
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().requireNoSelection());
       }
@@ -327,10 +363,12 @@ public class JListFixtureTest extends JListFixture_TestCase {
   @Test
   public void shouldReturnValueAtIndex() {
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         expect(driver().value(target(), 6)).andReturn("Frodo");
       }
 
+      @Override
       protected void codeToTest() {
         assertThat(fixture().valueAt(6)).isEqualTo("Frodo");
       }
@@ -347,10 +385,12 @@ public class JListFixtureTest extends JListFixture_TestCase {
   @Test
   public void shouldReturnJListItemFixtureUsingValue() {
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         expect(driver().indexOf(target(), "Frodo")).andReturn(8);
       }
 
+      @Override
       protected void codeToTest() {
         JListItemFixture item = fixture().item("Frodo");
         assertThat(item.index).isEqualTo(8);
@@ -363,10 +403,12 @@ public class JListFixtureTest extends JListFixture_TestCase {
   public void shouldReturnJListItemFixtureWithItemMatchingPatternAsString() {
     final Pattern pattern = regex("Frodo");
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         expect(driver().indexOf(target(), pattern)).andReturn(8);
       }
 
+      @Override
       protected void codeToTest() {
         JListItemFixture item = fixture().item(pattern);
         assertThat(item.index).isEqualTo(8);
@@ -378,11 +420,13 @@ public class JListFixtureTest extends JListFixture_TestCase {
   @Test
   public void shouldDragElementMatchingValue() {
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().drag(target(), "Frodo");
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().drag("Frodo"));
       }
@@ -393,11 +437,13 @@ public class JListFixtureTest extends JListFixture_TestCase {
   public void shouldDragElementMatchingPattern() {
     final Pattern p = regex("Frodo");
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().drag(target(), p);
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().drag(p));
       }
@@ -407,11 +453,13 @@ public class JListFixtureTest extends JListFixture_TestCase {
   @Test
   public void shouldDropElementMatchingValue() {
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().drop(target(), "Frodo");
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().drop("Frodo"));
       }
@@ -422,11 +470,13 @@ public class JListFixtureTest extends JListFixture_TestCase {
   public void shouldDropElementMatchingPattern() {
     final Pattern p = regex("Frodo");
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().drop(target(), p);
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().drop(p));
       }
@@ -436,11 +486,13 @@ public class JListFixtureTest extends JListFixture_TestCase {
   @Test
   public void shouldDragElementUnderIndex() {
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().drag(target(), 8);
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().drag(8));
       }
@@ -450,11 +502,13 @@ public class JListFixtureTest extends JListFixture_TestCase {
   @Test
   public void shouldDrop() {
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().drop(target());
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().drop());
       }
@@ -464,11 +518,13 @@ public class JListFixtureTest extends JListFixture_TestCase {
   @Test
   public void shouldDropElementUnderIndex() {
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().drop(target(), 8);
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().drop(8));
       }
@@ -479,10 +535,12 @@ public class JListFixtureTest extends JListFixture_TestCase {
   public void shouldShowJPopupMenuAtItemUnderIndex() {
     final JPopupMenu popup = popupMenu().createNew();
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         expect(driver().showPopupMenu(target(), 6)).andReturn(popup);
       }
 
+      @Override
       protected void codeToTest() {
         JPopupMenuFixture result = fixture().showPopupMenuAt(6);
         assertThat(result.component()).isSameAs(popup);
@@ -494,10 +552,12 @@ public class JListFixtureTest extends JListFixture_TestCase {
   public void shouldShowJPopupMenuAtItemWithValue() {
     final JPopupMenu popup = popupMenu().createNew();
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         expect(driver().showPopupMenu(target(), "Frodo")).andReturn(popup);
       }
 
+      @Override
       protected void codeToTest() {
         JPopupMenuFixture result = fixture().showPopupMenuAt("Frodo");
         assertThat(result.component()).isSameAs(popup);
@@ -510,10 +570,12 @@ public class JListFixtureTest extends JListFixture_TestCase {
     final Pattern pattern = regex("Frodo");
     final JPopupMenu popup = popupMenu().createNew();
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         expect(driver().showPopupMenu(target(), pattern)).andReturn(popup);
       }
 
+      @Override
       protected void codeToTest() {
         JPopupMenuFixture result = fixture().showPopupMenuAt(pattern);
         assertThat(result.component()).isSameAs(popup);
@@ -525,11 +587,13 @@ public class JListFixtureTest extends JListFixture_TestCase {
   public void shouldSetCellReaderInDriver() {
     final JListCellReader reader = createMock(JListCellReader.class);
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().cellReader(reader);
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().cellReader(reader));
       }

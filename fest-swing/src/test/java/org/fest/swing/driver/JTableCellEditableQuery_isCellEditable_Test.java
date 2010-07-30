@@ -27,11 +27,10 @@ import javax.swing.JTable;
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
 import org.fest.swing.test.core.RobotBasedTestCase;
-import org.fest.swing.test.swing.TableRenderDemo;
-import org.fest.swing.test.swing.TestWindow;
+import org.fest.swing.test.swing.*;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
+import org.junit.runners.*;
 import org.junit.runners.Parameterized.Parameters;
 
 /**
@@ -44,18 +43,18 @@ import org.junit.runners.Parameterized.Parameters;
 public class JTableCellEditableQuery_isCellEditable_Test extends RobotBasedTestCase {
 
   private JTable table;
-  
+
   private final int column;
   private final boolean editable;
 
   @Parameters
   public static Collection<Object[]> cells() {
     return list(new Object[][] {
-        { 0, false },  
-        { 1, false },  
-        { 2, true },  
-        { 3, true },  
-        { 4, true },  
+        { 0, false },
+        { 1, false },
+        { 2, true },
+        { 3, true },
+        { 4, true },
     });
   }
 
@@ -63,7 +62,7 @@ public class JTableCellEditableQuery_isCellEditable_Test extends RobotBasedTestC
     this.column = column;
     this.editable = editable;
   }
-  
+
   @Override protected void onSetUp() {
     MyWindow window = MyWindow.createNew();
     table = window.table;
@@ -78,12 +77,13 @@ public class JTableCellEditableQuery_isCellEditable_Test extends RobotBasedTestC
   @RunsInEDT
   private static boolean isCellEditable(final JTable table, final int row, final int column) {
     return execute(new GuiQuery<Boolean>() {
+      @Override
       protected Boolean executeInEDT() {
         return JTableCellEditableQuery.isCellEditable(table, row(row).column(column));
       }
     });
   }
-  
+
   private static class MyWindow extends TestWindow {
     private static final long serialVersionUID = 1L;
 
@@ -92,6 +92,7 @@ public class JTableCellEditableQuery_isCellEditable_Test extends RobotBasedTestC
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
+        @Override
         protected MyWindow executeInEDT() {
           return new MyWindow();
         }

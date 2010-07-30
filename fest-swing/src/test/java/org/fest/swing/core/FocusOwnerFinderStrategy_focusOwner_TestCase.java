@@ -19,17 +19,14 @@ import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.edt.GuiActionRunner.execute;
 import static org.fest.swing.test.task.ComponentRequestFocusAndWaitForFocusGainTask.giveFocusAndWaitTillIsFocused;
 
-import java.awt.Component;
-import java.awt.Frame;
+import java.awt.*;
 
-import javax.swing.JButton;
-import javax.swing.JTextField;
+import javax.swing.*;
 
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
 import org.fest.swing.test.core.SequentialEDTSafeTestCase;
-import org.fest.swing.test.swing.TestDialog;
-import org.fest.swing.test.swing.TestWindow;
+import org.fest.swing.test.swing.*;
 import org.junit.Test;
 
 /**
@@ -43,6 +40,7 @@ public abstract class FocusOwnerFinderStrategy_focusOwner_TestCase extends Seque
   private JTextField textField;
   private FocusOwnerFinderStrategy finder;
 
+  @Override
   protected final void onSetUp() {
     window = MyWindow.createAndShow(getClass());
     textField = window.textBox;
@@ -51,6 +49,7 @@ public abstract class FocusOwnerFinderStrategy_focusOwner_TestCase extends Seque
 
   protected abstract FocusOwnerFinderStrategy createStrategyToTest();
 
+  @Override
   public final void onTearDown() {
     window.destroy();
   }
@@ -59,6 +58,7 @@ public abstract class FocusOwnerFinderStrategy_focusOwner_TestCase extends Seque
   public final void should_find_focus_owner() {
     giveFocusAndWaitTillIsFocused(textField);
     Component focusOwner = execute(new GuiQuery<Component>() {
+      @Override
       protected Component executeInEDT() {
         return finder.focusOwner();
       }
@@ -86,6 +86,7 @@ public abstract class FocusOwnerFinderStrategy_focusOwner_TestCase extends Seque
     @RunsInEDT
     static MyDialog createAndShow(final Frame owner) {
       return execute(new GuiQuery<MyDialog>() {
+        @Override
         protected MyDialog executeInEDT() {
           MyDialog dialog = new MyDialog(owner);
           dialog.displayInCurrentThread();
@@ -112,6 +113,7 @@ public abstract class FocusOwnerFinderStrategy_focusOwner_TestCase extends Seque
     @RunsInEDT
     static MyWindow createAndShow(final Class<?> testClass) {
       return execute(new GuiQuery<MyWindow>() {
+        @Override
         protected MyWindow executeInEDT() {
           return display(new MyWindow(testClass));
         }

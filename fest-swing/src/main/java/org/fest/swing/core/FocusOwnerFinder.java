@@ -19,11 +19,9 @@ import static org.fest.swing.edt.GuiActionRunner.execute;
 import static org.fest.util.Collections.list;
 
 import java.awt.Component;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
-import org.fest.swing.annotation.RunsInCurrentThread;
-import org.fest.swing.annotation.RunsInEDT;
+import org.fest.swing.annotation.*;
 import org.fest.swing.edt.GuiQuery;
 import org.fest.util.VisibleForTesting;
 
@@ -64,6 +62,7 @@ public final class FocusOwnerFinder {
   @RunsInEDT
   public static Component inEdtFocusOwner() {
     return execute(new GuiQuery<Component>() {
+      @Override
       protected Component executeInEDT() {
         return focusOwner();
       }

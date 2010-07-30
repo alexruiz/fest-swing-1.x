@@ -17,19 +17,16 @@ package org.fest.swing.driver;
 
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.edt.GuiActionRunner.execute;
-import static org.fest.swing.test.core.CommonAssertions.assertThatErrorCauseIsNotShowingComponent;
-import static org.fest.swing.test.core.CommonAssertions.failWhenExpectingException;
+import static org.fest.swing.test.core.CommonAssertions.*;
 import static org.fest.util.Arrays.array;
-import static org.fest.util.Files.newTemporaryFile;
-import static org.fest.util.Files.newTemporaryFolder;
+import static org.fest.util.Files.*;
 
 import java.io.File;
 
 import javax.swing.JFileChooser;
 
 import org.fest.swing.annotation.RunsInEDT;
-import org.fest.swing.edt.GuiQuery;
-import org.fest.swing.edt.GuiTask;
+import org.fest.swing.edt.*;
 import org.junit.Test;
 
 /**
@@ -139,6 +136,7 @@ public class JFileChooserDriver_selectFiles_Test extends JFileChooserDriver_Test
   @RunsInEDT
   private static void setMultipleSelectionEnabled(final JFileChooser fileChooser, final boolean b) {
     execute(new GuiTask() {
+      @Override
       protected void executeInEDT() {
         fileChooser.setMultiSelectionEnabled(b);
       }
@@ -148,6 +146,7 @@ public class JFileChooserDriver_selectFiles_Test extends JFileChooserDriver_Test
   @RunsInEDT
   private static File[] selectedFilesIn(final JFileChooser fileChooser) {
     return execute(new GuiQuery<File[]>() {
+      @Override
       protected File[] executeInEDT() {
         return fileChooser.getSelectedFiles();
       }

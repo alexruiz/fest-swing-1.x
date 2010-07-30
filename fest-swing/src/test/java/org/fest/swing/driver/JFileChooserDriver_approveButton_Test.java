@@ -19,8 +19,7 @@ import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.driver.AbstractButtonTextQuery.textOf;
 import static org.fest.util.Strings.isEmpty;
 
-import javax.swing.JButton;
-import javax.swing.JFileChooser;
+import javax.swing.*;
 
 import org.junit.Test;
 

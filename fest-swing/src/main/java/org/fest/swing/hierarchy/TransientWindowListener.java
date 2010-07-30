@@ -17,8 +17,7 @@ package org.fest.swing.hierarchy;
 import static javax.swing.SwingUtilities.invokeLater;
 import static org.fest.swing.util.AWTEvents.*;
 
-import java.awt.AWTEvent;
-import java.awt.Window;
+import java.awt.*;
 import java.awt.event.AWTEventListener;
 
 import org.fest.swing.annotation.RunsInEDT;

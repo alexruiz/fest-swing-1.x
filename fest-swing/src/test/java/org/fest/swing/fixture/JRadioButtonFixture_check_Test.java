@@ -31,11 +31,13 @@ public class JRadioButtonFixture_check_Test extends JRadioButtonFixture_TestCase
   @Test
   public void should_check_JRadioButton() {
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().select(target());
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().check());
       }

@@ -15,15 +15,13 @@
  */
 package org.fest.swing.edt;
 
-import static javax.swing.SwingUtilities.invokeLater;
-import static javax.swing.SwingUtilities.isEventDispatchThread;
-import static org.fest.util.Throwables.appendCurrentThreadStackTraceToThrowable;
+import static javax.swing.SwingUtilities.*;
 import static org.fest.swing.exception.UnexpectedException.unexpected;
+import static org.fest.util.Throwables.appendCurrentThreadStackTraceToThrowable;
 
 import java.util.concurrent.CountDownLatch;
 
-import net.jcip.annotations.GuardedBy;
-import net.jcip.annotations.ThreadSafe;
+import net.jcip.annotations.*;
 
 import org.fest.swing.exception.UnexpectedException;
 

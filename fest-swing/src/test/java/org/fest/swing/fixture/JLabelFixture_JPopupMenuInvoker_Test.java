@@ -42,13 +42,17 @@ public class JLabelFixture_JPopupMenuInvoker_Test extends JPopupMenuInvokerFixtu
     target = label().createNew();
   }
 
+  @Override
   void onSetUp() {
     driver = createMock(JLabelDriver.class);
     fixture = new JLabelFixture(robot(), target);
     fixture.driver(driver);
   }
 
+  @Override
   JLabelDriver driver() {  return driver; }
+  @Override
   JLabel target() { return target; }
+  @Override
   JLabelFixture fixture() { return fixture; }
 }

@@ -16,8 +16,7 @@ package org.fest.swing.fixture;
 
 import static org.fest.swing.edt.GuiActionRunner.execute;
 
-import java.awt.Container;
-import java.awt.Frame;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 
 import javax.swing.*;
@@ -68,6 +67,7 @@ public class Bug76_JOptionPaneLookup_Test extends RobotBasedTestCase {
     @RunsInEDT
     static JOptionPaneStarter createNew(final String message) {
       return execute(new GuiQuery<JOptionPaneStarter>() {
+        @Override
         protected JOptionPaneStarter executeInEDT() {
           return new JOptionPaneStarter(message);
         }

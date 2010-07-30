@@ -17,10 +17,8 @@ package org.fest.swing.fixture;
 
 import javax.swing.JTree;
 
-import org.fest.swing.core.MouseButton;
-import org.fest.swing.core.MouseClickInfo;
-import org.fest.swing.exception.ActionFailedException;
-import org.fest.swing.exception.ComponentLookupException;
+import org.fest.swing.core.*;
+import org.fest.swing.exception.*;
 
 /**
  * Understands functional testing of single nodes, referenced by their row indices, in <code>{@link JTree}</code>s:

@@ -22,8 +22,7 @@ import static org.fest.swing.test.core.CommonAssertions.failWhenExpectingExcepti
 import javax.swing.JInternalFrame;
 
 import org.fest.swing.annotation.RunsInEDT;
-import org.fest.swing.edt.GuiQuery;
-import org.fest.swing.edt.GuiTask;
+import org.fest.swing.edt.*;
 import org.junit.Test;
 
 /**
@@ -44,6 +43,7 @@ public class JInternalFrameDriver_close_Test extends JInternalFrameDriver_TestCa
   @RunsInEDT
   private static boolean isClosed(final JInternalFrame internalFrame) {
     return execute(new GuiQuery<Boolean>() {
+      @Override
       protected Boolean executeInEDT() {
         return internalFrame.isClosed();
       }
@@ -72,6 +72,7 @@ public class JInternalFrameDriver_close_Test extends JInternalFrameDriver_TestCa
   @RunsInEDT
   private static void setClosable(final JInternalFrame internalFrame, boolean closeable) {
     execute(new GuiTask() {
+      @Override
       protected void executeInEDT() {
         internalFrame.setClosable(false);
       }

@@ -19,7 +19,7 @@ package org.fest.swing.util;
  * Understands a tuple of size 3.
  * @param <I> the generic type of the 1st. value in this tuple.
  * @param <II> the generic type of the 2nd. value in this tuple.
- * @param <III> the generic type of the 3rd. value in this tuple. 
+ * @param <III> the generic type of the 3rd. value in this tuple.
  *
  * @author Alex Ruiz
  */

@@ -20,7 +20,6 @@ import static java.awt.event.KeyEvent.*;
 import static java.util.Collections.unmodifiableList;
 import static org.fest.swing.keystroke.KeyStrokeMapping.mapping;
 
-
 import java.util.*;
 
 import javax.swing.KeyStroke;
@@ -56,7 +55,7 @@ public class KeyStrokeMappingProvider_mac_fr_FR implements KeyStrokeMappingProvi
     mappings.add(mapping('\r', VK_ENTER, NO_MASK));
     mappings.add(mapping('&', VK_1, NO_MASK));
     mappings.add(mapping('1', VK_1, SHIFT_MASK));
-    mappings.add(mapping('é', VK_2, NO_MASK));
+    mappings.add(mapping('ÔøΩ', VK_2, NO_MASK));
     mappings.add(mapping('2', VK_2, SHIFT_MASK));
     mappings.add(mapping('"', VK_3, NO_MASK));
     mappings.add(mapping('3', VK_3, SHIFT_MASK));
@@ -64,18 +63,18 @@ public class KeyStrokeMappingProvider_mac_fr_FR implements KeyStrokeMappingProvi
     mappings.add(mapping('4', VK_4, SHIFT_MASK));
     mappings.add(mapping('(', VK_5, NO_MASK));
     mappings.add(mapping('5', VK_5, SHIFT_MASK));
-    mappings.add(mapping('§', VK_6, NO_MASK));
+    mappings.add(mapping('ÔøΩ', VK_6, NO_MASK));
     mappings.add(mapping('6', VK_6, SHIFT_MASK));
-    mappings.add(mapping('è', VK_7, NO_MASK));
+    mappings.add(mapping('ÔøΩ', VK_7, NO_MASK));
     mappings.add(mapping('7', VK_7, SHIFT_MASK));
     mappings.add(mapping('!', VK_8, NO_MASK));
     mappings.add(mapping('8', VK_8, SHIFT_MASK));
-    mappings.add(mapping('ç', VK_9, NO_MASK));
+    mappings.add(mapping('ÔøΩ', VK_9, NO_MASK));
     mappings.add(mapping('9', VK_9, SHIFT_MASK));
-    mappings.add(mapping('à', VK_0, NO_MASK));
+    mappings.add(mapping('ÔøΩ', VK_0, NO_MASK));
     mappings.add(mapping('0', VK_0, SHIFT_MASK));
     mappings.add(mapping(')', VK_MINUS, NO_MASK));
-    mappings.add(mapping('°', VK_MINUS, SHIFT_MASK));
+    mappings.add(mapping('ÔøΩ', VK_MINUS, SHIFT_MASK));
     mappings.add(mapping('-', VK_EQUALS, NO_MASK));
     mappings.add(mapping('_', VK_EQUALS, SHIFT_MASK));
     mappings.add(mapping('=', VK_SLASH, NO_MASK));

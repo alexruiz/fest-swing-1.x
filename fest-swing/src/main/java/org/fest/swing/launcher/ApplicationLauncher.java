@@ -17,8 +17,7 @@ package org.fest.swing.launcher;
 
 import static org.fest.reflect.core.Reflection.staticMethod;
 import static org.fest.swing.util.Arrays.copyOf;
-import static org.fest.util.Strings.concat;
-import static org.fest.util.Strings.quote;
+import static org.fest.util.Strings.*;
 
 import org.fest.reflect.exception.ReflectionError;
 import org.fest.swing.exception.UnexpectedException;

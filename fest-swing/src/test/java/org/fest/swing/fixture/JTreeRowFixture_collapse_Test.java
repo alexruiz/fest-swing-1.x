@@ -30,10 +30,12 @@ public class JTreeRowFixture_collapse_Test extends JTreeRowFixture_withMockTree_
   @Test
   public void should_collapse_node() {
     new EasyMockTemplate(tree) {
+      @Override
       protected void expectations() {
         expect(tree.collapseRow(row)).andReturn(tree);
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture.collapse());
       }

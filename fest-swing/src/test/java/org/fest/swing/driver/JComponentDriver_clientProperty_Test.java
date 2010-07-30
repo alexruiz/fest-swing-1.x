@@ -50,6 +50,7 @@ public class JComponentDriver_clientProperty_Test extends JComponentDriver_TestC
   @RunsInEDT
   private static void putClientProperty(final JComponent c, final Object key, final Object value) {
     execute(new GuiTask() {
+      @Override
       protected void executeInEDT() {
         c.putClientProperty(key, value);
       }

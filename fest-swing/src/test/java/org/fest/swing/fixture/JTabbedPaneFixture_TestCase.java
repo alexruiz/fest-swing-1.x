@@ -41,13 +41,17 @@ public abstract class JTabbedPaneFixture_TestCase extends ComponentFixture_Imple
     target = tabbedPane().createNew();
   }
 
+  @Override
   final void onSetUp() {
     driver = createMock(JTabbedPaneDriver.class);
     fixture = new JTabbedPaneFixture(robot(), target);
     fixture.driver(driver);
   }
 
+  @Override
   final JTabbedPaneDriver driver() {  return driver; }
+  @Override
   final JTabbedPane target() { return target; }
+  @Override
   final JTabbedPaneFixture fixture() { return fixture; }
 }

@@ -42,13 +42,17 @@ public class JFileChooserFixture_focusable_Test extends FocusableComponentFixtur
     target = fileChooser().createNew();
   }
 
+  @Override
   void onSetUp() {
     driver = createMock(JFileChooserDriver.class);
     fixture = new JFileChooserFixture(robot(), target);
     fixture.driver(driver);
   }
 
+  @Override
   JFileChooserDriver driver() {  return driver; }
+  @Override
   JFileChooser target() { return target; }
+  @Override
   JFileChooserFixture fixture() { return fixture; }
 }

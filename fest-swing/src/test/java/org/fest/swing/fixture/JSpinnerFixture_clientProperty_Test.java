@@ -42,13 +42,17 @@ public class JSpinnerFixture_clientProperty_Test extends ClientPropertyStorageFi
     target = spinner().createNew();
   }
 
+  @Override
   void onSetUp() {
     driver = createMock(JSpinnerDriver.class);
     fixture = new JSpinnerFixture(robot(), target);
     fixture.driver(driver);
   }
 
+  @Override
   JSpinnerDriver driver() {  return driver; }
+  @Override
   JSpinner target() { return target; }
+  @Override
   JSpinnerFixture fixture() { return fixture; }
 }

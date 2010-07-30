@@ -25,8 +25,7 @@ import javax.swing.JDialog;
 
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiTask;
-import org.fest.swing.test.swing.TestDialog;
-import org.fest.swing.test.swing.TestWindow;
+import org.fest.swing.test.swing.*;
 import org.junit.Test;
 
 /**
@@ -67,6 +66,7 @@ public class WindowFilter_ignore_Test extends WindowFilter_TestCase {
   @RunsInEDT
   private static void ignore(final WindowFilter filter, final Component c) {
     execute(new GuiTask() {
+      @Override
       protected void executeInEDT() {
         filter.ignore(c);
       }

@@ -55,6 +55,7 @@ public class ContainerComponentsQuery_componentsOf_Test extends SequentialEDTSaf
   @RunsInEDT
   private static List<Component> componentsOf(final MyWindow window) {
     return execute(new GuiQuery<List<Component>>() {
+      @Override
       protected List<Component> executeInEDT() {
         return ContainerComponentsQuery.componentsOf(window.getContentPane());
       }
@@ -69,6 +70,7 @@ public class ContainerComponentsQuery_componentsOf_Test extends SequentialEDTSaf
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
+        @Override
         protected MyWindow executeInEDT() {
           return new MyWindow();
         }

@@ -42,13 +42,17 @@ public class JComboBoxFixture_toolTip_Test extends ToolTipDisplayFixture_TestCas
     target = comboBox().createNew();
   }
 
+  @Override
   void onSetUp() {
     driver = createMock(JComboBoxDriver.class);
     fixture = new JComboBoxFixture(robot(), target);
     fixture.driver(driver);
   }
 
+  @Override
   JComboBoxDriver driver() {  return driver; }
+  @Override
   JComboBox target() { return target; }
+  @Override
   JComboBoxFixture fixture() { return fixture; }
 }

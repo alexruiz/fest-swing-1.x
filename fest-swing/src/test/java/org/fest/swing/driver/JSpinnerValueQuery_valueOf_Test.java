@@ -18,13 +18,11 @@ package org.fest.swing.driver;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.edt.GuiActionRunner.execute;
 
-import javax.swing.JSpinner;
-import javax.swing.SpinnerListModel;
+import javax.swing.*;
 
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
-import org.fest.swing.test.core.MethodInvocations;
-import org.fest.swing.test.core.RobotBasedTestCase;
+import org.fest.swing.test.core.*;
 import org.fest.swing.test.swing.TestWindow;
 import org.junit.Test;
 
@@ -58,6 +56,7 @@ public class JSpinnerValueQuery_valueOf_Test extends RobotBasedTestCase {
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
+        @Override
         protected MyWindow executeInEDT() {
           return new MyWindow();
         }

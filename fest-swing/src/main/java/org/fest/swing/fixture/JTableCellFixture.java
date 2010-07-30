@@ -15,22 +15,18 @@
  */
 package org.fest.swing.fixture;
 
-import static org.fest.swing.core.MouseButton.LEFT_BUTTON;
-import static org.fest.swing.core.MouseButton.RIGHT_BUTTON;
+import static org.fest.swing.core.MouseButton.*;
 
 import java.awt.Component;
 import java.util.regex.Pattern;
 
 import javax.swing.JTable;
 
-import org.fest.swing.cell.JTableCellReader;
-import org.fest.swing.cell.JTableCellWriter;
-import org.fest.swing.core.MouseButton;
-import org.fest.swing.core.MouseClickInfo;
+import org.fest.swing.cell.*;
+import org.fest.swing.core.*;
 import org.fest.swing.data.TableCell;
 import org.fest.swing.driver.JTableDriver;
-import org.fest.swing.exception.ActionFailedException;
-import org.fest.swing.exception.ComponentLookupException;
+import org.fest.swing.exception.*;
 
 /**
  * Understands functional testing of single cells in <code>{@link JTable}</code>s:

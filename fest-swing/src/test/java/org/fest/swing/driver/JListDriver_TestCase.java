@@ -20,19 +20,14 @@ import static org.fest.swing.driver.JListSetSelectedIndexTask.setSelectedIndex;
 import static org.fest.swing.edt.GuiActionRunner.execute;
 import static org.fest.swing.test.task.ComponentSetEnabledTask.disable;
 
-import java.awt.Dimension;
-import java.awt.Point;
+import java.awt.*;
 
-import javax.swing.JList;
-import javax.swing.JScrollPane;
+import javax.swing.*;
 
 import org.fest.swing.annotation.RunsInEDT;
-import org.fest.swing.edt.GuiQuery;
-import org.fest.swing.edt.GuiTask;
-import org.fest.swing.test.core.MethodInvocations;
-import org.fest.swing.test.core.RobotBasedTestCase;
-import org.fest.swing.test.swing.TestList;
-import org.fest.swing.test.swing.TestWindow;
+import org.fest.swing.edt.*;
+import org.fest.swing.test.core.*;
+import org.fest.swing.test.swing.*;
 
 /**
  * Base test case for <code>{@link JListDriver}</code>.
@@ -90,6 +85,7 @@ public abstract class JListDriver_TestCase extends RobotBasedTestCase {
   @RunsInEDT
   private static int locationToIndex(final JList list, final Point p) {
     return execute(new GuiQuery<Integer>() {
+      @Override
       protected Integer executeInEDT() {
         return list.locationToIndex(p);
       }
@@ -104,6 +100,7 @@ public abstract class JListDriver_TestCase extends RobotBasedTestCase {
   @RunsInEDT
   private static Object selectedValue(final JList list) {
     return execute(new GuiQuery<Object>() {
+      @Override
       protected Object executeInEDT() {
         return list.getSelectedValue();
       }
@@ -118,6 +115,7 @@ public abstract class JListDriver_TestCase extends RobotBasedTestCase {
   @RunsInEDT
   private static Object[] selectedValues(final JList list) {
     return execute(new GuiQuery<Object[]>() {
+      @Override
       protected Object[] executeInEDT() {
         return list.getSelectedValues();
       }
@@ -138,6 +136,7 @@ public abstract class JListDriver_TestCase extends RobotBasedTestCase {
   @RunsInEDT
   private static void setSelectedIndices(final JList list, final int... indices) {
     execute(new GuiTask() {
+      @Override
       protected void executeInEDT() {
         list.setSelectionMode(MULTIPLE_INTERVAL_SELECTION);
         list.setSelectedIndices(indices);
@@ -154,6 +153,7 @@ public abstract class JListDriver_TestCase extends RobotBasedTestCase {
     @RunsInEDT
     static MyWindow createNew(final Class<?> testClass) {
       return execute(new GuiQuery<MyWindow>() {
+        @Override
         protected MyWindow executeInEDT() {
           return new MyWindow(testClass);
         }

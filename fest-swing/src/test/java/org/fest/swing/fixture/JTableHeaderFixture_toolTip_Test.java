@@ -17,9 +17,10 @@ package org.fest.swing.fixture;
 
 import static org.easymock.classextension.EasyMock.createMock;
 import static org.fest.swing.test.builder.JTableHeaders.tableHeader;
+
 import javax.swing.table.JTableHeader;
 
-import org.fest.swing.driver.*;
+import org.fest.swing.driver.JTableHeaderDriver;
 import org.junit.BeforeClass;
 
 /**
@@ -41,13 +42,17 @@ public class JTableHeaderFixture_toolTip_Test extends ToolTipDisplayFixture_Test
     target = tableHeader().createNew();
   }
 
+  @Override
   void onSetUp() {
     driver = createMock(JTableHeaderDriver.class);
     fixture = new JTableHeaderFixture(robot(), target);
     fixture.driver(driver);
   }
 
+  @Override
   JTableHeaderDriver driver() {  return driver; }
+  @Override
   JTableHeader target() { return target; }
+  @Override
   JTableHeaderFixture fixture() { return fixture; }
 }

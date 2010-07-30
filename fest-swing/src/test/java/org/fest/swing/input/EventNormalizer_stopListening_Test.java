@@ -18,8 +18,7 @@ package org.fest.swing.input;
 import static org.fest.swing.test.awt.Toolkits.newToolkitStub;
 
 import org.fest.swing.test.awt.ToolkitStub;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Tests for <code>{@link EventNormalizer#stopListening()}</code>.

@@ -17,11 +17,9 @@ package org.fest.swing.fixture;
 
 import javax.swing.JMenuItem;
 
-import org.fest.swing.core.KeyPressInfo;
-import org.fest.swing.core.Robot;
+import org.fest.swing.core.*;
 import org.fest.swing.driver.JMenuItemDriver;
-import org.fest.swing.exception.ActionFailedException;
-import org.fest.swing.exception.ComponentLookupException;
+import org.fest.swing.exception.*;
 import org.fest.swing.timing.Timeout;
 
 /**

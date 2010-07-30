@@ -21,8 +21,7 @@ import java.awt.Frame;
 
 import javax.swing.JDialog;
 
-import org.fest.swing.annotation.RunsInCurrentThread;
-import org.fest.swing.annotation.RunsInEDT;
+import org.fest.swing.annotation.*;
 import org.fest.swing.edt.GuiQuery;
 
 /**
@@ -58,7 +57,7 @@ public final class JDialogs {
       title = newTitle;
       return this;
     }
-    
+
     public JDialogFactory resizable(boolean shouldBeResizable) {
       resizable  = shouldBeResizable;
       return this;
@@ -67,6 +66,7 @@ public final class JDialogs {
     @RunsInEDT
     public JDialog createNew() {
       return execute(new GuiQuery<JDialog>() {
+        @Override
         protected JDialog executeInEDT() {
           return create();
         }
@@ -76,6 +76,7 @@ public final class JDialogs {
     @RunsInEDT
     public JDialog createAndShow() {
       return execute(new GuiQuery<JDialog>() {
+        @Override
         protected JDialog executeInEDT() {
           JDialog dialog = create();
           dialog.pack();

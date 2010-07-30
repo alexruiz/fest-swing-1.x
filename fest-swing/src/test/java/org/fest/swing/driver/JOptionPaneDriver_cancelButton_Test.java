@@ -16,8 +16,7 @@ package org.fest.swing.driver;
 
 import static org.fest.swing.test.swing.JOptionPaneLauncher.launch;
 
-import javax.swing.JButton;
-import javax.swing.JOptionPane;
+import javax.swing.*;
 
 import org.junit.Test;
 

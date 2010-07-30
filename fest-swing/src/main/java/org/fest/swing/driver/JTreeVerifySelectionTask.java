@@ -20,8 +20,7 @@ import static org.fest.assertions.Fail.fail;
 import static org.fest.swing.driver.JTreeMatchingPathQuery.matchingPathWithRootIfInvisible;
 import static org.fest.swing.edt.GuiActionRunner.execute;
 import static org.fest.swing.util.Arrays.isEmptyIntArray;
-import static org.fest.util.Arrays.format;
-import static org.fest.util.Arrays.isEmpty;
+import static org.fest.util.Arrays.*;
 import static org.fest.util.Objects.areEqual;
 import static org.fest.util.Strings.concat;
 
@@ -31,8 +30,7 @@ import javax.swing.JTree;
 import javax.swing.tree.TreePath;
 
 import org.fest.assertions.Description;
-import org.fest.swing.annotation.RunsInCurrentThread;
-import org.fest.swing.annotation.RunsInEDT;
+import org.fest.swing.annotation.*;
 import org.fest.swing.edt.GuiTask;
 
 /**
@@ -47,6 +45,7 @@ final class JTreeVerifySelectionTask {
   @RunsInEDT
   static void verifySelection(final JTree tree, final int[] selection, final Description errMsg) {
     execute(new GuiTask() {
+      @Override
       protected void executeInEDT() {
         checkSelection(tree, selection, errMsg);
       }
@@ -71,6 +70,7 @@ final class JTreeVerifySelectionTask {
   static void verifySelection(final JTree tree, final String[] selection, final JTreePathFinder pathFinder,
       final Description errMsg) {
     execute(new GuiTask() {
+      @Override
       protected void executeInEDT() {
         checkSelection(tree, selection, pathFinder, errMsg);
       }
@@ -103,6 +103,7 @@ final class JTreeVerifySelectionTask {
   @RunsInEDT
   static void verifyNoSelection(final JTree tree, final Description errMsg) {
     execute(new GuiTask() {
+      @Override
       protected void executeInEDT() {
         if (tree.getSelectionCount() == 0) return;
         String message = concat(

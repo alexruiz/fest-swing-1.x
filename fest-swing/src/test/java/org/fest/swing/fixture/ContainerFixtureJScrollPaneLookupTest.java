@@ -22,12 +22,10 @@ import static org.fest.util.Arrays.array;
 
 import java.awt.Dimension;
 
-import javax.swing.JList;
-import javax.swing.JScrollPane;
+import javax.swing.*;
 
 import org.fest.swing.core.GenericTypeMatcher;
-import org.fest.swing.edt.GuiQuery;
-import org.fest.swing.edt.GuiTask;
+import org.fest.swing.edt.*;
 import org.fest.swing.exception.ComponentLookupException;
 import org.fest.swing.test.core.RobotBasedTestCase;
 import org.fest.swing.test.swing.TestWindow;
@@ -58,6 +56,7 @@ public class ContainerFixtureJScrollPaneLookupTest extends RobotBasedTestCase {
   @Test
   public void shouldFailIfJScrollPaneCannotBeFoundByType() {
     execute(new GuiTask() {
+      @Override
       protected void executeInEDT() {
         window.remove(window.scrollPane);
       }
@@ -92,6 +91,7 @@ public class ContainerFixtureJScrollPaneLookupTest extends RobotBasedTestCase {
   @Test
   public void shouldFindJScrollPaneWithCustomMatcher() {
     JScrollPaneFixture scrollPane = fixture.scrollPane(new GenericTypeMatcher<JScrollPane>(JScrollPane.class) {
+      @Override
       protected boolean isMatching(JScrollPane s) {
         return s.getViewport().getView() instanceof JList;
       }
@@ -107,6 +107,7 @@ public class ContainerFixtureJScrollPaneLookupTest extends RobotBasedTestCase {
   public void shouldFailIfJScrollPaneCannotBeFoundWithCustomMatcher() {
     try {
       fixture.scrollPane(new GenericTypeMatcher<JScrollPane>(JScrollPane.class) {
+        @Override
         protected boolean isMatching(JScrollPane s) {
           return false;
         }
@@ -124,6 +125,7 @@ public class ContainerFixtureJScrollPaneLookupTest extends RobotBasedTestCase {
 
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
+        @Override
         protected MyWindow executeInEDT() {
           return new MyWindow();
         }

@@ -20,8 +20,7 @@ import static org.fest.assertions.Fail.fail;
 import static org.fest.swing.edt.GuiActionRunner.execute;
 import static org.fest.util.Arrays.array;
 
-import javax.swing.JComboBox;
-import javax.swing.JList;
+import javax.swing.*;
 
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
@@ -78,12 +77,13 @@ public class JComboBoxSetPopupVisibleTask_setPopupVisible_Test extends RobotBase
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
+        @Override
         protected MyWindow executeInEDT() {
           return new MyWindow();
         }
       });
     }
- 
+
     final JComboBox comboBox = new JComboBox(array("One", "Two"));
 
     private MyWindow() {

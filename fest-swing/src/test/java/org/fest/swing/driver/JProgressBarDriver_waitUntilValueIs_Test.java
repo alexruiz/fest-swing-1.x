@@ -20,6 +20,7 @@ import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.driver.JProgressBarIncrementValueAsyncTask.with;
 import static org.fest.swing.driver.JProgressBarValueQuery.valueOf;
 import static org.fest.swing.test.core.CommonAssertions.failWhenExpectingException;
+
 import javax.swing.JProgressBar;
 
 import org.fest.swing.exception.WaitTimedOutError;

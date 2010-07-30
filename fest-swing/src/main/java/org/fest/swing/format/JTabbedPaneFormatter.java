@@ -16,8 +16,7 @@
 package org.fest.swing.format;
 
 import static java.lang.String.valueOf;
-import static org.fest.util.Strings.concat;
-import static org.fest.util.Strings.quote;
+import static org.fest.util.Strings.*;
 
 import java.awt.Component;
 
@@ -33,13 +32,14 @@ import org.fest.util.Arrays;
 public class JTabbedPaneFormatter extends ComponentFormatterTemplate {
 
   private static final String NO_SELECTION = "<No selection>";
-  
+
   /**
    * Returns the <code>String</code> representation of the given <code>{@link Component}</code>, which should be a
    * <code>{@link JTabbedPane}</code> (or subclass.)
    * @param c the given {@code Component}.
    * @return the <code>String</code> representation of the given <code>JTabbedPane</code>.
    */
+  @Override
   protected String doFormat(Component c) {
     JTabbedPane tabbedPane = (JTabbedPane)c;
     return concat(

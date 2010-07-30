@@ -26,8 +26,7 @@ import java.awt.Dimension;
 import javax.swing.*;
 
 import org.fest.swing.annotation.RunsInEDT;
-import org.fest.swing.edt.GuiQuery;
-import org.fest.swing.edt.GuiTask;
+import org.fest.swing.edt.*;
 import org.fest.swing.test.core.RobotBasedTestCase;
 import org.fest.swing.test.swing.TestWindow;
 
@@ -66,6 +65,7 @@ public abstract class JSpinnerDriver_TestCase extends RobotBasedTestCase {
   @RunsInEDT
   private static void setJLabelAsEditorIn(final JSpinner spinner) {
     execute(new GuiTask() {
+      @Override
       protected void executeInEDT() {
         spinner.setEditor(new JLabel());
       }
@@ -87,6 +87,7 @@ public abstract class JSpinnerDriver_TestCase extends RobotBasedTestCase {
   @RunsInEDT
   private static void setValue(final JSpinner spinner, final Object value) {
     execute(new GuiTask() {
+      @Override
       protected void executeInEDT() {
         spinner.setValue(value);
       }
@@ -117,6 +118,7 @@ public abstract class JSpinnerDriver_TestCase extends RobotBasedTestCase {
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
+        @Override
         protected MyWindow executeInEDT() {
           return new MyWindow();
         }

@@ -21,8 +21,7 @@ import static org.fest.swing.test.builder.JTextFields.textField;
 
 import javax.swing.JTextField;
 
-import org.fest.swing.core.Robot;
-import org.fest.swing.core.Settings;
+import org.fest.swing.core.*;
 import org.fest.swing.test.core.EDTSafeTestCase;
 import org.junit.Before;
 

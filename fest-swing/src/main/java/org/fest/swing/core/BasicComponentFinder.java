@@ -21,10 +21,8 @@ import static org.fest.swing.hierarchy.NewHierarchy.ignoreExistingComponents;
 import static org.fest.util.Strings.concat;
 import static org.fest.util.Systems.LINE_SEPARATOR;
 
-import java.awt.Component;
-import java.awt.Container;
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
+import java.awt.*;
+import java.io.*;
 import java.util.Collection;
 
 import javax.swing.JLabel;
@@ -299,6 +297,7 @@ public final class BasicComponentFinder implements ComponentFinder {
   @RunsInEDT
   private static void appendComponents(final StringBuilder message, final Collection<Component> found) {
     execute(new GuiTask() {
+      @Override
       protected void executeInEDT() {
         for (Component c : found) message.append(LINE_SEPARATOR).append(format(c));
       }

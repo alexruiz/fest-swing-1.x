@@ -18,13 +18,11 @@ package org.fest.swing.fixture;
 import java.awt.Point;
 import java.util.regex.Pattern;
 
-import javax.swing.JComboBox;
-import javax.swing.JList;
+import javax.swing.*;
 
 import org.fest.swing.cell.JComboBoxCellReader;
 import org.fest.swing.core.*;
-import org.fest.swing.driver.BasicJComboBoxCellReader;
-import org.fest.swing.driver.JComboBoxDriver;
+import org.fest.swing.driver.*;
 import org.fest.swing.exception.*;
 import org.fest.swing.timing.Timeout;
 

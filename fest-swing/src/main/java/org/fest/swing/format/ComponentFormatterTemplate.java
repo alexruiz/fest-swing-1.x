@@ -31,8 +31,8 @@ public abstract class ComponentFormatterTemplate implements ComponentFormatter {
    * @param c the given {@code Component}.
    * @return the <code>String</code> representation of the given {@code Component}.
    * @throws NullPointerException if the given {@code Component} is {@code null}.
-   * @throws IllegalArgumentException if the type of the given {@code Component} is not supported by this 
-   * formatter. 
+   * @throws IllegalArgumentException if the type of the given {@code Component} is not supported by this
+   * formatter.
    */
   public final String format(Component c) {
     validateTypeOf(c);

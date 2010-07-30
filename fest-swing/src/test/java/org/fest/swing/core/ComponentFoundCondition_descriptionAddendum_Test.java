@@ -28,8 +28,7 @@ import org.fest.swing.edt.GuiQuery;
 import org.fest.swing.exception.WaitTimedOutError;
 import org.fest.swing.test.swing.TestWindow;
 import org.fest.swing.timing.Condition;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Tests for <code>{@link ComponentFoundCondition#descriptionAddendum()}</code>.
@@ -86,6 +85,7 @@ public class ComponentFoundCondition_descriptionAddendum_Test {
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
+        @Override
         protected MyWindow executeInEDT() {
           return new MyWindow();
         }

@@ -35,6 +35,7 @@ final class JOptionPaneMessageQuery {
   @RunsInEDT
   static Object messageOf(final JOptionPane optionPane) {
     return execute(new GuiQuery<Object>() {
+      @Override
       protected Object executeInEDT() {
         return optionPane.getMessage();
       }

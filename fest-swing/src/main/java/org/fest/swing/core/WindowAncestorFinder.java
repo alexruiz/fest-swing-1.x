@@ -17,14 +17,12 @@ package org.fest.swing.core;
 
 import static org.fest.swing.awt.AWT.invokerOf;
 
-import java.awt.Component;
-import java.awt.Window;
+import java.awt.*;
 
 import javax.swing.MenuElement;
 
 import org.fest.swing.annotation.RunsInCurrentThread;
-import org.fest.swing.hierarchy.ComponentHierarchy;
-import org.fest.swing.hierarchy.ExistingHierarchy;
+import org.fest.swing.hierarchy.*;
 
 /**
  * Understands lookup of a component's <code>{@link java.awt.Window ancestor}</code>.

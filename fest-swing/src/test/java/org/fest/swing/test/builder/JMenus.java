@@ -18,8 +18,7 @@ package org.fest.swing.test.builder;
 import static org.fest.swing.edt.GuiActionRunner.execute;
 import static org.fest.util.Arrays.isEmpty;
 
-import javax.swing.JMenu;
-import javax.swing.JMenuItem;
+import javax.swing.*;
 
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
@@ -66,6 +65,7 @@ public final class JMenus {
     @RunsInEDT
     public JMenu createNew() {
       return execute(new GuiQuery<JMenu>() {
+        @Override
         protected JMenu executeInEDT() {
           JMenu menu = new JMenu();
           menu.setName(name);

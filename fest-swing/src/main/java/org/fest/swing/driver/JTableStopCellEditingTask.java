@@ -14,15 +14,13 @@
  */
 package org.fest.swing.driver;
 
-import static org.fest.swing.driver.JTableCellValidator.validateCellIsEditable;
-import static org.fest.swing.driver.JTableCellValidator.validateIndices;
+import static org.fest.swing.driver.JTableCellValidator.*;
 import static org.fest.swing.edt.GuiActionRunner.execute;
 
 import javax.swing.JTable;
 import javax.swing.table.TableCellEditor;
 
-import org.fest.swing.annotation.RunsInCurrentThread;
-import org.fest.swing.annotation.RunsInEDT;
+import org.fest.swing.annotation.*;
 import org.fest.swing.edt.GuiTask;
 
 /**
@@ -37,6 +35,7 @@ final class JTableStopCellEditingTask {
   @RunsInEDT
   static void stopEditing(final TableCellEditor cellEditor) {
     execute(new GuiTask() {
+      @Override
       protected void executeInEDT() {
         doStopCellEditing(cellEditor);
       }
@@ -46,6 +45,7 @@ final class JTableStopCellEditingTask {
   @RunsInEDT
   static void stopEditing(final JTable table, final int row, final int column) {
     execute(new GuiTask() {
+      @Override
       protected void executeInEDT() {
         doStopCellEditing(table, row, column);
       }
@@ -55,6 +55,7 @@ final class JTableStopCellEditingTask {
   @RunsInEDT
   static void validateAndStopEditing(final JTable table, final int row, final int column) {
     execute(new GuiTask() {
+      @Override
       protected void executeInEDT() {
         validateIndices(table, row, column);
         validateCellIsEditable(table, row, column);

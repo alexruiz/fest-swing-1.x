@@ -24,8 +24,7 @@ import javax.swing.JButton;
 
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
-import org.fest.swing.test.swing.TestDialog;
-import org.fest.swing.test.swing.TestWindow;
+import org.fest.swing.test.swing.*;
 import org.junit.Test;
 
 /**
@@ -66,6 +65,7 @@ public class WindowFilter_isIgnored_Test extends WindowFilter_TestCase {
   @RunsInEDT
   private static boolean isComponentIgnored(final WindowFilter filter, final Component c) {
     return execute(new GuiQuery<Boolean>() {
+      @Override
       protected Boolean executeInEDT() {
         return filter.isIgnored(c);
       }
@@ -78,6 +78,7 @@ public class WindowFilter_isIgnored_Test extends WindowFilter_TestCase {
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
+        @Override
         protected MyWindow executeInEDT() throws Throwable {
           return new MyWindow();
         }

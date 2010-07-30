@@ -18,12 +18,10 @@ package org.fest.swing.driver;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.edt.GuiActionRunner.execute;
 
-import javax.swing.JPanel;
-import javax.swing.JTabbedPane;
+import javax.swing.*;
 
 import org.fest.swing.annotation.RunsInEDT;
-import org.fest.swing.edt.GuiQuery;
-import org.fest.swing.edt.GuiTask;
+import org.fest.swing.edt.*;
 import org.fest.swing.test.core.RobotBasedTestCase;
 import org.fest.swing.test.swing.TestWindow;
 import org.fest.swing.util.StringTextMatcher;
@@ -67,6 +65,7 @@ public class JTabbedPaneTabIndexQuery_indexOfTab_Test extends RobotBasedTestCase
   @RunsInEDT
   private static int indexOfTab(final JTabbedPane tabbedPane, final String title) {
     return execute(new GuiQuery<Integer>() {
+      @Override
       protected Integer executeInEDT() {
         return JTabbedPaneTabIndexQuery.indexOfTab(tabbedPane, new StringTextMatcher(title));
       }
@@ -76,6 +75,7 @@ public class JTabbedPaneTabIndexQuery_indexOfTab_Test extends RobotBasedTestCase
   @RunsInEDT
   private static void removeAllTabsIn(final JTabbedPane tabbedPane) {
     execute(new GuiTask() {
+      @Override
       public void executeInEDT() {
         tabbedPane.removeAll();
       }
@@ -90,6 +90,7 @@ public class JTabbedPaneTabIndexQuery_indexOfTab_Test extends RobotBasedTestCase
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
+        @Override
         protected MyWindow executeInEDT() {
           return new MyWindow();
         }

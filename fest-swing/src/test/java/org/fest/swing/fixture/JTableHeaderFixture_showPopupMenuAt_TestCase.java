@@ -16,6 +16,7 @@
 package org.fest.swing.fixture;
 
 import static org.fest.assertions.Assertions.assertThat;
+
 import javax.swing.JPopupMenu;
 
 import org.fest.swing.test.builder.JPopupMenus;

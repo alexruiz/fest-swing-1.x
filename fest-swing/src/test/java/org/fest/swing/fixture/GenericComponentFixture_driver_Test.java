@@ -23,8 +23,7 @@ import javax.swing.JButton;
 
 import org.fest.swing.driver.ComponentDriver;
 import org.fest.swing.test.core.EDTSafeTestCase;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Tests for <code>{@link GenericComponentFixture#driver(org.fest.swing.driver.ComponentDriver)}</code> and

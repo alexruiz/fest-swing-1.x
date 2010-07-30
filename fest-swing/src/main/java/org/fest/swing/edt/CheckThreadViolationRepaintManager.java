@@ -18,8 +18,7 @@ import static javax.swing.SwingUtilities.isEventDispatchThread;
 
 import java.lang.ref.WeakReference;
 
-import javax.swing.JComponent;
-import javax.swing.RepaintManager;
+import javax.swing.*;
 
 import org.fest.util.StackTraces;
 

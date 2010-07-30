@@ -36,6 +36,7 @@ public class FrameFixture_window_Test extends WindowFixture_implementation_TestC
   private Frame target;
   private FrameFixture fixture;
 
+  @Override
   void onSetUp() {
     driver = createMock(FrameDriver.class);
     target = frame().createNew();
@@ -48,7 +49,10 @@ public class FrameFixture_window_Test extends WindowFixture_implementation_TestC
     hideAndDisposeInEDT(target);
   }
 
+  @Override
   FrameDriver driver() { return driver; }
+  @Override
   Frame target() { return target; }
+  @Override
   FrameFixture fixture() { return fixture; }
 }

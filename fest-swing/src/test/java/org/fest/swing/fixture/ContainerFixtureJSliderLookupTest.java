@@ -23,8 +23,7 @@ import static org.fest.swing.test.core.CommonAssertions.failWhenExpectingExcepti
 import javax.swing.JSlider;
 
 import org.fest.swing.core.GenericTypeMatcher;
-import org.fest.swing.edt.GuiQuery;
-import org.fest.swing.edt.GuiTask;
+import org.fest.swing.edt.*;
 import org.fest.swing.exception.ComponentLookupException;
 import org.fest.swing.test.core.RobotBasedTestCase;
 import org.fest.swing.test.swing.TestWindow;
@@ -55,6 +54,7 @@ public class ContainerFixtureJSliderLookupTest extends RobotBasedTestCase {
   @Test
   public void shouldFailIfJSliderCannotBeFoundByType() {
     execute(new GuiTask() {
+      @Override
       protected void executeInEDT() {
         window.remove(window.slider);
       }
@@ -89,6 +89,7 @@ public class ContainerFixtureJSliderLookupTest extends RobotBasedTestCase {
   @Test
   public void shouldFindJSliderWithCustomMatcher() {
     JSliderFixture slider = fixture.slider(new GenericTypeMatcher<JSlider>(JSlider.class) {
+      @Override
       protected boolean isMatching(JSlider s) {
         return s.getOrientation() == HORIZONTAL && s.getValue() == 8;
       }
@@ -104,6 +105,7 @@ public class ContainerFixtureJSliderLookupTest extends RobotBasedTestCase {
   public void shouldFailIfJSliderCannotBeFoundWithCustomMatcher() {
     try {
       fixture.slider(new GenericTypeMatcher<JSlider>(JSlider.class) {
+        @Override
         protected boolean isMatching(JSlider s) {
           return false;
         }
@@ -121,6 +123,7 @@ public class ContainerFixtureJSliderLookupTest extends RobotBasedTestCase {
 
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
+        @Override
         protected MyWindow executeInEDT() {
           return new MyWindow();
         }

@@ -19,14 +19,12 @@ import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.edt.GuiActionRunner.execute;
 import static org.fest.util.Arrays.array;
 
-import javax.swing.JMenuItem;
-import javax.swing.JPopupMenu;
+import javax.swing.*;
 
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
 import org.fest.swing.test.core.EDTSafeTestCase;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Tests for <code>{@link JPopupMenuElementsAsTextQuery#menuElementsAsText(javax.swing.JPopupMenu)}</code>.
@@ -44,6 +42,7 @@ public class JPopupMenuElementsAsTextQuery_menuElementsAsText_Test extends EDTSa
   @RunsInEDT
   private static JPopupMenu popupMenu() {
     return execute(new GuiQuery<JPopupMenu>() {
+      @Override
       protected JPopupMenu executeInEDT() {
         JPopupMenu popupMenu = new JPopupMenu();
         popupMenu.add(new JMenuItem("Anakin"));

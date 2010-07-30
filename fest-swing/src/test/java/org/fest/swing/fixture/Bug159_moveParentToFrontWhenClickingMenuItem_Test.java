@@ -44,7 +44,7 @@ public class Bug159_moveParentToFrontWhenClickingMenuItem_Test extends RobotBase
   private static final int DELAY_BEFORE_SHOWING_MENU = 2000;
 
   private static Logger logger = Logger.getAnonymousLogger();
-  
+
   private JFrame frameToFocus;
   private MyWindow window;
 
@@ -76,7 +76,7 @@ public class Bug159_moveParentToFrontWhenClickingMenuItem_Test extends RobotBase
     fixture.click();
     assertThat(clickRecorder).wasClicked();
   }
-  
+
   private void pauseBeforeShowingMenu() {
     int delay = DELAY_BEFORE_SHOWING_MENU;
     logger.info(concat("Pausing for ", delay, " ms before showing menu"));
@@ -93,12 +93,13 @@ public class Bug159_moveParentToFrontWhenClickingMenuItem_Test extends RobotBase
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
+        @Override
         protected MyWindow executeInEDT() {
           return new MyWindow();
         }
       });
     }
- 
+
     final JMenuItem menuItemFromMenuBar = new JMenuItem("New");
     final JMenuItem menuItemFromPopupMenu = new JMenuItem("Cut");
     final JTextField textField;

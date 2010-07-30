@@ -25,8 +25,7 @@ import org.fest.mocks.EasyMockTemplate;
 import org.fest.swing.cell.JListCellReader;
 import org.fest.swing.test.core.EDTSafeTestCase;
 import org.fest.swing.test.swing.TestListModel;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Tests for <code>{@link JListTextReader#checkContainsText(JList, String)}</code>.

@@ -18,8 +18,7 @@ import static org.easymock.EasyMock.expect;
 import static org.fest.assertions.Assertions.assertThat;
 
 import java.awt.EventQueue;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 import org.fest.mocks.EasyMockTemplate;
 import org.junit.Test;
@@ -35,10 +34,12 @@ public class WindowMonitor_allEventQueues_Test extends WindowMonitor_TestCase {
   public void should_return_all_EventQueues() {
     final List<EventQueue> allQueues = new ArrayList<EventQueue>();
     new EasyMockTemplate(context) {
+      @Override
       protected void expectations() {
         expect(context.allEventQueues()).andReturn(allQueues);
       }
 
+      @Override
       protected void codeToTest() {
         assertThat(monitor.allEventQueues()).isSameAs(allQueues);
       }

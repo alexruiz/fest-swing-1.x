@@ -17,8 +17,7 @@ package org.fest.swing.fixture;
 
 import static java.awt.Color.BLUE;
 import static java.awt.Font.PLAIN;
-import static org.easymock.EasyMock.expect;
-import static org.easymock.EasyMock.expectLastCall;
+import static org.easymock.EasyMock.*;
 import static org.easymock.classextension.EasyMock.createMock;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.core.MouseButton.LEFT_BUTTON;
@@ -30,24 +29,18 @@ import static org.fest.swing.test.builder.JTableHeaders.tableHeader;
 import static org.fest.swing.test.core.CommonAssertions.failWhenExpectingException;
 import static org.fest.swing.test.core.Regex.regex;
 
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Point;
+import java.awt.*;
 import java.util.regex.Pattern;
 
 import javax.swing.JPopupMenu;
 import javax.swing.table.JTableHeader;
 
 import org.fest.mocks.EasyMockTemplate;
-import org.fest.swing.cell.JTableCellReader;
-import org.fest.swing.cell.JTableCellWriter;
-import org.fest.swing.core.MouseButton;
-import org.fest.swing.core.MouseClickInfo;
-import org.fest.swing.data.TableCell;
-import org.fest.swing.data.TableCellByColumnId;
+import org.fest.swing.cell.*;
+import org.fest.swing.core.*;
+import org.fest.swing.data.*;
 import org.fest.swing.exception.ActionFailedException;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Tests for <code>{@link JTableFixture}</code>.
@@ -70,10 +63,12 @@ public class JTableFixtureTest extends JTableFixture_TestCase {
   public void shouldReturnColumnIndexGivenName() {
     final String columnName = "column0";
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         expect(driver().columnIndex(target(), columnName)).andReturn(6);
       }
 
+      @Override
       protected void codeToTest() {
         int result = fixture().columnIndexFor(columnName);
         assertThat(result).isEqualTo(6);
@@ -86,10 +81,12 @@ public class JTableFixtureTest extends JTableFixture_TestCase {
     final ActionFailedException expected = actionFailure("Thrown on purpose");
     final String columnName = "column0";
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         expect(driver().columnIndex(target(), columnName)).andThrow(expected);
       }
 
+      @Override
       protected void codeToTest() {
         try {
           fixture().columnIndexFor(columnName);
@@ -107,10 +104,12 @@ public class JTableFixtureTest extends JTableFixture_TestCase {
     final int column = 8;
     final TableCellByColumnId cellByColumnName = TableCellByColumnId.row(row).columnId("column0");
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         expect(driver().cell(target(), cellByColumnName)).andReturn(row(row).column(column));
       }
 
+      @Override
       protected void codeToTest() {
         JTableCellFixture cellFixture = fixture().cell(cellByColumnName);
         assertThat(cellFixture.row()).isEqualTo(row);
@@ -122,10 +121,12 @@ public class JTableFixtureTest extends JTableFixture_TestCase {
   @Test
   public void shouldReturnRowCount() {
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         expect(driver().rowCountOf(target())).andReturn(3);
       }
 
+      @Override
       protected void codeToTest() {
         int result = fixture().rowCount();
         assertThat(result).isEqualTo(3);
@@ -136,11 +137,13 @@ public class JTableFixtureTest extends JTableFixture_TestCase {
   @Test
   public void shouldSelectCell() {
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().selectCell(target(), cell);
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().selectCell(cell));
       }
@@ -150,11 +153,13 @@ public class JTableFixtureTest extends JTableFixture_TestCase {
   @Test
   public void shouldRequireNoSelection() {
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().requireNoSelection(target());
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().requireNoSelection());
       }
@@ -165,11 +170,13 @@ public class JTableFixtureTest extends JTableFixture_TestCase {
   public void shouldSelectCells() {
     final TableCell[] cells = { cell };
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().selectCells(target(), cells);
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().selectCells(cells));
       }
@@ -180,10 +187,12 @@ public class JTableFixtureTest extends JTableFixture_TestCase {
   public void shouldReturnSelectionContents() {
     final String content = "A Cell";
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         expect(driver().selectionValue(target())).andReturn(content);
       }
 
+      @Override
       protected void codeToTest() {
         Object result = fixture().selectionValue();
         assertThat(result).isSameAs(content);
@@ -194,10 +203,12 @@ public class JTableFixtureTest extends JTableFixture_TestCase {
   @Test
   public void shouldDragAtCell() {
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().drag(target(), cell);
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().drag(cell));
       }
@@ -207,10 +218,12 @@ public class JTableFixtureTest extends JTableFixture_TestCase {
   @Test
   public void shouldDropAtCell() {
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().drop(target(), cell);
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().drop(cell));
       }
@@ -221,10 +234,12 @@ public class JTableFixtureTest extends JTableFixture_TestCase {
   public void shouldReturnPointAtCell() {
     final Point p = new Point(6, 8);
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         expect(driver().pointAt(target(), cell)).andReturn(p);
       }
 
+      @Override
       protected void codeToTest() {
         Point result = fixture().pointAt(cell);
         assertThat(result).isSameAs(p);
@@ -236,10 +251,12 @@ public class JTableFixtureTest extends JTableFixture_TestCase {
   public void shouldReturnCellContent() {
     final String content = "A Cell";
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         expect(driver().value(target(), cell)).andReturn(content);
       }
 
+      @Override
       protected void codeToTest() {
         Object result = fixture().valueAt(cell);
         assertThat(result).isSameAs(content);
@@ -251,11 +268,13 @@ public class JTableFixtureTest extends JTableFixture_TestCase {
   public void shouldClickCellWithGivenMouseButton() {
     final MouseButton button = LEFT_BUTTON;
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().click(target(), cell, button, 1);
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().click(cell, button));
       }
@@ -266,11 +285,13 @@ public class JTableFixtureTest extends JTableFixture_TestCase {
   public void shouldClickCellWithGivenMouseClickInfo() {
     final MouseClickInfo mouseClickInfo = leftButton().times(2);
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().click(target(), cell, mouseClickInfo.button(), mouseClickInfo.times());
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().click(cell, mouseClickInfo));
       }
@@ -292,10 +313,12 @@ public class JTableFixtureTest extends JTableFixture_TestCase {
   public void shouldShowJPopupMenuAtCell() {
     final JPopupMenu popup = popupMenu().createNew();
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         expect(driver().showPopupMenuAt(target(), cell)).andReturn(popup);
       }
 
+      @Override
       protected void codeToTest() {
         JPopupMenuFixture result = fixture().showPopupMenuAt(cell);
         assertThat(result.component()).isSameAs(popup);
@@ -307,10 +330,12 @@ public class JTableFixtureTest extends JTableFixture_TestCase {
   public void shouldReturnJTableHeaderFixture() {
     final JTableHeader header = tableHeader().createNew();
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         expect(driver().tableHeaderOf(target())).andReturn(header);
       }
 
+      @Override
       protected void codeToTest() {
         JTableHeaderFixture tableHeader = fixture().tableHeader();
         assertThat(tableHeader.component()).isSameAs(header);
@@ -327,11 +352,13 @@ public class JTableFixtureTest extends JTableFixture_TestCase {
   public void shouldSetCellReaderInDriver() {
     final JTableCellReader reader = createMock(JTableCellReader.class);
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().cellReader(reader);
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().cellReader(reader));
       }
@@ -342,11 +369,13 @@ public class JTableFixtureTest extends JTableFixture_TestCase {
   public void shouldSetCellWriterInDriver() {
     final JTableCellWriter writer = createMock(JTableCellWriter.class);
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().cellWriter(writer);
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().cellWriter(writer));
       }
@@ -357,10 +386,12 @@ public class JTableFixtureTest extends JTableFixture_TestCase {
   public void shouldReturnCellFont() {
     final Font font = new Font("SansSerif", PLAIN, 8);
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         expect(driver().font(target(), cell)).andReturn(font);
       }
 
+      @Override
       protected void codeToTest() {
         FontFixture fontFixture = fixture().fontAt(cell);
         assertThat(fontFixture.target()).isSameAs(font);
@@ -374,10 +405,12 @@ public class JTableFixtureTest extends JTableFixture_TestCase {
   public void shouldReturnCellBackgroundColor() {
     final Color background = BLUE;
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         expect(driver().background(target(), cell)).andReturn(background);
       }
 
+      @Override
       protected void codeToTest() {
         ColorFixture colorFixture = fixture().backgroundAt(cell);
         assertThat(colorFixture.target()).isSameAs(background);
@@ -391,10 +424,12 @@ public class JTableFixtureTest extends JTableFixture_TestCase {
   public void shouldReturnCellForegroundColor() {
     final Color foreground = BLUE;
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         expect(driver().foreground(target(), cell)).andReturn(foreground);
       }
 
+      @Override
       protected void codeToTest() {
         ColorFixture colorFixture = fixture().foregroundAt(cell);
         assertThat(colorFixture.target()).isSameAs(foreground);
@@ -408,11 +443,13 @@ public class JTableFixtureTest extends JTableFixture_TestCase {
   public void shouldRequireCellValue() {
     final String value = "Hello";
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().requireCellValue(target(), cell, value);
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().requireCellValue(cell, value));
       }
@@ -423,11 +460,13 @@ public class JTableFixtureTest extends JTableFixture_TestCase {
   public void shouldRequireCellValueMatchingPattern() {
     final Pattern pattern = regex("Hello");
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().requireCellValue(target(), cell, pattern);
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().requireCellValue(cell, pattern));
       }
@@ -437,11 +476,13 @@ public class JTableFixtureTest extends JTableFixture_TestCase {
   @Test
   public void shouldRequireEditableCell() {
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().requireEditable(target(), cell);
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().requireEditable(cell));
       }
@@ -451,11 +492,13 @@ public class JTableFixtureTest extends JTableFixture_TestCase {
   @Test
   public void shouldRequireNotEditableCell() {
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().requireNotEditable(target(), cell);
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().requireNotEditable(cell));
       }
@@ -466,11 +509,13 @@ public class JTableFixtureTest extends JTableFixture_TestCase {
   public void shouldEnterValueInCell() {
     final String value = "Hello";
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().enterValueInCell(target(), cell, value);
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().enterValue(cell, value));
       }
@@ -480,11 +525,13 @@ public class JTableFixtureTest extends JTableFixture_TestCase {
   @Test
   public void shouldReturnCell() {
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().validate(target(), cell);
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         JTableCellFixture cellFixture = fixture().cell(cell);
         assertThat(cellFixture.table()).isSameAs(fixture());
@@ -497,10 +544,12 @@ public class JTableFixtureTest extends JTableFixture_TestCase {
   public void shouldFindCellByValue() {
     final String value = "Hello";
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         expect(driver().cell(target(), value)).andReturn(cell);
       }
 
+      @Override
       protected void codeToTest() {
         TableCell result = fixture().cell(value);
         assertThat(result).isEqualTo(cell);
@@ -512,10 +561,12 @@ public class JTableFixtureTest extends JTableFixture_TestCase {
   public void shouldFindCellByValueMatchingPattern() {
     final Pattern pattern = regex("Hello");
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         expect(driver().cell(target(), pattern)).andReturn(cell);
       }
 
+      @Override
       protected void codeToTest() {
         TableCell result = fixture().cell(pattern);
         assertThat(result).isEqualTo(cell);
@@ -528,10 +579,12 @@ public class JTableFixtureTest extends JTableFixture_TestCase {
     final ActionFailedException expected = actionFailure("Thrown on purpose");
     final String value = "Hello";
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         expect(driver().cell(target(), value)).andThrow(expected);
       }
 
+      @Override
       protected void codeToTest() {
         try {
           fixture().cell(value);
@@ -547,11 +600,13 @@ public class JTableFixtureTest extends JTableFixture_TestCase {
   public void shouldRequireRowCount() {
     final int rowCount = 6;
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().requireRowCount(target(), rowCount);
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().requireRowCount(rowCount));
       }
@@ -562,11 +617,13 @@ public class JTableFixtureTest extends JTableFixture_TestCase {
   public void shouldRequireColumnCount() {
     final int columnCount = 6;
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().requireColumnCount(target(), columnCount);
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().requireColumnCount(columnCount));
       }

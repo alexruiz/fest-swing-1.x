@@ -21,8 +21,7 @@ import static org.fest.swing.core.TestRobots.newRobotMock;
 
 import org.fest.mocks.EasyMockTemplate;
 import org.fest.swing.core.*;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Tests for <code>{@link ComponentDriver#settings()}</code>.
@@ -45,10 +44,12 @@ public class ComponentDriver_settings_Test {
   public void should_return_settings_from_Robot() {
     final Settings settings = new Settings();
     new EasyMockTemplate(robot) {
+      @Override
       protected void expectations() {
         expect(robot.settings()).andReturn(settings);
       }
 
+      @Override
       protected void codeToTest() {
         assertThat(driver.settings()).isSameAs(settings);
       }

@@ -53,6 +53,7 @@ public class WaitForComponentToShowCondition extends Condition {
    * @return {@code true} if the {@code Component} in this condition is showing on the screen,
    * {@code false} otherwise
    */
+  @Override
   public boolean test() {
     return isShowing(c);
   }

@@ -18,12 +18,10 @@ import static org.fest.swing.driver.JPopupMenuElementsAsTextQuery.menuElementsAs
 
 import java.awt.Container;
 
-import javax.swing.JMenuItem;
-import javax.swing.JPopupMenu;
+import javax.swing.*;
 
 import org.fest.swing.annotation.RunsInEDT;
-import org.fest.swing.core.GenericTypeMatcher;
-import org.fest.swing.core.Robot;
+import org.fest.swing.core.*;
 import org.fest.swing.exception.ComponentLookupException;
 
 /**

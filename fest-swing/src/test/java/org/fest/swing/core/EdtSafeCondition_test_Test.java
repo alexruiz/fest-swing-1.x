@@ -23,10 +23,9 @@ import java.util.Collection;
 
 import org.fest.swing.exception.EdtViolationException;
 import org.fest.swing.test.data.BooleanProvider;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
+import org.junit.runners.*;
 import org.junit.runners.Parameterized.Parameters;
 
 /**
@@ -53,6 +52,7 @@ public class EdtSafeCondition_test_Test {
   @Before
   public void setUp() {
     condition = new EdtSafeCondition("Hello World!") {
+      @Override
       protected boolean testInEDT() {
         if (!isEventDispatchThread())
           throw new EdtViolationException("Method 'testInEDT' should be executed in the EDT");

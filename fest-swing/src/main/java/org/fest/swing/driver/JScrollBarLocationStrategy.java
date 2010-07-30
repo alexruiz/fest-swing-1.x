@@ -24,7 +24,7 @@ import org.fest.swing.annotation.RunsInCurrentThread;
 /**
  * Understands a location in a <code>{@link JScrollBar}</code> in a orientation-specific way.
  * <p>
- * <b>Note:</b> methods in this class are <b>not</b> executed in the event dispatch thread (EDT.) Clients are 
+ * <b>Note:</b> methods in this class are <b>not</b> executed in the event dispatch thread (EDT.) Clients are
  * responsible for invoking them in the EDT.
  * </p>
  *

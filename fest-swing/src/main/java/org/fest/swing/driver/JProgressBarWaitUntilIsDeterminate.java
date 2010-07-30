@@ -24,8 +24,7 @@ import javax.swing.JProgressBar;
 import org.fest.assertions.Description;
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiLazyLoadingDescription;
-import org.fest.swing.timing.Condition;
-import org.fest.swing.timing.Timeout;
+import org.fest.swing.timing.*;
 
 /**
  * Understands an EDT-safe task that waits until the value of a <code>{@link JProgressBar}</code> is equal to the
@@ -38,6 +37,7 @@ final class JProgressBarWaitUntilIsDeterminate {
   @RunsInEDT
   static void waitUntilValueIsDeterminate(final JProgressBar progressBar, final Timeout timeout) {
     pause(new Condition(untilIsDeterminate(progressBar)) {
+      @Override
       public boolean test() {
         return !isIndeterminate(progressBar);
       }
@@ -46,6 +46,7 @@ final class JProgressBarWaitUntilIsDeterminate {
 
   private static Description untilIsDeterminate(final JProgressBar progressBar) {
     return new GuiLazyLoadingDescription() {
+      @Override
       protected String loadDescription() {
         return concat(format(progressBar), " to be in determinate mode");
       }

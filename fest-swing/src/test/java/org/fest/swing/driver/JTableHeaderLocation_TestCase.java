@@ -17,8 +17,7 @@ package org.fest.swing.driver;
 
 import static org.fest.swing.edt.GuiActionRunner.execute;
 
-import java.awt.Point;
-import java.awt.Rectangle;
+import java.awt.*;
 
 import javax.swing.table.JTableHeader;
 
@@ -35,6 +34,7 @@ public abstract class JTableHeaderLocation_TestCase extends JTableHeaderBasedTes
 
   JTableHeaderLocation location;
 
+  @Override
   final void setUpTestTarget() {
     location = new JTableHeaderLocation();
   }
@@ -47,6 +47,7 @@ public abstract class JTableHeaderLocation_TestCase extends JTableHeaderBasedTes
   @RunsInEDT
   private static Point pointAt(final JTableHeaderLocation location, final JTableHeader tableHeader, final int index) {
     return execute(new GuiQuery<Point>() {
+      @Override
       protected Point executeInEDT() throws Throwable {
         return location.pointAt(tableHeader, index);
       }
@@ -62,6 +63,7 @@ public abstract class JTableHeaderLocation_TestCase extends JTableHeaderBasedTes
   @RunsInEDT
   private static Rectangle rectOf(final JTableHeader tableHeader, final int index) {
     return execute(new GuiQuery<Rectangle>() {
+      @Override
       protected Rectangle executeInEDT() {
         return tableHeader.getHeaderRect(index);
       }

@@ -18,12 +18,10 @@ package org.fest.swing.driver;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.edt.GuiActionRunner.execute;
 
-import javax.swing.JList;
-import javax.swing.JToolBar;
+import javax.swing.*;
 
 import org.fest.swing.annotation.RunsInEDT;
-import org.fest.swing.edt.GuiQuery;
-import org.fest.swing.edt.GuiTask;
+import org.fest.swing.edt.*;
 import org.fest.swing.test.core.RobotBasedTestCase;
 import org.fest.swing.test.swing.*;
 import org.junit.Test;
@@ -72,6 +70,7 @@ public class BasicJListCellReader_valueAt_Test extends RobotBasedTestCase {
   @RunsInEDT
   private static void setNotRecognizedRendererComponent(final JList list) {
     execute(new GuiTask() {
+      @Override
       protected void executeInEDT() {
         list.setCellRenderer(new CustomCellRenderer(new JToolBar()));
       }
@@ -81,6 +80,7 @@ public class BasicJListCellReader_valueAt_Test extends RobotBasedTestCase {
   @RunsInEDT
   private static String firstItemValue(final BasicJListCellReader reader, final JList list) {
     return execute(new GuiQuery<String>() {
+      @Override
       protected String executeInEDT() {
         return reader.valueAt(list, 0);
       }
@@ -95,6 +95,7 @@ public class BasicJListCellReader_valueAt_Test extends RobotBasedTestCase {
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
+        @Override
         protected MyWindow executeInEDT() {
           return new MyWindow();
         }
@@ -119,6 +120,7 @@ public class BasicJListCellReader_valueAt_Test extends RobotBasedTestCase {
 
     void setElements(final Object...elements) {
       execute(new GuiTask() {
+        @Override
         protected void executeInEDT() {
           model.setElements(elements);
         }

@@ -41,6 +41,7 @@ public final class ComponentShowingQuery {
   @RunsInEDT
   public static boolean isShowing(final Component component) {
     return execute(new GuiQuery<Boolean>() {
+      @Override
       protected Boolean executeInEDT() {
         return component.isShowing();
       }

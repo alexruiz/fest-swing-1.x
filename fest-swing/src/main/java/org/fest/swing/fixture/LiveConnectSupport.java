@@ -3,8 +3,7 @@ package org.fest.swing.fixture;
 import java.awt.Point;
 import java.io.File;
 
-import org.fest.swing.core.KeyPressInfo;
-import org.fest.swing.core.MouseButton;
+import org.fest.swing.core.*;
 import org.fest.swing.data.TableCell;
 
 /**
@@ -12,7 +11,7 @@ import org.fest.swing.data.TableCell;
  * Certain functions require references to created java objects to work. Client
  * side JavaScript code can then use these references with requests back to the
  * applet.
- * 
+ *
  * @author Mel Llaguno
  */
 public interface LiveConnectSupport {
@@ -24,29 +23,29 @@ public interface LiveConnectSupport {
 	 * @return KeyPressInfo the object used to simulate a key press
 	 */
 	KeyPressInfo createKeyPressInfo(int keyCode, int modifier);
-	
+
 	/**
-	 * A factory method for creating a Point 
+	 * A factory method for creating a Point
 	 * @param x the x coordinate
 	 * @param y the y coordinate
 	 * @return Point the object used to specify a location
 	 */
 	Point createPoint(int x, int y);
-	
+
 	/**
 	 * A factory method for creating a MouseButton object
-	 * @param buttonMask the integer representation of a button mask 
-	 * @return MouseButton the object used to simulate a mouse button  
+	 * @param buttonMask the integer representation of a button mask
+	 * @return MouseButton the object used to simulate a mouse button
 	 */
 	MouseButton createMouseButton(int buttonMask);
-	
+
 	/**
 	 * A factory method for creating a File object
 	 * @param name the path name of the file
 	 * @return File
 	 */
 	File createFile(String name);
-	
+
 	/**
 	 * A factory method for creating a TableCell
 	 * @param row the row of the cell
@@ -61,11 +60,11 @@ public interface LiveConnectSupport {
 	 * @return TableCell[] the array of TableCells
 	 */
 	TableCell[] createTableCells(Object...objects);
-	
+
 	/**
 	 * A factory method for create a String []
 	 * @param objects
 	 * @return String [] the reference to the String Array
 	 */
-	String [] createStringArray(Object...objects);	
+	String [] createStringArray(Object...objects);
 }

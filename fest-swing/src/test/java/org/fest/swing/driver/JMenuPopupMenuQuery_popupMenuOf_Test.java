@@ -22,8 +22,7 @@ import javax.swing.*;
 
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
-import org.fest.swing.test.core.MethodInvocations;
-import org.fest.swing.test.core.RobotBasedTestCase;
+import org.fest.swing.test.core.*;
 import org.fest.swing.test.swing.TestWindow;
 import org.junit.Test;
 
@@ -55,6 +54,7 @@ public class JMenuPopupMenuQuery_popupMenuOf_Test extends RobotBasedTestCase {
   @RunsInEDT
   private static JPopupMenu popupMenuOf(final MyMenu menu) {
     return execute(new GuiQuery<JPopupMenu>() {
+      @Override
       protected JPopupMenu executeInEDT() {
         return menu.getPopupMenu();
       }
@@ -69,6 +69,7 @@ public class JMenuPopupMenuQuery_popupMenuOf_Test extends RobotBasedTestCase {
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
+        @Override
         protected MyWindow executeInEDT() {
           return new MyWindow();
         }

@@ -15,8 +15,7 @@
  */
 package org.fest.swing.driver;
 
-import static org.fest.swing.util.Strings.areEqualOrMatch;
-import static org.fest.swing.util.Strings.match;
+import static org.fest.swing.util.Strings.*;
 import static org.fest.util.Strings.*;
 
 import java.util.regex.Pattern;

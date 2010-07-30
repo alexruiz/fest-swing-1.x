@@ -2,17 +2,17 @@
  * Mel Llaguno
  * http://www.aclaro.com
  * ------------------------------------
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License
  * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
- * 
+ *
  * Copyright @2009 the original author or authors.
  */
 
@@ -26,26 +26,21 @@ import java.io.File;
 
 import javax.swing.JApplet;
 
-import org.fest.swing.core.BasicRobot;
-import org.fest.swing.core.KeyPressInfo;
-import org.fest.swing.core.MouseButton;
-import org.fest.swing.core.MouseClickInfo;
-import org.fest.swing.core.Robot;
+import org.fest.swing.core.*;
 import org.fest.swing.data.TableCell;
 import org.fest.swing.driver.JAppletDriver;
-import org.fest.swing.exception.ComponentLookupException;
-import org.fest.swing.exception.WaitTimedOutError;
+import org.fest.swing.exception.*;
 import org.fest.swing.timing.Timeout;
 
 /**
  * Understands simulation of user input on a <code>{@link JApplet}</code>. Unlike <code>WindowFixture</code>, this
- * driver only focuses on behavior present only in <code>{@link JApplet}</code>s. 
+ * driver only focuses on behavior present only in <code>{@link JApplet}</code>s.
  *
  * @author Mel Llaguno
  */
 
-public class JAppletFixture extends ContainerFixture<JApplet> 
-	implements CommonComponentFixture, AlternativeAssertionFixture, LiveConnectSupport{
+public class JAppletFixture extends ContainerFixture<JApplet>
+	implements CommonComponentFixture, LiveConnectSupport{
 
 	private JAppletDriver driver;
 
@@ -61,9 +56,9 @@ public class JAppletFixture extends ContainerFixture<JApplet>
 		super(robot, appletName, JApplet.class);
 		createDriver();
 	}
-	
+
 	/**
-	 * Creates a new <code>{@link JAppletFixture}</code 
+	 * Creates a new <code>{@link JAppletFixture}</code
 	 * @param robot performs simulation of user events on the given <code>JApplet</code>.
 	 * @param target the <code>JApplet</code> to be managed by this fixture;
 	 * @throws NullPointerException if <code>robot</code> is <code>null</code>.
@@ -74,21 +69,21 @@ public class JAppletFixture extends ContainerFixture<JApplet>
 		super(robot, target);
 		createDriver();
 	}
-	
+
 	/**
 	 * Creates a new <code>{@link JAppletFixture}</code>. This constructor creates a new <code>{@link Robot}</code>
 	 * containing the current AWT hierarchy. To work against multiple applets in the same browser page, the
-	 * <code>{@link BasicRobot.robotWithCurrentAwtHierarchyWithOutScreenLock}</code> constructor MUST be used.
+	 * <code>{@link BasicRobot.robotWithCurrentAwtHierarchyWithOutScreenLock()}</code> constructor MUST be used.
 	 * @param target the <code>JApplet</code> to be managed by this fixture.
 	 * @throws NullPointerException if the given target <code>JApplet</code> is <code>null</code>.
 	 */
 	public JAppletFixture(JApplet target) {
 		this(BasicRobot.robotWithCurrentAwtHierarchyWithoutScreenLock(),target);
 	}
-	
+
 	/**
 	 * Creates a new <code>{@link JAppletFixture}</code>. This constructor create a new <code>{@link Robot}</code>
-	 * containing the current AWT hierarchy. To work against multiple applets in the same browser page, the 
+	 * containing the current AWT hierarchy. To work against multiple applets in the same browser page, the
 	 * <code>{@link BasicRobot.robotWithCurrentAwtHierarchyWithOutScreenLock}</code> constructor MUST be used.
 	 * @param appletName the name of the <code>JApplet</code> to be managed by this fixture.
 	 * @throws NullPointerException if the given target <code>JApplet</code> is <code>null</code>.
@@ -96,7 +91,7 @@ public class JAppletFixture extends ContainerFixture<JApplet>
 	public JAppletFixture(String appletName) {
 		this(BasicRobot.robotWithCurrentAwtHierarchyWithoutScreenLock(), appletName);
 	}
-	
+
 	private void createDriver() {
 		driver(new JAppletDriver(robot, target));
 	}
@@ -308,77 +303,16 @@ public class JAppletFixture extends ContainerFixture<JApplet>
 	}
 
 	/**
-	 * Asserts that this fixture's <code>{@link JApplet}</code> is disabled.
-	 * @return this fixture.
-	 * @throws AssertionError if this fixture's <code>JApplet</code> is enabled.
-	 */
-	public JAppletFixture isDisabled() {
-		this.requireDisabled();
-		return this;
-	}
-
-	/**
-	 * Asserts that this fixture's <code>{@link JApplet}</code> is enabled.
-	 * @return this fixture.
-	 * @throws AssertionError if this fixture's <code>JApplet</code> is disabled.
-	 */
-	public JAppletFixture isEnabled() {
-		this.requireEnabled();
-		return this;
-	}
-
-	/**
-	 * Asserts that this fixture's <code>{@link JApplet}</code> is enabled.
-	 * @param timeout the time this fixture will wait for the component to be enabled.
-	 * @return this fixture.
-	 * @throws WaitTimedOutError if this fixture's <code>JApplet</code> is never enabled.
-	 */
-	public JAppletFixture isEnabled(Timeout timeout) {
-		this.requireEnabled(timeout);
-		return this;
-	}
-
-	/**
-	 * Asserts that this fixture's <code>{@link JApplet}</code> has input focus.
-	 * @return this fixture.
-	 * @throws AssertionError if this fixture's <code>JApplet</code> does not have input focus.
-	 */
-	public JAppletFixture isFocused() {
-		this.isFocused();
-		return this;
-	}
-
-	/**
-	 * Asserts that this fixture's <code>{@link JApplet}</code> is not visible.
-	 * @return this fixture.
-	 * @throws AssertionError if this fixture's <code>JApplet</code> is visible.
-	 */
-	public JAppletFixture isNotVisible() {
-		this.requireNotVisible();
-		return this;
-	}
-
-	/**
-	 * Asserts that this fixture's <code>{@link JApplet}</code> is visible.
-	 * @return this fixture.
-	 * @throws AssertionError if this fixture's <code>JApplet</code> is not visible.
-	 */
-	public JAppletFixture isVisible() {
-		this.requireVisible();
-		return this;
-	}
-	
-	/**
 	 * Factory method for creating KeyPressInfo objects
 	 * @param keyCode the ASCII code as an integer
 	 * @param modifier the bit-mask modifier as an integer
 	 * @return KeyPressInfo object which understands key chord presses (i.e. CTRL-A)
-	 */	 
+	 */
 	public KeyPressInfo createKeyPressInfo(int keyCode, int modifier)
 	{
 		return keyCode(keyCode).modifiers(modifier);
 	}
-	
+
 	/**
 	 * Factory method for creating Point objects
 	 * @param x the x coordinate
@@ -389,7 +323,7 @@ public class JAppletFixture extends ContainerFixture<JApplet>
 	{
 		return new Point(x,y);
 	}
-	
+
 	/**
 	 * Factory method for creating MouseButton objects
 	 * @param buttonMask the integer representation of the Button Mask
@@ -399,11 +333,11 @@ public class JAppletFixture extends ContainerFixture<JApplet>
 	{
 		return MouseButton.lookup(buttonMask);
 	}
-	
+
 	/**
 	 * Factory method for creating File objects
 	 * @param name the name of the file
-	 * @return a File object 
+	 * @return a File object
 	 */
 	public File createFile(String name) {
 		return new File(name);
@@ -419,29 +353,29 @@ public class JAppletFixture extends ContainerFixture<JApplet>
 	public TableCell createTableCell(int row, int column) {
 		return row(row).column(column);
 	}
-	
+
 	public TableCell[] createTableCells(Object...objects) {
-		
+
 		TableCell [] array = new TableCell[objects.length];
 		for(int i = 0; i < objects.length; i++)
 		{
-			String[] rowColumn = ((String)objects[i]).split("\\,");		
+			String[] rowColumn = ((String)objects[i]).split("\\,");
 			array[i] = row(Integer.parseInt(rowColumn[0])).column(Integer.parseInt(rowColumn[1]));
 		}
 		return array;
 	}
-	
+
 	/**
 	 * Factory method for creating String Array objects
 	 * @param objects the array of objects to be converted into a String Array
-	 * @return String [] 
+	 * @return String []
 	 */
 	public String [] createStringArray(Object...objects)
 	{
 		String [] array = new String[objects.length];
 		for(int i = 0; i < objects.length; i++)
 			array[i] = (String)objects[i];
-		
+
 		return array;
 	}
 

@@ -33,11 +33,13 @@ public class JSliderFixtureTest extends JSliderFixture_TestCase {
   @Test
   public void shouldSlideToValue() {
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().slide(target(), 8);
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().slideTo(8));
       }
@@ -47,11 +49,13 @@ public class JSliderFixtureTest extends JSliderFixture_TestCase {
   @Test
   public void shouldSlideToMax() {
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().slideToMaximum(target());
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().slideToMaximum());
       }
@@ -61,11 +65,13 @@ public class JSliderFixtureTest extends JSliderFixture_TestCase {
   @Test
   public void shouldSlideToMin() {
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().slideToMinimum(target());
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().slideToMinimum());
       }

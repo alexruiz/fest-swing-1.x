@@ -19,9 +19,9 @@ import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.util.Modifiers.keysFor;
 import static org.fest.util.Strings.concat;
 
-import java.awt.Event;
-import java.awt.HeadlessException;
+import java.awt.*;
 import java.awt.event.KeyEvent;
+
 import org.fest.util.VisibleForTesting;
 
 /**

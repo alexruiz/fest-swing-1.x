@@ -16,6 +16,7 @@
 package org.fest.swing.fixture;
 
 import static org.easymock.EasyMock.expect;
+
 import org.fest.mocks.EasyMockTemplate;
 import org.junit.Test;
 
@@ -30,10 +31,12 @@ public class JTableCellFixture_requireValueAsString_Test extends JTableCellFixtu
   public void should_require_value() {
     final String content = "Hello";
     new EasyMockTemplate(table) {
+      @Override
       protected void expectations() {
         expect(table.requireCellValue(cell, content)).andReturn(table);
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture.requireValue(content));
       }

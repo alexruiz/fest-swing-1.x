@@ -15,8 +15,7 @@
  */
 package org.fest.swing.fixture;
 
-import static org.easymock.EasyMock.expect;
-import static org.easymock.EasyMock.expectLastCall;
+import static org.easymock.EasyMock.*;
 import static org.fest.assertions.Assertions.assertThat;
 
 import org.fest.mocks.EasyMockTemplate;
@@ -35,11 +34,13 @@ public class JSpinnerFixtureTest extends JSpinnerFixture_TestCase {
   @Test
   public void shouldRequireValue() {
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().requireValue(target(), "A Value");
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().requireValue("A Value"));
       }
@@ -49,11 +50,13 @@ public class JSpinnerFixtureTest extends JSpinnerFixture_TestCase {
   @Test
   public void shouldIncrementTheGivenTimes() {
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().increment(target(), 8);
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().increment(8));
       }
@@ -63,11 +66,13 @@ public class JSpinnerFixtureTest extends JSpinnerFixture_TestCase {
   @Test
   public void shouldIncrement() {
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().increment(target());
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().increment());
       }
@@ -77,11 +82,13 @@ public class JSpinnerFixtureTest extends JSpinnerFixture_TestCase {
   @Test
   public void shouldDecrementTheGivenTimes() {
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().decrement(target(), 8);
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().decrement(8));
       }
@@ -91,11 +98,13 @@ public class JSpinnerFixtureTest extends JSpinnerFixture_TestCase {
   @Test
   public void shouldDecrement() {
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().decrement(target());
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().decrement());
       }
@@ -106,10 +115,12 @@ public class JSpinnerFixtureTest extends JSpinnerFixture_TestCase {
   public void shouldReturnText() {
     final String text = "Some Text";
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         expect(driver().textOf(target())).andReturn(text);
       }
 
+      @Override
       protected void codeToTest() {
         assertThat(fixture().text()).isEqualTo(text);
       }
@@ -119,11 +130,13 @@ public class JSpinnerFixtureTest extends JSpinnerFixture_TestCase {
   @Test
   public void shouldEnterText() {
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().enterText(target(), "Some Text");
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().enterText("Some Text"));
       }
@@ -133,11 +146,13 @@ public class JSpinnerFixtureTest extends JSpinnerFixture_TestCase {
   @Test
   public void shouldSelectValue() {
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().selectValue(target(), "Some Text");
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().select("Some Text"));
       }
@@ -147,11 +162,13 @@ public class JSpinnerFixtureTest extends JSpinnerFixture_TestCase {
   @Test
   public void shouldEnterTextAndCommit() {
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().enterTextAndCommit(target(), "Some Text");
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().enterTextAndCommit("Some Text"));
       }

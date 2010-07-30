@@ -30,8 +30,7 @@ import java.io.*;
 import java.util.Collection;
 
 import org.fest.swing.exception.ParsingException;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Tests for <code>{@link KeyStrokeMappingsParser#parse(String)}</code>.

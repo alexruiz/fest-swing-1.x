@@ -21,8 +21,7 @@ import static org.fest.swing.test.awt.Toolkits.singletonToolkitMock;
 import java.awt.Toolkit;
 
 import org.fest.mocks.EasyMockTemplate;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Tests for <code>{@link EmergencyAbortListener#unregister()}</code>.
@@ -43,11 +42,13 @@ public class EmergencyAbortListener_unregister_Test {
   @Test
   public void should_unregister_from_toolkit() {
     new EasyMockTemplate(toolkit) {
+      @Override
       protected void expectations() {
         toolkit.removeAWTEventListener(listener);
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         listener.unregister();
       }

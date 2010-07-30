@@ -40,6 +40,7 @@ public class JTabbedPaneDriver_selectTabByIndex_withInvalidLocation_Test extends
     final int index = 1;
     driver = new JTabbedPaneDriver(robot, location);
     new EasyMockTemplate(location) {
+      @Override
       protected void expectations() {
         location.validateIndex(tabbedPane, index); // everything goes fine.
         // location.pointAt is called twice.
@@ -50,6 +51,7 @@ public class JTabbedPaneDriver_selectTabByIndex_withInvalidLocation_Test extends
         expect(location.pointAt(tabbedPane, index)).andReturn(new Point(6, 8));
       }
 
+      @Override
       protected void codeToTest() {
         driver.selectTab(tabbedPane, index);
         assertThatSelectedTabIndexIs(index);

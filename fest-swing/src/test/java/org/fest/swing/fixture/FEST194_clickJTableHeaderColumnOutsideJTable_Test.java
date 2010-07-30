@@ -1,16 +1,16 @@
 /*
  * Created on Jul 22, 2009
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License
  * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
- * 
+ *
  * Copyright @2009-2010 the original author or authors.
  */
 package org.fest.swing.fixture;
@@ -20,13 +20,10 @@ import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.edt.GuiActionRunner.execute;
 import static org.fest.util.Arrays.array;
 
-import java.awt.Dimension;
-import java.awt.GridLayout;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.*;
+import java.awt.event.*;
 
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
+import javax.swing.*;
 import javax.swing.table.TableColumn;
 
 import org.fest.swing.annotation.RunsInEDT;
@@ -37,7 +34,7 @@ import org.junit.Test;
 
 /**
  * Test case for bug <a href="http://jira.codehaus.org/browse/FEST-194" target="_blank">FEST-194</a>
- * 
+ *
  * @author Andriy Tsykholyas
  * @author Alex Ruiz
  */
@@ -45,7 +42,7 @@ public class FEST194_clickJTableHeaderColumnOutsideJTable_Test extends RobotBase
 
   private HeaderMouseListener headerMouseListener;
   private JTableFixture table;
-  
+
   @Override protected final void onSetUp() {
     headerMouseListener = new HeaderMouseListener();
     MyWindow window = MyWindow.createNew();
@@ -62,10 +59,11 @@ public class FEST194_clickJTableHeaderColumnOutsideJTable_Test extends RobotBase
       assertThat(headerMouseListener.headerClickCounter).isEqualTo(column + 1);
     }
   }
-  
+
   @RunsInEDT
   static int columnCountOf(final JTable table) {
     return execute(new GuiQuery<Integer>() {
+      @Override
       protected Integer executeInEDT() {
         return table.getColumnCount();
       }
@@ -80,14 +78,15 @@ public class FEST194_clickJTableHeaderColumnOutsideJTable_Test extends RobotBase
 
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
+        @Override
         protected MyWindow executeInEDT() {
           return new MyWindow();
         }
       });
     }
-    
+
     final JTable table = table();
-    
+
     private MyWindow() {
       super(FEST194_clickJTableHeaderColumnOutsideJTable_Test.class);
       setLayout(new GridLayout(1, 0));
@@ -106,10 +105,10 @@ public class FEST194_clickJTableHeaderColumnOutsideJTable_Test extends RobotBase
     }
 
     private static Object[][] tableData() {
-      return new Object[][] { 
-          { "data", "data", "data" }, 
-          { "data", "data", "data" }, 
-          { "data", "data", "data" } 
+      return new Object[][] {
+          { "data", "data", "data" },
+          { "data", "data", "data" },
+          { "data", "data", "data" }
       };
     }
 
@@ -122,7 +121,7 @@ public class FEST194_clickJTableHeaderColumnOutsideJTable_Test extends RobotBase
 
   private static class HeaderMouseListener extends MouseAdapter {
     int headerClickCounter;
-    
+
     HeaderMouseListener() {}
 
     @Override public void mouseClicked(MouseEvent e) {

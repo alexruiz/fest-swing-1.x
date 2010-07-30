@@ -75,6 +75,7 @@ public class JFileChooserFinder_findFileChooser_withMatcher_Test extends JFileCh
       super(JFileChooser.class);
     }
 
+    @Override
     protected boolean isMatching(JFileChooser fileChooser) {
       return "fileChooser".equals(fileChooser.getName());
     }

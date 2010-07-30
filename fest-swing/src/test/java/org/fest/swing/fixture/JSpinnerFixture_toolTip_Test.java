@@ -42,13 +42,17 @@ public class JSpinnerFixture_toolTip_Test extends ToolTipDisplayFixture_TestCase
     target = spinner().createNew();
   }
 
+  @Override
   void onSetUp() {
     driver = createMock(JSpinnerDriver.class);
     fixture = new JSpinnerFixture(robot(), target);
     fixture.driver(driver);
   }
 
+  @Override
   JSpinnerDriver driver() {  return driver; }
+  @Override
   JSpinner target() { return target; }
+  @Override
   JSpinnerFixture fixture() { return fixture; }
 }

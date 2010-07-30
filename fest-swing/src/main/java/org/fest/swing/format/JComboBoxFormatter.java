@@ -16,12 +16,10 @@
 package org.fest.swing.format;
 
 import static java.lang.String.valueOf;
-import static org.fest.util.Strings.concat;
-import static org.fest.util.Strings.quote;
+import static org.fest.util.Strings.*;
 
 import java.awt.Component;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 import javax.swing.JComboBox;
 
@@ -40,6 +38,7 @@ public class JComboBoxFormatter extends ComponentFormatterTemplate {
    * @param c the given {@code Component}.
    * @return the <code>String</code> representation of the given {@code JComboBox}.
    */
+  @Override
   protected String doFormat(Component c) {
     JComboBox comboBox = (JComboBox)c;
     return concat(

@@ -15,26 +15,19 @@
  */
 package org.fest.swing.applet;
 
-import static java.awt.BorderLayout.CENTER;
-import static java.awt.BorderLayout.SOUTH;
 import static javax.swing.BorderFactory.*;
-import static javax.swing.SwingUtilities.invokeLater;
-import static javax.swing.SwingUtilities.isEventDispatchThread;
+import static javax.swing.SwingUtilities.*;
 import static javax.swing.border.BevelBorder.LOWERED;
 import static org.fest.swing.edt.GuiActionRunner.execute;
 import static org.fest.util.Strings.concat;
 
-import java.applet.Applet;
-import java.applet.AppletStub;
-import java.awt.BorderLayout;
-import java.awt.Dimension;
+import java.applet.*;
+import java.awt.*;
 import java.util.Map;
 
-import javax.swing.JFrame;
-import javax.swing.JLabel;
+import javax.swing.*;
 
-import org.fest.swing.annotation.RunsInCurrentThread;
-import org.fest.swing.annotation.RunsInEDT;
+import org.fest.swing.annotation.*;
 import org.fest.swing.edt.GuiQuery;
 
 /**
@@ -51,9 +44,9 @@ import org.fest.swing.edt.GuiQuery;
  * viewerFixture.cleanUp();
  * </pre>
  * <p>
- * <b>Note:</b> In version 1.2, due to bug 
- * <a href="http://jira.codehaus.org/browse/FEST-219" target="_blank">FEST-219</a> constructors in this class have been 
- * replaced with the static factory methods {@code newViewer}. It was not possible to just deprecate them. To ensure 
+ * <b>Note:</b> In version 1.2, due to bug
+ * <a href="http://jira.codehaus.org/browse/FEST-219" target="_blank">FEST-219</a> constructors in this class have been
+ * replaced with the static factory methods {@code newViewer}. It was not possible to just deprecate them. To ensure
  * correct behavior of the applet viewer, they had to be made unaccessible to client code.
  * </p>
  * </p>
@@ -136,6 +129,7 @@ public class AppletViewer extends JFrame implements StatusDisplay {
   @RunsInEDT
   private static AppletViewer createInEDT(final Applet applet) {
     return execute(new GuiQuery<AppletViewer>() {
+      @Override
       protected AppletViewer executeInEDT() {
         return new AppletViewer(applet);
       }
@@ -156,10 +150,10 @@ public class AppletViewer extends JFrame implements StatusDisplay {
   }
 
   private void addContent() {
-    add(applet, CENTER);
+    add(applet, BorderLayout.CENTER);
     statusLabel.setBorder(createCompoundBorder(createBevelBorder(LOWERED), createEmptyBorder(2, 5, 2, 5)));
     statusLabel.setName("status");
-    add(statusLabel, SOUTH);
+    add(statusLabel, BorderLayout.SOUTH);
   }
 
   private void appletStub(AppletStub newAppletStub) {

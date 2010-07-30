@@ -18,7 +18,9 @@ package org.fest.swing.fixture;
 import static java.awt.Font.PLAIN;
 import static org.easymock.EasyMock.expect;
 import static org.fest.assertions.Assertions.assertThat;
+
 import java.awt.Font;
+
 import org.fest.mocks.EasyMockTemplate;
 import org.junit.Test;
 
@@ -33,10 +35,12 @@ public class JTableCellFixture_font_Test extends JTableCellFixture_withMockTable
   public void should_return_font() {
     final FontFixture fontFixture = new FontFixture(new Font("SansSerif", PLAIN, 8));
     new EasyMockTemplate(table) {
+      @Override
       protected void expectations() {
         expect(table.fontAt(cell)).andReturn(fontFixture);
       }
 
+      @Override
       protected void codeToTest() {
         FontFixture result = fixture.font();
         assertThat(result).isSameAs(fontFixture);

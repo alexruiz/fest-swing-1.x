@@ -24,8 +24,7 @@ import javax.swing.JComboBox;
 
 import org.fest.mocks.EasyMockTemplate;
 import org.fest.swing.driver.JComboBoxDriver;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Tests for methods in <code>{@link JComboBoxFixture}</code> that are inherited from
@@ -46,6 +45,7 @@ public class JComboBoxFixture_keyboardInput_Test extends KeyboardInputSimulation
     target = comboBox().createNew();
   }
 
+  @Override
   void onSetUp() {
     driver = createMock(JComboBoxDriver.class);
     fixture = new JComboBoxFixture(robot(), target);
@@ -55,18 +55,23 @@ public class JComboBoxFixture_keyboardInput_Test extends KeyboardInputSimulation
   @Test
   @Override public void should_press_and_release_keys() {
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().pressAndReleaseKeys(target(), VK_A, VK_B, VK_C);
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().pressAndReleaseKeys(VK_A, VK_B, VK_C));
       }
     }.run();
   }
 
+  @Override
   JComboBoxDriver driver() {  return driver; }
+  @Override
   JComboBox target() { return target; }
+  @Override
   JComboBoxFixture fixture() { return fixture; }
 }

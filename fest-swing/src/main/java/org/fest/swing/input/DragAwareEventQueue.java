@@ -15,15 +15,12 @@
  */
 package org.fest.swing.input;
 
-import static java.awt.AWTEvent.MOUSE_EVENT_MASK;
-import static java.awt.AWTEvent.MOUSE_MOTION_EVENT_MASK;
+import static java.awt.AWTEvent.*;
 import static java.awt.event.MouseEvent.*;
-import static javax.swing.SwingUtilities.convertMouseEvent;
-import static javax.swing.SwingUtilities.getDeepestComponentAt;
+import static javax.swing.SwingUtilities.*;
 
 import java.awt.*;
-import java.awt.event.AWTEventListener;
-import java.awt.event.MouseEvent;
+import java.awt.event.*;
 import java.util.EmptyStackException;
 
 /**

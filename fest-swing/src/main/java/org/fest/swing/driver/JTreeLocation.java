@@ -18,8 +18,7 @@ import static java.lang.String.valueOf;
 import static org.fest.util.Arrays.format;
 import static org.fest.util.Strings.concat;
 
-import java.awt.Point;
-import java.awt.Rectangle;
+import java.awt.*;
 
 import javax.swing.JTree;
 import javax.swing.tree.TreePath;

@@ -24,14 +24,12 @@ import java.util.Collection;
 import javax.swing.JComboBox;
 
 import org.fest.swing.annotation.RunsInEDT;
-import org.fest.swing.edt.GuiActionRunner;
-import org.fest.swing.edt.GuiQuery;
-import org.fest.swing.test.core.MethodInvocations;
-import org.fest.swing.test.core.RobotBasedTestCase;
+import org.fest.swing.edt.*;
+import org.fest.swing.test.core.*;
 import org.fest.swing.test.swing.TestWindow;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
+import org.junit.runners.*;
 import org.junit.runners.Parameterized.Parameters;
 
 /**
@@ -44,18 +42,18 @@ import org.junit.runners.Parameterized.Parameters;
 public class JComboBoxSelectedIndexQuery_selectedIndexOf_Test extends RobotBasedTestCase {
 
   private MyComboBox comboBox;
-  
+
   private final int selectedIndex;
 
   @Parameters
   public static Collection<Object[]> indices() {
     return list(new Object[][] { { 0 }, { 1 }, { 2 }, { -1 } });
   }
-  
+
   public JComboBoxSelectedIndexQuery_selectedIndexOf_Test(int selectedIndex) {
     this.selectedIndex = selectedIndex;
   }
-  
+
   @Override protected void onSetUp() {
     MyWindow window = MyWindow.createNew();
     comboBox = window.comboBox;
@@ -78,6 +76,7 @@ public class JComboBoxSelectedIndexQuery_selectedIndexOf_Test extends RobotBased
     @RunsInEDT
     static MyWindow createNew() {
       return GuiActionRunner.execute(new GuiQuery<MyWindow>() {
+        @Override
         protected MyWindow executeInEDT() throws Throwable {
           return new MyWindow();
         }

@@ -17,8 +17,7 @@ package org.fest.swing.fixture;
 
 import java.awt.Component;
 
-import org.fest.swing.exception.ActionFailedException;
-import org.fest.swing.exception.ComponentLookupException;
+import org.fest.swing.exception.*;
 
 /**
  * Understands functional testing of GUI component items (e.g. a cell in a <code>JTable</code> or a row in a

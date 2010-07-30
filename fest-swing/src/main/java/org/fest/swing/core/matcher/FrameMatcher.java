@@ -159,6 +159,7 @@ public final class FrameMatcher extends NamedComponentMatcherTemplate<Frame> {
    * @return {@code true} if the title in the <code>Frame</code> is equal to the title in this matcher,
    * {@code false} otherwise.
    */
+  @Override
   @RunsInCurrentThread
   protected boolean isMatching(Frame frame) {
     if (!isNameMatching(frame.getName())) return false;

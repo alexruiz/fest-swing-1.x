@@ -22,7 +22,7 @@ import org.junit.Test;
 
 /**
  * Tests for <code>{@link CommonValidations#validateCellReader(Object)}</code>.
- * 
+ *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */

@@ -17,8 +17,7 @@ package org.fest.swing.driver;
 
 import static org.fest.swing.awt.AWT.*;
 
-import java.awt.Point;
-import java.awt.Rectangle;
+import java.awt.*;
 
 import javax.swing.JList;
 

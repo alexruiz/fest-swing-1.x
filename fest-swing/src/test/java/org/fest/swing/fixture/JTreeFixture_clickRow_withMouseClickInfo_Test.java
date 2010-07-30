@@ -33,11 +33,13 @@ public class JTreeFixture_clickRow_withMouseClickInfo_Test extends JTreeFixture_
     final int row = 6;
     final MouseClickInfo mouseClickInfo = MouseClickInfo.leftButton();
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().clickRow(target(), row, mouseClickInfo);
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().clickRow(row, mouseClickInfo));
       }

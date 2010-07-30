@@ -18,8 +18,7 @@ package org.fest.swing.finder;
 import java.awt.Window;
 import java.util.concurrent.TimeUnit;
 
-import org.fest.swing.core.GenericTypeMatcher;
-import org.fest.swing.core.Robot;
+import org.fest.swing.core.*;
 import org.fest.swing.fixture.WindowFixture;
 
 /**
@@ -89,5 +88,6 @@ public abstract class WindowFinderTemplate<T extends Window> extends ComponentFi
    * @throws org.fest.swing.exception.WaitTimedOutError if a window with the given name or of the given type could not
    * be found.
    */
+  @Override
   public abstract WindowFixture<T> using(Robot robot);
 }

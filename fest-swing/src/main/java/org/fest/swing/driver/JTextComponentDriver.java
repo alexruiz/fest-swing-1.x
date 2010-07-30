@@ -14,8 +14,7 @@
  */
 package org.fest.swing.driver;
 
-import static java.lang.Math.max;
-import static java.lang.Math.min;
+import static java.lang.Math.*;
 import static java.lang.String.valueOf;
 import static javax.swing.text.DefaultEditorKit.deletePrevCharAction;
 import static org.fest.assertions.Assertions.assertThat;
@@ -35,15 +34,12 @@ import java.awt.*;
 import java.util.regex.Pattern;
 
 import javax.swing.*;
-import javax.swing.text.BadLocationException;
-import javax.swing.text.JTextComponent;
+import javax.swing.text.*;
 
 import org.fest.assertions.Description;
-import org.fest.swing.annotation.RunsInCurrentThread;
-import org.fest.swing.annotation.RunsInEDT;
+import org.fest.swing.annotation.*;
 import org.fest.swing.core.Robot;
-import org.fest.swing.edt.GuiQuery;
-import org.fest.swing.edt.GuiTask;
+import org.fest.swing.edt.*;
 import org.fest.swing.exception.ActionFailedException;
 import org.fest.swing.util.Pair;
 
@@ -164,6 +160,7 @@ public class JTextComponentDriver extends JComponentDriver implements TextDispla
   @RunsInEDT
   private static int indexOfText(final JTextComponent textBox, final String text) {
     return execute(new GuiQuery<Integer>() {
+      @Override
       protected Integer executeInEDT() {
         validateIsEnabledAndShowing(textBox);
         String actualText = textBox.getText();
@@ -192,6 +189,7 @@ public class JTextComponentDriver extends JComponentDriver implements TextDispla
   @RunsInEDT
   private static Point validateAndScrollToPosition(final JTextComponent textBox, final int index) {
     return execute(new GuiQuery<Point>() {
+      @Override
       protected Point executeInEDT() {
         validateIsEnabledAndShowing(textBox);
         return scrollToVisible(textBox, index);
@@ -202,6 +200,7 @@ public class JTextComponentDriver extends JComponentDriver implements TextDispla
   @RunsInEDT
   private static Point scrollToPosition(final JTextComponent textBox, final int index) {
     return execute(new GuiQuery<Point>() {
+      @Override
       protected Point executeInEDT() {
         return scrollToVisible(textBox, index);
       }
@@ -283,6 +282,7 @@ public class JTextComponentDriver extends JComponentDriver implements TextDispla
   @RunsInEDT
   private static void performAndValidateTextSelection(final JTextComponent textBox, final int start, final int end) {
     execute(new GuiTask() {
+      @Override
       protected void executeInEDT() {
         selectTextInRange(textBox, start, end);
         verifyTextWasSelected(textBox, start, end);

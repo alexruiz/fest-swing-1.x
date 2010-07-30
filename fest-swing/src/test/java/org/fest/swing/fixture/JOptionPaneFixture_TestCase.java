@@ -41,13 +41,17 @@ public abstract class JOptionPaneFixture_TestCase extends ComponentFixture_Imple
     target = optionPane().createNew();
   }
 
+  @Override
   final void onSetUp() {
     driver = createMock(JOptionPaneDriver.class);
     fixture = new JOptionPaneFixture(robot(), target);
     fixture.driver(driver);
   }
 
+  @Override
   final JOptionPaneDriver driver() {  return driver; }
+  @Override
   final JOptionPane target() { return target; }
+  @Override
   final JOptionPaneFixture fixture() { return fixture; }
 }

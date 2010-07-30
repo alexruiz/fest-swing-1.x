@@ -19,8 +19,7 @@ import static org.fest.assertions.Assertions.assertThat;
 
 import java.awt.Toolkit;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Tests for <code>{@link ToolkitProvider}</code>.

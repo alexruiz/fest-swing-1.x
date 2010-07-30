@@ -16,8 +16,7 @@ package org.fest.swing.query;
 
 import static org.fest.swing.edt.GuiActionRunner.execute;
 
-import java.awt.Color;
-import java.awt.Component;
+import java.awt.*;
 
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
@@ -42,6 +41,7 @@ public final class ComponentBackgroundQuery {
   @RunsInEDT
   public static Color backgroundOf(final Component component) {
     return execute(new GuiQuery<Color>() {
+      @Override
       protected Color executeInEDT() {
         return component.getBackground();
       }

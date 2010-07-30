@@ -42,13 +42,17 @@ public class JScrollBarFixture_keyboardInput_Test extends KeyboardInputSimulatio
     target = scrollBar().createNew();
   }
 
+  @Override
   void onSetUp() {
     driver = createMock(JScrollBarDriver.class);
     fixture = new JScrollBarFixture(robot(), target);
     fixture.driver(driver);
   }
 
+  @Override
   JScrollBarDriver driver() {  return driver; }
+  @Override
   JScrollBar target() { return target; }
+  @Override
   JScrollBarFixture fixture() { return fixture; }
 }

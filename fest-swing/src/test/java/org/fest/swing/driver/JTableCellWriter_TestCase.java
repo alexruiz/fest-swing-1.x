@@ -38,7 +38,7 @@ public abstract class JTableCellWriter_TestCase extends RobotBasedTestCase {
   TableDialogEditDemoWindow window;
   JTable table;
   JTableCellWriter writer;
-  
+
   @Override protected final void onSetUp() {
     writer = createWriter();
     window = TableDialogEditDemoWindow.createNew(getClass());
@@ -51,7 +51,7 @@ public abstract class JTableCellWriter_TestCase extends RobotBasedTestCase {
   final void assertMessageIndicatesWriterWasUnableToActivateEditor(ActionFailedException e) {
     assertThat(e.getMessage()).contains("Unable to find or activate editor");
   }
-  
+
   @RunsInEDT
   final Object valueAt(int row, int column) {
     return cellValueOf(window.table, row, column);

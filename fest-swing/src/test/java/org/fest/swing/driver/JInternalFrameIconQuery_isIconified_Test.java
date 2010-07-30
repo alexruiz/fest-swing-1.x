@@ -23,8 +23,7 @@ import java.beans.PropertyVetoException;
 import javax.swing.JInternalFrame;
 
 import org.fest.swing.annotation.RunsInEDT;
-import org.fest.swing.edt.GuiQuery;
-import org.fest.swing.edt.GuiTask;
+import org.fest.swing.edt.*;
 import org.fest.swing.test.core.RobotBasedTestCase;
 import org.fest.swing.test.swing.TestMdiWindow;
 import org.junit.Test;
@@ -55,7 +54,7 @@ public class JInternalFrameIconQuery_isIconified_Test extends RobotBasedTestCase
     setIconAndMaximum(internalFrame, true, false);
     robot.waitForIdle();
   }
-  
+
   @Test
   public void should_return_false_if_JInternalFrame_is_normalized() {
     normalize();
@@ -83,15 +82,17 @@ public class JInternalFrameIconQuery_isIconified_Test extends RobotBasedTestCase
   @RunsInEDT
   private static boolean isIconified(final JInternalFrame internalFrame) {
     return execute(new GuiQuery<Boolean>() {
+      @Override
       protected Boolean executeInEDT() {
         return JInternalFrameIconQuery.isIconified(internalFrame);
       }
     });
   }
-  
+
   @RunsInEDT
   private static void setIconAndMaximum(final JInternalFrame internalFrame, final boolean icon, final boolean maximum) {
     execute(new GuiTask() {
+      @Override
       protected void executeInEDT() throws PropertyVetoException {
         internalFrame.setIcon(icon);
         internalFrame.setMaximum(maximum);

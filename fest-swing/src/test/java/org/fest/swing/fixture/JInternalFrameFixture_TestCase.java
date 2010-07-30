@@ -41,13 +41,17 @@ public abstract class JInternalFrameFixture_TestCase extends ComponentFixture_Im
     target = internalFrame().createNew();
   }
 
+  @Override
   final void onSetUp() {
     driver = createMock(JInternalFrameDriver.class);
     fixture = new JInternalFrameFixture(robot(), target);
     fixture.driver(driver);
   }
 
+  @Override
   final JInternalFrameDriver driver() {  return driver; }
+  @Override
   final JInternalFrame target() { return target; }
+  @Override
   final JInternalFrameFixture fixture() { return fixture; }
 }

@@ -21,8 +21,7 @@ import static org.fest.swing.test.builder.JDialogs.dialog;
 import javax.swing.JDialog;
 
 import org.fest.swing.test.core.SequentialEDTSafeTestCase;
-import org.fest.swing.test.swing.TestDialog;
-import org.fest.swing.test.swing.TestWindow;
+import org.fest.swing.test.swing.*;
 import org.junit.Test;
 
 /**

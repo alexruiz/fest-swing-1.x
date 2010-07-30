@@ -21,12 +21,11 @@ import static org.fest.swing.driver.JSplitPaneLocationCalculator.locationToMoveD
 import static org.fest.swing.driver.JSplitPaneSetDividerLocationTask.setDividerLocation;
 import static org.fest.swing.edt.GuiActionRunner.execute;
 
-import java.awt.*;
+import java.awt.Point;
 
 import javax.swing.JSplitPane;
 
-import org.fest.swing.annotation.RunsInCurrentThread;
-import org.fest.swing.annotation.RunsInEDT;
+import org.fest.swing.annotation.*;
 import org.fest.swing.core.Robot;
 import org.fest.swing.edt.GuiQuery;
 import org.fest.swing.util.GenericRange;
@@ -92,6 +91,7 @@ public class JSplitPaneDriver extends JComponentDriver {
   private static GenericRange<Point> validateAndFindWhereToMoveDividerVertically(final JSplitPane splitPane,
       final int location) {
     return execute(new GuiQuery<GenericRange<Point>>() {
+      @Override
       protected GenericRange<Point> executeInEDT() {
         validateIsEnabledAndShowing(splitPane);
         return whereToMoveDividerVertically(splitPane, location);
@@ -115,6 +115,7 @@ public class JSplitPaneDriver extends JComponentDriver {
   private static GenericRange<Point> validateAndFindWhereToMoveDividerHorizontally(final JSplitPane splitPane,
       final int location) {
     return execute(new GuiQuery<GenericRange<Point>>() {
+      @Override
       protected GenericRange<Point> executeInEDT() {
         validateIsEnabledAndShowing(splitPane);
         return whereToMoveDividerHorizontally(splitPane, location);

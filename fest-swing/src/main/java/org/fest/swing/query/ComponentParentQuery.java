@@ -17,8 +17,7 @@ package org.fest.swing.query;
 
 import static org.fest.swing.edt.GuiActionRunner.execute;
 
-import java.awt.Component;
-import java.awt.Container;
+import java.awt.*;
 
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
@@ -43,6 +42,7 @@ public final class ComponentParentQuery {
   @RunsInEDT
   public static Container parentOf(final Component component) {
     return execute(new GuiQuery<Container>() {
+      @Override
       protected Container executeInEDT() {
         return component.getParent();
       }

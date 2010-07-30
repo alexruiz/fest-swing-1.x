@@ -22,8 +22,7 @@ import static org.fest.swing.test.task.WindowDestroyTask.hideAndDisposeInEDT;
 import java.awt.Frame;
 
 import org.fest.swing.driver.FrameDriver;
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
+import org.junit.*;
 
 /**
  * Tests for methods in <code>{@link FrameFixture}</code> that are inherited from
@@ -49,13 +48,17 @@ public class FrameFixture_keyboardInput_Test extends KeyboardInputSimulationFixt
     hideAndDisposeInEDT(target);
   }
 
+  @Override
   void onSetUp() {
     driver = createMock(FrameDriver.class);
     fixture = new FrameFixture(robot(), target);
     fixture.driver(driver);
   }
 
+  @Override
   FrameDriver driver() { return driver; }
+  @Override
   Frame target() { return target; }
+  @Override
   FrameFixture fixture() { return fixture; }
 }

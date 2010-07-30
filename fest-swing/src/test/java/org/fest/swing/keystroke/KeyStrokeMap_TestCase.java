@@ -20,13 +20,11 @@ import static java.awt.event.KeyEvent.VK_A;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.keystroke.TestKeyStrokeMappingProviders.newKeyStrokeMappingProviderMock;
 
-import java.util.ArrayList;
-import java.util.Collection;
+import java.util.*;
 
 import javax.swing.KeyStroke;
 
-import org.junit.After;
-import org.junit.Before;
+import org.junit.*;
 
 /**
  * Base test case for <code>{@link KeyStrokeMap}</code>.

@@ -31,11 +31,13 @@ public class FrameFixture_iconify_Test extends FrameFixture_TestCase {
   @Test
   public void should_iconify() {
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().iconify(target());
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().iconify());
       }

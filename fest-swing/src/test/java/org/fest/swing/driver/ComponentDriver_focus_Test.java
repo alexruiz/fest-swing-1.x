@@ -35,6 +35,7 @@ public class ComponentDriver_focus_Test extends ComponentDriver_TestCase {
     showWindow();
     driver.focus(window.button);
     pause(new Condition("Component has focus") {
+      @Override
       public boolean test() {
         return hasFocus(window.button);
       }

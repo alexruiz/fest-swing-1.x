@@ -19,10 +19,9 @@ import java.util.regex.Pattern;
 
 import javax.swing.JProgressBar;
 
-import org.fest.swing.core.*;
+import org.fest.swing.core.Robot;
 import org.fest.swing.driver.JProgressBarDriver;
-import org.fest.swing.exception.ComponentLookupException;
-import org.fest.swing.exception.WaitTimedOutError;
+import org.fest.swing.exception.*;
 import org.fest.swing.timing.Timeout;
 
 /**

@@ -17,8 +17,8 @@ package org.fest.swing.input;
 import static org.fest.swing.test.awt.TestAWTEventListeners.singletonAWTEventListenerMock;
 import static org.fest.swing.test.awt.Toolkits.newToolkitStub;
 
-import java.awt.AWTEvent;
-import java.awt.ActiveEvent;
+import java.awt.*;
+
 import org.fest.swing.test.awt.ToolkitStub;
 import org.junit.Before;
 

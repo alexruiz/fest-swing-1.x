@@ -30,11 +30,13 @@ public class JComboBoxFixture_requireItemCount_Test extends JComboBoxFixture_Tes
   @Test
   public void should_require_item_count() {
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().requireItemCount(target(), 6);
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().requireItemCount(6));
       }

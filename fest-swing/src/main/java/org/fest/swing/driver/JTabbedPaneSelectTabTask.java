@@ -33,6 +33,7 @@ final class JTabbedPaneSelectTabTask {
   @RunsInEDT
   static void setSelectedTab(final JTabbedPane tabbedPane, final int index) {
     execute(new GuiTask() {
+      @Override
       protected void executeInEDT() {
         tabbedPane.setSelectedIndex(index);
       }

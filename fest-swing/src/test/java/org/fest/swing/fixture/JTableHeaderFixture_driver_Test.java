@@ -16,12 +16,12 @@
 package org.fest.swing.fixture;
 
 import static org.easymock.classextension.EasyMock.createMock;
+
 import javax.swing.table.JTableHeader;
 
 import org.fest.swing.core.TestRobots;
 import org.fest.swing.test.core.EDTSafeTestCase;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Tests for <code>{@link JTableHeaderFixture#driver(org.fest.swing.driver.JTableHeaderDriver)}</code>.

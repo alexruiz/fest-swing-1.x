@@ -14,8 +14,7 @@
  */
 package org.fest.swing.annotation;
 
-import java.lang.reflect.AnnotatedElement;
-import java.lang.reflect.Method;
+import java.lang.reflect.*;
 
 /**
  * Understands utility methods related to GUI tests. A GUI test is a class or method annotated with
@@ -26,7 +25,7 @@ import java.lang.reflect.Method;
 public final class GUITestFinder {
 
   /**
-   * Returns {@code true} if the given class and/or method are annotated with <code>{@link GUITest}</code>. This method 
+   * Returns {@code true} if the given class and/or method are annotated with <code>{@link GUITest}</code>. This method
    * also searches in super-classes and overridden methods.
    * @param type the class to check.
    * @param method the method to check.

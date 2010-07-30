@@ -16,8 +16,7 @@ package org.fest.swing.query;
 
 import static org.fest.swing.edt.GuiActionRunner.execute;
 
-import java.awt.Component;
-import java.awt.Dimension;
+import java.awt.*;
 
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
@@ -41,6 +40,7 @@ public final class ComponentSizeQuery {
   @RunsInEDT
   public static Dimension sizeOf(final Component component) {
     return execute(new GuiQuery<Dimension>() {
+      @Override
       protected Dimension executeInEDT() {
         return component.getSize();
       }

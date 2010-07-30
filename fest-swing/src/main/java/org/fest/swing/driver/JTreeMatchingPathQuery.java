@@ -7,8 +7,7 @@ import static org.fest.swing.edt.GuiActionRunner.execute;
 import javax.swing.JTree;
 import javax.swing.tree.TreePath;
 
-import org.fest.swing.annotation.RunsInCurrentThread;
-import org.fest.swing.annotation.RunsInEDT;
+import org.fest.swing.annotation.*;
 import org.fest.swing.edt.GuiQuery;
 
 /**
@@ -25,6 +24,7 @@ final class JTreeMatchingPathQuery {
   static TreePath verifyJTreeIsReadyAndFindMatchingPath(final JTree tree, final String path,
       final JTreePathFinder pathFinder) {
     return execute(new GuiQuery<TreePath>() {
+      @Override
       protected TreePath executeInEDT() {
         validateIsEnabledAndShowing(tree);
         return matchingPathWithRootIfInvisible(tree, path, pathFinder);
@@ -35,6 +35,7 @@ final class JTreeMatchingPathQuery {
   @RunsInEDT
   static TreePath matchingPathFor(final JTree tree, final String path, final JTreePathFinder pathFinder) {
     return execute(new GuiQuery<TreePath>() {
+      @Override
       protected TreePath executeInEDT() {
         return matchingPathWithRootIfInvisible(tree, path, pathFinder);
       }

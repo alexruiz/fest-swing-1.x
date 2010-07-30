@@ -16,8 +16,7 @@ package org.fest.swing.annotation;
 
 import static java.lang.annotation.ElementType.*;
 
-import java.lang.annotation.Documented;
-import java.lang.annotation.Target;
+import java.lang.annotation.*;
 
 /**
  * Understands an annotation that documents that a method is accessing GUI components in the current thread. The

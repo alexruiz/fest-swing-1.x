@@ -1,15 +1,15 @@
 /*
  * Created on Dec 22, 2007
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
- * 
+ *
  * Copyright @2007-2010 the original author or authors.
  */
 package org.fest.swing.core;
@@ -18,27 +18,25 @@ import static org.fest.swing.edt.GuiActionRunner.execute;
 import static org.fest.swing.format.Formatting.format;
 import static org.fest.swing.hierarchy.NewHierarchy.ignoreExistingComponents;
 
-import java.awt.Component;
-import java.awt.Container;
+import java.awt.*;
 import java.io.PrintStream;
 
-import org.fest.swing.annotation.RunsInCurrentThread;
-import org.fest.swing.annotation.RunsInEDT;
+import org.fest.swing.annotation.*;
 import org.fest.swing.edt.GuiTask;
 import org.fest.swing.hierarchy.*;
 
 /**
  * Understands printing the <code>String</code> representation of <code>{@link java.awt.Component}</code>s to
  * facilitate debugging.
- * 
+ *
  * @author Alex Ruiz
  */
 public final class BasicComponentPrinter implements ComponentPrinter {
 
   private static final String INDENTATION = "  ";
-  
+
   private static final ComponentMatcher ALWAYS_MATCHES = alwaysMatches();
-  
+
   private static ComponentMatcher alwaysMatches() {
     return new ComponentMatcher() {
       public boolean matches(Component c) {
@@ -46,7 +44,7 @@ public final class BasicComponentPrinter implements ComponentPrinter {
       }
     };
   }
-  
+
   private final ComponentHierarchy hierarchy;
 
   /**
@@ -75,13 +73,13 @@ public final class BasicComponentPrinter implements ComponentPrinter {
   protected BasicComponentPrinter(ComponentHierarchy hierarchy) {
     this.hierarchy = hierarchy;
   }
-  
+
   /**
    * Returns the component hierarchy used by this printer.
    * @return the component hierarchy used by this printer.
    */
   protected final ComponentHierarchy hierarchy() { return hierarchy; }
-  
+
   /** {@inheritDoc} */
   @RunsInEDT
   public void printComponents(PrintStream out) {
@@ -99,7 +97,7 @@ public final class BasicComponentPrinter implements ComponentPrinter {
   public void printComponents(PrintStream out, Class<? extends Component> type) {
     printComponents(out, type, null);
   }
-  
+
   /** {@inheritDoc} */
   @RunsInEDT
   public void printComponents(PrintStream out, Class<? extends Component> type, Container root) {
@@ -123,20 +121,21 @@ public final class BasicComponentPrinter implements ComponentPrinter {
   private void validateNotNull(PrintStream out) {
     if (out == null) throw new NullPointerException("The output stream should not be null");
   }
-  
+
   private ComponentHierarchy hierarchy(Container root) {
     return root != null ? new SingleComponentHierarchy(root, hierarchy) : hierarchy;
   }
-  
+
   @RunsInEDT
   private static void print(final ComponentHierarchy hierarchy, final ComponentMatcher matcher, final PrintStream out) {
     execute(new GuiTask() {
+      @Override
       protected void executeInEDT() {
         for (Component c : hierarchy.roots()) print(c, hierarchy, matcher, 0, out);
       }
     });
   }
-  
+
   @RunsInCurrentThread
   private static void print(Component c, ComponentHierarchy h, ComponentMatcher matcher, int level,
       PrintStream out) {

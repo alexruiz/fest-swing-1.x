@@ -23,13 +23,11 @@ import static org.fest.swing.test.builder.JOptionPanes.optionPane;
 import static org.fest.swing.test.core.CommonAssertions.failWhenExpectingException;
 
 import java.awt.Component;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 import org.fest.mocks.EasyMockTemplate;
 import org.fest.swing.test.core.EDTSafeTestCase;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Tests for <code>{@link UnexpectedJOptionPaneFinder#requireNoJOptionPaneIsShowing}</code>.
@@ -49,10 +47,12 @@ public class UnexpectedJOptionPaneFinder_requireNoJOptionPaneIsShowing_Test exte
   @Test
   public void should_pass_if_there_are_not_any_JOptionPanes_showing() {
     new EasyMockTemplate(delegate) {
+      @Override
       protected void expectations() {
         expect(delegate.findAll(OPTION_PANE_MATCHER)).andReturn(new ArrayList<Component>());
       }
 
+      @Override
       protected void codeToTest() {
         finder.requireNoJOptionPaneIsShowing();
       }
@@ -62,12 +62,14 @@ public class UnexpectedJOptionPaneFinder_requireNoJOptionPaneIsShowing_Test exte
   @Test
   public void should_fail_if_there_is_a_JOptionPane_showing() {
     new EasyMockTemplate(delegate) {
+      @Override
       protected void expectations() {
         List<Component> found = new ArrayList<Component>();
         found.add(optionPane().createNew());
         expect(delegate.findAll(OPTION_PANE_MATCHER)).andReturn(found);
       }
 
+      @Override
       protected void codeToTest() {
         try {
           finder.requireNoJOptionPaneIsShowing();

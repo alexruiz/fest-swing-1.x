@@ -15,16 +15,14 @@
  */
 package org.fest.swing.format;
 
-import static javax.swing.JOptionPane.DEFAULT_OPTION;
-import static javax.swing.JOptionPane.ERROR_MESSAGE;
+import static javax.swing.JOptionPane.*;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.test.builder.JOptionPanes.optionPane;
 
 import javax.swing.JOptionPane;
 
 import org.fest.swing.test.core.EDTSafeTestCase;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Tests for <code>{@link JOptionPaneFormatter#format(java.awt.Component)}</code>.

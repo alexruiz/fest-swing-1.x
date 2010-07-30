@@ -62,6 +62,7 @@ public class JProgressBarFixture_constructor_withRobotAndName_Test extends Robot
 
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
+        @Override
         protected MyWindow executeInEDT() {
           return new MyWindow();
         }

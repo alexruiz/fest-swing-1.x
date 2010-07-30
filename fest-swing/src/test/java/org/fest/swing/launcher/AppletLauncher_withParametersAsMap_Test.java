@@ -17,8 +17,7 @@ package org.fest.swing.launcher;
 
 import static org.fest.assertions.Assertions.assertThat;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 import org.fest.swing.test.swing.TestApplet;
 import org.junit.Test;

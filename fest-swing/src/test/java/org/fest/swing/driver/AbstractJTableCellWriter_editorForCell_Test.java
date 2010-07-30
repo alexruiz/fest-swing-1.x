@@ -18,8 +18,7 @@ package org.fest.swing.driver;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.util.Collections.list;
 
-import java.awt.Component;
-import java.awt.Dimension;
+import java.awt.*;
 import java.util.Collection;
 
 import javax.swing.*;
@@ -27,7 +26,7 @@ import javax.swing.*;
 import org.fest.swing.test.core.RobotBasedTestCase;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
+import org.junit.runners.*;
 import org.junit.runners.Parameterized.Parameters;
 
 /**
@@ -41,11 +40,11 @@ public class AbstractJTableCellWriter_editorForCell_Test extends RobotBasedTestC
 
   private TableDialogEditDemoWindow frame;
   private AbstractJTableCellWriter writer;
-  
+
   private final int row;
   private final int column;
   private final Class<Component> editorType;
-  
+
   @Parameters
   public static Collection<Object[]> cellEditors() {
     return list(new Object[][] {
@@ -60,7 +59,7 @@ public class AbstractJTableCellWriter_editorForCell_Test extends RobotBasedTestC
     this.column = column;
     this.editorType = editorType;
   }
-  
+
   @Override protected void onSetUp() {
     writer = new AbstractJTableCellWriterStub(robot);
     frame = TableDialogEditDemoWindow.createNew(AbstractJTableCellWriter_editorForCell_Test.class);

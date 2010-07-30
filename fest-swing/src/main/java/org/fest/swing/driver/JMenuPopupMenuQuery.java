@@ -2,8 +2,7 @@ package org.fest.swing.driver;
 
 import static org.fest.swing.edt.GuiActionRunner.execute;
 
-import javax.swing.JMenu;
-import javax.swing.JPopupMenu;
+import javax.swing.*;
 
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
@@ -21,6 +20,7 @@ final class JMenuPopupMenuQuery {
   @RunsInEDT
   static JPopupMenu popupMenuOf(final JMenu menu) {
     return execute(new GuiQuery<JPopupMenu>() {
+      @Override
       protected JPopupMenu executeInEDT() {
         return menu.getPopupMenu();
       }

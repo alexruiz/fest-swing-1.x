@@ -16,15 +16,13 @@ package org.fest.swing.driver;
 
 import static java.awt.Frame.*;
 import static org.fest.swing.driver.ComponentStateValidator.validateIsEnabledAndShowing;
-import static org.fest.swing.driver.WindowLikeContainerLocations.iconifyLocationOf;
-import static org.fest.swing.driver.WindowLikeContainerLocations.maximizeLocationOf;
+import static org.fest.swing.driver.WindowLikeContainerLocations.*;
 import static org.fest.swing.edt.GuiActionRunner.execute;
 import static org.fest.swing.exception.ActionFailedException.actionFailure;
 
 import java.awt.*;
 
-import org.fest.swing.annotation.RunsInEDT;
-import org.fest.swing.annotation.ThreadSafeAction;
+import org.fest.swing.annotation.*;
 import org.fest.swing.core.Robot;
 import org.fest.swing.edt.GuiQuery;
 import org.fest.swing.exception.ActionFailedException;
@@ -68,6 +66,7 @@ public class FrameDriver extends WindowDriver {
   @RunsInEDT
   private static Point iconifyInfo(final Frame frame) {
     return execute(new GuiQuery<Point>() {
+      @Override
       protected Point executeInEDT() {
         validateIsEnabledAndShowing(frame);
         return iconifyLocationOf(frame);
@@ -117,6 +116,7 @@ public class FrameDriver extends WindowDriver {
   @RunsInEDT
   private static Point maximizeInfo(final Frame frame) {
     return execute(new GuiQuery<Point>() {
+      @Override
       protected Point executeInEDT() {
         validateIsEnabledAndShowing(frame);
         return maximizeLocationOf(frame);

@@ -33,6 +33,7 @@ public final class JTreeSelectRowTask {
   @RunsInEDT
   public static void selectRow(final JTree tree, final int row) {
     execute(new GuiTask() {
+      @Override
       protected void executeInEDT() {
         tree.setSelectionRow(row);
       }

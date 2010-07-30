@@ -16,8 +16,7 @@ package org.fest.swing.timing;
 
 import static org.fest.util.Strings.concat;
 
-import org.fest.assertions.BasicDescription;
-import org.fest.assertions.Description;
+import org.fest.assertions.*;
 
 /**
  * Understands a condition to verify, usually used in the method <code>{@link Pause#pause(Condition)}</code>.

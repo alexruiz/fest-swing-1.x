@@ -21,8 +21,7 @@ import static org.fest.swing.test.builder.JTabbedPanes.tabbedPane;
 import javax.swing.JTabbedPane;
 
 import org.fest.swing.test.core.EDTSafeTestCase;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Tests for <code>{@link JTabbedPaneFormatter#format(java.awt.Component)}</code>.

@@ -18,46 +18,44 @@
  */
 package org.fest.swing.core;
 
+import static org.fest.assertions.Assertions.assertThat;
+import static org.fest.swing.edt.GuiActionRunner.execute;
+import static org.fest.swing.query.ComponentLocationOnScreenQuery.locationOnScreen;
+import static org.fest.swing.query.ComponentShowingQuery.isShowing;
+import static org.fest.swing.test.task.ComponentRequestFocusAndWaitForFocusGainTask.giveFocusAndWaitTillIsFocused;
+import static org.fest.swing.test.task.ComponentSetPopupMenuTask.createAndSetPopupMenu;
+
 import java.awt.Point;
 
-import javax.swing.JPopupMenu;
-import javax.swing.JTextField;
+import javax.swing.*;
 
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
 import org.fest.swing.test.core.EDTSafeTestCase;
 import org.fest.swing.test.swing.TestWindow;
-import org.junit.After;
-import org.junit.Before;
-
-import static org.fest.assertions.Assertions.assertThat;
-import static org.fest.swing.edt.GuiActionRunner.execute;
-import static org.fest.swing.query.ComponentShowingQuery.isShowing;
-import static org.fest.swing.query.ComponentLocationOnScreenQuery.locationOnScreen;
-import static org.fest.swing.test.task.ComponentRequestFocusAndWaitForFocusGainTask.giveFocusAndWaitTillIsFocused;
-import static org.fest.swing.test.task.ComponentSetPopupMenuTask.createAndSetPopupMenu;
+import org.junit.*;
 
 public class BasicRobot_WithoutScreenLock_TestCase extends EDTSafeTestCase {
-	
+
 	BasicRobot robot;
 	MyWindow window;
-	
+
 	@Before
 	public final void setUp() {
 		robot = (BasicRobot)BasicRobot.robotWithNewAwtHierarchyWithoutScreenLock();
 		window = MyWindow.createAndShow(getClass());
-		
+
 		beforeShowingWindow();
-		
+
 		robot.showWindow(window);
-		
+
 		assertThat(isShowing(window)).isTrue();
-		assertThat(locationOnScreen(window)).isEqualTo(new Point(100, 100));	
-		
+		assertThat(locationOnScreen(window)).isEqualTo(new Point(100, 100));
+
 	}
-	
+
 	void beforeShowingWindow() {}
-	
+
 	@After
 	public final void tearDown() {
 		try {
@@ -78,7 +76,7 @@ public class BasicRobot_WithoutScreenLock_TestCase extends EDTSafeTestCase {
 	}
 
 	static class MyWindow extends TestWindow {
-	
+
 		private static final long serialVersionUID = 1L;
 
 	    final JTextField textField = new JTextField(10);
@@ -86,7 +84,8 @@ public class BasicRobot_WithoutScreenLock_TestCase extends EDTSafeTestCase {
 	    @RunsInEDT
 	    static MyWindow createAndShow(final Class<?> testClass) {
 	      return execute(new GuiQuery<MyWindow>() {
-	        protected MyWindow executeInEDT() {
+	        @Override
+          protected MyWindow executeInEDT() {
 	          return display(new MyWindow(testClass));
 	        }
 	      });
@@ -96,5 +95,5 @@ public class BasicRobot_WithoutScreenLock_TestCase extends EDTSafeTestCase {
 	      super(testClass);
 	      addComponents(textField);
 	    }
-	}	
+	}
 }

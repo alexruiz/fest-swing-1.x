@@ -31,11 +31,13 @@ public class JMenuItemFixture_focus_Test extends JMenuItemFixture_TestCase {
   @Test
   public final void should_give_focus() {
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().focus(target());
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().focus());
       }

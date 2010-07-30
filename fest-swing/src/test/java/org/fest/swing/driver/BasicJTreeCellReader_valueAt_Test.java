@@ -22,17 +22,13 @@ import static org.fest.swing.test.builder.JToolBars.toolBar;
 
 import java.awt.Component;
 
-import javax.swing.JLabel;
-import javax.swing.JTree;
-import javax.swing.tree.DefaultMutableTreeNode;
-import javax.swing.tree.DefaultTreeModel;
+import javax.swing.*;
+import javax.swing.tree.*;
 
 import org.fest.swing.annotation.RunsInEDT;
-import org.fest.swing.edt.GuiQuery;
-import org.fest.swing.edt.GuiTask;
+import org.fest.swing.edt.*;
 import org.fest.swing.test.core.RobotBasedTestCase;
-import org.fest.swing.test.swing.CustomCellRenderer;
-import org.fest.swing.test.swing.TestWindow;
+import org.fest.swing.test.swing.*;
 import org.junit.Test;
 
 /**
@@ -85,6 +81,7 @@ public class BasicJTreeCellReader_valueAt_Test extends RobotBasedTestCase {
   @RunsInEDT
   private static void setRootInTree(final JTree tree, final DefaultMutableTreeNode root) {
     execute(new GuiTask() {
+      @Override
       protected void executeInEDT() {
         ((DefaultTreeModel)tree.getModel()).setRoot(root);
       }
@@ -94,6 +91,7 @@ public class BasicJTreeCellReader_valueAt_Test extends RobotBasedTestCase {
   @RunsInEDT
   private static void setCellRendererComponent(final JTree tree, final Component renderer) {
     execute(new GuiTask() {
+      @Override
       protected void executeInEDT() {
         tree.setCellRenderer(new CustomCellRenderer(renderer));
       }
@@ -111,6 +109,7 @@ public class BasicJTreeCellReader_valueAt_Test extends RobotBasedTestCase {
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
+        @Override
         protected MyWindow executeInEDT() {
           return new MyWindow();
         }

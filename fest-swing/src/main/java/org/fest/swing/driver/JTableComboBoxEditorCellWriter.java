@@ -21,8 +21,7 @@ import static org.fest.util.Collections.list;
 
 import java.awt.Point;
 
-import javax.swing.JComboBox;
-import javax.swing.JTable;
+import javax.swing.*;
 
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.cell.JTableCellWriter;
@@ -61,7 +60,7 @@ public class JTableComboBoxEditorCellWriter extends AbstractJTableCellWriter {
     }
     driver.enterText(editor, value);
   }
-  
+
   /** {@inheritDoc} */
   @RunsInEDT
   public void startCellEditing(JTable table, int row, int column) {

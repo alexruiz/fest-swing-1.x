@@ -21,8 +21,7 @@ import static org.fest.swing.core.TestComponentFinders.newComponentFinderMock;
 import javax.swing.JTextField;
 
 import org.fest.mocks.EasyMockTemplate;
-import org.fest.swing.core.ComponentFinder;
-import org.fest.swing.core.Robot;
+import org.fest.swing.core.*;
 import org.junit.Test;
 
 /**
@@ -46,12 +45,14 @@ public class ComponentFixture_constructor_withLookupByType_Test extends Componen
   public void should_lookup_Component_by_type() {
     final ComponentFinder finder = newComponentFinderMock();
     new EasyMockTemplate(robot, finder) {
+      @Override
       protected void expectations() {
         expect(robot.settings()).andReturn(settings);
         expect(robot.finder()).andReturn(finder);
         expect(finder.findByType(type, requireShowing())).andReturn(target);
       }
 
+      @Override
       protected void codeToTest() {
         assertHasCorrectTarget(new ConcreteComponentFixture(robot, type));
       }

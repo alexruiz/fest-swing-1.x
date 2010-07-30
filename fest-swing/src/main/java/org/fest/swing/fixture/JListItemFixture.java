@@ -15,16 +15,13 @@
  */
 package org.fest.swing.fixture;
 
-import static org.fest.swing.core.MouseButton.LEFT_BUTTON;
-import static org.fest.swing.core.MouseButton.RIGHT_BUTTON;
+import static org.fest.swing.core.MouseButton.*;
 
 import javax.swing.JList;
 
 import org.fest.swing.cell.JListCellReader;
-import org.fest.swing.core.MouseButton;
-import org.fest.swing.core.MouseClickInfo;
-import org.fest.swing.exception.ActionFailedException;
-import org.fest.swing.exception.ComponentLookupException;
+import org.fest.swing.core.*;
+import org.fest.swing.exception.*;
 
 /**
  * Understands functional testing of single rows in <code>{@link JList}</code>s:

@@ -32,11 +32,13 @@ public class JScrollBarFixtureTest extends JScrollBarFixture_TestCase {
   @Test
   public void shouldRequireValue() {
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().requireValue(target(), 8);
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().requireValue(8));
       }
@@ -46,11 +48,13 @@ public class JScrollBarFixtureTest extends JScrollBarFixture_TestCase {
   @Test
   public void shouldScrollBlockDown() {
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().scrollBlockDown(target());
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().scrollBlockDown());
       }
@@ -60,11 +64,13 @@ public class JScrollBarFixtureTest extends JScrollBarFixture_TestCase {
   @Test
   public void shouldScrollBlockDownTheGivenTimes() {
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().scrollBlockDown(target(), 6);
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().scrollBlockDown(6));
       }
@@ -74,11 +80,13 @@ public class JScrollBarFixtureTest extends JScrollBarFixture_TestCase {
   @Test
   public void shouldScrollBlockUp() {
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().scrollBlockUp(target());
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().scrollBlockUp());
       }
@@ -88,11 +96,13 @@ public class JScrollBarFixtureTest extends JScrollBarFixture_TestCase {
   @Test
   public void shouldScrollBlockUpTheGivenTimes() {
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().scrollBlockUp(target(), 6);
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().scrollBlockUp(6));
       }
@@ -102,11 +112,13 @@ public class JScrollBarFixtureTest extends JScrollBarFixture_TestCase {
   @Test
   public void shouldScrollToMaximum() {
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().scrollToMaximum(target());
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().scrollToMaximum());
       }
@@ -116,11 +128,13 @@ public class JScrollBarFixtureTest extends JScrollBarFixture_TestCase {
   @Test
   public void shouldScrollToMinimum() {
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().scrollToMinimum(target());
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().scrollToMinimum());
       }
@@ -130,11 +144,13 @@ public class JScrollBarFixtureTest extends JScrollBarFixture_TestCase {
   @Test
   public void shouldScrollToPosition() {
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().scrollTo(target(), 8);
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().scrollTo(8));
       }
@@ -144,11 +160,13 @@ public class JScrollBarFixtureTest extends JScrollBarFixture_TestCase {
   @Test
   public void shouldScrollUnitDown() {
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().scrollUnitDown(target());
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().scrollUnitDown());
       }
@@ -158,11 +176,13 @@ public class JScrollBarFixtureTest extends JScrollBarFixture_TestCase {
   @Test
   public void shouldScrollUnitDownTheGivenTimes() {
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().scrollUnitDown(target(), 6);
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().scrollUnitDown(6));
       }
@@ -172,11 +192,13 @@ public class JScrollBarFixtureTest extends JScrollBarFixture_TestCase {
   @Test
   public void shouldScrollUnitUp() {
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().scrollUnitUp(target());
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().scrollUnitUp());
       }
@@ -186,11 +208,13 @@ public class JScrollBarFixtureTest extends JScrollBarFixture_TestCase {
   @Test
   public void shouldScrollUnitUpTheGivenTimes() {
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().scrollUnitUp(target(), 6);
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().scrollUnitUp(6));
       }

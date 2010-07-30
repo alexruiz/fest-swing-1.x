@@ -22,8 +22,7 @@ import javax.swing.JSlider;
 
 import org.fest.swing.core.*;
 import org.fest.swing.driver.JSliderDriver;
-import org.fest.swing.exception.ComponentLookupException;
-import org.fest.swing.exception.WaitTimedOutError;
+import org.fest.swing.exception.*;
 import org.fest.swing.timing.Timeout;
 
 /**

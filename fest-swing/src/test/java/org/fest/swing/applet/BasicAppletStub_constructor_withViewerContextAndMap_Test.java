@@ -22,8 +22,7 @@ import java.applet.AppletContext;
 import java.awt.Window;
 import java.util.HashMap;
 
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Tests for <code>{@link BasicAppletStub#BasicAppletStub(java.awt.Window, java.applet.AppletContext, java.util.Map)}</code>

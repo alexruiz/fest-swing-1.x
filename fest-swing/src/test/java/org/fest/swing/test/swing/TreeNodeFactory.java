@@ -15,8 +15,7 @@
  */
 package org.fest.swing.test.swing;
 
-import javax.swing.tree.DefaultMutableTreeNode;
-import javax.swing.tree.MutableTreeNode;
+import javax.swing.tree.*;
 
 /**
  * Understands creation of <code>{@link javax.swing.tree.TreeNode}</code>s.

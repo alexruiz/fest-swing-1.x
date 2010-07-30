@@ -19,12 +19,9 @@ import static javax.swing.Box.createVerticalStrut;
 import static javax.swing.BoxLayout.Y_AXIS;
 import static org.fest.swing.edt.GuiActionRunner.execute;
 
-import java.awt.BorderLayout;
-import java.awt.Component;
+import java.awt.*;
 
-import javax.swing.Box;
-import javax.swing.JButton;
-import javax.swing.JScrollPane;
+import javax.swing.*;
 
 import org.fest.swing.edt.GuiQuery;
 import org.fest.swing.fixture.JButtonFixture;
@@ -60,6 +57,7 @@ public class Scrolling_scrollToVisible_Test extends RobotBasedTestCase {
 
     static MyWindow createAndShow() {
       return execute(new GuiQuery<MyWindow>() {
+        @Override
         protected MyWindow executeInEDT() {
           MyWindow w = new MyWindow();
           display(w);

@@ -17,8 +17,7 @@ package org.fest.swing.driver;
 import static org.fest.swing.driver.ComponentMovableQuery.isUserMovable;
 import static org.fest.swing.driver.ComponentMoveTask.moveComponent;
 import static org.fest.swing.driver.ComponentSetSizeTask.setComponentSize;
-import static org.fest.swing.driver.ComponentStateValidator.componentNotShowingOnScreenFailure;
-import static org.fest.swing.driver.ComponentStateValidator.validateIsEnabledAndShowing;
+import static org.fest.swing.driver.ComponentStateValidator.*;
 import static org.fest.swing.driver.ContainerStateValidator.validateCanResize;
 import static org.fest.swing.edt.GuiActionRunner.execute;
 import static org.fest.swing.format.Formatting.format;
@@ -26,12 +25,10 @@ import static org.fest.util.Strings.concat;
 
 import java.awt.*;
 
-import org.fest.swing.annotation.RunsInCurrentThread;
-import org.fest.swing.annotation.RunsInEDT;
+import org.fest.swing.annotation.*;
 import org.fest.swing.core.Robot;
 import org.fest.swing.edt.GuiQuery;
-import org.fest.swing.util.Pair;
-import org.fest.swing.util.Triple;
+import org.fest.swing.util.*;
 
 /**
  * Understands functional testing of <code>{@link Container}</code>s:
@@ -105,6 +102,7 @@ public abstract class ContainerDriver extends ComponentDriver {
   @RunsInEDT
   private static Pair<Dimension, Insets> resizeInfo(final Container c) {
     return execute(new GuiQuery<Pair<Dimension, Insets>>() {
+      @Override
       protected Pair<Dimension, Insets> executeInEDT() {
         validateCanResize(c);
         return new Pair<Dimension, Insets>(c.getSize(), c.getInsets());
@@ -158,6 +156,7 @@ public abstract class ContainerDriver extends ComponentDriver {
   @RunsInEDT
   private static Triple<Dimension, Insets, Point> moveInfo(final Container c) {
     return execute(new GuiQuery<Triple<Dimension, Insets, Point>>() {
+      @Override
       protected Triple<Dimension, Insets, Point> executeInEDT() {
         validateCanMove(c);
         Point locationOnScreen = null;

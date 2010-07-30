@@ -40,6 +40,7 @@ public abstract class JTreeDriver_clickCell_TestCase extends JTreeDriver_TestCas
   @RunsInEDT
   private static int rowAtPoint(final JTree tree, final Point p) {
     return execute(new GuiQuery<Integer>() {
+      @Override
       protected Integer executeInEDT() {
         return tree.getRowForLocation(p.x, p.y);
       }
@@ -49,6 +50,7 @@ public abstract class JTreeDriver_clickCell_TestCase extends JTreeDriver_TestCas
   @RunsInEDT
   static String pathAtPoint(final JTree tree, final Point p, final String separator) {
     return execute(new GuiQuery<String>() {
+      @Override
       protected String executeInEDT() {
         TreePath path = tree.getPathForLocation(p.x, p.y);
         return pathText(path, separator);

@@ -19,14 +19,12 @@ import static java.awt.GridBagConstraints.REMAINDER;
 import static javax.swing.BorderFactory.createEmptyBorder;
 import static org.fest.swing.edt.GuiActionRunner.execute;
 
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
+import java.awt.*;
 
 import javax.swing.*;
 
 import org.fest.swing.edt.GuiQuery;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Tests for <code>{@link Containers}</code>.
@@ -39,6 +37,7 @@ public class ContainersTest {
 
   @Before public void setUp() {
     panel = execute(new GuiQuery<MyPanel>() {
+      @Override
       protected MyPanel executeInEDT() {
         return new MyPanel();
       }

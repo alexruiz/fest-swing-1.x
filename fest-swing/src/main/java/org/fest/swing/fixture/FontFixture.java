@@ -16,13 +16,11 @@
 package org.fest.swing.fixture;
 
 import static org.fest.assertions.Assertions.assertThat;
-import static org.fest.util.Strings.concat;
-import static org.fest.util.Strings.isEmpty;
+import static org.fest.util.Strings.*;
 
 import java.awt.Font;
 
-import org.fest.assertions.BasicDescription;
-import org.fest.assertions.Description;
+import org.fest.assertions.*;
 
 /**
  * Understands state verification of <code>{@link Font}</code>s.

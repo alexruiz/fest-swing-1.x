@@ -22,6 +22,7 @@ package org.fest.swing.core;
  */
 public class ReflectionBasedFocusOwnerFinder_Test extends FocusOwnerFinderStrategy_focusOwner_TestCase {
 
+  @Override
   protected FocusOwnerFinderStrategy createStrategyToTest() {
     return new ReflectionBasedFocusOwnerFinder();
   }

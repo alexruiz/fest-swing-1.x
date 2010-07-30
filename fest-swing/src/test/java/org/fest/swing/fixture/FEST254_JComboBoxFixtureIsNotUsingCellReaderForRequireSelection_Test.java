@@ -6,14 +6,11 @@ import static org.fest.util.Arrays.array;
 
 import java.awt.Component;
 
-import javax.swing.JComboBox;
-import javax.swing.JList;
-import javax.swing.plaf.basic.BasicComboBoxEditor;
-import javax.swing.plaf.basic.BasicComboBoxRenderer;
+import javax.swing.*;
+import javax.swing.plaf.basic.*;
 
 import org.fest.swing.annotation.RunsInEDT;
-import org.fest.swing.edt.GuiQuery;
-import org.fest.swing.edt.GuiTask;
+import org.fest.swing.edt.*;
 import org.fest.swing.test.core.RobotBasedTestCase;
 import org.fest.swing.test.swing.TestWindow;
 import org.junit.Test;
@@ -46,6 +43,7 @@ public class FEST254_JComboBoxFixtureIsNotUsingCellReaderForRequireSelection_Tes
   @RunsInEDT
   private static void selectIndex(final JComboBox comboBox, final int index) {
     execute(new GuiTask() {
+      @Override
       protected void executeInEDT() {
         comboBox.setSelectedIndex(index);
       }
@@ -60,6 +58,7 @@ public class FEST254_JComboBoxFixtureIsNotUsingCellReaderForRequireSelection_Tes
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
+        @Override
         protected MyWindow executeInEDT() {
           return new MyWindow();
         }

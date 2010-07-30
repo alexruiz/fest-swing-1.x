@@ -18,12 +18,10 @@ package org.fest.swing.driver;
 import static org.fest.swing.core.matcher.JButtonMatcher.withText;
 import static org.fest.swing.driver.JFileChooserApproveButtonTextQuery.approveButtonTextFrom;
 import static org.fest.swing.driver.JFileChooserCancelButtonTextQuery.cancelButtonText;
-import static org.fest.swing.driver.JFileChooserSelectFileTask.validateAndSelectFile;
-import static org.fest.swing.driver.JFileChooserSelectFileTask.validateAndSelectFiles;
+import static org.fest.swing.driver.JFileChooserSelectFileTask.*;
 import static org.fest.swing.driver.JFileChooserSetCurrentDirectoryTask.validateAndSetCurrentDirectory;
 import static org.fest.util.Arrays.isEmpty;
-import static org.fest.util.Strings.concat;
-import static org.fest.util.Strings.quote;
+import static org.fest.util.Strings.*;
 
 import java.io.File;
 

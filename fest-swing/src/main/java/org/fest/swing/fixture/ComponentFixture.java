@@ -25,8 +25,7 @@ import static org.fest.swing.query.ComponentForegroundQuery.foregroundOf;
 
 import java.awt.Component;
 
-import org.fest.swing.core.Robot;
-import org.fest.swing.core.Settings;
+import org.fest.swing.core.*;
 import org.fest.swing.driver.ComponentDriver;
 import org.fest.swing.edt.GuiActionRunner;
 import org.fest.swing.exception.ComponentLookupException;

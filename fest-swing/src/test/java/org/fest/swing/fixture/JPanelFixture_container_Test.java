@@ -22,8 +22,7 @@ import static org.fest.swing.test.builder.JPanels.panel;
 import javax.swing.JPanel;
 
 import org.fest.swing.driver.JComponentDriver;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Tests that <code>{@link JPanelFixture}</code> is a <code>{@link ContainerFixture}</code>.
@@ -43,6 +42,7 @@ public class JPanelFixture_container_Test extends ComponentFixture_Implementatio
     target = panel().createNew();
   }
 
+  @Override
   void onSetUp() {
     driver = createMock(JComponentDriver.class);
     fixture = new JPanelFixture(robot(), target);
@@ -54,7 +54,10 @@ public class JPanelFixture_container_Test extends ComponentFixture_Implementatio
     assertThat(fixture).isInstanceOf(ContainerFixture.class);
   }
 
+  @Override
   JComponentDriver driver() {  return driver; }
+  @Override
   JPanel target() { return target; }
+  @Override
   JPanelFixture fixture() { return fixture; }
 }

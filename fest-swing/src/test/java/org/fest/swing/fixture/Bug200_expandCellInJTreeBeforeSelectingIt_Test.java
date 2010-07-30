@@ -1,16 +1,16 @@
 /*
  * Created on Oct 14, 2008
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License
  * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
- * 
+ *
  * Copyright @2008-2010 the original author or authors.
  */
 package org.fest.swing.fixture;
@@ -19,8 +19,7 @@ import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.edt.GuiActionRunner.execute;
 
 import java.awt.Dimension;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.event.*;
 
 import javax.swing.*;
 import javax.swing.tree.DefaultMutableTreeNode;
@@ -39,7 +38,7 @@ import org.junit.Test;
 public class Bug200_expandCellInJTreeBeforeSelectingIt_Test extends RobotBasedTestCase {
 
   private FrameFixture frame;
-  
+
   @Override protected void onSetUp() {
     frame = new FrameFixture(robot, MyWindow.createNew());
     frame.show();
@@ -50,19 +49,20 @@ public class Bug200_expandCellInJTreeBeforeSelectingIt_Test extends RobotBasedTe
     JPopupMenuFixture popupMenu = frame.tree("tree").showPopupMenuAt("root/node");
     assertThat(popupMenu).isNotNull();
   }
-  
+
   private static class MyWindow extends TestWindow {
     private static final long serialVersionUID = 1L;
 
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
+        @Override
         protected MyWindow executeInEDT() {
           return new MyWindow();
         }
       });
     }
-     
+
     private MyWindow() {
       super(Bug200_expandCellInJTreeBeforeSelectingIt_Test.class);
       JScrollPane scrollPane = new JScrollPane(tree());
@@ -87,14 +87,14 @@ public class Bug200_expandCellInJTreeBeforeSelectingIt_Test extends RobotBasedTe
       return popupMenu;
     }
   }
-  
+
   private static class MyMouseListener extends MouseAdapter {
     private final JPopupMenu popupMenu;
 
     MyMouseListener(JPopupMenu popupMenu) {
       this.popupMenu = popupMenu;
     }
-    
+
     @Override public void mouseReleased(MouseEvent e) {
       if (!e.isPopupTrigger()) return;
       popupMenu.show(e.getComponent(), e.getX(), e.getY());

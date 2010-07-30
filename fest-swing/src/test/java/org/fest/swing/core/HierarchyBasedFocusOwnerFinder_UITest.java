@@ -23,6 +23,7 @@ package org.fest.swing.core;
  */
 public class HierarchyBasedFocusOwnerFinder_UITest extends FocusOwnerFinderStrategy_focusOwner_TestCase {
 
+  @Override
   protected FocusOwnerFinderStrategy createStrategyToTest() {
     return new HierarchyBasedFocusOwnerFinder();
   }

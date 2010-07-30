@@ -15,12 +15,10 @@
  */
 package org.fest.swing.driver;
 
-import static java.awt.Adjustable.HORIZONTAL;
-import static java.awt.Adjustable.VERTICAL;
+import static java.awt.Adjustable.*;
 
 import java.awt.Point;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 import javax.swing.JScrollBar;
 

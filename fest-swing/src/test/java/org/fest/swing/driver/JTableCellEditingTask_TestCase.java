@@ -23,8 +23,7 @@ import javax.swing.*;
 import javax.swing.table.AbstractTableModel;
 
 import org.fest.swing.annotation.RunsInEDT;
-import org.fest.swing.edt.GuiQuery;
-import org.fest.swing.edt.GuiTask;
+import org.fest.swing.edt.*;
 import org.fest.swing.test.core.RobotBasedTestCase;
 import org.fest.swing.test.swing.TestWindow;
 
@@ -44,6 +43,7 @@ public abstract class JTableCellEditingTask_TestCase extends RobotBasedTestCase 
   @RunsInEDT
   final void editTableCellAt(final int row, final int col) {
     execute(new GuiTask() {
+      @Override
       protected void executeInEDT() {
         window.table.editCellAt(row, col);
       }
@@ -55,6 +55,7 @@ public abstract class JTableCellEditingTask_TestCase extends RobotBasedTestCase 
   @RunsInEDT
   final boolean isTableEditing() {
     return execute(new GuiQuery<Boolean>() {
+      @Override
       protected Boolean executeInEDT() {
         return window.table.isEditing();
       }
@@ -76,6 +77,7 @@ public abstract class JTableCellEditingTask_TestCase extends RobotBasedTestCase 
 
     static MyWindow createNew(final Class<?> testClass) {
       return execute(new GuiQuery<MyWindow>() {
+        @Override
         protected MyWindow executeInEDT() {
           return new MyWindow(testClass);
         }

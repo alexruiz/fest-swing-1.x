@@ -20,10 +20,8 @@ import static org.fest.swing.edt.GuiActionRunner.execute;
 
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
-import org.fest.swing.test.core.MethodInvocations;
-import org.fest.swing.test.core.RobotBasedTestCase;
-import org.fest.swing.test.swing.TestTable;
-import org.fest.swing.test.swing.TestWindow;
+import org.fest.swing.test.core.*;
+import org.fest.swing.test.swing.*;
 import org.junit.Test;
 
 /**
@@ -57,6 +55,7 @@ public class JTableColumnCountQuery_columnCountOf_Test extends RobotBasedTestCas
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
+        @Override
         protected MyWindow executeInEDT() {
           return new MyWindow();
         }

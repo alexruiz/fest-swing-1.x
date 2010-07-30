@@ -16,14 +16,13 @@
 package org.fest.swing.test.swing;
 
 import static java.awt.BorderLayout.CENTER;
-
-import java.awt.*;
-import java.awt.event.*;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 import static javax.swing.JOptionPane.*;
 import static javax.swing.JRootPane.*;
 import static javax.swing.UIManager.getLookAndFeel;
+
+import java.awt.*;
+import java.awt.event.*;
+import java.beans.*;
 
 import javax.swing.*;
 

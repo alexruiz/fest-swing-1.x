@@ -35,6 +35,7 @@ final class JTextComponentSelectAllTask {
   @RunsInEDT
   static void selectAllText(final JTextComponent textBox) {
     execute(new GuiTask() {
+      @Override
       protected void executeInEDT() {
         textBox.selectAll();
       }

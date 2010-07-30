@@ -16,6 +16,7 @@
 package org.fest.swing.fixture;
 
 import static org.easymock.EasyMock.expectLastCall;
+
 import java.awt.Point;
 
 import org.fest.mocks.EasyMockTemplate;
@@ -33,11 +34,13 @@ public class JToolBarFixture_float_Test extends JToolBarFixture_TestCase {
   public void should_float_to_point() {
     final Point p = new Point(8, 6);
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().floatTo(target(), p.x, p.y);
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().floatTo(p));
       }

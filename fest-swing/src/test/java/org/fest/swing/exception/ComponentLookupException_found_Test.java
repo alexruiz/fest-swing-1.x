@@ -20,8 +20,7 @@ import static org.fest.swing.test.builder.JLabels.label;
 import static org.fest.swing.test.builder.JTextFields.textField;
 
 import java.awt.Component;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 import org.junit.Test;
 

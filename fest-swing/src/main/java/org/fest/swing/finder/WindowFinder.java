@@ -15,8 +15,7 @@
  */
 package org.fest.swing.finder;
 
-import java.awt.Dialog;
-import java.awt.Frame;
+import java.awt.*;
 
 import org.fest.swing.core.GenericTypeMatcher;
 

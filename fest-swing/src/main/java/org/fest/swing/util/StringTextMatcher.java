@@ -16,8 +16,7 @@
 package org.fest.swing.util;
 
 import static org.fest.swing.util.Strings.areEqualOrMatch;
-import static org.fest.util.Arrays.format;
-import static org.fest.util.Arrays.isEmpty;
+import static org.fest.util.Arrays.*;
 import static org.fest.util.Strings.quote;
 
 /**

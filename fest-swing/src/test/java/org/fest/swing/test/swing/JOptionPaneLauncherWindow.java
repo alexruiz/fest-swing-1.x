@@ -15,16 +15,14 @@
  */
 package org.fest.swing.test.swing;
 
-import static javax.swing.JOptionPane.PLAIN_MESSAGE;
-import static javax.swing.JOptionPane.showMessageDialog;
+import static javax.swing.JOptionPane.*;
 import static org.fest.swing.edt.GuiActionRunner.execute;
 
 import java.awt.event.*;
 
 import javax.swing.*;
 
-import org.fest.swing.annotation.RunsInCurrentThread;
-import org.fest.swing.annotation.RunsInEDT;
+import org.fest.swing.annotation.*;
 import org.fest.swing.edt.GuiQuery;
 import org.fest.swing.finder.JOptionPaneFinder_TestCase;
 
@@ -40,6 +38,7 @@ public class JOptionPaneLauncherWindow extends TestWindow {
   @RunsInEDT
   public static JOptionPaneLauncherWindow createNew(final Class<?> testClass) {
     return execute(new GuiQuery<JOptionPaneLauncherWindow>() {
+      @Override
       protected JOptionPaneLauncherWindow executeInEDT() {
         return new JOptionPaneLauncherWindow(testClass);
       }

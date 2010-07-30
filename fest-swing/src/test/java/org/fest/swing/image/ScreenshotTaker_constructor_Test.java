@@ -25,8 +25,7 @@ import java.awt.AWTException;
 
 import org.fest.mocks.EasyMockTemplate;
 import org.fest.swing.util.RobotFactory;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Tests for <code>{@link ScreenshotTaker#ScreenshotTaker(ImageFileWriter, RobotFactory)}</code>.
@@ -49,10 +48,12 @@ public class ScreenshotTaker_constructor_Test {
   @Test
   public void should_throw_wrapped_Exception_thrown_when_creating_Robot() {
     new EasyMockTemplate(writer, robotFactory) {
+      @Override
       protected void expectations() throws Throwable {
         expect(robotFactory.newRobotInPrimaryScreen()).andThrow(toThrow);
       }
 
+      @Override
       protected void codeToTest() {
         try {
           new ScreenshotTaker(writer, robotFactory);

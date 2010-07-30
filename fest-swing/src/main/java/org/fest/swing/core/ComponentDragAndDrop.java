@@ -18,8 +18,7 @@ package org.fest.swing.core;
 import static org.fest.swing.core.MouseButton.LEFT_BUTTON;
 import static org.fest.swing.exception.ActionFailedException.actionFailure;
 import static org.fest.swing.timing.Pause.pause;
-import static org.fest.swing.util.Platform.isMacintosh;
-import static org.fest.swing.util.Platform.isWindows;
+import static org.fest.swing.util.Platform.*;
 import static org.fest.swing.util.TimeoutWatch.startWatchWithTimeoutOf;
 
 import java.awt.*;

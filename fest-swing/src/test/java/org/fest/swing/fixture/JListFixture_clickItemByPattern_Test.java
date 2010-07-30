@@ -35,11 +35,13 @@ public class JListFixture_clickItemByPattern_Test extends JListFixture_TestCase 
   public void should_click_item() {
     final Pattern pattern = regex("Hello");
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().clickItem(target(), pattern, LEFT_BUTTON, 1);
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().clickItem(pattern));
       }

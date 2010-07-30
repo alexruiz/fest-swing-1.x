@@ -22,14 +22,12 @@ import static org.fest.swing.test.task.ComponentRequestFocusAndWaitForFocusGainT
 
 import java.awt.*;
 
-import javax.swing.JButton;
-import javax.swing.JTextField;
+import javax.swing.*;
 
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
 import org.fest.swing.test.core.SequentialEDTSafeTestCase;
-import org.fest.swing.test.swing.TestDialog;
-import org.fest.swing.test.swing.TestWindow;
+import org.fest.swing.test.swing.*;
 import org.junit.Test;
 
 /**
@@ -91,6 +89,7 @@ public class ContainerFocusOwnerFinder_focusOwnerOf_Test extends SequentialEDTSa
   @RunsInEDT
   private Component focusOwnerOf(final Container c) {
     return execute(new GuiQuery<Component>() {
+      @Override
       protected Component executeInEDT() {
         return finder.focusOwnerOf(c);
       }
@@ -105,6 +104,7 @@ public class ContainerFocusOwnerFinder_focusOwnerOf_Test extends SequentialEDTSa
     @RunsInEDT
     static MyDialog createAndShow(final Frame owner) {
       return execute(new GuiQuery<MyDialog>() {
+        @Override
         protected MyDialog executeInEDT() {
           MyDialog dialog = new MyDialog(owner);
           dialog.displayInCurrentThread();
@@ -131,6 +131,7 @@ public class ContainerFocusOwnerFinder_focusOwnerOf_Test extends SequentialEDTSa
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
+        @Override
         protected MyWindow executeInEDT() {
           return new MyWindow();
         }

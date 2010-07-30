@@ -24,7 +24,7 @@ import javax.swing.*;
 import org.fest.swing.annotation.RunsInCurrentThread;
 
 /**
- * Understands how to find the parent of a <code>{@link Component}</code>. This method returns the most likely parent 
+ * Understands how to find the parent of a <code>{@link Component}</code>. This method returns the most likely parent
  * based on the type of a given {@code Component}.
  * <p>
  * <b>Note:</b> Methods in this class are <b>not</b> executed in the event dispatch thread (EDT.) Clients are

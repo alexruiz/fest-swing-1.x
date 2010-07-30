@@ -15,8 +15,7 @@
  */
 package org.fest.swing.fixture;
 
-import static org.easymock.EasyMock.expect;
-import static org.easymock.EasyMock.expectLastCall;
+import static org.easymock.EasyMock.*;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.test.core.Regex.regex;
 
@@ -24,8 +23,7 @@ import java.awt.Component;
 import java.util.regex.Pattern;
 
 import org.fest.mocks.EasyMockTemplate;
-import org.fest.swing.driver.ComponentDriver;
-import org.fest.swing.driver.TextDisplayDriver;
+import org.fest.swing.driver.*;
 import org.junit.Test;
 
 /**
@@ -41,11 +39,13 @@ public abstract class TextDisplayFixture_TestCase<T extends Component> extends
   @Test
   public void should_require_text() {
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         textDisplayDriver().requireText(target(), "Some Text");
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().requireText("Some Text"));
       }
@@ -56,11 +56,13 @@ public abstract class TextDisplayFixture_TestCase<T extends Component> extends
   public void should_require_text_matching_pattern() {
     final Pattern pattern = regex(".");
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         textDisplayDriver().requireText(target(), pattern);
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().requireText(pattern));
       }
@@ -71,10 +73,12 @@ public abstract class TextDisplayFixture_TestCase<T extends Component> extends
   public void should_return_text() {
     final String text = "Some Text";
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         expect(textDisplayDriver().textOf(target())).andReturn(text);
       }
 
+      @Override
       protected void codeToTest() {
         assertThat(fixture().text()).isEqualTo(text);
       }
@@ -88,5 +92,6 @@ public abstract class TextDisplayFixture_TestCase<T extends Component> extends
     return (TextDisplayDriver<T>)driver;
   }
 
+  @Override
   abstract TextDisplayFixture fixture();
 }

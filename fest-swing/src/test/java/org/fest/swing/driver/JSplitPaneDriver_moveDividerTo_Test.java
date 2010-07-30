@@ -15,8 +15,7 @@
  */
 package org.fest.swing.driver;
 
-import static javax.swing.JSplitPane.HORIZONTAL_SPLIT;
-import static javax.swing.JSplitPane.VERTICAL_SPLIT;
+import static javax.swing.JSplitPane.*;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.edt.GuiActionRunner.execute;
 import static org.fest.swing.test.core.CommonAssertions.*;
@@ -25,8 +24,7 @@ import static org.fest.swing.test.task.ComponentSetEnabledTask.disable;
 import java.awt.Dimension;
 import java.util.Collection;
 
-import javax.swing.JList;
-import javax.swing.JSplitPane;
+import javax.swing.*;
 
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
@@ -35,7 +33,7 @@ import org.fest.swing.test.swing.TestWindow;
 import org.fest.util.Collections;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
+import org.junit.runners.*;
 import org.junit.runners.Parameterized.Parameters;
 
 /**
@@ -116,6 +114,7 @@ public class JSplitPaneDriver_moveDividerTo_Test extends RobotBasedTestCase {
     @RunsInEDT
     static MyWindow createNew(final int orientation, final Class<?> testClass) {
       return execute(new GuiQuery<MyWindow>() {
+        @Override
         protected MyWindow executeInEDT() {
           return new MyWindow(orientation, testClass);
         }

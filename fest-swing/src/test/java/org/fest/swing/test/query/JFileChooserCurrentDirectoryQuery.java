@@ -43,6 +43,7 @@ public final class JFileChooserCurrentDirectoryQuery {
   @RunsInEDT
   public static File currentDirectoryOf(final JFileChooser fileChooser) {
     return execute(new GuiQuery<File>() {
+      @Override
       protected File executeInEDT() {
         return fileChooser.getCurrentDirectory();
       }

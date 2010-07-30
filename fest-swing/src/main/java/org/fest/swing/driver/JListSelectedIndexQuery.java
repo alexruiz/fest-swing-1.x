@@ -34,6 +34,7 @@ final class JListSelectedIndexQuery {
   @RunsInEDT
   static int selectedIndexOf(final JList list) {
     return execute(new GuiQuery<Integer>() {
+      @Override
       protected Integer executeInEDT() {
         return list.getSelectedIndex();
       }

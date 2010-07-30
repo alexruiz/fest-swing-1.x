@@ -22,8 +22,7 @@ import static org.fest.swing.test.builder.JLists.list;
 import javax.swing.JList;
 
 import org.fest.swing.test.core.EDTSafeTestCase;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Tests for <code>{@link JListFormatter#format(java.awt.Component)}</code>.

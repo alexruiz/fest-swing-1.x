@@ -67,7 +67,7 @@ public class JComboBoxDriver_selectAllText_Test extends JComboBoxDriver_TestCase
       assertThatErrorCauseIsNotEditableComboBox(e);
     }
   }
-  
+
   @Test
   public void should_select_all_text() {
     showWindow();
@@ -85,6 +85,7 @@ public class JComboBoxDriver_selectAllText_Test extends JComboBoxDriver_TestCase
   @RunsInEDT
   private static String selectedTextOf(final JComboBox comboBox) {
     return execute(new GuiQuery<String>() {
+      @Override
       protected String executeInEDT() {
         Component editor = comboBox.getEditor().getEditorComponent();
         assertThat(editor).isInstanceOf(JTextComponent.class);

@@ -16,14 +16,11 @@
 package org.fest.swing.driver;
 
 import static org.fest.swing.exception.ActionFailedException.actionFailure;
-import static org.fest.util.Strings.concat;
-import static org.fest.util.Strings.quote;
+import static org.fest.util.Strings.*;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
-import javax.swing.InputMap;
-import javax.swing.KeyStroke;
+import javax.swing.*;
 
 import org.fest.swing.annotation.RunsInCurrentThread;
 

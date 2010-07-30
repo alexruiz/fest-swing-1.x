@@ -22,8 +22,7 @@ import static org.fest.swing.test.core.CommonAssertions.failWhenExpectingExcepti
 import javax.swing.JLabel;
 
 import org.fest.swing.core.GenericTypeMatcher;
-import org.fest.swing.edt.GuiQuery;
-import org.fest.swing.edt.GuiTask;
+import org.fest.swing.edt.*;
 import org.fest.swing.exception.ComponentLookupException;
 import org.fest.swing.test.core.RobotBasedTestCase;
 import org.fest.swing.test.swing.TestWindow;
@@ -54,6 +53,7 @@ public class ContainerFixtureJLabelLookupTest extends RobotBasedTestCase {
   @Test
   public void shouldFailIfJLabelCannotBeFoundByType() {
     execute(new GuiTask() {
+      @Override
       protected void executeInEDT() {
         window.remove(window.label);
       }
@@ -88,6 +88,7 @@ public class ContainerFixtureJLabelLookupTest extends RobotBasedTestCase {
   @Test
   public void shouldFindJLabelWithCustomMatcher() {
     JLabelFixture label = fixture.label(new GenericTypeMatcher<JLabel>(JLabel.class) {
+      @Override
       protected boolean isMatching(JLabel l) {
         return "Read Me".equals(l.getText());
       }
@@ -103,6 +104,7 @@ public class ContainerFixtureJLabelLookupTest extends RobotBasedTestCase {
   public void shouldFailIfJLabelCannotBeFoundWithCustomMatcher() {
     try {
       fixture.label(new GenericTypeMatcher<JLabel>(JLabel.class) {
+        @Override
         protected boolean isMatching(JLabel l) {
           return false;
         }
@@ -120,6 +122,7 @@ public class ContainerFixtureJLabelLookupTest extends RobotBasedTestCase {
 
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
+        @Override
         protected MyWindow executeInEDT() {
           return new MyWindow();
         }

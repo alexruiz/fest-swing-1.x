@@ -21,8 +21,7 @@ import javax.swing.JTable;
 
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
-import org.fest.swing.test.swing.TableDialogEditDemo;
-import org.fest.swing.test.swing.TestWindow;
+import org.fest.swing.test.swing.*;
 
 /**
  * Understands a frame hosting <code>{@link TableDialogEditDemo}</code>.
@@ -39,6 +38,7 @@ class TableDialogEditDemoWindow extends TestWindow {
   @RunsInEDT
   public static TableDialogEditDemoWindow createNew(final Class<?> testClass) {
     return execute(new GuiQuery<TableDialogEditDemoWindow>() {
+      @Override
       protected TableDialogEditDemoWindow executeInEDT() {
         return new TableDialogEditDemoWindow(testClass);
       }

@@ -23,8 +23,7 @@ import javax.swing.JTextField;
 import javax.swing.text.JTextComponent;
 
 import org.fest.swing.core.GenericTypeMatcher;
-import org.fest.swing.edt.GuiQuery;
-import org.fest.swing.edt.GuiTask;
+import org.fest.swing.edt.*;
 import org.fest.swing.exception.ComponentLookupException;
 import org.fest.swing.test.core.RobotBasedTestCase;
 import org.fest.swing.test.swing.TestWindow;
@@ -55,6 +54,7 @@ public class ContainerFixtureJTextComponentLookupTest extends RobotBasedTestCase
   @Test
   public void shouldFailIfJTextComponentCannotBeFoundByType() {
     execute(new GuiTask() {
+      @Override
       protected void executeInEDT() {
         window.remove(window.textBox);
       }
@@ -89,6 +89,7 @@ public class ContainerFixtureJTextComponentLookupTest extends RobotBasedTestCase
   @Test
   public void shouldFindJTextComponentWithCustomMatcher() {
     JTextComponentFixture textBox = fixture.textBox(new GenericTypeMatcher<JTextComponent>(JTextComponent.class) {
+      @Override
       protected boolean isMatching(JTextComponent b) {
         return "".equals(b.getText());
       }
@@ -104,6 +105,7 @@ public class ContainerFixtureJTextComponentLookupTest extends RobotBasedTestCase
   public void shouldFailIfJTextComponentCannotBeFoundWithCustomMatcher() {
     try {
       fixture.textBox(new GenericTypeMatcher<JTextComponent>(JTextComponent.class) {
+        @Override
         protected boolean isMatching(JTextComponent b) {
           return false;
         }
@@ -121,6 +123,7 @@ public class ContainerFixtureJTextComponentLookupTest extends RobotBasedTestCase
 
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
+        @Override
         protected MyWindow executeInEDT() {
           return new MyWindow();
         }

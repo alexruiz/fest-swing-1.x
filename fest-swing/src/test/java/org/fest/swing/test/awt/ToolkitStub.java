@@ -85,6 +85,7 @@ public abstract class ToolkitStub extends Toolkit {
     return storedMask == eventMask;
   }
 
+  @Override
   protected EventQueue getSystemEventQueueImpl() {
     return eventQueue;
   }

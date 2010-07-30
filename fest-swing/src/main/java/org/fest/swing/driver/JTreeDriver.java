@@ -16,8 +16,7 @@
 package org.fest.swing.driver;
 
 import static org.fest.assertions.Assertions.assertThat;
-import static org.fest.swing.core.MouseButton.LEFT_BUTTON;
-import static org.fest.swing.core.MouseButton.RIGHT_BUTTON;
+import static org.fest.swing.core.MouseButton.*;
 import static org.fest.swing.driver.CommonValidations.validateCellReader;
 import static org.fest.swing.driver.ComponentStateValidator.validateIsEnabledAndShowing;
 import static org.fest.swing.driver.JTreeChildrenShowUpCondition.untilChildrenShowUp;
@@ -27,8 +26,7 @@ import static org.fest.swing.driver.JTreeExpandPathTask.expandTreePath;
 import static org.fest.swing.driver.JTreeMatchingPathQuery.*;
 import static org.fest.swing.driver.JTreeNodeTextQuery.nodeText;
 import static org.fest.swing.driver.JTreeToggleExpandStateTask.toggleExpandState;
-import static org.fest.swing.driver.JTreeVerifySelectionTask.verifyNoSelection;
-import static org.fest.swing.driver.JTreeVerifySelectionTask.verifySelection;
+import static org.fest.swing.driver.JTreeVerifySelectionTask.*;
 import static org.fest.swing.edt.GuiActionRunner.execute;
 import static org.fest.swing.exception.ActionFailedException.actionFailure;
 import static org.fest.swing.timing.Pause.pause;
@@ -36,23 +34,21 @@ import static org.fest.swing.util.Arrays.isEmptyIntArray;
 import static org.fest.util.Arrays.isEmpty;
 import static org.fest.util.Strings.concat;
 
-import java.awt.Point;
-import java.awt.Rectangle;
-import javax.swing.JPopupMenu;
-import javax.swing.JTree;
+import java.awt.*;
+
+import javax.swing.*;
 import javax.swing.plaf.TreeUI;
 import javax.swing.plaf.basic.BasicTreeUI;
 import javax.swing.tree.TreePath;
 
 import org.fest.assertions.Description;
-import org.fest.swing.annotation.RunsInCurrentThread;
-import org.fest.swing.annotation.RunsInEDT;
+import org.fest.swing.annotation.*;
 import org.fest.swing.cell.JTreeCellReader;
 import org.fest.swing.core.*;
+import org.fest.swing.core.Robot;
 import org.fest.swing.edt.*;
 import org.fest.swing.exception.*;
-import org.fest.swing.util.Pair;
-import org.fest.swing.util.Triple;
+import org.fest.swing.util.*;
 import org.fest.util.VisibleForTesting;
 
 /**
@@ -372,6 +368,7 @@ public class JTreeDriver extends JComponentDriver {
   private static Triple<Boolean, Point, Integer> scrollToRowAndGetToggleInfo(final JTree tree, final int row,
       final JTreeLocation location) {
     return execute(new GuiQuery<Triple<Boolean, Point, Integer>>() {
+      @Override
       protected Triple<Boolean, Point, Integer> executeInEDT() {
         validateIsEnabledAndShowing(tree);
         Point p = scrollToVisible(tree, row, location);
@@ -432,6 +429,7 @@ public class JTreeDriver extends JComponentDriver {
   private static Triple<Boolean, Point, Integer> scrollToMatchingPathAndGetToggleInfo(final JTree tree,
       final String path, final JTreePathFinder pathFinder, final JTreeLocation location) {
     return execute(new GuiQuery<Triple<Boolean, Point, Integer>>() {
+      @Override
       protected Triple<Boolean, Point, Integer> executeInEDT() {
         validateIsEnabledAndShowing(tree);
         TreePath matchingPath = matchingPathFor(tree, path, pathFinder);
@@ -454,6 +452,7 @@ public class JTreeDriver extends JComponentDriver {
   @RunsInEDT
   private static void toggleRowThroughTreeUI(final JTree tree, final Point p) {
     execute(new GuiTask() {
+      @Override
       protected void executeInEDT() {
         TreeUI treeUI = tree.getUI();
         if (!(treeUI instanceof BasicTreeUI)) throw actionFailure(concat("Can't toggle row for ", treeUI));
@@ -479,9 +478,11 @@ public class JTreeDriver extends JComponentDriver {
     validateRows(rows);
     clearSelection(tree);
     new MultipleSelectionTemplate(robot) {
+      @Override
       int elementCount() {
         return rows.length;
       }
+      @Override
       void selectElement(int index) {
         selectRow(tree, rows[index]);
       }
@@ -528,9 +529,11 @@ public class JTreeDriver extends JComponentDriver {
     validatePaths(paths);
     clearSelection(tree);
     new MultipleSelectionTemplate(robot) {
+      @Override
       int elementCount() {
         return paths.length;
       }
+      @Override
       void selectElement(int index) {
         selectPath(tree, paths[index]);
       }
@@ -643,6 +646,7 @@ public class JTreeDriver extends JComponentDriver {
   @RunsInEDT
   private static Pair<Boolean, Point> scrollToRow(final JTree tree, final int row, final JTreeLocation location) {
     return execute(new GuiQuery<Pair<Boolean, Point>>() {
+      @Override
       protected Pair<Boolean, Point> executeInEDT() {
         validateIsEnabledAndShowing(tree);
         Point p = scrollToVisible(tree, row, location);
@@ -721,6 +725,7 @@ public class JTreeDriver extends JComponentDriver {
   @RunsInEDT
   private static Pair<Boolean, Point> scrollToPathToSelect(final JTree tree, final TreePath path, final JTreeLocation location) {
     return execute(new GuiQuery<Pair<Boolean, Point>>() {
+      @Override
       protected Pair<Boolean, Point> executeInEDT() {
         boolean isSelected = tree.getSelectionCount() == 1 && tree.isPathSelected(path);
         return new Pair<Boolean, Point>(isSelected, scrollToTreePath(tree, path, location));

@@ -22,8 +22,7 @@ import static org.fest.swing.test.task.WindowDestroyTask.hideAndDisposeInEDT;
 import java.awt.Frame;
 
 import org.fest.swing.driver.FrameDriver;
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
+import org.junit.*;
 
 /**
  * Base test class for <code>{@link FrameFixture}</code>.
@@ -48,13 +47,17 @@ public abstract class FrameFixture_TestCase extends ComponentFixture_Implementat
     hideAndDisposeInEDT(target);
   }
 
+  @Override
   final void onSetUp() {
     driver = createMock(FrameDriver.class);
     fixture = new FrameFixture(robot(), target);
     fixture.driver(driver);
   }
 
+  @Override
   final FrameDriver driver() { return driver; }
+  @Override
   final Frame target() { return target; }
+  @Override
   final FrameFixture fixture() { return fixture; }
 }

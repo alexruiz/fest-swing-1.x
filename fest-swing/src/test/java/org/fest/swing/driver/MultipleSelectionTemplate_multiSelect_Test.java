@@ -22,8 +22,7 @@ import static org.fest.swing.util.Platform.controlOrCommandKey;
 
 import org.fest.mocks.EasyMockTemplate;
 import org.fest.swing.core.Robot;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Tests for <code>{@link MultipleSelectionTemplate#multiSelect()}</code>.
@@ -43,8 +42,10 @@ public class MultipleSelectionTemplate_multiSelect_Test {
   public void should_select_once_if_element_count_is_one() {
     template = new MultipleSelection(robot, 1);
     new EasyMockTemplate(robot) {
+      @Override
       protected void expectations() {}
 
+      @Override
       protected void codeToTest() {
         template.multiSelect();
         assertThat(template.timesSelected).isEqualTo(1);
@@ -57,6 +58,7 @@ public class MultipleSelectionTemplate_multiSelect_Test {
     template = new MultipleSelection(robot, 2);
     final int key = controlOrCommandKey();
     new EasyMockTemplate(robot) {
+      @Override
       protected void expectations() {
         robot.pressKey(key);
         expectLastCall().once();
@@ -64,6 +66,7 @@ public class MultipleSelectionTemplate_multiSelect_Test {
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         template.multiSelect();
         assertThat(template.timesSelected).isEqualTo(2);
@@ -81,10 +84,12 @@ public class MultipleSelectionTemplate_multiSelect_Test {
       this.elementCount = elementCount;
     }
 
+    @Override
     int elementCount() {
       return elementCount;
     }
 
+    @Override
     void selectElement(int index) {
       timesSelected++;
     }

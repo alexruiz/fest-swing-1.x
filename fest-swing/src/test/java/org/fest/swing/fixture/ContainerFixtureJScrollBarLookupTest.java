@@ -23,8 +23,7 @@ import static org.fest.swing.test.core.CommonAssertions.failWhenExpectingExcepti
 import javax.swing.JScrollBar;
 
 import org.fest.swing.core.GenericTypeMatcher;
-import org.fest.swing.edt.GuiQuery;
-import org.fest.swing.edt.GuiTask;
+import org.fest.swing.edt.*;
 import org.fest.swing.exception.ComponentLookupException;
 import org.fest.swing.test.core.RobotBasedTestCase;
 import org.fest.swing.test.swing.TestWindow;
@@ -55,6 +54,7 @@ public class ContainerFixtureJScrollBarLookupTest extends RobotBasedTestCase {
   @Test
   public void shouldFailIfJScrollBarCannotBeFoundByType() {
     execute(new GuiTask() {
+      @Override
       protected void executeInEDT() {
         window.remove(window.scrollBar);
       }
@@ -89,6 +89,7 @@ public class ContainerFixtureJScrollBarLookupTest extends RobotBasedTestCase {
   @Test
   public void shouldFindJScrollBarWithCustomMatcher() {
     JScrollBarFixture scrollBar = fixture.scrollBar(new GenericTypeMatcher<JScrollBar>(JScrollBar.class) {
+      @Override
       protected boolean isMatching(JScrollBar s) {
         return s.getOrientation() == VERTICAL && s.getValue() == 8;
       }
@@ -104,6 +105,7 @@ public class ContainerFixtureJScrollBarLookupTest extends RobotBasedTestCase {
   public void shouldFailIfJScrollBarCannotBeFoundWithCustomMatcher() {
     try {
       fixture.scrollBar(new GenericTypeMatcher<JScrollBar>(JScrollBar.class) {
+        @Override
         protected boolean isMatching(JScrollBar s) {
           return false;
         }
@@ -121,6 +123,7 @@ public class ContainerFixtureJScrollBarLookupTest extends RobotBasedTestCase {
 
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
+        @Override
         protected MyWindow executeInEDT() {
           return new MyWindow();
         }

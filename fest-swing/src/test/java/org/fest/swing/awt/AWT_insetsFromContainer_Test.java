@@ -1,16 +1,16 @@
 /*
  * Created on Jul 24, 2009
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License
  * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
- * 
+ *
  * Copyright @2009-2010 the original author or authors.
  */
 package org.fest.swing.awt;
@@ -37,7 +37,7 @@ public class AWT_insetsFromContainer_Test {
 
   private static final Insets EMPTY_INSETS = new Insets(0, 0, 0, 0);
 
-  @Test 
+  @Test
   public void should_return_insets_from_container() {
     Robot robot = robotWithNewAwtHierarchy();
     TestWindow window = TestWindow.createNewWindow(getClass());
@@ -50,13 +50,13 @@ public class AWT_insetsFromContainer_Test {
     }
   }
 
-  @Test 
+  @Test
   public void should_return_empty_insets_if_exception_thrown() {
     Insets insets = insetsFrom(null);
     assertThat(insets).isEqualTo(EMPTY_INSETS);
   }
 
-  @Test 
+  @Test
   public void should_return_empty_insets_if_container_insets_is_null() {
     TestWindow window = WindowWithNullInsets.createNew();
     Insets insets = insetsFrom(window);
@@ -66,18 +66,20 @@ public class AWT_insetsFromContainer_Test {
   @RunsInEDT
   private static Insets insetsFrom(final Container c) {
     return execute(new GuiQuery<Insets>() {
+      @Override
       protected Insets executeInEDT() {
         return AWT.insetsFrom(c);
       }
     });
   }
-  
+
   private static class WindowWithNullInsets extends TestWindow {
     private static final long serialVersionUID = 1L;
 
     @RunsInEDT
     static WindowWithNullInsets createNew() {
       return execute(new GuiQuery<WindowWithNullInsets>() {
+        @Override
         protected WindowWithNullInsets executeInEDT() {
           return new WindowWithNullInsets();
         }

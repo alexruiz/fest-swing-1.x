@@ -21,8 +21,7 @@ import static org.fest.swing.keystroke.KeyStrokeMappingProvider.NO_MASK;
 import static org.fest.util.Closeables.close;
 import static org.fest.util.Strings.*;
 
-import java.awt.event.InputEvent;
-import java.awt.event.KeyEvent;
+import java.awt.event.*;
 import java.io.*;
 import java.util.*;
 

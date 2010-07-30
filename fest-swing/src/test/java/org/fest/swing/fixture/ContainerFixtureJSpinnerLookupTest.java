@@ -19,12 +19,10 @@ import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.edt.GuiActionRunner.execute;
 import static org.fest.swing.test.core.CommonAssertions.failWhenExpectingException;
 
-import javax.swing.JSpinner;
-import javax.swing.SpinnerNumberModel;
+import javax.swing.*;
 
 import org.fest.swing.core.GenericTypeMatcher;
-import org.fest.swing.edt.GuiQuery;
-import org.fest.swing.edt.GuiTask;
+import org.fest.swing.edt.*;
 import org.fest.swing.exception.ComponentLookupException;
 import org.fest.swing.test.core.RobotBasedTestCase;
 import org.fest.swing.test.swing.TestWindow;
@@ -55,6 +53,7 @@ public class ContainerFixtureJSpinnerLookupTest extends RobotBasedTestCase {
   @Test
   public void shouldFailIfJSpinnerCannotBeFoundByType() {
     execute(new GuiTask() {
+      @Override
       protected void executeInEDT() {
         window.remove(window.spinner);
       }
@@ -89,6 +88,7 @@ public class ContainerFixtureJSpinnerLookupTest extends RobotBasedTestCase {
   @Test
   public void shouldFindJSpinnerWithCustomMatcher() {
     JSpinnerFixture spinner = fixture.spinner(new GenericTypeMatcher<JSpinner>(JSpinner.class) {
+      @Override
       protected boolean isMatching(JSpinner s) {
         return s.getValue().equals(8);
       }
@@ -104,6 +104,7 @@ public class ContainerFixtureJSpinnerLookupTest extends RobotBasedTestCase {
   public void shouldFailIfJSpinnerCannotBeFoundWithCustomMatcher() {
     try {
       fixture.spinner(new GenericTypeMatcher<JSpinner>(JSpinner.class) {
+        @Override
         protected boolean isMatching(JSpinner s) {
           return false;
         }
@@ -121,6 +122,7 @@ public class ContainerFixtureJSpinnerLookupTest extends RobotBasedTestCase {
 
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
+        @Override
         protected MyWindow executeInEDT() {
           return new MyWindow();
         }

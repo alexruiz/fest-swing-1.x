@@ -161,6 +161,7 @@ public final class JTextComponentMatcher extends NamedComponentMatcherTemplate<J
    * @return {@code true} if the text in the <code>JTextComponent</code> is equal to the text in this matcher,
    * {@code false} otherwise.
    */
+  @Override
   @RunsInCurrentThread
   protected boolean isMatching(JTextComponent button) {
     if (!isNameMatching(button.getName())) return false;

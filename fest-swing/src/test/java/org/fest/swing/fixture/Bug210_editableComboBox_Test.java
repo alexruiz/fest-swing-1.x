@@ -20,8 +20,7 @@ import static org.fest.swing.test.query.JComboBoxSelectedItemQuery.selectedItemO
 import static org.fest.swing.test.task.JComboBoxSetSelectedItemTask.setSelectedItem;
 import static org.fest.util.Arrays.array;
 
-import javax.swing.JComboBox;
-import javax.swing.JDialog;
+import javax.swing.*;
 
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
@@ -67,6 +66,7 @@ public class Bug210_editableComboBox_Test extends RobotBasedTestCase {
     @RunsInEDT
     static MyDialog createNew(final String[] items) {
       return execute(new GuiQuery<MyDialog>() {
+        @Override
         protected MyDialog executeInEDT() {
           return new MyDialog(items);
         }

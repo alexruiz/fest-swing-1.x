@@ -20,8 +20,7 @@ import static org.fest.swing.util.Colors.colorFromHexString;
 
 import java.awt.Color;
 
-import org.fest.assertions.BasicDescription;
-import org.fest.assertions.Description;
+import org.fest.assertions.*;
 
 /**
  * Understands state verification of <code>{@link Color}</code>s.

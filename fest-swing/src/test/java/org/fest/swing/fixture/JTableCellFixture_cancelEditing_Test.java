@@ -30,11 +30,13 @@ public class JTableCellFixture_cancelEditing_Test extends JTableCellFixture_with
   @Test
   public void should_cancel_cell_editing() {
     new EasyMockTemplate(driver) {
+      @Override
       protected void expectations() {
         driver.cancelCellEditing(table.target, cell);
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture.cancelEditing());
       }

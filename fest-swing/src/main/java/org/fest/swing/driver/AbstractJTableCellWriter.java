@@ -19,28 +19,24 @@ import static java.lang.String.valueOf;
 import static org.fest.swing.driver.ComponentStateValidator.validateIsEnabledAndShowing;
 import static org.fest.swing.driver.JTableCancelCellEditingTask.cancelEditing;
 import static org.fest.swing.driver.JTableCellEditorQuery.cellEditorIn;
-import static org.fest.swing.driver.JTableCellValidator.validateCellIsEditable;
-import static org.fest.swing.driver.JTableCellValidator.validateIndices;
-import static org.fest.swing.driver.JTableStopCellEditingTask.stopEditing;
-import static org.fest.swing.driver.JTableStopCellEditingTask.validateAndStopEditing;
+import static org.fest.swing.driver.JTableCellValidator.*;
+import static org.fest.swing.driver.JTableStopCellEditingTask.*;
 import static org.fest.swing.edt.GuiActionRunner.execute;
 import static org.fest.swing.exception.ActionFailedException.actionFailure;
 import static org.fest.swing.timing.Pause.pause;
 import static org.fest.util.Strings.concat;
 
-import java.awt.Component;
-import java.awt.Point;
+import java.awt.*;
 
 import javax.swing.JTable;
 import javax.swing.table.TableCellEditor;
 
-import org.fest.swing.annotation.RunsInCurrentThread;
-import org.fest.swing.annotation.RunsInEDT;
+import org.fest.swing.annotation.*;
 import org.fest.swing.cell.JTableCellWriter;
 import org.fest.swing.core.*;
+import org.fest.swing.core.Robot;
 import org.fest.swing.edt.GuiQuery;
-import org.fest.swing.exception.ActionFailedException;
-import org.fest.swing.exception.WaitTimedOutError;
+import org.fest.swing.exception.*;
 
 /**
  * Understands the base class for implementations of <code>{@link JTableCellWriter}</code>.
@@ -114,6 +110,7 @@ public abstract class AbstractJTableCellWriter implements JTableCellWriter {
   @RunsInEDT
   protected static TableCellEditor cellEditor(final JTable table, final int row, final int column) {
     return execute(new GuiQuery<TableCellEditor>() {
+      @Override
       protected TableCellEditor executeInEDT() throws Throwable {
         return table.getCellEditor(row, column);
       }
@@ -145,6 +142,7 @@ public abstract class AbstractJTableCellWriter implements JTableCellWriter {
   @RunsInEDT
   private static Component cellEditorComponent(final JTable table, final int row, final int column) {
     return execute(new GuiQuery<Component>() {
+      @Override
       protected Component executeInEDT() {
         validateIndices(table, row, column);
         return cellEditorIn(table, row, column);
@@ -197,6 +195,7 @@ public abstract class AbstractJTableCellWriter implements JTableCellWriter {
   @RunsInEDT
   protected static Point cellLocation(final JTable table, final int row, final int column, final JTableLocation location) {
     return execute(new GuiQuery<Point>() {
+      @Override
       protected Point executeInEDT() {
         validate(table, row, column);
         scrollToCell(table, row, column, location);

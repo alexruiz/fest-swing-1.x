@@ -15,8 +15,7 @@
  */
 package org.fest.swing.util;
 
-import static org.fest.util.Strings.concat;
-import static org.fest.util.Strings.quote;
+import static org.fest.util.Strings.*;
 
 
 /**

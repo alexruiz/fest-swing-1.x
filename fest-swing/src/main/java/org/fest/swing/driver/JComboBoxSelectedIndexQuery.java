@@ -41,6 +41,7 @@ final class JComboBoxSelectedIndexQuery {
   @RunsInEDT
   public static int selectedIndexOf(final JComboBox comboBox) {
     return execute(new GuiQuery<Integer>() {
+      @Override
       protected Integer executeInEDT() {
         return comboBox.getSelectedIndex();
       }

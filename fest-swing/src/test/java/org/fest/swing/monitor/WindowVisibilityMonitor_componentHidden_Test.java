@@ -27,10 +27,12 @@ public class WindowVisibilityMonitor_componentHidden_Test extends WindowVisibili
   @Test
   public void should_mark_Window_as_hidden_when_Window_is_hidden() {
     new EasyMockTemplate(windows) {
+      @Override
       protected void expectations() {
         windows.markAsHidden(window);
       }
 
+      @Override
       protected void codeToTest() {
         monitor.componentHidden(componentEventWithWindowAsSource());
       }
@@ -40,8 +42,10 @@ public class WindowVisibilityMonitor_componentHidden_Test extends WindowVisibili
   @Test
   public void should_not_mark_Window_as_hidden_if_Component_hidden_is_not_Window() {
     new EasyMockTemplate(windows) {
+      @Override
       protected void expectations() {}
 
+      @Override
       protected void codeToTest() {
         monitor.componentHidden(componentEventWithTextFieldAsSource());
       }

@@ -20,11 +20,9 @@ import java.util.regex.Pattern;
 import javax.swing.JPopupMenu;
 import javax.swing.table.JTableHeader;
 
-import org.fest.swing.core.MouseClickInfo;
-import org.fest.swing.core.Robot;
+import org.fest.swing.core.*;
 import org.fest.swing.driver.JTableHeaderDriver;
-import org.fest.swing.exception.ComponentLookupException;
-import org.fest.swing.exception.LocationUnavailableException;
+import org.fest.swing.exception.*;
 
 /**
  * Understands functional testing of <code>{@link JTableHeader}</code>s:

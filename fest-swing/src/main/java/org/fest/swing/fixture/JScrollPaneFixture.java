@@ -17,13 +17,11 @@ package org.fest.swing.fixture;
 import java.awt.Point;
 import java.util.regex.Pattern;
 
-import javax.swing.JScrollBar;
-import javax.swing.JScrollPane;
+import javax.swing.*;
 
 import org.fest.swing.core.*;
 import org.fest.swing.driver.JScrollPaneDriver;
-import org.fest.swing.exception.ComponentLookupException;
-import org.fest.swing.exception.WaitTimedOutError;
+import org.fest.swing.exception.*;
 import org.fest.swing.timing.Timeout;
 
 /**

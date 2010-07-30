@@ -17,8 +17,7 @@ package org.fest.swing.driver;
 
 import static org.fest.swing.edt.GuiActionRunner.execute;
 
-import javax.swing.JScrollBar;
-import javax.swing.JScrollPane;
+import javax.swing.*;
 
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.core.Robot;
@@ -59,6 +58,7 @@ public class JScrollPaneDriver extends JComponentDriver {
   @RunsInEDT
   private static JScrollBar horizontalScrollBar(final JScrollPane scrollPane) {
     return execute(new GuiQuery<JScrollBar>() {
+      @Override
       protected JScrollBar executeInEDT() {
         return scrollPane.getHorizontalScrollBar();
       }
@@ -78,6 +78,7 @@ public class JScrollPaneDriver extends JComponentDriver {
   @RunsInEDT
   private static JScrollBar verticalScrollBar(final JScrollPane scrollPane) {
     return execute(new GuiQuery<JScrollBar>() {
+      @Override
       protected JScrollBar executeInEDT() {
         return scrollPane.getVerticalScrollBar();
       }

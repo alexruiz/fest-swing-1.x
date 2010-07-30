@@ -27,13 +27,12 @@ import javax.swing.JTextField;
 import javax.swing.text.JTextComponent;
 
 import org.fest.swing.annotation.RunsInEDT;
-import org.fest.swing.edt.GuiQuery;
-import org.fest.swing.edt.GuiTask;
+import org.fest.swing.edt.*;
 import org.fest.swing.test.core.RobotBasedTestCase;
 import org.fest.swing.test.swing.TestWindow;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
+import org.junit.runners.*;
 import org.junit.runners.Parameterized.Parameters;
 
 /**
@@ -65,7 +64,7 @@ public class JTextComponentSelectTextTask_selectTextInRange_Test extends RobotBa
     this.start = start;
     this.end = end;
   }
-  
+
   @Override protected void onSetUp() {
     MyWindow window = MyWindow.createNew();
     textBox = window.textBox;
@@ -83,12 +82,13 @@ public class JTextComponentSelectTextTask_selectTextInRange_Test extends RobotBa
   @RunsInEDT
   private static void selectTextInRange(final JTextComponent textBox, final int start, final int end) {
     execute(new GuiTask() {
+      @Override
       protected void executeInEDT() {
         JTextComponentSelectTextTask.selectTextInRange(textBox, start, end);
       }
     });
   }
-  
+
   private static class MyWindow extends TestWindow {
     private static final long serialVersionUID = 1L;
 
@@ -97,6 +97,7 @@ public class JTextComponentSelectTextTask_selectTextInRange_Test extends RobotBa
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
+        @Override
         protected MyWindow executeInEDT() {
           return new MyWindow();
         }

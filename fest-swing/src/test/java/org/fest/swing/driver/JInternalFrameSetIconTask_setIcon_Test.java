@@ -16,8 +16,7 @@
 package org.fest.swing.driver;
 
 import static org.fest.assertions.Assertions.assertThat;
-import static org.fest.swing.driver.JInternalFrameAction.DEICONIFY;
-import static org.fest.swing.driver.JInternalFrameAction.ICONIFY;
+import static org.fest.swing.driver.JInternalFrameAction.*;
 import static org.fest.swing.edt.GuiActionRunner.execute;
 
 import javax.swing.JInternalFrame;
@@ -58,7 +57,7 @@ public class JInternalFrameSetIconTask_setIcon_Test extends RobotBasedTestCase {
     JInternalFrameSetIconTask.setIcon(internalFrame, ICONIFY);
     robot.waitForIdle();
   }
-  
+
   @RunsInEDT
   private void deiconify() {
     JInternalFrameSetIconTask.setIcon(internalFrame, DEICONIFY);
@@ -68,6 +67,7 @@ public class JInternalFrameSetIconTask_setIcon_Test extends RobotBasedTestCase {
   @RunsInEDT
   private static boolean isIcon(final JInternalFrame internalFrame) {
     return execute(new GuiQuery<Boolean>() {
+      @Override
       protected Boolean executeInEDT() {
         return internalFrame.isIcon() && !internalFrame.isMaximum();
       }

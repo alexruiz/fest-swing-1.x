@@ -15,8 +15,7 @@
  */
 package org.fest.swing.fixture;
 
-import java.awt.Dimension;
-import java.awt.Point;
+import java.awt.*;
 
 /**
  * Understands functional testing of window-like containers (not necessarily subclasses of

@@ -23,8 +23,7 @@ import javax.swing.JSplitPane;
 
 import org.fest.mocks.EasyMockTemplate;
 import org.fest.swing.driver.JSplitPaneDriver;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Tests for <code>{@link JSplitPaneFixture#moveDividerTo(int)}</code>.
@@ -44,6 +43,7 @@ public class JSplitPaneFixture_moveDividerTo_Test extends ComponentFixture_Imple
     target = splitPane().createNew();
   }
 
+  @Override
   void onSetUp() {
     driver = createMock(JSplitPaneDriver.class);
     fixture = new JSplitPaneFixture(robot(), target);
@@ -53,18 +53,23 @@ public class JSplitPaneFixture_moveDividerTo_Test extends ComponentFixture_Imple
   @Test
   public void should_move_divider() {
     new EasyMockTemplate(driver) {
+      @Override
       protected void expectations() {
         driver.moveDividerTo(target, 8);
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture.moveDividerTo(8));
       }
     }.run();
   }
 
+  @Override
   JSplitPaneDriver driver() {  return driver; }
+  @Override
   JSplitPane target() { return target; }
+  @Override
   JSplitPaneFixture fixture() { return fixture; }
 }

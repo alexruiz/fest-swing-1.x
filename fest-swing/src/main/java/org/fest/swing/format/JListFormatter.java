@@ -17,15 +17,12 @@ package org.fest.swing.format;
 
 import static java.lang.String.valueOf;
 import static org.fest.swing.format.SwingIntEnums.SELECTION_MODES;
-import static org.fest.util.Strings.concat;
-import static org.fest.util.Strings.quote;
+import static org.fest.util.Strings.*;
 
 import java.awt.Component;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
-import javax.swing.JList;
-import javax.swing.ListModel;
+import javax.swing.*;
 
 import org.fest.util.Arrays;
 
@@ -42,6 +39,7 @@ public class JListFormatter extends ComponentFormatterTemplate {
    * @param c the given {@code Component}.
    * @return the <code>String</code> representation of the given <code>JList</code>.
    */
+  @Override
   protected String doFormat(Component c) {
     JList list = (JList)c;
     return concat(

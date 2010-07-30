@@ -20,8 +20,7 @@ import static org.fest.swing.edt.GuiActionRunner.execute;
 
 import java.awt.Dimension;
 
-import javax.swing.JPanel;
-import javax.swing.JTabbedPane;
+import javax.swing.*;
 
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
@@ -62,6 +61,7 @@ public class JTabbedPaneSelectTabTask_setSelectedTab_Test extends RobotBasedTest
   @RunsInEDT
   private static int selectedIndexOf(final JTabbedPane tabbedPane) {
     return execute(new GuiQuery<Integer>() {
+      @Override
       protected Integer executeInEDT() {
         return tabbedPane.getSelectedIndex();
       }
@@ -76,6 +76,7 @@ public class JTabbedPaneSelectTabTask_setSelectedTab_Test extends RobotBasedTest
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
+        @Override
         protected MyWindow executeInEDT() {
           return new MyWindow();
         }

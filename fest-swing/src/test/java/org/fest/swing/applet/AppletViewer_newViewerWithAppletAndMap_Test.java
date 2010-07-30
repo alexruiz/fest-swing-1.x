@@ -35,6 +35,7 @@ public class AppletViewer_newViewerWithAppletAndMap_Test extends EDTSafeTestCase
   @Test(expected = NullPointerException.class)
   public void should_throw_error_if_parameterMap_is_null() {
     execute(new GuiTask() {
+      @Override
       protected void executeInEDT() {
         Map<String, String> map = null;
         AppletViewer.newViewer(singletonAppletMock(), map);

@@ -16,8 +16,7 @@
 package org.fest.swing.hierarchy;
 
 import static java.awt.event.WindowEvent.WINDOW_CLOSED;
-import static org.easymock.EasyMock.expect;
-import static org.easymock.EasyMock.expectLastCall;
+import static org.easymock.EasyMock.*;
 import static org.fest.swing.timing.Pause.pause;
 
 import java.awt.AWTEvent;
@@ -41,6 +40,7 @@ public class TransientWindowListener_eventDispatched_Test extends TransientWindo
 
   @Test public void shouldFilterClosedWindowAfterEventIsProcessed() {
     new EasyMockTemplate(mockWindowFilter) {
+      @Override
       protected void expectations() {
         expect(mockWindowFilter.isIgnored(eventSource)).andReturn(false);
         mockWindowFilter.implicitlyIgnore(eventSource);
@@ -50,6 +50,7 @@ public class TransientWindowListener_eventDispatched_Test extends TransientWindo
         expectLastCall();
       }
 
+      @Override
       protected void codeToTest() {
         listener.eventDispatched(event);
         waitTillClosedEventIsHandled();
@@ -59,6 +60,7 @@ public class TransientWindowListener_eventDispatched_Test extends TransientWindo
 
   @Test public void shouldNotFilterClosedWindowAfterEventIsProcessedIfWindowNotImplicitFiltered() {
     new EasyMockTemplate(mockWindowFilter) {
+      @Override
       protected void expectations() {
         expect(mockWindowFilter.isIgnored(eventSource)).andReturn(false);
         mockWindowFilter.implicitlyIgnore(eventSource);
@@ -66,6 +68,7 @@ public class TransientWindowListener_eventDispatched_Test extends TransientWindo
         expect(mockWindowFilter.isImplicitlyIgnored(eventSource)).andReturn(false);
       }
 
+      @Override
       protected void codeToTest() {
         listener.eventDispatched(event);
         waitTillClosedEventIsHandled();

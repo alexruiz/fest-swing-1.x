@@ -35,6 +35,7 @@ final class JTabbedPaneTabTitlesQuery {
   @RunsInEDT
   static String[] tabTitlesOf(final JTabbedPane tabbedPane) {
     return execute(new GuiQuery<String[]>() {
+      @Override
       protected String[] executeInEDT() {
         int count = tabbedPane.getTabCount();
         String[] titles = new String[count];

@@ -33,6 +33,7 @@ final class JTableSelectedRowCountQuery {
 
   static int selectedRowCountOf(final JTable table) {
     return execute(new GuiQuery<Integer>() {
+      @Override
       protected Integer executeInEDT() {
         return table.getSelectedRowCount();
       }

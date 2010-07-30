@@ -16,6 +16,7 @@
 package org.fest.swing.fixture;
 
 import static org.easymock.EasyMock.expect;
+
 import org.fest.mocks.EasyMockTemplate;
 import org.junit.Test;
 
@@ -29,10 +30,12 @@ public class JTableCellFixture_requireNotEditable_Test extends JTableCellFixture
   @Test
   public void should_require_not_editable() {
     new EasyMockTemplate(table) {
+      @Override
       protected void expectations() {
         expect(table.requireNotEditable(cell)).andReturn(table);
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture.requireNotEditable());
       }

@@ -18,10 +18,8 @@ package org.fest.swing.fixture;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.edt.GuiActionRunner.execute;
 
-import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.event.FocusAdapter;
-import java.awt.event.FocusEvent;
+import java.awt.*;
+import java.awt.event.*;
 
 import javax.swing.*;
 
@@ -62,7 +60,7 @@ public class FEST104_JMenuItemShouldNotReceiveFocusWhenClicked_Test extends Robo
       c.addFocusListener(r);
       return r;
     }
-    
+
     @Override public void focusGained(FocusEvent e) {
       focusReceived = true;
     }
@@ -73,6 +71,7 @@ public class FEST104_JMenuItemShouldNotReceiveFocusWhenClicked_Test extends Robo
 
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
+        @Override
         protected MyWindow executeInEDT() {
           return new MyWindow();
         }

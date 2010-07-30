@@ -34,11 +34,13 @@ public abstract class StateVerificationFixture_TestCase<T extends Component> ext
   @Test
   public final void should_require_disabled() {
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().requireDisabled(target());
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().requireDisabled());
       }
@@ -48,11 +50,13 @@ public abstract class StateVerificationFixture_TestCase<T extends Component> ext
   @Test
   public final void should_require_enabled() {
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().requireEnabled(target());
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().requireEnabled());
       }
@@ -63,11 +67,13 @@ public abstract class StateVerificationFixture_TestCase<T extends Component> ext
   public final void should_require_enabled_using_timeout() {
     final Timeout timeout = timeout(2000);
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().requireEnabled(target(), timeout);
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().requireEnabled(timeout));
       }
@@ -77,11 +83,13 @@ public abstract class StateVerificationFixture_TestCase<T extends Component> ext
   @Test
   public final void should_require_not_visible() {
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().requireNotVisible(target());
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().requireNotVisible());
       }
@@ -91,16 +99,19 @@ public abstract class StateVerificationFixture_TestCase<T extends Component> ext
   @Test
   public final void should_require_visible() {
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().requireVisible(target());
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().requireVisible());
       }
     }.run();
   }
 
+  @Override
   abstract StateVerificationFixture fixture();
 }

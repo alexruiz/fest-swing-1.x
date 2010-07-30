@@ -19,8 +19,7 @@ import static org.fest.swing.edt.GuiActionRunner.execute;
 import java.awt.*;
 import java.util.Collection;
 
-import org.fest.swing.annotation.RunsInCurrentThread;
-import org.fest.swing.annotation.RunsInEDT;
+import org.fest.swing.annotation.*;
 import org.fest.swing.edt.GuiQuery;
 import org.fest.util.VisibleForTesting;
 
@@ -130,6 +129,7 @@ public class WindowMonitor {
   @RunsInEDT
   private static class SingletonLazyLoader {
     static final WindowMonitor INSTANCE = execute(new GuiQuery<WindowMonitor>() {
+      @Override
       protected WindowMonitor executeInEDT() throws Throwable {
         return new WindowMonitor(Toolkit.getDefaultToolkit());
       }

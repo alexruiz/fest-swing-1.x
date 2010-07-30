@@ -18,7 +18,7 @@ package org.fest.swing.finder;
 import java.awt.*;
 import java.util.concurrent.TimeUnit;
 
-import org.fest.swing.core.GenericTypeMatcher;
+import org.fest.swing.core.*;
 import org.fest.swing.core.Robot;
 import org.fest.swing.fixture.FrameFixture;
 
@@ -82,6 +82,7 @@ public class FrameFinder extends WindowFinderTemplate<Frame> {
    * @return a <code>FrameFixture</code> managing the found <code>Frame</code>.
    * @throws org.fest.swing.exception.WaitTimedOutError if a <code>Frame</code> could not be found.
    */
+  @Override
   public FrameFixture using(Robot robot) {
     return new FrameFixture(robot, findComponentWith(robot));
   }
@@ -90,5 +91,6 @@ public class FrameFinder extends WindowFinderTemplate<Frame> {
    * Casts the given {@code Component} to <code>{@link Frame}</code>.
    * @return the given {@code Component}, casted to {@code Frame}.
    */
+  @Override
   protected Frame cast(Component c) { return (Frame) c; }
 }

@@ -19,8 +19,7 @@ import static org.fest.assertions.Fail.fail;
 import static org.fest.swing.format.Formatting.format;
 
 import java.awt.Component;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 import javax.swing.JOptionPane;
 

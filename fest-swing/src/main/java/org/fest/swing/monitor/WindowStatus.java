@@ -23,12 +23,9 @@ import static org.fest.swing.query.ComponentSizeQuery.sizeOf;
 import java.awt.*;
 import java.util.logging.Logger;
 
-import org.fest.swing.annotation.RunsInCurrentThread;
-import org.fest.swing.annotation.RunsInEDT;
-import org.fest.swing.edt.GuiQuery;
-import org.fest.swing.edt.GuiTask;
-import org.fest.swing.util.Pair;
-import org.fest.swing.util.RobotFactory;
+import org.fest.swing.annotation.*;
+import org.fest.swing.edt.*;
+import org.fest.swing.util.*;
 
 /**
  * Understands verification of the state of a window.
@@ -87,6 +84,7 @@ class WindowStatus {
     mouseMove(w, metricsAndCenter.ii);
     if (!windows.isShowingButNotReady(w)) return;
     execute(new GuiTask() {
+      @Override
       protected void executeInEDT() {
         makeLargeEnoughToReceiveEvents(w, metrics);
       }
@@ -96,6 +94,7 @@ class WindowStatus {
   @RunsInEDT
   private static Pair<WindowMetrics, Point> metricsAndCenter(final Window w) {
     return execute(new GuiQuery<Pair<WindowMetrics, Point>>() {
+      @Override
       protected Pair<WindowMetrics, Point> executeInEDT() {
         WindowMetrics metrics = new WindowMetrics(w);
         return new Pair<WindowMetrics, Point>(metrics, metrics.center());

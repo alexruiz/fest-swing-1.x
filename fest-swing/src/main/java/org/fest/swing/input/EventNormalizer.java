@@ -16,8 +16,7 @@ package org.fest.swing.input;
 
 import static org.fest.swing.listener.WeakEventListener.attachAsWeakEventListener;
 
-import java.awt.AWTEvent;
-import java.awt.Toolkit;
+import java.awt.*;
 import java.awt.event.AWTEventListener;
 
 import org.fest.swing.listener.WeakEventListener;

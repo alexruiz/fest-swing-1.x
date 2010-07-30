@@ -1,16 +1,16 @@
 /*
  * Created on Jul 24, 2009
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License
  * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
- * 
+ *
  * Copyright @2009-2010 the original author or authors.
  */
 package org.fest.swing.applet;
@@ -32,7 +32,7 @@ import org.junit.Test;
  */
 public class BasicAppletContext_setStream_getStream_Test extends BasicAppletContext_TestCase {
 
-  @Test 
+  @Test
   public void should_set_and_get_streams() {
     InputStream inputStream = createMock(InputStream.class);
     context.setStream("key1", inputStream);
@@ -40,7 +40,7 @@ public class BasicAppletContext_setStream_getStream_Test extends BasicAppletCont
     assertThat(streamKeys()).hasSize(1)
                             .containsOnly("key1");
   }
-  
+
   private List<String> streamKeys() {
     Iterator<String> streamKeyIterator = context.getStreamKeys();
     List<String> streamKeys = new ArrayList<String>();

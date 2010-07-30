@@ -34,6 +34,7 @@ public final class JComboBoxSelectedItemQuery {
   @RunsInEDT
   public static Object selectedItemOf(final JComboBox comboBox) {
     return execute(new GuiQuery<Object>() {
+      @Override
       protected Object executeInEDT() {
         return comboBox.getSelectedItem();
       }

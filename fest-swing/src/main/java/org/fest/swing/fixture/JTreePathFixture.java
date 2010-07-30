@@ -17,8 +17,7 @@ package org.fest.swing.fixture;
 
 import javax.swing.JTree;
 
-import org.fest.swing.core.MouseButton;
-import org.fest.swing.core.MouseClickInfo;
+import org.fest.swing.core.*;
 import org.fest.swing.exception.*;
 
 /**

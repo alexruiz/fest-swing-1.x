@@ -21,8 +21,7 @@ import static org.fest.swing.test.builder.JFrames.frame;
 import java.awt.Frame;
 
 import org.fest.swing.test.core.EDTSafeTestCase;
-import org.junit.After;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Tests for <code>{@link FrameFixture#FrameFixture(Frame)}</code>.

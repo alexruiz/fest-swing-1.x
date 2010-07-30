@@ -41,13 +41,17 @@ public abstract class JToggleButtonFixture_TestCase extends ComponentFixture_Imp
     target = toggleButton().createNew();
   }
 
+  @Override
   final void onSetUp() {
     driver = createMock(AbstractButtonDriver.class);
     fixture = new JToggleButtonFixture(robot(), target);
     fixture.driver(driver);
   }
 
+  @Override
   AbstractButtonDriver driver() {  return driver; }
+  @Override
   JToggleButton target() { return target; }
+  @Override
   JToggleButtonFixture fixture() { return fixture; }
 }

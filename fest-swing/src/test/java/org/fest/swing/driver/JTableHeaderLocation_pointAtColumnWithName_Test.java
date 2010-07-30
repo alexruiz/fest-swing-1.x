@@ -29,8 +29,7 @@ import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
 import org.fest.swing.exception.LocationUnavailableException;
 import org.fest.swing.test.core.CommonAssertions;
-import org.fest.swing.util.Pair;
-import org.fest.swing.util.TextMatcher;
+import org.fest.swing.util.*;
 import org.junit.Test;
 
 /**
@@ -50,11 +49,13 @@ public class JTableHeaderLocation_pointAtColumnWithName_Test extends JTableHeade
   @Test
   public void should_return_point_at_column() {
     new EasyMockTemplate(matcher) {
+      @Override
       protected void expectations() {
         expect(matcher.isMatching("0")).andReturn(false);
         expect(matcher.isMatching("1")).andReturn(true);
       }
 
+      @Override
       protected void codeToTest() {
         Pair<Integer, Point> pair = matchingIndexAndPoint();
         int index = pair.i;
@@ -68,6 +69,7 @@ public class JTableHeaderLocation_pointAtColumnWithName_Test extends JTableHeade
   @Test
   public void should_throw_error_if_matching_column_was_not_found() {
     new EasyMockTemplate(matcher) {
+      @Override
       protected void expectations() {
         expect(matcher.isMatching("0")).andReturn(false);
         expect(matcher.isMatching("1")).andReturn(false);
@@ -75,6 +77,7 @@ public class JTableHeaderLocation_pointAtColumnWithName_Test extends JTableHeade
         expect(matcher.formattedValues()).andReturn("'Hello'");
       }
 
+      @Override
       protected void codeToTest() {
         try {
           matchingIndexAndPoint();
@@ -94,6 +97,7 @@ public class JTableHeaderLocation_pointAtColumnWithName_Test extends JTableHeade
   @RunsInEDT
   private static Pair<Integer, Point> pointAt(final JTableHeaderLocation l, final JTableHeader h, final TextMatcher m) {
     return execute(new GuiQuery<Pair<Integer, Point>>() {
+      @Override
       protected Pair<Integer, Point> executeInEDT() {
         return l.pointAt(h, m);
       }

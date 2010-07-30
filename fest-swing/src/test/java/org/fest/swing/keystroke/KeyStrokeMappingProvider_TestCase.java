@@ -19,20 +19,17 @@ import static java.awt.event.KeyEvent.*;
 import static java.lang.String.valueOf;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.timing.Pause.pause;
-import static org.fest.util.Strings.concat;
-import static org.fest.util.Strings.quote;
+import static org.fest.util.Strings.*;
 
 import java.awt.Dimension;
 import java.util.*;
 
-import javax.swing.JTextArea;
-import javax.swing.KeyStroke;
+import javax.swing.*;
 import javax.swing.text.JTextComponent;
 
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.driver.JTextComponentDriver;
-import org.fest.swing.edt.GuiActionRunner;
-import org.fest.swing.edt.GuiQuery;
+import org.fest.swing.edt.*;
 import org.fest.swing.test.core.RobotBasedTestCase;
 import org.fest.swing.test.recorder.KeyRecorder;
 import org.fest.swing.test.swing.TestWindow;
@@ -84,6 +81,7 @@ public abstract class KeyStrokeMappingProvider_TestCase extends RobotBasedTestCa
     pressInTextArea();
     final String expectedText = valueOf(expectedChar);
     pause(new Condition(concat("text in JTextArea to be ", quote(expectedText))) {
+      @Override
       public boolean test() {
         return expectedText.equals(textArea.getText());
       }
@@ -102,6 +100,7 @@ public abstract class KeyStrokeMappingProvider_TestCase extends RobotBasedTestCa
     final KeyRecorder recorder = KeyRecorder.attachTo(textArea);
     pressInTextArea();
     pause(new Condition(concat("key with code ", expectedKey, " is pressed")) {
+      @Override
       public boolean test() {
         return recorder.keysWerePressed(expectedKey);
       }
@@ -125,6 +124,7 @@ public abstract class KeyStrokeMappingProvider_TestCase extends RobotBasedTestCa
     @RunsInEDT
     static MyWindow createNew(final Class<?> testClass) {
       return GuiActionRunner.execute(new GuiQuery<MyWindow>() {
+        @Override
         protected MyWindow executeInEDT() {
           return new MyWindow(testClass);
         }

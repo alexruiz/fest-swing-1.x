@@ -21,13 +21,10 @@ import static org.fest.assertions.MapAssert.entry;
 import static org.fest.swing.test.awt.TestAWTEvents.singletonAWTEventMock;
 import static org.fest.swing.test.builder.JFrames.frame;
 
-import java.awt.AWTEvent;
-import java.awt.Window;
-import java.awt.event.ComponentListener;
-import java.awt.event.WindowEvent;
+import java.awt.*;
+import java.awt.event.*;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Tests for <code>{@link DisposedWindowMonitor#isDuplicateDispose(AWTEvent)}</code>.

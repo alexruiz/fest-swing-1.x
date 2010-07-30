@@ -21,8 +21,7 @@ import static org.fest.swing.test.task.WindowDestroyTask.hideAndDispose;
 import static org.fest.swing.timing.Pause.pause;
 import static org.fest.util.Strings.concat;
 
-import java.awt.Component;
-import java.awt.Dimension;
+import java.awt.*;
 
 import javax.swing.JFrame;
 
@@ -32,7 +31,7 @@ import org.junit.Test;
 
 /**
  * Tests for <code>{@link ActivateWindowTask#activateWindow(java.awt.Window)}</code>.
- * 
+ *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
@@ -74,6 +73,7 @@ public class ActivateWindowTask_activeWindow_Test extends SequentialEDTSafeTestC
       this.c = c;
     }
 
+    @Override
     public boolean test() {
       return c.hasFocus();
     }

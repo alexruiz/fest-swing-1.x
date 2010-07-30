@@ -15,8 +15,7 @@
  */
 package org.fest.swing.text;
 
-import javax.swing.JList;
-import javax.swing.ListModel;
+import javax.swing.*;
 
 import org.fest.swing.annotation.RunsInCurrentThread;
 import org.fest.swing.cell.JListCellReader;

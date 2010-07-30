@@ -17,14 +17,12 @@ package org.fest.swing.format;
 
 import static java.lang.String.valueOf;
 import static javax.swing.tree.TreeSelectionModel.*;
-import static org.fest.util.Strings.concat;
-import static org.fest.util.Strings.quote;
+import static org.fest.util.Strings.*;
 
 import java.awt.Component;
 
 import javax.swing.JTree;
-import javax.swing.tree.TreePath;
-import javax.swing.tree.TreeSelectionModel;
+import javax.swing.tree.*;
 
 import org.fest.util.Arrays;
 
@@ -36,7 +34,7 @@ import org.fest.util.Arrays;
 public class JTreeFormatter extends ComponentFormatterTemplate {
 
   private static final String[] EMPTY = new String[0];
-  
+
   private static final IntEnum SELECTION_MODES = new IntEnum();
   static {
     SELECTION_MODES.put(SINGLE_TREE_SELECTION,        "SINGLE_TREE_SELECTION")
@@ -50,6 +48,7 @@ public class JTreeFormatter extends ComponentFormatterTemplate {
    * @param c the given {@code Component}.
    * @return the <code>String</code> representation of the given <code>JTree</code>.
    */
+  @Override
   protected String doFormat(Component c) {
     JTree tree = (JTree)c;
     return concat(
@@ -60,7 +59,7 @@ public class JTreeFormatter extends ComponentFormatterTemplate {
         "selectionMode=",  selectionMode(tree),                 ", ",
         "enabled=",        valueOf(tree.isEnabled()),           ", ",
         "visible=",        valueOf(tree.isVisible()),           ", ",
-        "showing=",        valueOf(tree.isShowing()), 
+        "showing=",        valueOf(tree.isShowing()),
         "]"
     );
   }

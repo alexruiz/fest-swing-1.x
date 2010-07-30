@@ -18,8 +18,7 @@ package org.fest.swing.test.task;
 import static org.fest.swing.query.ComponentShowingQuery.isShowing;
 import static org.fest.swing.timing.Pause.pause;
 
-import java.awt.Dimension;
-import java.awt.Frame;
+import java.awt.*;
 
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.timing.Condition;
@@ -48,6 +47,7 @@ public final class FrameShowTask {
   @RunsInEDT
   public static void waitForShowing(final Frame frame) {
     pause(new Condition("Frame is showing") {
+      @Override
       public boolean test() {
         return isShowing(frame);
       }

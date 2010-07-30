@@ -2,8 +2,7 @@ package org.fest.swing.hierarchy;
 
 import static org.fest.util.Collections.list;
 
-import java.awt.Component;
-import java.awt.Container;
+import java.awt.*;
 import java.util.List;
 
 import org.fest.swing.annotation.RunsInCurrentThread;

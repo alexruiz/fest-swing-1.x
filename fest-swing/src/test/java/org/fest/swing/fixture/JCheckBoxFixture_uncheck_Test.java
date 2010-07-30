@@ -31,11 +31,13 @@ public class JCheckBoxFixture_uncheck_Test extends JCheckBoxFixture_TestCase {
   @Test
   public void should_uncheck_JCheckBox() {
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().unselect(target());
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().uncheck());
       }

@@ -41,13 +41,17 @@ public abstract class JListFixture_TestCase extends ComponentFixture_Implementat
     target = list().createNew();
   }
 
+  @Override
   final void onSetUp() {
     driver = createMock(JListDriver.class);
     fixture = new JListFixture(robot(), target);
     fixture.driver(driver);
   }
 
+  @Override
   final JListDriver driver() {  return driver; }
+  @Override
   final JList target() { return target; }
+  @Override
   final JListFixture fixture() { return fixture; }
 }

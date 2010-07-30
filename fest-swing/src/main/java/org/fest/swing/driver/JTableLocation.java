@@ -14,8 +14,7 @@
  */
 package org.fest.swing.driver;
 
-import java.awt.Point;
-import java.awt.Rectangle;
+import java.awt.*;
 
 import javax.swing.JTable;
 

@@ -26,12 +26,10 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.Locale;
 
-import javax.swing.text.Caret;
-import javax.swing.text.JTextComponent;
+import javax.swing.text.*;
 
 import org.fest.swing.annotation.RunsInEDT;
-import org.fest.swing.edt.GuiQuery;
-import org.fest.swing.edt.GuiTask;
+import org.fest.swing.edt.*;
 import org.fest.swing.util.RobotFactory;
 import org.fest.util.VisibleForTesting;
 
@@ -131,6 +129,7 @@ public class ScreenshotTaker {
   @RunsInEDT
   private static JTextComponent findFocusOwnerAndHideItsCaret() {
     return execute(new GuiQuery<JTextComponent>() {
+      @Override
       protected JTextComponent executeInEDT() {
         Component focusOwner = focusOwner();
         if (!(focusOwner instanceof JTextComponent)) return null;
@@ -145,6 +144,7 @@ public class ScreenshotTaker {
 
   private static BufferedImage takeScreenshot(final Robot robot, final Rectangle r) {
     return execute(new GuiQuery<BufferedImage>() {
+      @Override
       protected BufferedImage executeInEDT() {
         return robot.createScreenCapture(r);
       }
@@ -160,6 +160,7 @@ public class ScreenshotTaker {
   @RunsInEDT
   private static void showCaretOf(final JTextComponent textComponent) {
     execute(new GuiTask() {
+      @Override
       protected void executeInEDT() {
         Caret caret = textComponent.getCaret();
         if (caret != null) caret.setVisible(true);

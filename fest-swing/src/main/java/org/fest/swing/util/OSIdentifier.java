@@ -16,8 +16,6 @@ package org.fest.swing.util;
 
 import static java.util.Locale.ENGLISH;
 import static org.fest.swing.util.OSFamily.*;
-import static org.fest.swing.util.OSFamily.LINUX;
-import static org.fest.swing.util.OSFamily.UNIX;
 
 import org.fest.util.VisibleForTesting;
 

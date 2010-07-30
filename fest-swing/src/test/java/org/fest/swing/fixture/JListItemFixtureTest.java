@@ -15,18 +15,15 @@
  */
 package org.fest.swing.fixture;
 
-import static org.easymock.EasyMock.expect;
-import static org.easymock.EasyMock.expectLastCall;
+import static org.easymock.EasyMock.*;
 import static org.easymock.classextension.EasyMock.createMock;
 import static org.fest.assertions.Assertions.assertThat;
-import static org.fest.swing.core.MouseButton.LEFT_BUTTON;
-import static org.fest.swing.core.MouseButton.RIGHT_BUTTON;
+import static org.fest.swing.core.MouseButton.*;
 import static org.fest.swing.core.MouseClickInfo.leftButton;
 
 import org.fest.mocks.EasyMockTemplate;
 import org.fest.swing.core.MouseButton;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Tests for <code>{@link JListItemFixture}</code>.
@@ -56,10 +53,12 @@ public class JListItemFixtureTest {
   @Test
   public void shouldSelect() {
     new EasyMockTemplate(list) {
+      @Override
       protected void expectations() {
         expect(list.selectItem(index)).andReturn(list);
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsThis(fixture.select());
       }
@@ -69,10 +68,12 @@ public class JListItemFixtureTest {
   @Test
   public void shouldClick() {
     new EasyMockTemplate(list) {
+      @Override
       protected void expectations() {
         expect(list.clickItem(index)).andReturn(list);
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsThis(fixture.click());
       }
@@ -82,11 +83,13 @@ public class JListItemFixtureTest {
   @Test
   public void shouldClickUsingMouseClickInfo() {
     new EasyMockTemplate(list) {
+      @Override
       protected void expectations() {
         list.clickItem(index, LEFT_BUTTON, 2);
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsThis(fixture.click(leftButton().times(2)));
       }
@@ -96,11 +99,13 @@ public class JListItemFixtureTest {
   @Test
   public void shouldDoubleClick() {
     new EasyMockTemplate(list) {
+      @Override
       protected void expectations() {
         list.clickItem(index, LEFT_BUTTON, 2);
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsThis(fixture.doubleClick());
       }
@@ -110,11 +115,13 @@ public class JListItemFixtureTest {
   @Test
   public void shouldRightClick() {
     new EasyMockTemplate(list) {
+      @Override
       protected void expectations() {
         list.clickItem(index, RIGHT_BUTTON, 1);
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsThis(fixture.rightClick());
       }
@@ -125,11 +132,13 @@ public class JListItemFixtureTest {
   public void shouldClickGivenButton() {
     final MouseButton button = MouseButton.LEFT_BUTTON;
     new EasyMockTemplate(list) {
+      @Override
       protected void expectations() {
         list.clickItem(index, button, 1);
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsThis(fixture.click(button));
       }
@@ -140,10 +149,12 @@ public class JListItemFixtureTest {
   public void shouldShowPopupMenu() {
     final JPopupMenuFixture popup = createMock(JPopupMenuFixture.class);
     new EasyMockTemplate(list) {
+      @Override
       protected void expectations() {
         expect(list.showPopupMenuAt(index)).andReturn(popup);
       }
 
+      @Override
       protected void codeToTest() {
         JPopupMenuFixture result = fixture.showPopupMenu();
         assertThat(result).isSameAs(popup);
@@ -155,10 +166,12 @@ public class JListItemFixtureTest {
   public void shouldReturnContents() {
     final String content = "Hello";
     new EasyMockTemplate(list) {
+      @Override
       protected void expectations() {
         expect(list.valueAt(index)).andReturn(content);
       }
 
+      @Override
       protected void codeToTest() {
         Object result = fixture.value();
         assertThat(result).isSameAs(content);
@@ -169,10 +182,12 @@ public class JListItemFixtureTest {
   @Test
   public void shouldDrag() {
     new EasyMockTemplate(list) {
+      @Override
       protected void expectations() {
         expect(list.drag(index)).andReturn(list);
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsThis(fixture.drag());
       }
@@ -182,10 +197,12 @@ public class JListItemFixtureTest {
   @Test
   public void shouldDrop() {
     new EasyMockTemplate(list) {
+      @Override
       protected void expectations() {
         expect(list.drop(index)).andReturn(list);
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsThis(fixture.drop());
       }

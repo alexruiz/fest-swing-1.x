@@ -17,15 +17,15 @@ package org.fest.swing.driver;
 import static org.fest.swing.timing.Pause.pause;
 import static org.fest.swing.util.TimeoutWatch.startWatchWithTimeoutOf;
 
-import java.awt.Component;
-import java.awt.Container;
-import java.util.ArrayList;
+import java.awt.*;
+import java.util.*;
 import java.util.List;
 
 import javax.swing.*;
 
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.core.*;
+import org.fest.swing.core.Robot;
 import org.fest.swing.util.TimeoutWatch;
 
 /**

@@ -14,8 +14,7 @@
  */
 package org.fest.swing.listener;
 
-import java.awt.AWTEvent;
-import java.awt.Toolkit;
+import java.awt.*;
 import java.awt.event.AWTEventListener;
 import java.lang.ref.WeakReference;
 

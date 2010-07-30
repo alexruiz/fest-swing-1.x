@@ -31,11 +31,13 @@ public class JToggleButtonFixture_uncheck_Test extends JToggleButtonFixture_Test
   @Test
   public void should_uncheck_JToggleButton() {
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().unselect(target());
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().uncheck());
       }

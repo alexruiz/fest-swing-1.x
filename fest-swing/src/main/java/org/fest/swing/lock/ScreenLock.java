@@ -19,8 +19,7 @@ import static org.fest.util.Strings.concat;
 
 import java.util.concurrent.locks.*;
 
-import net.jcip.annotations.GuardedBy;
-import net.jcip.annotations.ThreadSafe;
+import net.jcip.annotations.*;
 
 import org.fest.swing.exception.ScreenLockException;
 

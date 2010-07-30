@@ -15,8 +15,7 @@
  */
 package org.fest.swing.driver;
 
-import static javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS;
-import static javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS;
+import static javax.swing.ScrollPaneConstants.*;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.driver.JTextComponentSelectedTextQuery.selectedTextOf;
 import static org.fest.swing.edt.GuiActionRunner.execute;
@@ -43,6 +42,7 @@ public class JTextComponentDriver_selectText_Test extends JTextComponentDriver_T
   @RunsInEDT
   @Override void extraSetUp() {
     execute(new GuiTask() {
+      @Override
       protected void executeInEDT() {
         scrollToViewTextField = new JTextField(10);
         JScrollPane scrollPane = new JScrollPane(VERTICAL_SCROLLBAR_ALWAYS, HORIZONTAL_SCROLLBAR_ALWAYS);

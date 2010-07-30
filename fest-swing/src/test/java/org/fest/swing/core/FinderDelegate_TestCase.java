@@ -21,8 +21,7 @@ import javax.swing.JTextField;
 
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
-import org.fest.swing.hierarchy.ComponentHierarchy;
-import org.fest.swing.hierarchy.NewHierarchy;
+import org.fest.swing.hierarchy.*;
 import org.fest.swing.test.core.SequentialEDTSafeTestCase;
 import org.fest.swing.test.swing.TestWindow;
 
@@ -42,7 +41,7 @@ public abstract class FinderDelegate_TestCase extends SequentialEDTSafeTestCase 
     window = MyWindow.createNew(getClass());
     finder = new FinderDelegate();
   }
-  
+
   @Override protected final void onTearDown() {
     window.destroy();
   }
@@ -55,6 +54,7 @@ public abstract class FinderDelegate_TestCase extends SequentialEDTSafeTestCase 
     @RunsInEDT
     static MyWindow createNew(final Class<?> testClass) {
       return execute(new GuiQuery<MyWindow>() {
+        @Override
         protected MyWindow executeInEDT() {
           return new MyWindow(testClass);
         }

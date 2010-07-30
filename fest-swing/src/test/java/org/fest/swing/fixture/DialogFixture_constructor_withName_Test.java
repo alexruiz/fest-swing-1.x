@@ -21,8 +21,7 @@ import static org.fest.swing.test.builder.JDialogs.dialog;
 import java.awt.Dialog;
 
 import org.fest.swing.test.core.EDTSafeTestCase;
-import org.junit.After;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Tests for <code>{@link DialogFixture#DialogFixture(String)}</code>.

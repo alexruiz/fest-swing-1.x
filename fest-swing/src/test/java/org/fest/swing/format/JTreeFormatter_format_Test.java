@@ -21,14 +21,12 @@ import static org.fest.swing.test.task.JTreeSelectRowTask.selectRow;
 import static org.fest.swing.test.task.JTreeSetSelectionModelTask.setSelectionModel;
 
 import javax.swing.JTree;
-import javax.swing.tree.DefaultTreeSelectionModel;
-import javax.swing.tree.TreeSelectionModel;
+import javax.swing.tree.*;
 
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.test.builder.JTrees;
 import org.fest.swing.test.core.EDTSafeTestCase;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Base test case for <code>{@link JTreeFormatter#format(java.awt.Component)}</code>.

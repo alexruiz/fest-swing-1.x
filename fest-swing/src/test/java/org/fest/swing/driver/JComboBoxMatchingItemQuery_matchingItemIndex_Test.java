@@ -53,11 +53,13 @@ public class JComboBoxMatchingItemQuery_matchingItemIndex_Test extends RobotBase
   @Test
   public void should_return_matching_indices() {
     new EasyMockTemplate(matcher) {
+      @Override
       protected void expectations() {
         expect(matcher.isMatching("aaa")).andReturn(false);
         expect(matcher.isMatching("bbb")).andReturn(true);
       }
 
+      @Override
       protected void codeToTest() {
         int matchingIndex = JComboBoxMatchingItemQuery.matchingItemIndex(comboBox, matcher, cellReader);
         assertThat(matchingIndex).isEqualTo(1);
@@ -68,12 +70,14 @@ public class JComboBoxMatchingItemQuery_matchingItemIndex_Test extends RobotBase
   @Test
   public void should_return_negative_one_if_no_matching_indices_found() {
     new EasyMockTemplate(matcher) {
+      @Override
       protected void expectations() {
         expect(matcher.isMatching("aaa")).andReturn(false);
         expect(matcher.isMatching("bbb")).andReturn(false);
         expect(matcher.isMatching("ccc")).andReturn(false);
       }
 
+      @Override
       protected void codeToTest() {
         int matchingIndex = JComboBoxMatchingItemQuery.matchingItemIndex(comboBox, matcher, cellReader);
         assertThat(matchingIndex).isEqualTo(-1);
@@ -89,6 +93,7 @@ public class JComboBoxMatchingItemQuery_matchingItemIndex_Test extends RobotBase
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
+        @Override
         protected MyWindow executeInEDT() {
           return new MyWindow();
         }

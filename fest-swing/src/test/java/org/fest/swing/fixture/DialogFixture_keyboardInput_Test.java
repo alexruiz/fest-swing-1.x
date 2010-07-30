@@ -22,8 +22,7 @@ import static org.fest.swing.test.task.WindowDestroyTask.hideAndDisposeInEDT;
 import java.awt.Dialog;
 
 import org.fest.swing.driver.DialogDriver;
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
+import org.junit.*;
 
 /**
  * Tests for methods in <code>{@link DialogFixture}</code> that are inherited from
@@ -49,13 +48,17 @@ public class DialogFixture_keyboardInput_Test extends KeyboardInputSimulationFix
     hideAndDisposeInEDT(target);
   }
 
+  @Override
   void onSetUp() {
     driver = createMock(DialogDriver.class);
     fixture = new DialogFixture(robot(), target);
     fixture.driver(driver);
   }
 
+  @Override
   DialogDriver driver() { return driver; }
+  @Override
   Dialog target() { return target; }
+  @Override
   DialogFixture fixture() { return fixture; }
 }

@@ -20,8 +20,7 @@
  */
 package org.fest.swing.test.swing;
 
-import java.awt.Color;
-import java.awt.Component;
+import java.awt.*;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -32,7 +31,7 @@ import javax.swing.table.TableCellRenderer;
  */
 class ColorRenderer extends JLabel implements TableCellRenderer {
   private static final long serialVersionUID = 1L;
-  
+
   Border unselectedBorder = null;
   Border selectedBorder = null;
   boolean isBordered = true;

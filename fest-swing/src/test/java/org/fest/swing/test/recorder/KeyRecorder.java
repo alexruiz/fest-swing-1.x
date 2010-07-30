@@ -18,10 +18,8 @@ package org.fest.swing.test.recorder;
 import static org.fest.util.Collections.list;
 
 import java.awt.Component;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
-import java.util.ArrayList;
-import java.util.List;
+import java.awt.event.*;
+import java.util.*;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 /**

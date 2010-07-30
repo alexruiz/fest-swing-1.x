@@ -24,8 +24,7 @@ import java.awt.Dialog;
 
 import org.fest.mocks.EasyMockTemplate;
 import org.fest.swing.driver.DialogDriver;
-import org.junit.After;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Tests for <code>{@link DialogFixture#requireModal()}</code>.
@@ -39,6 +38,7 @@ public class DialogFixture_requireModal_Test extends ComponentFixture_Implementa
   private Dialog target;
   private DialogFixture fixture;
 
+  @Override
   void onSetUp() {
     driver = createMock(DialogDriver.class);
     target = dialog().createNew();
@@ -54,18 +54,23 @@ public class DialogFixture_requireModal_Test extends ComponentFixture_Implementa
   @Test
   public void should_require_modal() {
     new EasyMockTemplate(driver) {
+      @Override
       protected void expectations() {
         driver.requireModal(target);
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture.requireModal());
       }
     }.run();
   }
 
+  @Override
   DialogDriver driver() { return driver; }
+  @Override
   Dialog target() { return target; }
+  @Override
   DialogFixture fixture() { return fixture; }
 }

@@ -21,8 +21,7 @@ import static org.fest.swing.query.ComponentBackgroundQuery.backgroundOf;
 
 import java.awt.Color;
 
-import javax.swing.JLabel;
-import javax.swing.JTable;
+import javax.swing.*;
 
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
@@ -46,6 +45,7 @@ public class BasicJTableCellReader_backgroundAt_Test extends BasicJTableCellRead
   @RunsInEDT
   private static Color backgroundAt(final BasicJTableCellReader reader, final JTable table, final int row, final int column) {
     return execute(new GuiQuery<Color>() {
+      @Override
       protected Color executeInEDT() {
         return reader.backgroundAt(table, row, column);
       }

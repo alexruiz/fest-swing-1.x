@@ -58,7 +58,7 @@ public class ComponentStateValidator_validateIsEnabledAndShowing_Test extends Ro
       assertThatErrorCauseIsDisabledComponent(e);
     }
   }
-  
+
   @Test
   public void should_throw_error_if_Component_is_not_showing_on_the_screen() {
     try {
@@ -68,10 +68,11 @@ public class ComponentStateValidator_validateIsEnabledAndShowing_Test extends Ro
       assertThatErrorCauseIsNotShowingComponent(e);
     }
   }
-  
+
   @RunsInEDT
   private static void validateWindowIsEnabledAndShowing(final Component c) {
     execute(new GuiTask() {
+      @Override
       protected void executeInEDT() {
         ComponentStateValidator.validateIsEnabledAndShowing(c);
       }

@@ -23,8 +23,7 @@ import javax.swing.JOptionPane;
 
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
-import org.fest.swing.test.core.MethodInvocations;
-import org.fest.swing.test.core.RobotBasedTestCase;
+import org.fest.swing.test.core.*;
 import org.junit.Test;
 
 /**
@@ -57,6 +56,7 @@ public class JOptionPaneMessageTypeQuery_messageTypeOf_Test extends RobotBasedTe
     @RunsInEDT
     static MyOptionPane createNew() {
       return execute(new GuiQuery<MyOptionPane>() {
+        @Override
         protected MyOptionPane executeInEDT() {
           return new MyOptionPane();
         }

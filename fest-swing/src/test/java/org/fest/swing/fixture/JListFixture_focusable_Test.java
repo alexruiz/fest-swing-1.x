@@ -42,13 +42,17 @@ public class JListFixture_focusable_Test extends FocusableComponentFixture_TestC
     target = list().createNew();
   }
 
+  @Override
   void onSetUp() {
     driver = createMock(JListDriver.class);
     fixture = new JListFixture(robot(), target);
     fixture.driver(driver);
   }
 
+  @Override
   JListDriver driver() {  return driver; }
+  @Override
   JList target() { return target; }
+  @Override
   JListFixture fixture() { return fixture; }
 }

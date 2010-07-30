@@ -54,6 +54,7 @@ public abstract class ContainerFixture_progressBar_TestCase extends RobotBasedTe
 
     static MyWindow createNew(final Class<?> testClass) {
       return execute(new GuiQuery<MyWindow>() {
+        @Override
         protected MyWindow executeInEDT() {
           return new MyWindow(testClass);
         }

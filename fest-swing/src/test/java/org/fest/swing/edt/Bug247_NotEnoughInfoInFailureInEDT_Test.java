@@ -36,6 +36,7 @@ public class Bug247_NotEnoughInfoInFailureInEDT_Test {
     boolean testClassInStackTrace = false;
     try {
       execute(new GuiTask() {
+        @Override
         protected void executeInEDT() {
           throw new RuntimeException("Thrown on purpose");
         }

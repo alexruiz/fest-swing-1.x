@@ -23,8 +23,7 @@ import javax.swing.JTextField;
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
 import org.fest.swing.test.core.EDTSafeTestCase;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Tests for <code>{@link WaitForComponentToShowCondition#test()}</code>.
@@ -60,6 +59,7 @@ public class WaitForComponentToShowCondition_test_Test extends EDTSafeTestCase {
     @RunsInEDT
     static ComponentStub createNew() {
       return execute(new GuiQuery<ComponentStub>() {
+        @Override
         protected ComponentStub executeInEDT() {
           return new ComponentStub();
         }

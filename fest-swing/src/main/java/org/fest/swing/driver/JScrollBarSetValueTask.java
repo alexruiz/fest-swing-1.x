@@ -32,6 +32,7 @@ final class JScrollBarSetValueTask {
 
   static void setValue(final JScrollBar scrollBar, final int value) {
     execute(new GuiTask() {
+      @Override
       protected void executeInEDT() {
         scrollBar.setValue(value);
       }

@@ -16,6 +16,7 @@
 package org.fest.swing.fixture;
 
 import static org.easymock.EasyMock.expectLastCall;
+
 import org.fest.mocks.EasyMockTemplate;
 import org.junit.Test;
 
@@ -30,11 +31,13 @@ public class JTableCellFixture_enterValue_Test extends JTableCellFixture_withMoc
   public void should_enter_value_in_cell() {
     final String value = "Hello";
     new EasyMockTemplate(driver) {
+      @Override
       protected void expectations() {
         driver.enterValueInCell(table.target, cell, value);
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture.enterValue(value));
       }

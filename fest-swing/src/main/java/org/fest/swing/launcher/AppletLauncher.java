@@ -16,18 +16,13 @@ package org.fest.swing.launcher;
 
 import static org.fest.swing.edt.GuiActionRunner.execute;
 import static org.fest.swing.launcher.NewAppletViewerQuery.showAppletViewerWith;
-import static org.fest.util.Strings.concat;
-import static org.fest.util.Strings.isEmpty;
+import static org.fest.util.Strings.*;
 
-import java.applet.Applet;
-import java.applet.AppletStub;
-import java.util.HashMap;
-import java.util.Map;
+import java.applet.*;
+import java.util.*;
 
 import org.fest.swing.annotation.RunsInEDT;
-import org.fest.swing.applet.AppletViewer;
-import org.fest.swing.applet.BasicAppletContext;
-import org.fest.swing.applet.BasicAppletStub;
+import org.fest.swing.applet.*;
 import org.fest.swing.edt.GuiQuery;
 import org.fest.swing.exception.UnexpectedException;
 import org.fest.swing.launcher.AppletParameter.AppletParameterBuilder;
@@ -124,7 +119,7 @@ public class AppletLauncher {
   private static UnexpectedException cannotLoadType(String typeName, Exception e) {
     throw new UnexpectedException(concat("Unable to load class ", typeName), e);
   }
-  
+
   /**
    * Creates a new applet launcher. The applet to launch is a new instance of the given type. It is assumed that the
    * given type has a default constructor.
@@ -142,6 +137,7 @@ public class AppletLauncher {
   private static AppletLauncher instantiate(final Class<?> appletType) {
     try {
       Object applet = execute(new GuiQuery<Object>() {
+        @Override
         protected Object executeInEDT() throws Exception {
           return appletType.newInstance();
         }
@@ -151,7 +147,7 @@ public class AppletLauncher {
       throw cannotInstantiateApplet(appletType.getName(), e);
     }
   }
-  
+
   private static UnexpectedException cannotInstantiateApplet(String appletType, Exception cause) {
     throw new UnexpectedException(concat("Unable to create a new instance of ", appletType), cause);
   }

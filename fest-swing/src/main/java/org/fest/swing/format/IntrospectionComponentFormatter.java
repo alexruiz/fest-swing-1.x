@@ -17,8 +17,7 @@ package org.fest.swing.format;
 
 import static org.fest.swing.exception.ActionFailedException.actionFailure;
 import static org.fest.util.Collections.list;
-import static org.fest.util.Strings.concat;
-import static org.fest.util.Strings.quote;
+import static org.fest.util.Strings.*;
 
 import java.awt.Component;
 import java.beans.*;
@@ -58,7 +57,7 @@ public final class IntrospectionComponentFormatter extends ComponentFormatterTem
     BeanInfo beanInfo = null;
     try {
       beanInfo = Introspector.getBeanInfo(targetType, Object.class);
-    } catch (Exception e) { 
+    } catch (Exception e) {
       throw actionFailure(concat("Unable to get BeanInfo for type ", targetType.getName()), e);
     }
     for (PropertyDescriptor d : beanInfo.getPropertyDescriptors()) register(d);
@@ -77,10 +76,11 @@ public final class IntrospectionComponentFormatter extends ComponentFormatterTem
    * @param c the given {@code Component}.
    * @return a <code>String</code> representation of the given {@code Component}.
    * @throws NullPointerException if the given {@code Component} is {@code null}.
-   * @throws IllegalArgumentException if the type of the given {@code Component} is not supported by this 
+   * @throws IllegalArgumentException if the type of the given {@code Component} is not supported by this
    * formatter.
    * @see #targetType()
    */
+  @Override
   protected String doFormat(Component c) {
     StringBuilder b = new StringBuilder();
     b.append(c.getClass().getName()).append("[");

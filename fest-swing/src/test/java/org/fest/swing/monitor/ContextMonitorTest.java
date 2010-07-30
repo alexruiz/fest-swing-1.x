@@ -15,8 +15,7 @@
  */
 package org.fest.swing.monitor;
 
-import static java.awt.AWTEvent.COMPONENT_EVENT_MASK;
-import static java.awt.AWTEvent.WINDOW_EVENT_MASK;
+import static java.awt.AWTEvent.*;
 import static java.awt.event.WindowEvent.*;
 import static org.easymock.EasyMock.expect;
 import static org.fest.assertions.Assertions.assertThat;
@@ -38,7 +37,7 @@ import org.fest.swing.test.core.EDTSafeTestCase;
 import org.fest.swing.test.swing.TestWindow;
 import org.junit.*;
 import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
+import org.junit.runners.*;
 import org.junit.runners.Parameterized.Parameters;
 
 /**

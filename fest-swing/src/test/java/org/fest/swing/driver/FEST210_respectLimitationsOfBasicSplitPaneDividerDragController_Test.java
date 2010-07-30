@@ -5,8 +5,7 @@
  */
 package org.fest.swing.driver;
 
-import static javax.swing.JSplitPane.HORIZONTAL_SPLIT;
-import static javax.swing.JSplitPane.VERTICAL_SPLIT;
+import static javax.swing.JSplitPane.*;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.edt.GuiActionRunner.execute;
 import static org.fest.swing.query.ComponentSizeQuery.sizeOf;
@@ -22,7 +21,7 @@ import org.fest.swing.test.swing.TestWindow;
 import org.fest.util.Collections;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
+import org.junit.runners.*;
 import org.junit.runners.Parameterized.Parameters;
 
 /**
@@ -75,6 +74,7 @@ public class FEST210_respectLimitationsOfBasicSplitPaneDividerDragController_Tes
 
     static MyWindow createNew(final int orientation) {
       return execute(new GuiQuery<MyWindow>() {
+        @Override
         protected MyWindow executeInEDT() {
           return new MyWindow(orientation);
         }

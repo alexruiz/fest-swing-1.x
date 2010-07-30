@@ -17,8 +17,7 @@ package org.fest.swing.driver;
 
 import static org.fest.swing.test.task.ComponentSetPopupMenuTask.createAndSetPopupMenu;
 
-import javax.swing.JList;
-import javax.swing.JPopupMenu;
+import javax.swing.*;
 
 /**
  * Base test case for methods in <code>{@link JListDriver}</code> that invoke a <code>{@link JPopupMenu}</code> in a

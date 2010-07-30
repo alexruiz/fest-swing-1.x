@@ -15,14 +15,12 @@
  */
 package org.fest.swing.hierarchy;
 
-import static java.awt.AWTEvent.COMPONENT_EVENT_MASK;
-import static java.awt.AWTEvent.WINDOW_EVENT_MASK;
+import static java.awt.AWTEvent.*;
 import static org.fest.swing.edt.GuiActionRunner.execute;
 import static org.fest.swing.test.awt.Toolkits.newToolkitStub;
 import static org.fest.util.Arrays.array;
 
-import javax.swing.JComboBox;
-import javax.swing.JTextField;
+import javax.swing.*;
 
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
@@ -62,6 +60,7 @@ public abstract class NewHierarchy_TestCase extends SequentialEDTSafeTestCase {
     @RunsInEDT
     static MyWindow createNew(final Class<?> testClass) {
       return execute(new GuiQuery<MyWindow>() {
+        @Override
         protected MyWindow executeInEDT() {
           return new MyWindow(testClass);
         }

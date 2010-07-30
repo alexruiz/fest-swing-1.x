@@ -22,7 +22,7 @@ import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
 
 /**
- * Understands an action, executed in the event dispatch thread, that returns the text of a 
+ * Understands an action, executed in the event dispatch thread, that returns the text of a
  * <code>{@link JTextComponent}</code>.
  * @see JTextComponent#getText()
  *
@@ -34,6 +34,7 @@ final class JTextComponentTextQuery {
   @RunsInEDT
   static String textOf(final JTextComponent textComponent) {
     return execute(new GuiQuery<String>() {
+      @Override
       protected String executeInEDT() {
         return textComponent.getText();
       }

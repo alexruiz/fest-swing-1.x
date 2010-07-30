@@ -31,11 +31,13 @@ public class JProgressBarFixture_requireValue_Test extends JProgressBarFixture_T
   public void should_require_value() {
     final int value = 6;
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().requireValue(target(), value);
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().requireValue(value));
       }

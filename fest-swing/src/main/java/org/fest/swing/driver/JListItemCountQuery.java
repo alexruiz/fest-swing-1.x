@@ -33,6 +33,7 @@ final class JListItemCountQuery {
 
   static int itemCountIn(final JList list) {
     return execute(new GuiQuery<Integer>() {
+      @Override
       protected Integer executeInEDT() {
         return list.getModel().getSize();
       }

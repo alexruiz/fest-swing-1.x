@@ -1,7 +1,6 @@
 package org.fest.swing.hierarchy;
 
-import javax.swing.JDesktopPane;
-import javax.swing.JInternalFrame;
+import javax.swing.*;
 import javax.swing.JInternalFrame.JDesktopIcon;
 
 import org.fest.swing.annotation.RunsInCurrentThread;

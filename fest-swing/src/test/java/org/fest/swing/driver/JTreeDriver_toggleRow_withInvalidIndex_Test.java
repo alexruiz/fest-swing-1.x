@@ -21,7 +21,7 @@ import java.util.Collection;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
+import org.junit.runners.*;
 import org.junit.runners.Parameterized.Parameters;
 
 /**
@@ -33,16 +33,16 @@ import org.junit.runners.Parameterized.Parameters;
 public class JTreeDriver_toggleRow_withInvalidIndex_Test extends JTreeDriver_TestCase {
 
   private final int invalidRow;
-  
+
   @Parameters
   public static Collection<Object[]> invalidRows() {
     return list(outOfBoundRowIndices());
   }
-  
+
   public JTreeDriver_toggleRow_withInvalidIndex_Test(int invalidRow) {
     this.invalidRow = invalidRow;
   }
-  
+
   @Test(expected = IndexOutOfBoundsException.class)
   public void should_throw_error_if_given_row_index_is_out_of_bounds() {
     showWindow();

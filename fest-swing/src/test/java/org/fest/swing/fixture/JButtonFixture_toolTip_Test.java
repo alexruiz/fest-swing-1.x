@@ -42,6 +42,7 @@ public class JButtonFixture_toolTip_Test extends ToolTipDisplayFixture_TestCase<
     target = button().createNew();
   }
 
+  @Override
   void onSetUp() {
     driver = createMock(AbstractButtonDriver.class);
     fixture = new JButtonFixture(robot(), target);
@@ -49,7 +50,10 @@ public class JButtonFixture_toolTip_Test extends ToolTipDisplayFixture_TestCase<
   }
 
 
+  @Override
   AbstractButtonDriver driver() {  return driver; }
+  @Override
   JButton target() { return target; }
+  @Override
   JButtonFixture fixture() { return fixture; }
 }

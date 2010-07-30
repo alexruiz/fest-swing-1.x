@@ -17,8 +17,7 @@ package org.fest.swing.driver;
 
 import static org.fest.swing.edt.GuiActionRunner.execute;
 
-import javax.swing.JMenuItem;
-import javax.swing.JPopupMenu;
+import javax.swing.*;
 
 import org.fest.swing.edt.GuiQuery;
 
@@ -33,6 +32,7 @@ public abstract class JTableHeaderDriver_showPopupMenu_TestCase extends JTableHe
 
   @Override final void extraSetUp() {
     popupMenu = execute(new GuiQuery<JPopupMenu>() {
+      @Override
       protected JPopupMenu executeInEDT() {
         JPopupMenu p = new JPopupMenu();
         p.add(new JMenuItem("Frodo"));

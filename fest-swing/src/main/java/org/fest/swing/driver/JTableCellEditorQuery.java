@@ -30,7 +30,7 @@ import org.fest.swing.annotation.RunsInCurrentThread;
  * </p>
  * @see JTable#getCellEditor()
  * @see TableCellEditor#getTableCellEditorComponent(JTable, Object, boolean, int, int)
- * 
+ *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */

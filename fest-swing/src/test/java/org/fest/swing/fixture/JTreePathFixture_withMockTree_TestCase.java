@@ -16,6 +16,7 @@ package org.fest.swing.fixture;
 
 import static org.easymock.classextension.EasyMock.createMock;
 import static org.fest.assertions.Assertions.assertThat;
+
 import org.fest.swing.test.core.EDTSafeTestCase;
 import org.junit.Before;
 

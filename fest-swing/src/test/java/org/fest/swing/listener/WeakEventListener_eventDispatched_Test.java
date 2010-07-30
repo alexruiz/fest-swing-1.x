@@ -24,8 +24,7 @@ import java.awt.AWTEvent;
 import java.awt.event.AWTEventListener;
 
 import org.fest.swing.test.awt.ToolkitStub;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Tests for <code>{@link WeakEventListener#eventDispatched(AWTEvent)}</code>.

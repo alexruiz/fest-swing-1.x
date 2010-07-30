@@ -18,8 +18,7 @@ package org.fest.swing.core;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.edt.GuiActionRunner.execute;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiTask;
@@ -41,7 +40,7 @@ public class FrameDisposer_disposeFrames_Test extends SequentialEDTSafeTestCase 
     windows = MyWindow.windows();
     disposer = new FrameDisposer();
   }
-  
+
   @Override protected void onTearDown() {
     for (MyWindow w : windows) w.destroy();
   }
@@ -49,7 +48,7 @@ public class FrameDisposer_disposeFrames_Test extends SequentialEDTSafeTestCase 
   @Test
   public void shouldDisposeFrames() {
     disposer.disposeFrames();
-    for (MyWindow w : windows) 
+    for (MyWindow w : windows)
       assertThat(w.disposed).isTrue();
   }
 
@@ -60,6 +59,7 @@ public class FrameDisposer_disposeFrames_Test extends SequentialEDTSafeTestCase 
     static MyWindow[] windows() {
       final List<MyWindow> windows = new ArrayList<MyWindow>();
       execute(new GuiTask() {
+        @Override
         protected void executeInEDT() {
           for (int i = 0; i < 3; i++) {
             MyWindow w = new MyWindow();

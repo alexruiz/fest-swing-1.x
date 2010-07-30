@@ -20,8 +20,7 @@ import static org.fest.swing.edt.GuiActionRunner.execute;
 import javax.swing.*;
 
 import org.fest.swing.annotation.RunsInEDT;
-import org.fest.swing.edt.GuiQuery;
-import org.fest.swing.edt.GuiTask;
+import org.fest.swing.edt.*;
 
 /**
  * Understands a task that sets the <code>{@link JPopupMenu}</code> for a <code>{@link JComponent}</code>. This task is
@@ -34,6 +33,7 @@ public final class ComponentSetPopupMenuTask {
   @RunsInEDT
   public static void setPopupMenu(final JComponent c, final JPopupMenu popupMenu) {
     execute(new GuiTask() {
+      @Override
       protected void executeInEDT() {
         c.setComponentPopupMenu(popupMenu);
       }
@@ -43,6 +43,7 @@ public final class ComponentSetPopupMenuTask {
   @RunsInEDT
   public static JPopupMenu createAndSetPopupMenu(final JComponent c, final String...items) {
     return execute(new GuiQuery<JPopupMenu>() {
+      @Override
       protected JPopupMenu executeInEDT() {
         JPopupMenu popupMenu = new JPopupMenu();
         for (String item : items)

@@ -21,16 +21,14 @@ import static org.fest.swing.hierarchy.JInternalFrameIconifyTask.iconify;
 import static org.fest.swing.test.builder.JTextFields.textField;
 import static org.fest.swing.test.swing.TestMdiWindow.createAndShowNewWindow;
 
-import java.awt.Component;
-import java.awt.Container;
+import java.awt.*;
 import java.util.Collection;
 
 import org.fest.swing.edt.GuiQuery;
 import org.fest.swing.lock.ScreenLock;
 import org.fest.swing.test.core.EDTSafeTestCase;
 import org.fest.swing.test.swing.TestMdiWindow;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 
 /**
  * Tests for <code>{@link JDesktopPaneChildrenFinder#nonExplicitChildrenOf(Container)}</code>.
@@ -62,6 +60,7 @@ public class JDesktopPaneChildrenFinder_nonExplicitChildrenOf_Test extends EDTSa
     final TestMdiWindow window = createAndShowNewWindow(getClass());
     iconify(window.internalFrame());
     Collection<Component> children = execute(new GuiQuery<Collection<Component>>() {
+      @Override
       protected Collection<Component> executeInEDT() {
         return finder.nonExplicitChildrenOf(window.desktop());
       }

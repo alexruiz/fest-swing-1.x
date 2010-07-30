@@ -21,8 +21,7 @@ import java.awt.event.*;
 
 import javax.swing.*;
 
-import org.fest.swing.annotation.RunsInCurrentThread;
-import org.fest.swing.annotation.RunsInEDT;
+import org.fest.swing.annotation.*;
 import org.fest.swing.edt.GuiQuery;
 
 /**
@@ -37,6 +36,7 @@ public class JFileChooserLauncherWindow extends TestWindow {
   @RunsInEDT
   public static JFileChooserLauncherWindow createNew(final Class<?> testClass) {
     return execute(new GuiQuery<JFileChooserLauncherWindow>() {
+      @Override
       protected JFileChooserLauncherWindow executeInEDT() {
         return new JFileChooserLauncherWindow(testClass);
       }

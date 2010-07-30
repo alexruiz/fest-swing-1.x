@@ -19,8 +19,7 @@ import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.edt.GuiActionRunner.execute;
 import static org.fest.util.Arrays.array;
 
-import javax.swing.JList;
-import javax.swing.ListModel;
+import javax.swing.*;
 
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
@@ -45,6 +44,7 @@ public class JComboBoxDriver_dropDownList_Test extends JComboBoxDriver_TestCase 
   @RunsInEDT
   private Object[] contentsOf(final JList list) {
     return execute(new GuiQuery<Object[]>() {
+      @Override
       protected Object[] executeInEDT() {
         ListModel model = list.getModel();
         int elementCount = model.getSize();

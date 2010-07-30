@@ -31,11 +31,13 @@ public class OSIdentifier_isMacintosh_Test extends OSIdentifier_TestCase {
   @Test
   public void should_return_Macintosh_if_MRJVersion_is_not_null() {
     new EasyMockTemplate(propertyReader) {
+      @Override
       protected void expectations() {
         expectOSName("");
         expectSomeMRJVersion();
       }
 
+      @Override
       protected void codeToTest() {
         OSIdentifier osIdentifier = new OSIdentifier(propertyReader);
         assertThat(osIdentifier.isMacintosh()).isTrue();

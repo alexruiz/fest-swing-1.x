@@ -34,11 +34,13 @@ public abstract class FocusableComponentFixture_TestCase<T extends Component> ex
   @Test
   public final void should_give_focus() {
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().focus(target());
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().focus());
       }
@@ -48,16 +50,19 @@ public abstract class FocusableComponentFixture_TestCase<T extends Component> ex
   @Test
   public final void should_require_focused() {
     new EasyMockTemplate(driver()) {
+      @Override
       protected void expectations() {
         driver().requireFocused(target());
         expectLastCall().once();
       }
 
+      @Override
       protected void codeToTest() {
         assertThatReturnsSelf(fixture().requireFocused());
       }
     }.run();
   }
 
+  @Override
   abstract FocusableComponentFixture fixture();
 }

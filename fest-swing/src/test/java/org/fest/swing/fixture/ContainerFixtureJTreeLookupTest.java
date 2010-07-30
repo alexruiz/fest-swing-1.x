@@ -23,8 +23,7 @@ import javax.swing.JTree;
 import javax.swing.tree.DefaultMutableTreeNode;
 
 import org.fest.swing.core.GenericTypeMatcher;
-import org.fest.swing.edt.GuiQuery;
-import org.fest.swing.edt.GuiTask;
+import org.fest.swing.edt.*;
 import org.fest.swing.exception.ComponentLookupException;
 import org.fest.swing.test.core.RobotBasedTestCase;
 import org.fest.swing.test.swing.TestWindow;
@@ -55,6 +54,7 @@ public class ContainerFixtureJTreeLookupTest extends RobotBasedTestCase {
   @Test
   public void shouldFailIfJTreeCannotBeFoundByType() {
     execute(new GuiTask() {
+      @Override
       protected void executeInEDT() {
         window.remove(window.tree);
       }
@@ -89,6 +89,7 @@ public class ContainerFixtureJTreeLookupTest extends RobotBasedTestCase {
   @Test
   public void shouldFindJTreeWithCustomMatcher() {
     JTreeFixture tree = fixture.tree(new GenericTypeMatcher<JTree>(JTree.class) {
+      @Override
       protected boolean isMatching(JTree t) {
         return "expandMeTree".equals(t.getName());
       }
@@ -104,6 +105,7 @@ public class ContainerFixtureJTreeLookupTest extends RobotBasedTestCase {
   public void shouldFailIfJTreeCannotBeFoundWithCustomMatcher() {
     try {
       fixture.tree(new GenericTypeMatcher<JTree>(JTree.class) {
+        @Override
         protected boolean isMatching(JTree t) {
           return false;
         }
@@ -121,6 +123,7 @@ public class ContainerFixtureJTreeLookupTest extends RobotBasedTestCase {
 
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
+        @Override
         protected MyWindow executeInEDT() {
           return new MyWindow();
         }

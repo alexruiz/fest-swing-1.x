@@ -50,6 +50,7 @@ public class FEST139_ComponentFinderNotUsingRobotSettings_Test extends RobotBase
 
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
+        @Override
         protected MyWindow executeInEDT() {
           return new MyWindow();
         }
