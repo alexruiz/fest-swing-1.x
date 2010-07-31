@@ -15,8 +15,7 @@
 package org.fest.util;
 
 import static java.lang.reflect.Array.getLength;
-import static org.fest.util.Strings.concat;
-import static org.fest.util.Strings.quote;
+import static org.fest.util.Strings.*;
 
 import java.util.*;
 import java.util.Arrays;

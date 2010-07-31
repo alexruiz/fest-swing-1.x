@@ -15,8 +15,7 @@
 package org.fest.util;
 
 import static org.fest.util.Strings.concat;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 import java.util.Arrays;
 

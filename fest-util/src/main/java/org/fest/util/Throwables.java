@@ -20,8 +20,6 @@ import static org.fest.util.Collections.list;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.fest.util.StackTraces;
-
 /**
  * Understands utility methods related to <code>{@link Throwable}</code>s.
  *

@@ -14,8 +14,7 @@
  */
 package org.fest.util;
 
-import static org.fest.util.Collections.hasOnlyNullElements;
-import static org.fest.util.Collections.list;
+import static org.fest.util.Collections.*;
 import static org.junit.Assert.assertFalse;
 
 import java.util.ArrayList;

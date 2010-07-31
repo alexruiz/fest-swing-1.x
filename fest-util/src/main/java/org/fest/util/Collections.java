@@ -14,17 +14,11 @@
  */
 package org.fest.util;
 
-import static java.util.Collections.unmodifiableCollection;
-import static java.util.Collections.unmodifiableList;
+import static java.util.Collections.*;
 import static org.fest.util.Strings.quote;
 
-import java.util.ArrayList;
+import java.util.*;
 import java.util.Arrays;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
 
 /**
  * Understands utility methods related to collections.

@@ -16,8 +16,7 @@
 package org.fest.util;
 
 import static java.io.File.separator;
-import static org.fest.util.Strings.concat;
-import static org.fest.util.Strings.quote;
+import static org.fest.util.Strings.*;
 import static org.junit.Assert.assertTrue;
 
 import java.io.File;

@@ -20,10 +20,7 @@ import static org.fest.util.Closeables.close;
 import static org.fest.util.Flushables.flush;
 import static org.fest.util.Strings.*;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.io.Writer;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 

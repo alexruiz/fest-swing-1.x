@@ -17,8 +17,7 @@ package org.fest.util;
 import static java.util.Arrays.asList;
 import static junit.framework.Assert.assertEquals;
 import static org.fest.util.Collections.nonNullElements;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 import java.util.Collection;

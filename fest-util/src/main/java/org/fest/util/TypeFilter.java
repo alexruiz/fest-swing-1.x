@@ -15,9 +15,7 @@
  */
 package org.fest.util;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 
 /**
  * Understands filtering elements of a collection by their data type.
