@@ -62,7 +62,7 @@ public class Bug213_HideCaretInTextFieldWhenTakingScreenshot_Test extends Sequen
     @RunsInEDT
     static MyWindow createAndShow() {
       return execute(new GuiQuery<MyWindow>() {
-        @Override   protected MyWindow executeInEDT() {
+        @Override protected MyWindow executeInEDT() {
           return display(new MyWindow());
         }
       });

@@ -66,7 +66,7 @@ public class JToolBarFixture_constructor_withRobotAndName_Test extends RobotBase
 
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
-        @Override   protected MyWindow executeInEDT() {
+        @Override protected MyWindow executeInEDT() {
           return new MyWindow();
         }
       });

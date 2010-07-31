@@ -80,11 +80,11 @@ public class MultipleSelectionTemplate_multiSelect_Test {
       this.elementCount = elementCount;
     }
 
-    @Override   int elementCount() {
+    @Override int elementCount() {
       return elementCount;
     }
 
-    @Override   void selectElement(int index) {
+    @Override void selectElement(int index) {
       timesSelected++;
     }
   }

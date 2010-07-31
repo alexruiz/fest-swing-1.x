@@ -91,7 +91,7 @@ public class JTableCellEditableQuery_isCellEditable_Test extends RobotBasedTestC
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
-        @Override   protected MyWindow executeInEDT() {
+        @Override protected MyWindow executeInEDT() {
           return new MyWindow();
         }
       });

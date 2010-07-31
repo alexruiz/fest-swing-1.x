@@ -64,7 +64,7 @@ public final class JSliders {
     @RunsInEDT
     public JSlider createNew() {
       return execute(new GuiQuery<JSlider>() {
-        @Override   protected JSlider executeInEDT() {
+        @Override protected JSlider executeInEDT() {
           JSlider slider = new JSlider();
           slider.setMaximum(maximum);
           slider.setMinimum(minimum);

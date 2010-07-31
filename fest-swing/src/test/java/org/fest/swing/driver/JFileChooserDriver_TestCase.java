@@ -98,7 +98,7 @@ public abstract class JFileChooserDriver_TestCase extends RobotBasedTestCase {
     @RunsInEDT
     static MyWindow createNew(final Class<?> testClass) {
       return execute(new GuiQuery<MyWindow>() {
-        @Override   protected MyWindow executeInEDT() {
+        @Override protected MyWindow executeInEDT() {
           return new MyWindow(testClass);
         }
       });

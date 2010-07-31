@@ -58,7 +58,7 @@ public final class JCheckBoxes {
     @RunsInEDT
     public JCheckBox createNew() {
       return execute(new GuiQuery<JCheckBox>() {
-        @Override   protected JCheckBox executeInEDT() {
+        @Override protected JCheckBox executeInEDT() {
           JCheckBox checkBox = new JCheckBox();
           checkBox.setName(name);
           checkBox.setSelected(selected);

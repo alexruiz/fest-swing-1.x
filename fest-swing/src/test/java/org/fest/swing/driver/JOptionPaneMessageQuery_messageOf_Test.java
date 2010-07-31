@@ -57,7 +57,7 @@ public class JOptionPaneMessageQuery_messageOf_Test extends RobotBasedTestCase {
     @RunsInEDT
     static MyOptionPane createNew(final String message) {
       return execute(new GuiQuery<MyOptionPane>() {
-        @Override   protected MyOptionPane executeInEDT() {
+        @Override protected MyOptionPane executeInEDT() {
           return new MyOptionPane(message);
         }
       });

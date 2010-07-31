@@ -46,7 +46,7 @@ public class ContainerFixture_button_withMatcher_Test extends ContainerFixture_b
   public void should_fail_if_visible_JButton_not_found() {
     try {
       fixture.button(new GenericTypeMatcher<JButton>(JButton.class) {
-        @Override   protected boolean isMatching(JButton b) {
+        @Override protected boolean isMatching(JButton b) {
           return false;
         }
       });

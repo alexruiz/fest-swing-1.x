@@ -69,7 +69,7 @@ public class ContainerComponentsQuery_componentsOf_Test extends SequentialEDTSaf
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
-        @Override   protected MyWindow executeInEDT() {
+        @Override protected MyWindow executeInEDT() {
           return new MyWindow();
         }
       });

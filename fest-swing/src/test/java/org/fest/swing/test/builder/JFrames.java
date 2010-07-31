@@ -59,7 +59,7 @@ public final class JFrames {
     @RunsInEDT
     public JFrame createAndShow() {
       return execute(new GuiQuery<JFrame>() {
-        @Override   protected JFrame executeInEDT() {
+        @Override protected JFrame executeInEDT() {
           JFrame frame = create();
           frame.pack();
           frame.setVisible(true);
@@ -71,7 +71,7 @@ public final class JFrames {
     @RunsInEDT
     public JFrame createNew() {
       return execute(new GuiQuery<JFrame>() {
-        @Override   protected JFrame executeInEDT() {
+        @Override protected JFrame executeInEDT() {
           return create();
         }
       });

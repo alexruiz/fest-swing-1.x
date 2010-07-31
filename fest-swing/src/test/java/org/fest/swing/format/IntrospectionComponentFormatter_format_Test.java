@@ -73,7 +73,7 @@ public class IntrospectionComponentFormatter_format_Test extends EDTSafeTestCase
 
     static MyButton newButton(final String[] names) {
       return GuiActionRunner.execute(new GuiQuery<MyButton>() {
-        @Override   protected MyButton executeInEDT() {
+        @Override protected MyButton executeInEDT() {
           return new MyButton(names);
         }
       });

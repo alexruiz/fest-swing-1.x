@@ -103,7 +103,7 @@ public class ContainerFixtureJScrollBarLookupTest extends RobotBasedTestCase {
   public void shouldFailIfJScrollBarCannotBeFoundWithCustomMatcher() {
     try {
       fixture.scrollBar(new GenericTypeMatcher<JScrollBar>(JScrollBar.class) {
-        @Override   protected boolean isMatching(JScrollBar s) {
+        @Override protected boolean isMatching(JScrollBar s) {
           return false;
         }
       });
@@ -120,7 +120,7 @@ public class ContainerFixtureJScrollBarLookupTest extends RobotBasedTestCase {
 
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
-        @Override   protected MyWindow executeInEDT() {
+        @Override protected MyWindow executeInEDT() {
           return new MyWindow();
         }
       });

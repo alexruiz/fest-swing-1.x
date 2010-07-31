@@ -46,7 +46,7 @@ public class GuiTask_executeInEDT_Test {
 
     GuiTaskInEDT() {}
 
-    @Override   protected void executeInEDT() {
+    @Override protected void executeInEDT() {
       executed = true;
     }
 

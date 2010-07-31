@@ -54,7 +54,7 @@ public final class JPanels {
     @RunsInEDT
     public JPanel createNew() {
       return execute(new GuiQuery<JPanel>() {
-        @Override   protected JPanel executeInEDT() {
+        @Override protected JPanel executeInEDT() {
           JPanel panel = new JPanel();
           if (background != null) panel.setBackground(background);
           panel.setName(name);

@@ -45,7 +45,7 @@ public final class JApplets {
 		@RunsInEDT
 		public JApplet createNew() {
 			return execute( new GuiQuery<JApplet>() {
-				@Override   protected JApplet executeInEDT() {
+				@Override protected JApplet executeInEDT() {
 					JApplet applet = new JApplet();
 					applet.setName(name);
 					return applet;

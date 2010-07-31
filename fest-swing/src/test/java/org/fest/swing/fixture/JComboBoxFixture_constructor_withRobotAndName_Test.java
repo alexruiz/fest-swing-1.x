@@ -64,7 +64,7 @@ public class JComboBoxFixture_constructor_withRobotAndName_Test extends RobotBas
 
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
-        @Override   protected MyWindow executeInEDT() {
+        @Override protected MyWindow executeInEDT() {
           return new MyWindow();
         }
       });

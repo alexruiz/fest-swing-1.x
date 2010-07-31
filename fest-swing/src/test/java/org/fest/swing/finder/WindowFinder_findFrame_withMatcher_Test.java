@@ -75,7 +75,7 @@ public class WindowFinder_findFrame_withMatcher_Test extends WindowFinder_TestCa
       super(JFrame.class);
     }
 
-    @Override   protected boolean isMatching(JFrame frame) {
+    @Override protected boolean isMatching(JFrame frame) {
       return "frame".equals(frame.getName()) && isShowing(frame);
     }
   }

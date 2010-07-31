@@ -57,7 +57,7 @@ public class ComponentParentQuery_parentOf_Test extends SequentialEDTSafeTestCas
     @RunsInEDT
     static MyWindow createNew() {
       return GuiActionRunner.execute(new GuiQuery<MyWindow>() {
-        @Override   protected MyWindow executeInEDT() {
+        @Override protected MyWindow executeInEDT() {
           return new MyWindow();
         }
       });

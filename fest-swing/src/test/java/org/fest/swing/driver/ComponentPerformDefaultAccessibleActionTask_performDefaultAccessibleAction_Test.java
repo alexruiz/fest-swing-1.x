@@ -74,10 +74,10 @@ public class ComponentPerformDefaultAccessibleActionTask_performDefaultAccessibl
     accessibleContext.accessibleAction(null);
     try {
       new EasyMockTemplate(accessibleAction) {
-        @Override   protected void expectations() {
+        @Override protected void expectations() {
         }
 
-        @Override   protected void codeToTest() {
+        @Override protected void codeToTest() {
           ComponentPerformDefaultAccessibleActionTask.performDefaultAccessibleAction(component);
           robot.waitForIdle();
         }
@@ -92,11 +92,11 @@ public class ComponentPerformDefaultAccessibleActionTask_performDefaultAccessibl
   public void should_throw_error_if_AccessibleAction_is_empty() {
     try {
       new EasyMockTemplate(accessibleAction) {
-        @Override   protected void expectations() {
+        @Override protected void expectations() {
           expect(accessibleAction.getAccessibleActionCount()).andReturn(0);
         }
 
-        @Override   protected void codeToTest() {
+        @Override protected void codeToTest() {
           ComponentPerformDefaultAccessibleActionTask.performDefaultAccessibleAction(component);
           robot.waitForIdle();
         }
@@ -119,7 +119,7 @@ public class ComponentPerformDefaultAccessibleActionTask_performDefaultAccessibl
     @RunsInEDT
     static MyWindow createNew(final AccessibleContext accessibleContext) {
       return execute(new GuiQuery<MyWindow>() {
-        @Override   protected MyWindow executeInEDT() {
+        @Override protected MyWindow executeInEDT() {
           return new MyWindow(accessibleContext);
         }
       });
@@ -142,7 +142,7 @@ public class ComponentPerformDefaultAccessibleActionTask_performDefaultAccessibl
       this.accessibleContext = accessibleContext;
     }
 
-    @Override   public AccessibleContext getAccessibleContext() {
+    @Override public AccessibleContext getAccessibleContext() {
       return accessibleContext;
     }
   }
@@ -158,31 +158,31 @@ public class ComponentPerformDefaultAccessibleActionTask_performDefaultAccessibl
       this.accessibleAction = newAccessibleAction;
     }
 
-    @Override   public AccessibleAction getAccessibleAction() {
+    @Override public AccessibleAction getAccessibleAction() {
       return accessibleAction;
     }
 
-    @Override   public Accessible getAccessibleChild(int i) {
+    @Override public Accessible getAccessibleChild(int i) {
       return null;
     }
 
-    @Override   public int getAccessibleChildrenCount() {
+    @Override public int getAccessibleChildrenCount() {
       return 0;
     }
 
-    @Override   public int getAccessibleIndexInParent() {
+    @Override public int getAccessibleIndexInParent() {
       return 0;
     }
 
-    @Override   public AccessibleRole getAccessibleRole() {
+    @Override public AccessibleRole getAccessibleRole() {
       return null;
     }
 
-    @Override   public AccessibleStateSet getAccessibleStateSet() {
+    @Override public AccessibleStateSet getAccessibleStateSet() {
       return null;
     }
 
-    @Override   public Locale getLocale() {
+    @Override public Locale getLocale() {
       return null;
     }
   }

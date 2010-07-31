@@ -69,7 +69,7 @@ public class EventDispatchThreadedEventListener_eventDispatched_Test {
 
     Listener() {}
 
-    @Override   protected void processEvent(AWTEvent newEvent) {
+    @Override protected void processEvent(AWTEvent newEvent) {
       this.event = newEvent;
       wasProcessedInEventDispatchThread = isEventDispatchThread();
     }

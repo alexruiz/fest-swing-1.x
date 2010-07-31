@@ -103,7 +103,7 @@ public class ContainerFixtureJComboBoxLookupTest extends RobotBasedTestCase {
   public void shouldFailIfJComboBoxCannotBeFoundWithCustomMatcher() {
     try {
       fixture.comboBox(new GenericTypeMatcher<JComboBox>(JComboBox.class) {
-        @Override   protected boolean isMatching(JComboBox c) {
+        @Override protected boolean isMatching(JComboBox c) {
           return false;
         }
       });
@@ -120,7 +120,7 @@ public class ContainerFixtureJComboBoxLookupTest extends RobotBasedTestCase {
 
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
-        @Override   protected MyWindow executeInEDT() {
+        @Override protected MyWindow executeInEDT() {
           return new MyWindow();
         }
       });

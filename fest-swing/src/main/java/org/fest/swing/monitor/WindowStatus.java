@@ -23,9 +23,12 @@ import static org.fest.swing.query.ComponentSizeQuery.sizeOf;
 import java.awt.*;
 import java.util.logging.Logger;
 
-import org.fest.swing.annotation.*;
-import org.fest.swing.edt.*;
-import org.fest.swing.util.*;
+import org.fest.swing.annotation.RunsInCurrentThread;
+import org.fest.swing.annotation.RunsInEDT;
+import org.fest.swing.edt.GuiQuery;
+import org.fest.swing.edt.GuiTask;
+import org.fest.swing.util.Pair;
+import org.fest.swing.util.RobotFactory;
 
 /**
  * Understands verification of the state of a window.
@@ -71,7 +74,7 @@ class WindowStatus {
     try {
       checkSafelyIfReady(w);
     } catch (Exception ignored) {
-      // We are getting InterruptedException in Xwnc
+      // TODO We are getting InterruptedException in Xwnc
       // http://groups.google.com/group/easytesting/browse_frm/thread/116cc070ab7b22e6
       LOGGER.log(WARNING, "Error ocurred when checking if window is ready", ignored);
     }

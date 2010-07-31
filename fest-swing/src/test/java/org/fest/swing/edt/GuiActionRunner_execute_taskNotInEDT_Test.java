@@ -76,7 +76,7 @@ public class GuiActionRunner_execute_taskNotInEDT_Test extends SequentialEDTSafe
 
     TestGuiTask() {}
 
-    @Override   protected void executeInEDT() {
+    @Override protected void executeInEDT() {
       methodInvocations.invoked("executeInEDT");
     }
 

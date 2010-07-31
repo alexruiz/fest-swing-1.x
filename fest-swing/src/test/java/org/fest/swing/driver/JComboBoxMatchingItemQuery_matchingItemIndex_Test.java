@@ -89,7 +89,7 @@ public class JComboBoxMatchingItemQuery_matchingItemIndex_Test extends RobotBase
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
-        @Override   protected MyWindow executeInEDT() {
+        @Override protected MyWindow executeInEDT() {
           return new MyWindow();
         }
       });

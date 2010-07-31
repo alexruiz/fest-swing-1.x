@@ -15,15 +15,20 @@
  */
 package org.fest.swing.monitor;
 
-import java.awt.*;
-import java.awt.event.*;
+import java.awt.Component;
+import java.awt.Window;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.*;
 
 import javax.swing.Timer;
 
-import net.jcip.annotations.*;
+import net.jcip.annotations.GuardedBy;
+import net.jcip.annotations.ThreadSafe;
 
-import org.fest.swing.annotation.*;
+import org.fest.swing.annotation.RunsInCurrentThread;
+import org.fest.swing.annotation.RunsInEDT;
+import org.fest.util.VisibleForTesting;
 
 /**
  * Understands the information collected by the monitors in this package.
@@ -33,7 +38,7 @@ import org.fest.swing.annotation.*;
 @ThreadSafe
 class Windows {
 
-  static int WINDOW_READY_DELAY = 10000;
+  @VisibleForTesting static int WINDOW_READY_DELAY = 10000;
 
   /** <code>{@link Window#isShowing() isShowing}</code> is true but are not yet ready for input. */
   @GuardedBy("lock") final Map<Window, TimerTask> pending = new WeakHashMap<Window, TimerTask>();
@@ -109,7 +114,7 @@ class Windows {
   void markAsShowing(final Window w) {
 	  synchronized(lock) {
       final TimerTask task = new TimerTask() {
-        @Override   public void run() {
+        @Override public void run() {
           markAsReady(w);
         }
       };
@@ -169,8 +174,7 @@ class Windows {
   /**
    * Returns {@code true} if the given window is ready to receive OS-level event input.
    * @param w the given window.
-   * @return {@code true} if the given window is ready to receive OS-level event input, {@code false}
-   *         otherwise.
+   * @return {@code true} if the given window is ready to receive OS-level event input, {@code false} otherwise.
    */
   boolean isReady(Window w) {
     synchronized(lock) {
@@ -193,7 +197,7 @@ class Windows {
    * Returns {@code true} if the given window is showing but not ready to receive OS-level event input.
    * @param w the given window.
    * @return {@code true} if the given window is showing but not not ready to receive OS-level event input,
-   *         {@code false} otherwise.
+   * {@code false} otherwise.
    */
   boolean isShowingButNotReady(Window w) {
     synchronized(lock) {

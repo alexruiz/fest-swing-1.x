@@ -76,7 +76,7 @@ public class JSplitPaneSetDividerLocationTask_setDividerLocation_Test extends Ro
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
-        @Override   protected MyWindow executeInEDT() {
+        @Override protected MyWindow executeInEDT() {
           return new MyWindow();
         }
       });

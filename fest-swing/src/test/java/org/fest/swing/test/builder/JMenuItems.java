@@ -58,7 +58,7 @@ public final class JMenuItems {
     @RunsInEDT
     public JMenuItem createNew() {
       return execute(new GuiQuery<JMenuItem>() {
-        @Override   protected JMenuItem executeInEDT() {
+        @Override protected JMenuItem executeInEDT() {
           JMenuItem menuItem = new JMenuItem();
           menuItem.setName(name);
           menuItem.setSelected(selected);

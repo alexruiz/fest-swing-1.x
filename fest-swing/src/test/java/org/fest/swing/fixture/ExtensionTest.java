@@ -57,7 +57,7 @@ public class ExtensionTest extends RobotBasedTestCase {
       return new JTextFieldFixtureExtension(name);
     }
 
-    @Override   public JTextFieldFixture createFixture(Robot robot, Container root) {
+    @Override public JTextFieldFixture createFixture(Robot robot, Container root) {
       return new JTextFieldFixture(robot, textField().createNew());
     }
   }

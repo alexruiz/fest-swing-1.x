@@ -124,7 +124,7 @@ public class TestTable extends JTable {
       super(JTable.class);
     }
 
-    @Override   protected String exportString(JTable table) {
+    @Override protected String exportString(JTable table) {
       rows = table.getSelectedRows();
       int colCount = table.getColumnCount();
       StringBuilder b = new StringBuilder();
@@ -139,7 +139,7 @@ public class TestTable extends JTable {
       return b.toString();
     }
 
-    @Override   protected void importString(JTable target, String s) {
+    @Override protected void importString(JTable target, String s) {
       DefaultTableModel model = (DefaultTableModel) target.getModel();
       int index = target.getSelectedRow();
       // Prevent the user from dropping data back on itself.
@@ -161,7 +161,7 @@ public class TestTable extends JTable {
         model.insertRow(index++, values[i].split(","));
     }
 
-    @Override   protected void cleanup(JTable source, boolean remove) {
+    @Override protected void cleanup(JTable source, boolean remove) {
       if (remove && rows != null) {
         DefaultTableModel model = (DefaultTableModel) source.getModel();
         // If we are moving items around in the same table, we need to adjust the rows accordingly, since those after the

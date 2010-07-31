@@ -49,7 +49,7 @@ public class WindowFinder_findDialog_withMatcher_withInvalidInput_Test {
       super(JDialog.class);
     }
 
-    @Override   protected boolean isMatching(JDialog dialog) {
+    @Override protected boolean isMatching(JDialog dialog) {
       return false;
     }
   }

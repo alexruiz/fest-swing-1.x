@@ -103,7 +103,7 @@ public class ContainerFixtureJTreeLookupTest extends RobotBasedTestCase {
   public void shouldFailIfJTreeCannotBeFoundWithCustomMatcher() {
     try {
       fixture.tree(new GenericTypeMatcher<JTree>(JTree.class) {
-        @Override   protected boolean isMatching(JTree t) {
+        @Override protected boolean isMatching(JTree t) {
           return false;
         }
       });
@@ -120,7 +120,7 @@ public class ContainerFixtureJTreeLookupTest extends RobotBasedTestCase {
 
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
-        @Override   protected MyWindow executeInEDT() {
+        @Override protected MyWindow executeInEDT() {
           return new MyWindow();
         }
       });

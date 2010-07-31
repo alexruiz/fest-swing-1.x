@@ -75,7 +75,7 @@ public class JTreeClearSelectionTask_clearSelectionOf_Test extends RobotBasedTes
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
-        @Override   protected MyWindow executeInEDT() {
+        @Override protected MyWindow executeInEDT() {
           return new MyWindow();
         }
       });

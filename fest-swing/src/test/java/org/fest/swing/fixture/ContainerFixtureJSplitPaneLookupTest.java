@@ -105,7 +105,7 @@ public class ContainerFixtureJSplitPaneLookupTest extends RobotBasedTestCase {
   public void shouldFailIfJSplitPaneCannotBeFoundWithCustomMatcher() {
     try {
       fixture.splitPane(new GenericTypeMatcher<JSplitPane>(JSplitPane.class) {
-        @Override   protected boolean isMatching(JSplitPane s) {
+        @Override protected boolean isMatching(JSplitPane s) {
           return false;
         }
       });
@@ -122,7 +122,7 @@ public class ContainerFixtureJSplitPaneLookupTest extends RobotBasedTestCase {
 
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
-        @Override   protected MyWindow executeInEDT() {
+        @Override protected MyWindow executeInEDT() {
           return new MyWindow();
         }
       });

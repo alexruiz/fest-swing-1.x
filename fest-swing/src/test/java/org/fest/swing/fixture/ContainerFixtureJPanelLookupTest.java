@@ -105,7 +105,7 @@ public class ContainerFixtureJPanelLookupTest extends RobotBasedTestCase {
   public void shouldFailIfJPanelCannotBeFoundWithCustomMatcher() {
     try {
       fixture.panel(new GenericTypeMatcher<JPanel>(JPanel.class) {
-        @Override   protected boolean isMatching(JPanel p) {
+        @Override protected boolean isMatching(JPanel p) {
           return false;
         }
       });
@@ -122,7 +122,7 @@ public class ContainerFixtureJPanelLookupTest extends RobotBasedTestCase {
 
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
-        @Override   protected MyWindow executeInEDT() {
+        @Override protected MyWindow executeInEDT() {
           return new MyWindow();
         }
       });

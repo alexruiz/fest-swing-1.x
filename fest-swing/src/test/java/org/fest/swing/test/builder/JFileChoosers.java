@@ -46,7 +46,7 @@ public final class JFileChoosers {
     @RunsInEDT
     public JFileChooser createNew() {
       return execute(new GuiQuery<JFileChooser>() {
-        @Override   protected JFileChooser executeInEDT() {
+        @Override protected JFileChooser executeInEDT() {
           JFileChooser fileChooser = new JFileChooser();
           fileChooser.setName(name);
           return fileChooser;

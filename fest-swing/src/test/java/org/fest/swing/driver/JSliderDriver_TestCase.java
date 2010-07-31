@@ -84,7 +84,7 @@ public abstract class JSliderDriver_TestCase extends RobotBasedTestCase {
     @RunsInEDT
     static MyWindow createNew(final Class<? extends JSliderDriver_TestCase> testClass, final int orientation) {
       return execute(new GuiQuery<MyWindow>() {
-        @Override   protected MyWindow executeInEDT() {
+        @Override protected MyWindow executeInEDT() {
           return new MyWindow(testClass, orientation);
         }
       });

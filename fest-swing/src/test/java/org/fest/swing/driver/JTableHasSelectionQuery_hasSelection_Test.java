@@ -78,7 +78,7 @@ public class JTableHasSelectionQuery_hasSelection_Test extends RobotBasedTestCas
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
-        @Override   protected MyWindow executeInEDT() {
+        @Override protected MyWindow executeInEDT() {
           return new MyWindow();
         }
       });

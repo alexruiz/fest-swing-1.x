@@ -77,7 +77,7 @@ public class JOptionPaneFinder_findOptionPane_withMatcher_Test extends JOptionPa
       super(JOptionPane.class);
     }
 
-    @Override   protected boolean isMatching(JOptionPane optionPane) {
+    @Override protected boolean isMatching(JOptionPane optionPane) {
       return optionPane.isShowing();
     }
   }

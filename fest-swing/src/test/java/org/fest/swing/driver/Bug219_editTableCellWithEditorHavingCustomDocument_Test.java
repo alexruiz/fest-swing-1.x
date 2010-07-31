@@ -69,7 +69,7 @@ public class Bug219_editTableCellWithEditorHavingCustomDocument_Test extends Rob
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
-        @Override   protected MyWindow executeInEDT() {
+        @Override protected MyWindow executeInEDT() {
           return new MyWindow();
         }
       });
@@ -98,7 +98,7 @@ public class Bug219_editTableCellWithEditorHavingCustomDocument_Test extends Rob
     /*
      * Inserts a text with a maximum length of 10 characters.
      */
-    @Override   public void insertString(int offs, String s, AttributeSet a) throws BadLocationException {
+    @Override public void insertString(int offs, String s, AttributeSet a) throws BadLocationException {
       // If length is less than 10 characters, insert it
       if (s != null && getLength() + s.length() <= 10) {
         super.insertString(offs, s, a);

@@ -82,7 +82,7 @@ public class JListSelectionValuesQuery_selectionValues_Test extends RobotBasedTe
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
-        @Override   protected MyWindow executeInEDT() {
+        @Override protected MyWindow executeInEDT() {
           return new MyWindow();
         }
       });

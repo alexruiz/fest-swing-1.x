@@ -60,7 +60,7 @@ public class JTreeChildOfPathCountQuery_childCount_Test extends RobotBasedTestCa
     @RunsInEDT
     static MyWindow createNew(final int treeRootChildCount) {
       return execute(new GuiQuery<MyWindow>() {
-        @Override   protected MyWindow executeInEDT() {
+        @Override protected MyWindow executeInEDT() {
           return new MyWindow(treeRootChildCount);
         }
       });

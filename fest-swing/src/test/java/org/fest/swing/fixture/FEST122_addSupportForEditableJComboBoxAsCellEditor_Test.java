@@ -57,7 +57,7 @@ public class FEST122_addSupportForEditableJComboBoxAsCellEditor_Test extends Rob
 
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
-        @Override   protected MyWindow executeInEDT() {
+        @Override protected MyWindow executeInEDT() {
           return new MyWindow();
         }
       });

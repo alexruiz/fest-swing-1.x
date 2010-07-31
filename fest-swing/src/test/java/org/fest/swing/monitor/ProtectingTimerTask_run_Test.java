@@ -59,7 +59,7 @@ public class ProtectingTimerTask_run_Test {
 
     MyTimerTask() {}
 
-    @Override   public void run() {
+    @Override public void run() {
       executed = true;
       if (exceptionToThrow != null) throw exceptionToThrow;
     }

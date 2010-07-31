@@ -79,7 +79,7 @@ public class ScreenshotTaker_saveComponentAsPng_Test extends SequentialEDTSafeTe
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
-        @Override   protected MyWindow executeInEDT() {
+        @Override protected MyWindow executeInEDT() {
           return new MyWindow();
         }
       });

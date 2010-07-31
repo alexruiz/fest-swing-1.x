@@ -65,7 +65,7 @@ public final class JComboBoxes {
     @RunsInEDT
     public JComboBox createNew() {
       return execute(new GuiQuery<JComboBox>() {
-        @Override   protected JComboBox executeInEDT() {
+        @Override protected JComboBox executeInEDT() {
           JComboBox comboBox = new JComboBox();
           comboBox.setEditable(editable);
           if (!isEmpty(items)) comboBox.setModel(new DefaultComboBoxModel(items));

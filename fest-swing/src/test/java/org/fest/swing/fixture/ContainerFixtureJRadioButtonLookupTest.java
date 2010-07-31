@@ -102,7 +102,7 @@ public class ContainerFixtureJRadioButtonLookupTest extends RobotBasedTestCase {
   public void shouldFailIfJRadioButtonCannotBeFoundWithCustomMatcher() {
     try {
       fixture.radioButton(new GenericTypeMatcher<JRadioButton>(JRadioButton.class) {
-        @Override   protected boolean isMatching(JRadioButton r) {
+        @Override protected boolean isMatching(JRadioButton r) {
           return false;
         }
       });
@@ -119,7 +119,7 @@ public class ContainerFixtureJRadioButtonLookupTest extends RobotBasedTestCase {
 
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
-        @Override   protected MyWindow executeInEDT() {
+        @Override protected MyWindow executeInEDT() {
           return new MyWindow();
         }
       });

@@ -114,7 +114,7 @@ public class JSplitPaneDriver_moveDividerTo_Test extends RobotBasedTestCase {
     @RunsInEDT
     static MyWindow createNew(final int orientation, final Class<?> testClass) {
       return execute(new GuiQuery<MyWindow>() {
-        @Override   protected MyWindow executeInEDT() {
+        @Override protected MyWindow executeInEDT() {
           return new MyWindow(orientation, testClass);
         }
       });

@@ -58,7 +58,7 @@ public class ModalDialogLookupTest extends RobotBasedTestCase {
     @RunsInEDT
     static MyWindow createNew() {
       return GuiActionRunner.execute(new GuiQuery<MyWindow>() {
-        @Override   protected MyWindow executeInEDT() {
+        @Override protected MyWindow executeInEDT() {
           return new MyWindow();
         }
       });

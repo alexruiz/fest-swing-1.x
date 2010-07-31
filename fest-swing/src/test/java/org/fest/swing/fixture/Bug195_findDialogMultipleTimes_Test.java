@@ -59,7 +59,7 @@ public class Bug195_findDialogMultipleTimes_Test extends RobotBasedTestCase {
       this.matchString = s != null ? s.toUpperCase() : null;
     }
 
-    @Override   protected boolean isMatching(Dialog dialog) {
+    @Override protected boolean isMatching(Dialog dialog) {
       String title = dialog.getTitle();
       return title != null && title.toUpperCase().startsWith(matchString) && isShowing(dialog);
     }
@@ -67,13 +67,13 @@ public class Bug195_findDialogMultipleTimes_Test extends RobotBasedTestCase {
     @RunsInEDT
     private static boolean isShowing(final Dialog dialog) {
       return execute(new GuiQuery<Boolean>() {
-        @Override   protected Boolean executeInEDT() {
+        @Override protected Boolean executeInEDT() {
           return dialog.isShowing();
         }
       });
     }
 
-    @Override   public String toString() {
+    @Override public String toString() {
       return concat(DialogTitleStartsWithMatcher.class.getSimpleName(), "(", quote(matchString), ")");
     }
   }
@@ -86,7 +86,7 @@ public class Bug195_findDialogMultipleTimes_Test extends RobotBasedTestCase {
     @RunsInEDT
     static TestDialog createNew(final String title) {
       return execute(new GuiQuery<TestDialog>() {
-        @Override   protected TestDialog executeInEDT() {
+        @Override protected TestDialog executeInEDT() {
           return new TestDialog(title);
         }
       });

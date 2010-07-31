@@ -80,7 +80,7 @@ public class GuiActionRunner_execute_queryNotInEDT_Test extends SequentialEDTSaf
       this.valueToReturnWhenExecuted = valueToReturnWhenExecuted;
     }
 
-    @Override   protected String executeInEDT() {
+    @Override protected String executeInEDT() {
       methodInvocations.invoked("executeInEDT");
       return valueToReturnWhenExecuted;
     }

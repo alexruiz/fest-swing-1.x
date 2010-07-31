@@ -71,7 +71,7 @@ public abstract class WindowVisibilityMonitor_TestCase extends SequentialEDTSafe
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
-        @Override   protected MyWindow executeInEDT() {
+        @Override protected MyWindow executeInEDT() {
           return new MyWindow();
         }
       });

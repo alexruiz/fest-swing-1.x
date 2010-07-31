@@ -80,7 +80,7 @@ public final class JProgressBars {
     @RunsInEDT
     public JProgressBar createNew() {
       return execute(new GuiQuery<JProgressBar>() {
-        @Override   protected JProgressBar executeInEDT() {
+        @Override protected JProgressBar executeInEDT() {
           JProgressBar progressBar = new JProgressBar();
           progressBar.setIndeterminate(indeterminate);
           progressBar.setMaximum(maximum);

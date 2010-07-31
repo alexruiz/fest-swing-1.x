@@ -60,7 +60,7 @@ public final class JTrees {
     @RunsInEDT
     public JTree createNew() {
       return execute(new GuiQuery<JTree>() {
-        @Override   protected JTree executeInEDT() {
+        @Override protected JTree executeInEDT() {
           if (root != null && !isEmpty(values))
             throw new IllegalStateException("Either set root or values, but not both");
           JTree tree = null;

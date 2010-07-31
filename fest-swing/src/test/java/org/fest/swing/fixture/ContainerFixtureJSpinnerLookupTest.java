@@ -102,7 +102,7 @@ public class ContainerFixtureJSpinnerLookupTest extends RobotBasedTestCase {
   public void shouldFailIfJSpinnerCannotBeFoundWithCustomMatcher() {
     try {
       fixture.spinner(new GenericTypeMatcher<JSpinner>(JSpinner.class) {
-        @Override   protected boolean isMatching(JSpinner s) {
+        @Override protected boolean isMatching(JSpinner s) {
           return false;
         }
       });
@@ -119,7 +119,7 @@ public class ContainerFixtureJSpinnerLookupTest extends RobotBasedTestCase {
 
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
-        @Override   protected MyWindow executeInEDT() {
+        @Override protected MyWindow executeInEDT() {
           return new MyWindow();
         }
       });

@@ -93,7 +93,7 @@ public class BasicJListCellReader_valueAt_Test extends RobotBasedTestCase {
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
-        @Override   protected MyWindow executeInEDT() {
+        @Override protected MyWindow executeInEDT() {
           return new MyWindow();
         }
       });
@@ -117,7 +117,7 @@ public class BasicJListCellReader_valueAt_Test extends RobotBasedTestCase {
 
     void setElements(final Object...elements) {
       execute(new GuiTask() {
-        @Override   protected void executeInEDT() {
+        @Override protected void executeInEDT() {
           model.setElements(elements);
         }
       });

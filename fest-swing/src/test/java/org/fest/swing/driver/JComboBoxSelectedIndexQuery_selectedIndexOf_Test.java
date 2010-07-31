@@ -76,7 +76,7 @@ public class JComboBoxSelectedIndexQuery_selectedIndexOf_Test extends RobotBased
     @RunsInEDT
     static MyWindow createNew() {
       return GuiActionRunner.execute(new GuiQuery<MyWindow>() {
-        @Override   protected MyWindow executeInEDT() throws Throwable {
+        @Override protected MyWindow executeInEDT() throws Throwable {
           return new MyWindow();
         }
       });

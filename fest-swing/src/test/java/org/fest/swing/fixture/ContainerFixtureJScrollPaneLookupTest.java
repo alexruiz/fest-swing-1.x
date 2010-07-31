@@ -105,7 +105,7 @@ public class ContainerFixtureJScrollPaneLookupTest extends RobotBasedTestCase {
   public void shouldFailIfJScrollPaneCannotBeFoundWithCustomMatcher() {
     try {
       fixture.scrollPane(new GenericTypeMatcher<JScrollPane>(JScrollPane.class) {
-        @Override   protected boolean isMatching(JScrollPane s) {
+        @Override protected boolean isMatching(JScrollPane s) {
           return false;
         }
       });
@@ -122,7 +122,7 @@ public class ContainerFixtureJScrollPaneLookupTest extends RobotBasedTestCase {
 
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
-        @Override   protected MyWindow executeInEDT() {
+        @Override protected MyWindow executeInEDT() {
           return new MyWindow();
         }
       });

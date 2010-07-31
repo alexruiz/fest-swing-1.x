@@ -58,7 +58,7 @@ public class JOptionPaneOptionsQuery_optionsOf_Test extends RobotBasedTestCase {
     @RunsInEDT
     static MyOptionPane createNew() {
       return execute(new GuiQuery<MyOptionPane>() {
-        @Override   protected MyOptionPane executeInEDT() {
+        @Override protected MyOptionPane executeInEDT() {
           return new MyOptionPane();
         }
       });

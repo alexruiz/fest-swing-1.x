@@ -35,7 +35,7 @@ public abstract class NamedComponentMatcherTemplate_TestCase {
       super(supportedType, name);
     }
 
-    @Override   protected boolean isMatching(JLabel component) {
+    @Override protected boolean isMatching(JLabel component) {
       return false;
     }
   }

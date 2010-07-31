@@ -58,7 +58,7 @@ public final class JToggleButtons {
     @RunsInEDT
     public JToggleButton createNew() {
       return execute(new GuiQuery<JToggleButton>() {
-        @Override   protected JToggleButton executeInEDT() {
+        @Override protected JToggleButton executeInEDT() {
           JToggleButton toggleButton = new JToggleButton();
           toggleButton.setName(name);
           toggleButton.setSelected(selected);

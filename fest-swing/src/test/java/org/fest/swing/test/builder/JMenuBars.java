@@ -53,7 +53,7 @@ public final class JMenuBars {
     @RunsInEDT
     public JMenuBar createNew() {
       return execute(new GuiQuery<JMenuBar>() {
-        @Override   protected JMenuBar executeInEDT() {
+        @Override protected JMenuBar executeInEDT() {
           JMenuBar menuBar = new JMenuBar();
           menuBar.setName(name);
           if (!isEmpty(menus))

@@ -64,7 +64,7 @@ public class Bug209_JComboBoxWithCustomModel_Test extends RobotBasedTestCase {
     @RunsInEDT
     static MyDialog createNew(final NamedObject[] items) {
       return execute(new GuiQuery<MyDialog>() {
-        @Override   protected MyDialog executeInEDT() {
+        @Override protected MyDialog executeInEDT() {
           return new MyDialog(items);
         }
       });

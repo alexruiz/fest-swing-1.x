@@ -59,7 +59,7 @@ public class ExistingHierarchy_dispose_Test extends SequentialEDTSafeTestCase {
     @RunsInEDT
     static MyWindow createAndShow(final Class<?> testClass) {
       return execute(new GuiQuery<MyWindow>() {
-        @Override   protected MyWindow executeInEDT() {
+        @Override protected MyWindow executeInEDT() {
           return display(new MyWindow(testClass));
         }
       });

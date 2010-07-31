@@ -102,7 +102,7 @@ public class ContainerFixtureJTableLookupTest extends RobotBasedTestCase {
   public void shouldFailIfJTableCannotBeFoundWithCustomMatcher() {
     try {
       fixture.table(new GenericTypeMatcher<JTable>(JTable.class) {
-        @Override   protected boolean isMatching(JTable t) {
+        @Override protected boolean isMatching(JTable t) {
           return false;
         }
       });
@@ -119,7 +119,7 @@ public class ContainerFixtureJTableLookupTest extends RobotBasedTestCase {
 
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
-        @Override   protected MyWindow executeInEDT() {
+        @Override protected MyWindow executeInEDT() {
           return new MyWindow();
         }
       });

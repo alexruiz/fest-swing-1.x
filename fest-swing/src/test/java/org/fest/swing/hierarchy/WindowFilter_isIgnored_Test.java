@@ -77,7 +77,7 @@ public class WindowFilter_isIgnored_Test extends WindowFilter_TestCase {
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
-        @Override   protected MyWindow executeInEDT() throws Throwable {
+        @Override protected MyWindow executeInEDT() throws Throwable {
           return new MyWindow();
         }
       });

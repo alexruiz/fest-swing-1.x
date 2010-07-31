@@ -77,7 +77,7 @@ public final class JScrollBars {
     @RunsInEDT
     public JScrollBar createNew() {
       return execute(new GuiQuery<JScrollBar>() {
-        @Override   protected JScrollBar executeInEDT()  {
+        @Override protected JScrollBar executeInEDT()  {
           JScrollBar scrollBar = new JScrollBar();
           scrollBar.setBlockIncrement(blockIncrement);
           scrollBar.setOrientation(orientation);

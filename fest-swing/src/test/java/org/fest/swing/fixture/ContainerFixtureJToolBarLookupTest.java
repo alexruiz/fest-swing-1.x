@@ -105,7 +105,7 @@ public class ContainerFixtureJToolBarLookupTest extends RobotBasedTestCase {
   public void shouldFailIfJToolBarCannotBeFoundWithCustomMatcher() {
     try {
       fixture.toolBar(new GenericTypeMatcher<JToolBar>(JToolBar.class) {
-        @Override   protected boolean isMatching(JToolBar t) {
+        @Override protected boolean isMatching(JToolBar t) {
           return false;
         }
       });
@@ -122,7 +122,7 @@ public class ContainerFixtureJToolBarLookupTest extends RobotBasedTestCase {
 
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
-        @Override   protected MyWindow executeInEDT() {
+        @Override protected MyWindow executeInEDT() {
           return new MyWindow();
         }
       });

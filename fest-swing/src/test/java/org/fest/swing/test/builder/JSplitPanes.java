@@ -67,7 +67,7 @@ public final class JSplitPanes {
     @RunsInEDT
     public JSplitPane createNew() {
       return execute(new GuiQuery<JSplitPane>() {
-        @Override   protected JSplitPane executeInEDT() {
+        @Override protected JSplitPane executeInEDT() {
           JSplitPane splitPane = new JSplitPane();
           splitPane.setOrientation(orientation);
           splitPane.setName(name);

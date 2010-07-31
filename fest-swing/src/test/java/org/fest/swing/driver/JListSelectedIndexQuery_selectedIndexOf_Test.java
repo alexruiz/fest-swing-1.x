@@ -75,7 +75,7 @@ public class JListSelectedIndexQuery_selectedIndexOf_Test extends RobotBasedTest
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
-        @Override   protected MyWindow executeInEDT() {
+        @Override protected MyWindow executeInEDT() {
           return new MyWindow();
         }
       });

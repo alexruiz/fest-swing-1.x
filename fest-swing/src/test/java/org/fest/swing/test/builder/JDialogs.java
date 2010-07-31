@@ -66,7 +66,7 @@ public final class JDialogs {
     @RunsInEDT
     public JDialog createNew() {
       return execute(new GuiQuery<JDialog>() {
-        @Override   protected JDialog executeInEDT() {
+        @Override protected JDialog executeInEDT() {
           return create();
         }
       });
@@ -75,7 +75,7 @@ public final class JDialogs {
     @RunsInEDT
     public JDialog createAndShow() {
       return execute(new GuiQuery<JDialog>() {
-        @Override   protected JDialog executeInEDT() {
+        @Override protected JDialog executeInEDT() {
           JDialog dialog = create();
           dialog.pack();
           dialog.setVisible(true);

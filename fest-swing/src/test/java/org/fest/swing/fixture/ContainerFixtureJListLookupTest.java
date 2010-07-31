@@ -103,7 +103,7 @@ public class ContainerFixtureJListLookupTest extends RobotBasedTestCase {
   public void shouldFailIfJListCannotBeFoundWithCustomMatcher() {
     try {
       fixture.list(new GenericTypeMatcher<JList>(JList.class) {
-        @Override   protected boolean isMatching(JList l) {
+        @Override protected boolean isMatching(JList l) {
           return false;
         }
       });
@@ -120,7 +120,7 @@ public class ContainerFixtureJListLookupTest extends RobotBasedTestCase {
 
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
-        @Override   protected MyWindow executeInEDT() {
+        @Override protected MyWindow executeInEDT() {
           return new MyWindow();
         }
       });

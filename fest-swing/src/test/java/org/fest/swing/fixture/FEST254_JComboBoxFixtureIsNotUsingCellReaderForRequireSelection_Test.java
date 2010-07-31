@@ -57,7 +57,7 @@ public class FEST254_JComboBoxFixtureIsNotUsingCellReaderForRequireSelection_Tes
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
-        @Override   protected MyWindow executeInEDT() {
+        @Override protected MyWindow executeInEDT() {
           return new MyWindow();
         }
       });

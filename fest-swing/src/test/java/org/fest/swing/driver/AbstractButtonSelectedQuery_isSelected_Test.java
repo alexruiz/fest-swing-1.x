@@ -75,7 +75,7 @@ public class AbstractButtonSelectedQuery_isSelected_Test extends RobotBasedTestC
     @RunsInEDT
     static MyWindow createNew() {
       return GuiActionRunner.execute(new GuiQuery<MyWindow>() {
-        @Override   protected MyWindow executeInEDT() {
+        @Override protected MyWindow executeInEDT() {
           return new MyWindow();
         }
       });

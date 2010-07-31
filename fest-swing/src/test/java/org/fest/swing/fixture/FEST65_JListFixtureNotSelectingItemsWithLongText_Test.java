@@ -57,7 +57,7 @@ public class FEST65_JListFixtureNotSelectingItemsWithLongText_Test extends Robot
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
-        @Override   protected MyWindow executeInEDT() {
+        @Override protected MyWindow executeInEDT() {
           return new MyWindow();
         }
       });

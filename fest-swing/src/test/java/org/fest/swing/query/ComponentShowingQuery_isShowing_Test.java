@@ -66,7 +66,7 @@ public class ComponentShowingQuery_isShowing_Test extends SequentialEDTSafeTestC
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
-        @Override   protected MyWindow executeInEDT() {
+        @Override protected MyWindow executeInEDT() {
           return new MyWindow();
         }
       });

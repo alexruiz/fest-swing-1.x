@@ -48,7 +48,7 @@ public class JFileChooserFinder_findFileChooser_withMatcher_withInvalidInput_Tes
       super(JFileChooser.class);
     }
 
-    @Override   protected boolean isMatching(JFileChooser fileChooser) {
+    @Override protected boolean isMatching(JFileChooser fileChooser) {
       return false;
     }
   }

@@ -90,7 +90,7 @@ public class JToolBarDriver_TestCase extends RobotBasedTestCase {
     @RunsInEDT
     static MyWindow createNew(final Class<?> testClass) {
       return execute(new GuiQuery<MyWindow>() {
-        @Override   protected MyWindow executeInEDT() {
+        @Override protected MyWindow executeInEDT() {
           return new MyWindow(testClass);
         }
       });
@@ -108,7 +108,7 @@ public class JToolBarDriver_TestCase extends RobotBasedTestCase {
     @RunsInEDT
     Component componentAt(final String constraint) {
       return execute(new GuiQuery<Component>() {
-        @Override   protected Component executeInEDT() {
+        @Override protected Component executeInEDT() {
           return borderLayout.getLayoutComponent(constraint);
         }
       });

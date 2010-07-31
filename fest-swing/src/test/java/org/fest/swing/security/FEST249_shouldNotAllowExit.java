@@ -60,7 +60,7 @@ public class FEST249_shouldNotAllowExit extends RobotBasedTestCase {
 
     static MyWindow createNew() {
       return GuiActionRunner.execute(new GuiQuery<MyWindow>() {
-        @Override   protected MyWindow executeInEDT() {
+        @Override protected MyWindow executeInEDT() {
           return new MyWindow();
         }
       });
