@@ -61,8 +61,12 @@ public class Formatter_testNameFrom_Test {
   static class TestClass {
     void methodWithNoParameters() {}
 
-    void methodWithOneParameter(float first) {}
+    void methodWithOneParameter(float first) {
+      if (first > 0) return;
+    }
 
-    void methodWithParameters(String first, int second) {}
+    void methodWithParameters(String first, int second) {
+      if (first != null && second > 0) return;
+    }
   }
 }

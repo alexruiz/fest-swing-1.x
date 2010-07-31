@@ -43,11 +43,11 @@ public class ImageHandler_encodeBase64_withImageEncoder_Test extends ImageHandle
   @Test
   public void should_not_rethrow_error() {
     new EasyMockTemplate(encoder) {
-      protected void expectations() throws Throwable {
+      @Override protected void expectations() throws Throwable {
         expect(encoder.encodeBase64(image)).andThrow(thrownOnPurpose());
       }
 
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         assertThat(ImageHandler.encodeBase64(image, encoder)).isNull();
       }
     }.run();

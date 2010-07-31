@@ -16,8 +16,7 @@
 package org.fest.swing.junit.ant;
 
 import static org.fest.assertions.Assertions.assertThat;
-import static org.fest.reflect.core.Reflection.constructor;
-import static org.fest.reflect.core.Reflection.staticInnerClass;
+import static org.fest.reflect.core.Reflection.*;
 import junit.framework.JUnit4TestCaseFacade;
 import junit.framework.TestCase;
 

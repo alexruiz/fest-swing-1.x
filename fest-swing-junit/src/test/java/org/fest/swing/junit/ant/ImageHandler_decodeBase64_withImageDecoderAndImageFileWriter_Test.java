@@ -14,8 +14,7 @@
  */
 package org.fest.swing.junit.ant;
 
-import static org.easymock.EasyMock.expect;
-import static org.easymock.EasyMock.expectLastCall;
+import static org.easymock.EasyMock.*;
 import static org.easymock.classextension.EasyMock.createMock;
 import static org.fest.assertions.Assertions.assertThat;
 
@@ -51,13 +50,13 @@ public class ImageHandler_decodeBase64_withImageDecoderAndImageFileWriter_Test e
   @Test
   public void should_not_rethrow_error() {
     new EasyMockTemplate(decoder, writer) {
-      protected void expectations() throws Throwable {
+      @Override protected void expectations() throws Throwable {
         expect(decoder.decodeBase64(encoded)).andReturn(image);
         writer.writeAsPng(image, path);
         expectLastCall().andThrow(thrownOnPurpose());
       }
 
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         assertThat(ImageHandler.decodeBase64AndSaveAsPng(encoded, path, decoder, writer)).isEmpty();
       }
     }.run();

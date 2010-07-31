@@ -74,12 +74,12 @@ public class ScreenshotOnFailureResultFormatter_onFailureOrError_Test {
     final junit.framework.Test test = failingTest();
     final XmlNode errorElement = createMock(XmlNode.class);
     new EasyMockTemplate(writer) {
-      protected void expectations() {
+      @Override protected void expectations() {
         writer.writeScreenshot(errorElement, test);
         expectLastCall().once();
       }
 
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         formatter.onFailureOrError(test, new Throwable(), errorElement);
       }
     }.run();

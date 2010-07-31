@@ -71,11 +71,11 @@ public class FolderCreator_createFolder_Test {
     final File f = createMock(File.class);
     final RuntimeException error = new RuntimeException();
     new EasyMockTemplate(f) {
-      protected void expectations() throws Exception {
+      @Override protected void expectations() throws Exception {
         EasyMock.expect(f.getCanonicalPath()).andThrow(error);
       }
 
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         try {
           creator.createFolder(f, "hello");
           fail("expecting exception");

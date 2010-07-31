@@ -35,12 +35,12 @@ public class SuiteXmlNodeWriter_writeSuiteName_Test extends SuiteXmlNodeWriter_T
   public void should_write_suite_name_as_attribute() {
     final JUnitTest suite = new JUnitTest("Hello");
     new EasyMockTemplate(targetNode) {
-      protected void expectations() throws Exception {
+      @Override protected void expectations() throws Exception {
         targetNode.addAttribute(name(ATTR_NAME).value("Hello"));
         expectLastCall().once();
       }
 
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         assertThat(writer.writeSuiteName(targetNode, suite)).isSameAs(writer);
       }
     }.run();
@@ -50,11 +50,11 @@ public class SuiteXmlNodeWriter_writeSuiteName_Test extends SuiteXmlNodeWriter_T
   public void should_write_word_unknown_as_attribute_if_suite_does_not_have_name() {
     final JUnitTest suite = new JUnitTest(null);
     new EasyMockTemplate(targetNode) {
-      protected void expectations() throws Exception {
+      @Override protected void expectations() throws Exception {
         targetNode.addAttribute(name(ATTR_NAME).value("unknown"));
       }
 
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         assertThat(writer.writeSuiteName(targetNode, suite)).isSameAs(writer);
       }
     }.run();

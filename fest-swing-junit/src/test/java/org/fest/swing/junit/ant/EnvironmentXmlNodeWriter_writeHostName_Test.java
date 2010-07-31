@@ -16,8 +16,7 @@
 package org.fest.swing.junit.ant;
 
 import static org.apache.tools.ant.taskdefs.optional.junit.XMLConstants.HOSTNAME;
-import static org.easymock.EasyMock.expect;
-import static org.easymock.EasyMock.expectLastCall;
+import static org.easymock.EasyMock.*;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.junit.xml.XmlAttribute.name;
 
@@ -38,13 +37,13 @@ public class EnvironmentXmlNodeWriter_writeHostName_Test extends EnvironmentXmlN
   public void should_write_host_name_as_attribute() {
     final String hostName = "myHost";
     new EasyMockTemplate(timeStampFormatter, hostNameReader, targetNode) {
-      protected void expectations() throws Exception {
+      @Override protected void expectations() throws Exception {
         expect(hostNameReader.localHostName()).andReturn(hostName);
         targetNode.addAttribute(name(HOSTNAME).value(hostName));
         expectLastCall().once();
       }
 
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         assertThat(writer.writeHostName(targetNode)).isSameAs(writer);
       }
     }.run();
@@ -54,13 +53,13 @@ public class EnvironmentXmlNodeWriter_writeHostName_Test extends EnvironmentXmlN
   public void should_write_local_host_as_attribute_if_host_name_could_not_be_obtained() {
     final UnknownHostException e = new UnknownHostException();
     new EasyMockTemplate(timeStampFormatter, hostNameReader, targetNode) {
-      protected void expectations() throws Exception {
+      @Override protected void expectations() throws Exception {
         expect(hostNameReader.localHostName()).andThrow(e);
         targetNode.addAttribute(name(HOSTNAME).value("localhost"));
         expectLastCall().once();
       }
 
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         assertThat(writer.writeHostName(targetNode)).isSameAs(writer);
       }
     }.run();

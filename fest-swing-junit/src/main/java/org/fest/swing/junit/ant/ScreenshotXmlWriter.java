@@ -16,11 +16,9 @@ package org.fest.swing.junit.ant;
 
 import static org.fest.swing.image.ImageFileExtensions.PNG;
 import static org.fest.swing.junit.ant.ImageHandler.encodeBase64;
-import static org.fest.swing.junit.ant.Tests.testClassNameFrom;
-import static org.fest.swing.junit.ant.Tests.testMethodNameFrom;
+import static org.fest.swing.junit.ant.Tests.*;
 import static org.fest.swing.junit.xml.XmlAttribute.name;
-import static org.fest.util.Strings.isEmpty;
-import static org.fest.util.Strings.join;
+import static org.fest.util.Strings.*;
 
 import java.awt.image.BufferedImage;
 

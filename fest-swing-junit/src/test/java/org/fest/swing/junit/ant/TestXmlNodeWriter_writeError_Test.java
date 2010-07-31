@@ -15,8 +15,7 @@
  */
 package org.fest.swing.junit.ant;
 
-import static org.apache.tools.ant.taskdefs.optional.junit.XMLConstants.ATTR_MESSAGE;
-import static org.apache.tools.ant.taskdefs.optional.junit.XMLConstants.ATTR_TYPE;
+import static org.apache.tools.ant.taskdefs.optional.junit.XMLConstants.*;
 import static org.easymock.EasyMock.expectLastCall;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.junit.xml.XmlAttribute.name;
@@ -37,14 +36,14 @@ public class TestXmlNodeWriter_writeError_Test extends TestXmlNodeWriter_TestCas
     final String errorMsg = "Thrown on purpose";
     final Exception e = new Exception(errorMsg);
     new EasyMockTemplate(targetNode) {
-      protected void expectations() {
+      @Override protected void expectations() {
         targetNode.addAttribute(name(ATTR_MESSAGE).value(errorMsg));
         expectLastCall().once();
         targetNode.addAttribute(name(ATTR_TYPE).value(Exception.class.getName()));
         expectLastCall().once();
       }
 
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         assertThat(writer.writeError(targetNode, e)).isSameAs(writer);
       }
     }.run();
@@ -54,12 +53,12 @@ public class TestXmlNodeWriter_writeError_Test extends TestXmlNodeWriter_TestCas
   public void should_write_only_error_type_as_attribute_when_error_message_is_empty() {
     final Exception e = new Exception("");
     new EasyMockTemplate(targetNode) {
-      protected void expectations() {
+      @Override protected void expectations() {
         targetNode.addAttribute(name(ATTR_TYPE).value(Exception.class.getName()));
         expectLastCall().once();
       }
 
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         assertThat(writer.writeError(targetNode, e)).isSameAs(writer);
       }
     }.run();

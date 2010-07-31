@@ -16,8 +16,7 @@
 package org.fest.swing.junit.runner;
 
 import static java.io.File.separator;
-import static org.easymock.EasyMock.expect;
-import static org.easymock.EasyMock.expectLastCall;
+import static org.easymock.EasyMock.*;
 import static org.easymock.classextension.EasyMock.createMock;
 import static org.fest.util.Strings.concat;
 
@@ -49,13 +48,13 @@ public class FailureScreenshotTaker_saveScreenshot_Test {
   @Test
   public void should_save_screenshot_with_given_test_name_at_given_folder() {
     new EasyMockTemplate(screenshotTaker, imageFolder) {
-      protected void expectations() throws Exception {
+      @Override protected void expectations() throws Exception {
         expect(imageFolder.getCanonicalPath()).andReturn("myPath");
         screenshotTaker.saveDesktopAsPng(concat("myPath", separator, "testName.png"));
         expectLastCall().once();
       }
 
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         failureScreenshotTaker.saveScreenshot("testName");
       }
     }.run();
@@ -64,11 +63,11 @@ public class FailureScreenshotTaker_saveScreenshot_Test {
   @Test
   public void should_not_rethrow_Exceptions() {
     new EasyMockTemplate(screenshotTaker, imageFolder) {
-      protected void expectations() throws Exception {
+      @Override protected void expectations() throws Exception {
         expect(imageFolder.getCanonicalPath()).andThrow(new IOException("Thrown on purpose"));
       }
 
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         failureScreenshotTaker.saveScreenshot("testName");
       }
     }.run();

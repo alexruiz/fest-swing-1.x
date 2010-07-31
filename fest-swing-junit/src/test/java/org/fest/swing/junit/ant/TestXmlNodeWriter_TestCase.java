@@ -15,8 +15,7 @@
  */
 package org.fest.swing.junit.ant;
 
-import static org.easymock.EasyMock.expect;
-import static org.easymock.EasyMock.expectLastCall;
+import static org.easymock.EasyMock.*;
 import static org.easymock.classextension.EasyMock.createMock;
 import static org.fest.assertions.Assertions.assertThat;
 import junit.framework.TestResult;
@@ -45,13 +44,13 @@ public abstract class TestXmlNodeWriter_TestCase {
     final StackTraceFilter filter = createMock(StackTraceFilter.class);
     writer = new TestXmlNodeWriter(filter);
     new EasyMockTemplate(filter, targetNode) {
-      protected void expectations() {
+      @Override protected void expectations() {
         expect(filter.filter(error)).andReturn("Hello");
         targetNode.addText("Hello");
         expectLastCall().once();
       }
 
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         assertThat(writer.writeStackTrace(targetNode, error)).isSameAs(writer);
       }
     }.run();

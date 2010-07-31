@@ -45,13 +45,13 @@ public class EnvironmentXmlNodeWriter_writeTimestamp_Test extends EnvironmentXml
   @Test
   public void shouldWriteFormattedCurrentDateAsAttribute() {
     new EasyMockTemplate(timeStampFormatter, hostNameReader, targetNode) {
-      protected void expectations() {
+      @Override protected void expectations() {
         expect(timeStampFormatter.format(date)).andReturn(formatted);
         targetNode.addAttribute(XmlAttribute.name(TIMESTAMP).value(formatted));
         expectLastCall().once();
       }
 
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         assertThat(writer.writeTimestamp(targetNode)).isSameAs(writer);
       }
     }.run();

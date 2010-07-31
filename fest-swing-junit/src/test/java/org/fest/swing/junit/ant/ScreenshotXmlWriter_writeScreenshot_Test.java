@@ -20,8 +20,7 @@ import static org.easymock.EasyMock.expect;
 import static org.easymock.classextension.EasyMock.createMock;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.junit.ant.ImageHandler.encodeBase64;
-import static org.fest.swing.junit.ant.Tests.testClassNameFrom;
-import static org.fest.swing.junit.ant.Tests.testMethodNameFrom;
+import static org.fest.swing.junit.ant.Tests.*;
 
 import java.awt.image.BufferedImage;
 
@@ -62,12 +61,12 @@ public class ScreenshotXmlWriter_writeScreenshot_Test {
   public void should_add_screenshot_element_test_is_GUI_test() {
     final BufferedImage image = new BufferedImage(10, 10, TYPE_BYTE_BINARY);
     new EasyMockTemplate(screenshotTaker, guiTestRecognizer) {
-      protected void expectations() {
+      @Override protected void expectations() {
         expect(guiTestRecognizer.isGUITest(testClassNameFrom(test), testMethodNameFrom(test))).andReturn(true);
         expect(screenshotTaker.takeDesktopScreenshot()).andReturn(image);
       }
 
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         writer.writeScreenshot(errorNode, test);
         assertThat(root.size()).isEqualTo(2);
         assertThat(root.child(0)).isEqualTo(errorNode);
@@ -81,11 +80,11 @@ public class ScreenshotXmlWriter_writeScreenshot_Test {
   @Test
   public void should_not_add_screenshot_element_test_is_not_GUI_test() {
     new EasyMockTemplate(screenshotTaker, guiTestRecognizer) {
-      protected void expectations() {
+      @Override protected void expectations() {
         expect(guiTestRecognizer.isGUITest(testClassNameFrom(test), testMethodNameFrom(test))).andReturn(false);
       }
 
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         writer.writeScreenshot(errorNode, test);
         assertThat(root.size()).isEqualTo(1);
         assertThat(root.child(0)).isEqualTo(errorNode);

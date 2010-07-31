@@ -38,13 +38,13 @@ public class TestXmlNodeWriter_addNewTestXmlNode_Test extends TestXmlNodeWriter_
     final TestStub test = new TestStub("hello");
     final XmlNode newNode = mockXmlNode();
     new EasyMockTemplate(targetNode) {
-      protected void expectations() {
+      @Override protected void expectations() {
         XmlAttributes attributes = attributes(name(ATTR_NAME).value("hello"),
                                               name(ATTR_CLASSNAME).value(TestStub.class.getName()));
         expect(targetNode.addNewNode(TESTCASE, attributes)).andReturn(newNode);
       }
 
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         assertThat(writer.addNewTestXmlNode(targetNode, test)).isSameAs(newNode);
       }
     }.run();
@@ -55,13 +55,13 @@ public class TestXmlNodeWriter_addNewTestXmlNode_Test extends TestXmlNodeWriter_
     final TestStub test = new TestStub(null);
     final XmlNode newNode = mockXmlNode();
     new EasyMockTemplate(targetNode) {
-      protected void expectations() {
+      @Override protected void expectations() {
         XmlAttributes attributes = attributes(name(ATTR_NAME).value("unknown"),
                                               name(ATTR_CLASSNAME).value(TestStub.class.getName()));
         expect(targetNode.addNewNode(TESTCASE, attributes)).andReturn(newNode);
       }
 
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         assertThat(writer.addNewTestXmlNode(targetNode, test)).isSameAs(newNode);
       }
     }.run();

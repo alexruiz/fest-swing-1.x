@@ -17,8 +17,7 @@ package org.fest.swing.junit.xml;
 
 import static java.lang.String.valueOf;
 import static org.fest.util.Objects.*;
-import static org.fest.util.Strings.concat;
-import static org.fest.util.Strings.quote;
+import static org.fest.util.Strings.*;
 
 /**
  * Understands an attribute of a <code>{@link XmlNode}</code>. This class is intended for internal use only.  It only

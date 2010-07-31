@@ -17,8 +17,7 @@ package org.fest.swing.junit.runner;
 
 import static java.io.File.separator;
 import static org.fest.util.Files.delete;
-import static org.fest.util.Strings.concat;
-import static org.fest.util.Strings.quote;
+import static org.fest.util.Strings.*;
 
 import java.io.File;
 

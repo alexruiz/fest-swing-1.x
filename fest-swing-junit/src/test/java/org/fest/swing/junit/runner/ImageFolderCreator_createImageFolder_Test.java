@@ -46,11 +46,11 @@ public class ImageFolderCreator_createImageFolder_Test {
   public void should_create_image_folder() {
     final File createdFolder = new File("fake");
     new EasyMockTemplate(folderCreator) {
-      protected void expectations() {
+      @Override protected void expectations() {
         expect(folderCreator.createFolder(currentFolder(), "failed-gui-tests")).andReturn(createdFolder);
       }
 
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         assertThat(imageFolderCreator.createImageFolder()).isSameAs(createdFolder);
       }
     }.run();

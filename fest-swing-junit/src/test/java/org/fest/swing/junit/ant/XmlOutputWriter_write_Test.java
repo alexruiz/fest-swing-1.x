@@ -51,11 +51,11 @@ public class XmlOutputWriter_write_Test extends XmlOutputWriter_TestCase {
     writer = new XmlOutputWriter(streams);
     final MyOutputStream out = new MyOutputStream();
     new EasyMockTemplate(streams) {
-      protected void expectations() {
+      @Override protected void expectations() {
         expect(streams.isStandardOutOrErr(out)).andReturn(true);
       }
 
-      protected void codeToTest() throws Exception {
+      @Override protected void codeToTest() throws Exception {
         writer.write(xml(), out);
       }
     }.run();

@@ -18,8 +18,7 @@ package org.fest.swing.junit.runner;
 import static java.io.File.separator;
 import static java.util.logging.Level.WARNING;
 import static org.fest.swing.image.ImageFileExtensions.PNG;
-import static org.fest.util.Strings.concat;
-import static org.fest.util.Strings.quote;
+import static org.fest.util.Strings.*;
 
 import java.io.File;
 import java.util.logging.Logger;

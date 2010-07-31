@@ -15,8 +15,7 @@
  */
 package org.fest.swing.junit.ant;
 
-import static org.apache.tools.ant.taskdefs.optional.junit.XMLConstants.HOSTNAME;
-import static org.apache.tools.ant.taskdefs.optional.junit.XMLConstants.TIMESTAMP;
+import static org.apache.tools.ant.taskdefs.optional.junit.XMLConstants.*;
 import static org.fest.swing.junit.xml.XmlAttribute.name;
 
 import java.net.UnknownHostException;
