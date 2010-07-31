@@ -42,7 +42,7 @@ class MethodInvoker extends Statement {
     this.screenshotTaker = screenshotTaker;
   }
 
-  public void evaluate() throws Throwable {
+  @Override public void evaluate() throws Throwable {
     try {
       testMethod.invokeExplosively(target);
     } catch (Throwable t) {
