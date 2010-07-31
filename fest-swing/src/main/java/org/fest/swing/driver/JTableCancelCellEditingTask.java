@@ -35,8 +35,7 @@ final class JTableCancelCellEditingTask {
   @RunsInEDT
   static void cancelEditing(final JTable table, final int row, final int column) {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         validateIndices(table, row, column);
         validateCellIsEditable(table, row, column);
         TableCellEditor cellEditor = table.getCellEditor(row, column);
@@ -48,8 +47,7 @@ final class JTableCancelCellEditingTask {
   @RunsInEDT
   static void cancelEditing(final TableCellEditor cellEditor) {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         doCancelEditing(cellEditor);
       }
     });

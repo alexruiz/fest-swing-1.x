@@ -68,8 +68,7 @@ public class ContainerFixture_dialog_TestCase extends RobotBasedTestCase {
       super(JDialog.class);
     }
 
-    @Override
-    protected boolean isMatching(JDialog dialog) {
+    @Override   protected boolean isMatching(JDialog dialog) {
       return TITLE.equals(dialog.getTitle());
     }
 

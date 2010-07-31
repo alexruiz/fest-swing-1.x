@@ -30,13 +30,11 @@ public class WindowMonitor_isWindowReady_Test extends WindowMonitor_TestCase {
   @Test
   public void should_return_true_if_Windows_indicates_that_Window_is_ready() {
     new EasyMockTemplate(windows) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         expect(windows.isReady(frame)).andReturn(true);
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         assertThat(monitor.isWindowReady(frame)).isTrue();
       }
     }.run();
@@ -45,15 +43,13 @@ public class WindowMonitor_isWindowReady_Test extends WindowMonitor_TestCase {
   @Test
   public void should_check_with_WindowStatus_if_Window_is_ready_when_Windows_indicates_it_is_not_ready() {
     new EasyMockTemplate(windows, windowStatus) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         expect(windows.isReady(frame)).andReturn(false);
         windowStatus.checkIfReady(frame);
         expectLastCall();
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         assertThat(monitor.isWindowReady(frame)).isFalse();
       }
     }.run();

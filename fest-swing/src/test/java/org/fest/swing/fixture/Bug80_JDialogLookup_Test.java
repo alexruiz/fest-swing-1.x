@@ -63,8 +63,7 @@ public class Bug80_JDialogLookup_Test extends RobotBasedTestCase {
 
     static JDialogStarter createNew() {
       return execute(new GuiQuery<JDialogStarter>() {
-        @Override
-        protected JDialogStarter executeInEDT() {
+        @Override   protected JDialogStarter executeInEDT() {
           return new JDialogStarter();
         }
       });

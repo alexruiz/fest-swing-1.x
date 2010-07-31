@@ -84,8 +84,7 @@ public final class Containers {
   @RunsInEDT
   public static JFrame frameFor(final Container contentPane) {
     return execute(new GuiQuery<JFrame>() {
-      @Override
-      protected JFrame executeInEDT() throws Throwable {
+      @Override protected JFrame executeInEDT() throws Throwable {
         JFrame frame = new JFrame("Created by FEST");
         frame.setName(CREATED_FRAME_NAME);
         frame.setContentPane(contentPane);

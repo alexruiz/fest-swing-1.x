@@ -36,8 +36,7 @@ final class JListSelectionValuesQuery {
   @RunsInEDT
   static List<String> selectionValues(final JList list, final JListCellReader cellReader) {
     return execute(new GuiQuery<List<String>>() {
-      @Override
-      protected List<String> executeInEDT() {
+      @Override protected List<String> executeInEDT() {
         List<String> values = new ArrayList<String>();
         int[] selectedIndices = list.getSelectedIndices();
         for (int index : selectedIndices)

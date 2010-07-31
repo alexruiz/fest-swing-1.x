@@ -42,17 +42,13 @@ public class JCheckBoxFixture_toolTip_Test extends ToolTipDisplayFixture_TestCas
     target = checkBox().createNew();
   }
 
-  @Override
-  void onSetUp() {
+  @Override void onSetUp() {
     driver = createMock(AbstractButtonDriver.class);
     fixture = new JCheckBoxFixture(robot(), target);
     fixture.driver(driver);
   }
 
-  @Override
-  AbstractButtonDriver driver() {  return driver; }
-  @Override
-  JCheckBox target() { return target; }
-  @Override
-  JCheckBoxFixture fixture() { return fixture; }
+  @Override AbstractButtonDriver driver() {  return driver; }
+  @Override JCheckBox target() { return target; }
+  @Override JCheckBoxFixture fixture() { return fixture; }
 }

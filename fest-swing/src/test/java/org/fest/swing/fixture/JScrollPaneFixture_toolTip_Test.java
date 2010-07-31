@@ -42,17 +42,13 @@ public class JScrollPaneFixture_toolTip_Test extends ToolTipDisplayFixture_TestC
     target = scrollPane().createNew();
   }
 
-  @Override
-  void onSetUp() {
+  @Override void onSetUp() {
     driver = createMock(JScrollPaneDriver.class);
     fixture = new JScrollPaneFixture(robot(), target);
     fixture.driver(driver);
   }
 
-  @Override
-  JScrollPaneDriver driver() {  return driver; }
-  @Override
-  JScrollPane target() { return target; }
-  @Override
-  JScrollPaneFixture fixture() { return fixture; }
+  @Override JScrollPaneDriver driver() {  return driver; }
+  @Override JScrollPane target() { return target; }
+  @Override JScrollPaneFixture fixture() { return fixture; }
 }

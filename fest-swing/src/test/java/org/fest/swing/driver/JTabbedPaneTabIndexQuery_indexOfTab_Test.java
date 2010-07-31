@@ -65,8 +65,7 @@ public class JTabbedPaneTabIndexQuery_indexOfTab_Test extends RobotBasedTestCase
   @RunsInEDT
   private static int indexOfTab(final JTabbedPane tabbedPane, final String title) {
     return execute(new GuiQuery<Integer>() {
-      @Override
-      protected Integer executeInEDT() {
+      @Override protected Integer executeInEDT() {
         return JTabbedPaneTabIndexQuery.indexOfTab(tabbedPane, new StringTextMatcher(title));
       }
     });
@@ -75,8 +74,7 @@ public class JTabbedPaneTabIndexQuery_indexOfTab_Test extends RobotBasedTestCase
   @RunsInEDT
   private static void removeAllTabsIn(final JTabbedPane tabbedPane) {
     execute(new GuiTask() {
-      @Override
-      public void executeInEDT() {
+      @Override public void executeInEDT() {
         tabbedPane.removeAll();
       }
     });
@@ -90,8 +88,7 @@ public class JTabbedPaneTabIndexQuery_indexOfTab_Test extends RobotBasedTestCase
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
-        @Override
-        protected MyWindow executeInEDT() {
+        @Override   protected MyWindow executeInEDT() {
           return new MyWindow();
         }
       });

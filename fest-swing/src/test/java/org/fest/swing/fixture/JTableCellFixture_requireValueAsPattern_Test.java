@@ -34,13 +34,11 @@ public class JTableCellFixture_requireValueAsPattern_Test extends JTableCellFixt
   public void should_require_value() {
     final Pattern pattern = regex("Hello");
     new EasyMockTemplate(table) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         expect(table.requireCellValue(cell, pattern)).andReturn(table);
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         assertThatReturnsSelf(fixture.requireValue(pattern));
       }
     }.run();

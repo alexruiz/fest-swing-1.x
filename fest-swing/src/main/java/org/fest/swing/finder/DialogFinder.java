@@ -82,8 +82,7 @@ public class DialogFinder extends WindowFinderTemplate<Dialog> {
    * @return a <code>DialogFixture</code> managing the found <code>Dialog</code>.
    * @throws org.fest.swing.exception.WaitTimedOutError if a <code>Dialog</code> could not be found.
    */
-  @Override
-  public DialogFixture using(Robot robot) {
+  @Override public DialogFixture using(Robot robot) {
     return new DialogFixture(robot, findComponentWith(robot));
   }
 
@@ -91,6 +90,5 @@ public class DialogFinder extends WindowFinderTemplate<Dialog> {
    * Casts the given {@code Component} to <code>{@link Dialog}</code>.
    * @return the given {@code Component}, casted to {@code Dialog}.
    */
-  @Override
-  protected Dialog cast(Component c) { return (Dialog)c; }
+  @Override protected Dialog cast(Component c) { return (Dialog)c; }
 }

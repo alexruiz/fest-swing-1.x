@@ -34,8 +34,7 @@ final class AbstractButtonSelectedQuery {
   @RunsInEDT
   static boolean isSelected(final AbstractButton button) {
     return execute(new GuiQuery<Boolean>() {
-      @Override
-      protected Boolean executeInEDT() {
+      @Override protected Boolean executeInEDT() {
         return button.isSelected();
       }
     });

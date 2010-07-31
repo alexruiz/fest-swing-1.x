@@ -38,14 +38,12 @@ public abstract class MouseInputSimulationFixture_TestCase<T extends Component> 
   @Test
   public final void should_click() {
     new EasyMockTemplate(driver()) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         driver().click(target());
         expectLastCall().once();
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         assertThatReturnsSelf(fixture().click());
       }
     }.run();
@@ -55,14 +53,12 @@ public abstract class MouseInputSimulationFixture_TestCase<T extends Component> 
   public final void should_click_using_given_mouse_button() {
     final MouseButton button = MIDDLE_BUTTON;
     new EasyMockTemplate(driver()) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         driver().click(target(), button);
         expectLastCall().once();
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         assertThatReturnsSelf(fixture().click(button));
       }
     }.run();
@@ -72,14 +68,12 @@ public abstract class MouseInputSimulationFixture_TestCase<T extends Component> 
   public final void should_click_using_given_MouseClickInfo() {
     final MouseClickInfo mouseClickInfo = middleButton().times(2);
     new EasyMockTemplate(driver()) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         driver().click(target(), mouseClickInfo);
         expectLastCall().once();
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         assertThatReturnsSelf(fixture().click(mouseClickInfo));
       }
     }.run();
@@ -88,14 +82,12 @@ public abstract class MouseInputSimulationFixture_TestCase<T extends Component> 
   @Test
   public final void should_double_click() {
     new EasyMockTemplate(driver()) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         driver().doubleClick(target());
         expectLastCall().once();
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         assertThatReturnsSelf(fixture().doubleClick());
       }
     }.run();
@@ -104,19 +96,16 @@ public abstract class MouseInputSimulationFixture_TestCase<T extends Component> 
   @Test
   public final void should_right_click() {
     new EasyMockTemplate(driver()) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         driver().rightClick(target());
         expectLastCall().once();
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         assertThatReturnsSelf(fixture().rightClick());
       }
     }.run();
   }
 
-  @Override
-  abstract MouseInputSimulationFixture fixture();
+  @Override abstract MouseInputSimulationFixture fixture();
 }

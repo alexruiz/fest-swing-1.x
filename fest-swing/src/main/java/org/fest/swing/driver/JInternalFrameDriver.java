@@ -73,8 +73,7 @@ public class JInternalFrameDriver extends JComponentDriver {
   @RunsInEDT
   private static void toFront(final JInternalFrame internalFrame) {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         // it seems that moving to front always works, regardless if the internal frame is invisible and/or disabled.
         internalFrame.toFront();
       }
@@ -93,8 +92,7 @@ public class JInternalFrameDriver extends JComponentDriver {
   @RunsInEDT
   private static void toBack(final JInternalFrame internalFrame) {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         // it seems that moving to back always works, regardless if the internal frame is invisible and/or disabled.
         internalFrame.moveToBack();
       }
@@ -117,8 +115,7 @@ public class JInternalFrameDriver extends JComponentDriver {
   @RunsInEDT
   private static Pair<Container, Point> validateAndFindMaximizeLocation(final JInternalFrame internalFrame) {
     return execute(new GuiQuery<Pair<Container, Point>>() {
-      @Override
-      protected Pair<Container, Point> executeInEDT() {
+      @Override protected Pair<Container, Point> executeInEDT() {
         validateCanMaximize(internalFrame);
         return findMaximizeLocation(internalFrame);
       }
@@ -147,8 +144,7 @@ public class JInternalFrameDriver extends JComponentDriver {
   @RunsInEDT
   private static Pair<Container, Point> validateAndFindNormalizeLocation(final JInternalFrame internalFrame) {
     return execute(new GuiQuery<Pair<Container, Point>>() {
-      @Override
-      protected Pair<Container, Point> executeInEDT() {
+      @Override protected Pair<Container, Point> executeInEDT() {
         validateIsShowingOrIconified(internalFrame);
         return findMaximizeLocation(internalFrame);
       }
@@ -202,8 +198,7 @@ public class JInternalFrameDriver extends JComponentDriver {
   @RunsInEDT
   private static Pair<Boolean, Point> validateAndfindIconifyInfo(final JInternalFrame internalFrame) {
     return execute(new GuiQuery<Pair<Boolean, Point>>() {
-      @Override
-      protected Pair<Boolean, Point> executeInEDT() throws Throwable {
+      @Override protected Pair<Boolean, Point> executeInEDT() throws Throwable {
         validateIsShowingOrIconified(internalFrame);
         if (!internalFrame.isIconifiable())
           throw new IllegalStateException(concat("The JInternalFrame <", format(internalFrame), "> is not iconifiable"));
@@ -236,8 +231,7 @@ public class JInternalFrameDriver extends JComponentDriver {
   @RunsInEDT
   private static Triple<Boolean, Container, Point> validateAndfindDeiconifyInfo(final JInternalFrame internalFrame) {
     return execute(new GuiQuery<Triple<Boolean, Container, Point>>() {
-      @Override
-      protected Triple<Boolean, Container, Point> executeInEDT() throws Throwable {
+      @Override protected Triple<Boolean, Container, Point> executeInEDT() throws Throwable {
         validateIsShowingOrIconified(internalFrame);
         return deiconifyInfo(internalFrame);
       }
@@ -345,8 +339,7 @@ public class JInternalFrameDriver extends JComponentDriver {
   @RunsInEDT
   private static Pair<Boolean, Point> validateAndFindCloseInfo(final JInternalFrame internalFrame) {
     return execute(new GuiQuery<Pair<Boolean, Point>>() {
-      @Override
-      protected Pair<Boolean, Point> executeInEDT() {
+      @Override protected Pair<Boolean, Point> executeInEDT() {
         validateCanClose(internalFrame);
         return closeInfo(internalFrame);
       }

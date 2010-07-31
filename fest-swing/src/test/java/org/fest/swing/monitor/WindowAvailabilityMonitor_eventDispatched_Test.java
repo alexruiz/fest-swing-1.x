@@ -57,13 +57,11 @@ public class WindowAvailabilityMonitor_eventDispatched_Test extends WindowAvaila
   @Test
   public void should_mark_source_Window_as_ready_if_event_is_MouseEvent() {
     new EasyMockTemplate(windows) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         windows.markAsReady(window);
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         monitor.eventDispatched(mouseEvent(window));
       }
     }.run();
@@ -73,13 +71,11 @@ public class WindowAvailabilityMonitor_eventDispatched_Test extends WindowAvaila
   public void should_mark_source_Window_ancestor_as_ready_if_event_is_MouseEvent() {
     final JTextField source = window.textField;
     new EasyMockTemplate(windows) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         windows.markAsReady(window);
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         monitor.eventDispatched(mouseEvent(source));
       }
     }.run();
@@ -88,12 +84,10 @@ public class WindowAvailabilityMonitor_eventDispatched_Test extends WindowAvaila
   @Test
   public void should_not_mark_source_Window_as_ready_if_event_is_not_MouseEvent() {
     new EasyMockTemplate(windows) {
-      @Override
-      protected void expectations() { /* should not call markAsReady */
+      @Override protected void expectations() { /* should not call markAsReady */
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         monitor.eventDispatched(new KeyEvent(window, 8, 9238, 0, 0, 'a'));
       }
     }.run();
@@ -109,8 +103,7 @@ public class WindowAvailabilityMonitor_eventDispatched_Test extends WindowAvaila
     @RunsInEDT
     static MyWindow createNew(final Class<?> testClass) {
       return execute(new GuiQuery<MyWindow>() {
-        @Override
-        protected MyWindow executeInEDT() {
+        @Override   protected MyWindow executeInEDT() {
           return new MyWindow(testClass);
         }
       });

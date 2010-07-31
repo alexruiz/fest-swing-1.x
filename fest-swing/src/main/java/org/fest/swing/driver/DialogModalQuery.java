@@ -35,8 +35,7 @@ final class DialogModalQuery {
   @RunsInEDT
   static boolean isModal(final Dialog dialog) {
     return execute(new GuiQuery<Boolean>() {
-      @Override
-      protected Boolean executeInEDT() {
+      @Override protected Boolean executeInEDT() {
         return dialog.isModal();
       }
     });

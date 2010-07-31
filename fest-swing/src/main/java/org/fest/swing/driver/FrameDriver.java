@@ -66,8 +66,7 @@ public class FrameDriver extends WindowDriver {
   @RunsInEDT
   private static Point iconifyInfo(final Frame frame) {
     return execute(new GuiQuery<Point>() {
-      @Override
-      protected Point executeInEDT() {
+      @Override protected Point executeInEDT() {
         validateIsEnabledAndShowing(frame);
         return iconifyLocationOf(frame);
       }
@@ -116,8 +115,7 @@ public class FrameDriver extends WindowDriver {
   @RunsInEDT
   private static Point maximizeInfo(final Frame frame) {
     return execute(new GuiQuery<Point>() {
-      @Override
-      protected Point executeInEDT() {
+      @Override protected Point executeInEDT() {
         validateIsEnabledAndShowing(frame);
         return maximizeLocationOf(frame);
       }

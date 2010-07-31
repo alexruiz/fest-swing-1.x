@@ -65,8 +65,7 @@ public class JTabbedPaneFixture_constructor_withRobotAndName_Test extends RobotB
 
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
-        @Override
-        protected MyWindow executeInEDT() {
+        @Override   protected MyWindow executeInEDT() {
           return new MyWindow();
         }
       });

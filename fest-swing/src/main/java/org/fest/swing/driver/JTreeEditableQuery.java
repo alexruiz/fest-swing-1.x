@@ -19,8 +19,7 @@ final class JTreeEditableQuery {
   @RunsInEDT
   static boolean isEditable(final JTree tree) {
     return execute(new GuiQuery<Boolean>() {
-      @Override
-      protected Boolean executeInEDT() {
+      @Override protected Boolean executeInEDT() {
         return tree.isEditable();
       }
     });

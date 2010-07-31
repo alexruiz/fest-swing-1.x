@@ -53,8 +53,7 @@ public class ContainerFixtureJToggleButtonLookupTest extends RobotBasedTestCase 
   @Test
   public void shouldFailIfJToggleButtonCannotBeFoundByType() {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         window.remove(window.toggleButton);
       }
     });
@@ -88,8 +87,7 @@ public class ContainerFixtureJToggleButtonLookupTest extends RobotBasedTestCase 
   @Test
   public void shouldFindJToggleButtonWithCustomMatcher() {
     JToggleButtonFixture toggleButton = fixture.toggleButton(new GenericTypeMatcher<JToggleButton>(JToggleButton.class) {
-      @Override
-      protected boolean isMatching(JToggleButton b) {
+      @Override protected boolean isMatching(JToggleButton b) {
         return "Click Me".equals(b.getText());
       }
     });
@@ -104,8 +102,7 @@ public class ContainerFixtureJToggleButtonLookupTest extends RobotBasedTestCase 
   public void shouldFailIfJToggleButtonCannotBeFoundWithCustomMatcher() {
     try {
       fixture.toggleButton(new GenericTypeMatcher<JToggleButton>(JToggleButton.class) {
-        @Override
-        protected boolean isMatching(JToggleButton b) {
+        @Override   protected boolean isMatching(JToggleButton b) {
           return false;
         }
       });
@@ -122,8 +119,7 @@ public class ContainerFixtureJToggleButtonLookupTest extends RobotBasedTestCase 
 
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
-        @Override
-        protected MyWindow executeInEDT() {
+        @Override   protected MyWindow executeInEDT() {
           return new MyWindow();
         }
       });

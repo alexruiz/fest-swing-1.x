@@ -53,8 +53,7 @@ public class ContainerFixtureJRadioButtonLookupTest extends RobotBasedTestCase {
   @Test
   public void shouldFailIfJRadioButtonCannotBeFoundByType() {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         window.remove(window.radioButton);
       }
     });
@@ -88,8 +87,7 @@ public class ContainerFixtureJRadioButtonLookupTest extends RobotBasedTestCase {
   @Test
   public void shouldFindJRadioButtonWithCustomMatcher() {
     JRadioButtonFixture radioButton = fixture.radioButton(new GenericTypeMatcher<JRadioButton>(JRadioButton.class) {
-      @Override
-      protected boolean isMatching(JRadioButton r) {
+      @Override protected boolean isMatching(JRadioButton r) {
         return "Select Me".equals(r.getText());
       }
     });
@@ -104,8 +102,7 @@ public class ContainerFixtureJRadioButtonLookupTest extends RobotBasedTestCase {
   public void shouldFailIfJRadioButtonCannotBeFoundWithCustomMatcher() {
     try {
       fixture.radioButton(new GenericTypeMatcher<JRadioButton>(JRadioButton.class) {
-        @Override
-        protected boolean isMatching(JRadioButton r) {
+        @Override   protected boolean isMatching(JRadioButton r) {
           return false;
         }
       });
@@ -122,8 +119,7 @@ public class ContainerFixtureJRadioButtonLookupTest extends RobotBasedTestCase {
 
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
-        @Override
-        protected MyWindow executeInEDT() {
+        @Override   protected MyWindow executeInEDT() {
           return new MyWindow();
         }
       });

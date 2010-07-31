@@ -51,8 +51,7 @@ public class Bug232_wrongColumnIndexInJTable_Test extends RobotBasedTestCase {
 
   private static void removeFirstColumn(final JTable table) {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         TableColumnModel columnModel = table.getColumnModel();
         columnModel.removeColumn(columnModel.getColumn(0));
       }
@@ -65,8 +64,7 @@ public class Bug232_wrongColumnIndexInJTable_Test extends RobotBasedTestCase {
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
-        @Override
-        protected MyWindow executeInEDT() {
+        @Override   protected MyWindow executeInEDT() {
           return new MyWindow();
         }
       });

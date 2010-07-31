@@ -36,8 +36,7 @@ public class JTableFormatter extends ComponentFormatterTemplate {
    * @param c the given {@code Component}.
    * @return the <code>String</code> representation of the given <code>JTable</code>.
    */
-  @Override
-  protected String doFormat(Component c) {
+  @Override protected String doFormat(Component c) {
     JTable table = (JTable)c;
     return concat(
         table.getClass().getName(), "[",

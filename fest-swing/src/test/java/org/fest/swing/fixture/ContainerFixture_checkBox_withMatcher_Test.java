@@ -35,8 +35,7 @@ public class ContainerFixture_checkBox_withMatcher_Test extends ContainerFixture
   public void should_find_visible_JCheckBox() {
     showWindow();
     JCheckBoxFixture checkBox = fixture.checkBox(new GenericTypeMatcher<JCheckBox>(JCheckBox.class) {
-      @Override
-      protected boolean isMatching(JCheckBox c) {
+      @Override protected boolean isMatching(JCheckBox c) {
         return "Check Me".equals(c.getText());
       }
     });
@@ -47,8 +46,7 @@ public class ContainerFixture_checkBox_withMatcher_Test extends ContainerFixture
   public void should_fail_if_visible_JCheckBox_not_found() {
     try {
       fixture.checkBox(new GenericTypeMatcher<JCheckBox>(JCheckBox.class) {
-        @Override
-        protected boolean isMatching(JCheckBox c) {
+        @Override   protected boolean isMatching(JCheckBox c) {
           return false;
         }
       });

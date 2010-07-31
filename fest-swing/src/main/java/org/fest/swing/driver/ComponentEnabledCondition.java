@@ -45,15 +45,13 @@ class ComponentEnabledCondition extends Condition {
 
   private static Description description(final Component c) {
     return new GuiLazyLoadingDescription() {
-      @Override
-      protected String loadDescription() {
+      @Override protected String loadDescription() {
         return concat(format(c), " to be enabled");
       }
     };
   }
 
-  @Override
-  public boolean test() {
+  @Override public boolean test() {
     return isEnabled(c);
   }
 

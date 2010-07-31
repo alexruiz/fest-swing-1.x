@@ -20,8 +20,7 @@ final class JTableHeaderQuery {
   @RunsInEDT
   static JTableHeader tableHeader(final JTable table) {
     return execute(new GuiQuery<JTableHeader>() {
-      @Override
-      protected JTableHeader executeInEDT() {
+      @Override protected JTableHeader executeInEDT() {
         return table.getTableHeader();
       }
     });

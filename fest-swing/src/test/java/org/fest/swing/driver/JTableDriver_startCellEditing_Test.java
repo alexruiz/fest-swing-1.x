@@ -35,14 +35,12 @@ public class JTableDriver_startCellEditing_Test extends JTableDriver_withMockCel
   @Test
   public void should_start_cell_editing() {
     new EasyMockTemplate(cellWriter) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         cellWriter.startCellEditing(table, 0, 0);
         expectLastCall().once();
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         driver.startCellEditing(table, row(0).column(0));
       }
     }.run();

@@ -32,13 +32,11 @@ public class JComboBox_selectedItem_Test extends JComboBoxFixture_TestCase {
   public void should_require_item_count() {
     final String selectedItem = "Yoda";
     new EasyMockTemplate(driver()) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         expect(driver().selectedItemOf(target())).andReturn(selectedItem);
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         assertThat(fixture().selectedItem()).isSameAs(selectedItem);
       }
     }.run();

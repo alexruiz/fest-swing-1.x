@@ -55,28 +55,24 @@ public final class JSliderLocation {
   }
 
   private static class JSliderHorizontalLocation extends JSliderLocationStrategy {
-    @Override
-    @RunsInCurrentThread
+    @Override   @RunsInCurrentThread
     int max(JSlider slider, Insets insets) {
       return slider.getWidth() - insets.left - insets.right - 1;
     }
 
-    @Override
-    @RunsInCurrentThread
+    @Override   @RunsInCurrentThread
     Point update(Point center, int coordinate) {
       return new Point(coordinate, center.y);
     }
   }
 
   private static class JSliderVerticalLocation extends JSliderLocationStrategy {
-    @Override
-    @RunsInCurrentThread
+    @Override   @RunsInCurrentThread
     int max(JSlider slider, Insets insets) {
       return slider.getHeight() - insets.top - insets.bottom - 1;
     }
 
-    @Override
-    @RunsInCurrentThread
+    @Override   @RunsInCurrentThread
     Point update(Point center, int coordinate) {
       return new Point(center.x, coordinate);
     }

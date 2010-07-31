@@ -54,8 +54,7 @@ public class ContainerFixtureJTextComponentLookupTest extends RobotBasedTestCase
   @Test
   public void shouldFailIfJTextComponentCannotBeFoundByType() {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         window.remove(window.textBox);
       }
     });
@@ -89,8 +88,7 @@ public class ContainerFixtureJTextComponentLookupTest extends RobotBasedTestCase
   @Test
   public void shouldFindJTextComponentWithCustomMatcher() {
     JTextComponentFixture textBox = fixture.textBox(new GenericTypeMatcher<JTextComponent>(JTextComponent.class) {
-      @Override
-      protected boolean isMatching(JTextComponent b) {
+      @Override protected boolean isMatching(JTextComponent b) {
         return "".equals(b.getText());
       }
     });
@@ -105,8 +103,7 @@ public class ContainerFixtureJTextComponentLookupTest extends RobotBasedTestCase
   public void shouldFailIfJTextComponentCannotBeFoundWithCustomMatcher() {
     try {
       fixture.textBox(new GenericTypeMatcher<JTextComponent>(JTextComponent.class) {
-        @Override
-        protected boolean isMatching(JTextComponent b) {
+        @Override   protected boolean isMatching(JTextComponent b) {
           return false;
         }
       });
@@ -123,8 +120,7 @@ public class ContainerFixtureJTextComponentLookupTest extends RobotBasedTestCase
 
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
-        @Override
-        protected MyWindow executeInEDT() {
+        @Override   protected MyWindow executeInEDT() {
           return new MyWindow();
         }
       });

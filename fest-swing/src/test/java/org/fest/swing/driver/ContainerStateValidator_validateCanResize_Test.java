@@ -160,8 +160,7 @@ public class ContainerStateValidator_validateCanResize_Test extends RobotBasedTe
   @RunsInEDT
   private static void makeNotResizable(final JInternalFrame internalFrame) {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         internalFrame.setResizable(false);
       }
     });
@@ -191,8 +190,7 @@ public class ContainerStateValidator_validateCanResize_Test extends RobotBasedTe
   @RunsInEDT
   private static void validateCanResize(final Container c) {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         ContainerStateValidator.validateCanResize(c);
       }
     });

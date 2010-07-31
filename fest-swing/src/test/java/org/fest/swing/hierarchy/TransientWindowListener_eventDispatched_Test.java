@@ -40,8 +40,7 @@ public class TransientWindowListener_eventDispatched_Test extends TransientWindo
 
   @Test public void shouldFilterClosedWindowAfterEventIsProcessed() {
     new EasyMockTemplate(mockWindowFilter) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         expect(mockWindowFilter.isIgnored(eventSource)).andReturn(false);
         mockWindowFilter.implicitlyIgnore(eventSource);
         expectLastCall();
@@ -50,8 +49,7 @@ public class TransientWindowListener_eventDispatched_Test extends TransientWindo
         expectLastCall();
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         listener.eventDispatched(event);
         waitTillClosedEventIsHandled();
       }
@@ -60,16 +58,14 @@ public class TransientWindowListener_eventDispatched_Test extends TransientWindo
 
   @Test public void shouldNotFilterClosedWindowAfterEventIsProcessedIfWindowNotImplicitFiltered() {
     new EasyMockTemplate(mockWindowFilter) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         expect(mockWindowFilter.isIgnored(eventSource)).andReturn(false);
         mockWindowFilter.implicitlyIgnore(eventSource);
         expectLastCall();
         expect(mockWindowFilter.isImplicitlyIgnored(eventSource)).andReturn(false);
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         listener.eventDispatched(event);
         waitTillClosedEventIsHandled();
       }

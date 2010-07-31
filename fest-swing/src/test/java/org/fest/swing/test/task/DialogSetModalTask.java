@@ -33,8 +33,7 @@ public final class DialogSetModalTask {
   @RunsInEDT
   public static void makeModal(final Dialog d, final boolean modal) {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         d.setModal(modal);
       }
     });

@@ -19,8 +19,7 @@ final class JComboBoxSetEditableTask {
   @RunsInEDT
   static void setEditable(final JComboBox comboBox, final boolean editable) {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         comboBox.setEditable(editable);
       }
     });

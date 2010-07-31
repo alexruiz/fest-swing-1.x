@@ -35,8 +35,7 @@ final class JComboBoxEditableQuery {
   @RunsInEDT
   static boolean isEditable(final JComboBox comboBox) {
     return execute(new GuiQuery<Boolean>() {
-      @Override
-      protected Boolean executeInEDT() {
+      @Override protected Boolean executeInEDT() {
         return comboBox.isEditable();
       }
     });

@@ -33,8 +33,7 @@ final class JProgressBarStringQuery {
   @RunsInEDT
   static String stringOf(final JProgressBar progressBar) {
     return execute(new GuiQuery<String>() {
-      @Override
-      protected String executeInEDT() {
+      @Override protected String executeInEDT() {
         return progressBar.getString();
       }
     });

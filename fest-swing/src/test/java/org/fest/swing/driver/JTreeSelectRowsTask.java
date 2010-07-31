@@ -30,8 +30,7 @@ final class JTreeSelectRowsTask {
 
   static void selectRows(final JTree tree, final int... rows) {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         tree.setSelectionRows(rows);
       }
     });

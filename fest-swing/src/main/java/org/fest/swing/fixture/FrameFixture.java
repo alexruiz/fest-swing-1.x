@@ -362,8 +362,7 @@ public class FrameFixture extends WindowFixture<Frame> implements FrameLikeFixtu
    * Shows this fixture's <code>{@link Frame}</code>.
    * @return this fixture.
    */
-  @Override
-  public FrameFixture show() {
+  @Override public FrameFixture show() {
     driver.show(target);
     return this;
   }
@@ -373,8 +372,7 @@ public class FrameFixture extends WindowFixture<Frame> implements FrameLikeFixtu
    * @param size the size to resize this fixture's <code>Frame</code> to.
    * @return this fixture.
    */
-  @Override
-  public FrameFixture show(Dimension size) {
+  @Override public FrameFixture show(Dimension size) {
     driver.show(target, size);
     return this;
   }

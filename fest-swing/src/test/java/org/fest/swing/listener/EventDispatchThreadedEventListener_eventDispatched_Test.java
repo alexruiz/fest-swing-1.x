@@ -46,8 +46,7 @@ public class EventDispatchThreadedEventListener_eventDispatched_Test {
   public void should_always_process_event_in_EDT() {
     listener.eventDispatched(event);
     pause(new Condition("event to be processed in EDT") {
-      @Override
-      public boolean test() {
+      @Override public boolean test() {
         return listener.event == event && listener.wasProcessedInEventDispatchThread;
       }
     });
@@ -56,8 +55,7 @@ public class EventDispatchThreadedEventListener_eventDispatched_Test {
   @Test
   public void should_process_event_directly_if_called_in_EDT() throws Exception {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         listener.eventDispatched(event);
       }
     });
@@ -71,8 +69,7 @@ public class EventDispatchThreadedEventListener_eventDispatched_Test {
 
     Listener() {}
 
-    @Override
-    protected void processEvent(AWTEvent newEvent) {
+    @Override   protected void processEvent(AWTEvent newEvent) {
       this.event = newEvent;
       wasProcessedInEventDispatchThread = isEventDispatchThread();
     }

@@ -41,8 +41,7 @@ public final class DialogShowTask {
     dialog.pack();
     dialog.setVisible(true);
     pause(new Condition("Dialog is showing") {
-      @Override
-      public boolean test() {
+      @Override public boolean test() {
         return dialog.isShowing();
       }
     });

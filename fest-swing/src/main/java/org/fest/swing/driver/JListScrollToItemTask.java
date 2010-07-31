@@ -45,8 +45,7 @@ final class JListScrollToItemTask {
   // returns the point that the JList was scrolled to.
   static Point scrollToItem(final JList list, final int index) {
     return execute(new GuiQuery<Point>() {
-      @Override
-      protected Point executeInEDT() {
+      @Override protected Point executeInEDT() {
         validateIsEnabledAndShowing(list);
         validateIndex(list, index);
         return scrollToItemWithIndex(list, index);
@@ -58,8 +57,7 @@ final class JListScrollToItemTask {
   // returns the index of first matching element and the point that the JList was scrolled to.
   static Pair<Integer, Point> scrollToItem(final JList list, final TextMatcher matcher, final JListCellReader cellReader) {
     return execute(new GuiQuery<Pair<Integer, Point>>() {
-      @Override
-      protected Pair<Integer, Point> executeInEDT() {
+      @Override protected Pair<Integer, Point> executeInEDT() {
         validateIsEnabledAndShowing(list);
         int index = matchingItemIndex(list, matcher, cellReader);
         if (index < 0) return ITEM_NOT_FOUND;
@@ -73,8 +71,7 @@ final class JListScrollToItemTask {
   static Pair<Integer, Point> scrollToItemIfNotSelectedYet(final JList list, final TextMatcher matcher,
       final JListCellReader cellReader) {
     return execute(new GuiQuery<Pair<Integer, Point>>() {
-      @Override
-      protected Pair<Integer, Point> executeInEDT() {
+      @Override protected Pair<Integer, Point> executeInEDT() {
         validateIsEnabledAndShowing(list);
         int index = matchingItemIndex(list, matcher, cellReader);
         if (index < 0) return ITEM_NOT_FOUND;
@@ -87,8 +84,7 @@ final class JListScrollToItemTask {
   // returns the point that the JList was scrolled to.
   static Point scrollToItemIfNotSelectedYet(final JList list, final int index) {
     return execute(new GuiQuery<Point>() {
-      @Override
-      protected Point executeInEDT() {
+      @Override protected Point executeInEDT() {
         validateIsEnabledAndShowing(list);
         validateIndex(list, index);
         return scrollToItemWithIndexIfNotSelectedYet(list, index);

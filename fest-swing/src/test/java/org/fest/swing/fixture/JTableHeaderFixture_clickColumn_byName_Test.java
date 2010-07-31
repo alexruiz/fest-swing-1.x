@@ -32,14 +32,12 @@ public class JTableHeaderFixture_clickColumn_byName_Test extends JTableHeaderFix
   public void should_click_column() {
     final String name = "first";
     new EasyMockTemplate(driver()) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         driver().clickColumn(target(), name);
         expectLastCall().once();
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         assertThatReturnsSelf(fixture().clickColumn(name));
       }
     }.run();

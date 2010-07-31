@@ -137,8 +137,7 @@ public class AppletLauncher {
   private static AppletLauncher instantiate(final Class<?> appletType) {
     try {
       Object applet = execute(new GuiQuery<Object>() {
-        @Override
-        protected Object executeInEDT() throws Exception {
+        @Override   protected Object executeInEDT() throws Exception {
           return appletType.newInstance();
         }
       });

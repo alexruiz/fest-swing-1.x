@@ -32,8 +32,7 @@ public abstract class JTableHeaderDriver_showPopupMenu_TestCase extends JTableHe
 
   @Override final void extraSetUp() {
     popupMenu = execute(new GuiQuery<JPopupMenu>() {
-      @Override
-      protected JPopupMenu executeInEDT() {
+      @Override protected JPopupMenu executeInEDT() {
         JPopupMenu p = new JPopupMenu();
         p.add(new JMenuItem("Frodo"));
         tableHeader.setComponentPopupMenu(p);

@@ -48,8 +48,7 @@ public class InputState {
   public InputState(Toolkit toolkit) {
     long mask = MOUSE_MOTION_EVENT_MASK | MOUSE_EVENT_MASK | KEY_EVENT_MASK;
     AWTEventListener listener = new EventDispatchThreadedEventListener() {
-      @Override
-      protected void processEvent(AWTEvent event) {
+      @Override protected void processEvent(AWTEvent event) {
         update(event);
       }
     };

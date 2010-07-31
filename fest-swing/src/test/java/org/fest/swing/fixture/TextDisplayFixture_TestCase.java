@@ -39,14 +39,12 @@ public abstract class TextDisplayFixture_TestCase<T extends Component> extends
   @Test
   public void should_require_text() {
     new EasyMockTemplate(driver()) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         textDisplayDriver().requireText(target(), "Some Text");
         expectLastCall().once();
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         assertThatReturnsSelf(fixture().requireText("Some Text"));
       }
     }.run();
@@ -56,14 +54,12 @@ public abstract class TextDisplayFixture_TestCase<T extends Component> extends
   public void should_require_text_matching_pattern() {
     final Pattern pattern = regex(".");
     new EasyMockTemplate(driver()) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         textDisplayDriver().requireText(target(), pattern);
         expectLastCall().once();
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         assertThatReturnsSelf(fixture().requireText(pattern));
       }
     }.run();
@@ -73,13 +69,11 @@ public abstract class TextDisplayFixture_TestCase<T extends Component> extends
   public void should_return_text() {
     final String text = "Some Text";
     new EasyMockTemplate(driver()) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         expect(textDisplayDriver().textOf(target())).andReturn(text);
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         assertThat(fixture().text()).isEqualTo(text);
       }
     }.run();
@@ -92,6 +86,5 @@ public abstract class TextDisplayFixture_TestCase<T extends Component> extends
     return (TextDisplayDriver<T>)driver;
   }
 
-  @Override
-  abstract TextDisplayFixture fixture();
+  @Override abstract TextDisplayFixture fixture();
 }

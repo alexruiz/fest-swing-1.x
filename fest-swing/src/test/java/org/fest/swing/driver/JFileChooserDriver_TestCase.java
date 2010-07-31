@@ -78,8 +78,7 @@ public abstract class JFileChooserDriver_TestCase extends RobotBasedTestCase {
   @RunsInEDT
   private static void setFileSelectionMode(final JFileChooser fileChooser, final int mode) {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         fileChooser.setFileSelectionMode(mode);
       }
     });
@@ -99,8 +98,7 @@ public abstract class JFileChooserDriver_TestCase extends RobotBasedTestCase {
     @RunsInEDT
     static MyWindow createNew(final Class<?> testClass) {
       return execute(new GuiQuery<MyWindow>() {
-        @Override
-        protected MyWindow executeInEDT() {
+        @Override   protected MyWindow executeInEDT() {
           return new MyWindow(testClass);
         }
       });

@@ -35,8 +35,7 @@ final class JTreeClearSelectionTask {
   @RunsInEDT
   static void clearSelectionOf(final JTree tree) {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         tree.clearSelection();
       }
     });

@@ -60,8 +60,7 @@ public class ParentFinder_parentOf_Test extends SequentialEDTSafeTestCase {
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
-        @Override
-        protected MyWindow executeInEDT() {
+        @Override   protected MyWindow executeInEDT() {
           return new MyWindow();
         }
       });
@@ -90,8 +89,7 @@ public class ParentFinder_parentOf_Test extends SequentialEDTSafeTestCase {
   @RunsInEDT
   private static Container findParent(final ParentFinder finder, final Component c) {
     return execute(new GuiQuery<Container>() {
-      @Override
-      protected Container executeInEDT() {
+      @Override protected Container executeInEDT() {
         return finder.parentOf(c);
       }
     });
@@ -100,8 +98,7 @@ public class ParentFinder_parentOf_Test extends SequentialEDTSafeTestCase {
   @RunsInEDT
   private static JDesktopPane desktopPaneOf(final JInternalFrame internalFrame) {
     return execute(new GuiQuery<JDesktopPane>() {
-      @Override
-      protected JDesktopPane executeInEDT() {
+      @Override protected JDesktopPane executeInEDT() {
         return internalFrame.getDesktopIcon().getDesktopPane();
       }
     });

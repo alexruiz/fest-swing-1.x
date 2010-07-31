@@ -86,8 +86,7 @@ public class WindowChildrenFinder_nonExplicitChildrenOf_Test extends EDTSafeTest
   @RunsInEDT
   private static Collection<Component> findChildren(final WindowChildrenFinder finder, final Window w) {
     return execute(new GuiQuery<Collection<Component>>() {
-      @Override
-      protected Collection<Component> executeInEDT() {
+      @Override protected Collection<Component> executeInEDT() {
         return finder.nonExplicitChildrenOf(w);
       }
     });

@@ -102,8 +102,7 @@ public abstract class ContainerDriver extends ComponentDriver {
   @RunsInEDT
   private static Pair<Dimension, Insets> resizeInfo(final Container c) {
     return execute(new GuiQuery<Pair<Dimension, Insets>>() {
-      @Override
-      protected Pair<Dimension, Insets> executeInEDT() {
+      @Override protected Pair<Dimension, Insets> executeInEDT() {
         validateCanResize(c);
         return new Pair<Dimension, Insets>(c.getSize(), c.getInsets());
       }
@@ -156,8 +155,7 @@ public abstract class ContainerDriver extends ComponentDriver {
   @RunsInEDT
   private static Triple<Dimension, Insets, Point> moveInfo(final Container c) {
     return execute(new GuiQuery<Triple<Dimension, Insets, Point>>() {
-      @Override
-      protected Triple<Dimension, Insets, Point> executeInEDT() {
+      @Override protected Triple<Dimension, Insets, Point> executeInEDT() {
         validateCanMove(c);
         Point locationOnScreen = null;
         try {

@@ -46,13 +46,11 @@ public class JTableDriver_font_Test extends JTableDriver_withMockCellReader_Test
   @Test
   public void should_return_cell_font() {
     new EasyMockTemplate(cellReader) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         expect(cellReader.fontAt(table, 0, 0)).andReturn(font);
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         Font result = driver.font(table, row(0).column(0));
         assertThat(result).isSameAs(font);
       }

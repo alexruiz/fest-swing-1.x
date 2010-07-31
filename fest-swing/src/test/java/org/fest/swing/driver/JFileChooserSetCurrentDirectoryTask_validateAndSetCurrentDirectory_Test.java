@@ -77,8 +77,7 @@ public class JFileChooserSetCurrentDirectoryTask_validateAndSetCurrentDirectory_
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
-        @Override
-        protected MyWindow executeInEDT() {
+        @Override   protected MyWindow executeInEDT() {
           return new MyWindow();
         }
       });

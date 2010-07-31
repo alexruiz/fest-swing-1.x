@@ -37,23 +37,19 @@ import org.junit.Test;
 public abstract class JPopupMenuInvokerFixture_TestCase<T extends Component> extends
     ComponentFixture_Implementations_TestCase<T> {
 
-  @Override
-  abstract ComponentDriver driver();
+  @Override abstract ComponentDriver driver();
 
-  @Override
-  abstract JPopupMenuInvokerFixture fixture();
+  @Override abstract JPopupMenuInvokerFixture fixture();
 
   @Test
   public final void should_show_popup_menu() {
     final JPopupMenu popupMenu = newPopupMenu();
     new EasyMockTemplate(driver()) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         expect(driver().invokePopupMenu(target())).andReturn(popupMenu);
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         JPopupMenuFixture popupMenuFixture = fixture().showPopupMenu();
         assertThat(popupMenuFixture.robot).isSameAs(robot());
         assertThat(popupMenuFixture.component()).isSameAs(popupMenu);
@@ -66,13 +62,11 @@ public abstract class JPopupMenuInvokerFixture_TestCase<T extends Component> ext
     final JPopupMenu popupMenu = newPopupMenu();
     final Point p = new Point();
     new EasyMockTemplate(driver()) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         expect(driver().invokePopupMenu(target(), p)).andReturn(popupMenu);
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         JPopupMenuFixture popupMenuFixture = fixture().showPopupMenuAt(p);
         assertThat(popupMenuFixture.robot).isSameAs(robot());
         assertThat(popupMenuFixture.component()).isSameAs(popupMenu);

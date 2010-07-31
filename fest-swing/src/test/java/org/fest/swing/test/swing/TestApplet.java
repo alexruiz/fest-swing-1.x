@@ -43,8 +43,7 @@ public class TestApplet extends JApplet {
   @RunsInEDT
   public static TestApplet createNew() {
     return execute(new GuiQuery<TestApplet>() {
-      @Override
-      protected TestApplet executeInEDT() {
+      @Override protected TestApplet executeInEDT() {
         return new TestApplet();
       }
     });

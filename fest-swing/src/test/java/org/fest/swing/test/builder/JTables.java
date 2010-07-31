@@ -64,8 +64,7 @@ public final class JTables {
     @RunsInEDT
     public JTable createNew() {
       return execute(new GuiQuery<JTable>() {
-        @Override
-        protected JTable executeInEDT() {
+        @Override   protected JTable executeInEDT() {
           JTable table = new JTable(rowCount, columnCount);
           table.setName(name);
           table.setSelectionMode(selectionMode);

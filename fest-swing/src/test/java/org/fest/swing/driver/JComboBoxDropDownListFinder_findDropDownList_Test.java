@@ -65,8 +65,7 @@ public class JComboBoxDropDownListFinder_findDropDownList_Test extends RobotBase
   private void showDropDownListWithDelay() {
     java.util.Timer timer = new Timer("showJComboBoxDropDownList", false);
     timer.schedule(new TimerTask() {
-      @Override
-      public void run() {
+      @Override public void run() {
         showJComboBoxDropDownList();
       }
     }, 18000);
@@ -75,8 +74,7 @@ public class JComboBoxDropDownListFinder_findDropDownList_Test extends RobotBase
   @RunsInEDT
   private void showJComboBoxDropDownList() {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         window.comboBox.showPopup();
       }
     });
@@ -85,8 +83,7 @@ public class JComboBoxDropDownListFinder_findDropDownList_Test extends RobotBase
 
   private void assertThatListContains(final JList list, final String...expectedElements) {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         ListModel model = list.getModel();
         int elementCount = model.getSize();
         assertThat(elementCount).isEqualTo(expectedElements.length);
@@ -118,8 +115,7 @@ public class JComboBoxDropDownListFinder_findDropDownList_Test extends RobotBase
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
-        @Override
-        protected MyWindow executeInEDT() {
+        @Override   protected MyWindow executeInEDT() {
           return new MyWindow();
         }
       });

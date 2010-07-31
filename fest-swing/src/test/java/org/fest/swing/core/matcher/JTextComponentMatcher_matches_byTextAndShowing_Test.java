@@ -69,8 +69,7 @@ public class JTextComponentMatcher_matches_byTextAndShowing_Test extends Sequent
     @RunsInEDT
     static MyWindow createAndShow() {
       return execute(new GuiQuery<MyWindow>() {
-        @Override
-        protected MyWindow executeInEDT() {
+        @Override   protected MyWindow executeInEDT() {
           return display(new MyWindow());
         }
       });

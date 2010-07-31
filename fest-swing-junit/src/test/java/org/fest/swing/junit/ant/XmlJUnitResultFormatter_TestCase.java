@@ -134,13 +134,11 @@ public abstract class XmlJUnitResultFormatter_TestCase {
     final OnStartTestSuiteAssert onStartTestSuiteMethod = new OnStartTestSuiteAssert();
     final OnFailureOrErrorAssert onFailureOrErrorMethod = new OnFailureOrErrorAssert();
 
-    @Override
-    protected void onStartTestSuite(JUnitTest suite) {
+    @Override protected void onStartTestSuite(JUnitTest suite) {
       onStartTestSuiteMethod.calledWith(suite);
     }
 
-    @Override
-    protected void onFailureOrError(junit.framework.Test test, Throwable error, XmlNode errorXmlNode) {
+    @Override protected void onFailureOrError(junit.framework.Test test, Throwable error, XmlNode errorXmlNode) {
       onFailureOrErrorMethod.calledWith(test, error, errorXmlNode);
     }
   }

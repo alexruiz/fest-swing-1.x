@@ -31,14 +31,12 @@ public class JTreeFixture_rightClickRow_Test extends JTreeFixture_TestCase {
   public void should_right_click_row() {
     final int row = 6;
     new EasyMockTemplate(driver()) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         driver().rightClickRow(target(), row);
         expectLastCall().once();
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         assertThatReturnsSelf(fixture().rightClickRow(row));
       }
     }.run();

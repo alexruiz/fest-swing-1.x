@@ -72,8 +72,7 @@ public class ComponentStateValidator_validateIsEnabledAndShowing_Test extends Ro
   @RunsInEDT
   private static void validateWindowIsEnabledAndShowing(final Component c) {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         ComponentStateValidator.validateIsEnabledAndShowing(c);
       }
     });

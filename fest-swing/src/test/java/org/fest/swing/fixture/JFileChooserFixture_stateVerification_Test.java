@@ -42,17 +42,13 @@ public class JFileChooserFixture_stateVerification_Test extends StateVerificatio
     target = fileChooser().createNew();
   }
 
-  @Override
-  void onSetUp() {
+  @Override void onSetUp() {
     driver = createMock(JFileChooserDriver.class);
     fixture = new JFileChooserFixture(robot(), target);
     fixture.driver(driver);
   }
 
-  @Override
-  JFileChooserDriver driver() {  return driver; }
-  @Override
-  JFileChooser target() { return target; }
-  @Override
-  JFileChooserFixture fixture() { return fixture; }
+  @Override JFileChooserDriver driver() {  return driver; }
+  @Override JFileChooser target() { return target; }
+  @Override JFileChooserFixture fixture() { return fixture; }
 }

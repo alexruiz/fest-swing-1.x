@@ -20,8 +20,7 @@ final class JTreeExpandedPathQuery {
   @RunsInEDT
   static boolean isExpanded(final JTree tree, final TreePath path) {
     return execute(new GuiQuery<Boolean>() {
-      @Override
-      protected Boolean executeInEDT() {
+      @Override protected Boolean executeInEDT() {
         return tree.isExpanded(path);
       }
     });

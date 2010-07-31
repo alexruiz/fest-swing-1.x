@@ -34,8 +34,7 @@ final class JFileChooserSetCurrentDirectoryTask {
 
   static void validateAndSetCurrentDirectory(final JFileChooser fileChooser, final File dir) {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         validateIsEnabledAndShowing(fileChooser);
         fileChooser.setCurrentDirectory(dir);
       }

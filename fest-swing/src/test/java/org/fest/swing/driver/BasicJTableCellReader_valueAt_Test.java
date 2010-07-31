@@ -49,8 +49,7 @@ public class BasicJTableCellReader_valueAt_Test extends BasicJTableCellReader_Te
   @RunsInEDT
   private static void setModelData(final JTable table, final Object[][] data, final Object[] columnNames) {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         DefaultTableModel model = new DefaultTableModel(data, columnNames);
         table.setModel(model);
       }
@@ -60,8 +59,7 @@ public class BasicJTableCellReader_valueAt_Test extends BasicJTableCellReader_Te
   @RunsInEDT
   private static void setNotRecognizedCellRendererTo(final JTable table) {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         setCellRendererComponent(table, new JToolBar());
       }
     });
@@ -99,8 +97,7 @@ public class BasicJTableCellReader_valueAt_Test extends BasicJTableCellReader_Te
   @RunsInEDT
   private static void setJComboBoxAsCellRenderer(final JTable table, final int itemIndex) {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         JComboBox comboBox = new JComboBox(array("One", "Two"));
         comboBox.setSelectedIndex(itemIndex);
         setCellRendererComponent(table, comboBox);
@@ -119,8 +116,7 @@ public class BasicJTableCellReader_valueAt_Test extends BasicJTableCellReader_Te
   @RunsInEDT
   private static void setJCheckBoxAsCellRenderer(final JTable table, final String text, final boolean selected) {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         JCheckBox checkBox = new JCheckBox(text, selected);
         setCellRendererComponent(table, checkBox);
       }
@@ -137,8 +133,7 @@ public class BasicJTableCellReader_valueAt_Test extends BasicJTableCellReader_Te
   private static String valueAt(final BasicJTableCellReader reader, final JTable table, final int row, final
       int column) {
     return execute(new GuiQuery<String>() {
-      @Override
-      protected String executeInEDT() {
+      @Override protected String executeInEDT() {
         return reader.valueAt(table, row, column);
       }
     });

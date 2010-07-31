@@ -36,8 +36,7 @@ public final class ComponentRequestFocusAndWaitForFocusGainTask {
   @RunsInEDT
   public static void giveFocusAndWaitTillIsFocused(final Component c) {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         c.requestFocus();
       }
     });

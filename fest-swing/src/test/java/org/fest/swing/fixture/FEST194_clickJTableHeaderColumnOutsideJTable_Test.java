@@ -63,8 +63,7 @@ public class FEST194_clickJTableHeaderColumnOutsideJTable_Test extends RobotBase
   @RunsInEDT
   static int columnCountOf(final JTable table) {
     return execute(new GuiQuery<Integer>() {
-      @Override
-      protected Integer executeInEDT() {
+      @Override protected Integer executeInEDT() {
         return table.getColumnCount();
       }
     });
@@ -78,8 +77,7 @@ public class FEST194_clickJTableHeaderColumnOutsideJTable_Test extends RobotBase
 
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
-        @Override
-        protected MyWindow executeInEDT() {
+        @Override   protected MyWindow executeInEDT() {
           return new MyWindow();
         }
       });

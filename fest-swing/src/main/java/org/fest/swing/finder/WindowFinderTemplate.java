@@ -88,6 +88,5 @@ public abstract class WindowFinderTemplate<T extends Window> extends ComponentFi
    * @throws org.fest.swing.exception.WaitTimedOutError if a window with the given name or of the given type could not
    * be found.
    */
-  @Override
-  public abstract WindowFixture<T> using(Robot robot);
+  @Override public abstract WindowFixture<T> using(Robot robot);
 }

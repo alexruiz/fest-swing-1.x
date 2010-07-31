@@ -43,8 +43,7 @@ public abstract class JTableCellEditingTask_TestCase extends RobotBasedTestCase 
   @RunsInEDT
   final void editTableCellAt(final int row, final int col) {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         window.table.editCellAt(row, col);
       }
     });
@@ -55,8 +54,7 @@ public abstract class JTableCellEditingTask_TestCase extends RobotBasedTestCase 
   @RunsInEDT
   final boolean isTableEditing() {
     return execute(new GuiQuery<Boolean>() {
-      @Override
-      protected Boolean executeInEDT() {
+      @Override protected Boolean executeInEDT() {
         return window.table.isEditing();
       }
     });
@@ -77,8 +75,7 @@ public abstract class JTableCellEditingTask_TestCase extends RobotBasedTestCase 
 
     static MyWindow createNew(final Class<?> testClass) {
       return execute(new GuiQuery<MyWindow>() {
-        @Override
-        protected MyWindow executeInEDT() {
+        @Override   protected MyWindow executeInEDT() {
           return new MyWindow(testClass);
         }
       });

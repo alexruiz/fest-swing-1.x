@@ -52,8 +52,7 @@ public class JFileChooserDriver_selectFile_Test extends JFileChooserDriver_TestC
   @RunsInEDT
   private static File selectedFileIn(final JFileChooser fileChooser) {
     return execute(new GuiQuery<File>() {
-      @Override
-      protected File executeInEDT() {
+      @Override protected File executeInEDT() {
         return fileChooser.getSelectedFile();
       }
     });

@@ -31,8 +31,7 @@ final class JListSetSelectedIndexTask {
 
   static void setSelectedIndex(final JList list, final int index) {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         list.setSelectedIndex(index);
       }
     });

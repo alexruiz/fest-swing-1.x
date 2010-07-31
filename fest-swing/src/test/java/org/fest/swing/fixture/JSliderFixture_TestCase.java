@@ -41,17 +41,13 @@ public abstract class JSliderFixture_TestCase extends ComponentFixture_Implement
     target = slider().createNew();
   }
 
-  @Override
-  final void onSetUp() {
+  @Override final void onSetUp() {
     driver = createMock(JSliderDriver.class);
     fixture = new JSliderFixture(robot(), target);
     fixture.driver(driver);
   }
 
-  @Override
-  final JSliderDriver driver() {  return driver; }
-  @Override
-  final JSlider target() { return target; }
-  @Override
-  final JSliderFixture fixture() { return fixture; }
+  @Override final JSliderDriver driver() {  return driver; }
+  @Override final JSlider target() { return target; }
+  @Override final JSliderFixture fixture() { return fixture; }
 }

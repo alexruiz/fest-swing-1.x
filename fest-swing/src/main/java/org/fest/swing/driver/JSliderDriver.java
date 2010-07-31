@@ -69,8 +69,7 @@ public class JSliderDriver extends JComponentDriver {
   private static Pair<Integer, GenericRange<Point>> validateAndFindSlideToMaximumInfo(final JSlider slider,
       final JSliderLocation location) {
     return execute(new GuiQuery<Pair<Integer, GenericRange<Point>>>() {
-      @Override
-      protected Pair<Integer, GenericRange<Point>> executeInEDT() {
+      @Override protected Pair<Integer, GenericRange<Point>> executeInEDT() {
         validateIsEnabledAndShowing(slider);
         int value = slider.getMaximum();
         GenericRange<Point> fromAndTo = slideInfo(slider, location, value);
@@ -94,8 +93,7 @@ public class JSliderDriver extends JComponentDriver {
   private static Pair<Integer, GenericRange<Point>> validateAndFindSlideToMinimumInfo(final JSlider slider,
       final JSliderLocation location) {
     return execute(new GuiQuery<Pair<Integer, GenericRange<Point>>>() {
-      @Override
-      protected Pair<Integer, GenericRange<Point>> executeInEDT() {
+      @Override protected Pair<Integer, GenericRange<Point>> executeInEDT() {
         validateIsEnabledAndShowing(slider);
         int value = slider.getMinimum();
         GenericRange<Point> fromAndTo = slideInfo(slider, location, value);
@@ -135,8 +133,7 @@ public class JSliderDriver extends JComponentDriver {
   private static GenericRange<Point> validateAndFindSlideInfo(final JSlider slider, final JSliderLocation location,
       final int value) {
     return execute(new GuiQuery<GenericRange<Point>>() {
-      @Override
-      protected GenericRange<Point> executeInEDT() {
+      @Override protected GenericRange<Point> executeInEDT() {
         validateValue(slider, value);
         validateIsEnabledAndShowing(slider);
         return slideInfo(slider, location, value);

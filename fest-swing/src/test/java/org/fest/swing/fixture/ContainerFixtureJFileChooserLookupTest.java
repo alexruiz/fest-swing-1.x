@@ -138,8 +138,7 @@ public class ContainerFixtureJFileChooserLookupTest extends RobotBasedTestCase {
       super(JFileChooser.class);
     }
 
-    @Override
-    protected boolean isMatching(JFileChooser fileChooser) {
+    @Override   protected boolean isMatching(JFileChooser fileChooser) {
       return TITLE.equals(fileChooser.getDialogTitle());
     }
 

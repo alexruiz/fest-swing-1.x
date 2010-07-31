@@ -41,17 +41,13 @@ public abstract class JSpinnerFixture_TestCase extends ComponentFixture_Implemen
     target = spinner().createNew();
   }
 
-  @Override
-  final void onSetUp() {
+  @Override final void onSetUp() {
     driver = createMock(JSpinnerDriver.class);
     fixture = new JSpinnerFixture(robot(), target);
     fixture.driver(driver);
   }
 
-  @Override
-  final JSpinnerDriver driver() {  return driver; }
-  @Override
-  final JSpinner target() { return target; }
-  @Override
-  final JSpinnerFixture fixture() { return fixture; }
+  @Override final JSpinnerDriver driver() {  return driver; }
+  @Override final JSpinner target() { return target; }
+  @Override final JSpinnerFixture fixture() { return fixture; }
 }

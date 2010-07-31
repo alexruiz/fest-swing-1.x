@@ -42,17 +42,13 @@ public class JTableFixture_mouseInput_Test extends MouseInputSimulationFixture_T
     target = table().createNew();
   }
 
-  @Override
-  void onSetUp() {
+  @Override void onSetUp() {
     driver = createMock(JTableDriver.class);
     fixture = new JTableFixture(robot(), target);
     fixture.driver(driver);
   }
 
-  @Override
-  JTableDriver driver() {  return driver; }
-  @Override
-  JTable target() { return target; }
-  @Override
-  JTableFixture fixture() { return fixture; }
+  @Override JTableDriver driver() {  return driver; }
+  @Override JTable target() { return target; }
+  @Override JTableFixture fixture() { return fixture; }
 }

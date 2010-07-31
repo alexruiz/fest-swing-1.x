@@ -74,8 +74,7 @@ public class FEST210_respectLimitationsOfBasicSplitPaneDividerDragController_Tes
 
     static MyWindow createNew(final int orientation) {
       return execute(new GuiQuery<MyWindow>() {
-        @Override
-        protected MyWindow executeInEDT() {
+        @Override   protected MyWindow executeInEDT() {
           return new MyWindow(orientation);
         }
       });

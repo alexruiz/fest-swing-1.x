@@ -34,14 +34,12 @@ public class Context_allEventQueues_Test extends Context_TestCase {
   @Test
   public void should_return_all_EventQueues() {
     new EasyMockTemplate(windowEventQueueMapping, eventQueueMapping) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         expect(windowEventQueueMapping.eventQueues()).andReturn(eventQueueInList());
         expect(eventQueueMapping.eventQueues()).andReturn(eventQueueInList());
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         Collection<EventQueue> allEventQueues = context.allEventQueues();
         assertThat(allEventQueues).containsOnly(eventQueue);
       }

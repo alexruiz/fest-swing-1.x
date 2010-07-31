@@ -40,8 +40,7 @@ public class WindowMetrics_center_Test extends WindowMetrics_TestCase {
   @RunsInEDT
   private static Point centerOf(final WindowMetrics metrics) {
     return execute(new GuiQuery<Point>() {
-      @Override
-      protected Point executeInEDT() {
+      @Override protected Point executeInEDT() {
         return metrics.center();
       }
     });
@@ -50,8 +49,7 @@ public class WindowMetrics_center_Test extends WindowMetrics_TestCase {
   @RunsInEDT
   private static Point expectedCenterOf(final Window w) {
     return execute(new GuiQuery<Point>() {
-      @Override
-      protected Point executeInEDT() {
+      @Override protected Point executeInEDT() {
         Insets insets = w.getInsets();
         int x = w.getX() + insets.left + ((w.getWidth() - (insets.left + insets.right)) / 2);
         int y = w.getY() + insets.top + ((w.getHeight() - (insets.top + insets.bottom)) / 2);

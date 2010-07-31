@@ -34,8 +34,7 @@ public final class JComboBoxSetSelectedItemTask {
   @RunsInEDT
   public static void setSelectedItem(final JComboBox comboBox, final Object item) {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         comboBox.setSelectedItem(item);
       }
     });

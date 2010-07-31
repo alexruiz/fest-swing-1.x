@@ -34,8 +34,7 @@ final class JLabelTextQuery {
   @RunsInEDT
   static String textOf(final JLabel label) {
     return execute(new GuiQuery<String>() {
-      @Override
-      protected String executeInEDT() {
+      @Override protected String executeInEDT() {
         return label.getText();
       }
     });

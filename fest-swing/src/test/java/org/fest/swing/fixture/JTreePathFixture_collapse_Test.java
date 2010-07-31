@@ -30,13 +30,11 @@ public class JTreePathFixture_collapse_Test extends JTreePathFixture_withMockTre
   @Test
   public void should_collapse_node() {
     new EasyMockTemplate(tree) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         expect(tree.collapsePath(path)).andReturn(tree);
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         assertThatReturnsSelf(fixture.collapse());
       }
     }.run();

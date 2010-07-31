@@ -80,8 +80,7 @@ public final class IntrospectionComponentFormatter extends ComponentFormatterTem
    * formatter.
    * @see #targetType()
    */
-  @Override
-  protected String doFormat(Component c) {
+  @Override protected String doFormat(Component c) {
     StringBuilder b = new StringBuilder();
     b.append(c.getClass().getName()).append("[");
     int max = propertyNames.size() - 1;

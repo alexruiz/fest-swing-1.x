@@ -53,8 +53,7 @@ public final class JSpinners {
     @RunsInEDT
     public JSpinner createNew() {
       return execute(new GuiQuery<JSpinner>() {
-        @Override
-        protected JSpinner executeInEDT() {
+        @Override   protected JSpinner executeInEDT() {
           JSpinner spinner = new JSpinner();
           if (!isEmpty(values)) spinner.setModel(new SpinnerListModel(values));
           spinner.setName(name);

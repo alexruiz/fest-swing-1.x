@@ -129,8 +129,7 @@ public class JFileChooserFinder extends ComponentFinderTemplate<JFileChooser> {
    * @return a <code>JFileChooserFixture</code> managing the found {@code JFileChooser}.
    * @throws org.fest.swing.exception.WaitTimedOutError if a {@code JFileChooser} could not be found.
    */
-  @Override
-  public JFileChooserFixture using(Robot robot) {
+  @Override public JFileChooserFixture using(Robot robot) {
     return new JFileChooserFixture(robot, findComponentWith(robot));
   }
 
@@ -164,6 +163,5 @@ public class JFileChooserFinder extends ComponentFinderTemplate<JFileChooser> {
    * Casts the given {@code Component} to <code>{@link JFileChooser}</code>.
    * @return the given {@code Component}, casted to {@code JFileChooser}.
    */
-  @Override
-  protected JFileChooser cast(Component c) { return (JFileChooser) c; }
+  @Override protected JFileChooser cast(Component c) { return (JFileChooser) c; }
 }

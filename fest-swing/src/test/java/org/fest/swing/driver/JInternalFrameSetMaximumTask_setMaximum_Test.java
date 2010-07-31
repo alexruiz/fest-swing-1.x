@@ -63,8 +63,7 @@ public class JInternalFrameSetMaximumTask_setMaximum_Test extends RobotBasedTest
   @RunsInEDT
   private static boolean isMaximum(final JInternalFrame internalFrame) {
     return execute(new GuiQuery<Boolean>() {
-      @Override
-      protected Boolean executeInEDT() {
+      @Override protected Boolean executeInEDT() {
         return internalFrame.isMaximum() && !internalFrame.isIcon();
       }
     });

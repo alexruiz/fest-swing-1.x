@@ -33,8 +33,7 @@ final class JSpinnerValueQuery {
   @RunsInEDT
   static Object valueOf(final JSpinner spinner) {
     return execute(new GuiQuery<Object>() {
-      @Override
-      protected Object executeInEDT() {
+      @Override protected Object executeInEDT() {
         return spinner.getValue();
       }
     });

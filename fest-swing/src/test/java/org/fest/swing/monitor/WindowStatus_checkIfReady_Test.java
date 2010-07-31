@@ -105,8 +105,7 @@ public class WindowStatus_checkIfReady_Test extends SequentialEDTSafeTestCase {
       }
     }.run();
     pause(new Condition("Frame to be resized") {
-      @Override
-      public boolean test() {
+      @Override public boolean test() {
         return sizeOf(window).height > original.height;
       }
     }, timeout(5000));

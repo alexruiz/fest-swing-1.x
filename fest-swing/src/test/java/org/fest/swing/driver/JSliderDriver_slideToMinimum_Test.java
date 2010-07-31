@@ -55,8 +55,7 @@ public class JSliderDriver_slideToMinimum_Test extends JSliderDriver_TestCase {
   @RunsInEDT
   private static int minimumOf(final JSlider slider) {
     return execute(new GuiQuery<Integer>() {
-      @Override
-      protected Integer executeInEDT() {
+      @Override protected Integer executeInEDT() {
         return slider.getMinimum();
       }
     });

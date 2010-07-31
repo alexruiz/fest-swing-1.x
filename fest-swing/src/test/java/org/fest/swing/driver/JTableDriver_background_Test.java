@@ -45,13 +45,11 @@ public class JTableDriver_background_Test extends JTableDriver_withMockCellReade
   @Test
   public void should_return_cell_background_color() {
     new EasyMockTemplate(cellReader) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         expect(cellReader.backgroundAt(table, 0, 0)).andReturn(background);
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         Color result = driver.background(table, row(0).column(0));
         assertThat(result).isSameAs(background);
       }

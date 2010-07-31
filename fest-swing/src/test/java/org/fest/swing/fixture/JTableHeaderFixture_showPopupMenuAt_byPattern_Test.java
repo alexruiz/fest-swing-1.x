@@ -35,13 +35,11 @@ public class JTableHeaderFixture_showPopupMenuAt_byPattern_Test extends JTableHe
   public void should_show_JPopupMenu() {
     final Pattern pattern = regex("1");
     new EasyMockTemplate(driver()) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         expect(driver().showPopupMenu(target(), pattern)).andReturn(popupMenu());
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         JPopupMenuFixture result = fixture().showPopupMenuAt(pattern);
         assertThatJPopupMenuWasShown(result);
       }

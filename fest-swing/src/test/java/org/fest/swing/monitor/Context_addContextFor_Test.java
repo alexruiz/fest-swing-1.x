@@ -30,16 +30,14 @@ public class Context_addContextFor_Test extends Context_TestCase {
   @Test
   public void should_add_context() {
     new EasyMockTemplate(windowEventQueueMapping, eventQueueMapping) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         windowEventQueueMapping.addQueueFor(window);
         expectLastCall().once();
         eventQueueMapping.addQueueFor(window);
         expectLastCall().once();
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         context.addContextFor(window);
       }
     }.run();

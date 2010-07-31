@@ -34,8 +34,7 @@ final class JScrollBarValueQuery {
   @RunsInEDT
   static int valueOf(final JScrollBar scrollBar) {
     return execute(new GuiQuery<Integer>() {
-      @Override
-      protected Integer executeInEDT() {
+      @Override protected Integer executeInEDT() {
         return scrollBar.getValue();
       }
     });

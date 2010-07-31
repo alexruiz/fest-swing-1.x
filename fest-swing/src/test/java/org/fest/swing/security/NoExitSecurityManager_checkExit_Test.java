@@ -46,15 +46,13 @@ public class NoExitSecurityManager_checkExit_Test {
   public void should_call_hook_and_throw_error_if_Runtime_exit_was_called() {
     final StackTraceElement[] stackTrace = array(methodInRuntime("exit"));
     new EasyMockTemplate(hook, stackTraces) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         expect(stackTraces.stackTraceInCurrentThread()).andReturn(stackTrace);
         hook.exitCalled(0);
         expectLastCall();
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         try {
           securityManager.checkExit(0);
           failWhenExpectingException();
@@ -67,15 +65,13 @@ public class NoExitSecurityManager_checkExit_Test {
   public void should_call_hook_and_throw_error_if_Runtime_halt_was_called() {
     final StackTraceElement[] stackTrace = array(methodInRuntime("halt"));
     new EasyMockTemplate(hook, stackTraces) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         expect(stackTraces.stackTraceInCurrentThread()).andReturn(stackTrace);
         hook.exitCalled(0);
         expectLastCall();
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         try {
           securityManager.checkExit(0);
           failWhenExpectingException();
@@ -88,13 +84,11 @@ public class NoExitSecurityManager_checkExit_Test {
   public void should_not_call_hook_and_throw_error_if_method_called_is_in_Runtime_but_is_not_exit_or_halt() {
     final StackTraceElement[] stackTrace = array(methodInRuntime("availableProcessors"));
     new EasyMockTemplate(hook, stackTraces) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         expect(stackTraces.stackTraceInCurrentThread()).andReturn(stackTrace);
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         securityManager.checkExit(0);
       }
     }.run();
@@ -109,13 +103,11 @@ public class NoExitSecurityManager_checkExit_Test {
     StackTraceElement e = new StackTraceElement(String.class.getName(), "substring", "String.java", 0);
     final StackTraceElement[] stackTrace = array(e);
     new EasyMockTemplate(hook, stackTraces) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         expect(stackTraces.stackTraceInCurrentThread()).andReturn(stackTrace);
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         securityManager.checkExit(0);
       }
     }.run();

@@ -42,8 +42,7 @@ public class JPopupMenuElementsAsTextQuery_menuElementsAsText_Test extends EDTSa
   @RunsInEDT
   private static JPopupMenu popupMenu() {
     return execute(new GuiQuery<JPopupMenu>() {
-      @Override
-      protected JPopupMenu executeInEDT() {
+      @Override protected JPopupMenu executeInEDT() {
         JPopupMenu popupMenu = new JPopupMenu();
         popupMenu.add(new JMenuItem("Anakin"));
         popupMenu.addSeparator();

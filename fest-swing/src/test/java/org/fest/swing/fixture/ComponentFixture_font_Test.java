@@ -42,8 +42,7 @@ public class ComponentFixture_font_Test extends ComponentFixture_TestCase {
   @RunsInEDT
   private static Font fontOf(final Component c) {
     return execute(new GuiQuery<Font>() {
-      @Override
-      protected Font executeInEDT() {
+      @Override protected Font executeInEDT() {
         return c.getFont();
       }
     });

@@ -40,13 +40,11 @@ public class JPopupMenuFixtureTest extends JPopupMenuFixture_TestCase {
   public void shouldReturnMenuLabels() {
     final String[] labels = array("Ben", "Leia");
     new EasyMockTemplate(driver()) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         expect(driver().menuLabelsOf(target())).andReturn(labels);
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         String[] result = fixture().menuLabels();
         assertThat(result).isSameAs(labels);
       }
@@ -57,13 +55,11 @@ public class JPopupMenuFixtureTest extends JPopupMenuFixture_TestCase {
   public void shouldReturnMenuItemByName() {
     final JMenuItem menuItem = menuItem().createNew();
     new EasyMockTemplate(driver()) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         expect(driver().menuItem(target(), "menuItem")).andReturn(menuItem);
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         JMenuItemFixture result = fixture().menuItem("menuItem");
         assertThat(result.component()).isSameAs(menuItem);
       }
@@ -76,13 +72,11 @@ public class JPopupMenuFixtureTest extends JPopupMenuFixture_TestCase {
     final GenericTypeMatcher<JMenuItem> matcher = createMock(GenericTypeMatcher.class);
     final JMenuItem menuItem = menuItem().createNew();
     new EasyMockTemplate(driver()) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         expect(driver().menuItem(target(), matcher)).andReturn(menuItem);
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         JMenuItemFixture result = fixture().menuItem(matcher);
         assertThat(result.component()).isSameAs(menuItem);
       }

@@ -43,8 +43,7 @@ public class GUITestRunner extends BlockJUnit4ClassRunner {
    * Returns a <code>{@link Statement}</code> that invokes {@code method} on {@code test}. The created statement will
    * take and save the screenshot of the desktop in case of a failure.
    */
-  @Override
-  protected Statement methodInvoker(FrameworkMethod method, Object test) {
+  @Override   protected Statement methodInvoker(FrameworkMethod method, Object test) {
     return new MethodInvoker(method, test, screenshotTaker);
   }
 }

@@ -32,14 +32,12 @@ public class JTableHeaderFixture_clickColumn_byIndex_Test extends JTableHeaderFi
   public void should_click_column() {
     final int index = 0;
     new EasyMockTemplate(driver()) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         driver().clickColumn(target(), index);
         expectLastCall().once();
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         assertThatReturnsSelf(fixture().clickColumn(index));
       }
     }.run();

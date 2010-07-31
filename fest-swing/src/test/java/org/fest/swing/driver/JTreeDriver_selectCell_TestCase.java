@@ -46,8 +46,7 @@ public abstract class JTreeDriver_selectCell_TestCase extends JTreeDriver_TestCa
   @RunsInEDT
   private static int[] selectedRowsOf(final JTree tree) {
     return execute(new GuiQuery<int[]>() {
-      @Override
-      protected int[] executeInEDT() {
+      @Override protected int[] executeInEDT() {
         return tree.getSelectionRows();
       }
     });
@@ -63,8 +62,7 @@ public abstract class JTreeDriver_selectCell_TestCase extends JTreeDriver_TestCa
   @RunsInEDT
   private static void clearSelectionOf(final JTree tree) {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         tree.clearSelection();
       }
     });
@@ -80,8 +78,7 @@ public abstract class JTreeDriver_selectCell_TestCase extends JTreeDriver_TestCa
   private static void setDefaultSelectionModelTo(final JTree tree) {
     final DefaultTreeSelectionModel selectionModel = new DefaultTreeSelectionModel();
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         tree.setSelectionModel(selectionModel);
       }
     });
@@ -98,8 +95,7 @@ public abstract class JTreeDriver_selectCell_TestCase extends JTreeDriver_TestCa
   @RunsInEDT
   private static TreePath[] selectionPathsOf(final JTree tree) {
     return execute(new GuiQuery<TreePath[]>() {
-      @Override
-      protected TreePath[] executeInEDT()  {
+      @Override protected TreePath[] executeInEDT()  {
         return tree.getSelectionPaths();
       }
     });
@@ -120,8 +116,7 @@ public abstract class JTreeDriver_selectCell_TestCase extends JTreeDriver_TestCa
   @RunsInEDT
   private static void setSelectionPath(final JTree tree, final TreePath path) {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         tree.expandPath(path);
         tree.setSelectionPath(path);
       }
@@ -137,8 +132,7 @@ public abstract class JTreeDriver_selectCell_TestCase extends JTreeDriver_TestCa
   @RunsInEDT
   private static void setSelectionPath(final JTree tree, final TreePath[] paths) {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         tree.setSelectionPaths(paths);
       }
     });

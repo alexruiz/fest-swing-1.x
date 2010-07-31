@@ -45,8 +45,7 @@ final class JTreeVerifySelectionTask {
   @RunsInEDT
   static void verifySelection(final JTree tree, final int[] selection, final Description errMsg) {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         checkSelection(tree, selection, errMsg);
       }
     });
@@ -70,8 +69,7 @@ final class JTreeVerifySelectionTask {
   static void verifySelection(final JTree tree, final String[] selection, final JTreePathFinder pathFinder,
       final Description errMsg) {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         checkSelection(tree, selection, pathFinder, errMsg);
       }
     });
@@ -103,8 +101,7 @@ final class JTreeVerifySelectionTask {
   @RunsInEDT
   static void verifyNoSelection(final JTree tree, final Description errMsg) {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         if (tree.getSelectionCount() == 0) return;
         String message = concat(
             "[", errMsg.value(), "] expected no selection but was:<", format(tree.getSelectionPaths()), ">");

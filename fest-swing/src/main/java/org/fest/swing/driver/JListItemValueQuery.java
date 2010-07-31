@@ -35,8 +35,7 @@ final class JListItemValueQuery {
   @RunsInEDT
   static String itemValue(final JList list, final int index, final JListCellReader cellReader) {
     return execute(new GuiQuery<String>() {
-      @Override
-      protected String executeInEDT() {
+      @Override protected String executeInEDT() {
         validateIndex(list, index);
         return cellReader.valueAt(list, index);
       }

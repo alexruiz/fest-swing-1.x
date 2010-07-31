@@ -39,8 +39,7 @@ public final class ComponentEnabledQuery {
    */
   public static boolean isEnabled(final Component component) {
     return execute(new GuiQuery<Boolean>() {
-      @Override
-      protected Boolean executeInEDT() {
+      @Override protected Boolean executeInEDT() {
         return component.isEnabled();
       }
     });

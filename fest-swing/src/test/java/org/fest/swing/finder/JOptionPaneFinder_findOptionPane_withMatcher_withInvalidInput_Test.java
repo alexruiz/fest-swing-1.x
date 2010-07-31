@@ -49,8 +49,7 @@ public class JOptionPaneFinder_findOptionPane_withMatcher_withInvalidInput_Test 
       super(JOptionPane.class);
     }
 
-    @Override
-    protected boolean isMatching(JOptionPane fileChooser) {
+    @Override   protected boolean isMatching(JOptionPane fileChooser) {
       return false;
     }
   }}

@@ -42,8 +42,7 @@ public class JPanelFixture_container_Test extends ComponentFixture_Implementatio
     target = panel().createNew();
   }
 
-  @Override
-  void onSetUp() {
+  @Override void onSetUp() {
     driver = createMock(JComponentDriver.class);
     fixture = new JPanelFixture(robot(), target);
     fixture.driver(driver);
@@ -54,10 +53,7 @@ public class JPanelFixture_container_Test extends ComponentFixture_Implementatio
     assertThat(fixture).isInstanceOf(ContainerFixture.class);
   }
 
-  @Override
-  JComponentDriver driver() {  return driver; }
-  @Override
-  JPanel target() { return target; }
-  @Override
-  JPanelFixture fixture() { return fixture; }
+  @Override JComponentDriver driver() {  return driver; }
+  @Override JPanel target() { return target; }
+  @Override JPanelFixture fixture() { return fixture; }
 }

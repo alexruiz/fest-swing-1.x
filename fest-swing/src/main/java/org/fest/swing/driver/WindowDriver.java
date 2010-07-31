@@ -113,8 +113,7 @@ public class WindowDriver extends ContainerDriver {
   @RunsInEDT
   private static Point closeInfo(final Window w) {
     return execute(new GuiQuery<Point>() {
-      @Override
-      protected Point executeInEDT() {
+      @Override protected Point executeInEDT() {
         validateIsEnabledAndShowing(w);
         return closeLocationOf(w);
       }
@@ -153,8 +152,7 @@ public class WindowDriver extends ContainerDriver {
   @RunsInEDT
   private static void doMoveToFront(final Window w) {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         w.toFront();
       }
     });
@@ -174,8 +172,7 @@ public class WindowDriver extends ContainerDriver {
   @RunsInEDT
   private static void doMoveToBack(final Window w) {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         w.toBack();
       }
     });

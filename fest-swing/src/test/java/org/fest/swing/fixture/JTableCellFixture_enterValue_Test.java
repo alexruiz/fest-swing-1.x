@@ -31,14 +31,12 @@ public class JTableCellFixture_enterValue_Test extends JTableCellFixture_withMoc
   public void should_enter_value_in_cell() {
     final String value = "Hello";
     new EasyMockTemplate(driver) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         driver.enterValueInCell(table.target, cell, value);
         expectLastCall().once();
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         assertThatReturnsSelf(fixture.enterValue(value));
       }
     }.run();

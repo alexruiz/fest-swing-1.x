@@ -50,14 +50,12 @@ public class GuiActionRunner_execute_taskNotInEDT_Test extends SequentialEDTSafe
     final TestGuiTask task = createMock(TestGuiTask.class);
     final RuntimeException error = expectedError();
     new EasyMockTemplate(task) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         task.executeInEDT();
         expectLastCall().andThrow(error);
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         try {
           GuiActionRunner.executeInEDT(false);
           GuiActionRunner.execute(task);
@@ -78,8 +76,7 @@ public class GuiActionRunner_execute_taskNotInEDT_Test extends SequentialEDTSafe
 
     TestGuiTask() {}
 
-    @Override
-    protected void executeInEDT() {
+    @Override   protected void executeInEDT() {
       methodInvocations.invoked("executeInEDT");
     }
 

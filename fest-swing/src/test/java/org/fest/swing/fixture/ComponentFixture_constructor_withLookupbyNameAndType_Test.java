@@ -43,15 +43,13 @@ public class ComponentFixture_constructor_withLookupbyNameAndType_Test extends C
   public void should_lookup_Component_by_name_and_type() {
     final ComponentFinder finder = newComponentFinderMock();
     new EasyMockTemplate(robot, finder) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         expect(robot.settings()).andReturn(settings);
         expect(robot.finder()).andReturn(finder);
         expect(finder.findByName(name, type, requireShowing())).andReturn(target);
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         assertHasCorrectTarget(new ConcreteComponentFixture(robot, name, type));
       }
     }.run();

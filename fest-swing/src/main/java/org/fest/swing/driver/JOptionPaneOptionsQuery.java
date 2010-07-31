@@ -35,8 +35,7 @@ final class JOptionPaneOptionsQuery {
   @RunsInEDT
   static Object[] optionsOf(final JOptionPane optionPane) {
     return execute(new GuiQuery<Object[]>() {
-      @Override
-      protected Object[] executeInEDT() throws Throwable {
+      @Override protected Object[] executeInEDT() throws Throwable {
         return optionPane.getOptions();
       }
     });

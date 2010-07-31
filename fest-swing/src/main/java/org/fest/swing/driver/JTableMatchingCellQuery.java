@@ -39,8 +39,7 @@ final class JTableMatchingCellQuery {
   @RunsInEDT
   static TableCell cellWithValue(final JTable table, final TextMatcher matcher, final JTableCellReader cellReader) {
     return execute(new GuiQuery<TableCell>() {
-      @Override
-      protected TableCell executeInEDT() {
+      @Override protected TableCell executeInEDT() {
         return findMatchingCell(table, matcher, cellReader);
       }
     });

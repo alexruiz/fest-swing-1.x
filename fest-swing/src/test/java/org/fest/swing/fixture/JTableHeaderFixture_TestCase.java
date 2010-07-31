@@ -34,8 +34,7 @@ public abstract class JTableHeaderFixture_TestCase extends ComponentFixture_Impl
   private JTableHeader target;
   private JTableHeaderFixture fixture;
 
-  @Override
-  final void onSetUp() {
+  @Override final void onSetUp() {
     target = tableHeader().createNew();
     fixture = new JTableHeaderFixture(robot(), target);
     driver = createMock(JTableHeaderDriver.class);
@@ -45,10 +44,7 @@ public abstract class JTableHeaderFixture_TestCase extends ComponentFixture_Impl
 
   void extraSetUp() {}
 
-  @Override
-  final JTableHeaderDriver driver() { return driver; }
-  @Override
-  final JTableHeader target() { return target; }
-  @Override
-  final JTableHeaderFixture fixture() { return fixture; }
+  @Override final JTableHeaderDriver driver() { return driver; }
+  @Override final JTableHeader target() { return target; }
+  @Override final JTableHeaderFixture fixture() { return fixture; }
 }

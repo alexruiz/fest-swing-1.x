@@ -44,8 +44,7 @@ public class JComboBoxDriver_dropDownList_Test extends JComboBoxDriver_TestCase 
   @RunsInEDT
   private Object[] contentsOf(final JList list) {
     return execute(new GuiQuery<Object[]>() {
-      @Override
-      protected Object[] executeInEDT() {
+      @Override protected Object[] executeInEDT() {
         ListModel model = list.getModel();
         int elementCount = model.getSize();
         Object[] elements = new Object[elementCount];

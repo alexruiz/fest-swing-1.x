@@ -83,8 +83,7 @@ public class JMenuItemDriver extends JComponentDriver {
   @RunsInEDT
   private static JMenuItemLocation locationOf(final JMenuItem menuItem) {
     return execute(new GuiQuery<JMenuItemLocation>() {
-      @Override
-      protected JMenuItemLocation executeInEDT() {
+      @Override protected JMenuItemLocation executeInEDT() {
         return new JMenuItemLocation(menuItem);
       }
 
@@ -121,8 +120,7 @@ public class JMenuItemDriver extends JComponentDriver {
   @RunsInEDT
   private static void validateAndDoClick(final JMenuItem menuItem) {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         validateIsEnabledAndShowing(menuItem);
         menuItem.doClick();
       }

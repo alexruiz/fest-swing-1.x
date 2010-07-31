@@ -34,13 +34,11 @@ public class WindowMonitor_rootWindows_Test extends WindowMonitor_TestCase {
   public void should_return_root_Windows() {
     final List<Window> rootWindows = new ArrayList<Window>();
     new EasyMockTemplate(context) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         expect(context.rootWindows()).andReturn(rootWindows);
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         assertThat(monitor.rootWindows()).isSameAs(rootWindows);
       }
     }.run();

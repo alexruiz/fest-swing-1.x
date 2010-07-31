@@ -30,14 +30,12 @@ public class JProgressBarFixture_requireIndeterminate_Test extends JProgressBarF
   @Test
   public void should_require_value() {
     new EasyMockTemplate(driver()) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         driver().requireIndeterminate(target());
         expectLastCall().once();
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         assertThatReturnsSelf(fixture().requireIndeterminate());
       }
     }.run();

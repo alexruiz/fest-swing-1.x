@@ -32,8 +32,7 @@ final class JTreeSetEditableTask {
   @RunsInEDT
   static void setEditable(final JTree tree, final boolean editable) {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         tree.setEditable(editable);
       }
     });

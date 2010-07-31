@@ -48,8 +48,7 @@ public abstract class JTableColumnByIdentifierQuery_TestCase extends RobotBasedT
   @RunsInEDT
   private static int columnIndexByIdentifier(final MyTable table, final String identifier) {
     return execute(new GuiQuery<Integer>() {
-      @Override
-      protected Integer executeInEDT() {
+      @Override protected Integer executeInEDT() {
         return JTableColumnByIdentifierQuery.columnIndexByIdentifier(table, identifier);
       }
     });
@@ -63,8 +62,7 @@ public abstract class JTableColumnByIdentifierQuery_TestCase extends RobotBasedT
     @RunsInEDT
     static MyWindow createNew(final Class<?> testClass) {
       return execute(new GuiQuery<MyWindow>() {
-        @Override
-        protected MyWindow executeInEDT() {
+        @Override   protected MyWindow executeInEDT() {
           return new MyWindow(testClass);
         }
       });

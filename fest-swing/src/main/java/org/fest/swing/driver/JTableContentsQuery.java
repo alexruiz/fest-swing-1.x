@@ -34,8 +34,7 @@ final class JTableContentsQuery {
   @RunsInEDT
   static String[][] tableContents(final JTable table, final JTableCellReader cellReader) {
     return execute(new GuiQuery<String[][]>() {
-      @Override
-      protected String[][] executeInEDT() {
+      @Override protected String[][] executeInEDT() {
         int rCount = table.getRowCount();
         int cCount = table.getColumnCount();
         String[][] contents = new String[rCount][cCount];

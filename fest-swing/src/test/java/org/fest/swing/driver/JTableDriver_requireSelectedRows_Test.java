@@ -72,8 +72,7 @@ public class JTableDriver_requireSelectedRows_Test extends JTableDriver_TestCase
   @RunsInEDT
   private static void selectRows(final JTable table, final int from, final int to) {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         if (from != to) table.setSelectionMode(MULTIPLE_INTERVAL_SELECTION);
         table.setRowSelectionInterval(from, to);
       }

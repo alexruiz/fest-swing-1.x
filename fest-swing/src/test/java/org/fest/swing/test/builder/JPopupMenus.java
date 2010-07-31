@@ -59,8 +59,7 @@ public final class JPopupMenus {
     @RunsInEDT
     public JPopupMenu createNew() {
       return execute(new GuiQuery<JPopupMenu>() {
-        @Override
-        protected JPopupMenu executeInEDT() {
+        @Override   protected JPopupMenu executeInEDT() {
           JPopupMenu popupMenu = new JPopupMenu();
           popupMenu.setLabel(label);
           popupMenu.setName(name);

@@ -43,8 +43,7 @@ public class JFileChooserFormatter extends ComponentFormatterTemplate {
    * @param c the given {@code Component}.
    * @return the <code>String</code> representation of the given <code>JFileChooser</code>.
    */
-  @Override
-  protected String doFormat(Component c) {
+  @Override protected String doFormat(Component c) {
     JFileChooser fileChooser = (JFileChooser)c;
     return concat(
         fileChooser.getClass().getName(), "[",

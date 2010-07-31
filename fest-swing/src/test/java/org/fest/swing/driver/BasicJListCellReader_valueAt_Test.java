@@ -70,8 +70,7 @@ public class BasicJListCellReader_valueAt_Test extends RobotBasedTestCase {
   @RunsInEDT
   private static void setNotRecognizedRendererComponent(final JList list) {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         list.setCellRenderer(new CustomCellRenderer(new JToolBar()));
       }
     });
@@ -80,8 +79,7 @@ public class BasicJListCellReader_valueAt_Test extends RobotBasedTestCase {
   @RunsInEDT
   private static String firstItemValue(final BasicJListCellReader reader, final JList list) {
     return execute(new GuiQuery<String>() {
-      @Override
-      protected String executeInEDT() {
+      @Override protected String executeInEDT() {
         return reader.valueAt(list, 0);
       }
     });
@@ -95,8 +93,7 @@ public class BasicJListCellReader_valueAt_Test extends RobotBasedTestCase {
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
-        @Override
-        protected MyWindow executeInEDT() {
+        @Override   protected MyWindow executeInEDT() {
           return new MyWindow();
         }
       });
@@ -120,8 +117,7 @@ public class BasicJListCellReader_valueAt_Test extends RobotBasedTestCase {
 
     void setElements(final Object...elements) {
       execute(new GuiTask() {
-        @Override
-        protected void executeInEDT() {
+        @Override   protected void executeInEDT() {
           model.setElements(elements);
         }
       });

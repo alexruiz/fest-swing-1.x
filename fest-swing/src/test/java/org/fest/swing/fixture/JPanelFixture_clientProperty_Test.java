@@ -42,17 +42,13 @@ public class JPanelFixture_clientProperty_Test extends ClientPropertyStorageFixt
     target = panel().createNew();
   }
 
-  @Override
-  void onSetUp() {
+  @Override void onSetUp() {
     driver = createMock(JComponentDriver.class);
     fixture = new JPanelFixture(robot(), target);
     fixture.driver(driver);
   }
 
-  @Override
-  JComponentDriver driver() {  return driver; }
-  @Override
-  JPanel target() { return target; }
-  @Override
-  JPanelFixture fixture() { return fixture; }
+  @Override JComponentDriver driver() {  return driver; }
+  @Override JPanel target() { return target; }
+  @Override JPanelFixture fixture() { return fixture; }
 }

@@ -81,8 +81,7 @@ public class BasicJTreeCellReader_valueAt_Test extends RobotBasedTestCase {
   @RunsInEDT
   private static void setRootInTree(final JTree tree, final DefaultMutableTreeNode root) {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         ((DefaultTreeModel)tree.getModel()).setRoot(root);
       }
     });
@@ -91,8 +90,7 @@ public class BasicJTreeCellReader_valueAt_Test extends RobotBasedTestCase {
   @RunsInEDT
   private static void setCellRendererComponent(final JTree tree, final Component renderer) {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         tree.setCellRenderer(new CustomCellRenderer(renderer));
       }
     });
@@ -109,8 +107,7 @@ public class BasicJTreeCellReader_valueAt_Test extends RobotBasedTestCase {
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
-        @Override
-        protected MyWindow executeInEDT() {
+        @Override   protected MyWindow executeInEDT() {
           return new MyWindow();
         }
       });

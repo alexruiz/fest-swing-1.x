@@ -66,8 +66,7 @@ public class JAppletDriver_TestCase extends EDTSafeTestCase {
     @RunsInEDT
     static JAppletStub createNew() {
       return execute(new GuiQuery<JAppletStub>() {
-        @Override
-        protected JAppletStub executeInEDT() {
+        @Override   protected JAppletStub executeInEDT() {
           return new JAppletStub();
         }
       });

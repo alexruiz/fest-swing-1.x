@@ -71,8 +71,7 @@ public class BasicJComboBoxCellReader_valueAt_Test extends RobotBasedTestCase {
   @RunsInEDT
   private static void setModelValues(final JComboBox comboBox, final Object[] values) {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         comboBox.setModel(new DefaultComboBoxModel(values));
       }
     });
@@ -81,8 +80,7 @@ public class BasicJComboBoxCellReader_valueAt_Test extends RobotBasedTestCase {
   @RunsInEDT
   private static void setNotRecognizedRendererComponent(final JComboBox comboBox) {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         comboBox.setRenderer(new CustomCellRenderer(new JToolBar()));
       }
     });
@@ -91,8 +89,7 @@ public class BasicJComboBoxCellReader_valueAt_Test extends RobotBasedTestCase {
   @RunsInEDT
   private static String firstItemValue(final BasicJComboBoxCellReader reader, final JComboBox comboBox) {
     return execute(new GuiQuery<String>() {
-      @Override
-      protected String executeInEDT() {
+      @Override protected String executeInEDT() {
         return reader.valueAt(comboBox, 0);
       }
     });
@@ -106,8 +103,7 @@ public class BasicJComboBoxCellReader_valueAt_Test extends RobotBasedTestCase {
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
-        @Override
-        protected MyWindow executeInEDT() {
+        @Override   protected MyWindow executeInEDT() {
           return new MyWindow();
         }
       });

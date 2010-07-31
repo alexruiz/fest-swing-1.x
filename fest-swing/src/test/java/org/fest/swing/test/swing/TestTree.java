@@ -53,8 +53,7 @@ public final class TestTree extends JTree {
       super(JTree.class);
     }
 
-    @Override
-    protected String exportString(JTree tree) {
+    @Override   protected String exportString(JTree tree) {
       rows = tree.getSelectionRows();
       StringBuilder b = new StringBuilder();
       for (int i = 0; i < rows.length; i++) {
@@ -66,8 +65,7 @@ public final class TestTree extends JTree {
       return b.toString();
     }
 
-    @Override
-    protected void importString(JTree target, String s) {
+    @Override   protected void importString(JTree target, String s) {
       DefaultTreeModel model = (DefaultTreeModel) target.getModel();
       int index = target.getRowForPath(target.getSelectionPath());
       // Prevent the user from dropping data back on itself.
@@ -88,8 +86,7 @@ public final class TestTree extends JTree {
     }
 
     // not working perfectly right, but good enough for testing.
-    @Override
-    protected void cleanup(JTree source, boolean remove) {
+    @Override   protected void cleanup(JTree source, boolean remove) {
       if (remove && rows != null) {
         DefaultTreeModel model = (DefaultTreeModel) source.getModel();
         // If we are moving items around in the same table, we need to adjust the rows accordingly, since those after the

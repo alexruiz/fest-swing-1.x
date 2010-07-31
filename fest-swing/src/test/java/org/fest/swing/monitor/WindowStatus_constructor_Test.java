@@ -44,13 +44,11 @@ public class WindowStatus_constructor_Test {
   @Test
   public void should_have_null_Robot_if_Robot_cannot_be_created() {
     new EasyMockTemplate(factory) {
-      @Override
-      protected void expectations() throws Throwable {
+      @Override protected void expectations() throws Throwable {
         expect(factory.newRobotInPrimaryScreen()).andThrow(new AWTException("Thrown on purpose"));
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         WindowStatus status = new WindowStatus(windows, factory);
         assertThat(status.robot).isNull();
       }

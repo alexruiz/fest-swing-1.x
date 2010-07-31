@@ -122,8 +122,7 @@ public class Formatting {
   @RunsInEDT
   public static String inEdtFormat(final Component c) {
     return execute(new GuiQuery<String>() {
-      @Override
-      protected String executeInEDT() {
+      @Override protected String executeInEDT() {
         return format(c);
       }
     });

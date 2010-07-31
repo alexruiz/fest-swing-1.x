@@ -39,8 +39,7 @@ public class JTabbedPaneFormatter extends ComponentFormatterTemplate {
    * @param c the given {@code Component}.
    * @return the <code>String</code> representation of the given <code>JTabbedPane</code>.
    */
-  @Override
-  protected String doFormat(Component c) {
+  @Override protected String doFormat(Component c) {
     JTabbedPane tabbedPane = (JTabbedPane)c;
     return concat(
         tabbedPane.getClass().getName(), "[",

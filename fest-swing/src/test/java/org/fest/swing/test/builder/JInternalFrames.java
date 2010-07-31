@@ -52,8 +52,7 @@ public final class JInternalFrames {
     @RunsInEDT
     public JInternalFrame createNew() {
       return execute(new GuiQuery<JInternalFrame>() {
-        @Override
-        protected JInternalFrame executeInEDT() {
+        @Override   protected JInternalFrame executeInEDT() {
           JInternalFrame internalFrame = new JInternalFrame();
           internalFrame.setName(name);
           internalFrame.setResizable(resizable);

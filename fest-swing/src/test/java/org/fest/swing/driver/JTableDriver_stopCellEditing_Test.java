@@ -35,14 +35,12 @@ public class JTableDriver_stopCellEditing_Test extends JTableDriver_withMockCell
   @Test
   public void should_stop_cell_editing() {
     new EasyMockTemplate(cellWriter) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         cellWriter.stopCellEditing(table, 0, 0);
         expectLastCall().once();
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         driver.stopCellEditing(table, row(0).column(0));
       }
     }.run();

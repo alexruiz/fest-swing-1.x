@@ -31,8 +31,7 @@ public class ExampleDocument extends PlainDocument {
   /*
    * Inserts a text with a maximum length of 10 characters.
    */
-  @Override
-  public void insertString(int offs, String s, AttributeSet a) throws BadLocationException {
+  @Override public void insertString(int offs, String s, AttributeSet a) throws BadLocationException {
     // If length is less than 10 characters, insert it
     if (s != null && getLength() + s.length() <= 10) super.insertString(offs, s, a);
     else showMessageDialog(null, "Maximum length: 10 characters", "Maximum length exceeded", ERROR_MESSAGE);

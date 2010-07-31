@@ -61,8 +61,7 @@ public class JTableCheckBoxEditorCellWriter extends AbstractJTableCellWriter  {
   private static Pair<Boolean, Point> doStartCellEditing(final JTable table, final int row, final int column,
       final JTableLocation location) {
     return execute(new GuiQuery<Pair<Boolean, Point>>() {
-      @Override
-      protected Pair<Boolean, Point> executeInEDT() {
+      @Override protected Pair<Boolean, Point> executeInEDT() {
         JCheckBox editor = editor(table, row, column, JCheckBox.class);
         scrollToCell(table, row, column, location);
         return new Pair<Boolean, Point>(editor.isSelected(), location.pointAt(table, row, column));

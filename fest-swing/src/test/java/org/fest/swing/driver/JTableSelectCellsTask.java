@@ -32,8 +32,7 @@ final class JTableSelectCellsTask {
 
   static void selectCells(final JTable table, final TableCell from, final TableCell to) {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         table.setColumnSelectionInterval(from.column, to.column);
         table.setRowSelectionInterval(from.row, to.row);
       }

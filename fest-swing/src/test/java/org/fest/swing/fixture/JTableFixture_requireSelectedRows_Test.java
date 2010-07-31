@@ -31,14 +31,12 @@ public class JTableFixture_requireSelectedRows_Test extends JTableFixture_TestCa
   public void should_require_selected_rows() {
     final int[] rows = { 6, 8 };
     new EasyMockTemplate(driver()) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         driver().requireSelectedRows(target(), rows);
         expectLastCall().once();
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         assertThatReturnsSelf(fixture().requireSelectedRows(rows));
       }
     }.run();

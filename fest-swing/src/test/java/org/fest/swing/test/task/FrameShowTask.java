@@ -47,8 +47,7 @@ public final class FrameShowTask {
   @RunsInEDT
   public static void waitForShowing(final Frame frame) {
     pause(new Condition("Frame is showing") {
-      @Override
-      public boolean test() {
+      @Override public boolean test() {
         return isShowing(frame);
       }
     }, 20000);

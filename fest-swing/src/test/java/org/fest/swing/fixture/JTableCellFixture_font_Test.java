@@ -35,13 +35,11 @@ public class JTableCellFixture_font_Test extends JTableCellFixture_withMockTable
   public void should_return_font() {
     final FontFixture fontFixture = new FontFixture(new Font("SansSerif", PLAIN, 8));
     new EasyMockTemplate(table) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         expect(table.fontAt(cell)).andReturn(fontFixture);
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         FontFixture result = fixture.font();
         assertThat(result).isSameAs(fontFixture);
       }

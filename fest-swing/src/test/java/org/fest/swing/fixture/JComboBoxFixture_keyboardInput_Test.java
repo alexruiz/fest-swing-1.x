@@ -45,8 +45,7 @@ public class JComboBoxFixture_keyboardInput_Test extends KeyboardInputSimulation
     target = comboBox().createNew();
   }
 
-  @Override
-  void onSetUp() {
+  @Override void onSetUp() {
     driver = createMock(JComboBoxDriver.class);
     fixture = new JComboBoxFixture(robot(), target);
     fixture.driver(driver);
@@ -55,23 +54,18 @@ public class JComboBoxFixture_keyboardInput_Test extends KeyboardInputSimulation
   @Test
   @Override public void should_press_and_release_keys() {
     new EasyMockTemplate(driver()) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         driver().pressAndReleaseKeys(target(), VK_A, VK_B, VK_C);
         expectLastCall().once();
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         assertThatReturnsSelf(fixture().pressAndReleaseKeys(VK_A, VK_B, VK_C));
       }
     }.run();
   }
 
-  @Override
-  JComboBoxDriver driver() {  return driver; }
-  @Override
-  JComboBox target() { return target; }
-  @Override
-  JComboBoxFixture fixture() { return fixture; }
+  @Override JComboBoxDriver driver() {  return driver; }
+  @Override JComboBox target() { return target; }
+  @Override JComboBoxFixture fixture() { return fixture; }
 }

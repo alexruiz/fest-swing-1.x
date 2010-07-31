@@ -64,8 +64,7 @@ public class FEST102_enteringTextInJComboBoxIgnoresFirstCharacter_Test extends R
   private static String textOf(JComboBoxFixture comboBox) {
     final JComboBox c = comboBox.component();
     return execute(new GuiQuery<String>() {
-      @Override
-      protected String executeInEDT() {
+      @Override protected String executeInEDT() {
         JTextField editor = (JTextField)c.getEditor().getEditorComponent();
         return editor.getText();
       }
@@ -80,8 +79,7 @@ public class FEST102_enteringTextInJComboBoxIgnoresFirstCharacter_Test extends R
     @RunsInEDT
     static MyWindow createNew(final Vector<?> comboBoxItems) {
       return execute(new GuiQuery<MyWindow>() {
-        @Override
-        protected MyWindow executeInEDT() {
+        @Override   protected MyWindow executeInEDT() {
           return new MyWindow(comboBoxItems);
         }
       });

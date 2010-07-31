@@ -64,8 +64,7 @@ public class JScrollBarFixture_constructor_withRobotAndName_Test extends RobotBa
 
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
-        @Override
-        protected MyWindow executeInEDT() {
+        @Override   protected MyWindow executeInEDT() {
           return new MyWindow();
         }
       });

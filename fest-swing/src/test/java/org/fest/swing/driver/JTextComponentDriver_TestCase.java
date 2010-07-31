@@ -89,8 +89,7 @@ public abstract class JTextComponentDriver_TestCase extends RobotBasedTestCase {
   @RunsInEDT
   static void setText(final JTextField textField, final String text) {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         textField.setText(text);
       }
     });
@@ -116,8 +115,7 @@ public abstract class JTextComponentDriver_TestCase extends RobotBasedTestCase {
     @RunsInEDT
     static MyWindow createNew(final Class<?> testClass) {
       return execute(new GuiQuery<MyWindow>() {
-        @Override
-        protected MyWindow executeInEDT() {
+        @Override   protected MyWindow executeInEDT() {
           return new MyWindow(testClass);
         }
       });

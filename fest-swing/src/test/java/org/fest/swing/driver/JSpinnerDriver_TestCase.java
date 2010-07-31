@@ -65,8 +65,7 @@ public abstract class JSpinnerDriver_TestCase extends RobotBasedTestCase {
   @RunsInEDT
   private static void setJLabelAsEditorIn(final JSpinner spinner) {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         spinner.setEditor(new JLabel());
       }
     });
@@ -87,8 +86,7 @@ public abstract class JSpinnerDriver_TestCase extends RobotBasedTestCase {
   @RunsInEDT
   private static void setValue(final JSpinner spinner, final Object value) {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         spinner.setValue(value);
       }
     });
@@ -118,8 +116,7 @@ public abstract class JSpinnerDriver_TestCase extends RobotBasedTestCase {
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
-        @Override
-        protected MyWindow executeInEDT() {
+        @Override   protected MyWindow executeInEDT() {
           return new MyWindow();
         }
       });

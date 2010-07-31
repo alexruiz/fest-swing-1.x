@@ -77,8 +77,7 @@ public class JListItemValueQuery_itemValue_Test extends RobotBasedTestCase {
   @RunsInEDT
   private static String itemValue(final JList list, final int index, final JListCellReader cellReader) {
     return execute(new GuiQuery<String>() {
-      @Override
-      protected String executeInEDT() {
+      @Override protected String executeInEDT() {
         return JListItemValueQuery.itemValue(list, index, cellReader);
       }
     });
@@ -93,8 +92,7 @@ public class JListItemValueQuery_itemValue_Test extends RobotBasedTestCase {
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
-        @Override
-        protected MyWindow executeInEDT() {
+        @Override   protected MyWindow executeInEDT() {
           return new MyWindow();
         }
       });

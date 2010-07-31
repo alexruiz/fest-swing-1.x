@@ -34,13 +34,11 @@ public class WindowMonitor_allEventQueues_Test extends WindowMonitor_TestCase {
   public void should_return_all_EventQueues() {
     final List<EventQueue> allQueues = new ArrayList<EventQueue>();
     new EasyMockTemplate(context) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         expect(context.allEventQueues()).andReturn(allQueues);
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         assertThat(monitor.allEventQueues()).isSameAs(allQueues);
       }
     }.run();

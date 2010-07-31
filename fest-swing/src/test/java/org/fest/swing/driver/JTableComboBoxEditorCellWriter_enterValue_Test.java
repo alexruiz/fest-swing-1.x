@@ -28,8 +28,7 @@ import org.junit.Test;
  */
 public class JTableComboBoxEditorCellWriter_enterValue_Test extends JTableCellWriter_enterValue_TestCase {
 
-  @Override
-  protected JTableCellWriter createWriter() {
+  @Override protected JTableCellWriter createWriter() {
     return new JTableComboBoxEditorCellWriter(robot);
   }
 

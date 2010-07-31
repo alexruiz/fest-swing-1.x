@@ -50,15 +50,13 @@ public class EventNormalizer_eventDispatched_Test extends EventNormalizer_TestCa
   @Test
   public void should_delegate_event_if_it_is_not_a_duplicate_dispose() {
     new EasyMockTemplate(disposedWindowMonitor, delegateEventListener) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         expect(disposedWindowMonitor.isDuplicateDispose(event)).andReturn(false);
         delegateEventListener.eventDispatched(event);
         expectLastCall().once();
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         eventNormalizer.eventDispatched(event);
       }
     }.run();
@@ -67,13 +65,11 @@ public class EventNormalizer_eventDispatched_Test extends EventNormalizer_TestCa
   @Test
   public void should_not_delegate_event_if_it_is_a_duplicate_dispose() {
     new EasyMockTemplate(disposedWindowMonitor, delegateEventListener) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         expect(disposedWindowMonitor.isDuplicateDispose(event)).andReturn(true);
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         eventNormalizer.eventDispatched(event);
       }
     }.run();

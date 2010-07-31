@@ -36,13 +36,11 @@ public class Context_rootWindows_Test extends Context_TestCase {
   public void should_return_root_windows() {
     final TestWindow anotherFrame = TestWindow.createNewWindow(getClass());
     new EasyMockTemplate(windowEventQueueMapping) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         expect(windowEventQueueMapping.windows()).andReturn(frameInList());
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         Collection<Window> rootWindows = context.rootWindows();
         assertThat(rootWindows).contains(window);
         assertThat(rootWindows).contains(anotherFrame);

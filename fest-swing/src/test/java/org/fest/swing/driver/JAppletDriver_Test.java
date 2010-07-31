@@ -51,13 +51,11 @@ public class JAppletDriver_Test extends EDTSafeTestCase {
 		final AppletContext context = createMock(AppletContext.class);
 
 		new EasyMockTemplate(target()){
-			@Override
-      protected void expectations() {
+			@Override protected void expectations() {
 				expect(target.getAppletContext()).andReturn(context);
 			}
 
-			@Override
-      protected void codeToTest() {
+			@Override protected void codeToTest() {
 				assertThat(driver.getAppletContext()).isSameAs(context);
 			}
 		}.run();
@@ -70,14 +68,12 @@ public class JAppletDriver_Test extends EDTSafeTestCase {
 		final int height = 10;
 
 		new EasyMockTemplate(target()){
-			@Override
-      protected void expectations() {
+			@Override protected void expectations() {
 				target.resize(10,10);
 				expectLastCall().once();
 			}
 
-			@Override
-      protected void codeToTest() {
+			@Override protected void codeToTest() {
 				driver.appletResize(width, height);
 			}
 		}.run();
@@ -89,13 +85,11 @@ public class JAppletDriver_Test extends EDTSafeTestCase {
 		final URL url = new URL("http://localhost");
 
 		new EasyMockTemplate(target()){
-			@Override
-      protected void expectations() {
+			@Override protected void expectations() {
 				expect(target.getCodeBase()).andReturn(url);
 			}
 
-			@Override
-      protected void codeToTest() {
+			@Override protected void codeToTest() {
 				assertThat(driver.getCodeBase()).isSameAs(url);
 			}
 		}.run();
@@ -107,13 +101,11 @@ public class JAppletDriver_Test extends EDTSafeTestCase {
 		final URL url = new URL("http://localhost");
 
 		new EasyMockTemplate(target()){
-			@Override
-      protected void expectations() {
+			@Override protected void expectations() {
 				expect(target.getDocumentBase()).andReturn(url);
 			}
 
-			@Override
-      protected void codeToTest() {
+			@Override protected void codeToTest() {
 				assertThat(driver.getDocumentBase()).isSameAs(url);
 			}
 		}.run();
@@ -126,13 +118,11 @@ public class JAppletDriver_Test extends EDTSafeTestCase {
 		final String name = "name";
 
 		new EasyMockTemplate(target()){
-			@Override
-      protected void expectations() {
+			@Override protected void expectations() {
 				expect(target.getParameter(name)).andReturn(parameter);
 			}
 
-			@Override
-      protected void codeToTest() {
+			@Override protected void codeToTest() {
 				assertThat(driver.getParameter(name)).isSameAs(parameter);
 			}
 		}.run();
@@ -144,13 +134,11 @@ public class JAppletDriver_Test extends EDTSafeTestCase {
 		final boolean active = true;
 
 		new EasyMockTemplate(target()){
-			@Override
-      protected void expectations() {
+			@Override protected void expectations() {
 				expect(target.isActive()).andReturn(active);
 			}
 
-			@Override
-      protected void codeToTest() {
+			@Override protected void codeToTest() {
 				assertThat(driver.isActive());
 			}
 		}.run();
@@ -164,14 +152,12 @@ public class JAppletDriver_Test extends EDTSafeTestCase {
 		final String name = "applet";
 
 		new EasyMockTemplate(target()){
-			@Override
-      protected void expectations() {
+			@Override protected void expectations() {
 				expect(target.getAppletContext()).andReturn(context);
 				expect(context.getApplet(name)).andReturn(applet);
 			}
 
-			@Override
-      protected void codeToTest() {
+			@Override protected void codeToTest() {
 				replay(context);
 				replay(applet);
 				assertThat(driver.getApplet(name)).isSameAs(applet);
@@ -186,14 +172,12 @@ public class JAppletDriver_Test extends EDTSafeTestCase {
 		final Enumeration<Applet> applets = createMock(Enumeration.class);
 
 		new EasyMockTemplate(target()){
-			@Override
-      protected void expectations() {
+			@Override protected void expectations() {
 				expect(target.getAppletContext()).andReturn(context);
 				expect(context.getApplets()).andReturn(applets);
 			}
 
-			@Override
-      protected void codeToTest() {
+			@Override protected void codeToTest() {
 				replay(context);
 				replay(applets);
 				assertThat(driver.getApplets()).isSameAs(applets);

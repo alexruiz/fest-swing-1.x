@@ -33,8 +33,7 @@ public abstract class ContainerFixture_progressBar_TestCase extends RobotBasedTe
   ComponentContainerFixture fixture;
   MyWindow window;
 
-  @Override
-  protected final void onSetUp() {
+  @Override protected final void onSetUp() {
     window = MyWindow.createNew(getClass());
     fixture = new ConcreteContainerFixture(robot, window);
   }
@@ -54,8 +53,7 @@ public abstract class ContainerFixture_progressBar_TestCase extends RobotBasedTe
 
     static MyWindow createNew(final Class<?> testClass) {
       return execute(new GuiQuery<MyWindow>() {
-        @Override
-        protected MyWindow executeInEDT() {
+        @Override   protected MyWindow executeInEDT() {
           return new MyWindow(testClass);
         }
       });

@@ -39,8 +39,7 @@ public final class JTableHeaders {
     @RunsInEDT
     public JTableHeader createNew() {
       return execute(new GuiQuery<JTableHeader>() {
-        @Override
-        protected JTableHeader executeInEDT() {
+        @Override   protected JTableHeader executeInEDT() {
          return new JTableHeader();
         }
       });

@@ -35,23 +35,19 @@ public class JAppletFixtureTest extends ComponentFixture_Implementations_TestCas
   private JApplet target;
   private JAppletFixture fixture;
 
-  @Override
-  CommonComponentFixture fixture() {
+  @Override CommonComponentFixture fixture() {
     return fixture;
   }
 
-  @Override
-  ComponentDriver driver() {
+  @Override ComponentDriver driver() {
     return driver;
   }
 
-  @Override
-  JApplet target() {
+  @Override JApplet target() {
     return target;
   }
 
-  @Override
-  void onSetUp() {
+  @Override void onSetUp() {
     driver = createMock(JAppletDriver.class);
     target = applet().createNew();
     fixture = new JAppletFixture(robot(), target);

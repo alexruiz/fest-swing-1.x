@@ -36,8 +36,7 @@ public class DragAwareEventNormalizer_stopListening_Test extends DragAwareEventN
   private EventQueueStub eventQueue;
   private int mask;
 
-  @Override
-  @Before
+  @Override @Before
   public void setUp() {
     eventQueue = new EventQueueStub();
     toolkit = newToolkitStub();
@@ -55,14 +54,12 @@ public class DragAwareEventNormalizer_stopListening_Test extends DragAwareEventN
     };
     eventNormalizer.startListening(toolkit, delegateEventListenerMock(), mask);
     new EasyMockTemplate(dragAwareEventQueue) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         dragAwareEventQueue.pop();
         expectLastCall().once();
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         eventNormalizer.stopListening();
       }
     }.run();

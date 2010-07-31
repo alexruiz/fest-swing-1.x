@@ -55,8 +55,7 @@ public class ContainerFixtureJTabbedPaneLookupTest extends RobotBasedTestCase {
   @Test
   public void shouldFailIfJTabbedPaneCannotBeFoundByType() {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         window.remove(window.tabbedPane);
       }
     });
@@ -90,8 +89,7 @@ public class ContainerFixtureJTabbedPaneLookupTest extends RobotBasedTestCase {
   @Test
   public void shouldFindJTabbedPaneWithCustomMatcher() {
     JTabbedPaneFixture tabbedPane = fixture.tabbedPane(new GenericTypeMatcher<JTabbedPane>(JTabbedPane.class) {
-      @Override
-      protected boolean isMatching(JTabbedPane t) {
+      @Override protected boolean isMatching(JTabbedPane t) {
         return t.getTabCount() == 1;
       }
     });
@@ -106,8 +104,7 @@ public class ContainerFixtureJTabbedPaneLookupTest extends RobotBasedTestCase {
   public void shouldFailIfJTabbedPaneCannotBeFoundWithCustomMatcher() {
     try {
       fixture.tabbedPane(new GenericTypeMatcher<JTabbedPane>(JTabbedPane.class) {
-        @Override
-        protected boolean isMatching(JTabbedPane t) {
+        @Override   protected boolean isMatching(JTabbedPane t) {
           return false;
         }
       });
@@ -124,8 +121,7 @@ public class ContainerFixtureJTabbedPaneLookupTest extends RobotBasedTestCase {
 
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
-        @Override
-        protected MyWindow executeInEDT() {
+        @Override   protected MyWindow executeInEDT() {
           return new MyWindow();
         }
       });

@@ -34,8 +34,7 @@ final class JComboBoxSetSelectedIndexTask {
   @RunsInEDT
   static void setSelectedIndex(final JComboBox comboBox, final int index) {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         comboBox.setSelectedIndex(index);
       }
     });

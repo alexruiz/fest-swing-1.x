@@ -33,8 +33,7 @@ final class JProgressBarMinimumAndMaximumQuery {
   @RunsInEDT
   static Pair<Integer, Integer> minimumAndMaximumOf(final JProgressBar progressBar) {
     return execute(new GuiQuery<Pair<Integer, Integer>>() {
-      @Override
-      protected Pair<Integer, Integer> executeInEDT() {
+      @Override protected Pair<Integer, Integer> executeInEDT() {
         return new Pair<Integer, Integer>(progressBar.getMinimum(), progressBar.getMaximum());
       }
     });

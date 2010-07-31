@@ -33,8 +33,7 @@ final class JTextComponentSetTextTask {
   @RunsInEDT
   static void setTextIn(final JTextComponent textBox, final String text) {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         textBox.setText(text);
       }
     });

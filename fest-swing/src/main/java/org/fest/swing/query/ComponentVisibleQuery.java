@@ -41,8 +41,7 @@ public final class ComponentVisibleQuery {
   @RunsInEDT
   public static boolean isVisible(final Component component) {
     return execute(new GuiQuery<Boolean>() {
-      @Override
-      protected Boolean executeInEDT() {
+      @Override protected Boolean executeInEDT() {
         return component.isVisible();
       }
     });

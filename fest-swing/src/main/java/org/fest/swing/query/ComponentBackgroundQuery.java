@@ -41,8 +41,7 @@ public final class ComponentBackgroundQuery {
   @RunsInEDT
   public static Color backgroundOf(final Component component) {
     return execute(new GuiQuery<Color>() {
-      @Override
-      protected Color executeInEDT() {
+      @Override protected Color executeInEDT() {
         return component.getBackground();
       }
     });

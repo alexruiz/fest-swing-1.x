@@ -43,17 +43,13 @@ public class JToggleButtonFixture_textDisplay_Test extends TextDisplayFixture_Te
     target = toggleButton().createNew();
   }
 
-  @Override
-  void onSetUp() {
+  @Override void onSetUp() {
     driver = createMock(AbstractButtonDriver.class);
     fixture = new JToggleButtonFixture(robot(), target);
     fixture.driver(driver);
   }
 
-  @Override
-  AbstractButtonDriver driver() {  return driver; }
-  @Override
-  JToggleButton target() { return target; }
-  @Override
-  JToggleButtonFixture fixture() { return fixture; }
+  @Override AbstractButtonDriver driver() {  return driver; }
+  @Override JToggleButton target() { return target; }
+  @Override JToggleButtonFixture fixture() { return fixture; }
 }

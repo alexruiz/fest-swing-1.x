@@ -45,8 +45,7 @@ public class BasicJTableCellReader_fontAt_Test extends BasicJTableCellReader_Tes
   @RunsInEDT
   private static Font fontAt(final BasicJTableCellReader reader, final JTable table, final int row, final int column) {
     return execute(new GuiQuery<Font>() {
-      @Override
-      protected Font executeInEDT() {
+      @Override protected Font executeInEDT() {
         return reader.fontAt(table, row, column);
       }
     });

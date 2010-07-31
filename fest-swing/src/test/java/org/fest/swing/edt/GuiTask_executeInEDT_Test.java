@@ -34,8 +34,7 @@ public class GuiTask_executeInEDT_Test {
     final GuiTaskInEDT task = new GuiTaskInEDT();
     execute(task);
     pause(new Condition("Task is executed") {
-      @Override
-      public boolean test() {
+      @Override public boolean test() {
         return task.wasExecutedInEDT();
       }
     });
@@ -47,8 +46,7 @@ public class GuiTask_executeInEDT_Test {
 
     GuiTaskInEDT() {}
 
-    @Override
-    protected void executeInEDT() {
+    @Override   protected void executeInEDT() {
       executed = true;
     }
 

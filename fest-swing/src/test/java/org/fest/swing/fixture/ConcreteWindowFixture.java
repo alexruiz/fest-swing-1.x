@@ -54,10 +54,8 @@ class ConcreteWindowFixture extends WindowFixture<JFrame> {
     super(robot, target);
   }
 
-  @Override
-  public ConcreteWindowFixture show() { return this; }
-  @Override
-  public ConcreteWindowFixture show(Dimension size) { return this; }
+  @Override public ConcreteWindowFixture show() { return this; }
+  @Override public ConcreteWindowFixture show(Dimension size) { return this; }
   public void close() {}
   public ConcreteWindowFixture focus() { return this; }
   public ConcreteWindowFixture requireFocused() { return this; }

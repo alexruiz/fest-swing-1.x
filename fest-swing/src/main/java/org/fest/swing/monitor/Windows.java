@@ -109,8 +109,7 @@ class Windows {
   void markAsShowing(final Window w) {
 	  synchronized(lock) {
       final TimerTask task = new TimerTask() {
-        @Override
-        public void run() {
+        @Override   public void run() {
           markAsReady(w);
         }
       };

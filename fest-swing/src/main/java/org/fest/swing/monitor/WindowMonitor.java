@@ -129,8 +129,7 @@ public class WindowMonitor {
   @RunsInEDT
   private static class SingletonLazyLoader {
     static final WindowMonitor INSTANCE = execute(new GuiQuery<WindowMonitor>() {
-      @Override
-      protected WindowMonitor executeInEDT() throws Throwable {
+      @Override protected WindowMonitor executeInEDT() throws Throwable {
         return new WindowMonitor(Toolkit.getDefaultToolkit());
       }
     });

@@ -58,8 +58,7 @@ public class JScrollPaneDriver extends JComponentDriver {
   @RunsInEDT
   private static JScrollBar horizontalScrollBar(final JScrollPane scrollPane) {
     return execute(new GuiQuery<JScrollBar>() {
-      @Override
-      protected JScrollBar executeInEDT() {
+      @Override protected JScrollBar executeInEDT() {
         return scrollPane.getHorizontalScrollBar();
       }
     });
@@ -78,8 +77,7 @@ public class JScrollPaneDriver extends JComponentDriver {
   @RunsInEDT
   private static JScrollBar verticalScrollBar(final JScrollPane scrollPane) {
     return execute(new GuiQuery<JScrollBar>() {
-      @Override
-      protected JScrollBar executeInEDT() {
+      @Override protected JScrollBar executeInEDT() {
         return scrollPane.getVerticalScrollBar();
       }
     });

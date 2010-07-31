@@ -39,14 +39,12 @@ public class JListMatchingItemQuery_matchingItemIndex_Test extends JListMatching
   public void should_return_index_of_matching_item() {
     final TextMatcher matcher = mockTextMatcher();
     new EasyMockTemplate(matcher) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         expect(matcher.isMatching("Yoda")).andReturn(false);
         expect(matcher.isMatching("Luke")).andReturn(true);
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         assertThat(matchingItemIndex(matcher)).isEqualTo(1);
       }
     }.run();
@@ -56,14 +54,12 @@ public class JListMatchingItemQuery_matchingItemIndex_Test extends JListMatching
   public void should_return_negative_one_if_matching_item_not_found() {
     final TextMatcher matcher = mockTextMatcher();
     new EasyMockTemplate(matcher) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         expect(matcher.isMatching("Yoda")).andReturn(false);
         expect(matcher.isMatching("Luke")).andReturn(false);
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         assertThat(matchingItemIndex(matcher)).isEqualTo(-1);
       }
     }.run();
@@ -72,8 +68,7 @@ public class JListMatchingItemQuery_matchingItemIndex_Test extends JListMatching
   @RunsInEDT
   private int matchingItemIndex(final TextMatcher matcher) {
     return execute(new GuiQuery<Integer>() {
-      @Override
-      protected Integer executeInEDT() {
+      @Override protected Integer executeInEDT() {
         return JListMatchingItemQuery.matchingItemIndex(list, matcher, cellReader);
       }
     });

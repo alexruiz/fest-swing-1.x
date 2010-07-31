@@ -36,8 +36,7 @@ final class JListSelectionValueQuery {
   @RunsInEDT
   static Object singleSelectionValue(final JList list, final JListCellReader cellReader) {
     return execute(new GuiQuery<Object>() {
-      @Override
-      protected Object executeInEDT() {
+      @Override protected Object executeInEDT() {
         int selectedIndex = list.getSelectedIndex();
         return (selectedIndex >= 0) ? cellReader.valueAt(list, selectedIndex): NO_SELECTION_VALUE;
       }

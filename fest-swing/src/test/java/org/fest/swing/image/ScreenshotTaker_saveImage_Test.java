@@ -53,13 +53,11 @@ public class ScreenshotTaker_saveImage_Test {
   @Test
   public void should_throw_wrapped_Exception_thrown_when_writing_image_to_file() {
     new EasyMockTemplate(writer) {
-      @Override
-      protected void expectations() throws Throwable {
+      @Override protected void expectations() throws Throwable {
         expect(writer.writeAsPng(image, path)).andThrow(error);
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         try {
           taker.saveImage(image, path);
           failWhenExpectingException();

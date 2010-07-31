@@ -82,8 +82,7 @@ public abstract class JInternalFrameDriver_TestCase extends RobotBasedTestCase {
   @RunsInEDT
   private static boolean isMaximized(final JInternalFrame internalFrame) {
     return execute(new GuiQuery<Boolean>() {
-      @Override
-      protected Boolean executeInEDT() {
+      @Override protected Boolean executeInEDT() {
         return internalFrame.isMaximum();
       }
     });
@@ -97,8 +96,7 @@ public abstract class JInternalFrameDriver_TestCase extends RobotBasedTestCase {
   @RunsInEDT
   private static int zOrder(final JDesktopPane desktopPane, final JInternalFrame internalFrame) {
     return execute(new GuiQuery<Integer>() {
-      @Override
-      protected Integer executeInEDT() {
+      @Override protected Integer executeInEDT() {
         return desktopPane.getComponentZOrder(internalFrame);
       }
     });
@@ -113,8 +111,7 @@ public abstract class JInternalFrameDriver_TestCase extends RobotBasedTestCase {
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
-        @Override
-        protected MyWindow executeInEDT() {
+        @Override   protected MyWindow executeInEDT() {
           return new MyWindow();
         }
       });

@@ -34,14 +34,12 @@ public class JTreeFixture_clickRow_withMouseButton_Test extends JTreeFixture_Tes
     final int row = 6;
     final MouseButton button = MIDDLE_BUTTON;
     new EasyMockTemplate(driver()) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         driver().clickRow(target(), row, button);
         expectLastCall().once();
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         assertThatReturnsSelf(fixture().clickRow(row, button));
       }
     }.run();

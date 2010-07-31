@@ -20,8 +20,7 @@ final class JMenuPopupMenuQuery {
   @RunsInEDT
   static JPopupMenu popupMenuOf(final JMenu menu) {
     return execute(new GuiQuery<JPopupMenu>() {
-      @Override
-      protected JPopupMenu executeInEDT() {
+      @Override protected JPopupMenu executeInEDT() {
         return menu.getPopupMenu();
       }
     });

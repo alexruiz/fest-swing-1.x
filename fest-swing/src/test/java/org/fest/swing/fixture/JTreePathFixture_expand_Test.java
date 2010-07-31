@@ -30,13 +30,11 @@ public class JTreePathFixture_expand_Test extends JTreePathFixture_withMockTree_
   @Test
   public void should_expand_node() {
     new EasyMockTemplate(tree) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         expect(tree.expandPath(path)).andReturn(tree);
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         assertThatReturnsSelf(fixture.expand());
       }
     }.run();

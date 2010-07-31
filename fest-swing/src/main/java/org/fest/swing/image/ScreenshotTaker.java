@@ -129,8 +129,7 @@ public class ScreenshotTaker {
   @RunsInEDT
   private static JTextComponent findFocusOwnerAndHideItsCaret() {
     return execute(new GuiQuery<JTextComponent>() {
-      @Override
-      protected JTextComponent executeInEDT() {
+      @Override protected JTextComponent executeInEDT() {
         Component focusOwner = focusOwner();
         if (!(focusOwner instanceof JTextComponent)) return null;
         JTextComponent textComponent = (JTextComponent)focusOwner;
@@ -144,8 +143,7 @@ public class ScreenshotTaker {
 
   private static BufferedImage takeScreenshot(final Robot robot, final Rectangle r) {
     return execute(new GuiQuery<BufferedImage>() {
-      @Override
-      protected BufferedImage executeInEDT() {
+      @Override protected BufferedImage executeInEDT() {
         return robot.createScreenCapture(r);
       }
     });
@@ -160,8 +158,7 @@ public class ScreenshotTaker {
   @RunsInEDT
   private static void showCaretOf(final JTextComponent textComponent) {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         Caret caret = textComponent.getCaret();
         if (caret != null) caret.setVisible(true);
       }

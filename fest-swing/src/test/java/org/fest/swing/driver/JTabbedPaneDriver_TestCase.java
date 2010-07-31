@@ -69,8 +69,7 @@ public abstract class JTabbedPaneDriver_TestCase extends RobotBasedTestCase {
   @RunsInEDT
   private static int selectedIndexIn(final JTabbedPane tabbedPane) {
     return execute(new GuiQuery<Integer>() {
-      @Override
-      protected Integer executeInEDT() {
+      @Override protected Integer executeInEDT() {
         return tabbedPane.getSelectedIndex();
       }
     });
@@ -84,8 +83,7 @@ public abstract class JTabbedPaneDriver_TestCase extends RobotBasedTestCase {
     @RunsInEDT
     static MyWindow createNew(final Class<?> testClass) {
       return execute(new GuiQuery<MyWindow>() {
-        @Override
-        protected MyWindow executeInEDT() {
+        @Override   protected MyWindow executeInEDT() {
           return new MyWindow(testClass);
         }
       });

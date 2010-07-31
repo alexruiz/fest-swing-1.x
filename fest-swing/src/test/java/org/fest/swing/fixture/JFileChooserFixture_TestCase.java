@@ -41,17 +41,13 @@ public abstract class JFileChooserFixture_TestCase extends ComponentFixture_Impl
     target = fileChooser().createNew();
   }
 
-  @Override
-  final void onSetUp() {
+  @Override final void onSetUp() {
     driver = createMock(JFileChooserDriver.class);
     fixture = new JFileChooserFixture(robot(), target);
     fixture.driver(driver);
   }
 
-  @Override
-  final JFileChooserDriver driver() {  return driver; }
-  @Override
-  final JFileChooser target() { return target; }
-  @Override
-  final JFileChooserFixture fixture() { return fixture; }
+  @Override final JFileChooserDriver driver() {  return driver; }
+  @Override final JFileChooser target() { return target; }
+  @Override final JFileChooserFixture fixture() { return fixture; }
 }

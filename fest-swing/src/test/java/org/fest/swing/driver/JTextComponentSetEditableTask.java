@@ -34,8 +34,7 @@ final class JTextComponentSetEditableTask {
   @RunsInEDT
   static void setTextFieldEditable(final JTextField textField, final boolean editable) {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         textField.setEditable(editable);
       }
     });

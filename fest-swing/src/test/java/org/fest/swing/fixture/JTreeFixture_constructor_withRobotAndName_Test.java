@@ -68,8 +68,7 @@ public class JTreeFixture_constructor_withRobotAndName_Test extends RobotBasedTe
 
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
-        @Override
-        protected MyWindow executeInEDT() {
+        @Override   protected MyWindow executeInEDT() {
           return new MyWindow();
         }
       });

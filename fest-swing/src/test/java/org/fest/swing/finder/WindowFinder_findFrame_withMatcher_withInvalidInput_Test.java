@@ -49,8 +49,7 @@ public class WindowFinder_findFrame_withMatcher_withInvalidInput_Test {
       super(JFrame.class);
     }
 
-    @Override
-    protected boolean isMatching(JFrame frame) {
+    @Override   protected boolean isMatching(JFrame frame) {
       return false;
     }
   }

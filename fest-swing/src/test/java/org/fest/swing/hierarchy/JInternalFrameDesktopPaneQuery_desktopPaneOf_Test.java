@@ -55,8 +55,7 @@ public class JInternalFrameDesktopPaneQuery_desktopPaneOf_Test extends Sequentia
   @RunsInEDT
   private static JDesktopPane setNullIconAndReturnDesktopPane(final JInternalFrame internalFrame) {
     JDesktopPane desktopPane = execute(new GuiQuery<JDesktopPane>() {
-      @Override
-      protected JDesktopPane executeInEDT() {
+      @Override protected JDesktopPane executeInEDT() {
         internalFrame.setDesktopIcon(null);
         return JInternalFrameDesktopPaneQuery.desktopPaneOf(internalFrame);
       }
@@ -73,8 +72,7 @@ public class JInternalFrameDesktopPaneQuery_desktopPaneOf_Test extends Sequentia
   @RunsInEDT
   private static JDesktopPane desktopPaneOf(final JInternalFrame internalFrame) {
     return execute(new GuiQuery<JDesktopPane>() {
-      @Override
-      protected JDesktopPane executeInEDT() {
+      @Override protected JDesktopPane executeInEDT() {
         return JInternalFrameDesktopPaneQuery.desktopPaneOf(internalFrame);
       }
     });

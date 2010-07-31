@@ -36,13 +36,11 @@ public class JTreeRowFixture_ItemFixture_Test extends JTreeRowFixture_withMockTr
   @Test
   public void should_select_item() {
     new EasyMockTemplate(tree) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         expect(tree.selectRow(row)).andReturn(tree);
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         assertThatReturnsSelf(fixture.select());
       }
     }.run();
@@ -51,13 +49,11 @@ public class JTreeRowFixture_ItemFixture_Test extends JTreeRowFixture_withMockTr
   @Test
   public void should_click_item() {
     new EasyMockTemplate(tree) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         expect(tree.clickRow(row)).andReturn(tree);
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         assertThatReturnsSelf(fixture.click());
       }
     }.run();
@@ -66,13 +62,11 @@ public class JTreeRowFixture_ItemFixture_Test extends JTreeRowFixture_withMockTr
   @Test
   public void should_click_item_with_MouseButton() {
     new EasyMockTemplate(tree) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         expect(tree.clickRow(row, MIDDLE_BUTTON)).andReturn(tree);
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         assertThatReturnsSelf(fixture.click(MIDDLE_BUTTON));
       }
     }.run();
@@ -82,13 +76,11 @@ public class JTreeRowFixture_ItemFixture_Test extends JTreeRowFixture_withMockTr
   public void should_click_item_using_MouseClickInfo() {
     final MouseClickInfo mouseClickInfo = leftButton();
     new EasyMockTemplate(tree) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         expect(tree.clickRow(row, mouseClickInfo)).andReturn(tree);
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         assertThatReturnsSelf(fixture.click(mouseClickInfo));
       }
     }.run();
@@ -97,13 +89,11 @@ public class JTreeRowFixture_ItemFixture_Test extends JTreeRowFixture_withMockTr
   @Test
   public void should_double_click_item() {
     new EasyMockTemplate(tree) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         expect(tree.doubleClickRow(row)).andReturn(tree);
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         assertThatReturnsSelf(fixture.doubleClick());
       }
     }.run();
@@ -112,13 +102,11 @@ public class JTreeRowFixture_ItemFixture_Test extends JTreeRowFixture_withMockTr
   @Test
   public void should_right_click_item() {
     new EasyMockTemplate(tree) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         expect(tree.rightClickRow(row)).andReturn(tree);
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         assertThatReturnsSelf(fixture.rightClick());
       }
     }.run();
@@ -127,13 +115,11 @@ public class JTreeRowFixture_ItemFixture_Test extends JTreeRowFixture_withMockTr
   @Test
   public void should_drag_item() {
     new EasyMockTemplate(tree) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         expect(tree.drag(row)).andReturn(tree);
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         assertThatReturnsSelf(fixture.drag());
       }
     }.run();
@@ -142,13 +128,11 @@ public class JTreeRowFixture_ItemFixture_Test extends JTreeRowFixture_withMockTr
   @Test
   public void should_drop_item() {
     new EasyMockTemplate(tree) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         expect(tree.drop(row)).andReturn(tree);
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         assertThatReturnsSelf(fixture.drop());
       }
     }.run();
@@ -158,13 +142,11 @@ public class JTreeRowFixture_ItemFixture_Test extends JTreeRowFixture_withMockTr
   public void should_return_item_contents() {
     final String text = "hello";
     new EasyMockTemplate(tree) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         expect(tree.valueAt(row)).andReturn(text);
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         String value = fixture.value();
         assertThat(value).isEqualTo(text);
       }
@@ -175,13 +157,11 @@ public class JTreeRowFixture_ItemFixture_Test extends JTreeRowFixture_withMockTr
   public void should_show_popup_menu_at_item() {
     final JPopupMenuFixture popupMenu = createMock(JPopupMenuFixture.class);
     new EasyMockTemplate(tree) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         expect(tree.showPopupMenuAt(row)).andReturn(popupMenu);
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         assertThat(fixture.showPopupMenu()).isSameAs(popupMenu);
       }
     }.run();

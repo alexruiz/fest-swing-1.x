@@ -42,16 +42,12 @@ public class GenericComponentFixture_keyboardInput_Test extends KeyboardInputSim
     target = button().createNew();
   }
 
-  @Override
-  void onSetUp() {
+  @Override void onSetUp() {
     driver = createMock(ComponentDriver.class);
     fixture = new GenericComponentFixture<Component>(robot(), driver, target) {};
   }
 
-  @Override
-  ComponentDriver driver() { return driver; }
-  @Override
-  Component target() { return target; }
-  @Override
-  CommonComponentFixture fixture() { return fixture; }
+  @Override ComponentDriver driver() { return driver; }
+  @Override Component target() { return target; }
+  @Override CommonComponentFixture fixture() { return fixture; }
 }

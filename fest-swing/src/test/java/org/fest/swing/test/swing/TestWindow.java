@@ -47,8 +47,7 @@ public class TestWindow extends JFrame {
   @RunsInEDT
   public static TestWindow createAndShowNewWindow(final Class<?> testClass) {
     TestWindow w = execute(new GuiQuery<TestWindow>() {
-      @Override
-      protected TestWindow executeInEDT() {
+      @Override protected TestWindow executeInEDT() {
         TestWindow window = createInCurrentThread(testClass);
         TestWindow.display(window);
         return window;
@@ -67,8 +66,7 @@ public class TestWindow extends JFrame {
   @RunsInEDT
   public static TestWindow createNewWindow(final Class<?> testClass) {
     return execute(new GuiQuery<TestWindow>() {
-      @Override
-      protected TestWindow executeInEDT() {
+      @Override protected TestWindow executeInEDT() {
         return createInCurrentThread(testClass);
       }
     });
@@ -113,8 +111,7 @@ public class TestWindow extends JFrame {
   @RunsInEDT
   public void display() {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         display(TestWindow.this);
       }
     });
@@ -146,8 +143,7 @@ public class TestWindow extends JFrame {
   @RunsInEDT
   public void display(final Dimension preferredSize) {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         display(TestWindow.this, preferredSize);
       }
     });
@@ -184,8 +180,7 @@ public class TestWindow extends JFrame {
   @RunsInEDT
   public void destroy() {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         destroy(TestWindow.this);
       }
     });

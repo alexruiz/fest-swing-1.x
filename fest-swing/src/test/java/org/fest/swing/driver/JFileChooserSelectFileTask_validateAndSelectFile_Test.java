@@ -65,8 +65,7 @@ public class JFileChooserSelectFileTask_validateAndSelectFile_Test extends Robot
   @RunsInEDT
   private static File selectedFileOf(final JFileChooser fileChooser) {
     return execute(new GuiQuery<File>() {
-      @Override
-      protected File executeInEDT() {
+      @Override protected File executeInEDT() {
         return fileChooser.getSelectedFile();
       }
     });
@@ -78,8 +77,7 @@ public class JFileChooserSelectFileTask_validateAndSelectFile_Test extends Robot
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
-        @Override
-        protected MyWindow executeInEDT() {
+        @Override   protected MyWindow executeInEDT() {
           return new MyWindow();
         }
       });

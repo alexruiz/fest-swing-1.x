@@ -35,8 +35,7 @@ final class JTableStopCellEditingTask {
   @RunsInEDT
   static void stopEditing(final TableCellEditor cellEditor) {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         doStopCellEditing(cellEditor);
       }
     });
@@ -45,8 +44,7 @@ final class JTableStopCellEditingTask {
   @RunsInEDT
   static void stopEditing(final JTable table, final int row, final int column) {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         doStopCellEditing(table, row, column);
       }
     });
@@ -55,8 +53,7 @@ final class JTableStopCellEditingTask {
   @RunsInEDT
   static void validateAndStopEditing(final JTable table, final int row, final int column) {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         validateIndices(table, row, column);
         validateCellIsEditable(table, row, column);
         doStopCellEditing(table, row, column);

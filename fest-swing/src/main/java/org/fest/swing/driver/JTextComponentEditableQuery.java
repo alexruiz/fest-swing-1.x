@@ -34,8 +34,7 @@ final class JTextComponentEditableQuery {
   @RunsInEDT
   static boolean isEditable(final JTextComponent textBox) {
     return execute(new GuiQuery<Boolean>() {
-      @Override
-      protected Boolean executeInEDT() {
+      @Override protected Boolean executeInEDT() {
         return textBox.isEditable();
       }
     });

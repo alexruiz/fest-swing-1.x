@@ -23,7 +23,8 @@ import static org.fest.util.Strings.concat;
 
 import javax.swing.JTable;
 
-import org.fest.swing.annotation.*;
+import org.fest.swing.annotation.RunsInCurrentThread;
+import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.cell.JTableCellReader;
 import org.fest.swing.edt.GuiQuery;
 import org.fest.swing.exception.ActionFailedException;
@@ -127,8 +128,7 @@ public class TableCellInRowByValue implements TableCellFinder {
   @RunsInEDT
   private static int findRowIndex(final JTable table, final JTableCellReader cellReader, final String[] values) {
     return execute(new GuiQuery<Integer>() {
-      @Override
-      protected Integer executeInEDT() {
+      @Override protected Integer executeInEDT() {
         validateEqualSize(table, values);
         int rowCount = table.getRowCount();
         for (int row = 0; row < rowCount; row++)

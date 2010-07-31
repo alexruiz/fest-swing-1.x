@@ -136,8 +136,7 @@ public class JFileChooserDriver_selectFiles_Test extends JFileChooserDriver_Test
   @RunsInEDT
   private static void setMultipleSelectionEnabled(final JFileChooser fileChooser, final boolean b) {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         fileChooser.setMultiSelectionEnabled(b);
       }
     });
@@ -146,8 +145,7 @@ public class JFileChooserDriver_selectFiles_Test extends JFileChooserDriver_Test
   @RunsInEDT
   private static File[] selectedFilesIn(final JFileChooser fileChooser) {
     return execute(new GuiQuery<File[]>() {
-      @Override
-      protected File[] executeInEDT() {
+      @Override protected File[] executeInEDT() {
         return fileChooser.getSelectedFiles();
       }
     });

@@ -44,13 +44,11 @@ public class ComponentDriver_settings_Test {
   public void should_return_settings_from_Robot() {
     final Settings settings = new Settings();
     new EasyMockTemplate(robot) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         expect(robot.settings()).andReturn(settings);
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         assertThat(driver.settings()).isSameAs(settings);
       }
     }.run();

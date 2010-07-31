@@ -34,14 +34,12 @@ public class JProgressBarFixture_waitUntilValueIs_withTimeout_Test extends JProg
     final int value = 6;
     final Timeout timeout = timeout(100);
     new EasyMockTemplate(driver()) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         driver().waitUntilValueIs(target(), value, timeout);
         expectLastCall().once();
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         assertThatReturnsSelf(fixture().waitUntilValueIs(value, timeout));
       }
     }.run();

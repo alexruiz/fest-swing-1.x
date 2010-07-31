@@ -32,8 +32,7 @@ final class JProgressBarSetValueTask {
   @RunsInEDT
   static void setValue(final JProgressBar progressBar, final int value) {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         progressBar.setValue(value);
       }
     });

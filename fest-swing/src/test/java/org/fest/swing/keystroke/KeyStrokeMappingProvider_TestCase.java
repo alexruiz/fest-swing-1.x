@@ -81,8 +81,7 @@ public abstract class KeyStrokeMappingProvider_TestCase extends RobotBasedTestCa
     pressInTextArea();
     final String expectedText = valueOf(expectedChar);
     pause(new Condition(concat("text in JTextArea to be ", quote(expectedText))) {
-      @Override
-      public boolean test() {
+      @Override public boolean test() {
         return expectedText.equals(textArea.getText());
       }
     }, 500);
@@ -100,8 +99,7 @@ public abstract class KeyStrokeMappingProvider_TestCase extends RobotBasedTestCa
     final KeyRecorder recorder = KeyRecorder.attachTo(textArea);
     pressInTextArea();
     pause(new Condition(concat("key with code ", expectedKey, " is pressed")) {
-      @Override
-      public boolean test() {
+      @Override public boolean test() {
         return recorder.keysWerePressed(expectedKey);
       }
     }, 2000);
@@ -124,8 +122,7 @@ public abstract class KeyStrokeMappingProvider_TestCase extends RobotBasedTestCa
     @RunsInEDT
     static MyWindow createNew(final Class<?> testClass) {
       return GuiActionRunner.execute(new GuiQuery<MyWindow>() {
-        @Override
-        protected MyWindow executeInEDT() {
+        @Override   protected MyWindow executeInEDT() {
           return new MyWindow(testClass);
         }
       });

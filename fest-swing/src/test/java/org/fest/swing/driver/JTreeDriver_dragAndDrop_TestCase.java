@@ -39,8 +39,7 @@ public abstract class JTreeDriver_dragAndDrop_TestCase extends JTreeDriver_TestC
   @RunsInEDT
   @Override final void extraSetUp() {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         dropTree = new TestTree(new DefaultTreeModel(node("root")));
         window.add(decorate(dropTree));
       }

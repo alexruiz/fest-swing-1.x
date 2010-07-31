@@ -51,14 +51,12 @@ public class JToolBarFixture_unfloat_withConstraint_Test extends JToolBarFixture
   @Test
   public void should_unfloat_using_giving_constraint() {
     new EasyMockTemplate(driver()) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         driver().unfloat(target(), constraint.value);
         expectLastCall().once();
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         assertThatReturnsSelf(fixture().unfloat(constraint));
       }
     }.run();

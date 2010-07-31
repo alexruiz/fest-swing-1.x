@@ -52,8 +52,7 @@ public final class JLabels {
     @RunsInEDT
     public JLabel createNew() {
       return execute(new GuiQuery<JLabel>() {
-        @Override
-        protected JLabel executeInEDT() {
+        @Override   protected JLabel executeInEDT() {
           JLabel label = new JLabel();
           label.setName(name);
           label.setText(text);

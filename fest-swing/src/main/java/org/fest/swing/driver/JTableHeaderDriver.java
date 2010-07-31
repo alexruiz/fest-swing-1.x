@@ -173,8 +173,7 @@ public class JTableHeaderDriver extends JComponentDriver {
   private static Point pointAtIndex(final JTableHeader tableHeader, final int columnIndex,
       final JTableHeaderLocation location) {
     return execute(new GuiQuery<Point>() {
-      @Override
-      protected Point executeInEDT() {
+      @Override protected Point executeInEDT() {
         Point p = location.pointAt(tableHeader, columnIndex);
         validateIsEnabledAndShowing(tableHeader);
         tableHeader.getTable().scrollRectToVisible(tableHeader.getHeaderRect(columnIndex));
@@ -217,8 +216,7 @@ public class JTableHeaderDriver extends JComponentDriver {
   private static Point pointAtName(final JTableHeader tableHeader, final TextMatcher matcher,
       final JTableHeaderLocation location) {
     return execute(new GuiQuery<Point>() {
-      @Override
-      protected Point executeInEDT() {
+      @Override protected Point executeInEDT() {
         Pair<Integer, Point> indexAndLocation = location.pointAt(tableHeader, matcher);
         validateIsEnabledAndShowing(tableHeader);
         tableHeader.getTable().scrollRectToVisible(tableHeader.getHeaderRect(indexAndLocation.i));

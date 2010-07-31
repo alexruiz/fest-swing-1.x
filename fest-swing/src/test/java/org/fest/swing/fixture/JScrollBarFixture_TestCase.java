@@ -41,17 +41,13 @@ public abstract class JScrollBarFixture_TestCase extends ComponentFixture_Implem
     target = scrollBar().createNew();
   }
 
-  @Override
-  final void onSetUp() {
+  @Override final void onSetUp() {
     driver = createMock(JScrollBarDriver.class);
     fixture = new JScrollBarFixture(robot(), target);
     fixture.driver(driver);
   }
 
-  @Override
-  final JScrollBarDriver driver() {  return driver; }
-  @Override
-  final JScrollBar target() { return target; }
-  @Override
-  final JScrollBarFixture fixture() { return fixture; }
+  @Override final JScrollBarDriver driver() {  return driver; }
+  @Override final JScrollBar target() { return target; }
+  @Override final JScrollBarFixture fixture() { return fixture; }
 }

@@ -59,8 +59,7 @@ public class FEST293_TableCellInRowByValueMatchesAnything_Test extends RobotBase
 
     static MyWindow createNew() {
       return GuiActionRunner.execute(new GuiQuery<MyWindow>() {
-        @Override
-        protected MyWindow executeInEDT() {
+        @Override   protected MyWindow executeInEDT() {
           return new MyWindow();
         }
       });

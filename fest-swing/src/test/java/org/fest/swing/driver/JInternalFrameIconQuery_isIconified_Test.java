@@ -82,8 +82,7 @@ public class JInternalFrameIconQuery_isIconified_Test extends RobotBasedTestCase
   @RunsInEDT
   private static boolean isIconified(final JInternalFrame internalFrame) {
     return execute(new GuiQuery<Boolean>() {
-      @Override
-      protected Boolean executeInEDT() {
+      @Override protected Boolean executeInEDT() {
         return JInternalFrameIconQuery.isIconified(internalFrame);
       }
     });
@@ -92,8 +91,7 @@ public class JInternalFrameIconQuery_isIconified_Test extends RobotBasedTestCase
   @RunsInEDT
   private static void setIconAndMaximum(final JInternalFrame internalFrame, final boolean icon, final boolean maximum) {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() throws PropertyVetoException {
+      @Override protected void executeInEDT() throws PropertyVetoException {
         internalFrame.setIcon(icon);
         internalFrame.setMaximum(maximum);
       }

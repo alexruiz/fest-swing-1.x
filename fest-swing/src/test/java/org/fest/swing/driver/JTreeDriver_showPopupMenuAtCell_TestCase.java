@@ -38,8 +38,7 @@ public abstract class JTreeDriver_showPopupMenuAtCell_TestCase extends JTreeDriv
   @RunsInEDT
   @Override void extraSetUp() {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         popupMenu = new JPopupMenu();
         popupMenu.add(new JMenuItem("Hello"));
         tree.addMouseListener(new Listener(popupMenu));

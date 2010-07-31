@@ -57,8 +57,7 @@ public class JTreeToggleExpandStateTask_toggleExpandState_Test extends RobotBase
   @RunsInEDT
   private static void toggleExpandState(final JTree tree, final TreePath rootPath) {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         Rectangle pathBounds = tree.getPathBounds(rootPath);
         Point p = new Point(pathBounds.x + pathBounds.width / 2, pathBounds.y + pathBounds.height / 2);
         JTreeToggleExpandStateTask.toggleExpandState(tree, p);
@@ -80,8 +79,7 @@ public class JTreeToggleExpandStateTask_toggleExpandState_Test extends RobotBase
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
-        @Override
-        protected MyWindow executeInEDT() {
+        @Override   protected MyWindow executeInEDT() {
           return new MyWindow();
         }
       });

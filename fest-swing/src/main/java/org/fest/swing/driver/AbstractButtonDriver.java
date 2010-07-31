@@ -116,8 +116,7 @@ public class AbstractButtonDriver extends JComponentDriver implements TextDispla
   @RunsInEDT
   private static boolean validateAndFindIsSelected(final AbstractButton button) {
     return execute(new GuiQuery<Boolean>() {
-      @Override
-      protected Boolean executeInEDT() {
+      @Override protected Boolean executeInEDT() {
         validateIsEnabledAndShowing(button);
         return button.isSelected();
       }

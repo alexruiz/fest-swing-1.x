@@ -100,8 +100,7 @@ public class TableCellByColumnId implements TableCellFinder {
   @RunsInEDT
   private static TableCell findCell(final JTable table, final int row, final Object columnId) {
     return execute(new GuiQuery<TableCell>() {
-      @Override
-      protected TableCell executeInEDT() {
+      @Override protected TableCell executeInEDT() {
         int column = columnIndexByIdentifier(table, columnId);
         if (column == -1) failColumnIndexNotFound(columnId);
         table.convertColumnIndexToView(table.getColumn(columnId).getModelIndex());

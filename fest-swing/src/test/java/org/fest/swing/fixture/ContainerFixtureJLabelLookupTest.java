@@ -53,8 +53,7 @@ public class ContainerFixtureJLabelLookupTest extends RobotBasedTestCase {
   @Test
   public void shouldFailIfJLabelCannotBeFoundByType() {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         window.remove(window.label);
       }
     });
@@ -88,8 +87,7 @@ public class ContainerFixtureJLabelLookupTest extends RobotBasedTestCase {
   @Test
   public void shouldFindJLabelWithCustomMatcher() {
     JLabelFixture label = fixture.label(new GenericTypeMatcher<JLabel>(JLabel.class) {
-      @Override
-      protected boolean isMatching(JLabel l) {
+      @Override protected boolean isMatching(JLabel l) {
         return "Read Me".equals(l.getText());
       }
     });
@@ -104,8 +102,7 @@ public class ContainerFixtureJLabelLookupTest extends RobotBasedTestCase {
   public void shouldFailIfJLabelCannotBeFoundWithCustomMatcher() {
     try {
       fixture.label(new GenericTypeMatcher<JLabel>(JLabel.class) {
-        @Override
-        protected boolean isMatching(JLabel l) {
+        @Override   protected boolean isMatching(JLabel l) {
           return false;
         }
       });
@@ -122,8 +119,7 @@ public class ContainerFixtureJLabelLookupTest extends RobotBasedTestCase {
 
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
-        @Override
-        protected MyWindow executeInEDT() {
+        @Override   protected MyWindow executeInEDT() {
           return new MyWindow();
         }
       });

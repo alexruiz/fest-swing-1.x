@@ -36,8 +36,7 @@ public class JFileChooserLauncherWindow extends TestWindow {
   @RunsInEDT
   public static JFileChooserLauncherWindow createNew(final Class<?> testClass) {
     return execute(new GuiQuery<JFileChooserLauncherWindow>() {
-      @Override
-      protected JFileChooserLauncherWindow executeInEDT() {
+      @Override protected JFileChooserLauncherWindow executeInEDT() {
         return new JFileChooserLauncherWindow(testClass);
       }
     });

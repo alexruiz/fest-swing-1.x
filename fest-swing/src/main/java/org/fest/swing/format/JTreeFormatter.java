@@ -48,8 +48,7 @@ public class JTreeFormatter extends ComponentFormatterTemplate {
    * @param c the given {@code Component}.
    * @return the <code>String</code> representation of the given <code>JTree</code>.
    */
-  @Override
-  protected String doFormat(Component c) {
+  @Override protected String doFormat(Component c) {
     JTree tree = (JTree)c;
     return concat(
         tree.getClass().getName(), "[",

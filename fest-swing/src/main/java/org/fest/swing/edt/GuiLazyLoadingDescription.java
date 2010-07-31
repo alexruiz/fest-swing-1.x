@@ -34,8 +34,7 @@ public abstract class GuiLazyLoadingDescription implements Description {
    */
   public final String value() {
     return execute(new GuiQuery<String>() {
-      @Override
-      protected String executeInEDT() {
+      @Override protected String executeInEDT() {
         return loadDescription();
       }
     });

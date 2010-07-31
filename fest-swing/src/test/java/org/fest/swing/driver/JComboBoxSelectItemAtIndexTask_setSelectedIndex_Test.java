@@ -55,8 +55,7 @@ public class JComboBoxSelectItemAtIndexTask_setSelectedIndex_Test extends RobotB
   @RunsInEDT
   private static int selectedIndexOf(final JComboBox comboBox) {
     return execute(new GuiQuery<Integer>() {
-      @Override
-      protected Integer executeInEDT() {
+      @Override protected Integer executeInEDT() {
         return comboBox.getSelectedIndex();
       }
     });
@@ -70,8 +69,7 @@ public class JComboBoxSelectItemAtIndexTask_setSelectedIndex_Test extends RobotB
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
-        @Override
-        protected MyWindow executeInEDT() {
+        @Override   protected MyWindow executeInEDT() {
           return new MyWindow();
         }
       });

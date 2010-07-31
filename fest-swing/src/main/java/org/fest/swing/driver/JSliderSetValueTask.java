@@ -31,8 +31,7 @@ final class JSliderSetValueTask {
 
   static void setValue(final JSlider slider, final int newValue) {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         slider.setValue(newValue);
       }
     });

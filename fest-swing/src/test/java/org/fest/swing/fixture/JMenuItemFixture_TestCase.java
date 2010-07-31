@@ -41,17 +41,13 @@ public abstract class JMenuItemFixture_TestCase extends ComponentFixture_Impleme
     target = menuItem().createNew();
   }
 
-  @Override
-  final void onSetUp() {
+  @Override final void onSetUp() {
     driver = createMock(JMenuItemDriver.class);
     fixture = new JMenuItemFixture(robot(), target);
     fixture.driver(driver);
   }
 
-  @Override
-  final JMenuItemDriver driver() {  return driver; }
-  @Override
-  final JMenuItem target() { return target; }
-  @Override
-  final JMenuItemFixture fixture() { return fixture; }
+  @Override final JMenuItemDriver driver() {  return driver; }
+  @Override final JMenuItem target() { return target; }
+  @Override final JMenuItemFixture fixture() { return fixture; }
 }

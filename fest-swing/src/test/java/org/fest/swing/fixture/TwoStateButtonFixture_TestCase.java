@@ -32,23 +32,19 @@ import org.junit.Test;
 public abstract class TwoStateButtonFixture_TestCase<T extends AbstractButton> extends
     ComponentFixture_Implementations_TestCase<T> {
 
-  @Override
-  abstract AbstractButtonDriver driver();
+  @Override abstract AbstractButtonDriver driver();
 
-  @Override
-  abstract TwoStateButtonFixture fixture();
+  @Override abstract TwoStateButtonFixture fixture();
 
   @Test
   public void should_require_not_selected() {
     new EasyMockTemplate(driver()) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         driver().requireNotSelected(target());
         expectLastCall().once();
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         assertThatReturnsSelf(fixture().requireNotSelected());
       }
     }.run();
@@ -57,14 +53,12 @@ public abstract class TwoStateButtonFixture_TestCase<T extends AbstractButton> e
   @Test
   public void should_require_selected() {
     new EasyMockTemplate(driver()) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         driver().requireSelected(target());
         expectLastCall().once();
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         assertThatReturnsSelf(fixture().requireSelected());
       }
     }.run();

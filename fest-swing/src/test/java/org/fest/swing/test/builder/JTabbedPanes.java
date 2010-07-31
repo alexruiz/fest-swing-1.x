@@ -70,8 +70,7 @@ public final class JTabbedPanes {
     @RunsInEDT
     public JTabbedPane createNew() {
       return execute(new GuiQuery<JTabbedPane>() {
-        @Override
-        protected JTabbedPane executeInEDT() {
+        @Override   protected JTabbedPane executeInEDT() {
           JTabbedPane tabbedPane = new JTabbedPane();
           tabbedPane.setName(name);
           if (!isEmpty(tabs))
@@ -95,8 +94,7 @@ public final class JTabbedPanes {
     @RunsInEDT
     private static JPanel createPanel() {
       return execute(new GuiQuery<JPanel>() {
-        @Override
-        protected JPanel executeInEDT() {
+        @Override   protected JPanel executeInEDT() {
           return new JPanel();
         }
       });

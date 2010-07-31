@@ -52,8 +52,7 @@ public class Bug116_scrollToItemToSelectInJComboBox_Test extends RobotBasedTestC
   @RunsInEDT
   private static int selectedIndexOf(final JComboBox comboBox) {
     return execute(new GuiQuery<Integer>() {
-      @Override
-      protected Integer executeInEDT() {
+      @Override protected Integer executeInEDT() {
         return comboBox.getSelectedIndex();
       }
     });
@@ -65,8 +64,7 @@ public class Bug116_scrollToItemToSelectInJComboBox_Test extends RobotBasedTestC
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
-        @Override
-        protected MyWindow executeInEDT() {
+        @Override   protected MyWindow executeInEDT() {
           return new MyWindow();
         }
       });

@@ -54,8 +54,7 @@ public class ContainerFixtureJSliderLookupTest extends RobotBasedTestCase {
   @Test
   public void shouldFailIfJSliderCannotBeFoundByType() {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         window.remove(window.slider);
       }
     });
@@ -89,8 +88,7 @@ public class ContainerFixtureJSliderLookupTest extends RobotBasedTestCase {
   @Test
   public void shouldFindJSliderWithCustomMatcher() {
     JSliderFixture slider = fixture.slider(new GenericTypeMatcher<JSlider>(JSlider.class) {
-      @Override
-      protected boolean isMatching(JSlider s) {
+      @Override protected boolean isMatching(JSlider s) {
         return s.getOrientation() == HORIZONTAL && s.getValue() == 8;
       }
     });
@@ -105,8 +103,7 @@ public class ContainerFixtureJSliderLookupTest extends RobotBasedTestCase {
   public void shouldFailIfJSliderCannotBeFoundWithCustomMatcher() {
     try {
       fixture.slider(new GenericTypeMatcher<JSlider>(JSlider.class) {
-        @Override
-        protected boolean isMatching(JSlider s) {
+        @Override   protected boolean isMatching(JSlider s) {
           return false;
         }
       });
@@ -123,8 +120,7 @@ public class ContainerFixtureJSliderLookupTest extends RobotBasedTestCase {
 
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
-        @Override
-        protected MyWindow executeInEDT() {
+        @Override   protected MyWindow executeInEDT() {
           return new MyWindow();
         }
       });

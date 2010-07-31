@@ -55,8 +55,7 @@ public class JTextComponentSetTextTask_textOf_Test extends RobotBasedTestCase {
 
   private static String textOf(final MyTextField textField) {
     return execute(new GuiQuery<String>() {
-      @Override
-      protected String executeInEDT() {
+      @Override protected String executeInEDT() {
         return textField.getText();
       }
     });
@@ -70,8 +69,7 @@ public class JTextComponentSetTextTask_textOf_Test extends RobotBasedTestCase {
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
-        @Override
-        protected MyWindow executeInEDT() {
+        @Override   protected MyWindow executeInEDT() {
           return new MyWindow();
         }
       });

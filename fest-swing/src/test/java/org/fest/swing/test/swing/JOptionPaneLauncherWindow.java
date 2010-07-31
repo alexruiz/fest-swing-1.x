@@ -37,8 +37,7 @@ public class JOptionPaneLauncherWindow extends TestWindow {
   @RunsInEDT
   public static JOptionPaneLauncherWindow createNew(final Class<?> testClass) {
     return execute(new GuiQuery<JOptionPaneLauncherWindow>() {
-      @Override
-      protected JOptionPaneLauncherWindow executeInEDT() {
+      @Override protected JOptionPaneLauncherWindow executeInEDT() {
         return new JOptionPaneLauncherWindow(testClass);
       }
     });

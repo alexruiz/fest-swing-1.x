@@ -71,8 +71,7 @@ public class JTreeDriver_dragPath_dropPath_Test extends JTreeDriver_dragAndDrop_
   @RunsInEDT
   private static void addNodeToRootAndHideRoot(final JTree tree) {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         Object root = tree.getModel().getRoot();
         DefaultMutableTreeNode rootNode = (DefaultMutableTreeNode)root;
         rootNode.add(node("child"));

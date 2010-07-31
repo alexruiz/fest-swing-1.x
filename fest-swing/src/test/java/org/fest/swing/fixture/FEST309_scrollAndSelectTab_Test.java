@@ -43,8 +43,7 @@ public class FEST309_scrollAndSelectTab_Test extends RobotBasedTestCase {
   private MyWindow window;
   private FrameFixture frame;
 
-  @Override
-  protected void onSetUp() {
+  @Override protected void onSetUp() {
     window = MyWindow.createNew();
     frame = new FrameFixture(robot, window);
     frame.show();
@@ -62,8 +61,7 @@ public class FEST309_scrollAndSelectTab_Test extends RobotBasedTestCase {
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
-        @Override
-        protected MyWindow executeInEDT() {
+        @Override   protected MyWindow executeInEDT() {
           return new MyWindow();
         }
       });

@@ -38,8 +38,7 @@ final class JTabbedPaneTabIndexQuery {
   @RunsInCurrentThread
   static int indexOfTab(final JTabbedPane tabbedPane, final TextMatcher matcher) {
     return execute(new GuiQuery<Integer>() {
-      @Override
-      protected Integer executeInEDT() {
+      @Override protected Integer executeInEDT() {
         int tabCount = tabbedPane.getTabCount();
         for (int i = 0; i < tabCount; i++)
           if (matcher.isMatching(tabbedPane.getTitleAt(i))) return i;

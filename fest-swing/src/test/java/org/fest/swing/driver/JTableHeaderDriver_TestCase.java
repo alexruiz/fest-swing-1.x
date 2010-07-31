@@ -36,8 +36,7 @@ public abstract class JTableHeaderDriver_TestCase extends JTableHeaderBasedTestC
 
   JTableHeaderDriver driver;
 
-  @Override
-  final void setUpTestTarget() {
+  @Override final void setUpTestTarget() {
     driver = new JTableHeaderDriver(robot);
   }
 
@@ -56,8 +55,7 @@ public abstract class JTableHeaderDriver_TestCase extends JTableHeaderBasedTestC
   @RunsInEDT
   private static int columnAtPoint(final JTableHeader header, final Point point) {
     return execute(new GuiQuery<Integer>() {
-      @Override
-      protected Integer executeInEDT() {
+      @Override protected Integer executeInEDT() {
         return header.getTable().columnAtPoint(point);
       }
     });

@@ -35,8 +35,7 @@ final class JPopupMenuElementsAsTextQuery {
   @RunsInEDT
   static String[] menuElementsAsText(final JPopupMenu popupMenu) {
     return execute(new GuiQuery<String[]>() {
-      @Override
-      protected String[] executeInEDT() throws Throwable {
+      @Override protected String[] executeInEDT() throws Throwable {
         MenuElement[] subElements = popupMenu.getSubElements();
         String[] result = new String[subElements.length];
         for (int i = 0; i < subElements.length; i++) result[i] = textOf(subElements[i]);

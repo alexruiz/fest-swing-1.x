@@ -30,14 +30,12 @@ public class Context_removeContextFor_Test extends Context_TestCase {
   @Test
   public void should_remove_context() {
     new EasyMockTemplate(windowEventQueueMapping) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         windowEventQueueMapping.removeMappingFor(window);
         expectLastCall().once();
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         context.removeContextFor(window);
       }
     }.run();

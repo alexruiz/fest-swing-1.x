@@ -31,14 +31,12 @@ public class FrameFixture_maximize_Test extends FrameFixture_TestCase {
   @Test
   public void should_maximize() {
     new EasyMockTemplate(driver()) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         driver().maximize(target());
         expectLastCall().once();
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         assertThatReturnsSelf(fixture().maximize());
       }
     }.run();

@@ -56,8 +56,7 @@ public class ContainerFixtureJPanelLookupTest extends RobotBasedTestCase {
   @Test
   public void shouldFailIfJPanelCannotBeFoundByType() {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         window.setContentPane(new Container());
       }
     });
@@ -91,8 +90,7 @@ public class ContainerFixtureJPanelLookupTest extends RobotBasedTestCase {
   @Test
   public void shouldFindJPanelWithCustomMatcher() {
     JPanelFixture panel = fixture.panel(new GenericTypeMatcher<JPanel>(JPanel.class) {
-      @Override
-      protected boolean isMatching(JPanel p) {
+      @Override protected boolean isMatching(JPanel p) {
         return RED.equals(p.getBackground());
       }
     });
@@ -107,8 +105,7 @@ public class ContainerFixtureJPanelLookupTest extends RobotBasedTestCase {
   public void shouldFailIfJPanelCannotBeFoundWithCustomMatcher() {
     try {
       fixture.panel(new GenericTypeMatcher<JPanel>(JPanel.class) {
-        @Override
-        protected boolean isMatching(JPanel p) {
+        @Override   protected boolean isMatching(JPanel p) {
           return false;
         }
       });
@@ -125,8 +122,7 @@ public class ContainerFixtureJPanelLookupTest extends RobotBasedTestCase {
 
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
-        @Override
-        protected MyWindow executeInEDT() {
+        @Override   protected MyWindow executeInEDT() {
           return new MyWindow();
         }
       });

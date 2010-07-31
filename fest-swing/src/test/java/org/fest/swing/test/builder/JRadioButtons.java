@@ -58,8 +58,7 @@ public final class JRadioButtons {
     @RunsInEDT
     public JRadioButton createNew() {
       return execute(new GuiQuery<JRadioButton>() {
-        @Override
-        protected JRadioButton executeInEDT() {
+        @Override   protected JRadioButton executeInEDT() {
           JRadioButton radioButton = new JRadioButton();
           radioButton.setName(name);
           radioButton.setSelected(selected);

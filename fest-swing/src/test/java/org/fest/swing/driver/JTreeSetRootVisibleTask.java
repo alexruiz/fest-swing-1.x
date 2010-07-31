@@ -32,8 +32,7 @@ final class JTreeSetRootVisibleTask {
   @RunsInEDT
   static void setRootVisible(final JTree tree, final boolean visible) {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         tree.setRootVisible(visible);
       }
     });

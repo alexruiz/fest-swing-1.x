@@ -41,8 +41,7 @@ public final class ComponentLocationOnScreenQuery {
   @RunsInEDT
   public static Point locationOnScreen(final Component component) {
     return execute(new GuiQuery<Point>() {
-      @Override
-      protected Point executeInEDT() {
+      @Override protected Point executeInEDT() {
         return component.getLocationOnScreen();
       }
     });

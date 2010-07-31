@@ -62,8 +62,7 @@ public final class JOptionPaneLauncher {
       }
     });
     pause(new Condition("JOptionPane is showing") {
-      @Override
-      public boolean test() {
+      @Override public boolean test() {
         return dialog.isShowing();
       }
     });
@@ -79,8 +78,7 @@ public final class JOptionPaneLauncher {
   @RunsInEDT
   public static JDialog pack(final JOptionPane optionPane, final String title) {
     final JDialog dialog = execute(new GuiQuery<JDialog>() {
-      @Override
-      protected JDialog executeInEDT() {
+      @Override protected JDialog executeInEDT() {
         return host(optionPane, title);
       }
     });

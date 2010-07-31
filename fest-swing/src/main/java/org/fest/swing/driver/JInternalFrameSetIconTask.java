@@ -34,8 +34,7 @@ final class JInternalFrameSetIconTask {
   @RunsInEDT
   static void setIcon(final JInternalFrame internalFrame, final JInternalFrameAction action) {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() throws PropertyVetoException {
+      @Override protected void executeInEDT() throws PropertyVetoException {
         internalFrame.setMaximum(false);
         internalFrame.setIcon(action.value);
       }

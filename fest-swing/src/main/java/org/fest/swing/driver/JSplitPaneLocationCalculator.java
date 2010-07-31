@@ -26,8 +26,7 @@ final class JSplitPaneLocationCalculator {
   @RunsInEDT
   static int locationToMoveDividerTo(final JSplitPane splitPane, final int desiredLocation) {
     return execute(new GuiQuery<Integer>() {
-      @Override
-      protected Integer executeInEDT() {
+      @Override protected Integer executeInEDT() {
         switch (splitPane.getOrientation()) {
           case VERTICAL_SPLIT:
             return locationToMoveDividerToVertically(splitPane, desiredLocation);

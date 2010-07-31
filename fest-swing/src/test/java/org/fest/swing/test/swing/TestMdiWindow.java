@@ -46,8 +46,7 @@ public class TestMdiWindow extends TestWindow {
   @RunsInEDT
   public static TestMdiWindow createAndShowNewWindow(final Class<?> testClass) {
     return execute(new GuiQuery<TestMdiWindow>() {
-      @Override
-      protected TestMdiWindow executeInEDT() {
+      @Override protected TestMdiWindow executeInEDT() {
         TestMdiWindow window = createInCurrentThread(testClass);
         TestWindow.display(window, new Dimension(500, 300));
         return window;
@@ -64,8 +63,7 @@ public class TestMdiWindow extends TestWindow {
   @RunsInEDT
   public static TestMdiWindow createNewWindow(final Class<?> testClass) {
     return execute(new GuiQuery<TestMdiWindow>() {
-      @Override
-      protected TestMdiWindow executeInEDT() {
+      @Override protected TestMdiWindow executeInEDT() {
         return createInCurrentThread(testClass);
       }
     });

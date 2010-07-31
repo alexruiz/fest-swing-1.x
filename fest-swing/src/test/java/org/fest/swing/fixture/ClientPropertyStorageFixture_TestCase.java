@@ -34,22 +34,18 @@ import org.junit.Test;
 public abstract class ClientPropertyStorageFixture_TestCase<T extends JComponent> extends
     ComponentFixture_Implementations_TestCase<T> {
 
-  @Override
-  abstract JComponentDriver driver();
+  @Override abstract JComponentDriver driver();
 
-  @Override
-  abstract ClientPropertyStorageFixture fixture();
+  @Override abstract ClientPropertyStorageFixture fixture();
 
   @Test
   public final void shouldReturnClientProperty() {
     new EasyMockTemplate(driver()) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         expect(driver().clientProperty(target(), "name")).andReturn("Luke");
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         assertThat(fixture().clientProperty("name")).isEqualTo("Luke");
       }
     }.run();

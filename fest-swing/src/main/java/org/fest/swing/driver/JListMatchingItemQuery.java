@@ -40,8 +40,7 @@ final class JListMatchingItemQuery {
   @RunsInEDT
   static Point centerOfMatchingItemCell(final JList list, final String value, final JListCellReader cellReader) {
     return execute(new GuiQuery<Point>() {
-      @Override
-      protected Point executeInEDT() {
+      @Override protected Point executeInEDT() {
         int itemIndex = matchingItemIndex(list, new StringTextMatcher(value), cellReader);
         return cellCenter(list, cellBounds(list, itemIndex));
       }
@@ -60,8 +59,7 @@ final class JListMatchingItemQuery {
   static List<Integer> matchingItemIndices(final JList list, final TextMatcher matcher,
       final JListCellReader cellReader) {
     return execute(new GuiQuery<List<Integer>>() {
-      @Override
-      protected List<Integer> executeInEDT() {
+      @Override protected List<Integer> executeInEDT() {
         Set<Integer> indices = new HashSet<Integer>();
         int size = list.getModel().getSize();
         for (int i = 0; i < size; i++)
@@ -77,8 +75,7 @@ final class JListMatchingItemQuery {
   static List<String> matchingItemValues(final JList list, final TextMatcher matcher,
       final JListCellReader cellReader) {
     return execute(new GuiQuery<List<String>>() {
-      @Override
-      protected List<String> executeInEDT() {
+      @Override protected List<String> executeInEDT() {
         List<String> values = new ArrayList<String>();
         int size = list.getModel().getSize();
         for (int i = 0; i < size; i++) {

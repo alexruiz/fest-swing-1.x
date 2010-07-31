@@ -33,8 +33,7 @@ import org.junit.Test;
 public class JTableComboBoxEditorCellWriter_startCellEditing_cancelCellEditing_Test
     extends JTableCellWriter_startCellEditing_TestCase {
 
-  @Override
-  protected JTableCellWriter createWriter() {
+  @Override protected JTableCellWriter createWriter() {
     return new JTableComboBoxEditorCellWriter(robot);
   }
 

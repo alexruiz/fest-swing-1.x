@@ -47,17 +47,13 @@ public class FrameFixture_focusable_Test extends FocusableComponentFixture_TestC
     hideAndDisposeInEDT(target);
   }
 
-  @Override
-  void onSetUp() {
+  @Override void onSetUp() {
     driver = createMock(FrameDriver.class);
     fixture = new FrameFixture(robot(), target);
     fixture.driver(driver);
   }
 
-  @Override
-  FrameDriver driver() { return driver; }
-  @Override
-  Frame target() { return target; }
-  @Override
-  FrameFixture fixture() { return fixture; }
+  @Override FrameDriver driver() { return driver; }
+  @Override Frame target() { return target; }
+  @Override FrameFixture fixture() { return fixture; }
 }

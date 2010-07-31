@@ -61,8 +61,7 @@ public class JMenuChildrenFinder_nonExplicitChildrenOf_Test extends EDTSafeTestC
     ScreenLock.instance().acquire(this);
     final MyWindow window = MyWindow.createNew();
     Collection<Component> children = execute(new GuiQuery<Collection<Component>>() {
-      @Override
-      protected Collection<Component> executeInEDT() {
+      @Override protected Collection<Component> executeInEDT() {
         return finder.nonExplicitChildrenOf(window.menu);
       }
     });
@@ -80,8 +79,7 @@ public class JMenuChildrenFinder_nonExplicitChildrenOf_Test extends EDTSafeTestC
   @RunsInEDT
   private static JPopupMenu popupMenuOf(final JMenu menu) {
     return execute(new GuiQuery<JPopupMenu>() {
-      @Override
-      protected JPopupMenu executeInEDT() {
+      @Override protected JPopupMenu executeInEDT() {
         return menu.getPopupMenu();
       }
     });
@@ -93,8 +91,7 @@ public class JMenuChildrenFinder_nonExplicitChildrenOf_Test extends EDTSafeTestC
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
-        @Override
-        protected MyWindow executeInEDT() {
+        @Override   protected MyWindow executeInEDT() {
           return new MyWindow();
         }
       });

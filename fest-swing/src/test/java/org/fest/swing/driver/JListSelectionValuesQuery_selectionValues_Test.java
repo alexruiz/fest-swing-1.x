@@ -67,8 +67,7 @@ public class JListSelectionValuesQuery_selectionValues_Test extends RobotBasedTe
     final int[] toSelect = new int[count];
     for (int i = 0; i < count; i++) toSelect[i] = indices[i];
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         list.setSelectedIndices(toSelect);
       }
     });
@@ -83,8 +82,7 @@ public class JListSelectionValuesQuery_selectionValues_Test extends RobotBasedTe
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
-        @Override
-        protected MyWindow executeInEDT() {
+        @Override   protected MyWindow executeInEDT() {
           return new MyWindow();
         }
       });

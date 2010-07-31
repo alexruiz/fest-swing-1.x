@@ -93,8 +93,7 @@ public class BasicJTableCellWriter extends AbstractJTableCellWriter {
    * @throws ActionFailedException if this writer is unable to handle the underlying cell editor.
    * @see JTableCellWriter#stopCellEditing(JTable, int, int)
    */
-  @Override
-  public void stopCellEditing(JTable table, int row, int column) {
+  @Override public void stopCellEditing(JTable table, int row, int column) {
     cellWriterFor(table, row, column).stopCellEditing(table, row, column);
   }
 
@@ -111,8 +110,7 @@ public class BasicJTableCellWriter extends AbstractJTableCellWriter {
    * @throws ActionFailedException if this writer is unable to handle the underlying cell editor.
    * @see JTableCellWriter#cancelCellEditing(JTable, int, int)
    */
-  @Override
-  public void cancelCellEditing(JTable table, int row, int column) {
+  @Override public void cancelCellEditing(JTable table, int row, int column) {
     cellWriterFor(table, row, column).cancelCellEditing(table, row, column);
   }
 

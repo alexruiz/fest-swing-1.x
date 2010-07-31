@@ -57,8 +57,7 @@ public class JTableHasSelectionQuery_hasSelection_Test extends RobotBasedTestCas
   @RunsInEDT
   private static void selectAllIn(final TestTable table) {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         table.selectAll();
       }
     });
@@ -67,8 +66,7 @@ public class JTableHasSelectionQuery_hasSelection_Test extends RobotBasedTestCas
   @RunsInEDT
   private static boolean hasSelection(final TestTable table) {
     return execute(new GuiQuery<Boolean>() {
-      @Override
-      protected Boolean executeInEDT() {
+      @Override protected Boolean executeInEDT() {
         return JTableHasSelectionQuery.hasSelection(table);
       }
     });
@@ -80,8 +78,7 @@ public class JTableHasSelectionQuery_hasSelection_Test extends RobotBasedTestCas
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
-        @Override
-        protected MyWindow executeInEDT() {
+        @Override   protected MyWindow executeInEDT() {
           return new MyWindow();
         }
       });

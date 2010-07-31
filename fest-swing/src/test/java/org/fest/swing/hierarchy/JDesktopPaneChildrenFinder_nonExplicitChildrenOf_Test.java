@@ -60,8 +60,7 @@ public class JDesktopPaneChildrenFinder_nonExplicitChildrenOf_Test extends EDTSa
     final TestMdiWindow window = createAndShowNewWindow(getClass());
     iconify(window.internalFrame());
     Collection<Component> children = execute(new GuiQuery<Collection<Component>>() {
-      @Override
-      protected Collection<Component> executeInEDT() {
+      @Override protected Collection<Component> executeInEDT() {
         return finder.nonExplicitChildrenOf(window.desktop());
       }
     });

@@ -41,17 +41,13 @@ public abstract class JComboBoxFixture_TestCase extends ComponentFixture_Impleme
     target = comboBox().createNew();
   }
 
-  @Override
-  final void onSetUp() {
+  @Override final void onSetUp() {
     driver = createMock(JComboBoxDriver.class);
     fixture = new JComboBoxFixture(robot(), target);
     fixture.driver(driver);
   }
 
-  @Override
-  final JComboBoxDriver driver() {  return driver; }
-  @Override
-  final JComboBox target() { return target; }
-  @Override
-  final JComboBoxFixture fixture() { return fixture; }
+  @Override final JComboBoxDriver driver() {  return driver; }
+  @Override final JComboBox target() { return target; }
+  @Override final JComboBoxFixture fixture() { return fixture; }
 }

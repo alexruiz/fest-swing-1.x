@@ -53,8 +53,7 @@ public class ContainerFixtureJSpinnerLookupTest extends RobotBasedTestCase {
   @Test
   public void shouldFailIfJSpinnerCannotBeFoundByType() {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         window.remove(window.spinner);
       }
     });
@@ -88,8 +87,7 @@ public class ContainerFixtureJSpinnerLookupTest extends RobotBasedTestCase {
   @Test
   public void shouldFindJSpinnerWithCustomMatcher() {
     JSpinnerFixture spinner = fixture.spinner(new GenericTypeMatcher<JSpinner>(JSpinner.class) {
-      @Override
-      protected boolean isMatching(JSpinner s) {
+      @Override protected boolean isMatching(JSpinner s) {
         return s.getValue().equals(8);
       }
     });
@@ -104,8 +102,7 @@ public class ContainerFixtureJSpinnerLookupTest extends RobotBasedTestCase {
   public void shouldFailIfJSpinnerCannotBeFoundWithCustomMatcher() {
     try {
       fixture.spinner(new GenericTypeMatcher<JSpinner>(JSpinner.class) {
-        @Override
-        protected boolean isMatching(JSpinner s) {
+        @Override   protected boolean isMatching(JSpinner s) {
           return false;
         }
       });
@@ -122,8 +119,7 @@ public class ContainerFixtureJSpinnerLookupTest extends RobotBasedTestCase {
 
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
-        @Override
-        protected MyWindow executeInEDT() {
+        @Override   protected MyWindow executeInEDT() {
           return new MyWindow();
         }
       });

@@ -36,23 +36,19 @@ import org.junit.Test;
 public abstract class ToolTipDisplayFixture_TestCase<T extends JComponent> extends
     ComponentFixture_Implementations_TestCase<T> {
 
-  @Override
-  abstract JComponentDriver driver();
+  @Override abstract JComponentDriver driver();
 
-  @Override
-  abstract ToolTipDisplayFixture fixture();
+  @Override abstract ToolTipDisplayFixture fixture();
 
   @Test
   public final void should_require_toolTip() {
     new EasyMockTemplate(driver()) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         driver().requireToolTip(target(), "A ToolTip");
         expectLastCall().once();
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         assertThatReturnsSelf(fixture().requireToolTip("A ToolTip"));
       }
     }.run();
@@ -62,14 +58,12 @@ public abstract class ToolTipDisplayFixture_TestCase<T extends JComponent> exten
   public final void should_require_toolTip_matching_pattern() {
     final Pattern pattern = regex(".");
     new EasyMockTemplate(driver()) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         driver().requireToolTip(target(), pattern);
         expectLastCall().once();
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         assertThatReturnsSelf(fixture().requireToolTip(pattern));
       }
     }.run();

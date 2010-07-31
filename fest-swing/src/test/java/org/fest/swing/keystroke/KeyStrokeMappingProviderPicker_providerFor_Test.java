@@ -50,13 +50,11 @@ public class KeyStrokeMappingProviderPicker_providerFor_Test {
     final String firstName = names.iterator().next();
     final KeyStrokeMappingProvider provider = newKeyStrokeMappingProviderMock();
     new EasyMockTemplate(factory) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         expect(factory.createProvider(firstName)).andReturn(provider);
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         assertThat(picker.providerFor(WINDOWS, US)).isSameAs(provider);
       }
     }.run();
@@ -65,14 +63,12 @@ public class KeyStrokeMappingProviderPicker_providerFor_Test {
   @Test
   public void should_return_default_provider_if_provider_from_system_settings_was_not_found() {
     new EasyMockTemplate(factory) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         for (String name : generateNamesFrom(WINDOWS, US))
           expect(factory.createProvider(name)).andReturn(null);
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         assertThat(picker.providerFor(WINDOWS, US)).isInstanceOf(KeyStrokeMappingProvider_en.class);
       }
     }.run();

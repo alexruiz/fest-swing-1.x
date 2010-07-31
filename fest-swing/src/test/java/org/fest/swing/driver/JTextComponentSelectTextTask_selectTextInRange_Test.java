@@ -82,8 +82,7 @@ public class JTextComponentSelectTextTask_selectTextInRange_Test extends RobotBa
   @RunsInEDT
   private static void selectTextInRange(final JTextComponent textBox, final int start, final int end) {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         JTextComponentSelectTextTask.selectTextInRange(textBox, start, end);
       }
     });
@@ -97,8 +96,7 @@ public class JTextComponentSelectTextTask_selectTextInRange_Test extends RobotBa
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
-        @Override
-        protected MyWindow executeInEDT() {
+        @Override   protected MyWindow executeInEDT() {
           return new MyWindow();
         }
       });

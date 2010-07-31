@@ -38,8 +38,7 @@ public class DialogFixture_requireModal_Test extends ComponentFixture_Implementa
   private Dialog target;
   private DialogFixture fixture;
 
-  @Override
-  void onSetUp() {
+  @Override void onSetUp() {
     driver = createMock(DialogDriver.class);
     target = dialog().createNew();
     fixture = new DialogFixture(robot(), target);
@@ -54,23 +53,18 @@ public class DialogFixture_requireModal_Test extends ComponentFixture_Implementa
   @Test
   public void should_require_modal() {
     new EasyMockTemplate(driver) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         driver.requireModal(target);
         expectLastCall().once();
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         assertThatReturnsSelf(fixture.requireModal());
       }
     }.run();
   }
 
-  @Override
-  DialogDriver driver() { return driver; }
-  @Override
-  Dialog target() { return target; }
-  @Override
-  DialogFixture fixture() { return fixture; }
+  @Override DialogDriver driver() { return driver; }
+  @Override Dialog target() { return target; }
+  @Override DialogFixture fixture() { return fixture; }
 }

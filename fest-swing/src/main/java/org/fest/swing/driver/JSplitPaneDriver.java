@@ -91,8 +91,7 @@ public class JSplitPaneDriver extends JComponentDriver {
   private static GenericRange<Point> validateAndFindWhereToMoveDividerVertically(final JSplitPane splitPane,
       final int location) {
     return execute(new GuiQuery<GenericRange<Point>>() {
-      @Override
-      protected GenericRange<Point> executeInEDT() {
+      @Override protected GenericRange<Point> executeInEDT() {
         validateIsEnabledAndShowing(splitPane);
         return whereToMoveDividerVertically(splitPane, location);
       }
@@ -115,8 +114,7 @@ public class JSplitPaneDriver extends JComponentDriver {
   private static GenericRange<Point> validateAndFindWhereToMoveDividerHorizontally(final JSplitPane splitPane,
       final int location) {
     return execute(new GuiQuery<GenericRange<Point>>() {
-      @Override
-      protected GenericRange<Point> executeInEDT() {
+      @Override protected GenericRange<Point> executeInEDT() {
         validateIsEnabledAndShowing(splitPane);
         return whereToMoveDividerHorizontally(splitPane, location);
       }

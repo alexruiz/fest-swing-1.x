@@ -52,13 +52,11 @@ public class GuiActionRunner_execute_queryNotInEDT_Test extends SequentialEDTSaf
     final TestGuiQuery query = createMock(TestGuiQuery.class);
     final RuntimeException error = expectedError();
     new EasyMockTemplate(query) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         expect(query.executeInEDT()).andThrow(error);
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         try {
           GuiActionRunner.executeInEDT(false);
           GuiActionRunner.execute(query);
@@ -82,8 +80,7 @@ public class GuiActionRunner_execute_queryNotInEDT_Test extends SequentialEDTSaf
       this.valueToReturnWhenExecuted = valueToReturnWhenExecuted;
     }
 
-    @Override
-    protected String executeInEDT() {
+    @Override   protected String executeInEDT() {
       methodInvocations.invoked("executeInEDT");
       return valueToReturnWhenExecuted;
     }

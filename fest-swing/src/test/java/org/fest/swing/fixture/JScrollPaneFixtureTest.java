@@ -38,13 +38,11 @@ public class JScrollPaneFixtureTest extends JScrollPaneFixture_TestCase {
   public void shouldReturnHorizontalScrollBar() {
     final JScrollBar scrollBar = scrollBar().createNew();
     new EasyMockTemplate(driver()) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         expect(driver().horizontalScrollBarIn(target())).andReturn(scrollBar);
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         JScrollBarFixture horizontalScrollBar = fixture().horizontalScrollBar();
         assertThat(horizontalScrollBar.component()).isSameAs(scrollBar);
       }
@@ -55,13 +53,11 @@ public class JScrollPaneFixtureTest extends JScrollPaneFixture_TestCase {
   public void shouldReturnVerticalScrollBar() {
     final JScrollBar scrollBar = scrollBar().createNew();
     new EasyMockTemplate(driver()) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         expect(driver().verticalScrollBarIn(target())).andReturn(scrollBar);
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         JScrollBarFixture verticalScrollBar = fixture().verticalScrollBar();
         assertThat(verticalScrollBar.component()).isSameAs(scrollBar);
       }

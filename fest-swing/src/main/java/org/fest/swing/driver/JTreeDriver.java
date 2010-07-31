@@ -368,8 +368,7 @@ public class JTreeDriver extends JComponentDriver {
   private static Triple<Boolean, Point, Integer> scrollToRowAndGetToggleInfo(final JTree tree, final int row,
       final JTreeLocation location) {
     return execute(new GuiQuery<Triple<Boolean, Point, Integer>>() {
-      @Override
-      protected Triple<Boolean, Point, Integer> executeInEDT() {
+      @Override protected Triple<Boolean, Point, Integer> executeInEDT() {
         validateIsEnabledAndShowing(tree);
         Point p = scrollToVisible(tree, row, location);
         return new Triple<Boolean, Point, Integer>(tree.isExpanded(row), p, tree.getToggleClickCount());
@@ -429,8 +428,7 @@ public class JTreeDriver extends JComponentDriver {
   private static Triple<Boolean, Point, Integer> scrollToMatchingPathAndGetToggleInfo(final JTree tree,
       final String path, final JTreePathFinder pathFinder, final JTreeLocation location) {
     return execute(new GuiQuery<Triple<Boolean, Point, Integer>>() {
-      @Override
-      protected Triple<Boolean, Point, Integer> executeInEDT() {
+      @Override protected Triple<Boolean, Point, Integer> executeInEDT() {
         validateIsEnabledAndShowing(tree);
         TreePath matchingPath = matchingPathFor(tree, path, pathFinder);
         Point p = scrollToTreePath(tree, matchingPath, location);
@@ -452,8 +450,7 @@ public class JTreeDriver extends JComponentDriver {
   @RunsInEDT
   private static void toggleRowThroughTreeUI(final JTree tree, final Point p) {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         TreeUI treeUI = tree.getUI();
         if (!(treeUI instanceof BasicTreeUI)) throw actionFailure(concat("Can't toggle row for ", treeUI));
         toggleExpandState(tree, p);
@@ -478,12 +475,10 @@ public class JTreeDriver extends JComponentDriver {
     validateRows(rows);
     clearSelection(tree);
     new MultipleSelectionTemplate(robot) {
-      @Override
-      int elementCount() {
+      @Override int elementCount() {
         return rows.length;
       }
-      @Override
-      void selectElement(int index) {
+      @Override void selectElement(int index) {
         selectRow(tree, rows[index]);
       }
     }.multiSelect();
@@ -529,12 +524,10 @@ public class JTreeDriver extends JComponentDriver {
     validatePaths(paths);
     clearSelection(tree);
     new MultipleSelectionTemplate(robot) {
-      @Override
-      int elementCount() {
+      @Override int elementCount() {
         return paths.length;
       }
-      @Override
-      void selectElement(int index) {
+      @Override void selectElement(int index) {
         selectPath(tree, paths[index]);
       }
     }.multiSelect();
@@ -646,8 +639,7 @@ public class JTreeDriver extends JComponentDriver {
   @RunsInEDT
   private static Pair<Boolean, Point> scrollToRow(final JTree tree, final int row, final JTreeLocation location) {
     return execute(new GuiQuery<Pair<Boolean, Point>>() {
-      @Override
-      protected Pair<Boolean, Point> executeInEDT() {
+      @Override protected Pair<Boolean, Point> executeInEDT() {
         validateIsEnabledAndShowing(tree);
         Point p = scrollToVisible(tree, row, location);
         boolean selected = tree.getSelectionCount() == 1 && tree.isRowSelected(row);
@@ -725,8 +717,7 @@ public class JTreeDriver extends JComponentDriver {
   @RunsInEDT
   private static Pair<Boolean, Point> scrollToPathToSelect(final JTree tree, final TreePath path, final JTreeLocation location) {
     return execute(new GuiQuery<Pair<Boolean, Point>>() {
-      @Override
-      protected Pair<Boolean, Point> executeInEDT() {
+      @Override protected Pair<Boolean, Point> executeInEDT() {
         boolean isSelected = tree.getSelectionCount() == 1 && tree.isPathSelected(path);
         return new Pair<Boolean, Point>(isSelected, scrollToTreePath(tree, path, location));
       }

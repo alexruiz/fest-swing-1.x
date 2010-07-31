@@ -37,8 +37,7 @@ final class JProgressBarWaitUntilValueIsEqualToExpectedTask {
   @RunsInEDT
   static void waitUntilValueIsEqualToExpected(final JProgressBar progressBar, final int expected, final Timeout timeout) {
     pause(new Condition(untilValueIsEqualTo(progressBar, expected)) {
-      @Override
-      public boolean test() {
+      @Override public boolean test() {
         return valueOf(progressBar) == expected;
       }
     }, timeout);
@@ -46,8 +45,7 @@ final class JProgressBarWaitUntilValueIsEqualToExpectedTask {
 
   private static Description untilValueIsEqualTo(final JProgressBar progressBar, final int expected) {
     return new GuiLazyLoadingDescription() {
-      @Override
-      protected String loadDescription() {
+      @Override protected String loadDescription() {
         return concat("value of ", format(progressBar), " to be equal to ", expected);
       }
     };

@@ -65,8 +65,7 @@ public class WindowFilter_isIgnored_Test extends WindowFilter_TestCase {
   @RunsInEDT
   private static boolean isComponentIgnored(final WindowFilter filter, final Component c) {
     return execute(new GuiQuery<Boolean>() {
-      @Override
-      protected Boolean executeInEDT() {
+      @Override protected Boolean executeInEDT() {
         return filter.isIgnored(c);
       }
     });
@@ -78,8 +77,7 @@ public class WindowFilter_isIgnored_Test extends WindowFilter_TestCase {
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
-        @Override
-        protected MyWindow executeInEDT() throws Throwable {
+        @Override   protected MyWindow executeInEDT() throws Throwable {
           return new MyWindow();
         }
       });

@@ -160,8 +160,7 @@ public class JTextComponentDriver extends JComponentDriver implements TextDispla
   @RunsInEDT
   private static int indexOfText(final JTextComponent textBox, final String text) {
     return execute(new GuiQuery<Integer>() {
-      @Override
-      protected Integer executeInEDT() {
+      @Override protected Integer executeInEDT() {
         validateIsEnabledAndShowing(textBox);
         String actualText = textBox.getText();
         if (isEmpty(actualText)) return -1;
@@ -189,8 +188,7 @@ public class JTextComponentDriver extends JComponentDriver implements TextDispla
   @RunsInEDT
   private static Point validateAndScrollToPosition(final JTextComponent textBox, final int index) {
     return execute(new GuiQuery<Point>() {
-      @Override
-      protected Point executeInEDT() {
+      @Override protected Point executeInEDT() {
         validateIsEnabledAndShowing(textBox);
         return scrollToVisible(textBox, index);
       }
@@ -200,8 +198,7 @@ public class JTextComponentDriver extends JComponentDriver implements TextDispla
   @RunsInEDT
   private static Point scrollToPosition(final JTextComponent textBox, final int index) {
     return execute(new GuiQuery<Point>() {
-      @Override
-      protected Point executeInEDT() {
+      @Override protected Point executeInEDT() {
         return scrollToVisible(textBox, index);
       }
     });
@@ -282,8 +279,7 @@ public class JTextComponentDriver extends JComponentDriver implements TextDispla
   @RunsInEDT
   private static void performAndValidateTextSelection(final JTextComponent textBox, final int start, final int end) {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         selectTextInRange(textBox, start, end);
         verifyTextWasSelected(textBox, start, end);
       }

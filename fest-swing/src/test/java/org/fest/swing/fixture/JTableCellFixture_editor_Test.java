@@ -35,13 +35,11 @@ public class JTableCellFixture_editor_Test extends JTableCellFixture_withMockDri
   public void should_return_cell_editor() {
     final Component editor = textField().createNew();
     new EasyMockTemplate(driver) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         expect(driver.cellEditor(table.target, cell)).andReturn(editor);
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         Component result = fixture.editor();
         assertThat(result).isSameAs(editor);
       }

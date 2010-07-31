@@ -31,8 +31,7 @@ public abstract class JListDriver_dragAndDrop_TestCase extends JListDriver_TestC
 
   @Override final void extraSetUp() {
     dropList = execute(new GuiQuery<TestList>() {
-      @Override
-      protected TestList executeInEDT() {
+      @Override protected TestList executeInEDT() {
         TestList l = new TestList("four", "five", "six");
         l.setName("dropList");
         window.addList(l);

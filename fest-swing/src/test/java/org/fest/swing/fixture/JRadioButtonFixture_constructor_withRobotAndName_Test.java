@@ -63,8 +63,7 @@ public class JRadioButtonFixture_constructor_withRobotAndName_Test extends Robot
 
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
-        @Override
-        protected MyWindow executeInEDT() {
+        @Override   protected MyWindow executeInEDT() {
           return new MyWindow();
         }
       });

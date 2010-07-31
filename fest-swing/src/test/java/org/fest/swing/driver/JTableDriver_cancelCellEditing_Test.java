@@ -35,14 +35,12 @@ public class JTableDriver_cancelCellEditing_Test extends JTableDriver_withMockCe
   @Test
   public void should_cancel_cell_editing() {
     new EasyMockTemplate(cellWriter) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         cellWriter.cancelCellEditing(table, 0, 0);
         expectLastCall().once();
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         driver.cancelCellEditing(table, row(0).column(0));
       }
     }.run();

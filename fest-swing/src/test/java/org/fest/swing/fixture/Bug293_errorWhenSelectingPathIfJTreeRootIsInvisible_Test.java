@@ -73,8 +73,7 @@ public class Bug293_errorWhenSelectingPathIfJTreeRootIsInvisible_Test extends Ro
     @RunsInEDT
     private static MyWindow createNew(final boolean treeRootVisible) {
       return execute(new GuiQuery<MyWindow>() {
-        @Override
-        protected MyWindow executeInEDT() {
+        @Override   protected MyWindow executeInEDT() {
           return new MyWindow(treeRootVisible);
         }
       });

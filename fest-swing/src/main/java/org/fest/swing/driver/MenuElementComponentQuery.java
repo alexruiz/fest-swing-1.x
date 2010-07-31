@@ -34,8 +34,7 @@ final class MenuElementComponentQuery {
 
   static Component componentIn(final MenuElement menuElement) {
     return execute(new GuiQuery<Component>() {
-      @Override
-      protected Component executeInEDT() {
+      @Override protected Component executeInEDT() {
         return menuElement.getComponent();
       }
     });

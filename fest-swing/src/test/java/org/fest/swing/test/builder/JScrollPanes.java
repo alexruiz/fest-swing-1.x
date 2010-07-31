@@ -61,8 +61,7 @@ public final class JScrollPanes {
     @RunsInEDT
     public JScrollPane createNew() {
       return execute(new GuiQuery<JScrollPane>() {
-        @Override
-        protected JScrollPane executeInEDT() {
+        @Override   protected JScrollPane executeInEDT() {
           JScrollPane scrollPane = view != null ? new JScrollPane(view) : new JScrollPane();
           scrollPane.setName(name);
           if (preferredSize != null) scrollPane.setPreferredSize(preferredSize);

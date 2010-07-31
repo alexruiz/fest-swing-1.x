@@ -67,8 +67,7 @@ public class Bug76_JOptionPaneLookup_Test extends RobotBasedTestCase {
     @RunsInEDT
     static JOptionPaneStarter createNew(final String message) {
       return execute(new GuiQuery<JOptionPaneStarter>() {
-        @Override
-        protected JOptionPaneStarter executeInEDT() {
+        @Override   protected JOptionPaneStarter executeInEDT() {
           return new JOptionPaneStarter(message);
         }
       });

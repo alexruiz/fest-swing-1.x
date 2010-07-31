@@ -27,8 +27,7 @@ final public class ComponentFontQuery {
   @RunsInEDT
   public static Font fontOf(final Component component) {
     return execute(new GuiQuery<Font>() {
-      @Override
-      protected Font executeInEDT() {
+      @Override protected Font executeInEDT() {
         return component.getFont();
       }
     });

@@ -65,8 +65,7 @@ public class JListItemIndexValidator_validateIndices_Test extends JListItemIndex
   @RunsInEDT
   private static void validateIndices(final JList list, final int...indices) {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         JListItemIndexValidator.validateIndices(list, indices);
       }
     });

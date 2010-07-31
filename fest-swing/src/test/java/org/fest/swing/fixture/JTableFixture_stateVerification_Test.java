@@ -42,17 +42,13 @@ public class JTableFixture_stateVerification_Test extends StateVerificationFixtu
     target = table().createNew();
   }
 
-  @Override
-  void onSetUp() {
+  @Override void onSetUp() {
     driver = createMock(JTableDriver.class);
     fixture = new JTableFixture(robot(), target);
     fixture.driver(driver);
   }
 
-  @Override
-  JTableDriver driver() {  return driver; }
-  @Override
-  JTable target() { return target; }
-  @Override
-  JTableFixture fixture() { return fixture; }
+  @Override JTableDriver driver() {  return driver; }
+  @Override JTable target() { return target; }
+  @Override JTableFixture fixture() { return fixture; }
 }

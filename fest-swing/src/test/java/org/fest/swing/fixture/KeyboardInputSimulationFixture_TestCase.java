@@ -38,14 +38,12 @@ public abstract class KeyboardInputSimulationFixture_TestCase<T extends Componen
   public final void should_press_and_release_key() {
     final KeyPressInfo keyPressInfo = keyCode(VK_A).modifiers(SHIFT_MASK);
     new EasyMockTemplate(driver()) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         driver().pressAndReleaseKey(target(), keyPressInfo);
         expectLastCall().once();
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         assertThatReturnsSelf(fixture().pressAndReleaseKey(keyPressInfo));
       }
     }.run();
@@ -54,14 +52,12 @@ public abstract class KeyboardInputSimulationFixture_TestCase<T extends Componen
   @Test
   public void should_press_and_release_keys() {
     new EasyMockTemplate(driver()) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         driver().pressAndReleaseKeys(target(), VK_A, VK_B, VK_C);
         expectLastCall().once();
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         assertThatReturnsSelf(fixture().pressAndReleaseKeys(VK_A, VK_B, VK_C));
       }
     }.run();
@@ -70,14 +66,12 @@ public abstract class KeyboardInputSimulationFixture_TestCase<T extends Componen
   @Test
   public final void should_press_key() {
     new EasyMockTemplate(driver()) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         driver().pressKey(target(), VK_A);
         expectLastCall().once();
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         assertThatReturnsSelf(fixture().pressKey(VK_A));
       }
     }.run();
@@ -86,19 +80,16 @@ public abstract class KeyboardInputSimulationFixture_TestCase<T extends Componen
   @Test
   public final void should_release_key() {
     new EasyMockTemplate(driver()) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         driver().releaseKey(target(), VK_A);
         expectLastCall().once();
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         assertThatReturnsSelf(fixture().releaseKey(VK_A));
       }
     }.run();
   }
 
-  @Override
-  abstract KeyboardInputSimulationFixture fixture();
+  @Override abstract KeyboardInputSimulationFixture fixture();
 }

@@ -56,15 +56,13 @@ public class TransientWindowListener_eventDispatched_withWindowOpenedAndShownEve
   @Test
   public void should_recognize_Window_if_it_is_implicitly_ignored() {
     new EasyMockTemplate(mockWindowFilter) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         expect(mockWindowFilter.isImplicitlyIgnored(eventSource)).andReturn(true);
         mockWindowFilter.recognize(eventSource);
         expectLastCall();
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         listener.eventDispatched(event());
       }
     }.run();
@@ -72,16 +70,14 @@ public class TransientWindowListener_eventDispatched_withWindowOpenedAndShownEve
 
   @Test public void should_ignore_Window_if_parent_is_ignored() {
     new EasyMockTemplate(mockWindowFilter) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         expect(mockWindowFilter.isImplicitlyIgnored(eventSource)).andReturn(false);
         expect(mockWindowFilter.isIgnored(parent)).andReturn(true);
         mockWindowFilter.ignore(eventSource);
         expectLastCall();
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         listener.eventDispatched(event());
       }
     }.run();

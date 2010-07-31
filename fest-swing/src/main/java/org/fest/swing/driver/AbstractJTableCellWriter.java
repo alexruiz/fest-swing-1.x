@@ -110,8 +110,7 @@ public abstract class AbstractJTableCellWriter implements JTableCellWriter {
   @RunsInEDT
   protected static TableCellEditor cellEditor(final JTable table, final int row, final int column) {
     return execute(new GuiQuery<TableCellEditor>() {
-      @Override
-      protected TableCellEditor executeInEDT() throws Throwable {
+      @Override protected TableCellEditor executeInEDT() throws Throwable {
         return table.getCellEditor(row, column);
       }
     });
@@ -142,8 +141,7 @@ public abstract class AbstractJTableCellWriter implements JTableCellWriter {
   @RunsInEDT
   private static Component cellEditorComponent(final JTable table, final int row, final int column) {
     return execute(new GuiQuery<Component>() {
-      @Override
-      protected Component executeInEDT() {
+      @Override protected Component executeInEDT() {
         validateIndices(table, row, column);
         return cellEditorIn(table, row, column);
       }
@@ -195,8 +193,7 @@ public abstract class AbstractJTableCellWriter implements JTableCellWriter {
   @RunsInEDT
   protected static Point cellLocation(final JTable table, final int row, final int column, final JTableLocation location) {
     return execute(new GuiQuery<Point>() {
-      @Override
-      protected Point executeInEDT() {
+      @Override protected Point executeInEDT() {
         validate(table, row, column);
         scrollToCell(table, row, column, location);
         return location.pointAt(table, row, column);

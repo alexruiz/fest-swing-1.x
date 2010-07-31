@@ -37,8 +37,7 @@ final class JProgressBarWaitUntilIsDeterminate {
   @RunsInEDT
   static void waitUntilValueIsDeterminate(final JProgressBar progressBar, final Timeout timeout) {
     pause(new Condition(untilIsDeterminate(progressBar)) {
-      @Override
-      public boolean test() {
+      @Override public boolean test() {
         return !isIndeterminate(progressBar);
       }
     }, timeout);
@@ -46,8 +45,7 @@ final class JProgressBarWaitUntilIsDeterminate {
 
   private static Description untilIsDeterminate(final JProgressBar progressBar) {
     return new GuiLazyLoadingDescription() {
-      @Override
-      protected String loadDescription() {
+      @Override protected String loadDescription() {
         return concat(format(progressBar), " to be in determinate mode");
       }
     };

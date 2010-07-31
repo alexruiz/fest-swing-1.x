@@ -69,8 +69,7 @@ public class JAppletDriver extends ComponentDriver implements AppletStub {
 	@RunsInEDT
 	private static AppletContext appletContext(final JApplet applet) {
 		return execute(new GuiQuery<AppletContext>() {
-			@Override
-      protected AppletContext executeInEDT() {
+			@Override protected AppletContext executeInEDT() {
 				return applet.getAppletContext();
 			}
 		});
@@ -80,8 +79,7 @@ public class JAppletDriver extends ComponentDriver implements AppletStub {
 	private static void doResize(final JApplet applet, final int width,
 			final int height) {
 		execute(new GuiTask() {
-			@Override
-      protected void executeInEDT() {
+			@Override protected void executeInEDT() {
 				applet.resize(width, height);
 			}
 		});
@@ -90,8 +88,7 @@ public class JAppletDriver extends ComponentDriver implements AppletStub {
 	@RunsInEDT
 	private static URL codeBase(final JApplet applet) {
 		return execute(new GuiQuery<URL>() {
-			@Override
-      protected URL executeInEDT() {
+			@Override protected URL executeInEDT() {
 				return applet.getCodeBase();
 			}
 		});
@@ -100,8 +97,7 @@ public class JAppletDriver extends ComponentDriver implements AppletStub {
 	@RunsInEDT
 	private static URL documentBase(final JApplet applet) {
 		return execute(new GuiQuery<URL>() {
-			@Override
-      protected URL executeInEDT() {
+			@Override protected URL executeInEDT() {
 				return applet.getDocumentBase();
 			}
 		});
@@ -111,8 +107,7 @@ public class JAppletDriver extends ComponentDriver implements AppletStub {
 	private static String parameter(final JApplet applet,
 			final String parameterName) {
 		return execute(new GuiQuery<String>() {
-			@Override
-      protected String executeInEDT() {
+			@Override protected String executeInEDT() {
 				return applet.getParameter(parameterName);
 			}
 		});
@@ -121,8 +116,7 @@ public class JAppletDriver extends ComponentDriver implements AppletStub {
 	@RunsInEDT
 	private static boolean active(final JApplet applet) {
 		return execute(new GuiQuery<Boolean>() {
-			@Override
-      protected Boolean executeInEDT() {
+			@Override protected Boolean executeInEDT() {
 				return applet.isActive();
 			}
 		});

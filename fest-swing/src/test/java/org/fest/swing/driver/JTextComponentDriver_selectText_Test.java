@@ -42,8 +42,7 @@ public class JTextComponentDriver_selectText_Test extends JTextComponentDriver_T
   @RunsInEDT
   @Override void extraSetUp() {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         scrollToViewTextField = new JTextField(10);
         JScrollPane scrollPane = new JScrollPane(VERTICAL_SCROLLBAR_ALWAYS, HORIZONTAL_SCROLLBAR_ALWAYS);
         JViewport viewport = scrollPane.getViewport();

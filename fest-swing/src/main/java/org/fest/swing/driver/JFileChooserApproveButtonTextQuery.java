@@ -36,8 +36,7 @@ final class JFileChooserApproveButtonTextQuery {
 
   static String approveButtonTextFrom(final JFileChooser fileChooser) {
     return execute(new GuiQuery<String>() {
-      @Override
-      protected String executeInEDT() {
+      @Override protected String executeInEDT() {
         String text = fileChooser.getApproveButtonText();
         if (!isEmpty(text)) return text;
         return fileChooser.getUI().getApproveButtonText(fileChooser);

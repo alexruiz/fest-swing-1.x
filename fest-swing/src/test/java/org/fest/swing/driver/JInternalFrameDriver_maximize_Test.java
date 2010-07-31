@@ -105,8 +105,7 @@ public class JInternalFrameDriver_maximize_Test extends JInternalFrameDriver_Tes
   @RunsInEDT
   private static void setMaximizable(final JInternalFrame internalFrame, final boolean maximizable) {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         internalFrame.setMaximizable(maximizable);
       }
     });

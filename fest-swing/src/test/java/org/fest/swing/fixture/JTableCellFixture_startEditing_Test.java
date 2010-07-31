@@ -30,14 +30,12 @@ public class JTableCellFixture_startEditing_Test extends JTableCellFixture_withM
   @Test
   public void should_start_cell_editing() {
     new EasyMockTemplate(driver) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         driver.startCellEditing(table.target, cell);
         expectLastCall().once();
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         assertThatReturnsSelf(fixture.startEditing());
       }
     }.run();

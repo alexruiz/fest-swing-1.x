@@ -47,17 +47,13 @@ public class DialogFixture_mouseInput_Test extends MouseInputSimulationFixture_T
     hideAndDisposeInEDT(target);
   }
 
-  @Override
-  void onSetUp() {
+  @Override void onSetUp() {
     driver = createMock(DialogDriver.class);
     fixture = new DialogFixture(robot(), target);
     fixture.driver(driver);
   }
 
-  @Override
-  DialogDriver driver() { return driver; }
-  @Override
-  Dialog target() { return target; }
-  @Override
-  DialogFixture fixture() { return fixture; }
+  @Override DialogDriver driver() { return driver; }
+  @Override Dialog target() { return target; }
+  @Override DialogFixture fixture() { return fixture; }
 }

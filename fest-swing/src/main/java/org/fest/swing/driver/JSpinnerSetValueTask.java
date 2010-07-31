@@ -35,8 +35,7 @@ final class JSpinnerSetValueTask {
   @RunsInEDT
   static void setValue(final JSpinner spinner, final Object value) {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         validateIsEnabledAndShowing(spinner);
         spinner.setValue(value);
       }

@@ -39,8 +39,7 @@ public class JListFormatter extends ComponentFormatterTemplate {
    * @param c the given {@code Component}.
    * @return the <code>String</code> representation of the given <code>JList</code>.
    */
-  @Override
-  protected String doFormat(Component c) {
+  @Override protected String doFormat(Component c) {
     JList list = (JList)c;
     return concat(
         list.getClass().getName(), "[",

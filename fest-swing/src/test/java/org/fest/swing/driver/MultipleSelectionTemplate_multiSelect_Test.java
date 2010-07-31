@@ -42,11 +42,9 @@ public class MultipleSelectionTemplate_multiSelect_Test {
   public void should_select_once_if_element_count_is_one() {
     template = new MultipleSelection(robot, 1);
     new EasyMockTemplate(robot) {
-      @Override
-      protected void expectations() {}
+      @Override protected void expectations() {}
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         template.multiSelect();
         assertThat(template.timesSelected).isEqualTo(1);
       }
@@ -58,16 +56,14 @@ public class MultipleSelectionTemplate_multiSelect_Test {
     template = new MultipleSelection(robot, 2);
     final int key = controlOrCommandKey();
     new EasyMockTemplate(robot) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         robot.pressKey(key);
         expectLastCall().once();
         robot.releaseKey(key);
         expectLastCall().once();
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         template.multiSelect();
         assertThat(template.timesSelected).isEqualTo(2);
       }
@@ -84,13 +80,11 @@ public class MultipleSelectionTemplate_multiSelect_Test {
       this.elementCount = elementCount;
     }
 
-    @Override
-    int elementCount() {
+    @Override   int elementCount() {
       return elementCount;
     }
 
-    @Override
-    void selectElement(int index) {
+    @Override   void selectElement(int index) {
       timesSelected++;
     }
   }

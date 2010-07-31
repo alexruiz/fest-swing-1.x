@@ -50,8 +50,7 @@ public class XmlOutputWriter_writeWithDOMElementWriter_Test extends XmlOutputWri
   private static class MyDOMElementWriter extends DOMElementWriter {
     final IOException error = new IOException("Thrown on purpose");
 
-    @Override
-    public void write(Element element, Writer out, int indent, String indentWith) throws IOException {
+    @Override public void write(Element element, Writer out, int indent, String indentWith) throws IOException {
       throw error;
     }
   }

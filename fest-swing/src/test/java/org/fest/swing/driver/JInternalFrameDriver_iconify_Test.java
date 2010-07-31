@@ -74,8 +74,7 @@ public class JInternalFrameDriver_iconify_Test extends JInternalFrameDriver_Test
   @RunsInEDT
   private static void setIconifiable(final JInternalFrame internalFrame, final boolean iconfiable) {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         internalFrame.setIconifiable(iconfiable);
       }
     });

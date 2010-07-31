@@ -62,8 +62,7 @@ public final class TestList extends JList {
   @RunsInEDT
   public String[] elements() {
     return execute(new GuiQuery<String[]>() {
-      @Override
-      protected String[] executeInEDT() {
+      @Override protected String[] executeInEDT() {
         int count = model.getSize();
         String[] elements = new String[count];
         for (int i = 0; i < count; i++) elements[i] = (String)model.get(i);
@@ -85,8 +84,7 @@ public final class TestList extends JList {
     }
 
     // Bundle up the selected items in the list as a single string, for export.
-    @Override
-    protected String exportString(JList list) {
+    @Override   protected String exportString(JList list) {
       rows = list.getSelectedIndices();
       Object[] values = list.getSelectedValues();
       StringBuilder b = new StringBuilder();
@@ -99,8 +97,7 @@ public final class TestList extends JList {
     }
 
     // Take the incoming string and wherever there is a newline, break it into a separate item in the list.
-    @Override
-    protected void importString(JList target, String s) {
+    @Override   protected void importString(JList target, String s) {
       DefaultListModel listModel = (DefaultListModel) target.getModel();
       int index = target.getSelectedIndex();
       // Prevent the user from dropping data back on itself.
@@ -122,8 +119,7 @@ public final class TestList extends JList {
 
     // If the remove argument is true, the drop has been successful and it's time to remove the selected items from the
     // list. If the remove argument is false, it was a Copy operation and the original list is left intact.
-    @Override
-    protected void cleanup(JList source, boolean remove) {
+    @Override   protected void cleanup(JList source, boolean remove) {
       if (remove && rows != null) {
         DefaultListModel model = (DefaultListModel) source.getModel();
         // If we are moving items around in the same list, we need to adjust the indices accordingly, since those after

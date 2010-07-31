@@ -52,13 +52,11 @@ public abstract class Context_TestCase extends EDTSafeTestCase {
 
   private void createContext() {
     new EasyMockTemplate(windowEventQueueMapping) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         windowEventQueueMapping.addQueueFor(toolkit);
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         context = new Context(toolkit, windowEventQueueMapping, eventQueueMapping);
       }
     }.run();

@@ -190,8 +190,7 @@ public class JComponentDriver extends ContainerDriver {
 
   private static Object clientPropertyIn(final JComponent c, final Object key) {
     return execute(new GuiQuery<Object>() {
-      @Override
-      protected Object executeInEDT() {
+      @Override protected Object executeInEDT() {
         return c.getClientProperty(key);
       }
     });

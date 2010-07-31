@@ -74,15 +74,13 @@ public class ChildrenFinder_childrenOf_Test extends EDTSafeTestCase {
   @Test
   public void should_return_children_in_Container_and_strategies() {
     new EasyMockTemplate(strategy1, strategy2, container) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         expect(container.getComponents()).andReturn(Arrays.array(child1));
         expect(strategy1.nonExplicitChildrenOf(container)).andReturn(list(child2));
         expect(strategy2.nonExplicitChildrenOf(container)).andReturn(list(child3));
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         Collection<Component> children = finder.childrenOf(container);
         assertThat(children).containsOnly(child1, child2, child3);
       }
@@ -92,12 +90,10 @@ public class ChildrenFinder_childrenOf_Test extends EDTSafeTestCase {
   @Test
   public void should_return_empty_Collection_if_Component_is_not_Container() {
     new EasyMockTemplate(strategy1, strategy2, container) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         Collection<Component> children = finder.childrenOf(child1);
         assertThat(children).isEmpty();
       }

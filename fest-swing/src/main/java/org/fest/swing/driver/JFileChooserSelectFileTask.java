@@ -39,8 +39,7 @@ final class JFileChooserSelectFileTask {
   @RunsInEDT
   static void validateAndSelectFile(final JFileChooser fileChooser, final File file) {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         validateIsEnabledAndShowing(fileChooser);
         validateFileToChoose(fileChooser, file);
         fileChooser.setSelectedFile(file);
@@ -51,8 +50,7 @@ final class JFileChooserSelectFileTask {
   @RunsInEDT
   static void validateAndSelectFiles(final JFileChooser fileChooser, final File[] files) {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         validateIsEnabledAndShowing(fileChooser);
         if (files.length > 1 && !fileChooser.isMultiSelectionEnabled())
           throw new IllegalStateException(

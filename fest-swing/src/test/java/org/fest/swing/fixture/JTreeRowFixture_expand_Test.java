@@ -30,13 +30,11 @@ public class JTreeRowFixture_expand_Test extends JTreeRowFixture_withMockTree_Te
   @Test
   public void should_expand_node() {
     new EasyMockTemplate(tree) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         expect(tree.expandRow(row)).andReturn(tree);
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         assertThatReturnsSelf(fixture.expand());
       }
     }.run();

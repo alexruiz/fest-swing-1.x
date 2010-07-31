@@ -40,8 +40,7 @@ class ProtectingTimerTask extends TimerTask {
   }
 
   /** {@inheritDoc} */
-  @Override
-  public void run() {
+  @Override public void run() {
     if (isCanceled()) {
       cancel();
       return;

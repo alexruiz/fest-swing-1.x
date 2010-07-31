@@ -38,8 +38,7 @@ class TableDialogEditDemoWindow extends TestWindow {
   @RunsInEDT
   public static TableDialogEditDemoWindow createNew(final Class<?> testClass) {
     return execute(new GuiQuery<TableDialogEditDemoWindow>() {
-      @Override
-      protected TableDialogEditDemoWindow executeInEDT() {
+      @Override protected TableDialogEditDemoWindow executeInEDT() {
         return new TableDialogEditDemoWindow(testClass);
       }
     });

@@ -31,14 +31,12 @@ public class JProgressBarFixture_waitUntilValueIs_Test extends JProgressBarFixtu
   public void should_require_value() {
     final int value = 6;
     new EasyMockTemplate(driver()) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         driver().waitUntilValueIs(target(), value);
         expectLastCall().once();
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         assertThatReturnsSelf(fixture().waitUntilValueIs(value));
       }
     }.run();

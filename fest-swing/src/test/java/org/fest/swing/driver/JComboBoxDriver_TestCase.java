@@ -107,8 +107,7 @@ public abstract class JComboBoxDriver_TestCase extends RobotBasedTestCase {
   @RunsInEDT
   private static void setEditableAndSelectFirstItem(final JComboBox comboBox, final boolean editable) {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         comboBox.setSelectedIndex(0);
         comboBox.setEditable(editable);
       }
@@ -118,8 +117,7 @@ public abstract class JComboBoxDriver_TestCase extends RobotBasedTestCase {
   @RunsInEDT
   final static String textIn(final JComboBox comboBox) {
     return execute(new GuiQuery<String>() {
-      @Override
-      protected String executeInEDT()  {
+      @Override protected String executeInEDT()  {
         Component editor = comboBox.getEditor().getEditorComponent();
         if (editor instanceof JLabel) return ((JLabel)editor).getText();
         if (editor instanceof JTextComponent) return ((JTextComponent)editor).getText();
@@ -146,8 +144,7 @@ public abstract class JComboBoxDriver_TestCase extends RobotBasedTestCase {
     @RunsInEDT
     static MyWindow createNew(final Class<?> testClass) {
       return execute(new GuiQuery<MyWindow>() {
-        @Override
-        protected MyWindow executeInEDT() {
+        @Override   protected MyWindow executeInEDT() {
           return new MyWindow(testClass);
         }
       });

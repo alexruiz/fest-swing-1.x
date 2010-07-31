@@ -30,14 +30,12 @@ public class JTableCellFixture_stopEditing_Test extends JTableCellFixture_withMo
   @Test
   public void should_stop_cell_editing() {
     new EasyMockTemplate(driver) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         driver.stopCellEditing(table.target, cell);
         expectLastCall().once();
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         assertThatReturnsSelf(fixture.stopEditing());
       }
     }.run();

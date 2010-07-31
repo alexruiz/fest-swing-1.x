@@ -67,8 +67,7 @@ public abstract class JTreeDriver_TestCase extends RobotBasedTestCase {
   @RunsInEDT
   private static String textOf(final TreePath path, final String separator) {
     return execute(new GuiQuery<String>() {
-      @Override
-      protected String executeInEDT() {
+      @Override protected String executeInEDT() {
         return pathText(path, separator);
       }
     });
@@ -102,8 +101,7 @@ public abstract class JTreeDriver_TestCase extends RobotBasedTestCase {
   @RunsInEDT
   private static DefaultMutableTreeNode firstChildInRootOf(final JTree tree) {
     return execute(new GuiQuery<DefaultMutableTreeNode>() {
-      @Override
-      protected DefaultMutableTreeNode executeInEDT() {
+      @Override protected DefaultMutableTreeNode executeInEDT() {
         TreeNode root = (TreeNode)tree.getModel().getRoot();
         return (DefaultMutableTreeNode)root.getChildAt(0);
       }
@@ -113,8 +111,7 @@ public abstract class JTreeDriver_TestCase extends RobotBasedTestCase {
   @RunsInEDT
   static int childCountOf(final TreeNode node) {
     return execute(new GuiQuery<Integer>() {
-      @Override
-      protected Integer executeInEDT() {
+      @Override protected Integer executeInEDT() {
         return node.getChildCount();
       }
     });
@@ -123,8 +120,7 @@ public abstract class JTreeDriver_TestCase extends RobotBasedTestCase {
   @RunsInEDT
   static DefaultMutableTreeNode firstChildOf(final TreeNode node) {
     return execute(new GuiQuery<DefaultMutableTreeNode>() {
-      @Override
-      protected DefaultMutableTreeNode executeInEDT() {
+      @Override protected DefaultMutableTreeNode executeInEDT() {
         return (DefaultMutableTreeNode)node.getChildAt(0);
       }
     });
@@ -133,8 +129,7 @@ public abstract class JTreeDriver_TestCase extends RobotBasedTestCase {
   @RunsInEDT
   static DefaultMutableTreeNode firstChildOfRootIn(final JTree tree) {
     return execute(new GuiQuery<DefaultMutableTreeNode>() {
-      @Override
-      protected DefaultMutableTreeNode executeInEDT() {
+      @Override protected DefaultMutableTreeNode executeInEDT() {
         TreeNode root = (TreeNode)tree.getModel().getRoot();
         return (DefaultMutableTreeNode)root.getChildAt(0);
       }
@@ -144,8 +139,7 @@ public abstract class JTreeDriver_TestCase extends RobotBasedTestCase {
   @RunsInEDT
   static String textOf(final DefaultMutableTreeNode node) {
     return execute(new GuiQuery<String>() {
-      @Override
-      protected String executeInEDT() {
+      @Override protected String executeInEDT() {
         return (String)node.getUserObject();
       }
     });
@@ -154,8 +148,7 @@ public abstract class JTreeDriver_TestCase extends RobotBasedTestCase {
   @RunsInEDT
   static DefaultMutableTreeNode rootOf(final JTree tree) {
     return execute(new GuiQuery<DefaultMutableTreeNode>() {
-      @Override
-      protected DefaultMutableTreeNode executeInEDT() {
+      @Override protected DefaultMutableTreeNode executeInEDT() {
         return (DefaultMutableTreeNode)tree.getModel().getRoot();
       }
     });
@@ -169,8 +162,7 @@ public abstract class JTreeDriver_TestCase extends RobotBasedTestCase {
     @RunsInEDT
     static MyWindow createNew(final Class<?> testClass) {
       return execute(new GuiQuery<MyWindow>() {
-        @Override
-        protected MyWindow executeInEDT() {
+        @Override   protected MyWindow executeInEDT() {
           return new MyWindow(testClass);
         }
       });

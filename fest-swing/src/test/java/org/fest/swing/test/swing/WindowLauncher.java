@@ -44,8 +44,7 @@ public class WindowLauncher extends TestWindow {
   @RunsInEDT
   public static WindowLauncher createNew(final Class<?> testClass) {
     return execute(new GuiQuery<WindowLauncher>() {
-      @Override
-      protected WindowLauncher executeInEDT() {
+      @Override protected WindowLauncher executeInEDT() {
         return new WindowLauncher(testClass);
       }
     });

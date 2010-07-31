@@ -84,8 +84,7 @@ public class FEST130_wrongModifierBehaviorInJTableFixture_Test extends RobotBase
   @RunsInEDT
   private static int[] selectedRowsIn(final JTable table) {
     return execute(new GuiQuery<int[]>() {
-      @Override
-      protected int[] executeInEDT() throws Throwable {
+      @Override protected int[] executeInEDT() throws Throwable {
         return table.getSelectedRows();
       }
     });
@@ -96,8 +95,7 @@ public class FEST130_wrongModifierBehaviorInJTableFixture_Test extends RobotBase
 
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
-        @Override
-        protected MyWindow executeInEDT() {
+        @Override   protected MyWindow executeInEDT() {
           return new MyWindow();
         }
       });

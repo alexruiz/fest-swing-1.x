@@ -81,8 +81,7 @@ public class ApplicationLauncher_start_Test extends RobotBasedTestCase {
 
   private void assertFrameIsShowing() {
     FrameFixture frameFixture = WindowFinder.findFrame(new GenericTypeMatcher<Frame>(Frame.class) {
-      @Override
-      protected boolean isMatching(Frame frame) {
+      @Override protected boolean isMatching(Frame frame) {
         return "Java Application".equals(frame.getTitle()) && frame.isShowing();
       }
     }).using(robot);

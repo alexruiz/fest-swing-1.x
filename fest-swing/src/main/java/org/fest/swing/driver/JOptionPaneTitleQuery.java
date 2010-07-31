@@ -36,8 +36,7 @@ final class JOptionPaneTitleQuery {
   @RunsInEDT
   static String titleOf(final JOptionPane optionPane) {
     return execute(new GuiQuery<String>() {
-      @Override
-      protected String executeInEDT() {
+      @Override protected String executeInEDT() {
         return ((Dialog)optionPane.getRootPane().getParent()).getTitle();
       }
     });

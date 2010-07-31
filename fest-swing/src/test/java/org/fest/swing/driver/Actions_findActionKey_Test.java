@@ -52,13 +52,11 @@ public class Actions_findActionKey_Test {
   @Test
   public void should_return_key_if_action_name_is_equal_to_given_name() {
     new EasyMockTemplate(action) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         expect(action.getValue(NAME)).andReturn("name");
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         Object found = Actions.findActionKey("name", map);
         assertThat(found).isEqualTo("key");
       }
@@ -69,13 +67,11 @@ public class Actions_findActionKey_Test {
   public void should_throw_error_if_key_not_found() {
     try {
       new EasyMockTemplate(action) {
-        @Override
-        protected void expectations() {
+        @Override   protected void expectations() {
           expect(action.getValue(NAME)).andReturn("name");
         }
 
-        @Override
-        protected void codeToTest() {
+        @Override   protected void codeToTest() {
           Object found = Actions.findActionKey("someName", map);
           assertThat(found).isEqualTo("key");
         }

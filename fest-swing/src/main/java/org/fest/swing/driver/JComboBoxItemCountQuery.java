@@ -33,8 +33,7 @@ final class JComboBoxItemCountQuery {
 
   static int itemCountIn(final JComboBox comboBox) {
     return execute(new GuiQuery<Integer>() {
-      @Override
-      protected Integer executeInEDT() {
+      @Override protected Integer executeInEDT() {
         return comboBox.getItemCount();
       }
     });

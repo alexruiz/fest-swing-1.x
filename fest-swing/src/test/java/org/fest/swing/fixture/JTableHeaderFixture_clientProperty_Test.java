@@ -42,17 +42,13 @@ public class JTableHeaderFixture_clientProperty_Test extends ClientPropertyStora
     target = tableHeader().createNew();
   }
 
-  @Override
-  void onSetUp() {
+  @Override void onSetUp() {
     driver = createMock(JTableHeaderDriver.class);
     fixture = new JTableHeaderFixture(robot(), target);
     fixture.driver(driver);
   }
 
-  @Override
-  JTableHeaderDriver driver() {  return driver; }
-  @Override
-  JTableHeader target() { return target; }
-  @Override
-  JTableHeaderFixture fixture() { return fixture; }
+  @Override JTableHeaderDriver driver() {  return driver; }
+  @Override JTableHeader target() { return target; }
+  @Override JTableHeaderFixture fixture() { return fixture; }
 }

@@ -42,17 +42,13 @@ public class JOptionPaneFixture_mouseInput_Test extends MouseInputSimulationFixt
     target = optionPane().createNew();
   }
 
-  @Override
-  void onSetUp() {
+  @Override void onSetUp() {
     driver = createMock(JOptionPaneDriver.class);
     fixture = new JOptionPaneFixture(robot(), target);
     fixture.driver(driver);
   }
 
-  @Override
-  JOptionPaneDriver driver() {  return driver; }
-  @Override
-  JOptionPane target() { return target; }
-  @Override
-  JOptionPaneFixture fixture() { return fixture; }
+  @Override JOptionPaneDriver driver() {  return driver; }
+  @Override JOptionPane target() { return target; }
+  @Override JOptionPaneFixture fixture() { return fixture; }
 }

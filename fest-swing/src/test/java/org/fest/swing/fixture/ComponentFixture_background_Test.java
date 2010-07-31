@@ -43,8 +43,7 @@ public class ComponentFixture_background_Test extends ComponentFixture_TestCase 
   @RunsInEDT
   private static Color backgroundOf(final Component component) {
     return execute(new GuiQuery<Color>() {
-      @Override
-      protected Color executeInEDT() {
+      @Override protected Color executeInEDT() {
         return component.getBackground();
       }
     });

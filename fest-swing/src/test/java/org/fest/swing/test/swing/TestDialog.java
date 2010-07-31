@@ -52,8 +52,7 @@ public class TestDialog extends JDialog {
   @RunsInEDT
   public static TestDialog createAndShowNewDialog(final Frame owner) {
     return execute(new GuiQuery<TestDialog>() {
-      @Override
-      protected TestDialog executeInEDT() {
+      @Override protected TestDialog executeInEDT() {
         TestDialog dialog = createInCurrentThread(owner);
         TestDialog.display(dialog, new Dimension(DEFAULT_PREFERRED_SIZE));
         return dialog;
@@ -70,8 +69,7 @@ public class TestDialog extends JDialog {
   @RunsInEDT
   public static TestDialog createNewDialog(final Frame owner) {
     return execute(new GuiQuery<TestDialog>() {
-      @Override
-      protected TestDialog executeInEDT() {
+      @Override protected TestDialog executeInEDT() {
         return createInCurrentThread(owner);
       }
     });
@@ -129,8 +127,7 @@ public class TestDialog extends JDialog {
   @RunsInEDT
   public void display(final Dimension preferredSize) {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         display(TestDialog.this, preferredSize);
       }
     });
@@ -171,8 +168,7 @@ public class TestDialog extends JDialog {
   @RunsInEDT
   public void destroy() {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         destroy(TestDialog.this);
       }
     });

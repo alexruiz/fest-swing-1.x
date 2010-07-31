@@ -35,8 +35,7 @@ final class JTableCellValueQuery {
   @RunsInEDT
   static Object cellValueOf(final JTable table, final int row, final int column) {
     return execute(new GuiQuery<Object>() {
-      @Override
-      protected Object executeInEDT() {
+      @Override protected Object executeInEDT() {
         return table.getValueAt(row, column);
       }
     });

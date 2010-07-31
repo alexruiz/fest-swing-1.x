@@ -33,8 +33,7 @@ final class JComponentToolTipQuery {
   @RunsInEDT
   static String toolTipOf(final JComponent c) {
     return execute(new GuiQuery<String>() {
-      @Override
-      protected String executeInEDT() {
+      @Override protected String executeInEDT() {
         return c.getToolTipText();
       }
     });

@@ -56,8 +56,7 @@ public class JOptionPaneMessageTypeQuery_messageTypeOf_Test extends RobotBasedTe
     @RunsInEDT
     static MyOptionPane createNew() {
       return execute(new GuiQuery<MyOptionPane>() {
-        @Override
-        protected MyOptionPane executeInEDT() {
+        @Override   protected MyOptionPane executeInEDT() {
           return new MyOptionPane();
         }
       });

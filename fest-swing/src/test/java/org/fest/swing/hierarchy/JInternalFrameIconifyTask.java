@@ -23,12 +23,10 @@ final class JInternalFrameIconifyTask {
 
   static void iconify(final JInternalFrame internalFrame) {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() throws PropertyVetoException {
+      @Override protected void executeInEDT() throws PropertyVetoException {
         internalFrame.setIcon(true);
         pause(new Condition("JInternalFrame is iconified") {
-          @Override
-          public boolean test() {
+          @Override public boolean test() {
             return internalFrame.isIcon();
           }
         });

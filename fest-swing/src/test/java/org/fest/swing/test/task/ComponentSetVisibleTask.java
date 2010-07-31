@@ -42,8 +42,7 @@ public final class ComponentSetVisibleTask {
   @RunsInEDT
   public static void setVisible(final Component c, final boolean visible) {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         c.setVisible(visible);
       }
     });

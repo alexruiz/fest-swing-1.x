@@ -34,14 +34,12 @@ public class JToolBarFixture_float_Test extends JToolBarFixture_TestCase {
   public void should_float_to_point() {
     final Point p = new Point(8, 6);
     new EasyMockTemplate(driver()) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         driver().floatTo(target(), p.x, p.y);
         expectLastCall().once();
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         assertThatReturnsSelf(fixture().floatTo(p));
       }
     }.run();

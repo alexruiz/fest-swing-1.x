@@ -33,8 +33,7 @@ public final class ComponentSetPopupMenuTask {
   @RunsInEDT
   public static void setPopupMenu(final JComponent c, final JPopupMenu popupMenu) {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         c.setComponentPopupMenu(popupMenu);
       }
     });
@@ -43,8 +42,7 @@ public final class ComponentSetPopupMenuTask {
   @RunsInEDT
   public static JPopupMenu createAndSetPopupMenu(final JComponent c, final String...items) {
     return execute(new GuiQuery<JPopupMenu>() {
-      @Override
-      protected JPopupMenu executeInEDT() {
+      @Override protected JPopupMenu executeInEDT() {
         JPopupMenu popupMenu = new JPopupMenu();
         for (String item : items)
           popupMenu.add(new JMenuItem(item));

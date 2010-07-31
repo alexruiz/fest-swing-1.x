@@ -42,8 +42,7 @@ public final class ContainerInsetsQuery {
   @RunsInEDT
   public static Insets insetsOf(final Container container) {
     return execute(new GuiQuery<Insets>() {
-      @Override
-      protected Insets executeInEDT() {
+      @Override protected Insets executeInEDT() {
         return container.getInsets();
       }
     });

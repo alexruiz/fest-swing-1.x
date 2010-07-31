@@ -71,8 +71,7 @@ public class FEST104_JMenuItemShouldNotReceiveFocusWhenClicked_Test extends Robo
 
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
-        @Override
-        protected MyWindow executeInEDT() {
+        @Override   protected MyWindow executeInEDT() {
           return new MyWindow();
         }
       });

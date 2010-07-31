@@ -43,8 +43,7 @@ public class ComponentFixture_foreground_Test extends ComponentFixture_TestCase 
   @RunsInEDT
   private static Color foregroundOf(final Component component) {
     return execute(new GuiQuery<Color>() {
-      @Override
-      protected Color executeInEDT() {
+      @Override protected Color executeInEDT() {
         return component.getForeground();
       }
     });

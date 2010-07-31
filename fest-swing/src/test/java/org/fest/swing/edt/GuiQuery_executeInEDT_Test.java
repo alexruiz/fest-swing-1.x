@@ -39,8 +39,7 @@ public class GuiQuery_executeInEDT_Test {
   private static class GuiQueryInEDT extends GuiQuery<Boolean> {
     GuiQueryInEDT() {}
 
-    @Override
-    protected Boolean executeInEDT() {
+    @Override   protected Boolean executeInEDT() {
       return isEventDispatchThread();
     }
   }

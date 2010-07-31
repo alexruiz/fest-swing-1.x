@@ -54,8 +54,7 @@ public class ContainerFixtureJTreeLookupTest extends RobotBasedTestCase {
   @Test
   public void shouldFailIfJTreeCannotBeFoundByType() {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         window.remove(window.tree);
       }
     });
@@ -89,8 +88,7 @@ public class ContainerFixtureJTreeLookupTest extends RobotBasedTestCase {
   @Test
   public void shouldFindJTreeWithCustomMatcher() {
     JTreeFixture tree = fixture.tree(new GenericTypeMatcher<JTree>(JTree.class) {
-      @Override
-      protected boolean isMatching(JTree t) {
+      @Override protected boolean isMatching(JTree t) {
         return "expandMeTree".equals(t.getName());
       }
     });
@@ -105,8 +103,7 @@ public class ContainerFixtureJTreeLookupTest extends RobotBasedTestCase {
   public void shouldFailIfJTreeCannotBeFoundWithCustomMatcher() {
     try {
       fixture.tree(new GenericTypeMatcher<JTree>(JTree.class) {
-        @Override
-        protected boolean isMatching(JTree t) {
+        @Override   protected boolean isMatching(JTree t) {
           return false;
         }
       });
@@ -123,8 +120,7 @@ public class ContainerFixtureJTreeLookupTest extends RobotBasedTestCase {
 
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
-        @Override
-        protected MyWindow executeInEDT() {
+        @Override   protected MyWindow executeInEDT() {
           return new MyWindow();
         }
       });

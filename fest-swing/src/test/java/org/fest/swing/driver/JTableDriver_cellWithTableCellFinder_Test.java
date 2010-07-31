@@ -42,13 +42,11 @@ public class JTableDriver_cellWithTableCellFinder_Test extends JTableDriver_Test
   public void should_use_TableCellFinder_to_find_a_cell() {
     final TableCell cell = row(0).column(0);
     new EasyMockTemplate(cellFinder) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         expect(cellFinder.findCell(table, driver.cellReader())).andReturn(cell);
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         TableCell found = driver.cell(table, cellFinder);
         assertThat(found).isSameAs(cell);
       }
@@ -59,13 +57,11 @@ public class JTableDriver_cellWithTableCellFinder_Test extends JTableDriver_Test
   public void should_throw_error_if_indices_in_found_cell_are_out_of_bounds() {
     final TableCell cell = row(-1).column(0);
     new EasyMockTemplate(cellFinder) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         expect(cellFinder.findCell(table, driver.cellReader())).andReturn(cell);
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         driver.cell(table, cellFinder);
       }
     }.run();

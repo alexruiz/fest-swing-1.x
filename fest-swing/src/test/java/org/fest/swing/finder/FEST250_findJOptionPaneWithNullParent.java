@@ -39,8 +39,7 @@ public class FEST250_findJOptionPaneWithNullParent extends EDTSafeTestCase {
   @Before
   public void setUp() {
     JOptionPane optionPane = execute(new GuiQuery<JOptionPane>() {
-      @Override
-      protected JOptionPane executeInEDT() {
+      @Override protected JOptionPane executeInEDT() {
         return new JOptionPane("Hello World!");
       }
     });

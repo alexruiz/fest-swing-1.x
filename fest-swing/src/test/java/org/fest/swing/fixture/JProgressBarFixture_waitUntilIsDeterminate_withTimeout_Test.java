@@ -33,14 +33,12 @@ public class JProgressBarFixture_waitUntilIsDeterminate_withTimeout_Test extends
   public void should_require_value() {
     final Timeout timeout = timeout(100);
     new EasyMockTemplate(driver()) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         driver().waitUntilIsDeterminate(target(), timeout);
         expectLastCall().once();
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         assertThatReturnsSelf(fixture().waitUntilIsDeterminate(timeout));
       }
     }.run();

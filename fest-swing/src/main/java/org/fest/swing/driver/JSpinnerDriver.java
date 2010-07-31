@@ -81,8 +81,7 @@ public class JSpinnerDriver extends JComponentDriver {
   @RunsInEDT
   private static void validateAndIncrementValue(final JSpinner spinner, final int times) {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         validateIsEnabledAndShowing(spinner);
         incrementValue(spinner, times);
       }
@@ -113,8 +112,7 @@ public class JSpinnerDriver extends JComponentDriver {
   @RunsInEDT
   private static void validateAndIncrementValue(final JSpinner spinner) {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         validateIsEnabledAndShowing(spinner);
         Object newValue = spinner.getNextValue();
         if (newValue != null) spinner.setValue(newValue);
@@ -146,8 +144,7 @@ public class JSpinnerDriver extends JComponentDriver {
   @RunsInEDT
   private static void validateAndDecrementValue(final JSpinner spinner, final int times) {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         validateIsEnabledAndShowing(spinner);
         decrementValue(spinner, times);
       }
@@ -178,8 +175,7 @@ public class JSpinnerDriver extends JComponentDriver {
   @RunsInEDT
   private static void validateAndDecrementValue(final JSpinner spinner) {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         validateIsEnabledAndShowing(spinner);
         Object newValue = spinner.getPreviousValue();
         if (newValue != null) spinner.setValue(newValue);
@@ -225,8 +221,7 @@ public class JSpinnerDriver extends JComponentDriver {
   @RunsInEDT
   private static void commit(final JSpinner spinner) {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() throws ParseException {
+      @Override protected void executeInEDT() throws ParseException {
         spinner.commitEdit();
       }
     });
@@ -267,8 +262,7 @@ public class JSpinnerDriver extends JComponentDriver {
   @RunsInEDT
   private static void validate(final JSpinner spinner, final JTextComponent editor) {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         if (editor == null) throw actionFailure(concat("Unable to find editor for ", format(spinner)));
       }
     });

@@ -32,8 +32,7 @@ final class JProgressBarIncrementValueTask {
   @RunsInEDT
   static int incrementValue(final JProgressBar progressBar, final int increment) {
     return execute(new GuiQuery<Integer>()  {
-      @Override
-      protected Integer executeInEDT() {
+      @Override protected Integer executeInEDT() {
         int value = progressBar.getValue();
         value += increment;
         progressBar.setValue(value);

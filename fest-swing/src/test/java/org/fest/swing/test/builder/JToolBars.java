@@ -53,8 +53,7 @@ public final class JToolBars {
     @RunsInEDT
     public JToolBar createNew() {
       return execute(new GuiQuery<JToolBar>() {
-        @Override
-        protected JToolBar executeInEDT() {
+        @Override   protected JToolBar executeInEDT() {
           JToolBar toolBar = new JToolBar();
           toolBar.setOrientation(orientation);
           toolBar.setName(name);

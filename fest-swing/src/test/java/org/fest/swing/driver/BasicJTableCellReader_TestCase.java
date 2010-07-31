@@ -54,8 +54,7 @@ public class BasicJTableCellReader_TestCase extends RobotBasedTestCase {
   @RunsInEDT
   private static JLabel setJLabelAsCellRendererOf(final JTable table) {
     return execute(new GuiQuery<JLabel>() {
-      @Override
-      protected JLabel executeInEDT() {
+      @Override protected JLabel executeInEDT() {
         JLabel label = new JLabel("Hello");
         label.setBackground(BLUE);
         label.setForeground(WHITE);
@@ -77,8 +76,7 @@ public class BasicJTableCellReader_TestCase extends RobotBasedTestCase {
     @RunsInEDT
     static MyWindow createNew(final Class<?> testClass) {
       return execute(new GuiQuery<MyWindow>() {
-        @Override
-        protected MyWindow executeInEDT() {
+        @Override   protected MyWindow executeInEDT() {
           return new MyWindow(testClass);
         }
       });

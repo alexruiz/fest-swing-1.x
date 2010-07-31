@@ -34,8 +34,7 @@ final class JTextComponentTextQuery {
   @RunsInEDT
   static String textOf(final JTextComponent textComponent) {
     return execute(new GuiQuery<String>() {
-      @Override
-      protected String executeInEDT() {
+      @Override protected String executeInEDT() {
         return textComponent.getText();
       }
     });

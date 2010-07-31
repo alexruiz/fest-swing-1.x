@@ -35,8 +35,7 @@ final class ComponentMoveTask {
   @RunsInEDT
   static void moveComponent(final Component c, final Point location) {
     execute(new GuiTask( ) {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         c.setLocation(location);
       }
     });

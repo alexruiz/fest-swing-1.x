@@ -36,13 +36,11 @@ public class KeyStrokeMap_charFor_Test extends KeyStrokeMap_TestCase {
   @Test
   public void should_return_char_for_KeyStroke() {
     new EasyMockTemplate(provider) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         expect(provider.keyStrokeMappings()).andReturn(mappings);
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         KeyStrokeMap.addKeyStrokesFrom(provider);
         assertThat(KeyStrokeMap.charFor(keyStroke)).isEqualTo('A');
       }
@@ -55,14 +53,12 @@ public class KeyStrokeMap_charFor_Test extends KeyStrokeMap_TestCase {
     final KeyStrokeMapCollection maps = mockKeyStrokeMapCollection();
     KeyStrokeMap.updateKeyStrokeMapCollection(maps);
     new EasyMockTemplate(maps) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         expect(maps.charFor(keyStroke)).andReturn(null);
         expect(maps.charFor(removeModifiersExceptShift(keyStroke))).andReturn(character);
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         assertThat(KeyStrokeMap.charFor(keyStroke)).isEqualTo(character);
       }
     }.run();
@@ -73,14 +69,12 @@ public class KeyStrokeMap_charFor_Test extends KeyStrokeMap_TestCase {
     final KeyStrokeMapCollection maps = mockKeyStrokeMapCollection();
     KeyStrokeMap.updateKeyStrokeMapCollection(maps);
     new EasyMockTemplate(maps) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         expect(maps.charFor(keyStroke)).andReturn(null);
         expect(maps.charFor(removeModifiersExceptShift(keyStroke))).andReturn(null);
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         assertThat(KeyStrokeMap.charFor(keyStroke)).isEqualTo(CHAR_UNDEFINED);
       }
     }.run();

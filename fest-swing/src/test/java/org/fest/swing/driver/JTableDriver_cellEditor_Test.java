@@ -45,13 +45,11 @@ public class JTableDriver_cellEditor_Test extends JTableDriver_withMockCellWrite
   @Test
   public void should_cell_editor() {
     new EasyMockTemplate(cellWriter) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         expect(cellWriter.editorForCell(table, 0, 0)).andReturn(editor);
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         Component result = driver.cellEditor(table, row(0).column(0));
         assertThat(result).isSameAs(editor);
       }

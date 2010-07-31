@@ -48,13 +48,11 @@ public class ScreenshotTaker_constructor_Test {
   @Test
   public void should_throw_wrapped_Exception_thrown_when_creating_Robot() {
     new EasyMockTemplate(writer, robotFactory) {
-      @Override
-      protected void expectations() throws Throwable {
+      @Override protected void expectations() throws Throwable {
         expect(robotFactory.newRobotInPrimaryScreen()).andThrow(toThrow);
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         try {
           new ScreenshotTaker(writer, robotFactory);
           failWhenExpectingException();

@@ -33,8 +33,7 @@ final class JProgressBarIndeterminateQuery {
   @RunsInEDT
   static boolean isIndeterminate(final JProgressBar progressBar) {
     return execute(new GuiQuery<Boolean>() {
-      @Override
-      protected Boolean executeInEDT() {
+      @Override protected Boolean executeInEDT() {
         return progressBar.isIndeterminate();
       }
     });

@@ -42,17 +42,13 @@ public class JToolBarFixture_mouseInput_Test extends MouseInputSimulationFixture
     target = toolBar().createNew();
   }
 
-  @Override
-  void onSetUp() {
+  @Override void onSetUp() {
     driver = createMock(JToolBarDriver.class);
     fixture = new JToolBarFixture(robot(), target);
     fixture.driver(driver);
   }
 
-  @Override
-  JToolBarDriver driver() {  return driver; }
-  @Override
-  JToolBar target() { return target; }
-  @Override
-  JToolBarFixture fixture() { return fixture; }
+  @Override JToolBarDriver driver() {  return driver; }
+  @Override JToolBar target() { return target; }
+  @Override JToolBarFixture fixture() { return fixture; }
 }

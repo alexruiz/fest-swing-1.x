@@ -40,8 +40,7 @@ public class Formatting_formatter_Test {
     type = JComboBox.class;
     oldFormatter = Formatting.formatter(type);
     newFormatter = new ComponentFormatterTemplate() {
-      @Override
-      protected String doFormat(Component c) { return null; }
+      @Override protected String doFormat(Component c) { return null; }
 
       public Class<? extends Component> targetType() {
         return type;

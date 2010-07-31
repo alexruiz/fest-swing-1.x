@@ -33,13 +33,11 @@ public class Context_storedQueueFor_Test extends Context_TestCase {
   @Test
   public void should_return_stored_queue() {
     new EasyMockTemplate(eventQueueMapping) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         expect(eventQueueMapping.storedQueueFor(window)).andReturn(eventQueue);
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         EventQueue storedQueue = context.storedQueueFor(window);
         assertThat(storedQueue).isSameAs(eventQueue);
       }

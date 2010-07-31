@@ -42,17 +42,13 @@ public class JMenuItemFixture_keyboardInput_Test extends KeyboardInputSimulation
     target = menuItem().createNew();
   }
 
-  @Override
-  void onSetUp() {
+  @Override void onSetUp() {
     driver = createMock(JMenuItemDriver.class);
     fixture = new JMenuItemFixture(robot(), target);
     fixture.driver(driver);
   }
 
-  @Override
-  JMenuItemDriver driver() { return driver; }
-  @Override
-  JMenuItem target() { return target; }
-  @Override
-  JMenuItemFixture fixture() { return fixture; }
+  @Override JMenuItemDriver driver() { return driver; }
+  @Override JMenuItem target() { return target; }
+  @Override JMenuItemFixture fixture() { return fixture; }
 }

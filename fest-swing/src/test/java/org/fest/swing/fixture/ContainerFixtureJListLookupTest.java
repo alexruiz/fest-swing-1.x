@@ -54,8 +54,7 @@ public class ContainerFixtureJListLookupTest extends RobotBasedTestCase {
   @Test
   public void shouldFailIfJListCannotBeFoundByType() {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         window.remove(window.list);
       }
     });
@@ -89,8 +88,7 @@ public class ContainerFixtureJListLookupTest extends RobotBasedTestCase {
   @Test
   public void shouldFindJListWithCustomMatcher() {
     JListFixture list = fixture.list(new GenericTypeMatcher<JList>(JList.class) {
-      @Override
-      protected boolean isMatching(JList l) {
+      @Override protected boolean isMatching(JList l) {
         return l.getModel().getSize() == 3;
       }
     });
@@ -105,8 +103,7 @@ public class ContainerFixtureJListLookupTest extends RobotBasedTestCase {
   public void shouldFailIfJListCannotBeFoundWithCustomMatcher() {
     try {
       fixture.list(new GenericTypeMatcher<JList>(JList.class) {
-        @Override
-        protected boolean isMatching(JList l) {
+        @Override   protected boolean isMatching(JList l) {
           return false;
         }
       });
@@ -123,8 +120,7 @@ public class ContainerFixtureJListLookupTest extends RobotBasedTestCase {
 
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
-        @Override
-        protected MyWindow executeInEDT() {
+        @Override   protected MyWindow executeInEDT() {
           return new MyWindow();
         }
       });

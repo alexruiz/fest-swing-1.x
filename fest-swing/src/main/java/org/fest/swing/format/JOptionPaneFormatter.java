@@ -54,8 +54,7 @@ public class JOptionPaneFormatter extends ComponentFormatterTemplate {
    * @param c the given {@code Component}.
    * @return the <code>String</code> representation of the given <code>JOptionPane</code>.
    */
-  @Override
-  protected String doFormat(Component c) {
+  @Override protected String doFormat(Component c) {
     JOptionPane optionPane = (JOptionPane)c;
     return concat(
         optionPane.getClass().getName(), "[",

@@ -77,8 +77,7 @@ public class JTableCellEditableQuery_isCellEditable_Test extends RobotBasedTestC
   @RunsInEDT
   private static boolean isCellEditable(final JTable table, final int row, final int column) {
     return execute(new GuiQuery<Boolean>() {
-      @Override
-      protected Boolean executeInEDT() {
+      @Override protected Boolean executeInEDT() {
         return JTableCellEditableQuery.isCellEditable(table, row(row).column(column));
       }
     });
@@ -92,8 +91,7 @@ public class JTableCellEditableQuery_isCellEditable_Test extends RobotBasedTestC
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
-        @Override
-        protected MyWindow executeInEDT() {
+        @Override   protected MyWindow executeInEDT() {
           return new MyWindow();
         }
       });

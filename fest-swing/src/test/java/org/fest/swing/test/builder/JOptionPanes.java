@@ -62,8 +62,7 @@ public final class JOptionPanes {
     @RunsInEDT
     public JOptionPane createNew() {
       return GuiActionRunner.execute(new GuiQuery<JOptionPane>() {
-        @Override
-        protected JOptionPane executeInEDT() {
+        @Override   protected JOptionPane executeInEDT() {
           JOptionPane optionPane = new JOptionPane();
           optionPane.setMessage(message);
           optionPane.setMessageType(messageType);

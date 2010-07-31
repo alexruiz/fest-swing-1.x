@@ -43,8 +43,7 @@ public class JInternalFrameDriver_resizeWidthTo_Test extends JInternalFrameDrive
   @RunsInEDT
   private static int widthOf(final JInternalFrame internalFrame) {
     return execute(new GuiQuery<Integer>() {
-      @Override
-      protected Integer executeInEDT() {
+      @Override protected Integer executeInEDT() {
         return internalFrame.getWidth();
       }
     });

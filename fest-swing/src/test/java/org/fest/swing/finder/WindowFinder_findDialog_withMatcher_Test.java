@@ -75,8 +75,7 @@ public class WindowFinder_findDialog_withMatcher_Test extends WindowFinder_TestC
       super(JDialog.class);
     }
 
-    @Override
-    protected boolean isMatching(JDialog dialog) {
+    @Override   protected boolean isMatching(JDialog dialog) {
       return "dialog".equals(dialog.getName()) && isShowing(dialog);
     }
   }

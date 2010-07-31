@@ -42,8 +42,7 @@ public class JTableDriver_drag_drop_Test extends JTableDriver_TestCase {
 
   @Override void extraSetUp() {
     dropTable = execute(new GuiQuery<TestTable>() {
-      @Override
-      protected TestTable executeInEDT() {
+      @Override protected TestTable executeInEDT() {
         TestTable t = new TestTable(dropTableData(DROP_TABLE_ROW_COUNT, COLUMN_COUNT), columnNames(COLUMN_COUNT));
         window.addTable(t);
         return t;

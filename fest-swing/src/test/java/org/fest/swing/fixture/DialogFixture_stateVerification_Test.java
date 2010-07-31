@@ -47,17 +47,13 @@ public class DialogFixture_stateVerification_Test extends StateVerificationFixtu
     hideAndDisposeInEDT(target);
   }
 
-  @Override
-  void onSetUp() {
+  @Override void onSetUp() {
     driver = createMock(DialogDriver.class);
     fixture = new DialogFixture(robot(), target);
     fixture.driver(driver);
   }
 
-  @Override
-  DialogDriver driver() { return driver; }
-  @Override
-  Dialog target() { return target; }
-  @Override
-  DialogFixture fixture() { return fixture; }
+  @Override DialogDriver driver() { return driver; }
+  @Override Dialog target() { return target; }
+  @Override DialogFixture fixture() { return fixture; }
 }

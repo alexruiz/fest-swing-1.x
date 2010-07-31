@@ -128,8 +128,7 @@ public class JTabbedPaneDriver extends JComponentDriver {
   private static Pair<Integer, Point> tabToSelectInfo(final JTabbedPaneLocation location,
       final JTabbedPane tabbedPane, final TextMatcher matcher) {
     return execute(new GuiQuery<Pair<Integer, Point>>() {
-      @Override
-      protected Pair<Integer, Point> executeInEDT() {
+      @Override protected Pair<Integer, Point> executeInEDT() {
         validateIsEnabledAndShowing(tabbedPane);
         int index = location.indexOf(tabbedPane, matcher);
         location.validateIndex(tabbedPane, index);
@@ -164,8 +163,7 @@ public class JTabbedPaneDriver extends JComponentDriver {
   @RunsInEDT
   private static Point validateAndGetPoint(final JTabbedPaneLocation location, final JTabbedPane tabbedPane, final int index) {
     return execute(new GuiQuery<Point>() {
-      @Override
-      protected Point executeInEDT() {
+      @Override protected Point executeInEDT() {
         location.validateIndex(tabbedPane, index);
         validateIsEnabledAndShowing(tabbedPane);
         return location.pointAt(tabbedPane, index);
@@ -192,8 +190,7 @@ public class JTabbedPaneDriver extends JComponentDriver {
   @RunsInEDT
   private static Point pointAtTab(final JTabbedPaneLocation location, final JTabbedPane tabbedPane, final int index) {
     return execute(new GuiQuery<Point>() {
-      @Override
-      protected Point executeInEDT() {
+      @Override protected Point executeInEDT() {
         return location.pointAt(tabbedPane, index);
       }
     });
@@ -212,8 +209,7 @@ public class JTabbedPaneDriver extends JComponentDriver {
   @RunsInEDT
   private static Component selectedComponent(final JTabbedPane tabbedPane) {
     return execute(new GuiQuery<Component>() {
-      @Override
-      protected Component executeInEDT() {
+      @Override protected Component executeInEDT() {
         return tabbedPane.getSelectedComponent();
       }
     });
@@ -257,8 +253,7 @@ public class JTabbedPaneDriver extends JComponentDriver {
   @RunsInEDT
   private static String titleAt(final JTabbedPane tabbedPane, final Index index) {
     return execute(new GuiQuery<String>() {
-      @Override
-      protected String executeInEDT() {
+      @Override protected String executeInEDT() {
         return tabbedPane.getTitleAt(index.value);
       }
     });
@@ -281,8 +276,7 @@ public class JTabbedPaneDriver extends JComponentDriver {
   @RunsInEDT
   private static String[] allTabTitlesIn(final JTabbedPane tabbedPane) {
     return execute(new GuiQuery<String[]>() {
-      @Override
-      protected String[] executeInEDT() {
+      @Override protected String[] executeInEDT() {
         List<String> allTitles = new ArrayList<String>();
         int tabCount = tabbedPane.getTabCount();
         for (int i = 0; i < tabCount; i++)

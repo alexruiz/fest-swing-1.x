@@ -42,8 +42,7 @@ public final class ComponentParentQuery {
   @RunsInEDT
   public static Container parentOf(final Component component) {
     return execute(new GuiQuery<Container>() {
-      @Override
-      protected Container executeInEDT() {
+      @Override protected Container executeInEDT() {
         return component.getParent();
       }
     });

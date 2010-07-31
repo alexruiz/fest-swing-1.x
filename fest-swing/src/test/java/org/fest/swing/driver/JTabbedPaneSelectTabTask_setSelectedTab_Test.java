@@ -61,8 +61,7 @@ public class JTabbedPaneSelectTabTask_setSelectedTab_Test extends RobotBasedTest
   @RunsInEDT
   private static int selectedIndexOf(final JTabbedPane tabbedPane) {
     return execute(new GuiQuery<Integer>() {
-      @Override
-      protected Integer executeInEDT() {
+      @Override protected Integer executeInEDT() {
         return tabbedPane.getSelectedIndex();
       }
     });
@@ -76,8 +75,7 @@ public class JTabbedPaneSelectTabTask_setSelectedTab_Test extends RobotBasedTest
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
-        @Override
-        protected MyWindow executeInEDT() {
+        @Override   protected MyWindow executeInEDT() {
           return new MyWindow();
         }
       });

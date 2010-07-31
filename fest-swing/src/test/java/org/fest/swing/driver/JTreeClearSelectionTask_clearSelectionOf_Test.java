@@ -61,8 +61,7 @@ public class JTreeClearSelectionTask_clearSelectionOf_Test extends RobotBasedTes
   @RunsInEDT
   private static int selectionCountOf(final MyTree tree) {
     return execute(new GuiQuery<Integer>() {
-      @Override
-      protected Integer executeInEDT() {
+      @Override protected Integer executeInEDT() {
         return tree.getSelectionCount();
       }
     });
@@ -76,8 +75,7 @@ public class JTreeClearSelectionTask_clearSelectionOf_Test extends RobotBasedTes
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
-        @Override
-        protected MyWindow executeInEDT() {
+        @Override   protected MyWindow executeInEDT() {
           return new MyWindow();
         }
       });

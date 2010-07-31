@@ -47,8 +47,7 @@ public class BasicJTableCellReader_foregroundAt_Test extends BasicJTableCellRead
   private static Color foregroundAt(final BasicJTableCellReader reader, final JTable table, final int row,
       final int column) {
     return execute(new GuiQuery<Color>() {
-      @Override
-      protected Color executeInEDT() {
+      @Override protected Color executeInEDT() {
         return reader.foregroundAt(table, row, column);
       }
     });

@@ -39,15 +39,13 @@ final class NewAppletViewerQuery {
   static AppletViewer showAppletViewerWith(final Applet applet, final Map<String, String> parameters) {
     final AppletViewer viewer = newViewer(applet, parameters);
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         viewer.pack();
         viewer.setVisible(true);
       }
     });
     pause(new Condition("new AppletViewer to be showing") {
-      @Override
-      public boolean test() {
+      @Override public boolean test() {
         return viewer.isShowing();
       }
     });

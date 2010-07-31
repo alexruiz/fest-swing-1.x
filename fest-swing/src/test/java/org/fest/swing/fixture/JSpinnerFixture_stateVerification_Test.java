@@ -42,17 +42,13 @@ public class JSpinnerFixture_stateVerification_Test extends StateVerificationFix
     target = spinner().createNew();
   }
 
-  @Override
-  void onSetUp() {
+  @Override void onSetUp() {
     driver = createMock(JSpinnerDriver.class);
     fixture = new JSpinnerFixture(robot(), target);
     fixture.driver(driver);
   }
 
-  @Override
-  JSpinnerDriver driver() {  return driver; }
-  @Override
-  JSpinner target() { return target; }
-  @Override
-  JSpinnerFixture fixture() { return fixture; }
+  @Override JSpinnerDriver driver() {  return driver; }
+  @Override JSpinner target() { return target; }
+  @Override JSpinnerFixture fixture() { return fixture; }
 }

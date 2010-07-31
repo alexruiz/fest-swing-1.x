@@ -59,8 +59,7 @@ public class WaitForComponentToShowCondition_test_Test extends EDTSafeTestCase {
     @RunsInEDT
     static ComponentStub createNew() {
       return execute(new GuiQuery<ComponentStub>() {
-        @Override
-        protected ComponentStub executeInEDT() {
+        @Override   protected ComponentStub executeInEDT() {
           return new ComponentStub();
         }
       });

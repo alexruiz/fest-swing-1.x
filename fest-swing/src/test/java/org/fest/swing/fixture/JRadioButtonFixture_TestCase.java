@@ -41,17 +41,13 @@ public abstract class JRadioButtonFixture_TestCase extends ComponentFixture_Impl
     target = radioButton().createNew();
   }
 
-  @Override
-  final void onSetUp() {
+  @Override final void onSetUp() {
     driver = createMock(AbstractButtonDriver.class);
     fixture = new JRadioButtonFixture(robot(), target);
     fixture.driver(driver);
   }
 
-  @Override
-  AbstractButtonDriver driver() {  return driver; }
-  @Override
-  JRadioButton target() { return target; }
-  @Override
-  JRadioButtonFixture fixture() { return fixture; }
+  @Override AbstractButtonDriver driver() {  return driver; }
+  @Override JRadioButton target() { return target; }
+  @Override JRadioButtonFixture fixture() { return fixture; }
 }

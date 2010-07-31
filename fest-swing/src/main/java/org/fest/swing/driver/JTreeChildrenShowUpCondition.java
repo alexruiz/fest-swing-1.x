@@ -44,8 +44,7 @@ class JTreeChildrenShowUpCondition extends Condition {
     this.path = path;
   }
 
-  @Override
-  @RunsInEDT
+  @Override @RunsInEDT
   public boolean test() {
     return childCount(tree, path) != 0;
   }

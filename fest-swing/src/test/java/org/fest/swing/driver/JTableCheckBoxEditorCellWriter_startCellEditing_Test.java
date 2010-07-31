@@ -25,8 +25,7 @@ import org.fest.swing.cell.JTableCellWriter;
  */
 public class JTableCheckBoxEditorCellWriter_startCellEditing_Test extends JTableCellWriter_startCellEditing_TestCase {
 
-  @Override
-  protected JTableCellWriter createWriter() {
+  @Override protected JTableCellWriter createWriter() {
     return new JTableCheckBoxEditorCellWriter(robot);
   }
 }

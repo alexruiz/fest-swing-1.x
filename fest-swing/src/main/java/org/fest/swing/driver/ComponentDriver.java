@@ -218,8 +218,7 @@ public class ComponentDriver {
 
   private static Description requiredFocusedErrorMessage(final Component c) {
     return new GuiLazyLoadingDescription() {
-      @Override
-      protected String loadDescription() {
+      @Override protected String loadDescription() {
         return concat("Expected component ", format(c), " to have input focus");
       }
     };
@@ -490,8 +489,7 @@ public class ComponentDriver {
   @RunsInEDT
   protected static void assertIsEnabledAndShowing(final Component c) {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         validateIsEnabledAndShowing(c);
       }
     });
@@ -509,8 +507,7 @@ public class ComponentDriver {
   @RunsInEDT
   public static Description propertyName(final Component c, final String propertyName) {
     return new GuiLazyLoadingDescription() {
-      @Override
-      protected String loadDescription() {
+      @Override protected String loadDescription() {
         return concat(format(c), " - property:", quote(propertyName));
       }
     };

@@ -84,8 +84,7 @@ class WindowStatus {
     mouseMove(w, metricsAndCenter.ii);
     if (!windows.isShowingButNotReady(w)) return;
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         makeLargeEnoughToReceiveEvents(w, metrics);
       }
     });
@@ -94,8 +93,7 @@ class WindowStatus {
   @RunsInEDT
   private static Pair<WindowMetrics, Point> metricsAndCenter(final Window w) {
     return execute(new GuiQuery<Pair<WindowMetrics, Point>>() {
-      @Override
-      protected Pair<WindowMetrics, Point> executeInEDT() {
+      @Override protected Pair<WindowMetrics, Point> executeInEDT() {
         WindowMetrics metrics = new WindowMetrics(w);
         return new Pair<WindowMetrics, Point>(metrics, metrics.center());
       }

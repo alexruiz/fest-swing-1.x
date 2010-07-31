@@ -31,14 +31,12 @@ public class JListFixture_clickItemByIndex_Test extends JListFixture_TestCase {
   @Test
   public void should_click_item() {
     new EasyMockTemplate(driver()) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         driver().clickItem(target(), 6, LEFT_BUTTON, 1);
         expectLastCall().once();
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         assertThatReturnsSelf(fixture().clickItem(6));
       }
     }.run();

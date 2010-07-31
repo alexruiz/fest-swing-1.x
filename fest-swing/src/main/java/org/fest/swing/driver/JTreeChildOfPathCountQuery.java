@@ -19,8 +19,7 @@ final class JTreeChildOfPathCountQuery {
   @RunsInEDT
   static int childCount(final JTree tree, final TreePath path) {
     return execute(new GuiQuery<Integer>() {
-      @Override
-      protected Integer executeInEDT() {
+      @Override protected Integer executeInEDT() {
         Object lastPathComponent = path.getLastPathComponent();
         return tree.getModel().getChildCount(lastPathComponent);
       }

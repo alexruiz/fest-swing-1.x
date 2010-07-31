@@ -91,8 +91,7 @@ public class Bug133_scrollToItemToSelectInJTree_Test extends RobotBasedTestCase 
   @RunsInEDT
   private static Object selectionOf(final JTree tree) {
     return execute(new GuiQuery<Object>() {
-      @Override
-      protected Object executeInEDT() {
+      @Override protected Object executeInEDT() {
         Object lastPathComponent = tree.getSelectionPath().getLastPathComponent();
         DefaultMutableTreeNode node = (DefaultMutableTreeNode)lastPathComponent;
         return node.getUserObject();
@@ -109,8 +108,7 @@ public class Bug133_scrollToItemToSelectInJTree_Test extends RobotBasedTestCase 
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
-        @Override
-        protected MyWindow executeInEDT() {
+        @Override   protected MyWindow executeInEDT() {
           return new MyWindow();
         }
       });

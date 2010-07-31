@@ -45,15 +45,13 @@ public class ComponentFixture_constructor_withLookupByType_Test extends Componen
   public void should_lookup_Component_by_type() {
     final ComponentFinder finder = newComponentFinderMock();
     new EasyMockTemplate(robot, finder) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         expect(robot.settings()).andReturn(settings);
         expect(robot.finder()).andReturn(finder);
         expect(finder.findByType(type, requireShowing())).andReturn(target);
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         assertHasCorrectTarget(new ConcreteComponentFixture(robot, type));
       }
     }.run();

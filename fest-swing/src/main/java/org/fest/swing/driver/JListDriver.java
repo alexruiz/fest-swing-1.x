@@ -134,10 +134,8 @@ public class JListDriver extends JComponentDriver {
     if (indices.isEmpty()) throw failMatchingNotFound(list, matcher);
     clearSelection(list);
     new MultipleSelectionTemplate(robot) {
-      @Override
-      int elementCount() { return indices.size(); }
-      @Override
-      void selectElement(int index) { selectItem(list, indices.get(index)); }
+      @Override int elementCount() { return indices.size(); }
+      @Override void selectElement(int index) { selectItem(list, indices.get(index)); }
     }.multiSelect();
   }
 
@@ -231,10 +229,8 @@ public class JListDriver extends JComponentDriver {
     validateArrayOfIndices(indices);
     clearSelection(list);
     new MultipleSelectionTemplate(robot) {
-      @Override
-      int elementCount() { return indices.length; }
-      @Override
-      void selectElement(int index) { selectItem(list, indices[index]); }
+      @Override int elementCount() { return indices.length; }
+      @Override void selectElement(int index) { selectItem(list, indices[index]); }
     }.multiSelect();
   }
 
@@ -252,8 +248,7 @@ public class JListDriver extends JComponentDriver {
   @RunsInEDT
   private static void clearSelectionOf(final JList list) {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         list.clearSelection();
       }
     });
@@ -299,8 +294,7 @@ public class JListDriver extends JComponentDriver {
   @RunsInEDT
   private static void validateIndicesAndClearSelection(final JList list, final int...indices) {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         validateIndices(list, indices);
         list.clearSelection();
       }
@@ -712,8 +706,7 @@ public class JListDriver extends JComponentDriver {
   @RunsInEDT
   private static int itemIndex(final JList list, final TextMatcher matcher, final JListCellReader cellReader) {
     return execute(new GuiQuery<Integer>() {
-      @Override
-      protected Integer executeInEDT() {
+      @Override protected Integer executeInEDT() {
         return matchingItemIndex(list, matcher, cellReader);
       }
     });
