@@ -17,8 +17,7 @@ package org.fest.swing.testng.listener;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.assertions.ImageAssert.read;
 import static org.fest.util.Files.temporaryFolderPath;
-import static org.fest.util.Strings.concat;
-import static org.fest.util.Strings.join;
+import static org.fest.util.Strings.*;
 
 import java.awt.Toolkit;
 import java.text.SimpleDateFormat;

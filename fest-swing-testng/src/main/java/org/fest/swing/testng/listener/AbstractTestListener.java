@@ -1,23 +1,21 @@
 /*
  * Created on May 6, 2007
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License
  * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
- * 
+ *
  * Copyright @2007-2009  the original author or authors.
  */
 package org.fest.swing.testng.listener;
 
-import org.testng.ITestContext;
-import org.testng.ITestListener;
-import org.testng.ITestResult;
+import org.testng.*;
 
 /**
  * Understands a base class for TestNG listeners.
@@ -31,7 +29,7 @@ public abstract class AbstractTestListener implements ITestListener {
    * @param context test context containing all the information for a given test run.
    */
   public void onStart(ITestContext context) {}
-  
+
   /**
    * Invoked after all the tests have run and all their Configuration methods have been called.
    * @param context test context containing all the information for a given test run.
@@ -51,13 +49,13 @@ public abstract class AbstractTestListener implements ITestListener {
    * @param result the partially filled test result.
    */
   public void onTestStart(ITestResult result) {}
-  
+
   /**
    * Invoked each time a test succeeds.
    * @param result contains information about the run test.
    */
   public void onTestSuccess(ITestResult result) {}
-  
+
   /**
    * Invoked each time a test fails.
    * @param result contains information about the run test.

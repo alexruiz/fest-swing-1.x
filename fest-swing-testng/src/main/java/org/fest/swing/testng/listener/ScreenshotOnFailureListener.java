@@ -14,23 +14,19 @@
  */
 package org.fest.swing.testng.listener;
 
+import static java.io.File.separator;
+import static java.util.logging.Level.SEVERE;
+import static org.fest.swing.testng.listener.ScreenshotFileNameGenerator.screenshotFileNameFrom;
+import static org.fest.util.Strings.*;
+
 import java.lang.reflect.Method;
 import java.util.logging.Logger;
-
-import org.testng.ITestContext;
-import org.testng.ITestResult;
-import org.testng.Reporter;
 
 import org.fest.swing.annotation.GUITestFinder;
 import org.fest.swing.image.ImageException;
 import org.fest.swing.image.ScreenshotTaker;
 import org.fest.util.VisibleForTesting;
-
-import static java.io.File.separator;
-import static java.util.logging.Level.SEVERE;
-
-import static org.fest.swing.testng.listener.ScreenshotFileNameGenerator.screenshotFileNameFrom;
-import static org.fest.util.Strings.*;
+import org.testng.*;
 
 /**
  * Understands a <a href="http://testng.org" target="_blank">TestNG</a> listener that takes a screenshot when a GUI test
