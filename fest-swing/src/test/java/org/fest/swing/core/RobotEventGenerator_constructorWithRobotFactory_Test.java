@@ -47,13 +47,11 @@ public class RobotEventGenerator_constructorWithRobotFactory_Test {
   public void should_use_RobotFactory_to_create_AWTRobot() {
     final Robot robot = createMock(Robot.class);
     new EasyMockTemplate(robotFactory) {
-      @Override
-      protected void expectations() throws Throwable {
+      @Override protected void expectations() throws Throwable {
         expect(robotFactory.newRobotInPrimaryScreen()).andReturn(robot);
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         RobotEventGenerator eventGenerator = new RobotEventGenerator(robotFactory, new Settings());
         assertThat(eventGenerator.robot()).isSameAs(robot);
       }
@@ -64,13 +62,11 @@ public class RobotEventGenerator_constructorWithRobotFactory_Test {
   public void should_rethrow_any_error_from_RobotFactory()  {
     final AWTException toThrow = new AWTException("Thrown on purpose");
     new EasyMockTemplate(robotFactory) {
-      @Override
-      protected void expectations() throws Throwable {
+      @Override protected void expectations() throws Throwable {
         expect(robotFactory.newRobotInPrimaryScreen()).andThrow(toThrow);
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         try {
           new RobotEventGenerator(robotFactory, new Settings());
           failWhenExpectingException();
@@ -79,7 +75,5 @@ public class RobotEventGenerator_constructorWithRobotFactory_Test {
         }
       }
     }.run();
-
   }
-
 }

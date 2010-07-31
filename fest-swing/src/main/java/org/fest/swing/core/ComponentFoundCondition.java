@@ -93,8 +93,7 @@ public final class ComponentFoundCondition extends Condition {
    * <code>{@link ComponentMatcher}</code> can be found. Otherwise, this method returns {@code false}.
    * @return {@code true} if a matching component can be found, {@code false} otherwise.
    */
-  @Override
-  public boolean test() {
+  @Override public boolean test() {
     boolean matchFound = false;
     try {
       found = finder.find(root, matcher);

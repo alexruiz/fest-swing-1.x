@@ -62,8 +62,7 @@ public final class FocusOwnerFinder {
   @RunsInEDT
   public static Component inEdtFocusOwner() {
     return execute(new GuiQuery<Component>() {
-      @Override
-      protected Component executeInEDT() {
+      @Override protected Component executeInEDT() {
         return focusOwner();
       }
     });

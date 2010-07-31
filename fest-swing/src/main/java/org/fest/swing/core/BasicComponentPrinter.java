@@ -129,8 +129,7 @@ public final class BasicComponentPrinter implements ComponentPrinter {
   @RunsInEDT
   private static void print(final ComponentHierarchy hierarchy, final ComponentMatcher matcher, final PrintStream out) {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         for (Component c : hierarchy.roots()) print(c, hierarchy, matcher, 0, out);
       }
     });

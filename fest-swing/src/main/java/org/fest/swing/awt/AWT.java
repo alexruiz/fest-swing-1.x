@@ -109,8 +109,7 @@ public class AWT {
   @RunsInEDT
   public static Point visibleCenterOf(final Component c) {
     return execute(new GuiQuery<Point>() {
-      @Override
-      protected Point executeInEDT() {
+      @Override protected Point executeInEDT() {
         if (c instanceof JComponent) return centerOfVisibleRect((JComponent)c);
         return centerOf(c);
       }

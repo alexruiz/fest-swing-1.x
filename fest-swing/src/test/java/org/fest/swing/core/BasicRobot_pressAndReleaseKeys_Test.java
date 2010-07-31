@@ -39,16 +39,14 @@ public class BasicRobot_pressAndReleaseKeys_Test extends BasicRobot_TestCase {
     giveFocusToTextField();
     final KeyRecorder recorder = KeyRecorder.attachTo(window.textField);
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         window.textField.setText("");
       }
     });
     robot.waitForIdle();
     robot.pressAndReleaseKeys(new int[] { VK_A, VK_B, VK_Z });
     pause(new Condition("until keys VK_A, VK_B and VK_Z are pressed and released") {
-      @Override
-      public boolean test() {
+      @Override public boolean test() {
         Integer[] expectedKeys = array(VK_A, VK_B, VK_Z);
         return recorder.keysWerePressed(expectedKeys) && recorder.keysWereReleased(expectedKeys);
       }

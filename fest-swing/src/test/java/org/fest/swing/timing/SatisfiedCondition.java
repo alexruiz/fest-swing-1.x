@@ -29,8 +29,7 @@ class SatisfiedCondition extends Condition {
     this.timeToWaitTillSatisfied = timeToWaitTillSatisfied;
   }
 
-  @Override
-  public boolean test() {
+  @Override public boolean test() {
     try {
       Thread.sleep(timeToWaitTillSatisfied);
     } catch (InterruptedException e) {

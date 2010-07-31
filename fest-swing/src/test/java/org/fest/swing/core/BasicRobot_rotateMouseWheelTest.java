@@ -40,11 +40,9 @@ public class BasicRobot_rotateMouseWheelTest extends BasicRobot_TestCase {
   private JScrollPane scrollPane;
 
   @RunsInEDT
-  @Override
-  void beforeShowingWindow() {
+  @Override void beforeShowingWindow() {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         list = new JList(array("One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight"));
         scrollPane = new JScrollPane(list);
         scrollPane.setPreferredSize(new Dimension(300, 100));
@@ -66,8 +64,7 @@ public class BasicRobot_rotateMouseWheelTest extends BasicRobot_TestCase {
   @RunsInEDT
   private static int firstVisibleIndexOf(final JList list) {
     return execute(new GuiQuery<Integer>() {
-      @Override
-      protected Integer executeInEDT() {
+      @Override protected Integer executeInEDT() {
         return list.getFirstVisibleIndex();
       }
     });

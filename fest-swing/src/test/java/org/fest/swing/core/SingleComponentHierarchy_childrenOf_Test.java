@@ -45,9 +45,8 @@ public class SingleComponentHierarchy_childrenOf_Test extends SingleComponentHie
 
   @After
   public void tearDown() {
-    GuiActionRunner.execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+    execute(new GuiTask() {
+      @Override protected void executeInEDT() {
         parent.setVisible(false);
         parent.dispose();
       }
@@ -58,13 +57,11 @@ public class SingleComponentHierarchy_childrenOf_Test extends SingleComponentHie
   public void should_return_children_of_Component() {
     final List<Component> children = list((Component)parent.button);
     new EasyMockTemplate(hierarchyDelegate) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         expect(hierarchyDelegate.childrenOf(parent)).andReturn(children);
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         Collection<Component> foundChildren = hierarchy.childrenOf(parent);
         assertThat(foundChildren).isSameAs(children);
       }
@@ -78,8 +75,7 @@ public class SingleComponentHierarchy_childrenOf_Test extends SingleComponentHie
 
     static FrameWithButton createNew() {
       return execute(new GuiQuery<FrameWithButton>() {
-        @Override
-        protected FrameWithButton executeInEDT() {
+        @Override protected FrameWithButton executeInEDT() {
           return new FrameWithButton();
         }
       });

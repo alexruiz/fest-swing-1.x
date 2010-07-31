@@ -56,8 +56,7 @@ public abstract class AppletViewer_TestCase extends EDTSafeTestCase {
   @RunsInEDT
   private static TestApplet createApplet() {
     return execute(new GuiQuery<TestApplet>() {
-      @Override
-      protected TestApplet executeInEDT() {
+      @Override protected TestApplet executeInEDT() {
         return new TestApplet();
       }
     });
@@ -66,8 +65,7 @@ public abstract class AppletViewer_TestCase extends EDTSafeTestCase {
   @RunsInEDT
   private static void assertThatIsInitializedAndStarted(final TestApplet applet) {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         assertThat(applet.initialized()).isTrue();
         assertThat(applet.started()).isTrue();
       }
@@ -89,8 +87,7 @@ public abstract class AppletViewer_TestCase extends EDTSafeTestCase {
       }
     });
     pause(new Condition("applet is unloaded") {
-      @Override
-      public boolean test() {
+      @Override public boolean test() {
         return !viewer.appletLoaded();
       }
     });

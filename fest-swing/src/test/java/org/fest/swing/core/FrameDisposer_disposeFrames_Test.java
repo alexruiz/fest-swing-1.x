@@ -59,8 +59,7 @@ public class FrameDisposer_disposeFrames_Test extends SequentialEDTSafeTestCase 
     static MyWindow[] windows() {
       final List<MyWindow> windows = new ArrayList<MyWindow>();
       execute(new GuiTask() {
-        @Override
-        protected void executeInEDT() {
+        @Override protected void executeInEDT() {
           for (int i = 0; i < 3; i++) {
             MyWindow w = new MyWindow();
             display(w);

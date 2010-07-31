@@ -52,8 +52,7 @@ public class FEST331_ShowPopupForNonFocusableComponents_Test extends RobotBasedT
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
-        @Override
-        protected MyWindow executeInEDT() {
+        @Override protected MyWindow executeInEDT() {
           return new MyWindow();
         }
       });

@@ -51,8 +51,7 @@ public class BasicRobot_closeWindow_Test extends EDTSafeTestCase {
   public void should_close_window() {
     robot.close(w);
     pause(new Condition("Window closed") {
-      @Override
-      public boolean test() {
+      @Override public boolean test() {
         return !isVisible(w);
       }
     });

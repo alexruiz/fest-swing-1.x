@@ -37,8 +37,7 @@ public final class WindowDestroyTask {
   public static void hideAndDisposeInEDT(final Window w) {
     if (w == null) return;
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         hideAndDispose(w);
       }
     });

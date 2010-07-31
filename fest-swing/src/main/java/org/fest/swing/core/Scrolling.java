@@ -87,8 +87,7 @@ public final class Scrolling {
    */
   private static void scrollToVisible(Robot robot, final JComponent c, final Rectangle rectangle) {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         c.scrollRectToVisible(rectangle);
       }
     });

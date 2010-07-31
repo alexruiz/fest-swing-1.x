@@ -66,8 +66,7 @@ public class AWT_insetsFromContainer_Test {
   @RunsInEDT
   private static Insets insetsFrom(final Container c) {
     return execute(new GuiQuery<Insets>() {
-      @Override
-      protected Insets executeInEDT() {
+      @Override protected Insets executeInEDT() {
         return AWT.insetsFrom(c);
       }
     });
@@ -79,8 +78,7 @@ public class AWT_insetsFromContainer_Test {
     @RunsInEDT
     static WindowWithNullInsets createNew() {
       return execute(new GuiQuery<WindowWithNullInsets>() {
-        @Override
-        protected WindowWithNullInsets executeInEDT() {
+        @Override protected WindowWithNullInsets executeInEDT() {
           return new WindowWithNullInsets();
         }
       });

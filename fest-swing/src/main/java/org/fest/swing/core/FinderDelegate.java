@@ -49,8 +49,7 @@ final class FinderDelegate {
   @RunsInEDT
   private static Collection<Component> childrenOfComponent(final Component c, final ComponentHierarchy h) {
     return execute(new GuiQuery<Collection<Component>>() {
-      @Override
-      protected Collection<Component> executeInEDT() {
+      @Override protected Collection<Component> executeInEDT() {
         return h.childrenOf(c);
       }
     });
@@ -59,8 +58,7 @@ final class FinderDelegate {
   @RunsInEDT
   private static boolean isMatching(final Component c, final ComponentMatcher m) {
     return execute(new GuiQuery<Boolean>() {
-      @Override
-      protected Boolean executeInEDT() {
+      @Override protected Boolean executeInEDT() {
         return m.matches(c);
       }
     });
@@ -76,8 +74,7 @@ final class FinderDelegate {
   @RunsInEDT
   private static Collection<? extends Component> rootsOf(final ComponentHierarchy h ) {
     return execute(new GuiQuery<Collection<? extends Component>>() {
-      @Override
-      protected Collection<? extends Component> executeInEDT() {
+      @Override protected Collection<? extends Component> executeInEDT() {
         return h.roots();
       }
     });
@@ -93,8 +90,7 @@ final class FinderDelegate {
   @RunsInEDT
   private static <T extends Component> boolean isMatching(final Component c, final GenericTypeMatcher<T> m) {
     return execute(new GuiQuery<Boolean>() {
-      @Override
-      protected Boolean executeInEDT() {
+      @Override protected Boolean executeInEDT() {
         return m.matches(c);
       }
     });

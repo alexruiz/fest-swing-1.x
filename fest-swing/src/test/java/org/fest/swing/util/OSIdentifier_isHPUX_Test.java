@@ -49,14 +49,12 @@ public class OSIdentifier_isHPUX_Test extends OSIdentifier_TestCase {
   @Test
   public void should_return_HPUX_if_OS_name_is_equal_to_HPUX() {
     new EasyMockTemplate(propertyReader) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         expectOSName(hpUX);
         expectNoMRJVersion();
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         OSIdentifier osIdentifier = new OSIdentifier(propertyReader);
         assertThat(osIdentifier.isHPUX()).isTrue();
         assertThat(osIdentifier.isX11()).isTrue();

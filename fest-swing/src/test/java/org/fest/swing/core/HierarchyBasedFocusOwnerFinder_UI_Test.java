@@ -21,10 +21,9 @@ package org.fest.swing.core;
  *
  * @author Alex Ruiz
  */
-public class HierarchyBasedFocusOwnerFinder_UITest extends FocusOwnerFinderStrategy_focusOwner_TestCase {
+public class HierarchyBasedFocusOwnerFinder_UI_Test extends FocusOwnerFinderStrategy_focusOwner_TestCase {
 
-  @Override
-  protected FocusOwnerFinderStrategy createStrategyToTest() {
+  @Override protected FocusOwnerFinderStrategy createStrategyToTest() {
     return new HierarchyBasedFocusOwnerFinder();
   }
 }

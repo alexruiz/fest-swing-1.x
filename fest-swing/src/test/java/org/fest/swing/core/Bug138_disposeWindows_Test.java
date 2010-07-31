@@ -59,15 +59,13 @@ public class Bug138_disposeWindows_Test extends EDTSafeTestCase {
     frame = frame().withTitle("Hello").createNew();
     final List<Container> roots = rootsWith(frame);
     new EasyMockTemplate(hierarchy) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         hierarchy.roots();
         expectLastCall().andReturn(roots);
         hierarchy.dispose(frame);
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         robot.cleanUp();
       }
     }.run();
@@ -80,11 +78,9 @@ public class Bug138_disposeWindows_Test extends EDTSafeTestCase {
   @Test
   public void should_not_dispose_windows() {
     new EasyMockTemplate(hierarchy) {
-      @Override
-      protected void expectations() {}
+      @Override protected void expectations() {}
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         robot.cleanUpWithoutDisposingWindows();
       }
     }.run();

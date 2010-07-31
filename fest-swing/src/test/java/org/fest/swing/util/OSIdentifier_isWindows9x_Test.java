@@ -49,14 +49,12 @@ public class OSIdentifier_isWindows9x_Test extends OSIdentifier_TestCase {
   @Test
   public void should_return_is_Windows9x_if_OS_name_starts_with_Windows_and_contains_any_9x_version() {
     new EasyMockTemplate(propertyReader) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         expectOSName(windows9x);
         expectNoMRJVersion();
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         OSIdentifier osIdentifier = new OSIdentifier(propertyReader);
         assertThat(osIdentifier.isWindows()).isTrue();
         assertThat(osIdentifier.isWindows9x()).isTrue();

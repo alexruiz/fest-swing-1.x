@@ -163,9 +163,8 @@ public final class DialogMatcher extends NamedComponentMatcherTemplate<Dialog> {
    * @param dialog the <code>Dialog</code> to match.
    * @return {@code true} if the <code>Dialog</code> matches the search criteria in this matcher.
    */
-  @Override
   @RunsInCurrentThread
-  protected boolean isMatching(Dialog dialog) {
+  @Override protected boolean isMatching(Dialog dialog) {
     if (!isNameMatching(dialog.getName())) return false;
     return arePropertyValuesMatching(title, dialog.getTitle());
   }

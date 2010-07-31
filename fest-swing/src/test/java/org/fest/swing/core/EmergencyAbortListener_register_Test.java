@@ -48,8 +48,7 @@ public class EmergencyAbortListener_register_Test {
     final EmergencyAbortListener previous = createMock(EmergencyAbortListener.class);
     final AWTEventListener[] allPrevious = { previous, singletonAWTEventListenerMock() };
     new EasyMockTemplate(toolkit) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         expect(toolkit.getAWTEventListeners(KEY_EVENT_MASK)).andReturn(allPrevious);
         toolkit.removeAWTEventListener(previous);
         expectLastCall().once();
@@ -57,8 +56,7 @@ public class EmergencyAbortListener_register_Test {
         expectLastCall().once();
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         listener.register();
       }
     }.run();

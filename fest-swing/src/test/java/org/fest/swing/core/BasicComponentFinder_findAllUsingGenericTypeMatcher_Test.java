@@ -34,8 +34,7 @@ public class BasicComponentFinder_findAllUsingGenericTypeMatcher_Test extends Ba
   @Test
   public void shouldr_return_all_Components_matching_GenericTypeMatcher() {
     Collection<JTextField> found = finder.findAll(new GenericTypeMatcher<JTextField>(JTextField.class) {
-      @Override
-      protected boolean isMatching(JTextField c) {
+      @Override protected boolean isMatching(JTextField c) {
         return true;
       }
     });

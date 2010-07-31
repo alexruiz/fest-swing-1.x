@@ -27,8 +27,7 @@ public class RobotEventGenerator_pressKey_Test extends InputEventGenerator_press
     super(keyToPress, expectedText);
   }
 
-  @Override
-  InputEventGenerator eventGenerator() {
+  @Override InputEventGenerator eventGenerator() {
     return new RobotEventGenerator();
   }
 }

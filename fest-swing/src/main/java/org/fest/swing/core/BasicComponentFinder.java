@@ -297,8 +297,7 @@ public final class BasicComponentFinder implements ComponentFinder {
   @RunsInEDT
   private static void appendComponents(final StringBuilder message, final Collection<Component> found) {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         for (Component c : found) message.append(LINE_SEPARATOR).append(format(c));
       }
     });

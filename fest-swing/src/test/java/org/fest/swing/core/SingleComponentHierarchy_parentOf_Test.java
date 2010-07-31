@@ -40,13 +40,11 @@ public class SingleComponentHierarchy_parentOf_Test extends SingleComponentHiera
     final JFrame p = frame().createNew();
     final JLabel c = label().createNew();
     new EasyMockTemplate(hierarchyDelegate) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         expect(hierarchyDelegate.parentOf(c)).andReturn(p);
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         Container foundParent = hierarchy.parentOf(c);
         assertThat(foundParent).isSameAs(p);
       }

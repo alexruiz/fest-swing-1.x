@@ -34,8 +34,7 @@ public class AppletViewer_newViewerWithAppletAndAppletStub_Test extends EDTSafeT
   @Test(expected = NullPointerException.class)
   public void should_throw_error_if_AppletStub_is_null() {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         AppletStub appletStub = null;
         AppletViewer.newViewer(singletonAppletMock(), appletStub);
       }

@@ -42,14 +42,12 @@ public class EmergencyAbortListener_unregister_Test {
   @Test
   public void should_unregister_from_toolkit() {
     new EasyMockTemplate(toolkit) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         toolkit.removeAWTEventListener(listener);
         expectLastCall().once();
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         listener.unregister();
       }
     }.run();

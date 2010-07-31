@@ -34,8 +34,7 @@ public final class JTreeSetSelectionModelTask {
   @RunsInEDT
   public static void setSelectionModel(final JTree tree, final TreeSelectionModel selectionModel) {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         tree.setSelectionModel(selectionModel);
       }
     });

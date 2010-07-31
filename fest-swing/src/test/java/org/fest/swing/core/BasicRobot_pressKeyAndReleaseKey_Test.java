@@ -38,8 +38,7 @@ public class BasicRobot_pressKeyAndReleaseKey_Test extends BasicRobot_TestCase {
     final KeyRecorder recorder = KeyRecorder.attachTo(window.textField);
     robot.pressKey(VK_A);
     pause(new Condition("until key VK_A is pressed") {
-      @Override
-      public boolean test() {
+      @Override public boolean test() {
         return recorder.keysWerePressed(VK_A) && recorder.noKeysReleased();
       }
     }, timeout(500));
@@ -52,8 +51,7 @@ public class BasicRobot_pressKeyAndReleaseKey_Test extends BasicRobot_TestCase {
     robot.pressKey(VK_A);
     robot.releaseKey(VK_A);
     pause(new Condition("until key is released") {
-      @Override
-      public boolean test() {
+      @Override public boolean test() {
         return recorder.keysWereReleased(VK_A);
       }
     }, timeout(500));

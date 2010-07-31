@@ -33,8 +33,7 @@ public class FinderDelegate_findInHierarchyWithGenericTypeMatcher_Test extends F
   @Test
   public void should_return_components_matching_GenericTypeMatcher() {
     GenericTypeMatcher<JTextField> matcher = new GenericTypeMatcher<JTextField>(JTextField.class) {
-      @Override
-      protected boolean isMatching(JTextField textField) {
+      @Override protected boolean isMatching(JTextField textField) {
         return "textBox".equals(textField.getName());
       }
     };
@@ -45,8 +44,7 @@ public class FinderDelegate_findInHierarchyWithGenericTypeMatcher_Test extends F
   @Test
   public void should_return_empty_collection_if_matching_Components_not_found() {
     GenericTypeMatcher<JTextField> matcher = new GenericTypeMatcher<JTextField>(JTextField.class) {
-      @Override
-      protected boolean isMatching(JTextField textField) {
+      @Override protected boolean isMatching(JTextField textField) {
         return false;
       }
     };

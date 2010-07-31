@@ -58,13 +58,11 @@ public class Platform_controlOrCommandKey_Test extends Platform_TestCase {
   public void should_return_control_or_command_key() {
     final Toolkit toolkit = wireMockToolkit();
     new EasyMockTemplate(toolkit) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         expect(toolkit.getMenuShortcutKeyMask()).andReturn(mask);
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         assertThat(Platform.controlOrCommandKey()).isEqualTo(keyCode);
       }
     }.run();

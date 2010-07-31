@@ -270,8 +270,7 @@ public class BasicRobot implements Robot {
   @RunsInEDT
   private static Pair<Window, Window> windowAncestorsOf(final Component one, final Component two) {
     return execute(new GuiQuery<Pair<Window, Window>>() {
-      @Override
-      protected Pair<Window, Window> executeInEDT() throws Throwable {
+      @Override protected Pair<Window, Window> executeInEDT() throws Throwable {
         return new Pair<Window, Window>(windowAncestor(one), windowAncestor(two));
       }
 
@@ -322,8 +321,7 @@ public class BasicRobot implements Robot {
   @RunsInEDT
   private static void disposeWindows(final ComponentHierarchy hierarchy) {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         for (Container c : hierarchy.roots()) if (c instanceof Window) dispose(hierarchy, (Window)c);
       }
     });
@@ -540,8 +538,7 @@ public class BasicRobot implements Robot {
   @RunsInEDT
   private static Pair<Component, Point> invokerAndCenterOfInvoker(final JPopupMenu popupMenu) {
     return execute(new GuiQuery<Pair<Component, Point>>() {
-      @Override
-      protected Pair<Component, Point> executeInEDT() {
+      @Override protected Pair<Component, Point> executeInEDT() {
         Component invoker = popupMenu.getInvoker();
         return new Pair<Component, Point>(invoker, centerOf(invoker));
       }
@@ -720,8 +717,7 @@ public class BasicRobot implements Robot {
   @RunsInEDT
   private boolean isWindowAncestorReadyForInput(final JPopupMenu popup) {
     return execute(new GuiQuery<Boolean>() {
-      @Override
-      protected Boolean executeInEDT() {
+      @Override protected Boolean executeInEDT() {
         return isReadyForInput(getWindowAncestor(popup));
       }
     });

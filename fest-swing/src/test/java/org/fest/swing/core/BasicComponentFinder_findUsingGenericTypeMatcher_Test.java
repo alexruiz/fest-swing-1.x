@@ -33,8 +33,7 @@ public class BasicComponentFinder_findUsingGenericTypeMatcher_Test extends Basic
   @Test
   public void should_find_Component() {
     JButton foundButton = finder.find(new GenericTypeMatcher<JButton>(JButton.class) {
-      @Override
-      protected boolean isMatching(JButton button) {
+      @Override protected boolean isMatching(JButton button) {
         return "A Button".equals(button.getText());
       }
     });
@@ -44,8 +43,7 @@ public class BasicComponentFinder_findUsingGenericTypeMatcher_Test extends Basic
   @Test(expected = ComponentLookupException.class)
   public void should_throw_error_if_GenericTypeMatcher_never_matches_Component() {
     finder.find(new GenericTypeMatcher<JButton>(JButton.class) {
-      @Override
-      protected boolean isMatching(JButton component) {
+      @Override protected boolean isMatching(JButton component) {
         return false;
       }
     });

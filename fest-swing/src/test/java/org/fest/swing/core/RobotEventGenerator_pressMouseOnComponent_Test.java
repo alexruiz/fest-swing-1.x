@@ -27,8 +27,7 @@ public class RobotEventGenerator_pressMouseOnComponent_Test extends InputEventGe
     super(button);
   }
 
-  @Override
-  InputEventGenerator eventGenerator() {
+  @Override InputEventGenerator eventGenerator() {
     return new RobotEventGenerator();
   }
 }

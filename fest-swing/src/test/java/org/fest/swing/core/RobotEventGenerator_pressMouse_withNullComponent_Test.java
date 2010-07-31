@@ -32,8 +32,7 @@ import org.junit.Test;
  */
 public class RobotEventGenerator_pressMouse_withNullComponent_Test extends RobotEventGenerator_TestCase {
 
-  @Override
-  Method[] methodsToMockInRobot() throws Exception {
+  @Override Method[] methodsToMockInRobot() throws Exception {
     return array(
         methodFromAWTRobot("mouseMove", int.class, int.class),
         methodFromAWTRobot("mousePress", int.class)
@@ -45,16 +44,14 @@ public class RobotEventGenerator_pressMouse_withNullComponent_Test extends Robot
     final Point where = new Point(6, 8);
     final int mouseButtons = BUTTON1_MASK;
     new EasyMockTemplate(robot) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         robot.mouseMove(where.x, where.y);
         expectLastCall().once();
         robot.mousePress(mouseButtons);
         expectLastCall().once();
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         eventGenerator.pressMouse(null, where, mouseButtons);
       }
     }.run();

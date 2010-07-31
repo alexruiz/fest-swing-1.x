@@ -31,13 +31,11 @@ public class BasicAppletStub_appletResize_Test extends BasicAppletStub_TestCase 
     final int w = 800;
     final int h = 600;
     new EasyMockTemplate(viewer) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         viewer.setSize(w, h);
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         stub.appletResize(w, h);
       }
     }.run();

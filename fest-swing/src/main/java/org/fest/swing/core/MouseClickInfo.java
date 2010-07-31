@@ -108,7 +108,6 @@ public final class MouseClickInfo {
     return this;
   }
 
-  /** @see java.lang.Object#toString() */
   @Override public String toString() {
     return concat(
         getClass().getSimpleName(), "[",

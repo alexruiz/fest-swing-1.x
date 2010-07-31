@@ -105,5 +105,4 @@ public class BasicRobot_pressAndReleaseKeyWithModifiers_Test extends BasicRobot_
       return b.toString();
     }
   }
-
 }

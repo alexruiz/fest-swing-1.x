@@ -47,13 +47,11 @@ public class UnexpectedJOptionPaneFinder_requireNoJOptionPaneIsShowing_Test exte
   @Test
   public void should_pass_if_there_are_not_any_JOptionPanes_showing() {
     new EasyMockTemplate(delegate) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         expect(delegate.findAll(OPTION_PANE_MATCHER)).andReturn(new ArrayList<Component>());
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         finder.requireNoJOptionPaneIsShowing();
       }
     }.run();
@@ -62,15 +60,13 @@ public class UnexpectedJOptionPaneFinder_requireNoJOptionPaneIsShowing_Test exte
   @Test
   public void should_fail_if_there_is_a_JOptionPane_showing() {
     new EasyMockTemplate(delegate) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         List<Component> found = new ArrayList<Component>();
         found.add(optionPane().createNew());
         expect(delegate.findAll(OPTION_PANE_MATCHER)).andReturn(found);
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         try {
           finder.requireNoJOptionPaneIsShowing();
           failWhenExpectingException();

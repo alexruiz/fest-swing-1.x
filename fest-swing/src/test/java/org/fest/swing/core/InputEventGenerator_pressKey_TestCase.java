@@ -69,8 +69,7 @@ public abstract class InputEventGenerator_pressKey_TestCase extends InputEventGe
   @RunsInEDT
   private static String textOf(final JTextComponent textComponent) {
     return execute(new GuiQuery<String>() {
-      @Override
-      protected String executeInEDT() {
+      @Override protected String executeInEDT() {
         return textComponent.getText();
       }
     });

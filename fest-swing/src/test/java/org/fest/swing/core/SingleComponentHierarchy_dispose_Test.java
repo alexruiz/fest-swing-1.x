@@ -35,14 +35,12 @@ public class SingleComponentHierarchy_dispose_Test extends SingleComponentHierar
   public void should_dispose_Window() {
     final JFrame window = frame().createNew();
     new EasyMockTemplate(hierarchyDelegate) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         hierarchyDelegate.dispose(window);
         expectLastCall().once();
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         hierarchy.dispose(window);
       }
     }.run();

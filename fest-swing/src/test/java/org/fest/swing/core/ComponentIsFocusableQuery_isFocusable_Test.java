@@ -59,13 +59,11 @@ public class ComponentIsFocusableQuery_isFocusable_Test extends EDTSafeTestCase 
   @Test
   public void should_return_Component_is_focusable() {
     new EasyMockTemplate(component) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         expect(component.isFocusable()).andReturn(isFocusable);
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         assertThat(ComponentIsFocusableQuery.isFocusable(component)).isEqualTo(isFocusable);
       }
     }.run();

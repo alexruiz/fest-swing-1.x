@@ -33,8 +33,7 @@ final class ComponentRequestFocusTask {
   @RunsInEDT
   static void giveFocusTo(final Component c) {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         c.requestFocusInWindow();
       }
     });

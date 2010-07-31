@@ -26,8 +26,6 @@ class AbstractJTableCellWriterStub extends AbstractJTableCellWriter {
 
   public void enterValue(JTable table, int row, int column, String value) {}
   public void startCellEditing(JTable table, int row, int column) {}
-  @Override
-  public void stopCellEditing(JTable table, int row, int column) {}
-  @Override
-  public void cancelCellEditing(JTable table, int row, int column) {}
+  @Override public void stopCellEditing(JTable table, int row, int column) {}
+  @Override public void cancelCellEditing(JTable table, int row, int column) {}
 }

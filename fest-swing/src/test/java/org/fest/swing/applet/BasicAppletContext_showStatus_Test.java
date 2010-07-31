@@ -30,14 +30,12 @@ public class BasicAppletContext_showStatus_Test extends BasicAppletContext_TestC
   @Test public void should_show_status() {
     final String status = "Hi";
     new EasyMockTemplate(statusDisplay) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         statusDisplay.showStatus(status);
         expectLastCall().once();
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         context.showStatus(status);
       }
     }.run();

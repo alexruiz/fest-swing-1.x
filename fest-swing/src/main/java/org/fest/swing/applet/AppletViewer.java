@@ -129,8 +129,7 @@ public class AppletViewer extends JFrame implements StatusDisplay {
   @RunsInEDT
   private static AppletViewer createInEDT(final Applet applet) {
     return execute(new GuiQuery<AppletViewer>() {
-      @Override
-      protected AppletViewer executeInEDT() {
+      @Override protected AppletViewer executeInEDT() {
         return new AppletViewer(applet);
       }
     });

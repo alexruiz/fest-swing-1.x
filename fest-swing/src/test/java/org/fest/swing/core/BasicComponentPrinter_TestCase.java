@@ -60,8 +60,7 @@ public abstract class BasicComponentPrinter_TestCase extends SequentialEDTSafeTe
     @RunsInEDT
     static MyWindow createNew(final Class<?> testClass) {
       return execute(new GuiQuery<MyWindow>() {
-        @Override
-        protected MyWindow executeInEDT() {
+        @Override protected MyWindow executeInEDT() {
           return new MyWindow(testClass);
         }
       });
@@ -74,12 +73,10 @@ public abstract class BasicComponentPrinter_TestCase extends SequentialEDTSafeTe
 
     void buttonName(final String buttonName) {
       execute(new GuiTask() {
-        @Override
-        protected void executeInEDT() {
+        @Override protected void executeInEDT() {
           button.setName(buttonName);
         }
       });
     }
   }
-
 }

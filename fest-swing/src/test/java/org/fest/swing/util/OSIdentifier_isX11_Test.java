@@ -30,14 +30,12 @@ public class OSIdentifier_isX11_Test extends OSIdentifier_TestCase {
   @Test
   public void should_return_X11_if_OS_not_OSX_or_Windows() {
     new EasyMockTemplate(propertyReader) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         expectOSName("");
         expectNoMRJVersion();
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         OSIdentifier osIdentifier = new OSIdentifier(propertyReader);
         assertThat(osIdentifier.isX11()).isTrue();
         assertThat(osIdentifier.isHPUX()).isFalse();

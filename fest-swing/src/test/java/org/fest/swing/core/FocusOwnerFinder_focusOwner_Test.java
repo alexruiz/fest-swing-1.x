@@ -56,14 +56,12 @@ public class FocusOwnerFinder_focusOwner_Test {
   public void should_try_next_strategy_if_focus_owner_not_found() {
     final Component focusOwner = JLabels.label().createNew();
     new EasyMockTemplate(strategy1, strategy2) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         expect(strategy1.focusOwner()).andThrow(new RuntimeException());
         expect(strategy2.focusOwner()).andReturn(focusOwner);
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         assertThat(FocusOwnerFinder.focusOwner()).isSameAs(focusOwner);
       }
     }.run();
@@ -72,14 +70,12 @@ public class FocusOwnerFinder_focusOwner_Test {
   @Test
   public void should_return_null_if_strategies_do_not_find_focus_owner() {
     new EasyMockTemplate(strategy1, strategy2) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         expect(strategy1.focusOwner()).andThrow(new RuntimeException());
         expect(strategy2.focusOwner()).andThrow(new RuntimeException());
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         assertThat(FocusOwnerFinder.focusOwner()).isNull();
       }
     }.run();

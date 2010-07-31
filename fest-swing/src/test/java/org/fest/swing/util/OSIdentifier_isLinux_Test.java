@@ -49,14 +49,12 @@ public class OSIdentifier_isLinux_Test extends OSIdentifier_TestCase {
   @Test
   public void shouldReturnLinuxIfOSNameIsEqualToLinux() {
     new EasyMockTemplate(propertyReader) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         expectOSName(linux);
         expectNoMRJVersion();
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         OSIdentifier osIdentifier = new OSIdentifier(propertyReader);
         assertThat(osIdentifier.isLinux()).isTrue();
         assertThat(osIdentifier.isX11()).isTrue();

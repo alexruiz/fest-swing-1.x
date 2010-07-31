@@ -52,8 +52,7 @@ public class EdtSafeCondition_test_Test {
   @Before
   public void setUp() {
     condition = new EdtSafeCondition("Hello World!") {
-      @Override
-      protected boolean testInEDT() {
+      @Override protected boolean testInEDT() {
         if (!isEventDispatchThread())
           throw new EdtViolationException("Method 'testInEDT' should be executed in the EDT");
         return conditionSatisfied;

@@ -73,13 +73,11 @@ public class ActivateWindowTask_activeWindow_Test extends SequentialEDTSafeTestC
       this.c = c;
     }
 
-    @Override
-    public boolean test() {
+    @Override public boolean test() {
       return c.hasFocus();
     }
 
-    @Override
-    protected void done() {
+    @Override protected void done() {
       c = null;
     }
   }

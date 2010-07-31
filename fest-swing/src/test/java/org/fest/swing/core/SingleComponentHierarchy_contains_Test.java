@@ -37,13 +37,11 @@ public class SingleComponentHierarchy_contains_Test extends SingleComponentHiera
     final JButton button = button().createNew();
     root.add(button);
     new EasyMockTemplate(hierarchyDelegate) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         expect(hierarchyDelegate.contains(button)).andReturn(true);
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         assertThat(hierarchy.contains(button)).isTrue();
       }
     }.run();
@@ -53,13 +51,11 @@ public class SingleComponentHierarchy_contains_Test extends SingleComponentHiera
   public void should_return_false_if_delegate_contains_Component_and_root_does_not_contain_Component() {
     final JButton button = button().createNew();
     new EasyMockTemplate(hierarchyDelegate) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         expect(hierarchyDelegate.contains(button)).andReturn(true);
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         assertThat(hierarchy.contains(button)).isFalse();
       }
     }.run();
@@ -70,13 +66,11 @@ public class SingleComponentHierarchy_contains_Test extends SingleComponentHiera
     final JButton button = button().createNew();
     root.add(button);
     new EasyMockTemplate(hierarchyDelegate) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         expect(hierarchyDelegate.contains(button)).andReturn(false);
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         assertThat(hierarchy.contains(button)).isFalse();
       }
     }.run();
@@ -86,13 +80,11 @@ public class SingleComponentHierarchy_contains_Test extends SingleComponentHiera
   public void should_return_false_if_both_delegate_and_root_do_not_contain_Component() {
     final JButton button = button().createNew();
     new EasyMockTemplate(hierarchyDelegate) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         expect(hierarchyDelegate.contains(button)).andReturn(false);
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         assertThat(hierarchy.contains(button)).isFalse();
       }
     }.run();

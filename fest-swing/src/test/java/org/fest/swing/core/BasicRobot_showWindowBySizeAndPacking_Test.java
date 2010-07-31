@@ -51,8 +51,7 @@ public class BasicRobot_showWindowBySizeAndPacking_Test extends EDTSafeTestCase 
     // TODO split this test case in 2+
     Dimension size = new Dimension(100, 100);
     WindowToShow w = execute(new GuiQuery<WindowToShow>() {
-      @Override
-      protected WindowToShow executeInEDT() {
+      @Override protected WindowToShow executeInEDT() {
         return new WindowToShow();
       }
     });

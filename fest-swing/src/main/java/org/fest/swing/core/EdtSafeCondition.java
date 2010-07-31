@@ -50,11 +50,9 @@ public abstract class EdtSafeCondition extends Condition {
    * Checks if the condition has been satisfied.
    * @return {@code true} if the condition has been satisfied, otherwise {@code false}.
    */
-  @Override
-  public final boolean test() {
+  @Override public final boolean test() {
     boolean result = execute(new GuiQuery<Boolean>() {
-      @Override
-      protected Boolean executeInEDT() {
+      @Override protected Boolean executeInEDT() {
         return testInEDT();
       }
     });

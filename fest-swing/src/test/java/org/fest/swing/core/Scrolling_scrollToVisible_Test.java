@@ -57,8 +57,7 @@ public class Scrolling_scrollToVisible_Test extends RobotBasedTestCase {
 
     static MyWindow createAndShow() {
       return execute(new GuiQuery<MyWindow>() {
-        @Override
-        protected MyWindow executeInEDT() {
+        @Override protected MyWindow executeInEDT() {
           MyWindow w = new MyWindow();
           display(w);
           w.setLocation(0, 0);

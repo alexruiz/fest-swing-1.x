@@ -44,8 +44,7 @@ public class AWT_centerOfComponent_Test extends EDTSafeTestCase {
   @RunsInEDT
   private static void setComponentSize(final Component c, final int width, final int height) {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         c.setSize(width, height);
       }
     });

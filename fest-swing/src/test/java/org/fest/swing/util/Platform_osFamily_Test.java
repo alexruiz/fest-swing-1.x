@@ -35,13 +35,11 @@ public class Platform_osFamily_Test extends Platform_TestCase {
     final OSIdentifier osIdentifier = createMock(OSIdentifier.class);
     Platform.initialize(osIdentifier, toolkitProvider);
     new EasyMockTemplate(osIdentifier) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         expect(osIdentifier.osFamily()).andReturn(WINDOWS);
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         assertThat(Platform.osFamily()).isEqualTo(WINDOWS);
       }
     }.run();

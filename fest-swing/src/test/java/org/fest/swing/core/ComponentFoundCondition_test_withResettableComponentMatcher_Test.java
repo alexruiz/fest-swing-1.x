@@ -57,14 +57,12 @@ public class ComponentFoundCondition_test_withResettableComponentMatcher_Test ex
   @Test
   public void should_reset_matcher_when_match_not_found() {
     new EasyMockTemplate(finder, matcher) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         expect(finder.find(root, matcher)).andThrow(new ComponentLookupException("Thrown on purpose"));
         matcher.reset(false);
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         condition.test();
       }
     }.run();
@@ -73,14 +71,12 @@ public class ComponentFoundCondition_test_withResettableComponentMatcher_Test ex
   @Test
   public void should_reset_matcher_when_match_found() {
     new EasyMockTemplate(finder, matcher) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         expect(finder.find(root, matcher)).andReturn(singletonComponentMock());
         matcher.reset(true);
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         condition.test();
       }
     }.run();

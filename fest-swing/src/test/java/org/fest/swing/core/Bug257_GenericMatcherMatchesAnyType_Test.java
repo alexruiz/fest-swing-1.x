@@ -46,8 +46,7 @@ public class Bug257_GenericMatcherMatchesAnyType_Test extends EDTSafeTestCase {
       super(supportedType);
     }
 
-    @Override
-    protected boolean isMatching(final T component) {
+    @Override protected boolean isMatching(final T component) {
       return true;
     }
   }

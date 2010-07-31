@@ -82,8 +82,7 @@ public abstract class BasicRobot_TestCase extends EDTSafeTestCase {
     @RunsInEDT
     static MyWindow createAndShow(final Class<?> testClass) {
       return execute(new GuiQuery<MyWindow>() {
-        @Override
-        protected MyWindow executeInEDT() {
+        @Override protected MyWindow executeInEDT() {
           return display(new MyWindow(testClass));
         }
       });

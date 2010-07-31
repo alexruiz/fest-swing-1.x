@@ -48,13 +48,11 @@ public class AbstractComponentMatcher_requireShowingMatches_Test {
   public void should_match_if_requireShowing_is_true_and_Component_is_showing() {
     final AbstractComponentMatcher matcher = new ConcreteComponentMatcher(true);
     new EasyMockTemplate(component) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         expect(component.isShowing()).andReturn(true);
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         assertThat(matcher.requireShowingMatches(component)).isTrue();
       }
     }.run();
@@ -64,13 +62,11 @@ public class AbstractComponentMatcher_requireShowingMatches_Test {
   public void should_not_match_if_requireShowing_is_true_and_Component_is_not_showing() {
     final AbstractComponentMatcher matcher = new ConcreteComponentMatcher(true);
     new EasyMockTemplate(component) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         expect(component.isShowing()).andReturn(false);
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         assertThat(matcher.requireShowingMatches(component)).isFalse();
       }
     }.run();

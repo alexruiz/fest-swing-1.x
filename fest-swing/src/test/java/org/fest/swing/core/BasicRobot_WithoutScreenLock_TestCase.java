@@ -84,8 +84,7 @@ public class BasicRobot_WithoutScreenLock_TestCase extends EDTSafeTestCase {
 	    @RunsInEDT
 	    static MyWindow createAndShow(final Class<?> testClass) {
 	      return execute(new GuiQuery<MyWindow>() {
-	        @Override
-          protected MyWindow executeInEDT() {
+	        @Override protected MyWindow executeInEDT() {
 	          return display(new MyWindow(testClass));
 	        }
 	      });

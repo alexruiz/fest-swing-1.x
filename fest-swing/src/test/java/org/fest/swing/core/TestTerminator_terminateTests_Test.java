@@ -47,8 +47,7 @@ public class TestTerminator_terminateTests_Test {
   public void should_terminate_GUI_tests() {
     final Thread mainThread = createMock(Thread.class);
     new EasyMockTemplate(threadsSource, frameDisposer, mainThreadIdentifier, mainThread) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         Thread[] allThreads = array(mainThread);
         expect(threadsSource.allThreads()).andReturn(allThreads);
         expect(mainThreadIdentifier.mainThreadIn(allThreads)).andReturn(mainThread);
@@ -61,8 +60,7 @@ public class TestTerminator_terminateTests_Test {
         expectLastCall().once();
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         terminateTestsAndExpectException();
       }
     }.run();
@@ -71,16 +69,14 @@ public class TestTerminator_terminateTests_Test {
   @Test
   public void should_not_throw_error_if_main_thread_not_found() {
     new EasyMockTemplate(threadsSource, frameDisposer, mainThreadIdentifier) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         Thread[] allThreads = new Thread[0];
         expect(threadsSource.allThreads()).andReturn(allThreads);
         expect(mainThreadIdentifier.mainThreadIn(allThreads)).andReturn(null);
         expectFramesDisposal();
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         terminateTestsAndExpectException();
       }
     }.run();

@@ -26,8 +26,7 @@ class NeverSatisfiedCondition extends Condition {
     super("Never satisfied");
   }
 
-  @Override
-  public boolean test() {
+  @Override public boolean test() {
     return false;
   }
 }

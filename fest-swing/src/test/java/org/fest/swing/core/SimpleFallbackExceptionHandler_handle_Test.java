@@ -38,14 +38,12 @@ public class SimpleFallbackExceptionHandler_handle_Test {
   public void should_print_stack_trace_of_given_exception() {
     final Throwable t = createMock(Throwable.class);
     new EasyMockTemplate(t) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         t.printStackTrace();
         expectLastCall().once();
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         handler.handle(t);
       }
     }.run();

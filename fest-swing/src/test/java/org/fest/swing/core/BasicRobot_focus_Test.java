@@ -37,11 +37,9 @@ public class BasicRobot_focus_Test extends BasicRobot_TestCase {
   private JButton button;
 
   @RunsInEDT
-  @Override
-  void beforeShowingWindow() {
+  @Override void beforeShowingWindow() {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         button = new JButton("Click Me");
         window.add(button);
       }

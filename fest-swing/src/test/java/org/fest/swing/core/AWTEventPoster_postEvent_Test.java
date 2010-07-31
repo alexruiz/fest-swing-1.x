@@ -63,16 +63,14 @@ public class AWTEventPoster_postEvent_Test extends EDTSafeTestCase {
   public void should_post_event_in_Component_EventQueue_if_Component_is_not_null() {
     final Component c = TestComponents.newComponentMock();
     new EasyMockTemplate(toolkit, inputState, monitor, settings, eventQueue) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         expectInputStateToBeUpdatedWithEvent();
         expect(monitor.eventQueueFor(c)).andReturn(eventQueue);
         expectEventQueueToPostEvent();
         expectSettingsToReturnDelayBetweenEvents();
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         postEventAndAssertItWaited(c);
       }
     }.run();
@@ -81,16 +79,14 @@ public class AWTEventPoster_postEvent_Test extends EDTSafeTestCase {
   @Test
   public void should_post_event_in_System_EventQueue_ff_Component_is_null() {
     new EasyMockTemplate(toolkit, inputState, monitor, settings, eventQueue) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         expectInputStateToBeUpdatedWithEvent();
         expect(toolkit.getSystemEventQueue()).andReturn(eventQueue);
         expectEventQueueToPostEvent();
         expectSettingsToReturnDelayBetweenEvents();
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         postEventAndAssertItWaited(null);
       }
     }.run();

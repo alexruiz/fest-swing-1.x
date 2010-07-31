@@ -42,11 +42,9 @@ public class BasicRobot_requireNoJOptionPaneIsShowing_Test extends BasicRobot_Te
   private JButton button;
 
   @RunsInEDT
-  @Override
-  void beforeShowingWindow() {
+  @Override void beforeShowingWindow() {
     execute(new GuiTask() {
-      @Override
-      protected void executeInEDT() {
+      @Override protected void executeInEDT() {
         button = new JButton("Click Me");
         button.addActionListener(new ActionListener() {
           public void actionPerformed(ActionEvent e) {
@@ -77,8 +75,7 @@ public class BasicRobot_requireNoJOptionPaneIsShowing_Test extends BasicRobot_Te
 
   private void pauseTillJOptionPaneIsShowing() {
     pause(new Condition("JOptionPane is showing") {
-      @Override
-      public boolean test() {
+      @Override public boolean test() {
         Collection<Component> found = robot.finder().findAll(new TypeMatcher(JOptionPane.class));
         return !found.isEmpty();
       }

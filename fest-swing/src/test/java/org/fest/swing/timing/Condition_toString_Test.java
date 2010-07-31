@@ -72,8 +72,7 @@ public class Condition_toString_Test {
       super(lazyLoadingDescription);
     }
 
-    @Override
-    public boolean test() {
+    @Override public boolean test() {
       return false;
     }
   }

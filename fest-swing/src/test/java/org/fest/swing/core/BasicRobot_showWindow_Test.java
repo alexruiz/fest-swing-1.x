@@ -68,8 +68,7 @@ public class BasicRobot_showWindow_Test extends EDTSafeTestCase {
     @RunsInEDT
     static AlwaysInvisibleFrame createNew() {
       return execute(new GuiQuery<AlwaysInvisibleFrame>() {
-        @Override
-        protected AlwaysInvisibleFrame executeInEDT() {
+        @Override protected AlwaysInvisibleFrame executeInEDT() {
           return new AlwaysInvisibleFrame();
         }
       });

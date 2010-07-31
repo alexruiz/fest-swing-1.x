@@ -30,8 +30,7 @@ import org.junit.Test;
  */
 public class RobotEventGenerator_rotateWheel_Test extends RobotEventGenerator_TestCase {
 
-  @Override
-  Method[] methodsToMockInRobot() throws Exception {
+  @Override Method[] methodsToMockInRobot() throws Exception {
     return Arrays.array(methodFromAWTRobot("mouseWheel", int.class));
   }
 
@@ -39,14 +38,12 @@ public class RobotEventGenerator_rotateWheel_Test extends RobotEventGenerator_Te
   public void should_rotate_mouse_wheel() {
     final int amount = 8;
     new EasyMockTemplate(robot) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         robot.mouseWheel(amount);
         expectLastCall().once();
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         eventGenerator.rotateMouseWheel(amount);
       }
     }.run();

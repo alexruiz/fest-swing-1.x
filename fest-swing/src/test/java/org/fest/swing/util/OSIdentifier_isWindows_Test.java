@@ -49,14 +49,12 @@ public class OSIdentifier_isWindows_Test extends OSIdentifier_TestCase {
   @Test
   public void should_return_is_Windows_if_OS_name_starts_with_Windows() {
     new EasyMockTemplate(propertyReader) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         expectOSName(windows);
         expectNoMRJVersion();
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         OSIdentifier osIdentifier = new OSIdentifier(propertyReader);
         assertThat(osIdentifier.isWindows()).isTrue();
         assertThat(osIdentifier.isHPUX()).isFalse();

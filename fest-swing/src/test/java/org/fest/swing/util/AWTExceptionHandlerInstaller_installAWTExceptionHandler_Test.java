@@ -41,13 +41,11 @@ public class AWTExceptionHandlerInstaller_installAWTExceptionHandler_Test {
   public void should_install_AWT_event_handler() {
     final Class<CorrectEventHandler> exceptionHandlerType = CorrectEventHandler.class;
     new EasyMockTemplate(writer) {
-      @Override
-      protected void expectations() {
+      @Override protected void expectations() {
         expect(writer.updateSystemProperty("sun.awt.exception.handler", exceptionHandlerType.getName())).andReturn("");
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override protected void codeToTest() {
         AWTExceptionHandlerInstaller.installAWTExceptionHandler(exceptionHandlerType, writer);
       }
     }.run();

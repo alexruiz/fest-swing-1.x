@@ -59,8 +59,7 @@ public class Bug289_robotShouldFocusWindowBeforeClosing_Test extends RobotBasedT
 
     static MyWindow createNew() {
       return GuiActionRunner.execute(new GuiQuery<MyWindow>() {
-        @Override
-        protected MyWindow executeInEDT() {
+        @Override protected MyWindow executeInEDT() {
           return new MyWindow();
         }
       });
