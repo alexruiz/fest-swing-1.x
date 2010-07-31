@@ -31,10 +31,12 @@ public class ThrowableAssert_isNotNull_Test extends GenericAssert_isNotNull_Test
     notNullValue = new Exception();
   }
 
+  @Override
   protected ThrowableAssert assertionsFor(Throwable actual) {
     return new ThrowableAssert(actual);
   }
 
+  @Override
   protected Throwable notNullValue() {
     return notNullValue;
   }

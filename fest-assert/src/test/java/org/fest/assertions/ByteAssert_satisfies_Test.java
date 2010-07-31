@@ -32,10 +32,12 @@ public class ByteAssert_satisfies_Test extends GenericAssert_satisfies_TestCase<
     notNullValue = 6;
   }
 
+  @Override
   protected ByteAssert assertionsFor(Byte actual) {
     return new ByteAssert(actual);
   }
 
+  @Override
   protected Byte notNullValue() {
     return notNullValue;
   }

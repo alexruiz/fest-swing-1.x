@@ -32,10 +32,12 @@ public class DoubleAssert_is_Test extends GenericAssert_is_TestCase<Double> {
     notNullValue = 6d;
   }
 
+  @Override
   protected DoubleAssert assertionsFor(Double actual) {
     return new DoubleAssert(actual);
   }
 
+  @Override
   protected Double notNullValue() {
     return notNullValue;
   }

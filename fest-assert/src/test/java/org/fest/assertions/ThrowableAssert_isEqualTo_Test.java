@@ -33,14 +33,17 @@ public class ThrowableAssert_isEqualTo_Test extends GenericAssert_isEqualTo_Test
     unequalValue = new AssertionError();
   }
 
+  @Override
   protected ThrowableAssert assertionsFor(Throwable actual) {
     return new ThrowableAssert(actual);
   }
 
+  @Override
   protected Throwable notNullValue() {
     return notNullValue;
   }
 
+  @Override
   protected Throwable unequalValue() {
     return unequalValue;
   }

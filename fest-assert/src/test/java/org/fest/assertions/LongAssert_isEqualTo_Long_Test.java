@@ -34,14 +34,17 @@ public class LongAssert_isEqualTo_Long_Test extends GenericAssert_isEqualTo_Test
     unequalValue = 8L;
   }
 
+  @Override
   protected LongAssert assertionsFor(Long actual) {
     return new LongAssert(actual);
   }
 
+  @Override
   protected Long notNullValue() {
     return notNullValue;
   }
 
+  @Override
   protected Long unequalValue() {
     return unequalValue;
   }

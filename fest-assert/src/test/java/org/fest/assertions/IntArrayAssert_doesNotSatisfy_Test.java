@@ -33,10 +33,12 @@ public class IntArrayAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSat
     notNullValue = emptyIntArray();
   }
 
+  @Override
   protected int[] notNullValue() {
     return notNullValue;
   }
 
+  @Override
   protected IntArrayAssert assertionsFor(int[] actual) {
     return new IntArrayAssert(actual);
   }

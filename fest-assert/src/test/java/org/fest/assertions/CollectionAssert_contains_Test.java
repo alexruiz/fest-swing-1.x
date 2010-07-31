@@ -27,10 +27,12 @@ import java.util.Collection;
  */
 public class CollectionAssert_contains_Test extends ObjectGroupAssert_contains_TestCase<Collection<?>> {
 
+  @Override
   protected Collection<?> actualFrom(Object... values) {
     return list(values);
   }
 
+  @Override
   protected CollectionAssert assertionsFor(Collection<?> actual) {
     return new CollectionAssert(actual);
   }

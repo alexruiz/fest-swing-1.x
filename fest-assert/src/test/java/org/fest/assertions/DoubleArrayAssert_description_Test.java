@@ -28,6 +28,7 @@ package org.fest.assertions;
  */
 public class DoubleArrayAssert_description_Test extends GenericAssert_description_TestCase<double[]> {
 
+  @Override
   protected GenericAssert<double[]> assertionToTest() {
     return new DoubleArrayAssert(8.6);
   }

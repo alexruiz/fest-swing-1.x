@@ -33,10 +33,12 @@ public class LongArrayAssert_satisfies_Test extends GenericAssert_satisfies_Test
     notNullValue = emptyLongArray();
   }
 
+  @Override
   protected LongArrayAssert assertionsFor(long[] actual) {
     return new LongArrayAssert(actual);
   }
 
+  @Override
   protected long[] notNullValue() {
     return notNullValue;
   }

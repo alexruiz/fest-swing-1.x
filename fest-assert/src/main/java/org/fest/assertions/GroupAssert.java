@@ -108,17 +108,22 @@ public abstract class GroupAssert<T> extends GenericAssert<T> {
   protected abstract int actualGroupSize();
 
   /** {@inheritDoc} */
+  @Override
   protected abstract GroupAssert<T> as(String description);
 
   /** {@inheritDoc} */
+  @Override
   protected abstract GroupAssert<T> describedAs(String description);
 
   /** {@inheritDoc} */
+  @Override
   protected abstract GroupAssert<T> as(Description description);
 
   /** {@inheritDoc} */
+  @Override
   protected abstract GroupAssert<T> describedAs(Description description);
 
   /** {@inheritDoc} */
+  @Override
   protected abstract GroupAssert<T> overridingErrorMessage(String message);
 }

@@ -35,14 +35,17 @@ public class DoubleAssert_isNotEqualTo_Double_Test extends GenericAssert_isNotEq
     unequalValue = 8d;
   }
 
+  @Override
   protected DoubleAssert assertionsFor(Double actual) {
     return new DoubleAssert(actual);
   }
 
+  @Override
   protected Double notNullValue() {
     return notNullValue;
   }
 
+  @Override
   protected Double unequalValue() {
     return unequalValue;
   }

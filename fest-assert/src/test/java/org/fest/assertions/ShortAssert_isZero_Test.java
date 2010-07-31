@@ -34,14 +34,17 @@ public class ShortAssert_isZero_Test extends NumberAssert_isZero_TestCase<Short>
     zero = 0;
   }
 
+  @Override
   protected Short notZero() {
     return notZero;
   }
 
+  @Override
   protected Short zero() {
     return zero;
   }
 
+  @Override
   protected ShortAssert assertionsFor(Short actual) {
     return new ShortAssert(actual);
   }

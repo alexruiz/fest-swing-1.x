@@ -32,10 +32,12 @@ public class ObjectArrayAssert_is_Test extends GenericAssert_is_TestCase<Object[
     notNullValue = emptyObjectArray();
   }
 
+  @Override
   protected ObjectArrayAssert assertionsFor(Object[] actual) {
     return new ObjectArrayAssert(actual);
   }
 
+  @Override
   protected Object[] notNullValue() {
     return notNullValue;
   }

@@ -33,10 +33,12 @@ public class CharArrayAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSa
     notNullValue = emptyCharArray();
   }
 
+  @Override
   protected char[] notNullValue() {
     return notNullValue;
   }
 
+  @Override
   protected CharArrayAssert assertionsFor(char[] actual) {
     return new CharArrayAssert(actual);
   }

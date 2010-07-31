@@ -39,14 +39,17 @@ public class FileAssert_isSameAs_Test extends GenericAssert_isSameAs_TestCase<Fi
     notSameValue = aFile();
   }
 
+  @Override
   protected FileAssert assertionsFor(File actual) {
     return new FileAssert(actual);
   }
 
+  @Override
   protected File notNullValue() {
     return notNullValue;
   }
 
+  @Override
   protected File notSameValue() {
     return notSameValue;
   }

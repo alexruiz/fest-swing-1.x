@@ -73,7 +73,7 @@ public class FileAssert_doesNotExist_Test extends FileAssert_TestCase {
       }
     });
   }
-  
+
   @Test
   public void should_fail_with_custom_message_if_actual_exists() {
     file.ensureExists();
@@ -84,7 +84,7 @@ public class FileAssert_doesNotExist_Test extends FileAssert_TestCase {
       }
     });
   }
-  
+
   @Test
   public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_exists() {
     file.ensureExists();

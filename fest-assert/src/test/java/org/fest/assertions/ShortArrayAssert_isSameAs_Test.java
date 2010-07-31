@@ -35,14 +35,17 @@ public class ShortArrayAssert_isSameAs_Test extends GenericAssert_isSameAs_TestC
     notSameValue = shortArray(6);
   }
 
+  @Override
   protected ShortArrayAssert assertionsFor(short[] actual) {
     return new ShortArrayAssert(actual);
   }
 
+  @Override
   protected short[] notNullValue() {
     return notNullValue;
   }
 
+  @Override
   protected short[] notSameValue() {
     return notSameValue;
   }

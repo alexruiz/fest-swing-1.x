@@ -34,14 +34,17 @@ public class StringAssert_isEqualTo_Test extends GenericAssert_isEqualTo_TestCas
     unequalValue = "Yoda";
   }
 
+  @Override
   protected StringAssert assertionsFor(String actual) {
     return new StringAssert(actual);
   }
 
+  @Override
   protected String notNullValue() {
     return notNullValue;
   }
 
+  @Override
   protected String unequalValue() {
     return unequalValue;
   }

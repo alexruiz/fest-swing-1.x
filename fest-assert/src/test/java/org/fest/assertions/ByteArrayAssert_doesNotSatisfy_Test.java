@@ -33,10 +33,12 @@ public class ByteArrayAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSa
     notNullValue = emptyByteArray();
   }
 
+  @Override
   protected ByteArrayAssert assertionsFor(byte[] actual) {
     return new ByteArrayAssert(actual);
   }
 
+  @Override
   protected byte[] notNullValue() {
     return notNullValue;
   }

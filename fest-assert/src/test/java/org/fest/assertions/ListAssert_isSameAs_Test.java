@@ -36,14 +36,17 @@ public class ListAssert_isSameAs_Test extends GenericAssert_isSameAs_TestCase<Li
     notNullValue = list("Leia");
   }
 
+  @Override
   protected ListAssert assertionsFor(List<?> actual) {
     return new ListAssert(actual);
   }
 
+  @Override
   protected List<?> notNullValue() {
     return notNullValue;
   }
 
+  @Override
   protected List<?> notSameValue() {
     return notSameValue;
   }

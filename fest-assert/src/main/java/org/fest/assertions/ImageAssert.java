@@ -64,23 +64,27 @@ public class ImageAssert extends GenericAssert<BufferedImage> {
   }
 
   /** {@inheritDoc} */
+  @Override
   public ImageAssert as(String description) {
     description(description);
     return this;
   }
 
   /** {@inheritDoc} */
+  @Override
   public ImageAssert describedAs(String description) {
     return as(description);
   }
 
   /** {@inheritDoc} */
+  @Override
   public ImageAssert as(Description description) {
     description(description);
     return this;
   }
 
   /** {@inheritDoc} */
+  @Override
   public ImageAssert describedAs(Description description) {
     return as(description);
   }
@@ -93,6 +97,7 @@ public class ImageAssert extends GenericAssert<BufferedImage> {
    * @throws AssertionError if the actual image does not satisfy the given condition.
    * @see #is(Condition)
    */
+  @Override
   public ImageAssert satisfies(Condition<BufferedImage> condition) {
     assertSatisfies(condition);
     return this;
@@ -106,6 +111,7 @@ public class ImageAssert extends GenericAssert<BufferedImage> {
    * @throws AssertionError if the actual image satisfies the given condition.
    * @see #isNot(Condition)
    */
+  @Override
   public ImageAssert doesNotSatisfy(Condition<BufferedImage> condition) {
     assertDoesNotSatisfy(condition);
     return this;
@@ -119,6 +125,7 @@ public class ImageAssert extends GenericAssert<BufferedImage> {
    * @throws AssertionError if the actual image does not satisfy the given condition.
    * @since 1.2
    */
+  @Override
   public ImageAssert is(Condition<BufferedImage> condition) {
     assertIs(condition);
     return this;
@@ -132,6 +139,7 @@ public class ImageAssert extends GenericAssert<BufferedImage> {
    * @throws AssertionError if the actual image satisfies the given condition.
    * @since 1.2
    */
+  @Override
   public ImageAssert isNot(Condition<BufferedImage> condition) {
     assertIsNot(condition);
     return this;
@@ -144,6 +152,7 @@ public class ImageAssert extends GenericAssert<BufferedImage> {
    * @return this assertion object.
    * @throws AssertionError if the actual image is not equal to the given one.
    */
+  @Override
   public ImageAssert isEqualTo(BufferedImage expected) {
     return isEqualTo(expected, ZERO_THRESHOLD);
   }
@@ -204,6 +213,7 @@ public class ImageAssert extends GenericAssert<BufferedImage> {
    * @return this assertion object.
    * @throws AssertionError if the actual image is equal to the given one.
    */
+  @Override
   public ImageAssert isNotEqualTo(BufferedImage image) {
     if (areEqual(actual, image)) {
       failIfCustomMessageIsSet();
@@ -235,6 +245,7 @@ public class ImageAssert extends GenericAssert<BufferedImage> {
    * @return this assertion object.
    * @throws AssertionError if the actual image is <code>null</code>.
    */
+  @Override
   public ImageAssert isNotNull() {
     assertNotNull();
     return this;
@@ -246,6 +257,7 @@ public class ImageAssert extends GenericAssert<BufferedImage> {
    * @return this assertion object.
    * @throws AssertionError if the actual image is the same as the given one.
    */
+  @Override
   public ImageAssert isNotSameAs(BufferedImage expected) {
     assertNotSameAs(expected);
     return this;
@@ -257,6 +269,7 @@ public class ImageAssert extends GenericAssert<BufferedImage> {
    * @return this assertion object.
    * @throws AssertionError if the actual image is not the same as the given one.
    */
+  @Override
   public ImageAssert isSameAs(BufferedImage expected) {
     assertSameAs(expected);
     return this;
@@ -280,6 +293,7 @@ public class ImageAssert extends GenericAssert<BufferedImage> {
   }
 
   /** {@inheritDoc} */
+  @Override
   public ImageAssert overridingErrorMessage(String message) {
     replaceDefaultErrorMessagesWith(message);
     return this;

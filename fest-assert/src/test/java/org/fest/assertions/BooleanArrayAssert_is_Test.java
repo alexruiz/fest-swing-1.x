@@ -32,10 +32,12 @@ public class BooleanArrayAssert_is_Test extends GenericAssert_is_TestCase<boolea
     notNullValue = booleanArray(true);
   }
 
+  @Override
   protected BooleanArrayAssert assertionsFor(boolean[] actual) {
     return new BooleanArrayAssert(actual);
   }
 
+  @Override
   protected boolean[] notNullValue() {
     return notNullValue;
   }

@@ -30,12 +30,12 @@ import org.junit.*;
 public class DoubleArrayAssert_isEqualTo_withDelta_Test {
 
   private static double[] array;
-  
+
   @BeforeClass
   public static void setUpOnce() {
     array = doubleArray(55.03, 4345.91);
   }
-  
+
   @Test
   public void should_pass_if_actual_and_expected_are_equal_using_delta() {
     new DoubleArrayAssert(array).isEqualTo(doubleArray(55.00, 4345.0), delta(1.0));
@@ -84,7 +84,7 @@ public class DoubleArrayAssert_isEqualTo_withDelta_Test {
       }
     });
   }
-  
+
   @Test
   public void should_fail_with_custom_message_ignoring_description_of_assertion_if_expected_is_null() {
     expectAssertionError("My custom message").on(new CodeToTest() {
@@ -95,7 +95,7 @@ public class DoubleArrayAssert_isEqualTo_withDelta_Test {
       }
     });
   }
-  
+
   @Test
   public void should_fail_if_arrays_do_not_have_equal_size() {
     expectAssertionError("expected:<[5323.2]> but was:<[55.03, 4345.91]> using delta:<0.1>").on(new CodeToTest() {
@@ -136,7 +136,7 @@ public class DoubleArrayAssert_isEqualTo_withDelta_Test {
       }
     });
   }
-  
+
   @Test
   public void should_fail_if_actual_and_expected_are_not_equal() {
     expectAssertionError("expected:<[55.0, 4345.0]> but was:<[55.03, 4345.91]> using delta:<0.1>").on(new CodeToTest() {
@@ -166,7 +166,7 @@ public class DoubleArrayAssert_isEqualTo_withDelta_Test {
       }
     });
   }
-  
+
   @Test
   public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_and_expected_are_not_equal() {
     expectAssertionError("My custom message").on(new CodeToTest() {

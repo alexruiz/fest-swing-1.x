@@ -35,14 +35,17 @@ public class BooleanArrayAssert_isNotSameAs_Test extends GenericAssert_isNotSame
     notSameValue = booleanArray(true);
   }
 
+  @Override
   protected BooleanArrayAssert assertionsFor(boolean[] actual) {
     return new BooleanArrayAssert(actual);
   }
 
+  @Override
   protected boolean[] notNullValue() {
     return notNullValue;
   }
 
+  @Override
   protected boolean[] notSameValue() {
     return notSameValue;
   }

@@ -33,6 +33,7 @@ import java.util.Map;
  */
 public class MapAssert_description_Test extends GenericAssert_description_TestCase<Map<?, ?>> {
 
+  @Override
   protected GenericAssert<Map<?, ?>> assertionToTest() {
     return new MapAssert(emptyMap());
   }

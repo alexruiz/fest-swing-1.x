@@ -24,6 +24,7 @@ import java.util.Collection;
  */
 public class CollectionAssert_onProperty_Test extends ObjectGroupAssert_onProperty_Test<Collection<?>> {
 
+  @Override
   protected CollectionAssert assertions(Collection<?> data) {
     return new CollectionAssert(data);
   }

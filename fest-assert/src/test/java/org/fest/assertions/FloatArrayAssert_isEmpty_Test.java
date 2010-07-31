@@ -35,14 +35,17 @@ public class FloatArrayAssert_isEmpty_Test extends GroupAssert_isEmpty_TestCase<
     notEmpty = floatArray(6f, 8f);
   }
 
+  @Override
   protected FloatArrayAssert assertionsFor(float[] actual) {
     return new FloatArrayAssert(actual);
   }
 
+  @Override
   protected float[] emptyGroup() {
     return empty;
   }
 
+  @Override
   protected float[] notEmptyGroup() {
     return notEmpty;
   }

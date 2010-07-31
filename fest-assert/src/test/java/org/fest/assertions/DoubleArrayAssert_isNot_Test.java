@@ -33,10 +33,12 @@ public class DoubleArrayAssert_isNot_Test extends GenericAssert_isNot_TestCase<d
     notNullValue = emptyDoubleArray();
   }
 
+  @Override
   protected DoubleArrayAssert assertionsFor(double[] actual) {
     return new DoubleArrayAssert(actual);
   }
 
+  @Override
   protected double[] notNullValue() {
     return notNullValue;
   }

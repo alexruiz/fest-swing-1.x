@@ -28,6 +28,7 @@ package org.fest.assertions;
  */
 public class ThrowableAssert_description_Test extends GenericAssert_description_TestCase<Throwable> {
 
+  @Override
   protected GenericAssert<Throwable> assertionToTest() {
     return new ThrowableAssert(new Exception());
   }

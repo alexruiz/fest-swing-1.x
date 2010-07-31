@@ -34,14 +34,17 @@ public class ShortArrayAssert_isNotEmpty_Test extends GroupAssert_isNotEmpty_Tes
     notEmpty = shortArray(6, 8);
   }
 
+  @Override
   protected ShortArrayAssert assertionsFor(short[] actual) {
     return new ShortArrayAssert(actual);
   }
 
+  @Override
   protected short[] emptyGroup() {
     return emptyShortArray();
   }
 
+  @Override
   protected short[] notEmptyGroup() {
     return notEmpty;
   }

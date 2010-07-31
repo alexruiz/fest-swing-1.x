@@ -29,6 +29,7 @@ package org.fest.assertions;
  */
 public class CharAssert_description_Test extends GenericAssert_description_TestCase<Character> {
 
+  @Override
   protected CharAssert assertionToTest() {
     return new CharAssert('a');
   }

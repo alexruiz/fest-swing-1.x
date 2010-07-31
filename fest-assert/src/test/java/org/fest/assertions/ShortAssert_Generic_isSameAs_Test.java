@@ -34,14 +34,17 @@ public class ShortAssert_Generic_isSameAs_Test extends GenericAssert_isSameAs_Te
     notSameValue = 8;
   }
 
+  @Override
   protected ShortAssert assertionsFor(Short actual) {
     return new ShortAssert(actual);
   }
 
+  @Override
   protected Short notNullValue() {
     return notNullValue;
   }
 
+  @Override
   protected Short notSameValue() {
     return notSameValue;
   }

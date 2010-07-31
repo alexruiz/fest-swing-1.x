@@ -36,10 +36,12 @@ public class FileAssert_satisfies_Test extends GenericAssert_satisfies_TestCase<
     notNullValue = aFile();
   }
 
+  @Override
   protected FileAssert assertionsFor(File actual) {
     return new FileAssert(actual);
   }
 
+  @Override
   protected File notNullValue() {
     return notNullValue;
   }

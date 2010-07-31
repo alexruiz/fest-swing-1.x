@@ -34,14 +34,17 @@ public class IntAssert_isNotEqualTo_Integer_Test extends GenericAssert_isNotEqua
     unequalValue = 8;
   }
 
+  @Override
   protected IntAssert assertionsFor(Integer actual) {
     return new IntAssert(actual);
   }
 
+  @Override
   protected Integer notNullValue() {
     return notNullValue;
   }
 
+  @Override
   protected Integer unequalValue() {
     return unequalValue;
   }

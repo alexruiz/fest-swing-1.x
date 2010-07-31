@@ -34,14 +34,17 @@ public class DoubleArrayAssert_isNotEmpty_Test extends GroupAssert_isNotEmpty_Te
     notEmpty = doubleArray(6d, 8d);
   }
 
+  @Override
   protected DoubleArrayAssert assertionsFor(double[] actual) {
     return new DoubleArrayAssert(actual);
   }
 
+  @Override
   protected double[] emptyGroup() {
     return emptyDoubleArray();
   }
 
+  @Override
   protected double[] notEmptyGroup() {
     return notEmpty;
   }

@@ -36,10 +36,12 @@ public class CollectionAssert_isNotNull_Test extends GenericAssert_isNotNull_Tes
     notNullValue = list("Luke", "Leia");
   }
 
+  @Override
   protected CollectionAssert assertionsFor(Collection<?> actual) {
     return new CollectionAssert(actual);
   }
 
+  @Override
   protected Collection<?> notNullValue() {
     return notNullValue;
   }

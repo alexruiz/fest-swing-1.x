@@ -34,14 +34,17 @@ public class StringAssert_isSameAs_Test extends GenericAssert_isSameAs_TestCase<
     notSameValue = "Luke";
   }
 
+  @Override
   protected StringAssert assertionsFor(String actual) {
     return new StringAssert(actual);
   }
 
+  @Override
   protected String notNullValue() {
     return notNullValue;
   }
 
+  @Override
   protected String notSameValue() {
     return notSameValue;
   }

@@ -30,10 +30,12 @@ public class ObjectAssert_is_Test extends GenericAssert_is_TestCase<Object> {
     notNullValue = 6;
   }
 
+  @Override
   protected ObjectAssert assertionsFor(Object actual) {
     return new ObjectAssert(actual);
   }
 
+  @Override
   protected Object notNullValue() {
     return notNullValue;
   }

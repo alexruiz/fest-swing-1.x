@@ -38,14 +38,17 @@ public class CollectionAssert_isEqualTo_Test extends GenericAssert_isEqualTo_Tes
     unequalValue = list("Anakin");
   }
 
+  @Override
   protected CollectionAssert assertionsFor(Collection<?> actual) {
     return new CollectionAssert(actual);
   }
 
+  @Override
   protected Collection<?> notNullValue() {
     return notNullValue;
   }
 
+  @Override
   protected Collection<?> unequalValue() {
     return unequalValue;
   }

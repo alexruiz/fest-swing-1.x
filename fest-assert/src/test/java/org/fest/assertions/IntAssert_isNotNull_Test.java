@@ -32,10 +32,12 @@ public class IntAssert_isNotNull_Test extends GenericAssert_isNotNull_TestCase<I
     notNullValue = 6;
   }
 
+  @Override
   protected IntAssert assertionsFor(Integer actual) {
     return new IntAssert(actual);
   }
 
+  @Override
   protected Integer notNullValue() {
     return notNullValue;
   }

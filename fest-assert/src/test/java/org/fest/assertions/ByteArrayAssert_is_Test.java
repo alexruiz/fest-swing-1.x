@@ -32,10 +32,12 @@ public class ByteArrayAssert_is_Test extends GenericAssert_is_TestCase<byte[]> {
     notNullValue = emptyByteArray();
   }
 
+  @Override
   protected ByteArrayAssert assertionsFor(byte[] actual) {
     return new ByteArrayAssert(actual);
   }
 
+  @Override
   protected byte[] notNullValue() {
     return notNullValue;
   }

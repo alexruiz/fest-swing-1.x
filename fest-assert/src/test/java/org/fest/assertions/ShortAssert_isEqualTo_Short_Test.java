@@ -34,14 +34,17 @@ public class ShortAssert_isEqualTo_Short_Test extends GenericAssert_isEqualTo_Te
     unequalValue = 8;
   }
 
+  @Override
   protected ShortAssert assertionsFor(Short actual) {
     return new ShortAssert(actual);
   }
 
+  @Override
   protected Short notNullValue() {
     return notNullValue;
   }
 
+  @Override
   protected Short unequalValue() {
     return unequalValue;
   }

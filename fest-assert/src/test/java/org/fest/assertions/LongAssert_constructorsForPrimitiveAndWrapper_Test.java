@@ -23,14 +23,17 @@ package org.fest.assertions;
 public class LongAssert_constructorsForPrimitiveAndWrapper_Test extends
     GenericAssert_constructorsForPrimitiveAndWrapper_TestCase<Long> {
 
+  @Override
   protected Class<LongAssert> assertionType() {
     return LongAssert.class;
   }
 
+  @Override
   protected Class<?> primitiveType() {
     return long.class;
   }
 
+  @Override
   protected Class<Long> primitiveWrapperType() {
     return Long.class;
   }

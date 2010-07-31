@@ -93,23 +93,27 @@ public class ObjectAssert extends GenericAssert<Object> {
   }
 
   /** {@inheritDoc} */
+  @Override
   public ObjectAssert as(String description) {
     description(description);
     return this;
   }
 
   /** {@inheritDoc} */
+  @Override
   public ObjectAssert describedAs(String description) {
     return as(description);
   }
 
   /** {@inheritDoc} */
+  @Override
   public ObjectAssert as(Description description) {
     description(description);
     return this;
   }
 
   /** {@inheritDoc} */
+  @Override
   public ObjectAssert describedAs(Description description) {
     return as(description);
   }
@@ -122,6 +126,7 @@ public class ObjectAssert extends GenericAssert<Object> {
    * @throws AssertionError if the actual <code>Object</code> does not satisfy the given condition.
    * @see #is(Condition)
    */
+  @Override
   public ObjectAssert satisfies(Condition<Object> condition) {
     assertSatisfies(condition);
     return this;
@@ -135,6 +140,7 @@ public class ObjectAssert extends GenericAssert<Object> {
    * @throws AssertionError if the actual <code>Object</code> satisfies the given condition.
    * @see #isNot(Condition)
    */
+  @Override
   public ObjectAssert doesNotSatisfy(Condition<Object> condition) {
     assertDoesNotSatisfy(condition);
     return this;
@@ -148,6 +154,7 @@ public class ObjectAssert extends GenericAssert<Object> {
    * @throws AssertionError if the actual <code>Object</code> does not satisfy the given condition.
    * @since 1.2
    */
+  @Override
   public ObjectAssert is(Condition<Object> condition) {
     assertIs(condition);
     return this;
@@ -161,6 +168,7 @@ public class ObjectAssert extends GenericAssert<Object> {
    * @throws AssertionError if the actual <code>Object</code> satisfies the given condition.
    * @since 1.2
    */
+  @Override
   public ObjectAssert isNot(Condition<Object> condition) {
     assertIsNot(condition);
     return this;
@@ -171,6 +179,7 @@ public class ObjectAssert extends GenericAssert<Object> {
    * @return this assertion object.
    * @throws AssertionError if the actual <code>Object</code> is <code>null</code>.
    */
+  @Override
   public ObjectAssert isNotNull() {
     assertNotNull();
     return this;
@@ -182,6 +191,7 @@ public class ObjectAssert extends GenericAssert<Object> {
    * @return this assertion object.
    * @throws AssertionError if the actual <code>Object</code> is not the same as the given one.
    */
+  @Override
   public ObjectAssert isSameAs(Object expected) {
     assertSameAs(expected);
     return this;
@@ -193,6 +203,7 @@ public class ObjectAssert extends GenericAssert<Object> {
    * @return this assertion object.
    * @throws AssertionError if the actual <code>Object</code> is the same as the given one.
    */
+  @Override
   public ObjectAssert isNotSameAs(Object other) {
     assertNotSameAs(other);
     return this;
@@ -204,6 +215,7 @@ public class ObjectAssert extends GenericAssert<Object> {
    * @return this assertion object.
    * @throws AssertionError if the actual <code>Object</code> is not equal to the given one.
    */
+  @Override
   public ObjectAssert isEqualTo(Object expected) {
     assertEqualTo(expected);
     return this;
@@ -215,12 +227,14 @@ public class ObjectAssert extends GenericAssert<Object> {
    * @return this assertion object.
    * @throws AssertionError if the actual <code>Object</code> is equal to the given one.
    */
+  @Override
   public ObjectAssert isNotEqualTo(Object other) {
     assertNotEqualTo(other);
     return this;
   }
 
   /** {@inheritDoc} */
+  @Override
   public ObjectAssert overridingErrorMessage(String message) {
     replaceDefaultErrorMessagesWith(message);
     return this;

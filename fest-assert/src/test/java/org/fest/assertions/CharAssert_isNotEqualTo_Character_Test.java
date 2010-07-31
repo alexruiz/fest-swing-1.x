@@ -34,14 +34,17 @@ public class CharAssert_isNotEqualTo_Character_Test extends GenericAssert_isNotE
     unequalValue = 'b';
   }
 
+  @Override
   protected CharAssert assertionsFor(Character actual) {
     return new CharAssert(actual);
   }
 
+  @Override
   protected Character notNullValue() {
     return notNullValue;
   }
 
+  @Override
   protected Character unequalValue() {
     return unequalValue;
   }

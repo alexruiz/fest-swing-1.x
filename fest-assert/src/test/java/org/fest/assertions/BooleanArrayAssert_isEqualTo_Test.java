@@ -36,14 +36,17 @@ public class BooleanArrayAssert_isEqualTo_Test extends GenericAssert_isEqualTo_T
     unequalValue = booleanArray(false);
   }
 
+  @Override
   protected BooleanArrayAssert assertionsFor(boolean[] actual) {
     return new BooleanArrayAssert(actual);
   }
 
+  @Override
   protected boolean[] notNullValue() {
     return notNullValue;
   }
 
+  @Override
   protected boolean[] unequalValue() {
     return unequalValue;
   }

@@ -34,14 +34,17 @@ public class StringAssert_isEmpty_Test extends GroupAssert_isEmpty_TestCase<Stri
     notEmpty = "Leia";
   }
 
+  @Override
   protected StringAssert assertionsFor(String actual) {
     return new StringAssert(actual);
   }
 
+  @Override
   protected String emptyGroup() {
     return empty;
   }
 
+  @Override
   protected String notEmptyGroup() {
     return notEmpty;
   }

@@ -35,14 +35,17 @@ public class LongArrayAssert_isSameAs_Test extends GenericAssert_isSameAs_TestCa
     notSameValue = longArray(8);
   }
 
+  @Override
   protected LongArrayAssert assertionsFor(long[] actual) {
     return new LongArrayAssert(actual);
   }
 
+  @Override
   protected long[] notNullValue() {
     return notNullValue;
   }
 
+  @Override
   protected long[] notSameValue() {
     return notSameValue;
   }

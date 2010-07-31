@@ -28,6 +28,7 @@ package org.fest.assertions;
  */
 public class LongAssert_description_Test extends GenericAssert_description_TestCase<Long> {
 
+  @Override
   protected LongAssert assertionToTest() {
     return new LongAssert(8);
   }

@@ -39,14 +39,17 @@ public class CollectionAssert_isEmpty_Test extends GroupAssert_isEmpty_TestCase<
     notEmpty = list("Yoda", "Ben", "Luke");
   }
 
+  @Override
   protected CollectionAssert assertionsFor(Collection<?> actual) {
     return new CollectionAssert(actual);
   }
 
+  @Override
   protected Collection<?> emptyGroup() {
     return empty;
   }
 
+  @Override
   protected Collection<?> notEmptyGroup() {
     return notEmpty;
   }

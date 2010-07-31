@@ -35,14 +35,17 @@ public class ObjectArrayAssert_isEqualTo_Test extends GenericAssert_isEqualTo_Te
     unequalValue = objectArray(6);
   }
 
+  @Override
   protected ObjectArrayAssert assertionsFor(Object[] actual) {
     return new ObjectArrayAssert(actual);
   }
 
+  @Override
   protected Object[] notNullValue() {
     return notNullValue;
   }
 
+  @Override
   protected Object[] unequalValue() {
     return unequalValue;
   }

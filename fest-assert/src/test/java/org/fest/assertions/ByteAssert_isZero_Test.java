@@ -34,14 +34,17 @@ public class ByteAssert_isZero_Test extends NumberAssert_isZero_TestCase<Byte> {
     zero = 0;
   }
 
+  @Override
   protected Byte notZero() {
     return notZero;
   }
 
+  @Override
   protected Byte zero() {
     return zero;
   }
 
+  @Override
   protected ByteAssert assertionsFor(Byte actual) {
     return new ByteAssert(actual);
   }

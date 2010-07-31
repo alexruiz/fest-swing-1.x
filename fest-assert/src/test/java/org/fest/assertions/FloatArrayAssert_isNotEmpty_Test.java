@@ -33,14 +33,17 @@ public class FloatArrayAssert_isNotEmpty_Test extends GroupAssert_isNotEmpty_Tes
     notEmpty = ArrayFactory.floatArray(6f, 8f);
   }
 
+  @Override
   protected FloatArrayAssert assertionsFor(float[] actual) {
     return new FloatArrayAssert(actual);
   }
 
+  @Override
   protected float[] emptyGroup() {
     return emptyFloatArray();
   }
 
+  @Override
   protected float[] notEmptyGroup() {
     return notEmpty;
   }

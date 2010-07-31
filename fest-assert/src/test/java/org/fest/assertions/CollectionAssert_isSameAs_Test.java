@@ -38,14 +38,17 @@ public class CollectionAssert_isSameAs_Test extends GenericAssert_isSameAs_TestC
     notSameValue = list("Luke");
   }
 
+  @Override
   protected CollectionAssert assertionsFor(Collection<?> actual) {
     return new CollectionAssert(actual);
   }
 
+  @Override
   protected Collection<?> notNullValue() {
     return notNullValue;
   }
 
+  @Override
   protected Collection<?> notSameValue() {
     return notSameValue;
   }

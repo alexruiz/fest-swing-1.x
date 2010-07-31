@@ -72,7 +72,7 @@ public class FileAssert_exists_Test extends FileAssert_TestCase {
       }
     });
   }
-  
+
   @Test
   public void should_fail_with_custom_message_if_actual_does_not_exist() {
     expectAssertionError("My custom message").on(new CodeToTest() {

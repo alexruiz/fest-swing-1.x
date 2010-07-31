@@ -35,14 +35,17 @@ public class CharArrayAssert_isNotEqualTo_Test extends GenericAssert_isNotEqualT
     unequalValue = charArray('a');
   }
 
+  @Override
   protected CharArrayAssert assertionsFor(char[] actual) {
     return new CharArrayAssert(actual);
   }
 
+  @Override
   protected char[] notNullValue() {
     return notNullValue;
   }
 
+  @Override
   protected char[] unequalValue() {
     return unequalValue;
   }

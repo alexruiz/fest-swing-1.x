@@ -33,10 +33,12 @@ public class DoubleArrayAssert_doesNotSatisfy_Test extends GenericAssert_doesNot
     notNullValue = emptyDoubleArray();
   }
 
+  @Override
   protected double[] notNullValue() {
     return notNullValue;
   }
 
+  @Override
   protected DoubleArrayAssert assertionsFor(double[] actual) {
     return new DoubleArrayAssert(actual);
   }

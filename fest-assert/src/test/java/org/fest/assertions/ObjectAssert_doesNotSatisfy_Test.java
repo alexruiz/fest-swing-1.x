@@ -31,10 +31,12 @@ public class ObjectAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSatis
     notNullValue = 6;
   }
 
+  @Override
   protected ObjectAssert assertionsFor(Object actual) {
     return new ObjectAssert(actual);
   }
 
+  @Override
   protected Object notNullValue() {
     return notNullValue;
   }

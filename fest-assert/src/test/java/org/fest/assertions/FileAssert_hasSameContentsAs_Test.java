@@ -100,7 +100,7 @@ public class FileAssert_hasSameContentsAs_Test extends FileAssert_TestCase {
       }
     });
   }
-  
+
   @Test
   public void should_fail_with_custom_message_if_actual_and_expected_do_not_have_same_content() {
     file.ensureExists();
@@ -113,7 +113,7 @@ public class FileAssert_hasSameContentsAs_Test extends FileAssert_TestCase {
       }
     });
   }
-  
+
   @Test
   public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_and_expected_do_not_have_same_content() {
     file.ensureExists();
@@ -175,7 +175,7 @@ public class FileAssert_hasSameContentsAs_Test extends FileAssert_TestCase {
       assertSame(e.getCause(), toThrow);
     }
   }
-  
+
   @Test
   public void should_fail_with_custom_message_ignoring_description_of_assertion_if_IO_error_is_thrown() {
     file.ensureExists();
@@ -192,7 +192,7 @@ public class FileAssert_hasSameContentsAs_Test extends FileAssert_TestCase {
       assertSame(e.getCause(), toThrow);
     }
   }
-  
+
   @Test
   public void should_throw_error_if_expected_is_null() {
     expectNullPointerException("File to compare to should not be null").on(new CodeToTest() {

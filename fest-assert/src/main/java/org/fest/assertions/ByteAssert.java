@@ -56,23 +56,27 @@ public class ByteAssert extends GenericAssert<Byte> implements NumberAssert {
   }
 
   /** {@inheritDoc} */
+  @Override
   public ByteAssert as(String description) {
     description(description);
     return this;
   }
 
   /** {@inheritDoc} */
+  @Override
   public ByteAssert describedAs(String description) {
     return as(description);
   }
 
   /** {@inheritDoc} */
+  @Override
   public ByteAssert as(Description description) {
     description(description);
     return this;
   }
 
   /** {@inheritDoc} */
+  @Override
   public ByteAssert describedAs(Description description) {
     return as(description);
   }
@@ -94,6 +98,7 @@ public class ByteAssert extends GenericAssert<Byte> implements NumberAssert {
    * @throws AssertionError if the actual {@code Byte} value is not equal to the given one.
    * @since 1.3
    */
+  @Override
   public ByteAssert isEqualTo(Byte expected) {
     assertEqualTo(expected);
     return this;
@@ -116,6 +121,7 @@ public class ByteAssert extends GenericAssert<Byte> implements NumberAssert {
    * @throws AssertionError if the actual {@code Byte} value is equal to the given one.
    * @since 1.3
    */
+  @Override
   public ByteAssert isNotEqualTo(Byte other) {
     assertNotEqualTo(other);
     return this;
@@ -197,6 +203,7 @@ public class ByteAssert extends GenericAssert<Byte> implements NumberAssert {
   }
 
   /** {@inheritDoc} */
+  @Override
   public ByteAssert overridingErrorMessage(String message) {
     replaceDefaultErrorMessagesWith(message);
     return this;
@@ -211,6 +218,7 @@ public class ByteAssert extends GenericAssert<Byte> implements NumberAssert {
    * @see #is(Condition)
    * @since 1.3
    */
+  @Override
   public ByteAssert satisfies(Condition<Byte> condition) {
     assertSatisfies(condition);
     return this;
@@ -225,6 +233,7 @@ public class ByteAssert extends GenericAssert<Byte> implements NumberAssert {
    * @see #isNot(Condition)
    * @since 1.3
    */
+  @Override
   public ByteAssert doesNotSatisfy(Condition<Byte> condition) {
     assertDoesNotSatisfy(condition);
     return this;
@@ -238,6 +247,7 @@ public class ByteAssert extends GenericAssert<Byte> implements NumberAssert {
    * @throws AssertionError if the actual {@code Byte} does not satisfy the given condition.
    * @since 1.3
    */
+  @Override
   public ByteAssert is(Condition<Byte> condition) {
     assertIs(condition);
     return this;
@@ -251,6 +261,7 @@ public class ByteAssert extends GenericAssert<Byte> implements NumberAssert {
    * @throws AssertionError if the actual {@code Byte} does not satisfy the given condition.
    * @since 1.3
    */
+  @Override
   public ByteAssert isNot(Condition<Byte> condition) {
     assertIsNot(condition);
     return this;
@@ -262,6 +273,7 @@ public class ByteAssert extends GenericAssert<Byte> implements NumberAssert {
    * @throws AssertionError if the actual {@code Byte} value is <code>null</code>.
    * @since 1.3
    */
+  @Override
   public ByteAssert isNotNull() {
     assertNotNull();
     return this;
@@ -274,6 +286,7 @@ public class ByteAssert extends GenericAssert<Byte> implements NumberAssert {
    * @throws AssertionError if the actual {@code Byte} value is not the same as the given one.
    * @since 1.3
    */
+  @Override
   public ByteAssert isSameAs(Byte expected) {
     assertSameAs(expected);
     return this;
@@ -286,6 +299,7 @@ public class ByteAssert extends GenericAssert<Byte> implements NumberAssert {
    * @throws AssertionError if the actual {@code Byte} value is the same as the given one.
    * @since 1.3
    */
+  @Override
   public ByteAssert isNotSameAs(Byte other) {
     assertNotSameAs(other);
     return this;

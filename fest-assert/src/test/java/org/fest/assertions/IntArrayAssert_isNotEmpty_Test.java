@@ -34,14 +34,17 @@ public class IntArrayAssert_isNotEmpty_Test extends GroupAssert_isNotEmpty_TestC
     notEmpty = intArray(6, 8);
   }
 
+  @Override
   protected IntArrayAssert assertionsFor(int[] actual) {
     return new IntArrayAssert(actual);
   }
 
+  @Override
   protected int[] emptyGroup() {
     return emptyIntArray();
   }
 
+  @Override
   protected int[] notEmptyGroup() {
     return notEmpty;
   }

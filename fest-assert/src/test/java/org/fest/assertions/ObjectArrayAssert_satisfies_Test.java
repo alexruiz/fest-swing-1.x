@@ -33,10 +33,12 @@ public class ObjectArrayAssert_satisfies_Test extends GenericAssert_satisfies_Te
     notNullValue = emptyObjectArray();
   }
 
+  @Override
   protected ObjectArrayAssert assertionsFor(Object[] actual) {
     return new ObjectArrayAssert(actual);
   }
 
+  @Override
   protected Object[] notNullValue() {
     return notNullValue;
   }

@@ -33,14 +33,17 @@ public class ThrowableAssert_isNotSameAs_Test extends GenericAssert_isNotSameAs_
     notSameValue = new Throwable();
   }
 
+  @Override
   protected ThrowableAssert assertionsFor(Throwable actual) {
     return new ThrowableAssert(actual);
   }
 
+  @Override
   protected Throwable notNullValue() {
     return notNullValue;
   }
 
+  @Override
   protected Throwable notSameValue() {
     return notSameValue;
   }

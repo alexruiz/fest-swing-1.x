@@ -34,14 +34,17 @@ public class FloatAssert_isZero_Test extends NumberAssert_isZero_TestCase<Float>
     zero = 0f;
   }
 
+  @Override
   protected Float notZero() {
     return notZero;
   }
 
+  @Override
   protected Float zero() {
     return zero;
   }
 
+  @Override
   protected FloatAssert assertionsFor(Float actual) {
     return new FloatAssert(actual);
   }

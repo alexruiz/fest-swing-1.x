@@ -85,7 +85,7 @@ public class ThrowableAssert_hasNoCause_Test {
       }
     });
   }
-  
+
   @Test
   public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_has_cause() {
     expectAssertionError("My custom message").on(new CodeToTest() {

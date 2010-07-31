@@ -34,14 +34,17 @@ public class DoubleAssert_isZero_Test extends NumberAssert_isZero_TestCase<Doubl
     zero = 0d;
   }
 
+  @Override
   protected Double notZero() {
     return notZero;
   }
 
+  @Override
   protected Double zero() {
     return zero;
   }
 
+  @Override
   protected DoubleAssert assertionsFor(Double actual) {
     return new DoubleAssert(actual);
   }

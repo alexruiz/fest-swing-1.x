@@ -72,7 +72,7 @@ public class ThrowableAssert_isExactlyInstanceOf_Test {
       }
     });
   }
-  
+
   @Test
   public void should_fail_with_custom_message_if_actual_is_instance_of_expected_but_not_exactly() {
     expectAssertionError("My custom message").on(new CodeToTest() {
@@ -82,7 +82,7 @@ public class ThrowableAssert_isExactlyInstanceOf_Test {
       }
     });
   }
-  
+
   @Test
   public void should_fail_with_custom_message_ignoring_description_of_assertion_if_actual_is_instance_of_expected_but_not_exactly() {
     expectAssertionError("My custom message").on(new CodeToTest() {
@@ -135,7 +135,7 @@ public class ThrowableAssert_isExactlyInstanceOf_Test {
       }
     });
   }
-  
+
   @Test
   public void should_fail_if_actual_is_null() {
     expectErrorIfActualIsNull(new CodeToTest() {

@@ -28,6 +28,7 @@ package org.fest.assertions;
  */
 public class ByteArrayAssert_description_Test extends GenericAssert_description_TestCase<byte[]> {
 
+  @Override
   protected GenericAssert<byte[]> assertionToTest() {
     return new ByteArrayAssert((byte)6);
   }

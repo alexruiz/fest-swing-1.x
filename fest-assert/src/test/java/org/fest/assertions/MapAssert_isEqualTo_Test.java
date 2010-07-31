@@ -39,14 +39,17 @@ public class MapAssert_isEqualTo_Test extends GenericAssert_isEqualTo_TestCase<M
     unequalValue = map(entry("key6", 6), entry("key8", 8));
   }
 
+  @Override
   protected MapAssert assertionsFor(Map<?, ?> actual) {
     return new MapAssert(actual);
   }
 
+  @Override
   protected Map<?, ?> notNullValue() {
     return notNullValue;
   }
 
+  @Override
   protected Map<?, ?> unequalValue() {
     return unequalValue;
   }

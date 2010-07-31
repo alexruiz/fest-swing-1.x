@@ -34,14 +34,17 @@ public class LongAssert_isZero_Test extends NumberAssert_isZero_TestCase<Long> {
     zero = 0L;
   }
 
+  @Override
   protected Long notZero() {
     return notZero;
   }
 
+  @Override
   protected Long zero() {
     return zero;
   }
 
+  @Override
   protected LongAssert assertionsFor(Long actual) {
     return new LongAssert(actual);
   }

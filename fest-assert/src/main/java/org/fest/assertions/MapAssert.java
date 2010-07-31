@@ -41,23 +41,27 @@ public class MapAssert extends GroupAssert<Map<?, ?>> {
   }
 
   /** {@inheritDoc} */
+  @Override
   public MapAssert as(String description) {
     description(description);
     return this;
   }
 
   /** {@inheritDoc} */
+  @Override
   public MapAssert describedAs(String description) {
     return as(description);
   }
 
   /** {@inheritDoc} */
+  @Override
   public MapAssert as(Description description) {
     description(description);
     return this;
   }
 
   /** {@inheritDoc} */
+  @Override
   public MapAssert describedAs(Description description) {
     return as(description);
   }
@@ -182,6 +186,7 @@ public class MapAssert extends GroupAssert<Map<?, ?>> {
    * @throws AssertionError if the actual map is <code>null</code>.
    * @throws AssertionError if the number of elements of the actual <code>Map</code> is not equal to the given one.
    */
+  @Override
   public MapAssert hasSize(int expected) {
     isNotNull();
     int actualSize = actualGroupSize();
@@ -201,6 +206,7 @@ public class MapAssert extends GroupAssert<Map<?, ?>> {
    * @return this assertion object.
    * @throws AssertionError if the actual <code>Map</code> is not equal to the given one.
    */
+  @Override
   public MapAssert isEqualTo(Map<?, ?> expected) {
     assertEqualTo(expected);
     return this;
@@ -211,6 +217,7 @@ public class MapAssert extends GroupAssert<Map<?, ?>> {
    * @return this assertion object.
    * @throws AssertionError if the actual <code>Map</code> is empty.
    */
+  @Override
   public MapAssert isNotEmpty() {
     assertIsNotEmpty();
     return this;
@@ -222,6 +229,7 @@ public class MapAssert extends GroupAssert<Map<?, ?>> {
    * @return this assertion object.
    * @throws AssertionError if the actual <code>Map</code> is equal to the given one.
    */
+  @Override
   public MapAssert isNotEqualTo(Map<?, ?> other) {
     assertNotEqualTo(other);
     return this;
@@ -232,6 +240,7 @@ public class MapAssert extends GroupAssert<Map<?, ?>> {
    * @return this assertion object.
    * @throws AssertionError if the actual <code>Map</code> is <code>null</code>.
    */
+  @Override
   public MapAssert isNotNull() {
     assertNotNull();
     return this;
@@ -243,6 +252,7 @@ public class MapAssert extends GroupAssert<Map<?, ?>> {
    * @return this assertion object.
    * @throws AssertionError if the actual <code>Map</code> is the same as the given one.
    */
+  @Override
   public MapAssert isNotSameAs(Map<?, ?> other) {
     assertNotSameAs(other);
     return this;
@@ -254,6 +264,7 @@ public class MapAssert extends GroupAssert<Map<?, ?>> {
    * @return this assertion object.
    * @throws AssertionError if the actual <code>Map</code> is not the same as the given one.
    */
+  @Override
   public MapAssert isSameAs(Map<?, ?> expected) {
     assertSameAs(expected);
     return this;
@@ -267,6 +278,7 @@ public class MapAssert extends GroupAssert<Map<?, ?>> {
    * @throws AssertionError if the actual <code>Map</code> does not satisfy the given condition.
    * @see #is(Condition)
    */
+  @Override
   public MapAssert satisfies(Condition<Map<?, ?>> condition) {
     assertSatisfies(condition);
     return this;
@@ -280,6 +292,7 @@ public class MapAssert extends GroupAssert<Map<?, ?>> {
    * @throws AssertionError if the actual <code>Map</code> satisfies the given condition.
    * @see #isNot(Condition)
    */
+  @Override
   public MapAssert doesNotSatisfy(Condition<Map<?, ?>> condition) {
     assertDoesNotSatisfy(condition);
     return this;
@@ -293,6 +306,7 @@ public class MapAssert extends GroupAssert<Map<?, ?>> {
    * @throws AssertionError if the actual <code>Map</code> does not satisfy the given condition.
    * @since 1.2
    */
+  @Override
   public MapAssert is(Condition<Map<?, ?>> condition) {
     assertIs(condition);
     return this;
@@ -306,6 +320,7 @@ public class MapAssert extends GroupAssert<Map<?, ?>> {
    * @throws AssertionError if the actual <code>Map</code> satisfies the given condition.
    * @since 1.2
    */
+  @Override
   public MapAssert isNot(Condition<Map<?, ?>> condition) {
     assertIsNot(condition);
     return this;
@@ -315,12 +330,14 @@ public class MapAssert extends GroupAssert<Map<?, ?>> {
    * Returns the number of elements in the actual <code>{@link Map}</code>.
    * @return the number of elements in the actual <code>{@link Map}</code>.
    */
+  @Override
   protected int actualGroupSize() {
     isNotNull();
     return actual.size();
   }
 
   /** {@inheritDoc} */
+  @Override
   public MapAssert overridingErrorMessage(String message) {
     replaceDefaultErrorMessagesWith(message);
     return this;

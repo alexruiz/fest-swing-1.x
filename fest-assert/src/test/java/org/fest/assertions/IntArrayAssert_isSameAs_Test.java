@@ -35,14 +35,17 @@ public class IntArrayAssert_isSameAs_Test extends GenericAssert_isSameAs_TestCas
     notSameValue = intArray(6);
   }
 
+  @Override
   protected IntArrayAssert assertionsFor(int[] actual) {
     return new IntArrayAssert(actual);
   }
 
+  @Override
   protected int[] notNullValue() {
     return notNullValue;
   }
 
+  @Override
   protected int[] notSameValue() {
     return notSameValue;
   }

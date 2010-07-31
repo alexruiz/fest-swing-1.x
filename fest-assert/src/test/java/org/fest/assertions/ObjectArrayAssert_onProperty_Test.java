@@ -24,6 +24,7 @@ import java.util.Collection;
  */
 public class ObjectArrayAssert_onProperty_Test extends ObjectGroupAssert_onProperty_Test<Object[]> {
 
+  @Override
   protected ObjectArrayAssert assertions(Collection<?> data) {
     Object[] actual = data != null ? data.toArray() : null;
     return new ObjectArrayAssert(actual);

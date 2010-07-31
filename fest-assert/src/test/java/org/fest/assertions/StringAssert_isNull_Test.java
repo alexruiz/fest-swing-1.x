@@ -32,10 +32,12 @@ public class StringAssert_isNull_Test extends GenericAssert_isNull_TestCase<Stri
     notNullValue = "hello";
   }
 
+  @Override
   protected StringAssert assertionsFor(String actual) {
     return new StringAssert(actual);
   }
 
+  @Override
   protected String notNullValue() {
     return notNullValue;
   }

@@ -40,23 +40,27 @@ public class DoubleArrayAssert extends ArrayAssert<double[]> {
   }
 
   /** {@inheritDoc} */
+  @Override
   public DoubleArrayAssert as(String description) {
     description(description);
     return this;
   }
 
   /** {@inheritDoc} */
+  @Override
   public DoubleArrayAssert describedAs(String description) {
     return as(description);
   }
 
   /** {@inheritDoc} */
+  @Override
   public DoubleArrayAssert as(Description description) {
     description(description);
     return this;
   }
 
   /** {@inheritDoc} */
+  @Override
   public DoubleArrayAssert describedAs(Description description) {
     return as(description);
   }
@@ -109,6 +113,7 @@ public class DoubleArrayAssert extends ArrayAssert<double[]> {
    * @throws AssertionError if the actual <code>double</code> array does not satisfy the given condition.
    * @see #is(Condition)
    */
+  @Override
   public DoubleArrayAssert satisfies(Condition<double[]> condition) {
     assertSatisfies(condition);
     return this;
@@ -122,6 +127,7 @@ public class DoubleArrayAssert extends ArrayAssert<double[]> {
    * @throws AssertionError if the actual <code>double</code> array satisfies the given condition.
    * @see #isNot(Condition)
    */
+  @Override
   public DoubleArrayAssert doesNotSatisfy(Condition<double[]> condition) {
     assertDoesNotSatisfy(condition);
     return this;
@@ -135,6 +141,7 @@ public class DoubleArrayAssert extends ArrayAssert<double[]> {
    * @throws AssertionError if the actual <code>double</code> array does not satisfy the given condition.
    * @since 1.2
    */
+  @Override
   public DoubleArrayAssert is(Condition<double[]> condition) {
     assertIs(condition);
     return this;
@@ -148,6 +155,7 @@ public class DoubleArrayAssert extends ArrayAssert<double[]> {
    * @throws AssertionError if the actual <code>double</code> array satisfies the given condition.
    * @since 1.2
    */
+  @Override
   public DoubleArrayAssert isNot(Condition<double[]> condition) {
     assertIsNot(condition);
     return this;
@@ -158,6 +166,7 @@ public class DoubleArrayAssert extends ArrayAssert<double[]> {
    * @return this assertion object.
    * @throws AssertionError if the actual <code>double</code> array is <code>null</code>.
    */
+  @Override
   public DoubleArrayAssert isNotNull() {
     assertNotNull();
     return this;
@@ -169,6 +178,7 @@ public class DoubleArrayAssert extends ArrayAssert<double[]> {
    * @throws AssertionError if the actual <code>double</code> array is <code>null</code>.
    * @throws AssertionError if the actual <code>double</code> array is empty.
    */
+  @Override
   public DoubleArrayAssert isNotEmpty() {
     assertIsNotEmpty();
     return this;
@@ -181,6 +191,7 @@ public class DoubleArrayAssert extends ArrayAssert<double[]> {
    * @return this assertion object.
    * @throws AssertionError if the actual <code>double</code> array is not equal to the given one.
    */
+  @Override
   public DoubleArrayAssert isEqualTo(double[] expected) {
     if (Arrays.equals(actual, expected)) return this;
     failIfCustomMessageIsSet();
@@ -222,6 +233,7 @@ public class DoubleArrayAssert extends ArrayAssert<double[]> {
    * @return this assertion object.
    * @throws AssertionError if the actual <code>double</code> array is equal to the given one.
    */
+  @Override
   public DoubleArrayAssert isNotEqualTo(double[] array) {
     if (!Arrays.equals(actual, array)) return this;
     failIfCustomMessageIsSet();
@@ -236,6 +248,7 @@ public class DoubleArrayAssert extends ArrayAssert<double[]> {
    * @throws AssertionError if the number of elements in the actual <code>double</code> array is not equal to the given
    * one.
    */
+  @Override
   public DoubleArrayAssert hasSize(int expected) {
     assertHasSize(expected);
     return this;
@@ -247,6 +260,7 @@ public class DoubleArrayAssert extends ArrayAssert<double[]> {
    * @return this assertion object.
    * @throws AssertionError if the actual <code>double</code> array is not the same as the given one.
    */
+  @Override
   public DoubleArrayAssert isSameAs(double[] expected) {
     assertSameAs(expected);
     return this;
@@ -258,12 +272,14 @@ public class DoubleArrayAssert extends ArrayAssert<double[]> {
    * @return this assertion object.
    * @throws AssertionError if the actual <code>double</code> array is the same as the given one.
    */
+  @Override
   public DoubleArrayAssert isNotSameAs(double[] expected) {
     assertNotSameAs(expected);
     return this;
   }
 
   /** {@inheritDoc} */
+  @Override
   public DoubleArrayAssert overridingErrorMessage(String message) {
     replaceDefaultErrorMessagesWith(message);
     return this;

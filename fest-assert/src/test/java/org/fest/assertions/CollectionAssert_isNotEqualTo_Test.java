@@ -38,14 +38,17 @@ public class CollectionAssert_isNotEqualTo_Test extends GenericAssert_isNotEqual
     unequalValue = list("Yoda");
   }
 
+  @Override
   protected CollectionAssert assertionsFor(Collection<?> actual) {
     return new CollectionAssert(actual);
   }
 
+  @Override
   protected Collection<?> notNullValue() {
     return notNullValue;
   }
 
+  @Override
   protected Collection<?> unequalValue() {
     return unequalValue;
   }

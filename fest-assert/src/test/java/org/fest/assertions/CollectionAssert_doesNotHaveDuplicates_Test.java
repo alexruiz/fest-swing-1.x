@@ -27,10 +27,12 @@ import java.util.Collection;
  */
 public class CollectionAssert_doesNotHaveDuplicates_Test extends ObjectGroupAssert_doesNotHaveDuplicates_TestCase<Collection<?>> {
 
+  @Override
   protected Collection<?> actualFrom(Object... values) {
     return list(values);
   }
 
+  @Override
   protected CollectionAssert assertionsFor(Collection<?> actual) {
     return new CollectionAssert(actual);
   }

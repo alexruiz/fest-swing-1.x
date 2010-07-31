@@ -30,6 +30,7 @@ import static org.fest.assertions.ArrayFactory.shortArray;
  */
 public class ShortArrayAssert_description_Test extends GenericAssert_description_TestCase<short[]> {
 
+  @Override
   protected GenericAssert<short[]> assertionToTest() {
     return new ShortArrayAssert(shortArray(6));
   }

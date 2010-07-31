@@ -38,23 +38,27 @@ public class BooleanArrayAssert extends ArrayAssert<boolean[]> {
   }
 
   /** {@inheritDoc} */
+  @Override
   public BooleanArrayAssert as(String description) {
     description(description);
     return this;
   }
 
   /** {@inheritDoc} */
+  @Override
   public BooleanArrayAssert describedAs(String description) {
     return as(description);
   }
 
   /** {@inheritDoc} */
+  @Override
   public BooleanArrayAssert as(Description description) {
     description(description);
     return this;
   }
 
   /** {@inheritDoc} */
+  @Override
   public BooleanArrayAssert describedAs(Description description) {
     return as(description);
   }
@@ -107,6 +111,7 @@ public class BooleanArrayAssert extends ArrayAssert<boolean[]> {
    * @throws AssertionError if the actual <code>boolean</code> array does not satisfy the given condition.
    * @see #is(Condition)
    */
+  @Override
   public BooleanArrayAssert satisfies(Condition<boolean[]> condition) {
     assertSatisfies(condition);
     return this;
@@ -120,6 +125,7 @@ public class BooleanArrayAssert extends ArrayAssert<boolean[]> {
    * @throws AssertionError if the actual <code>boolean</code> array satisfies the given condition.
    * @see #isNot(Condition)
    */
+  @Override
   public BooleanArrayAssert doesNotSatisfy(Condition<boolean[]> condition) {
     assertDoesNotSatisfy(condition);
     return this;
@@ -133,6 +139,7 @@ public class BooleanArrayAssert extends ArrayAssert<boolean[]> {
    * @throws AssertionError if the actual <code>boolean</code> array does not satisfy the given condition.
    * @since 1.2
    */
+  @Override
   public BooleanArrayAssert is(Condition<boolean[]> condition) {
     assertIs(condition);
     return this;
@@ -146,6 +153,7 @@ public class BooleanArrayAssert extends ArrayAssert<boolean[]> {
    * @throws AssertionError if the actual <code>boolean</code> array satisfies the given condition.
    * @since 1.2
    */
+  @Override
   public BooleanArrayAssert isNot(Condition<boolean[]> condition) {
     assertIsNot(condition);
     return this;
@@ -156,6 +164,7 @@ public class BooleanArrayAssert extends ArrayAssert<boolean[]> {
    * @return this assertion object.
    * @throws AssertionError if the actual <code>boolean</code> array is <code>null</code>.
    */
+  @Override
   public BooleanArrayAssert isNotNull() {
     assertNotNull();
     return this;
@@ -167,6 +176,7 @@ public class BooleanArrayAssert extends ArrayAssert<boolean[]> {
    * @throws AssertionError if the actual <code>boolean</code> array is <code>null</code>.
    * @throws AssertionError if the actual <code>boolean</code> array is empty.
    */
+  @Override
   public BooleanArrayAssert isNotEmpty() {
     assertIsNotEmpty();
     return this;
@@ -179,6 +189,7 @@ public class BooleanArrayAssert extends ArrayAssert<boolean[]> {
    * @return this assertion object.
    * @throws AssertionError if the actual <code>boolean</code> array is not equal to the given one.
    */
+  @Override
   public BooleanArrayAssert isEqualTo(boolean[] expected) {
     if (Arrays.equals(actual, expected)) return this;
     failIfCustomMessageIsSet();
@@ -192,6 +203,7 @@ public class BooleanArrayAssert extends ArrayAssert<boolean[]> {
    * @return this assertion object.
    * @throws AssertionError if the actual <code>boolean</code> array is equal to the given one.
    */
+  @Override
   public BooleanArrayAssert isNotEqualTo(boolean[] array) {
     if (!Arrays.equals(actual, array)) return this;
     failIfCustomMessageIsSet();
@@ -206,6 +218,7 @@ public class BooleanArrayAssert extends ArrayAssert<boolean[]> {
    * @throws AssertionError if the number of elements in the actual <code>boolean</code> array is not equal to the given
    * one.
    */
+  @Override
   public BooleanArrayAssert hasSize(int expected) {
     assertHasSize(expected);
     return this;
@@ -217,6 +230,7 @@ public class BooleanArrayAssert extends ArrayAssert<boolean[]> {
    * @return this assertion object.
    * @throws AssertionError if the actual <code>boolean</code> array is not the same as the given one.
    */
+  @Override
   public BooleanArrayAssert isSameAs(boolean[] expected) {
     assertSameAs(expected);
     return this;
@@ -228,12 +242,14 @@ public class BooleanArrayAssert extends ArrayAssert<boolean[]> {
    * @return this assertion object.
    * @throws AssertionError if the actual <code>boolean</code> array is the same as the given one.
    */
+  @Override
   public BooleanArrayAssert isNotSameAs(boolean[] expected) {
     assertNotSameAs(expected);
     return this;
   }
 
   /** {@inheritDoc} */
+  @Override
   public BooleanArrayAssert overridingErrorMessage(String message) {
     replaceDefaultErrorMessagesWith(message);
     return this;

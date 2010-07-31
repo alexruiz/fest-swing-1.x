@@ -36,10 +36,12 @@ public class CollectionAssert_doesNotSatisfy_Test extends GenericAssert_doesNotS
     notNullValue = emptyList();
   }
 
+  @Override
   protected Collection<?> notNullValue() {
     return notNullValue;
   }
 
+  @Override
   protected CollectionAssert assertionsFor(Collection<?> actual) {
     return new CollectionAssert(actual);
   }

@@ -32,10 +32,12 @@ public class FloatAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSatisf
     notNullValue = 6f;
   }
 
+  @Override
   protected Float notNullValue() {
     return notNullValue;
   }
 
+  @Override
   protected FloatAssert assertionsFor(Float actual) {
     return new FloatAssert(actual);
   }

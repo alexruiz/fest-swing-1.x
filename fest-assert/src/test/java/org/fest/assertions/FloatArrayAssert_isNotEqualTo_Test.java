@@ -35,14 +35,17 @@ public class FloatArrayAssert_isNotEqualTo_Test extends GenericAssert_isNotEqual
     unequalValue = floatArray(8f);
   }
 
+  @Override
   protected FloatArrayAssert assertionsFor(float[] actual) {
     return new FloatArrayAssert(actual);
   }
 
+  @Override
   protected float[] notNullValue() {
     return notNullValue;
   }
 
+  @Override
   protected float[] unequalValue() {
     return unequalValue;
   }

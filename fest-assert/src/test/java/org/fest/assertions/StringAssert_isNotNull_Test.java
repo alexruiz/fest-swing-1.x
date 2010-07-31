@@ -32,10 +32,12 @@ public class StringAssert_isNotNull_Test extends GenericAssert_isNotNull_TestCas
     notNullValue = "Anakin";
   }
 
+  @Override
   protected StringAssert assertionsFor(String actual) {
     return new StringAssert(actual);
   }
 
+  @Override
   protected String notNullValue() {
     return notNullValue;
   }

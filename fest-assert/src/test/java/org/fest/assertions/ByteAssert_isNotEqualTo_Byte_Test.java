@@ -34,14 +34,17 @@ public class ByteAssert_isNotEqualTo_Byte_Test extends GenericAssert_isNotEqualT
     unequalValue = 8;
   }
 
+  @Override
   protected ByteAssert assertionsFor(Byte actual) {
     return new ByteAssert(actual);
   }
 
+  @Override
   protected Byte notNullValue() {
     return notNullValue;
   }
 
+  @Override
   protected Byte unequalValue() {
     return unequalValue;
   }

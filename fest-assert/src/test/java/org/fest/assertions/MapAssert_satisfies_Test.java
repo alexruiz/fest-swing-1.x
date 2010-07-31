@@ -36,10 +36,12 @@ public class MapAssert_satisfies_Test extends GenericAssert_satisfies_TestCase<M
     notNullValue = emptyMap();
   }
 
+  @Override
   protected MapAssert assertionsFor(Map<?, ?> actual) {
     return new MapAssert(actual);
   }
 
+  @Override
   protected Map<?, ?> notNullValue() {
     return notNullValue;
   }

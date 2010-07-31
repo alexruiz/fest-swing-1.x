@@ -35,10 +35,12 @@ public class ImageAssert_isNull_Test extends GenericAssert_isNull_TestCase<Buffe
     notNullValue = fivePixelBlueImage();
   }
 
+  @Override
   protected ImageAssert assertionsFor(BufferedImage actual) {
     return new ImageAssert(actual);
   }
 
+  @Override
   protected BufferedImage notNullValue() {
     return notNullValue;
   }

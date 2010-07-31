@@ -39,14 +39,17 @@ public class FileAssert_isNotSameAs_Test extends GenericAssert_isNotSameAs_TestC
     notSameValue = aFile();
   }
 
+  @Override
   protected FileAssert assertionsFor(File actual) {
     return new FileAssert(actual);
   }
 
+  @Override
   protected File notNullValue() {
     return notNullValue;
   }
 
+  @Override
   protected File notSameValue() {
     return notSameValue;
   }

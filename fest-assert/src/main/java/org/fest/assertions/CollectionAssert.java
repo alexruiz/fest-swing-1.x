@@ -46,6 +46,7 @@ public class CollectionAssert extends ObjectGroupAssert<Collection<?>> {
    * @throws NullPointerException if the given array is <code>null</code>.
    * @throws AssertionError if the actual collection does not contain the given objects.
    */
+  @Override
   public CollectionAssert contains(Object... objects) {
     assertContains(objects);
     return this;
@@ -60,6 +61,7 @@ public class CollectionAssert extends ObjectGroupAssert<Collection<?>> {
    * @throws AssertionError if the actual collection does not contain the given objects, or if the actual collection
    *           contains elements other than the ones specified.
    */
+  @Override
   public CollectionAssert containsOnly(Object... objects) {
     assertContainsOnly(objects);
     return this;
@@ -73,6 +75,7 @@ public class CollectionAssert extends ObjectGroupAssert<Collection<?>> {
    * @throws NullPointerException if the given array is <code>null</code>.
    * @throws AssertionError if the actual collection contains any of the given objects.
    */
+  @Override
   public CollectionAssert excludes(Object... objects) {
     assertExcludes(objects);
     return this;
@@ -84,29 +87,34 @@ public class CollectionAssert extends ObjectGroupAssert<Collection<?>> {
    * @throws AssertionError if the actual collection is <code>null</code>.
    * @throws AssertionError if the actual collection has duplicates.
    */
+  @Override
   public CollectionAssert doesNotHaveDuplicates() {
     assertDoesNotHaveDuplicates();
     return this;
   }
 
   /** {@inheritDoc} */
+  @Override
   public CollectionAssert as(String description) {
     description(description);
     return this;
   }
 
   /** {@inheritDoc} */
+  @Override
   public CollectionAssert describedAs(String description) {
     return as(description);
   }
 
   /** {@inheritDoc} */
+  @Override
   public CollectionAssert as(Description description) {
     description(description);
     return this;
   }
 
   /** {@inheritDoc} */
+  @Override
   public CollectionAssert describedAs(Description description) {
     return as(description);
   }
@@ -119,6 +127,7 @@ public class CollectionAssert extends ObjectGroupAssert<Collection<?>> {
    * @throws AssertionError if the actual collection does not satisfy the given condition.
    * @see #is(Condition)
    */
+  @Override
   public CollectionAssert satisfies(Condition<Collection<?>> condition) {
     assertSatisfies(condition);
     return this;
@@ -132,6 +141,7 @@ public class CollectionAssert extends ObjectGroupAssert<Collection<?>> {
    * @throws AssertionError if the actual collection satisfies the given condition.
    * @see #isNot(Condition)
    */
+  @Override
   public CollectionAssert doesNotSatisfy(Condition<Collection<?>> condition) {
     assertDoesNotSatisfy(condition);
     return this;
@@ -145,6 +155,7 @@ public class CollectionAssert extends ObjectGroupAssert<Collection<?>> {
    * @throws AssertionError if the actual collection does not satisfy the given condition.
    * @since 1.2
    */
+  @Override
   public CollectionAssert is(Condition<Collection<?>> condition) {
     assertIs(condition);
     return this;
@@ -158,6 +169,7 @@ public class CollectionAssert extends ObjectGroupAssert<Collection<?>> {
    * @throws AssertionError if the actual collection satisfies the given condition.
    * @since 1.2
    */
+  @Override
   public CollectionAssert isNot(Condition<Collection<?>> condition) {
     assertIsNot(condition);
     return this;
@@ -168,6 +180,7 @@ public class CollectionAssert extends ObjectGroupAssert<Collection<?>> {
    * @return this assertion object.
    * @throws AssertionError if the actual collection is <code>null</code>.
    */
+  @Override
   public CollectionAssert isNotNull() {
     assertNotNull();
     return this;
@@ -179,6 +192,7 @@ public class CollectionAssert extends ObjectGroupAssert<Collection<?>> {
    * @throws AssertionError if the actual collection is <code>null</code>.
    * @throws AssertionError if the actual collection is empty.
    */
+  @Override
   public CollectionAssert isNotEmpty() {
     assertIsNotEmpty();
     return this;
@@ -191,6 +205,7 @@ public class CollectionAssert extends ObjectGroupAssert<Collection<?>> {
    * @throws AssertionError if the actual collection is <code>null</code>.
    * @throws AssertionError if the number of elements of the actual collection is not equal to the given one.
    */
+  @Override
   public CollectionAssert hasSize(int expected) {
     assertHasSize(expected);
     return this;
@@ -201,6 +216,7 @@ public class CollectionAssert extends ObjectGroupAssert<Collection<?>> {
    * @return the number of elements in the actual collection.
    * @throws AssertionError if the actual collection is <code>null</code>.
    */
+  @Override
   protected int actualGroupSize() {
     isNotNull();
     return actual.size();
@@ -212,6 +228,7 @@ public class CollectionAssert extends ObjectGroupAssert<Collection<?>> {
    * @return this assertion object.
    * @throws AssertionError if the actual collection is not equal to the given one.
    */
+  @Override
   public CollectionAssert isEqualTo(Collection<?> expected) {
     assertEqualTo(expected);
     return this;
@@ -223,6 +240,7 @@ public class CollectionAssert extends ObjectGroupAssert<Collection<?>> {
    * @return this assertion object.
    * @throws AssertionError if the actual collection is equal to the given one.
    */
+  @Override
   public CollectionAssert isNotEqualTo(Collection<?> other) {
     assertNotEqualTo(other);
     return this;
@@ -234,6 +252,7 @@ public class CollectionAssert extends ObjectGroupAssert<Collection<?>> {
    * @return this assertion object.
    * @throws AssertionError if the actual collection is not the same as the given one.
    */
+  @Override
   public CollectionAssert isSameAs(Collection<?> expected) {
     assertSameAs(expected);
     return this;
@@ -245,12 +264,14 @@ public class CollectionAssert extends ObjectGroupAssert<Collection<?>> {
    * @return this assertion object.
    * @throws AssertionError if the actual collection is the same as the given one.
    */
+  @Override
   public CollectionAssert isNotSameAs(Collection<?> other) {
     assertNotSameAs(other);
     return this;
   }
 
   /** {@inheritDoc} */
+  @Override
   public CollectionAssert overridingErrorMessage(String message) {
     replaceDefaultErrorMessagesWith(message);
     return this;
@@ -274,6 +295,7 @@ public class CollectionAssert extends ObjectGroupAssert<Collection<?>> {
    * @throws IntrospectionError if an element in the given collection does not have a matching property.
    * @since 1.3
    */
+  @Override
   public CollectionAssert onProperty(String propertyName) {
     isNotNull();
     if (actual.isEmpty()) return new CollectionAssert(emptyList());
@@ -281,11 +303,13 @@ public class CollectionAssert extends ObjectGroupAssert<Collection<?>> {
   }
 
   /** {@inheritDoc} */
+  @Override
   protected Set<Object> actualAsSet() {
     return new HashSet<Object>(actual);
   }
 
   /** {@inheritDoc} */
+  @Override
   protected List<Object> actualAsList() {
     return new ArrayList<Object>(actual);
   }

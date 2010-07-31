@@ -23,14 +23,17 @@ package org.fest.assertions;
 public class ByteAssert_constructorsForPrimitiveAndWrapper_Test extends
     GenericAssert_constructorsForPrimitiveAndWrapper_TestCase<Byte> {
 
+  @Override
   protected Class<ByteAssert> assertionType() {
     return ByteAssert.class;
   }
 
+  @Override
   protected Class<?> primitiveType() {
     return byte.class;
   }
 
+  @Override
   protected Class<Byte> primitiveWrapperType() {
     return Byte.class;
   }

@@ -34,10 +34,12 @@ public class BigDecimalAssert_is_Test extends GenericAssert_is_TestCase<BigDecim
     notNullValue = ZERO;
   }
 
+  @Override
   protected BigDecimalAssert assertionsFor(BigDecimal actual) {
     return new BigDecimalAssert(actual);
   }
 
+  @Override
   protected BigDecimal notNullValue() {
     return notNullValue;
   }

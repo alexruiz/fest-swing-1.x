@@ -35,14 +35,17 @@ public class CharArrayAssert_isEmpty_Test extends GroupAssert_isEmpty_TestCase<c
     empty = new char[0];
   }
 
+  @Override
   protected CharArrayAssert assertionsFor(char[] actual) {
     return new CharArrayAssert(actual);
   }
 
+  @Override
   protected char[] emptyGroup() {
     return empty;
   }
 
+  @Override
   protected char[] notEmptyGroup() {
     return notEmpty;
   }

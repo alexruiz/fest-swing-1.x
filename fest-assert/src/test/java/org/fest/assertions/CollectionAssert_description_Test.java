@@ -30,6 +30,7 @@ import java.util.*;
  */
 public class CollectionAssert_description_Test extends GenericAssert_description_TestCase<Collection<?>> {
 
+  @Override
   protected GenericAssert<Collection<?>> assertionToTest() {
     return new CollectionAssert(new ArrayList<String>());
   }

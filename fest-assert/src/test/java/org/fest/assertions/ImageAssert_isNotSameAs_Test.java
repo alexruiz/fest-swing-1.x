@@ -37,14 +37,17 @@ public class ImageAssert_isNotSameAs_Test extends GenericAssert_isNotSameAs_Test
     notSameValue = fivePixelBlueImage();
   }
 
+  @Override
   protected ImageAssert assertionsFor(BufferedImage actual) {
     return new ImageAssert(actual);
   }
 
+  @Override
   protected BufferedImage notNullValue() {
     return notNullValue;
   }
 
+  @Override
   protected BufferedImage notSameValue() {
     return notSameValue;
   }

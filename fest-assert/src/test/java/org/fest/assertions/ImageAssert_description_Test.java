@@ -32,6 +32,7 @@ import java.awt.image.BufferedImage;
  */
 public class ImageAssert_description_Test extends GenericAssert_description_TestCase<BufferedImage> {
 
+  @Override
   protected GenericAssert<BufferedImage> assertionToTest() {
     return new ImageAssert(fivePixelBlueImage());
   }

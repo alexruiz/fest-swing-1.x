@@ -36,14 +36,17 @@ public class BooleanAssert_isNotSameAs_Test extends GenericAssert_isNotSameAs_Te
     notSameValue = FALSE;
   }
 
+  @Override
   protected BooleanAssert assertionsFor(Boolean actual) {
     return new BooleanAssert(actual);
   }
 
+  @Override
   protected Boolean notNullValue() {
     return notNullValue;
   }
 
+  @Override
   protected Boolean notSameValue() {
     return notSameValue;
   }

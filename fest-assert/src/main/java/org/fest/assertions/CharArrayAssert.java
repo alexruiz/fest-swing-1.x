@@ -50,6 +50,7 @@ public class CharArrayAssert extends ArrayAssert<char[]> {
    * @param description the description of the actual value.
    * @return this assertion object.
    */
+  @Override
   public CharArrayAssert as(String description) {
     description(description);
     return this;
@@ -68,6 +69,7 @@ public class CharArrayAssert extends ArrayAssert<char[]> {
    * @param description the description of the actual value.
    * @return this assertion object.
    */
+  @Override
   public CharArrayAssert describedAs(String description) {
     return as(description);
   }
@@ -85,6 +87,7 @@ public class CharArrayAssert extends ArrayAssert<char[]> {
    * @param description the description of the actual value.
    * @return this assertion object.
    */
+  @Override
   public CharArrayAssert as(Description description) {
     description(description);
     return this;
@@ -103,6 +106,7 @@ public class CharArrayAssert extends ArrayAssert<char[]> {
    * @param description the description of the actual value.
    * @return this assertion object.
    */
+  @Override
   public CharArrayAssert describedAs(Description description) {
     return as(description);
   }
@@ -155,6 +159,7 @@ public class CharArrayAssert extends ArrayAssert<char[]> {
    * @throws AssertionError if the actual <code>char</code> array does not satisfy the given condition.
    * @see #is(Condition)
    */
+  @Override
   public CharArrayAssert satisfies(Condition<char[]> condition) {
     assertSatisfies(condition);
     return this;
@@ -168,6 +173,7 @@ public class CharArrayAssert extends ArrayAssert<char[]> {
    * @throws AssertionError if the actual <code>char</code> array satisfies the given condition.
    * @see #isNot(Condition)
    */
+  @Override
   public CharArrayAssert doesNotSatisfy(Condition<char[]> condition) {
     assertDoesNotSatisfy(condition);
     return this;
@@ -181,6 +187,7 @@ public class CharArrayAssert extends ArrayAssert<char[]> {
    * @throws AssertionError if the actual <code>char</code> array does not satisfy the given condition.
    * @since 1.2
    */
+  @Override
   public CharArrayAssert is(Condition<char[]> condition) {
     assertIs(condition);
     return this;
@@ -194,6 +201,7 @@ public class CharArrayAssert extends ArrayAssert<char[]> {
    * @throws AssertionError if the actual <code>char</code> array satisfies the given condition.
    * @since 1.2
    */
+  @Override
   public CharArrayAssert isNot(Condition<char[]> condition) {
     assertIsNot(condition);
     return this;
@@ -204,6 +212,7 @@ public class CharArrayAssert extends ArrayAssert<char[]> {
    * @return this assertion object.
    * @throws AssertionError if the actual <code>char</code> array is <code>null</code>.
    */
+  @Override
   public CharArrayAssert isNotNull() {
     assertNotNull();
     return this;
@@ -215,6 +224,7 @@ public class CharArrayAssert extends ArrayAssert<char[]> {
    * @throws AssertionError if the actual <code>char</code> array is <code>null</code>.
    * @throws AssertionError if the actual <code>char</code> array is empty.
    */
+  @Override
   public CharArrayAssert isNotEmpty() {
     assertIsNotEmpty();
     return this;
@@ -227,6 +237,7 @@ public class CharArrayAssert extends ArrayAssert<char[]> {
    * @return this assertion object.
    * @throws AssertionError if the actual <code>char</code> array is not equal to the given one.
    */
+  @Override
   public CharArrayAssert isEqualTo(char[] expected) {
     if (Arrays.equals(actual, expected)) return this;
     failIfCustomMessageIsSet();
@@ -240,6 +251,7 @@ public class CharArrayAssert extends ArrayAssert<char[]> {
    * @return this assertion object.
    * @throws AssertionError if the actual <code>char</code> array is equal to the given one.
    */
+  @Override
   public CharArrayAssert isNotEqualTo(char[] array) {
     if (!Arrays.equals(actual, array)) return this;
     failIfCustomMessageIsSet();
@@ -254,6 +266,7 @@ public class CharArrayAssert extends ArrayAssert<char[]> {
    * @throws AssertionError if the number of elements in the actual <code>char</code> array is not equal to the given
    * one.
    */
+  @Override
   public CharArrayAssert hasSize(int expected) {
     assertHasSize(expected);
     return this;
@@ -265,6 +278,7 @@ public class CharArrayAssert extends ArrayAssert<char[]> {
    * @return this assertion object.
    * @throws AssertionError if the actual <code>char</code> array is not the same as the given one.
    */
+  @Override
   public CharArrayAssert isSameAs(char[] expected) {
     assertSameAs(expected);
     return this;
@@ -276,12 +290,14 @@ public class CharArrayAssert extends ArrayAssert<char[]> {
    * @return this assertion object.
    * @throws AssertionError if the actual <code>char</code> array is the same as the given one.
    */
+  @Override
   public CharArrayAssert isNotSameAs(char[] expected) {
     assertNotSameAs(expected);
     return this;
   }
 
   /** {@inheritDoc} */
+  @Override
   public CharArrayAssert overridingErrorMessage(String message) {
     replaceDefaultErrorMessagesWith(message);
     return this;

@@ -27,10 +27,12 @@ import java.util.List;
  */
 public class ListAssert_doesNotHaveDuplicates_Test extends ObjectGroupAssert_doesNotHaveDuplicates_TestCase<List<?>> {
 
+  @Override
   protected List<?> actualFrom(Object... values) {
     return list(values);
   }
 
+  @Override
   protected ListAssert assertionsFor(List<?> actual) {
     return new ListAssert(actual);
   }

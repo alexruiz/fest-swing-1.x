@@ -33,14 +33,17 @@ public class ObjectAssert_isNotEqualTo_Test extends GenericAssert_isNotEqualTo_T
     unequalValue = 8;
   }
 
+  @Override
   protected ObjectAssert assertionsFor(Object actual) {
     return new ObjectAssert(actual);
   }
 
+  @Override
   protected Object notNullValue() {
     return notNullValue;
   }
 
+  @Override
   protected Object unequalValue() {
     return unequalValue;
   }

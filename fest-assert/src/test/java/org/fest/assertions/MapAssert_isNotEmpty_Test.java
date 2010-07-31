@@ -38,14 +38,17 @@ public class MapAssert_isNotEmpty_Test extends GroupAssert_isNotEmpty_TestCase<M
     notEmpty = map(entry("key1", 1));
   }
 
+  @Override
   protected MapAssert assertionsFor(Map<?, ?> actual) {
     return new MapAssert(actual);
   }
 
+  @Override
   protected Map<?, ?> emptyGroup() {
     return emptyMap();
   }
 
+  @Override
   protected Map<?, ?> notEmptyGroup() {
     return notEmpty;
   }

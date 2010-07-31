@@ -40,14 +40,17 @@ public class MapAssert_isNotSameAs_Test extends GenericAssert_isNotSameAs_TestCa
     notSameValue = emptyMap();
   }
 
+  @Override
   protected MapAssert assertionsFor(Map<?, ?> actual) {
     return new MapAssert(actual);
   }
 
+  @Override
   protected Map<?, ?> notNullValue() {
     return notNullValue;
   }
 
+  @Override
   protected Map<?, ?> notSameValue() {
     return notSameValue;
   }

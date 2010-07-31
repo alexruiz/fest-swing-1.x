@@ -34,10 +34,12 @@ public class BooleanAssert_satisfies_Test extends GenericAssert_satisfies_TestCa
     notNullValue = TRUE;
   }
 
+  @Override
   protected BooleanAssert assertionsFor(Boolean actual) {
     return new BooleanAssert(actual);
   }
 
+  @Override
   protected Boolean notNullValue() {
     return notNullValue;
   }

@@ -34,14 +34,17 @@ public class FloatAssert_isEqualTo_Float_Test extends GenericAssert_isEqualTo_Te
     unequalValue = 8f;
   }
 
+  @Override
   protected FloatAssert assertionsFor(Float actual) {
     return new FloatAssert(actual);
   }
 
+  @Override
   protected Float notNullValue() {
     return notNullValue;
   }
 
+  @Override
   protected Float unequalValue() {
     return unequalValue;
   }

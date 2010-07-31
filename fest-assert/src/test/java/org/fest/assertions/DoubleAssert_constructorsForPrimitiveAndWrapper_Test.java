@@ -24,14 +24,17 @@ package org.fest.assertions;
 public class DoubleAssert_constructorsForPrimitiveAndWrapper_Test extends
   GenericAssert_constructorsForPrimitiveAndWrapper_TestCase<Double> {
 
+  @Override
   protected Class<DoubleAssert> assertionType() {
     return DoubleAssert.class;
   }
 
+  @Override
   protected Class<?> primitiveType() {
     return double.class;
   }
 
+  @Override
   protected Class<Double> primitiveWrapperType() {
     return Double.class;
   }

@@ -32,10 +32,12 @@ public class CharAssert_isNotNull_Test extends GenericAssert_isNotNull_TestCase<
     notNullValue = 'a';
   }
 
+  @Override
   protected CharAssert assertionsFor(Character actual) {
     return new CharAssert(actual);
   }
 
+  @Override
   protected Character notNullValue() {
     return notNullValue;
   }

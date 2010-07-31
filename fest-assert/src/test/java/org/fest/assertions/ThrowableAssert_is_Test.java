@@ -30,10 +30,12 @@ public class ThrowableAssert_is_Test extends GenericAssert_is_TestCase<Throwable
     notNullValue = new Exception();
   }
 
+  @Override
   protected ThrowableAssert assertionsFor(Throwable actual) {
     return new ThrowableAssert(actual);
   }
 
+  @Override
   protected Throwable notNullValue() {
     return notNullValue;
   }

@@ -32,10 +32,12 @@ public class ShortAssert_isNot_Test extends GenericAssert_isNot_TestCase<Short> 
     notNullValue = 6;
   }
 
+  @Override
   protected ShortAssert assertionsFor(Short actual) {
     return new ShortAssert(actual);
   }
 
+  @Override
   protected Short notNullValue() {
     return notNullValue;
   }

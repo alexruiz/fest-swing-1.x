@@ -35,14 +35,17 @@ public class DoubleArrayAssert_isEqualTo_Test extends GenericAssert_isEqualTo_Te
     unequalValue = doubleArray(6d);
   }
 
+  @Override
   protected DoubleArrayAssert assertionsFor(double[] actual) {
     return new DoubleArrayAssert(actual);
   }
 
+  @Override
   protected double[] notNullValue() {
     return notNullValue;
   }
 
+  @Override
   protected double[] unequalValue() {
     return unequalValue;
   }

@@ -34,7 +34,7 @@ public class ThrowableAssert_hasMessage_Test {
   public static void setUpOnce() {
     actual = new Exception("An exception");
   }
-  
+
   @Test
   public void should_pass_if_message_in_actual_is_equal_to_expected() {
     new ThrowableAssert(actual).hasMessage("An exception");

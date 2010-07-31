@@ -75,8 +75,8 @@ public abstract class ObjectGroupAssert<T> extends ItemGroupAssert<T> {
   protected abstract ObjectGroupAssert<T> doesNotHaveDuplicates();
 
   /**
-   * Creates a new group of objects whose target collection contains the values of the given property name from the 
-   * elements of the actual group of objects. Property access works with both simple properties like {@code Person.age} 
+   * Creates a new group of objects whose target collection contains the values of the given property name from the
+   * elements of the actual group of objects. Property access works with both simple properties like {@code Person.age}
    * and nested properties {@code Person.father.age}.
    * <p>
    * For example, let's say we have a collection of {@code Person} objects and you want to verify their age:
@@ -84,7 +84,7 @@ public abstract class ObjectGroupAssert<T> extends ItemGroupAssert<T> {
    * assertThat(persons).onProperty("age").containsOnly(25, 16, 44, 37); // simple property
    * assertThat(persons).onProperty("father.age").containsOnly(55, 46, 74, 62); // nested property
    * </p>
-   * @param propertyName the name of the property to extract values from the actual collection to build a new group of 
+   * @param propertyName the name of the property to extract values from the actual collection to build a new group of
    * objects.
    * @return a new group of objects containing the values of the given property name from the elements of the actual
    * group of objects.
@@ -95,17 +95,22 @@ public abstract class ObjectGroupAssert<T> extends ItemGroupAssert<T> {
   protected abstract ObjectGroupAssert<T> onProperty(String propertyName);
 
   /** {@inheritDoc} */
+  @Override
   protected abstract ObjectGroupAssert<T> as(String description);
 
   /** {@inheritDoc} */
+  @Override
   protected abstract ObjectGroupAssert<T> describedAs(String description);
 
   /** {@inheritDoc} */
+  @Override
   protected abstract ObjectGroupAssert<T> as(Description description);
 
   /** {@inheritDoc} */
+  @Override
   protected abstract ObjectGroupAssert<T> describedAs(Description description);
 
   /** {@inheritDoc} */
+  @Override
   protected abstract ObjectGroupAssert<T> overridingErrorMessage(String message);
 }

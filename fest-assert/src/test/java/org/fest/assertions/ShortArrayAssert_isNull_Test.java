@@ -33,10 +33,12 @@ public class ShortArrayAssert_isNull_Test extends GenericAssert_isNull_TestCase<
     notNullValue = emptyShortArray();
   }
 
+  @Override
   protected ShortArrayAssert assertionsFor(short[] actual) {
     return new ShortArrayAssert(actual);
   }
 
+  @Override
   protected short[] notNullValue() {
     return notNullValue;
   }

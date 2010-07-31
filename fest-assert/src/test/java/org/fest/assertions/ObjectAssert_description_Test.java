@@ -28,6 +28,7 @@ package org.fest.assertions;
  */
 public class ObjectAssert_description_Test extends GenericAssert_description_TestCase<Object> {
 
+  @Override
   protected GenericAssert<Object> assertionToTest() {
     return new ObjectAssert(6);
   }

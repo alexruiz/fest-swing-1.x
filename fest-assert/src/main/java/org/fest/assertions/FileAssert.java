@@ -50,23 +50,27 @@ public class FileAssert extends GenericAssert<File> {
   }
 
   /** {@inheritDoc} */
+  @Override
   public FileAssert as(String description) {
     description(description);
     return this;
   }
 
   /** {@inheritDoc} */
+  @Override
   public FileAssert describedAs(String description) {
     return as(description);
   }
 
   /** {@inheritDoc} */
+  @Override
   public FileAssert as(Description description) {
     description(description);
     return this;
   }
 
   /** {@inheritDoc} */
+  @Override
   public FileAssert describedAs(Description description) {
     return as(description);
   }
@@ -132,6 +136,7 @@ public class FileAssert extends GenericAssert<File> {
    * @return this assertion object.
    * @throws AssertionError if the actual <code>File</code> is not equal to the given one.
    */
+  @Override
   public FileAssert isEqualTo(File expected) {
     assertEqualTo(expected);
     return this;
@@ -156,6 +161,7 @@ public class FileAssert extends GenericAssert<File> {
    * @return this assertion object.
    * @throws AssertionError if the actual <code>File</code> is equal to the given one.
    */
+  @Override
   public FileAssert isNotEqualTo(File other) {
     assertNotEqualTo(other);
     return this;
@@ -166,6 +172,7 @@ public class FileAssert extends GenericAssert<File> {
    * @return this assertion object.
    * @throws AssertionError if the actual <code>File</code> is <code>null</code>.
    */
+  @Override
   public FileAssert isNotNull() {
     assertNotNull();
     return this;
@@ -177,6 +184,7 @@ public class FileAssert extends GenericAssert<File> {
    * @return this assertion object.
    * @throws AssertionError if the actual <code>File</code> is the same as the given one.
    */
+  @Override
   public FileAssert isNotSameAs(File other) {
     assertNotSameAs(other);
     return this;
@@ -188,6 +196,7 @@ public class FileAssert extends GenericAssert<File> {
    * @return this assertion object.
    * @throws AssertionError if the actual <code>File</code> is not the same as the given one.
    */
+  @Override
   public FileAssert isSameAs(File expected) {
     assertSameAs(expected);
     return this;
@@ -201,6 +210,7 @@ public class FileAssert extends GenericAssert<File> {
    * @throws AssertionError if the actual <code>File</code> does not satisfy the given condition.
    * @see #is(Condition)
    */
+  @Override
   public FileAssert satisfies(Condition<File> condition) {
     assertSatisfies(condition);
     return this;
@@ -214,6 +224,7 @@ public class FileAssert extends GenericAssert<File> {
    * @throws NullPointerException if the given condition is <code>null</code>.
    * @see #isNot(Condition)
    */
+  @Override
   public FileAssert doesNotSatisfy(Condition<File> condition) {
     assertDoesNotSatisfy(condition);
     return this;
@@ -227,6 +238,7 @@ public class FileAssert extends GenericAssert<File> {
    * @throws NullPointerException if the given condition is <code>null</code>.
    * @throws AssertionError if the actual <code>File</code> does not satisfy the given condition.
    */
+  @Override
   public FileAssert is(Condition<File> condition) {
     assertIs(condition);
     return this;
@@ -239,6 +251,7 @@ public class FileAssert extends GenericAssert<File> {
    * @throws AssertionError if the actual <code>File</code> satisfies the given condition.
    * @throws NullPointerException if the given condition is <code>null</code>.
    */
+  @Override
   public FileAssert isNot(Condition<File> condition) {
     assertIsNot(condition);
     return this;
@@ -318,6 +331,7 @@ public class FileAssert extends GenericAssert<File> {
   }
 
   /** {@inheritDoc} */
+  @Override
   public FileAssert overridingErrorMessage(String message) {
     replaceDefaultErrorMessagesWith(message);
     return this;

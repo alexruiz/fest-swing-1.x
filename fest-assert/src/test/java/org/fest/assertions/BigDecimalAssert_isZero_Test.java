@@ -40,14 +40,17 @@ public class BigDecimalAssert_isZero_Test extends NumberAssert_isZero_TestCase<B
     zero = ZERO;
   }
 
+  @Override
   protected BigDecimal notZero() {
     return notZero;
   }
 
+  @Override
   protected BigDecimal zero() {
     return zero;
   }
 
+  @Override
   protected BigDecimalAssert assertionsFor(BigDecimal actual) {
     return new BigDecimalAssert(actual);
   }

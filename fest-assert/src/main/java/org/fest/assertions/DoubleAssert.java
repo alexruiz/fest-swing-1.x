@@ -37,23 +37,27 @@ public class DoubleAssert extends GenericAssert<Double> implements NumberAssert 
   }
 
   /** {@inheritDoc} */
+  @Override
   public DoubleAssert as(String description) {
     description(description);
     return this;
   }
 
   /** {@inheritDoc} */
+  @Override
   public DoubleAssert describedAs(String description) {
     return as(description);
   }
 
   /** {@inheritDoc} */
+  @Override
   public DoubleAssert as(Description description) {
     description(description);
     return this;
   }
 
   /** {@inheritDoc} */
+  @Override
   public DoubleAssert describedAs(Description description) {
     return as(description);
   }
@@ -75,6 +79,7 @@ public class DoubleAssert extends GenericAssert<Double> implements NumberAssert 
    * @throws AssertionError if the actual {@code Double} is not equal to the given one.
    * @since 1.3
    */
+  @Override
   public DoubleAssert isEqualTo(Double expected) {
     if (actual == null || expected == null) {
       assertEqualTo(expected);
@@ -268,6 +273,7 @@ public class DoubleAssert extends GenericAssert<Double> implements NumberAssert 
   }
 
   /** {@inheritDoc} */
+  @Override
   public DoubleAssert overridingErrorMessage(String message) {
     replaceDefaultErrorMessagesWith(message);
     return this;
@@ -282,6 +288,7 @@ public class DoubleAssert extends GenericAssert<Double> implements NumberAssert 
    * @see #is(Condition)
    * @since 1.3
    */
+  @Override
   public DoubleAssert satisfies(Condition<Double> condition) {
     assertSatisfies(condition);
     return this;
@@ -296,6 +303,7 @@ public class DoubleAssert extends GenericAssert<Double> implements NumberAssert 
    * @see #isNot(Condition)
    * @since 1.3
    */
+  @Override
   public DoubleAssert doesNotSatisfy(Condition<Double> condition) {
     assertDoesNotSatisfy(condition);
     return this;
@@ -309,6 +317,7 @@ public class DoubleAssert extends GenericAssert<Double> implements NumberAssert 
    * @throws AssertionError if the actual {@code Double} does not satisfy the given condition.
    * @since 1.3
    */
+  @Override
   public DoubleAssert is(Condition<Double> condition) {
     assertIs(condition);
     return this;
@@ -322,6 +331,7 @@ public class DoubleAssert extends GenericAssert<Double> implements NumberAssert 
    * @throws AssertionError if the actual {@code Double} does not satisfy the given condition.
    * @since 1.3
    */
+  @Override
   public DoubleAssert isNot(Condition<Double> condition) {
     assertIsNot(condition);
     return this;
@@ -334,6 +344,7 @@ public class DoubleAssert extends GenericAssert<Double> implements NumberAssert 
    * @throws AssertionError if the actual {@code Double} is equal to the given one.
    * @since 1.3
    */
+  @Override
   public DoubleAssert isNotEqualTo(Double other) {
     assertNotEqualTo(other);
     return this;
@@ -345,6 +356,7 @@ public class DoubleAssert extends GenericAssert<Double> implements NumberAssert 
    * @throws AssertionError if the actual {@code Double} is <code>null</code>.
    * @since 1.3
    */
+  @Override
   public DoubleAssert isNotNull() {
     assertNotNull();
     return this;
@@ -357,6 +369,7 @@ public class DoubleAssert extends GenericAssert<Double> implements NumberAssert 
    * @throws AssertionError if the actual {@code Double} is not the same as the given one.
    * @since 1.3
    */
+  @Override
   public DoubleAssert isSameAs(Double expected) {
     assertSameAs(expected);
     return this;
@@ -369,6 +382,7 @@ public class DoubleAssert extends GenericAssert<Double> implements NumberAssert 
    * @throws AssertionError if the actual {@code Double} is the same as the given one.
    * @since 1.3
    */
+  @Override
   public DoubleAssert isNotSameAs(Double other) {
     assertNotSameAs(other);
     return this;

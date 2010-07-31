@@ -34,14 +34,17 @@ public class CharAssert_Generic_isSameAs_Test extends GenericAssert_isSameAs_Tes
     notSameValue = 'b';
   }
 
+  @Override
   protected CharAssert assertionsFor(Character actual) {
     return new CharAssert(actual);
   }
 
+  @Override
   protected Character notNullValue() {
     return notNullValue;
   }
 
+  @Override
   protected Character notSameValue() {
     return notSameValue;
   }
