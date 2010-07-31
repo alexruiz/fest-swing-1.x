@@ -29,7 +29,7 @@ public class WindowVisibilityMonitor_componentShown_Test extends WindowVisibilit
     new EasyMockTemplate(windows) {
       @Override
       protected void expectations() {
-        windows.markAsShowingInEDT(window);
+        windows.markAsShowing(window);
       }
 
       @Override

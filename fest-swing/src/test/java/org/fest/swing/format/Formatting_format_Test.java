@@ -168,7 +168,7 @@ public class Formatting_format_Test extends EDTSafeTestCase {
   @RunsInEDT
   private static JPasswordField newJPasswordField() {
     return execute(new GuiQuery<JPasswordField>() {
-      protected JPasswordField executeInEDT() {
+      @Override protected JPasswordField executeInEDT() {
         JPasswordField passwordField = new JPasswordField();
         passwordField.setName("passwordField");
         return passwordField;
@@ -212,7 +212,7 @@ public class Formatting_format_Test extends EDTSafeTestCase {
   @RunsInEDT
   private static JRootPane newJRootPane() {
     return execute(new GuiQuery<JRootPane>() {
-      protected JRootPane executeInEDT() {
+      @Override protected JRootPane executeInEDT() {
         return new JRootPane();
       }
     });

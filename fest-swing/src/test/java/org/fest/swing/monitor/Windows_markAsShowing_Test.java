@@ -36,7 +36,7 @@ public class Windows_markAsShowing_Test extends Windows_TestCase {
 
   @Test
   public void should_mark_Window_as_showing() {
-    windows.markAsShowingInEDT(window);
+    windows.markAsShowing(window);
     assertThat(windows.isShowingButNotReady(window)).isTrue();
     int timeToPause = Windows.WINDOW_READY_DELAY * 2;
     logger.info(concat("Pausing for ", valueOf(timeToPause), " ms"));

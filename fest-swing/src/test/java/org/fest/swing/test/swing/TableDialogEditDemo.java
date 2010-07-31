@@ -50,13 +50,13 @@ public class TableDialogEditDemo extends JPanel {
     table.setDefaultEditor(Color.class, new ColorEditor());
 
     // Fiddle with the Sport column's cell editors/renderers.
-    setUpSportColumn(table, table.getColumnModel().getColumn(2));
+    setUpSportColumn(table.getColumnModel().getColumn(2));
 
     // Add the scroll pane to this panel.
     add(scrollPane);
   }
 
-  public void setUpSportColumn(JTable table, TableColumn sportColumn) {
+  public void setUpSportColumn(TableColumn sportColumn) {
     // Set up the editor for the sport cells.
     JComboBox comboBox = new JComboBox();
     comboBox.addItem("Snowboarding");

@@ -66,6 +66,8 @@ public class AWTExceptionHandlerInstaller_installAWTExceptionHandler_Test {
   static class CorrectEventHandler {}
 
   static class WrongEventHandler {
-    public WrongEventHandler(String something) {}
+    public WrongEventHandler(String something) {
+      if (something == null) return;
+    }
   }
 }

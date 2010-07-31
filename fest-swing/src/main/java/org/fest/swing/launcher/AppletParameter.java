@@ -14,8 +14,6 @@
  */
 package org.fest.swing.launcher;
 
-import org.fest.swing.launcher.AppletParameter.AppletParameterBuilder;
-
 /**
  * Understands a fluent interface for creation of applet parameters.
  * <p>

@@ -75,11 +75,11 @@ public class FEST122_addSupportForEditableJComboBoxAsCellEditor_Test extends Rob
     private static JTable data() {
       JTable table = new JTable(6, 3);
       table.setPreferredScrollableViewportSize(new Dimension(200, 60));
-      setUpColorColumn(table, table.getColumnModel().getColumn(0));
+      setUpColorColumn(table.getColumnModel().getColumn(0));
       return table;
     }
 
-    private static void setUpColorColumn(JTable table, TableColumn column) {
+    private static void setUpColorColumn(TableColumn column) {
       JComboBox comboBox = new JComboBox();
       comboBox.setEditable(true);
       comboBox.addItem("Blue");

@@ -30,6 +30,8 @@ public class ConcreteContainerFixture extends ContainerFixture<JFrame> {
 
   public ConcreteContainerFixture(Robot robot, JFrame target) { super(robot, target); }
   public JPopupMenuFixture showPopupMenu() { return null; }
-  public JPopupMenuFixture showPopupMenuAt(Point p) { return null; }
-
+  public JPopupMenuFixture showPopupMenuAt(Point p) { 
+    if (p == null) return null; // just to satisfy compiler warning
+    return null; 
+  }
 }

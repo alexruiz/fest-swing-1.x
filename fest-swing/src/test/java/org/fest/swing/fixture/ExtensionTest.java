@@ -47,8 +47,14 @@ public class ExtensionTest extends RobotBasedTestCase {
   }
 
   static class JTextFieldFixtureExtension extends ComponentFixtureExtension<JTextField, JTextFieldFixture> {
+    final String name;
+
+    JTextFieldFixtureExtension(String name) {
+      this.name = name;
+    }
+
     static JTextFieldFixtureExtension textFieldWithName(String name) {
-      return new JTextFieldFixtureExtension();
+      return new JTextFieldFixtureExtension(name);
     }
 
     @Override

@@ -69,7 +69,7 @@ public abstract class WindowFixture_TestCase {
     }
 
     private MyWindow(Class<?> testClass) {
-      super(WindowFixture_TestCase.class);
+      super(testClass);
       setName("MyWindow");
       setPreferredSize(new Dimension(80, 60));
     }

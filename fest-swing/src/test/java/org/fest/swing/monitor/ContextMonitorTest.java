@@ -108,7 +108,7 @@ public class ContextMonitorTest extends EDTSafeTestCase {
       @Override protected void expectations() {
         context.addContextFor(window);
         windows.attachNewWindowVisibilityMonitor(window);
-        windows.markAsShowingInEDT(window);
+        windows.markAsShowing(window);
         expectEventQueueLookupFor(window);
       }
 
@@ -124,7 +124,7 @@ public class ContextMonitorTest extends EDTSafeTestCase {
       @Override protected void expectations() {
         context.addContextFor(w);
         windows.attachNewWindowVisibilityMonitor(w);
-        windows.markAsShowingInEDT(w);
+        windows.markAsShowing(w);
         windows.markAsReady(w);
         expectEventQueueLookupFor(w);
       }
@@ -195,7 +195,7 @@ public class ContextMonitorTest extends EDTSafeTestCase {
         expect(context.rootWindows()).andReturn(new ArrayList<Window>());
         context.addContextFor(window);
         windows.attachNewWindowVisibilityMonitor(window);
-        windows.markAsShowingInEDT(window);
+        windows.markAsShowing(window);
         expectEventQueueLookupFor(window);
       }
 
@@ -213,7 +213,7 @@ public class ContextMonitorTest extends EDTSafeTestCase {
         expect(windows.isClosed(window)).andReturn(true);
         context.addContextFor(window);
         windows.attachNewWindowVisibilityMonitor(window);
-        windows.markAsShowingInEDT(window);
+        windows.markAsShowing(window);
         expectEventQueueLookupFor(window);
       }
 
