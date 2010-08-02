@@ -32,13 +32,11 @@ public class StringAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSatis
     notNullValue = "a";
   }
 
-  @Override
-  protected String notNullValue() {
+  @Override protected String notNullValue() {
     return notNullValue;
   }
 
-  @Override
-  protected StringAssert assertionsFor(String actual) {
+  @Override protected StringAssert assertionsFor(String actual) {
     return new StringAssert(actual);
   }
 }

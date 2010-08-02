@@ -33,13 +33,11 @@ public class ObjectArrayAssert_isNotNull_Test extends GenericAssert_isNotNull_Te
     notNullValue = objectArray(6, 8);
   }
 
-  @Override
-  protected ObjectArrayAssert assertionsFor(Object[] actual) {
+  @Override protected ObjectArrayAssert assertionsFor(Object[] actual) {
     return new ObjectArrayAssert(actual);
   }
 
-  @Override
-  protected Object[] notNullValue() {
+  @Override protected Object[] notNullValue() {
     return notNullValue;
   }
 }

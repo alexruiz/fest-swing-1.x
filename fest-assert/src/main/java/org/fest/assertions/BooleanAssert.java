@@ -45,28 +45,24 @@ public class BooleanAssert extends GenericAssert<Boolean> {
   }
 
   /** {@inheritDoc} */
-  @Override
-  public BooleanAssert as(String description) {
+  @Override public BooleanAssert as(String description) {
     description(description);
     return this;
   }
 
   /** {@inheritDoc} */
-  @Override
-  public BooleanAssert describedAs(String description) {
+  @Override public BooleanAssert describedAs(String description) {
     return as(description);
   }
 
   /** {@inheritDoc} */
-  @Override
-  public BooleanAssert as(Description description) {
+  @Override public BooleanAssert as(Description description) {
     description(description);
     return this;
   }
 
   /** {@inheritDoc} */
-  @Override
-  public BooleanAssert describedAs(Description description) {
+  @Override public BooleanAssert describedAs(Description description) {
     return as(description);
   }
 
@@ -103,8 +99,7 @@ public class BooleanAssert extends GenericAssert<Boolean> {
    * @throws AssertionError if the actual {@code Boolean} value is not equal to the given one.
    * @since 1.3
    */
-  @Override
-  public BooleanAssert isEqualTo(Boolean expected) {
+  @Override public BooleanAssert isEqualTo(Boolean expected) {
     assertEqualTo(expected);
     return this;
   }
@@ -126,8 +121,7 @@ public class BooleanAssert extends GenericAssert<Boolean> {
    * @throws AssertionError if the actual {@code Boolean} value is equal to the given one.
    * @since 1.3
    */
-  @Override
-  public BooleanAssert isNotEqualTo(Boolean other) {
+  @Override public BooleanAssert isNotEqualTo(Boolean other) {
     assertNotEqualTo(other);
     return this;
   }
@@ -141,8 +135,7 @@ public class BooleanAssert extends GenericAssert<Boolean> {
    * @see #is(Condition)
    * @since 1.3
    */
-  @Override
-  public BooleanAssert satisfies(Condition<Boolean> condition) {
+  @Override public BooleanAssert satisfies(Condition<Boolean> condition) {
     assertSatisfies(condition);
     return this;
   }
@@ -156,8 +149,7 @@ public class BooleanAssert extends GenericAssert<Boolean> {
    * @see #isNot(Condition)
    * @since 1.3
    */
-  @Override
-  public BooleanAssert doesNotSatisfy(Condition<Boolean> condition) {
+  @Override public BooleanAssert doesNotSatisfy(Condition<Boolean> condition) {
     assertDoesNotSatisfy(condition);
     return this;
   }
@@ -170,8 +162,7 @@ public class BooleanAssert extends GenericAssert<Boolean> {
    * @throws AssertionError if the actual {@code Boolean} does not satisfy the given condition.
    * @since 1.3
    */
-  @Override
-  public BooleanAssert is(Condition<Boolean> condition) {
+  @Override public BooleanAssert is(Condition<Boolean> condition) {
     assertIs(condition);
     return this;
   }
@@ -184,8 +175,7 @@ public class BooleanAssert extends GenericAssert<Boolean> {
    * @throws AssertionError if the actual {@code Boolean} does not satisfy the given condition.
    * @since 1.3
    */
-  @Override
-  public BooleanAssert isNot(Condition<Boolean> condition) {
+  @Override public BooleanAssert isNot(Condition<Boolean> condition) {
     assertIsNot(condition);
     return this;
   }
@@ -196,8 +186,7 @@ public class BooleanAssert extends GenericAssert<Boolean> {
    * @throws AssertionError if the actual {@code Boolean} value is <code>null</code>.
    * @since 1.3
    */
-  @Override
-  public BooleanAssert isNotNull() {
+  @Override public BooleanAssert isNotNull() {
     assertNotNull();
     return this;
   }
@@ -209,8 +198,7 @@ public class BooleanAssert extends GenericAssert<Boolean> {
    * @throws AssertionError if the actual {@code Boolean} value is not the same as the given one.
    * @since 1.3
    */
-  @Override
-  public BooleanAssert isSameAs(Boolean expected) {
+  @Override public BooleanAssert isSameAs(Boolean expected) {
     assertSameAs(expected);
     return this;
   }
@@ -222,15 +210,13 @@ public class BooleanAssert extends GenericAssert<Boolean> {
    * @throws AssertionError if the actual {@code Boolean} value is the same as the given one.
    * @since 1.3
    */
-  @Override
-  public BooleanAssert isNotSameAs(Boolean other) {
+  @Override public BooleanAssert isNotSameAs(Boolean other) {
     assertNotSameAs(other);
     return this;
   }
 
   /** {@inheritDoc} */
-  @Override
-  public BooleanAssert overridingErrorMessage(String message) {
+  @Override public BooleanAssert overridingErrorMessage(String message) {
     replaceDefaultErrorMessagesWith(message);
     return this;
   }

@@ -34,13 +34,11 @@ public class BigDecimalAssert_isNot_Test extends GenericAssert_isNot_TestCase<Bi
     notNullValue = ZERO;
   }
 
-  @Override
-  protected BigDecimalAssert assertionsFor(BigDecimal actual) {
+  @Override protected BigDecimalAssert assertionsFor(BigDecimal actual) {
     return new BigDecimalAssert(actual);
   }
 
-  @Override
-  protected BigDecimal notNullValue() {
+  @Override protected BigDecimal notNullValue() {
     return notNullValue;
   }
 }

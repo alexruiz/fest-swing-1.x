@@ -34,18 +34,15 @@ public class ByteArrayAssert_isEmpty_Test extends GroupAssert_isEmpty_TestCase<b
     notEmpty = byteArray(8, 6);
   }
 
-  @Override
-  protected ByteArrayAssert assertionsFor(byte[] actual) {
+  @Override protected ByteArrayAssert assertionsFor(byte[] actual) {
     return new ByteArrayAssert(actual);
   }
 
-  @Override
-  protected byte[] emptyGroup() {
+  @Override protected byte[] emptyGroup() {
     return emptyByteArray();
   }
 
-  @Override
-  protected byte[] notEmptyGroup() {
+  @Override protected byte[] notEmptyGroup() {
     return notEmpty;
   }
 }

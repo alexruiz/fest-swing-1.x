@@ -34,18 +34,15 @@ public class ByteAssert_Generic_isNotSameAs_Test extends GenericAssert_isNotSame
     notSameValue = 8;
   }
 
-  @Override
-  protected ByteAssert assertionsFor(Byte actual) {
+  @Override protected ByteAssert assertionsFor(Byte actual) {
     return new ByteAssert(actual);
   }
 
-  @Override
-  protected Byte notNullValue() {
+  @Override protected Byte notNullValue() {
     return notNullValue;
   }
 
-  @Override
-  protected Byte notSameValue() {
+  @Override protected Byte notSameValue() {
     return notSameValue;
   }
 }

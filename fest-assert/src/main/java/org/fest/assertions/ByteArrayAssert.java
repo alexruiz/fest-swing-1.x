@@ -38,28 +38,24 @@ public class ByteArrayAssert extends ArrayAssert<byte[]> {
   }
 
   /** {@inheritDoc} */
-  @Override
-  public ByteArrayAssert as(String description) {
+  @Override public ByteArrayAssert as(String description) {
     description(description);
     return this;
   }
 
   /** {@inheritDoc} */
-  @Override
-  public ByteArrayAssert describedAs(String description) {
+  @Override public ByteArrayAssert describedAs(String description) {
     return as(description);
   }
 
   /** {@inheritDoc} */
-  @Override
-  public ByteArrayAssert as(Description description) {
+  @Override public ByteArrayAssert as(Description description) {
     description(description);
     return this;
   }
 
   /** {@inheritDoc} */
-  @Override
-  public ByteArrayAssert describedAs(Description description) {
+  @Override public ByteArrayAssert describedAs(Description description) {
     return as(description);
   }
 
@@ -111,8 +107,7 @@ public class ByteArrayAssert extends ArrayAssert<byte[]> {
    * @throws AssertionError if the actual <code>byte</code> array does not satisfy the given condition.
    * @see #is(Condition)
    */
-  @Override
-  public ByteArrayAssert satisfies(Condition<byte[]> condition) {
+  @Override public ByteArrayAssert satisfies(Condition<byte[]> condition) {
     assertSatisfies(condition);
     return this;
   }
@@ -125,8 +120,7 @@ public class ByteArrayAssert extends ArrayAssert<byte[]> {
    * @throws AssertionError if the actual <code>byte</code> array satisfies the given condition.
    * @see #isNot(Condition)
    */
-  @Override
-  public ByteArrayAssert doesNotSatisfy(Condition<byte[]> condition) {
+  @Override public ByteArrayAssert doesNotSatisfy(Condition<byte[]> condition) {
     assertDoesNotSatisfy(condition);
     return this;
   }
@@ -139,8 +133,7 @@ public class ByteArrayAssert extends ArrayAssert<byte[]> {
    * @throws AssertionError if the actual <code>byte</code> array does not satisfy the given condition.
    * @since 1.2
    */
-  @Override
-  public ByteArrayAssert is(Condition<byte[]> condition) {
+  @Override public ByteArrayAssert is(Condition<byte[]> condition) {
     assertIs(condition);
     return this;
   }
@@ -153,8 +146,7 @@ public class ByteArrayAssert extends ArrayAssert<byte[]> {
    * @throws AssertionError if the actual <code>byte</code> array satisfies the given condition.
    * @since 1.2
    */
-  @Override
-  public ByteArrayAssert isNot(Condition<byte[]> condition) {
+  @Override public ByteArrayAssert isNot(Condition<byte[]> condition) {
     assertIsNot(condition);
     return this;
   }
@@ -164,8 +156,7 @@ public class ByteArrayAssert extends ArrayAssert<byte[]> {
    * @return this assertion object.
    * @throws AssertionError if the actual <code>byte</code> array is <code>null</code>.
    */
-  @Override
-  public ByteArrayAssert isNotNull() {
+  @Override public ByteArrayAssert isNotNull() {
     assertNotNull();
     return this;
   }
@@ -176,8 +167,7 @@ public class ByteArrayAssert extends ArrayAssert<byte[]> {
    * @throws AssertionError if the actual <code>byte</code> array is <code>null</code>.
    * @throws AssertionError if the actual <code>byte</code> array is empty.
    */
-  @Override
-  public ByteArrayAssert isNotEmpty() {
+  @Override public ByteArrayAssert isNotEmpty() {
     assertIsNotEmpty();
     return this;
   }
@@ -189,8 +179,7 @@ public class ByteArrayAssert extends ArrayAssert<byte[]> {
    * @return this assertion object.
    * @throws AssertionError if the actual <code>byte</code> array is not equal to the given one.
    */
-  @Override
-  public ByteArrayAssert isEqualTo(byte[] expected) {
+  @Override public ByteArrayAssert isEqualTo(byte[] expected) {
     if (Arrays.equals(actual, expected)) return this;
     failIfCustomMessageIsSet();
     throw failure(unexpectedNotEqual(actual, expected));
@@ -203,8 +192,7 @@ public class ByteArrayAssert extends ArrayAssert<byte[]> {
    * @return this assertion object.
    * @throws AssertionError if the actual <code>byte</code> array is equal to the given one.
    */
-  @Override
-  public ByteArrayAssert isNotEqualTo(byte[] array) {
+  @Override public ByteArrayAssert isNotEqualTo(byte[] array) {
     if (!Arrays.equals(actual, array)) return this;
     failIfCustomMessageIsSet();
     throw failure(unexpectedEqual(actual, array));
@@ -218,8 +206,7 @@ public class ByteArrayAssert extends ArrayAssert<byte[]> {
    * @throws AssertionError if the number of elements in the actual <code>byte</code> array is not equal to the given
    * one.
    */
-  @Override
-  public ByteArrayAssert hasSize(int expected) {
+  @Override public ByteArrayAssert hasSize(int expected) {
     assertHasSize(expected);
     return this;
   }
@@ -230,8 +217,7 @@ public class ByteArrayAssert extends ArrayAssert<byte[]> {
    * @return this assertion object.
    * @throws AssertionError if the actual <code>byte</code> array is not the same as the given one.
    */
-  @Override
-  public ByteArrayAssert isSameAs(byte[] expected) {
+  @Override public ByteArrayAssert isSameAs(byte[] expected) {
     assertSameAs(expected);
     return this;
   }
@@ -242,15 +228,13 @@ public class ByteArrayAssert extends ArrayAssert<byte[]> {
    * @return this assertion object.
    * @throws AssertionError if the actual <code>byte</code> array is the same as the given one.
    */
-  @Override
-  public ByteArrayAssert isNotSameAs(byte[] expected) {
+  @Override public ByteArrayAssert isNotSameAs(byte[] expected) {
     assertNotSameAs(expected);
     return this;
   }
 
   /** {@inheritDoc} */
-  @Override
-  public ByteArrayAssert overridingErrorMessage(String message) {
+  @Override public ByteArrayAssert overridingErrorMessage(String message) {
     replaceDefaultErrorMessagesWith(message);
     return this;
   }

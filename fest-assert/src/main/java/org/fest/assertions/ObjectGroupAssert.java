@@ -95,22 +95,17 @@ public abstract class ObjectGroupAssert<T> extends ItemGroupAssert<T> {
   protected abstract ObjectGroupAssert<T> onProperty(String propertyName);
 
   /** {@inheritDoc} */
-  @Override
-  protected abstract ObjectGroupAssert<T> as(String description);
+  @Override protected abstract ObjectGroupAssert<T> as(String description);
 
   /** {@inheritDoc} */
-  @Override
-  protected abstract ObjectGroupAssert<T> describedAs(String description);
+  @Override protected abstract ObjectGroupAssert<T> describedAs(String description);
 
   /** {@inheritDoc} */
-  @Override
-  protected abstract ObjectGroupAssert<T> as(Description description);
+  @Override protected abstract ObjectGroupAssert<T> as(Description description);
 
   /** {@inheritDoc} */
-  @Override
-  protected abstract ObjectGroupAssert<T> describedAs(Description description);
+  @Override protected abstract ObjectGroupAssert<T> describedAs(Description description);
 
   /** {@inheritDoc} */
-  @Override
-  protected abstract ObjectGroupAssert<T> overridingErrorMessage(String message);
+  @Override protected abstract ObjectGroupAssert<T> overridingErrorMessage(String message);
 }

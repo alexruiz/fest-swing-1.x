@@ -35,18 +35,15 @@ public class IntArrayAssert_isNotEqualTo_Test extends GenericAssert_isNotEqualTo
     unequalValue = intArray(6);
   }
 
-  @Override
-  protected IntArrayAssert assertionsFor(int[] actual) {
+  @Override protected IntArrayAssert assertionsFor(int[] actual) {
     return new IntArrayAssert(actual);
   }
 
-  @Override
-  protected int[] notNullValue() {
+  @Override protected int[] notNullValue() {
     return notNullValue;
   }
 
-  @Override
-  protected int[] unequalValue() {
+  @Override protected int[] unequalValue() {
     return unequalValue;
   }
 }

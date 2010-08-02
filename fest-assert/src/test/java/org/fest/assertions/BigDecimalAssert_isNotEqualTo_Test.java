@@ -39,18 +39,15 @@ public class BigDecimalAssert_isNotEqualTo_Test extends GenericAssert_isNotEqual
     unequalValue = seven();
   }
 
-  @Override
-  protected BigDecimalAssert assertionsFor(BigDecimal actual) {
+  @Override protected BigDecimalAssert assertionsFor(BigDecimal actual) {
     return new BigDecimalAssert(actual);
   }
 
-  @Override
-  protected BigDecimal notNullValue() {
+  @Override protected BigDecimal notNullValue() {
     return notNullValue;
   }
 
-  @Override
-  protected BigDecimal unequalValue() {
+  @Override protected BigDecimal unequalValue() {
     return unequalValue;
   }
 }

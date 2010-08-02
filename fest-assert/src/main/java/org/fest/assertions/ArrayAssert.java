@@ -39,21 +39,18 @@ public abstract class ArrayAssert<T> extends ItemGroupAssert<T> {
    * @return the size of the actual array.
    * @throws NullPointerException if the actual array is <code>null</code>.
    */
-  @Override
-  protected final int actualGroupSize() {
+  @Override protected final int actualGroupSize() {
     isNotNull();
     return sizeOf(actual);
   }
 
   /** {@inheritDoc} */
-  @Override
-  protected Set<Object> actualAsSet() {
+  @Override protected Set<Object> actualAsSet() {
     return toSet(actual);
   }
 
   /** {@inheritDoc} */
-  @Override
-  protected List<Object> actualAsList() {
+  @Override protected List<Object> actualAsList() {
     return toList(actual);
   }
 }

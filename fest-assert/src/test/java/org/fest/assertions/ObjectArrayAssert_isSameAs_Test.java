@@ -35,18 +35,15 @@ public class ObjectArrayAssert_isSameAs_Test extends GenericAssert_isSameAs_Test
     notSameValue = objectArray(8);
   }
 
-  @Override
-  protected ObjectArrayAssert assertionsFor(Object[] actual) {
+  @Override protected ObjectArrayAssert assertionsFor(Object[] actual) {
     return new ObjectArrayAssert(actual);
   }
 
-  @Override
-  protected Object[] notNullValue() {
+  @Override protected Object[] notNullValue() {
     return notNullValue;
   }
 
-  @Override
-  protected Object[] notSameValue() {
+  @Override protected Object[] notSameValue() {
     return notSameValue;
   }
 }

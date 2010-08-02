@@ -32,13 +32,11 @@ public class LongAssert_is_Test extends GenericAssert_is_TestCase<Long> {
     notNullValue = 6L;
   }
 
-  @Override
-  protected LongAssert assertionsFor(Long actual) {
+  @Override protected LongAssert assertionsFor(Long actual) {
     return new LongAssert(actual);
   }
 
-  @Override
-  protected Long notNullValue() {
+  @Override protected Long notNullValue() {
     return notNullValue;
   }
 }

@@ -31,8 +31,7 @@ import java.io.File;
  */
 public class FileAssert_description_Test extends GenericAssert_description_TestCase<File> {
 
-  @Override
-  protected GenericAssert<File> assertionToTest() {
+  @Override protected GenericAssert<File> assertionToTest() {
     return new FileAssert(new File("hello.txt"));
   }
 }

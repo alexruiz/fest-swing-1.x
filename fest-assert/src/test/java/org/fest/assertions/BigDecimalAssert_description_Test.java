@@ -34,8 +34,7 @@ import java.math.BigDecimal;
  */
 public class BigDecimalAssert_description_Test extends GenericAssert_description_TestCase<BigDecimal> {
 
-  @Override
-  protected GenericAssert<BigDecimal> assertionToTest() {
+  @Override protected GenericAssert<BigDecimal> assertionToTest() {
     return new BigDecimalAssert(ZERO);
   }
 }

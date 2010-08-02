@@ -42,28 +42,24 @@ public class ObjectArrayAssert extends ObjectGroupAssert<Object[]> {
   }
 
   /** {@inheritDoc} */
-  @Override
-  public ObjectArrayAssert as(String description) {
+  @Override public ObjectArrayAssert as(String description) {
     description(description);
     return this;
   }
 
   /** {@inheritDoc} */
-  @Override
-  public ObjectArrayAssert describedAs(String description) {
+  @Override public ObjectArrayAssert describedAs(String description) {
     return as(description);
   }
 
   /** {@inheritDoc} */
-  @Override
-  public ObjectArrayAssert as(Description description) {
+  @Override public ObjectArrayAssert as(Description description) {
     description(description);
     return this;
   }
 
   /** {@inheritDoc} */
-  @Override
-  public ObjectArrayAssert describedAs(Description description) {
+  @Override public ObjectArrayAssert describedAs(Description description) {
     return as(description);
   }
 
@@ -128,8 +124,7 @@ public class ObjectArrayAssert extends ObjectGroupAssert<Object[]> {
    * @throws NullPointerException if the given <code>Object</code> array is <code>null</code>.
    * @throws AssertionError if the actual <code>Object</code> array does not contain the given objects.
    */
-  @Override
-  public ObjectArrayAssert contains(Object... objects) {
+  @Override public ObjectArrayAssert contains(Object... objects) {
     assertContains(objects);
     return this;
   }
@@ -143,8 +138,7 @@ public class ObjectArrayAssert extends ObjectGroupAssert<Object[]> {
    * @throws AssertionError if the actual <code>Object</code> array does not contain the given objects, or if the actual
    * <code>Object</code> array contains elements other than the ones specified.
    */
-  @Override
-  public ObjectArrayAssert containsOnly(Object... objects) {
+  @Override public ObjectArrayAssert containsOnly(Object... objects) {
     assertContainsOnly(objects);
     return this;
   }
@@ -157,8 +151,7 @@ public class ObjectArrayAssert extends ObjectGroupAssert<Object[]> {
    * @throws NullPointerException if the given <code>Object</code> array is <code>null</code>.
    * @throws AssertionError if the actual <code>Object</code> array contains any of the given objects.
    */
-  @Override
-  public ObjectArrayAssert excludes(Object... objects) {
+  @Override public ObjectArrayAssert excludes(Object... objects) {
     assertExcludes(objects);
     return this;
   }
@@ -169,8 +162,7 @@ public class ObjectArrayAssert extends ObjectGroupAssert<Object[]> {
    * @throws AssertionError if the actual <code>Object</code> array is <code>null</code>.
    * @throws AssertionError if the actual <code>Object</code> array has duplicates.
    */
-  @Override
-  public ObjectArrayAssert doesNotHaveDuplicates() {
+  @Override public ObjectArrayAssert doesNotHaveDuplicates() {
     assertDoesNotHaveDuplicates();
     return this;
   }
@@ -183,8 +175,7 @@ public class ObjectArrayAssert extends ObjectGroupAssert<Object[]> {
    * @throws AssertionError if the actual <code>Object</code> array does not satisfy the given condition.
    * @see #is(Condition)
    */
-  @Override
-  public ObjectArrayAssert satisfies(Condition<Object[]> condition) {
+  @Override public ObjectArrayAssert satisfies(Condition<Object[]> condition) {
     assertSatisfies(condition);
     return this;
   }
@@ -197,8 +188,7 @@ public class ObjectArrayAssert extends ObjectGroupAssert<Object[]> {
    * @throws AssertionError if the actual <code>Object</code> array satisfies the given condition.
    * @see #isNot(Condition)
    */
-  @Override
-  public ObjectArrayAssert doesNotSatisfy(Condition<Object[]> condition) {
+  @Override public ObjectArrayAssert doesNotSatisfy(Condition<Object[]> condition) {
     assertDoesNotSatisfy(condition);
     return this;
   }
@@ -211,8 +201,7 @@ public class ObjectArrayAssert extends ObjectGroupAssert<Object[]> {
    * @throws AssertionError if the actual <code>Object</code> array does not satisfy the given condition.
    * @since 1.2
    */
-  @Override
-  public ObjectArrayAssert is(Condition<Object[]> condition) {
+  @Override public ObjectArrayAssert is(Condition<Object[]> condition) {
     assertIs(condition);
     return this;
   }
@@ -225,8 +214,7 @@ public class ObjectArrayAssert extends ObjectGroupAssert<Object[]> {
    * @throws AssertionError if the actual <code>Object</code> array satisfies the given condition.
    * @since 1.2
    */
-  @Override
-  public ObjectArrayAssert isNot(Condition<Object[]> condition) {
+  @Override public ObjectArrayAssert isNot(Condition<Object[]> condition) {
     assertIsNot(condition);
     return this;
   }
@@ -236,8 +224,7 @@ public class ObjectArrayAssert extends ObjectGroupAssert<Object[]> {
    * @return this assertion object.
    * @throws AssertionError if the actual <code>Object</code> array is <code>null</code>.
    */
-  @Override
-  public ObjectArrayAssert isNotNull() {
+  @Override public ObjectArrayAssert isNotNull() {
     assertNotNull();
     return this;
   }
@@ -248,8 +235,7 @@ public class ObjectArrayAssert extends ObjectGroupAssert<Object[]> {
    * @throws AssertionError if the actual <code>Object</code> array is <code>null</code>.
    * @throws AssertionError if the actual <code>Object</code> array is empty.
    */
-  @Override
-  public ObjectArrayAssert isNotEmpty() {
+  @Override public ObjectArrayAssert isNotEmpty() {
     assertIsNotEmpty();
     return this;
   }
@@ -261,8 +247,7 @@ public class ObjectArrayAssert extends ObjectGroupAssert<Object[]> {
    * @return this assertion object.
    * @throws AssertionError if the actual <code>Object</code> array is not equal to the given one.
    */
-  @Override
-  public ObjectArrayAssert isEqualTo(Object[] expected) {
+  @Override public ObjectArrayAssert isEqualTo(Object[] expected) {
     if (Arrays.deepEquals(actual, expected)) return this;
     failIfCustomMessageIsSet();
     throw failure(unexpectedNotEqual(actual, expected));
@@ -275,8 +260,7 @@ public class ObjectArrayAssert extends ObjectGroupAssert<Object[]> {
    * @return this assertion object.
    * @throws AssertionError if the actual <code>Object</code> array is equal to the given one.
    */
-  @Override
-  public ObjectArrayAssert isNotEqualTo(Object[] array) {
+  @Override public ObjectArrayAssert isNotEqualTo(Object[] array) {
     if (!Arrays.deepEquals(actual, array)) return this;
     failIfCustomMessageIsSet();
     throw failure(unexpectedEqual(actual, array));
@@ -290,8 +274,7 @@ public class ObjectArrayAssert extends ObjectGroupAssert<Object[]> {
    * @throws AssertionError if the number of elements in the actual <code>Object</code> array is not equal to the given
    * one.
    */
-  @Override
-  public ObjectArrayAssert hasSize(int expected) {
+  @Override public ObjectArrayAssert hasSize(int expected) {
     assertHasSize(expected);
     return this;
   }
@@ -302,8 +285,7 @@ public class ObjectArrayAssert extends ObjectGroupAssert<Object[]> {
    * @return this assertion object.
    * @throws AssertionError if the actual <code>Object</code> array is not the same as the given one.
    */
-  @Override
-  public ObjectArrayAssert isSameAs(Object[] expected) {
+  @Override public ObjectArrayAssert isSameAs(Object[] expected) {
     assertSameAs(expected);
     return this;
   }
@@ -314,15 +296,13 @@ public class ObjectArrayAssert extends ObjectGroupAssert<Object[]> {
    * @return this assertion object.
    * @throws AssertionError if the actual <code>Object</code> array is the same as the given one.
    */
-  @Override
-  public ObjectArrayAssert isNotSameAs(Object[] expected) {
+  @Override public ObjectArrayAssert isNotSameAs(Object[] expected) {
     assertNotSameAs(expected);
     return this;
   }
 
   /** {@inheritDoc} */
-  @Override
-  public ObjectArrayAssert overridingErrorMessage(String message) {
+  @Override public ObjectArrayAssert overridingErrorMessage(String message) {
     replaceDefaultErrorMessagesWith(message);
     return this;
   }
@@ -346,28 +326,24 @@ public class ObjectArrayAssert extends ObjectGroupAssert<Object[]> {
    * @throws IntrospectionError if an element in the given array does not have a matching property.
    * @since 1.3
    */
-  @Override
-  public ObjectArrayAssert onProperty(String propertyName) {
+  @Override public ObjectArrayAssert onProperty(String propertyName) {
     isNotNull();
     if (actual.length == 0) return new ObjectArrayAssert(new Object[0]);
     return new ObjectArrayAssert(propertyValues(propertyName, list(actual)).toArray());
   }
 
   /** {@inheritDoc} */
-  @Override
-  protected Set<Object> actualAsSet() {
+  @Override protected Set<Object> actualAsSet() {
     return asSet(actual);
   }
 
   /** {@inheritDoc} */
-  @Override
-  protected List<Object> actualAsList() {
+  @Override protected List<Object> actualAsList() {
     return list(actual);
   }
 
   /** {@inheritDoc} */
-  @Override
-  protected int actualGroupSize() {
+  @Override protected int actualGroupSize() {
     return actual.length;
   }
 }

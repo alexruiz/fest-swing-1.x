@@ -35,18 +35,15 @@ public class ShortArrayAssert_isEqualTo_Test extends GenericAssert_isEqualTo_Tes
     unequalValue = shortArray(6);
   }
 
-  @Override
-  protected ShortArrayAssert assertionsFor(short[] actual) {
+  @Override protected ShortArrayAssert assertionsFor(short[] actual) {
     return new ShortArrayAssert(actual);
   }
 
-  @Override
-  protected short[] notNullValue() {
+  @Override protected short[] notNullValue() {
     return notNullValue;
   }
 
-  @Override
-  protected short[] unequalValue() {
+  @Override protected short[] unequalValue() {
     return unequalValue;
   }
 }

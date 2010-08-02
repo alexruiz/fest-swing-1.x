@@ -35,18 +35,15 @@ public class ByteArrayAssert_isEqualTo_Test extends GenericAssert_isEqualTo_Test
     unequalValue = byteArray(8);
   }
 
-  @Override
-  protected ByteArrayAssert assertionsFor(byte[] actual) {
+  @Override protected ByteArrayAssert assertionsFor(byte[] actual) {
     return new ByteArrayAssert(actual);
   }
 
-  @Override
-  protected byte[] notNullValue() {
+  @Override protected byte[] notNullValue() {
     return notNullValue;
   }
 
-  @Override
-  protected byte[] unequalValue() {
+  @Override protected byte[] unequalValue() {
     return unequalValue;
   }
 }

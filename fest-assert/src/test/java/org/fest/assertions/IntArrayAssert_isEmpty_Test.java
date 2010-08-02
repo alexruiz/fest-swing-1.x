@@ -35,18 +35,15 @@ public class IntArrayAssert_isEmpty_Test extends GroupAssert_isEmpty_TestCase<in
     notEmpty = intArray(6, 8);
   }
 
-  @Override
-  protected IntArrayAssert assertionsFor(int[] actual) {
+  @Override protected IntArrayAssert assertionsFor(int[] actual) {
     return new IntArrayAssert(actual);
   }
 
-  @Override
-  protected int[] emptyGroup() {
+  @Override protected int[] emptyGroup() {
     return empty;
   }
 
-  @Override
-  protected int[] notEmptyGroup() {
+  @Override protected int[] notEmptyGroup() {
     return notEmpty;
   }
 }

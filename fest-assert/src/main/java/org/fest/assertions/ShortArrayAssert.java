@@ -38,28 +38,24 @@ public class ShortArrayAssert extends ArrayAssert<short[]> {
   }
 
   /** {@inheritDoc} */
-  @Override
-  public ShortArrayAssert as(String description) {
+  @Override public ShortArrayAssert as(String description) {
     description(description);
     return this;
   }
 
   /** {@inheritDoc} */
-  @Override
-  public ShortArrayAssert describedAs(String description) {
+  @Override public ShortArrayAssert describedAs(String description) {
     return as(description);
   }
 
   /** {@inheritDoc} */
-  @Override
-  public ShortArrayAssert as(Description description) {
+  @Override public ShortArrayAssert as(Description description) {
     description(description);
     return this;
   }
 
   /** {@inheritDoc} */
-  @Override
-  public ShortArrayAssert describedAs(Description description) {
+  @Override public ShortArrayAssert describedAs(Description description) {
     return as(description);
   }
 
@@ -111,8 +107,7 @@ public class ShortArrayAssert extends ArrayAssert<short[]> {
    * @throws AssertionError if the actual <code>short</code> array does not satisfy the given condition.
    * @see #is(Condition)
    */
-  @Override
-  public ShortArrayAssert satisfies(Condition<short[]> condition) {
+  @Override public ShortArrayAssert satisfies(Condition<short[]> condition) {
     assertSatisfies(condition);
     return this;
   }
@@ -125,8 +120,7 @@ public class ShortArrayAssert extends ArrayAssert<short[]> {
    * @throws AssertionError if the actual <code>short</code> array satisfies the given condition.
    * @see #isNot(Condition)
    */
-  @Override
-  public ShortArrayAssert doesNotSatisfy(Condition<short[]> condition) {
+  @Override public ShortArrayAssert doesNotSatisfy(Condition<short[]> condition) {
     assertDoesNotSatisfy(condition);
     return this;
   }
@@ -139,8 +133,7 @@ public class ShortArrayAssert extends ArrayAssert<short[]> {
    * @throws AssertionError if the actual <code>short</code> array does not satisfy the given condition.
    * @since 1.2
    */
-  @Override
-  public ShortArrayAssert is(Condition<short[]> condition) {
+  @Override public ShortArrayAssert is(Condition<short[]> condition) {
     assertIs(condition);
     return this;
   }
@@ -153,8 +146,7 @@ public class ShortArrayAssert extends ArrayAssert<short[]> {
    * @throws AssertionError if the actual <code>short</code> array satisfies the given condition.
    * @since 1.2
    */
-  @Override
-  public ShortArrayAssert isNot(Condition<short[]> condition) {
+  @Override public ShortArrayAssert isNot(Condition<short[]> condition) {
     assertIsNot(condition);
     return this;
   }
@@ -164,8 +156,7 @@ public class ShortArrayAssert extends ArrayAssert<short[]> {
    * @return this assertion object.
    * @throws AssertionError if the actual <code>short</code> array is <code>null</code>.
    */
-  @Override
-  public ShortArrayAssert isNotNull() {
+  @Override public ShortArrayAssert isNotNull() {
     assertNotNull();
     return this;
   }
@@ -176,8 +167,7 @@ public class ShortArrayAssert extends ArrayAssert<short[]> {
    * @throws AssertionError if the actual <code>short</code> array is <code>null</code>.
    * @throws AssertionError if the actual <code>short</code> array is empty.
    */
-  @Override
-  public ShortArrayAssert isNotEmpty() {
+  @Override public ShortArrayAssert isNotEmpty() {
     assertIsNotEmpty();
     return this;
   }
@@ -189,8 +179,7 @@ public class ShortArrayAssert extends ArrayAssert<short[]> {
    * @return this assertion object.
    * @throws AssertionError if the actual <code>short</code> array is not equal to the given one.
    */
-  @Override
-  public ShortArrayAssert isEqualTo(short[] expected) {
+  @Override public ShortArrayAssert isEqualTo(short[] expected) {
     if (Arrays.equals(actual, expected)) return this;
     failIfCustomMessageIsSet();
     throw failure(unexpectedNotEqual(actual, expected));
@@ -203,8 +192,7 @@ public class ShortArrayAssert extends ArrayAssert<short[]> {
    * @return this assertion object.
    * @throws AssertionError if the actual <code>short</code> array is equal to the given one.
    */
-  @Override
-  public ShortArrayAssert isNotEqualTo(short[] array) {
+  @Override public ShortArrayAssert isNotEqualTo(short[] array) {
     if (!Arrays.equals(actual, array)) return this;
     failIfCustomMessageIsSet();
     throw failure(unexpectedEqual(actual, array));
@@ -218,8 +206,7 @@ public class ShortArrayAssert extends ArrayAssert<short[]> {
    * @throws AssertionError if the number of elements in the actual <code>short</code> array is not equal to the given
    * one.
    */
-  @Override
-  public ShortArrayAssert hasSize(int expected) {
+  @Override public ShortArrayAssert hasSize(int expected) {
     assertHasSize(expected);
     return this;
   }
@@ -230,8 +217,7 @@ public class ShortArrayAssert extends ArrayAssert<short[]> {
    * @return this assertion object.
    * @throws AssertionError if the actual <code>short</code> array is not the same as the given one.
    */
-  @Override
-  public ShortArrayAssert isSameAs(short[] expected) {
+  @Override public ShortArrayAssert isSameAs(short[] expected) {
     assertSameAs(expected);
     return this;
   }
@@ -242,15 +228,13 @@ public class ShortArrayAssert extends ArrayAssert<short[]> {
    * @return this assertion object.
    * @throws AssertionError if the actual <code>short</code> array is the same as the given one.
    */
-  @Override
-  public ShortArrayAssert isNotSameAs(short[] expected) {
+  @Override public ShortArrayAssert isNotSameAs(short[] expected) {
     assertNotSameAs(expected);
     return this;
   }
 
   /** {@inheritDoc} */
-  @Override
-  public ShortArrayAssert overridingErrorMessage(String message) {
+  @Override public ShortArrayAssert overridingErrorMessage(String message) {
     replaceDefaultErrorMessagesWith(message);
     return this;
   }

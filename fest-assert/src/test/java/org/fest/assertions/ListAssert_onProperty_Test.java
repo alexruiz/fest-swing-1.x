@@ -24,8 +24,7 @@ import java.util.*;
  */
 public class ListAssert_onProperty_Test extends ObjectGroupAssert_onProperty_Test<List<?>> {
 
-  @Override
-  protected ListAssert assertions(Collection<?> data) {
+  @Override protected ListAssert assertions(Collection<?> data) {
     List<?> actual = data != null ? new ArrayList<Object>(data) : null;
     return new ListAssert(actual);
   }

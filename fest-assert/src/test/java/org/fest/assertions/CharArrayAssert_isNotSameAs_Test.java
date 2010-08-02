@@ -35,18 +35,15 @@ public class CharArrayAssert_isNotSameAs_Test extends GenericAssert_isNotSameAs_
     notSameValue = charArray('b');
   }
 
-  @Override
-  protected CharArrayAssert assertionsFor(char[] actual) {
+  @Override protected CharArrayAssert assertionsFor(char[] actual) {
     return new CharArrayAssert(actual);
   }
 
-  @Override
-  protected char[] notNullValue() {
+  @Override protected char[] notNullValue() {
     return notNullValue;
   }
 
-  @Override
-  protected char[] notSameValue() {
+  @Override protected char[] notSameValue() {
     return notSameValue;
   }
 }

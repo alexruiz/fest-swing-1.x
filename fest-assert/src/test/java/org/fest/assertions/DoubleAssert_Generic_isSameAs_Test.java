@@ -34,18 +34,15 @@ public class DoubleAssert_Generic_isSameAs_Test extends GenericAssert_isSameAs_T
     notSameValue = 8d;
   }
 
-  @Override
-  protected DoubleAssert assertionsFor(Double actual) {
+  @Override protected DoubleAssert assertionsFor(Double actual) {
     return new DoubleAssert(actual);
   }
 
-  @Override
-  protected Double notNullValue() {
+  @Override protected Double notNullValue() {
     return notNullValue;
   }
 
-  @Override
-  protected Double notSameValue() {
+  @Override protected Double notSameValue() {
     return notSameValue;
   }
 }

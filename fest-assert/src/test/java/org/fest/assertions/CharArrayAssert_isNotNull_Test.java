@@ -33,13 +33,11 @@ public class CharArrayAssert_isNotNull_Test extends GenericAssert_isNotNull_Test
     notNullValue = charArray('a', 'b');
   }
 
-  @Override
-  protected CharArrayAssert assertionsFor(char[] actual) {
+  @Override protected CharArrayAssert assertionsFor(char[] actual) {
     return new CharArrayAssert(actual);
   }
 
-  @Override
-  protected char[] notNullValue() {
+  @Override protected char[] notNullValue() {
     return notNullValue;
   }
 }

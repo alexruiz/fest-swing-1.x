@@ -38,18 +38,15 @@ public class ImageAssert_isNotEqualTo_Test extends GenericAssert_isNotEqualTo_Te
     unequalValue = image(3, 5, BLUE);
   }
 
-  @Override
-  protected ImageAssert assertionsFor(BufferedImage actual) {
+  @Override protected ImageAssert assertionsFor(BufferedImage actual) {
     return new ImageAssert(actual);
   }
 
-  @Override
-  protected BufferedImage notNullValue() {
+  @Override protected BufferedImage notNullValue() {
     return notNullValue;
   }
 
-  @Override
-  protected BufferedImage unequalValue() {
+  @Override protected BufferedImage unequalValue() {
     return unequalValue;
   }
 }

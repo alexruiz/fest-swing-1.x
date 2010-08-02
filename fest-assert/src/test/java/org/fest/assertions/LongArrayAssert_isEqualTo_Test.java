@@ -35,18 +35,15 @@ public class LongArrayAssert_isEqualTo_Test extends GenericAssert_isEqualTo_Test
     unequalValue = longArray(6L);
   }
 
-  @Override
-  protected LongArrayAssert assertionsFor(long[] actual) {
+  @Override protected LongArrayAssert assertionsFor(long[] actual) {
     return new LongArrayAssert(actual);
   }
 
-  @Override
-  protected long[] notNullValue() {
+  @Override protected long[] notNullValue() {
     return notNullValue;
   }
 
-  @Override
-  protected long[] unequalValue() {
+  @Override protected long[] unequalValue() {
     return unequalValue;
   }
 }

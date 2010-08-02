@@ -37,18 +37,15 @@ public class ListAssert_isNotSameAs_Test extends GenericAssert_isNotSameAs_TestC
     notSameValue = list("Luke");
   }
 
-  @Override
-  protected ListAssert assertionsFor(List<?> actual) {
+  @Override protected ListAssert assertionsFor(List<?> actual) {
     return new ListAssert(actual);
   }
 
-  @Override
-  protected List<?> notNullValue() {
+  @Override protected List<?> notNullValue() {
     return notNullValue;
   }
 
-  @Override
-  protected List<?> notSameValue() {
+  @Override protected List<?> notSameValue() {
     return notSameValue;
   }
 }

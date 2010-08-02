@@ -28,8 +28,7 @@ package org.fest.assertions;
  */
 public class FloatArrayAssert_description_Test extends GenericAssert_description_TestCase<float[]> {
 
-  @Override
-  protected GenericAssert<float[]> assertionToTest() {
+  @Override protected GenericAssert<float[]> assertionToTest() {
     return new FloatArrayAssert(6f);
   }
 }

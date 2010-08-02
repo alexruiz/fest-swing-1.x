@@ -36,13 +36,11 @@ public class FileAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSatisfy
     notNullValue = aFile();
   }
 
-  @Override
-  protected File notNullValue() {
+  @Override protected File notNullValue() {
     return notNullValue;
   }
 
-  @Override
-  protected FileAssert assertionsFor(File actual) {
+  @Override protected FileAssert assertionsFor(File actual) {
     return new FileAssert(actual);
   }
 }

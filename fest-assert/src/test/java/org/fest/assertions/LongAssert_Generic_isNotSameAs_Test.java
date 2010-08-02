@@ -34,18 +34,15 @@ public class LongAssert_Generic_isNotSameAs_Test extends GenericAssert_isNotSame
     notSameValue = 8L;
   }
 
-  @Override
-  protected LongAssert assertionsFor(Long actual) {
+  @Override protected LongAssert assertionsFor(Long actual) {
     return new LongAssert(actual);
   }
 
-  @Override
-  protected Long notNullValue() {
+  @Override protected Long notNullValue() {
     return notNullValue;
   }
 
-  @Override
-  protected Long notSameValue() {
+  @Override protected Long notSameValue() {
     return notSameValue;
   }
 }

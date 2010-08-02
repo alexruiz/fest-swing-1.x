@@ -34,13 +34,11 @@ public class ListAssert_satisfies_Test extends GenericAssert_satisfies_TestCase<
     notNullValue = emptyList();
   }
 
-  @Override
-  protected ListAssert assertionsFor(List<?> actual) {
+  @Override protected ListAssert assertionsFor(List<?> actual) {
     return new ListAssert(actual);
   }
 
-  @Override
-  protected List<?> notNullValue() {
+  @Override protected List<?> notNullValue() {
     return notNullValue;
   }
 }

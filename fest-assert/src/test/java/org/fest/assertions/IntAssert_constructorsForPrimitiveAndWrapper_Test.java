@@ -23,18 +23,15 @@ package org.fest.assertions;
 public class IntAssert_constructorsForPrimitiveAndWrapper_Test extends
     GenericAssert_constructorsForPrimitiveAndWrapper_TestCase<Integer> {
 
-  @Override
-  protected Class<IntAssert> assertionType() {
+  @Override protected Class<IntAssert> assertionType() {
     return IntAssert.class;
   }
 
-  @Override
-  protected Class<?> primitiveType() {
+  @Override protected Class<?> primitiveType() {
     return int.class;
   }
 
-  @Override
-  protected Class<Integer> primitiveWrapperType() {
+  @Override protected Class<Integer> primitiveWrapperType() {
     return Integer.class;
   }
 }

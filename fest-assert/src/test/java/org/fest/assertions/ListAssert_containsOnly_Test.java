@@ -26,13 +26,11 @@ import java.util.List;
  */
 public class ListAssert_containsOnly_Test extends ObjectGroupAssert_containsOnly_TestCase<List<?>> {
 
-  @Override
-  protected List<?> actualFrom(Object... values) {
+  @Override protected List<?> actualFrom(Object... values) {
     return list(values);
   }
 
-  @Override
-  protected ListAssert assertionsFor(List<?> actual) {
+  @Override protected ListAssert assertionsFor(List<?> actual) {
     return new ListAssert(actual);
   }
 }

@@ -29,8 +29,7 @@ import java.util.*;
  */
 public class ListAssert_description_Test extends GenericAssert_description_TestCase<List<?>> {
 
-  @Override
-  protected GenericAssert<List<?>> assertionToTest() {
+  @Override protected GenericAssert<List<?>> assertionToTest() {
     return new ListAssert(new ArrayList<String>());
   }
 }

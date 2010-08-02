@@ -34,18 +34,15 @@ public class IntAssert_isEqualTo_Integer_Test extends GenericAssert_isEqualTo_Te
     unequalValue = 9;
   }
 
-  @Override
-  protected IntAssert assertionsFor(Integer actual) {
+  @Override protected IntAssert assertionsFor(Integer actual) {
     return new IntAssert(actual);
   }
 
-  @Override
-  protected Integer notNullValue() {
+  @Override protected Integer notNullValue() {
     return notNullValue;
   }
 
-  @Override
-  protected Integer unequalValue() {
+  @Override protected Integer unequalValue() {
     return unequalValue;
   }
 }

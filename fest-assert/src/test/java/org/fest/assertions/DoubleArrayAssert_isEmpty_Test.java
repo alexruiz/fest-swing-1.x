@@ -35,18 +35,15 @@ public class DoubleArrayAssert_isEmpty_Test extends GroupAssert_isEmpty_TestCase
     notEmpty = doubleArray(6d, 8d);
   }
 
-  @Override
-  protected DoubleArrayAssert assertionsFor(double[] actual) {
+  @Override protected DoubleArrayAssert assertionsFor(double[] actual) {
     return new DoubleArrayAssert(actual);
   }
 
-  @Override
-  protected double[] emptyGroup() {
+  @Override protected double[] emptyGroup() {
     return empty;
   }
 
-  @Override
-  protected double[] notEmptyGroup() {
+  @Override protected double[] notEmptyGroup() {
     return notEmpty;
   }
 }

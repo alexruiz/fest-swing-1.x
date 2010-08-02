@@ -33,13 +33,11 @@ public class BooleanArrayAssert_doesNotSatisfy_Test extends GenericAssert_doesNo
     notNullValue = emptyBooleanArray();
   }
 
-  @Override
-  protected boolean[] notNullValue() {
+  @Override protected boolean[] notNullValue() {
     return notNullValue;
   }
 
-  @Override
-  protected BooleanArrayAssert assertionsFor(boolean[] actual) {
+  @Override protected BooleanArrayAssert assertionsFor(boolean[] actual) {
     return new BooleanArrayAssert(actual);
   }
 }

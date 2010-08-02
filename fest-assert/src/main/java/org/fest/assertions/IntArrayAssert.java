@@ -38,28 +38,24 @@ public class IntArrayAssert extends ArrayAssert<int[]> {
   }
 
   /** {@inheritDoc} */
-  @Override
-  public IntArrayAssert as(String description) {
+  @Override public IntArrayAssert as(String description) {
     description(description);
     return this;
   }
 
   /** {@inheritDoc} */
-  @Override
-  public IntArrayAssert describedAs(String description) {
+  @Override public IntArrayAssert describedAs(String description) {
     return as(description);
   }
 
   /** {@inheritDoc} */
-  @Override
-  public IntArrayAssert as(Description description) {
+  @Override public IntArrayAssert as(Description description) {
     description(description);
     return this;
   }
 
   /** {@inheritDoc} */
-  @Override
-  public IntArrayAssert describedAs(Description description) {
+  @Override public IntArrayAssert describedAs(Description description) {
     return as(description);
   }
 
@@ -111,8 +107,7 @@ public class IntArrayAssert extends ArrayAssert<int[]> {
    * @throws AssertionError if the actual <code>int</code> array does not satisfy the given condition.
    * @see #is(Condition)
    */
-  @Override
-  public IntArrayAssert satisfies(Condition<int[]> condition) {
+  @Override public IntArrayAssert satisfies(Condition<int[]> condition) {
     assertSatisfies(condition);
     return this;
   }
@@ -125,8 +120,7 @@ public class IntArrayAssert extends ArrayAssert<int[]> {
    * @throws AssertionError if the actual <code>int</code> array satisfies the given condition.
    * @see #isNot(Condition)
    */
-  @Override
-  public IntArrayAssert doesNotSatisfy(Condition<int[]> condition) {
+  @Override public IntArrayAssert doesNotSatisfy(Condition<int[]> condition) {
     assertDoesNotSatisfy(condition);
     return this;
   }
@@ -139,8 +133,7 @@ public class IntArrayAssert extends ArrayAssert<int[]> {
    * @throws AssertionError if the actual <code>int</code> array does not satisfy the given condition.
    * @since 1.2
    */
-  @Override
-  public IntArrayAssert is(Condition<int[]> condition) {
+  @Override public IntArrayAssert is(Condition<int[]> condition) {
     assertIs(condition);
     return this;
   }
@@ -153,8 +146,7 @@ public class IntArrayAssert extends ArrayAssert<int[]> {
    * @throws AssertionError if the actual <code>int</code> array satisfies the given condition.
    * @since 1.2
    */
-  @Override
-  public IntArrayAssert isNot(Condition<int[]> condition) {
+  @Override public IntArrayAssert isNot(Condition<int[]> condition) {
     assertIsNot(condition);
     return this;
   }
@@ -164,8 +156,7 @@ public class IntArrayAssert extends ArrayAssert<int[]> {
    * @return this assertion object.
    * @throws AssertionError if the actual <code>int</code> array is <code>null</code>.
    */
-  @Override
-  public IntArrayAssert isNotNull() {
+  @Override public IntArrayAssert isNotNull() {
     assertNotNull();
     return this;
   }
@@ -176,8 +167,7 @@ public class IntArrayAssert extends ArrayAssert<int[]> {
    * @throws AssertionError if the actual <code>int</code> array is <code>null</code>.
    * @throws AssertionError if the actual <code>int</code> array is empty.
    */
-  @Override
-  public IntArrayAssert isNotEmpty() {
+  @Override public IntArrayAssert isNotEmpty() {
     assertIsNotEmpty();
     return this;
   }
@@ -189,8 +179,7 @@ public class IntArrayAssert extends ArrayAssert<int[]> {
    * @return this assertion object.
    * @throws AssertionError if the actual <code>int</code> array is not equal to the given one.
    */
-  @Override
-  public IntArrayAssert isEqualTo(int[] expected) {
+  @Override public IntArrayAssert isEqualTo(int[] expected) {
     if (Arrays.equals(actual, expected)) return this;
     failIfCustomMessageIsSet();
     throw failure(unexpectedNotEqual(actual, expected));
@@ -203,8 +192,7 @@ public class IntArrayAssert extends ArrayAssert<int[]> {
    * @return this assertion object.
    * @throws AssertionError if the actual <code>int</code> array is equal to the given one.
    */
-  @Override
-  public IntArrayAssert isNotEqualTo(int[] array) {
+  @Override public IntArrayAssert isNotEqualTo(int[] array) {
     if (!Arrays.equals(actual, array)) return this;
     failIfCustomMessageIsSet();
     throw failure(unexpectedEqual(actual, array));
@@ -218,8 +206,7 @@ public class IntArrayAssert extends ArrayAssert<int[]> {
    * @throws AssertionError if the number of elements in the actual <code>int</code> array is not equal to the given
    * one.
    */
-  @Override
-  public IntArrayAssert hasSize(int expected) {
+  @Override public IntArrayAssert hasSize(int expected) {
     assertHasSize(expected);
     return this;
   }
@@ -230,8 +217,7 @@ public class IntArrayAssert extends ArrayAssert<int[]> {
    * @return this assertion object.
    * @throws AssertionError if the actual <code>int</code> array is not the same as the given one.
    */
-  @Override
-  public IntArrayAssert isSameAs(int[] expected) {
+  @Override public IntArrayAssert isSameAs(int[] expected) {
     assertSameAs(expected);
     return this;
   }
@@ -242,15 +228,13 @@ public class IntArrayAssert extends ArrayAssert<int[]> {
    * @return this assertion object.
    * @throws AssertionError if the actual <code>int</code> array is the same as the given one.
    */
-  @Override
-  public IntArrayAssert isNotSameAs(int[] expected) {
+  @Override public IntArrayAssert isNotSameAs(int[] expected) {
     assertNotSameAs(expected);
     return this;
   }
 
   /** {@inheritDoc} */
-  @Override
-  public IntArrayAssert overridingErrorMessage(String message) {
+  @Override public IntArrayAssert overridingErrorMessage(String message) {
     replaceDefaultErrorMessagesWith(message);
     return this;
   }

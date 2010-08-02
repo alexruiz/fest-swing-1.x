@@ -32,13 +32,11 @@ public class ByteAssert_is_Test extends GenericAssert_is_TestCase<Byte> {
     notNullValue = 6;
   }
 
-  @Override
-  protected ByteAssert assertionsFor(Byte actual) {
+  @Override protected ByteAssert assertionsFor(Byte actual) {
     return new ByteAssert(actual);
   }
 
-  @Override
-  protected Byte notNullValue() {
+  @Override protected Byte notNullValue() {
     return notNullValue;
   }
 }

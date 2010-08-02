@@ -23,18 +23,15 @@ package org.fest.assertions;
 public class CharAssert_constructorsForPrimitiveAndWrapper_Test extends
     GenericAssert_constructorsForPrimitiveAndWrapper_TestCase<Character> {
 
-  @Override
-  protected Class<CharAssert> assertionType() {
+  @Override protected Class<CharAssert> assertionType() {
     return CharAssert.class;
   }
 
-  @Override
-  protected Class<?> primitiveType() {
+  @Override protected Class<?> primitiveType() {
     return char.class;
   }
 
-  @Override
-  protected Class<Character> primitiveWrapperType() {
+  @Override protected Class<Character> primitiveWrapperType() {
     return Character.class;
   }
 }

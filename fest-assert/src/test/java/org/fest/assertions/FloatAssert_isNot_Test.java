@@ -32,13 +32,11 @@ public class FloatAssert_isNot_Test extends GenericAssert_isNot_TestCase<Float> 
     notNullValue = 6f;
   }
 
-  @Override
-  protected FloatAssert assertionsFor(Float actual) {
+  @Override protected FloatAssert assertionsFor(Float actual) {
     return new FloatAssert(actual);
   }
 
-  @Override
-  protected Float notNullValue() {
+  @Override protected Float notNullValue() {
     return notNullValue;
   }
 }

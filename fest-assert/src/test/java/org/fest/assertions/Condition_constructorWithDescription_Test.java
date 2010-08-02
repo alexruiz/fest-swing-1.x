@@ -37,8 +37,7 @@ public class Condition_constructorWithDescription_Test {
       super(description);
     }
 
-    @Override
-    public boolean matches(Integer value) {
+    @Override   public boolean matches(Integer value) {
       return false;
     }
 

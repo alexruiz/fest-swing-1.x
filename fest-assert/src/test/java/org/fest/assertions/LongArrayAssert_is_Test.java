@@ -32,13 +32,11 @@ public class LongArrayAssert_is_Test extends GenericAssert_is_TestCase<long[]> {
     notNullValue = emptyLongArray();
   }
 
-  @Override
-  protected LongArrayAssert assertionsFor(long[] actual) {
+  @Override protected LongArrayAssert assertionsFor(long[] actual) {
     return new LongArrayAssert(actual);
   }
 
-  @Override
-  protected long[] notNullValue() {
+  @Override protected long[] notNullValue() {
     return notNullValue;
   }
 }

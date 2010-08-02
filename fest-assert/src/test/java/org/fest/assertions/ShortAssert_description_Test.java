@@ -29,8 +29,7 @@ package org.fest.assertions;
  */
 public class ShortAssert_description_Test extends GenericAssert_description_TestCase<Short> {
 
-  @Override
-  protected ShortAssert assertionToTest() {
+  @Override protected ShortAssert assertionToTest() {
     return new ShortAssert(8);
   }
 }

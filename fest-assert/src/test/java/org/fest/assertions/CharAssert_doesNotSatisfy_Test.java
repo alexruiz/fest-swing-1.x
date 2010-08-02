@@ -33,13 +33,11 @@ public class CharAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSatisfy
     notNullValue = 'a';
   }
 
-  @Override
-  protected Character notNullValue() {
+  @Override protected Character notNullValue() {
     return notNullValue;
   }
 
-  @Override
-  protected CharAssert assertionsFor(Character actual) {
+  @Override protected CharAssert assertionsFor(Character actual) {
     return new CharAssert(actual);
   }
 }

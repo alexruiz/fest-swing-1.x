@@ -33,18 +33,15 @@ public class ThrowableAssert_isNotEqualTo_Test extends GenericAssert_isNotEqualT
     unequalValue = new NullPointerException();
   }
 
-  @Override
-  protected ThrowableAssert assertionsFor(Throwable actual) {
+  @Override protected ThrowableAssert assertionsFor(Throwable actual) {
     return new ThrowableAssert(actual);
   }
 
-  @Override
-  protected Throwable notNullValue() {
+  @Override protected Throwable notNullValue() {
     return notNullValue;
   }
 
-  @Override
-  protected Throwable unequalValue() {
+  @Override protected Throwable unequalValue() {
     return unequalValue;
   }
 }

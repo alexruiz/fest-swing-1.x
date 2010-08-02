@@ -35,18 +35,15 @@ public class ObjectArrayAssert_isEmpty_Test extends GroupAssert_isEmpty_TestCase
     notEmpty = objectArray(6, 8);
   }
 
-  @Override
-  protected ObjectArrayAssert assertionsFor(Object[] actual) {
+  @Override protected ObjectArrayAssert assertionsFor(Object[] actual) {
     return new ObjectArrayAssert(actual);
   }
 
-  @Override
-  protected Object[] emptyGroup() {
+  @Override protected Object[] emptyGroup() {
     return empty;
   }
 
-  @Override
-  protected Object[] notEmptyGroup() {
+  @Override protected Object[] notEmptyGroup() {
     return notEmpty;
   }
 }

@@ -28,8 +28,7 @@ package org.fest.assertions;
  */
 public class IntArrayAssert_description_Test extends GenericAssert_description_TestCase<int[]> {
 
-  @Override
-  protected GenericAssert<int[]> assertionToTest() {
+  @Override protected GenericAssert<int[]> assertionToTest() {
     return new IntArrayAssert(6);
   }
 }

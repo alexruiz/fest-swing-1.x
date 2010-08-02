@@ -34,18 +34,15 @@ public class BooleanArrayAssert_isEmpty_Test extends GroupAssert_isEmpty_TestCas
     notEmpty = booleanArray(true);
   }
 
-  @Override
-  protected BooleanArrayAssert assertionsFor(boolean[] actual) {
+  @Override protected BooleanArrayAssert assertionsFor(boolean[] actual) {
     return new BooleanArrayAssert(actual);
   }
 
-  @Override
-  protected boolean[] emptyGroup() {
+  @Override protected boolean[] emptyGroup() {
     return emptyBooleanArray();
   }
 
-  @Override
-  protected boolean[] notEmptyGroup() {
+  @Override protected boolean[] notEmptyGroup() {
     return notEmpty;
   }
 }

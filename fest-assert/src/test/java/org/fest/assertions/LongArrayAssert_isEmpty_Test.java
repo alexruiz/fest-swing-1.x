@@ -35,18 +35,15 @@ public class LongArrayAssert_isEmpty_Test extends GroupAssert_isEmpty_TestCase<l
     notEmpty = longArray(6, 8);
   }
 
-  @Override
-  protected LongArrayAssert assertionsFor(long[] actual) {
+  @Override protected LongArrayAssert assertionsFor(long[] actual) {
     return new LongArrayAssert(actual);
   }
 
-  @Override
-  protected long[] emptyGroup() {
+  @Override protected long[] emptyGroup() {
     return empty;
   }
 
-  @Override
-  protected long[] notEmptyGroup() {
+  @Override protected long[] notEmptyGroup() {
     return notEmpty;
   }
 }

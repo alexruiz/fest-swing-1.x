@@ -175,8 +175,7 @@ public class ListAssert extends ObjectGroupAssert<List<?>> {
    * @throws NullPointerException if the given array is <code>null</code>.
    * @throws AssertionError if the actual {@code List} does not contain the given objects.
    */
-  @Override
-  public ListAssert contains(Object... objects) {
+  @Override public ListAssert contains(Object... objects) {
     assertContains(objects);
     return this;
   }
@@ -190,8 +189,7 @@ public class ListAssert extends ObjectGroupAssert<List<?>> {
    * @throws AssertionError if the actual {@code List} does not contain the given objects, or if the actual
    * {@code List} contains elements other than the ones specified.
    */
-  @Override
-  public ListAssert containsOnly(Object... objects) {
+  @Override public ListAssert containsOnly(Object... objects) {
     assertContainsOnly(objects);
     return this;
   }
@@ -204,8 +202,7 @@ public class ListAssert extends ObjectGroupAssert<List<?>> {
    * @throws NullPointerException if the given array is <code>null</code>.
    * @throws AssertionError if the actual {@code List} contains any of the given objects.
    */
-  @Override
-  public ListAssert excludes(Object... objects) {
+  @Override public ListAssert excludes(Object... objects) {
     assertExcludes(objects);
     return this;
   }
@@ -216,35 +213,30 @@ public class ListAssert extends ObjectGroupAssert<List<?>> {
    * @throws AssertionError if the actual {@code List} is <code>null</code>.
    * @throws AssertionError if the actual {@code List} has duplicates.
    */
-  @Override
-  public ListAssert doesNotHaveDuplicates() {
+  @Override public ListAssert doesNotHaveDuplicates() {
     assertDoesNotHaveDuplicates();
     return this;
   }
 
   /** {@inheritDoc} */
-  @Override
-  public ListAssert as(String description) {
+  @Override public ListAssert as(String description) {
     description(description);
     return this;
   }
 
   /** {@inheritDoc} */
-  @Override
-  public ListAssert describedAs(String description) {
+  @Override public ListAssert describedAs(String description) {
     return as(description);
   }
 
   /** {@inheritDoc} */
-  @Override
-  public ListAssert as(Description description) {
+  @Override public ListAssert as(Description description) {
     description(description);
     return this;
   }
 
   /** {@inheritDoc} */
-  @Override
-  public ListAssert describedAs(Description description) {
+  @Override public ListAssert describedAs(Description description) {
     return as(description);
   }
 
@@ -256,8 +248,7 @@ public class ListAssert extends ObjectGroupAssert<List<?>> {
    * @throws AssertionError if the actual {@code List} does not satisfy the given condition.
    * @see #is(Condition)
    */
-  @Override
-  public ListAssert satisfies(Condition<List<?>> condition) {
+  @Override public ListAssert satisfies(Condition<List<?>> condition) {
     assertSatisfies(condition);
     return this;
   }
@@ -270,8 +261,7 @@ public class ListAssert extends ObjectGroupAssert<List<?>> {
    * @throws AssertionError if the actual {@code List} satisfies the given condition.
    * @see #isNot(Condition)
    */
-  @Override
-  public ListAssert doesNotSatisfy(Condition<List<?>> condition) {
+  @Override public ListAssert doesNotSatisfy(Condition<List<?>> condition) {
     assertDoesNotSatisfy(condition);
     return this;
   }
@@ -284,8 +274,7 @@ public class ListAssert extends ObjectGroupAssert<List<?>> {
    * @throws AssertionError if the actual {@code List} does not satisfy the given condition.
    * @since 1.2
    */
-  @Override
-  public ListAssert is(Condition<List<?>> condition) {
+  @Override public ListAssert is(Condition<List<?>> condition) {
     assertIs(condition);
     return this;
   }
@@ -298,8 +287,7 @@ public class ListAssert extends ObjectGroupAssert<List<?>> {
    * @throws AssertionError if the actual {@code List} satisfies the given condition.
    * @since 1.2
    */
-  @Override
-  public ListAssert isNot(Condition<List<?>> condition) {
+  @Override public ListAssert isNot(Condition<List<?>> condition) {
     assertIsNot(condition);
     return this;
   }
@@ -311,8 +299,7 @@ public class ListAssert extends ObjectGroupAssert<List<?>> {
    * @throws AssertionError if the actual {@code List} is <code>null</code>.
    * @throws AssertionError if the number of elements of the actual {@code List} is not equal to the given one.
    */
-  @Override
-  public ListAssert hasSize(int expected) {
+  @Override public ListAssert hasSize(int expected) {
     assertHasSize(expected);
     return this;
   }
@@ -323,8 +310,7 @@ public class ListAssert extends ObjectGroupAssert<List<?>> {
    * @throws AssertionError if the actual {@code List} is <code>null</code>.
    * @throws AssertionError if the actual {@code List} is empty.
    */
-  @Override
-  public ListAssert isNotEmpty() {
+  @Override public ListAssert isNotEmpty() {
     assertIsNotEmpty();
     return this;
   }
@@ -334,8 +320,7 @@ public class ListAssert extends ObjectGroupAssert<List<?>> {
    * @return the number of elements in the actual {@code List}.
    * @throws AssertionError if the actual {@code List} is <code>null</code>.
    */
-  @Override
-  protected int actualGroupSize() {
+  @Override protected int actualGroupSize() {
     isNotNull();
     return actual.size();
   }
@@ -345,8 +330,7 @@ public class ListAssert extends ObjectGroupAssert<List<?>> {
    * @return this assertion object.
    * @throws AssertionError if the actual {@code List} is <code>null</code>.
    */
-  @Override
-  public ListAssert isNotNull() {
+  @Override public ListAssert isNotNull() {
     assertNotNull();
     return this;
   }
@@ -372,8 +356,7 @@ public class ListAssert extends ObjectGroupAssert<List<?>> {
    * @return this assertion object.
    * @throws AssertionError if the actual {@code List} is not equal to the given one.
    */
-  @Override
-  public ListAssert isEqualTo(List<?> expected) {
+  @Override public ListAssert isEqualTo(List<?> expected) {
     assertEqualTo(expected);
     return this;
   }
@@ -384,8 +367,7 @@ public class ListAssert extends ObjectGroupAssert<List<?>> {
    * @return this assertion object.
    * @throws AssertionError if the actual {@code List} is equal to the given one.
    */
-  @Override
-  public ListAssert isNotEqualTo(List<?> other) {
+  @Override public ListAssert isNotEqualTo(List<?> other) {
     assertNotEqualTo(other);
     return this;
   }
@@ -396,8 +378,7 @@ public class ListAssert extends ObjectGroupAssert<List<?>> {
    * @return this assertion object.
    * @throws AssertionError if the actual {@code List} is not the same as the given one.
    */
-  @Override
-  public ListAssert isSameAs(List<?> expected) {
+  @Override public ListAssert isSameAs(List<?> expected) {
     assertSameAs(expected);
     return this;
   }
@@ -408,15 +389,13 @@ public class ListAssert extends ObjectGroupAssert<List<?>> {
    * @return this assertion object.
    * @throws AssertionError if the actual {@code List} is the same as the given one.
    */
-  @Override
-  public ListAssert isNotSameAs(List<?> other) {
+  @Override public ListAssert isNotSameAs(List<?> other) {
     assertNotSameAs(other);
     return this;
   }
 
   /** {@inheritDoc} */
-  @Override
-  public ListAssert overridingErrorMessage(String message) {
+  @Override public ListAssert overridingErrorMessage(String message) {
     replaceDefaultErrorMessagesWith(message);
     return this;
   }
@@ -440,22 +419,19 @@ public class ListAssert extends ObjectGroupAssert<List<?>> {
    * @throws IntrospectionError if an element in the given list does not have a matching property.
    * @since 1.3
    */
-  @Override
-  public ListAssert onProperty(String propertyName) {
+  @Override public ListAssert onProperty(String propertyName) {
     isNotNull();
     if (actual.isEmpty()) return new ListAssert(emptyList());
     return new ListAssert(propertyValues(propertyName, actual));
   }
 
   /** {@inheritDoc} */
-  @Override
-  protected Set<Object> actualAsSet() {
+  @Override protected Set<Object> actualAsSet() {
     return new HashSet<Object>(actual);
   }
 
   /** {@inheritDoc} */
-  @Override
-  protected List<Object> actualAsList() {
+  @Override protected List<Object> actualAsList() {
     return new ArrayList<Object>(actual);
   }
 }

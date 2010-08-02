@@ -35,18 +35,15 @@ public class BooleanAssert_isNotEqualTo_Boolean_Test extends GenericAssert_isNot
     unequalValue = FALSE;
   }
 
-  @Override
-  protected BooleanAssert assertionsFor(Boolean actual) {
+  @Override protected BooleanAssert assertionsFor(Boolean actual) {
     return new BooleanAssert(actual);
   }
 
-  @Override
-  protected Boolean notNullValue() {
+  @Override protected Boolean notNullValue() {
     return notNullValue;
   }
 
-  @Override
-  protected Boolean unequalValue() {
+  @Override protected Boolean unequalValue() {
     return unequalValue;
   }
 }

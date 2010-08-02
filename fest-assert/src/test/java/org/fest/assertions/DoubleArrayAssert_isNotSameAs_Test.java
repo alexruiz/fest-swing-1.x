@@ -36,18 +36,15 @@ public class DoubleArrayAssert_isNotSameAs_Test extends GenericAssert_isNotSameA
     notSameValue = emptyDoubleArray();
   }
 
-  @Override
-  protected DoubleArrayAssert assertionsFor(double[] actual) {
+  @Override protected DoubleArrayAssert assertionsFor(double[] actual) {
     return new DoubleArrayAssert(actual);
   }
 
-  @Override
-  protected double[] notNullValue() {
+  @Override protected double[] notNullValue() {
     return notNullValue;
   }
 
-  @Override
-  protected double[] notSameValue() {
+  @Override protected double[] notSameValue() {
     return notSameValue;
   }
 }

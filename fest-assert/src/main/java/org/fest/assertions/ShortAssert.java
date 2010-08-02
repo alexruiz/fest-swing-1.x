@@ -54,28 +54,24 @@ public class ShortAssert extends GenericAssert<Short> implements NumberAssert {
   }
 
   /** {@inheritDoc} */
-  @Override
-  public ShortAssert as(String description) {
+  @Override public ShortAssert as(String description) {
     description(description);
     return this;
   }
 
   /** {@inheritDoc} */
-  @Override
-  public ShortAssert describedAs(String description) {
+  @Override public ShortAssert describedAs(String description) {
     return as(description);
   }
 
   /** {@inheritDoc} */
-  @Override
-  public ShortAssert as(Description description) {
+  @Override public ShortAssert as(Description description) {
     description(description);
     return this;
   }
 
   /** {@inheritDoc} */
-  @Override
-  public ShortAssert describedAs(Description description) {
+  @Override public ShortAssert describedAs(Description description) {
     return as(description);
   }
 
@@ -96,8 +92,7 @@ public class ShortAssert extends GenericAssert<Short> implements NumberAssert {
    * @throws AssertionError if the actual {@code Short} is not equal to the given one.
    * @since 1.3
    */
-  @Override
-  public ShortAssert isEqualTo(Short expected) {
+  @Override public ShortAssert isEqualTo(Short expected) {
     assertEqualTo(expected);
     return this;
   }
@@ -119,8 +114,7 @@ public class ShortAssert extends GenericAssert<Short> implements NumberAssert {
    * @throws AssertionError if the actual {@code Short} is equal to the given one.
    * @since 1.3
    */
-  @Override
-  public ShortAssert isNotEqualTo(Short other) {
+  @Override public ShortAssert isNotEqualTo(Short other) {
     assertNotEqualTo(other);
     return this;
   }
@@ -201,8 +195,7 @@ public class ShortAssert extends GenericAssert<Short> implements NumberAssert {
   }
 
   /** {@inheritDoc} */
-  @Override
-  public ShortAssert overridingErrorMessage(String message) {
+  @Override public ShortAssert overridingErrorMessage(String message) {
     replaceDefaultErrorMessagesWith(message);
     return this;
   }
@@ -216,8 +209,7 @@ public class ShortAssert extends GenericAssert<Short> implements NumberAssert {
    * @see #is(Condition)
    * @since 1.3
    */
-  @Override
-  public ShortAssert satisfies(Condition<Short> condition) {
+  @Override public ShortAssert satisfies(Condition<Short> condition) {
     assertSatisfies(condition);
     return this;
   }
@@ -231,8 +223,7 @@ public class ShortAssert extends GenericAssert<Short> implements NumberAssert {
    * @see #isNot(Condition)
    * @since 1.3
    */
-  @Override
-  public ShortAssert doesNotSatisfy(Condition<Short> condition) {
+  @Override public ShortAssert doesNotSatisfy(Condition<Short> condition) {
     assertDoesNotSatisfy(condition);
     return this;
   }
@@ -245,8 +236,7 @@ public class ShortAssert extends GenericAssert<Short> implements NumberAssert {
    * @throws AssertionError if the actual {@code Short} does not satisfy the given condition.
    * @since 1.3
    */
-  @Override
-  public ShortAssert is(Condition<Short> condition) {
+  @Override public ShortAssert is(Condition<Short> condition) {
     assertIs(condition);
     return this;
   }
@@ -260,8 +250,7 @@ public class ShortAssert extends GenericAssert<Short> implements NumberAssert {
    * @throws AssertionError if the actual {@code Short} does not satisfy the given condition.
    * @since 1.3
    */
-  @Override
-  public ShortAssert isNot(Condition<Short> condition) {
+  @Override public ShortAssert isNot(Condition<Short> condition) {
     assertIsNot(condition);
     return this;
   }
@@ -272,8 +261,7 @@ public class ShortAssert extends GenericAssert<Short> implements NumberAssert {
    * @throws AssertionError if the actual {@code Short} is <code>null</code>.
    * @since 1.3
    */
-  @Override
-  public ShortAssert isNotNull() {
+  @Override public ShortAssert isNotNull() {
     assertNotNull();
     return this;
   }
@@ -285,8 +273,7 @@ public class ShortAssert extends GenericAssert<Short> implements NumberAssert {
    * @throws AssertionError if the actual {@code Short} is not the same as the given one.
    * @since 1.3
    */
-  @Override
-  public ShortAssert isSameAs(Short expected) {
+  @Override public ShortAssert isSameAs(Short expected) {
     assertSameAs(expected);
     return this;
   }
@@ -298,8 +285,7 @@ public class ShortAssert extends GenericAssert<Short> implements NumberAssert {
    * @throws AssertionError if the actual {@code Short} is the same as the given one.
    * @since 1.3
    */
-  @Override
-  public ShortAssert isNotSameAs(Short other) {
+  @Override public ShortAssert isNotSameAs(Short other) {
     assertNotSameAs(other);
     return this;
   }

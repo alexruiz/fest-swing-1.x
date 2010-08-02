@@ -34,18 +34,15 @@ public class IntAssert_isZero_Test extends NumberAssert_isZero_TestCase<Integer>
     zero = 0;
   }
 
-  @Override
-  protected Integer notZero() {
+  @Override protected Integer notZero() {
     return notZero;
   }
 
-  @Override
-  protected Integer zero() {
+  @Override protected Integer zero() {
     return zero;
   }
 
-  @Override
-  protected IntAssert assertionsFor(Integer actual) {
+  @Override protected IntAssert assertionsFor(Integer actual) {
     return new IntAssert(actual);
   }
 }

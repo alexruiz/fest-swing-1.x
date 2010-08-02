@@ -33,13 +33,11 @@ public class IntArrayAssert_isNull_Test extends GenericAssert_isNull_TestCase<in
     notNullValue = intArray(6, 8);
   }
 
-  @Override
-  protected IntArrayAssert assertionsFor(int[] actual) {
+  @Override protected IntArrayAssert assertionsFor(int[] actual) {
     return new IntArrayAssert(actual);
   }
 
-  @Override
-  protected int[] notNullValue() {
+  @Override protected int[] notNullValue() {
     return notNullValue;
   }
 }

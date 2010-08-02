@@ -24,18 +24,15 @@ package org.fest.assertions;
 public class BooleanAssert_constructorsForPrimitiveAndWrapper_Test extends
     GenericAssert_constructorsForPrimitiveAndWrapper_TestCase<Boolean> {
 
-  @Override
-  protected Class<BooleanAssert> assertionType() {
+  @Override protected Class<BooleanAssert> assertionType() {
     return BooleanAssert.class;
   }
 
-  @Override
-  protected Class<?> primitiveType() {
+  @Override protected Class<?> primitiveType() {
     return boolean.class;
   }
 
-  @Override
-  protected Class<Boolean> primitiveWrapperType() {
+  @Override protected Class<Boolean> primitiveWrapperType() {
     return Boolean.class;
   }
 }

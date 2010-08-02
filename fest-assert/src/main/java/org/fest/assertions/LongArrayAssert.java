@@ -38,28 +38,24 @@ public class LongArrayAssert extends ArrayAssert<long[]> {
   }
 
   /** {@inheritDoc} */
-  @Override
-  public LongArrayAssert as(String description) {
+  @Override public LongArrayAssert as(String description) {
     description(description);
     return this;
   }
 
   /** {@inheritDoc} */
-  @Override
-  public LongArrayAssert describedAs(String description) {
+  @Override public LongArrayAssert describedAs(String description) {
     return as(description);
   }
 
   /** {@inheritDoc} */
-  @Override
-  public LongArrayAssert as(Description description) {
+  @Override public LongArrayAssert as(Description description) {
     description(description);
     return this;
   }
 
   /** {@inheritDoc} */
-  @Override
-  public LongArrayAssert describedAs(Description description) {
+  @Override public LongArrayAssert describedAs(Description description) {
     return as(description);
   }
 
@@ -111,8 +107,7 @@ public class LongArrayAssert extends ArrayAssert<long[]> {
    * @throws AssertionError if the actual <code>long</code> array does not satisfy the given condition.
    * @see #is(Condition)
    */
-  @Override
-  public LongArrayAssert satisfies(Condition<long[]> condition) {
+  @Override public LongArrayAssert satisfies(Condition<long[]> condition) {
     assertSatisfies(condition);
     return this;
   }
@@ -125,8 +120,7 @@ public class LongArrayAssert extends ArrayAssert<long[]> {
    * @throws AssertionError if the actual <code>long</code> array satisfies the given condition.
    * @see #isNot(Condition)
    */
-  @Override
-  public LongArrayAssert doesNotSatisfy(Condition<long[]> condition) {
+  @Override public LongArrayAssert doesNotSatisfy(Condition<long[]> condition) {
     assertDoesNotSatisfy(condition);
     return this;
   }
@@ -139,8 +133,7 @@ public class LongArrayAssert extends ArrayAssert<long[]> {
    * @throws AssertionError if the actual <code>long</code> array does not satisfy the given condition.
    * @since 1.2
    */
-  @Override
-  public LongArrayAssert is(Condition<long[]> condition) {
+  @Override public LongArrayAssert is(Condition<long[]> condition) {
     assertIs(condition);
     return this;
   }
@@ -153,8 +146,7 @@ public class LongArrayAssert extends ArrayAssert<long[]> {
    * @throws AssertionError if the actual <code>long</code> array satisfies the given condition.
    * @since 1.2
    */
-  @Override
-  public LongArrayAssert isNot(Condition<long[]> condition) {
+  @Override public LongArrayAssert isNot(Condition<long[]> condition) {
     assertIsNot(condition);
     return this;
   }
@@ -164,8 +156,7 @@ public class LongArrayAssert extends ArrayAssert<long[]> {
    * @return this assertion object.
    * @throws AssertionError if the actual <code>long</code> array is <code>null</code>.
    */
-  @Override
-  public LongArrayAssert isNotNull() {
+  @Override public LongArrayAssert isNotNull() {
     assertNotNull();
     return this;
   }
@@ -176,8 +167,7 @@ public class LongArrayAssert extends ArrayAssert<long[]> {
    * @throws AssertionError if the actual <code>long</code> array is <code>null</code>.
    * @throws AssertionError if the actual <code>long</code> array is empty.
    */
-  @Override
-  public LongArrayAssert isNotEmpty() {
+  @Override public LongArrayAssert isNotEmpty() {
     assertIsNotEmpty();
     return this;
   }
@@ -189,8 +179,7 @@ public class LongArrayAssert extends ArrayAssert<long[]> {
    * @return this assertion object.
    * @throws AssertionError if the actual <code>long</code> array is not equal to the given one.
    */
-  @Override
-  public LongArrayAssert isEqualTo(long[] expected) {
+  @Override public LongArrayAssert isEqualTo(long[] expected) {
     if (Arrays.equals(actual, expected)) return this;
     failIfCustomMessageIsSet();
     throw failure(unexpectedNotEqual(actual, expected));
@@ -203,8 +192,7 @@ public class LongArrayAssert extends ArrayAssert<long[]> {
    * @return this assertion object.
    * @throws AssertionError if the actual <code>long</code> array is equal to the given one.
    */
-  @Override
-  public LongArrayAssert isNotEqualTo(long[] array) {
+  @Override public LongArrayAssert isNotEqualTo(long[] array) {
     if (!Arrays.equals(actual, array)) return this;
     failIfCustomMessageIsSet();
     throw failure(unexpectedEqual(actual, array));
@@ -218,8 +206,7 @@ public class LongArrayAssert extends ArrayAssert<long[]> {
    * @throws AssertionError if the number of elements in the actual <code>long</code> array is not equal to the given
    * one.
    */
-  @Override
-  public LongArrayAssert hasSize(int expected) {
+  @Override public LongArrayAssert hasSize(int expected) {
     assertHasSize(expected);
     return this;
   }
@@ -230,8 +217,7 @@ public class LongArrayAssert extends ArrayAssert<long[]> {
    * @return this assertion object.
    * @throws AssertionError if the actual <code>long</code> array is not the same as the given one.
    */
-  @Override
-  public LongArrayAssert isSameAs(long[] expected) {
+  @Override public LongArrayAssert isSameAs(long[] expected) {
     assertSameAs(expected);
     return this;
   }
@@ -242,15 +228,13 @@ public class LongArrayAssert extends ArrayAssert<long[]> {
    * @return this assertion object.
    * @throws AssertionError if the actual <code>long</code> array is the same as the given one.
    */
-  @Override
-  public LongArrayAssert isNotSameAs(long[] expected) {
+  @Override public LongArrayAssert isNotSameAs(long[] expected) {
     assertNotSameAs(expected);
     return this;
   }
 
   /** {@inheritDoc} */
-  @Override
-  public LongArrayAssert overridingErrorMessage(String message) {
+  @Override public LongArrayAssert overridingErrorMessage(String message) {
     replaceDefaultErrorMessagesWith(message);
     return this;
   }

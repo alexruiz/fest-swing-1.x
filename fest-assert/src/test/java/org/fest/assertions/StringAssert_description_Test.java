@@ -29,8 +29,7 @@ package org.fest.assertions;
  */
 public class StringAssert_description_Test extends GenericAssert_description_TestCase<String> {
 
-  @Override
-  protected GenericAssert<String> assertionToTest() {
+  @Override protected GenericAssert<String> assertionToTest() {
     return new StringAssert("Hello");
   }
 }

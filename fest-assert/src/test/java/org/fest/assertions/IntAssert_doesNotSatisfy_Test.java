@@ -32,13 +32,11 @@ public class IntAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSatisfy_
     notNullValue = 6;
   }
 
-  @Override
-  protected Integer notNullValue() {
+  @Override protected Integer notNullValue() {
     return notNullValue;
   }
 
-  @Override
-  protected IntAssert assertionsFor(Integer actual) {
+  @Override protected IntAssert assertionsFor(Integer actual) {
     return new IntAssert(actual);
   }
 }

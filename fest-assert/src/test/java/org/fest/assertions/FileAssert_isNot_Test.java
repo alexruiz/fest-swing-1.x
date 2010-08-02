@@ -34,13 +34,11 @@ public class FileAssert_isNot_Test extends GenericAssert_isNot_TestCase<File> {
     notNullValue = aFile();
   }
 
-  @Override
-  protected FileAssert assertionsFor(File actual) {
+  @Override protected FileAssert assertionsFor(File actual) {
     return new FileAssert(actual);
   }
 
-  @Override
-  protected File notNullValue() {
+  @Override protected File notNullValue() {
     return notNullValue;
   }
 }

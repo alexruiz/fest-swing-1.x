@@ -31,13 +31,11 @@ public class ObjectAssert_isNull_Test extends GenericAssert_isNull_TestCase<Obje
     notNullValue = 6;
   }
 
-  @Override
-  protected ObjectAssert assertionsFor(Object actual) {
+  @Override protected ObjectAssert assertionsFor(Object actual) {
     return new ObjectAssert(actual);
   }
 
-  @Override
-  protected Object notNullValue() {
+  @Override protected Object notNullValue() {
     return notNullValue;
   }
 }

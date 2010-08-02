@@ -32,13 +32,11 @@ public class FloatArrayAssert_is_Test extends GenericAssert_is_TestCase<float[]>
     notNullValue = emptyFloatArray();
   }
 
-  @Override
-  protected FloatArrayAssert assertionsFor(float[] actual) {
+  @Override protected FloatArrayAssert assertionsFor(float[] actual) {
     return new FloatArrayAssert(actual);
   }
 
-  @Override
-  protected float[] notNullValue() {
+  @Override protected float[] notNullValue() {
     return notNullValue;
   }
 }

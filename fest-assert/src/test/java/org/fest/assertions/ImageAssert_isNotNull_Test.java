@@ -35,13 +35,11 @@ public class ImageAssert_isNotNull_Test extends GenericAssert_isNotNull_TestCase
     notNullValue = fivePixelBlueImage();
   }
 
-  @Override
-  protected ImageAssert assertionsFor(BufferedImage actual) {
+  @Override protected ImageAssert assertionsFor(BufferedImage actual) {
     return new ImageAssert(actual);
   }
 
-  @Override
-  protected BufferedImage notNullValue() {
+  @Override protected BufferedImage notNullValue() {
     return notNullValue;
   }
 }

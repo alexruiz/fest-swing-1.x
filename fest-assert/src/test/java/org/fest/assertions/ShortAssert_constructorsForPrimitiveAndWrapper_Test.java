@@ -24,18 +24,15 @@ package org.fest.assertions;
 public class ShortAssert_constructorsForPrimitiveAndWrapper_Test extends
     GenericAssert_constructorsForPrimitiveAndWrapper_TestCase<Short> {
 
-  @Override
-  protected Class<ShortAssert> assertionType() {
+  @Override protected Class<ShortAssert> assertionType() {
     return ShortAssert.class;
   }
 
-  @Override
-  protected Class<?> primitiveType() {
+  @Override protected Class<?> primitiveType() {
     return short.class;
   }
 
-  @Override
-  protected Class<Short> primitiveWrapperType() {
+  @Override protected Class<Short> primitiveWrapperType() {
     return Short.class;
   }
 }

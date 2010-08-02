@@ -33,13 +33,11 @@ public class DoubleAssert_doesNotSatisfy_Test extends GenericAssert_doesNotSatis
     notNullValue = 6d;
   }
 
-  @Override
-  protected Double notNullValue() {
+  @Override protected Double notNullValue() {
     return notNullValue;
   }
 
-  @Override
-  protected DoubleAssert assertionsFor(Double actual) {
+  @Override protected DoubleAssert assertionsFor(Double actual) {
     return new DoubleAssert(actual);
   }
 }

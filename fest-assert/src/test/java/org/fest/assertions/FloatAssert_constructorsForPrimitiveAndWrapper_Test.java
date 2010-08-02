@@ -24,18 +24,15 @@ package org.fest.assertions;
 public class FloatAssert_constructorsForPrimitiveAndWrapper_Test extends
   GenericAssert_constructorsForPrimitiveAndWrapper_TestCase<Float> {
 
-  @Override
-  protected Class<FloatAssert> assertionType() {
+  @Override protected Class<FloatAssert> assertionType() {
     return FloatAssert.class;
   }
 
-  @Override
-  protected Class<?> primitiveType() {
+  @Override protected Class<?> primitiveType() {
     return float.class;
   }
 
-  @Override
-  protected Class<Float> primitiveWrapperType() {
+  @Override protected Class<Float> primitiveWrapperType() {
     return Float.class;
   }
 }

@@ -38,28 +38,24 @@ public class FloatArrayAssert extends ArrayAssert<float[]> {
   }
 
   /** {@inheritDoc} */
-  @Override
-  public FloatArrayAssert as(String description) {
+  @Override public FloatArrayAssert as(String description) {
     description(description);
     return this;
   }
 
   /** {@inheritDoc} */
-  @Override
-  public FloatArrayAssert describedAs(String description) {
+  @Override public FloatArrayAssert describedAs(String description) {
     return as(description);
   }
 
   /** {@inheritDoc} */
-  @Override
-  public FloatArrayAssert as(Description description) {
+  @Override public FloatArrayAssert as(Description description) {
     description(description);
     return this;
   }
 
   /** {@inheritDoc} */
-  @Override
-  public FloatArrayAssert describedAs(Description description) {
+  @Override public FloatArrayAssert describedAs(Description description) {
     return as(description);
   }
 
@@ -111,8 +107,7 @@ public class FloatArrayAssert extends ArrayAssert<float[]> {
    * @throws AssertionError if the actual <code>float</code> array does not satisfy the given condition.
    * @see #is(Condition)
    */
-  @Override
-  public FloatArrayAssert satisfies(Condition<float[]> condition) {
+  @Override public FloatArrayAssert satisfies(Condition<float[]> condition) {
     assertSatisfies(condition);
     return this;
   }
@@ -125,8 +120,7 @@ public class FloatArrayAssert extends ArrayAssert<float[]> {
    * @throws AssertionError if the actual <code>float</code> array satisfies the given condition.
    * @see #isNot(Condition)
    */
-  @Override
-  public FloatArrayAssert doesNotSatisfy(Condition<float[]> condition) {
+  @Override public FloatArrayAssert doesNotSatisfy(Condition<float[]> condition) {
     assertDoesNotSatisfy(condition);
     return this;
   }
@@ -140,8 +134,7 @@ public class FloatArrayAssert extends ArrayAssert<float[]> {
    * @throws AssertionError if the actual <code>float</code> array does not satisfy the given condition.
    * @since 1.2
    */
-  @Override
-  public FloatArrayAssert is(Condition<float[]> condition) {
+  @Override public FloatArrayAssert is(Condition<float[]> condition) {
     assertIs(condition);
     return this;
   }
@@ -154,8 +147,7 @@ public class FloatArrayAssert extends ArrayAssert<float[]> {
    * @throws AssertionError if the actual <code>float</code> array satisfies the given condition.
    * @since 1.2
    */
-  @Override
-  public FloatArrayAssert isNot(Condition<float[]> condition) {
+  @Override public FloatArrayAssert isNot(Condition<float[]> condition) {
     assertIsNot(condition);
     return this;
   }
@@ -165,8 +157,7 @@ public class FloatArrayAssert extends ArrayAssert<float[]> {
    * @return this assertion object.
    * @throws AssertionError if the actual <code>float</code> array is <code>null</code>.
    */
-  @Override
-  public FloatArrayAssert isNotNull() {
+  @Override public FloatArrayAssert isNotNull() {
     assertNotNull();
     return this;
   }
@@ -177,8 +168,7 @@ public class FloatArrayAssert extends ArrayAssert<float[]> {
    * @throws AssertionError if the actual <code>float</code> array is <code>null</code>.
    * @throws AssertionError if the actual <code>float</code> array is empty.
    */
-  @Override
-  public FloatArrayAssert isNotEmpty() {
+  @Override public FloatArrayAssert isNotEmpty() {
     assertIsNotEmpty();
     return this;
   }
@@ -190,8 +180,7 @@ public class FloatArrayAssert extends ArrayAssert<float[]> {
    * @return this assertion object.
    * @throws AssertionError if the actual <code>float</code> array is not equal to the given one.
    */
-  @Override
-  public FloatArrayAssert isEqualTo(float[] expected) {
+  @Override public FloatArrayAssert isEqualTo(float[] expected) {
     if (Arrays.equals(actual, expected)) return this;
     failIfCustomMessageIsSet();
     throw failure(unexpectedNotEqual(actual, expected));
@@ -204,8 +193,7 @@ public class FloatArrayAssert extends ArrayAssert<float[]> {
    * @return this assertion object.
    * @throws AssertionError if the actual <code>float</code> array is equal to the given one.
    */
-  @Override
-  public FloatArrayAssert isNotEqualTo(float[] array) {
+  @Override public FloatArrayAssert isNotEqualTo(float[] array) {
     if (!Arrays.equals(actual, array)) return this;
     failIfCustomMessageIsSet();
     throw failure(unexpectedEqual(actual, array));
@@ -219,8 +207,7 @@ public class FloatArrayAssert extends ArrayAssert<float[]> {
    * @throws AssertionError if the number of elements in the actual <code>float</code> array is not equal to the given
    * one.
    */
-  @Override
-  public FloatArrayAssert hasSize(int expected) {
+  @Override public FloatArrayAssert hasSize(int expected) {
     assertHasSize(expected);
     return this;
   }
@@ -231,8 +218,7 @@ public class FloatArrayAssert extends ArrayAssert<float[]> {
    * @return this assertion object.
    * @throws AssertionError if the actual <code>float</code> array is not the same as the given one.
    */
-  @Override
-  public FloatArrayAssert isSameAs(float[] expected) {
+  @Override public FloatArrayAssert isSameAs(float[] expected) {
     assertSameAs(expected);
     return this;
   }
@@ -243,15 +229,13 @@ public class FloatArrayAssert extends ArrayAssert<float[]> {
    * @return this assertion object.
    * @throws AssertionError if the actual <code>float</code> array is the same as the given one.
    */
-  @Override
-  public FloatArrayAssert isNotSameAs(float[] expected) {
+  @Override public FloatArrayAssert isNotSameAs(float[] expected) {
     assertNotSameAs(expected);
     return this;
   }
 
   /** {@inheritDoc} */
-  @Override
-  public FloatArrayAssert overridingErrorMessage(String message) {
+  @Override public FloatArrayAssert overridingErrorMessage(String message) {
     replaceDefaultErrorMessagesWith(message);
     return this;
   }

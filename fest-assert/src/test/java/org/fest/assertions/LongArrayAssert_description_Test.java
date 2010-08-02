@@ -28,8 +28,7 @@ package org.fest.assertions;
  */
 public class LongArrayAssert_description_Test extends GenericAssert_description_TestCase<long[]> {
 
-  @Override
-  protected GenericAssert<long[]> assertionToTest() {
+  @Override protected GenericAssert<long[]> assertionToTest() {
     return new LongArrayAssert(6);
   }
 }

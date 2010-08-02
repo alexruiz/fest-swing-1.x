@@ -33,18 +33,15 @@ public class ObjectAssert_isNotSameAs_Test extends GenericAssert_isNotSameAs_Tes
     notSameValue = 8;
   }
 
-  @Override
-  protected ObjectAssert assertionsFor(Object actual) {
+  @Override protected ObjectAssert assertionsFor(Object actual) {
     return new ObjectAssert(actual);
   }
 
-  @Override
-  protected Object notNullValue() {
+  @Override protected Object notNullValue() {
     return notNullValue;
   }
 
-  @Override
-  protected Object notSameValue() {
+  @Override protected Object notSameValue() {
     return notSameValue;
   }
 }

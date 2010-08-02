@@ -39,28 +39,24 @@ public class BigDecimalAssert extends ComparableAssert<BigDecimal> implements Nu
   }
 
   /** {@inheritDoc} */
-  @Override
-  public BigDecimalAssert as(String description) {
+  @Override public BigDecimalAssert as(String description) {
     description(description);
     return this;
   }
 
   /** {@inheritDoc} */
-  @Override
-  public BigDecimalAssert describedAs(String description) {
+  @Override public BigDecimalAssert describedAs(String description) {
     return as(description);
   }
 
   /** {@inheritDoc} */
-  @Override
-  public BigDecimalAssert as(Description description) {
+  @Override public BigDecimalAssert as(Description description) {
     description(description);
     return this;
   }
 
   /** {@inheritDoc} */
-  @Override
-  public BigDecimalAssert describedAs(Description description) {
+  @Override public BigDecimalAssert describedAs(Description description) {
     return as(description);
   }
 
@@ -72,8 +68,7 @@ public class BigDecimalAssert extends ComparableAssert<BigDecimal> implements Nu
    * @throws AssertionError if the actual <code>BigDecimal</code> does not satisfy the given condition.
    * @see #is(Condition)
    */
-  @Override
-  public BigDecimalAssert satisfies(Condition<BigDecimal> condition) {
+  @Override public BigDecimalAssert satisfies(Condition<BigDecimal> condition) {
     assertSatisfies(condition);
     return this;
   }
@@ -86,8 +81,7 @@ public class BigDecimalAssert extends ComparableAssert<BigDecimal> implements Nu
    * @throws AssertionError if the actual value does satisfies the given condition.
    * @see #isNot(Condition)
    */
-  @Override
-  public BigDecimalAssert doesNotSatisfy(Condition<BigDecimal> condition) {
+  @Override public BigDecimalAssert doesNotSatisfy(Condition<BigDecimal> condition) {
     assertDoesNotSatisfy(condition);
     return this;
   }
@@ -100,8 +94,7 @@ public class BigDecimalAssert extends ComparableAssert<BigDecimal> implements Nu
    * @throws AssertionError if the actual <code>BigDecimal</code> does not satisfy the given condition.
    * @since 1.2
    */
-  @Override
-  public BigDecimalAssert is(Condition<BigDecimal> condition) {
+  @Override public BigDecimalAssert is(Condition<BigDecimal> condition) {
     assertIs(condition);
     return this;
   }
@@ -114,8 +107,7 @@ public class BigDecimalAssert extends ComparableAssert<BigDecimal> implements Nu
    * @throws AssertionError if the actual value does satisfies the given condition.
    * @since 1.2
    */
-  @Override
-  public BigDecimalAssert isNot(Condition<BigDecimal> condition) {
+  @Override public BigDecimalAssert isNot(Condition<BigDecimal> condition) {
     assertIsNot(condition);
     return this;
   }
@@ -157,8 +149,7 @@ public class BigDecimalAssert extends ComparableAssert<BigDecimal> implements Nu
    * @return this assertion object.
    * @throws AssertionError if the actual <code>BigDecimal</code> value is <code>null</code>.
    */
-  @Override
-  public BigDecimalAssert isNotNull() {
+  @Override public BigDecimalAssert isNotNull() {
     assertNotNull();
     return this;
   }
@@ -169,8 +160,7 @@ public class BigDecimalAssert extends ComparableAssert<BigDecimal> implements Nu
    * @return this assertion object.
    * @throws AssertionError if the actual <code>BigDecimal</code> value is not the same as the given one.
    */
-  @Override
-  public BigDecimalAssert isSameAs(BigDecimal expected) {
+  @Override public BigDecimalAssert isSameAs(BigDecimal expected) {
     assertSameAs(expected);
     return this;
   }
@@ -181,8 +171,7 @@ public class BigDecimalAssert extends ComparableAssert<BigDecimal> implements Nu
    * @return this assertion object.
    * @throws AssertionError if the actual <code>BigDecimal</code> value is the same as the given one.
    */
-  @Override
-  public BigDecimalAssert isNotSameAs(BigDecimal other) {
+  @Override public BigDecimalAssert isNotSameAs(BigDecimal other) {
     assertNotSameAs(other);
     return this;
   }
@@ -198,8 +187,7 @@ public class BigDecimalAssert extends ComparableAssert<BigDecimal> implements Nu
    * @see BigDecimal#equals(Object)
    * @see #isEqualByComparingTo(BigDecimal)
    */
-  @Override
-  public BigDecimalAssert isEqualTo(BigDecimal expected) {
+  @Override public BigDecimalAssert isEqualTo(BigDecimal expected) {
     assertEqualTo(expected);
     return this;
   }
@@ -210,8 +198,7 @@ public class BigDecimalAssert extends ComparableAssert<BigDecimal> implements Nu
    * @return this assertion object.
    * @throws AssertionError if the actual <code>BigDecimal</code> value is equal to the given one.
    */
-  @Override
-  public BigDecimalAssert isNotEqualTo(BigDecimal other) {
+  @Override public BigDecimalAssert isNotEqualTo(BigDecimal other) {
     assertNotEqualTo(other);
     return this;
   }
@@ -226,8 +213,7 @@ public class BigDecimalAssert extends ComparableAssert<BigDecimal> implements Nu
    * @throws AssertionError if the actual <code>BigDecimal</code> value is not equal to the given one.
    * @see BigDecimal#compareTo(BigDecimal)
    */
-  @Override
-  public BigDecimalAssert isEqualByComparingTo(BigDecimal expected) {
+  @Override public BigDecimalAssert isEqualByComparingTo(BigDecimal expected) {
     assertIsEqualByComparingTo(expected);
     return this;
   }
@@ -242,8 +228,7 @@ public class BigDecimalAssert extends ComparableAssert<BigDecimal> implements Nu
    * @throws AssertionError if the actual <code>BigDecimal</code> value is equal to the given one.
    * @see BigDecimal#compareTo(BigDecimal)
    */
-  @Override
-  public BigDecimalAssert isNotEqualByComparingTo(BigDecimal expected) {
+  @Override public BigDecimalAssert isNotEqualByComparingTo(BigDecimal expected) {
     assertIsNotEqualByComparingTo(expected);
     return this;
   }
@@ -255,8 +240,7 @@ public class BigDecimalAssert extends ComparableAssert<BigDecimal> implements Nu
    * @throws AssertionError if the actual <code>BigDecimal</code> value is <code>null</code>.
    * @throws AssertionError if the actual <code>BigDecimal</code> value is not less than the given one.
    */
-  @Override
-  public BigDecimalAssert isLessThan(BigDecimal other) {
+  @Override public BigDecimalAssert isLessThan(BigDecimal other) {
     assertIsLessThan(other);
     return this;
   }
@@ -268,8 +252,7 @@ public class BigDecimalAssert extends ComparableAssert<BigDecimal> implements Nu
    * @throws AssertionError if the actual <code>BigDecimal</code> value is <code>null</code>.
    * @throws AssertionError if the actual <code>BigDecimal</code> value is not greater than the given one.
    */
-  @Override
-  public BigDecimalAssert isGreaterThan(BigDecimal other) {
+  @Override public BigDecimalAssert isGreaterThan(BigDecimal other) {
     assertIsGreaterThan(other);
     return this;
   }
@@ -281,8 +264,7 @@ public class BigDecimalAssert extends ComparableAssert<BigDecimal> implements Nu
    * @throws AssertionError if the actual <code>BigDecimal</code> value is <code>null</code>.
    * @throws AssertionError if the actual <code>BigDecimal</code> value is not less than or equal to the given one.
    */
-  @Override
-  public BigDecimalAssert isLessThanOrEqualTo(BigDecimal other) {
+  @Override public BigDecimalAssert isLessThanOrEqualTo(BigDecimal other) {
     assertIsLessThanOrEqualTo(other);
     return this;
   }
@@ -294,8 +276,7 @@ public class BigDecimalAssert extends ComparableAssert<BigDecimal> implements Nu
    * @throws AssertionError if the actual <code>BigDecimal</code> value is <code>null</code>.
    * @throws AssertionError if the actual <code>BigDecimal</code> value is not greater than or equal to the given one.
    */
-  @Override
-  public BigDecimalAssert isGreaterThanOrEqualTo(BigDecimal other) {
+  @Override public BigDecimalAssert isGreaterThanOrEqualTo(BigDecimal other) {
     assertIsGreaterThanOrEqualTo(other);
     return this;
   }
@@ -313,8 +294,7 @@ public class BigDecimalAssert extends ComparableAssert<BigDecimal> implements Nu
   }
 
   /** {@inheritDoc} */
-  @Override
-  public BigDecimalAssert overridingErrorMessage(String message) {
+  @Override public BigDecimalAssert overridingErrorMessage(String message) {
     replaceDefaultErrorMessagesWith(message);
     return this;
   }

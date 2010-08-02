@@ -36,18 +36,15 @@ public class FloatArrayAssert_isNotSameAs_Test extends GenericAssert_isNotSameAs
     notSameValue = emptyFloatArray();
   }
 
-  @Override
-  protected FloatArrayAssert assertionsFor(float[] actual) {
+  @Override protected FloatArrayAssert assertionsFor(float[] actual) {
     return new FloatArrayAssert(actual);
   }
 
-  @Override
-  protected float[] notNullValue() {
+  @Override protected float[] notNullValue() {
     return notNullValue;
   }
 
-  @Override
-  protected float[] notSameValue() {
+  @Override protected float[] notSameValue() {
     return notSameValue;
   }
 }

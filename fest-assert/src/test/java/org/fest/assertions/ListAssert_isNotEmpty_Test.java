@@ -37,18 +37,15 @@ public class ListAssert_isNotEmpty_Test extends GroupAssert_isNotEmpty_TestCase<
     notEmpty = list("Yoda, Anakin");
   }
 
-  @Override
-  protected ListAssert assertionsFor(List<?> actual) {
+  @Override protected ListAssert assertionsFor(List<?> actual) {
     return new ListAssert(actual);
   }
 
-  @Override
-  protected List<?> emptyGroup() {
+  @Override protected List<?> emptyGroup() {
     return emptyList();
   }
 
-  @Override
-  protected List<?> notEmptyGroup() {
+  @Override protected List<?> notEmptyGroup() {
     return notEmpty;
   }
 }

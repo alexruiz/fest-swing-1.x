@@ -35,18 +35,15 @@ public class ByteArrayAssert_isNotSameAs_Test extends GenericAssert_isNotSameAs_
     notSameValue = byteArray(6);
   }
 
-  @Override
-  protected ByteArrayAssert assertionsFor(byte[] actual) {
+  @Override protected ByteArrayAssert assertionsFor(byte[] actual) {
     return new ByteArrayAssert(actual);
   }
 
-  @Override
-  protected byte[] notNullValue() {
+  @Override protected byte[] notNullValue() {
     return notNullValue;
   }
 
-  @Override
-  protected byte[] notSameValue() {
+  @Override protected byte[] notSameValue() {
     return notSameValue;
   }
 }

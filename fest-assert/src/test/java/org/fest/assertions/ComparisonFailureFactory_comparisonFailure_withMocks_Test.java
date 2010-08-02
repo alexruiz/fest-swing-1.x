@@ -45,13 +45,11 @@ public class ComparisonFailureFactory_comparisonFailure_withMocks_Test {
   @Test
   public void should_return_null_if_created_Object_is_not_AssertionError() {
     new EasyMockTemplate(invoker) {
-      @Override
-      protected void expectations() {
+      @Override     protected void expectations() {
         expect(createComparisonFailure()).andReturn(new Object());
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override     protected void codeToTest() {
         AssertionError created = ComparisonFailureFactory.comparisonFailure("message", "expected", "actual");
         assertNull(created);
       }
@@ -61,13 +59,11 @@ public class ComparisonFailureFactory_comparisonFailure_withMocks_Test {
   @Test
   public void should_return_null_if_call_to_constructor_throws_exception() {
     new EasyMockTemplate(invoker) {
-      @Override
-      protected void expectations() {
+      @Override     protected void expectations() {
         expect(createComparisonFailure()).andThrow(new Exception());
       }
 
-      @Override
-      protected void codeToTest() {
+      @Override     protected void codeToTest() {
         AssertionError created = ComparisonFailureFactory.comparisonFailure("message", "expected", "actual");
         assertNull(created);
       }

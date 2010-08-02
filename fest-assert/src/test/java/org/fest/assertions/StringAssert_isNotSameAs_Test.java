@@ -34,18 +34,15 @@ public class StringAssert_isNotSameAs_Test extends GenericAssert_isNotSameAs_Tes
     notSameValue = "Luke";
   }
 
-  @Override
-  protected StringAssert assertionsFor(String actual) {
+  @Override protected StringAssert assertionsFor(String actual) {
     return new StringAssert(actual);
   }
 
-  @Override
-  protected String notNullValue() {
+  @Override protected String notNullValue() {
     return notNullValue;
   }
 
-  @Override
-  protected String notSameValue() {
+  @Override protected String notSameValue() {
     return notSameValue;
   }
 }

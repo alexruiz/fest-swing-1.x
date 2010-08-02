@@ -34,18 +34,15 @@ public class CharAssert_isEqualTo_Character_Test extends GenericAssert_isEqualTo
     unequalValue = 'b';
   }
 
-  @Override
-  protected CharAssert assertionsFor(Character actual) {
+  @Override protected CharAssert assertionsFor(Character actual) {
     return new CharAssert(actual);
   }
 
-  @Override
-  protected Character notNullValue() {
+  @Override protected Character notNullValue() {
     return notNullValue;
   }
 
-  @Override
-  protected Character unequalValue() {
+  @Override protected Character unequalValue() {
     return unequalValue;
   }
 }

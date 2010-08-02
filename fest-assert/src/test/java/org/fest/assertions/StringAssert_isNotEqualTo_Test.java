@@ -34,18 +34,15 @@ public class StringAssert_isNotEqualTo_Test extends GenericAssert_isNotEqualTo_T
     unequalValue = "Vader";
   }
 
-  @Override
-  protected StringAssert assertionsFor(String actual) {
+  @Override protected StringAssert assertionsFor(String actual) {
     return new StringAssert(actual);
   }
 
-  @Override
-  protected String notNullValue() {
+  @Override protected String notNullValue() {
     return notNullValue;
   }
 
-  @Override
-  protected String unequalValue() {
+  @Override protected String unequalValue() {
     return unequalValue;
   }
 }

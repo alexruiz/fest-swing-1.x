@@ -29,8 +29,7 @@ package org.fest.assertions;
  */
 public class DoubleAssert_description_Test extends GenericAssert_description_TestCase<Double> {
 
-  @Override
-  protected DoubleAssert assertionToTest() {
+  @Override protected DoubleAssert assertionToTest() {
     return new DoubleAssert(6.8);
   }
 }

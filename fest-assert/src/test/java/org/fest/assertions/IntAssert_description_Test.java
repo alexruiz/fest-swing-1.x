@@ -28,8 +28,7 @@ package org.fest.assertions;
  */
 public class IntAssert_description_Test extends GenericAssert_description_TestCase<Integer> {
 
-  @Override
-  protected IntAssert assertionToTest() {
+  @Override protected IntAssert assertionToTest() {
     return new IntAssert(8);
   }
 }

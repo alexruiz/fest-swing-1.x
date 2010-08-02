@@ -33,13 +33,11 @@ public class IntArrayAssert_satisfies_Test extends GenericAssert_satisfies_TestC
     notNullValue = emptyIntArray();
   }
 
-  @Override
-  protected IntArrayAssert assertionsFor(int[] actual) {
+  @Override protected IntArrayAssert assertionsFor(int[] actual) {
     return new IntArrayAssert(actual);
   }
 
-  @Override
-  protected int[] notNullValue() {
+  @Override protected int[] notNullValue() {
     return notNullValue;
   }
 }

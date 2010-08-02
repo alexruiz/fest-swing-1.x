@@ -40,30 +40,26 @@ public class ThrowableAssert extends GenericAssert<Throwable> {
   }
 
   /** {@inheritDoc} */
-  @Override
-  public ThrowableAssert as(String description) {
+  @Override public ThrowableAssert as(String description) {
     objectAssert.as(description);
     description(description);
     return this;
   }
 
   /** {@inheritDoc} */
-  @Override
-  public ThrowableAssert describedAs(String description) {
+  @Override public ThrowableAssert describedAs(String description) {
     return as(description);
   }
 
   /** {@inheritDoc} */
-  @Override
-  public ThrowableAssert as(Description description) {
+  @Override public ThrowableAssert as(Description description) {
     objectAssert.as(description);
     description(description);
     return this;
   }
 
   /** {@inheritDoc} */
-  @Override
-  public ThrowableAssert describedAs(Description description) {
+  @Override public ThrowableAssert describedAs(Description description) {
     return as(description);
   }
 
@@ -131,8 +127,7 @@ public class ThrowableAssert extends GenericAssert<Throwable> {
    * @return this assertion object.
    * @throws AssertionError if the actual <code>Throwable</code> is not equal to the given one.
    */
-  @Override
-  public ThrowableAssert isEqualTo(Throwable expected) {
+  @Override public ThrowableAssert isEqualTo(Throwable expected) {
     assertEqualTo(expected);
     return this;
   }
@@ -143,8 +138,7 @@ public class ThrowableAssert extends GenericAssert<Throwable> {
    * @return this assertion object.
    * @throws AssertionError if the actual <code>Throwable</code> is equal to the given one.
    */
-  @Override
-  public ThrowableAssert isNotEqualTo(Throwable other) {
+  @Override public ThrowableAssert isNotEqualTo(Throwable other) {
     assertNotEqualTo(other);
     return this;
   }
@@ -156,8 +150,7 @@ public class ThrowableAssert extends GenericAssert<Throwable> {
    *
    * @throws AssertionError if the actual <code>Throwable</code> is <code>null</code>.
    */
-  @Override
-  public ThrowableAssert isNotNull() {
+  @Override public ThrowableAssert isNotNull() {
     assertNotNull();
     return this;
   }
@@ -168,8 +161,7 @@ public class ThrowableAssert extends GenericAssert<Throwable> {
    * @return this assertion object.
    * @throws AssertionError if the actual <code>Throwable</code> is the same as the given one.
    */
-  @Override
-  public ThrowableAssert isNotSameAs(Throwable other) {
+  @Override public ThrowableAssert isNotSameAs(Throwable other) {
     assertNotSameAs(other);
     return this;
   }
@@ -180,8 +172,7 @@ public class ThrowableAssert extends GenericAssert<Throwable> {
    * @return this assertion object.
    * @throws AssertionError if the actual <code>Throwable</code> is not the same as the given one.
    */
-  @Override
-  public ThrowableAssert isSameAs(Throwable expected) {
+  @Override public ThrowableAssert isSameAs(Throwable expected) {
     assertSameAs(expected);
     return this;
   }
@@ -194,8 +185,7 @@ public class ThrowableAssert extends GenericAssert<Throwable> {
    * @throws AssertionError if the actual <code>Throwable</code> does not satisfy the given condition.
    * @see #is(Condition)
    */
-  @Override
-  public ThrowableAssert satisfies(Condition<Throwable> condition) {
+  @Override public ThrowableAssert satisfies(Condition<Throwable> condition) {
     assertSatisfies(condition);
     return this;
   }
@@ -208,8 +198,7 @@ public class ThrowableAssert extends GenericAssert<Throwable> {
    * @throws AssertionError if the actual <code>Throwable</code> satisfies the given condition.
    * @see #isNot(Condition)
    */
-  @Override
-  public ThrowableAssert doesNotSatisfy(Condition<Throwable> condition) {
+  @Override public ThrowableAssert doesNotSatisfy(Condition<Throwable> condition) {
     assertDoesNotSatisfy(condition);
     return this;
   }
@@ -223,8 +212,7 @@ public class ThrowableAssert extends GenericAssert<Throwable> {
    * @throws AssertionError if the actual <code>Throwable</code> does not satisfy the given condition.
    * @since 1.2
    */
-  @Override
-  public ThrowableAssert is(Condition<Throwable> condition) {
+  @Override public ThrowableAssert is(Condition<Throwable> condition) {
     assertIs(condition);
     return this;
   }
@@ -237,15 +225,13 @@ public class ThrowableAssert extends GenericAssert<Throwable> {
    * @throws AssertionError if the actual <code>Throwable</code> satisfies the given condition.
    * @since 1.2
    */
-  @Override
-  public ThrowableAssert isNot(Condition<Throwable> condition) {
+  @Override public ThrowableAssert isNot(Condition<Throwable> condition) {
     assertIsNot(condition);
     return this;
   }
 
   /** {@inheritDoc} */
-  @Override
-  public ThrowableAssert overridingErrorMessage(String message) {
+  @Override public ThrowableAssert overridingErrorMessage(String message) {
     replaceDefaultErrorMessagesWith(message);
     objectAssert.overridingErrorMessage(message);
     return this;

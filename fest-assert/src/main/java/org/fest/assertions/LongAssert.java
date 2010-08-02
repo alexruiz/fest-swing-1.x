@@ -47,28 +47,24 @@ public class LongAssert extends GenericAssert<Long> implements NumberAssert {
   }
 
   /** {@inheritDoc} */
-  @Override
-  public LongAssert as(String description) {
+  @Override public LongAssert as(String description) {
     description(description);
     return this;
   }
 
   /** {@inheritDoc} */
-  @Override
-  public LongAssert describedAs(String description) {
+  @Override public LongAssert describedAs(String description) {
     return as(description);
   }
 
   /** {@inheritDoc} */
-  @Override
-  public LongAssert as(Description description) {
+  @Override public LongAssert as(Description description) {
     description(description);
     return this;
   }
 
   /** {@inheritDoc} */
-  @Override
-  public LongAssert describedAs(Description description) {
+  @Override public LongAssert describedAs(Description description) {
     return as(description);
   }
 
@@ -89,8 +85,7 @@ public class LongAssert extends GenericAssert<Long> implements NumberAssert {
    * @throws AssertionError if the actual {@code Long} is not equal to the given one.
    * @since 1.3
    */
-  @Override
-  public LongAssert isEqualTo(Long expected) {
+  @Override public LongAssert isEqualTo(Long expected) {
     assertEqualTo(expected);
     return this;
   }
@@ -112,8 +107,7 @@ public class LongAssert extends GenericAssert<Long> implements NumberAssert {
    * @throws AssertionError if the actual {@code Long} is equal to the given one.
    * @since 1.3
    */
-  @Override
-  public LongAssert isNotEqualTo(Long other) {
+  @Override public LongAssert isNotEqualTo(Long other) {
     assertNotEqualTo(other);
     return this;
   }
@@ -194,8 +188,7 @@ public class LongAssert extends GenericAssert<Long> implements NumberAssert {
   }
 
   /** {@inheritDoc} */
-  @Override
-  public LongAssert overridingErrorMessage(String message) {
+  @Override public LongAssert overridingErrorMessage(String message) {
     replaceDefaultErrorMessagesWith(message);
     return this;
   }
@@ -209,8 +202,7 @@ public class LongAssert extends GenericAssert<Long> implements NumberAssert {
    * @see #is(Condition)
    * @since 1.3
    */
-  @Override
-  public LongAssert satisfies(Condition<Long> condition) {
+  @Override public LongAssert satisfies(Condition<Long> condition) {
     assertSatisfies(condition);
     return this;
   }
@@ -224,8 +216,7 @@ public class LongAssert extends GenericAssert<Long> implements NumberAssert {
    * @see #isNot(Condition)
    * @since 1.3
    */
-  @Override
-  public LongAssert doesNotSatisfy(Condition<Long> condition) {
+  @Override public LongAssert doesNotSatisfy(Condition<Long> condition) {
     assertDoesNotSatisfy(condition);
     return this;
   }
@@ -238,8 +229,7 @@ public class LongAssert extends GenericAssert<Long> implements NumberAssert {
    * @throws AssertionError if the actual {@code Long} does not satisfy the given condition.
    * @since 1.3
    */
-  @Override
-  public LongAssert is(Condition<Long> condition) {
+  @Override public LongAssert is(Condition<Long> condition) {
     assertIs(condition);
     return this;
   }
@@ -253,8 +243,7 @@ public class LongAssert extends GenericAssert<Long> implements NumberAssert {
    * @throws AssertionError if the actual {@code Long} does not satisfy the given condition.
    * @since 1.3
    */
-  @Override
-  public LongAssert isNot(Condition<Long> condition) {
+  @Override public LongAssert isNot(Condition<Long> condition) {
     assertIsNot(condition);
     return this;
   }
@@ -265,8 +254,7 @@ public class LongAssert extends GenericAssert<Long> implements NumberAssert {
    * @throws AssertionError if the actual {@code Long} is <code>null</code>.
    * @since 1.3
    */
-  @Override
-  public LongAssert isNotNull() {
+  @Override public LongAssert isNotNull() {
     assertNotNull();
     return this;
   }
@@ -278,8 +266,7 @@ public class LongAssert extends GenericAssert<Long> implements NumberAssert {
    * @throws AssertionError if the actual {@code Long} is not the same as the given one.
    * @since 1.3
    */
-  @Override
-  public LongAssert isSameAs(Long expected) {
+  @Override public LongAssert isSameAs(Long expected) {
     assertSameAs(expected);
     return this;
   }
@@ -291,8 +278,7 @@ public class LongAssert extends GenericAssert<Long> implements NumberAssert {
    * @throws AssertionError if the actual {@code Long} is the same as the given one.
    * @since 1.3
    */
-  @Override
-  public LongAssert isNotSameAs(Long other) {
+  @Override public LongAssert isNotSameAs(Long other) {
     assertNotSameAs(other);
     return this;
   }

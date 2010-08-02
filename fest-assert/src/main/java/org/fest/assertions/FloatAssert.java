@@ -50,28 +50,24 @@ public class FloatAssert extends GenericAssert<Float> implements NumberAssert {
   }
 
   /** {@inheritDoc} */
-  @Override
-  public FloatAssert as(String description) {
+  @Override public FloatAssert as(String description) {
     description(description);
     return this;
   }
 
   /** {@inheritDoc} */
-  @Override
-  public FloatAssert describedAs(String description) {
+  @Override public FloatAssert describedAs(String description) {
     return as(description);
   }
 
   /** {@inheritDoc} */
-  @Override
-  public FloatAssert as(Description description) {
+  @Override public FloatAssert as(Description description) {
     description(description);
     return this;
   }
 
   /** {@inheritDoc} */
-  @Override
-  public FloatAssert describedAs(Description description) {
+  @Override public FloatAssert describedAs(Description description) {
     return as(description);
   }
 
@@ -92,8 +88,7 @@ public class FloatAssert extends GenericAssert<Float> implements NumberAssert {
    * @throws AssertionError if the actual {@code Float} is not equal to the given one.
    * @since 1.3
    */
-  @Override
-  public FloatAssert isEqualTo(Float expected) {
+  @Override public FloatAssert isEqualTo(Float expected) {
     if (actual == null || expected == null) {
       assertEqualTo(expected);
       return this;
@@ -285,8 +280,7 @@ public class FloatAssert extends GenericAssert<Float> implements NumberAssert {
   }
 
   /** {@inheritDoc} */
-  @Override
-  public FloatAssert overridingErrorMessage(String message) {
+  @Override public FloatAssert overridingErrorMessage(String message) {
     replaceDefaultErrorMessagesWith(message);
     return this;
   }
@@ -300,8 +294,7 @@ public class FloatAssert extends GenericAssert<Float> implements NumberAssert {
    * @see #is(Condition)
    * @since 1.3
    */
-  @Override
-  public FloatAssert satisfies(Condition<Float> condition) {
+  @Override public FloatAssert satisfies(Condition<Float> condition) {
     assertSatisfies(condition);
     return this;
   }
@@ -315,8 +308,7 @@ public class FloatAssert extends GenericAssert<Float> implements NumberAssert {
    * @see #isNot(Condition)
    * @since 1.3
    */
-  @Override
-  public FloatAssert doesNotSatisfy(Condition<Float> condition) {
+  @Override public FloatAssert doesNotSatisfy(Condition<Float> condition) {
     assertDoesNotSatisfy(condition);
     return this;
   }
@@ -329,8 +321,7 @@ public class FloatAssert extends GenericAssert<Float> implements NumberAssert {
    * @throws AssertionError if the actual {@code Float} does not satisfy the given condition.
    * @since 1.3
    */
-  @Override
-  public FloatAssert is(Condition<Float> condition) {
+  @Override public FloatAssert is(Condition<Float> condition) {
     assertIs(condition);
     return this;
   }
@@ -343,8 +334,7 @@ public class FloatAssert extends GenericAssert<Float> implements NumberAssert {
    * @throws AssertionError if the actual {@code Float} does not satisfy the given condition.
    * @since 1.3
    */
-  @Override
-  public FloatAssert isNot(Condition<Float> condition) {
+  @Override public FloatAssert isNot(Condition<Float> condition) {
     assertIsNot(condition);
     return this;
   }
@@ -356,8 +346,7 @@ public class FloatAssert extends GenericAssert<Float> implements NumberAssert {
    * @throws AssertionError if the actual {@code Float} is equal to the given one.
    * @since 1.3
    */
-  @Override
-  public FloatAssert isNotEqualTo(Float other) {
+  @Override public FloatAssert isNotEqualTo(Float other) {
     assertNotEqualTo(other);
     return this;
   }
@@ -368,8 +357,7 @@ public class FloatAssert extends GenericAssert<Float> implements NumberAssert {
    * @throws AssertionError if the actual {@code Float} is <code>null</code>.
    * @since 1.3
    */
-  @Override
-  public FloatAssert isNotNull() {
+  @Override public FloatAssert isNotNull() {
     assertNotNull();
     return this;
   }
@@ -381,8 +369,7 @@ public class FloatAssert extends GenericAssert<Float> implements NumberAssert {
    * @throws AssertionError if the actual {@code Float} is not the same as the given one.
    * @since 1.3
    */
-  @Override
-  public FloatAssert isSameAs(Float expected) {
+  @Override public FloatAssert isSameAs(Float expected) {
     assertSameAs(expected);
     return this;
   }
@@ -394,8 +381,7 @@ public class FloatAssert extends GenericAssert<Float> implements NumberAssert {
    * @throws AssertionError if the actual {@code Float} is the same as the given one.
    * @since 1.3
    */
-  @Override
-  public FloatAssert isNotSameAs(Float other) {
+  @Override public FloatAssert isNotSameAs(Float other) {
     assertNotSameAs(other);
     return this;
   }

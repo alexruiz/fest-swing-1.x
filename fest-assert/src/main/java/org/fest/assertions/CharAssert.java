@@ -47,28 +47,24 @@ public class CharAssert extends GenericAssert<Character> {
   }
 
   /** {@inheritDoc} */
-  @Override
-  public CharAssert as(String description) {
+  @Override public CharAssert as(String description) {
     description(description);
     return this;
   }
 
   /** {@inheritDoc} */
-  @Override
-  public CharAssert describedAs(String description) {
+  @Override public CharAssert describedAs(String description) {
     return as(description);
   }
 
   /** {@inheritDoc} */
-  @Override
-  public CharAssert as(Description description) {
+  @Override public CharAssert as(Description description) {
     description(description);
     return this;
   }
 
   /** {@inheritDoc} */
-  @Override
-  public CharAssert describedAs(Description description) {
+  @Override public CharAssert describedAs(Description description) {
     return as(description);
   }
 
@@ -89,8 +85,7 @@ public class CharAssert extends GenericAssert<Character> {
    * @throws AssertionError if the actual {@code Character} value is not equal to the given one.
    * @since 1.3
    */
-  @Override
-  public CharAssert isEqualTo(Character expected) {
+  @Override public CharAssert isEqualTo(Character expected) {
     assertEqualTo(expected);
     return this;
   }
@@ -112,8 +107,7 @@ public class CharAssert extends GenericAssert<Character> {
    * @throws AssertionError if the actual {@code Character} value is equal to the given one.
    * @since 1.3
    */
-  @Override
-  public CharAssert isNotEqualTo(Character other) {
+  @Override public CharAssert isNotEqualTo(Character other) {
     assertNotEqualTo(other);
     return this;
   }
@@ -189,8 +183,7 @@ public class CharAssert extends GenericAssert<Character> {
   }
 
   /** {@inheritDoc} */
-  @Override
-  public CharAssert overridingErrorMessage(String message) {
+  @Override public CharAssert overridingErrorMessage(String message) {
     replaceDefaultErrorMessagesWith(message);
     return this;
   }
@@ -204,8 +197,7 @@ public class CharAssert extends GenericAssert<Character> {
    * @see #is(Condition)
    * @since 1.3
    */
-  @Override
-  public CharAssert satisfies(Condition<Character> condition) {
+  @Override public CharAssert satisfies(Condition<Character> condition) {
     assertSatisfies(condition);
     return this;
   }
@@ -219,8 +211,7 @@ public class CharAssert extends GenericAssert<Character> {
    * @see #isNot(Condition)
    * @since 1.3
    */
-  @Override
-  public CharAssert doesNotSatisfy(Condition<Character> condition) {
+  @Override public CharAssert doesNotSatisfy(Condition<Character> condition) {
     assertDoesNotSatisfy(condition);
     return this;
   }
@@ -233,8 +224,7 @@ public class CharAssert extends GenericAssert<Character> {
    * @throws AssertionError if the actual {@code Character} does not satisfy the given condition.
    * @since 1.3
    */
-  @Override
-  public CharAssert is(Condition<Character> condition) {
+  @Override public CharAssert is(Condition<Character> condition) {
     assertIs(condition);
     return this;
   }
@@ -247,8 +237,7 @@ public class CharAssert extends GenericAssert<Character> {
    * @throws AssertionError if the actual {@code Character} does not satisfy the given condition.
    * @since 1.3
    */
-  @Override
-  public CharAssert isNot(Condition<Character> condition) {
+  @Override public CharAssert isNot(Condition<Character> condition) {
     assertIsNot(condition);
     return this;
   }
@@ -259,8 +248,7 @@ public class CharAssert extends GenericAssert<Character> {
    * @throws AssertionError if the actual {@code Character} value is <code>null</code>.
    * @since 1.3
    */
-  @Override
-  public CharAssert isNotNull() {
+  @Override public CharAssert isNotNull() {
     assertNotNull();
     return this;
   }
@@ -272,8 +260,7 @@ public class CharAssert extends GenericAssert<Character> {
    * @throws AssertionError if the actual {@code Character} value is not the same as the given one.
    * @since 1.3
    */
-  @Override
-  public CharAssert isSameAs(Character expected) {
+  @Override public CharAssert isSameAs(Character expected) {
     assertSameAs(expected);
     return this;
   }
@@ -285,8 +272,7 @@ public class CharAssert extends GenericAssert<Character> {
    * @throws AssertionError if the actual {@code Character} value is the same as the given one.
    * @since 1.3
    */
-  @Override
-  public CharAssert isNotSameAs(Character other) {
+  @Override public CharAssert isNotSameAs(Character other) {
     assertNotSameAs(other);
     return this;
   }

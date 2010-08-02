@@ -34,18 +34,15 @@ public class FloatAssert_Generic_isSameAs_Test extends GenericAssert_isSameAs_Te
     notSameValue = 8f;
   }
 
-  @Override
-  protected FloatAssert assertionsFor(Float actual) {
+  @Override protected FloatAssert assertionsFor(Float actual) {
     return new FloatAssert(actual);
   }
 
-  @Override
-  protected Float notNullValue() {
+  @Override protected Float notNullValue() {
     return notNullValue;
   }
 
-  @Override
-  protected Float notSameValue() {
+  @Override protected Float notSameValue() {
     return notSameValue;
   }
 }

@@ -28,8 +28,7 @@ package org.fest.assertions;
  */
 public class BooleanAssert_description_Test extends GenericAssert_description_TestCase<Boolean> {
 
-  @Override
-  protected BooleanAssert assertionToTest() {
+  @Override protected BooleanAssert assertionToTest() {
     return new BooleanAssert(true);
   }
 }

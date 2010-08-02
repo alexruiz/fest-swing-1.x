@@ -37,13 +37,11 @@ public class BigDecimalAssert_isNotNull_Test extends GenericAssert_isNotNull_Tes
     notNullValue = eight();
   }
 
-  @Override
-  protected BigDecimalAssert assertionsFor(BigDecimal actual) {
+  @Override protected BigDecimalAssert assertionsFor(BigDecimal actual) {
     return new BigDecimalAssert(actual);
   }
 
-  @Override
-  protected BigDecimal notNullValue() {
+  @Override protected BigDecimal notNullValue() {
     return notNullValue;
   }
 }
