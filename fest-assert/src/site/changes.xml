@@ -6,11 +6,41 @@
   </properties>
   <body>
     <release version="1.3" date="TBD" description="Subsequent release">
+      <action dev="konermann" type="fix" issue="FEST-133" due-to="Stanislaw Osinski">
+        All primitive-related assertion classes now extend GenericAssert and take a primitive wrapper as value.
+      </action>      
+      <action dev="konermann" type="add" issue="FEST-171">
+        Added method "isEqualToIgnoringCase" to StringAssert.
+      </action>      
+      <action dev="konermann" type="add" issue="FEST-197">
+        Added methods "isNull" and "isNotNull" to all assertion classes for primitive values.
+      </action>
+      <action dev="wanghy" type="add" issue="FEST-252">
+        Added method "containsIgnoringCase" to StringAssert.
+       </action>      
       <action dev="wanghy" type="fix" issue="FEST-261" due-to="Ed Bras">
         Class BasicDescription is no longer final.
       </action>
+      <action dev="tedyoung" type="add" issue="FEST-310">
+        Added method "isNotZero" to BigDecimalAssert.
+      </action>
+      <action dev="jocosti" type="add" issue="FEST-324">
+        Added support for assertions on extracted values of a given property of collection/array elements.
+      </action>
       <action dev="wanghy" type="fix" issue="FEST-326">
         Improved error messages related to unexpected null objects.
+      </action>
+      <action dev="wanghy" type="fix" issue="FEST-328">
+        Added method "doesNotContain" to StringAssert.
+      </action>
+      <action dev="wanghy" type="fix" issue="FEST-329" due-to="Mark Derricutt">
+        Fixed implementation of "containsEntry" in MapAssert to verify that a Map contains a given entry.
+      </action>
+      <action dev="alexruiz" type="add" issue="FEST-334" due-to="James Ravn">
+        Added method "assertThat(Iterable)" to class org.fest.assertions.Assertions.
+      </action>
+      <action dev="wanghy" type="fix" issue="FEST-367">
+        Method "containsOnly" in ListAssert now supports duplicates.
       </action>
     </release>
     <release version="1.2" date="2009-11-02" description="Subsequent release">
