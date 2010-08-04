@@ -15,9 +15,9 @@
  */
 package org.fest.swing.monitor;
 
-import static java.lang.Math.max;
 import static java.util.logging.Level.WARNING;
 import static org.fest.swing.edt.GuiActionRunner.execute;
+import static org.fest.swing.monitor.WindowMetrics.absoluteCenterOf;
 import static org.fest.swing.query.ComponentSizeQuery.sizeOf;
 
 import java.awt.*;
@@ -27,7 +27,6 @@ import org.fest.swing.annotation.RunsInCurrentThread;
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
 import org.fest.swing.edt.GuiTask;
-import org.fest.swing.util.Pair;
 import org.fest.swing.util.RobotFactory;
 
 /**
@@ -39,7 +38,7 @@ class WindowStatus {
 
   private static final Logger LOGGER = Logger.getAnonymousLogger();
 
-  private static final int ARBITRARY_EXTRA_VALUE = 20;
+  private static final Dimension MINIMUM_WINDOW_SIZE = new Dimension(50, 30);
 
   private static int sign = 1;
 
@@ -80,25 +79,24 @@ class WindowStatus {
     }
   }
 
+  @RunsInEDT
   private void checkSafelyIfReady(final Window w) {
-    // Must avoid frame borders, which are insensitive to mouse motion (at least on w32).
-    Pair<WindowMetrics, Point> metricsAndCenter = metricsAndCenter(w);
-    final WindowMetrics metrics = metricsAndCenter.i;
-    mouseMove(w, metricsAndCenter.ii);
-    if (!windows.isShowingButNotReady(w)) return;
+    if (!windows.isShowingButNotReady(w)) {
+      return;
+    }
     execute(new GuiTask() {
       @Override protected void executeInEDT() {
-        makeLargeEnoughToReceiveEvents(w, metrics);
+        makeLargeEnoughToReceiveEvents(w);
       }
     });
+    mouseMove(w, centerOf(w));
   }
 
   @RunsInEDT
-  private static Pair<WindowMetrics, Point> metricsAndCenter(final Window w) {
-    return execute(new GuiQuery<Pair<WindowMetrics, Point>>() {
-      @Override protected Pair<WindowMetrics, Point> executeInEDT() {
-        WindowMetrics metrics = new WindowMetrics(w);
-        return new Pair<WindowMetrics, Point>(metrics, metrics.center());
+  private static Point centerOf(final Window w) {
+    return execute(new GuiQuery<Point>() {
+      @Override protected Point executeInEDT() {
+        return absoluteCenterOf(w);
       }
     });
   }
@@ -116,27 +114,14 @@ class WindowStatus {
   }
 
   @RunsInCurrentThread
-  private void makeLargeEnoughToReceiveEvents(Window window, WindowMetrics metrics) {
-    if (!isEmptyFrame(window)) return;
-    int w = max(window.getWidth(), proposedWidth(metrics));
-    int h = max(window.getHeight(), proposedHeight(metrics));
-    window.setSize(new Dimension(w, h));
+  private void makeLargeEnoughToReceiveEvents(Window window) {
+    if (!shouldResize(window)) return;
+    window.setSize(MINIMUM_WINDOW_SIZE);
   }
 
   @RunsInCurrentThread
-  private boolean isEmptyFrame(Window w) {
-    Insets insets = w.getInsets();
-    return insets.top + insets.bottom == w.getHeight() || insets.left + insets.right == w.getWidth();
-  }
-
-  @RunsInCurrentThread
-  private int proposedWidth(WindowMetrics metrics) {
-    return metrics.leftAndRightInsets() + ARBITRARY_EXTRA_VALUE;
-  }
-
-  @RunsInCurrentThread
-  private int proposedHeight(WindowMetrics metrics) {
-    return metrics.topAndBottomInsets() + ARBITRARY_EXTRA_VALUE;
+  private boolean shouldResize(Window w) {
+    return w.getWidth() < MINIMUM_WINDOW_SIZE.width || w.getHeight() < MINIMUM_WINDOW_SIZE.height;
   }
 
   static int sign() { return sign; }

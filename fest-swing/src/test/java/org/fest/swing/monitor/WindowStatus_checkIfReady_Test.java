@@ -19,6 +19,7 @@ import static org.easymock.EasyMock.expect;
 import static org.easymock.classextension.EasyMock.createMock;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.monitor.TestWindows.newWindowsMock;
+import static org.fest.swing.monitor.WindowMetrics.absoluteCenterOf;
 import static org.fest.swing.query.ComponentSizeQuery.sizeOf;
 import static org.fest.swing.timing.Pause.pause;
 import static org.fest.swing.timing.Timeout.timeout;
@@ -39,8 +40,8 @@ import org.junit.Test;
  */
 public class WindowStatus_checkIfReady_Test extends SequentialEDTSafeTestCase {
 
-  private WindowStatus status;
   private TestWindow window;
+  private WindowStatus status;
   private Windows windows;
 
   @Override protected final void onSetUp() {
@@ -55,12 +56,13 @@ public class WindowStatus_checkIfReady_Test extends SequentialEDTSafeTestCase {
 
   @Test
   public void should_move_mouse_to_center_of_Frame_if_width_is_greater_than_height() {
-    window.display();
-    Point center = new WindowMetrics(window).center();
+    window.display(new Dimension(300, 100));
+    pause(500);
+    Point center = absoluteCenterOf(window);
     center.x += WindowStatus.sign();
     new EasyMockTemplate(windows) {
       @Override protected void expectations() {
-        expectFrameIsReady();
+        expect(windows.isShowingButNotReady(window)).andReturn(true);
       }
 
       @Override protected void codeToTest() {
@@ -73,11 +75,12 @@ public class WindowStatus_checkIfReady_Test extends SequentialEDTSafeTestCase {
   @Test
   public void should_move_mouse_to_center_of_Frame_if_height_is_greater_than_width() {
     window.display(new Dimension(200, 400));
-    Point center = new WindowMetrics(window).center();
+    pause(500);
+    Point center = absoluteCenterOf(window);
     center.y += WindowStatus.sign();
     new EasyMockTemplate(windows) {
       @Override protected void expectations() {
-        expectFrameIsReady();
+        expect(windows.isShowingButNotReady(window)).andReturn(true);
       }
 
       @Override protected void codeToTest() {
@@ -87,13 +90,9 @@ public class WindowStatus_checkIfReady_Test extends SequentialEDTSafeTestCase {
     assertThat(MouseInfo.getPointerInfo().getLocation()).isEqualTo(center);
   }
 
-  private void expectFrameIsReady() {
-    expect(windows.isShowingButNotReady(window)).andReturn(false);
-  }
-
   @Test
   public void should_resize_Window_to_receive_events() {
-    window.display(new Dimension(0 ,0));
+    window.display(new Dimension(2, 2));
     final Dimension original = sizeOf(window);
     new EasyMockTemplate(windows) {
       @Override protected void expectations() {
