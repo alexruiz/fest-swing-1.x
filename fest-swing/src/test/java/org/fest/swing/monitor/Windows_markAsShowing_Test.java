@@ -39,7 +39,7 @@ public class Windows_markAsShowing_Test extends Windows_TestCase {
     windows.markAsShowing(window);
     assertThat(windows.isShowingButNotReady(window)).isTrue();
     int timeToPause = Windows.WINDOW_READY_DELAY * 2;
-    logger.info(concat("Pausing for ", valueOf(timeToPause), " ms"));
+    logger.info(concat("Pausing for ", valueOf(timeToPause), " ms: waiting for window to be marked as showing"));
     pause(timeToPause);
     assertThat(windowState()).isReady();
   }
