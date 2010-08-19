@@ -15,11 +15,8 @@
  */
 package org.fest.swing.core;
 
-import java.awt.Component;
-
 /**
- * Understands whether a <code>{@link Component}</code> matches some desired criteria. The internal state of this
- * matcher can be reset.
+ * <code>{@link ComponentMatcher}</code> whose internal state can be reset.
  *
  * @author Alex Ruiz
  *

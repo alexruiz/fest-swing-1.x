@@ -16,7 +16,7 @@
 package org.fest.swing.applet;
 
 /**
- * Understands how to display the state of an applet.
+ * Displays the state of an applet.
  *
  * @author Alex Ruiz
  */

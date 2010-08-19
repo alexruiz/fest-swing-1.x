@@ -23,7 +23,7 @@ import org.fest.swing.input.InputState;
 import org.fest.swing.monitor.WindowMonitor;
 
 /**
- * Understands posting <code>{@link AWTEvent}</code>s in a <code>{@link EventQueue}</code>.
+ * Posts <code>{@link AWTEvent}</code>s in a <code>{@link EventQueue}</code>.
  *
  * @author Yvonne Wang
  */

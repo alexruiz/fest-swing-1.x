@@ -23,7 +23,7 @@ import javax.swing.JComboBox;
 import org.fest.swing.annotation.RunsInCurrentThread;
 
 /**
- * Understands verification that a given number is a valid index of an item in a <code>{@link JComboBox}</code>.
+ * Validates that a given number is a valid index of an item in a <code>{@link JComboBox}</code>.
  * <p>
  * <b>Note:</b> Methods in this class are <b>not</b> executed in the event dispatch thread (EDT.) Clients are
  * responsible for invoking them in the EDT.

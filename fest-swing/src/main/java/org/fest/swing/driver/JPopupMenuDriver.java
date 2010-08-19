@@ -48,9 +48,9 @@ public class JPopupMenuDriver extends JComponentDriver {
   }
 
   /**
-   * Returns the contents of the pop-up menu as a <code>String</code> array.
+   * Returns the contents of the pop-up menu as a {@code String} array.
    * @param popupMenu the target {@code JPopupMenu}.
-   * @return the contents of the pop-up menu as a <code>String</code> array.
+   * @return the contents of the pop-up menu as a {@code String} array.
    */
   @RunsInEDT
   public String[] menuLabelsOf(JPopupMenu popupMenu) {

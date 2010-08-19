@@ -22,7 +22,7 @@ import static org.fest.util.Strings.concat;
 import javax.swing.JTable;
 
 /**
- * Understands a cell in a <code>{@link JTable}</code>.
+ * A cell in a <code>{@link JTable}</code>.
  *
  * @author Alex Ruiz
  */

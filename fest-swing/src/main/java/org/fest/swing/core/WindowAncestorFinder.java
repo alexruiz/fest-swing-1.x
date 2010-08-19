@@ -25,7 +25,7 @@ import org.fest.swing.annotation.RunsInCurrentThread;
 import org.fest.swing.hierarchy.*;
 
 /**
- * Understands lookup of a component's <code>{@link java.awt.Window ancestor}</code>.
+ * Looks up a component's <code>{@link java.awt.Window ancestor}</code>.
  *
  * @author Yvonne Wang
  */

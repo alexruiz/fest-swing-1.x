@@ -33,7 +33,7 @@ public interface TextDisplayFixture {
 
   /**
    * Asserts that the text of this fixture's <code>{@link Component}</code> is equal to or matches the specified
-   * <code>String</code>.
+   * {@code String}.
    * @param expected the text to match. It can be a regular expression.
    * @return this fixture.
    * @throws AssertionError if the text of the target component is not equal to or does not match the given one.

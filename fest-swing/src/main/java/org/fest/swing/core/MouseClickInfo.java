@@ -20,7 +20,7 @@ import static org.fest.swing.core.MouseButton.*;
 import static org.fest.util.Strings.concat;
 
 /**
- * Understands information about clicking a mouse button.
+ * Information about a mouse button to click.
  * <p>
  * Examples:
  * </p>

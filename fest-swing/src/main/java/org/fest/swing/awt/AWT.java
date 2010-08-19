@@ -29,7 +29,7 @@ import org.fest.swing.annotation.*;
 import org.fest.swing.edt.GuiQuery;
 
 /**
- * Understands utility methods related to AWT.
+ * Utility methods related to AWT.
  *
  * @author Alex Ruiz
  */

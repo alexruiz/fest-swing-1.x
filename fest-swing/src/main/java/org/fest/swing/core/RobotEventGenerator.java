@@ -29,7 +29,7 @@ import java.awt.Robot;
 import org.fest.swing.util.RobotFactory;
 
 /**
- * Understands input event generation using a AWT <code>{@link Robot}</code>.
+ * Simulates user input by using an AWT <code>{@link Robot}</code>.
  *
  * @author Alex Ruiz
  */

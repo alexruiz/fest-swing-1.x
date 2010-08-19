@@ -23,8 +23,7 @@ import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
 
 /**
- * Understands an action, executed in the event dispatch thread, that returns the text of an
- * <code>{@link AbstractButton}</code>.
+ * Action executed in the event dispatch thread that returns the text of an <code>{@link AbstractButton}</code>.
  * @see AbstractButton#getText()
  *
  * @author Alex Ruiz

@@ -46,14 +46,11 @@ import org.fest.swing.timing.Timeout;
 import org.fest.swing.util.TimeoutWatch;
 
 /**
- * Understands functional testing of <code>{@link Component}</code>s:
- * <ul>
- * <li>user input simulation</li>
- * <li>state verification</li>
- * <li>property value query</li>
- * </ul>
- * This class is intended for internal use only. Please use the classes in the package
+ * User input simulation, state verification and property value query on a <code>{@link Component}</code>.
+ * <p>
+ * <b>Note:</b> This class is intended for internal use only. Please use the classes in the package
  * <code>{@link org.fest.swing.fixture}</code> in your tests.
+ * </p>
  *
  * @author Alex Ruiz
  */

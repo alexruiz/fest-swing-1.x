@@ -16,7 +16,7 @@
 package org.fest.swing.util;
 
 /**
- * Understands matching a given text to one or more values.
+ * Matches a given text to one or more values.
  *
  * @author Alex Ruiz
  */
@@ -36,8 +36,8 @@ public interface TextMatcher {
   String description();
 
   /**
-   * Returns the values in this matcher, formatted as a <code>String</code>.
-   * @return the values in this matcher, formatted as a <code>String</code>.
+   * Returns the values in this matcher, formatted as a {@code String}.
+   * @return the values in this matcher, formatted as a {@code String}.
    */
   String formattedValues();
 }

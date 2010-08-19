@@ -27,9 +27,9 @@ import java.awt.Component;
 public abstract class ComponentFormatterTemplate implements ComponentFormatter {
 
   /**
-   * Returns the <code>String</code> representation of the given <code>{@link Component}</code>.
+   * Returns the {@code String} representation of the given <code>{@link Component}</code>.
    * @param c the given {@code Component}.
-   * @return the <code>String</code> representation of the given {@code Component}.
+   * @return the {@code String} representation of the given {@code Component}.
    * @throws NullPointerException if the given {@code Component} is {@code null}.
    * @throws IllegalArgumentException if the type of the given {@code Component} is not supported by this
    * formatter.
@@ -40,9 +40,9 @@ public abstract class ComponentFormatterTemplate implements ComponentFormatter {
   }
 
   /**
-   * Returns the <code>String</code> representation of the given <code>{@link Component}</code>.
+   * Returns the {@code String} representation of the given <code>{@link Component}</code>.
    * @param c the given {@code Component}.
-   * @return the <code>String</code> representation of the given {@code Component}.
+   * @return the {@code String} representation of the given {@code Component}.
    */
   protected abstract String doFormat(Component c);
 

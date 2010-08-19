@@ -16,7 +16,7 @@
 package org.fest.swing.core;
 
 /**
- * Understands utility methods related to threads.
+ * Utility methods related to threads.
  *
  * @author Alex Ruiz
  */

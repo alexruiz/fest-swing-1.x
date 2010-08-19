@@ -20,8 +20,8 @@ import java.awt.Component;
 import org.fest.swing.annotation.RunsInCurrentThread;
 
 /**
- * Understands a <code>{@link ComponentMatcher}</code> that matches a <code>{@link Component}</code> by type and some
- * custom search criteria.
+ * <code>{@link ComponentMatcher}</code> that matches a <code>{@link Component}</code> by type and some
+ * custom search criteria. It uses generics to improve type safety.
  * @param <T> the type of {@code Component} supported by this matcher.
  *
  * @author Yvonne Wang

@@ -28,7 +28,7 @@ import org.fest.swing.edt.GuiQuery;
 import org.fest.swing.exception.ActionFailedException;
 
 /**
- * Understands lookup of a cell in the first selected row of a <code>{@link JTable}</code>.
+ * Looks up a cell in the first selected row of a <code>{@link JTable}</code>.
  * <p>
  * Example:
  * <pre>
@@ -81,8 +81,8 @@ public class TableCellInSelectedRow implements TableCellFinder {
   /**
    * Finds a cell in the given <code>{@link JTable}</code> that belongs to the first selected row and has a matching
    * column index.
-   * @param table the target <code>JTable</code>.
-   * @param cellReader knows how to read the contents of a cell in a <code>JTable</code>.
+   * @param table the target {@code JTable}.
+   * @param cellReader knows how to read the contents of a cell in a {@code JTable}.
    * @return the cell found, if any.
    * @throws ActionFailedException if a matching cell could not be found.
    */

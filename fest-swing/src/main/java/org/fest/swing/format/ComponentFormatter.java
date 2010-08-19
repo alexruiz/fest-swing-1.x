@@ -18,16 +18,16 @@ package org.fest.swing.format;
 import java.awt.Component;
 
 /**
- * Understands a formatter that returns a <code>String</code> representation of a given <code>{@link Component}</code>.
+ * Understands a formatter that returns a {@code String} representation of a given <code>{@link Component}</code>.
  *
  * @author Alex Ruiz
  */
 public interface ComponentFormatter {
 
   /**
-   * Returns a <code>String</code> representation of the given <code>{@link Component}</code>.
+   * Returns a {@code String} representation of the given <code>{@link Component}</code>.
    * @param c the given {@code Component}.
-   * @return a <code>String</code> representation of the given {@code Component}.
+   * @return a {@code String} representation of the given {@code Component}.
    */
   String format(Component c);
 

@@ -16,7 +16,7 @@
 package org.fest.swing.core;
 
 /**
- * Understands how to identify the "main" thread.
+ * Identifies the "main" thread.
  *
  * @author Alex Ruiz
  */

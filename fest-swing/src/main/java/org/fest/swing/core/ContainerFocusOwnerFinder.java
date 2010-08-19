@@ -20,7 +20,7 @@ import java.awt.*;
 import org.fest.swing.annotation.RunsInCurrentThread;
 
 /**
- * Understands how to find the focus owner of a <code>{@link Container}</code>.
+ * Finds the focus owner of a <code>{@link Container}</code>.
  *
  * @author Alex Ruiz
  */

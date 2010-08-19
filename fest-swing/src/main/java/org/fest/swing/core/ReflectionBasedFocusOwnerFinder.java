@@ -20,7 +20,7 @@ import static org.fest.reflect.core.Reflection.staticField;
 import java.awt.*;
 
 /**
- * Understands how to find the current focus owner using Reflection.
+ * Finds the current focus owner using Java reflection.
  *
  * @author Alex Ruiz
  */

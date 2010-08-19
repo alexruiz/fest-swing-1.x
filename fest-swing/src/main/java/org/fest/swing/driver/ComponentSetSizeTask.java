@@ -23,8 +23,7 @@ import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiTask;
 
 /**
- * Understands a task that sets the size of a <code>{@link Component}</code>. This task is executed in the event
- * dispatch thread.
+ * Sets the size of a <code>{@link Component}</code>. This task is executed in the event dispatch thread.
  *
  * @author Alex Ruiz
  */

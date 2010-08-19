@@ -24,7 +24,7 @@ import java.util.regex.Pattern;
 import org.fest.swing.annotation.RunsInCurrentThread;
 
 /**
- * Understands matching a <code>{@link Frame}</code>  by type, name or title.
+ * Matches <code>{@link Frame}</code>s by type, name or title.
  *
  * @author Alex Ruiz
  */

@@ -33,7 +33,7 @@ public final class Arrays {
   private static final String NULL = "null";
 
   /**
-   * Verifies that the given <code>String</code> arrays are equal.
+   * Verifies that the given {@code String} arrays are equal.
    * @param one the first array.
    * @param two the second array.
    * @return {@code true} if the arrays are equal, {@code false} otherwise.
@@ -51,7 +51,7 @@ public final class Arrays {
   }
 
   /**
-   * Formats a two-dimensional <code>String</code> array. For example, the array:
+   * Formats a two-dimensional {@code String} array. For example, the array:
    * <pre>
    * String[][] array = {
    *      { &quot;0-0&quot;, &quot;0-1&quot;, &quot;0-2&quot; },

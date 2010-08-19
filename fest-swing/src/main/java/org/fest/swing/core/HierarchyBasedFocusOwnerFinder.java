@@ -20,7 +20,7 @@ import java.awt.*;
 import org.fest.swing.annotation.RunsInCurrentThread;
 
 /**
- * Understands how to find the focus owner using the roots of a component hierarchy.
+ * Finds the focus owner using the roots of a component hierarchy.
  *
  * @author Alex Ruiz
  */

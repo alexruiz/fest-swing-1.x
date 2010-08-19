@@ -21,9 +21,9 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 import java.lang.annotation.*;
 
 /**
- * Understands an annotation that identifies GUI tests. FEST only takes screenshots of failing tests that has been
- * marked with this annotation.
- *
+ * Identifies tests as "GUI tests." FEST only takes screenshots of the desktop if failing tests have been marked with
+ * this annotation.
+ * 
  * @author Alex Ruiz
  */
 @Retention(RUNTIME)

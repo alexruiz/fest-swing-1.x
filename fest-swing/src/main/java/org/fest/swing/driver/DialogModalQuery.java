@@ -23,8 +23,7 @@ import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
 
 /**
- * Understands an action, executed in the event dispatch thread, that indicates whether a <code>{@link Dialog}</code> is
- * modal or not.
+ * Action executed in the event dispatch thread that indicates whether a <code>{@link Dialog}</code> is modal or not.
  * @see Dialog#isModal()
  *
  * @author Alex Ruiz

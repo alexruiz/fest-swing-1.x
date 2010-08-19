@@ -42,7 +42,7 @@ public final class IntrospectionComponentFormatter extends ComponentFormatterTem
   /**
    * Creates a new </code>{@link IntrospectionComponentFormatter}</code>.
    * @param targetType the type of {@code Component} that this formatter supports.
-   * @param propertyNames the property names to show as the <code>String</code> representation of a given
+   * @param propertyNames the property names to show as the {@code String} representation of a given
    * {@code Component}.
    * @throws NullPointerException if <code>targetType</code> is {@code null}.
    */
@@ -70,11 +70,11 @@ public final class IntrospectionComponentFormatter extends ComponentFormatterTem
   }
 
   /**
-   * Returns a <code>String</code> representation of the given <code>{@link Component}</code>, showing only the
+   * Returns a {@code String} representation of the given <code>{@link Component}</code>, showing only the
    * properties specified in this formatter's
    * <code>{@link #IntrospectionComponentFormatter(Class, String...) constructor}</code>.
    * @param c the given {@code Component}.
-   * @return a <code>String</code> representation of the given {@code Component}.
+   * @return a {@code String} representation of the given {@code Component}.
    * @throws NullPointerException if the given {@code Component} is {@code null}.
    * @throws IllegalArgumentException if the type of the given {@code Component} is not supported by this
    * formatter.

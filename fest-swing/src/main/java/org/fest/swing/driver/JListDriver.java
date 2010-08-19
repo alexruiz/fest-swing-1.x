@@ -84,10 +84,10 @@ public class JListDriver extends JComponentDriver {
   }
 
   /**
-   * Returns an array of <code>String</code>s that represents the contents of the given <code>{@link JList}</code>,
+   * Returns an array of {@code String}s that represents the contents of the given <code>{@link JList}</code>,
    * using this driver's <code>{@link JListCellReader}</code>.
    * @param list the target <code>JList</code>.
-   * @return an array of <code>String</code>s that represents the contents of the given <code>JList</code>.
+   * @return an array of {@code String}s that represents the contents of the given <code>JList</code>.
    * @see #cellReader(JListCellReader)
    */
   @RunsInEDT
@@ -98,7 +98,7 @@ public class JListDriver extends JComponentDriver {
   /**
    * Selects the items matching the given values.
    * @param list the target <code>JList</code>.
-   * @param values the values to match. Each <code>String</code> can be a regular expression.
+   * @param values the values to match. Each {@code String} can be a regular expression.
    * @throws NullPointerException if the given array is {@code null}.
    * @throws IllegalArgumentException if the given array is empty.
    * @throws IllegalStateException if the <code>JList</code> is disabled.
@@ -385,10 +385,10 @@ public class JListDriver extends JComponentDriver {
   }
 
   /**
-   * Returns an array of <code>String</code>s that represents the selection in the given <code>{@link JList}</code>,
+   * Returns an array of {@code String}s that represents the selection in the given <code>{@link JList}</code>,
    * using this driver's <code>{@link JListCellReader}</code>.
    * @param list the target <code>JList</code>.
-   * @return an array of <code>String</code>s that represents the selection in the given <code>JList</code>.
+   * @return an array of {@code String}s that represents the selection in the given <code>JList</code>.
    * @see #cellReader(JListCellReader)
    */
   @RunsInEDT
@@ -719,7 +719,7 @@ public class JListDriver extends JComponentDriver {
   }
 
   /**
-   * Returns the <code>String</code> representation of the element under the given index, using this driver's
+   * Returns the {@code String} representation of the element under the given index, using this driver's
    * <code>{@link JListCellReader}</code>.
    * @param list the target <code>JList</code>.
    * @param index the given index.

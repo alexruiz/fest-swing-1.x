@@ -25,7 +25,7 @@ import org.fest.swing.edt.GuiQuery;
 
 /**
  * Understands an action, executed in the event dispatch thread, that returns the contents of a
- * <code>{@link JTable}</code> as a two-dimensional <code>String</code> array.
+ * <code>{@link JTable}</code> as a two-dimensional {@code String} array.
  *
  * @author Alex Ruiz
  */

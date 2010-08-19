@@ -22,8 +22,8 @@ import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
 
 /**
- * Understands an action, executed in the event dispatch thread, that indicates whether an
- * <code>{@link AbstractButton}</code> is selected or not.
+ * Action executed in the event dispatch thread that indicates whether an <code>{@link AbstractButton}</code> is
+ * selected or not.
  * @see AbstractButton#isSelected()
  *
  * @author Yvonne Wang

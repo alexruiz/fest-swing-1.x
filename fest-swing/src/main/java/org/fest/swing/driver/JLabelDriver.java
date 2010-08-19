@@ -49,7 +49,7 @@ public class JLabelDriver extends JComponentDriver implements TextDisplayDriver<
   }
 
   /**
-   * Asserts that the text of the <code>{@link JLabel}</code> is equal to the specified <code>String</code>.
+   * Asserts that the text of the <code>{@link JLabel}</code> is equal to the specified {@code String}.
    * @param label the target <code>JLabel</code>.
    * @param expected the text to match.
    * @throws AssertionError if the text of the <code>JLabel</code> is not equal to the given one.

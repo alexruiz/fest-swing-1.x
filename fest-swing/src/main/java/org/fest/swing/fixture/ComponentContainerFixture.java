@@ -564,20 +564,20 @@ public interface ComponentContainerFixture {
 
   /**
    * Returns the <code>{@link JSplitPane}</code> found in this fixture's <code>{@link Container}</code>.
-   * @return a fixture that manages the <code>JSplitPane</code> found.
-   * @throws ComponentLookupException if a <code>JSplitPane</code> could not be found.
-   * @throws ComponentLookupException if more than one <code>JSplitPane</code> is found.
+   * @return a fixture that manages the {@code JSplitPane} found.
+   * @throws ComponentLookupException if a {@code JSplitPane} could not be found.
+   * @throws ComponentLookupException if more than one {@code JSplitPane} is found.
    */
   JSplitPaneFixture splitPane();
 
   /**
    * Finds a <code>{@link JSplitPane}</code> in this fixture's <code>{@link Container}</code>, that matches the
    * specified search criteria.
-   * @param matcher contains the search criteria for finding a <code>JSplitPane</code>.
-   * @return a fixture that manages the <code>JSplitPane</code> found.
-   * @throws ComponentLookupException if a <code>JSplitPane</code> that matches the given search criteria could not be
+   * @param matcher contains the search criteria for finding a {@code JSplitPane}.
+   * @return a fixture that manages the {@code JSplitPane} found.
+   * @throws ComponentLookupException if a {@code JSplitPane} that matches the given search criteria could not be
    * found.
-   * @throws ComponentLookupException if more than one <code>JSplitPane</code> that matches the given search criteria is
+   * @throws ComponentLookupException if more than one {@code JSplitPane} that matches the given search criteria is
    * found.
    */
   JSplitPaneFixture splitPane(GenericTypeMatcher<? extends JSplitPane> matcher);
@@ -586,9 +586,9 @@ public interface ComponentContainerFixture {
    * Finds a <code>{@link JSplitPane}</code> in this fixture's <code>{@link Container}</code>, which name matches
    * the specified one.
    * @param name the name to match.
-   * @return a fixture that manages the <code>JSplitPane</code> found.
-   * @throws ComponentLookupException if a <code>JSplitPane</code> having a matching name could not be found.
-   * @throws ComponentLookupException if more than one <code>JSplitPane</code> having a matching name is found.
+   * @return a fixture that manages the {@code JSplitPane} found.
+   * @throws ComponentLookupException if a {@code JSplitPane} having a matching name could not be found.
+   * @throws ComponentLookupException if more than one {@code JSplitPane} having a matching name is found.
    */
   JSplitPaneFixture splitPane(String name);
 
@@ -624,20 +624,20 @@ public interface ComponentContainerFixture {
 
   /**
    * Returns a <code>{@link JTable}</code> found in this fixture's <code>{@link Container}</code>.
-   * @return a fixture that manages the <code>JTable</code> found.
-   * @throws ComponentLookupException if a <code>JTable</code> having a matching name could not be found.
-   * @throws ComponentLookupException if more than one <code>JTable</code> having a matching name is found.
+   * @return a fixture that manages the {@code JTable} found.
+   * @throws ComponentLookupException if a {@code JTable} having a matching name could not be found.
+   * @throws ComponentLookupException if more than one {@code JTable} having a matching name is found.
    */
   JTableFixture table();
 
   /**
    * Finds a <code>{@link JTable}</code> in this fixture's <code>{@link Container}</code>, that matches the
    * specified search criteria.
-   * @param matcher contains the search criteria for finding a <code>JTable</code>.
-   * @return a fixture that manages the <code>JTable</code> found.
-   * @throws ComponentLookupException if a <code>JTable</code> that matches the given search criteria could not be
+   * @param matcher contains the search criteria for finding a {@code JTable}.
+   * @return a fixture that manages the {@code JTable} found.
+   * @throws ComponentLookupException if a {@code JTable} that matches the given search criteria could not be
    * found.
-   * @throws ComponentLookupException if more than one <code>JTable</code> that matches the given search criteria is
+   * @throws ComponentLookupException if more than one {@code JTable} that matches the given search criteria is
    * found.
    */
   JTableFixture table(GenericTypeMatcher<? extends JTable> matcher);
@@ -646,9 +646,9 @@ public interface ComponentContainerFixture {
    * Finds a <code>{@link JTable}</code> in this fixture's <code>{@link Container}</code>, which name matches the
    * specified one.
    * @param name the name to match.
-   * @return a fixture that manages the <code>JTable</code> found.
-   * @throws ComponentLookupException if a <code>JTable</code> having a matching name could not be found.
-   * @throws ComponentLookupException if more than one <code>JTable</code> having a matching name is found.
+   * @return a fixture that manages the {@code JTable} found.
+   * @throws ComponentLookupException if a {@code JTable} having a matching name could not be found.
+   * @throws ComponentLookupException if more than one {@code JTable} having a matching name is found.
    */
   JTableFixture table(String name);
 
@@ -744,19 +744,19 @@ public interface ComponentContainerFixture {
 
   /**
    * Returns a <code>{@link JTree}</code> found in this fixture's <code>{@link Container}</code>.
-   * @return a fixture that manages the <code>JTree</code> found.
-   * @throws ComponentLookupException if a <code>JTree</code> having a matching name could not be found.
-   * @throws ComponentLookupException if more than one <code>JTree</code> having a matching name is found.
+   * @return a fixture that manages the {@code JTree} found.
+   * @throws ComponentLookupException if a {@code JTree} having a matching name could not be found.
+   * @throws ComponentLookupException if more than one {@code JTree} having a matching name is found.
    */
   JTreeFixture tree();
 
   /**
    * Finds a <code>{@link JTree}</code> in this fixture's <code>{@link Container}</code>, that matches the
    * specified search criteria.
-   * @param matcher contains the search criteria for finding a <code>JTree</code>.
-   * @return a fixture that manages the <code>JTree</code> found.
-   * @throws ComponentLookupException if a <code>JTree</code> that matches the given search criteria could not be found.
-   * @throws ComponentLookupException if more than one <code>JTree</code> that matches the given search criteria is
+   * @param matcher contains the search criteria for finding a {@code JTree}.
+   * @return a fixture that manages the {@code JTree} found.
+   * @throws ComponentLookupException if a {@code JTree} that matches the given search criteria could not be found.
+   * @throws ComponentLookupException if more than one {@code JTree} that matches the given search criteria is
    * found.
    */
   JTreeFixture tree(GenericTypeMatcher<? extends JTree> matcher);
@@ -765,9 +765,9 @@ public interface ComponentContainerFixture {
    * Finds a <code>{@link JTree}</code> in this fixture's <code>{@link Container}</code>, which name matches the
    * specified one.
    * @param name the name to match.
-   * @return a fixture that manages the <code>JTree</code> found.
-   * @throws ComponentLookupException if a <code>JTree</code> having a matching name could not be found.
-   * @throws ComponentLookupException if more than one <code>JTree</code> having a matching name is found.
+   * @return a fixture that manages the {@code JTree} found.
+   * @throws ComponentLookupException if a {@code JTree} having a matching name could not be found.
+   * @throws ComponentLookupException if more than one {@code JTree} having a matching name is found.
    */
   JTreeFixture tree(String name);
 

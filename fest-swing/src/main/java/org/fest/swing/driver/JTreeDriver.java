@@ -83,12 +83,12 @@ public class JTreeDriver extends JComponentDriver {
 
   /**
    * Clicks the given row.
-   * @param tree the target <code>JTree</code>.
+   * @param tree the target {@code JTree}.
    * @param row the given row.
-   * @throws IllegalStateException if the <code>JTree</code> is disabled.
-   * @throws IllegalStateException if the <code>JTree</code> is not showing on the screen.
+   * @throws IllegalStateException if the {@code JTree} is disabled.
+   * @throws IllegalStateException if the {@code JTree} is not showing on the screen.
    * @throws IndexOutOfBoundsException if the given row is less than zero or equal than or greater than the number of
-   * visible rows in the <code>JTree</code>.
+   * visible rows in the {@code JTree}.
    * @throws LocationUnavailableException if a tree path for the given row cannot be found.
    * @since 1.2
    */
@@ -100,14 +100,14 @@ public class JTreeDriver extends JComponentDriver {
 
   /**
    * Clicks the given row.
-   * @param tree the target <code>JTree</code>.
+   * @param tree the target {@code JTree}.
    * @param row the given row.
    * @param button the mouse button to use.
    * @throws NullPointerException if the given button is {@code null}.
-   * @throws IllegalStateException if the <code>JTree</code> is disabled.
-   * @throws IllegalStateException if the <code>JTree</code> is not showing on the screen.
+   * @throws IllegalStateException if the {@code JTree} is disabled.
+   * @throws IllegalStateException if the {@code JTree} is not showing on the screen.
    * @throws IndexOutOfBoundsException if the given row is less than zero or equal than or greater than the number of
-   * visible rows in the <code>JTree</code>.
+   * visible rows in the {@code JTree}.
    * @throws LocationUnavailableException if a tree path for the given row cannot be found.
    * @since 1.2
    */
@@ -119,14 +119,14 @@ public class JTreeDriver extends JComponentDriver {
 
   /**
    * Clicks the given row.
-   * @param tree the target <code>JTree</code>.
+   * @param tree the target {@code JTree}.
    * @param row the given row.
    * @param mouseClickInfo specifies the mouse button to use and how many times to click.
    * @throws NullPointerException if the given <code>MouseClickInfo</code> is {@code null}.
-   * @throws IllegalStateException if the <code>JTree</code> is disabled.
-   * @throws IllegalStateException if the <code>JTree</code> is not showing on the screen.
+   * @throws IllegalStateException if the {@code JTree} is disabled.
+   * @throws IllegalStateException if the {@code JTree} is not showing on the screen.
    * @throws IndexOutOfBoundsException if the given row is less than zero or equal than or greater than the number of
-   * visible rows in the <code>JTree</code>.
+   * visible rows in the {@code JTree}.
    * @throws LocationUnavailableException if a tree path for the given row cannot be found.
    * @since 1.2
    */
@@ -144,12 +144,12 @@ public class JTreeDriver extends JComponentDriver {
 
   /**
    * Double-clicks the given row.
-   * @param tree the target <code>JTree</code>.
+   * @param tree the target {@code JTree}.
    * @param row the given row.
-   * @throws IllegalStateException if the <code>JTree</code> is disabled.
-   * @throws IllegalStateException if the <code>JTree</code> is not showing on the screen.
+   * @throws IllegalStateException if the {@code JTree} is disabled.
+   * @throws IllegalStateException if the {@code JTree} is not showing on the screen.
    * @throws IndexOutOfBoundsException if the given row is less than zero or equal than or greater than the number of
-   * visible rows in the <code>JTree</code>.
+   * visible rows in the {@code JTree}.
    * @throws LocationUnavailableException if a tree path for the given row cannot be found.
    * @since 1.2
    */
@@ -161,12 +161,12 @@ public class JTreeDriver extends JComponentDriver {
 
   /**
    * Right-clicks the given row.
-   * @param tree the target <code>JTree</code>.
+   * @param tree the target {@code JTree}.
    * @param row the given row.
-   * @throws IllegalStateException if the <code>JTree</code> is disabled.
-   * @throws IllegalStateException if the <code>JTree</code> is not showing on the screen.
+   * @throws IllegalStateException if the {@code JTree} is disabled.
+   * @throws IllegalStateException if the {@code JTree} is not showing on the screen.
    * @throws IndexOutOfBoundsException if the given row is less than zero or equal than or greater than the number of
-   * visible rows in the <code>JTree</code>.
+   * visible rows in the {@code JTree}.
    * @throws LocationUnavailableException if a tree path for the given row cannot be found.
    * @since 1.2
    */
@@ -185,10 +185,10 @@ public class JTreeDriver extends JComponentDriver {
 
   /**
    * Clicks the given path, expanding parent nodes if necessary.
-   * @param tree the target <code>JTree</code>.
+   * @param tree the target {@code JTree}.
    * @param path the path to path.
-   * @throws IllegalStateException if the <code>JTree</code> is disabled.
-   * @throws IllegalStateException if the <code>JTree</code> is not showing on the screen.
+   * @throws IllegalStateException if the {@code JTree} is disabled.
+   * @throws IllegalStateException if the {@code JTree} is not showing on the screen.
    * @throws LocationUnavailableException if the given path cannot be found.
    */
   @RunsInEDT
@@ -199,12 +199,12 @@ public class JTreeDriver extends JComponentDriver {
 
   /**
    * Clicks the given path, expanding parent nodes if necessary.
-   * @param tree the target <code>JTree</code>.
+   * @param tree the target {@code JTree}.
    * @param path the path to path.
    * @param button the mouse button to use.
    * @throws NullPointerException if the given button is {@code null}.
-   * @throws IllegalStateException if the <code>JTree</code> is disabled.
-   * @throws IllegalStateException if the <code>JTree</code> is not showing on the screen.
+   * @throws IllegalStateException if the {@code JTree} is disabled.
+   * @throws IllegalStateException if the {@code JTree} is not showing on the screen.
    * @throws LocationUnavailableException if the given path cannot be found.
    * @since 1.2
    */
@@ -220,12 +220,12 @@ public class JTreeDriver extends JComponentDriver {
 
   /**
    * Clicks the given path, expanding parent nodes if necessary.
-   * @param tree the target <code>JTree</code>.
+   * @param tree the target {@code JTree}.
    * @param path the path to path.
    * @param mouseClickInfo specifies the mouse button to use and how many times to click.
    * @throws NullPointerException if the given <code>MouseClickInfo</code> is {@code null}.
-   * @throws IllegalStateException if the <code>JTree</code> is disabled.
-   * @throws IllegalStateException if the <code>JTree</code> is not showing on the screen.
+   * @throws IllegalStateException if the {@code JTree} is disabled.
+   * @throws IllegalStateException if the {@code JTree} is not showing on the screen.
    * @throws LocationUnavailableException if the given path cannot be found.
    * @since 1.2
    */
@@ -246,10 +246,10 @@ public class JTreeDriver extends JComponentDriver {
 
   /**
    * Double-clicks the given path.
-   * @param tree the target <code>JTree</code>.
+   * @param tree the target {@code JTree}.
    * @param path the path to double-click.
-   * @throws IllegalStateException if the <code>JTree</code> is disabled.
-   * @throws IllegalStateException if the <code>JTree</code> is not showing on the screen.
+   * @throws IllegalStateException if the {@code JTree} is disabled.
+   * @throws IllegalStateException if the {@code JTree} is not showing on the screen.
    * @throws LocationUnavailableException if the given path cannot be found.
    * @since 1.2
    */
@@ -271,10 +271,10 @@ public class JTreeDriver extends JComponentDriver {
 
   /**
    * Right-clicks the given path, expanding parent nodes if necessary.
-   * @param tree the target <code>JTree</code>.
+   * @param tree the target {@code JTree}.
    * @param path the path to path.
-   * @throws IllegalStateException if the <code>JTree</code> is disabled.
-   * @throws IllegalStateException if the <code>JTree</code> is not showing on the screen.
+   * @throws IllegalStateException if the {@code JTree} is disabled.
+   * @throws IllegalStateException if the {@code JTree} is not showing on the screen.
    * @throws LocationUnavailableException if the given path cannot be found.
    * @since 1.2
    */
@@ -294,12 +294,12 @@ public class JTreeDriver extends JComponentDriver {
    * NOTE: a reasonable assumption is that the toggle control is just to the left of the row bounds and is roughly a
    * square the dimensions of the row height. Clicking in the center of that square should work.
    * </p>
-   * @param tree the target <code>JTree</code>.
+   * @param tree the target {@code JTree}.
    * @param row the given row.
-   * @throws IllegalStateException if the <code>JTree</code> is disabled.
-   * @throws IllegalStateException if the <code>JTree</code> is not showing on the screen.
+   * @throws IllegalStateException if the {@code JTree} is disabled.
+   * @throws IllegalStateException if the {@code JTree} is not showing on the screen.
    * @throws IndexOutOfBoundsException if the given row is less than zero or equal than or greater than the number of
-   * visible rows in the <code>JTree</code>.
+   * visible rows in the {@code JTree}.
    * @throws LocationUnavailableException if a tree path for the given row cannot be found.
    * @throws ActionFailedException if this method fails to expand the row.
    * @since 1.2
@@ -318,12 +318,12 @@ public class JTreeDriver extends JComponentDriver {
    * NOTE: a reasonable assumption is that the toggle control is just to the left of the row bounds and is roughly a
    * square the dimensions of the row height. Clicking in the center of that square should work.
    * </p>
-   * @param tree the target <code>JTree</code>.
+   * @param tree the target {@code JTree}.
    * @param row the given row.
-   * @throws IllegalStateException if the <code>JTree</code> is disabled.
-   * @throws IllegalStateException if the <code>JTree</code> is not showing on the screen.
+   * @throws IllegalStateException if the {@code JTree} is disabled.
+   * @throws IllegalStateException if the {@code JTree} is not showing on the screen.
    * @throws IndexOutOfBoundsException if the given row is less than zero or equal than or greater than the number of
-   * visible rows in the <code>JTree</code>.
+   * visible rows in the {@code JTree}.
    * @throws LocationUnavailableException if a tree path for the given row cannot be found.
    * @throws ActionFailedException if this method fails to collapse the row.
    * @since 1.2
@@ -342,12 +342,12 @@ public class JTreeDriver extends JComponentDriver {
    * NOTE: a reasonable assumption is that the toggle control is just to the left of the row bounds and is roughly a
    * square the dimensions of the row height. Clicking in the center of that square should work.
    * </p>
-   * @param tree the target <code>JTree</code>.
+   * @param tree the target {@code JTree}.
    * @param row the given row.
-   * @throws IllegalStateException if the <code>JTree</code> is disabled.
-   * @throws IllegalStateException if the <code>JTree</code> is not showing on the screen.
+   * @throws IllegalStateException if the {@code JTree} is disabled.
+   * @throws IllegalStateException if the {@code JTree} is not showing on the screen.
    * @throws IndexOutOfBoundsException if the given row is less than zero or equal than or greater than the number of
-   * visible rows in the <code>JTree</code>.
+   * visible rows in the {@code JTree}.
    * @throws LocationUnavailableException if a tree path for the given row cannot be found.
    * @throws ActionFailedException if this method fails to toggle the row.
    */
@@ -382,10 +382,10 @@ public class JTreeDriver extends JComponentDriver {
    * NOTE: a reasonable assumption is that the toggle control is just to the left of the row bounds and is roughly a
    * square the dimensions of the row height. Clicking in the center of that square should work.
    * </p>
-   * @param tree the target <code>JTree</code>.
+   * @param tree the target {@code JTree}.
    * @param path the path to expand.
-   * @throws IllegalStateException if the <code>JTree</code> is disabled.
-   * @throws IllegalStateException if the <code>JTree</code> is not showing on the screen.
+   * @throws IllegalStateException if the {@code JTree} is disabled.
+   * @throws IllegalStateException if the {@code JTree} is not showing on the screen.
    * @throws LocationUnavailableException if the given path cannot be found.
    * @throws ActionFailedException if this method fails to expand the path.
    * @since 1.2
@@ -403,10 +403,10 @@ public class JTreeDriver extends JComponentDriver {
    * NOTE: a reasonable assumption is that the toggle control is just to the left of the row bounds and is roughly a
    * square the dimensions of the row height. Clicking in the center of that square should work.
    * </p>
-   * @param tree the target <code>JTree</code>.
+   * @param tree the target {@code JTree}.
    * @param path the path to collapse.
-   * @throws IllegalStateException if the <code>JTree</code> is disabled.
-   * @throws IllegalStateException if the <code>JTree</code> is not showing on the screen.
+   * @throws IllegalStateException if the {@code JTree} is disabled.
+   * @throws IllegalStateException if the {@code JTree} is not showing on the screen.
    * @throws LocationUnavailableException if the given path cannot be found.
    * @throws ActionFailedException if this method fails to collapse the path.
    * @since 1.2
@@ -460,14 +460,14 @@ public class JTreeDriver extends JComponentDriver {
 
   /**
    * Selects the given rows.
-   * @param tree the target <code>JTree</code>.
+   * @param tree the target {@code JTree}.
    * @param rows the rows to select.
    * @throws NullPointerException if the array of rows is {@code null}.
    * @throws IllegalArgumentException if the array of rows is empty.
-   * @throws IllegalStateException if the <code>JTree</code> is disabled.
-   * @throws IllegalStateException if the <code>JTree</code> is not showing on the screen.
+   * @throws IllegalStateException if the {@code JTree} is disabled.
+   * @throws IllegalStateException if the {@code JTree} is not showing on the screen.
    * @throws IndexOutOfBoundsException if any of the given rows is less than zero or equal than or greater than the
-   * number of visible rows in the <code>JTree</code>.
+   * number of visible rows in the {@code JTree}.
    * @throws LocationUnavailableException if a tree path for any of the given rows cannot be found.
    */
   @RunsInEDT
@@ -497,12 +497,12 @@ public class JTreeDriver extends JComponentDriver {
 
   /**
    * Selects the given row.
-   * @param tree the target <code>JTree</code>.
+   * @param tree the target {@code JTree}.
    * @param row the row to select.
-   * @throws IllegalStateException if the <code>JTree</code> is disabled.
-   * @throws IllegalStateException if the <code>JTree</code> is not showing on the screen.
+   * @throws IllegalStateException if the {@code JTree} is disabled.
+   * @throws IllegalStateException if the {@code JTree} is not showing on the screen.
    * @throws IndexOutOfBoundsException if the given row is less than zero or equal than or greater than the number of
-   * visible rows in the <code>JTree</code>.
+   * visible rows in the {@code JTree}.
    */
   @RunsInEDT
   public void selectRow(JTree tree, int row) {
@@ -511,12 +511,12 @@ public class JTreeDriver extends JComponentDriver {
 
   /**
    * Selects the given paths, expanding parent nodes if necessary.
-   * @param tree the target <code>JTree</code>.
+   * @param tree the target {@code JTree}.
    * @param paths the paths to select.
    * @throws NullPointerException if the array of rows is {@code null}.
    * @throws IllegalArgumentException if the array of rows is empty.
-   * @throws IllegalStateException if the <code>JTree</code> is disabled.
-   * @throws IllegalStateException if the <code>JTree</code> is not showing on the screen.
+   * @throws IllegalStateException if the {@code JTree} is disabled.
+   * @throws IllegalStateException if the {@code JTree} is not showing on the screen.
    * @throws LocationUnavailableException if any the given path cannot be found.
    */
   @RunsInEDT
@@ -541,10 +541,10 @@ public class JTreeDriver extends JComponentDriver {
   /**
    * Selects the given path, expanding parent nodes if necessary. Unlike <code>{@link #clickPath(JTree, String)}</code>,
    * this method will not click the path if it is already selected
-   * @param tree the target <code>JTree</code>.
+   * @param tree the target {@code JTree}.
    * @param path the path to select.
-   * @throws IllegalStateException if the <code>JTree</code> is disabled.
-   * @throws IllegalStateException if the <code>JTree</code> is not showing on the screen.
+   * @throws IllegalStateException if the {@code JTree} is disabled.
+   * @throws IllegalStateException if the {@code JTree} is not showing on the screen.
    * @throws LocationUnavailableException if the given path cannot be found.
    */
   @RunsInEDT
@@ -554,14 +554,14 @@ public class JTreeDriver extends JComponentDriver {
 
   /**
    * Shows a pop-up menu at the position of the node in the given row.
-   * @param tree the target <code>JTree</code>.
+   * @param tree the target {@code JTree}.
    * @param row the given row.
    * @return a driver that manages the displayed pop-up menu.
-   * @throws IllegalStateException if the <code>JTree</code> is disabled.
-   * @throws IllegalStateException if the <code>JTree</code> is not showing on the screen.
+   * @throws IllegalStateException if the {@code JTree} is disabled.
+   * @throws IllegalStateException if the {@code JTree} is not showing on the screen.
    * @throws ComponentLookupException if a pop-up menu cannot be found.
    * @throws IndexOutOfBoundsException if the given row is less than zero or equal than or greater than the number of
-   * visible rows in the <code>JTree</code>.
+   * visible rows in the {@code JTree}.
    * @throws LocationUnavailableException if a tree path for the given row cannot be found.
    */
   @RunsInEDT
@@ -574,11 +574,11 @@ public class JTreeDriver extends JComponentDriver {
   /**
    * Shows a pop-up menu at the position of the last node in the given path. The last node in the given path will be
    * made visible (by expanding the parent node(s)) if it is not visible.
-   * @param tree the target <code>JTree</code>.
+   * @param tree the target {@code JTree}.
    * @param path the given path.
    * @return a driver that manages the displayed pop-up menu.
-   * @throws IllegalStateException if the <code>JTree</code> is disabled.
-   * @throws IllegalStateException if the <code>JTree</code> is not showing on the screen.
+   * @throws IllegalStateException if the {@code JTree} is disabled.
+   * @throws IllegalStateException if the {@code JTree} is not showing on the screen.
    * @throws ComponentLookupException if a pop-up menu cannot be found.
    * @throws LocationUnavailableException if the given path cannot be found.
    * @see #separator(String)
@@ -593,12 +593,12 @@ public class JTreeDriver extends JComponentDriver {
 
   /**
    * Starts a drag operation at the location of the given row.
-   * @param tree the target <code>JTree</code>.
+   * @param tree the target {@code JTree}.
    * @param row the given row.
-   * @throws IllegalStateException if the <code>JTree</code> is disabled.
-   * @throws IllegalStateException if the <code>JTree</code> is not showing on the screen.
+   * @throws IllegalStateException if the {@code JTree} is disabled.
+   * @throws IllegalStateException if the {@code JTree} is not showing on the screen.
    * @throws IndexOutOfBoundsException if the given row is less than zero or equal than or greater than the number of
-   * visible rows in the <code>JTree</code>.
+   * visible rows in the {@code JTree}.
    * @throws LocationUnavailableException if a tree path for the given row cannot be found.
    */
   @RunsInEDT
@@ -617,12 +617,12 @@ public class JTreeDriver extends JComponentDriver {
 
   /**
    * Ends a drag operation at the location of the given row.
-   * @param tree the target <code>JTree</code>.
+   * @param tree the target {@code JTree}.
    * @param row the given row.
-   * @throws IllegalStateException if the <code>JTree</code> is disabled.
-   * @throws IllegalStateException if the <code>JTree</code> is not showing on the screen.
+   * @throws IllegalStateException if the {@code JTree} is disabled.
+   * @throws IllegalStateException if the {@code JTree} is not showing on the screen.
    * @throws IndexOutOfBoundsException if the given row is less than zero or equal than or greater than the number of
-   * visible rows in the <code>JTree</code>.
+   * visible rows in the {@code JTree}.
    * @throws LocationUnavailableException if a tree path for the given row cannot be found.
    * @throws ActionFailedException if there is no drag action in effect.
    */
@@ -657,10 +657,10 @@ public class JTreeDriver extends JComponentDriver {
 
   /**
    * Starts a drag operation at the location of the given <code>{@link TreePath}</code>.
-   * @param tree the target <code>JTree</code>.
+   * @param tree the target {@code JTree}.
    * @param path the given path.
-   * @throws IllegalStateException if the <code>JTree</code> is disabled.
-   * @throws IllegalStateException if the <code>JTree</code> is not showing on the screen.
+   * @throws IllegalStateException if the {@code JTree} is disabled.
+   * @throws IllegalStateException if the {@code JTree} is not showing on the screen.
    * @throws LocationUnavailableException if the given path cannot be found.
    * @see #separator(String)
    */
@@ -681,10 +681,10 @@ public class JTreeDriver extends JComponentDriver {
 
   /**
    * Ends a drag operation at the location of the given <code>{@link TreePath}</code>.
-   * @param tree the target <code>JTree</code>.
+   * @param tree the target {@code JTree}.
    * @param path the given path.
-   * @throws IllegalStateException if the <code>JTree</code> is disabled.
-   * @throws IllegalStateException if the <code>JTree</code> is not showing on the screen.
+   * @throws IllegalStateException if the {@code JTree} is disabled.
+   * @throws IllegalStateException if the {@code JTree} is not showing on the screen.
    * @throws LocationUnavailableException if the given path cannot be found.
    * @throws ActionFailedException if there is no drag action in effect.
    * @see #separator(String)
@@ -741,7 +741,7 @@ public class JTreeDriver extends JComponentDriver {
   /**
    * Matches, makes visible, and expands the path one component at a time, from uppermost ancestor on down, since
    * children may be lazily loaded/created.
-   * @param tree the target <code>JTree</code>.
+   * @param tree the target {@code JTree}.
    * @param path the tree path to make visible.
    * @param expandWhenFound indicates if nodes should be expanded or not when found.
    * @return if it was necessary to make visible and/or expand a node in the path.
@@ -768,10 +768,10 @@ public class JTreeDriver extends JComponentDriver {
 
   /**
    * Asserts that the given <code>{@link JTree}</code>'s selected rows are equal to the given one.
-   * @param tree the target <code>JTree</code>.
+   * @param tree the target {@code JTree}.
    * @param rows the indices of the rows, expected to be selected.
    * @throws NullPointerException if the array of row indices is {@code null}.
-   * @throws AssertionError if the given <code>JTree</code> selection is not equal to the given rows.
+   * @throws AssertionError if the given {@code JTree} selection is not equal to the given rows.
    */
   @RunsInEDT
   public void requireSelection(JTree tree, int[] rows) {
@@ -781,11 +781,11 @@ public class JTreeDriver extends JComponentDriver {
 
   /**
    * Asserts that the given <code>{@link JTree}</code>'s selected paths are equal to the given one.
-   * @param tree the target <code>JTree</code>.
+   * @param tree the target {@code JTree}.
    * @param paths the given paths, expected to be selected.
    * @throws NullPointerException if the array of paths is {@code null}.
    * @throws LocationUnavailableException if any of the given paths cannot be found.
-   * @throws AssertionError if the given <code>JTree</code> selection is not equal to the given paths.
+   * @throws AssertionError if the given {@code JTree} selection is not equal to the given paths.
    * @see #separator(String)
    */
   @RunsInEDT
@@ -796,8 +796,8 @@ public class JTreeDriver extends JComponentDriver {
 
   /**
    * Asserts that the given <code>{@link JTree}</code> does not have any selection.
-   * @param tree the given <code>JTree</code>.
-   * @throws AssertionError if the <code>JTree</code> has a selection.
+   * @param tree the given {@code JTree}.
+   * @throws AssertionError if the {@code JTree} has a selection.
    */
   @RunsInEDT
   public void requireNoSelection(JTree tree) {
@@ -811,8 +811,8 @@ public class JTreeDriver extends JComponentDriver {
 
   /**
    * Asserts that the given <code>{@link JTree}</code> is editable.
-   * @param tree the given <code>JTree</code>.
-   * @throws AssertionError if the <code>JTree</code> is not editable.
+   * @param tree the given {@code JTree}.
+   * @throws AssertionError if the {@code JTree} is not editable.
    */
   @RunsInEDT
   public void requireEditable(JTree tree) {
@@ -821,8 +821,8 @@ public class JTreeDriver extends JComponentDriver {
 
   /**
    * Asserts that the given <code>{@link JTree}</code> is not editable.
-   * @param tree the given <code>JTree</code>.
-   * @throws AssertionError if the <code>JTree</code> is editable.
+   * @param tree the given {@code JTree}.
+   * @throws AssertionError if the {@code JTree} is editable.
    */
   @RunsInEDT
   public void requireNotEditable(JTree tree) {
@@ -840,15 +840,15 @@ public class JTreeDriver extends JComponentDriver {
   }
 
   /**
-   * Returns the separator to use when converting <code>{@link TreePath}</code>s to <code>String</code>s.
-   * @return the separator to use when converting <code>{@link TreePath}</code>s to <code>String</code>s.
+   * Returns the separator to use when converting <code>{@link TreePath}</code>s to {@code String}s.
+   * @return the separator to use when converting <code>{@link TreePath}</code>s to {@code String}s.
    */
   public String separator() {
     return pathFinder.separator();
   }
 
   /**
-   * Updates the separator to use when converting <code>{@link TreePath}</code>s to <code>String</code>s.
+   * Updates the separator to use when converting <code>{@link TreePath}</code>s to {@code String}s.
    * @param newSeparator the new separator.
    * @throws NullPointerException if the given separator is {@code null}.
    */
@@ -870,10 +870,10 @@ public class JTreeDriver extends JComponentDriver {
 
   /**
    * Verifies that the given row index is valid.
-   * @param tree the given <code>JTree</code>.
+   * @param tree the given {@code JTree}.
    * @param row the given index.
    * @throws IndexOutOfBoundsException if the given index is less than zero or equal than or greater than the number of
-   * visible rows in the <code>JTree</code>.
+   * visible rows in the {@code JTree}.
    * @since 1.2
    */
   @RunsInEDT
@@ -883,7 +883,7 @@ public class JTreeDriver extends JComponentDriver {
 
   /**
    * Verifies that the given node path exists.
-   * @param tree the given <code>JTree</code>.
+   * @param tree the given {@code JTree}.
    * @param path the given path.
    * @throws LocationUnavailableException if the given path cannot be found.
    * @since 1.2
@@ -894,10 +894,10 @@ public class JTreeDriver extends JComponentDriver {
   }
 
   /**
-   * Returns the <code>String</code> representation of the node at the given path.
-   * @param tree the given <code>JTree</code>.
+   * Returns the {@code String} representation of the node at the given path.
+   * @param tree the given {@code JTree}.
    * @param path the given path.
-   * @return the <code>String</code> representation of the node at the given path.
+   * @return the {@code String} representation of the node at the given path.
    * @throws LocationUnavailableException if the given path cannot be found.
    * @since 1.2
    */
@@ -907,12 +907,12 @@ public class JTreeDriver extends JComponentDriver {
   }
 
   /**
-   * Returns the <code>String</code> representation of the node at the given row index.
-   * @param tree the given <code>JTree</code>.
+   * Returns the {@code String} representation of the node at the given row index.
+   * @param tree the given {@code JTree}.
    * @param row the given row.
-   * @return the <code>String</code> representation of the node at the given row index.
+   * @return the {@code String} representation of the node at the given row index.
    * @throws IndexOutOfBoundsException if the given row is less than zero or equal than or greater than the number of
-   * visible rows in the <code>JTree</code>.
+   * visible rows in the {@code JTree}.
    * @throws LocationUnavailableException if a tree path for the given row cannot be found.
    * @since 1.2
    */

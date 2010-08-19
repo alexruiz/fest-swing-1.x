@@ -146,9 +146,9 @@ public class JComboBoxFixture extends ComponentFixture<JComboBox> implements Com
   }
 
   /**
-   * Returns the <code>String</code> representation of the elements in this fixture's <code>{@link JComboBox}</code>,
+   * Returns the {@code String} representation of the elements in this fixture's <code>{@link JComboBox}</code>,
    * using this fixture's <code>{@link JComboBoxCellReader}</code>.
-   * @return the <code>String</code> representation of the elements in this fixture's {@code JComboBox}.
+   * @return the {@code String} representation of the elements in this fixture's {@code JComboBox}.
    * @see #cellReader(JComboBoxCellReader)
    */
   public String[] contents() {
@@ -303,7 +303,7 @@ public class JComboBoxFixture extends ComponentFixture<JComboBox> implements Com
 
   /**
    * Simulates a user selecting an item in this fixture's <code>{@link JComboBox}</code>. The text of the item to
-   * select must match the given <code>String</code>. Such text is retrieved by this fixture's
+   * select must match the given {@code String}. Such text is retrieved by this fixture's
    * <code>{@link JComboBoxCellReader}</code>.
    * @param text the text of the item to select. It can be a regular expression.
    * @return this fixture.
@@ -336,10 +336,10 @@ public class JComboBoxFixture extends ComponentFixture<JComboBox> implements Com
   }
 
   /**
-   * Returns the <code>String</code> representation of the value of an item in this fixture's
+   * Returns the {@code String} representation of the value of an item in this fixture's
    * <code>{@link JComboBox}</code>, using this fixture's <code>{@link JComboBoxCellReader}</code>.
    * @param index the index of the item to return.
-   * @return the <code>String</code> representation of the value of an item in this fixture's {@code JComboBox}.
+   * @return the {@code String} representation of the value of an item in this fixture's {@code JComboBox}.
    * @throws IndexOutOfBoundsException if the given index is negative or greater than the index of the last item in the
    * {@code JComboBox}.
    * @see #cellReader(JComboBoxCellReader)
@@ -430,7 +430,7 @@ public class JComboBoxFixture extends ComponentFixture<JComboBox> implements Com
   }
 
   /**
-   * Verifies that the <code>String</code> representation of the selected item in this fixture's
+   * Verifies that the {@code String} representation of the selected item in this fixture's
    * <code>{@link JComboBox}</code> matches the given text.
    * @param value the text to match. It can be a regular expression.
    * @return this fixture.
@@ -456,7 +456,7 @@ public class JComboBoxFixture extends ComponentFixture<JComboBox> implements Com
   }
 
   /**
-   * Verifies that the <code>String</code> representation of the selected item in this fixture's
+   * Verifies that the {@code String} representation of the selected item in this fixture's
    * <code>{@link JComboBox}</code> matches the given regular expression pattern.
    * @param pattern the regular expression pattern to match.
    * @return this fixture.

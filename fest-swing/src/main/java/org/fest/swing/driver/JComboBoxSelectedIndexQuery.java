@@ -22,8 +22,7 @@ import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
 
 /**
- * Understands an action, executed in the event dispatch thread, that returns the selected index in a
- * <code>{@link JComboBox}</code>.
+ * Action executed in the event dispatch thread that returns the selected index in a <code>{@link JComboBox}</code>.
  * @see JComboBox#getSelectedIndex()
  *
  * @author Alex Ruiz
@@ -31,15 +30,8 @@ import org.fest.swing.edt.GuiQuery;
  */
 final class JComboBoxSelectedIndexQuery {
 
-  /**
-   * Returns the selected index in the given <code>{@link JComboBox}</code>. This action is executed in the event
-   * dispatch thread.
-   * @param comboBox the given {@code JComboBox}.
-   * @return the selected index in the given {@code JComboBox}.
-   * @see JComboBox#getSelectedIndex()
-   */
   @RunsInEDT
-  public static int selectedIndexOf(final JComboBox comboBox) {
+  static int selectedIndexOf(final JComboBox comboBox) {
     return execute(new GuiQuery<Integer>() {
       @Override protected Integer executeInEDT() {
         return comboBox.getSelectedIndex();

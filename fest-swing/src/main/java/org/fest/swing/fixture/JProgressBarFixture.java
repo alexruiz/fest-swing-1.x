@@ -120,7 +120,7 @@ public class JProgressBarFixture extends ComponentFixture<JProgressBar> implemen
 
   /**
    * Asserts that the text of this fixture's <code>{@link JProgressBar}</code> is equal to the specified
-   * <code>String</code>.
+   * {@code String}.
    * @param expected the text to match.
    * @return this fixture.
    * @throws AssertionError if the text of this fixture's <code>JProgressBar</code> is not equal to the given one.

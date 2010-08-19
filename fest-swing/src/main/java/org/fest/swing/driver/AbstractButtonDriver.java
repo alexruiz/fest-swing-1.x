@@ -31,14 +31,11 @@ import org.fest.swing.core.Robot;
 import org.fest.swing.edt.GuiQuery;
 
 /**
- * Understands functional testing of <code>{@link AbstractButton}</code>s:
- * <ul>
- * <li>user input simulation</li>
- * <li>state verification</li>
- * <li>property value query</li>
- * </ul>
- * This class is intended for internal use only. Please use the classes in the package
+ * User input simulation, state verification and property value query on a <code>{@link AbstractButton}</code>.
+ * <p>
+ * <b>Note:</b> This class is intended for internal use only. Please use the classes in the package
  * <code>{@link org.fest.swing.fixture}</code> in your tests.
+ * </p>
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
@@ -57,7 +54,7 @@ public class AbstractButtonDriver extends JComponentDriver implements TextDispla
   }
 
   /**
-   * Asserts that the text in the given button is equal to or matches the specified <code>String</code>.
+   * Asserts that the text in the given button is equal to or matches the specified {@code String}.
    * @param button the given button.
    * @param expected the text to match. It can be a regular expression.
    * @throws AssertionError if the text of the button is not equal to or does not match the given one.

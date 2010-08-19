@@ -22,7 +22,7 @@ import javax.swing.JScrollBar;
 import org.fest.swing.annotation.RunsInCurrentThread;
 
 /**
- * Understands a location in a horizontal <code>{@link JScrollBar}</code>.
+ * Location in a horizontal <code>{@link JScrollBar}</code>.
  * <p>
  * <b>Note:</b> Methods in this class are <b>not</b> executed in the event dispatch thread (EDT.) Clients are
  * responsible for invoking them in the EDT.

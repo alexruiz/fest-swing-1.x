@@ -26,7 +26,7 @@ import org.fest.swing.edt.GuiLazyLoadingDescription;
 import org.fest.swing.timing.Condition;
 
 /**
- * Understands a condition that verifies that a component is enabled.
+ * Verifies that a component is enabled.
  * @see Component#isEnabled()
  *
  * @author Yvonne Wang

@@ -19,7 +19,7 @@ import java.awt.Component;
 import org.fest.swing.annotation.RunsInCurrentThread;
 
 /**
- * Understands reading the value of a <code>{@link Component}</code> that used as a cell renderer.
+ * Reads the value of a <code>{@link Component}</code> that used as a cell renderer.
  * <p>
  * <b>Note:</b> methods in this interface are <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.)
  * Clients are responsible for invoking them in the EDT.

@@ -19,9 +19,9 @@ import static java.lang.annotation.ElementType.*;
 import java.lang.annotation.*;
 
 /**
- * Understands an annotation that documents that a method is accessing GUI components in the current thread. The
- * current thread may or may not be the event dispatch thread.
- *
+ * Indicates that a method is accessing GUI components in the current executing thread. Such thread may or may not be
+ * the event dispatch thread.
+ * 
  * @author Alex Ruiz
  */
 @Target( { METHOD, CONSTRUCTOR, TYPE })

@@ -17,7 +17,7 @@ package org.fest.swing.core;
 import java.awt.Component;
 
 /**
- * Understands how to find the current focus owner.
+ * Finds the current focus owner.
  *
  * @author Alex Ruiz
  */

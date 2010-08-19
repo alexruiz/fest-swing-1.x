@@ -22,7 +22,7 @@ import java.awt.Component;
 import org.fest.swing.annotation.RunsInCurrentThread;
 
 /**
- * Understands validation of the state of a <code>{@link Component}</code>.
+ * Validates the state of a <code>{@link Component}</code>.
  *
  * @author Alex Ruiz
  */

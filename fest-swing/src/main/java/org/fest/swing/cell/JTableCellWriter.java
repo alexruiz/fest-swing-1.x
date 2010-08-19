@@ -23,7 +23,7 @@ import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.exception.ActionFailedException;
 
 /**
- * Understands how to edit the value of a cell in a <code>{@link JTable}</code>.
+ * Edits the value of a cell in a <code>{@link JTable}</code>.
  *
  * @author Yvonne Wang
  * @author Alex Ruiz
@@ -35,13 +35,13 @@ public interface JTableCellWriter {
    * Enters the given value at the given cell of the <code>{@link JTable}</code>. To edit a cell using this method,
    * it is not necessary to call <code>{@link #startCellEditing(JTable, int, int)}</code> or
    * <code>{@link #stopCellEditing(JTable, int, int)}</code>.
-   * @param table the target <code>JTable</code>.
+   * @param table the target {@code JTable}.
    * @param row the row index of the cell.
    * @param column the column index of the cell.
    * @param value the value to enter.
-   * @throws IllegalStateException if the <code>JTable</code> is disabled.
-   * @throws IllegalStateException if the <code>JTable</code> is not showing on the screen.
-   * @throws IllegalStateException if the <code>JTable</code> cell is not editable.
+   * @throws IllegalStateException if the {@code JTable} is disabled.
+   * @throws IllegalStateException if the {@code JTable} is not showing on the screen.
+   * @throws IllegalStateException if the {@code JTable} cell is not editable.
    * @throws IndexOutOfBoundsException if any of the indices (row and column) is out of bounds.
    * @throws ActionFailedException if an editor for the given cell cannot be found or cannot be activated.
    */
@@ -50,12 +50,12 @@ public interface JTableCellWriter {
   /**
    * Starts editing the given cell of the <code>{@link JTable}</code>. This method should be called before manipulating
    * the <code>{@link Component}</code> returned by <code>{@link #editorForCell(JTable, int, int)}</code>.
-   * @param table the target <code>JTable</code>.
+   * @param table the target {@code JTable}.
    * @param row the row index of the cell.
    * @param column the column index of the cell.
-   * @throws IllegalStateException if the <code>JTable</code> is disabled.
-   * @throws IllegalStateException if the <code>JTable</code> is not showing on the screen.
-   * @throws IllegalStateException if the <code>JTable</code> cell is not editable.
+   * @throws IllegalStateException if the {@code JTable} is disabled.
+   * @throws IllegalStateException if the {@code JTable} is not showing on the screen.
+   * @throws IllegalStateException if the {@code JTable} cell is not editable.
    * @throws IndexOutOfBoundsException if any of the indices (row and column) is out of bounds.
    * @throws ActionFailedException if an editor for the given cell cannot be found or cannot be activated.
    * @see #editorForCell(JTable, int, int)
@@ -65,12 +65,12 @@ public interface JTableCellWriter {
   /**
    * Stops editing the given cell of the <code>{@link JTable}</code>. This method should be called after manipulating
    * the <code>{@link Component}</code> returned by <code>{@link #editorForCell(JTable, int, int)}</code>.
-   * @param table the target <code>JTable</code>.
+   * @param table the target {@code JTable}.
    * @param row the row index of the cell.
    * @param column the column index of the cell.
-   * @throws IllegalStateException if the <code>JTable</code> is disabled.
-   * @throws IllegalStateException if the <code>JTable</code> is not showing on the screen.
-   * @throws IllegalStateException if the <code>JTable</code> cell is not editable.
+   * @throws IllegalStateException if the {@code JTable} is disabled.
+   * @throws IllegalStateException if the {@code JTable} is not showing on the screen.
+   * @throws IllegalStateException if the {@code JTable} cell is not editable.
    * @throws IndexOutOfBoundsException if any of the indices (row and column) is out of bounds.
    * @throws ActionFailedException if an editor for the given cell cannot be found or cannot be activated.
    * @see #editorForCell(JTable, int, int)
@@ -80,12 +80,12 @@ public interface JTableCellWriter {
   /**
    * Cancels editing the given cell of the <code>{@link JTable}</code>. This method should be called after manipulating
    * the <code>{@link Component}</code> returned by <code>{@link #editorForCell(JTable, int, int)}</code>.
-   * @param table the target <code>JTable</code>.
+   * @param table the target {@code JTable}.
    * @param row the row index of the cell.
    * @param column the column index of the cell.
-   * @throws IllegalStateException if the <code>JTable</code> is disabled.
-   * @throws IllegalStateException if the <code>JTable</code> is not showing on the screen.
-   * @throws IllegalStateException if the <code>JTable</code> cell is not editable.
+   * @throws IllegalStateException if the {@code JTable} is disabled.
+   * @throws IllegalStateException if the {@code JTable} is not showing on the screen.
+   * @throws IllegalStateException if the {@code JTable} cell is not editable.
    * @throws IndexOutOfBoundsException if any of the indices (row and column) is out of bounds.
    * @throws ActionFailedException if an editor for the given cell cannot be found or cannot be activated.
    * @see #editorForCell(JTable, int, int)
@@ -108,13 +108,13 @@ public interface JTableCellWriter {
    * </pre>
    *
    * </p>
-   * @param table the target <code>JTable</code>.
+   * @param table the target {@code JTable}.
    * @param row the row index of the cell.
    * @param column the column index of the cell.
    * @return the {@code Component} used as editor of the given cell.
-   * @throws IllegalStateException if the <code>JTable</code> cell is not editable.
+   * @throws IllegalStateException if the {@code JTable} cell is not editable.
    * @throws IndexOutOfBoundsException if any of the indices (row and column) is out of bounds.
-   * @throws IllegalStateException if the <code>JTable</code> cell is not editable.
+   * @throws IllegalStateException if the {@code JTable} cell is not editable.
    */
   Component editorForCell(JTable table, int row, int column);
 }

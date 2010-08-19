@@ -18,7 +18,7 @@ package org.fest.swing.core;
 import java.awt.Component;
 
 /**
- * Understands whether a <code>{@link Component}</code> matches some desired criteria.
+ * Indicates whether a <code>{@link Component}</code> matches some desired criteria.
  *
  * @author Alex Ruiz
  */

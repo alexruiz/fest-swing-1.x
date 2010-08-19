@@ -39,7 +39,7 @@ import org.fest.swing.edt.GuiQuery;
 import org.fest.swing.exception.*;
 
 /**
- * Understands the base class for implementations of <code>{@link JTableCellWriter}</code>.
+ * Template for implementations of <code>{@link JTableCellWriter}</code>.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
@@ -102,7 +102,7 @@ public abstract class AbstractJTableCellWriter implements JTableCellWriter {
 
   /**
    * Returns the editor for the given table cell. This method is executed in the EDT.
-   * @param table the target <code>JTable</code>.
+   * @param table the target {@code JTable}.
    * @param row the row index of the cell.
    * @param column the column index of the cell.
    * @return the editor for the given table cell.
@@ -122,7 +122,7 @@ public abstract class AbstractJTableCellWriter implements JTableCellWriter {
    * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
    * responsible for calling this method from the EDT.
    * </p>
-   * @param table the target <code>JTable</code>.
+   * @param table the target {@code JTable}.
    * @param row the row index of the cell.
    * @param column the column index of the cell.
    * @param location understands how to get the bounds of the given cell.
@@ -155,17 +155,17 @@ public abstract class AbstractJTableCellWriter implements JTableCellWriter {
    * responsible for calling this method from the EDT.
    * </p>
    * @param <T> the generic type of the supported editor type.
-   * @param table the target <code>JTable</code>.
+   * @param table the target {@code JTable}.
    * @param row the row index of the cell.
    * @param column the column index of the cell.
    * @param supportedType the type of component we expect as editor.
    * @return the component used as editor for the given table cell.
-   * @throws IndexOutOfBoundsException if any of the indices is out of bounds or if the <code>JTable</code> does not
+   * @throws IndexOutOfBoundsException if any of the indices is out of bounds or if the {@code JTable} does not
    * have any rows.
-   * @throws IllegalStateException if the <code>JTable</code> is disabled.
-   * @throws IllegalStateException if the <code>JTable</code> is not showing on the screen.
+   * @throws IllegalStateException if the {@code JTable} is disabled.
+   * @throws IllegalStateException if the {@code JTable} is not showing on the screen.
    * @throws IllegalStateException if the table cell in the given coordinates is not editable.
-   * @throws IndexOutOfBoundsException if any of the indices is out of bounds or if the <code>JTable</code> does not
+   * @throws IndexOutOfBoundsException if any of the indices is out of bounds or if the {@code JTable} does not
    * have any rows.
    * @throws ActionFailedException if an editor for the given cell cannot be found or cannot be activated.
    */
@@ -179,14 +179,14 @@ public abstract class AbstractJTableCellWriter implements JTableCellWriter {
 
   /**
    * Returns the location of the given table cell.
-   * @param table the target <code>JTable</code>.
+   * @param table the target {@code JTable}.
    * @param row the row index of the cell.
    * @param column the column index of the cell.
    * @param location knows how to get the location of a table cell.
    * @return the location of the given table cell.
-   * @throws IllegalStateException if the <code>JTable</code> is disabled.
-   * @throws IllegalStateException if the <code>JTable</code> is not showing on the screen.
-   * @throws IndexOutOfBoundsException if any of the indices is out of bounds or if the <code>JTable</code> does not
+   * @throws IllegalStateException if the {@code JTable} is disabled.
+   * @throws IllegalStateException if the {@code JTable} is not showing on the screen.
+   * @throws IndexOutOfBoundsException if any of the indices is out of bounds or if the {@code JTable} does not
    * have any rows.
    * @throws IllegalStateException if the table cell in the given coordinates is not editable.
    */
@@ -204,7 +204,7 @@ public abstract class AbstractJTableCellWriter implements JTableCellWriter {
   /**
    * Validates that:
    * <ol>
-   * <li>the given <code>JTable</code> is enabled and showing on the screen</li>
+   * <li>the given {@code JTable} is enabled and showing on the screen</li>
    * <li>the row and column indices are correct (not out of bounds)</li>
    * <li>the table cell at the given indices is editable</li>
    * </ol>
@@ -212,12 +212,12 @@ public abstract class AbstractJTableCellWriter implements JTableCellWriter {
    * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
    * responsible for calling this method from the EDT.
    * </p>
-   * @param table the target <code>JTable</code>.
+   * @param table the target {@code JTable}.
    * @param row the row index of the cell.
    * @param column the column index of the cell.
-   * @throws IllegalStateException if the <code>JTable</code> is disabled.
-   * @throws IllegalStateException if the <code>JTable</code> is not showing on the screen.
-   * @throws IndexOutOfBoundsException if any of the indices is out of bounds or if the <code>JTable</code> does not
+   * @throws IllegalStateException if the {@code JTable} is disabled.
+   * @throws IllegalStateException if the {@code JTable} is not showing on the screen.
+   * @throws IndexOutOfBoundsException if any of the indices is out of bounds or if the {@code JTable} does not
    * have any rows.
    * @throws IllegalStateException if the table cell in the given coordinates is not editable.
    */
@@ -231,7 +231,7 @@ public abstract class AbstractJTableCellWriter implements JTableCellWriter {
   /**
    * Waits until the editor of the given table cell is showing on the screen. Component lookup is performed by type.
    * @param <T> the generic type of the cell editor.
-   * @param table the target <code>JTable</code>.
+   * @param table the target {@code JTable}.
    * @param row the row index of the cell.
    * @param column the column index of the cell.
    * @param supportedType the type of component we expect as editor.
@@ -248,7 +248,7 @@ public abstract class AbstractJTableCellWriter implements JTableCellWriter {
    * Waits until the editor of the given table cell is showing on the screen.
    * @param <T> the generic type of the cell editor.
    * @param matcher the condition that the cell editor to look for needs to satisfy.
-   * @param table the target <code>JTable</code>.
+   * @param table the target {@code JTable}.
    * @param row the row index of the cell.
    * @param column the column index of the cell.
    * @param supportedType the type of component we expect as editor.

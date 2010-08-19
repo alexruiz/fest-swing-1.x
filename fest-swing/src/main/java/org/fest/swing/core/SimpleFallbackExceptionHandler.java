@@ -16,15 +16,15 @@
 package org.fest.swing.core;
 
 /**
- * Understands an exception handler for AWT event thread, to make sure we can get a back-trace dump when running
- * FEST-Swing are terminated by a <code>{@link EmergencyAbortListener}</code>.
+ * Exception handler for the AWT event thread, to make sure we can get a back-trace dump when running FEST-Swing are
+ * terminated by a <code>{@link EmergencyAbortListener}</code>.
  * <p>
  * This exception handler is passed to the JVM using the system property "sun.awt.exception.handler" to override the
  * default exception handling behavior of the event dispatch thread.
  * </p>
  * <p>
- * This is a Sun-specific feature (or "bug".) See <a
- * href="http://bugs.sun.com/bugdatabase/view_bug.do?bug_id=4714232" target="_blank">bug 4714232</a>.
+ * This is a Sun-specific feature (or "bug".) See <a href="http://bugs.sun.com/bugdatabase/view_bug.do?bug_id=4714232"
+ * target="_blank">bug 4714232</a>.
  * </p>
  *
  * @author <a href="mailto:simeon.fitch@mseedsoft.com">Simeon H.K. Fitch</a>

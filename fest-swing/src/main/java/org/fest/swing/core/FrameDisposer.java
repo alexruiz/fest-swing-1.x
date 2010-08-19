@@ -23,7 +23,7 @@ import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiTask;
 
 /**
- * Understands disposing all available <code>{@link Frame}</code>s.
+ * Disposes all available <code>{@link Frame}</code>s.
  *
  * @author Alex Ruiz
  */

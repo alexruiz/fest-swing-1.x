@@ -25,7 +25,7 @@ import java.net.URL;
 import java.util.*;
 
 /**
- * Understands a basic (and limited) implementation of <code>{@link AppletContext}</code>.
+ * Basic (and limited) implementation of <code>{@link AppletContext}</code>.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang

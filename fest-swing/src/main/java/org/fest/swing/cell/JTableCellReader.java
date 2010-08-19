@@ -21,7 +21,7 @@ import javax.swing.JTable;
 import org.fest.swing.annotation.RunsInCurrentThread;
 
 /**
- * Understands reading the internal value of a cell in a <code>{@link JTable}</code> as expected in a test.
+ * Reads the content of a cell in <code>{@link JTable}</code>, as it appears to the user.
  * <p>
  * <b>Note:</b> methods in this interface are <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.)
  * Clients are responsible for invoking them in the EDT.
@@ -38,10 +38,10 @@ public interface JTableCellReader {
    * <b>Note:</b> Implementations of this method <b>may not</b> be guaranteed to be executed in the event dispatch
    * thread (EDT.) Clients are responsible for invoking this method in the EDT.
    * </p>
-   * @param table the given <code>JTable</code>.
+   * @param table the given {@code JTable}.
    * @param row the row index of the cell.
    * @param column the column index of the cell.
-   * @return the internal value of a cell in a <code>JTable</code> as expected in a test.
+   * @return the internal value of a cell in a {@code JTable} as expected in a test.
    */
   String valueAt(JTable table, int row, int column);
 
@@ -51,7 +51,7 @@ public interface JTableCellReader {
    * <b>Note:</b> Implementations of this method <b>may not</b> be guaranteed to be executed in the event dispatch
    * thread (EDT.) Clients are responsible for invoking this method in the EDT.
    * </p>
-   * @param table the given <code>JTable</code>.
+   * @param table the given {@code JTable}.
    * @param row the row index of the cell.
    * @param column the column index of the cell.
    * @return the font of the cell renderer for the given table cell.
@@ -64,7 +64,7 @@ public interface JTableCellReader {
    * <b>Note:</b> Implementations of this method <b>may not</b> be guaranteed to be executed in the event dispatch
    * thread (EDT.) Clients are responsible for invoking this method in the EDT.
    * </p>
-   * @param table the given <code>JTable</code>.
+   * @param table the given {@code JTable}.
    * @param row the row index of the cell.
    * @param column the column index of the cell.
    * @return the background color of the cell renderer for the given table cell.
@@ -77,7 +77,7 @@ public interface JTableCellReader {
    * <b>Note:</b> Implementations of this method <b>may not</b> be guaranteed to be executed in the event dispatch
    * thread (EDT.) Clients are responsible for invoking this method in the EDT.
    * </p>
-   * @param table the given <code>JTable</code>.
+   * @param table the given {@code JTable}.
    * @param row the row index of the cell.
    * @param column the column index of the cell.
    * @return the foreground color of the cell renderer for the given table cell.

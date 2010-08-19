@@ -30,7 +30,7 @@ import org.fest.swing.launcher.AppletParameter.AppletParameterBuilder;
 /**
  * Understands a fluent interface for launching and testing <code>{@link Applet}</code>s.
  * <p>
- * An applet can be launched by passing its type as <code>String</code>, the actual type, or an instance of the
+ * An applet can be launched by passing its type as {@code String}, the actual type, or an instance of the
  * applet to launch:
  *
  * <pre>

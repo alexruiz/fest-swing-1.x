@@ -23,7 +23,7 @@ import java.awt.event.KeyEvent;
 import org.fest.swing.util.Platform;
 
 /**
- * Understands information about pressing a keyboard key.
+ * Information about a keyboard key to press.
  * <p>
  * Examples:
  * </p>

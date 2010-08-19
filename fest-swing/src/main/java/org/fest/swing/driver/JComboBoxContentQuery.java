@@ -23,8 +23,8 @@ import org.fest.swing.cell.JComboBoxCellReader;
 import org.fest.swing.edt.GuiQuery;
 
 /**
- * Understands an action, executed in the event dispatch thread, that returns an array of <code>String</code>s that
- * represents the contents of a given <code>{@link JComboBox}</code>.
+ * Action executed in the event dispatch thread that returns an array of {@code String}s that represents the contents of
+ * a given <code>{@link JComboBox}</code>.
  *
  * @author Alex Ruiz
  */

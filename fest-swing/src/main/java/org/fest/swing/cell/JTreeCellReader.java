@@ -15,12 +15,12 @@
  */
 package org.fest.swing.cell;
 
-import javax.swing.JTree;
+import javax.swing.*;
 
 import org.fest.swing.annotation.RunsInCurrentThread;
 
 /**
- * Understands reading the internal value of a cell in a <code>{@link JTree}</code> as expected in a test.
+ * Reads the content of a cell in <code>{@link JTable}</code>, as it appears to the user.
  * <p>
  * <b>Note:</b> methods in this interface are <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.)
  * Clients are responsible for invoking them in the EDT.
@@ -38,9 +38,9 @@ public interface JTreeCellReader {
    * <b>Note:</b> Implementations of this method <b>may not</b> be guaranteed to be executed in the event dispatch
    * thread (EDT.) Clients are responsible for invoking this method in the EDT.
    * </p>
-   * @param tree the given <code>JTree</code>.
+   * @param tree the given {@code JTree}.
    * @param modelValue the value of a cell, retrieved from the model.
-   * @return the internal value of a cell in a <code>JTree</code> as expected in a test.
+   * @return the internal value of a cell in a {@code JTree} as expected in a test.
    */
   String valueAt(JTree tree, Object modelValue);
 }

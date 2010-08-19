@@ -26,7 +26,7 @@ import java.util.*;
 import javax.swing.*;
 
 /**
- * Understands utility methods related to <code>{@link Action}</code>s.
+ * Utility methods related to <code>{@link Action}</code>s.
  *
  * @author Alex Ruiz
  */

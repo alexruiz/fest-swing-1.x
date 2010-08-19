@@ -25,7 +25,7 @@ import org.fest.swing.hierarchy.ComponentHierarchy;
 import org.fest.swing.lock.ScreenLock;
 
 /**
- * Understands simulation of user events on a GUI <code>{@link Component}</code>.
+ * Simulates user input on a GUI <code>{@link Component}</code>.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
@@ -34,19 +34,19 @@ public interface Robot {
 
   /**
    * Returns the <code>{@link ComponentHierarchy}</code> being used by this robot.
-   * @return the <code>ComponentHierarchy</code> being used by this robot.
+   * @return the {@code ComponentHierarchy} being used by this robot.
    */
   ComponentHierarchy hierarchy();
 
   /**
    * Returns the <code>{@link ComponentFinder}</code> being used by this robot.
-   * @return the <code>ComponentFinder</code> being used by this robot.
+   * @return the {@code ComponentFinder} being used by this robot.
    */
   ComponentFinder finder();
 
   /**
    * Returns the <code>{@link BasicComponentPrinter}</code> being used by this robot.
-   * @return the <code>ComponentPrinter</code> being used by this robot.
+   * @return the {@code ComponentPrinter} being used by this robot.
    */
   ComponentPrinter printer();
 

@@ -23,7 +23,7 @@ import java.awt.Component;
 import org.fest.swing.annotation.RunsInCurrentThread;
 
 /**
- * Understands <code>{@link java.awt.Component}</code> matching by type.
+ * Matches <code>{@link java.awt.Component}</code>s by type.
  *
  * @author Alex Ruiz
  */

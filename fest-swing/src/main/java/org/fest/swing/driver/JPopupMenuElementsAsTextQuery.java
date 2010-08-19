@@ -26,7 +26,7 @@ import org.fest.swing.edt.GuiQuery;
 
 /**
  * Understands an action, executed in the event dispatch thread, the contents of a <code>{@link JPopupMenu}</code> as a
- * <code>String</code> array.
+ * {@code String} array.
  *
  * @author Alex Ruiz
  */

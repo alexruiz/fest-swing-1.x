@@ -25,7 +25,7 @@ import javax.swing.JLabel;
 import org.fest.swing.annotation.RunsInCurrentThread;
 
 /**
- * Understands matching a <code>{@link JLabel}</code> by type, name or text.
+ * Matches <code>{@link JLabel}</code>s by type, name or text.
  *
  * @author Alex Ruiz
  */

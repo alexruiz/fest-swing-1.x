@@ -27,7 +27,7 @@ import org.fest.swing.exception.WaitTimedOutError;
 import org.fest.swing.util.TimeoutWatch;
 
 /**
- * Understands waiting for a <code>{@link Component}</code> to be shown.
+ * Waits until a particular <code>{@link Component}</code> shows up on the screen.
  *
  * @author Alex Ruiz
  */

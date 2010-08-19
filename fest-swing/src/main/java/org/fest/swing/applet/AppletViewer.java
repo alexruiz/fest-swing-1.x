@@ -31,7 +31,7 @@ import org.fest.swing.annotation.*;
 import org.fest.swing.edt.GuiQuery;
 
 /**
- * Understands a window that displays an <code>{@link Applet}</code>.
+ * A window that displays an <code>{@link Applet}</code>.
  * <p>
  * Typical usage:
  * <pre>

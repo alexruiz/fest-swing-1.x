@@ -28,7 +28,7 @@ import org.fest.swing.exception.ActionFailedException;
 import org.fest.swing.util.TimeoutWatch;
 
 /**
- * Understands <code>{@link Component}</code>-based drag and drop.
+ * Simulates a user performing drag-and-drop.
  * @since 1.1
  *
  * @author Alex Ruiz

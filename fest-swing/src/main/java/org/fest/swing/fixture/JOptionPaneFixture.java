@@ -346,7 +346,7 @@ public class JOptionPaneFixture extends ContainerFixture<JOptionPane> implements
 
   /**
    * Asserts that the message of this fixture's <code>{@link JOptionPane}</code> matches the given value.
-   * @param message the message to verify. If it is a <code>String</code>, it can be specified as a regular expression.
+   * @param message the message to verify. If it is a {@code String}, it can be specified as a regular expression.
    * @return this fixture.
    * @throws AssertionError if the message in this fixture's </code>JOptionPaneFixture</code> is not equal to or does
    * not match the given message.
@@ -358,7 +358,7 @@ public class JOptionPaneFixture extends ContainerFixture<JOptionPane> implements
 
   /**
    * Asserts that the message of this fixture's <code>{@link JOptionPane}</code> matches the given regular expression
-   * pattern. If the message in the {@code JOptionPane} is not a <code>String</code>, this method will use the
+   * pattern. If the message in the {@code JOptionPane} is not a {@code String}, this method will use the
    * <code>toString</code> representation of such message.
    * @param pattern the regular expression to match.
    * @return this fixture.

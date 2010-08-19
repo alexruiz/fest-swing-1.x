@@ -12,7 +12,7 @@ import org.fest.swing.edt.GuiQuery;
 
 /**
  * Understands an action, executed in the event dispatch thread, that finds a path in a <code>{@link JTree}</code>
- * that matches a given <code>String</code>.
+ * that matches a given {@code String}.
  *
  * @author Alex Ruiz
  *

@@ -26,7 +26,7 @@ import org.fest.swing.edt.GuiQuery;
 import org.fest.util.VisibleForTesting;
 
 /**
- * Understands lookup of a <code>{@link Component}</code> owning the input focus.
+ * Finds the <code>{@link Component}</code> owning the input focus.
  *
  * @author Yvonne Wang
  * @author Alex Ruiz

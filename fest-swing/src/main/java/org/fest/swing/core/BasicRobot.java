@@ -60,10 +60,12 @@ import org.fest.swing.util.*;
 import org.fest.util.VisibleForTesting;
 
 /**
- * Understands simulation of user events on a GUI <code>{@link Component}</code>.
+ * Default implementation of <code>{@link Robot}</code>.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
+ *
+ * @see Robot
  */
 public class BasicRobot implements Robot {
 
@@ -212,7 +214,7 @@ public class BasicRobot implements Robot {
   /**
    * Returns the <code>{@link Applet}</code> descendant of the given <code>{@link Container}</code>, if any.
    * @param c the given {@code Container}.
-   * @return the <code>Applet</code> descendant of the given {@code Container}, or {@code null} if none
+   * @return the {@code Applet} descendant of the given {@code Container}, or {@code null} if none
    * is found.
    */
   @RunsInEDT

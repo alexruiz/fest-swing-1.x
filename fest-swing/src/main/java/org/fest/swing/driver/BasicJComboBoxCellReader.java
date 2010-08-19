@@ -27,7 +27,7 @@ import org.fest.swing.cell.JComboBoxCellReader;
 import org.fest.swing.edt.GuiQuery;
 
 /**
- * Understands the default implementation of <code>{@link JComboBoxCellReader}</code>.
+ * Default implementation of <code>{@link JComboBoxCellReader}</code>.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang

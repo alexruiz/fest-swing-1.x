@@ -23,7 +23,7 @@ import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
 
 /**
- * Understands an action, executed in the event dispatch thread, that returns the number of items in a given
+ * Action executed in the event dispatch thread that returns the number of items in a given
  * <code>{@link JComboBox}</code>.
  *
  * @author Alex Ruiz

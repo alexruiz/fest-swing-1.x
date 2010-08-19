@@ -27,8 +27,9 @@ import javax.swing.Action;
 import org.fest.swing.annotation.RunsInCurrentThread;
 
 /**
- * Understands execution of the default (first) <code>{@link Action}</code> in a <code>{@link Component}</code>'s
- * <code>{@link AccessibleAction}</code>. This task is <b>not</b> executed in the event dispatch thread.
+ * Executes the default (first) <code>{@link Action}</code> in a <code>{@link Component}</code>'s
+ * <code>{@link AccessibleAction}</code>. This task is <b>not</b> guaranteed to be executed in the event dispatch
+ * thread.
  *
  * @author Alex Ruiz
  */

@@ -49,10 +49,10 @@ public class JOptionPaneFormatter extends ComponentFormatterTemplate {
   }
 
   /**
-   * Returns the <code>String</code> representation of the given <code>{@link Component}</code>, which should be a
+   * Returns the {@code String} representation of the given <code>{@link Component}</code>, which should be a
    * <code>{@link JOptionPane}</code> (or subclass.)
    * @param c the given {@code Component}.
-   * @return the <code>String</code> representation of the given <code>JOptionPane</code>.
+   * @return the {@code String} representation of the given <code>JOptionPane</code>.
    */
   @Override protected String doFormat(Component c) {
     JOptionPane optionPane = (JOptionPane)c;

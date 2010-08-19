@@ -26,7 +26,7 @@ import javax.swing.JOptionPane;
 import org.fest.swing.annotation.RunsInEDT;
 
 /**
- * Understands how to find unexpected <code>{@link JOptionPane}</code>s.
+ * Finds <code>{@link JOptionPane}</code>s that are showing up on the screen and are not expected.
  *
  * @author Alex Ruiz
  */

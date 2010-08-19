@@ -25,8 +25,8 @@ import org.fest.swing.edt.GuiQuery;
 import org.fest.swing.util.Pair;
 
 /**
- * Understands an action, executed in the event dispatch thread, that returns the selected value of a
- * <code>{@link JComboBox}</code> as plain text.
+ * Action executed in the event dispatch thread that returns the selected value of a <code>{@link JComboBox}</code> as
+ * plain text.
  *
  * @author Alex Ruiz
  */

@@ -24,7 +24,7 @@ import javax.swing.*;
 import org.fest.swing.edt.GuiTask;
 
 /**
- * Understands utility methods related to scrolling.
+ * Utility methods related to scrolling.
  *
  * @author Juhos Csaba-Zsolt
  *

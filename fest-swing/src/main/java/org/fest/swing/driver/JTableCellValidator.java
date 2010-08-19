@@ -36,7 +36,7 @@ public final class JTableCellValidator {
    * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
    * responsible for calling this method from the EDT.
    * </p>
-   * @param table the target <code>JTable</code>.
+   * @param table the target {@code JTable}.
    * @param row the row index of the cell to validate.
    * @param column the column index of the cell to validate.
    * @throws IllegalStateException if the table cell in the given coordinates is not editable.
@@ -54,7 +54,7 @@ public final class JTableCellValidator {
    * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
    * responsible for calling this method from the EDT.
    * </p>
-   * @param table the target <code>JTable</code>.
+   * @param table the target {@code JTable}.
    * @param cell the cell to validate.
    * @throws NullPointerException if the cell is {@code null}.
    * @throws IndexOutOfBoundsException if any of the indices (row and column) is out of bounds.
@@ -80,10 +80,10 @@ public final class JTableCellValidator {
    * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
    * responsible for calling this method from the EDT.
    * </p>
-   * @param table the <code>JTable</code> to use to validate the given indices.
+   * @param table the {@code JTable} to use to validate the given indices.
    * @param row the row index to validate.
    * @param column the column index to validate.
-   * @throws IndexOutOfBoundsException if any of the indices is out of bounds or if the <code>JTable</code> does not
+   * @throws IndexOutOfBoundsException if any of the indices is out of bounds or if the {@code JTable} does not
    * have any rows.
    */
   @RunsInCurrentThread

@@ -58,8 +58,8 @@ public class JTableFixture extends ComponentFixture<JTable> implements CommonCom
 
   /**
    * Creates a new <code>{@link JTableFixture}</code>.
-   * @param robot performs simulation of user events on the given <code>JTable</code>.
-   * @param target the <code>JTable</code> to be managed by this fixture.
+   * @param robot performs simulation of user events on the given {@code JTable}.
+   * @param target the {@code JTable} to be managed by this fixture.
    * @throws NullPointerException if <code>robot</code> is {@code null}.
    * @throws NullPointerException if <code>target</code> is {@code null}.
    */
@@ -70,11 +70,11 @@ public class JTableFixture extends ComponentFixture<JTable> implements CommonCom
 
   /**
    * Creates a new <code>{@link JTableFixture}</code>.
-   * @param robot performs simulation of user events on a <code>JTable</code>.
-   * @param tableName the name of the <code>JTable</code> to find using the given <code>Robot</code>.
+   * @param robot performs simulation of user events on a {@code JTable}.
+   * @param tableName the name of the {@code JTable} to find using the given <code>Robot</code>.
    * @throws NullPointerException if <code>robot</code> is {@code null}.
-   * @throws ComponentLookupException if a matching <code>JTable</code> could not be found.
-   * @throws ComponentLookupException if more than one matching <code>JTable</code> is found.
+   * @throws ComponentLookupException if a matching {@code JTable} could not be found.
+   * @throws ComponentLookupException if more than one matching {@code JTable} is found.
    */
   public JTableFixture(Robot robot, String tableName) {
     super(robot, tableName, JTable.class);
@@ -193,8 +193,8 @@ public class JTableFixture extends ComponentFixture<JTable> implements CommonCom
    * Returns a <code>{@link JTableHeaderFixture}</code> wrapping the <code>{@link JTableHeader}</code> in this fixture's
    * <code>{@link JTable}</code>.
    * @return a <code>JTableHeaderFixture</code> wrapping the <code>JTableHeader</code> in this fixture's
-   * <code>JTable</code>.
-   * @throws AssertionError if the <code>JTableHeader</code> in this fixture's <code>JTable</code> is {@code null}.
+   * {@code JTable}.
+   * @throws AssertionError if the <code>JTableHeader</code> in this fixture's {@code JTable} is {@code null}.
    */
   public JTableHeaderFixture tableHeader() {
     JTableHeader tableHeader = driver.tableHeaderOf(target);
@@ -203,10 +203,10 @@ public class JTableFixture extends ComponentFixture<JTable> implements CommonCom
   }
 
   /**
-   * Returns the <code>String</code> representation of the selected cell in this fixture's <code>{@link JTable}</code>,
+   * Returns the {@code String} representation of the selected cell in this fixture's <code>{@link JTable}</code>,
    * using this fixture's <code>{@link JTableCellReader}</code>. Returns {@code null} if one can not be obtained or
    * if the <code>{@link JTable}</code> does not have any selected cell.
-   * @return the <code>String</code> representation of the selected cell.
+   * @return the {@code String} representation of the selected cell.
    * @see #cellReader(JTableCellReader)
    */
   public String selectionValue() {
@@ -225,9 +225,9 @@ public class JTableFixture extends ComponentFixture<JTable> implements CommonCom
   }
 
   /**
-   * Returns the <code>String</code> representation of the cells in the in this fixture's <code>{@link JTable}</code>,
+   * Returns the {@code String} representation of the cells in the in this fixture's <code>{@link JTable}</code>,
    * using this fixture's <code>{@link JTableCellReader}</code>.
-   * @return the <code>String</code> representation of the cells in thi fixture's <code>JTable</code>.
+   * @return the {@code String} representation of the cells in thi fixture's {@code JTable}.
    * @see #cellReader(JTableCellReader)
    */
   public String[][] contents() {
@@ -236,7 +236,7 @@ public class JTableFixture extends ComponentFixture<JTable> implements CommonCom
 
   /**
    * Returns the number of rows that can be shown in this fixture's <code>{@link JTable}</code>, given unlimited space.
-   * @return the number of rows shown in this fixture's <code>JTable</code>.
+   * @return the number of rows shown in this fixture's {@code JTable}.
    * @see JTable#getRowCount()
    */
   public int rowCount() {
@@ -244,10 +244,10 @@ public class JTableFixture extends ComponentFixture<JTable> implements CommonCom
   }
 
   /**
-   * Returns the <code>String</code> representation of the value of a cell in this fixture's
+   * Returns the {@code String} representation of the value of a cell in this fixture's
    * <code>{@link JTable}</code>, using this fixture's <code>{@link JTableCellReader}</code>.
    * @param cell the given cell.
-   * @return the <code>String</code> representation of the value of a cell in this fixture's <code>JTable</code>.
+   * @return the {@code String} representation of the value of a cell in this fixture's {@code JTable}.
    * @throws NullPointerException if the cell is {@code null}.
    * @throws IndexOutOfBoundsException if any of the indices (row and column) is out of bounds.
    * @see #cellReader(JTableCellReader)
@@ -261,8 +261,8 @@ public class JTableFixture extends ComponentFixture<JTable> implements CommonCom
    * @param cell the cell to select.
    * @return this fixture.
    * @throws NullPointerException if the cell is {@code null}.
-   * @throws IllegalStateException if this fixture's <code>JTable</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JTable</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JTable} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JTable} is not showing on the screen.
    * @throws IndexOutOfBoundsException if any of the indices (row and column) is out of bounds.
    */
   public JTableFixture selectCell(TableCell cell) {
@@ -276,8 +276,8 @@ public class JTableFixture extends ComponentFixture<JTable> implements CommonCom
    * @return this fixture.
    * @throws NullPointerException if <code>cells</code> is {@code null} or empty.
    * @throws IllegalArgumentException if <code>cells</code> is {@code null} or empty.
-   * @throws IllegalStateException if this fixture's <code>JTable</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JTable</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JTable} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JTable} is not showing on the screen.
    * @throws NullPointerException if any element in <code>cells</code> is {@code null}.
    * @throws IndexOutOfBoundsException if any of the indices of any of the <code>cells</code> are out of bounds.
    */
@@ -293,8 +293,8 @@ public class JTableFixture extends ComponentFixture<JTable> implements CommonCom
    * @return this fixture.
    * @throws NullPointerException if the given array of indices is {@code null}.
    * @throws IllegalArgumentException if the given array of indices is empty.
-   * @throws IllegalStateException if this fixture's <code>JTable</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JTable</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JTable} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JTable} is not showing on the screen.
    * @throws IndexOutOfBoundsException if any of the given indices is out of bounds.
    * @since 1.2
    */
@@ -308,8 +308,8 @@ public class JTableFixture extends ComponentFixture<JTable> implements CommonCom
    * @param cell the cell to drag.
    * @return this fixture.
    * @throws NullPointerException if the cell is {@code null}.
-   * @throws IllegalStateException if this fixture's <code>JTable</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JTable</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JTable} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JTable} is not showing on the screen.
    * @throws IndexOutOfBoundsException if any of the indices (row and column) is out of bounds.
    */
   public JTableFixture drag(TableCell cell) {
@@ -322,8 +322,8 @@ public class JTableFixture extends ComponentFixture<JTable> implements CommonCom
    * @param cell the cell to drop the dragging item into.
    * @return this fixture.
    * @throws NullPointerException if the cell is {@code null}.
-   * @throws IllegalStateException if this fixture's <code>JTable</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JTable</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JTable} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JTable} is not showing on the screen.
    * @throws IndexOutOfBoundsException if any of the indices (row and column) is out of bounds.
    */
   public JTableFixture drop(TableCell cell) {
@@ -334,8 +334,8 @@ public class JTableFixture extends ComponentFixture<JTable> implements CommonCom
   /**
    * Simulates a user clicking this fixture's <code>{@link JTable}</code>.
    * @return this fixture.
-   * @throws IllegalStateException if this fixture's <code>JTable</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JTable</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JTable} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JTable} is not showing on the screen.
    */
   public JTableFixture click() {
     driver.click(target);
@@ -347,8 +347,8 @@ public class JTableFixture extends ComponentFixture<JTable> implements CommonCom
    * @param button the button to click.
    * @return this fixture.
    * @throws NullPointerException if the given <code>MouseButton</code> is {@code null}.
-   * @throws IllegalStateException if this fixture's <code>JTable</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JTable</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JTable} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JTable} is not showing on the screen.
    */
   public JTableFixture click(MouseButton button) {
     driver.click(target, button);
@@ -360,8 +360,8 @@ public class JTableFixture extends ComponentFixture<JTable> implements CommonCom
    * @param mouseClickInfo specifies the button to click and the times the button should be clicked.
    * @return this fixture.
    * @throws NullPointerException if the given <code>MouseClickInfo</code> is {@code null}.
-   * @throws IllegalStateException if this fixture's <code>JTable</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JTable</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JTable} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JTable} is not showing on the screen.
    */
   public JTableFixture click(MouseClickInfo mouseClickInfo) {
     driver.click(target, mouseClickInfo);
@@ -375,8 +375,8 @@ public class JTableFixture extends ComponentFixture<JTable> implements CommonCom
    * @param button the mouse button to use.
    * @return this fixture.
    * @throws NullPointerException if the cell is {@code null}.
-   * @throws IllegalStateException if this fixture's <code>JTable</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JTable</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JTable} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JTable} is not showing on the screen.
    * @throws IndexOutOfBoundsException if any of the indices (row and column) is out of bounds.
    */
   public JTableFixture click(TableCell cell, MouseButton button) {
@@ -392,8 +392,8 @@ public class JTableFixture extends ComponentFixture<JTable> implements CommonCom
    * @return this fixture.
    * @throws NullPointerException if the given <code>MouseClickInfo</code> is {@code null}.
    * @throws NullPointerException if the cell is {@code null}.
-   * @throws IllegalStateException if this fixture's <code>JTable</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JTable</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JTable} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JTable} is not showing on the screen.
    * @throws IndexOutOfBoundsException if any of the indices (row and column) is out of bounds.
    */
   public JTableFixture click(TableCell cell, MouseClickInfo mouseClickInfo) {
@@ -413,8 +413,8 @@ public class JTableFixture extends ComponentFixture<JTable> implements CommonCom
    * particular case, this method will start edition of the table cell located under the mouse pointer.
    * </p>
    * @return this fixture.
-   * @throws IllegalStateException if this fixture's <code>JTable</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JTable</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JTable} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JTable} is not showing on the screen.
    */
   public JTableFixture doubleClick() {
     driver.doubleClick(target);
@@ -424,8 +424,8 @@ public class JTableFixture extends ComponentFixture<JTable> implements CommonCom
   /**
    * Simulates a user right-clicking this fixture's <code>{@link JTable}</code>.
    * @return this fixture.
-   * @throws IllegalStateException if this fixture's <code>JTable</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JTable</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JTable} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JTable} is not showing on the screen.
    */
   public JTableFixture rightClick() {
     driver.rightClick(target);
@@ -439,8 +439,8 @@ public class JTableFixture extends ComponentFixture<JTable> implements CommonCom
    * @return this fixture.
    * @throws NullPointerException if the given <code>KeyPressInfo</code> is {@code null}.
    * @throws IllegalArgumentException if the given code is not a valid key code.
-   * @throws IllegalStateException if this fixture's <code>JTable</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JTable</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JTable} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JTable} is not showing on the screen.
    * @see KeyPressInfo
    */
   public JTableFixture pressAndReleaseKey(KeyPressInfo keyPressInfo) {
@@ -455,8 +455,8 @@ public class JTableFixture extends ComponentFixture<JTable> implements CommonCom
    * @return this fixture.
    * @throws NullPointerException if the given array of codes is {@code null}.
    * @throws IllegalArgumentException if any of the given code is not a valid key code.
-   * @throws IllegalStateException if this fixture's <code>JTable</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JTable</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JTable} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JTable} is not showing on the screen.
    * @see java.awt.event.KeyEvent
    */
   public JTableFixture pressAndReleaseKeys(int... keyCodes) {
@@ -469,8 +469,8 @@ public class JTableFixture extends ComponentFixture<JTable> implements CommonCom
    * @param keyCode the code of the key to press.
    * @return this fixture.
    * @throws IllegalArgumentException if any of the given code is not a valid key code.
-   * @throws IllegalStateException if this fixture's <code>JTable</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JTable</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JTable} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JTable} is not showing on the screen.
    * @see java.awt.event.KeyEvent
    */
   public JTableFixture pressKey(int keyCode) {
@@ -483,8 +483,8 @@ public class JTableFixture extends ComponentFixture<JTable> implements CommonCom
    * @param keyCode the code of the key to release.
    * @return this fixture.
    * @throws IllegalArgumentException if any of the given code is not a valid key code.
-   * @throws IllegalStateException if this fixture's <code>JTable</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JTable</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JTable} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JTable} is not showing on the screen.
    * @see java.awt.event.KeyEvent
    */
   public JTableFixture releaseKey(int keyCode) {
@@ -494,8 +494,8 @@ public class JTableFixture extends ComponentFixture<JTable> implements CommonCom
 
   /**
    * Gives input focus to this fixture's <code>{@link JTable}</code>.
-   * @throws IllegalStateException if this fixture's <code>JTable</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JTable</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JTable} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JTable} is not showing on the screen.
    * @return this fixture.
    */
   public JTableFixture focus() {
@@ -511,9 +511,9 @@ public class JTableFixture extends ComponentFixture<JTable> implements CommonCom
    * @param value the given value.
    * @return this fixture.
    * @throws NullPointerException if the cell is {@code null}.
-   * @throws IllegalStateException if this fixture's <code>JTable</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JTable</code> is not showing on the screen.
-   * @throws IllegalStateException if this fixture's <code>JTable</code> is not editable.
+   * @throws IllegalStateException if this fixture's {@code JTable} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JTable} is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JTable} is not editable.
    * @throws IndexOutOfBoundsException if any of the indices (row and column) is out of bounds.
    * @throws ActionFailedException if this fixture's <code>JTableCellValueReader</code> is unable to enter the given
    * value.
@@ -542,7 +542,7 @@ public class JTableFixture extends ComponentFixture<JTable> implements CommonCom
    * Asserts that this fixture's <code>{@link JTable}</code> has the given number of rows.
    * @param expected the expected number of rows.
    * @return this fixture.
-   * @throws AssertionError if this fixture's <code>JTable</code> does not have the given number of rows.
+   * @throws AssertionError if this fixture's {@code JTable} does not have the given number of rows.
    */
   public JTableFixture requireRowCount(int expected) {
     driver.requireRowCount(target, expected);
@@ -551,10 +551,10 @@ public class JTableFixture extends ComponentFixture<JTable> implements CommonCom
 
   /**
    * Asserts that the set of selected rows in this fixture's <code>{@link JTable}</code> contains to the given row
-   * indices. The given row indices can be a subset of all the selected rows in a <code>JTable</code>.
+   * indices. The given row indices can be a subset of all the selected rows in a {@code JTable}.
    * @param rows the indices of the rows expected to be selected.
    * @return this fixture.
-   * @throws AssertionError if the set of selected rows in this fixture's <code>JTable</code> (if any) do not contain
+   * @throws AssertionError if the set of selected rows in this fixture's {@code JTable} (if any) do not contain
    * the given indices.
    * @since 1.2
    */
@@ -567,7 +567,7 @@ public class JTableFixture extends ComponentFixture<JTable> implements CommonCom
    * Asserts that this fixture's <code>{@link JTable}</code> has the given number of columns.
    * @param expected the expected number of columns.
    * @return this fixture.
-   * @throws AssertionError if this fixture's <code>JTable</code> does not have the given number of columns.
+   * @throws AssertionError if this fixture's {@code JTable} does not have the given number of columns.
    */
   public JTableFixture requireColumnCount(int expected) {
     driver.requireColumnCount(target, expected);
@@ -577,7 +577,7 @@ public class JTableFixture extends ComponentFixture<JTable> implements CommonCom
   /**
    * Asserts that this fixture's <code>{@link JTable}</code> has input focus.
    * @return this fixture.
-   * @throws AssertionError if this fixture's <code>JTable</code> does not have input focus.
+   * @throws AssertionError if this fixture's {@code JTable} does not have input focus.
    */
   public JTableFixture requireFocused() {
     driver.requireFocused(target);
@@ -587,7 +587,7 @@ public class JTableFixture extends ComponentFixture<JTable> implements CommonCom
   /**
    * Asserts that this fixture's <code>{@link JTable}</code> is enabled.
    * @return this fixture.
-   * @throws AssertionError is the managed <code>JTable</code> is disabled.
+   * @throws AssertionError is the managed {@code JTable} is disabled.
    */
   public JTableFixture requireEnabled() {
     driver.requireEnabled(target);
@@ -598,7 +598,7 @@ public class JTableFixture extends ComponentFixture<JTable> implements CommonCom
    * Asserts that this fixture's <code>{@link JTable}</code> is enabled.
    * @param timeout the time this fixture will wait for the component to be enabled.
    * @return this fixture.
-   * @throws WaitTimedOutError if the managed <code>JTable</code> is never enabled.
+   * @throws WaitTimedOutError if the managed {@code JTable} is never enabled.
    */
   public JTableFixture requireEnabled(Timeout timeout) {
     driver.requireEnabled(target, timeout);
@@ -608,7 +608,7 @@ public class JTableFixture extends ComponentFixture<JTable> implements CommonCom
   /**
    * Asserts that this fixture's <code>{@link JTable}</code> is disabled.
    * @return this fixture.
-   * @throws AssertionError is the managed <code>JTable</code> is enabled.
+   * @throws AssertionError is the managed {@code JTable} is enabled.
    */
   public JTableFixture requireDisabled() {
     driver.requireDisabled(target);
@@ -618,7 +618,7 @@ public class JTableFixture extends ComponentFixture<JTable> implements CommonCom
   /**
    * Asserts that this fixture's <code>{@link JTable}</code> is visible.
    * @return this fixture.
-   * @throws AssertionError if the managed <code>JTable</code> is not visible.
+   * @throws AssertionError if the managed {@code JTable} is not visible.
    */
   public JTableFixture requireVisible() {
     driver.requireVisible(target);
@@ -628,7 +628,7 @@ public class JTableFixture extends ComponentFixture<JTable> implements CommonCom
   /**
    * Asserts that this fixture's <code>{@link JTable}</code> is not visible.
    * @return this fixture.
-   * @throws AssertionError if the managed <code>JTable</code> is visible.
+   * @throws AssertionError if the managed {@code JTable} is visible.
    */
   public JTableFixture requireNotVisible() {
     driver.requireNotVisible(target);
@@ -639,7 +639,7 @@ public class JTableFixture extends ComponentFixture<JTable> implements CommonCom
    * Asserts that the toolTip in this fixture's <code>{@link JTable}</code> matches the given value.
    * @param expected the given value. It can be a regular expression.
    * @return this fixture.
-   * @throws AssertionError if the toolTip in this fixture's <code>JTable</code> does not match the given value.
+   * @throws AssertionError if the toolTip in this fixture's {@code JTable} does not match the given value.
    * @since 1.2
    */
   public JTableFixture requireToolTip(String expected) {
@@ -653,7 +653,7 @@ public class JTableFixture extends ComponentFixture<JTable> implements CommonCom
    * @param pattern the regular expression pattern to match.
    * @return this fixture.
    * @throws NullPointerException if the given regular expression pattern is {@code null}.
-   * @throws AssertionError if the toolTip in this fixture's <code>JTable</code> does not match the given regular
+   * @throws AssertionError if the toolTip in this fixture's {@code JTable} does not match the given regular
    * expression pattern.
    * @since 1.2
    */
@@ -691,7 +691,7 @@ public class JTableFixture extends ComponentFixture<JTable> implements CommonCom
   /**
    * Verifies that this fixture's <code>{@link JTable}</code> does not have any selection.
    * @return this fixture.
-   * @throws AssertionError if this fixture's <code>JTable</code> has a selection.
+   * @throws AssertionError if this fixture's {@code JTable} has a selection.
    */
   public JTableFixture requireNoSelection() {
     driver.requireNoSelection(target);
@@ -729,11 +729,11 @@ public class JTableFixture extends ComponentFixture<JTable> implements CommonCom
   }
 
   /**
-   * Asserts that the <code>String</code> representation of the cell values in this fixture's
-   * <code>{@link JTable}</code> is equal to the given <code>String</code> array. This method uses this fixture's
-   * <code>{@link JTableCellReader}</code> to read the values of the table cells as <code>String</code>s.
-   * @param contents the expected <code>String</code> representation of the cell values in this fixture's
-   * <code>JTable</code>.
+   * Asserts that the {@code String} representation of the cell values in this fixture's
+   * <code>{@link JTable}</code> is equal to the given {@code String} array. This method uses this fixture's
+   * <code>{@link JTableCellReader}</code> to read the values of the table cells as {@code String}s.
+   * @param contents the expected {@code String} representation of the cell values in this fixture's
+   * {@code JTable}.
    * @return this fixture.
    * @see #cellReader(JTableCellReader)
    */
@@ -780,8 +780,8 @@ public class JTableFixture extends ComponentFixture<JTable> implements CommonCom
   /**
    * Shows a pop-up menu using this fixture's <code>{@link JTable}</code> as the invoker of the pop-up menu.
    * @return a fixture that manages the displayed pop-up menu.
-   * @throws IllegalStateException if this fixture's <code>JTable</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JTable</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JTable} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JTable} is not showing on the screen.
    * @throws ComponentLookupException if a pop-up menu cannot be found.
    */
   public JPopupMenuFixture showPopupMenu() {
@@ -793,8 +793,8 @@ public class JTableFixture extends ComponentFixture<JTable> implements CommonCom
    * pop-up menu.
    * @param p the given point where to show the pop-up menu.
    * @return a fixture that manages the displayed pop-up menu.
-   * @throws IllegalStateException if this fixture's <code>JTable</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JTable</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JTable} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JTable} is not showing on the screen.
    * @throws ComponentLookupException if a pop-up menu cannot be found.
    */
   public JPopupMenuFixture showPopupMenuAt(Point p) {
@@ -806,8 +806,8 @@ public class JTableFixture extends ComponentFixture<JTable> implements CommonCom
    * @param cell the table cell where to show the pop-up menu.
    * @return a fixture that manages the displayed pop-up menu.
    * @throws NullPointerException if the cell is {@code null}.
-   * @throws IllegalStateException if this fixture's <code>JTable</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JTable</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JTable} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JTable} is not showing on the screen.
    * @throws ComponentLookupException if a pop-up menu cannot be found.
    */
   public JPopupMenuFixture showPopupMenuAt(TableCell cell) {

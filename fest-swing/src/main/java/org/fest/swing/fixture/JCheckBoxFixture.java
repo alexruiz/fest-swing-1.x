@@ -321,7 +321,7 @@ public class JCheckBoxFixture extends ComponentFixture<JCheckBox> implements Com
 
   /**
    * Asserts that the text of this fixture's <code>{@link JCheckBox}</code> is equal to or matches the specified
-   * <code>String</code>.
+   * {@code String}.
    * @param expected the text to match. It can be a regular expression.
    * @return this fixture.
    * @throws AssertionError if the text of the target JCheckBox is not equal to or does not match the given one.

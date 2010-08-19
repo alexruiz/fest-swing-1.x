@@ -21,7 +21,7 @@ import java.net.URL;
 import java.util.*;
 
 /**
- * Understands a basic (and limited) implementation of <code>{@link AppletStub}</code>.
+ * Basic (and limited) implementation of <code>{@link AppletStub}</code>.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang

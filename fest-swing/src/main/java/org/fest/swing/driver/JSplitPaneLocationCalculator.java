@@ -17,7 +17,7 @@ import org.fest.swing.edt.GuiQuery;
 
 /**
  * Understands calculation of a valid position of a <code>{@link JSplitPane}</code>'s divider, while respecting the
- * minimum sizes of the right and left component inside the <code>JSplitPane</code>.
+ * minimum sizes of the right and left component inside the {@code JSplitPane}.
  *
  * @author Alex Ruiz
  */

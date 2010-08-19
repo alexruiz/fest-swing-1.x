@@ -100,12 +100,12 @@ public class JOptionPaneDriver extends JComponentDriver {
 
   /**
    * Asserts that the title of the <code>{@link JOptionPane}</code> matches the given value. If the given value is a
-   * regular expression and the message in the {@code JOptionPane} is not a <code>String</code>, this method will use the
+   * regular expression and the message in the {@code JOptionPane} is not a {@code String}, this method will use the
    * <code>toString</code> representation of such message.
-   * message in the {@code JOptionPane} is not a <code>String</code>, this method will use the
+   * message in the {@code JOptionPane} is not a {@code String}, this method will use the
    * <code>toString</code> representation of such message.
    * @param optionPane the target {@code JOptionPane}.
-   * @param message the message to verify. If it is a <code>String</code>, it can be specified as a regular expression.
+   * @param message the message to verify. If it is a {@code String}, it can be specified as a regular expression.
    * @throws AssertionError if the message in the {@code JOptionPane} is not equal to or does not match the given
    * message.
    */
@@ -126,7 +126,7 @@ public class JOptionPaneDriver extends JComponentDriver {
 
   /**
    * Asserts that the title of the <code>{@link JOptionPane}</code> matches the given regular expression pattern. If the
-   * message in the {@code JOptionPane} is not a <code>String</code>, this method will use the
+   * message in the {@code JOptionPane} is not a {@code String}, this method will use the
    * <code>toString</code> representation of such message.
    * @param optionPane the target {@code JOptionPane}.
    * @param pattern the regular expression to match.

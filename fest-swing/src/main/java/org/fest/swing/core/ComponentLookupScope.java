@@ -16,7 +16,7 @@
 package org.fest.swing.core;
 
 /**
- * Understands scopes of GUI component lookup.
+ * Scopes of GUI component lookups.
  *
  * @author Alex Ruiz
  */

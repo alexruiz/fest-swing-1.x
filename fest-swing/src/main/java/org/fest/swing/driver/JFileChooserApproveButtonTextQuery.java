@@ -24,7 +24,7 @@ import javax.swing.plaf.FileChooserUI;
 import org.fest.swing.edt.GuiQuery;
 
 /**
- * Understands an action, executed in the event dispatch thread, that returns the text used in the "approve button" of a
+ * Action executed in the event dispatch thread that returns the text used in the "approve button" of a
  * <code>{@link JFileChooser}</code>.
  * @see JFileChooser#getApproveButtonText()
  * @see FileChooserUI#getApproveButtonText(JFileChooser)

@@ -14,8 +14,8 @@ import javax.swing.JSplitPane;
 import org.fest.swing.annotation.RunsInCurrentThread;
 
 /**
- * Understands calculation of a valid position of a horizontal <code>{@link JSplitPane}</code>'s divider, while
- * respecting the minimum sizes of the right and left component inside the <code>JSplitPane</code>.
+ * Calculates a valid position of a horizontal <code>{@link JSplitPane}</code>'s divider, while respecting the minimum
+ * sizes of the right and left component inside the {@code JSplitPane}.
  *
  * @author Alex Ruiz
  */

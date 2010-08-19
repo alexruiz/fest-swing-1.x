@@ -20,7 +20,7 @@ import static org.fest.util.Objects.HASH_CODE_PRIME;
 import static org.fest.util.Strings.concat;
 
 /**
- * Understands an index.
+ * An integer-based index.
  *
  * @author Alex Ruiz
  */

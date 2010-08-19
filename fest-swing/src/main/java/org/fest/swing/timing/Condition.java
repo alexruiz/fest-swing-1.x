@@ -53,7 +53,7 @@ public abstract class Condition {
   public abstract boolean test();
 
   /**
-   * Returns the <code>String</code> representation of this condition, which is its description.
+   * Returns the {@code String} representation of this condition, which is its description.
    * @return the description of this condition.
    */
   @Override public final String toString() {
@@ -67,8 +67,8 @@ public abstract class Condition {
   }
 
   /**
-   * Returns any text to be added to this condition's description. The default value is an empty <code>String</code>.
-   * @return by default, an empty <code>String</code>.
+   * Returns any text to be added to this condition's description. The default value is an empty {@code String}.
+   * @return by default, an empty {@code String}.
    */
   protected String descriptionAddendum() {
     return EMPTY_TEXT;

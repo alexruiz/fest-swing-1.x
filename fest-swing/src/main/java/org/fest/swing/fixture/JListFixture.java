@@ -91,10 +91,10 @@ public class JListFixture extends ComponentFixture<JList> implements CommonCompo
   }
 
   /**
-   * Returns the <code>String</code> representation of the value of an item in this fixture's
+   * Returns the {@code String} representation of the value of an item in this fixture's
    * <code>{@link JList}</code>, using this fixture's <code>{@link JListCellReader}</code>.
    * @param index the index of the item to return.
-   * @return the <code>String</code> representation of the value of an item in this fixture's <code>JList</code>.
+   * @return the {@code String} representation of the value of an item in this fixture's <code>JList</code>.
    * @throws IndexOutOfBoundsException if the given index is negative or greater than the index of the last item in
    * the <code>JList</code>.
    * @see #cellReader(JListCellReader)
@@ -104,9 +104,9 @@ public class JListFixture extends ComponentFixture<JList> implements CommonCompo
   }
 
   /**
-   * Returns the <code>String</code> representation of the elements in this fixture's <code>{@link JList}</code>,
+   * Returns the {@code String} representation of the elements in this fixture's <code>{@link JList}</code>,
    * using this fixture's <code>{@link JListCellReader}</code>.
-   * @return the <code>String</code> representation of the elements in this fixture's <code>JList</code>.
+   * @return the {@code String} representation of the elements in this fixture's <code>JList</code>.
    * @see #cellReader(JListCellReader)
    */
   public String[] contents() {
@@ -114,9 +114,9 @@ public class JListFixture extends ComponentFixture<JList> implements CommonCompo
   }
 
   /**
-   * Returns the <code>String</code> representation of the selected elements in this fixture's
+   * Returns the {@code String} representation of the selected elements in this fixture's
    * <code>{@link JList}</code>, using this fixture's <code>{@link JListCellReader}</code>.
-   * @return the <code>String</code> representation of the selected elements in this fixture's <code>JList</code>.
+   * @return the {@code String} representation of the selected elements in this fixture's <code>JList</code>.
    * @see #cellReader(JListCellReader)
    */
   public String[] selection() {
@@ -200,7 +200,7 @@ public class JListFixture extends ComponentFixture<JList> implements CommonCompo
   /**
    * Simulates a user selecting the specified items in this fixture's <code>{@link JList}</code>. The items to select
    * should match the given values.
-   * @param items the text of the items to select. Each <code>String</code> can be a regular expression.
+   * @param items the text of the items to select. Each {@code String} can be a regular expression.
    * @return this fixture.
    * @throws NullPointerException if the given array is {@code null}.
    * @throws IllegalArgumentException if the given array is empty.
@@ -361,7 +361,7 @@ public class JListFixture extends ComponentFixture<JList> implements CommonCompo
    * @return this fixture.
    * @throws IllegalStateException if this fixture's <code>JList</code> is disabled.
    * @throws IllegalStateException if this fixture's <code>JList</code> is not showing on the screen.
-   * @throws LocationUnavailableException if an element matching the given <code>String</code> cannot be found.
+   * @throws LocationUnavailableException if an element matching the given {@code String} cannot be found.
    * @deprecated to be removed in version 2.0. Use <code>{@link #item(String)}</code> and
    * <code>{@link JListItemFixture#doubleClick()}</code> instead.
    */
@@ -711,7 +711,7 @@ public class JListFixture extends ComponentFixture<JList> implements CommonCompo
   }
 
   /**
-   * Verifies that the <code>String</code> representation of the selected item in this fixture's
+   * Verifies that the {@code String} representation of the selected item in this fixture's
    * <code>{@link JList}</code> matches the given text.
    * @param text the text to match. It can be a regular expression pattern.
    * @return this fixture.
@@ -724,7 +724,7 @@ public class JListFixture extends ComponentFixture<JList> implements CommonCompo
   }
 
   /**
-   * Verifies that the <code>String</code> representation of the selected item in this fixture's
+   * Verifies that the {@code String} representation of the selected item in this fixture's
    * <code>{@link JList}</code> matches the given regular expression pattern.
    * @param pattern the regular expression pattern to match.
    * @return this fixture.
@@ -752,9 +752,9 @@ public class JListFixture extends ComponentFixture<JList> implements CommonCompo
   }
 
   /**
-   * Verifies that the <code>String</code> representations of the selected items in this fixture's
+   * Verifies that the {@code String} representations of the selected items in this fixture's
    * <code>{@link JList}</code> match the given text items.
-   * @param items text items to match. Each <code>String</code> can be a regular expression.
+   * @param items text items to match. Each {@code String} can be a regular expression.
    * @return this fixture.
    * @throws NullPointerException if the given array is {@code null}.
    * @throws IllegalArgumentException if the given array is empty.
@@ -767,7 +767,7 @@ public class JListFixture extends ComponentFixture<JList> implements CommonCompo
   }
 
   /**
-   * Verifies that the <code>String</code> representations of the selected items in this fixture's
+   * Verifies that the {@code String} representations of the selected items in this fixture's
    * <code>{@link JList}</code> match the given regular expression patterns.
    * @param patterns the regular expression patterns to match.
    * @return this fixture.

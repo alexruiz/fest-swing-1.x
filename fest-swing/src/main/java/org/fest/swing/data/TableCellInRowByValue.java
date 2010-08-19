@@ -23,14 +23,13 @@ import static org.fest.util.Strings.concat;
 
 import javax.swing.JTable;
 
-import org.fest.swing.annotation.RunsInCurrentThread;
-import org.fest.swing.annotation.RunsInEDT;
+import org.fest.swing.annotation.*;
 import org.fest.swing.cell.JTableCellReader;
 import org.fest.swing.edt.GuiQuery;
 import org.fest.swing.exception.ActionFailedException;
 
 /**
- * Understands lookup of a cell in the first row in <code>{@link JTable}</code> whose values match the given ones.
+ * Looks up a cell in the first found row in <code>{@link JTable}</code> whose values match the given ones.
  * <p>
  * Example:
  * <pre>
@@ -110,11 +109,11 @@ public class TableCellInRowByValue implements TableCellFinder {
    * <li>is located in the first row whose values match the given ones</li>
    * <li>has a matching row index</li>
    * </ol>
-   * @param table the target <code>JTable</code>.
-   * @param cellReader knows how to read the contents of a cell in a <code>JTable</code>.
+   * @param table the target {@code JTable}.
+   * @param cellReader knows how to read the contents of a cell in a {@code JTable}.
    * @return the cell found, if any.
    * @throws IllegalStateException if the size of values to look up is not equal to the number of columns in the given
-   * <code>JTable</code>.
+   * {@code JTable}.
    * @throws ActionFailedException if a matching cell could not be found.
    */
   @RunsInEDT

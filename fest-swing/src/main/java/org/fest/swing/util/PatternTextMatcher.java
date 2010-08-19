@@ -23,7 +23,7 @@ import static org.fest.util.Strings.quote;
 import java.util.regex.Pattern;
 
 /**
- * Understands matching text to a group of <code>String</code> values. Matching is perform by equality or by regular
+ * Understands matching text to a group of {@code String} values. Matching is perform by equality or by regular
  * expression matching.
  *
  * @author Alex Ruiz
@@ -69,8 +69,8 @@ public class PatternTextMatcher implements TextMatcher {
   }
 
   /**
-   * Returns the regular expression patterns in this matcher, formatted as a single <code>String</code>.
-   * @return the regular expression patterns in this matcher, formatted as a single <code>String</code>.
+   * Returns the regular expression patterns in this matcher, formatted as a single {@code String}.
+   * @return the regular expression patterns in this matcher, formatted as a single {@code String}.
    */
   public String formattedValues() {
     if (onlyOnePattern()) return quote(patterns[0].pattern());

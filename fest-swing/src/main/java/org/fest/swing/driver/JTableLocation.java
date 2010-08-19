@@ -36,7 +36,7 @@ public final class JTableLocation {
    * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
    * responsible for calling this method from the EDT.
    * </p>
-   * @param table the target <code>JTable</code>.
+   * @param table the target {@code JTable}.
    * @param row the given row.
    * @param column the given column.
    * @return the coordinates of the given row and column.
@@ -53,7 +53,7 @@ public final class JTableLocation {
    * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
    * responsible for calling this method from the EDT.
    * </p>
-   * @param table the target <code>JTable</code>.
+   * @param table the target {@code JTable}.
    * @param cell the given cell.
    * @return the bounds of the given cell.
    */
@@ -68,7 +68,7 @@ public final class JTableLocation {
    * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
    * responsible for calling this method from the EDT.
    * </p>
-   * @param table the target <code>JTable</code>.
+   * @param table the target {@code JTable}.
    * @param row the given row.
    * @param column the given column.
    * @return the bounds of the given row and column.

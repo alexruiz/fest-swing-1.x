@@ -29,7 +29,7 @@ import org.fest.swing.util.Pair;
 
 /**
  * Understands a visible location on a <code>{@link JTree}</code>. A row index or a <code>{@link String}</code>ified
- * <code>{@link TreePath}</code> (i.e. each <code>{@link TreePath}</code> component is a <code>String</code>) or
+ * <code>{@link TreePath}</code> (i.e. each <code>{@link TreePath}</code> component is a {@code String}) or
  * a <code>{@link TreePath}</code> of <code>Object</code> may be used to indicate the location. Note that if a
  * <code>{@link TreePath}</code> is used, the entire path leading up to the designated node must be viewable at the
  * time the location is used.
@@ -44,11 +44,11 @@ public final class JTreeLocation {
    * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
    * responsible for calling this method from the EDT.
    * </p>
-   * @param tree the target <code>JTree</code>.
+   * @param tree the target {@code JTree}.
    * @param row the given row.
    * @return the the bounds and visible coordinates of the given row.
    * @throws IndexOutOfBoundsException if the given row is less than zero or equal than or greater than the number of
-   * visible rows in the <code>JTree</code>.
+   * visible rows in the {@code JTree}.
    * @throws LocationUnavailableException if a tree path for the given row cannot be found.
    * @since 1.2
    */
@@ -65,11 +65,11 @@ public final class JTreeLocation {
    * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
    * responsible for calling this method from the EDT.
    * </p>
-   * @param tree the target <code>JTree</code>.
+   * @param tree the target {@code JTree}.
    * @param row the given row.
    * @return the path for the given row.
    * @throws IndexOutOfBoundsException if the given row is less than zero or equal than or greater than the number of
-   * visible rows in the <code>JTree</code>.
+   * visible rows in the {@code JTree}.
    * @throws LocationUnavailableException if a tree path for the given row cannot be found.
    */
   @RunsInCurrentThread
@@ -85,11 +85,11 @@ public final class JTreeLocation {
    * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
    * responsible for calling this method from the EDT.
    * </p>
-   * @param tree the target <code>JTree</code>.
+   * @param tree the target {@code JTree}.
    * @param row the row index to validate.
    * @return the validated row index.
    * @throws IndexOutOfBoundsException if the given row is less than zero or equal than or greater than the number of
-   * visible rows in the <code>JTree</code>.
+   * visible rows in the {@code JTree}.
    */
   @RunsInCurrentThread
   public int validIndex(JTree tree, int row) {
@@ -105,7 +105,7 @@ public final class JTreeLocation {
    * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
    * responsible for calling this method from the EDT.
    * </p>
-   * @param tree the target <code>JTree</code>.
+   * @param tree the target {@code JTree}.
    * @param path the given path.
    * @return the bounds and visible coordinates of the given path.
    * @throws LocationUnavailableException if any part of the path is not visible.

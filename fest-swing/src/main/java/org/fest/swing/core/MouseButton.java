@@ -21,7 +21,7 @@ import static org.fest.util.Strings.concat;
 import java.awt.event.InputEvent;
 
 /**
- * Understands mouse buttons.
+ * Mouse buttons. Provides better type safety that the {@code int} values in AWT.
  *
  * @author Alex Ruiz
  */

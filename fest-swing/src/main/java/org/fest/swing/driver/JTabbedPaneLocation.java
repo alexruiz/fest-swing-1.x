@@ -36,14 +36,14 @@ import org.fest.util.VisibleForTesting;
 public class JTabbedPaneLocation {
 
   /**
-   * Returns the index of the first tab that matches the given <code>String</code>.
+   * Returns the index of the first tab that matches the given {@code String}.
    * <p>
    * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
    * responsible for calling this method from the EDT.
    * </p>
    * @param tabbedPane the target <code>JTabbedPane</code>.
    * @param title the title to match.
-   * @return the index of the first tab that matches the given <code>String</code>.
+   * @return the index of the first tab that matches the given {@code String}.
    * @throws LocationUnavailableException if a tab matching the given title could not be found.
    */
   @RunsInCurrentThread
@@ -59,7 +59,7 @@ public class JTabbedPaneLocation {
    * </p>
    * @param tabbedPane the target <code>JTabbedPane</code>.
    * @param matcher indicates if the text of the <code>JTabbedPane</code> matches the value we are looking for.
-   * @return the index of the first tab that matches the given <code>String</code>.
+   * @return the index of the first tab that matches the given {@code String}.
    * @throws LocationUnavailableException if a tab matching the given title could not be found.
    */
   @RunsInCurrentThread

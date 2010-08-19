@@ -29,7 +29,7 @@ import java.util.regex.Pattern;
 public interface TextDisplayDriver<T extends Component> {
 
   /**
-   * Asserts that the text in the given component is equal to or matches the specified <code>String</code>.
+   * Asserts that the text in the given component is equal to or matches the specified {@code String}.
    * @param component the given component.
    * @param expected the text to match. It can be a regular expression.
    * @throws AssertionError if the text of the component is not equal to or does not match the given one.

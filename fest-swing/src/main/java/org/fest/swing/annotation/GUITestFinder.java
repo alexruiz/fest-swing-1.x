@@ -17,9 +17,8 @@ package org.fest.swing.annotation;
 import java.lang.reflect.*;
 
 /**
- * Understands utility methods related to GUI tests. A GUI test is a class or method annotated with
- * <code>{@link GUITest}</code>.
- *
+ * Utility methods related to GUI tests. A GUI test is a class or method annotated with <code>{@link GUITest}</code>.
+ * 
  * @author Alex Ruiz
  */
 public final class GUITestFinder {

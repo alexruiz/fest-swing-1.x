@@ -24,7 +24,7 @@ import org.fest.swing.cell.JListCellReader;
 import org.fest.swing.edt.GuiQuery;
 
 /**
- * Understands an action, executed in the event dispatch thread, that the <code>String</code> that represents the single
+ * Understands an action, executed in the event dispatch thread, that the {@code String} that represents the single
  * selection of a given <code>{@link JList}</code>
  *
  * @author Alex Ruiz

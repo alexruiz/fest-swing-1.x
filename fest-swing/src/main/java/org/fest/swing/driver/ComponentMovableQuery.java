@@ -19,13 +19,17 @@ import java.awt.*;
 
 import javax.swing.JInternalFrame;
 
+import org.fest.swing.annotation.RunsInCurrentThread;
+
 /**
- * Understands a query that indicates whether it is possible for the user to move the given component.
+ * Indicates whether it is possible for the user to move the given component. This query is <b>not</b> guaranteed to be
+ * executed in the event dispatch thread.
  *
  * @author Alex Ruiz
  */
 final class ComponentMovableQuery {
 
+  @RunsInCurrentThread
   static boolean isUserMovable(Component c) {
     return c instanceof Dialog || c instanceof Frame || c instanceof JInternalFrame;
   }

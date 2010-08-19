@@ -21,8 +21,8 @@ import java.io.PrintStream;
 import org.fest.swing.format.Formatting;
 
 /**
- * Understands printing the <code>String</code> representation of <code>{@link java.awt.Component}</code>s to
- * facilitate debugging.
+ * Sends the {@code String} representation of <code>{@link java.awt.Component}</code>s to a
+ * <code>{@link PrintStream}</code>, to facilitate debugging.
  *
  * @author Alex Ruiz
  */

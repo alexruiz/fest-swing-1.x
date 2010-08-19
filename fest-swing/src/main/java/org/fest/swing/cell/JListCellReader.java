@@ -19,7 +19,7 @@ import javax.swing.JList;
 import org.fest.swing.annotation.RunsInCurrentThread;
 
 /**
- * Understands reading the internal value of a cell in a <code>{@link JList}</code> as expected in a test.
+ * Reads the content of a cell in <code>{@link JList}</code>, as it appears to the user.
  * <p>
  * <b>Note:</b> methods in this interface are <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.)
  * Clients are responsible for invoking them in the EDT.

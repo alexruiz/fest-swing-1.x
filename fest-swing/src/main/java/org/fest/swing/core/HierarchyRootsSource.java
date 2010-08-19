@@ -21,7 +21,7 @@ import java.util.Collection;
 import org.fest.swing.hierarchy.ExistingHierarchy;
 
 /**
- * Understands how to obtain all the root containers of an existing component hierarchy.
+ * Obtains all the root containers of an existing component hierarchy.
  *
  * @author Alex Ruiz
  */

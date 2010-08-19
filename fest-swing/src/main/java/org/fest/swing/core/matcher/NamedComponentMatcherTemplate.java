@@ -25,8 +25,7 @@ import java.util.regex.Pattern;
 import org.fest.swing.core.GenericTypeMatcher;
 
 /**
- * Understands a template for matching components by name. Subclasses are free to add other properties to use as search
- * criteria.
+ * Template for matching components by name. Subclasses are free to add other properties to use as search criteria.
  * @param <T> the type of {@code Component} supported by this matcher.
  *
  * @author Alex Ruiz
@@ -103,7 +102,7 @@ public abstract class NamedComponentMatcherTemplate<T extends Component> extends
    * Indicates whether the given value matches the expected value in this matcher. Matching is performed as follows:
    * <ol>
    * <li>it always returns {@code true} if the expected value is <code>{@link #ANY}</code></li>
-   * <li>if both the expected and actual values are <code>String</code>s, it checks for equality first. If this fails,
+   * <li>if both the expected and actual values are {@code String}s, it checks for equality first. If this fails,
    * it tries to match the values assuming the expected value can be a regular expression</li>
    * <li>if the expected value is a <code>{@link Pattern}</code> and the actual value is a
    * <code>{@link CharSequence}</code>, regular expression matching is performed</li>

@@ -22,7 +22,7 @@ import org.fest.swing.edt.GuiQuery;
 import org.fest.swing.timing.Condition;
 
 /**
- * Understands a <code>{@link Condition}</code> that is evaluated in the event dispatch thread (EDT.)
+ * <code>{@link Condition}</code> that is evaluated in the event dispatch thread (EDT.)
  *
  * @author Alex Ruiz
  *

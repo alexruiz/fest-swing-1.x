@@ -21,7 +21,7 @@ import static org.fest.util.Strings.isEmpty;
 import java.util.regex.*;
 
 /**
- * Understands utility methods related to <code>String</code>s.
+ * Understands utility methods related to {@code String}s.
  *
  * @author Alex Ruiz
  * @author Uli Schrempp
@@ -29,10 +29,10 @@ import java.util.regex.*;
 public final class Strings {
 
   /**
-   * Returns whether the given <code>String</code> is the default <code>toString()</code> implementation of an
+   * Returns whether the given {@code String} is the default <code>toString()</code> implementation of an
    * <code>Object</code>.
-   * @param s the given <code>String</code>.
-   * @return {@code true} if the given <code>String</code> is the default <code>toString()</code> implementation,
+   * @param s the given {@code String}.
+   * @return {@code true} if the given {@code String} is the default <code>toString()</code> implementation,
    * {@code false} otherwise.
    */
   public static boolean isDefaultToString(String s) {
@@ -49,14 +49,14 @@ public final class Strings {
   }
 
   /**
-   * Indicates if the given <code>String</code>s match. To match, one of the following conditions needs to be true:
+   * Indicates if the given {@code String}s match. To match, one of the following conditions needs to be true:
    * <ul>
-   * <li>both <code>String</code>s have to be equal</li>
+   * <li>both {@code String}s have to be equal</li>
    * <li><code>s</code> matches the regular expression in <code>pattern</code></li>
    * </ul>
-   * @param pattern a <code>String</code> to match (it can be a regular expression.)
-   * @param s the <code>String</code> to verify.
-   * @return {@code true} if the given <code>String</code>s match, {@code false} otherwise.
+   * @param pattern a {@code String} to match (it can be a regular expression.)
+   * @param s the {@code String} to verify.
+   * @return {@code true} if the given {@code String}s match, {@code false} otherwise.
    */
   public static boolean areEqualOrMatch(String pattern, String s) {
     if (areEqual(pattern, s)) return true;
@@ -71,11 +71,11 @@ public final class Strings {
   }
 
   /**
-   * Indicates if the given <code>String</code> matches the given regular expression pattern.
+   * Indicates if the given {@code String} matches the given regular expression pattern.
    * @param p the given regular expression pattern.
-   * @param s the <code>String</code> to evaluate.
-   * @return {@code true} if the given <code>String</code> matches the given regular expression pattern,
-   * {@code false} otherwise. It also returns {@code false} if the given <code>String</code> is
+   * @param s the {@code String} to evaluate.
+   * @return {@code true} if the given {@code String} matches the given regular expression pattern,
+   * {@code false} otherwise. It also returns {@code false} if the given {@code String} is
    * {@code null}.
    * @throws NullPointerException if the given regular expression pattern is {@code null}.
    */

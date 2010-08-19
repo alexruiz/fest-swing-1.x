@@ -31,10 +31,10 @@ import javax.swing.JTable;
 public class JTableFormatter extends ComponentFormatterTemplate {
 
   /**
-   * Returns the <code>String</code> representation of the given <code>{@link Component}</code>, which should be a
+   * Returns the {@code String} representation of the given <code>{@link Component}</code>, which should be a
    * <code>{@link JTable}</code> (or subclass.)
    * @param c the given {@code Component}.
-   * @return the <code>String</code> representation of the given <code>JTable</code>.
+   * @return the {@code String} representation of the given {@code JTable}.
    */
   @Override protected String doFormat(Component c) {
     JTable table = (JTable)c;

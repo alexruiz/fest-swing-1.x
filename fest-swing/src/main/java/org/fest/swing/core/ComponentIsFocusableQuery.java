@@ -23,8 +23,8 @@ import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
 
 /**
- * Understands an action, executed in the event dispatch thread, that indicates whether a <code>{@link Component}</code>
- * is focusable or not.
+ * Action executed in the event dispatch thread that indicates whether a <code>{@link Component}</code> is focusable or
+ * not.
  * @see Component#isFocusable()
  *
  * @author Yvonne Wang

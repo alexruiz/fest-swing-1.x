@@ -29,10 +29,10 @@ import org.fest.util.Strings;
 public final class Colors {
 
   /**
-   * Returns a <code>{@link Color}</code> from the given <code>String</code> containing the hexadecimal coding of a
+   * Returns a <code>{@link Color}</code> from the given {@code String} containing the hexadecimal coding of a
    * color.
    * @param hexString contains the hexadecimal coding of a color.
-   * @return a <code>Color</code> from the given <code>String</code> containing the hexadecimal coding of a color.
+   * @return a <code>Color</code> from the given {@code String} containing the hexadecimal coding of a color.
    * @throws NullPointerException if the hexadecimal code is {@code null}.
    * @throws IllegalArgumentException if the hexadecimal code is empty.
    * @throws NumberFormatException if the hexadecimal code is empty.

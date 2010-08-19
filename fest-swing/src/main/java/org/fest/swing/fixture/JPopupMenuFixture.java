@@ -110,7 +110,7 @@ public class JPopupMenuFixture extends ComponentFixture<JPopupMenu> implements C
 
   /**
    * Returns the contents of this fixture's <code>{@link JPopupMenu}</code>.
-   * @return a <code>String</code> array representing the contents of this fixture's {@code JPopupMenu}.
+   * @return a {@code String} array representing the contents of this fixture's {@code JPopupMenu}.
    */
   public String[] menuLabels() {
     return driver.menuLabelsOf(target);

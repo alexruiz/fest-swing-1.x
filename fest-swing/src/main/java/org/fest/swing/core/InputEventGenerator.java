@@ -19,7 +19,7 @@ import java.awt.*;
 import org.fest.swing.exception.ActionFailedException;
 
 /**
- * Understands generation of input events.
+ * Generates input events.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang

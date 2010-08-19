@@ -20,7 +20,7 @@ import java.awt.Component;
 import org.fest.swing.exception.*;
 
 /**
- * Understands functional testing of GUI component items (e.g. a cell in a <code>JTable</code> or a row in a
+ * Understands functional testing of GUI component items (e.g. a cell in a {@code JTable} or a row in a
  * <code>JList</code>):
  * <ul>
  * <li>user input simulation</li>
@@ -42,9 +42,9 @@ public interface ItemFixture extends MouseInputSimulationFixture {
   ItemFixture select();
 
   /**
-   * Returns the <code>String</code> representation of this fixture's item, or {@code null} if one can not be
+   * Returns the {@code String} representation of this fixture's item, or {@code null} if one can not be
    * obtained.
-   * @return the <code>String</code> representation of this fixture's item.
+   * @return the {@code String} representation of this fixture's item.
    */
   String value();
 

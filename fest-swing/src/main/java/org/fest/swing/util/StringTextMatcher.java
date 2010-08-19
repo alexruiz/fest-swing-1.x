@@ -20,7 +20,7 @@ import static org.fest.util.Arrays.*;
 import static org.fest.util.Strings.quote;
 
 /**
- * Understands matching text to a group of <code>String</code> values. Matching is perform by equality or by regular
+ * Understands matching text to a group of {@code String} values. Matching is perform by equality or by regular
  * expression matching.
  *
  * @author Alex Ruiz
@@ -31,7 +31,7 @@ public class StringTextMatcher implements TextMatcher {
 
   /**
    * Creates a new </code>{@link StringTextMatcher}</code>.
-   * @param values the <code>String</code> values to match. Each value can be a regular expression.
+   * @param values the {@code String} values to match. Each value can be a regular expression.
    * @throws NullPointerException if the array of values is {@code null}.
    * @throws IllegalArgumentException if the array of values is empty.
    */
@@ -42,10 +42,10 @@ public class StringTextMatcher implements TextMatcher {
   }
 
   /**
-   * Indicates whether the given text matches the <code>String</code> values in this matcher. Each value can be a
+   * Indicates whether the given text matches the {@code String} values in this matcher. Each value can be a
    * regular expression.
    * @param text the text to verify.
-   * @return {@code true} if the given text matches the <code>String</code> values in this matcher,
+   * @return {@code true} if the given text matches the {@code String} values in this matcher,
    * {@code false} otherwise.
    */
   public boolean isMatching(String text) {
@@ -66,8 +66,8 @@ public class StringTextMatcher implements TextMatcher {
   }
 
   /**
-   * Returns the <code>String</code> values in this matcher, formatted as a single <code>String</code>.
-   * @return the <code>String</code> values in this matcher, formatted as a single <code>String</code>.
+   * Returns the {@code String} values in this matcher, formatted as a single {@code String}.
+   * @return the {@code String} values in this matcher, formatted as a single {@code String}.
    */
   public String formattedValues() {
     if (onlyOneValue()) return quote(values[0]);

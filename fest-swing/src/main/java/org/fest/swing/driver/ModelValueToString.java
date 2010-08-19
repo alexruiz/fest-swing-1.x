@@ -18,7 +18,7 @@ package org.fest.swing.driver;
 import static org.fest.swing.util.Strings.isDefaultToString;
 
 /**
- * Understands converting a value from a model into a <code>String</code>.
+ * Understands converting a value from a model into a {@code String}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang

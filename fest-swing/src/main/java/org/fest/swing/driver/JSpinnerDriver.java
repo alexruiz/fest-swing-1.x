@@ -186,7 +186,7 @@ public class JSpinnerDriver extends JComponentDriver {
   /**
    * Returns the text displayed in the given <code>{@link JSpinner}</code>. This method first tries to get the text
    * displayed in the <code>JSpinner</code>'s editor, assuming it is a <code>{@link JTextComponent}</code>. If the
-   * text from the editor cannot be retrieved, it will return the <code>String</code> representation of the value
+   * text from the editor cannot be retrieved, it will return the {@code String} representation of the value
    * in the <code>JSpinner</code>'s model.
    * @param spinner the target <code>JSpinner</code>.
    * @return the text displayed in the given <code>JSpinner</code>.

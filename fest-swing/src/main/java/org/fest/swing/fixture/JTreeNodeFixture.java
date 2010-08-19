@@ -36,8 +36,8 @@ public interface JTreeNodeFixture extends ItemFixture {
   /**
    * Simulates a user expanding this fixture's tree node.
    * @return this fixture.
-   * @throws IllegalStateException if the <code>JTree</code> is disabled.
-   * @throws IllegalStateException if the <code>JTree</code> is not showing on the screen.
+   * @throws IllegalStateException if the {@code JTree} is disabled.
+   * @throws IllegalStateException if the {@code JTree} is not showing on the screen.
    * @throws ActionFailedException if this method fails to expand the row.
    */
   JTreeNodeFixture expand();
@@ -45,8 +45,8 @@ public interface JTreeNodeFixture extends ItemFixture {
   /**
    * Simulates a user collapsing this fixture's tree node.
    * @return this fixture.
-   * @throws IllegalStateException if the <code>JTree</code> is disabled.
-   * @throws IllegalStateException if the <code>JTree</code> is not showing on the screen.
+   * @throws IllegalStateException if the {@code JTree} is disabled.
+   * @throws IllegalStateException if the {@code JTree} is not showing on the screen.
    * @throws ActionFailedException if this method fails to collapse the row.
    */
   JTreeNodeFixture collapse();

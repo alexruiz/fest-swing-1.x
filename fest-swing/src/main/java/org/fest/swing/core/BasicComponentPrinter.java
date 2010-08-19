@@ -23,13 +23,16 @@ import java.io.PrintStream;
 
 import org.fest.swing.annotation.*;
 import org.fest.swing.edt.GuiTask;
+import org.fest.swing.format.Formatting;
 import org.fest.swing.hierarchy.*;
 
 /**
- * Understands printing the <code>String</code> representation of <code>{@link java.awt.Component}</code>s to
- * facilitate debugging.
+ * Default implementation of <code>{@link ComponentPrinter}</code>.
  *
  * @author Alex Ruiz
+ *
+ * @see ComponentPrinter
+ * @see Formatting#format(Component)
  */
 public final class BasicComponentPrinter implements ComponentPrinter {
 

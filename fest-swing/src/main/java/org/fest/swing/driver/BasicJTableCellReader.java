@@ -26,7 +26,7 @@ import org.fest.swing.annotation.RunsInCurrentThread;
 import org.fest.swing.cell.JTableCellReader;
 
 /**
- * Understands the default implementation of <code>{@link JTableCellReader}</code>.
+ * Default implementation of <code>{@link JTableCellReader}</code>.
  *
  * @author Yvonne Wang
  * @author Alex Ruiz
@@ -37,9 +37,8 @@ public class BasicJTableCellReader implements JTableCellReader {
   private final BasicJComboBoxCellReader comboBoxCellReader = new BasicJComboBoxCellReader();
 
   /**
-   * Creates a new </code>{@link BasicJTableCellReader}</code> that uses a
-   * <code>{@link BasicCellRendererReader}</code> to read the value from the cell renderer component in a
-   * <code>JTable</code>.
+   * Creates a new </code>{@link BasicJTableCellReader}</code> that uses a <code>{@link BasicCellRendererReader}</code>
+   * to read the value from the cell renderer component in a {@code JTable}.
    */
   public BasicJTableCellReader() {
     this(new BasicCellRendererReader());
@@ -47,9 +46,8 @@ public class BasicJTableCellReader implements JTableCellReader {
 
   /**
    * Creates a new </code>{@link BasicJTableCellReader}</code>.
-   * @param reader knows how to read values from the cell renderer component in a
-   * <code>JTable</code>.
-   * @throws NullPointerException if <code>reader</code> is {@code null}.
+   * @param reader knows how to read values from the cell renderer component in a {@code JTable}.
+   * @throws NullPointerException if {@code reader} is {@code null}.
    */
   public BasicJTableCellReader(CellRendererReader reader) {
     if (reader == null)
@@ -59,23 +57,23 @@ public class BasicJTableCellReader implements JTableCellReader {
 
   /**
    * Returns the internal value of a cell in a <code>{@link JTable}</code> as expected in a test. This method first
-   * tries to return the value displayed in the <code>JTable</code>'s cell renderer.
+   * tries to return the value displayed in the {@code JTable}'s cell renderer.
    * <ul>
    * <li>if the renderer is a <code>{@link JLabel}</code>, this method returns its text</li>
    * <li>if the renderer is a <code>{@link JComboBox}</code>, this method returns the value of its selection as a
-   * <code>String</code></li>
+   * {@code String}</li>
    * <li>if the renderer is a <code>{@link JCheckBox}</code>, this method returns whether it is selected or not</li>
    * </ul>
    * If it fails reading the cell renderer, this method will get the value from the <code>toString</code> implementation
-   * of the object stored in the <code>JTable</code>'s model at the specified indices.
+   * of the object stored in the {@code JTable}'s model at the specified indices.
    * <p>
    * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
    * responsible for calling this method from the EDT.
    * </p>
-   * @param table the given <code>JTable</code>.
+   * @param table the given {@code JTable}.
    * @param row the row index of the cell.
    * @param column the column index of the cell.
-   * @return the internal value of a cell in a <code>JTable</code> as expected in a test.
+   * @return the internal value of a cell in a {@code JTable} as expected in a test.
    */
   @RunsInCurrentThread
   public String valueAt(JTable table, int row, int column) {
@@ -100,7 +98,7 @@ public class BasicJTableCellReader implements JTableCellReader {
    * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
    * responsible for calling this method from the EDT.
    * </p>
-   * @param table the given <code>JTable</code>.
+   * @param table the given {@code JTable}.
    * @param row the row index of the cell.
    * @param column the column index of the cell.
    * @return the font of the cell renderer for the given table cell.
@@ -117,7 +115,7 @@ public class BasicJTableCellReader implements JTableCellReader {
    * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
    * responsible for calling this method from the EDT.
    * </p>
-   * @param table the given <code>JTable</code>.
+   * @param table the given {@code JTable}.
    * @param row the row index of the cell.
    * @param column the column index of the cell.
    * @return the background color of the cell renderer for the given table cell.
@@ -134,7 +132,7 @@ public class BasicJTableCellReader implements JTableCellReader {
    * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
    * responsible for calling this method from the EDT.
    * </p>
-   * @param table the given <code>JTable</code>.
+   * @param table the given {@code JTable}.
    * @param row the row index of the cell.
    * @param column the column index of the cell.
    * @return the foreground color of the cell renderer for the given table cell.

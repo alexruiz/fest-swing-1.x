@@ -22,7 +22,7 @@ import static org.fest.swing.util.Platform.*;
 import org.fest.util.VisibleForTesting;
 
 /**
- * Understands configuration settings.
+ * FEST-Swing configuration settings.
  *
  * @author Alex Ruiz
  */

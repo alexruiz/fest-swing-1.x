@@ -51,14 +51,11 @@ import org.fest.swing.util.*;
 import org.fest.util.VisibleForTesting;
 
 /**
- * Understands functional testing of <code>{@link JComboBox}</code>es:
- * <ul>
- * <li>user input simulation</li>
- * <li>state verification</li>
- * <li>property value query</li>
- * </ul>
- * This class is intended for internal use only. Please use the classes in the package
+ * User input simulation, state verification and property value query on a <code>{@link JComboBox}</code>.
+ * <p>
+ * <b>Note:</b> This class is intended for internal use only. Please use the classes in the package
  * <code>{@link org.fest.swing.fixture}</code> in your tests.
+ * </p>
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
@@ -85,11 +82,11 @@ public class JComboBoxDriver extends JComponentDriver {
   }
 
   /**
-   * Returns an array of <code>String</code>s that represents the contents of the given <code>{@link JComboBox}</code>
-   * list. The <code>String</code> representation of each element is performed using this driver's
+   * Returns an array of {@code String}s that represents the contents of the given <code>{@link JComboBox}</code>
+   * list. The {@code String} representation of each element is performed using this driver's
    * <code>{@link JComboBoxCellReader}</code>.
    * @param comboBox the target {@code JComboBox}.
-   * @return an array of <code>String</code>s that represent the contents of the given {@code JComboBox} list.
+   * @return an array of {@code String}s that represent the contents of the given {@code JComboBox} list.
    * @see #value(JComboBox, int)
    * @see #cellReader(JComboBoxCellReader)
    */
@@ -144,7 +141,7 @@ public class JComboBoxDriver extends JComponentDriver {
   }
 
   /**
-   * Verifies that the <code>String</code> representation of the selected item in the <code>{@link JComboBox}</code>
+   * Verifies that the {@code String} representation of the selected item in the <code>{@link JComboBox}</code>
    * matches the given text.
    * @param comboBox the target {@code JComboBox}.
    * @param value the text to match. It can be a regular expression.
@@ -158,7 +155,7 @@ public class JComboBoxDriver extends JComponentDriver {
   }
 
   /**
-   * Verifies that the <code>String</code> representation of the selected item in the <code>{@link JComboBox}</code>
+   * Verifies that the {@code String} representation of the selected item in the <code>{@link JComboBox}</code>
    * matches the given regular expression pattern.
    * @param comboBox the target {@code JComboBox}.
    * @param pattern the regular expression pattern to match.
@@ -213,7 +210,7 @@ public class JComboBoxDriver extends JComponentDriver {
   }
 
   /**
-   * Returns the <code>String</code> representation of the element under the given index, using this driver's
+   * Returns the {@code String} representation of the element under the given index, using this driver's
    * <code>{@link JComboBoxCellReader}</code>.
    * @param comboBox the target {@code JComboBox}.
    * @param index the given index.

@@ -33,9 +33,11 @@ import org.fest.swing.exception.ComponentLookupException;
 import org.fest.swing.hierarchy.*;
 
 /**
- * Understands GUI <code>{@link java.awt.Component}</code> lookup.
+ * Default implementation of <code>{@link ComponentFinder}</code>.
  *
  * @author Alex Ruiz
+ *
+ * @see ComponentFinder
  */
 public final class BasicComponentFinder implements ComponentFinder {
 

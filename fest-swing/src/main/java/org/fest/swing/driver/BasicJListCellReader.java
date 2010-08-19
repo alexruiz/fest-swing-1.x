@@ -25,7 +25,7 @@ import org.fest.swing.annotation.RunsInCurrentThread;
 import org.fest.swing.cell.JListCellReader;
 
 /**
- * Understands the default implementation of <code>{@link JListCellReader}</code>.
+ * Default implementation of <code>{@link JListCellReader}</code>.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang

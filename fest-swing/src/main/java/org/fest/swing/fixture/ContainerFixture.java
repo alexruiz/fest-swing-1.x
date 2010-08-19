@@ -520,7 +520,7 @@ public abstract class ContainerFixture<T extends Container> extends ComponentFix
 
   /**
    * Returns the <code>{@link ComponentFinder}</code> contained in this fixture's <code>{@link Robot}</code>.
-   * @return the <code>ComponentFinder</code> contained in this fixture's <code>Robot</code>.
+   * @return the {@code ComponentFinder} contained in this fixture's <code>Robot</code>.
    */
   protected final ComponentFinder finder() { return robot.finder(); }
 }

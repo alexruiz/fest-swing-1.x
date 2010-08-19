@@ -23,8 +23,8 @@ import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiTask;
 
 /**
- * Understands a task that shows/hides the drop-down menu of a <code>{@link JComboBox}</code>. This task is executed in
- * the event dispatch thread.
+ * Shows/hides the drop-down menu of a <code>{@link JComboBox}</code>. This task is executed in the event dispatch
+ * thread.
  *
  * @author Alex Ruiz
  */

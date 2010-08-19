@@ -18,7 +18,7 @@ package org.fest.swing.driver;
 import javax.swing.*;
 
 /**
- * Understands an action that returns the text used in the "cancel" button of a <code>{@link JFileChooser}</code>.
+ * Returns the text used in the "cancel" button of a <code>{@link JFileChooser}</code>.
  *
  * @author Yvonne Wang
  * @author Alex Ruiz

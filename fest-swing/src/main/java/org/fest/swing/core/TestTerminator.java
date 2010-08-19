@@ -18,7 +18,7 @@ package org.fest.swing.core;
 import static org.fest.swing.util.AWTExceptionHandlerInstaller.installAWTExceptionHandler;
 
 /**
- * Understands terminating running FEST-Swing tests.
+ * Terminates any running FEST-Swing tests.
  *
  * @author <a href="mailto:simeon.fitch@mseedsoft.com">Simeon H.K. Fitch</a>
  */

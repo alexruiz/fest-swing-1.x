@@ -34,8 +34,8 @@ import java.util.regex.Pattern;
 public interface ItemGroupFixture {
 
   /**
-   * Returns the <code>String</code> representation of the elements in this fixture's <code>{@link Component}</code>.
-   * @return the <code>String</code> representation of the elements in this fixture's {@code Component}.
+   * Returns the {@code String} representation of the elements in this fixture's <code>{@link Component}</code>.
+   * @return the {@code String} representation of the elements in this fixture's {@code Component}.
    */
   String[] contents();
 

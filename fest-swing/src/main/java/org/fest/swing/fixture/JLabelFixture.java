@@ -217,7 +217,7 @@ public class JLabelFixture extends ComponentFixture<JLabel> implements CommonCom
   }
 
   /**
-   * Asserts that the text of this fixture's <code>{@link JLabel}</code> is equal to the specified <code>String</code>.
+   * Asserts that the text of this fixture's <code>{@link JLabel}</code> is equal to the specified {@code String}.
    * @param expected the text to match.
    * @return this fixture.
    * @throws AssertionError if the text of this fixture's <code>JLabel</code> is not equal to the given one.

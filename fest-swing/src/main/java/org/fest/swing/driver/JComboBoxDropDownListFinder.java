@@ -29,8 +29,8 @@ import org.fest.swing.core.Robot;
 import org.fest.swing.util.TimeoutWatch;
 
 /**
- * Understands look up of the <code>{@link JList}</code> in the pop-up raised by a <code>{@link JComboBox}</code>, if
- * the LAF actually uses one.
+ * Looks up the <code>{@link JList}</code> in the pop-up raised by a <code>{@link JComboBox}</code>, if the LAF actually
+ * uses one.
  *
  * @author Alex Ruiz
  */

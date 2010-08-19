@@ -21,7 +21,7 @@ import javax.swing.JLabel;
 import org.fest.swing.annotation.RunsInCurrentThread;
 
 /**
- * Understands a basic implementation of <code>{@link CellRendererReader}</code>.
+ * Default implementation of <code>{@link CellRendererReader}</code>.
  *
  * @author Alex Ruiz
  */

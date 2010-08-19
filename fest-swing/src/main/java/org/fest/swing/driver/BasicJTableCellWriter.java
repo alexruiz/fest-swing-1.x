@@ -25,7 +25,7 @@ import org.fest.swing.core.Robot;
 import org.fest.swing.exception.ActionFailedException;
 
 /**
- * Understands the default implementation of <code>{@link JTableCellWriter}</code>.
+ * Default implementation of <code>{@link JTableCellWriter}</code>.
  *
  * @author Yvonne Wang
  * @author Alex Ruiz
@@ -44,16 +44,16 @@ public class BasicJTableCellWriter extends AbstractJTableCellWriter {
   }
 
   /**
-   * Enters the given value at the given cell of the <code>JTable</code>. This method only supports the following GUI
+   * Enters the given value at the given cell of the {@code JTable}. This method only supports the following GUI
    * components as cell editors:
    * <ul>
    * <li><code>{@link JCheckBox}</code>: valid values for the property "selected" (a boolean) are "true" and "yes",
    * other values are considered {@code false}.</li>
-   * <li><code>{@link JComboBox}</code>: this writer will select the element which <code>String</code> representation
+   * <li><code>{@link JComboBox}</code>: this writer will select the element which {@code String} representation
    * matches the given value.</li>
    * <li><code>{@link JTextComponent}</code>: any value will be entered in the cell.</li>
    * </ul>
-   * @param table the target <code>JTable</code>.
+   * @param table the target {@code JTable}.
    * @param row the row index of the cell.
    * @param column the column index of the cell.
    * @param value the value to enter.

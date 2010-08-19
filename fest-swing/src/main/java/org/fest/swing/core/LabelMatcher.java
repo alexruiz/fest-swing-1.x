@@ -26,8 +26,8 @@ import javax.swing.JLabel;
 import org.fest.swing.annotation.RunsInCurrentThread;
 
 /**
- * Understands <code>{@link java.awt.Component}</code> matching by the text of the associated
- * <code>{@link JLabel}</code> and (optionally) by type.
+ * Matches a <code>{@link java.awt.Component}</code> by the text of the associated <code>{@link JLabel}</code> and
+ * (optionally) by type.
  * @see JLabel#getLabelFor()
  * @see JLabel#setLabelFor(Component)
  *

@@ -20,7 +20,7 @@ import java.awt.Component;
 import java.awt.event.*;
 
 /**
- * Understands monitoring when a <code>{@link Component}</code> gets keyboard focus.
+ * Monitors which <code>{@link Component}</code> gets keyboard focus.
  *
  * @author Alex Ruiz
  */

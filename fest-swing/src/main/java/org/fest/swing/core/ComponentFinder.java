@@ -24,7 +24,8 @@ import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.exception.ComponentLookupException;
 
 /**
- * Understands GUI <code>{@link java.awt.Component}</code> lookup.
+ * Looks up GUI <code>{@link java.awt.Component}</code>s based on different search criteria, such as a {@code Component}
+ * 's name, type or label, and custom search criteria as well.
  *
  * @author Alex Ruiz
  */
@@ -33,7 +34,7 @@ public interface ComponentFinder {
 
   /**
    * Returns the <code>{@link ComponentPrinter}</code> in this finder.
-   * @return the <code>ComponentPrinter</code> in this finder.
+   * @return the {@code ComponentPrinter} in this finder.
    */
   ComponentPrinter printer();
 

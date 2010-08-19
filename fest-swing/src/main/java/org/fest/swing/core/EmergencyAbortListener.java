@@ -25,11 +25,12 @@ import java.awt.event.*;
 import org.fest.util.VisibleForTesting;
 
 /**
- * Understands an escape valve for users to abort a running FEST-Swing test by pressing 'Ctrl + Shift + A'. The key
- * combination to use to abort test is configurable through the method
+ * An escape valve for users to abort a running FEST-Swing test by pressing 'Ctrl + Shift + A'. The key combination to
+ * use to abort test is configurable through the method
  * <code>{@link EmergencyAbortListener#keyCombination(KeyPressInfo)}</code>.
  * <p>
  * The following example shows to use this listener in a TestNG test:
+ *
  * <pre>
  * private EmergencyAbortListener listener;
  *
@@ -47,6 +48,7 @@ import org.fest.util.VisibleForTesting;
  * </p>
  * <p>
  * Changing the default key combination for aborting test:
+ *
  * <pre>
  * listener = EmergencyAbortListener.registerInToolkit().{@link EmergencyAbortListener#keyCombination(KeyPressInfo) keyCombination}(key(VK_C).modifiers(SHIFT_MASK));
  * </pre>

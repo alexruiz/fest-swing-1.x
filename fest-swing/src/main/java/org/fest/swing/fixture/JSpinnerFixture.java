@@ -379,7 +379,7 @@ public class JSpinnerFixture extends ComponentFixture<JSpinner> implements Commo
   /**
    * Returns the text displayed by this fixture's <code>{@link JSpinner}</code>. This method first tries to get the text
    * displayed in the <code>JSpinner</code>'s editor, assuming it is a <code>{@link JTextComponent}</code>. If the
-   * text from the editor cannot be retrieved, it will return the <code>String</code> representation of the value
+   * text from the editor cannot be retrieved, it will return the {@code String} representation of the value
    * in the <code>JSpinner</code>'s model.
    * @return the text displayed by this fixture's <code>JSpinner</code>.
    * @since 1.2

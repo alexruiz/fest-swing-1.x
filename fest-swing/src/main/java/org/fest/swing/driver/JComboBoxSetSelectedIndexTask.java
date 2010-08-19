@@ -23,8 +23,8 @@ import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiTask;
 
 /**
- * Understands a task that selects the element in the given index in the given <code>{@link JComboBox}</code>. This task
- * is executed in the event dispatch thread.
+ * Selects the element in the given index in the given <code>{@link JComboBox}</code>. This task is executed in the
+ * event dispatch thread.
  * @see JComboBox#setSelectedIndex(int)
  *
  * @author Alex Ruiz

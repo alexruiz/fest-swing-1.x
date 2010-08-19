@@ -25,7 +25,7 @@ import org.fest.swing.edt.GuiQuery;
 import org.fest.swing.util.TextMatcher;
 
 /**
- * Understands lookup of the first item in a <code>{@link JComboBox}</code> whose value matches a given one.
+ * Looks up the first item in a <code>{@link JComboBox}</code> whose value matches a given one.
  *
  * @author Alex Ruiz
  */

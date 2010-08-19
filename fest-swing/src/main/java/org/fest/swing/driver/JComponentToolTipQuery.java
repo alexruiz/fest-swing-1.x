@@ -23,7 +23,8 @@ import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
 
 /**
- * Understands an action that returns the toolTip text of a given <code>{@link JComponent}</code>.
+ * Returns the toolTip text of a given <code>{@link JComponent}</code>. This task is executed in the event dispatch
+ * thread.
  * @see JComponent#getToolTipText()
  *
  * @author Alex Ruiz

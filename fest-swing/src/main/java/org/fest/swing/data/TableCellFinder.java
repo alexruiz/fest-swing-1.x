@@ -22,7 +22,7 @@ import org.fest.swing.cell.JTableCellReader;
 import org.fest.swing.exception.ActionFailedException;
 
 /**
- * Understands finding a cell in a <code>{@link JTable}</code>.
+ * Finds a cell in a <code>{@link JTable}</code>.
  *
  * @author Alex Ruiz
  */
@@ -30,10 +30,10 @@ public interface TableCellFinder {
 
   /**
    * Finds a cell in the given <code>{@link JTable}</code> based on some search criteria specified by this finder.
-   * Implementations of this method <strong>should</strong> access the given <code>JTable</code> in the event dispatch
+   * Implementations of this method <strong>should</strong> access the given {@code JTable} in the event dispatch
    * thread.
-   * @param table the target <code>JTable</code>.
-   * @param cellReader knows how to read the contents of a cell in a <code>JTable</code>.
+   * @param table the target {@code JTable}.
+   * @param cellReader knows how to read the contents of a cell in a {@code JTable}.
    * @return the cell found, if any.
    * @throws ActionFailedException if a matching cell could not be found.
    */

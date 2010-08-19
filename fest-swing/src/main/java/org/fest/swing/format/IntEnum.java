@@ -20,7 +20,7 @@ import static java.lang.String.valueOf;
 import java.util.*;
 
 /**
- * Understands a workaround to obtain a <code>String</code> representation of an <code>int</code> enumeration.
+ * Understands a workaround to obtain a {@code String} representation of an <code>int</code> enumeration.
  *
  * @author Alex Ruiz
  */

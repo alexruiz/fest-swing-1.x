@@ -28,7 +28,7 @@ import org.fest.swing.exception.ComponentLookupException;
 import org.fest.swing.timing.Condition;
 
 /**
- * Understands a condition that is satisfied if a GUI component that matches certain search criteria can be found.
+ * Condition that is satisfied if a GUI component that matches certain search criteria is found.
  *
  * @author Yvonne Wang
  * @author Alex Ruiz
@@ -81,7 +81,8 @@ public final class ComponentFoundCondition extends Condition {
    * @param matcher specifies the condition that the component we are looking for needs to match.
    * @param root the root used as the starting point of the search.
    */
-  public ComponentFoundCondition(Description description, ComponentFinder finder, ComponentMatcher matcher, Container root) {
+  public ComponentFoundCondition(Description description, ComponentFinder finder, ComponentMatcher matcher,
+      Container root) {
     super(description);
     this.finder = finder;
     this.matcher = matcher;

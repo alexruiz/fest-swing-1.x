@@ -39,7 +39,7 @@ public class JTreePathFixture implements JTreeNodeFixture {
 
   /**
    * Creates a new </code>{@link JTreePathFixture}</code>.
-   * @param tree handles the <code>JTree</code> containing the node with the given path.
+   * @param tree handles the {@code JTree} containing the node with the given path.
    * @param path the given path.
    */
   protected JTreePathFixture(JTreeFixture tree, String path) {
@@ -50,8 +50,8 @@ public class JTreePathFixture implements JTreeNodeFixture {
   /**
    * Simulates a user expanding this fixture's tree node.
    * @return this fixture.
-   * @throws IllegalStateException if the <code>JTree</code> is disabled.
-   * @throws IllegalStateException if the <code>JTree</code> is not showing on the screen.
+   * @throws IllegalStateException if the {@code JTree} is disabled.
+   * @throws IllegalStateException if the {@code JTree} is not showing on the screen.
    * @throws ActionFailedException if this method fails to expand the path.
    * @since 1.2
    */
@@ -63,8 +63,8 @@ public class JTreePathFixture implements JTreeNodeFixture {
   /**
    * Simulates a user collapsing this fixture's tree node.
    * @return this fixture.
-   * @throws IllegalStateException if the <code>JTree</code> is disabled.
-   * @throws IllegalStateException if the <code>JTree</code> is not showing on the screen.
+   * @throws IllegalStateException if the {@code JTree} is disabled.
+   * @throws IllegalStateException if the {@code JTree} is not showing on the screen.
    * @throws ActionFailedException if this method fails to collapse the path.
    * @since 1.2
    */
@@ -77,8 +77,8 @@ public class JTreePathFixture implements JTreeNodeFixture {
    * Selects the this fixture's tree node, expanding parent nodes if necessary. This method will not click the node if
    * it is already selected.
    * @return this fixture.
-   * @throws IllegalStateException if this fixture's <code>JTree</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JTree</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JTree} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JTree} is not showing on the screen.
    */
   public JTreePathFixture select() {
     tree.selectPath(path);
@@ -88,8 +88,8 @@ public class JTreePathFixture implements JTreeNodeFixture {
   /**
    * Simulates a user clicking this fixture's tree node.
    * @return this fixture.
-   * @throws IllegalStateException if the <code>JTree</code> is disabled.
-   * @throws IllegalStateException if the <code>JTree</code> is not showing on the screen.
+   * @throws IllegalStateException if the {@code JTree} is disabled.
+   * @throws IllegalStateException if the {@code JTree} is not showing on the screen.
    */
   public JTreePathFixture click() {
     tree.clickPath(path);
@@ -101,8 +101,8 @@ public class JTreePathFixture implements JTreeNodeFixture {
    * @param button the button to click.
    * @return this fixture.
    * @throws NullPointerException if the given button is {@code null}.
-   * @throws IllegalStateException if the <code>JTree</code> is disabled.
-   * @throws IllegalStateException if the <code>JTree</code> is not showing on the screen.
+   * @throws IllegalStateException if the {@code JTree} is disabled.
+   * @throws IllegalStateException if the {@code JTree} is not showing on the screen.
    */
   public JTreePathFixture click(MouseButton button) {
     tree.clickPath(path, button);
@@ -114,8 +114,8 @@ public class JTreePathFixture implements JTreeNodeFixture {
    * @param mouseClickInfo specifies the button to click and the times the button should be clicked.
    * @return this fixture.
    * @throws NullPointerException if the given <code>MouseClickInfo</code> is {@code null}.
-   * @throws IllegalStateException if the <code>JTree</code> is disabled.
-   * @throws IllegalStateException if the <code>JTree</code> is not showing on the screen.
+   * @throws IllegalStateException if the {@code JTree} is disabled.
+   * @throws IllegalStateException if the {@code JTree} is not showing on the screen.
    */
   public JTreePathFixture click(MouseClickInfo mouseClickInfo) {
     tree.clickPath(path, mouseClickInfo);
@@ -125,8 +125,8 @@ public class JTreePathFixture implements JTreeNodeFixture {
   /**
    * Simulates a user double-clicking this fixture's tree node.
    * @return this fixture.
-   * @throws IllegalStateException if the <code>JTree</code> is disabled.
-   * @throws IllegalStateException if the <code>JTree</code> is not showing on the screen.
+   * @throws IllegalStateException if the {@code JTree} is disabled.
+   * @throws IllegalStateException if the {@code JTree} is not showing on the screen.
    */
   public JTreePathFixture doubleClick() {
     tree.doubleClickPath(path);
@@ -136,8 +136,8 @@ public class JTreePathFixture implements JTreeNodeFixture {
   /**
    * Simulates a user right-clicking this fixture's tree node.
    * @return this fixture.
-   * @throws IllegalStateException if the <code>JTree</code> is disabled.
-   * @throws IllegalStateException if the <code>JTree</code> is not showing on the screen.
+   * @throws IllegalStateException if the {@code JTree} is disabled.
+   * @throws IllegalStateException if the {@code JTree} is not showing on the screen.
    */
   public JTreePathFixture rightClick() {
     tree.rightClickPath(path);
@@ -147,8 +147,8 @@ public class JTreePathFixture implements JTreeNodeFixture {
   /**
    * Simulates a user dragging this fixture's tree node.
    * @return this fixture.
-   * @throws IllegalStateException if the <code>JTree</code> is disabled.
-   * @throws IllegalStateException if the <code>JTree</code> is not showing on the screen.
+   * @throws IllegalStateException if the {@code JTree} is disabled.
+   * @throws IllegalStateException if the {@code JTree} is not showing on the screen.
    */
   public JTreePathFixture drag() {
     tree.drag(path);
@@ -158,8 +158,8 @@ public class JTreePathFixture implements JTreeNodeFixture {
   /**
    * Simulates a user dropping relative to this fixture's tree node.
    * @return this fixture.
-   * @throws IllegalStateException if the <code>JTree</code> is disabled.
-   * @throws IllegalStateException if the <code>JTree</code> is not showing on the screen.
+   * @throws IllegalStateException if the {@code JTree} is disabled.
+   * @throws IllegalStateException if the {@code JTree} is not showing on the screen.
    * @throws ActionFailedException if there is no drag action in effect.
    */
   public JTreePathFixture drop() {
@@ -170,8 +170,8 @@ public class JTreePathFixture implements JTreeNodeFixture {
   /**
    * Shows a pop-up menu using this fixture's tree node as the invoker of the pop-up menu.
    * @return a fixture that handles functional testing of the displayed pop-up menu.
-   * @throws IllegalStateException if the <code>JTree</code> is disabled.
-   * @throws IllegalStateException if the <code>JTree</code> is not showing on the screen.
+   * @throws IllegalStateException if the {@code JTree} is disabled.
+   * @throws IllegalStateException if the {@code JTree} is not showing on the screen.
    * @throws ComponentLookupException if a pop-up menu cannot be found.
    */
   public JPopupMenuFixture showPopupMenu() {
@@ -179,8 +179,8 @@ public class JTreePathFixture implements JTreeNodeFixture {
   }
 
   /**
-   * Returns the <code>String</code> representation of this fixture's tree node.
-   * @return the <code>String</code> representation of this fixture's tree node.
+   * Returns the {@code String} representation of this fixture's tree node.
+   * @return the {@code String} representation of this fixture's tree node.
    */
   public String value() {
     return tree.valueAt(path);

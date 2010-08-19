@@ -39,7 +39,7 @@ public final class Patterns {
    * </pre>
    * </p>
    * @param patterns the array of patterns to format.
-   * @return the <code>String</code> containing the formatted array.
+   * @return the {@code String} containing the formatted array.
    * @throws NullPointerException if the given array of patterns is {@code null}.
    * @throws NullPointerException if any of the patterns in the given array is {@code null}.
    */

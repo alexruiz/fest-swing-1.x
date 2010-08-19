@@ -29,7 +29,7 @@ import org.fest.swing.edt.GuiQuery;
 import org.fest.swing.exception.ActionFailedException;
 
 /**
- * Understands lookup of a cell in a <code>{@link JTable}</code> by column identifier.
+ * Looks up a cell in a <code>{@link JTable}</code> by column identifier.
  * <p>
  * Example:
  * <pre>
@@ -87,8 +87,8 @@ public class TableCellByColumnId implements TableCellFinder {
 
   /**
    * Finds a cell in the given <code>{@link JTable}</code> that has a matching row index and column id.
-   * @param table the target <code>JTable</code>.
-   * @param cellReader knows how to read the contents of a cell in a <code>JTable</code>.
+   * @param table the target {@code JTable}.
+   * @param cellReader knows how to read the contents of a cell in a {@code JTable}.
    * @return the cell found, if any.
    * @throws ActionFailedException if a matching cell could not be found.
    */

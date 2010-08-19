@@ -147,10 +147,10 @@ public class JListItemFixture implements ItemFixture {
   }
 
   /**
-   * Returns the <code>String</code> representation of the value of this fixture's list item, using the
+   * Returns the {@code String} representation of the value of this fixture's list item, using the
    * <code>{@link JListCellReader}</code> from the <code>{@link JListFixture}</code> that created this
    * <code>{@link JListItemFixture}</code>.
-   * @return the <code>String</code> representation of the value of this fixture's list item.
+   * @return the {@code String} representation of the value of this fixture's list item.
    * @throws IndexOutOfBoundsException if this item's index is negative or greater than the index of the last item in
    * the <code>JList</code>.
    * @see JListFixture#cellReader(JListCellReader)

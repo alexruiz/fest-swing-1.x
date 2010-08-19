@@ -24,7 +24,7 @@ import java.awt.Component;
 import org.fest.swing.annotation.RunsInCurrentThread;
 
 /**
- * Understands <code>{@link java.awt.Component}</code> matching by name and (optionally) by type.
+ * Matches a <code>{@link java.awt.Component}</code> by name and (optionally) by type.
  *
  * @author Alex Ruiz
  */

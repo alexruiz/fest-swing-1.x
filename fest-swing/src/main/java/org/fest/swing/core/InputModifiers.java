@@ -19,7 +19,7 @@ import static java.awt.event.InputEvent.*;
 import java.awt.event.InputEvent;
 
 /**
- * Understands input modifiers.
+ * Utility methods related to input modifiers.
  *
  * @author Alex Ruiz
  */

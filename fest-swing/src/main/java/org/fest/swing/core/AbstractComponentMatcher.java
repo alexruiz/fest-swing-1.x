@@ -20,7 +20,7 @@ import java.awt.Component;
 import org.fest.swing.annotation.RunsInCurrentThread;
 
 /**
- * Understands a base class for implementations of <code>{@link ResettableComponentMatcher}</code>.
+ * Template for implementations of <code>{@link ResettableComponentMatcher}</code>.
  *
  * @author Yvonne Wang
  * @author Alex Ruiz

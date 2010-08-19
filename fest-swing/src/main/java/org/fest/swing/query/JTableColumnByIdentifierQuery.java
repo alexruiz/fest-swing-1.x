@@ -35,7 +35,7 @@ public final class JTableColumnByIdentifierQuery {
    * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
    * responsible for calling this method from the EDT.
    * </p>
-   * @param table the given <code>JTable</code>.
+   * @param table the given {@code JTable}.
    * @param identifier the column identifier.
    * @return the index of a column with a matching identifier. Otherwise it returns -1.
    */
