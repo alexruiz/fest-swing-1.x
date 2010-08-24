@@ -31,7 +31,7 @@ public interface TableCellFinder {
   /**
    * Finds a cell in the given <code>{@link JTable}</code> based on some search criteria specified by this finder.
    * Implementations of this method <strong>should</strong> access the given {@code JTable} in the event dispatch
-   * thread.
+   * thread (EDT.)
    * @param table the target {@code JTable}.
    * @param cellReader knows how to read the contents of a cell in a {@code JTable}.
    * @return the cell found, if any.

@@ -25,7 +25,7 @@ import javax.swing.JButton;
 import org.fest.swing.annotation.RunsInCurrentThread;
 
 /**
- * Matches <code>{@link JButton}</code>s by name, text and visibility on the screen.
+ * Matches <code>{@link JButton}</code>s by name, text or visibility on the screen.
  *
  * @author Alex Ruiz
  */

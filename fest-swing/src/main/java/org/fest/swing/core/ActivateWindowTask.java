@@ -23,8 +23,8 @@ import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiTask;
 
 /**
- * Activates a <code>{@link Window}</code>. "Activate" means that the given window gets the keyboard focus. This task
- * is executed in the event dispatch thread.
+ * Activates a <code>{@link Window}</code>. "Activate" means that the given window is brought to the front and then
+ * gets the keyboard focus.
  *
  * @author Alex Ruiz
  */

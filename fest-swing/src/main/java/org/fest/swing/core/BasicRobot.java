@@ -49,14 +49,18 @@ import javax.swing.*;
 
 import net.jcip.annotations.GuardedBy;
 
-import org.fest.swing.annotation.*;
-import org.fest.swing.edt.*;
+import org.fest.swing.annotation.RunsInCurrentThread;
+import org.fest.swing.annotation.RunsInEDT;
+import org.fest.swing.edt.GuiQuery;
+import org.fest.swing.edt.GuiTask;
 import org.fest.swing.exception.*;
-import org.fest.swing.hierarchy.*;
+import org.fest.swing.hierarchy.ComponentHierarchy;
+import org.fest.swing.hierarchy.ExistingHierarchy;
 import org.fest.swing.input.InputState;
 import org.fest.swing.lock.ScreenLock;
 import org.fest.swing.monitor.WindowMonitor;
-import org.fest.swing.util.*;
+import org.fest.swing.util.Pair;
+import org.fest.swing.util.TimeoutWatch;
 import org.fest.util.VisibleForTesting;
 
 /**
@@ -87,16 +91,10 @@ public class BasicRobot implements Robot {
   private static WindowMonitor windowMonitor = WindowMonitor.instance();
   private static InputState inputState = new InputState(toolkit);
 
-  /** Provides access to all the components in the hierarchy. */
   private final ComponentHierarchy hierarchy;
-
   private final Object screenLockOwner;
-
-  /** Looks up <code>{@link java.awt.Component}</code>s. */
   private final ComponentFinder finder;
-
   private final Settings settings;
-
   private final AWTEventPoster eventPoster;
   private final InputEventGenerator eventGenerator;
   private final UnexpectedJOptionPaneFinder unexpectedJOptionPaneFinder;

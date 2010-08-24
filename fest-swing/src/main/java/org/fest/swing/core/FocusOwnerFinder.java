@@ -19,9 +19,11 @@ import static org.fest.swing.edt.GuiActionRunner.execute;
 import static org.fest.util.Collections.list;
 
 import java.awt.Component;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
-import org.fest.swing.annotation.*;
+import org.fest.swing.annotation.RunsInCurrentThread;
+import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
 import org.fest.util.VisibleForTesting;
 
@@ -80,13 +82,18 @@ public final class FocusOwnerFinder {
   @RunsInCurrentThread
   public static Component focusOwner() {
     for (FocusOwnerFinderStrategy strategy : STRATEGIES) {
-      try {
-        return strategy.focusOwner();
-      } catch (Exception e) {
-        continue;
-      }
+      Component focusOwner = focusOwnerFrom(strategy);
+      if (focusOwner != null) return focusOwner;
     }
     return null;
+  }
+
+  private static Component focusOwnerFrom(FocusOwnerFinderStrategy strategy) {
+    try {
+      return strategy.focusOwner();
+    } catch (Exception e) {
+      return null;
+    }
   }
 
   private FocusOwnerFinder() {}

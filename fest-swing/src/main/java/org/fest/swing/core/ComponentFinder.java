@@ -15,7 +15,8 @@
  */
 package org.fest.swing.core;
 
-import java.awt.*;
+import java.awt.Component;
+import java.awt.Container;
 import java.util.Collection;
 
 import javax.swing.JLabel;
@@ -24,8 +25,8 @@ import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.exception.ComponentLookupException;
 
 /**
- * Looks up GUI <code>{@link java.awt.Component}</code>s based on different search criteria, such as a {@code Component}
- * 's name, type or label, and custom search criteria as well.
+ * Looks up GUI <code>{@link Component}</code>s based on different search criteria, such as a {@code Component}'s name,
+ * type or label, and custom search criteria as well.
  *
  * @author Alex Ruiz
  */

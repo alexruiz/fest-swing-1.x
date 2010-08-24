@@ -25,7 +25,7 @@ import javax.swing.text.JTextComponent;
 import org.fest.swing.annotation.RunsInCurrentThread;
 
 /**
- * Matches <code>{@link JTextComponent}</code>s by type, name or text.
+ * Matches <code>{@link JTextComponent}</code>s by name, text or visibility on the screen.
  *
  * @author Alex Ruiz
  */

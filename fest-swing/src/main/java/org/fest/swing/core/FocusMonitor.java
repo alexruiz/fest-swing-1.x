@@ -17,14 +17,16 @@ package org.fest.swing.core;
 import static org.fest.swing.core.FocusOwnerFinder.focusOwner;
 
 import java.awt.Component;
-import java.awt.event.*;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 
 /**
- * Monitors which <code>{@link Component}</code> gets keyboard focus.
+ * Attaches itself to a <code>{@link Component}</code> and keeps record of when the {@code Component} gains or loses
+ * focus.
  *
  * @author Alex Ruiz
  */
-final class FocusMonitor extends FocusAdapter {
+final class FocusMonitor implements FocusListener {
 
   private volatile boolean focused = false;
 
@@ -38,11 +40,11 @@ final class FocusMonitor extends FocusAdapter {
     focused = focusOwner() == c;
   }
 
-  @Override public void focusGained(FocusEvent e) {
+  public void focusGained(FocusEvent e) {
     focused = true;
   }
 
-  @Override public void focusLost(FocusEvent e) {
+  public void focusLost(FocusEvent e) {
     focused = false;
   }
 

@@ -24,7 +24,7 @@ import java.util.regex.Pattern;
 import org.fest.swing.annotation.RunsInCurrentThread;
 
 /**
- * Matches <code>{@link Dialog}</code>s by name, title and visibility on the screen.
+ * Matches <code>{@link Dialog}</code>s by name, title or visibility on the screen.
  *
  * @author Alex Ruiz
  */

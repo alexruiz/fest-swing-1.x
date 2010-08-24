@@ -1,5 +1,5 @@
 /*
- * Created on Sep 1, 2008
+ * Created on Jul 17, 2009
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -11,32 +11,35 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2009-2010 the original author or authors.
  */
-package org.fest.swing.core;
+package org.fest.swing.assertions;
 
 import static org.fest.swing.edt.GuiActionRunner.execute;
 
-import java.awt.Component;
+import javax.swing.JComponent;
 
 import org.fest.swing.annotation.RunsInEDT;
-import org.fest.swing.edt.GuiTask;
+import org.fest.swing.edt.GuiQuery;
 
 /**
- * Task that request input focus for a <code>{@link Component}</code>.
+ * Returns the toolTip text of a given <code>{@link JComponent}</code>.
+ * @see JComponent#getToolTipText()
  *
  * @author Alex Ruiz
+ *
+ * @since 2.0
  */
-final class ComponentRequestFocusTask {
+final class JComponentToolTipQuery {
 
   @RunsInEDT
-  static void giveFocusTo(final Component c) {
-    execute(new GuiTask() {
-      @Override protected void executeInEDT() {
-        c.requestFocusInWindow();
+  static String toolTipOf(final JComponent c) {
+    return execute(new GuiQuery<String>() {
+      @Override protected String executeInEDT() {
+        return c.getToolTipText();
       }
     });
   }
 
-  private ComponentRequestFocusTask() {}
+  private JComponentToolTipQuery() {}
 }

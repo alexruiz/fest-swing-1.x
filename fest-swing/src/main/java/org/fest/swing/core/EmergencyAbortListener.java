@@ -19,8 +19,10 @@ import static java.awt.event.InputEvent.*;
 import static java.awt.event.KeyEvent.*;
 import static org.fest.swing.core.InputModifiers.*;
 
-import java.awt.*;
-import java.awt.event.*;
+import java.awt.AWTEvent;
+import java.awt.Toolkit;
+import java.awt.event.AWTEventListener;
+import java.awt.event.KeyEvent;
 
 import org.fest.util.VisibleForTesting;
 
@@ -33,7 +35,6 @@ import org.fest.util.VisibleForTesting;
  *
  * <pre>
  * private EmergencyAbortListener listener;
- *
  *
  * &#64;BeforeMethod public void setUp() {
  *   // set up your test fixture.
@@ -68,7 +69,7 @@ public class EmergencyAbortListener implements AWTEventListener {
   private int modifiers = unify(CTRL_MASK, SHIFT_MASK);
 
   /**
-   * Attaches a new instance of <code>{@link EmergencyAbortListener}</code> in the given <code>{@link Toolkit}</code>.
+   * Attaches a new instance of <code>{@link EmergencyAbortListener}</code> to the given <code>{@link Toolkit}</code>.
    * Any other instances of <code>EmergencyAbortListener</code> will be removed from the <code>Toolkit</code>.
    * @return the created listener.
    */

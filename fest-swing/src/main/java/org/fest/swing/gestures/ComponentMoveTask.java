@@ -1,5 +1,5 @@
 /*
- * Created on Sep 1, 2008
+ * Created on Feb 23, 2008
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -13,30 +13,33 @@
  *
  * Copyright @2008-2010 the original author or authors.
  */
-package org.fest.swing.core;
+package org.fest.swing.gestures;
 
 import static org.fest.swing.edt.GuiActionRunner.execute;
 
 import java.awt.Component;
+import java.awt.Point;
 
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiTask;
 
 /**
- * Task that request input focus for a <code>{@link Component}</code>.
+ * Sets the location of a <code>{@link Component}</code>.
  *
  * @author Alex Ruiz
+ *
+ * @since 2.0
  */
-final class ComponentRequestFocusTask {
+final class ComponentMoveTask {
+
+  private ComponentMoveTask() {}
 
   @RunsInEDT
-  static void giveFocusTo(final Component c) {
-    execute(new GuiTask() {
+  static void moveComponent(final Component c, final Point location) {
+    execute(new GuiTask( ) {
       @Override protected void executeInEDT() {
-        c.requestFocusInWindow();
+        c.setLocation(location);
       }
     });
   }
-
-  private ComponentRequestFocusTask() {}
 }
