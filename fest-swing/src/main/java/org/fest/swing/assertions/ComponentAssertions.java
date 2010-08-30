@@ -45,7 +45,7 @@ import org.fest.swing.timing.Timeout;
  *
  * @author Alex Ruiz
  *
- * @since 2.0
+ * @since 1.3
  */
 public class ComponentAssertions {
 

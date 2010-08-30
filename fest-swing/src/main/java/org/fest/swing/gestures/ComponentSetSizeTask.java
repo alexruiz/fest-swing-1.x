@@ -27,7 +27,7 @@ import org.fest.swing.edt.GuiTask;
  *
  * @author Alex Ruiz
  *
- * @since 2.0
+ * @since 1.3
  */
 final class ComponentSetSizeTask {
 

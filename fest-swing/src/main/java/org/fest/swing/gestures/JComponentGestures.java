@@ -40,7 +40,7 @@ import org.fest.swing.exception.ActionFailedException;
  *
  * @author Alex Ruiz
  *
- * @since 2.0
+ * @since 1.3
  */
 public class JComponentGestures extends ContainerGestures {
 

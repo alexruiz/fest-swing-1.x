@@ -33,7 +33,7 @@ import org.fest.swing.annotation.RunsInEDT;
  *
  * @author Alex Ruiz
  *
- * @since 2.0
+ * @since 1.3
  */
 public class JComponentAssertions extends ComponentAssertions {
 

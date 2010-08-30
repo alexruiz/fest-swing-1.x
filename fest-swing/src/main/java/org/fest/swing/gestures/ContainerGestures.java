@@ -42,7 +42,7 @@ import org.fest.swing.util.Triple;
  *
  * @author Alex Ruiz
  *
- * @since 2.0
+ * @since 1.3
  */
 public class ContainerGestures extends ComponentGestures {
 

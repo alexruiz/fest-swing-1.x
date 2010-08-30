@@ -31,7 +31,7 @@ import org.fest.swing.timing.Condition;
  *
  * @author Yvonne Wang
  *
- * @since 1.2
+ * @since 1.3
  */
 class ComponentEnabledCondition extends Condition {
   private Component c;

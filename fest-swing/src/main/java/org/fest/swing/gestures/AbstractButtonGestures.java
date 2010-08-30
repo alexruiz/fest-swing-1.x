@@ -33,7 +33,7 @@ import org.fest.swing.edt.GuiQuery;
  *
  * @author Alex Ruiz
  *
- * @since 2.0
+ * @since 1.3
  */
 public class AbstractButtonGestures extends JComponentGestures {
 

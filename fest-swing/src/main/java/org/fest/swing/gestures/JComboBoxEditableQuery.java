@@ -1,5 +1,5 @@
 /*
- * Created on Nov 6, 2008
+ * Created on Aug 8, 2008
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -15,29 +15,32 @@
  */
 package org.fest.swing.gestures;
 
-import java.awt.*;
+import static org.fest.swing.edt.GuiActionRunner.execute;
 
-import javax.swing.JInternalFrame;
+import javax.swing.JComboBox;
 
-import org.fest.swing.annotation.RunsInCurrentThread;
+import org.fest.swing.annotation.RunsInEDT;
+import org.fest.swing.edt.GuiQuery;
 
 /**
- * Indicates whether it is possible for the user to move the given component.
- * <p>
- * <b>Note:</b> Methods in this class are <b>not</b> executed in the event dispatch thread (EDT.) Clients are
- * responsible for invoking them in the EDT.
- * </p>
+ * Indicates whether a <code>{@link JComboBox}</code> is editable or not.
+ * @see JComboBox#isEditable()
  *
  * @author Alex Ruiz
+ * @author Yvonne Wang
  *
  * @since 1.3
  */
-final class ComponentMovableQuery {
+final class JComboBoxEditableQuery {
 
-  @RunsInCurrentThread
-  static boolean isUserMovable(Component c) {
-    return c instanceof Dialog || c instanceof Frame || c instanceof JInternalFrame;
+  @RunsInEDT
+  static boolean isEditable(final JComboBox comboBox) {
+    return execute(new GuiQuery<Boolean>() {
+      @Override protected Boolean executeInEDT() {
+        return comboBox.isEditable();
+      }
+    });
   }
 
-  private ComponentMovableQuery() {}
+  private JComboBoxEditableQuery() {}
 }

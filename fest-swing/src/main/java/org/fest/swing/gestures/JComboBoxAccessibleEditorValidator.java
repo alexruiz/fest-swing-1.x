@@ -1,5 +1,5 @@
 /*
- * Created on Nov 6, 2008
+ * Created on Aug 8, 2008
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -15,29 +15,39 @@
  */
 package org.fest.swing.gestures;
 
-import java.awt.*;
+import static org.fest.swing.driver.ComponentStateValidator.validateIsEnabledAndShowing;
+import static org.fest.swing.format.Formatting.format;
+import static org.fest.util.Strings.concat;
 
-import javax.swing.JInternalFrame;
+import java.awt.Component;
+
+import javax.swing.JComboBox;
 
 import org.fest.swing.annotation.RunsInCurrentThread;
 
 /**
- * Indicates whether it is possible for the user to move the given component.
+ * Validates that the editor of a <code>{@link JComboBox}</code> is accessible or not. To be accessible, a
+ * {@code JComboBox} needs to be enabled and editable.
  * <p>
  * <b>Note:</b> Methods in this class are <b>not</b> executed in the event dispatch thread (EDT.) Clients are
  * responsible for invoking them in the EDT.
  * </p>
+ * @see JComboBox#isEditable()
+ * @see Component#isEnabled()
  *
  * @author Alex Ruiz
+ * @author Yvonne Wang
  *
  * @since 1.3
  */
-final class ComponentMovableQuery {
+final class JComboBoxAccessibleEditorValidator {
 
   @RunsInCurrentThread
-  static boolean isUserMovable(Component c) {
-    return c instanceof Dialog || c instanceof Frame || c instanceof JInternalFrame;
+  static void validateEditorIsAccessible(JComboBox comboBox) {
+    validateIsEnabledAndShowing(comboBox);
+    if (!comboBox.isEditable())
+      throw new IllegalStateException(concat("Expecting component ", format(comboBox), " to be editable"));
   }
 
-  private ComponentMovableQuery() {}
+  private JComboBoxAccessibleEditorValidator() {}
 }

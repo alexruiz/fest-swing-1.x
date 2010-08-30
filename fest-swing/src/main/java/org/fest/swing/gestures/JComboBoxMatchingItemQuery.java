@@ -1,5 +1,5 @@
 /*
- * Created on Jul 26, 2008
+ * Created on Nov 13, 2008
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -13,39 +13,37 @@
  *
  * Copyright @2008-2010 the original author or authors.
  */
-package org.fest.swing.query;
+package org.fest.swing.gestures;
 
 import static org.fest.swing.edt.GuiActionRunner.execute;
 
-import javax.swing.AbstractButton;
+import javax.swing.JComboBox;
 
 import org.fest.swing.annotation.RunsInEDT;
+import org.fest.swing.cell.JComboBoxCellReader;
 import org.fest.swing.edt.GuiQuery;
+import org.fest.swing.util.TextMatcher;
 
 /**
- * Returns the text of an <code>{@link AbstractButton}</code>.
- * @see AbstractButton#getText()
+ * Looks up the first item in a <code>{@link JComboBox}</code> whose value matches a given one.
  *
  * @author Alex Ruiz
- * @author Yvonne Wang
  *
  * @since 1.3
  */
-public final class AbstractButtonTextQuery {
+final class JComboBoxMatchingItemQuery {
 
-  /**
-   * Returns the text of an <code>{@link AbstractButton}</code>.
-   * @param button the given {@code AbstractButton}.
-   * @return the text of an {@code AbstractButton}.
-   */
   @RunsInEDT
-  public static String textOf(final AbstractButton button) {
-    return execute(new GuiQuery<String>() {
-      @Override protected String executeInEDT() {
-        return button.getText();
+  static int matchingItemIndex(final JComboBox comboBox, final TextMatcher matcher, final JComboBoxCellReader cellReader) {
+    return execute(new GuiQuery<Integer>() {
+      @Override protected Integer executeInEDT() {
+        int itemCount = comboBox.getItemCount();
+        for (int i = 0; i < itemCount; i++)
+          if (matcher.isMatching(cellReader.valueAt(comboBox, i))) return i;
+        return -1;
       }
     });
   }
 
-  private AbstractButtonTextQuery() {}
+  private JComboBoxMatchingItemQuery() {}
 }

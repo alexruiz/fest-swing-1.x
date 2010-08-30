@@ -34,6 +34,8 @@ import org.fest.swing.annotation.RunsInCurrentThread;
  * </p>
  *
  * @author Alex Ruiz
+ *
+ * @since 1.3
  */
 final class KeyStrokes {
 

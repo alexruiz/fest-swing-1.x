@@ -1,5 +1,5 @@
 /*
- * Created on Nov 6, 2008
+ * Created on Aug 8, 2008
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -15,29 +15,30 @@
  */
 package org.fest.swing.gestures;
 
-import java.awt.*;
+import static org.fest.swing.edt.GuiActionRunner.execute;
 
-import javax.swing.JInternalFrame;
+import javax.swing.JComboBox;
 
-import org.fest.swing.annotation.RunsInCurrentThread;
+import org.fest.swing.annotation.RunsInEDT;
+import org.fest.swing.edt.GuiTask;
 
 /**
- * Indicates whether it is possible for the user to move the given component.
- * <p>
- * <b>Note:</b> Methods in this class are <b>not</b> executed in the event dispatch thread (EDT.) Clients are
- * responsible for invoking them in the EDT.
- * </p>
+ * Shows/hides the drop-down menu of a <code>{@link JComboBox}</code>.
  *
  * @author Alex Ruiz
  *
  * @since 1.3
  */
-final class ComponentMovableQuery {
+final class JComboBoxSetPopupVisibleTask {
 
-  @RunsInCurrentThread
-  static boolean isUserMovable(Component c) {
-    return c instanceof Dialog || c instanceof Frame || c instanceof JInternalFrame;
+  @RunsInEDT
+  static void setPopupVisible(final JComboBox comboBox, final boolean visible) {
+    execute(new GuiTask() {
+      @Override protected void executeInEDT() {
+        comboBox.setPopupVisible(visible);
+      }
+    });
   }
 
-  private ComponentMovableQuery() {}
+  private JComboBoxSetPopupVisibleTask() {}
 }

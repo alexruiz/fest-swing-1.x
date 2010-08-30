@@ -12,34 +12,34 @@
  *
  * Copyright @2008-2010 the original author or authors.
  */
-package org.fest.swing.assertions;
+package org.fest.swing.gestures;
 
 import static org.fest.swing.edt.GuiActionRunner.execute;
 
-import javax.swing.AbstractButton;
+import javax.swing.JComboBox;
 
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
 
 /**
- * Indicates whether an <code>{@link AbstractButton}</code> is selected or not.
- * @see AbstractButton#isSelected()
+ * Returns the selected index in a <code>{@link JComboBox}</code>.
+ * @see JComboBox#getSelectedIndex()
  *
- * @author Yvonne Wang
  * @author Alex Ruiz
+ * @author Yvonne Wang
  *
  * @since 1.3
  */
-final class AbstractButtonSelectedQuery {
+final class JComboBoxSelectedIndexQuery {
 
   @RunsInEDT
-  static boolean isSelected(final AbstractButton button) {
-    return execute(new GuiQuery<Boolean>() {
-      @Override protected Boolean executeInEDT() {
-        return button.isSelected();
+  static int selectedIndexOf(final JComboBox comboBox) {
+    return execute(new GuiQuery<Integer>() {
+      @Override protected Integer executeInEDT() {
+        return comboBox.getSelectedIndex();
       }
     });
   }
 
-  private AbstractButtonSelectedQuery() {}
+  private JComboBoxSelectedIndexQuery() {}
 }

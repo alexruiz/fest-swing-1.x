@@ -27,7 +27,7 @@ import org.fest.assertions.*;
  *
  * @author Alex Ruiz
  *
- * @since 2.0
+ * @since 1.3
  */
 class TextAssert extends Assert implements AssertExtension {
 

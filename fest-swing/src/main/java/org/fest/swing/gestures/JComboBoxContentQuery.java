@@ -1,5 +1,5 @@
 /*
- * Created on Jul 29, 2008
+ * Created on Oct 31, 2008
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -12,34 +12,36 @@
  *
  * Copyright @2008-2010 the original author or authors.
  */
-package org.fest.swing.assertions;
+package org.fest.swing.gestures;
 
 import static org.fest.swing.edt.GuiActionRunner.execute;
 
-import javax.swing.AbstractButton;
+import javax.swing.JComboBox;
 
 import org.fest.swing.annotation.RunsInEDT;
+import org.fest.swing.cell.JComboBoxCellReader;
 import org.fest.swing.edt.GuiQuery;
 
 /**
- * Indicates whether an <code>{@link AbstractButton}</code> is selected or not.
- * @see AbstractButton#isSelected()
+ * Returns an array of {@code String}s that represents the contents of a given <code>{@link JComboBox}</code>.
  *
- * @author Yvonne Wang
  * @author Alex Ruiz
  *
  * @since 1.3
  */
-final class AbstractButtonSelectedQuery {
+final class JComboBoxContentQuery {
 
   @RunsInEDT
-  static boolean isSelected(final AbstractButton button) {
-    return execute(new GuiQuery<Boolean>() {
-      @Override protected Boolean executeInEDT() {
-        return button.isSelected();
+  static String[] contents(final JComboBox comboBox, final JComboBoxCellReader cellReader) {
+    return execute(new GuiQuery<String[]>() {
+      @Override protected String[] executeInEDT() {
+        String[] values = new String[comboBox.getItemCount()];
+        for (int i = 0; i < values.length; i++)
+          values[i] = cellReader.valueAt(comboBox, i);
+        return values;
       }
     });
   }
 
-  private AbstractButtonSelectedQuery() {}
+  private JComboBoxContentQuery() {}
 }
