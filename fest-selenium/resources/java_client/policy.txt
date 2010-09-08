@@ -1,1 +1,0 @@
-The java.policy file should be placed in the %USER%\Application Data\Sun\Java\Deployment\security directory.

@@ -1,8 +1,0 @@
-#Organize Import Order
-#Tue Jul 29 07:15:37 PDT 2008
-5=\#org.fest
-4=org.fest
-3=com
-2=org
-1=javax
-0=java
