@@ -14,7 +14,8 @@
  */
 package org.fest.swing.util;
 
-import java.awt.*;
+import java.awt.AWTException;
+import java.awt.Robot;
 
 /**
  * Understands creation of AWT <code>{@link Robot}</code>s.
