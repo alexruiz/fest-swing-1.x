@@ -37,7 +37,6 @@
       <groupId>org.testng</groupId>
       <artifactId>testng</artifactId>
       <version>5.7</version>
-      <classifier>jdk15</classifier>
       <scope>compile</scope>
     </dependency>
     <dependency>
