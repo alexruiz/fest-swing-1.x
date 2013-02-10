@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -24,12 +24,11 @@ import javax.swing.JLabel;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JLabelDriver#requireText(JLabel, java.util.regex.Pattern)}</code>.
+ * Tests for {@link JLabelDriver#requireText(JLabel, java.util.regex.Pattern)}.
  *
  * @author Yvonne Wang
  */
 public class JLabelDriver_requireTextAsPattern_Test extends JLabelDriver_TestCase {
-
   @Test
   public void should_pass_if_text_matches_pattern() {
     driver.requireText(label, regex("H.*"));

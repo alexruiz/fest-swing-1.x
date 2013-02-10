@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2007-2010 the original author or authors.
+ * Copyright @2007-2013 the original author or authors.
  */
 package org.fest.swing.fixture;
 
@@ -24,14 +24,13 @@ import org.fest.swing.driver.AbstractButtonDriver;
 import org.junit.Test;
 
 /**
- * Understands test methods for implementations of <code>{@link TwoStateButtonFixture}</code>.
+ * Understands test methods for implementations of {@link TwoStateButtonFixture}.
  * @param <T> the type of window supported by the fixture to test.
  *
  * @author Alex Ruiz
  */
 public abstract class TwoStateButtonFixture_TestCase<T extends AbstractButton> extends
     ComponentFixture_Implementations_TestCase<T> {
-
   @Override abstract AbstractButtonDriver driver();
 
   @Override abstract TwoStateButtonFixture fixture();

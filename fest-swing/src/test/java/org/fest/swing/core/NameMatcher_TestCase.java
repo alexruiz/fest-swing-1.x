@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.core;
 
@@ -25,12 +25,11 @@ import org.fest.swing.test.core.SequentialEDTSafeTestCase;
 import org.fest.swing.test.swing.TestWindow;
 
 /**
- * Tests for <code>{@link NameMatcher#matches(java.awt.Component)}</code>.
+ * Tests for {@link NameMatcher#matches(java.awt.Component)}.
  *
  * @author Alex Ruiz
  */
 public abstract class NameMatcher_TestCase extends SequentialEDTSafeTestCase {
-
   static final String LABEL_TEXT = "my button";
 
   MyWindow window;

@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.test.builder;
 
@@ -23,12 +23,11 @@ import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
 
 /**
- * Understands creation of <code>{@link JProgressBar}</code>s.
+ * Understands creation of {@code JProgressBar}s.
  *
  * @author Alex Ruiz
  */
 public final class JProgressBars {
-
   public static JProgressBarFactory progressBar() {
     return new JProgressBarFactory();
   }

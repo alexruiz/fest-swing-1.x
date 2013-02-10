@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -21,13 +21,12 @@ import static org.fest.swing.test.core.CommonAssertions.*;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JTableDriver#selectCell(javax.swing.JTable, org.fest.swing.data.TableCell)}</code>.
+ * Tests for {@link JTableDriver#selectCell(javax.swing.JTable, org.fest.swing.data.TableCell)}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 public class JTableDriver_selectCell_Test extends JTableDriver_TestCase {
-
   @Test
   public void should_not_select_cell_if_it_is_already_selected() {
     showWindow();
@@ -57,5 +56,4 @@ public class JTableDriver_selectCell_Test extends JTableDriver_TestCase {
       assertThatErrorCauseIsNotShowingComponent(e);
     }
   }
-
 }

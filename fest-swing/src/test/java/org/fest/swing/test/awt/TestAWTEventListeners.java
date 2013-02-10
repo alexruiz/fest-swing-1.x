@@ -10,7 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  *
- * Copyright @2010 the original author or authors.
+ * Copyright @2010-2013 the original author or authors.
  */
 package org.fest.swing.test.awt;
 
@@ -19,12 +19,11 @@ import static org.easymock.classextension.EasyMock.createMock;
 import java.awt.event.AWTEventListener;
 
 /**
- * Understands <code>{@link AWTEventListener}</code>s to be used for testing purposes.
+ * Understands {@link AWTEventListener}s to be used for testing purposes.
  *
  * @author Alex Ruiz
  */
 public final class TestAWTEventListeners {
-
   public static AWTEventListener singletonAWTEventListenerMock() {
     return LazyLoadedSingleton.INSTANCE;
   }

@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.keystroke;
 
@@ -24,13 +24,12 @@ import org.junit.runners.*;
 import org.junit.runners.Parameterized.Parameters;
 
 /**
- * Tests for <code>{@link KeyStrokeMappingProvider_en#keyStrokeMappings()}</code>.
+ * Tests for {@link KeyStrokeMappingProvider_en#keyStrokeMappings()}.
  *
  * @author Alex Ruiz
  */
 @RunWith(Parameterized.class)
 public class KeyStrokeMappingProvider_en_keyStrokeMappings_Test extends KeyStrokeMappingProvider_TestCase {
-
   public KeyStrokeMappingProvider_en_keyStrokeMappings_Test(char character, KeyStroke keyStroke) {
     super(character, keyStroke);
   }

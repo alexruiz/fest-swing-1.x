@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -33,13 +33,12 @@ import org.fest.swing.util.*;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JTableHeaderLocation#pointAt(JTableHeader, TextMatcher)}</code>.
+ * Tests for {@link JTableHeaderLocation#pointAt(JTableHeader, TextMatcher)}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 public class JTableHeaderLocation_pointAtColumnWithName_Test extends JTableHeaderLocation_TestCase {
-
   private TextMatcher matcher;
 
   @Override void extraSetUp() {
@@ -56,9 +55,9 @@ public class JTableHeaderLocation_pointAtColumnWithName_Test extends JTableHeade
 
       @Override protected void codeToTest() {
         Pair<Integer, Point> pair = matchingIndexAndPoint();
-        int index = pair.i;
+        int index = pair.first;
         assertThat(index).isEqualTo(1);
-        Point point = pair.ii;
+        Point point = pair.second;
         assertThat(point).isEqualTo(expectedPoint(1));
       }
     }.run();

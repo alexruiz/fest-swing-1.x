@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.monitor;
 
@@ -26,13 +26,12 @@ import org.fest.swing.test.swing.TestWindow;
 import org.junit.*;
 
 /**
- * Base test case for <code>{@link WindowEventQueueMapping}</code> that require a
- * <code>{@link java.awt.Window}</code> for their execution.
+ * Base test case for {@link WindowEventQueueMapping} that require a
+ * {@link java.awt.Window} for their execution.
  *
  * @author Alex Ruiz
  */
 public abstract class WindowEventQueueMapping_withWindow_TestCase extends WindowEventQueueMapping_TestCase {
-
   MyWindow window;
 
   @BeforeClass public static void setUpOnce() {

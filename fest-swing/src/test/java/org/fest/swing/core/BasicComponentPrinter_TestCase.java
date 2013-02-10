@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2007-2010 the original author or authors.
+ * Copyright @2007-2013 the original author or authors.
  */
 package org.fest.swing.core;
 
@@ -26,13 +26,12 @@ import org.fest.swing.test.io.PrintStreamStub;
 import org.fest.swing.test.swing.TestWindow;
 
 /**
- * Base test case for <code>{@link BasicComponentPrinter}</code>.
+ * Base test case for {@link BasicComponentPrinter}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 public abstract class BasicComponentPrinter_TestCase extends SequentialEDTSafeTestCase {
-
   BasicComponentPrinter printer;
   MyWindow windowOne;
   MyWindow windowTwo;

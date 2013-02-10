@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -24,12 +24,11 @@ import org.fest.swing.test.recorder.ClickRecorder;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JTableHeaderDriver#clickColumn(javax.swing.table.JTableHeader, String)}</code>.
+ * Tests for {@link JTableHeaderDriver#clickColumn(javax.swing.table.JTableHeader, String)}.
  *
  * @author Yvonne Wang
  */
 public class JTableHeaderDriver_clickColumnByPatternUsingButtonAndTimes_Test extends JTableHeaderDriver_TestCase {
-
   @Test
   public void should_click_column() {
     showWindow();
@@ -38,5 +37,4 @@ public class JTableHeaderDriver_clickColumnByPatternUsingButtonAndTimes_Test ext
     assertThat(recorder).wasClickedWith(LEFT_BUTTON).timesClicked(3);
     assertThatColumnWasClicked(recorder, 0);
   }
-
 }

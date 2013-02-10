@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -27,13 +27,12 @@ import org.fest.swing.edt.GuiTask;
 import org.fest.swing.test.swing.TestTree;
 
 /**
- * Base test case related to drag and drop in a <code>{@link JTree}</code> using
- * <code>{@link JTreeDriver}</code>.
+ * Base test case related to drag and drop in a {@code JTree} using
+ * {@link JTreeDriver}.
  *
  * @author Alex Ruiz
  */
 public abstract class JTreeDriver_dragAndDrop_TestCase extends JTreeDriver_TestCase {
-
   TestTree dropTree;
 
   @RunsInEDT

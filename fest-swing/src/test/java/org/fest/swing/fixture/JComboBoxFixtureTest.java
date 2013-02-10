@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2007-2010 the original author or authors.
+ * Copyright @2007-2013 the original author or authors.
  */
 package org.fest.swing.fixture;
 
@@ -31,13 +31,12 @@ import org.fest.swing.cell.JComboBoxCellReader;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JComboBoxFixture}</code>.
+ * Tests for {@link JComboBoxFixture}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 public class JComboBoxFixtureTest extends JComboBoxFixture_TestCase {
-
   // TODO Reorganize into smaller units
 
   @Test

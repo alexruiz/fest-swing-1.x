@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.fixture;
 
@@ -22,15 +22,14 @@ import javax.swing.JPopupMenu;
 import org.fest.swing.exception.ComponentLookupException;
 
 /**
- * Understands input simulation on <code>{@link Component}</code>s capable of invoking
- * <code>{@link JPopupMenu}</code>s.
+ * Understands input simulation on {@code Component}s capable of invoking
+ * {@code JPopupMenu}s.
  *
  * @author Alex Ruiz
  */
 public interface JPopupMenuInvokerFixture {
-
   /**
-   * Shows a pop-up menu using this fixture's <code>{@link Component}</code> as the invoker of the pop-up menu.
+   * Shows a pop-up menu using this fixture's {@code Component} as the invoker of the pop-up menu.
    * @return a fixture that manages the displayed pop-up menu.
    * @throws IllegalStateException if this fixture's {@code Component} is disabled.
    * @throws IllegalStateException if this fixture's {@code Component} is not showing on the screen.
@@ -39,7 +38,7 @@ public interface JPopupMenuInvokerFixture {
   JPopupMenuFixture showPopupMenu();
 
   /**
-   * Shows a pop-up menu at the given point using this fixture's <code>{@link Component}</code> as the invoker of the
+   * Shows a pop-up menu at the given point using this fixture's {@code Component} as the invoker of the
    * pop-up menu.
    * @param p the given point where to show the pop-up menu.
    * @return a fixture that manages the displayed pop-up menu.

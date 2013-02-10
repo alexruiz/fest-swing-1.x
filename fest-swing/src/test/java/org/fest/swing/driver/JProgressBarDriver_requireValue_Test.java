@@ -10,7 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -22,12 +22,11 @@ import javax.swing.JProgressBar;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JProgressBarDriver#requireValue(JProgressBar, int)}</code>.
+ * Tests for {@link JProgressBarDriver#requireValue(JProgressBar, int)}.
  *
  * @author Alex Ruiz
  */
 public class JProgressBarDriver_requireValue_Test extends JProgressBarDriver_TestCase {
-
   @Test
   public void should_pass_if_value_is_equal_to_expected() {
     driver.requireValue(progressBar, 60);

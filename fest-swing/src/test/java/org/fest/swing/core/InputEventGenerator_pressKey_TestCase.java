@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.core;
 
@@ -34,14 +34,13 @@ import org.junit.runners.*;
 import org.junit.runners.Parameterized.Parameters;
 
 /**
- * Base test case for implementations of <code>{@link InputEventGenerator#pressKey(int, char)}</code> and
- * <code>{@link InputEventGenerator#releaseKey(int)}</code>.
+ * Base test case for implementations of {@link InputEventGenerator#pressKey(int, char)} and
+ * {@link InputEventGenerator#releaseKey(int)}.
  *
  * @author Alex Ruiz
  */
 @RunWith(Parameterized.class)
 public abstract class InputEventGenerator_pressKey_TestCase extends InputEventGenerator_TestCase {
-
   private final int keyToPress;
   private final String expectedText;
 

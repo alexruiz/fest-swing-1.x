@@ -1,59 +1,85 @@
 /*
  * Created on Sep 29, 2006
- *
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
- *
+ * 
  * http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
- *
- * Copyright @2006-2010 the original author or authors.
+ * 
+ * Copyright @2006-2013 the original author or authors.
  */
 package org.fest.swing.core;
 
-import static java.awt.event.InputEvent.*;
-import static java.awt.event.KeyEvent.*;
+import static java.awt.event.InputEvent.BUTTON1_MASK;
+import static java.awt.event.InputEvent.BUTTON2_MASK;
+import static java.awt.event.InputEvent.BUTTON3_MASK;
+import static java.awt.event.KeyEvent.CHAR_UNDEFINED;
+import static java.awt.event.KeyEvent.KEY_TYPED;
+import static java.awt.event.KeyEvent.VK_UNDEFINED;
 import static java.awt.event.WindowEvent.WINDOW_CLOSING;
 import static java.lang.System.currentTimeMillis;
-import static javax.swing.SwingUtilities.*;
-import static org.fest.swing.awt.AWT.*;
+import static javax.swing.SwingUtilities.getWindowAncestor;
+import static javax.swing.SwingUtilities.isEventDispatchThread;
+import static org.fest.swing.awt.AWT.centerOf;
+import static org.fest.swing.awt.AWT.visibleCenterOf;
 import static org.fest.swing.core.ActivateWindowTask.activateWindow;
 import static org.fest.swing.core.ComponentIsFocusableQuery.isFocusable;
 import static org.fest.swing.core.ComponentRequestFocusTask.giveFocusTo;
-import static org.fest.swing.core.FocusOwnerFinder.*;
+import static org.fest.swing.core.FocusOwnerFinder.focusOwner;
+import static org.fest.swing.core.FocusOwnerFinder.inEdtFocusOwner;
 import static org.fest.swing.core.InputModifiers.unify;
-import static org.fest.swing.core.MouseButton.*;
+import static org.fest.swing.core.MouseButton.LEFT_BUTTON;
+import static org.fest.swing.core.MouseButton.RIGHT_BUTTON;
 import static org.fest.swing.core.Scrolling.scrollToVisible;
 import static org.fest.swing.core.WindowAncestorFinder.windowAncestorOf;
 import static org.fest.swing.edt.GuiActionRunner.execute;
 import static org.fest.swing.exception.ActionFailedException.actionFailure;
-import static org.fest.swing.format.Formatting.*;
+import static org.fest.swing.format.Formatting.format;
+import static org.fest.swing.format.Formatting.inEdtFormat;
 import static org.fest.swing.hierarchy.NewHierarchy.ignoreExistingComponents;
 import static org.fest.swing.keystroke.KeyStrokeMap.keyStrokeFor;
 import static org.fest.swing.query.ComponentShowingQuery.isShowing;
 import static org.fest.swing.timing.Pause.pause;
-import static org.fest.swing.util.Modifiers.*;
+import static org.fest.swing.util.Modifiers.keysFor;
+import static org.fest.swing.util.Modifiers.updateModifierWithKeyCode;
 import static org.fest.swing.util.TimeoutWatch.startWatchWithTimeoutOf;
-import static org.fest.util.Strings.*;
+import static org.fest.util.Lists.newArrayList;
+import static org.fest.util.Preconditions.checkNotNull;
+import static org.fest.util.Strings.concat;
 
 import java.applet.Applet;
-import java.awt.*;
-import java.awt.event.*;
-import java.util.*;
+import java.awt.Component;
+import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.EventQueue;
+import java.awt.Point;
+import java.awt.Toolkit;
+import java.awt.Window;
+import java.awt.event.InvocationEvent;
+import java.awt.event.KeyEvent;
+import java.awt.event.WindowEvent;
+import java.util.Collection;
 import java.util.List;
 
-import javax.swing.*;
-
-import net.jcip.annotations.GuardedBy;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+import javax.annotation.concurrent.GuardedBy;
+import javax.swing.JComponent;
+import javax.swing.JMenu;
+import javax.swing.JPopupMenu;
+import javax.swing.KeyStroke;
 
 import org.fest.swing.annotation.RunsInCurrentThread;
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
 import org.fest.swing.edt.GuiTask;
-import org.fest.swing.exception.*;
+import org.fest.swing.exception.ActionFailedException;
+import org.fest.swing.exception.ComponentLookupException;
+import org.fest.swing.exception.WaitTimedOutError;
 import org.fest.swing.hierarchy.ComponentHierarchy;
 import org.fest.swing.hierarchy.ExistingHierarchy;
 import org.fest.swing.input.InputState;
@@ -61,33 +87,35 @@ import org.fest.swing.lock.ScreenLock;
 import org.fest.swing.monitor.WindowMonitor;
 import org.fest.swing.util.Pair;
 import org.fest.swing.util.TimeoutWatch;
+import org.fest.swing.util.ToolkitProvider;
 import org.fest.util.VisibleForTesting;
 
 /**
- * Default implementation of <code>{@link Robot}</code>.
- *
+ * Default implementation of {@link Robot}.
+ * 
  * @author Alex Ruiz
  * @author Yvonne Wang
- *
+ * 
  * @see Robot
  */
 public class BasicRobot implements Robot {
-
   private static final int POPUP_DELAY = 10000;
   private static final int POPUP_TIMEOUT = 5000;
   private static final int WINDOW_DELAY = 20000;
 
   private static final ComponentMatcher POPUP_MATCHER = new TypeMatcher(JPopupMenu.class, true);
 
-  @GuardedBy("this") private volatile boolean active;
+  @GuardedBy("this")
+  private volatile boolean active;
 
   private static final Runnable EMPTY_RUNNABLE = new Runnable() {
+    @Override
     public void run() {}
   };
 
   private static final int BUTTON_MASK = BUTTON1_MASK | BUTTON2_MASK | BUTTON3_MASK;
 
-  private static Toolkit toolkit = Toolkit.getDefaultToolkit();
+  private static Toolkit toolkit = ToolkitProvider.instance().defaultToolkit();
   private static WindowMonitor windowMonitor = WindowMonitor.instance();
   private static InputState inputState = new InputState(toolkit);
 
@@ -100,22 +128,24 @@ public class BasicRobot implements Robot {
   private final UnexpectedJOptionPaneFinder unexpectedJOptionPaneFinder;
 
   /**
-   * Creates a new <code>{@link Robot}</code> with a new AWT hierarchy. The created <code>Robot</code> will not be able
-   * to access any components that were created before it.
-   * @return the created <code>Robot</code>.
+   * Creates a new {@link Robot} with a new AWT hierarchy. The created {@code Robot} will not be able to access any
+   * AWT and Swing {@code Component}s that were created before it.
+   * 
+   * @return the created {@code Robot}.
    */
-  public static Robot robotWithNewAwtHierarchy() {
+  public static @Nonnull Robot robotWithNewAwtHierarchy() {
     Object screenLockOwner = acquireScreenLock();
     return new BasicRobot(screenLockOwner, ignoreExistingComponents());
   }
 
-  public static Robot robotWithNewAwtHierarchyWithoutScreenLock() {
-	return new BasicRobot(null, ignoreExistingComponents());
+  public static @Nonnull Robot robotWithNewAwtHierarchyWithoutScreenLock() {
+    return new BasicRobot(null, ignoreExistingComponents());
   }
 
   /**
-   * Creates a new <code>{@link Robot}</code> that has access to all the GUI components in the AWT hierarchy.
-   * @return the created <code>Robot</code>.
+   * Creates a new {@link Robot} that has access to all the AWT and Swing {@code Component}s in the AWT hierarchy.
+   * 
+   * @return the created {@code Robot}.
    */
   public static Robot robotWithCurrentAwtHierarchy() {
     Object screenLockOwner = acquireScreenLock();
@@ -124,56 +154,66 @@ public class BasicRobot implements Robot {
 
   // TODO document
   public static Robot robotWithCurrentAwtHierarchyWithoutScreenLock() {
-	  return new BasicRobot(null, new ExistingHierarchy());
+    return new BasicRobot(null, new ExistingHierarchy());
   }
 
-  private static Object acquireScreenLock() {
+  private static @Nonnull Object acquireScreenLock() {
     Object screenLockOwner = new Object();
     ScreenLock.instance().acquire(screenLockOwner);
     return screenLockOwner;
   }
 
   @VisibleForTesting
-  BasicRobot(Object screenLockOwner, ComponentHierarchy hierarchy) {
+  BasicRobot(@Nullable Object screenLockOwner, @Nonnull ComponentHierarchy hierarchy) {
     this.screenLockOwner = screenLockOwner;
     this.hierarchy = hierarchy;
     settings = new Settings();
     eventGenerator = new RobotEventGenerator(settings);
     eventPoster = new AWTEventPoster(toolkit, inputState, windowMonitor, settings);
-    finder = new BasicComponentFinder(this.hierarchy, settings);
+    finder = new BasicComponentFinder(hierarchy, settings);
     unexpectedJOptionPaneFinder = new UnexpectedJOptionPaneFinder(finder);
     active = true;
   }
 
   /** {@inheritDoc} */
-  public ComponentPrinter printer() {
+  @Override
+  public @Nonnull ComponentPrinter printer() {
     return finder().printer();
   }
 
   /** {@inheritDoc} */
-  public ComponentFinder finder() {
+  @Override
+  public @Nonnull ComponentFinder finder() {
     return finder;
   }
 
   /** {@inheritDoc} */
   @RunsInEDT
-  public void showWindow(Window w) {
+  @Override
+  public void showWindow(@Nonnull Window w) {
     showWindow(w, null, true);
   }
 
   /** {@inheritDoc} */
   @RunsInEDT
-  public void showWindow(Window w, Dimension size) {
+  @Override
+  public void showWindow(@Nonnull Window w, @Nonnull Dimension size) {
     showWindow(w, size, true);
   }
 
   /** {@inheritDoc} */
   @RunsInEDT
-  public void showWindow(final Window w, final Dimension size, final boolean pack) {
+  @Override
+  public void showWindow(@Nonnull final Window w, @Nullable final Dimension size, final boolean pack) {
     EventQueue.invokeLater(new Runnable() {
+      @Override
       public void run() {
-        if (pack) packAndEnsureSafePosition(w);
-        if (size != null) w.setSize(size);
+        if (pack) {
+          packAndEnsureSafePosition(w);
+        }
+        if (size != null) {
+          w.setSize(size);
+        }
         w.setVisible(true);
       }
     });
@@ -181,63 +221,71 @@ public class BasicRobot implements Robot {
   }
 
   @RunsInCurrentThread
-  private void packAndEnsureSafePosition(Window w) {
+  private void packAndEnsureSafePosition(@Nonnull Window w) {
     w.pack();
     w.setLocation(100, 100);
   }
 
   @RunsInEDT
-  private void waitForWindow(Window w) {
+  private void waitForWindow(@Nonnull Window w) {
     long start = currentTimeMillis();
     while (!windowMonitor.isWindowReady(w) || !isShowing(w)) {
       long elapsed = currentTimeMillis() - start;
-      if (elapsed > WINDOW_DELAY)
+      if (elapsed > WINDOW_DELAY) {
         throw new WaitTimedOutError(concat("Timed out waiting for Window to open (", String.valueOf(elapsed), "ms)"));
+      }
       pause();
     }
   }
 
   /** {@inheritDoc} */
   @RunsInEDT
-  public void close(Window w) {
+  @Override
+  public void close(@Nonnull Window w) {
     WindowEvent event = new WindowEvent(w, WINDOW_CLOSING);
     // If the window contains an applet, send the event on the applet's queue instead to ensure a shutdown from the
     // applet's context (assists AppletViewer cleanup).
     Component applet = findAppletDescendent(w);
     EventQueue eventQueue = windowMonitor.eventQueueFor(applet != null ? applet : w);
-    eventQueue.postEvent(event);
+    checkNotNull(eventQueue).postEvent(event);
     waitForIdle();
   }
 
   /**
-   * Returns the <code>{@link Applet}</code> descendant of the given <code>{@link Container}</code>, if any.
+   * Returns the {@code Applet} descendant of the given AWT {@code Container}, if any.
+   * 
    * @param c the given {@code Container}.
-   * @return the {@code Applet} descendant of the given {@code Container}, or {@code null} if none
-   * is found.
+   * @return the {@code Applet} descendant of the given AWT {@code Container}, or {@code null} if none is found.
    */
   @RunsInEDT
-  private Applet findAppletDescendent(Container c) {
-    List<Component> found = new ArrayList<Component>(finder.findAll(c, new TypeMatcher(Applet.class)));
-    if (found.size() == 1) return (Applet)found.get(0);
+  private @Nullable Applet findAppletDescendent(@Nonnull Container c) {
+    List<Component> found = newArrayList(finder.findAll(c, new TypeMatcher(Applet.class)));
+    if (found.size() == 1) {
+      return (Applet) found.get(0);
+    }
     return null;
   }
 
   /** {@inheritDoc} */
   @RunsInEDT
-  public void focusAndWaitForFocusGain(Component c) {
+  @Override
+  public void focusAndWaitForFocusGain(@Nonnull Component c) {
     focus(c, true);
   }
 
   /** {@inheritDoc} */
   @RunsInEDT
-  public void focus(Component c) {
+  @Override
+  public void focus(@Nonnull Component c) {
     focus(c, false);
   }
 
   @RunsInEDT
-  private void focus(Component target, boolean wait) {
+  private void focus(@Nonnull Component target, boolean wait) {
     Component currentOwner = inEdtFocusOwner();
-    if (currentOwner == target) return;
+    if (currentOwner == target) {
+      return;
+    }
     FocusMonitor focusMonitor = FocusMonitor.attachTo(target);
     // for pointer focus
     moveMouse(target);
@@ -248,7 +296,9 @@ public class BasicRobot implements Robot {
       if (wait) {
         TimeoutWatch watch = startWatchWithTimeoutOf(settings().timeoutToBeVisible());
         while (!focusMonitor.hasFocus()) {
-          if (watch.isTimeOut()) throw actionFailure(concat("Focus change to ", format(target), " failed"));
+          if (watch.isTimeOut()) {
+            throw actionFailure(concat("Focus change to ", format(target), " failed"));
+          }
           pause();
         }
       }
@@ -258,46 +308,52 @@ public class BasicRobot implements Robot {
   }
 
   @RunsInEDT
-  private void activateWindowOfFocusTarget(Component target, Component currentOwner) {
+  private void activateWindowOfFocusTarget(@Nullable Component target, @Nullable Component currentOwner) {
     Pair<Window, Window> windowAncestors = windowAncestorsOf(currentOwner, target);
-    Window currentOwnerAncestor = windowAncestors.i;
-    Window targetAncestor = windowAncestors.ii;
-    if (currentOwnerAncestor == targetAncestor) return;
-    activate(targetAncestor);
+    Window currentOwnerAncestor = windowAncestors.first;
+    Window targetAncestor = windowAncestors.second;
+    if (currentOwnerAncestor == targetAncestor) {
+      return;
+    }
+    activate(checkNotNull(targetAncestor));
     waitForIdle();
   }
 
   @RunsInEDT
-  private static Pair<Window, Window> windowAncestorsOf(final Component one, final Component two) {
+  private static Pair<Window, Window> windowAncestorsOf(final @Nullable Component one, final @Nullable Component two) {
     return execute(new GuiQuery<Pair<Window, Window>>() {
-      @Override protected Pair<Window, Window> executeInEDT() throws Throwable {
-        return new Pair<Window, Window>(windowAncestor(one), windowAncestor(two));
+      @Override
+      protected Pair<Window, Window> executeInEDT() throws Throwable {
+        return Pair.of(windowAncestor(one), windowAncestor(two));
       }
 
-      private Window windowAncestor(Component c) {
+      private @Nullable Window windowAncestor(Component c) {
         return (c != null) ? windowAncestorOf(c) : null;
       }
     });
   }
 
   /**
-   * Activates the given <code>{@link Window}</code>. "Activate" means that the given window gets the keyboard focus.
+   * Activates the given AWT {@code Window}. "Activate" means that the given window gets the keyboard focus.
+   * 
    * @param w the window to activate.
    */
   @RunsInEDT
-  private void activate(Window w) {
+  private void activate(@Nonnull Window w) {
     activateWindow(w);
     moveMouse(w); // For pointer-focus systems
   }
 
   /** {@inheritDoc} */
   @RunsInEDT
+  @Override
   public synchronized void cleanUp() {
     cleanUp(true);
   }
 
   /** {@inheritDoc} */
   @RunsInEDT
+  @Override
   public synchronized void cleanUpWithoutDisposingWindows() {
     cleanUp(false);
   }
@@ -305,7 +361,9 @@ public class BasicRobot implements Robot {
   @RunsInEDT
   private void cleanUp(boolean disposeWindows) {
     try {
-      if (disposeWindows) disposeWindows(hierarchy);
+      if (disposeWindows) {
+        disposeWindows(hierarchy);
+      }
       releaseMouseButtons();
     } finally {
       active = false;
@@ -315,20 +373,27 @@ public class BasicRobot implements Robot {
 
   private void releaseScreenLock() {
     ScreenLock screenLock = ScreenLock.instance();
-    if (screenLock.acquiredBy(screenLockOwner)) screenLock.release(screenLockOwner);
+    if (screenLock.acquiredBy(screenLockOwner)) {
+      screenLock.release(screenLockOwner);
+    }
   }
 
   @RunsInEDT
-  private static void disposeWindows(final ComponentHierarchy hierarchy) {
+  private static void disposeWindows(final @Nonnull ComponentHierarchy hierarchy) {
     execute(new GuiTask() {
-      @Override protected void executeInEDT() {
-        for (Container c : hierarchy.roots()) if (c instanceof Window) dispose(hierarchy, (Window)c);
+      @Override
+      protected void executeInEDT() {
+        for (Container c : hierarchy.roots()) {
+          if (c instanceof Window) {
+            dispose(hierarchy, (Window) c);
+          }
+        }
       }
     });
   }
 
   @RunsInCurrentThread
-  private static void dispose(final ComponentHierarchy hierarchy, Window w) {
+  private static void dispose(final @Nonnull ComponentHierarchy hierarchy, @Nonnull Window w) {
     hierarchy.dispose(w);
     w.setVisible(false);
     w.dispose();
@@ -336,57 +401,70 @@ public class BasicRobot implements Robot {
 
   /** {@inheritDoc} */
   @RunsInEDT
-  public void click(Component c) {
+  @Override
+  public void click(@Nonnull Component c) {
     click(c, LEFT_BUTTON);
   }
 
   /** {@inheritDoc} */
   @RunsInEDT
-  public void rightClick(Component c) {
+  @Override
+  public void rightClick(@Nonnull Component c) {
     click(c, RIGHT_BUTTON);
   }
 
   /** {@inheritDoc} */
   @RunsInEDT
-  public void click(Component c, MouseButton button) {
+  @Override
+  public void click(@Nonnull Component c, @Nonnull MouseButton button) {
     click(c, button, 1);
   }
 
   /** {@inheritDoc} */
   @RunsInEDT
-  public void doubleClick(Component c) {
+  @Override
+  public void doubleClick(@Nonnull Component c) {
     click(c, LEFT_BUTTON, 2);
   }
 
   /** {@inheritDoc} */
   @RunsInEDT
-  public void click(Component c, MouseButton button, int times) {
+  @Override
+  public void click(@Nonnull Component c, @Nonnull MouseButton button, int times) {
     Point where = visibleCenterOf(c);
-    if (c instanceof JComponent)
+    if (c instanceof JComponent) {
       where = scrollIfNecessary((JComponent) c);
+    }
     click(c, where, button, times);
   }
 
-  private Point scrollIfNecessary(JComponent c) {
+  private @Nonnull Point scrollIfNecessary(@Nonnull JComponent c) {
     scrollToVisible(this, c);
     return visibleCenterOf(c);
   }
 
   /** {@inheritDoc} */
   @RunsInEDT
-  public void click(Component c, Point where) {
+  @Override
+  public void click(@Nonnull Component c, @Nonnull Point where) {
     click(c, where, LEFT_BUTTON, 1);
   }
 
   /** {@inheritDoc} */
   @RunsInEDT
-  public void click(Point where, MouseButton button, int times) {
-    click(null, where, button, times);
+  @Override
+  public void click(@Nonnull Point where, @Nonnull MouseButton button, int times) {
+    doClick(null, where, button, times);
   }
 
   /** {@inheritDoc} */
   @RunsInEDT
-  public void click(Component c, Point where, MouseButton button, int times) {
+  @Override
+  public void click(@Nonnull Component c, @Nonnull Point where, @Nonnull MouseButton button, int times) {
+    doClick(c, where, button, times);
+  }
+
+  private void doClick(@Nullable Component c, @Nonnull Point where, @Nonnull MouseButton button, int times) {
     int mask = button.mask;
     int modifierMask = mask & ~BUTTON_MASK;
     mask &= BUTTON_MASK;
@@ -394,11 +472,21 @@ public class BasicRobot implements Robot {
     // From Abbot: Adjust the auto-delay to ensure we actually get a multiple click
     // In general clicks have to be less than 200ms apart, although the actual setting is not readable by Java.
     int delayBetweenEvents = settings.delayBetweenEvents();
-    if (shouldSetDelayBetweenEventsToZeroWhenClicking(times)) settings.delayBetweenEvents(0);
-    eventGenerator.pressMouse(c, where, mask);
-    for (int i = times; i > 1; i--) {
-      eventGenerator.releaseMouse(mask);
+    if (shouldSetDelayBetweenEventsToZeroWhenClicking(times)) {
+      settings.delayBetweenEvents(0);
+    }
+    if (c == null) {
+      eventGenerator.pressMouse(where, mask);
+      for (int i = times; i > 1; i--) {
+        eventGenerator.releaseMouse(mask);
+        eventGenerator.pressMouse(where, mask);
+      }
+    } else {
       eventGenerator.pressMouse(c, where, mask);
+      for (int i = times; i > 1; i--) {
+        eventGenerator.releaseMouse(mask);
+        eventGenerator.pressMouse(c, where, mask);
+      }
     }
     settings.delayBetweenEvents(delayBetweenEvents);
     eventGenerator.releaseMouse(mask);
@@ -407,97 +495,117 @@ public class BasicRobot implements Robot {
   }
 
   private boolean shouldSetDelayBetweenEventsToZeroWhenClicking(int times) {
-    return times > 1 /*FEST-137: && settings.delayBetweenEvents() * 2 > 200*/;
+    return times > 1 /* FEST-137: && settings.delayBetweenEvents() * 2 > 200 */;
   }
 
   /** {@inheritDoc} */
+  @Override
   public void pressModifiers(int modifierMask) {
-    for (int modifierKey : keysFor(modifierMask))
+    for (int modifierKey : keysFor(modifierMask)) {
       pressKey(modifierKey);
+    }
   }
 
   /** {@inheritDoc} */
+  @Override
   public void releaseModifiers(int modifierMask) {
     // For consistency, release in the reverse order of press.
     int[] modifierKeys = keysFor(modifierMask);
-    for (int i = modifierKeys.length - 1; i >= 0; i--)
+    for (int i = modifierKeys.length - 1; i >= 0; i--) {
       releaseKey(modifierKeys[i]);
+    }
   }
 
   /** {@inheritDoc} */
   @RunsInEDT
-  public void moveMouse(Component c) {
+  @Override
+  public void moveMouse(@Nonnull Component c) {
     moveMouse(c, visibleCenterOf(c));
   }
 
   /** {@inheritDoc} */
   @RunsInEDT
-  public void moveMouse(Component c, Point p) {
+  @Override
+  public void moveMouse(@Nonnull Component c, @Nonnull Point p) {
     moveMouse(c, p.x, p.y);
   }
 
   /** {@inheritDoc} */
   @RunsInEDT
-  public void moveMouse(Component c, int x, int y) {
-    if (!waitForComponentToBeReady(c, settings.timeoutToBeVisible()))
+  @Override
+  public void moveMouse(@Nonnull Component c, int x, int y) {
+    if (!waitForComponentToBeReady(c, settings.timeoutToBeVisible())) {
       throw actionFailure(concat("Could not obtain position of component ", format(c)));
+    }
     eventGenerator.moveMouse(c, x, y);
     waitForIdle();
   }
 
   /** {@inheritDoc} */
-  public void moveMouse(Point p) {
+  @Override
+  public void moveMouse(@Nonnull Point p) {
     moveMouse(p.x, p.y);
   }
 
   /** {@inheritDoc} */
+  @Override
   public void moveMouse(int x, int y) {
     eventGenerator.moveMouse(x, y);
   }
 
   /** {@inheritDoc} */
-  public void pressMouse(MouseButton button) {
+  @Override
+  public void pressMouse(@Nonnull MouseButton button) {
     eventGenerator.pressMouse(button.mask);
   }
 
   /** {@inheritDoc} */
-  public void pressMouse(Component c, Point where) {
+  @Override
+  public void pressMouse(@Nonnull Component c, @Nonnull Point where) {
     pressMouse(c, where, LEFT_BUTTON);
   }
 
   /** {@inheritDoc} */
-  public void pressMouse(Component c, Point where, MouseButton button) {
+  @Override
+  public void pressMouse(@Nonnull Component c, @Nonnull Point where, @Nonnull MouseButton button) {
     jitter(c, where);
     moveMouse(c, where.x, where.y);
     eventGenerator.pressMouse(c, where, button.mask);
   }
 
   /** {@inheritDoc} */
-  public void pressMouse(Point where, MouseButton button) {
+  @Override
+  public void pressMouse(@Nonnull Point where, @Nonnull MouseButton button) {
     eventGenerator.pressMouse(where, button.mask);
   }
 
   /** {@inheritDoc} */
   @RunsInEDT
-  public void releaseMouse(MouseButton button) {
+  @Override
+  public void releaseMouse(@Nonnull MouseButton button) {
     mouseRelease(button.mask);
   }
 
   /** {@inheritDoc} */
   @RunsInEDT
+  @Override
   public void releaseMouseButtons() {
     int buttons = inputState.buttons();
-    if (buttons == 0) return;
+    if (buttons == 0) {
+      return;
+    }
     mouseRelease(buttons);
   }
 
   /** {@inheritDoc} */
-  public void rotateMouseWheel(Component c, int amount) {
+  @Override
+  public void rotateMouseWheel(@Nonnull Component c, int amount) {
     moveMouse(c);
     rotateMouseWheel(amount);
   }
 
   /** {@inheritDoc} */
+  @Override
   public void rotateMouseWheel(int amount) {
     eventGenerator.rotateMouseWheel(amount);
     waitForIdle();
@@ -505,13 +613,15 @@ public class BasicRobot implements Robot {
 
   /** {@inheritDoc} */
   @RunsInEDT
-  public void jitter(Component c) {
+  @Override
+  public void jitter(@Nonnull Component c) {
     jitter(c, visibleCenterOf(c));
   }
 
   /** {@inheritDoc} */
   @RunsInEDT
-  public void jitter(Component c, Point where) {
+  @Override
+  public void jitter(@Nonnull Component c, @Nonnull Point where) {
     int x = where.x;
     int y = where.y;
     moveMouse(c, (x > 0 ? x - 1 : x + 1), y);
@@ -519,46 +629,63 @@ public class BasicRobot implements Robot {
 
   // Wait the given number of milliseconds for the component to be showing and ready.
   @RunsInEDT
-  private boolean waitForComponentToBeReady(Component c, long timeout) {
-    if (isReadyForInput(c)) return true;
+  private boolean waitForComponentToBeReady(@Nonnull Component c, long timeout) {
+    if (isReadyForInput(c)) {
+      return true;
+    }
     TimeoutWatch watch = startWatchWithTimeoutOf(timeout);
     while (!isReadyForInput(c)) {
       if (c instanceof JPopupMenu) {
         // wiggle the mouse over the parent menu item to ensure the sub-menu shows
-        Pair<Component, Point> invokerAndCenterOfInvoker = invokerAndCenterOfInvoker((JPopupMenu)c);
-        Component invoker = invokerAndCenterOfInvoker.i;
-        if (invoker instanceof JMenu) jitter(invoker, invokerAndCenterOfInvoker.ii);
+        Pair<Component, Point> invokerAndCenterOfInvoker = invokerAndCenterOfInvoker((JPopupMenu) c);
+        Component invoker = invokerAndCenterOfInvoker.first;
+        if (invoker instanceof JMenu) {
+          jitter(invoker, invokerAndCenterOfInvoker.second);
+        }
       }
-      if (watch.isTimeOut()) return false;
+      if (watch.isTimeOut()) {
+        return false;
+      }
       pause();
     }
     return true;
   }
 
   @RunsInEDT
-  private static Pair<Component, Point> invokerAndCenterOfInvoker(final JPopupMenu popupMenu) {
-    return execute(new GuiQuery<Pair<Component, Point>>() {
-      @Override protected Pair<Component, Point> executeInEDT() {
-        Component invoker = popupMenu.getInvoker();
-        return new Pair<Component, Point>(invoker, centerOf(invoker));
+  private static @Nonnull Pair<Component, Point> invokerAndCenterOfInvoker(final @Nonnull JPopupMenu popupMenu) {
+    Pair<Component, Point> result = execute(new GuiQuery<Pair<Component, Point>>() {
+      @Override
+      protected Pair<Component, Point> executeInEDT() {
+        Component invoker = checkNotNull(popupMenu.getInvoker());
+        return Pair.of(invoker, centerOf(invoker));
       }
     });
+    return checkNotNull(result);
   }
 
   /** {@inheritDoc} */
   @RunsInEDT
-  public void enterText(String text) {
-    if (isEmpty(text)) return;
-    for (char character : text.toCharArray()) type(character);
+  @Override
+  public void enterText(@Nonnull String text) {
+    checkNotNull(text);
+    if (text.isEmpty()) {
+      return;
+    }
+    for (char character : text.toCharArray()) {
+      type(character);
+    }
   }
 
   /** {@inheritDoc} */
   @RunsInEDT
+  @Override
   public void type(char character) {
     KeyStroke keyStroke = keyStrokeFor(character);
     if (keyStroke == null) {
       Component focus = focusOwner();
-      if (focus == null) return;
+      if (focus == null) {
+        return;
+      }
       KeyEvent keyEvent = keyEventFor(focus, character);
       // Allow any pending robot events to complete; otherwise we might stuff the typed event before previous
       // robot-generated events are posted.
@@ -575,14 +702,16 @@ public class BasicRobot implements Robot {
 
   /** {@inheritDoc} */
   @RunsInEDT
-  public void pressAndReleaseKey(int keyCode, int... modifiers) {
+  @Override
+  public void pressAndReleaseKey(int keyCode, @Nonnull int... modifiers) {
     keyPressAndRelease(keyCode, unify(modifiers));
     waitForIdle();
   }
 
   /** {@inheritDoc} */
   @RunsInEDT
-  public void pressAndReleaseKeys(int... keyCodes) {
+  @Override
+  public void pressAndReleaseKeys(@Nonnull int... keyCodes) {
     for (int keyCode : keyCodes) {
       keyPressAndRelease(keyCode, 0);
       waitForIdle();
@@ -603,6 +732,7 @@ public class BasicRobot implements Robot {
 
   /** {@inheritDoc} */
   @RunsInEDT
+  @Override
   public void pressKey(int keyCode) {
     doPressKey(keyCode);
     waitForIdle();
@@ -615,6 +745,7 @@ public class BasicRobot implements Robot {
 
   /** {@inheritDoc} */
   @RunsInEDT
+  @Override
   public void releaseKey(int keyCode) {
     eventGenerator.releaseKey(keyCode);
     waitForIdle();
@@ -627,26 +758,32 @@ public class BasicRobot implements Robot {
 
   /** {@inheritDoc} */
   @RunsInEDT
+  @Override
   public void waitForIdle() {
     waitIfNecessary();
     Collection<EventQueue> queues = windowMonitor.allEventQueues();
     if (queues.size() == 1) {
-      waitForIdle(toolkit.getSystemEventQueue());
+      waitForIdle(checkNotNull(toolkit.getSystemEventQueue()));
       return;
     }
     // FIXME this resurrects dead event queues
-    for (EventQueue queue : queues) waitForIdle(queue);
+    for (EventQueue queue : queues) {
+      waitForIdle(checkNotNull(queue));
+    }
   }
 
   private void waitIfNecessary() {
     int delayBetweenEvents = settings.delayBetweenEvents();
-    int eventPostingDelay  = settings.eventPostingDelay();
-    if (eventPostingDelay > delayBetweenEvents) pause(eventPostingDelay - delayBetweenEvents);
+    int eventPostingDelay = settings.eventPostingDelay();
+    if (eventPostingDelay > delayBetweenEvents) {
+      pause(eventPostingDelay - delayBetweenEvents);
+    }
   }
 
-  private void waitForIdle(EventQueue eventQueue) {
-    if (EventQueue.isDispatchThread())
+  private void waitForIdle(@Nonnull EventQueue eventQueue) {
+    if (EventQueue.isDispatchThread()) {
       throw new IllegalThreadStateException("Cannot call method from the event dispatcher thread");
+    }
     // Abbot: as of Java 1.3.1, robot.waitForIdle only waits for the last event on the queue at the time of this
     // invocation to be processed. We need better than that. Make sure the given event queue is empty when this method
     // returns.
@@ -656,9 +793,13 @@ public class BasicRobot implements Robot {
     do {
       // Timed out waiting for idle
       int idleTimeout = settings.idleTimeout();
-      if (postInvocationEvent(eventQueue, idleTimeout)) break;
+      if (postInvocationEvent(eventQueue, idleTimeout)) {
+        break;
+      }
       // Timed out waiting for idle event queue
-      if (currentTimeMillis() - start > idleTimeout) break;
+      if (currentTimeMillis() - start > idleTimeout) {
+        break;
+      }
       ++count;
       // Force a yield
       pause();
@@ -670,7 +811,7 @@ public class BasicRobot implements Robot {
 
   // Indicates whether we timed out waiting for the invocation to run
   @RunsInEDT
-  private boolean postInvocationEvent(EventQueue eventQueue, long timeout) {
+  private boolean postInvocationEvent(@Nonnull EventQueue eventQueue, long timeout) {
     Object lock = new RobotIdleLock();
     synchronized (lock) {
       eventQueue.postEvent(new InvocationEvent(toolkit, EMPTY_RUNNABLE, lock, true));
@@ -680,107 +821,139 @@ public class BasicRobot implements Robot {
         // the test will wait forever (up through 1.5.0_05).
         lock.wait(timeout);
         return (currentTimeMillis() - start) >= settings.idleTimeout();
-      } catch (InterruptedException e) {}
+      } catch (InterruptedException e) {
+      }
       return false;
     }
   }
 
   private static class RobotIdleLock {
-    RobotIdleLock() {}
+    RobotIdleLock() {
+    }
   }
 
   /** {@inheritDoc} */
+  @Override
   public boolean isDragging() {
     return inputState.dragInProgress();
   }
 
   /** {@inheritDoc} */
   @RunsInEDT
-  public JPopupMenu showPopupMenu(Component invoker) {
+  @Override
+  public @Nonnull JPopupMenu showPopupMenu(@Nonnull Component invoker) {
     return showPopupMenu(invoker, visibleCenterOf(invoker));
   }
 
   /** {@inheritDoc} */
   @RunsInEDT
-  public JPopupMenu showPopupMenu(Component invoker, Point location) {
-    if (isFocusable(invoker)) focusAndWaitForFocusGain(invoker);
+  @Override
+  public @Nonnull JPopupMenu showPopupMenu(@Nonnull Component invoker, @Nonnull Point location) {
+    if (isFocusable(invoker)) {
+      focusAndWaitForFocusGain(invoker);
+    }
     click(invoker, location, RIGHT_BUTTON, 1);
     JPopupMenu popup = findActivePopupMenu();
-    if (popup == null)
+    if (popup == null) {
       throw new ComponentLookupException(concat("Unable to show popup at ", location, " on ", inEdtFormat(invoker)));
+    }
     long start = currentTimeMillis();
-    while (!isWindowAncestorReadyForInput(popup) && currentTimeMillis() - start > POPUP_DELAY)
+    while (!isWindowAncestorReadyForInput(popup) && currentTimeMillis() - start > POPUP_DELAY) {
       pause();
+    }
     return popup;
   }
 
   @RunsInEDT
   private boolean isWindowAncestorReadyForInput(final JPopupMenu popup) {
-    return execute(new GuiQuery<Boolean>() {
-      @Override protected Boolean executeInEDT() {
-        return isReadyForInput(getWindowAncestor(popup));
+    Boolean result = execute(new GuiQuery<Boolean>() {
+      @Override
+      protected Boolean executeInEDT() {
+        Window ancestor = checkNotNull(getWindowAncestor(popup));
+        return isReadyForInput(ancestor);
       }
     });
+    return checkNotNull(result);
   }
 
   /**
-   * Indicates whether the given <code>{@link Component}</code> is ready for input.
    * <p>
-   * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
-   * responsible for calling this method from the EDT.
+   * Indicates whether the given AWT or Swing {@code Component} is ready for input.
    * </p>
+   * 
+   * <p>
+   * <b>Note:</b> This method is accessed in the current executing thread. Such thread may or may not be the event
+   * dispatch thread (EDT.) Client code must call this method from the EDT.
+   * </p>
+   * 
    * @param c the given {@code Component}.
    * @return {@code true} if the given {@code Component} is ready for input, {@code false} otherwise.
    * @throws ActionFailedException if the given {@code Component} does not have a {@code Window} ancestor.
    */
+  @Override
   @RunsInCurrentThread
-  public boolean isReadyForInput(Component c) {
+  public boolean isReadyForInput(@Nonnull Component c) {
     Window w = windowAncestorOf(c);
-    if (w == null) throw actionFailure(concat("Component ", format(c), " does not have a Window ancestor"));
+    if (w == null) {
+      throw actionFailure(concat("Component ", format(c), " does not have a Window ancestor"));
+    }
     return c.isShowing() && windowMonitor.isWindowReady(w);
   }
 
   /** {@inheritDoc} */
   @RunsInEDT
-  public JPopupMenu findActivePopupMenu() {
+  @Override
+  public @Nullable JPopupMenu findActivePopupMenu() {
     JPopupMenu popup = activePopupMenu();
-    if (popup != null || isEventDispatchThread()) return popup;
+    if (popup != null || isEventDispatchThread()) {
+      return popup;
+    }
     TimeoutWatch watch = startWatchWithTimeoutOf(POPUP_TIMEOUT);
     while ((popup = activePopupMenu()) == null) {
-      if (watch.isTimeOut()) break;
+      if (watch.isTimeOut()) {
+        break;
+      }
       pause(100);
     }
     return popup;
   }
 
   @RunsInEDT
-  private JPopupMenu activePopupMenu() {
-    List<Component> found = new ArrayList<Component>(finder().findAll(POPUP_MATCHER));
-    if (found.size() == 1) return (JPopupMenu)found.get(0);
+  private @Nullable JPopupMenu activePopupMenu() {
+    List<Component> found = newArrayList(finder().findAll(POPUP_MATCHER));
+    if (found.size() == 1) {
+      return (JPopupMenu) found.get(0);
+    }
     return null;
   }
 
   /** {@inheritDoc} */
   @RunsInEDT
+  @Override
   public void requireNoJOptionPaneIsShowing() {
     unexpectedJOptionPaneFinder.requireNoJOptionPaneIsShowing();
   }
 
   /** {@inheritDoc} */
-  public Settings settings() {
+  @Override
+  public @Nonnull Settings settings() {
     return settings;
   }
 
   /** {@inheritDoc} */
-  public ComponentHierarchy hierarchy() {
+  @Override
+  public @Nonnull ComponentHierarchy hierarchy() {
     return hierarchy;
   }
 
   /** {@inheritDoc} */
-  public synchronized boolean isActive() { return active; }
+  @Override
+  public synchronized boolean isActive() {
+    return active;
+  }
 
   @VisibleForTesting
-  final Object screenLockOwner() { return screenLockOwner; }
-
-
+  final @Nullable Object screenLockOwner() {
+    return screenLockOwner;
+  }
 }

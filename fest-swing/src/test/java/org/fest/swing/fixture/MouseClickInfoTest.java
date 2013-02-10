@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2007-2010 the original author or authors.
+ * Copyright @2007-2013 the original author or authors.
  */
 package org.fest.swing.fixture;
 
@@ -22,13 +22,12 @@ import org.fest.swing.core.MouseClickInfo;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link MouseClickInfo}</code>.
+ * Tests for {@link MouseClickInfo}.
  *
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
 public class MouseClickInfoTest {
-
   @Test(expected = NullPointerException.class)
   public void shouldThrowErrorIfMouseButtonIsNull() {
     MouseClickInfo.button(null);

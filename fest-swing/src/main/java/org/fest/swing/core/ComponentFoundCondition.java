@@ -1,40 +1,44 @@
 /*
  * Created on Nov 15, 2007
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ * 
  * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
- *
- * Copyright @2007-2010 the original author or authors.
+ * 
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+ * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations under the License.
+ * 
+ * Copyright @2007-2013 the original author or authors.
  */
 package org.fest.swing.core;
 
 import static java.util.Collections.emptyList;
+import static org.fest.util.Preconditions.checkNotNull;
 import static org.fest.util.Strings.concat;
-import static org.fest.util.Systems.LINE_SEPARATOR;
+import static org.fest.util.SystemProperties.lineSeparator;
 
-import java.awt.*;
+import java.awt.Component;
+import java.awt.Container;
 import java.util.Collection;
 import java.util.concurrent.atomic.AtomicReference;
 
-import org.fest.assertions.*;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
+import org.fest.assertions.BasicDescription;
+import org.fest.assertions.Description;
 import org.fest.swing.exception.ComponentLookupException;
 import org.fest.swing.timing.Condition;
 
 /**
- * Condition that is satisfied if a GUI component that matches certain search criteria is found.
- *
+ * Condition that is satisfied if a AWT or Swing {@code Component} that matches certain search criteria is found.
+ * 
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
 public final class ComponentFoundCondition extends Condition {
-
   private final ComponentFinder finder;
   private final ComponentMatcher matcher;
   private final Container root;
@@ -44,45 +48,52 @@ public final class ComponentFoundCondition extends Condition {
   private final AtomicReference<ComponentLookupException> notFoundError = new AtomicReference<ComponentLookupException>();
 
   /**
-   * Creates a new <code>{@link ComponentFoundCondition}</code>
+   * Creates a new {@link ComponentFoundCondition}
+   * 
    * @param description the description of this condition.
-   * @param finder performs the component search.
-   * @param matcher specifies the condition that the component we are looking for needs to match.
+   * @param finder performs the search.
+   * @param matcher specifies the condition that the AWT or Swing {@code Component} we are looking for needs to match.
    */
-  public ComponentFoundCondition(String description, ComponentFinder finder, ComponentMatcher matcher) {
+  public ComponentFoundCondition(@Nonnull String description, @Nonnull ComponentFinder finder,
+      @Nonnull ComponentMatcher matcher) {
     this(description, finder, matcher, null);
   }
 
   /**
-   * Creates a new <code>{@link ComponentFoundCondition}</code>
+   * Creates a new {@link ComponentFoundCondition}
+   * 
    * @param description the description of this condition.
-   * @param finder performs the component search.
-   * @param matcher specifies the condition that the component we are looking for needs to match.
-   * @param root the root used as the starting point of the search.
+   * @param finder performs the search.
+   * @param matcher specifies the condition that the AWT or Swing {@code Component} we are looking for needs to match.
+   * @param root the root {@Container} used as the starting point of the search.
    */
-  public ComponentFoundCondition(String description, ComponentFinder finder, ComponentMatcher matcher, Container root) {
+  public ComponentFoundCondition(@Nonnull String description, @Nonnull ComponentFinder finder,
+      @Nonnull ComponentMatcher matcher, @Nullable Container root) {
     this(new BasicDescription(description), finder, matcher, root);
   }
 
   /**
-   * Creates a new <code>{@link ComponentFoundCondition}</code>
+   * Creates a new {@link ComponentFoundCondition}
+   * 
    * @param description the description of this condition.
-   * @param finder performs the component search.
-   * @param matcher specifies the condition that the component we are looking for needs to match.
+   * @param finder performs the search.
+   * @param matcher specifies the condition that the AWT or Swing {@code Component} we are looking for needs to match.
    */
-  public ComponentFoundCondition(Description description, ComponentFinder finder, ComponentMatcher matcher) {
+  public ComponentFoundCondition(@Nonnull Description description, @Nonnull ComponentFinder finder,
+      @Nonnull ComponentMatcher matcher) {
     this(description, finder, matcher, null);
   }
 
   /**
-   * Creates a new <code>{@link ComponentFoundCondition}</code>
+   * Creates a new {@link ComponentFoundCondition}
+   * 
    * @param description the description of this condition.
-   * @param finder performs the component search.
-   * @param matcher specifies the condition that the component we are looking for needs to match.
-   * @param root the root used as the starting point of the search.
+   * @param finder performs the search.
+   * @param matcher specifies the condition that the AWT or Swing {@code Component} we are looking for needs to match.
+   * @param root the root {@Container} used as the starting point of the search.
    */
-  public ComponentFoundCondition(Description description, ComponentFinder finder, ComponentMatcher matcher,
-      Container root) {
+  public ComponentFoundCondition(@Nonnull Description description, @Nonnull ComponentFinder finder,
+      @Nonnull ComponentMatcher matcher, @Nullable Container root) {
     super(description);
     this.finder = finder;
     this.matcher = matcher;
@@ -90,11 +101,13 @@ public final class ComponentFoundCondition extends Condition {
   }
 
   /**
-   * Returns {@code true} if a component that matches the search criteria in this condition's
-   * <code>{@link ComponentMatcher}</code> can be found. Otherwise, this method returns {@code false}.
-   * @return {@code true} if a matching component can be found, {@code false} otherwise.
+   * Indicates whether {@code true} an AWT or Swing {@code Component}, that matches the search criteria in this
+   * condition's {@link ComponentMatcher}, can be found.
+   * 
+   * @return {@code true} if a matching {@code Component} can be found, {@code false} otherwise.
    */
-  @Override public boolean test() {
+  @Override
+  public boolean test() {
     boolean matchFound = false;
     try {
       found = finder.find(root, matcher);
@@ -103,40 +116,47 @@ public final class ComponentFoundCondition extends Condition {
       notFoundError.set(e);
     }
     resetMatcher(matchFound);
-    if (matchFound) notFoundError.set(null);
+    if (matchFound) {
+      notFoundError.set(null);
+    }
     return matchFound;
   }
 
   private void resetMatcher(boolean matchFound) {
-    if (!(matcher instanceof ResettableComponentMatcher)) return;
-    ((ResettableComponentMatcher)matcher).reset(matchFound);
+    if (!(matcher instanceof ResettableComponentMatcher)) {
+      return;
+    }
+    ((ResettableComponentMatcher) matcher).reset(matchFound);
   }
 
   /**
-   * Returns the component hierarchy to be added to this condition's description in case of a component lookup failure.
-   * @return the component hierarchy to be added to this condition's description in case of a component lookup failure.
+   * @return the AWT {@code Component} hierarchy to be added to this condition's description in case of a lookup failure.
    */
-  @Override protected String descriptionAddendum() {
+  @Override
+  protected @Nonnull String descriptionAddendum() {
     ComponentLookupException error = notFoundError.get();
-    if (error == null) return EMPTY_TEXT;
-    return concat(LINE_SEPARATOR, error.getMessage());
+    if (error == null) {
+      return EMPTY_TEXT;
+    }
+    return concat(lineSeparator(), error.getMessage());
   }
 
   /**
-   * Returns the component found (if any.)
-   * @return the component found.
+   * @return the AWT or Swing {@code Component} found.
    */
-  public Component found() { return found; }
+  public @Nonnull Component found() {
+    return checkNotNull(found);
+  }
 
   /**
-   * Returns all the components that satisfied the search criteria specified by this condition's
-   * <code>{@link ComponentMatcher}</code>.
-   * @return all the components that satisfied the search criteria specified by this condition's
-   * {@code ComponentMatcher}.
+   * @return all the AWT or Swing {@code Component}s that satisfied the search criteria specified by this condition's
+   *         {@code ComponentMatcher}.
    */
   public Collection<? extends Component> duplicatesFound() {
     ComponentLookupException error = notFoundError.get();
-    if (error == null) return emptyList();
+    if (error == null) {
+      return emptyList();
+    }
     return error.found();
   }
 }

@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -21,13 +21,12 @@ import static org.fest.assertions.Assertions.assertThat;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link FrameDriver#iconify(java.awt.Frame)}</code> and
- * <code>{@link FrameDriver#deiconify(java.awt.Frame)}</code>.
+ * Tests for {@link FrameDriver#iconify(java.awt.Frame)} and
+ * {@link FrameDriver#deiconify(java.awt.Frame)}.
  *
  * @author Alex Ruiz
  */
 public class FrameDriver_iconify_deiconify_Test extends FrameDriver_TestCase {
-
   @Test
   public void shouldIconifyAndDeiconifyFrame() {
     showWindow();

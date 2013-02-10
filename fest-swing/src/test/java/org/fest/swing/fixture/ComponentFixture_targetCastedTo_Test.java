@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2010 the original author or authors.
+ * Copyright @2010-2013 the original author or authors.
  */
 package org.fest.swing.fixture;
 
@@ -22,12 +22,11 @@ import javax.swing.JTextField;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link ComponentFixture#targetCastedTo(Class)}</code>.
+ * Tests for {@link ComponentFixture#targetCastedTo(Class)}.
  *
  * @author Alex Ruiz
  */
 public class ComponentFixture_targetCastedTo_Test extends ComponentFixture_TestCase {
-
   @Test
   public void should_cast_target_Component() {
     JTextField castedTarget = fixture.targetCastedTo(JTextField.class);

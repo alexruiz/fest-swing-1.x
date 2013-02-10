@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -28,12 +28,11 @@ import org.fest.swing.test.swing.TestWindow;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link ComponentStateValidator#validateIsEnabledAndShowing(java.awt.Component)}</code>.
+ * Tests for {@link ComponentPreconditions#checkEnabledAndShowing(java.awt.Component)}.
  *
  * @author Alex Ruiz
  */
 public class ComponentStateValidator_validateIsEnabledAndShowing_Test extends RobotBasedTestCase {
-
   private TestWindow window;
 
   @Override protected void onSetUp() {
@@ -73,7 +72,7 @@ public class ComponentStateValidator_validateIsEnabledAndShowing_Test extends Ro
   private static void validateWindowIsEnabledAndShowing(final Component c) {
     execute(new GuiTask() {
       @Override protected void executeInEDT() {
-        ComponentStateValidator.validateIsEnabledAndShowing(c);
+        ComponentPreconditions.checkEnabledAndShowing(c);
       }
     });
   }

@@ -11,20 +11,19 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2007-2010 the original author or authors.
+ * Copyright @2007-2013 the original author or authors.
  */
 package org.fest.swing.finder;
 
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link WindowFinder#findDialog(String)}</code>.
+ * Tests for {@link WindowFinder#findDialog(String)}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 public class WindowFinder_findDialog_byName_withInvalidInput_Test {
-
   @Test(expected = NullPointerException.class)
   public void should_throw_error_if_name_is_null() {
     String name = null;
@@ -45,5 +44,4 @@ public class WindowFinder_findDialog_byName_withInvalidInput_Test {
   public void should_throw_error_if_time_unit_is_null() {
     WindowFinder.findDialog("dialog").withTimeout(10, null);
   }
-
 }

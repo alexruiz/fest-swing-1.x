@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.core;
 
@@ -21,12 +21,11 @@ import static org.fest.assertions.Assertions.assertThat;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link InputModifiers#isAltGraphDown(int)}</code>.
+ * Tests for {@link InputModifiers#isAltGraphDown(int)}.
  *
  * @author Alex Ruiz
  */
 public class InputModifiers_isAltGraphDown_Test {
-
   @Test
   public void should_return_true_if_alt_graph_mask_is_present() {
     assertThat(InputModifiers.isAltGraphDown(ALT_GRAPH_MASK | CTRL_MASK)).isTrue();

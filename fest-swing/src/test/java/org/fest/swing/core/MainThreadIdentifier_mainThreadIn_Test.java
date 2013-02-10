@@ -11,22 +11,22 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.core;
 
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.util.Arrays.array;
 
-import org.junit.*;
+import org.junit.Before;
+import org.junit.Test;
 
 /**
- * Tests for <code>{@link MainThreadIdentifier#mainThreadIn(Thread[])}</code>.
+ * Tests for {@link MainThreadIdentifier#mainThreadIn(Thread[])}.
  *
  * @author Alex Ruiz
  */
 public class MainThreadIdentifier_mainThreadIn_Test {
-
   private MainThreadIdentifier identifier;
 
   @Before public void setUp() {

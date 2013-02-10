@@ -11,20 +11,19 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JComboBoxDriver#cellReader(org.fest.swing.cell.JComboBoxCellReader)}</code>.
+ * Tests for {@link JComboBoxDriver#cellReader(org.fest.swing.cell.JComboBoxCellReader)}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 public class JComboBoxDriver_cellReader_Test extends JComboBoxDriver_TestCase {
-
   @Test(expected = NullPointerException.class)
   public void should_throw_error_if_cellReader_is_null() {
     driver.cellReader(null);

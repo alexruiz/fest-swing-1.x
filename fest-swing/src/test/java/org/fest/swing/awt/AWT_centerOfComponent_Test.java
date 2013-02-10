@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.awt;
 
@@ -27,12 +27,11 @@ import org.fest.swing.test.core.EDTSafeTestCase;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link AWT#centerOf(java.awt.Component)}</code>.
+ * Tests for {@link AWT#centerOf(java.awt.Component)}.
  *
  * @author Alex Ruiz
  */
 public class AWT_centerOfComponent_Test extends EDTSafeTestCase {
-
   @Test public void should_return_center_position() {
     Component c = textField().withColumns(20).createNew();
     setComponentSize(c, 80, 60);

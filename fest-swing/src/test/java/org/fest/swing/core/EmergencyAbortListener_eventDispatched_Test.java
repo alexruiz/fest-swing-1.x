@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.core;
 
@@ -31,12 +31,11 @@ import org.fest.swing.test.core.EDTSafeTestCase;
 import org.junit.*;
 
 /**
- * Tests for <code>{@link EmergencyAbortListener#eventDispatched(AWTEvent)}</code>.
+ * Tests for {@link EmergencyAbortListener#eventDispatched(AWTEvent)}.
  *
  * @author Alex Ruiz
  */
 public class EmergencyAbortListener_eventDispatched_Test extends EDTSafeTestCase {
-
   private TestTerminator terminator;
   private EmergencyAbortListener listener;
 

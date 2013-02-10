@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -22,12 +22,11 @@ import javax.swing.*;
 import org.fest.swing.edt.GuiQuery;
 
 /**
- * Base test case for methods in <code>{@link JTableHeaderDriver}</code> that invoke a <code>{@link JPopupMenu}</code>.
+ * Base test case for methods in {@link JTableHeaderDriver} that invoke a {@code JPopupMenu}.
  *
  * @author Yvonne Wang
  */
 public abstract class JTableHeaderDriver_showPopupMenu_TestCase extends JTableHeaderDriver_TestCase {
-
   JPopupMenu popupMenu;
 
   @Override final void extraSetUp() {

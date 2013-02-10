@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -19,12 +19,11 @@ import org.fest.swing.test.core.EDTSafeTestCase;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link WaitForComponentToShowCondition#test()}</code>.
+ * Tests for {@link WaitForComponentToShowCondition#test()}.
  *
  * @author Yvonne Wang
  */
 public class WaitForComponentToShowCondition_untilIsShowing_Test extends EDTSafeTestCase {
-
   @Test(expected = NullPointerException.class)
   public void shouldThrowError_if_Component_is_Null() {
     WaitForComponentToShowCondition.untilIsShowing(null);

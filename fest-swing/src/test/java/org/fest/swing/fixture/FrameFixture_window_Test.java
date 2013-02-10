@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.fixture;
 
@@ -25,13 +25,12 @@ import org.fest.swing.driver.FrameDriver;
 import org.junit.After;
 
 /**
- * Tests for methods in <code>{@link FrameFixture}</code> that are inherited from <code>{@link WindowFixture}</code>.
+ * Tests for methods in {@link FrameFixture} that are inherited from {@link WindowFixture}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 public class FrameFixture_window_Test extends WindowFixture_implementation_TestCase<Frame> {
-
   private FrameDriver driver;
   private Frame target;
   private FrameFixture fixture;

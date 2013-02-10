@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.image;
 
@@ -25,7 +25,6 @@ import java.util.UUID;
  * @author Alex Ruiz
  */
 final class RandomFileNameCreator {
-
   static String randomFileName() {
     UUID uuid = UUID.randomUUID();
     return concat(uuid.toString(), ".png");

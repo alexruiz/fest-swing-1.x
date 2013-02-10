@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -21,14 +21,13 @@ import static org.fest.swing.test.core.CommonAssertions.*;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link ComponentDriver#pressKey(java.awt.Component, int)}</code> and
- * <code>{@link ComponentDriver#releaseKey(java.awt.Component, int)}</code>.
+ * Tests for {@link ComponentDriver#pressKey(java.awt.Component, int)} and
+ * {@link ComponentDriver#releaseKey(java.awt.Component, int)}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 public class ComponentDriver_releaseKey_Test extends ComponentDriver_TestCase {
-
   @Test
   public void should_throw_error_if_Component_is_disabled() {
     disableTextField();
@@ -73,5 +72,4 @@ public class ComponentDriver_releaseKey_Test extends ComponentDriver_TestCase {
     }
     assertThatTextFieldIsEmpty();
   }
-
 }

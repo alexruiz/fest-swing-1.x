@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -33,12 +33,11 @@ import org.fest.swing.util.TextMatcher;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JComboBoxMatchingItemQuery#matchingItemIndex(JComboBox, TextMatcher, JComboBoxCellReader)}</code>.
+ * Tests for {@link JComboBoxMatchingItemQuery#matchingItemIndex(JComboBox, TextMatcher, JComboBoxCellReader)}.
  *
  * @author Alex Ruiz
  */
 public class JComboBoxMatchingItemQuery_matchingItemIndex_Test extends RobotBasedTestCase {
-
   private JComboBox comboBox;
   private JComboBoxCellReader cellReader;
   private TextMatcher matcher;
@@ -100,5 +99,4 @@ public class JComboBoxMatchingItemQuery_matchingItemIndex_Test extends RobotBase
       addComponents(comboBox);
     }
   }
-
 }

@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.fixture;
 
@@ -24,14 +24,13 @@ import org.fest.swing.driver.JScrollBarDriver;
 import org.junit.BeforeClass;
 
 /**
- * Tests for methods in <code>{@link JScrollBarFixture}</code> that are inherited from
- * <code>{@link StateVerificationFixture}</code>.
+ * Tests for methods in {@link JScrollBarFixture} that are inherited from
+ * {@link StateVerificationFixture}.
  *
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
 public class JScrollBarFixture_stateVerification_Test extends StateVerificationFixture_TestCase<JScrollBar> {
-
   private static JScrollBar target;
 
   private JScrollBarDriver driver;

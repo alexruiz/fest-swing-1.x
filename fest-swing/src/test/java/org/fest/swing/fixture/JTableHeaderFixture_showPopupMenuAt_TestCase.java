@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.fixture;
 
@@ -22,13 +22,12 @@ import javax.swing.JPopupMenu;
 import org.fest.swing.test.builder.JPopupMenus;
 
 /**
- * Base test class for <code>{@link JTableHeaderFixture}</code>.
+ * Base test class for {@link JTableHeaderFixture}.
  *
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
 public abstract class JTableHeaderFixture_showPopupMenuAt_TestCase extends JTableHeaderFixture_TestCase {
-
   private JPopupMenu popupMenu;
 
   @Override void extraSetUp() {

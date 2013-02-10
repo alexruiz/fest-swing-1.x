@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -25,13 +25,12 @@ import org.fest.swing.data.TableCell;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JTableDriver#cancelCellEditing(JTable, TableCell)}</code>.
+ * Tests for {@link JTableDriver#cancelCellEditing(JTable, TableCell)}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 public class JTableDriver_cancelCellEditing_Test extends JTableDriver_withMockCellWriter_TestCase {
-
   @Test
   public void should_cancel_cell_editing() {
     new EasyMockTemplate(cellWriter) {

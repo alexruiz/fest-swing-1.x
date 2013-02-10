@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -20,12 +20,11 @@ import static org.fest.swing.test.core.CommonAssertions.*;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JScrollBarDriver#scrollBlockDown(javax.swing.JScrollBar)}</code>.
+ * Tests for {@link JScrollBarDriver#scrollBlockDown(javax.swing.JScrollBar)}.
  *
  * @author Alex Ruiz
  */
 public class JScrollBarDriver_scrollBlockDown_Test extends JScrollBarDriver_TestCase {
-
   @Test
   public void should_scroll_block_down() {
     showWindow();

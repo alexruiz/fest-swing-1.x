@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.core;
 
@@ -25,13 +25,12 @@ import javax.swing.JTextField;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link BasicComponentFinder#findAll(ComponentMatcher)}</code>.
+ * Tests for {@link BasicComponentFinder#findAll(ComponentMatcher)}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 public class BasicComponentFinder_findAllUsingComponentMatcher_Test extends BasicComponentFinder_TestCase {
-
   @Test
   public void should_return_all_matching_Components() {
     Collection<Component> found = finder.findAll(new ComponentMatcher() {
@@ -41,5 +40,4 @@ public class BasicComponentFinder_findAllUsingComponentMatcher_Test extends Basi
     });
     assertThat(found).containsOnly(window.textField1, window.textField2);
   }
-
 }

@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -25,12 +25,11 @@ import org.fest.swing.test.swing.*;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JTableColumnCountQuery#columnCountOf(javax.swing.JTable)}</code>.
+ * Tests for {@link JTableColumnCountQuery#columnCountOf(javax.swing.JTable)}.
  *
  * @author Alex Ruiz
  */
 public class JTableColumnCountQuery_columnCountOf_Test extends RobotBasedTestCase {
-
   private static final int COLUMN_COUNT = 6;
 
   private MyTable table;

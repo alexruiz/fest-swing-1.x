@@ -10,7 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.fixture;
 
@@ -24,13 +24,12 @@ import org.fest.swing.timing.Timeout;
 import org.junit.Test;
 
 /**
- * Tests case for implementations of <code>{@link StateVerificationFixture}</code>
+ * Tests case for implementations of {@link StateVerificationFixture}
  * @param <T> the type of component supported by the fixture to test.
  *
  * @author Alex Ruiz
  */
 public abstract class StateVerificationFixture_TestCase<T extends Component> extends ComponentFixture_Implementations_TestCase<T> {
-
   @Test
   public final void should_require_disabled() {
     new EasyMockTemplate(driver()) {

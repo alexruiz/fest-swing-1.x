@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2010 the original author or authors.
+ * Copyright @2010-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -23,12 +23,11 @@ import java.net.URL;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JAppletDriver#documentBaseOf(javax.swing.JApplet)}</code>.
+ * Tests for {@link JAppletDriver#documentBaseOf(javax.swing.JApplet)}.
  *
  * @author Alex Ruiz
  */
 public class JAppletDriver_documentOf_Test extends JAppletDriver_TestCase {
-
   @Test
   public void should_return_document_base() throws Exception {
     URL url = singletonURL();

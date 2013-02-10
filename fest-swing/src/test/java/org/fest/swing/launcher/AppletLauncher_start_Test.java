@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.launcher;
 
@@ -21,18 +21,17 @@ import org.fest.swing.test.swing.TestApplet;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link AppletLauncher#start()}</code>.
+ * Tests for {@link AppletLauncher#start()}.
  *
  * @author Yvonne Wang
  */
 public class AppletLauncher_start_Test extends AppletLauncher_TestCase {
-
   @Test
   public void should_launch_given_Applet() {
     applet = TestApplet.createNew();
-    viewer = AppletLauncher.applet(applet).start();
+    viewer = AppletLauncher.launcherFor(applet).start();
     assertThatAppletWasLaunched();
-    assertThat(viewer.applet()).isSameAs(applet);
+    assertThat(viewer.getApplet()).isSameAs(applet);
   }
 
   @Test
@@ -46,5 +45,4 @@ public class AppletLauncher_start_Test extends AppletLauncher_TestCase {
     viewer = AppletLauncher.applet(TestApplet.class.getName()).start();
     assertThatAppletWasLaunched();
   }
-
 }

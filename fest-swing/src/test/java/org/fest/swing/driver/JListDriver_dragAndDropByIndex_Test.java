@@ -11,21 +11,20 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JListDriver#drag(javax.swing.JList, int)}</code> and
- * <code>{@link JListDriver#drop(javax.swing.JList, int)}</code>.
+ * Tests for {@link JListDriver#drag(javax.swing.JList, int)} and
+ * {@link JListDriver#drop(javax.swing.JList, int)}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 public class JListDriver_dragAndDropByIndex_Test extends JListDriver_dragAndDrop_TestCase {
-
   @Test
   public void should_drag_and_drop() {
     showWindow();

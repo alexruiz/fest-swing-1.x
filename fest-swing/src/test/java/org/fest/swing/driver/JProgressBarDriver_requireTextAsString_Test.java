@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -23,12 +23,11 @@ import javax.swing.JProgressBar;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JProgressBarDriver#requireText(JProgressBar, String)}</code>.
+ * Tests for {@link JProgressBarDriver#requireText(JProgressBar, String)}.
  *
  * @author Alex Ruiz
  */
 public class JProgressBarDriver_requireTextAsString_Test extends JProgressBarDriver_TestCase {
-
   @Test
   public void should_pass_if_text_is_equal_to_expected() {
     driver.requireText(progressBar, "60%");

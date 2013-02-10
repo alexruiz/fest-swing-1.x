@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2007-2010 the original author or authors.
+ * Copyright @2007-2013 the original author or authors.
  */
 package org.fest.swing.fixture;
 
@@ -28,7 +28,7 @@ import org.fest.swing.exception.*;
 import org.fest.swing.timing.Timeout;
 
 /**
- * Understands functional testing of <code>{@link JTabbedPane}</code>s:
+ * Understands functional testing of {@code JTabbedPane}s:
  * <ul>
  * <li>user input simulation</li>
  * <li>state verification</li>
@@ -40,15 +40,14 @@ import org.fest.swing.timing.Timeout;
  */
 public class JTabbedPaneFixture extends ComponentFixture<JTabbedPane> implements CommonComponentFixture,
     JComponentFixture, JPopupMenuInvokerFixture {
-
   private JTabbedPaneDriver driver;
 
   /**
-   * Creates a new <code>{@link JTabbedPaneFixture}</code>.
-   * @param robot performs simulation of user events on the given <code>JTabbedPane</code>.
-   * @param target the <code>JTabbedPane</code> to be managed by this fixture.
-   * @throws NullPointerException if <code>robot</code> is {@code null}.
-   * @throws NullPointerException if <code>target</code> is {@code null}.
+   * Creates a new {@link JTabbedPaneFixture}.
+   * @param robot performs simulation of user events on the given {@code JTabbedPane}.
+   * @param target the {@code JTabbedPane} to be managed by this fixture.
+   * @throws NullPointerException if {@code robot} is {@code null}.
+   * @throws NullPointerException if {@code target} is {@code null}.
    */
   public JTabbedPaneFixture(Robot robot, JTabbedPane target) {
     super(robot, target);
@@ -56,12 +55,12 @@ public class JTabbedPaneFixture extends ComponentFixture<JTabbedPane> implements
   }
 
   /**
-   * Creates a new <code>{@link JTabbedPaneFixture}</code>.
-   * @param robot performs simulation of user events on a <code>JTabbedPane</code>.
-   * @param tabbedPaneName the name of the <code>JTabbedPane</code> to find using the given <code>Robot</code>.
-   * @throws NullPointerException if <code>robot</code> is {@code null}.
-   * @throws ComponentLookupException if a matching <code>JTabbedPane</code> could not be found.
-   * @throws ComponentLookupException if more than one matching <code>JTabbedPane</code> is found.
+   * Creates a new {@link JTabbedPaneFixture}.
+   * @param robot performs simulation of user events on a {@code JTabbedPane}.
+   * @param tabbedPaneName the name of the {@code JTabbedPane} to find using the given {@code Robot}.
+   * @throws NullPointerException if {@code robot} is {@code null}.
+   * @throws ComponentLookupException if a matching {@code JTabbedPane} could not be found.
+   * @throws ComponentLookupException if more than one matching {@code JTabbedPane} is found.
    */
   public JTabbedPaneFixture(Robot robot, String tabbedPaneName) {
     super(robot, tabbedPaneName, JTabbedPane.class);
@@ -73,8 +72,8 @@ public class JTabbedPaneFixture extends ComponentFixture<JTabbedPane> implements
   }
 
   /**
-   * Sets the <code>{@link JTabbedPaneDriver}</code> to be used by this fixture.
-   * @param newDriver the new <code>JTabbedPaneDriver</code>.
+   * Sets the {@link JTabbedPaneDriver} to be used by this fixture.
+   * @param newDriver the new {@code JTabbedPaneDriver}.
    * @throws NullPointerException if the given driver is {@code null}.
    */
   protected final void driver(JTabbedPaneDriver newDriver) {
@@ -83,7 +82,7 @@ public class JTabbedPaneFixture extends ComponentFixture<JTabbedPane> implements
   }
 
   /**
-   * Returns the titles of all the tabs in this fixture's <code>{@link JTabbedPane}</code>.
+   * Returns the titles of all the tabs in this fixture's {@code JTabbedPane}.
    * @return the titles of all the tabs.
    */
   public String[] tabTitles() {
@@ -94,9 +93,9 @@ public class JTabbedPaneFixture extends ComponentFixture<JTabbedPane> implements
    * Simulates a user selecting the tab located at the given index.
    * @param index the index of the tab to select.
    * @return this fixture.
-   * @throws IllegalStateException if this fixture's <code>JTabbedPane</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JTabbedPane</code> is not showing on the screen.
-   * @throws IndexOutOfBoundsException if the given index is not within the <code>JTabbedPane</code> bounds.
+   * @throws IllegalStateException if this fixture's {@code JTabbedPane} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JTabbedPane} is not showing on the screen.
+   * @throws IndexOutOfBoundsException if the given index is not within the {@code JTabbedPane} bounds.
    */
   public JTabbedPaneFixture selectTab(int index) {
     driver.selectTab(target, index);
@@ -107,8 +106,8 @@ public class JTabbedPaneFixture extends ComponentFixture<JTabbedPane> implements
    * Simulates a user selecting the tab whose title matches the given value.
    * @param title the title to match. It can be a regular expression.
    * @return this fixture.
-   * @throws IllegalStateException if this fixture's <code>JTabbedPane</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JTabbedPane</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JTabbedPane} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JTabbedPane} is not showing on the screen.
    * @throws LocationUnavailableException if a tab matching the given title could not be found.
    */
   public JTabbedPaneFixture selectTab(String title) {
@@ -121,8 +120,8 @@ public class JTabbedPaneFixture extends ComponentFixture<JTabbedPane> implements
    * Simulates a user selecting the tab whose title matches the given regular expression pattern.
    * @param pattern the regular expression pattern to match.
    * @return this fixture.
-   * @throws IllegalStateException if this fixture's <code>JTabbedPane</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JTabbedPane</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JTabbedPane} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JTabbedPane} is not showing on the screen.
    * @throws NullPointerException if the given regular expression pattern is {@code null}.
    * @throws LocationUnavailableException if a tab matching the given regular expression pattern could not be found.
    * @since 1.2
@@ -133,18 +132,18 @@ public class JTabbedPaneFixture extends ComponentFixture<JTabbedPane> implements
   }
 
   /**
-   * Returns the currently selected component for this fixture's <code>{@link JTabbedPane}</code>.
-   * @return the currently selected component for this fixture's <code>JTabbedPane</code>.
+   * Returns the currently selected component for this fixture's {@code JTabbedPane}.
+   * @return the currently selected component for this fixture's {@code JTabbedPane}.
    */
   public Component selectedComponent() {
     return driver.selectedComponentOf(target);
   }
 
   /**
-   * Simulates a user clicking this fixture's <code>{@link JTabbedPane}</code>.
+   * Simulates a user clicking this fixture's {@code JTabbedPane}.
    * @return this fixture.
-   * @throws IllegalStateException if this fixture's <code>JTabbedPane</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JTabbedPane</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JTabbedPane} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JTabbedPane} is not showing on the screen.
    */
   public JTabbedPaneFixture click() {
     driver.click(target);
@@ -152,12 +151,12 @@ public class JTabbedPaneFixture extends ComponentFixture<JTabbedPane> implements
   }
 
   /**
-   * Simulates a user clicking this fixture's <code>{@link JTabbedPane}</code>.
+   * Simulates a user clicking this fixture's {@code JTabbedPane}.
    * @param button the button to click.
    * @return this fixture.
-   * @throws NullPointerException if the given <code>MouseButton</code> is {@code null}.
-   * @throws IllegalStateException if this fixture's <code>JTabbedPane</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JTabbedPane</code> is not showing on the screen.
+   * @throws NullPointerException if the given {@code MouseButton} is {@code null}.
+   * @throws IllegalStateException if this fixture's {@code JTabbedPane} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JTabbedPane} is not showing on the screen.
    */
   public JTabbedPaneFixture click(MouseButton button) {
     driver.click(target, button);
@@ -165,12 +164,12 @@ public class JTabbedPaneFixture extends ComponentFixture<JTabbedPane> implements
   }
 
   /**
-   * Simulates a user clicking this fixture's <code>{@link JTabbedPane}</code>.
+   * Simulates a user clicking this fixture's {@code JTabbedPane}.
    * @param mouseClickInfo specifies the button to click and the times the button should be clicked.
    * @return this fixture.
-   * @throws NullPointerException if the given <code>MouseClickInfo</code> is {@code null}.
-   * @throws IllegalStateException if this fixture's <code>JTabbedPane</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JTabbedPane</code> is not showing on the screen.
+   * @throws NullPointerException if the given {@code MouseClickInfo} is {@code null}.
+   * @throws IllegalStateException if this fixture's {@code JTabbedPane} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JTabbedPane} is not showing on the screen.
    */
   public JTabbedPaneFixture click(MouseClickInfo mouseClickInfo) {
     driver.click(target, mouseClickInfo);
@@ -178,10 +177,10 @@ public class JTabbedPaneFixture extends ComponentFixture<JTabbedPane> implements
   }
 
   /**
-   * Simulates a user double-clicking this fixture's <code>{@link JTabbedPane}</code>.
+   * Simulates a user double-clicking this fixture's {@code JTabbedPane}.
    * @return this fixture.
-   * @throws IllegalStateException if this fixture's <code>JTabbedPane</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JTabbedPane</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JTabbedPane} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JTabbedPane} is not showing on the screen.
    */
   public JTabbedPaneFixture doubleClick() {
     driver.doubleClick(target);
@@ -189,10 +188,10 @@ public class JTabbedPaneFixture extends ComponentFixture<JTabbedPane> implements
   }
 
   /**
-   * Simulates a user right-clicking this fixture's <code>{@link JTabbedPane}</code>.
+   * Simulates a user right-clicking this fixture's {@code JTabbedPane}.
    * @return this fixture.
-   * @throws IllegalStateException if this fixture's <code>JTabbedPane</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JTabbedPane</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JTabbedPane} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JTabbedPane} is not showing on the screen.
    */
   public JTabbedPaneFixture rightClick() {
     driver.rightClick(target);
@@ -200,10 +199,10 @@ public class JTabbedPaneFixture extends ComponentFixture<JTabbedPane> implements
   }
 
   /**
-   * Gives input focus to this fixture's <code>{@link JTabbedPane}</code>.
+   * Gives input focus to this fixture's {@code JTabbedPane}.
    * @return this fixture.
-   * @throws IllegalStateException if this fixture's <code>JTabbedPane</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JTabbedPane</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JTabbedPane} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JTabbedPane} is not showing on the screen.
    */
   public JTabbedPaneFixture focus() {
     driver.focus(target);
@@ -211,14 +210,14 @@ public class JTabbedPaneFixture extends ComponentFixture<JTabbedPane> implements
   }
 
   /**
-   * Simulates a user pressing given key with the given modifiers on this fixture's <code>{@link JTabbedPane}</code>.
-   * Modifiers is a mask from the available <code>{@link java.awt.event.InputEvent}</code> masks.
+   * Simulates a user pressing given key with the given modifiers on this fixture's {@code JTabbedPane}.
+   * Modifiers is a mask from the available {@link java.awt.event.InputEvent} masks.
    * @param keyPressInfo specifies the key and modifiers to press.
    * @return this fixture.
-   * @throws NullPointerException if the given <code>KeyPressInfo</code> is {@code null}.
+   * @throws NullPointerException if the given {@code KeyPressInfo} is {@code null}.
    * @throws IllegalArgumentException if the given code is not a valid key code.
-   * @throws IllegalStateException if this fixture's <code>JTabbedPane</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JTabbedPane</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JTabbedPane} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JTabbedPane} is not showing on the screen.
    * @see KeyPressInfo
    */
   public JTabbedPaneFixture pressAndReleaseKey(KeyPressInfo keyPressInfo) {
@@ -227,14 +226,14 @@ public class JTabbedPaneFixture extends ComponentFixture<JTabbedPane> implements
   }
 
   /**
-   * Simulates a user pressing and releasing the given keys on this fixture's <code>{@link JTabbedPane}</code>. This
+   * Simulates a user pressing and releasing the given keys on this fixture's {@code JTabbedPane}. This
    * method does not affect the current focus.
    * @param keyCodes one or more codes of the keys to press.
    * @return this fixture.
    * @throws NullPointerException if the given array of codes is {@code null}.
    * @throws IllegalArgumentException if any of the given code is not a valid key code.
-   * @throws IllegalStateException if this fixture's <code>JTabbedPane</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JTabbedPane</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JTabbedPane} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JTabbedPane} is not showing on the screen.
    * @see java.awt.event.KeyEvent
    */
   public JTabbedPaneFixture pressAndReleaseKeys(int... keyCodes) {
@@ -243,12 +242,12 @@ public class JTabbedPaneFixture extends ComponentFixture<JTabbedPane> implements
   }
 
   /**
-   * Simulates a user pressing the given key on this fixture's <code>{@link JTabbedPane}</code>.
+   * Simulates a user pressing the given key on this fixture's {@code JTabbedPane}.
    * @param keyCode the code of the key to press.
    * @return this fixture.
    * @throws IllegalArgumentException if any of the given code is not a valid key code.
-   * @throws IllegalStateException if this fixture's <code>JTabbedPane</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JTabbedPane</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JTabbedPane} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JTabbedPane} is not showing on the screen.
    * @see java.awt.event.KeyEvent
    */
   public JTabbedPaneFixture pressKey(int keyCode) {
@@ -257,12 +256,12 @@ public class JTabbedPaneFixture extends ComponentFixture<JTabbedPane> implements
   }
 
   /**
-   * Simulates a user releasing the given key on this fixture's <code>{@link JTabbedPane}</code>.
+   * Simulates a user releasing the given key on this fixture's {@code JTabbedPane}.
    * @param keyCode the code of the key to release.
    * @return this fixture.
    * @throws IllegalArgumentException if any of the given code is not a valid key code.
-   * @throws IllegalStateException if this fixture's <code>JTabbedPane</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JTabbedPane</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JTabbedPane} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JTabbedPane} is not showing on the screen.
    * @see java.awt.event.KeyEvent
    */
   public JTabbedPaneFixture releaseKey(int keyCode) {
@@ -271,9 +270,9 @@ public class JTabbedPaneFixture extends ComponentFixture<JTabbedPane> implements
   }
 
   /**
-   * Asserts that this fixture's <code>{@link JTabbedPane}</code> has input focus.
+   * Asserts that this fixture's {@code JTabbedPane} has input focus.
    * @return this fixture.
-   * @throws AssertionError if this fixture's <code>JTabbedPane</code> does not have input focus.
+   * @throws AssertionError if this fixture's {@code JTabbedPane} does not have input focus.
    */
   public JTabbedPaneFixture requireFocused() {
     driver.requireFocused(target);
@@ -281,9 +280,9 @@ public class JTabbedPaneFixture extends ComponentFixture<JTabbedPane> implements
   }
 
   /**
-   * Asserts that this fixture's <code>{@link JTabbedPane}</code> is enabled.
+   * Asserts that this fixture's {@code JTabbedPane} is enabled.
    * @return this fixture.
-   * @throws AssertionError if this fixture's <code>JTabbedPane</code> is disabled.
+   * @throws AssertionError if this fixture's {@code JTabbedPane} is disabled.
    */
   public JTabbedPaneFixture requireEnabled() {
     driver.requireEnabled(target);
@@ -291,10 +290,10 @@ public class JTabbedPaneFixture extends ComponentFixture<JTabbedPane> implements
   }
 
   /**
-   * Asserts that this fixture's <code>{@link JTabbedPane}</code> is enabled.
+   * Asserts that this fixture's {@code JTabbedPane} is enabled.
    * @param timeout the time this fixture will wait for the component to be enabled.
    * @return this fixture.
-   * @throws org.fest.swing.exception.WaitTimedOutError if this fixture's <code>JTabbedPane</code> is never enabled.
+   * @throws org.fest.swing.exception.WaitTimedOutError if this fixture's {@code JTabbedPane} is never enabled.
    */
   public JTabbedPaneFixture requireEnabled(Timeout timeout) {
     driver.requireEnabled(target, timeout);
@@ -302,9 +301,9 @@ public class JTabbedPaneFixture extends ComponentFixture<JTabbedPane> implements
   }
 
   /**
-   * Asserts that this fixture's <code>{@link JTabbedPane}</code> is disabled.
+   * Asserts that this fixture's {@code JTabbedPane} is disabled.
    * @return this fixture.
-   * @throws AssertionError if this fixture's <code>JTabbedPane</code> is enabled.
+   * @throws AssertionError if this fixture's {@code JTabbedPane} is enabled.
    */
   public JTabbedPaneFixture requireDisabled() {
     driver.requireDisabled(target);
@@ -312,9 +311,9 @@ public class JTabbedPaneFixture extends ComponentFixture<JTabbedPane> implements
   }
 
   /**
-   * Asserts that this fixture's <code>{@link JTabbedPane}</code> is visible.
+   * Asserts that this fixture's {@code JTabbedPane} is visible.
    * @return this fixture.
-   * @throws AssertionError if this fixture's <code>JTabbedPane</code> is not visible.
+   * @throws AssertionError if this fixture's {@code JTabbedPane} is not visible.
    */
   public JTabbedPaneFixture requireVisible() {
     driver.requireVisible(target);
@@ -322,9 +321,9 @@ public class JTabbedPaneFixture extends ComponentFixture<JTabbedPane> implements
   }
 
   /**
-   * Asserts that this fixture's <code>{@link JTabbedPane}</code> is not visible.
+   * Asserts that this fixture's {@code JTabbedPane} is not visible.
    * @return this fixture.
-   * @throws AssertionError if this fixture's <code>JTabbedPane</code> is visible.
+   * @throws AssertionError if this fixture's {@code JTabbedPane} is visible.
    */
   public JTabbedPaneFixture requireNotVisible() {
     driver.requireNotVisible(target);
@@ -336,7 +335,7 @@ public class JTabbedPaneFixture extends ComponentFixture<JTabbedPane> implements
    * @param title the expected title. It can be a regular expression.
    * @param index the index of the tab.
    * @return this fixture.
-   * @throws IndexOutOfBoundsException if the given index is not within the <code>JTabbedPane</code> bounds.
+   * @throws IndexOutOfBoundsException if the given index is not within the {@code JTabbedPane} bounds.
    * @throws AssertionError if the title of the tab at the given index does not match the given one.
    */
   public JTabbedPaneFixture requireTitle(String title, Index index) {
@@ -359,7 +358,7 @@ public class JTabbedPaneFixture extends ComponentFixture<JTabbedPane> implements
   }
 
   /**
-   * Asserts that the tabs of this fixture's <code>{@link JTabbedPane}</code> have the given titles. The tab titles are
+   * Asserts that the tabs of this fixture's {@code JTabbedPane} have the given titles. The tab titles are
    * evaluated by index order, for example, the first tab is expected to have the first title in the given array, and so
    * on.
    * @param titles the expected titles.
@@ -372,10 +371,10 @@ public class JTabbedPaneFixture extends ComponentFixture<JTabbedPane> implements
   }
 
   /**
-   * Asserts that the toolTip in this fixture's <code>{@link JTabbedPane}</code> matches the given value.
+   * Asserts that the toolTip in this fixture's {@code JTabbedPane} matches the given value.
    * @param expected the given value. It can be a regular expression.
    * @return this fixture.
-   * @throws AssertionError if the toolTip in this fixture's <code>JTabbedPane</code> does not match the given value.
+   * @throws AssertionError if the toolTip in this fixture's {@code JTabbedPane} does not match the given value.
    * @since 1.2
    */
   public JTabbedPaneFixture requireToolTip(String expected) {
@@ -384,12 +383,12 @@ public class JTabbedPaneFixture extends ComponentFixture<JTabbedPane> implements
   }
 
   /**
-   * Asserts that the toolTip in this fixture's <code>{@link JTabbedPane}</code> matches the given regular expression
+   * Asserts that the toolTip in this fixture's {@code JTabbedPane} matches the given regular expression
    * pattern.
    * @param pattern the regular expression pattern to match.
    * @return this fixture.
    * @throws NullPointerException if the given regular expression pattern is {@code null}.
-   * @throws AssertionError if the toolTip in this fixture's <code>JTabbedPane</code> does not match the given regular
+   * @throws AssertionError if the toolTip in this fixture's {@code JTabbedPane} does not match the given regular
    * expression pattern.
    * @since 1.2
    */
@@ -399,7 +398,7 @@ public class JTabbedPaneFixture extends ComponentFixture<JTabbedPane> implements
   }
 
   /**
-   * Returns the client property stored in this fixture's <code>{@link JTabbedPane}</code>, under the given key.
+   * Returns the client property stored in this fixture's {@code JTabbedPane}, under the given key.
    * @param key the key to use to retrieve the client property.
    * @return the value of the client property stored under the given key, or {@code null} if the property was
    * not found.
@@ -411,10 +410,10 @@ public class JTabbedPaneFixture extends ComponentFixture<JTabbedPane> implements
   }
 
   /**
-   * Shows a pop-up menu using this fixture's <code>{@link JTabbedPane}</code> as the invoker of the pop-up menu.
+   * Shows a pop-up menu using this fixture's {@code JTabbedPane} as the invoker of the pop-up menu.
    * @return a fixture that manages the displayed pop-up menu.
-   * @throws IllegalStateException if this fixture's <code>JTabbedPane</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JTabbedPane</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JTabbedPane} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JTabbedPane} is not showing on the screen.
    * @throws ComponentLookupException if a pop-up menu cannot be found.
    */
   public JPopupMenuFixture showPopupMenu() {
@@ -422,12 +421,12 @@ public class JTabbedPaneFixture extends ComponentFixture<JTabbedPane> implements
   }
 
   /**
-   * Shows a pop-up menu at the given point using this fixture's <code>{@link JTabbedPane}</code> as the invoker of the
+   * Shows a pop-up menu at the given point using this fixture's {@code JTabbedPane} as the invoker of the
    * pop-up menu.
    * @param p the given point where to show the pop-up menu.
    * @return a fixture that manages the displayed pop-up menu.
-   * @throws IllegalStateException if this fixture's <code>JTabbedPane</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JTabbedPane</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JTabbedPane} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JTabbedPane} is not showing on the screen.
    * @throws ComponentLookupException if a pop-up menu cannot be found.
    */
   public JPopupMenuFixture showPopupMenuAt(Point p) {

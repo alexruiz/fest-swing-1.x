@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -28,13 +28,12 @@ import org.fest.swing.edt.GuiQuery;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link BasicJTableCellReader#fontAt(JTable, int, int)}</code>.
+ * Tests for {@link BasicJTableCellReader#fontAt(JTable, int, int)}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 public class BasicJTableCellReader_fontAt_Test extends BasicJTableCellReader_TestCase {
-
   @Test
   public void should_return_font_from_cellRenderer() {
     JLabel label = setJLabelAsCellRenderer();

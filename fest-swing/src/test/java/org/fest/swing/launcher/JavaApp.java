@@ -11,29 +11,32 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.launcher;
 
 import static javax.swing.SwingUtilities.invokeLater;
+import static org.fest.util.Lists.newArrayList;
 
 import java.awt.Dimension;
-import java.util.*;
+import java.util.List;
 
 import javax.swing.JFrame;
 
 /**
- * An application with a "main" method that shows a <code>{@link JFrame}</code>.
+ * An application with a "main" method that shows a {@code JFrame}.
  *
  * @author Yvonne Wang
  */
 public class JavaApp {
-
-  private static List<ArgumentObserver> argumentObservers = new ArrayList<ArgumentObserver>();
+  private static List<ArgumentObserver> argumentObservers = newArrayList();
 
   public static void main(String[] args) {
-    for (ArgumentObserver observer : argumentObservers) observer.arguments(args);
+    for (ArgumentObserver observer : argumentObservers) {
+      observer.arguments(args);
+    }
     invokeLater(new Runnable() {
+      @Override
       public void run() {
         JFrame frame = new JFrame("Java Application");
         frame.setPreferredSize(new Dimension(200, 200));

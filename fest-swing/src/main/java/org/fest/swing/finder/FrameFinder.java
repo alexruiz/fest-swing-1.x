@@ -1,94 +1,109 @@
 /*
  * Created on Jul 31, 2007
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ * 
  * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
- *
- * Copyright @2007-2010 the original author or authors.
+ * 
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+ * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations under the License.
+ * 
+ * Copyright @2007-2013 the original author or authors.
  */
 package org.fest.swing.finder;
 
-import java.awt.*;
+import java.awt.Component;
+import java.awt.Frame;
 import java.util.concurrent.TimeUnit;
 
-import org.fest.swing.core.*;
+import javax.annotation.Nonnegative;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
+import org.fest.swing.core.GenericTypeMatcher;
 import org.fest.swing.core.Robot;
 import org.fest.swing.fixture.FrameFixture;
 
 /**
- * Understands a finder for <code>{@link Frame}</code>s. This class cannot be used directly, please see
- * <code>{@link WindowFinder}</code>.
- *
+ * Finder for {@code Frame}s. This class cannot be used directly, please see {@link WindowFinder}.
+ * 
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 public class FrameFinder extends WindowFinderTemplate<Frame> {
-
   /**
-   * Creates a new </code>{@link FrameFinder}</code>.
+   * Creates a new {@link FrameFinder}.
+   * 
    * @param frameName the name of the {@code Frame} to look for.
    */
-  protected FrameFinder(String frameName) {
+  protected FrameFinder(@Nonnull String frameName) {
     super(frameName, Frame.class);
   }
 
   /**
-   * Creates a new </code>{@link FrameFinder}</code>.
+   * Creates a new {@link FrameFinder}.
+   * 
    * @param matcher specifies the search criteria to use when looking up a {@code Frame}.
    */
-  protected FrameFinder(GenericTypeMatcher<? extends Frame> matcher) {
+  protected FrameFinder(@Nonnull GenericTypeMatcher<? extends Frame> matcher) {
     super(matcher);
   }
 
   /**
-   * Creates a new </code>{@link FrameFinder}</code>.
+   * Creates a new {@link FrameFinder}.
+   * 
    * @param frameType the type of {@code Frame} to look for.
    */
-  protected FrameFinder(Class<? extends Frame> frameType) {
+  protected FrameFinder(@Nonnull Class<? extends Frame> frameType) {
     super(frameType);
   }
 
   /**
-   * Sets the timeout for this finder. The window to search should be found within the given time period.
+   * Sets the timeout for this finder. The {@code Frame} to search should be found within the given time period.
+   * 
    * @param timeout the number of milliseconds before stopping the search.
    * @return this finder.
    */
-  @Override public FrameFinder withTimeout(long timeout) {
+  @Override
+  public @Nonnull FrameFinder withTimeout(@Nonnegative long timeout) {
     super.withTimeout(timeout);
     return this;
   }
 
   /**
-   * Sets the timeout for this finder. The window to search should be found within the given time period.
+   * Sets the timeout for this finder. The {@code Frame} to search should be found within the given time period.
+   * 
    * @param timeout the period of time the search should be performed.
-   * @param unit the time unit for <code>timeout</code>.
+   * @param unit the time unit for {@code timeout}.
    * @return this finder.
    */
-  @Override public FrameFinder withTimeout(long timeout, TimeUnit unit) {
+  @Override
+  public @Nonnull FrameFinder withTimeout(@Nonnegative long timeout, @Nonnull TimeUnit unit) {
     super.withTimeout(timeout, unit);
     return this;
   }
 
   /**
-   * Finds a <code>{@link Frame}</code> by name or type.
+   * Finds a {@code Frame} by name or type.
+   * 
    * @param robot contains the underlying finding to delegate the search to.
-   * @return a <code>FrameFixture</code> managing the found <code>Frame</code>.
-   * @throws org.fest.swing.exception.WaitTimedOutError if a <code>Frame</code> could not be found.
+   * @return a {@code FrameFixture} managing the found {@code Frame}.
+   * @throws org.fest.swing.exception.WaitTimedOutError if a {@code Frame} could not be found.
    */
-  @Override public FrameFixture using(Robot robot) {
+  @Override
+  public @Nonnull FrameFixture using(@Nonnull Robot robot) {
     return new FrameFixture(robot, findComponentWith(robot));
   }
 
   /**
-   * Casts the given {@code Component} to <code>{@link Frame}</code>.
+   * Casts the given AWT or Swing {@code Component} to {@code Frame}.
+   * 
    * @return the given {@code Component}, casted to {@code Frame}.
    */
-  @Override protected Frame cast(Component c) { return (Frame) c; }
+  @Override
+  protected @Nullable Frame cast(@Nullable Component c) {
+    return (Frame) c;
+  }
 }

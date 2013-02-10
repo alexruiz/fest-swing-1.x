@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -21,12 +21,11 @@ import static org.fest.swing.test.core.CommonAssertions.failWhenExpectingExcepti
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JComboBoxDriver#requireItemCount(javax.swing.JComboBox, int)}</code>.
+ * Tests for {@link JComboBoxDriver#requireItemCount(javax.swing.JComboBox, int)}.
  *
  * @author Alex Ruiz
  */
 public class JComboBoxDriver_requireItemCount_Test extends JComboBoxDriver_TestCase {
-
   @Test
   public void should_fail_if_JList_does_not_have_expected_item_count() {
     try {
@@ -42,5 +41,4 @@ public class JComboBoxDriver_requireItemCount_Test extends JComboBoxDriver_TestC
   public void should_pass_if_JList_has_expected_item_count() {
     driver.requireItemCount(comboBox, 3);
   }
-
 }

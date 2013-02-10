@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.applet;
 
@@ -23,12 +23,11 @@ import java.awt.Container;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link AppletViewer#newViewer(java.applet.Applet)}</code>
+ * Tests for {@link AppletViewer#newViewer(java.applet.Applet)}
  *
  * @author Alex Ruiz
  */
 public class AppletViewer_newViewerWithApplet_Test extends AppletViewer_TestCase {
-
   @Test(expected = NullPointerException.class)
   public void should_throw_error_if_Applet_is_null() {
     AppletViewer.newViewer(null);
@@ -40,7 +39,7 @@ public class AppletViewer_newViewerWithApplet_Test extends AppletViewer_TestCase
     Container ancestor = getAncestorOfClass(AppletViewer.class, applet);
     assertThat(ancestor).isSameAs(viewer);
     fixture.label("status").requireText("Applet loaded");
-    assertThat(viewer.applet()).isSameAs(applet);
-    assertThat(viewer.stub()).isInstanceOf(BasicAppletStub.class);
+    assertThat(viewer.getApplet()).isSameAs(applet);
+    assertThat(viewer.getAppletStub()).isInstanceOf(BasicAppletStub.class);
   }
 }

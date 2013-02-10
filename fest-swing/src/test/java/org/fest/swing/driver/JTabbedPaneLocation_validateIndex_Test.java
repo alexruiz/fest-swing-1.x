@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -21,21 +21,20 @@ import static org.fest.swing.test.core.CommonAssertions.failWhenExpectingExcepti
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JTabbedPaneLocation#indexOf(javax.swing.JTabbedPane, String)}</code>.
+ * Tests for {@link JTabbedPaneLocation#indexOf(javax.swing.JTabbedPane, String)}.
  *
  * @author Yvonne Wang
  */
 public class JTabbedPaneLocation_validateIndex_Test extends JTabbedPaneLocation_TestCase {
-
   @Test
   public void should_pass_if_index_if_valid() {
-    location.validateIndex(tabbedPane, 0);
+    location.checkIndexInBounds(tabbedPane, 0);
   }
 
   @Test
   public void should_fail_if_index_is_negative() {
     try {
-      location.validateIndex(tabbedPane, -1);
+      location.checkIndexInBounds(tabbedPane, -1);
       failWhenExpectingException();
     } catch (IndexOutOfBoundsException e) {
       assertThat(e.getMessage()).isEqualTo("Index <-1> is not within the JTabbedPane bounds of <0> and <1> (inclusive)");
@@ -45,11 +44,10 @@ public class JTabbedPaneLocation_validateIndex_Test extends JTabbedPaneLocation_
   @Test
   public void should_fail_if_index_is_out_of_bounds() {
     try {
-      location.validateIndex(tabbedPane, 2);
+      location.checkIndexInBounds(tabbedPane, 2);
       failWhenExpectingException();
     } catch (IndexOutOfBoundsException e) {
       assertThat(e.getMessage()).isEqualTo("Index <2> is not within the JTabbedPane bounds of <0> and <1> (inclusive)");
     }
   }
-
 }

@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.keystroke;
 
@@ -27,12 +27,11 @@ import org.fest.mocks.EasyMockTemplate;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link KeyStrokeMap#charFor(javax.swing.KeyStroke)}</code>.
+ * Tests for {@link KeyStrokeMap#charFor(javax.swing.KeyStroke)}.
  *
  * @author Alex Ruiz
  */
 public class KeyStrokeMap_charFor_Test extends KeyStrokeMap_TestCase {
-
   @Test
   public void should_return_char_for_KeyStroke() {
     new EasyMockTemplate(provider) {

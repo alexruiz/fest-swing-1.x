@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.applet;
 
@@ -20,13 +20,12 @@ import static org.easymock.classextension.EasyMock.createMock;
 import org.junit.Before;
 
 /**
- * Tests for <code>{@link BasicAppletContext}</code>.
+ * Tests for {@link BasicAppletContext}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 public abstract class BasicAppletContext_TestCase {
-
   BasicAppletContext context;
   StatusDisplay statusDisplay;
 

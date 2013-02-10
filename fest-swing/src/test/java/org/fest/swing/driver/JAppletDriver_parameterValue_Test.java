@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2010 the original author or authors.
+ * Copyright @2010-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -20,12 +20,11 @@ import static org.fest.assertions.Assertions.assertThat;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JAppletDriver#parameterValue(javax.swing.JApplet, String)}</code>.
+ * Tests for {@link JAppletDriver#parameterValue(javax.swing.JApplet, String)}.
  *
  * @author Alex Ruiz
  */
 public class JAppletDriver_parameterValue_Test extends JAppletDriver_TestCase {
-
   @Test
   public void should_retrieve_parameter_value() {
     applet().addParameter("firstName", "Luke");

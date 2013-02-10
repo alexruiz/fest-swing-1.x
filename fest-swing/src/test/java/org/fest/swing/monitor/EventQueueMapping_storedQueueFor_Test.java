@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.monitor;
 
@@ -22,12 +22,11 @@ import java.awt.EventQueue;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link EventQueueMapping#storedQueueFor(java.awt.Component)}</code>.
+ * Tests for {@link EventQueueMapping#storedQueueFor(java.awt.Component)}.
  *
  * @author Alex Ruiz
  */
 public class EventQueueMapping_storedQueueFor_Test extends EventQueueMapping_TestCase {
-
   @Test
   public void should_return_stored_EventQueue() {
     mapping.addQueueFor(component);
@@ -48,5 +47,4 @@ public class EventQueueMapping_storedQueueFor_Test extends EventQueueMapping_Tes
     EventQueue storedEventQueue = mapping.storedQueueFor(component);
     assertThat(storedEventQueue).isNull();
   }
-
 }

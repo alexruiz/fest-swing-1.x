@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2007-2010 the original author or authors.
+ * Copyright @2007-2013 the original author or authors.
  */
 package org.fest.swing.hierarchy;
 
@@ -28,13 +28,12 @@ import org.fest.swing.test.core.EDTSafeTestCase;
 import org.junit.*;
 
 /**
- * Tests for <code>{@link ExistingHierarchy#childrenOf(Component)}</code>.
+ * Tests for {@link ExistingHierarchy#childrenOf(Component)}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 public class ExistingHierarchy_childrenOf_Test extends EDTSafeTestCase {
-
   private Component c;
   private Collection<Component> children;
   private ChildrenFinder childrenFinder;
@@ -59,5 +58,4 @@ public class ExistingHierarchy_childrenOf_Test extends EDTSafeTestCase {
       }
     }.run();
   }
-
 }

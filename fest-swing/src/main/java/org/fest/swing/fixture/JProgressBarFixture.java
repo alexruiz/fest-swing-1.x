@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.fixture;
 
@@ -25,7 +25,7 @@ import org.fest.swing.exception.*;
 import org.fest.swing.timing.Timeout;
 
 /**
- * Understands functional testing of <code>{@link JProgressBar}</code>s:
+ * Understands functional testing of {@code JProgressBar}s:
  * <ul>
  * <li>state verification</li>
  * <li>property value query</li>
@@ -37,15 +37,14 @@ import org.fest.swing.timing.Timeout;
  */
 public class JProgressBarFixture extends ComponentFixture<JProgressBar> implements StateVerificationFixture,
     JComponentFixture, TextDisplayFixture {
-
   private JProgressBarDriver driver;
 
   /**
-   * Creates a new <code>{@link JProgressBarFixture}</code>.
-   * @param robot performs simulation of user events on the given <code>JProgressBar</code>.
-   * @param target the <code>JProgressBar</code> to be managed by this fixture.
-   * @throws NullPointerException if <code>robot</code> is {@code null}.
-   * @throws NullPointerException if <code>target</code> is {@code null}.
+   * Creates a new {@link JProgressBarFixture}.
+   * @param robot performs simulation of user events on the given {@code JProgressBar}.
+   * @param target the {@code JProgressBar} to be managed by this fixture.
+   * @throws NullPointerException if {@code robot} is {@code null}.
+   * @throws NullPointerException if {@code target} is {@code null}.
    */
   public JProgressBarFixture(Robot robot, JProgressBar target) {
     super(robot, target);
@@ -53,12 +52,12 @@ public class JProgressBarFixture extends ComponentFixture<JProgressBar> implemen
   }
 
   /**
-   * Creates a new <code>{@link JProgressBarFixture}</code>.
-   * @param robot performs simulation of user events on a <code>JProgressBar</code>.
-   * @param labelName the name of the <code>JProgressBar</code> to find using the given <code>Robot</code>.
-   * @throws NullPointerException if <code>robot</code> is {@code null}.
-   * @throws ComponentLookupException if a matching <code>JProgressBar</code> could not be found.
-   * @throws ComponentLookupException if more than one matching <code>JProgressBar</code> is found.
+   * Creates a new {@link JProgressBarFixture}.
+   * @param robot performs simulation of user events on a {@code JProgressBar}.
+   * @param labelName the name of the {@code JProgressBar} to find using the given {@code Robot}.
+   * @throws NullPointerException if {@code robot} is {@code null}.
+   * @throws ComponentLookupException if a matching {@code JProgressBar} could not be found.
+   * @throws ComponentLookupException if more than one matching {@code JProgressBar} is found.
    */
   public JProgressBarFixture(Robot robot, String labelName) {
     super(robot, labelName, JProgressBar.class);
@@ -70,8 +69,8 @@ public class JProgressBarFixture extends ComponentFixture<JProgressBar> implemen
   }
 
   /**
-   * Sets the <code>{@link JProgressBarDriver}</code> to be used by this fixture.
-   * @param newDriver the new <code>JProgressBarDriver</code>.
+   * Sets the {@link JProgressBarDriver} to be used by this fixture.
+   * @param newDriver the new {@code JProgressBarDriver}.
    * @throws NullPointerException if the given driver is {@code null}.
    */
   protected final void driver(JProgressBarDriver newDriver) {
@@ -80,10 +79,10 @@ public class JProgressBarFixture extends ComponentFixture<JProgressBar> implemen
   }
 
   /**
-   * Asserts that the value of this fixture's <code>{@link JProgressBar}</code> is equal to the given one.
+   * Asserts that the value of this fixture's {@code JProgressBar} is equal to the given one.
    * @param value the expected value.
    * @return this fixture.
-   * @throws AssertionError if the value of this fixture's <code>JProgressBar</code> is not equal to the given one.
+   * @throws AssertionError if the value of this fixture's {@code JProgressBar} is not equal to the given one.
    */
   public JProgressBarFixture requireValue(int value) {
     driver.requireValue(target, value);
@@ -91,9 +90,9 @@ public class JProgressBarFixture extends ComponentFixture<JProgressBar> implemen
   }
 
   /**
-   * Asserts that this fixture's <code>{@link JProgressBar}</code> is in determinate mode.
+   * Asserts that this fixture's {@code JProgressBar} is in determinate mode.
    * @return this fixture.
-   * @throws AssertionError if this fixture's <code>JProgressBar</code> is not in determinate mode.
+   * @throws AssertionError if this fixture's {@code JProgressBar} is not in determinate mode.
    */
   public JProgressBarFixture requireDeterminate() {
     driver.requireDeterminate(target);
@@ -101,9 +100,9 @@ public class JProgressBarFixture extends ComponentFixture<JProgressBar> implemen
   }
 
   /**
-   * Asserts that this fixture's <code>{@link JProgressBar}</code> is in indeterminate mode.
+   * Asserts that this fixture's {@code JProgressBar} is in indeterminate mode.
    * @return this fixture.
-   * @throws AssertionError if this fixture's <code>JProgressBar</code> is not in indeterminate mode.
+   * @throws AssertionError if this fixture's {@code JProgressBar} is not in indeterminate mode.
    */
   public JProgressBarFixture requireIndeterminate() {
     driver.requireIndeterminate(target);
@@ -111,19 +110,19 @@ public class JProgressBarFixture extends ComponentFixture<JProgressBar> implemen
   }
 
   /**
-   * Returns the text of this fixture's <code>{@link JProgressBar}</code>.
-   * @return the text of this fixture's <code>JProgressBar</code>.
+   * Returns the text of this fixture's {@code JProgressBar}.
+   * @return the text of this fixture's {@code JProgressBar}.
    */
   public String text() {
     return driver.textOf(target);
   }
 
   /**
-   * Asserts that the text of this fixture's <code>{@link JProgressBar}</code> is equal to the specified
+   * Asserts that the text of this fixture's {@code JProgressBar} is equal to the specified
    * {@code String}.
    * @param expected the text to match.
    * @return this fixture.
-   * @throws AssertionError if the text of this fixture's <code>JProgressBar</code> is not equal to the given one.
+   * @throws AssertionError if the text of this fixture's {@code JProgressBar} is not equal to the given one.
    */
   public JProgressBarFixture requireText(String expected) {
     driver.requireText(target, expected);
@@ -131,11 +130,11 @@ public class JProgressBarFixture extends ComponentFixture<JProgressBar> implemen
   }
 
   /**
-   * Asserts that the text of this fixture's <code>{@link JProgressBar}</code> matches the given regular expression
+   * Asserts that the text of this fixture's {@code JProgressBar} matches the given regular expression
    * pattern.
    * @param pattern the regular expression pattern to match.
    * @return this fixture.
-   * @throws AssertionError if the text of this fixture's <code>JProgressBar</code> does not match the given regular
+   * @throws AssertionError if the text of this fixture's {@code JProgressBar} does not match the given regular
    * expression pattern.
    * @throws NullPointerException if the given regular expression pattern is {@code null}.
    */
@@ -145,10 +144,10 @@ public class JProgressBarFixture extends ComponentFixture<JProgressBar> implemen
   }
 
   /**
-   * Asserts that the toolTip in this fixture's <code>{@link JProgressBar}</code> matches the given value.
+   * Asserts that the toolTip in this fixture's {@code JProgressBar} matches the given value.
    * @param expected the given value. It can be a regular expression.
    * @return this fixture.
-   * @throws AssertionError if the toolTip in this fixture's <code>JProgressBar</code> does not match the given value.
+   * @throws AssertionError if the toolTip in this fixture's {@code JProgressBar} does not match the given value.
    */
   public JProgressBarFixture requireToolTip(String expected) {
     driver.requireToolTip(target, expected);
@@ -156,12 +155,12 @@ public class JProgressBarFixture extends ComponentFixture<JProgressBar> implemen
   }
 
   /**
-   * Asserts that the toolTip in this fixture's <code>{@link JProgressBar}</code> matches the given regular expression
+   * Asserts that the toolTip in this fixture's {@code JProgressBar} matches the given regular expression
    * pattern.
    * @param pattern the regular expression pattern to match.
    * @return this fixture.
    * @throws NullPointerException if the given regular expression pattern is {@code null}.
-   * @throws AssertionError if the toolTip in this fixture's <code>JProgressBar</code> does not match the given regular
+   * @throws AssertionError if the toolTip in this fixture's {@code JProgressBar} does not match the given regular
    * expression pattern.
    */
   public JProgressBarFixture requireToolTip(Pattern pattern) {
@@ -170,9 +169,9 @@ public class JProgressBarFixture extends ComponentFixture<JProgressBar> implemen
   }
 
   /**
-   * Asserts that this fixture's <code>{@link JProgressBar}</code> is enabled.
+   * Asserts that this fixture's {@code JProgressBar} is enabled.
    * @return this fixture.
-   * @throws AssertionError if this fixture's <code>JProgressBar</code> is disabled.
+   * @throws AssertionError if this fixture's {@code JProgressBar} is disabled.
    */
   public JProgressBarFixture requireEnabled() {
     driver.requireEnabled(target);
@@ -180,10 +179,10 @@ public class JProgressBarFixture extends ComponentFixture<JProgressBar> implemen
   }
 
   /**
-   * Asserts that this fixture's <code>{@link JProgressBar}</code> is enabled.
+   * Asserts that this fixture's {@code JProgressBar} is enabled.
    * @param timeout the time this fixture will wait for the component to be enabled.
    * @return this fixture.
-   * @throws org.fest.swing.exception.WaitTimedOutError if this fixture's <code>JProgressBar</code> is never enabled.
+   * @throws org.fest.swing.exception.WaitTimedOutError if this fixture's {@code JProgressBar} is never enabled.
    */
   public JProgressBarFixture requireEnabled(Timeout timeout) {
     driver.requireEnabled(target, timeout);
@@ -191,9 +190,9 @@ public class JProgressBarFixture extends ComponentFixture<JProgressBar> implemen
   }
 
   /**
-   * Asserts that this fixture's <code>{@link JProgressBar}</code> is disabled.
+   * Asserts that this fixture's {@code JProgressBar} is disabled.
    * @return this fixture.
-   * @throws AssertionError if this fixture's <code>JProgressBar</code> is enabled.
+   * @throws AssertionError if this fixture's {@code JProgressBar} is enabled.
    */
   public JProgressBarFixture requireDisabled() {
     driver.requireDisabled(target);
@@ -201,9 +200,9 @@ public class JProgressBarFixture extends ComponentFixture<JProgressBar> implemen
   }
 
   /**
-   * Asserts that this fixture's <code>{@link JProgressBar}</code> is visible.
+   * Asserts that this fixture's {@code JProgressBar} is visible.
    * @return this fixture.
-   * @throws AssertionError if this fixture's <code>JProgressBar</code> is not visible.
+   * @throws AssertionError if this fixture's {@code JProgressBar} is not visible.
    */
   public JProgressBarFixture requireVisible() {
     driver.requireVisible(target);
@@ -211,9 +210,9 @@ public class JProgressBarFixture extends ComponentFixture<JProgressBar> implemen
   }
 
   /**
-   * Asserts that this fixture's <code>{@link JProgressBar}</code> is not visible.
+   * Asserts that this fixture's {@code JProgressBar} is not visible.
    * @return this fixture.
-   * @throws AssertionError if this fixture's <code>JProgressBar</code> is visible.
+   * @throws AssertionError if this fixture's {@code JProgressBar} is visible.
    */
   public JProgressBarFixture requireNotVisible() {
     driver.requireNotVisible(target);
@@ -221,7 +220,7 @@ public class JProgressBarFixture extends ComponentFixture<JProgressBar> implemen
   }
 
   /**
-   * Returns the client property stored in this fixture's <code>{@link JProgressBar}</code>, under the given key.
+   * Returns the client property stored in this fixture's {@code JProgressBar}, under the given key.
    * @param key the key to use to retrieve the client property.
    * @return the value of the client property stored under the given key, or {@code null} if the property was
    * not found.
@@ -232,12 +231,12 @@ public class JProgressBarFixture extends ComponentFixture<JProgressBar> implemen
   }
 
   /**
-   * Waits until the value of this fixture's <code>{@link JProgressBar}</code> is equal to the given value.
+   * Waits until the value of this fixture's {@code JProgressBar} is equal to the given value.
    * @param value the expected value.
    * @return this fixture.
-   * @throws IllegalArgumentException if the given value is less than the <code>JProgressBar</code>'s minimum value.
-   * @throws IllegalArgumentException if the given value is greater than the <code>JProgressBar</code>'s maximum value.
-   * @throws WaitTimedOutError if the value of the <code>JProgressBar</code> does not reach the expected value within
+   * @throws IllegalArgumentException if the given value is less than the {@code JProgressBar}'s minimum value.
+   * @throws IllegalArgumentException if the given value is greater than the {@code JProgressBar}'s maximum value.
+   * @throws WaitTimedOutError if the value of the {@code JProgressBar} does not reach the expected value within
    * 30 seconds.
    */
   public JProgressBarFixture waitUntilValueIs(int value) {
@@ -246,14 +245,14 @@ public class JProgressBarFixture extends ComponentFixture<JProgressBar> implemen
   }
 
   /**
-   * Waits until the value of this fixture's <code>{@link JProgressBar}</code> is equal to the given value.
+   * Waits until the value of this fixture's {@code JProgressBar} is equal to the given value.
    * @param value the expected value.
    * @param timeout the amount of time to wait.
    * @return this fixture.
-   * @throws IllegalArgumentException if the given value is less than the <code>JProgressBar</code>'s minimum value.
-   * @throws IllegalArgumentException if the given value is greater than the <code>JProgressBar</code>'s maximum value.
+   * @throws IllegalArgumentException if the given value is less than the {@code JProgressBar}'s minimum value.
+   * @throws IllegalArgumentException if the given value is greater than the {@code JProgressBar}'s maximum value.
    * @throws NullPointerException if the given timeout is {@code null}.
-   * @throws WaitTimedOutError if the value of the <code>JProgressBar</code> does not reach the expected value within
+   * @throws WaitTimedOutError if the value of the {@code JProgressBar} does not reach the expected value within
    * the specified timeout.
    */
   public JProgressBarFixture waitUntilValueIs(int value, Timeout timeout) {
@@ -262,9 +261,9 @@ public class JProgressBarFixture extends ComponentFixture<JProgressBar> implemen
   }
 
   /**
-   * Waits until the value of this fixture's <code>{@link JProgressBar}</code> is in determinate mode.
+   * Waits until the value of this fixture's {@code JProgressBar} is in determinate mode.
    * @return this fixture.
-   * @throws WaitTimedOutError if the <code>JProgressBar</code> does not reach determinate mode within 30 seconds.
+   * @throws WaitTimedOutError if the {@code JProgressBar} does not reach determinate mode within 30 seconds.
    */
   public JProgressBarFixture waitUntilIsDeterminate() {
     driver.waitUntilIsDeterminate(target);
@@ -272,11 +271,11 @@ public class JProgressBarFixture extends ComponentFixture<JProgressBar> implemen
   }
 
   /**
-   * Waits until the value of this fixture's <code>{@link JProgressBar}</code> is in determinate mode.
+   * Waits until the value of this fixture's {@code JProgressBar} is in determinate mode.
    * @param timeout the amount of time to wait.
    * @return this fixture.
    * @throws NullPointerException if the given timeout is {@code null}.
-   * @throws WaitTimedOutError if the <code>JProgressBar</code> does not reach determinate mode within the specified
+   * @throws WaitTimedOutError if the {@code JProgressBar} does not reach determinate mode within the specified
    * timeout.
    */
   public JProgressBarFixture waitUntilIsDeterminate(Timeout timeout) {

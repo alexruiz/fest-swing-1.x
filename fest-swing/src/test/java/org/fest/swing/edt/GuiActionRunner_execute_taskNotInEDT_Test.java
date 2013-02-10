@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.edt;
 
@@ -26,12 +26,11 @@ import org.fest.swing.test.core.*;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link GuiActionRunner#execute(GuiTask)}</code>.
+ * Tests for {@link GuiActionRunner#execute(GuiTask)}.
  *
  * @author Alex Ruiz
  */
 public class GuiActionRunner_execute_taskNotInEDT_Test extends SequentialEDTSafeTestCase {
-
   @Override protected final void onSetUp() {
     GuiActionRunner.executeInEDT(true);
   }

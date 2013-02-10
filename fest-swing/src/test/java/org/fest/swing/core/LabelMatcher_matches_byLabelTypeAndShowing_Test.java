@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.core;
 
@@ -22,17 +22,16 @@ import javax.swing.*;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link LabelMatcher#matches(java.awt.Component)}</code>.
+ * Tests for {@link LabelMatcher#matches(java.awt.Component)}.
  * <p>
- * The <code>{@link LabelMatcher}</code> is created through
- * <code>{@link LabelMatcher#LabelMatcher(String, Class, boolean)}</code>, passing {@code true} to indicate that
- * the <code>{@link java.awt.Component}</code> to match must be showing on the screen.
+ * The {@link LabelMatcher} is created through
+ * {@link LabelMatcher#LabelMatcher(String, Class, boolean)}, passing {@code true} to indicate that
+ * the {@link java.awt.Component} to match must be showing on the screen.
  * </p>
  *
  * @author Alex Ruiz
  */
 public class LabelMatcher_matches_byLabelTypeAndShowing_Test extends LabelMatcher_TestCase {
-
   @Test
   public void should_return_false_if_type_does_not_match() {
     window.display();

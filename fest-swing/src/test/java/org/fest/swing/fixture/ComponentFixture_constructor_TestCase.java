@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.fixture;
 
@@ -26,12 +26,11 @@ import org.fest.swing.test.core.EDTSafeTestCase;
 import org.junit.Before;
 
 /**
- * Test cases for constructors in <code>{@link ComponentFixture}</code>.
+ * Test cases for constructors in {@link ComponentFixture}.
  *
  * @author Alex Ruiz
  */
 public abstract class ComponentFixture_constructor_TestCase extends EDTSafeTestCase {
-
   Robot robot;
   Settings settings;
   Class<JTextField> type;

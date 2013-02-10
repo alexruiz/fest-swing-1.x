@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.util;
 
@@ -21,12 +21,11 @@ import static org.fest.assertions.Assertions.assertThat;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link Modifiers#isModifier(int)}</code>.
+ * Tests for {@link Modifiers#isModifier(int)}.
  *
  * @author Alex Ruiz
  */
 public class Modifiers_isModifier_Test {
-
   @Test
   public void should_return_true_if_key_is_AltGraph_modifier() {
     assertThat(Modifiers.isModifier(VK_ALT_GRAPH)).isTrue();
@@ -56,5 +55,4 @@ public class Modifiers_isModifier_Test {
   public void should_return_false_if_given_key_is_not_modifier() {
     assertThat(Modifiers.isModifier(VK_A)).isFalse();
   }
-
 }

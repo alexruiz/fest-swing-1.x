@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2010 the original author or authors.
+ * Copyright @2010-2013 the original author or authors.
  */
 package org.fest.swing.core;
 
@@ -20,12 +20,11 @@ import static org.easymock.classextension.EasyMock.createMock;
 import org.fest.swing.hierarchy.ComponentHierarchy;
 
 /**
- * Understands implementations of <code>{@link ComponentHierarchy}</code> to be used for testing purposes.
+ * Understands implementations of {@link ComponentHierarchy} to be used for testing purposes.
  *
  * @author Alex Ruiz
  */
 public final class TestComponentHierarchies {
-
   public static ComponentHierarchy newComponentHierarchyMock() {
     return createMock(ComponentHierarchy.class);
   }

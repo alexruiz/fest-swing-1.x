@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.fixture;
 
@@ -24,14 +24,13 @@ import org.fest.swing.driver.JLabelDriver;
 import org.junit.BeforeClass;
 
 /**
- * Tests for methods in <code>{@link JLabelFixture}</code>  that are inherited from
- * <code>{@link TextDisplayFixture}</code>.
+ * Tests for methods in {@link JLabelFixture}  that are inherited from
+ * {@link TextDisplayFixture}.
  *
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
 public class JLabelFixture_textDisplay_Test extends TextDisplayFixture_TestCase<JLabel> {
-
   private static JLabel target;
 
   private JLabelDriver driver;

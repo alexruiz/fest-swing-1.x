@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.core;
 
@@ -20,12 +20,11 @@ import static org.fest.assertions.Assertions.assertThat;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link InputModifiers#unify(int...)}</code>.
+ * Tests for {@link InputModifiers#unify(int...)}.
  *
  * @author Alex Ruiz
  */
 public class InputModifiers_unify_withNoModifiers_Test {
-
   @Test
   public void should_return_zero_if_array_of_modifiers_is_empty() {
     assertThat(InputModifiers.unify(new int[0])).isZero();

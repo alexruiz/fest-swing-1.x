@@ -11,14 +11,14 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2007-2010 the original author or authors.
+ * Copyright @2007-2013 the original author or authors.
  */
 package org.fest.swing.fixture;
 
 
 /**
  * Understands functional testing of frame-like components (not necessarily subclasses of
- * <code>{@link java.awt.Frame}</code>):
+ * {@link java.awt.Frame}):
  * <ul>
  * <li>user input simulation</li>
  * <li>state verification</li>
@@ -29,7 +29,6 @@ package org.fest.swing.fixture;
  * @author Alex Ruiz
  */
 public interface FrameLikeFixture extends WindowLikeContainerFixture {
-
   /**
    * Simulates a user iconifying this fixture's frame-like component.
    * @return this fixture.

@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.util;
 
@@ -20,12 +20,11 @@ import static org.fest.assertions.Assertions.assertThat;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link Arrays#copyOf(Object[])}</code>.
+ * Tests for {@link Arrays#copyOf(Object[])}.
  *
  * @author Alex Ruiz
  */
 public class Arrays_copyOfObjectArray_Test {
-
   @Test(expected = NullPointerException.class)
   public void should_throw_error_if_array_to_copy_is_null() {
     Object[] original = null;

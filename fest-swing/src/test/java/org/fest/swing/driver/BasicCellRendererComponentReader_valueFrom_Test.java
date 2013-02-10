@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -25,12 +25,11 @@ import org.fest.swing.test.core.EDTSafeTestCase;
 import org.junit.*;
 
 /**
- * Tests for <code>{@link BasicCellRendererReader#valueFrom(java.awt.Component)}</code>.
+ * Tests for {@link BasicCellRendererReader#valueFrom(java.awt.Component)}.
  *
  * @author Alex Ruiz
  */
 public class BasicCellRendererComponentReader_valueFrom_Test extends EDTSafeTestCase {
-
   private BasicCellRendererReader reader;
 
   @Before public void setUp() {

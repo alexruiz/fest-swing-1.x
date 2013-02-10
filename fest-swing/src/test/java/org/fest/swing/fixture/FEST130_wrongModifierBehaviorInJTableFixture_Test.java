@@ -11,16 +11,18 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.fixture;
 
-import static java.awt.event.InputEvent.*;
+import static java.awt.event.InputEvent.CTRL_MASK;
+import static java.awt.event.InputEvent.SHIFT_MASK;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.data.TableCell.row;
 import static org.fest.swing.edt.GuiActionRunner.execute;
+import static org.fest.util.Lists.newArrayList;
 
-import java.util.*;
+import java.util.List;
 
 import javax.swing.JTable;
 import javax.swing.table.AbstractTableModel;
@@ -39,7 +41,6 @@ import org.junit.Test;
  * @author Alex Ruiz
  */
 public class FEST130_wrongModifierBehaviorInJTableFixture_Test extends RobotBasedTestCase {
-
   private JTableFixture table;
 
   @Override protected void onSetUp() {
@@ -72,8 +73,9 @@ public class FEST130_wrongModifierBehaviorInJTableFixture_Test extends RobotBase
   private void assertThatSelectedRowsAre(int...rows) {
     int[] selectedRows = selectedRowsInTable();
     assertThat(selectedRows.length).isEqualTo(rows.length);
-    for (int i = 0; i < rows.length; i++)
+    for (int i = 0; i < rows.length; i++) {
       assertThat(selectedRows[i]).isEqualTo(rows[i]);
+    }
   }
 
   @RunsInEDT
@@ -106,8 +108,10 @@ public class FEST130_wrongModifierBehaviorInJTableFixture_Test extends RobotBase
     private MyWindow() {
       super(FEST130_wrongModifierBehaviorInJTableFixture_Test.class);
       table.setName("Table");
-      List<String> values = new ArrayList<String>();
-      for (int i = 0; i < 15; i++) values.add("AB" + i);
+      List<String> values = newArrayList();
+      for (int i = 0; i < 15; i++) {
+        values.add("AB" + i);
+      }
       table.setModel(new MyTableModel(values));
       addComponents(table);
     }
@@ -125,13 +129,17 @@ public class FEST130_wrongModifierBehaviorInJTableFixture_Test extends RobotBase
       return "Col" + col;
     }
 
+    @Override
     public int getColumnCount() {
       return 3;
     }
 
+    @Override
     public Object getValueAt(int row, int col) {
       String val = values.get(row);
-      if (val == null) return "";
+      if (val == null) {
+        return "";
+      }
       return Character.toString(val.charAt(col));
     }
 
@@ -139,6 +147,7 @@ public class FEST130_wrongModifierBehaviorInJTableFixture_Test extends RobotBase
       return false;
     }
 
+    @Override
     public int getRowCount() {
       return values.size();
     }

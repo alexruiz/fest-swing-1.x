@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.core;
 
@@ -22,13 +22,12 @@ import static org.fest.assertions.Assertions.assertThat;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link KeyPressInfo#keyCode(int)}</code>, <code>{@link KeyPressInfo#modifiers(int...)}</code>
- * <code>{@link KeyPressInfo#keyCode()}</code> and <code>{@link KeyPressInfo#modifiers()}</code>.
+ * Tests for {@link KeyPressInfo#keyCode(int)}, {@link KeyPressInfo#modifiers(int...)}
+ * {@link KeyPressInfo#keyCode()} and {@link KeyPressInfo#modifiers()}.
  *
  * @author Alex Ruiz
  */
 public class KeyPressInfo_keyCode_modifiers_Test {
-
   @Test
   public void should_create_KeyPressInfo_with_given_key_and_modifiers() {
     KeyPressInfo keyPressInfo = KeyPressInfo.keyCode(VK_C).modifiers(SHIFT_MASK, CTRL_MASK);

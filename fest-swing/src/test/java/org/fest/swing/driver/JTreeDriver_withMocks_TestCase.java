@@ -10,7 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  *
- * Copyright @2010 the original author or authors.
+ * Copyright @2010-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -22,12 +22,11 @@ import org.fest.swing.core.TestRobots;
 import org.junit.BeforeClass;
 
 /**
- * Base test case for <code>{@link JTreeDriver}</code> that uses mocks as part of its fixture.
+ * Base test case for {@link JTreeDriver} that uses mocks as part of its fixture.
  *
  * @author Alex Ruiz
  */
 public class JTreeDriver_withMocks_TestCase {
-
   protected static JTree tree;
   protected static JTreeDriver driver;
 

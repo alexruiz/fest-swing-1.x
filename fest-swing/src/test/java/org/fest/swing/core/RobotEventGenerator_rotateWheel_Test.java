@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.core;
 
@@ -24,12 +24,11 @@ import org.fest.util.Arrays;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link RobotEventGenerator#rotateMouseWheel(int)}</code>.
+ * Tests for {@link RobotEventGenerator#rotateMouseWheel(int)}.
  *
  * @author Alex Ruiz
  */
 public class RobotEventGenerator_rotateWheel_Test extends RobotEventGenerator_TestCase {
-
   @Override Method[] methodsToMockInRobot() throws Exception {
     return Arrays.array(methodFromAWTRobot("mouseWheel", int.class));
   }

@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.input;
 
@@ -25,17 +25,16 @@ import org.fest.swing.test.core.EDTSafeTestCase;
 import org.junit.*;
 
 /**
- * Tests for <code>{@link NativeDnDIdentifier#isNativeDragAndDrop(java.awt.AWTEvent)}</code>.
+ * Tests for {@link NativeDndIdentifier#isNativeDragAndDrop(java.awt.AWTEvent)}.
  *
  * @author Alex Ruiz
  */
 public class NativeDnDIdentifier_isNativeDragAndDrop_Test extends EDTSafeTestCase {
-
-  private NativeDnDIdentifier dnd;
+  private NativeDndIdentifier dnd;
 
   @Before public void setUp() {
     FailOnThreadViolationRepaintManager.install();
-    dnd = new NativeDnDIdentifier();
+    dnd = new NativeDndIdentifier();
   }
 
   @Test

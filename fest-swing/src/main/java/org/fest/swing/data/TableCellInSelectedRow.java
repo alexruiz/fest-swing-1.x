@@ -1,25 +1,24 @@
 /*
  * Created on Dec 25, 2009
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ * 
  * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
- *
- * Copyright @2009-2010 the original author or authors.
+ * 
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+ * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations under the License.
+ * 
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.data;
 
-import static java.lang.String.valueOf;
 import static org.fest.swing.edt.GuiActionRunner.execute;
 import static org.fest.swing.exception.ActionFailedException.actionFailure;
-import static org.fest.util.Strings.concat;
+import static org.fest.util.Preconditions.checkNotNull;
 
+import javax.annotation.Nonnull;
 import javax.swing.JTable;
 
 import org.fest.swing.annotation.RunsInEDT;
@@ -28,22 +27,26 @@ import org.fest.swing.edt.GuiQuery;
 import org.fest.swing.exception.ActionFailedException;
 
 /**
- * Looks up a cell in the first selected row of a <code>{@link JTable}</code>.
+ * <p>
+ * Looks up a cell in the first selected row of a {@code JTable}.
+ * </p>
+ * 
  * <p>
  * Example:
  * <pre>
  * // import static org.fest.swing.data.TableCellInSelectedRow.row;
- * <code>{@link TableCell}</code> cell = dialog.table("records").cell({@link TableCellInSelectedRow#selectedRow() selectedRow}().column(2));
+ * {@link TableCell} cell = dialog.table("records").cell({@link TableCellInSelectedRow#selectedRow() selectedRow}().column(2));
  * </pre>
  * </p>
- *
+ * 
  * @author Alex Ruiz
- *
  */
 public class TableCellInSelectedRow implements TableCellFinder {
-
   /**
-   * Starting point for the creation of a <code>{@link TableCellInSelectedRow}</code>.
+   * <p>
+   * Starting point for the creation of a {@link TableCellInSelectedRow}.
+   * </p>
+   * 
    * <p>
    * Example:
    * <pre>
@@ -51,23 +54,26 @@ public class TableCellInSelectedRow implements TableCellFinder {
    * TableCellInSelectedRow cell = selectedRow().column(2);
    * </pre>
    * </p>
+   * 
    * @return the created builder.
    */
-  public static TableCellBuilder selectedRow() { return new TableCellBuilder(); }
+  public static @Nonnull TableCellBuilder selectedRow() {
+    return new TableCellBuilder();
+  }
 
   /**
-   * Understands creation of <code>{@link TableCellInSelectedRow}</code>s.
-   *
+   * Understands creation of {@link TableCellInSelectedRow}s.
+   * 
    * @author Alex Ruiz
    */
   public static class TableCellBuilder {
-
     /**
      * Creates a new table cell finder.
+     * 
      * @param column the column index of the cell to find.
      * @return the created finder.
      */
-    public TableCellInSelectedRow column(int column) {
+    public @Nonnull TableCellInSelectedRow column(int column) {
       return new TableCellInSelectedRow(column);
     }
   }
@@ -79,29 +85,35 @@ public class TableCellInSelectedRow implements TableCellFinder {
   }
 
   /**
-   * Finds a cell in the given <code>{@link JTable}</code> that belongs to the first selected row and has a matching
-   * column index.
+   * Finds a cell in the given {@code JTable} that belongs to the first selected row and has a matching column index.
+   * 
    * @param table the target {@code JTable}.
    * @param cellReader knows how to read the contents of a cell in a {@code JTable}.
    * @return the cell found, if any.
    * @throws ActionFailedException if a matching cell could not be found.
    */
-  public TableCell findCell(JTable table, JTableCellReader cellReader) {
+  @Override
+  public @Nonnull TableCell findCell(@Nonnull JTable table, @Nonnull JTableCellReader cellReader) {
     int selectedRow = selectedRowOf(table);
-    if (selectedRow == -1) throw actionFailure("The given JTable does not have any selection");
+    if (selectedRow == -1) {
+      throw actionFailure("The given JTable does not have any selection");
+    }
     return new TableCell(selectedRow, column);
   }
 
   @RunsInEDT
   private static int selectedRowOf(final JTable table) {
-    return execute(new GuiQuery<Integer>() {
-      @Override protected Integer executeInEDT() {
+    Integer result = execute(new GuiQuery<Integer>() {
+      @Override
+      protected Integer executeInEDT() {
         return table.getSelectedRow();
       }
     });
+    return checkNotNull(result);
   }
 
-  @Override public String toString() {
-    return concat(getClass().getName(), "[column=", valueOf(column), "]");
+  @Override
+  public String toString() {
+    return String.format("%s[column=%d]", getClass().getName(), column);
   }
 }

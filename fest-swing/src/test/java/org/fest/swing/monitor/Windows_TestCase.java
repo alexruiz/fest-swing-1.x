@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2007-2010 the original author or authors.
+ * Copyright @2007-2013 the original author or authors.
  */
 package org.fest.swing.monitor;
 
@@ -19,12 +19,11 @@ import org.fest.swing.test.core.SequentialEDTSafeTestCase;
 import org.fest.swing.test.swing.TestWindow;
 
 /**
- * Base test case for <code>{@link Windows}</code>.
+ * Base test case for {@link Windows}.
  *
  * @author Alex Ruiz
  */
 public abstract class Windows_TestCase extends SequentialEDTSafeTestCase {
-
   TestWindow window;
   Windows windows;
 

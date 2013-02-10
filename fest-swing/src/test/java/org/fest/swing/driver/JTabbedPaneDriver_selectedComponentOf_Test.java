@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -27,14 +27,13 @@ import org.junit.runners.*;
 import org.junit.runners.Parameterized.Parameters;
 
 /**
- * Tests for <code>{@link JTabbedPaneDriver#selectedComponentOf(javax.swing.JTabbedPane)}</code>.
+ * Tests for {@link JTabbedPaneDriver#selectedComponentOf(javax.swing.JTabbedPane)}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 @RunWith(Parameterized.class)
 public class JTabbedPaneDriver_selectedComponentOf_Test extends JTabbedPaneDriver_TestCase {
-
   private final int index;
   private final String componentName;
 

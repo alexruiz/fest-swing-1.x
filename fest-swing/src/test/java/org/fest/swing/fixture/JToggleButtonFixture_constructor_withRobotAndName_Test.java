@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.fixture;
 
@@ -27,13 +27,12 @@ import org.fest.swing.test.swing.TestWindow;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JToggleButtonFixture#JToggleButtonFixture(org.fest.swing.core.Robot, String)}</code>.
+ * Tests for {@link JToggleButtonFixture#JToggleButtonFixture(org.fest.swing.core.Robot, String)}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 public class JToggleButtonFixture_constructor_withRobotAndName_Test extends RobotBasedTestCase {
-
   private MyWindow window;
 
   @Override protected void onSetUp() {

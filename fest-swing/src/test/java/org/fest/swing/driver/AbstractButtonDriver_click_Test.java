@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -26,12 +26,11 @@ import org.fest.assertions.AssertExtension;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link AbstractButtonDriver#click(java.awt.Component)}</code>.
+ * Tests for {@link AbstractButtonDriver#click(java.awt.Component)}.
  *
  * @author Alex Ruiz
  */
 public class AbstractButtonDriver_click_Test extends AbstractButtonDriver_TestCase {
-
   @Test
   public void should_click_button() {
     showWindow();
@@ -88,5 +87,4 @@ public class AbstractButtonDriver_click_Test extends AbstractButtonDriver_TestCa
       return this;
     }
   }
-
 }

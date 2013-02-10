@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.fixture;
 
@@ -24,14 +24,13 @@ import org.fest.swing.driver.ComponentDriver;
 import org.junit.BeforeClass;
 
 /**
- * Tests for methods in <code>{@link GenericComponentFixture}</code> that inherited from
- * <code>{@link FocusableComponentFixture}</code>.
+ * Tests for methods in {@link GenericComponentFixture} that inherited from
+ * {@link FocusableComponentFixture}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 public class GenericComponentFixture_focusable_Test extends FocusableComponentFixture_TestCase<Component> {
-
   private static Component target;
 
   private GenericComponentFixture<Component> fixture;

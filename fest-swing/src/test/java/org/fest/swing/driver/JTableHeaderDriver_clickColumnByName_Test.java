@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -22,12 +22,11 @@ import org.fest.swing.exception.LocationUnavailableException;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JTableHeaderDriver#clickColumn(javax.swing.table.JTableHeader, String)}</code>.
+ * Tests for {@link JTableHeaderDriver#clickColumn(javax.swing.table.JTableHeader, String)}.
  *
  * @author Yvonne Wang
  */
 public class JTableHeaderDriver_clickColumnByName_Test extends JTableHeaderDriver_TestCase {
-
   @Test
   public void should_fail_if_matching_column_was_not_found() {
     try {

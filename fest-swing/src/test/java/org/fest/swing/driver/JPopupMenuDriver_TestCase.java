@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2007-2010 the original author or authors.
+ * Copyright @2007-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -25,13 +25,12 @@ import org.fest.swing.test.core.RobotBasedTestCase;
 import org.fest.swing.test.swing.TestWindow;
 
 /**
- * Base test case for <code>{@link JPopupMenuDriver}</code>.
+ * Base test case for {@link JPopupMenuDriver}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 public abstract class JPopupMenuDriver_TestCase extends RobotBasedTestCase {
-
   MyWindow window;
   JPopupMenu popupMenu;
   JPopupMenuDriver driver;

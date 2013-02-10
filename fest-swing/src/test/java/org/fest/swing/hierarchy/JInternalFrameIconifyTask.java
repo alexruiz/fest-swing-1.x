@@ -5,6 +5,7 @@ import static org.fest.swing.timing.Pause.pause;
 
 import java.beans.PropertyVetoException;
 
+import javax.annotation.Nonnull;
 import javax.swing.JInternalFrame;
 
 import org.fest.swing.annotation.RunsInEDT;
@@ -12,21 +13,21 @@ import org.fest.swing.edt.GuiTask;
 import org.fest.swing.timing.Condition;
 
 /**
- * Understands a task that iconifies a given <code>{@link JInternalFrame}</code>. This task is executed in the event
- * dispatch thread.
- *
+ * Iconifies a given {@code JInternalFrame}. This task is executed in the event dispatch thread (EDT.)
+ * 
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 @RunsInEDT
 final class JInternalFrameIconifyTask {
-
-  static void iconify(final JInternalFrame internalFrame) {
+  static void iconify(final @Nonnull JInternalFrame internalFrame) {
     execute(new GuiTask() {
-      @Override protected void executeInEDT() throws PropertyVetoException {
+      @Override
+      protected void executeInEDT() throws PropertyVetoException {
         internalFrame.setIcon(true);
         pause(new Condition("JInternalFrame is iconified") {
-          @Override public boolean test() {
+          @Override
+          public boolean test() {
             return internalFrame.isIcon();
           }
         });

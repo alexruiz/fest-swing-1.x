@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.core.matcher;
 
@@ -23,13 +23,12 @@ import org.fest.swing.test.core.EDTSafeTestCase;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JButtonMatcher#matches(java.awt.Component)}</code>.
+ * Tests for {@link JButtonMatcher#matches(java.awt.Component)}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 public class JButtonMatcher_matches_any_Test extends EDTSafeTestCase {
-
   @Test
   public void should_always_return_true_when_matching_any_JButton() {
     JButtonMatcher matcher = JButtonMatcher.any();

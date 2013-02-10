@@ -10,7 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.edt;
 
@@ -18,17 +18,15 @@ import org.fest.swing.exception.ActionFailedException;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link GuiTask#run()}</code>.
+ * Tests for {@link GuiTask#run()}.
  *
  * @author Alex Ruiz
  */
 public class GuiTask_run_Test {
-
   @Test(expected = ActionFailedException.class)
   public void should_throw_error_if_not_called_in_EDT() {
     new GuiTask() {
       @Override protected void executeInEDT() {}
     }.run();
   }
-
 }

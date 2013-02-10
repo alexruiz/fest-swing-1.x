@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.core.matcher;
 
@@ -24,13 +24,12 @@ import org.fest.swing.test.core.EDTSafeTestCase;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link FrameMatcher#matches(java.awt.Component)}</code>.
+ * Tests for {@link FrameMatcher#matches(java.awt.Component)}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 public class FrameMatcher_matches_byNameAndTitle_Test extends EDTSafeTestCase {
-
   @Test
   public void should_return_true_if_name_and_title_are_equal_to_expected() {
     FrameMatcher matcher = FrameMatcher.withName("frame").andTitle("Hello");

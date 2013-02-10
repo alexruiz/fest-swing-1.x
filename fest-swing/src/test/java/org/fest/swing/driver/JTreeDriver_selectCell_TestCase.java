@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -27,12 +27,11 @@ import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.*;
 
 /**
- * Test case for <code>{@link JTreeDriver}</code> that involves selecting cells in a <code>{@link JTree}</code>.
+ * Test case for {@link JTreeDriver} that involves selecting cells in a {@code JTree}.
  *
  * @author Alex Ruiz
  */
 public abstract class JTreeDriver_selectCell_TestCase extends JTreeDriver_TestCase {
-
   @RunsInEDT
   final void requireNoSelection() {
     assertThat(selectedRowsOf(tree)).isNullOrEmpty();

@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -21,13 +21,12 @@ import static org.fest.swing.test.core.CommonAssertions.failWhenExpectingExcepti
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link CommonValidations#validateCellReader(Object)}</code>.
+ * Tests for {@link CommonValidations#validateCellReader(Object)}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 public class CommonValidations_validateCellReader_Test {
-
   @Test
   public void should_not_throw_error_if_cellReader_is_not_null() {
     CommonValidations.validateCellReader(new Object());

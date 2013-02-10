@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.fixture;
 
@@ -25,7 +25,7 @@ import org.fest.swing.driver.JTableHeaderDriver;
 import org.fest.swing.exception.*;
 
 /**
- * Understands functional testing of <code>{@link JTableHeader}</code>s:
+ * Understands functional testing of {@code JTableHeader}s:
  * <ul>
  * <li>user input simulation</li>
  * <li>state verification</li>
@@ -36,15 +36,14 @@ import org.fest.swing.exception.*;
  * @author Alex Ruiz
  */
 public class JTableHeaderFixture extends ComponentFixture<JTableHeader> implements JComponentFixture {
-
   private JTableHeaderDriver driver;
 
   /**
-   * Creates a new </code>{@link JTableHeaderFixture}</code>.
-   * @param robot performs simulation of user events on the given <code>JTableHeader</code>.
-   * @param target the <code>JTableHeader</code> to be managed by this fixture.
-   * @throws NullPointerException if <code>robot</code> is {@code null}.
-   * @throws NullPointerException if <code>target</code> is {@code null}.
+   * Creates a new {@link JTableHeaderFixture}.
+   * @param robot performs simulation of user events on the given {@code JTableHeader}.
+   * @param target the {@code JTableHeader} to be managed by this fixture.
+   * @throws NullPointerException if {@code robot} is {@code null}.
+   * @throws NullPointerException if {@code target} is {@code null}.
    */
   public JTableHeaderFixture(Robot robot, JTableHeader target) {
     super(robot, target);
@@ -52,8 +51,8 @@ public class JTableHeaderFixture extends ComponentFixture<JTableHeader> implemen
   }
 
   /**
-   * Sets the <code>{@link JTableHeaderDriver}</code> to be used by this fixture.
-   * @param newDriver the new <code>JTableHeaderDriver</code>.
+   * Sets the {@link JTableHeaderDriver} to be used by this fixture.
+   * @param newDriver the new {@code JTableHeaderDriver}.
    * @throws NullPointerException if the given driver is {@code null}.
    */
   protected final void driver(JTableHeaderDriver newDriver) {
@@ -62,11 +61,11 @@ public class JTableHeaderFixture extends ComponentFixture<JTableHeader> implemen
   }
 
   /**
-   * Simulates a user clicking the column under the given index, in this fixture's <code>{@link JTableHeader}</code>.
+   * Simulates a user clicking the column under the given index, in this fixture's {@code JTableHeader}.
    * @param index the index of the column to click.
    * @return this fixture.
-   * @throws IllegalStateException if this fixture's <code>JTableHeader</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JTableHeader</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JTableHeader} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JTableHeader} is not showing on the screen.
    * @throws IndexOutOfBoundsException if the index is out of bounds.
    */
   public JTableHeaderFixture clickColumn(int index) {
@@ -75,11 +74,11 @@ public class JTableHeaderFixture extends ComponentFixture<JTableHeader> implemen
   }
 
   /**
-   * Shows a pop-up menu using this fixture's <code>{@link JTableHeader}</code> as the invoker of the pop-up menu.
+   * Shows a pop-up menu using this fixture's {@code JTableHeader} as the invoker of the pop-up menu.
    * @param columnIndex the index of the column where the pop-up menu will be displayed.
    * @return a fixture that manages the displayed pop-up menu.
-   * @throws IllegalStateException if this fixture's <code>JTableHeader</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JTableHeader</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JTableHeader} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JTableHeader} is not showing on the screen.
    * @throws IndexOutOfBoundsException if the index is out of bounds.
    * @throws ComponentLookupException if a pop-up menu cannot be found.
    */
@@ -89,11 +88,11 @@ public class JTableHeaderFixture extends ComponentFixture<JTableHeader> implemen
   }
 
   /**
-   * Shows a pop-up menu using this fixture's <code>{@link JTableHeader}</code> as the invoker of the pop-up menu.
+   * Shows a pop-up menu using this fixture's {@code JTableHeader} as the invoker of the pop-up menu.
    * @param columnName the name of the column where the pop-up menu will be displayed. It can be a regular expression.
    * @return a fixture that manages the displayed pop-up menu.
-   * @throws IllegalStateException if this fixture's <code>JTableHeader</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JTableHeader</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JTableHeader} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JTableHeader} is not showing on the screen.
    * @throws ComponentLookupException if a pop-up menu cannot be found.
    */
   public JPopupMenuFixture showPopupMenuAt(String columnName) {
@@ -102,12 +101,12 @@ public class JTableHeaderFixture extends ComponentFixture<JTableHeader> implemen
   }
 
   /**
-   * Shows a pop-up menu using this fixture's <code>{@link JTableHeader}</code> as the invoker of the pop-up menu. The
+   * Shows a pop-up menu using this fixture's {@code JTableHeader} as the invoker of the pop-up menu. The
    * name of the column to use must match the given regular expression pattern.
    * @param columnNamePattern the regular expression pattern to match.
    * @return a fixture that manages the displayed pop-up menu.
-   * @throws IllegalStateException if this fixture's <code>JTableHeader</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JTableHeader</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JTableHeader} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JTableHeader} is not showing on the screen.
    * @throws NullPointerException if the given regular expression pattern is {@code null}.
    * @throws ComponentLookupException if a pop-up menu cannot be found.
    * @since 1.2
@@ -118,14 +117,14 @@ public class JTableHeaderFixture extends ComponentFixture<JTableHeader> implemen
   }
 
   /**
-   * Simulates a user clicking the column under the given index, in this fixture's <code>{@link JTableHeader}</code>,
+   * Simulates a user clicking the column under the given index, in this fixture's {@code JTableHeader},
    * using the given mouse button, the given number of times.
    * @param index the index of the column to click.
    * @param mouseClickInfo specifies the mouse button to use and the number of times to click.
    * @return this fixture.
-   * @throws NullPointerException if the given <code>MouseClickInfo</code> is {@code null}.
-   * @throws IllegalStateException if this fixture's <code>JTableHeader</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JTableHeader</code> is not showing on the screen.
+   * @throws NullPointerException if the given {@code MouseClickInfo} is {@code null}.
+   * @throws IllegalStateException if this fixture's {@code JTableHeader} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JTableHeader} is not showing on the screen.
    * @throws IndexOutOfBoundsException if the index is out of bounds.
    */
   public JTableHeaderFixture clickColumn(int index, MouseClickInfo mouseClickInfo) {
@@ -136,11 +135,11 @@ public class JTableHeaderFixture extends ComponentFixture<JTableHeader> implemen
 
   /**
    * Simulates a user clicking the column which name matches the given value, in this fixture's
-   * <code>{@link JTableHeader}</code>.
+   * {@code JTableHeader}.
    * @param columnName the column name to match. It can be a regular expression.
    * @return this fixture.
-   * @throws IllegalStateException if this fixture's <code>JTableHeader</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JTableHeader</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JTableHeader} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JTableHeader} is not showing on the screen.
    * @throws LocationUnavailableException if a column with a matching name cannot be found.
    */
   public JTableHeaderFixture clickColumn(String columnName) {
@@ -150,11 +149,11 @@ public class JTableHeaderFixture extends ComponentFixture<JTableHeader> implemen
 
   /**
    * Simulates a user clicking the column which name matches the given regular expression pattern, in this fixture's
-   * <code>{@link JTableHeader}</code>.
+   * {@code JTableHeader}.
    * @param columnNamePattern the regular expression pattern to match.
    * @return this fixture.
-   * @throws IllegalStateException if this fixture's <code>JTableHeader</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JTableHeader</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JTableHeader} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JTableHeader} is not showing on the screen.
    * @throws NullPointerException if the given regular expression is {@code null}.
    * @throws LocationUnavailableException if a column with a matching name cannot be found.
    * @since 1.2
@@ -166,13 +165,13 @@ public class JTableHeaderFixture extends ComponentFixture<JTableHeader> implemen
 
   /**
    * Simulates a user clicking the column which name matches the given one, in this fixture's
-   * <code>{@link JTableHeader}</code>, using the given mouse button, the given number of times.
+   * {@code JTableHeader}, using the given mouse button, the given number of times.
    * @param columnName the column name to match. It can be a regular expression.
    * @param mouseClickInfo specifies the mouse button to use and the number of times to click.
    * @return this fixture.
-   * @throws NullPointerException if the given <code>MouseClickInfo</code> is {@code null}.
-   * @throws IllegalStateException if this fixture's <code>JTableHeader</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JTableHeader</code> is not showing on the screen.
+   * @throws NullPointerException if the given {@code MouseClickInfo} is {@code null}.
+   * @throws IllegalStateException if this fixture's {@code JTableHeader} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JTableHeader} is not showing on the screen.
    * @throws LocationUnavailableException if a column with a matching name cannot be found.
    */
   public JTableHeaderFixture clickColumn(String columnName, MouseClickInfo mouseClickInfo) {
@@ -183,13 +182,13 @@ public class JTableHeaderFixture extends ComponentFixture<JTableHeader> implemen
 
   /**
    * Simulates a user clicking the column which name matches the given regular expression pattern, in this fixture's
-   * <code>{@link JTableHeader}</code>, using the given mouse button, the given number of times.
+   * {@code JTableHeader}, using the given mouse button, the given number of times.
    * @param columnNamePattern the regular expression pattern to match.
    * @param mouseClickInfo specifies the mouse button to use and the number of times to click.
    * @return this fixture.
-   * @throws NullPointerException if the given <code>MouseClickInfo</code> is {@code null}.
-   * @throws IllegalStateException if this fixture's <code>JTableHeader</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JTableHeader</code> is not showing on the screen.
+   * @throws NullPointerException if the given {@code MouseClickInfo} is {@code null}.
+   * @throws IllegalStateException if this fixture's {@code JTableHeader} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JTableHeader} is not showing on the screen.
    * @throws NullPointerException if the given regular expression pattern is {@code null}.
    * @throws LocationUnavailableException if a column with a matching name cannot be found.
    * @since 1.2
@@ -206,10 +205,10 @@ public class JTableHeaderFixture extends ComponentFixture<JTableHeader> implemen
 
 
   /**
-   * Asserts that the toolTip in this fixture's <code>{@link JTableHeader}</code> matches the given value.
+   * Asserts that the toolTip in this fixture's {@code JTableHeader} matches the given value.
    * @param expected the given value. It can be a regular expression.
    * @return this fixture.
-   * @throws AssertionError if the toolTip in this fixture's <code>JTableHeader</code> does not match the given value.
+   * @throws AssertionError if the toolTip in this fixture's {@code JTableHeader} does not match the given value.
    * @since 1.2
    */
   public JTableHeaderFixture requireToolTip(String expected) {
@@ -218,12 +217,12 @@ public class JTableHeaderFixture extends ComponentFixture<JTableHeader> implemen
   }
 
   /**
-   * Asserts that the toolTip in this fixture's <code>{@link JTableHeader}</code> matches the given regular expression
+   * Asserts that the toolTip in this fixture's {@code JTableHeader} matches the given regular expression
    * pattern.
    * @param pattern the regular expression pattern to match.
    * @return this fixture.
    * @throws NullPointerException if the given regular expression pattern is {@code null}.
-   * @throws AssertionError if the toolTip in this fixture's <code>JTableHeader</code> does not match the given regular
+   * @throws AssertionError if the toolTip in this fixture's {@code JTableHeader} does not match the given regular
    * expression.
    * @since 1.2
    */
@@ -233,7 +232,7 @@ public class JTableHeaderFixture extends ComponentFixture<JTableHeader> implemen
   }
 
   /**
-   * Returns the client property stored in this fixture's <code>{@link JTableHeader}</code>, under the given key.
+   * Returns the client property stored in this fixture's {@code JTableHeader}, under the given key.
    * @param key the key to use to retrieve the client property.
    * @return the value of the client property stored under the given key, or {@code null} if the property was
    * not found.

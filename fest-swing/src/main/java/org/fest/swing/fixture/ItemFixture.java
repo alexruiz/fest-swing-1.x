@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2007-2010 the original author or authors.
+ * Copyright @2007-2013 the original author or authors.
  */
 package org.fest.swing.fixture;
 
@@ -21,18 +21,17 @@ import org.fest.swing.exception.*;
 
 /**
  * Understands functional testing of GUI component items (e.g. a cell in a {@code JTable} or a row in a
- * <code>JList</code>):
+ * {@code JList}):
  * <ul>
  * <li>user input simulation</li>
  * <li>property value query</li>
  * </ul>
- * Understands simulation of user events on an item belonging to a fixture's <code>{@link Component}</code>.
+ * Understands simulation of user events on an item belonging to a fixture's {@code Component}.
  *
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
 public interface ItemFixture extends MouseInputSimulationFixture {
-
   /**
    * Simulates a user selecting this fixture's item.
    * @return this fixture.

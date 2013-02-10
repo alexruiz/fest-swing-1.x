@@ -11,19 +11,18 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.util;
 
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link Colors#colorFromHexString(String)}</code>, passing invalid input.
+ * Tests for {@link Colors#colorFromHexString(String)}, passing invalid input.
  *
  * @author Alex Ruiz
  */
 public class Colors_colorFromHexString_withInvalidInput_Test {
-
   @Test(expected = NumberFormatException.class)
   public void should_throw_error_if_hex_String_is_not_valid() {
     Colors.colorFromHexString("zz");
@@ -38,5 +37,4 @@ public class Colors_colorFromHexString_withInvalidInput_Test {
   public void should_throw_error_if_hex_String_is_empty() {
     Colors.colorFromHexString("");
   }
-
 }

@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2007-2010 the original author or authors.
+ * Copyright @2007-2013 the original author or authors.
  */
 package org.fest.swing.finder;
 
@@ -26,13 +26,12 @@ import org.fest.swing.fixture.JOptionPaneFixture;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JOptionPaneFinder#findOptionPane()}</code>.
+ * Tests for {@link JOptionPaneFinder#findOptionPane()}.
  *
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
 public class JOptionPaneFinder_findOptionPane_withMatcher_Test extends JOptionPaneFinder_TestCase {
-
   private GenericTypeMatcher<JOptionPane> matcher;
 
   @Override void extraSetUp() {

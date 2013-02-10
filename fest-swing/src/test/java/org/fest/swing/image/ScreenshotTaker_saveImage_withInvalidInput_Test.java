@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2007-2010 the original author or authors.
+ * Copyright @2007-2013 the original author or authors.
  */
 package org.fest.swing.image;
 
@@ -20,13 +20,12 @@ import java.awt.image.BufferedImage;
 import org.junit.*;
 
 /**
- * Tests for <code>{@link ScreenshotTaker#saveImage(BufferedImage, String)}</code>.
+ * Tests for {@link ScreenshotTaker#saveImage(BufferedImage, String)}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 public class ScreenshotTaker_saveImage_withInvalidInput_Test {
-
   private static final BufferedImage NO_IMAGE = null;
   private ScreenshotTaker taker;
 

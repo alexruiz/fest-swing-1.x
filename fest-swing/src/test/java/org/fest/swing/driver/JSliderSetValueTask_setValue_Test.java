@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -34,13 +34,12 @@ import org.junit.runners.*;
 import org.junit.runners.Parameterized.Parameters;
 
 /**
- * Tests for <code>{@link JSliderSetValueTask#setValue(JSlider, int)}</code>.
+ * Tests for {@link JSliderSetValueTask#setValue(JSlider, int)}.
  *
  * @author Alex Ruiz
  */
 @RunWith(Parameterized.class)
 public class JSliderSetValueTask_setValue_Test extends RobotBasedTestCase {
-
   private JSlider slider;
 
   private final int value;

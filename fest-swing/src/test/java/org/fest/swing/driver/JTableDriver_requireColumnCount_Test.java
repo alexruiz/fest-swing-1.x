@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -22,13 +22,12 @@ import static org.fest.swing.test.core.CommonAssertions.failWhenExpectingExcepti
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JTableDriver#requireColumnCount(javax.swing.JTable, int)}</code>.
+ * Tests for {@link JTableDriver#requireColumnCount(javax.swing.JTable, int)}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 public class JTableDriver_requireColumnCount_Test extends JTableDriver_TestCase {
-
   @Test
   public void should_fail_if_column_count_is_not_equal_to_expected() {
     try {

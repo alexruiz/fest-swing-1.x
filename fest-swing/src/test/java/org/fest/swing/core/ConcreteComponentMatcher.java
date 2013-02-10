@@ -11,19 +11,18 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.core;
 
 import java.awt.Component;
 
 /**
- * Understands an implementation of <code>{@link AbstractComponentMatcher}</code> for testing purposes.
+ * Understands an implementation of {@link AbstractComponentMatcher} for testing purposes.
  *
  * @author Alex Ruiz
  */
 class ConcreteComponentMatcher extends AbstractComponentMatcher {
-
   public ConcreteComponentMatcher() {
     super();
   }

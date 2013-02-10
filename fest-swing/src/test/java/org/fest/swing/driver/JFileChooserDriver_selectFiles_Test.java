@@ -11,32 +11,34 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.edt.GuiActionRunner.execute;
-import static org.fest.swing.test.core.CommonAssertions.*;
+import static org.fest.swing.test.core.CommonAssertions.assertThatErrorCauseIsNotShowingComponent;
+import static org.fest.swing.test.core.CommonAssertions.failWhenExpectingException;
 import static org.fest.util.Arrays.array;
-import static org.fest.util.Files.*;
+import static org.fest.util.Files.newTemporaryFile;
+import static org.fest.util.Files.newTemporaryFolder;
 
 import java.io.File;
 
 import javax.swing.JFileChooser;
 
 import org.fest.swing.annotation.RunsInEDT;
-import org.fest.swing.edt.*;
+import org.fest.swing.edt.GuiQuery;
+import org.fest.swing.edt.GuiTask;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JFileChooserDriver#selectFiles(javax.swing.JFileChooser, java.io.File[])}</code>.
+ * Tests for {@link JFileChooserDriver#selectFiles(javax.swing.JFileChooser, java.io.File[])}.
  *
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
 public class JFileChooserDriver_selectFiles_Test extends JFileChooserDriver_TestCase {
-
   @Test
   public void should_throw_error_if_JFileChooser_is_disabled() {
     try {
@@ -56,7 +58,7 @@ public class JFileChooserDriver_selectFiles_Test extends JFileChooserDriver_Test
       failWhenExpectingException();
     } catch (IllegalStateException e) {
       assertThat(e.getMessage()).contains("Expecting file chooser")
-                                .contains("to handle multiple selection");
+      .contains("to handle multiple selection");
     }
   }
 

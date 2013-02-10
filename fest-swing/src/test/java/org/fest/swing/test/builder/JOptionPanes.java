@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.test.builder;
 
@@ -21,12 +21,11 @@ import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.*;
 
 /**
- * Understands creation of <code>{@link JOptionPane}</code>s.
+ * Understands creation of {@code JOptionPane}s.
  *
  * @author Alex Ruiz
  */
 public final class JOptionPanes {
-
   private JOptionPanes() {}
 
   public static JOptionPaneFactory optionPane() {

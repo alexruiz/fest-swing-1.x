@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2007-2010 the original author or authors.
+ * Copyright @2007-2013 the original author or authors.
  */
 package org.fest.swing.hierarchy;
 
@@ -24,13 +24,12 @@ import org.fest.swing.monitor.WindowMonitor;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link ExistingHierarchy#roots()}</code>.
+ * Tests for {@link ExistingHierarchy#roots()}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 public class ExistingHierarchy_roots_Test extends ExistingHierarchy_TestCase {
-
   @Test
   public void should_return_all_root_Windows() {
     Collection<Window> rootWindows = WindowMonitor.instance().rootWindows();

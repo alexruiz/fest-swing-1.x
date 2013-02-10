@@ -11,44 +11,53 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2007-2010 the original author or authors.
+ * Copyright @2007-2013 the original author or authors.
  */
 package org.fest.swing.monitor;
 
-import static java.awt.AWTEvent.*;
-import static java.awt.event.WindowEvent.*;
-import static org.easymock.EasyMock.expect;
+import static java.awt.AWTEvent.COMPONENT_EVENT_MASK;
+import static java.awt.AWTEvent.WINDOW_EVENT_MASK;
+import static java.awt.event.WindowEvent.WINDOW_CLOSED;
+import static java.awt.event.WindowEvent.WINDOW_CLOSING;
+import static java.awt.event.WindowEvent.WINDOW_FIRST;
+import static java.awt.event.WindowEvent.WINDOW_LAST;
+import static java.awt.event.WindowEvent.WINDOW_OPENED;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.monitor.TestContexts.newMockContext;
 import static org.fest.swing.monitor.TestWindows.newWindowsMock;
 import static org.fest.swing.test.awt.Toolkits.newToolkitStub;
 import static org.fest.swing.test.builder.JTextFields.textField;
+import static org.fest.util.Lists.newArrayList;
 
 import java.applet.Applet;
-import java.awt.*;
+import java.awt.Component;
+import java.awt.EventQueue;
+import java.awt.FileDialog;
+import java.awt.Window;
 import java.awt.event.ComponentEvent;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
-import org.fest.mocks.EasyMockTemplate;
 import org.fest.swing.listener.WeakEventListener;
 import org.fest.swing.test.awt.ToolkitStub;
 import org.fest.swing.test.core.EDTSafeTestCase;
 import org.fest.swing.test.swing.TestWindow;
-import org.junit.*;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.*;
+import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
 /**
- * Tests for <code>{@link ContextMonitor}</code>.
+ * Tests for {@link ContextMonitor}.
  * TODO Split
  *
  * @author Alex Ruiz
  */
 @RunWith(Parameterized.class)
 public class ContextMonitorTest extends EDTSafeTestCase {
-
   private static final long EVENT_MASK = WINDOW_EVENT_MASK | COMPONENT_EVENT_MASK;
 
   private ContextMonitor monitor;
@@ -61,9 +70,11 @@ public class ContextMonitorTest extends EDTSafeTestCase {
 
   @Parameters
   public static Collection<Object[]> eventsBetweenWindowFirstAndWindowLast() {
-    List<Object[]> ids = new ArrayList<Object[]>();
+    List<Object[]> ids = newArrayList();
     for (int id = WINDOW_FIRST; id <= WINDOW_LAST; id++) {
-      if (id == WINDOW_OPENED || id == WINDOW_CLOSED || id == WINDOW_CLOSING) continue;
+      if (id == WINDOW_OPENED || id == WINDOW_CLOSED || id == WINDOW_CLOSING) {
+        continue;
+      }
       ids.add(new Object[] { id });
     }
     return ids;

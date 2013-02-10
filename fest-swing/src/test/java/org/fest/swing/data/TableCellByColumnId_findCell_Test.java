@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.data;
 
@@ -29,14 +29,13 @@ import org.junit.runners.*;
 import org.junit.runners.Parameterized.Parameters;
 
 /**
- * Tests for <code>{@link TableCellByColumnId#findCell(javax.swing.JTable, JTableCellReader)}</code>.
+ * Tests for {@link TableCellByColumnId#findCell(javax.swing.JTable, JTableCellReader)}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 @RunWith(Parameterized.class)
 public class TableCellByColumnId_findCell_Test extends TableCellFinder_TestCase {
-
   private final String columnId;
 
   @Parameters

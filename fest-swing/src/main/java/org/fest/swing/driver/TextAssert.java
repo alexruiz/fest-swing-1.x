@@ -1,67 +1,77 @@
 /*
  * Created on Jun 20, 2009
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ * 
  * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
- *
- * Copyright @2009-2010 the original author or authors.
+ * 
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+ * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations under the License.
+ * 
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
-import static org.fest.swing.util.Strings.*;
-import static org.fest.util.Strings.*;
+import static org.fest.swing.util.Strings.areEqualOrMatch;
+import static org.fest.swing.util.Strings.match;
+import static org.fest.util.Strings.quote;
 
 import java.util.regex.Pattern;
 
-import org.fest.assertions.*;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
+import org.fest.assertions.Assert;
+import org.fest.assertions.AssertExtension;
+import org.fest.assertions.Description;
 
 /**
- * Understands assertion methods for text.
- *
+ * Assertion methods related to text.
+ * 
  * @author Alex Ruiz
  */
 class TextAssert extends Assert implements AssertExtension {
-
   private final String actual;
 
-  static TextAssert assertThat(String s) {
+  static @Nonnull TextAssert assertThat(@Nullable String s) {
     return new TextAssert(s);
   }
 
-  static TextAssert verifyThat(String s) {
+  static @Nonnull TextAssert verifyThat(@Nullable String s) {
     return new TextAssert(s);
   }
 
-  TextAssert(String actual) {
+  TextAssert(@Nullable String actual) {
     this.actual = actual;
   }
 
-  TextAssert as(String description) {
+  @Nonnull TextAssert as(@Nullable String description) {
     description(description);
     return this;
   }
 
-  TextAssert as(Description description) {
+  @Nonnull TextAssert as(@Nullable Description description) {
     description(description);
     return this;
   }
 
-  TextAssert isEqualOrMatches(String s) {
-    if (areEqualOrMatch(s, actual)) return this;
-    throw failure(concat(
-        "actual value:<", quote(actual), "> is not equal to or does not match pattern:<", quote(s), ">"));
+  @Nonnull TextAssert isEqualOrMatches(@Nullable String s) {
+    if (areEqualOrMatch(s, actual)) {
+      return this;
+    }
+    String format = "actual value:<%s> is not equal to or does not match pattern:<%s>";
+    String msg = String.format(format, quote(actual), quote(s));
+    throw failure(msg);
   }
 
-  TextAssert matches(Pattern pattern) {
-    if (match(pattern, actual)) return this;
-    throw failure(concat(
-        "actual value:<", quote(actual), "> does not match pattern:<", quote(pattern.pattern()), ">"));
+  @Nonnull TextAssert matches(@Nonnull Pattern pattern) {
+    if (match(pattern, actual)) {
+      return this;
+    }
+    String format = "actual value:<%s> does not match pattern:<%s>";
+    String msg = String.format(format, quote(actual), quote(pattern.pattern()));
+    throw failure(msg);
   }
 }

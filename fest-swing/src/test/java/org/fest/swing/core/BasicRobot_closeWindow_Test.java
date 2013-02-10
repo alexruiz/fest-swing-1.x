@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.core;
 
@@ -27,13 +27,12 @@ import org.fest.swing.timing.Condition;
 import org.junit.*;
 
 /**
- * Tests for <code>{@link BasicRobot#close(java.awt.Window)}</code>
+ * Tests for {@link BasicRobot#close(java.awt.Window)}
  *
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
 public class BasicRobot_closeWindow_Test extends EDTSafeTestCase {
-
   private BasicRobot robot;
   private TestWindow w;
 
@@ -65,5 +64,4 @@ public class BasicRobot_closeWindow_Test extends EDTSafeTestCase {
     robot.close(w);
     assertThat(isShowing(w)).isFalse();
   }
-
 }

@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -27,12 +27,11 @@ import org.fest.swing.test.swing.TestWindow;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JTextComponentTextQuery#textOf(javax.swing.text.JTextComponent)}</code>.
+ * Tests for {@link JTextComponentTextQuery#textOf(javax.swing.text.JTextComponent)}.
  *
  * @author Alex Ruiz
  */
 public class JTextComponentTextQuery_textOf_Test extends RobotBasedTestCase {
-
   private static final String TEXT = "Hello World";
 
   private MyTextField textField;

@@ -10,7 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.fixture;
 
@@ -37,7 +37,6 @@ import org.junit.Test;
  * @author Alex Ruiz
  */
 public class Bug195_findDialogMultipleTimes_Test extends RobotBasedTestCase {
-
   @Test
   public void should_find_dialog_multiple_times() {
     JDialog dialog = TestDialog.createNew("title 1");

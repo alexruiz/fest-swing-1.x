@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -25,13 +25,12 @@ import org.fest.swing.test.recorder.ClickRecorder;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link ComponentDriver#click(java.awt.Component, org.fest.swing.core.MouseClickInfo)}</code>.
+ * Tests for {@link ComponentDriver#click(java.awt.Component, org.fest.swing.core.MouseClickInfo)}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 public class ComponentDriver_clickComponentWithMouseClickInfo_Test extends ComponentDriver_TestCase {
-
   @Test(expected = NullPointerException.class)
   public void should_throw_error_if_MouseClickInfo_is_null() {
     driver.click(window.button, (MouseClickInfo)null);
@@ -72,5 +71,4 @@ public class ComponentDriver_clickComponentWithMouseClickInfo_Test extends Compo
     }
     assertThat(clickRecorder).wasNotClicked();
   }
-
 }

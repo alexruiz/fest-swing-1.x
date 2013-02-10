@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2007-2010 the original author or authors.
+ * Copyright @2007-2013 the original author or authors.
  */
 package org.fest.swing.fixture;
 
@@ -30,16 +30,16 @@ import org.fest.swing.timing.Timeout;
 import org.fest.swing.util.Range;
 
 /**
- * Understands functional testing of <code>{@link JList}</code>s:
+ * Understands functional testing of {@code JList}s:
  * <ul>
  * <li>user input simulation</li>
  * <li>state verification</li>
  * <li>property value query</li>
  * </ul>
  * <p>
- * The conversion between the values given in tests and the values being displayed by a <code>{@link JList}</code>
- * renderer is performed by a <code>{@link JListCellReader}</code>. This fixture uses a
- * <code>{@link BasicJListCellReader}</code> by default.
+ * The conversion between the values given in tests and the values being displayed by a {@code JList}
+ * renderer is performed by a {@link JListCellReader}. This fixture uses a
+ * {@link BasicJListCellReader} by default.
  * </p>
  *
  * @author Alex Ruiz
@@ -48,16 +48,15 @@ import org.fest.swing.util.Range;
  */
 public class JListFixture extends ComponentFixture<JList> implements CommonComponentFixture,
   ItemGroupFixture, JComponentFixture, JPopupMenuInvokerFixture {
-
   private JListDriver driver;
 
   /**
-   * Creates a new <code>{@link JListFixture}</code>.
-   * @param robot performs simulation of user events on a <code>JList</code>.
-   * @param listName the name of the <code>JList</code> to find using the given <code>Robot</code>.
-   * @throws NullPointerException if <code>robot</code> is {@code null}.
-   * @throws ComponentLookupException if a matching <code>JList</code> could not be found.
-   * @throws ComponentLookupException if more than one matching <code>JList</code> is found.
+   * Creates a new {@link JListFixture}.
+   * @param robot performs simulation of user events on a {@code JList}.
+   * @param listName the name of the {@code JList} to find using the given {@code Robot}.
+   * @throws NullPointerException if {@code robot} is {@code null}.
+   * @throws ComponentLookupException if a matching {@code JList} could not be found.
+   * @throws ComponentLookupException if more than one matching {@code JList} is found.
    */
   public JListFixture(Robot robot, String listName) {
     super(robot, listName, JList.class);
@@ -65,11 +64,11 @@ public class JListFixture extends ComponentFixture<JList> implements CommonCompo
   }
 
   /**
-   * Creates a new <code>{@link JListFixture}</code>.
-   * @param robot performs simulation of user events on the given <code>JList</code>.
-   * @param target the <code>JList</code> to be managed by this fixture.
-   * @throws NullPointerException if <code>robot</code> is {@code null}.
-   * @throws NullPointerException if <code>target</code> is {@code null}.
+   * Creates a new {@link JListFixture}.
+   * @param robot performs simulation of user events on the given {@code JList}.
+   * @param target the {@code JList} to be managed by this fixture.
+   * @throws NullPointerException if {@code robot} is {@code null}.
+   * @throws NullPointerException if {@code target} is {@code null}.
    */
   public JListFixture(Robot robot, JList target) {
     super(robot, target);
@@ -81,8 +80,8 @@ public class JListFixture extends ComponentFixture<JList> implements CommonCompo
   }
 
   /**
-   * Sets the <code>{@link JListDriver}</code> to be used by this fixture.
-   * @param newDriver the new <code>JListDriver</code>.
+   * Sets the {@link JListDriver} to be used by this fixture.
+   * @param newDriver the new {@code JListDriver}.
    * @throws NullPointerException if the given driver is {@code null}.
    */
   protected final void driver(JListDriver newDriver) {
@@ -92,11 +91,11 @@ public class JListFixture extends ComponentFixture<JList> implements CommonCompo
 
   /**
    * Returns the {@code String} representation of the value of an item in this fixture's
-   * <code>{@link JList}</code>, using this fixture's <code>{@link JListCellReader}</code>.
+   * {@code JList}, using this fixture's {@link JListCellReader}.
    * @param index the index of the item to return.
-   * @return the {@code String} representation of the value of an item in this fixture's <code>JList</code>.
+   * @return the {@code String} representation of the value of an item in this fixture's {@code JList}.
    * @throws IndexOutOfBoundsException if the given index is negative or greater than the index of the last item in
-   * the <code>JList</code>.
+   * the {@code JList}.
    * @see #cellReader(JListCellReader)
    */
   public String valueAt(int index) {
@@ -104,9 +103,9 @@ public class JListFixture extends ComponentFixture<JList> implements CommonCompo
   }
 
   /**
-   * Returns the {@code String} representation of the elements in this fixture's <code>{@link JList}</code>,
-   * using this fixture's <code>{@link JListCellReader}</code>.
-   * @return the {@code String} representation of the elements in this fixture's <code>JList</code>.
+   * Returns the {@code String} representation of the elements in this fixture's {@code JList},
+   * using this fixture's {@link JListCellReader}.
+   * @return the {@code String} representation of the elements in this fixture's {@code JList}.
    * @see #cellReader(JListCellReader)
    */
   public String[] contents() {
@@ -115,8 +114,8 @@ public class JListFixture extends ComponentFixture<JList> implements CommonCompo
 
   /**
    * Returns the {@code String} representation of the selected elements in this fixture's
-   * <code>{@link JList}</code>, using this fixture's <code>{@link JListCellReader}</code>.
-   * @return the {@code String} representation of the selected elements in this fixture's <code>JList</code>.
+   * {@code JList}, using this fixture's {@link JListCellReader}.
+   * @return the {@code String} representation of the selected elements in this fixture's {@code JList}.
    * @see #cellReader(JListCellReader)
    */
   public String[] selection() {
@@ -156,8 +155,8 @@ public class JListFixture extends ComponentFixture<JList> implements CommonCompo
   }
 
   /**
-   * Clears the selection in this fixture's <code>{@link JList}</code>. Since this method does not simulate user input,
-   * it does not verifies that this fixture's <code>JList</code> is enabled and showing.
+   * Clears the selection in this fixture's {@code JList}. Since this method does not simulate user input,
+   * it does not verifies that this fixture's {@code JList} is enabled and showing.
    * @return this fixture.
    * @since 1.2
    */
@@ -167,14 +166,14 @@ public class JListFixture extends ComponentFixture<JList> implements CommonCompo
   }
 
   /**
-   * Simulates a user selecting the items (in the specified range) in this fixture's <code>{@link JList}</code>.
+   * Simulates a user selecting the items (in the specified range) in this fixture's {@code JList}.
    * @param from the starting point of the selection.
    * @param to the last item to select (inclusive.)
    * @return this fixture.
-   * @throws IllegalStateException if this fixture's <code>JList</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JList</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JList} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JList} is not showing on the screen.
    * @throws IndexOutOfBoundsException if the any index is negative or greater than the index of the last item in the
-   * <code>JList</code>.
+   * {@code JList}.
    */
   public JListFixture selectItems(Range.From from, Range.To to) {
     driver.selectItems(target, from, to);
@@ -182,15 +181,15 @@ public class JListFixture extends ComponentFixture<JList> implements CommonCompo
   }
 
   /**
-   * Simulates a user selecting the specified items in this fixture's <code>{@link JList}</code>.
+   * Simulates a user selecting the specified items in this fixture's {@code JList}.
    * @param indices the indices of the items to select.
    * @return this fixture.
    * @throws NullPointerException if the given array is {@code null}.
    * @throws IllegalArgumentException if the given array is empty.
    * @throws IndexOutOfBoundsException if any of the indices is negative or greater than the index of the last item in
-   * the <code>JList</code>.
-   * @throws IllegalStateException if this fixture's <code>JList</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JList</code> is not showing on the screen.
+   * the {@code JList}.
+   * @throws IllegalStateException if this fixture's {@code JList} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JList} is not showing on the screen.
    */
   public JListFixture selectItems(int...indices) {
     driver.selectItems(target, indices);
@@ -198,14 +197,14 @@ public class JListFixture extends ComponentFixture<JList> implements CommonCompo
   }
 
   /**
-   * Simulates a user selecting the specified items in this fixture's <code>{@link JList}</code>. The items to select
+   * Simulates a user selecting the specified items in this fixture's {@code JList}. The items to select
    * should match the given values.
    * @param items the text of the items to select. Each {@code String} can be a regular expression.
    * @return this fixture.
    * @throws NullPointerException if the given array is {@code null}.
    * @throws IllegalArgumentException if the given array is empty.
-   * @throws IllegalStateException if this fixture's <code>JList</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JList</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JList} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JList} is not showing on the screen.
    * @throws LocationUnavailableException if an element matching the any of the given values cannot be found.
    * @see #cellReader(JListCellReader)
    */
@@ -215,15 +214,15 @@ public class JListFixture extends ComponentFixture<JList> implements CommonCompo
   }
 
   /**
-   * Simulates a user selecting the specified items in this fixture's <code>{@link JList}</code>. The items to select
+   * Simulates a user selecting the specified items in this fixture's {@code JList}. The items to select
    * should select the given regular expression patterns.
    * @param patterns the regular expression patterns to match.
    * @return this fixture.
    * @throws NullPointerException if the given array is {@code null}.
    * @throws NullPointerException if any of the regular expression patterns is {@code null}.
    * @throws IllegalArgumentException if the given array is empty.
-   * @throws IllegalStateException if this fixture's <code>JList</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JList</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JList} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JList} is not showing on the screen.
    * @throws LocationUnavailableException if an element matching the any of the given regular expression patterns cannot
    * be found.
    * @see #cellReader(JListCellReader)
@@ -235,13 +234,13 @@ public class JListFixture extends ComponentFixture<JList> implements CommonCompo
   }
 
   /**
-   * Simulates a user selecting an item in this fixture's <code>{@link JList}</code>.
+   * Simulates a user selecting an item in this fixture's {@code JList}.
    * @param index the index of the item to select.
    * @return this fixture.
-   * @throws IllegalStateException if this fixture's <code>JList</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JList</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JList} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JList} is not showing on the screen.
    * @throws IndexOutOfBoundsException if the given index is negative or greater than the index of the last item in the
-   * <code>JList</code>.
+   * {@code JList}.
    * @see #item(int)
    * @see JListItemFixture#select()
    */
@@ -251,11 +250,11 @@ public class JListFixture extends ComponentFixture<JList> implements CommonCompo
   }
 
   /**
-   * Simulates a user selecting an item in this fixture's <code>{@link JList}</code>.
+   * Simulates a user selecting an item in this fixture's {@code JList}.
    * @param text the text of the item to select. It can be a regular expression.
    * @return this fixture.
-   * @throws IllegalStateException if this fixture's <code>JList</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JList</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JList} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JList} is not showing on the screen.
    * @throws LocationUnavailableException if an element matching the given text cannot be found.
    * @see #item(String)
    * @see JListItemFixture#select()
@@ -267,12 +266,12 @@ public class JListFixture extends ComponentFixture<JList> implements CommonCompo
   }
 
   /**
-   * Simulates a user selecting an item in this fixture's <code>{@link JList}</code>. The value of the item to select
+   * Simulates a user selecting an item in this fixture's {@code JList}. The value of the item to select
    * must match the given regular expression pattern.
    * @param pattern the regular expression pattern to match.
    * @return this fixture.
-   * @throws IllegalStateException if this fixture's <code>JList</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JList</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JList} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JList} is not showing on the screen.
    * @throws LocationUnavailableException if an element matching the given text cannot be found.
    * @throws NullPointerException if the given regular expression pattern is {@code null}.
    * @see #item(Pattern)
@@ -286,13 +285,13 @@ public class JListFixture extends ComponentFixture<JList> implements CommonCompo
   }
 
   /**
-   * Simulates a user clicking an item in this fixture's <code>{@link JList}</code>.
+   * Simulates a user clicking an item in this fixture's {@code JList}.
    * @param index the index of the item to clicking.
    * @return this fixture.
-   * @throws IllegalStateException if this fixture's <code>JList</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JList</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JList} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JList} is not showing on the screen.
    * @throws IndexOutOfBoundsException if the given index is negative or greater than the index of the last item in the
-   * <code>JList</code>.
+   * {@code JList}.
    * @see #item(int)
    * @see JListItemFixture#click()
    * @since 1.2
@@ -303,11 +302,11 @@ public class JListFixture extends ComponentFixture<JList> implements CommonCompo
   }
 
   /**
-   * Simulates a user clicking an item in this fixture's <code>{@link JList}</code>.
+   * Simulates a user clicking an item in this fixture's {@code JList}.
    * @param text the text of the item to select. It can be a regular expression.
    * @return this fixture.
-   * @throws IllegalStateException if this fixture's <code>JList</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JList</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JList} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JList} is not showing on the screen.
    * @throws LocationUnavailableException if an element matching the given text cannot be found.
    * @see #item(String)
    * @see JListItemFixture#select()
@@ -320,12 +319,12 @@ public class JListFixture extends ComponentFixture<JList> implements CommonCompo
   }
 
   /**
-   * Simulates a user clicking an item in this fixture's <code>{@link JList}</code>. The value of the item to select
+   * Simulates a user clicking an item in this fixture's {@code JList}. The value of the item to select
    * must match the given regular expression pattern.
    * @param pattern the regular expression pattern to match.
    * @return this fixture.
-   * @throws IllegalStateException if this fixture's <code>JList</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JList</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JList} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JList} is not showing on the screen.
    * @throws LocationUnavailableException if an element matching the given text cannot be found.
    * @throws NullPointerException if the given regular expression pattern is {@code null}.
    * @see #item(Pattern)
@@ -339,15 +338,15 @@ public class JListFixture extends ComponentFixture<JList> implements CommonCompo
   }
 
   /**
-   * Simulates a user double-clicking an item in this fixture's <code>{@link JList}</code>.
+   * Simulates a user double-clicking an item in this fixture's {@code JList}.
    * @param index the index of the item to double-click.
    * @return this fixture.
-   * @throws IllegalStateException if this fixture's <code>JList</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JList</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JList} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JList} is not showing on the screen.
    * @throws IndexOutOfBoundsException if the given index is negative or greater than the index of the last item in
-   * the <code>JList</code>.
-   * @deprecated to be removed in version 2.0. Use <code>{@link #item(int)}</code> and
-   * <code>{@link JListItemFixture#doubleClick()}</code> instead.
+   * the {@code JList}.
+   * @deprecated to be removed in version 2.0. Use {@link #item(int)} and
+   * {@link JListItemFixture#doubleClick()} instead.
    */
   @Deprecated
   public JListFixture doubleClickItem(int index) {
@@ -356,14 +355,14 @@ public class JListFixture extends ComponentFixture<JList> implements CommonCompo
   }
 
   /**
-   * Simulates a user double-clicking an item in this fixture's <code>{@link JList}</code>.
+   * Simulates a user double-clicking an item in this fixture's {@code JList}.
    * @param text the text of the item to double-click.
    * @return this fixture.
-   * @throws IllegalStateException if this fixture's <code>JList</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JList</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JList} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JList} is not showing on the screen.
    * @throws LocationUnavailableException if an element matching the given {@code String} cannot be found.
-   * @deprecated to be removed in version 2.0. Use <code>{@link #item(String)}</code> and
-   * <code>{@link JListItemFixture#doubleClick()}</code> instead.
+   * @deprecated to be removed in version 2.0. Use {@link #item(String)} and
+   * {@link JListItemFixture#doubleClick()} instead.
    */
   @Deprecated
   public JListFixture doubleClickItem(String text) {
@@ -376,10 +375,10 @@ public class JListFixture extends ComponentFixture<JList> implements CommonCompo
   }
 
   /**
-   * Simulates a user clicking this fixture's <code>{@link JList}</code>.
+   * Simulates a user clicking this fixture's {@code JList}.
    * @return this fixture.
-   * @throws IllegalStateException if this fixture's <code>JList</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JList</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JList} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JList} is not showing on the screen.
    */
   public JListFixture click() {
     driver.click(target);
@@ -387,12 +386,12 @@ public class JListFixture extends ComponentFixture<JList> implements CommonCompo
   }
 
   /**
-   * Simulates a user clicking this fixture's <code>{@link JList}</code>.
+   * Simulates a user clicking this fixture's {@code JList}.
    * @param button the button to click.
    * @return this fixture.
-   * @throws NullPointerException if the given <code>MouseButton</code> is {@code null}.
-   * @throws IllegalStateException if this fixture's <code>JList</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JList</code> is not showing on the screen.
+   * @throws NullPointerException if the given {@code MouseButton} is {@code null}.
+   * @throws IllegalStateException if this fixture's {@code JList} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JList} is not showing on the screen.
    */
   public JListFixture click(MouseButton button) {
     driver.click(target, button);
@@ -400,12 +399,12 @@ public class JListFixture extends ComponentFixture<JList> implements CommonCompo
   }
 
   /**
-   * Simulates a user clicking this fixture's <code>{@link JList}</code>.
+   * Simulates a user clicking this fixture's {@code JList}.
    * @param mouseClickInfo specifies the button to click and the times the button should be clicked.
    * @return this fixture.
-   * @throws NullPointerException if the given <code>MouseClickInfo</code> is {@code null}.
-   * @throws IllegalStateException if this fixture's <code>JList</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JList</code> is not showing on the screen.
+   * @throws NullPointerException if the given {@code MouseClickInfo} is {@code null}.
+   * @throws IllegalStateException if this fixture's {@code JList} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JList} is not showing on the screen.
    */
   public JListFixture click(MouseClickInfo mouseClickInfo) {
     driver.click(target, mouseClickInfo);
@@ -413,10 +412,10 @@ public class JListFixture extends ComponentFixture<JList> implements CommonCompo
   }
 
   /**
-   * Simulates a user double-clicking this fixture's <code>{@link JList}</code>.
+   * Simulates a user double-clicking this fixture's {@code JList}.
    * @return this fixture.
-   * @throws IllegalStateException if this fixture's <code>JList</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JList</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JList} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JList} is not showing on the screen.
    */
   public JListFixture doubleClick() {
     driver.doubleClick(target);
@@ -424,10 +423,10 @@ public class JListFixture extends ComponentFixture<JList> implements CommonCompo
   }
 
   /**
-   * Simulates a user right-clicking this fixture's <code>{@link JList}</code>.
+   * Simulates a user right-clicking this fixture's {@code JList}.
    * @return this fixture.
-   * @throws IllegalStateException if this fixture's <code>JList</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JList</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JList} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JList} is not showing on the screen.
    */
   public JListFixture rightClick() {
     driver.rightClick(target);
@@ -435,10 +434,10 @@ public class JListFixture extends ComponentFixture<JList> implements CommonCompo
   }
 
   /**
-   * Gives input focus to this fixture's <code>{@link JList}</code>.
+   * Gives input focus to this fixture's {@code JList}.
    * @return this fixture.
-   * @throws IllegalStateException if this fixture's <code>JList</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JList</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JList} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JList} is not showing on the screen.
    */
   public JListFixture focus() {
     driver.focus(target);
@@ -446,14 +445,14 @@ public class JListFixture extends ComponentFixture<JList> implements CommonCompo
   }
 
   /**
-   * Simulates a user pressing given key with the given modifiers on this fixture's <code>{@link JList}</code>.
-   * Modifiers is a mask from the available <code>{@link java.awt.event.InputEvent}</code> masks.
+   * Simulates a user pressing given key with the given modifiers on this fixture's {@code JList}.
+   * Modifiers is a mask from the available {@link java.awt.event.InputEvent} masks.
    * @param keyPressInfo specifies the key and modifiers to press.
    * @return this fixture.
-   * @throws NullPointerException if the given <code>KeyPressInfo</code> is {@code null}.
+   * @throws NullPointerException if the given {@code KeyPressInfo} is {@code null}.
    * @throws IllegalArgumentException if the given code is not a valid key code.
-   * @throws IllegalStateException if this fixture's <code>JList</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JList</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JList} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JList} is not showing on the screen.
    * @see KeyPressInfo
    */
   public JListFixture pressAndReleaseKey(KeyPressInfo keyPressInfo) {
@@ -462,12 +461,12 @@ public class JListFixture extends ComponentFixture<JList> implements CommonCompo
   }
 
   /**
-   * Simulates a user pressing and releasing the given keys on this fixture's <code>{@link JList}</code>.
+   * Simulates a user pressing and releasing the given keys on this fixture's {@code JList}.
    * @param keyCodes one or more codes of the keys to press.
    * @return this fixture.
    * @throws NullPointerException if the given array of codes is {@code null}.
-   * @throws IllegalStateException if this fixture's <code>JList</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JList</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JList} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JList} is not showing on the screen.
    * @see java.awt.event.KeyEvent
    */
   public JListFixture pressAndReleaseKeys(int... keyCodes) {
@@ -476,11 +475,11 @@ public class JListFixture extends ComponentFixture<JList> implements CommonCompo
   }
 
   /**
-   * Simulates a user pressing the given key on this fixture's <code>{@link JList}</code>.
+   * Simulates a user pressing the given key on this fixture's {@code JList}.
    * @param keyCode the code of the key to press.
    * @return this fixture.
-   * @throws IllegalStateException if this fixture's <code>JList</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JList</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JList} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JList} is not showing on the screen.
    * @see java.awt.event.KeyEvent
    */
   public JListFixture pressKey(int keyCode) {
@@ -489,11 +488,11 @@ public class JListFixture extends ComponentFixture<JList> implements CommonCompo
   }
 
   /**
-   * Simulates a user releasing the given key on this fixture's <code>{@link JList}</code>.
+   * Simulates a user releasing the given key on this fixture's {@code JList}.
    * @param keyCode the code of the key to release.
    * @return this fixture.
-   * @throws IllegalStateException if this fixture's <code>JList</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JList</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JList} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JList} is not showing on the screen.
    * @see java.awt.event.KeyEvent
    */
   public JListFixture releaseKey(int keyCode) {
@@ -502,11 +501,11 @@ public class JListFixture extends ComponentFixture<JList> implements CommonCompo
   }
 
   /**
-   * Simulates a drag operation at the location of the first item in this fixture's <code>{@link JList}</code> matching
+   * Simulates a drag operation at the location of the first item in this fixture's {@code JList} matching
    * the given value.
    * @param text the text of the item to drag. It can be a regular expression.
-   * @throws IllegalStateException if this fixture's <code>JList</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JList</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JList} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JList} is not showing on the screen.
    * @throws LocationUnavailableException if an element matching the given text cannot be found.
    * @return this fixture.
    * @see #cellReader(JListCellReader)
@@ -520,8 +519,8 @@ public class JListFixture extends ComponentFixture<JList> implements CommonCompo
    * Ends a drag operation at the location of the first item matching the given value.
    * @param text the text of the item to drop. It can be a regular expression.
    * @return this fixture.
-   * @throws IllegalStateException if this fixture's <code>JList</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JList</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JList} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JList} is not showing on the screen.
    * @throws LocationUnavailableException if an element matching the given text cannot be found.
    * @throws ActionFailedException if there is no drag action in effect.
    */
@@ -531,12 +530,12 @@ public class JListFixture extends ComponentFixture<JList> implements CommonCompo
   }
 
   /**
-   * Simulates a drag operation at the location of the first item in this fixture's <code>{@link JList}</code> matching
+   * Simulates a drag operation at the location of the first item in this fixture's {@code JList} matching
    * the given regular expression pattern.
    * @param pattern the regular expression pattern to match.
    * @return this fixture.
-   * @throws IllegalStateException if this fixture's <code>JList</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JList</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JList} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JList} is not showing on the screen.
    * @throws NullPointerException if the given regular expression pattern in {@code null}.
    * @throws LocationUnavailableException if an element matching the given regular expression pattern cannot be found.
    * @see #cellReader(JListCellReader)
@@ -551,8 +550,8 @@ public class JListFixture extends ComponentFixture<JList> implements CommonCompo
    * Ends a drag operation at the location of the first item matching the given regular expression pattern.
    * @param pattern the regular expression pattern to match.
    * @return this fixture.
-   * @throws IllegalStateException if this fixture's <code>JList</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JList</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JList} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JList} is not showing on the screen.
    * @throws NullPointerException if the given regular expression pattern in {@code null}.
    * @throws LocationUnavailableException if an element matching the given text cannot be found.
    * @throws ActionFailedException if there is no drag action in effect.
@@ -565,10 +564,10 @@ public class JListFixture extends ComponentFixture<JList> implements CommonCompo
   }
 
   /**
-   * Simulates a user dropping an item at the center of this fixture's <code>{@link JList}</code>.
+   * Simulates a user dropping an item at the center of this fixture's {@code JList}.
    * @return this fixture.
-   * @throws IllegalStateException if this fixture's <code>JList</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JList</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JList} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JList} is not showing on the screen.
    * @throws ActionFailedException if there is no drag action in effect.
    */
   public JListFixture drop() {
@@ -577,13 +576,13 @@ public class JListFixture extends ComponentFixture<JList> implements CommonCompo
   }
 
   /**
-   * Simulates a user dragging an item from this fixture's <code>{@link JList}</code>.
+   * Simulates a user dragging an item from this fixture's {@code JList}.
    * @param index the index of the item to drag.
    * @return this fixture.
-   * @throws IllegalStateException if this fixture's <code>JList</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JList</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JList} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JList} is not showing on the screen.
    * @throws IndexOutOfBoundsException if the given index is negative or greater than the index of the last item in the
-   * <code>JList</code>.
+   * {@code JList}.
    */
   public JListFixture drag(int index) {
     driver.drag(target, index);
@@ -591,13 +590,13 @@ public class JListFixture extends ComponentFixture<JList> implements CommonCompo
   }
 
   /**
-   * Simulates a user dropping an item to this fixture's <code>{@link JList}</code>.
+   * Simulates a user dropping an item to this fixture's {@code JList}.
    * @param index the index of the item to drop.
    * @return this fixture.
-   * @throws IllegalStateException if this fixture's <code>JList</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JList</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JList} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JList} is not showing on the screen.
    * @throws IndexOutOfBoundsException if the given index is negative or greater than the index of the last item in the
-   * <code>JList</code>.
+   * {@code JList}.
    * @throws ActionFailedException if there is no drag action in effect.
    */
   public JListFixture drop(int index) {
@@ -606,14 +605,14 @@ public class JListFixture extends ComponentFixture<JList> implements CommonCompo
   }
 
   /**
-   * Shows a pop-up menu at the location of the specified item in this fixture's <code>{@link JList}</code>.
+   * Shows a pop-up menu at the location of the specified item in this fixture's {@code JList}.
    * @param index the index of the item.
    * @return a fixture that manages the displayed pop-up menu.
-   * @throws IllegalStateException if this fixture's <code>JList</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JList</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JList} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JList} is not showing on the screen.
    * @throws ComponentLookupException if a pop-up menu cannot be found.
    * @throws IndexOutOfBoundsException if the given index is negative or greater than the index of the last item in the
-   * <code>JList</code>.
+   * {@code JList}.
    */
   public JPopupMenuFixture showPopupMenuAt(int index) {
     return new JPopupMenuFixture(robot, driver.showPopupMenu(target, index));
@@ -621,11 +620,11 @@ public class JListFixture extends ComponentFixture<JList> implements CommonCompo
 
   /**
    * Shows a pop-up menu at the location of the first item matching the given value in this fixture's
-   * <code>{@link JList}</code>.
+   * {@code JList}.
    * @param text the text of the item. It can be a regular expression.
    * @return a fixture that manages the displayed pop-up menu.
-   * @throws IllegalStateException if this fixture's <code>JList</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JList</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JList} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JList} is not showing on the screen.
    * @throws ComponentLookupException if a pop-up menu cannot be found.
    * @throws LocationUnavailableException if an element matching the given value cannot be found.
    */
@@ -635,11 +634,11 @@ public class JListFixture extends ComponentFixture<JList> implements CommonCompo
 
   /**
    * Shows a pop-up menu at the location of the first item matching the given regular expression pattern in this
-   * fixture's <code>{@link JList}</code>.
+   * fixture's {@code JList}.
    * @param pattern the regular expression pattern to match.
    * @return a fixture that manages the displayed pop-up menu.
-   * @throws IllegalStateException if this fixture's <code>JList</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JList</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JList} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JList} is not showing on the screen.
    * @throws NullPointerException if the given regular expression pattern is {@code null}.
    * @throws ComponentLookupException if a pop-up menu cannot be found.
    * @throws LocationUnavailableException if an element matching the given value cannot be found.
@@ -650,9 +649,9 @@ public class JListFixture extends ComponentFixture<JList> implements CommonCompo
   }
 
   /**
-   * Asserts that this fixture's <code>{@link JList}</code> has input focus.
+   * Asserts that this fixture's {@code JList} has input focus.
    * @return this fixture.
-   * @throws AssertionError if this fixture's <code>JList</code> does not have input focus.
+   * @throws AssertionError if this fixture's {@code JList} does not have input focus.
    */
   public JListFixture requireFocused() {
     driver.requireFocused(target);
@@ -660,9 +659,9 @@ public class JListFixture extends ComponentFixture<JList> implements CommonCompo
   }
 
   /**
-   * Asserts that this fixture's <code>{@link JList}</code> is enabled.
+   * Asserts that this fixture's {@code JList} is enabled.
    * @return this fixture.
-   * @throws AssertionError if this fixture's <code>JList</code> is disabled.
+   * @throws AssertionError if this fixture's {@code JList} is disabled.
    */
   public JListFixture requireEnabled() {
     driver.requireEnabled(target);
@@ -670,10 +669,10 @@ public class JListFixture extends ComponentFixture<JList> implements CommonCompo
   }
 
   /**
-   * Asserts that this fixture's <code>{@link JList}</code> is enabled.
+   * Asserts that this fixture's {@code JList} is enabled.
    * @param timeout the time this fixture will wait for the component to be enabled.
    * @return this fixture.
-   * @throws WaitTimedOutError if this fixture's <code>JList</code> is never enabled.
+   * @throws WaitTimedOutError if this fixture's {@code JList} is never enabled.
    */
   public JListFixture requireEnabled(Timeout timeout) {
     driver.requireEnabled(target, timeout);
@@ -681,9 +680,9 @@ public class JListFixture extends ComponentFixture<JList> implements CommonCompo
   }
 
   /**
-   * Asserts that this fixture's <code>{@link JList}</code> is not enabled.
+   * Asserts that this fixture's {@code JList} is not enabled.
    * @return this fixture.
-   * @throws AssertionError if this fixture's <code>JList</code> is enabled.
+   * @throws AssertionError if this fixture's {@code JList} is enabled.
    */
   public JListFixture requireDisabled() {
     driver.requireDisabled(target);
@@ -691,9 +690,9 @@ public class JListFixture extends ComponentFixture<JList> implements CommonCompo
   }
 
   /**
-   * Asserts that this fixture's <code>{@link JList}</code> is visible.
+   * Asserts that this fixture's {@code JList} is visible.
    * @return this fixture.
-   * @throws AssertionError if this fixture's <code>JList</code> is not visible.
+   * @throws AssertionError if this fixture's {@code JList} is not visible.
    */
   public JListFixture requireVisible() {
     driver.requireVisible(target);
@@ -701,9 +700,9 @@ public class JListFixture extends ComponentFixture<JList> implements CommonCompo
   }
 
   /**
-   * Asserts that this fixture's <code>{@link JList}</code> is not visible.
+   * Asserts that this fixture's {@code JList} is not visible.
    * @return this fixture.
-   * @throws AssertionError if this fixture's <code>JList</code> is visible.
+   * @throws AssertionError if this fixture's {@code JList} is visible.
    */
   public JListFixture requireNotVisible() {
     driver.requireNotVisible(target);
@@ -712,7 +711,7 @@ public class JListFixture extends ComponentFixture<JList> implements CommonCompo
 
   /**
    * Verifies that the {@code String} representation of the selected item in this fixture's
-   * <code>{@link JList}</code> matches the given text.
+   * {@code JList} matches the given text.
    * @param text the text to match. It can be a regular expression pattern.
    * @return this fixture.
    * @throws AssertionError if the selected item does not match the given text.
@@ -725,7 +724,7 @@ public class JListFixture extends ComponentFixture<JList> implements CommonCompo
 
   /**
    * Verifies that the {@code String} representation of the selected item in this fixture's
-   * <code>{@link JList}</code> matches the given regular expression pattern.
+   * {@code JList} matches the given regular expression pattern.
    * @param pattern the regular expression pattern to match.
    * @return this fixture.
    * @throws AssertionError if the selected item does not match the given regular expression pattern.
@@ -739,7 +738,7 @@ public class JListFixture extends ComponentFixture<JList> implements CommonCompo
   }
 
   /**
-   * Verifies that the index of the selected item in this fixture's <code>{@link JList}</code> is equal to the given
+   * Verifies that the index of the selected item in this fixture's {@code JList} is equal to the given
    * value.
    * @param index the expected selection index.
    * @return this fixture.
@@ -753,7 +752,7 @@ public class JListFixture extends ComponentFixture<JList> implements CommonCompo
 
   /**
    * Verifies that the {@code String} representations of the selected items in this fixture's
-   * <code>{@link JList}</code> match the given text items.
+   * {@code JList} match the given text items.
    * @param items text items to match. Each {@code String} can be a regular expression.
    * @return this fixture.
    * @throws NullPointerException if the given array is {@code null}.
@@ -768,7 +767,7 @@ public class JListFixture extends ComponentFixture<JList> implements CommonCompo
 
   /**
    * Verifies that the {@code String} representations of the selected items in this fixture's
-   * <code>{@link JList}</code> match the given regular expression patterns.
+   * {@code JList} match the given regular expression patterns.
    * @param patterns the regular expression patterns to match.
    * @return this fixture.
    * @throws NullPointerException if the given array is {@code null}.
@@ -784,12 +783,12 @@ public class JListFixture extends ComponentFixture<JList> implements CommonCompo
   }
 
   /**
-   * Verifies that the given item indices are selected in this fixture's <code>{@link JList}</code>.
+   * Verifies that the given item indices are selected in this fixture's {@code JList}.
    * @param indices the expected indices of the selected items.
    * @return this fixture.
    * @throws NullPointerException if the given array is {@code null}.
    * @throws IllegalArgumentException if the given array is empty.
-   * @throws AssertionError if the selection in this fixture's <code>JList</code> does not match the given one.
+   * @throws AssertionError if the selection in this fixture's {@code JList} does not match the given one.
    * @since 1.2
    */
   public JListFixture requireSelectedItems(int... indices) {
@@ -798,9 +797,9 @@ public class JListFixture extends ComponentFixture<JList> implements CommonCompo
   }
 
   /**
-   * Verifies that this fixture's <code>{@link JList}</code> does not have any selection.
+   * Verifies that this fixture's {@code JList} does not have any selection.
    * @return this fixture.
-   * @throws AssertionError if this fixture's <code>JList</code> has a selection.
+   * @throws AssertionError if this fixture's {@code JList} has a selection.
    */
   public JListFixture requireNoSelection() {
     driver.requireNoSelection(target);
@@ -808,10 +807,10 @@ public class JListFixture extends ComponentFixture<JList> implements CommonCompo
   }
 
   /**
-   * Verifies that this fixture's <code>{@link JList}</code> has the expected number of items
+   * Verifies that this fixture's {@code JList} has the expected number of items
    * @param expected the expected number of items.
    * @return this fixture.
-   * @throws AssertionError if the number of items in this fixture's <code>JList</code> is not equal to the expected
+   * @throws AssertionError if the number of items in this fixture's {@code JList} is not equal to the expected
    * one.
    * @since 1.2
    */
@@ -821,10 +820,10 @@ public class JListFixture extends ComponentFixture<JList> implements CommonCompo
   }
 
   /**
-   * Asserts that the toolTip in this fixture's <code>{@link JList}</code> matches the given value.
+   * Asserts that the toolTip in this fixture's {@code JList} matches the given value.
    * @param expected the given value. It can be a regular expression.
    * @return this fixture.
-   * @throws AssertionError if the toolTip in this fixture's <code>JList</code> does not match the given value.
+   * @throws AssertionError if the toolTip in this fixture's {@code JList} does not match the given value.
    * @since 1.2
    */
   public JListFixture requireToolTip(String expected) {
@@ -833,12 +832,12 @@ public class JListFixture extends ComponentFixture<JList> implements CommonCompo
   }
 
   /**
-   * Asserts that the toolTip in this fixture's <code>{@link JList}</code> matches the given regular expression
+   * Asserts that the toolTip in this fixture's {@code JList} matches the given regular expression
    * pattern.
    * @param pattern the regular expression pattern to match.
    * @return this fixture.
    * @throws NullPointerException if the given regular expression pattern is {@code null}.
-   * @throws AssertionError if the toolTip in this fixture's <code>JList</code> does not match the given regular
+   * @throws AssertionError if the toolTip in this fixture's {@code JList} does not match the given regular
    * expression pattern.
    * @since 1.2
    */
@@ -848,7 +847,7 @@ public class JListFixture extends ComponentFixture<JList> implements CommonCompo
   }
 
   /**
-   * Returns the client property stored in this fixture's <code>{@link JList}</code>, under the given key.
+   * Returns the client property stored in this fixture's {@code JList}, under the given key.
    * @param key the key to use to retrieve the client property.
    * @return the value of the client property stored under the given key, or {@code null} if the property was
    * not found.
@@ -860,10 +859,10 @@ public class JListFixture extends ComponentFixture<JList> implements CommonCompo
   }
 
   /**
-   * Shows a pop-up menu using this fixture's <code>{@link JList}</code> as the invoker of the pop-up menu.
+   * Shows a pop-up menu using this fixture's {@code JList} as the invoker of the pop-up menu.
    * @return a fixture that manages the displayed pop-up menu.
-   * @throws IllegalStateException if this fixture's <code>JList</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JList</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JList} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JList} is not showing on the screen.
    * @throws ComponentLookupException if a pop-up menu cannot be found.
    */
   public JPopupMenuFixture showPopupMenu() {
@@ -871,12 +870,12 @@ public class JListFixture extends ComponentFixture<JList> implements CommonCompo
   }
 
   /**
-   * Shows a pop-up menu at the given point using this fixture's <code>{@link JList}</code> as the invoker of the pop-up
+   * Shows a pop-up menu at the given point using this fixture's {@code JList} as the invoker of the pop-up
    * menu.
    * @param p the given point where to show the pop-up menu.
    * @return a fixture that manages the displayed pop-up menu.
-   * @throws IllegalStateException if this fixture's <code>JList</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JList</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JList} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JList} is not showing on the screen.
    * @throws ComponentLookupException if a pop-up menu cannot be found.
    */
   public JPopupMenuFixture showPopupMenuAt(Point p) {
@@ -884,12 +883,12 @@ public class JListFixture extends ComponentFixture<JList> implements CommonCompo
   }
 
   /**
-   * Updates the implementation of <code>{@link JListCellReader}</code> to use when comparing internal values of
-   * this fixture's <code>{@link JList}</code> and the values expected in a test. The default implementation to use
-   * is <code>{@link BasicJListCellReader}</code>.
-   * @param cellReader the new <code>JListCellValueReader</code> to use.
+   * Updates the implementation of {@link JListCellReader} to use when comparing internal values of
+   * this fixture's {@code JList} and the values expected in a test. The default implementation to use
+   * is {@link BasicJListCellReader}.
+   * @param cellReader the new {@code JListCellValueReader} to use.
    * @return this fixture.
-   * @throws NullPointerException if <code>cellReader</code> is {@code null}.
+   * @throws NullPointerException if {@code cellReader} is {@code null}.
    */
   public JListFixture cellReader(JListCellReader cellReader) {
     driver.cellReader(cellReader);

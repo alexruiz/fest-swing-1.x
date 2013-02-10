@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2007-2010 the original author or authors.
+ * Copyright @2007-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -21,13 +21,12 @@ import static org.fest.util.Arrays.array;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JPopupMenuDriver#menuLabelsOf(javax.swing.JPopupMenu)}</code>.
+ * Tests for {@link JPopupMenuDriver#menuLabelsOf(javax.swing.JPopupMenu)}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 public class JPopupMenuDriver_menuLabelsOf_Test extends JPopupMenuDriver_TestCase {
-
   @Test
   public void should_returns_all_menu_labels() {
     String[] labels = driver.menuLabelsOf(popupMenu);

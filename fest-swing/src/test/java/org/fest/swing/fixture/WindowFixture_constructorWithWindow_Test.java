@@ -11,19 +11,18 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.fixture;
 
 import org.junit.*;
 
 /**
- * Tests for <code>{@link WindowFixture#WindowFixture(java.awt.Window)}</code>.
+ * Tests for {@link WindowFixture#WindowFixture(java.awt.Window)}.
  *
  * @author Alex Ruiz
  */
 public class WindowFixture_constructorWithWindow_Test extends WindowFixture_TestCase {
-
   private ConcreteWindowFixture fixture;
 
   @After public void tearDown() {

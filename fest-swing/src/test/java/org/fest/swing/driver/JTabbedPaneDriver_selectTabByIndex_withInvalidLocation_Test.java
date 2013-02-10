@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -26,12 +26,11 @@ import org.fest.swing.exception.LocationUnavailableException;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JTabbedPaneDriver#selectTab(javax.swing.JTabbedPane, int)}</code>.
+ * Tests for {@link JTabbedPaneDriver#selectTab(javax.swing.JTabbedPane, int)}.
  *
  * @author Alex Ruiz
  */
 public class JTabbedPaneDriver_selectTabByIndex_withInvalidLocation_Test extends JTabbedPaneDriver_TestCase {
-
   @Test
   public void should_select_tab_directly_if_tab_location_not_found() {
     showWindow();
@@ -41,7 +40,7 @@ public class JTabbedPaneDriver_selectTabByIndex_withInvalidLocation_Test extends
     driver = new JTabbedPaneDriver(robot, location);
     new EasyMockTemplate(location) {
       @Override protected void expectations() {
-        location.validateIndex(tabbedPane, index); // everything goes fine.
+        location.checkIndexInBounds(tabbedPane, index); // everything goes fine.
         // location.pointAt is called twice.
         // The first time to try to click the tab directly
         expect(location.pointAt(tabbedPane, index)).andThrow(new LocationUnavailableException("Thrown on purpose"));

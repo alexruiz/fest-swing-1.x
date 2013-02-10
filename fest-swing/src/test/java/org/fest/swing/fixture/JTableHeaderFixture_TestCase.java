@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.fixture;
 
@@ -23,13 +23,12 @@ import javax.swing.table.JTableHeader;
 import org.fest.swing.driver.JTableHeaderDriver;
 
 /**
- * Base test class for <code>{@link JTableHeaderFixture}</code>.
+ * Base test class for {@link JTableHeaderFixture}.
  *
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
 public abstract class JTableHeaderFixture_TestCase extends ComponentFixture_Implementations_TestCase<JTableHeader> {
-
   private JTableHeaderDriver driver;
   private JTableHeader target;
   private JTableHeaderFixture fixture;

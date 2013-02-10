@@ -22,7 +22,6 @@ import org.junit.Test;
  * @author Alex Ruiz
  */
 public class FEST254_JComboBoxFixtureIsNotUsingCellReaderForRequireSelection_Test extends RobotBasedTestCase {
-
   private JComboBox comboBox;
   private JComboBoxFixture fixture;
 

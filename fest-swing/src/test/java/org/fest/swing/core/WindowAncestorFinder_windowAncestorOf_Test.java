@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.core;
 
@@ -30,12 +30,11 @@ import org.fest.swing.test.swing.TestWindow;
 import org.junit.*;
 
 /**
- * Tests for <code>{@link WindowAncestorFinder#windowAncestorOf(java.awt.Component)}</code>.
+ * Tests for {@link WindowAncestorFinder#windowAncestorOf(java.awt.Component)}.
  *
  * @author Yvonne Wang
  */
 public class WindowAncestorFinder_windowAncestorOf_Test extends EDTSafeTestCase {
-
   private MyWindow frame;
 
   @Before public void setUp() {
@@ -108,5 +107,4 @@ public class WindowAncestorFinder_windowAncestorOf_Test extends EDTSafeTestCase 
       popupMenu.add(new JMenuItem("Frodo"));
     }
   }
-
 }

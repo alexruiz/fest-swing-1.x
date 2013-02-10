@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -25,13 +25,12 @@ import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
 
 /**
- * Base test case in <code>{@link JTreeDriver}</code> related to expanding/collapsing cells in a
- * <code>{@link JTree}</code>.
+ * Base test case in {@link JTreeDriver} related to expanding/collapsing cells in a
+ * {@code JTree}.
  *
  * @author Alex Ruiz
  */
 public abstract class JTreeDriver_toggleCell_TestCase extends JTreeDriver_TestCase {
-
   @RunsInEDT
   final void requireRowExpanded(int row) {
     requireRowExpandedState(row, true);

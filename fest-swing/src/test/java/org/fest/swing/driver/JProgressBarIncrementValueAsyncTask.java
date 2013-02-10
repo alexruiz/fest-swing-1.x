@@ -10,7 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -18,24 +18,26 @@ import static java.util.concurrent.Executors.newSingleThreadExecutor;
 import static org.fest.swing.driver.JProgressBarIncrementValueTask.incrementValue;
 import static org.fest.util.Strings.concat;
 
-import java.util.concurrent.*;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Future;
+import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
 
+import javax.annotation.Nonnull;
 import javax.swing.JProgressBar;
 
 import org.fest.swing.core.Robot;
 
 /**
- * Understands a task that asynchronously increments the value of a <code>{@link JProgressBar}</code> 3 times, given an
+ * Asynchronously increments the value of a {@code JProgressBar} 3 times, given an
  * increment and a period of time in between increments.
  *
  * @author Alex Ruiz
  */
 class JProgressBarIncrementValueAsyncTask {
-
   private static Logger logger = Logger.getAnonymousLogger();
 
-  static TaskBuilder with(JProgressBar progressBar) {
+  static @Nonnull TaskBuilder with(@Nonnull JProgressBar progressBar) {
     return new TaskBuilder(progressBar);
   }
 
@@ -50,7 +52,8 @@ class JProgressBarIncrementValueAsyncTask {
   private final int increment;
   private final long periodInMs;
 
-  private JProgressBarIncrementValueAsyncTask(Robot robot, JProgressBar progressBar, int increment, long periodInMs) {
+  private JProgressBarIncrementValueAsyncTask(@Nonnull Robot robot, @Nonnull JProgressBar progressBar, int increment,
+      long periodInMs) {
     this.robot = robot;
     this.progressBar = progressBar;
     this.increment = increment;
@@ -58,11 +61,14 @@ class JProgressBarIncrementValueAsyncTask {
     task = createInnerTask();
   }
 
-  private Runnable createInnerTask() {
+  private @Nonnull Runnable createInnerTask() {
     return new Runnable() {
+      @Override
       public void run() {
         try {
-          for (int i = 0; i < INCREMENT_COUNT; i++) sleepAndIncrementValue();
+          for (int i = 0; i < INCREMENT_COUNT; i++) {
+            sleepAndIncrementValue();
+          }
         } catch (InterruptedException e) {
           logger.info("Task has been cancelled");
         }
@@ -83,7 +89,9 @@ class JProgressBarIncrementValueAsyncTask {
   }
 
   synchronized void cancelIfNotFinished() {
-    if (future != null && !future.isDone()) future.cancel(true);
+    if (future != null && !future.isDone()) {
+      future.cancel(true);
+    }
   }
 
   static class TaskBuilder {
@@ -91,21 +99,21 @@ class JProgressBarIncrementValueAsyncTask {
     private int increment = 10;
     private long periodInMs = 1000;
 
-    TaskBuilder(JProgressBar progressBar) {
+    TaskBuilder(@Nonnull JProgressBar progressBar) {
       this.progressBar = progressBar;
     }
 
-    TaskBuilder increment(int value) {
+    @Nonnull TaskBuilder increment(int value) {
       increment = value;
       return this;
     }
 
-    TaskBuilder every(long duration, TimeUnit timeUnit) {
+    @Nonnull TaskBuilder every(long duration, TimeUnit timeUnit) {
       periodInMs = timeUnit.toMillis(duration);
       return this;
     }
 
-    JProgressBarIncrementValueAsyncTask createTask(Robot robot) {
+    @Nonnull JProgressBarIncrementValueAsyncTask createTask(@Nonnull Robot robot) {
       return new JProgressBarIncrementValueAsyncTask(robot, progressBar, increment, periodInMs);
     }
   }

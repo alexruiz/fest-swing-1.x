@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.edt;
 
@@ -28,7 +28,6 @@ import org.junit.Test;
  * @author Alex Ruiz
  */
 public class Bug247_NotEnoughInfoInFailureInEDT_Test {
-
   private static String TEST_NAME = Bug247_NotEnoughInfoInFailureInEDT_Test.class.getName();
 
   @Test

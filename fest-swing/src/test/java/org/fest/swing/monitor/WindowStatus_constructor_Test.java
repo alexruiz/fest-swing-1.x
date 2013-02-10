@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.monitor;
 
@@ -27,12 +27,11 @@ import org.fest.swing.util.RobotFactory;
 import org.junit.*;
 
 /**
- * Tests for <code>{@link WindowStatus#WindowStatus(Windows, org.fest.swing.util.RobotFactory)}</code>.
+ * Tests for {@link WindowStatus#WindowStatus(Windows, org.fest.swing.util.RobotFactory)}.
  *
  * @author Alex Ruiz
  */
 public class WindowStatus_constructor_Test {
-
   private RobotFactory factory;
   private Windows windows;
 

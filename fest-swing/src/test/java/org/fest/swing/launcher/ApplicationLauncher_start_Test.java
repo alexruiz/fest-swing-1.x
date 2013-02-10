@@ -11,16 +11,16 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.launcher;
 
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.test.core.CommonAssertions.failWhenExpectingException;
-import static org.fest.util.Collections.list;
+import static org.fest.util.Lists.newArrayList;
 
 import java.awt.Frame;
-import java.util.*;
+import java.util.List;
 
 import org.fest.swing.core.GenericTypeMatcher;
 import org.fest.swing.exception.UnexpectedException;
@@ -31,12 +31,11 @@ import org.fest.swing.test.core.RobotBasedTestCase;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link ApplicationLauncher#start()}</code>.
+ * Tests for {@link ApplicationLauncher#start()}.
  *
  * @author Yvonne Wang
  */
 public class ApplicationLauncher_start_Test extends RobotBasedTestCase {
-
   @Test
   public void should_throw_error_if_application_class_name_is_invalid() {
     try {
@@ -61,8 +60,9 @@ public class ApplicationLauncher_start_Test extends RobotBasedTestCase {
 
   @Test
   public void should_launch_application_using_arguments() {
-    final List<String> arguments = new ArrayList<String>();
+    final List<String> arguments = newArrayList();
     ArgumentObserver observer = new ArgumentObserver() {
+      @Override
       public void arguments(String[] args) {
         arguments.addAll(list(args));
       }

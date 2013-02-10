@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2007-2010 the original author or authors.
+ * Copyright @2007-2013 the original author or authors.
  */
 package org.fest.swing.image;
 
@@ -28,13 +28,12 @@ import org.fest.swing.util.RobotFactory;
 import org.junit.*;
 
 /**
- * Tests for <code>{@link ScreenshotTaker#ScreenshotTaker(ImageFileWriter, RobotFactory)}</code>.
+ * Tests for {@link ScreenshotTaker#ScreenshotTaker(ImageFileWriter, RobotFactory)}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 public class ScreenshotTaker_constructor_Test {
-
   private ImageFileWriter writer;
   private RobotFactory robotFactory;
   private AWTException toThrow;

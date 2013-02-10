@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.core;
 
@@ -32,13 +32,12 @@ import org.fest.swing.test.swing.TestWindow;
 import org.junit.Ignore;
 
 /**
- * Base test case for implementations of <code>{@link InputEventGenerator}</code>.
+ * Base test case for implementations of {@link InputEventGenerator}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 public abstract class InputEventGenerator_TestCase extends SequentialEDTSafeTestCase {
-
   static final int DELAY = 200;
 
   MyWindow window;

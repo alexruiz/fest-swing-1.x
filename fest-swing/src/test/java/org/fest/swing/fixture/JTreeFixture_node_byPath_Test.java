@@ -10,7 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.fixture;
 
@@ -20,18 +20,17 @@ import org.fest.mocks.EasyMockTemplate;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JTreeFixture#node(String)}</code>.
+ * Tests for {@link JTreeFixture#node(String)}.
  *
  * @author Alex Ruiz
  */
 public class JTreeFixture_node_byPath_Test extends JTreeFixture_TestCase {
-
   @Test
   public void should_return_row() {
     final String path = "root";
     new EasyMockTemplate(driver()) {
       @Override protected void expectations() {
-        driver().validatePath(target(), path);
+        driver().checkPathExists(target(), path);
       }
 
       @Override protected void codeToTest() {

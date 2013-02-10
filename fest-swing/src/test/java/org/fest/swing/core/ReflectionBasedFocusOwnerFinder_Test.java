@@ -11,17 +11,16 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.core;
 
 /**
- * Tests for <code>{@link ReflectionBasedFocusOwnerFinder}</code>.
+ * Tests for {@link ReflectionBasedFocusOwnerFinder}.
  *
  * @author Alex Ruiz
  */
 public class ReflectionBasedFocusOwnerFinder_Test extends FocusOwnerFinderStrategy_focusOwner_TestCase {
-
   @Override protected FocusOwnerFinderStrategy createStrategyToTest() {
     return new ReflectionBasedFocusOwnerFinder();
   }

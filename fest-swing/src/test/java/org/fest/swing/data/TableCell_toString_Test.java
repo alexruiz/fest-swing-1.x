@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.data;
 
@@ -20,12 +20,11 @@ import static org.fest.assertions.Assertions.assertThat;
 import org.junit.*;
 
 /**
- * Tests for <code>{@link TableCell#toString()}</code>
+ * Tests for {@link TableCell#toString()}
  *
  * @author Alex Ruiz
  */
 public class TableCell_toString_Test {
-
   private TableCell cell;
 
   @Before public void setUp() {

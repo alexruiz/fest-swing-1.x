@@ -1,45 +1,90 @@
 /*
  * Created on Apr 28, 2009
- *
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
- *
+ * 
  * http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
- *
- * Copyright @2009-2010 the original author or authors.
+ * 
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.keystroke;
 
-import static java.awt.event.InputEvent.*;
-import static java.awt.event.KeyEvent.*;
+import static java.awt.event.InputEvent.ALT_GRAPH_MASK;
+import static java.awt.event.InputEvent.SHIFT_MASK;
+import static java.awt.event.KeyEvent.VK_0;
+import static java.awt.event.KeyEvent.VK_1;
+import static java.awt.event.KeyEvent.VK_2;
+import static java.awt.event.KeyEvent.VK_3;
+import static java.awt.event.KeyEvent.VK_4;
+import static java.awt.event.KeyEvent.VK_5;
+import static java.awt.event.KeyEvent.VK_6;
+import static java.awt.event.KeyEvent.VK_7;
+import static java.awt.event.KeyEvent.VK_8;
+import static java.awt.event.KeyEvent.VK_9;
+import static java.awt.event.KeyEvent.VK_A;
+import static java.awt.event.KeyEvent.VK_B;
+import static java.awt.event.KeyEvent.VK_BACK_QUOTE;
+import static java.awt.event.KeyEvent.VK_BACK_SLASH;
+import static java.awt.event.KeyEvent.VK_C;
+import static java.awt.event.KeyEvent.VK_CLOSE_BRACKET;
+import static java.awt.event.KeyEvent.VK_COMMA;
+import static java.awt.event.KeyEvent.VK_D;
+import static java.awt.event.KeyEvent.VK_DELETE;
+import static java.awt.event.KeyEvent.VK_E;
+import static java.awt.event.KeyEvent.VK_EQUALS;
+import static java.awt.event.KeyEvent.VK_F;
+import static java.awt.event.KeyEvent.VK_G;
+import static java.awt.event.KeyEvent.VK_H;
+import static java.awt.event.KeyEvent.VK_I;
+import static java.awt.event.KeyEvent.VK_J;
+import static java.awt.event.KeyEvent.VK_K;
+import static java.awt.event.KeyEvent.VK_L;
+import static java.awt.event.KeyEvent.VK_M;
+import static java.awt.event.KeyEvent.VK_MINUS;
+import static java.awt.event.KeyEvent.VK_N;
+import static java.awt.event.KeyEvent.VK_O;
+import static java.awt.event.KeyEvent.VK_P;
+import static java.awt.event.KeyEvent.VK_PERIOD;
+import static java.awt.event.KeyEvent.VK_Q;
+import static java.awt.event.KeyEvent.VK_R;
+import static java.awt.event.KeyEvent.VK_S;
+import static java.awt.event.KeyEvent.VK_SLASH;
+import static java.awt.event.KeyEvent.VK_SPACE;
+import static java.awt.event.KeyEvent.VK_T;
+import static java.awt.event.KeyEvent.VK_U;
+import static java.awt.event.KeyEvent.VK_V;
+import static java.awt.event.KeyEvent.VK_W;
+import static java.awt.event.KeyEvent.VK_X;
+import static java.awt.event.KeyEvent.VK_Y;
+import static java.awt.event.KeyEvent.VK_Z;
 import static org.fest.swing.keystroke.KeyStrokeMapping.mapping;
 import static org.fest.swing.keystroke.KeyStrokeMappings.defaultMappings;
 
-import java.util.*;
+import java.util.Collection;
+import java.util.List;
 
-import javax.swing.KeyStroke;
+import javax.annotation.Nonnull;
+
+import org.fest.util.Lists;
 
 /**
- * Understands mapping characters to <code>{@link KeyStroke}</code>s for locale
- * <code>{@link java.util.Locale#GERMAN GERMAN}</code>.
- *
+ * Mapping between characters and {@code KeyStroke}s for locale {@code Locale.GERMAN}.
+ * 
  * @author Uli Schrempp
  * @author Alex Ruiz
  */
 public class KeyStrokeMappingProvider_de implements KeyStrokeMappingProvider {
-
   /**
-   * Returns the mapping between characters and <code>{@link KeyStroke}</code>s for locale
-   * <code>{@link java.util.Locale#GERMAN GERMAN}</code>.
-   * @return the mapping between characters and <code>KeyStroke</code>s for locale <code>GERMAN</code>.
+   * @return the mapping between characters and {@code KeyStroke}s for locale {@code Locale.GERMAN}.
    */
-  public Collection<KeyStrokeMapping> keyStrokeMappings() {
-    List<KeyStrokeMapping> mappings = new ArrayList<KeyStrokeMapping>(120);
-    mappings.addAll(defaultMappings());
+  @Override
+  public @Nonnull Collection<KeyStrokeMapping> keyStrokeMappings() {
+    List<KeyStrokeMapping> mappings = Lists.newArrayList(defaultMappings());
     mappings.add(mapping('0', VK_0, NO_MASK));
     mappings.add(mapping('=', VK_0, SHIFT_MASK));
     mappings.add(mapping('}', VK_0, ALT_GRAPH_MASK));
@@ -143,5 +188,4 @@ public class KeyStrokeMappingProvider_de implements KeyStrokeMappingProvider {
     mappings.add(mapping('Z', VK_Z, SHIFT_MASK));
     return mappings;
   }
-
 }

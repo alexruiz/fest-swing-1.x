@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -25,13 +25,12 @@ import org.fest.swing.test.recorder.ClickRecorder;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JListDriver#showPopupMenu(javax.swing.JList, java.util.regex.Pattern)}</code>.
+ * Tests for {@link JListDriver#showPopupMenu(javax.swing.JList, java.util.regex.Pattern)}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 public class JListDriver_showPopupMenuAtItemAsPattern_Test extends JListDriver_showPopupMenu_TestCase {
-
   @Test
   public void should_show_popup_menu_at_item_matching_pattern() {
     showWindow();

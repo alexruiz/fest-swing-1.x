@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.timing;
 
@@ -19,12 +19,11 @@ import org.fest.swing.exception.WaitTimedOutError;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link Pause#pause(Condition, long)}</code>.
+ * Tests for {@link Pause#pause(Condition, long)}.
  *
  * @author Alex Ruiz
  */
 public class Pause_pauseWithConditionAndTimeoutInMilliseconds_Test {
-
   @Test(expected = WaitTimedOutError.class)
   public void should_timeout_if_Condition_is_never_satisfied() {
     Pause.pause(new NeverSatisfiedCondition(), 1000);

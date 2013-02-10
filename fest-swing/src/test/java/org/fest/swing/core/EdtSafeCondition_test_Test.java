@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2010 the original author or authors.
+ * Copyright @2010-2013 the original author or authors.
  */
 package org.fest.swing.core;
 
@@ -29,13 +29,12 @@ import org.junit.runners.*;
 import org.junit.runners.Parameterized.Parameters;
 
 /**
- * Tests for <code>{@link EdtSafeCondition#test()}</code>.
+ * Tests for {@link EdtSafeCondition#test()}.
  *
  * @author Alex Ruiz
  */
 @RunWith(Parameterized.class)
 public class EdtSafeCondition_test_Test {
-
   private final boolean conditionSatisfied;
 
   @Parameters

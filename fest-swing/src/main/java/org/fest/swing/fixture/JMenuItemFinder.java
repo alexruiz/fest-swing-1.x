@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.fixture;
 
@@ -27,13 +27,12 @@ import org.fest.swing.core.Robot;
 import org.fest.swing.driver.JMenuItemMatcher;
 
 /**
- * Understands lookup of <code>{@link JMenuItem}</code>s.
+ * Understands lookup of {@code JMenuItem}s.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 class JMenuItemFinder {
-
   private final Robot robot;
   private final Container target;
 

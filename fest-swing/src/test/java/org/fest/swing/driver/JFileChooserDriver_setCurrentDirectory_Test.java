@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -27,13 +27,12 @@ import org.fest.swing.annotation.RunsInEDT;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JFileChooserDriver#setCurrentDirectory(javax.swing.JFileChooser, java.io.File)}</code>.
+ * Tests for {@link JFileChooserDriver#setCurrentDirectory(javax.swing.JFileChooser, java.io.File)}.
  *
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
 public class JFileChooserDriver_setCurrentDirectory_Test extends JFileChooserDriver_TestCase {
-
   @Test
   public void should_set_current_directory() {
     File userHome = userHomeDirectory();
@@ -74,5 +73,4 @@ public class JFileChooserDriver_setCurrentDirectory_Test extends JFileChooserDri
     assertThat(userHome.isDirectory()).isTrue();
     return userHome;
   }
-
 }

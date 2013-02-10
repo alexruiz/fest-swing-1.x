@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.core;
 
@@ -30,12 +30,11 @@ import org.fest.swing.test.swing.*;
 import org.junit.Test;
 
 /**
- * Test case for implementations of <code>{@link FocusOwnerFinderStrategy#focusOwner()}</code>.
+ * Test case for implementations of {@link FocusOwnerFinderStrategy#focusOwner()}.
  *
  * @author Alex Ruiz
  */
 public abstract class FocusOwnerFinderStrategy_focusOwner_TestCase extends SequentialEDTSafeTestCase {
-
   private MyWindow window;
   private JTextField textField;
   private FocusOwnerFinderStrategy finder;
@@ -120,5 +119,4 @@ public abstract class FocusOwnerFinderStrategy_focusOwner_TestCase extends Seque
       addComponents(textBox);
     }
   }
-
 }

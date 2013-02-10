@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.util;
 
@@ -22,12 +22,11 @@ import org.fest.mocks.EasyMockTemplate;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link OSIdentifier#isMacintosh()}</code>.
+ * Tests for {@link OSIdentifier#isMacintosh()}.
  *
  * @author Alex Ruiz
  */
 public class OSIdentifier_isMacintosh_Test extends OSIdentifier_TestCase {
-
   @Test
   public void should_return_Macintosh_if_MRJVersion_is_not_null() {
     new EasyMockTemplate(propertyReader) {
@@ -51,5 +50,4 @@ public class OSIdentifier_isMacintosh_Test extends OSIdentifier_TestCase {
       }
     }.run();
   }
-
 }

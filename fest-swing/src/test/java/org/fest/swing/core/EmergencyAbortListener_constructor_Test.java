@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.core;
 
@@ -23,12 +23,11 @@ import static org.fest.swing.test.awt.Toolkits.singletonToolkitMock;
 import org.junit.*;
 
 /**
- * Tests for <code>{@link EmergencyAbortListener#EmergencyAbortListener(java.awt.Toolkit)}</code>.
+ * Tests for {@link EmergencyAbortListener#EmergencyAbortListener(java.awt.Toolkit)}.
  *
  * @author Alex Ruiz
  */
 public class EmergencyAbortListener_constructor_Test {
-
   private EmergencyAbortListener listener;
 
   @Before public void setUp() {

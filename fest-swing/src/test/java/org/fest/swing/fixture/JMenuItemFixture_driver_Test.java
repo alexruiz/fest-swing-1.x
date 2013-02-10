@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.fixture;
 
@@ -23,13 +23,12 @@ import javax.swing.JMenuItem;
 import org.junit.*;
 
 /**
- * Tests for <code>{@link JMenuItemFixture#driver(org.fest.swing.driver.JMenuItemDriver)}</code>.
+ * Tests for {@link JMenuItemFixture#driver(org.fest.swing.driver.JMenuItemDriver)}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 public class JMenuItemFixture_driver_Test {
-
   private JMenuItemFixture fixture;
   private JMenuItem target;
 

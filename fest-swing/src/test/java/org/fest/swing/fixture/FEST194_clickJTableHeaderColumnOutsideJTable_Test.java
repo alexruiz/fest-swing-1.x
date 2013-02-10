@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.fixture;
 
@@ -39,7 +39,6 @@ import org.junit.Test;
  * @author Alex Ruiz
  */
 public class FEST194_clickJTableHeaderColumnOutsideJTable_Test extends RobotBasedTestCase {
-
   private HeaderMouseListener headerMouseListener;
   private JTableFixture table;
 
@@ -126,5 +125,4 @@ public class FEST194_clickJTableHeaderColumnOutsideJTable_Test extends RobotBase
       headerClickCounter++;
     }
   }
-
 }

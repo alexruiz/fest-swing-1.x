@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2007-2010 the original author or authors.
+ * Copyright @2007-2013 the original author or authors.
  */
 package org.fest.swing.hierarchy;
 
@@ -20,13 +20,12 @@ import static org.easymock.classextension.EasyMock.createMock;
 import java.awt.*;
 
 /**
- * Understands a subclass of <code>{@link ParentFinder}</code> which methods have been overriden to be public,
+ * Understands a subclass of {@link ParentFinder} which methods have been overriden to be public,
  * allowing us to create mocks.
  *
  * @author Alex Ruiz
  */
 public class MockParentFinder extends ParentFinder {
-
   public static ParentFinder mock() {
     return createMock(MockParentFinder.class);
   }
@@ -36,5 +35,4 @@ public class MockParentFinder extends ParentFinder {
   }
 
   public MockParentFinder() {}
-
 }

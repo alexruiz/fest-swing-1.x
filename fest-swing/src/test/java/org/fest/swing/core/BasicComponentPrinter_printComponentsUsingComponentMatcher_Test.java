@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.core;
 
@@ -21,13 +21,12 @@ import static org.fest.swing.format.Formatting.format;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link BasicComponentPrinter#printComponents(java.io.PrintStream, ComponentMatcher)}</code>.
+ * Tests for {@link BasicComponentPrinter#printComponents(java.io.PrintStream, ComponentMatcher)}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 public class BasicComponentPrinter_printComponentsUsingComponentMatcher_Test extends BasicComponentPrinter_TestCase {
-
   @Test(expected = NullPointerException.class)
   public void should_throw_error_if_OutputStream_is_null() {
     printer.printComponents(null, new NameMatcher("button1"));

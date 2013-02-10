@@ -1,40 +1,40 @@
 /*
  * Created on Jun 8, 2008
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ * 
  * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
- *
- * Copyright @2008-2010 the original author or authors.
+ * 
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+ * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations under the License.
+ * 
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.cell;
 
 import java.awt.Component;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import javax.swing.JTable;
 
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.exception.ActionFailedException;
 
 /**
- * Edits the value of a cell in a <code>{@link JTable}</code>.
- *
+ * Edits the value of a cell in a {@code JTable}.
+ * 
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
 @RunsInEDT
 public interface JTableCellWriter {
-
   /**
-   * Enters the given value at the given cell of the <code>{@link JTable}</code>. To edit a cell using this method,
-   * it is not necessary to call <code>{@link #startCellEditing(JTable, int, int)}</code> or
-   * <code>{@link #stopCellEditing(JTable, int, int)}</code>.
+   * Enters the given value at the given cell of the {@code JTable}. To edit a cell using this method, it is not
+   * necessary to call {@link #startCellEditing(JTable, int, int)} or {@link #stopCellEditing(JTable, int, int)}.
+   * 
    * @param table the target {@code JTable}.
    * @param row the row index of the cell.
    * @param column the column index of the cell.
@@ -45,11 +45,12 @@ public interface JTableCellWriter {
    * @throws IndexOutOfBoundsException if any of the indices (row and column) is out of bounds.
    * @throws ActionFailedException if an editor for the given cell cannot be found or cannot be activated.
    */
-  void enterValue(JTable table, int row, int column, String value);
+  void enterValue(@Nonnull JTable table, int row, int column, @Nonnull String value);
 
   /**
-   * Starts editing the given cell of the <code>{@link JTable}</code>. This method should be called before manipulating
-   * the <code>{@link Component}</code> returned by <code>{@link #editorForCell(JTable, int, int)}</code>.
+   * Starts editing the given cell of the {@code JTable}. This method should be called before manipulating the AWT or
+   * Swing {@code Component} returned by {@link #editorForCell(JTable, int, int)}.
+   * 
    * @param table the target {@code JTable}.
    * @param row the row index of the cell.
    * @param column the column index of the cell.
@@ -60,11 +61,12 @@ public interface JTableCellWriter {
    * @throws ActionFailedException if an editor for the given cell cannot be found or cannot be activated.
    * @see #editorForCell(JTable, int, int)
    */
-  void startCellEditing(JTable table, int row, int column);
+  void startCellEditing(@Nonnull JTable table, int row, int column);
 
   /**
-   * Stops editing the given cell of the <code>{@link JTable}</code>. This method should be called after manipulating
-   * the <code>{@link Component}</code> returned by <code>{@link #editorForCell(JTable, int, int)}</code>.
+   * Stops editing the given cell of the {@code JTable}. This method should be called after manipulating the AWT or
+   * Swing {@code Component} returned by {@link #editorForCell(JTable, int, int)}.
+   * 
    * @param table the target {@code JTable}.
    * @param row the row index of the cell.
    * @param column the column index of the cell.
@@ -75,11 +77,12 @@ public interface JTableCellWriter {
    * @throws ActionFailedException if an editor for the given cell cannot be found or cannot be activated.
    * @see #editorForCell(JTable, int, int)
    */
-  void stopCellEditing(JTable table, int row, int column);
+  void stopCellEditing(@Nonnull JTable table, int row, int column);
 
   /**
-   * Cancels editing the given cell of the <code>{@link JTable}</code>. This method should be called after manipulating
-   * the <code>{@link Component}</code> returned by <code>{@link #editorForCell(JTable, int, int)}</code>.
+   * Cancels editing the given cell of the {@code JTable}. This method should be called after manipulating the AWT or
+   * Swing {@code Component} returned by @link #editorForCell(JTable, int, int)}.
+   * 
    * @param table the target {@code JTable}.
    * @param row the row index of the cell.
    * @param column the column index of the cell.
@@ -90,14 +93,16 @@ public interface JTableCellWriter {
    * @throws ActionFailedException if an editor for the given cell cannot be found or cannot be activated.
    * @see #editorForCell(JTable, int, int)
    */
-  void cancelCellEditing(JTable table, int row, int column);
+  void cancelCellEditing(@Nonnull JTable table, int row, int column);
 
   /**
-   * Returns the <code>{@link Component}</code> used as editor of the given cell. To manipulate the returned
-   * {@code Component}, <code>{@link #startCellEditing(JTable, int, int)}</code> should be called first.
+   * <p>
+   * Returns the AWT or Swing {@code Component} used as editor of the given cell. To manipulate the returned
+   * {@code Component}, {@link #startCellEditing(JTable, int, int)} should be called first.
+   * </p>
+   * 
    * <p>
    * Example:
-   *
    * <pre>
    * Component editor = writer.editorForCell(table, 6, 8);
    * // assume editor is a JTextField
@@ -106,15 +111,14 @@ public interface JTableCellWriter {
    * editorFixture.enterText(&quot;Hello&quot;);
    * writer.{@link #stopCellEditing(JTable, int, int) stopCellEditing}(table, 6, 8);
    * </pre>
-   *
    * </p>
+   * 
    * @param table the target {@code JTable}.
    * @param row the row index of the cell.
    * @param column the column index of the cell.
    * @return the {@code Component} used as editor of the given cell.
    * @throws IllegalStateException if the {@code JTable} cell is not editable.
    * @throws IndexOutOfBoundsException if any of the indices (row and column) is out of bounds.
-   * @throws IllegalStateException if the {@code JTable} cell is not editable.
    */
-  Component editorForCell(JTable table, int row, int column);
+  @Nullable Component editorForCell(@Nonnull JTable table, int row, int column);
 }

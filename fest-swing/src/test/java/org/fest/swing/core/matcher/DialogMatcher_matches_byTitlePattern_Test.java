@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.core.matcher;
 
@@ -25,13 +25,12 @@ import org.fest.swing.test.core.EDTSafeTestCase;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link DialogMatcher#matches(java.awt.Component)}</code>.
+ * Tests for {@link DialogMatcher#matches(java.awt.Component)}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 public class DialogMatcher_matches_byTitlePattern_Test extends EDTSafeTestCase {
-
   @Test
   public void should_return_true_if_title_matches_pattern() {
     DialogMatcher matcher = DialogMatcher.withTitle(regex("He.*"));
@@ -45,5 +44,4 @@ public class DialogMatcher_matches_byTitlePattern_Test extends EDTSafeTestCase {
     JDialog dialog = dialog().withTitle("Bye").createNew();
     assertThat(matcher.matches(dialog)).isFalse();
   }
-
 }

@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.fixture;
 
@@ -35,7 +35,6 @@ import org.junit.Test;
  * @author Alex Ruiz
  */
 public class Bug197_clickVisibleAreaInComponent_Test extends RobotBasedTestCase {
-
   private FrameFixture fixture;
   private MyWindow window;
 
@@ -83,5 +82,4 @@ public class Bug197_clickVisibleAreaInComponent_Test extends RobotBasedTestCase 
       addComponents(scrollPane);
     }
   }
-
 }

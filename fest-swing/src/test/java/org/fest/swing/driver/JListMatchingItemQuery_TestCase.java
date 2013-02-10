@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -31,12 +31,11 @@ import org.fest.swing.test.swing.TestWindow;
 import org.fest.swing.util.TextMatcher;
 
 /**
- * Base test case for <code>{@link JListMatchingItemQuery}</code>.
+ * Base test case for {@link JListMatchingItemQuery}.
  *
  * @author Alex Ruiz
  */
 public class JListMatchingItemQuery_TestCase extends RobotBasedTestCase {
-
   JList list;
   JListCellReader cellReader;
 

@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -32,12 +32,11 @@ import org.fest.swing.util.Pair;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JComboBoxSelectionValueQuery#selection(JComboBox, JComboBoxCellReader)}</code>.
+ * Tests for {@link JComboBoxSelectionValueQuery#selection(JComboBox, JComboBoxCellReader)}.
  *
  * @author Alex Ruiz
  */
 public class JComboBoxSelectionValueQuery_selection_Test extends RobotBasedTestCase {
-
   private JComboBox comboBox;
   private JComboBoxCellReader cellReader;
 
@@ -50,8 +49,8 @@ public class JComboBoxSelectionValueQuery_selection_Test extends RobotBasedTestC
   @Test
   public void should_return_false_and_null_if_not_editable_JComboBox_does_not_have_selection() {
     Pair<Boolean, String> selection = JComboBoxSelectionValueQuery.selection(comboBox, cellReader);
-    assertThat(selection.i).isFalse();
-    assertThat(selection.ii).isNull();
+    assertThat(selection.first).isFalse();
+    assertThat(selection.second).isNull();
   }
 
   @Test
@@ -79,8 +78,8 @@ public class JComboBoxSelectionValueQuery_selection_Test extends RobotBasedTestC
   }
 
   private void assertThatSelectionIsEqual(Pair<Boolean, String> selection, String expected) {
-    assertThat(selection.i).isTrue();
-    assertThat(selection.ii).isEqualTo(expected);
+    assertThat(selection.first).isTrue();
+    assertThat(selection.second).isEqualTo(expected);
   }
 
   private static class MyWindow extends TestWindow {

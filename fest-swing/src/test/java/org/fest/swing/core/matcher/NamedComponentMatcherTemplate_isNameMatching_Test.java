@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.core.matcher;
 
@@ -22,12 +22,11 @@ import javax.swing.JLabel;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link NamedComponentMatcherTemplate#isNameMatching(String)}</code>.
+ * Tests for {@link NamedComponentMatcherTemplate#isNameMatching(String)}.
  *
  * @author Alex Ruiz
  */
 public class NamedComponentMatcherTemplate_isNameMatching_Test extends NamedComponentMatcherTemplate_TestCase {
-
   @Test
   public void should_always_match_if_name_is_any() {
     matcher = new Matcher(JLabel.class, NamedComponentMatcherTemplate.ANY);
@@ -39,5 +38,4 @@ public class NamedComponentMatcherTemplate_isNameMatching_Test extends NamedComp
     matcher = new Matcher(JLabel.class, "hello");
     assertThat(matcher.isNameMatching("hello")).isTrue();
   }
-
 }

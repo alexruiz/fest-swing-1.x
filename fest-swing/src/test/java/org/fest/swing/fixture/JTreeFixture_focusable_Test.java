@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.fixture;
 
@@ -24,14 +24,13 @@ import org.fest.swing.driver.JTreeDriver;
 import org.junit.BeforeClass;
 
 /**
- * Tests for methods in <code>{@link JTreeFixture}</code> that are inherited from
- * <code>{@link FocusableComponentFixture}</code>.
+ * Tests for methods in {@link JTreeFixture} that are inherited from
+ * {@link FocusableComponentFixture}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 public class JTreeFixture_focusable_Test extends FocusableComponentFixture_TestCase<JTree> {
-
   private static JTree target;
 
   private JTreeDriver driver;

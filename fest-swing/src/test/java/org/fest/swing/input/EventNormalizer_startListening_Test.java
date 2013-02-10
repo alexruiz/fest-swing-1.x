@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.input;
 
@@ -23,12 +23,11 @@ import org.fest.swing.test.awt.ToolkitStub;
 import org.junit.*;
 
 /**
- * Tests for <code>{@link EventNormalizer#startListening(java.awt.Toolkit, AWTEventListener, long)}</code>.
+ * Tests for {@link EventNormalizer#startListening(java.awt.Toolkit, AWTEventListener, long)}.
  *
  * @author Alex Ruiz
  */
 public class EventNormalizer_startListening_Test extends EventNormalizer_TestCase {
-
   private EventNormalizer eventNormalizer;
 
   @Before public void setUp() {

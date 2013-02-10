@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -25,13 +25,12 @@ import org.junit.Test;
 import org.junit.runners.Parameterized.Parameters;
 
 /**
- * Tests for <code>{@link JSliderDriver#slide(javax.swing.JSlider, int)}</code>.
+ * Tests for {@link JSliderDriver#slide(javax.swing.JSlider, int)}.
  *
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
 public class JSliderDriver_slide_withInvalidInputAndState_Test extends JSliderDriver_TestCase {
-
   @Parameters
   public static Collection<Object[]> allOrientations() {
     return list(orientations());
@@ -83,5 +82,4 @@ public class JSliderDriver_slide_withInvalidInputAndState_Test extends JSliderDr
       assertThatErrorCauseIsNotShowingComponent(e);
     }
   }
-
 }

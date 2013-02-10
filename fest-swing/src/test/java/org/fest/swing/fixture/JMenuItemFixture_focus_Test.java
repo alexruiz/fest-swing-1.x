@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.fixture;
 
@@ -21,13 +21,12 @@ import org.fest.mocks.EasyMockTemplate;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JMenuItemFixture#focus()}</code>.
+ * Tests for {@link JMenuItemFixture#focus()}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 public class JMenuItemFixture_focus_Test extends JMenuItemFixture_TestCase {
-
   @Test
   public final void should_give_focus() {
     new EasyMockTemplate(driver()) {

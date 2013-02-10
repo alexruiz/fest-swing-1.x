@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -23,13 +23,12 @@ import static org.fest.util.Arrays.array;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JListDriver#selectItems(javax.swing.JList, org.fest.swing.util.Range.From, org.fest.swing.util.Range.To)}</code>.
+ * Tests for {@link JListDriver#selectItems(javax.swing.JList, org.fest.swing.util.Range.From, org.fest.swing.util.Range.To)}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 public class JListDriver_selectItemsByFluentRange_Test extends JListDriver_TestCase {
-
   @Test
   public void should_select_items() {
     showWindow();

@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.core.matcher;
 
@@ -20,13 +20,12 @@ import static org.fest.assertions.Assertions.assertThat;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link DialogMatcher#toString()}</code>.
+ * Tests for {@link DialogMatcher#toString()}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 public class DialogMatcher_toString_Test {
-
   @Test
   public void should_implement_toString() {
     DialogMatcher matcher = DialogMatcher.withName("dialog").andTitle("Hello").andShowing();

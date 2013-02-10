@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2010 the original author or authors.
+ * Copyright @2010-2013 the original author or authors.
  */
 package org.fest.swing.test.awt;
 
@@ -20,12 +20,11 @@ import static org.easymock.classextension.EasyMock.createMock;
 import java.awt.Container;
 
 /**
- * Understands <code>{@link Container}</code>s to be used for testing purposes.
+ * Understands {@code Container}s to be used for testing purposes.
  *
  * @author Alex Ruiz
  */
 public final class TestContainers {
-
   public static Container singletonContainerMock() {
     return LazyLoadedSingleton.INSTANCE;
   }

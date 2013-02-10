@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2007-2010 the original author or authors.
+ * Copyright @2007-2013 the original author or authors.
  */
 package org.fest.swing.hierarchy;
 
@@ -23,13 +23,12 @@ import java.awt.Component;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link ExistingHierarchy#contains(java.awt.Component)}</code>.
+ * Tests for {@link ExistingHierarchy#contains(java.awt.Component)}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 public class ExistingHierarchy_contains_Test extends ExistingHierarchy_TestCase {
-
   @Test
   public void should_always_return_true() {
     Component component = textField().createNew();

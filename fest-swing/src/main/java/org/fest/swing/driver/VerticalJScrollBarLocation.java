@@ -1,59 +1,65 @@
 /*
  * Created on Jul 31, 2008
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ * 
  * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
- *
- * Copyright @2008-2010 the original author or authors.
+ * 
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+ * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations under the License.
+ * 
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
 import java.awt.Point;
 
+import javax.annotation.Nonnull;
 import javax.swing.JScrollBar;
 
 import org.fest.swing.annotation.RunsInCurrentThread;
 
 /**
- * Understands a location in a horizontal <code>{@link JScrollBar}</code>.
  * <p>
- * <b>Note:</b> Methods in this class are <b>not</b> executed in the event dispatch thread (EDT.) Clients are
- * responsible for invoking them in the EDT.
+ * A location in a horizontal {@code JScrollBar}.
  * </p>
- *
+ * 
+ * <p>
+ * <b>Note:</b> Methods in this class are accessed in the current executing thread. Such thread may or may not be the
+ * event dispatch thread (EDT.) Client code must call methods in this class from the EDT.
+ * </p>
+ * 
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 class VerticalJScrollBarLocation extends JScrollBarLocationStrategy {
-
-  @Override @RunsInCurrentThread
-  Point thumbLocation(JScrollBar scrollBar, double fraction) {
+  @RunsInCurrentThread
+  @Override
+  @Nonnull Point thumbLocation(@Nonnull JScrollBar scrollBar, double fraction) {
     int arrow = arrow(scrollBar);
     return new Point(arrow / 2, arrow + (int) (fraction * (scrollBar.getHeight() - 2 * arrow)));
   }
 
-  @Override @RunsInCurrentThread
-  Point blockLocation(JScrollBar scrollBar, Point unitLocation, int offset) {
+  @RunsInCurrentThread
+  @Override
+  @Nonnull Point blockLocation(@Nonnull JScrollBar scrollBar, @Nonnull Point unitLocation, int offset) {
     Point p = new Point(unitLocation);
     p.y += offset;
     return p;
   }
 
-  @Override @RunsInCurrentThread
-  Point unitLocationToScrollDown(JScrollBar scrollBar) {
+  @RunsInCurrentThread
+  @Override
+  @Nonnull Point unitLocationToScrollDown(@Nonnull JScrollBar scrollBar) {
     int arrow = arrow(scrollBar);
     return new Point(arrow / 2, scrollBar.getHeight() - arrow / 2);
   }
 
-  @Override @RunsInCurrentThread
-  int arrow(JScrollBar scrollBar) {
+  @RunsInCurrentThread
+  @Override
+  int arrow(@Nonnull JScrollBar scrollBar) {
     return scrollBar.getWidth();
   }
 }

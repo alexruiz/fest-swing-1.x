@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.fixture;
 
@@ -24,13 +24,12 @@ import org.fest.swing.test.core.EDTSafeTestCase;
 import org.junit.*;
 
 /**
- * Tests for <code>{@link JFileChooserFixture#driver(org.fest.swing.driver.JFileChooserDriver)}</code>.
+ * Tests for {@link JFileChooserFixture#driver(org.fest.swing.driver.JFileChooserDriver)}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 public class JFileChooserFixture_driver_Test extends EDTSafeTestCase {
-
   private JFileChooserFixture fixture;
   private JFileChooser target;
 

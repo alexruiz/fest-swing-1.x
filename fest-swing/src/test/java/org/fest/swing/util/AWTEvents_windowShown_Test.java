@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.util;
 
@@ -27,12 +27,11 @@ import org.fest.swing.test.swing.TestWindow;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link AWTEvents#windowShown(java.awt.AWTEvent)}</code>.
+ * Tests for {@link AWTEvents#wasWindowShown(java.awt.AWTEvent)}.
  *
  * @author Alex Ruiz
  */
 public class AWTEvents_windowShown_Test extends SequentialEDTSafeTestCase {
-
   private TestWindow source;
 
   @Override protected void onSetUp() {
@@ -46,18 +45,18 @@ public class AWTEvents_windowShown_Test extends SequentialEDTSafeTestCase {
   @Test
   public void should_return_true_if_Window_shown() {
     AWTEvent event = new ComponentEvent(source, COMPONENT_SHOWN);
-    assertThat(AWTEvents.windowShown(event)).isTrue();
+    assertThat(AWTEvents.wasWindowShown(event)).isTrue();
   }
 
   @Test
   public void should_return_false_if_Component_shown_is_not_Window() {
     AWTEvent event = new ComponentEvent(label().createNew(), COMPONENT_SHOWN);
-    assertThat(AWTEvents.windowShown(event)).isFalse();
+    assertThat(AWTEvents.wasWindowShown(event)).isFalse();
   }
 
   @Test
   public void should_return_false_if_Window_not_shown() {
     AWTEvent event = new ComponentEvent(source, COMPONENT_HIDDEN);
-    assertThat(AWTEvents.windowShown(event)).isFalse();
+    assertThat(AWTEvents.wasWindowShown(event)).isFalse();
   }
 }

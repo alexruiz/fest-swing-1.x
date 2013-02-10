@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.test.swing;
 
@@ -21,22 +21,23 @@ import static org.fest.util.Strings.concat;
 
 import java.awt.Component;
 
+import javax.annotation.Nonnull;
+
 import org.fest.swing.timing.Condition;
 
 /**
- * Understands a condition that checks that a <code>{@link Component}</code> has focus.
+ * Condition that checks that an AWT or Swing {@code Component} has focus.
  *
  * @author Yvonne Wang
  */
 public class ComponentHasFocusCondition extends Condition {
-
   private Component component;
 
-  public static ComponentHasFocusCondition untilFocused(Component component) {
+  public static @Nonnull ComponentHasFocusCondition untilFocused(@Nonnull Component component) {
     return new ComponentHasFocusCondition(component);
   }
 
-  private ComponentHasFocusCondition(Component component) {
+  private ComponentHasFocusCondition(@Nonnull Component component) {
     super(concat(format(component), " has focus"));
     this.component = component;
   }

@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.test.core;
 
@@ -24,7 +24,6 @@ import static org.fest.assertions.Fail.fail;
  * @author Alex Ruiz
  */
 public final class CommonAssertions {
-
   public static void assertThatErrorCauseIsDisabledComponent(IllegalStateException e) {
     assertThat(e.getMessage()).contains("Expecting component")
                               .contains("to be enabled");

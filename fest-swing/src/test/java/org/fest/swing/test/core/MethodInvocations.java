@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.test.core;
 
@@ -19,9 +19,11 @@ import static java.util.Arrays.deepEquals;
 import static org.fest.assertions.Fail.fail;
 import static org.fest.swing.util.Arrays.copyOf;
 import static org.fest.util.Arrays.format;
-import static org.fest.util.Strings.*;
+import static org.fest.util.Maps.newHashMap;
+import static org.fest.util.Strings.concat;
+import static org.fest.util.Strings.quote;
 
-import java.util.*;
+import java.util.Map;
 
 /**
  * Understands a mechanism to record and verify expected method invocations.
@@ -30,13 +32,12 @@ import java.util.*;
  * @author Yvonne Wang
  */
 public class MethodInvocations {
-
-  private final Map<String, Object[]> invocations = new HashMap<String, Object[]>();
+  private final Map<String, Object[]> invocations = newHashMap();
 
   /**
    * Records that a method with the given name was invoked.
    * @param methodName the name of the invoked method.
-   * @return <code>this</code>.
+   * @return {@code this}.
    */
   public MethodInvocations invoked(String methodName) {
     invocations.put(methodName, new Object[0]);
@@ -47,7 +48,7 @@ public class MethodInvocations {
    * Records that a method with the given name was invoked with the given arguments.
    * @param methodName the name of the invoked method.
    * @param args the arguments passed to the invoked method.
-   * @return <code>this</code>.
+   * @return {@code this}.
    */
   public MethodInvocations invoked(String methodName, Args args) {
     validate(args);
@@ -58,11 +59,13 @@ public class MethodInvocations {
   /**
    * Verifies that a method with the given name was invoked.
    * @param methodName the name of the method to verify.
-   * @return <code>this</code>.
+   * @return {@code this}.
    * @throws AssertionError if the method was not invoked.
    */
   public MethodInvocations requireInvoked(String methodName) {
-    if (!invocations.containsKey(methodName)) methodNotInvoked(methodName);
+    if (!invocations.containsKey(methodName)) {
+      methodNotInvoked(methodName);
+    }
     return this;
   }
 
@@ -70,22 +73,27 @@ public class MethodInvocations {
    * Verifies that a method with the given name was invoked with the given arguments.
    * @param methodName the name of the method to verify.
    * @param args the arguments that should have been passed to the method to verify.
-   * @return <code>this</code>.
+   * @return {@code this}.
    * @throws AssertionError if the method was not invoked.
    * @throws AssertionError if different arguments were passed to the method to verify.
    */
   public MethodInvocations requireInvoked(String methodName, Args args) {
     validate(args);
-    if (!invocations.containsKey(methodName)) methodNotInvoked(methodName);
+    if (!invocations.containsKey(methodName)) {
+      methodNotInvoked(methodName);
+    }
     Object[] actual = args.args;
     Object[] expected = invocations.get(methodName);
-    if (!deepEquals(actual, expected))
+    if (!deepEquals(actual, expected)) {
       fail(concat("Expecting arguments ", format(actual), " but found ", format(expected)));
+    }
     return this;
   }
 
   private void validate(Args args) {
-    if (args == null) throw new NullPointerException("Args should not be null");
+    if (args == null) {
+      throw new NullPointerException("Args should not be null");
+    }
   }
 
   private void methodNotInvoked(String methodName) {
@@ -99,13 +107,12 @@ public class MethodInvocations {
    * @author Yvonne Wang
    */
   public static class Args {
-
     final Object[] args;
 
     /**
-     * Creates a new <code>{@link Args}</code>.
+     * Creates a new {@link Args}.
      * @param args the arguments to store.
-     * @return the created <code>Args</code>.
+     * @return the created {@code Args}.
      */
     public static Args args(Object...args) {
       return new Args(args);

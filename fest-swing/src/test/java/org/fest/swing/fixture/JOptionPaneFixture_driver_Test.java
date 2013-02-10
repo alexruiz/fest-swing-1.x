@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.fixture;
 
@@ -23,13 +23,12 @@ import javax.swing.JOptionPane;
 import org.junit.*;
 
 /**
- * Tests for <code>{@link JOptionPaneFixture#driver(org.fest.swing.driver.JOptionPaneDriver)}</code>.
+ * Tests for {@link JOptionPaneFixture#driver(org.fest.swing.driver.JOptionPaneDriver)}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 public class JOptionPaneFixture_driver_Test {
-
   private JOptionPaneFixture fixture;
   private JOptionPane target;
 

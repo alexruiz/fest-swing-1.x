@@ -34,7 +34,6 @@ import org.fest.swing.test.core.EDTSafeTestCase;
 import org.junit.*;
 
 public class JAppletDriver_Test extends EDTSafeTestCase {
-
 	private JAppletDriver driver;
 	private JApplet target;
 	private Robot robot;

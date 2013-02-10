@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.fixture;
 
@@ -24,14 +24,13 @@ import org.fest.swing.driver.AbstractButtonDriver;
 import org.junit.BeforeClass;
 
 /**
- * Tests for methods in <code>{@link JCheckBoxFixture}</code> that are inherited from
- * <code>{@link TwoStateButtonFixture}</code>.
+ * Tests for methods in {@link JCheckBoxFixture} that are inherited from
+ * {@link TwoStateButtonFixture}.
  *
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
 public class JCheckBoxFixture_twoStateButton_Test extends TwoStateButtonFixture_TestCase<JCheckBox> {
-
   private static JCheckBox target;
 
   private AbstractButtonDriver driver;

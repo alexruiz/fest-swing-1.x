@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -24,13 +24,12 @@ import org.fest.swing.test.swing.TestWindow;
 import org.junit.Test;
 
 /**
- * Test for <code>{@link ComponentMoveTask#moveComponent(java.awt.Component, Point)}</code>.
+ * Test for {@link ComponentMoveTask#moveComponent(java.awt.Component, Point)}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 public class ComponentMoveTask_moveComponent_Test extends RobotBasedTestCase {
-
   private TestWindow window;
   private Point location;
 

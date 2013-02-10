@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.data;
 
@@ -27,12 +27,11 @@ import org.fest.swing.exception.ActionFailedException;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link TableCellInRowByValue#findCell(JTable, JTableCellReader)}</code>.
+ * Tests for {@link TableCellInRowByValue#findCell(JTable, JTableCellReader)}.
  *
  * @author Alex Ruiz
  */
 public class TableCellInRowByValue_findCell_Test extends TableCellFinder_TestCase {
-
   @Test
   public void should_find_cell_in_selected_row() {
     TableCellInRowByValue finder = TableCellInRowByValue.rowWithValue("1-0", "1-1", "1-2", "1-3", "1-4", "1-5").column(2);

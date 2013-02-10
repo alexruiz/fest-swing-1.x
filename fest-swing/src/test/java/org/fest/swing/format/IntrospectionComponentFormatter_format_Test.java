@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2007-2010 the original author or authors.
+ * Copyright @2007-2013 the original author or authors.
  */
 package org.fest.swing.format;
 
@@ -26,12 +26,11 @@ import org.fest.swing.test.core.EDTSafeTestCase;
 import org.junit.*;
 
 /**
- * Tests for <code>{@link IntrospectionComponentFormatter#format(java.awt.Component)}</code>.
+ * Tests for {@link IntrospectionComponentFormatter#format(java.awt.Component)}.
  *
  * @author Alex Ruiz
  */
 public class IntrospectionComponentFormatter_format_Test extends EDTSafeTestCase {
-
   private JButton button;
 
   @Before public void setUp() {

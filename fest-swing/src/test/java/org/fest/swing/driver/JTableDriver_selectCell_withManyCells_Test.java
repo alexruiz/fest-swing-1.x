@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -26,14 +26,13 @@ import org.junit.runners.*;
 import org.junit.runners.Parameterized.Parameters;
 
 /**
- * Tests for <code>{@link JTableDriver#selectCell(javax.swing.JTable, org.fest.swing.data.TableCell)}</code>.
+ * Tests for {@link JTableDriver#selectCell(javax.swing.JTable, org.fest.swing.data.TableCell)}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 @RunWith(Parameterized.class)
 public class JTableDriver_selectCell_withManyCells_Test extends JTableDriver_TestCase {
-
   private final int row;
   private final int column;
 

@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.util;
 
@@ -22,12 +22,11 @@ import static org.fest.assertions.Assertions.assertThat;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link Modifiers#maskFor(int)}</code>.
+ * Tests for {@link Modifiers#maskFor(int)}.
  *
  * @author Alex Ruiz
  */
 public class Modifiers_maskFor_Test {
-
   @Test
   public void should_return_mask_for_AltGraph_modifier() {
     assertThat(Modifiers.maskFor(VK_ALT_GRAPH)).isEqualTo(ALT_GRAPH_MASK);

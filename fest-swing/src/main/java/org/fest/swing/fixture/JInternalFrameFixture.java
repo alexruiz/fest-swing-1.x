@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2007-2010 the original author or authors.
+ * Copyright @2007-2013 the original author or authors.
  */
 package org.fest.swing.fixture;
 
@@ -27,7 +27,7 @@ import org.fest.swing.exception.*;
 import org.fest.swing.timing.Timeout;
 
 /**
- * Understands functional testing of <code>{@link JInternalFrame}</code>s:
+ * Understands functional testing of {@code JInternalFrame}s:
  * <ul>
  * <li>user input simulation</li>
  * <li>state verification</li>
@@ -38,16 +38,15 @@ import org.fest.swing.timing.Timeout;
  */
 public class JInternalFrameFixture extends ContainerFixture<JInternalFrame> implements CommonComponentFixture,
     FrameLikeFixture, JComponentFixture, JPopupMenuInvokerFixture {
-
   private JInternalFrameDriver driver;
 
   /**
-   * Creates a new <code>{@link JInternalFrameFixture}</code>.
-   * @param robot performs simulation of user events on a <code>JInternalFrame</code>.
-   * @param internalFrameName the name of the <code>JInternalFrame</code> to find using the given <code>Robot</code>.
-   * @throws NullPointerException if <code>robot</code> is {@code null}.
-   * @throws ComponentLookupException if a matching <code>JInternalFrame</code> could not be found.
-   * @throws ComponentLookupException if more than one matching <code>JInternalFrame</code> is found.
+   * Creates a new {@link JInternalFrameFixture}.
+   * @param robot performs simulation of user events on a {@code JInternalFrame}.
+   * @param internalFrameName the name of the {@code JInternalFrame} to find using the given {@code Robot}.
+   * @throws NullPointerException if {@code robot} is {@code null}.
+   * @throws ComponentLookupException if a matching {@code JInternalFrame} could not be found.
+   * @throws ComponentLookupException if more than one matching {@code JInternalFrame} is found.
    */
   public JInternalFrameFixture(Robot robot, String internalFrameName) {
     super(robot, internalFrameName, JInternalFrame.class);
@@ -55,11 +54,11 @@ public class JInternalFrameFixture extends ContainerFixture<JInternalFrame> impl
   }
 
   /**
-   * Creates a new <code>{@link JInternalFrameFixture}</code>.
-   * @param robot performs simulation of user events on the given <code>JInternalFrame</code>.
-   * @param target the <code>JInternalFrame</code> to be managed by this fixture.
-   * @throws NullPointerException if <code>robot</code> is {@code null}.
-   * @throws NullPointerException if <code>target</code> is {@code null}.
+   * Creates a new {@link JInternalFrameFixture}.
+   * @param robot performs simulation of user events on the given {@code JInternalFrame}.
+   * @param target the {@code JInternalFrame} to be managed by this fixture.
+   * @throws NullPointerException if {@code robot} is {@code null}.
+   * @throws NullPointerException if {@code target} is {@code null}.
    */
   public JInternalFrameFixture(Robot robot, JInternalFrame target) {
     super(robot, target);
@@ -71,8 +70,8 @@ public class JInternalFrameFixture extends ContainerFixture<JInternalFrame> impl
   }
 
   /**
-   * Sets the <code>{@link JInternalFrameDriver}</code> to be used by this fixture.
-   * @param newDriver the new <code>JInternalFrameDriver</code>.
+   * Sets the {@link JInternalFrameDriver} to be used by this fixture.
+   * @param newDriver the new {@code JInternalFrameDriver}.
    * @throws NullPointerException if the given driver is {@code null}.
    */
   protected final void driver(JInternalFrameDriver newDriver) {
@@ -81,7 +80,7 @@ public class JInternalFrameFixture extends ContainerFixture<JInternalFrame> impl
   }
 
   /**
-   * Brings this fixture's <code>{@link JInternalFrame}</code> to the front.
+   * Brings this fixture's {@code JInternalFrame} to the front.
    * @return this fixture.
    */
   public JInternalFrameFixture moveToFront() {
@@ -90,7 +89,7 @@ public class JInternalFrameFixture extends ContainerFixture<JInternalFrame> impl
   }
 
   /**
-   * Brings this fixture's <code>{@link JInternalFrame}</code> to the back.
+   * Brings this fixture's {@code JInternalFrame} to the back.
    * @return this fixture.
    */
   public JInternalFrameFixture moveToBack() {
@@ -99,9 +98,9 @@ public class JInternalFrameFixture extends ContainerFixture<JInternalFrame> impl
   }
 
   /**
-   * Simulates a user deiconifying this fixture's <code>{@link JInternalFrame}</code>.
+   * Simulates a user deiconifying this fixture's {@code JInternalFrame}.
    * @return this fixture.
-   * @throws ActionFailedException if the <code>JInternalFrame</code> vetoes the action.
+   * @throws ActionFailedException if the {@code JInternalFrame} vetoes the action.
    */
   public JInternalFrameFixture deiconify() {
     driver.deiconify(target);
@@ -109,10 +108,10 @@ public class JInternalFrameFixture extends ContainerFixture<JInternalFrame> impl
   }
 
   /**
-   * Simulates a user iconifying this fixture's <code>{@link JInternalFrame}</code>.
+   * Simulates a user iconifying this fixture's {@code JInternalFrame}.
    * @return this fixture.
-   * @throws ActionFailedException if the given <code>JInternalFrame</code> is not iconifiable.
-   * @throws ActionFailedException if the <code>JInternalFrame</code> vetoes the action.
+   * @throws ActionFailedException if the given {@code JInternalFrame} is not iconifiable.
+   * @throws ActionFailedException if the {@code JInternalFrame} vetoes the action.
    */
   public JInternalFrameFixture iconify() {
     driver.iconify(target);
@@ -120,11 +119,11 @@ public class JInternalFrameFixture extends ContainerFixture<JInternalFrame> impl
   }
 
   /**
-   * Simulates a user maximizing this fixture's <code>{@link JInternalFrame}</code>, deconifying it first if it is
+   * Simulates a user maximizing this fixture's {@code JInternalFrame}, deconifying it first if it is
    * iconified.
    * @return this fixture.
-   * @throws ActionFailedException if the given <code>JInternalFrame</code> is not maximizable.
-   * @throws ActionFailedException if the <code>JInternalFrame</code> vetoes the action.
+   * @throws ActionFailedException if the given {@code JInternalFrame} is not maximizable.
+   * @throws ActionFailedException if the {@code JInternalFrame} vetoes the action.
    */
   public JInternalFrameFixture maximize() {
     driver.maximize(target);
@@ -132,10 +131,10 @@ public class JInternalFrameFixture extends ContainerFixture<JInternalFrame> impl
   }
 
   /**
-   * Simulates a user normalizing this fixture's <code>{@link JInternalFrame}</code>, deconifying it first if it is
+   * Simulates a user normalizing this fixture's {@code JInternalFrame}, deconifying it first if it is
    * iconified.
    * @return this fixture.
-   * @throws ActionFailedException if the <code>JInternalFrame</code> vetoes the action.
+   * @throws ActionFailedException if the {@code JInternalFrame} vetoes the action.
    */
   public JInternalFrameFixture normalize() {
     driver.normalize(target);
@@ -143,18 +142,18 @@ public class JInternalFrameFixture extends ContainerFixture<JInternalFrame> impl
   }
 
   /**
-   * Simulates a user closing this fixture's <code>{@link JInternalFrame}</code>.
-   * @throws ActionFailedException if the <code>JInternalFrame</code> is not closable.
+   * Simulates a user closing this fixture's {@code JInternalFrame}.
+   * @throws ActionFailedException if the {@code JInternalFrame} is not closable.
    */
   public void close() {
     driver.close(target);
   }
 
   /**
-   * Asserts that the size of this fixture's <code>{@link JInternalFrame}</code> is equal to given one.
+   * Asserts that the size of this fixture's {@code JInternalFrame} is equal to given one.
    * @param size the given size to match.
    * @return this fixture.
-   * @throws AssertionError if the size of this fixture's <code>JInternalFrame</code> is not equal to the given size.
+   * @throws AssertionError if the size of this fixture's {@code JInternalFrame} is not equal to the given size.
    */
   public JInternalFrameFixture requireSize(Dimension size) {
     driver.requireSize(target, size);
@@ -162,8 +161,8 @@ public class JInternalFrameFixture extends ContainerFixture<JInternalFrame> impl
   }
 
   /**
-   * Simulates a user resizing horizontally this fixture's <code>{@link JInternalFrame}</code>.
-   * @param width the width that this fixture's <code>JInternalFrame</code> should have after being resized.
+   * Simulates a user resizing horizontally this fixture's {@code JInternalFrame}.
+   * @param width the width that this fixture's {@code JInternalFrame} should have after being resized.
    * @return this fixture.
    */
   public JInternalFrameFixture resizeWidthTo(int width) {
@@ -172,8 +171,8 @@ public class JInternalFrameFixture extends ContainerFixture<JInternalFrame> impl
   }
 
   /**
-   * Simulates a user resizing vertically this fixture's <code>{@link JInternalFrame}</code>.
-   * @param height the height that this fixture's <code>JInternalFrame</code> should have after being resized.
+   * Simulates a user resizing vertically this fixture's {@code JInternalFrame}.
+   * @param height the height that this fixture's {@code JInternalFrame} should have after being resized.
    * @return this fixture.
    */
   public JInternalFrameFixture resizeHeightTo(int height) {
@@ -182,8 +181,8 @@ public class JInternalFrameFixture extends ContainerFixture<JInternalFrame> impl
   }
 
   /**
-   * Simulates a user resizing this fixture's <code>{@link JInternalFrame}</code>.
-   * @param size the size that the target <code>JInternalFrame</code> should have after being resized.
+   * Simulates a user resizing this fixture's {@code JInternalFrame}.
+   * @param size the size that the target {@code JInternalFrame} should have after being resized.
    * @return this fixture.
    */
   public JInternalFrameFixture resizeTo(Dimension size) {
@@ -192,8 +191,8 @@ public class JInternalFrameFixture extends ContainerFixture<JInternalFrame> impl
   }
 
   /**
-   * Simulates a user moving this fixture's <code>{@link JInternalFrame}</code> to the given point.
-   * @param p the point to move this fixture's <code>JInternalFrame</code> to.
+   * Simulates a user moving this fixture's {@code JInternalFrame} to the given point.
+   * @param p the point to move this fixture's {@code JInternalFrame} to.
    * @return this fixture.
    */
   public JInternalFrameFixture moveTo(Point p) {
@@ -202,7 +201,7 @@ public class JInternalFrameFixture extends ContainerFixture<JInternalFrame> impl
   }
 
   /**
-   * Simulates a user clicking this fixture's <code>{@link JInternalFrame}</code>.
+   * Simulates a user clicking this fixture's {@code JInternalFrame}.
    * @return this fixture.
    */
   public JInternalFrameFixture click() {
@@ -211,7 +210,7 @@ public class JInternalFrameFixture extends ContainerFixture<JInternalFrame> impl
   }
 
   /**
-   * Simulates a user clicking this fixture's <code>{@link JInternalFrame}</code>.
+   * Simulates a user clicking this fixture's {@code JInternalFrame}.
    * @param button the button to click.
    * @return this fixture.
    */
@@ -221,10 +220,10 @@ public class JInternalFrameFixture extends ContainerFixture<JInternalFrame> impl
   }
 
   /**
-   * Simulates a user clicking this fixture's <code>{@link JInternalFrame}</code>.
+   * Simulates a user clicking this fixture's {@code JInternalFrame}.
    * @param mouseClickInfo specifies the button to click and the times the button should be clicked.
    * @return this fixture.
-   * @throws NullPointerException if the given <code>MouseClickInfo</code> is {@code null}.
+   * @throws NullPointerException if the given {@code MouseClickInfo} is {@code null}.
    */
   public JInternalFrameFixture click(MouseClickInfo mouseClickInfo) {
     driver.click(target, mouseClickInfo);
@@ -232,7 +231,7 @@ public class JInternalFrameFixture extends ContainerFixture<JInternalFrame> impl
   }
 
   /**
-   * Simulates a user right-clicking this fixture's <code>{@link JInternalFrame}</code>.
+   * Simulates a user right-clicking this fixture's {@code JInternalFrame}.
    * @return this fixture.
    */
   public JInternalFrameFixture rightClick() {
@@ -241,7 +240,7 @@ public class JInternalFrameFixture extends ContainerFixture<JInternalFrame> impl
   }
 
   /**
-   * Simulates a user double-clicking this fixture's <code>{@link JInternalFrame}</code>.
+   * Simulates a user double-clicking this fixture's {@code JInternalFrame}.
    * @return this fixture.
    */
   public JInternalFrameFixture doubleClick() {
@@ -250,7 +249,7 @@ public class JInternalFrameFixture extends ContainerFixture<JInternalFrame> impl
   }
 
   /**
-   * Gives input focus to this fixture's <code>{@link JInternalFrame}</code>.
+   * Gives input focus to this fixture's {@code JInternalFrame}.
    * @return this fixture.
    */
   public JInternalFrameFixture focus() {
@@ -259,11 +258,11 @@ public class JInternalFrameFixture extends ContainerFixture<JInternalFrame> impl
   }
 
   /**
-   * Simulates a user pressing given key with the given modifiers on this fixture's <code>{@link JInternalFrame}</code>.
-   * Modifiers is a mask from the available <code>{@link java.awt.event.InputEvent}</code> masks.
+   * Simulates a user pressing given key with the given modifiers on this fixture's {@code JInternalFrame}.
+   * Modifiers is a mask from the available {@link java.awt.event.InputEvent} masks.
    * @param keyPressInfo specifies the key and modifiers to press.
    * @return this fixture.
-   * @throws NullPointerException if the given <code>KeyPressInfo</code> is {@code null}.
+   * @throws NullPointerException if the given {@code KeyPressInfo} is {@code null}.
    * @throws IllegalArgumentException if the given code is not a valid key code.
    * @see KeyPressInfo
    */
@@ -273,7 +272,7 @@ public class JInternalFrameFixture extends ContainerFixture<JInternalFrame> impl
   }
 
   /**
-   * Simulates a user pressing and releasing the given keys on this fixture's <code>{@link JInternalFrame}</code> .
+   * Simulates a user pressing and releasing the given keys on this fixture's {@code JInternalFrame} .
    * @param keyCodes one or more codes of the keys to press.
    * @return this fixture.
    * @throws NullPointerException if the given array of codes is {@code null}.
@@ -286,7 +285,7 @@ public class JInternalFrameFixture extends ContainerFixture<JInternalFrame> impl
   }
 
   /**
-   * Simulates a user pressing given key on this fixture's <code>{@link JInternalFrame}</code>.
+   * Simulates a user pressing given key on this fixture's {@code JInternalFrame}.
    * @param keyCode the code of the key to press.
    * @return this fixture.
    * @throws IllegalArgumentException if any of the given code is not a valid key code.
@@ -298,7 +297,7 @@ public class JInternalFrameFixture extends ContainerFixture<JInternalFrame> impl
   }
 
   /**
-   * Simulates a user releasing the given key on this fixture's <code>{@link JInternalFrame}</code>.
+   * Simulates a user releasing the given key on this fixture's {@code JInternalFrame}.
    * @param keyCode the code of the key to release.
    * @return this fixture.
    * @throws IllegalArgumentException if any of the given code is not a valid key code.
@@ -310,9 +309,9 @@ public class JInternalFrameFixture extends ContainerFixture<JInternalFrame> impl
   }
 
   /**
-   * Asserts that this fixture's <code>{@link JInternalFrame}</code> has input focus.
+   * Asserts that this fixture's {@code JInternalFrame} has input focus.
    * @return this fixture.
-   * @throws AssertionError if this fixture's <code>JInternalFrame</code> does not have input focus.
+   * @throws AssertionError if this fixture's {@code JInternalFrame} does not have input focus.
    */
   public JInternalFrameFixture requireFocused() {
     driver.requireFocused(target);
@@ -320,9 +319,9 @@ public class JInternalFrameFixture extends ContainerFixture<JInternalFrame> impl
   }
 
   /**
-   * Asserts that this fixture's <code>{@link JInternalFrame}</code> is enabled.
+   * Asserts that this fixture's {@code JInternalFrame} is enabled.
    * @return this fixture.
-   * @throws AssertionError if the managed <code>JInternalFrame</code> is disabled.
+   * @throws AssertionError if the managed {@code JInternalFrame} is disabled.
    */
   public JInternalFrameFixture requireEnabled() {
     driver.requireEnabled(target);
@@ -330,10 +329,10 @@ public class JInternalFrameFixture extends ContainerFixture<JInternalFrame> impl
   }
 
   /**
-   * Asserts that this fixture's <code>{@link JInternalFrame}</code> is enabled.
+   * Asserts that this fixture's {@code JInternalFrame} is enabled.
    * @param timeout the time this fixture will wait for the component to be enabled.
    * @return this fixture.
-   * @throws WaitTimedOutError if the managed <code>JInternalFrame</code> is never enabled.
+   * @throws WaitTimedOutError if the managed {@code JInternalFrame} is never enabled.
    */
   public JInternalFrameFixture requireEnabled(Timeout timeout) {
     driver.requireEnabled(target, timeout);
@@ -341,9 +340,9 @@ public class JInternalFrameFixture extends ContainerFixture<JInternalFrame> impl
   }
 
   /**
-   * Asserts that this fixture's <code>{@link JInternalFrame}</code> is disabled.
+   * Asserts that this fixture's {@code JInternalFrame} is disabled.
    * @return this fixture.
-   * @throws AssertionError if the managed <code>JInternalFrame</code> is enabled.
+   * @throws AssertionError if the managed {@code JInternalFrame} is enabled.
    */
   public JInternalFrameFixture requireDisabled() {
     driver.requireDisabled(target);
@@ -351,9 +350,9 @@ public class JInternalFrameFixture extends ContainerFixture<JInternalFrame> impl
   }
 
   /**
-   * Asserts that this fixture's <code>{@link JInternalFrame}</code> is visible.
+   * Asserts that this fixture's {@code JInternalFrame} is visible.
    * @return this fixture.
-   * @throws AssertionError if the managed <code>JInternalFrame</code> is not visible.
+   * @throws AssertionError if the managed {@code JInternalFrame} is not visible.
    */
   public JInternalFrameFixture requireVisible() {
     driver.requireVisible(target);
@@ -361,9 +360,9 @@ public class JInternalFrameFixture extends ContainerFixture<JInternalFrame> impl
   }
 
   /**
-   * Asserts that this fixture's <code>{@link JInternalFrame}</code> is not visible.
+   * Asserts that this fixture's {@code JInternalFrame} is not visible.
    * @return this fixture.
-   * @throws AssertionError if the managed <code>JInternalFrame</code> is visible.
+   * @throws AssertionError if the managed {@code JInternalFrame} is visible.
    */
   public JInternalFrameFixture requireNotVisible() {
     driver.requireNotVisible(target);
@@ -372,10 +371,10 @@ public class JInternalFrameFixture extends ContainerFixture<JInternalFrame> impl
 
 
   /**
-   * Asserts that the toolTip in this fixture's <code>{@link JInternalFrame}</code> matches the given value.
+   * Asserts that the toolTip in this fixture's {@code JInternalFrame} matches the given value.
    * @param expected the given value. It can be a regular expression.
    * @return this fixture.
-   * @throws AssertionError if the toolTip in this fixture's <code>JInternalFrame</code> does not match the given value.
+   * @throws AssertionError if the toolTip in this fixture's {@code JInternalFrame} does not match the given value.
    * @since 1.2
    */
   public JInternalFrameFixture requireToolTip(String expected) {
@@ -384,12 +383,12 @@ public class JInternalFrameFixture extends ContainerFixture<JInternalFrame> impl
   }
 
   /**
-   * Asserts that the toolTip in this fixture's <code>{@link JInternalFrame}</code> matches the given regular expression
+   * Asserts that the toolTip in this fixture's {@code JInternalFrame} matches the given regular expression
    * pattern.
    * @param pattern the regular expression pattern to match.
    * @return this fixture.
    * @throws NullPointerException if the given regular expression pattern is {@code null}.
-   * @throws AssertionError if the toolTip in this fixture's <code>JInternalFrame</code> does not match the given
+   * @throws AssertionError if the toolTip in this fixture's {@code JInternalFrame} does not match the given
    * regular expression.
    * @since 1.2
    */
@@ -399,7 +398,7 @@ public class JInternalFrameFixture extends ContainerFixture<JInternalFrame> impl
   }
 
   /**
-   * Returns the client property stored in this fixture's <code>{@link JInternalFrame}</code>, under the given key.
+   * Returns the client property stored in this fixture's {@code JInternalFrame}, under the given key.
    * @param key the key to use to retrieve the client property.
    * @return the value of the client property stored under the given key, or {@code null} if the property was
    * not found.
@@ -411,10 +410,10 @@ public class JInternalFrameFixture extends ContainerFixture<JInternalFrame> impl
   }
 
   /**
-   * Shows a pop-up menu using this fixture's <code>{@link JInternalFrame}</code> as the invoker of the pop-up menu.
+   * Shows a pop-up menu using this fixture's {@code JInternalFrame} as the invoker of the pop-up menu.
    * @return a fixture that manages the displayed pop-up menu.
-   * @throws IllegalStateException if this fixture's <code>JInternalFrame</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JInternalFrame</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JInternalFrame} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JInternalFrame} is not showing on the screen.
    * @throws ComponentLookupException if a pop-up menu cannot be found.
    */
   public JPopupMenuFixture showPopupMenu() {
@@ -422,12 +421,12 @@ public class JInternalFrameFixture extends ContainerFixture<JInternalFrame> impl
   }
 
   /**
-   * Shows a pop-up menu at the given point using this fixture's <code>{@link JInternalFrame}</code> as the invoker of
+   * Shows a pop-up menu at the given point using this fixture's {@code JInternalFrame} as the invoker of
    * the pop-up menu.
    * @param p the given point where to show the pop-up menu.
    * @return a fixture that manages the displayed pop-up menu.
-   * @throws IllegalStateException if this fixture's <code>JInternalFrame</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JInternalFrame</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JInternalFrame} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JInternalFrame} is not showing on the screen.
    * @throws ComponentLookupException if a pop-up menu cannot be found.
    */
   public JPopupMenuFixture showPopupMenuAt(Point p) {

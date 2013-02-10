@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2007-2010 the original author or authors.
+ * Copyright @2007-2013 the original author or authors.
  */
 package org.fest.swing.fixture;
 
@@ -28,38 +28,38 @@ import org.fest.swing.exception.*;
 import org.fest.swing.timing.Timeout;
 
 /**
- * Understands functional testing of <code>{@link JTree}</code>s:
+ * Understands functional testing of {@code JTree}s:
  * <ul>
  * <li>user input simulation</li>
  * <li>state verification</li>
  * <li>property value query</li>
  * </ul>
  * <p>
- * <code>{@link TreePath}</code>s can be specified using {@code String}s. For example, for the following
+ * {@code TreePath}s can be specified using {@code String}s. For example, for the following
  * tree:
  *
- * <pre><code>
+ * <pre>
  * root
  *   |
  *   -- node1
  *      |
  *      -- node1.1
- * </code></pre>
+ * </pre>
  *
  * we can identify the node "node1.1" as follows:
  *
- * <pre><code>
+ * <pre>
  *   root/node1/node1.1
- * </code></pre>
+ * </pre>
  *
  * </p>
  * <p>
- * The default path separator is "/". It can be changed by calling <code>{@link #separator(String)}</code>.
+ * The default path separator is "/". It can be changed by calling {@link #separator(String)}.
  * </p>
  * <p>
- * The conversion between the values given in tests and the values being displayed by a <code>{@link JTree}</code>
- * renderer is performed by a <code>{@link JTreeCellReader}</code>. This fixture uses a
- * <code>{@link BasicJTreeCellReader}</code> by default.
+ * The conversion between the values given in tests and the values being displayed by a {@code JTree}
+ * renderer is performed by a {@link JTreeCellReader}. This fixture uses a
+ * {@link BasicJTreeCellReader} by default.
  * </p>
  *
  * @author Keith Coughtrey
@@ -69,15 +69,14 @@ import org.fest.swing.timing.Timeout;
  */
 public class JTreeFixture extends ComponentFixture<JTree> implements CommonComponentFixture,
     JComponentFixture, JPopupMenuInvokerFixture {
-
   private JTreeDriver driver;
 
   /**
-   * Creates a new <code>{@link JTreeFixture}</code>.
+   * Creates a new {@link JTreeFixture}.
    * @param robot performs simulation of user events on the given {@code JTree}.
    * @param target the {@code JTree} to be managed by this fixture.
-   * @throws NullPointerException if <code>robot</code> is {@code null}.
-   * @throws NullPointerException if <code>target</code> is {@code null}.
+   * @throws NullPointerException if {@code robot} is {@code null}.
+   * @throws NullPointerException if {@code target} is {@code null}.
    */
   public JTreeFixture(Robot robot, JTree target) {
     super(robot, target);
@@ -85,10 +84,10 @@ public class JTreeFixture extends ComponentFixture<JTree> implements CommonCompo
   }
 
   /**
-   * Creates a new <code>{@link JTreeFixture}</code>.
+   * Creates a new {@link JTreeFixture}.
    * @param robot performs simulation of user events on a {@code JTree}.
-   * @param treeName the name of the {@code JTree} to find using the given <code>Robot</code>.
-   * @throws NullPointerException if <code>robot</code> is {@code null}.
+   * @param treeName the name of the {@code JTree} to find using the given {@code Robot}.
+   * @throws NullPointerException if {@code robot} is {@code null}.
    * @throws ComponentLookupException if a matching {@code JTree} could not be found.
    * @throws ComponentLookupException if more than one matching {@code JTree} is found.
    */
@@ -102,8 +101,8 @@ public class JTreeFixture extends ComponentFixture<JTree> implements CommonCompo
   }
 
   /**
-   * Sets the <code>{@link JTreeDriver}</code> to be used by this fixture.
-   * @param newDriver the new <code>JTreeDriver</code>.
+   * Sets the {@link JTreeDriver} to be used by this fixture.
+   * @param newDriver the new {@code JTreeDriver}.
    * @throws NullPointerException if the given driver is {@code null}.
    */
   protected final void driver(JTreeDriver newDriver) {
@@ -152,7 +151,7 @@ public class JTreeFixture extends ComponentFixture<JTree> implements CommonCompo
    * @param row the given row.
    * @param mouseClickInfo specifies the mouse button to use and how many times to click.
    * @return this fixture.
-   * @throws NullPointerException if the given <code>MouseClickInfo</code> is {@code null}.
+   * @throws NullPointerException if the given {@code MouseClickInfo} is {@code null}.
    * @throws IllegalStateException if the {@code JTree} is disabled.
    * @throws IllegalStateException if the {@code JTree} is not showing on the screen.
    * @throws IndexOutOfBoundsException if the given row is less than zero or equal than or greater than the number of
@@ -199,7 +198,7 @@ public class JTreeFixture extends ComponentFixture<JTree> implements CommonCompo
    * @param path the given path.
    * @param mouseClickInfo specifies the mouse button to use and how many times to click.
    * @return this fixture.
-   * @throws NullPointerException if the given <code>MouseClickInfo</code> is {@code null}.
+   * @throws NullPointerException if the given {@code MouseClickInfo} is {@code null}.
    * @throws IllegalStateException if this fixture's {@code JTree} is disabled.
    * @throws IllegalStateException if this fixture's {@code JTree} is not showing on the screen.
    * @throws LocationUnavailableException if the given path cannot be found.
@@ -271,7 +270,7 @@ public class JTreeFixture extends ComponentFixture<JTree> implements CommonCompo
   }
 
   /**
-   * Simulates a user clicking this fixture's <code>{@link JTree}</code>.
+   * Simulates a user clicking this fixture's {@code JTree}.
    * @return this fixture.
    * @throws IllegalStateException if this fixture's {@code JTree} is disabled.
    * @throws IllegalStateException if this fixture's {@code JTree} is not showing on the screen.
@@ -282,10 +281,10 @@ public class JTreeFixture extends ComponentFixture<JTree> implements CommonCompo
   }
 
   /**
-   * Simulates a user clicking this fixture's <code>{@link JTree}</code>.
+   * Simulates a user clicking this fixture's {@code JTree}.
    * @param button the button to click.
    * @return this fixture.
-   * @throws NullPointerException if the given <code>MouseButton</code> is {@code null}.
+   * @throws NullPointerException if the given {@code MouseButton} is {@code null}.
    * @throws IllegalStateException if this fixture's {@code JTree} is disabled.
    * @throws IllegalStateException if this fixture's {@code JTree} is not showing on the screen.
    */
@@ -295,10 +294,10 @@ public class JTreeFixture extends ComponentFixture<JTree> implements CommonCompo
   }
 
   /**
-   * Simulates a user clicking this fixture's <code>{@link JTree}</code>.
+   * Simulates a user clicking this fixture's {@code JTree}.
    * @param mouseClickInfo specifies the button to click and the times the button should be clicked.
    * @return this fixture.
-   * @throws NullPointerException if the given <code>MouseClickInfo</code> is {@code null}.
+   * @throws NullPointerException if the given {@code MouseClickInfo} is {@code null}.
    * @throws IllegalStateException if this fixture's {@code JTree} is disabled.
    * @throws IllegalStateException if this fixture's {@code JTree} is not showing on the screen.
    */
@@ -308,7 +307,7 @@ public class JTreeFixture extends ComponentFixture<JTree> implements CommonCompo
   }
 
   /**
-   * Simulates a user double-clicking this fixture's <code>{@link JTree}</code>.
+   * Simulates a user double-clicking this fixture's {@code JTree}.
    * @return this fixture.
    * @throws IllegalStateException if this fixture's {@code JTree} is disabled.
    * @throws IllegalStateException if this fixture's {@code JTree} is not showing on the screen.
@@ -319,7 +318,7 @@ public class JTreeFixture extends ComponentFixture<JTree> implements CommonCompo
   }
 
   /**
-   * Simulates a user right-clicking this fixture's <code>{@link JTree}</code>.
+   * Simulates a user right-clicking this fixture's {@code JTree}.
    * @return this fixture.
    * @throws IllegalStateException if this fixture's {@code JTree} is disabled.
    * @throws IllegalStateException if this fixture's {@code JTree} is not showing on the screen.
@@ -330,7 +329,7 @@ public class JTreeFixture extends ComponentFixture<JTree> implements CommonCompo
   }
 
   /**
-   * Simulates a user dragging a row from this fixture's <code>{@link JTree}</code>.
+   * Simulates a user dragging a row from this fixture's {@code JTree}.
    * @param row the index of the row to drag.
    * @return this fixture.
    * @throws IllegalStateException if this fixture's {@code JTree} is disabled.
@@ -345,7 +344,7 @@ public class JTreeFixture extends ComponentFixture<JTree> implements CommonCompo
   }
 
   /**
-   * Simulates a user dragging an item from this fixture's <code>{@link JTree}</code>.
+   * Simulates a user dragging an item from this fixture's {@code JTree}.
    * @param path the path corresponding to the item to drag.
    * @return this fixture.
    * @throws IllegalStateException if this fixture's {@code JTree} is disabled.
@@ -358,7 +357,7 @@ public class JTreeFixture extends ComponentFixture<JTree> implements CommonCompo
   }
 
   /**
-   * Simulates a user dropping an item into this fixture's <code>{@link JTree}</code>.
+   * Simulates a user dropping an item into this fixture's {@code JTree}.
    * @param row the row to drop the item to.
    * @return this fixture.
    * @throws IllegalStateException if this fixture's {@code JTree} is disabled.
@@ -374,7 +373,7 @@ public class JTreeFixture extends ComponentFixture<JTree> implements CommonCompo
   }
 
   /**
-   * Simulates a user dropping an item into this fixture's <code>{@link JTree}</code>.
+   * Simulates a user dropping an item into this fixture's {@code JTree}.
    * @param path the path corresponding to the item relative to the drop point.
    * @return this fixture.
    * @throws IllegalStateException if this fixture's {@code JTree} is disabled.
@@ -388,7 +387,7 @@ public class JTreeFixture extends ComponentFixture<JTree> implements CommonCompo
   }
 
   /**
-   * Selects the given path, expanding parent nodes if necessary. Unlike <code>{@link #clickPath(String)}</code>,
+   * Selects the given path, expanding parent nodes if necessary. Unlike {@link #clickPath(String)},
    * this method will not click the path if it is already selected.
    * @param path the path to select.
    * @return this fixture.
@@ -560,7 +559,7 @@ public class JTreeFixture extends ComponentFixture<JTree> implements CommonCompo
   }
 
   /**
-   * Gives input focus to this fixture's <code>{@link JTree}</code>.
+   * Gives input focus to this fixture's {@code JTree}.
    * @return this fixture.
    * @throws IllegalStateException if this fixture's {@code JTree} is disabled.
    * @throws IllegalStateException if this fixture's {@code JTree} is not showing on the screen.
@@ -571,11 +570,11 @@ public class JTreeFixture extends ComponentFixture<JTree> implements CommonCompo
   }
 
   /**
-   * Simulates a user pressing given key with the given modifiers on this fixture's <code>{@link JTree}</code>.
-   * Modifiers is a mask from the available <code>{@link java.awt.event.InputEvent}</code> masks.
+   * Simulates a user pressing given key with the given modifiers on this fixture's {@code JTree}.
+   * Modifiers is a mask from the available {@link java.awt.event.InputEvent} masks.
    * @param keyPressInfo specifies the key and modifiers to press.
    * @return this fixture.
-   * @throws NullPointerException if the given <code>KeyPressInfo</code> is {@code null}.
+   * @throws NullPointerException if the given {@code KeyPressInfo} is {@code null}.
    * @throws IllegalArgumentException if the given code is not a valid key code.
    * @throws IllegalStateException if this fixture's {@code JTree} is disabled.
    * @throws IllegalStateException if this fixture's {@code JTree} is not showing on the screen.
@@ -587,7 +586,7 @@ public class JTreeFixture extends ComponentFixture<JTree> implements CommonCompo
   }
 
   /**
-   * Simulates a user pressing and releasing the given keys in this fixture's <code>{@link JTree}</code>.
+   * Simulates a user pressing and releasing the given keys in this fixture's {@code JTree}.
    * @param keyCodes the codes of the keys to press.
    * @return this fixture.
    * @throws NullPointerException if the given array of codes is {@code null}.
@@ -602,7 +601,7 @@ public class JTreeFixture extends ComponentFixture<JTree> implements CommonCompo
   }
 
   /**
-   * Simulates a user pressing the given key on this fixture's <code>{@link JTree}</code>.
+   * Simulates a user pressing the given key on this fixture's {@code JTree}.
    * @param keyCode the code of the key to press.
    * @return this fixture.
    * @throws IllegalArgumentException if any of the given code is not a valid key code.
@@ -616,7 +615,7 @@ public class JTreeFixture extends ComponentFixture<JTree> implements CommonCompo
   }
 
   /**
-   * Simulates a user releasing the given key on this fixture's <code>{@link JTree}</code>.
+   * Simulates a user releasing the given key on this fixture's {@code JTree}.
    * @param keyCode the code of the key to release.
    * @return this fixture.
    * @see java.awt.event.KeyEvent
@@ -630,7 +629,7 @@ public class JTreeFixture extends ComponentFixture<JTree> implements CommonCompo
   }
 
   /**
-   * Asserts that this fixture's <code>{@link JTree}</code> has input focus.
+   * Asserts that this fixture's {@code JTree} has input focus.
    * @return this fixture.
    * @throws AssertionError if this fixture's {@code JTree} does not have input focus.
    */
@@ -640,7 +639,7 @@ public class JTreeFixture extends ComponentFixture<JTree> implements CommonCompo
   }
 
   /**
-   * Asserts that this fixture's <code>{@link JTree}</code> is enabled.
+   * Asserts that this fixture's {@code JTree} is enabled.
    * @return this fixture.
    * @throws AssertionError if this fixture's {@code JTree} is disabled.
    */
@@ -650,7 +649,7 @@ public class JTreeFixture extends ComponentFixture<JTree> implements CommonCompo
   }
 
   /**
-   * Asserts that this fixture's <code>{@link JTree}</code> is enabled.
+   * Asserts that this fixture's {@code JTree} is enabled.
    * @param timeout the time this fixture will wait for the component to be enabled.
    * @return this fixture.
    * @throws org.fest.swing.exception.WaitTimedOutError if this fixture's {@code JTree} is never enabled.
@@ -661,7 +660,7 @@ public class JTreeFixture extends ComponentFixture<JTree> implements CommonCompo
   }
 
   /**
-   * Asserts that this fixture's <code>{@link JTree}</code> is disabled.
+   * Asserts that this fixture's {@code JTree} is disabled.
    * @return this fixture.
    * @throws AssertionError if this fixture's {@code JTree} is enabled.
    */
@@ -671,7 +670,7 @@ public class JTreeFixture extends ComponentFixture<JTree> implements CommonCompo
   }
 
   /**
-   * Asserts that this fixture's <code>{@link JTree}</code> is visible.
+   * Asserts that this fixture's {@code JTree} is visible.
    * @return this fixture.
    * @throws AssertionError if this fixture's {@code JTree} is not visible.
    */
@@ -681,7 +680,7 @@ public class JTreeFixture extends ComponentFixture<JTree> implements CommonCompo
   }
 
   /**
-   * Asserts that this fixture's <code>{@link JTree}</code> is not visible.
+   * Asserts that this fixture's {@code JTree} is not visible.
    * @return this fixture.
    * @throws AssertionError if this fixture's {@code JTree} is visible.
    */
@@ -691,7 +690,7 @@ public class JTreeFixture extends ComponentFixture<JTree> implements CommonCompo
   }
 
   /**
-   * Asserts that this fixture's <code>{@link JTree}</code> is editable.
+   * Asserts that this fixture's {@code JTree} is editable.
    * @throws AssertionError if this fixture's {@code JTree} is not editable.
    * @return this fixture.
    * @throws AssertionError if this fixture's {@code JTree} is not editable.
@@ -702,7 +701,7 @@ public class JTreeFixture extends ComponentFixture<JTree> implements CommonCompo
   }
 
   /**
-   * Asserts that this fixture's <code>{@link JTree}</code> is not editable.
+   * Asserts that this fixture's {@code JTree} is not editable.
    * @throws AssertionError if this fixture's {@code JTree} is editable.
    * @return this fixture.
    * @throws AssertionError if this fixture's {@code JTree} is editable.
@@ -713,7 +712,7 @@ public class JTreeFixture extends ComponentFixture<JTree> implements CommonCompo
   }
 
   /**
-   * Asserts that this fixture's <code>{@link JTree}</code> selection is equal to the given paths.
+   * Asserts that this fixture's {@code JTree} selection is equal to the given paths.
    * @param paths the given paths, expected to be selected.
    * @return this fixture.
    * @throws NullPointerException if the array of paths is {@code null}.
@@ -726,7 +725,7 @@ public class JTreeFixture extends ComponentFixture<JTree> implements CommonCompo
   }
 
   /**
-   * Asserts that this fixture's <code>{@link JTree}</code>'s selected rows are equal to the given one.
+   * Asserts that this fixture's {@code JTree}'s selected rows are equal to the given one.
    * @param rows the indices of the rows, expected to be selected.
    * @throws NullPointerException if the array of row indices is {@code null}.
    * @throws AssertionError if this fixture's {@code JTree} selection is not equal to the given rows.
@@ -738,7 +737,7 @@ public class JTreeFixture extends ComponentFixture<JTree> implements CommonCompo
   }
 
   /**
-   * Asserts that this fixture's <code>{@link JTree}</code>'s does not have any selection.
+   * Asserts that this fixture's {@code JTree}'s does not have any selection.
    * @return this fixture.
    * @throws AssertionError if this fixture's {@code JTree} has a selection.
    */
@@ -748,7 +747,7 @@ public class JTreeFixture extends ComponentFixture<JTree> implements CommonCompo
   }
 
   /**
-   * Asserts that the toolTip in this fixture's <code>{@link JTree}</code> matches the given value.
+   * Asserts that the toolTip in this fixture's {@code JTree} matches the given value.
    * @param expected the given value. It can be a regular expression.
    * @return this fixture.
    * @throws AssertionError if the toolTip in this fixture's {@code JTree} does not match the given value.
@@ -760,7 +759,7 @@ public class JTreeFixture extends ComponentFixture<JTree> implements CommonCompo
   }
 
   /**
-   * Asserts that the toolTip in this fixture's <code>{@link JTree}</code> matches the given regular expression
+   * Asserts that the toolTip in this fixture's {@code JTree} matches the given regular expression
    * pattern.
    * @param pattern the regular expression pattern to match.
    * @return this fixture.
@@ -776,7 +775,7 @@ public class JTreeFixture extends ComponentFixture<JTree> implements CommonCompo
 
 
   /**
-   * Returns the client property stored in this fixture's <code>{@link JButton}</code>, under the given key.
+   * Returns the client property stored in this fixture's {@link JButton}, under the given key.
    * @param key the key to use to retrieve the client property.
    * @return the value of the client property stored under the given key, or {@code null} if the property was
    * not found.
@@ -788,7 +787,7 @@ public class JTreeFixture extends ComponentFixture<JTree> implements CommonCompo
   }
 
   /**
-   * Shows a pop-up menu using this fixture's <code>{@link JTree}</code> as the invoker of the pop-up menu.
+   * Shows a pop-up menu using this fixture's {@code JTree} as the invoker of the pop-up menu.
    * @return a fixture that manages the displayed pop-up menu.
    * @throws IllegalStateException if this fixture's {@code JTree} is disabled.
    * @throws IllegalStateException if this fixture's {@code JTree} is not showing on the screen.
@@ -799,7 +798,7 @@ public class JTreeFixture extends ComponentFixture<JTree> implements CommonCompo
   }
 
   /**
-   * Shows a pop-up menu at the given point using this fixture's <code>{@link JTree}</code> as the invoker of the
+   * Shows a pop-up menu at the given point using this fixture's {@code JTree} as the invoker of the
    * pop-up menu.
    * @param p the given point where to show the pop-up menu.
    * @return a fixture that manages the displayed pop-up menu.
@@ -812,15 +811,15 @@ public class JTreeFixture extends ComponentFixture<JTree> implements CommonCompo
   }
 
   /**
-   * Returns the separator to use when converting <code>{@link TreePath}</code>s to {@code String}s.
-   * @return the separator to use when converting <code>{@link TreePath}</code>s to {@code String}s.
+   * Returns the separator to use when converting {@code TreePath}s to {@code String}s.
+   * @return the separator to use when converting {@code TreePath}s to {@code String}s.
    */
   public String separator() {
     return driver.separator();
   }
 
   /**
-   * Updates the separator to use when converting <code>{@link TreePath}</code>s to {@code String}s. The default
+   * Updates the separator to use when converting {@code TreePath}s to {@code String}s. The default
    * value is "/".
    * @param separator the new separator.
    * @return this fixture.
@@ -832,11 +831,11 @@ public class JTreeFixture extends ComponentFixture<JTree> implements CommonCompo
   }
 
   /**
-   * Updates the implementation of <code>{@link JTreeCellReader}</code> to use when comparing internal values of a
-   * <code>{@link JTree}</code> and the values expected in a test. The default implementation to use
-   * is <code>{@link BasicJTreeCellReader}</code>.
-   * @param cellReader the new <code>JTreeCellValueReader</code> to use.
-   * @throws NullPointerException if <code>cellReader</code> is {@code null}.
+   * Updates the implementation of {@link JTreeCellReader} to use when comparing internal values of a
+   * {@code JTree} and the values expected in a test. The default implementation to use
+   * is {@link BasicJTreeCellReader}.
+   * @param cellReader the new {@code JTreeCellValueReader} to use.
+   * @throws NullPointerException if {@code cellReader} is {@code null}.
    * @return this fixture.
    */
   public JTreeFixture cellReader(JTreeCellReader cellReader) {
@@ -853,7 +852,7 @@ public class JTreeFixture extends ComponentFixture<JTree> implements CommonCompo
    * @since 1.2
    */
   public JTreeNodeFixture node(int row) {
-    driver.validateRow(target, row);
+    driver.checkRowInBounds(target, row);
     return new JTreeRowFixture(this, row);
   }
 
@@ -865,7 +864,7 @@ public class JTreeFixture extends ComponentFixture<JTree> implements CommonCompo
    * @since 1.2
    */
   public JTreeNodeFixture node(String path) {
-    driver.validatePath(target, path);
+    driver.checkPathExists(target, path);
     return new JTreePathFixture(this, path);
   }
 

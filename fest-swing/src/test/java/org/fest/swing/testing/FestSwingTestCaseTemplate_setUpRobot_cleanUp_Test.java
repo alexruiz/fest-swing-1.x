@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.testing;
 
@@ -22,13 +22,12 @@ import org.fest.swing.hierarchy.ExistingHierarchy;
 import org.junit.*;
 
 /**
- * Tests for <code>{@link FestSwingTestCaseTemplate#setUpRobot()}</code> and
- * <code>{@link FestSwingTestCaseTemplate#cleanUp()}</code>.
+ * Tests for {@link FestSwingTestCaseTemplate#setUpRobot()} and
+ * {@link FestSwingTestCaseTemplate#cleanUp()}.
  *
  * @author Alex Ruiz
  */
 public class FestSwingTestCaseTemplate_setUpRobot_cleanUp_Test {
-
   private TestCase testCase;
 
   @Before public void setUp() {

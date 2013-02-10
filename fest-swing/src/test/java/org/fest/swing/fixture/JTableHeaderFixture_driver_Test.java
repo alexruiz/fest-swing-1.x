@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.fixture;
 
@@ -24,13 +24,12 @@ import org.fest.swing.test.core.EDTSafeTestCase;
 import org.junit.*;
 
 /**
- * Tests for <code>{@link JTableHeaderFixture#driver(org.fest.swing.driver.JTableHeaderDriver)}</code>.
+ * Tests for {@link JTableHeaderFixture#driver(org.fest.swing.driver.JTableHeaderDriver)}.
  *
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
 public class JTableHeaderFixture_driver_Test extends EDTSafeTestCase {
-
   private JTableHeaderFixture fixture;
   private JTableHeader target;
 

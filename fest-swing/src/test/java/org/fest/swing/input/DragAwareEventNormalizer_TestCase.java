@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.input;
 
@@ -20,12 +20,11 @@ import java.awt.EventQueue;
 import org.junit.Before;
 
 /**
- * Base test case for <code>{@link DragAwareEventNormalizer}</code>.
+ * Base test case for {@link DragAwareEventNormalizer}.
  *
  * @author Alex Ruiz
  */
 public abstract class DragAwareEventNormalizer_TestCase extends EventNormalizer_TestCase {
-
   DragAwareEventNormalizer eventNormalizer;
 
   @Before public void setUp() {

@@ -11,19 +11,18 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.core;
 
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link MouseButton#lookup(int)}</code> with illegal arguments.
+ * Tests for {@link MouseButton#lookup(int)} with illegal arguments.
  *
  * @author Alex Ruiz
  */
 public class MouseButton_lookup_withInvalidValue_Test {
-
   @Test(expected = IllegalArgumentException.class)
   public void shouldThrowErrorInLookupIfMaskIsInvalid() {
     MouseButton.lookup(Integer.MIN_VALUE);

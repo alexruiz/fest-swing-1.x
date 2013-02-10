@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -20,12 +20,11 @@ import static org.fest.swing.test.core.CommonAssertions.*;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JTreeDriver#collapseRow(javax.swing.JTree, int)}</code>.
+ * Tests for {@link JTreeDriver#collapseRow(javax.swing.JTree, int)}.
  *
  * @author Alex Ruiz
  */
 public class JTreeDriver_collapseRow_Test extends JTreeDriver_toggleCell_TestCase {
-
   @Test
   public void should_collapse_cell() {
     showWindow();

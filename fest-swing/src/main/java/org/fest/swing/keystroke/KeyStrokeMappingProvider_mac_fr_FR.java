@@ -1,43 +1,85 @@
 /*
  * Created on May 19, 2010
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ * 
  * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
- *
- * Copyright @2010 the original author or authors.
+ * 
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+ * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations under the License.
+ * 
+ * Copyright @2010-2013 the original author or authors.
  */
 package org.fest.swing.keystroke;
 
 import static java.awt.event.InputEvent.SHIFT_MASK;
-import static java.awt.event.KeyEvent.*;
-import static java.util.Collections.unmodifiableList;
+import static java.awt.event.KeyEvent.VK_0;
+import static java.awt.event.KeyEvent.VK_1;
+import static java.awt.event.KeyEvent.VK_2;
+import static java.awt.event.KeyEvent.VK_3;
+import static java.awt.event.KeyEvent.VK_4;
+import static java.awt.event.KeyEvent.VK_5;
+import static java.awt.event.KeyEvent.VK_6;
+import static java.awt.event.KeyEvent.VK_7;
+import static java.awt.event.KeyEvent.VK_8;
+import static java.awt.event.KeyEvent.VK_9;
+import static java.awt.event.KeyEvent.VK_A;
+import static java.awt.event.KeyEvent.VK_B;
+import static java.awt.event.KeyEvent.VK_BACK_SPACE;
+import static java.awt.event.KeyEvent.VK_C;
+import static java.awt.event.KeyEvent.VK_COMMA;
+import static java.awt.event.KeyEvent.VK_D;
+import static java.awt.event.KeyEvent.VK_DELETE;
+import static java.awt.event.KeyEvent.VK_E;
+import static java.awt.event.KeyEvent.VK_ENTER;
+import static java.awt.event.KeyEvent.VK_EQUALS;
+import static java.awt.event.KeyEvent.VK_ESCAPE;
+import static java.awt.event.KeyEvent.VK_F;
+import static java.awt.event.KeyEvent.VK_G;
+import static java.awt.event.KeyEvent.VK_H;
+import static java.awt.event.KeyEvent.VK_I;
+import static java.awt.event.KeyEvent.VK_J;
+import static java.awt.event.KeyEvent.VK_K;
+import static java.awt.event.KeyEvent.VK_L;
+import static java.awt.event.KeyEvent.VK_M;
+import static java.awt.event.KeyEvent.VK_MINUS;
+import static java.awt.event.KeyEvent.VK_N;
+import static java.awt.event.KeyEvent.VK_O;
+import static java.awt.event.KeyEvent.VK_P;
+import static java.awt.event.KeyEvent.VK_PERIOD;
+import static java.awt.event.KeyEvent.VK_Q;
+import static java.awt.event.KeyEvent.VK_R;
+import static java.awt.event.KeyEvent.VK_S;
+import static java.awt.event.KeyEvent.VK_SEMICOLON;
+import static java.awt.event.KeyEvent.VK_SLASH;
+import static java.awt.event.KeyEvent.VK_T;
+import static java.awt.event.KeyEvent.VK_U;
+import static java.awt.event.KeyEvent.VK_V;
+import static java.awt.event.KeyEvent.VK_W;
+import static java.awt.event.KeyEvent.VK_X;
+import static java.awt.event.KeyEvent.VK_Y;
+import static java.awt.event.KeyEvent.VK_Z;
 import static org.fest.swing.keystroke.KeyStrokeMapping.mapping;
+import static org.fest.util.Lists.newArrayList;
 
-import java.util.*;
+import java.util.Collection;
+import java.util.List;
 
-import javax.swing.KeyStroke;
+import javax.annotation.Nonnull;
 
 /**
- * Understands mapping characters to <code>{@link KeyStroke}</code>s for Mac OS and locale
- * <code>{@link java.util.Locale#FRENCH FRENCH}</code>.
- *
+ * Mapping between characters and {@code KeyStroke}s for Mac OS and locale {@code Locale.FRENCH}.
+ * 
  * @author Olivier DOREMIEUX
  */
 public class KeyStrokeMappingProvider_mac_fr_FR implements KeyStrokeMappingProvider {
-
   /**
-   * Returns the mapping between characters and <code>{@link KeyStroke}</code>s for Mac OS and locale
-   * <code>{@link java.util.Locale#FRENCH FRENCH}</code>.
-   * @return the mapping between characters and <code>KeyStroke</code>s for Mac OS and locale <code>FRENCH</code>.
+   * @return the mapping between characters and {@code KeyStroke}s for Mac OS and {@code Locale.FRENCH}.
    */
-  public Collection<KeyStrokeMapping> keyStrokeMappings() {
+  @Override
+  public @Nonnull Collection<KeyStrokeMapping> keyStrokeMappings() {
     return SingletonHolder.instance;
   }
 
@@ -46,8 +88,8 @@ public class KeyStrokeMappingProvider_mac_fr_FR implements KeyStrokeMappingProvi
     static List<KeyStrokeMapping> instance = createMappings();
   }
 
-  private static List<KeyStrokeMapping> createMappings() {
-    List<KeyStrokeMapping> mappings = new ArrayList<KeyStrokeMapping>();
+  private static @Nonnull List<KeyStrokeMapping> createMappings() {
+    List<KeyStrokeMapping> mappings = newArrayList();
     mappings.add(mapping('\b', VK_BACK_SPACE, NO_MASK));
     mappings.add(mapping('', VK_DELETE, NO_MASK));
     mappings.add(mapping('', VK_ESCAPE, NO_MASK));
@@ -137,6 +179,6 @@ public class KeyStrokeMappingProvider_mac_fr_FR implements KeyStrokeMappingProvi
     mappings.add(mapping('Y', VK_Y, SHIFT_MASK));
     mappings.add(mapping('z', VK_W, NO_MASK));
     mappings.add(mapping('Z', VK_W, SHIFT_MASK));
-    return unmodifiableList(mappings);
+    return mappings;
   }
 }

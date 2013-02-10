@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.test.swing;
 
@@ -22,14 +22,13 @@ import javax.swing.table.TableCellRenderer;
 import javax.swing.tree.TreeCellRenderer;
 
 /**
- * Understands a cell renderer that returns the specified <code>{@link Component}</code> as its renderer component.
+ * Understands a cell renderer that returns the specified {@code Component} as its renderer component.
  * Used only for testing.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 public class CustomCellRenderer implements ListCellRenderer, TableCellRenderer, TreeCellRenderer {
-
   private static final long serialVersionUID = 1L;
   private final Component rendererComponent;
 

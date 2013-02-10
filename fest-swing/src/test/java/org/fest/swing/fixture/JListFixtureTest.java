@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2007-2010 the original author or authors.
+ * Copyright @2007-2013 the original author or authors.
  */
 package org.fest.swing.fixture;
 
@@ -35,13 +35,12 @@ import org.fest.swing.util.Range.To;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JListFixture}</code>.
+ * Tests for {@link JListFixture}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 public class JListFixtureTest extends JListFixture_TestCase {
-
   // TODO Reorganize into smaller units
 
   @Test

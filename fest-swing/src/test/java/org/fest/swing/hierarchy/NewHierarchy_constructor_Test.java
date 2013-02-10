@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2007-2010 the original author or authors.
+ * Copyright @2007-2013 the original author or authors.
  */
 package org.fest.swing.hierarchy;
 
@@ -23,13 +23,12 @@ import org.fest.swing.listener.WeakEventListener;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link NewHierarchy#NewHierarchy(java.awt.Toolkit, WindowFilter, boolean)}</code>.
+ * Tests for {@link NewHierarchy#NewHierarchy(java.awt.Toolkit, WindowFilter, boolean)}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 public class NewHierarchy_constructor_Test extends NewHierarchy_TestCase {
-
   @Test
   public void should_ignore_existing_Components_and_addTransientWindowListener_to_Toolkit() {
     new NewHierarchy(toolkit, filter, true);

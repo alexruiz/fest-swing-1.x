@@ -11,27 +11,27 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.applet;
 
 import static org.fest.assertions.Assertions.assertThat;
+import static org.fest.util.Maps.newHashMap;
 
-import java.util.*;
+import java.util.Map;
 
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link BasicAppletStub#getParameter(String)}</code>
+ * Tests for {@link BasicAppletStub#getParameter(String)}
  *
  * @author Alex Ruiz
  * @author Yvonne Price
  */
 public class BasicAppletStub_getParameter_Test extends BasicAppletStub_TestCase {
-
   @Test
   public void should_return_parameter() {
-    Map<String, String> parameters = new HashMap<String, String>();
+    Map<String, String> parameters = newHashMap();
     parameters.put("key1", "value1");
     stub = new BasicAppletStub(viewer, context, parameters);
     assertThat(stub.getParameter("key1")).isEqualTo("value1");

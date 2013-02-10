@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -27,12 +27,11 @@ import org.fest.swing.timing.Timeout;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JProgressBarDriver#waitUntilIsDeterminate(javax.swing.JProgressBar, Timeout)}</code>.
+ * Tests for {@link JProgressBarDriver#waitUntilIsDeterminate(javax.swing.JProgressBar, Timeout)}.
  *
  * @author Alex Ruiz
  */
 public class JProgressBarDriver_waitUntilIsDeterminate_withTimeout_Test extends JProgressBarDriver_TestCase {
-
   @Test
   public void should_throw_error_if_timeout_is_null() {
     try {

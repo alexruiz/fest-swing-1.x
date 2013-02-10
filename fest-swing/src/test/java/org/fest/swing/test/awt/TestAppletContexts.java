@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2010 the original author or authors.
+ * Copyright @2010-2013 the original author or authors.
  */
 package org.fest.swing.test.awt;
 
@@ -20,12 +20,11 @@ import static org.easymock.classextension.EasyMock.createMock;
 import java.applet.AppletContext;
 
 /**
- * Understands <code>{@link AppletContext}</code>s to be used for testing purposes.
+ * Understands {@link AppletContext}s to be used for testing purposes.
  *
  * @author Alex Ruiz
  */
 public final class TestAppletContexts {
-
   public static AppletContext singletonAppletContextMock() {
     return LazyLoadedSingleton.INSTANCE;
   }

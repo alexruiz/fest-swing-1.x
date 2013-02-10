@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -28,13 +28,12 @@ import org.junit.runners.*;
 import org.junit.runners.Parameterized.Parameters;
 
 /**
- * Tests for <code>{@link JTableHeaderDriver#clickColumn(javax.swing.table.JTableHeader, String)}</code>.
+ * Tests for {@link JTableHeaderDriver#clickColumn(javax.swing.table.JTableHeader, String)}.
  *
  * @author Yvonne Wang
  */
 @RunWith(Parameterized.class)
 public class JTableHeaderDriver_clickColumnByName_withManyNames_Test extends JTableHeaderDriver_TestCase {
-
   private final String name;
   private final int index;
 

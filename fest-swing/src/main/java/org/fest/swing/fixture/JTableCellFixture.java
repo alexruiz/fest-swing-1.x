@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2007-2010 the original author or authors.
+ * Copyright @2007-2013 the original author or authors.
  */
 package org.fest.swing.fixture;
 
@@ -29,7 +29,7 @@ import org.fest.swing.driver.JTableDriver;
 import org.fest.swing.exception.*;
 
 /**
- * Understands functional testing of single cells in <code>{@link JTable}</code>s:
+ * Understands functional testing of single cells in {@code JTable}s:
  * <ul>
  * <li>user input simulation</li>
  * <li>state verification</li>
@@ -50,16 +50,15 @@ import org.fest.swing.exception.*;
  * @see TableCell
  */
 public class JTableCellFixture implements ItemFixture {
-
   private final JTableFixture table;
   private final TableCell cell;
 
   /**
-   * Creates a new <code>{@link JTableCellFixture}</code>.
+   * Creates a new {@link JTableCellFixture}.
    * @param table handles the {@code JTable} containing the cell in this fixture.
    * @param cell row and column indices of the table cell to be managed by this fixture.
-   * @throws NullPointerException if <code>table</code> is {@code null}.
-   * @throws NullPointerException if <code>cell</code> is {@code null}.
+   * @throws NullPointerException if {@code table} is {@code null}.
+   * @throws NullPointerException if {@code cell} is {@code null}.
    */
   protected JTableCellFixture(JTableFixture table, TableCell cell) {
     validateNotNull(table);
@@ -105,7 +104,7 @@ public class JTableCellFixture implements ItemFixture {
    * Simulates a user clicking this fixture's table cell.
    * @param mouseClickInfo specifies the button to click and the times the button should be clicked.
    * @return this fixture.
-   * @throws NullPointerException if the given <code>MouseClickInfo</code> is {@code null}.
+   * @throws NullPointerException if the given {@code MouseClickInfo} is {@code null}.
    * @throws IllegalStateException if this fixture's {@code JTable} is disabled.
    * @throws IllegalStateException if this fixture's {@code JTable} is not showing on the screen.
    */
@@ -138,7 +137,7 @@ public class JTableCellFixture implements ItemFixture {
    * Simulates a user clicking a cell in this fixture's table cell once, using the specified mouse button.
    * @param button the mouse button to use.
    * @return this fixture.
-   * @throws NullPointerException if the given <code>MouseButton</code> is {@code null}.
+   * @throws NullPointerException if the given {@code MouseButton} is {@code null}.
    * @throws IllegalStateException if this fixture's {@code JTable} is disabled.
    * @throws IllegalStateException if this fixture's {@code JTable} is not showing on the screen.
    */
@@ -154,9 +153,9 @@ public class JTableCellFixture implements ItemFixture {
 
   /**
    * Starts editing this fixture's table cell. This method should be called <strong>before</strong> manipulating the
-   * <code>{@link Component}</code> returned by <code>{@link #editor()}</code>.
+   * {@code Component} returned by {@link #editor()}.
    * <p>
-   * This method uses the <code>{@link JTableCellWriter}</code> from the <code>{@link JTableFixture}</code> that
+   * This method uses the {@link JTableCellWriter} from the {@link JTableFixture} that
    * created this fixture.
    * </p>
    * @return this fixture.
@@ -176,9 +175,9 @@ public class JTableCellFixture implements ItemFixture {
 
   /**
    * Stops editing this fixture's table cell. This method should be called <strong>after</strong> manipulating the
-   * <code>{@link Component}</code> returned by <code>{@link #editor()}</code>.
+   * {@code Component} returned by {@link #editor()}.
    * <p>
-   * This method uses the <code>{@link JTableCellWriter}</code> from the <code>{@link JTableFixture}</code> that
+   * This method uses the {@link JTableCellWriter} from the {@link JTableFixture} that
    * created this fixture.
    * </p>
    * @return this fixture.
@@ -198,7 +197,7 @@ public class JTableCellFixture implements ItemFixture {
 
   /**
    * Cancels editing this fixture's table cell. This method should be called <strong>after</strong> manipulating the
-   * <code>{@link Component}</code> returned by <code>{@link #editor()}</code>.
+   * {@code Component} returned by {@link #editor()}.
    * <p>
    *
    * <pre>
@@ -214,7 +213,7 @@ public class JTableCellFixture implements ItemFixture {
    *
    * </p>
    * <p>
-   * This method uses the <code>{@link JTableCellWriter}</code> from the <code>{@link JTableFixture}</code> that
+   * This method uses the {@link JTableCellWriter} from the {@link JTableFixture} that
    * created this fixture.
    * </p>
    * @return this fixture.
@@ -234,9 +233,9 @@ public class JTableCellFixture implements ItemFixture {
 
   /**
    * Returns the editor of this fixture's table cell. To manipulate the editor (e.g. wrapping it with a
-   * <code>ComponentFixture</code>,) the method <code>{@link #startEditing()}</code> should be called first. To
-   * apply any changes back to the table cell, the method <code>{@link #stopEditing()}</code> should be called. This
-   * method uses the <code>{@link JTableCellWriter}</code> from the <code>{@link JTableFixture}</code> that created
+   * {@code ComponentFixture},) the method {@link #startEditing()} should be called first. To
+   * apply any changes back to the table cell, the method {@link #stopEditing()} should be called. This
+   * method uses the {@link JTableCellWriter} from the {@link JTableFixture} that created
    * this fixture.
    * <p>
    * Example:
@@ -263,9 +262,9 @@ public class JTableCellFixture implements ItemFixture {
   /**
    * Enters the given value to this fixture's table cell. This method starts cell edition, enters the given value and
    * stops cell edition. To change the value of a cell, only a call to this method is necessary. If you need more
-   * flexibility, you can retrieve the cell editor with <code>{@link #editor()}</code>.
+   * flexibility, you can retrieve the cell editor with {@link #editor()}.
    * <p>
-   * This method uses the <code>{@link JTableCellWriter}</code> from the <code>{@link JTableFixture}</code> that
+   * This method uses the {@link JTableCellWriter} from the {@link JTableFixture} that
    * created this fixture.
    * </p>
    * @param value the value to enter in the cell.
@@ -274,7 +273,7 @@ public class JTableCellFixture implements ItemFixture {
    * @throws IllegalStateException if this fixture's {@code JTable} is not showing on the screen.
    * @throws IllegalStateException if this cell is not editable.
    * @throws IndexOutOfBoundsException if any of the indices (row and column) is out of bounds.
-   * @throws ActionFailedException if this driver's <code>JTableCellValueReader</code> is unable to enter the given
+   * @throws ActionFailedException if this driver's {@code JTableCellValueReader} is unable to enter the given
    * value.
    * @see JTableFixture#cellWriter(JTableCellWriter)
    * @see JTableCellWriter
@@ -314,7 +313,7 @@ public class JTableCellFixture implements ItemFixture {
 
   /**
    * Returns a fixture that verifies the font of this fixture's table cell. This method uses the
-   * <code>{@link JTableCellReader}</code> from the <code>{@link JTableFixture}</code> that created this fixture.
+   * {@link JTableCellReader} from the {@link JTableFixture} that created this fixture.
    * @return a fixture that verifies the font of this fixture's table cell.
    * @see JTableFixture#cellReader(JTableCellReader)
    * @see JTableCellReader
@@ -325,7 +324,7 @@ public class JTableCellFixture implements ItemFixture {
 
   /**
    * Returns a fixture that verifies the background color of this fixture's table cell. This method uses the
-   * <code>{@link JTableCellReader}</code> from the <code>{@link JTableFixture}</code> that created this fixture.
+   * {@link JTableCellReader} from the {@link JTableFixture} that created this fixture.
    * @return a fixture that verifies the background color of this fixture's table cell.
    * @see JTableFixture#cellReader(JTableCellReader)
    * @see JTableCellReader
@@ -336,7 +335,7 @@ public class JTableCellFixture implements ItemFixture {
 
   /**
    * Returns a fixture that verifies the foreground color of this fixture's table cell. This method uses the
-   * <code>{@link JTableCellReader}</code> from the <code>{@link JTableFixture}</code> that created this fixture.
+   * {@link JTableCellReader} from the {@link JTableFixture} that created this fixture.
    * @return a fixture that verifies the foreground color of this fixture's table cell.
    * @see JTableFixture#cellReader(JTableCellReader)
    * @see JTableCellReader
@@ -347,7 +346,7 @@ public class JTableCellFixture implements ItemFixture {
 
   /**
    * Returns the {@code String} representation of the value of this fixture's table cell. This method uses the
-   * <code>{@link JTableCellReader}</code> from the <code>{@link JTableFixture}</code> that created this fixture.
+   * {@link JTableCellReader} from the {@link JTableFixture} that created this fixture.
    * @return the {@code String} representation of the value of this fixture's table cell.
    * @see JTableFixture#cellReader(JTableCellReader)
    * @see JTableCellReader
@@ -415,5 +414,4 @@ public class JTableCellFixture implements ItemFixture {
    * @return the column index of this fixture's table cell.
    */
   public int column() { return cell.column; }
-
 }

@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2007-2010 the original author or authors.
+ * Copyright @2007-2013 the original author or authors.
  */
 package org.fest.swing.hierarchy;
 
@@ -20,13 +20,12 @@ import static org.fest.assertions.Assertions.assertThat;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link NewHierarchy#contains(java.awt.Component)}</code>.
+ * Tests for {@link NewHierarchy#contains(java.awt.Component)}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 public class NewHierarchy_contains_Test extends NewHierarchy_TestCase {
-
   @Test
   public void should_not_contain_ignored_Components() {
     NewHierarchy hierarchy = new NewHierarchy(toolkit, filter, true);

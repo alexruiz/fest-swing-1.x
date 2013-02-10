@@ -11,35 +11,36 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.input;
 
 import static org.fest.assertions.Assertions.assertThat;
+import static org.fest.util.Maps.newHashMap;
 
 import java.awt.Window;
 import java.awt.event.ComponentEvent;
-import java.util.*;
+import java.util.Map;
 
 import javax.swing.JFrame;
 
 import org.fest.swing.test.swing.TestWindow;
-import org.junit.*;
+import org.junit.Before;
+import org.junit.Test;
 
 /**
- * Tests for <code>{@link DisposalMonitor#componentShown(ComponentEvent)}</code>.
+ * Tests for {@link DisposalMonitor#componentShown(ComponentEvent)}.
  *
  * @author Alex Ruiz
  */
 public class DisposalMonitor_componentShown_Test {
-
   private JFrame frame;
   private Map<Window, Boolean> disposedWindows;
   private DisposalMonitor monitor;
 
   @Before public void setUp() {
     frame = TestWindow.createNewWindow(DisposalMonitor_componentShown_Test.class);
-    disposedWindows = new HashMap<Window, Boolean>();
+    disposedWindows = newHashMap();
     monitor = new DisposalMonitor(disposedWindows);
     frame.addComponentListener(monitor);
   }

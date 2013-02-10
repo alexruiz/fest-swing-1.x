@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -22,12 +22,11 @@ import org.fest.swing.exception.LocationUnavailableException;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JTabbedPaneLocation#indexOf(javax.swing.JTabbedPane, String)}</code>.
+ * Tests for {@link JTabbedPaneLocation#indexOf(javax.swing.JTabbedPane, String)}.
  *
  * @author Yvonne Wang
  */
 public class JTabbedPaneLocation_indexOf_Test extends JTabbedPaneLocation_TestCase {
-
   @Test
   public void should_return_index_of_tab_with_matching_title() {
     int index = location.indexOf(tabbedPane, "two");
@@ -43,5 +42,4 @@ public class JTabbedPaneLocation_indexOf_Test extends JTabbedPaneLocation_TestCa
       assertThat(e.getMessage()).isEqualTo("Unable to find a tab with title matching value 'three'");
     }
   }
-
 }

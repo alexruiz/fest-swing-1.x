@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.keystroke;
 
@@ -19,20 +19,21 @@ import static java.awt.event.InputEvent.CTRL_MASK;
 import static java.awt.event.KeyEvent.VK_A;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.keystroke.TestKeyStrokeMappingProviders.newKeyStrokeMappingProviderMock;
+import static org.fest.util.Lists.newArrayList;
 
-import java.util.*;
+import java.util.Collection;
 
 import javax.swing.KeyStroke;
 
-import org.junit.*;
+import org.junit.After;
+import org.junit.Before;
 
 /**
- * Base test case for <code>{@link KeyStrokeMap}</code>.
+ * Base test case for {@link KeyStrokeMap}.
  *
  * @author Alex Ruiz
  */
 public abstract class KeyStrokeMap_TestCase {
-
   KeyStrokeMappingProvider provider;
   KeyStroke keyStroke;
   KeyStrokeMapping mapping;
@@ -42,7 +43,7 @@ public abstract class KeyStrokeMap_TestCase {
     provider = newKeyStrokeMappingProviderMock();
     keyStroke = KeyStroke.getKeyStroke(VK_A, CTRL_MASK);
     mapping = new KeyStrokeMapping('A', keyStroke);
-    mappings = new ArrayList<KeyStrokeMapping>();
+    mappings = newArrayList();
     mappings.add(mapping);
     KeyStrokeMap.clearKeyStrokes();
     assertThat(KeyStrokeMap.hasKeyStrokes()).isFalse();

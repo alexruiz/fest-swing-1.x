@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.edt;
 
@@ -23,12 +23,11 @@ import org.fest.swing.exception.EdtViolationException;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link FailOnThreadViolationRepaintManager#install()}</code>.
+ * Tests for {@link FailOnThreadViolationRepaintManager#install()}.
  *
  * @author Alex Ruiz
  */
 public class FailOnThreadViolationRepaintManager_install_Test {
-
   @Test public void should_throw_error_in_case_of_EDT_access_violation() {
     FailOnThreadViolationRepaintManager.install();
     try {

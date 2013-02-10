@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.awt;
 
@@ -29,12 +29,11 @@ import org.fest.swing.test.swing.TestWindow;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link AWT#insetsFrom(java.awt.Container)}</code>.
+ * Tests for {@link AWT#insetsFrom(java.awt.Container)}.
  *
  * @author Alex Ruiz
  */
 public class AWT_insetsFromContainer_Test {
-
   private static final Insets EMPTY_INSETS = new Insets(0, 0, 0, 0);
 
   @Test

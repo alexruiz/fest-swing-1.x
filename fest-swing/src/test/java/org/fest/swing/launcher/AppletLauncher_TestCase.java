@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.launcher;
 
@@ -24,12 +24,11 @@ import org.fest.swing.test.core.SequentialEDTSafeTestCase;
 import org.fest.swing.test.swing.TestApplet;
 
 /**
- * Base test case for <code>{@link AppletLauncher}</code>.
+ * Base test case for {@link AppletLauncher}.
  *
  * @author Yvonne Wang
  */
 public abstract class AppletLauncher_TestCase extends SequentialEDTSafeTestCase {
-
   TestApplet applet;
   AppletViewer viewer;
 
@@ -60,6 +59,6 @@ public abstract class AppletLauncher_TestCase extends SequentialEDTSafeTestCase 
   }
 
   final void assertThatAppletWasLaunched() {
-    assertThat(viewer.applet()).isInstanceOf(TestApplet.class);
+    assertThat(viewer.getApplet()).isInstanceOf(TestApplet.class);
   }
 }

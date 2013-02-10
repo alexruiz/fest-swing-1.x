@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2007-2010 the original author or authors.
+ * Copyright @2007-2013 the original author or authors.
  */
 package org.fest.swing.core;
 
@@ -20,12 +20,11 @@ import static org.fest.assertions.Assertions.assertThat;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link MouseButton#lookup(int)}</code>.
+ * Tests for {@link MouseButton#lookup(int)}.
  *
  * @author Alex Ruiz
  */
 public class MouseButton_lookup_Test extends MouseButton_TestCase {
-
   public MouseButton_lookup_Test(MouseButton button, int mask) {
     super(button, mask);
   }

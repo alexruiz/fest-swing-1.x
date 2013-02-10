@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -21,12 +21,11 @@ import static org.fest.swing.test.core.CommonAssertions.failWhenExpectingExcepti
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JListDriver#requireItemCount(javax.swing.JList, int)}</code>.
+ * Tests for {@link JListDriver#requireItemCount(javax.swing.JList, int)}.
  *
  * @author Alex Ruiz
  */
 public class JListDriver_requireItemCount_Test extends JListDriver_TestCase {
-
   @Test
   public void should_fail_if_JList_does_not_have_expected_item_count() {
     try {

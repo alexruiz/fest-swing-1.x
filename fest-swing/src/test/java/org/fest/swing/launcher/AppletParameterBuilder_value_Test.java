@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.launcher;
 
@@ -21,12 +21,11 @@ import org.fest.swing.launcher.AppletParameter.AppletParameterBuilder;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link AppletParameterBuilder#value(String)}</code>.
+ * Tests for {@link AppletParameterBuilder#value(String)}.
  *
  * @author Yvonne Wang
  */
 public class AppletParameterBuilder_value_Test {
-
   @Test
   public void should_create_AppletParameter() {
     AppletParameter parameter = AppletParameter.name("bgcolor").value("blue");

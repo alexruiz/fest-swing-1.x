@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -20,12 +20,11 @@ import static org.fest.swing.test.core.CommonAssertions.*;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JTableHeaderDriver#clickColumn(javax.swing.table.JTableHeader, int)}</code>.
+ * Tests for {@link JTableHeaderDriver#clickColumn(javax.swing.table.JTableHeader, int)}.
  *
  * @author Yvonne Wang
  */
 public class JTableHeaderDriver_clickColumnByIndex_Test extends JTableHeaderDriver_TestCase {
-
   @Test(expected = IndexOutOfBoundsException.class)
   public void should_throw_error_if_index_is_negative() {
     driver.clickColumn(tableHeader, -1);
@@ -56,5 +55,4 @@ public class JTableHeaderDriver_clickColumnByIndex_Test extends JTableHeaderDriv
       assertThatErrorCauseIsNotShowingComponent(e);
     }
   }
-
 }

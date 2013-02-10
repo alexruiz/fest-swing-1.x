@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.data;
 
@@ -22,13 +22,12 @@ import org.fest.swing.exception.ActionFailedException;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link TableCellByColumnId#findCell(javax.swing.JTable, JTableCellReader)}</code>.
+ * Tests for {@link TableCellByColumnId#findCell(javax.swing.JTable, JTableCellReader)}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 public class TableCellByColumnId_findCell_withInvalidInput_Test extends TableCellFinder_TestCase {
-
   @Test(expected = ActionFailedException.class)
   public void should_throw_error_if_a_matching_column_was_not_found() {
     TableCellByColumnId finder = row(0).columnId("Hello");

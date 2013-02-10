@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -27,12 +27,11 @@ import org.fest.swing.test.core.RobotBasedTestCase;
 import org.fest.swing.test.swing.TestWindow;
 
 /**
- * Tests for <code>{@link WindowDriver}</code>.
+ * Tests for {@link WindowDriver}.
  *
  * @author Alex Ruiz
  */
 public abstract class WindowDriver_TestCase extends RobotBasedTestCase {
-
   Frame window;
   WindowDriver driver;
 

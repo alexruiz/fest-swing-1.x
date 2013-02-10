@@ -11,20 +11,19 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.test.swing;
 
 import javax.swing.DefaultListModel;
 
 /**
- * Understands a simplified version of <code>{@link DefaultListModel}</code>.
+ * Understands a simplified version of {@link DefaultListModel}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 public class TestListModel extends DefaultListModel {
-
   private static final long serialVersionUID = 1L;
 
   public TestListModel(Object... elements) {

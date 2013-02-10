@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2007-2010 the original author or authors.
+ * Copyright @2007-2013 the original author or authors.
  */
 package org.fest.swing.hierarchy;
 
@@ -32,13 +32,12 @@ import org.fest.util.Arrays;
 import org.junit.*;
 
 /**
- * Tests for <code>{@link ChildrenFinder#childrenOf(Component)}</code>.
+ * Tests for {@link ChildrenFinder#childrenOf(Component)}.
  *
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
 public class ChildrenFinder_childrenOf_Test extends EDTSafeTestCase {
-
   private Container container;
   private ChildrenFinderStrategy strategy1;
   private ChildrenFinderStrategy strategy2;

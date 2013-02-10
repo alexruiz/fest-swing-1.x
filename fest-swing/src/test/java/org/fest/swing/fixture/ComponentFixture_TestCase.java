@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2010 the original author or authors.
+ * Copyright @2010-2013 the original author or authors.
  */
 package org.fest.swing.fixture;
 
@@ -23,12 +23,11 @@ import javax.swing.JTextField;
 import org.junit.Before;
 
 /**
- * Test cases for <code>{@link ComponentFixture}</code>.
+ * Test cases for {@link ComponentFixture}.
  *
  * @author Alex Ruiz
  */
 public class ComponentFixture_TestCase {
-
   JTextField target;
   ComponentFixture<JTextField> fixture;
 

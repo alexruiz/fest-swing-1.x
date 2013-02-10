@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -20,12 +20,11 @@ import static org.fest.swing.test.core.CommonAssertions.*;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JSpinnerDriver#decrement(javax.swing.JSpinner)}</code>.
+ * Tests for {@link JSpinnerDriver#decrement(javax.swing.JSpinner)}.
  *
  * @author Alex Ruiz
  */
 public class JSpinnerDriver_decrement_Test extends JSpinnerDriver_TestCase {
-
   @Test
   public void should_decrement_value() {
     showWindow();
@@ -54,5 +53,4 @@ public class JSpinnerDriver_decrement_Test extends JSpinnerDriver_TestCase {
       assertThatErrorCauseIsNotShowingComponent(e);
     }
   }
-
 }

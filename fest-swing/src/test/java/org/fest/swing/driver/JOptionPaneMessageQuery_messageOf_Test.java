@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -26,13 +26,12 @@ import org.fest.swing.test.core.*;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JOptionPaneMessageQuery#messageOf(JOptionPane)}</code>.
+ * Tests for {@link JOptionPaneMessageQuery#messageOf(JOptionPane)}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 public class JOptionPaneMessageQuery_messageOf_Test extends RobotBasedTestCase {
-
   private static final String MESSAGE = "Hello World";
 
   private MyOptionPane optionPane;

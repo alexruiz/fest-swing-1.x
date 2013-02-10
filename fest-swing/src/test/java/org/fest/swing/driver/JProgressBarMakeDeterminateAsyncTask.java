@@ -1,16 +1,16 @@
 /*
  * Created on Dec 19, 2009
- *
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
- *
+ * 
  * http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
- *
- * Copyright @2009-2010 the original author or authors.
+ * 
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -18,24 +18,26 @@ import static java.util.concurrent.Executors.newSingleThreadExecutor;
 import static org.fest.swing.driver.JProgressBarSetIndetermintateTask.setIntedeterminate;
 import static org.fest.util.Strings.concat;
 
-import java.util.concurrent.*;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Future;
+import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
 
+import javax.annotation.Nonnull;
 import javax.swing.JProgressBar;
 
 import org.fest.swing.core.Robot;
 
 /**
- * Understands a task that asynchronously moves a <code>{@link JProgressBar}</code> to a determinate state, given an
- * increment and a period of time in between increments.
- *
+ * Asynchronously moves a {@code JProgressBar} to a determinate state, given an increment and a period of time in
+ * between increments.
+ * 
  * @author Alex Ruiz
  */
 class JProgressBarMakeDeterminateAsyncTask {
-
   private static Logger logger = Logger.getAnonymousLogger();
 
-  static TaskBuilder makeDeterminate(JProgressBar progressBar) {
+  static @Nonnull TaskBuilder makeDeterminate(@Nonnull JProgressBar progressBar) {
     return new TaskBuilder(progressBar);
   }
 
@@ -47,15 +49,17 @@ class JProgressBarMakeDeterminateAsyncTask {
   private final JProgressBar progressBar;
   private final long periodInMs;
 
-  private JProgressBarMakeDeterminateAsyncTask(Robot robot, JProgressBar progressBar, long periodInMs) {
+  private JProgressBarMakeDeterminateAsyncTask(@Nonnull Robot robot, @Nonnull JProgressBar progressBar,
+      long periodInMs) {
     this.robot = robot;
     this.progressBar = progressBar;
     this.periodInMs = periodInMs;
     task = createInnerTask();
   }
 
-  private Runnable createInnerTask() {
+  private @Nonnull Runnable createInnerTask() {
     return new Runnable() {
+      @Override
       public void run() {
         try {
           sleepAndMakeDeterminate();
@@ -79,23 +83,25 @@ class JProgressBarMakeDeterminateAsyncTask {
   }
 
   synchronized void cancelIfNotFinished() {
-    if (future != null && !future.isDone()) future.cancel(true);
+    if (future != null && !future.isDone()) {
+      future.cancel(true);
+    }
   }
 
   static class TaskBuilder {
     private final JProgressBar progressBar;
     private long periodInMs = 1000;
 
-    TaskBuilder(JProgressBar progressBar) {
+    TaskBuilder(@Nonnull JProgressBar progressBar) {
       this.progressBar = progressBar;
     }
 
-    TaskBuilder after(long duration, TimeUnit timeUnit) {
+    @Nonnull TaskBuilder after(long duration, @Nonnull TimeUnit timeUnit) {
       periodInMs = timeUnit.toMillis(duration);
       return this;
     }
 
-    JProgressBarMakeDeterminateAsyncTask createTask(Robot robot) {
+    @Nonnull JProgressBarMakeDeterminateAsyncTask createTask(@Nonnull Robot robot) {
       return new JProgressBarMakeDeterminateAsyncTask(robot, progressBar, periodInMs);
     }
   }

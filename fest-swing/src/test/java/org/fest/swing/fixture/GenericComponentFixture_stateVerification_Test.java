@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.fixture;
 
@@ -24,13 +24,12 @@ import org.fest.swing.driver.ComponentDriver;
 import org.junit.BeforeClass;
 
 /**
- * Tests for methods in <code>{@link GenericComponentFixture}</code> that are inherited from
- * <code>{@link StateVerificationFixture}</code>.
+ * Tests for methods in {@link GenericComponentFixture} that are inherited from
+ * {@link StateVerificationFixture}.
  *
  * @author Alex Ruiz
  */
 public class GenericComponentFixture_stateVerification_Test extends StateVerificationFixture_TestCase<Component> {
-
   private static Component target;
 
   private GenericComponentFixture<Component> fixture;

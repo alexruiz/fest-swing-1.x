@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.util;
 
@@ -21,12 +21,11 @@ import static org.easymock.classextension.EasyMock.createMock;
 import org.junit.Before;
 
 /**
- * Base test case for <code>{@link OSIdentifier}</code>.
+ * Base test case for {@link OSIdentifier}.
  *
  * @author Alex Ruiz
  */
 public abstract class OSIdentifier_TestCase {
-
   SystemPropertyReader propertyReader;
 
   @Before public void setUp() {

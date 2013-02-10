@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.util;
 
@@ -21,12 +21,11 @@ import org.fest.mocks.EasyMockTemplate;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link OSIdentifier#isX11()}</code>.
+ * Tests for {@link OSIdentifier#isX11()}.
  *
  * @author Alex Ruiz
  */
 public class OSIdentifier_isX11_Test extends OSIdentifier_TestCase {
-
   @Test
   public void should_return_X11_if_OS_not_OSX_or_Windows() {
     new EasyMockTemplate(propertyReader) {

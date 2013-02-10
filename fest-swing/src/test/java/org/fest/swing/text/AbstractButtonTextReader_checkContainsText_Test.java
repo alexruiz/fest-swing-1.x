@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2010 the original author or authors.
+ * Copyright @2010-2013 the original author or authors.
  */
 package org.fest.swing.text;
 
@@ -26,12 +26,11 @@ import org.fest.swing.test.core.EDTSafeTestCase;
 import org.junit.*;
 
 /**
- * Tests for <code>{@link AbstractButtonTextReader#checkContainsText(AbstractButton, String)}</code>.
+ * Tests for {@link AbstractButtonTextReader#checkContainsText(AbstractButton, String)}.
  *
  * @author Alex Ruiz
  */
 public class AbstractButtonTextReader_checkContainsText_Test extends EDTSafeTestCase {
-
   private AbstractButton button;
   private AbstractButtonTextReader reader;
 

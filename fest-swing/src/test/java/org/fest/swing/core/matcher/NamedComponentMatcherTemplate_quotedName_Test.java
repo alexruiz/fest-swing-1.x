@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.core.matcher;
 
@@ -22,12 +22,11 @@ import javax.swing.JLabel;
 import org.junit.*;
 
 /**
- * Tests for <code>{@link NamedComponentMatcherTemplate#quotedName()}</code>.
+ * Tests for {@link NamedComponentMatcherTemplate#quotedName()}.
  *
  * @author Alex Ruiz
  */
 public class NamedComponentMatcherTemplate_quotedName_Test extends NamedComponentMatcherTemplate_TestCase {
-
   @Before
   public final void setUp() {
     matcher = new Matcher(JLabel.class);

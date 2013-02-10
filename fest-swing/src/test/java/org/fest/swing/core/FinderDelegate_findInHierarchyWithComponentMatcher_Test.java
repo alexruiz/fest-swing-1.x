@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.core;
 
@@ -25,12 +25,11 @@ import javax.swing.*;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link FinderDelegate#find(org.fest.swing.hierarchy.ComponentHierarchy, ComponentMatcher)}</code>.
+ * Tests for {@link FinderDelegate#find(org.fest.swing.hierarchy.ComponentHierarchy, ComponentMatcher)}.
  *
  * @author Alex Ruiz
  */
 public class FinderDelegate_findInHierarchyWithComponentMatcher_Test extends FinderDelegate_TestCase {
-
   @Test
   public void should_return_components_matching_ComponentMatcher() {
     ComponentMatcher matcher = new ComponentMatcher() {

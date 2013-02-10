@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.applet;
 
@@ -20,13 +20,12 @@ import static org.fest.assertions.Assertions.assertThat;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link BasicAppletContext#getApplet(String)}</code>.
+ * Tests for {@link BasicAppletContext#getApplet(String)}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 public class BasicAppletContext_getAppletByName_Test extends BasicAppletContext_TestCase {
-
   @Test
   public void should_always_return_null_for_any_given_name() {
     assertThat(context.getApplet("aName")).isNull();

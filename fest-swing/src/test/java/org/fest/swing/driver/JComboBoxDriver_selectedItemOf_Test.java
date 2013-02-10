@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2010 the original author or authors.
+ * Copyright @2010-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -22,12 +22,11 @@ import static org.fest.swing.driver.JComboBoxSetSelectedIndexTask.setSelectedInd
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JComboBoxDriver#selectedItemOf(javax.swing.JComboBox)}</code>.
+ * Tests for {@link JComboBoxDriver#selectedItemOf(javax.swing.JComboBox)}.
  *
  * @author Alex Ruiz
  */
 public class JComboBoxDriver_selectedItemOf_Test extends JComboBoxDriver_TestCase {
-
   @Test
   public void should_return_null_if_not_editable_JComboBox_does_not_have_selection() {
     clearSelection();
@@ -58,5 +57,4 @@ public class JComboBoxDriver_selectedItemOf_Test extends JComboBoxDriver_TestCas
     String selection = driver.selectedItemOf(comboBox);
     assertThat(selection).isEqualTo("Hello");
   }
-
 }

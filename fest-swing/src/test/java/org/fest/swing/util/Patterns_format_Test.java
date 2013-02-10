@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.util;
 
@@ -23,12 +23,11 @@ import java.util.regex.Pattern;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link Patterns#format(Pattern[])}</code>.
+ * Tests for {@link Patterns#format(Pattern[])}.
  *
  * @author Alex Ruiz
  */
 public class Patterns_format_Test {
-
   @Test(expected = NullPointerException.class)
   public void should_throw_error_if_pattern_array_is_null() {
     Pattern[] patterns = null;

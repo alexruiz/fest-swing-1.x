@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.edt;
 
@@ -19,13 +19,12 @@ import org.fest.swing.exception.ActionFailedException;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link GuiQuery#run()}</code>.
+ * Tests for {@link GuiQuery#run()}.
  *
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
 public class GuiQuery_run_Test {
-
   @Test(expected = ActionFailedException.class)
   public void should_throw_error_if_not_called_in_EDT() {
     new GuiQuery<Integer>() {

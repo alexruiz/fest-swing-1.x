@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.hierarchy;
 
@@ -30,13 +30,12 @@ import org.fest.swing.test.swing.TestWindow;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link ContainerComponentsQuery#componentsOf(java.awt.Container)}</code>.
+ * Tests for {@link ContainerComponentsQuery#componentsOf(java.awt.Container)}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 public class ContainerComponentsQuery_componentsOf_Test extends SequentialEDTSafeTestCase {
-
   private MyWindow window;
 
   @Override protected final void onSetUp() {

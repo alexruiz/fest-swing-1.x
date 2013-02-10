@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.util;
 
@@ -20,12 +20,11 @@ import static org.fest.assertions.Assertions.assertThat;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link StringTextMatcher#formattedValues()}</code>.
+ * Tests for {@link StringTextMatcher#formattedValues()}.
  *
  * @author Alex Ruiz
  */
 public class StringTextMatcher_formattedValues_Test {
-
   @Test
   public void should_return_single_value_as_formatted_value_if_matcher_has_only_one_value() {
     StringTextMatcher matcher = new StringTextMatcher("one");

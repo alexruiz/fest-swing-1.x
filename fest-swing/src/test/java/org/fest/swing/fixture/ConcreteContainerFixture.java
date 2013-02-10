@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.fixture;
 
@@ -22,12 +22,11 @@ import javax.swing.JFrame;
 import org.fest.swing.core.Robot;
 
 /**
- * Understands an implementation of <code>{@link ContainerFixture}</code> for testing purposes.
+ * Understands an implementation of {@link ContainerFixture} for testing purposes.
  *
  * @author Alex Ruiz
  */
 public class ConcreteContainerFixture extends ContainerFixture<JFrame> {
-
   public ConcreteContainerFixture(Robot robot, JFrame target) { super(robot, target); }
   public JPopupMenuFixture showPopupMenu() { return null; }
   public JPopupMenuFixture showPopupMenuAt(Point p) { 

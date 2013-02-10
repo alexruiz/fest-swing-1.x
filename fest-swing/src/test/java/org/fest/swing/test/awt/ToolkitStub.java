@@ -10,26 +10,30 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.test.awt;
 
-import static org.easymock.classextension.EasyMock.createMock;
-import static org.fest.util.Collections.list;
+import static org.fest.util.Lists.newArrayList;
+import static org.fest.util.Maps.newHashMap;
 
-import java.awt.*;
+import java.awt.EventQueue;
+import java.awt.GraphicsConfiguration;
+import java.awt.HeadlessException;
+import java.awt.Insets;
+import java.awt.Toolkit;
 import java.awt.event.AWTEventListener;
 import java.lang.reflect.Method;
-import java.util.*;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
- * Understands a stub of <code>{@link Toolkit}</code>.
+ * Understands a stub of {@link Toolkit}.
  *
  * @author Alex Ruiz
  */
 public abstract class ToolkitStub extends Toolkit {
-
   private static final Method[] METHODS_TO_MOCK = methodsToMock();
 
   private Map<AWTEventListener, Long> eventListeners;
@@ -37,8 +41,10 @@ public abstract class ToolkitStub extends Toolkit {
   private static Method[] methodsToMock() {
     // mocks all methods except the ones defined in this class, to get away with not implementing every single abstract
     // method in Toolkit.
-    List<Method> methodsToMock = new ArrayList<Method>(list(ToolkitStub.class.getMethods()));
-    for (Method m : ToolkitStub.class.getDeclaredMethods()) methodsToMock.remove(m);
+    List<Method> methodsToMock = newArrayList(ToolkitStub.class.getMethods());
+    for (Method m : ToolkitStub.class.getDeclaredMethods()) {
+      methodsToMock.remove(m);
+    }
     return methodsToMock.toArray(new Method[methodsToMock.size()]);
   }
 
@@ -51,7 +57,7 @@ public abstract class ToolkitStub extends Toolkit {
   static ToolkitStub createNew(EventQueue eventQueue) {
     ToolkitStub stub =  createMock(ToolkitStub.class, METHODS_TO_MOCK);
     stub.eventQueue(eventQueue);
-    stub.eventListeners = new HashMap<AWTEventListener, Long>();
+    stub.eventListeners = newHashMap();
     return stub;
   }
 
@@ -72,15 +78,21 @@ public abstract class ToolkitStub extends Toolkit {
   public <T extends AWTEventListener> List<T> eventListenersUnderEventMask(long eventMask, Class<T> type) {
     List<T> listeners = new ArrayList<T>();
     for (AWTEventListener listener : eventListeners().keySet()) {
-      if (!type.isInstance(listener)) continue;
-      if (eventListeners().get(listener).longValue() != eventMask) continue;
+      if (!type.isInstance(listener)) {
+        continue;
+      }
+      if (eventListeners().get(listener).longValue() != eventMask) {
+        continue;
+      }
       listeners.add(type.cast(listener));
     }
     return listeners;
   }
 
   public boolean contains(AWTEventListener listener, long eventMask) {
-    if (!eventListeners.containsKey(listener)) return false;
+    if (!eventListeners.containsKey(listener)) {
+      return false;
+    }
     long storedMask = eventListeners.get(listener);
     return storedMask == eventMask;
   }

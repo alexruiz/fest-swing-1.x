@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -21,13 +21,12 @@ import static org.fest.util.Arrays.array;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JComboBoxDriver#contentsOf(javax.swing.JComboBox)}</code>.
+ * Tests for {@link JComboBoxDriver#contentsOf(javax.swing.JComboBox)}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 public class JComboBoxDriver_contentsOf_Test extends JComboBoxDriver_TestCase {
-
   @Test
   public void should_return_contents_of_JComboBox() {
     Object[] contents = driver.contentsOf(comboBox);

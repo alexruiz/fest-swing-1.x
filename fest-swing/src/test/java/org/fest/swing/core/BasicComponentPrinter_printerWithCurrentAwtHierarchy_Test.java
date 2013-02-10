@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.core;
 
@@ -21,17 +21,15 @@ import org.fest.swing.hierarchy.ExistingHierarchy;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link BasicComponentPrinter#printerWithCurrentAwtHierarchy()}</code>.
+ * Tests for {@link BasicComponentPrinter#printerWithCurrentAwtHierarchy()}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 public class BasicComponentPrinter_printerWithCurrentAwtHierarchy_Test {
-
   @Test
   public void should_create_ComponentPrinter_with_ExistingHierarchy() {
     BasicComponentPrinter printer = (BasicComponentPrinter)BasicComponentPrinter.printerWithCurrentAwtHierarchy();
     assertThat(printer.hierarchy()).isInstanceOf(ExistingHierarchy.class);
   }
-
 }

@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2006-2010 the original author or authors.
+ * Copyright @2006-2013 the original author or authors.
  */
 package org.fest.swing.fixture;
 
@@ -27,7 +27,7 @@ import org.fest.swing.exception.ComponentLookupException;
 import org.fest.swing.timing.Timeout;
 
 /**
- * Understands functional testing of <code>{@link JOptionPane}</code>s:
+ * Understands functional testing of {@code JOptionPane}s:
  * <ul>
  * <li>user input simulation</li>
  * <li>state verification</li>
@@ -37,13 +37,12 @@ import org.fest.swing.timing.Timeout;
  * @author Alex Ruiz
  */
 public class JOptionPaneFixture extends ContainerFixture<JOptionPane> implements CommonComponentFixture {
-
   private JOptionPaneDriver driver;
 
   /**
-   * Creates a new <code>{@link JOptionPaneFixture}</code>.
+   * Creates a new {@link JOptionPaneFixture}.
    * @param robot finds a showing {@code JOptionPane}, which will be managed by this fixture.
-   * @throws NullPointerException if <code>robot</code> is {@code null}.
+   * @throws NullPointerException if {@code robot} is {@code null}.
    * @throws ComponentLookupException if a showing {@code JOptionPane} could not be found.
    * @throws ComponentLookupException if more than one showing {@code JOptionPane} is found.
    */
@@ -57,11 +56,11 @@ public class JOptionPaneFixture extends ContainerFixture<JOptionPane> implements
   }
 
   /**
-   * Creates a new <code>{@link JOptionPaneFixture}</code>.
+   * Creates a new {@link JOptionPaneFixture}.
    * @param robot performs simulation of user events on the given {@code JOptionPane}.
    * @param target the {@code JOptionPane} to be managed by this fixture.
-   * @throws NullPointerException if <code>robot</code> is {@code null}.
-   * @throws IllegalArgumentException if <code>target</code> is {@code null}.
+   * @throws NullPointerException if {@code robot} is {@code null}.
+   * @throws IllegalArgumentException if {@code target} is {@code null}.
    */
   public JOptionPaneFixture(Robot robot, JOptionPane target) {
     super(robot, target);
@@ -69,8 +68,8 @@ public class JOptionPaneFixture extends ContainerFixture<JOptionPane> implements
   }
 
   /**
-   * Sets the <code>{@link JOptionPaneDriver}</code> to be used by this fixture.
-   * @param newDriver the new <code>JOptionPaneDriver</code>.
+   * Sets the {@link JOptionPaneDriver} to be used by this fixture.
+   * @param newDriver the new {@code JOptionPaneDriver}.
    * @throws NullPointerException if the given driver is {@code null}.
    */
   protected final void driver(JOptionPaneDriver newDriver) {
@@ -79,7 +78,7 @@ public class JOptionPaneFixture extends ContainerFixture<JOptionPane> implements
   }
 
   /**
-   * Returns the title of this fixture's <code>{@link JOptionPane}</code>.
+   * Returns the title of this fixture's {@code JOptionPane}.
    * @return the title of this fixture's {@code JOptionPane}.
    * @since 1.2
    */
@@ -88,7 +87,7 @@ public class JOptionPaneFixture extends ContainerFixture<JOptionPane> implements
   }
 
   /**
-   * Returns a fixture wrapping the "OK" button in this fixture's <code>{@link JOptionPane}</code>. This method is
+   * Returns a fixture wrapping the "OK" button in this fixture's {@code JOptionPane}. This method is
    * locale-independent and platform-independent.
    * @return a fixture wrapping the "OK" button.
    * @throws ComponentLookupException if the a "OK" button cannot be found.
@@ -98,7 +97,7 @@ public class JOptionPaneFixture extends ContainerFixture<JOptionPane> implements
   }
 
   /**
-   * Returns a fixture wrapping the "Cancel" button in this fixture's <code>{@link JOptionPane}</code>. This method is
+   * Returns a fixture wrapping the "Cancel" button in this fixture's {@code JOptionPane}. This method is
    * locale-independent and platform-independent.
    * @return a fixture wrapping the "Cancel" button.
    * @throws ComponentLookupException if the a "Cancel" button cannot be found.
@@ -108,7 +107,7 @@ public class JOptionPaneFixture extends ContainerFixture<JOptionPane> implements
   }
 
   /**
-   * Returns a fixture wrapping the "Yes" button in this fixture's <code>{@link JOptionPane}</code>. This method is
+   * Returns a fixture wrapping the "Yes" button in this fixture's {@code JOptionPane}. This method is
    * locale-independent and platform-independent.
    * @return a fixture wrapping the "Yes" button.
    * @throws ComponentLookupException if the a "Yes" button cannot be found.
@@ -118,7 +117,7 @@ public class JOptionPaneFixture extends ContainerFixture<JOptionPane> implements
   }
 
   /**
-   * Returns a fixture wrapping the "No" button in this fixture's <code>{@link JOptionPane}</code>. This method is
+   * Returns a fixture wrapping the "No" button in this fixture's {@code JOptionPane}. This method is
    * locale-independent and platform-independent.
    * @return a fixture wrapping the "No" button.
    * @throws ComponentLookupException if the a "No" button cannot be found.
@@ -128,7 +127,7 @@ public class JOptionPaneFixture extends ContainerFixture<JOptionPane> implements
   }
 
   /**
-   * Finds and returns a fixture wrapping a button (this fixture's <code>{@link JOptionPane}</code>) matching the
+   * Finds and returns a fixture wrapping a button (this fixture's {@code JOptionPane}) matching the
    * given text.
    * @param text the text of the button to find. It can be a regular expression.
    * @return a fixture wrapping a button matching the given text.
@@ -139,7 +138,7 @@ public class JOptionPaneFixture extends ContainerFixture<JOptionPane> implements
   }
 
   /**
-   * Finds and returns a fixture wrapping a button (this fixture's <code>{@link JOptionPane}</code>) matching the
+   * Finds and returns a fixture wrapping a button (this fixture's {@code JOptionPane}) matching the
    * given text.
    * @param pattern the regular expression pattern to match.
    * @return a fixture wrapping a button matching the given regular expression pattern.
@@ -152,7 +151,7 @@ public class JOptionPaneFixture extends ContainerFixture<JOptionPane> implements
   }
 
   /**
-   * Simulates a user clicking this fixture's <code>{@link JOptionPane}</code>.
+   * Simulates a user clicking this fixture's {@code JOptionPane}.
    * @return this fixture.
    * @throws IllegalStateException if this fixture's {@code JOptionPane} is disabled.
    * @throws IllegalStateException if this fixture's {@code JOptionPane} is not showing on the screen.
@@ -163,9 +162,9 @@ public class JOptionPaneFixture extends ContainerFixture<JOptionPane> implements
   }
 
   /**
-   * Simulates a user clicking this fixture's <code>{@link JOptionPane}</code>.
+   * Simulates a user clicking this fixture's {@code JOptionPane}.
    * @param button the button to click.
-   * @throws NullPointerException if the given <code>MouseButton</code> is {@code null}.
+   * @throws NullPointerException if the given {@code MouseButton} is {@code null}.
    * @throws IllegalStateException if this fixture's {@code JOptionPane} is disabled.
    * @throws IllegalStateException if this fixture's {@code JOptionPane} is not showing on the screen.
    * @return this fixture.
@@ -176,10 +175,10 @@ public class JOptionPaneFixture extends ContainerFixture<JOptionPane> implements
   }
 
   /**
-   * Simulates a user clicking this fixture's <code>{@link JOptionPane}</code>.
+   * Simulates a user clicking this fixture's {@code JOptionPane}.
    * @param mouseClickInfo specifies the button to click and the times the button should be clicked.
    * @return this fixture.
-   * @throws NullPointerException if the given <code>MouseClickInfo</code> is {@code null}.
+   * @throws NullPointerException if the given {@code MouseClickInfo} is {@code null}.
    * @throws IllegalStateException if this fixture's {@code JOptionPane} is disabled.
    * @throws IllegalStateException if this fixture's {@code JOptionPane} is not showing on the screen.
    */
@@ -189,7 +188,7 @@ public class JOptionPaneFixture extends ContainerFixture<JOptionPane> implements
   }
 
   /**
-   * Simulates a user right-clicking this fixture's <code>{@link JOptionPane}</code>.
+   * Simulates a user right-clicking this fixture's {@code JOptionPane}.
    * @return this fixture.
    * @throws IllegalStateException if this fixture's {@code JOptionPane} is disabled.
    * @throws IllegalStateException if this fixture's {@code JOptionPane} is not showing on the screen.
@@ -200,7 +199,7 @@ public class JOptionPaneFixture extends ContainerFixture<JOptionPane> implements
   }
 
   /**
-   * Simulates a user double-clicking this fixture's <code>{@link JOptionPane}</code>.
+   * Simulates a user double-clicking this fixture's {@code JOptionPane}.
    * @return this fixture.
    * @throws IllegalStateException if this fixture's {@code JOptionPane} is disabled.
    * @throws IllegalStateException if this fixture's {@code JOptionPane} is not showing on the screen.
@@ -211,7 +210,7 @@ public class JOptionPaneFixture extends ContainerFixture<JOptionPane> implements
   }
 
   /**
-   * Gives input focus to this fixture's <code>{@link JOptionPane}</code>.
+   * Gives input focus to this fixture's {@code JOptionPane}.
    * @return this fixture.
    * @throws IllegalStateException if this fixture's {@code JOptionPane} is disabled.
    * @throws IllegalStateException if this fixture's {@code JOptionPane} is not showing on the screen.
@@ -222,7 +221,7 @@ public class JOptionPaneFixture extends ContainerFixture<JOptionPane> implements
   }
 
   /**
-   * Asserts that this fixture's <code>{@link JOptionPane}</code> is displaying an error message.
+   * Asserts that this fixture's {@code JOptionPane} is displaying an error message.
    * @return this fixture.
    */
   public JOptionPaneFixture requireErrorMessage() {
@@ -231,7 +230,7 @@ public class JOptionPaneFixture extends ContainerFixture<JOptionPane> implements
   }
 
   /**
-   * Asserts that this fixture's <code>{@link JOptionPane}</code> is displaying an information
+   * Asserts that this fixture's {@code JOptionPane} is displaying an information
    * message.
    * @return this fixture.
    */
@@ -241,7 +240,7 @@ public class JOptionPaneFixture extends ContainerFixture<JOptionPane> implements
   }
 
   /**
-   * Asserts that this fixture's <code>{@link JOptionPane}</code> is displaying a warning message.
+   * Asserts that this fixture's {@code JOptionPane} is displaying a warning message.
    * @return this fixture.
    */
   public JOptionPaneFixture requireWarningMessage() {
@@ -250,7 +249,7 @@ public class JOptionPaneFixture extends ContainerFixture<JOptionPane> implements
   }
 
   /**
-   * Asserts that this fixture's <code>{@link JOptionPane}</code> is displaying a question.
+   * Asserts that this fixture's {@code JOptionPane} is displaying a question.
    * @return this fixture.
    */
   public JOptionPaneFixture requireQuestionMessage() {
@@ -259,7 +258,7 @@ public class JOptionPaneFixture extends ContainerFixture<JOptionPane> implements
   }
 
   /**
-   * Asserts that this fixture's <code>{@link JOptionPane}</code> is displaying a plain message.
+   * Asserts that this fixture's {@code JOptionPane} is displaying a plain message.
    * @return this fixture.
    */
   public JOptionPaneFixture requirePlainMessage() {
@@ -268,11 +267,11 @@ public class JOptionPaneFixture extends ContainerFixture<JOptionPane> implements
   }
 
   /**
-   * Simulates a user pressing given key with the given modifiers on this fixture's <code>{@link JOptionPane}</code>.
-   * Modifiers is a mask from the available <code>{@link java.awt.event.InputEvent}</code> masks.
+   * Simulates a user pressing given key with the given modifiers on this fixture's {@code JOptionPane}.
+   * Modifiers is a mask from the available {@link java.awt.event.InputEvent} masks.
    * @param keyPressInfo specifies the key and modifiers to press.
    * @return this fixture.
-   * @throws NullPointerException if the given <code>KeyPressInfo</code> is {@code null}.
+   * @throws NullPointerException if the given {@code KeyPressInfo} is {@code null}.
    * @throws IllegalArgumentException if the given code is not a valid key code.
    * @see KeyPressInfo
    */
@@ -282,7 +281,7 @@ public class JOptionPaneFixture extends ContainerFixture<JOptionPane> implements
   }
 
   /**
-   * Simulates a user pressing and releasing the given keys this fixture's <code>{@link JOptionPane}</code>. This method
+   * Simulates a user pressing and releasing the given keys this fixture's {@code JOptionPane}. This method
    * does not affect the current focus.
    * @param keyCodes one or more codes of the keys to press.
    * @return this fixture.
@@ -296,7 +295,7 @@ public class JOptionPaneFixture extends ContainerFixture<JOptionPane> implements
   }
 
   /**
-   * Simulates a user pressing the given key on this fixture's <code>{@link JOptionPane}</code>.
+   * Simulates a user pressing the given key on this fixture's {@code JOptionPane}.
    * @param keyCode the code of the key to press.
    * @return this fixture.
    * @throws IllegalArgumentException if any of the given code is not a valid key code.
@@ -308,7 +307,7 @@ public class JOptionPaneFixture extends ContainerFixture<JOptionPane> implements
   }
 
   /**
-   * Simulates a user releasing the given key on this fixture's <code>{@link JOptionPane}</code>.
+   * Simulates a user releasing the given key on this fixture's {@code JOptionPane}.
    * @param keyCode the code of the key to release.
    * @return this fixture.
    * @throws IllegalArgumentException if any of the given code is not a valid key code.
@@ -320,10 +319,10 @@ public class JOptionPaneFixture extends ContainerFixture<JOptionPane> implements
   }
 
   /**
-   * Asserts that the title of this fixture's <code>{@link JOptionPane}</code> matches the given value.
+   * Asserts that the title of this fixture's {@code JOptionPane} matches the given value.
    * @param title the title to match. It can be a regular expression.
    * @return this fixture.
-   * @throws AssertionError if this fixture's </code>JOptionPaneFixture</code> does not have the given title.
+   * @throws AssertionError if this fixture's {@code JOptionPaneFixture} does not have the given title.
    */
   public JOptionPaneFixture requireTitle(String title) {
     driver.requireTitle(target, title);
@@ -331,12 +330,12 @@ public class JOptionPaneFixture extends ContainerFixture<JOptionPane> implements
   }
 
   /**
-   * Asserts that the title of this fixture's <code>{@link JOptionPane}</code> matches the given regular expression
+   * Asserts that the title of this fixture's {@code JOptionPane} matches the given regular expression
    * pattern.
    * @param pattern the regular expression pattern to match.
    * @return this fixture.
    * @throws NullPointerException if the given regular expression is {@code null}.
-   * @throws AssertionError if this fixture's </code>JOptionPaneFixture</code> does not have the given title.
+   * @throws AssertionError if this fixture's {@code JOptionPaneFixture} does not have the given title.
    * @since 1.2
    */
   public JOptionPaneFixture requireTitle(Pattern pattern) {
@@ -345,10 +344,10 @@ public class JOptionPaneFixture extends ContainerFixture<JOptionPane> implements
   }
 
   /**
-   * Asserts that the message of this fixture's <code>{@link JOptionPane}</code> matches the given value.
+   * Asserts that the message of this fixture's {@code JOptionPane} matches the given value.
    * @param message the message to verify. If it is a {@code String}, it can be specified as a regular expression.
    * @return this fixture.
-   * @throws AssertionError if the message in this fixture's </code>JOptionPaneFixture</code> is not equal to or does
+   * @throws AssertionError if the message in this fixture's {@code JOptionPaneFixture} is not equal to or does
    * not match the given message.
    */
   public JOptionPaneFixture requireMessage(Object message) {
@@ -357,13 +356,13 @@ public class JOptionPaneFixture extends ContainerFixture<JOptionPane> implements
   }
 
   /**
-   * Asserts that the message of this fixture's <code>{@link JOptionPane}</code> matches the given regular expression
+   * Asserts that the message of this fixture's {@code JOptionPane} matches the given regular expression
    * pattern. If the message in the {@code JOptionPane} is not a {@code String}, this method will use the
-   * <code>toString</code> representation of such message.
+   * {@code toString} representation of such message.
    * @param pattern the regular expression to match.
    * @return this fixture.
    * @throws NullPointerException if the given regular expression pattern is {@code null}.
-   * @throws AssertionError if the message in this fixture's </code>JOptionPaneFixture</code> does not match the given
+   * @throws AssertionError if the message in this fixture's {@code JOptionPaneFixture} does not match the given
    * regular expression pattern.
    * @since 1.2
    */
@@ -373,10 +372,10 @@ public class JOptionPaneFixture extends ContainerFixture<JOptionPane> implements
   }
 
   /**
-   * Asserts that this fixture's <code>{@link JOptionPane}</code> has the given options.
+   * Asserts that this fixture's {@code JOptionPane} has the given options.
    * @param options the options to verify.
    * @return this fixture.
-   * @throws AssertionError if this fixture's </code>JOptionPaneFixture</code> does not have the given options.
+   * @throws AssertionError if this fixture's {@code JOptionPaneFixture} does not have the given options.
    */
   public JOptionPaneFixture requireOptions(Object[] options) {
     driver.requireOptions(target, options);
@@ -384,7 +383,7 @@ public class JOptionPaneFixture extends ContainerFixture<JOptionPane> implements
   }
 
   /**
-   * Asserts that this fixture's <code>{@link JOptionPane}</code> has input focus.
+   * Asserts that this fixture's {@code JOptionPane} has input focus.
    * @return this fixture.
    * @throws AssertionError if this fixture's {@code JOptionPane} does not have input focus.
    */
@@ -394,7 +393,7 @@ public class JOptionPaneFixture extends ContainerFixture<JOptionPane> implements
   }
 
   /**
-   * Asserts that this fixture's <code>{@link JOptionPane}</code> is enabled.
+   * Asserts that this fixture's {@code JOptionPane} is enabled.
    * @return this fixture.
    * @throws AssertionError if this fixture's {@code JOptionPane} is disabled.
    */
@@ -404,7 +403,7 @@ public class JOptionPaneFixture extends ContainerFixture<JOptionPane> implements
   }
 
   /**
-   * Asserts that this fixture's <code>{@link JOptionPane}</code> is enabled.
+   * Asserts that this fixture's {@code JOptionPane} is enabled.
    * @param timeout the time this fixture will wait for the component to be enabled.
    * @return this fixture.
    * @throws org.fest.swing.exception.WaitTimedOutError if this fixture's {@code JOptionPane} is never enabled.
@@ -415,7 +414,7 @@ public class JOptionPaneFixture extends ContainerFixture<JOptionPane> implements
   }
 
   /**
-   * Asserts that this fixture's <code>{@link JOptionPane}</code> is disabled.
+   * Asserts that this fixture's {@code JOptionPane} is disabled.
    * @return this fixture.
    * @throws AssertionError if this fixture's {@code JOptionPane} is enabled.
    */
@@ -425,7 +424,7 @@ public class JOptionPaneFixture extends ContainerFixture<JOptionPane> implements
   }
 
   /**
-   * Asserts that this fixture's <code>{@link JOptionPane}</code> is visible.
+   * Asserts that this fixture's {@code JOptionPane} is visible.
    * @return this fixture.
    * @throws AssertionError if this fixture's {@code JOptionPane} is not visible.
    */
@@ -435,7 +434,7 @@ public class JOptionPaneFixture extends ContainerFixture<JOptionPane> implements
   }
 
   /**
-   * Asserts that this fixture's <code>{@link JOptionPane}</code> is not visible.
+   * Asserts that this fixture's {@code JOptionPane} is not visible.
    * @return this fixture.
    * @throws AssertionError if this fixture's {@code JOptionPane} is visible.
    */

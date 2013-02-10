@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2010 the original author or authors.
+ * Copyright @2010-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -23,12 +23,11 @@ import javax.swing.JTable;
 import org.junit.BeforeClass;
 
 /**
- * Base test case for <code>{@link JTableDriver}</code> that uses mocks as part of its fixture.
+ * Base test case for {@link JTableDriver} that uses mocks as part of its fixture.
  *
  * @author Alex Ruiz
  */
 public class JTableDriver_withMocks_TestCase {
-
   static JTableDriver driver;
   static JTable table;
 

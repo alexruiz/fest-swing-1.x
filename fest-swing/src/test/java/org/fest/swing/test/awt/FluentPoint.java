@@ -11,23 +11,22 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2007-2010 the original author or authors.
+ * Copyright @2007-2013 the original author or authors.
  */
 package org.fest.swing.test.awt;
 
 import java.awt.Point;
 
 /**
- * Understands a AWT <code>{@link Point}</code> with some extra utility methods.
+ * Understands a AWT {@link Point} with some extra utility methods.
  *
  * @author Yvonne Wang
  */
 public class FluentPoint extends Point {
-
   private static final long serialVersionUID = 1L;
 
   /**
-   * Creates a new <code>{@link FluentPoint}</code>.
+   * Creates a new {@link FluentPoint}.
    * @param p the source point.
    */
   public FluentPoint(Point p) {

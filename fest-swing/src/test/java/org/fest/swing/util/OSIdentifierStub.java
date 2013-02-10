@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.util;
 
@@ -19,12 +19,11 @@ import static org.fest.util.Strings.*;
 
 
 /**
- * Understands a stub of <code>{@link OSIdentifier}</code>.
+ * Understands a stub of {@link OSIdentifier}.
  *
  * @author Alex Ruiz
  */
 class OSIdentifierStub extends OSIdentifier {
-
   static OSIdentifier windows9x() {
     return new OSIdentifierStub("Windows 95");
   }

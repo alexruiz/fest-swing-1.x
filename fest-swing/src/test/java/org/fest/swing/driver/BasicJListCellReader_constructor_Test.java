@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -21,12 +21,11 @@ import static org.fest.swing.test.core.CommonAssertions.failWhenExpectingExcepti
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link BasicJListCellReader#BasicJListCellReader(CellRendererReader)}</code>.
+ * Tests for {@link BasicJListCellReader#BasicJListCellReader(CellRendererReader)}.
  *
  * @author Alex Ruiz
  */
 public class BasicJListCellReader_constructor_Test {
-
   @Test
   public void should_throw_error_if_CellRendererReader_is_null() {
     try {

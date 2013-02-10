@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.core;
 
@@ -35,7 +35,6 @@ import org.junit.Test;
  * @author Alex Ruiz
  */
 public class Bug289_robotShouldFocusWindowBeforeClosing_Test extends RobotBasedTestCase {
-
   @Test
   public void should_give_focus_to_window_before_closing_it() {
     MyWindow window1 = MyWindow.createNew();
@@ -73,7 +72,6 @@ public class Bug289_robotShouldFocusWindowBeforeClosing_Test extends RobotBasedT
   }
 
   private static class WindowCloseMonitor extends WindowAdapter {
-
     private boolean hasFocus;
 
     @Override public void windowClosing(WindowEvent e) {

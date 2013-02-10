@@ -11,19 +11,18 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JTableCancelCellEditingTask#cancelEditing(javax.swing.table.TableCellEditor)}</code>.
+ * Tests for {@link JTableCancelCellEditingTask#cancelEditing(javax.swing.table.TableCellEditor)}.
  *
  * @author Alex Ruiz
  */
 public class JTableCancelCellEditingTask_cancelEditing_withEditor_Test {
-
   @Test
   public void should_not_throw_error_if_cell_editor_is_null() {
     JTableCancelCellEditingTask.cancelEditing(null);

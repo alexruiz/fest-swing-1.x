@@ -27,7 +27,6 @@ import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
 
 public final class JApplets {
-
 	private JApplets() {}
 
 	public static JAppletFactory applet() {

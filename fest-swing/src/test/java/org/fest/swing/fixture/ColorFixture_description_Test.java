@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.fixture;
 
@@ -23,13 +23,12 @@ import java.awt.Color;
 import org.junit.*;
 
 /**
- * Tests for <code>{@link ColorFixture#description()}</code>.
+ * Tests for {@link ColorFixture#description()}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 public class ColorFixture_description_Test {
-
   private Color color;
   private ColorFixture fixture;
 

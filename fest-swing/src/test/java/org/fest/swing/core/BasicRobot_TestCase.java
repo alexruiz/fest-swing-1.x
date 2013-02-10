@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2007-2010 the original author or authors.
+ * Copyright @2007-2013 the original author or authors.
  */
 package org.fest.swing.core;
 
@@ -33,13 +33,12 @@ import org.fest.swing.test.swing.TestWindow;
 import org.junit.*;
 
 /**
- * Base case for tests for <code>{@link BasicRobot}</code>.
+ * Base case for tests for {@link BasicRobot}.
  *
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
 public abstract class BasicRobot_TestCase extends EDTSafeTestCase {
-
   BasicRobot robot;
   MyWindow window;
 

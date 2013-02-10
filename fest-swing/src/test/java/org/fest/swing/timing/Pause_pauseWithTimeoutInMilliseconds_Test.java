@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.timing;
 
@@ -22,12 +22,11 @@ import org.fest.swing.test.util.StopWatch;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link Pause#pause(long)}</code>.
+ * Tests for {@link Pause#pause(long)}.
  *
  * @author Alex Ruiz
  */
 public class Pause_pauseWithTimeoutInMilliseconds_Test {
-
   @Test
   public void should_pause_for_the_given_amount_of_time() {
     StopWatch watch = startNewStopWatch();
@@ -36,5 +35,4 @@ public class Pause_pauseWithTimeoutInMilliseconds_Test {
     watch.stop();
     assertThat(watch.ellapsedTime() >= delay).isTrue();
   }
-
 }

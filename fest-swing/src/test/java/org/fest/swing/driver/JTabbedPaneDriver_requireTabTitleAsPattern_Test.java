@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -23,12 +23,11 @@ import static org.fest.swing.test.core.Regex.regex;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JTabbedPaneDriver#requireTabTitle(javax.swing.JTabbedPane, java.util.regex.Pattern, org.fest.swing.data.Index)}</code>.
+ * Tests for {@link JTabbedPaneDriver#requireTabTitle(javax.swing.JTabbedPane, java.util.regex.Pattern, org.fest.swing.data.Index)}.
  *
  * @author Alex Ruiz
  */
 public class JTabbedPaneDriver_requireTabTitleAsPattern_Test extends JTabbedPaneDriver_TestCase {
-
   @Test
   public void should_fail_if_title_does_not_match_pattern() {
     try {

@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -24,13 +24,12 @@ import java.awt.Dimension;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link ComponentDriver#requireSize(java.awt.Component, java.awt.Dimension)}</code>.
+ * Tests for {@link ComponentDriver#requireSize(java.awt.Component, java.awt.Dimension)}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 public class ComponentDriver_requireSize_Test extends ComponentDriver_TestCase {
-
   @Test
   public void should_pass_if_actual_size_is_equal_to_expected() {
     Dimension expected = sizeOf(window.button);

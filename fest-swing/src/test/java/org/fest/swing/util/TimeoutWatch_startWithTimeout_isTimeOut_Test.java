@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2007-2010 the original author or authors.
+ * Copyright @2007-2013 the original author or authors.
  */
 package org.fest.swing.util;
 
@@ -20,13 +20,12 @@ import static org.fest.assertions.Assertions.assertThat;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link TimeoutWatch#startWatchWithTimeoutOf(long)}</code> and
- * <code>{@link TimeoutWatch#isTimeOut()}</code>.
+ * Tests for {@link TimeoutWatch#startWatchWithTimeoutOf(long)} and
+ * {@link TimeoutWatch#isTimeOut()}.
  *
  * @author Alex Ruiz
  */
 public class TimeoutWatch_startWithTimeout_isTimeOut_Test {
-
   @Test
   public void should_not_timeout() {
     TimeoutWatch watch = TimeoutWatch.startWatchWithTimeoutOf(5000);
@@ -39,5 +38,4 @@ public class TimeoutWatch_startWithTimeout_isTimeOut_Test {
     Thread.sleep(100);
     assertThat(watch.isTimeOut()).isTrue();
   }
-
 }

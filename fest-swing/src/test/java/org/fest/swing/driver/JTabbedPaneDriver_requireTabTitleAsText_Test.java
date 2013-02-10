@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -22,12 +22,11 @@ import static org.fest.swing.test.core.CommonAssertions.failWhenExpectingExcepti
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JTabbedPaneDriver#requireTabTitle(javax.swing.JTabbedPane, String, org.fest.swing.data.Index)}</code>.
+ * Tests for {@link JTabbedPaneDriver#requireTabTitle(javax.swing.JTabbedPane, String, org.fest.swing.data.Index)}.
  *
  * @author Alex Ruiz
  */
 public class JTabbedPaneDriver_requireTabTitleAsText_Test extends JTabbedPaneDriver_TestCase {
-
   @Test
   public void should_fail_if_title_is_not_equal_to_expected() {
     try {

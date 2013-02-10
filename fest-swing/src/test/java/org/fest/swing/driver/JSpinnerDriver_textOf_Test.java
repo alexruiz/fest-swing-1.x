@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -20,12 +20,11 @@ import static org.fest.assertions.Assertions.assertThat;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JSpinnerDriver#editor(javax.swing.JSpinner)}</code>.
+ * Tests for {@link JSpinnerDriver#editor(javax.swing.JSpinner)}.
  *
  * @author Alex Ruiz
  */
 public class JSpinnerDriver_textOf_Test extends JSpinnerDriver_TestCase {
-
   @Test
   public void should_return_text() {
     updateValue("Frodo");

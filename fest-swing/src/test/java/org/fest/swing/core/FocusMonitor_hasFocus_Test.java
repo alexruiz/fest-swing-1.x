@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.core;
 
@@ -28,12 +28,11 @@ import org.fest.swing.test.swing.TestWindow;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link FocusMonitor#hasFocus()}</code>.
+ * Tests for {@link FocusMonitor#hasFocus()}.
  *
  * @author Alex Ruiz
  */
 public class FocusMonitor_hasFocus_Test extends SequentialEDTSafeTestCase {
-
   private MyWindow window;
 
   @Override protected void onSetUp() {

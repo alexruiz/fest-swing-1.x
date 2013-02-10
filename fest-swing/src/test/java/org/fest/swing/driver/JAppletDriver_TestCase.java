@@ -11,33 +11,35 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2010 the original author or authors.
+ * Copyright @2010-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
 import static javax.swing.SwingUtilities.isEventDispatchThread;
 import static org.fest.swing.core.TestRobots.singletonRobotMock;
 import static org.fest.swing.edt.GuiActionRunner.execute;
-import static org.fest.util.Strings.*;
+import static org.fest.util.Maps.newHashMap;
+import static org.fest.util.Strings.concat;
+import static org.fest.util.Strings.quote;
 
 import java.applet.AppletContext;
 import java.net.URL;
-import java.util.*;
+import java.util.Map;
 
 import javax.swing.JApplet;
 
-import org.fest.swing.annotation.*;
+import org.fest.swing.annotation.RunsInCurrentThread;
+import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
 import org.fest.swing.test.core.EDTSafeTestCase;
 import org.junit.Before;
 
 /**
- * Base test case for <code>{@link JAppletDriver}</code>.
+ * Base test case for {@link JAppletDriver}.
  *
  * @author Alex Ruiz
  */
 public class JAppletDriver_TestCase extends EDTSafeTestCase {
-
   private JAppletStub applet;
   private JAppletDriver driver;
 
@@ -53,9 +55,9 @@ public class JAppletDriver_TestCase extends EDTSafeTestCase {
   static class JAppletStub extends JApplet {
     private static final long serialVersionUID = 1L;
 
-    private final Map<String, Boolean> methodCallsInEDT = new HashMap<String, Boolean>();
+    private final Map<String, Boolean> methodCallsInEDT = newHashMap();
 
-    private final Map<String, String> parameters = new HashMap<String, String>();
+    private final Map<String, String> parameters = newHashMap();
 
     private AppletContext context;
     private URL codeBase;

@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -29,13 +29,12 @@ import org.junit.Test;
 import org.junit.runners.Parameterized.Parameters;
 
 /**
- * Tests for <code>{@link JSliderDriver#slideToMinimum(javax.swing.JSlider)}</code>.
+ * Tests for {@link JSliderDriver#slideToMinimum(javax.swing.JSlider)}.
  *
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
 public class JSliderDriver_slideToMinimum_Test extends JSliderDriver_TestCase {
-
   @Parameters
   public static Collection<Object[]> allOrientations() {
     return list(orientations());
@@ -81,5 +80,4 @@ public class JSliderDriver_slideToMinimum_Test extends JSliderDriver_TestCase {
       assertThatErrorCauseIsNotShowingComponent(e);
     }
   }
-
 }

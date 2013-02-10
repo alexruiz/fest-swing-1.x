@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -28,12 +28,11 @@ import org.fest.swing.edt.GuiQuery;
 import org.fest.swing.test.recorder.ClickRecorder;
 
 /**
- * Base test case for <code>{@link JTableHeaderDriver}</code>.
+ * Base test case for {@link JTableHeaderDriver}.
  *
  * @author Yvonne Wang
  */
 public abstract class JTableHeaderDriver_TestCase extends JTableHeaderBasedTestCase {
-
   JTableHeaderDriver driver;
 
   @Override final void setUpTestTarget() {

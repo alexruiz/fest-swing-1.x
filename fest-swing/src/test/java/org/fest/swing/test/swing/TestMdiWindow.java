@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2007-2010 the original author or authors.
+ * Copyright @2007-2013 the original author or authors.
  */
 package org.fest.swing.test.swing;
 
@@ -31,14 +31,13 @@ import org.fest.swing.edt.GuiQuery;
  * @author Alex Ruiz
  */
 public class TestMdiWindow extends TestWindow {
-
   private static final long serialVersionUID = 1L;
 
   private static int internalFrameCounter;
 
   /**
-   * Creates a new <code>{@link TestMdiWindow}</code> and displays it on the screen. The default size of the created
-   * window is 500 x 300. This method is executed in the event dispatch thread.
+   * Creates a new {@link TestMdiWindow} and displays it on the screen. The default size of the created
+   * window is 500 x 300. This method is executed in the event dispatch thread (EDT.)
    * @param testClass the class of the test where the window to create will be used. The simple name of the given class
    * will be used as the title of the created window.
    * @return the created window.
@@ -55,7 +54,7 @@ public class TestMdiWindow extends TestWindow {
   }
 
   /**
-   * Creates a new <code>{@link TestMdiWindow}</code>. This method is executed in the event dispatch thread.
+   * Creates a new {@link TestMdiWindow}. This method is executed in the event dispatch thread (EDT.)
    * @param testClass the class of the test where the window to create will be used. The simple name of the given class
    * will be used as the title of the created window.
    * @return the created window.
@@ -78,7 +77,7 @@ public class TestMdiWindow extends TestWindow {
   }
 
   /**
-   * Creates a new </code>{@link TestMdiWindow}</code>.
+   * Creates a new {@link TestMdiWindow}.
    * @param testClass the class of the test where the window to create will be used. The simple name of the given class
    * will be used as the title of the created window.
    */
@@ -93,9 +92,9 @@ public class TestMdiWindow extends TestWindow {
   }
 
   /**
-   * Creates a new <code>{@link JInternalFrame}</code> with a size of 200 x 100. The title of the created internal frame
+   * Creates a new {@code JInternalFrame} with a size of 200 x 100. The title of the created internal frame
    * includes the value of a counter that is automatically increased every time a new internal frame is created. This
-   * method is <code>not</code> executed in the event dispatch thread.
+   * method is {@code not} executed in the event dispatch thread (EDT.)
    * @return the created frame.
    */
   @RunsInCurrentThread

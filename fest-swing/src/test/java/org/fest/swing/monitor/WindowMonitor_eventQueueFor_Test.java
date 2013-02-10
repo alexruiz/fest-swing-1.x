@@ -10,7 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  *
- * Copyright @2007-2010 the original author or authors.
+ * Copyright @2007-2013 the original author or authors.
  */
 package org.fest.swing.monitor;
 
@@ -23,12 +23,11 @@ import org.fest.mocks.EasyMockTemplate;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link WindowMonitor#eventQueueFor(java.awt.Component)}</code>.
+ * Tests for {@link WindowMonitor#eventQueueFor(java.awt.Component)}.
  *
  * @author Alex Ruiz
  */
 public class WindowMonitor_eventQueueFor_Test extends WindowMonitor_TestCase {
-
   @Test
   public void should_return_EventQueue_for_Component() {
     final EventQueue queue = new EventQueue();
@@ -42,5 +41,4 @@ public class WindowMonitor_eventQueueFor_Test extends WindowMonitor_TestCase {
       }
     }.run();
   }
-
 }

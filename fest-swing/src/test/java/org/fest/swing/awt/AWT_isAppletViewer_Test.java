@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.awt;
 
@@ -21,12 +21,11 @@ import static org.fest.swing.test.builder.JTextFields.textField;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link AWT#isAppletViewer(java.awt.Component)}</code>.
+ * Tests for {@link AWT#isAppletViewer(java.awt.Component)}.
  *
  * @author Alex Ruiz
  */
 public class AWT_isAppletViewer_Test {
-
   @Test
   public void should_return_false_if_Component_is_not_AppletViewer() {
     assertThat(AWT.isAppletViewer(textField().createNew())).isFalse();

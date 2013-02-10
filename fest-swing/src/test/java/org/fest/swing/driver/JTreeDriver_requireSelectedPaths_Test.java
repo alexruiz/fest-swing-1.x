@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -25,12 +25,11 @@ import org.fest.swing.annotation.RunsInEDT;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JTreeDriver#requireSelection(javax.swing.JTree, String[])}</code>
+ * Tests for {@link JTreeDriver#requireSelection(javax.swing.JTree, String[])}
  *
  * @author Alex Ruiz
  */
 public class JTreeDriver_requireSelectedPaths_Test extends JTreeDriver_selectCell_TestCase {
-
   @Test
   public void should_pass_if_single_cell_is_selected() {
     selectFirstChildOfRoot();
@@ -80,5 +79,4 @@ public class JTreeDriver_requireSelectedPaths_Test extends JTreeDriver_selectCel
                                 .contains("expecting selection:<['root/branch2']> but was:<[[root, branch1]]>");
     }
   }
-
 }

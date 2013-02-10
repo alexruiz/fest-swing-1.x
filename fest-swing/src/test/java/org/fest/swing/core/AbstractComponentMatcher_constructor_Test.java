@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.core;
 
@@ -20,12 +20,11 @@ import static org.fest.assertions.Assertions.assertThat;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link AbstractComponentMatcher#AbstractComponentMatcher()}</code>.
+ * Tests for {@link AbstractComponentMatcher#AbstractComponentMatcher()}.
  *
  * @author Alex Ruiz
  */
 public class AbstractComponentMatcher_constructor_Test {
-
   @Test
   public void should_not_require_showing_by_default() {
     AbstractComponentMatcher matcher = new ConcreteComponentMatcher();

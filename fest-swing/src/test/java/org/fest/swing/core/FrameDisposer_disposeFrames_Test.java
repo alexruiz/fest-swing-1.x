@@ -11,14 +11,15 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.core;
 
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.edt.GuiActionRunner.execute;
+import static org.fest.util.Lists.newArrayList;
 
-import java.util.*;
+import java.util.List;
 
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiTask;
@@ -27,12 +28,11 @@ import org.fest.swing.test.swing.TestWindow;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link FrameDisposer#disposeFrames()}</code>.
+ * Tests for {@link FrameDisposer#disposeFrames()}.
  *
  * @author Alex Ruiz
  */
 public class FrameDisposer_disposeFrames_Test extends SequentialEDTSafeTestCase {
-
   private MyWindow[] windows;
   private FrameDisposer disposer;
 
@@ -42,14 +42,17 @@ public class FrameDisposer_disposeFrames_Test extends SequentialEDTSafeTestCase 
   }
 
   @Override protected void onTearDown() {
-    for (MyWindow w : windows) w.destroy();
+    for (MyWindow w : windows) {
+      w.destroy();
+    }
   }
 
   @Test
   public void shouldDisposeFrames() {
     disposer.disposeFrames();
-    for (MyWindow w : windows)
+    for (MyWindow w : windows) {
       assertThat(w.disposed).isTrue();
+    }
   }
 
   private static class MyWindow extends TestWindow {
@@ -57,7 +60,7 @@ public class FrameDisposer_disposeFrames_Test extends SequentialEDTSafeTestCase 
 
     @RunsInEDT
     static MyWindow[] windows() {
-      final List<MyWindow> windows = new ArrayList<MyWindow>();
+      final List<MyWindow> windows = newArrayList();
       execute(new GuiTask() {
         @Override protected void executeInEDT() {
           for (int i = 0; i < 3; i++) {

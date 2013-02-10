@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.core;
 
@@ -25,13 +25,12 @@ import javax.swing.*;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link BasicComponentPrinter#printComponents(java.io.PrintStream, Class)}</code>.
+ * Tests for {@link BasicComponentPrinter#printComponents(java.io.PrintStream, Class)}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 public class BasicComponentPrinter_printComponentsByType_Test extends BasicComponentPrinter_TestCase {
-
   @Test(expected = NullPointerException.class)
   public void should_throw_error_if_OutputStream_is_null() {
     printer.printComponents(null, JButton.class);
@@ -55,5 +54,4 @@ public class BasicComponentPrinter_printComponentsByType_Test extends BasicCompo
     printer.printComponents(out, JComboBox.class);
     assertThat(out.printed()).isEmpty();
   }
-
 }

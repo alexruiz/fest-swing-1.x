@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2010 the original author or authors.
+ * Copyright @2010-2013 the original author or authors.
  */
 package org.fest.swing.core;
 
@@ -31,12 +31,11 @@ import org.fest.swing.timing.Condition;
 import org.junit.*;
 
 /**
- * Tests for <code>{@link ComponentFoundCondition#descriptionAddendum()}</code>.
+ * Tests for {@link ComponentFoundCondition#descriptionAddendum()}.
  *
  * @author Alex Ruiz
  */
 public class ComponentFoundCondition_descriptionAddendum_Test {
-
   private static ComponentFinder finder;
   private static MyWindow window;
 

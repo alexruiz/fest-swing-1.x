@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.core.matcher;
 
@@ -25,18 +25,16 @@ import org.fest.swing.test.core.EDTSafeTestCase;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JTextComponentMatcher#matches(java.awt.Component)}</code>.
+ * Tests for {@link JTextComponentMatcher#matches(java.awt.Component)}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 public class JTextComponentMatcher_matches_byNameAndTextPattern_Test extends EDTSafeTestCase {
-
  @Test
   public void should_return_true_if_name_is_equal_to_expected_and_text_matches_pattern() {
     JTextComponentMatcher matcher = JTextComponentMatcher.withName("textField").andText(regex("He.*"));
     JTextField textField = textField().withName("textField").withText("Hello").createNew();
     assertThat(matcher.matches(textField)).isTrue();
   }
-
 }

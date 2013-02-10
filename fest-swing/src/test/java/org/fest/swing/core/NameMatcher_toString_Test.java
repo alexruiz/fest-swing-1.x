@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.core;
 
@@ -20,12 +20,11 @@ import static org.fest.assertions.Assertions.assertThat;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link NameMatcher#toString()}</code>.
+ * Tests for {@link NameMatcher#toString()}.
  *
  * @author Alex Ruiz
  */
 public class NameMatcher_toString_Test {
-
   @Test
   public void should_implement_toString() {
     NameMatcher matcher = new NameMatcher("my button");

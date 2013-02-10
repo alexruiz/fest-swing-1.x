@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -24,13 +24,12 @@ import org.fest.swing.edt.GuiQuery;
 import org.fest.swing.test.swing.*;
 
 /**
- * Understands a frame hosting <code>{@link TableDialogEditDemo}</code>.
+ * Understands a frame hosting {@link TableDialogEditDemo}.
  *
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
 class TableDialogEditDemoWindow extends TestWindow {
-
   private static final long serialVersionUID = 1L;
 
   final JTable table;

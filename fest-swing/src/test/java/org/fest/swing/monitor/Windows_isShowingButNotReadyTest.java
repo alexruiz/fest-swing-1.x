@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.monitor;
 
@@ -20,12 +20,11 @@ import static org.fest.assertions.Assertions.assertThat;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link Windows#isShowingButNotReady(java.awt.Window)}</code>.
+ * Tests for {@link Windows#isShowingButNotReady(java.awt.Window)}.
  *
  * @author Alex Ruiz
  */
 public class Windows_isShowingButNotReadyTest extends Windows_TestCase {
-
   @Test
   public void should_return_true_if_Window_is_pending() {
     windows.pending.put(window, null);

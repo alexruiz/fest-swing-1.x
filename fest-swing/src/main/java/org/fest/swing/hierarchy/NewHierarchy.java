@@ -1,124 +1,154 @@
 /*
  * Created on Oct 31, 2007
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ * 
  * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
- *
- * Copyright @2007-2010 the original author or authors.
+ * 
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+ * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations under the License.
+ * 
+ * Copyright @2007-2013 the original author or authors.
  */
 package org.fest.swing.hierarchy;
 
-import static java.awt.AWTEvent.*;
-import static java.util.Collections.emptyList;
+import static java.awt.AWTEvent.COMPONENT_EVENT_MASK;
+import static java.awt.AWTEvent.WINDOW_EVENT_MASK;
 import static org.fest.swing.listener.WeakEventListener.attachAsWeakEventListener;
+import static org.fest.util.Lists.emptyList;
 
-import java.awt.*;
+import java.awt.Component;
+import java.awt.Container;
+import java.awt.Toolkit;
+import java.awt.Window;
 import java.util.Collection;
 
+import javax.annotation.Nonnull;
+
 import org.fest.swing.annotation.RunsInCurrentThread;
+import org.fest.swing.util.ToolkitProvider;
 import org.fest.util.VisibleForTesting;
 
 /**
- * Understands isolation of a component hierarchy to limit to only those components created during the lifetime of this
- * hierarchy. Existing components (and any subsequently generated subwindows) are ignored by default.
  * <p>
- * Implicitly auto-filters windows which are disposed (i.e. generate a
- * <code>{@link java.awt.event.WindowEvent#WINDOW_CLOSED WINDOW_CLOSED}</code> event), but also implicitly un-filters
- * them if they should be shown again. Any window explicitly disposed by the calling
- * <code>{@link ComponentHierarchy#dispose(java.awt.Window)}</code< will be ignored permanently.
+ * Isolates a {@link ComponentHierarchy} to limit to only those components created during the lifetime of this
+ * hierarchy. Existing AWT or Swing {@code Component}s (and any subsequently generated sub-windows) are ignored by
+ * default.
  * </p>
- *
+ * 
+ * <p>
+ * Implicitly auto-filters {@code Window}s which are disposed (i.e. generates a {@code WindowEvent#WINDOW_CLOSED}
+ * event), but also implicitly un-filters them if they should be shown again. Any {@code Window} explicitly disposed by
+ * the calling {@link ComponentHierarchy#dispose(java.awt.Window)} will be ignored permanently.
+ * </p>
+ * 
  * @author Alex Ruiz
  */
 public class NewHierarchy extends ExistingHierarchy {
-
   private final WindowFilter filter;
   private final TransientWindowListener transientWindowListener;
 
   /**
-   * Creates a new <code>{@link NewHierarchy}</code> which does not contain any existing GUI components.
+   * Creates a new {@link NewHierarchy} which does not contain any existing AWT or Swing {@code Component}s.
+   * 
    * @return the created hierarchy.
    */
-  public static NewHierarchy ignoreExistingComponents() {
+  public static @Nonnull NewHierarchy ignoreExistingComponents() {
     return new NewHierarchy(true);
   }
 
   /**
-   * Creates a new <code>{@link NewHierarchy}</code> which contains existing GUI components.
+   * Creates a new {@link NewHierarchy} which contains existing AWT or Swing {@code Component}s.
+   * 
    * @return the created hierarchy.
    */
-  public static NewHierarchy includeExistingComponents() {
+  public static @Nonnull NewHierarchy includeExistingComponents() {
     return new NewHierarchy(false);
   }
 
   private NewHierarchy(boolean ignoreExisting) {
-    this(Toolkit.getDefaultToolkit(), ignoreExisting);
+    this(ToolkitProvider.instance().defaultToolkit(), ignoreExisting);
   }
 
-  private NewHierarchy(Toolkit toolkit, boolean ignoreExisting) {
+  private NewHierarchy(@Nonnull Toolkit toolkit, boolean ignoreExisting) {
     this.filter = new WindowFilter(parentFinder(), childrenFinder());
     transientWindowListener = new TransientWindowListener(filter);
     setUp(toolkit, ignoreExisting);
   }
 
   @VisibleForTesting
-  NewHierarchy(Toolkit toolkit, WindowFilter filter, boolean ignoreExisting) {
+  NewHierarchy(@Nonnull Toolkit toolkit, @Nonnull WindowFilter filter, boolean ignoreExisting) {
     this.filter = filter;
     transientWindowListener = new TransientWindowListener(filter);
     setUp(toolkit, ignoreExisting);
   }
 
   @RunsInCurrentThread
-  private void setUp(Toolkit toolkit, boolean ignoreExisting) {
-    if (ignoreExisting) ignoreExisting();
+  private void setUp(@Nonnull Toolkit toolkit, boolean ignoreExisting) {
+    if (ignoreExisting) {
+      ignoreExisting();
+    }
     attachAsWeakEventListener(toolkit, transientWindowListener, WINDOW_EVENT_MASK | COMPONENT_EVENT_MASK);
   }
 
   /**
-   * Make all currently existing components invisible to this hierarchy, without affecting their current state.
    * <p>
-   * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
-   * responsible for calling this method from the EDT.
+   * Makes all currently existing AWT and Swing {@code Component} invisible to this hierarchy, without affecting their
+   * current state.
+   * </p>
+   * 
+   * <p>
+   * <b>Note:</b> This method is accessed in the current executing thread. Such thread may or may not be the event
+   * dispatch thread (EDT.) Client code must call this method from the EDT.
    * </p>
    */
   @RunsInCurrentThread
   public void ignoreExisting() {
-    for (Container c : roots())
-      filter.ignore(c);
+    for (Container c : roots()) {
+      if (c != null) {
+        filter.ignore(c);
+      }
+    }
   }
 
   /**
-   * Make the given component visible to this hierarchy.
    * <p>
-   * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
-   * responsible for calling this method from the EDT.
+   * Make the given AWT or Swing {@code Component} visible to this hierarchy.
    * </p>
-   * @param c the given component.
+   * 
+   * <p>
+   * <b>Note:</b> This method is accessed in the current executing thread. Such thread may or may not be the event
+   * dispatch thread (EDT.) Client code must call this method from the EDT.
+   * </p>
+   * 
+   * @param c the given {@code Component}.
    */
   @RunsInCurrentThread
-  public void recognize(Component c) {
+  public void recognize(@Nonnull Component c) {
     filter.recognize(c);
   }
 
   /**
-   * Returns all sub-components of the given component, omitting those which are currently filtered.
    * <p>
-   * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
-   * responsible for calling this method from the EDT.
+   * Returns all the children of the given AWT or Swing {@code Component}, omitting those which are currently filtered.
    * </p>
-   * @param c the given component.
-   * @return all sub-components of the given component, omitting those which are currently filtered.
+   * 
+   * <p>
+   * <b>Note:</b> This method is accessed in the current executing thread. Such thread may or may not be the event
+   * dispatch thread (EDT.) Client code must call this method from the EDT.
+   * </p>
+   * 
+   * @param c the given {@code Component}.
+   * @return all the children of the given {@code Component}, omitting those which are currently filtered.
    */
   @RunsInCurrentThread
-  @Override public Collection<Component> childrenOf(Component c) {
-    if (filter.isIgnored(c)) return emptyList();
+  @Override
+  public @Nonnull Collection<Component> childrenOf(@Nonnull Component c) {
+    if (filter.isIgnored(c)) {
+      return emptyList();
+    }
     Collection<Component> children = super.childrenOf(c);
     // this only removes those components which are directly filtered, not necessarily those which have a filtered
     // ancestor.
@@ -127,40 +157,52 @@ public class NewHierarchy extends ExistingHierarchy {
   }
 
   /**
-   * Returns {@code true} if the given component is not filtered.
    * <p>
-   * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
-   * responsible for calling this method from the EDT.
+   * Returns {@code true} if the given AWT or Swing {@code Component} is not ignored.
    * </p>
-   * @param c the given component.
-   * @return {@code true} if the given component is not filtered, {@code false} otherwise.
+   * 
+   * <p>
+   * <b>Note:</b> This method is accessed in the current executing thread. Such thread may or may not be the event
+   * dispatch thread (EDT.) Client code must call this method from the EDT.
+   * </p>
+   * 
+   * @param c the given {@code Component}.
+   * @return {@code true} if the given {@code Component} is not ignored, {@code false} otherwise.
    */
   @RunsInCurrentThread
-  @Override public boolean contains(Component c) {
+  @Override
+  public boolean contains(@Nonnull Component c) {
     return super.contains(c) && !filter.isIgnored(c);
   }
 
   /**
-   * Dispose of the given window, but only if it currently exists within the hierarchy.  It will no longer appear in
    * <p>
-   * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
-   * responsible for calling this method from the EDT.
+   * Disposes the given {@code Window}, but only if it currently exists within the hierarchy. It will no longer appear
+   * in this hierarchy or be reachable in a hierarchy walk.
    * </p>
-   * this hierarchy or be reachable in a hierarchy walk.
-   * @param w the window to dispose.
+   * 
+   * <p>
+   * <b>Note:</b> This method is accessed in the current executing thread. Such thread may or may not be the event
+   * dispatch thread (EDT.) Client code must call this method from the EDT.
+   * </p>
+   * 
+   * @param w the {@code Window} to dispose.
    */
   @RunsInCurrentThread
-  @Override public void dispose(Window w) {
-    if (!contains(w)) return;
+  @Override
+  public void dispose(@Nonnull Window w) {
+    if (!contains(w)) {
+      return;
+    }
     super.dispose(w);
     filter.ignore(w);
   }
 
   /**
-   * Returns all available root containers, excluding those which have been filtered.
-   * @return  all available root containers, excluding those which have been filtered.
+   * @return all available root containers, excluding those which have been filtered.
    */
-  @Override public Collection<? extends Container> roots() {
+  @Override
+  public @Nonnull Collection<? extends Container> roots() {
     Collection<? extends Container> roots = super.roots();
     roots.removeAll(filter.filtered());
     return roots;

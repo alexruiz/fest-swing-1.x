@@ -10,32 +10,32 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
 import static org.fest.swing.driver.JProgressBarIndeterminateQuery.isIndeterminate;
 import static org.fest.swing.format.Formatting.format;
 import static org.fest.swing.timing.Pause.pause;
-import static org.fest.util.Strings.concat;
 
+import javax.annotation.Nonnull;
 import javax.swing.JProgressBar;
 
 import org.fest.assertions.Description;
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiLazyLoadingDescription;
-import org.fest.swing.timing.*;
+import org.fest.swing.timing.Condition;
+import org.fest.swing.timing.Timeout;
 
 /**
- * Understands an EDT-safe task that waits until the value of a <code>{@link JProgressBar}</code> is equal to the
+ * Understands an EDT-safe task that waits until the value of a {@code JProgressBar} is equal to the
  * given expected value.
  *
  * @author Alex Ruiz
  */
 final class JProgressBarWaitUntilIsDeterminate {
-
   @RunsInEDT
-  static void waitUntilValueIsDeterminate(final JProgressBar progressBar, final Timeout timeout) {
+  static void waitUntilValueIsDeterminate(final @Nonnull JProgressBar progressBar, final @Nonnull Timeout timeout) {
     pause(new Condition(untilIsDeterminate(progressBar)) {
       @Override public boolean test() {
         return !isIndeterminate(progressBar);
@@ -43,10 +43,10 @@ final class JProgressBarWaitUntilIsDeterminate {
     }, timeout);
   }
 
-  private static Description untilIsDeterminate(final JProgressBar progressBar) {
+  private static Description untilIsDeterminate(final @Nonnull JProgressBar progressBar) {
     return new GuiLazyLoadingDescription() {
-      @Override protected String loadDescription() {
-        return concat(format(progressBar), " to be in determinate mode");
+      @Override protected @Nonnull String loadDescription() {
+        return format(progressBar) + " to be in determinate mode";
       }
     };
   }

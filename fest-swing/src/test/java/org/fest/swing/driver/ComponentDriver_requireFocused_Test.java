@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -21,13 +21,12 @@ import static org.fest.swing.test.core.CommonAssertions.failWhenExpectingExcepti
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link ComponentDriver#requireFocused(java.awt.Component)}</code>.
+ * Tests for {@link ComponentDriver#requireFocused(java.awt.Component)}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 public class ComponentDriver_requireFocused_Test extends ComponentDriver_TestCase {
-
   @Test
   public void should_fail_if_Component_does_not_have_focus() {
     try {
@@ -44,5 +43,4 @@ public class ComponentDriver_requireFocused_Test extends ComponentDriver_TestCas
     showWindow();
     driver.requireFocused(window.textField);
   }
-
 }

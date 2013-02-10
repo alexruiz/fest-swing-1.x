@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.fixture;
 
@@ -24,13 +24,12 @@ import org.fest.swing.driver.JListDriver;
 import org.junit.BeforeClass;
 
 /**
- * Test cases for <code>{@link JListFixture}</code>.
+ * Test cases for {@link JListFixture}.
  *
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
 public abstract class JListFixture_TestCase extends ComponentFixture_Implementations_TestCase<JList> {
-
   private static JList target;
 
   private JListDriver driver;

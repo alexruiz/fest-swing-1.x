@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -22,13 +22,12 @@ import org.fest.swing.exception.ActionFailedException;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JTableDriver#columnIndex(javax.swing.JTable, Object)}</code>.
+ * Tests for {@link JTableDriver#columnIndex(javax.swing.JTable, Object)}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 public class JTableDriver_columnIndex_withInvalidInput_Test extends JTableDriver_TestCase {
-
   @Test
   public void should_throw_error_if_column_with_given_id_was_not_found() {
     try {

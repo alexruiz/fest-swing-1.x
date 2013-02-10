@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2010 the original author or authors.
+ * Copyright @2010-2013 the original author or authors.
  */
 package org.fest.swing.fixture;
 
@@ -20,12 +20,11 @@ import javax.swing.JTextField;
 import org.fest.swing.core.Robot;
 
 /**
- * Understands an implementation of <code>{@link ComponentFixture}</code> for testing.
+ * Understands an implementation of {@link ComponentFixture} for testing.
  *
  * @author Alex Ruiz
  */
 class ConcreteComponentFixture extends ComponentFixture<JTextField> {
-
   public ConcreteComponentFixture(Robot robot, Class<? extends JTextField> type) {
     super(robot, type);
   }

@@ -1,30 +1,42 @@
 /*
  * Created on Mar 24, 2008
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ * 
  * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
- *
- * Copyright @2008-2010 the original author or authors.
+ * 
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+ * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations under the License.
+ * 
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.util;
 
-import static java.awt.event.InputEvent.*;
-import static java.awt.event.KeyEvent.*;
+import static java.awt.event.InputEvent.ALT_GRAPH_MASK;
+import static java.awt.event.InputEvent.ALT_MASK;
+import static java.awt.event.InputEvent.CTRL_MASK;
+import static java.awt.event.InputEvent.META_MASK;
+import static java.awt.event.InputEvent.SHIFT_MASK;
+import static java.awt.event.KeyEvent.VK_ALT;
+import static java.awt.event.KeyEvent.VK_ALT_GRAPH;
+import static java.awt.event.KeyEvent.VK_CONTROL;
+import static java.awt.event.KeyEvent.VK_META;
+import static java.awt.event.KeyEvent.VK_SHIFT;
 import static java.lang.String.valueOf;
+import static org.fest.util.Lists.newArrayList;
 import static org.fest.util.Strings.concat;
 
-import java.util.*;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.annotation.Nonnull;
 
 /**
- * Understands utility methods related to input modifiers. This class also maps modifier masks to key codes for the
- * following modifiers:
+ * Utility methods related to input modifiers. This class also maps modifier masks to key codes for the following
+ * modifiers:
  * <ul>
  * <li>Alt</li>
  * <li>AltGraph</li>
@@ -32,12 +44,11 @@ import java.util.*;
  * <li>Meta</li>
  * <li>Shift</li>
  * </ul>
- *
+ * 
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
 public final class Modifiers {
-
   private static final Map<Integer, Integer> MODIFIER_TO_KEY = new LinkedHashMap<Integer, Integer>();
   private static final Map<Integer, Integer> KEY_TO_MODIFIER = new LinkedHashMap<Integer, Integer>();
 
@@ -56,21 +67,28 @@ public final class Modifiers {
 
   /**
    * Returns the key codes for the given modifier mask.
+   * 
    * @param modifierMask the given modifier mask.
    * @return the key codes for the given modifier mask.
    */
-  public static int[] keysFor(int modifierMask) {
-    List<Integer> keyList = new ArrayList<Integer>();
-    for (Integer mask : MODIFIER_TO_KEY.keySet())
-      if ((modifierMask & mask.intValue()) != 0) keyList.add(MODIFIER_TO_KEY.get(mask));
+  public static @Nonnull int[] keysFor(int modifierMask) {
+    List<Integer> keyList = newArrayList();
+    for (Integer mask : MODIFIER_TO_KEY.keySet()) {
+      if ((modifierMask & mask.intValue()) != 0) {
+        keyList.add(MODIFIER_TO_KEY.get(mask));
+      }
+    }
     int keyCount = keyList.size();
     int[] keys = new int[keyCount];
-    for (int i = 0; i < keyCount; i++) keys[i] = keyList.get(i);
+    for (int i = 0; i < keyCount; i++) {
+      keys[i] = keyList.get(i);
+    }
     return keys;
   }
 
   /**
    * Indicates whether the given key code is a modifier.
+   * 
    * @param keyCode the given key code.
    * @return {@code true} if the given key code is a modifier, {@code false} otherwise.
    */
@@ -80,19 +98,22 @@ public final class Modifiers {
 
   /**
    * Returns the modifier mask for the given key code.
+   * 
    * @param keyCode the given key code.
    * @return the modifier mask for the given key code.
    * @throws IllegalArgumentException if the given key code is not a modifier.
    */
   public static int maskFor(int keyCode) {
     Integer key = Integer.valueOf(keyCode);
-    if (!KEY_TO_MODIFIER.containsKey(key))
+    if (!KEY_TO_MODIFIER.containsKey(key)) {
       throw new IllegalArgumentException(concat("Keycode '", valueOf(keyCode), "' is not a modifier"));
+    }
     return KEY_TO_MODIFIER.get(key);
   }
 
   /**
    * Updates the given modifier mask with the given key code, only if the given key code belongs to a modifier key.
+   * 
    * @param keyCode the given key code.
    * @param modifierMask the given modifier mask.
    * @return the updated modifier mask.
@@ -100,7 +121,9 @@ public final class Modifiers {
   public static int updateModifierWithKeyCode(int keyCode, int modifierMask) {
     int updatedModifierMask = modifierMask;
     for (Map.Entry<Integer, Integer> entry : MODIFIER_TO_KEY.entrySet()) {
-      if (entry.getValue().intValue() != keyCode) continue;
+      if (entry.getValue().intValue() != keyCode) {
+        continue;
+      }
       updatedModifierMask |= entry.getKey().intValue();
       break;
     }

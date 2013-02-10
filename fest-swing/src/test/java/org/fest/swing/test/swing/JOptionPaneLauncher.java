@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.test.swing;
 
@@ -27,18 +27,17 @@ import org.fest.swing.edt.GuiQuery;
 import org.fest.swing.timing.Condition;
 
 /**
- * Understands launching a <code>{@link JOptionPane}</code>.
+ * Understands launching a {@code JOptionPane}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 public final class JOptionPaneLauncher {
-
   /**
-   * Launches the given <code>{@link JOptionPane}</code>, using the text "A Message" as the title of the dialog hosting
-   * the <code>JOptionPane</code>.
-   * @param optionPane the <code>JOptionPane</code> to launch.
-   * @return the dialog hosting the <code>JOptionPane</code>.
+   * Launches the given {@code JOptionPane}, using the text "A Message" as the title of the dialog hosting
+   * the {@code JOptionPane}.
+   * @param optionPane the {@code JOptionPane} to launch.
+   * @return the dialog hosting the {@code JOptionPane}.
    */
   @RunsInEDT
   public static JDialog launch(JOptionPane optionPane) {
@@ -46,10 +45,10 @@ public final class JOptionPaneLauncher {
   }
 
   /**
-   * Launches the given <code>{@link JOptionPane}</code>.
-   * @param optionPane the <code>JOptionPane</code> to launch.
-   * @param title the title of the dialog to host the <code>JOptionPane</code>.
-   * @return the dialog hosting the <code>JOptionPane</code>.
+   * Launches the given {@code JOptionPane}.
+   * @param optionPane the {@code JOptionPane} to launch.
+   * @param title the title of the dialog to host the {@code JOptionPane}.
+   * @return the dialog hosting the {@code JOptionPane}.
    */
   @RunsInEDT
   public static JDialog launch(final JOptionPane optionPane, final String title) {
@@ -70,10 +69,10 @@ public final class JOptionPaneLauncher {
   }
 
   /**
-   * Packs the given <code>{@link JOptionPane}</code> in a <code>{@link JDialog}</code>.
-   * @param optionPane the <code>JOptionPane</code> to launch.
-   * @param title the title of the dialog to host the <code>JOptionPane</code>.
-   * @return the dialog hosting the <code>JOptionPane</code>.
+   * Packs the given {@code JOptionPane} in a {@link JDialog}.
+   * @param optionPane the {@code JOptionPane} to launch.
+   * @param title the title of the dialog to host the {@code JOptionPane}.
+   * @return the dialog hosting the {@code JOptionPane}.
    */
   @RunsInEDT
   public static JDialog pack(final JOptionPane optionPane, final String title) {
@@ -86,5 +85,4 @@ public final class JOptionPaneLauncher {
   }
 
   private JOptionPaneLauncher() {}
-
 }

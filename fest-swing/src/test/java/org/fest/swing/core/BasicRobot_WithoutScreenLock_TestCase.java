@@ -36,7 +36,6 @@ import org.fest.swing.test.swing.TestWindow;
 import org.junit.*;
 
 public class BasicRobot_WithoutScreenLock_TestCase extends EDTSafeTestCase {
-
 	BasicRobot robot;
 	MyWindow window;
 
@@ -76,7 +75,6 @@ public class BasicRobot_WithoutScreenLock_TestCase extends EDTSafeTestCase {
 	}
 
 	static class MyWindow extends TestWindow {
-
 		private static final long serialVersionUID = 1L;
 
 	    final JTextField textField = new JTextField(10);

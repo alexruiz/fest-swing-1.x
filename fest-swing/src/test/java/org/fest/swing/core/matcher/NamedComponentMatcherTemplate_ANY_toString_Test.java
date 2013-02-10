@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.core.matcher;
 
@@ -20,15 +20,13 @@ import static org.fest.assertions.Assertions.assertThat;
 import org.junit.Test;
 
 /**
- * Tests for <code>toString</code> in <code>{@link NamedComponentMatcherTemplate#ANY}</code>.
+ * Tests for {@code toString} in {@link NamedComponentMatcherTemplate#ANY}.
  *
  * @author Alex Ruiz
  */
 public class NamedComponentMatcherTemplate_ANY_toString_Test extends NamedComponentMatcherTemplate_TestCase {
-
   @Test
   public void should_implement_toString() {
     assertThat(NamedComponentMatcherTemplate.ANY.toString()).isEqualTo("<Any>");
   }
-
 }

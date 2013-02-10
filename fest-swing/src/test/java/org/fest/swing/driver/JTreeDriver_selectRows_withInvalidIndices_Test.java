@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -25,13 +25,12 @@ import org.junit.runners.*;
 import org.junit.runners.Parameterized.Parameters;
 
 /**
- * Tests for <code>{@link JTreeDriver#selectRows(javax.swing.JTree, int[])}</code>.
+ * Tests for {@link JTreeDriver#selectRows(javax.swing.JTree, int[])}.
  *
  * @author Alex Ruiz
  */
 @RunWith(Parameterized.class)
 public class JTreeDriver_selectRows_withInvalidIndices_Test extends JTreeDriver_TestCase {
-
   private final int invalidRow;
 
   @Parameters

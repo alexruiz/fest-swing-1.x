@@ -11,19 +11,18 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2010 the original author or authors.
+ * Copyright @2010-2013 the original author or authors.
  */
 package org.fest.swing.monitor;
 
 import static org.easymock.classextension.EasyMock.createMock;
 
 /**
- * Understands implementations of <code>{@link Windows}</code> to be used for testing purposes.
+ * Understands implementations of {@link Windows} to be used for testing purposes.
  *
  * @author Alex Ruiz
  */
 public final class TestWindows {
-
   public static Windows singletonWindowsMock() {
     return LazyLoadedSingleton.INSTACE;
   }

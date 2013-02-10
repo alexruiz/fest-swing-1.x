@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -26,12 +26,11 @@ import org.fest.swing.edt.GuiTask;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JListItemIndexValidator#validateIndex(JList, int)}</code>.
+ * Tests for {@link JListItemPreconditions#checkIndexInBounds(JList, int)}.
  *
  * @author Alex Ruiz
  */
 public class JListItemIndexValidator_validateIndices_Test extends JListItemIndexValidator_TestCase {
-
   @Test
   public void should_pass_if_indices_are_valid() {
     validateIndices(0, 1, 2);
@@ -66,7 +65,7 @@ public class JListItemIndexValidator_validateIndices_Test extends JListItemIndex
   private static void validateIndices(final JList list, final int...indices) {
     execute(new GuiTask() {
       @Override protected void executeInEDT() {
-        JListItemIndexValidator.validateIndices(list, indices);
+        JListItemPreconditions.checkIndicesInBounds(list, indices);
       }
     });
   }

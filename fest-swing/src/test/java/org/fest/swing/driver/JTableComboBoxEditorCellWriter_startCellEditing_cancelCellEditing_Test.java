@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -24,15 +24,14 @@ import org.fest.swing.cell.JTableCellWriter;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JTableComboBoxEditorCellWriter#startCellEditing(javax.swing.JTable, int, int)}</code>
- * and <code>{@link JTableComboBoxEditorCellWriter#cancelCellEditing(javax.swing.JTable, int, int)}</code>.
+ * Tests for {@link JTableComboBoxEditorCellWriter#startCellEditing(javax.swing.JTable, int, int)}
+ * and {@link JTableComboBoxEditorCellWriter#cancelCellEditing(javax.swing.JTable, int, int)}.
  *
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
 public class JTableComboBoxEditorCellWriter_startCellEditing_cancelCellEditing_Test
     extends JTableCellWriter_startCellEditing_TestCase {
-
   @Override protected JTableCellWriter createWriter() {
     return new JTableComboBoxEditorCellWriter(robot);
   }

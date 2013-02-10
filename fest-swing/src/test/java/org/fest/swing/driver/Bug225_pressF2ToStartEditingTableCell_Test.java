@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -30,7 +30,6 @@ import org.junit.Test;
  * @author Alex Ruiz
  */
 public class Bug225_pressF2ToStartEditingTableCell_Test extends RobotBasedTestCase {
-
   private JTableTextComponentEditorCellWriter writer;
   private TableDialogEditDemoWindow window;
 

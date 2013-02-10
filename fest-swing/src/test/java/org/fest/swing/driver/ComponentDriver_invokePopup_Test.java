@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -23,12 +23,11 @@ import javax.swing.JPopupMenu;
 import org.junit.Test;
 
 /**
- * Test for <code>{@link ComponentDriver#invokePopupMenu(java.awt.Component)}</code>
+ * Test for {@link ComponentDriver#invokePopupMenu(java.awt.Component)}
  *
  * @author Alex Ruiz
  */
 public class ComponentDriver_invokePopup_Test extends ComponentDriver_invokePopup_TestCase {
-
   @Test
   public void should_show_JPopupMenu() {
     showWindow();

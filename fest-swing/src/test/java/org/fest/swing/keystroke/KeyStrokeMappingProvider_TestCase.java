@@ -11,25 +11,35 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.keystroke;
 
-import static java.awt.event.KeyEvent.*;
+import static java.awt.event.KeyEvent.VK_BACK_SPACE;
+import static java.awt.event.KeyEvent.VK_DELETE;
+import static java.awt.event.KeyEvent.VK_ENTER;
+import static java.awt.event.KeyEvent.VK_ESCAPE;
 import static java.lang.String.valueOf;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.timing.Pause.pause;
-import static org.fest.util.Strings.*;
+import static org.fest.util.Lists.newArrayList;
+import static org.fest.util.Maps.newHashMap;
+import static org.fest.util.Strings.concat;
+import static org.fest.util.Strings.quote;
 
 import java.awt.Dimension;
-import java.util.*;
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
 
-import javax.swing.*;
+import javax.swing.JTextArea;
+import javax.swing.KeyStroke;
 import javax.swing.text.JTextComponent;
 
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.driver.JTextComponentDriver;
-import org.fest.swing.edt.*;
+import org.fest.swing.edt.GuiActionRunner;
+import org.fest.swing.edt.GuiQuery;
 import org.fest.swing.test.core.RobotBasedTestCase;
 import org.fest.swing.test.recorder.KeyRecorder;
 import org.fest.swing.test.swing.TestWindow;
@@ -37,13 +47,12 @@ import org.fest.swing.timing.Condition;
 import org.junit.Test;
 
 /**
- * Test case for implementations of <code>{@link KeyStrokeMappingProvider}</code>.
+ * Test case for implementations of {@link KeyStrokeMappingProvider}.
  *
  * @author Alex Ruiz
  */
 public abstract class KeyStrokeMappingProvider_TestCase extends RobotBasedTestCase {
-
-  private static final Map<Character, Integer> BASIC_CHARS_AND_KEYS_MAP = new HashMap<Character, Integer>();
+  private static final Map<Character, Integer> BASIC_CHARS_AND_KEYS_MAP = newHashMap();
 
   static {
     BASIC_CHARS_AND_KEYS_MAP.put((char)  8, VK_BACK_SPACE);
@@ -73,7 +82,9 @@ public abstract class KeyStrokeMappingProvider_TestCase extends RobotBasedTestCa
 
   @Test
   public void should_provide_key_strokes_for_keyboard() {
-    if (basicCharacterVerified()) return;
+    if (basicCharacterVerified()) {
+      return;
+    }
     pressKeyStrokeAndVerify(character);
   }
 
@@ -88,7 +99,9 @@ public abstract class KeyStrokeMappingProvider_TestCase extends RobotBasedTestCa
   }
 
   private boolean basicCharacterVerified() {
-    if (!BASIC_CHARS_AND_KEYS_MAP.containsKey(character)) return false;
+    if (!BASIC_CHARS_AND_KEYS_MAP.containsKey(character)) {
+      return false;
+    }
     int key = BASIC_CHARS_AND_KEYS_MAP.get(character);
     pressKeyStrokeAndVerify(key);
     return true;
@@ -110,9 +123,10 @@ public abstract class KeyStrokeMappingProvider_TestCase extends RobotBasedTestCa
   }
 
   static Collection<Object[]> keyStrokesFrom(Collection<KeyStrokeMapping> mappings) {
-    List<Object[]> keyStrokes = new ArrayList<Object[]>();
-    for (KeyStrokeMapping mapping : mappings)
+    List<Object[]> keyStrokes = newArrayList();
+    for (KeyStrokeMapping mapping : mappings) {
       keyStrokes.add(new Object[] { mapping.character(), mapping.keyStroke() });
+    }
     return keyStrokes;
   }
 
@@ -136,5 +150,4 @@ public abstract class KeyStrokeMappingProvider_TestCase extends RobotBasedTestCa
       setPreferredSize(new Dimension(200, 200));
     }
   }
-
 }

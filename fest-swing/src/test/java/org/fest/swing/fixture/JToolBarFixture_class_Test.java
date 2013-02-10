@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2007-2010 the original author or authors.
+ * Copyright @2007-2013 the original author or authors.
  */
 package org.fest.swing.fixture;
 
@@ -20,13 +20,12 @@ import static org.fest.assertions.Assertions.assertThat;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JToolBarFixture}</code>.
+ * Tests for {@link JToolBarFixture}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 public class JToolBarFixture_class_Test extends JToolBarFixture_TestCase {
-
   @Test
   public void should_be_ContainerFixture() {
     assertThat(fixture()).isInstanceOf(ContainerFixture.class);

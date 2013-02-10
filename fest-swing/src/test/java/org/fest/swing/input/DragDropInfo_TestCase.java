@@ -10,7 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.input;
 
@@ -22,12 +22,11 @@ import org.fest.swing.test.core.EDTSafeTestCase;
 import org.junit.Before;
 
 /**
- * Base test case for <code>{@link DragDropInfo}</code>.
+ * Base test case for {@link DragDropInfo}.
  *
  * @author Yvonne Wang
  */
 public abstract class DragDropInfo_TestCase extends EDTSafeTestCase {
-
   Component source;
   Point origin;
   long when;
@@ -39,5 +38,4 @@ public abstract class DragDropInfo_TestCase extends EDTSafeTestCase {
     when = System.currentTimeMillis();
     info = new DragDropInfo();
   }
-
 }

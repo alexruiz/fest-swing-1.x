@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -30,12 +30,11 @@ import org.fest.swing.test.core.RobotBasedTestCase;
 import org.fest.swing.test.swing.*;
 
 /**
- * Base test case for <code>{@link JTreeDriver}</code>.
+ * Base test case for {@link JTreeDriver}.
  *
  * @author Alex Ruiz
  */
 public abstract class JTreeDriver_TestCase extends RobotBasedTestCase {
-
   MyWindow window;
   JTree tree;
   JTreeDriver driver;

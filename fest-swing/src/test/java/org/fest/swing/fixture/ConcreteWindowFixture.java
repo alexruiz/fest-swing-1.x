@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.fixture;
 
@@ -24,12 +24,11 @@ import org.fest.swing.core.Robot;
 import org.fest.swing.timing.Timeout;
 
 /**
- * Understands an implementation of <code>{@link WindowFixture}</code> for testing purposes.
+ * Understands an implementation of {@link WindowFixture} for testing purposes.
  *
  * @author Alex Ruiz
  */
 class ConcreteWindowFixture extends WindowFixture<JFrame> {
-
   public ConcreteWindowFixture(Class<? extends JFrame> type) {
     super(type);
   }

@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2007-2010 the original author or authors.
+ * Copyright @2007-2013 the original author or authors.
  */
 package org.fest.swing.monitor;
 
@@ -23,12 +23,11 @@ import org.fest.swing.test.awt.ToolkitStub;
 import org.junit.Before;
 
 /**
- * Base test case for <code>{@link WindowAvailabilityMonitor}</code>.
+ * Base test case for {@link WindowAvailabilityMonitor}.
  *
  * @author Alex Ruiz
  */
 public abstract class WindowAvailabilityMonitor_TestCase {
-
   static final long EVENT_MASK = MOUSE_MOTION_EVENT_MASK | MOUSE_EVENT_MASK | PAINT_EVENT_MASK;
 
   WindowAvailabilityMonitor monitor;

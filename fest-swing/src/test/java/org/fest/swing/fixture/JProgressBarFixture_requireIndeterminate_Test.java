@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.fixture;
 
@@ -21,12 +21,11 @@ import org.fest.mocks.EasyMockTemplate;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JProgressBarFixture#requireIndeterminate()}</code>.
+ * Tests for {@link JProgressBarFixture#requireIndeterminate()}.
  *
  * @author Alex Ruiz
  */
 public class JProgressBarFixture_requireIndeterminate_Test extends JProgressBarFixture_TestCase {
-
   @Test
   public void should_require_value() {
     new EasyMockTemplate(driver()) {

@@ -11,19 +11,18 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2010 the original author or authors.
+ * Copyright @2010-2013 the original author or authors.
  */
 package org.fest.swing.core;
 
 import static org.easymock.classextension.EasyMock.createMock;
 
 /**
- * Understands <code>{@link Robot}</code>s to be used for testing purposes.
+ * Understands {@link Robot}s to be used for testing purposes.
  *
  * @author Alex Ruiz
  */
 public final class TestRobots {
-
   public static Robot singletonRobotMock() {
     return LazyLoadedSingleton.INSTANCE;
   }

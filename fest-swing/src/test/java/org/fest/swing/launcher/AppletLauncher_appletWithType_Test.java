@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.launcher;
 
@@ -24,12 +24,11 @@ import org.fest.swing.exception.UnexpectedException;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link AppletLauncher#applet(Class)}</code>.
+ * Tests for {@link AppletLauncher#applet(Class)}.
  *
  * @author Yvonne Wang
  */
 public class AppletLauncher_appletWithType_Test extends AppletLauncher_TestCase {
-
   @Test(expected = NullPointerException.class)
   public void should_throw_error_if_Applet_TypeIsNull() {
     Class<? extends Applet> type = null;

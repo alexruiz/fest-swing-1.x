@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.data;
 
@@ -22,12 +22,11 @@ import org.fest.test.EqualsHashCodeContractTestCase;
 import org.junit.*;
 
 /**
- * Tests for <code>{@link TableCell#equals(Object)}</code> and <code>{@link TableCell#hashCode()}</code>
+ * Tests for {@link TableCell#equals(Object)} and {@link TableCell#hashCode()}
  *
  * @author Alex Ruiz
  */
 public class TableCell_equals_hashCode_Test implements EqualsHashCodeContractTestCase {
-
   private TableCell cell;
 
   @Before public void setUp() {

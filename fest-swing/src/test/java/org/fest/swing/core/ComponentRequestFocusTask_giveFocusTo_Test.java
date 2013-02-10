@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.core;
 
@@ -30,13 +30,12 @@ import org.fest.swing.test.swing.TestWindow;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link ComponentRequestFocusTask#giveFocusTo(java.awt.Component)}</code>.
+ * Tests for {@link ComponentRequestFocusTask#giveFocusTo(java.awt.Component)}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 public class ComponentRequestFocusTask_giveFocusTo_Test extends SequentialEDTSafeTestCase {
-
   private MyWindow window;
 
   @Override protected void onSetUp() {

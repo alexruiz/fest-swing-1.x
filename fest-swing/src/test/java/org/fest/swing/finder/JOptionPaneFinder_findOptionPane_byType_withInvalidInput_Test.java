@@ -11,19 +11,18 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.finder;
 
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JOptionPaneFinder#findOptionPane()}</code>.
+ * Tests for {@link JOptionPaneFinder#findOptionPane()}.
  *
  * @author Alex Ruiz
  */
 public class JOptionPaneFinder_findOptionPane_byType_withInvalidInput_Test {
-
   @Test(expected = IllegalArgumentException.class)
   public void should_throw_error_if_timeout_is_negative() {
     JOptionPaneFinder.findOptionPane().withTimeout(-20);

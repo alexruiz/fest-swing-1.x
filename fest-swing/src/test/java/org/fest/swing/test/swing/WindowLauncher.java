@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2007-2010 the original author or authors.
+ * Copyright @2007-2013 the original author or authors.
  */
 package org.fest.swing.test.swing;
 
@@ -26,14 +26,13 @@ import org.fest.swing.annotation.*;
 import org.fest.swing.edt.GuiQuery;
 
 /**
- * Understands a <code>{@link JFrame}</code> that launches another <code>{@link JFrame}</code> and a
- * <code>{@link JDialog}</code> using a configurable delay.
+ * Understands a {@code JFrame} that launches another {@code JFrame} and a
+ * {@link JDialog} using a configurable delay.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 public class WindowLauncher extends TestWindow {
-
   private static final long serialVersionUID = 1L;
 
   private static final int DEFAULT_DELAY = 10000;

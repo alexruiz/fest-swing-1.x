@@ -10,7 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.fixture;
 
@@ -31,15 +31,14 @@ import org.junit.Test;
  * Tests for <a href="http://code.google.com/p/fest/issues/detail?id=210" target="_blank">Bug 210</a>.
  * <p>
  * Demonstrate bug when testing {@code JComboBox}es. If value programmatically added to {@code JComboBox}
- * using <code>setSelectedItem</code> then FEST assertion <code>requireSelection</code> fails while JUnit
- * <code>assertEqual</code> passes. (FEST 1.0b1, Java 1.5)
+ * using {@code setSelectedItem} then FEST assertion {@code requireSelection} fails while JUnit
+ * {@code assertEqual} passes. (FEST 1.0b1, Java 1.5)
  * </p>
  *
  * @author Ewan McDougall
  * @author Alex Ruiz
  */
 public class Bug210_editableComboBox_Test extends RobotBasedTestCase {
-
   private final static String ADDED_STRING = "rocket";
   private String[] values;
   private DialogFixture dialog;
@@ -81,5 +80,4 @@ public class Bug210_editableComboBox_Test extends RobotBasedTestCase {
       setTitle(Bug210_editableComboBox_Test.class.getSimpleName());
     }
   }
-
 }

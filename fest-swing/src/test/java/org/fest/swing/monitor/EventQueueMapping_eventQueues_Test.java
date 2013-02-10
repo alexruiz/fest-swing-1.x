@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.monitor;
 
@@ -26,12 +26,11 @@ import org.fest.swing.test.awt.ToolkitStub;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link EventQueueMapping#eventQueues()}</code>.
+ * Tests for {@link EventQueueMapping#eventQueues()}.
  *
  * @author Alex Ruiz
  */
 public class EventQueueMapping_eventQueues_Test extends EventQueueMapping_TestCase {
-
   @Test
   public void should_return_all_EventQueues() {
     EventQueue anotherEventQueue = new EventQueue();
@@ -50,5 +49,4 @@ public class EventQueueMapping_eventQueues_Test extends EventQueueMapping_TestCa
     Collection<EventQueue> allEventQueues = mapping.eventQueues();
     assertThat(allEventQueues).containsOnly(eventQueue);
   }
-
 }

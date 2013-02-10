@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.core;
 
@@ -23,12 +23,11 @@ import org.fest.swing.test.swing.TestWindow;
 import org.junit.Before;
 
 /**
- * Base test case for <code>{@link SingleComponentHierarchy}</code>.
+ * Base test case for {@link SingleComponentHierarchy}.
  *
  * @author Alex Ruiz
  */
 public abstract class SingleComponentHierarchy_TestCase extends EDTSafeTestCase {
-
   ComponentHierarchy hierarchyDelegate;
   TestWindow root;
   SingleComponentHierarchy hierarchy;

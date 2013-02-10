@@ -11,19 +11,18 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.data;
 
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link TableCellInRowByValue#rowWithValue(String...)}</code>.
+ * Tests for {@link TableCellInRowByValue#rowWithValue(String...)}.
  *
  * @author Alex Ruiz
  */
 public class TableCellInRowByValue_rowWithValue_Test {
-
   @Test(expected = NullPointerException.class)
   public void should_throw_error_if_array_of_values_is_null() {
     String[] values = null;

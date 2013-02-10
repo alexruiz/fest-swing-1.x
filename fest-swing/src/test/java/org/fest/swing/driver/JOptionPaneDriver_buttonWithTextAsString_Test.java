@@ -10,7 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -23,12 +23,11 @@ import javax.swing.*;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JOptionPaneDriver#buttonWithText(javax.swing.JOptionPane, String)}</code>.
+ * Tests for {@link JOptionPaneDriver#buttonWithText(javax.swing.JOptionPane, String)}.
  *
  * @author Alex Ruiz
  */
 public class JOptionPaneDriver_buttonWithTextAsString_Test extends JOptionPaneDriver_TestCase {
-
   @Test
   public void should_find_button_with_given_text() {
     JOptionPane optionPane = messageWithOptions("First", "Second");

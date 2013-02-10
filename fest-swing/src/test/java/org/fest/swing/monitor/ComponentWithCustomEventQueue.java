@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.monitor;
 
@@ -20,13 +20,12 @@ import java.awt.Toolkit;
 import javax.swing.JComponent;
 
 /**
- * Understands a GUI component stub that can be configured to use a custom <code>{@link Toolkit}</code>.
+ * Understands a GUI component stub that can be configured to use a custom {@link Toolkit}.
  *
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
 class ComponentWithCustomEventQueue extends JComponent {
-
   private static final long serialVersionUID = 1L;
 
   private final Toolkit toolkit;

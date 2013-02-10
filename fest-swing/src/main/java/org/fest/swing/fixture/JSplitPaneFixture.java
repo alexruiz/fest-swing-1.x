@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2007-2010 the original author or authors.
+ * Copyright @2007-2013 the original author or authors.
  */
 package org.fest.swing.fixture;
 
@@ -26,7 +26,7 @@ import org.fest.swing.exception.*;
 import org.fest.swing.timing.Timeout;
 
 /**
- * Understands functional testing of <code>{@link JSplitPane}</code>s:
+ * Understands functional testing of {@link JSplitPane}s:
  * <ul>
  * <li>user input simulation</li>
  * <li>state verification</li>
@@ -38,15 +38,14 @@ import org.fest.swing.timing.Timeout;
  */
 public class JSplitPaneFixture extends ComponentFixture<JSplitPane> implements CommonComponentFixture,
     JComponentFixture, JPopupMenuInvokerFixture {
-
   private JSplitPaneDriver driver;
 
   /**
-   * Creates a new <code>{@link JSplitPaneFixture}</code>.
+   * Creates a new {@link JSplitPaneFixture}.
    * @param robot performs simulation of user events on the given {@code JSplitPane}.
    * @param target the {@code JSplitPane} to be managed by this fixture.
-   * @throws NullPointerException if <code>robot</code> is {@code null}.
-   * @throws NullPointerException if <code>target</code> is {@code null}.
+   * @throws NullPointerException if {@code robot} is {@code null}.
+   * @throws NullPointerException if {@code target} is {@code null}.
    */
   public JSplitPaneFixture(Robot robot, JSplitPane target) {
     super(robot, target);
@@ -54,9 +53,9 @@ public class JSplitPaneFixture extends ComponentFixture<JSplitPane> implements C
   }
 
   /**
-   * Creates a new <code>{@link JSplitPaneFixture}</code>.
+   * Creates a new {@link JSplitPaneFixture}.
    * @param robot performs simulation of user events on a {@code JSplitPane}.
-   * @param spinnerName the name of the {@code JSplitPane} to find using the given <code>Robot</code>.
+   * @param spinnerName the name of the {@code JSplitPane} to find using the given {@code Robot}.
    * @throws ComponentLookupException if a matching {@code JSplitPane} could not be found.
    * @throws ComponentLookupException if more than one matching {@code JSplitPane} is found.
    */
@@ -70,8 +69,8 @@ public class JSplitPaneFixture extends ComponentFixture<JSplitPane> implements C
   }
 
   /**
-   * Sets the <code>{@link JSplitPaneDriver}</code> to be used by this fixture.
-   * @param newDriver the new <code>JSplitPaneDriver</code>.
+   * Sets the {@link JSplitPaneDriver} to be used by this fixture.
+   * @param newDriver the new {@code JSplitPaneDriver}.
    * @throws NullPointerException if the given driver is {@code null}.
    */
   protected final void driver(JSplitPaneDriver newDriver) {
@@ -80,7 +79,7 @@ public class JSplitPaneFixture extends ComponentFixture<JSplitPane> implements C
   }
 
   /**
-   * Simulates a user moving the divider of this fixture's <code>{@link JSplitPane}</code>.
+   * Simulates a user moving the divider of this fixture's {@link JSplitPane}.
    * <p>
    * Since 1.2, this method respects the minimum and maximum values of the left and right components inside this
    * fixture's {@code JSplitPane}.
@@ -96,7 +95,7 @@ public class JSplitPaneFixture extends ComponentFixture<JSplitPane> implements C
   }
 
   /**
-   * Simulates a user clicking this fixture's <code>{@link JSplitPane}</code>.
+   * Simulates a user clicking this fixture's {@link JSplitPane}.
    * @return this fixture.
    * @throws IllegalStateException if this fixture's {@code JSplitPane} is disabled.
    * @throws IllegalStateException if this fixture's {@code JSplitPane} is not showing on the screen.
@@ -107,10 +106,10 @@ public class JSplitPaneFixture extends ComponentFixture<JSplitPane> implements C
   }
 
   /**
-   * Simulates a user clicking this fixture's <code>{@link JSplitPane}</code>.
+   * Simulates a user clicking this fixture's {@link JSplitPane}.
    * @param button the button to click.
    * @return this fixture.
-   * @throws NullPointerException if the given <code>MouseButton</code> is {@code null}.
+   * @throws NullPointerException if the given {@code MouseButton} is {@code null}.
    * @throws IllegalStateException if this fixture's {@code JSplitPane} is disabled.
    * @throws IllegalStateException if this fixture's {@code JSplitPane} is not showing on the screen.
    */
@@ -120,10 +119,10 @@ public class JSplitPaneFixture extends ComponentFixture<JSplitPane> implements C
   }
 
   /**
-   * Simulates a user clicking this fixture's <code>{@link JSplitPane}</code>.
+   * Simulates a user clicking this fixture's {@link JSplitPane}.
    * @param mouseClickInfo specifies the button to click and the times the button should be clicked.
    * @return this fixture.
-   * @throws NullPointerException if the given <code>MouseClickInfo</code> is {@code null}.
+   * @throws NullPointerException if the given {@code MouseClickInfo} is {@code null}.
    * @throws IllegalStateException if this fixture's {@code JSplitPane} is disabled.
    * @throws IllegalStateException if this fixture's {@code JSplitPane} is not showing on the screen.
    */
@@ -133,7 +132,7 @@ public class JSplitPaneFixture extends ComponentFixture<JSplitPane> implements C
   }
 
   /**
-   * Simulates a user double-clicking this fixture's <code>{@link JSplitPane}</code>.
+   * Simulates a user double-clicking this fixture's {@link JSplitPane}.
    * @return this fixture.
    * @throws IllegalStateException if this fixture's {@code JSplitPane} is disabled.
    * @throws IllegalStateException if this fixture's {@code JSplitPane} is not showing on the screen.
@@ -144,7 +143,7 @@ public class JSplitPaneFixture extends ComponentFixture<JSplitPane> implements C
   }
 
   /**
-   * Simulates a user right-clicking this fixture's <code>{@link JSplitPane}</code>.
+   * Simulates a user right-clicking this fixture's {@link JSplitPane}.
    * @return this fixture.
    * @throws IllegalStateException if this fixture's {@code JSplitPane} is disabled.
    * @throws IllegalStateException if this fixture's {@code JSplitPane} is not showing on the screen.
@@ -155,7 +154,7 @@ public class JSplitPaneFixture extends ComponentFixture<JSplitPane> implements C
   }
 
   /**
-   * Gives input focus to this fixture's <code>{@link JSplitPane}</code>.
+   * Gives input focus to this fixture's {@link JSplitPane}.
    * @return this fixture.
    * @throws IllegalStateException if this fixture's {@code JSplitPane} is disabled.
    * @throws IllegalStateException if this fixture's {@code JSplitPane} is not showing on the screen.
@@ -166,11 +165,11 @@ public class JSplitPaneFixture extends ComponentFixture<JSplitPane> implements C
   }
 
   /**
-   * Simulates a user pressing given key with the given modifiers on this fixture's <code>{@link JSplitPane}</code>.
-   * Modifiers is a mask from the available <code>{@link java.awt.event.InputEvent}</code> masks.
+   * Simulates a user pressing given key with the given modifiers on this fixture's {@link JSplitPane}.
+   * Modifiers is a mask from the available {@link java.awt.event.InputEvent} masks.
    * @param keyPressInfo specifies the key and modifiers to press.
    * @return this fixture.
-   * @throws NullPointerException if the given <code>KeyPressInfo</code> is {@code null}.
+   * @throws NullPointerException if the given {@code KeyPressInfo} is {@code null}.
    * @throws IllegalArgumentException if the given code is not a valid key code.
    * @throws IllegalStateException if this fixture's {@code JSplitPane} is disabled.
    * @throws IllegalStateException if this fixture's {@code JSplitPane} is not showing on the screen.
@@ -182,7 +181,7 @@ public class JSplitPaneFixture extends ComponentFixture<JSplitPane> implements C
   }
 
   /**
-   * Simulates a user pressing and releasing the given keys on this fixture's <code>{@link JSplitPane}</code>. This
+   * Simulates a user pressing and releasing the given keys on this fixture's {@link JSplitPane}. This
    * method does not affect the current focus.
    * @param keyCodes one or more codes of the keys to press.
    * @return this fixture.
@@ -198,7 +197,7 @@ public class JSplitPaneFixture extends ComponentFixture<JSplitPane> implements C
   }
 
   /**
-   * Simulates a user pressing the given key on this fixture's <code>{@link JSplitPane}</code>.
+   * Simulates a user pressing the given key on this fixture's {@link JSplitPane}.
    * @param keyCode the code of the key to press.
    * @return this fixture.
    * @throws IllegalArgumentException if any of the given code is not a valid key code.
@@ -212,7 +211,7 @@ public class JSplitPaneFixture extends ComponentFixture<JSplitPane> implements C
   }
 
   /**
-   * Simulates a user releasing the given key on this fixture's <code>{@link JSplitPane}</code>.
+   * Simulates a user releasing the given key on this fixture's {@link JSplitPane}.
    * @param keyCode the code of the key to release.
    * @return this fixture.
    * @throws IllegalArgumentException if any of the given code is not a valid key code.
@@ -226,7 +225,7 @@ public class JSplitPaneFixture extends ComponentFixture<JSplitPane> implements C
   }
 
   /**
-   * Asserts that this fixture's <code>{@link JSplitPane}</code> has input focus.
+   * Asserts that this fixture's {@link JSplitPane} has input focus.
    * @return this fixture.
    * @throws AssertionError if this fixture's {@code JSplitPane} does not have input focus.
    */
@@ -236,7 +235,7 @@ public class JSplitPaneFixture extends ComponentFixture<JSplitPane> implements C
   }
 
   /**
-   * Asserts that this fixture's <code>{@link JSplitPane}</code> is enabled.
+   * Asserts that this fixture's {@link JSplitPane} is enabled.
    * @return this fixture.
    * @throws AssertionError if this fixture's {@code JSplitPane} is disabled.
    */
@@ -246,7 +245,7 @@ public class JSplitPaneFixture extends ComponentFixture<JSplitPane> implements C
   }
 
   /**
-   * Asserts that this fixture's <code>{@link JSplitPane}</code> is enabled.
+   * Asserts that this fixture's {@link JSplitPane} is enabled.
    * @param timeout the time this fixture will wait for the component to be enabled.
    * @return this fixture.
    * @throws WaitTimedOutError if this fixture's {@code JSplitPane} is never enabled.
@@ -257,7 +256,7 @@ public class JSplitPaneFixture extends ComponentFixture<JSplitPane> implements C
   }
 
   /**
-   * Asserts that this fixture's <code>{@link JSplitPane}</code> is disabled.
+   * Asserts that this fixture's {@link JSplitPane} is disabled.
    * @return this fixture.
    * @throws AssertionError if this fixture's {@code JSplitPane} is enabled.
    */
@@ -267,7 +266,7 @@ public class JSplitPaneFixture extends ComponentFixture<JSplitPane> implements C
   }
 
   /**
-   * Asserts that this fixture's <code>{@link JSplitPane}</code> is visible.
+   * Asserts that this fixture's {@link JSplitPane} is visible.
    * @return this fixture.
    * @throws AssertionError if this fixture's {@code JSplitPane} is not visible.
    */
@@ -277,7 +276,7 @@ public class JSplitPaneFixture extends ComponentFixture<JSplitPane> implements C
   }
 
   /**
-   * Asserts that this fixture's <code>{@link JSplitPane}</code> is not visible.
+   * Asserts that this fixture's {@link JSplitPane} is not visible.
    * @return this fixture.
    * @throws AssertionError if this fixture's {@code JSplitPane} is visible.
    */
@@ -287,7 +286,7 @@ public class JSplitPaneFixture extends ComponentFixture<JSplitPane> implements C
   }
 
   /**
-   * Asserts that the toolTip in this fixture's <code>{@link JSplitPane}</code> matches the given value.
+   * Asserts that the toolTip in this fixture's {@link JSplitPane} matches the given value.
    * @param expected the given value. It can be a regular expression.
    * @return this fixture.
    * @throws AssertionError if the toolTip in this fixture's {@code JSplitPane} does not match the given value.
@@ -299,7 +298,7 @@ public class JSplitPaneFixture extends ComponentFixture<JSplitPane> implements C
   }
 
   /**
-   * Asserts that the toolTip in this fixture's <code>{@link JSplitPane}</code> matches the given regular expression
+   * Asserts that the toolTip in this fixture's {@link JSplitPane} matches the given regular expression
    * pattern.
    * @param pattern the regular expression pattern to match.
    * @return this fixture.
@@ -314,7 +313,7 @@ public class JSplitPaneFixture extends ComponentFixture<JSplitPane> implements C
   }
 
   /**
-   * Returns the client property stored in this fixture's <code>{@link JSplitPane}</code>, under the given key.
+   * Returns the client property stored in this fixture's {@link JSplitPane}, under the given key.
    * @param key the key to use to retrieve the client property.
    * @return the value of the client property stored under the given key, or {@code null} if the property was
    * not found.
@@ -326,7 +325,7 @@ public class JSplitPaneFixture extends ComponentFixture<JSplitPane> implements C
   }
 
   /**
-   * Shows a pop-up menu using this fixture's <code>{@link JSplitPane}</code> as the invoker of the pop-up menu.
+   * Shows a pop-up menu using this fixture's {@link JSplitPane} as the invoker of the pop-up menu.
    * @return a fixture that manages the displayed pop-up menu.
    * @throws IllegalStateException if this fixture's {@code JSplitPane} is disabled.
    * @throws IllegalStateException if this fixture's {@code JSplitPane} is not showing on the screen.
@@ -337,7 +336,7 @@ public class JSplitPaneFixture extends ComponentFixture<JSplitPane> implements C
   }
 
   /**
-   * Shows a pop-up menu at the given point using this fixture's <code>{@link JSplitPane}</code> as the invoker of the
+   * Shows a pop-up menu at the given point using this fixture's {@link JSplitPane} as the invoker of the
    * pop-up menu.
    * @param p the given point where to show the pop-up menu.
    * @return a fixture that manages the displayed pop-up menu.

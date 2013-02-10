@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -21,13 +21,12 @@ import static org.fest.swing.driver.JTableDriver_TestCase.MyWindow.ROW_COUNT;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JTableDriver#rowCountOf(javax.swing.JTable)}</code>.
+ * Tests for {@link JTableDriver#rowCountOf(javax.swing.JTable)}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 public class JTableDriver_rowCountOf_Test extends JTableDriver_TestCase {
-
   @Test
   public void shouldReturnRowCount() {
     assertThat(driver.rowCountOf(table)).isEqualTo(ROW_COUNT);

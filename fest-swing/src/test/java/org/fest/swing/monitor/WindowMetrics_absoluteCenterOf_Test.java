@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.monitor;
 
@@ -27,12 +27,11 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link WindowMetrics#absoluteCenterOf(Window)}</code>.
+ * Tests for {@link WindowMetrics#absoluteCenterOf(Window)}.
  *
  * @author Alex Ruiz
  */
 public class WindowMetrics_absoluteCenterOf_Test extends EDTSafeTestCase {
-
   private int x;
   private int y;
   private int left;

@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.core;
 
@@ -27,14 +27,13 @@ import org.junit.runners.*;
 import org.junit.runners.Parameterized.Parameters;
 
 /**
- * Tests for <code>{@link AbstractComponentMatcher#requireShowing(boolean)}</code> and
- * <code>{@link AbstractComponentMatcher#requireShowing()}</code>.
+ * Tests for {@link AbstractComponentMatcher#requireShowing(boolean)} and
+ * {@link AbstractComponentMatcher#requireShowing()}.
  *
  * @author Alex Ruiz
  */
 @RunWith(Parameterized.class)
 public class AbstractComponentMatcher_requireShowing_Test {
-
   private final boolean requireShowing;
 
   @Parameters

@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.fixture;
 
@@ -24,14 +24,13 @@ import org.fest.swing.driver.JTextComponentDriver;
 import org.junit.BeforeClass;
 
 /**
- * Tests for methods in <code>{@link JTextComponentFixture}</code> that are inherited from
- * <code>{@link ClientPropertyStorageFixture}</code>.
+ * Tests for methods in {@link JTextComponentFixture} that are inherited from
+ * {@link ClientPropertyStorageFixture}.
  *
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
 public class JTextComponentFixture_clientProperty_Test extends ClientPropertyStorageFixture_TestCase<JTextComponent> {
-
   private static JTextComponent target;
 
   private JTextComponentDriver driver;

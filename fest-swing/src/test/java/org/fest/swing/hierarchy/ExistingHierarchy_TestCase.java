@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2007-2010 the original author or authors.
+ * Copyright @2007-2013 the original author or authors.
  */
 package org.fest.swing.hierarchy;
 
@@ -19,13 +19,12 @@ import org.fest.swing.test.core.EDTSafeTestCase;
 import org.junit.Before;
 
 /**
- * Base test case for <code>{@link ExistingHierarchy}</code>.
+ * Base test case for {@link ExistingHierarchy}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 public abstract class ExistingHierarchy_TestCase extends EDTSafeTestCase {
-
   ExistingHierarchy hierarchy;
 
   @Before public final void setUp() {

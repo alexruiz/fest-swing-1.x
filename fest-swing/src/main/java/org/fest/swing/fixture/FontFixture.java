@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.fixture;
 
@@ -23,13 +23,12 @@ import java.awt.Font;
 import org.fest.assertions.*;
 
 /**
- * Understands state verification of <code>{@link Font}</code>s.
+ * Understands state verification of {@link Font}s.
  *
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
 public class FontFixture {
-
   private static final String PROPERTY_SEPARATOR = " - ";
 
   private static final String BOLD_PROPERTY = "bold";
@@ -43,29 +42,29 @@ public class FontFixture {
   private final Description description;
 
   /**
-   * Creates a new </code>{@link FontFixture}</code>.
+   * Creates a new {@link FontFixture}.
    * @param target the font to manage.
-   * @throws NullPointerException if <code>target</code> is {@code null}.
+   * @throws NullPointerException if {@code target} is {@code null}.
    */
   public FontFixture(Font target) {
     this(target, (Description)null);
   }
 
   /**
-   * Creates a new </code>{@link FontFixture}</code>.
+   * Creates a new {@link FontFixture}.
    * @param target the font to manage.
    * @param description this fixture's description.
-   * @throws NullPointerException if <code>target</code> is {@code null}.
+   * @throws NullPointerException if {@code target} is {@code null}.
    */
   public FontFixture(Font target, String description) {
     this(target, new BasicDescription(description));
   }
 
   /**
-   * Creates a new </code>{@link FontFixture}</code>.
+   * Creates a new {@link FontFixture}.
    * @param target the font to manage.
    * @param description this fixture's description.
-   * @throws NullPointerException if <code>target</code> is {@code null}.
+   * @throws NullPointerException if {@code target} is {@code null}.
    */
   public FontFixture(Font target, Description description) {
     if (target == null) throw new NullPointerException("The given font should not be null");

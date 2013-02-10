@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2007-2010 the original author or authors.
+ * Copyright @2007-2013 the original author or authors.
  */
 package org.fest.swing.timing;
 
@@ -22,14 +22,13 @@ import java.util.concurrent.TimeUnit;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link Timeout#timeout(long)}</code>,
- * <code>{@link Timeout#timeout(long, TimeUnit)}</code> and <code>{@link Timeout#duration()}</code>.
+ * Tests for {@link Timeout#timeout(long)},
+ * {@link Timeout#timeout(long, TimeUnit)} and {@link Timeout#duration()}.
  *
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
 public class Timeout_timeout_duration_Test {
-
   @Test
   public void shouldReturnDurationPassedWhenCreated() {
     Timeout timeout = Timeout.timeout(2000);

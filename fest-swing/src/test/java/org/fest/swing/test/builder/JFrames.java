@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.test.builder;
 
@@ -23,12 +23,11 @@ import org.fest.swing.annotation.*;
 import org.fest.swing.edt.GuiQuery;
 
 /**
- * Understands creation of <code>{@link JFrame}</code>s.
+ * Understands creation of {@code JFrame}s.
  *
  * @author Alex Ruiz
  */
 public final class JFrames {
-
   private JFrames() {}
 
   public static JFrameFactory frame() {

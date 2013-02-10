@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.fixture;
 
@@ -25,13 +25,12 @@ import org.fest.swing.test.core.RobotBasedTestCase;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JOptionPaneFixture#JOptionPaneFixture(org.fest.swing.core.Robot)}</code>.
+ * Tests for {@link JOptionPaneFixture#JOptionPaneFixture(org.fest.swing.core.Robot)}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 public class JOptionPaneFixture_constructor_withRobot_Test extends RobotBasedTestCase {
-
   private JOptionPane target;
 
   @Override protected void onSetUp() {
@@ -46,5 +45,4 @@ public class JOptionPaneFixture_constructor_withRobot_Test extends RobotBasedTes
     assertThat(fixture.robot).isSameAs(robot);
     assertThat(fixture.component()).isSameAs(target);
   }
-
 }

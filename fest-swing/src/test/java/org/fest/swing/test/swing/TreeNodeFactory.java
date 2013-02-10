@@ -11,20 +11,19 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.test.swing;
 
 import javax.swing.tree.*;
 
 /**
- * Understands creation of <code>{@link javax.swing.tree.TreeNode}</code>s.
+ * Understands creation of {@link javax.swing.tree.TreeNode}s.
  *
  * @author Alex Ruiz
  *
  */
 public final class TreeNodeFactory {
-
   /**
    * Creates a new tree node with the given text and the given children.
    * @param text the text of the tree node to create.

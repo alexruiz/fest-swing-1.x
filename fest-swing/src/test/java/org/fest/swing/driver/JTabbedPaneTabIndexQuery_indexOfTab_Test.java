@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -28,13 +28,12 @@ import org.fest.swing.util.StringTextMatcher;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JTabbedPaneTabIndexQuery#indexOfTab(JTabbedPane, org.fest.swing.util.TextMatcher)}</code>.
+ * Tests for {@link JTabbedPaneTabIndexQuery#indexOfTab(JTabbedPane, org.fest.swing.util.TextMatcher)}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 public class JTabbedPaneTabIndexQuery_indexOfTab_Test extends RobotBasedTestCase {
-
   private JTabbedPane tabbedPane;
 
   @Override protected void onSetUp() {

@@ -11,19 +11,18 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.core;
 
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link NameMatcher#NameMatcher(String)}</code>.
+ * Tests for {@link NameMatcher#NameMatcher(String)}.
  *
  * @author Alex Ruiz
  */
 public class NameMatcher_constructorWithName_Test {
-
   @Test(expected = NullPointerException.class)
   public void should_throw_error_if_name_is_null() {
     new NameMatcher(null);

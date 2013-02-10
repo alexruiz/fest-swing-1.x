@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -24,12 +24,11 @@ import java.util.regex.Pattern;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link AbstractButtonDriver#requireText(javax.swing.AbstractButton, Pattern)}</code>.
+ * Tests for {@link AbstractButtonDriver#requireText(javax.swing.AbstractButton, Pattern)}.
  *
  * @author Alex Ruiz
  */
 public class AbstractButtonDriver_requireTextAsPattern_Test extends AbstractButtonDriver_TestCase {
-
   @Test
   public void should_pass_if_text_matches_regex_pattern() {
     driver.requireText(checkBox, regex("Hell."));

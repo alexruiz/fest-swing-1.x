@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -22,13 +22,12 @@ import javax.swing.*;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JFileChooserDriver#fileNameTextBox(JFileChooser)}</code>.
+ * Tests for {@link JFileChooserDriver#fileNameTextBox(JFileChooser)}.
  *
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
 public class JFileChooserDriver_fileNameTextBox_Test extends JFileChooserDriver_TestCase {
-
   @Test
   public void should_find_fileName_TextBox() {
     showWindow();

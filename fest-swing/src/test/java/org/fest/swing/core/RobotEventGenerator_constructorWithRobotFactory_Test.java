@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.core;
 
@@ -30,12 +30,11 @@ import org.fest.swing.util.RobotFactory;
 import org.junit.*;
 
 /**
- * Tests for <code>{@link RobotEventGenerator#RobotEventGenerator(org.fest.swing.util.RobotFactory, Settings)}</code>.
+ * Tests for {@link RobotEventGenerator#RobotEventGenerator(org.fest.swing.util.RobotFactory, Settings)}.
  *
  * @author Alex Ruiz
  */
 public class RobotEventGenerator_constructorWithRobotFactory_Test {
-
   private RobotFactory robotFactory;
 
   @Before

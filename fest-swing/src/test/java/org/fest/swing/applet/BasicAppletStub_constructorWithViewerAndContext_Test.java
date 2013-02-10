@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.applet;
 
@@ -21,13 +21,12 @@ import static org.fest.swing.test.awt.TestWindows.singletonWindowMock;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link BasicAppletStub#BasicAppletStub(java.awt.Window, java.applet.AppletContext)}</code>.
+ * Tests for {@link BasicAppletStub#BasicAppletStub(java.awt.Window, java.applet.AppletContext)}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 public class BasicAppletStub_constructorWithViewerAndContext_Test {
-
   @Test(expected = NullPointerException.class)
   public void should_throw_error_if_viewer_is_null() {
     new BasicAppletStub(null, singletonAppletContextMock());

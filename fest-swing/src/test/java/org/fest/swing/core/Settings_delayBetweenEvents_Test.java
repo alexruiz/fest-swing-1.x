@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2007-2010 the original author or authors.
+ * Copyright @2007-2013 the original author or authors.
  */
 package org.fest.swing.core;
 
@@ -27,14 +27,13 @@ import org.junit.runners.*;
 import org.junit.runners.Parameterized.Parameters;
 
 /**
- * Tests for <code>{@link Settings#delayBetweenEvents(int)}</code>
- * and <code>{@link Settings#delayBetweenEvents()}</code>.
+ * Tests for {@link Settings#delayBetweenEvents(int)}
+ * and {@link Settings#delayBetweenEvents()}.
  *
  * @author Alex Ruiz
  */
 @RunWith(Parameterized.class)
 public class Settings_delayBetweenEvents_Test {
-
   private final int delay;
 
   private Settings settings;

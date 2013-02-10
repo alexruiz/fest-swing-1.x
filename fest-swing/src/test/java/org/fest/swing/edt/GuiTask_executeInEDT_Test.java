@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.edt;
 
@@ -23,12 +23,11 @@ import org.fest.swing.timing.Condition;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link GuiTask#executeInEDT()}</code>.
+ * Tests for {@link GuiTask#executeInEDT()}.
  *
  * @author Alex Ruiz
  */
 public class GuiTask_executeInEDT_Test {
-
   @Test
   public void should_execute_in_EDT_when_called_in_EDT() {
     final GuiTaskInEDT task = new GuiTaskInEDT();
@@ -52,5 +51,4 @@ public class GuiTask_executeInEDT_Test {
 
     boolean executed() { return executed; }
   }
-
 }

@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.image;
 
@@ -34,7 +34,6 @@ import org.junit.Test;
  * @author Alex Ruiz
  */
 public class Bug213_HideCaretInTextFieldWhenTakingScreenshot_Test extends SequentialEDTSafeTestCase {
-
   private ScreenshotTaker screenshotTaker;
   private MyWindow window;
 

@@ -10,33 +10,36 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
-import static org.fest.swing.driver.JListItemIndexValidator.validateIndex;
+import static org.fest.swing.driver.JListItemPreconditions.checkIndexInBounds;
 
 import java.awt.Rectangle;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import javax.swing.JList;
 
 import org.fest.swing.annotation.RunsInCurrentThread;
 
 /**
- * Understands an action that returns the bounding rectangle for the cell specified by the given index.
  * <p>
- * <b>Note:</b> Methods in this class are <b>not</b> executed in the event dispatch thread (EDT.) Clients are
- * responsible for invoking them in the EDT.
+ * Returns the bounding rectangle for the cell specified by the given index.
  * </p>
- * @see JList#getCellBounds(int, int)
- *
+ * 
+ * <p>
+ * <b>Note:</b> Methods in this class are accessed in the current executing thread. Such thread may or may not be the
+ * event dispatch thread (EDT.) Client code must call methods in this class from the EDT.
+ * </p>
+ * 
  * @author Alex Ruiz
  */
 final class JListCellBoundsQuery {
-
   @RunsInCurrentThread
-  static Rectangle cellBounds(JList list, int index) {
-    validateIndex(list, index);
+  static @Nullable Rectangle cellBounds(@Nonnull JList list, int index) {
+    checkIndexInBounds(list, index);
     return list.getCellBounds(index, index);
   }
 

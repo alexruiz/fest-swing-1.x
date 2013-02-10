@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2007-2010 the original author or authors.
+ * Copyright @2007-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -22,17 +22,15 @@ import javax.swing.JMenuItem;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JPopupMenuDriver#menuItem(javax.swing.JPopupMenu, String)}</code>.
+ * Tests for {@link JPopupMenuDriver#menuItem(javax.swing.JPopupMenu, String)}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 public class JPopupMenuDriver_menuItemUsingName_Test extends JPopupMenuDriver_TestCase {
-
   @Test
   public void should_find_JMenuItems_by_name() {
     JMenuItem found = driver.menuItem(popupMenu, "first");
     assertThat(found).isSameAs(window.menuItem1);
   }
-
 }

@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -19,15 +19,13 @@ import org.fest.swing.exception.ActionFailedException;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JOptionPaneMessageTypes#messageTypeAsText(int)}</code>.
+ * Tests for {@link JOptionPaneMessageTypes#messageTypeAsText(int)}.
  *
  * @author Alex Ruiz
  */
 public class JOptionPaneMessageTypes_messageTypeAsText_withInvalidType_Test {
-
   @Test(expected = ActionFailedException.class)
   public void should_throw_error_if_message_type_value_is_invalid() {
     JOptionPaneMessageTypes.messageTypeAsText(Integer.MIN_VALUE);
   }
-
 }

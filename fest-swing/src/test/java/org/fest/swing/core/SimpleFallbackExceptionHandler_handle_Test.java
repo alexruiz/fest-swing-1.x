@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.core;
 
@@ -22,12 +22,11 @@ import org.fest.mocks.EasyMockTemplate;
 import org.junit.*;
 
 /**
- * Tests for <code>{@link SimpleFallbackExceptionHandler#handle(Throwable)}</code>.
+ * Tests for {@link SimpleFallbackExceptionHandler#handle(Throwable)}.
  *
  * @author Alex Ruiz
  */
 public class SimpleFallbackExceptionHandler_handle_Test {
-
   private SimpleFallbackExceptionHandler handler;
 
   @Before public void setUp() {

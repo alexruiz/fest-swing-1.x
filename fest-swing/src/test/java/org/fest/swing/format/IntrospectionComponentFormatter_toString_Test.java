@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2007-2010 the original author or authors.
+ * Copyright @2007-2013 the original author or authors.
  */
 package org.fest.swing.format;
 
@@ -23,12 +23,11 @@ import org.fest.swing.test.core.EDTSafeTestCase;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link IntrospectionComponentFormatter#toString()}</code>.
+ * Tests for {@link IntrospectionComponentFormatter#toString()}.
  *
  * @author Alex Ruiz
  */
 public class IntrospectionComponentFormatter_toString_Test extends EDTSafeTestCase {
-
   @Test
   public void should_implement_toString() {
     IntrospectionComponentFormatter formatter = new IntrospectionComponentFormatter(JButton.class, "name", "text");

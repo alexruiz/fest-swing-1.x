@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.fixture;
 
@@ -20,7 +20,7 @@ import javax.swing.JTree;
 import org.fest.swing.exception.ActionFailedException;
 
 /**
- * Understands functional testing of single nodes in <code>{@link JTree}</code>s:
+ * Understands functional testing of single nodes in {@code JTree}s:
  * <ul>
  * <li>user input simulation</li>
  * <li>state verification</li>
@@ -32,7 +32,6 @@ import org.fest.swing.exception.ActionFailedException;
  * @since 1.2
  */
 public interface JTreeNodeFixture extends ItemFixture {
-
   /**
    * Simulates a user expanding this fixture's tree node.
    * @return this fixture.

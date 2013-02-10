@@ -10,7 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  *
- * Copyright @2007-2010 the original author or authors.
+ * Copyright @2007-2013 the original author or authors.
  */
 package org.fest.swing.monitor;
 
@@ -18,12 +18,11 @@ import org.fest.mocks.EasyMockTemplate;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link WindowVisibilityMonitor#componentShown(java.awt.event.ComponentEvent)}</code>.
+ * Tests for {@link WindowVisibilityMonitor#componentShown(java.awt.event.ComponentEvent)}.
  *
  * @author Alex Ruiz
  */
 public class WindowVisibilityMonitor_componentShown_Test extends WindowVisibilityMonitor_TestCase {
-
   @Test
   public void should_mark_Window_as_showing_when_Window_is_shown() {
     new EasyMockTemplate(windows) {

@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.test.swing;
 
@@ -26,7 +26,7 @@ import org.fest.swing.annotation.*;
 import org.fest.swing.edt.GuiQuery;
 
 /**
- * Understands a <code>{@link JFrame}</code> that launches a <code>{@link JOptionPane}</code> using a configurable
+ * Understands a {@code JFrame} that launches a {@code JOptionPane} using a configurable
  * delay.
  *
  * @author Alex Ruiz

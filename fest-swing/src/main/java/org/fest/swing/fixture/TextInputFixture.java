@@ -11,51 +11,51 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2007-2010 the original author or authors.
+ * Copyright @2007-2013 the original author or authors.
  */
 package org.fest.swing.fixture;
 
-import java.awt.Component;
-
 /**
- * Understands simulation of user events on GUI components that accept text input from the user.
+ * Simulates user events on {@code Component}s that accept text input from the user.
+ *
+ * @param <S> used to simulate "self types." For more information please read &quot;<a href="http://goo.gl/fjgOM"
+ *          target="_blank">Emulating 'self types' using Java Generics to simplify fluent API implementation</a>.&quot;
  *
  * @author Alex Ruiz
  */
-public interface TextInputFixture extends TextDisplayFixture, EditableComponentFixture {
-
+public interface TextInputFixture<S> extends TextDisplayFixture<S>, EditableComponentFixture<S> {
   /**
-   * Simulates a user entering the given text in the <code>{@link Component}</code> managed by this fixture.
+   * Simulates a user entering the given text in the {@code Component} managed by this fixture.
    * @param text the text to enter.
    * @return this fixture.
    */
-  TextInputFixture enterText(String text);
+  S enterText(String text);
 
   /**
-   * Simulates a user deleting all the text in the <code>{@link Component}</code> managed by this fixture.
+   * Simulates a user deleting all the text in the {@code Component} managed by this fixture.
    * @return this fixture.
    */
-  TextInputFixture deleteText();
+  S deleteText();
 
   /**
-   * Simulates a user selecting all the text contained in the <code>{@link Component}</code> managed by this fixture.
+   * Simulates a user selecting all the text contained in the {@code Component} managed by this fixture.
    * @return this fixture.
    */
-  TextInputFixture selectAll();
+  S selectAll();
 
   /**
-   * Simulates a user selecting a portion of the text contained in the <code>{@link Component}</code> managed by this
+   * Simulates a user selecting a portion of the text contained in the {@code Component} managed by this
    * fixture.
    * @param start index where selection should start.
    * @param end index where selection should end.
    * @return this fixture.
    */
-  TextInputFixture selectText(int start, int end);
+  S selectText(int start, int end);
 
   /**
-   * Simulates a user selecting the given text contained in the <code>{@link Component}</code> managed by this fixture.
+   * Simulates a user selecting the given text contained in the {@code Component} managed by this fixture.
    * @param text the text to select.
    * @return this fixture.
    */
-  TextInputFixture select(String text);
+  S select(String text);
 }

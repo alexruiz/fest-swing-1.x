@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.timing;
 
@@ -22,13 +22,12 @@ import org.fest.assertions.Description;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link Condition#toString()}</code>.
+ * Tests for {@link Condition#toString()}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 public class Condition_toString_Test {
-
   @Test
   public void should_return_description_text() {
     Description description = new Description() {

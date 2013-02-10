@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.core;
 
@@ -30,13 +30,12 @@ import org.fest.swing.timing.Condition;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link ActivateWindowTask#activateWindow(java.awt.Window)}</code>.
+ * Tests for {@link ActivateWindowTask#activateWindow(java.awt.Window)}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 public class ActivateWindowTask_activeWindow_Test extends SequentialEDTSafeTestCase {
-
   private JFrame frameOne;
   private JFrame frameTwo;
 

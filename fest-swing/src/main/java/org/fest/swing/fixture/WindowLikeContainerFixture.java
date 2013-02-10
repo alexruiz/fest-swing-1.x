@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2007-2010 the original author or authors.
+ * Copyright @2007-2013 the original author or authors.
  */
 package org.fest.swing.fixture;
 
@@ -19,7 +19,7 @@ import java.awt.*;
 
 /**
  * Understands functional testing of window-like containers (not necessarily subclasses of
- * <code>{@link java.awt.Window}</code>):
+ * {@link java.awt.Window}):
  * <ul>
  * <li>user input simulation</li>
  * <li>state verification</li>
@@ -30,7 +30,6 @@ import java.awt.*;
  * @author Alex Ruiz
  */
 public interface WindowLikeContainerFixture {
-
   /**
    * Simulates a user closing this fixture's window-like container.
    */

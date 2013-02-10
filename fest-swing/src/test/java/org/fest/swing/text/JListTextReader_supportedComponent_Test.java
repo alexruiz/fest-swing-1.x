@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2010 the original author or authors.
+ * Copyright @2010-2013 the original author or authors.
  */
 package org.fest.swing.text;
 
@@ -22,12 +22,11 @@ import javax.swing.JList;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JListTextReader#supportedComponent()}</code>.
+ * Tests for {@link JListTextReader#supportedComponent()}.
  *
  * @author Alex Ruiz
  */
 public class JListTextReader_supportedComponent_Test {
-
   @Test
   public void should_return_JList_class() {
     JListTextReader reader = new JListTextReader();

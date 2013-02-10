@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2007-2010 the original author or authors.
+ * Copyright @2007-2013 the original author or authors.
  */
 package org.fest.swing.hierarchy;
 
@@ -26,12 +26,11 @@ import org.fest.mocks.EasyMockTemplate;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link TransientWindowListener#eventDispatched(AWTEvent)}</code>.
+ * Tests for {@link TransientWindowListener#eventDispatched(AWTEvent)}.
  *
  * @author Alex Ruiz
  */
 public class TransientWindowListener_eventDispatched_Test extends TransientWindowListener_eventDispatched_TestCase {
-
   private WindowEvent event;
 
   @Override void onSetUp() {

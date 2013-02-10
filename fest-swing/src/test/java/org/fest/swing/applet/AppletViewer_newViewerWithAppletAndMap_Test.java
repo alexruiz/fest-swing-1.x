@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.applet;
 
@@ -26,12 +26,11 @@ import org.fest.swing.test.core.EDTSafeTestCase;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link AppletViewer#newViewer(Applet, Map)}</code>
+ * Tests for {@link AppletViewer#newViewer(Applet, Map)}
  *
  * @author Alex Ruiz
  */
 public class AppletViewer_newViewerWithAppletAndMap_Test extends EDTSafeTestCase {
-
   @Test(expected = NullPointerException.class)
   public void should_throw_error_if_parameterMap_is_null() {
     execute(new GuiTask() {

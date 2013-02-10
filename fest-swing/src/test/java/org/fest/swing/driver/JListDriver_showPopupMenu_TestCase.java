@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -20,13 +20,12 @@ import static org.fest.swing.test.task.ComponentSetPopupMenuTask.createAndSetPop
 import javax.swing.*;
 
 /**
- * Base test case for methods in <code>{@link JListDriver}</code> that invoke a <code>{@link JPopupMenu}</code> in a
- * <code>{@link JList}</code>.
+ * Base test case for methods in {@link JListDriver} that invoke a {@code JPopupMenu} in a
+ * {@code JList}.
  *
  * @author Alex Ruiz
  */
 public abstract class JListDriver_showPopupMenu_TestCase extends JListDriver_TestCase {
-
   JPopupMenu popupMenu;
 
   @Override void extraSetUp() {

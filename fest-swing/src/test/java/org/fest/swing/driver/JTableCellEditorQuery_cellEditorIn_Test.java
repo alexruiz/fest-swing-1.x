@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -35,14 +35,13 @@ import org.junit.runners.*;
 import org.junit.runners.Parameterized.Parameters;
 
 /**
- * Tests for <code>{@link JTableCellEditorQuery#cellEditorIn(JTable, int, int)}</code>.
+ * Tests for {@link JTableCellEditorQuery#cellEditorIn(JTable, int, int)}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 @RunWith(Parameterized.class)
 public class JTableCellEditorQuery_cellEditorIn_Test extends RobotBasedTestCase {
-
   private JTable table;
 
   private final int column;

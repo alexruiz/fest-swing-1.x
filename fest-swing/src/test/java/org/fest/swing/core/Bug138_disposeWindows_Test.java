@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.core;
 
@@ -38,7 +38,6 @@ import org.junit.*;
  * @author Yvonne Wang
  */
 public class Bug138_disposeWindows_Test extends EDTSafeTestCase {
-
   private ComponentHierarchy hierarchy;
   private BasicRobot robot;
   private JFrame frame;
@@ -85,5 +84,4 @@ public class Bug138_disposeWindows_Test extends EDTSafeTestCase {
       }
     }.run();
   }
-
 }

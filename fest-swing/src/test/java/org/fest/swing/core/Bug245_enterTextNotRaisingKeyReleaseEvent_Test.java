@@ -11,16 +11,22 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.core;
 
-import static java.awt.event.KeyEvent.*;
+import static java.awt.event.KeyEvent.VK_E;
+import static java.awt.event.KeyEvent.VK_H;
+import static java.awt.event.KeyEvent.VK_L;
+import static java.awt.event.KeyEvent.VK_O;
+import static java.awt.event.KeyEvent.VK_SHIFT;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.edt.GuiActionRunner.execute;
+import static org.fest.util.Lists.newArrayList;
 
-import java.awt.event.*;
-import java.util.*;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.util.List;
 
 import javax.swing.JTextField;
 
@@ -36,7 +42,6 @@ import org.junit.Test;
  * @author Alex Ruiz
  */
 public class Bug245_enterTextNotRaisingKeyReleaseEvent_Test extends RobotBasedTestCase {
-
   private JTextField textField;
 
   @Override protected void onSetUp() {
@@ -53,10 +58,10 @@ public class Bug245_enterTextNotRaisingKeyReleaseEvent_Test extends RobotBasedTe
     robot.enterText("Hello");
     assertThat(textField.getText()).isEqualTo("Hello");
     assertThat(keyReleaseListener.released()).containsOnly(VK_H, VK_SHIFT, VK_E, VK_L, VK_L, VK_O);
- }
+  }
 
   private static class KeyReleaseListener extends KeyAdapter {
-    private final List<Integer> keyCodes = new ArrayList<Integer>();
+    private final List<Integer> keyCodes = newArrayList();
 
     @Override public void keyReleased(KeyEvent e) {
       keyCodes.add(e.getKeyCode());
@@ -86,5 +91,4 @@ public class Bug245_enterTextNotRaisingKeyReleaseEvent_Test extends RobotBasedTe
       addComponents(textField);
     }
   }
-
 }

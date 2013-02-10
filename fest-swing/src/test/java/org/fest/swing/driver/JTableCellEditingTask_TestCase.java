@@ -10,7 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -28,12 +28,11 @@ import org.fest.swing.test.core.RobotBasedTestCase;
 import org.fest.swing.test.swing.TestWindow;
 
 /**
- * Understands a base test case for tasks related to editing <code>{@link JTable}</code> cells.
+ * Understands a base test case for tasks related to editing {@code JTable} cells.
  *
  * @author Alex Ruiz
  */
 public abstract class JTableCellEditingTask_TestCase extends RobotBasedTestCase {
-
   MyWindow window;
 
   @Override protected final void onSetUp() {

@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.core;
 
@@ -23,13 +23,12 @@ import org.fest.swing.exception.ComponentLookupException;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link BasicComponentFinder#find(java.awt.Container, GenericTypeMatcher)}</code>.
+ * Tests for {@link BasicComponentFinder#find(java.awt.Container, GenericTypeMatcher)}.
  *
  * @author Alex Ruiz
  * @author Yvonne Price
  */
 public class BasicComponentFinder_findUsingGenericTypeMatcherInRoot_Test extends BasicComponentFinder_TestCase {
-
   private MyWindow windowTwo;
 
   @Test
@@ -64,5 +63,4 @@ public class BasicComponentFinder_findUsingGenericTypeMatcherInRoot_Test extends
   @Override void beforeReleasingScreenLock() {
     if (windowTwo != null) windowTwo.destroy();
   }
-
 }

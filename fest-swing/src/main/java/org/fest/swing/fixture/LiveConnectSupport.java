@@ -15,7 +15,6 @@ import org.fest.swing.data.TableCell;
  * @author Mel Llaguno
  */
 public interface LiveConnectSupport {
-
 	/**
 	 * A factory method for creating the currentKeyPressInfo;
 	 * @param keyCode The ASCII KeyCode

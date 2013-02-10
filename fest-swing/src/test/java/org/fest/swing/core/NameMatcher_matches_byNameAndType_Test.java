@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.core;
 
@@ -22,16 +22,15 @@ import javax.swing.JButton;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link NameMatcher#matches(java.awt.Component)}</code>.
+ * Tests for {@link NameMatcher#matches(java.awt.Component)}.
  *
  * <p>
- * The <code>{@link NameMatcher}</code> is created through <code>{@link NameMatcher#NameMatcher(String, Class)}</code>.
+ * The {@link NameMatcher} is created through {@link NameMatcher#NameMatcher(String, Class)}.
  * </p>
  *
  * @author Alex Ruiz
  */
 public class NameMatcher_matches_byNameAndType_Test extends NameMatcher_TestCase {
-
   @Test
   public void should_return_true_if_name_and_type_match() {
     window.display();

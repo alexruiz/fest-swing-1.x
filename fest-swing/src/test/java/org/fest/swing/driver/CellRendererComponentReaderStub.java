@@ -11,27 +11,26 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
 import java.awt.Component;
 
 /**
- * Understands an implementation of <code>{@link CellRendererReader}</code> that returns a pre-set value as the
+ * Understands an implementation of {@link CellRendererReader} that returns a pre-set value as the
  * value read from a cell renderer component.
  *
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
 public class CellRendererComponentReaderStub implements CellRendererReader {
-
   private final String valueToReturn;
   private Component cellRendererComponent;
 
   /**
-   * Creates a new </code>{@link CellRendererComponentReaderStub}</code>.
-   * @param valueToReturn the value to return from the method <code>valueFrom</code>.
+   * Creates a new {@link CellRendererComponentReaderStub}.
+   * @param valueToReturn the value to return from the method {@code valueFrom}.
    */
   public CellRendererComponentReaderStub(String valueToReturn) {
     this.valueToReturn = valueToReturn;
@@ -44,7 +43,7 @@ public class CellRendererComponentReaderStub implements CellRendererReader {
   }
 
   /**
-   * Returns the cell renderer component that was passed to <code>{@link #valueFrom(Component)}</code>.
+   * Returns the cell renderer component that was passed to {@link #valueFrom(Component)}.
    * @return the cell renderer component that whose value was read.
    */
   public Component cellRendererComponent() {

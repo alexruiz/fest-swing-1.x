@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -33,12 +33,11 @@ import org.fest.swing.test.swing.TestWindow;
 import org.fest.swing.test.util.StopWatch;
 
 /**
- * Base test case for <code>{@link ComponentDriver}</code>.
+ * Base test case for {@link ComponentDriver}.
  *
  * @author Alex Ruiz
  */
 public abstract class ComponentDriver_TestCase extends RobotBasedTestCase {
-
   static final int TIME_TO_WAIT_FOR_FOCUS_GAIN = 2000;
 
   ComponentDriver driver;

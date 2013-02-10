@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.fixture;
 
@@ -21,7 +21,6 @@ package org.fest.swing.fixture;
  * @author Alex Ruiz
  */
 public interface FocusableComponentFixture {
-
   /**
    * Gives input focus to this fixture's GUI component.
    * @return this fixture.

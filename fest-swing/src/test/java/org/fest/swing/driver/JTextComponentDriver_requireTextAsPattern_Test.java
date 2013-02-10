@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -22,13 +22,12 @@ import static org.fest.swing.test.core.Regex.regex;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JTextComponentDriver#requireText(javax.swing.text.JTextComponent, java.util.regex.Pattern)}</code>.
+ * Tests for {@link JTextComponentDriver#requireText(javax.swing.text.JTextComponent, java.util.regex.Pattern)}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 public class JTextComponentDriver_requireTextAsPattern_Test extends JTextComponentDriver_TestCase {
-
   @Test
   public void should_pass_if_text_matches_pattern() {
     setTextFieldText("Hi");

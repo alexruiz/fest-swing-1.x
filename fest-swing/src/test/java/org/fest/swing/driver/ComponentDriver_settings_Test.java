@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -24,13 +24,12 @@ import org.fest.swing.core.*;
 import org.junit.*;
 
 /**
- * Tests for <code>{@link ComponentDriver#settings()}</code>.
+ * Tests for {@link ComponentDriver#settings()}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 public class ComponentDriver_settings_Test {
-
   private Robot robot;
   private ComponentDriver driver;
 

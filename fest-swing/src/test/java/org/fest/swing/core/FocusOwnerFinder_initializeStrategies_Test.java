@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.core;
 
@@ -22,12 +22,11 @@ import java.util.List;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link FocusOwnerFinder#initializeStrategies()}</code>.
+ * Tests for {@link FocusOwnerFinder#initializeStrategies()}.
  *
  * @author Alex Ruiz
  */
 public class FocusOwnerFinder_initializeStrategies_Test {
-
   @Test
   public void should_initialize_correct_strategies() {
     assertThatFocusOwnerFinderHasStrategiesOfType(ReflectionBasedFocusOwnerFinder.class,

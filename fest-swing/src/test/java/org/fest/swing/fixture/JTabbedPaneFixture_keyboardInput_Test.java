@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.fixture;
 
@@ -24,14 +24,13 @@ import org.fest.swing.driver.JTabbedPaneDriver;
 import org.junit.BeforeClass;
 
 /**
- * Tests for methods in <code>{@link JTabbedPaneFixture}</code> that are inherited from
- * <code>{@link KeyboardInputSimulationFixture}</code>.
+ * Tests for methods in {@link JTabbedPaneFixture} that are inherited from
+ * {@link KeyboardInputSimulationFixture}.
  *
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
 public class JTabbedPaneFixture_keyboardInput_Test extends KeyboardInputSimulationFixture_TestCase<JTabbedPane> {
-
   private static JTabbedPane target;
 
   private JTabbedPaneDriver driver;

@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -29,13 +29,12 @@ import org.fest.swing.data.TableCell;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JTableDriver#cellEditor(JTable, TableCell)}</code>.
+ * Tests for {@link JTableDriver#cellEditor(JTable, TableCell)}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 public class JTableDriver_cellEditor_Test extends JTableDriver_withMockCellWriter_TestCase {
-
   private Component editor;
 
   @Override void onSetUp() {

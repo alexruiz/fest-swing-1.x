@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2007-2010 the original author or authors.
+ * Copyright @2007-2013 the original author or authors.
  */
 package org.fest.swing.finder;
 
@@ -21,13 +21,12 @@ import org.fest.swing.core.GenericTypeMatcher;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link WindowFinder#findDialog(GenericTypeMatcher)}</code>.
+ * Tests for {@link WindowFinder#findDialog(GenericTypeMatcher)}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 public class WindowFinder_findDialog_withMatcher_withInvalidInput_Test {
-
   @Test(expected = NullPointerException.class)
   public void should_throw_error_if_matcher_is_null() {
     GenericTypeMatcher<JDialog> matcher = null;

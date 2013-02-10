@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -28,13 +28,12 @@ import org.junit.Test;
 
 
 /**
- * Tests for <code>{@link JTreeDriver#drag(javax.swing.JTree, String)}</code> and
- * <code>{@link JTreeDriver#drop(javax.swing.JTree, String)}</code>.
+ * Tests for {@link JTreeDriver#drag(javax.swing.JTree, String)} and
+ * {@link JTreeDriver#drop(javax.swing.JTree, String)}.
  *
  * @author Alex Ruiz
  */
 public class JTreeDriver_dragPath_dropPath_Test extends JTreeDriver_dragAndDrop_TestCase {
-
   @Test
   public void should_drag_and_drop() {
     showWindow();

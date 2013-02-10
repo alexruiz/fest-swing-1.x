@@ -11,21 +11,20 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JListDriver#drag(javax.swing.JList, String)}</code> and
- * <code>{@link JListDriver#drop(javax.swing.JList, String)}</code>.
+ * Tests for {@link JListDriver#drag(javax.swing.JList, String)} and
+ * {@link JListDriver#drop(javax.swing.JList, String)}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 public class JListDriver_dragAndDropByText_Test extends JListDriver_dragAndDrop_TestCase {
-
   @Test
   public void should_drag_and_drop() {
     showWindow();
@@ -45,5 +44,4 @@ public class JListDriver_dragAndDropByText_Test extends JListDriver_dragAndDrop_
     dropList.requireElements("four", "five", "six", "two");
     assertThatCellReaderWasCalled();
   }
-
 }

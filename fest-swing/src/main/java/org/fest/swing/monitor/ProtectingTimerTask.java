@@ -1,17 +1,16 @@
 /*
  * Created on Mar 30, 2008
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ * 
  * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
- *
- * Copyright @2008-2010 the original author or authors.
+ * 
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+ * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations under the License.
+ * 
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.monitor;
 
@@ -21,17 +20,17 @@ import static org.fest.reflect.core.Reflection.field;
 import java.util.TimerTask;
 import java.util.logging.Logger;
 
+import org.fest.util.Preconditions;
+
 /**
- * Prevents misbehaving <code>{@link TimerTask}</code>s from canceling the timer thread by throwing exceptions and/or
- * errors.
- *
+ * Prevents misbehaving {@code TimerTask}s from canceling the timer thread by throwing exceptions and/or errors.
+ * 
  * @author Alex Ruiz
  */
 class ProtectingTimerTask extends TimerTask {
-
   private static final int CANCELED = 3;
 
-  private static Logger logger = Logger.getLogger(ProtectingTimerTask.class.getName());
+  private static Logger logger = Logger.getLogger(ProtectingTimerTask.class.getCanonicalName());
 
   private final TimerTask task;
 
@@ -39,8 +38,8 @@ class ProtectingTimerTask extends TimerTask {
     this.task = task;
   }
 
-  /** {@inheritDoc} */
-  @Override public void run() {
+  @Override
+  public void run() {
     if (isCanceled()) {
       cancel();
       return;
@@ -53,14 +52,13 @@ class ProtectingTimerTask extends TimerTask {
   }
 
   private boolean isCanceled() {
-    boolean isCancelled = false;
     try {
-      int state = field("state").ofType(int.class).in(task).get();
-      isCancelled = state == CANCELED;
+      int state = Preconditions.checkNotNull(field("state").ofType(int.class).in(task).get());
+      return state == CANCELED;
     } catch (RuntimeException e) {
       handleException(e);
     }
-    return isCancelled;
+    return false;
   }
 
   private void handleException(Throwable thrown) {

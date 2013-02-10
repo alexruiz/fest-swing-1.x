@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.security;
 
@@ -33,7 +33,6 @@ import org.junit.Test;
  * @author Alex Ruiz
  */
 public class FEST249_shouldNotAllowExit extends RobotBasedTestCase {
-
   private MyWindow window;
   private FrameFixture frame;
   private NoExitSecurityManagerInstaller noExitSecurityManagerInstaller;

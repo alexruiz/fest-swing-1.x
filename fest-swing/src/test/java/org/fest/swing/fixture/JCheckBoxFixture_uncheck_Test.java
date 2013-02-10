@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.fixture;
 
@@ -21,13 +21,12 @@ import org.fest.mocks.EasyMockTemplate;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JCheckBoxFixture#uncheck()}</code>.
+ * Tests for {@link JCheckBoxFixture#uncheck()}.
  *
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
 public class JCheckBoxFixture_uncheck_Test extends JCheckBoxFixture_TestCase {
-
   @Test
   public void should_uncheck_JCheckBox() {
     new EasyMockTemplate(driver()) {

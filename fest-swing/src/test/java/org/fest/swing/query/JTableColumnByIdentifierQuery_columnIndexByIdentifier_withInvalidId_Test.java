@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.query;
 
@@ -21,12 +21,11 @@ import static org.fest.swing.test.core.MethodInvocations.Args.args;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JTableColumnByIdentifierQuery#columnIndexByIdentifier(javax.swing.JTable, Object)}</code>.
+ * Tests for {@link JTableColumnByIdentifierQuery#columnIndexByIdentifier(javax.swing.JTable, Object)}.
  *
  * @author Alex Ruiz
  */
 public class JTableColumnByIdentifierQuery_columnIndexByIdentifier_withInvalidId_Test extends JTableColumnByIdentifierQuery_TestCase {
-
   @Test
   public void should_return_negative_one_if_column_index_not_found() {
     String invalid = "Hello World";

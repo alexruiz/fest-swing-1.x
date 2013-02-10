@@ -10,7 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  *
- * Copyright @2007-2010 the original author or authors.
+ * Copyright @2007-2013 the original author or authors.
  */
 package org.fest.swing.hierarchy;
 
@@ -22,12 +22,11 @@ import java.awt.Component;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link WindowFilter#isImplicitlyIgnored(Component)}</code>.
+ * Tests for {@link WindowFilter#isImplicitlyIgnored(Component)}.
  *
  * @author Alex Ruiz
  */
 public class WindowFilter_isImplicitylIgnored_Test extends WindowFilter_TestCase {
-
   @Test
   public void should_return_true_if_Component_is_implicit_filtered() {
     Component c = button().createNew();

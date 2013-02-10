@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.util;
 
@@ -20,12 +20,11 @@ import static org.fest.assertions.Assertions.assertThat;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link Arrays#equal(String[][], String[][])}</code>.
+ * Tests for {@link Arrays#equal(String[][], String[][])}.
  *
  * @author Alex Ruiz
  */
 public class Arrays_equal_Test {
-
   @Test
   public void should_return_equal_arrays_jf_both_arrays_are_null() {
     assertThat(Arrays.equal(null, null)).isTrue();
@@ -71,5 +70,4 @@ public class Arrays_equal_Test {
     String[][] two = { { "Hello" } };
     assertThat(Arrays.equal(one, two)).isTrue();
   }
-
 }

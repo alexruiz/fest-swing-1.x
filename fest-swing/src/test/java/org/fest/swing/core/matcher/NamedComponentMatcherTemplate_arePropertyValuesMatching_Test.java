@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.core.matcher;
 
@@ -23,12 +23,11 @@ import javax.swing.JLabel;
 import org.junit.Test;
 
 /**
- * Base test case for <code>{@link NamedComponentMatcherTemplate}</code>.
+ * Base test case for {@link NamedComponentMatcherTemplate}.
  *
  * @author Alex Ruiz
  */
 public class NamedComponentMatcherTemplate_arePropertyValuesMatching_Test extends NamedComponentMatcherTemplate_TestCase {
-
   @Test
   public void should_match_values_using_equality_if_values_are_POJOs() {
     matcher = new Matcher(JLabel.class, "hello");

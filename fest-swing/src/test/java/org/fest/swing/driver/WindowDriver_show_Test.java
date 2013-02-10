@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -24,12 +24,11 @@ import java.awt.Dimension;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link WindowDriver#show(java.awt.Window)}</code>.
+ * Tests for {@link WindowDriver#show(java.awt.Window)}.
  *
  * @author Alex Ruiz
  */
 public class WindowDriver_show_Test extends WindowDriver_TestCase {
-
   @Test
   public void should_show_Window() {
     Dimension newSize = new Dimension(600, 300);

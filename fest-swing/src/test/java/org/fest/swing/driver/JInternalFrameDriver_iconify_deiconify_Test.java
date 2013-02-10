@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -23,14 +23,13 @@ import javax.swing.JInternalFrame;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JInternalFrameDriver#iconify(JInternalFrame)}</code> and
- * <code>{@link JInternalFrameDriver#deiconify(JInternalFrame)}</code>.
+ * Tests for {@link JInternalFrameDriver#iconify(JInternalFrame)} and
+ * {@link JInternalFrameDriver#deiconify(JInternalFrame)}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 public class JInternalFrameDriver_iconify_deiconify_Test extends JInternalFrameDriver_TestCase {
-
   @Test
   public void should_iconify_and_deiconify_JInternalFrame() {
     showWindow();

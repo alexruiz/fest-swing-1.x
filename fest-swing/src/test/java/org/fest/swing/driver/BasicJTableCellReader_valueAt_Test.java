@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -30,13 +30,12 @@ import org.fest.swing.test.swing.CustomCellRenderer;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link BasicJTableCellReader#valueAt(JTable, int, int)}</code>.
+ * Tests for {@link BasicJTableCellReader#valueAt(JTable, int, int)}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 public class BasicJTableCellReader_valueAt_Test extends BasicJTableCellReader_TestCase {
-
   @Test
   public void should_return_toString_from_model_if_cellRenderer_is_not_recognized() {
     setModelData(table, new Object[][] { array(new Jedi("Yoda")) }, array("Names"));

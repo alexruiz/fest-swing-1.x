@@ -11,14 +11,14 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2007-2010 the original author or authors.
+ * Copyright @2007-2013 the original author or authors.
  */
 package org.fest.swing.test.awt;
 
 import java.awt.Dimension;
 
 /**
- * Understands an AWT <code>{@link Dimension}</code> with some extra utility methods.
+ * Understands an AWT {@link Dimension} with some extra utility methods.
  *
  * @author Alex Ruiz
  */

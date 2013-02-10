@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.fixture;
 
@@ -23,7 +23,6 @@ import org.fest.swing.core.*;
  * @author Alex Ruiz
  */
 public interface MouseInputSimulationFixture {
-
   /**
    * Simulates a user clicking this fixture's GUI component.
    * @return this fixture.
@@ -45,7 +44,7 @@ public interface MouseInputSimulationFixture {
    * Simulates a user clicking this fixture's GUI component.
    * @param mouseClickInfo specifies the button to click and the times the button should be clicked.
    * @return this fixture.
-   * @throws NullPointerException if the given <code>MouseClickInfo</code> is {@code null}.
+   * @throws NullPointerException if the given {@code MouseClickInfo} is {@code null}.
    * @throws IllegalStateException if the component is disabled.
    * @throws IllegalStateException if the component is not showing on the screen.
    */

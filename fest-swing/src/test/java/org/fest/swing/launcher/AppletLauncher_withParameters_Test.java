@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.launcher;
 
@@ -22,16 +22,15 @@ import org.fest.swing.test.swing.TestApplet;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link AppletLauncher#withParameters(AppletParameter...)}</code>.
+ * Tests for {@link AppletLauncher#withParameters(AppletParameter...)}.
  *
  * @author Yvonne Wang
  */
 public class AppletLauncher_withParameters_Test extends AppletLauncher_TestCase {
-
   @Test(expected = NullPointerException.class)
   public void should_throw_error_if_parameter_array_is_null() {
     AppletParameter[] parameters = null;
-    AppletLauncher.applet(TestApplet.createNew()).withParameters(parameters);
+    AppletLauncher.launcherFor(TestApplet.createNew()).withParameters(parameters);
   }
 
   @Test(expected = NullPointerException.class)
@@ -39,12 +38,12 @@ public class AppletLauncher_withParameters_Test extends AppletLauncher_TestCase 
     AppletParameter[] parameters = new AppletParameter[2];
     parameters[0] = name("bgcolor").value("blue");
     parameters[1] = null;
-    AppletLauncher.applet(TestApplet.createNew()).withParameters(parameters);
+    AppletLauncher.launcherFor(TestApplet.createNew()).withParameters(parameters);
   }
 
   @Test public void should_set_given_parameters() {
     applet = TestApplet.createNew();
-    viewer = AppletLauncher.applet(applet).withParameters(
+    viewer = AppletLauncher.launcherFor(applet).withParameters(
         name("bgcolor").value("blue"), name("color").value("red")
     ).start();
     assertThatAppletWasLaunched();

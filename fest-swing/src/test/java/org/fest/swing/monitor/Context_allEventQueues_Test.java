@@ -11,26 +11,25 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2007-2010 the original author or authors.
+ * Copyright @2007-2013 the original author or authors.
  */
 package org.fest.swing.monitor;
 
-import static org.easymock.EasyMock.expect;
 import static org.fest.assertions.Assertions.assertThat;
+import static org.fest.util.Lists.newArrayList;
 
 import java.awt.EventQueue;
-import java.util.*;
+import java.util.Collection;
+import java.util.List;
 
-import org.fest.mocks.EasyMockTemplate;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link Context#allEventQueues()}</code>.
+ * Tests for {@link Context#allEventQueues()}.
  *
  * @author Alex Ruiz
  */
 public class Context_allEventQueues_Test extends Context_TestCase {
-
   @Test
   public void should_return_all_EventQueues() {
     new EasyMockTemplate(windowEventQueueMapping, eventQueueMapping) {
@@ -47,8 +46,6 @@ public class Context_allEventQueues_Test extends Context_TestCase {
   }
 
   private List<EventQueue> eventQueueInList() {
-    final List<EventQueue> queues = new ArrayList<EventQueue>();
-    queues.add(eventQueue);
-    return queues;
+    return newArrayList(eventQueue);
   }
 }

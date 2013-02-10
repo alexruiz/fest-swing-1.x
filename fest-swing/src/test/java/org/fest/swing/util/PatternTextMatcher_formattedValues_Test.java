@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.util;
 
@@ -21,12 +21,11 @@ import static org.fest.swing.test.core.Regex.regex;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link PatternTextMatcher#formattedValues()}</code>.
+ * Tests for {@link PatternTextMatcher#formattedValues()}.
  *
  * @author Alex Ruiz
  */
 public class PatternTextMatcher_formattedValues_Test {
-
   @Test
   public void should_return_single_pattern_as_formatted_value_if_matcher_has_only_one_pattern() {
     PatternTextMatcher matcher = new PatternTextMatcher(regex("one"));

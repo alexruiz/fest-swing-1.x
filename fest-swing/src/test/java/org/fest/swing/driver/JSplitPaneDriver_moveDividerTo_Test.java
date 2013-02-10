@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -37,14 +37,13 @@ import org.junit.runners.*;
 import org.junit.runners.Parameterized.Parameters;
 
 /**
- * Tests for <code>{@link JSplitPaneDriver#moveDividerTo(JSplitPane, int)}</code>.
+ * Tests for {@link JSplitPaneDriver#moveDividerTo(JSplitPane, int)}.
  *
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
 @RunWith(Parameterized.class)
 public class JSplitPaneDriver_moveDividerTo_Test extends RobotBasedTestCase {
-
   private JSplitPaneDriver driver;
 
   private final int orientation;

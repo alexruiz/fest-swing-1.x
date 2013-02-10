@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.input;
 
@@ -27,12 +27,11 @@ import org.fest.mocks.EasyMockTemplate;
 import org.junit.*;
 
 /**
- * Tests for <code>{@link EventNormalizer#eventDispatched(AWTEvent)}</code>.
+ * Tests for {@link EventNormalizer#eventDispatched(AWTEvent)}.
  *
  * @author Alex Ruiz
  */
 public class EventNormalizer_eventDispatched_Test extends EventNormalizer_TestCase {
-
   private DisposedWindowMonitor disposedWindowMonitor;
   private AWTEventListener delegateEventListener;
   private AWTEvent event;

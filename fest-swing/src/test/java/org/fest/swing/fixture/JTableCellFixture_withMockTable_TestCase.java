@@ -10,7 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.fixture;
 
@@ -23,12 +23,11 @@ import org.fest.swing.test.core.EDTSafeTestCase;
 import org.junit.Before;
 
 /**
- * Base test case for <code>{@link JTableCellFixture}</code>.
+ * Base test case for {@link JTableCellFixture}.
  *
  * @author Alex Ruiz
  */
 public class JTableCellFixture_withMockTable_TestCase extends EDTSafeTestCase {
-
   JTableFixture table;
   TableCell cell;
   JTableCellFixture fixture;
@@ -43,5 +42,4 @@ public class JTableCellFixture_withMockTable_TestCase extends EDTSafeTestCase {
   final void assertThatReturnsSelf(JTableCellFixture result) {
     assertThat(result).isSameAs(fixture);
   }
-
 }

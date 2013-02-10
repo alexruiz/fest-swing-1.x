@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.fixture;
 
@@ -23,12 +23,11 @@ import org.fest.mocks.EasyMockTemplate;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JTableCellFixture#foreground()}</code>.
+ * Tests for {@link JTableCellFixture#foreground()}.
  *
  * @author Alex Ruiz
  */
 public class JTableCellFixture_foreground_Test extends JTableCellFixture_withMockTable_TestCase {
-
   @Test
   public void should_return_foreground_color() {
     final ColorFixture colorFixture = new ColorFixture(BLUE);

@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -21,12 +21,11 @@ import static org.fest.swing.test.core.CommonAssertions.failWhenExpectingExcepti
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JTableStopCellEditingTask#validateAndStopEditing(javax.swing.JTable, int, int)}</code>.
+ * Tests for {@link JTableStopCellEditingTask#validateAndStopEditing(javax.swing.JTable, int, int)}.
  *
  * @author Alex Ruiz
  */
 public class JTableStopCellEditingTask_validateAndStopEditing_Test extends JTableCellEditingTask_TestCase {
-
   @Test
   public void should_throw_error_if_row_index_is_out_of_bounds() {
     try {
@@ -79,5 +78,4 @@ public class JTableStopCellEditingTask_validateAndStopEditing_Test extends JTabl
   public void shouldNotThrowErrorIfCellEditorIsNull() {
     JTableStopCellEditingTask.stopEditing(null);
   }
-
 }

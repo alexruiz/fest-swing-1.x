@@ -1,32 +1,34 @@
 /*
  * Created on Sep 21, 2007
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ * 
  * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
- *
- * Copyright @2007-2010 the original author or authors.
+ * 
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+ * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations under the License.
+ * 
+ * Copyright @2007-2013 the original author or authors.
  */
 package org.fest.swing.core;
 
 import static org.fest.swing.util.Arrays.copyOf;
 
-import java.awt.Event;
-import java.awt.event.KeyEvent;
+import javax.annotation.Nonnull;
 
 import org.fest.swing.util.Platform;
 
 /**
+ * <p>
  * Information about a key (from the keyboard) to press.
+ * </p>
+ * 
  * <p>
  * Examples:
  * </p>
+ * 
  * <p>
  * Specify that 'CTRL' + 'C' should be pressed:
  * <pre>
@@ -34,6 +36,7 @@ import org.fest.swing.util.Platform;
  * KeyPressInfo i = key(VK_C).modifiers(CTRL_MASK);
  * </pre>
  * </p>
+ * 
  * <p>
  * Specify that 'SHIFT' + 'R' should be pressed:
  * <pre>
@@ -43,59 +46,64 @@ import org.fest.swing.util.Platform;
  * </p>
  * <p>
  * For platform-safe mask pressing (e.g. 'Control' in Windows or 'Command' in MacOS) use
- * <code>{@link Platform#controlOrCommandMask()}</code>.
+ * {@link Platform#controlOrCommandMask()}.
  * </p>
- *
+ * 
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 public final class KeyPressInfo {
+  private static final int[] NO_MODIFIERS = {};
 
   private final int keyCode;
   private int[] modifiers;
 
   /**
-   * Specifies the code of the key to press, without any modifiers (e.g.
-   * <code>{@link KeyEvent#VK_C KeyEvent.VK_C}</code>.)
+   * Specifies the code of the key to press, without any modifiers (e.g. {@code java.awt.event.KeyEvent.VK_C}.)
+   * 
    * @param keyCode the code of the key to press.
-   * @return the created <code>KeyPressInfo</code>.
+   * @return the created {@code KeyPressInfo}.
    */
-  public static KeyPressInfo keyCode(int keyCode) {
-    return new KeyPressInfo(keyCode, new int[0]);
+  public static @Nonnull
+  KeyPressInfo keyCode(int keyCode) {
+    return new KeyPressInfo(keyCode, NO_MODIFIERS);
   }
 
-  private KeyPressInfo(int keyCode, int[] modifiers) {
+  private KeyPressInfo(int keyCode, @Nonnull int[] modifiers) {
     this.keyCode = keyCode;
     this.modifiers = modifiers;
   }
 
   /**
-   * Returns the code of the key to press.
    * @return the code of the key to press.
    */
-  public int keyCode() { return keyCode; }
+  public int keyCode() {
+    return keyCode;
+  }
 
   /**
-   * Returns the modifiers to use when pressing <code>{@link #keyCode() the specified key}</code>.
-   * @return the modifiers to use.
+   * @return the modifiers to use when pressing {@link #keyCode() the specified key}.
    */
-  public int[] modifiers() {
+  public @Nonnull int[] modifiers() {
     return copyOf(modifiers);
   }
 
   /**
-   * Specifies the modifiers to use when pressing <code>{@link #keyCode() the specified key}</code> (e.g.
-   * <code>{@link Event#CTRL_MASK Event.CTRL_MASK}</code>.)
+   * <p>
+   * Specifies the modifiers to use when pressing {@link #keyCode() the specified key} (e.g.
+   * {@code java.awt.Event.CTRL_MASK}.)
+   * </p>
+   * 
    * <p>
    * For platform-safe mask pressing (e.g. 'Control' in Windows or 'Command' in MacOS) use
-   * <code>{@link Platform#controlOrCommandMask()}</code>.
+   * {@link Platform#controlOrCommandMask()}.
    * </p>
+   * 
    * @param newModifiers the new modifiers to use.
    * @return this object.
-   * @throws NullPointerException if <code>newModifiers</code> is {@code null}.
+   * @throws NullPointerException if {@code newModifiers} is {@code null}.
    */
-  public KeyPressInfo modifiers(int... newModifiers) {
-    if (newModifiers == null) throw new NullPointerException("The array of modifiers should not be null");
+  public @Nonnull KeyPressInfo modifiers(@Nonnull int... newModifiers) {
     modifiers = copyOf(newModifiers);
     return this;
   }

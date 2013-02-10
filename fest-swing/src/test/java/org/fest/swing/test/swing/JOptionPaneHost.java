@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2010 the original author or authors.
+ * Copyright @2010-2013 the original author or authors.
  */
 package org.fest.swing.test.swing;
 
@@ -29,13 +29,12 @@ import javax.swing.*;
 import org.fest.swing.annotation.RunsInCurrentThread;
 
 /**
- * Understands a dialog that hosts a <code>{@link JOptionPane}</code>.
+ * Understands a dialog that hosts a {@code JOptionPane}.
  *
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
 public class JOptionPaneHost extends JDialog {
-
   private static final long serialVersionUID = 1L;
 
   @RunsInCurrentThread

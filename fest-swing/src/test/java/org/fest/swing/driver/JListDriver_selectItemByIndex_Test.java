@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -22,13 +22,12 @@ import static org.fest.swing.test.core.CommonAssertions.*;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JListDriver#selectItem(javax.swing.JList, int)}</code>.
+ * Tests for {@link JListDriver#selectItem(javax.swing.JList, int)}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 public class JListDriver_selectItemByIndex_Test extends JListDriver_TestCase {
-
   @Test
   public void should_select_item() {
     showWindow();

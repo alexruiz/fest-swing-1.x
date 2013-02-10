@@ -11,26 +11,28 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2007-2010 the original author or authors.
+ * Copyright @2007-2013 the original author or authors.
  */
 package org.fest.swing.test.io;
 
 import static org.fest.util.Strings.concat;
 
-import java.io.*;
-import java.util.*;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+import java.util.List;
 import java.util.logging.Logger;
 
+import org.fest.util.Lists;
+
 /**
- * Understands a stub of <code>{@link PrintStream}</code>.
+ * Understands a stub of {@link PrintStream}.
  *
  * @author Alex Ruiz
  */
 public class PrintStreamStub extends PrintStream {
-
   private static Logger logger = Logger.getLogger(PrintStreamStub.class.getName());
 
-  private final List<String> printed = new ArrayList<String>();
+  private final List<String> printed = Lists.newArrayList();
 
   public PrintStreamStub() {
     super(new ByteArrayOutputStream());

@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.monitor;
 
@@ -26,13 +26,12 @@ import org.fest.swing.test.core.EDTSafeTestCase;
 import org.junit.Before;
 
 /**
- * Base test case for <code>{@link EventQueueMapping}</code>.
+ * Base test case for {@link EventQueueMapping}.
  *
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
 public abstract class EventQueueMapping_TestCase extends EDTSafeTestCase {
-
   private ToolkitStub toolkit;
 
   EventQueue eventQueue;

@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -25,22 +25,21 @@ import org.fest.swing.test.core.EDTSafeTestCase;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JComboBoxItemIndexValidator#validateIndex(JComboBox, int)}</code>
+ * Tests for {@link JComboBoxItemIndexPreconditions#checkIndexInBounds(JComboBox, int)}
  *
  * @author Alex Ruiz
  */
 public class JComboBoxItemIndexValidator_validateIndex_Test extends EDTSafeTestCase {
-
   @Test
   public void should_not_throw_error_if_index_is_in_bounds() {
     JComboBox comboBox = comboBox().withItems("One", "Two", "Three").createNew();
-    JComboBoxItemIndexValidator.validateIndex(comboBox, 0);
+    JComboBoxItemIndexPreconditions.checkIndexInBounds(comboBox, 0);
   }
 
   @Test
   public void should_throw_error_if_index_is_negative() {
     try {
-      JComboBoxItemIndexValidator.validateIndex(comboBox().createNew(), -1);
+      JComboBoxItemIndexPreconditions.checkIndexInBounds(comboBox().createNew(), -1);
       failWhenExpectingException();
     } catch (IndexOutOfBoundsException e) {
       assertThat(e.getMessage()).isEqualTo("Item index (-1) should not be less than zero");
@@ -50,7 +49,7 @@ public class JComboBoxItemIndexValidator_validateIndex_Test extends EDTSafeTestC
   @Test
   public void should_throw_error_if_JComboBox_is_empty() {
     try {
-      JComboBoxItemIndexValidator.validateIndex(comboBox().createNew(), 0);
+      JComboBoxItemIndexPreconditions.checkIndexInBounds(comboBox().createNew(), 0);
       failWhenExpectingException();
     } catch (IndexOutOfBoundsException e) {
       assertThat(e.getMessage()).isEqualTo("JComboBox is empty");
@@ -61,7 +60,7 @@ public class JComboBoxItemIndexValidator_validateIndex_Test extends EDTSafeTestC
   public void should_throw_error_if_index_is_out_of_bounds() {
     try {
       JComboBox comboBox = comboBox().withItems("One", "Two", "Three").createNew();
-      JComboBoxItemIndexValidator.validateIndex(comboBox, 6);
+      JComboBoxItemIndexPreconditions.checkIndexInBounds(comboBox, 6);
       failWhenExpectingException();
     } catch (IndexOutOfBoundsException e) {
       assertThat(e.getMessage()).isEqualTo("Item index (6) should be between [0] and [2] (inclusive)");

@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.monitor;
 
@@ -21,12 +21,11 @@ import org.fest.mocks.EasyMockTemplate;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link Context#addContextFor(java.awt.Component)}</code>.
+ * Tests for {@link Context#addContextFor(java.awt.Component)}.
  *
  * @author Alex Ruiz
  */
 public class Context_addContextFor_Test extends Context_TestCase {
-
   @Test
   public void should_add_context() {
     new EasyMockTemplate(windowEventQueueMapping, eventQueueMapping) {
@@ -42,5 +41,4 @@ public class Context_addContextFor_Test extends Context_TestCase {
       }
     }.run();
   }
-
 }

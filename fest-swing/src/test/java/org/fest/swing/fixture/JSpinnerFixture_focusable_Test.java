@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.fixture;
 
@@ -24,14 +24,13 @@ import org.fest.swing.driver.JSpinnerDriver;
 import org.junit.BeforeClass;
 
 /**
- * Tests for methods in <code>{@link JSpinnerFixture}</code> that are inherited from
- * <code>{@link FocusableComponentFixture}</code>.
+ * Tests for methods in {@link JSpinnerFixture} that are inherited from
+ * {@link FocusableComponentFixture}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 public class JSpinnerFixture_focusable_Test extends FocusableComponentFixture_TestCase<JSpinner> {
-
   private static JSpinner target;
 
   private JSpinnerDriver driver;

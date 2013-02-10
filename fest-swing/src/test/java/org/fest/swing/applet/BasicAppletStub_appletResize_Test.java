@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.applet;
 
@@ -19,13 +19,12 @@ import org.fest.mocks.EasyMockTemplate;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link BasicAppletStub#appletResize(int, int)}</code>.
+ * Tests for {@link BasicAppletStub#appletResize(int, int)}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 public class BasicAppletStub_appletResize_Test extends BasicAppletStub_TestCase {
-
   @Test
   public void should_resize_viewer_when_applet_is_resized() {
     final int w = 800;

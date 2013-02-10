@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.core;
 
@@ -20,17 +20,16 @@ import static org.fest.assertions.Assertions.assertThat;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link NameMatcher#matches(java.awt.Component)}</code>.
+ * Tests for {@link NameMatcher#matches(java.awt.Component)}.
  * <p>
- * The <code>{@link NameMatcher}</code> is created through
- * <code>{@link NameMatcher#NameMatcher(String, boolean)}</code>, passing {@code true} to indicate that the
- * <code>{@link java.awt.Component}</code> to match must be showing on the screen.
+ * The {@link NameMatcher} is created through
+ * {@link NameMatcher#NameMatcher(String, boolean)}, passing {@code true} to indicate that the
+ * {@link java.awt.Component} to match must be showing on the screen.
  * </p>
  *
  * @author Alex Ruiz
  */
 public class NameMatcher_matches_byNameAndShowing_Test extends NameMatcher_TestCase {
-
   @Test
   public void should_return_false_if_name_does_not_match_and_Component_is_showing() {
     window.display();

@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -21,12 +21,11 @@ import org.fest.swing.edt.GuiQuery;
 import org.fest.swing.test.swing.TestList;
 
 /**
- * Base test case for drag and drop in <code>{@link JListDriver}</code>.
+ * Base test case for drag and drop in {@link JListDriver}.
  *
  * @author Alex Ruiz
  */
 public abstract class JListDriver_dragAndDrop_TestCase extends JListDriver_TestCase {
-
   TestList dropList;
 
   @Override final void extraSetUp() {

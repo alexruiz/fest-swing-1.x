@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.fixture;
 
@@ -24,14 +24,13 @@ import org.fest.swing.driver.JComponentDriver;
 import org.junit.BeforeClass;
 
 /**
- * Tests for methods in <code>{@link JPanelFixture}</code> that are inherited from
- * <code>{@link JPopupMenuInvokerFixture}</code>.
+ * Tests for methods in {@link JPanelFixture} that are inherited from
+ * {@link JPopupMenuInvokerFixture}.
  *
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
 public class JPanelFixture_JPopupMenuInvoker_Test extends JPopupMenuInvokerFixture_TestCase<JPanel> {
-
   private static JPanel target;
 
   private JComponentDriver driver;

@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -26,12 +26,11 @@ import javax.swing.JComponent;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JComponentDriver#requireToolTip(JComponent, java.util.regex.Pattern)}</code>.
+ * Tests for {@link JComponentDriver#requireToolTip(JComponent, java.util.regex.Pattern)}.
  *
  * @author Alex Ruiz
  */
 public class JComponentDriver_requireToolTipAsPattern_Test extends JComponentDriver_TestCase {
-
   @Test
   public void should_pass_if_toolTip_matches_pattern() {
     driver.requireToolTip(button, regex("A Tool.*"));

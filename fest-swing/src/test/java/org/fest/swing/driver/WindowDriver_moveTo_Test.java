@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -24,12 +24,11 @@ import java.awt.Point;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link WindowDriver#moveTo(java.awt.Window, java.awt.Point)}</code>.
+ * Tests for {@link WindowDriver#moveTo(java.awt.Window, java.awt.Point)}.
  *
  * @author Alex Ruiz
  */
 public class WindowDriver_moveTo_Test extends WindowDriver_TestCase {
-
   @Test
   public void should_move_Window() {
     showWindow();

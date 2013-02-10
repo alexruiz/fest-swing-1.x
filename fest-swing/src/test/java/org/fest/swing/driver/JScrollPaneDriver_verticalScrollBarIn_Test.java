@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -22,12 +22,11 @@ import javax.swing.*;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JScrollPaneDriver#verticalScrollBarIn(JScrollPane)}</code>.
+ * Tests for {@link JScrollPaneDriver#verticalScrollBarIn(JScrollPane)}.
  *
  * @author Yvonne Wang
  */
 public class JScrollPaneDriver_verticalScrollBarIn_Test extends JScrollPaneDriver_TestCase {
-
   @Test
   public void should_return_vertical_JScrollBar() {
     JScrollBar scrollBar = driver.verticalScrollBarIn(window.scrollPane);

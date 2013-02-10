@@ -10,7 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.fixture;
 
@@ -34,7 +34,6 @@ import org.junit.Test;
  * @author Alex Ruiz
  */
 public class FEST102_enteringTextInJComboBoxIgnoresFirstCharacter_Test extends RobotBasedTestCase {
-
   @Test
   public void should_enter_text_in_JComboBox_with__integer_values() {
     JComboBoxFixture comboBox = fixture(new Vector<Integer>(list(1999, 2000, 2001, 2002)));

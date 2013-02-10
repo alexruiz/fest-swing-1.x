@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.applet;
 
@@ -24,13 +24,12 @@ import java.awt.Window;
 import org.junit.Before;
 
 /**
- * Tests for <code>{@link BasicAppletStub}</code>.
+ * Tests for {@link BasicAppletStub}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 public abstract class BasicAppletStub_TestCase {
-
   Window viewer;
   AppletContext context;
   BasicAppletStub stub;

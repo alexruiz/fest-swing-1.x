@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.core;
 
@@ -24,14 +24,13 @@ import org.fest.swing.exception.ComponentLookupException;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link BasicComponentFinder#includeHierarchyIfComponentNotFound(boolean)}</code>
- * and <code>{@link BasicComponentFinder#includeHierarchyIfComponentNotFound()}</code>.
+ * Tests for {@link BasicComponentFinder#includeHierarchyIfComponentNotFound(boolean)}
+ * and {@link BasicComponentFinder#includeHierarchyIfComponentNotFound()}.
  *
  * @author Alex Ruiz
  * @author Yvonne Price
  */
 public class BasicComponentFinder_includeHierarchyIfComponentNotFound_Test extends BasicComponentFinder_TestCase {
-
   @Test
   public void should_throw_error_without_ComponentHierarchy_as_configured() {
     finder.includeHierarchyIfComponentNotFound(false);

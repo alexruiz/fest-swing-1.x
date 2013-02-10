@@ -11,19 +11,21 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.core;
 
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.edt.GuiActionRunner.execute;
+import static org.fest.util.Lists.newArrayList;
 
 import java.awt.Component;
-import java.util.*;
+import java.util.List;
 
 import javax.swing.JTextField;
 
-import org.fest.swing.annotation.*;
+import org.fest.swing.annotation.RunsInCurrentThread;
+import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
 import org.fest.swing.test.core.RobotBasedTestCase;
 import org.fest.swing.test.swing.TestWindow;
@@ -35,7 +37,6 @@ import org.junit.Test;
  * @author Alex Ruiz
  */
 public class Bug235_findAllNotInSameOrder_Test extends RobotBasedTestCase {
-
   @Test
   public void should_always_return_all_found_Components_in_same_order() {
     MyWindow window = MyWindow.createNew();
@@ -54,7 +55,8 @@ public class Bug235_findAllNotInSameOrder_Test extends RobotBasedTestCase {
   }
 
   private List<Component> findAll(MyWindow window, TypeMatcher matcher) {
-    return new ArrayList<Component>(robot.finder().findAll(window, matcher));
+    ComponentFinder finder = robot.finder();
+    return newArrayList(finder.findAll(window, matcher));
   }
 
   private static class MyWindow extends TestWindow {

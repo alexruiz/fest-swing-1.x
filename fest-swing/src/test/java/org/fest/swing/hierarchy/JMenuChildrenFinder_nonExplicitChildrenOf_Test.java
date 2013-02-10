@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2007-2010 the original author or authors.
+ * Copyright @2007-2013 the original author or authors.
  */
 package org.fest.swing.hierarchy;
 
@@ -32,13 +32,12 @@ import org.fest.swing.test.swing.TestWindow;
 import org.junit.*;
 
 /**
- * Tests for <code>{@link JMenuChildrenFinder#nonExplicitChildrenOf(Container)}</code>.
+ * Tests for {@link JMenuChildrenFinder#nonExplicitChildrenOf(Container)}.
  *
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
 public class JMenuChildrenFinder_nonExplicitChildrenOf_Test extends EDTSafeTestCase {
-
   private JMenuChildrenFinder finder;
 
   @Before public void setUp() {

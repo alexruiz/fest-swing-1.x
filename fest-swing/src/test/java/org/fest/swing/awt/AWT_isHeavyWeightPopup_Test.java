@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.awt;
 
@@ -28,12 +28,11 @@ import org.fest.swing.test.core.EDTSafeTestCase;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link AWT#isHeavyWeightPopup(java.awt.Component)}</code>.
+ * Tests for {@link AWT#isHeavyWeightPopup(java.awt.Component)}.
  *
  * @author Alex Ruiz
  */
 public class AWT_isHeavyWeightPopup_Test extends EDTSafeTestCase {
-
   @Test
   public void should_return_false_if_Component_is_Window() {
     Window w = singletonWindowMock();

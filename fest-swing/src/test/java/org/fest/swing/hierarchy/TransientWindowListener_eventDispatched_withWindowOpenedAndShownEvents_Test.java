@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2007-2010 the original author or authors.
+ * Copyright @2007-2013 the original author or authors.
  */
 package org.fest.swing.hierarchy;
 
@@ -31,14 +31,13 @@ import org.junit.runners.*;
 import org.junit.runners.Parameterized.Parameters;
 
 /**
- * Tests for <code>{@link TransientWindowListener#eventDispatched(AWTEvent)}</code>.
+ * Tests for {@link TransientWindowListener#eventDispatched(AWTEvent)}.
  *
  * @author Alex Ruiz
  */
 @RunWith(Parameterized.class)
 public class TransientWindowListener_eventDispatched_withWindowOpenedAndShownEvents_Test
     extends TransientWindowListener_eventDispatched_TestCase {
-
   private final int eventId;
 
   @Parameters

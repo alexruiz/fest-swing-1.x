@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -29,12 +29,11 @@ import org.fest.swing.timing.Timeout;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JProgressBarDriver#waitUntilValueIs(JProgressBar, int, Timeout)}</code>.
+ * Tests for {@link JProgressBarDriver#waitUntilValueIs(JProgressBar, int, Timeout)}.
  *
  * @author Alex Ruiz
  */
 public class JProgressBarDriver_waitUntilValueIs_withTimeout_Test extends JProgressBarDriver_TestCase {
-
   @Test
   public void should_throw_error_if_expected_value_is_less_than_minimum() {
     try {

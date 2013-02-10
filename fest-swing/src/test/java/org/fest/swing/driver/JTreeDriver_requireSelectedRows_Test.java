@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -21,12 +21,11 @@ import static org.fest.swing.test.core.CommonAssertions.failWhenExpectingExcepti
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JTreeDriver#requireSelection(javax.swing.JTree, int[])}</code>.
+ * Tests for {@link JTreeDriver#requireSelection(javax.swing.JTree, int[])}.
  *
  * @author Alex Ruiz
  */
 public class JTreeDriver_requireSelectedRows_Test extends JTreeDriver_selectCell_TestCase {
-
   @Test(expected = NullPointerException.class)
   public void should_throw_error_if_array_of_indices_is_null() {
     driver.requireSelection(tree, (int[])null);

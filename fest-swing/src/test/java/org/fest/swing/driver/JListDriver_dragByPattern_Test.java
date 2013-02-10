@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -23,13 +23,12 @@ import java.util.regex.Pattern;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JListDriver#drag(javax.swing.JList, Pattern)}</code>.
+ * Tests for {@link JListDriver#drag(javax.swing.JList, Pattern)}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 public class JListDriver_dragByPattern_Test extends JListDriver_TestCase {
-
   @Test
   public void should_throw_error_if_JList_is_disabled() {
     disableList();

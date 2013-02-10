@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.applet;
 
@@ -20,13 +20,12 @@ import static org.fest.assertions.Assertions.assertThat;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link BasicAppletStub#getDocumentBase()}</code>.
+ * Tests for {@link BasicAppletStub#getDocumentBase()}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 public class BasicAppletStub_getDocumentBase_Test extends BasicAppletStub_TestCase {
-
   @Test
   public void should_return_nonNull_DocumentBase() {
     assertThat(stub.getDocumentBase()).isNotNull();

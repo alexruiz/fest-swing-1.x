@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.applet;
 
@@ -29,12 +29,11 @@ import org.fest.swing.timing.Condition;
 import org.junit.*;
 
 /**
- * Base class for GUI tests for <code>{@link AppletViewer}</code>.
+ * Base class for GUI tests for {@link AppletViewer}.
  *
  * @author Alex Ruiz
  */
 public abstract class AppletViewer_TestCase extends EDTSafeTestCase {
-
   TestApplet applet;
   FrameFixture fixture; // TODO should not depend on fixture
   AppletViewer viewer;

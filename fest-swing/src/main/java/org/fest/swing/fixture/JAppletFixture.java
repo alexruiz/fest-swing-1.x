@@ -13,7 +13,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 
 package org.fest.swing.fixture;
@@ -33,24 +33,23 @@ import org.fest.swing.exception.*;
 import org.fest.swing.timing.Timeout;
 
 /**
- * Understands simulation of user input on a <code>{@link JApplet}</code>. Unlike <code>WindowFixture</code>, this
- * driver only focuses on behavior present only in <code>{@link JApplet}</code>s.
+ * Understands simulation of user input on a {@code JApplet}. Unlike {@code WindowFixture}, this
+ * driver only focuses on behavior present only in {@code JApplet}s.
  *
  * @author Mel Llaguno
  */
 
 public class JAppletFixture extends ContainerFixture<JApplet>
 	implements CommonComponentFixture, LiveConnectSupport{
-
 	private JAppletDriver driver;
 
 	/**
 	 * Creates a new <code>{@link JAppletFixture}</code
-	 * @param robot performs simulation of user events on a <code>JApplet</code>
-	 * @param appletName the name of the <code>JApplet</code> to find using the given <code>Robot</code>.
-	 * @throws NullPointerException if <code>robot</code> is <code>null</code>.
-	 * @throws ComponentLookupException if a matching <code>JApplet</code> could not be found.
-	 * @throws ComponentLookupException if more than one matching <code>JApplet</code> is found.
+	 * @param robot performs simulation of user events on a {@code JApplet}
+	 * @param appletName the name of the {@code JApplet} to find using the given {@code Robot}.
+	 * @throws NullPointerException if {@code robot} is {@code null}.
+	 * @throws ComponentLookupException if a matching {@code JApplet} could not be found.
+	 * @throws ComponentLookupException if more than one matching {@code JApplet} is found.
 	 */
 	public JAppletFixture(Robot robot, String appletName) {
 		super(robot, appletName, JApplet.class);
@@ -59,11 +58,11 @@ public class JAppletFixture extends ContainerFixture<JApplet>
 
 	/**
 	 * Creates a new <code>{@link JAppletFixture}</code
-	 * @param robot performs simulation of user events on the given <code>JApplet</code>.
-	 * @param target the <code>JApplet</code> to be managed by this fixture;
-	 * @throws NullPointerException if <code>robot</code> is <code>null</code>.
-	 * @throws ComponentLookupException if a matching <code>JApplet</code> could not be found.
-	 * @throws ComponentLookupException if more than one matching <code>JApplet</code> is found.
+	 * @param robot performs simulation of user events on the given {@code JApplet}.
+	 * @param target the {@code JApplet} to be managed by this fixture;
+	 * @throws NullPointerException if {@code robot} is {@code null}.
+	 * @throws ComponentLookupException if a matching {@code JApplet} could not be found.
+	 * @throws ComponentLookupException if more than one matching {@code JApplet} is found.
 	 */
 	public JAppletFixture(Robot robot, JApplet target) {
 		super(robot, target);
@@ -71,22 +70,22 @@ public class JAppletFixture extends ContainerFixture<JApplet>
 	}
 
 	/**
-	 * Creates a new <code>{@link JAppletFixture}</code>. This constructor creates a new <code>{@link Robot}</code>
+	 * Creates a new {@link JAppletFixture}. This constructor creates a new {@link Robot}
 	 * containing the current AWT hierarchy. To work against multiple applets in the same browser page, the
-	 * <code>{@link BasicRobot.robotWithCurrentAwtHierarchyWithOutScreenLock()}</code> constructor MUST be used.
-	 * @param target the <code>JApplet</code> to be managed by this fixture.
-	 * @throws NullPointerException if the given target <code>JApplet</code> is <code>null</code>.
+	 * {@link BasicRobot.robotWithCurrentAwtHierarchyWithOutScreenLock()} constructor MUST be used.
+	 * @param target the {@code JApplet} to be managed by this fixture.
+	 * @throws NullPointerException if the given target {@code JApplet} is {@code null}.
 	 */
 	public JAppletFixture(JApplet target) {
 		this(BasicRobot.robotWithCurrentAwtHierarchyWithoutScreenLock(),target);
 	}
 
 	/**
-	 * Creates a new <code>{@link JAppletFixture}</code>. This constructor create a new <code>{@link Robot}</code>
+	 * Creates a new {@link JAppletFixture}. This constructor create a new {@link Robot}
 	 * containing the current AWT hierarchy. To work against multiple applets in the same browser page, the
-	 * <code>{@link BasicRobot.robotWithCurrentAwtHierarchyWithOutScreenLock}</code> constructor MUST be used.
-	 * @param appletName the name of the <code>JApplet</code> to be managed by this fixture.
-	 * @throws NullPointerException if the given target <code>JApplet</code> is <code>null</code>.
+	 * {@link BasicRobot.robotWithCurrentAwtHierarchyWithOutScreenLock} constructor MUST be used.
+	 * @param appletName the name of the {@code JApplet} to be managed by this fixture.
+	 * @throws NullPointerException if the given target {@code JApplet} is {@code null}.
 	 */
 	public JAppletFixture(String appletName) {
 		this(BasicRobot.robotWithCurrentAwtHierarchyWithoutScreenLock(), appletName);
@@ -97,9 +96,9 @@ public class JAppletFixture extends ContainerFixture<JApplet>
 	}
 
 	/**
-	 * Sets the <code>{@link JAppletDriver}</code> to be used by this fixture;
-	 * @param newDriver the new <code>JApplet</code>.
-	 * @throws NullPointerException if the given driver is <code>null</code>.
+	 * Sets the {@link JAppletDriver} to be used by this fixture;
+	 * @param newDriver the new {@code JApplet}.
+	 * @throws NullPointerException if the given driver is {@code null}.
 	 */
 	protected final void driver(JAppletDriver newDriver) {
 		validateNotNull(newDriver);
@@ -107,7 +106,7 @@ public class JAppletFixture extends ContainerFixture<JApplet>
 	}
 
 	/**
-	 * Simulates input focus to this fixture's <code>{@link JApplet}</code>.
+	 * Simulates input focus to this fixture's {@code JApplet}.
 	 * @return this fixture.
 	 */
 	public JAppletFixture focus() {
@@ -116,9 +115,9 @@ public class JAppletFixture extends ContainerFixture<JApplet>
 	}
 
 	/**
-	 * Asserts that this fixture's <code>{@link JApplet}</code> has input focus.
+	 * Asserts that this fixture's {@code JApplet} has input focus.
 	 * @return this fixture.
-	 * @throws AssertionError if this fixture's <code>JApplet</code> does not have input focus.
+	 * @throws AssertionError if this fixture's {@code JApplet} does not have input focus.
 	 */
 	public JAppletFixture requireFocused() {
 		driver.requireFocused(target);
@@ -126,11 +125,11 @@ public class JAppletFixture extends ContainerFixture<JApplet>
 	}
 
 	/**
-	 * Simulates a user pressing a given key with the given modifiers on this fixture's <code>{@link JApplet}</code>.
-	 * Modifiers is a mask from the available <code>{@link java.awt.event.InputEvent}</code> masks.
+	 * Simulates a user pressing a given key with the given modifiers on this fixture's {@code JApplet}.
+	 * Modifiers is a mask from the available {@link java.awt.event.InputEvent} masks.
 	 * @param keyPressInfo specifies the key and modifiers to press.
 	 * @return this fixture.
-	 * @throws NullPointerException if the given <code>KeyPressInfo</code> is <code>null</code>.
+	 * @throws NullPointerException if the given {@code KeyPressInfo} is {@code null}.
 	 * @throws IllegalArgumentException if the give code is not a valid key code.
 	 * @see KeyPressInfo
 	 */
@@ -141,11 +140,11 @@ public class JAppletFixture extends ContainerFixture<JApplet>
 	}
 
 	/**
-	 * Simulates a user pressing and releasing the given keys on the <code>{@link JApplet}</code> managed by this
+	 * Simulates a user pressing and releasing the given keys on the {@code JApplet} managed by this
 	 * fixture.
 	 * @param keyCodes one or more codes of the keys to press.
 	 * @return this fixture.
-	 * @throws NullPointerException if the given array of codes is <code>null</code>.
+	 * @throws NullPointerException if the given array of codes is {@code null}.
 	 * @throws IllegalArgumentException if any of the given code is not a valid key code.
 	 * @see java.awt.event.KeyEvent
 	 */
@@ -155,7 +154,7 @@ public class JAppletFixture extends ContainerFixture<JApplet>
 	}
 
 	/**
-	 * Simulates a user pressing the given key on this fixture's <code>{@link JApplet}</code>.
+	 * Simulates a user pressing the given key on this fixture's {@code JApplet}.
 	 * @param keyCode the code of the key to press.
 	 * @return this fixture.
 	 * @throws IllegalArgumentException if the given code is not a valid key code.
@@ -167,7 +166,7 @@ public class JAppletFixture extends ContainerFixture<JApplet>
 	}
 
 	/**
-	 * Simulates a user releasing the given key on this fixture's <code>{@link JApplet}</code>.
+	 * Simulates a user releasing the given key on this fixture's {@code JApplet}.
 	 * @param keyCode the code of the key to release.
 	 * @return this fixture.
 	 * @throws IllegalArgumentException if the given code is not a valid key code.
@@ -179,7 +178,7 @@ public class JAppletFixture extends ContainerFixture<JApplet>
 	}
 
 	/**
-	 * Simulates a user clicking this fixture's <code>{@link JApplet}</code>.
+	 * Simulates a user clicking this fixture's {@code JApplet}.
 	 * @return this fixture.
 	 */
 	public JAppletFixture click() {
@@ -188,10 +187,10 @@ public class JAppletFixture extends ContainerFixture<JApplet>
 	}
 
 	/**
-	 * Simulates a user clicking this fixture's <code>{@link JApplet}</code>.
+	 * Simulates a user clicking this fixture's {@code JApplet}.
 	 * @param button the button to click.
 	 * @return this fixture.
-	 * @throws NullPointerExceptin if the given <code>Button</code> is <code>null</code>.
+	 * @throws NullPointerExceptin if the given {@code Button} is {@code null}.
 	 */
 	public JAppletFixture click(MouseButton button) {
 		driver.click(target, button);
@@ -199,10 +198,10 @@ public class JAppletFixture extends ContainerFixture<JApplet>
 	}
 
 	/**
-	 * Simulates a user clicking this fixture's <code>{@link JApplet}</code>.
+	 * Simulates a user clicking this fixture's {@code JApplet}.
 	 * @param mouseClickInfo specifies the button to click and the times the button should be clicked.
 	 * @return this fixture.
-	 * @throws NullPointerException if the given <code>MouseClickInfo</code> is <code>null</code>.
+	 * @throws NullPointerException if the given {@code MouseClickInfo} is {@code null}.
 	 */
 	public JAppletFixture click(MouseClickInfo mouseClickInfo) {
 		driver.click(target, mouseClickInfo);
@@ -210,7 +209,7 @@ public class JAppletFixture extends ContainerFixture<JApplet>
 	}
 
 	/**
-	 * Simulates a user double-clicking this fixture's <code>{@link JApplet}</code>.
+	 * Simulates a user double-clicking this fixture's {@code JApplet}.
 	 * @return this fixture.
 	 */
 	public JAppletFixture doubleClick() {
@@ -219,7 +218,7 @@ public class JAppletFixture extends ContainerFixture<JApplet>
 	}
 
 	/**
-	 * Simulates a user right-clicking this fixture's <code>{@link JApplet}</code>.
+	 * Simulates a user right-clicking this fixture's {@code JApplet}.
 	 * @return this fixture.
 	 */
 	public JAppletFixture rightClick() {
@@ -228,9 +227,9 @@ public class JAppletFixture extends ContainerFixture<JApplet>
 	}
 
 	/**
-	 * Asserts that this fixture's <code>{@link JApplet}</code> is disabled.
+	 * Asserts that this fixture's {@code JApplet} is disabled.
 	 * @return this fixture.
-	 * @throws AssertionError if this fixture's <code>JApplet</code> is enabled.
+	 * @throws AssertionError if this fixture's {@code JApplet} is enabled.
 	 */
 	public JAppletFixture requireDisabled() {
 		driver.requireDisabled(target);
@@ -238,9 +237,9 @@ public class JAppletFixture extends ContainerFixture<JApplet>
 	}
 
 	/**
-	 * Asserts that this fixture's <code>{@link JApplet}</code> is enabled.
+	 * Asserts that this fixture's {@code JApplet} is enabled.
 	 * @return this fixture.
-	 * @throws AssertionError if this fixture's <code>JApplet</code> is disabled.
+	 * @throws AssertionError if this fixture's {@code JApplet} is disabled.
 	 */
 	public JAppletFixture requireEnabled() {
 		driver.requireEnabled(target);
@@ -248,10 +247,10 @@ public class JAppletFixture extends ContainerFixture<JApplet>
 	}
 
 	/**
-	 * Asserts that this fixture's <code>{@link JApplet}</code> is enabled.
+	 * Asserts that this fixture's {@code JApplet} is enabled.
 	 * @param timeout the time this fixture will wait for the component to be enabled.
 	 * @return this fixture.
-	 * @throws WaitTimedOutError if this fixture's <code>JApplet</code> is never enabled.
+	 * @throws WaitTimedOutError if this fixture's {@code JApplet} is never enabled.
 	 */
 	public JAppletFixture requireEnabled(Timeout timeout) {
 		driver.requireEnabled(target, timeout);
@@ -259,9 +258,9 @@ public class JAppletFixture extends ContainerFixture<JApplet>
 	}
 
 	/**
-	 * Asserts that this fixture's <code>{@link JApplet}</code> is not visible.
+	 * Asserts that this fixture's {@code JApplet} is not visible.
 	 * @return this fixture.
-	 * @throws AssertionError if this fixture's <code>JApplet</code> is visible.
+	 * @throws AssertionError if this fixture's {@code JApplet} is visible.
 	 */
 	public JAppletFixture requireNotVisible() {
 		driver.requireNotVisible(target);
@@ -269,9 +268,9 @@ public class JAppletFixture extends ContainerFixture<JApplet>
 	}
 
 	/**
-	 * Asserts that this fixture's <code>{@link JApplet}</code> is visible.
+	 * Asserts that this fixture's {@code JApplet} is visible.
 	 * @return this fixture.
-	 * @throws AssertionError if this fixture's <code>JApplet</code> is not visible.
+	 * @throws AssertionError if this fixture's {@code JApplet} is not visible.
 	 */
 	public StateVerificationFixture requireVisible() {
 		driver.requireVisible(target);
@@ -279,10 +278,10 @@ public class JAppletFixture extends ContainerFixture<JApplet>
 	}
 
 	/**
-	 * Shows a pop-up menu using this fixture's <code>{@link JApplet}</code> as the invoker of the pop-up menu.
+	 * Shows a pop-up menu using this fixture's {@code JApplet} as the invoker of the pop-up menu.
 	 * @return a fixture that manages the displayed pop-up menu.
-	 * @throws IllegalStateException if this fixture's <code>JApplet</code> is disabled.
-	 * @throws IllegalStateException if this fixture's <code>JApplet</code> is not showing on the screen.
+	 * @throws IllegalStateException if this fixture's {@code JApplet} is disabled.
+	 * @throws IllegalStateException if this fixture's {@code JApplet} is not showing on the screen.
 	 * @throws ComponentLookupException if a pop-up menu cannot be found.
 	 */
 	public JPopupMenuFixture showPopupMenu() {
@@ -290,12 +289,12 @@ public class JAppletFixture extends ContainerFixture<JApplet>
 	}
 
 	/**
-	 * Shows a pop-up menu at the given point using this fixture's <code>{@link JApplet}</code> as the invoker
+	 * Shows a pop-up menu at the given point using this fixture's {@code JApplet} as the invoker
 	 * of the pop-up menu.
 	 * @param p the given point where to show the pop-up menu.
 	 * @return a fixture that manages the displayed pop-up menu.
-	 * @throws IllegalStateException if this fixture's <code>JApplet</code> is disabled.
-	 * @throws IllegalStateException if this fixture's <code>JApplet</code> is not showing on the screen.
+	 * @throws IllegalStateException if this fixture's {@code JApplet} is disabled.
+	 * @throws IllegalStateException if this fixture's {@code JApplet} is not showing on the screen.
 	 * @throws ComponentLookupException if a pop-up menu cannot be found.
 	 */
 	public JPopupMenuFixture showPopupMenuAt(Point p) {
@@ -355,7 +354,6 @@ public class JAppletFixture extends ContainerFixture<JApplet>
 	}
 
 	public TableCell[] createTableCells(Object...objects) {
-
 		TableCell [] array = new TableCell[objects.length];
 		for(int i = 0; i < objects.length; i++)
 		{
@@ -378,5 +376,4 @@ public class JAppletFixture extends ContainerFixture<JApplet>
 
 		return array;
 	}
-
 }

@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.fixture;
 
@@ -36,7 +36,6 @@ import org.junit.Test;
  * @author Alex Ruiz
  */
 public class Bug108_findShowingContainerOnly_Test extends RobotBasedTestCase {
-
   private MyWindow window;
 
   @Override protected final void onSetUp() {

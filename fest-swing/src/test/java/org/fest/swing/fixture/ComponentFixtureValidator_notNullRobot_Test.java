@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.fixture;
 
@@ -22,12 +22,11 @@ import org.fest.swing.core.Robot;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link ComponentFixtureValidator#notNullRobot(org.fest.swing.core.Robot)}</code>.
+ * Tests for {@link ComponentFixtureValidator#notNullRobot(org.fest.swing.core.Robot)}.
  *
  * @author Alex Ruiz
  */
 public class ComponentFixtureValidator_notNullRobot_Test {
-
   @Test
   public void should_return_Robot_if_Robot_is_not_null() {
     Robot robot = singletonRobotMock();
@@ -38,5 +37,4 @@ public class ComponentFixtureValidator_notNullRobot_Test {
   public void should_throw_error_if_Robot_is_null() {
     ComponentFixtureValidator.notNullRobot(null);
   }
-
 }

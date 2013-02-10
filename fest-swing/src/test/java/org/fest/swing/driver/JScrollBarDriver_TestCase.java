@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -30,12 +30,11 @@ import org.fest.swing.test.core.RobotBasedTestCase;
 import org.fest.swing.test.swing.TestWindow;
 
 /**
- * Base test case for <code>{@link JScrollBarDriver}</code>.
+ * Base test case for {@link JScrollBarDriver}.
  *
  * @author Alex Ruiz
  */
 public abstract class JScrollBarDriver_TestCase extends RobotBasedTestCase {
-
   static final int MINIMUM = 10;
   static final int MAXIMUM = 80;
   static final int EXTENT = 10;

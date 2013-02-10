@@ -11,20 +11,19 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
 import org.fest.swing.cell.JTableCellWriter;
 
 /**
- * Test case for implementations of <code>{@link JTableCellWriter#startCellEditing(javax.swing.JTable, int, int)}</code>.
+ * Test case for implementations of {@link JTableCellWriter#startCellEditing(javax.swing.JTable, int, int)}.
  *
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
 public class BasicJTableCellWriter_startCellEditing_Test extends JTableCellWriter_startCellEditing_TestCase {
-
   @Override JTableCellWriter createWriter() {
     return new BasicJTableCellWriter(robot);
   }

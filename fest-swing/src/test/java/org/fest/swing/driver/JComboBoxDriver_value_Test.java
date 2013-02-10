@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -20,13 +20,12 @@ import static org.fest.assertions.Assertions.assertThat;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JComboBoxDriver#value(javax.swing.JComboBox, int)}</code>.
+ * Tests for {@link JComboBoxDriver#value(javax.swing.JComboBox, int)}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 public class JComboBoxDriver_value_Test extends JComboBoxDriver_TestCase {
-
   @Test
   public void should_return_value_as_text_of_item() {
     String value = driver.value(comboBox, 2);

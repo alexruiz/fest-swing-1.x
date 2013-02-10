@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.fixture;
 
@@ -21,7 +21,7 @@ import org.fest.swing.core.*;
 import org.fest.swing.exception.*;
 
 /**
- * Understands functional testing of single nodes, referenced by their row indices, in <code>{@link JTree}</code>s:
+ * Understands functional testing of single nodes, referenced by their row indices, in {@code JTree}s:
  * <ul>
  * <li>user input simulation</li>
  * <li>state verification</li>
@@ -33,12 +33,11 @@ import org.fest.swing.exception.*;
  * @since 1.2
  */
 public class JTreeRowFixture implements JTreeNodeFixture {
-
   private final int index;
   private final JTreeFixture tree;
 
   /**
-   * Creates a new </code>{@link JTreeRowFixture}</code>.
+   * Creates a new {@link JTreeRowFixture}.
    * @param tree handles the {@code JTree} containing the node with the given row index.
    * @param index the given row index.
    */
@@ -111,7 +110,7 @@ public class JTreeRowFixture implements JTreeNodeFixture {
    * Simulates a user clicking this fixture's tree node.
    * @param mouseClickInfo specifies the button to click and the times the button should be clicked.
    * @return this fixture.
-   * @throws NullPointerException if the given <code>MouseClickInfo</code> is {@code null}.
+   * @throws NullPointerException if the given {@code MouseClickInfo} is {@code null}.
    * @throws IllegalStateException if the {@code JTree} is disabled.
    * @throws IllegalStateException if the {@code JTree} is not showing on the screen.
    */

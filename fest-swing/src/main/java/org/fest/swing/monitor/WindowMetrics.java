@@ -10,23 +10,24 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  *
- * Copyright @2007-2010 the original author or authors.
+ * Copyright @2007-2013 the original author or authors.
  */
 package org.fest.swing.monitor;
 
-import java.awt.*;
+import java.awt.Insets;
+import java.awt.Point;
+import java.awt.Window;
+
+import javax.annotation.Nonnull;
 
 import org.fest.swing.annotation.RunsInCurrentThread;
 
 /**
- * Understands some window metrics.
- *
  * @author Alex Ruiz
  */
 final class WindowMetrics {
-
   @RunsInCurrentThread
-  static Point absoluteCenterOf(Window window) {
+  static @Nonnull Point absoluteCenterOf(@Nonnull Window window) {
     Insets insets = window.getInsets();
     int w = window.getWidth() - (insets.left + insets.right);
     int h = window.getHeight() - (insets.top + insets.bottom);

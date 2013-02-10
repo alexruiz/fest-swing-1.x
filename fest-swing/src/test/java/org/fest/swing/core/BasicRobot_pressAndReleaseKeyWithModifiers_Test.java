@@ -11,28 +11,34 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.core;
 
-import static java.awt.event.InputEvent.*;
-import static java.awt.event.KeyEvent.*;
+import static java.awt.event.InputEvent.CTRL_MASK;
+import static java.awt.event.InputEvent.SHIFT_MASK;
+import static java.awt.event.KeyEvent.KEY_PRESSED;
+import static java.awt.event.KeyEvent.KEY_RELEASED;
+import static java.awt.event.KeyEvent.VK_C;
+import static java.awt.event.KeyEvent.VK_CONTROL;
+import static java.awt.event.KeyEvent.VK_SHIFT;
 import static org.fest.assertions.Assertions.assertThat;
+import static org.fest.util.Lists.newArrayList;
 
 import java.awt.Component;
-import java.awt.event.*;
-import java.util.*;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.util.List;
 
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link BasicRobot#pressAndReleaseKey(int, int...)}</code>.
+ * Tests for {@link BasicRobot#pressAndReleaseKey(int, int...)}.
  *
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
 public class BasicRobot_pressAndReleaseKeyWithModifiers_Test extends BasicRobot_TestCase {
-
   @Test
   public void should_press_key_and_modifiers() {
     robot.focusAndWaitForFocusGain(window.textField);
@@ -47,11 +53,11 @@ public class BasicRobot_pressAndReleaseKeyWithModifiers_Test extends BasicRobot_
         KeyAction.action(KEY_RELEASED, VK_C),
         KeyAction.action(KEY_RELEASED, VK_CONTROL),
         KeyAction.action(KEY_RELEASED, VK_SHIFT)
-    );
+        );
   }
 
   private static class KeyPressRecorder extends KeyAdapter {
-    final List<KeyAction> actions = new ArrayList<KeyAction>();
+    final List<KeyAction> actions = newArrayList();
 
     static KeyPressRecorder attachTo(Component c) {
       KeyPressRecorder recorder = new KeyPressRecorder();
@@ -82,11 +88,19 @@ public class BasicRobot_pressAndReleaseKeyWithModifiers_Test extends BasicRobot_
     }
 
     @Override public boolean equals(Object obj) {
-      if (this == obj) return true;
-      if (obj == null) return false;
-      if (getClass() != obj.getClass()) return false;
+      if (this == obj) {
+        return true;
+      }
+      if (obj == null) {
+        return false;
+      }
+      if (getClass() != obj.getClass()) {
+        return false;
+      }
       final KeyAction other = (KeyAction) obj;
-      if (type != other.type) return false;
+      if (type != other.type) {
+        return false;
+      }
       return keyCode == other.keyCode;
     }
 

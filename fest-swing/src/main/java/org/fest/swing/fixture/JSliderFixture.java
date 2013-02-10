@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2007-2010 the original author or authors.
+ * Copyright @2007-2013 the original author or authors.
  */
 package org.fest.swing.fixture;
 
@@ -26,7 +26,7 @@ import org.fest.swing.exception.*;
 import org.fest.swing.timing.Timeout;
 
 /**
- * Understands functional testing of <code>{@link JSlider}</code>s:
+ * Understands functional testing of {@code JSlider}s:
  * <ul>
  * <li>user input simulation</li>
  * <li>state verification</li>
@@ -38,15 +38,14 @@ import org.fest.swing.timing.Timeout;
  */
 public class JSliderFixture extends ComponentFixture<JSlider> implements CommonComponentFixture,
     JComponentFixture, JPopupMenuInvokerFixture {
-
   private JSliderDriver driver;
 
   /**
-   * Creates a new <code>{@link JSliderFixture}</code>.
-   * @param robot performs simulation of user events on the given <code>JSlider</code>.
-   * @param target the <code>JSlider</code> to be managed <code>{@link JSlider}</code> by this fixture.
-   * @throws NullPointerException if <code>robot</code> is {@code null}.
-   * @throws NullPointerException if <code>target</code> is {@code null}.
+   * Creates a new {@link JSliderFixture}.
+   * @param robot performs simulation of user events on the given {@code JSlider}.
+   * @param target the {@code JSlider} to be managed {@code JSlider} by this fixture.
+   * @throws NullPointerException if {@code robot} is {@code null}.
+   * @throws NullPointerException if {@code target} is {@code null}.
    */
   public JSliderFixture(Robot robot, JSlider target) {
     super(robot, target);
@@ -54,12 +53,12 @@ public class JSliderFixture extends ComponentFixture<JSlider> implements CommonC
   }
 
   /**
-   * Creates a new <code>{@link JSliderFixture}</code>.
-   * @param robot performs simulation of user events on a <code>JSlider</code>.
-   * @param sliderName the name of the <code>JSlider</code> to find using the given <code>Robot</code>.
-   * @throws NullPointerException if <code>robot</code> is {@code null}.
-   * @throws ComponentLookupException if a matching <code>JSlider</code> could not be found.
-   * @throws ComponentLookupException if more than one matching <code>JSlider</code> is found.
+   * Creates a new {@link JSliderFixture}.
+   * @param robot performs simulation of user events on a {@code JSlider}.
+   * @param sliderName the name of the {@code JSlider} to find using the given {@code Robot}.
+   * @throws NullPointerException if {@code robot} is {@code null}.
+   * @throws ComponentLookupException if a matching {@code JSlider} could not be found.
+   * @throws ComponentLookupException if more than one matching {@code JSlider} is found.
    */
   public JSliderFixture(Robot robot, String sliderName) {
     super(robot, sliderName, JSlider.class);
@@ -71,8 +70,8 @@ public class JSliderFixture extends ComponentFixture<JSlider> implements CommonC
   }
 
   /**
-   * Sets the <code>{@link JSliderDriver}</code> to be used by this fixture.
-   * @param newDriver the new <code>JSliderDriver</code>.
+   * Sets the {@link JSliderDriver} to be used by this fixture.
+   * @param newDriver the new {@code JSliderDriver}.
    * @throws NullPointerException if the given driver is {@code null}.
    */
   protected final void driver(JSliderDriver newDriver) {
@@ -81,12 +80,12 @@ public class JSliderFixture extends ComponentFixture<JSlider> implements CommonC
   }
 
   /**
-   * Simulates a user sliding this fixture's <code>{@link JSlider}</code> to the given value.
-   * @param value the value to slide the <code>JSlider</code> to.
+   * Simulates a user sliding this fixture's {@code JSlider} to the given value.
+   * @param value the value to slide the {@code JSlider} to.
    * @return this fixture.
-   * @throws IllegalStateException if this fixture's <code>JSlider</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JSlider</code> is not showing on the screen.
-   * @throws IllegalArgumentException if the given position is not within the <code>JSlider</code> bounds.
+   * @throws IllegalStateException if this fixture's {@code JSlider} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JSlider} is not showing on the screen.
+   * @throws IllegalArgumentException if the given position is not within the {@code JSlider} bounds.
    */
   public JSliderFixture slideTo(int value) {
     driver.slide(target, value);
@@ -94,10 +93,10 @@ public class JSliderFixture extends ComponentFixture<JSlider> implements CommonC
   }
 
   /**
-   * Simulates a user sliding this fixture's <code>{@link JSlider}</code> to its maximum value.
+   * Simulates a user sliding this fixture's {@code JSlider} to its maximum value.
    * @return this fixture.
-   * @throws IllegalStateException if this fixture's <code>JSlider</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JSlider</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JSlider} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JSlider} is not showing on the screen.
    */
   public JSliderFixture slideToMaximum() {
     driver.slideToMaximum(target);
@@ -105,10 +104,10 @@ public class JSliderFixture extends ComponentFixture<JSlider> implements CommonC
   }
 
   /**
-   * Simulates a user sliding this fixture's <code>{@link JSlider}</code> to its minimum value.
+   * Simulates a user sliding this fixture's {@code JSlider} to its minimum value.
    * @return this fixture.
-   * @throws IllegalStateException if this fixture's <code>JSlider</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JSlider</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JSlider} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JSlider} is not showing on the screen.
    */
   public JSliderFixture slideToMinimum() {
     driver.slideToMinimum(target);
@@ -116,10 +115,10 @@ public class JSliderFixture extends ComponentFixture<JSlider> implements CommonC
   }
 
   /**
-   * Simulates a user clicking this fixture's <code>{@link JSlider}</code>.
+   * Simulates a user clicking this fixture's {@code JSlider}.
    * @return this fixture.
-   * @throws IllegalStateException if this fixture's <code>JSlider</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JSlider</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JSlider} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JSlider} is not showing on the screen.
    */
   public JSliderFixture click() {
     driver.click(target);
@@ -127,12 +126,12 @@ public class JSliderFixture extends ComponentFixture<JSlider> implements CommonC
   }
 
   /**
-   * Simulates a user clicking this fixture's <code>{@link JSlider}</code>.
+   * Simulates a user clicking this fixture's {@code JSlider}.
    * @param button the button to click.
    * @return this fixture.
-   * @throws NullPointerException if the given <code>MouseButton</code> is {@code null}.
-   * @throws IllegalStateException if this fixture's <code>JSlider</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JSlider</code> is not showing on the screen.
+   * @throws NullPointerException if the given {@code MouseButton} is {@code null}.
+   * @throws IllegalStateException if this fixture's {@code JSlider} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JSlider} is not showing on the screen.
    */
   public JSliderFixture click(MouseButton button) {
     driver.click(target, button);
@@ -140,12 +139,12 @@ public class JSliderFixture extends ComponentFixture<JSlider> implements CommonC
   }
 
   /**
-   * Simulates a user clicking this fixture's <code>{@link JSlider}</code>.
+   * Simulates a user clicking this fixture's {@code JSlider}.
    * @param mouseClickInfo specifies the button to click and the times the button should be clicked.
    * @return this fixture.
-   * @throws NullPointerException if the given <code>MouseClickInfo</code> is {@code null}.
-   * @throws IllegalStateException if this fixture's <code>JSlider</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JSlider</code> is not showing on the screen.
+   * @throws NullPointerException if the given {@code MouseClickInfo} is {@code null}.
+   * @throws IllegalStateException if this fixture's {@code JSlider} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JSlider} is not showing on the screen.
    */
   public JSliderFixture click(MouseClickInfo mouseClickInfo) {
     driver.click(target, mouseClickInfo);
@@ -153,10 +152,10 @@ public class JSliderFixture extends ComponentFixture<JSlider> implements CommonC
   }
 
   /**
-   * Simulates a user double-clicking this fixture's <code>{@link JSlider}</code>.
+   * Simulates a user double-clicking this fixture's {@code JSlider}.
    * @return this fixture.
-   * @throws IllegalStateException if this fixture's <code>JSlider</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JSlider</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JSlider} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JSlider} is not showing on the screen.
    */
   public JSliderFixture doubleClick() {
     driver.doubleClick(target);
@@ -164,10 +163,10 @@ public class JSliderFixture extends ComponentFixture<JSlider> implements CommonC
   }
 
   /**
-   * Simulates a user right-clicking this fixture's <code>{@link JSlider}</code>.
+   * Simulates a user right-clicking this fixture's {@code JSlider}.
    * @return this fixture.
-   * @throws IllegalStateException if this fixture's <code>JSlider</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JSlider</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JSlider} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JSlider} is not showing on the screen.
    */
   public JSliderFixture rightClick() {
     driver.rightClick(target);
@@ -175,10 +174,10 @@ public class JSliderFixture extends ComponentFixture<JSlider> implements CommonC
   }
 
   /**
-   * Gives input focus to this fixture's <code>{@link JSlider}</code>.
+   * Gives input focus to this fixture's {@code JSlider}.
    * @return this fixture.
-   * @throws IllegalStateException if this fixture's <code>JSlider</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JSlider</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JSlider} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JSlider} is not showing on the screen.
    */
   public JSliderFixture focus() {
     driver.focus(target);
@@ -186,14 +185,14 @@ public class JSliderFixture extends ComponentFixture<JSlider> implements CommonC
   }
 
   /**
-   * Simulates a user pressing given key with the given modifiers on this fixture's <code>{@link JSlider}</code>.
-   * Modifiers is a mask from the available <code>{@link java.awt.event.InputEvent}</code> masks.
+   * Simulates a user pressing given key with the given modifiers on this fixture's {@code JSlider}.
+   * Modifiers is a mask from the available {@link java.awt.event.InputEvent} masks.
    * @param keyPressInfo specifies the key and modifiers to press.
    * @return this fixture.
-   * @throws NullPointerException if the given <code>KeyPressInfo</code> is {@code null}.
+   * @throws NullPointerException if the given {@code KeyPressInfo} is {@code null}.
    * @throws IllegalArgumentException if the given code is not a valid key code.
-   * @throws IllegalStateException if this fixture's <code>JSlider</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JSlider</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JSlider} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JSlider} is not showing on the screen.
    * @see KeyPressInfo
    */
   public JSliderFixture pressAndReleaseKey(KeyPressInfo keyPressInfo) {
@@ -202,14 +201,14 @@ public class JSliderFixture extends ComponentFixture<JSlider> implements CommonC
   }
 
   /**
-   * Simulates a user pressing and releasing the given keys on this fixture's <code>{@link JSlider}</code>. This method
+   * Simulates a user pressing and releasing the given keys on this fixture's {@code JSlider}. This method
    * does not affect the current focus.
    * @param keyCodes one or more codes of the keys to press.
    * @return this fixture.
    * @throws NullPointerException if the given array of codes is {@code null}.
    * @throws IllegalArgumentException if any of the given code is not a valid key code.
-   * @throws IllegalStateException if this fixture's <code>JSlider</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JSlider</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JSlider} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JSlider} is not showing on the screen.
    * @see java.awt.event.KeyEvent
    */
   public JSliderFixture pressAndReleaseKeys(int... keyCodes) {
@@ -218,12 +217,12 @@ public class JSliderFixture extends ComponentFixture<JSlider> implements CommonC
   }
 
   /**
-   * Simulates a user pressing the given key on this fixture's <code>{@link JSlider}</code>.
+   * Simulates a user pressing the given key on this fixture's {@code JSlider}.
    * @param keyCode the code of the key to press.
    * @return this fixture.
    * @throws IllegalArgumentException if any of the given code is not a valid key code.
-   * @throws IllegalStateException if this fixture's <code>JSlider</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JSlider</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JSlider} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JSlider} is not showing on the screen.
    * @see java.awt.event.KeyEvent
    */
   public JSliderFixture pressKey(int keyCode) {
@@ -232,12 +231,12 @@ public class JSliderFixture extends ComponentFixture<JSlider> implements CommonC
   }
 
   /**
-   * Simulates a user releasing the given key on this fixture's <code>{@link JSlider}</code>.
+   * Simulates a user releasing the given key on this fixture's {@code JSlider}.
    * @param keyCode the code of the key to release.
    * @return this fixture.
    * @throws IllegalArgumentException if any of the given code is not a valid key code.
-   * @throws IllegalStateException if this fixture's <code>JSlider</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JSlider</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JSlider} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JSlider} is not showing on the screen.
    * @see java.awt.event.KeyEvent
    */
   public JSliderFixture releaseKey(int keyCode) {
@@ -246,9 +245,9 @@ public class JSliderFixture extends ComponentFixture<JSlider> implements CommonC
   }
 
   /**
-   * Asserts that this fixture's <code>{@link JSlider}</code> has input focus.
+   * Asserts that this fixture's {@code JSlider} has input focus.
    * @return this fixture.
-   * @throws AssertionError if this fixture's <code>JSlider</code> does not have input focus.
+   * @throws AssertionError if this fixture's {@code JSlider} does not have input focus.
    */
   public JSliderFixture requireFocused() {
     driver.requireFocused(target);
@@ -256,9 +255,9 @@ public class JSliderFixture extends ComponentFixture<JSlider> implements CommonC
   }
 
   /**
-   * Asserts that this fixture's <code>{@link JSlider}</code> is enabled.
+   * Asserts that this fixture's {@code JSlider} is enabled.
    * @return this fixture.
-   * @throws AssertionError is this fixture's <code>JSlider</code> is disabled.
+   * @throws AssertionError is this fixture's {@code JSlider} is disabled.
    */
   public JSliderFixture requireEnabled() {
     driver.requireEnabled(target);
@@ -266,10 +265,10 @@ public class JSliderFixture extends ComponentFixture<JSlider> implements CommonC
   }
 
   /**
-   * Asserts that this fixture's <code>{@link JSlider}</code> is enabled.
+   * Asserts that this fixture's {@code JSlider} is enabled.
    * @param timeout the time this fixture will wait for the component to be enabled.
    * @return this fixture.
-   * @throws WaitTimedOutError if this fixture's <code>JSlider</code> is never enabled.
+   * @throws WaitTimedOutError if this fixture's {@code JSlider} is never enabled.
    */
   public JSliderFixture requireEnabled(Timeout timeout) {
     driver.requireEnabled(target, timeout);
@@ -277,9 +276,9 @@ public class JSliderFixture extends ComponentFixture<JSlider> implements CommonC
   }
 
   /**
-   * Asserts that this fixture's <code>{@link JSlider}</code> is disabled.
+   * Asserts that this fixture's {@code JSlider} is disabled.
    * @return this fixture.
-   * @throws AssertionError is this fixture's <code>JSlider</code> is enabled.
+   * @throws AssertionError is this fixture's {@code JSlider} is enabled.
    */
   public JSliderFixture requireDisabled() {
     driver.requireDisabled(target);
@@ -287,9 +286,9 @@ public class JSliderFixture extends ComponentFixture<JSlider> implements CommonC
   }
 
   /**
-   * Asserts that this fixture's <code>{@link JSlider}</code>.
+   * Asserts that this fixture's {@code JSlider}.
    * @return this fixture.
-   * @throws AssertionError if this fixture's <code>JSlider</code> is not visible.
+   * @throws AssertionError if this fixture's {@code JSlider} is not visible.
    */
   public JSliderFixture requireVisible() {
     driver.requireVisible(target);
@@ -297,9 +296,9 @@ public class JSliderFixture extends ComponentFixture<JSlider> implements CommonC
   }
 
   /**
-   * Asserts that this fixture's <code>{@link JSlider}</code> is not visible.
+   * Asserts that this fixture's {@code JSlider} is not visible.
    * @return this fixture.
-   * @throws AssertionError if this fixture's <code>JSlider</code> is visible.
+   * @throws AssertionError if this fixture's {@code JSlider} is visible.
    */
   public JSliderFixture requireNotVisible() {
     driver.requireNotVisible(target);
@@ -307,10 +306,10 @@ public class JSliderFixture extends ComponentFixture<JSlider> implements CommonC
   }
 
   /**
-   * Asserts that the toolTip in this fixture's <code>{@link JSlider}</code> matches the given value.
+   * Asserts that the toolTip in this fixture's {@code JSlider} matches the given value.
    * @param expected the given value. It can be a regular expression.
    * @return this fixture.
-   * @throws AssertionError if the toolTip in this fixture's <code>JSlider</code> does not match the given value.
+   * @throws AssertionError if the toolTip in this fixture's {@code JSlider} does not match the given value.
    * @since 1.2
    */
   public JSliderFixture requireToolTip(String expected) {
@@ -319,12 +318,12 @@ public class JSliderFixture extends ComponentFixture<JSlider> implements CommonC
   }
 
   /**
-   * Asserts that the toolTip in this fixture's <code>{@link JSlider}</code> matches the given regular expression
+   * Asserts that the toolTip in this fixture's {@code JSlider} matches the given regular expression
    * pattern.
    * @param pattern the regular expression pattern to match.
    * @return this fixture.
    * @throws NullPointerException if the given regular expression pattern is {@code null}.
-   * @throws AssertionError if the toolTip in this fixture's <code>JSlider</code> does not match the given regular
+   * @throws AssertionError if the toolTip in this fixture's {@code JSlider} does not match the given regular
    * expression pattern.
    * @since 1.2
    */
@@ -334,7 +333,7 @@ public class JSliderFixture extends ComponentFixture<JSlider> implements CommonC
   }
 
   /**
-   * Returns the client property stored in this fixture's <code>{@link JSlider}</code>, under the given key.
+   * Returns the client property stored in this fixture's {@code JSlider}, under the given key.
    * @param key the key to use to retrieve the client property.
    * @return the value of the client property stored under the given key, or {@code null} if the property was
    * not found.
@@ -346,10 +345,10 @@ public class JSliderFixture extends ComponentFixture<JSlider> implements CommonC
   }
 
   /**
-   * Shows a pop-up menu using this fixture's <code>{@link JSlider}</code> as the invoker of the pop-up menu.
+   * Shows a pop-up menu using this fixture's {@code JSlider} as the invoker of the pop-up menu.
    * @return a fixture that manages the displayed pop-up menu.
-   * @throws IllegalStateException if this fixture's <code>JSlider</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JSlider</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JSlider} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JSlider} is not showing on the screen.
    * @throws ComponentLookupException if a pop-up menu cannot be found.
    */
   public JPopupMenuFixture showPopupMenu() {
@@ -357,12 +356,12 @@ public class JSliderFixture extends ComponentFixture<JSlider> implements CommonC
   }
 
   /**
-   * Shows a pop-up menu at the given point using this fixture's <code>{@link JSlider}</code> as the invoker of the
+   * Shows a pop-up menu at the given point using this fixture's {@code JSlider} as the invoker of the
    * pop-up menu.
    * @param p the given point where to show the pop-up menu.
    * @return a fixture that manages the displayed pop-up menu.
-   * @throws IllegalStateException if this fixture's <code>JSlider</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JSlider</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JSlider} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JSlider} is not showing on the screen.
    * @throws ComponentLookupException if a pop-up menu cannot be found.
    */
   public JPopupMenuFixture showPopupMenuAt(Point p) {

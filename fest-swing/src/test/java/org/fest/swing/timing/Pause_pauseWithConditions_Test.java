@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.timing;
 
@@ -23,12 +23,11 @@ import org.fest.swing.test.util.StopWatch;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link Pause#pause(Condition[])}</code>.
+ * Tests for {@link Pause#pause(Condition[])}.
  *
  * @author Alex Ruiz
  */
 public class Pause_pauseWithConditions_Test {
-
   @Test
   public void should_wait_till_Conditions_are_satisfied() {
     int timeToWaitTillSatisfied = 1000;

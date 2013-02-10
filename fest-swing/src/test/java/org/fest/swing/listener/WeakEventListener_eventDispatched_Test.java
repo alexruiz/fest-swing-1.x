@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2007-2010 the original author or authors.
+ * Copyright @2007-2013 the original author or authors.
  */
 package org.fest.swing.listener;
 
@@ -27,12 +27,11 @@ import org.fest.swing.test.awt.ToolkitStub;
 import org.junit.*;
 
 /**
- * Tests for <code>{@link WeakEventListener#eventDispatched(AWTEvent)}</code>.
+ * Tests for {@link WeakEventListener#eventDispatched(AWTEvent)}.
  *
  * @author Alex Ruiz
  */
 public class WeakEventListener_eventDispatched_Test {
-
   private static final long EVENT_MASK = WINDOW_EVENT_MASK;
 
   private ToolkitStub toolkit;

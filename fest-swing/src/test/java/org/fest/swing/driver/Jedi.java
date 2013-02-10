@@ -11,17 +11,16 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
 /**
- * Understands a class that implements <code>toString()</code>.
+ * Understands a class that implements {@code toString()}.
  *
  * @author Alex Ruiz
  */
 class Jedi {
-
   private final String name;
 
   public Jedi(String name) {

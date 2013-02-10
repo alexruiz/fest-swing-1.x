@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.fixture;
 
@@ -26,13 +26,12 @@ import org.fest.swing.core.MouseClickInfo;
 import org.junit.Test;
 
 /**
- * Tests for methods in <code>{@link JTreePathFixture}</code> that are inherited from <code>{@link ItemFixture}</code>.
+ * Tests for methods in {@link JTreePathFixture} that are inherited from {@link ItemFixture}.
  *
  * @author Alex Ruiz
  */
 public class JTreePathFixture_ItemFixture_Test extends JTreePathFixture_withMockTree_TestCase
     implements ItemFixture_TestCase {
-
   @Test
   public void should_select_item() {
     new EasyMockTemplate(tree) {
@@ -166,5 +165,4 @@ public class JTreePathFixture_ItemFixture_Test extends JTreePathFixture_withMock
       }
     }.run();
   }
-
 }

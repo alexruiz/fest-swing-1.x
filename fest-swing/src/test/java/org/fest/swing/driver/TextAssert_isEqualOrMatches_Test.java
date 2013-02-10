@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -21,12 +21,11 @@ import org.junit.*;
 import org.junit.rules.ExpectedException;
 
 /**
- * Tests for <code>{@link TextAssert#isEqualOrMatches(String)}</code>.
+ * Tests for {@link TextAssert#isEqualOrMatches(String)}.
  *
  * @author Alex Ruiz
  */
 public class TextAssert_isEqualOrMatches_Test {
-
   @Rule
   public ExpectedException thrown = none();
 

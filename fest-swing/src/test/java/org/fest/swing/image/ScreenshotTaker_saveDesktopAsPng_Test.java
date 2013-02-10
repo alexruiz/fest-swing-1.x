@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2007-2010 the original author or authors.
+ * Copyright @2007-2013 the original author or authors.
  */
 package org.fest.swing.image;
 
@@ -27,13 +27,12 @@ import java.io.File;
 import org.junit.*;
 
 /**
- * Tests for <code>{@link ScreenshotTaker#saveDesktopAsPng(String)}</code>.
+ * Tests for {@link ScreenshotTaker#saveDesktopAsPng(String)}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 public class ScreenshotTaker_saveDesktopAsPng_Test {
-
   private ScreenshotTaker taker;
   private String imagePath;
 

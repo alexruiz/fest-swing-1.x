@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -23,13 +23,12 @@ import java.awt.Point;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link WindowDriver#moveTo(java.awt.Window, java.awt.Point)}</code>
- * to ensure it works with <code>{@link FrameDriver}</code>.
+ * Tests for {@link WindowDriver#moveTo(java.awt.Window, java.awt.Point)}
+ * to ensure it works with {@link FrameDriver}.
  *
  * @author Alex Ruiz
  */
 public class FrameDriver_moveTo_Test extends FrameDriver_TestCase {
-
   @Test
   public void should_move_Frame() {
     showWindow();
@@ -58,5 +57,4 @@ public class FrameDriver_moveTo_Test extends FrameDriver_TestCase {
       assertThatErrorCauseIsNotShowingComponent(e);
     }
   }
-
 }

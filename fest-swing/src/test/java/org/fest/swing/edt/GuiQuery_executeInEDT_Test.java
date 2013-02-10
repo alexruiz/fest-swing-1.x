@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.edt;
 
@@ -22,13 +22,12 @@ import static org.fest.swing.edt.GuiActionRunner.execute;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link GuiQuery#executeInEDT()}</code>.
+ * Tests for {@link GuiQuery#executeInEDT()}.
  *
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
 public class GuiQuery_executeInEDT_Test {
-
   @Test
   public void should_execute_in_EDT_when_called_in_EDT() {
     final GuiQueryInEDT task = new GuiQueryInEDT();

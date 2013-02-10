@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.fixture;
 
@@ -26,7 +26,6 @@ import org.fest.swing.util.Platform;
  * @author Alex Ruiz
  */
 public interface KeyboardInputSimulationFixture {
-
   /**
    * Simulates a user pressing and releasing the given keys on this fixture's GUI component.
    * @param keyCodes one or more codes of the keys to press.
@@ -52,18 +51,18 @@ public interface KeyboardInputSimulationFixture {
 
   /**
    * Simulates a user pressing given key with the given modifiers on this fixture's GUI component.
-   * Modifiers is a mask from the available <code>{@link java.awt.event.InputEvent}</code> masks.
+   * Modifiers is a mask from the available {@link java.awt.event.InputEvent} masks.
    * <p>
    * The following code listing shows how to press 'CTRL' + 'C' in a platform-safe way:
    * <pre>
    * JTextComponentFixture textBox = dialog.textBox(&quot;username&quot;);
    * textBox.selectAll()
-   *        .pressAndReleaseKey(key(<code>{@link KeyEvent#VK_C VK_C}</code>).modifiers({@link Platform#controlOrCommandMask() controlOrCommandMask}()));
+   *        .pressAndReleaseKey(key({@link KeyEvent#VK_C VK_C}).modifiers({@link Platform#controlOrCommandMask() controlOrCommandMask}()));
    * </pre>
    * </p>
    * @param keyPressInfo specifies the key and modifiers to press.
    * @return this fixture.
-   * @throws NullPointerException if the given <code>KeyPressInfo</code> is {@code null}.
+   * @throws NullPointerException if the given {@code KeyPressInfo} is {@code null}.
    * @throws IllegalArgumentException if the given code is not a valid key code.
    * @throws IllegalStateException if the component is disabled.
    * @throws IllegalStateException if the component is not showing on the screen.

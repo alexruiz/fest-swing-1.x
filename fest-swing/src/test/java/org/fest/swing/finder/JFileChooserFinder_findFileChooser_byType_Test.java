@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.finder;
 
@@ -23,12 +23,11 @@ import org.fest.swing.fixture.JFileChooserFixture;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JFileChooserFinder#findFileChooser()}</code>.
+ * Tests for {@link JFileChooserFinder#findFileChooser()}.
  *
  * @author Alex Ruiz
  */
 public class JFileChooserFinder_findFileChooser_byType_Test extends JFileChooserFinder_TestCase {
-
   @Test
   public void should_find_JFileChooser() {
     clickBrowseButton();

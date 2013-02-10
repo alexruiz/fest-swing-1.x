@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2007-2010 the original author or authors.
+ * Copyright @2007-2013 the original author or authors.
  */
 package org.fest.swing.fixture;
 
@@ -21,13 +21,12 @@ import org.fest.mocks.EasyMockTemplate;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JSliderFixture}</code>.
+ * Tests for {@link JSliderFixture}.
  *
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
 public class JSliderFixtureTest extends JSliderFixture_TestCase {
-
   // TODO Reorganize into smaller units
 
   @Test

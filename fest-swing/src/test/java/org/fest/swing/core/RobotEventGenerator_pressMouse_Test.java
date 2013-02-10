@@ -11,18 +11,17 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.core;
 
 /**
- * Tests for <code>{@link RobotEventGenerator#pressMouse(java.awt.Point, int)}</code> and
- * <code>{@link RobotEventGenerator#releaseMouse(int)}</code>.
+ * Tests for {@link RobotEventGenerator#pressMouse(java.awt.Point, int)} and
+ * {@link RobotEventGenerator#releaseMouse(int)}.
  *
  * @author Alex Ruiz
  */
 public class RobotEventGenerator_pressMouse_Test extends InputEventGenerator_pressMouse_TestCase {
-
   public RobotEventGenerator_pressMouse_Test(MouseButton button) {
     super(button);
   }

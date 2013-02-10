@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.util;
 
@@ -25,12 +25,11 @@ import org.fest.mocks.EasyMockTemplate;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link Platform#controlOrCommandMask()}</code>.
+ * Tests for {@link Platform#controlOrCommandMask()}.
  *
  * @author Alex Ruiz
  */
 public class Platform_controlOrCommandMask_Test extends Platform_TestCase {
-
   @Test
   public void should_return_control_or_command_mask() {
     final Toolkit toolkit = wireMockToolkit();

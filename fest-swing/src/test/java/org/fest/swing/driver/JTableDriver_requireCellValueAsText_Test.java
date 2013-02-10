@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -22,13 +22,12 @@ import static org.fest.swing.test.core.CommonAssertions.failWhenExpectingExcepti
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JTableDriver#requireCellValue(javax.swing.JTable, org.fest.swing.data.TableCell, String)}</code>.
+ * Tests for {@link JTableDriver#requireCellValue(javax.swing.JTable, org.fest.swing.data.TableCell, String)}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 public class JTableDriver_requireCellValueAsText_Test extends JTableDriver_TestCase {
-
   @Test
   public void should_pass_if_cell_value_is_equal_to_expected() {
     driver.requireCellValue(table, row(0).column(0), "0-0");

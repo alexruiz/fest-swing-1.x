@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -25,12 +25,11 @@ import org.fest.swing.test.awt.FluentDimension;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link WindowDriver#resizeHeightTo(java.awt.Window, int)}</code>.
+ * Tests for {@link WindowDriver#resizeHeightTo(java.awt.Window, int)}.
  *
  * @author Alex Ruiz
  */
 public class WindowDriver_resizeHeightTo_Test extends WindowDriver_TestCase {
-
   @Test
   public void should_resize_height() {
     showWindow();

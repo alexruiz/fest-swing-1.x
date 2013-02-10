@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.core;
 
@@ -27,13 +27,12 @@ import org.fest.swing.edt.GuiTask;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link BasicRobot#focusAndWaitForFocusGain(Component)}</code>.
+ * Tests for {@link BasicRobot#focusAndWaitForFocusGain(Component)}.
  *
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
 public class BasicRobot_focusAndWaitForFocusGain_Test extends BasicRobot_TestCase {
-
   private JButton button;
 
   @RunsInEDT

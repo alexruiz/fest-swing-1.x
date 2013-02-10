@@ -10,7 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  *
- * Copyright @2010 the original author or authors.
+ * Copyright @2010-2013 the original author or authors.
  */
 package org.fest.swing.fixture;
 
@@ -24,12 +24,11 @@ import org.fest.swing.test.core.RobotBasedTestCase;
 import org.fest.swing.test.swing.TestWindow;
 
 /**
- * Base test case for lookup of <code>{@link JProgressBar}</code>s in <code>{@link ContainerFixture}</code>.
+ * Base test case for lookup of {@code JProgressBar}s in {@link ContainerFixture}.
  *
  * @author Alex Ruiz
  */
 public abstract class ContainerFixture_progressBar_TestCase extends RobotBasedTestCase {
-
   ComponentContainerFixture fixture;
   MyWindow window;
 

@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2007-2010 the original author or authors.
+ * Copyright @2007-2013 the original author or authors.
  */
 package org.fest.swing.format;
 
@@ -46,13 +46,12 @@ import org.fest.swing.test.core.EDTSafeTestCase;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link Formatting#format(Component)}</code>.
+ * Tests for {@link Formatting#format(Component)}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 public class Formatting_format_Test extends EDTSafeTestCase {
-
   private static Logger logger = Logger.getAnonymousLogger();
 
   @Test

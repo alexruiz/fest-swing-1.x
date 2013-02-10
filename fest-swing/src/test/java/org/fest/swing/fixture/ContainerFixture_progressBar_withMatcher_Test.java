@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2010 the original author or authors.
+ * Copyright @2010-2013 the original author or authors.
  */
 package org.fest.swing.fixture;
 
@@ -25,12 +25,11 @@ import org.fest.swing.exception.ComponentLookupException;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link ContainerFixture#progressBar(GenericTypeMatcher)}</code>.
+ * Tests for {@link ContainerFixture#progressBar(GenericTypeMatcher)}.
  *
  * @author Alex Ruiz
  */
 public class ContainerFixture_progressBar_withMatcher_Test extends ContainerFixture_progressBar_TestCase {
-
   @Test
   public void should_find_visible_JProgressBar() {
     showWindow();

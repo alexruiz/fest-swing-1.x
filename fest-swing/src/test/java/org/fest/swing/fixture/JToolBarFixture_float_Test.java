@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2007-2010 the original author or authors.
+ * Copyright @2007-2013 the original author or authors.
  */
 package org.fest.swing.fixture;
 
@@ -23,13 +23,12 @@ import org.fest.mocks.EasyMockTemplate;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JToolBarFixture#floatTo(Point)}</code>.
+ * Tests for {@link JToolBarFixture#floatTo(Point)}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 public class JToolBarFixture_float_Test extends JToolBarFixture_TestCase {
-
   @Test
   public void should_float_to_point() {
     final Point p = new Point(8, 6);

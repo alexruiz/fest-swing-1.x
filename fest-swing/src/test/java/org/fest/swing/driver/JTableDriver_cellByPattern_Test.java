@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -26,13 +26,12 @@ import org.fest.swing.exception.ActionFailedException;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JTableDriver#cell(javax.swing.JTable, Pattern)}</code>.
+ * Tests for {@link JTableDriver#cell(javax.swing.JTable, Pattern)}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 public class JTableDriver_cellByPattern_Test extends JTableDriver_TestCase {
-
   @Test
   public void should_find_cell_having_value_that_matches_given_pattern() {
     TableCell cell = driver.cell(table, regex("1.*"));

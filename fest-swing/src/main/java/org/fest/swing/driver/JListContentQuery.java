@@ -10,12 +10,14 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
 import static org.fest.swing.edt.GuiActionRunner.execute;
+import static org.fest.util.Preconditions.checkNotNull;
 
+import javax.annotation.Nonnull;
 import javax.swing.JList;
 
 import org.fest.swing.annotation.RunsInEDT;
@@ -23,23 +25,24 @@ import org.fest.swing.cell.JListCellReader;
 import org.fest.swing.edt.GuiQuery;
 
 /**
- * Understands an action, executed in the event dispatch thread, that returns an array of {@code String}s that
- * represents the contents of a given <code>{@link JList}</code>.
- *
+ * Returns an array of {@code String}s that represents the contents of a given {@code JList}. This query is executed in
+ * the event dispatch thread (EDT.)
+ * 
  * @author Alex Ruiz
  */
 final class JListContentQuery {
-
   @RunsInEDT
-  static String[] contents(final JList list, final JListCellReader cellReader) {
-    return execute(new GuiQuery<String[]>() {
+  static @Nonnull String[] contents(final @Nonnull JList list, final @Nonnull JListCellReader cellReader) {
+    String[] result = execute(new GuiQuery<String[]>() {
       @Override protected String[] executeInEDT() {
         String[] values = new String[list.getModel().getSize()];
-        for (int i = 0; i < values.length; i++)
+        for (int i = 0; i < values.length; i++) {
           values[i] = cellReader.valueAt(list, i);
+        }
         return values;
       }
     });
+    return checkNotNull(result);
   }
 
   private JListContentQuery() {}

@@ -1,29 +1,29 @@
 /*
  * Created on Jul 19, 2008
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ * 
  * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
- *
- * Copyright @2008-2010 the original author or authors.
+ * 
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+ * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations under the License.
+ * 
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.core;
 
 import static org.fest.swing.util.AWTExceptionHandlerInstaller.installAWTExceptionHandler;
 
+import javax.annotation.Nonnull;
+
 /**
  * Terminates any running FEST-Swing tests.
- *
+ * 
  * @author <a href="mailto:simeon.fitch@mseedsoft.com">Simeon H.K. Fitch</a>
  */
 class TestTerminator {
-
   private final ThreadsSource threadsSource;
   private final FrameDisposer frameDisposer;
   private final MainThreadIdentifier mainThreadIdentifier;
@@ -32,7 +32,8 @@ class TestTerminator {
     this(new ThreadsSource(), new FrameDisposer(), new MainThreadIdentifier());
   }
 
-  TestTerminator(ThreadsSource threadsSource, FrameDisposer frameDisposer, MainThreadIdentifier mainThreadIdentifier) {
+  TestTerminator(@Nonnull ThreadsSource threadsSource, @Nonnull FrameDisposer frameDisposer,
+      @Nonnull MainThreadIdentifier mainThreadIdentifier) {
     this.threadsSource = threadsSource;
     this.frameDisposer = frameDisposer;
     this.mainThreadIdentifier = mainThreadIdentifier;
@@ -56,7 +57,9 @@ class TestTerminator {
    */
   private void pokeMainThread() {
     Thread mainThread = mainThreadIdentifier.mainThreadIn(threadsSource.allThreads());
-    if (mainThread != null) mainThread.interrupt();
+    if (mainThread != null) {
+      mainThread.interrupt();
+    }
   }
 
   static {

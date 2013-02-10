@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2007-2010 the original author or authors.
+ * Copyright @2007-2013 the original author or authors.
  */
 package org.fest.swing.hierarchy;
 
@@ -21,13 +21,12 @@ import java.awt.Component;
 import java.util.Collection;
 
 /**
- * Understands a subclass of <code>{@link ChildrenFinder}</code> which methods have been overriden to be public,
+ * Understands a subclass of {@link ChildrenFinder} which methods have been overriden to be public,
  * allowing us to create mocks.
  *
  * @author Alex Ruiz
  */
 public class MockChildrenFinder extends ChildrenFinder {
-
   public static ChildrenFinder mock() {
     return createMock(MockChildrenFinder.class);
   }

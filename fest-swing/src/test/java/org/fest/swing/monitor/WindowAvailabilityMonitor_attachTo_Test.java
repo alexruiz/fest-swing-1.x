@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.monitor;
 
@@ -23,12 +23,11 @@ import org.fest.swing.listener.WeakEventListener;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link WindowAvailabilityMonitor#attachTo(java.awt.Toolkit)}</code>.
+ * Tests for {@link WindowAvailabilityMonitor#attachTo(java.awt.Toolkit)}.
  *
  * @author Alex Ruiz
  */
 public class WindowAvailabilityMonitor_attachTo_Test extends WindowAvailabilityMonitor_TestCase {
-
   @Test
   public void should_attach_itself_to_toolkit() {
     monitor.attachTo(toolkit);

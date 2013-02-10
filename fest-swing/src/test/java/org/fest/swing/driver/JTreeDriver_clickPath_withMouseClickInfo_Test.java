@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -26,12 +26,11 @@ import org.fest.swing.test.recorder.ClickRecorder;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JTreeDriver#clickPath(javax.swing.JTree, String, org.fest.swing.core.MouseClickInfo)}</code>.
+ * Tests for {@link JTreeDriver#clickPath(javax.swing.JTree, String, org.fest.swing.core.MouseClickInfo)}.
  *
  * @author Alex Ruiz
  */
 public class JTreeDriver_clickPath_withMouseClickInfo_Test extends JTreeDriver_clickCell_TestCase {
-
   private static MouseClickInfo mouseClickInfo = rightButton().times(2);
 
   @Test(expected = NullPointerException.class)
@@ -82,5 +81,4 @@ public class JTreeDriver_clickPath_withMouseClickInfo_Test extends JTreeDriver_c
       assertThatErrorCauseIsNotShowingComponent(e);
     }
   }
-
 }

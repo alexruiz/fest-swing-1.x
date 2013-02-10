@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.fixture;
 
@@ -25,14 +25,13 @@ import org.fest.swing.driver.DialogDriver;
 import org.junit.*;
 
 /**
- * Tests for methods in <code>{@link DialogFixture}</code> that are inherited from {@link JPopupMenuInvokerFixture}.
+ * Tests for methods in {@link DialogFixture} that are inherited from {@link JPopupMenuInvokerFixture}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 public class DialogFixture_JPopupMenuInvoker_Test extends
     JPopupMenuInvokerFixture_TestCase<Dialog> {
-
   private static Dialog target;
 
   private DialogDriver driver;

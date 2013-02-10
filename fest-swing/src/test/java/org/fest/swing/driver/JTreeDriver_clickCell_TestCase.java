@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -26,12 +26,11 @@ import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
 
 /**
- * Test case for <code>{@link JTreeDriver}</code> that involves clicking/double-clicking a cell.
+ * Test case for {@link JTreeDriver} that involves clicking/double-clicking a cell.
  *
  * @author Alex Ruiz
  */
 public abstract class JTreeDriver_clickCell_TestCase extends JTreeDriver_TestCase {
-
   @RunsInEDT
   final int rowAt(Point p) {
     return rowAtPoint(tree, p);

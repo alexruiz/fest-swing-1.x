@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -28,13 +28,12 @@ import org.fest.swing.exception.ActionFailedException;
 import org.fest.swing.test.core.RobotBasedTestCase;
 
 /**
- * Test case for implementations of <code>{@link JTableCellWriter}</code>.
+ * Test case for implementations of {@link JTableCellWriter}.
  *
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
 public abstract class JTableCellWriter_TestCase extends RobotBasedTestCase {
-
   TableDialogEditDemoWindow window;
   JTable table;
   JTableCellWriter writer;

@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.fixture;
 
@@ -21,13 +21,12 @@ import org.junit.*;
 import org.junit.rules.ExpectedException;
 
 /**
- * Tests for <code>{@link FontFixture#requireBold()}</code>.
+ * Tests for {@link FontFixture#requireBold()}.
  *
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
 public class FontFixture_requireBold_Test extends FontFixture_TestCase {
-
   @Rule
   public ExpectedException thrown = none();
 

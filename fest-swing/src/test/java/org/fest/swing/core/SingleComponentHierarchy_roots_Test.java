@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.core;
 
@@ -21,12 +21,11 @@ import org.fest.swing.hierarchy.SingleComponentHierarchy;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link SingleComponentHierarchy#roots()}</code>.
+ * Tests for {@link SingleComponentHierarchy#roots()}.
  *
  * @author Alex Ruiz
  */
 public class SingleComponentHierarchy_roots_Test extends SingleComponentHierarchy_TestCase {
-
   @Test
   public void should_return_collection_of_roots_that_contains_single_hierarchy_root() {
     assertThat(hierarchy.roots()).containsOnly(root);

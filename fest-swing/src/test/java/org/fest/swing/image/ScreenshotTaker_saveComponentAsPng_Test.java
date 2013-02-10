@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2007-2010 the original author or authors.
+ * Copyright @2007-2013 the original author or authors.
  */
 package org.fest.swing.image;
 
@@ -34,13 +34,12 @@ import org.fest.swing.test.swing.TestWindow;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link ScreenshotTaker#saveComponentAsPng(java.awt.Component, String)}</code>.
+ * Tests for {@link ScreenshotTaker#saveComponentAsPng(java.awt.Component, String)}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 public class ScreenshotTaker_saveComponentAsPng_Test extends SequentialEDTSafeTestCase {
-
   private String imagePath;
   private MyWindow window;
   private ScreenshotTaker taker;

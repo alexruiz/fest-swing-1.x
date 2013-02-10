@@ -10,7 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.input;
 
@@ -19,12 +19,11 @@ import static org.fest.assertions.Assertions.assertThat;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link DragAwareEventQueue#dispatchEvent(java.awt.AWTEvent)}</code>.
+ * Tests for {@link DragAwareEventQueue#dispatchEvent(java.awt.AWTEvent)}.
  *
  * @author Alex Ruiz
  */
 public class DragAwareEventQueue_dispatchEvent_Test extends DragAwareEventQueue_TestCase {
-
   @Test
   public void should_dispatch_event_if_event_is_not_native_drag_and_drop() {
     MyEvent event = new MyEvent();

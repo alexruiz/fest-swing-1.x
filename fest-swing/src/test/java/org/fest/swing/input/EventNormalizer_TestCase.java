@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.input;
 
@@ -25,12 +25,11 @@ import org.fest.swing.listener.WeakEventListener;
 import org.fest.swing.test.awt.ToolkitStub;
 
 /**
- * Test case for <code>{@link EventNormalizer}</code> and subclasses.
+ * Test case for {@link EventNormalizer} and subclasses.
  *
  * @author Alex Ruiz
  */
 public abstract class EventNormalizer_TestCase {
-
   final void assertEventNormalizerIsInToolkit(ToolkitStub toolkit, EventNormalizer eventNormalizer, int mask) {
     List<WeakEventListener> listeners = toolkit.eventListenersUnderEventMask(mask, WeakEventListener.class);
     assertThat(listeners).isNotNull().hasSize(1);

@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.core;
 
@@ -31,14 +31,13 @@ import org.junit.runners.Parameterized.Parameters;
 
 /**
  * Base test case for implementations of
- * <code>{@link InputEventGenerator#pressMouse(java.awt.Component, java.awt.Point, int)}</code>
- * and <code>{@link InputEventGenerator#releaseMouse(int)}</code>.
+ * {@link InputEventGenerator#pressMouse(java.awt.Component, java.awt.Point, int)}
+ * and {@link InputEventGenerator#releaseMouse(int)}.
  *
  * @author Alex Ruiz
  */
 @RunWith(Parameterized.class)
 public abstract class InputEventGenerator_pressMouseOnComponent_TestCase extends InputEventGenerator_TestCase {
-
   private final MouseButton button;
   private final int buttonMask;
 

@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2007-2010 the original author or authors.
+ * Copyright @2007-2013 the original author or authors.
  */
 package org.fest.swing.fixture;
 
@@ -24,7 +24,7 @@ import org.fest.swing.core.*;
 import org.fest.swing.exception.*;
 
 /**
- * Understands functional testing of single rows in <code>{@link JList}</code>s:
+ * Understands functional testing of single rows in {@code JList}s:
  * <ul>
  * <li>user input simulation</li>
  * <li>state verification</li>
@@ -35,15 +35,14 @@ import org.fest.swing.exception.*;
  * @author Alex Ruiz
  */
 public class JListItemFixture implements ItemFixture {
-
   final JListFixture list;
   final int index;
 
   /**
-   * Creates a new </code>{@link JListItemFixture}</code>.
-   * @param list manages the <code>JList</code> containing the list item to be managed by this fixture.
+   * Creates a new {@link JListItemFixture}.
+   * @param list manages the {@code JList} containing the list item to be managed by this fixture.
    * @param index index of the list item to be managed by this fixture.
-   * @throws NullPointerException if <code>list</code> is {@code null}.
+   * @throws NullPointerException if {@code list} is {@code null}.
    */
   public JListItemFixture(JListFixture list, int index) {
     if (list == null) throw new NullPointerException("The given JListFixture should not be null");
@@ -54,10 +53,10 @@ public class JListItemFixture implements ItemFixture {
   /**
    * Simulates a user selecting this fixture's list item.
    * @return this fixture.
-   * @throws IllegalStateException if this fixture's <code>JList</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JList</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JList} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JList} is not showing on the screen.
    * @throws IndexOutOfBoundsException if this item's index is negative or greater than the index of the last item in
-   * the <code>JList</code>.
+   * the {@code JList}.
    */
   public final JListItemFixture select() {
     list.selectItem(index);
@@ -67,10 +66,10 @@ public class JListItemFixture implements ItemFixture {
   /**
    * Simulates a user clicking this fixture's list item.
    * @return this fixture.
-   * @throws IllegalStateException if this fixture's <code>JList</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JList</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JList} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JList} is not showing on the screen.
    * @throws IndexOutOfBoundsException if this item's index is negative or greater than the index of the last item in
-   * the <code>JList</code>.
+   * the {@code JList}.
    */
   public final JListItemFixture click() {
     list.clickItem(index);
@@ -81,11 +80,11 @@ public class JListItemFixture implements ItemFixture {
    * Simulates a user clicking this fixture's list item.
    * @param button the button to click.
    * @return this fixture.
-   * @throws NullPointerException if the given <code>MouseButton</code> is {@code null}.
-   * @throws IllegalStateException if this fixture's <code>JList</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JList</code> is not showing on the screen.
+   * @throws NullPointerException if the given {@code MouseButton} is {@code null}.
+   * @throws IllegalStateException if this fixture's {@code JList} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JList} is not showing on the screen.
    * @throws IndexOutOfBoundsException if this item's index is negative or greater than the index of the last item in
-   * the <code>JList</code>.
+   * the {@code JList}.
    */
   public final JListItemFixture click(MouseButton button) {
     list.clickItem(index, button, 1);
@@ -96,11 +95,11 @@ public class JListItemFixture implements ItemFixture {
    * Simulates a user clicking this fixture's list item.
    * @param mouseClickInfo specifies the button to click and the times the button should be clicked.
    * @return this fixture.
-   * @throws NullPointerException if the given <code>MouseClickInfo</code> is {@code null}.
-   * @throws IllegalStateException if this fixture's <code>JList</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JList</code> is not showing on the screen.
+   * @throws NullPointerException if the given {@code MouseClickInfo} is {@code null}.
+   * @throws IllegalStateException if this fixture's {@code JList} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JList} is not showing on the screen.
    * @throws IndexOutOfBoundsException if this item's index is negative or greater than the index of the last item in
-   * the <code>JList</code>.
+   * the {@code JList}.
    */
   public final JListItemFixture click(MouseClickInfo mouseClickInfo) {
     list.clickItem(index, mouseClickInfo.button(), mouseClickInfo.times());
@@ -110,10 +109,10 @@ public class JListItemFixture implements ItemFixture {
   /**
    * Simulates a user double-clicking this fixture's list item.
    * @return this fixture.
-   * @throws IllegalStateException if this fixture's <code>JList</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JList</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JList} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JList} is not showing on the screen.
    * @throws IndexOutOfBoundsException if this item's index is negative or greater than the index of the last item in
-   * the <code>JList</code>.
+   * the {@code JList}.
    */
   public final JListItemFixture doubleClick() {
     list.clickItem(index, LEFT_BUTTON, 2);
@@ -123,10 +122,10 @@ public class JListItemFixture implements ItemFixture {
   /**
    * Simulates a user right-clicking this fixture's list item.
    * @return this fixture.
-   * @throws IllegalStateException if this fixture's <code>JList</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JList</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JList} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JList} is not showing on the screen.
    * @throws IndexOutOfBoundsException if this item's index is negative or greater than the index of the last item in
-   * the <code>JList</code>.
+   * the {@code JList}.
    */
   public final JListItemFixture rightClick() {
     list.clickItem(index, RIGHT_BUTTON, 1);
@@ -136,10 +135,10 @@ public class JListItemFixture implements ItemFixture {
   /**
    * Shows a pop-up menu using this fixture's list item as the invoker of the pop-up menu.
    * @return a fixture that manages the displayed pop-up menu.
-   * @throws IllegalStateException if this fixture's <code>JList</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JList</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JList} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JList} is not showing on the screen.
    * @throws IndexOutOfBoundsException if this item's index is negative or greater than the index of the last item in
-   * the <code>JList</code>.
+   * the {@code JList}.
    * @throws ComponentLookupException if a pop-up menu cannot be found.
    */
   public final JPopupMenuFixture showPopupMenu() {
@@ -148,11 +147,11 @@ public class JListItemFixture implements ItemFixture {
 
   /**
    * Returns the {@code String} representation of the value of this fixture's list item, using the
-   * <code>{@link JListCellReader}</code> from the <code>{@link JListFixture}</code> that created this
-   * <code>{@link JListItemFixture}</code>.
+   * {@link JListCellReader} from the {@link JListFixture} that created this
+   * {@link JListItemFixture}.
    * @return the {@code String} representation of the value of this fixture's list item.
    * @throws IndexOutOfBoundsException if this item's index is negative or greater than the index of the last item in
-   * the <code>JList</code>.
+   * the {@code JList}.
    * @see JListFixture#cellReader(JListCellReader)
    */
   public final String value() {
@@ -162,10 +161,10 @@ public class JListItemFixture implements ItemFixture {
   /**
    * Simulates a user dragging this fixture's list item.
    * @return this fixture.
-   * @throws IllegalStateException if this fixture's <code>JList</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JList</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JList} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JList} is not showing on the screen.
    * @throws IndexOutOfBoundsException if this item's index is negative or greater than the index of the last item in
-   * the <code>JList</code>.
+   * the {@code JList}.
    */
   public final JListItemFixture drag() {
     list.drag(index);
@@ -175,10 +174,10 @@ public class JListItemFixture implements ItemFixture {
   /**
    * Simulates a user dropping into this fixture's list item.
    * @return this fixture.
-   * @throws IllegalStateException if this fixture's <code>JList</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JList</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JList} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JList} is not showing on the screen.
    * @throws IndexOutOfBoundsException if this item's index is negative or greater than the index of the last item in
-   * the <code>JList</code>.
+   * the {@code JList}.
    * @throws ActionFailedException if there is no drag action in effect.
    */
   public final JListItemFixture drop() {

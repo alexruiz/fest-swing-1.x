@@ -10,7 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  *
- * Copyright @2010 the original author or authors.
+ * Copyright @2010-2013 the original author or authors.
  */
 package org.fest.swing.lock;
 
@@ -18,12 +18,11 @@ import org.fest.swing.exception.ScreenLockException;
 import org.junit.*;
 
 /**
- * Tests for <code>{@link ScreenLock#release(Object)}</code>.
+ * Tests for {@link ScreenLock#release(Object)}.
  *
  * @author Alex Ruiz
  */
 public class ScreenLock_release_Test {
-
   private ScreenLock lock;
   private Object owner;
 
@@ -48,5 +47,4 @@ public class ScreenLock_release_Test {
   public void should_throw_error_if_trying_to_release_without_being_locked() {
     lock.release(owner);
   }
-
 }

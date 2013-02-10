@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -21,19 +21,18 @@ import org.fest.swing.exception.LocationUnavailableException;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JTreeDriver#validatePath(JTree, String)}</code>.
+ * Tests for {@link JTreeDriver#checkPathExists(JTree, String)}.
  *
  * @author Alex Ruiz
  */
 public class JTreeDriver_validatePath_Test extends JTreeDriver_TestCase {
-
   @Test
   public void should_return_node_by_path() {
-    driver.validatePath(tree, "root/branch1/branch1.1");
+    driver.checkPathExists(tree, "root/branch1/branch1.1");
   }
 
   @Test(expected = LocationUnavailableException.class)
   public void should_throw_error_if_path_does_not_exist() {
-    driver.validatePath(tree, "hello!");
+    driver.checkPathExists(tree, "hello!");
   }
 }

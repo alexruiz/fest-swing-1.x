@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2007-2010 the original author or authors.
+ * Copyright @2007-2013 the original author or authors.
  */
 package org.fest.swing.monitor;
 
@@ -29,12 +29,11 @@ import org.fest.swing.util.RobotFactory;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link WindowStatus#checkIfReady(Window)}</code>.
+ * Tests for {@link WindowStatus#checkIfReady(Window)}.
  *
  * @author Alex Ruiz
  */
 public class WindowStatus_checkIfReady_withNullRobot_Test extends SequentialEDTSafeTestCase {
-
   private TestWindow window;
   private Windows windows;
   private RobotFactory factory;

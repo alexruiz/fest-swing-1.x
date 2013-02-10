@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -28,14 +28,13 @@ import org.junit.runners.*;
 import org.junit.runners.Parameterized.Parameters;
 
 /**
- * Tests for <code>{@link JToolBarDriver#unfloat(javax.swing.JToolBar, String)}</code>.
+ * Tests for {@link JToolBarDriver#unfloat(javax.swing.JToolBar, String)}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 @RunWith(Parameterized.class)
 public class JToolBarDriver_unfloatWithConstraint_Test extends JToolBarDriver_TestCase {
-
   private final String constraint;
 
   @Parameters

@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2007-2010 the original author or authors.
+ * Copyright @2007-2013 the original author or authors.
  */
 package org.fest.swing.hierarchy;
 
@@ -30,13 +30,12 @@ import org.fest.swing.test.swing.*;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link ParentFinder#parentOf(Component)}</code>.
+ * Tests for {@link ParentFinder#parentOf(Component)}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 public class ParentFinder_parentOf_Test extends SequentialEDTSafeTestCase {
-
   private ParentFinder finder;
 
   @Override protected final void onSetUp() {

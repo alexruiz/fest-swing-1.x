@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -24,13 +24,12 @@ import org.fest.swing.test.util.StopWatch;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link ComponentDriver#focusAndWaitForFocusGain(java.awt.Component)}</code>.
+ * Tests for {@link ComponentDriver#focusAndWaitForFocusGain(java.awt.Component)}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 public class ComponentDriver_focusAndWaitForFocusGain_Test extends ComponentDriver_TestCase {
-
   @Test
   public void should_give_focus_to_Component_and_wait_till_it_is_focused() {
     showWindow();

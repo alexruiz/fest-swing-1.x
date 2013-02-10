@@ -10,7 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -24,12 +24,11 @@ import javax.swing.JOptionPane;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JOptionPaneDriver#requireTitle(JOptionPane, String)}</code>.
+ * Tests for {@link JOptionPaneDriver#requireTitle(JOptionPane, String)}.
  *
  * @author Alex Ruiz
  */
 public class JOptionPaneDriver_requireTitleAsText_Test extends JOptionPaneDriver_TestCase {
-
   @Test
   public void should_pass_is_title_is_equal_to_expected() {
     JOptionPane optionPane = informationMessage();

@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -25,13 +25,12 @@ import org.fest.swing.edt.GuiQuery;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JComboBoxDriver#showDropDownList(javax.swing.JComboBox)}</code>.
+ * Tests for {@link JComboBoxDriver#showDropDownList(javax.swing.JComboBox)}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 public class JComboBoxDriver_showDropDownList_Test extends JComboBoxDriver_TestCase {
-
   @Test
   public void should_show_drop_down_list_in_not_editable_JComboBox() {
     showWindow();

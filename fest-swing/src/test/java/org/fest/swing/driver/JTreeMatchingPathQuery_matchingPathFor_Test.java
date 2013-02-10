@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -34,12 +34,11 @@ import org.fest.swing.test.swing.*;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JTreeMatchingPathQuery#matchingPathFor(javax.swing.JTree, String, JTreePathFinder)}</code>.
+ * Tests for {@link JTreeMatchingPathQuery#matchingPathFor(javax.swing.JTree, String, JTreePathFinder)}.
  *
  * @author Alex Ruiz
  */
 public class JTreeMatchingPathQuery_matchingPathFor_Test extends RobotBasedTestCase {
-
   private MyWindow window;
   private JTreePathFinder pathFinder;
 

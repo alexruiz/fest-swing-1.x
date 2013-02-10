@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2007-2010 the original author or authors.
+ * Copyright @2007-2013 the original author or authors.
  */
 package org.fest.swing.finder;
 
@@ -20,13 +20,12 @@ import org.fest.swing.test.core.RobotBasedTestCase;
 import org.fest.swing.test.swing.WindowLauncher;
 
 /**
- * Base test case for <code>{@link WindowFinder}</code>.
+ * Base test case for {@link WindowFinder}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 public abstract class WindowFinder_TestCase extends RobotBasedTestCase {
-
   private FrameFixture launcher;
 
   WindowLauncher window;

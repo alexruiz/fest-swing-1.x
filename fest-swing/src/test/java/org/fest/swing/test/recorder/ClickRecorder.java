@@ -11,16 +11,22 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2007-2010 the original author or authors.
+ * Copyright @2007-2013 the original author or authors.
  */
 package org.fest.swing.test.recorder;
 
 import static org.fest.assertions.Assertions.assertThat;
-import static org.fest.swing.core.MouseButton.*;
+import static org.fest.swing.core.MouseButton.LEFT_BUTTON;
+import static org.fest.swing.core.MouseButton.MIDDLE_BUTTON;
+import static org.fest.swing.core.MouseButton.RIGHT_BUTTON;
+import static org.fest.util.Maps.newHashMap;
 
-import java.awt.*;
-import java.awt.event.*;
-import java.util.*;
+import java.awt.Component;
+import java.awt.Container;
+import java.awt.Point;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.Map;
 
 import org.fest.assertions.AssertExtension;
 import org.fest.swing.core.MouseButton;
@@ -32,7 +38,6 @@ import org.fest.swing.core.MouseButton;
  * @author Yvonne Wang
  */
 public class ClickRecorder implements AssertExtension {
-
   public static ClickRecorder attachTo(Component target) {
     ClickRecorder recorder = new ClickRecorder();
     attach(new ClickListener(recorder), target);
@@ -41,16 +46,20 @@ public class ClickRecorder implements AssertExtension {
 
   private static void attach(ClickListener listener, Component target) {
     target.addMouseListener(listener);
-    if (!(target instanceof Container)) return;
-    for (Component c : ((Container)target).getComponents()) attach(listener, c);
+    if (!(target instanceof Container)) {
+      return;
+    }
+    for (Component c : ((Container)target).getComponents()) {
+      attach(listener, c);
+    }
   }
 
-  private static final Map<Integer, MouseButton> MOUSE_BUTTON_MAP = new HashMap<Integer, MouseButton>();
+  private static final Map<Integer, MouseButton> MOUSE_BUTTON_MAP = newHashMap();
 
   static {
-      MOUSE_BUTTON_MAP.put(MouseEvent.BUTTON1, LEFT_BUTTON);
-      MOUSE_BUTTON_MAP.put(MouseEvent.BUTTON2, MIDDLE_BUTTON);
-      MOUSE_BUTTON_MAP.put(MouseEvent.BUTTON3, RIGHT_BUTTON);
+    MOUSE_BUTTON_MAP.put(MouseEvent.BUTTON1, LEFT_BUTTON);
+    MOUSE_BUTTON_MAP.put(MouseEvent.BUTTON2, MIDDLE_BUTTON);
+    MOUSE_BUTTON_MAP.put(MouseEvent.BUTTON3, RIGHT_BUTTON);
   }
 
   private MouseButton clickedButton;
@@ -58,7 +67,6 @@ public class ClickRecorder implements AssertExtension {
   private Point pointClicked;
 
   private static class ClickListener extends MouseAdapter {
-
     private final ClickRecorder owner;
 
     ClickListener(ClickRecorder owner) {

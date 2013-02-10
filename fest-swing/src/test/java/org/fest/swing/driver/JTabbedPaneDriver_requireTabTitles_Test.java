@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -22,12 +22,11 @@ import static org.fest.util.Arrays.array;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JTabbedPaneDriver#requireTabTitles(javax.swing.JTabbedPane, String[])}</code>.
+ * Tests for {@link JTabbedPaneDriver#requireTabTitles(javax.swing.JTabbedPane, String[])}.
  *
  * @author Alex Ruiz
  */
 public class JTabbedPaneDriver_requireTabTitles_Test extends JTabbedPaneDriver_TestCase {
-
   @Test
   public void should_fail_if_titles_are_not_equal_to_expected() {
     try {

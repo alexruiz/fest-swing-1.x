@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.format;
 
@@ -25,13 +25,12 @@ import org.fest.swing.test.core.EDTSafeTestCase;
 import org.junit.*;
 
 /**
- * Tests for <code>{@link JTableFormatter#format(java.awt.Component)}</code>.
+ * Tests for {@link JTableFormatter#format(java.awt.Component)}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 public class JTableFormatter_format_Test extends EDTSafeTestCase {
-
   private JTable table;
   private JTableFormatter formatter;
 

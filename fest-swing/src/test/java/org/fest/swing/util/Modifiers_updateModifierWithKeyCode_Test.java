@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.util;
 
@@ -22,12 +22,11 @@ import static org.fest.assertions.Assertions.assertThat;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link Modifiers#updateModifierWithKeyCode(int, int)}</code>.
+ * Tests for {@link Modifiers#updateModifierWithKeyCode(int, int)}.
  *
  * @author Alex Ruiz
  */
 public class Modifiers_updateModifierWithKeyCode_Test {
-
   @Test
   public void should_update_modifier_if_keyCode_is_Alt() {
     int modifierMask = 0;
@@ -79,5 +78,4 @@ public class Modifiers_updateModifierWithKeyCode_Test {
     assertThat(updatedModifierMask & META_MASK).isEqualTo(0);
     assertThat(updatedModifierMask & SHIFT_MASK).isEqualTo(0);
   }
-
 }

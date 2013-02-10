@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.util;
 
@@ -20,13 +20,12 @@ import static org.fest.assertions.Assertions.assertThat;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link Strings#areEqualOrMatch(String, String)}</code>.
+ * Tests for {@link Strings#areEqualOrMatch(String, String)}.
  *
  * @author Alex Ruiz
  * @author Uli Schrempp
  */
 public class Strings_areEqualOrMatch_Test {
-
   @Test
   public void should_return_true_if_String_and_pattern_are_equal() {
     assertThat(Strings.areEqualOrMatch("hello", "hello")).isTrue();

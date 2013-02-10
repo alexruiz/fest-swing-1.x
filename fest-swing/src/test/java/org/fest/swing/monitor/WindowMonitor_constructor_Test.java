@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2007-2010 the original author or authors.
+ * Copyright @2007-2013 the original author or authors.
  */
 package org.fest.swing.monitor;
 
@@ -25,12 +25,11 @@ import org.fest.swing.listener.WeakEventListener;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link WindowMonitor#WindowMonitor(java.awt.Toolkit, Context, WindowStatus)}</code>.
+ * Tests for {@link WindowMonitor#WindowMonitor(java.awt.Toolkit, Context, WindowStatus)}.
  *
  * @author Alex Ruiz
  */
 public class WindowMonitor_constructor_Test extends WindowMonitor_TestCase {
-
   private static final long WINDOWS_AVAILABILITY_MONITOR_EVENT_MASK = MOUSE_MOTION_EVENT_MASK | MOUSE_EVENT_MASK | PAINT_EVENT_MASK;
 
   private static final long CONTEXT_MONITOR_EVENT_MASK = WINDOW_EVENT_MASK | COMPONENT_EVENT_MASK;
@@ -52,5 +51,4 @@ public class WindowMonitor_constructor_Test extends WindowMonitor_TestCase {
     assertThat(contextMonitorWrappers).hasSize(1);
     return contextMonitorWrappers.get(0).underlyingListener();
   }
-
 }

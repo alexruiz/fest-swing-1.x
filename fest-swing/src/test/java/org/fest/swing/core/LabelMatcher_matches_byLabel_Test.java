@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.core;
 
@@ -20,15 +20,14 @@ import static org.fest.assertions.Assertions.assertThat;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link LabelMatcher#matches(java.awt.Component)}</code>.
+ * Tests for {@link LabelMatcher#matches(java.awt.Component)}.
  * <p>
- * The <code>{@link LabelMatcher}</code> is created through <code>{@link LabelMatcher#LabelMatcher(String)}</code>.
+ * The {@link LabelMatcher} is created through {@link LabelMatcher#LabelMatcher(String)}.
  * </p>
  *
  * @author Alex Ruiz
  */
 public class LabelMatcher_matches_byLabel_Test extends LabelMatcher_TestCase {
-
   @Test
   public void should_return_true_if_label_matches_and_Component_is_showing() {
     window.display();

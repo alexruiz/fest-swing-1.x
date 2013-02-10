@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2007-2010 the original author or authors.
+ * Copyright @2007-2013 the original author or authors.
  */
 package org.fest.swing.hierarchy;
 
@@ -24,12 +24,11 @@ import org.fest.swing.test.core.EDTSafeTestCase;
 import org.junit.Before;
 
 /**
- * Base test case for <code>{@link WindowFilter}</code>.
+ * Base test case for {@link WindowFilter}.
  *
  * @author Alex Ruiz
  */
 public abstract class WindowFilter_TestCase extends EDTSafeTestCase {
-
   WindowFilter filter;
 
   @Before public final void setUp() {

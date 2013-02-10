@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2010 the original author or authors.
+ * Copyright @2010-2013 the original author or authors.
  */
 package org.fest.swing.core;
 
@@ -29,13 +29,12 @@ import org.fest.swing.test.core.EDTSafeTestCase;
 import org.junit.*;
 
 /**
- * Tests for <code>{@link ComponentFoundCondition#test()}</code>.
+ * Tests for {@link ComponentFoundCondition#test()}.
  *
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
 public class ComponentFoundCondition_test_withResettableComponentMatcher_Test extends EDTSafeTestCase {
-
   private ComponentFinder finder;
   private ResettableComponentMatcher matcher;
   private static Container root;

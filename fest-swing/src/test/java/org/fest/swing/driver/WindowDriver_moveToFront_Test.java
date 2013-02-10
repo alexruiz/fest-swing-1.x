@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -21,12 +21,11 @@ import org.fest.swing.test.swing.TestWindow;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link WindowDriver#moveToFront(java.awt.Window)}</code>.
+ * Tests for {@link WindowDriver#moveToFront(java.awt.Window)}.
  *
  * @author Alex Ruiz
  */
 public class WindowDriver_moveToFront_Test extends WindowDriver_TestCase {
-
   @Test
   public void should_move_Window_to_front() {
     showWindow();

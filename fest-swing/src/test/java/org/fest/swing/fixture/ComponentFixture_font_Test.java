@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2010 the original author or authors.
+ * Copyright @2010-2013 the original author or authors.
  */
 package org.fest.swing.fixture;
 
@@ -25,12 +25,11 @@ import org.fest.swing.edt.GuiQuery;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link ComponentFixture#font()}</code>.
+ * Tests for {@link ComponentFixture#font()}.
  *
  * @author Alex Ruiz
  */
 public class ComponentFixture_font_Test extends ComponentFixture_TestCase {
-
   @Test
   public void should_return_FontFixture_with_font_from_target_Component() {
     FontFixture fontFixture = fixture.font();

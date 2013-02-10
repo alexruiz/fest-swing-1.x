@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -26,14 +26,13 @@ import org.junit.runners.*;
 import org.junit.runners.Parameterized.Parameters;
 
 /**
- * Tests for <code>{@link JTableDriver#columnIndex(javax.swing.JTable, Object)}</code>.
+ * Tests for {@link JTableDriver#columnIndex(javax.swing.JTable, Object)}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 @RunWith(Parameterized.class)
 public class JTableDriver_columnIndex_Test extends JTableDriver_TestCase {
-
   private final String columnId;
 
   @Parameters
@@ -49,5 +48,4 @@ public class JTableDriver_columnIndex_Test extends JTableDriver_TestCase {
   public void should_return_column_index() {
     assertThat(driver.columnIndex(table, columnId)).isEqualTo(columnIndexFrom(columnId));
   }
-
 }

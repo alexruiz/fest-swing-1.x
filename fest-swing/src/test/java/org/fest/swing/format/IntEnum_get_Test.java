@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.format;
 
@@ -20,12 +20,11 @@ import static org.fest.assertions.Assertions.assertThat;
 import org.junit.*;
 
 /**
- * Tests for <code>{@link IntEnum#get(int)}</code>.
+ * Tests for {@link IntEnum#get(int)}.
  *
  * @author Alex Ruiz
  */
 public class IntEnum_get_Test {
-
   private IntEnum intEnum;
 
   @Before

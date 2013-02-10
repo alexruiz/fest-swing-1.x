@@ -11,20 +11,19 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2007-2010 the original author or authors.
+ * Copyright @2007-2013 the original author or authors.
  */
 package org.fest.swing.hierarchy;
 
 import java.awt.Component;
 
 /**
- * Understands a subclass of <code>{@link WindowFilter}</code> which methods have been overriden to be public,
+ * Understands a subclass of {@link WindowFilter} which methods have been overriden to be public,
  * allowing us to create mocks.
  *
  * @author Alex Ruiz
  */
 public class MockWindowFilter extends WindowFilter {
-
   @Override public boolean isImplicitlyIgnored(Component c) {
     return false;
   }

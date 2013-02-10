@@ -10,7 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  *
- * Copyright @2007-2010 the original author or authors.
+ * Copyright @2007-2013 the original author or authors.
  */
 package org.fest.swing.util;
 
@@ -19,20 +19,23 @@ import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.util.Modifiers.keysFor;
 import static org.fest.util.Strings.concat;
 
-import java.awt.*;
+import java.awt.Event;
+import java.awt.HeadlessException;
+import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
+
+import javax.annotation.Nonnull;
 
 import org.fest.util.VisibleForTesting;
 
 /**
- * Understands platform-specific functionality.
+ * Platform-specific functionality.
  *
  * @author Alex Ruiz
  */
 public final class Platform {
-
   private static OSIdentifier osIdentifier;
-  private static ToolkitProvider toolkitProvider;
+  private static Toolkit toolkit;
 
   static {
     reload();
@@ -40,21 +43,21 @@ public final class Platform {
 
   @VisibleForTesting
   static void reload() {
-    initialize(new OSIdentifier(), new ToolkitProvider());
+    initialize(new OSIdentifier(), ToolkitProvider.instance().defaultToolkit());
   }
 
   @VisibleForTesting
-  static void initialize(OSIdentifier newOSIdentifier, ToolkitProvider newToolkitProvider) {
-    osIdentifier = newOSIdentifier;
-    toolkitProvider = newToolkitProvider;
+  static void initialize(@Nonnull OSIdentifier osIdentifier, @Nonnull Toolkit toolkit) {
+    Platform.osIdentifier = osIdentifier;
+    Platform.toolkit = toolkit;
   }
 
   /**
    * Return the modifier key for the appropriate accelerator key for menu shortcuts:
-   * <code>{@link KeyEvent#VK_CONTROL}</code> (default) or <code>{@link KeyEvent#VK_META}</code> (MacOS.)
+   * {@link KeyEvent#VK_CONTROL} (default) or {@link KeyEvent#VK_META} (MacOS.)
    * @return the modifier key for the appropriate accelerator key for menu shortcuts.
    * @throws AssertionError if unable to find the appropriate key.
-   * @throws HeadlessException if <code>GraphicsEnvironment.isHeadless()</code>.
+   * @throws HeadlessException if {@code GraphicsEnvironment.isHeadless()}.
    */
   public static int controlOrCommandKey() {
     int menuShortcutKeyMask = controlOrCommandMask();
@@ -65,30 +68,30 @@ public final class Platform {
 
   /**
    * Return the modifier mask for the appropriate accelerator key for menu shortcuts:
-   * <code>{@link Event#CTRL_MASK}</code> (default) or <code>{@link Event#META_MASK}</code> (MacOS.)
+   * {@link Event#CTRL_MASK} (default) or {@link Event#META_MASK} (MacOS.)
    * @return the modifier mask for the appropriate accelerator key for menu shortcuts.
-   * @throws HeadlessException if <code>GraphicsEnvironment.isHeadless()</code>.
+   * @throws HeadlessException if {@code GraphicsEnvironment.isHeadless()}.
    */
   public static int controlOrCommandMask() {
-    return toolkitProvider.toolkit().getMenuShortcutKeyMask();
+    return toolkit.getMenuShortcutKeyMask();
   }
 
   /**
-   * Indicates whether it is possible to resize windows that are not an instance of <code>{@link java.awt.Frame}</code>
-   * or <code>{@link java.awt.Dialog}</code>. Most X11 window managers will allow this, but stock Macintosh and Windows
+   * Indicates whether it is possible to resize windows that are not an instance of {@link java.awt.Frame}
+   * or {@link java.awt.Dialog}. Most X11 window managers will allow this, but stock Macintosh and Windows
    * do not.
-   * @return {@code true} if it is possible to resize windows other than <code>Frame</code>s or
-   * <code>Dialog</code>s, {@code false} otherwise.
+   * @return {@code true} if it is possible to resize windows other than {@code Frame}s or
+   * {@code Dialog}s, {@code false} otherwise.
    */
   public static boolean canResizeWindows() {
     return !isWindows() && !isMacintosh();
   }
 
   /**
-   * Indicates whether it is possible to move windows that are not an instance of <code>{@link java.awt.Frame}</code> or
-   * <code>{@link java.awt.Dialog}</code>. Most X11 window managers will allow this, but stock Macintosh and Windows do
+   * Indicates whether it is possible to move windows that are not an instance of {@link java.awt.Frame} or
+   * {@link java.awt.Dialog}. Most X11 window managers will allow this, but stock Macintosh and Windows do
    * not.
-   * @return {@code true} if it is possible to move windows other than <code>Frame</code>s or <code>Dialog</code>s,
+   * @return {@code true} if it is possible to move windows other than {@code Frame}s or {@code Dialog}s,
    * {@code false} otherwise.
    */
   public static boolean canMoveWindows() {
@@ -168,11 +171,10 @@ public final class Platform {
   }
 
   /**
-   * Returns the current operating system family.
    * @return the current operating system family.
    * @since 1.2
    */
-  public static OSFamily osFamily() {
+  public static @Nonnull OSFamily osFamily() {
     return osIdentifier.osFamily();
   }
 

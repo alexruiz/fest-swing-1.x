@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.fixture;
 
@@ -27,12 +27,11 @@ import org.fest.swing.edt.GuiQuery;
 import org.junit.*;
 
 /**
- * Tests for <code>{@link Containers}</code>.
+ * Tests for {@link Containers}.
  *
  * @author Alex Ruiz
  */
 public class ContainersTest {
-
   private MyPanel panel;
 
   @Before public void setUp() {

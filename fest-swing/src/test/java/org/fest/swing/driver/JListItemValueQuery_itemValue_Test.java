@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -36,13 +36,12 @@ import org.junit.runners.*;
 import org.junit.runners.Parameterized.Parameters;
 
 /**
- * Tests for <code>{@link JListItemValueQuery#itemValue(JList, int, JListCellReader)}</code>.
+ * Tests for {@link JListItemValueQuery#itemValue(JList, int, JListCellReader)}.
  *
  * @author Alex Ruiz
  */
 @RunWith(Parameterized.class)
 public class JListItemValueQuery_itemValue_Test extends RobotBasedTestCase {
-
   private JList list;
   private JListCellReader cellReader;
 

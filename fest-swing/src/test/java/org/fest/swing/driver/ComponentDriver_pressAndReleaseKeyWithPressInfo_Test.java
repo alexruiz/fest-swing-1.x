@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -23,13 +23,12 @@ import static org.fest.swing.test.core.CommonAssertions.*;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link ComponentDriver#pressAndReleaseKey(java.awt.Component, org.fest.swing.core.KeyPressInfo)}</code>.
+ * Tests for {@link ComponentDriver#pressAndReleaseKey(java.awt.Component, org.fest.swing.core.KeyPressInfo)}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 public class ComponentDriver_pressAndReleaseKeyWithPressInfo_Test extends ComponentDriver_TestCase {
-
   @Test(expected = NullPointerException.class)
   public void should_throw_error_if_KeyPressInfo_is_null() {
     driver.pressAndReleaseKey(window.button, null);

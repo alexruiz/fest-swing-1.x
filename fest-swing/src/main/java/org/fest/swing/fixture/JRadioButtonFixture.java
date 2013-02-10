@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2007-2010 the original author or authors.
+ * Copyright @2007-2013 the original author or authors.
  */
 package org.fest.swing.fixture;
 
@@ -26,7 +26,7 @@ import org.fest.swing.exception.ComponentLookupException;
 import org.fest.swing.timing.Timeout;
 
 /**
- * Understands functional testing of <code>{@link JRadioButton}</code>s:
+ * Understands functional testing of {@link JRadioButton}s:
  * <ul>
  * <li>user input simulation</li>
  * <li>state verification</li>
@@ -38,15 +38,14 @@ import org.fest.swing.timing.Timeout;
  */
 public class JRadioButtonFixture extends ComponentFixture<JRadioButton> implements CommonComponentFixture,
     JComponentFixture, JPopupMenuInvokerFixture, TextDisplayFixture, TwoStateButtonFixture {
-
   private AbstractButtonDriver driver;
 
   /**
-   * Creates a new <code>{@link JRadioButtonFixture}</code>.
-   * @param robot performs simulation of user events on the given <code>JRadioButton</code>.
-   * @param target the <code>JRadioButton</code> to be managed by this fixture.
-   * @throws NullPointerException if <code>robot</code> is {@code null}.
-   * @throws NullPointerException if <code>target</code> is {@code null}.
+   * Creates a new {@link JRadioButtonFixture}.
+   * @param robot performs simulation of user events on the given {@code JRadioButton}.
+   * @param target the {@code JRadioButton} to be managed by this fixture.
+   * @throws NullPointerException if {@code robot} is {@code null}.
+   * @throws NullPointerException if {@code target} is {@code null}.
    */
   public JRadioButtonFixture(Robot robot, JRadioButton target) {
     super(robot, target);
@@ -54,12 +53,12 @@ public class JRadioButtonFixture extends ComponentFixture<JRadioButton> implemen
   }
 
   /**
-   * Creates a new <code>{@link JRadioButtonFixture}</code>.
-   * @param robot performs simulation of user events on a <code>JRadioButton</code>.
-   * @param buttonName the name of the <code>JRadioButton</code> to find using the given <code>Robot</code>.
-   * @throws NullPointerException if <code>robot</code> is {@code null}.
-   * @throws ComponentLookupException if a matching <code>JRadioButton</code> could not be found.
-   * @throws ComponentLookupException if more than one matching <code>JRadioButton</code> is found.
+   * Creates a new {@link JRadioButtonFixture}.
+   * @param robot performs simulation of user events on a {@code JRadioButton}.
+   * @param buttonName the name of the {@code JRadioButton} to find using the given {@code Robot}.
+   * @throws NullPointerException if {@code robot} is {@code null}.
+   * @throws ComponentLookupException if a matching {@code JRadioButton} could not be found.
+   * @throws ComponentLookupException if more than one matching {@code JRadioButton} is found.
    */
   public JRadioButtonFixture(Robot robot, String buttonName) {
     super(robot, buttonName, JRadioButton.class);
@@ -71,8 +70,8 @@ public class JRadioButtonFixture extends ComponentFixture<JRadioButton> implemen
   }
 
   /**
-   * Sets the <code>{@link AbstractButtonDriver}</code> to be used by this fixture.
-   * @param newDriver the new <code>AbstractButtonDriver</code>.
+   * Sets the {@link AbstractButtonDriver} to be used by this fixture.
+   * @param newDriver the new {@code AbstractButtonDriver}.
    * @throws NullPointerException if the given driver is {@code null}.
    */
   protected final void driver(AbstractButtonDriver newDriver) {
@@ -81,18 +80,18 @@ public class JRadioButtonFixture extends ComponentFixture<JRadioButton> implemen
   }
 
   /**
-   * Returns the text of this fixture's <code>{@link JRadioButton}</code>.
-   * @return the text of this fixture's <code>JRadioButton</code>.
+   * Returns the text of this fixture's {@link JRadioButton}.
+   * @return the text of this fixture's {@code JRadioButton}.
    */
   public String text() {
     return driver.textOf(target);
   }
 
   /**
-   * Checks (or selects) this fixture's <code>{@link JRadioButton}</code> only it is not already checked.
+   * Checks (or selects) this fixture's {@link JRadioButton} only it is not already checked.
    * @return this fixture.
-   * @throws IllegalStateException if this fixture's <code>JRadioButton</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JRadioButton</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JRadioButton} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JRadioButton} is not showing on the screen.
    */
   public JRadioButtonFixture check() {
     driver.select(target);
@@ -100,10 +99,10 @@ public class JRadioButtonFixture extends ComponentFixture<JRadioButton> implemen
   }
 
   /**
-   * Unchecks this fixture's <code>{@link JRadioButton}</code> only if it is checked.
+   * Unchecks this fixture's {@link JRadioButton} only if it is checked.
    * @return this fixture.
-   * @throws IllegalStateException if this fixture's <code>JRadioButton</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JRadioButton</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JRadioButton} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JRadioButton} is not showing on the screen.
    */
   public JRadioButtonFixture uncheck() {
     driver.unselect(target);
@@ -111,10 +110,10 @@ public class JRadioButtonFixture extends ComponentFixture<JRadioButton> implemen
   }
 
   /**
-   * Simulates a user clicking this fixture's <code>{@link JRadioButton}</code>.
+   * Simulates a user clicking this fixture's {@link JRadioButton}.
    * @return this fixture.
-   * @throws IllegalStateException if this fixture's <code>JRadioButton</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JRadioButton</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JRadioButton} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JRadioButton} is not showing on the screen.
    */
   public JRadioButtonFixture click() {
     driver.click(target);
@@ -122,12 +121,12 @@ public class JRadioButtonFixture extends ComponentFixture<JRadioButton> implemen
   }
 
   /**
-   * Simulates a user clicking this fixture's <code>{@link JRadioButton}</code>.
+   * Simulates a user clicking this fixture's {@link JRadioButton}.
    * @param button the button to click.
    * @return this fixture.
-   * @throws NullPointerException if the given <code>MouseButton</code> is {@code null}.
-   * @throws IllegalStateException if this fixture's <code>JRadioButton</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JRadioButton</code> is not showing on the screen.
+   * @throws NullPointerException if the given {@code MouseButton} is {@code null}.
+   * @throws IllegalStateException if this fixture's {@code JRadioButton} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JRadioButton} is not showing on the screen.
    */
   public JRadioButtonFixture click(MouseButton button) {
     driver.click(target, button);
@@ -135,12 +134,12 @@ public class JRadioButtonFixture extends ComponentFixture<JRadioButton> implemen
   }
 
   /**
-   * Simulates a user clicking this fixture's <code>{@link JRadioButton}</code>.
+   * Simulates a user clicking this fixture's {@link JRadioButton}.
    * @param mouseClickInfo specifies the button to click and the times the button should be clicked.
    * @return this fixture.
-   * @throws NullPointerException if the given <code>MouseClickInfo</code> is {@code null}.
-   * @throws IllegalStateException if this fixture's <code>JRadioButton</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JRadioButton</code> is not showing on the screen.
+   * @throws NullPointerException if the given {@code MouseClickInfo} is {@code null}.
+   * @throws IllegalStateException if this fixture's {@code JRadioButton} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JRadioButton} is not showing on the screen.
    */
   public JRadioButtonFixture click(MouseClickInfo mouseClickInfo) {
     driver.click(target, mouseClickInfo);
@@ -148,10 +147,10 @@ public class JRadioButtonFixture extends ComponentFixture<JRadioButton> implemen
   }
 
   /**
-   * Simulates a user double-clicking this fixture's <code>{@link JRadioButton}</code>.
+   * Simulates a user double-clicking this fixture's {@link JRadioButton}.
    * @return this fixture.
-   * @throws IllegalStateException if this fixture's <code>JRadioButton</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JRadioButton</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JRadioButton} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JRadioButton} is not showing on the screen.
    */
   public JRadioButtonFixture doubleClick() {
     driver.doubleClick(target);
@@ -159,10 +158,10 @@ public class JRadioButtonFixture extends ComponentFixture<JRadioButton> implemen
   }
 
   /**
-   * Simulates a user right-clicking this fixture's <code>{@link JRadioButton}</code>.
+   * Simulates a user right-clicking this fixture's {@link JRadioButton}.
    * @return this fixture.
-   * @throws IllegalStateException if this fixture's <code>JRadioButton</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JRadioButton</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JRadioButton} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JRadioButton} is not showing on the screen.
    */
   public JRadioButtonFixture rightClick() {
     driver.rightClick(target);
@@ -170,10 +169,10 @@ public class JRadioButtonFixture extends ComponentFixture<JRadioButton> implemen
   }
 
   /**
-   * Gives input focus to this fixture's <code>{@link JRadioButton}</code>.
+   * Gives input focus to this fixture's {@link JRadioButton}.
    * @return this fixture.
-   * @throws IllegalStateException if this fixture's <code>JRadioButton</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JRadioButton</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JRadioButton} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JRadioButton} is not showing on the screen.
    */
   public JRadioButtonFixture focus() {
     driver.focus(target);
@@ -181,14 +180,14 @@ public class JRadioButtonFixture extends ComponentFixture<JRadioButton> implemen
   }
 
   /**
-   * Simulates a user pressing given key with the given modifiers on this fixture's <code>{@link JRadioButton}</code>.
-   * Modifiers is a mask from the available <code>{@link java.awt.event.InputEvent}</code> masks.
+   * Simulates a user pressing given key with the given modifiers on this fixture's {@link JRadioButton}.
+   * Modifiers is a mask from the available {@link java.awt.event.InputEvent} masks.
    * @param keyPressInfo specifies the key and modifiers to press.
    * @return this fixture.
-   * @throws NullPointerException if the given <code>KeyPressInfo</code> is {@code null}.
+   * @throws NullPointerException if the given {@code KeyPressInfo} is {@code null}.
    * @throws IllegalArgumentException if the given code is not a valid key code.
-   * @throws IllegalStateException if this fixture's <code>JRadioButton</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JRadioButton</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JRadioButton} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JRadioButton} is not showing on the screen.
    * @see KeyPressInfo
    */
   public JRadioButtonFixture pressAndReleaseKey(KeyPressInfo keyPressInfo) {
@@ -197,13 +196,13 @@ public class JRadioButtonFixture extends ComponentFixture<JRadioButton> implemen
   }
 
   /**
-   * Simulates a user pressing and releasing the given keys on this fixture's <code>{@link JRadioButton}</code>.
+   * Simulates a user pressing and releasing the given keys on this fixture's {@link JRadioButton}.
    * @param keyCodes one or more codes of the keys to press.
    * @return this fixture.
    * @throws NullPointerException if the given array of codes is {@code null}.
    * @throws IllegalArgumentException if any of the given code is not a valid key code.
-   * @throws IllegalStateException if this fixture's <code>JRadioButton</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JRadioButton</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JRadioButton} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JRadioButton} is not showing on the screen.
    * @see java.awt.event.KeyEvent
    */
   public JRadioButtonFixture pressAndReleaseKeys(int... keyCodes) {
@@ -212,12 +211,12 @@ public class JRadioButtonFixture extends ComponentFixture<JRadioButton> implemen
   }
 
   /**
-   * Simulates a user pressing the given key on this fixture's <code>{@link JRadioButton}</code>.
+   * Simulates a user pressing the given key on this fixture's {@link JRadioButton}.
    * @param keyCode the code of the key to press.
    * @return this fixture.
    * @throws IllegalArgumentException if any of the given code is not a valid key code.
-   * @throws IllegalStateException if this fixture's <code>JRadioButton</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JRadioButton</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JRadioButton} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JRadioButton} is not showing on the screen.
    * @see java.awt.event.KeyEvent
    */
   public JRadioButtonFixture pressKey(int keyCode) {
@@ -226,12 +225,12 @@ public class JRadioButtonFixture extends ComponentFixture<JRadioButton> implemen
   }
 
   /**
-   * Simulates a user releasing the given key on this fixture's <code>{@link JRadioButton}</code>.
+   * Simulates a user releasing the given key on this fixture's {@link JRadioButton}.
    * @param keyCode the code of the key to release.
    * @return this fixture.
    * @throws IllegalArgumentException if any of the given code is not a valid key code.
-   * @throws IllegalStateException if this fixture's <code>JRadioButton</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JRadioButton</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JRadioButton} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JRadioButton} is not showing on the screen.
    * @see java.awt.event.KeyEvent
    */
   public JRadioButtonFixture releaseKey(int keyCode) {
@@ -240,9 +239,9 @@ public class JRadioButtonFixture extends ComponentFixture<JRadioButton> implemen
   }
 
   /**
-   * Asserts that this fixture's <code>{@link JRadioButton}</code> has input focus.
+   * Asserts that this fixture's {@link JRadioButton} has input focus.
    * @return this fixture.
-   * @throws AssertionError if this fixture's <code>JRadioButton</code> does not have input focus.
+   * @throws AssertionError if this fixture's {@code JRadioButton} does not have input focus.
    */
   public JRadioButtonFixture requireFocused() {
     driver.requireFocused(target);
@@ -250,9 +249,9 @@ public class JRadioButtonFixture extends ComponentFixture<JRadioButton> implemen
   }
 
   /**
-   * Asserts that this fixture's <code>{@link JRadioButton}</code> is enabled.
+   * Asserts that this fixture's {@link JRadioButton} is enabled.
    * @return this fixture.
-   * @throws AssertionError is this fixture's <code>JRadioButton</code> is disabled.
+   * @throws AssertionError is this fixture's {@code JRadioButton} is disabled.
    */
   public JRadioButtonFixture requireEnabled() {
     driver.requireEnabled(target);
@@ -260,10 +259,10 @@ public class JRadioButtonFixture extends ComponentFixture<JRadioButton> implemen
   }
 
   /**
-   * Asserts that this fixture's <code>{@link JRadioButton}</code> is enabled.
+   * Asserts that this fixture's {@link JRadioButton} is enabled.
    * @param timeout the time this fixture will wait for the component to be enabled.
    * @return this fixture.
-   * @throws org.fest.swing.exception.WaitTimedOutError if this fixture's <code>JRadioButton</code> is never enabled.
+   * @throws org.fest.swing.exception.WaitTimedOutError if this fixture's {@code JRadioButton} is never enabled.
    */
   public JRadioButtonFixture requireEnabled(Timeout timeout) {
     driver.requireEnabled(target, timeout);
@@ -271,9 +270,9 @@ public class JRadioButtonFixture extends ComponentFixture<JRadioButton> implemen
   }
 
   /**
-   * Asserts that this fixture's <code>{@link JRadioButton}</code> is disabled.
+   * Asserts that this fixture's {@link JRadioButton} is disabled.
    * @return this fixture.
-   * @throws AssertionError is this fixture's <code>JRadioButton</code> is enabled.
+   * @throws AssertionError is this fixture's {@code JRadioButton} is enabled.
    */
   public JRadioButtonFixture requireDisabled() {
     driver.requireDisabled(target);
@@ -281,9 +280,9 @@ public class JRadioButtonFixture extends ComponentFixture<JRadioButton> implemen
   }
 
   /**
-   * Verifies that this fixture's <code>{@link JRadioButton}</code> is selected.
+   * Verifies that this fixture's {@link JRadioButton} is selected.
    * @return this fixture.
-   * @throws AssertionError if this fixture's <code>JRadioButton</code> is not selected.
+   * @throws AssertionError if this fixture's {@code JRadioButton} is not selected.
    */
   public JRadioButtonFixture requireSelected() {
     driver.requireSelected(target);
@@ -291,9 +290,9 @@ public class JRadioButtonFixture extends ComponentFixture<JRadioButton> implemen
   }
 
   /**
-   * Verifies that this fixture's <code>{@link JRadioButton}</code> is not selected.
+   * Verifies that this fixture's {@link JRadioButton} is not selected.
    * @return this fixture.
-   * @throws AssertionError if this fixture's <code>JRadioButton</code> is selected.
+   * @throws AssertionError if this fixture's {@code JRadioButton} is selected.
    */
   public JRadioButtonFixture requireNotSelected() {
     driver.requireNotSelected(target);
@@ -301,9 +300,9 @@ public class JRadioButtonFixture extends ComponentFixture<JRadioButton> implemen
   }
 
   /**
-   * Asserts that this fixture's <code>{@link JRadioButton}</code> is visible.
+   * Asserts that this fixture's {@link JRadioButton} is visible.
    * @return this fixture.
-   * @throws AssertionError if this fixture's <code>JRadioButton</code> is not visible.
+   * @throws AssertionError if this fixture's {@code JRadioButton} is not visible.
    */
   public JRadioButtonFixture requireVisible() {
     driver.requireVisible(target);
@@ -311,9 +310,9 @@ public class JRadioButtonFixture extends ComponentFixture<JRadioButton> implemen
   }
 
   /**
-   * Asserts that this fixture's <code>{@link JRadioButton}</code> is not visible.
+   * Asserts that this fixture's {@link JRadioButton} is not visible.
    * @return this fixture.
-   * @throws AssertionError if this fixture's <code>JRadioButton</code> is visible.
+   * @throws AssertionError if this fixture's {@code JRadioButton} is visible.
    */
   public JRadioButtonFixture requireNotVisible() {
     driver.requireNotVisible(target);
@@ -321,7 +320,7 @@ public class JRadioButtonFixture extends ComponentFixture<JRadioButton> implemen
   }
 
   /**
-   * Asserts that the text of this fixture's <code>{@link JRadioButton}</code> matches the specified value.
+   * Asserts that the text of this fixture's {@link JRadioButton} matches the specified value.
    * @param expected the text to match. It can be a regular expression.
    * @return this fixture.
    * @throws AssertionError if the text of the target JRadioButton does not match the given one.
@@ -332,12 +331,12 @@ public class JRadioButtonFixture extends ComponentFixture<JRadioButton> implemen
   }
 
   /**
-   * Asserts that the text of this fixture's <code>{@link JRadioButton}</code> matches the given regular expression
+   * Asserts that the text of this fixture's {@link JRadioButton} matches the given regular expression
    * pattern.
    * @param pattern the regular expression pattern to match.
    * @return this fixture.
    * @throws NullPointerException if the given regular expression pattern is {@code null}.
-   * @throws AssertionError if the text of the target <code>JRadioButton</code> does not match the given regular
+   * @throws AssertionError if the text of the target {@code JRadioButton} does not match the given regular
    * expression pattern.
    * @since 1.2
    */
@@ -348,10 +347,10 @@ public class JRadioButtonFixture extends ComponentFixture<JRadioButton> implemen
 
 
   /**
-   * Asserts that the toolTip in this fixture's <code>{@link JRadioButton}</code> matches the given value.
+   * Asserts that the toolTip in this fixture's {@link JRadioButton} matches the given value.
    * @param expected the given value. It can be a regular expression.
    * @return this fixture.
-   * @throws AssertionError if the toolTip in this fixture's <code>JRadioButton</code> does not match the given value.
+   * @throws AssertionError if the toolTip in this fixture's {@code JRadioButton} does not match the given value.
    * @since 1.2
    */
   public JRadioButtonFixture requireToolTip(String expected) {
@@ -360,12 +359,12 @@ public class JRadioButtonFixture extends ComponentFixture<JRadioButton> implemen
   }
 
   /**
-   * Asserts that the toolTip in this fixture's <code>{@link JRadioButton}</code> matches the given regular expression
+   * Asserts that the toolTip in this fixture's {@link JRadioButton} matches the given regular expression
    * pattern.
    * @param pattern the regular expression pattern to match.
    * @return this fixture.
    * @throws NullPointerException if the given regular expression pattern is {@code null}.
-   * @throws AssertionError if the toolTip in this fixture's <code>JRadioButton</code> does not match the given regular
+   * @throws AssertionError if the toolTip in this fixture's {@code JRadioButton} does not match the given regular
    * expression.
    * @since 1.2
    */
@@ -375,7 +374,7 @@ public class JRadioButtonFixture extends ComponentFixture<JRadioButton> implemen
   }
 
   /**
-   * Returns the client property stored in this fixture's <code>{@link JRadioButton}</code>, under the given key.
+   * Returns the client property stored in this fixture's {@link JRadioButton}, under the given key.
    * @param key the key to use to retrieve the client property.
    * @return the value of the client property stored under the given key, or {@code null} if the property was
    * not found.
@@ -387,10 +386,10 @@ public class JRadioButtonFixture extends ComponentFixture<JRadioButton> implemen
   }
 
   /**
-   * Shows a pop-up menu using this fixture's <code>{@link JRadioButton}</code> as the invoker of the pop-up menu.
+   * Shows a pop-up menu using this fixture's {@link JRadioButton} as the invoker of the pop-up menu.
    * @return a fixture that manages the displayed pop-up menu.
-   * @throws IllegalStateException if this fixture's <code>JRadioButton</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JRadioButton</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JRadioButton} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JRadioButton} is not showing on the screen.
    * @throws ComponentLookupException if a pop-up menu cannot be found.
    */
   public JPopupMenuFixture showPopupMenu() {
@@ -398,12 +397,12 @@ public class JRadioButtonFixture extends ComponentFixture<JRadioButton> implemen
   }
 
   /**
-   * Shows a pop-up menu at the given point using this fixture's <code>{@link JRadioButton}</code> as the invoker of the
+   * Shows a pop-up menu at the given point using this fixture's {@link JRadioButton} as the invoker of the
    * pop-up menu.
    * @param p the given point where to show the pop-up menu.
    * @return a fixture that manages the displayed pop-up menu.
-   * @throws IllegalStateException if this fixture's <code>JRadioButton</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>JRadioButton</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code JRadioButton} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JRadioButton} is not showing on the screen.
    * @throws ComponentLookupException if a pop-up menu cannot be found.
    */
   public JPopupMenuFixture showPopupMenuAt(Point p) {

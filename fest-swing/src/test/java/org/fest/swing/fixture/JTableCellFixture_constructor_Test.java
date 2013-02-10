@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.fixture;
 
@@ -21,12 +21,11 @@ import static org.fest.swing.data.TableCell.row;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JTableCellFixture#JTableCellFixture(JTableFixture, org.fest.swing.data.TableCell)}</code>.
+ * Tests for {@link JTableCellFixture#JTableCellFixture(JTableFixture, org.fest.swing.data.TableCell)}.
  *
  * @author Alex Ruiz
  */
 public class JTableCellFixture_constructor_Test {
-
   @Test(expected = NullPointerException.class)
   public void should_throw_error_if_JTableFixture_is_null() {
     new JTableCellFixture(null, row(8).column(6));

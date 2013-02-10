@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.fixture;
 
@@ -21,12 +21,11 @@ import org.fest.mocks.EasyMockTemplate;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JTableFixture#requireSelectedRows(int...)}</code>.
+ * Tests for {@link JTableFixture#requireSelectedRows(int...)}.
  *
  * @author Alex Ruiz
  */
 public class JTableFixture_requireSelectedRows_Test extends JTableFixture_TestCase {
-
   @Test
   public void should_require_selected_rows() {
     final int[] rows = { 6, 8 };

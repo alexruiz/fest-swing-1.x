@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -25,13 +25,12 @@ import org.fest.swing.data.*;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JTableDriver#cell(javax.swing.JTable, org.fest.swing.data.TableCellFinder)}</code>.
+ * Tests for {@link JTableDriver#cell(javax.swing.JTable, org.fest.swing.data.TableCellFinder)}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 public class JTableDriver_cellWithTableCellFinder_Test extends JTableDriver_TestCase {
-
   private TableCellFinder cellFinder;
 
   @Override void extraSetUp() {

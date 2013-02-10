@@ -10,7 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.format;
 
@@ -23,13 +23,12 @@ import org.fest.swing.test.core.EDTSafeTestCase;
 import org.junit.*;
 
 /**
- * Tests for <code>{@link JComboBoxFormatter#format(java.awt.Component)}</code>.
+ * Tests for {@link JComboBoxFormatter#format(java.awt.Component)}.
  *
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
 public class JComboBoxFormatter_format_Test extends EDTSafeTestCase {
-
   private JComboBox comboBox;
   private JComboBoxFormatter formatter;
 

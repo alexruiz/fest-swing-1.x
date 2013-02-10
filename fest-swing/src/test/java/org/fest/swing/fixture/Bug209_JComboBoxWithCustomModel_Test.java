@@ -10,7 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.fixture;
 
@@ -30,14 +30,13 @@ import org.junit.Test;
  * Tests for <a href="http://code.google.com/p/fest/issues/detail?id=209" target="_blank">Bug 209</a>.
  * <p>
  * Demonstrate bug when testing {@code JComboBox}es. If a custom model is used the {@code JComboBox} must be
- * click before <code>JComboBoxDriver</code> can find the pop-up list for it. (FEST 1.0b1, Java 1.5)
+ * click before {@code JComboBoxDriver} can find the pop-up list for it. (FEST 1.0b1, Java 1.5)
  * </p>
  *
  * @author Ewan McDougall
  * @author Alex Ruiz
  */
 public class Bug209_JComboBoxWithCustomModel_Test extends RobotBasedTestCase {
-
   private DialogFixture dialog;
   private NamedObject[] values;
 

@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -21,12 +21,11 @@ import static org.fest.swing.test.core.CommonAssertions.failWhenExpectingExcepti
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link AbstractButtonDriver#requireText(javax.swing.AbstractButton, String)}</code>.
+ * Tests for {@link AbstractButtonDriver#requireText(javax.swing.AbstractButton, String)}.
  *
  * @author Alex Ruiz
  */
 public class AbstractButtonDriver_requireTextAsString_Test extends AbstractButtonDriver_TestCase {
-
   @Test
   public void should_pass_if_text_is_equal_to_given_String() {
     driver.requireText(checkBox, "Hello");

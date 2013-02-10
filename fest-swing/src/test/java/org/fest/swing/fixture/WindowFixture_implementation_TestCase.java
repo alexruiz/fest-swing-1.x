@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.fixture;
 
@@ -24,7 +24,7 @@ import org.fest.swing.driver.WindowDriver;
 import org.junit.Test;
 
 /**
- * Understands test methods for implementations of <code>{@link WindowFixture}</code>.
+ * Understands test methods for implementations of {@link WindowFixture}.
  * @param <T> the type of window supported by the fixture to test.
  *
  * @author Alex Ruiz
@@ -32,7 +32,6 @@ import org.junit.Test;
  */
 public abstract class WindowFixture_implementation_TestCase<T extends Window> extends
     ComponentFixture_Implementations_TestCase<Window> {
-
   @Override abstract WindowDriver driver();
 
   @Override abstract WindowFixture<T> fixture();

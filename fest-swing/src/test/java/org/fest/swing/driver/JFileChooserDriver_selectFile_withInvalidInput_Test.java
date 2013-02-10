@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -23,13 +23,12 @@ import javax.swing.JFileChooser;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JFileChooserDriver#selectFile(JFileChooser, java.io.File)}</code>.
+ * Tests for {@link JFileChooserDriver#selectFile(JFileChooser, java.io.File)}.
  *
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
 public class JFileChooserDriver_selectFile_withInvalidInput_Test extends JFileChooserDriver_withMocks_TestCase {
-
   @Test
   public void should_throw_error_if_file_is_null() {
     try {

@@ -11,18 +11,17 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.core;
 
 /**
- * Tests for <code>{@link RobotEventGenerator#pressKey(int, char)}</code> and
- * <code>{@link RobotEventGenerator#releaseKey(int)}</code>.
+ * Tests for {@link RobotEventGenerator#pressKey(int, char)} and
+ * {@link RobotEventGenerator#releaseKey(int)}.
  *
  * @author Alex Ruiz
  */
 public class RobotEventGenerator_pressKey_Test extends InputEventGenerator_pressKey_TestCase {
-
   public RobotEventGenerator_pressKey_Test(int keyToPress, String expectedText) {
     super(keyToPress, expectedText);
   }

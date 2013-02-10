@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.util;
 
@@ -22,12 +22,11 @@ import java.awt.*;
 import org.junit.*;
 
 /**
- * Tests for <code>{@link RobotFactory#newRobotInPrimaryScreen}</code>.
+ * Tests for {@link RobotFactory#newRobotInPrimaryScreen}.
  *
  * @author Alex Ruiz
  */
 public class RobotFactory_newRobotInPrimaryScreen_Test {
-
   private RobotFactory robotFactory;
 
   @Before public void setUp() {

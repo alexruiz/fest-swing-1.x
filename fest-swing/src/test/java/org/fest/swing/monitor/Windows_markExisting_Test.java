@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.monitor;
 
@@ -24,12 +24,11 @@ import org.fest.swing.test.swing.TestWindow;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link Windows#markExisting(java.awt.Window)}</code>.
+ * Tests for {@link Windows#markExisting(java.awt.Window)}.
  *
  * @author Alex Ruiz
  */
 public class Windows_markExisting_Test extends Windows_TestCase {
-
   @Test
   public void should_mark_visible_Window_as_ready_and_not_hidden() {
     window.display();

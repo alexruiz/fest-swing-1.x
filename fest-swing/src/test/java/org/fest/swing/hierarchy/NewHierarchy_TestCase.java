@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2007-2010 the original author or authors.
+ * Copyright @2007-2013 the original author or authors.
  */
 package org.fest.swing.hierarchy;
 
@@ -29,13 +29,12 @@ import org.fest.swing.test.core.SequentialEDTSafeTestCase;
 import org.fest.swing.test.swing.TestWindow;
 
 /**
- * Base test case for <code>{@link NewHierarchy}</code>.
+ * Base test case for {@link NewHierarchy}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 public abstract class NewHierarchy_TestCase extends SequentialEDTSafeTestCase {
-
   static final long EVENT_MASK = WINDOW_EVENT_MASK | COMPONENT_EVENT_MASK;
 
   ToolkitStub toolkit;

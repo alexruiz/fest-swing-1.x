@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.fixture;
 
@@ -24,14 +24,13 @@ import org.fest.swing.driver.JMenuItemDriver;
 import org.junit.BeforeClass;
 
 /**
- * Tests for methods <code>{@link JMenuItemFixture}</code> that are inherited from
- * <code>{@link StateVerificationFixture}</code>.
+ * Tests for methods {@link JMenuItemFixture} that are inherited from
+ * {@link StateVerificationFixture}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 public class JMenuItemFixture_stateVerification_Test extends StateVerificationFixture_TestCase<JMenuItem> {
-
   private static JMenuItem target;
 
   private JMenuItemDriver driver;

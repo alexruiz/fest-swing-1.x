@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -25,13 +25,12 @@ import org.fest.swing.test.util.StopWatch;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link ComponentDriver#requireEnabled(java.awt.Component, org.fest.swing.timing.Timeout)}</code>.
+ * Tests for {@link ComponentDriver#requireEnabled(java.awt.Component, org.fest.swing.timing.Timeout)}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 public class ComponentDriver_requireEnabledWithTimout_Test extends ComponentDriver_TestCase {
-
   @Test
   public void should_pass_if_Component_is_enabled_before_timeout() {
     driver.requireEnabled(window.button, timeout(100));

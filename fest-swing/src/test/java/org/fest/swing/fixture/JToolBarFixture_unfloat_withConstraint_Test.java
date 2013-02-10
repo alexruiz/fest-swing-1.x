@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2007-2010 the original author or authors.
+ * Copyright @2007-2013 the original author or authors.
  */
 package org.fest.swing.fixture;
 
@@ -29,14 +29,13 @@ import org.junit.runners.*;
 import org.junit.runners.Parameterized.Parameters;
 
 /**
- * Tests for <code>{@link JToolBarFixture#unfloat(UnfloatConstraint)}</code>.
+ * Tests for {@link JToolBarFixture#unfloat(UnfloatConstraint)}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 @RunWith(Parameterized.class)
 public class JToolBarFixture_unfloat_withConstraint_Test extends JToolBarFixture_TestCase {
-
   private final UnfloatConstraint constraint;
 
   @Parameters

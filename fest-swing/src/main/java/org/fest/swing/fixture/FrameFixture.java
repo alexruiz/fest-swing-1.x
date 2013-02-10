@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2007-2010 the original author or authors.
+ * Copyright @2007-2013 the original author or authors.
  */
 package org.fest.swing.fixture;
 
@@ -24,7 +24,7 @@ import org.fest.swing.exception.*;
 import org.fest.swing.timing.Timeout;
 
 /**
- * Understands functional testing of <code>{@link Frame}</code>s:
+ * Understands functional testing of {@code Frame}s:
  * <ul>
  * <li>user input simulation</li>
  * <li>state verification</li>
@@ -35,13 +35,12 @@ import org.fest.swing.timing.Timeout;
  * @author Alex Ruiz
  */
 public class FrameFixture extends WindowFixture<Frame> implements FrameLikeFixture {
-
   private FrameDriver driver;
 
   /**
-   * Creates a new <code>{@link FrameFixture}</code>. This constructor creates a new <code>{@link Robot}</code>
+   * Creates a new {@link FrameFixture}. This constructor creates a new {@link Robot}
    * containing the current AWT hierarchy.
-   * @param target the <code>Frame</code> to be managed by this fixture.
+   * @param target the {@code Frame} to be managed by this fixture.
    * @throws NullPointerException if the given frame is {@code null}.
    * @see BasicRobot#robotWithCurrentAwtHierarchy()
    */
@@ -51,9 +50,9 @@ public class FrameFixture extends WindowFixture<Frame> implements FrameLikeFixtu
   }
 
   /**
-   * Creates a new <code>{@link FrameFixture}</code>.
+   * Creates a new {@link FrameFixture}.
    * @param robot performs user events on the given window and verifies expected output.
-   * @param target the <code>Frame</code> to be managed by this fixture.
+   * @param target the {@code Frame} to be managed by this fixture.
    * @throws NullPointerException if the given robot is {@code null}.
    * @throws NullPointerException if the given frame is {@code null}.
    */
@@ -63,12 +62,12 @@ public class FrameFixture extends WindowFixture<Frame> implements FrameLikeFixtu
   }
 
   /**
-   * Creates a new <code>{@link FrameFixture}</code>.
+   * Creates a new {@link FrameFixture}.
    * @param robot performs user events on the given window and verifies expected output.
-   * @param name the name of the <code>Frame</code> to find using the given <code>Robot</code>.
+   * @param name the name of the {@code Frame} to find using the given {@code Robot}.
    * @throws NullPointerException if the given robot is {@code null}.
-   * @throws ComponentLookupException if a <code>Frame</code> having a matching name could not be found.
-   * @throws ComponentLookupException if more than one <code>Frame</code> having a matching name is found.
+   * @throws ComponentLookupException if a {@code Frame} having a matching name could not be found.
+   * @throws ComponentLookupException if more than one {@code Frame} having a matching name is found.
    */
   public FrameFixture(Robot robot, String name) {
     super(robot, name, Frame.class);
@@ -76,11 +75,11 @@ public class FrameFixture extends WindowFixture<Frame> implements FrameLikeFixtu
   }
 
   /**
-   * Creates a new <code>{@link FrameFixture}</code>. This constructor creates a new <code>{@link Robot}</code>
+   * Creates a new {@link FrameFixture}. This constructor creates a new {@link Robot}
    * containing the current AWT hierarchy.
-   * @param name the name of the <code>Frame</code> to find.
-   * @throws ComponentLookupException if a <code>Frame</code> having a matching name could not be found.
-   * @throws ComponentLookupException if more than one <code>Frame</code> having a matching name is found.
+   * @param name the name of the {@code Frame} to find.
+   * @throws ComponentLookupException if a {@code Frame} having a matching name could not be found.
+   * @throws ComponentLookupException if more than one {@code Frame} having a matching name is found.
    */
   public FrameFixture(String name) {
     super(name, Frame.class);
@@ -92,8 +91,8 @@ public class FrameFixture extends WindowFixture<Frame> implements FrameLikeFixtu
   }
 
   /**
-   * Sets the <code>{@link FrameDriver}</code> to be used by this fixture.
-   * @param newDriver the new <code>FrameDriver</code>.
+   * Sets the {@link FrameDriver} to be used by this fixture.
+   * @param newDriver the new {@code FrameDriver}.
    * @throws NullPointerException if the given driver is {@code null}.
    */
   protected final void driver(FrameDriver newDriver) {
@@ -102,7 +101,7 @@ public class FrameFixture extends WindowFixture<Frame> implements FrameLikeFixtu
   }
 
   /**
-   * Simulates a user clicking this fixture's <code>{@link Frame}</code>.
+   * Simulates a user clicking this fixture's {@code Frame}.
    * @return this fixture.
    */
   public FrameFixture click() {
@@ -111,7 +110,7 @@ public class FrameFixture extends WindowFixture<Frame> implements FrameLikeFixtu
   }
 
   /**
-   * Simulates a user clicking this fixture's <code>{@link Frame}</code>.
+   * Simulates a user clicking this fixture's {@code Frame}.
    * @param button the button to click.
    * @return this fixture.
    */
@@ -121,10 +120,10 @@ public class FrameFixture extends WindowFixture<Frame> implements FrameLikeFixtu
   }
 
   /**
-   * Simulates a user clicking this fixture's <code>{@link Frame}</code>.
+   * Simulates a user clicking this fixture's {@code Frame}.
    * @param mouseClickInfo specifies the button to click and the times the button should be clicked.
    * @return this fixture.
-   * @throws NullPointerException if the given <code>MouseClickInfo</code> is {@code null}.
+   * @throws NullPointerException if the given {@code MouseClickInfo} is {@code null}.
    */
   public FrameFixture click(MouseClickInfo mouseClickInfo) {
     driver.click(target, mouseClickInfo);
@@ -132,7 +131,7 @@ public class FrameFixture extends WindowFixture<Frame> implements FrameLikeFixtu
   }
 
   /**
-   * Simulates a user double-clicking this fixture's <code>{@link Frame}</code>.
+   * Simulates a user double-clicking this fixture's {@code Frame}.
    * @return this fixture.
    */
   public FrameFixture doubleClick() {
@@ -141,7 +140,7 @@ public class FrameFixture extends WindowFixture<Frame> implements FrameLikeFixtu
   }
 
   /**
-   * Simulates a user right-clicking this fixture's <code>{@link Frame}</code>.
+   * Simulates a user right-clicking this fixture's {@code Frame}.
    * @return this fixture.
    */
   public FrameFixture rightClick() {
@@ -150,7 +149,7 @@ public class FrameFixture extends WindowFixture<Frame> implements FrameLikeFixtu
   }
 
   /**
-   * Simulates a user iconifying this fixture's <code>{@link Frame}</code>.
+   * Simulates a user iconifying this fixture's {@code Frame}.
    * @return this fixture.
    */
   public FrameFixture iconify() {
@@ -159,7 +158,7 @@ public class FrameFixture extends WindowFixture<Frame> implements FrameLikeFixtu
   }
 
   /**
-   * Simulates a user deiconifying this fixture's <code>{@link Frame}</code>.
+   * Simulates a user deiconifying this fixture's {@code Frame}.
    * @return this fixture.
    */
   public FrameFixture deiconify() {
@@ -168,7 +167,7 @@ public class FrameFixture extends WindowFixture<Frame> implements FrameLikeFixtu
   }
 
   /**
-   * Simulates a user maximizing this fixture's <code>{@link Frame}</code>.
+   * Simulates a user maximizing this fixture's {@code Frame}.
    * @return this fixture.
    * @throws ActionFailedException if the operating system does not support maximizing frames.
    */
@@ -178,7 +177,7 @@ public class FrameFixture extends WindowFixture<Frame> implements FrameLikeFixtu
   }
 
   /**
-   * Simulates a user normalizing this fixture's <code>{@link Frame}</code>.
+   * Simulates a user normalizing this fixture's {@code Frame}.
    * @return this fixture.
    */
   public FrameFixture normalize() {
@@ -187,7 +186,7 @@ public class FrameFixture extends WindowFixture<Frame> implements FrameLikeFixtu
   }
 
   /**
-   * Gives input focus to this fixture's <code>{@link Frame}</code>.
+   * Gives input focus to this fixture's {@code Frame}.
    * @return this fixture.
    */
   public FrameFixture focus() {
@@ -196,8 +195,8 @@ public class FrameFixture extends WindowFixture<Frame> implements FrameLikeFixtu
   }
 
   /**
-   * Simulates a user moving this fixture's <code>{@link Frame}</code> to the given point.
-   * @param p the point to move this fixture's <code>Frame</code> to.
+   * Simulates a user moving this fixture's {@code Frame} to the given point.
+   * @param p the point to move this fixture's {@code Frame} to.
    * @return this fixture.
    */
   public FrameFixture moveTo(Point p) {
@@ -206,11 +205,11 @@ public class FrameFixture extends WindowFixture<Frame> implements FrameLikeFixtu
   }
 
   /**
-   * Simulates a user pressing given key with the given modifiers on this fixture's <code>{@link Frame}</code>.
-   * Modifiers is a mask from the available <code>{@link java.awt.event.InputEvent}</code> masks.
+   * Simulates a user pressing given key with the given modifiers on this fixture's {@code Frame}.
+   * Modifiers is a mask from the available {@link java.awt.event.InputEvent} masks.
    * @param keyPressInfo specifies the key and modifiers to press.
    * @return this fixture.
-   * @throws NullPointerException if the given <code>KeyPressInfo</code> is {@code null}.
+   * @throws NullPointerException if the given {@code KeyPressInfo} is {@code null}.
    * @throws IllegalArgumentException if the given code is not a valid key code.
    * @see KeyPressInfo
    */
@@ -220,7 +219,7 @@ public class FrameFixture extends WindowFixture<Frame> implements FrameLikeFixtu
   }
 
   /**
-   * Simulates a user pressing and releasing the given keys on this fixture's <code>{@link Frame}</code>.
+   * Simulates a user pressing and releasing the given keys on this fixture's {@code Frame}.
    * @param keyCodes one or more codes of the keys to press.
    * @return this fixture.
    * @throws NullPointerException if the given array of codes is {@code null}.
@@ -233,7 +232,7 @@ public class FrameFixture extends WindowFixture<Frame> implements FrameLikeFixtu
   }
 
   /**
-   * Simulates a user pressing the given key on this fixture's <code>{@link Frame}</code>.
+   * Simulates a user pressing the given key on this fixture's {@code Frame}.
    * @param keyCode the code of the key to press.
    * @return this fixture.
    * @throws IllegalArgumentException if any of the given code is not a valid key code.
@@ -245,7 +244,7 @@ public class FrameFixture extends WindowFixture<Frame> implements FrameLikeFixtu
   }
 
   /**
-   * Simulates a user releasing the given key on this fixture's <code>{@link Frame}</code>.
+   * Simulates a user releasing the given key on this fixture's {@code Frame}.
    * @param keyCode the code of the key to release.
    * @return this fixture.
    * @throws IllegalArgumentException if any of the given code is not a valid key code.
@@ -257,9 +256,9 @@ public class FrameFixture extends WindowFixture<Frame> implements FrameLikeFixtu
   }
 
   /**
-   * Asserts that this fixture's <code>{@link Frame}</code> has input focus.
+   * Asserts that this fixture's {@code Frame} has input focus.
    * @return this fixture.
-   * @throws AssertionError if this fixture's <code>Frame</code> does not have input focus.
+   * @throws AssertionError if this fixture's {@code Frame} does not have input focus.
    */
   public FrameFixture requireFocused() {
     driver.requireFocused(target);
@@ -267,9 +266,9 @@ public class FrameFixture extends WindowFixture<Frame> implements FrameLikeFixtu
   }
 
   /**
-   * Asserts that this fixture's <code>{@link Frame}</code> is disabled.
+   * Asserts that this fixture's {@code Frame} is disabled.
    * @return this fixture.
-   * @throws AssertionError if this fixture's <code>Frame</code> is enabled.
+   * @throws AssertionError if this fixture's {@code Frame} is enabled.
    */
   public FrameFixture requireDisabled() {
     driver.requireDisabled(target);
@@ -277,9 +276,9 @@ public class FrameFixture extends WindowFixture<Frame> implements FrameLikeFixtu
   }
 
   /**
-   * Asserts that this fixture's <code>{@link Frame}</code> is enabled.
+   * Asserts that this fixture's {@code Frame} is enabled.
    * @return this fixture.
-   * @throws AssertionError if this fixture's <code>Frame</code> is disabled.
+   * @throws AssertionError if this fixture's {@code Frame} is disabled.
    */
   public FrameFixture requireEnabled() {
     driver.requireEnabled(target);
@@ -287,10 +286,10 @@ public class FrameFixture extends WindowFixture<Frame> implements FrameLikeFixtu
   }
 
   /**
-   * Asserts that this fixture's <code>{@link Frame}</code> is enabled.
+   * Asserts that this fixture's {@code Frame} is enabled.
    * @param timeout the time this fixture will wait for the component to be enabled.
    * @return this fixture.
-   * @throws WaitTimedOutError if this fixture's <code>Frame</code> is never enabled.
+   * @throws WaitTimedOutError if this fixture's {@code Frame} is never enabled.
    */
   public FrameFixture requireEnabled(Timeout timeout) {
     driver.requireEnabled(target, timeout);
@@ -298,9 +297,9 @@ public class FrameFixture extends WindowFixture<Frame> implements FrameLikeFixtu
   }
 
   /**
-   * Asserts that this fixture's <code>{@link Frame}</code> is not visible.
+   * Asserts that this fixture's {@code Frame} is not visible.
    * @return this fixture.
-   * @throws AssertionError if this fixture's <code>Frame</code> is visible.
+   * @throws AssertionError if this fixture's {@code Frame} is visible.
    */
   public FrameFixture requireNotVisible() {
     driver.requireNotVisible(target);
@@ -308,10 +307,10 @@ public class FrameFixture extends WindowFixture<Frame> implements FrameLikeFixtu
   }
 
   /**
-   * Asserts that the size of this fixture's <code>{@link Frame}</code> is equal to given one.
+   * Asserts that the size of this fixture's {@code Frame} is equal to given one.
    * @param size the given size to match.
    * @return this fixture.
-   * @throws AssertionError if the size of this fixture's <code>Frame</code> is not equal to the given size.
+   * @throws AssertionError if the size of this fixture's {@code Frame} is not equal to the given size.
    */
   public FrameFixture requireSize(Dimension size) {
     driver.requireSize(target, size);
@@ -319,9 +318,9 @@ public class FrameFixture extends WindowFixture<Frame> implements FrameLikeFixtu
   }
 
   /**
-   * Asserts that this fixture's <code>{@link Frame}</code> is visible.
+   * Asserts that this fixture's {@code Frame} is visible.
    * @return this fixture.
-   * @throws AssertionError if this fixture's <code>Frame</code> is not visible.
+   * @throws AssertionError if this fixture's {@code Frame} is not visible.
    */
   public FrameFixture requireVisible() {
     driver.requireVisible(target);
@@ -329,8 +328,8 @@ public class FrameFixture extends WindowFixture<Frame> implements FrameLikeFixtu
   }
 
   /**
-   * Simulates a user resizing vertically this fixture's <code>{@link Frame}</code>.
-   * @param height the height that this fixture's <code>Frame</code> should have after being resized.
+   * Simulates a user resizing vertically this fixture's {@code Frame}.
+   * @param height the height that this fixture's {@code Frame} should have after being resized.
    * @return this fixture.
    */
   public FrameFixture resizeHeightTo(int height) {
@@ -339,7 +338,7 @@ public class FrameFixture extends WindowFixture<Frame> implements FrameLikeFixtu
   }
 
   /**
-   * Simulates a user resizing this fixture's <code>{@link Frame}</code>.
+   * Simulates a user resizing this fixture's {@code Frame}.
    * @param size the size that the target window should have after being resized.
    * @return this fixture.
    */
@@ -349,8 +348,8 @@ public class FrameFixture extends WindowFixture<Frame> implements FrameLikeFixtu
   }
 
   /**
-   * Simulates a user resizing horizontally this fixture's <code>{@link Frame}</code>.
-   * @param width the width that this fixture's <code>Frame</code> should have after being resized.
+   * Simulates a user resizing horizontally this fixture's {@code Frame}.
+   * @param width the width that this fixture's {@code Frame} should have after being resized.
    * @return this fixture.
    */
   public FrameFixture resizeWidthTo(int width) {
@@ -359,7 +358,7 @@ public class FrameFixture extends WindowFixture<Frame> implements FrameLikeFixtu
   }
 
   /**
-   * Shows this fixture's <code>{@link Frame}</code>.
+   * Shows this fixture's {@code Frame}.
    * @return this fixture.
    */
   @Override public FrameFixture show() {
@@ -368,8 +367,8 @@ public class FrameFixture extends WindowFixture<Frame> implements FrameLikeFixtu
   }
 
   /**
-   * Shows this fixture's <code>{@link Frame}</code>, resized to the given size.
-   * @param size the size to resize this fixture's <code>Frame</code> to.
+   * Shows this fixture's {@code Frame}, resized to the given size.
+   * @param size the size to resize this fixture's {@code Frame} to.
    * @return this fixture.
    */
   @Override public FrameFixture show(Dimension size) {
@@ -378,7 +377,7 @@ public class FrameFixture extends WindowFixture<Frame> implements FrameLikeFixtu
   }
 
   /**
-   * If fixture's <code>{@link Frame}</code> is visible, brings it to the front and may make it the focused one.
+   * If fixture's {@code Frame} is visible, brings it to the front and may make it the focused one.
    * @return this fixture.
    */
   public FrameFixture moveToFront() {
@@ -387,7 +386,7 @@ public class FrameFixture extends WindowFixture<Frame> implements FrameLikeFixtu
   }
 
   /**
-   * If the given <code>{@link Frame}</code> is visible, sends it to the back and may cause it to lose focus or
+   * If the given {@code Frame} is visible, sends it to the back and may cause it to lose focus or
    * activation if it is the focused or active.
    * @return this fixture.
    */
@@ -397,10 +396,10 @@ public class FrameFixture extends WindowFixture<Frame> implements FrameLikeFixtu
   }
 
   /**
-   * Shows a pop-up menu using this fixture's <code>{@link Frame}</code> as the invoker of the pop-up menu.
+   * Shows a pop-up menu using this fixture's {@code Frame} as the invoker of the pop-up menu.
    * @return a fixture that manages the displayed pop-up menu.
-   * @throws IllegalStateException if this fixture's <code>Frame</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>Frame</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code Frame} is disabled.
+   * @throws IllegalStateException if this fixture's {@code Frame} is not showing on the screen.
    * @throws ComponentLookupException if a pop-up menu cannot be found.
    */
   public JPopupMenuFixture showPopupMenu() {
@@ -408,12 +407,12 @@ public class FrameFixture extends WindowFixture<Frame> implements FrameLikeFixtu
   }
 
   /**
-   * Shows a pop-up menu at the given point using this fixture's <code>{@link Frame}</code> as the invoker of the
+   * Shows a pop-up menu at the given point using this fixture's {@code Frame} as the invoker of the
    * pop-up menu.
    * @param p the given point where to show the pop-up menu.
    * @return a fixture that manages the displayed pop-up menu.
-   * @throws IllegalStateException if this fixture's <code>Frame</code> is disabled.
-   * @throws IllegalStateException if this fixture's <code>Frame</code> is not showing on the screen.
+   * @throws IllegalStateException if this fixture's {@code Frame} is disabled.
+   * @throws IllegalStateException if this fixture's {@code Frame} is not showing on the screen.
    * @throws ComponentLookupException if a pop-up menu cannot be found.
    */
   public JPopupMenuFixture showPopupMenuAt(Point p) {
@@ -421,7 +420,7 @@ public class FrameFixture extends WindowFixture<Frame> implements FrameLikeFixtu
   }
 
   /**
-   * Simulates a user closing this fixture's <code>{@link Frame}</code>.
+   * Simulates a user closing this fixture's {@code Frame}.
    */
   public void close() {
     driver.close(target);

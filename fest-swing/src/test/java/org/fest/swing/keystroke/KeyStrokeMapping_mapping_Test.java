@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.keystroke;
 
@@ -23,17 +23,15 @@ import static org.fest.assertions.Assertions.assertThat;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link KeyStrokeMapping#mapping(char, int, int)}</code>.
+ * Tests for {@link KeyStrokeMapping#mapping(char, int, int)}.
  *
  * @author Alex Ruiz
  */
 public class KeyStrokeMapping_mapping_Test {
-
   @Test
   public void should_create_mapping_from_char_keyCode_and_modifiers() {
     KeyStrokeMapping mapping = KeyStrokeMapping.mapping('A', VK_A, SHIFT_MASK);
     assertThat(mapping.character()).isEqualTo('A');
     assertThat(mapping.keyStroke()).isEqualTo(getKeyStroke(VK_A, SHIFT_MASK));
   }
-
 }

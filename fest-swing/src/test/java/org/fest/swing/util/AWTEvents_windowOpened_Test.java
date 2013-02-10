@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.util;
 
@@ -26,12 +26,11 @@ import org.fest.swing.test.swing.TestWindow;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link AWTEvents#windowOpened(java.awt.AWTEvent)}</code>.
+ * Tests for {@link AWTEvents#wasWindowOpened(java.awt.AWTEvent)}.
  *
  * @author Alex Ruiz
  */
 public class AWTEvents_windowOpened_Test extends SequentialEDTSafeTestCase {
-
   private TestWindow source;
 
   @Override protected void onSetUp() {
@@ -45,13 +44,12 @@ public class AWTEvents_windowOpened_Test extends SequentialEDTSafeTestCase {
   @Test
   public void should_return_true_if_Window_opened() {
     AWTEvent event = new WindowEvent(source, WINDOW_OPENED);
-    assertThat(AWTEvents.windowOpened(event)).isTrue();
+    assertThat(AWTEvents.wasWindowOpened(event)).isTrue();
   }
 
   @Test
   public void should_return_false_if_Window_not_opened() {
     AWTEvent event = new WindowEvent(source, WINDOW_CLOSING);
-    assertThat(AWTEvents.windowOpened(event)).isFalse();
+    assertThat(AWTEvents.wasWindowOpened(event)).isFalse();
   }
-
 }

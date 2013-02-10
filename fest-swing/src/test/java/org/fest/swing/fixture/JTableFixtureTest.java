@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2007-2010 the original author or authors.
+ * Copyright @2007-2013 the original author or authors.
  */
 package org.fest.swing.fixture;
 
@@ -43,13 +43,12 @@ import org.fest.swing.exception.ActionFailedException;
 import org.junit.*;
 
 /**
- * Tests for <code>{@link JTableFixture}</code>.
+ * Tests for {@link JTableFixture}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 public class JTableFixtureTest extends JTableFixture_TestCase {
-
   // TODO Reorganize into smaller units
 
   private static TableCell cell;
@@ -474,7 +473,7 @@ public class JTableFixtureTest extends JTableFixture_TestCase {
   public void shouldReturnCell() {
     new EasyMockTemplate(driver()) {
       @Override protected void expectations() {
-        driver().validate(target(), cell);
+        driver().checkCellIndicesInBounds(target(), cell);
         expectLastCall().once();
       }
 

@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.monitor;
 
@@ -20,12 +20,11 @@ import static org.fest.assertions.Assertions.assertThat;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link Windows#isClosed(java.awt.Component)}</code>.
+ * Tests for {@link Windows#isClosed(java.awt.Component)}.
  *
  * @author Alex Ruiz
  */
 public class Windows_isClosed_Test extends Windows_TestCase {
-
   @Test
   public void should_return_true_if_Window_is_closed() {
     windows.closed.put(window, true);
@@ -37,5 +36,4 @@ public class Windows_isClosed_Test extends Windows_TestCase {
     windows.closed.remove(window);
     assertThat(windows.isClosed(window)).isFalse();
   }
-
 }

@@ -10,7 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -24,12 +24,11 @@ import org.fest.swing.test.recorder.ClickRecorder;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JTableHeaderDriver#showPopupMenu(javax.swing.table.JTableHeader, java.util.regex.Pattern)}</code>.
+ * Tests for {@link JTableHeaderDriver#showPopupMenu(javax.swing.table.JTableHeader, java.util.regex.Pattern)}.
  *
  * @author Yvonne Wang
  */
 public class JTableHeaderDriver_showPopupMenuByPattern_Test extends JTableHeaderDriver_showPopupMenu_TestCase {
-
   @Test
   public void should_show_popup_menu() {
     showWindow();

@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -21,13 +21,12 @@ import org.fest.swing.cell.JTableCellWriter;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JTableCheckBoxEditorCellWriter#enterValue(javax.swing.JTable, int, int, String)}</code>.
+ * Tests for {@link JTableCheckBoxEditorCellWriter#enterValue(javax.swing.JTable, int, int, String)}.
  *
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
 public class JTableCheckBoxEditorCellWriter_enterValue_Test extends JTableCellWriter_enterValue_TestCase {
-
   @Override protected JTableCellWriter createWriter() {
     return new JTableCheckBoxEditorCellWriter(robot);
   }

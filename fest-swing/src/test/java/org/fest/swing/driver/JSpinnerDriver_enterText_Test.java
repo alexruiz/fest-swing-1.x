@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -25,12 +25,11 @@ import org.fest.swing.exception.ActionFailedException;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JSpinnerDriver#enterText(javax.swing.JSpinner, String)}</code>.
+ * Tests for {@link JSpinnerDriver#enterText(javax.swing.JSpinner, String)}.
  *
  * @author Alex Ruiz
  */
 public class JSpinnerDriver_enterText_Test extends JSpinnerDriver_TestCase {
-
   @Test(expected = ActionFailedException.class)
   public void should_throw_error_if_JTextComponentEditor_not_found() {
     setJLabelAsEditor();

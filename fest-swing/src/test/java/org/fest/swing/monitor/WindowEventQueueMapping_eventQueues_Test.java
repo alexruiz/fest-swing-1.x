@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.monitor;
 
@@ -25,12 +25,11 @@ import org.fest.swing.test.awt.ToolkitStub;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link WindowEventQueueMapping#eventQueues()}</code>.
+ * Tests for {@link WindowEventQueueMapping#eventQueues()}.
  *
  * @author Alex Ruiz
  */
 public class WindowEventQueueMapping_eventQueues_Test extends WindowEventQueueMapping_withWindow_TestCase {
-
   @Test
   public void should_return_EventQueues() {
     EventQueue anotherEventQueue = new EventQueue();

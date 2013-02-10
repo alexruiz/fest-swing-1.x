@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -30,12 +30,11 @@ import org.fest.swing.test.swing.TestWindow;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JFileChooserSelectFileTask#validateAndSelectFile(JFileChooser, File)}</code>.
+ * Tests for {@link JFileChooserSelectFileTask#setSelectedFile(JFileChooser, File)}.
  *
  * @author Yvonne Wang
  */
 public class JFileChooserSelectFileTask_validateAndSelectFile_Test extends RobotBasedTestCase {
-
   private JFileChooser fileChooser;
   private File fileToSelect;
 
@@ -52,7 +51,7 @@ public class JFileChooserSelectFileTask_validateAndSelectFile_Test extends Robot
 
   @Test
   public void should_select_file() {
-    JFileChooserSelectFileTask.validateAndSelectFile(fileChooser, fileToSelect);
+    JFileChooserSelectFileTask.setSelectedFile(fileChooser, fileToSelect);
     robot.waitForIdle();
     assertThat(selectedFile()).isEqualTo(fileToSelect);
   }

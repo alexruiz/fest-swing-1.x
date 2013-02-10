@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.fixture;
 
@@ -20,13 +20,12 @@ import java.awt.Font;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link FontFixture#FontFixture(Font)}</code>.
+ * Tests for {@link FontFixture#FontFixture(Font)}.
  *
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
 public class FontFixture_constructor_Test {
-
   @Test(expected = NullPointerException.class)
   public void should_throw_error_if_font_is_null() {
     new FontFixture(null);

@@ -1,53 +1,63 @@
 /*
  * Created on Oct 27, 2008
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ * 
  * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
- *
- * Copyright @2008-2010 the original author or authors.
+ * 
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+ * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations under the License.
+ * 
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.edt;
 
 import static org.fest.swing.edt.GuiActionRunner.execute;
+import static org.fest.util.Preconditions.checkNotNull;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import org.fest.assertions.Description;
 import org.fest.swing.annotation.RunsInCurrentThread;
 
 /**
- * Understands a <code>{@link Description}</code> that loads the text to return in the event dispatch thread.
- *
+ * {@link Description} that loads its text in the event dispatch thread (EDT.)
+ * 
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 public abstract class GuiLazyLoadingDescription implements Description {
-
   /**
-   * Executes <code>{@link #loadDescription()}</code> in the event dispatch thread.
-   * @return the text loaded in the event dispatch thread.
+   * Executes {@link #loadDescription()} in the event dispatch thread (EDT.)
+   * 
+   * @return the text loaded in the event dispatch thread (EDT.)
    */
-  public final String value() {
-    return execute(new GuiQuery<String>() {
-      @Override protected String executeInEDT() {
+  @Override
+  public final @Nonnull String value() {
+    String result = execute(new GuiQuery<String>() {
+      @Override
+      protected @Nullable String executeInEDT() {
         return loadDescription();
       }
     });
+    return checkNotNull(result);
   }
 
   /**
-   * Returns the lazy-loaded text of this description.
    * <p>
-   * <b>Note:</b> This method is <b>not</b> guaranteed to be executed in the event dispatch thread (EDT.) Clients are
-   * responsible for calling this method from the EDT.
+   * Returns the lazy-loaded text of this description.
    * </p>
+   * 
+   * <p>
+   * <b>Note:</b> This method is accessed in the current executing thread. Such thread may or may not be the event
+   * dispatch thread (EDT.) Client code must call this method from the EDT.
+   * </p>
+   * 
    * @return the lazy-loaded text of this description.
    */
   @RunsInCurrentThread
-  protected abstract String loadDescription();
+  protected abstract @Nonnull String loadDescription();
 }

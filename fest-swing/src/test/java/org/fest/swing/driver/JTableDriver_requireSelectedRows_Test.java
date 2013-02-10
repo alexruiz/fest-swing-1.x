@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -27,12 +27,11 @@ import org.fest.swing.edt.GuiTask;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link JTableDriver#requireSelectedRows(javax.swing.JTable, int[])}</code>.
+ * Tests for {@link JTableDriver#requireSelectedRows(javax.swing.JTable, int[])}.
  *
  * @author Alex Ruiz
  */
 public class JTableDriver_requireSelectedRows_Test extends JTableDriver_TestCase {
-
   @Test
   public void should_fail_if_JTable_does_not_have_the_expected_selected_rows() {
     selectRows(6, 8);
@@ -78,5 +77,4 @@ public class JTableDriver_requireSelectedRows_Test extends JTableDriver_TestCase
       }
     });
   }
-
 }

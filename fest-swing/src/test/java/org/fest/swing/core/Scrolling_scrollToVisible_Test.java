@@ -10,7 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.core;
 
@@ -30,13 +30,12 @@ import org.fest.swing.test.swing.TestWindow;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link Scrolling#scrollToVisible(Robot, javax.swing.JComponent)}</code>.
+ * Tests for {@link Scrolling#scrollToVisible(Robot, javax.swing.JComponent)}.
  *
  * @author Juhos Csaba-Zsolt
  * @author Alex Ruiz
  */
 public class Scrolling_scrollToVisible_Test extends RobotBasedTestCase {
-
   private MyWindow window;
 
   @Override protected void onSetUp() {

@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -20,13 +20,12 @@ import static org.fest.swing.core.TestRobots.singletonRobotMock;
 import org.junit.*;
 
 /**
- * Tests for <code>{@link JTableDriver#cellReader(org.fest.swing.cell.JTableCellReader)}</code>.
+ * Tests for {@link JTableDriver#cellReader(org.fest.swing.cell.JTableCellReader)}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 public class JTableDriver_cellReader_Test {
-
   private JTableDriver driver;
 
   @Before

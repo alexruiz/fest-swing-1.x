@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
@@ -33,12 +33,11 @@ import org.fest.swing.test.task.ComponentSetEnabledTask;
 import org.junit.Test;
 
 /**
- * Tests for <code>{@link ContainerStateValidator#validateCanResize(Container)}</code>.
+ * Tests for {@link ContainerStateValidator#checkCanResize(Container)}.
  *
  * @author Alex Ruiz
  */
 public class ContainerStateValidator_validateCanResize_Test extends RobotBasedTestCase {
-
   @Test
   public void should_pass_if_Frame_is_resizable() {
     JFrame f = frame().createNew();
@@ -191,7 +190,7 @@ public class ContainerStateValidator_validateCanResize_Test extends RobotBasedTe
   private static void validateCanResize(final Container c) {
     execute(new GuiTask() {
       @Override protected void executeInEDT() {
-        ContainerStateValidator.validateCanResize(c);
+        ContainerStateValidator.checkCanResize(c);
       }
     });
   }

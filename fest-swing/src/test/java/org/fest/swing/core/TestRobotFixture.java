@@ -11,22 +11,20 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2008-2010 the original author or authors.
+ * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.core;
 
 import org.fest.swing.hierarchy.ComponentHierarchy;
 
 /**
- * Understands a <code>{@link BasicRobot}</code> to be used for testing.
+ * Understands a {@link BasicRobot} to be used for testing.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 public class TestRobotFixture extends BasicRobot {
-
   public TestRobotFixture(ComponentHierarchy hierarchy) {
     super(new Object(), hierarchy);
   }
-
 }

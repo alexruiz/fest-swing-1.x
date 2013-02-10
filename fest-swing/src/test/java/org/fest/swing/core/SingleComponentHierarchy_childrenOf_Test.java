@@ -11,7 +11,7 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
- * Copyright @2009-2010 the original author or authors.
+ * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.core;
 
@@ -31,12 +31,11 @@ import org.fest.swing.hierarchy.SingleComponentHierarchy;
 import org.junit.*;
 
 /**
- * Tests for <code>{@link SingleComponentHierarchy#childrenOf(Component)}</code>.
+ * Tests for {@link SingleComponentHierarchy#childrenOf(Component)}.
  *
  * @author Alex Ruiz
  */
 public class SingleComponentHierarchy_childrenOf_Test extends SingleComponentHierarchy_TestCase {
-
   private FrameWithButton parent;
 
   @Override void onSetUp() {
