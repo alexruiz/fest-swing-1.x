@@ -23,6 +23,7 @@ import java.util.concurrent.TimeUnit;
 
 import javax.annotation.Nonnegative;
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import org.fest.swing.core.ComponentFoundCondition;
 import org.fest.swing.core.ComponentMatcher;
@@ -55,7 +56,7 @@ public abstract class ComponentFinderTemplate<T extends Component> {
    * @param componentName the name of the {@code Component} to find.
    * @param componentType the type of the {@code Component} to find.
    */
-  protected ComponentFinderTemplate(@Nonnull String componentName, @Nonnull Class<? extends T> componentType) {
+  protected ComponentFinderTemplate(@Nullable String componentName, @Nonnull Class<? extends T> componentType) {
     this(new NameMatcher(componentName, componentType, true));
   }
 
@@ -118,7 +119,7 @@ public abstract class ComponentFinderTemplate<T extends Component> {
    * @return a fixture capable of managing the found component.
    * @throws WaitTimedOutError if a component with the given name or of the given type could not be found.
    */
-  public abstract @Nonnull ComponentFixture<T> using(@Nonnull Robot robot);
+  public abstract @Nonnull ComponentFixture<?, T, ?> using(@Nonnull Robot robot);
 
   /**
    * Finds the component using either by name or type.
@@ -130,7 +131,7 @@ public abstract class ComponentFinderTemplate<T extends Component> {
   protected final @Nonnull T findComponentWith(@Nonnull Robot robot) {
     ComponentFoundCondition condition = new ComponentFoundCondition(searchDescription, robot.finder(), matcher);
     pause(condition, timeout);
-    return cast(condition.found());
+    return checkNotNull(cast(condition.found()));
   }
 
   /**
@@ -139,5 +140,5 @@ public abstract class ComponentFinderTemplate<T extends Component> {
    * @param c the given {@code Component}.
    * @return the given {@code Component} casted to the type supported by this finder.
    */
-  protected abstract T cast(Component c);
+  protected abstract @Nullable T cast(@Nullable Component c);
 }

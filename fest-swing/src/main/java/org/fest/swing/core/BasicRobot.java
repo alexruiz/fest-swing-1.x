@@ -147,13 +147,13 @@ public class BasicRobot implements Robot {
    * 
    * @return the created {@code Robot}.
    */
-  public static Robot robotWithCurrentAwtHierarchy() {
+  public static @Nonnull Robot robotWithCurrentAwtHierarchy() {
     Object screenLockOwner = acquireScreenLock();
     return new BasicRobot(screenLockOwner, new ExistingHierarchy());
   }
 
   // TODO document
-  public static Robot robotWithCurrentAwtHierarchyWithoutScreenLock() {
+  public static @Nonnull Robot robotWithCurrentAwtHierarchyWithoutScreenLock() {
     return new BasicRobot(null, new ExistingHierarchy());
   }
 

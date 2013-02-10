@@ -38,7 +38,7 @@ public class DialogFinder extends WindowFinderTemplate<Dialog> {
    * 
    * @param dialogName the name of the {@code Dialog} to look for.
    */
-  protected DialogFinder(@Nonnull String dialogName) {
+  protected DialogFinder(@Nullable String dialogName) {
     super(dialogName, Dialog.class);
   }
 

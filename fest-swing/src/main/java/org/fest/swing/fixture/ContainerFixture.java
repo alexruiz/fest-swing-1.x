@@ -16,6 +16,7 @@ package org.fest.swing.fixture;
 
 import static org.fest.swing.core.ComponentLookupScope.SHOWING_ONLY;
 import static org.fest.swing.timing.Pause.pause;
+import static org.fest.swing.timing.Timeout.timeout;
 
 import java.awt.Component;
 import java.awt.Container;
@@ -54,24 +55,32 @@ import org.fest.swing.core.GenericTypeMatcher;
 import org.fest.swing.core.NameMatcher;
 import org.fest.swing.core.Robot;
 import org.fest.swing.core.TypeMatcher;
+import org.fest.swing.driver.ComponentDriver;
 import org.fest.swing.exception.ComponentLookupException;
 import org.fest.swing.timing.Timeout;
 
 /**
  * Understands lookup of {@code Component}s contained in a {@code Container}.
  * 
- * @param <T> the type of container handled by this fixture.
+ * @param <S> used to simulate "self types." For more information please read &quot;<a href="http://goo.gl/fjgOM"
+ *          target="_blank">Emulating 'self types' using Java Generics to simplify fluent API implementation</a>.&quot;
+ * @param <C> the type of {@code Container} that this fixture can manage.
+ * @param <D> the type of {@link ComponentDriver} that this fixture uses internally.
  * 
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
-public abstract class ContainerFixture<T extends Container> extends ComponentFixture<T> implements
-ComponentContainerFixture {
+public abstract class ContainerFixture<S, C extends Container, D extends ComponentDriver> extends
+ComponentFixture<S, C, D> implements ComponentContainerFixture {
+  /** The timeout to use when looking for a dialog. It's value is 100 ms. **/
+  private static final Timeout DEFAULT_DIALOG_LOOKUP_TIMEOUT = timeout(100);
+
   private final JMenuItemFinder menuItemFinder;
 
   /**
    * Creates a new {@link ContainerFixture}.
    * 
+   * @param selfType the "self type."
    * @param robot performs simulation of user events on a {@code Container}.
    * @param type the type of the {@code Container} to find using the given {@code Robot}.
    * @throws NullPointerException if {@code robot} is {@code null}.
@@ -80,14 +89,15 @@ ComponentContainerFixture {
    * @throws ComponentLookupException if more than one matching component is found.
    * @see org.fest.swing.core.ComponentFinder#findByType(Class)
    */
-  public ContainerFixture(@Nonnull Robot robot, @Nonnull Class<? extends T> type) {
-    super(robot, type);
-    menuItemFinder = new JMenuItemFinder(robot, component());
+  public ContainerFixture(@Nonnull Class<S> selfType, @Nonnull Robot robot, @Nonnull Class<? extends C> type) {
+    super(selfType, robot, type);
+    menuItemFinder = new JMenuItemFinder(robot, target());
   }
 
   /**
    * Creates a new {@link ContainerFixture}.
    * 
+   * @param selfType the "self type."
    * @param robot performs simulation of user events on a {@code Container}.
    * @param name the name of the {@code Container} to find using the given {@code Robot}.
    * @param type the type of the {@code Container} to find using the given {@code Robot}.
@@ -97,22 +107,24 @@ ComponentContainerFixture {
    * @throws ComponentLookupException if more than one matching component is found.
    * @see org.fest.swing.core.ComponentFinder#findByName(String, Class)
    */
-  public ContainerFixture(@Nonnull Robot robot, @Nullable String name, @Nonnull Class<? extends T> type) {
-    super(robot, name, type);
-    menuItemFinder = new JMenuItemFinder(robot, component());
+  public ContainerFixture(@Nonnull Class<S> selfType, @Nonnull Robot robot, @Nullable String name,
+      @Nonnull Class<? extends C> type) {
+    super(selfType, robot, name, type);
+    menuItemFinder = new JMenuItemFinder(robot, target());
   }
 
   /**
    * Creates a new {@link ContainerFixture}.
    * 
+   * @param selfType the "self type."
    * @param robot performs simulation of user events on the given {@code Container}.
    * @param target the {@code Container} to be.
    * @throws NullPointerException if {@code robot} is {@code null}.
    * @throws NullPointerException if {@code target} is {@code null}.
    */
-  public ContainerFixture(@Nonnull Robot robot, @Nonnull T target) {
-    super(robot, target);
-    menuItemFinder = new JMenuItemFinder(robot, target);
+  public ContainerFixture(@Nonnull Class<S> selfType, @Nonnull Robot robot, @Nonnull C target) {
+    super(selfType, robot, target);
+    menuItemFinder = new JMenuItemFinder(robot, target());
   }
 
   /** {@inheritDoc} */
@@ -182,7 +194,7 @@ ComponentContainerFixture {
   @RunsInEDT
   @Override
   public @Nonnull DialogFixture dialog() {
-    return dialog(DEFAULT_DIALOG_LOOKUP_TIMEOUT);
+    return dialog(defaultDialogLookupTimeout());
   }
 
   /** {@inheritDoc} */
@@ -197,7 +209,7 @@ ComponentContainerFixture {
   @RunsInEDT
   @Override
   public @Nonnull DialogFixture dialog(@Nonnull GenericTypeMatcher<? extends Dialog> matcher) {
-    return dialog(matcher, DEFAULT_DIALOG_LOOKUP_TIMEOUT);
+    return dialog(matcher, defaultDialogLookupTimeout());
   }
 
   /** {@inheritDoc} */
@@ -212,7 +224,7 @@ ComponentContainerFixture {
   @RunsInEDT
   @Override
   public @Nonnull DialogFixture dialog(@Nullable String name) {
-    return dialog(name, DEFAULT_DIALOG_LOOKUP_TIMEOUT);
+    return dialog(name, defaultDialogLookupTimeout());
   }
 
   /** {@inheritDoc} */
@@ -234,7 +246,7 @@ ComponentContainerFixture {
   @RunsInEDT
   @Override
   public @Nonnull JFileChooserFixture fileChooser() {
-    return fileChooser(DEFAULT_DIALOG_LOOKUP_TIMEOUT);
+    return fileChooser(defaultDialogLookupTimeout());
   }
 
   /** {@inheritDoc} */
@@ -249,7 +261,7 @@ ComponentContainerFixture {
   @RunsInEDT
   @Override
   public @Nonnull JFileChooserFixture fileChooser(@Nonnull GenericTypeMatcher<? extends JFileChooser> matcher) {
-    return fileChooser(matcher, DEFAULT_DIALOG_LOOKUP_TIMEOUT);
+    return fileChooser(matcher, defaultDialogLookupTimeout());
   }
 
   /** {@inheritDoc} */
@@ -336,7 +348,7 @@ ComponentContainerFixture {
   @Override
   public @Nonnull JMenuItemFixture menuItem(@Nullable String name) {
     boolean requireShowing = SHOWING_ONLY.equals(robot().settings().componentLookupScope());
-    return new JMenuItemFixture(robot(), finder().findByName(component(), name, JMenuItem.class, requireShowing));
+    return new JMenuItemFixture(robot(), finder().findByName(target(), name, JMenuItem.class, requireShowing));
   }
 
   /** {@inheritDoc} */
@@ -350,7 +362,7 @@ ComponentContainerFixture {
   @RunsInEDT
   @Override
   public @Nonnull JOptionPaneFixture optionPane() {
-    return optionPane(DEFAULT_DIALOG_LOOKUP_TIMEOUT);
+    return optionPane(defaultDialogLookupTimeout());
   }
 
   /** {@inheritDoc} */
@@ -661,56 +673,60 @@ ComponentContainerFixture {
   /**
    * Finds a component by type, contained in this fixture's {@code Container}.
    * 
-   * @param <C> the generic type of the component to find.
+   * @param <T> the generic type of the component to find.
    * @param type the type of component to find.
    * @return the found component.
    * @throws ComponentLookupException if a matching component could not be found.
    * @throws ComponentLookupException if more than one matching component is found.
    */
-  protected final <C extends Component> C findByType(Class<C> type) {
-    return finder().findByType(component(), type, requireShowing());
+  protected final @Nonnull <T extends Component> T findByType(@Nonnull Class<T> type) {
+    return finder().findByType(target(), type, requireShowing());
   }
 
   /**
    * Finds a component by name and type, contained in this fixture's {@code Container}.
    * 
-   * @param <C> the generic type of the component to find.
+   * @param <T> the generic type of the component to find.
    * @param name the name of the component to find.
    * @param type the type of component to find.
    * @return the found component.
    * @throws ComponentLookupException if a matching component could not be found.
    * @throws ComponentLookupException if more than one matching component is found.
    */
-  protected final <C extends Component> C findByName(@Nullable String name, @Nonnull Class<C> type) {
-    return finder().findByName(component(), name, type, requireShowing());
+  protected final @Nonnull <T extends Component> T findByName(@Nullable String name, @Nonnull Class<T> type) {
+    return finder().findByName(target(), name, type, requireShowing());
   }
 
   /**
    * Finds a {@code Component} using the given {@link GenericTypeMatcher}, contained in this fixture's {@code Container}
    * .
    * 
-   * @param <C> the generic type of component the given matcher can handle.
+   * @param <T> the generic type of component the given matcher can handle.
    * @param matcher the matcher to use to find the component.
    * @return the found component.
    * @throws ComponentLookupException if a matching component could not be found.
    * @throws ComponentLookupException if more than one matching component is found.
    */
-  protected final <C extends Component> C find(@Nonnull GenericTypeMatcher<? extends C> matcher) {
-    return finder().find(component(), matcher);
+  protected final @Nonnull <T extends Component> T find(@Nonnull GenericTypeMatcher<? extends T> matcher) {
+    return finder().find(target(), matcher);
   }
 
   /** {@inheritDoc} */
   @RunsInEDT
   @Override
-  public @Nonnull <C extends Component, F extends ComponentFixture<C>> F with(
-      @Nonnull ComponentFixtureExtension<C, F> extension) {
-    return extension.createFixture(robot(), component());
+  public @Nonnull <T extends Component, F extends ComponentFixture<?, T, ?>> F with(
+      @Nonnull ComponentFixtureExtension<T, F> extension) {
+    return extension.createFixture(robot(), target());
   }
 
   /**
    * @return the {@code ComponentFinder} contained in this fixture's {@code Robot}.
    */
-  protected final ComponentFinder finder() {
+  protected final @Nonnull ComponentFinder finder() {
     return robot().finder();
+  }
+
+  protected static @Nonnull Timeout defaultDialogLookupTimeout() {
+    return DEFAULT_DIALOG_LOOKUP_TIMEOUT;
   }
 }

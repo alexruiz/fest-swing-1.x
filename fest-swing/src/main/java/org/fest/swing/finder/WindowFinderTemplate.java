@@ -19,6 +19,7 @@ import java.util.concurrent.TimeUnit;
 
 import javax.annotation.Nonnegative;
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import org.fest.swing.core.GenericTypeMatcher;
 import org.fest.swing.core.Robot;
@@ -39,7 +40,7 @@ public abstract class WindowFinderTemplate<T extends Window> extends ComponentFi
    * @param windowName the name of the {@code Window} to find.
    * @param windowType the type of the {@code Window} to find.
    */
-  protected WindowFinderTemplate(@Nonnull String windowName, @Nonnull Class<? extends T> windowType) {
+  protected WindowFinderTemplate(@Nullable String windowName, @Nonnull Class<? extends T> windowType) {
     super(windowName, windowType);
   }
 
@@ -98,5 +99,5 @@ public abstract class WindowFinderTemplate<T extends Window> extends ComponentFi
    *           could not be found.
    */
   @Override
-  public abstract @Nonnull WindowFixture<T> using(@Nonnull Robot robot);
+  public abstract @Nonnull WindowFixture<?, T, ?> using(@Nonnull Robot robot);
 }

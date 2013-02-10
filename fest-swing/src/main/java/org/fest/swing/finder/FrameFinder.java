@@ -38,7 +38,7 @@ public class FrameFinder extends WindowFinderTemplate<Frame> {
    * 
    * @param frameName the name of the {@code Frame} to look for.
    */
-  protected FrameFinder(@Nonnull String frameName) {
+  protected FrameFinder(@Nullable String frameName) {
     super(frameName, Frame.class);
   }
 

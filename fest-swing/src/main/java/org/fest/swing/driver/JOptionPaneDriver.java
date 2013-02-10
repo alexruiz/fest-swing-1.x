@@ -106,7 +106,7 @@ public class JOptionPaneDriver extends JComponentDriver {
    * @since 1.2
    */
   @RunsInEDT
-  public String title(@Nonnull JOptionPane optionPane) {
+  public @Nullable String title(@Nonnull JOptionPane optionPane) {
     return titleOf(optionPane);
   }
 
@@ -232,7 +232,7 @@ public class JOptionPaneDriver extends JComponentDriver {
    * @throws ComponentLookupException if the a button with the given text cannot be found.
    */
   @RunsInEDT
-  public @Nonnull JButton buttonWithText(@Nonnull JOptionPane optionPane, @Nonnull String text) {
+  public @Nonnull JButton buttonWithText(@Nonnull JOptionPane optionPane, @Nullable String text) {
     return robot.finder().find(optionPane, JButtonMatcher.withText(text).andShowing());
   }
 

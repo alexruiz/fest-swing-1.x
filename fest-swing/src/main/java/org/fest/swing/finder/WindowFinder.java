@@ -18,6 +18,7 @@ import java.awt.Dialog;
 import java.awt.Frame;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import org.fest.swing.core.GenericTypeMatcher;
 
@@ -75,7 +76,7 @@ public final class WindowFinder {
    * @param frameName the name of the frame to find.
    * @return the created finder.
    */
-  public static @Nonnull FrameFinder findFrame(@Nonnull String frameName) {
+  public static @Nonnull FrameFinder findFrame(@Nullable String frameName) {
     return new FrameFinder(frameName);
   }
 
@@ -105,7 +106,7 @@ public final class WindowFinder {
    * @param dialogName the name of the dialog to find.
    * @return the created finder.
    */
-  public static @Nonnull DialogFinder findDialog(@Nonnull String dialogName) {
+  public static @Nonnull DialogFinder findDialog(@Nullable String dialogName) {
     return new DialogFinder(dialogName);
   }
 

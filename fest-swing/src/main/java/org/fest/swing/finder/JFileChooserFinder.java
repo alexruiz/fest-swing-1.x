@@ -81,7 +81,7 @@ public class JFileChooserFinder extends ComponentFinderTemplate<JFileChooser> {
    * 
    * @param name the name of the {@code FileChooser} to look for.
    */
-  protected JFileChooserFinder(@Nonnull String name) {
+  protected JFileChooserFinder(@Nullable String name) {
     super(name, JFileChooser.class);
   }
 
@@ -109,7 +109,7 @@ public class JFileChooserFinder extends ComponentFinderTemplate<JFileChooser> {
    * @param name the name of the file chooser to find.
    * @return the created finder.
    */
-  public static @Nonnull JFileChooserFinder findFileChooser(@Nonnull String name) {
+  public static @Nonnull JFileChooserFinder findFileChooser(@Nullable String name) {
     return new JFileChooserFinder(name);
   }
 

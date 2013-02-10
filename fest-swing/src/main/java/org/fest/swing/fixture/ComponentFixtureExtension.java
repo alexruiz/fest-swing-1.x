@@ -30,7 +30,7 @@ import org.fest.swing.core.Robot;
  * 
  * @author Alex Ruiz
  */
-public abstract class ComponentFixtureExtension<C extends Component, F extends ComponentFixture<C>> {
+public abstract class ComponentFixtureExtension<C extends Component, F extends ComponentFixture<?, C, ?>> {
   /**
    * Creates a new {@link ComponentFixture}.
    * 

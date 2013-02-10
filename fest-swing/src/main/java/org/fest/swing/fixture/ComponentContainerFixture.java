@@ -14,8 +14,6 @@
  */
 package org.fest.swing.fixture;
 
-import static org.fest.swing.timing.Timeout.timeout;
-
 import java.awt.Component;
 import java.awt.Dialog;
 
@@ -55,9 +53,6 @@ import org.fest.swing.timing.Timeout;
  * @author Alex Ruiz
  */
 public interface ComponentContainerFixture {
-  /** The timeout to use when looking for a dialog. It's value is 100 ms. **/
-  public static Timeout DEFAULT_DIALOG_LOOKUP_TIMEOUT = timeout(100);
-
   /**
    * Returns a {@link JButton} found in this fixture's {@code Container}.
    * 
