@@ -37,7 +37,7 @@ import org.fest.swing.exception.ComponentLookupException;
  * @author Alex Ruiz
  */
 public abstract class JComponentFixture<S, T  extends JComponent, D extends JComponentDriver>
-extends ComponentFixture<S, T, D> {
+extends ComponentFixture<S, T, D> implements JPopupMenuInvokerFixture {
   /**
    * Creates a new {@link JComponentFixture}.
    * 
@@ -129,6 +129,7 @@ extends ComponentFixture<S, T, D> {
    * @throws IllegalStateException if this fixture's {@code JComponent} is not showing on the screen.
    * @throws ComponentLookupException if a pop-up menu cannot be found.
    */
+  @Override
   public @Nonnull JPopupMenuFixture showPopupMenu() {
     return new JPopupMenuFixture(robot(), driver().invokePopupMenu(target()));
   }
@@ -142,7 +143,8 @@ extends ComponentFixture<S, T, D> {
    * @throws IllegalStateException if this fixture's {@code JComponent} is not showing on the screen.
    * @throws ComponentLookupException if a pop-up menu cannot be found.
    */
-  public JPopupMenuFixture showPopupMenuAt(@Nonnull Point p) {
+  @Override
+  public @Nonnull JPopupMenuFixture showPopupMenuAt(@Nonnull Point p) {
     return new JPopupMenuFixture(robot(), driver().invokePopupMenu(target(), p));
   }
 }
