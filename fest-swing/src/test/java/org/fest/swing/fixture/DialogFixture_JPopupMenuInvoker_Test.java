@@ -15,14 +15,14 @@
  */
 package org.fest.swing.fixture;
 
-import static org.easymock.classextension.EasyMock.createMock;
 import static org.fest.swing.test.builder.JDialogs.dialog;
 import static org.fest.swing.test.task.WindowDestroyTask.hideAndDisposeInEDT;
 
 import java.awt.Dialog;
 
 import org.fest.swing.driver.DialogDriver;
-import org.junit.*;
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
 
 /**
  * Tests for methods in {@link DialogFixture} that are inherited from {@link JPopupMenuInvokerFixture}.
@@ -31,7 +31,7 @@ import org.junit.*;
  * @author Yvonne Wang
  */
 public class DialogFixture_JPopupMenuInvoker_Test extends
-    JPopupMenuInvokerFixture_TestCase<Dialog> {
+JPopupMenuInvokerFixture_TestCase<Dialog> {
   private static Dialog target;
 
   private DialogDriver driver;
@@ -50,7 +50,7 @@ public class DialogFixture_JPopupMenuInvoker_Test extends
   @Override void onSetUp() {
     driver = createMock(DialogDriver.class);
     fixture = new DialogFixture(robot(), target);
-    fixture.driver(driver);
+    fixture.replaceDriver(driver);
   }
 
   @Override DialogDriver driver() { return driver; }

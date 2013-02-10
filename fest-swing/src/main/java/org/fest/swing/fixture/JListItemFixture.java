@@ -152,7 +152,7 @@ public class JListItemFixture implements ItemFixture {
    * @return the {@code String} representation of the value of this fixture's list item.
    * @throws IndexOutOfBoundsException if this item's index is negative or greater than the index of the last item in
    * the {@code JList}.
-   * @see JListFixture#cellReader(JListCellReader)
+   * @see JListFixture#replaceCellReader(JListCellReader)
    */
   public final String value() {
     return list.valueAt(index);

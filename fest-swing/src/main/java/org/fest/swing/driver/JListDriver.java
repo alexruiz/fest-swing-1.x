@@ -107,7 +107,7 @@ public class JListDriver extends JComponentDriver {
    * @see #cellReader(JListCellReader)
    */
   @RunsInEDT
-  public String[] contentsOf(@Nonnull JList list) {
+  public @Nonnull String[] contentsOf(@Nonnull JList list) {
     return contents(list, cellReader());
   }
 
@@ -176,7 +176,7 @@ public class JListDriver extends JComponentDriver {
    * @throws LocationUnavailableException if an element matching the given value cannot be found.
    */
   @RunsInEDT
-  public void selectItem(@Nonnull JList list, @Nonnull String value) {
+  public void selectItem(@Nonnull JList list, @Nullable String value) {
     selectItem(list, new StringTextMatcher(value));
   }
 
@@ -218,7 +218,7 @@ public class JListDriver extends JComponentDriver {
    * @throws IllegalStateException if the {@code JList} is not showing on the screen.
    * @throws LocationUnavailableException if an element matching the given value cannot be found.
    */
-  public void clickItem(@Nonnull JList list, @Nonnull String value, @Nonnull MouseButton button, int times) {
+  public void clickItem(@Nonnull JList list, @Nullable String value, @Nonnull MouseButton button, int times) {
     clickItem(list, new StringTextMatcher(value), button, times);
   }
 

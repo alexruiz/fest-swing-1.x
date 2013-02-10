@@ -49,7 +49,7 @@ public abstract class JComboBoxDriver_TestCase extends RobotBasedTestCase {
   @Override protected final void onSetUp() {
     cellReader = new JComboBoxCellReaderStub();
     driver = new JComboBoxDriver(robot);
-    driver.cellReader(cellReader);
+    driver.replaceCellReader(cellReader);
     window = MyWindow.createNew(getClass());
     comboBox = window.comboBox;
   }

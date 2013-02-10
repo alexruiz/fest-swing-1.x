@@ -66,7 +66,8 @@ public abstract class ComponentFixture<S, C extends Component, D extends Compone
 
   private final C target;
   private final S myself;
-  private final D driver;
+
+  private D driver;
 
   /**
    * Creates a new {@link ComponentFixture}.
@@ -133,6 +134,11 @@ public abstract class ComponentFixture<S, C extends Component, D extends Compone
 
   protected final @Nonnull D driver() {
     return driver;
+  }
+
+  public void replaceDriverWith(@Nonnull D driver) {
+    checkNotNull(driver);
+    this.driver = driver;
   }
 
   /**

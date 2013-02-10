@@ -229,12 +229,12 @@ public class JComboBoxFixtureTest extends JComboBoxFixture_TestCase {
     final JComboBoxCellReader reader = createMock(JComboBoxCellReader.class);
     new EasyMockTemplate(driver()) {
       @Override protected void expectations() {
-        driver().cellReader(reader);
+        driver().replaceCellReader(reader);
         expectLastCall().once();
       }
 
       @Override protected void codeToTest() {
-        assertThatReturnsSelf(fixture().cellReader(reader));
+        assertThatReturnsSelf(fixture().replaceCellReader(reader));
       }
     }.run();
   }

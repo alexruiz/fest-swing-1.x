@@ -18,7 +18,7 @@ package org.fest.swing.driver;
 import org.junit.Test;
 
 /**
- * Tests for {@link JComboBoxDriver#cellReader(org.fest.swing.cell.JComboBoxCellReader)}.
+ * Tests for {@link JComboBoxDriver#replaceCellReader(org.fest.swing.cell.JComboBoxCellReader)}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
@@ -26,6 +26,6 @@ import org.junit.Test;
 public class JComboBoxDriver_cellReader_Test extends JComboBoxDriver_TestCase {
   @Test(expected = NullPointerException.class)
   public void should_throw_error_if_cellReader_is_null() {
-    driver.cellReader(null);
+    driver.replaceCellReader(null);
   }
 }

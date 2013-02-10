@@ -23,7 +23,6 @@ import javax.swing.JList;
 
 import org.fest.swing.cell.JComboBoxCellReader;
 import org.fest.swing.core.Robot;
-import org.fest.swing.driver.BasicJComboBoxCellReader;
 import org.fest.swing.driver.JComboBoxDriver;
 import org.fest.swing.exception.ActionFailedException;
 import org.fest.swing.exception.ComponentLookupException;
@@ -77,7 +76,7 @@ EditableComponentFixture<JComboBoxFixture>, ItemGroupFixture<JComboBoxFixture> {
   /**
    * @return the {@code String} representation of the elements in this fixture's {@code JComboBox}, using this fixture's
    * {@link JComboBoxCellReader}.
-   * @see #cellReader(JComboBoxCellReader)
+   * @see #replaceCellReader(JComboBoxCellReader)
    */
   @Override
   public @Nonnull String[] contents() {
@@ -122,7 +121,7 @@ EditableComponentFixture<JComboBoxFixture>, ItemGroupFixture<JComboBoxFixture> {
    * @throws LocationUnavailableException if an element matching the given text cannot be found.
    * @throws IllegalStateException if this fixture's {@code JComboBox} is disabled.
    * @throws IllegalStateException if this fixture's {@code JComboBox} is not showing on the screen.
-   * @see #cellReader(JComboBoxCellReader)
+   * @see #replaceCellReader(JComboBoxCellReader)
    */
   @Override
   public @Nonnull JComboBoxFixture selectItem(@Nullable String text) {
@@ -140,7 +139,7 @@ EditableComponentFixture<JComboBoxFixture>, ItemGroupFixture<JComboBoxFixture> {
    * @throws IllegalStateException if this fixture's {@code JComboBox} is disabled.
    * @throws IllegalStateException if this fixture's {@code JComboBox} is not showing on the screen.
    * @throws NullPointerException if the given regular expression pattern is {@code null}.
-   * @see #cellReader(JComboBoxCellReader)
+   * @see #replaceCellReader(JComboBoxCellReader)
    * @since 1.2
    */
   @Override
@@ -157,7 +156,7 @@ EditableComponentFixture<JComboBoxFixture>, ItemGroupFixture<JComboBoxFixture> {
    * @return the {@code String} representation of the value of an item in this fixture's {@code JComboBox}.
    * @throws IndexOutOfBoundsException if the given index is negative or greater than the index of the last item in the
    *           {@code JComboBox}.
-   * @see #cellReader(JComboBoxCellReader)
+   * @see #replaceCellReader(JComboBoxCellReader)
    */
   @Override
   public @Nullable String valueAt(int index) {
@@ -171,7 +170,7 @@ EditableComponentFixture<JComboBoxFixture>, ItemGroupFixture<JComboBoxFixture> {
    * @param value the text to match. It can be a regular expression.
    * @return this fixture.
    * @throws AssertionError if the selected item does not match the given text.
-   * @see #cellReader(JComboBoxCellReader)
+   * @see #replaceCellReader(JComboBoxCellReader)
    */
   @Override
   public @Nonnull JComboBoxFixture requireSelection(@Nullable String value) {
@@ -187,7 +186,7 @@ EditableComponentFixture<JComboBoxFixture>, ItemGroupFixture<JComboBoxFixture> {
    * @return this fixture.
    * @throws NullPointerException if the given regular expression pattern is {@code null}.
    * @throws AssertionError if the selected item does not match the given regular expression pattern.
-   * @see #cellReader(JComboBoxCellReader)
+   * @see #replaceCellReader(JComboBoxCellReader)
    * @since 1.2
    */
   @Override
@@ -327,15 +326,7 @@ EditableComponentFixture<JComboBoxFixture>, ItemGroupFixture<JComboBoxFixture> {
     return driver().dropDownList();
   }
 
-  /**
-   * Updates the implementation of {@link JComboBoxCellReader} to use when comparing internal values of this fixture's
-   * {@code JComboBox} and the values expected in a test. The default implementation to use is
-   * {@link BasicJComboBoxCellReader}.
-   * 
-   * @param cellReader the new {@code JComboBoxCellValueReader} to use.
-   * @throws NullPointerException if {@code cellReader} is {@code null}.
-   */
-  public void cellReader(@Nonnull JComboBoxCellReader cellReader) {
-    driver().cellReader(cellReader);
+  public void replaceCellReader(@Nonnull JComboBoxCellReader cellReader) {
+    driver().replaceCellReader(cellReader);
   }
 }

@@ -93,7 +93,7 @@ public class JComboBoxDriver extends JComponentDriver {
     super(robot);
     listDriver = new JListDriver(robot);
     dropDownListFinder = new JComboBoxDropDownListFinder(robot);
-    cellReader(new BasicJComboBoxCellReader());
+    replaceCellReader(new BasicJComboBoxCellReader());
   }
 
   /**
@@ -103,7 +103,7 @@ public class JComboBoxDriver extends JComponentDriver {
    * @param comboBox the target {@code JComboBox}.
    * @return an array of {@code String}s that represent the contents of the given {@code JComboBox} list.
    * @see #value(JComboBox, int)
-   * @see #cellReader(JComboBoxCellReader)
+   * @see #replaceCellReader(JComboBoxCellReader)
    */
   @RunsInEDT
   public @Nonnull String[] contentsOf(@Nonnull JComboBox comboBox) {
@@ -119,7 +119,7 @@ public class JComboBoxDriver extends JComponentDriver {
    * @throws LocationUnavailableException if an element matching the given value cannot be found.
    * @throws IllegalStateException if the {@code JComboBox} is disabled.
    * @throws IllegalStateException if the {@code JComboBox} is not showing on the screen.
-   * @see #cellReader(JComboBoxCellReader)
+   * @see #replaceCellReader(JComboBoxCellReader)
    */
   @RunsInEDT
   public void selectItem(@Nonnull JComboBox comboBox, @Nullable String value) {
@@ -136,7 +136,7 @@ public class JComboBoxDriver extends JComponentDriver {
    * @throws IllegalStateException if the {@code JComboBox} is disabled.
    * @throws IllegalStateException if the {@code JComboBox} is not showing on the screen.
    * @throws NullPointerException if the given regular expression pattern is {@code null}.
-   * @see #cellReader(JComboBoxCellReader)
+   * @see #replaceCellReader(JComboBoxCellReader)
    * @since 1.2
    */
   @RunsInEDT
@@ -162,7 +162,7 @@ public class JComboBoxDriver extends JComponentDriver {
    * @param comboBox the target {@code JComboBox}.
    * @param value the text to match. It can be a regular expression.
    * @throws AssertionError if the selected item does not match the given value.
-   * @see #cellReader(JComboBoxCellReader)
+   * @see #replaceCellReader(JComboBoxCellReader)
    */
   @RunsInEDT
   public void requireSelection(@Nonnull JComboBox comboBox, @Nullable String value) {
@@ -178,7 +178,7 @@ public class JComboBoxDriver extends JComponentDriver {
    * @param pattern the regular expression pattern to match.
    * @throws AssertionError if the selected item does not match the given regular expression pattern.
    * @throws NullPointerException if the given regular expression pattern is {@code null}.
-   * @see #cellReader(JComboBoxCellReader)
+   * @see #replaceCellReader(JComboBoxCellReader)
    * @since 1.2
    */
   @RunsInEDT
@@ -244,7 +244,7 @@ public class JComboBoxDriver extends JComponentDriver {
    * @return the value of the element under the given index.
    * @throws IndexOutOfBoundsException if the given index is negative or greater than the index of the last item in the
    *           {@code JComboBox}.
-   * @see #cellReader(JComboBoxCellReader)
+   * @see #replaceCellReader(JComboBoxCellReader)
    */
   public @Nullable String value(@Nonnull JComboBox comboBox, int index) {
     return valueAsText(comboBox, index, cellReader());
@@ -532,7 +532,7 @@ public class JComboBoxDriver extends JComponentDriver {
    * @param newCellReader the new {@code JComboBoxCellValueReader} to use.
    * @throws NullPointerException if {@code newCellReader} is {@code null}.
    */
-  public void cellReader(@Nonnull JComboBoxCellReader newCellReader) {
+  public void replaceCellReader(@Nonnull JComboBoxCellReader newCellReader) {
     cellReader = checkNotNull(newCellReader);
   }
 

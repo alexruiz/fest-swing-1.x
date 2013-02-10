@@ -528,7 +528,7 @@ public class JListFixtureTest extends JListFixture_TestCase {
       }
 
       @Override protected void codeToTest() {
-        assertThatReturnsSelf(fixture().cellReader(reader));
+        assertThatReturnsSelf(fixture().replaceCellReader(reader));
       }
     }.run();
   }
