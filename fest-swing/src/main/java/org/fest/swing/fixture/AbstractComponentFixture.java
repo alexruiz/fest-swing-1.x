@@ -136,7 +136,7 @@ public abstract class AbstractComponentFixture<S, C extends Component, D extends
     return driver;
   }
 
-  public void replaceDriverWith(@Nonnull D driver) {
+  public final void replaceDriverWith(@Nonnull D driver) {
     checkNotNull(driver);
     this.driver = driver;
   }

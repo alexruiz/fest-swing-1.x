@@ -25,8 +25,7 @@ import org.fest.swing.exception.ComponentLookupException;
  * 
  * @author Alex Ruiz
  */
-public class JCheckBoxFixture extends AbstractButtonFixture<JCheckBoxFixture, JCheckBox> implements
-TwoStateButtonFixture<JCheckBoxFixture> {
+public class JCheckBoxFixture extends AbstractTwoStateButtonFixture<JCheckBoxFixture, JCheckBox> {
   /**
    * Creates a new {@link JCheckBoxFixture}.
    * 
@@ -50,53 +49,5 @@ TwoStateButtonFixture<JCheckBoxFixture> {
    */
   public JCheckBoxFixture(@Nonnull Robot robot, @Nonnull String checkBoxName) {
     super(JCheckBoxFixture.class, robot, checkBoxName, JCheckBox.class);
-  }
-
-  /**
-   * Checks (or selects) this fixture's {@code JCheckBox} only it is not already checked.
-   * 
-   * @return this fixture.
-   * @throws IllegalStateException if this fixture's {@code JCheckBox} is disabled.
-   * @throws IllegalStateException if this fixture's {@code JCheckBox} is not showing on the screen.
-   */
-  public @Nonnull JCheckBoxFixture check() {
-    driver().select(target());
-    return this;
-  }
-
-  /**
-   * Unchecks this fixture's {@code JCheckBox} only if it is checked.
-   * 
-   * @return this fixture.
-   * @throws IllegalStateException if this fixture's {@code JCheckBox} is disabled.
-   * @throws IllegalStateException if this fixture's {@code JCheckBox} is not showing on the screen.
-   */
-  public @Nonnull JCheckBoxFixture uncheck() {
-    driver().unselect(target());
-    return this;
-  }
-
-  /**
-   * Verifies that this fixture's {@code JCheckBox} is selected.
-   * 
-   * @return this fixture.
-   * @throws AssertionError if the {@code JCheckBox} managed by this fixture is not selected.
-   */
-  @Override
-  public @Nonnull JCheckBoxFixture requireSelected() {
-    driver().requireSelected(target());
-    return this;
-  }
-
-  /**
-   * Verifies that this fixture's {@code JCheckBox} is not selected.
-   * 
-   * @return this fixture.
-   * @throws AssertionError if the {@code JCheckBox} managed by this fixture is selected.
-   */
-  @Override
-  public @Nonnull JCheckBoxFixture requireNotSelected() {
-    driver().requireNotSelected(target());
-    return this;
   }
 }
