@@ -219,7 +219,7 @@ public class JSpinnerDriver extends JComponentDriver {
    * @since 1.2
    */
   @RunsInEDT
-  public String textOf(@Nonnull JSpinner spinner) {
+  public @Nullable String textOf(@Nonnull JSpinner spinner) {
     JTextComponent editor = findEditor(spinner);
     if (editor != null) {
       return JTextComponentTextQuery.textOf(editor);
