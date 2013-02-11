@@ -51,7 +51,7 @@ import org.fest.swing.timing.Timeout;
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
-public abstract class ComponentFixture<S, C extends Component, D extends ComponentDriver> {
+public abstract class ComponentFixture<S, C extends Component, D extends ComponentDriver> implements MouseInputSimulationFixture<S> {
   /** Name of the property "font". */
   protected static final String FONT_PROPERTY = "font";
 
@@ -148,6 +148,7 @@ public abstract class ComponentFixture<S, C extends Component, D extends Compone
    * @throws IllegalStateException if this fixture's {@code Component} is disabled.
    * @throws IllegalStateException if this fixture's {@code Component} is not showing on the screen.
    */
+  @Override
   public final @Nonnull S click() {
     driver.click(target());
     return myself();
@@ -163,6 +164,7 @@ public abstract class ComponentFixture<S, C extends Component, D extends Compone
    * @throws IllegalStateException if this fixture's {@code Component} is disabled.
    * @throws IllegalStateException if this fixture's {@code Component} is not showing on the screen.
    */
+  @Override
   public final @Nonnull S click(@Nonnull MouseButton button) {
     driver.click(target(), button);
     return myself();
@@ -177,6 +179,7 @@ public abstract class ComponentFixture<S, C extends Component, D extends Compone
    * @throws IllegalStateException if this fixture's {@code Component} is disabled.
    * @throws IllegalStateException if this fixture's {@code Component} is not showing on the screen.
    */
+  @Override
   public final @Nonnull S click(@Nonnull MouseClickInfo mouseClickInfo) {
     driver.click(target(), mouseClickInfo);
     return myself();
@@ -189,6 +192,7 @@ public abstract class ComponentFixture<S, C extends Component, D extends Compone
    * @throws IllegalStateException if this fixture's {@code Component} is disabled.
    * @throws IllegalStateException if this fixture's {@code Component} is not showing on the screen.
    */
+  @Override
   public final @Nonnull S doubleClick() {
     driver.doubleClick(target());
     return myself();
@@ -201,6 +205,7 @@ public abstract class ComponentFixture<S, C extends Component, D extends Compone
    * @throws IllegalStateException if this fixture's {@code Component} is disabled.
    * @throws IllegalStateException if this fixture's {@code Component} is not showing on the screen.
    */
+  @Override
   public final @Nonnull S rightClick() {
     driver.rightClick(target());
     return myself();
