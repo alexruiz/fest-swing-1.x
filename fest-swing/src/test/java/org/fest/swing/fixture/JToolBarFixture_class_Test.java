@@ -28,6 +28,6 @@ import org.junit.Test;
 public class JToolBarFixture_class_Test extends JToolBarFixture_TestCase {
   @Test
   public void should_be_ContainerFixture() {
-    assertThat(fixture()).isInstanceOf(ContainerFixture.class);
+    assertThat(fixture()).isInstanceOf(AbstractContainerFixture.class);
   }
 }

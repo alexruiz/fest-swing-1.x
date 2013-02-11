@@ -70,15 +70,15 @@ import org.fest.swing.timing.Timeout;
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
-public abstract class ContainerFixture<S, C extends Container, D extends ComponentDriver> extends
-ComponentFixture<S, C, D> implements ComponentContainerFixture {
+public abstract class AbstractContainerFixture<S, C extends Container, D extends ComponentDriver> extends
+AbstractComponentFixture<S, C, D> implements ComponentContainerFixture {
   /** The timeout to use when looking for a dialog. It's value is 100 ms. **/
   private static final Timeout DEFAULT_DIALOG_LOOKUP_TIMEOUT = timeout(100);
 
   private final JMenuItemFinder menuItemFinder;
 
   /**
-   * Creates a new {@link ContainerFixture}.
+   * Creates a new {@link AbstractContainerFixture}.
    * 
    * @param selfType the "self type."
    * @param robot performs simulation of user events on a {@code Container}.
@@ -89,13 +89,13 @@ ComponentFixture<S, C, D> implements ComponentContainerFixture {
    * @throws ComponentLookupException if more than one matching component is found.
    * @see org.fest.swing.core.ComponentFinder#findByType(Class)
    */
-  public ContainerFixture(@Nonnull Class<S> selfType, @Nonnull Robot robot, @Nonnull Class<? extends C> type) {
+  public AbstractContainerFixture(@Nonnull Class<S> selfType, @Nonnull Robot robot, @Nonnull Class<? extends C> type) {
     super(selfType, robot, type);
     menuItemFinder = new JMenuItemFinder(robot, target());
   }
 
   /**
-   * Creates a new {@link ContainerFixture}.
+   * Creates a new {@link AbstractContainerFixture}.
    * 
    * @param selfType the "self type."
    * @param robot performs simulation of user events on a {@code Container}.
@@ -107,14 +107,14 @@ ComponentFixture<S, C, D> implements ComponentContainerFixture {
    * @throws ComponentLookupException if more than one matching component is found.
    * @see org.fest.swing.core.ComponentFinder#findByName(String, Class)
    */
-  public ContainerFixture(@Nonnull Class<S> selfType, @Nonnull Robot robot, @Nullable String name,
+  public AbstractContainerFixture(@Nonnull Class<S> selfType, @Nonnull Robot robot, @Nullable String name,
       @Nonnull Class<? extends C> type) {
     super(selfType, robot, name, type);
     menuItemFinder = new JMenuItemFinder(robot, target());
   }
 
   /**
-   * Creates a new {@link ContainerFixture}.
+   * Creates a new {@link AbstractContainerFixture}.
    * 
    * @param selfType the "self type."
    * @param robot performs simulation of user events on the given {@code Container}.
@@ -122,7 +122,7 @@ ComponentFixture<S, C, D> implements ComponentContainerFixture {
    * @throws NullPointerException if {@code robot} is {@code null}.
    * @throws NullPointerException if {@code target} is {@code null}.
    */
-  public ContainerFixture(@Nonnull Class<S> selfType, @Nonnull Robot robot, @Nonnull C target) {
+  public AbstractContainerFixture(@Nonnull Class<S> selfType, @Nonnull Robot robot, @Nonnull C target) {
     super(selfType, robot, target);
     menuItemFinder = new JMenuItemFinder(robot, target());
   }
@@ -714,7 +714,7 @@ ComponentFixture<S, C, D> implements ComponentContainerFixture {
   /** {@inheritDoc} */
   @RunsInEDT
   @Override
-  public @Nonnull <T extends Component, F extends ComponentFixture<?, T, ?>> F with(
+  public @Nonnull <T extends Component, F extends AbstractComponentFixture<?, T, ?>> F with(
       @Nonnull ComponentFixtureExtension<T, F> extension) {
     return extension.createFixture(robot(), target());
   }

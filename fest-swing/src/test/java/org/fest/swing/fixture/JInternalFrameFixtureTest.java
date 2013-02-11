@@ -206,6 +206,6 @@ public class JInternalFrameFixtureTest extends JInternalFrameFixture_TestCase {
 
   @Test
   public void shouldBeContainerFixture() {
-    assertThat(fixture()).isInstanceOf(ContainerFixture.class);
+    assertThat(fixture()).isInstanceOf(AbstractContainerFixture.class);
   }
 }

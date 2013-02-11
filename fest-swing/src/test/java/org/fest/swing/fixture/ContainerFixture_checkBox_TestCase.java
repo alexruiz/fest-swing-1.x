@@ -25,7 +25,7 @@ import org.fest.swing.test.core.RobotBasedTestCase;
 import org.fest.swing.test.swing.TestWindow;
 
 /**
- * Base test case for lookup of {@code JCheckBox}s in {@link ContainerFixture}.
+ * Base test case for lookup of {@code JCheckBox}s in {@link AbstractContainerFixture}.
  *
  * @author Alex Ruiz
  */

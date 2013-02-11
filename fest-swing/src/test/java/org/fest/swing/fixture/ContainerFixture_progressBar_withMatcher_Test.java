@@ -25,7 +25,7 @@ import org.fest.swing.exception.ComponentLookupException;
 import org.junit.Test;
 
 /**
- * Tests for {@link ContainerFixture#progressBar(GenericTypeMatcher)}.
+ * Tests for {@link AbstractContainerFixture#progressBar(GenericTypeMatcher)}.
  *
  * @author Alex Ruiz
  */

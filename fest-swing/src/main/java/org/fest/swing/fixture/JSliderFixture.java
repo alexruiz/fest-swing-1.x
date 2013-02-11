@@ -36,8 +36,8 @@ import org.fest.swing.timing.Timeout;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class JSliderFixture extends ComponentFixture<JSlider> implements CommonComponentFixture,
-    JComponentFixture, JPopupMenuInvokerFixture {
+public class JSliderFixture extends AbstractComponentFixture<JSlider> implements CommonComponentFixture,
+    AbstractJComponentFixture, JPopupMenuInvokerFixture {
   private JSliderDriver driver;
 
   /**

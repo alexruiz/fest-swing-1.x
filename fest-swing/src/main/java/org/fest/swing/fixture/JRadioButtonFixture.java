@@ -36,8 +36,8 @@ import org.fest.swing.timing.Timeout;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class JRadioButtonFixture extends ComponentFixture<JRadioButton> implements CommonComponentFixture,
-    JComponentFixture, JPopupMenuInvokerFixture, TextDisplayFixture, TwoStateButtonFixture {
+public class JRadioButtonFixture extends AbstractComponentFixture<JRadioButton> implements CommonComponentFixture,
+    AbstractJComponentFixture, JPopupMenuInvokerFixture, TextDisplayFixture, TwoStateButtonFixture {
   private AbstractButtonDriver driver;
 
   /**

@@ -29,7 +29,7 @@ import org.fest.swing.test.swing.*;
 import org.fest.swing.test.swing.WindowLauncher.DialogToLaunch;
 
 /**
- * Base test case for lookup of {@code Dialog}s in {@link ContainerFixture}.
+ * Base test case for lookup of {@code Dialog}s in {@link AbstractContainerFixture}.
  *
  * @author Alex Ruiz
  */

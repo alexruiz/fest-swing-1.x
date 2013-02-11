@@ -30,7 +30,7 @@ import org.fest.swing.exception.ComponentLookupException;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class JFileChooserFixture extends JComponentFixture<JFileChooserFixture, JFileChooser, JFileChooserDriver> {
+public class JFileChooserFixture extends AbstractJComponentFixture<JFileChooserFixture, JFileChooser, JFileChooserDriver> {
   /**
    * Creates a new {@link JFileChooserFixture}.
    * 

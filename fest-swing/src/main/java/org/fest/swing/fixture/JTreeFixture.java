@@ -67,8 +67,8 @@ import org.fest.swing.timing.Timeout;
  * @author Yvonne Wang
  * @author Fabien Barbero
  */
-public class JTreeFixture extends ComponentFixture<JTree> implements CommonComponentFixture,
-    JComponentFixture, JPopupMenuInvokerFixture {
+public class JTreeFixture extends AbstractComponentFixture<JTree> implements CommonComponentFixture,
+    AbstractJComponentFixture, JPopupMenuInvokerFixture {
   private JTreeDriver driver;
 
   /**

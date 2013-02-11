@@ -36,8 +36,8 @@ import org.fest.swing.timing.Timeout;
  *
  * @author Alex Ruiz
  */
-public class JToolBarFixture extends ContainerFixture<JToolBar> implements CommonComponentFixture,
-  JComponentFixture, JPopupMenuInvokerFixture {
+public class JToolBarFixture extends AbstractContainerFixture<JToolBar> implements CommonComponentFixture,
+  AbstractJComponentFixture, JPopupMenuInvokerFixture {
   /**
    * Understands constraints used to unfloat a floating {@code JToolBar}.
    *

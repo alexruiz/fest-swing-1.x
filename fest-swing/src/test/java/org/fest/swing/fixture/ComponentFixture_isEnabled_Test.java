@@ -34,7 +34,7 @@ import org.junit.runners.*;
 import org.junit.runners.Parameterized.Parameters;
 
 /**
- * Tests for {@link ComponentFixture#isEnabled()}.
+ * Tests for {@link AbstractComponentFixture#isEnabled()}.
  *
  * @author Alex Ruiz
  */

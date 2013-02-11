@@ -25,7 +25,7 @@ import org.fest.swing.core.*;
 import org.junit.Test;
 
 /**
- * Tests for {@link ComponentFixture#ComponentFixture(Robot, Class)}.
+ * Tests for {@link AbstractComponentFixture#ComponentFixture(Robot, Class)}.
  *
  * @author Alex Ruiz
  */

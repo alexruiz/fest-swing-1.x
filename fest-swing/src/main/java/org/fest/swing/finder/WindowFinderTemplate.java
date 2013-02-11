@@ -23,7 +23,7 @@ import javax.annotation.Nullable;
 
 import org.fest.swing.core.GenericTypeMatcher;
 import org.fest.swing.core.Robot;
-import org.fest.swing.fixture.WindowFixture;
+import org.fest.swing.fixture.AbstractWindowFixture;
 
 /**
  * Template for {@code Window} finders.
@@ -99,5 +99,5 @@ public abstract class WindowFinderTemplate<T extends Window> extends ComponentFi
    *           could not be found.
    */
   @Override
-  public abstract @Nonnull WindowFixture<?, T, ?> using(@Nonnull Robot robot);
+  public abstract @Nonnull AbstractWindowFixture<?, T, ?> using(@Nonnull Robot robot);
 }

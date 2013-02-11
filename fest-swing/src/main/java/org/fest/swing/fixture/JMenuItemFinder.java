@@ -18,16 +18,18 @@ package org.fest.swing.fixture;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.format.Formatting.format;
 
-import java.awt.*;
+import java.awt.Component;
+import java.awt.Container;
 
+import javax.annotation.Nonnull;
 import javax.swing.JMenuItem;
 
-import org.fest.swing.core.*;
+import org.fest.swing.core.ComponentMatcher;
 import org.fest.swing.core.Robot;
 import org.fest.swing.driver.JMenuItemMatcher;
 
 /**
- * Understands lookup of {@code JMenuItem}s.
+ * Looks up of {@code JMenuItem}s.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
@@ -36,12 +38,12 @@ class JMenuItemFinder {
   private final Robot robot;
   private final Container target;
 
-  JMenuItemFinder(Robot robot, Container target) {
+  JMenuItemFinder(@Nonnull Robot robot, @Nonnull Container target) {
     this.robot = robot;
     this.target = target;
   }
 
-  JMenuItem menuItemWithPath(String...path) {
+  @Nonnull JMenuItem menuItemWithPath(@Nonnull String...path) {
     ComponentMatcher m = new JMenuItemMatcher(path);
     Component item = robot.finder().find(target, m);
     assertThat(item).as(format(item)).isInstanceOf(JMenuItem.class);

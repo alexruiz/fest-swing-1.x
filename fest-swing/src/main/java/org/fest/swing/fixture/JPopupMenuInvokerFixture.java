@@ -21,7 +21,7 @@ import javax.annotation.Nonnull;
 import org.fest.swing.exception.ComponentLookupException;
 
 /**
- * Simulates user input on {@code Component}s capable of invoking {@code JPopupMenu}s.
+ * Simulates user input on {@code JComponent}s capable of invoking {@code JPopupMenu}s.
  * 
  * @author Alex Ruiz
  */

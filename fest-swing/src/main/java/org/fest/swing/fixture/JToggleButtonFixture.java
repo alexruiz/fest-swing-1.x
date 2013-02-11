@@ -35,8 +35,8 @@ import org.fest.swing.timing.Timeout;
  *
  * @author Alex Ruiz
  */
-public class JToggleButtonFixture extends ComponentFixture<JToggleButton> implements CommonComponentFixture,
-    JComponentFixture, JPopupMenuInvokerFixture, TextDisplayFixture, TwoStateButtonFixture {
+public class JToggleButtonFixture extends AbstractComponentFixture<JToggleButton> implements CommonComponentFixture,
+    AbstractJComponentFixture, JPopupMenuInvokerFixture, TextDisplayFixture, TwoStateButtonFixture {
   private AbstractButtonDriver driver;
 
   /**

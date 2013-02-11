@@ -1,26 +1,28 @@
 /*
  * Created on Sep 5, 2007
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ * 
  * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
- *
+ * 
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+ * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations under the License.
+ * 
  * Copyright @2007-2013 the original author or authors.
  */
 package org.fest.swing.fixture;
 
-import javax.swing.*;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+import javax.swing.JMenuItem;
+import javax.swing.JPopupMenu;
 
-import org.fest.swing.core.*;
+import org.fest.swing.core.GenericTypeMatcher;
+import org.fest.swing.core.Robot;
 import org.fest.swing.driver.JPopupMenuDriver;
-import org.fest.swing.exception.*;
-import org.fest.swing.timing.Timeout;
+import org.fest.swing.exception.ComponentLookupException;
 
 /**
  * Understands functional testing of {@code JPopupMenu}s:
@@ -29,280 +31,84 @@ import org.fest.swing.timing.Timeout;
  * <li>state verification</li>
  * <li>property value query</li>
  * </ul>
- *
+ * 
  * @author Yvonne Wang
  */
-public class JPopupMenuFixture extends ComponentFixture<JPopupMenu> implements CommonComponentFixture {
-  private JPopupMenuDriver driver;
+public class JPopupMenuFixture extends AbstractJComponentFixture<JPopupMenuFixture, JPopupMenu, JPopupMenuDriver> {
   private final JMenuItemFinder menuItemFinder;
 
   /**
    * Creates a new {@link JPopupMenuFixture}.
+   * 
    * @param robot performs simulation of user events on the given {@code JPopupMenu}.
    * @param target the {@code JPopupMenu} to be managed by this fixture.
    * @throws NullPointerException if {@code robot} is {@code null}.
    * @throws NullPointerException if {@code target} is {@code null}.
    */
-  public JPopupMenuFixture(Robot robot, JPopupMenu target) {
-    super(robot, target);
+  public JPopupMenuFixture(@Nonnull Robot robot, @Nonnull JPopupMenu target) {
+    super(JPopupMenuFixture.class, robot, target);
     menuItemFinder = new JMenuItemFinder(robot, target);
-    driver(new JPopupMenuDriver(robot));
+  }
+
+  @Override
+  protected @Nonnull JPopupMenuDriver createDriver(@Nonnull Robot robot) {
+    return new JPopupMenuDriver(robot);
   }
 
   /**
-   * Sets the {@link JPopupMenuDriver} to be used by this fixture.
-   * @param newDriver the new {@code JPopupMenuDriver}.
-   * @throws NullPointerException if the given driver is {@code null}.
-   */
-  protected final void driver(JPopupMenuDriver newDriver) {
-    validateNotNull(newDriver);
-    driver = newDriver;
-  }
-
-  /**
-   * Finds a {@code JMenuItem}, contained in this fixture's {@code JPopupMenu},
-   * which name matches the specified one.
+   * Finds a {@code JMenuItem}, contained in this fixture's {@code JPopupMenu}, which name matches the specified one.
+   * 
    * @param name the name to match.
    * @return a fixture that manages the {@code JMenuItem} found.
    * @throws ComponentLookupException if a {@code JMenuItem} having a matching name could not be found.
    * @throws ComponentLookupException if more than one {@code JMenuItem} having a matching name is found.
    */
-  public JMenuItemFixture menuItem(String name) {
-    return new JMenuItemFixture(robot, driver.menuItem(target, name));
+  public @Nonnull JMenuItemFixture menuItem(@Nullable String name) {
+    return new JMenuItemFixture(robot(), driver().menuItem(target(), name));
   }
 
   /**
-   * Finds a {@code JMenuItem}, contained in this fixture's {@code JPopupMenu},
-   * that matches the specified search criteria.
+   * Finds a {@code JMenuItem}, contained in this fixture's {@code JPopupMenu}, that matches the specified search
+   * criteria.
+   * 
    * @param matcher contains the search criteria for finding a {@code JMenuItem}.
    * @return a fixture that manages the {@code JMenuItem} found.
-   * @throws ComponentLookupException if a {@code JMenuItem} that matches the given search criteria could not be
-   * found.
+   * @throws ComponentLookupException if a {@code JMenuItem} that matches the given search criteria could not be found.
    * @throws ComponentLookupException if more than one {@code JMenuItem} that matches the given search criteria is
-   * found.
+   *           found.
    */
-  public JMenuItemFixture menuItem(GenericTypeMatcher<? extends JMenuItem> matcher) {
-    return new JMenuItemFixture(robot, driver.menuItem(target, matcher));
+  public @Nonnull JMenuItemFixture menuItem(@Nonnull GenericTypeMatcher<? extends JMenuItem> matcher) {
+    return new JMenuItemFixture(robot(), driver().menuItem(target(), matcher));
   }
 
   /**
-   * Finds a {@code JMenuItem} in this fixture's {@code JPopupMenu}, which path matches
-   * the given one.
+   * Finds a {@code JMenuItem} in this fixture's {@code JPopupMenu}, which path matches the given one.
    * <p>
    * For example, if we are looking for the menu with text "New" contained under the menu with text "File", we can
    * simply call
-   *
+   * 
    * <pre>
    * JPopupMenuFixture popupMenu = tree.showPopupMenu();
    * JMenuItemFixture menuItem = popupMenu.<strong>menuItemWithPath(&quot;File&quot;, &quot;Menu&quot;)</strong>;
    * </pre>
-   *
+   * 
    * </p>
+   * 
    * @param path the path of the menu to find.
    * @return a fixture that manages the {@code JMenuItem} found.
    * @throws ComponentLookupException if a {@code JMenuItem} under the given path could not be found.
    * @throws AssertionError if the {@code Component} found under the given path is not a {@code JMenuItem}.
    */
-  public JMenuItemFixture menuItemWithPath(String... path) {
-    return new JMenuItemFixture(robot, menuItemFinder.menuItemWithPath(path));
+  public @Nonnull JMenuItemFixture menuItemWithPath(@Nonnull String... path) {
+    return new JMenuItemFixture(robot(), menuItemFinder.menuItemWithPath(path));
   }
 
   /**
    * Returns the contents of this fixture's {@code JPopupMenu}.
+   * 
    * @return a {@code String} array representing the contents of this fixture's {@code JPopupMenu}.
    */
-  public String[] menuLabels() {
-    return driver.menuLabelsOf(target);
-  }
-
-  /**
-   * Simulates a user clicking this fixture's {@code JPopupMenu}.
-   * @return this fixture.
-   * @throws IllegalStateException if this fixture's {@code JPopupMenu} is disabled.
-   * @throws IllegalStateException if this fixture's {@code JPopupMenu} is not showing on the screen.
-   */
-  public JPopupMenuFixture click() {
-    driver.click(target);
-    return this;
-  }
-
-  /**
-   * Simulates a user clicking this fixture's {@code JPopupMenu}.
-   * @param button the button to click.
-   * @return this fixture.
-   * @throws NullPointerException if the given {@code MouseButton} is {@code null}.
-   * @throws IllegalStateException if this fixture's {@code JPopupMenu} is disabled.
-   * @throws IllegalStateException if this fixture's {@code JPopupMenu} is not showing on the screen.
-   */
-  public JPopupMenuFixture click(MouseButton button) {
-    driver.click(target, button);
-    return this;
-  }
-
-  /**
-   * Simulates a user clicking this fixture's {@code JPopupMenu}.
-   * @param mouseClickInfo specifies the button to click and the times the button should be clicked.
-   * @return this fixture.
-   * @throws NullPointerException if the given {@code MouseClickInfo} is {@code null}.
-   * @throws IllegalStateException if this fixture's {@code JPopupMenu} is disabled.
-   * @throws IllegalStateException if this fixture's {@code JPopupMenu} is not showing on the screen.
-   */
-  public JPopupMenuFixture click(MouseClickInfo mouseClickInfo) {
-    driver.click(target, mouseClickInfo);
-    return this;
-  }
-
-  /**
-   * Simulates a user right-clicking this fixture's {@code JPopupMenu}.
-   * @return this fixture.
-   * @throws IllegalStateException if this fixture's {@code JPopupMenu} is disabled.
-   * @throws IllegalStateException if this fixture's {@code JPopupMenu} is not showing on the screen.
-   */
-  public JPopupMenuFixture rightClick() {
-    driver.rightClick(target);
-    return this;
-  }
-
-  /**
-   * Simulates a user double-clicking this fixture's {@code JPopupMenu}.
-   * @return this fixture.
-   * @throws IllegalStateException if this fixture's {@code JPopupMenu} is disabled.
-   * @throws IllegalStateException if this fixture's {@code JPopupMenu} is not showing on the screen.
-   */
-  public JPopupMenuFixture doubleClick() {
-    driver.doubleClick(target);
-    return this;
-  }
-
-  /**
-   * Gives input focus to this fixture's {@code JPopupMenu}.
-   * @return this fixture.
-   * @throws IllegalStateException if this fixture's {@code JPopupMenu} is disabled.
-   * @throws IllegalStateException if this fixture's {@code JPopupMenu} is not showing on the screen.
-   */
-  public JPopupMenuFixture focus() {
-    driver.focus(target);
-    return this;
-  }
-
-  /**
-   * Simulates a user pressing given key with the given modifiers on this fixture's {@code JPopupMenu}.
-   * Modifiers is a mask from the available {@link java.awt.event.InputEvent} masks.
-   * @param keyPressInfo specifies the key and modifiers to press.
-   * @return this fixture.
-   * @throws NullPointerException if the given {@code KeyPressInfo} is {@code null}.
-   * @throws IllegalArgumentException if the given code is not a valid key code.
-   * @throws IllegalStateException if this fixture's {@code JPopupMenu} is disabled.
-   * @throws IllegalStateException if this fixture's {@code JPopupMenu} is not showing on the screen.
-   * @see KeyPressInfo
-   */
-  public JPopupMenuFixture pressAndReleaseKey(KeyPressInfo keyPressInfo) {
-    driver.pressAndReleaseKey(target, keyPressInfo);
-    return this;
-  }
-
-  /**
-   * Simulates a user pressing and releasing the given keys on this fixture's {@code JPopupMenu}. This
-   * method does not affect the current focus.
-   * @param keyCodes one or more codes of the keys to press.
-   * @return this fixture.
-   * @throws NullPointerException if the given array of codes is {@code null}.
-   * @throws IllegalArgumentException if any of the given code is not a valid key code.
-   * @throws IllegalStateException if this fixture's {@code JPopupMenu} is disabled.
-   * @throws IllegalStateException if this fixture's {@code JPopupMenu} is not showing on the screen.
-   * @see java.awt.event.KeyEvent
-   */
-  public JPopupMenuFixture pressAndReleaseKeys(int... keyCodes) {
-    driver.pressAndReleaseKeys(target, keyCodes);
-    return this;
-  }
-
-  /**
-   * Simulates a user pressing the given key on this fixture's {@code JPopupMenu}.
-   * @param keyCode the code of the key to press.
-   * @return this fixture.
-   * @throws IllegalArgumentException if any of the given code is not a valid key code.
-   * @throws IllegalStateException if this fixture's {@code JPopupMenu} is disabled.
-   * @throws IllegalStateException if this fixture's {@code JPopupMenu} is not showing on the screen.
-   * @see java.awt.event.KeyEvent
-   */
-  public JPopupMenuFixture pressKey(int keyCode) {
-    driver.pressKey(target, keyCode);
-    return this;
-  }
-
-  /**
-   * Simulates a user releasing the given key on this fixture's {@code JPopupMenu}.
-   * @param keyCode the code of the key to release.
-   * @return this fixture.
-   * @throws IllegalArgumentException if any of the given code is not a valid key code.
-   * @throws IllegalStateException if this fixture's {@code JPopupMenu} is disabled.
-   * @throws IllegalStateException if this fixture's {@code JPopupMenu} is not showing on the screen.
-   * @see java.awt.event.KeyEvent
-   */
-  public JPopupMenuFixture releaseKey(int keyCode) {
-    driver.releaseKey(target, keyCode);
-    return this;
-  }
-
-  /**
-   * Asserts that this fixture's {@code JPopupMenu} has input focus.
-   * @return this fixture.
-   * @throws AssertionError if this fixture's {@code JPopupMenu} does not have input focus.
-   */
-  public JPopupMenuFixture requireFocused() {
-    driver.requireFocused(target);
-    return this;
-  }
-
-  /**
-   * Asserts that this fixture's {@code JPopupMenu} is enabled.
-   * @return this fixture.
-   * @throws AssertionError if this fixture's {@code JPopupMenu} is disabled.
-   */
-  public JPopupMenuFixture requireEnabled() {
-    driver.requireEnabled(target);
-    return this;
-  }
-
-  /**
-   * Asserts that this fixture's {@code JPopupMenu} is enabled.
-   * @param timeout the time this fixture will wait for the component to be enabled.
-   * @return this fixture.
-   * @throws WaitTimedOutError if this fixture's {@code JPopupMenu} is never enabled.
-   */
-  public JPopupMenuFixture requireEnabled(Timeout timeout) {
-    driver.requireEnabled(target, timeout);
-    return this;
-  }
-
-  /**
-   * Asserts that this fixture's {@code JPopupMenu} is disabled.
-   * @return this fixture.
-   * @throws AssertionError if this fixture's {@code JPopupMenu} is enabled.
-   */
-  public JPopupMenuFixture requireDisabled() {
-    driver.requireDisabled(target);
-    return this;
-  }
-
-  /**
-   * Asserts that this fixture's {@code JPopupMenu} is visible.
-   * @return this fixture.
-   * @throws AssertionError if this fixture's {@code JPopupMenu} is not visible.
-   */
-  public JPopupMenuFixture requireVisible() {
-    driver.requireVisible(target);
-    return this;
-  }
-
-  /**
-   * Asserts that this fixture's {@code JPopupMenu} is not visible.
-   * @return this fixture.
-   * @throws AssertionError if this fixture's {@code JPopupMenu} is visible.
-   */
-  public JPopupMenuFixture requireNotVisible() {
-    driver.requireNotVisible(target);
-    return this;
+  public @Nonnull String[] menuLabels() {
+    return driver().menuLabelsOf(target());
   }
 }

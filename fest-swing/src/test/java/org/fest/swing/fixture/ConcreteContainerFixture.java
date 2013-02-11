@@ -22,11 +22,11 @@ import javax.swing.JFrame;
 import org.fest.swing.core.Robot;
 
 /**
- * Understands an implementation of {@link ContainerFixture} for testing purposes.
+ * Understands an implementation of {@link AbstractContainerFixture} for testing purposes.
  *
  * @author Alex Ruiz
  */
-public class ConcreteContainerFixture extends ContainerFixture<JFrame> {
+public class ConcreteContainerFixture extends AbstractContainerFixture<JFrame> {
   public ConcreteContainerFixture(Robot robot, JFrame target) { super(robot, target); }
   public JPopupMenuFixture showPopupMenu() { return null; }
   public JPopupMenuFixture showPopupMenuAt(Point p) { 

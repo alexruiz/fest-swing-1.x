@@ -26,7 +26,7 @@ import org.fest.swing.test.core.EDTSafeTestCase;
 import org.junit.Before;
 
 /**
- * Test cases for constructors in {@link ComponentFixture}.
+ * Test cases for constructors in {@link AbstractComponentFixture}.
  *
  * @author Alex Ruiz
  */

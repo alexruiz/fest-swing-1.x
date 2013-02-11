@@ -21,7 +21,7 @@ import org.fest.swing.exception.WaitTimedOutError;
 import org.junit.Test;
 
 /**
- * Tests for {@link ContainerFixture#dialog(org.fest.swing.core.GenericTypeMatcher)}.
+ * Tests for {@link AbstractContainerFixture#dialog(org.fest.swing.core.GenericTypeMatcher)}.
  *
  * @author Alex Ruiz
  */

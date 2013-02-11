@@ -28,7 +28,7 @@ import org.fest.swing.test.swing.TestWindow;
 import org.junit.Before;
 
 /**
- * Base test case for {@link WindowFixture}.
+ * Base test case for {@link AbstractWindowFixture}.
  *
  * @author Alex Ruiz
  */
@@ -42,15 +42,15 @@ public abstract class WindowFixture_TestCase {
 
   void extraSetUp() {}
 
-  static void assertThatContainsExistingHierarchy(WindowFixture<?> f) {
+  static void assertThatContainsExistingHierarchy(AbstractWindowFixture<?> f) {
     assertThat(f.robot.hierarchy()).isInstanceOf(ExistingHierarchy.class);
   }
 
-  static void assertThatFixtureUsesRobot(WindowFixture<?> f, Robot r) {
+  static void assertThatFixtureUsesRobot(AbstractWindowFixture<?> f, Robot r) {
     assertThat(f.robot).isSameAs(r);
   }
 
-  static void assertThatFixtureHandlesWindow(WindowFixture<?> f, MyWindow w) {
+  static void assertThatFixtureHandlesWindow(AbstractWindowFixture<?> f, MyWindow w) {
     assertThat(f.component()).isSameAs(w);
   }
 

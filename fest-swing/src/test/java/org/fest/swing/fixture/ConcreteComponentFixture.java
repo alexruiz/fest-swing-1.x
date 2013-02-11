@@ -20,11 +20,11 @@ import javax.swing.JTextField;
 import org.fest.swing.core.Robot;
 
 /**
- * Understands an implementation of {@link ComponentFixture} for testing.
+ * Understands an implementation of {@link AbstractComponentFixture} for testing.
  *
  * @author Alex Ruiz
  */
-class ConcreteComponentFixture extends ComponentFixture<JTextField> {
+class ConcreteComponentFixture extends AbstractComponentFixture<JTextField> {
   public ConcreteComponentFixture(Robot robot, Class<? extends JTextField> type) {
     super(robot, type);
   }

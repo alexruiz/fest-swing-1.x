@@ -39,7 +39,7 @@ import org.fest.swing.timing.Timeout;
  * @author Mel Llaguno
  */
 
-public class JAppletFixture extends ContainerFixture<JApplet>
+public class JAppletFixture extends AbstractContainerFixture<JApplet>
 	implements CommonComponentFixture, LiveConnectSupport{
 	private JAppletDriver driver;
 

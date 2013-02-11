@@ -24,11 +24,11 @@ import org.fest.swing.core.Robot;
 import org.fest.swing.timing.Timeout;
 
 /**
- * Understands an implementation of {@link WindowFixture} for testing purposes.
+ * Understands an implementation of {@link AbstractWindowFixture} for testing purposes.
  *
  * @author Alex Ruiz
  */
-class ConcreteWindowFixture extends WindowFixture<JFrame> {
+class ConcreteWindowFixture extends AbstractWindowFixture<JFrame> {
   public ConcreteWindowFixture(Class<? extends JFrame> type) {
     super(type);
   }

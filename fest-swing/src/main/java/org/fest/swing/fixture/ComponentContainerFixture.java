@@ -879,8 +879,8 @@ public interface ComponentContainerFixture {
   @Nonnull JTreeFixture tree(@Nullable String name);
 
   /**
-   * Returns a {@link ComponentFixture} managing a component inside this fixture's {@code Container}. This is an
-   * extension method, to allow implementations of {@link ContainerFixture} handle custom GUI components.
+   * Returns a {@link AbstractComponentFixture} managing a component inside this fixture's {@code Container}. This is an
+   * extension method, to allow implementations of {@link AbstractContainerFixture} handle custom GUI components.
    * 
    * @param <C> the type of {@code Component} the fixture to return can handle.
    * @param <F> the type of {@code ComponentFixture} to return.
@@ -888,6 +888,6 @@ public interface ComponentContainerFixture {
    * @return a {@code ComponentFixture} managing a component inside this fixture's {@code Container}.
    */
   @RunsInEDT
-  @Nonnull <C extends Component, F extends ComponentFixture<?, C, ?>> F with(
+  @Nonnull <C extends Component, F extends AbstractComponentFixture<?, C, ?>> F with(
       @Nonnull ComponentFixtureExtension<C, F> extension);
 }

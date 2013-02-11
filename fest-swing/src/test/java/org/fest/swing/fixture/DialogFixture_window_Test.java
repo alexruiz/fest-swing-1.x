@@ -25,7 +25,7 @@ import org.fest.swing.driver.DialogDriver;
 import org.junit.*;
 
 /**
- * Tests for methods in {@link DialogFixture} that are inherited from {@link WindowFixture}.
+ * Tests for methods in {@link DialogFixture} that are inherited from {@link AbstractWindowFixture}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang

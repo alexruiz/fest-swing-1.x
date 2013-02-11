@@ -41,8 +41,8 @@ import org.fest.swing.exception.LocationUnavailableException;
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
-public class JComboBoxFixture extends JComponentFixture<JComboBoxFixture, JComboBox, JComboBoxDriver> implements
-EditableComponentFixture<JComboBoxFixture>, ItemGroupFixture<JComboBoxFixture> {
+public class JComboBoxFixture extends AbstractJPopupMenuInvokerFixture<JComboBoxFixture, JComboBox, JComboBoxDriver>
+implements EditableComponentFixture<JComboBoxFixture>, ItemGroupFixture<JComboBoxFixture> {
   /**
    * Creates a new {@link JComboBoxFixture}.
    * 

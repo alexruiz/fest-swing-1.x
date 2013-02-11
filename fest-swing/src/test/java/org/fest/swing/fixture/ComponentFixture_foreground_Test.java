@@ -25,7 +25,7 @@ import org.fest.swing.edt.GuiQuery;
 import org.junit.Test;
 
 /**
- * Tests for {@link ComponentFixture#foreground()}.
+ * Tests for {@link AbstractComponentFixture#foreground()}.
  *
  * @author Alex Ruiz
  */

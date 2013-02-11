@@ -41,10 +41,10 @@ import org.fest.swing.lock.ScreenLock;
  * 
  * @author Alex Ruiz
  */
-public abstract class WindowFixture<S, C extends Window, D extends WindowDriver> extends
-ContainerFixture<S, C, D> implements WindowLikeContainerFixture<S>, JPopupMenuInvokerFixture {
+public abstract class AbstractWindowFixture<S, C extends Window, D extends WindowDriver> extends
+AbstractContainerFixture<S, C, D> implements WindowLikeContainerFixture<S>, JPopupMenuInvokerFixture {
   /**
-   * Creates a new {@link WindowFixture}. This constructor creates a new {@link Robot} containing the current AWT
+   * Creates a new {@link AbstractWindowFixture}. This constructor creates a new {@link Robot} containing the current AWT
    * hierarchy.
    * 
    * @param selfType the "self type."
@@ -54,12 +54,12 @@ ContainerFixture<S, C, D> implements WindowLikeContainerFixture<S>, JPopupMenuIn
    * @throws ComponentLookupException if more than one {@code Window} having a matching type is found.
    * @see BasicRobot#robotWithCurrentAwtHierarchy()
    */
-  public WindowFixture(@Nonnull Class<S> selfType, @Nonnull Class<? extends C> type) {
+  public AbstractWindowFixture(@Nonnull Class<S> selfType, @Nonnull Class<? extends C> type) {
     this(selfType, robotWithCurrentAwtHierarchy(), type);
   }
 
   /**
-   * Creates a new {@link WindowFixture}.
+   * Creates a new {@link AbstractWindowFixture}.
    * 
    * @param selfType the "self type."
    * @param robot performs simulation of user events on a {@code Window}.
@@ -69,12 +69,12 @@ ContainerFixture<S, C, D> implements WindowLikeContainerFixture<S>, JPopupMenuIn
    * @throws ComponentLookupException if a {@code Window} having a matching type could not be found.
    * @throws ComponentLookupException if more than one {@code Window} having a matching type is found.
    */
-  public WindowFixture(@Nonnull Class<S> selfType, @Nonnull Robot robot, @Nonnull Class<? extends C> type) {
+  public AbstractWindowFixture(@Nonnull Class<S> selfType, @Nonnull Robot robot, @Nonnull Class<? extends C> type) {
     super(selfType, robot, type);
   }
 
   /**
-   * Creates a new {@link WindowFixture}. This constructor creates a new {@link Robot} containing the current AWT
+   * Creates a new {@link AbstractWindowFixture}. This constructor creates a new {@link Robot} containing the current AWT
    * hierarchy.
    * 
    * @param selfType the "self type."
@@ -85,12 +85,12 @@ ContainerFixture<S, C, D> implements WindowLikeContainerFixture<S>, JPopupMenuIn
    * @throws ComponentLookupException if more than one {@code Window} having a matching name is found.
    * @see BasicRobot#robotWithCurrentAwtHierarchy()
    */
-  public WindowFixture(@Nonnull Class<S> selfType, @Nullable String name, @Nonnull Class<? extends C> type) {
+  public AbstractWindowFixture(@Nonnull Class<S> selfType, @Nullable String name, @Nonnull Class<? extends C> type) {
     this(selfType, robotWithCurrentAwtHierarchy(), name, type);
   }
 
   /**
-   * Creates a new {@link WindowFixture}.
+   * Creates a new {@link AbstractWindowFixture}.
    * 
    * @param selfType the "self type."
    * @param robot performs simulation of user events on a {@code Window}.
@@ -101,25 +101,25 @@ ContainerFixture<S, C, D> implements WindowLikeContainerFixture<S>, JPopupMenuIn
    * @throws ComponentLookupException if a {@code Window} having a matching name could not be found.
    * @throws ComponentLookupException if more than one {@code Window} having a matching name is found.
    */
-  public WindowFixture(@Nonnull Class<S> selfType, @Nonnull Robot robot, @Nullable String name,
+  public AbstractWindowFixture(@Nonnull Class<S> selfType, @Nonnull Robot robot, @Nullable String name,
       @Nonnull Class<? extends C> type) {
     super(selfType, robot, name, type);
   }
 
   /**
-   * Creates a new {@link WindowFixture}. This constructor creates a new {@link Robot} containing the current AWT
+   * Creates a new {@link AbstractWindowFixture}. This constructor creates a new {@link Robot} containing the current AWT
    * hierarchy.
    * 
    * @param selfType the "self type."
    * @param target the {@code Window} to be managed by this fixture.
    * @throws NullPointerException if the given target {@code Window} is {@code null}.
    */
-  public WindowFixture(@Nonnull Class<S> selfType, @Nonnull C target) {
+  public AbstractWindowFixture(@Nonnull Class<S> selfType, @Nonnull C target) {
     this(selfType, robotWithCurrentAwtHierarchy(), target);
   }
 
   /**
-   * Creates a new {@link WindowFixture}.
+   * Creates a new {@link AbstractWindowFixture}.
    * 
    * @param selfType the "self type."
    * @param robot performs simulation of user events on the given {@code Window}.
@@ -127,7 +127,7 @@ ContainerFixture<S, C, D> implements WindowLikeContainerFixture<S>, JPopupMenuIn
    * @throws NullPointerException if the given robot is {@code null}.
    * @throws NullPointerException if the given target {@code Window} is {@code null}.
    */
-  public WindowFixture(@Nonnull Class<S> selfType, @Nonnull Robot robot, @Nonnull C target) {
+  public AbstractWindowFixture(@Nonnull Class<S> selfType, @Nonnull Robot robot, @Nonnull C target) {
     super(selfType, robot, target);
   }
 

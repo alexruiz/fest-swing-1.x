@@ -37,7 +37,7 @@ import org.fest.swing.exception.ComponentLookupException;
  * @author Alex Ruiz
  */
 public class JInternalFrameFixture extends
-JComponentFixture<JInternalFrameFixture, JInternalFrame, JInternalFrameDriver> implements
+AbstractJPopupMenuInvokerFixture<JInternalFrameFixture, JInternalFrame, JInternalFrameDriver> implements
 FrameLikeFixture<JInternalFrameFixture> {
   /**
    * Creates a new {@link JInternalFrameFixture}.

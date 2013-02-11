@@ -21,7 +21,7 @@ import org.fest.swing.exception.WaitTimedOutError;
 import org.junit.Test;
 
 /**
- * Tests for {@link ContainerFixture#dialog(String)}.
+ * Tests for {@link AbstractContainerFixture#dialog(String)}.
  *
  * @author Alex Ruiz
  */

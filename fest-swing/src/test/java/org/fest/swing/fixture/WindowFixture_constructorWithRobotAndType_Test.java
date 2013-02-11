@@ -19,7 +19,7 @@ import org.fest.swing.core.*;
 import org.junit.*;
 
 /**
- * Tests for {@link WindowFixture#WindowFixture(org.fest.swing.core.Robot, Class)}.
+ * Tests for {@link AbstractWindowFixture#WindowFixture(org.fest.swing.core.Robot, Class)}.
  *
  * @author Alex Ruiz
  */

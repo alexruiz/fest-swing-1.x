@@ -21,7 +21,7 @@ import org.fest.swing.exception.ComponentLookupException;
 import org.junit.Test;
 
 /**
- * Tests for {@link ContainerFixture#progressBar(String)}.
+ * Tests for {@link AbstractContainerFixture#progressBar(String)}.
  *
  * @author Alex Ruiz
  */

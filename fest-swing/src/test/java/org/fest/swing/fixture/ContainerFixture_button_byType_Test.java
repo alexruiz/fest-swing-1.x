@@ -22,7 +22,7 @@ import org.fest.swing.exception.ComponentLookupException;
 import org.junit.Test;
 
 /**
- * Tests for {@link ContainerFixture#button()}.
+ * Tests for {@link AbstractContainerFixture#button()}.
  *
  * @author Alex Ruiz
  */

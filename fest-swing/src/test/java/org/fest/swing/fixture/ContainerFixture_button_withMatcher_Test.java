@@ -25,7 +25,7 @@ import org.fest.swing.exception.ComponentLookupException;
 import org.junit.Test;
 
 /**
- * Tests for {@link ContainerFixture#button(GenericTypeMatcher)}.
+ * Tests for {@link AbstractContainerFixture#button(GenericTypeMatcher)}.
  *
  * @author Alex Ruiz
  */

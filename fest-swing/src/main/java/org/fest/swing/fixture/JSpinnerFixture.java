@@ -37,8 +37,8 @@ import org.fest.swing.timing.Timeout;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class JSpinnerFixture extends ComponentFixture<JSpinner> implements CommonComponentFixture,
-    JComponentFixture, JPopupMenuInvokerFixture {
+public class JSpinnerFixture extends AbstractComponentFixture<JSpinner> implements CommonComponentFixture,
+    AbstractJComponentFixture, JPopupMenuInvokerFixture {
   private JSpinnerDriver driver;
 
   /**

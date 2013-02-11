@@ -35,8 +35,8 @@ import org.fest.swing.timing.Timeout;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class JScrollPaneFixture extends ComponentFixture<JScrollPane> implements CommonComponentFixture,
-    JPopupMenuInvokerFixture, JComponentFixture {
+public class JScrollPaneFixture extends AbstractComponentFixture<JScrollPane> implements CommonComponentFixture,
+    JPopupMenuInvokerFixture, AbstractJComponentFixture {
   private JScrollPaneDriver driver;
 
   /**

@@ -25,7 +25,7 @@ import org.fest.swing.exception.ComponentLookupException;
 import org.junit.Test;
 
 /**
- * Tests for {@link ContainerFixture#checkBox(org.fest.swing.core.GenericTypeMatcher)}.
+ * Tests for {@link AbstractContainerFixture#checkBox(org.fest.swing.core.GenericTypeMatcher)}.
  *
  * @author Alex Ruiz
  */

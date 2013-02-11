@@ -32,7 +32,7 @@ import org.fest.swing.core.NameMatcher;
 import org.fest.swing.core.Robot;
 import org.fest.swing.core.TypeMatcher;
 import org.fest.swing.exception.WaitTimedOutError;
-import org.fest.swing.fixture.ComponentFixture;
+import org.fest.swing.fixture.AbstractComponentFixture;
 
 /**
  * Understands a template for AWT or Swing {@code Component} finders.
@@ -119,7 +119,7 @@ public abstract class ComponentFinderTemplate<T extends Component> {
    * @return a fixture capable of managing the found component.
    * @throws WaitTimedOutError if a component with the given name or of the given type could not be found.
    */
-  public abstract @Nonnull ComponentFixture<?, T, ?> using(@Nonnull Robot robot);
+  public abstract @Nonnull AbstractComponentFixture<?, T, ?> using(@Nonnull Robot robot);
 
   /**
    * Finds the component using either by name or type.

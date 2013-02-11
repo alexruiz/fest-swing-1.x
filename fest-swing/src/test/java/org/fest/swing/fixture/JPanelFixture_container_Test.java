@@ -25,7 +25,7 @@ import org.fest.swing.driver.JComponentDriver;
 import org.junit.*;
 
 /**
- * Tests that {@link JPanelFixture} is a {@link ContainerFixture}.
+ * Tests that {@link JPanelFixture} is a {@link AbstractContainerFixture}.
  *
  * @author Yvonne Wang
  * @author Alex Ruiz
@@ -49,7 +49,7 @@ public class JPanelFixture_container_Test extends ComponentFixture_Implementatio
 
   @Test
   public void should_be_ContainerFixture() {
-    assertThat(fixture).isInstanceOf(ContainerFixture.class);
+    assertThat(fixture).isInstanceOf(AbstractContainerFixture.class);
   }
 
   @Override JComponentDriver driver() {  return driver; }

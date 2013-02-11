@@ -18,7 +18,7 @@ package org.fest.swing.fixture;
 import org.junit.*;
 
 /**
- * Tests for {@link WindowFixture#WindowFixture(Class)}.
+ * Tests for {@link AbstractWindowFixture#WindowFixture(Class)}.
  *
  * @author Alex Ruiz
  */

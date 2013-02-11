@@ -22,7 +22,7 @@ import org.fest.swing.exception.WaitTimedOutError;
 import org.junit.Test;
 
 /**
- * Tests for {@link ContainerFixture#dialog(org.fest.swing.timing.Timeout)}.
+ * Tests for {@link AbstractContainerFixture#dialog(org.fest.swing.timing.Timeout)}.
  *
  * @author Alex Ruiz
  */

@@ -32,7 +32,7 @@ import org.fest.swing.test.swing.TestWindow;
 import org.junit.Test;
 
 /**
- * Tests lookup of {@code JToolBar}s in {@link ContainerFixture}.
+ * Tests lookup of {@code JToolBar}s in {@link AbstractContainerFixture}.
  *
  * @author Alex Ruiz
  */

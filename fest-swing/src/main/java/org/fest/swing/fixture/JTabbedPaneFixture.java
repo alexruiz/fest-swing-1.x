@@ -38,8 +38,8 @@ import org.fest.swing.timing.Timeout;
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
-public class JTabbedPaneFixture extends ComponentFixture<JTabbedPane> implements CommonComponentFixture,
-    JComponentFixture, JPopupMenuInvokerFixture {
+public class JTabbedPaneFixture extends AbstractComponentFixture<JTabbedPane> implements CommonComponentFixture,
+    AbstractJComponentFixture, JPopupMenuInvokerFixture {
   private JTabbedPaneDriver driver;
 
   /**

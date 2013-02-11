@@ -30,7 +30,7 @@ import org.fest.swing.test.swing.JFileChooserLauncherWindow;
 import org.junit.Test;
 
 /**
- * Tests lookup of {@code JFileChooser}s in {@link ContainerFixture}.
+ * Tests lookup of {@code JFileChooser}s in {@link AbstractContainerFixture}.
  *
  * @author Alex Ruiz
  */

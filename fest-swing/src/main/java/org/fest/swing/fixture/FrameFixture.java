@@ -31,7 +31,7 @@ import org.fest.swing.exception.ComponentLookupException;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class FrameFixture extends WindowFixture<FrameFixture, Frame, FrameDriver> implements
+public class FrameFixture extends AbstractWindowFixture<FrameFixture, Frame, FrameDriver> implements
 FrameLikeFixture<FrameFixture> {
   /**
    * Creates a new {@link FrameFixture}. This constructor creates a new {@link Robot} containing the current AWT

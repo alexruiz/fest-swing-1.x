@@ -35,7 +35,7 @@ import org.fest.swing.exception.ComponentLookupException;
  * @author Alex Ruiz
  */
 public abstract class AbstractButtonFixture<S, T extends AbstractButton>
-extends JComponentFixture<S, T, AbstractButtonDriver> implements TextDisplayFixture<S> {
+extends AbstractJPopupMenuInvokerFixture<S, T, AbstractButtonDriver> implements TextDisplayFixture<S> {
   /**
    * Creates a new {@link AbstractButtonFixture}.
    * 

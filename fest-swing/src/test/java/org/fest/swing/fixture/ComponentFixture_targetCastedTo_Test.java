@@ -22,7 +22,7 @@ import javax.swing.JTextField;
 import org.junit.Test;
 
 /**
- * Tests for {@link ComponentFixture#targetCastedTo(Class)}.
+ * Tests for {@link AbstractComponentFixture#targetCastedTo(Class)}.
  *
  * @author Alex Ruiz
  */

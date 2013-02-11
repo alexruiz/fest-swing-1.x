@@ -22,7 +22,7 @@ import org.fest.swing.exception.ComponentLookupException;
 import org.junit.Test;
 
 /**
- * Tests for {@link ContainerFixture#checkBox(String)}.
+ * Tests for {@link AbstractContainerFixture#checkBox(String)}.
  *
  * @author Alex Ruiz
  */

@@ -23,13 +23,13 @@ import javax.swing.JTextField;
 import org.junit.Before;
 
 /**
- * Test cases for {@link ComponentFixture}.
+ * Test cases for {@link AbstractComponentFixture}.
  *
  * @author Alex Ruiz
  */
 public class ComponentFixture_TestCase {
   JTextField target;
-  ComponentFixture<JTextField> fixture;
+  AbstractComponentFixture<JTextField> fixture;
 
   @Before
   public final void setUp() {

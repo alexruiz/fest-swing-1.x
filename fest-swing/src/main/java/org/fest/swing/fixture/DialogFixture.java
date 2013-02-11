@@ -34,7 +34,7 @@ import org.fest.swing.exception.ComponentLookupException;
  * 
  * @author Alex Ruiz
  */
-public class DialogFixture extends WindowFixture<DialogFixture, Dialog, DialogDriver> {
+public class DialogFixture extends AbstractWindowFixture<DialogFixture, Dialog, DialogDriver> {
   /**
    * Creates a new {@link DialogFixture}. This constructor creates a new {@link Robot} containing the current AWT
    * hierarchy.

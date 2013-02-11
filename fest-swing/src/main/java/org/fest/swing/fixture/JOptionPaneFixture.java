@@ -36,7 +36,7 @@ import org.fest.swing.exception.ComponentLookupException;
  * 
  * @author Alex Ruiz
  */
-public class JOptionPaneFixture extends ContainerFixture<JOptionPaneFixture, JOptionPane, JOptionPaneDriver> {
+public class JOptionPaneFixture extends AbstractContainerFixture<JOptionPaneFixture, JOptionPane, JOptionPaneDriver> {
   private JOptionPaneDriver driver;
 
   /**

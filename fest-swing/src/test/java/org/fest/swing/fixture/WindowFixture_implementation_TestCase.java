@@ -24,7 +24,7 @@ import org.fest.swing.driver.WindowDriver;
 import org.junit.Test;
 
 /**
- * Understands test methods for implementations of {@link WindowFixture}.
+ * Understands test methods for implementations of {@link AbstractWindowFixture}.
  * @param <T> the type of window supported by the fixture to test.
  *
  * @author Alex Ruiz
@@ -34,7 +34,7 @@ public abstract class WindowFixture_implementation_TestCase<T extends Window> ex
     ComponentFixture_Implementations_TestCase<Window> {
   @Override abstract WindowDriver driver();
 
-  @Override abstract WindowFixture<T> fixture();
+  @Override abstract AbstractWindowFixture<T> fixture();
 
   @Test
   public final void should_move_to_front() {

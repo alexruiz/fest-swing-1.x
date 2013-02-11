@@ -61,7 +61,7 @@ public class ExtensionTest extends RobotBasedTestCase {
     }
   }
 
-  static class JTextFieldFixture extends ComponentFixture<JTextField> {
+  static class JTextFieldFixture extends AbstractComponentFixture<JTextField> {
     public JTextFieldFixture(Robot robot, JTextField target) {
       super(robot, target);
     }

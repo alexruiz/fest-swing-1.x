@@ -35,8 +35,8 @@ import org.fest.swing.timing.Timeout;
  *
  * @since 1.2
  */
-public class JProgressBarFixture extends ComponentFixture<JProgressBar> implements StateVerificationFixture,
-    JComponentFixture, TextDisplayFixture {
+public class JProgressBarFixture extends AbstractComponentFixture<JProgressBar> implements StateVerificationFixture,
+    AbstractJComponentFixture, TextDisplayFixture {
   private JProgressBarDriver driver;
 
   /**

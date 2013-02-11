@@ -24,7 +24,7 @@ import org.fest.swing.timing.Timeout;
 import org.junit.Test;
 
 /**
- * Tests for {@link ContainerFixture#dialog(GenericTypeMatcher, Timeout)}.
+ * Tests for {@link AbstractContainerFixture#dialog(GenericTypeMatcher, Timeout)}.
  *
  * @author Alex Ruiz
  */

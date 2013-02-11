@@ -36,8 +36,8 @@ import org.fest.swing.timing.Timeout;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class JSplitPaneFixture extends ComponentFixture<JSplitPane> implements CommonComponentFixture,
-    JComponentFixture, JPopupMenuInvokerFixture {
+public class JSplitPaneFixture extends AbstractComponentFixture<JSplitPane> implements CommonComponentFixture,
+    AbstractJComponentFixture, JPopupMenuInvokerFixture {
   private JSplitPaneDriver driver;
 
   /**

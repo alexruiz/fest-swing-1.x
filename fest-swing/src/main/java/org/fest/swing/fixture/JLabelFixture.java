@@ -29,7 +29,7 @@ import org.fest.swing.exception.ComponentLookupException;
  * 
  * @author Alex Ruiz
  */
-public class JLabelFixture extends JComponentFixture<JLabelFixture, JLabel, JLabelDriver> implements
+public class JLabelFixture extends AbstractJPopupMenuInvokerFixture<JLabelFixture, JLabel, JLabelDriver> implements
 TextDisplayFixture<JLabelFixture> {
   /**
    * Creates a new {@link JLabelFixture}.

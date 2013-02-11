@@ -46,7 +46,7 @@ import org.fest.swing.util.Range;
  * @author Yvonne Wang
  * @author Fabien Barbero
  */
-public class JListFixture extends JComponentFixture<JListFixture, JList, JListDriver> implements
+public class JListFixture extends AbstractJPopupMenuInvokerFixture<JListFixture, JList, JListDriver> implements
 ItemGroupFixture<JListFixture> {
   /**
    * Creates a new {@link JListFixture}.

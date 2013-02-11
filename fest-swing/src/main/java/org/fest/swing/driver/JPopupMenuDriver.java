@@ -17,6 +17,7 @@ package org.fest.swing.driver;
 import static org.fest.swing.driver.JPopupMenuElementsAsTextQuery.menuElementsAsText;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
 
@@ -57,7 +58,7 @@ public class JPopupMenuDriver extends JComponentDriver {
    * @return the contents of the pop-up menu as a {@code String} array.
    */
   @RunsInEDT
-  public String[] menuLabelsOf(@Nonnull JPopupMenu popupMenu) {
+  public @Nonnull String[] menuLabelsOf(@Nonnull JPopupMenu popupMenu) {
     return menuElementsAsText(popupMenu);
   }
 
@@ -71,7 +72,7 @@ public class JPopupMenuDriver extends JComponentDriver {
    * @throws ComponentLookupException if more than one {@code JMenuItem} having a matching name is found.
    */
   @RunsInEDT
-  public JMenuItem menuItem(@Nonnull JPopupMenu popupMenu, @Nonnull String name) {
+  public @Nonnull JMenuItem menuItem(@Nonnull JPopupMenu popupMenu, @Nullable String name) {
     return robot.finder().findByName(popupMenu, name, JMenuItem.class, false);
   }
 
@@ -85,7 +86,8 @@ public class JPopupMenuDriver extends JComponentDriver {
    * @throws ComponentLookupException if more than one {@code JMenuItem} that matches the given search criteria is
    *           found.
    */
-  public JMenuItem menuItem(@Nonnull JPopupMenu popupMenu, @Nonnull GenericTypeMatcher<? extends JMenuItem> matcher) {
+  public @Nonnull JMenuItem menuItem(@Nonnull JPopupMenu popupMenu,
+      @Nonnull GenericTypeMatcher<? extends JMenuItem> matcher) {
     return robot.finder().find(popupMenu, matcher);
   }
 }

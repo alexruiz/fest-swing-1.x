@@ -35,7 +35,7 @@ import org.fest.swing.exception.*;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class JTableHeaderFixture extends ComponentFixture<JTableHeader> implements JComponentFixture {
+public class JTableHeaderFixture extends AbstractComponentFixture<JTableHeader> implements AbstractJComponentFixture {
   private JTableHeaderDriver driver;
 
   /**

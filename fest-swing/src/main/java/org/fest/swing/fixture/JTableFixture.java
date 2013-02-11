@@ -51,8 +51,8 @@ import org.fest.swing.timing.Timeout;
  * @author Fabien Barbero
  * @author Andriy Tsykholyas
  */
-public class JTableFixture extends ComponentFixture<JTable> implements CommonComponentFixture,
-    JComponentFixture, JPopupMenuInvokerFixture {
+public class JTableFixture extends AbstractComponentFixture<JTable> implements CommonComponentFixture,
+    AbstractJComponentFixture, JPopupMenuInvokerFixture {
   private JTableDriver driver;
 
   /**

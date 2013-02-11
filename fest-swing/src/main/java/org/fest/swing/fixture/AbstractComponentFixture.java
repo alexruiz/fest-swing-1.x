@@ -51,7 +51,7 @@ import org.fest.swing.timing.Timeout;
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
-public abstract class ComponentFixture<S, C extends Component, D extends ComponentDriver> implements MouseInputSimulationFixture<S> {
+public abstract class AbstractComponentFixture<S, C extends Component, D extends ComponentDriver> implements MouseInputSimulationFixture<S> {
   /** Name of the property "font". */
   protected static final String FONT_PROPERTY = "font";
 
@@ -70,7 +70,7 @@ public abstract class ComponentFixture<S, C extends Component, D extends Compone
   private D driver;
 
   /**
-   * Creates a new {@link ComponentFixture}.
+   * Creates a new {@link AbstractComponentFixture}.
    * 
    * @param selfType the "self type."
    * @param robot performs simulation of user events on a {@code Component}.
@@ -80,7 +80,7 @@ public abstract class ComponentFixture<S, C extends Component, D extends Compone
    * @throws ComponentLookupException if a matching component could not be found.
    * @throws ComponentLookupException if more than one matching component is found.
    */
-  public ComponentFixture(@Nonnull Class<S> selfType, @Nonnull Robot robot, @Nonnull Class<? extends C> type) {
+  public AbstractComponentFixture(@Nonnull Class<S> selfType, @Nonnull Robot robot, @Nonnull Class<? extends C> type) {
     this(selfType, robot, findTarget(robot, type));
   }
 
@@ -91,7 +91,7 @@ public abstract class ComponentFixture<S, C extends Component, D extends Compone
   }
 
   /**
-   * Creates a new {@link ComponentFixture}.
+   * Creates a new {@link AbstractComponentFixture}.
    * 
    * @param selfType the "self type."
    * @param robot performs simulation of user events on a {@code Component}.
@@ -102,7 +102,7 @@ public abstract class ComponentFixture<S, C extends Component, D extends Compone
    * @throws ComponentLookupException if a matching component could not be found.
    * @throws ComponentLookupException if more than one matching component is found.
    */
-  public ComponentFixture(@Nonnull Class<S> selfType, @Nonnull Robot robot, @Nullable String name,
+  public AbstractComponentFixture(@Nonnull Class<S> selfType, @Nonnull Robot robot, @Nullable String name,
       @Nonnull Class<? extends C> type) {
     this(selfType, robot, findTarget(robot, name, type));
   }
@@ -115,7 +115,7 @@ public abstract class ComponentFixture<S, C extends Component, D extends Compone
   }
 
   /**
-   * Creates a new {@link ComponentFixture}.
+   * Creates a new {@link AbstractComponentFixture}.
    * 
    * @param selfType the "self type."
    * @param robot performs simulation of user events on the given {@code Component}.
@@ -123,7 +123,7 @@ public abstract class ComponentFixture<S, C extends Component, D extends Compone
    * @throws NullPointerException if {@code robot} is {@code null}.
    * @throws NullPointerException if {@code target} is {@code null}.
    */
-  public ComponentFixture(@Nonnull Class<S> selfType, @Nonnull Robot robot, @Nonnull C target) {
+  public AbstractComponentFixture(@Nonnull Class<S> selfType, @Nonnull Robot robot, @Nonnull C target) {
     this.robot = checkNotNull(robot);
     this.target = checkNotNull(target);
     driver = createDriver(robot);

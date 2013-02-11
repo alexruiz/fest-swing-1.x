@@ -25,7 +25,7 @@ import org.fest.swing.edt.GuiQuery;
 import org.junit.Test;
 
 /**
- * Tests for {@link ComponentFixture#font()}.
+ * Tests for {@link AbstractComponentFixture#font()}.
  *
  * @author Alex Ruiz
  */

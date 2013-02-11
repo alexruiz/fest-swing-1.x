@@ -24,7 +24,7 @@ import org.fest.swing.driver.ComponentDriver;
 import org.junit.Before;
 
 /**
- * Understands test methods for implementations of {@link ComponentFixture}.
+ * Understands test methods for implementations of {@link AbstractComponentFixture}.
  * @param <T> the type of component tested by this test class.
  *
  * @author Alex Ruiz

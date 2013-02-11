@@ -25,7 +25,7 @@ import org.fest.swing.driver.FrameDriver;
 import org.junit.After;
 
 /**
- * Tests for methods in {@link FrameFixture} that are inherited from {@link WindowFixture}.
+ * Tests for methods in {@link FrameFixture} that are inherited from {@link AbstractWindowFixture}.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
