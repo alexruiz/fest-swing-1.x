@@ -1,15 +1,15 @@
 /*
  * Created on Dec 8, 2007
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
- * 
+ *
  * Copyright @2007-2013 the original author or authors.
  */
 package org.fest.swing.fixture;
@@ -33,15 +33,15 @@ import org.fest.swing.exception.ComponentLookupException;
  * <li>state verification</li>
  * <li>property value query</li>
  * </ul>
- * 
+ *
  * @author Alex Ruiz
  */
 public class JInternalFrameFixture extends
-AbstractJPopupMenuInvokerFixture<JInternalFrameFixture, JInternalFrame, JInternalFrameDriver> implements
-FrameLikeFixture<JInternalFrameFixture> {
+    AbstractJPopupMenuInvokerFixture<JInternalFrameFixture, JInternalFrame, JInternalFrameDriver> implements
+    FrameLikeFixture<JInternalFrameFixture> {
   /**
    * Creates a new {@link JInternalFrameFixture}.
-   * 
+   *
    * @param robot performs simulation of user events on a {@code JInternalFrame}.
    * @param internalFrameName the name of the {@code JInternalFrame} to find using the given {@code Robot}.
    * @throws NullPointerException if {@code robot} is {@code null}.
@@ -54,7 +54,7 @@ FrameLikeFixture<JInternalFrameFixture> {
 
   /**
    * Creates a new {@link JInternalFrameFixture}.
-   * 
+   *
    * @param robot performs simulation of user events on the given {@code JInternalFrame}.
    * @param target the {@code JInternalFrame} to be managed by this fixture.
    * @throws NullPointerException if {@code robot} is {@code null}.
@@ -72,7 +72,7 @@ FrameLikeFixture<JInternalFrameFixture> {
 
   /**
    * Brings this fixture's {@code JInternalFrame} to the front.
-   * 
+   *
    * @return this fixture.
    */
   @Override
@@ -83,7 +83,7 @@ FrameLikeFixture<JInternalFrameFixture> {
 
   /**
    * Brings this fixture's {@code JInternalFrame} to the back.
-   * 
+   *
    * @return this fixture.
    */
   @Override
@@ -94,7 +94,7 @@ FrameLikeFixture<JInternalFrameFixture> {
 
   /**
    * Simulates a user deiconifying this fixture's {@code JInternalFrame}.
-   * 
+   *
    * @return this fixture.
    * @throws ActionFailedException if the {@code JInternalFrame} vetoes the action.
    */
@@ -106,7 +106,7 @@ FrameLikeFixture<JInternalFrameFixture> {
 
   /**
    * Simulates a user iconifying this fixture's {@code JInternalFrame}.
-   * 
+   *
    * @return this fixture.
    * @throws ActionFailedException if the given {@code JInternalFrame} is not iconifiable.
    * @throws ActionFailedException if the {@code JInternalFrame} vetoes the action.
@@ -119,7 +119,7 @@ FrameLikeFixture<JInternalFrameFixture> {
 
   /**
    * Simulates a user maximizing this fixture's {@code JInternalFrame}, deconifying it first if it is iconified.
-   * 
+   *
    * @return this fixture.
    * @throws ActionFailedException if the given {@code JInternalFrame} is not maximizable.
    * @throws ActionFailedException if the {@code JInternalFrame} vetoes the action.
@@ -132,7 +132,7 @@ FrameLikeFixture<JInternalFrameFixture> {
 
   /**
    * Simulates a user normalizing this fixture's {@code JInternalFrame}, deconifying it first if it is iconified.
-   * 
+   *
    * @return this fixture.
    * @throws ActionFailedException if the {@code JInternalFrame} vetoes the action.
    */
@@ -144,7 +144,7 @@ FrameLikeFixture<JInternalFrameFixture> {
 
   /**
    * Simulates a user closing this fixture's {@code JInternalFrame}.
-   * 
+   *
    * @throws ActionFailedException if the {@code JInternalFrame} is not closable.
    */
   @Override
@@ -154,7 +154,7 @@ FrameLikeFixture<JInternalFrameFixture> {
 
   /**
    * Asserts that the size of this fixture's {@code JInternalFrame} is equal to given one.
-   * 
+   *
    * @param size the given size to match.
    * @return this fixture.
    * @throws AssertionError if the size of this fixture's {@code JInternalFrame} is not equal to the given size.
@@ -167,7 +167,7 @@ FrameLikeFixture<JInternalFrameFixture> {
 
   /**
    * Simulates a user resizing horizontally this fixture's {@code JInternalFrame}.
-   * 
+   *
    * @param width the width that this fixture's {@code JInternalFrame} should have after being resized.
    * @return this fixture.
    */
@@ -179,7 +179,7 @@ FrameLikeFixture<JInternalFrameFixture> {
 
   /**
    * Simulates a user resizing vertically this fixture's {@code JInternalFrame}.
-   * 
+   *
    * @param height the height that this fixture's {@code JInternalFrame} should have after being resized.
    * @return this fixture.
    */
@@ -191,7 +191,7 @@ FrameLikeFixture<JInternalFrameFixture> {
 
   /**
    * Simulates a user resizing this fixture's {@code JInternalFrame}.
-   * 
+   *
    * @param size the size that the target {@code JInternalFrame} should have after being resized.
    * @return this fixture.
    */
@@ -203,7 +203,7 @@ FrameLikeFixture<JInternalFrameFixture> {
 
   /**
    * Simulates a user moving this fixture's {@code JInternalFrame} to the given point.
-   * 
+   *
    * @param p the point to move this fixture's {@code JInternalFrame} to.
    * @return this fixture.
    */

@@ -1,15 +1,15 @@
 /*
  * Created on Apr 10, 2007
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
- * 
+ *
  * Copyright @2007-2013 the original author or authors.
  */
 package org.fest.swing.fixture;
@@ -61,25 +61,24 @@ import org.fest.swing.timing.Timeout;
 
 /**
  * Understands lookup of {@code Component}s contained in a {@code Container}.
- * 
+ *
  * @param <S> used to simulate "self types." For more information please read &quot;<a href="http://goo.gl/fjgOM"
  *          target="_blank">Emulating 'self types' using Java Generics to simplify fluent API implementation</a>.&quot;
  * @param <C> the type of {@code Container} that this fixture can manage.
  * @param <D> the type of {@link ComponentDriver} that this fixture uses internally.
- * 
+ *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 public abstract class AbstractContainerFixture<S, C extends Container, D extends ComponentDriver> extends
-AbstractComponentFixture<S, C, D> implements ComponentContainerFixture {
-  /** The timeout to use when looking for a dialog. It's value is 100 ms. **/
+    AbstractComponentFixture<S, C, D> implements ComponentContainerFixture {
   private static final Timeout DEFAULT_DIALOG_LOOKUP_TIMEOUT = timeout(100);
 
   private final JMenuItemFinder menuItemFinder;
 
   /**
    * Creates a new {@link AbstractContainerFixture}.
-   * 
+   *
    * @param selfType the "self type."
    * @param robot performs simulation of user events on a {@code Container}.
    * @param type the type of the {@code Container} to find using the given {@code Robot}.
@@ -96,7 +95,7 @@ AbstractComponentFixture<S, C, D> implements ComponentContainerFixture {
 
   /**
    * Creates a new {@link AbstractContainerFixture}.
-   * 
+   *
    * @param selfType the "self type."
    * @param robot performs simulation of user events on a {@code Container}.
    * @param name the name of the {@code Container} to find using the given {@code Robot}.
@@ -115,7 +114,7 @@ AbstractComponentFixture<S, C, D> implements ComponentContainerFixture {
 
   /**
    * Creates a new {@link AbstractContainerFixture}.
-   * 
+   *
    * @param selfType the "self type."
    * @param robot performs simulation of user events on the given {@code Container}.
    * @param target the {@code Container} to be.
@@ -672,7 +671,7 @@ AbstractComponentFixture<S, C, D> implements ComponentContainerFixture {
 
   /**
    * Finds a component by type, contained in this fixture's {@code Container}.
-   * 
+   *
    * @param <T> the generic type of the component to find.
    * @param type the type of component to find.
    * @return the found component.
@@ -685,7 +684,7 @@ AbstractComponentFixture<S, C, D> implements ComponentContainerFixture {
 
   /**
    * Finds a component by name and type, contained in this fixture's {@code Container}.
-   * 
+   *
    * @param <T> the generic type of the component to find.
    * @param name the name of the component to find.
    * @param type the type of component to find.
@@ -700,7 +699,7 @@ AbstractComponentFixture<S, C, D> implements ComponentContainerFixture {
   /**
    * Finds a {@code Component} using the given {@link GenericTypeMatcher}, contained in this fixture's {@code Container}
    * .
-   * 
+   *
    * @param <T> the generic type of component the given matcher can handle.
    * @param matcher the matcher to use to find the component.
    * @return the found component.
@@ -726,6 +725,9 @@ AbstractComponentFixture<S, C, D> implements ComponentContainerFixture {
     return robot().finder();
   }
 
+  /**
+   * @return the timeout to use when looking for a dialog. It's value is 100 ms.
+   */
   protected static @Nonnull Timeout defaultDialogLookupTimeout() {
     return DEFAULT_DIALOG_LOOKUP_TIMEOUT;
   }

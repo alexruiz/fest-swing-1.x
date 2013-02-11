@@ -1,15 +1,15 @@
 /*
  * Created on Dec 19, 2009
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
- * 
+ *
  * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.fixture;
@@ -32,17 +32,17 @@ import org.fest.swing.timing.Timeout;
  * <li>state verification</li>
  * <li>property value query</li>
  * </ul>
- * 
+ *
  * @author Alex Ruiz
- * 
+ *
  * @since 1.2
  */
 public class JProgressBarFixture extends
-AbstractJComponentFixture<JProgressBarFixture, JProgressBar, JProgressBarDriver> implements
-TextDisplayFixture<JProgressBarFixture> {
+    AbstractJComponentFixture<JProgressBarFixture, JProgressBar, JProgressBarDriver> implements
+    TextDisplayFixture<JProgressBarFixture> {
   /**
    * Creates a new {@link JProgressBarFixture}.
-   * 
+   *
    * @param robot performs simulation of user events on the given {@code JProgressBar}.
    * @param target the {@code JProgressBar} to be managed by this fixture.
    * @throws NullPointerException if {@code robot} is {@code null}.
@@ -54,7 +54,7 @@ TextDisplayFixture<JProgressBarFixture> {
 
   /**
    * Creates a new {@link JProgressBarFixture}.
-   * 
+   *
    * @param robot performs simulation of user events on a {@code JProgressBar}.
    * @param labelName the name of the {@code JProgressBar} to find using the given {@code Robot}.
    * @throws NullPointerException if {@code robot} is {@code null}.
@@ -73,7 +73,7 @@ TextDisplayFixture<JProgressBarFixture> {
 
   /**
    * Asserts that the value of this fixture's {@code JProgressBar} is equal to the given one.
-   * 
+   *
    * @param value the expected value.
    * @return this fixture.
    * @throws AssertionError if the value of this fixture's {@code JProgressBar} is not equal to the given one.
@@ -85,7 +85,7 @@ TextDisplayFixture<JProgressBarFixture> {
 
   /**
    * Asserts that this fixture's {@code JProgressBar} is in determinate mode.
-   * 
+   *
    * @return this fixture.
    * @throws AssertionError if this fixture's {@code JProgressBar} is not in determinate mode.
    */
@@ -96,7 +96,7 @@ TextDisplayFixture<JProgressBarFixture> {
 
   /**
    * Asserts that this fixture's {@code JProgressBar} is in indeterminate mode.
-   * 
+   *
    * @return this fixture.
    * @throws AssertionError if this fixture's {@code JProgressBar} is not in indeterminate mode.
    */
@@ -107,7 +107,7 @@ TextDisplayFixture<JProgressBarFixture> {
 
   /**
    * Returns the text of this fixture's {@code JProgressBar}.
-   * 
+   *
    * @return the text of this fixture's {@code JProgressBar}.
    */
   @Override
@@ -117,7 +117,7 @@ TextDisplayFixture<JProgressBarFixture> {
 
   /**
    * Asserts that the text of this fixture's {@code JProgressBar} is equal to the specified {@code String}.
-   * 
+   *
    * @param expected the text to match.
    * @return this fixture.
    * @throws AssertionError if the text of this fixture's {@code JProgressBar} is not equal to the given one.
@@ -130,7 +130,7 @@ TextDisplayFixture<JProgressBarFixture> {
 
   /**
    * Asserts that the text of this fixture's {@code JProgressBar} matches the given regular expression pattern.
-   * 
+   *
    * @param pattern the regular expression pattern to match.
    * @return this fixture.
    * @throws AssertionError if the text of this fixture's {@code JProgressBar} does not match the given regular
@@ -145,7 +145,7 @@ TextDisplayFixture<JProgressBarFixture> {
 
   /**
    * Waits until the value of this fixture's {@code JProgressBar} is equal to the given value.
-   * 
+   *
    * @param value the expected value.
    * @return this fixture.
    * @throws IllegalArgumentException if the given value is less than the {@code JProgressBar}'s minimum value.
@@ -160,7 +160,7 @@ TextDisplayFixture<JProgressBarFixture> {
 
   /**
    * Waits until the value of this fixture's {@code JProgressBar} is equal to the given value.
-   * 
+   *
    * @param value the expected value.
    * @param timeout the amount of time to wait.
    * @return this fixture.
@@ -177,7 +177,7 @@ TextDisplayFixture<JProgressBarFixture> {
 
   /**
    * Waits until the value of this fixture's {@code JProgressBar} is in determinate mode.
-   * 
+   *
    * @return this fixture.
    * @throws WaitTimedOutError if the {@code JProgressBar} does not reach determinate mode within 30 seconds.
    */
@@ -188,7 +188,7 @@ TextDisplayFixture<JProgressBarFixture> {
 
   /**
    * Waits until the value of this fixture's {@code JProgressBar} is in determinate mode.
-   * 
+   *
    * @param timeout the amount of time to wait.
    * @return this fixture.
    * @throws NullPointerException if the given timeout is {@code null}.

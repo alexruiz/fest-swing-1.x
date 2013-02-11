@@ -16,7 +16,6 @@
 package org.fest.swing.fixture;
 
 import java.awt.Point;
-import java.util.regex.Pattern;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -36,11 +35,11 @@ import org.fest.swing.exception.ComponentLookupException;
  *
  * @author Alex Ruiz
  */
-public abstract class AbstractJPopupMenuInvokerFixture<S, T  extends JComponent, D extends JComponentDriver>
-extends AbstractJComponentFixture<S, T, D> implements JPopupMenuInvokerFixture {
+public abstract class AbstractJPopupMenuInvokerFixture<S, T extends JComponent, D extends JComponentDriver> extends
+    AbstractJComponentFixture<S, T, D> implements JPopupMenuInvokerFixture {
   /**
    * Creates a new {@link AbstractJPopupMenuInvokerFixture}.
-   * 
+   *
    * @param selfType the "self type."
    * @param robot performs simulation of user events on a {@code JComponent}.
    * @param type the type of the {@code JComponent} to find using the given {@code Robot}.
@@ -55,7 +54,7 @@ extends AbstractJComponentFixture<S, T, D> implements JPopupMenuInvokerFixture {
 
   /**
    * Creates a new {@link AbstractJPopupMenuInvokerFixture}.
-   * 
+   *
    * @param selfType the "self type."
    * @param robot performs simulation of user events on a {@code JComponent}.
    * @param name the name of the {@code JComponent} to find using the given {@code Robot}.
@@ -72,7 +71,7 @@ extends AbstractJComponentFixture<S, T, D> implements JPopupMenuInvokerFixture {
 
   /**
    * Creates a new {@link AbstractJPopupMenuInvokerFixture}.
-   * 
+   *
    * @param selfType the "self type."
    * @param robot performs simulation of user events on the given {@code JComponent}.
    * @param target the {@code JComponent} to be managed by this fixture.
@@ -85,7 +84,7 @@ extends AbstractJComponentFixture<S, T, D> implements JPopupMenuInvokerFixture {
 
   /**
    * Shows a pop-up menu using this fixture's {@code JComponent} as the invoker of the pop-up menu.
-   * 
+   *
    * @return a fixture that manages the displayed pop-up menu.
    * @throws IllegalStateException if this fixture's {@code JComponent} is disabled.
    * @throws IllegalStateException if this fixture's {@code JComponent} is not showing on the screen.
@@ -98,7 +97,7 @@ extends AbstractJComponentFixture<S, T, D> implements JPopupMenuInvokerFixture {
 
   /**
    * Shows a pop-up menu at the given point using this fixture's {@code JComponent} as the invoker of the pop-up menu.
-   * 
+   *
    * @param p the given point where to show the pop-up menu.
    * @return a fixture that manages the displayed pop-up menu.
    * @throws IllegalStateException if this fixture's {@code JComponent} is disabled.

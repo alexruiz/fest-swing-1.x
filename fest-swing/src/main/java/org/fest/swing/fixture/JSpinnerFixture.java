@@ -1,15 +1,15 @@
 /*
  * Created on Jul 1, 2007
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
- * 
+ *
  * Copyright @2007-2013 the original author or authors.
  */
 package org.fest.swing.fixture;
@@ -25,20 +25,15 @@ import org.fest.swing.exception.ComponentLookupException;
 import org.fest.swing.exception.UnexpectedException;
 
 /**
- * Understands functional testing of {@code JSpinner}s:
- * <ul>
- * <li>user input simulation</li>
- * <li>state verification</li>
- * <li>property value query</li>
- * </ul>
- * 
+ * Supports functional testing of {@code JSpinner}s:
+ *
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
 public class JSpinnerFixture extends AbstractJPopupMenuInvokerFixture<JSpinnerFixture, JSpinner, JSpinnerDriver> {
   /**
    * Creates a new {@link JSpinnerFixture}.
-   * 
+   *
    * @param robot performs simulation of user events on a {@code JSpinner}.
    * @param spinnerName the name of the {@code JSpinner} to find using the given {@code Robot}.
    * @throws NullPointerException if {@code robot} is {@code null}.
@@ -51,7 +46,7 @@ public class JSpinnerFixture extends AbstractJPopupMenuInvokerFixture<JSpinnerFi
 
   /**
    * Creates a new {@link JSpinnerFixture}.
-   * 
+   *
    * @param robot performs simulation of user events on the given {@code JSpinner}.
    * @param target the {@code JSpinner} to be managed by this fixture.
    * @throws NullPointerException if {@code robot} is {@code null}.
@@ -68,7 +63,7 @@ public class JSpinnerFixture extends AbstractJPopupMenuInvokerFixture<JSpinnerFi
 
   /**
    * Simulates a user incrementing the value of this fixture's {@code JSpinner} the given number of times.
-   * 
+   *
    * @param times how many times the value of this fixture's {@code JSpinner} should be incremented.
    * @return this fixture.
    * @throws IllegalArgumentException if {@code times} is less than or equal to zero.
@@ -82,7 +77,7 @@ public class JSpinnerFixture extends AbstractJPopupMenuInvokerFixture<JSpinnerFi
 
   /**
    * Simulates a user incrementing the value of this fixture's {@code JSpinner} one time.
-   * 
+   *
    * @return this fixture.
    * @throws IllegalStateException if this fixture's {@code JSpinner} is disabled.
    * @throws IllegalStateException if this fixture's {@code JSpinner} is not showing on the screen.
@@ -94,7 +89,7 @@ public class JSpinnerFixture extends AbstractJPopupMenuInvokerFixture<JSpinnerFi
 
   /**
    * Simulates a user decrementing the value of this fixture's {@code JSpinner} the given number of times.
-   * 
+   *
    * @param times how many times the value of this fixture's {@code JSpinner} should be decremented.
    * @return this fixture.
    * @throws IllegalArgumentException if {@code times} is less than or equal to zero.
@@ -108,7 +103,7 @@ public class JSpinnerFixture extends AbstractJPopupMenuInvokerFixture<JSpinnerFi
 
   /**
    * Simulates a user decrementing the value of this fixture's {@code JSpinner} one time.
-   * 
+   *
    * @return this fixture.
    * @throws IllegalStateException if this fixture's {@code JSpinner} is disabled.
    * @throws IllegalStateException if this fixture's {@code JSpinner} is not showing on the screen.
@@ -121,7 +116,7 @@ public class JSpinnerFixture extends AbstractJPopupMenuInvokerFixture<JSpinnerFi
   /**
    * Simulates a user entering the given text in this fixture's {@code JSpinner} (assuming its editor has a
    * {@code JTextComponent} under it.) This method does not commit the value to the {@code JSpinner}.
-   * 
+   *
    * @param text the text to enter.
    * @return this fixture.
    * @throws IllegalStateException if this fixture's {@code JSpinner} is disabled.
@@ -138,7 +133,7 @@ public class JSpinnerFixture extends AbstractJPopupMenuInvokerFixture<JSpinnerFi
   /**
    * Simulates a user entering and committing the given text in this fixture's {@code JSpinner} (assuming its editor has
    * a {@code JTextComponent} under it.)
-   * 
+   *
    * @param text the text to enter.
    * @return this fixture.
    * @throws IllegalStateException if this fixture's {@code JSpinner} is disabled.
@@ -154,7 +149,7 @@ public class JSpinnerFixture extends AbstractJPopupMenuInvokerFixture<JSpinnerFi
 
   /**
    * Selects the given value in this fixture's {@code JSpinner}.
-   * 
+   *
    * @param value the value to select.
    * @return this fixture.
    * @throws IllegalStateException if this fixture's {@code JSpinner} is disabled.
@@ -168,7 +163,7 @@ public class JSpinnerFixture extends AbstractJPopupMenuInvokerFixture<JSpinnerFi
 
   /**
    * Verifies that the value of this fixture's {@code JSpinner} is equal to the given one.
-   * 
+   *
    * @param value the expected value of this fixture's {@code JSpinner}.
    * @return this fixture.
    * @throws AssertionError if the value of this fixture's {@code JSpinner} is not equal to the given one.
@@ -182,7 +177,7 @@ public class JSpinnerFixture extends AbstractJPopupMenuInvokerFixture<JSpinnerFi
    * Returns the text displayed by this fixture's {@code JSpinner}. This method first tries to get the text displayed in
    * the {@code JSpinner}'s editor, assuming it is a {@code JTextComponent}. If the text from the editor cannot be
    * retrieved, it will return the {@code String} representation of the value in the {@code JSpinner}'s model.
-   * 
+   *
    * @return the text displayed by this fixture's {@code JSpinner}.
    * @since 1.2
    */

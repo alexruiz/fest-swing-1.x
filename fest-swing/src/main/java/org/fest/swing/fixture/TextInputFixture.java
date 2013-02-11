@@ -7,13 +7,15 @@
  * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * is distributed on an "A@Nonnull S IS" BASIS, WITHOUT WARRANTIE@Nonnull S OR CONDITION@Nonnull S OF ANY KIND, either express
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  *
  * Copyright @2007-2013 the original author or authors.
  */
 package org.fest.swing.fixture;
+
+import javax.annotation.Nonnull;
 
 /**
  * Simulates user events on {@code Component}s that accept text input from the user.
@@ -29,19 +31,19 @@ public interface TextInputFixture<S> extends TextDisplayFixture<S>, EditableComp
    * @param text the text to enter.
    * @return this fixture.
    */
-  S enterText(String text);
+  @Nonnull S enterText(@Nonnull String text);
 
   /**
    * Simulates a user deleting all the text in the {@code Component} managed by this fixture.
    * @return this fixture.
    */
-  S deleteText();
+  @Nonnull S deleteText();
 
   /**
    * Simulates a user selecting all the text contained in the {@code Component} managed by this fixture.
    * @return this fixture.
    */
-  S selectAll();
+  @Nonnull S selectAll();
 
   /**
    * Simulates a user selecting a portion of the text contained in the {@code Component} managed by this
@@ -50,12 +52,12 @@ public interface TextInputFixture<S> extends TextDisplayFixture<S>, EditableComp
    * @param end index where selection should end.
    * @return this fixture.
    */
-  S selectText(int start, int end);
+  @Nonnull S selectText(int start, int end);
 
   /**
    * Simulates a user selecting the given text contained in the {@code Component} managed by this fixture.
    * @param text the text to select.
    * @return this fixture.
    */
-  S select(String text);
+  @Nonnull S select(@Nonnull String text);
 }

@@ -1,15 +1,15 @@
 /*
  * Created on Oct 20, 2006
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
- * 
+ *
  * Copyright @2006-2013 the original author or authors.
  */
 package org.fest.swing.fixture;
@@ -42,16 +42,17 @@ import org.fest.swing.timing.Timeout;
 
 /**
  * Supports functional testing of AWT and Swing {@code Component}s.
- * 
+ *
  * @param <S> used to simulate "self types." For more information please read &quot;<a href="http://goo.gl/fjgOM"
  *          target="_blank">Emulating 'self types' using Java Generics to simplify fluent API implementation</a>.&quot;
  * @param <C> the type of {@code Component} that this fixture can manage.
  * @param <D> the type of {@link ComponentDriver} that this fixture uses internally.
- * 
+ *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
-public abstract class AbstractComponentFixture<S, C extends Component, D extends ComponentDriver> implements MouseInputSimulationFixture<S> {
+public abstract class AbstractComponentFixture<S, C extends Component, D extends ComponentDriver> implements
+    MouseInputSimulationFixture<S> {
   /** Name of the property "font". */
   protected static final String FONT_PROPERTY = "font";
 
@@ -71,7 +72,7 @@ public abstract class AbstractComponentFixture<S, C extends Component, D extends
 
   /**
    * Creates a new {@link AbstractComponentFixture}.
-   * 
+   *
    * @param selfType the "self type."
    * @param robot performs simulation of user events on a {@code Component}.
    * @param type the type of the {@code Component} to find using the given {@code Robot}.
@@ -92,7 +93,7 @@ public abstract class AbstractComponentFixture<S, C extends Component, D extends
 
   /**
    * Creates a new {@link AbstractComponentFixture}.
-   * 
+   *
    * @param selfType the "self type."
    * @param robot performs simulation of user events on a {@code Component}.
    * @param name the name of the {@code Component} to find using the given {@code Robot}.
@@ -116,7 +117,7 @@ public abstract class AbstractComponentFixture<S, C extends Component, D extends
 
   /**
    * Creates a new {@link AbstractComponentFixture}.
-   * 
+   *
    * @param selfType the "self type."
    * @param robot performs simulation of user events on the given {@code Component}.
    * @param target the {@code Component} to be managed by this fixture.
@@ -143,7 +144,7 @@ public abstract class AbstractComponentFixture<S, C extends Component, D extends
 
   /**
    * Simulates a user clicking this fixture's {@code Component}.
-   * 
+   *
    * @return this fixture.
    * @throws IllegalStateException if this fixture's {@code Component} is disabled.
    * @throws IllegalStateException if this fixture's {@code Component} is not showing on the screen.
@@ -157,7 +158,7 @@ public abstract class AbstractComponentFixture<S, C extends Component, D extends
 
   /**
    * Simulates a user clicking this fixture's {@code Component}.
-   * 
+   *
    * @param button the button to click.
    * @return this fixture.
    * @throws NullPointerException if the given {@code MouseButton} is {@code null}.
@@ -172,7 +173,7 @@ public abstract class AbstractComponentFixture<S, C extends Component, D extends
 
   /**
    * Simulates a user clicking this fixture's {@code Component}.
-   * 
+   *
    * @param mouseClickInfo specifies the button to click and the times the button should be clicked.
    * @return this fixture.
    * @throws NullPointerException if the given {@code MouseClickInfo} is {@code null}.
@@ -187,7 +188,7 @@ public abstract class AbstractComponentFixture<S, C extends Component, D extends
 
   /**
    * Simulates a user double-clicking this fixture's {@code Component}.
-   * 
+   *
    * @return this fixture.
    * @throws IllegalStateException if this fixture's {@code Component} is disabled.
    * @throws IllegalStateException if this fixture's {@code Component} is not showing on the screen.
@@ -200,7 +201,7 @@ public abstract class AbstractComponentFixture<S, C extends Component, D extends
 
   /**
    * Simulates a user right-clicking this fixture's {@code Component}.
-   * 
+   *
    * @return this fixture.
    * @throws IllegalStateException if this fixture's {@code Component} is disabled.
    * @throws IllegalStateException if this fixture's {@code Component} is not showing on the screen.
@@ -213,7 +214,7 @@ public abstract class AbstractComponentFixture<S, C extends Component, D extends
 
   /**
    * Gives input focus to this fixture's {@code Component}.
-   * 
+   *
    * @return this fixture.
    * @throws IllegalStateException if this fixture's {@code Component} is disabled.
    * @throws IllegalStateException if this fixture's {@code Component} is not showing on the screen.
@@ -226,7 +227,7 @@ public abstract class AbstractComponentFixture<S, C extends Component, D extends
   /**
    * Simulates a user pressing given key with the given modifiers on this fixture's {@code Component}.
    * Modifiers is a mask from the available AWT {@code InputEvent} masks.
-   * 
+   *
    * @param keyPressInfo specifies the key and modifiers to press.
    * @return this fixture.
    * @throws NullPointerException if the given {@code KeyPressInfo} is {@code null}.
@@ -242,7 +243,7 @@ public abstract class AbstractComponentFixture<S, C extends Component, D extends
 
   /**
    * Simulates a user pressing and releasing the given keys on this fixture's {@code Component}.
-   * 
+   *
    * @param keyCodes one or more codes of the keys to press.
    * @return this fixture.
    * @throws NullPointerException if the given array of codes is {@code null}.
@@ -258,7 +259,7 @@ public abstract class AbstractComponentFixture<S, C extends Component, D extends
 
   /**
    * Simulates a user pressing the given key on this fixture's {@code Component}.
-   * 
+   *
    * @param keyCode the code of the key to press.
    * @return this fixture.
    * @throws IllegalArgumentException if any of the given code is not a valid key code.
@@ -273,7 +274,7 @@ public abstract class AbstractComponentFixture<S, C extends Component, D extends
 
   /**
    * Simulates a user releasing the given key on this fixture's {@code Component}.
-   * 
+   *
    * @param keyCode the code of the key to release.
    * @return this fixture.
    * @throws IllegalArgumentException if any of the given code is not a valid key code.
@@ -288,7 +289,7 @@ public abstract class AbstractComponentFixture<S, C extends Component, D extends
 
   /**
    * Asserts that this fixture's {@code Component} has input focus.
-   * 
+   *
    * @return this fixture.
    * @throws AssertionError if this fixture's {@code Component} does not have input focus.
    */
@@ -299,7 +300,7 @@ public abstract class AbstractComponentFixture<S, C extends Component, D extends
 
   /**
    * Asserts that this fixture's {@code Component} is enabled.
-   * 
+   *
    * @return this fixture.
    * @throws AssertionError if this fixture's {@code Component} is disabled.
    */
@@ -310,7 +311,7 @@ public abstract class AbstractComponentFixture<S, C extends Component, D extends
 
   /**
    * Asserts that this fixture's {@code Component} is enabled.
-   * 
+   *
    * @param timeout the time this fixture will wait for the component to be enabled.
    * @return this fixture.
    * @throws WaitTimedOutError if this fixture's {@code Component} is never enabled.
@@ -322,7 +323,7 @@ public abstract class AbstractComponentFixture<S, C extends Component, D extends
 
   /**
    * Asserts that this fixture's {@code Component} is disabled.
-   * 
+   *
    * @return this fixture.
    * @throws AssertionError if this fixture's {@code Component} is enabled.
    */
@@ -333,7 +334,7 @@ public abstract class AbstractComponentFixture<S, C extends Component, D extends
 
   /**
    * Asserts that this fixture's {@code Component} is visible.
-   * 
+   *
    * @return this fixture.
    * @throws AssertionError if this fixture's {@code Component} is not visible.
    */
@@ -344,7 +345,7 @@ public abstract class AbstractComponentFixture<S, C extends Component, D extends
 
   /**
    * Asserts that this fixture's {@code Component} is not visible.
-   * 
+   *
    * @return this fixture.
    * @throws AssertionError if this fixture's {@code Component} is visible.
    */
@@ -357,7 +358,7 @@ public abstract class AbstractComponentFixture<S, C extends Component, D extends
    * Returns whether showing components are the only ones participating in a component lookup. The returned value is
    * obtained from the {@link Settings#componentLookupScope() component lookup scope} stored in this fixture's
    * {@link Robot}.
-   * 
+   *
    * @return {@code true} if only showing components can participate in a component lookup, {@code false} otherwise.
    */
   protected boolean requireShowing() {
@@ -394,7 +395,7 @@ public abstract class AbstractComponentFixture<S, C extends Component, D extends
 
   /**
    * Indicates whether this fixture's {@code Component} is enabled.
-   * 
+   *
    * @return {@code true} if this fixture's {@code Component} is enabled; {@code false} otherwise.
    * @since 1.3
    */
@@ -404,7 +405,7 @@ public abstract class AbstractComponentFixture<S, C extends Component, D extends
 
   /**
    * Returns this fixture's {@code Component} casted to the given sub-type.
-   * 
+   *
    * @param <T> enforces that the given type is a sub-type of the managed {@code Component}.
    * @param type the type that the managed {@code Component} will be casted to.
    * @return this fixture's {@code Component} casted to the given sub-type.
@@ -427,7 +428,7 @@ public abstract class AbstractComponentFixture<S, C extends Component, D extends
    * href="http://java.sun.com/javase/6/docs/api/javax/swing/package-summary.html#threading" target="_blank">Swing
    * Threading Policy</a>.
    * </p>
-   * 
+   *
    * @return the GUI component in this fixture.
    */
   public final @Nonnull C target() {

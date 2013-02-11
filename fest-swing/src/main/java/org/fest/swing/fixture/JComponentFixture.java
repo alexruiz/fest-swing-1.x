@@ -29,10 +29,9 @@ import javax.annotation.Nullable;
  * @author Alex Ruiz
  */
 public interface JComponentFixture<S> {
-
   /**
    * Returns the client property stored in this fixture's {@code JComponent}, under the given key.
-   * 
+   *
    * @param key the key to use to retrieve the client property.
    * @return the value of the client property stored under the given key, or {@code null} if the property was not found.
    * @throws NullPointerException if the given key is {@code null}.
@@ -42,7 +41,7 @@ public interface JComponentFixture<S> {
 
   /**
    * Asserts that the toolTip in this fixture's {@code JComponent} matches the given value.
-   * 
+   *
    * @param expected the given value. It can be a regular expression.
    * @return this fixture.
    * @throws AssertionError if the toolTip in this fixture's {@code JComponent} does not match the given value.
@@ -51,7 +50,7 @@ public interface JComponentFixture<S> {
 
   /**
    * Asserts that the toolTip in this fixture's {@code JComponent} matches the given regular expression pattern.
-   * 
+   *
    * @param pattern the regular expression pattern to match.
    * @return this fixture.
    * @throws NullPointerException if the given regular expression pattern is {@code null}.

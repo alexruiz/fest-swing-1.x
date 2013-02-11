@@ -35,11 +35,11 @@ import org.fest.swing.exception.ComponentLookupException;
  *
  * @author Alex Ruiz
  */
-public abstract class AbstractJComponentFixture<S, T  extends JComponent, D extends JComponentDriver>
-extends AbstractComponentFixture<S, T, D> implements JComponentFixture<S> {
+public abstract class AbstractJComponentFixture<S, T extends JComponent, D extends JComponentDriver> extends
+    AbstractComponentFixture<S, T, D> implements JComponentFixture<S> {
   /**
    * Creates a new {@link AbstractJComponentFixture}.
-   * 
+   *
    * @param selfType the "self type."
    * @param robot performs simulation of user events on a {@code JComponent}.
    * @param type the type of the {@code JComponent} to find using the given {@code Robot}.
@@ -54,7 +54,7 @@ extends AbstractComponentFixture<S, T, D> implements JComponentFixture<S> {
 
   /**
    * Creates a new {@link AbstractJComponentFixture}.
-   * 
+   *
    * @param selfType the "self type."
    * @param robot performs simulation of user events on a {@code JComponent}.
    * @param name the name of the {@code JComponent} to find using the given {@code Robot}.
@@ -71,7 +71,7 @@ extends AbstractComponentFixture<S, T, D> implements JComponentFixture<S> {
 
   /**
    * Creates a new {@link AbstractJComponentFixture}.
-   * 
+   *
    * @param selfType the "self type."
    * @param robot performs simulation of user events on the given {@code JComponent}.
    * @param target the {@code JComponent} to be managed by this fixture.
@@ -84,7 +84,7 @@ extends AbstractComponentFixture<S, T, D> implements JComponentFixture<S> {
 
   /**
    * Returns the client property stored in this fixture's {@code JComponent}, under the given key.
-   * 
+   *
    * @param key the key to use to retrieve the client property.
    * @return the value of the client property stored under the given key, or {@code null} if the property was not found.
    * @throws NullPointerException if the given key is {@code null}.
@@ -97,7 +97,7 @@ extends AbstractComponentFixture<S, T, D> implements JComponentFixture<S> {
 
   /**
    * Asserts that the toolTip in this fixture's {@code JComponent} matches the given value.
-   * 
+   *
    * @param expected the given value. It can be a regular expression.
    * @return this fixture.
    * @throws AssertionError if the toolTip in this fixture's {@code JComponent} does not match the given value.
@@ -110,7 +110,7 @@ extends AbstractComponentFixture<S, T, D> implements JComponentFixture<S> {
 
   /**
    * Asserts that the toolTip in this fixture's {@code JComponent} matches the given regular expression pattern.
-   * 
+   *
    * @param pattern the regular expression pattern to match.
    * @return this fixture.
    * @throws NullPointerException if the given regular expression pattern is {@code null}.
