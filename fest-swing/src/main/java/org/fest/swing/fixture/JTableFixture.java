@@ -42,12 +42,10 @@ import org.fest.swing.exception.ActionFailedException;
 import org.fest.swing.exception.ComponentLookupException;
 
 /**
- * Understands functional testing of {@code JTable}s:
- * <ul>
- * <li>user input simulation</li>
- * <li>state verification</li>
- * <li>property value query</li>
- * </ul>
+ * <p>
+ * Supports functional testing of {@code JTable}s.
+ * </p>
+ *
  * <p>
  * The conversion between the values given in tests and the values being displayed by a {@code JTable} renderer is
  * performed by a {@link JTableCellReader}. This fixture uses a {@link BasicJTableCellReader} by default.

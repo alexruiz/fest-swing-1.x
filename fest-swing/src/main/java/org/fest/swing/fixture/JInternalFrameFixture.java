@@ -27,12 +27,7 @@ import org.fest.swing.exception.ActionFailedException;
 import org.fest.swing.exception.ComponentLookupException;
 
 /**
- * Understands functional testing of {@code JInternalFrame}s:
- * <ul>
- * <li>user input simulation</li>
- * <li>state verification</li>
- * <li>property value query</li>
- * </ul>
+ * Supports functional testing of {@code JInternalFrame}s
  *
  * @author Alex Ruiz
  */

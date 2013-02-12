@@ -1,16 +1,15 @@
 /*
  * Created on Aug 10, 2008
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ * 
  * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
- *
+ * 
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+ * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations under the License.
+ * 
  * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
@@ -21,20 +20,23 @@ import static org.fest.swing.test.core.MethodInvocations.Args.args;
 
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
-import org.fest.swing.test.core.*;
+import org.fest.swing.test.core.MethodInvocations;
 import org.fest.swing.test.core.MethodInvocations.Args;
-import org.fest.swing.test.swing.*;
+import org.fest.swing.test.core.RobotBasedTestCase;
+import org.fest.swing.test.swing.TestTable;
+import org.fest.swing.test.swing.TestWindow;
 import org.junit.Test;
 
 /**
  * Tests for {@link JTableCellValueQuery#cellValueOf(javax.swing.JTable, int, int)}.
- *
+ * 
  * @author Alex Ruiz
  */
 public class JTableCellValueQuery_cellValueOf_Test extends RobotBasedTestCase {
   private MyTable table;
 
-  @Override protected void onSetUp() {
+  @Override
+  protected void onSetUp() {
     MyWindow window = MyWindow.createNew();
     table = window.table;
   }
@@ -54,7 +56,8 @@ public class JTableCellValueQuery_cellValueOf_Test extends RobotBasedTestCase {
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
-        @Override protected MyWindow executeInEDT() {
+        @Override
+        protected MyWindow executeInEDT() {
           return new MyWindow();
         }
       });
@@ -76,12 +79,17 @@ public class JTableCellValueQuery_cellValueOf_Test extends RobotBasedTestCase {
       super(2, 6);
     }
 
-    @Override public Object getValueAt(int row, int column) {
-      if (recording) methodInvocations.invoked("getValueAt", args(row, column));
+    @Override
+    public Object getValueAt(int row, int column) {
+      if (recording) {
+        methodInvocations.invoked("getValueAt", args(row, column));
+      }
       return super.getValueAt(row, column);
     }
 
-    void startRecording() { recording = true; }
+    void startRecording() {
+      recording = true;
+    }
 
     MethodInvocations requireInvoked(String methodName, Args args) {
       return methodInvocations.requireInvoked(methodName, args);

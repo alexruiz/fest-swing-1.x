@@ -30,7 +30,8 @@ import org.fest.swing.edt.GuiQuery;
  */
 public final class JComboBoxSelectedItemQuery {
   @RunsInEDT
-  public static @Nullable Object selectedItemOf(final @Nonnull JComboBox comboBox) {
+  public static @Nullable
+  Object selectedItemOf(final @Nonnull JComboBox comboBox) {
     return execute(new GuiQuery<Object>() {
       @Override
       protected Object executeInEDT() {

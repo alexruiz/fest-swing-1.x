@@ -1,16 +1,15 @@
 /*
  * Created on Apr 12, 2008
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ * 
  * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
- *
+ * 
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+ * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations under the License.
+ * 
  * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
@@ -22,18 +21,22 @@ import static org.fest.swing.test.builder.JToolBars.toolBar;
 
 import java.awt.Component;
 
-import javax.swing.*;
-import javax.swing.tree.*;
+import javax.swing.JLabel;
+import javax.swing.JTree;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
 
 import org.fest.swing.annotation.RunsInEDT;
-import org.fest.swing.edt.*;
+import org.fest.swing.edt.GuiQuery;
+import org.fest.swing.edt.GuiTask;
 import org.fest.swing.test.core.RobotBasedTestCase;
-import org.fest.swing.test.swing.*;
+import org.fest.swing.test.swing.CustomCellRenderer;
+import org.fest.swing.test.swing.TestWindow;
 import org.junit.Test;
 
 /**
  * Tests for {@link BasicJTreeCellReader#valueAt(JTree, Object)}.
- *
+ * 
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
@@ -42,7 +45,8 @@ public class BasicJTreeCellReader_valueAt_Test extends RobotBasedTestCase {
   private BasicJTreeCellReader reader;
   private DefaultMutableTreeNode root;
 
-  @Override protected void onSetUp() {
+  @Override
+  protected void onSetUp() {
     MyWindow window = MyWindow.createNew();
     root = window.root;
     tree = window.tree;
@@ -68,7 +72,8 @@ public class BasicJTreeCellReader_valueAt_Test extends RobotBasedTestCase {
 
   @Test
   public void should_return_null_if_model_does_not_implement_toString() {
-    class Person {}
+    class Person {
+    }
     root = new DefaultMutableTreeNode(new Person());
     setRootInTree(tree, root);
     setCellRendererComponent(tree, unrecognizedRenderer());
@@ -80,8 +85,9 @@ public class BasicJTreeCellReader_valueAt_Test extends RobotBasedTestCase {
   @RunsInEDT
   private static void setRootInTree(final JTree tree, final DefaultMutableTreeNode root) {
     execute(new GuiTask() {
-      @Override protected void executeInEDT() {
-        ((DefaultTreeModel)tree.getModel()).setRoot(root);
+      @Override
+      protected void executeInEDT() {
+        ((DefaultTreeModel) tree.getModel()).setRoot(root);
       }
     });
   }
@@ -89,7 +95,8 @@ public class BasicJTreeCellReader_valueAt_Test extends RobotBasedTestCase {
   @RunsInEDT
   private static void setCellRendererComponent(final JTree tree, final Component renderer) {
     execute(new GuiTask() {
-      @Override protected void executeInEDT() {
+      @Override
+      protected void executeInEDT() {
         tree.setCellRenderer(new CustomCellRenderer(renderer));
       }
     });
@@ -106,7 +113,8 @@ public class BasicJTreeCellReader_valueAt_Test extends RobotBasedTestCase {
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
-        @Override protected MyWindow executeInEDT() {
+        @Override
+        protected MyWindow executeInEDT() {
           return new MyWindow();
         }
       });

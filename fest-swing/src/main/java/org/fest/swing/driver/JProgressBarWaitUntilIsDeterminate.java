@@ -28,8 +28,7 @@ import org.fest.swing.timing.Condition;
 import org.fest.swing.timing.Timeout;
 
 /**
- * Understands an EDT-safe task that waits until the value of a {@code JProgressBar} is equal to the
- * given expected value.
+ * EDT-safe task that waits until the value of a {@code JProgressBar} is equal to the given expected value.
  *
  * @author Alex Ruiz
  */

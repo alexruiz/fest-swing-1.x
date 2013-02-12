@@ -1,34 +1,33 @@
 /*
  * Created on Aug 28, 2008
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ * 
  * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
- *
+ * 
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+ * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations under the License.
+ * 
  * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.test.builder;
 
 import static org.fest.swing.edt.GuiActionRunner.execute;
 import static org.fest.swing.test.builder.JTabbedPanes.Tab.tab;
-import static org.fest.util.Arrays.isEmpty;
 
 import java.awt.Component;
 
-import javax.swing.*;
+import javax.swing.JPanel;
+import javax.swing.JTabbedPane;
 
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
 
 /**
  * Understands creation of {@code JTabbedPane}s.
- *
+ * 
  * @author Alex Ruiz
  */
 public final class JTabbedPanes {
@@ -51,8 +50,9 @@ public final class JTabbedPanes {
     public JTabbedPaneFactory withTabs(String... tabTitles) {
       int tabCount = tabTitles.length;
       Tab[] newTabs = new Tab[tabCount];
-      for (int i = 0; i < tabCount; i++)
+      for (int i = 0; i < tabCount; i++) {
         newTabs[i] = tab(tabTitles[i]);
+      }
       return withTabs(newTabs);
     }
 
@@ -69,11 +69,15 @@ public final class JTabbedPanes {
     @RunsInEDT
     public JTabbedPane createNew() {
       return execute(new GuiQuery<JTabbedPane>() {
-        @Override protected JTabbedPane executeInEDT() {
+        @Override
+        protected JTabbedPane executeInEDT() {
           JTabbedPane tabbedPane = new JTabbedPane();
           tabbedPane.setName(name);
-          if (!isEmpty(tabs))
-            for (Tab tab : tabs) tabbedPane.addTab(tab.title, tab.component);
+          if (!isEmpty(tabs)) {
+            for (Tab tab : tabs) {
+              tabbedPane.addTab(tab.title, tab.component);
+            }
+          }
           tabbedPane.setSelectedIndex(selectedIndex);
           return tabbedPane;
         }
@@ -93,7 +97,8 @@ public final class JTabbedPanes {
     @RunsInEDT
     private static JPanel createPanel() {
       return execute(new GuiQuery<JPanel>() {
-        @Override protected JPanel executeInEDT() {
+        @Override
+        protected JPanel executeInEDT() {
           return new JPanel();
         }
       });

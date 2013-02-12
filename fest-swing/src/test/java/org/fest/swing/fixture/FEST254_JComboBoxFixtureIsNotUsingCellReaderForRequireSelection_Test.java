@@ -6,18 +6,21 @@ import static org.fest.util.Arrays.array;
 
 import java.awt.Component;
 
-import javax.swing.*;
-import javax.swing.plaf.basic.*;
+import javax.swing.JComboBox;
+import javax.swing.JList;
+import javax.swing.plaf.basic.BasicComboBoxEditor;
+import javax.swing.plaf.basic.BasicComboBoxRenderer;
 
 import org.fest.swing.annotation.RunsInEDT;
-import org.fest.swing.edt.*;
+import org.fest.swing.edt.GuiQuery;
+import org.fest.swing.edt.GuiTask;
 import org.fest.swing.test.core.RobotBasedTestCase;
 import org.fest.swing.test.swing.TestWindow;
 import org.junit.Test;
 
 /**
  * Test case for bug <a href="http://jira.codehaus.org/browse/FEST-254" target="_blank">FEST-254</a>
- *
+ * 
  * @author Glen Schrader
  * @author Alex Ruiz
  */
@@ -25,7 +28,8 @@ public class FEST254_JComboBoxFixtureIsNotUsingCellReaderForRequireSelection_Tes
   private JComboBox comboBox;
   private JComboBoxFixture fixture;
 
-  @Override protected void onSetUp() {
+  @Override
+  protected void onSetUp() {
     MyWindow window = MyWindow.createNew();
     comboBox = window.comboBox;
     fixture = new JComboBoxFixture(robot, comboBox);
@@ -42,7 +46,8 @@ public class FEST254_JComboBoxFixtureIsNotUsingCellReaderForRequireSelection_Tes
   @RunsInEDT
   private static void selectIndex(final JComboBox comboBox, final int index) {
     execute(new GuiTask() {
-      @Override protected void executeInEDT() {
+      @Override
+      protected void executeInEDT() {
         comboBox.setSelectedIndex(index);
       }
     });
@@ -56,7 +61,8 @@ public class FEST254_JComboBoxFixtureIsNotUsingCellReaderForRequireSelection_Tes
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
-        @Override protected MyWindow executeInEDT() {
+        @Override
+        protected MyWindow executeInEDT() {
           return new MyWindow();
         }
       });
@@ -74,11 +80,13 @@ public class FEST254_JComboBoxFixtureIsNotUsingCellReaderForRequireSelection_Tes
   }
 
   private static class MyComboBoxEditor extends BasicComboBoxEditor {
-    @Override public void setItem(Object anObject) {
+    @Override
+    public void setItem(Object anObject) {
       super.setItem(renderIfValue(anObject));
     }
 
-    @Override public Object getItem() {
+    @Override
+    public Object getItem() {
       String text = editor.getText();
       try {
         return TestValue.valueOf(text.toUpperCase());
@@ -91,14 +99,17 @@ public class FEST254_JComboBoxFixtureIsNotUsingCellReaderForRequireSelection_Tes
   private static class MyComboBoxRenderer extends BasicComboBoxRenderer {
     private static final long serialVersionUID = 1L;
 
-    @Override public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected,
+    @Override
+    public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected,
         boolean cellHasFocus) {
       return super.getListCellRendererComponent(list, renderIfValue(value), index, isSelected, cellHasFocus);
     }
   }
 
   private static Object renderIfValue(Object o) {
-    if (o instanceof TestValue) return renderValue((TestValue)o);
+    if (o instanceof TestValue) {
+      return renderValue((TestValue) o);
+    }
     return o;
   }
 

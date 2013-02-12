@@ -1,39 +1,37 @@
 /*
  * Created on Jun 1, 2008
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ * 
  * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
- *
+ * 
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+ * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations under the License.
+ * 
  * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.core;
 
-import static org.easymock.EasyMock.expectLastCall;
 import static org.fest.swing.core.TestComponentHierarchies.newComponentHierarchyMock;
 import static org.fest.swing.test.builder.JFrames.frame;
 import static org.fest.swing.test.task.WindowDestroyTask.hideAndDisposeInEDT;
-import static org.fest.util.Collections.list;
 
 import java.awt.Container;
 import java.util.List;
 
 import javax.swing.JFrame;
 
-import org.fest.mocks.EasyMockTemplate;
 import org.fest.swing.hierarchy.ComponentHierarchy;
 import org.fest.swing.test.core.EDTSafeTestCase;
-import org.junit.*;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 
 /**
  * Test case for <a href="http://code.google.com/p/fest/issues/detail?id=138">Bug 138</a>.
- *
+ * 
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
@@ -50,7 +48,9 @@ public class Bug138_disposeWindows_Test extends EDTSafeTestCase {
 
   @After
   public void tearDown() {
-    if (frame != null) hideAndDisposeInEDT(frame);
+    if (frame != null) {
+      hideAndDisposeInEDT(frame);
+    }
   }
 
   @Test
@@ -58,13 +58,15 @@ public class Bug138_disposeWindows_Test extends EDTSafeTestCase {
     frame = frame().withTitle("Hello").createNew();
     final List<Container> roots = rootsWith(frame);
     new EasyMockTemplate(hierarchy) {
-      @Override protected void expectations() {
+      @Override
+      protected void expectations() {
         hierarchy.roots();
         expectLastCall().andReturn(roots);
         hierarchy.dispose(frame);
       }
 
-      @Override protected void codeToTest() {
+      @Override
+      protected void codeToTest() {
         robot.cleanUp();
       }
     }.run();
@@ -77,9 +79,12 @@ public class Bug138_disposeWindows_Test extends EDTSafeTestCase {
   @Test
   public void should_not_dispose_windows() {
     new EasyMockTemplate(hierarchy) {
-      @Override protected void expectations() {}
+      @Override
+      protected void expectations() {
+      }
 
-      @Override protected void codeToTest() {
+      @Override
+      protected void codeToTest() {
         robot.cleanUpWithoutDisposingWindows();
       }
     }.run();

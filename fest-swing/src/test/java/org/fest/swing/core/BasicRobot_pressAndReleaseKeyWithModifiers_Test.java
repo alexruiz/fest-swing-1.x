@@ -1,16 +1,15 @@
 /*
  * Created on Jul 25, 2009
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ * 
  * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
- *
+ * 
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+ * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations under the License.
+ * 
  * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.core;
@@ -34,7 +33,7 @@ import org.junit.Test;
 
 /**
  * Tests for {@link BasicRobot#pressAndReleaseKey(int, int...)}.
- *
+ * 
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
@@ -46,14 +45,10 @@ public class BasicRobot_pressAndReleaseKeyWithModifiers_Test extends BasicRobot_
     robot.pressAndReleaseKey(VK_C, new int[] { CTRL_MASK, SHIFT_MASK });
     robot.waitForIdle();
     List<KeyAction> actions = recorder.actions;
-    assertThat(actions).containsOnly(
-        KeyAction.action(KEY_PRESSED,  VK_SHIFT),
-        KeyAction.action(KEY_PRESSED,  VK_CONTROL),
-        KeyAction.action(KEY_PRESSED,  VK_C),
-        KeyAction.action(KEY_RELEASED, VK_C),
-        KeyAction.action(KEY_RELEASED, VK_CONTROL),
-        KeyAction.action(KEY_RELEASED, VK_SHIFT)
-        );
+    assertThat(actions).containsOnly(KeyAction.action(KEY_PRESSED, VK_SHIFT),
+        KeyAction.action(KEY_PRESSED, VK_CONTROL), KeyAction.action(KEY_PRESSED, VK_C),
+        KeyAction.action(KEY_RELEASED, VK_C), KeyAction.action(KEY_RELEASED, VK_CONTROL),
+        KeyAction.action(KEY_RELEASED, VK_SHIFT));
   }
 
   private static class KeyPressRecorder extends KeyAdapter {
@@ -65,11 +60,13 @@ public class BasicRobot_pressAndReleaseKeyWithModifiers_Test extends BasicRobot_
       return recorder;
     }
 
-    @Override public void keyPressed(KeyEvent e) {
+    @Override
+    public void keyPressed(KeyEvent e) {
       actions.add(KeyAction.action(KEY_PRESSED, e.getKeyCode()));
     }
 
-    @Override public void keyReleased(KeyEvent e) {
+    @Override
+    public void keyReleased(KeyEvent e) {
       actions.add(KeyAction.action(KEY_RELEASED, e.getKeyCode()));
     }
   }
@@ -87,7 +84,8 @@ public class BasicRobot_pressAndReleaseKeyWithModifiers_Test extends BasicRobot_
       this.keyCode = keyCode;
     }
 
-    @Override public boolean equals(Object obj) {
+    @Override
+    public boolean equals(Object obj) {
       if (this == obj) {
         return true;
       }
@@ -104,7 +102,8 @@ public class BasicRobot_pressAndReleaseKeyWithModifiers_Test extends BasicRobot_
       return keyCode == other.keyCode;
     }
 
-    @Override public int hashCode() {
+    @Override
+    public int hashCode() {
       final int prime = 31;
       int result = 1;
       result = prime * result + type;
@@ -112,7 +111,8 @@ public class BasicRobot_pressAndReleaseKeyWithModifiers_Test extends BasicRobot_
       return result;
     }
 
-    @Override public String toString() {
+    @Override
+    public String toString() {
       StringBuilder b = new StringBuilder();
       b.append("[type=").append(type).append(", ");
       b.append("keyCode=").append(keyCode).append("]");

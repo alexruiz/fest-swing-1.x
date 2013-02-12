@@ -34,21 +34,17 @@ import org.fest.swing.exception.ActionFailedException;
 import org.fest.swing.exception.ComponentLookupException;
 
 /**
- * Understands functional testing of single cells in {@code JTable}s:
- * <ul>
- * <li>user input simulation</li>
- * <li>state verification</li>
- * <li>property value query</li>
- * </ul>
+ * <p>
+ * Supports functional testing of single cells in {@code JTable}s.
+ * </p>
+ *
  * <p>
  * Example:
- *
  * <pre>
  * // import static org.fest.swing.data.TableCell.row;
  * {@link JTableCellFixture} cell = dialog.{@link JTableFixture table}("records").cell({@link TableCell#row(int) row}(3).column(0));
  * cell.select().showPopupMenu();
  * </pre>
- *
  * </p>
  *
  * @author Alex Ruiz

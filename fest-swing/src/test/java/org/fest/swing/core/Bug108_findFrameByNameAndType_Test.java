@@ -1,16 +1,15 @@
 /*
  * Created on Feb 2, 2008
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ * 
  * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
- *
+ * 
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+ * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations under the License.
+ * 
  * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.core;
@@ -29,14 +28,15 @@ import org.junit.Test;
 
 /**
  * Test case for <a href="http://code.google.com/p/fest/issues/detail?id=108">Bug 108</a>.
- *
+ * 
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
 public class Bug108_findFrameByNameAndType_Test extends RobotBasedTestCase {
   private MyWindow window;
 
-  @Override protected void onSetUp() {
+  @Override
+  protected void onSetUp() {
     window = MyWindow.createNew();
     robot.showWindow(window);
   }
@@ -52,7 +52,8 @@ public class Bug108_findFrameByNameAndType_Test extends RobotBasedTestCase {
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
-        @Override protected MyWindow executeInEDT() {
+        @Override
+        protected MyWindow executeInEDT() {
           return new MyWindow();
         }
       });

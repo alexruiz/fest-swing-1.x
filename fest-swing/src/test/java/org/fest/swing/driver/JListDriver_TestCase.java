@@ -1,16 +1,15 @@
 /*
  * Created on Feb 24, 2008
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ * 
  * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
- *
+ * 
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+ * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations under the License.
+ * 
  * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
@@ -20,18 +19,23 @@ import static org.fest.swing.driver.JListSetSelectedIndexTask.setSelectedIndex;
 import static org.fest.swing.edt.GuiActionRunner.execute;
 import static org.fest.swing.test.task.ComponentSetEnabledTask.disable;
 
-import java.awt.*;
+import java.awt.Dimension;
+import java.awt.Point;
 
-import javax.swing.*;
+import javax.swing.JList;
+import javax.swing.JScrollPane;
 
 import org.fest.swing.annotation.RunsInEDT;
-import org.fest.swing.edt.*;
-import org.fest.swing.test.core.*;
-import org.fest.swing.test.swing.*;
+import org.fest.swing.edt.GuiQuery;
+import org.fest.swing.edt.GuiTask;
+import org.fest.swing.test.core.MethodInvocations;
+import org.fest.swing.test.core.RobotBasedTestCase;
+import org.fest.swing.test.swing.TestList;
+import org.fest.swing.test.swing.TestWindow;
 
 /**
  * Base test case for {@link JListDriver}.
- *
+ * 
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
@@ -41,7 +45,8 @@ public abstract class JListDriver_TestCase extends RobotBasedTestCase {
   TestList list;
   JListDriver driver;
 
-  @Override protected final void onSetUp() {
+  @Override
+  protected final void onSetUp() {
     cellReader = new JListCellReaderStub();
     driver = new JListDriver(robot);
     driver.cellReader(cellReader);
@@ -84,7 +89,8 @@ public abstract class JListDriver_TestCase extends RobotBasedTestCase {
   @RunsInEDT
   private static int locationToIndex(final JList list, final Point p) {
     return execute(new GuiQuery<Integer>() {
-      @Override protected Integer executeInEDT() {
+      @Override
+      protected Integer executeInEDT() {
         return list.locationToIndex(p);
       }
     });
@@ -98,7 +104,8 @@ public abstract class JListDriver_TestCase extends RobotBasedTestCase {
   @RunsInEDT
   private static Object selectedValue(final JList list) {
     return execute(new GuiQuery<Object>() {
-      @Override protected Object executeInEDT() {
+      @Override
+      protected Object executeInEDT() {
         return list.getSelectedValue();
       }
     });
@@ -112,7 +119,8 @@ public abstract class JListDriver_TestCase extends RobotBasedTestCase {
   @RunsInEDT
   private static Object[] selectedValues(final JList list) {
     return execute(new GuiQuery<Object[]>() {
-      @Override protected Object[] executeInEDT() {
+      @Override
+      protected Object[] executeInEDT() {
         return list.getSelectedValues();
       }
     });
@@ -124,7 +132,7 @@ public abstract class JListDriver_TestCase extends RobotBasedTestCase {
   }
 
   @RunsInEDT
-  final void select(int...indices) {
+  final void select(int... indices) {
     setSelectedIndices(list, indices);
     robot.waitForIdle();
   }
@@ -132,7 +140,8 @@ public abstract class JListDriver_TestCase extends RobotBasedTestCase {
   @RunsInEDT
   private static void setSelectedIndices(final JList list, final int... indices) {
     execute(new GuiTask() {
-      @Override protected void executeInEDT() {
+      @Override
+      protected void executeInEDT() {
         list.setSelectionMode(MULTIPLE_INTERVAL_SELECTION);
         list.setSelectedIndices(indices);
       }
@@ -148,7 +157,8 @@ public abstract class JListDriver_TestCase extends RobotBasedTestCase {
     @RunsInEDT
     static MyWindow createNew(final Class<?> testClass) {
       return execute(new GuiQuery<MyWindow>() {
-        @Override protected MyWindow executeInEDT() {
+        @Override
+        protected MyWindow executeInEDT() {
           return new MyWindow(testClass);
         }
       });
@@ -174,9 +184,11 @@ public abstract class JListDriver_TestCase extends RobotBasedTestCase {
   static class JListCellReaderStub extends BasicJListCellReader {
     private final MethodInvocations methodInvocations = new MethodInvocations();
 
-    JListCellReaderStub() {}
+    JListCellReaderStub() {
+    }
 
-    @Override public String valueAt(JList list, int index) {
+    @Override
+    public String valueAt(JList list, int index) {
       methodInvocations.invoked("valueAt");
       return super.valueAt(list, index);
     }

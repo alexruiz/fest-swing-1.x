@@ -1,16 +1,15 @@
 /*
  * Created on Apr 17, 2008
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ * 
  * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
- *
+ * 
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+ * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations under the License.
+ * 
  * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
@@ -19,9 +18,12 @@ import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.core.BasicComponentFinder.finderWithNewAwtHierarchy;
 import static org.fest.swing.edt.GuiActionRunner.execute;
 
-import java.awt.*;
+import java.awt.Component;
+import java.awt.Dimension;
 
-import javax.swing.*;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.core.ComponentFinder;
@@ -32,7 +34,7 @@ import org.junit.Test;
 
 /**
  * Tests for {@link JMenuItemMatcher#matches(Component)}.
- *
+ * 
  * @author Alex Ruiz
  */
 public class JMenuItemMatcher_matches_Test extends SequentialEDTSafeTestCase {
@@ -40,13 +42,15 @@ public class JMenuItemMatcher_matches_Test extends SequentialEDTSafeTestCase {
   private MyWindow window;
   private JMenuItemMatcher matcher;
 
-  @Override protected void onSetUp() {
+  @Override
+  protected void onSetUp() {
     finder = finderWithNewAwtHierarchy();
     window = MyWindow.createNew();
     matcher = new JMenuItemMatcher("Logout", "Logout");
   }
 
-  @Override protected void onTearDown() {
+  @Override
+  protected void onTearDown() {
     window.destroy();
   }
 
@@ -64,7 +68,8 @@ public class JMenuItemMatcher_matches_Test extends SequentialEDTSafeTestCase {
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
-        @Override protected MyWindow executeInEDT() {
+        @Override
+        protected MyWindow executeInEDT() {
           return new MyWindow();
         }
       });

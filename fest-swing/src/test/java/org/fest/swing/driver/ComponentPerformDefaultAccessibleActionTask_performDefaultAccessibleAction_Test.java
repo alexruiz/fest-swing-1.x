@@ -1,22 +1,19 @@
 /*
  * Created on Feb 23, 2008
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ * 
  * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
- *
+ * 
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+ * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations under the License.
+ * 
  * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
-import static org.easymock.EasyMock.expect;
-import static org.easymock.classextension.EasyMock.createMock;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.edt.GuiActionRunner.execute;
 import static org.fest.swing.test.core.CommonAssertions.failWhenExpectingException;
@@ -24,10 +21,13 @@ import static org.fest.swing.test.core.CommonAssertions.failWhenExpectingExcepti
 import java.awt.Component;
 import java.util.Locale;
 
-import javax.accessibility.*;
+import javax.accessibility.Accessible;
+import javax.accessibility.AccessibleAction;
+import javax.accessibility.AccessibleContext;
+import javax.accessibility.AccessibleRole;
+import javax.accessibility.AccessibleStateSet;
 import javax.swing.JTextField;
 
-import org.fest.mocks.EasyMockTemplate;
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
 import org.fest.swing.exception.ActionFailedException;
@@ -37,7 +37,7 @@ import org.junit.Test;
 
 /**
  * Tests for {@link ComponentPerformDefaultAccessibleActionTask#performDefaultAccessibleAction(Component)}.
- *
+ * 
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
@@ -46,7 +46,8 @@ public class ComponentPerformDefaultAccessibleActionTask_performDefaultAccessibl
   private AccessibleContextStub accessibleContext;
   private Component component;
 
-  @Override protected void onSetUp() {
+  @Override
+  protected void onSetUp() {
     accessibleAction = createMock(AccessibleAction.class);
     accessibleContext = new AccessibleContextStub(accessibleAction);
     MyWindow window = MyWindow.createNew(accessibleContext);
@@ -56,12 +57,14 @@ public class ComponentPerformDefaultAccessibleActionTask_performDefaultAccessibl
   @Test
   public void should_execute_first_Action_in_AccessibleAction() {
     new EasyMockTemplate(accessibleAction) {
-      @Override protected void expectations() {
+      @Override
+      protected void expectations() {
         expect(accessibleAction.getAccessibleActionCount()).andReturn(1);
         expect(accessibleAction.doAccessibleAction(0)).andReturn(true);
       }
 
-      @Override protected void codeToTest() {
+      @Override
+      protected void codeToTest() {
         ComponentPerformDefaultAccessibleActionTask.performDefaultAccessibleAction(component);
         robot.waitForIdle();
       }
@@ -73,10 +76,12 @@ public class ComponentPerformDefaultAccessibleActionTask_performDefaultAccessibl
     accessibleContext.accessibleAction(null);
     try {
       new EasyMockTemplate(accessibleAction) {
-        @Override protected void expectations() {
+        @Override
+        protected void expectations() {
         }
 
-        @Override protected void codeToTest() {
+        @Override
+        protected void codeToTest() {
           ComponentPerformDefaultAccessibleActionTask.performDefaultAccessibleAction(component);
           robot.waitForIdle();
         }
@@ -91,11 +96,13 @@ public class ComponentPerformDefaultAccessibleActionTask_performDefaultAccessibl
   public void should_throw_error_if_AccessibleAction_is_empty() {
     try {
       new EasyMockTemplate(accessibleAction) {
-        @Override protected void expectations() {
+        @Override
+        protected void expectations() {
           expect(accessibleAction.getAccessibleActionCount()).andReturn(0);
         }
 
-        @Override protected void codeToTest() {
+        @Override
+        protected void codeToTest() {
           ComponentPerformDefaultAccessibleActionTask.performDefaultAccessibleAction(component);
           robot.waitForIdle();
         }
@@ -118,7 +125,8 @@ public class ComponentPerformDefaultAccessibleActionTask_performDefaultAccessibl
     @RunsInEDT
     static MyWindow createNew(final AccessibleContext accessibleContext) {
       return execute(new GuiQuery<MyWindow>() {
-        @Override protected MyWindow executeInEDT() {
+        @Override
+        protected MyWindow executeInEDT() {
           return new MyWindow(accessibleContext);
         }
       });
@@ -141,7 +149,8 @@ public class ComponentPerformDefaultAccessibleActionTask_performDefaultAccessibl
       this.accessibleContext = accessibleContext;
     }
 
-    @Override public AccessibleContext getAccessibleContext() {
+    @Override
+    public AccessibleContext getAccessibleContext() {
       return accessibleContext;
     }
   }
@@ -157,31 +166,38 @@ public class ComponentPerformDefaultAccessibleActionTask_performDefaultAccessibl
       this.accessibleAction = newAccessibleAction;
     }
 
-    @Override public AccessibleAction getAccessibleAction() {
+    @Override
+    public AccessibleAction getAccessibleAction() {
       return accessibleAction;
     }
 
-    @Override public Accessible getAccessibleChild(int i) {
+    @Override
+    public Accessible getAccessibleChild(int i) {
       return null;
     }
 
-    @Override public int getAccessibleChildrenCount() {
+    @Override
+    public int getAccessibleChildrenCount() {
       return 0;
     }
 
-    @Override public int getAccessibleIndexInParent() {
+    @Override
+    public int getAccessibleIndexInParent() {
       return 0;
     }
 
-    @Override public AccessibleRole getAccessibleRole() {
+    @Override
+    public AccessibleRole getAccessibleRole() {
       return null;
     }
 
-    @Override public AccessibleStateSet getAccessibleStateSet() {
+    @Override
+    public AccessibleStateSet getAccessibleStateSet() {
       return null;
     }
 
-    @Override public Locale getLocale() {
+    @Override
+    public Locale getLocale() {
       return null;
     }
   }

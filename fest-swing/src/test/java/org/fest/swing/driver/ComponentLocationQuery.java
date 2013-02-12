@@ -32,7 +32,8 @@ import org.fest.swing.edt.GuiQuery;
  * @author Yvonne Wang
  */
 final class ComponentLocationQuery {
-  static @Nonnull Point locationOf(final @Nonnull Component component) {
+  static @Nonnull
+  Point locationOf(final @Nonnull Component component) {
     Point result = execute(new GuiQuery<Point>() {
       @Override
       protected Point executeInEDT() {

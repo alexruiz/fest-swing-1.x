@@ -1,16 +1,15 @@
 /*
  * Created on Dec 4, 2008
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ * 
  * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
- *
+ * 
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+ * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations under the License.
+ * 
  * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.core;
@@ -38,13 +37,14 @@ import org.junit.Test;
 
 /**
  * Test case for <a href="http://code.google.com/p/fest/issues/detail?id=245">Bug 245</a>.
- *
+ * 
  * @author Alex Ruiz
  */
 public class Bug245_enterTextNotRaisingKeyReleaseEvent_Test extends RobotBasedTestCase {
   private JTextField textField;
 
-  @Override protected void onSetUp() {
+  @Override
+  protected void onSetUp() {
     MyWindow window = MyWindow.createNew();
     textField = window.textField;
     robot.showWindow(window);
@@ -63,7 +63,8 @@ public class Bug245_enterTextNotRaisingKeyReleaseEvent_Test extends RobotBasedTe
   private static class KeyReleaseListener extends KeyAdapter {
     private final List<Integer> keyCodes = newArrayList();
 
-    @Override public void keyReleased(KeyEvent e) {
+    @Override
+    public void keyReleased(KeyEvent e) {
       keyCodes.add(e.getKeyCode());
     }
 
@@ -78,7 +79,8 @@ public class Bug245_enterTextNotRaisingKeyReleaseEvent_Test extends RobotBasedTe
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
-        @Override protected MyWindow executeInEDT() {
+        @Override
+        protected MyWindow executeInEDT() {
           return new MyWindow();
         }
       });

@@ -1,32 +1,29 @@
 /*
  * Created on May 2, 2009
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ * 
  * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
- *
+ * 
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+ * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations under the License.
+ * 
  * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.core;
 
-import static org.easymock.EasyMock.*;
-import static org.easymock.classextension.EasyMock.createMock;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.test.core.CommonAssertions.failWhenExpectingException;
 import static org.fest.util.Arrays.array;
 
-import org.fest.mocks.EasyMockTemplate;
-import org.junit.*;
+import org.junit.Before;
+import org.junit.Test;
 
 /**
  * Tests for {@link TestTerminator#terminateTests()}.
- *
+ * 
  * @author Alex Ruiz
  */
 public class TestTerminator_terminateTests_Test {
@@ -35,7 +32,8 @@ public class TestTerminator_terminateTests_Test {
   private MainThreadIdentifier mainThreadIdentifier;
   private TestTerminator terminator;
 
-  @Before public void setUp() {
+  @Before
+  public void setUp() {
     threadsSource = createMock(ThreadsSource.class);
     frameDisposer = createMock(FrameDisposer.class);
     mainThreadIdentifier = createMock(MainThreadIdentifier.class);
@@ -46,7 +44,8 @@ public class TestTerminator_terminateTests_Test {
   public void should_terminate_GUI_tests() {
     final Thread mainThread = createMock(Thread.class);
     new EasyMockTemplate(threadsSource, frameDisposer, mainThreadIdentifier, mainThread) {
-      @Override protected void expectations() {
+      @Override
+      protected void expectations() {
         Thread[] allThreads = array(mainThread);
         expect(threadsSource.allThreads()).andReturn(allThreads);
         expect(mainThreadIdentifier.mainThreadIn(allThreads)).andReturn(mainThread);
@@ -59,7 +58,8 @@ public class TestTerminator_terminateTests_Test {
         expectLastCall().once();
       }
 
-      @Override protected void codeToTest() {
+      @Override
+      protected void codeToTest() {
         terminateTestsAndExpectException();
       }
     }.run();
@@ -68,14 +68,16 @@ public class TestTerminator_terminateTests_Test {
   @Test
   public void should_not_throw_error_if_main_thread_not_found() {
     new EasyMockTemplate(threadsSource, frameDisposer, mainThreadIdentifier) {
-      @Override protected void expectations() {
+      @Override
+      protected void expectations() {
         Thread[] allThreads = new Thread[0];
         expect(threadsSource.allThreads()).andReturn(allThreads);
         expect(mainThreadIdentifier.mainThreadIn(allThreads)).andReturn(null);
         expectFramesDisposal();
       }
 
-      @Override protected void codeToTest() {
+      @Override
+      protected void codeToTest() {
         terminateTestsAndExpectException();
       }
     }.run();

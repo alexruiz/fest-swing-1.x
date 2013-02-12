@@ -1,16 +1,15 @@
 /*
  * Created on Mar 24, 2008
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ * 
  * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
- *
+ * 
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+ * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations under the License.
+ * 
  * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.format;
@@ -31,7 +30,7 @@ import org.junit.Test;
 
 /**
  * Tests for {@link JFileChooserFormatter#format(java.awt.Component)}.
- *
+ * 
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
@@ -39,7 +38,8 @@ public class JFileChooserFormatter_format_Test extends SequentialEDTSafeTestCase
   private JFileChooser fileChooser;
   private JFileChooserFormatter formatter;
 
-  @Override protected final void onSetUp() {
+  @Override
+  protected final void onSetUp() {
     MyWindow window = MyWindow.createNew();
     fileChooser = window.fileChooser;
     formatter = new JFileChooserFormatter();
@@ -48,14 +48,10 @@ public class JFileChooserFormatter_format_Test extends SequentialEDTSafeTestCase
   @Test
   public void should_format_JFileChooser() {
     String formatted = formatter.format(fileChooser);
-    assertThat(formatted).contains("javax.swing.JFileChooser")
-                         .contains("name='fileChooser'")
-                         .contains("dialogTitle='A file chooser'")
-                         .contains("dialogType=OPEN_DIALOG")
-                         .contains(concat("currentDirectory=", currentDirectoryOf(fileChooser)))
-                         .contains("enabled=true")
-                         .contains("visible=true")
-                         .contains("showing=false");
+    assertThat(formatted).contains("javax.swing.JFileChooser").contains("name='fileChooser'")
+    .contains("dialogTitle='A file chooser'").contains("dialogType=OPEN_DIALOG")
+    .contains(concat("currentDirectory=", currentDirectoryOf(fileChooser))).contains("enabled=true")
+    .contains("visible=true").contains("showing=false");
   }
 
   private static class MyWindow extends TestWindow {
@@ -64,7 +60,8 @@ public class JFileChooserFormatter_format_Test extends SequentialEDTSafeTestCase
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
-        @Override protected MyWindow executeInEDT() {
+        @Override
+        protected MyWindow executeInEDT() {
           return new MyWindow();
         }
       });

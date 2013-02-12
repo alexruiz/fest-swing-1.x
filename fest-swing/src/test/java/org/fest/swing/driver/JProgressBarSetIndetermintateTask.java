@@ -23,7 +23,8 @@ import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiTask;
 
 /**
- * Sets the property "indeterminate" in a {@code JProgressBar}. This task is executed in the event dispatch thread (EDT.)
+ * Sets the property "indeterminate" in a {@code JProgressBar}. This task is executed in the event dispatch thread
+ * (EDT.)
  * 
  * @author Alex Ruiz
  */

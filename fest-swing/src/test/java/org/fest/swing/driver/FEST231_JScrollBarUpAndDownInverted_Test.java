@@ -1,17 +1,20 @@
 /*
  * Created on Nov 28, 2009
- *
+ * 
  * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
-import static javax.swing.ScrollPaneConstants.*;
+import static javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS;
+import static javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS;
 import static org.fest.swing.edt.GuiActionRunner.execute;
 import static org.fest.util.Arrays.array;
 
 import java.awt.Dimension;
 
-import javax.swing.*;
+import javax.swing.JList;
+import javax.swing.JScrollBar;
+import javax.swing.JScrollPane;
 
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
@@ -21,7 +24,7 @@ import org.junit.Test;
 
 /**
  * Test case for bug <a href="http://jira.codehaus.org/browse/FEST-231" target="_blank">FEST-231</a>
- *
+ * 
  * @author Alex Ruiz
  */
 public class FEST231_JScrollBarUpAndDownInverted_Test extends RobotBasedTestCase {
@@ -29,7 +32,8 @@ public class FEST231_JScrollBarUpAndDownInverted_Test extends RobotBasedTestCase
   private JScrollBar verticalScrollBar;
   private JScrollBar horizontalScrollBar;
 
-  @Override protected void onSetUp() {
+  @Override
+  protected void onSetUp() {
     driver = new JScrollBarDriver(robot);
     MyWindow window = MyWindow.createNew();
     verticalScrollBar = window.verticalScrollBar;
@@ -79,7 +83,8 @@ public class FEST231_JScrollBarUpAndDownInverted_Test extends RobotBasedTestCase
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
-        @Override protected MyWindow executeInEDT() {
+        @Override
+        protected MyWindow executeInEDT() {
           return new MyWindow();
         }
       });

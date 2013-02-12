@@ -1,16 +1,15 @@
 /*
  * Created on Jan 15, 2010
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ * 
  * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
- *
+ * 
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+ * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations under the License.
+ * 
  * Copyright @2010-2013 the original author or authors.
  */
 package org.fest.swing.fixture;
@@ -26,7 +25,7 @@ import org.junit.Test;
 
 /**
  * Tests for {@link AbstractContainerFixture#progressBar(GenericTypeMatcher)}.
- *
+ * 
  * @author Alex Ruiz
  */
 public class ContainerFixture_progressBar_withMatcher_Test extends ContainerFixture_progressBar_TestCase {
@@ -34,7 +33,8 @@ public class ContainerFixture_progressBar_withMatcher_Test extends ContainerFixt
   public void should_find_visible_JProgressBar() {
     showWindow();
     JProgressBarFixture progressBar = fixture.progressBar(new GenericTypeMatcher<JProgressBar>(JProgressBar.class) {
-      @Override protected boolean isMatching(JProgressBar b) {
+      @Override
+      protected boolean isMatching(JProgressBar b) {
         return true;
       }
     });
@@ -45,7 +45,8 @@ public class ContainerFixture_progressBar_withMatcher_Test extends ContainerFixt
   public void should_fail_if_visible_JProgressBar_not_found() {
     try {
       fixture.progressBar(new GenericTypeMatcher<JProgressBar>(JProgressBar.class) {
-        @Override protected boolean isMatching(JProgressBar b) {
+        @Override
+        protected boolean isMatching(JProgressBar b) {
           return false;
         }
       });
@@ -54,6 +55,5 @@ public class ContainerFixture_progressBar_withMatcher_Test extends ContainerFixt
       assertThat(e.getMessage()).contains("Unable to find component using matcher");
     }
   }
-
 
 }

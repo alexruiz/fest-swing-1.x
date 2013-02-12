@@ -1,16 +1,15 @@
 /*
  * Created on Jul 18, 2008
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ * 
  * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
- *
+ * 
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+ * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations under the License.
+ * 
  * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.fixture;
@@ -22,7 +21,10 @@ import static org.fest.swing.test.recorder.ClickRecorder.attachTo;
 
 import java.awt.Dimension;
 
-import javax.swing.*;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
+import javax.swing.JPopupMenu;
+import javax.swing.JTextField;
 
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
@@ -32,8 +34,8 @@ import org.fest.swing.test.swing.TestWindow;
 import org.junit.Test;
 
 /**
- * Tests for {@link JPopupMenuFixture#menuItemWithPath(String...)}
- *
+ * Tests for {@link JPopupMenuFixture#menuItemWithPath(String...)}.
+ * 
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
@@ -41,7 +43,8 @@ public class JPopupMenuFixture_menuItemWithPath_Test extends RobotBasedTestCase 
   private MyWindow window;
   private JPopupMenuFixture fixture;
 
-  @Override protected final void onSetUp() {
+  @Override
+  protected final void onSetUp() {
     window = MyWindow.createNew();
     robot.showWindow(window, new Dimension(200, 200));
     JTextComponentFixture textBox = new JTextComponentFixture(robot, "textField");
@@ -70,7 +73,8 @@ public class JPopupMenuFixture_menuItemWithPath_Test extends RobotBasedTestCase 
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
-        @Override protected MyWindow executeInEDT() {
+        @Override
+        protected MyWindow executeInEDT() {
           return new MyWindow();
         }
       });

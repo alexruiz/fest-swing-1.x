@@ -1,16 +1,15 @@
 /*
  * Created on May 12, 2008
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ * 
  * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
- *
+ * 
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+ * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations under the License.
+ * 
  * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.fixture;
@@ -26,12 +25,13 @@ import javax.swing.JTable;
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
 import org.fest.swing.test.core.RobotBasedTestCase;
-import org.fest.swing.test.swing.*;
+import org.fest.swing.test.swing.TableRenderDemo;
+import org.fest.swing.test.swing.TestWindow;
 import org.junit.Test;
 
 /**
  * Test case for <a href="http://code.google.com/p/fest/issues/detail?id=135">Bug 135</a>.
- *
+ * 
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
@@ -39,7 +39,8 @@ public class TableContentsTest extends RobotBasedTestCase {
   private MyWindow window;
   private JTableFixture fixture;
 
-  @Override protected void onSetUp() {
+  @Override
+  protected void onSetUp() {
     window = MyWindow.createNew();
     robot.showWindow(window);
     fixture = new JTableFixture(robot, window.table);
@@ -79,13 +80,9 @@ public class TableContentsTest extends RobotBasedTestCase {
 
   @Test
   public void shouldPassIfContentIsEqualToExpected() {
-    String[][] contents = new String[][] {
-        { "Mary",   "Campione", "Snowboarding",   "5", "false" },
-        { "Alison", "Huml",     "Rowing",         "3", "true"  },
-        { "Kathy",  "Walrath",  "Knitting",       "2", "false" },
-        { "Sharon", "Zakhour",  "Speed reading", "20", "true"  },
-        { "Philip", "Milne",    "Pool",          "10", "false" }
-    };
+    String[][] contents = new String[][] { { "Mary", "Campione", "Snowboarding", "5", "false" },
+        { "Alison", "Huml", "Rowing", "3", "true" }, { "Kathy", "Walrath", "Knitting", "2", "false" },
+        { "Sharon", "Zakhour", "Speed reading", "20", "true" }, { "Philip", "Milne", "Pool", "10", "false" } };
     fixture.requireContents(contents);
   }
 
@@ -95,9 +92,8 @@ public class TableContentsTest extends RobotBasedTestCase {
       fixture.requireContents(new String[][] { { "hello" } });
       failWhenExpectingException();
     } catch (AssertionError e) {
-      assertThat(e.getMessage()).contains("property:'contents'")
-                                .contains("expected:<[['hello']]>")
-                                .contains(concat("but was:<", format(fixture.contents()), ">"));
+      assertThat(e.getMessage()).contains("property:'contents'").contains("expected:<[['hello']]>")
+      .contains(concat("but was:<", format(fixture.contents()), ">"));
     }
   }
 
@@ -107,7 +103,8 @@ public class TableContentsTest extends RobotBasedTestCase {
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
-        @Override protected MyWindow executeInEDT() {
+        @Override
+        protected MyWindow executeInEDT() {
           return new MyWindow();
         }
       });

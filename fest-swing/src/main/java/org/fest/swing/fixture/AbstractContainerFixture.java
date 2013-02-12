@@ -60,7 +60,7 @@ import org.fest.swing.exception.ComponentLookupException;
 import org.fest.swing.timing.Timeout;
 
 /**
- * Understands lookup of {@code Component}s contained in a {@code Container}.
+ * Looks up AWT or Swing {@code Component}s contained in a {@code Container}.
  *
  * @param <S> used to simulate "self types." For more information please read &quot;<a href="http://goo.gl/fjgOM"
  *          target="_blank">Emulating 'self types' using Java Generics to simplify fluent API implementation</a>.&quot;

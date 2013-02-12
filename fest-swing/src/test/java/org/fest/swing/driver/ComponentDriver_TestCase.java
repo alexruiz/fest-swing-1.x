@@ -1,16 +1,15 @@
 /*
  * Created on Jul 19, 2009
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ * 
  * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
- *
+ * 
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+ * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations under the License.
+ * 
  * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.driver;
@@ -24,7 +23,8 @@ import static org.fest.swing.timing.Pause.pause;
 
 import java.awt.Component;
 
-import javax.swing.*;
+import javax.swing.JButton;
+import javax.swing.JTextField;
 
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
@@ -34,7 +34,7 @@ import org.fest.swing.test.util.StopWatch;
 
 /**
  * Base test case for {@link ComponentDriver}.
- *
+ * 
  * @author Alex Ruiz
  */
 public abstract class ComponentDriver_TestCase extends RobotBasedTestCase {
@@ -43,7 +43,8 @@ public abstract class ComponentDriver_TestCase extends RobotBasedTestCase {
   ComponentDriver driver;
   MyWindow window;
 
-  @Override protected final void onSetUp() {
+  @Override
+  protected final void onSetUp() {
     window = MyWindow.createNew(getClass());
     driver = new ComponentDriver(robot);
     extraSetUp();
@@ -107,7 +108,8 @@ public abstract class ComponentDriver_TestCase extends RobotBasedTestCase {
     @RunsInEDT
     static MyWindow createNew(final Class<?> testClass) {
       return execute(new GuiQuery<MyWindow>() {
-        @Override protected MyWindow executeInEDT() {
+        @Override
+        protected MyWindow executeInEDT() {
           return new MyWindow(testClass);
         }
       });
@@ -131,10 +133,15 @@ public abstract class ComponentDriver_TestCase extends RobotBasedTestCase {
       super(text);
     }
 
-    void waitToRequestFocus() { waitToRequestFocus = true; }
+    void waitToRequestFocus() {
+      waitToRequestFocus = true;
+    }
 
-    @Override public boolean requestFocusInWindow() {
-      if (waitToRequestFocus) pause(TIME_TO_WAIT_FOR_FOCUS_GAIN);
+    @Override
+    public boolean requestFocusInWindow() {
+      if (waitToRequestFocus) {
+        pause(TIME_TO_WAIT_FOR_FOCUS_GAIN);
+      }
       return super.requestFocusInWindow();
     }
   }

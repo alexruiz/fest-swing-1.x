@@ -1,16 +1,15 @@
 /*
  * Created on Apr 29, 2008
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ * 
  * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
- *
+ * 
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+ * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations under the License.
+ * 
  * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.fixture;
@@ -23,26 +22,30 @@ import static org.fest.swing.timing.Pause.pause;
 
 import java.awt.Dimension;
 
-import javax.swing.*;
-import javax.swing.tree.*;
+import javax.swing.JScrollPane;
+import javax.swing.JTree;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
 
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
 import org.fest.swing.exception.LocationUnavailableException;
 import org.fest.swing.test.core.RobotBasedTestCase;
-import org.fest.swing.test.swing.*;
+import org.fest.swing.test.swing.TestTree;
+import org.fest.swing.test.swing.TestWindow;
 import org.junit.Test;
 
 /**
  * Test case for <a href="http://code.google.com/p/fest/issues/detail?id=133">Bug 133</a>.
- *
+ * 
  * @author Alex Ruiz
  */
 public class Bug133_scrollToItemToSelectInJTree_Test extends RobotBasedTestCase {
   private FrameFixture frame;
   private MyWindow window;
 
-  @Override public void onSetUp() {
+  @Override
+  public void onSetUp() {
     window = MyWindow.createNew();
     frame = new FrameFixture(robot, window);
     frame.show();
@@ -90,9 +93,10 @@ public class Bug133_scrollToItemToSelectInJTree_Test extends RobotBasedTestCase 
   @RunsInEDT
   private static Object selectionOf(final JTree tree) {
     return execute(new GuiQuery<Object>() {
-      @Override protected Object executeInEDT() {
+      @Override
+      protected Object executeInEDT() {
         Object lastPathComponent = tree.getSelectionPath().getLastPathComponent();
-        DefaultMutableTreeNode node = (DefaultMutableTreeNode)lastPathComponent;
+        DefaultMutableTreeNode node = (DefaultMutableTreeNode) lastPathComponent;
         return node.getUserObject();
       }
     });
@@ -107,7 +111,8 @@ public class Bug133_scrollToItemToSelectInJTree_Test extends RobotBasedTestCase 
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
-        @Override protected MyWindow executeInEDT() {
+        @Override
+        protected MyWindow executeInEDT() {
           return new MyWindow();
         }
       });
@@ -136,7 +141,9 @@ public class Bug133_scrollToItemToSelectInJTree_Test extends RobotBasedTestCase 
       DefaultMutableTreeNode root = new DefaultMutableTreeNode("root");
       for (int i = 0; i < 100; i++) {
         DefaultMutableTreeNode node = nodeWithIndex(i);
-        if (i == 99) node.add(new DefaultMutableTreeNode("100.1"));
+        if (i == 99) {
+          node.add(new DefaultMutableTreeNode("100.1"));
+        }
         root.add(node);
       }
       return root;

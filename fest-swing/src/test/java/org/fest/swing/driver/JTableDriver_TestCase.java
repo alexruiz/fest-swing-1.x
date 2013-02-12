@@ -1,16 +1,15 @@
 /*
  * Created on Feb 25, 2008
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ * 
  * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
- *
+ * 
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+ * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations under the License.
+ * 
  * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
@@ -22,20 +21,26 @@ import static org.fest.swing.driver.JTableClearSelectionTask.clearSelectionOf;
 import static org.fest.swing.edt.GuiActionRunner.execute;
 import static org.fest.swing.test.task.ComponentSetEnabledTask.disable;
 
-import java.awt.*;
+import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.Point;
 
-import javax.swing.*;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.table.JTableHeader;
 
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.data.TableCell;
-import org.fest.swing.edt.*;
-import org.fest.swing.test.core.*;
-import org.fest.swing.test.swing.*;
+import org.fest.swing.edt.GuiQuery;
+import org.fest.swing.edt.GuiTask;
+import org.fest.swing.test.core.MethodInvocations;
+import org.fest.swing.test.core.RobotBasedTestCase;
+import org.fest.swing.test.swing.TestTable;
+import org.fest.swing.test.swing.TestWindow;
 
 /**
  * Base test case for {@link JTableDriver}.
- *
+ * 
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
@@ -45,7 +50,8 @@ public abstract class JTableDriver_TestCase extends RobotBasedTestCase {
   TestTable table;
   JTableDriver driver;
 
-  @Override protected final void onSetUp() {
+  @Override
+  protected final void onSetUp() {
     driver = new JTableDriver(robot);
     cellReader = new JTableCellReaderStub();
     driver.cellReader(cellReader);
@@ -95,7 +101,8 @@ public abstract class JTableDriver_TestCase extends RobotBasedTestCase {
   @RunsInEDT
   private static boolean isCellSelected(final JTable table, final int row, final int column) {
     return execute(new GuiQuery<Boolean>() {
-      @Override protected Boolean executeInEDT() {
+      @Override
+      protected Boolean executeInEDT() {
         return table.isCellSelected(row, column);
       }
     });
@@ -110,7 +117,8 @@ public abstract class JTableDriver_TestCase extends RobotBasedTestCase {
   @RunsInEDT
   private static void setMultipleIntervalSelectionTo(final JTable table) {
     execute(new GuiTask() {
-      @Override protected void executeInEDT() {
+      @Override
+      protected void executeInEDT() {
         table.setSelectionMode(MULTIPLE_INTERVAL_SELECTION);
       }
     });
@@ -125,7 +133,8 @@ public abstract class JTableDriver_TestCase extends RobotBasedTestCase {
   @RunsInEDT
   private static void selectCell(final JTable table, final int row, final int column) {
     execute(new GuiTask() {
-      @Override protected void executeInEDT() {
+      @Override
+      protected void executeInEDT() {
         table.changeSelection(row, column, false, false);
       }
     });
@@ -173,7 +182,8 @@ public abstract class JTableDriver_TestCase extends RobotBasedTestCase {
     @RunsInEDT
     static MyWindow createNew(final Class<?> testClass) {
       return execute(new GuiQuery<MyWindow>() {
-        @Override protected MyWindow executeInEDT() {
+        @Override
+        protected MyWindow executeInEDT() {
           return new MyWindow(testClass);
         }
       });
@@ -199,9 +209,11 @@ public abstract class JTableDriver_TestCase extends RobotBasedTestCase {
   static class JTableCellReaderStub extends BasicJTableCellReader {
     private final MethodInvocations methodInvocations = new MethodInvocations();
 
-    JTableCellReaderStub() {}
+    JTableCellReaderStub() {
+    }
 
-    @Override public String valueAt(JTable table, int row, int column) {
+    @Override
+    public String valueAt(JTable table, int row, int column) {
       methodInvocations.invoked("valueAt");
       return super.valueAt(table, row, column);
     }

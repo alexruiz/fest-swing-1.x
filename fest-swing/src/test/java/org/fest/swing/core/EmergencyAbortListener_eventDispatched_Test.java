@@ -1,24 +1,24 @@
 /*
  * Created on Jul 20, 2008
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ * 
  * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
- *
+ * 
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+ * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations under the License.
+ * 
  * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.core;
 
-import static java.awt.event.InputEvent.*;
-import static java.awt.event.KeyEvent.*;
-import static org.easymock.EasyMock.*;
-import static org.easymock.classextension.EasyMock.createMock;
+import static java.awt.event.InputEvent.CTRL_MASK;
+import static java.awt.event.InputEvent.SHIFT_MASK;
+import static java.awt.event.KeyEvent.KEY_PRESSED;
+import static java.awt.event.KeyEvent.VK_A;
+import static java.awt.event.KeyEvent.VK_Z;
 import static org.fest.swing.test.awt.TestAWTEvents.newAWTEventMock;
 import static org.fest.swing.test.awt.Toolkits.singletonToolkitMock;
 import static org.fest.swing.test.builder.JButtons.button;
@@ -26,13 +26,13 @@ import static org.fest.swing.test.builder.JButtons.button;
 import java.awt.AWTEvent;
 import java.awt.event.KeyEvent;
 
-import org.fest.mocks.EasyMockTemplate;
 import org.fest.swing.test.core.EDTSafeTestCase;
-import org.junit.*;
+import org.junit.Before;
+import org.junit.Test;
 
 /**
  * Tests for {@link EmergencyAbortListener#eventDispatched(AWTEvent)}.
- *
+ * 
  * @author Alex Ruiz
  */
 public class EmergencyAbortListener_eventDispatched_Test extends EDTSafeTestCase {
@@ -50,11 +50,13 @@ public class EmergencyAbortListener_eventDispatched_Test extends EDTSafeTestCase
     final AWTEvent event = newAWTEventMock();
     final int eventId = KEY_PRESSED + 1;
     new EasyMockTemplate(event, terminator) {
-      @Override protected void expectations() {
+      @Override
+      protected void expectations() {
         expect(event.getID()).andReturn(eventId);
       }
 
-      @Override protected void codeToTest() {
+      @Override
+      protected void codeToTest() {
         listener.eventDispatched(event);
       }
     }.run();
@@ -64,11 +66,13 @@ public class EmergencyAbortListener_eventDispatched_Test extends EDTSafeTestCase
   public void should_not_terminate_tests_if_event_is_not_KeyEvent() {
     final AWTEvent event = newAWTEventMock();
     new EasyMockTemplate(event, terminator) {
-      @Override protected void expectations() {
+      @Override
+      protected void expectations() {
         expect(event.getID()).andReturn(KEY_PRESSED);
       }
 
-      @Override protected void codeToTest() {
+      @Override
+      protected void codeToTest() {
         listener.eventDispatched(event);
       }
     }.run();
@@ -78,9 +82,12 @@ public class EmergencyAbortListener_eventDispatched_Test extends EDTSafeTestCase
   public void should_not_terminate_tests_if_key_code_does_not_match() {
     final KeyEvent event = new KeyEvent(button().createNew(), KEY_PRESSED, 0, 0, VK_Z, 'Z');
     new EasyMockTemplate(terminator) {
-      @Override protected void expectations() {}
+      @Override
+      protected void expectations() {
+      }
 
-      @Override protected void codeToTest() {
+      @Override
+      protected void codeToTest() {
         listener.eventDispatched(event);
       }
     }.run();
@@ -90,9 +97,12 @@ public class EmergencyAbortListener_eventDispatched_Test extends EDTSafeTestCase
   public void should_not_terminate_tests_if_modifiers_do_not_match() {
     final KeyEvent event = new KeyEvent(button().createNew(), KEY_PRESSED, 0, 0, VK_A, 'A');
     new EasyMockTemplate(terminator) {
-      @Override protected void expectations() {}
+      @Override
+      protected void expectations() {
+      }
 
-      @Override protected void codeToTest() {
+      @Override
+      protected void codeToTest() {
         listener.eventDispatched(event);
       }
     }.run();
@@ -102,12 +112,14 @@ public class EmergencyAbortListener_eventDispatched_Test extends EDTSafeTestCase
   public void should_terminate_tests_if_key_combination_matches() {
     final KeyEvent event = new KeyEvent(button().createNew(), KEY_PRESSED, 0, CTRL_MASK | SHIFT_MASK, VK_A, 'A');
     new EasyMockTemplate(terminator) {
-      @Override protected void expectations() {
+      @Override
+      protected void expectations() {
         terminator.terminateTests();
         expectLastCall().once();
       }
 
-      @Override protected void codeToTest() {
+      @Override
+      protected void codeToTest() {
         listener.eventDispatched(event);
       }
     }.run();

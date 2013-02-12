@@ -33,7 +33,8 @@ import org.fest.swing.edt.GuiQuery;
  */
 @RunsInEDT
 final class JFrameContentPaneQuery {
-  static @Nonnull Container contentPaneOf(final @Nonnull JFrame frame) {
+  static @Nonnull
+  Container contentPaneOf(final @Nonnull JFrame frame) {
     Container result = execute(new GuiQuery<Container>() {
       @Override
       protected Container executeInEDT() {

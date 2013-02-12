@@ -1,16 +1,15 @@
 /*
  * Created on Jul 17, 2008
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ * 
  * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
- *
+ * 
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+ * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations under the License.
+ * 
  * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
@@ -23,18 +22,20 @@ import javax.swing.JTextField;
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
 import org.fest.swing.test.core.EDTSafeTestCase;
-import org.junit.*;
+import org.junit.Before;
+import org.junit.Test;
 
 /**
  * Tests for {@link WaitForComponentToShowCondition#test()}.
- *
+ * 
  * @author Yvonne Wang
  */
 public class WaitForComponentToShowCondition_test_Test extends EDTSafeTestCase {
   private WaitForComponentToShowCondition condition;
   private ComponentStub c;
 
-  @Before public void setUp() {
+  @Before
+  public void setUp() {
     c = ComponentStub.createNew();
     condition = WaitForComponentToShowCondition.untilIsShowing(c);
   }
@@ -58,19 +59,22 @@ public class WaitForComponentToShowCondition_test_Test extends EDTSafeTestCase {
     @RunsInEDT
     static ComponentStub createNew() {
       return execute(new GuiQuery<ComponentStub>() {
-        @Override protected ComponentStub executeInEDT() {
+        @Override
+        protected ComponentStub executeInEDT() {
           return new ComponentStub();
         }
       });
     }
 
-    private ComponentStub() {}
+    private ComponentStub() {
+    }
 
     void showing(boolean isShowing) {
       this.showing = isShowing;
     }
 
-    @Override public boolean isShowing() {
+    @Override
+    public boolean isShowing() {
       return showing;
     }
   }

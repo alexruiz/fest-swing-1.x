@@ -27,11 +27,7 @@ import org.fest.swing.exception.WaitTimedOutError;
 import org.fest.swing.timing.Timeout;
 
 /**
- * Understands functional testing of {@code JProgressBar}s:
- * <ul>
- * <li>state verification</li>
- * <li>property value query</li>
- * </ul>
+ * Supports functional testing of {@code JProgressBar}s.
  *
  * @author Alex Ruiz
  *

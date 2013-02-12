@@ -1,16 +1,15 @@
 /*
  * Created on Jun 11, 2008
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ * 
  * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
- *
+ * 
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+ * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations under the License.
+ * 
  * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.keystroke;
@@ -48,16 +47,16 @@ import org.junit.Test;
 
 /**
  * Test case for implementations of {@link KeyStrokeMappingProvider}.
- *
+ * 
  * @author Alex Ruiz
  */
 public abstract class KeyStrokeMappingProvider_TestCase extends RobotBasedTestCase {
   private static final Map<Character, Integer> BASIC_CHARS_AND_KEYS_MAP = newHashMap();
 
   static {
-    BASIC_CHARS_AND_KEYS_MAP.put((char)  8, VK_BACK_SPACE);
+    BASIC_CHARS_AND_KEYS_MAP.put((char) 8, VK_BACK_SPACE);
     BASIC_CHARS_AND_KEYS_MAP.put((char) 10, VK_ENTER);
-    BASIC_CHARS_AND_KEYS_MAP.put((char)127, VK_DELETE);
+    BASIC_CHARS_AND_KEYS_MAP.put((char) 127, VK_DELETE);
     BASIC_CHARS_AND_KEYS_MAP.put((char) 27, VK_ESCAPE);
     BASIC_CHARS_AND_KEYS_MAP.put((char) 13, VK_ENTER);
   }
@@ -73,7 +72,8 @@ public abstract class KeyStrokeMappingProvider_TestCase extends RobotBasedTestCa
     this.keyStroke = keyStroke;
   }
 
-  @Override protected final void onSetUp() {
+  @Override
+  protected final void onSetUp() {
     MyWindow window = MyWindow.createNew(getClass());
     textArea = window.textArea;
     robot.showWindow(window);
@@ -92,7 +92,8 @@ public abstract class KeyStrokeMappingProvider_TestCase extends RobotBasedTestCa
     pressInTextArea();
     final String expectedText = valueOf(expectedChar);
     pause(new Condition(concat("text in JTextArea to be ", quote(expectedText))) {
-      @Override public boolean test() {
+      @Override
+      public boolean test() {
         return expectedText.equals(textArea.getText());
       }
     }, 500);
@@ -112,7 +113,8 @@ public abstract class KeyStrokeMappingProvider_TestCase extends RobotBasedTestCa
     final KeyRecorder recorder = KeyRecorder.attachTo(textArea);
     pressInTextArea();
     pause(new Condition(concat("key with code ", expectedKey, " is pressed")) {
-      @Override public boolean test() {
+      @Override
+      public boolean test() {
         return recorder.keysWerePressed(expectedKey);
       }
     }, 2000);
@@ -136,7 +138,8 @@ public abstract class KeyStrokeMappingProvider_TestCase extends RobotBasedTestCa
     @RunsInEDT
     static MyWindow createNew(final Class<?> testClass) {
       return GuiActionRunner.execute(new GuiQuery<MyWindow>() {
-        @Override protected MyWindow executeInEDT() {
+        @Override
+        protected MyWindow executeInEDT() {
           return new MyWindow(testClass);
         }
       });

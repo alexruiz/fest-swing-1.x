@@ -1,15 +1,13 @@
 /*
  * Copyright (c) 1995 - 2008 Sun Microsystems, Inc. All rights reserved.
- *
+ * 
  * Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
- * following conditions are met:
- *  - Redistributions of source code must retain the above copyright notice, this list of conditions and the following
- * disclaimer.
- *  - Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the
- * following disclaimer in the documentation and/or other materials provided with the distribution.
- *  - Neither the name of Sun Microsystems nor the names of its contributors may be used to endorse or promote products
- * derived from this software without specific prior written permission.
- *
+ * following conditions are met: - Redistributions of source code must retain the above copyright notice, this list of
+ * conditions and the following disclaimer. - Redistributions in binary form must reproduce the above copyright notice,
+ * this list of conditions and the following disclaimer in the documentation and/or other materials provided with the
+ * distribution. - Neither the name of Sun Microsystems nor the names of its contributors may be used to endorse or
+ * promote products derived from this software without specific prior written permission.
+ * 
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
  * INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
  * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
@@ -20,10 +18,16 @@
  */
 package org.fest.swing.test.swing;
 
-import java.awt.*;
-import java.awt.event.*;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-import javax.swing.*;
+import javax.swing.AbstractCellEditor;
+import javax.swing.JButton;
+import javax.swing.JColorChooser;
+import javax.swing.JDialog;
+import javax.swing.JTable;
 import javax.swing.table.TableCellEditor;
 
 /**
@@ -56,6 +60,7 @@ class ColorEditor extends AbstractCellEditor implements TableCellEditor, ActionL
   /**
    * Handles events from the editor button and from the dialog's OK button.
    */
+  @Override
   public void actionPerformed(ActionEvent e) {
     if (EDIT.equals(e.getActionCommand())) {
       // The user has clicked the cell, so
@@ -73,11 +78,13 @@ class ColorEditor extends AbstractCellEditor implements TableCellEditor, ActionL
   }
 
   // Implement the one CellEditor method that AbstractCellEditor doesn't.
+  @Override
   public Object getCellEditorValue() {
     return currentColor;
   }
 
   // Implement the one method defined by TableCellEditor.
+  @Override
   public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {
     currentColor = (Color) value;
     return button;

@@ -1,16 +1,15 @@
 /*
  * Created on Feb 26, 2008
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ * 
  * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
- *
+ * 
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+ * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations under the License.
+ * 
  * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
@@ -34,7 +33,7 @@ import org.junit.Test;
 
 /**
  * Tests for {@link JFileChooserDriver#selectFiles(javax.swing.JFileChooser, java.io.File[])}.
- *
+ * 
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
@@ -57,8 +56,7 @@ public class JFileChooserDriver_selectFiles_Test extends JFileChooserDriver_Test
       driver.selectFiles(fileChooser, array(new File("Fake1"), new File("Fake2")));
       failWhenExpectingException();
     } catch (IllegalStateException e) {
-      assertThat(e.getMessage()).contains("Expecting file chooser")
-      .contains("to handle multiple selection");
+      assertThat(e.getMessage()).contains("Expecting file chooser").contains("to handle multiple selection");
     }
   }
 
@@ -138,7 +136,8 @@ public class JFileChooserDriver_selectFiles_Test extends JFileChooserDriver_Test
   @RunsInEDT
   private static void setMultipleSelectionEnabled(final JFileChooser fileChooser, final boolean b) {
     execute(new GuiTask() {
-      @Override protected void executeInEDT() {
+      @Override
+      protected void executeInEDT() {
         fileChooser.setMultiSelectionEnabled(b);
       }
     });
@@ -147,7 +146,8 @@ public class JFileChooserDriver_selectFiles_Test extends JFileChooserDriver_Test
   @RunsInEDT
   private static File[] selectedFilesIn(final JFileChooser fileChooser) {
     return execute(new GuiQuery<File[]>() {
-      @Override protected File[] executeInEDT() {
+      @Override
+      protected File[] executeInEDT() {
         return fileChooser.getSelectedFiles();
       }
     });

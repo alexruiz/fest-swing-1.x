@@ -1,21 +1,21 @@
 /*
  * Created on Feb 25, 2008
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ * 
  * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
- *
+ * 
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+ * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations under the License.
+ * 
  * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
-import static javax.swing.SwingConstants.*;
+import static javax.swing.SwingConstants.HORIZONTAL;
+import static javax.swing.SwingConstants.VERTICAL;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.driver.JSliderValueQuery.valueOf;
 import static org.fest.swing.edt.GuiActionRunner.execute;
@@ -34,7 +34,7 @@ import org.junit.runners.Parameterized;
 
 /**
  * Base test case for {@link JSliderDriver}.
- *
+ * 
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
@@ -54,7 +54,8 @@ public abstract class JSliderDriver_TestCase extends RobotBasedTestCase {
     return new Object[][] { { HORIZONTAL }, { VERTICAL } };
   }
 
-  @Override protected final void onSetUp() {
+  @Override
+  protected final void onSetUp() {
     driver = new JSliderDriver(robot);
     window = MyWindow.createNew(getClass(), orientation);
     slider = window.slider;
@@ -83,7 +84,8 @@ public abstract class JSliderDriver_TestCase extends RobotBasedTestCase {
     @RunsInEDT
     static MyWindow createNew(final Class<? extends JSliderDriver_TestCase> testClass, final int orientation) {
       return execute(new GuiQuery<MyWindow>() {
-        @Override protected MyWindow executeInEDT() {
+        @Override
+        protected MyWindow executeInEDT() {
           return new MyWindow(testClass, orientation);
         }
       });

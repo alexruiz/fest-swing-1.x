@@ -1,33 +1,30 @@
 /*
  * Created on Sep 4, 2007
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ * 
  * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
- *
+ * 
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+ * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations under the License.
+ * 
  * Copyright @2007-2013 the original author or authors.
  */
 package org.fest.swing.fixture;
 
-import static org.easymock.EasyMock.expectLastCall;
-import static org.easymock.classextension.EasyMock.createMock;
 import static org.fest.swing.test.builder.JSplitPanes.splitPane;
 
 import javax.swing.JSplitPane;
 
-import org.fest.mocks.EasyMockTemplate;
 import org.fest.swing.driver.JSplitPaneDriver;
-import org.junit.*;
+import org.junit.BeforeClass;
+import org.junit.Test;
 
 /**
  * Tests for {@link JSplitPaneFixture#moveDividerTo(int)}.
- *
+ * 
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
@@ -42,7 +39,8 @@ public class JSplitPaneFixture_moveDividerTo_Test extends ComponentFixture_Imple
     target = splitPane().createNew();
   }
 
-  @Override void onSetUp() {
+  @Override
+  void onSetUp() {
     driver = createMock(JSplitPaneDriver.class);
     fixture = new JSplitPaneFixture(robot(), target);
     fixture.driver(driver);
@@ -51,18 +49,31 @@ public class JSplitPaneFixture_moveDividerTo_Test extends ComponentFixture_Imple
   @Test
   public void should_move_divider() {
     new EasyMockTemplate(driver) {
-      @Override protected void expectations() {
+      @Override
+      protected void expectations() {
         driver.moveDividerTo(target, 8);
         expectLastCall().once();
       }
 
-      @Override protected void codeToTest() {
+      @Override
+      protected void codeToTest() {
         assertThatReturnsSelf(fixture.moveDividerTo(8));
       }
     }.run();
   }
 
-  @Override JSplitPaneDriver driver() {  return driver; }
-  @Override JSplitPane target() { return target; }
-  @Override JSplitPaneFixture fixture() { return fixture; }
+  @Override
+  JSplitPaneDriver driver() {
+    return driver;
+  }
+
+  @Override
+  JSplitPane target() {
+    return target;
+  }
+
+  @Override
+  JSplitPaneFixture fixture() {
+    return fixture;
+  }
 }

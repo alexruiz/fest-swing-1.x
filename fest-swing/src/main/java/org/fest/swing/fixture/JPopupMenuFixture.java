@@ -1,15 +1,15 @@
 /*
  * Created on Sep 5, 2007
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
- * 
+ *
  * Copyright @2007-2013 the original author or authors.
  */
 package org.fest.swing.fixture;
@@ -25,13 +25,8 @@ import org.fest.swing.driver.JPopupMenuDriver;
 import org.fest.swing.exception.ComponentLookupException;
 
 /**
- * Understands functional testing of {@code JPopupMenu}s:
- * <ul>
- * <li>user input simulation</li>
- * <li>state verification</li>
- * <li>property value query</li>
- * </ul>
- * 
+ * Supports functional testing of {@code JPopupMenu}s
+ *
  * @author Yvonne Wang
  */
 public class JPopupMenuFixture extends AbstractJComponentFixture<JPopupMenuFixture, JPopupMenu, JPopupMenuDriver> {
@@ -39,7 +34,7 @@ public class JPopupMenuFixture extends AbstractJComponentFixture<JPopupMenuFixtu
 
   /**
    * Creates a new {@link JPopupMenuFixture}.
-   * 
+   *
    * @param robot performs simulation of user events on the given {@code JPopupMenu}.
    * @param target the {@code JPopupMenu} to be managed by this fixture.
    * @throws NullPointerException if {@code robot} is {@code null}.
@@ -57,7 +52,7 @@ public class JPopupMenuFixture extends AbstractJComponentFixture<JPopupMenuFixtu
 
   /**
    * Finds a {@code JMenuItem}, contained in this fixture's {@code JPopupMenu}, which name matches the specified one.
-   * 
+   *
    * @param name the name to match.
    * @return a fixture that manages the {@code JMenuItem} found.
    * @throws ComponentLookupException if a {@code JMenuItem} having a matching name could not be found.
@@ -70,7 +65,7 @@ public class JPopupMenuFixture extends AbstractJComponentFixture<JPopupMenuFixtu
   /**
    * Finds a {@code JMenuItem}, contained in this fixture's {@code JPopupMenu}, that matches the specified search
    * criteria.
-   * 
+   *
    * @param matcher contains the search criteria for finding a {@code JMenuItem}.
    * @return a fixture that manages the {@code JMenuItem} found.
    * @throws ComponentLookupException if a {@code JMenuItem} that matches the given search criteria could not be found.
@@ -86,14 +81,14 @@ public class JPopupMenuFixture extends AbstractJComponentFixture<JPopupMenuFixtu
    * <p>
    * For example, if we are looking for the menu with text "New" contained under the menu with text "File", we can
    * simply call
-   * 
+   *
    * <pre>
    * JPopupMenuFixture popupMenu = tree.showPopupMenu();
    * JMenuItemFixture menuItem = popupMenu.<strong>menuItemWithPath(&quot;File&quot;, &quot;Menu&quot;)</strong>;
    * </pre>
-   * 
+   *
    * </p>
-   * 
+   *
    * @param path the path of the menu to find.
    * @return a fixture that manages the {@code JMenuItem} found.
    * @throws ComponentLookupException if a {@code JMenuItem} under the given path could not be found.
@@ -105,7 +100,7 @@ public class JPopupMenuFixture extends AbstractJComponentFixture<JPopupMenuFixtu
 
   /**
    * Returns the contents of this fixture's {@code JPopupMenu}.
-   * 
+   *
    * @return a {@code String} array representing the contents of this fixture's {@code JPopupMenu}.
    */
   public @Nonnull String[] menuLabels() {

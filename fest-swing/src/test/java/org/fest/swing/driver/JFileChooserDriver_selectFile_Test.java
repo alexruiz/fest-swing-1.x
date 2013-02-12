@@ -1,24 +1,26 @@
 /*
  * Created on Feb 26, 2008
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ * 
  * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
- *
+ * 
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+ * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations under the License.
+ * 
  * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
 
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.edt.GuiActionRunner.execute;
-import static org.fest.swing.test.core.CommonAssertions.*;
-import static org.fest.util.Files.*;
+import static org.fest.swing.test.core.CommonAssertions.assertThatErrorCauseIsDisabledComponent;
+import static org.fest.swing.test.core.CommonAssertions.assertThatErrorCauseIsNotShowingComponent;
+import static org.fest.swing.test.core.CommonAssertions.failWhenExpectingException;
+import static org.fest.util.Files.newTemporaryFile;
+import static org.fest.util.Files.newTemporaryFolder;
 
 import java.io.File;
 
@@ -30,7 +32,7 @@ import org.junit.Test;
 
 /**
  * Tests for {@link JFileChooserDriver#selectFile(JFileChooser, File)}.
- *
+ * 
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
@@ -51,7 +53,8 @@ public class JFileChooserDriver_selectFile_Test extends JFileChooserDriver_TestC
   @RunsInEDT
   private static File selectedFileIn(final JFileChooser fileChooser) {
     return execute(new GuiQuery<File>() {
-      @Override protected File executeInEDT() {
+      @Override
+      protected File executeInEDT() {
         return fileChooser.getSelectedFile();
       }
     });

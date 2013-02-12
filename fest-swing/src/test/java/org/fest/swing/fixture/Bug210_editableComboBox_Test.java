@@ -1,15 +1,15 @@
 /*
  * Created on Oct 11, 2008
- *
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
- *
+ * 
  * http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
- *
+ * 
  * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.fixture;
@@ -20,7 +20,8 @@ import static org.fest.swing.test.query.JComboBoxSelectedItemQuery.selectedItemO
 import static org.fest.swing.test.task.JComboBoxSetSelectedItemTask.setSelectedItem;
 import static org.fest.util.Arrays.array;
 
-import javax.swing.*;
+import javax.swing.JComboBox;
+import javax.swing.JDialog;
 
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
@@ -30,11 +31,11 @@ import org.junit.Test;
 /**
  * Tests for <a href="http://code.google.com/p/fest/issues/detail?id=210" target="_blank">Bug 210</a>.
  * <p>
- * Demonstrate bug when testing {@code JComboBox}es. If value programmatically added to {@code JComboBox}
- * using {@code setSelectedItem} then FEST assertion {@code requireSelection} fails while JUnit
- * {@code assertEqual} passes. (FEST 1.0b1, Java 1.5)
+ * Demonstrate bug when testing {@code JComboBox}es. If value programmatically added to {@code JComboBox} using
+ * {@code setSelectedItem} then FEST assertion {@code requireSelection} fails while JUnit {@code assertEqual} passes.
+ * (FEST 1.0b1, Java 1.5)
  * </p>
- *
+ * 
  * @author Ewan McDougall
  * @author Alex Ruiz
  */
@@ -43,7 +44,8 @@ public class Bug210_editableComboBox_Test extends RobotBasedTestCase {
   private String[] values;
   private DialogFixture dialog;
 
-  @Override protected void onSetUp() {
+  @Override
+  protected void onSetUp() {
     values = array("hat", "son");
     dialog = new DialogFixture(robot, MyDialog.createNew(values));
     dialog.show();
@@ -65,7 +67,8 @@ public class Bug210_editableComboBox_Test extends RobotBasedTestCase {
     @RunsInEDT
     static MyDialog createNew(final String[] items) {
       return execute(new GuiQuery<MyDialog>() {
-        @Override protected MyDialog executeInEDT() {
+        @Override
+        protected MyDialog executeInEDT() {
           return new MyDialog(items);
         }
       });

@@ -1,16 +1,15 @@
 /*
  * Created on Oct 14, 2007
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ * 
  * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
- *
+ * 
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+ * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations under the License.
+ * 
  * Copyright @2007-2013 the original author or authors.
  */
 package org.fest.swing.monitor;
@@ -51,9 +50,8 @@ import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
 /**
- * Tests for {@link ContextMonitor}.
- * TODO Split
- *
+ * Tests for {@link ContextMonitor}. TODO Split
+ * 
  * @author Alex Ruiz
  */
 @RunWith(Parameterized.class)
@@ -84,18 +82,21 @@ public class ContextMonitorTest extends EDTSafeTestCase {
     this.eventId = eventId;
   }
 
-  @Before public void setUp() {
+  @Before
+  public void setUp() {
     window = TestWindow.createNewWindow(getClass());
     windows = newWindowsMock();
     context = newMockContext();
     monitor = new ContextMonitor(context, windows);
   }
 
-  @After public void tearDown() {
+  @After
+  public void tearDown() {
     window.destroy();
   }
 
-  @Test public void shouldAttachItSelfToToolkit() {
+  @Test
+  public void shouldAttachItSelfToToolkit() {
     ToolkitStub toolkit = newToolkitStub();
     monitor.attachTo(toolkit);
     List<WeakEventListener> eventListeners = toolkit.eventListenersUnderEventMask(EVENT_MASK, WeakEventListener.class);
@@ -104,35 +105,44 @@ public class ContextMonitorTest extends EDTSafeTestCase {
     assertThat(weakEventListener.underlyingListener()).isSameAs(monitor);
   }
 
-  @Test public void shouldNotProcessEventIfComponentIsNotWindowOrApplet() {
+  @Test
+  public void shouldNotProcessEventIfComponentIsNotWindowOrApplet() {
     new EasyMockTemplate(windows, context) {
-      @Override protected void expectations() {}
+      @Override
+      protected void expectations() {
+      }
 
-      @Override protected void codeToTest() {
+      @Override
+      protected void codeToTest() {
         monitor.eventDispatched(new ComponentEvent(textField().createNew(), 8));
       }
     }.run();
   }
 
-  @Test public void shouldProcessEventWithIdEqualToWindowOpen() {
+  @Test
+  public void shouldProcessEventWithIdEqualToWindowOpen() {
     new EasyMockTemplate(windows, context) {
-      @Override protected void expectations() {
+      @Override
+      protected void expectations() {
         context.addContextFor(window);
         windows.attachNewWindowVisibilityMonitor(window);
         windows.markAsShowing(window);
         expectEventQueueLookupFor(window);
       }
 
-      @Override protected void codeToTest() {
+      @Override
+      protected void codeToTest() {
         dispatchWindowOpenedEventToMonitor(window);
       }
     }.run();
   }
 
-  @Test public void shouldProcessEventWithIdEqualToWindowOpenedAndMarkWindowAsReadyIfWindowIsFileDialog() {
+  @Test
+  public void shouldProcessEventWithIdEqualToWindowOpenedAndMarkWindowAsReadyIfWindowIsFileDialog() {
     final Window w = new FileDialog(window);
     new EasyMockTemplate(windows, context) {
-      @Override protected void expectations() {
+      @Override
+      protected void expectations() {
         context.addContextFor(w);
         windows.attachNewWindowVisibilityMonitor(w);
         windows.markAsShowing(w);
@@ -140,60 +150,73 @@ public class ContextMonitorTest extends EDTSafeTestCase {
         expectEventQueueLookupFor(w);
       }
 
-      @Override protected void codeToTest() {
+      @Override
+      protected void codeToTest() {
         dispatchWindowOpenedEventToMonitor(w);
       }
     }.run();
   }
 
-  @Test public void shouldProcessEventWithIdEqualToWindowClosedAndWithRootWindow() {
+  @Test
+  public void shouldProcessEventWithIdEqualToWindowClosedAndWithRootWindow() {
     new EasyMockTemplate(windows, context) {
-      @Override protected void expectations() {
+      @Override
+      protected void expectations() {
         context.removeContextFor(window);
         windows.markAsClosed(window);
         expectEventQueueLookupFor(window);
       }
 
-      @Override protected void codeToTest() {
+      @Override
+      protected void codeToTest() {
         dispatchWindowClosedEventToMonitor(window);
       }
     }.run();
   }
 
-  @Test public void shouldProcessEventWithIdEqualToWindowClosedAndWithNotRootWindow() {
+  @Test
+  public void shouldProcessEventWithIdEqualToWindowClosedAndWithNotRootWindow() {
     final Applet applet = new Applet();
     window.add(applet);
     new EasyMockTemplate(windows, context) {
-      @Override protected void expectations() {
+      @Override
+      protected void expectations() {
         expectEventQueueLookupFor(applet);
       }
 
-      @Override protected void codeToTest() {
+      @Override
+      protected void codeToTest() {
         dispatchWindowClosedEventToMonitor(applet);
       }
     }.run();
   }
 
-  @Test public void shouldNotProcessEventWithIdWindowClosing() {
+  @Test
+  public void shouldNotProcessEventWithIdWindowClosing() {
     new EasyMockTemplate(windows, context) {
-      @Override protected void expectations() {
+      @Override
+      protected void expectations() {
         expectEventQueueLookupFor(window);
       }
 
-      @Override protected void codeToTest() {
+      @Override
+      protected void codeToTest() {
         dispatchWindowClosingEventToMonitor(window);
       }
     }.run();
   }
 
-  @Test public void shouldAddToContextIfComponentEventQueueNotEqualToSystemEventQueue() {
+  @Test
+  public void shouldAddToContextIfComponentEventQueueNotEqualToSystemEventQueue() {
     new EasyMockTemplate(windows, context) {
-      @Override protected void expectations() {
+      @Override
+      protected void expectations() {
         expect(context.storedQueueFor(window)).andReturn(new EventQueue());
         context.addContextFor(window);
       }
 
-      @Override protected void codeToTest() {
+      @Override
+      protected void codeToTest() {
         dispatchWindowClosingEventToMonitor(window);
       }
     }.run();
@@ -202,7 +225,8 @@ public class ContextMonitorTest extends EDTSafeTestCase {
   @Test
   public void shouldProcessEventWithIdBetweenWindowFirstAndWindowLastAndWindowNotInContext() {
     new EasyMockTemplate(windows, context) {
-      @Override protected void expectations() {
+      @Override
+      protected void expectations() {
         expect(context.rootWindows()).andReturn(new ArrayList<Window>());
         context.addContextFor(window);
         windows.attachNewWindowVisibilityMonitor(window);
@@ -210,7 +234,8 @@ public class ContextMonitorTest extends EDTSafeTestCase {
         expectEventQueueLookupFor(window);
       }
 
-      @Override protected void codeToTest() {
+      @Override
+      protected void codeToTest() {
         dispatchEventToMonitor(window, eventId);
       }
     }.run();
@@ -219,7 +244,8 @@ public class ContextMonitorTest extends EDTSafeTestCase {
   @Test
   public void shouldProcessEventWithIdBetweenWindowFirstAndWindowLastAndWindowInContextAndClosed() {
     new EasyMockTemplate(windows, context) {
-      @Override protected void expectations() {
+      @Override
+      protected void expectations() {
         expect(context.rootWindows()).andReturn(frameInList());
         expect(windows.isClosed(window)).andReturn(true);
         context.addContextFor(window);
@@ -228,7 +254,8 @@ public class ContextMonitorTest extends EDTSafeTestCase {
         expectEventQueueLookupFor(window);
       }
 
-      @Override protected void codeToTest() {
+      @Override
+      protected void codeToTest() {
         dispatchEventToMonitor(window, eventId);
       }
     }.run();
@@ -237,13 +264,15 @@ public class ContextMonitorTest extends EDTSafeTestCase {
   @Test
   public void shouldProcessEventWithIdBetweenWindowFirstAndWindowLastAndWindowInContextAndNotClosed() {
     new EasyMockTemplate(windows, context) {
-      @Override protected void expectations() {
+      @Override
+      protected void expectations() {
         expect(context.rootWindows()).andReturn(frameInList());
         expect(windows.isClosed(window)).andReturn(false);
         expectEventQueueLookupFor(window);
       }
 
-      @Override protected void codeToTest() {
+      @Override
+      protected void codeToTest() {
         dispatchEventToMonitor(window, eventId);
       }
     }.run();

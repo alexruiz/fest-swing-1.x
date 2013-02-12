@@ -1,15 +1,15 @@
 /*
  * Created on Mar 22, 2008
- *
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
- *
+ * 
  * http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
- *
+ * 
  * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.test.awt;
@@ -30,7 +30,7 @@ import java.util.Map;
 
 /**
  * Understands a stub of {@link Toolkit}.
- *
+ * 
  * @author Alex Ruiz
  */
 public abstract class ToolkitStub extends Toolkit {
@@ -55,7 +55,7 @@ public abstract class ToolkitStub extends Toolkit {
   }
 
   static ToolkitStub createNew(EventQueue eventQueue) {
-    ToolkitStub stub =  createMock(ToolkitStub.class, METHODS_TO_MOCK);
+    ToolkitStub stub = createMock(ToolkitStub.class, METHODS_TO_MOCK);
     stub.eventQueue(eventQueue);
     stub.eventListeners = newHashMap();
     return stub;
@@ -67,11 +67,13 @@ public abstract class ToolkitStub extends Toolkit {
     eventQueue = newEventQueue;
   }
 
-  @Override public void addAWTEventListener(AWTEventListener listener, long eventMask) {
+  @Override
+  public void addAWTEventListener(AWTEventListener listener, long eventMask) {
     eventListeners().put(listener, eventMask);
   }
 
-  @Override public void removeAWTEventListener(AWTEventListener listener) {
+  @Override
+  public void removeAWTEventListener(AWTEventListener listener) {
     eventListeners().remove(listener);
   }
 
@@ -97,7 +99,8 @@ public abstract class ToolkitStub extends Toolkit {
     return storedMask == eventMask;
   }
 
-  @Override protected EventQueue getSystemEventQueueImpl() {
+  @Override
+  protected EventQueue getSystemEventQueueImpl() {
     return eventQueue;
   }
 
@@ -105,7 +108,8 @@ public abstract class ToolkitStub extends Toolkit {
     return eventListeners;
   }
 
-  @Override public Insets getScreenInsets(GraphicsConfiguration gc) throws HeadlessException {
+  @Override
+  public Insets getScreenInsets(GraphicsConfiguration gc) throws HeadlessException {
     return new Insets(0, 0, 0, 0);
   }
 }

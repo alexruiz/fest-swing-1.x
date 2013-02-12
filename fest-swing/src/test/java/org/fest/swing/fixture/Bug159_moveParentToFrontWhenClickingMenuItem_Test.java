@@ -1,16 +1,15 @@
 /*
  * Created on Jul 8, 2008
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ * 
  * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
- *
+ * 
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+ * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations under the License.
+ * 
  * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.fixture;
@@ -25,7 +24,12 @@ import static org.fest.util.Strings.concat;
 import java.awt.Dimension;
 import java.util.logging.Logger;
 
-import javax.swing.*;
+import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JPopupMenu;
+import javax.swing.JTextField;
 
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
@@ -36,7 +40,7 @@ import org.junit.Test;
 
 /**
  * Tests for <a href="http://code.google.com/p/fest/issues/detail?id=159" target="_blank">Bug 159</a>.
- *
+ * 
  * @author Alex Ruiz
  */
 public class Bug159_moveParentToFrontWhenClickingMenuItem_Test extends RobotBasedTestCase {
@@ -47,7 +51,8 @@ public class Bug159_moveParentToFrontWhenClickingMenuItem_Test extends RobotBase
   private JFrame frameToFocus;
   private MyWindow window;
 
-  @Override protected void onSetUp() {
+  @Override
+  protected void onSetUp() {
     window = MyWindow.createNew();
     window.display();
     frameToFocus = frame().withTitle("To Focus").createNew();
@@ -92,7 +97,8 @@ public class Bug159_moveParentToFrontWhenClickingMenuItem_Test extends RobotBase
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
-        @Override protected MyWindow executeInEDT() {
+        @Override
+        protected MyWindow executeInEDT() {
           return new MyWindow();
         }
       });

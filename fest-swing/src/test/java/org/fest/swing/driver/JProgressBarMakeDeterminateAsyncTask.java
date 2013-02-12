@@ -37,7 +37,8 @@ import org.fest.swing.core.Robot;
 class JProgressBarMakeDeterminateAsyncTask {
   private static Logger logger = Logger.getAnonymousLogger();
 
-  static @Nonnull TaskBuilder makeDeterminate(@Nonnull JProgressBar progressBar) {
+  static @Nonnull
+  TaskBuilder makeDeterminate(@Nonnull JProgressBar progressBar) {
     return new TaskBuilder(progressBar);
   }
 
@@ -49,15 +50,15 @@ class JProgressBarMakeDeterminateAsyncTask {
   private final JProgressBar progressBar;
   private final long periodInMs;
 
-  private JProgressBarMakeDeterminateAsyncTask(@Nonnull Robot robot, @Nonnull JProgressBar progressBar,
-      long periodInMs) {
+  private JProgressBarMakeDeterminateAsyncTask(@Nonnull Robot robot, @Nonnull JProgressBar progressBar, long periodInMs) {
     this.robot = robot;
     this.progressBar = progressBar;
     this.periodInMs = periodInMs;
     task = createInnerTask();
   }
 
-  private @Nonnull Runnable createInnerTask() {
+  private @Nonnull
+  Runnable createInnerTask() {
     return new Runnable() {
       @Override
       public void run() {
@@ -96,12 +97,14 @@ class JProgressBarMakeDeterminateAsyncTask {
       this.progressBar = progressBar;
     }
 
-    @Nonnull TaskBuilder after(long duration, @Nonnull TimeUnit timeUnit) {
+    @Nonnull
+    TaskBuilder after(long duration, @Nonnull TimeUnit timeUnit) {
       periodInMs = timeUnit.toMillis(duration);
       return this;
     }
 
-    @Nonnull JProgressBarMakeDeterminateAsyncTask createTask(@Nonnull Robot robot) {
+    @Nonnull
+    JProgressBarMakeDeterminateAsyncTask createTask(@Nonnull Robot robot) {
       return new JProgressBarMakeDeterminateAsyncTask(robot, progressBar, periodInMs);
     }
   }

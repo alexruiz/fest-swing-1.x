@@ -1,16 +1,15 @@
 /*
  * Created on Feb 25, 2008
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ * 
  * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
- *
+ * 
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+ * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations under the License.
+ * 
  * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
@@ -23,16 +22,19 @@ import static org.fest.util.Arrays.array;
 
 import java.awt.Dimension;
 
-import javax.swing.*;
+import javax.swing.JLabel;
+import javax.swing.JSpinner;
+import javax.swing.SpinnerListModel;
 
 import org.fest.swing.annotation.RunsInEDT;
-import org.fest.swing.edt.*;
+import org.fest.swing.edt.GuiQuery;
+import org.fest.swing.edt.GuiTask;
 import org.fest.swing.test.core.RobotBasedTestCase;
 import org.fest.swing.test.swing.TestWindow;
 
 /**
  * Base test case for {@link JSpinnerDriver}.
- *
+ * 
  * @author Alex Ruiz
  */
 public abstract class JSpinnerDriver_TestCase extends RobotBasedTestCase {
@@ -40,7 +42,8 @@ public abstract class JSpinnerDriver_TestCase extends RobotBasedTestCase {
   JSpinner spinner;
   JSpinnerDriver driver;
 
-  @Override protected final void onSetUp() {
+  @Override
+  protected final void onSetUp() {
     driver = new JSpinnerDriver(robot);
     window = MyWindow.createNew();
     spinner = window.spinner;
@@ -64,7 +67,8 @@ public abstract class JSpinnerDriver_TestCase extends RobotBasedTestCase {
   @RunsInEDT
   private static void setJLabelAsEditorIn(final JSpinner spinner) {
     execute(new GuiTask() {
-      @Override protected void executeInEDT() {
+      @Override
+      protected void executeInEDT() {
         spinner.setEditor(new JLabel());
       }
     });
@@ -85,7 +89,8 @@ public abstract class JSpinnerDriver_TestCase extends RobotBasedTestCase {
   @RunsInEDT
   private static void setValue(final JSpinner spinner, final Object value) {
     execute(new GuiTask() {
-      @Override protected void executeInEDT() {
+      @Override
+      protected void executeInEDT() {
         spinner.setValue(value);
       }
     });
@@ -115,7 +120,8 @@ public abstract class JSpinnerDriver_TestCase extends RobotBasedTestCase {
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
-        @Override protected MyWindow executeInEDT() {
+        @Override
+        protected MyWindow executeInEDT() {
           return new MyWindow();
         }
       });

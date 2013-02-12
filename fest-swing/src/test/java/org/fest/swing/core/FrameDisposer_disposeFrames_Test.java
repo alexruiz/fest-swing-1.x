@@ -1,16 +1,15 @@
 /*
  * Created on May 2, 2009
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ * 
  * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
- *
+ * 
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+ * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations under the License.
+ * 
  * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.core;
@@ -29,19 +28,21 @@ import org.junit.Test;
 
 /**
  * Tests for {@link FrameDisposer#disposeFrames()}.
- *
+ * 
  * @author Alex Ruiz
  */
 public class FrameDisposer_disposeFrames_Test extends SequentialEDTSafeTestCase {
   private MyWindow[] windows;
   private FrameDisposer disposer;
 
-  @Override protected void onSetUp() {
+  @Override
+  protected void onSetUp() {
     windows = MyWindow.windows();
     disposer = new FrameDisposer();
   }
 
-  @Override protected void onTearDown() {
+  @Override
+  protected void onTearDown() {
     for (MyWindow w : windows) {
       w.destroy();
     }
@@ -62,7 +63,8 @@ public class FrameDisposer_disposeFrames_Test extends SequentialEDTSafeTestCase 
     static MyWindow[] windows() {
       final List<MyWindow> windows = newArrayList();
       execute(new GuiTask() {
-        @Override protected void executeInEDT() {
+        @Override
+        protected void executeInEDT() {
           for (int i = 0; i < 3; i++) {
             MyWindow w = new MyWindow();
             display(w);
@@ -79,7 +81,8 @@ public class FrameDisposer_disposeFrames_Test extends SequentialEDTSafeTestCase 
       super(FrameDisposer_disposeFrames_Test.class);
     }
 
-    @Override public void dispose() {
+    @Override
+    public void dispose() {
       disposed = true;
       super.dispose();
     }

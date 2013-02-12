@@ -1,15 +1,15 @@
 /*
  * Created on Oct 13, 2007
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
- * 
+ *
  * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.data;
@@ -35,7 +35,7 @@ import org.fest.swing.exception.ActionFailedException;
  * <p>
  * Looks up a cell in a {@code JTable} by column identifier.
  * </p>
- * 
+ *
  * <p>
  * Example:
  * <pre>
@@ -43,7 +43,7 @@ import org.fest.swing.exception.ActionFailedException;
  * {@link TableCell} cell = dialog.table("records").cell({@link TableCellByColumnId#row(int) row}(3).columnId("firstColumn"));
  * </pre>
  * </p>
- * 
+ *
  * @author Alex Ruiz
  */
 public class TableCellByColumnId implements TableCellFinder {
@@ -54,14 +54,14 @@ public class TableCellByColumnId implements TableCellFinder {
    * Starting point for the creation of a {@link TableCellByColumnId}.
    * <p>
    * Example:
-   * 
+   *
    * <pre>
    * // import static org.fest.swing.data.TableCellByColumnId.row;
    * TableCellByColumnId cell = row(5).columnId(&quot;hobbyColumn&quot;);
    * </pre>
-   * 
+   *
    * </p>
-   * 
+   *
    * @param row the row index of the table cell to find.
    * @return the created builder.
    */
@@ -70,8 +70,8 @@ public class TableCellByColumnId implements TableCellFinder {
   }
 
   /**
-   * Understands creation of {@link TableCellByColumnId}s.
-   * 
+   * Factory of {@link TableCellByColumnId}s.
+   *
    * @author Alex Ruiz
    */
   public static class TableCellBuilder {
@@ -84,7 +84,7 @@ public class TableCellByColumnId implements TableCellFinder {
     /**
      * Creates a new table cell finder using the row index specified in
      * {@link TableCellByColumnId#row(int)} and the column id specified as the argument in this method.
-     * 
+     *
      * @param columnId the name of the column in the table cell to find.
      * @return the created finder.
      */
@@ -100,7 +100,7 @@ public class TableCellByColumnId implements TableCellFinder {
 
   /**
    * Finds a cell in the given {@code JTable} that has a matching row index and column id.
-   * 
+   *
    * @param table the target {@code JTable}.
    * @param cellReader knows how to read the contents of a cell in a {@code JTable}.
    * @return the cell found, if any.

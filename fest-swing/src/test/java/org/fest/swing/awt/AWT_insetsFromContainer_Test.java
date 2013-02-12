@@ -1,16 +1,15 @@
 /*
  * Created on Jul 24, 2009
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ * 
  * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
- *
+ * 
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+ * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations under the License.
+ * 
  * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.awt;
@@ -20,7 +19,9 @@ import static org.fest.swing.core.BasicRobot.robotWithNewAwtHierarchy;
 import static org.fest.swing.edt.GuiActionRunner.execute;
 import static org.fest.swing.test.query.ContainerInsetsQuery.insetsOf;
 
-import java.awt.*;
+import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.Insets;
 
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.core.Robot;
@@ -30,7 +31,7 @@ import org.junit.Test;
 
 /**
  * Tests for {@link AWT#insetsFrom(java.awt.Container)}.
- *
+ * 
  * @author Alex Ruiz
  */
 public class AWT_insetsFromContainer_Test {
@@ -65,7 +66,8 @@ public class AWT_insetsFromContainer_Test {
   @RunsInEDT
   private static Insets insetsFrom(final Container c) {
     return execute(new GuiQuery<Insets>() {
-      @Override protected Insets executeInEDT() {
+      @Override
+      protected Insets executeInEDT() {
         return AWT.insetsFrom(c);
       }
     });
@@ -77,7 +79,8 @@ public class AWT_insetsFromContainer_Test {
     @RunsInEDT
     static WindowWithNullInsets createNew() {
       return execute(new GuiQuery<WindowWithNullInsets>() {
-        @Override protected WindowWithNullInsets executeInEDT() {
+        @Override
+        protected WindowWithNullInsets executeInEDT() {
           return new WindowWithNullInsets();
         }
       });
@@ -87,7 +90,8 @@ public class AWT_insetsFromContainer_Test {
       super(AWT_insetsFromContainer_Test.class);
     }
 
-    @Override public Insets getInsets() {
+    @Override
+    public Insets getInsets() {
       return null;
     }
   }

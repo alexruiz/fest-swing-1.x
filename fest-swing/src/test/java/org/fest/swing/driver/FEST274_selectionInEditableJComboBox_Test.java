@@ -1,16 +1,15 @@
 /*
  * Created on Dec 13, 2009
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ * 
  * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
- *
+ * 
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+ * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations under the License.
+ * 
  * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.driver;
@@ -29,14 +28,15 @@ import org.junit.Test;
 
 /**
  * Test case for bug <a href="http://jira.codehaus.org/browse/FEST-274" target="_blank">FEST-274</a>
- *
+ * 
  * @author Alex Ruiz
  */
 public class FEST274_selectionInEditableJComboBox_Test extends RobotBasedTestCase {
   private JComboBoxDriver driver;
   private JComboBox comboBox;
 
-  @Override protected void onSetUp() {
+  @Override
+  protected void onSetUp() {
     driver = new JComboBoxDriver(robot);
     MyWindow window = MyWindow.createNew();
     robot.showWindow(window);
@@ -58,7 +58,8 @@ public class FEST274_selectionInEditableJComboBox_Test extends RobotBasedTestCas
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
-        @Override protected MyWindow executeInEDT() {
+        @Override
+        protected MyWindow executeInEDT() {
           return new MyWindow();
         }
       });

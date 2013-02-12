@@ -1,16 +1,15 @@
 /*
  * Created on Jul 16, 2009
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ * 
  * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
- *
+ * 
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+ * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations under the License.
+ * 
  * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.driver;
@@ -19,19 +18,28 @@ import static org.fest.swing.edt.GuiActionRunner.execute;
 import static org.fest.swing.test.swing.TreeNodeFactory.node;
 import static org.fest.swing.test.task.ComponentSetEnabledTask.disable;
 
-import java.awt.*;
+import java.awt.Component;
+import java.awt.Dimension;
 
-import javax.swing.*;
-import javax.swing.tree.*;
+import javax.swing.JScrollPane;
+import javax.swing.JTree;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
+import javax.swing.tree.MutableTreeNode;
+import javax.swing.tree.TreeModel;
+import javax.swing.tree.TreeNode;
+import javax.swing.tree.TreePath;
 
-import org.fest.swing.annotation.*;
+import org.fest.swing.annotation.RunsInCurrentThread;
+import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
 import org.fest.swing.test.core.RobotBasedTestCase;
-import org.fest.swing.test.swing.*;
+import org.fest.swing.test.swing.TestTree;
+import org.fest.swing.test.swing.TestWindow;
 
 /**
  * Base test case for {@link JTreeDriver}.
- *
+ * 
  * @author Alex Ruiz
  */
 public abstract class JTreeDriver_TestCase extends RobotBasedTestCase {
@@ -39,7 +47,8 @@ public abstract class JTreeDriver_TestCase extends RobotBasedTestCase {
   JTree tree;
   JTreeDriver driver;
 
-  @Override protected final void onSetUp() {
+  @Override
+  protected final void onSetUp() {
     window = MyWindow.createNew(getClass());
     tree = window.tree;
     driver = new JTreeDriver(robot);
@@ -66,7 +75,8 @@ public abstract class JTreeDriver_TestCase extends RobotBasedTestCase {
   @RunsInEDT
   private static String textOf(final TreePath path, final String separator) {
     return execute(new GuiQuery<String>() {
-      @Override protected String executeInEDT() {
+      @Override
+      protected String executeInEDT() {
         return pathText(path, separator);
       }
     });
@@ -74,22 +84,25 @@ public abstract class JTreeDriver_TestCase extends RobotBasedTestCase {
 
   @RunsInCurrentThread
   static String pathText(TreePath path, String separator) {
-    if (path == null) return null;
+    if (path == null) {
+      return null;
+    }
     Object[] values = path.getPath();
     StringBuilder b = new StringBuilder();
     for (int i = 0; i < values.length; i++) {
-      if (i != 0) b.append(separator);
+      if (i != 0) {
+        b.append(separator);
+      }
       Object value = values[i];
-      if (value instanceof DefaultMutableTreeNode)
-        b.append(((DefaultMutableTreeNode)value).getUserObject());
+      if (value instanceof DefaultMutableTreeNode) {
+        b.append(((DefaultMutableTreeNode) value).getUserObject());
+      }
     }
     return b.toString();
   }
 
   public static final Object[][] outOfBoundRowIndices() {
-    return new Object[][] {
-        { -1 }, { 6 }, { 100 }
-    };
+    return new Object[][] { { -1 }, { 6 }, { 100 } };
   }
 
   @RunsInEDT
@@ -100,9 +113,10 @@ public abstract class JTreeDriver_TestCase extends RobotBasedTestCase {
   @RunsInEDT
   private static DefaultMutableTreeNode firstChildInRootOf(final JTree tree) {
     return execute(new GuiQuery<DefaultMutableTreeNode>() {
-      @Override protected DefaultMutableTreeNode executeInEDT() {
-        TreeNode root = (TreeNode)tree.getModel().getRoot();
-        return (DefaultMutableTreeNode)root.getChildAt(0);
+      @Override
+      protected DefaultMutableTreeNode executeInEDT() {
+        TreeNode root = (TreeNode) tree.getModel().getRoot();
+        return (DefaultMutableTreeNode) root.getChildAt(0);
       }
     });
   }
@@ -110,7 +124,8 @@ public abstract class JTreeDriver_TestCase extends RobotBasedTestCase {
   @RunsInEDT
   static int childCountOf(final TreeNode node) {
     return execute(new GuiQuery<Integer>() {
-      @Override protected Integer executeInEDT() {
+      @Override
+      protected Integer executeInEDT() {
         return node.getChildCount();
       }
     });
@@ -119,8 +134,9 @@ public abstract class JTreeDriver_TestCase extends RobotBasedTestCase {
   @RunsInEDT
   static DefaultMutableTreeNode firstChildOf(final TreeNode node) {
     return execute(new GuiQuery<DefaultMutableTreeNode>() {
-      @Override protected DefaultMutableTreeNode executeInEDT() {
-        return (DefaultMutableTreeNode)node.getChildAt(0);
+      @Override
+      protected DefaultMutableTreeNode executeInEDT() {
+        return (DefaultMutableTreeNode) node.getChildAt(0);
       }
     });
   }
@@ -128,9 +144,10 @@ public abstract class JTreeDriver_TestCase extends RobotBasedTestCase {
   @RunsInEDT
   static DefaultMutableTreeNode firstChildOfRootIn(final JTree tree) {
     return execute(new GuiQuery<DefaultMutableTreeNode>() {
-      @Override protected DefaultMutableTreeNode executeInEDT() {
-        TreeNode root = (TreeNode)tree.getModel().getRoot();
-        return (DefaultMutableTreeNode)root.getChildAt(0);
+      @Override
+      protected DefaultMutableTreeNode executeInEDT() {
+        TreeNode root = (TreeNode) tree.getModel().getRoot();
+        return (DefaultMutableTreeNode) root.getChildAt(0);
       }
     });
   }
@@ -138,8 +155,9 @@ public abstract class JTreeDriver_TestCase extends RobotBasedTestCase {
   @RunsInEDT
   static String textOf(final DefaultMutableTreeNode node) {
     return execute(new GuiQuery<String>() {
-      @Override protected String executeInEDT() {
-        return (String)node.getUserObject();
+      @Override
+      protected String executeInEDT() {
+        return (String) node.getUserObject();
       }
     });
   }
@@ -147,8 +165,9 @@ public abstract class JTreeDriver_TestCase extends RobotBasedTestCase {
   @RunsInEDT
   static DefaultMutableTreeNode rootOf(final JTree tree) {
     return execute(new GuiQuery<DefaultMutableTreeNode>() {
-      @Override protected DefaultMutableTreeNode executeInEDT() {
-        return (DefaultMutableTreeNode)tree.getModel().getRoot();
+      @Override
+      protected DefaultMutableTreeNode executeInEDT() {
+        return (DefaultMutableTreeNode) tree.getModel().getRoot();
       }
     });
   }
@@ -161,7 +180,8 @@ public abstract class JTreeDriver_TestCase extends RobotBasedTestCase {
     @RunsInEDT
     static MyWindow createNew(final Class<?> testClass) {
       return execute(new GuiQuery<MyWindow>() {
-        @Override protected MyWindow executeInEDT() {
+        @Override
+        protected MyWindow executeInEDT() {
           return new MyWindow(testClass);
         }
       });
@@ -170,22 +190,9 @@ public abstract class JTreeDriver_TestCase extends RobotBasedTestCase {
     final TestTree tree = new TestTree(nodes());
 
     private static TreeModel nodes() {
-      MutableTreeNode root =
-        node("root",
-            node("branch1",
-                node("branch1.1",
-                    node("branch1.1.1"),
-                    node("branch1.1.2")
-                ),
-                node("branch1.2")
-            ),
-            node("branch2"),
-            node("branch3"),
-            node("branch4"),
-            node("branch5",
-                node("branch5.1")
-            )
-        );
+      MutableTreeNode root = node("root",
+          node("branch1", node("branch1.1", node("branch1.1.1"), node("branch1.1.2")), node("branch1.2")),
+          node("branch2"), node("branch3"), node("branch4"), node("branch5", node("branch5.1")));
       return new DefaultTreeModel(root);
     }
 

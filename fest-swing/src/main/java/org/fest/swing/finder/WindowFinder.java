@@ -67,8 +67,7 @@ import org.fest.swing.core.GenericTypeMatcher;
  * @author Yvonne Wang
  */
 public final class WindowFinder {
-  private WindowFinder() {
-  }
+  private WindowFinder() {}
 
   /**
    * Creates a new {@link FrameFinder} capable of looking up a {@code Frame} by name.

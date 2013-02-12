@@ -1,16 +1,15 @@
 /*
  * Created on Aug 25, 2007
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
- * in compliance with the License. You may obtain a copy of the License at
- *
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ * 
  * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software distributed under the License
- * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
- * or implied. See the License for the specific language governing permissions and limitations under
- * the License.
- *
+ * 
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+ * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations under the License.
+ * 
  * Copyright @2007-2013 the original author or authors.
  */
 package org.fest.swing.test.swing;
@@ -26,16 +25,15 @@ import javax.swing.table.DefaultTableModel;
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiTask;
 
-
 /**
  * Understands a table that:
  * <ul>
  * <li>requires a name</li>
  * <li>supports drag and drop</li>
  * </ul>
- * Adapted from the tutorial
- * <a href="http://java.sun.com/docs/books/tutorial/uiswing/dnd/intro.html" target="_blank">Introduction to Drag and Drop and Data Transfer</a>.
- *
+ * Adapted from the tutorial <a href="http://java.sun.com/docs/books/tutorial/uiswing/dnd/intro.html"
+ * target="_blank">Introduction to Drag and Drop and Data Transfer</a>.
+ * 
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
@@ -54,16 +52,19 @@ public class TestTable extends JTable {
 
   public static Object[] columnNames(int columnCount) {
     Object[] columnNames = new Object[columnCount];
-    for (int i = 0; i < columnCount; i++)
+    for (int i = 0; i < columnCount; i++) {
       columnNames[i] = String.valueOf(i);
+    }
     return columnNames;
   }
 
   public static Object[][] rowData(int rowCount, int columnCount) {
     Object[][] data = new Object[rowCount][columnCount];
-    for (int i = 0; i < rowCount; i++)
-      for (int j = 0; j < columnCount; j++)
+    for (int i = 0; i < rowCount; i++) {
+      for (int j = 0; j < columnCount; j++) {
         data[i][j] = createCellValueFrom(i, j);
+      }
+    }
     return data;
   }
 
@@ -92,7 +93,8 @@ public class TestTable extends JTable {
   @RunsInEDT
   private static void cellEditable(final CustomModel model, final int row, final int column, final boolean editable) {
     execute(new GuiTask() {
-      @Override protected void executeInEDT() {
+      @Override
+      protected void executeInEDT() {
         model.cellEditable(row, column, editable);
       }
     });
@@ -108,7 +110,8 @@ public class TestTable extends JTable {
 
     private static final long serialVersionUID = 1L;
 
-    @Override public boolean isCellEditable(int row, int column) {
+    @Override
+    public boolean isCellEditable(int row, int column) {
       return editableCells[row][column];
     }
 
@@ -124,7 +127,8 @@ public class TestTable extends JTable {
       super(JTable.class);
     }
 
-    @Override protected String exportString(JTable table) {
+    @Override
+    protected String exportString(JTable table) {
       rows = table.getSelectedRows();
       int colCount = table.getColumnCount();
       StringBuilder b = new StringBuilder();
@@ -132,14 +136,19 @@ public class TestTable extends JTable {
         for (int j = 0; j < colCount; j++) {
           Object val = table.getValueAt(rows[i], j);
           b.append(val == null ? "" : val.toString());
-          if (j != colCount - 1) b.append(",");
+          if (j != colCount - 1) {
+            b.append(",");
+          }
         }
-        if (i != rows.length - 1) b.append("\n");
+        if (i != rows.length - 1) {
+          b.append("\n");
+        }
       }
       return b.toString();
     }
 
-    @Override protected void importString(JTable target, String s) {
+    @Override
+    protected void importString(JTable target, String s) {
       DefaultTableModel model = (DefaultTableModel) target.getModel();
       int index = target.getSelectedRow();
       // Prevent the user from dropping data back on itself.
@@ -148,30 +157,40 @@ public class TestTable extends JTable {
         return;
       }
       int max = model.getRowCount();
-      if (index < 0) index = max;
-      else {
+      if (index < 0) {
+        index = max;
+      } else {
         index++;
-        if (index > max) index = max;
+        if (index > max) {
+          index = max;
+        }
       }
       addIndex = index;
       String[] values = s.split("\n");
       addCount = values.length;
       int colCount = target.getColumnCount();
-      for (int i = 0; i < values.length && i < colCount; i++)
+      for (int i = 0; i < values.length && i < colCount; i++) {
         model.insertRow(index++, values[i].split(","));
+      }
     }
 
-    @Override protected void cleanup(JTable source, boolean remove) {
+    @Override
+    protected void cleanup(JTable source, boolean remove) {
       if (remove && rows != null) {
         DefaultTableModel model = (DefaultTableModel) source.getModel();
-        // If we are moving items around in the same table, we need to adjust the rows accordingly, since those after the
+        // If we are moving items around in the same table, we need to adjust the rows accordingly, since those after
+        // the
         // insertion point have moved.
         if (addCount > 0) {
-          for (int i = 0; i < rows.length; i++)
-            if (rows[i] > addIndex) rows[i] += addCount;
+          for (int i = 0; i < rows.length; i++) {
+            if (rows[i] > addIndex) {
+              rows[i] += addCount;
+            }
+          }
         }
-        for (int i = rows.length - 1; i >= 0; i--)
+        for (int i = rows.length - 1; i >= 0; i--) {
           model.removeRow(rows[i]);
+        }
       }
     }
   }

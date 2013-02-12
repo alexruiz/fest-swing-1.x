@@ -1,20 +1,19 @@
 /*
  * Created on Nov. 25, 2009 Mel Llaguno http://www.aclaro.com ------------------------------------
- *
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
- *
+ * 
  * http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
- *
+ * 
  * Copyright @2007-2009 the original author or authors.
  */
 package org.fest.swing.fixture;
 
-import static org.easymock.classextension.EasyMock.createMock;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.data.TableCell.row;
 import static org.fest.swing.test.builder.JApplets.applet;
@@ -24,9 +23,11 @@ import java.io.File;
 
 import javax.swing.JApplet;
 
-import org.fest.swing.core.*;
+import org.fest.swing.core.KeyPressInfo;
+import org.fest.swing.core.MouseButton;
 import org.fest.swing.data.TableCell;
-import org.fest.swing.driver.*;
+import org.fest.swing.driver.ComponentDriver;
+import org.fest.swing.driver.JAppletDriver;
 import org.junit.Test;
 
 public class JAppletFixtureTest extends ComponentFixture_Implementations_TestCase<JApplet> {
@@ -34,19 +35,23 @@ public class JAppletFixtureTest extends ComponentFixture_Implementations_TestCas
   private JApplet target;
   private JAppletFixture fixture;
 
-  @Override CommonComponentFixture fixture() {
+  @Override
+  CommonComponentFixture fixture() {
     return fixture;
   }
 
-  @Override ComponentDriver driver() {
+  @Override
+  ComponentDriver driver() {
     return driver;
   }
 
-  @Override JApplet target() {
+  @Override
+  JApplet target() {
     return target;
   }
 
-  @Override void onSetUp() {
+  @Override
+  void onSetUp() {
     driver = createMock(JAppletDriver.class);
     target = applet().createNew();
     fixture = new JAppletFixture(robot(), target);
