@@ -43,7 +43,7 @@ public abstract class ContainerFixture_progressBar_TestCase extends RobotBasedTe
   }
 
   final void assertThatJProgressBarWasFound(JProgressBarFixture f) {
-    assertThat(f.component()).isSameAs(window.progressBar);
+    assertThat(f.target()).isSameAs(window.progressBar);
   }
 
   static class MyWindow extends TestWindow {

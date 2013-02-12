@@ -44,7 +44,7 @@ public class JLabelFixture_constructor_withRobotAndName_Test extends RobotBasedT
     robot.showWindow(window);
     JLabelFixture fixture = new JLabelFixture(robot, "label");
     assertThat(fixture.robot).isSameAs(robot);
-    assertThat(fixture.component()).isSameAs(window.label);
+    assertThat(fixture.target()).isSameAs(window.label);
   }
 
   @Test(expected = ComponentLookupException.class)

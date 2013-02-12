@@ -109,7 +109,7 @@ public class ContainerFixtureJFileChooserLookupTest extends RobotBasedTestCase {
   }
 
   private void assertCorrectJFileChooserWasFound(JFileChooserFixture fileChooser) {
-    assertThat(fileChooser.component()).isSameAs(window.fileChooser());
+    assertThat(fileChooser.target()).isSameAs(window.fileChooser());
   }
 
   @Test

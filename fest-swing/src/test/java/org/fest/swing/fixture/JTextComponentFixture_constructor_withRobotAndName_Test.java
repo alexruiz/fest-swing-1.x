@@ -45,7 +45,7 @@ public class JTextComponentFixture_constructor_withRobotAndName_Test extends Rob
     robot.showWindow(window);
     JTextComponentFixture fixture = new JTextComponentFixture(robot, "textField");
     assertThat(fixture.robot).isSameAs(robot);
-    assertThat(fixture.component()).isSameAs(window.textField);
+    assertThat(fixture.target()).isSameAs(window.textField);
   }
 
   @Test(expected = ComponentLookupException.class)

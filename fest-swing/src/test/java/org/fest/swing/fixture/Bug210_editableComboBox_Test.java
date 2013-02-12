@@ -56,8 +56,8 @@ public class Bug210_editableComboBox_Test extends RobotBasedTestCase {
     JComboBoxFixture comboBox = dialog.comboBox("cb");
     comboBox.requireSelection("hat");
     comboBox.enterText(ADDED_STRING);
-    setSelectedItem(comboBox.component(), ADDED_STRING);
-    assertThat(selectedItemOf(comboBox.component())).isEqualTo(ADDED_STRING);
+    setSelectedItem(comboBox.target(), ADDED_STRING);
+    assertThat(selectedItemOf(comboBox.target())).isEqualTo(ADDED_STRING);
     comboBox.requireSelection(ADDED_STRING);
   }
 

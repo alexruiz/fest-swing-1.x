@@ -322,7 +322,7 @@ public class JTableFixtureTest extends JTableFixture_TestCase {
       @Override
       protected void codeToTest() {
         JPopupMenuFixture result = fixture().showPopupMenuAt(cell);
-        assertThat(result.component()).isSameAs(popup);
+        assertThat(result.target()).isSameAs(popup);
       }
     }.run();
   }
@@ -339,7 +339,7 @@ public class JTableFixtureTest extends JTableFixture_TestCase {
       @Override
       protected void codeToTest() {
         JTableHeaderFixture tableHeader = fixture().tableHeader();
-        assertThat(tableHeader.component()).isSameAs(header);
+        assertThat(tableHeader.target()).isSameAs(header);
       }
     }.run();
   }

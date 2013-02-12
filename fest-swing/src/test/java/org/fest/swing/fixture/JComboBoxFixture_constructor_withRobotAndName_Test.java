@@ -45,7 +45,7 @@ public class JComboBoxFixture_constructor_withRobotAndName_Test extends RobotBas
     robot.showWindow(window);
     JComboBoxFixture fixture = new JComboBoxFixture(robot, "comboBox");
     assertThat(fixture.robot).isSameAs(robot);
-    assertThat(fixture.component()).isSameAs(window.comboBox);
+    assertThat(fixture.target()).isSameAs(window.comboBox);
   }
 
   @Test(expected = ComponentLookupException.class)

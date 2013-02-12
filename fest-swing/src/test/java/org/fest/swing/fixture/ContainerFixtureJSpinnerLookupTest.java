@@ -98,7 +98,7 @@ public class ContainerFixtureJSpinnerLookupTest extends RobotBasedTestCase {
   }
 
   private void assertThatFixtureHasCorrectJSpinner(JSpinnerFixture spinnerFixture) {
-    assertThat(spinnerFixture.component()).isSameAs(window.spinner);
+    assertThat(spinnerFixture.target()).isSameAs(window.spinner);
   }
 
   @Test

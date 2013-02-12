@@ -35,7 +35,7 @@ public class DialogFixture_constructor_withRobotAndName_Test extends RobotBasedT
     Dialog target = dialog().withName("dialog").withTitle(getClass().getSimpleName()).createAndShow();
     DialogFixture fixture = new DialogFixture(robot, "dialog");
     assertThat(fixture.robot).isSameAs(robot);
-    assertThat(fixture.component()).isSameAs(target);
+    assertThat(fixture.target()).isSameAs(target);
   }
 
   @Test(expected = ComponentLookupException.class)

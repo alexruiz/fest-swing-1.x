@@ -46,7 +46,7 @@ public class JMenuItemFixture_constructor_withRobotAndName_Test extends RobotBas
     robot.showWindow(window);
     JMenuItemFixture fixture = new JMenuItemFixture(robot, "saveMenuItem");
     assertThat(fixture.robot).isSameAs(robot);
-    assertThat(fixture.component()).isSameAs(window.menuItem);
+    assertThat(fixture.target()).isSameAs(window.menuItem);
   }
 
   @Test(expected = ComponentLookupException.class)

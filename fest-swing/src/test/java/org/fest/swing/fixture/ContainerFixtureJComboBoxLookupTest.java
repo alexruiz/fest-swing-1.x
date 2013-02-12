@@ -98,7 +98,7 @@ public class ContainerFixtureJComboBoxLookupTest extends RobotBasedTestCase {
   }
 
   private void assertThatFixtureHasCorrectJComboBox(JComboBoxFixture comboBoxFixture) {
-    assertThat(comboBoxFixture.component()).isSameAs(window.comboBox);
+    assertThat(comboBoxFixture.target()).isSameAs(window.comboBox);
   }
 
   @Test

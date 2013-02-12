@@ -1,15 +1,15 @@
 /*
  * Created on Aug 25, 2007
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
- * 
+ *
  * Copyright @2007-2013 the original author or authors.
  */
 package org.fest.swing.test.swing;
@@ -17,6 +17,7 @@ package org.fest.swing.test.swing;
 import static javax.swing.ListSelectionModel.MULTIPLE_INTERVAL_SELECTION;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.edt.GuiActionRunner.execute;
+import static org.fest.util.Lists.newArrayList;
 
 import java.util.List;
 
@@ -26,7 +27,6 @@ import javax.swing.JList;
 import org.fest.swing.annotation.RunsInCurrentThread;
 import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
-import org.fest.util.Collections;
 
 /**
  * Understands a list that:
@@ -36,7 +36,7 @@ import org.fest.util.Collections;
  * </ul>
  * Adapted from the tutorial <a href="http://java.sun.com/docs/books/tutorial/uiswing/dnd/intro.html"
  * target="_blank">Introduction to Drag and Drop and Data Transfer</a>.
- * 
+ *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
@@ -47,7 +47,7 @@ public final class TestList extends JList {
 
   @RunsInCurrentThread
   public TestList(String... elements) {
-    this(null, Collections.list(elements));
+    this(null, newArrayList(elements));
   }
 
   @RunsInCurrentThread

@@ -440,7 +440,7 @@ public class JTreeFixtureTest extends JTreeFixture_TestCase {
       @Override
       protected void codeToTest() {
         JPopupMenuFixture showPopupMenuFixture = fixture().showPopupMenuAt(row);
-        assertThat(showPopupMenuFixture.component()).isSameAs(popupMenu);
+        assertThat(showPopupMenuFixture.target()).isSameAs(popupMenu);
       }
     }.run();
   }
@@ -458,7 +458,7 @@ public class JTreeFixtureTest extends JTreeFixture_TestCase {
       @Override
       protected void codeToTest() {
         JPopupMenuFixture showPopupMenuFixture = fixture().showPopupMenuAt(path);
-        assertThat(showPopupMenuFixture.component()).isSameAs(popupMenu);
+        assertThat(showPopupMenuFixture.target()).isSameAs(popupMenu);
       }
     }.run();
   }

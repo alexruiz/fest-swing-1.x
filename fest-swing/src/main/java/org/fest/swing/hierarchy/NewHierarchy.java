@@ -1,15 +1,15 @@
 /*
  * Created on Oct 31, 2007
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
- * 
+ *
  * Copyright @2007-2013 the original author or authors.
  */
 package org.fest.swing.hierarchy;
@@ -37,13 +37,13 @@ import org.fest.util.VisibleForTesting;
  * hierarchy. Existing AWT or Swing {@code Component}s (and any subsequently generated sub-windows) are ignored by
  * default.
  * </p>
- * 
+ *
  * <p>
  * Implicitly auto-filters {@code Window}s which are disposed (i.e. generates a {@code WindowEvent#WINDOW_CLOSED}
  * event), but also implicitly un-filters them if they should be shown again. Any {@code Window} explicitly disposed by
  * the calling {@link ComponentHierarchy#dispose(java.awt.Window)} will be ignored permanently.
  * </p>
- * 
+ *
  * @author Alex Ruiz
  */
 public class NewHierarchy extends ExistingHierarchy {
@@ -52,7 +52,7 @@ public class NewHierarchy extends ExistingHierarchy {
 
   /**
    * Creates a new {@link NewHierarchy} which does not contain any existing AWT or Swing {@code Component}s.
-   * 
+   *
    * @return the created hierarchy.
    */
   public static @Nonnull NewHierarchy ignoreExistingComponents() {
@@ -61,7 +61,7 @@ public class NewHierarchy extends ExistingHierarchy {
 
   /**
    * Creates a new {@link NewHierarchy} which contains existing AWT or Swing {@code Component}s.
-   * 
+   *
    * @return the created hierarchy.
    */
   public static @Nonnull NewHierarchy includeExistingComponents() {
@@ -98,7 +98,7 @@ public class NewHierarchy extends ExistingHierarchy {
    * Makes all currently existing AWT and Swing {@code Component} invisible to this hierarchy, without affecting their
    * current state.
    * </p>
-   * 
+   *
    * <p>
    * <b>Note:</b> This method is accessed in the current executing thread. Such thread may or may not be the event
    * dispatch thread (EDT.) Client code must call this method from the EDT.
@@ -117,12 +117,12 @@ public class NewHierarchy extends ExistingHierarchy {
    * <p>
    * Make the given AWT or Swing {@code Component} visible to this hierarchy.
    * </p>
-   * 
+   *
    * <p>
    * <b>Note:</b> This method is accessed in the current executing thread. Such thread may or may not be the event
    * dispatch thread (EDT.) Client code must call this method from the EDT.
    * </p>
-   * 
+   *
    * @param c the given {@code Component}.
    */
   @RunsInCurrentThread
@@ -134,12 +134,12 @@ public class NewHierarchy extends ExistingHierarchy {
    * <p>
    * Returns all the children of the given AWT or Swing {@code Component}, omitting those which are currently filtered.
    * </p>
-   * 
+   *
    * <p>
    * <b>Note:</b> This method is accessed in the current executing thread. Such thread may or may not be the event
    * dispatch thread (EDT.) Client code must call this method from the EDT.
    * </p>
-   * 
+   *
    * @param c the given {@code Component}.
    * @return all the children of the given {@code Component}, omitting those which are currently filtered.
    */
@@ -160,12 +160,12 @@ public class NewHierarchy extends ExistingHierarchy {
    * <p>
    * Returns {@code true} if the given AWT or Swing {@code Component} is not ignored.
    * </p>
-   * 
+   *
    * <p>
    * <b>Note:</b> This method is accessed in the current executing thread. Such thread may or may not be the event
    * dispatch thread (EDT.) Client code must call this method from the EDT.
    * </p>
-   * 
+   *
    * @param c the given {@code Component}.
    * @return {@code true} if the given {@code Component} is not ignored, {@code false} otherwise.
    */
@@ -180,12 +180,12 @@ public class NewHierarchy extends ExistingHierarchy {
    * Disposes the given {@code Window}, but only if it currently exists within the hierarchy. It will no longer appear
    * in this hierarchy or be reachable in a hierarchy walk.
    * </p>
-   * 
+   *
    * <p>
    * <b>Note:</b> This method is accessed in the current executing thread. Such thread may or may not be the event
    * dispatch thread (EDT.) Client code must call this method from the EDT.
    * </p>
-   * 
+   *
    * @param w the {@code Window} to dispose.
    */
   @RunsInCurrentThread
@@ -202,8 +202,8 @@ public class NewHierarchy extends ExistingHierarchy {
    * @return all available root containers, excluding those which have been filtered.
    */
   @Override
-  public @Nonnull Collection<? extends Container> roots() {
-    Collection<? extends Container> roots = super.roots();
+  public @Nonnull Collection<Container> roots() {
+    Collection<Container> roots = super.roots();
     roots.removeAll(filter.filtered());
     return roots;
   }

@@ -35,7 +35,7 @@ public class FrameFixture_constructor_withRobotAndName_Test extends RobotBasedTe
     Frame target = frame().withName("frame").withTitle(getClass().getSimpleName()).createAndShow();
     FrameFixture fixture = new FrameFixture(robot, "frame");
     assertThat(fixture.robot).isSameAs(robot);
-    assertThat(fixture.component()).isSameAs(target);
+    assertThat(fixture.target()).isSameAs(target);
   }
 
   @Test(expected = ComponentLookupException.class)

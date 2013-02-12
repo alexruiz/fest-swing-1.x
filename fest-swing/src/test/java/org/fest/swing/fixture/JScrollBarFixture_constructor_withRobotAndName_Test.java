@@ -45,7 +45,7 @@ public class JScrollBarFixture_constructor_withRobotAndName_Test extends RobotBa
     robot.showWindow(window);
     JScrollBarFixture fixture = new JScrollBarFixture(robot, "scrollBar");
     assertThat(fixture.robot).isSameAs(robot);
-    assertThat(fixture.component()).isSameAs(window.scrollBar);
+    assertThat(fixture.target()).isSameAs(window.scrollBar);
   }
 
   @Test(expected = ComponentLookupException.class)

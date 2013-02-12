@@ -48,7 +48,7 @@ public class JScrollPaneFixture_constructor_withRobotAndName_Test extends RobotB
     robot.showWindow(window);
     JScrollPaneFixture fixture = new JScrollPaneFixture(robot, "scrollPane");
     assertThat(fixture.robot).isSameAs(robot);
-    assertThat(fixture.component()).isSameAs(window.scrollPane);
+    assertThat(fixture.target()).isSameAs(window.scrollPane);
   }
 
   @Test(expected = ComponentLookupException.class)

@@ -44,7 +44,7 @@ public class JButtonFixture_constructor_withRobotAndName_Test extends RobotBased
     robot.showWindow(window);
     JButtonFixture fixture = new JButtonFixture(robot, "button");
     assertThat(fixture.robot).isSameAs(robot);
-    assertThat(fixture.component()).isSameAs(window.button);
+    assertThat(fixture.target()).isSameAs(window.button);
   }
 
   @Test(expected = ComponentLookupException.class)

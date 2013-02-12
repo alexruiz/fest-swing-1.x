@@ -101,7 +101,7 @@ public class ContainerFixtureJScrollPaneLookupTest extends RobotBasedTestCase {
   }
 
   private void assertThatFixtureHasCorrectJScrollPane(JScrollPaneFixture scrollPaneFixture) {
-    assertThat(scrollPaneFixture.component()).isSameAs(window.scrollPane);
+    assertThat(scrollPaneFixture.target()).isSameAs(window.scrollPane);
   }
 
   @Test

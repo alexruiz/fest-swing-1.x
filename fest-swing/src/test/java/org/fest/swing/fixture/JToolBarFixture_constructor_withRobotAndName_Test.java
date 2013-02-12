@@ -49,7 +49,7 @@ public class JToolBarFixture_constructor_withRobotAndName_Test extends RobotBase
     robot.showWindow(window);
     JToolBarFixture fixture = new JToolBarFixture(robot, "toolBar");
     assertThat(fixture.robot).isSameAs(robot);
-    assertThat(fixture.component()).isSameAs(window.toolBar);
+    assertThat(fixture.target()).isSameAs(window.toolBar);
   }
 
   @Test(expected = ComponentLookupException.class)

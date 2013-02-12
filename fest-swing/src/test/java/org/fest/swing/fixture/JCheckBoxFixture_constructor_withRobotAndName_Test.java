@@ -44,7 +44,7 @@ public class JCheckBoxFixture_constructor_withRobotAndName_Test extends RobotBas
     robot.showWindow(window);
     JCheckBoxFixture fixture = new JCheckBoxFixture(robot, "checkBox");
     assertThat(fixture.robot).isSameAs(robot);
-    assertThat(fixture.component()).isSameAs(window.checkBox);
+    assertThat(fixture.target()).isSameAs(window.checkBox);
   }
 
   @Test(expected = ComponentLookupException.class)

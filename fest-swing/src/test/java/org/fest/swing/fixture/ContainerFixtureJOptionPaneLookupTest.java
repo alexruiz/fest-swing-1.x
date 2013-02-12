@@ -65,7 +65,7 @@ public class ContainerFixtureJOptionPaneLookupTest extends RobotBasedTestCase {
   }
 
   private void assertCorrectJOptionPaneWasFound(JOptionPaneFixture optionPane) {
-    assertThat(optionPane.component()).isNotNull();
+    assertThat(optionPane.target()).isNotNull();
   }
 
   private void assertErrorMessageIsCorrect(WaitTimedOutError e) {

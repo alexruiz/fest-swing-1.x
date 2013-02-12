@@ -101,7 +101,7 @@ public class ContainerFixtureJToolBarLookupTest extends RobotBasedTestCase {
   }
 
   private void assertThatFixtureHasCorrectJToolBar(JToolBarFixture toolBarFixture) {
-    assertThat(toolBarFixture.component()).isSameAs(window.toolBar);
+    assertThat(toolBarFixture.target()).isSameAs(window.toolBar);
   }
 
   @Test

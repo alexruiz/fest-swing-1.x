@@ -49,7 +49,7 @@ public class JTableFixture_constructor_withRobotAndName_Test extends RobotBasedT
     robot.showWindow(window);
     JTableFixture fixture = new JTableFixture(robot, "table");
     assertThat(fixture.robot).isSameAs(robot);
-    assertThat(fixture.component()).isSameAs(window.table);
+    assertThat(fixture.target()).isSameAs(window.table);
   }
 
   @Test(expected = ComponentLookupException.class)

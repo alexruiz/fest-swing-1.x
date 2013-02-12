@@ -539,7 +539,7 @@ public class JListFixtureTest extends JListFixture_TestCase {
       @Override
       protected void codeToTest() {
         JPopupMenuFixture result = fixture().showPopupMenuAt(6);
-        assertThat(result.component()).isSameAs(popup);
+        assertThat(result.target()).isSameAs(popup);
       }
     }.run();
   }
@@ -556,7 +556,7 @@ public class JListFixtureTest extends JListFixture_TestCase {
       @Override
       protected void codeToTest() {
         JPopupMenuFixture result = fixture().showPopupMenuAt("Frodo");
-        assertThat(result.component()).isSameAs(popup);
+        assertThat(result.target()).isSameAs(popup);
       }
     }.run();
   }
@@ -574,7 +574,7 @@ public class JListFixtureTest extends JListFixture_TestCase {
       @Override
       protected void codeToTest() {
         JPopupMenuFixture result = fixture().showPopupMenuAt(pattern);
-        assertThat(result.component()).isSameAs(popup);
+        assertThat(result.target()).isSameAs(popup);
       }
     }.run();
   }

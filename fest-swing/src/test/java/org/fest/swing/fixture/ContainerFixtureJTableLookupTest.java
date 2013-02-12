@@ -97,7 +97,7 @@ public class ContainerFixtureJTableLookupTest extends RobotBasedTestCase {
   }
 
   private void assertThatFixtureHasCorrectJTable(JTableFixture tableFixture) {
-    assertThat(tableFixture.component()).isSameAs(window.table);
+    assertThat(tableFixture.target()).isSameAs(window.table);
   }
 
   @Test

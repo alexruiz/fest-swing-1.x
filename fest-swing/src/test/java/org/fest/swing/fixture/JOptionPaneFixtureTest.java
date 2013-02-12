@@ -134,7 +134,7 @@ public class JOptionPaneFixtureTest extends JOptionPaneFixture_TestCase {
       @Override
       protected void codeToTest() {
         JButtonFixture result = fixture().okButton();
-        assertThat(result.component()).isSameAs(button);
+        assertThat(result.target()).isSameAs(button);
       }
     }.run();
   }
@@ -150,7 +150,7 @@ public class JOptionPaneFixtureTest extends JOptionPaneFixture_TestCase {
       @Override
       protected void codeToTest() {
         JButtonFixture result = fixture().cancelButton();
-        assertThat(result.component()).isSameAs(button);
+        assertThat(result.target()).isSameAs(button);
       }
     }.run();
   }
@@ -166,7 +166,7 @@ public class JOptionPaneFixtureTest extends JOptionPaneFixture_TestCase {
       @Override
       protected void codeToTest() {
         JButtonFixture result = fixture().yesButton();
-        assertThat(result.component()).isSameAs(button);
+        assertThat(result.target()).isSameAs(button);
       }
     }.run();
   }
@@ -182,7 +182,7 @@ public class JOptionPaneFixtureTest extends JOptionPaneFixture_TestCase {
       @Override
       protected void codeToTest() {
         JButtonFixture result = fixture().noButton();
-        assertThat(result.component()).isSameAs(button);
+        assertThat(result.target()).isSameAs(button);
       }
     }.run();
   }
@@ -198,7 +198,7 @@ public class JOptionPaneFixtureTest extends JOptionPaneFixture_TestCase {
       @Override
       protected void codeToTest() {
         JButtonFixture result = fixture().buttonWithText("A Button");
-        assertThat(result.component()).isSameAs(button);
+        assertThat(result.target()).isSameAs(button);
       }
     }.run();
   }
@@ -215,7 +215,7 @@ public class JOptionPaneFixtureTest extends JOptionPaneFixture_TestCase {
       @Override
       protected void codeToTest() {
         JButtonFixture result = fixture().buttonWithText(p);
-        assertThat(result.component()).isSameAs(button);
+        assertThat(result.target()).isSameAs(button);
       }
     }.run();
   }

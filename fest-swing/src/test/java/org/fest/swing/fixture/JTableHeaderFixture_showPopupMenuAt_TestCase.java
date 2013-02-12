@@ -35,7 +35,7 @@ public abstract class JTableHeaderFixture_showPopupMenuAt_TestCase extends JTabl
   }
 
   final void assertThatJPopupMenuWasShown(JPopupMenuFixture fixture) {
-    assertThat(fixture.component()).isSameAs(popupMenu);
+    assertThat(fixture.target()).isSameAs(popupMenu);
   }
 
   final JPopupMenu popupMenu() {

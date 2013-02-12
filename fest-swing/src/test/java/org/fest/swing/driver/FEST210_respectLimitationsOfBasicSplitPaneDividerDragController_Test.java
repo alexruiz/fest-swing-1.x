@@ -1,6 +1,6 @@
 /*
  * Created on Nov 25, 2009
- * 
+ *
  * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.driver;
@@ -10,6 +10,7 @@ import static javax.swing.JSplitPane.VERTICAL_SPLIT;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.edt.GuiActionRunner.execute;
 import static org.fest.swing.query.ComponentSizeQuery.sizeOf;
+import static org.fest.util.Lists.newArrayList;
 
 import java.awt.Dimension;
 import java.util.Collection;
@@ -20,7 +21,6 @@ import javax.swing.JSplitPane;
 import org.fest.swing.edt.GuiQuery;
 import org.fest.swing.test.core.RobotBasedTestCase;
 import org.fest.swing.test.swing.TestWindow;
-import org.fest.util.Collections;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -28,7 +28,7 @@ import org.junit.runners.Parameterized.Parameters;
 
 /**
  * Test case for bug <a href="http://jira.codehaus.org/browse/FEST-210" target="_blank">FEST-210</a>
- * 
+ *
  * @author Alex Ruiz
  */
 @RunWith(Parameterized.class)
@@ -42,7 +42,10 @@ public class FEST210_respectLimitationsOfBasicSplitPaneDividerDragController_Tes
 
   @Parameters
   public static Collection<Object[]> orientations() {
-    return Collections.list(new Object[][] { { VERTICAL_SPLIT }, { HORIZONTAL_SPLIT } });
+    return newArrayList(new Object[][] {
+        { VERTICAL_SPLIT },
+        { HORIZONTAL_SPLIT }
+      });
   }
 
   public FEST210_respectLimitationsOfBasicSplitPaneDividerDragController_Test(int orientation) {

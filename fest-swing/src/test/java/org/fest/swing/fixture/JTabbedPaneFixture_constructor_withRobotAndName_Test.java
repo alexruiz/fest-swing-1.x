@@ -47,7 +47,7 @@ public class JTabbedPaneFixture_constructor_withRobotAndName_Test extends RobotB
     robot.showWindow(window);
     JTabbedPaneFixture fixture = new JTabbedPaneFixture(robot, "tabbedPane");
     assertThat(fixture.robot).isSameAs(robot);
-    assertThat(fixture.component()).isSameAs(window.tabbedPane);
+    assertThat(fixture.target()).isSameAs(window.tabbedPane);
   }
 
   @Test(expected = ComponentLookupException.class)

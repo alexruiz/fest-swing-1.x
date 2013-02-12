@@ -43,7 +43,7 @@ public abstract class ContainerFixture_checkBox_TestCase extends RobotBasedTestC
   }
 
   final void assertThatJCheckBoxWasFound(JCheckBoxFixture f) {
-    assertThat(f.component()).isSameAs(window.checkBox);
+    assertThat(f.target()).isSameAs(window.checkBox);
   }
 
   private static class MyWindow extends TestWindow {

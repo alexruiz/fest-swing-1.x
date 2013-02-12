@@ -98,7 +98,7 @@ public class ContainerFixtureJSliderLookupTest extends RobotBasedTestCase {
   }
 
   private void assertThatFixtureHasCorrectJSlider(JSliderFixture sliderFixture) {
-    assertThat(sliderFixture.component()).isSameAs(window.slider);
+    assertThat(sliderFixture.target()).isSameAs(window.slider);
   }
 
   @Test

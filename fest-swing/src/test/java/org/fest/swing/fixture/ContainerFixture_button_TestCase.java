@@ -43,7 +43,7 @@ public abstract class ContainerFixture_button_TestCase extends RobotBasedTestCas
   }
 
   final void assertThatJButtonWasFound(JButtonFixture f) {
-    assertThat(f.component()).isSameAs(window.button);
+    assertThat(f.target()).isSameAs(window.button);
   }
 
   static class MyWindow extends TestWindow {

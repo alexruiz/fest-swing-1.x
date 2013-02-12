@@ -98,7 +98,7 @@ public class ContainerFixtureJTreeLookupTest extends RobotBasedTestCase {
   }
 
   private void assertThatFixtureHasCorrectJTree(JTreeFixture treeFixture) {
-    assertThat(treeFixture.component()).isSameAs(window.tree);
+    assertThat(treeFixture.target()).isSameAs(window.tree);
   }
 
   @Test

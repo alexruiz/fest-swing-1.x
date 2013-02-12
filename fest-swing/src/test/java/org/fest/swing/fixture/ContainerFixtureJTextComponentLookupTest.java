@@ -98,7 +98,7 @@ public class ContainerFixtureJTextComponentLookupTest extends RobotBasedTestCase
   }
 
   private void assertThatFixtureHasCorrectJTextComponent(JTextComponentFixture textBoxFixture) {
-    assertThat(textBoxFixture.component()).isSameAs(window.textBox);
+    assertThat(textBoxFixture.target()).isSameAs(window.textBox);
   }
 
   @Test

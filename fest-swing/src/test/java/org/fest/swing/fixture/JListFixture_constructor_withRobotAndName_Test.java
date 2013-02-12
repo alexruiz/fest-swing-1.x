@@ -47,7 +47,7 @@ public class JListFixture_constructor_withRobotAndName_Test extends RobotBasedTe
     robot.showWindow(window);
     JListFixture fixture = new JListFixture(robot, "list");
     assertThat(fixture.robot).isSameAs(robot);
-    assertThat(fixture.component()).isSameAs(window.list);
+    assertThat(fixture.target()).isSameAs(window.list);
   }
 
   @Test(expected = ComponentLookupException.class)

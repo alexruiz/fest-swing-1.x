@@ -42,7 +42,7 @@ public class JScrollPaneFixtureTest extends JScrollPaneFixture_TestCase {
       @Override
       protected void codeToTest() {
         JScrollBarFixture horizontalScrollBar = fixture().horizontalScrollBar();
-        assertThat(horizontalScrollBar.component()).isSameAs(scrollBar);
+        assertThat(horizontalScrollBar.target()).isSameAs(scrollBar);
       }
     }.run();
   }
@@ -59,7 +59,7 @@ public class JScrollPaneFixtureTest extends JScrollPaneFixture_TestCase {
       @Override
       protected void codeToTest() {
         JScrollBarFixture verticalScrollBar = fixture().verticalScrollBar();
-        assertThat(verticalScrollBar.component()).isSameAs(scrollBar);
+        assertThat(verticalScrollBar.target()).isSameAs(scrollBar);
       }
     }.run();
   }

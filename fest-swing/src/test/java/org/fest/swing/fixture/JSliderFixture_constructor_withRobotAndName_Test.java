@@ -44,7 +44,7 @@ public class JSliderFixture_constructor_withRobotAndName_Test extends RobotBased
     robot.showWindow(window);
     JSliderFixture fixture = new JSliderFixture(robot, "slider");
     assertThat(fixture.robot).isSameAs(robot);
-    assertThat(fixture.component()).isSameAs(window.slider);
+    assertThat(fixture.target()).isSameAs(window.slider);
   }
 
   @Test(expected = ComponentLookupException.class)

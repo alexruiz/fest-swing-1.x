@@ -42,7 +42,7 @@ public class ContainerFixture_dialog_TestCase extends RobotBasedTestCase {
   }
 
   final void assertThatDialogWasFound(DialogFixture f) {
-    assertThat(f.component()).isInstanceOf(DialogToLaunch.class);
+    assertThat(f.target()).isInstanceOf(DialogToLaunch.class);
   }
 
   final void assertThatErrorMessageIsCorrect(WaitTimedOutError e) {

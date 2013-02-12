@@ -60,7 +60,7 @@ public class JPopupMenuFixtureTest extends JPopupMenuFixture_TestCase {
       @Override
       protected void codeToTest() {
         JMenuItemFixture result = fixture().menuItem("menuItem");
-        assertThat(result.component()).isSameAs(menuItem);
+        assertThat(result.target()).isSameAs(menuItem);
       }
     }.run();
   }
@@ -79,7 +79,7 @@ public class JPopupMenuFixtureTest extends JPopupMenuFixture_TestCase {
       @Override
       protected void codeToTest() {
         JMenuItemFixture result = fixture().menuItem(matcher);
-        assertThat(result.component()).isSameAs(menuItem);
+        assertThat(result.target()).isSameAs(menuItem);
       }
     }.run();
   }

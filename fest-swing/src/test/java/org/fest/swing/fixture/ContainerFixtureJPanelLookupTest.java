@@ -100,7 +100,7 @@ public class ContainerFixtureJPanelLookupTest extends RobotBasedTestCase {
   }
 
   private void assertThatFixtureHasCorrectJPanel(JPanelFixture panelFixture) {
-    assertThat(panelFixture.component()).isSameAs(window.panel);
+    assertThat(panelFixture.target()).isSameAs(window.panel);
   }
 
   @Test

@@ -100,7 +100,7 @@ public class ContainerFixtureJTabbedPaneLookupTest extends RobotBasedTestCase {
   }
 
   private void assertThatFixtureHasCorrectJTabbedPane(JTabbedPaneFixture tabbedPaneFixture) {
-    assertThat(tabbedPaneFixture.component()).isSameAs(window.tabbedPane);
+    assertThat(tabbedPaneFixture.target()).isSameAs(window.tabbedPane);
   }
 
   @Test

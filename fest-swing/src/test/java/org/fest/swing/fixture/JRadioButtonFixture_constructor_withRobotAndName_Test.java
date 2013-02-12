@@ -44,7 +44,7 @@ public class JRadioButtonFixture_constructor_withRobotAndName_Test extends Robot
     robot.showWindow(window);
     JRadioButtonFixture fixture = new JRadioButtonFixture(robot, "radioButton");
     assertThat(fixture.robot).isSameAs(robot);
-    assertThat(fixture.component()).isSameAs(window.radioButton);
+    assertThat(fixture.target()).isSameAs(window.radioButton);
   }
 
   @Test(expected = ComponentLookupException.class)

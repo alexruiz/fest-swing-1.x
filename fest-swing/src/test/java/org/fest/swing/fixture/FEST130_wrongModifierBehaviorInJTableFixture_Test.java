@@ -79,7 +79,7 @@ public class FEST130_wrongModifierBehaviorInJTableFixture_Test extends RobotBase
 
   @RunsInEDT
   private int[] selectedRowsInTable() {
-    return selectedRowsIn(table.component());
+    return selectedRowsIn(table.target());
   }
 
   @RunsInEDT

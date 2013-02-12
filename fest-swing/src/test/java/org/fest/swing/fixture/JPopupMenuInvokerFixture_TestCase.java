@@ -53,7 +53,7 @@ ComponentFixture_Implementations_TestCase<T> {
       protected void codeToTest() {
         JPopupMenuFixture popupMenuFixture = fixture().showPopupMenu();
         assertThat(popupMenuFixture.robot).isSameAs(robot());
-        assertThat(popupMenuFixture.component()).isSameAs(popupMenu);
+        assertThat(popupMenuFixture.target()).isSameAs(popupMenu);
       }
     }.run();
   }
@@ -72,7 +72,7 @@ ComponentFixture_Implementations_TestCase<T> {
       protected void codeToTest() {
         JPopupMenuFixture popupMenuFixture = fixture().showPopupMenuAt(p);
         assertThat(popupMenuFixture.robot).isSameAs(robot());
-        assertThat(popupMenuFixture.component()).isSameAs(popupMenu);
+        assertThat(popupMenuFixture.target()).isSameAs(popupMenu);
       }
     }.run();
   }

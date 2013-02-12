@@ -42,7 +42,7 @@ public class JInternalFrameFixture_constructor_withRobotAndName_Test extends Rob
     robot.showWindow(window);
     JInternalFrameFixture fixture = new JInternalFrameFixture(robot, "internalFrame");
     assertThat(fixture.robot).isSameAs(robot);
-    assertThat(fixture.component()).isSameAs(window.internalFrame());
+    assertThat(fixture.target()).isSameAs(window.internalFrame());
   }
 
   @Test(expected = ComponentLookupException.class)

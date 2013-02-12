@@ -47,7 +47,7 @@ public class JFileChooserFixtureTest extends JFileChooserFixture_TestCase {
       @Override
       protected void codeToTest() {
         JTextComponentFixture result = fixture().fileNameTextBox();
-        assertThat(result.component()).isSameAs(fileNameTextBox);
+        assertThat(result.target()).isSameAs(fileNameTextBox);
       }
     }.run();
   }
@@ -80,7 +80,7 @@ public class JFileChooserFixtureTest extends JFileChooserFixture_TestCase {
       @Override
       protected void codeToTest() {
         JButtonFixture result = fixture().approveButton();
-        assertThat(result.component()).isSameAs(approveButton);
+        assertThat(result.target()).isSameAs(approveButton);
       }
     }.run();
   }
@@ -113,7 +113,7 @@ public class JFileChooserFixtureTest extends JFileChooserFixture_TestCase {
       @Override
       protected void codeToTest() {
         JButtonFixture result = fixture().cancelButton();
-        assertThat(result.component()).isSameAs(cancelButton);
+        assertThat(result.target()).isSameAs(cancelButton);
       }
     }.run();
   }

@@ -44,7 +44,7 @@ public class JToggleButtonFixture_constructor_withRobotAndName_Test extends Robo
     robot.showWindow(window);
     JToggleButtonFixture fixture = new JToggleButtonFixture(robot, "toggleButton");
     assertThat(fixture.robot).isSameAs(robot);
-    assertThat(fixture.component()).isSameAs(window.toggleButton);
+    assertThat(fixture.target()).isSameAs(window.toggleButton);
   }
 
   @Test(expected = ComponentLookupException.class)

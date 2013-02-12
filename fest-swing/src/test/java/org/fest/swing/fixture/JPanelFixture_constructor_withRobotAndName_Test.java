@@ -44,7 +44,7 @@ public class JPanelFixture_constructor_withRobotAndName_Test extends RobotBasedT
     robot.showWindow(window);
     JPanelFixture fixture = new JPanelFixture(robot, "panel");
     assertThat(fixture.robot).isSameAs(robot);
-    assertThat(fixture.component()).isSameAs(window.panel);
+    assertThat(fixture.target()).isSameAs(window.panel);
   }
 
   @Test(expected = ComponentLookupException.class)

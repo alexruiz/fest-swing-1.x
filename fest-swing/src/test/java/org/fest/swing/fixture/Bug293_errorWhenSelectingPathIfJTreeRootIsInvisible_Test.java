@@ -42,7 +42,7 @@ public class Bug293_errorWhenSelectingPathIfJTreeRootIsInvisible_Test extends Ro
     robot.showWindow(window);
     JTreeFixture treeFixture = new JTreeFixture(robot, window.tree);
     treeFixture.selectPath("node1/node11/node111");
-    Object selection = treeFixture.component().getSelectionPath().getLastPathComponent();
+    Object selection = treeFixture.target().getSelectionPath().getLastPathComponent();
     assertThat(selection).isSameAs(window.nodeToSelect);
   }
 
@@ -52,7 +52,7 @@ public class Bug293_errorWhenSelectingPathIfJTreeRootIsInvisible_Test extends Ro
     robot.showWindow(window);
     JTreeFixture treeFixture = new JTreeFixture(robot, window.tree);
     treeFixture.selectPath("root/node1/node11/node111");
-    Object selection = treeFixture.component().getSelectionPath().getLastPathComponent();
+    Object selection = treeFixture.target().getSelectionPath().getLastPathComponent();
     assertThat(selection).isSameAs(window.nodeToSelect);
   }
 

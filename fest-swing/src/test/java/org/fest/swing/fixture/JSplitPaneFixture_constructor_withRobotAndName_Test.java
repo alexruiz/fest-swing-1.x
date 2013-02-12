@@ -46,7 +46,7 @@ public class JSplitPaneFixture_constructor_withRobotAndName_Test extends RobotBa
     robot.showWindow(window);
     JSplitPaneFixture fixture = new JSplitPaneFixture(robot, "splitPane");
     assertThat(fixture.robot).isSameAs(robot);
-    assertThat(fixture.component()).isSameAs(window.splitPane);
+    assertThat(fixture.target()).isSameAs(window.splitPane);
   }
 
   @Test(expected = ComponentLookupException.class)

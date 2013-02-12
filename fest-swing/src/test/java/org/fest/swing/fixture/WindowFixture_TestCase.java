@@ -51,7 +51,7 @@ public abstract class WindowFixture_TestCase {
   }
 
   static void assertThatFixtureHandlesWindow(AbstractWindowFixture<?> f, MyWindow w) {
-    assertThat(f.component()).isSameAs(w);
+    assertThat(f.target()).isSameAs(w);
   }
 
   static class MyWindow extends TestWindow {

@@ -97,7 +97,7 @@ public class ContainerFixtureJRadioButtonLookupTest extends RobotBasedTestCase {
   }
 
   private void assertThatFixtureHasCorrectJRadioButton(JRadioButtonFixture radioButtonFixture) {
-    assertThat(radioButtonFixture.component()).isSameAs(window.radioButton);
+    assertThat(radioButtonFixture.target()).isSameAs(window.radioButton);
   }
 
   @Test

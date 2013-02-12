@@ -101,7 +101,7 @@ public class ContainerFixtureJSplitPaneLookupTest extends RobotBasedTestCase {
   }
 
   private void assertThatFixtureHasCorrectJSplitPane(JSplitPaneFixture splitPaneFixture) {
-    assertThat(splitPaneFixture.component()).isSameAs(window.splitPane);
+    assertThat(splitPaneFixture.target()).isSameAs(window.splitPane);
   }
 
   @Test

@@ -44,6 +44,6 @@ public class DialogFixture_constructor_withName_Test extends EDTSafeTestCase {
     Dialog target = dialog().withName("dialog").withTitle(getClass().getSimpleName()).createAndShow();
     fixture = new DialogFixture("dialog");
     assertThat(fixture.robot).isNotNull();
-    assertThat(fixture.component()).isSameAs(target);
+    assertThat(fixture.target()).isSameAs(target);
   }
 }

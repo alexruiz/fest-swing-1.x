@@ -54,7 +54,7 @@ public class JTreeFixture_constructor_withRobotAndName_Test extends RobotBasedTe
     robot.showWindow(window);
     JTreeFixture fixture = new JTreeFixture(robot, "tree");
     assertThat(fixture.robot).isSameAs(robot);
-    assertThat(fixture.component()).isSameAs(window.tree);
+    assertThat(fixture.target()).isSameAs(window.tree);
   }
 
   @Test(expected = ComponentLookupException.class)

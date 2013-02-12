@@ -97,7 +97,7 @@ public class ContainerFixtureJLabelLookupTest extends RobotBasedTestCase {
   }
 
   private void assertThatFixtureHasCorrectJLabel(JLabelFixture labelFixture) {
-    assertThat(labelFixture.component()).isSameAs(window.label);
+    assertThat(labelFixture.target()).isSameAs(window.label);
   }
 
   @Test

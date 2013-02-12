@@ -1,15 +1,15 @@
 /*
  * Created on Jun 1, 2008
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
- * 
+ *
  * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.core;
@@ -17,6 +17,10 @@ package org.fest.swing.core;
 import static org.fest.swing.core.TestComponentHierarchies.newComponentHierarchyMock;
 import static org.fest.swing.test.builder.JFrames.frame;
 import static org.fest.swing.test.task.WindowDestroyTask.hideAndDisposeInEDT;
+import static org.fest.util.Lists.newArrayList;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.verifyZeroInteractions;
+import static org.mockito.Mockito.when;
 
 import java.awt.Container;
 import java.util.List;
@@ -31,7 +35,7 @@ import org.junit.Test;
 
 /**
  * Test case for <a href="http://code.google.com/p/fest/issues/detail?id=138">Bug 138</a>.
- * 
+ *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
@@ -56,37 +60,15 @@ public class Bug138_disposeWindows_Test extends EDTSafeTestCase {
   @Test
   public void should_dispose_windows() {
     frame = frame().withTitle("Hello").createNew();
-    final List<Container> roots = rootsWith(frame);
-    new EasyMockTemplate(hierarchy) {
-      @Override
-      protected void expectations() {
-        hierarchy.roots();
-        expectLastCall().andReturn(roots);
-        hierarchy.dispose(frame);
-      }
-
-      @Override
-      protected void codeToTest() {
-        robot.cleanUp();
-      }
-    }.run();
-  }
-
-  private static List<Container> rootsWith(Container c) {
-    return list(c);
+    List<Container> roots = newArrayList((Container) frame);
+    when(hierarchy.roots()).thenReturn(roots);
+    robot.cleanUp();
+    verify(hierarchy).dispose(frame);
   }
 
   @Test
   public void should_not_dispose_windows() {
-    new EasyMockTemplate(hierarchy) {
-      @Override
-      protected void expectations() {
-      }
-
-      @Override
-      protected void codeToTest() {
-        robot.cleanUpWithoutDisposingWindows();
-      }
-    }.run();
+    robot.cleanUpWithoutDisposingWindows();
+    verifyZeroInteractions(hierarchy);
   }
 }

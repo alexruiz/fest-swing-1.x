@@ -44,7 +44,7 @@ public class JSpinnerFixture_constructor_withRobotAndName_Test extends RobotBase
     robot.showWindow(window);
     JSpinnerFixture fixture = new JSpinnerFixture(robot, "spinner");
     assertThat(fixture.robot).isSameAs(robot);
-    assertThat(fixture.component()).isSameAs(window.spinner);
+    assertThat(fixture.target()).isSameAs(window.spinner);
   }
 
   @Test(expected = ComponentLookupException.class)

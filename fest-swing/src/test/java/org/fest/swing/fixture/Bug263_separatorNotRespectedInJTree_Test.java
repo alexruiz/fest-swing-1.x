@@ -51,7 +51,7 @@ public class Bug263_separatorNotRespectedInJTree_Test extends RobotBasedTestCase
     treeFixture.separator("*");
     assertThat(treeFixture.separator()).isEqualTo("*");
     treeFixture.selectPath("root*node1*node11*node111");
-    Object selection = treeFixture.component().getSelectionPath().getLastPathComponent();
+    Object selection = treeFixture.target().getSelectionPath().getLastPathComponent();
     assertThat(selection).isSameAs(window.nodeToSelect);
   }
 

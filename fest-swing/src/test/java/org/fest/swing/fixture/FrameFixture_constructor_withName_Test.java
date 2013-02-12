@@ -43,6 +43,6 @@ public class FrameFixture_constructor_withName_Test extends EDTSafeTestCase {
     Frame target = JFrames.frame().withName("frame").withTitle(getClass().getSimpleName()).createAndShow();
     fixture = new FrameFixture("frame");
     assertThat(fixture.robot).isNotNull();
-    assertThat(fixture.component()).isSameAs(target);
+    assertThat(fixture.target()).isSameAs(target);
   }
 }

@@ -1,21 +1,22 @@
 /*
  * Created on Aug 5, 2009
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
- * 
+ *
  * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.core;
 
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.edt.GuiActionRunner.execute;
+import static org.fest.util.Lists.newArrayList;
 
 import java.awt.Component;
 import java.util.Collection;
@@ -32,7 +33,7 @@ import org.junit.Test;
 
 /**
  * Tests for {@link SingleComponentHierarchy#childrenOf(Component)}.
- * 
+ *
  * @author Alex Ruiz
  */
 public class SingleComponentHierarchy_childrenOf_Test extends SingleComponentHierarchy_TestCase {
@@ -56,7 +57,7 @@ public class SingleComponentHierarchy_childrenOf_Test extends SingleComponentHie
 
   @Test
   public void should_return_children_of_Component() {
-    final List<Component> children = list((Component) parent.button);
+    final List<Component> children = newArrayList((Component) parent.button);
     new EasyMockTemplate(hierarchyDelegate) {
       @Override
       protected void expectations() {

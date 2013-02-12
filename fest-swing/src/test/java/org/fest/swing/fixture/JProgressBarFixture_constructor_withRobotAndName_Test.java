@@ -43,7 +43,7 @@ public class JProgressBarFixture_constructor_withRobotAndName_Test extends Robot
     robot.showWindow(window);
     JProgressBarFixture fixture = new JProgressBarFixture(robot, "progressBar");
     assertThat(fixture.robot).isSameAs(robot);
-    assertThat(fixture.component()).isSameAs(window.progressBar);
+    assertThat(fixture.target()).isSameAs(window.progressBar);
   }
 
   @Test(expected = ComponentLookupException.class)

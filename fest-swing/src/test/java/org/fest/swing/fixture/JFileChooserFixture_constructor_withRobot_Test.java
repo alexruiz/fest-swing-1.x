@@ -44,7 +44,7 @@ public class JFileChooserFixture_constructor_withRobot_Test extends RobotBasedTe
     robot.showWindow(window);
     JFileChooserFixture fixture = new JFileChooserFixture(robot);
     assertThat(fixture.robot).isSameAs(robot);
-    assertThat(fixture.component()).isSameAs(window.fileChooser);
+    assertThat(fixture.target()).isSameAs(window.fileChooser);
   }
 
   @Test(expected = ComponentLookupException.class)

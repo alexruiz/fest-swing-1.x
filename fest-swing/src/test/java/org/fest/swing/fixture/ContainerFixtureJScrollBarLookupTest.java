@@ -98,7 +98,7 @@ public class ContainerFixtureJScrollBarLookupTest extends RobotBasedTestCase {
   }
 
   private void assertThatFixtureHasCorrectJScrollBar(JScrollBarFixture scrollBarFixture) {
-    assertThat(scrollBarFixture.component()).isSameAs(window.scrollBar);
+    assertThat(scrollBarFixture.target()).isSameAs(window.scrollBar);
   }
 
   @Test

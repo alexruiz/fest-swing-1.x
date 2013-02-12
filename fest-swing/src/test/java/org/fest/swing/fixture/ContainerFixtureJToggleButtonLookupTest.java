@@ -98,7 +98,7 @@ public class ContainerFixtureJToggleButtonLookupTest extends RobotBasedTestCase 
   }
 
   private void assertThatFixtureHasCorrectJToggleButton(JToggleButtonFixture toggleButtonFixture) {
-    assertThat(toggleButtonFixture.component()).isSameAs(window.toggleButton);
+    assertThat(toggleButtonFixture.target()).isSameAs(window.toggleButton);
   }
 
   @Test
