@@ -23,7 +23,7 @@ import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiTask;
 
 /**
- * Sets the location of the divider of a {@link JSplitPane}. This task is executed in the event dispatch thread (EDT.)
+ * Sets the location of the divider of a {@code JSplitPane}. This task is executed in the event dispatch thread (EDT.)
  * 
  * @author Alex Ruiz
  * @author Yvonne Wang

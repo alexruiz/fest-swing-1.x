@@ -26,7 +26,7 @@ import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
 
 /**
- * Calculates a valid position of a {@link JSplitPane}'s divider, while respecting the minimum sizes of the right and
+ * Calculates a valid position of a {@code JSplitPane}'s divider, while respecting the minimum sizes of the right and
  * left component inside the {@code JSplitPane}.
  * 
  * @author Alex Ruiz

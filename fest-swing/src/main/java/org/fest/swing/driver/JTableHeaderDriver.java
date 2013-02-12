@@ -1,15 +1,15 @@
 /*
  * Created on Mar 16, 2008
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
- * 
+ *
  * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
@@ -44,12 +44,12 @@ import org.fest.util.InternalApi;
  * <p>
  * Supports functional testing of {@code JTableHeader}s.
  * </p>
- * 
+ *
  * <p>
  * <b>Note:</b> This class is intended for internal use only. Please use the classes in the package
  * {@link org.fest.swing.fixture} in your tests.
  * </p>
- * 
+ *
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
@@ -59,7 +59,7 @@ public class JTableHeaderDriver extends JComponentDriver {
 
   /**
    * Creates a new {@link JTableHeaderDriver}.
-   * 
+   *
    * @param robot the robot to use to simulate user input.
    */
   public JTableHeaderDriver(@Nonnull Robot robot) {
@@ -68,7 +68,7 @@ public class JTableHeaderDriver extends JComponentDriver {
 
   /**
    * Clicks the column under the given index.
-   * 
+   *
    * @param tableHeader the target {@code JTableHeader}.
    * @param columnIndex the given index.
    * @throws IllegalStateException if the {@code JTableHeader} is disabled.
@@ -82,7 +82,7 @@ public class JTableHeaderDriver extends JComponentDriver {
 
   /**
    * Clicks the column under the given index using the given mouse button the given number of times.
-   * 
+   *
    * @param tableHeader the target {@code JTableHeader}.
    * @param columnIndex the given index.
    * @param button the mouse button to use.
@@ -100,7 +100,7 @@ public class JTableHeaderDriver extends JComponentDriver {
 
   /**
    * Clicks the column which name matches the given value.
-   * 
+   *
    * @param tableHeader the target {@code JTableHeader}.
    * @param columnName the column name to match. It can be a regular expression.
    * @throws IllegalStateException if the {@code JTableHeader} is disabled.
@@ -108,13 +108,13 @@ public class JTableHeaderDriver extends JComponentDriver {
    * @throws LocationUnavailableException if a column with a matching name cannot be found.
    */
   @RunsInEDT
-  public void clickColumn(@Nonnull JTableHeader tableHeader, @Nonnull String columnName) {
+  public void clickColumn(@Nonnull JTableHeader tableHeader, @Nullable String columnName) {
     clickColumn(tableHeader, columnName, LEFT_BUTTON, 1);
   }
 
   /**
    * Clicks the column which name matches the given regular expression pattern.
-   * 
+   *
    * @param tableHeader the target {@code JTableHeader}.
    * @param columnNamePattern the the regular expression pattern to match.
    * @throws IllegalStateException if the {@code JTableHeader} is disabled.
@@ -130,7 +130,7 @@ public class JTableHeaderDriver extends JComponentDriver {
 
   /**
    * Clicks the column which name matches the given one using the given mouse button the given number of times.
-   * 
+   *
    * @param tableHeader the target {@code JTableHeader}.
    * @param columnName the column name to match. It can be a regular expression.
    * @param button the mouse button to use.
@@ -140,7 +140,7 @@ public class JTableHeaderDriver extends JComponentDriver {
    * @throws LocationUnavailableException if a column with a matching name cannot be found.
    */
   @RunsInEDT
-  public void clickColumn(@Nonnull JTableHeader tableHeader, @Nonnull String columnName, @Nonnull MouseButton button,
+  public void clickColumn(@Nonnull JTableHeader tableHeader, @Nullable String columnName, @Nonnull MouseButton button,
       int times) {
     clickColumn(tableHeader, new StringTextMatcher(columnName), button, times);
   }
@@ -148,7 +148,7 @@ public class JTableHeaderDriver extends JComponentDriver {
   /**
    * Clicks the column which name matches the given regular expression pattern using the given mouse button the given
    * number of times.
-   * 
+   *
    * @param tableHeader the target {@code JTableHeader}.
    * @param columnNamePattern the regular expression pattern to match.
    * @param button the mouse button to use.
@@ -174,7 +174,7 @@ public class JTableHeaderDriver extends JComponentDriver {
 
   /**
    * Shows a pop-up menu at the given column.
-   * 
+   *
    * @param tableHeader the target {@code JTableHeader}.
    * @param columnIndex the index of the column.
    * @return the displayed pop-up menu.
@@ -184,7 +184,7 @@ public class JTableHeaderDriver extends JComponentDriver {
    * @throws ComponentLookupException if a pop-up menu cannot be found.
    */
   @RunsInEDT
-  public JPopupMenu showPopupMenu(@Nonnull JTableHeader tableHeader, int columnIndex) {
+  public @Nonnull JPopupMenu showPopupMenu(@Nonnull JTableHeader tableHeader, int columnIndex) {
     return robot.showPopupMenu(tableHeader, pointAtIndex(tableHeader, columnIndex, location));
   }
 
@@ -205,7 +205,7 @@ public class JTableHeaderDriver extends JComponentDriver {
 
   /**
    * Shows a pop-up menu at the given column.
-   * 
+   *
    * @param tableHeader the target {@code JTableHeader}.
    * @param columnName the name of the column. It can be a regular expression.
    * @return the displayed pop-up menu.
@@ -220,7 +220,7 @@ public class JTableHeaderDriver extends JComponentDriver {
 
   /**
    * Shows a pop-up menu at the column whose name matches the given regular expression pattern.
-   * 
+   *
    * @param tableHeader the target {@code JTableHeader}.
    * @param pattern the regular expression pattern to match.
    * @return the displayed pop-up menu.

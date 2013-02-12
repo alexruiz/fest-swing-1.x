@@ -647,7 +647,7 @@ public interface ComponentContainerFixture {
   @Nonnull JSpinnerFixture spinner(@Nullable String name);
 
   /**
-   * Returns the {@link JSplitPane} found in this fixture's {@code Container}.
+   * Returns the {@code JSplitPane} found in this fixture's {@code Container}.
    * 
    * @return a fixture that manages the {@code JSplitPane} found.
    * @throws ComponentLookupException if a {@code JSplitPane} could not be found.
@@ -657,7 +657,7 @@ public interface ComponentContainerFixture {
   @Nonnull JSplitPaneFixture splitPane();
 
   /**
-   * Finds a {@link JSplitPane} in this fixture's {@code Container}, that matches the specified search criteria.
+   * Finds a {@code JSplitPane} in this fixture's {@code Container}, that matches the specified search criteria.
    * 
    * @param matcher contains the search criteria for finding a {@code JSplitPane}.
    * @return a fixture that manages the {@code JSplitPane} found.
@@ -669,7 +669,7 @@ public interface ComponentContainerFixture {
   @Nonnull JSplitPaneFixture splitPane(@Nonnull GenericTypeMatcher<? extends JSplitPane> matcher);
 
   /**
-   * Finds a {@link JSplitPane} in this fixture's {@code Container}, which name matches the specified one.
+   * Finds a {@code JSplitPane} in this fixture's {@code Container}, which name matches the specified one.
    * 
    * @param name the name to match.
    * @return a fixture that manages the {@code JSplitPane} found.

@@ -325,7 +325,7 @@ public class JTableFixtureTest extends JTableFixture_TestCase {
       }
 
       @Override protected void codeToTest() {
-        assertThatReturnsSelf(fixture().cellReader(reader));
+        assertThatReturnsSelf(fixture().replaceCellReader(reader));
       }
     }.run();
   }
@@ -340,7 +340,7 @@ public class JTableFixtureTest extends JTableFixture_TestCase {
       }
 
       @Override protected void codeToTest() {
-        assertThatReturnsSelf(fixture().cellWriter(writer));
+        assertThatReturnsSelf(fixture().replaceCellWriter(writer));
       }
     }.run();
   }
