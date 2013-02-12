@@ -19,6 +19,8 @@ import static org.fest.swing.test.awt.TestAWTEvents.singletonAWTEventMock;
 import static org.fest.swing.test.awt.Toolkits.newToolkitMock;
 import static org.fest.swing.test.util.StopWatch.startNewStopWatch;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 import java.awt.AWTEvent;
 import java.awt.Component;
@@ -62,52 +64,20 @@ public class AWTEventPoster_postEvent_Test extends EDTSafeTestCase {
   @Test
   public void should_post_event_in_Component_EventQueue_if_Component_is_not_null() {
     final Component c = TestComponents.newComponentMock();
-    new EasyMockTemplate(toolkit, inputState, monitor, settings, eventQueue) {
-      @Override
-      protected void expectations() {
-        expectInputStateToBeUpdatedWithEvent();
-        expect(monitor.eventQueueFor(c)).andReturn(eventQueue);
-        expectEventQueueToPostEvent();
-        expectSettingsToReturnDelayBetweenEvents();
-      }
-
-      @Override
-      protected void codeToTest() {
-        postEventAndAssertItWaited(c);
-      }
-    }.run();
+    when(settings.delayBetweenEvents()).thenReturn(WAIT_DELAY);
+    when(monitor.eventQueueFor(c)).thenReturn(eventQueue);
+    postEventAndAssertItWaited(c);
+    verify(eventQueue).postEvent(event);
+    verify(inputState).update(event);
   }
 
   @Test
   public void should_post_event_in_System_EventQueue_ff_Component_is_null() {
-    new EasyMockTemplate(toolkit, inputState, monitor, settings, eventQueue) {
-      @Override
-      protected void expectations() {
-        expectInputStateToBeUpdatedWithEvent();
-        expect(toolkit.getSystemEventQueue()).andReturn(eventQueue);
-        expectEventQueueToPostEvent();
-        expectSettingsToReturnDelayBetweenEvents();
-      }
-
-      @Override
-      protected void codeToTest() {
-        postEventAndAssertItWaited(null);
-      }
-    }.run();
-  }
-
-  private void expectInputStateToBeUpdatedWithEvent() {
-    inputState.update(event);
-    expectLastCall().once();
-  }
-
-  private void expectEventQueueToPostEvent() {
-    eventQueue.postEvent(event);
-    expectLastCall().once();
-  }
-
-  private void expectSettingsToReturnDelayBetweenEvents() {
-    expect(settings.delayBetweenEvents()).andReturn(WAIT_DELAY);
+    when(settings.delayBetweenEvents()).thenReturn(WAIT_DELAY);
+    when(toolkit.getSystemEventQueue()).thenReturn(eventQueue);
+    postEventAndAssertItWaited(null);
+    verify(inputState).update(event);
+    verify(eventQueue).postEvent(event);
   }
 
   private void postEventAndAssertItWaited(Component c) {
