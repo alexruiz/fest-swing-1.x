@@ -728,7 +728,8 @@ public abstract class AbstractContainerFixture<S, C extends Container, D extends
   /**
    * @return the timeout to use when looking for a dialog. It's value is 100 ms.
    */
-  protected static @Nonnull Timeout defaultDialogLookupTimeout() {
+  @Override
+  public @Nonnull Timeout defaultDialogLookupTimeout() {
     return DEFAULT_DIALOG_LOOKUP_TIMEOUT;
   }
 }
