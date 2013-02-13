@@ -1,15 +1,15 @@
 /*
  * Created on Jun 10, 2008
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
- * 
+ *
  * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
@@ -32,7 +32,7 @@ import org.fest.swing.util.Pair;
 
 /**
  * {@link JTableCellWriter} that knows how to use {@code JTextComponent}s as cell editors.
- * 
+ *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
@@ -46,7 +46,7 @@ public class JTableCheckBoxEditorCellWriter extends AbstractJTableCellWriter {
   @Override
   public void enterValue(@Nonnull JTable table, int row, int column, @Nonnull String value) {
     boolean realValue = parseBoolean(value);
-    Pair<Boolean, Point> editingInfo = doStartCellEditing(table, row, column, location);
+    Pair<Boolean, Point> editingInfo = doStartCellEditing(table, row, column, location());
     if (editingInfo.first == realValue) {
       return; // JCheckBox already has value to set.
     }
@@ -57,7 +57,7 @@ public class JTableCheckBoxEditorCellWriter extends AbstractJTableCellWriter {
   @RunsInEDT
   @Override
   public void startCellEditing(@Nonnull JTable table, int row, int column) {
-    doStartCellEditing(table, row, column, location);
+    doStartCellEditing(table, row, column, location());
   }
 
   @RunsInEDT

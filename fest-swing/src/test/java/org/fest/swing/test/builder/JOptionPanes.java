@@ -21,7 +21,7 @@ import org.fest.swing.edt.GuiActionRunner;
 import org.fest.swing.edt.GuiQuery;
 
 /**
- * Understands creation of {@code JOptionPane}s.
+ * Factory of {@code JOptionPane}s.
  * 
  * @author Alex Ruiz
  */

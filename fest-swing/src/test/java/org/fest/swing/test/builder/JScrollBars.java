@@ -23,7 +23,7 @@ import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
 
 /**
- * Understands creation of {@code JScrollBar}s.
+ * Factory of {@code JScrollBar}s.
  * 
  * @author Alex Ruiz
  */

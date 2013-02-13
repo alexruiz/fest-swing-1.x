@@ -18,7 +18,7 @@ import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.MutableTreeNode;
 
 /**
- * Understands creation of {@link javax.swing.tree.TreeNode}s.
+ * Factory of {@link javax.swing.tree.TreeNode}s.
  * 
  * @author Alex Ruiz
  * 

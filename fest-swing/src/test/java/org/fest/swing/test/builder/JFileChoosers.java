@@ -22,7 +22,7 @@ import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
 
 /**
- * Understands creation of {@code JFileChooser}s.
+ * Factory of {@code JFileChooser}s.
  * 
  * @author Alex Ruiz
  */

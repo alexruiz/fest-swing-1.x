@@ -17,6 +17,7 @@ package org.fest.swing.fixture;
 import static org.fest.swing.core.ComponentLookupScope.SHOWING_ONLY;
 import static org.fest.swing.timing.Pause.pause;
 import static org.fest.swing.timing.Timeout.timeout;
+import static org.fest.util.Preconditions.checkNotNull;
 
 import java.awt.Component;
 import java.awt.Container;
@@ -238,7 +239,8 @@ public abstract class AbstractContainerFixture<S, C extends Container, D extends
     String description = "dialog to be found using matcher " + matcher;
     ComponentFoundCondition condition = new ComponentFoundCondition(description, robot().finder(), matcher);
     pause(condition, timeout);
-    return new DialogFixture(robot(), (Dialog) condition.found());
+    Dialog dialog = (Dialog) condition.found();
+    return new DialogFixture(robot(), checkNotNull(dialog));
   }
 
   /** {@inheritDoc} */
@@ -290,7 +292,8 @@ public abstract class AbstractContainerFixture<S, C extends Container, D extends
     String description = "file chooser to be found using matcher " + matcher;
     ComponentFoundCondition condition = new ComponentFoundCondition(description, robot().finder(), matcher);
     pause(condition, timeout);
-    return new JFileChooserFixture(robot(), (JFileChooser) condition.found());
+    JFileChooser fileChooser = (JFileChooser) condition.found();
+    return new JFileChooserFixture(robot(), checkNotNull(fileChooser));
   }
 
   /** {@inheritDoc} */
@@ -372,7 +375,8 @@ public abstract class AbstractContainerFixture<S, C extends Container, D extends
     String description = "option pane to be found using matcher " + matcher;
     ComponentFoundCondition condition = new ComponentFoundCondition(description, robot().finder(), matcher);
     pause(condition, timeout);
-    return new JOptionPaneFixture(robot(), (JOptionPane) condition.found());
+    JOptionPane optionPane = (JOptionPane) condition.found();
+    return new JOptionPaneFixture(robot(), checkNotNull(optionPane));
   }
 
   /** {@inheritDoc} */

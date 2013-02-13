@@ -22,7 +22,7 @@ import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
 
 /**
- * Understands creation of {@code JInternalFrame}s.
+ * Factory of {@code JInternalFrame}s.
  * 
  * @author Alex Ruiz
  */

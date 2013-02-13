@@ -22,7 +22,7 @@ import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
 
 /**
- * Understands creation of {@code JProgressBar}s.
+ * Factory of {@code JProgressBar}s.
  * 
  * @author Alex Ruiz
  */

@@ -22,7 +22,7 @@ import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
 
 /**
- * Understands creation of {@code JSlider}s.
+ * Factory of {@code JSlider}s.
  * 
  * @author Alex Ruiz
  */

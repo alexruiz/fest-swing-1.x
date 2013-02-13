@@ -32,8 +32,6 @@ import org.fest.swing.exception.ComponentLookupException;
  * @author Alex Ruiz
  */
 public class JOptionPaneFixture extends AbstractContainerFixture<JOptionPaneFixture, JOptionPane, JOptionPaneDriver> {
-  private JOptionPaneDriver driver;
-
   /**
    * Creates a new {@link JOptionPaneFixture}.
    *
@@ -73,7 +71,7 @@ public class JOptionPaneFixture extends AbstractContainerFixture<JOptionPaneFixt
    * @since 1.2
    */
   public @Nullable String title() {
-    return driver.title(target());
+    return driver().title(target());
   }
 
   /**
@@ -84,7 +82,7 @@ public class JOptionPaneFixture extends AbstractContainerFixture<JOptionPaneFixt
    * @throws ComponentLookupException if the a "OK" button cannot be found.
    */
   public @Nonnull JButtonFixture okButton() {
-    return new JButtonFixture(robot(), driver.okButton(target()));
+    return new JButtonFixture(robot(), driver().okButton(target()));
   }
 
   /**
@@ -95,7 +93,7 @@ public class JOptionPaneFixture extends AbstractContainerFixture<JOptionPaneFixt
    * @throws ComponentLookupException if the a "Cancel" button cannot be found.
    */
   public @Nonnull JButtonFixture cancelButton() {
-    return new JButtonFixture(robot(), driver.cancelButton(target()));
+    return new JButtonFixture(robot(), driver().cancelButton(target()));
   }
 
   /**
@@ -106,7 +104,7 @@ public class JOptionPaneFixture extends AbstractContainerFixture<JOptionPaneFixt
    * @throws ComponentLookupException if the a "Yes" button cannot be found.
    */
   public @Nonnull JButtonFixture yesButton() {
-    return new JButtonFixture(robot(), driver.yesButton(target()));
+    return new JButtonFixture(robot(), driver().yesButton(target()));
   }
 
   /**
@@ -117,7 +115,7 @@ public class JOptionPaneFixture extends AbstractContainerFixture<JOptionPaneFixt
    * @throws ComponentLookupException if the a "No" button cannot be found.
    */
   public @Nonnull JButtonFixture noButton() {
-    return new JButtonFixture(robot(), driver.noButton(target()));
+    return new JButtonFixture(robot(), driver().noButton(target()));
   }
 
   /**
@@ -128,7 +126,7 @@ public class JOptionPaneFixture extends AbstractContainerFixture<JOptionPaneFixt
    * @throws ComponentLookupException if the a button with the given text cannot be found.
    */
   public @Nonnull JButtonFixture buttonWithText(@Nullable String text) {
-    return new JButtonFixture(robot(), driver.buttonWithText(target(), text));
+    return new JButtonFixture(robot(), driver().buttonWithText(target(), text));
   }
 
   /**
@@ -141,7 +139,7 @@ public class JOptionPaneFixture extends AbstractContainerFixture<JOptionPaneFixt
    * @since 1.2
    */
   public @Nonnull JButtonFixture buttonWithText(@Nonnull Pattern pattern) {
-    return new JButtonFixture(robot(), driver.buttonWithText(target(), pattern));
+    return new JButtonFixture(robot(), driver().buttonWithText(target(), pattern));
   }
 
   /**
@@ -150,7 +148,7 @@ public class JOptionPaneFixture extends AbstractContainerFixture<JOptionPaneFixt
    * @return this fixture.
    */
   public @Nonnull JOptionPaneFixture requireErrorMessage() {
-    driver.requireErrorMessage(target());
+    driver().requireErrorMessage(target());
     return this;
   }
 
@@ -160,7 +158,7 @@ public class JOptionPaneFixture extends AbstractContainerFixture<JOptionPaneFixt
    * @return this fixture.
    */
   public @Nonnull JOptionPaneFixture requireInformationMessage() {
-    driver.requireInformationMessage(target());
+    driver().requireInformationMessage(target());
     return this;
   }
 
@@ -170,7 +168,7 @@ public class JOptionPaneFixture extends AbstractContainerFixture<JOptionPaneFixt
    * @return this fixture.
    */
   public @Nonnull JOptionPaneFixture requireWarningMessage() {
-    driver.requireWarningMessage(target());
+    driver().requireWarningMessage(target());
     return this;
   }
 
@@ -180,7 +178,7 @@ public class JOptionPaneFixture extends AbstractContainerFixture<JOptionPaneFixt
    * @return this fixture.
    */
   public @Nonnull JOptionPaneFixture requireQuestionMessage() {
-    driver.requireQuestionMessage(target());
+    driver().requireQuestionMessage(target());
     return this;
   }
 
@@ -190,7 +188,7 @@ public class JOptionPaneFixture extends AbstractContainerFixture<JOptionPaneFixt
    * @return this fixture.
    */
   public @Nonnull JOptionPaneFixture requirePlainMessage() {
-    driver.requirePlainMessage(target());
+    driver().requirePlainMessage(target());
     return this;
   }
 
@@ -202,7 +200,7 @@ public class JOptionPaneFixture extends AbstractContainerFixture<JOptionPaneFixt
    * @throws AssertionError if this fixture's {@code JOptionPaneFixture} does not have the given title.
    */
   public @Nonnull JOptionPaneFixture requireTitle(@Nullable String title) {
-    driver.requireTitle(target(), title);
+    driver().requireTitle(target(), title);
     return this;
   }
 
@@ -216,7 +214,7 @@ public class JOptionPaneFixture extends AbstractContainerFixture<JOptionPaneFixt
    * @since 1.2
    */
   public @Nonnull JOptionPaneFixture requireTitle(@Nonnull Pattern pattern) {
-    driver.requireTitle(target(), pattern);
+    driver().requireTitle(target(), pattern);
     return this;
   }
 
@@ -229,7 +227,7 @@ public class JOptionPaneFixture extends AbstractContainerFixture<JOptionPaneFixt
    *           match the given message.
    */
   public @Nonnull JOptionPaneFixture requireMessage(@Nullable Object message) {
-    driver.requireMessage(target(), message);
+    driver().requireMessage(target(), message);
     return this;
   }
 
@@ -246,7 +244,7 @@ public class JOptionPaneFixture extends AbstractContainerFixture<JOptionPaneFixt
    * @since 1.2
    */
   public @Nonnull JOptionPaneFixture requireMessage(@Nonnull Pattern pattern) {
-    driver.requireMessage(target(), pattern);
+    driver().requireMessage(target(), pattern);
     return this;
   }
 
@@ -258,7 +256,7 @@ public class JOptionPaneFixture extends AbstractContainerFixture<JOptionPaneFixt
    * @throws AssertionError if this fixture's {@code JOptionPaneFixture} does not have the given options.
    */
   public @Nonnull JOptionPaneFixture requireOptions(@Nonnull Object[] options) {
-    driver.requireOptions(target(), options);
+    driver().requireOptions(target(), options);
     return this;
   }
 }

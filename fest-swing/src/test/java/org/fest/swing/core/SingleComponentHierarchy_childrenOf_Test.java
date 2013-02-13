@@ -17,6 +17,7 @@ package org.fest.swing.core;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.edt.GuiActionRunner.execute;
 import static org.fest.util.Lists.newArrayList;
+import static org.mockito.Mockito.when;
 
 import java.awt.Component;
 import java.util.Collection;
@@ -57,19 +58,10 @@ public class SingleComponentHierarchy_childrenOf_Test extends SingleComponentHie
 
   @Test
   public void should_return_children_of_Component() {
-    final List<Component> children = newArrayList((Component) parent.button);
-    new EasyMockTemplate(hierarchyDelegate) {
-      @Override
-      protected void expectations() {
-        expect(hierarchyDelegate.childrenOf(parent)).andReturn(children);
-      }
-
-      @Override
-      protected void codeToTest() {
-        Collection<Component> foundChildren = hierarchy.childrenOf(parent);
-        assertThat(foundChildren).isSameAs(children);
-      }
-    }.run();
+    List<Component> children = newArrayList((Component) parent.button);
+    when(hierarchyDelegate.childrenOf(parent)).thenReturn(children);
+    Collection<Component> foundChildren = hierarchy.childrenOf(parent);
+    assertThat(foundChildren).isSameAs(children);
   }
 
   private static class FrameWithButton extends JFrame {

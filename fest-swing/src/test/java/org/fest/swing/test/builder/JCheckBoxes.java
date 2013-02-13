@@ -22,7 +22,7 @@ import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
 
 /**
- * Understands creation of {@code JCheckBox}s.
+ * Factory of {@code JCheckBox}s.
  * 
  * @author Alex Ruiz
  */

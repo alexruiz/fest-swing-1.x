@@ -27,7 +27,7 @@ import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
 
 /**
- * Understands creation of {@code JScrollPane}s.
+ * Factory of {@code JScrollPane}s.
  * 
  * @author Alex Ruiz
  */

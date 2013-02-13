@@ -23,7 +23,7 @@ import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
 
 /**
- * Understands creation of {@code JToolBar}s.
+ * Factory of {@code JToolBar}s.
  * 
  * @author Alex Ruiz
  */

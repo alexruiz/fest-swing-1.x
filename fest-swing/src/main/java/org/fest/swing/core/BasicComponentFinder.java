@@ -1,15 +1,15 @@
 /*
  * Created on May 14, 2007
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
- * 
+ *
  * Copyright @2007-2013 the original author or authors.
  */
 package org.fest.swing.core;
@@ -41,9 +41,9 @@ import org.fest.swing.hierarchy.SingleComponentHierarchy;
 
 /**
  * Default implementation of {@link ComponentFinder}.
- * 
+ *
  * @author Alex Ruiz
- * 
+ *
  * @see ComponentFinder
  */
 public final class BasicComponentFinder implements ComponentFinder {
@@ -58,7 +58,7 @@ public final class BasicComponentFinder implements ComponentFinder {
   /**
    * Creates a new {@link BasicComponentFinder} with a new AWT hierarchy. AWT and Swing {@code Component}s created
    * before the created {@link BasicComponentFinder} cannot be accessed by the created {@link BasicComponentFinder}.
-   * 
+   *
    * @return the created finder.
    */
   public static @Nonnull ComponentFinder finderWithNewAwtHierarchy() {
@@ -68,7 +68,7 @@ public final class BasicComponentFinder implements ComponentFinder {
   /**
    * Creates a new {@link BasicComponentFinder} that has access to all the AWT and Swing {@code Component}s in the AWT
    * hierarchy.
-   * 
+   *
    * @return the created finder.
    */
   public static @Nonnull ComponentFinder finderWithCurrentAwtHierarchy() {
@@ -77,7 +77,7 @@ public final class BasicComponentFinder implements ComponentFinder {
 
   /**
    * Creates a new {@link BasicComponentFinder}. The created finder does not use any {@link Settings}.
-   * 
+   *
    * @param hierarchy the component hierarchy to use.
    */
   protected BasicComponentFinder(@Nonnull ComponentHierarchy hierarchy) {
@@ -86,7 +86,7 @@ public final class BasicComponentFinder implements ComponentFinder {
 
   /**
    * Creates a new {@link BasicComponentFinder}.
-   * 
+   *
    * @param hierarchy the component hierarchy to use.
    * @param settings the configuration settings to use. It can be {@code null}.
    */
@@ -325,9 +325,6 @@ public final class BasicComponentFinder implements ComponentFinder {
 
   @RunsInEDT
   private @Nonnull String formattedHierarchy(@Nullable Container root) {
-    if (root == null) {
-      return "<Root not found>";
-    }
     ByteArrayOutputStream out = new ByteArrayOutputStream();
     PrintStream printStream = new PrintStream(out, true);
     printer.printComponents(printStream, root);
@@ -402,7 +399,7 @@ public final class BasicComponentFinder implements ComponentFinder {
   /**
    * Returns the value of the flag "requireShowing" in the {@link ComponentLookupScope} this finder's {@link Settings}.
    * If the settings object is {@code null}, this method will return the provided default value.
-   * 
+   *
    * @param defaultValue the value to return if this matcher does not have any configuration settings.
    * @return the value of the flag "requireShowing" in this finder's settings, or the provided default value if this
    *         finder does not have configuration settings.

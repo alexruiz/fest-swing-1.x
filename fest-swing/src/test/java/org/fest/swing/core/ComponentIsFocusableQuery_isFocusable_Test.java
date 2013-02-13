@@ -16,6 +16,8 @@ package org.fest.swing.core;
 
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.util.Lists.newArrayList;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 import java.awt.Component;
 import java.util.Collection;
@@ -49,21 +51,12 @@ public class ComponentIsFocusableQuery_isFocusable_Test extends EDTSafeTestCase 
 
   @Before
   public void setUp() {
-    component = createMock(Component.class);
+    component = mock(Component.class);
   }
 
   @Test
   public void should_return_Component_is_focusable() {
-    new EasyMockTemplate(component) {
-      @Override
-      protected void expectations() {
-        expect(component.isFocusable()).andReturn(isFocusable);
-      }
-
-      @Override
-      protected void codeToTest() {
-        assertThat(ComponentIsFocusableQuery.isFocusable(component)).isEqualTo(isFocusable);
-      }
-    }.run();
+    when(component.isFocusable()).thenReturn(isFocusable);
+    assertThat(ComponentIsFocusableQuery.isFocusable(component)).isEqualTo(isFocusable);
   }
 }

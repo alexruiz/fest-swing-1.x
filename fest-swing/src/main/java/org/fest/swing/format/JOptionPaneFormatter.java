@@ -1,15 +1,15 @@
 /*
  * Created on Dec 23, 2007
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
- * 
+ *
  * Copyright @2007-2013 the original author or authors.
  */
 package org.fest.swing.format;
@@ -23,6 +23,7 @@ import static javax.swing.JOptionPane.QUESTION_MESSAGE;
 import static javax.swing.JOptionPane.WARNING_MESSAGE;
 import static javax.swing.JOptionPane.YES_NO_CANCEL_OPTION;
 import static javax.swing.JOptionPane.YES_NO_OPTION;
+import static org.fest.util.Strings.quote;
 
 import java.awt.Component;
 
@@ -57,7 +58,7 @@ public class JOptionPaneFormatter extends ComponentFormatterTemplate {
 
   /**
    * Returns the {@code String} representation of the given {@code Component}, which should be a {@code JOptionPane}.
-   * 
+   *
    * @param c the given {@code Component}.
    * @return the {@code String} representation of the given {@code JOptionPane}.
    */
@@ -66,9 +67,9 @@ public class JOptionPaneFormatter extends ComponentFormatterTemplate {
   protected @Nonnull String doFormat(@Nonnull Component c) {
     JOptionPane optionPane = (JOptionPane)c;
     String format = "%s[message=%s, messageType=%s, optionType=%s, enabled=%b, visible=%b, showing=%b]";
-    return String.format(format, optionPane.getClass().getName(), MESSAGE_TYPES.get(optionPane.getMessageType()),
-        OPTION_TYPES.get(optionPane.getOptionType()), optionPane.isEnabled(), optionPane.isVisible(),
-        optionPane.isShowing());
+    return String.format(format, optionPane.getClass().getName(), quote(optionPane.getMessage()),
+        MESSAGE_TYPES.get(optionPane.getMessageType()), OPTION_TYPES.get(optionPane.getOptionType()),
+        optionPane.isEnabled(), optionPane.isVisible(), optionPane.isShowing());
   }
 
   /**

@@ -1,15 +1,15 @@
 /*
  * Created on Jul 25, 2009
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
- * 
+ *
  * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.core;
@@ -20,7 +20,6 @@ import static org.fest.swing.query.ComponentLocationOnScreenQuery.locationOnScre
 import static org.fest.swing.query.ComponentSizeQuery.sizeOf;
 
 import java.awt.Dimension;
-import java.awt.Point;
 
 import javax.swing.JWindow;
 
@@ -32,7 +31,7 @@ import org.junit.Test;
 
 /**
  * Tests for {@link BasicRobot#showWindow(java.awt.Window, java.awt.Dimension, boolean)}.
- * 
+ *
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
@@ -62,7 +61,7 @@ public class BasicRobot_showWindowBySizeAndPacking_Test extends EDTSafeTestCase 
     robot.showWindow(w, size, false);
     assertThat(sizeOf(w)).isEqualTo(size);
     assertThat(w.wasPacked()).isFalse();
-    assertThat(locationOnScreen(w)).isEqualTo(new Point(0, 0));
+    assertThat(locationOnScreen(w).x).isEqualTo(0);
   }
 
   private static class WindowToShow extends JWindow {

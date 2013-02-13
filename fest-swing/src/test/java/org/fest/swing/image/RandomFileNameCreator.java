@@ -19,7 +19,7 @@ import static org.fest.util.Strings.concat;
 import java.util.UUID;
 
 /**
- * Understands creation of file names based of random UUIDs.
+ * Factory of file names based of random UUIDs.
  * 
  * @author Alex Ruiz
  */
