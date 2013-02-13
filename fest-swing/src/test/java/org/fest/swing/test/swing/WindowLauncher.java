@@ -39,8 +39,6 @@ import org.fest.swing.edt.GuiQuery;
  * @author Yvonne Wang
  */
 public class WindowLauncher extends TestWindow {
-  private static final long serialVersionUID = 1L;
-
   private static final int DEFAULT_DELAY = 10000;
 
   private int windowLaunchDelay = DEFAULT_DELAY;
@@ -135,8 +133,6 @@ public class WindowLauncher extends TestWindow {
   }
 
   public static class WindowToLaunch extends JFrame {
-    private static final long serialVersionUID = 1L;
-
     public WindowToLaunch() {
       setName("frame");
       setTitle("Launched Window");
@@ -145,8 +141,6 @@ public class WindowLauncher extends TestWindow {
   }
 
   public static class DialogToLaunch extends JDialog {
-    private static final long serialVersionUID = 1L;
-
     public DialogToLaunch() {
       setName("dialog");
       setTitle("Launched Dialog");

@@ -105,8 +105,6 @@ public abstract class JInternalFrameDriver_TestCase extends RobotBasedTestCase {
   }
 
   static class MyWindow extends TestWindow {
-    private static final long serialVersionUID = 1L;
-
     final JDesktopPane desktopPane;
     final JInternalFrame internalFrame;
 
@@ -143,8 +141,6 @@ public abstract class JInternalFrameDriver_TestCase extends RobotBasedTestCase {
   }
 
   private static class MyInternalFrame extends JInternalFrame {
-    private static final long serialVersionUID = 1L;
-
     private static int index;
 
     static void resetIndex() {

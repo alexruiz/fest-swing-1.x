@@ -38,8 +38,6 @@ import org.fest.swing.edt.GuiTask;
  * @author Yvonne Wang
  */
 public class TestTable extends JTable {
-  private static final long serialVersionUID = 1L;
-
   private final CustomModel model;
 
   public TestTable(int rowCount, int columnCount) {
@@ -108,8 +106,6 @@ public class TestTable extends JTable {
       editableCells = new boolean[data.length][data[0].length];
     }
 
-    private static final long serialVersionUID = 1L;
-
     @Override
     public boolean isCellEditable(int row, int column) {
       return editableCells[row][column];
@@ -121,8 +117,6 @@ public class TestTable extends JTable {
   }
 
   private static class TableTransferHandler extends StringTransferHandler<JTable> {
-    private static final long serialVersionUID = 1L;
-
     TableTransferHandler() {
       super(JTable.class);
     }

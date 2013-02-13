@@ -23,8 +23,6 @@ import javax.swing.DefaultListModel;
  * @author Yvonne Wang
  */
 public class TestListModel extends DefaultListModel {
-  private static final long serialVersionUID = 1L;
-
   public TestListModel(Object... elements) {
     setElements(elements);
   }

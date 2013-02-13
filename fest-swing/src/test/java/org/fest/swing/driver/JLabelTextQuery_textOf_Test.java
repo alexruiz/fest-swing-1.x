@@ -51,8 +51,6 @@ public class JLabelTextQuery_textOf_Test extends RobotBasedTestCase {
   }
 
   private static class MyWindow extends TestWindow {
-    private static final long serialVersionUID = 1L;
-
     final MyLabel label = new MyLabel(TEXT);
 
     @RunsInEDT
@@ -72,8 +70,6 @@ public class JLabelTextQuery_textOf_Test extends RobotBasedTestCase {
   }
 
   private static class MyLabel extends JLabel {
-    private static final long serialVersionUID = 1L;
-
     private boolean recording;
     private final MethodInvocations methodInvocations = new MethodInvocations();
 

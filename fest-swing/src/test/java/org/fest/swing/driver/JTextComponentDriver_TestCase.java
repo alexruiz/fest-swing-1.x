@@ -109,8 +109,6 @@ public abstract class JTextComponentDriver_TestCase extends RobotBasedTestCase {
   }
 
   static class MyWindow extends TestWindow {
-    private static final long serialVersionUID = 1L;
-
     final JTextField textField = new JTextField("This is a test");
 
     @RunsInEDT

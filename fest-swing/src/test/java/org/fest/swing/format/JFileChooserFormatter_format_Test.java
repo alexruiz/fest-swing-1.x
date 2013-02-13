@@ -55,8 +55,6 @@ public class JFileChooserFormatter_format_Test extends SequentialEDTSafeTestCase
   }
 
   private static class MyWindow extends TestWindow {
-    private static final long serialVersionUID = 1L;
-
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {

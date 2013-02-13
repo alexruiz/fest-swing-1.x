@@ -1,6 +1,6 @@
 /*
  * Created on Nov 28, 2009
- * 
+ *
  * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.driver;
@@ -24,7 +24,7 @@ import org.junit.Test;
 
 /**
  * Test case for bug <a href="http://jira.codehaus.org/browse/FEST-231" target="_blank">FEST-231</a>
- * 
+ *
  * @author Alex Ruiz
  */
 public class FEST231_JScrollBarUpAndDownInverted_Test extends RobotBasedTestCase {
@@ -78,8 +78,6 @@ public class FEST231_JScrollBarUpAndDownInverted_Test extends RobotBasedTestCase
   }
 
   private static class MyWindow extends TestWindow {
-    private static final long serialVersionUID = 1L;
-
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {

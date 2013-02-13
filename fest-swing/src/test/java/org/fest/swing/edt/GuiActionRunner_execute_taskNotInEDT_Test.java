@@ -1,21 +1,23 @@
 /*
  * Created on Oct 17, 2008
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
- * 
+ *
  * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.edt;
 
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.test.core.CommonAssertions.failWhenExpectingException;
+import static org.mockito.Mockito.doThrow;
+import static org.mockito.Mockito.mock;
 
 import org.fest.swing.exception.UnexpectedException;
 import org.fest.swing.test.core.MethodInvocations;
@@ -24,13 +26,21 @@ import org.junit.Test;
 
 /**
  * Tests for {@link GuiActionRunner#execute(GuiTask)}.
- * 
+ *
  * @author Alex Ruiz
  */
 public class GuiActionRunner_execute_taskNotInEDT_Test extends SequentialEDTSafeTestCase {
+  private boolean executeInEDT;
+
   @Override
   protected final void onSetUp() {
+    executeInEDT = GuiActionRunner.executeInEDT();
     GuiActionRunner.executeInEDT(true);
+  }
+
+  @Override
+  protected void onTearDown() {
+    GuiActionRunner.executeInEDT(executeInEDT);
   }
 
   @Test
@@ -44,26 +54,16 @@ public class GuiActionRunner_execute_taskNotInEDT_Test extends SequentialEDTSafe
 
   @Test
   public void should_wrap_any_thrown_Exception() {
-    final TestGuiTask task = createMock(TestGuiTask.class);
-    final RuntimeException error = expectedError();
-    new EasyMockTemplate(task) {
-      @Override
-      protected void expectations() {
-        task.executeInEDT();
-        expectLastCall().andThrow(error);
-      }
-
-      @Override
-      protected void codeToTest() {
-        try {
-          GuiActionRunner.executeInEDT(false);
-          GuiActionRunner.execute(task);
-          failWhenExpectingException();
-        } catch (UnexpectedException e) {
-          assertThat(e.getCause()).isSameAs(error);
-        }
-      }
-    }.run();
+    TestGuiTask task = mock(TestGuiTask.class);
+    RuntimeException error = expectedError();
+    doThrow(error).when(task).executeInEDT();
+    try {
+      GuiActionRunner.executeInEDT(false);
+      GuiActionRunner.execute(task);
+      failWhenExpectingException();
+    } catch (UnexpectedException e) {
+      assertThat(e.getCause()).isSameAs(error);
+    }
   }
 
   private RuntimeException expectedError() {
@@ -73,8 +73,7 @@ public class GuiActionRunner_execute_taskNotInEDT_Test extends SequentialEDTSafe
   private static class TestGuiTask extends GuiTask {
     private final MethodInvocations methodInvocations = new MethodInvocations();
 
-    TestGuiTask() {
-    }
+    TestGuiTask() {}
 
     @Override
     protected void executeInEDT() {

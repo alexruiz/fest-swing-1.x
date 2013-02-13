@@ -39,8 +39,6 @@ import javax.swing.table.TableColumn;
  * Adapted from the <a href="http://java.sun.com/docs/books/tutorial/uiswing/" target="_blank">Swing Tutorial</a>.
  */
 public class TableRenderDemo extends JPanel {
-  private static final long serialVersionUID = 1L;
-
   public final JTable table;
 
   public TableRenderDemo() {
@@ -104,7 +102,6 @@ public class TableRenderDemo extends JPanel {
   }
 
   class MyTableModel extends AbstractTableModel {
-    private static final long serialVersionUID = 1L;
     private final String[] columnNames = { "First Name", "Last Name", "Sport", "# of Years", "Vegetarian" };
     private final Object[][] data = { { "Mary", "Campione", "Snowboarding", 5, false },
         { "Alison", "Huml", "Rowing", 3, true }, { "Kathy", "Walrath", "Knitting", 2, false },

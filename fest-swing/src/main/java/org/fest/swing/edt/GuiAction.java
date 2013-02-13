@@ -26,23 +26,23 @@ import javax.annotation.Nullable;
  */
 abstract class GuiAction implements Runnable {
   private boolean executedInEDT;
-  private Throwable catchedException;
+  private Throwable caughtException;
   private CountDownLatch executionNotification;
 
   final @Nullable Throwable catchedException() {
-    return catchedException;
+    return caughtException;
   }
 
   final void catchedException(@Nullable Throwable catched) {
-    catchedException = catched;
+    caughtException = catched;
   }
 
   final boolean wasExecutedInEDT() {
     return executedInEDT;
   }
 
-  final void clearCatchedException() {
-    catchedException = null;
+  final void clearCaughtException() {
+    caughtException = null;
   }
 
   final void executionNotification(@Nonnull CountDownLatch c) {

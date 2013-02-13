@@ -50,8 +50,6 @@ public class JSpinnerValueQuery_valueOf_Test extends RobotBasedTestCase {
   }
 
   private static class MyWindow extends TestWindow {
-    private static final long serialVersionUID = 1L;
-
     final MySpinner spinner = new MySpinner("One", "Two");
 
     @RunsInEDT
@@ -72,8 +70,6 @@ public class JSpinnerValueQuery_valueOf_Test extends RobotBasedTestCase {
   }
 
   private static class MySpinner extends JSpinner {
-    private static final long serialVersionUID = 1L;
-
     private boolean recording;
     private final MethodInvocations methodInvocations = new MethodInvocations();
 

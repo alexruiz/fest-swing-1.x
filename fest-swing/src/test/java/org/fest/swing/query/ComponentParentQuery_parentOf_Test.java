@@ -54,8 +54,6 @@ public class ComponentParentQuery_parentOf_Test extends SequentialEDTSafeTestCas
   }
 
   private static class MyWindow extends TestWindow {
-    private static final long serialVersionUID = 1L;
-
     @RunsInEDT
     static MyWindow createNew() {
       return GuiActionRunner.execute(new GuiQuery<MyWindow>() {
@@ -75,8 +73,6 @@ public class ComponentParentQuery_parentOf_Test extends SequentialEDTSafeTestCas
   }
 
   private static class MyButton extends JButton {
-    private static final long serialVersionUID = 1L;
-
     private boolean recording;
     private final MethodInvocations methodInvocations = new MethodInvocations();
 

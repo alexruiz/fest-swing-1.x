@@ -113,8 +113,6 @@ public abstract class JSpinnerDriver_TestCase extends RobotBasedTestCase {
   }
 
   private static class MyWindow extends TestWindow {
-    private static final long serialVersionUID = 1L;
-
     final JSpinner spinner = new JSpinner(new SpinnerListModel(array("Frodo", "Sam", "Gandalf")));
 
     @RunsInEDT

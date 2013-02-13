@@ -52,8 +52,6 @@ public class ComponentForegroundQuery_foregroundOf_Test extends SequentialEDTSaf
   }
 
   private static class MyWindow extends TestWindow {
-    private static final long serialVersionUID = 1L;
-
     private boolean recording;
     private final MethodInvocations methodInvocations = new MethodInvocations();
 

@@ -59,8 +59,6 @@ public class JFileChooserApproveButtonTextQuery_approveButtonTextFrom_Test exten
   }
 
   private static class MyWindow extends TestWindow {
-    private static final long serialVersionUID = 1L;
-
     final MyFileChooser fileChooser = new MyFileChooser();
 
     @RunsInEDT
@@ -80,8 +78,6 @@ public class JFileChooserApproveButtonTextQuery_approveButtonTextFrom_Test exten
   }
 
   private static class MyFileChooser extends JFileChooser {
-    private static final long serialVersionUID = 1L;
-
     private boolean recording;
     private final MethodInvocations methodInvocations = new MethodInvocations();
 

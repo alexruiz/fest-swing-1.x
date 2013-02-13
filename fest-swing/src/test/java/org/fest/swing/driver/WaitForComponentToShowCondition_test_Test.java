@@ -52,8 +52,6 @@ public class WaitForComponentToShowCondition_test_Test extends EDTSafeTestCase {
   }
 
   private static class ComponentStub extends JTextField {
-    private static final long serialVersionUID = 1L;
-
     private boolean showing;
 
     @RunsInEDT

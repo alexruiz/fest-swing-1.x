@@ -46,8 +46,6 @@ public class Bug228_ModalWindowBlocks_Test extends RobotBasedTestCase {
   }
 
   private static class MyDialog extends TestDialog {
-    private static final long serialVersionUID = 1L;
-
     @RunsInEDT
     static void createAndShowNew(final Frame owner) {
       invokeLater(new Runnable() {

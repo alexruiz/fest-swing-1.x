@@ -88,8 +88,6 @@ public class JTextComponentSelectTextTask_selectTextInRange_Test extends RobotBa
   }
 
   private static class MyWindow extends TestWindow {
-    private static final long serialVersionUID = 1L;
-
     final JTextField textBox = new JTextField(20);
 
     @RunsInEDT

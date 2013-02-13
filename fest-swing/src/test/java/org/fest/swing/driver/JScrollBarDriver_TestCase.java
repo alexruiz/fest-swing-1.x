@@ -65,8 +65,6 @@ public abstract class JScrollBarDriver_TestCase extends RobotBasedTestCase {
   }
 
   static class MyWindow extends TestWindow {
-    private static final long serialVersionUID = 1L;
-
     final JScrollBar scrollBar = new JScrollBar();
 
     @RunsInEDT

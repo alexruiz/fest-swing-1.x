@@ -44,8 +44,6 @@ public abstract class JPopupMenuDriver_TestCase extends RobotBasedTestCase {
   }
 
   static class MyWindow extends TestWindow {
-    private static final long serialVersionUID = 1L;
-
     final JTextField withPopup = new JTextField("With Pop-up Menu");
     final JPopupMenu popupMenu = new JPopupMenu("Pop-up Menu");
 

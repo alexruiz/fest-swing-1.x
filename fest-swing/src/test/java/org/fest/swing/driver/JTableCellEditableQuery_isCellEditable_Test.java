@@ -85,8 +85,6 @@ public class JTableCellEditableQuery_isCellEditable_Test extends RobotBasedTestC
   }
 
   private static class MyWindow extends TestWindow {
-    private static final long serialVersionUID = 1L;
-
     final JTable table;
 
     @RunsInEDT

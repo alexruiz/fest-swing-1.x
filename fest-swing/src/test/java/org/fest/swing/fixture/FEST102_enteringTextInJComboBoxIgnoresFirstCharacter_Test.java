@@ -74,8 +74,6 @@ public class FEST102_enteringTextInJComboBoxIgnoresFirstCharacter_Test extends R
   }
 
   private static class MyWindow extends TestWindow {
-    private static final long serialVersionUID = 1L;
-
     final JComboBox comboBox;
 
     @RunsInEDT

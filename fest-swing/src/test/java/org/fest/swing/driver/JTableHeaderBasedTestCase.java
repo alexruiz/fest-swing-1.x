@@ -64,8 +64,6 @@ public abstract class JTableHeaderBasedTestCase extends RobotBasedTestCase {
   }
 
   static class MyWindow extends TestWindow {
-    private static final long serialVersionUID = 1L;
-
     private static final Dimension TABLE_SIZE = new Dimension(400, 200);
 
     final TestTable table;

@@ -61,8 +61,6 @@ public class JMenuItemMatcher_matches_Test extends SequentialEDTSafeTestCase {
   }
 
   private static class MyWindow extends TestWindow {
-    private static final long serialVersionUID = 1L;
-
     final JMenuItem logoutMenuItem = new JMenuItem("Logout");
 
     @RunsInEDT

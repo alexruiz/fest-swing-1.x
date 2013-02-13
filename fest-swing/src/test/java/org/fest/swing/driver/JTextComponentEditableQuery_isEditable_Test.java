@@ -69,8 +69,6 @@ public class JTextComponentEditableQuery_isEditable_Test extends RobotBasedTestC
   }
 
   private static class MyWindow extends TestWindow {
-    private static final long serialVersionUID = 1L;
-
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
@@ -90,8 +88,6 @@ public class JTextComponentEditableQuery_isEditable_Test extends RobotBasedTestC
   }
 
   private static class MyTextField extends JTextField {
-    private static final long serialVersionUID = 1L;
-
     private boolean recording;
     private final MethodInvocations methodInvocations = new MethodInvocations();
 

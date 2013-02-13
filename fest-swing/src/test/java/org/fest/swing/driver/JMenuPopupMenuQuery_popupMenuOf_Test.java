@@ -63,8 +63,6 @@ public class JMenuPopupMenuQuery_popupMenuOf_Test extends RobotBasedTestCase {
   }
 
   private static class MyWindow extends TestWindow {
-    private static final long serialVersionUID = 1L;
-
     final MyMenu menu = new MyMenu("Hello");
 
     @RunsInEDT
@@ -86,8 +84,6 @@ public class JMenuPopupMenuQuery_popupMenuOf_Test extends RobotBasedTestCase {
   }
 
   private static class MyMenu extends JMenu {
-    private static final long serialVersionUID = 1L;
-
     private boolean recording;
     private final MethodInvocations methodInvocations = new MethodInvocations();
 

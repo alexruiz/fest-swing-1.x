@@ -22,8 +22,6 @@ import java.awt.Dimension;
  * @author Alex Ruiz
  */
 public class FluentDimension extends Dimension {
-  private static final long serialVersionUID = 1L;
-
   public FluentDimension() {}
 
   public FluentDimension(Dimension d) {

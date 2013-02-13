@@ -133,8 +133,6 @@ public abstract class KeyStrokeMappingProvider_TestCase extends RobotBasedTestCa
   }
 
   static class MyWindow extends TestWindow {
-    private static final long serialVersionUID = 1L;
-
     @RunsInEDT
     static MyWindow createNew(final Class<?> testClass) {
       return GuiActionRunner.execute(new GuiQuery<MyWindow>() {

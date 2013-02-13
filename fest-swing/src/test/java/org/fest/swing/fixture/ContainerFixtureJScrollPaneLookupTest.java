@@ -120,8 +120,6 @@ public class ContainerFixtureJScrollPaneLookupTest extends RobotBasedTestCase {
   }
 
   private static class MyWindow extends TestWindow {
-    private static final long serialVersionUID = 1L;
-
     final JScrollPane scrollPane = new JScrollPane(new JList(array("One", "Two")));
 
     static MyWindow createNew() {

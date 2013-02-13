@@ -54,8 +54,6 @@ public class FEST254_JComboBoxFixtureIsNotUsingCellReaderForRequireSelection_Tes
   }
 
   private static class MyWindow extends TestWindow {
-    private static final long serialVersionUID = 1L;
-
     private final JComboBox comboBox;
 
     @RunsInEDT
@@ -97,8 +95,6 @@ public class FEST254_JComboBoxFixtureIsNotUsingCellReaderForRequireSelection_Tes
   }
 
   private static class MyComboBoxRenderer extends BasicComboBoxRenderer {
-    private static final long serialVersionUID = 1L;
-
     @Override
     public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected,
         boolean cellHasFocus) {

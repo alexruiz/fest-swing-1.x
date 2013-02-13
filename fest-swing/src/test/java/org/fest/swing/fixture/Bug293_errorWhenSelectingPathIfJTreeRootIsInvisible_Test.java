@@ -57,8 +57,6 @@ public class Bug293_errorWhenSelectingPathIfJTreeRootIsInvisible_Test extends Ro
   }
 
   private static class MyWindow extends TestWindow {
-    private static final long serialVersionUID = 1L;
-
     @RunsInEDT
     static MyWindow createNewWithTreeRootVisible() {
       return createNew(true);

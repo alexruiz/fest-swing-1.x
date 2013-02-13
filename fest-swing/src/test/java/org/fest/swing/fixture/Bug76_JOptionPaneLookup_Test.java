@@ -66,8 +66,6 @@ public class Bug76_JOptionPaneLookup_Test extends RobotBasedTestCase {
   }
 
   private static class JOptionPaneStarter extends JDialog {
-    private static final long serialVersionUID = 1L;
-
     @RunsInEDT
     static JOptionPaneStarter createNew(final String message) {
       return execute(new GuiQuery<JOptionPaneStarter>() {
@@ -90,9 +88,7 @@ public class Bug76_JOptionPaneLookup_Test extends RobotBasedTestCase {
     }
 
     private class OpenJOptionPaneAction extends AbstractAction {
-      private static final long serialVersionUID = 1L;
-
-      private final String m_message;
+        private final String m_message;
 
       OpenJOptionPaneAction(String message) {
         super("Start!");

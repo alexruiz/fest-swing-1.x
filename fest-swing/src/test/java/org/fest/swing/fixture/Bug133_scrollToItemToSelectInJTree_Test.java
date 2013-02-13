@@ -103,8 +103,6 @@ public class Bug133_scrollToItemToSelectInJTree_Test extends RobotBasedTestCase 
   }
 
   private static class MyWindow extends TestWindow {
-    private static final long serialVersionUID = 1L;
-
     final JTree dragTree = new TestTree("drag");
     final JTree dropTree = new TestTree("drop");
 

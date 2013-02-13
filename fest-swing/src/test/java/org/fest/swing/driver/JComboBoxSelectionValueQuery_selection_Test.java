@@ -84,8 +84,6 @@ public class JComboBoxSelectionValueQuery_selection_Test extends RobotBasedTestC
   }
 
   private static class MyWindow extends TestWindow {
-    private static final long serialVersionUID = 1L;
-
     final JComboBox comboBox = new JComboBox(array("first", "second", "third"));
 
     @RunsInEDT

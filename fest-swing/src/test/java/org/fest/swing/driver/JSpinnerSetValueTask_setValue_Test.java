@@ -85,8 +85,6 @@ public class JSpinnerSetValueTask_setValue_Test extends RobotBasedTestCase {
   }
 
   private static class MyWindow extends TestWindow {
-    private static final long serialVersionUID = 1L;
-
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
@@ -107,8 +105,6 @@ public class JSpinnerSetValueTask_setValue_Test extends RobotBasedTestCase {
   }
 
   private static class MySpinner extends JSpinner {
-    private static final long serialVersionUID = 1L;
-
     private boolean recording;
     private final MethodInvocations methodInvocations = new MethodInvocations();
 

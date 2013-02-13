@@ -67,8 +67,6 @@ public class IntrospectionComponentFormatter_format_Test extends EDTSafeTestCase
   }
 
   static class MyButton extends JButton {
-    private static final long serialVersionUID = 1L;
-
     static MyButton newButton(final String[] names) {
       return GuiActionRunner.execute(new GuiQuery<MyButton>() {
         @Override

@@ -63,8 +63,6 @@ public class JTextComponentSetTextTask_textOf_Test extends RobotBasedTestCase {
   }
 
   private static class MyWindow extends TestWindow {
-    private static final long serialVersionUID = 1L;
-
     final MyTextField textField = new MyTextField();
 
     @RunsInEDT
@@ -84,8 +82,6 @@ public class JTextComponentSetTextTask_textOf_Test extends RobotBasedTestCase {
   }
 
   private static class MyTextField extends JTextField {
-    private static final long serialVersionUID = 1L;
-
     private boolean recording;
     private final MethodInvocations methodInvocations = new MethodInvocations();
 

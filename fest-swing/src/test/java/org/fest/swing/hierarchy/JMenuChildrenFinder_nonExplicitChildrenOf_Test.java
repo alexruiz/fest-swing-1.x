@@ -91,8 +91,6 @@ public class JMenuChildrenFinder_nonExplicitChildrenOf_Test extends EDTSafeTestC
   }
 
   private static class MyWindow extends TestWindow {
-    private static final long serialVersionUID = 1L;
-
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {

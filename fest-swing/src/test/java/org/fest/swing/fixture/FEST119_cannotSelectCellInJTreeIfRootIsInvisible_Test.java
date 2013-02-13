@@ -63,8 +63,6 @@ public class FEST119_cannotSelectCellInJTreeIfRootIsInvisible_Test extends Robot
   }
 
   private static class MyWindow extends TestWindow {
-    private static final long serialVersionUID = 1L;
-
     private static final Dimension TREE_SIZE = new Dimension(200, 100);
 
     @RunsInEDT

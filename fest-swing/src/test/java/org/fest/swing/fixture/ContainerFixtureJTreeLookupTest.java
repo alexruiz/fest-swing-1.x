@@ -117,8 +117,6 @@ public class ContainerFixtureJTreeLookupTest extends RobotBasedTestCase {
   }
 
   private static class MyWindow extends TestWindow {
-    private static final long serialVersionUID = 1L;
-
     final JTree tree = new JTree(new DefaultMutableTreeNode("root"));
 
     static MyWindow createNew() {

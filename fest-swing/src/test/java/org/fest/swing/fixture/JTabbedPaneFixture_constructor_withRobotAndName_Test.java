@@ -61,8 +61,6 @@ public class JTabbedPaneFixture_constructor_withRobotAndName_Test extends RobotB
   }
 
   private static class MyWindow extends TestWindow {
-    private static final long serialVersionUID = 1L;
-
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
         @Override

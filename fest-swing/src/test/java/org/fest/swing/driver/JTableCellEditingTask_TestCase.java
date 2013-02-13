@@ -74,8 +74,6 @@ public abstract class JTableCellEditingTask_TestCase extends RobotBasedTestCase 
   }
 
   static class MyWindow extends TestWindow {
-    private static final long serialVersionUID = 1L;
-
     final MyTable table = new MyTable();
 
     static MyWindow createNew(final Class<?> testClass) {
@@ -94,8 +92,6 @@ public abstract class JTableCellEditingTask_TestCase extends RobotBasedTestCase 
   }
 
   static class MyTable extends JTable {
-    private static final long serialVersionUID = 1L;
-
     private final MyCellEditor cellEditor = new MyCellEditor();
 
     MyTable() {
@@ -110,8 +106,6 @@ public abstract class JTableCellEditingTask_TestCase extends RobotBasedTestCase 
   }
 
   static class MyCellEditor extends DefaultCellEditor {
-    private static final long serialVersionUID = 1L;
-
     private boolean cellEditingCanceled;
     private boolean cellEditingStopped;
 
@@ -141,8 +135,6 @@ public abstract class JTableCellEditingTask_TestCase extends RobotBasedTestCase 
   }
 
   static class MyTableModel extends AbstractTableModel {
-    private static final long serialVersionUID = 1L;
-
     private final String[] columnNames = { "First Name", "Sport" };
     private final Object[][] data = { { "Mary", "Snowboarding" }, { "Alison", "Rowing" }, { "Kathy", "Knitting" },
         { "Sharon", "Speed reading" }, { "Philip", "Pool" } };

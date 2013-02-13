@@ -97,8 +97,6 @@ public class JTreeMatchingPathQuery_matchingPathFor_Test extends RobotBasedTestC
   }
 
   static class MyWindow extends TestWindow {
-    private static final long serialVersionUID = 1L;
-
     @RunsInEDT
     static MyWindow createNew(final Class<?> testClass) {
       return execute(new GuiQuery<MyWindow>() {

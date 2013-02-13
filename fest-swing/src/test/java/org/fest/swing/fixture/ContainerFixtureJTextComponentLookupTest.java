@@ -117,8 +117,6 @@ public class ContainerFixtureJTextComponentLookupTest extends RobotBasedTestCase
   }
 
   private static class MyWindow extends TestWindow {
-    private static final long serialVersionUID = 1L;
-
     final JTextComponent textBox = new JTextField(10);
 
     static MyWindow createNew() {

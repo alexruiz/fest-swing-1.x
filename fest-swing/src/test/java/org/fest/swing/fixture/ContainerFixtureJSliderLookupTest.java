@@ -117,8 +117,6 @@ public class ContainerFixtureJSliderLookupTest extends RobotBasedTestCase {
   }
 
   private static class MyWindow extends TestWindow {
-    private static final long serialVersionUID = 1L;
-
     final JSlider slider = new JSlider(HORIZONTAL, 6, 10, 8);
 
     static MyWindow createNew() {

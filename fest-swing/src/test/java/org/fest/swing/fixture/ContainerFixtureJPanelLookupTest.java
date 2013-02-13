@@ -119,8 +119,6 @@ public class ContainerFixtureJPanelLookupTest extends RobotBasedTestCase {
   }
 
   private static class MyWindow extends TestWindow {
-    private static final long serialVersionUID = 1L;
-
     final JPanel panel = new JPanel();
 
     static MyWindow createNew() {

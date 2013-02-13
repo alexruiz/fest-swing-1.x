@@ -116,8 +116,6 @@ public class ContainerFixtureJLabelLookupTest extends RobotBasedTestCase {
   }
 
   private static class MyWindow extends TestWindow {
-    private static final long serialVersionUID = 1L;
-
     final JLabel label = new JLabel("Read Me");
 
     static MyWindow createNew() {

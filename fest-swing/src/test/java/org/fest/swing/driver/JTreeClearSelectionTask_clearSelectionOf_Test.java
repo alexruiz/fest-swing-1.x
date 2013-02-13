@@ -69,8 +69,6 @@ public class JTreeClearSelectionTask_clearSelectionOf_Test extends RobotBasedTes
   }
 
   private static class MyWindow extends TestWindow {
-    private static final long serialVersionUID = 1L;
-
     final MyTree tree = new MyTree();
 
     @RunsInEDT
@@ -90,8 +88,6 @@ public class JTreeClearSelectionTask_clearSelectionOf_Test extends RobotBasedTes
   }
 
   private static class MyTree extends JTree {
-    private static final long serialVersionUID = 1L;
-
     private boolean recording;
     private final MethodInvocations methodInvocations = new MethodInvocations();
 

@@ -120,8 +120,6 @@ public class ContainerFixtureJSplitPaneLookupTest extends RobotBasedTestCase {
   }
 
   private static class MyWindow extends TestWindow {
-    private static final long serialVersionUID = 1L;
-
     final JSplitPane splitPane = new JSplitPane(VERTICAL_SPLIT);
 
     static MyWindow createNew() {

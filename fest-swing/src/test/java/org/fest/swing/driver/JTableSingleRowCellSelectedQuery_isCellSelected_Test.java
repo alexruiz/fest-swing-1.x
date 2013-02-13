@@ -92,8 +92,6 @@ public class JTableSingleRowCellSelectedQuery_isCellSelected_Test extends RobotB
   }
 
   private static class MyWindow extends TestWindow {
-    private static final long serialVersionUID = 1L;
-
     final JTable table = new TestTable(3, 6);
 
     @RunsInEDT

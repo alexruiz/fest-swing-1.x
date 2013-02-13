@@ -70,8 +70,6 @@ public class DialogModalQuery_isModal_Test extends RobotBasedTestCase {
   }
 
   private static class MyDialog extends TestDialog {
-    private static final long serialVersionUID = 1L;
-
     private boolean recording;
     private final MethodInvocations methodInvocations = new MethodInvocations();
 

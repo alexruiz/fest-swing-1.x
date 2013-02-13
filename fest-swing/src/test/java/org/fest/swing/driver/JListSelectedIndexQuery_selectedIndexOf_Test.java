@@ -73,8 +73,6 @@ public class JListSelectedIndexQuery_selectedIndexOf_Test extends RobotBasedTest
   }
 
   private static class MyWindow extends TestWindow {
-    private static final long serialVersionUID = 1L;
-
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
@@ -94,8 +92,6 @@ public class JListSelectedIndexQuery_selectedIndexOf_Test extends RobotBasedTest
   }
 
   private static class MyList extends JList {
-    private static final long serialVersionUID = 1L;
-
     private boolean recording;
     private final MethodInvocations methodInvocations = new MethodInvocations();
 

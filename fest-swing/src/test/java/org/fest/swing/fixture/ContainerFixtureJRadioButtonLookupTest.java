@@ -116,8 +116,6 @@ public class ContainerFixtureJRadioButtonLookupTest extends RobotBasedTestCase {
   }
 
   private static class MyWindow extends TestWindow {
-    private static final long serialVersionUID = 1L;
-
     final JRadioButton radioButton = new JRadioButton("Select Me");
 
     static MyWindow createNew() {

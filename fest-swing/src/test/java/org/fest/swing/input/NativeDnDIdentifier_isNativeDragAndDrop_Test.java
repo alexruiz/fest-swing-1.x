@@ -57,8 +57,6 @@ public class NativeDnDIdentifier_isNativeDragAndDrop_Test extends EDTSafeTestCas
   }
 
   static class SunDropTargetEvent extends MouseEvent {
-    private static final long serialVersionUID = 1L;
-
     SunDropTargetEvent() {
       super(label().createNew(), 0, 0, 0, 0, 0, 0, false);
     }

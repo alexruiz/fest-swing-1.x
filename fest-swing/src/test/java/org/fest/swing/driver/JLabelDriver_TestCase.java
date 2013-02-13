@@ -42,8 +42,6 @@ public abstract class JLabelDriver_TestCase extends RobotBasedTestCase {
   }
 
   static class MyWindow extends TestWindow {
-    private static final long serialVersionUID = 1L;
-
     final JLabel label = new JLabel("Hi");
 
     @RunsInEDT

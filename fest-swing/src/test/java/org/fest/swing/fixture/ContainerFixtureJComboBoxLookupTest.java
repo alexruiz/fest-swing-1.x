@@ -117,8 +117,6 @@ public class ContainerFixtureJComboBoxLookupTest extends RobotBasedTestCase {
   }
 
   private static class MyWindow extends TestWindow {
-    private static final long serialVersionUID = 1L;
-
     final JComboBox comboBox = new JComboBox(array("One", "Two", "Three"));
 
     static MyWindow createNew() {

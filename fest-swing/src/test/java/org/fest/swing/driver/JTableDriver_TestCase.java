@@ -169,8 +169,6 @@ public abstract class JTableDriver_TestCase extends RobotBasedTestCase {
   }
 
   static class MyWindow extends TestWindow {
-    private static final long serialVersionUID = 1L;
-
     private static final Dimension TABLE_SIZE = new Dimension(400, 100);
 
     static final int COLUMN_COUNT = 6;

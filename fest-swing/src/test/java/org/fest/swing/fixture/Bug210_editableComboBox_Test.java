@@ -62,8 +62,6 @@ public class Bug210_editableComboBox_Test extends RobotBasedTestCase {
   }
 
   private static class MyDialog extends JDialog {
-    private static final long serialVersionUID = 1L;
-
     @RunsInEDT
     static MyDialog createNew(final String[] items) {
       return execute(new GuiQuery<MyDialog>() {

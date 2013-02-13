@@ -41,8 +41,6 @@ import org.fest.swing.edt.GuiQuery;
  * @author Yvonne Wang
  */
 public final class TestList extends JList {
-  private static final long serialVersionUID = 1L;
-
   final DefaultListModel model = new DefaultListModel();
 
   @RunsInCurrentThread
@@ -83,8 +81,6 @@ public final class TestList extends JList {
   }
 
   private static class ListTransferHandler extends StringTransferHandler<JList> {
-    private static final long serialVersionUID = 1L;
-
     ListTransferHandler() {
       super(JList.class);
     }

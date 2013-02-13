@@ -32,8 +32,6 @@ import org.fest.swing.edt.GuiQuery;
  * @author Alex Ruiz
  */
 public class TestApplet extends JApplet {
-  private static final long serialVersionUID = 1L;
-
   @GuardedBy("this")
   private boolean initialized;
   @GuardedBy("this")

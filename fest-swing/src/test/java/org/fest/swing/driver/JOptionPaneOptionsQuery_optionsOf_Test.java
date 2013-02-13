@@ -49,8 +49,6 @@ public class JOptionPaneOptionsQuery_optionsOf_Test extends RobotBasedTestCase {
   }
 
   private static class MyOptionPane extends JOptionPane {
-    private static final long serialVersionUID = 1L;
-
     private boolean recording;
     private final MethodInvocations methodInvocations = new MethodInvocations();
 

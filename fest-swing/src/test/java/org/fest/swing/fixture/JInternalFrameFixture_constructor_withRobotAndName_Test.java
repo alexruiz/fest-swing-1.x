@@ -56,8 +56,6 @@ public class JInternalFrameFixture_constructor_withRobotAndName_Test extends Rob
   }
 
   private static class MyWindow extends TestMdiWindow {
-    private static final long serialVersionUID = 1L;
-
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
         @Override

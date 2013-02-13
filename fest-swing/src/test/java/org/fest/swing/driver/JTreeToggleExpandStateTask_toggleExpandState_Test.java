@@ -76,8 +76,6 @@ public class JTreeToggleExpandStateTask_toggleExpandState_Test extends RobotBase
   }
 
   private static class MyWindow extends TestWindow {
-    private static final long serialVersionUID = 1L;
-
     final JTree tree;
     final TreeNode treeRoot;
 

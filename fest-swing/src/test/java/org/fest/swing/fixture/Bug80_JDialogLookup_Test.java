@@ -64,8 +64,6 @@ public class Bug80_JDialogLookup_Test extends RobotBasedTestCase {
   }
 
   static class JDialogStarter extends JDialog {
-    private static final long serialVersionUID = 1L;
-
     static JDialogStarter createNew() {
       return execute(new GuiQuery<JDialogStarter>() {
         @Override
@@ -89,9 +87,7 @@ public class Bug80_JDialogLookup_Test extends RobotBasedTestCase {
     }
 
     private class OpenJDialogAction extends AbstractAction {
-      private static final long serialVersionUID = 1L;
-
-      OpenJDialogAction() {
+        OpenJDialogAction() {
         super("Start!");
       }
 
@@ -104,9 +100,7 @@ public class Bug80_JDialogLookup_Test extends RobotBasedTestCase {
     }
 
     private static class NestedJDialog extends JDialog {
-      private static final long serialVersionUID = 1L;
-
-      NestedJDialog(JDialog owner) {
+        NestedJDialog(JDialog owner) {
         super(owner, true);
         setContentPane(createContentPane());
         setName("NestedDialog");

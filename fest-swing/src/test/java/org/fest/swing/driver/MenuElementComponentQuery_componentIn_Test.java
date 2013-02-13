@@ -53,8 +53,6 @@ public class MenuElementComponentQuery_componentIn_Test extends RobotBasedTestCa
   }
 
   private static class MyWindow extends TestWindow {
-    private static final long serialVersionUID = 1L;
-
     final MyMenu menu = new MyMenu();
 
     @RunsInEDT
@@ -76,8 +74,6 @@ public class MenuElementComponentQuery_componentIn_Test extends RobotBasedTestCa
   }
 
   private static class MyMenu extends JMenu {
-    private static final long serialVersionUID = 1L;
-
     private boolean recording;
     private final MethodInvocations methodInvocations = new MethodInvocations();
 

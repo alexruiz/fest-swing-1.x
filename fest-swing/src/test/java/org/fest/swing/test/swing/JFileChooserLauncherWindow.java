@@ -35,8 +35,6 @@ import org.fest.swing.edt.GuiQuery;
  * @author Alex Ruiz
  */
 public class JFileChooserLauncherWindow extends TestWindow {
-  private static final long serialVersionUID = 1L;
-
   @RunsInEDT
   public static JFileChooserLauncherWindow createNew(final Class<?> testClass) {
     return execute(new GuiQuery<JFileChooserLauncherWindow>() {

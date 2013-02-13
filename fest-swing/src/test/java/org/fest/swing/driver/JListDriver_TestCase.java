@@ -149,7 +149,6 @@ public abstract class JListDriver_TestCase extends RobotBasedTestCase {
   }
 
   static class MyWindow extends TestWindow {
-    private static final long serialVersionUID = 1L;
     private static final Dimension LIST_SIZE = new Dimension(80, 40);
 
     final TestList list = new TestList("one", "two", "three");

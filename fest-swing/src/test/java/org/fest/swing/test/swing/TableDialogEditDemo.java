@@ -42,8 +42,6 @@ import javax.swing.table.TableColumn;
  * custom cell renderer and editor for the color data.
  */
 public class TableDialogEditDemo extends JPanel {
-  private static final long serialVersionUID = 1L;
-
   public final JTable table;
 
   public TableDialogEditDemo() {
@@ -83,8 +81,6 @@ public class TableDialogEditDemo extends JPanel {
   }
 
   private static class MyTableModel extends AbstractTableModel {
-    private static final long serialVersionUID = 1L;
-
     private final String[] columnNames = { "First Name", "Favorite Color", "Sport", "# of Years", "Vegetarian" };
     private final Object[][] data = { { "Mary", new Color(153, 0, 153), "Snowboarding", 5, false },
         { "Alison", new Color(51, 51, 153), "Rowing", 3, true },

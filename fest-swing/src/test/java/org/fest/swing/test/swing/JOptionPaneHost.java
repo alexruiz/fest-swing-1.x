@@ -49,8 +49,6 @@ import org.fest.swing.annotation.RunsInCurrentThread;
  * @author Alex Ruiz
  */
 public class JOptionPaneHost extends JDialog {
-  private static final long serialVersionUID = 1L;
-
   @RunsInCurrentThread
   public static JOptionPaneHost host(JOptionPane optionPane, String title) {
     JOptionPaneHost host = new JOptionPaneHost(title);

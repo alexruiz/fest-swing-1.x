@@ -117,8 +117,6 @@ public class ContainerFixtureJScrollBarLookupTest extends RobotBasedTestCase {
   }
 
   private static class MyWindow extends TestWindow {
-    private static final long serialVersionUID = 1L;
-
     final JScrollBar scrollBar = new JScrollBar(VERTICAL, 8, 1, 6, 10);
 
     static MyWindow createNew() {

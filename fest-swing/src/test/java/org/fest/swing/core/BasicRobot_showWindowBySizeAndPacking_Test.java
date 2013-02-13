@@ -65,7 +65,6 @@ public class BasicRobot_showWindowBySizeAndPacking_Test extends EDTSafeTestCase 
   }
 
   private static class WindowToShow extends JWindow {
-    private static final long serialVersionUID = 1L;
     private boolean packed;
 
     @Override

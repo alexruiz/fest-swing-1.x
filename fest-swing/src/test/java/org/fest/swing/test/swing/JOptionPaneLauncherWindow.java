@@ -36,8 +36,6 @@ import org.fest.swing.edt.GuiQuery;
  * @author Alex Ruiz
  */
 public class JOptionPaneLauncherWindow extends TestWindow {
-  private static final long serialVersionUID = 1L;
-
   @RunsInEDT
   public static JOptionPaneLauncherWindow createNew(final Class<?> testClass) {
     return execute(new GuiQuery<JOptionPaneLauncherWindow>() {

@@ -173,8 +173,6 @@ public abstract class JTreeDriver_TestCase extends RobotBasedTestCase {
   }
 
   static class MyWindow extends TestWindow {
-    private static final long serialVersionUID = 1L;
-
     static final Dimension TREE_SIZE = new Dimension(200, 100);
 
     @RunsInEDT

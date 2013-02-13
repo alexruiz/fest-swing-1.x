@@ -117,8 +117,6 @@ public class ContainerFixtureJSpinnerLookupTest extends RobotBasedTestCase {
   }
 
   private static class MyWindow extends TestWindow {
-    private static final long serialVersionUID = 1L;
-
     final JSpinner spinner = new JSpinner(new SpinnerNumberModel(8, 6, 10, 1));
 
     static MyWindow createNew() {

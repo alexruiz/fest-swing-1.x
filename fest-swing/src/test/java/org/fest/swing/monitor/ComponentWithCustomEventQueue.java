@@ -25,8 +25,6 @@ import javax.swing.JComponent;
  * @author Alex Ruiz
  */
 class ComponentWithCustomEventQueue extends JComponent {
-  private static final long serialVersionUID = 1L;
-
   private final Toolkit toolkit;
 
   ComponentWithCustomEventQueue(Toolkit toolkit) {

@@ -42,8 +42,6 @@ public abstract class JScrollPaneDriver_TestCase extends RobotBasedTestCase {
   }
 
   static class MyWindow extends TestWindow {
-    private static final long serialVersionUID = 1L;
-
     final JScrollPane scrollPane = new JScrollPane();
     final JScrollBar horizontalScrollBar = new JScrollBar();
     final JScrollBar verticalScrollBar = new JScrollBar();

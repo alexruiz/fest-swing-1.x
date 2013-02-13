@@ -1,15 +1,15 @@
 /*
  * Created on Dec 23, 2007
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
- * 
+ *
  * Copyright @2007-2013 the original author or authors.
  */
 package org.fest.swing.format;
@@ -31,7 +31,7 @@ import org.fest.util.Arrays;
 
 /**
  * Formatter for {@code JTree}s.
- * 
+ *
  * @author Alex Ruiz
  */
 public class JTreeFormatter extends ComponentFormatterTemplate {
@@ -47,7 +47,7 @@ public class JTreeFormatter extends ComponentFormatterTemplate {
   /**
    * Returns the {@code String} representation of the given {@code Component}, which should be a {@code JTree} (or
    * subclass.)
-   * 
+   *
    * @param c the given {@code Component}.
    * @return the {@code String} representation of the given {@code JTree}.
    */
@@ -55,8 +55,8 @@ public class JTreeFormatter extends ComponentFormatterTemplate {
   protected @Nonnull String doFormat(@Nonnull Component c) {
     JTree tree = (JTree) c;
     String format = "%s[name=%s, selectionCount=%d, selectionPaths=%s, selectionMode=%s, enabled=%b, visible=%b, showing=%b";
-    return String.format(tree.getClass().getName(), quote(tree.getName()), tree.getSelectionCount(),
-        Arrays.format(selectionPaths(tree)), selectionMode(tree), tree.isEnabled(), tree.isShowing(), tree.isShowing());
+    return String.format(format, tree.getClass().getName(), quote(tree.getName()), tree.getSelectionCount(),
+        Arrays.format(selectionPaths(tree)), selectionMode(tree), tree.isEnabled(), tree.isVisible(), tree.isShowing());
   }
 
   private @Nonnull String[] selectionPaths(@Nonnull JTree tree) {

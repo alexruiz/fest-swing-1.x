@@ -28,8 +28,6 @@ import javax.swing.text.PlainDocument;
  * @author matthiaso
  */
 public class ExampleDocument extends PlainDocument {
-  private static final long serialVersionUID = 1L;
-
   /*
    * Inserts a text with a maximum length of 10 characters.
    */

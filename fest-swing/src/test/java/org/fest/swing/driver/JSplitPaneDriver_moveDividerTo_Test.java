@@ -110,8 +110,6 @@ public class JSplitPaneDriver_moveDividerTo_Test extends RobotBasedTestCase {
   }
 
   private static class MyWindow extends TestWindow {
-    private static final long serialVersionUID = 1L;
-
     final JSplitPane splitPane;
 
     @RunsInEDT

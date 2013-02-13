@@ -71,8 +71,6 @@ public class AbstractButtonSelectedQuery_isSelected_Test extends RobotBasedTestC
   }
 
   private static class MyWindow extends TestWindow {
-    private static final long serialVersionUID = 1L;
-
     @RunsInEDT
     static MyWindow createNew() {
       return GuiActionRunner.execute(new GuiQuery<MyWindow>() {
@@ -92,8 +90,6 @@ public class AbstractButtonSelectedQuery_isSelected_Test extends RobotBasedTestC
   }
 
   private static class MyCheckBox extends JCheckBox {
-    private static final long serialVersionUID = 1L;
-
     private boolean recording;
     private final MethodInvocations methodInvocations = new MethodInvocations();
 

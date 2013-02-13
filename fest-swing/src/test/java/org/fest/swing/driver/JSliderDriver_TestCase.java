@@ -77,8 +77,6 @@ public abstract class JSliderDriver_TestCase extends RobotBasedTestCase {
   }
 
   static class MyWindow extends TestWindow {
-    private static final long serialVersionUID = 1L;
-
     final JSlider slider = new JSlider();
 
     @RunsInEDT

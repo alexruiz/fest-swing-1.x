@@ -47,8 +47,6 @@ public abstract class ContainerFixture_button_TestCase extends RobotBasedTestCas
   }
 
   static class MyWindow extends TestWindow {
-    private static final long serialVersionUID = 1L;
-
     final JButton button = new JButton("Click Me");
 
     static MyWindow createNew(final Class<?> testClass) {

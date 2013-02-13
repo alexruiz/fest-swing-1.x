@@ -79,8 +79,6 @@ public class ContainersTest {
   }
 
   private static class MyPanel extends JPanel {
-    private static final long serialVersionUID = 1L;
-
     private final GridBagConstraints c = new GridBagConstraints();
 
     MyPanel() {

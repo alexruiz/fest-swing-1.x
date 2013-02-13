@@ -63,8 +63,6 @@ public class ContainerComponentsQuery_componentsOf_Test extends SequentialEDTSaf
   }
 
   private static class MyWindow extends TestWindow {
-    private static final long serialVersionUID = 1L;
-
     final JButton button = new JButton("A button");
 
     @RunsInEDT

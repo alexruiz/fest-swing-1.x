@@ -117,8 +117,6 @@ public class ContainerFixtureJListLookupTest extends RobotBasedTestCase {
   }
 
   private static class MyWindow extends TestWindow {
-    private static final long serialVersionUID = 1L;
-
     final JList list = new JList(array("One", "Two", "Three"));
 
     static MyWindow createNew() {

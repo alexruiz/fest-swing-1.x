@@ -68,8 +68,6 @@ public class JSliderSetValueTask_setValue_Test extends RobotBasedTestCase {
   }
 
   private static class MyWindow extends TestWindow {
-    private static final long serialVersionUID = 1L;
-
     final JSlider slider = new JSlider(6, 80);
 
     @RunsInEDT

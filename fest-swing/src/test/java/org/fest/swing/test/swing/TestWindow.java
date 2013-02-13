@@ -39,8 +39,6 @@ import org.fest.swing.edt.GuiTask;
  * @author Alex Ruiz
  */
 public class TestWindow extends JFrame {
-  private static final long serialVersionUID = 1L;
-
   static final Point DEFAULT_WINDOW_LOCATION = new Point(100, 100);
 
   /**

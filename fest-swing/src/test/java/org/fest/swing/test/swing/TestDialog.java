@@ -43,8 +43,6 @@ import org.fest.swing.test.task.FrameShowTask;
 public class TestDialog extends JDialog {
   private static final Dimension DEFAULT_PREFERRED_SIZE = new Dimension(200, 100);
 
-  private static final long serialVersionUID = 1L;
-
   static final Point DEFAULT_DIALOG_LOCATION = new Point(200, 200);
 
   /**

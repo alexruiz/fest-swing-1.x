@@ -56,8 +56,6 @@ public class JTreeChildOfPathCountQuery_childCount_Test extends RobotBasedTestCa
   }
 
   private static class MyWindow extends TestWindow {
-    private static final long serialVersionUID = 1L;
-
     @RunsInEDT
     static MyWindow createNew(final int treeRootChildCount) {
       return execute(new GuiQuery<MyWindow>() {

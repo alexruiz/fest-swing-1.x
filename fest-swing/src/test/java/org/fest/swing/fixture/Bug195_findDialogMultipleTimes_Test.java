@@ -87,8 +87,6 @@ public class Bug195_findDialogMultipleTimes_Test extends RobotBasedTestCase {
   }
 
   private static class TestDialog extends JDialog {
-    private static final long serialVersionUID = 1L;
-
     JButton okayButton = new JButton();
 
     @RunsInEDT
@@ -115,8 +113,6 @@ public class Bug195_findDialogMultipleTimes_Test extends RobotBasedTestCase {
 
   // Simple action for the dialog that closes the dialog.
   private static class OKAction extends AbstractAction {
-    private static final long serialVersionUID = 1L;
-
     private final JDialog dialog;
 
     public OKAction(JDialog dialog) {

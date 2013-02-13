@@ -57,8 +57,6 @@ public abstract class JTableColumnByIdentifierQuery_TestCase extends RobotBasedT
   }
 
   static class MyWindow extends TestWindow {
-    private static final long serialVersionUID = 1L;
-
     final MyTable table = new MyTable();
 
     @RunsInEDT
@@ -78,8 +76,6 @@ public abstract class JTableColumnByIdentifierQuery_TestCase extends RobotBasedT
   }
 
   static class MyTable extends TestTable {
-    private static final long serialVersionUID = 1L;
-
     private boolean recording;
     private final MethodInvocations methodInvocations = new MethodInvocations();
 

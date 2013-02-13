@@ -30,8 +30,6 @@ import org.fest.swing.test.swing.TestWindow;
  * @author Alex Ruiz
  */
 class TableDialogEditDemoWindow extends TestWindow {
-  private static final long serialVersionUID = 1L;
-
   final JTable table;
 
   @RunsInEDT

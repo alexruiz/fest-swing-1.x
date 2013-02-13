@@ -47,8 +47,6 @@ public abstract class ContainerFixture_progressBar_TestCase extends RobotBasedTe
   }
 
   static class MyWindow extends TestWindow {
-    private static final long serialVersionUID = 1L;
-
     final JProgressBar progressBar = new JProgressBar();
 
     static MyWindow createNew(final Class<?> testClass) {

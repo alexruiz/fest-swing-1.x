@@ -65,8 +65,6 @@ public class SingleComponentHierarchy_childrenOf_Test extends SingleComponentHie
   }
 
   private static class FrameWithButton extends JFrame {
-    private static final long serialVersionUID = 1L;
-
     final JButton button = new JButton();
 
     static FrameWithButton createNew() {

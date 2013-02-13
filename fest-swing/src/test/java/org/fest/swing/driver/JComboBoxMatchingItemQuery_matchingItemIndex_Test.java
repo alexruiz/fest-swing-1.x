@@ -82,8 +82,6 @@ public class JComboBoxMatchingItemQuery_matchingItemIndex_Test extends RobotBase
   }
 
   private static class MyWindow extends TestWindow {
-    private static final long serialVersionUID = 1L;
-
     final JComboBox comboBox = new JComboBox(array("aaa", "bbb", "ccc"));
 
     @RunsInEDT

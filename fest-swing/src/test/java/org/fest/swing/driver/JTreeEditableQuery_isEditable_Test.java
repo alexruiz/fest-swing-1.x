@@ -70,8 +70,6 @@ public class JTreeEditableQuery_isEditable_Test extends RobotBasedTestCase {
   }
 
   private static class MyWindow extends TestWindow {
-    private static final long serialVersionUID = 1L;
-
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
@@ -91,8 +89,6 @@ public class JTreeEditableQuery_isEditable_Test extends RobotBasedTestCase {
   }
 
   private static class MyTree extends JTree {
-    private static final long serialVersionUID = 1L;
-
     private boolean recording;
     private final MethodInvocations methodInvocations = new MethodInvocations();
 

@@ -56,8 +56,6 @@ public class ComponentSizeQuery_sizeOf_Test extends SequentialEDTSafeTestCase {
   }
 
   private static class MyWindow extends TestWindow {
-    private static final long serialVersionUID = 1L;
-
     private boolean recording;
     private final MethodInvocations methodInvocations = new MethodInvocations();
 

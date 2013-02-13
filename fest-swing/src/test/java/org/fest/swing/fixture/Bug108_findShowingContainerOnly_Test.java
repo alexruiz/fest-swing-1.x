@@ -52,8 +52,6 @@ public class Bug108_findShowingContainerOnly_Test extends RobotBasedTestCase {
   }
 
   private static class MyWindow extends TestWindow {
-    private static final long serialVersionUID = 1L;
-
     final MyInternalFrame invisibleFrame = MyInternalFrame.createInvisible();
     final MyInternalFrame visibleFrame = MyInternalFrame.createVisible();
 
@@ -77,8 +75,6 @@ public class Bug108_findShowingContainerOnly_Test extends RobotBasedTestCase {
   }
 
   private static class MyInternalFrame extends JInternalFrame {
-    private static final long serialVersionUID = 1L;
-
     private static int instanceCounter;
 
     static MyInternalFrame createVisible() {

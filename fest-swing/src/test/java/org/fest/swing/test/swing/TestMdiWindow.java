@@ -32,8 +32,6 @@ import org.fest.swing.edt.GuiQuery;
  * @author Alex Ruiz
  */
 public class TestMdiWindow extends TestWindow {
-  private static final long serialVersionUID = 1L;
-
   private static int internalFrameCounter;
 
   /**

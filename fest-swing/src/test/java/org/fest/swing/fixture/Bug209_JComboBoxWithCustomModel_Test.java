@@ -63,8 +63,6 @@ public class Bug209_JComboBoxWithCustomModel_Test extends RobotBasedTestCase {
   }
 
   private static class MyDialog extends JDialog {
-    private static final long serialVersionUID = 1L;
-
     @RunsInEDT
     static MyDialog createNew(final NamedObject[] items) {
       return execute(new GuiQuery<MyDialog>() {
@@ -87,8 +85,6 @@ public class Bug209_JComboBoxWithCustomModel_Test extends RobotBasedTestCase {
   }
 
   private static class NamedObjectCellRenderer extends DefaultListCellRenderer {
-    private static final long serialVersionUID = 1L;
-
     NamedObjectCellRenderer() {
     }
 

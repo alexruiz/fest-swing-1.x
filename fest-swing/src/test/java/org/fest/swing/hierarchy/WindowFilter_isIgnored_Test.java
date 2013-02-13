@@ -73,8 +73,6 @@ public class WindowFilter_isIgnored_Test extends WindowFilter_TestCase {
   }
 
   private static class MyWindow extends TestWindow {
-    private static final long serialVersionUID = 1L;
-
     @RunsInEDT
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {

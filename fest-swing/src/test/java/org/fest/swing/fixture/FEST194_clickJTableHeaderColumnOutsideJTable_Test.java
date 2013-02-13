@@ -73,8 +73,6 @@ public class FEST194_clickJTableHeaderColumnOutsideJTable_Test extends RobotBase
   }
 
   private static class MyWindow extends TestWindow {
-    private static final long serialVersionUID = 1L;
-
     private static final int COLUMN_WIDTH = 200;
     private static final Dimension FRAME_SIZE = new Dimension((int) (COLUMN_WIDTH * 1.3), 200);
 

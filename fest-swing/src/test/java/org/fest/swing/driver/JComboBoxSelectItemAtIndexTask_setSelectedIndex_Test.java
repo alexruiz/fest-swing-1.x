@@ -62,8 +62,6 @@ public class JComboBoxSelectItemAtIndexTask_setSelectedIndex_Test extends RobotB
   }
 
   private static class MyWindow extends TestWindow {
-    private static final long serialVersionUID = 1L;
-
     final JComboBox comboBox = new JComboBox(array("first", "second", "third"));
 
     @RunsInEDT

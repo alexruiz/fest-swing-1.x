@@ -42,8 +42,6 @@ public abstract class DragAwareEventQueue_TestCase {
   }
 
   static class MyEvent extends AWTEvent implements ActiveEvent {
-    private static final long serialVersionUID = 1L;
-
     boolean dispatched;
 
     MyEvent() {

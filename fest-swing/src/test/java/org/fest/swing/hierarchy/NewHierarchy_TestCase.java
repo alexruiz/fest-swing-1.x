@@ -57,8 +57,6 @@ public abstract class NewHierarchy_TestCase extends SequentialEDTSafeTestCase {
   // TODO Test method dispose(Window)
 
   static class MyWindow extends TestWindow {
-    private static final long serialVersionUID = 1L;
-
     @RunsInEDT
     static MyWindow createNew(final Class<?> testClass) {
       return execute(new GuiQuery<MyWindow>() {

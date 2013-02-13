@@ -78,7 +78,6 @@ public class JListSelectionValuesQuery_selectionValues_Test extends RobotBasedTe
   }
 
   private static class MyWindow extends TestWindow {
-    private static final long serialVersionUID = 1L;
     private static final Dimension LIST_SIZE = new Dimension(80, 40);
 
     final JList list = new JList(array("One", "Two", "Three", "Four"));

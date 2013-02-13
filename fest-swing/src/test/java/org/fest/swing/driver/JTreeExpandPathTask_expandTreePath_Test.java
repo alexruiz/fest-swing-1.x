@@ -74,8 +74,6 @@ public class JTreeExpandPathTask_expandTreePath_Test extends RobotBasedTestCase 
   }
 
   private static class MyWindow extends TestWindow {
-    private static final long serialVersionUID = 1L;
-
     final JTree tree;
     final DefaultMutableTreeNode root;
     final DefaultMutableTreeNode node;

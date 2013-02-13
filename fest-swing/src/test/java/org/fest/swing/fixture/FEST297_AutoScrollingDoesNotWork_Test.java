@@ -60,8 +60,6 @@ public class FEST297_AutoScrollingDoesNotWork_Test extends RobotBasedTestCase {
   }
 
   private static class MyWindow extends TestWindow {
-    private static final long serialVersionUID = 1L;
-
     private final JButton button = new JButton("Click me");
 
     @RunsInEDT

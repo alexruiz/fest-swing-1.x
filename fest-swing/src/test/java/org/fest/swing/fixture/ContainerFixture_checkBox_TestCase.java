@@ -47,8 +47,6 @@ public abstract class ContainerFixture_checkBox_TestCase extends RobotBasedTestC
   }
 
   private static class MyWindow extends TestWindow {
-    private static final long serialVersionUID = 1L;
-
     final JCheckBox checkBox = new JCheckBox("Check Me");
 
     static MyWindow createNew(final Class<?> testClass) {

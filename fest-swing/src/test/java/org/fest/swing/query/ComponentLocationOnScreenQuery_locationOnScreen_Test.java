@@ -51,8 +51,6 @@ public class ComponentLocationOnScreenQuery_locationOnScreen_Test extends RobotB
   }
 
   private static class MyWindow extends TestWindow {
-    private static final long serialVersionUID = 1L;
-
     private boolean recording;
     private final MethodInvocations methodInvocations = new MethodInvocations();
 

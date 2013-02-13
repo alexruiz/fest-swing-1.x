@@ -34,8 +34,6 @@ import javax.swing.TransferHandler;
  * @author Alex Ruiz
  */
 abstract class StringTransferHandler<T extends JComponent> extends TransferHandler {
-  private static final long serialVersionUID = 1L;
-
   private static final int[] DEFAULT_ROWS = null;
   private static final int DEFAULT_ADD_INDEX = -1;
   private static final int DEFAULT_ADD_COUNT = 0;

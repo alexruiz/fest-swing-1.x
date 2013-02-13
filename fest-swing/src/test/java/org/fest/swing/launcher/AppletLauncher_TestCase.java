@@ -56,8 +56,6 @@ public abstract class AppletLauncher_TestCase extends SequentialEDTSafeTestCase 
   }
 
   static class AnApplet extends Applet {
-    private static final long serialVersionUID = 1L;
-
     AnApplet(String name) {
       if (name == null) {
         return;

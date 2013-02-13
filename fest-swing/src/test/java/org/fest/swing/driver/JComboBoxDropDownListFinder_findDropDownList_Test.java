@@ -116,8 +116,6 @@ public class JComboBoxDropDownListFinder_findDropDownList_Test extends RobotBase
   }
 
   private static class MyWindow extends TestWindow {
-    private static final long serialVersionUID = 1L;
-
     final JComboBox comboBox = new JComboBox(array("first", "second", "third"));
     final JTextField textField = new JTextField(20);
 

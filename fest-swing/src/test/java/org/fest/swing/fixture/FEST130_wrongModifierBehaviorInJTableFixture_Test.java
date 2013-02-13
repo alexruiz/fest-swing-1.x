@@ -93,8 +93,6 @@ public class FEST130_wrongModifierBehaviorInJTableFixture_Test extends RobotBase
   }
 
   private static class MyWindow extends TestWindow {
-    private static final long serialVersionUID = 1L;
-
     static MyWindow createNew() {
       return execute(new GuiQuery<MyWindow>() {
         @Override
@@ -119,7 +117,6 @@ public class FEST130_wrongModifierBehaviorInJTableFixture_Test extends RobotBase
   }
 
   private static class MyTableModel extends AbstractTableModel {
-    private static final long serialVersionUID = 1L;
     private final List<String> values;
 
     MyTableModel(List<String> values) {

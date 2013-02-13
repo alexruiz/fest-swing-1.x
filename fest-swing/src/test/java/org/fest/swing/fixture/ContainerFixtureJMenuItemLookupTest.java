@@ -108,8 +108,6 @@ public class ContainerFixtureJMenuItemLookupTest extends RobotBasedTestCase {
   }
 
   private static class MyWindow extends TestWindow {
-    private static final long serialVersionUID = 1L;
-
     final JMenu menuFile = new JMenu("File");
     final JMenuItem menuNew = new JMenuItem("New");
 

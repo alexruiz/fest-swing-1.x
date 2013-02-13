@@ -51,8 +51,6 @@ public class JScrollBarValueQuery_valueOf_Test extends RobotBasedTestCase {
   }
 
   private static class MyWindow extends TestWindow {
-    private static final long serialVersionUID = 1L;
-
     final MyScrollBar scrollBar = new MyScrollBar(VALUE, 2, 6, 10);
 
     @RunsInEDT
@@ -72,8 +70,6 @@ public class JScrollBarValueQuery_valueOf_Test extends RobotBasedTestCase {
   }
 
   private static class MyScrollBar extends JScrollBar {
-    private static final long serialVersionUID = 1L;
-
     private boolean recording;
     private final MethodInvocations methodInvocations = new MethodInvocations();
 

@@ -55,8 +55,6 @@ public abstract class WindowEventQueueMapping_withWindow_TestCase extends Window
   }
 
   static class MyWindow extends TestWindow {
-    private static final long serialVersionUID = 1L;
-
     @RunsInEDT
     static MyWindow createNew(final Toolkit toolkit, final Class<?> testClass) {
       return execute(new GuiQuery<MyWindow>() {
