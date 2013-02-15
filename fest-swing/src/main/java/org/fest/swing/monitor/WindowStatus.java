@@ -1,15 +1,15 @@
 /*
  * Created on Oct 17, 2007
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
- * 
+ *
  * Copyright @2007-2013 the original author or authors.
  */
 package org.fest.swing.monitor;
@@ -21,6 +21,7 @@ import static org.fest.swing.query.ComponentSizeQuery.sizeOf;
 
 import java.awt.AWTException;
 import java.awt.Dimension;
+import java.awt.Insets;
 import java.awt.Point;
 import java.awt.Robot;
 import java.awt.Window;
@@ -36,7 +37,7 @@ import org.fest.swing.util.RobotFactory;
 
 /**
  * Verification of the state of a window.
- * 
+ *
  * @author Alex Ruiz
  */
 class WindowStatus {
@@ -70,7 +71,7 @@ class WindowStatus {
 
   /**
    * Checks whether the given window is ready for input.
-   * 
+   *
    * @param w the given window.
    */
   @RunsInEDT
@@ -137,8 +138,14 @@ class WindowStatus {
   }
 
   @RunsInCurrentThread
-  private boolean shouldResize(@Nonnull Window w) {
-    return w.getWidth() < MINIMUM_WINDOW_SIZE.width || w.getHeight() < MINIMUM_WINDOW_SIZE.height;
+  private boolean shouldResize(@Nonnull Window window) {
+    Insets insets = window.getInsets();
+    int w = window.getWidth() - (insets.left + insets.right);
+    if (w < MINIMUM_WINDOW_SIZE.width) {
+      return true;
+    }
+    int h = window.getHeight() - (insets.top + insets.bottom);
+    return h < MINIMUM_WINDOW_SIZE.height;
   }
 
   static int sign() {
