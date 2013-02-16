@@ -17,6 +17,8 @@ package org.fest.swing.hierarchy;
 import static java.awt.event.ComponentEvent.COMPONENT_SHOWN;
 import static java.awt.event.WindowEvent.WINDOW_OPENED;
 import static org.fest.util.Lists.newArrayList;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 import java.awt.AWTEvent;
 import java.awt.event.ComponentEvent;
@@ -51,43 +53,20 @@ TransientWindowListener_eventDispatched_TestCase {
 
   @Test
   public void should_recognize_Window_if_it_is_implicitly_ignored() {
-    new EasyMockTemplate(mockWindowFilter) {
-      @Override
-      protected void expectations() {
-        expect(mockWindowFilter.isImplicitlyIgnored(eventSource)).andReturn(true);
-        mockWindowFilter.recognize(eventSource);
-        expectLastCall();
-      }
-
-      @Override
-      protected void codeToTest() {
-        listener.eventDispatched(event());
-      }
-    }.run();
+    when(windowFilter.isImplicitlyIgnored(eventSource)).thenReturn(true);
+    listener.eventDispatched(event());
+    verify(windowFilter).recognize(eventSource);
   }
 
   @Test
   public void should_ignore_Window_if_parent_is_ignored() {
-    new EasyMockTemplate(mockWindowFilter) {
-      @Override
-      protected void expectations() {
-        expect(mockWindowFilter.isImplicitlyIgnored(eventSource)).andReturn(false);
-        expect(mockWindowFilter.isIgnored(parent)).andReturn(true);
-        mockWindowFilter.ignore(eventSource);
-        expectLastCall();
-      }
-
-      @Override
-      protected void codeToTest() {
-        listener.eventDispatched(event());
-      }
-    }.run();
+    when(windowFilter.isImplicitlyIgnored(eventSource)).thenReturn(false);
+    when(windowFilter.isIgnored(parent)).thenReturn(true);
+    listener.eventDispatched(event());
+    verify(windowFilter).ignore(eventSource);
   }
 
   private AWTEvent event() {
-    if (eventId == WINDOW_OPENED) {
-      return new WindowEvent(eventSource, eventId);
-    }
-    return new ComponentEvent(eventSource, eventId);
+    return eventId == WINDOW_OPENED ? new WindowEvent(eventSource, eventId) : new ComponentEvent(eventSource, eventId);
   }
 }
