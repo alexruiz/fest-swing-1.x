@@ -39,6 +39,6 @@ public class EventNormalizer_stopListening_Test extends EventNormalizer_TestCase
     int mask = 8;
     eventNormalizer.startListening(toolkit, delegateEventListenerMock(), mask);
     eventNormalizer.stopListening();
-    assertEventNormalizerIsNotInToolkit(toolkit, mask);
+    checkEventNormalizerNotInToolkit(toolkit, mask);
   }
 }

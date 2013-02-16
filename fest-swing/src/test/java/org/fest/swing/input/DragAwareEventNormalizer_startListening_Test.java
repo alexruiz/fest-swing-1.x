@@ -33,7 +33,7 @@ public class DragAwareEventNormalizer_startListening_Test extends DragAwareEvent
     toolkit.eventQueue(eventQueue);
     int mask = 8;
     eventNormalizer.startListening(toolkit, delegateEventListenerMock(), mask);
-    assertEventNormalizerIsInToolkit(toolkit, eventNormalizer, mask);
+    checkEventNormalizerInToolkit(toolkit, eventNormalizer, mask);
     assertThat(eventQueue.pushedEventQueue).isInstanceOf(DragAwareEventQueue.class);
   }
 }

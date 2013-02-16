@@ -1,15 +1,15 @@
 /*
  * Created on Mar 14, 2010
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
- * 
+ *
  * Copyright @2010-2013 the original author or authors.
  */
 package org.fest.swing.keystroke;
@@ -27,8 +27,10 @@ import static org.fest.swing.keystroke.KeyStrokeMapping.mapping;
 import static org.fest.swing.keystroke.KeyStrokeMappingProvider.NO_MASK;
 import static org.fest.swing.test.core.CommonAssertions.failWhenExpectingException;
 import static org.fest.swing.util.Platform.isWindows;
+import static org.fest.util.Closeables.closeQuietly;
 import static org.fest.util.Files.newTemporaryFile;
-import static org.fest.util.Flushables.flush;
+import static org.fest.util.Flushables.flushQuietly;
+import static org.fest.util.SystemProperties.lineSeparator;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -43,7 +45,7 @@ import org.junit.Test;
 
 /**
  * Tests for {@link KeyStrokeMappingsParser#parse(String)}.
- * 
+ *
  * @author Alex Ruiz
  */
 public class KeyStrokeMappingProvider_parse_Test {
@@ -84,13 +86,13 @@ public class KeyStrokeMappingProvider_parse_Test {
     }
   }
 
-  @Test(expected = NullPointerException.class)
+  @Test(expected = AssertionError.class)
   public void should_throw_error_if_file_is_null() {
     File file = null;
     parser.parse(file);
   }
 
-  @Test(expected = IllegalArgumentException.class)
+  @Test(expected = AssertionError.class)
   public void should_throw_error_if_file_does_not_exist() {
     parser.parse(new File("abc.xyz"));
   }
@@ -117,11 +119,11 @@ public class KeyStrokeMappingProvider_parse_Test {
     try {
       for (String mapping : mappings) {
         output.write(mapping);
-        output.write(LINE_SEPARATOR);
+        output.write(lineSeparator());
       }
     } finally {
-      flush(output);
-      close(output);
+      flushQuietly(output);
+      closeQuietly(output);
     }
     return f;
   }
