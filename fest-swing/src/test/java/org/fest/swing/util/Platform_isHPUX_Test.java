@@ -28,13 +28,13 @@ import org.junit.Test;
 public class Platform_isHPUX_Test extends Platform_TestCase {
   @Test
   public void should_return_true_if_OS_is_HPUX() {
-    Platform.initialize(hpUX(), toolkitProvider);
+    Platform.initialize(hpUX(), toolkit);
     assertThat(Platform.isHPUX()).isTrue();
   }
 
   @Test
   public void should_return_false_if_OS_is_not_HPUX() {
-    Platform.initialize(windowsXP(), toolkitProvider);
+    Platform.initialize(windowsXP(), toolkit);
     assertThat(Platform.isHPUX()).isFalse();
   }
 }

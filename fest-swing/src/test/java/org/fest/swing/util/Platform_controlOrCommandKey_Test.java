@@ -20,8 +20,8 @@ import static java.awt.event.KeyEvent.VK_CONTROL;
 import static java.awt.event.KeyEvent.VK_META;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.util.Lists.newArrayList;
+import static org.mockito.Mockito.when;
 
-import java.awt.Toolkit;
 import java.util.Collection;
 
 import org.junit.Test;
@@ -54,17 +54,7 @@ public class Platform_controlOrCommandKey_Test extends Platform_TestCase {
 
   @Test
   public void should_return_control_or_command_key() {
-    final Toolkit toolkit = wireMockToolkit();
-    new EasyMockTemplate(toolkit) {
-      @Override
-      protected void expectations() {
-        expect(toolkit.getMenuShortcutKeyMask()).andReturn(mask);
-      }
-
-      @Override
-      protected void codeToTest() {
-        assertThat(Platform.controlOrCommandKey()).isEqualTo(keyCode);
-      }
-    }.run();
+    when(toolkit.getMenuShortcutKeyMask()).thenReturn(mask);
+    assertThat(Platform.controlOrCommandKey()).isEqualTo(keyCode);
   }
 }

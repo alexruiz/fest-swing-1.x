@@ -28,13 +28,13 @@ import org.junit.Test;
 public class Platform_isMacintosh_Test extends Platform_TestCase {
   @Test
   public void should_return_true_if_OS_is_Macintosh() {
-    Platform.initialize(macintosh(), toolkitProvider);
+    Platform.initialize(macintosh(), toolkit);
     assertThat(Platform.isMacintosh()).isTrue();
   }
 
   @Test
   public void should_return_false_if_OS_is_not_Macintosh() {
-    Platform.initialize(windowsXP(), toolkitProvider);
+    Platform.initialize(windowsXP(), toolkit);
     assertThat(Platform.isMacintosh()).isFalse();
   }
 }

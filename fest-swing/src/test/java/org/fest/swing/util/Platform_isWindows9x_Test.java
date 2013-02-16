@@ -28,13 +28,13 @@ import org.junit.Test;
 public class Platform_isWindows9x_Test extends Platform_TestCase {
   @Test
   public void should_return_true_if_OS_is_Windows9x() {
-    Platform.initialize(windows9x(), toolkitProvider);
+    Platform.initialize(windows9x(), toolkit);
     assertThat(Platform.isWindows9x()).isTrue();
   }
 
   @Test
   public void should_return_false_if_OS_is_not_Windows9x() {
-    Platform.initialize(macintosh(), toolkitProvider);
+    Platform.initialize(macintosh(), toolkit);
     assertThat(Platform.isWindows9x()).isFalse();
   }
 }

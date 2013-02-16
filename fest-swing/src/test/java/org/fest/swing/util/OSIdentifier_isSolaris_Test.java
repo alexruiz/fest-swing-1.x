@@ -47,27 +47,18 @@ public class OSIdentifier_isSolaris_Test extends OSIdentifier_TestCase {
 
   @Test
   public void should_return_Solaris_if_OS_name_starts_with_SunOS_or_Solaris() {
-    new EasyMockTemplate(propertyReader) {
-      @Override
-      protected void expectations() {
-        expectOSName(solaris);
-        expectNoMRJVersion();
-      }
-
-      @Override
-      protected void codeToTest() {
-        OSIdentifier osIdentifier = new OSIdentifier(propertyReader);
-        assertThat(osIdentifier.isSolaris()).isTrue();
-        assertThat(osIdentifier.isX11()).isTrue();
-        assertThat(osIdentifier.isHPUX()).isFalse();
-        assertThat(osIdentifier.isLinux()).isFalse();
-        assertThat(osIdentifier.isMacintosh()).isFalse();
-        assertThat(osIdentifier.isOSX()).isFalse();
-        assertThat(osIdentifier.isWindows()).isFalse();
-        assertThat(osIdentifier.isWindows9x()).isFalse();
-        assertThat(osIdentifier.isWindowsXP()).isFalse();
-        assertThat(osIdentifier.osFamily()).isEqualTo(UNIX);
-      }
-    }.run();
+    returnOSName(solaris);
+    returnNoMRJVersion();
+    OSIdentifier osIdentifier = new OSIdentifier(propertyReader);
+    assertThat(osIdentifier.isSolaris()).isTrue();
+    assertThat(osIdentifier.isX11()).isTrue();
+    assertThat(osIdentifier.isHPUX()).isFalse();
+    assertThat(osIdentifier.isLinux()).isFalse();
+    assertThat(osIdentifier.isMacintosh()).isFalse();
+    assertThat(osIdentifier.isOSX()).isFalse();
+    assertThat(osIdentifier.isWindows()).isFalse();
+    assertThat(osIdentifier.isWindows9x()).isFalse();
+    assertThat(osIdentifier.isWindowsXP()).isFalse();
+    assertThat(osIdentifier.osFamily()).isEqualTo(UNIX);
   }
 }

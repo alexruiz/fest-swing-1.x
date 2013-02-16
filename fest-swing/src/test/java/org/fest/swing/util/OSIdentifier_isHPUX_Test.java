@@ -47,27 +47,18 @@ public class OSIdentifier_isHPUX_Test extends OSIdentifier_TestCase {
 
   @Test
   public void should_return_HPUX_if_OS_name_is_equal_to_HPUX() {
-    new EasyMockTemplate(propertyReader) {
-      @Override
-      protected void expectations() {
-        expectOSName(hpUX);
-        expectNoMRJVersion();
-      }
-
-      @Override
-      protected void codeToTest() {
-        OSIdentifier osIdentifier = new OSIdentifier(propertyReader);
-        assertThat(osIdentifier.isHPUX()).isTrue();
-        assertThat(osIdentifier.isX11()).isTrue();
-        assertThat(osIdentifier.isLinux()).isFalse();
-        assertThat(osIdentifier.isMacintosh()).isFalse();
-        assertThat(osIdentifier.isOSX()).isFalse();
-        assertThat(osIdentifier.isSolaris()).isFalse();
-        assertThat(osIdentifier.isWindows()).isFalse();
-        assertThat(osIdentifier.isWindows9x()).isFalse();
-        assertThat(osIdentifier.isWindowsXP()).isFalse();
-        assertThat(osIdentifier.osFamily()).isEqualTo(UNIX);
-      }
-    }.run();
+    returnOSName(hpUX);
+    returnNoMRJVersion();
+    OSIdentifier osIdentifier = new OSIdentifier(propertyReader);
+    assertThat(osIdentifier.isHPUX()).isTrue();
+    assertThat(osIdentifier.isX11()).isTrue();
+    assertThat(osIdentifier.isLinux()).isFalse();
+    assertThat(osIdentifier.isMacintosh()).isFalse();
+    assertThat(osIdentifier.isOSX()).isFalse();
+    assertThat(osIdentifier.isSolaris()).isFalse();
+    assertThat(osIdentifier.isWindows()).isFalse();
+    assertThat(osIdentifier.isWindows9x()).isFalse();
+    assertThat(osIdentifier.isWindowsXP()).isFalse();
+    assertThat(osIdentifier.osFamily()).isEqualTo(UNIX);
   }
 }

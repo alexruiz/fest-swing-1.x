@@ -28,13 +28,13 @@ import org.junit.Test;
 public class Platform_isLinux_Test extends Platform_TestCase {
   @Test
   public void should_return_true_if_OS_is_Linux() {
-    Platform.initialize(linux(), toolkitProvider);
+    Platform.initialize(linux(), toolkit);
     assertThat(Platform.isLinux()).isTrue();
   }
 
   @Test
   public void should_return_false_if_OS_is_not_Linux() {
-    Platform.initialize(windowsXP(), toolkitProvider);
+    Platform.initialize(windowsXP(), toolkit);
     assertThat(Platform.isLinux()).isFalse();
   }
 }

@@ -28,13 +28,13 @@ import org.junit.Test;
 public class Platform_isWindowsXP_Test extends Platform_TestCase {
   @Test
   public void should_return_true_if_OS_is_WindowsXP() {
-    Platform.initialize(windowsXP(), toolkitProvider);
+    Platform.initialize(windowsXP(), toolkit);
     assertThat(Platform.isWindowsXP()).isTrue();
   }
 
   @Test
   public void should_return_false_if_OS_is_not_WindowsXP() {
-    Platform.initialize(macintosh(), toolkitProvider);
+    Platform.initialize(macintosh(), toolkit);
     assertThat(Platform.isWindowsXP()).isFalse();
   }
 }

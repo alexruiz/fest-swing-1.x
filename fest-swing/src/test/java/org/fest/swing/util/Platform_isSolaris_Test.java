@@ -28,13 +28,13 @@ import org.junit.Test;
 public class Platform_isSolaris_Test extends Platform_TestCase {
   @Test
   public void should_return_true_if_OS_is_Solaris() {
-    Platform.initialize(solaris(), toolkitProvider);
+    Platform.initialize(solaris(), toolkit);
     assertThat(Platform.isSolaris()).isTrue();
   }
 
   @Test
   public void should_return_false_if_OS_is_not_Solaris() {
-    Platform.initialize(windowsXP(), toolkitProvider);
+    Platform.initialize(windowsXP(), toolkit);
     assertThat(Platform.isSolaris()).isFalse();
   }
 }
