@@ -1,15 +1,15 @@
 /*
  * Created on Aug 27, 2009
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
- * 
+ *
  * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.finder;
@@ -23,7 +23,7 @@ import org.junit.Test;
 
 /**
  * Tests for {@link JFileChooserFinder#findFileChooser()}.
- * 
+ *
  * @author Alex Ruiz
  */
 public class JFileChooserFinder_findFileChooser_byType_Test extends JFileChooserFinder_TestCase {
@@ -31,7 +31,7 @@ public class JFileChooserFinder_findFileChooser_byType_Test extends JFileChooser
   public void should_find_JFileChooser() {
     clickBrowseButton();
     JFileChooserFixture found = JFileChooserFinder.findFileChooser().using(robot);
-    assertThat(found.target).isSameAs(window.fileChooser());
+    assertThat(found.target()).isSameAs(window.fileChooser());
   }
 
   @Test
@@ -39,7 +39,7 @@ public class JFileChooserFinder_findFileChooser_byType_Test extends JFileChooser
     window.launchDelay(200);
     clickBrowseButton();
     JFileChooserFixture found = JFileChooserFinder.findFileChooser().withTimeout(500, MILLISECONDS).using(robot);
-    assertThat(found.target).isSameAs(window.fileChooser());
+    assertThat(found.target()).isSameAs(window.fileChooser());
   }
 
   @Test
@@ -47,7 +47,7 @@ public class JFileChooserFinder_findFileChooser_byType_Test extends JFileChooser
     window.launchDelay(200);
     clickBrowseButton();
     JFileChooserFixture found = JFileChooserFinder.findFileChooser().withTimeout(500).using(robot);
-    assertThat(found.target).isSameAs(window.fileChooser());
+    assertThat(found.target()).isSameAs(window.fileChooser());
   }
 
   @Test(expected = WaitTimedOutError.class)
