@@ -373,7 +373,7 @@ public class JTableDriver extends JComponentDriver {
         if (!hasSelection(table)) {
           return;
         }
-        String format = "[%s] expected no selection but was:<rows=%s>, columns=<%s>";
+        String format = "[%s] expected no selection but was:<rows=%s, columns=%s>";
         String msg = String.format(format, propertyName(table, SELECTION_PROPERTY).value(),
             format(selectedRowsOf(table)), format(table.getSelectedColumns()));
         fail(msg);

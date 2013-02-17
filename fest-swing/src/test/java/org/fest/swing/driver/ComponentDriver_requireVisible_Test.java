@@ -38,7 +38,7 @@ public class ComponentDriver_requireVisible_Test extends ComponentDriver_TestCas
       driver.requireVisible(window);
       failWhenExpectingException();
     } catch (AssertionError e) {
-      assertThat(e.getMessage()).contains("property:'visible'").contains("expected:<true> but was:<false>");
+      assertThat(e.getMessage()).contains("property:'visible'").contains("expected:<[tru]e> but was:<[fals]e>");
     }
   }
 }

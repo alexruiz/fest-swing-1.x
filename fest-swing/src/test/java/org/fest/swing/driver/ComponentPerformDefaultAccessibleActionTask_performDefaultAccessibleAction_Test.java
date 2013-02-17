@@ -17,6 +17,9 @@ package org.fest.swing.driver;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.edt.GuiActionRunner.execute;
 import static org.fest.swing.test.core.CommonAssertions.failWhenExpectingException;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verifyZeroInteractions;
+import static org.mockito.Mockito.when;
 
 import java.awt.Component;
 import java.util.Locale;
@@ -48,7 +51,7 @@ public class ComponentPerformDefaultAccessibleActionTask_performDefaultAccessibl
 
   @Override
   protected void onSetUp() {
-    accessibleAction = createMock(AccessibleAction.class);
+    accessibleAction = mock(AccessibleAction.class);
     accessibleContext = new AccessibleContextStub(accessibleAction);
     MyWindow window = MyWindow.createNew(accessibleContext);
     component = window.component;
@@ -56,57 +59,31 @@ public class ComponentPerformDefaultAccessibleActionTask_performDefaultAccessibl
 
   @Test
   public void should_execute_first_Action_in_AccessibleAction() {
-    new EasyMockTemplate(accessibleAction) {
-      @Override
-      protected void expectations() {
-        expect(accessibleAction.getAccessibleActionCount()).andReturn(1);
-        expect(accessibleAction.doAccessibleAction(0)).andReturn(true);
-      }
-
-      @Override
-      protected void codeToTest() {
-        ComponentPerformDefaultAccessibleActionTask.performDefaultAccessibleAction(component);
-        robot.waitForIdle();
-      }
-    }.run();
+    when(accessibleAction.getAccessibleActionCount()).thenReturn(1);
+    when(accessibleAction.doAccessibleAction(0)).thenReturn(true);
+    ComponentPerformDefaultAccessibleActionTask.performDefaultAccessibleAction(component);
+    robot.waitForIdle();
   }
 
   @Test
   public void should_throw_error_if_AccessibleAction_is_null() {
     accessibleContext.accessibleAction(null);
     try {
-      new EasyMockTemplate(accessibleAction) {
-        @Override
-        protected void expectations() {
-        }
-
-        @Override
-        protected void codeToTest() {
-          ComponentPerformDefaultAccessibleActionTask.performDefaultAccessibleAction(component);
-          robot.waitForIdle();
-        }
-      }.run();
+      ComponentPerformDefaultAccessibleActionTask.performDefaultAccessibleAction(component);
+      robot.waitForIdle();
       failWhenExpectingException();
     } catch (ActionFailedException e) {
       assertActionFailedThrown(e);
     }
+    verifyZeroInteractions(accessibleAction);
   }
 
   @Test
   public void should_throw_error_if_AccessibleAction_is_empty() {
+    when(accessibleAction.getAccessibleActionCount()).thenReturn(0);
     try {
-      new EasyMockTemplate(accessibleAction) {
-        @Override
-        protected void expectations() {
-          expect(accessibleAction.getAccessibleActionCount()).andReturn(0);
-        }
-
-        @Override
-        protected void codeToTest() {
-          ComponentPerformDefaultAccessibleActionTask.performDefaultAccessibleAction(component);
-          robot.waitForIdle();
-        }
-      }.run();
+      ComponentPerformDefaultAccessibleActionTask.performDefaultAccessibleAction(component);
+      robot.waitForIdle();
       failWhenExpectingException();
     } catch (ActionFailedException e) {
       assertActionFailedThrown(e);

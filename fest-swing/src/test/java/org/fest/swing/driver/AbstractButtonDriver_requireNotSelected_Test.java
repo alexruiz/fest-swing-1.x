@@ -38,7 +38,7 @@ public class AbstractButtonDriver_requireNotSelected_Test extends AbstractButton
       driver.requireNotSelected(checkBox);
       failWhenExpectingException();
     } catch (AssertionError e) {
-      assertThat(e.getMessage()).contains("property:'selected'").contains("expected:<false> but was:<true>");
+      assertThat(e.getMessage()).contains("property:'selected'").contains("expected:<[fals]e> but was:<[tru]e>");
     }
   }
 }

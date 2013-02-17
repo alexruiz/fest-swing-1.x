@@ -42,7 +42,7 @@ public class JProgressBarDriver_requireDeterminate_Test extends JProgressBarDriv
       driver.requireDeterminate(progressBar);
       failWhenExpectingException();
     } catch (AssertionError e) {
-      assertThat(e.getMessage()).contains("property:'indeterminate'").contains("expected:<false> but was:<true>");
+      assertThat(e.getMessage()).contains("property:'indeterminate'").contains("expected:<[fals]e> but was:<[tru]e>");
     }
   }
 }

@@ -15,24 +15,20 @@
 package org.fest.swing.driver;
 
 import static org.fest.assertions.Assertions.assertThat;
-import static org.fest.swing.test.awt.TestAppletContexts.singletonAppletContextMock;
-
-import java.applet.AppletContext;
 
 import org.junit.Test;
 
 /**
- * Tests for {@link JAppletDriver#appletContextOf(javax.swing.JApplet)}.
+ * Tests for {@link JAppletDriver#appletResize(javax.swing.JApplet, int, int)}.
  * 
  * @author Alex Ruiz
  */
-public class JAppletDriver_appletContextOf_Test extends JAppletDriver_TestCase {
+public class JAppletDriver_appletResize_Test extends JAppletDriver_TestCase {
   @Test
-  public void should_return_AppletContext() {
-    AppletContext context = singletonAppletContextMock();
-    applet().updateAppletContext(context);
-    AppletContext result = driver().getAppletContext(applet());
-    assertThat(result).isSameAs(context);
-    assertThat(applet().wasMethodCalledInEDT("getAppletContext")).isTrue();
+  public void should_resize_JApplet() {
+    int w = 10;
+    int h = 20;
+    driver().appletResize(applet(), w, h);
+    assertThat(applet().wasMethodCalledInEDT("resize(10, 20)")).isTrue();
   }
 }

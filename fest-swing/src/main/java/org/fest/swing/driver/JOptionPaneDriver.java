@@ -27,7 +27,6 @@ import static org.fest.swing.driver.JOptionPaneOptionsQuery.optionsOf;
 import static org.fest.swing.driver.JOptionPaneTitleQuery.titleOf;
 import static org.fest.swing.driver.TextAssert.verifyThat;
 import static org.fest.util.Preconditions.checkNotNull;
-import static org.fest.util.ToString.toStringOf;
 
 import java.util.regex.Pattern;
 
@@ -124,8 +123,8 @@ public class JOptionPaneDriver extends JComponentDriver {
   @RunsInEDT
   public void requireMessage(@Nonnull JOptionPane optionPane, @Nullable Object message) {
     Object actual = messageOf(optionPane);
-    if (message instanceof String && actual instanceof String) {
-      requireMessage(optionPane, (String) message, (String) actual);
+    if (message instanceof String && actual != null) {
+      requireMessage(optionPane, (String) message, actual.toString());
       return;
     }
     assertThat(actual).as(messageProperty(optionPane)).isEqualTo(message);
@@ -151,7 +150,8 @@ public class JOptionPaneDriver extends JComponentDriver {
   @RunsInEDT
   public void requireMessage(@Nonnull JOptionPane optionPane, @Nonnull Pattern pattern) {
     Object actual = messageOf(optionPane);
-    verifyThat(toStringOf(actual)).as(messageProperty(optionPane)).matches(pattern);
+    String s = actual == null ? null : actual.toString();
+    verifyThat(s).as(messageProperty(optionPane)).matches(pattern);
   }
 
   private Description messageProperty(@Nonnull JOptionPane optionPane) {

@@ -39,7 +39,7 @@ public class JTextComponentDriver_requireNotEditable_Test extends JTextComponent
       driver.requireNotEditable(textField);
       failWhenExpectingException();
     } catch (AssertionError e) {
-      assertThat(e.getMessage()).contains("property:'editable'").contains("expected:<false> but was:<true>");
+      assertThat(e.getMessage()).contains("property:'editable'").contains("expected:<[fals]e> but was:<[tru]e>");
     }
   }
 }

@@ -1,15 +1,15 @@
 /*
  * Created on Jan 27, 2008
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
- * 
+ *
  * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
@@ -18,6 +18,7 @@ import static org.fest.reflect.core.Reflection.method;
 import static org.fest.swing.driver.ComponentMovableQuery.isUserMovable;
 import static org.fest.swing.driver.ComponentMoveTask.moveComponent;
 import static org.fest.swing.driver.ComponentPreconditions.checkEnabledAndShowing;
+import static org.fest.swing.driver.ComponentPreconditions.checkShowing;
 import static org.fest.swing.driver.ComponentSetSizeTask.setComponentSize;
 import static org.fest.swing.edt.GuiActionRunner.execute;
 import static org.fest.swing.format.Formatting.format;
@@ -31,6 +32,7 @@ import java.awt.Point;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+import javax.swing.JInternalFrame;
 
 import org.fest.reflect.exception.ReflectionError;
 import org.fest.swing.annotation.RunsInCurrentThread;
@@ -40,17 +42,18 @@ import org.fest.swing.edt.GuiQuery;
 import org.fest.swing.util.Pair;
 import org.fest.swing.util.Triple;
 import org.fest.util.InternalApi;
+import org.fest.util.VisibleForTesting;
 
 /**
  * <p>
  * Supports functional testing of AWT or Swing {@code Container}s.
  * </p>
- * 
+ *
  * <p>
  * <b>Note:</b> This class is intended for internal use only. Please use the classes in the package
  * {@link org.fest.swing.fixture} in your tests.
  * </p>
- * 
+ *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
@@ -58,7 +61,7 @@ import org.fest.util.InternalApi;
 public abstract class ContainerDriver extends ComponentDriver {
   /**
    * Creates a new {@link ContainerDriver}.
-   * 
+   *
    * @param robot the robot to use to simulate user input.
    */
   public ContainerDriver(@Nonnull Robot robot) {
@@ -67,7 +70,7 @@ public abstract class ContainerDriver extends ComponentDriver {
 
   /**
    * Resizes the AWT or Swing {@code Container} horizontally.
-   * 
+   *
    * @param c the given {@code Container}.
    * @param width the width that the {@code Container} should have after being resized.
    * @throws IllegalStateException if the {@code Container} is not enabled.
@@ -83,7 +86,7 @@ public abstract class ContainerDriver extends ComponentDriver {
 
   /**
    * Resizes the AWT or Swing {@code Container} vertically.
-   * 
+   *
    * @param c the given {@code Container}.
    * @param height the height that the {@code Container} should have after being resized.
    * @throws IllegalStateException if the {@code Container} is not enabled.
@@ -99,7 +102,7 @@ public abstract class ContainerDriver extends ComponentDriver {
 
   /**
    * Resizes the AWT or Swing {@code Container} to the given size.
-   * 
+   *
    * @param c the given {@code Container}.
    * @param width the width to resize the {@code Container} to.
    * @param height the height to resize the {@code Container} to.
@@ -126,11 +129,16 @@ public abstract class ContainerDriver extends ComponentDriver {
     return checkNotNull(result);
   }
 
+  @VisibleForTesting
   @RunsInCurrentThread
-  private void checkCanResize(@Nonnull Container c) {
+  void checkCanResize(@Nonnull Container c) {
     if (!isResizable(c)) {
       String msg = String.format("Expecting component %s to be resizable by the user", format(c));
       throw new IllegalStateException(msg);
+    }
+    if (c instanceof JInternalFrame) {
+      checkShowing(c);
+      return;
     }
     checkEnabledAndShowing(c);
   }
@@ -174,7 +182,7 @@ public abstract class ContainerDriver extends ComponentDriver {
 
   /**
    * Move the given AWT or Swing {@code Container} to the requested location.
-   * 
+   *
    * @param c the given {@code Container}.
    * @param x the horizontal coordinate.
    * @param y the vertical coordinate.

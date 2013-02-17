@@ -38,7 +38,7 @@ public class JComboBoxDriver_requireEditable_Test extends JComboBoxDriver_TestCa
       driver.requireEditable(comboBox);
       failWhenExpectingException();
     } catch (AssertionError e) {
-      assertThat(e.getMessage()).contains("property:'editable'").contains("expected:<true> but was:<false>");
+      assertThat(e.getMessage()).contains("property:'editable'").contains("expected:<[tru]e> but was:<[fals]e>");
     }
   }
 }

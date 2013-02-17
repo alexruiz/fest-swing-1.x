@@ -22,11 +22,11 @@ import java.net.URL;
 import org.junit.Test;
 
 /**
- * Tests for {@link JAppletDriver#documentBaseOf(javax.swing.JApplet)}.
+ * Tests for {@link JAppletDriver#getDocumentBase(javax.swing.JApplet)}.
  * 
  * @author Alex Ruiz
  */
-public class JAppletDriver_documentOf_Test extends JAppletDriver_TestCase {
+public class JAppletDriver_getDocumentBase_Test extends JAppletDriver_TestCase {
   @Test
   public void should_return_document_base() throws Exception {
     URL url = singletonURL();

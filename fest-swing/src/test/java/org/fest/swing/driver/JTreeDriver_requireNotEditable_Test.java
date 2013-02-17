@@ -41,7 +41,7 @@ public class JTreeDriver_requireNotEditable_Test extends JTreeDriver_TestCase {
       driver.requireNotEditable(tree);
       failWhenExpectingException();
     } catch (AssertionError e) {
-      assertThat(e.getMessage()).contains("property:'editable'").contains("expected:<false> but was:<true>");
+      assertThat(e.getMessage()).contains("property:'editable'").contains("expected:<[fals]e> but was:<[tru]e>");
     }
   }
 }

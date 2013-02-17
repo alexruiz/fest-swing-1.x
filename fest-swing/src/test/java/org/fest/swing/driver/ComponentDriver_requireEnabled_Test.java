@@ -38,7 +38,7 @@ public class ComponentDriver_requireEnabled_Test extends ComponentDriver_TestCas
       driver.requireEnabled(window.button);
       failWhenExpectingException();
     } catch (AssertionError e) {
-      assertThat(e.getMessage()).contains("property:'enabled'").contains("expected:<true> but was:<false>");
+      assertThat(e.getMessage()).contains("property:'enabled'").contains("expected:<[tru]e> but was:<[fals]e>");
     }
   }
 }

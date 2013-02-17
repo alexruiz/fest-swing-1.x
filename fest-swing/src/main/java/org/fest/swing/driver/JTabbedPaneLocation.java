@@ -1,15 +1,15 @@
 /*
  * Created on Jan 27, 2008
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
- * 
+ *
  * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
@@ -32,7 +32,7 @@ import org.fest.util.VisibleForTesting;
 
 /**
  * A location on a {@code JTabbedPane} (notably a tab).
- * 
+ *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
@@ -42,12 +42,12 @@ public class JTabbedPaneLocation {
    * <p>
    * Returns the index of the first tab that matches the given {@code String}.
    * </p>
-   * 
+   *
    * <p>
    * <b>Note:</b> This method is accessed in the current executing thread. Such thread may or may not be the event
    * dispatch thread (EDT.) Client code must call this method from the EDT.
    * </p>
-   * 
+   *
    * @param tabbedPane the target {@code JTabbedPane}.
    * @param title the title to match.
    * @return the index of the first tab that matches the given {@code String}.
@@ -62,12 +62,12 @@ public class JTabbedPaneLocation {
    * <p>
    * Returns the index of the first tab whose title matches the value in the given {@link TextMatcher}.
    * </p>
-   * 
+   *
    * <p>
    * <b>Note:</b> This method is accessed in the current executing thread. Such thread may or may not be the event
    * dispatch thread (EDT.) Client code must call this method from the EDT.
    * </p>
-   * 
+   *
    * @param tabbedPane the target {@code JTabbedPane}.
    * @param matcher indicates if the text of the {@code JTabbedPane} matches the value we are looking for.
    * @return the index of the first tab that matches the given {@code String}.
@@ -79,7 +79,7 @@ public class JTabbedPaneLocation {
     if (index >= 0) {
       return index;
     }
-    String format = "Unable to find a tab with title matching %s, %s";
+    String format = "Unable to find a tab with title matching %s %s";
     String msg = String.format(format, matcher.description(), matcher.formattedValues());
     throw new LocationUnavailableException(msg);
   }
@@ -88,12 +88,12 @@ public class JTabbedPaneLocation {
    * <p>
    * Returns the coordinates of the tab under the given index.
    * </p>
-   * 
+   *
    * <p>
    * <b>Note:</b> This method is accessed in the current executing thread. Such thread may or may not be the event
    * dispatch thread (EDT.) Client code must call this method from the EDT.
    * </p>
-   * 
+   *
    * @param tabbedPane the target {@code JTabbedPane}.
    * @param index the given index.
    * @return the coordinates of the tab under the given index.

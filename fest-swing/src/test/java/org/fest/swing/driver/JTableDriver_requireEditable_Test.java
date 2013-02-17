@@ -40,7 +40,7 @@ public class JTableDriver_requireEditable_Test extends JTableDriver_TestCase {
       failWhenExpectingException();
     } catch (AssertionError e) {
       assertThat(e.getMessage()).contains("property:'editable [row=0, column=0]'").contains(
-          "expected:<true> but was:<false>");
+          "expected:<[tru]e> but was:<[fals]e>");
     }
   }
 }

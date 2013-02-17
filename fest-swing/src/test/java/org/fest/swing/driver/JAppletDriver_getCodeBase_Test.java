@@ -1,5 +1,5 @@
 /*
- * Created on Apr 3, 2010
+ * Created on Apr 2, 2010
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -15,20 +15,24 @@
 package org.fest.swing.driver;
 
 import static org.fest.assertions.Assertions.assertThat;
+import static org.fest.swing.driver.TestURLs.singletonURL;
+
+import java.net.URL;
 
 import org.junit.Test;
 
 /**
- * Tests for {@link JAppletDriver#parameterValue(javax.swing.JApplet, String)}.
+ * Tests for {@link JAppletDriver#getCodeBase(javax.swing.JApplet)}.
  * 
  * @author Alex Ruiz
  */
-public class JAppletDriver_parameterValue_Test extends JAppletDriver_TestCase {
+public class JAppletDriver_getCodeBase_Test extends JAppletDriver_TestCase {
   @Test
-  public void should_retrieve_parameter_value() {
-    applet().addParameter("firstName", "Luke");
-    String value = driver().getParameter(applet(), "firstName");
-    assertThat(value).isEqualTo("Luke");
-    assertThat(applet().wasMethodCalledInEDT("getParameter('firstName')")).isTrue();
+  public void should_return_code_base() throws Exception {
+    URL url = singletonURL();
+    applet().updateCodeBase(url);
+    URL result = driver().getCodeBase(applet());
+    assertThat(result).isSameAs(url);
+    assertThat(applet().wasMethodCalledInEDT("getCodeBase")).isTrue();
   }
 }

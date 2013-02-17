@@ -38,7 +38,7 @@ public class ComponentDriver_requireNotVisible_Test extends ComponentDriver_Test
       driver.requireNotVisible(window.button);
       failWhenExpectingException();
     } catch (AssertionError e) {
-      assertThat(e.getMessage()).contains("property:'visible'").contains("expected:<false> but was:<true>");
+      assertThat(e.getMessage()).contains("property:'visible'").contains("expected:<[fals]e> but was:<[tru]e>");
     }
   }
 }

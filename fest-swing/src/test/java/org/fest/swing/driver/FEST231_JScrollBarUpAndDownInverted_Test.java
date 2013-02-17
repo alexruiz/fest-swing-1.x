@@ -61,6 +61,7 @@ public class FEST231_JScrollBarUpAndDownInverted_Test extends RobotBasedTestCase
 
   @Test
   public void should_scroll_one_block_down_and_up() {
+    // TODO(Alex): Test in Windows
     driver.requireValue(verticalScrollBar, 0);
     driver.scrollBlockDown(verticalScrollBar);
     driver.requireValue(verticalScrollBar, 6);

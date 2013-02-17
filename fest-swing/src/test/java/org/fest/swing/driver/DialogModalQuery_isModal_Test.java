@@ -17,6 +17,7 @@ package org.fest.swing.driver;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.edt.GuiActionRunner.execute;
 import static org.fest.swing.test.task.DialogSetModalTask.makeModal;
+import static org.fest.util.Lists.newArrayList;
 
 import java.awt.Dimension;
 import java.util.Collection;
@@ -32,7 +33,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
-ort org.junit.runners.Parameterized.Parameters;
 
 /**
  * Tests for {@link DialogModalQuery#isModal(java.awt.Dialog)}.

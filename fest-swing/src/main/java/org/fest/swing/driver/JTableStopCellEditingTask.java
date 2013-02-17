@@ -55,7 +55,7 @@ final class JTableStopCellEditingTask {
   }
 
   @RunsInEDT
-  static void validateAndStopEditing(final @Nonnull JTable table, final int row, final int column) {
+  static void checkStateAndStopEditing(final @Nonnull JTable table, final int row, final int column) {
     execute(new GuiTask() {
       @Override
       protected void executeInEDT() {
