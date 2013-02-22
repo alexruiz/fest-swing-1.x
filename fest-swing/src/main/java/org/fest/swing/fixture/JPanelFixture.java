@@ -26,7 +26,7 @@ import org.fest.swing.driver.JComponentDriver;
 import org.fest.swing.exception.ComponentLookupException;
 
 /**
- * Supports functional testing of {@link JPanel}s.
+ * Supports functional testing of {@code JPanel}s.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang
@@ -64,7 +64,7 @@ public class JPanelFixture extends AbstractContainerFixture<JPanelFixture, JPane
   }
 
   /**
-   * Asserts that the toolTip in this fixture's {@link JPanel} matches the given value.
+   * Asserts that the toolTip in this fixture's {@code JPanel} matches the given value.
    *
    * @param expected the given value. It can be a regular expression.
    * @return this fixture.
@@ -78,7 +78,7 @@ public class JPanelFixture extends AbstractContainerFixture<JPanelFixture, JPane
   }
 
   /**
-   * Asserts that the toolTip in this fixture's {@link JPanel} matches the given regular expression pattern.
+   * Asserts that the toolTip in this fixture's {@code JPanel} matches the given regular expression pattern.
    *
    * @param pattern the regular expression pattern to match.
    * @return this fixture.
@@ -93,7 +93,7 @@ public class JPanelFixture extends AbstractContainerFixture<JPanelFixture, JPane
   }
 
   /**
-   * Returns the client property stored in this fixture's {@link JPanel}, under the given key.
+   * Returns the client property stored in this fixture's {@code JPanel}, under the given key.
    *
    * @param key the key to use to retrieve the client property.
    * @return the value of the client property stored under the given key, or {@code null} if the property was not found.
@@ -106,7 +106,7 @@ public class JPanelFixture extends AbstractContainerFixture<JPanelFixture, JPane
   }
 
   /**
-   * Shows a pop-up menu using this fixture's {@link JPanel} as the invoker of the pop-up menu.
+   * Shows a pop-up menu using this fixture's {@code JPanel} as the invoker of the pop-up menu.
    *
    * @return a fixture that manages the displayed pop-up menu.
    * @throws IllegalStateException if this fixture's {@code JPanel} is disabled.
@@ -119,7 +119,7 @@ public class JPanelFixture extends AbstractContainerFixture<JPanelFixture, JPane
   }
 
   /**
-   * Shows a pop-up menu at the given point using this fixture's {@link JPanel} as the invoker of the pop-up menu.
+   * Shows a pop-up menu at the given point using this fixture's {@code JPanel} as the invoker of the pop-up menu.
    *
    * @param p the given point where to show the pop-up menu.
    * @return a fixture that manages the displayed pop-up menu.

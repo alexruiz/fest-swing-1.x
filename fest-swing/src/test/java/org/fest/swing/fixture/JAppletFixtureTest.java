@@ -30,7 +30,7 @@ import org.fest.swing.driver.ComponentDriver;
 import org.fest.swing.driver.JAppletDriver;
 import org.junit.Test;
 
-public class JAppletFixtureTest extends ComponentFixture_Implementations_TestCase<JApplet> {
+public class JAppletFixtureTest extends AbstractComponentFixture_Implementations_TestCase<JApplet> {
   private JAppletDriver driver;
   private JApplet target;
   private JAppletFixture fixture;

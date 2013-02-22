@@ -15,11 +15,11 @@
 package org.fest.swing.core;
 
 import static org.fest.assertions.Assertions.assertThat;
-import static org.fest.swing.core.TestComponentFinders.newComponentFinderMock;
 import static org.fest.swing.core.UnexpectedJOptionPaneFinder.OPTION_PANE_MATCHER;
 import static org.fest.swing.test.builder.JOptionPanes.optionPane;
 import static org.fest.swing.test.core.CommonAssertions.failWhenExpectingException;
 import static org.fest.util.Lists.newArrayList;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 import java.awt.Component;
@@ -40,7 +40,7 @@ public class UnexpectedJOptionPaneFinder_requireNoJOptionPaneIsShowing_Test exte
 
   @Before
   public void setUp() {
-    delegate = newComponentFinderMock();
+    delegate = mock(ComponentFinder.class);
     finder = new UnexpectedJOptionPaneFinder(delegate);
   }
 

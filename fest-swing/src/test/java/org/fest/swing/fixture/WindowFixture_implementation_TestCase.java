@@ -30,7 +30,7 @@ import org.junit.Test;
  * @author Yvonne Wang
  */
 public abstract class WindowFixture_implementation_TestCase<T extends Window> extends
-ComponentFixture_Implementations_TestCase<Window> {
+AbstractComponentFixture_Implementations_TestCase<Window> {
   @Override
   abstract WindowDriver driver();
 

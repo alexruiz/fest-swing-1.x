@@ -27,7 +27,7 @@ import org.junit.BeforeClass;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public abstract class JMenuItemFixture_TestCase extends ComponentFixture_Implementations_TestCase<JMenuItem> {
+public abstract class JMenuItemFixture_TestCase extends AbstractComponentFixture_Implementations_TestCase<JMenuItem> {
   private static JMenuItem target;
 
   private JMenuItemDriver driver;

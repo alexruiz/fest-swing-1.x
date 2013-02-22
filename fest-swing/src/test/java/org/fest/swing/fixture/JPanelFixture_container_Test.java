@@ -29,7 +29,7 @@ import org.junit.Test;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class JPanelFixture_container_Test extends ComponentFixture_Implementations_TestCase<JPanel> {
+public class JPanelFixture_container_Test extends AbstractComponentFixture_Implementations_TestCase<JPanel> {
   private static JPanel target;
 
   private JComponentDriver driver;

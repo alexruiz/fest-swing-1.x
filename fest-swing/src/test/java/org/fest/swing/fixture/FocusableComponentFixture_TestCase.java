@@ -27,7 +27,7 @@ import org.junit.Test;
  * @author Yvonne Wang
  */
 public abstract class FocusableComponentFixture_TestCase<T extends Component> extends
-ComponentFixture_Implementations_TestCase<T> {
+AbstractComponentFixture_Implementations_TestCase<T> {
   @Test
   public final void should_give_focus() {
     new EasyMockTemplate(driver()) {

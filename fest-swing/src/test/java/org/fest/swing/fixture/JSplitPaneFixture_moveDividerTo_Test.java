@@ -28,7 +28,7 @@ import org.junit.Test;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public class JSplitPaneFixture_moveDividerTo_Test extends ComponentFixture_Implementations_TestCase<JSplitPane> {
+public class JSplitPaneFixture_moveDividerTo_Test extends AbstractComponentFixture_Implementations_TestCase<JSplitPane> {
   private static JSplitPane target;
 
   private JSplitPaneDriver driver;

@@ -29,7 +29,7 @@ import org.junit.Test;
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
-public class DialogFixture_requireModal_Test extends ComponentFixture_Implementations_TestCase<Dialog> {
+public class DialogFixture_requireModal_Test extends AbstractComponentFixture_Implementations_TestCase<Dialog> {
   private DialogDriver driver;
   private Dialog target;
   private DialogFixture fixture;

@@ -27,7 +27,7 @@ import org.junit.BeforeClass;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public abstract class JScrollBarFixture_TestCase extends ComponentFixture_Implementations_TestCase<JScrollBar> {
+public abstract class JScrollBarFixture_TestCase extends AbstractComponentFixture_Implementations_TestCase<JScrollBar> {
   private static JScrollBar target;
 
   private JScrollBarDriver driver;

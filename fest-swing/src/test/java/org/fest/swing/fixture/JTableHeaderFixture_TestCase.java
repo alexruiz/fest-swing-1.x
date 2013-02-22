@@ -26,7 +26,7 @@ import org.fest.swing.driver.JTableHeaderDriver;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public abstract class JTableHeaderFixture_TestCase extends ComponentFixture_Implementations_TestCase<JTableHeader> {
+public abstract class JTableHeaderFixture_TestCase extends AbstractComponentFixture_Implementations_TestCase<JTableHeader> {
   private JTableHeaderDriver driver;
   private JTableHeader target;
   private JTableHeaderFixture fixture;

@@ -32,7 +32,7 @@ import org.junit.Test;
  * @author Yvonne Wang
  */
 public abstract class ToolTipDisplayFixture_TestCase<T extends JComponent> extends
-ComponentFixture_Implementations_TestCase<T> {
+AbstractComponentFixture_Implementations_TestCase<T> {
   @Override
   abstract JComponentDriver driver();
 

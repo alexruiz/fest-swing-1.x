@@ -27,7 +27,7 @@ import org.junit.BeforeClass;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public abstract class JFileChooserFixture_TestCase extends ComponentFixture_Implementations_TestCase<JFileChooser> {
+public abstract class JFileChooserFixture_TestCase extends AbstractComponentFixture_Implementations_TestCase<JFileChooser> {
   private static JFileChooser target;
 
   private JFileChooserDriver driver;

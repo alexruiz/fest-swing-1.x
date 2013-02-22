@@ -30,11 +30,14 @@ import static org.fest.swing.timing.Pause.pause;
 import static org.fest.swing.util.TimeoutWatch.startWatchWithTimeoutOf;
 import static org.fest.util.Preconditions.checkNotNull;
 
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Point;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import javax.swing.JMenu;
 import javax.swing.JPopupMenu;
 
@@ -48,6 +51,7 @@ import org.fest.swing.core.MouseClickInfo;
 import org.fest.swing.core.Robot;
 import org.fest.swing.core.Settings;
 import org.fest.swing.edt.GuiLazyLoadingDescription;
+import org.fest.swing.edt.GuiQuery;
 import org.fest.swing.edt.GuiTask;
 import org.fest.swing.exception.ActionFailedException;
 import org.fest.swing.exception.ComponentLookupException;
@@ -601,5 +605,57 @@ public class ComponentDriver {
       robot.moveMouse(c, x, y);
     } catch (RuntimeException ignored) {
     }
+  }
+
+  /**
+   * Returns the font of the given AWT or Swing {@code Component}.
+   *
+   * @param c the given {@code Component}.
+   * @return the font of the given {@code Component}.
+   */
+  @RunsInEDT
+  public @Nonnull Font fontOf(final @Nonnull Component c) {
+    Font result = execute(new GuiQuery<Font>() {
+      @Override
+      protected @Nullable Font executeInEDT() {
+        return c.getFont();
+      }
+    });
+    return checkNotNull(result);
+  }
+
+  /**
+   * Returns the background color of the given AWT or Swing {@code Component}.
+   *
+   * @param c the given {@code Component}.
+   * @return the background color of the given {@code Component}.
+   */
+  @RunsInEDT
+  public @Nonnull Color backgroundOf(final @Nonnull Component c) {
+    Color result = execute(new GuiQuery<Color>() {
+      @Override
+      protected @Nullable
+      Color executeInEDT() {
+        return c.getBackground();
+      }
+    });
+    return checkNotNull(result);
+  }
+
+  /**
+   * Returns the foreground color of the given AWT or Swing {@code Component}.
+   *
+   * @param c the given {@code Component}.
+   * @return the foreground color of the given {@code Component}.
+   */
+  @RunsInEDT
+  public @Nonnull Color foregroundOf(final @Nonnull Component c) {
+    Color result = execute(new GuiQuery<Color>() {
+      @Override
+      protected @Nullable Color executeInEDT() {
+        return c.getForeground();
+      }
+    });
+    return checkNotNull(result);
   }
 }

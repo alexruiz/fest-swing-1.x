@@ -27,7 +27,7 @@ import org.junit.BeforeClass;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public abstract class JRadioButtonFixture_TestCase extends ComponentFixture_Implementations_TestCase<JRadioButton> {
+public abstract class JRadioButtonFixture_TestCase extends AbstractComponentFixture_Implementations_TestCase<JRadioButton> {
   private static JRadioButton target;
 
   private AbstractButtonDriver driver;

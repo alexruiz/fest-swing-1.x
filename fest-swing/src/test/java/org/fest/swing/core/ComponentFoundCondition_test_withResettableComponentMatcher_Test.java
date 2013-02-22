@@ -14,7 +14,6 @@
  */
 package org.fest.swing.core;
 
-import static org.fest.swing.core.TestComponentFinders.newComponentFinderMock;
 import static org.fest.swing.test.awt.TestComponents.singletonComponentMock;
 import static org.fest.swing.test.awt.TestContainers.singletonContainerMock;
 import static org.mockito.Mockito.mock;
@@ -49,7 +48,7 @@ public class ComponentFoundCondition_test_withResettableComponentMatcher_Test ex
 
   @Before
   public void setUp() {
-    finder = newComponentFinderMock();
+    finder = mock(ComponentFinder.class);
     matcher = mock(ResettableComponentMatcher.class);
     condition = new ComponentFoundCondition("", finder, matcher, root);
   }

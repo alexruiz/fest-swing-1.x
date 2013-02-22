@@ -27,7 +27,7 @@ import org.junit.Test;
  * @author Alex Ruiz
  */
 public abstract class TwoStateButtonFixture_TestCase<T extends AbstractButton> extends
-ComponentFixture_Implementations_TestCase<T> {
+AbstractComponentFixture_Implementations_TestCase<T> {
   @Override
   abstract AbstractButtonDriver driver();
 

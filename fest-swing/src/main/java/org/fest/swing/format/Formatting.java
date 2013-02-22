@@ -1,15 +1,15 @@
 /*
  * Created on Sep 16, 2007
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
- * 
+ *
  * Copyright @2007-2013 the original author or authors.
  */
 package org.fest.swing.format;
@@ -51,7 +51,7 @@ import org.fest.util.VisibleForTesting;
 
 /**
  * Utility methods related to formatting.
- * 
+ *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
@@ -117,7 +117,7 @@ public class Formatting {
   /**
    * Registers the given {@link ComponentFormatter}, replacing any other one previously registered for the same
    * supported component type.
-   * 
+   *
    * @param formatter the formatter to register.
    */
   public static void register(@Nonnull ComponentFormatter formatter) {
@@ -137,7 +137,7 @@ public class Formatting {
   /**
    * Returns a {@code String} representation of the given AWT or Swing {@code Component}. This method is invoked in the
    * event dispatch thread (EDT.)
-   * 
+   *
    * @param c the given {@code Component}.
    * @return a {@code String} representation of the given {@code Component}.
    */
@@ -156,12 +156,12 @@ public class Formatting {
    * <p>
    * Returns a {@code String} representation of the given AWT or Swing {@code Component}.
    * </p>
-   * 
+   *
    * <p>
    * <b>Note:</b> This method is accessed in the current executing thread. Such thread may or may not be the event
    * dispatch thread (EDT.) Client code must call this method from the EDT.
    * </p>
-   * 
+   *
    * @param c the given {@code Component}.
    * @return a {@code String} representation of the given {@code Component}.
    */
@@ -178,7 +178,7 @@ public class Formatting {
     if (isNullOrEmpty(name)) {
       return c.toString();
     }
-    return String.format("%s[name=%s]", c.getClass().getName());
+    return String.format("%s[name=%s]", c.getClass().getName(), name);
   }
 
   private static @Nullable ComponentFormatter formatterFor(@Nonnull Class<?> type) {

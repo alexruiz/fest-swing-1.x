@@ -17,17 +17,15 @@ package org.fest.swing.fixture;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.driver.ComponentDriver.propertyName;
 import static org.fest.swing.format.Formatting.format;
-import static org.fest.swing.query.ComponentBackgroundQuery.backgroundOf;
-import static org.fest.swing.query.ComponentFontQuery.fontOf;
-import static org.fest.swing.query.ComponentForegroundQuery.foregroundOf;
 import static org.fest.util.Preconditions.checkNotNull;
 
+import java.awt.Color;
 import java.awt.Component;
+import java.awt.Font;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.core.KeyPressInfo;
 import org.fest.swing.core.MouseButton;
 import org.fest.swing.core.MouseClickInfo;
@@ -121,14 +119,15 @@ public abstract class AbstractComponentFixture<S, C extends Component, D extends
    * @param selfType the "self type."
    * @param robot performs simulation of user events on the given {@code Component}.
    * @param target the {@code Component} to be managed by this fixture.
+   * @throws NullPointerException if {@code selfType} is {@code null}.
    * @throws NullPointerException if {@code robot} is {@code null}.
    * @throws NullPointerException if {@code target} is {@code null}.
    */
   public AbstractComponentFixture(@Nonnull Class<S> selfType, @Nonnull Robot robot, @Nonnull C target) {
+    myself = checkNotNull(selfType).cast(this);
     this.robot = checkNotNull(robot);
     this.target = checkNotNull(target);
-    driver = createDriver(robot);
-    myself = selfType.cast(this);
+    replaceDriverWith(createDriver(robot));
   }
 
   protected abstract @Nonnull D createDriver(@Nonnull Robot robot);
@@ -138,8 +137,7 @@ public abstract class AbstractComponentFixture<S, C extends Component, D extends
   }
 
   public final void replaceDriverWith(@Nonnull D driver) {
-    checkNotNull(driver);
-    this.driver = driver;
+    this.driver = checkNotNull(driver);
   }
 
   /**
@@ -370,27 +368,27 @@ public abstract class AbstractComponentFixture<S, C extends Component, D extends
   }
 
   /**
-   * @return a fixture that verifies the font of this fixture's {@code Component}.
+   * @return a fixture that checks properties of the font of this fixture's {@code Component}.
    */
-  @RunsInEDT
   public final @Nonnull FontFixture font() {
-    return new FontFixture(fontOf(target()), propertyName(target(), FONT_PROPERTY));
+    Font font = driver.fontOf(target);
+    return new FontFixture(font, propertyName(target(), FONT_PROPERTY));
   }
 
   /**
-   * @return a fixture that verifies the background color of this fixture's {@code Component}.
+   * @return a fixture that checks properties of the background color of this fixture's {@code Component}.
    */
-  @RunsInEDT
   public final @Nonnull ColorFixture background() {
-    return new ColorFixture(backgroundOf(target()), propertyName(target(), BACKGROUND_PROPERTY));
+    Color background = driver.backgroundOf(target);
+    return new ColorFixture(background, propertyName(target(), BACKGROUND_PROPERTY));
   }
 
   /**
-   * @return a fixture that verifies the foreground color of this fixture's {@code Component}.
+   * @return a fixture that checks properties of the foreground color of this fixture's {@code Component}.
    */
-  @RunsInEDT
   public final @Nonnull ColorFixture foreground() {
-    return new ColorFixture(foregroundOf(target()), propertyName(target(), FOREGROUND_PROPERTY));
+    Color foreground = driver.foregroundOf(target);
+    return new ColorFixture(foreground, propertyName(target(), FOREGROUND_PROPERTY));
   }
 
   /**

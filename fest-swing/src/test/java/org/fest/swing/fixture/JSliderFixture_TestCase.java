@@ -27,7 +27,7 @@ import org.junit.BeforeClass;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public abstract class JSliderFixture_TestCase extends ComponentFixture_Implementations_TestCase<JSlider> {
+public abstract class JSliderFixture_TestCase extends AbstractComponentFixture_Implementations_TestCase<JSlider> {
   private static JSlider target;
 
   private JSliderDriver driver;

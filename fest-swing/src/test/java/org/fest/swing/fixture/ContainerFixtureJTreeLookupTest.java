@@ -35,13 +35,13 @@ import org.junit.Test;
  * @author Alex Ruiz
  */
 public class ContainerFixtureJTreeLookupTest extends RobotBasedTestCase {
-  private ConcreteContainerFixture fixture;
+  private ContainerFixture fixture;
   private MyWindow window;
 
   @Override
   protected final void onSetUp() {
     window = MyWindow.createNew();
-    fixture = new ConcreteContainerFixture(robot, window);
+    fixture = new ContainerFixture(robot, window);
     robot.showWindow(window);
   }
 

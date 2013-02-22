@@ -27,7 +27,7 @@ import org.junit.BeforeClass;
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
-public abstract class JTabbedPaneFixture_TestCase extends ComponentFixture_Implementations_TestCase<JTabbedPane> {
+public abstract class JTabbedPaneFixture_TestCase extends AbstractComponentFixture_Implementations_TestCase<JTabbedPane> {
   private static JTabbedPane target;
 
   private JTabbedPaneDriver driver;

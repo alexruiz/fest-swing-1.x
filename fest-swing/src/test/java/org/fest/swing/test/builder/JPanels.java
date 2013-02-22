@@ -24,7 +24,7 @@ import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
 
 /**
- * Factory of {@link JPanel}s.
+ * Factory of {@code JPanel}s.
  * 
  * @author Alex Ruiz
  */

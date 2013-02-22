@@ -418,7 +418,7 @@ public interface ComponentContainerFixture {
   @Nonnull JOptionPaneFixture optionPane(@Nonnull Timeout timeout);
 
   /**
-   * Returns a {@link JPanel} found in this fixture's {@code Container}.
+   * Returns a {@code JPanel} found in this fixture's {@code Container}.
    *
    * @return a fixture that manages the {@code JPanel} found.
    * @throws ComponentLookupException if a {@code JPanel} could not be found.
@@ -428,7 +428,7 @@ public interface ComponentContainerFixture {
   @Nonnull JPanelFixture panel();
 
   /**
-   * Finds a {@link JPanel} in this fixture's {@code Container}, that matches the specified search criteria.
+   * Finds a {@code JPanel} in this fixture's {@code Container}, that matches the specified search criteria.
    *
    * @param matcher contains the search criteria for finding a {@code JPanel}.
    * @return a fixture that manages the {@code JPanel} found.
@@ -439,7 +439,7 @@ public interface ComponentContainerFixture {
   @Nonnull JPanelFixture panel(@Nonnull GenericTypeMatcher<? extends JPanel> matcher);
 
   /**
-   * Finds a {@link JPanel} in this fixture's {@code Container}, which name matches the specified one.
+   * Finds a {@code JPanel} in this fixture's {@code Container}, which name matches the specified one.
    *
    * @param name the name to match.
    * @return a fixture that manages the {@code JPanel} found.

@@ -33,7 +33,7 @@ import org.junit.Test;
  * @author Yvonne Wang
  */
 public abstract class JPopupMenuInvokerFixture_TestCase<T extends Component> extends
-ComponentFixture_Implementations_TestCase<T> {
+AbstractComponentFixture_Implementations_TestCase<T> {
   @Override
   abstract ComponentDriver driver();
 
