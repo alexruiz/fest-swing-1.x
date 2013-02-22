@@ -179,15 +179,13 @@ public class AbstractComponentFixture_withMocks_Test {
     verify(driver).foregroundOf(component);
   }
 
-  private static class ComponentFixture extends
-      AbstractComponentFixture<ComponentFixture, Component, ComponentDriver> {
-    public ComponentFixture() {
+  private static class ComponentFixture extends AbstractComponentFixture<ComponentFixture, Component, ComponentDriver> {
+    ComponentFixture() {
       super(ComponentFixture.class, mock(Robot.class), mock(Component.class));
     }
 
     @Override
-    protected @Nonnull
-    ComponentDriver createDriver(@Nonnull Robot robot) {
+    protected @Nonnull ComponentDriver createDriver(@Nonnull Robot robot) {
       return mock(ComponentDriver.class);
     }
   }

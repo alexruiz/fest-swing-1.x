@@ -221,7 +221,6 @@ public abstract class AbstractWindowFixture<S, C extends Window, D extends Windo
     return myself();
   }
 
-
   /**
    * Shows this fixture's {@code Window}.
    *
