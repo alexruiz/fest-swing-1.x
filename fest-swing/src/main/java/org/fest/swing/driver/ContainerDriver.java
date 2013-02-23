@@ -78,7 +78,7 @@ public abstract class ContainerDriver extends ComponentDriver {
    * @throws IllegalStateException if the {@code Container} is not showing on the screen.
    */
   @RunsInEDT
-  protected final void resizeWidth(@Nonnull Container c, int width) {
+  protected final void doResizeWidth(@Nonnull Container c, int width) {
     Pair<Dimension, Insets> resizeInfo = resizeInfo(c);
     Dimension size = resizeInfo.first;
     resizeBy(c, resizeInfo, width - size.width, 0);
@@ -94,7 +94,7 @@ public abstract class ContainerDriver extends ComponentDriver {
    * @throws IllegalStateException if the {@code Container} is not showing on the screen.
    */
   @RunsInEDT
-  protected final void resizeHeight(@Nonnull Container c, int height) {
+  protected final void doResizeHeight(@Nonnull Container c, int height) {
     Pair<Dimension, Insets> resizeInfo = resizeInfo(c);
     Dimension size = resizeInfo.first;
     resizeBy(c, resizeInfo, 0, height - size.height);

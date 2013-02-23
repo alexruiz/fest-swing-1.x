@@ -24,7 +24,7 @@ import org.fest.swing.edt.GuiQuery;
 import org.junit.Test;
 
 /**
- * Tests for {@link JInternalFrameDriver#resizeWidthTo(JInternalFrame, int)}.
+ * Tests for {@link JInternalFrameDriver#resizeWidth(JInternalFrame, int)}.
  * 
  * @author Alex Ruiz
  * @author Yvonne Wang
@@ -34,7 +34,7 @@ public class JInternalFrameDriver_resizeWidthTo_Test extends JInternalFrameDrive
   public void should_resize_width() {
     int newWidth = 600;
     showWindow();
-    driver.resizeWidthTo(internalFrame, newWidth);
+    driver.resizeWidth(internalFrame, newWidth);
     assertThat(widthOf(internalFrame)).isEqualTo(newWidth);
   }
 

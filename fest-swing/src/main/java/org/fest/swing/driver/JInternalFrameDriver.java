@@ -1,15 +1,15 @@
 /*
  * Created on Feb 1, 2008
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
- * 
+ *
  * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
@@ -56,12 +56,12 @@ import org.fest.util.VisibleForTesting;
  * <p>
  * Supports functional testing of {@code JInternalFrame}s.
  * </p>
- * 
+ *
  * <p>
  * <b>Note:</b> This class is intended for internal use only. Please use the classes in the package
  * {@link org.fest.swing.fixture} in your tests.
  * </p>
- * 
+ *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
@@ -69,7 +69,7 @@ import org.fest.util.VisibleForTesting;
 public class JInternalFrameDriver extends JComponentDriver {
   /**
    * Creates a new {@link JInternalFrameDriver}.
-   * 
+   *
    * @param robot the robot to use to simulate user input.
    */
   public JInternalFrameDriver(@Nonnull Robot robot) {
@@ -78,7 +78,7 @@ public class JInternalFrameDriver extends JComponentDriver {
 
   /**
    * Brings the given {@code JInternalFrame} to the front.
-   * 
+   *
    * @param internalFrame the target {@code JInternalFrame}.
    */
   @RunsInEDT
@@ -94,7 +94,7 @@ public class JInternalFrameDriver extends JComponentDriver {
 
   /**
    * Brings the given {@code JInternalFrame} to the back.
-   * 
+   *
    * @param internalFrame the target {@code JInternalFrame}.
    */
   @RunsInEDT
@@ -110,7 +110,7 @@ public class JInternalFrameDriver extends JComponentDriver {
 
   /**
    * Maximizes the given {@code JInternalFrame}, deconifying it first if it is iconified.
-   * 
+   *
    * @param internalFrame the target {@code JInternalFrame}.
    * @throws IllegalStateException if the {@code JInternalFrame} is not maximizable.
    * @throws IllegalStateException if the {@code JInternalFrame} is not showing on the screen.
@@ -145,7 +145,7 @@ public class JInternalFrameDriver extends JComponentDriver {
 
   /**
    * Normalizes the given {@code JInternalFrame}, deconifying it first if it is iconified.
-   * 
+   *
    * @param internalFrame the target {@code JInternalFrame}.
    * @throws IllegalStateException if the {@code JInternalFrame} is not showing on the screen.
    * @throws ActionFailedException if the {@code JInternalFrame} vetoes the action.
@@ -200,7 +200,7 @@ public class JInternalFrameDriver extends JComponentDriver {
 
   /**
    * Iconifies the given {@code JInternalFrame}.
-   * 
+   *
    * @param internalFrame the target {@code JInternalFrame}.
    * @throws IllegalStateException if the {@code JInternalFrame} is not showing on the screen.
    * @throws IllegalStateException if the {@code JInternalFrame} is not iconifiable.
@@ -243,7 +243,7 @@ public class JInternalFrameDriver extends JComponentDriver {
 
   /**
    * De-iconifies the given {@code JInternalFrame}.
-   * 
+   *
    * @param internalFrame the target {@code JInternalFrame}.
    * @throws IllegalStateException if the {@code JInternalFrame} is not showing on the screen.
    * @throws ActionFailedException if the {@code JInternalFrame} vetoes the action.
@@ -318,33 +318,33 @@ public class JInternalFrameDriver extends JComponentDriver {
 
   /**
    * Resizes the {@code JInternalFrame} horizontally.
-   * 
+   *
    * @param internalFrame the target {@code JInternalFrame}.
    * @param width the width that the {@code JInternalFrame} should have after being resized.
    * @throws IllegalStateException if the {@code JInternalFrame} is not showing on the screen.
    * @throws IllegalStateException if the {@code JInternalFrame} is not resizable by the user.
    */
   @RunsInEDT
-  public void resizeWidthTo(@Nonnull JInternalFrame internalFrame, int width) {
-    resizeWidth(internalFrame, width);
+  public void resizeWidth(@Nonnull JInternalFrame internalFrame, int width) {
+    doResizeWidth(internalFrame, width);
   }
 
   /**
    * Resizes the {@code JInternalFrame} vertically.
-   * 
+   *
    * @param w the target {@code JInternalFrame}.
    * @param height the height that the {@code JInternalFrame} should have after being resized.
    * @throws IllegalStateException if the {@code JInternalFrame} is not showing on the screen.
    * @throws IllegalStateException if the {@code JInternalFrame} is not resizable by the user.
    */
   @RunsInEDT
-  public void resizeHeightTo(@Nonnull JInternalFrame w, int height) {
-    resizeHeight(w, height);
+  public void resizeHeight(@Nonnull JInternalFrame w, int height) {
+    doResizeHeight(w, height);
   }
 
   /**
    * Resizes the {@code JInternalFrame} to the given size.
-   * 
+   *
    * @param internalFrame the target {@code JInternalFrame}.
    * @param size the size to resize the {@code JInternalFrame} to.
    * @throws IllegalStateException if the {@code JInternalFrame} is not showing on the screen.
@@ -357,19 +357,19 @@ public class JInternalFrameDriver extends JComponentDriver {
 
   /**
    * Moves the {@code JInternalFrame} to the given location.
-   * 
+   *
    * @param internalFrame the target {@code JInternalFrame}.
    * @param where the location to move the {@code JInternalFrame} to.
    * @throws IllegalStateException if the {@code JInternalFrame} is not showing on the screen.
    */
   @RunsInEDT
-  public void moveTo(@Nonnull JInternalFrame internalFrame, @Nonnull Point where) {
+  public void move(@Nonnull JInternalFrame internalFrame, @Nonnull Point where) {
     move(internalFrame, where.x, where.y);
   }
 
   /**
    * Closes the given {@code JInternalFrame}.
-   * 
+   *
    * @param internalFrame the target {@code JInternalFrame}.
    * @throws IllegalStateException if the {@code JInternalFrame} is not showing on the screen.
    * @throws IllegalStateException if the {@code JInternalFrame} is not closable.

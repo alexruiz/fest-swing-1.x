@@ -66,7 +66,7 @@ public class WindowDriver extends ContainerDriver {
    */
   @RunsInEDT
   public void resizeWidthTo(@Nonnull Window w, int width) {
-    resizeWidth(w, width);
+    doResizeWidth(w, width);
   }
 
   /**
@@ -80,7 +80,7 @@ public class WindowDriver extends ContainerDriver {
    */
   @RunsInEDT
   public void resizeHeightTo(@Nonnull Window w, int height) {
-    resizeHeight(w, height);
+    doResizeHeight(w, height);
   }
 
   /**

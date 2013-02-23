@@ -23,7 +23,7 @@ import org.fest.swing.annotation.RunsInEDT;
 import org.junit.Test;
 
 /**
- * Tests for {@link JInternalFrameDriver#resizeHeightTo(JInternalFrame, int)}.
+ * Tests for {@link JInternalFrameDriver#resizeHeight(JInternalFrame, int)}.
  * 
  * @author Alex Ruiz
  * @author Yvonne Wang
@@ -34,7 +34,7 @@ public class JInternalFrameDriver_resizeHeightTo_Test extends JInternalFrameDriv
     showWindow();
     int newHeight = 600;
     assertThat(heightOf(internalFrame)).isNotEqualTo(newHeight);
-    driver.resizeHeightTo(internalFrame, newHeight);
+    driver.resizeHeight(internalFrame, newHeight);
     assertThat(heightOf(internalFrame)).isEqualTo(newHeight);
   }
 

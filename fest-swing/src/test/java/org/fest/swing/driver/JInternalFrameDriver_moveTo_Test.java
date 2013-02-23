@@ -24,7 +24,7 @@ import org.fest.swing.test.awt.FluentPoint;
 import org.junit.Test;
 
 /**
- * Tests for {@link JInternalFrameDriver#moveTo(javax.swing.JInternalFrame, java.awt.Point)}.
+ * Tests for {@link JInternalFrameDriver#move(javax.swing.JInternalFrame, java.awt.Point)}.
  * 
  * @author Alex Ruiz
  * @author Yvonne Wang
@@ -34,7 +34,7 @@ public class JInternalFrameDriver_moveTo_Test extends JInternalFrameDriver_TestC
   public void should_move_JInternalFrame() {
     showWindow();
     Point p = internalFrameLocation().addToX(10).addToY(10);
-    driver.moveTo(internalFrame, p);
+    driver.move(internalFrame, p);
     assertThat(internalFrameLocation()).isEqualTo(p);
   }
 

@@ -168,7 +168,7 @@ public class JInternalFrameFixture extends
    */
   @Override
   public @Nonnull JInternalFrameFixture resizeWidthTo(int width) {
-    driver().resizeWidthTo(target(), width);
+    driver().resizeWidth(target(), width);
     return this;
   }
 
@@ -180,7 +180,7 @@ public class JInternalFrameFixture extends
    */
   @Override
   public @Nonnull JInternalFrameFixture resizeHeightTo(int height) {
-    driver().resizeHeightTo(target(), height);
+    driver().resizeHeight(target(), height);
     return this;
   }
 
@@ -204,7 +204,7 @@ public class JInternalFrameFixture extends
    */
   @Override
   public @Nonnull JInternalFrameFixture moveTo(@Nonnull Point p) {
-    driver().moveTo(target(), p);
+    driver().move(target(), p);
     return this;
   }
 }
