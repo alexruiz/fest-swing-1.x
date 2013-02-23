@@ -81,7 +81,7 @@ public abstract class AbstractTwoStateButtonFixture<S, T extends AbstractButton>
    * @throws IllegalStateException if this fixture's {@code AbstractButton} is not showing on the screen.
    */
   public final @Nonnull S uncheck() {
-    driver().unselect(target());
+    driver().deselect(target());
     return myself();
   }
 

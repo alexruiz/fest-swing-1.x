@@ -28,7 +28,7 @@ public class JRadioButtonFixture_uncheck_Test extends JRadioButtonFixture_TestCa
     new EasyMockTemplate(driver()) {
       @Override
       protected void expectations() {
-        driver().unselect(target());
+        driver().deselect(target());
         expectLastCall().once();
       }
 

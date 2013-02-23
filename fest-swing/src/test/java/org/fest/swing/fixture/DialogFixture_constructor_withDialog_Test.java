@@ -46,4 +46,9 @@ public class DialogFixture_constructor_withDialog_Test extends EDTSafeTestCase {
     assertThat(fixture.robot()).isNotNull();
     assertThat(fixture.target()).isSameAs(target);
   }
+
+  @Test(expected = NullPointerException.class)
+  public void should_throw_error_if_dialog_is_null() {
+    fixture = new DialogFixture((Dialog) null);
+  }
 }

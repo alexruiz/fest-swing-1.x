@@ -28,7 +28,7 @@ public class JToggleButtonFixture_uncheck_Test extends JToggleButtonFixture_Test
     new EasyMockTemplate(driver()) {
       @Override
       protected void expectations() {
-        driver().unselect(target());
+        driver().deselect(target());
         expectLastCall().once();
       }
 

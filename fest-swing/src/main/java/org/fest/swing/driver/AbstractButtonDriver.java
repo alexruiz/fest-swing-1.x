@@ -124,7 +124,7 @@ public class AbstractButtonDriver extends JComponentDriver implements TextDispla
    * @throws IllegalStateException if the {@code AbstractBuffon} is not showing on the screen.
    */
   @RunsInEDT
-  public void unselect(@Nonnull AbstractButton button) {
+  public void deselect(@Nonnull AbstractButton button) {
     if (!checkSelected(button)) {
       return;
     }

@@ -19,6 +19,7 @@ import static org.fest.swing.test.builder.JDialogs.dialog;
 
 import java.awt.Dialog;
 
+import org.fest.swing.exception.ComponentLookupException;
 import org.fest.swing.test.core.EDTSafeTestCase;
 import org.junit.After;
 import org.junit.Test;
@@ -41,9 +42,16 @@ public class DialogFixture_constructor_withName_Test extends EDTSafeTestCase {
 
   @Test
   public void should_lookup_showing_dialog_by_name_using_new_Robot() {
-    Dialog target = dialog().withName("dialog").withTitle(getClass().getSimpleName()).createAndShow();
+    Dialog target = dialog().withName("dialog")
+                            .withTitle(getClass().getSimpleName())
+                            .createAndShow();
     fixture = new DialogFixture("dialog");
     assertThat(fixture.robot()).isNotNull();
     assertThat(fixture.target()).isSameAs(target);
+  }
+
+  @Test(expected = ComponentLookupException.class)
+  public void should_throw_error_if_dialog_with_matching_name_is_not_found() {
+    fixture = new DialogFixture("dialog");
   }
 }

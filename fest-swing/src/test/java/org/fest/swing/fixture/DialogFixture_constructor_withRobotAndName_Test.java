@@ -32,7 +32,9 @@ import org.junit.Test;
 public class DialogFixture_constructor_withRobotAndName_Test extends RobotBasedTestCase {
   @Test
   public void should_lookup_showing_dialog_by_name() {
-    Dialog target = dialog().withName("dialog").withTitle(getClass().getSimpleName()).createAndShow();
+    Dialog target = dialog().withName("dialog")
+                            .withTitle(getClass().getSimpleName())
+                            .createAndShow();
     DialogFixture fixture = new DialogFixture(robot, "dialog");
     assertThat(fixture.robot()).isSameAs(robot);
     assertThat(fixture.target()).isSameAs(target);
