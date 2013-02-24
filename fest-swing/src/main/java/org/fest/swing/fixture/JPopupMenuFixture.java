@@ -77,16 +77,16 @@ public class JPopupMenuFixture extends AbstractJComponentFixture<JPopupMenuFixtu
   }
 
   /**
+   * <p>
    * Finds a {@code JMenuItem} in this fixture's {@code JPopupMenu}, which path matches the given one.
+   * </p>
    * <p>
    * For example, if we are looking for the menu with text "New" contained under the menu with text "File", we can
    * simply call
-   *
    * <pre>
    * JPopupMenuFixture popupMenu = tree.showPopupMenu();
    * JMenuItemFixture menuItem = popupMenu.<strong>menuItemWithPath(&quot;File&quot;, &quot;Menu&quot;)</strong>;
    * </pre>
-   *
    * </p>
    *
    * @param path the path of the menu to find.
@@ -99,8 +99,6 @@ public class JPopupMenuFixture extends AbstractJComponentFixture<JPopupMenuFixtu
   }
 
   /**
-   * Returns the contents of this fixture's {@code JPopupMenu}.
-   *
    * @return a {@code String} array representing the contents of this fixture's {@code JPopupMenu}.
    */
   public @Nonnull String[] menuLabels() {
