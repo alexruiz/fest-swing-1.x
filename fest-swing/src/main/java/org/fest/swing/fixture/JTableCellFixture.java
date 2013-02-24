@@ -66,7 +66,7 @@ public class JTableCellFixture implements ItemFixture<JTableCellFixture> {
    */
   protected JTableCellFixture(JTableFixture table, TableCell cell) {
     this.table = checkNotNull(table);
-    this.cell = checkNotNull(cell());
+    this.cell = checkNotNull(cell);
   }
 
   /**
