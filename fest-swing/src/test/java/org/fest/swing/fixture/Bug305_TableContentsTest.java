@@ -35,7 +35,7 @@ import org.junit.Test;
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
-public class TableContentsTest extends RobotBasedTestCase {
+public class Bug305_TableContentsTest extends RobotBasedTestCase {
   private MyWindow window;
   private JTableFixture fixture;
 
@@ -111,7 +111,7 @@ public class TableContentsTest extends RobotBasedTestCase {
     final JTable table;
 
     private MyWindow() {
-      super(TableContentsTest.class);
+      super(Bug305_TableContentsTest.class);
       TableRenderDemo newContentPane = new TableRenderDemo();
       table = newContentPane.table;
       newContentPane.setOpaque(true); // content panes must be opaque
