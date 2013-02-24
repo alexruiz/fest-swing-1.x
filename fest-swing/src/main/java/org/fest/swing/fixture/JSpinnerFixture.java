@@ -156,7 +156,7 @@ public class JSpinnerFixture extends AbstractJPopupMenuInvokerFixture<JSpinnerFi
    * @throws IllegalStateException if this fixture's {@code JSpinner} is not showing on the screen.
    * @throws IllegalArgumentException if the {@code JSpinner} does not support the specified {@code value}.
    */
-  public Object select(@Nonnull Object value) {
+  public JSpinnerFixture select(@Nonnull Object value) {
     driver().selectValue(target(), value);
     return this;
   }

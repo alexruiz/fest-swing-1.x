@@ -102,8 +102,6 @@ public class JProgressBarFixture extends
   }
 
   /**
-   * Returns the text of this fixture's {@code JProgressBar}.
-   *
    * @return the text of this fixture's {@code JProgressBar}.
    */
   @Override
