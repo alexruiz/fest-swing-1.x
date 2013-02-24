@@ -14,8 +14,6 @@
  */
 package org.fest.swing.driver;
 
-import static org.fest.swing.test.core.Regex.regex;
-
 import java.util.regex.Pattern;
 
 import org.junit.Test;
@@ -31,8 +29,8 @@ public class JListDriver_dragAndDropByPattern_Test extends JListDriver_dragAndDr
   @Test
   public void should_drag_and_drop() {
     showWindow();
-    driver.drag(list, regex("tw.*"));
-    driver.drop(dropList, regex("s.*"));
+    driver.drag(list, Pattern.compile("tw.*"));
+    driver.drop(dropList, Pattern.compile("s.*"));
     list.requireElements("one", "three");
     dropList.requireElements("four", "five", "six", "two");
     assertThatCellReaderWasCalled();

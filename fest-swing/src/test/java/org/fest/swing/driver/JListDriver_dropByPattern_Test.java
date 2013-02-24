@@ -17,7 +17,6 @@ package org.fest.swing.driver;
 import static org.fest.swing.test.core.CommonAssertions.assertThatErrorCauseIsDisabledComponent;
 import static org.fest.swing.test.core.CommonAssertions.assertThatErrorCauseIsNotShowingComponent;
 import static org.fest.swing.test.core.CommonAssertions.failWhenExpectingException;
-import static org.fest.swing.test.core.Regex.regex;
 
 import java.util.regex.Pattern;
 
@@ -34,7 +33,7 @@ public class JListDriver_dropByPattern_Test extends JListDriver_TestCase {
   public void should_throw_error_if_JList_is_disabled() {
     disableList();
     try {
-      driver.drop(list, regex("two"));
+      driver.drop(list, Pattern.compile("two"));
       failWhenExpectingException();
     } catch (IllegalStateException e) {
       assertThatErrorCauseIsDisabledComponent(e);
@@ -44,7 +43,7 @@ public class JListDriver_dropByPattern_Test extends JListDriver_TestCase {
   @Test
   public void should_throw_error_if_JList_is_not_showing_on_the_screen() {
     try {
-      driver.drop(list, regex("two"));
+      driver.drop(list, Pattern.compile("two"));
       failWhenExpectingException();
     } catch (IllegalStateException e) {
       assertThatErrorCauseIsNotShowingComponent(e);

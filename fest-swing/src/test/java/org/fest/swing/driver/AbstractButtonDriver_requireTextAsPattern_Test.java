@@ -16,7 +16,6 @@ package org.fest.swing.driver;
 
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.test.core.CommonAssertions.failWhenExpectingException;
-import static org.fest.swing.test.core.Regex.regex;
 
 import java.util.regex.Pattern;
 
@@ -30,13 +29,13 @@ import org.junit.Test;
 public class AbstractButtonDriver_requireTextAsPattern_Test extends AbstractButtonDriver_TestCase {
   @Test
   public void should_pass_if_text_matches_regex_pattern() {
-    driver.requireText(checkBox, regex("Hell."));
+    driver.requireText(checkBox, Pattern.compile("Hell."));
   }
 
   @Test
   public void should_fail_if_text_does_not_match_regex_pattern() {
     try {
-      Pattern pattern = regex("Bye.");
+      Pattern pattern = Pattern.compile("Bye.");
       driver.requireText(checkBox, pattern);
       failWhenExpectingException();
     } catch (AssertionError e) {

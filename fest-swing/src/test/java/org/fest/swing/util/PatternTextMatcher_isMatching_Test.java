@@ -15,7 +15,6 @@
 package org.fest.swing.util;
 
 import static org.fest.assertions.Assertions.assertThat;
-import static org.fest.swing.test.core.Regex.regex;
 
 import java.util.regex.Pattern;
 
@@ -29,20 +28,20 @@ import org.junit.Test;
 public class PatternTextMatcher_isMatching_Test {
   @Test(expected = NullPointerException.class)
   public void should_throw_error_if_any_pattern_in_array_is_null() {
-    Pattern[] patterns = { null, regex("hello"), null };
+    Pattern[] patterns = { null, Pattern.compile("hello"), null };
     PatternTextMatcher matcher = new PatternTextMatcher(patterns);
     matcher.isMatching("hello");
   }
 
   @Test
   public void should_return_true_if_text_matches_any_pattern() {
-    PatternTextMatcher matcher = new PatternTextMatcher(regex("hello"));
+    PatternTextMatcher matcher = new PatternTextMatcher(Pattern.compile("hello"));
     assertThat(matcher.isMatching("hello")).isTrue();
   }
 
   @Test
   public void should_return_false_if_text_does_not_match_any_pattern() {
-    PatternTextMatcher matcher = new PatternTextMatcher(regex("bye"), regex("hello"));
+    PatternTextMatcher matcher = new PatternTextMatcher(Pattern.compile("bye"), Pattern.compile("hello"));
     assertThat(matcher.isMatching("world")).isFalse();
   }
 }

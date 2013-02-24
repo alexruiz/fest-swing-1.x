@@ -15,7 +15,8 @@
 package org.fest.swing.core.matcher;
 
 import static org.fest.assertions.Assertions.assertThat;
-import static org.fest.swing.test.core.Regex.regex;
+
+import java.util.regex.Pattern;
 
 import javax.swing.JLabel;
 
@@ -41,7 +42,7 @@ public class NamedComponentMatcherTemplate_quoted_Test extends NamedComponentMat
 
   @Test
   public void should_quote_pattern_as_String() {
-    assertThat(matcher.quoted(regex("hello"))).isEqualTo("'hello'");
+    assertThat(matcher.quoted(Pattern.compile("hello"))).isEqualTo("'hello'");
   }
 
   @Test

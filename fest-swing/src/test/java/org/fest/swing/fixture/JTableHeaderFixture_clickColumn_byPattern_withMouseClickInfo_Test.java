@@ -32,7 +32,7 @@ import org.junit.Test;
 public class JTableHeaderFixture_clickColumn_byPattern_withMouseClickInfo_Test extends JTableHeaderFixture_TestCase {
   @Test
   public void should_click_column() {
-    final Pattern pattern = regex("first");
+    final Pattern pattern = Pattern.compile("first");
     final MouseButton mouseButton = LEFT_BUTTON;
     final int times = 2;
     new EasyMockTemplate(driver()) {
@@ -51,6 +51,6 @@ public class JTableHeaderFixture_clickColumn_byPattern_withMouseClickInfo_Test e
 
   @Test(expected = NullPointerException.class)
   public void should_throw_error_if_MouseClickInfo_is_null() {
-    fixture().clickColumn(regex("first"), null);
+    fixture().clickColumn(Pattern.compile("first"), null);
   }
 }

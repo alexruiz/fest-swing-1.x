@@ -16,7 +16,8 @@ package org.fest.swing.core.matcher;
 
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.test.builder.JButtons.button;
-import static org.fest.swing.test.core.Regex.regex;
+
+import java.util.regex.Pattern;
 
 import javax.swing.JButton;
 
@@ -32,14 +33,14 @@ import org.junit.Test;
 public class JButtonMatcher_matches_byTextPattern_Test extends EDTSafeTestCase {
   @Test
   public void should_return_true_if_text_matches_pattern() {
-    JButtonMatcher matcher = JButtonMatcher.withText(regex("He.*"));
+    JButtonMatcher matcher = JButtonMatcher.withText(Pattern.compile("He.*"));
     JButton button = button().withText("Hello").createNew();
     assertThat(matcher.matches(button)).isTrue();
   }
 
   @Test
   public void should_return_false_if_text_does_not_match_pattern() {
-    JButtonMatcher matcher = JButtonMatcher.withText(regex("Hello"));
+    JButtonMatcher matcher = JButtonMatcher.withText(Pattern.compile("Hello"));
     JButton button = button().withText("Bye").createNew();
     assertThat(matcher.matches(button)).isFalse();
   }

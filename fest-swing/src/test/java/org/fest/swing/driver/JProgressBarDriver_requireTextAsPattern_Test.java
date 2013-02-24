@@ -16,7 +16,8 @@ package org.fest.swing.driver;
 
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.test.core.CommonAssertions.failWhenExpectingException;
-import static org.fest.swing.test.core.Regex.regex;
+
+import java.util.regex.Pattern;
 
 import javax.swing.JProgressBar;
 
@@ -30,13 +31,13 @@ import org.junit.Test;
 public class JProgressBarDriver_requireTextAsPattern_Test extends JProgressBarDriver_TestCase {
   @Test
   public void should_pass_if_text_matches_pattern() {
-    driver.requireText(progressBar, regex("60.*"));
+    driver.requireText(progressBar, Pattern.compile("60.*"));
   }
 
   @Test
   public void should_fail_if_text_does_not_match_pattern() {
     try {
-      driver.requireText(progressBar, regex("50%"));
+      driver.requireText(progressBar, Pattern.compile("50%"));
       failWhenExpectingException();
     } catch (AssertionError e) {
       assertThat(e.getMessage()).contains("property:'string'").contains(

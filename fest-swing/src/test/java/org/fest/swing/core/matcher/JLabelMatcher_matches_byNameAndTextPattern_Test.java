@@ -16,7 +16,8 @@ package org.fest.swing.core.matcher;
 
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.test.builder.JLabels.label;
-import static org.fest.swing.test.core.Regex.regex;
+
+import java.util.regex.Pattern;
 
 import javax.swing.JLabel;
 
@@ -31,7 +32,7 @@ import org.junit.Test;
 public class JLabelMatcher_matches_byNameAndTextPattern_Test extends EDTSafeTestCase {
   @Test
   public void should_return_true_if_name_is_equal_to_expected_and_text_matches_pattern() {
-    JLabelMatcher matcher = JLabelMatcher.withName("label").andText(regex("Hel.*"));
+    JLabelMatcher matcher = JLabelMatcher.withName("label").andText(Pattern.compile("Hel.*"));
     JLabel label = label().withName("label").withText("Hello").createNew();
     assertThat(matcher.matches(label)).isTrue();
   }

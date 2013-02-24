@@ -16,8 +16,9 @@ package org.fest.swing.driver;
 
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.driver.AbstractButtonTextQuery.textOf;
-import static org.fest.swing.test.core.Regex.regex;
 import static org.fest.swing.test.swing.JOptionPaneLauncher.launch;
+
+import java.util.regex.Pattern;
 
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
@@ -34,7 +35,7 @@ public class JOptionPaneDriver_buttonWithTextAsPattern_Test extends JOptionPaneD
   public void should_find_button_with_text_matching_pattern() {
     JOptionPane optionPane = messageWithOptions("First", "Second");
     launch(optionPane, title());
-    JButton button = driver.buttonWithText(optionPane, regex("Sec.*"));
+    JButton button = driver.buttonWithText(optionPane, Pattern.compile("Sec.*"));
     assertThat(textOf(button)).isEqualTo("Second");
   }
 }

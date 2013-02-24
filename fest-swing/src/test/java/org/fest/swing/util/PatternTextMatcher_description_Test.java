@@ -15,7 +15,8 @@
 package org.fest.swing.util;
 
 import static org.fest.assertions.Assertions.assertThat;
-import static org.fest.swing.test.core.Regex.regex;
+
+import java.util.regex.Pattern;
 
 import org.junit.Test;
 
@@ -27,13 +28,13 @@ import org.junit.Test;
 public class PatternTextMatcher_description_Test {
   @Test
   public void should_erturn_pattern_word_as_description_if_matcher_has_only_one_pattern() {
-    PatternTextMatcher matcher = new PatternTextMatcher(regex("one"));
+    PatternTextMatcher matcher = new PatternTextMatcher(Pattern.compile("one"));
     assertThat(matcher.description()).isEqualTo("pattern");
   }
 
   @Test
   public void should_return_patterns_word_as_description_if_matcher_has_more_than_one_pattern() {
-    PatternTextMatcher matcher = new PatternTextMatcher(regex("one"), regex("two"));
+    PatternTextMatcher matcher = new PatternTextMatcher(Pattern.compile("one"), Pattern.compile("two"));
     assertThat(matcher.description()).isEqualTo("patterns");
   }
 }

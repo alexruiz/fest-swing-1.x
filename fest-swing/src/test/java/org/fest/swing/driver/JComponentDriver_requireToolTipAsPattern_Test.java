@@ -16,7 +16,6 @@ package org.fest.swing.driver;
 
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.test.core.CommonAssertions.failWhenExpectingException;
-import static org.fest.swing.test.core.Regex.regex;
 
 import java.util.regex.Pattern;
 
@@ -32,7 +31,7 @@ import org.junit.Test;
 public class JComponentDriver_requireToolTipAsPattern_Test extends JComponentDriver_TestCase {
   @Test
   public void should_pass_if_toolTip_matches_pattern() {
-    driver.requireToolTip(button, regex("A Tool.*"));
+    driver.requireToolTip(button, Pattern.compile("A Tool.*"));
   }
 
   @Test(expected = NullPointerException.class)
@@ -44,7 +43,7 @@ public class JComponentDriver_requireToolTipAsPattern_Test extends JComponentDri
   @Test
   public void should_fail_if_toolTip_does_not_match_pattern() {
     try {
-      driver.requireToolTip(button, regex("Hello"));
+      driver.requireToolTip(button, Pattern.compile("Hello"));
       failWhenExpectingException();
     } catch (AssertionError e) {
       assertThat(e.getMessage()).contains("property:'toolTipText'").contains(

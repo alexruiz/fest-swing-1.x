@@ -96,7 +96,7 @@ public class JListDriver extends JComponentDriver {
    */
   public JListDriver(@Nonnull Robot robot) {
     super(robot);
-    cellReader(new BasicJListCellReader());
+    replaceCellReader(new BasicJListCellReader());
   }
 
   /**
@@ -104,7 +104,7 @@ public class JListDriver extends JComponentDriver {
    *
    * @param list the target {@code JList}.
    * @return an array of {@code String}s that represents the contents of the given {@code JList}.
-   * @see #cellReader(JListCellReader)
+   * @see #replaceCellReader(JListCellReader)
    */
   @RunsInEDT
   public @Nonnull String[] contentsOf(@Nonnull JList list) {
@@ -392,7 +392,7 @@ public class JListDriver extends JComponentDriver {
    * @param list the target {@code JList}.
    * @param value the value to match. It can be a regular expression pattern.
    * @throws AssertionError if the selected item does not match the value.
-   * @see #cellReader(JListCellReader)
+   * @see #replaceCellReader(JListCellReader)
    */
   @RunsInEDT
   public void requireSelection(final @Nonnull JList list, @Nullable String value) {
@@ -407,7 +407,7 @@ public class JListDriver extends JComponentDriver {
    * @param pattern the regular expression pattern to match.
    * @throws AssertionError if the selected item does not match the given regular expression pattern.
    * @throws NullPointerException if the given regular expression pattern is {@code null}.
-   * @see #cellReader(JListCellReader)
+   * @see #replaceCellReader(JListCellReader)
    * @since 1.2
    */
   @RunsInEDT
@@ -447,7 +447,7 @@ public class JListDriver extends JComponentDriver {
    *
    * @param list the target {@code JList}.
    * @return an array of {@code String}s that represents the selection in the given {@code JList}.
-   * @see #cellReader(JListCellReader)
+   * @see #replaceCellReader(JListCellReader)
    */
   @RunsInEDT
   public @Nonnull String[] selectionOf(@Nonnull JList list) {
@@ -478,7 +478,7 @@ public class JListDriver extends JComponentDriver {
    * @throws IllegalArgumentException if the given array is empty.
    * @throws NullPointerException if any of the patterns in the array is {@code null}.
    * @throws AssertionError if the selected items do not match the given values.
-   * @see #cellReader(JListCellReader)
+   * @see #replaceCellReader(JListCellReader)
    * @since 1.2
    */
   @RunsInEDT
@@ -538,7 +538,7 @@ public class JListDriver extends JComponentDriver {
    * @throws IllegalStateException if the {@code JList} is disabled.
    * @throws IllegalStateException if the {@code JList} is not showing on the screen.
    * @throws LocationUnavailableException if an element matching the given value cannot be found.
-   * @see #cellReader(JListCellReader)
+   * @see #replaceCellReader(JListCellReader)
    */
   @RunsInEDT
   public void drag(@Nonnull JList list, @Nullable String value) {
@@ -554,7 +554,7 @@ public class JListDriver extends JComponentDriver {
    * @throws IllegalStateException if the {@code JList} is not showing on the screen.
    * @throws NullPointerException if the regular expression pattern is {@code null}.
    * @throws LocationUnavailableException if an element matching the given regular expression pattern cannot be found.
-   * @see #cellReader(JListCellReader)
+   * @see #replaceCellReader(JListCellReader)
    * @since 1.2
    */
   @RunsInEDT
@@ -807,7 +807,7 @@ public class JListDriver extends JComponentDriver {
    * @return the value of the element under the given index.
    * @throws IndexOutOfBoundsException if the given index is negative or greater than the index of the last item in the
    *           {@code JList}.
-   * @see #cellReader(JListCellReader)
+   * @see #replaceCellReader(JListCellReader)
    */
   @RunsInEDT
   public @Nullable String value(@Nonnull JList list, int index) {
@@ -821,7 +821,7 @@ public class JListDriver extends JComponentDriver {
    * @param newCellReader the new {@code JListCellValueReader} to use.
    * @throws NullPointerException if {@code newCellReader} is {@code null}.
    */
-  public void cellReader(@Nonnull JListCellReader newCellReader) {
+  public void replaceCellReader(@Nonnull JListCellReader newCellReader) {
     cellReader = checkNotNull(newCellReader);
   }
 

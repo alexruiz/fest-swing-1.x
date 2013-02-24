@@ -18,7 +18,8 @@ import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.test.core.CommonAssertions.assertThatErrorCauseIsDisabledComponent;
 import static org.fest.swing.test.core.CommonAssertions.assertThatErrorCauseIsNotShowingComponent;
 import static org.fest.swing.test.core.CommonAssertions.failWhenExpectingException;
-import static org.fest.swing.test.core.Regex.regex;
+
+import java.util.regex.Pattern;
 
 import org.fest.swing.exception.LocationUnavailableException;
 import org.junit.Test;
@@ -34,7 +35,7 @@ public class JListDriver_selectItemByPattern_Test extends JListDriver_TestCase {
   public void should_throw_error_if_a_matching_item_was_not_found() {
     showWindow();
     try {
-      driver.selectItem(list, regex("ten"));
+      driver.selectItem(list, Pattern.compile("ten"));
       failWhenExpectingException();
     } catch (LocationUnavailableException e) {
       assertThat(e.getMessage()).isEqualTo(
@@ -46,14 +47,14 @@ public class JListDriver_selectItemByPattern_Test extends JListDriver_TestCase {
   public void should_not_select_item_if_already_selected() {
     select(1);
     showWindow();
-    driver.selectItem(list, regex("tw.*"));
+    driver.selectItem(list, Pattern.compile("tw.*"));
     assertThat(selectedValue()).isEqualTo("two");
   }
 
   @Test
   public void should_select_item_matching_pattern() {
     showWindow();
-    driver.selectItem(list, regex("tw.*"));
+    driver.selectItem(list, Pattern.compile("tw.*"));
     assertThat(selectedValue()).isEqualTo("two");
     assertThatCellReaderWasCalled();
   }
@@ -62,7 +63,7 @@ public class JListDriver_selectItemByPattern_Test extends JListDriver_TestCase {
   public void should_throw_error_if_JList_is_disabled() {
     disableList();
     try {
-      driver.selectItem(list, regex("tw.*"));
+      driver.selectItem(list, Pattern.compile("tw.*"));
       failWhenExpectingException();
     } catch (IllegalStateException e) {
       assertThatErrorCauseIsDisabledComponent(e);
@@ -72,7 +73,7 @@ public class JListDriver_selectItemByPattern_Test extends JListDriver_TestCase {
   @Test
   public void should_throw_error_if_JList_is_not_showing_on_the_screen() {
     try {
-      driver.selectItem(list, regex("tw.*"));
+      driver.selectItem(list, Pattern.compile("tw.*"));
       failWhenExpectingException();
     } catch (IllegalStateException e) {
       assertThatErrorCauseIsNotShowingComponent(e);

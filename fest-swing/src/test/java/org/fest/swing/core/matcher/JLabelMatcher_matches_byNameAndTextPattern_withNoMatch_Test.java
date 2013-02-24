@@ -16,7 +16,6 @@ package org.fest.swing.core.matcher;
 
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.test.builder.JLabels.label;
-import static org.fest.swing.test.core.Regex.regex;
 import static org.fest.util.Lists.newArrayList;
 
 import java.util.Collection;
@@ -43,9 +42,9 @@ public class JLabelMatcher_matches_byNameAndTextPattern_withNoMatch_Test extends
   @Parameters
   public static Collection<Object[]> namesAndText() {
     return newArrayList(new Object[][] {
-        { "someName", regex("text") },
-        { "name", regex("someText") },
-        { "name", regex("text") }
+        { "someName", Pattern.compile("text") },
+        { "name", Pattern.compile("someText") },
+        { "name", Pattern.compile("text") }
       });
   }
 

@@ -14,8 +14,6 @@
  */
 package org.fest.swing.driver;
 
-import static org.fest.swing.test.core.Regex.regex;
-
 import java.util.regex.Pattern;
 
 import javax.swing.JList;
@@ -43,7 +41,7 @@ public class JListDriver_selectItemsByPattern_withInvalidInput_Test extends JLis
 
   @Test(expected = NullPointerException.class)
   public void should_throw_error_if_any_pattern_in_array_is_null() {
-    Pattern[] patterns = { regex("hello"), null };
+    Pattern[] patterns = { Pattern.compile("hello"), null };
     driver.selectItems(list, patterns);
   }
 }

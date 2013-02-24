@@ -20,7 +20,8 @@ import static org.fest.swing.query.ComponentVisibleQuery.isVisible;
 import static org.fest.swing.test.core.CommonAssertions.assertThatErrorCauseIsDisabledComponent;
 import static org.fest.swing.test.core.CommonAssertions.assertThatErrorCauseIsNotShowingComponent;
 import static org.fest.swing.test.core.CommonAssertions.failWhenExpectingException;
-import static org.fest.swing.test.core.Regex.regex;
+
+import java.util.regex.Pattern;
 
 import org.fest.swing.test.recorder.ClickRecorder;
 import org.junit.Test;
@@ -36,7 +37,7 @@ public class JListDriver_showPopupMenuAtItemAsPattern_Test extends JListDriver_s
   public void should_show_popup_menu_at_item_matching_pattern() {
     showWindow();
     ClickRecorder recorder = ClickRecorder.attachTo(list);
-    driver.showPopupMenu(list, regex("o.*"));
+    driver.showPopupMenu(list, Pattern.compile("o.*"));
     assertThat(recorder).clicked(RIGHT_BUTTON);
     assertThat(isVisible(popupMenu)).isTrue();
     assertThat(locationToIndex(recorder.pointClicked())).isEqualTo(0);
@@ -47,7 +48,7 @@ public class JListDriver_showPopupMenuAtItemAsPattern_Test extends JListDriver_s
   public void should_throw_error_if_JList_is_disabled() {
     disableList();
     try {
-      driver.showPopupMenu(list, regex("o.*"));
+      driver.showPopupMenu(list, Pattern.compile("o.*"));
       failWhenExpectingException();
     } catch (IllegalStateException e) {
       assertThatErrorCauseIsDisabledComponent(e);
@@ -57,7 +58,7 @@ public class JListDriver_showPopupMenuAtItemAsPattern_Test extends JListDriver_s
   @Test
   public void should_throw_error_if_JList_is_not_showing_on_the_screen() {
     try {
-      driver.showPopupMenu(list, regex("o.*"));
+      driver.showPopupMenu(list, Pattern.compile("o.*"));
       failWhenExpectingException();
     } catch (IllegalStateException e) {
       assertThatErrorCauseIsNotShowingComponent(e);

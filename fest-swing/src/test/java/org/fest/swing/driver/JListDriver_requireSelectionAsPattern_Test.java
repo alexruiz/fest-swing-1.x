@@ -16,7 +16,8 @@ package org.fest.swing.driver;
 
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.test.core.CommonAssertions.failWhenExpectingException;
-import static org.fest.swing.test.core.Regex.regex;
+
+import java.util.regex.Pattern;
 
 import org.junit.Test;
 
@@ -30,7 +31,7 @@ public class JListDriver_requireSelectionAsPattern_Test extends JListDriver_Test
   @Test
   public void should_pass_if_selection_matches_pattern() {
     selectFirstItem();
-    driver.requireSelection(list, regex("on.*"));
+    driver.requireSelection(list, Pattern.compile("on.*"));
     assertThatCellReaderWasCalled();
   }
 
@@ -38,7 +39,7 @@ public class JListDriver_requireSelectionAsPattern_Test extends JListDriver_Test
   public void should_fail_if_there_is_no_selection() {
     clearSelection();
     try {
-      driver.requireSelection(list, regex("one"));
+      driver.requireSelection(list, Pattern.compile("one"));
       failWhenExpectingException();
     } catch (AssertionError e) {
       assertThat(e.getMessage()).contains("No selection");
@@ -49,7 +50,7 @@ public class JListDriver_requireSelectionAsPattern_Test extends JListDriver_Test
   public void should_fail_if_selection_does_not_match_pattern() {
     select(1);
     try {
-      driver.requireSelection(list, regex("one"));
+      driver.requireSelection(list, Pattern.compile("one"));
       failWhenExpectingException();
     } catch (AssertionError e) {
       assertThat(e.getMessage()).contains("actual value:<'two'> does not match pattern:<'one'>");

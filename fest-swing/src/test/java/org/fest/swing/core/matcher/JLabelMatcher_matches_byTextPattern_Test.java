@@ -16,7 +16,8 @@ package org.fest.swing.core.matcher;
 
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.test.builder.JLabels.label;
-import static org.fest.swing.test.core.Regex.regex;
+
+import java.util.regex.Pattern;
 
 import javax.swing.JLabel;
 
@@ -31,14 +32,14 @@ import org.junit.Test;
 public class JLabelMatcher_matches_byTextPattern_Test extends EDTSafeTestCase {
   @Test
   public void should_return_true_if_text_matches_pattern() {
-    JLabelMatcher matcher = JLabelMatcher.withText(regex("He.*"));
+    JLabelMatcher matcher = JLabelMatcher.withText(Pattern.compile("He.*"));
     JLabel label = label().withText("Hello").createNew();
     assertThat(matcher.matches(label)).isTrue();
   }
 
   @Test
   public void should_return_false_if_text_does_not_match_pattern() {
-    JLabelMatcher matcher = JLabelMatcher.withText(regex("Hello"));
+    JLabelMatcher matcher = JLabelMatcher.withText(Pattern.compile("Hello"));
     JLabel label = label().withText("Bye").createNew();
     assertThat(matcher.matches(label)).isFalse();
   }

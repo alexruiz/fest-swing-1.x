@@ -17,7 +17,6 @@ package org.fest.swing.driver;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.data.TableCell.row;
 import static org.fest.swing.test.core.CommonAssertions.failWhenExpectingException;
-import static org.fest.swing.test.core.Regex.regex;
 
 import java.util.regex.Pattern;
 
@@ -32,13 +31,13 @@ import org.junit.Test;
 public class JTableDriver_requireCellValueAsPattern_Test extends JTableDriver_TestCase {
   @Test
   public void should_pass_if_cell_value_matches_pattern() {
-    driver.requireCellValue(table, row(0).column(0), regex("0.*"));
+    driver.requireCellValue(table, row(0).column(0), Pattern.compile("0.*"));
   }
 
   @Test
   public void should_fail_if_cell_value_does_not_match_pattern() {
     try {
-      driver.requireCellValue(table, row(0).column(0), regex("0-1"));
+      driver.requireCellValue(table, row(0).column(0), Pattern.compile("0-1"));
       failWhenExpectingException();
     } catch (AssertionError e) {
       assertThat(e.getMessage()).contains("property:'value [row=0, column=0]'").contains(

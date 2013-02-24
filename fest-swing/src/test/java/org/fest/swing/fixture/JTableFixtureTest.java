@@ -459,7 +459,7 @@ public class JTableFixtureTest extends JTableFixture_TestCase {
 
   @Test
   public void shouldRequireCellValueMatchingPattern() {
-    final Pattern pattern = regex("Hello");
+    final Pattern pattern = Pattern.compile("Hello");
     new EasyMockTemplate(driver()) {
       @Override
       protected void expectations() {
@@ -560,7 +560,7 @@ public class JTableFixtureTest extends JTableFixture_TestCase {
 
   @Test
   public void shouldFindCellByValueMatchingPattern() {
-    final Pattern pattern = regex("Hello");
+    final Pattern pattern = Pattern.compile("Hello");
     new EasyMockTemplate(driver()) {
       @Override
       protected void expectations() {

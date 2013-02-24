@@ -16,7 +16,8 @@ package org.fest.swing.core.matcher;
 
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.test.builder.JTextFields.textField;
-import static org.fest.swing.test.core.Regex.regex;
+
+import java.util.regex.Pattern;
 
 import javax.swing.JTextField;
 
@@ -32,14 +33,14 @@ import org.junit.Test;
 public class JTextComponentMatcher_matches_byTextPattern_Test extends EDTSafeTestCase {
   @Test
   public void should_return_true_if_text_matches_pattern() {
-    JTextComponentMatcher matcher = JTextComponentMatcher.withText(regex("He.*"));
+    JTextComponentMatcher matcher = JTextComponentMatcher.withText(Pattern.compile("He.*"));
     JTextField textField = textField().withText("Bye").createNew();
     assertThat(matcher.matches(textField)).isFalse();
   }
 
   @Test
   public void should_return_false_if_text_does_not_match_pattern() {
-    JTextComponentMatcher matcher = JTextComponentMatcher.withText(regex("Hello"));
+    JTextComponentMatcher matcher = JTextComponentMatcher.withText(Pattern.compile("Hello"));
     JTextField textField = textField().withText("Bye").createNew();
     assertThat(matcher.matches(textField)).isFalse();
   }

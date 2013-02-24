@@ -16,7 +16,8 @@ package org.fest.swing.driver;
 
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.test.core.CommonAssertions.failWhenExpectingException;
-import static org.fest.swing.test.core.Regex.regex;
+
+import java.util.regex.Pattern;
 
 import org.fest.swing.exception.LocationUnavailableException;
 import org.junit.Test;
@@ -30,7 +31,7 @@ import org.junit.Test;
 public class JListDriver_indexOfValueAsPattern_Test extends JListDriver_TestCase {
   @Test
   public void should_return_index_of_item_matching_pattern() {
-    int index = driver.indexOf(list, regex("thr.*"));
+    int index = driver.indexOf(list, Pattern.compile("thr.*"));
     assertThat(index).isEqualTo(2);
     assertThatCellReaderWasCalled();
   }
@@ -38,7 +39,7 @@ public class JListDriver_indexOfValueAsPattern_Test extends JListDriver_TestCase
   @Test
   public void should_throw_error_if_item_matching_given_value_was_not_found() {
     try {
-      driver.indexOf(list, regex("fou.*"));
+      driver.indexOf(list, Pattern.compile("fou.*"));
       failWhenExpectingException();
     } catch (LocationUnavailableException expected) {
       assertThat(expected.getMessage()).isEqualTo(

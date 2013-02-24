@@ -17,7 +17,7 @@ package org.fest.swing.driver;
 import org.junit.Test;
 
 /**
- * Tests for {@link JListDriver#cellReader(org.fest.swing.cell.JListCellReader)}.
+ * Tests for {@link JListDriver#replaceCellReader(org.fest.swing.cell.JListCellReader)}.
  * 
  * @author Alex Ruiz
  * @author Yvonne Wang
@@ -25,6 +25,6 @@ import org.junit.Test;
 public class JListDriver_cellReader_Test extends JListDriver_withMocks_TestCase {
   @Test(expected = NullPointerException.class)
   public void should_throw_error_if_cellReader_is_null() {
-    driver.cellReader(null);
+    driver.replaceCellReader(null);
   }
 }

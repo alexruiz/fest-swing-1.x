@@ -426,6 +426,21 @@ public class JListFixture extends AbstractJPopupMenuInvokerFixture<JListFixture,
   }
 
   /**
+   * Verifies that the given item indices are selected in this fixture's {@code JList}.
+   *
+   * @param indices the expected indices of the selected items.
+   * @return this fixture.
+   * @throws NullPointerException if the given array is {@code null}.
+   * @throws IllegalArgumentException if the given array is empty.
+   * @throws AssertionError if the selection in this fixture's {@code JList} does not match the given one.
+   * @since 1.2
+   */
+  public @Nonnull JListFixture requireSelectedItems(@Nonnull int... indices) {
+    driver().requireSelectedItems(target(), indices);
+    return this;
+  }
+
+  /**
    * Verifies that the {@code String} representations of the selected items in this fixture's {@code JList} match the
    * given text items.
    *
@@ -456,21 +471,6 @@ public class JListFixture extends AbstractJPopupMenuInvokerFixture<JListFixture,
    */
   public @Nonnull JListFixture requireSelectedItems(@Nonnull Pattern[] patterns) {
     driver().requireSelectedItems(target(), patterns);
-    return this;
-  }
-
-  /**
-   * Verifies that the given item indices are selected in this fixture's {@code JList}.
-   *
-   * @param indices the expected indices of the selected items.
-   * @return this fixture.
-   * @throws NullPointerException if the given array is {@code null}.
-   * @throws IllegalArgumentException if the given array is empty.
-   * @throws AssertionError if the selection in this fixture's {@code JList} does not match the given one.
-   * @since 1.2
-   */
-  public @Nonnull JListFixture requireSelectedItems(@Nonnull int... indices) {
-    driver().requireSelectedItems(target(), indices);
     return this;
   }
 
@@ -616,6 +616,6 @@ public class JListFixture extends AbstractJPopupMenuInvokerFixture<JListFixture,
   }
 
   public void replaceCellReader(@Nonnull JListCellReader cellReader) {
-    driver().cellReader(cellReader);
+    driver().replaceCellReader(cellReader);
   }
 }

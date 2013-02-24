@@ -16,7 +16,8 @@ package org.fest.swing.core.matcher;
 
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.test.builder.JFrames.frame;
-import static org.fest.swing.test.core.Regex.regex;
+
+import java.util.regex.Pattern;
 
 import javax.swing.JFrame;
 
@@ -32,14 +33,14 @@ import org.junit.Test;
 public class FrameMatcher_matches_byTitlePattern_Test extends EDTSafeTestCase {
   @Test
   public void should_return_true_if_title_matches_pattern() {
-    FrameMatcher matcher = FrameMatcher.withTitle(regex("He.*"));
+    FrameMatcher matcher = FrameMatcher.withTitle(Pattern.compile("He.*"));
     JFrame frame = frame().withTitle("Hello").createNew();
     assertThat(matcher.matches(frame)).isTrue();
   }
 
   @Test
   public void should_return_false_if_title_does_not_match_pattern() {
-    FrameMatcher matcher = FrameMatcher.withTitle(regex("Hello"));
+    FrameMatcher matcher = FrameMatcher.withTitle(Pattern.compile("Hello"));
     JFrame frame = frame().withTitle("Bye").createNew();
     assertThat(matcher.matches(frame)).isFalse();
   }

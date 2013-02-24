@@ -16,8 +16,9 @@ package org.fest.swing.driver;
 
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.test.core.CommonAssertions.failWhenExpectingException;
-import static org.fest.swing.test.core.Regex.regex;
 import static org.fest.swing.test.swing.JOptionPaneLauncher.pack;
+
+import java.util.regex.Pattern;
 
 import javax.swing.JOptionPane;
 
@@ -33,14 +34,14 @@ public class JOptionPaneDriver_requireMessageByPattern_Test extends JOptionPaneD
   public void should_pass_if_message_matches_pattern() {
     JOptionPane optionPane = messageWithValue("Leia");
     pack(optionPane, title());
-    driver.requireMessage(optionPane, regex("Le.*"));
+    driver.requireMessage(optionPane, Pattern.compile("Le.*"));
   }
 
   @Test
   public void should_pass_if_non_String_message_is_equal_to_expected() {
     JOptionPane optionPane = messageWithValue(new Person("Leia"));
     pack(optionPane, title());
-    driver.requireMessage(optionPane, regex("Le.*"));
+    driver.requireMessage(optionPane, Pattern.compile("Le.*"));
   }
 
   @Test
@@ -48,7 +49,7 @@ public class JOptionPaneDriver_requireMessageByPattern_Test extends JOptionPaneD
     JOptionPane optionPane = messageWithValue("Palpatine");
     pack(optionPane, title());
     try {
-      driver.requireMessage(optionPane, regex("Anakin"));
+      driver.requireMessage(optionPane, Pattern.compile("Anakin"));
       failWhenExpectingException();
     } catch (AssertionError e) {
       assertThat(e.getMessage()).contains("property:'message'")

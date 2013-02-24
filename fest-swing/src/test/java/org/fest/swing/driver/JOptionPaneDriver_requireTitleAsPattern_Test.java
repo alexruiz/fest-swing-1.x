@@ -16,9 +16,10 @@ package org.fest.swing.driver;
 
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.test.core.CommonAssertions.failWhenExpectingException;
-import static org.fest.swing.test.core.Regex.regex;
 import static org.fest.swing.test.swing.JOptionPaneLauncher.pack;
 import static org.fest.util.Strings.concat;
+
+import java.util.regex.Pattern;
 
 import javax.swing.JOptionPane;
 
@@ -34,7 +35,7 @@ public class JOptionPaneDriver_requireTitleAsPattern_Test extends JOptionPaneDri
   public void should_pass_if_title_matches_pattern() {
     JOptionPane optionPane = informationMessage();
     pack(optionPane, title());
-    driver.requireTitle(optionPane, regex("JOptionP.*"));
+    driver.requireTitle(optionPane, Pattern.compile("JOptionP.*"));
   }
 
   @Test
@@ -42,7 +43,7 @@ public class JOptionPaneDriver_requireTitleAsPattern_Test extends JOptionPaneDri
     JOptionPane optionPane = informationMessage();
     pack(optionPane, title());
     try {
-      driver.requireTitle(optionPane, regex("Yoda"));
+      driver.requireTitle(optionPane, Pattern.compile("Yoda"));
       failWhenExpectingException();
     } catch (AssertionError e) {
       assertThat(e.getMessage()).contains("property:'title'").contains(

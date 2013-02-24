@@ -29,7 +29,7 @@ import org.junit.Test;
 public class JTableHeaderFixture_showPopupMenuAt_byPattern_Test extends JTableHeaderFixture_showPopupMenuAt_TestCase {
   @Test
   public void should_show_JPopupMenu() {
-    final Pattern pattern = regex("1");
+    final Pattern pattern = Pattern.compile("1");
     new EasyMockTemplate(driver()) {
       @Override
       protected void expectations() {

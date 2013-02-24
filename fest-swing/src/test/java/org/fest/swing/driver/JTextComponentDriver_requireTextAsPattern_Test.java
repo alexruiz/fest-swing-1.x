@@ -16,7 +16,8 @@ package org.fest.swing.driver;
 
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.test.core.CommonAssertions.failWhenExpectingException;
-import static org.fest.swing.test.core.Regex.regex;
+
+import java.util.regex.Pattern;
 
 import org.junit.Test;
 
@@ -30,14 +31,14 @@ public class JTextComponentDriver_requireTextAsPattern_Test extends JTextCompone
   @Test
   public void should_pass_if_text_matches_pattern() {
     setTextFieldText("Hi");
-    driver.requireText(textField, regex("H.*"));
+    driver.requireText(textField, Pattern.compile("H.*"));
   }
 
   @Test
   public void should_fail_if_text_does_not_match_pattern() {
     setTextFieldText("Hi");
     try {
-      driver.requireText(textField, regex("Bye"));
+      driver.requireText(textField, Pattern.compile("Bye"));
       failWhenExpectingException();
     } catch (AssertionError e) {
       assertThat(e.getMessage()).contains("property:'text'").contains(

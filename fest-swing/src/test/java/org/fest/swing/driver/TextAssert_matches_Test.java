@@ -14,8 +14,9 @@
  */
 package org.fest.swing.driver;
 
-import static org.fest.swing.test.core.Regex.regex;
 import static org.junit.rules.ExpectedException.none;
+
+import java.util.regex.Pattern;
 
 import org.junit.Rule;
 import org.junit.Test;
@@ -34,18 +35,18 @@ public class TextAssert_matches_Test {
   public void should_fail_if_actual_does_not_match_regex_pattern() {
     thrown.expect(AssertionError.class);
     thrown.expectMessage("actual value:<'hello'> does not match pattern:<'bye'>");
-    new TextAssert("hello").matches(regex("bye"));
+    new TextAssert("hello").matches(Pattern.compile("bye"));
   }
 
   @Test
   public void should_fail_showing_description_if_actual_does_not_match_regex_pattern() {
     thrown.expect(AssertionError.class);
     thrown.expectMessage("[A Test] actual value:<'hello'> does not match pattern:<'bye'>");
-    new TextAssert("hello").as("A Test").matches(regex("bye"));
+    new TextAssert("hello").as("A Test").matches(Pattern.compile("bye"));
   }
 
   @Test
   public void should_pass_if_actual_matches_regex_pattern() {
-    new TextAssert("Hello").matches(regex("Hel.*"));
+    new TextAssert("Hello").matches(Pattern.compile("Hel.*"));
   }
 }

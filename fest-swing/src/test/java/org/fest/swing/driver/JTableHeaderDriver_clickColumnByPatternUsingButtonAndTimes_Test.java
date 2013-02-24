@@ -16,8 +16,9 @@ package org.fest.swing.driver;
 
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.core.MouseButton.LEFT_BUTTON;
-import static org.fest.swing.test.core.Regex.regex;
 import static org.fest.swing.test.recorder.ClickRecorder.attachTo;
+
+import java.util.regex.Pattern;
 
 import org.fest.swing.test.recorder.ClickRecorder;
 import org.junit.Test;
@@ -32,7 +33,7 @@ public class JTableHeaderDriver_clickColumnByPatternUsingButtonAndTimes_Test ext
   public void should_click_column() {
     showWindow();
     ClickRecorder recorder = attachTo(tableHeader);
-    driver.clickColumn(tableHeader, regex("0.*"), LEFT_BUTTON, 3);
+    driver.clickColumn(tableHeader, Pattern.compile("0.*"), LEFT_BUTTON, 3);
     assertThat(recorder).wasClickedWith(LEFT_BUTTON).timesClicked(3);
     assertThatColumnWasClicked(recorder, 0);
   }

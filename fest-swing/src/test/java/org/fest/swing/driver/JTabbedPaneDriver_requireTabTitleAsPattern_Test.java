@@ -17,7 +17,8 @@ package org.fest.swing.driver;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.data.Index.atIndex;
 import static org.fest.swing.test.core.CommonAssertions.failWhenExpectingException;
-import static org.fest.swing.test.core.Regex.regex;
+
+import java.util.regex.Pattern;
 
 import org.junit.Test;
 
@@ -32,7 +33,7 @@ public class JTabbedPaneDriver_requireTabTitleAsPattern_Test extends JTabbedPane
   @Test
   public void should_fail_if_title_does_not_match_pattern() {
     try {
-      driver.requireTabTitle(tabbedPane, regex("Hello"), atIndex(0));
+      driver.requireTabTitle(tabbedPane, Pattern.compile("Hello"), atIndex(0));
       failWhenExpectingException();
     } catch (AssertionError e) {
       assertThat(e.getMessage()).contains("property:'titleAt'").contains(
@@ -42,6 +43,6 @@ public class JTabbedPaneDriver_requireTabTitleAsPattern_Test extends JTabbedPane
 
   @Test
   public void should_pass_if_title_matches_pattern() {
-    driver.requireTabTitle(tabbedPane, regex("O.*"), atIndex(0));
+    driver.requireTabTitle(tabbedPane, Pattern.compile("O.*"), atIndex(0));
   }
 }

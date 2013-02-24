@@ -19,9 +19,9 @@ import static org.fest.swing.core.MouseButton.RIGHT_BUTTON;
 import static org.fest.swing.test.core.CommonAssertions.assertThatErrorCauseIsDisabledComponent;
 import static org.fest.swing.test.core.CommonAssertions.assertThatErrorCauseIsNotShowingComponent;
 import static org.fest.swing.test.core.CommonAssertions.failWhenExpectingException;
-import static org.fest.swing.test.core.Regex.regex;
 
 import java.awt.Point;
+import java.util.regex.Pattern;
 
 import org.fest.swing.exception.LocationUnavailableException;
 import org.fest.swing.test.recorder.ClickRecorder;
@@ -40,7 +40,7 @@ public class JListDriver_clickItemByPattern_Test extends JListDriver_TestCase {
     clearSelection();
     showWindow();
     ClickRecorder recorder = ClickRecorder.attachTo(list);
-    driver.clickItem(list, regex("tw.*"), RIGHT_BUTTON, 2);
+    driver.clickItem(list, Pattern.compile("tw.*"), RIGHT_BUTTON, 2);
     assertThat(recorder).clicked(RIGHT_BUTTON).timesClicked(2);
     Point pointClicked = recorder.pointClicked();
     assertThat(locationToIndex(pointClicked)).isEqualTo(1);
@@ -50,7 +50,7 @@ public class JListDriver_clickItemByPattern_Test extends JListDriver_TestCase {
   public void should_throw_error_if_JList_is_disabled() {
     disableList();
     try {
-      driver.clickItem(list, regex("two"), RIGHT_BUTTON, 2);
+      driver.clickItem(list, Pattern.compile("two"), RIGHT_BUTTON, 2);
       failWhenExpectingException();
     } catch (IllegalStateException e) {
       assertThatErrorCauseIsDisabledComponent(e);
@@ -60,7 +60,7 @@ public class JListDriver_clickItemByPattern_Test extends JListDriver_TestCase {
   @Test
   public void should_throw_error_if_JList_is_not_showing_on_the_screen() {
     try {
-      driver.clickItem(list, regex("two"), RIGHT_BUTTON, 2);
+      driver.clickItem(list, Pattern.compile("two"), RIGHT_BUTTON, 2);
       failWhenExpectingException();
     } catch (IllegalStateException e) {
       assertThatErrorCauseIsNotShowingComponent(e);
@@ -70,6 +70,6 @@ public class JListDriver_clickItemByPattern_Test extends JListDriver_TestCase {
   @Test(expected = LocationUnavailableException.class)
   public void should_throw_error_if_item_to_click_was_not_found() {
     showWindow();
-    driver.clickItem(list, regex("hello"), RIGHT_BUTTON, 2);
+    driver.clickItem(list, Pattern.compile("hello"), RIGHT_BUTTON, 2);
   }
 }

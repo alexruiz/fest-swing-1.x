@@ -16,7 +16,8 @@ package org.fest.swing.driver;
 
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.test.core.CommonAssertions.failWhenExpectingException;
-import static org.fest.swing.test.core.Regex.regex;
+
+import java.util.regex.Pattern;
 
 import org.junit.Test;
 
@@ -30,7 +31,7 @@ public class JComboBoxDriver_requireSelectionByPattern_Test extends JComboBoxDri
   @Test
   public void should_pass_if_JComboBox_has_matching_selection() {
     selectFirstItem();
-    driver.requireSelection(comboBox, regex("firs."));
+    driver.requireSelection(comboBox, Pattern.compile("firs."));
     assertThatCellReaderWasCalled();
   }
 
@@ -38,7 +39,7 @@ public class JComboBoxDriver_requireSelectionByPattern_Test extends JComboBoxDri
   public void should_pass_if_JComboBox_does_not_have_matching_selection() {
     selectFirstItem();
     try {
-      driver.requireSelection(comboBox, regex("sec.*"));
+      driver.requireSelection(comboBox, Pattern.compile("sec.*"));
       failWhenExpectingException();
     } catch (AssertionError e) {
       assertThat(e.getMessage()).contains("property:'selectedIndex'").contains(
@@ -50,7 +51,7 @@ public class JComboBoxDriver_requireSelectionByPattern_Test extends JComboBoxDri
   public void should_fail_if_JComboBox_does_not_have_any_selection() {
     clearSelection();
     try {
-      driver.requireSelection(comboBox, regex("second"));
+      driver.requireSelection(comboBox, Pattern.compile("second"));
       failWhenExpectingException();
     } catch (AssertionError e) {
       assertThat(e.getMessage()).contains("property:'selectedIndex'").contains("No selection");

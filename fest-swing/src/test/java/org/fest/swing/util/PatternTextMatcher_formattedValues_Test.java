@@ -15,7 +15,8 @@
 package org.fest.swing.util;
 
 import static org.fest.assertions.Assertions.assertThat;
-import static org.fest.swing.test.core.Regex.regex;
+
+import java.util.regex.Pattern;
 
 import org.junit.Test;
 
@@ -27,13 +28,13 @@ import org.junit.Test;
 public class PatternTextMatcher_formattedValues_Test {
   @Test
   public void should_return_single_pattern_as_formatted_value_if_matcher_has_only_one_pattern() {
-    PatternTextMatcher matcher = new PatternTextMatcher(regex("one"));
+    PatternTextMatcher matcher = new PatternTextMatcher(Pattern.compile("one"));
     assertThat(matcher.formattedValues()).isEqualTo("'one'");
   }
 
   @Test
   public void should_return_array_of_patterns_as_formatted_value_if_matcher_has_more_than_one_pattern() {
-    PatternTextMatcher matcher = new PatternTextMatcher(regex("one"), regex("two"));
+    PatternTextMatcher matcher = new PatternTextMatcher(Pattern.compile("one"), Pattern.compile("two"));
     assertThat(matcher.formattedValues()).isEqualTo("['one', 'two']");
   }
 }

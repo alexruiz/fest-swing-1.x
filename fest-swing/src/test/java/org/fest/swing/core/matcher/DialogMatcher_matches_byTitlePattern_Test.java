@@ -16,7 +16,8 @@ package org.fest.swing.core.matcher;
 
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.test.builder.JDialogs.dialog;
-import static org.fest.swing.test.core.Regex.regex;
+
+import java.util.regex.Pattern;
 
 import javax.swing.JDialog;
 
@@ -32,14 +33,14 @@ import org.junit.Test;
 public class DialogMatcher_matches_byTitlePattern_Test extends EDTSafeTestCase {
   @Test
   public void should_return_true_if_title_matches_pattern() {
-    DialogMatcher matcher = DialogMatcher.withTitle(regex("He.*"));
+    DialogMatcher matcher = DialogMatcher.withTitle(Pattern.compile("He.*"));
     JDialog dialog = dialog().withTitle("Hello").createNew();
     assertThat(matcher.matches(dialog)).isTrue();
   }
 
   @Test
   public void should_return_false_if_title_does_not_match_pattern() {
-    DialogMatcher matcher = DialogMatcher.withTitle(regex("Hello"));
+    DialogMatcher matcher = DialogMatcher.withTitle(Pattern.compile("Hello"));
     JDialog dialog = dialog().withTitle("Bye").createNew();
     assertThat(matcher.matches(dialog)).isFalse();
   }

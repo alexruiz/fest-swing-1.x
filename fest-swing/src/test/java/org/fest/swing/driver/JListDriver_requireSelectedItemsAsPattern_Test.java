@@ -16,7 +16,8 @@ package org.fest.swing.driver;
 
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.test.core.CommonAssertions.failWhenExpectingException;
-import static org.fest.swing.test.core.Regex.regex;
+
+import java.util.regex.Pattern;
 
 import org.junit.Test;
 
@@ -31,7 +32,7 @@ public class JListDriver_requireSelectedItemsAsPattern_Test extends JListDriver_
   public void should_fail_if_there_is_no_selection() {
     clearSelection();
     try {
-      driver.requireSelectedItems(list, regex("one"), regex("two"));
+      driver.requireSelectedItems(list, Pattern.compile("one"), Pattern.compile("two"));
       failWhenExpectingException();
     } catch (AssertionError e) {
       assertThat(e.getMessage()).contains("property:'selectedIndices'").contains(
@@ -43,7 +44,7 @@ public class JListDriver_requireSelectedItemsAsPattern_Test extends JListDriver_
   public void should_fail_if_selection_is_not_equal_to_expected() {
     select(2);
     try {
-      driver.requireSelectedItems(list, regex("one"));
+      driver.requireSelectedItems(list, Pattern.compile("one"));
       failWhenExpectingException();
     } catch (AssertionError e) {
       assertThat(e.getMessage()).contains("property:'selectedIndices'").contains(
@@ -54,21 +55,21 @@ public class JListDriver_requireSelectedItemsAsPattern_Test extends JListDriver_
   @Test
   public void should_pass_if_selection_is_equal_to_expected() {
     select(0, 1);
-    driver.requireSelectedItems(list, regex("two"), regex("one"));
+    driver.requireSelectedItems(list, Pattern.compile("two"), Pattern.compile("one"));
     assertThatCellReaderWasCalled();
   }
 
   @Test
   public void should_pass_if_selection_matches_pattern() {
     select(1, 2);
-    driver.requireSelectedItems(list, regex("t.*"));
+    driver.requireSelectedItems(list, Pattern.compile("t.*"));
     assertThatCellReaderWasCalled();
   }
 
   @Test
   public void should_pass_if_selection_matches_patterns() {
     select(0, 1);
-    driver.requireSelectedItems(list, regex("tw.*"), regex("o.*"));
+    driver.requireSelectedItems(list, Pattern.compile("tw.*"), Pattern.compile("o.*"));
     assertThatCellReaderWasCalled();
   }
 }

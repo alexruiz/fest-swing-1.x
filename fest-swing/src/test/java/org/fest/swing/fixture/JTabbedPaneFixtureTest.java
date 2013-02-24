@@ -84,7 +84,7 @@ public class JTabbedPaneFixtureTest extends JTabbedPaneFixture_TestCase {
 
   @Test
   public void shouldRequireTitleMatchingPatternAtTabIndex() {
-    final Pattern pattern = regex("hello");
+    final Pattern pattern = Pattern.compile("hello");
     new EasyMockTemplate(driver()) {
       @Override
       protected void expectations() {
@@ -135,7 +135,7 @@ public class JTabbedPaneFixtureTest extends JTabbedPaneFixture_TestCase {
 
   @Test
   public void shouldSelectTabMatchingPattern() {
-    final Pattern pattern = regex("hello");
+    final Pattern pattern = Pattern.compile("hello");
     new EasyMockTemplate(driver()) {
       @Override
       protected void expectations() {

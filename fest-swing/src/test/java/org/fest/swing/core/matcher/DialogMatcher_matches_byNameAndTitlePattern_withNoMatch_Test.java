@@ -16,7 +16,6 @@ package org.fest.swing.core.matcher;
 
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.test.builder.JDialogs.dialog;
-import static org.fest.swing.test.core.Regex.regex;
 import static org.fest.util.Lists.newArrayList;
 
 import java.util.Collection;
@@ -44,9 +43,9 @@ public class DialogMatcher_matches_byNameAndTitlePattern_withNoMatch_Test extend
   @Parameters
   public static Collection<Object[]> namesAndTitles() {
     return newArrayList(new Object[][] {
-        { "someName", regex("title") },
-        { "name", regex("someTitle") },
-        { "name", regex("title") }
+        { "someName", Pattern.compile("title") },
+        { "name", Pattern.compile("someTitle") },
+        { "name", Pattern.compile("title") }
       });
   }
 

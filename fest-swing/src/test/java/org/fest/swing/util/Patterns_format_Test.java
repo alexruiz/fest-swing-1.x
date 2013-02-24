@@ -15,7 +15,6 @@
 package org.fest.swing.util;
 
 import static org.fest.assertions.Assertions.assertThat;
-import static org.fest.swing.test.core.Regex.regex;
 
 import java.util.regex.Pattern;
 
@@ -35,13 +34,13 @@ public class Patterns_format_Test {
 
   @Test(expected = NullPointerException.class)
   public void should_throw_error_if_pattern_in_array_is_null() {
-    Pattern[] patterns = { regex("hello"), null };
+    Pattern[] patterns = { Pattern.compile("hello"), null };
     Patterns.format(patterns);
   }
 
   @Test
   public void should_format_pattern_array() {
-    Pattern[] patterns = { regex("hello"), regex("world") };
+    Pattern[] patterns = { Pattern.compile("hello"), Pattern.compile("world") };
     String formatted = Patterns.format(patterns);
     assertThat(formatted).isEqualTo("['hello', 'world']");
   }

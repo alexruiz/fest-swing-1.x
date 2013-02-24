@@ -29,7 +29,7 @@ import org.junit.Test;
 public class JTableHeaderFixture_clickColumn_byPattern_Test extends JTableHeaderFixture_TestCase {
   @Test
   public void should_click_column() {
-    final Pattern pattern = regex("first");
+    final Pattern pattern = Pattern.compile("first");
     new EasyMockTemplate(driver()) {
       @Override
       protected void expectations() {

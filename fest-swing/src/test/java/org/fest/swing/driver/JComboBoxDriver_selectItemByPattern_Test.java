@@ -17,7 +17,8 @@ package org.fest.swing.driver;
 import static org.fest.swing.test.core.CommonAssertions.assertThatErrorCauseIsDisabledComponent;
 import static org.fest.swing.test.core.CommonAssertions.assertThatErrorCauseIsNotShowingComponent;
 import static org.fest.swing.test.core.CommonAssertions.failWhenExpectingException;
-import static org.fest.swing.test.core.Regex.regex;
+
+import java.util.regex.Pattern;
 
 import org.fest.swing.exception.LocationUnavailableException;
 import org.junit.Test;
@@ -33,7 +34,7 @@ public class JComboBoxDriver_selectItemByPattern_Test extends JComboBoxDriver_Te
   public void should_select_matching_item() {
     clearSelection();
     showWindow();
-    driver.selectItem(comboBox, regex("thi.*"));
+    driver.selectItem(comboBox, Pattern.compile("thi.*"));
     assertThatSelectedItemIs("third");
   }
 
@@ -41,7 +42,7 @@ public class JComboBoxDriver_selectItemByPattern_Test extends JComboBoxDriver_Te
   public void should_not_do_anything_if_item_already_selected() {
     showWindow();
     select(2);
-    driver.selectItem(comboBox, regex("thi.*"));
+    driver.selectItem(comboBox, Pattern.compile("thi.*"));
     assertThatSelectedItemIs("third");
   }
 
@@ -49,7 +50,7 @@ public class JComboBoxDriver_selectItemByPattern_Test extends JComboBoxDriver_Te
   public void should_throw_error_if_JComboBox_is_disabled() {
     disableComboBox();
     try {
-      driver.selectItem(comboBox, regex("first"));
+      driver.selectItem(comboBox, Pattern.compile("first"));
       failWhenExpectingException();
     } catch (IllegalStateException e) {
       assertThatErrorCauseIsDisabledComponent(e);
@@ -59,7 +60,7 @@ public class JComboBoxDriver_selectItemByPattern_Test extends JComboBoxDriver_Te
   @Test
   public void should_throw_error_if_JComboBox_is_not_showing_on_the_screen() {
     try {
-      driver.selectItem(comboBox, regex("first"));
+      driver.selectItem(comboBox, Pattern.compile("first"));
       failWhenExpectingException();
     } catch (IllegalStateException e) {
       assertThatErrorCauseIsNotShowingComponent(e);
@@ -69,6 +70,6 @@ public class JComboBoxDriver_selectItemByPattern_Test extends JComboBoxDriver_Te
   @Test(expected = LocationUnavailableException.class)
   public void should_throw_error_if_item_does_not_exist() {
     showWindow();
-    driver.selectItem(comboBox, regex("hundred"));
+    driver.selectItem(comboBox, Pattern.compile("hundred"));
   }
 }

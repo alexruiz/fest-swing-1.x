@@ -16,7 +16,6 @@ package org.fest.swing.driver;
 
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.test.core.CommonAssertions.failWhenExpectingException;
-import static org.fest.swing.test.core.Regex.regex;
 
 import java.util.regex.Pattern;
 
@@ -33,7 +32,7 @@ import org.junit.Test;
 public class JTableDriver_cellByPattern_Test extends JTableDriver_TestCase {
   @Test
   public void should_find_cell_having_value_that_matches_given_pattern() {
-    TableCell cell = driver.cell(table, regex("1.*"));
+    TableCell cell = driver.cell(table, Pattern.compile("1.*"));
     assertThat(cell.row).isEqualTo(1);
     assertThat(cell.column).isEqualTo(0);
     assertThatCellReaderWasCalled();
@@ -42,7 +41,7 @@ public class JTableDriver_cellByPattern_Test extends JTableDriver_TestCase {
   @Test
   public void should_throw_error_if_a_matching_cell_was_not_found() {
     try {
-      driver.cell(table, regex("Hello World"));
+      driver.cell(table, Pattern.compile("Hello World"));
       failWhenExpectingException();
     } catch (ActionFailedException expected) {
       assertThat(expected.getMessage()).contains("Unable to find cell matching pattern 'Hello World'");

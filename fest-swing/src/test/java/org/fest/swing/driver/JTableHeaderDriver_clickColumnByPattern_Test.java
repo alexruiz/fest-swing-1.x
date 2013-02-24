@@ -16,8 +16,9 @@ package org.fest.swing.driver;
 
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.test.core.CommonAssertions.failWhenExpectingException;
-import static org.fest.swing.test.core.Regex.regex;
 import static org.fest.swing.test.recorder.ClickRecorder.attachTo;
+
+import java.util.regex.Pattern;
 
 import org.fest.swing.exception.LocationUnavailableException;
 import org.fest.swing.test.recorder.ClickRecorder;
@@ -32,7 +33,7 @@ public class JTableHeaderDriver_clickColumnByPattern_Test extends JTableHeaderDr
   @Test
   public void should_fail_if_matching_column_was_not_found() {
     try {
-      driver.clickColumn(tableHeader, regex("hello"));
+      driver.clickColumn(tableHeader, Pattern.compile("hello"));
       failWhenExpectingException();
     } catch (LocationUnavailableException e) {
       assertThat(e.getMessage()).isEqualTo("Unable to find column with name matching pattern 'hello'");
@@ -43,7 +44,7 @@ public class JTableHeaderDriver_clickColumnByPattern_Test extends JTableHeaderDr
   public void should_click_column() {
     showWindow();
     ClickRecorder recorder = attachTo(tableHeader);
-    driver.clickColumn(tableHeader, regex("0.*"));
+    driver.clickColumn(tableHeader, Pattern.compile("0.*"));
     assertThat(recorder).wasClicked();
     assertThatColumnWasClicked(recorder, 0);
   }

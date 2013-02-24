@@ -16,7 +16,8 @@ package org.fest.swing.driver;
 
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.test.core.CommonAssertions.failWhenExpectingException;
-import static org.fest.swing.test.core.Regex.regex;
+
+import java.util.regex.Pattern;
 
 import javax.swing.JLabel;
 
@@ -30,13 +31,13 @@ import org.junit.Test;
 public class JLabelDriver_requireTextAsPattern_Test extends JLabelDriver_TestCase {
   @Test
   public void should_pass_if_text_matches_pattern() {
-    driver.requireText(label, regex("H.*"));
+    driver.requireText(label, Pattern.compile("H.*"));
   }
 
   @Test
   public void should_fail_if_text_does_not_match_pattern() {
     try {
-      driver.requireText(label, regex("Bye"));
+      driver.requireText(label, Pattern.compile("Bye"));
       failWhenExpectingException();
     } catch (AssertionError e) {
       assertThat(e.getMessage()).contains("property:'text'").contains(

@@ -18,8 +18,9 @@ import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.test.core.CommonAssertions.assertThatErrorCauseIsDisabledComponent;
 import static org.fest.swing.test.core.CommonAssertions.assertThatErrorCauseIsNotShowingComponent;
 import static org.fest.swing.test.core.CommonAssertions.failWhenExpectingException;
-import static org.fest.swing.test.core.Regex.regex;
 import static org.fest.util.Arrays.array;
+
+import java.util.regex.Pattern;
 
 import org.fest.swing.exception.LocationUnavailableException;
 import org.junit.Test;
@@ -35,7 +36,7 @@ public class JListDriver_selectItemsByPattern_Test extends JListDriver_TestCase 
   public void should_throw_error_if_a_matching_item_was_not_found() {
     showWindow();
     try {
-      driver.selectItems(list, array(regex("ten")));
+      driver.selectItems(list, array(Pattern.compile("ten")));
       failWhenExpectingException();
     } catch (LocationUnavailableException e) {
       assertThat(e.getMessage()).isEqualTo(
@@ -47,14 +48,14 @@ public class JListDriver_selectItemsByPattern_Test extends JListDriver_TestCase 
   public void should_select_items_even_if_already_selected() {
     select(1, 2);
     showWindow();
-    driver.selectItems(list, array(regex("two"), regex("three")));
+    driver.selectItems(list, array(Pattern.compile("two"), Pattern.compile("three")));
     assertThat(selectedValues()).isEqualTo(array("two", "three"));
   }
 
   @Test
   public void should_select_items_matching_pattern() {
     showWindow();
-    driver.selectItems(list, array(regex("t.*")));
+    driver.selectItems(list, array(Pattern.compile("t.*")));
     assertThat(selectedValues()).isEqualTo(array("two", "three"));
     assertThatCellReaderWasCalled();
   }
@@ -62,7 +63,7 @@ public class JListDriver_selectItemsByPattern_Test extends JListDriver_TestCase 
   @Test
   public void should_select_items_matching_patterns() {
     showWindow();
-    driver.selectItems(list, array(regex("tw.*"), regex("thr.*")));
+    driver.selectItems(list, array(Pattern.compile("tw.*"), Pattern.compile("thr.*")));
     assertThat(selectedValues()).isEqualTo(array("two", "three"));
     assertThatCellReaderWasCalled();
   }
@@ -71,7 +72,7 @@ public class JListDriver_selectItemsByPattern_Test extends JListDriver_TestCase 
   public void should_throw_error_if_JList_is_disabled() {
     disableList();
     try {
-      driver.selectItems(list, array(regex("two"), regex("three")));
+      driver.selectItems(list, array(Pattern.compile("two"), Pattern.compile("three")));
       failWhenExpectingException();
     } catch (IllegalStateException e) {
       assertThatErrorCauseIsDisabledComponent(e);
@@ -81,7 +82,7 @@ public class JListDriver_selectItemsByPattern_Test extends JListDriver_TestCase 
   @Test
   public void should_throw_error_if_JList_is_not_showing_on_the_screen() {
     try {
-      driver.selectItems(list, array(regex("two"), regex("three")));
+      driver.selectItems(list, array(Pattern.compile("two"), Pattern.compile("three")));
       failWhenExpectingException();
     } catch (IllegalStateException e) {
       assertThatErrorCauseIsNotShowingComponent(e);

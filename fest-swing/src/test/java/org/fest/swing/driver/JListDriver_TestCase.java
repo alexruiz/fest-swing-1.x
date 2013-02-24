@@ -49,7 +49,7 @@ public abstract class JListDriver_TestCase extends RobotBasedTestCase {
   protected final void onSetUp() {
     cellReader = new JListCellReaderStub();
     driver = new JListDriver(robot);
-    driver.cellReader(cellReader);
+    driver.replaceCellReader(cellReader);
     window = MyWindow.createNew(getClass());
     list = window.list;
     extraSetUp();

@@ -58,7 +58,7 @@ public class JOptionPaneFixtureTest extends JOptionPaneFixture_TestCase {
 
   @Test
   public void should_require_title_matching_pattern() {
-    final Pattern p = regex("Title");
+    final Pattern p = Pattern.compile("Title");
     new EasyMockTemplate(driver()) {
       @Override
       protected void expectations() {
@@ -91,7 +91,7 @@ public class JOptionPaneFixtureTest extends JOptionPaneFixture_TestCase {
 
   @Test
   public void should_require_message_matching_pattern() {
-    final Pattern p = regex("Message");
+    final Pattern p = Pattern.compile("Message");
     new EasyMockTemplate(driver()) {
       @Override
       protected void expectations() {
@@ -205,7 +205,7 @@ public class JOptionPaneFixtureTest extends JOptionPaneFixture_TestCase {
 
   @Test
   public void should_return_button_with_text_matching_pattern() {
-    final Pattern p = regex("Butt.*");
+    final Pattern p = Pattern.compile("Butt.*");
     new EasyMockTemplate(driver()) {
       @Override
       protected void expectations() {

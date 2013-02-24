@@ -17,7 +17,8 @@ package org.fest.swing.driver;
 import static org.fest.swing.test.core.CommonAssertions.assertThatErrorCauseIsDisabledComponent;
 import static org.fest.swing.test.core.CommonAssertions.assertThatErrorCauseIsNotShowingComponent;
 import static org.fest.swing.test.core.CommonAssertions.failWhenExpectingException;
-import static org.fest.swing.test.core.Regex.regex;
+
+import java.util.regex.Pattern;
 
 import org.junit.Test;
 
@@ -30,7 +31,7 @@ public class JTabbedPaneDriver_selectTabByPattern_Test extends JTabbedPaneDriver
   @Test
   public void should_select_matching_tab() {
     showWindow();
-    driver.selectTab(tabbedPane, regex("Tw.*"));
+    driver.selectTab(tabbedPane, Pattern.compile("Tw.*"));
     assertThatSelectedTabIndexIs(1);
     assertThatSelectedTabIndexIs(1);
   }
@@ -39,7 +40,7 @@ public class JTabbedPaneDriver_selectTabByPattern_Test extends JTabbedPaneDriver
   public void should_throw_error_if_JTabbedPane_is_disabled() {
     disableTabbedPane();
     try {
-      driver.selectTab(tabbedPane, regex("Tw.*"));
+      driver.selectTab(tabbedPane, Pattern.compile("Tw.*"));
       failWhenExpectingException();
     } catch (IllegalStateException e) {
       assertThatErrorCauseIsDisabledComponent(e);
@@ -49,7 +50,7 @@ public class JTabbedPaneDriver_selectTabByPattern_Test extends JTabbedPaneDriver
   @Test
   public void should_throw_error_if_JTabbedPane_is_not_showing_on_the_screen() {
     try {
-      driver.selectTab(tabbedPane, regex("Tw.*"));
+      driver.selectTab(tabbedPane, Pattern.compile("Tw.*"));
       failWhenExpectingException();
     } catch (IllegalStateException e) {
       assertThatErrorCauseIsNotShowingComponent(e);

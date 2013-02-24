@@ -28,7 +28,7 @@ import org.junit.Test;
 public class JTableCellFixture_requireValueAsPattern_Test extends JTableCellFixture_withMockTable_TestCase {
   @Test
   public void should_require_value() {
-    final Pattern pattern = regex("Hello");
+    final Pattern pattern = Pattern.compile("Hello");
     new EasyMockTemplate(table) {
       @Override
       protected void expectations() {
