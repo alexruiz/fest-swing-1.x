@@ -50,13 +50,11 @@ public class JTableCellFixture_withMocks_Test {
 
   @Before
   public void setUp() {
+    table = mock(JTableFixture.class);
     cell = row(6).column(8);
-    fixture = new JTableCellFixture(mock(JTableFixture.class), cell);
-    table = fixture.table();
     driver = mock(JTableDriver.class);
     target = mock(JTable.class);
-    when(table.driver()).thenReturn(driver);
-    when(table.target()).thenReturn(target);
+    fixture = new JTableCellFixture(table, cell, target, driver);
   }
 
   @Test

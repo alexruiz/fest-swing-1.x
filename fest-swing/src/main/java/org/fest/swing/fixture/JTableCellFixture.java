@@ -57,6 +57,8 @@ import org.fest.util.VisibleForTesting;
 public class JTableCellFixture implements ItemFixture<JTableCellFixture> {
   private final JTableFixture table;
   private final TableCell cell;
+  private final JTable target;
+  private final JTableDriver driver;
 
   /**
    * Creates a new {@link JTableCellFixture}.
@@ -66,9 +68,17 @@ public class JTableCellFixture implements ItemFixture<JTableCellFixture> {
    * @throws NullPointerException if {@code table} is {@code null}.
    * @throws NullPointerException if {@code cell} is {@code null}.
    */
-  protected JTableCellFixture(JTableFixture table, TableCell cell) {
+  protected JTableCellFixture(@Nonnull JTableFixture table, @Nonnull TableCell cell) {
+    this(table, cell, table.target(), table.driver());
+  }
+
+  @VisibleForTesting
+  JTableCellFixture(@Nonnull JTableFixture table, @Nonnull TableCell cell, @Nonnull JTable target,
+      @Nonnull JTableDriver driver) {
     this.table = checkNotNull(table);
     this.cell = checkNotNull(cell);
+    this.target = target;
+    this.driver = driver;
   }
 
   /**
@@ -79,8 +89,7 @@ public class JTableCellFixture implements ItemFixture<JTableCellFixture> {
    * @throws IllegalStateException if this fixture's {@code JTable} is not showing on the screen.
    */
   @Override
-  public @Nonnull
-  JTableCellFixture select() {
+  public @Nonnull JTableCellFixture select() {
     table.selectCell(cell());
     return this;
   }
@@ -171,7 +180,7 @@ public class JTableCellFixture implements ItemFixture<JTableCellFixture> {
    * @see #editor()
    */
   public @Nonnull JTableCellFixture startEditing() {
-    driver().startCellEditing(target(), cell());
+    driver.startCellEditing(target, cell());
     return this;
   }
 
@@ -193,7 +202,7 @@ public class JTableCellFixture implements ItemFixture<JTableCellFixture> {
    * @see #editor()
    */
   public @Nonnull JTableCellFixture stopEditing() {
-    driver().stopCellEditing(target(), cell());
+    driver.stopCellEditing(target, cell());
     return this;
   }
 
@@ -229,7 +238,7 @@ public class JTableCellFixture implements ItemFixture<JTableCellFixture> {
    * @see #editor()
    */
   public @Nonnull JTableCellFixture cancelEditing() {
-    driver().cancelCellEditing(target(), cell());
+    driver.cancelCellEditing(target, cell());
     return this;
   }
 
@@ -258,7 +267,7 @@ public class JTableCellFixture implements ItemFixture<JTableCellFixture> {
    * @see JTableCellWriter
    */
   public Component editor() {
-    return driver().cellEditor(target(), cell());
+    return driver.cellEditor(target, cell());
   }
 
   /**
@@ -280,16 +289,8 @@ public class JTableCellFixture implements ItemFixture<JTableCellFixture> {
    * @see JTableCellWriter
    */
   public @Nonnull JTableCellFixture enterValue(@Nonnull String value) {
-    driver().enterValueInCell(target(), cell(), value);
+    driver.enterValueInCell(target, cell(), value);
     return this;
-  }
-
-  private @Nonnull JTableDriver driver() {
-    return table.driver();
-  }
-
-  private @Nonnull JTable target() {
-    return table.target();
   }
 
   /**
@@ -437,13 +438,11 @@ public class JTableCellFixture implements ItemFixture<JTableCellFixture> {
     return cell.column;
   }
 
-  @VisibleForTesting
-  @Nonnull JTableFixture table() {
+  private @Nonnull JTableFixture table() {
     return table;
   }
 
-  @VisibleForTesting
-  @Nonnull TableCell cell() {
+  private @Nonnull TableCell cell() {
     return cell;
   }
 }
