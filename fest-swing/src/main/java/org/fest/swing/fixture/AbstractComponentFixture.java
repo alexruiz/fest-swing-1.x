@@ -132,7 +132,7 @@ public abstract class AbstractComponentFixture<S, C extends Component, D extends
 
   protected abstract @Nonnull D createDriver(@Nonnull Robot robot);
 
-  protected final @Nonnull D driver() {
+  protected @Nonnull D driver() {
     return driver;
   }
 
@@ -429,7 +429,7 @@ public abstract class AbstractComponentFixture<S, C extends Component, D extends
    *
    * @return the GUI component in this fixture.
    */
-  public final @Nonnull C target() {
+  public @Nonnull C target() {
     return target;
   }
 

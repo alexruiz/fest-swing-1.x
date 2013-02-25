@@ -22,6 +22,7 @@ import java.awt.Component;
 import java.util.regex.Pattern;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import javax.swing.JTable;
 
 import org.fest.swing.cell.JTableCellReader;
@@ -32,6 +33,7 @@ import org.fest.swing.data.TableCell;
 import org.fest.swing.driver.JTableDriver;
 import org.fest.swing.exception.ActionFailedException;
 import org.fest.swing.exception.ComponentLookupException;
+import org.fest.util.VisibleForTesting;
 
 /**
  * <p>
@@ -120,7 +122,8 @@ public class JTableCellFixture implements ItemFixture<JTableCellFixture> {
    */
   @Override
   public @Nonnull JTableCellFixture doubleClick() {
-    return click(LEFT_BUTTON, 2);
+    table.click(cell(), LEFT_BUTTON, 2);
+    return this;
   }
 
   /**
@@ -147,11 +150,6 @@ public class JTableCellFixture implements ItemFixture<JTableCellFixture> {
   @Override
   public @Nonnull JTableCellFixture click(@Nonnull MouseButton button) {
     table.click(cell(), button);
-    return this;
-  }
-
-  private JTableCellFixture click(@Nonnull MouseButton button, int times) {
-    table.click(cell(), button, times);
     return this;
   }
 
@@ -301,7 +299,7 @@ public class JTableCellFixture implements ItemFixture<JTableCellFixture> {
    * @return this fixture.
    * @throws AssertionError if the value of this fixture's table cell does not match the expected one.
    */
-  public @Nonnull JTableCellFixture requireValue(String value) {
+  public @Nonnull JTableCellFixture requireValue(@Nullable String value) {
     table.requireCellValue(cell(), value);
     return this;
   }
@@ -341,7 +339,7 @@ public class JTableCellFixture implements ItemFixture<JTableCellFixture> {
    * @see JTableFixture#replaceCellReader(JTableCellReader)
    * @see JTableCellReader
    */
-  public ColorFixture background() {
+  public @Nonnull ColorFixture background() {
     return table.backgroundAt(cell());
   }
 
@@ -353,7 +351,7 @@ public class JTableCellFixture implements ItemFixture<JTableCellFixture> {
    * @see JTableFixture#replaceCellReader(JTableCellReader)
    * @see JTableCellReader
    */
-  public ColorFixture foreground() {
+  public @Nonnull ColorFixture foreground() {
     return table.foregroundAt(cell());
   }
 
@@ -366,7 +364,7 @@ public class JTableCellFixture implements ItemFixture<JTableCellFixture> {
    * @see JTableCellReader
    */
   @Override
-  public String value() {
+  public @Nullable String value() {
     return table.valueAt(cell());
   }
 
@@ -439,10 +437,12 @@ public class JTableCellFixture implements ItemFixture<JTableCellFixture> {
     return cell.column;
   }
 
+  @VisibleForTesting
   @Nonnull JTableFixture table() {
     return table;
   }
 
+  @VisibleForTesting
   @Nonnull TableCell cell() {
     return cell;
   }
