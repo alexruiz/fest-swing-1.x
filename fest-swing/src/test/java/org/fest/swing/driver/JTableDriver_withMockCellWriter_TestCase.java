@@ -45,7 +45,7 @@ public abstract class JTableDriver_withMockCellWriter_TestCase extends EDTSafeTe
   public final void setUp() {
     driver = new JTableDriver(singletonRobotMock());
     cellWriter = mock(JTableCellWriter.class);
-    driver.cellWriter(cellWriter);
+    driver.replaceCellWriter(cellWriter);
     onSetUp();
   }
 

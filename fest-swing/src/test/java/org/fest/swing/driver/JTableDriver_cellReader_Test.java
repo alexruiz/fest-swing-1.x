@@ -20,7 +20,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Tests for {@link JTableDriver#cellReader(org.fest.swing.cell.JTableCellReader)}.
+ * Tests for {@link JTableDriver#replaceCellReader(org.fest.swing.cell.JTableCellReader)}.
  * 
  * @author Alex Ruiz
  * @author Yvonne Wang
@@ -35,6 +35,6 @@ public class JTableDriver_cellReader_Test {
 
   @Test(expected = NullPointerException.class)
   public void should_throw_error_if_cellReader_is_null() {
-    driver.cellReader(null);
+    driver.replaceCellReader(null);
   }
 }

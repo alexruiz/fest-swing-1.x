@@ -80,7 +80,7 @@ public class JListFixture_withMocks_Test {
   @Test
   public void should_create_JListItemFixture_with_index() {
     JListItemFixture itemFixture = fixture.item(6);
-    assertThat(itemFixture.list()).isSameAs(fixture);
+    assertThat(itemFixture.listFixture()).isSameAs(fixture);
     assertThat(itemFixture.index()).isEqualTo(6);
   }
 
@@ -88,7 +88,7 @@ public class JListFixture_withMocks_Test {
   public void should_create_JListItemFixture_with_text() {
     when(driver.indexOf(target, "Six")).thenReturn(6);
     JListItemFixture itemFixture = fixture.item("Six");
-    assertThat(itemFixture.list()).isSameAs(fixture);
+    assertThat(itemFixture.listFixture()).isSameAs(fixture);
     assertThat(itemFixture.index()).isEqualTo(6);
     verify(driver).indexOf(target, "Six");
   }
@@ -98,7 +98,7 @@ public class JListFixture_withMocks_Test {
     Pattern pattern = Pattern.compile("Six");
     when(driver.indexOf(target, pattern)).thenReturn(6);
     JListItemFixture itemFixture = fixture.item(pattern);
-    assertThat(itemFixture.list()).isSameAs(fixture);
+    assertThat(itemFixture.listFixture()).isSameAs(fixture);
     assertThat(itemFixture.index()).isEqualTo(6);
     verify(driver).indexOf(target, pattern);
   }

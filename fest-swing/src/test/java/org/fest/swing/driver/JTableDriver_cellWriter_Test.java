@@ -17,7 +17,7 @@ package org.fest.swing.driver;
 import org.junit.Test;
 
 /**
- * Tests for {@link JTableDriver#cellWriter(org.fest.swing.cell.JTableCellWriter)}.
+ * Tests for {@link JTableDriver#replaceCellWriter(org.fest.swing.cell.JTableCellWriter)}.
  * 
  * @author Alex Ruiz
  * @author Yvonne Wang
@@ -25,6 +25,6 @@ import org.junit.Test;
 public class JTableDriver_cellWriter_Test extends JTableDriver_withMocks_TestCase {
   @Test(expected = NullPointerException.class)
   public void should_throw_error_if_cellWriter_is_null() {
-    driver.cellWriter(null);
+    driver.replaceCellWriter(null);
   }
 }

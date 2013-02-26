@@ -212,7 +212,7 @@ public class JListItemFixture implements ItemFixture<JListItemFixture> {
   }
 
   @VisibleForTesting
-  final @Nonnull JListFixture list() {
+  @Nonnull JListFixture listFixture() {
     return list;
   }
 }

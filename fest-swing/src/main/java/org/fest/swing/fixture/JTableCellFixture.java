@@ -438,11 +438,13 @@ public class JTableCellFixture implements ItemFixture<JTableCellFixture> {
     return cell.column;
   }
 
-  private @Nonnull JTableFixture table() {
+  @VisibleForTesting
+  @Nonnull JTableFixture tableFixture() {
     return table;
   }
 
-  private @Nonnull TableCell cell() {
+  @VisibleForTesting
+  @Nonnull TableCell cell() {
     return cell;
   }
 }

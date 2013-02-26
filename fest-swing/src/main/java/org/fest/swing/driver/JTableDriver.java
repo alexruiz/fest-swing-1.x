@@ -101,8 +101,8 @@ public class JTableDriver extends JComponentDriver {
    */
   public JTableDriver(@Nonnull Robot robot) {
     super(robot);
-    cellReader(new BasicJTableCellReader());
-    cellWriter(new BasicJTableCellWriter(robot));
+    replaceCellReader(new BasicJTableCellReader());
+    replaceCellWriter(new BasicJTableCellWriter(robot));
   }
 
   /**
@@ -122,7 +122,7 @@ public class JTableDriver extends JComponentDriver {
    *
    * @param table the target {@code JTable}.
    * @return the {@code String} representation of the value of the selected cell.
-   * @see #cellReader(JTableCellReader)
+   * @see #replaceCellReader(JTableCellReader)
    */
   @RunsInEDT
   public @Nullable String selectionValue(@Nonnull JTable table) {
@@ -198,7 +198,7 @@ public class JTableDriver extends JComponentDriver {
    * @return the {@code String} representation of the value at the given cell.
    * @throws NullPointerException if the cell is {@code null}.
    * @throws IndexOutOfBoundsException if any of the indices (row and column) is out of bounds.
-   * @see #cellReader(JTableCellReader)
+   * @see #replaceCellReader(JTableCellReader)
    */
   @RunsInEDT
   public @Nullable String value(@Nonnull JTable table, @Nonnull TableCell cell) {
@@ -227,7 +227,7 @@ public class JTableDriver extends JComponentDriver {
    * @param column the given column.
    * @return the {@code String} representation of the value at the given row and column.
    * @throws IndexOutOfBoundsException if any of the indices (row and column) is out of bounds.
-   * @see #cellReader(JTableCellReader)
+   * @see #replaceCellReader(JTableCellReader)
    */
   @RunsInEDT
   public @Nullable String value(@Nonnull JTable table, int row, int column) {
@@ -523,7 +523,7 @@ public class JTableDriver extends JComponentDriver {
    *
    * @param table the target {@code JTable}.
    * @param contents the expected {@code String} representation of the cell values in the {@code JTable}.
-   * @see #cellReader(JTableCellReader)
+   * @see #replaceCellReader(JTableCellReader)
    */
   @RunsInEDT
   public void requireContents(@Nonnull JTable table, @Nonnull String[][] contents) {
@@ -546,7 +546,7 @@ public class JTableDriver extends JComponentDriver {
    *
    * @param table the target {@code JTable}.
    * @return the {@code String} representation of the cells in the {@code JTable}.
-   * @see #cellReader(JTableCellReader)
+   * @see #replaceCellReader(JTableCellReader)
    */
   @RunsInEDT
   public @Nonnull String[][] contents(@Nonnull JTable table) {
@@ -602,7 +602,7 @@ public class JTableDriver extends JComponentDriver {
    * @throws IllegalStateException if the {@code JTable} cell is not editable.
    * @throws IndexOutOfBoundsException if any of the indices (row and column) is out of bounds.
    * @throws ActionFailedException if this driver's {@code JTableCellValueReader} is unable to enter the given value.
-   * @see #cellWriter(JTableCellWriter)
+   * @see #replaceCellWriter(JTableCellWriter)
    */
   @RunsInEDT
   public void enterValueInCell(@Nonnull JTable table, @Nonnull TableCell cell, @Nonnull String value) {
@@ -665,7 +665,7 @@ public class JTableDriver extends JComponentDriver {
    * @throws NullPointerException if the cell is {@code null}.
    * @throws IllegalStateException if the {@code JTable} cell is not editable.
    * @throws IndexOutOfBoundsException if any of the indices (row and column) is out of bounds.
-   * @see #cellWriter(JTableCellWriter)
+   * @see #replaceCellWriter(JTableCellWriter)
    */
   @RunsInEDT
   public Component cellEditor(@Nonnull JTable table, @Nonnull TableCell cell) {
@@ -685,7 +685,7 @@ public class JTableDriver extends JComponentDriver {
    * @throws IllegalStateException if the {@code JTable} cell is not editable.
    * @throws IndexOutOfBoundsException if any of the indices (row and column) is out of bounds.
    * @throws ActionFailedException if this writer is unable to handle the underlying cell editor.
-   * @see #cellWriter(JTableCellWriter)
+   * @see #replaceCellWriter(JTableCellWriter)
    */
   @RunsInEDT
   public void startCellEditing(@Nonnull JTable table, @Nonnull TableCell cell) {
@@ -705,7 +705,7 @@ public class JTableDriver extends JComponentDriver {
    * @throws IllegalStateException if the {@code JTable} cell is not editable.
    * @throws IndexOutOfBoundsException if any of the indices (row and column) is out of bounds.
    * @throws ActionFailedException if this writer is unable to handle the underlying cell editor.
-   * @see #cellWriter(JTableCellWriter)
+   * @see #replaceCellWriter(JTableCellWriter)
    */
   @RunsInEDT
   public void stopCellEditing(@Nonnull JTable table, @Nonnull TableCell cell) {
@@ -725,7 +725,7 @@ public class JTableDriver extends JComponentDriver {
    * @throws IllegalStateException if the {@code JTable} cell is not editable.
    * @throws IndexOutOfBoundsException if any of the indices (row and column) is out of bounds.
    * @throws ActionFailedException if this writer is unable to handle the underlying cell editor.
-   * @see #cellWriter(JTableCellWriter)
+   * @see #replaceCellWriter(JTableCellWriter)
    */
   @RunsInEDT
   public void cancelCellEditing(@Nonnull JTable table, @Nonnull TableCell cell) {
@@ -758,7 +758,7 @@ public class JTableDriver extends JComponentDriver {
    * @param newCellReader the new {@code JTableCellValueReader} to use.
    * @throws NullPointerException if {@code newCellReader} is {@code null}.
    */
-  public void cellReader(@Nonnull JTableCellReader newCellReader) {
+  public void replaceCellReader(@Nonnull JTableCellReader newCellReader) {
     cellReader = checkNotNull(newCellReader);
   }
 
@@ -768,7 +768,7 @@ public class JTableDriver extends JComponentDriver {
    * @param newCellWriter the new {@code JTableCellWriter} to use.
    * @throws NullPointerException if {@code newCellWriter} is {@code null}.
    */
-  public void cellWriter(JTableCellWriter newCellWriter) {
+  public void replaceCellWriter(JTableCellWriter newCellWriter) {
     cellWriter = checkNotNull(newCellWriter);
   }
 

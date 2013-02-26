@@ -45,7 +45,7 @@ public abstract class JTableDriver_withMockCellReader_TestCase extends EDTSafeTe
   public final void setUp() {
     driver = new JTableDriver(singletonRobotMock());
     cellReader = mock(JTableCellReader.class);
-    driver.cellReader(cellReader);
+    driver.replaceCellReader(cellReader);
     onSetUp();
   }
 

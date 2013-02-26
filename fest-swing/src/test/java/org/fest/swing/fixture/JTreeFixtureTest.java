@@ -382,7 +382,7 @@ public class JTreeFixtureTest extends JTreeFixture_TestCase {
     new EasyMockTemplate(driver()) {
       @Override
       protected void expectations() {
-        driver().cellReader(reader);
+        driver().replaceCellReader(reader);
         expectLastCall().once();
       }
 

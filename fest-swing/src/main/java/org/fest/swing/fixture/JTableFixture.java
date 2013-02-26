@@ -131,47 +131,52 @@ public class JTableFixture extends AbstractJPopupMenuInvokerFixture<JTableFixtur
   }
 
   /**
-   * Returns a fixture that manages the table cell whose value matches the given one.
+   * Returns a {@link JTableCellFixture} wrapping the table cell whose value matches the given one.
    *
    * @param value the value of the cell to look for. It can be a regular expression.
-   * @return a fixture that manages the table cell whose value matches the given one.
+   * @return a {@code JTableCellFixture} wrapping the table cell whose value matches the given one.
    * @throws ActionFailedException if a cell with a matching value cannot be found.
    */
-  public @Nonnull TableCell cell(String value) {
-    return driver().cell(target(), value);
+  public @Nonnull JTableCellFixture cell(String value) {
+    TableCell cell = driver().cell(target(), value);
+    return new JTableCellFixture(this, cell);
   }
 
   /**
-   * Returns a fixture that manages the table cell whose value matches the given regular expression pattern.
+   * Returns a {@link JTableCellFixture} wrapping the table cell whose value matches the given regular expression
+   * pattern.
    *
    * @param valuePattern the regular expression pattern to match.
-   * @return a fixture that manages the table cell whose value matches the given one.
+   * @return a {@code JTableCellFixture} wrapping the table cell whose value matches the given regular expression
+   *         pattern.
    * @throws NullPointerException if the given regular expression pattern is {@code null}.
    * @throws ActionFailedException if a cell with a matching value cannot be found.
    * @since 1.2
    */
-  public @Nonnull TableCell cell(@Nonnull Pattern valuePattern) {
-    return driver().cell(target(), valuePattern);
+  public @Nonnull JTableCellFixture cell(@Nonnull Pattern valuePattern) {
+    TableCell cell = driver().cell(target(), valuePattern);
+    return new JTableCellFixture(this, cell);
   }
 
   /**
-   * Returns a fixture that manages the table cell found by the given {@link TableCellFinder}.
+   * Returns a {@link JTableCellFixture} wrapping the table cell found by the given {@link TableCellFinder}.
    *
    * @param cellFinder knows how to find a cell.
-   * @return a fixture that manages the found table cell.
+   * @return a {@code JTableCellFixture} wrapping the table cell found by the given {@code TableCellFinder}
    * @throws NullPointerException if the {@code TableCellFinder} is {@code null}.
    * @throws ActionFailedException if a matching cell could not be found.
    * @throws IndexOutOfBoundsException if the row or column indices in the found cell are out of bounds.
    */
   public @Nonnull JTableCellFixture cell(@Nonnull TableCellFinder cellFinder) {
-    return new JTableCellFixture(this, driver().cell(target(), cellFinder));
+    TableCell cell = driver().cell(target(), cellFinder);
+    return new JTableCellFixture(this, cell);
   }
 
   /**
-   * Returns a fixture that manages the table cell specified by the given row and column.
+   * Returns a {@link JTableCellFixture} wrapping the table cell specified by the given row and column.
    *
    * @param cell the cell of interest.
-   * @return a fixture that manages the table cell specified by the given row and column.
+   * @return a {@code JTableCellFixture} wrapping the table cell specified by the given row and column.
    * @throws NullPointerException if the cell is {@code null}.
    * @throws IndexOutOfBoundsException if any of the indices (row and column) is out of bounds.
    */
@@ -387,7 +392,7 @@ public class JTableFixture extends AbstractJPopupMenuInvokerFixture<JTableFixtur
   }
 
   public void replaceCellReader(@Nonnull JTableCellReader cellReader) {
-    driver().cellReader(cellReader);
+    driver().replaceCellReader(cellReader);
   }
 
   /**
@@ -515,7 +520,7 @@ public class JTableFixture extends AbstractJPopupMenuInvokerFixture<JTableFixtur
   }
 
   public void replaceCellWriter(JTableCellWriter cellWriter) {
-    driver().cellWriter(cellWriter);
+    driver().replaceCellWriter(cellWriter);
   }
 
   /**
