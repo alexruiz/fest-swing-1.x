@@ -71,7 +71,7 @@ public class AbstractTwoStateButtonFixture_withMocks_Test {
     }
 
     @Override
-    protected @Nonnull AbstractButtonDriver createDriver(@org.jetbrains.annotations.NotNull @Nonnull Robot robot) {
+    protected @Nonnull AbstractButtonDriver createDriver(@Nonnull Robot robot) {
       return mock(AbstractButtonDriver.class);
     }
   }
