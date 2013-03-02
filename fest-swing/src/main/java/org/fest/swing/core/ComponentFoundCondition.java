@@ -32,7 +32,7 @@ import org.fest.swing.exception.ComponentLookupException;
 import org.fest.swing.timing.Condition;
 
 /**
- * Condition that is satisfied if a AWT or Swing {@code Component} that matches certain search criteria is found.
+ * Condition that is satisfied if an AWT or Swing {@code Component} that matches certain search criteria is found.
  *
  * @author Yvonne Wang
  * @author Alex Ruiz
