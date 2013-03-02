@@ -21,7 +21,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Tests for {@link JTreeDriver#separator(String)}.
+ * Tests for {@link JTreeDriver#replaceSeparator(String)}.
  * 
  * @author Alex Ruiz
  */
@@ -35,12 +35,12 @@ public class JTreeDriver_separator_Test {
 
   @Test(expected = NullPointerException.class)
   public void shouldThrowErrorIfSeparatorIsNull() {
-    driver.separator(null);
+    driver.replaceSeparator(null);
   }
 
   @Test
   public void shouldSetPathSeparator() {
-    driver.separator("|");
+    driver.replaceSeparator("|");
     assertThat(driver.separator()).isEqualTo("|");
   }
 }

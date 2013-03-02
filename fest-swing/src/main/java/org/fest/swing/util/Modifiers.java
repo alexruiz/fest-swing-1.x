@@ -74,7 +74,7 @@ public final class Modifiers {
   public static @Nonnull int[] keysFor(int modifierMask) {
     List<Integer> keyList = newArrayList();
     for (Integer mask : MODIFIER_TO_KEY.keySet()) {
-      if ((modifierMask & mask.intValue()) != 0) {
+      if ((modifierMask & mask) != 0) {
         keyList.add(MODIFIER_TO_KEY.get(mask));
       }
     }
@@ -104,11 +104,10 @@ public final class Modifiers {
    * @throws IllegalArgumentException if the given key code is not a modifier.
    */
   public static int maskFor(int keyCode) {
-    Integer key = Integer.valueOf(keyCode);
-    if (!KEY_TO_MODIFIER.containsKey(key)) {
+    if (!KEY_TO_MODIFIER.containsKey(keyCode)) {
       throw new IllegalArgumentException(concat("Keycode '", valueOf(keyCode), "' is not a modifier"));
     }
-    return KEY_TO_MODIFIER.get(key);
+    return KEY_TO_MODIFIER.get(keyCode);
   }
 
   /**
@@ -121,10 +120,12 @@ public final class Modifiers {
   public static int updateModifierWithKeyCode(int keyCode, int modifierMask) {
     int updatedModifierMask = modifierMask;
     for (Map.Entry<Integer, Integer> entry : MODIFIER_TO_KEY.entrySet()) {
-      if (entry.getValue().intValue() != keyCode) {
+      int value = entry.getValue();
+      if (value != keyCode) {
         continue;
       }
-      updatedModifierMask |= entry.getKey().intValue();
+      int key = entry.getKey();
+      updatedModifierMask |= key;
       break;
     }
     return updatedModifierMask;

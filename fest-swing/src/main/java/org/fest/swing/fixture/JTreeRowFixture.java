@@ -21,6 +21,7 @@ import org.fest.swing.core.MouseButton;
 import org.fest.swing.core.MouseClickInfo;
 import org.fest.swing.exception.ActionFailedException;
 import org.fest.swing.exception.ComponentLookupException;
+import org.fest.util.VisibleForTesting;
 
 /**
  * Supports functional testing of single nodes, referenced by their row indices, in {@code JTree}s.
@@ -208,5 +209,10 @@ public class JTreeRowFixture implements JTreeNodeFixture<JTreeRowFixture> {
    */
   public int index() {
     return index;
+  }
+
+  @VisibleForTesting
+  @Nonnull JTreeFixture treeFixture() {
+    return tree;
   }
 }

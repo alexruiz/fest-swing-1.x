@@ -19,6 +19,7 @@ import static org.fest.swing.edt.GuiActionRunner.execute;
 import static org.fest.swing.test.core.NeverMatchingComponentMatcher.neverMatches;
 import static org.fest.test.ExpectedException.none;
 
+import javax.annotation.Nonnull;
 import javax.swing.JButton;
 
 import org.fest.swing.core.GenericTypeMatcher;
@@ -83,7 +84,7 @@ public class AbstractContainerFixture_button_Test extends RobotBasedTestCase {
     robot.showWindow(window);
     JButtonFixture button = fixture.button(new GenericTypeMatcher<JButton>(JButton.class) {
       @Override
-      protected boolean isMatching(JButton b) {
+      protected boolean isMatching(@Nonnull JButton b) {
         return "Click Me".equals(b.getText());
       }
     });

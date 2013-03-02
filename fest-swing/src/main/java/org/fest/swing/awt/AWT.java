@@ -253,7 +253,7 @@ public class AWT {
       return true;
     }
     String typeName = c.getClass().getName();
-    return typeName.indexOf("PopupFactory$WindowPopup") != -1 || typeName.indexOf("HeavyWeightWindow") != -1;
+    return typeName.contains("PopupFactory$WindowPopup") || typeName.contains("HeavyWeightWindow");
   }
 
   @RunsInCurrentThread

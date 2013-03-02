@@ -51,7 +51,7 @@ import org.fest.swing.exception.LocationUnavailableException;
  * </p>
  *
  * <p>
- * The default path separator is "/". It can be changed by calling {@link #separator(String)}.
+ * The default path separator is "/". It can be changed by calling {@link #replaceSeparator(String)}.
  * </p>
  *
  * <p>
@@ -280,20 +280,6 @@ public class JTreeFixture extends AbstractJPopupMenuInvokerFixture<JTreeFixture,
   }
 
   /**
-   * Simulates a user dragging an item from this fixture's {@code JTree}.
-   *
-   * @param path the path corresponding to the item to drag.
-   * @return this fixture.
-   * @throws IllegalStateException if this fixture's {@code JTree} is disabled.
-   * @throws IllegalStateException if this fixture's {@code JTree} is not showing on the screen.
-   * @throws LocationUnavailableException if the given path cannot be found.
-   */
-  public @Nonnull JTreeFixture drag(@Nonnull String path) {
-    driver().drag(target(), path);
-    return this;
-  }
-
-  /**
    * Simulates a user dropping an item into this fixture's {@code JTree}.
    *
    * @param row the row to drop the item to.
@@ -311,6 +297,20 @@ public class JTreeFixture extends AbstractJPopupMenuInvokerFixture<JTreeFixture,
   }
 
   /**
+   * Simulates a user dragging an item from this fixture's {@code JTree}.
+   *
+   * @param path the path corresponding to the item to drag.
+   * @return this fixture.
+   * @throws IllegalStateException if this fixture's {@code JTree} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JTree} is not showing on the screen.
+   * @throws LocationUnavailableException if the given path cannot be found.
+   */
+  public @Nonnull JTreeFixture drag(@Nonnull String path) {
+    driver().drag(target(), path);
+    return this;
+  }
+
+  /**
    * Simulates a user dropping an item into this fixture's {@code JTree}.
    *
    * @param path the path corresponding to the item relative to the drop point.
@@ -322,37 +322,6 @@ public class JTreeFixture extends AbstractJPopupMenuInvokerFixture<JTreeFixture,
    */
   public @Nonnull JTreeFixture drop(@Nonnull String path) {
     driver().drop(target(), path);
-    return this;
-  }
-
-  /**
-   * Selects the given path, expanding parent nodes if necessary. Unlike {@link #clickPath(String)}, this method will
-   * not click the path if it is already selected.
-   *
-   * @param path the path to select.
-   * @return this fixture.
-   * @throws IllegalStateException if this fixture's {@code JTree} is disabled.
-   * @throws IllegalStateException if this fixture's {@code JTree} is not showing on the screen.
-   * @throws LocationUnavailableException if the given path cannot be found.
-   */
-  public @Nonnull JTreeFixture selectPath(@Nonnull String path) {
-    driver().selectPath(target(), path);
-    return this;
-  }
-
-  /**
-   * Select the given paths, expanding parent nodes if necessary.
-   *
-   * @param paths the paths to select.
-   * @return this fixture.
-   * @throws NullPointerException if the array of rows is {@code null}.
-   * @throws IllegalArgumentException if the array of rows is empty.
-   * @throws IllegalStateException if this fixture's {@code JTree} is disabled.
-   * @throws IllegalStateException if this fixture's {@code JTree} is not showing on the screen.
-   * @throws LocationUnavailableException if the any of the given paths cannot be found.
-   */
-  public @Nonnull JTreeFixture selectPaths(@Nonnull String... paths) {
-    driver().selectPaths(target(), paths);
     return this;
   }
 
@@ -387,6 +356,37 @@ public class JTreeFixture extends AbstractJPopupMenuInvokerFixture<JTreeFixture,
    */
   public @Nonnull JTreeFixture selectRows(@Nonnull int... rows) {
     driver().selectRows(target(), rows);
+    return this;
+  }
+
+  /**
+   * Selects the given path, expanding parent nodes if necessary. Unlike {@link #clickPath(String)}, this method will
+   * not click the path if it is already selected.
+   *
+   * @param path the path to select.
+   * @return this fixture.
+   * @throws IllegalStateException if this fixture's {@code JTree} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JTree} is not showing on the screen.
+   * @throws LocationUnavailableException if the given path cannot be found.
+   */
+  public @Nonnull JTreeFixture selectPath(@Nonnull String path) {
+    driver().selectPath(target(), path);
+    return this;
+  }
+
+  /**
+   * Select the given paths, expanding parent nodes if necessary.
+   *
+   * @param paths the paths to select.
+   * @return this fixture.
+   * @throws NullPointerException if the array of rows is {@code null}.
+   * @throws IllegalArgumentException if the array of rows is empty.
+   * @throws IllegalStateException if this fixture's {@code JTree} is disabled.
+   * @throws IllegalStateException if this fixture's {@code JTree} is not showing on the screen.
+   * @throws LocationUnavailableException if the any of the given paths cannot be found.
+   */
+  public @Nonnull JTreeFixture selectPaths(@Nonnull String... paths) {
+    driver().selectPaths(target(), paths);
     return this;
   }
 
@@ -533,6 +533,19 @@ public class JTreeFixture extends AbstractJPopupMenuInvokerFixture<JTreeFixture,
   }
 
   /**
+   * Asserts that this fixture's {@code JTree}'s selected rows are equal to the given one.
+   *
+   * @param rows the indices of the rows, expected to be selected.
+   * @throws NullPointerException if the array of row indices is {@code null}.
+   * @throws AssertionError if this fixture's {@code JTree} selection is not equal to the given rows.
+   * @return this fixture.
+   */
+  public @Nonnull JTreeFixture requireSelection(@Nonnull int... rows) {
+    driver().requireSelection(target(), rows);
+    return this;
+  }
+
+  /**
    * Asserts that this fixture's {@code JTree} selection is equal to the given paths.
    *
    * @param paths the given paths, expected to be selected.
@@ -543,19 +556,6 @@ public class JTreeFixture extends AbstractJPopupMenuInvokerFixture<JTreeFixture,
    */
   public @Nonnull JTreeFixture requireSelection(@Nonnull String... paths) {
     driver().requireSelection(target(), paths);
-    return this;
-  }
-
-  /**
-   * Asserts that this fixture's {@code JTree}'s selected rows are equal to the given one.
-   *
-   * @param rows the indices of the rows, expected to be selected.
-   * @throws NullPointerException if the array of row indices is {@code null}.
-   * @throws AssertionError if this fixture's {@code JTree} selection is not equal to the given rows.
-   * @return this fixture.
-   */
-  public @Nonnull JTreeFixture requireSelection(@Nonnull int... rows) {
-    driver().requireSelection(target(), rows);
     return this;
   }
 
@@ -571,8 +571,6 @@ public class JTreeFixture extends AbstractJPopupMenuInvokerFixture<JTreeFixture,
   }
 
   /**
-   * Returns the separator to use when converting {@code TreePath}s to {@code String}s.
-   *
    * @return the separator to use when converting {@code TreePath}s to {@code String}s.
    */
   public String separator() {
@@ -586,8 +584,8 @@ public class JTreeFixture extends AbstractJPopupMenuInvokerFixture<JTreeFixture,
    * @return this fixture.
    * @throws NullPointerException if the given separator is {@code null}.
    */
-  public @Nonnull JTreeFixture separator(@Nonnull String separator) {
-    driver().separator(separator);
+  public @Nonnull JTreeFixture replaceSeparator(@Nonnull String separator) {
+    driver().replaceSeparator(separator);
     return this;
   }
 
@@ -600,7 +598,7 @@ public class JTreeFixture extends AbstractJPopupMenuInvokerFixture<JTreeFixture,
    * @return this fixture.
    */
   public @Nonnull JTreeFixture replaceCellReader(@Nonnull JTreeCellReader cellReader) {
-    driver().cellReader(cellReader);
+    driver().replaceCellReader(cellReader);
     return this;
   }
 
@@ -632,18 +630,6 @@ public class JTreeFixture extends AbstractJPopupMenuInvokerFixture<JTreeFixture,
   }
 
   /**
-   * Returns the {@code String} representation of the node at the given path.
-   *
-   * @param path the given path.
-   * @return the {@code String} representation of the node at the given path.
-   * @throws LocationUnavailableException if the given path cannot be found.
-   * @since 1.2
-   */
-  public @Nullable String valueAt(@Nonnull String path) {
-    return driver().nodeValue(target(), path);
-  }
-
-  /**
    * Returns the {@code String} representation of the given row.
    *
    * @param row the given row.
@@ -655,5 +641,17 @@ public class JTreeFixture extends AbstractJPopupMenuInvokerFixture<JTreeFixture,
    */
   public @Nullable String valueAt(int row) {
     return driver().nodeValue(target(), row);
+  }
+
+  /**
+   * Returns the {@code String} representation of the node at the given path.
+   *
+   * @param path the given path.
+   * @return the {@code String} representation of the node at the given path.
+   * @throws LocationUnavailableException if the given path cannot be found.
+   * @since 1.2
+   */
+  public @Nullable String valueAt(@Nonnull String path) {
+    return driver().nodeValue(target(), path);
   }
 }

@@ -26,6 +26,6 @@ import javax.annotation.Nonnull;
  */
 class NativeDndIdentifier {
   boolean isNativeDragAndDrop(@Nonnull AWTEvent e) {
-    return (e instanceof MouseEvent) && e.getClass().getName().indexOf("SunDropTargetEvent") != -1;
+    return (e instanceof MouseEvent) && e.getClass().getName().contains("SunDropTargetEvent");
   }
 }

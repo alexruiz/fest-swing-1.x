@@ -115,7 +115,7 @@ public class KeyStrokeMap {
     if (character == null) {
       return CHAR_UNDEFINED;
     }
-    return character.charValue();
+    return character;
   }
 
   private static @Nullable Character charWithoutModifiersButShift(@Nonnull KeyStroke keyStroke) {

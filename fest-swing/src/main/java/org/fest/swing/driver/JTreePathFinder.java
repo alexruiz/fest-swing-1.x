@@ -42,8 +42,8 @@ class JTreePathFinder {
   private String separator;
 
   JTreePathFinder() {
-    cellReader(new BasicJTreeCellReader());
-    separator(SEPARATOR);
+    replaceCellReader(new BasicJTreeCellReader());
+    replaceSeparator(SEPARATOR);
   }
 
   @RunsInCurrentThread
@@ -116,11 +116,11 @@ class JTreePathFinder {
     return separator;
   }
 
-  void separator(@Nonnull String newSeparator) {
+  void replaceSeparator(@Nonnull String newSeparator) {
     separator = newSeparator;
   }
 
-  void cellReader(@Nonnull JTreeCellReader newCellReader) {
+  void replaceCellReader(@Nonnull JTreeCellReader newCellReader) {
     cellReader = newCellReader;
   }
 

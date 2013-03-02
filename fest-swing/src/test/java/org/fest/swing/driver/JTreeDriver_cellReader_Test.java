@@ -23,7 +23,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 /**
- * Tests for {@link JTreeDriver#cellReader(JTreeCellReader)}.
+ * Tests for {@link JTreeDriver#replaceCellReader(JTreeCellReader)}.
  *
  * @author Alex Ruiz
  */
@@ -37,13 +37,13 @@ public class JTreeDriver_cellReader_Test {
 
   @Test(expected = NullPointerException.class)
   public void should_throw_error_if_cellReader_is_null() {
-    driver.cellReader(null);
+    driver.replaceCellReader(null);
   }
 
   @Test
   public void should_set_cellReader() {
     JTreeCellReader cellReader = mock(JTreeCellReader.class);
-    driver.cellReader(cellReader);
+    driver.replaceCellReader(cellReader);
     assertThat(driver.cellReader()).isSameAs(cellReader);
   }
 }

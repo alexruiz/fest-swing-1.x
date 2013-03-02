@@ -127,7 +127,8 @@ public class ToolkitStub extends Toolkit {
       if (!type.isInstance(listener)) {
         continue;
       }
-      if (eventListeners().get(listener).longValue() != eventMask) {
+      long keyEvent = eventListeners().get(listener);
+      if (keyEvent != eventMask) {
         continue;
       }
       listeners.add(type.cast(listener));

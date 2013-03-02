@@ -21,6 +21,7 @@ import org.fest.swing.core.MouseButton;
 import org.fest.swing.core.MouseClickInfo;
 import org.fest.swing.exception.ActionFailedException;
 import org.fest.swing.exception.ComponentLookupException;
+import org.fest.util.VisibleForTesting;
 
 /**
  * Supports functional testing of single nodes, referenced by their paths, in {@code JTree}s.
@@ -210,5 +211,10 @@ public class JTreePathFixture implements JTreeNodeFixture<JTreePathFixture> {
    */
   public @Nonnull String path() {
     return path;
+  }
+
+  @VisibleForTesting
+  @Nonnull JTreeFixture treeFixture() {
+    return tree;
   }
 }

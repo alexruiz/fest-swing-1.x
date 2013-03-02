@@ -20,6 +20,7 @@ import static org.fest.swing.test.core.NeverMatchingComponentMatcher.neverMatche
 import static org.fest.test.ExpectedException.none;
 import static org.fest.util.Arrays.array;
 
+import javax.annotation.Nonnull;
 import javax.swing.JComboBox;
 
 import org.fest.swing.core.GenericTypeMatcher;
@@ -84,7 +85,7 @@ public class AbstractContainerFixture_comboBox_Test extends RobotBasedTestCase {
     robot.showWindow(window);
     JComboBoxFixture comboBox = fixture.comboBox(new GenericTypeMatcher<JComboBox>(JComboBox.class) {
       @Override
-      protected boolean isMatching(JComboBox c) {
+      protected boolean isMatching(@Nonnull JComboBox c) {
         return c.getItemCount() == 3;
       }
     });

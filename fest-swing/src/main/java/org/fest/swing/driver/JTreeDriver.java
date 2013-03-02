@@ -615,7 +615,7 @@ public class JTreeDriver extends JComponentDriver {
    * @throws IllegalStateException if the {@code JTree} is not showing on the screen.
    * @throws ComponentLookupException if a pop-up menu cannot be found.
    * @throws LocationUnavailableException if the given path cannot be found.
-   * @see #separator(String)
+   * @see #replaceSeparator(String)
    */
   @RunsInEDT
   public @Nonnull JPopupMenu showPopupMenu(@Nonnull JTree tree, @Nonnull String path) {
@@ -703,7 +703,7 @@ public class JTreeDriver extends JComponentDriver {
    * @throws IllegalStateException if the {@code JTree} is disabled.
    * @throws IllegalStateException if the {@code JTree} is not showing on the screen.
    * @throws LocationUnavailableException if the given path cannot be found.
-   * @see #separator(String)
+   * @see #replaceSeparator(String)
    */
   @RunsInEDT
   public void drag(@Nonnull JTree tree, @Nonnull String path) {
@@ -731,7 +731,7 @@ public class JTreeDriver extends JComponentDriver {
    * @throws IllegalStateException if the {@code JTree} is not showing on the screen.
    * @throws LocationUnavailableException if the given path cannot be found.
    * @throws ActionFailedException if there is no drag action in effect.
-   * @see #separator(String)
+   * @see #replaceSeparator(String)
    */
   @RunsInEDT
   public void drop(@Nonnull JTree tree, @Nonnull String path) {
@@ -839,7 +839,7 @@ public class JTreeDriver extends JComponentDriver {
    * @throws NullPointerException if the array of paths is {@code null}.
    * @throws LocationUnavailableException if any of the given paths cannot be found.
    * @throws AssertionError if the given {@code JTree} selection is not equal to the given paths.
-   * @see #separator(String)
+   * @see #replaceSeparator(String)
    */
   @RunsInEDT
   public void requireSelection(@Nonnull JTree tree, @Nonnull String[] paths) {
@@ -896,8 +896,6 @@ public class JTreeDriver extends JComponentDriver {
   }
 
   /**
-   * Returns the separator to use when converting {@code TreePath}s to {@code String}s.
-   *
    * @return the separator to use when converting {@code TreePath}s to {@code String}s.
    */
   public @Nonnull String separator() {
@@ -910,8 +908,8 @@ public class JTreeDriver extends JComponentDriver {
    * @param newSeparator the new separator.
    * @throws NullPointerException if the given separator is {@code null}.
    */
-  public void separator(@Nonnull String newSeparator) {
-    pathFinder.separator(checkNotNull(newSeparator));
+  public void replaceSeparator(@Nonnull String newSeparator) {
+    pathFinder.replaceSeparator(checkNotNull(newSeparator));
   }
 
   /**
@@ -921,8 +919,8 @@ public class JTreeDriver extends JComponentDriver {
    * @param newCellReader the new {@code JTreeCellValueReader} to use.
    * @throws NullPointerException if {@code newCellReader} is {@code null}.
    */
-  public void cellReader(@Nonnull JTreeCellReader newCellReader) {
-    pathFinder.cellReader(checkNotNull(newCellReader));
+  public void replaceCellReader(@Nonnull JTreeCellReader newCellReader) {
+    pathFinder.replaceCellReader(checkNotNull(newCellReader));
   }
 
   /**
