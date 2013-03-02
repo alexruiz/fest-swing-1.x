@@ -29,13 +29,14 @@ import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
 
 /**
- * Understands a list that:
- * <ul>
- * <li>requires a name</li>
- * <li>supports drag and drop</li>
- * </ul>
+ * <p>
+ * {@code JList} that requires a name and supports drag and drop.
+ * </p>
+ *
+ * <p>
  * Adapted from the tutorial <a href="http://java.sun.com/docs/books/tutorial/uiswing/dnd/intro.html"
  * target="_blank">Introduction to Drag and Drop and Data Transfer</a>.
+ * </p>
  *
  * @author Alex Ruiz
  * @author Yvonne Wang

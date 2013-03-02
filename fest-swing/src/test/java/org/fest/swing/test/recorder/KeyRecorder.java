@@ -24,7 +24,7 @@ import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
- * Understands a listener that records key events.
+ * An event listener that records key events.
  *
  * @author Alex Ruiz
  */

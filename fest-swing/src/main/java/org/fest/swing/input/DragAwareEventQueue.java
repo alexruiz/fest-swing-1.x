@@ -58,7 +58,7 @@ class DragAwareEventQueue extends EventQueue {
 
   /**
    * Stops dispatching events using this {@code EventQueue}, only if this {@code EventQueue} is the same as the
-   * {@link Toolkit}'s system event queue. Any pending events are transferred to the previous {@code EventQueue} for
+   * {@code Toolkit}'s system event queue. Any pending events are transferred to the previous {@code EventQueue} for
    * processing.
    * 
    * @throws EmptyStackException if no previous push was made on this {@code EventQueue}.

@@ -20,7 +20,7 @@ import java.awt.EventQueue;
 import java.awt.Toolkit;
 
 /**
- * Implementations of {@link Toolkit} to be used for testing.
+ * Implementations of {@code Toolkit} to be used for testing.
  *
  * @author Alex Ruiz
  */

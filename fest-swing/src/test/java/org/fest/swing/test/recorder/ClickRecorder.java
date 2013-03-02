@@ -31,7 +31,7 @@ import org.fest.assertions.AssertExtension;
 import org.fest.swing.core.MouseButton;
 
 /**
- * Understands a mouse listener that records mouse events.
+ * An event listener that records mouse events.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang

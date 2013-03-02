@@ -20,8 +20,8 @@ import static org.fest.swing.driver.JTableCancelCellEditingTask.cancelEditing;
 import static org.fest.swing.driver.JTableCellEditorQuery.cellEditorIn;
 import static org.fest.swing.driver.JTableCellPreconditions.checkCellIndicesInBounds;
 import static org.fest.swing.driver.JTableCellPreconditions.validateCellIsEditable;
-import static org.fest.swing.driver.JTableStopCellEditingTask.stopEditing;
 import static org.fest.swing.driver.JTableStopCellEditingTask.checkStateAndStopEditing;
+import static org.fest.swing.driver.JTableStopCellEditingTask.stopEditing;
 import static org.fest.swing.edt.GuiActionRunner.execute;
 import static org.fest.swing.exception.ActionFailedException.actionFailure;
 import static org.fest.swing.timing.Pause.pause;
@@ -142,7 +142,7 @@ public abstract class AbstractJTableCellWriter implements JTableCellWriter {
    * @param table the given {@code JTable}.
    * @param row the row index of the cell.
    * @param column the column index of the cell.
-   * @param location understands how to get the bounds of the given cell.
+   * @param location obtains the bounds of the given cell.
    */
   @RunsInCurrentThread
   protected static void scrollToCell(JTable table, int row, int column, JTableLocation location) {

@@ -24,8 +24,7 @@ import javax.swing.table.TableCellRenderer;
 import javax.swing.tree.TreeCellRenderer;
 
 /**
- * Understands a cell renderer that returns the specified {@code Component} as its renderer component. Used only for
- * testing.
+ * Cell renderer that returns the specified {@code Component} as its renderer component. Used only for testing.
  *
  * @author Alex Ruiz
  * @author Yvonne Wang

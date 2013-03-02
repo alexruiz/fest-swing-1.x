@@ -131,7 +131,7 @@ public class EmergencyAbortListener implements AWTEventListener {
   }
 
   /**
-   * Removes this listener from the {@link Toolkit} this listener is attached to.
+   * Removes this listener from the {@code Toolkit} this listener is attached to.
    */
   public void unregister() {
     toolkit.removeAWTEventListener(this);

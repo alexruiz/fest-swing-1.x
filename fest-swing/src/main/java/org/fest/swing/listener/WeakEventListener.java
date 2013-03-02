@@ -84,7 +84,7 @@ public final class WeakEventListener implements AWTEventListener {
     listener.eventDispatched(e);
   }
 
-  /** Removes itself from the {@link Toolkit} this listener is attached to. */
+  /** Removes itself from the {@code Toolkit} this listener is attached to. */
   public void dispose() {
     toolkit.removeAWTEventListener(this);
   }

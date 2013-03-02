@@ -17,7 +17,7 @@ package org.fest.swing.test.awt;
 import java.awt.Point;
 
 /**
- * Understands a AWT {@link Point} with some extra utility methods.
+ * A {@link Point} with some extra utility methods.
  *
  * @author Yvonne Wang
  */
