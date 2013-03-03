@@ -14,7 +14,7 @@
  */
 /**
  * <p>
- * {@Component}-specific test drivers. Classes in this package are not part of the API. Use the classes in
+ * {@code Component}-specific test drivers. Classes in this package are not part of the API. Use the classes in
  * {@link org.fest.swing.fixture} in your tests.
  * </p>
  *

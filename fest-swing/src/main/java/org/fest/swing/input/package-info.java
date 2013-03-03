@@ -13,9 +13,15 @@
  * Copyright @2013 the original author or authors.
  */
 /**
- * Support for reading from and writing to cells in {@code JComponent}s (for example: {@code JList}s, {@code JTable}s,
- * etc.)
+ * <p>
+ * Monitors of different input events.
+ * </p>
+ *
+ * <p>
+ * Most of the classes of in this packages were adapted from <a href="http://abbot.sourceforge.net"
+ * target="_blank">Abbot</a>. Many thanks to Timothy Wall for allowing us to use them.
+ * </p>
  *
  * @author Alex Ruiz
  */
-package org.fest.swing.cell;
+package org.fest.swing.input;

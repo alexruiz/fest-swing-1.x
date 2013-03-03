@@ -13,9 +13,9 @@
  * Copyright @2013 the original author or authors.
  */
 /**
- * Support for reading from and writing to cells in {@code JComponent}s (for example: {@code JList}s, {@code JTable}s,
- * etc.)
+ * Utilities that ensure that GUI tests are executed sequentially, preventing multiple applications from being displayed
+ * simultaneously.
  *
  * @author Alex Ruiz
  */
-package org.fest.swing.cell;
+package org.fest.swing.lock;
