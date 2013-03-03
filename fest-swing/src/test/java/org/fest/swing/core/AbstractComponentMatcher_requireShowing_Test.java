@@ -19,6 +19,8 @@ import static org.fest.util.Lists.newArrayList;
 
 import java.util.Collection;
 
+import javax.annotation.Nonnull;
+
 import org.fest.swing.test.data.BooleanProvider;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -36,7 +38,7 @@ public class AbstractComponentMatcher_requireShowing_Test {
   private final boolean requireShowing;
 
   @Parameters
-  public static Collection<Object[]> booleans() {
+  public static @Nonnull Collection<Object[]> booleans() {
     return newArrayList(BooleanProvider.booleans());
   }
 

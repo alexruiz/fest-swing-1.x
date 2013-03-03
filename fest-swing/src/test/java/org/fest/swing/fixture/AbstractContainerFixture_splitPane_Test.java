@@ -19,9 +19,11 @@ import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.edt.GuiActionRunner.execute;
 import static org.fest.swing.test.core.NeverMatchingComponentMatcher.neverMatches;
 import static org.fest.test.ExpectedException.none;
+import static org.fest.util.Preconditions.checkNotNull;
 
 import java.awt.Dimension;
 
+import javax.annotation.Nonnull;
 import javax.swing.JList;
 import javax.swing.JSplitPane;
 
@@ -87,7 +89,7 @@ public class AbstractContainerFixture_splitPane_Test extends RobotBasedTestCase 
     robot.showWindow(window);
     JSplitPaneFixture splitPane = fixture.splitPane(new GenericTypeMatcher<JSplitPane>(JSplitPane.class) {
       @Override
-      protected boolean isMatching(JSplitPane s) {
+      protected boolean isMatching(@Nonnull JSplitPane s) {
         return s.getLeftComponent() instanceof JList;
       }
     });
@@ -104,16 +106,17 @@ public class AbstractContainerFixture_splitPane_Test extends RobotBasedTestCase 
   private static class MyWindow extends TestWindow {
     final JSplitPane splitPane = new JSplitPane(VERTICAL_SPLIT);
 
-    static MyWindow createNew(final Class<?> testClass) {
-      return execute(new GuiQuery<MyWindow>() {
+    static @Nonnull MyWindow createNew(final @Nonnull Class<?> testClass) {
+      MyWindow result = execute(new GuiQuery<MyWindow>() {
         @Override
         protected MyWindow executeInEDT() {
           return new MyWindow(testClass);
         }
       });
+      return checkNotNull(result);
     }
 
-    private MyWindow(Class<?> testClass) {
+    private MyWindow(@Nonnull Class<?> testClass) {
       super(testClass);
       splitPane.setName("slideMeSplitPane");
       splitPane.setLeftComponent(list("One", "Two"));
@@ -121,7 +124,7 @@ public class AbstractContainerFixture_splitPane_Test extends RobotBasedTestCase 
       addComponents(splitPane);
     }
 
-    private static JList list(Object... elements) {
+    private static JList list(@Nonnull Object... elements) {
       JList list = new JList(elements);
       list.setPreferredSize(new Dimension(100, 50));
       return list;

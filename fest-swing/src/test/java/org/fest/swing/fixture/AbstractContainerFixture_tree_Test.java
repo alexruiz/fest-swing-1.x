@@ -19,6 +19,7 @@ import static org.fest.swing.edt.GuiActionRunner.execute;
 import static org.fest.swing.test.core.NeverMatchingComponentMatcher.neverMatches;
 import static org.fest.test.ExpectedException.none;
 
+import javax.annotation.Nonnull;
 import javax.swing.JTree;
 import javax.swing.tree.DefaultMutableTreeNode;
 
@@ -84,7 +85,7 @@ public class AbstractContainerFixture_tree_Test extends RobotBasedTestCase {
     robot.showWindow(window);
     JTreeFixture tree = fixture.tree(new GenericTypeMatcher<JTree>(JTree.class) {
       @Override
-      protected boolean isMatching(JTree t) {
+      protected boolean isMatching(@Nonnull JTree t) {
         return "expandMeTree".equals(t.getName());
       }
     });

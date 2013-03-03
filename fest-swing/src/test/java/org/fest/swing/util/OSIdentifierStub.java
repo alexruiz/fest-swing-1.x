@@ -17,6 +17,8 @@ package org.fest.swing.util;
 import static org.fest.util.Strings.concat;
 import static org.fest.util.Strings.quote;
 
+import javax.annotation.Nonnull;
+
 /**
  * @author Alex Ruiz
  */
@@ -75,7 +77,7 @@ class OSIdentifierStub extends OSIdentifier {
     }
 
     @Override
-    String systemProperty(String propertyName) {
+    String systemProperty(@Nonnull String propertyName) {
       if ("os.name".equals(propertyName)) {
         return osName;
       }

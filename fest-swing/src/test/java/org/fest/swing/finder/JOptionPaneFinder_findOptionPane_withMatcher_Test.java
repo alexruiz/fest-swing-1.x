@@ -17,6 +17,7 @@ package org.fest.swing.finder;
 import static java.util.concurrent.TimeUnit.MILLISECONDS;
 import static org.fest.assertions.Assertions.assertThat;
 
+import javax.annotation.Nonnull;
 import javax.swing.JOptionPane;
 
 import org.fest.swing.core.GenericTypeMatcher;
@@ -72,7 +73,7 @@ public class JOptionPaneFinder_findOptionPane_withMatcher_Test extends JOptionPa
     }
 
     @Override
-    protected boolean isMatching(JOptionPane optionPane) {
+    protected boolean isMatching(@Nonnull JOptionPane optionPane) {
       return optionPane.isShowing();
     }
   }

@@ -76,7 +76,7 @@ public class AbstractComponentFixture_constructor_withLookupByType_Test {
   }
 
   private static class ComponentFixture extends AbstractComponentFixture<ComponentFixture, Component, ComponentDriver> {
-    public ComponentFixture(@Nonnull Class<ComponentFixture> selfType, @Nonnull Robot robot,
+    ComponentFixture(@Nonnull Class<ComponentFixture> selfType, @Nonnull Robot robot,
         @Nonnull Class<? extends Component> type) {
       super(selfType, robot, type);
     }
@@ -86,5 +86,4 @@ public class AbstractComponentFixture_constructor_withLookupByType_Test {
       return new ComponentDriver(robot);
     }
   }
-
 }

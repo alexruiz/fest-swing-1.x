@@ -18,6 +18,7 @@ import static java.util.concurrent.TimeUnit.MILLISECONDS;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.query.ComponentShowingQuery.isShowing;
 
+import javax.annotation.Nonnull;
 import javax.swing.JFrame;
 
 import org.fest.swing.core.GenericTypeMatcher;
@@ -71,7 +72,7 @@ public class WindowFinder_findFrame_withMatcher_Test extends WindowFinder_TestCa
     }
 
     @Override
-    protected boolean isMatching(JFrame frame) {
+    protected boolean isMatching(@Nonnull JFrame frame) {
       return "frame".equals(frame.getName()) && isShowing(frame);
     }
   }

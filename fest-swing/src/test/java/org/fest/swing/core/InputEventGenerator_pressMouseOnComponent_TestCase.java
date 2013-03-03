@@ -18,9 +18,12 @@ import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.awt.AWT.centerOf;
 import static org.fest.swing.timing.Pause.pause;
 import static org.fest.util.Lists.newArrayList;
+import static org.fest.util.Preconditions.checkNotNull;
 
 import java.awt.Point;
 import java.util.Collection;
+
+import javax.annotation.Nonnull;
 
 import org.fest.swing.test.recorder.ClickRecorder;
 import org.junit.Test;
@@ -40,12 +43,12 @@ public abstract class InputEventGenerator_pressMouseOnComponent_TestCase extends
   private final int buttonMask;
 
   @Parameters
-  public static Collection<Object[]> mouseButtons() {
+  public static @Nonnull Collection<Object[]> mouseButtons() {
     return newArrayList(MouseButtonProvider.mouseButtons());
   }
 
-  public InputEventGenerator_pressMouseOnComponent_TestCase(MouseButton button) {
-    this.button = button;
+  public InputEventGenerator_pressMouseOnComponent_TestCase(@Nonnull MouseButton button) {
+    this.button = checkNotNull(button);
     buttonMask = button.mask;
   }
 

@@ -17,6 +17,7 @@ package org.fest.swing.core;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.test.core.NeverMatchingComponentMatcher.neverMatches;
 
+import javax.annotation.Nonnull;
 import javax.swing.JButton;
 import javax.swing.JTree;
 
@@ -37,7 +38,7 @@ public class BasicComponentFinder_findUsingGenericTypeMatcherInRoot_Test extends
     windowTwo = MyWindow.createNew(getClass());
     JButton foundButton = finder.find(window, new GenericTypeMatcher<JButton>(JButton.class) {
       @Override
-      protected boolean isMatching(JButton button) {
+      protected boolean isMatching(@Nonnull JButton button) {
         return "A Button".equals(button.getText());
       }
     });
@@ -48,7 +49,7 @@ public class BasicComponentFinder_findUsingGenericTypeMatcherInRoot_Test extends
   public void should_throw_error_if_GenericTypeMatcher_matches_wrong_type() {
     finder.find(window, new GenericTypeMatcher<JTree>(JTree.class) {
       @Override
-      protected boolean isMatching(JTree component) {
+      protected boolean isMatching(@Nonnull JTree component) {
         return true;
       }
     });

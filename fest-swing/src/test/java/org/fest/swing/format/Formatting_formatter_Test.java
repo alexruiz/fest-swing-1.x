@@ -18,6 +18,7 @@ import static org.fest.assertions.Assertions.assertThat;
 
 import java.awt.Component;
 
+import javax.annotation.Nonnull;
 import javax.swing.JComboBox;
 
 import org.junit.After;
@@ -41,7 +42,7 @@ public class Formatting_formatter_Test {
     oldFormatter = Formatting.formatter(type);
     newFormatter = new ComponentFormatterTemplate() {
       @Override
-      protected String doFormat(Component c) {
+      protected String doFormat(@Nonnull Component c) {
         return null;
       }
 

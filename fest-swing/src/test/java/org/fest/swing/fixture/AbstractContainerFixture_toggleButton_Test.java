@@ -18,7 +18,9 @@ import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.edt.GuiActionRunner.execute;
 import static org.fest.swing.test.core.NeverMatchingComponentMatcher.neverMatches;
 import static org.fest.test.ExpectedException.none;
+import static org.fest.util.Preconditions.checkNotNull;
 
+import javax.annotation.Nonnull;
 import javax.swing.JToggleButton;
 
 import org.fest.swing.core.GenericTypeMatcher;
@@ -83,7 +85,7 @@ public class AbstractContainerFixture_toggleButton_Test extends RobotBasedTestCa
     robot.showWindow(window);
     JToggleButtonFixture button = fixture.toggleButton(new GenericTypeMatcher<JToggleButton>(JToggleButton.class) {
       @Override
-      protected boolean isMatching(JToggleButton b) {
+      protected boolean isMatching(@Nonnull JToggleButton b) {
         return "Click Me".equals(b.getText());
       }
     });
@@ -100,16 +102,17 @@ public class AbstractContainerFixture_toggleButton_Test extends RobotBasedTestCa
   private static class MyWindow extends TestWindow {
     final JToggleButton toggleButton = new JToggleButton("Click Me");
 
-    static MyWindow createNew(final Class<?> testClass) {
-      return execute(new GuiQuery<MyWindow>() {
+    static @Nonnull MyWindow createNew(final @Nonnull Class<?> testClass) {
+      MyWindow result = execute(new GuiQuery<MyWindow>() {
         @Override
         protected MyWindow executeInEDT() {
           return new MyWindow(testClass);
         }
       });
+      return checkNotNull(result);
     }
 
-    private MyWindow(Class<?> testClass) {
+    private MyWindow(@Nonnull Class<?> testClass) {
       super(testClass);
       toggleButton.setName("clickMeButton");
       addComponents(toggleButton);

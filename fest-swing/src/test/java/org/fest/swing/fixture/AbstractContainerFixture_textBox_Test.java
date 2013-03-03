@@ -18,7 +18,9 @@ import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.edt.GuiActionRunner.execute;
 import static org.fest.swing.test.core.NeverMatchingComponentMatcher.neverMatches;
 import static org.fest.test.ExpectedException.none;
+import static org.fest.util.Preconditions.checkNotNull;
 
+import javax.annotation.Nonnull;
 import javax.swing.JTextField;
 import javax.swing.text.JTextComponent;
 
@@ -84,7 +86,7 @@ public class AbstractContainerFixture_textBox_Test extends RobotBasedTestCase {
     robot.showWindow(window);
     JTextComponentFixture textBox = fixture.textBox(new GenericTypeMatcher<JTextComponent>(JTextComponent.class) {
       @Override
-      protected boolean isMatching(JTextComponent b) {
+      protected boolean isMatching(@Nonnull JTextComponent b) {
         return "".equals(b.getText());
       }
     });
@@ -101,16 +103,17 @@ public class AbstractContainerFixture_textBox_Test extends RobotBasedTestCase {
   private static class MyWindow extends TestWindow {
     final JTextComponent textBox = new JTextField(10);
 
-    static MyWindow createNew(final Class<?> testClass) {
-      return execute(new GuiQuery<MyWindow>() {
+    static @Nonnull MyWindow createNew(final @Nonnull Class<?> testClass) {
+      MyWindow result = execute(new GuiQuery<MyWindow>() {
         @Override
         protected MyWindow executeInEDT() {
           return new MyWindow(testClass);
         }
       });
+      return checkNotNull(result);
     }
 
-    private MyWindow(Class<?> testClass) {
+    private MyWindow(@Nonnull Class<?> testClass) {
       super(testClass);
       textBox.setName("typeMeTextField");
       addComponents(textBox);

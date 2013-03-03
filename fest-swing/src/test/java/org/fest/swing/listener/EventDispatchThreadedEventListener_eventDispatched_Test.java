@@ -22,6 +22,8 @@ import static org.fest.swing.timing.Pause.pause;
 
 import java.awt.AWTEvent;
 
+import javax.annotation.Nonnull;
+
 import org.fest.swing.edt.GuiTask;
 import org.fest.swing.timing.Condition;
 import org.junit.Before;
@@ -73,7 +75,7 @@ public class EventDispatchThreadedEventListener_eventDispatched_Test {
     }
 
     @Override
-    protected void processEvent(AWTEvent newEvent) {
+    protected void processEvent(@Nonnull AWTEvent newEvent) {
       this.event = newEvent;
       wasProcessedInEventDispatchThread = isEventDispatchThread();
     }

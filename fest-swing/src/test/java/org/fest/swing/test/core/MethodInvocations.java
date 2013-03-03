@@ -19,10 +19,14 @@ import static org.fest.assertions.Fail.fail;
 import static org.fest.swing.util.Arrays.copyOf;
 import static org.fest.util.Arrays.format;
 import static org.fest.util.Maps.newHashMap;
+import static org.fest.util.Preconditions.checkNotNull;
 import static org.fest.util.Strings.concat;
 import static org.fest.util.Strings.quote;
 
 import java.util.Map;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * Mechanism to record and verify expected method invocations.
@@ -39,7 +43,7 @@ public class MethodInvocations {
    * @param methodName the name of the invoked method.
    * @return {@code this}.
    */
-  public MethodInvocations invoked(String methodName) {
+  public @Nonnull MethodInvocations invoked(@Nonnull String methodName) {
     invocations.put(methodName, new Object[0]);
     return this;
   }
@@ -51,8 +55,8 @@ public class MethodInvocations {
    * @param args the arguments passed to the invoked method.
    * @return {@code this}.
    */
-  public MethodInvocations invoked(String methodName, Args args) {
-    validate(args);
+  public @Nonnull MethodInvocations invoked(@Nonnull String methodName, @Nonnull Args args) {
+    checkNotNull(args);
     invocations.put(methodName, args.args);
     return this;
   }
@@ -64,7 +68,7 @@ public class MethodInvocations {
    * @return {@code this}.
    * @throws AssertionError if the method was not invoked.
    */
-  public MethodInvocations requireInvoked(String methodName) {
+  public @Nonnull MethodInvocations requireInvoked(@Nonnull String methodName) {
     if (!invocations.containsKey(methodName)) {
       methodNotInvoked(methodName);
     }
@@ -80,8 +84,8 @@ public class MethodInvocations {
    * @throws AssertionError if the method was not invoked.
    * @throws AssertionError if different arguments were passed to the method to verify.
    */
-  public MethodInvocations requireInvoked(String methodName, Args args) {
-    validate(args);
+  public @Nonnull MethodInvocations requireInvoked(@Nonnull String methodName, @Nonnull Args args) {
+    checkNotNull(args);
     if (!invocations.containsKey(methodName)) {
       methodNotInvoked(methodName);
     }
@@ -93,13 +97,7 @@ public class MethodInvocations {
     return this;
   }
 
-  private void validate(Args args) {
-    if (args == null) {
-      throw new NullPointerException("Args should not be null");
-    }
-  }
-
-  private void methodNotInvoked(String methodName) {
+  private void methodNotInvoked(@Nonnull String methodName) {
     fail(concat("expecting method ", quote(methodName), " to be invoked"));
   }
 
@@ -118,11 +116,11 @@ public class MethodInvocations {
      * @param args the arguments to store.
      * @return the created {@code Args}.
      */
-    public static Args args(Object... args) {
+    public static @Nonnull Args args(@Nullable Object... args) {
       return new Args(args);
     }
 
-    private Args(Object... args) {
+    private Args(@Nullable Object... args) {
       this.args = args != null ? copyOf(args) : new Object[0];
     }
   }

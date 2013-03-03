@@ -44,7 +44,7 @@ public class NeverMatchingComponentMatcher<T extends Component> extends GenericT
   }
 
   @Override
-  protected boolean isMatching(T component) {
+  protected boolean isMatching(@Nonnull T component) {
     return false;
   }
 }

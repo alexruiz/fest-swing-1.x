@@ -14,13 +14,15 @@
  */
 package org.fest.swing.test.data;
 
+import javax.annotation.Nonnull;
+
 /**
  * A provider of {@code boolean} values.
  *
  * @author Yvonne Wang
  */
 public class BooleanProvider {
-  public static Object[][] booleans() {
+  public static @Nonnull Object[][] booleans() {
     return new Object[][] { { true }, { false } };
   }
 }

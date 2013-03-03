@@ -18,6 +18,7 @@ import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.edt.GuiActionRunner.execute;
 import static org.fest.swing.query.ComponentLocationOnScreenQuery.locationOnScreen;
 import static org.fest.swing.query.ComponentSizeQuery.sizeOf;
+import static org.fest.util.Preconditions.checkNotNull;
 
 import java.awt.Dimension;
 
@@ -52,12 +53,13 @@ public class BasicRobot_showWindowBySizeAndPacking_Test extends EDTSafeTestCase 
   public void should_not_pack_window_as_specified() {
     // TODO split this test case in 2+
     Dimension size = new Dimension(100, 100);
-    WindowToShow w = execute(new GuiQuery<WindowToShow>() {
+    WindowToShow result = execute(new GuiQuery<WindowToShow>() {
       @Override
       protected WindowToShow executeInEDT() {
         return new WindowToShow();
       }
     });
+    WindowToShow w = checkNotNull(result);
     robot.showWindow(w, size, false);
     assertThat(sizeOf(w)).isEqualTo(size);
     assertThat(w.wasPacked()).isFalse();

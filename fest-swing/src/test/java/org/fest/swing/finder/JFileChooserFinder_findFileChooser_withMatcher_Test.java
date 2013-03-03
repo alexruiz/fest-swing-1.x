@@ -17,6 +17,7 @@ package org.fest.swing.finder;
 import static java.util.concurrent.TimeUnit.MILLISECONDS;
 import static org.fest.assertions.Assertions.assertThat;
 
+import javax.annotation.Nonnull;
 import javax.swing.JFileChooser;
 
 import org.fest.swing.core.GenericTypeMatcher;
@@ -71,7 +72,7 @@ public class JFileChooserFinder_findFileChooser_withMatcher_Test extends JFileCh
     }
 
     @Override
-    protected boolean isMatching(JFileChooser fileChooser) {
+    protected boolean isMatching(@Nonnull JFileChooser fileChooser) {
       return "fileChooser".equals(fileChooser.getName());
     }
   }

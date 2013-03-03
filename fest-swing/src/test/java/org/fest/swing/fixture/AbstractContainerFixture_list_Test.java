@@ -20,6 +20,7 @@ import static org.fest.swing.test.core.NeverMatchingComponentMatcher.neverMatche
 import static org.fest.test.ExpectedException.none;
 import static org.fest.util.Arrays.array;
 
+import javax.annotation.Nonnull;
 import javax.swing.JList;
 
 import org.fest.swing.core.GenericTypeMatcher;
@@ -84,7 +85,7 @@ public class AbstractContainerFixture_list_Test extends RobotBasedTestCase {
     robot.showWindow(window);
     JListFixture list = fixture.list(new GenericTypeMatcher<JList>(JList.class) {
       @Override
-      protected boolean isMatching(JList l) {
+      protected boolean isMatching(@Nonnull JList l) {
         return l.getModel().getSize() == 3;
       }
     });

@@ -20,8 +20,12 @@ import static org.fest.swing.core.MouseButton.MIDDLE_BUTTON;
 import static org.fest.swing.core.MouseButton.RIGHT_BUTTON;
 import static org.fest.swing.test.recorder.ClickRecorder.attachTo;
 import static org.fest.util.Lists.newArrayList;
+import static org.fest.util.Preconditions.checkNotNull;
 
 import java.util.Collection;
+
+import javax.annotation.Nonnull;
+import javax.swing.JTextField;
 
 import org.fest.swing.test.recorder.ClickRecorder;
 import org.junit.Test;
@@ -44,14 +48,15 @@ public class BasicRobot_clickComponentWithButton_Test extends BasicRobot_TestCas
     return newArrayList(new Object[][] { { LEFT_BUTTON }, { MIDDLE_BUTTON }, { RIGHT_BUTTON } });
   }
 
-  public BasicRobot_clickComponentWithButton_Test(MouseButton button) {
-    this.button = button;
+  public BasicRobot_clickComponentWithButton_Test(@Nonnull MouseButton button) {
+    this.button = checkNotNull(button);
   }
 
   @Test
   public void should_click_Component_Once_with_given_button() {
-    ClickRecorder recorder = attachTo(window.textField);
-    robot.click(window.textField, button);
+    JTextField textField = window().textField();
+    ClickRecorder recorder = attachTo(textField);
+    robot().click(textField, button);
     assertThat(recorder).clicked(button).timesClicked(1);
   }
 }

@@ -20,9 +20,11 @@ import static org.fest.swing.query.ComponentLocationOnScreenQuery.locationOnScre
 import static org.fest.swing.query.ComponentShowingQuery.isShowing;
 import static org.fest.swing.test.task.ComponentRequestFocusAndWaitForFocusGainTask.giveFocusAndWaitTillIsFocused;
 import static org.fest.swing.test.task.ComponentSetPopupMenuTask.createAndSetPopupMenu;
+import static org.fest.util.Preconditions.checkNotNull;
 
 import java.awt.Point;
 
+import javax.annotation.Nonnull;
 import javax.swing.JPopupMenu;
 import javax.swing.JTextField;
 
@@ -40,17 +42,18 @@ import org.junit.Before;
  * @author Alex Ruiz
  */
 public abstract class BasicRobot_TestCase extends EDTSafeTestCase {
-  BasicRobot robot;
-  MyWindow window;
+  private BasicRobot robot;
+  private MyWindow window;
 
   @Before
   public final void setUp() {
     robot = (BasicRobot) BasicRobot.robotWithCurrentAwtHierarchy();
-    window = MyWindow.createAndShow(getClass());
+    MyWindow w = MyWindow.createAndShow(checkNotNull(getClass()));
     beforeShowingWindow();
-    robot.showWindow(window); // implicitly test 'showWindow(Window)'
-    assertThat(isShowing(window)).isTrue();
-    assertThat(locationOnScreen(window)).isEqualTo(new Point(100, 100));
+    robot.showWindow(w); // implicitly test 'showWindow(Window)'
+    assertThat(isShowing(w)).isTrue();
+    assertThat(locationOnScreen(w)).isEqualTo(new Point(100, 100));
+    window = w;
   }
 
   void beforeShowingWindow() {}
@@ -66,30 +69,43 @@ public abstract class BasicRobot_TestCase extends EDTSafeTestCase {
 
   @RunsInEDT
   final void giveFocusToTextField() {
-    giveFocusAndWaitTillIsFocused(window.textField);
+    giveFocusAndWaitTillIsFocused(window().textField());
   }
 
   @RunsInEDT
   final JPopupMenu addPopupMenuToTextField() {
-    return createAndSetPopupMenu(window.textField, "Luke", "Leia");
+    return createAndSetPopupMenu(window().textField(), "Luke", "Leia");
   }
 
   static class MyWindow extends TestWindow {
-    final JTextField textField = new JTextField(10);
+    private final JTextField textField = new JTextField(10);
 
     @RunsInEDT
-    static MyWindow createAndShow(final Class<?> testClass) {
-      return execute(new GuiQuery<MyWindow>() {
+    static @Nonnull MyWindow createAndShow(final @Nonnull Class<?> testClass) {
+      MyWindow result = execute(new GuiQuery<MyWindow>() {
         @Override
         protected MyWindow executeInEDT() {
           return display(new MyWindow(testClass));
         }
       });
+      return checkNotNull(result);
     }
 
-    private MyWindow(Class<?> testClass) {
+    private MyWindow(@Nonnull Class<?> testClass) {
       super(testClass);
       addComponents(textField);
     }
+
+    @Nonnull JTextField textField() {
+      return checkNotNull(textField);
+    }
+  }
+
+  @Nonnull BasicRobot robot() {
+    return checkNotNull(robot);
+  }
+
+  @Nonnull MyWindow window() {
+    return checkNotNull(window);
   }
 }

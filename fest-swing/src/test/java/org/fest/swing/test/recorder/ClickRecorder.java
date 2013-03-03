@@ -19,6 +19,7 @@ import static org.fest.swing.core.MouseButton.LEFT_BUTTON;
 import static org.fest.swing.core.MouseButton.MIDDLE_BUTTON;
 import static org.fest.swing.core.MouseButton.RIGHT_BUTTON;
 import static org.fest.util.Maps.newHashMap;
+import static org.fest.util.Preconditions.checkNotNull;
 
 import java.awt.Component;
 import java.awt.Container;
@@ -26,6 +27,8 @@ import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.Map;
+
+import javax.annotation.Nonnull;
 
 import org.fest.assertions.AssertExtension;
 import org.fest.swing.core.MouseButton;
@@ -37,19 +40,19 @@ import org.fest.swing.core.MouseButton;
  * @author Yvonne Wang
  */
 public class ClickRecorder implements AssertExtension {
-  public static ClickRecorder attachTo(Component target) {
+  public static @Nonnull ClickRecorder attachTo(@Nonnull Component target) {
     ClickRecorder recorder = new ClickRecorder();
     attach(new ClickListener(recorder), target);
     return recorder;
   }
 
-  private static void attach(ClickListener listener, Component target) {
+  private static void attach(@Nonnull ClickListener listener, @Nonnull Component target) {
     target.addMouseListener(listener);
     if (!(target instanceof Container)) {
       return;
     }
     for (Component c : ((Container) target).getComponents()) {
-      attach(listener, c);
+      attach(listener, checkNotNull(c));
     }
   }
 
@@ -68,64 +71,64 @@ public class ClickRecorder implements AssertExtension {
   private static class ClickListener extends MouseAdapter {
     private final ClickRecorder owner;
 
-    ClickListener(ClickRecorder owner) {
+    ClickListener(@Nonnull ClickRecorder owner) {
       this.owner = owner;
     }
 
     @Override
     public void mousePressed(MouseEvent e) {
-      record(e);
+      record(checkNotNull(e));
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
-      record(e);
+      record(checkNotNull(e));
     }
 
-    private void record(MouseEvent e) {
+    private void record(@Nonnull MouseEvent e) {
       owner.clickedButton = MOUSE_BUTTON_MAP.get(e.getButton());
       owner.clickCount = e.getClickCount();
       owner.pointClicked = e.getPoint();
     }
   }
 
-  public ClickRecorder wasNotClicked() {
+  public @Nonnull ClickRecorder wasNotClicked() {
     assertThat(clickedButton).isNull();
     return this;
   }
 
-  public ClickRecorder timesClicked(int times) {
+  public @Nonnull ClickRecorder timesClicked(int times) {
     assertThat(clickCount).isEqualTo(times);
     return this;
   }
 
-  public ClickRecorder wasClicked() {
+  public @Nonnull ClickRecorder wasClicked() {
     return clicked(LEFT_BUTTON).timesClicked(1);
   }
 
-  public ClickRecorder wasDoubleClicked() {
+  public @Nonnull ClickRecorder wasDoubleClicked() {
     return clicked(LEFT_BUTTON).timesClicked(2);
   }
 
-  public ClickRecorder wasRightClicked() {
+  public @Nonnull ClickRecorder wasRightClicked() {
     return clicked(RIGHT_BUTTON).timesClicked(1);
   }
 
-  public ClickRecorder clicked(MouseButton button) {
+  public @Nonnull ClickRecorder clicked(@Nonnull MouseButton button) {
     return wasClickedWith(button);
   }
 
-  public ClickRecorder wasClickedWith(MouseButton button) {
+  public @Nonnull ClickRecorder wasClickedWith(@Nonnull MouseButton button) {
     assertThat(clickedButton).isEqualTo(button);
     return this;
   }
 
-  public ClickRecorder clickedAt(Point p) {
+  public @Nonnull ClickRecorder clickedAt(@Nonnull Point p) {
     assertThat(pointClicked).isEqualTo(p);
     return this;
   }
 
-  public Point pointClicked() {
+  public @Nonnull Point pointClicked() {
     return pointClicked;
   }
 }

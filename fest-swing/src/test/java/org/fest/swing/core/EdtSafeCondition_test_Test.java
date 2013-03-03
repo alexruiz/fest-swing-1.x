@@ -20,6 +20,8 @@ import static org.fest.util.Lists.newArrayList;
 
 import java.util.Collection;
 
+import javax.annotation.Nonnull;
+
 import org.fest.swing.exception.EdtViolationException;
 import org.fest.swing.test.data.BooleanProvider;
 import org.junit.Before;
@@ -38,7 +40,7 @@ public class EdtSafeCondition_test_Test {
   private final boolean conditionSatisfied;
 
   @Parameters
-  public static Collection<Object[]> booleans() {
+  public static @Nonnull Collection<Object[]> booleans() {
     return newArrayList(BooleanProvider.booleans());
   }
 

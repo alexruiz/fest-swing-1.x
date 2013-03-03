@@ -60,7 +60,7 @@ public class ExtensionTest extends RobotBasedTestCase {
     }
 
     @Override
-    public JTextFieldFixture createFixture(Robot robot, Container root) {
+    public JTextFieldFixture createFixture(@Nonnull Robot robot, @Nonnull Container root) {
       return new JTextFieldFixture(robot, textField().createNew());
     }
   }
@@ -71,7 +71,7 @@ public class ExtensionTest extends RobotBasedTestCase {
     }
 
     @Override
-    protected @Nonnull JComponentDriver createDriver(Robot robot) {
+    protected @Nonnull JComponentDriver createDriver(@Nonnull Robot robot) {
       return new JComponentDriver(robot);
     }
   }

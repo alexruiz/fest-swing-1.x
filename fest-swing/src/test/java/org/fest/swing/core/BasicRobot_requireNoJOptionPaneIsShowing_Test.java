@@ -1,15 +1,15 @@
 /*
  * Created on Jul 26, 2009
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
- * 
+ *
  * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.core;
@@ -34,7 +34,7 @@ import org.junit.Test;
 
 /**
  * Tests for {@link BasicRobot#requireNoJOptionPaneIsShowing()}.
- * 
+ *
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
@@ -51,25 +51,25 @@ public class BasicRobot_requireNoJOptionPaneIsShowing_Test extends BasicRobot_Te
         button.addActionListener(new ActionListener() {
           @Override
           public void actionPerformed(ActionEvent e) {
-            JOptionPane.showMessageDialog(window, "A Message");
+            JOptionPane.showMessageDialog(window(), "A Message");
           }
         });
-        window.add(button);
+        window().add(button);
       }
     });
   }
 
   @Test
   public void should_pass_if_no_JOptionPane_is_showing() {
-    robot.requireNoJOptionPaneIsShowing();
+    robot().requireNoJOptionPaneIsShowing();
   }
 
   @Test
   public void should_fail_if_a_JOptionPane_is_showing() {
-    robot.click(button);
+    robot().click(button);
     pauseTillJOptionPaneIsShowing();
     try {
-      robot.requireNoJOptionPaneIsShowing();
+      robot().requireNoJOptionPaneIsShowing();
       failWhenExpectingException();
     } catch (AssertionError e) {
       assertThat(e.getMessage()).contains("Expecting no JOptionPane to be showing");
@@ -80,7 +80,7 @@ public class BasicRobot_requireNoJOptionPaneIsShowing_Test extends BasicRobot_Te
     pause(new Condition("JOptionPane is showing") {
       @Override
       public boolean test() {
-        Collection<Component> found = robot.finder().findAll(new TypeMatcher(JOptionPane.class));
+        Collection<Component> found = robot().finder().findAll(new TypeMatcher(JOptionPane.class));
         return !found.isEmpty();
       }
     });

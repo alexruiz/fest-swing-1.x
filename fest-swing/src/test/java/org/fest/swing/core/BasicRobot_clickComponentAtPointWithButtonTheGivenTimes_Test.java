@@ -19,9 +19,12 @@ import static org.fest.swing.awt.AWT.locationOnScreenOf;
 import static org.fest.swing.awt.AWT.visibleCenterOf;
 import static org.fest.swing.core.ClickingDataProvider.clickingData;
 import static org.fest.util.Lists.newArrayList;
+import static org.fest.util.Preconditions.checkNotNull;
 
 import java.awt.Point;
 import java.util.Collection;
+
+import javax.swing.JTextField;
 
 import org.fest.swing.test.recorder.ClickRecorder;
 import org.junit.Test;
@@ -52,11 +55,12 @@ public class BasicRobot_clickComponentAtPointWithButtonTheGivenTimes_Test extend
 
   @Test
   public void should_click_at_given_point_with_given_mouse_button_and_given_number_of_times() {
-    ClickRecorder recorder = ClickRecorder.attachTo(window.textField);
-    Point l = locationOnScreenOf(window.textField);
-    Point c = visibleCenterOf(window.textField);
-    l.translate(c.x, c.y);
-    robot.click(l, button, times);
-    assertThat(recorder).clicked(button).timesClicked(times).clickedAt(c);
+    JTextField textField = window().textField();
+    ClickRecorder recorder = ClickRecorder.attachTo(textField);
+    Point screenLocation = checkNotNull(locationOnScreenOf(textField));
+    Point visibleCenter = visibleCenterOf(textField);
+    screenLocation.translate(visibleCenter.x, visibleCenter.y);
+    robot().click(screenLocation, button, times);
+    assertThat(recorder).clicked(button).timesClicked(times).clickedAt(visibleCenter);
   }
 }

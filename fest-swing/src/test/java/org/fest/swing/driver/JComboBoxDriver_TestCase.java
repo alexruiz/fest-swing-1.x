@@ -1,15 +1,15 @@
 /*
  * Created on Feb 24, 2008
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
- * 
+ *
  * Copyright @2008-2013 the original author or authors.
  */
 package org.fest.swing.driver;
@@ -25,6 +25,7 @@ import static org.fest.util.Arrays.array;
 
 import java.awt.Component;
 
+import javax.annotation.Nonnull;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.text.JTextComponent;
@@ -38,7 +39,7 @@ import org.fest.swing.test.swing.TestWindow;
 
 /**
  * Base test case for {@link JComboBoxDriver}.
- * 
+ *
  * @author Alex Ruiz
  * @author Yvonne Wang
  */
@@ -148,7 +149,7 @@ public abstract class JComboBoxDriver_TestCase extends RobotBasedTestCase {
     final JComboBox comboBox = new JComboBox(array("first", "second", "third"));
 
     @RunsInEDT
-    static MyWindow createNew(final Class<?> testClass) {
+    static MyWindow createNew(final @Nonnull Class<?> testClass) {
       return execute(new GuiQuery<MyWindow>() {
         @Override
         protected MyWindow executeInEDT() {
@@ -157,7 +158,7 @@ public abstract class JComboBoxDriver_TestCase extends RobotBasedTestCase {
       });
     }
 
-    private MyWindow(Class<?> testClass) {
+    private MyWindow(@Nonnull Class<?> testClass) {
       super(testClass);
       add(comboBox);
     }
@@ -166,11 +167,10 @@ public abstract class JComboBoxDriver_TestCase extends RobotBasedTestCase {
   static class JComboBoxCellReaderStub extends BasicJComboBoxCellReader {
     private final MethodInvocations methodInvocations = new MethodInvocations();
 
-    JComboBoxCellReaderStub() {
-    }
+    JComboBoxCellReaderStub() {}
 
     @Override
-    public String valueAt(JComboBox comboBox, int index) {
+    public String valueAt(@Nonnull JComboBox comboBox, int index) {
       methodInvocations.invoked("valueAt");
       return super.valueAt(comboBox, index);
     }

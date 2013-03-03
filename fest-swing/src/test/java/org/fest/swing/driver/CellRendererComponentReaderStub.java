@@ -16,6 +16,8 @@ package org.fest.swing.driver;
 
 import java.awt.Component;
 
+import javax.annotation.Nullable;
+
 /**
  * Implementation of {@link CellRendererReader} that returns a pre-set value as the value read from a cell renderer
  * component.
@@ -37,7 +39,7 @@ public class CellRendererComponentReaderStub implements CellRendererReader {
   }
 
   @Override
-  public String valueFrom(Component c) {
+  public String valueFrom(@Nullable Component c) {
     this.cellRendererComponent = c;
     return valueToReturn;
   }

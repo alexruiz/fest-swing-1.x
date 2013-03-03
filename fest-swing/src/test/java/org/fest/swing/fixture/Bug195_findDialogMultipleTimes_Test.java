@@ -24,6 +24,7 @@ import java.awt.BorderLayout;
 import java.awt.Dialog;
 import java.awt.event.ActionEvent;
 
+import javax.annotation.Nonnull;
 import javax.swing.AbstractAction;
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -65,7 +66,7 @@ public class Bug195_findDialogMultipleTimes_Test extends RobotBasedTestCase {
     }
 
     @Override
-    protected boolean isMatching(Dialog dialog) {
+    protected boolean isMatching(@Nonnull Dialog dialog) {
       String title = dialog.getTitle();
       return title != null && title.toUpperCase().startsWith(matchString) && isShowing(dialog);
     }

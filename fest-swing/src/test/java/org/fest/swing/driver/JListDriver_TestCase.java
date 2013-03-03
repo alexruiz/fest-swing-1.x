@@ -22,6 +22,7 @@ import static org.fest.swing.test.task.ComponentSetEnabledTask.disable;
 import java.awt.Dimension;
 import java.awt.Point;
 
+import javax.annotation.Nonnull;
 import javax.swing.JList;
 import javax.swing.JScrollPane;
 
@@ -187,7 +188,7 @@ public abstract class JListDriver_TestCase extends RobotBasedTestCase {
     }
 
     @Override
-    public String valueAt(JList list, int index) {
+    public String valueAt(@Nonnull JList list, int index) {
       methodInvocations.invoked("valueAt");
       return super.valueAt(list, index);
     }

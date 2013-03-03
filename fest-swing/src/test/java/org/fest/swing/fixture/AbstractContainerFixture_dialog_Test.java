@@ -20,6 +20,7 @@ import static org.fest.test.ExpectedException.none;
 import static org.fest.util.Strings.concat;
 import static org.fest.util.Strings.quote;
 
+import javax.annotation.Nonnull;
 import javax.swing.JDialog;
 
 import org.fest.swing.core.GenericTypeMatcher;
@@ -151,12 +152,12 @@ public class AbstractContainerFixture_dialog_Test extends RobotBasedTestCase {
     }
 
     @Override
-    protected boolean isMatching(JDialog dialog) {
+    protected boolean isMatching(@Nonnull JDialog dialog) {
       return TITLE.equals(dialog.getTitle());
     }
 
     @Override
-    public String toString() {
+    public @Nonnull String toString() {
       return concat("dialog with title ", quote(TITLE));
     }
   }

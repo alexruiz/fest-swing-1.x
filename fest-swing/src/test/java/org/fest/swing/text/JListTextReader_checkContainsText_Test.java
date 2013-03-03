@@ -18,6 +18,7 @@ import static org.fest.assertions.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
+import javax.annotation.Nonnull;
 import javax.swing.JList;
 
 import org.fest.swing.cell.JListCellReader;
@@ -57,7 +58,7 @@ public class JListTextReader_checkContainsText_Test extends EDTSafeTestCase {
 
   private static class TestJListCellReader implements JListCellReader {
     @Override
-    public String valueAt(JList list, int index) {
+    public String valueAt(@Nonnull JList list, int index) {
       Object element = list.getModel().getElementAt(index);
       return element != null ? element.toString() : null;
     }

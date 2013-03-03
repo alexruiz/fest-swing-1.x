@@ -18,13 +18,15 @@ import static org.fest.swing.core.MouseButton.LEFT_BUTTON;
 import static org.fest.swing.core.MouseButton.MIDDLE_BUTTON;
 import static org.fest.swing.core.MouseButton.RIGHT_BUTTON;
 
+import javax.annotation.Nonnull;
+
 /**
  * Provider of the mouse button to click and how many times to click.
  *
  * @author Alex Ruiz
  */
 public final class ClickingDataProvider {
-  public static Object[][] clickingData() {
+  public static @Nonnull Object[][] clickingData() {
     return new Object[][] {
         { LEFT_BUTTON, 1 },
         { LEFT_BUTTON, 2 },

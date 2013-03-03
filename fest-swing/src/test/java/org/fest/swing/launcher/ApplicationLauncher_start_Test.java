@@ -21,6 +21,8 @@ import static org.fest.util.Lists.newArrayList;
 import java.awt.Frame;
 import java.util.List;
 
+import javax.annotation.Nonnull;
+
 import org.fest.swing.core.GenericTypeMatcher;
 import org.fest.swing.exception.UnexpectedException;
 import org.fest.swing.finder.WindowFinder;
@@ -81,7 +83,7 @@ public class ApplicationLauncher_start_Test extends RobotBasedTestCase {
   private void assertFrameIsShowing() {
     FrameFixture frameFixture = WindowFinder.findFrame(new GenericTypeMatcher<Frame>(Frame.class) {
       @Override
-      protected boolean isMatching(Frame frame) {
+      protected boolean isMatching(@Nonnull Frame frame) {
         return "Java Application".equals(frame.getTitle()) && frame.isShowing();
       }
     }).using(robot);

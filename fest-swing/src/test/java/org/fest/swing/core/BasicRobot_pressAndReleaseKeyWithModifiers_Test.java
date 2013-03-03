@@ -1,15 +1,15 @@
 /*
  * Created on Jul 25, 2009
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
- * 
+ *
  * Copyright @2009-2013 the original author or authors.
  */
 package org.fest.swing.core;
@@ -29,21 +29,25 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.List;
 
+import javax.annotation.Nonnull;
+import javax.swing.JTextField;
+
 import org.junit.Test;
 
 /**
  * Tests for {@link BasicRobot#pressAndReleaseKey(int, int...)}.
- * 
+ *
  * @author Yvonne Wang
  * @author Alex Ruiz
  */
 public class BasicRobot_pressAndReleaseKeyWithModifiers_Test extends BasicRobot_TestCase {
   @Test
   public void should_press_key_and_modifiers() {
-    robot.focusAndWaitForFocusGain(window.textField);
-    KeyPressRecorder recorder = KeyPressRecorder.attachTo(window.textField);
-    robot.pressAndReleaseKey(VK_C, new int[] { CTRL_MASK, SHIFT_MASK });
-    robot.waitForIdle();
+    JTextField textField = window().textField();
+    robot().focusAndWaitForFocusGain(textField);
+    KeyPressRecorder recorder = KeyPressRecorder.attachTo(textField);
+    robot().pressAndReleaseKey(VK_C, new int[] { CTRL_MASK, SHIFT_MASK });
+    robot().waitForIdle();
     List<KeyAction> actions = recorder.actions;
     assertThat(actions).containsOnly(KeyAction.action(KEY_PRESSED, VK_SHIFT),
         KeyAction.action(KEY_PRESSED, VK_CONTROL), KeyAction.action(KEY_PRESSED, VK_C),
@@ -54,7 +58,7 @@ public class BasicRobot_pressAndReleaseKeyWithModifiers_Test extends BasicRobot_
   private static class KeyPressRecorder extends KeyAdapter {
     final List<KeyAction> actions = newArrayList();
 
-    static KeyPressRecorder attachTo(Component c) {
+    static KeyPressRecorder attachTo(@Nonnull Component c) {
       KeyPressRecorder recorder = new KeyPressRecorder();
       c.addKeyListener(recorder);
       return recorder;
@@ -75,7 +79,7 @@ public class BasicRobot_pressAndReleaseKeyWithModifiers_Test extends BasicRobot_
     final int type;
     final int keyCode;
 
-    static KeyAction action(int type, int keyCode) {
+    static @Nonnull KeyAction action(int type, int keyCode) {
       return new KeyAction(type, keyCode);
     }
 
@@ -112,7 +116,7 @@ public class BasicRobot_pressAndReleaseKeyWithModifiers_Test extends BasicRobot_
     }
 
     @Override
-    public String toString() {
+    public @Nonnull String toString() {
       StringBuilder b = new StringBuilder();
       b.append("[type=").append(type).append(", ");
       b.append("keyCode=").append(keyCode).append("]");

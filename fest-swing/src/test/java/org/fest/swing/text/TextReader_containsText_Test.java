@@ -20,6 +20,7 @@ import static org.junit.rules.ExpectedException.none;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
+import javax.annotation.Nonnull;
 import javax.swing.JButton;
 
 import org.fest.swing.test.core.EDTSafeTestCase;
@@ -72,7 +73,7 @@ public class TextReader_containsText_Test extends EDTSafeTestCase {
     }
 
     @Override
-    protected boolean checkContainsText(JButton button, String text) {
+    protected boolean checkContainsText(@Nonnull JButton button, @Nonnull String text) {
       return button.getText().contains(text);
     }
   }

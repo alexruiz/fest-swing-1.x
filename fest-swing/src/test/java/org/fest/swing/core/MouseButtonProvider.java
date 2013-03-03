@@ -18,13 +18,15 @@ import static org.fest.swing.core.MouseButton.LEFT_BUTTON;
 import static org.fest.swing.core.MouseButton.MIDDLE_BUTTON;
 import static org.fest.swing.core.MouseButton.RIGHT_BUTTON;
 
+import javax.annotation.Nonnull;
+
 /**
  * Provider of {@link MouseButton} values.
  *
  * @author Alex Ruiz
  */
 final class MouseButtonProvider {
-  static Object[][] mouseButtons() {
+  static @Nonnull Object[][] mouseButtons() {
     return new Object[][] { { LEFT_BUTTON }, { MIDDLE_BUTTON }, { RIGHT_BUTTON } };
   }
 

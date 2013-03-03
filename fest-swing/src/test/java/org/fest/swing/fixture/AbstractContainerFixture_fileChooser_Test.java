@@ -20,6 +20,7 @@ import static org.fest.test.ExpectedException.none;
 import static org.fest.util.Strings.concat;
 import static org.fest.util.Strings.quote;
 
+import javax.annotation.Nonnull;
 import javax.swing.JFileChooser;
 
 import org.fest.swing.core.GenericTypeMatcher;
@@ -158,12 +159,12 @@ public class AbstractContainerFixture_fileChooser_Test extends RobotBasedTestCas
     }
 
     @Override
-    protected boolean isMatching(JFileChooser fileChooser) {
+    protected boolean isMatching(@Nonnull JFileChooser fileChooser) {
       return TITLE.equals(fileChooser.getDialogTitle());
     }
 
     @Override
-    public String toString() {
+    public @Nonnull String toString() {
       return concat("file chooser with title ", quote(TITLE));
     }
   }

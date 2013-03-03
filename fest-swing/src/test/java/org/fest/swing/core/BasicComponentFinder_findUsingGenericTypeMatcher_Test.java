@@ -17,6 +17,7 @@ package org.fest.swing.core;
 import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.test.core.NeverMatchingComponentMatcher.neverMatches;
 
+import javax.annotation.Nonnull;
 import javax.swing.JButton;
 
 import org.fest.swing.exception.ComponentLookupException;
@@ -33,7 +34,7 @@ public class BasicComponentFinder_findUsingGenericTypeMatcher_Test extends Basic
   public void should_find_Component() {
     JButton foundButton = finder.find(new GenericTypeMatcher<JButton>(JButton.class) {
       @Override
-      protected boolean isMatching(JButton button) {
+      protected boolean isMatching(@Nonnull JButton button) {
         return "A Button".equals(button.getText());
       }
     });

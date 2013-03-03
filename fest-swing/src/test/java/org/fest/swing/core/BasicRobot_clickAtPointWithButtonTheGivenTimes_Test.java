@@ -18,9 +18,13 @@ import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.core.ClickingDataProvider.clickingData;
 import static org.fest.swing.test.recorder.ClickRecorder.attachTo;
 import static org.fest.util.Lists.newArrayList;
+import static org.fest.util.Preconditions.checkNotNull;
 
 import java.awt.Point;
 import java.util.Collection;
+
+import javax.annotation.Nonnull;
+import javax.swing.JTextField;
 
 import org.fest.swing.test.recorder.ClickRecorder;
 import org.junit.Test;
@@ -40,20 +44,21 @@ public class BasicRobot_clickAtPointWithButtonTheGivenTimes_Test extends BasicRo
   private final int times;
 
   @Parameters
-  public static Collection<Object[]> buttons() {
+  public static @Nonnull Collection<Object[]> buttons() {
     return newArrayList(clickingData());
   }
 
-  public BasicRobot_clickAtPointWithButtonTheGivenTimes_Test(MouseButton button, int times) {
-    this.button = button;
+  public BasicRobot_clickAtPointWithButtonTheGivenTimes_Test(@Nonnull MouseButton button, int times) {
+    this.button = checkNotNull(button);
     this.times = times;
   }
 
   @Test
   public void should_click_Component_with_given_mouse_button_and_given_number_of_times_at_given_point() {
-    ClickRecorder recorder = attachTo(window.textField);
+    JTextField textField = window().textField();
+    ClickRecorder recorder = attachTo(textField);
     Point point = new Point(10, 10);
-    robot.click(window.textField, point, button, times);
+    robot().click(textField, point, button, times);
     assertThat(recorder).clicked(button).timesClicked(times).clickedAt(point);
   }
 }

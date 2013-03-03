@@ -18,9 +18,11 @@ import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.edt.GuiActionRunner.execute;
 import static org.fest.swing.test.core.NeverMatchingComponentMatcher.neverMatches;
 import static org.fest.test.ExpectedException.none;
+import static org.fest.util.Preconditions.checkNotNull;
 
 import java.awt.Dimension;
 
+import javax.annotation.Nonnull;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -87,7 +89,7 @@ public class AbstractContainerFixture_menuItem_Test extends RobotBasedTestCase {
     robot.showWindow(window);
     JMenuItemFixture menuItem = fixture.menuItem(new GenericTypeMatcher<JMenuItem>(JMenuItem.class) {
       @Override
-      protected boolean isMatching(JMenuItem m) {
+      protected boolean isMatching(@Nonnull JMenuItem m) {
         return "New".equals(m.getText());
       }
     });
@@ -106,16 +108,17 @@ public class AbstractContainerFixture_menuItem_Test extends RobotBasedTestCase {
     final JMenuItem menuNew = new JMenuItem("New");
 
     @RunsInEDT
-    static MyWindow createNew(final Class<?> testClass) {
-      return execute(new GuiQuery<MyWindow>() {
+    static @Nonnull MyWindow createNew(final @Nonnull Class<?> testClass) {
+      MyWindow result = execute(new GuiQuery<MyWindow>() {
         @Override
         protected MyWindow executeInEDT() {
           return new MyWindow(testClass);
         }
       });
+      return checkNotNull(result);
     }
 
-    private MyWindow(Class<?> testClass) {
+    private MyWindow(@Nonnull Class<?> testClass) {
       super(testClass);
       setJMenuBar(new JMenuBar());
       menuFile.add(menuNew);

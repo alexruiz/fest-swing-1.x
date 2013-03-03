@@ -18,6 +18,7 @@ import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.test.core.CommonAssertions.failWhenExpectingException;
 
 import javax.swing.JPopupMenu;
+import javax.swing.JTextField;
 
 import org.fest.swing.exception.ComponentLookupException;
 import org.junit.Test;
@@ -32,8 +33,9 @@ public class BasicRobot_showPopupMenu_Test extends BasicRobot_TestCase {
   @Test
   public void should_show_popupMenu() {
     JPopupMenu popupMenu = addPopupMenuToTextField();
-    robot.click(window.textField);
-    JPopupMenu found = robot.showPopupMenu(window.textField);
+    JTextField textField = window().textField();
+    robot().click(textField);
+    JPopupMenu found = robot().showPopupMenu(textField);
     assertThat(found).isSameAs(popupMenu);
     assertThat(found.isVisible()).isTrue();
   }
@@ -41,7 +43,7 @@ public class BasicRobot_showPopupMenu_Test extends BasicRobot_TestCase {
   @Test
   public void should_throw_error_if_popupMenu_not_found() {
     try {
-      robot.showPopupMenu(window.textField);
+      robot().showPopupMenu(window().textField());
       failWhenExpectingException();
     } catch (ComponentLookupException expected) {
       assertThat(expected.getMessage()).contains("Unable to show popup").contains("on javax.swing.JTextField");

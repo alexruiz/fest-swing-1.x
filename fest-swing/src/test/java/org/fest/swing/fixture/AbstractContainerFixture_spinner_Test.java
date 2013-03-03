@@ -18,7 +18,9 @@ import static org.fest.assertions.Assertions.assertThat;
 import static org.fest.swing.edt.GuiActionRunner.execute;
 import static org.fest.swing.test.core.NeverMatchingComponentMatcher.neverMatches;
 import static org.fest.test.ExpectedException.none;
+import static org.fest.util.Preconditions.checkNotNull;
 
+import javax.annotation.Nonnull;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 
@@ -84,7 +86,7 @@ public class AbstractContainerFixture_spinner_Test extends RobotBasedTestCase {
     robot.showWindow(window);
     JSpinnerFixture spinner = fixture.spinner(new GenericTypeMatcher<JSpinner>(JSpinner.class) {
       @Override
-      protected boolean isMatching(JSpinner s) {
+      protected boolean isMatching(@Nonnull JSpinner s) {
         return s.getValue().equals(8);
       }
     });
@@ -101,16 +103,17 @@ public class AbstractContainerFixture_spinner_Test extends RobotBasedTestCase {
   private static class MyWindow extends TestWindow {
     final JSpinner spinner = new JSpinner(new SpinnerNumberModel(8, 6, 10, 1));
 
-    static MyWindow createNew(final Class<?> testClass) {
-      return execute(new GuiQuery<MyWindow>() {
+    static @Nonnull MyWindow createNew(final @Nonnull Class<?> testClass) {
+      MyWindow result = execute(new GuiQuery<MyWindow>() {
         @Override
         protected MyWindow executeInEDT() {
           return new MyWindow(testClass);
         }
       });
+      return checkNotNull(result);
     }
 
-    private MyWindow(Class<?> testClass) {
+    private MyWindow(@Nonnull Class<?> testClass) {
       super(testClass);
       spinner.setName("spinMeSpinner");
       addComponents(spinner);

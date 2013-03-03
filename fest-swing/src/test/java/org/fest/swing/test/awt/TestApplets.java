@@ -18,13 +18,15 @@ import static org.mockito.Mockito.mock;
 
 import java.applet.Applet;
 
+import javax.annotation.Nonnull;
+
 /**
  * Implementations of {@link Applet}s to be used for testing.
  *
  * @author Alex Ruiz
  */
 public final class TestApplets {
-  public static Applet singletonAppletMock() {
+  public static @Nonnull Applet singletonAppletMock() {
     return LazyLoadedSingleton.INSTANCE;
   }
 
@@ -32,7 +34,7 @@ public final class TestApplets {
     static final Applet INSTANCE = newAppletMock();
   }
 
-  public static Applet newAppletMock() {
+  public static @Nonnull Applet newAppletMock() {
     return mock(Applet.class);
   }
 

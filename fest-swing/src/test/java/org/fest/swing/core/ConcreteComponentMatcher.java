@@ -16,6 +16,8 @@ package org.fest.swing.core;
 
 import java.awt.Component;
 
+import javax.annotation.Nullable;
+
 /**
  * Implementation of {@link AbstractComponentMatcher} for testing.
  *
@@ -31,7 +33,7 @@ class ConcreteComponentMatcher extends AbstractComponentMatcher {
   }
 
   @Override
-  public boolean matches(Component c) {
+  public boolean matches(@Nullable Component c) {
     return false;
   }
 }
