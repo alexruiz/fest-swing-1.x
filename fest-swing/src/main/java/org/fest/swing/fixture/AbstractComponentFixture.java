@@ -404,7 +404,6 @@ public abstract class AbstractComponentFixture<S, C extends Component, D extends
   /**
    * Returns this fixture's {@code Component} casted to the given sub-type.
    *
-   * @param <T> enforces that the given type is a sub-type of the managed {@code Component}.
    * @param type the type that the managed {@code Component} will be casted to.
    * @return this fixture's {@code Component} casted to the given sub-type.
    * @throws AssertionError if this fixture's {@code Component} is not an instance of the given type.

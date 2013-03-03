@@ -676,7 +676,6 @@ public abstract class AbstractContainerFixture<S, C extends Container, D extends
   /**
    * Finds a component by type, contained in this fixture's {@code Container}.
    *
-   * @param <T> the generic type of the component to find.
    * @param type the type of component to find.
    * @return the found component.
    * @throws ComponentLookupException if a matching component could not be found.
@@ -689,7 +688,6 @@ public abstract class AbstractContainerFixture<S, C extends Container, D extends
   /**
    * Finds a component by name and type, contained in this fixture's {@code Container}.
    *
-   * @param <T> the generic type of the component to find.
    * @param name the name of the component to find.
    * @param type the type of component to find.
    * @return the found component.
@@ -701,10 +699,9 @@ public abstract class AbstractContainerFixture<S, C extends Container, D extends
   }
 
   /**
-   * Finds a {@code Component} using the given {@link GenericTypeMatcher}, contained in this fixture's {@code Container}
-   * .
+   * Finds a {@code Component} using the given {@link GenericTypeMatcher}, contained in this fixture's
+   * {@code Container}.
    *
-   * @param <T> the generic type of component the given matcher can handle.
    * @param matcher the matcher to use to find the component.
    * @return the found component.
    * @throws ComponentLookupException if a matching component could not be found.

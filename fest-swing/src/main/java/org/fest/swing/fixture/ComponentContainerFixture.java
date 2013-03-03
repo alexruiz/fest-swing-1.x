@@ -482,7 +482,7 @@ public interface ComponentContainerFixture {
   @Nonnull JProgressBarFixture progressBar(@Nullable String name);
 
   /**
-   * Returns a {@link JRadioButton} found in this fixture's {@code Container}.
+   * Returns a {@code JRadioButton} found in this fixture's {@code Container}.
    *
    * @return a fixture that manages the {@code JRadioButton} found.
    * @throws ComponentLookupException if a {@code JRadioButton} could not be found.
@@ -492,7 +492,7 @@ public interface ComponentContainerFixture {
   @Nonnull JRadioButtonFixture radioButton();
 
   /**
-   * Finds a {@link JRadioButton} in this fixture's {@code Container}, that matches the specified search criteria.
+   * Finds a {@code JRadioButton} in this fixture's {@code Container}, that matches the specified search criteria.
    *
    * @param matcher contains the search criteria for finding a {@code JRadioButton}.
    * @return a fixture that manages the {@code JRadioButton} found.
@@ -505,7 +505,7 @@ public interface ComponentContainerFixture {
   @Nonnull JRadioButtonFixture radioButton(@Nonnull GenericTypeMatcher<? extends JRadioButton> matcher);
 
   /**
-   * Finds a {@link JRadioButton} in this fixture's {@code Container}, which name matches the specified one.
+   * Finds a {@code JRadioButton} in this fixture's {@code Container}, which name matches the specified one.
    *
    * @param name the name to match.
    * @return a fixture that manages the {@code JRadioButton} found.
@@ -781,7 +781,7 @@ public interface ComponentContainerFixture {
   JTextComponentFixture textBox(String name);
 
   /**
-   * Returns a {@link JToggleButton} found in this fixture's {@code Container}.
+   * Returns a {@code JToggleButton} found in this fixture's {@code Container}.
    *
    * @return a fixture that manages the {@code JToggleButton} found.
    * @throws ComponentLookupException if a {@code JToggleButton} could not be found.
@@ -791,7 +791,7 @@ public interface ComponentContainerFixture {
   @Nonnull JToggleButtonFixture toggleButton();
 
   /**
-   * Finds a {@link JToggleButton} in this fixture's {@code Container}, that matches the specified search criteria.
+   * Finds a {@code JToggleButton} in this fixture's {@code Container}, that matches the specified search criteria.
    *
    * @param matcher contains the search criteria for finding a {@code JToggleButton}.
    * @return a fixture that manages the {@code JToggleButton} found.
@@ -804,7 +804,7 @@ public interface ComponentContainerFixture {
   @Nonnull JToggleButtonFixture toggleButton(@Nonnull GenericTypeMatcher<? extends JToggleButton> matcher);
 
   /**
-   * Finds a {@link JToggleButton} in this fixture's {@code Container}, which name matches the specified one.
+   * Finds a {@code JToggleButton} in this fixture's {@code Container}, which name matches the specified one.
    *
    * @param name the name to match.
    * @return a fixture that manages the {@code JToggleButton} found.
@@ -882,8 +882,6 @@ public interface ComponentContainerFixture {
    * Returns a {@link AbstractComponentFixture} managing a component inside this fixture's {@code Container}. This is an
    * extension method, to allow implementations of {@link AbstractContainerFixture} handle custom GUI components.
    *
-   * @param <C> the type of {@code Component} the fixture to return can handle.
-   * @param <F> the type of {@code ComponentFixture} to return.
    * @param extension the {@code ComponentFixtureExtension} that creates the {@code ComponentFixture} to return.
    * @return a {@code ComponentFixture} managing a component inside this fixture's {@code Container}.
    */

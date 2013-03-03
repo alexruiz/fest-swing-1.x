@@ -22,7 +22,7 @@ import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
 
 /**
- * Factory of {@link JToggleButton}s.
+ * Factory of {@code JToggleButton}s.
  * 
  * @author Alex Ruiz
  */

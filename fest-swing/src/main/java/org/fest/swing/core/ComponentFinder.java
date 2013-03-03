@@ -53,7 +53,6 @@ public interface ComponentFinder {
    * </pre>
    * </p>
    *
-   * @param <T> the parameterized type of the component to find.
    * @param type the type of the component to find.
    * @return the found component.
    * @throws ComponentLookupException if a matching component could not be found.
@@ -67,7 +66,6 @@ public interface ComponentFinder {
   /**
    * Finds an AWT or Swing {@code Component} by type. For example:
    *
-   * @param <T> the parameterized type of the component to find.
    * @param type the type of the component to find.
    * @param showing indicates whether the component to find should be visible (or showing) or not.
    * @return the found component.
@@ -101,7 +99,6 @@ public interface ComponentFinder {
    * </pre>
    * </p>
    *
-   * @param <T> the parameterized type of the component to find.
    * @param root the root used as the starting point of the search.
    * @param type the type of the component to find.
    * @return the found component.
@@ -116,7 +113,6 @@ public interface ComponentFinder {
   /**
    * Finds an AWT or Swing {@code Component} by type in the hierarchy under the given root.
    *
-   * @param <T> the parameterized type of the component to find.
    * @param root the root used as the starting point of the search.
    * @param showing indicates whether the component to find should be visible (or showing) or not.
    * @param type the type of the component to find.
@@ -180,7 +176,6 @@ public interface ComponentFinder {
    * determine whether the component to find should be showing or not. If this finder is <em>not</em> attached to any
    * {@code Robot}, the component to find does not have to be showing.
    *
-   * @param <T> the parameterized type of the component to find.
    * @param label the text of the {@code JLabel} associated to the component to find.
    * @param type the type of the component to find.
    * @return the found component.
@@ -198,7 +193,6 @@ public interface ComponentFinder {
   /**
    * Finds an AWT or Swing {@code Component} by the text of its associated {@code JLabel} and type.
    *
-   * @param <T> the parameterized type of the component to find.
    * @param label the text of the {@code JLabel} associated to the component to find.
    * @param type the type of the component to find.
    * @param showing indicates whether the component to find should be visible (or showing) or not.
@@ -267,7 +261,6 @@ public interface ComponentFinder {
    * {@code Robot}'s {@link Settings} to determine whether the component to find should be showing or not. If this
    * finder is <em>not</em> attached to any {@code Robot}, the component to find does not have to be showing.
    *
-   * @param <T> the parameterized type of the component to find.
    * @param root the root used as the starting point of the search.
    * @param label the text of the {@code JLabel} associated to the component to find.
    * @param type the type of the component to find.
@@ -287,7 +280,6 @@ public interface ComponentFinder {
    * Finds an AWT or Swing {@code Component} by the text of its associated {@code JLabel} and type, in the hierarchy
    * under the given root.
    *
-   * @param <T> the parameterized type of the component to find.
    * @param root the root used as the starting point of the search.
    * @param label the text of the {@code JLabel} associated to the component to find.
    * @param type the type of the component to find.
@@ -352,7 +344,6 @@ public interface ComponentFinder {
    * should be showing or not. If this finder is <em>not</em> attached to any {@code Robot}, the component to find does
    * not have to be showing.
    *
-   * @param <T> the parameterized type of the component to find.
    * @param name the name of the component to find.
    * @param type the type of the component to find.
    * @return the found component.
@@ -368,7 +359,6 @@ public interface ComponentFinder {
   /**
    * Finds an AWT or Swing {@code Component} by name and type.
    *
-   * @param <T> the parameterized type of the component to find.
    * @param name the name of the component to find.
    * @param type the type of the component to find.
    * @param showing indicates whether the component to find should be visible (or showing) or not.
@@ -428,7 +418,6 @@ public interface ComponentFinder {
    * determine whether the component to find should be showing or not. If this finder is <em>not</em> attached to any
    * {@code Robot}, the component to find does not have to be showing.
    *
-   * @param <T> the parameterized type of the component to find.
    * @param root the root used as the starting point of the search.
    * @param name the name of the component to find.
    * @param type the type of the component to find.
@@ -445,7 +434,6 @@ public interface ComponentFinder {
   /**
    * Finds an AWT or Swing {@code Component} by name and type, in the hierarchy under the given root.
    *
-   * @param <T> the parameterized type of the component to find.
    * @param root the root used as the starting point of the search.
    * @param name the name of the component to find.
    * @param type the type of the component to find.
@@ -475,7 +463,6 @@ public interface ComponentFinder {
    * evaluated in the event dispatch thread (EDT.) Implementations of {@code GenericTypeMatcher} do not need to be
    * concerned about the event dispatch thread (EDT.)
    *
-   * @param <T> the type of component the given matcher can handle.
    * @param m the matcher to use to find the component of interest.
    * @return the found component.
    * @throws ComponentLookupException if a matching component could not be found.
@@ -488,7 +475,6 @@ public interface ComponentFinder {
    * root. The given matcher will be evaluated in the event dispatch thread (EDT.) Implementations of
    * {@code GenericTypeMatcher} do not need to be concerned about the event dispatch thread (EDT.)
    *
-   * @param <T> the type of component the given matcher can handle.
    * @param root the root used as the starting point of the search.
    * @param m the matcher to use to find the component.
    * @return the found component.
@@ -535,7 +521,6 @@ public interface ComponentFinder {
    * Returns all the AWT or Swing {@code Component}s that match the search criteria specified in the given
    * {@link GenericTypeMatcher}.
    *
-   * @param <T> the generic type of component that this search supports.
    * @param m the matcher to use to find the component.
    * @return all the {@code Component}s that match the search criteria specified in the given {@code GenericTypeMatcher}
    *         ; or an empty collection, if there are no matching components.
@@ -546,7 +531,6 @@ public interface ComponentFinder {
    * Returns all the AWT or Swing {@code Component}s under the given root that match the search criteria specified in
    * the given {@link GenericTypeMatcher}.
    *
-   * @param <T> the generic type of component that this search supports.
    * @param root the root used as the starting point of the search.
    * @param m the matcher to use to find the component.
    * @return all the {@code Component}s under the given root that match the search criteria specified in the given

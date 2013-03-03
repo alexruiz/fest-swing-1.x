@@ -177,7 +177,6 @@ public abstract class AbstractJTableCellWriter implements JTableCellWriter {
    * dispatch thread (EDT.) Client code must call this method from the EDT.
    * </p>
    *
-   * @param <T> the generic type of the supported editor type.
    * @param table the given {@code JTable}.
    * @param row the row index of the cell.
    * @param column the column index of the cell.
@@ -265,7 +264,6 @@ public abstract class AbstractJTableCellWriter implements JTableCellWriter {
   /**
    * Waits until the editor of the given table cell is showing on the screen. Component lookup is performed by type.
    *
-   * @param <T> the generic type of the cell editor.
    * @param table the given {@code JTable}.
    * @param row the row index of the cell.
    * @param column the column index of the cell.
@@ -282,7 +280,6 @@ public abstract class AbstractJTableCellWriter implements JTableCellWriter {
   /**
    * Waits until the editor of the given table cell is showing on the screen.
    *
-   * @param <T> the generic type of the cell editor.
    * @param matcher the condition that the cell editor to look for needs to satisfy.
    * @param table the given {@code JTable}.
    * @param row the row index of the cell.

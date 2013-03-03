@@ -150,7 +150,6 @@ public class TestWindow extends JFrame {
    * dispatch thread (EDT.) Client code must call this method from the EDT.
    * </p>
    *
-   * @param <T> the type of window to display.
    * @param w the window to display on the screen.
    * @return the displayed window.
    */

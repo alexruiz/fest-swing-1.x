@@ -22,7 +22,7 @@ import org.fest.swing.annotation.RunsInEDT;
 import org.fest.swing.edt.GuiQuery;
 
 /**
- * Factory of {@link JRadioButton}s.
+ * Factory of {@code JRadioButton}s.
  * 
  * @author Alex Ruiz
  */

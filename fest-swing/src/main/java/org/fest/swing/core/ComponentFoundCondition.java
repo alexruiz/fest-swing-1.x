@@ -47,7 +47,7 @@ public final class ComponentFoundCondition extends Condition {
   private final AtomicReference<ComponentLookupException> notFoundError = new AtomicReference<ComponentLookupException>();
 
   /**
-   * Creates a new {@link ComponentFoundCondition}
+   * Creates a new {@link ComponentFoundCondition}.
    *
    * @param description the description of this condition.
    * @param finder performs the search.
@@ -59,12 +59,12 @@ public final class ComponentFoundCondition extends Condition {
   }
 
   /**
-   * Creates a new {@link ComponentFoundCondition}
+   * Creates a new {@link ComponentFoundCondition}.
    *
    * @param description the description of this condition.
    * @param finder performs the search.
    * @param matcher specifies the condition that the AWT or Swing {@code Component} we are looking for needs to match.
-   * @param root the root {@Container} used as the starting point of the search.
+   * @param root the root {@code Container} used as the starting point of the search.
    */
   public ComponentFoundCondition(@Nonnull String description, @Nonnull ComponentFinder finder,
       @Nonnull ComponentMatcher matcher, @Nullable Container root) {
@@ -72,7 +72,7 @@ public final class ComponentFoundCondition extends Condition {
   }
 
   /**
-   * Creates a new {@link ComponentFoundCondition}
+   * Creates a new {@link ComponentFoundCondition}.
    *
    * @param description the description of this condition.
    * @param finder performs the search.
@@ -84,12 +84,12 @@ public final class ComponentFoundCondition extends Condition {
   }
 
   /**
-   * Creates a new {@link ComponentFoundCondition}
+   * Creates a new {@link ComponentFoundCondition}.
    *
    * @param description the description of this condition.
    * @param finder performs the search.
    * @param matcher specifies the condition that the AWT or Swing {@code Component} we are looking for needs to match.
-   * @param root the root {@Container} used as the starting point of the search.
+   * @param root the root {@code Container} used as the starting point of the search.
    */
   public ComponentFoundCondition(@Nonnull Description description, @Nonnull ComponentFinder finder,
       @Nonnull ComponentMatcher matcher, @Nullable Container root) {

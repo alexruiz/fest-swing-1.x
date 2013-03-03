@@ -22,7 +22,7 @@ import org.fest.swing.core.Robot;
 import org.fest.swing.exception.ComponentLookupException;
 
 /**
- * Supports functional testing of {@link JRadioButton}s.
+ * Supports functional testing of {@code JRadioButton}s.
  * 
  * @author Yvonne Wang
  * @author Alex Ruiz

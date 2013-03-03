@@ -1,15 +1,15 @@
 /*
  * Created on Mar 12, 2010
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
- * 
+ *
  * Copyright @2010-2013 the original author or authors.
  */
 package org.fest.swing.keystroke;
@@ -49,7 +49,7 @@ import org.fest.util.VisibleForTesting;
  * <p>
  * Creates {@link KeyStrokeMapping}s by parsing a text file.
  * </p>
- * 
+ *
  * <p>
  * Mappings for the following characters:
  * <ul>
@@ -61,7 +61,7 @@ import org.fest.util.VisibleForTesting;
  * </ul>
  * will be automatically added and should <strong>not</strong> be included to the file to parse.
  * </p>
- * 
+ *
  * <p>
  * The following is an example of a mapping file:
  * <pre>
@@ -71,26 +71,26 @@ import org.fest.util.VisibleForTesting;
  * </pre>
  * Each line represents a character-keystroke mapping where each value is separated by a comma.
  * </p>
- * 
+ *
  * <p>
  * The first value represents the character to map. For example 'a' or 'A'. Since each field is separated by a comma, to
  * map the ',' character we need to specify the text "COMMA."
  * </p>
- * 
+ *
  * <p>
  * The second value represents the key code, which should be the name of a key code from {@link KeyEvent} without the
  * prefix "VK_". For example, if the key code is {@link KeyEvent#VK_COMMA} we just need to specify "COMMA".
  * </p>
- * 
+ *
  * <p>
- * The third value represents any modifiers to use, which should be the name of a modifier from {@link InputEvent}. For
- * example, if the modifier to use is {@link InputEvent#SHIFT_MASK} we need to specify "SHIFT_MASK". If no modifiers are
- * necessary, we just specify "NO_MASK".
+ * The third value represents any modifiers to use, which should be the name of a modifier from a {@code InputEvent}.
+ * For example, if the modifier to use is {@code InputEvent.SHIFT_MASK} we need to specify "SHIFT_MASK". If no modifiers
+ * are necessary, we just specify "NO_MASK".
  * </p>
- * 
+ *
  * @author Olivier DOREMIEUX
  * @author Alex Ruiz
- * 
+ *
  * @since 1.2
  */
 public class KeyStrokeMappingsParser {
@@ -105,11 +105,11 @@ public class KeyStrokeMappingsParser {
    * Creates a {@link KeyStrokeMappingProvider} containing all the character-keystroke mappings specified in the file
    * with the given name.
    * </p>
-   * 
+   *
    * <p>
    * <strong>Note:</strong> This attempts to read the file using {@link ClassLoader#getResourceAsStream(String)}.
    * </p>
-   * 
+   *
    * @param fileName the name of the file to parse.
    * @return the created {@code KeyStrokeMappingProvider}.
    * @throws NullPointerException if the given name is {@code null}.
@@ -137,7 +137,7 @@ public class KeyStrokeMappingsParser {
   /**
    * Creates a {@link KeyStrokeMappingProvider} containing all the character-keystroke mappings specified in the given
    * file.
-   * 
+   *
    * @param file the file to parse.
    * @return the created {@code KeyStrokeMappingProvider}.
    * @throws NullPointerException if the given file is {@code null}.

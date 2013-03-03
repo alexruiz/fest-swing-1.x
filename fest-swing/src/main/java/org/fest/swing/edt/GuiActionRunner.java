@@ -42,8 +42,8 @@ public class GuiActionRunner {
    * Indicates {@link GuiActionRunner} whether instances of {@link GuiQuery} and {@link GuiTask} should be executed in
    * the event dispatch thread (EDT.)
    *
-   * @param b if {@code true}, GUI actions are executed in the event dispatch thread (EDT.) If {@code false}, GUI actions are
-   *          executed in the current thread.
+   * @param b if {@code true}, GUI actions are executed in the event dispatch thread (EDT.) If {@code false}, GUI
+   *          actions are executed in the current thread.
    */
   public static synchronized void executeInEDT(boolean b) {
     executeInEDT = b;
@@ -63,7 +63,6 @@ public class GuiActionRunner {
    * Executes the given query in the event dispatch thread (EDT.) This method waits until the query has finished its
    * execution.
    *
-   * @param <T> the generic type of the return value.
    * @param query the query to execute.
    * @return the result of the query executed in the main thread.
    * @throws UnexpectedException wrapping any <b>checked</b> exception thrown when executing the given query in the

@@ -21,7 +21,7 @@ import org.fest.swing.core.Robot;
 import org.fest.swing.exception.ComponentLookupException;
 
 /**
- * Supports functional testing of {@link JToggleButton}s.
+ * Supports functional testing of {@code JToggleButton}s.
  *
  * @author Alex Ruiz
  */

@@ -31,7 +31,7 @@ import org.junit.Rule;
 import org.junit.Test;
 
 /**
- * Tests lookups of {@link JRadioButton}s in {@link AbstractContainerFixture}.
+ * Tests lookups of {@code JRadioButton}s in {@link AbstractContainerFixture}.
  *
  * @author Alex Ruiz
  */

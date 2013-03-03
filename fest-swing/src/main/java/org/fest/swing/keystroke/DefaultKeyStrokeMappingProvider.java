@@ -21,16 +21,15 @@ import java.util.Collection;
 import java.util.List;
 
 import javax.annotation.Nonnull;
-import javax.swing.KeyStroke;
 
 /**
- * Default mapping of characters and {@link KeyStroke}s.
+ * Default mapping of characters and {@code javax.swing.KeyStroke}s.
  *
  * @author Alex Ruiz
  */
 public class DefaultKeyStrokeMappingProvider implements KeyStrokeMappingProvider {
   /**
-   * Returns the default mapping of characters and {@link KeyStroke}s. This provider will only return the mappings for
+   * Returns the default mapping of characters and {@code KeyStroke}s. This provider will only return the mappings for
    * following keys:
    * <ul>
    * <li>Backspace</li>
